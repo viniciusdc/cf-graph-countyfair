@@ -232,9 +232,10 @@
  "hash_type":"sha256",
  "meta_yaml":{
   "about":{
-   "home":"https://github.com/NSLS-II/event-model",
+   "home":"https://github.com/bluesky/event-model",
    "license":"BSD 3-Clause",
-   "summary":"data model for event-based data collection and analysis"
+   "license_file":"LICENSE",
+   "summary":"Data model for event-based data collection and analysis"
   },
   "build":{
    "noarch":"python",
@@ -243,23 +244,14 @@
   },
   "extra":{
    "recipe-maintainers":[
-    "CJ-Wright",
-    "mrakitin",
-    "tacaswell",
-    "danielballan",
-    "CJ-Wright",
-    "mrakitin",
-    "tacaswell",
-    "danielballan",
-    "CJ-Wright",
-    "mrakitin",
-    "tacaswell",
-    "danielballan"
+    "conda-forge/event-model",
+    "conda-forge/event-model",
+    "conda-forge/event-model"
    ]
   },
   "package":{
    "name":"event-model",
-   "version":"1.11.1"
+   "version":"1.11.2"
   },
   "requirements":{
    "host":[
@@ -283,22 +275,31 @@
    ]
   },
   "source":{
-   "fn":"event-model-v1.11.1.tar.gz",
-   "sha256":"71ff135326e43361e8a27a8f75666d0a103e1a54e29e83959c069af4bf5b937f",
-   "url":"https://github.com/NSLS-II/event-model/archive/v1.11.1.tar.gz"
+   "sha256":"4f09bf0f20ca0ffe390f781a9a72dee38166f97155ca48a148cc739f2bcd29e8",
+   "url":"https://pypi.io/packages/source/e/event-model/event-model-1.11.2.tar.gz"
   },
   "test":{
+   "commands":[
+    "pytest --pyargs event_model.tests",
+    "pytest --pyargs event_model.tests",
+    "pytest --pyargs event_model.tests"
+   ],
    "imports":[
     "event_model",
     "event_model",
     "event_model"
+   ],
+   "requires":[
+    "pytest",
+    "pytest",
+    "pytest"
    ]
   }
  },
  "name":"event-model",
  "new_version":"1.11.2",
  "pinning_version":"2019.08.27",
- "raw_meta_yaml":"{% set version = \"1.11.1\" %}\n\npackage:\n  name: event-model\n  version: {{ version }}\n\nsource:\n  url: https://github.com/NSLS-II/event-model/archive/v{{ version }}.tar.gz\n  fn: event-model-v{{version}}.tar.gz\n  sha256: 71ff135326e43361e8a27a8f75666d0a103e1a54e29e83959c069af4bf5b937f\n\nbuild:\n  number: 0\n  script: \"{{ PYTHON }} -m pip install . --no-deps -vv\"\n  noarch: python\n\nrequirements:\n  host:\n    - python >=3.6\n    - pip\n  run:\n    - python >=3.6\n    - jsonschema\n    - numpy\n\ntest:\n  imports:\n    - event_model\n\nabout:\n  home: https://github.com/NSLS-II/event-model\n  license: BSD 3-Clause\n  summary: data model for event-based data collection and analysis\n\nextra:\n  recipe-maintainers:\n    - CJ-Wright\n    - mrakitin\n    - tacaswell\n    - danielballan\n",
+ "raw_meta_yaml":"{% set name = \"event-model\" %}\n{% set version = \"1.11.2\" %}\n{% set sha256 = \"4f09bf0f20ca0ffe390f781a9a72dee38166f97155ca48a148cc739f2bcd29e8\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz\n  sha256: {{ sha256 }}\n\nbuild:\n  noarch: python\n  number: 0\n  script: \"{{ PYTHON }} -m pip install . --no-deps -vv\"\n\nrequirements:\n  host:\n    - python >=3.6\n    - pip\n  run:\n    - python >=3.6\n    - jsonschema\n    - numpy\n\ntest:\n  requires:\n    - pytest\n  imports:\n    - event_model\n  commands:\n    - pytest --pyargs event_model.tests\n\nabout:\n  home: https://github.com/bluesky/event-model\n  license: BSD 3-Clause\n  license_file: LICENSE\n  summary: Data model for event-based data collection and analysis\n\nextra:\n  recipe-maintainers:\n    - conda-forge/event-model\n",
  "req":{
   "__set__":true,
   "elements":[
@@ -309,7 +310,7 @@
   ]
  },
  "smithy_version":"3.4.1",
- "time":1568050631.1940439,
+ "time":1568070539.649178,
  "url":"https://github.com/NSLS-II/event-model/archive/v1.11.1.tar.gz",
- "version":"1.11.1"
+ "version":"1.11.2"
 }
