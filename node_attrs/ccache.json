@@ -1,0 +1,107 @@
+{
+ "PRed":[
+  {
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"Version",
+    "migrator_version":0,
+    "version":"3.3.6"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "version"
+   ]
+  }
+ ],
+ "bad":{
+  "exception":"HTTP Error 404: Not Found",
+  "traceback":"Traceback (most recent call last):\n  File \"/root/repo/cf-scripts/conda_forge_tick/auto_tick.xsh\", line 571, in main\n    hash_type=attrs.get('hash_type', 'sha256'))\n  File \"/root/repo/cf-scripts/conda_forge_tick/auto_tick.xsh\", line 97, in run\n    migrate_return = migrator.migrate(recipe_dir, attrs, **kwargs)\n  File \"/root/repo/cf-scripts/conda_forge_tick/migrators.xsh\", line 333, in migrate\n    new_patterns = self.get_hash_patterns('meta.yaml', urls, hash_type)\n  File \"/root/repo/cf-scripts/conda_forge_tick/migrators.xsh\", line 263, in get_hash_patterns\n    hash = hash_url(url, hash_type)\n  File \"/opt/conda/envs/run_env/lib/python3.7/site-packages/rever/tools.xsh\", line 207, in hash_url\n    for b in stream_url_progress(url, verb='Hashing', quiet=quiet):\n  File \"/opt/conda/envs/run_env/lib/python3.7/site-packages/rever/tools.xsh\", line 179, in stream_url_progress\n    with urllib.request.urlopen(url) as f:\n  File \"/opt/conda/envs/run_env/lib/python3.7/urllib/request.py\", line 222, in urlopen\n    return opener.open(url, data, timeout)\n  File \"/opt/conda/envs/run_env/lib/python3.7/urllib/request.py\", line 531, in open\n    response = meth(req, response)\n  File \"/opt/conda/envs/run_env/lib/python3.7/urllib/request.py\", line 641, in http_response\n    'http', request, response, code, msg, hdrs)\n  File \"/opt/conda/envs/run_env/lib/python3.7/urllib/request.py\", line 569, in error\n    return self._call_chain(*args)\n  File \"/opt/conda/envs/run_env/lib/python3.7/urllib/request.py\", line 503, in _call_chain\n    result = func(*args)\n  File \"/opt/conda/envs/run_env/lib/python3.7/urllib/request.py\", line 649, in http_error_default\n    raise HTTPError(req.full_url, code, msg, hdrs, fp)\nurllib.error.HTTPError: HTTP Error 404: Not Found\n"
+ },
+ "conda-forge.yml":{},
+ "feedstock_name":"ccache",
+ "hash_type":"sha256",
+ "meta_yaml":{
+  "about":{
+   "description":"ccache is a compiler cache. It speeds up recompilation by caching\nprevious compilations and detecting when the same compilation is\nbeing done again. Supported languages are C, C++, Objective-C and Objective-C++.\n",
+   "dev_url":"https://github.com/ccache/ccache",
+   "doc_url":"https://ccache.samba.org/manual.html",
+   "home":"https://ccache.samba.org/",
+   "license":"GPL-3.0",
+   "license_family":"GPL",
+   "license_file":"GPL-3.0.txt",
+   "summary":"A compiler cache"
+  },
+  "build":{
+   "number":"0",
+   "skip":true
+  },
+  "extra":{
+   "recipe-maintainers":[
+    "edisongustavo",
+    "marcelotrevisani",
+    "edisongustavo",
+    "marcelotrevisani",
+    "edisongustavo",
+    "marcelotrevisani"
+   ]
+  },
+  "package":{
+   "name":"ccache",
+   "version":"3.7.1"
+  },
+  "requirements":{
+   "build":[
+    "c_compiler_stub",
+    "cxx_compiler_stub",
+    "c_compiler_stub",
+    "cxx_compiler_stub",
+    "c_compiler_stub",
+    "cxx_compiler_stub"
+   ],
+   "host":[
+    "zlib",
+    "xz",
+    "zlib",
+    "xz",
+    "zlib",
+    "xz"
+   ],
+   "run":[
+    "zlib",
+    "zlib",
+    "zlib"
+   ]
+  },
+  "source":{
+   "sha256":"1c6501d5bd01952f5535c3f11ca774aedf4711e373a7bea7e0b1f487f0789b19",
+   "url":"https://github.com/ccache/ccache/releases/download/v3.7.1/ccache-3.7.1.tar.bz2"
+  },
+  "test":{
+   "commands":[
+    "ccache --help",
+    "ccache --version",
+    "ccache --help",
+    "ccache --version",
+    "ccache --help",
+    "ccache --version"
+   ]
+  }
+ },
+ "name":"ccache",
+ "new_version":"3.7.3",
+ "raw_meta_yaml":"{% set name = \"ccache\" %}\n{% set version = \"3.7.1\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  url: https://github.com/ccache/ccache/releases/download/v{{ version }}/ccache-{{ version }}.tar.bz2\n  sha256: 1c6501d5bd01952f5535c3f11ca774aedf4711e373a7bea7e0b1f487f0789b19\n\nbuild:\n  number: 0\n  skip: true  # [win]\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n  host:\n    - zlib\n    - xz\n  run:\n    - zlib\n\ntest:\n  commands:\n    - ccache --help\n    - ccache --version\n\nabout:\n  home: https://ccache.samba.org/\n  license: GPL-3.0\n  license_family: GPL\n  license_file: GPL-3.0.txt\n  summary: 'A compiler cache'\n\n  description: |\n    ccache is a compiler cache. It speeds up recompilation by caching\n    previous compilations and detecting when the same compilation is\n    being done again. Supported languages are C, C++, Objective-C and Objective-C++.\n  doc_url: https://ccache.samba.org/manual.html\n  dev_url: https://github.com/ccache/ccache\n\nextra:\n  recipe-maintainers:\n    - edisongustavo\n    - marcelotrevisani\n",
+ "req":{
+  "__set__":true,
+  "elements":[
+   "c_compiler_stub",
+   "cxx_compiler_stub",
+   "xz",
+   "zlib"
+  ]
+ },
+ "time":1568050620.9235141,
+ "url":"https://github.com/ccache/ccache/releases/download/v3.7.1/ccache-3.7.1.tar.bz2",
+ "version":"3.7.1"
+}

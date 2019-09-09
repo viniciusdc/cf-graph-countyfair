@@ -1,0 +1,164 @@
+{
+ "PRed":[
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/196933365.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"Compiler",
+    "migrator_version":0
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version"
+   ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/221976726.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"CompilerRebuild",
+    "migrator_version":1,
+    "name":"Python 3.7, GCC 7, R 3.5.1, openBLAS 0.3.2"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "name"
+   ]
+  }
+ ],
+ "bad":false,
+ "conda-forge.yml":{
+  "compiler_stack":"comp7",
+  "max_py_ver":"37",
+  "max_r_ver":"35",
+  "provider":{
+   "win":"azure"
+  }
+ },
+ "feedstock_name":"line_profiler",
+ "hash_type":"sha256",
+ "meta_yaml":{
+  "about":{
+   "dev_url":"https://github.com/rkern/line_profiler",
+   "doc_url":"https://github.com/rkern/line_profiler",
+   "home":"https://github.com/rkern/line_profiler",
+   "license":"BSD 3-Clause",
+   "license_family":"BSD",
+   "license_file":"LICENSE.txt",
+   "summary":"A module for monitoring memory usage of a python program"
+  },
+  "build":{
+   "entry_points":[
+    "kernprof = kernprof:main",
+    "kernprof = kernprof:main",
+    "kernprof = kernprof:main"
+   ],
+   "number":"1003",
+   "script":[
+    "del _line_profiler.c",
+    " -m pip install . -vv",
+    "rm _line_profiler.c",
+    " -m pip install . -vv",
+    "rm _line_profiler.c",
+    " -m pip install . -vv"
+   ]
+  },
+  "extra":{
+   "recipe-maintainers":[
+    "jakirkham",
+    "koverholt",
+    "grlee77",
+    "jakirkham",
+    "koverholt",
+    "grlee77",
+    "jakirkham",
+    "koverholt",
+    "grlee77"
+   ]
+  },
+  "package":{
+   "name":"line_profiler",
+   "version":"2.1.2"
+  },
+  "requirements":{
+   "build":[
+    "c_compiler_stub",
+    "c_compiler_stub",
+    "c_compiler_stub"
+   ],
+   "host":[
+    "python",
+    "pip",
+    "cython",
+    "python",
+    "pip",
+    "cython",
+    "python",
+    "pip",
+    "cython"
+   ],
+   "run":[
+    "python",
+    "ipython >=0.13",
+    "python",
+    "ipython >=0.13",
+    "python",
+    "ipython >=0.13"
+   ]
+  },
+  "source":{
+   "fn":"line_profiler-2.1.2.tar.gz",
+   "sha256":"efa66e9e3045aa7cb1dd4bf0106e07dec9f80bc781a993fbaf8162a36c20af5c",
+   "url":"https://pypi.io/packages/source/l/line_profiler/line_profiler-2.1.2.tar.gz"
+  },
+  "test":{
+   "commands":[
+    "kernprof --help",
+    "python -m kernprof --help",
+    "python -m line_profiler --help",
+    "kernprof --help",
+    "python -m kernprof --help",
+    "python -m line_profiler --help",
+    "kernprof --help",
+    "python -m kernprof --help",
+    "python -m line_profiler --help"
+   ],
+   "imports":[
+    "kernprof",
+    "line_profiler",
+    "line_profiler_py35",
+    "kernprof",
+    "line_profiler",
+    "line_profiler_py35",
+    "kernprof",
+    "line_profiler",
+    "line_profiler_py35"
+   ]
+  }
+ },
+ "name":"line_profiler",
+ "new_version":"2.1.2",
+ "pinning_version":"2018.10.10",
+ "raw_meta_yaml":"{% set name = \"line_profiler\" %}\n{% set version = \"2.1.2\" %}\n{% set checksum = \"efa66e9e3045aa7cb1dd4bf0106e07dec9f80bc781a993fbaf8162a36c20af5c\" %}\n\npackage:\n  name: {{ name }}\n  version: {{ version }}\n\nsource:\n  fn: {{ name }}-{{ version }}.tar.gz\n  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz\n  sha256: {{ checksum }}\n\nbuild:\n  number: 1003\n  script:\n    # Remove Python 3.7-incompatible cython-generated _line_profiler.c\n    # Cython was added to the host deps so this can be regenerated.\n    - del _line_profiler.c  # [win]\n    - rm _line_profiler.c  # [not win]\n    - \"{{ PYTHON }} -m pip install . -vv\"\n  entry_points:\n    - kernprof = kernprof:main\n\nrequirements:\n  build:\n    - {{ compiler(\"c\") }}\n\n  host:\n    - python\n    - pip\n    - cython\n\n  run:\n    - python\n    - ipython >=0.13\n\ntest:\n  imports:\n    - kernprof\n    - line_profiler\n    - line_profiler_py35  # [py>34]\n\n  commands:\n    - kernprof --help\n    - python -m kernprof --help\n    - python -m line_profiler --help\n\nabout:\n  home: https://github.com/rkern/line_profiler\n  license: BSD 3-Clause\n  license_family: BSD\n  license_file: LICENSE.txt\n  summary: A module for monitoring memory usage of a python program\n  dev_url: https://github.com/rkern/line_profiler\n  doc_url: https://github.com/rkern/line_profiler\n\nextra:\n  recipe-maintainers:\n    - jakirkham\n    - koverholt\n    - grlee77\n",
+ "req":{
+  "__set__":true,
+  "elements":[
+   "c_compiler_stub",
+   "cython",
+   "ipython",
+   "pip",
+   "python"
+  ]
+ },
+ "smithy_version":"3.1.12",
+ "time":1568050612.0742152,
+ "url":"https://pypi.io/packages/source/l/line_profiler/line_profiler-2.1.2.tar.gz",
+ "version":"2.1.2"
+}

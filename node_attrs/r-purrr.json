@@ -1,0 +1,196 @@
+{
+ "PRed":[
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/205297978.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"Compiler",
+    "migrator_version":0
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version"
+   ]
+  },
+  {
+   "PR":{
+    "state":"closed"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"CompilerRebuild",
+    "migrator_version":1,
+    "name":"Python 3.7, GCC 7, R 3.5.1, openBLAS 0.3.2"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "name"
+   ]
+  },
+  {
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"Version",
+    "migrator_version":0,
+    "version":"0.3.0"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "version"
+   ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/298291788.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"RBaseRebuild",
+    "migrator_version":0,
+    "name":"r-base-3.6.1"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "name"
+   ]
+  }
+ ],
+ "bad":false,
+ "conda-forge.yml":{
+  "compiler_stack":"comp7",
+  "max_py_ver":"37",
+  "max_r_ver":"35",
+  "provider":{
+   "win":"azure"
+  }
+ },
+ "feedstock_name":"r-purrr",
+ "hash_type":"sha256",
+ "meta_yaml":{
+  "about":{
+   "home":"http://purrr.tidyverse.org, https://github.com/tidyverse/purrr",
+   "license":"GPL-3",
+   "license_family":"GPL3",
+   "license_file":"/lib/R/share/licenses/GPL-3",
+   "summary":"A complete and consistent functional programming toolkit for R."
+  },
+  "build":{
+   "merge_build_host":true,
+   "number":"1",
+   "rpaths":[
+    "lib/R/lib/",
+    "lib/",
+    "lib/R/lib/",
+    "lib/",
+    "lib/R/lib/",
+    "lib/"
+   ]
+  },
+  "extra":{
+   "recipe-maintainers":[
+    "conda-forge/r",
+    "conda-forge/r",
+    "conda-forge/r"
+   ]
+  },
+  "package":{
+   "name":"r-purrr",
+   "version":"0.3.2"
+  },
+  "requirements":{
+   "build":[
+    "m2w64_c_compiler_stub",
+    "filesystem",
+    "make",
+    "sed",
+    "coreutils",
+    "zip",
+    "c_compiler_stub",
+    "make",
+    "c_compiler_stub",
+    "make"
+   ],
+   "host":[
+    "r-base",
+    "r-magrittr >=1.5",
+    "r-rlang >=0.3.1",
+    "r-base",
+    "r-magrittr >=1.5",
+    "r-rlang >=0.3.1",
+    "r-base",
+    "r-magrittr >=1.5",
+    "r-rlang >=0.3.1"
+   ],
+   "run":[
+    "r-base",
+    "gcc-libs",
+    "r-magrittr >=1.5",
+    "r-rlang >=0.3.1",
+    "r-base",
+    "r-magrittr >=1.5",
+    "r-rlang >=0.3.1",
+    "r-base",
+    "r-magrittr >=1.5",
+    "r-rlang >=0.3.1"
+   ]
+  },
+  "source":{
+   "sha256":"27c74dd9e4f6f14bf442473df22bcafc068822f7f138f0870326532f143a9a31",
+   "url":[
+    "https://cran.r-project.org/src/contrib/purrr_0.3.2.tar.gz",
+    "https://cran.r-project.org/src/contrib/Archive/purrr/purrr_0.3.2.tar.gz",
+    "https://cran.r-project.org/src/contrib/purrr_0.3.2.tar.gz",
+    "https://cran.r-project.org/src/contrib/Archive/purrr/purrr_0.3.2.tar.gz",
+    "https://cran.r-project.org/src/contrib/purrr_0.3.2.tar.gz",
+    "https://cran.r-project.org/src/contrib/Archive/purrr/purrr_0.3.2.tar.gz"
+   ]
+  },
+  "test":{
+   "commands":[
+    "\"%R%\" -e \"library('purrr')\"",
+    "$R -e \"library('purrr')\"",
+    "$R -e \"library('purrr')\""
+   ]
+  }
+ },
+ "name":"r-purrr",
+ "new_version":"0.3.0",
+ "pinning_version":"2019.07.15",
+ "raw_meta_yaml":"{% set version = '0.3.2' %}\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-purrr\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  url:\n    - {{ cran_mirror }}/src/contrib/purrr_{{ version }}.tar.gz\n    - {{ cran_mirror }}/src/contrib/Archive/purrr/purrr_{{ version }}.tar.gz\n  sha256: 27c74dd9e4f6f14bf442473df22bcafc068822f7f138f0870326532f143a9a31\n\nbuild:\n  merge_build_host: True  # [win]\n  number: 1\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - {{ compiler('c') }}        # [not win]\n    - {{ compiler('m2w64_c') }}        # [win]\n    - {{posix}}filesystem        # [win]\n    - {{posix}}make\n    - {{posix}}sed               # [win]\n    - {{posix}}coreutils         # [win]\n    - {{posix}}zip               # [win]\n  host:\n    - r-base\n    - r-magrittr >=1.5\n    - r-rlang >=0.3.1\n  run:\n    - r-base\n    - {{native}}gcc-libs         # [win]\n    - r-magrittr >=1.5\n    - r-rlang >=0.3.1\n\ntest:\n  commands:\n    - $R -e \"library('purrr')\"           # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('purrr')\\\"\"  # [win]\n\nabout:\n  home: http://purrr.tidyverse.org, https://github.com/tidyverse/purrr\n  license: GPL-3\n  summary: A complete and consistent functional programming toolkit for R.\n  license_family: GPL3\n  license_file: '{{ environ[\"PREFIX\"] }}/lib/R/share/licenses/GPL-3'\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n\n# Package: purrr\n# Title: Functional Programming Tools\n# Version: 0.3.2\n# Authors@R: c( person(\"Lionel\", \"Henry\", , \"lionel@rstudio.com\", c(\"aut\", \"cre\")), person(\"Hadley\", \"Wickham\", , \"hadley@rstudio.com\", \"aut\"), person(\"RStudio\", role = c(\"cph\", \"fnd\")) )\n# Description: A complete and consistent functional programming toolkit for R.\n# License: GPL-3 | file LICENSE\n# URL: http://purrr.tidyverse.org, https://github.com/tidyverse/purrr\n# BugReports: https://github.com/tidyverse/purrr/issues\n# Depends: R (>= 3.1)\n# Imports: magrittr (>= 1.5), rlang (>= 0.3.1)\n# Suggests: covr, crayon, dplyr (>= 0.7.8), knitr, rmarkdown, testthat, tibble, tidyselect\n# VignetteBuilder: knitr\n# Encoding: UTF-8\n# LazyData: true\n# RoxygenNote: 6.1.1\n# NeedsCompilation: yes\n# Packaged: 2019-03-15 15:56:56 UTC; lionel\n# Author: Lionel Henry [aut, cre], Hadley Wickham [aut], RStudio [cph, fnd]\n# Maintainer: Lionel Henry <lionel@rstudio.com>\n# Repository: CRAN\n# Date/Publication: 2019-03-15 18:20:02 UTC\n",
+ "req":{
+  "__set__":true,
+  "elements":[
+   "c_compiler_stub",
+   "coreutils",
+   "filesystem",
+   "gcc-libs",
+   "m2w64_c_compiler_stub",
+   "make",
+   "r-base",
+   "r-magrittr",
+   "r-rlang",
+   "sed",
+   "zip"
+  ]
+ },
+ "smithy_version":"3.4.1",
+ "time":1568050648.9221034,
+ "url":[
+  "https://cran.r-project.org/src/contrib/purrr_0.3.2.tar.gz",
+  "https://cran.r-project.org/src/contrib/Archive/purrr/purrr_0.3.2.tar.gz",
+  "https://cran.r-project.org/src/contrib/purrr_0.3.2.tar.gz",
+  "https://cran.r-project.org/src/contrib/Archive/purrr/purrr_0.3.2.tar.gz",
+  "https://cran.r-project.org/src/contrib/purrr_0.3.2.tar.gz",
+  "https://cran.r-project.org/src/contrib/Archive/purrr/purrr_0.3.2.tar.gz"
+ ],
+ "version":"0.3.2"
+}

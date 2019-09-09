@@ -1,0 +1,154 @@
+{
+ "PRed":[
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/283404527.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"Rebuild",
+    "migrator_version":0,
+    "name":"boost-cpp-1.70.0"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "name"
+   ]
+  }
+ ],
+ "bad":false,
+ "conda-forge.yml":{},
+ "feedstock_name":"stir",
+ "hash_type":"sha256",
+ "meta_yaml":{
+  "about":{
+   "description":"STIR is Open Source software for use in tomographic imaging.\nIts aim is to provide a Multi-Platform Object-Oriented framework for all data manipulations in tomographic imaging.\n",
+   "dev_url":"https://github.com/UCL/STIR",
+   "doc_url":"http://stir.sourceforge.net/documentation",
+   "home":"http://stir.sourceforge.net/",
+   "license":"GPL and LGPL",
+   "license_family":"GPL",
+   "license_file":"LICENSE.txt",
+   "summary":"Software for Tomographic Image Reconstruction"
+  },
+  "build":{
+   "number":"1",
+   "skip":true
+  },
+  "extra":{
+   "recipe-maintainers":[
+    "olivierverdier",
+    "KrisThielemans",
+    "paskino",
+    "casperdcl",
+    "olivierverdier",
+    "KrisThielemans",
+    "paskino",
+    "casperdcl",
+    "olivierverdier",
+    "KrisThielemans",
+    "paskino",
+    "casperdcl"
+   ]
+  },
+  "package":{
+   "name":"stir",
+   "version":"3.0.1.dev2"
+  },
+  "requirements":{
+   "build":[
+    "c_compiler_stub",
+    "cxx_compiler_stub",
+    "cmake",
+    "c_compiler_stub",
+    "cxx_compiler_stub",
+    "cmake",
+    "c_compiler_stub",
+    "cxx_compiler_stub",
+    "cmake"
+   ],
+   "host":[
+    "python",
+    "boost-cpp",
+    "numpy",
+    "swig",
+    "python",
+    "boost-cpp",
+    "numpy",
+    "swig",
+    "python",
+    "boost-cpp",
+    "numpy",
+    "swig"
+   ],
+   "run":[
+    "python",
+    "compatible_pin_stub",
+    "python",
+    "compatible_pin_stub",
+    "python",
+    "compatible_pin_stub"
+   ]
+  },
+  "source":{
+   "fn":"STIR-course_MIC2018.zip",
+   "sha256":"5a8be0cf3374118168203ccffc2198ab306a4d13d5412600660125c7a29439e8",
+   "url":"https://github.com/UCL/STIR/archive/course_MIC2018.zip"
+  },
+  "test":{
+   "commands":[
+    "pytest src/swig/test/python",
+    "cd recon_test_pack",
+    "run_tests",
+    "conda inspect linkages -p $PREFIX stir",
+    "conda inspect objects -p $PREFIX stir",
+    "pytest src/swig/test/python",
+    "cd recon_test_pack && ./run_tests.sh --nointbp",
+    "conda inspect linkages -p $PREFIX stir",
+    "pytest src/swig/test/python",
+    "cd recon_test_pack && ./run_tests.sh --nointbp"
+   ],
+   "imports":[
+    "stir",
+    "stir",
+    "stir"
+   ],
+   "requires":[
+    "pytest",
+    "pytest",
+    "pytest"
+   ],
+   "source_files":[
+    "recon_test_pack",
+    "src/swig/test/python",
+    "recon_test_pack",
+    "src/swig/test/python",
+    "recon_test_pack",
+    "src/swig/test/python"
+   ]
+  }
+ },
+ "name":"stir",
+ "new_version":"stir_rel_3_00",
+ "pinning_version":"2019.05.29",
+ "raw_meta_yaml":"\n{% set name = \"STIR\" %}\n{% set version = \"3.0.1.dev2\" %}\n{% set sha256 = \"5a8be0cf3374118168203ccffc2198ab306a4d13d5412600660125c7a29439e8\" %}\n{% set treehash = \"course_MIC2018\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  fn: {{ name }}-{{ treehash }}.zip\n  url: https://github.com/UCL/{{ name }}/archive/{{ treehash }}.zip\n  sha256: {{ sha256 }}\n\nbuild:\n  skip: true  # [py2k]\n  skip: true  # [win and py<36]\n  skip: true  # [win]\n  skip: true  # [osx]\n  number: 1\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n    - cmake\n  host:\n    - python\n    - boost-cpp\n    - numpy\n    - swig\n  run:\n    - python\n    - {{ pin_compatible('numpy') }}\n\ntest:\n  requires:\n    - pytest\n  imports:\n    - stir\n  source_files:\n    - recon_test_pack\n    - src/swig/test/python\n  commands:\n    - conda inspect linkages -p $PREFIX {{ name|lower }}  # [not win]\n    - conda inspect objects -p $PREFIX {{ name|lower }}   # [osx]\n    - pytest src/swig/test/python\n    - cd recon_test_pack && ./run_tests.sh --nointbp  # [not win]\n    - cd recon_test_pack  # [win]\n    - run_tests  # [win]\n\n\nabout:\n  home: http://stir.sourceforge.net/\n  license: GPL and LGPL\n  license_family: GPL\n  license_file: LICENSE.txt\n  summary: 'Software for Tomographic Image Reconstruction'\n  description: |\n    STIR is Open Source software for use in tomographic imaging.\n    Its aim is to provide a Multi-Platform Object-Oriented framework for all data manipulations in tomographic imaging.\n  doc_url: http://stir.sourceforge.net/documentation\n  dev_url: https://github.com/UCL/STIR\n\nextra:\n  recipe-maintainers:\n    - olivierverdier\n    - KrisThielemans\n    - paskino\n    - casperdcl\n",
+ "req":{
+  "__set__":true,
+  "elements":[
+   "boost-cpp",
+   "c_compiler_stub",
+   "cmake",
+   "compatible_pin_stub",
+   "cxx_compiler_stub",
+   "numpy",
+   "python",
+   "swig"
+  ]
+ },
+ "smithy_version":"3.3.4",
+ "time":1568050619.552427,
+ "url":"https://github.com/UCL/STIR/archive/course_MIC2018.zip",
+ "version":"3.0.1.dev2"
+}

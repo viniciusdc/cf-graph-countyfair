@@ -1,0 +1,100 @@
+{
+ "PRed":[
+  {
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"ArchRebuild",
+    "migrator_version":1,
+    "name":"aarch64 and ppc64le addition"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "name"
+   ]
+  }
+ ],
+ "bad":false,
+ "conda-forge.yml":{
+  "provider":{
+   "linux_aarch64":"default",
+   "linux_ppc64le":"default"
+  }
+ },
+ "feedstock_name":"unzip",
+ "hash_type":"sha256",
+ "meta_yaml":{
+  "about":{
+   "home":"http://www.info-zip.org/",
+   "license":"BSD-like",
+   "license_file":"LICENSE",
+   "summary":"simple program for unzipping files"
+  },
+  "build":{
+   "number":"0",
+   "script":[
+    "make CC=$CC -f unix/Makefile generic",
+    "mkdir $PREFIX/bin",
+    "mv unzip $PREFIX/bin",
+    "make CC=$CC -f unix/Makefile generic",
+    "mkdir $PREFIX/bin",
+    "mv unzip $PREFIX/bin",
+    "make CC=$CC -f unix/Makefile generic",
+    "mkdir $PREFIX/bin",
+    "mv unzip $PREFIX/bin"
+   ],
+   "skip":true
+  },
+  "extra":{
+   "recipe-maintainers":[
+    "msarahan",
+    "jerowe",
+    "msarahan",
+    "jerowe",
+    "msarahan",
+    "jerowe"
+   ]
+  },
+  "package":{
+   "name":"unzip",
+   "version":"6.0"
+  },
+  "requirements":{
+   "build":[
+    "c_compiler_stub",
+    "make",
+    "c_compiler_stub",
+    "make",
+    "c_compiler_stub",
+    "make"
+   ]
+  },
+  "source":{
+   "sha256":"036d96991646d0449ed0aa952e4fbe21b476ce994abc276e49d30e686708bd37",
+   "url":"ftp://ftp.info-zip.org/pub/infozip/src/unzip60.tgz"
+  },
+  "test":{
+   "commands":[
+    "unzip -h",
+    "unzip -h",
+    "unzip -h"
+   ]
+  }
+ },
+ "name":"unzip",
+ "new_version":false,
+ "pinning_version":"2019.06.09",
+ "raw_meta_yaml":"{% set version = \"6.0\" %}\n{% set sha256 = \"036d96991646d0449ed0aa952e4fbe21b476ce994abc276e49d30e686708bd37\" %}\n\npackage:\n  name: unzip\n  version: {{ version }}\n\nsource:\n  url: ftp://ftp.info-zip.org/pub/infozip/src/unzip{{ version.replace(\".\", \"\") }}.tgz\n  sha256: {{ sha256 }}\n\nbuild:\n  number: 0\n  skip: True  # [win]\n  script:\n   - make CC=$CC -f unix/Makefile generic\n   - mkdir $PREFIX/bin\n   - mv unzip $PREFIX/bin\n\nrequirements:\n  build:\n    - \"{{ compiler('c') }}\"\n    - make\n\ntest:\n  commands:\n    - unzip -h\n\nabout:\n  home: http://www.info-zip.org/\n  license: BSD-like\n  license_file: LICENSE\n  summary: simple program for unzipping files\n\nextra:\n  recipe-maintainers:\n    - msarahan\n    - jerowe\n",
+ "req":{
+  "__set__":true,
+  "elements":[
+   "c_compiler_stub",
+   "make"
+  ]
+ },
+ "smithy_version":"3.3.7",
+ "time":1568050645.3889408,
+ "url":"ftp://ftp.info-zip.org/pub/infozip/src/unzip60.tgz",
+ "version":"6.0"
+}

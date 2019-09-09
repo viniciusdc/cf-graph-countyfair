@@ -1,0 +1,98 @@
+{
+ "bad":{
+  "exception":"HTTP Error 404: Not Found",
+  "traceback":"Traceback (most recent call last):\n  File \"/root/repo/cf-scripts/conda_forge_tick/auto_tick.xsh\", line 571, in main\n    hash_type=attrs.get('hash_type', 'sha256'))\n  File \"/root/repo/cf-scripts/conda_forge_tick/auto_tick.xsh\", line 97, in run\n    migrate_return = migrator.migrate(recipe_dir, attrs, **kwargs)\n  File \"/root/repo/cf-scripts/conda_forge_tick/migrators.xsh\", line 333, in migrate\n    new_patterns = self.get_hash_patterns('meta.yaml', urls, hash_type)\n  File \"/root/repo/cf-scripts/conda_forge_tick/migrators.xsh\", line 263, in get_hash_patterns\n    hash = hash_url(url, hash_type)\n  File \"/opt/conda/envs/run_env/lib/python3.7/site-packages/rever/tools.xsh\", line 207, in hash_url\n    for b in stream_url_progress(url, verb='Hashing', quiet=quiet):\n  File \"/opt/conda/envs/run_env/lib/python3.7/site-packages/rever/tools.xsh\", line 179, in stream_url_progress\n    with urllib.request.urlopen(url) as f:\n  File \"/opt/conda/envs/run_env/lib/python3.7/urllib/request.py\", line 222, in urlopen\n    return opener.open(url, data, timeout)\n  File \"/opt/conda/envs/run_env/lib/python3.7/urllib/request.py\", line 531, in open\n    response = meth(req, response)\n  File \"/opt/conda/envs/run_env/lib/python3.7/urllib/request.py\", line 641, in http_response\n    'http', request, response, code, msg, hdrs)\n  File \"/opt/conda/envs/run_env/lib/python3.7/urllib/request.py\", line 563, in error\n    result = self._call_chain(*args)\n  File \"/opt/conda/envs/run_env/lib/python3.7/urllib/request.py\", line 503, in _call_chain\n    result = func(*args)\n  File \"/opt/conda/envs/run_env/lib/python3.7/urllib/request.py\", line 755, in http_error_302\n    return self.parent.open(new, timeout=req.timeout)\n  File \"/opt/conda/envs/run_env/lib/python3.7/urllib/request.py\", line 531, in open\n    response = meth(req, response)\n  File \"/opt/conda/envs/run_env/lib/python3.7/urllib/request.py\", line 641, in http_response\n    'http', request, response, code, msg, hdrs)\n  File \"/opt/conda/envs/run_env/lib/python3.7/urllib/request.py\", line 569, in error\n    return self._call_chain(*args)\n  File \"/opt/conda/envs/run_env/lib/python3.7/urllib/request.py\", line 503, in _call_chain\n    result = func(*args)\n  File \"/opt/conda/envs/run_env/lib/python3.7/urllib/request.py\", line 649, in http_error_default\n    raise HTTPError(req.full_url, code, msg, hdrs, fp)\nurllib.error.HTTPError: HTTP Error 404: Not Found\n"
+ },
+ "conda-forge.yml":{
+  "provider":{
+   "win":"azure"
+  }
+ },
+ "feedstock_name":"keycloak-gatekeeper",
+ "hash_type":"sha256",
+ "meta_yaml":{
+  "about":{
+   "description":"Keycloak is an open source Identity and Access Management solution aimed\nat modern applications and services. It makes it easy to secure applications\nand services with little to no code. Some of its features include Single-Sign On,\nIdentity Brokering and Social Login, User Federation and Client Adapters.\n",
+   "dev_url":"https://github.com/keycloak/keycloak-gatekeeper",
+   "doc_url":"https://www.keycloak.org/docs/latest/securing_apps/index.html#_keycloak_generic_adapter",
+   "home":"https://github.com/keycloak/keycloak-gatekeeper",
+   "license":"Apache 2.0",
+   "license_family":"Apache",
+   "license_file":"src/github.com/keycloak/keycloak-gatekeeper/LICENSE",
+   "summary":"An adapter for use with OpenID Connect that supports both access tokens in a browser cookie or bearer tokens"
+  },
+  "build":{
+   "number":"0",
+   "script":[
+    "pushd src/github.com/keycloak/keycloak-gatekeeper",
+    "dep ensure",
+    "go install -v .",
+    "pushd src/github.com/keycloak/keycloak-gatekeeper",
+    "dep ensure",
+    "go install -v .",
+    "pushd src/github.com/keycloak/keycloak-gatekeeper",
+    "dep ensure",
+    "go install -v ."
+   ]
+  },
+  "extra":{
+   "recipe-maintainers":[
+    "adbeda",
+    "adbeda",
+    "adbeda"
+   ]
+  },
+  "package":{
+   "name":"keycloak-gatekeeper",
+   "version":"2.3.0"
+  },
+  "requirements":{
+   "build":[
+    "go_compiler_stub >=1.11.3",
+    "go-dep",
+    "go_compiler_stub >=1.11.3",
+    "go-dep",
+    "go_compiler_stub >=1.11.3",
+    "go-dep"
+   ]
+  },
+  "source":[
+   {
+    "folder":"src/github.com/keycloak/keycloak-gatekeeper",
+    "sha256":"cb19406a35797165fb135a5152c8e6ace17315f892ad5a3d0e13b89ca9aae2cd",
+    "url":"https://github.com/keycloak/keycloak-gatekeeper/archive/v2.3.0.tar.gz"
+   },
+   {
+    "folder":"src/github.com/keycloak/keycloak-gatekeeper",
+    "sha256":"cb19406a35797165fb135a5152c8e6ace17315f892ad5a3d0e13b89ca9aae2cd",
+    "url":"https://github.com/keycloak/keycloak-gatekeeper/archive/v2.3.0.tar.gz"
+   },
+   {
+    "folder":"src/github.com/keycloak/keycloak-gatekeeper",
+    "sha256":"cb19406a35797165fb135a5152c8e6ace17315f892ad5a3d0e13b89ca9aae2cd",
+    "url":"https://github.com/keycloak/keycloak-gatekeeper/archive/v2.3.0.tar.gz"
+   }
+  ],
+  "test":{
+   "commands":[
+    "bash -c \"keycloak-gatekeeper -v\"",
+    "bash -c \"keycloak-gatekeeper -v\"",
+    "bash -c \"keycloak-gatekeeper -v\""
+   ],
+   "requires":null
+  }
+ },
+ "name":"keycloak-gatekeeper",
+ "new_version":"7.0.0",
+ "raw_meta_yaml":"{% set goname = \"github.com/keycloak/keycloak-gatekeeper\" %}\n{% set version = \"2.3.0\" %}\n\n{% set name = goname.split('/')[-1] %}\n{% set pkg_src = ('src/'+goname).replace(\"/\", \"\\\\\" if win else \"/\") %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  - folder: {{ pkg_src }}\n    url: https://{{ goname}}/archive/v{{ version }}.tar.gz\n    sha256: cb19406a35797165fb135a5152c8e6ace17315f892ad5a3d0e13b89ca9aae2cd\n\nbuild:\n  number: 0\n  script:\n    - pushd {{ pkg_src }}\n    - dep ensure\n    - go install -v .\n\nrequirements:\n  build:\n    - {{ compiler(\"go\") }} >=1.11.3\n    - go-dep\n\ntest:\n  requires:\n    - m2-bash  # [win]\n  commands:\n    - bash -c \"{{ name|lower }} -v\"\n\nabout:\n  home: https://github.com/keycloak/keycloak-gatekeeper\n\n  license: Apache 2.0\n  license_family: Apache\n  license_file: {{ pkg_src }}/LICENSE\n  summary: 'An adapter for use with OpenID Connect that supports both access tokens in a browser cookie or bearer tokens'\n\n  description: |\n    Keycloak is an open source Identity and Access Management solution aimed\n    at modern applications and services. It makes it easy to secure applications\n    and services with little to no code. Some of its features include Single-Sign On,\n    Identity Brokering and Social Login, User Federation and Client Adapters.\n  doc_url: https://www.keycloak.org/docs/latest/securing_apps/index.html#_keycloak_generic_adapter\n\n  dev_url: https://github.com/keycloak/keycloak-gatekeeper\n\nextra:\n  recipe-maintainers:\n    - adbeda\n",
+ "req":{
+  "__set__":true,
+  "elements":[
+   "go-dep",
+   "go_compiler_stub"
+  ]
+ },
+ "time":1568050620.8464398,
+ "url":"https://github.com/keycloak/keycloak-gatekeeper/archive/v2.3.0.tar.gz",
+ "version":"2.3.0"
+}

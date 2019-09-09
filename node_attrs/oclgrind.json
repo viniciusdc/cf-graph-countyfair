@@ -1,0 +1,137 @@
+{
+ "PRed":[
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/241886671.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"CompilerRebuild",
+    "migrator_version":1,
+    "name":"Python 3.7, GCC 7, R 3.5.1, openBLAS 0.3.2"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "name"
+   ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/293469058.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"Rebuild",
+    "migrator_version":0,
+    "name":"readline-8.0"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "name"
+   ]
+  }
+ ],
+ "bad":false,
+ "conda-forge.yml":{
+  "compiler_stack":"comp7",
+  "max_py_ver":"37",
+  "max_r_ver":"35",
+  "provider":{
+   "win":"azure"
+  }
+ },
+ "feedstock_name":"oclgrind",
+ "hash_type":"sha256",
+ "meta_yaml":{
+  "about":{
+   "dev_url":"https://github.com/jrprice/Oclgrind",
+   "home":"https://github.com/jrprice/Oclgrind",
+   "license":"BSD-3-Clause",
+   "license_family":"BSD",
+   "license_file":"LICENSE",
+   "summary":"An OpenCL device simulator and debugger"
+  },
+  "build":{
+   "number":"1003",
+   "skip":true
+  },
+  "extra":{
+   "recipe-maintainers":[
+    "isuruf",
+    "isuruf",
+    "isuruf"
+   ]
+  },
+  "package":{
+   "name":"oclgrind",
+   "version":"18.3"
+  },
+  "requirements":{
+   "build":[
+    "c_compiler_stub",
+    "cxx_compiler_stub",
+    "cmake",
+    "ninja",
+    "c_compiler_stub",
+    "cxx_compiler_stub",
+    "cmake",
+    "c_compiler_stub",
+    "cxx_compiler_stub",
+    "cmake"
+   ],
+   "host":[
+    "llvmdev   6.0.1",
+    "clangdev  6.0.1",
+    "llvmdev   6.0.1",
+    "clangdev  6.0.1",
+    "readline",
+    "llvmdev   6.0.1",
+    "clangdev  6.0.1",
+    "readline"
+   ]
+  },
+  "source":{
+   "patches":[
+    "gh_161.patch",
+    "gh_161.patch",
+    "gh_161.patch"
+   ],
+   "sha256":"90518d47573e64c6c28e173dc6f10c4e0ca53a99543ef2f1afaac1cbf725fe90",
+   "url":"https://github.com/jrprice/Oclgrind/archive/v18.3.tar.gz"
+  },
+  "test":{
+   "commands":[
+    "if not exist %LIBRARY_BIN%\\\\oclgrind-rt-icd.dll exit 1",
+    "oclgrind --help",
+    "test -f \"$PREFIX/lib/liboclgrind-rt-icd${SHLIB_EXT}\"",
+    "oclgrind --help",
+    "test -f \"$PREFIX/lib/liboclgrind-rt-icd${SHLIB_EXT}\"",
+    "oclgrind --help"
+   ]
+  }
+ },
+ "name":"oclgrind",
+ "new_version":"18.3",
+ "pinning_version":"2019.07.01",
+ "raw_meta_yaml":"{% set name = \"oclgrind\" %}\n{% set version = \"18.3\" %}\n{% set llvm_version = \"6.0.1\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  url: https://github.com/jrprice/Oclgrind/archive/v{{ version }}.tar.gz\n  sha256: 90518d47573e64c6c28e173dc6f10c4e0ca53a99543ef2f1afaac1cbf725fe90\n  patches:\n    # https://github.com/jrprice/Oclgrind/pull/161\n    - gh_161.patch\n\nbuild:\n  number: 1003\n  skip: True  # [win and vc<14]\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n    - cmake\n    - ninja   # [win]\n  host:\n    - llvmdev   {{ llvm_version }}\n    - clangdev  {{ llvm_version }}\n    - readline  # [unix]\n\ntest:\n  commands:\n    - test -f \"$PREFIX/lib/liboclgrind-rt-icd${SHLIB_EXT}\"         # [unix]\n    - if not exist %LIBRARY_BIN%\\\\oclgrind-rt-icd.dll exit 1       # [win]\n    - oclgrind --help\n\nabout:\n  home: https://github.com/jrprice/Oclgrind\n  license: BSD-3-Clause\n  license_family: BSD\n  license_file: LICENSE\n  summary: 'An OpenCL device simulator and debugger'\n  dev_url: https://github.com/jrprice/Oclgrind\n\nextra:\n  recipe-maintainers:\n    - isuruf\n",
+ "req":{
+  "__set__":true,
+  "elements":[
+   "c_compiler_stub",
+   "clangdev",
+   "cmake",
+   "cxx_compiler_stub",
+   "llvmdev",
+   "ninja",
+   "readline"
+  ]
+ },
+ "smithy_version":"3.4.0",
+ "time":1568050637.800283,
+ "url":"https://github.com/jrprice/Oclgrind/archive/v18.3.tar.gz",
+ "version":"18.3"
+}

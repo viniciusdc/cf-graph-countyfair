@@ -1,0 +1,136 @@
+{
+ "PRed":[
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/233615193.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"CompilerRebuild",
+    "migrator_version":1,
+    "name":"Python 3.7, GCC 7, R 3.5.1, openBLAS 0.3.2"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "name"
+   ]
+  }
+ ],
+ "bad":false,
+ "conda-forge.yml":{
+  "compiler_stack":"comp7",
+  "max_py_ver":"37",
+  "max_r_ver":"35"
+ },
+ "feedstock_name":"openexr",
+ "hash_type":"sha256",
+ "meta_yaml":{
+  "about":{
+   "description":"OpenEXR is a high dynamic-range (HDR) image file format developed by\nIndustrial Light & Magic (ILM) for use in computer imaging applications. It\nsupports stereoscopic and deep images. Weta Digital, Walt Disney Animation\nStudios, Sony Pictures Imageworks, Pixar Animation Studios, DreamWorks, and\nother studios, companies, and individuals have made contributions to the\ncode base. The file format has seen wide adoption in a number of industries.\n",
+   "dev_url":"https://github.com/openexr/openexr",
+   "doc_url":"http://www.openexr.com/documentation.html",
+   "home":"https://github.com/openexr/openexr",
+   "license":"BSD-3-Clause",
+   "license_family":"BSD",
+   "license_file":"LICENSE",
+   "summary":"OpenEXR is a high dynamic-range (HDR) image file format developed by\nIndustrial Light & Magic for use in computer imaging applications.\n"
+  },
+  "build":{
+   "number":"1000",
+   "run_exports":[
+    "subpackage_stub",
+    "subpackage_stub",
+    "subpackage_stub"
+   ],
+   "skip":true
+  },
+  "extra":{
+   "recipe-maintainers":[
+    "aaronang",
+    "SylvainCorlay",
+    "wolfv",
+    "npavlovikj",
+    "JohanMabille",
+    "aaronang",
+    "SylvainCorlay",
+    "wolfv",
+    "npavlovikj",
+    "JohanMabille",
+    "aaronang",
+    "SylvainCorlay",
+    "wolfv",
+    "npavlovikj",
+    "JohanMabille"
+   ]
+  },
+  "package":{
+   "name":"openexr",
+   "version":"2.3.0"
+  },
+  "requirements":{
+   "build":[
+    "cxx_compiler_stub",
+    "cmake",
+    "cxx_compiler_stub",
+    "cmake",
+    "cxx_compiler_stub",
+    "cmake"
+   ],
+   "host":[
+    "zlib",
+    "ilmbase",
+    "zlib",
+    "ilmbase",
+    "zlib",
+    "ilmbase"
+   ],
+   "run":[
+    "zlib",
+    "ilmbase",
+    "zlib",
+    "ilmbase",
+    "zlib",
+    "ilmbase"
+   ]
+  },
+  "source":{
+   "patches":[
+    "0001-Imported-libraries-visibility.patch"
+   ],
+   "sha256":"fd6cb3a87f8c1a233be17b94c74799e6241d50fc5efd4df75c7a4b9cf4e25ea6",
+   "url":"https://github.com/openexr/openexr/releases/download/v2.3.0/openexr-2.3.0.tar.gz"
+  },
+  "test":{
+   "commands":[
+    "test -e $PREFIX/include/OpenEXR/OpenEXRConfig.h",
+    "test -e $PREFIX/include/OpenEXR/IlmBaseConfig.h",
+    "test -e $PREFIX/lib/libHalf$SHLIB_EXT",
+    "test -e $PREFIX/lib/libIexMath$SHLIB_EXT",
+    "test -e $PREFIX/lib/libIex$SHLIB_EXT",
+    "test -e $PREFIX/lib/libIlmImf$SHLIB_EXT",
+    "test -e $PREFIX/lib/libIlmImfUtil$SHLIB_EXT",
+    "test -e $PREFIX/lib/libIlmThread$SHLIB_EXT",
+    "test -e $PREFIX/lib/libImath$SHLIB_EXT"
+   ]
+  }
+ },
+ "name":"openexr",
+ "new_version":"2.3.0",
+ "pinning_version":"2018.11.24",
+ "raw_meta_yaml":"{% set name = \"openexr\" %}\n{% set version = \"2.3.0\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  # The release tarball cannot be used from windows. Using the git repository\n  # for the windows build.\n\n  # Windows\n  url: https://github.com/openexr/{{ name }}/archive/v{{ version }}.tar.gz  # [win]\n  sha256: 8243b7de12b52239fe9235a6aeb4e35ead2247833e4fbc41541774b222717933  # [win]\n  patches:                                                                  # [win]\n    - 0001-Imported-libraries-visibility.patch                              # [win]\n\n  # Unix\n  url: https://github.com/openexr/openexr/releases/download/v{{ version }}/{{ name|lower }}-{{ version }}.tar.gz  # [not win]\n  sha256: fd6cb3a87f8c1a233be17b94c74799e6241d50fc5efd4df75c7a4b9cf4e25ea6  # [not win]\n\nbuild:\n  number: 1000\n  skip: True  # [win and vc<14]\n  run_exports:\n    # https://abi-laboratory.pro/?view=timeline&l=openexr\n    - {{ pin_subpackage(name, max_pin=\"x.x\") }}\n\nrequirements:\n  build:\n    - {{ compiler('cxx') }}\n    - cmake\n  host:\n    - zlib\n    - ilmbase\n  run:\n    - zlib\n    - ilmbase\n\ntest:\n  commands:\n    - test -e $PREFIX/include/OpenEXR/OpenEXRConfig.h  # [unix]\n    - test -e $PREFIX/include/OpenEXR/IlmBaseConfig.h  # [unix]\n    - test -e $PREFIX/lib/libHalf$SHLIB_EXT            # [unix]\n    - test -e $PREFIX/lib/libIexMath$SHLIB_EXT         # [unix]\n    - test -e $PREFIX/lib/libIex$SHLIB_EXT             # [unix]\n    - test -e $PREFIX/lib/libIlmImf$SHLIB_EXT          # [unix]\n    - test -e $PREFIX/lib/libIlmImfUtil$SHLIB_EXT      # [unix]\n    - test -e $PREFIX/lib/libIlmThread$SHLIB_EXT       # [unix]\n    - test -e $PREFIX/lib/libImath$SHLIB_EXT           # [unix]\n\nabout:\n  home: https://github.com/openexr/openexr\n  license: BSD-3-Clause\n  license_family: BSD\n  license_file: LICENSE\n  summary: |\n    OpenEXR is a high dynamic-range (HDR) image file format developed by\n    Industrial Light & Magic for use in computer imaging applications.\n  description: |\n    OpenEXR is a high dynamic-range (HDR) image file format developed by\n    Industrial Light & Magic (ILM) for use in computer imaging applications. It\n    supports stereoscopic and deep images. Weta Digital, Walt Disney Animation\n    Studios, Sony Pictures Imageworks, Pixar Animation Studios, DreamWorks, and\n    other studios, companies, and individuals have made contributions to the\n    code base. The file format has seen wide adoption in a number of industries.\n  doc_url: http://www.openexr.com/documentation.html\n  dev_url: https://github.com/openexr/openexr\n\nextra:\n  recipe-maintainers:\n    - aaronang\n    - SylvainCorlay\n    - wolfv\n    - npavlovikj\n    - JohanMabille\n",
+ "req":{
+  "__set__":true,
+  "elements":[
+   "cmake",
+   "cxx_compiler_stub",
+   "ilmbase",
+   "zlib"
+  ]
+ },
+ "smithy_version":"3.1.12",
+ "time":1568050645.2990334,
+ "url":"https://github.com/openexr/openexr/releases/download/v2.3.0/openexr-2.3.0.tar.gz",
+ "version":"2.3.0"
+}

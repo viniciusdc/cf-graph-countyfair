@@ -1,0 +1,202 @@
+{
+ "PRed":[
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/204226502.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"Compiler",
+    "migrator_version":0
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version"
+   ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/227654888.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"Version",
+    "migrator_version":0,
+    "version":"1.2.1"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "version"
+   ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/228072281.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"CompilerRebuild",
+    "migrator_version":1,
+    "name":"Python 3.7, GCC 7, R 3.5.1, openBLAS 0.3.2"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "name"
+   ]
+  }
+ ],
+ "bad":false,
+ "conda-forge.yml":{
+  "compiler_stack":"comp7",
+  "max_py_ver":"37",
+  "max_r_ver":"35"
+ },
+ "feedstock_name":"galario",
+ "hash_type":"sha256",
+ "meta_yaml":{
+  "about":{
+   "description":"galario is a library that exploits the computing power of modern graphic\ncards (GPUs) to accelerate the comparison of model predictions to radio\ninterferometer observations. Namely, it speeds up the computation of the\nsynthetic visibilities given a model image (or an axisymmetric brightness\nprofile) and their comparison to the observations.\n",
+   "dev_url":"https://github.com/mtazzari/galario",
+   "doc_url":"https://mtazzari.github.io/galario/",
+   "home":"https://github.com/mtazzari/galario",
+   "license":"LGPL-3.0",
+   "license_family":"GPL",
+   "license_file":"LICENSE",
+   "summary":"Gpu Accelerated Library for Analysing Radio Interferometer Observations"
+  },
+  "build":{
+   "number":"1001",
+   "skip":true
+  },
+  "extra":{
+   "recipe-maintainers":[
+    "fredRos",
+    "mtazzari",
+    "fredRos",
+    "mtazzari",
+    "fredRos",
+    "mtazzari"
+   ]
+  },
+  "package":{
+   "name":"galario",
+   "version":"1.2.1"
+  },
+  "requirements":{
+   "build":[
+    "cmake",
+    "c_compiler_stub",
+    "cxx_compiler_stub",
+    "fftw",
+    "cmake",
+    "c_compiler_stub",
+    "cxx_compiler_stub",
+    "fftw",
+    "cmake",
+    "c_compiler_stub",
+    "cxx_compiler_stub",
+    "fftw"
+   ],
+   "host":[
+    "fftw",
+    "python",
+    "cython",
+    "numpy 1.11.*",
+    "pytest",
+    "scipy",
+    "fftw",
+    "python",
+    "cython",
+    "numpy 1.11.*",
+    "pytest",
+    "scipy",
+    "fftw",
+    "python",
+    "cython",
+    "numpy 1.11.*",
+    "pytest",
+    "scipy"
+   ],
+   "run":[
+    "fftw",
+    "python",
+    "compatible_pin_stub",
+    "scipy",
+    "fftw",
+    "python",
+    "compatible_pin_stub",
+    "scipy",
+    "fftw",
+    "python",
+    "compatible_pin_stub",
+    "scipy"
+   ]
+  },
+  "source":{
+   "fn":"galario-1.2.1.tar.gz",
+   "sha256":"585fd37d5c06523cc1d6dfb516ae404a292520950081140e15d0ac56be6134d4",
+   "url":"https://github.com/mtazzari/galario/archive/v1.2.1.tar.gz"
+  },
+  "test":{
+   "commands":[
+    "test -d ${PREFIX}/",
+    "test ${PREFIX}/include/galario.h",
+    "cd python && py.test test_galario.py",
+    "test -d ${PREFIX}/",
+    "test ${PREFIX}/include/galario.h",
+    "test ${PREFIX}/lib/libgalario.dylib",
+    "cd python && py.test test_galario.py",
+    "test -d ${PREFIX}/",
+    "test ${PREFIX}/include/galario.h",
+    "test ${PREFIX}/lib/libgalario.so",
+    "cd python && py.test test_galario.py"
+   ],
+   "imports":[
+    "galario",
+    "galario",
+    "galario"
+   ],
+   "requires":[
+    "pytest",
+    "pytest",
+    "pytest"
+   ],
+   "source_files":[
+    "python/test_galario.py",
+    "python/utils.py",
+    "python/test_galario.py",
+    "python/utils.py",
+    "python/test_galario.py",
+    "python/utils.py"
+   ]
+  }
+ },
+ "name":"galario",
+ "new_version":"1.2.1",
+ "pinning_version":"2018.10.31",
+ "raw_meta_yaml":"{% set name = \"galario\" %}\n{% set version = \"1.2.1\" %}\n{% set github = \"https://github.com/mtazzari/galario\" %}\n{% set sha256 = \"585fd37d5c06523cc1d6dfb516ae404a292520950081140e15d0ac56be6134d4\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  fn: {{ name }}-{{ version }}.tar.gz\n  url: {{ github }}/archive/v{{ version }}.tar.gz\n  sha256: {{ sha256 }}\n\nbuild:\n  number: 1001\n  skip: true  # [win]\n\nrequirements:\n  build:\n    - cmake\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n    - fftw\n  host:\n    - fftw\n    - python\n    - cython\n    - numpy 1.11.*\n    - pytest\n    - scipy\n  run:\n    - fftw\n    - python\n    - {{ pin_compatible('numpy') }}\n    - scipy\n\ntest:\n  requires:\n    - pytest\n  imports:\n    - galario\n  source_files:\n    - python/test_galario.py\n    - python/utils.py\n  commands:\n    - test -d ${PREFIX}/\n    - test ${PREFIX}/include/galario.h\n    - test ${PREFIX}/lib/libgalario.so  # [linux]\n    - test ${PREFIX}/lib/libgalario.dylib  # [osx]\n    - cd python && py.test test_galario.py\n\nabout:\n  home: {{ github }}\n  license: LGPL-3.0\n  license_family: GPL\n  license_file: LICENSE\n  summary: 'Gpu Accelerated Library for Analysing Radio Interferometer Observations'\n  description: |\n    galario is a library that exploits the computing power of modern graphic\n    cards (GPUs) to accelerate the comparison of model predictions to radio\n    interferometer observations. Namely, it speeds up the computation of the\n    synthetic visibilities given a model image (or an axisymmetric brightness\n    profile) and their comparison to the observations.\n  doc_url: https://mtazzari.github.io/galario/\n  dev_url: {{ github }}\n\nextra:\n  recipe-maintainers:\n    - fredRos\n    - mtazzari\n",
+ "req":{
+  "__set__":true,
+  "elements":[
+   "c_compiler_stub",
+   "cmake",
+   "compatible_pin_stub",
+   "cxx_compiler_stub",
+   "cython",
+   "fftw",
+   "numpy",
+   "pytest",
+   "python",
+   "scipy"
+  ]
+ },
+ "smithy_version":"3.1.12",
+ "time":1568050648.5161848,
+ "url":"https://github.com/mtazzari/galario/archive/v1.2.1.tar.gz",
+ "version":"1.2.1"
+}

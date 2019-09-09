@@ -1,0 +1,160 @@
+{
+ "PRed":[
+  {
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"Version",
+    "migrator_version":0,
+    "version":"2.8"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "version"
+   ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/217536909.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"CompilerRebuild",
+    "migrator_version":1,
+    "name":"Python 3.7, GCC 7, R 3.5.1, openBLAS 0.3.2"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "name"
+   ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/259871789.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"ArchRebuild",
+    "migrator_version":1,
+    "name":"aarch64 and ppc64le addition"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "name"
+   ]
+  }
+ ],
+ "bad":false,
+ "conda-forge.yml":{
+  "compiler_stack":"comp7",
+  "max_py_ver":"37",
+  "max_r_ver":"35",
+  "provider":{
+   "linux_aarch64":"azure",
+   "linux_ppc64le":"azure",
+   "win":"azure"
+  }
+ },
+ "feedstock_name":"python-libarchive-c",
+ "hash_type":"sha256",
+ "meta_yaml":{
+  "about":{
+   "home":"https://github.com/Changaco/python-libarchive-c",
+   "license":"CC0-1.0",
+   "summary":"Python interface to libarchive"
+  },
+  "build":{
+   "number":"1004",
+   "script":[
+    "set PYTHONHASHSEED=0",
+    " setup.py install --single-version-externally-managed --record=record.txt",
+    "export PYTHONHASHSEED=0",
+    " setup.py install --single-version-externally-managed --record=record.txt",
+    "export PYTHONHASHSEED=0",
+    " setup.py install --single-version-externally-managed --record=record.txt"
+   ]
+  },
+  "extra":{
+   "recipe-maintainers":[
+    "bollwyvl",
+    "mingwandroid",
+    "ocefpaf",
+    "bollwyvl",
+    "mingwandroid",
+    "ocefpaf",
+    "bollwyvl",
+    "mingwandroid",
+    "ocefpaf"
+   ]
+  },
+  "package":{
+   "name":"python-libarchive-c",
+   "version":"2.8"
+  },
+  "requirements":{
+   "host":[
+    "python",
+    "setuptools",
+    "python",
+    "setuptools",
+    "python",
+    "setuptools"
+   ],
+   "run":[
+    "libarchive",
+    "python",
+    "libarchive",
+    "python",
+    "libarchive",
+    "python"
+   ]
+  },
+  "source":{
+   "patches":[
+    "0001-Add-zstd-support.patch",
+    "0001-Add-zstd-support.patch",
+    "0001-Add-zstd-support.patch"
+   ],
+   "sha256":"06d44d5b9520bdac93048c72b7ed66d11a6626da16d2086f9aad079674d8e061",
+   "url":"https://pypi.io/packages/source/l/libarchive-c/libarchive-c-2.8.tar.gz"
+  },
+  "test":{
+   "commands":[
+    "python -c \"import libarchive; libarchive.extract_file('test\\\\hello_world.xar')\"",
+    "python -c \"import libarchive; libarchive.extract_file('test/hello_world.xar')\"",
+    "python -c \"import libarchive; libarchive.extract_file('test/hello_world.xar')\""
+   ],
+   "files":[
+    "test/hello_world.xar",
+    "test/hello_world.xar",
+    "test/hello_world.xar"
+   ],
+   "imports":[
+    "libarchive",
+    "libarchive",
+    "libarchive"
+   ]
+  }
+ },
+ "name":"python-libarchive-c",
+ "new_version":"2.8",
+ "pinning_version":"2019.03.10",
+ "raw_meta_yaml":"{% set pypi = \"libarchive-c\" %}\n{% set name = \"python-libarchive-c\" %}\n{% set version = \"2.8\" %}\n{% set sha256 = \"06d44d5b9520bdac93048c72b7ed66d11a6626da16d2086f9aad079674d8e061\" %}\n\npackage:\n  name: {{ name }}\n  version: {{ version }}\n\nsource:\n  url: https://pypi.io/packages/source/{{ pypi[0] }}/{{ pypi }}/{{ pypi }}-{{ version }}.tar.gz\n  sha256: {{ sha256 }}\n  patches:\n    - 0001-Add-zstd-support.patch\n\nbuild:\n  number: 1004\n  script:\n  - set PYTHONHASHSEED=0  # [win]\n  - export PYTHONHASHSEED=0  # [not win]\n  - \"{{ PYTHON }} setup.py install --single-version-externally-managed --record=record.txt\"\n\nrequirements:\n  host:\n    - python\n    - setuptools\n  run:\n    - libarchive\n    - python\n\ntest:\n  files:\n    - test/hello_world.xar\n  imports:\n    - libarchive\n  commands:\n    - python -c \"import libarchive; libarchive.extract_file('test/hello_world.xar')\"  # [not win]\n    - python -c \"import libarchive; libarchive.extract_file('test\\\\hello_world.xar')\"  # [win]\n\nabout:\n  home: https://github.com/Changaco/python-libarchive-c\n  license: CC0-1.0\n  summary: Python interface to libarchive\n\nextra:\n  recipe-maintainers:\n    - bollwyvl\n    - mingwandroid\n    - ocefpaf\n",
+ "req":{
+  "__set__":true,
+  "elements":[
+   "libarchive",
+   "python",
+   "setuptools"
+  ]
+ },
+ "smithy_version":"3.2.14",
+ "time":1568050640.2651877,
+ "url":"https://pypi.io/packages/source/l/libarchive-c/libarchive-c-2.8.tar.gz",
+ "version":"2.8"
+}

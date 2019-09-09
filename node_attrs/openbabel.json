@@ -1,0 +1,161 @@
+{
+ "bad":false,
+ "conda-forge.yml":{},
+ "feedstock_name":"openbabel",
+ "hash_type":"sha256",
+ "meta_yaml":{
+  "about":{
+   "description":"Open Babel is a chemical toolbox designed to speak the many languages of chemical\ndata. It's an open, collaborative project allowing anyone to search, convert,\nanalyze, or store data from molecular modeling, chemistry, solid-state materials,\nbiochemistry, or related areas.\n",
+   "dev_url":"https://github.com/openbabel/openbabel",
+   "doc_url":"http://openbabel.org/",
+   "home":"http://openbabel.org/",
+   "license":"GPLv2",
+   "license_family":"GPL",
+   "license_file":"COPYING",
+   "summary":"A chemical toolbox designed to speak the many languages of chemical data"
+  },
+  "build":{
+   "number":"1"
+  },
+  "extra":{
+   "recipe-maintainers":[
+    "njzjz",
+    "mcs07",
+    "mwojcikowski",
+    "njzjz",
+    "mcs07",
+    "mwojcikowski",
+    "njzjz",
+    "mcs07",
+    "mwojcikowski"
+   ]
+  },
+  "package":{
+   "name":"openbabel",
+   "version":"2.4.1"
+  },
+  "requirements":{
+   "build":[
+    "c_compiler_stub",
+    "cxx_compiler_stub",
+    "cmake",
+    "swig",
+    "clangdev",
+    "cmake",
+    "make",
+    "swig",
+    "c_compiler_stub",
+    "cxx_compiler_stub",
+    "cmake",
+    "make",
+    "swig"
+   ],
+   "host":[
+    "python",
+    "zlib",
+    "eigen",
+    "bzip2",
+    "libxml2",
+    "cairo",
+    "python",
+    "zlib",
+    "eigen",
+    "bzip2",
+    "libxml2",
+    "cairo",
+    "python",
+    "zlib",
+    "eigen",
+    "bzip2",
+    "libxml2",
+    "cairo"
+   ],
+   "run":[
+    "python",
+    "zlib",
+    "libxml2",
+    "cairo",
+    "python",
+    "zlib",
+    "libxml2",
+    "cairo",
+    "python",
+    "zlib",
+    "libxml2",
+    "cairo"
+   ]
+  },
+  "source":{
+   "fn":"openbabel-2.4.1.tar.gz",
+   "patches":[
+    "fix_library_path_search.diff",
+    "fix_data_path.diff",
+    "fix_babel_test_paths.diff",
+    "fix_python_3.6.diff",
+    "python_link.diff",
+    "fix_math_library.diff",
+    "fix_library_path_search.diff",
+    "fix_data_path.diff",
+    "fix_babel_test_paths.diff",
+    "fix_python_3.6.diff",
+    "python_link.diff",
+    "fix_math_library.diff",
+    "fix_library_path_search.diff",
+    "fix_data_path.diff",
+    "fix_babel_test_paths.diff",
+    "fix_python_3.6.diff",
+    "python_link.diff",
+    "fix_math_library.diff"
+   ],
+   "sha256":"594c7f8a83f3502381469d643f7b185882da1dd4bc2280c16502ef980af2a776",
+   "url":"https://github.com/openbabel/openbabel/archive/openbabel-2-4-1.tar.gz"
+  },
+  "test":{
+   "commands":[
+    "obabel --help",
+    "obabel -:c1ccccc1 --gen3d -omol2",
+    "obabel -:c1ccccc1 --gen3d -oinchi",
+    "obabel -:c1ccccc1 -opng -O img.png",
+    "obabel --help",
+    "obabel -:c1ccccc1 --gen3d -omol2",
+    "obabel -:c1ccccc1 --gen3d -oinchi",
+    "obabel -:c1ccccc1 -opng -O img.png",
+    "obabel --help",
+    "obabel -:c1ccccc1 --gen3d -omol2",
+    "obabel -:c1ccccc1 --gen3d -oinchi",
+    "obabel -:c1ccccc1 -opng -O img.png"
+   ],
+   "imports":[
+    "openbabel",
+    "pybel",
+    "openbabel",
+    "pybel",
+    "openbabel",
+    "pybel"
+   ]
+  }
+ },
+ "name":"openbabel",
+ "new_version":false,
+ "raw_meta_yaml":"{% set name = \"openbabel\" %}\n{% set version = \"2.4.1\" %}\n{% set sha256 = \"594c7f8a83f3502381469d643f7b185882da1dd4bc2280c16502ef980af2a776\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  fn: {{ name }}-{{ version }}.tar.gz\n  url: https://github.com/openbabel/openbabel/archive/openbabel-{{ version|replace('.','-') }}.tar.gz\n  sha256: {{ sha256 }}\n\n  patches:\n    - fix_library_path_search.diff\n    - fix_data_path.diff\n    - fix_babel_test_paths.diff\n    - fix_python_3.6.diff  # [py3k]\n    - python_link.diff\n    - fix_math_library.diff\n\nbuild:\n  number: 1\n  skip: true  # [win and py27]\n\nrequirements:\n  build:\n    - {{ compiler('c') }}  # [not osx]\n    - {{ compiler('cxx') }}   # [not osx]\n    - clangdev  # [osx]\n    - cmake\n    - make  # [unix]\n    - swig\n  host:\n    - python\n    - zlib\n    - eigen\n    - bzip2\n    - libxml2\n    - cairo\n  run:\n    - python\n    - zlib\n    - libxml2\n    - cairo\n\ntest:\n  imports:\n    - openbabel\n    - pybel\n  commands:\n    - obabel --help\n    - obabel -:c1ccccc1 --gen3d -omol2\n    - obabel -:c1ccccc1 --gen3d -oinchi\n    - obabel -:c1ccccc1 -opng -O img.png\n\nabout:\n    home: http://openbabel.org/\n    license: GPLv2\n    license_family: GPL\n    license_file: COPYING\n    summary: \"A chemical toolbox designed to speak the many languages of chemical data\"\n    description: |\n      Open Babel is a chemical toolbox designed to speak the many languages of chemical\n      data. It's an open, collaborative project allowing anyone to search, convert,\n      analyze, or store data from molecular modeling, chemistry, solid-state materials,\n      biochemistry, or related areas.\n    doc_url: http://openbabel.org/\n    dev_url: https://github.com/openbabel/openbabel\n\nextra:\n  recipe-maintainers:\n    - njzjz\n    - mcs07\n    - mwojcikowski\n",
+ "req":{
+  "__set__":true,
+  "elements":[
+   "bzip2",
+   "c_compiler_stub",
+   "cairo",
+   "clangdev",
+   "cmake",
+   "cxx_compiler_stub",
+   "eigen",
+   "libxml2",
+   "make",
+   "python",
+   "swig",
+   "zlib"
+  ]
+ },
+ "time":1568050651.8753357,
+ "url":"https://github.com/openbabel/openbabel/archive/openbabel-2-4-1.tar.gz",
+ "version":"2.4.1"
+}
