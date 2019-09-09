@@ -1,0 +1,172 @@
+{
+ "PRed":[
+  {
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"Version",
+    "migrator_version":0,
+    "version":"1.3.2"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "version"
+   ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/198459425.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"Compiler",
+    "migrator_version":0
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version"
+   ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/220238395.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"CompilerRebuild",
+    "migrator_version":1,
+    "name":"Python 3.7, GCC 7, R 3.5.1, openBLAS 0.3.2"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "name"
+   ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/313085413.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"Version",
+    "migrator_version":0,
+    "version":"1.3.3"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "version"
+   ]
+  }
+ ],
+ "bad":false,
+ "conda-forge.yml":{
+  "compiler_stack":"comp7",
+  "max_py_ver":"37",
+  "max_r_ver":"35"
+ },
+ "feedstock_name":"libflac",
+ "hash_type":"sha256",
+ "meta_yaml":{
+  "about":{
+   "description":"Free Lossless Audio Codec.",
+   "doc_url":"https://wiki.xiph.org/",
+   "home":"https://www.xiph.org/",
+   "license":"BSD-3-Clause",
+   "license_family":"BSD",
+   "license_file":"COPYING.Xiph",
+   "summary":"Flac audio format"
+  },
+  "build":{
+   "number":"1002"
+  },
+  "extra":{
+   "recipe-maintainers":[
+    "dschreij",
+    "dschreij",
+    "dschreij"
+   ]
+  },
+  "package":{
+   "name":"libflac",
+   "version":"1.3.1"
+  },
+  "requirements":{
+   "build":[
+    "cmake",
+    "c_compiler_stub",
+    "cxx_compiler_stub",
+    "autoconf",
+    "automake",
+    "libtool",
+    "pkg-config",
+    "c_compiler_stub",
+    "cxx_compiler_stub",
+    "autoconf",
+    "automake",
+    "libtool",
+    "pkg-config",
+    "c_compiler_stub",
+    "cxx_compiler_stub"
+   ],
+   "host":[
+    "libogg 1.3.*",
+    "gettext",
+    "libogg 1.3.*",
+    "gettext",
+    "libogg 1.3.*"
+   ],
+   "run":[
+    "libogg 1.3.*",
+    "libogg 1.3.*",
+    "libogg 1.3.*"
+   ]
+  },
+  "source":{
+   "fn":"flac-1.3.1.tar.gz",
+   "sha256":"e0c23c92af0aac830683a6ab6784dd0c11aaf04249709b9d600675b3b2441c3e",
+   "url":"https://github.com/xiph/flac/archive/1.3.1.tar.gz"
+  },
+  "test":{
+   "commands":[
+    "if not exist %LIBRARY_LIB%\\\\libflac.lib exit 1",
+    "if not exist %LIBRARY_BIN%\\\\libflac.dll exit 1",
+    "test -f $PREFIX/bin/flac",
+    "test -f $PREFIX/bin/metaflac",
+    "test -f $PREFIX/lib/libFLAC.dylib",
+    "test -f $PREFIX/lib/libFLAC++.dylib",
+    "test -f $PREFIX/bin/flac",
+    "test -f $PREFIX/bin/metaflac",
+    "test -f $PREFIX/lib/libFLAC.so",
+    "test -f $PREFIX/lib/libFLAC++.so"
+   ]
+  }
+ },
+ "name":"libflac",
+ "new_version":"1.3.3",
+ "pinning_version":"2019.08.27",
+ "raw_meta_yaml":"{% set name = \"flac\" %}\n{% set version = \"1.3.1\" %}\n{% set sha256 = \"e0c23c92af0aac830683a6ab6784dd0c11aaf04249709b9d600675b3b2441c3e\" %}\n\npackage:\n  name: lib{{ name|lower }}\n  version: {{ version }}\n\nsource:\n  fn: {{ name }}-{{ version }}.tar.gz\n  url: https://github.com/xiph/{{ name }}/archive/{{ version }}.tar.gz\n  sha256: {{ sha256 }}\n\nbuild:\n  number: 1002\n\nrequirements:\n  build:\n    - cmake  # [win]\n    - autoconf  # [unix]\n    - automake  # [unix]\n    - libtool  # [unix]\n    - pkg-config  # [unix]\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n  host:\n    - gettext  # [unix]\n    - libogg 1.3.*\n  run:\n    - libogg 1.3.*\n\ntest:\n  commands:\n    - test -f $PREFIX/bin/flac  # [unix]\n    - test -f $PREFIX/bin/metaflac  # [unix]\n    - test -f $PREFIX/lib/libFLAC.dylib  # [osx]\n    - test -f $PREFIX/lib/libFLAC++.dylib  # [osx]\n    - test -f $PREFIX/lib/libFLAC.so  # [linux]\n    - test -f $PREFIX/lib/libFLAC++.so  # [linux]\n    - if not exist %LIBRARY_LIB%\\\\libflac.lib exit 1  # [win]\n    - if not exist %LIBRARY_BIN%\\\\libflac.dll exit 1  # [win]\n\nabout:\n  home: https://www.xiph.org/\n  license: BSD-3-Clause\n  license_family: BSD\n  license_file: COPYING.Xiph\n  summary: \"Flac audio format\"\n  description: Free Lossless Audio Codec.\n  doc_url: https://wiki.xiph.org/\n\nextra:\n  recipe-maintainers:\n    - dschreij\n",
+ "req":{
+  "__set__":true,
+  "elements":[
+   "autoconf",
+   "automake",
+   "c_compiler_stub",
+   "cmake",
+   "cxx_compiler_stub",
+   "gettext",
+   "libogg",
+   "libtool",
+   "pkg-config"
+  ]
+ },
+ "smithy_version":"3.4.1",
+ "time":1568050642.7930098,
+ "url":"https://github.com/xiph/flac/archive/1.3.1.tar.gz",
+ "version":"1.3.1"
+}

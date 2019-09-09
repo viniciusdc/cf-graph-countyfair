@@ -1,0 +1,145 @@
+{
+ "PRed":[
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/303986194.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"RBaseRebuild",
+    "migrator_version":0,
+    "name":"r-base-3.6.1"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "name"
+   ]
+  }
+ ],
+ "bad":false,
+ "conda-forge.yml":{
+  "provider":{
+   "win":"azure"
+  }
+ },
+ "feedstock_name":"r-transport",
+ "hash_type":"sha256",
+ "meta_yaml":{
+  "about":{
+   "home":"http://www.dominic.schuhmacher.name",
+   "license":"GPL (>= 2)",
+   "license_family":"GPL3",
+   "license_file":"/lib/R/share/licenses/GPL-2",
+   "summary":"Solve optimal transport problems. Compute Wasserstein distances (a.k.a. Kantorovitch, Fortet--Mourier, Mallows, Earth Mover's, or minimal L_p distances), return the corresponding transference plans, and display them graphically. Objects that can be compared include grey-scale images, (weighted) point patterns, and mass vectors."
+  },
+  "build":{
+   "merge_build_host":true,
+   "number":"1",
+   "rpaths":[
+    "lib/R/lib/",
+    "lib/",
+    "lib/R/lib/",
+    "lib/",
+    "lib/R/lib/",
+    "lib/"
+   ]
+  },
+  "extra":{
+   "recipe-maintainers":[
+    "conda-forge/r",
+    "conda-forge/r",
+    "conda-forge/r"
+   ]
+  },
+  "package":{
+   "name":"r-transport",
+   "version":"0.11_2"
+  },
+  "requirements":{
+   "build":[
+    "m2w64_c_compiler_stub",
+    "m2w64_cxx_compiler_stub",
+    "filesystem",
+    "make",
+    "sed",
+    "coreutils",
+    "zip",
+    "c_compiler_stub",
+    "cxx_compiler_stub",
+    "make",
+    "c_compiler_stub",
+    "cxx_compiler_stub",
+    "make"
+   ],
+   "host":[
+    "r-base",
+    "r-rcpp >=0.12.10",
+    "r-base",
+    "r-rcpp >=0.12.10",
+    "r-base",
+    "r-rcpp >=0.12.10"
+   ],
+   "run":[
+    "r-base",
+    "gcc-libs",
+    "r-rcpp >=0.12.10",
+    "r-base",
+    "r-rcpp >=0.12.10",
+    "r-base",
+    "r-rcpp >=0.12.10"
+   ]
+  },
+  "source":{
+   "sha256":"0f078db11c04ba31eac05f7caaa9435645283e312066e88d566c39b0e18effd2",
+   "url":[
+    "https://cran.r-project.org/src/contrib/transport_0.11-2.tar.gz",
+    "https://cran.r-project.org/src/contrib/Archive/transport/transport_0.11-2.tar.gz",
+    "https://cran.r-project.org/src/contrib/transport_0.11-2.tar.gz",
+    "https://cran.r-project.org/src/contrib/Archive/transport/transport_0.11-2.tar.gz",
+    "https://cran.r-project.org/src/contrib/transport_0.11-2.tar.gz",
+    "https://cran.r-project.org/src/contrib/Archive/transport/transport_0.11-2.tar.gz"
+   ]
+  },
+  "test":{
+   "commands":[
+    "\"%R%\" -e \"library('transport')\"",
+    "$R -e \"library('transport')\"",
+    "$R -e \"library('transport')\""
+   ]
+  }
+ },
+ "name":"r-transport",
+ "new_version":"0.12_0",
+ "pinning_version":"2019.07.26",
+ "raw_meta_yaml":"{% set version = '0.11-2' %}\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-transport\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  url:\n    - {{ cran_mirror }}/src/contrib/transport_{{ version }}.tar.gz\n    - {{ cran_mirror }}/src/contrib/Archive/transport/transport_{{ version }}.tar.gz\n  sha256: 0f078db11c04ba31eac05f7caaa9435645283e312066e88d566c39b0e18effd2\n\nbuild:\n  merge_build_host: True  # [win]\n  number: 1\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - {{ compiler('c') }}              # [not win]\n    - {{ compiler('m2w64_c') }}        # [win]\n    - {{ compiler('cxx') }}            # [not win]\n    - {{ compiler('m2w64_cxx') }}      # [win]\n    - {{posix}}filesystem        # [win]\n    - {{posix}}make\n    - {{posix}}sed               # [win]\n    - {{posix}}coreutils         # [win]\n    - {{posix}}zip               # [win]\n  host:\n    - r-base\n    - r-rcpp >=0.12.10\n  run:\n    - r-base\n    - {{native}}gcc-libs         # [win]\n    - r-rcpp >=0.12.10\n\ntest:\n  commands:\n    - $R -e \"library('transport')\"           # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('transport')\\\"\"  # [win]\n\nabout:\n  home: http://www.dominic.schuhmacher.name\n  license: GPL (>= 2)\n  summary: Solve optimal transport problems. Compute Wasserstein distances (a.k.a. Kantorovitch,\n    Fortet--Mourier, Mallows, Earth Mover's, or minimal L_p distances), return the corresponding\n    transference plans, and display them graphically. Objects that can be compared include\n    grey-scale images, (weighted) point patterns, and mass vectors.\n  license_family: GPL3\n  license_file: '{{ environ[\"PREFIX\"] }}/lib/R/share/licenses/GPL-2'\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n\n# Package: transport\n# Version: 0.11-2\n# Date: 2019-06-12\n# Title: Computation of Optimal Transport Plans and Wasserstein Distances\n# Authors@R: c(person(\"Dominic\", \"Schuhmacher\", email = \"dominic.schuhmacher@mathematik.uni-goettingen.de\", role = c(\"aut\",\"cre\")), person(\"Bjorn\", \"Bahre\", role = \"aut\", comment = \"aha and power diagrams\"), person(\"Carsten\", \"Gottschlich\", role = \"aut\", comment = \"simplex and shortlist\"), person(\"Valentin\", \"Hartmann\", role = \"aut\", comment = \"semidiscrete1\"), person(\"Florian\", \"Heinemann\", role = \"aut\", comment = \"transport_track\"), person(\"Bernhard\", \"Schmitzer\", role = \"aut\", comment = \"shielding\"), person(\"Jorn\", \"Schrieber\", role = \"aut\", comment = \"subsampling\"), person(\"Timo\", \"Wilm\", role = \"ctb\", comment = \"wpp\"))\n# Maintainer: Dominic Schuhmacher <dominic.schuhmacher@mathematik.uni-goettingen.de>\n# Depends: R (>= 3.0.0)\n# Imports: grDevices, graphics, methods, stats, Rcpp (>= 0.12.10)\n# Suggests: animation, ks\n# LinkingTo: Rcpp\n# Description: Solve optimal transport problems. Compute Wasserstein distances (a.k.a. Kantorovitch, Fortet--Mourier, Mallows, Earth Mover's, or minimal L_p distances), return the corresponding transference plans, and display them graphically. Objects that can be compared include grey-scale images, (weighted) point patterns, and mass vectors.\n# LazyData: yes\n# Encoding: UTF-8\n# License: GPL (>= 2)\n# URL: http://www.dominic.schuhmacher.name\n# RoxygenNote: 6.1.1\n# NeedsCompilation: yes\n# Packaged: 2019-07-06 13:03:51 UTC; schumi\n# Author: Dominic Schuhmacher [aut, cre], Bjorn Bahre [aut] (aha and power diagrams), Carsten Gottschlich [aut] (simplex and shortlist), Valentin Hartmann [aut] (semidiscrete1), Florian Heinemann [aut] (transport_track), Bernhard Schmitzer [aut] (shielding), Jorn Schrieber [aut] (subsampling), Timo Wilm [ctb] (wpp)\n# Repository: CRAN\n# Date/Publication: 2019-07-06 17:50:15 UTC\n",
+ "req":{
+  "__set__":true,
+  "elements":[
+   "c_compiler_stub",
+   "coreutils",
+   "cxx_compiler_stub",
+   "filesystem",
+   "gcc-libs",
+   "m2w64_c_compiler_stub",
+   "m2w64_cxx_compiler_stub",
+   "make",
+   "r-base",
+   "r-rcpp",
+   "sed",
+   "zip"
+  ]
+ },
+ "smithy_version":"3.4.1",
+ "time":1568050637.8411515,
+ "url":[
+  "https://cran.r-project.org/src/contrib/transport_0.11-2.tar.gz",
+  "https://cran.r-project.org/src/contrib/Archive/transport/transport_0.11-2.tar.gz",
+  "https://cran.r-project.org/src/contrib/transport_0.11-2.tar.gz",
+  "https://cran.r-project.org/src/contrib/Archive/transport/transport_0.11-2.tar.gz",
+  "https://cran.r-project.org/src/contrib/transport_0.11-2.tar.gz",
+  "https://cran.r-project.org/src/contrib/Archive/transport/transport_0.11-2.tar.gz"
+ ],
+ "version":"0.11_2"
+}

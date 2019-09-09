@@ -1,0 +1,151 @@
+{
+ "PRed":[
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/246018377.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"CompilerRebuild",
+    "migrator_version":1,
+    "name":"Python 3.7, GCC 7, R 3.5.1, openBLAS 0.3.2"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "name"
+   ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/274989686.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"Version",
+    "migrator_version":0,
+    "version":"0.8.0"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "version"
+   ]
+  }
+ ],
+ "bad":false,
+ "conda-forge.yml":{
+  "provider":{
+   "win":"azure"
+  }
+ },
+ "feedstock_name":"xtensor-io",
+ "hash_type":"sha256",
+ "meta_yaml":{
+  "about":{
+   "description":"This library enables loading of many image formats into xtensor/xarrays and NPZ.",
+   "dev_url":"https://github.com/QuantStack/xtensor-io",
+   "doc_url":"http://xtensor-io.readthedocs.io",
+   "home":"http://quantstack.net/xtensor",
+   "license":"BSD-3-Clause",
+   "license_family":"BSD",
+   "license_file":"LICENSE",
+   "summary":"Image/NPZ input/output for xtensor, the C++ tensor algebra library"
+  },
+  "build":{
+   "number":"0",
+   "skip":true
+  },
+  "extra":{
+   "recipe-maintainers":[
+    "wolfv",
+    "SylvainCorlay",
+    "JohanMabille",
+    "wolfv",
+    "SylvainCorlay",
+    "JohanMabille",
+    "wolfv",
+    "SylvainCorlay",
+    "JohanMabille"
+   ]
+  },
+  "package":{
+   "name":"xtensor-io",
+   "version":"0.8.0"
+  },
+  "requirements":{
+   "build":[
+    "cmake",
+    "cxx_compiler_stub",
+    "cmake",
+    "cxx_compiler_stub",
+    "cmake",
+    "cxx_compiler_stub"
+   ],
+   "host":[
+    "zlib",
+    "xtensor >=0.20.5,<0.21",
+    "zlib",
+    "xtensor >=0.20.5,<0.21",
+    "openimageio >=1.8.9,<1.9",
+    "highfive >=2.0,<2.1",
+    "libsndfile >=1.0.28,<1.1",
+    "zlib",
+    "xtensor >=0.20.5,<0.21",
+    "openimageio >=1.8.9,<1.9",
+    "highfive >=2.0,<2.1",
+    "libsndfile >=1.0.28,<1.1"
+   ],
+   "run":[
+    "compatible_pin_stub",
+    "compatible_pin_stub",
+    "compatible_pin_stub",
+    "compatible_pin_stub",
+    "compatible_pin_stub"
+   ]
+  },
+  "source":{
+   "fn":"xtensor-io-0.8.0.tar.gz",
+   "sha256":"b8c3a8b37e43935f1cc9ba1930dbf5c364fe3ce999b14441beeedd7927169763",
+   "url":"https://github.com/QuantStack/xtensor-io/archive/0.8.0.tar.gz"
+  },
+  "test":{
+   "commands":[
+    "if exist %LIBRARY_PREFIX%\\include\\xtensor-io\\xtensor-io.hpp (exit 0) else (exit 1)",
+    "if exist %LIBRARY_PREFIX%\\lib\\cmake\\xtensor-ioConfig.cmake (exit 0) else (exit 1)",
+    "if exist %LIBRARY_PREFIX%\\lib\\cmake\\xtensor-ioConfigVersion.cmake (exit 0) else (exit 1)",
+    "test -d ${PREFIX}/include/xtensor-io",
+    "test -f ${PREFIX}/include/xtensor-io/xtensor-io.hpp",
+    "test -f ${PREFIX}/lib/cmake/xtensor-io/xtensor-ioConfig.cmake",
+    "test -f ${PREFIX}/lib/cmake/xtensor-io/xtensor-ioConfigVersion.cmake",
+    "test -d ${PREFIX}/include/xtensor-io",
+    "test -f ${PREFIX}/include/xtensor-io/xtensor-io.hpp",
+    "test -f ${PREFIX}/lib/cmake/xtensor-io/xtensor-ioConfig.cmake",
+    "test -f ${PREFIX}/lib/cmake/xtensor-io/xtensor-ioConfigVersion.cmake"
+   ]
+  }
+ },
+ "name":"xtensor-io",
+ "new_version":"0.8.0",
+ "pinning_version":"2019.04.25",
+ "raw_meta_yaml":"{% set name = \"xtensor-io\" %}\n{% set version = \"0.8.0\" %}\n{% set sha256 = \" b8c3a8b37e43935f1cc9ba1930dbf5c364fe3ce999b14441beeedd7927169763\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  fn: {{ name }}-{{ version }}.tar.gz\n  url: https://github.com/QuantStack/xtensor-io/archive/{{ version }}.tar.gz\n  sha256: {{ sha256 }}\n\nbuild:\n  number: 0\n  skip: True  # [win and vc<14]\n\nrequirements:\n  build:\n    - cmake\n    - {{ compiler('cxx') }}\n  host:\n    - zlib\n    - xtensor >=0.20.5,<0.21\n    - openimageio >=1.8.9,<1.9  # [not win]\n    - highfive >=2.0,<2.1  # [not win]\n    - libsndfile >=1.0.28,<1.1  # [not win]\n  run:\n    # Xtensor and highfive are header-only\n    # They don't have a run_exports section\n    - {{ pin_compatible('xtensor', max_pin='x.x') }}\n    - {{ pin_compatible('highfive', max_pin='x.x') }}  # [not win]\n\ntest:\n  commands:\n    - test -d ${PREFIX}/include/xtensor-io  # [unix]\n    - test -f ${PREFIX}/include/xtensor-io/xtensor-io.hpp  # [unix]\n    - test -f ${PREFIX}/lib/cmake/xtensor-io/xtensor-ioConfig.cmake  # [unix]\n    - test -f ${PREFIX}/lib/cmake/xtensor-io/xtensor-ioConfigVersion.cmake  # [unix]\n    - if exist %LIBRARY_PREFIX%\\include\\xtensor-io\\xtensor-io.hpp (exit 0) else (exit 1)  # [win]\n    - if exist %LIBRARY_PREFIX%\\lib\\cmake\\xtensor-ioConfig.cmake (exit 0) else (exit 1)  # [win]\n    - if exist %LIBRARY_PREFIX%\\lib\\cmake\\xtensor-ioConfigVersion.cmake (exit 0) else (exit 1)  # [win]\n\nabout:\n  home: http://quantstack.net/xtensor\n  license: BSD-3-Clause\n  license_family: BSD\n  license_file: LICENSE\n  summary: Image/NPZ input/output for xtensor, the C++ tensor algebra library\n  description: This library enables loading of many image formats into xtensor/xarrays and NPZ.\n  doc_url: http://xtensor-io.readthedocs.io\n  dev_url: https://github.com/QuantStack/xtensor-io\n\nextra:\n  recipe-maintainers:\n    - wolfv\n    - SylvainCorlay\n    - JohanMabille\n",
+ "req":{
+  "__set__":true,
+  "elements":[
+   "cmake",
+   "compatible_pin_stub",
+   "cxx_compiler_stub",
+   "highfive",
+   "libsndfile",
+   "openimageio",
+   "xtensor",
+   "zlib"
+  ]
+ },
+ "smithy_version":"3.3.4",
+ "time":1568050642.6586003,
+ "url":"https://github.com/QuantStack/xtensor-io/archive/0.8.0.tar.gz",
+ "version":"0.8.0"
+}

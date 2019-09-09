@@ -1,0 +1,226 @@
+{
+ "PRed":[
+  {
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"Version",
+    "migrator_version":0,
+    "version":"1.84"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "version"
+   ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/215159455.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"CompilerRebuild",
+    "migrator_version":1,
+    "name":"Python 3.7, GCC 7, R 3.5.1, openBLAS 0.3.2"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "name"
+   ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/222715725.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"Version",
+    "migrator_version":0,
+    "version":"1.85"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "version"
+   ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/237054388.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"Version",
+    "migrator_version":0,
+    "version":"1.86"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "version"
+   ]
+  },
+  {
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"Version",
+    "migrator_version":0,
+    "version":"1.87"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "version"
+   ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/293023665.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"Version",
+    "migrator_version":0,
+    "version":"1.88"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "version"
+   ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/313034819.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"Version",
+    "migrator_version":0,
+    "version":"1.89"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "version"
+   ]
+  }
+ ],
+ "bad":false,
+ "conda-forge.yml":{
+  "compiler_stack":"comp7",
+  "max_py_ver":"37",
+  "max_r_ver":"35"
+ },
+ "feedstock_name":"cppcheck",
+ "hash_type":"sha256",
+ "meta_yaml":{
+  "about":{
+   "description":"Cppcheck is a static analysis tool for C/C++ code. Unlike C/C++ compilers and many other analysis tools it does not detect syntax errors in the code. Cppcheck primarily detects the types of bugs that the compilers normally do not detect. The goal is to detect only real errors in the code (i.e. have zero false positives).",
+   "dev_url":"https://github.com/danmar/cppcheck",
+   "home":"http://cppcheck.sourceforge.net/",
+   "license":"GPLv3",
+   "license_family":"GPL",
+   "license_file":"COPYING",
+   "summary":"A static analysis tool for C/C++ code."
+  },
+  "build":{
+   "number":"0",
+   "script":[
+    "mkdir build && cd build",
+    "cmake .. -DCMAKE_INSTALL_PREFIX=$PREFIX -DCMAKE_BUILD_TYPE=Release",
+    "VERBOSE=1 make install -j ${CPU_COUNT}",
+    "mkdir build && cd build",
+    "cmake .. -DCMAKE_INSTALL_PREFIX=$PREFIX -DCMAKE_BUILD_TYPE=Release -DCMAKE_OSX_SYSROOT=${CONDA_BUILD_SYSROOT}",
+    "VERBOSE=1 make install -j ${CPU_COUNT}",
+    "mkdir build && cd build",
+    "cmake .. -DCMAKE_INSTALL_PREFIX=$PREFIX -DCMAKE_BUILD_TYPE=Release",
+    "VERBOSE=1 make install -j ${CPU_COUNT}"
+   ],
+   "skip":true
+  },
+  "extra":{
+   "recipe-maintainers":[
+    "tovrstra",
+    "tovrstra",
+    "tovrstra"
+   ]
+  },
+  "package":{
+   "name":"cppcheck",
+   "version":"1.88"
+  },
+  "requirements":{
+   "build":[
+    "c_compiler_stub",
+    "cxx_compiler_stub",
+    "c_compiler_stub",
+    "cxx_compiler_stub",
+    "c_compiler_stub",
+    "cxx_compiler_stub"
+   ],
+   "host":[
+    "make",
+    "cmake",
+    "pcre",
+    "make",
+    "cmake",
+    "pcre",
+    "make",
+    "cmake",
+    "pcre"
+   ],
+   "run":[
+    "pcre",
+    "pcre",
+    "pcre"
+   ]
+  },
+  "source":{
+   "fn":"1.88.tar.gz",
+   "patches":[
+    "force-char-cppcheck-1.87.patch",
+    "force-char-cppcheck-1.87.patch",
+    "force-char-cppcheck-1.87.patch"
+   ],
+   "sha256":"4aace0420d6aaa900b84b3329c5173c2294e251d2e24d8cba6e38254333dde3f",
+   "url":"https://github.com/danmar/cppcheck/archive/1.88.tar.gz"
+  },
+  "test":{
+   "commands":[
+    "cppcheck --version",
+    "echo ';' > test.h; cppcheck --check-config test.h",
+    "cppcheck --version",
+    "echo ';' > test.h; cppcheck --check-config test.h",
+    "cppcheck --version",
+    "echo ';' > test.h; cppcheck --check-config test.h"
+   ]
+  }
+ },
+ "name":"cppcheck",
+ "new_version":"1.89",
+ "pinning_version":"2019.09.08",
+ "raw_meta_yaml":"{% set name = \"cppcheck\" %}\n{% set version = \"1.88\" %}\n{% set sha256 = \"4aace0420d6aaa900b84b3329c5173c2294e251d2e24d8cba6e38254333dde3f\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  fn: {{ version }}.tar.gz\n  url: https://github.com/danmar/cppcheck/archive/{{ version }}.tar.gz\n  sha256: {{ sha256 }}\n  patches:\n    - force-char-cppcheck-1.87.patch\n\nbuild:\n  number: 0\n  skip: True   # [win]\n  script:\n    - mkdir build && cd build\n    - >-\n      cmake ..\n      -DCMAKE_INSTALL_PREFIX=$PREFIX\n      -DCMAKE_BUILD_TYPE=Release\n      -DCMAKE_OSX_SYSROOT=${CONDA_BUILD_SYSROOT}  # [osx]\n    - VERBOSE=1 make install -j ${CPU_COUNT}\n\nrequirements:\n  build:\n  - {{ compiler('c') }}\n  - {{ compiler('cxx') }}\n  host:\n  - make\n  - cmake\n  - pcre\n  run:\n  - pcre\n\ntest:\n  commands:\n    - cppcheck --version\n    - echo ';' > test.h; cppcheck --check-config test.h\n\nabout:\n  description:\n    Cppcheck is a static analysis tool for C/C++ code. Unlike C/C++ compilers\n    and many other analysis tools it does not detect syntax errors in the code.\n    Cppcheck primarily detects the types of bugs that the compilers normally do\n    not detect. The goal is to detect only real errors in the code (i.e. have\n    zero false positives).\n  home: 'http://cppcheck.sourceforge.net/'\n  dev_url: 'https://github.com/danmar/cppcheck'\n  license: 'GPLv3'\n  license_family: 'GPL'\n  license_file: COPYING\n  summary: 'A static analysis tool for C/C++ code.'\n\nextra:\n  recipe-maintainers:\n    - tovrstra\n",
+ "req":{
+  "__set__":true,
+  "elements":[
+   "c_compiler_stub",
+   "cmake",
+   "cxx_compiler_stub",
+   "make",
+   "pcre"
+  ]
+ },
+ "smithy_version":"3.4.5",
+ "time":1568050638.468132,
+ "url":"https://github.com/danmar/cppcheck/archive/1.88.tar.gz",
+ "version":"1.88"
+}

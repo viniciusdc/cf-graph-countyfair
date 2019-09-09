@@ -1,0 +1,150 @@
+{
+ "PRed":[
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/221059573.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"CompilerRebuild",
+    "migrator_version":1,
+    "name":"Python 3.7, GCC 7, R 3.5.1, openBLAS 0.3.2"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "name"
+   ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/262725123.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"BlasRebuild",
+    "migrator_version":0,
+    "name":"blas2"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "name"
+   ]
+  }
+ ],
+ "bad":false,
+ "conda-forge.yml":{
+  "compiler_stack":"comp7",
+  "max_py_ver":"37",
+  "max_r_ver":"35"
+ },
+ "feedstock_name":"armadillo",
+ "hash_type":"sha256",
+ "meta_yaml":{
+  "about":{
+   "home":"http://arma.sourceforge.net",
+   "license":"Apache 2.0",
+   "license_file":"LICENSE.txt",
+   "summary":"Armadillo C++ linear algebra library"
+  },
+  "build":{
+   "number":"1204",
+   "run_exports":[
+    "subpackage_stub",
+    "subpackage_stub",
+    "subpackage_stub"
+   ],
+   "skip":true
+  },
+  "extra":{
+   "recipe-maintainers":[
+    "grlee77",
+    "dirmeier",
+    "marcelotrevisani",
+    "grlee77",
+    "dirmeier",
+    "marcelotrevisani",
+    "grlee77",
+    "dirmeier",
+    "marcelotrevisani"
+   ]
+  },
+  "package":{
+   "name":"armadillo",
+   "version":"9.200.4"
+  },
+  "requirements":{
+   "build":[
+    "cmake",
+    "cxx_compiler_stub",
+    "cmake",
+    "cxx_compiler_stub",
+    "pkg-config",
+    "cmake",
+    "cxx_compiler_stub",
+    "pkg-config"
+   ],
+   "host":[
+    "libblas",
+    "liblapack",
+    "libblas",
+    "liblapack",
+    "arpack",
+    "superlu 5.2.*",
+    "libblas",
+    "liblapack",
+    "arpack",
+    "superlu 5.2.*"
+   ],
+   "run":[
+    "arpack",
+    "superlu 5.2.*"
+   ]
+  },
+  "source":{
+   "fn":"armadillo-9.200.4.tar.xz",
+   "patches":[
+    "make_tests.patch",
+    "CMakeLists.patch"
+   ],
+   "sha256":"10d1cc38503624bf1ad8c55c0d53b4feb80f04fcb3f5c3e6a69ba95d00f17966",
+   "url":"http://sourceforge.net/projects/arma/files/armadillo-9.200.4.tar.xz"
+  },
+  "test":{
+   "commands":[
+    "if not exist %LIBRARY_INC%\\armadillo_bits exit 1",
+    "if not exist %LIBRARY_INC%\\armadillo exit 1",
+    "if not exist %LIBRARY_LIB%\\armadillo.lib exit 1",
+    "test -f \"${PREFIX}/include/armadillo\"",
+    "test -d \"${PREFIX}/include/armadillo_bits\"",
+    "test -f \"${PREFIX}/lib/libarmadillo${SHLIB_EXT}\"",
+    "test -f \"${PREFIX}/include/armadillo\"",
+    "test -d \"${PREFIX}/include/armadillo_bits\"",
+    "test -f \"${PREFIX}/lib/libarmadillo${SHLIB_EXT}\""
+   ]
+  }
+ },
+ "name":"armadillo",
+ "new_version":false,
+ "pinning_version":"2019.03.17",
+ "raw_meta_yaml":"{% set version = \"9.200.4\" %}\n\npackage:\n    name: armadillo\n    version: {{ version }}\n\nsource:\n    fn: armadillo-{{ version }}.tar.xz\n    url: http://sourceforge.net/projects/arma/files/armadillo-{{ version }}.tar.xz\n    sha256: 10d1cc38503624bf1ad8c55c0d53b4feb80f04fcb3f5c3e6a69ba95d00f17966\n    patches:\n        # have to add additional ${PREFIX}/lib etc... to tests/Makefile\n        - make_tests.patch  # [linux]\n        - make_tests_osx.patch  # [osx]\n        # modify CMakeLists to use OpenBLAS rather than Accelrate on OS X\n        # and to use OpenBLAS as the LAPACK library on linux\n        - CMakeLists.patch  # [unix]\n\nbuild:\n  number: 1204\n  skip: true  # [win and vc<14]\n  run_exports:\n    - {{ pin_subpackage('armadillo', min_pin='x.x', max_pin='x') }}\n\nrequirements:\n  build:\n    - cmake\n    - {{ compiler('cxx') }}\n    - pkg-config  # [unix]\n  host:\n    # optional items below here\n    - libblas\n    - liblapack\n    - arpack  # [unix]\n    - superlu 5.2.*  # [unix]\n  run:\n    - arpack  # [unix]\n    - superlu 5.2.*  # [unix]\n\ntest:\n  commands:\n    - test -f \"${PREFIX}/include/armadillo\"  # [unix]\n    - test -d \"${PREFIX}/include/armadillo_bits\"  # [unix]\n    - test -f \"${PREFIX}/lib/libarmadillo${SHLIB_EXT}\"  # [unix]\n    - if not exist %LIBRARY_INC%\\armadillo_bits exit 1  # [win]\n    - if not exist %LIBRARY_INC%\\armadillo exit 1  # [win]\n    - if not exist %LIBRARY_LIB%\\armadillo.lib exit 1  # [win]\n\nabout:\n    home: http://arma.sourceforge.net\n    license: Apache 2.0\n    license_file: LICENSE.txt\n    summary: Armadillo C++ linear algebra library\n\nextra:\n    recipe-maintainers:\n      - grlee77\n      - dirmeier\n      - marcelotrevisani\n",
+ "req":{
+  "__set__":true,
+  "elements":[
+   "arpack",
+   "cmake",
+   "cxx_compiler_stub",
+   "libblas",
+   "liblapack",
+   "pkg-config",
+   "superlu"
+  ]
+ },
+ "smithy_version":"3.3.0",
+ "time":1568050639.2397585,
+ "url":"http://sourceforge.net/projects/arma/files/armadillo-9.200.4.tar.xz",
+ "version":"9.200.4"
+}

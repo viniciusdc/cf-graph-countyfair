@@ -1,0 +1,167 @@
+{
+ "PRed":[
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/232143192.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"CompilerRebuild",
+    "migrator_version":1,
+    "name":"Python 3.7, GCC 7, R 3.5.1, openBLAS 0.3.2"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "name"
+   ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/279855306.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"Version",
+    "migrator_version":0,
+    "version":"1.4"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "version"
+   ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/299297408.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"RBaseRebuild",
+    "migrator_version":0,
+    "name":"r-base-3.6.1"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "name"
+   ]
+  }
+ ],
+ "bad":false,
+ "conda-forge.yml":{
+  "compiler_stack":"comp7",
+  "max_py_ver":"37",
+  "max_r_ver":"35",
+  "provider":{
+   "win":"azure"
+  }
+ },
+ "feedstock_name":"r-parallelmap",
+ "hash_type":"sha256",
+ "meta_yaml":{
+  "about":{
+   "home":"https://github.com/berndbischl/parallelMap",
+   "license":"BSD_2_clause",
+   "license_family":"BSD",
+   "summary":"Unified parallelization framework for multiple back-end, designed for internal package and interactive usage.  The main operation is parallel mapping over lists.  Supports 'local', 'multicore', 'mpi' and 'BatchJobs' mode.  Allows tagging of the parallel operation with a level name that can be later selected by the user to switch on parallel execution for exactly this operation."
+  },
+  "build":{
+   "merge_build_host":true,
+   "noarch":"generic",
+   "number":"1",
+   "rpaths":[
+    "lib/R/lib/",
+    "lib/",
+    "lib/R/lib/",
+    "lib/",
+    "lib/R/lib/",
+    "lib/"
+   ]
+  },
+  "extra":{
+   "recipe-maintainers":[
+    "nick-youngblut",
+    "conda-forge/r",
+    "nick-youngblut",
+    "conda-forge/r",
+    "nick-youngblut",
+    "conda-forge/r"
+   ]
+  },
+  "package":{
+   "name":"r-parallelmap",
+   "version":"1.4"
+  },
+  "requirements":{
+   "build":null,
+   "host":[
+    "r-base",
+    "r-bbmisc >=1.8",
+    "r-checkmate >=1.8.0",
+    "r-base",
+    "r-bbmisc >=1.8",
+    "r-checkmate >=1.8.0",
+    "r-base",
+    "r-bbmisc >=1.8",
+    "r-checkmate >=1.8.0"
+   ],
+   "run":[
+    "r-base",
+    "r-bbmisc >=1.8",
+    "r-checkmate >=1.8.0",
+    "r-base",
+    "r-bbmisc >=1.8",
+    "r-checkmate >=1.8.0",
+    "r-base",
+    "r-bbmisc >=1.8",
+    "r-checkmate >=1.8.0"
+   ]
+  },
+  "source":{
+   "sha256":"fb6f15e325f729f1c5218768b17c20909ee857069c6cc5d8df50e1dafe26ed5b",
+   "url":[
+    "https://cran.r-project.org/src/contrib/parallelMap_1.4.tar.gz",
+    "https://cran.r-project.org/src/contrib/Archive/parallelMap/parallelMap_1.4.tar.gz",
+    "https://cran.r-project.org/src/contrib/parallelMap_1.4.tar.gz",
+    "https://cran.r-project.org/src/contrib/Archive/parallelMap/parallelMap_1.4.tar.gz",
+    "https://cran.r-project.org/src/contrib/parallelMap_1.4.tar.gz",
+    "https://cran.r-project.org/src/contrib/Archive/parallelMap/parallelMap_1.4.tar.gz"
+   ]
+  },
+  "test":{
+   "commands":[
+    "\"%R%\" -e \"library('parallelMap')\"",
+    "$R -e \"library('parallelMap')\"",
+    "$R -e \"library('parallelMap')\""
+   ]
+  }
+ },
+ "name":"r-parallelmap",
+ "new_version":"1.4",
+ "pinning_version":"2019.07.15",
+ "raw_meta_yaml":"{% set version = '1.4' %}\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-parallelmap\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  url:\n    - {{ cran_mirror }}/src/contrib/parallelMap_{{ version }}.tar.gz\n    - {{ cran_mirror }}/src/contrib/Archive/parallelMap/parallelMap_{{ version }}.tar.gz\n  sha256: fb6f15e325f729f1c5218768b17c20909ee857069c6cc5d8df50e1dafe26ed5b\n\nbuild:\n  merge_build_host: True  # [win]\n  number: 1\n  noarch: generic\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - {{posix}}zip               # [win]\n  host:\n    - r-base\n    - r-bbmisc >=1.8\n    - r-checkmate >=1.8.0\n  run:\n    - r-base\n    - r-bbmisc >=1.8\n    - r-checkmate >=1.8.0\n\ntest:\n  commands:\n    - $R -e \"library('parallelMap')\"           # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('parallelMap')\\\"\"  # [win]\n\nabout:\n  home: https://github.com/berndbischl/parallelMap\n  license: BSD_2_clause\n  summary: Unified parallelization framework for multiple back-end, designed for internal package\n    and interactive usage.  The main operation is parallel mapping over lists.  Supports\n    'local', 'multicore', 'mpi' and 'BatchJobs' mode.  Allows tagging of the parallel\n    operation with a level name that can be later selected by the user to switch on\n    parallel execution for exactly this operation.\n  license_family: BSD\n\nextra:\n  recipe-maintainers:\n    - nick-youngblut\n    - conda-forge/r\n\n# Package: parallelMap\n# Title: Unified Interface to Parallelization Back-Ends\n# Version: 1.4\n# Authors@R:  c(person(given = \"Bernd\", family = \"Bischl\", role = c(\"cre\", \"aut\"), email = \"bernd_bischl@gmx.net\"), person(given = \"Michel\", family = \"Lang\", role = \"aut\", email = \"michellang@gmail.com\", comment = c(ORCID = \"0000-0001-9754-0393\")))\n# Maintainer: Bernd Bischl <bernd_bischl@gmx.net>\n# Description: Unified parallelization framework for multiple back-end, designed for internal package and interactive usage.  The main operation is parallel mapping over lists.  Supports 'local', 'multicore', 'mpi' and 'BatchJobs' mode.  Allows tagging of the parallel operation with a level name that can be later selected by the user to switch on parallel execution for exactly this operation.\n# License: BSD_2_clause + file LICENSE\n# URL: https://github.com/berndbischl/parallelMap\n# BugReports: https://github.com/berndbischl/parallelMap/issues\n# Depends: R (>= 3.0.0)\n# Imports: BBmisc (>= 1.8), checkmate (>= 1.8.0), parallel, stats, utils\n# Suggests: BatchJobs (>= 1.8), batchtools (>= 0.9.6), data.table, Rmpi, testthat\n# ByteCompile: yes\n# Encoding: UTF-8\n# LazyData: yes\n# RoxygenNote: 6.1.1\n# NeedsCompilation: no\n# Packaged: 2019-05-17 09:47:57 UTC; lang\n# Author: Bernd Bischl [cre, aut], Michel Lang [aut] (<https://orcid.org/0000-0001-9754-0393>)\n# Repository: CRAN\n# Date/Publication: 2019-05-17 10:50:29 UTC\n",
+ "req":{
+  "__set__":true,
+  "elements":[
+   "r-base",
+   "r-bbmisc",
+   "r-checkmate"
+  ]
+ },
+ "smithy_version":"3.4.1",
+ "time":1568050630.1490753,
+ "url":[
+  "https://cran.r-project.org/src/contrib/parallelMap_1.4.tar.gz",
+  "https://cran.r-project.org/src/contrib/Archive/parallelMap/parallelMap_1.4.tar.gz",
+  "https://cran.r-project.org/src/contrib/parallelMap_1.4.tar.gz",
+  "https://cran.r-project.org/src/contrib/Archive/parallelMap/parallelMap_1.4.tar.gz",
+  "https://cran.r-project.org/src/contrib/parallelMap_1.4.tar.gz",
+  "https://cran.r-project.org/src/contrib/Archive/parallelMap/parallelMap_1.4.tar.gz"
+ ],
+ "version":"1.4"
+}

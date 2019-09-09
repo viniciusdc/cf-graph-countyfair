@@ -1,0 +1,107 @@
+{
+ "bad":{
+  "exception":"HTTP Error 404: Not Found",
+  "traceback":"Traceback (most recent call last):\n  File \"/root/repo/cf-scripts/conda_forge_tick/auto_tick.xsh\", line 571, in main\n    hash_type=attrs.get('hash_type', 'sha256'))\n  File \"/root/repo/cf-scripts/conda_forge_tick/auto_tick.xsh\", line 97, in run\n    migrate_return = migrator.migrate(recipe_dir, attrs, **kwargs)\n  File \"/root/repo/cf-scripts/conda_forge_tick/migrators.xsh\", line 333, in migrate\n    new_patterns = self.get_hash_patterns('meta.yaml', urls, hash_type)\n  File \"/root/repo/cf-scripts/conda_forge_tick/migrators.xsh\", line 263, in get_hash_patterns\n    hash = hash_url(url, hash_type)\n  File \"/opt/conda/envs/run_env/lib/python3.7/site-packages/rever/tools.xsh\", line 207, in hash_url\n    for b in stream_url_progress(url, verb='Hashing', quiet=quiet):\n  File \"/opt/conda/envs/run_env/lib/python3.7/site-packages/rever/tools.xsh\", line 179, in stream_url_progress\n    with urllib.request.urlopen(url) as f:\n  File \"/opt/conda/envs/run_env/lib/python3.7/urllib/request.py\", line 222, in urlopen\n    return opener.open(url, data, timeout)\n  File \"/opt/conda/envs/run_env/lib/python3.7/urllib/request.py\", line 531, in open\n    response = meth(req, response)\n  File \"/opt/conda/envs/run_env/lib/python3.7/urllib/request.py\", line 641, in http_response\n    'http', request, response, code, msg, hdrs)\n  File \"/opt/conda/envs/run_env/lib/python3.7/urllib/request.py\", line 563, in error\n    result = self._call_chain(*args)\n  File \"/opt/conda/envs/run_env/lib/python3.7/urllib/request.py\", line 503, in _call_chain\n    result = func(*args)\n  File \"/opt/conda/envs/run_env/lib/python3.7/urllib/request.py\", line 755, in http_error_302\n    return self.parent.open(new, timeout=req.timeout)\n  File \"/opt/conda/envs/run_env/lib/python3.7/urllib/request.py\", line 531, in open\n    response = meth(req, response)\n  File \"/opt/conda/envs/run_env/lib/python3.7/urllib/request.py\", line 641, in http_response\n    'http', request, response, code, msg, hdrs)\n  File \"/opt/conda/envs/run_env/lib/python3.7/urllib/request.py\", line 569, in error\n    return self._call_chain(*args)\n  File \"/opt/conda/envs/run_env/lib/python3.7/urllib/request.py\", line 503, in _call_chain\n    result = func(*args)\n  File \"/opt/conda/envs/run_env/lib/python3.7/urllib/request.py\", line 649, in http_error_default\n    raise HTTPError(req.full_url, code, msg, hdrs, fp)\nurllib.error.HTTPError: HTTP Error 404: Not Found\n"
+ },
+ "conda-forge.yml":{
+  "provider":{
+   "win":"azure"
+  }
+ },
+ "feedstock_name":"px-proxy",
+ "hash_type":"sha256",
+ "meta_yaml":{
+  "about":{
+   "description":"Px is a HTTP(s) proxy server that allows applications to authenticate through\nan NTLM or Windows Kerberos authenticated proxy server, typically used in\ncorporate deployments, without having to deal with the actual handshake. It is\nprimarily designed to run on Windows systems and authenticates on behalf of the\napplication using the currently logged in Windows user account.\n",
+   "home":"https://github.com/genotrance/px",
+   "license":"MIT",
+   "license_family":"MIT",
+   "license_file":"LICENSE.txt",
+   "summary":"An HTTP proxy server to automatically authenticate through an NTLM proxy"
+  },
+  "build":{
+   "entry_points":[
+    "px = px:main",
+    "px = px:main",
+    "px = px:main"
+   ],
+   "number":"1",
+   "script":" -m pip install . -vv",
+   "skip":true
+  },
+  "extra":{
+   "recipe-maintainers":[
+    "fcollonval",
+    "genotrance",
+    "fcollonval",
+    "genotrance",
+    "fcollonval",
+    "genotrance"
+   ]
+  },
+  "package":{
+   "name":"px-proxy",
+   "version":"0.4.0"
+  },
+  "requirements":{
+   "host":[
+    "python",
+    "pip",
+    "python",
+    "pip",
+    "python",
+    "pip"
+   ],
+   "run":[
+    "python",
+    "netaddr",
+    "psutil",
+    "pywin32",
+    "winkerberos",
+    "python",
+    "netaddr",
+    "psutil",
+    "pywin32",
+    "winkerberos",
+    "python",
+    "netaddr",
+    "psutil",
+    "pywin32",
+    "winkerberos"
+   ]
+  },
+  "source":{
+   "patches":[
+    "setup.patch",
+    "setup.patch",
+    "setup.patch"
+   ],
+   "sha256":"b6546e70483461357033b3918ee2b72f812c34025b030b37db2059eb68a4f459",
+   "url":"https://github.com/genotrance/px/archive/v0.4.0.tar.gz"
+  },
+  "test":{
+   "imports":[
+    "px",
+    "px",
+    "px"
+   ]
+  }
+ },
+ "name":"px-proxy",
+ "new_version":"2018-11-20",
+ "raw_meta_yaml":"{% set name = \"px-proxy\" %}\n{% set version = \"0.4.0\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  url: https://github.com/genotrance/{{ name[:2] }}/archive/v{{ version }}.tar.gz\n  sha256: b6546e70483461357033b3918ee2b72f812c34025b030b37db2059eb68a4f459\n  patches:\n    - setup.patch\n\nbuild:\n  number: 1\n  script: \"{{ PYTHON }} -m pip install . -vv\"\n  skip: True  # [not win]\n  entry_points:\n    - px = px:main\n\nrequirements:\n  host:\n    - python\n    - pip\n  run:\n    - python\n    - futures  # [py2k]\n    - netaddr\n    - psutil\n    - pywin32\n    - winkerberos\n\ntest:\n  imports:\n    - px\n\nabout:\n  home: https://github.com/genotrance/px\n  license: MIT\n  license_family: MIT\n  license_file: LICENSE.txt\n  summary: 'An HTTP proxy server to automatically authenticate through an NTLM proxy'\n  description: |\n    Px is a HTTP(s) proxy server that allows applications to authenticate through\n    an NTLM or Windows Kerberos authenticated proxy server, typically used in\n    corporate deployments, without having to deal with the actual handshake. It is\n    primarily designed to run on Windows systems and authenticates on behalf of the\n    application using the currently logged in Windows user account.\n\nextra:\n  recipe-maintainers:\n    - fcollonval\n    - genotrance\n",
+ "req":{
+  "__set__":true,
+  "elements":[
+   "netaddr",
+   "pip",
+   "psutil",
+   "python",
+   "pywin32",
+   "winkerberos"
+  ]
+ },
+ "time":1568050626.6976845,
+ "url":"https://github.com/genotrance/px/archive/v0.4.0.tar.gz",
+ "version":"0.4.0"
+}

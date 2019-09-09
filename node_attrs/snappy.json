@@ -1,0 +1,168 @@
+{
+ "PRed":[
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/198444346.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"Compiler",
+    "migrator_version":0
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version"
+   ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/214955712.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"CompilerRebuild",
+    "migrator_version":1,
+    "name":"Python 3.7, GCC 7, R 3.5.1, openBLAS 0.3.2"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "name"
+   ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/287629638.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"ArchRebuild",
+    "migrator_version":1,
+    "name":"aarch64 and ppc64le addition"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "name"
+   ]
+  }
+ ],
+ "bad":false,
+ "conda-forge.yml":{
+  "compiler_stack":"comp7",
+  "max_py_ver":"37",
+  "max_r_ver":"35",
+  "provider":{
+   "linux_aarch64":"default",
+   "linux_ppc64le":"default",
+   "win":"azure"
+  }
+ },
+ "feedstock_name":"snappy",
+ "hash_type":"sha256",
+ "meta_yaml":{
+  "about":{
+   "home":"https://github.com/google/snappy",
+   "license":"BSD 3-clause",
+   "license_family":"BSD",
+   "license_file":"COPYING",
+   "summary":"A fast compressor/decompressor"
+  },
+  "build":{
+   "number":"1002"
+  },
+  "extra":{
+   "recipe-maintainers":[
+    "groutr",
+    "jakirkham",
+    "wesm",
+    "xhochy",
+    "dougalsutherland",
+    "MaxRis",
+    "groutr",
+    "jakirkham",
+    "wesm",
+    "xhochy",
+    "dougalsutherland",
+    "MaxRis",
+    "groutr",
+    "jakirkham",
+    "wesm",
+    "xhochy",
+    "dougalsutherland",
+    "MaxRis"
+   ]
+  },
+  "package":{
+   "name":"snappy",
+   "version":"1.1.7"
+  },
+  "requirements":{
+   "build":[
+    "cmake",
+    "make",
+    "c_compiler_stub",
+    "cxx_compiler_stub",
+    "cmake",
+    "make",
+    "c_compiler_stub",
+    "cxx_compiler_stub",
+    "cmake",
+    "make",
+    "c_compiler_stub",
+    "cxx_compiler_stub"
+   ],
+   "host":null
+  },
+  "source":{
+   "fn":"snappy-1.1.7.tar.gz",
+   "patches":[
+    "skip-microbenchmarks.patch",
+    "windows-static-lib-name.patch",
+    "skip-microbenchmarks.patch",
+    "windows-static-lib-name.patch",
+    "skip-microbenchmarks.patch",
+    "windows-static-lib-name.patch"
+   ],
+   "sha256":"3dfa02e873ff51a11ee02b9ca391807f0c8ea0529a4924afa645fbf97163f9d4",
+   "url":"https://github.com/google/snappy/archive/1.1.7.tar.gz"
+  },
+  "test":{
+   "commands":[
+    "if not exist %LIBRARY_INC%\\snappy.h exit 1",
+    "if not exist %LIBRARY_INC%\\snappy-stubs-public.h exit 1",
+    "if not exist %LIBRARY_LIB%\\snappy.lib exit 1",
+    "if not exist %LIBRARY_BIN%\\snappy.dll exit 1",
+    "if not exist %LIBRARY_LIB%\\snappy_static.lib exit 1",
+    "test -e $PREFIX/include/snappy.h",
+    "test -e $PREFIX/include/snappy-stubs-public.h",
+    "test -e $PREFIX/lib/libsnappy$SHLIB_EXT",
+    "test -e $PREFIX/lib/libsnappy.a",
+    "test -e $PREFIX/include/snappy.h",
+    "test -e $PREFIX/include/snappy-stubs-public.h",
+    "test -e $PREFIX/lib/libsnappy$SHLIB_EXT",
+    "test -e $PREFIX/lib/libsnappy.a"
+   ]
+  }
+ },
+ "name":"snappy",
+ "new_version":"1.1.7",
+ "pinning_version":"2019.06.09",
+ "raw_meta_yaml":"{% set version = \"1.1.7\" %}\n{% set sha256 = \"3dfa02e873ff51a11ee02b9ca391807f0c8ea0529a4924afa645fbf97163f9d4\" %}\n{% set build = 1002 %}\n\npackage:\n  name: snappy\n  version: {{ version }}\n\nsource:\n  url: https://github.com/google/snappy/archive/{{ version }}.tar.gz\n  fn: snappy-{{ version }}.tar.gz\n  sha256: {{ sha256 }}\n  patches:\n    # Have snappy-unittest not run the slow-ish microbenchmarks, but just\n    # the quick correctness tests, without bothering with gflags (which didn't\n    # work out of the box). This is the recommended method in the README.\n    - skip-microbenchmarks.patch\n    # Name the static library snappy_static.lib on windows, to distinguish from\n    # the dynamic library, since they have the same suffix there.\n    # https://github.com/google/snappy/pull/57\n    - windows-static-lib-name.patch\n\nbuild:\n  number: {{ build }}\n\nrequirements:\n  build:\n    - cmake\n    - make\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n  host:\n    - msinttypes  # [win]\n\ntest:\n  commands:\n    - test -e $PREFIX/include/snappy.h               # [unix]\n    - test -e $PREFIX/include/snappy-stubs-public.h  # [unix]\n    - test -e $PREFIX/lib/libsnappy$SHLIB_EXT        # [unix]\n    - test -e $PREFIX/lib/libsnappy.a                # [unix]\n    - if not exist %LIBRARY_INC%\\snappy.h exit 1               # [win]\n    - if not exist %LIBRARY_INC%\\snappy-stubs-public.h exit 1  # [win]\n    - if not exist %LIBRARY_LIB%\\snappy.lib exit 1             # [win]\n    - if not exist %LIBRARY_BIN%\\snappy.dll exit 1             # [win]\n    - if not exist %LIBRARY_LIB%\\snappy_static.lib exit 1      # [win]\n\nabout:\n  home: https://github.com/google/snappy\n  summary: A fast compressor/decompressor\n  license: BSD 3-clause\n  license_file: COPYING\n  license_family: BSD\n\nextra:\n  recipe-maintainers:\n    - groutr\n    - jakirkham\n    - wesm\n    - xhochy\n    - dougalsutherland\n    - MaxRis\n",
+ "req":{
+  "__set__":true,
+  "elements":[
+   "c_compiler_stub",
+   "cmake",
+   "cxx_compiler_stub",
+   "make"
+  ]
+ },
+ "smithy_version":"3.3.7",
+ "time":1568050618.0353427,
+ "url":"https://github.com/google/snappy/archive/1.1.7.tar.gz",
+ "version":"1.1.7"
+}
