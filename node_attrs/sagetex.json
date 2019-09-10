@@ -56,7 +56,7 @@
   }
  },
  "name":"sagetex",
- "new_version":"3.3",
+ "new_version":false,
  "raw_meta_yaml":"{% set name = \"sagetex\" %}\n{% set version = \"3.2\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  url: https://github.com/sagemath/sagetex/releases/download/{{ version }}/sagetex-{{ version }}.tar.gz\n  sha256: 80d4f4cfae39b7c612d91ef616380daa29a03020086a2af405de9ad8c2ab752d\n\nbuild:\n  noarch: python\n  number: 0\n  script: \"{{ PYTHON }} -m pip install . -vv\"\n\nrequirements:\n  host:\n    - python\n    - pip\n  run:\n    - python\n\ntest:\n  # Can't import sagetex without sage and sagetex is a dependency of sage\n  commands:\n    - test -f $PREFIX/share/texmf/tex/latex/sagetex/sagetex.sty  # [unix]\n\nabout:\n  home: http://github.com/sagemath/sagetex\n  license: GPL-2.0-or-later\n  license_family: GPL\n  license_file: COPYING\n  summary: 'Embed code, results of computations, and plots from the Sage mathematics software suite into LaTeX documents'\n\nextra:\n  recipe-maintainers:\n    - conda-forge/sage\n",
  "req":{
   "__set__":true,
