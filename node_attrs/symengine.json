@@ -65,6 +65,23 @@
     "migrator_version",
     "version"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/315832325.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"Version",
+    "migrator_version":0,
+    "version":"0.5.0"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "version"
+   ]
   }
  ],
  "bad":false,
@@ -166,8 +183,8 @@
   }
  },
  "name":"symengine",
- "new_version":"0.4.1",
- "pinning_version":"2019.07.26",
+ "new_version":"0.5.0",
+ "pinning_version":"2019.09.08",
  "raw_meta_yaml":"{% set version = \"0.4.1\" %}\n\npackage:\n  name: symengine\n  version: {{ version }}\n\nsource:\n  fn: v{{ version }}.tar.gz\n  url: https://github.com/symengine/symengine/releases/download/v{{ version }}/symengine-{{ version }}.tar.gz\n  sha256: 4bbb17c82c9f8d9ab7a65ae011ac236c7aaf1e01f3331efdb787e95986c016b3\n\nbuild:\n  number: 0\n  skip: True  # [win and vc<14]\n\nrequirements:\n  build:\n    - cmake\n    - make             # [unix]\n    - ninja            # [win]\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n  host:\n    - gmp              # [unix]\n    - mpfr\n    - mpc\n    - mpir             # [win]\n    - llvmdev\n    - libflint         # [unix]\n  run:\n    - gmp              # [unix]\n    - mpfr\n    - {{ pin_compatible(\"mpc\") }}\n    - {{ pin_compatible(\"mpir\") }}         # [win]\n    - {{ pin_compatible(\"libflint\") }}     # [unix]\n\ntest:\n  commands:\n    - if not exist %LIBRARY_INC%\\\\symengine\\\\basic.h exit 1     # [win]\n    - if not exist %LIBRARY_LIB%\\\\symengine.lib exit 1          # [win]\n    - if not exist %LIBRARY_BIN%\\\\symengine.dll exit 1          # [win]\n    - test -f $PREFIX/include/symengine/basic.h                 # [unix]\n    - test -f $PREFIX/lib/libsymengine.so                       # [linux]\n    - test -f $PREFIX/lib/libsymengine.dylib                    # [osx]\n\nabout:\n  home: https://github.com/symengine/symengine\n  license: MIT\n  license_file: LICENSE\n  summary: 'SymEngine is a fast symbolic manipulation library, written in C++'\n\nextra:\n  recipe-maintainers:\n    - isuruf\n    - certik\n",
  "req":{
   "__set__":true,
@@ -186,7 +203,7 @@
    "ninja"
   ]
  },
- "smithy_version":"3.4.1",
+ "smithy_version":"3.4.5",
  "url":"https://github.com/symengine/symengine/releases/download/v0.4.1/symengine-0.4.1.tar.gz",
  "version":"0.4.1"
 }

@@ -167,6 +167,23 @@
     "migrator_version",
     "name"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/315832513.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"Version",
+    "migrator_version":0,
+    "version":"1.12.10"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "version"
+   ]
   }
  ],
  "bad":false,
@@ -295,8 +312,8 @@
   }
  },
  "name":"healpy",
- "new_version":"1.12.9",
- "pinning_version":"2019.08.12",
+ "new_version":"1.12.10",
+ "pinning_version":"2019.09.08",
  "raw_meta_yaml":"{% set name = \"healpy\" %}\n{% set version = \"1.12.9\" %}\n{% set sha256 = \"8f75b6d7804cf55d3588c0b5fa8e865de06e65d8da65d74c91f2dcfd4c3376fc\" %}\n\npackage:\n    name: {{ name|lower }}\n    version: {{version}}\n\nsource:\n    url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz\n    sha256: {{ sha256 }}\n    patches:\n      - macos-c++-linking.patch  # [osx]\n\nbuild:\n    number: 1\n    skip: True  # [win]\n\nrequirements:\n    build:\n        - pkg-config\n        - {{ compiler('fortran') }}\n        - {{ compiler('c') }}\n        - {{ compiler('cxx') }}\n    host:\n        - cython\n        - python\n        - setuptools\n        - numpy\n        - pip\n        - pytest-runner\n        - six\n    run:\n        - python\n        - matplotlib\n        - {{ pin_compatible('numpy') }}\n        - six\n        - astropy\n        - scipy\n        - pytest-runner\n\ntest:\n    imports:\n        - healpy\n        - healpy.test\n    requires:\n        - pytest\n        - nose\n\nabout:\n    home: http://github.com/healpy\n    license: GPL-2.0\n    license_file: COPYING\n    summary: Healpix tools package for Python\n\nextra:\n    recipe-maintainers:\n        - lpsinger\n        - mwcraig\n        - pkgw\n        - zonca\n",
  "req":{
   "__set__":true,
@@ -318,7 +335,7 @@
    "six"
   ]
  },
- "smithy_version":"3.4.1",
+ "smithy_version":"3.4.5",
  "url":"https://pypi.io/packages/source/h/healpy/healpy-1.12.9.tar.gz",
  "version":"1.12.9"
 }

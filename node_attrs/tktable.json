@@ -1,7 +1,12 @@
 {
  "archived":true,
  "bad":false,
- "conda-forge.yml":{},
+ "conda-forge.yml":{
+  "provider":{
+   "linux_aarch64":"default",
+   "linux_ppc64le":"default"
+  }
+ },
  "feedstock_name":"tktable",
  "hash_type":"sha256",
  "meta_yaml":{
@@ -14,7 +19,7 @@
    "summary":"Tktable is a 2D editable table widget"
   },
   "build":{
-   "number":"1",
+   "number":"2",
    "skip":true
   },
   "extra":{
@@ -35,8 +40,9 @@
     "c_compiler_stub",
     "cdt_stub",
     "cdt_stub",
-    "cdt_stub",
-    "cdt_stub"
+    "libxcb",
+    "xorg-libxau",
+    "make"
    ],
    "host":[
     "tk",
@@ -61,15 +67,19 @@
  },
  "name":"tktable",
  "new_version":false,
- "raw_meta_yaml":"\n{% set version = \"2.10\" %}\n\npackage:\n  name: tktable\n  version: {{ version }}\n\nsource:\n  url: http://downloads.sourceforge.net/project/tktable/tktable/{{ version }}/Tktable{{ version }}.tar.gz\n  sha256: c335117fa1be45fe4d3032e96fd4b4641fff6a4f8467878608dabed11198a4cb\n\nbuild:\n  skip: True  # [win]\n  number: 1\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - {{ cdt('xorg-x11-proto-devel') }}  # [linux]\n    - {{ cdt('libx11-devel') }}          # [linux]\n    - {{ cdt('libxcb') }}                # [linux]\n    - {{ cdt('libxau') }}                # [linux]\n  host:\n    - tk\n  run:\n    - tk\n\ntest:\n  commands:\n    - echo \"if {[catch {package require -exact Tktable {{ version }}; exit 0}]} {exit 1}\" | xvfb-run tclsh  # [linux]\n    - echo \"if {[catch {package require -exact Tktable {{ version }}; exit 0}]} {exit 1}\" | tclsh  # [osx]\n\nabout:\n  home: http://www.tcl.tk/\n  license: Tcl/Tk\n  license_family: BSD\n  license_file: license.txt\n  summary: Tktable is a 2D editable table widget\n  doc_url: https://core.tcl.tk/jenglish/gutter/packages/tktable.html\n\nextra:\n  recipe-maintainers:\n    - fhoehle\n",
+ "raw_meta_yaml":"\n{% set version = \"2.10\" %}\n\npackage:\n  name: tktable\n  version: {{ version }}\n\nsource:\n  url: http://downloads.sourceforge.net/project/tktable/tktable/{{ version }}/Tktable{{ version }}.tar.gz\n  sha256: c335117fa1be45fe4d3032e96fd4b4641fff6a4f8467878608dabed11198a4cb\n\nbuild:\n  skip: True  # [win]\n  number: 2\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - {{ cdt('xorg-x11-proto-devel') }}  # [linux]\n    - {{ cdt('libx11-devel') }}          # [linux]\n    - libxcb                             # [linux]\n    - xorg-libxau                        # [linux]\n    - make                               # [linux]\n  host:\n    - tk\n  run:\n    - tk\n\ntest:\n  commands:\n    - echo \"if {[catch {package require -exact Tktable {{ version }}; exit 0}]} {exit 1}\" | xvfb-run tclsh  # [linux]\n    - echo \"if {[catch {package require -exact Tktable {{ version }}; exit 0}]} {exit 1}\" | tclsh  # [osx]\n\nabout:\n  home: http://www.tcl.tk/\n  license: Tcl/Tk\n  license_family: BSD\n  license_file: license.txt\n  summary: Tktable is a 2D editable table widget\n  doc_url: https://core.tcl.tk/jenglish/gutter/packages/tktable.html\n\nextra:\n  recipe-maintainers:\n    - fhoehle\n",
  "req":{
   "__set__":true,
   "elements":[
    "c_compiler_stub",
    "cdt_stub",
-   "tk"
+   "libxcb",
+   "make",
+   "tk",
+   "xorg-libxau"
   ]
  },
+ "time":1568095708.2892365,
  "url":"http://downloads.sourceforge.net/project/tktable/tktable/2.10/Tktable2.10.tar.gz",
  "version":"2.10"
 }
