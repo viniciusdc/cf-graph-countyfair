@@ -50,7 +50,22 @@
    ]
   }
  ],
- "bad":false,
+ "bad":{
+  "exception":"local variable 'hash' referenced before assignment",
+  "traceback":[
+   "Traceback (most recent call last):",
+   "  File \"/root/repo/cf-scripts/conda_forge_tick/auto_tick.xsh\", line 579, in main",
+   "    hash_type=attrs.get('hash_type', 'sha256'))",
+   "  File \"/root/repo/cf-scripts/conda_forge_tick/auto_tick.xsh\", line 97, in run",
+   "    migrate_return = migrator.migrate(recipe_dir, attrs, **kwargs)",
+   "  File \"/root/repo/cf-scripts/conda_forge_tick/migrators.xsh\", line 334, in migrate",
+   "    new_patterns = self.get_hash_patterns('meta.yaml', urls, hash_type)",
+   "  File \"/root/repo/cf-scripts/conda_forge_tick/migrators.xsh\", line 274, in get_hash_patterns",
+   "    n = '{}: {}'.format(hash_type, hash)",
+   "UnboundLocalError: local variable 'hash' referenced before assignment",
+   ""
+  ]
+ },
  "conda-forge.yml":{
   "compiler_stack":"comp7",
   "max_py_ver":"37",
@@ -149,7 +164,7 @@
   }
  },
  "name":"r-spatialextremes",
- "new_version":false,
+ "new_version":"2.0_7.1",
  "pinning_version":"2019.07.19",
  "raw_meta_yaml":"{% set version = '2.0-7' %}\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-spatialextremes\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  url:\n    - {{ cran_mirror }}/src/contrib/SpatialExtremes_{{ version }}.tar.gz\n    - {{ cran_mirror }}/src/contrib/Archive/SpatialExtremes/SpatialExtremes_{{ version }}.tar.gz\n  sha256: a0809720aabb9f2766a95522b4fcf545544e615c2efb9175b73e5decd80d10f8\n\nbuild:\n  merge_build_host: True  # [win]\n  number: 1\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - {{ compiler('c') }}              # [not win]\n    - {{ compiler('m2w64_c') }}        # [win]\n    - {{posix}}filesystem        # [win]\n    - {{posix}}make\n    - {{posix}}sed               # [win]\n    - {{posix}}coreutils         # [win]\n    - {{posix}}zip               # [win]\n  host:\n    - r-base\n    - r-fields\n    - r-maps\n  run:\n    - r-base\n    - {{native}}gcc-libs         # [win]\n    - r-fields\n    - r-maps\n\ntest:\n  commands:\n    - $R -e \"library('SpatialExtremes')\"           # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('SpatialExtremes')\\\"\"  # [win]\n\nabout:\n  home: http://spatialextremes.r-forge.r-project.org/\n  license: GPL (>= 2)\n  summary: 'Tools for the statistical modelling of spatial extremes using max-stable processes,\n    copula or Bayesian hierarchical models. More precisely, this package allows (conditional)\n    simulations from various parametric max-stable models, analysis of the extremal\n    spatial dependence, the fitting of such processes using composite likelihoods or\n    least square (simple max-stable processes only), model checking and selection and\n    prediction. Other approaches (although not completely in agreement with the extreme\n    value theory) are available such as the use of (spatial) copula and Bayesian hierarchical\n    models assuming the so-called conditional assumptions. The latter approaches is\n    handled through an (efficient) Gibbs sampler. Some key references: Davison et al.\n    (2012) <doi:10.1214/11-STS376>, Padoan et al. (2010) <doi:10.1198/jasa.2009.tm08577>,\n    Dombry et al. (2013) <doi:10.1093/biomet/ass067>.'\n  license_family: GPL3\n  license_file: '{{ environ[\"PREFIX\"] }}/lib/R/share/licenses/GPL-2'\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n\n# Package: SpatialExtremes\n# Version: 2.0-7\n# Date: 2018-07-02\n# Title: Modelling Spatial Extremes\n# Authors@R: c(person(\"Mathieu\", \"Ribatet\", role = c(\"aut\", \"cre\"), email = \"mathieu.ribatet@umontpellier.fr\"), person(\"Richard\", \"Singleton\", role = \"ctb\"), person(\"R Core team\", role = \"ctb\"))\n# Depends: R (>= 1.8.0)\n# Imports: maps, fields\n# Description: Tools for the statistical modelling of spatial extremes using max-stable processes, copula or Bayesian hierarchical models. More precisely, this package allows (conditional) simulations from various parametric max-stable models, analysis of the extremal spatial dependence, the fitting of such processes using composite likelihoods or least square (simple max-stable processes only), model checking and selection and prediction. Other approaches (although not completely in agreement with the extreme value theory) are available such as the use of (spatial) copula and Bayesian hierarchical models assuming the so-called conditional assumptions. The latter approaches is handled through an (efficient) Gibbs sampler. Some key references: Davison et al. (2012) <doi:10.1214/11-STS376>, Padoan et al. (2010) <doi:10.1198/jasa.2009.tm08577>, Dombry et al. (2013) <doi:10.1093/biomet/ass067>.\n# License: GPL (>= 2)\n# URL: http://spatialextremes.r-forge.r-project.org/\n# NeedsCompilation: yes\n# Packaged: 2018-07-02 11:49:36 UTC; Mathieu\n# Author: Mathieu Ribatet [aut, cre], Richard Singleton [ctb], R Core team [ctb]\n# Maintainer: Mathieu Ribatet <mathieu.ribatet@umontpellier.fr>\n# Repository: CRAN\n# Date/Publication: 2018-07-02 12:30:02 UTC\n",
  "req":{
@@ -169,7 +184,6 @@
   ]
  },
  "smithy_version":"3.4.1",
- "time":1568086347.6287959,
  "url":[
   "https://cran.r-project.org/src/contrib/SpatialExtremes_2.0-7.tar.gz",
   "https://cran.r-project.org/src/contrib/Archive/SpatialExtremes/SpatialExtremes_2.0-7.tar.gz",

@@ -273,7 +273,7 @@
   }
  },
  "name":"osqp",
- "new_version":"0.6.1",
+ "new_version":"0.6.0",
  "pinning_version":"2019.08.27",
  "raw_meta_yaml":"{% set name = \"osqp\" %}\n{% set version = \"0.5.0\" %}\n{% set qdldl_version = \"0.1.3\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  - url: https://github.com/oxfordcontrol/osqp-python/archive/v{{ version }}.tar.gz\n    fn: osqp-python-{{ version }}.tar.gz\n    sha256: 6061c34745a152c143c4d0875aeaa01042e7e383f41ffbdffbe06a55f5a7caeb\n    patches:\n    - patches/0001-setup-use-NMake-on-windows.patch\n    - patches/0002-setup-do-not-use-different-output-folder-on-windows.patch\n    - patches/0003-also-use-NMake-in-codegen.patch\n\n  - url: https://github.com/oxfordcontrol/osqp/archive/v{{ version }}.tar.gz\n    fn: osqp-{{ version }}.tar.gz\n    sha256: e0932d1f7bc56dbe526bee4a81331c1694d94c570f8ac6a6cb413f38904e0f64\n    folder: osqp_sources\n  - url: https://github.com/oxfordcontrol/qdldl/archive/v{{ qdldl_version }}.tar.gz\n    fn: qdldl-{{ qdldl_version }}.tar.gz\n    sha256: a2c3a7d0c6a48b2fab7400fa8ca72a34fb1e3a19964b281c73564178f97afe54\n    folder: osqp_sources/lin_sys/direct/qdldl/qdldl_sources\n\nbuild:\n  number: 1\n  script: python -m pip install --no-deps --ignore-installed .\n  skip: true  # [win and py==27]\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n    - cmake\n  host:\n    - python\n    - pip\n    - numpy\n  run:\n    - python\n    - {{ pin_compatible('numpy') }}\n    - scipy >=0.13.2\n    - future\n    - vs2015_runtime                 # [win]\n\ntest:\n  imports:\n    - osqp\n    - osqp.codegen\n    - osqppurepy\n  requires:\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n    - cmake\n    - pytest\n  commands:\n    # codegen interface requires compiler + cmake\n    - python -m pytest --pyargs osqp\n\nabout:\n  home: https://osqp.org/\n  license: Apache-2.0\n  license_family: Apache\n  license_file: LICENSE\n  summary: 'Python interface for OSQP, the Operator Splitting QP Solver'\n  description: |\n    Python interface for OSQP, the Operator Splitting QP Solver.\n\n    To use the `codegen` interface, install `cmake` and an appropriate\n    compiler version. (We don't install this by default.)\n  doc_url: https://osqp.org/\n  dev_url: http://github.com/oxfordcontrol/osqp-python\n\nextra:\n  recipe-maintainers:\n    - dougalsutherland\n    - h-vetinari\n    - bstellato\n    - gbanjac\n",
  "req":{
@@ -292,7 +292,6 @@
   ]
  },
  "smithy_version":"3.4.1",
- "time":1568086355.8306115,
  "url":"https://github.com/oxfordcontrol/osqp-python/archive/v0.5.0.tar.gz",
  "version":"0.5.0"
 }
