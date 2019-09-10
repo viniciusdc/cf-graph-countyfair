@@ -67,7 +67,7 @@
    "summary":"A basic RT code used for atmospheric correction & atmospheric simulations"
   },
   "build":{
-   "number":"1002"
+   "number":"0"
   },
   "extra":{
    "recipe-maintainers":[
@@ -81,7 +81,7 @@
   },
   "package":{
    "name":"sixs",
-   "version":"1.1"
+   "version":"1.1.2"
   },
   "requirements":{
    "build":[
@@ -97,26 +97,28 @@
     "c_compiler_stub",
     "cxx_compiler_stub"
    ],
-   "host":null,
    "run":null
   },
   "source":{
-   "fn":"sixs-1.1.tar.gz",
-   "sha256":"4253664bfed35a659ac602d4472780df7c665d67021d495327f47eb7325a2d7e",
-   "url":"https://bitbucket.org/petebunting/6s/get/Version%201.1.tar.gz"
+   "patches":null,
+   "sha256":"499559146199471fee99eff0ed603ecb0f7d7cf5a0011436edfcb969d641d683",
+   "url":"https://bitbucket.org/petebunting/6s/downloads/sixs-1.1.2.tar.gz"
   },
   "test":{
    "files":[
     "Example_In_1.txt",
+    "Example_In_3.txt",
     "Example_In_1.txt",
-    "Example_In_1.txt"
+    "Example_In_3.txt",
+    "Example_In_1.txt",
+    "Example_In_3.txt"
    ]
   }
  },
  "name":"sixs",
  "new_version":false,
  "pinning_version":"2019.08.12",
- "raw_meta_yaml":"{% set name = \"sixs\" %}\n{% set version = \"1.1\" %}\n{% set sha256 = \"4253664bfed35a659ac602d4472780df7c665d67021d495327f47eb7325a2d7e\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  fn: {{ name }}-{{ version }}.tar.gz\n  url: https://bitbucket.org/petebunting/6s/get/Version%201.1.tar.gz\n  sha256: {{ sha256 }}\n\nbuild:\n  number: 1002\n\nrequirements:\n  build:\n    - cmake\n    - {{ compiler('fortran') }}        # [unix]\n    - {{ compiler('m2w64_fortran') }}  # [win]\n    - {{ compiler('c') }}              # [unix]\n    - {{ compiler('cxx') }}            # [unix]\n    - {{ compiler('m2w64_c') }}        # [win]\n  host:\n  run:\n    - m2w64-gcc-libgfortran  # [win]\n\n\ntest:\n  files:\n  - Example_In_1.txt\n\nabout:\n  home: https://bitbucket.org/petebunting/6s\n  summary: A basic RT code used for atmospheric correction & atmospheric\n    simulations\n  license: MIT\n  license_family: MIT\n  description:  |\n    The 6S code is a basic RT code used for calculation of lookup\n    tables in the MODIS atmospheric correction algorithm.\n    It enables accurate simulations of satellite and plane observation,\n    accounting for elevated targets, use of anisotropic and lambertian surfaces\n    and calculation of gaseous absorption. 6S website is http://6s.ltdri.org.\n\nextra:\n  recipe-maintainers:\n    - robintw\n    - danclewley\n",
+ "raw_meta_yaml":"{% set version = \"1.1.2\" %}\n\npackage:\n  name: sixs\n  version: {{ version }}\n\nsource:\n  url: https://bitbucket.org/petebunting/6s/downloads/sixs-{{ version }}.tar.gz\n  sha256: 499559146199471fee99eff0ed603ecb0f7d7cf5a0011436edfcb969d641d683\n  patches:\n      - no_ffpe-summary.patch  # [osx]\n\nbuild:\n  number: 0\n\nrequirements:\n  build:\n    - cmake\n    - {{ compiler('fortran') }}        # [unix]\n    - {{ compiler('m2w64_fortran') }}  # [win]\n    - {{ compiler('c') }}              # [unix]\n    - {{ compiler('cxx') }}            # [unix]\n    - {{ compiler('m2w64_c') }}        # [win]\n  run:\n    - m2w64-gcc-libgfortran  # [win]\n\ntest:\n  files:\n  - Example_In_1.txt\n  - Example_In_3.txt\n\nabout:\n  home: https://bitbucket.org/petebunting/6s\n  summary: A basic RT code used for atmospheric correction & atmospheric\n    simulations\n  license: MIT\n  license_family: MIT\n  description:  |\n    The 6S code is a basic RT code used for calculation of lookup\n    tables in the MODIS atmospheric correction algorithm.\n    It enables accurate simulations of satellite and plane observation,\n    accounting for elevated targets, use of anisotropic and lambertian surfaces\n    and calculation of gaseous absorption. 6S website is http://6s.ltdri.org.\n\nextra:\n  recipe-maintainers:\n    - robintw\n    - danclewley\n",
  "req":{
   "__set__":true,
   "elements":[
@@ -130,5 +132,5 @@
  },
  "smithy_version":"3.4.1",
  "url":"https://bitbucket.org/petebunting/6s/get/Version%201.1.tar.gz",
- "version":"1.1"
+ "version":"1.1.2"
 }
