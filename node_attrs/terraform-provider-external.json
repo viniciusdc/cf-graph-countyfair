@@ -109,11 +109,11 @@
    "number":"0",
    "script":[
     "pushd src/github.com/terraform-providers/terraform-provider-external",
-    "go build -v -o %GOBIN%\\terraform-provider-external_v1.1.2_x4 .",
+    "go build -v -o %GOBIN%\\terraform-provider-external_v1.2.0_x4 .",
     "pushd src/github.com/terraform-providers/terraform-provider-external",
-    "go build -v -o $GOBIN/terraform-provider-external_v1.1.2_x4 .",
+    "go build -v -o $GOBIN/terraform-provider-external_v1.2.0_x4 .",
     "pushd src/github.com/terraform-providers/terraform-provider-external",
-    "go build -v -o $GOBIN/terraform-provider-external_v1.1.2_x4 ."
+    "go build -v -o $GOBIN/terraform-provider-external_v1.2.0_x4 ."
    ]
   },
   "extra":{
@@ -125,7 +125,7 @@
   },
   "package":{
    "name":"terraform-provider-external",
-   "version":"1.1.2"
+   "version":"1.2.0"
   },
   "requirements":{
    "build":[
@@ -142,34 +142,34 @@
   "source":[
    {
     "folder":"src/github.com/terraform-providers/terraform-provider-external",
-    "sha256":"b50bf5517d6f327b47e7e4a7bd78d931cb3764ad35722e755576168ed6817a64",
-    "url":"https://github.com/terraform-providers/terraform-provider-external/archive/v1.1.2.tar.gz"
+    "sha256":"3a4b44290492d481f061f045b71d08d33fb34a5d77af3ff590337c1050460202",
+    "url":"https://github.com/terraform-providers/terraform-provider-external/archive/v1.2.0.tar.gz"
    },
    {
     "folder":"src/github.com/terraform-providers/terraform-provider-external",
-    "sha256":"b50bf5517d6f327b47e7e4a7bd78d931cb3764ad35722e755576168ed6817a64",
-    "url":"https://github.com/terraform-providers/terraform-provider-external/archive/v1.1.2.tar.gz"
+    "sha256":"3a4b44290492d481f061f045b71d08d33fb34a5d77af3ff590337c1050460202",
+    "url":"https://github.com/terraform-providers/terraform-provider-external/archive/v1.2.0.tar.gz"
    },
    {
     "folder":"src/github.com/terraform-providers/terraform-provider-external",
-    "sha256":"b50bf5517d6f327b47e7e4a7bd78d931cb3764ad35722e755576168ed6817a64",
-    "url":"https://github.com/terraform-providers/terraform-provider-external/archive/v1.1.2.tar.gz"
+    "sha256":"3a4b44290492d481f061f045b71d08d33fb34a5d77af3ff590337c1050460202",
+    "url":"https://github.com/terraform-providers/terraform-provider-external/archive/v1.2.0.tar.gz"
    }
   ],
   "test":{
    "commands":[
-    "bash -euf -c \"echo 'provider \\\"external\\\" { version=\\\"1.1.2\\\" }' > init.tf\"",
+    "bash -euf -c \"echo 'provider \\\"external\\\" { version=\\\"1.2.0\\\" }' > init.tf\"",
     "terraform init",
     "test -f .terraform/plugins/_/lock.json",
-    "test ! -f .terraform/plugins/_/terraform-provider-external_v1.1.2_x4",
-    "bash -euf -c \"echo 'provider \\\"external\\\" { version=\\\"1.1.2\\\" }' > init.tf\"",
+    "test ! -f .terraform/plugins/_/terraform-provider-external_v1.2.0_x4",
+    "bash -euf -c \"echo 'provider \\\"external\\\" { version=\\\"1.2.0\\\" }' > init.tf\"",
     "terraform init",
     "test -f .terraform/plugins/_/lock.json",
-    "test ! -f .terraform/plugins/_/terraform-provider-external_v1.1.2_x4",
-    "bash -euf -c \"echo 'provider \\\"external\\\" { version=\\\"1.1.2\\\" }' > init.tf\"",
+    "test ! -f .terraform/plugins/_/terraform-provider-external_v1.2.0_x4",
+    "bash -euf -c \"echo 'provider \\\"external\\\" { version=\\\"1.2.0\\\" }' > init.tf\"",
     "terraform init",
     "test -f .terraform/plugins/_/lock.json",
-    "test ! -f .terraform/plugins/_/terraform-provider-external_v1.1.2_x4"
+    "test ! -f .terraform/plugins/_/terraform-provider-external_v1.2.0_x4"
    ],
    "requires":[
     "m2-bash",
@@ -180,7 +180,7 @@
  "name":"terraform-provider-external",
  "new_version":"1.2.0",
  "pinning_version":"2019.06.18",
- "raw_meta_yaml":"{% set provider = \"External\" %}\n{% set goname = \"github.com/terraform-providers/terraform-provider-\"+provider.lower() %}\n{% set version = \"1.1.2\" %}\n\n{% set name = goname.split('/')[-1] %}\n{% set pkg_src = ('src/'+goname).replace(\"/\",os.sep) %}\n\n{% set x4_plugin = name + '_v' + version + \"_x4\" + (\".exe\" if win else \"\")%}\n\n{% set sha256 = \"b50bf5517d6f327b47e7e4a7bd78d931cb3764ad35722e755576168ed6817a64\" %}\n{% set sha256_win64 = \"957ec89c005325fcd84cf71b286e39c22d4bce971a3f63220d0c5b2f0acda320\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  - folder:  {{ pkg_src }}\n    url: https://{{ goname }}/archive/v{{ version }}.tar.gz\n    sha256: {{ sha256 }}\n\n\nbuild:\n  number: 0\n  script:\n    - pushd {{ pkg_src }}\n    - go build -v -o $GOBIN/{{ x4_plugin }} .  # [unix]\n    - go build -v -o %GOBIN%\\{{ x4_plugin }} .  # [win]\n\nrequirements:\n  build:\n    - {{ compiler('go') }} >=1.11.3\n  run:\n    - terraform >=0.10  # [unix]\n    - terraform >=0.11.11  # [win]\n\ntest:\n  requires:         # [win]\n    - m2-bash       # [win]\n    - m2-coreutils  # [win]\n\n  commands:\n    - bash -euf -c \"echo 'provider \\\"{{ provider|lower }}\\\" { version=\\\"{{ version }}\\\" }' > init.tf\"\n \n    - terraform init\n    # Tests that no plugins were downloaded\n    - test -f .terraform/plugins/{{ goos }}_{{ goarch }}/lock.json\n    - test ! -f .terraform/plugins/{{ goos }}_{{ goarch }}/{{ x4_plugin }}\n\nabout:\n  home: https://www.terraform.io\n  license: MPL 2.0\n  summary: The Terraform {{ provider }} provider\n  doc_url: https://www.terraform.io/docs/providers/{{ provider|lower }}/index.html\n  dev_url: https://github.com/terraform-providers/{{ name }}\n\nextra:\n  recipe-maintainers:\n    - sodre\n",
+ "raw_meta_yaml":"{% set provider = \"External\" %}\n{% set goname = \"github.com/terraform-providers/terraform-provider-\"+provider.lower() %}\n{% set version = \"1.2.0\" %}\n\n{% set name = goname.split('/')[-1] %}\n{% set pkg_src = ('src/'+goname).replace(\"/\",os.sep) %}\n\n{% set x4_plugin = name + '_v' + version + \"_x4\" + (\".exe\" if win else \"\")%}\n\n{% set sha256 = \"3a4b44290492d481f061f045b71d08d33fb34a5d77af3ff590337c1050460202\" %}\n{% set sha256_win64 = \"957ec89c005325fcd84cf71b286e39c22d4bce971a3f63220d0c5b2f0acda320\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  - folder:  {{ pkg_src }}\n    url: https://{{ goname }}/archive/v{{ version }}.tar.gz\n    sha256: {{ sha256 }}\n\n\nbuild:\n  number: 0\n  script:\n    - pushd {{ pkg_src }}\n    - go build -v -o $GOBIN/{{ x4_plugin }} .  # [unix]\n    - go build -v -o %GOBIN%\\{{ x4_plugin }} .  # [win]\n\nrequirements:\n  build:\n    - {{ compiler('go') }} >=1.11.3\n  run:\n    - terraform >=0.10  # [unix]\n    - terraform >=0.11.11  # [win]\n\ntest:\n  requires:         # [win]\n    - m2-bash       # [win]\n    - m2-coreutils  # [win]\n\n  commands:\n    - bash -euf -c \"echo 'provider \\\"{{ provider|lower }}\\\" { version=\\\"{{ version }}\\\" }' > init.tf\"\n \n    - terraform init\n    # Tests that no plugins were downloaded\n    - test -f .terraform/plugins/{{ goos }}_{{ goarch }}/lock.json\n    - test ! -f .terraform/plugins/{{ goos }}_{{ goarch }}/{{ x4_plugin }}\n\nabout:\n  home: https://www.terraform.io\n  license: MPL 2.0\n  summary: The Terraform {{ provider }} provider\n  doc_url: https://www.terraform.io/docs/providers/{{ provider|lower }}/index.html\n  dev_url: https://github.com/terraform-providers/{{ name }}\n\nextra:\n  recipe-maintainers:\n    - sodre\n",
  "req":{
   "__set__":true,
   "elements":[
@@ -189,7 +189,7 @@
   ]
  },
  "smithy_version":"3.3.7",
- "time":1568072498.1483667,
+ "time":1568086355.6116748,
  "url":"https://github.com/terraform-providers/terraform-provider-external/archive/v1.1.2.tar.gz",
- "version":"1.1.2"
+ "version":"1.2.0"
 }
