@@ -304,7 +304,7 @@
   }
  },
  "name":"netcdf4",
- "new_version":"1.5.2rel",
+ "new_version":false,
  "pinning_version":"2019.06.06",
  "raw_meta_yaml":"{% set version = \"1.5.1.2\" %}\n\npackage:\n  name: netcdf4\n  version: {{ version }}\n\nsource:\n  url: https://github.com/Unidata/netcdf4-python/archive/v{{ version }}rel.tar.gz\n  sha256: b58ee907207d01d08b0cec2e2c2cb8d76cd435e12290a017512adbcb3d931e58\n\nbuild:\n  skip: True  # [win and vc<14]\n  number: 1\n  entry_points:\n    - ncinfo = netCDF4.utils:ncinfo\n    - nc4tonc3 = netCDF4.utils:nc4tonc3\n    - nc3tonc4 = netCDF4.utils:nc3tonc4\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n  host:\n    - python\n    - pip\n    - numpy\n    - cython >=0.19\n    - cftime >=1.0.1\n    - hdf5\n    - libnetcdf\n  run:\n    - python\n    - setuptools\n    - {{ pin_compatible('numpy') }}\n    - cftime\n    - hdf5\n    - libnetcdf\n\ntest:\n  imports:\n    - netCDF4\n    - cftime\n  commands:\n    - ncinfo -h\n    - nc4tonc3 -h\n    - nc3tonc4 -h\n\nabout:\n  home: http://github.com/Unidata/netcdf4-python\n  license: OSI Approved and MIT\n  license_file: COPYING\n  summary: 'Provides an object-oriented python interface to the netCDF version 4 library'\n  dev_url: https://github.com/Unidata/netcdf4-python\n  doc_url: https://unidata.github.io/netcdf4-python\n\nextra:\n  recipe-maintainers:\n    - ocefpaf\n    - pelson\n    - dopplershift\n    - xylar\n",
  "req":{
