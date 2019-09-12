@@ -34,7 +34,7 @@
    "summary":"The Dakota project delivers software for optimization and uncertainty quantification."
   },
   "build":{
-   "number":"0",
+   "number":"1",
    "skip":true
   },
   "extra":{
@@ -75,6 +75,7 @@
     "swig",
     "doxygen",
     "gsl",
+    "hdf5",
     "openmpi",
     "pybind11",
     "boost-cpp",
@@ -86,6 +87,7 @@
     "swig",
     "doxygen",
     "gsl",
+    "hdf5",
     "openmpi",
     "pybind11",
     "boost-cpp",
@@ -96,30 +98,19 @@
     "numpy",
     "swig",
     "doxygen",
-    "gsl"
+    "gsl",
+    "hdf5"
    ],
    "run":[
-    "openmpi",
     "boost-cpp",
     "python",
     "compatible_pin_stub",
-    "nomkl",
-    "openblas",
-    "gsl",
-    "openmpi",
     "boost-cpp",
     "python",
     "compatible_pin_stub",
-    "nomkl",
-    "openblas",
-    "gsl",
-    "openmpi",
     "boost-cpp",
     "python",
-    "compatible_pin_stub",
-    "nomkl",
-    "openblas",
-    "gsl"
+    "compatible_pin_stub"
    ]
   },
   "source":{
@@ -139,7 +130,7 @@
     "colin_boost170.patch"
    ],
    "sha256":"2a0d2f426c0f369cfa3c0b341061553e651a6f60377a59f83251d9d3c3821bad",
-   "url":"https://dakota.sandia.gov/sites/default/files/distributions/public/dakota-6.10-release-public.src.tar.gz"
+   "url":"https://github.com/looooo/dakota-feedstock/releases/download/6.10/dakota-6.10-release-public.src.tar.gz"
   },
   "test":{
    "imports":[
@@ -161,7 +152,7 @@
  "name":"dakota",
  "new_version":false,
  "pinning_version":"2019.08.12",
- "raw_meta_yaml":"{% set name = \"dakota\" %}\n{% set version = \"6.10\" %}\n{% set sha256sum = \"2a0d2f426c0f369cfa3c0b341061553e651a6f60377a59f83251d9d3c3821bad\" %}\n\npackage:\n    name: {{ name }}\n    version: {{ version }}\n\nsource:\n    fn: dakota{{ version }}.tar.gz\n    url: https://dakota.sandia.gov/sites/default/files/distributions/public/dakota-{{ version }}-release-public.src.tar.gz\n    sha256: {{ sha256sum }}\n    patches:\n        - surfpack_py_bindings.patch\n        - gsl.patch\n        - python.patch\n        - colin_boost170.patch\n\nbuild:\n    number: 0\n    skip: true  # [win or osx or py<37]\n\nrequirements:\n    build:\n        - cmake\n        - {{ compiler('c') }}\n        - {{ compiler('cxx') }}\n        - {{ compiler('fortran') }}\n    host:\n        - openmpi\n        - pybind11\n        - boost-cpp\n        - libblas\n        - libcblas\n        - python\n        - perl\n        - numpy\n        - swig\n        - doxygen\n        - gsl\n        # - trilinos  # needs newer trilinos\n    run:\n        - openmpi\n        - boost-cpp\n        - python\n        - {{ pin_compatible(\"numpy\") }}\n        - nomkl\n        - openblas\n        - gsl\n        # - trilinos\ntest:\n    imports:\n        - dakota\n        - dakota.interfacing\n        - dakota.interfacing.dprepro\n        - pysurfpack\n\n\nabout:\n    home: https://dakota.sandia.gov\n    license: LGPL-3.0\n    license_family: LGPL\n    license_file: LICENSE\n    summary: 'The Dakota project delivers software for optimization and uncertainty quantification.'\n    description: |\n        The Dakota project delivers both state-of-the-art research and robust, \n        usable software for optimization and UQ. Broadly, the Dakota software's \n        advanced parametric analyses enable design exploration, model calibration, \n        risk analysis, and quantification of margins and uncertainty with computational\n        models. The Dakota toolkit provides a flexible, extensible interface \n        between such simulation codes and its iterative systems analysis methods.\n    doc_url: https://dakota.sandia.gov/content/610-reference-manual\n    dev_url: https://dakota.sandia.gov/\n\nextra:\n    recipe-maintainers:\n        - looooo\n",
+ "raw_meta_yaml":"{% set name = \"dakota\" %}\n{% set version = \"6.10\" %}\n{% set sha256sum = \"2a0d2f426c0f369cfa3c0b341061553e651a6f60377a59f83251d9d3c3821bad\" %}\n\npackage:\n    name: {{ name }}\n    version: {{ version }}\n\nsource:\n    fn: dakota{{ version }}.tar.gz\n    url: https://github.com/looooo/dakota-feedstock/releases/download/{{ version }}/dakota-{{ version }}-release-public.src.tar.gz\n    # url: https://dakota.sandia.gov/sites/default/files/distributions/public/dakota-{{ version }}-release-public.src.tar.gz\n    sha256: {{ sha256sum }}\n    patches:\n        - surfpack_py_bindings.patch\n        - gsl.patch\n        - python.patch\n        - colin_boost170.patch\n\nbuild:\n    number: 1\n    skip: true  # [win or osx or py<37]\n\nrequirements:\n    build:\n        - cmake\n        - {{ compiler('c') }}\n        - {{ compiler('cxx') }}\n        - {{ compiler('fortran') }}\n    host:\n        - openmpi\n        - pybind11\n        - boost-cpp\n        - libblas\n        - libcblas\n        - python\n        - perl\n        - numpy\n        - swig\n        - doxygen\n        - gsl\n        - hdf5\n        # - trilinos  # needs newer trilinos\n    run:\n        - boost-cpp\n        - python\n        - {{ pin_compatible(\"numpy\") }}\n        # - trilinos\ntest:\n    imports:\n        - dakota\n        - dakota.interfacing\n        - dakota.interfacing.dprepro\n        - pysurfpack\n\n\nabout:\n    home: https://dakota.sandia.gov\n    license: LGPL-3.0\n    license_family: LGPL\n    license_file: LICENSE\n    summary: 'The Dakota project delivers software for optimization and uncertainty quantification.'\n    description: |\n        The Dakota project delivers both state-of-the-art research and robust, \n        usable software for optimization and UQ. Broadly, the Dakota software's \n        advanced parametric analyses enable design exploration, model calibration, \n        risk analysis, and quantification of margins and uncertainty with computational\n        models. The Dakota toolkit provides a flexible, extensible interface \n        between such simulation codes and its iterative systems analysis methods.\n    doc_url: https://dakota.sandia.gov/content/610-reference-manual\n    dev_url: https://dakota.sandia.gov/\n\nextra:\n    recipe-maintainers:\n        - looooo\n",
  "req":{
   "__set__":true,
   "elements":[
@@ -173,11 +164,10 @@
    "doxygen",
    "fortran_compiler_stub",
    "gsl",
+   "hdf5",
    "libblas",
    "libcblas",
-   "nomkl",
    "numpy",
-   "openblas",
    "openmpi",
    "perl",
    "pybind11",
