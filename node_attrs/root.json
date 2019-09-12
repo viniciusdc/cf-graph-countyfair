@@ -211,7 +211,7 @@
   },
   "build":{
    "ignore_prefix_files":null,
-   "number":"18",
+   "number":"0",
    "run_exports":[
     "subpackage_stub",
     "subpackage_stub",
@@ -237,7 +237,7 @@
   },
   "package":{
    "name":"root",
-   "version":"6.18.00"
+   "version":"6.18.04"
   },
   "requirements":{
    "build":[
@@ -273,7 +273,7 @@
     "libcblas",
     "afterimage",
     "cfitsio",
-    "clangdev=5.0.0",
+    "clangdev =5.0.0",
     "clang_variant * cling_6.16.00",
     "davix >=0.7.2",
     "fftw",
@@ -287,7 +287,7 @@
     "librsvg",
     "libtiff",
     "libxml2",
-    "llvmdev==5",
+    "llvmdev ==5",
     "lz4",
     "lz4-c",
     "numpy",
@@ -306,7 +306,7 @@
     "libcblas",
     "afterimage",
     "cfitsio",
-    "clangdev=5.0.0",
+    "clangdev =5.0.0",
     "clang_variant * cling_6.16.00",
     "davix >=0.7.2",
     "fftw",
@@ -321,7 +321,7 @@
     "librsvg",
     "libtiff",
     "libxml2",
-    "llvmdev==5",
+    "llvmdev ==5",
     "lz4",
     "lz4-c",
     "numpy",
@@ -344,7 +344,7 @@
     "fortran_compiler_stub",
     "afterimage",
     "cfitsio",
-    "clangdev=5.0.0",
+    "clangdev =5.0.0",
     "clang_variant * cling_6.16.00",
     "davix >=0.7.2",
     "fftw",
@@ -359,7 +359,7 @@
     "librsvg",
     "libtiff",
     "libxml2",
-    "llvmdev==5",
+    "llvmdev ==5",
     "lz4",
     "lz4-c",
     "numpy",
@@ -470,21 +470,21 @@
   "source":{
    "folder":"root-source",
    "patches":[
-    "patches/root-6.18.02-dont-use-cmake-cxx-standard.patch",
-    "patches/root-6.18.02-force-search-of-build-related-files.patch",
+    "patches/root-6.20.00-dont-use-cmake-cxx-standard.patch",
+    "patches/root-6.20.00-force-search-of-build-related-files.patch",
     "patches/root-x.xx.xx_cling-runtime-sysroot.patch",
-    "patches/root-6.18.02-dont-use-cmake-cxx-standard.patch",
-    "patches/root-6.18.02-force-search-of-build-related-files.patch",
+    "patches/root-6.20.00-dont-use-cmake-cxx-standard.patch",
+    "patches/root-6.20.00-force-search-of-build-related-files.patch",
     "patches/root-x.xx.xx_cling-runtime-sysroot.patch",
     "patches/root-x.xx.xx_python_mac_os.patch",
     "patches/root-x.xx.xx-copy-abspath-headers.patch",
     "patches/root-x.xx.xx-osx-remove-hardcoded-sysroot.patch",
-    "patches/root-6.18.02-dont-use-cmake-cxx-standard.patch",
-    "patches/root-6.18.02-force-search-of-build-related-files.patch",
+    "patches/root-6.20.00-dont-use-cmake-cxx-standard.patch",
+    "patches/root-6.20.00-force-search-of-build-related-files.patch",
     "patches/root-x.xx.xx_cling-runtime-sysroot.patch"
    ],
-   "sha256":"ee11687172a5d692a082ebfbeea4e0d5fb2f65db88968c0327d10793561c2c1b",
-   "url":"https://github.com/root-project/root/archive/v6-18-00.tar.gz"
+   "sha256":"82421a5f0486a2c66170300285dce49a961e3459cb5290f6fa579ef617dc8b0a",
+   "url":"https://github.com/root-project/root/archive/v6-18-04.tar.gz"
   },
   "test":{
    "commands":[
@@ -545,7 +545,7 @@
  "name":"root",
  "new_version":"6-19-01",
  "pinning_version":"2019.09.08",
- "raw_meta_yaml":"{% set name = \"root\" %}\n{% set version = \"6.18.00\" %}\n{% set hash = \"ee11687172a5d692a082ebfbeea4e0d5fb2f65db88968c0327d10793561c2c1b\" %}\n{% set clang_version = \"5.0.0\" %}\n{% set clang_patches_version = \"6.16.00\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n{%- if \"ROOT_JENKINS_GIT_REV\" in os.environ %}\n  git_url: {{ os.environ.get(\"ROOT_JENKINS_GIT_URL\", \"https://github.com/root-project/root.git\") }}\n  git_rev: {{ os.environ[\"ROOT_JENKINS_GIT_REV\"] }}\n{%- else %}\n  url: https://github.com/root-project/root/archive/v{{ version|replace(\".\",\"-\") }}.tar.gz\n  sha256: {{ hash }}\n{%- endif %}\n  folder: root-source\n  patches:\n    - patches/root-6.18.02-dont-use-cmake-cxx-standard.patch\n    - patches/root-6.18.02-force-search-of-build-related-files.patch\n    - patches/root-x.xx.xx_cling-runtime-sysroot.patch\n    - patches/root-x.xx.xx_python_mac_os.patch  # [osx]\n    - patches/root-x.xx.xx-copy-abspath-headers.patch  # [osx]\n    - patches/root-x.xx.xx-osx-remove-hardcoded-sysroot.patch  # [osx]\n\nbuild:\n  number: 18\n  skip: True  # [win]\n  run_exports:\n    # https://abi-laboratory.pro/?view=timeline&l=root\n    - {{ pin_subpackage('root', max_pin='x.x.x') }}\n  ignore_prefix_files:\n    # FIXME: Figure out how to correct the paths in the PCH\n    - etc/allDict.cxx.pch  # [osx]\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n    - {{ compiler('fortran') }}\n    - cmake\n    - git\n    - pkg-config\n    - sed\n    # Required for OpenGL support\n    # See https://conda-forge.org/docs/maintainer/knowledge_base.html?highlight=cdt#libgl\n    - {{ cdt('mesa-libgl-devel') }}  # [linux]\n    - {{ cdt('mesa-dri-drivers') }}  # [linux]\n    - {{ cdt('libselinux') }}  # [linux]\n    - {{ cdt('libxdamage') }}  # [linux]\n    - {{ cdt('libxxf86vm') }}  # [linux]\n  host:\n    - libblas\n    - libcblas\n    - {{ compiler('c') }}  # [linux]\n    - {{ compiler('cxx') }}  # [linux]\n    - {{ compiler('fortran') }}  # [linux]\n    - afterimage\n    - cfitsio\n    - clangdev={{ clang_version }}\n    - clang_variant * cling_{{ clang_patches_version }}\n    - davix >=0.7.2\n    - fftw\n    - freetype\n    - gdk-pixbuf\n    - giflib\n    - glew\n    - graphviz\n    - gsl\n    - krb5  # [osx]\n    - libglu  # [linux]\n    - libpng\n    - librsvg\n    - libtiff\n    - libxml2\n    - llvmdev==5\n    - lz4\n    - lz4-c\n    # - mysql\n    - numpy\n    - openssl\n    - pcre\n    # - postgresql\n    - pythia8\n    - python\n    - qt\n    - sqlite\n    - tbb\n    - tbb-devel\n    - vdt\n    - xorg-libx11  # [linux]\n    - xorg-libxau  # [linux]\n    - xorg-libxcursor  # [linux]\n    - xorg-libxext  # [linux]\n    - xorg-libxfixes  # [linux]\n    - xorg-libxft  # [linux]\n    - xorg-libxpm  # [linux]\n    - xrootd\n    - xz\n    # FIXME: The generated allDict.cxx.pch is dependent on versin of the C++ headers used\n    # As it is shipped in the macOS binaries we have to use the same one as in the compilers package\n    - libcxx =4  # [osx]\n  run:\n    - compilers\n    - {{ pin_compatible('numpy') }}\n    - afterimage\n    - cfitsio\n    # - clangdev={{ clang_version }}\n    # - clang_variant * cling_{{ version }}\n    - davix\n    - fftw\n    - gdk-pixbuf\n    - giflib\n    - glew\n    - graphviz\n    - libglu  # [linux]\n    - librsvg\n    - lz4\n    # - mysql\n    - metakernel\n    - notebook\n    - pcre\n    # - postgresql\n    - pythia8\n    - python\n    - qt\n    - tbb\n    - tbb-devel\n    - vdt\n    - xorg-libx11  # [linux]\n    - xorg-libxau  # [linux]\n    - xorg-libxcursor  # [linux]\n    - xorg-libxext  # [linux]\n    - xorg-libxft  # [linux]\n    - xorg-libxpm  # [linux]\n    - xrootd\n    # FIXME: See comment at end of host requirements\n    - libcxx =4  # [osx]\n  run_constrained:\n    # Items listed here conflict with ROOT\n    # FIXME Add support in ROOT for building with an external cling\n    - cling 9999\n    - root5 9999\n\ntest:\n  requires:\n    - ipython\n  imports:\n    - ROOT\n    - JupyROOT\n  commands:\n    - ipython -c 'import JsMVA'\n    - root -l -b -q -x\n    - root -l -b -q -x ${RECIPE_DIR}/test.cpp\n    - root -l -b -q -x ${RECIPE_DIR}/test.cpp++\n    # When testing with -e, explicitly set the return code to zero\n    - root -b -l -q -x -e '2+3; 0'\n    - root -b -l -q -x -e 'gSystem->LoadAllLibraries(); 0'\n    - echo ${CONDA_BUILD_SYSROOT}  # [osx]\n    # There should be no hard coded references to the SDK\n    - \"! grep -r ${CONDA_BUILD_SYSROOT} ${CONDA_PREFIX}/lib\"  # [osx]\n    # Check the thisroot scripts work\n    - thisroot.sh\n    - thisroot.csh\n    - thisroot.fish\n    # Test if OpenGL is working\n    - root -b -l -q -x -e 'gStyle->SetCanvasPreferGL(kTRUE); c = new TCanvas(); if (!c->UseGL()) { throw std::runtime_error(\"OpenGL does not appear to be working\"); }'\n    # This test will fail due to lack of graphics support but try it anyway\n    # It should exit with \"TEveException: TEveManager::Create ROOT is running in batch mode.\"\n    - root -b -l -q -x \"${ROOTSYS}/tutorials/eve/geom_lhcb.C\" || true\n    # This tutorial uses davix to access a ROOT file over HTTP\n    - root -b -l -q -x \"${ROOTSYS}/tutorials/tree/run_h1analysis.C\"\n\nabout:\n  home: https://root.cern/\n  license: LGPL-2.1\n  license_family: LGPL\n  license_file: root-source/LICENSE\n  doc_url: https://root.cern/documentation\n  dev_url: https://github.com/root-project/root/\n  summary: |\n      ROOT is a modular scientific software toolkit. It provides all the functionalities needed to deal with big data\n      processing, statistical analysis, visualisation and storage. It is mainly written in C++ but integrated with other\n      languages such as Python and R.\n  description: |\n      Almost everything in ROOT should be supported in this Conda package; ROOT was built with lots of options turned\n      on. Here are a few things to try:\n\n      * `root`: you can start up a session and see the splash screen; Control-D to exit.\n      * `python` followed by `import ROOT` will load PyROOT.\n      * `root --notebook` will start a notebook server with a ROOT kernel choice.\n      * `rootbrowse` will open a TBrowser session so you can look through files.\n      * `root -l -q $ROOTSYS/tutorials/dataframe/df013_InspectAnalysis.C` will run a DataFrame example with an animated plot.\n      * `root -b -q -l -n -e \"std::cout << TROOT::GetTutorialDir() << std::endl;\"` will print the tutorial dir.\n      * `root -b -l -q -e 'std::cout << (float) TPython::Eval(\"1+1\") << endl;'` will run Python from C++ ROOT.\n\n      See the post [here](https://iscinumpy.gitlab.io/post/root-conda/) for more information about using this Conda package.\n\n      Caveats\n      =======\n\n      General\n      -------\n\n      The ROOT package will prepare the required compilers (see below). Everything in Conda is symlinked into\n      `$CONDA_PREFIX` if you build things by hand; tools like CMake should find it automatically. The `thisroot.*`\n      scripts should not be used. Graphics, `rootbrowse`, etc. all should work.\n\n      Linux\n      -----\n\n      On Linux, there really aren't any special caveats, just a few general to Conda itself, and the compilers package.\n      When ROOT is in the active environment, `g++` and `$CXX` are the conda compilers, GCC 7.3.\n\n      ROOT was built with and will report `-std=c++17` from `root-config`.\n\n\n      macOS\n      -----\n\n      The caveats on macOS are a bit larger, but have the same reason for existing as on Linux. When ROOT is in the\n      active environment, `clang++` and `$CXX` will be the Conda compilers; but those compilers are Clang 4.0 and the\n      macOS 10.9 SDK.  You must install the macOS 10.9 SDK, [as mentioned in the conda\n      documentation](https://conda.io/projects/conda-build/en/latest/source/compiler-tools.html#macos-sdk), if you want\n      to build anything.  And, while normal ROOT and PyROOT are fine, commands like `root MyFile.C+` actively build\n      things, so this is probably something many users will want to do. Once the macOS is downloaded and extracted on\n      your system, you should set `CONDA_BUILD_SYSROOT` to point to the SDK root location, such as\n      `/opt/MacOSX10.9.sdk`. This will not be necessary once ROOT moves to using LLVM 8.\n\n      ROOT does not link to Python directly in order to properly support PyROOT from Python, but has been patched to\n      provide the correct behavior to allow PyROOT to also be used from ROOT's C++ command line.\n\n      ROOT was built with and will report `-std=c++1z` from `root-config`.\n\nextra:\n  recipe-maintainers:\n    - chrisburr\n    - henryiii\n    - bluehood\n    - egpbos\n",
+ "raw_meta_yaml":"{% set name = \"root\" %}\n{% set version = \"6.18.04\" %}\n{% set hash = \"82421a5f0486a2c66170300285dce49a961e3459cb5290f6fa579ef617dc8b0a\" %}\n{% set clang_version = \"5.0.0\" %}\n{% set clang_patches_version = \"6.16.00\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n{%- if \"ROOT_JENKINS_GIT_REV\" in os.environ %}\n  git_url: {{ os.environ.get(\"ROOT_JENKINS_GIT_URL\", \"https://github.com/root-project/root.git\") }}\n  git_rev: {{ os.environ[\"ROOT_JENKINS_GIT_REV\"] }}\n{%- else %}\n  url: https://github.com/root-project/root/archive/v{{ version|replace(\".\",\"-\") }}.tar.gz\n  sha256: {{ hash }}\n{%- endif %}\n  folder: root-source\n  patches:\n    - patches/root-6.20.00-dont-use-cmake-cxx-standard.patch\n    - patches/root-6.20.00-force-search-of-build-related-files.patch\n    - patches/root-x.xx.xx_cling-runtime-sysroot.patch\n    - patches/root-x.xx.xx_python_mac_os.patch  # [osx]\n    - patches/root-x.xx.xx-copy-abspath-headers.patch  # [osx]\n    - patches/root-x.xx.xx-osx-remove-hardcoded-sysroot.patch  # [osx]\n\nbuild:\n  number: 0\n  skip: True  # [win]\n  run_exports:\n    # https://abi-laboratory.pro/?view=timeline&l=root\n    - {{ pin_subpackage('root', max_pin='x.x.x') }}\n  ignore_prefix_files:\n    # FIXME: Figure out how to correct the paths in the PCH\n    - etc/allDict.cxx.pch  # [osx]\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n    - {{ compiler('fortran') }}\n    - cmake\n    - git\n    - pkg-config\n    - sed\n    # Required for OpenGL support\n    # See https://conda-forge.org/docs/maintainer/knowledge_base.html?highlight=cdt#libgl\n    - {{ cdt('mesa-libgl-devel') }}  # [linux]\n    - {{ cdt('mesa-dri-drivers') }}  # [linux]\n    - {{ cdt('libselinux') }}  # [linux]\n    - {{ cdt('libxdamage') }}  # [linux]\n    - {{ cdt('libxxf86vm') }}  # [linux]\n  host:\n    - libblas\n    - libcblas\n    - {{ compiler('c') }}  # [linux]\n    - {{ compiler('cxx') }}  # [linux]\n    - {{ compiler('fortran') }}  # [linux]\n    - afterimage\n    - cfitsio\n    - clangdev ={{ clang_version }}\n    - clang_variant * cling_{{ clang_patches_version }}\n    - davix >=0.7.2\n    - fftw\n    - freetype\n    - gdk-pixbuf\n    - giflib\n    - glew\n    - graphviz\n    - gsl\n    - krb5  # [osx]\n    - libglu  # [linux]\n    - libpng\n    - librsvg\n    - libtiff\n    - libxml2\n    - llvmdev ==5\n    - lz4\n    - lz4-c\n    # - mysql\n    - numpy\n    - openssl\n    - pcre\n    # - postgresql\n    - pythia8\n    - python\n    - qt\n    - sqlite\n    - tbb\n    - tbb-devel\n    - vdt\n    - xorg-libx11  # [linux]\n    - xorg-libxau  # [linux]\n    - xorg-libxcursor  # [linux]\n    - xorg-libxext  # [linux]\n    - xorg-libxfixes  # [linux]\n    - xorg-libxft  # [linux]\n    - xorg-libxpm  # [linux]\n    - xrootd\n    - xz\n    # FIXME: The generated allDict.cxx.pch is dependent on versin of the C++ headers used\n    # As it is shipped in the macOS binaries we have to use the same one as in the compilers package\n    - libcxx =4  # [osx]\n  run:\n    - compilers\n    - {{ pin_compatible('numpy') }}\n    - afterimage\n    - cfitsio\n    # - clangdev={{ clang_version }}\n    # - clang_variant * cling_{{ version }}\n    - davix\n    - fftw\n    - gdk-pixbuf\n    - giflib\n    - glew\n    - graphviz\n    - libglu  # [linux]\n    - librsvg\n    - lz4\n    # - mysql\n    - metakernel\n    - notebook\n    - pcre\n    # - postgresql\n    - pythia8\n    - python\n    - qt\n    - tbb\n    - tbb-devel\n    - vdt\n    - xorg-libx11  # [linux]\n    - xorg-libxau  # [linux]\n    - xorg-libxcursor  # [linux]\n    - xorg-libxext  # [linux]\n    - xorg-libxft  # [linux]\n    - xorg-libxpm  # [linux]\n    - xrootd\n    # FIXME: See comment at end of host requirements\n    - libcxx =4  # [osx]\n  run_constrained:\n    # Items listed here conflict with ROOT\n    # FIXME Add support in ROOT for building with an external cling\n    - cling 9999\n    - root5 9999\n\ntest:\n  requires:\n    - ipython\n  imports:\n    - ROOT\n    - JupyROOT\n  commands:\n    - ipython -c 'import JsMVA'\n    - root -l -b -q -x\n    - root -l -b -q -x ${RECIPE_DIR}/test.cpp\n    - root -l -b -q -x ${RECIPE_DIR}/test.cpp++\n    # When testing with -e, explicitly set the return code to zero\n    - root -b -l -q -x -e '2+3; 0'\n    - root -b -l -q -x -e 'gSystem->LoadAllLibraries(); 0'\n    - echo ${CONDA_BUILD_SYSROOT}  # [osx]\n    # There should be no hard coded references to the SDK\n    - \"! grep -r ${CONDA_BUILD_SYSROOT} ${CONDA_PREFIX}/lib\"  # [osx]\n    # Check the thisroot scripts work\n    - thisroot.sh\n    - thisroot.csh\n    - thisroot.fish\n    # Test if OpenGL is working\n    - root -b -l -q -x -e 'gStyle->SetCanvasPreferGL(kTRUE); c = new TCanvas(); if (!c->UseGL()) { throw std::runtime_error(\"OpenGL does not appear to be working\"); }'\n    # This test will fail due to lack of graphics support but try it anyway\n    # It should exit with \"TEveException: TEveManager::Create ROOT is running in batch mode.\"\n    - root -b -l -q -x \"${ROOTSYS}/tutorials/eve/geom_lhcb.C\" || true\n    # This tutorial uses davix to access a ROOT file over HTTP\n    - root -b -l -q -x \"${ROOTSYS}/tutorials/tree/run_h1analysis.C\"\n\nabout:\n  home: https://root.cern/\n  license: LGPL-2.1\n  license_family: LGPL\n  license_file: root-source/LICENSE\n  doc_url: https://root.cern/documentation\n  dev_url: https://github.com/root-project/root/\n  summary: |\n      ROOT is a modular scientific software toolkit. It provides all the functionalities needed to deal with big data\n      processing, statistical analysis, visualisation and storage. It is mainly written in C++ but integrated with other\n      languages such as Python and R.\n  description: |\n      Almost everything in ROOT should be supported in this Conda package; ROOT was built with lots of options turned\n      on. Here are a few things to try:\n\n      * `root`: you can start up a session and see the splash screen; Control-D to exit.\n      * `python` followed by `import ROOT` will load PyROOT.\n      * `root --notebook` will start a notebook server with a ROOT kernel choice.\n      * `rootbrowse` will open a TBrowser session so you can look through files.\n      * `root -l -q $ROOTSYS/tutorials/dataframe/df013_InspectAnalysis.C` will run a DataFrame example with an animated plot.\n      * `root -b -q -l -n -e \"std::cout << TROOT::GetTutorialDir() << std::endl;\"` will print the tutorial dir.\n      * `root -b -l -q -e 'std::cout << (float) TPython::Eval(\"1+1\") << endl;'` will run Python from C++ ROOT.\n\n      See the post [here](https://iscinumpy.gitlab.io/post/root-conda/) for more information about using this Conda package.\n\n      Caveats\n      =======\n\n      General\n      -------\n\n      The ROOT package will prepare the required compilers (see below). Everything in Conda is symlinked into\n      `$CONDA_PREFIX` if you build things by hand; tools like CMake should find it automatically. The `thisroot.*`\n      scripts should not be used. Graphics, `rootbrowse`, etc. all should work.\n\n      Linux\n      -----\n\n      On Linux, there really aren't any special caveats, just a few general to Conda itself, and the compilers package.\n      When ROOT is in the active environment, `g++` and `$CXX` are the conda compilers, GCC 7.3.\n\n      ROOT was built with and will report `-std=c++17` from `root-config`.\n\n\n      macOS\n      -----\n\n      The caveats on macOS are a bit larger, but have the same reason for existing as on Linux. When ROOT is in the\n      active environment, `clang++` and `$CXX` will be the Conda compilers; but those compilers are Clang 4.0 and the\n      macOS 10.9 SDK.  You must install the macOS 10.9 SDK, [as mentioned in the conda\n      documentation](https://conda.io/projects/conda-build/en/latest/source/compiler-tools.html#macos-sdk), if you want\n      to build anything.  And, while normal ROOT and PyROOT are fine, commands like `root MyFile.C+` actively build\n      things, so this is probably something many users will want to do. Once the macOS is downloaded and extracted on\n      your system, you should set `CONDA_BUILD_SYSROOT` to point to the SDK root location, such as\n      `/opt/MacOSX10.9.sdk`. This will not be necessary once ROOT moves to using LLVM 8.\n\n      ROOT does not link to Python directly in order to properly support PyROOT from Python, but has been patched to\n      provide the correct behavior to allow PyROOT to also be used from ROOT's C++ command line.\n\n      ROOT was built with and will report `-std=c++1z` from `root-config`.\n\nextra:\n  recipe-maintainers:\n    - chrisburr\n    - henryiii\n    - bluehood\n    - egpbos\n",
  "req":{
   "__set__":true,
   "elements":[
@@ -608,5 +608,5 @@
  },
  "smithy_version":"3.4.5",
  "url":"https://github.com/root-project/root/archive/v6-18-00.tar.gz",
- "version":"6.18.00"
+ "version":"6.18.04"
 }
