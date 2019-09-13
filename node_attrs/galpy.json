@@ -120,7 +120,7 @@
    "home":"http://github.com/jobovy/galpy",
    "license":"BSD 3-clause",
    "license_family":"BSD",
-   "license_file":"",
+   "license_file":"LICENSE",
    "summary":"Galactic Dynamics in python"
   },
   "build":{
@@ -142,7 +142,7 @@
   },
   "package":{
    "name":"galpy",
-   "version":"1.4.1"
+   "version":"1.5"
   },
   "requirements":{
    "build":[
@@ -160,6 +160,7 @@
     "scipy",
     "matplotlib",
     "six",
+    "future",
     "gsl",
     "python",
     "setuptools",
@@ -167,6 +168,7 @@
     "scipy",
     "matplotlib",
     "six",
+    "future",
     "gsl",
     "python",
     "setuptools",
@@ -174,6 +176,7 @@
     "scipy",
     "matplotlib",
     "six",
+    "future",
     "gsl"
    ],
    "run":[
@@ -182,25 +185,28 @@
     "scipy",
     "matplotlib",
     "six",
+    "future",
     "gsl",
     "python",
     "numpy",
     "scipy",
     "matplotlib",
     "six",
+    "future",
     "gsl",
     "python",
     "numpy",
     "scipy",
     "matplotlib",
     "six",
+    "future",
     "gsl"
    ]
   },
   "source":{
-   "fn":"galpy-1.4.1.tar.gz",
-   "sha256":"ac43051eebe3025ba35cfcae2eaccff9dbcd5764d3c265161881755033f27647",
-   "url":"https://pypi.io/packages/source/g/galpy/galpy-1.4.1.tar.gz"
+   "fn":"galpy-1.5.tar.gz",
+   "sha256":"80137c3d1918706c7e93a7a7f8872909295b8d2e93f00a2ab419ab6d6ef58be2",
+   "url":"https://pypi.io/packages/source/g/galpy/galpy-1.5.tar.gz"
   },
   "test":{
    "imports":[
@@ -213,12 +219,13 @@
  "name":"galpy",
  "new_version":"1.5",
  "pinning_version":"2019.09.08",
- "raw_meta_yaml":"{% set name = \"galpy\" %}\n{% set version = \"1.4.1\" %}\n{% set hash_type = \"sha256\" %}\n{% set hash_value = \"ac43051eebe3025ba35cfcae2eaccff9dbcd5764d3c265161881755033f27647\" %}\n\npackage:\n  name: '{{ name|lower }}'\n  version: '{{ version }}'\n\nsource:\n  fn: '{{ name }}-{{ version }}.tar.gz'\n  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz\n  '{{ hash_type }}': '{{ hash_value }}'\n\nbuild:\n  number: 0\n  script: \n    - rm gsl-config.bat  # [win and py2k]\n    - python setup.py install --single-version-externally-managed --record=record.txt  # [win and py2k]\n  script: python setup.py install --single-version-externally-managed --record=record.txt --no-openmp  # [win and py3k]\n  script: CPATH=\"$PREFIX/include:$CPATH\" python setup.py install --single-version-externally-managed --record=record.txt --no-openmp  # [osx]\n  script: CPATH=\"$PREFIX/include:$CPATH\" python setup.py install --single-version-externally-managed --record=record.txt  # [not win and not osx]\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n  host:\n    - python\n    - setuptools\n    - numpy\n    - scipy\n    - matplotlib\n    - six\n    - gsl\n  run:\n    - python\n    - numpy\n    - scipy\n    - matplotlib\n    - six\n    - gsl\n\ntest:\n  imports:\n    - galpy\n\nabout:\n  home: http://github.com/jobovy/galpy\n  license: BSD 3-clause\n  license_family: BSD\n  license_file: ''\n  summary: Galactic Dynamics in python\n  description: |\n    galpy is a Python 2 and 3 package for galactic dynamics. It supports orbit\n    integration in a variety of potentials, evaluating and sampling various\n    distribution functions, and the calculation of action-angle coordinates\n    for all static potentials. galpy is an astropy affiliated package and\n    provides full support for astropy\u2019s Quantity framework for variables with\n    units.\n  doc_url: http://galpy.readthedocs.io/en/latest/\n  dev_url: http://github.com/jobovy/galpy\n\nextra:\n  recipe-maintainers:\n    - mwcraig\n    - bsipocz\n    - jobovy\n",
+ "raw_meta_yaml":"{% set name = \"galpy\" %}\n{% set version = \"1.5\" %}\n{% set hash_type = \"sha256\" %}\n{% set hash_value = \"80137c3d1918706c7e93a7a7f8872909295b8d2e93f00a2ab419ab6d6ef58be2\" %}\n\npackage:\n  name: '{{ name|lower }}'\n  version: '{{ version }}'\n\nsource:\n  fn: '{{ name }}-{{ version }}.tar.gz'\n  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz\n  '{{ hash_type }}': '{{ hash_value }}'\n\nbuild:\n  number: 0\n  script: \n    - rm gsl-config.bat  # [win and py2k]\n    - python setup.py install --single-version-externally-managed --record=record.txt  # [win and py2k]\n  script: python setup.py install --single-version-externally-managed --record=record.txt --no-openmp  # [win and py3k]\n  script: CPATH=\"$PREFIX/include:$CPATH\" python setup.py install --single-version-externally-managed --record=record.txt --no-openmp  # [osx]\n  script: CPATH=\"$PREFIX/include:$CPATH\" python setup.py install --single-version-externally-managed --record=record.txt  # [not win and not osx]\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n  host:\n    - python\n    - setuptools\n    - numpy\n    - scipy\n    - matplotlib\n    - six\n    - future\n    - gsl\n  run:\n    - python\n    - numpy\n    - scipy\n    - matplotlib\n    - six\n    - future\n    - gsl\n\ntest:\n  imports:\n    - galpy\n\nabout:\n  home: http://github.com/jobovy/galpy\n  license: BSD 3-clause\n  license_family: BSD\n  license_file: LICENSE\n  summary: Galactic Dynamics in python\n  description: |\n    galpy is a Python 2 and 3 package for galactic dynamics. It supports orbit\n    integration in a variety of potentials, evaluating and sampling various\n    distribution functions, and the calculation of action-angle coordinates\n    for all static potentials. galpy is an astropy affiliated package and\n    provides full support for astropy\u2019s Quantity framework for variables with\n    units.\n  doc_url: http://galpy.readthedocs.io/en/latest/\n  dev_url: http://github.com/jobovy/galpy\n\nextra:\n  recipe-maintainers:\n    - mwcraig\n    - bsipocz\n    - jobovy\n",
  "req":{
   "__set__":true,
   "elements":[
    "c_compiler_stub",
    "cxx_compiler_stub",
+   "future",
    "gsl",
    "matplotlib",
    "numpy",
@@ -230,5 +237,5 @@
  },
  "smithy_version":"3.4.6",
  "url":"https://pypi.io/packages/source/g/galpy/galpy-1.4.1.tar.gz",
- "version":"1.4.1"
+ "version":"1.5"
 }
