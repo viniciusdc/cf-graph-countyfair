@@ -168,7 +168,18 @@
    ]
   }
  ],
- "bad":false,
+ "bad":{
+  "exception":"local variable 'head_ref' referenced before assignment",
+  "traceback":[
+   "Traceback (most recent call last):",
+   "  File \"/root/repo/cf-scripts/conda_forge_tick/auto_tick.xsh\", line 656, in main",
+   "    hash_type=attrs.get('hash_type', 'sha256'))",
+   "  File \"/root/repo/cf-scripts/conda_forge_tick/auto_tick.xsh\", line 115, in run",
+   "    diffed_files = [_ for _ in $(git diff --name-only @(head_ref)...HEAD).split() if not (_.startswith('recipe') or _.startswith('migrators') or _.startswith('README'))]",
+   "UnboundLocalError: local variable 'head_ref' referenced before assignment",
+   ""
+  ]
+ },
  "conda-forge.yml":{
   "provider":{
    "win":"azure"
@@ -268,7 +279,7 @@
   }
  },
  "name":"itkwidgets",
- "new_version":"0.20.0",
+ "new_version":"0.21.1",
  "pinning_version":"2019.09.08",
  "raw_meta_yaml":"{% set name = \"itkwidgets\" %}\n{% set version = \"0.19.0\" %}\n\npackage:\n  name: {{ name }}\n  version: {{ version }}\n\nsource:\n  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz\n  sha256: 05bb02411572450db977282ff93cb01d73d279b82a649c1a98cf0c0e2a7c72e3\n\nbuild:\n  number: 0\n  skip: True  # [win32 or (win64 and py2k)]\n  script: \"{{ PYTHON }} -m pip install . --no-deps -vv\"\n\nrequirements:\n  host:\n    - python\n    - setuptools\n    - pip\n    - jupyter\n  run:\n    - python\n    - colorcet\n    - itk >=5.0.0\n    - ipydatawidgets >=4.0.1\n    - ipywidgets >=7.5.0\n    - ipympl\n    - numpy\n    - scipy\n    - six\n    - zstandard\n\ntest:\n  imports:\n    - itkwidgets\n\nabout:\n  home: https://github.com/InsightSoftwareConsortium/itk-jupyter-widgets\n  license: Apache 2.0\n  license_family: Apache\n  license_file: '{{ environ[\"RECIPE_DIR\"] }}/LICENSE'\n  summary: 'Interactive Jupyter widgets to visualize images in 2D and 3D'\n  doc_url: https://github.com/InsightSoftwareConsortium/itk-jupyter-widgets\n  dev_url: https://github.com/InsightSoftwareConsortium/itk-jupyter-widgets\n\nextra:\n  recipe-maintainers:\n    - hadim\n    - thewtex\n    - SylvainCorlay\n",
  "req":{
