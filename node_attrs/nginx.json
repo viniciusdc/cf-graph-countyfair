@@ -479,7 +479,7 @@
   }
  },
  "name":"nginx",
- "new_version":"1.17.1",
+ "new_version":"1.17.3",
  "pinning_version":"2019.08.12",
  "raw_meta_yaml":"{% set name = \"nginx\" %}\n{% set version = \"1.16.0\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  fn: {{ name }}-{{ version }}.tar.gz\n  url: https://nginx.org/download/{{ name }}-{{ version }}.tar.gz\n  sha256: 4fd376bad78797e7f18094a00f0f1088259326436b537eb5af69b01be2ca1345\n  patches:\n    - pcre-config.patch  # find pcre in PREFIX instead of /usr\n\nbuild:\n  number: 1\n  no_link:\n    - etc/*\n    - var/log/nginx/*\n  skip: True  # [win]\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n    - {{ compiler('fortran') }}\n  host:\n    - libgd 2.2.*\n    - libxslt 1.1.*\n    - openssl\n    - pcre 8.*\n    - zlib\n  run:\n    - libgd 2.2.*\n    - libxslt 1.1.*\n    - openssl\n    - pcre 8.*\n\ntest:\n  commands:\n    - conda inspect linkages -p $PREFIX $PKG_NAME  # [unix]\n    - conda inspect objects -p $PREFIX $PKG_NAME  # [osx]\n\nabout:\n  home: http://www.nginx.org\n  license: BSD-2-Clause\n  license_family: BSD\n  license_file: LICENSE\n  summary: Nginx is an HTTP and reverse proxy server\n  description: |\n    Nginx can act as a reverse proxy server for TCP, UDP, HTTP, HTTPS, SMTP,\n    POP3, IMAP, and gRPC protocols, as well as a load balancer and an HTTP cache.\n    Nginx uses an asynchronous event-driven approach to handling requests.\n  doc_url: http://nginx.org/en/docs\n  dev_url: http://hg.nginx.org/nginx\n\nextra:\n  recipe-maintainers:\n    - sodre\n",
  "req":{
