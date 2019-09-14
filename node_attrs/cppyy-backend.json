@@ -69,7 +69,7 @@
    ]
   }
  ],
- "bad":"make_graph: 500",
+ "bad":false,
  "conda-forge.yml":{},
  "feedstock_name":"cppyy-backend",
  "hash_type":"sha256",
@@ -147,7 +147,7 @@
   }
  },
  "name":"cppyy-backend",
- "new_version":false,
+ "new_version":"1.10.2",
  "pinning_version":"2019.08.27",
  "raw_meta_yaml":"{% set name = \"cppyy-backend\" %}\n{% set version = \"1.10.1\" %}\n{% set cling_name = \"clingwrapper\" %}\n{% set cling_version = \"6.18.2.1\" %}\n\npackage:\n  name: {{ name }}\n  version: {{ version }}\n\nsource:\n  url: https://pypi.io/packages/source/c/cppyy-backend/cppyy-backend-{{ version }}.tar.gz\n  sha256: f56200891ef2fd1013655fc6e95d36a24069932d84b987aa28140d3940ddc0da\n  patches:\n  - manylinux.patch\n\nbuild:\n  number: 0\n  skip: True  # [win]\n  script: \"{{ PYTHON }} -m pip install -vv --no-deps .\"\n\nrequirements:\n  build:\n    - {{ compiler('cxx') }}\n  host:\n    - python\n    - pip\n    # This is the only package that will ever depend upon cppyy-cling so we pin\n    # it exactly. \n    - cppyy-cling {{ cling_version }}\n  run:\n    - python\n    - cppyy-cling {{ cling_version }}\n\ntest:\n  imports:\n    - cppyy_backend\n\nabout:\n  home: https://pypi.org/project/cppyy-backend/\n  license: BSD-3-Clause\n  license_family: BSD\n  license_file: LICENSE.txt\n  summary: 'Automatic Python-C++ bindings'\n  description: |\n    C/C++ wrapper around Cling, the LLVM-based interactive C++ interpreter, for\n    use by cppyy, providing stable C and C++ Reflection APIs.\n  doc_url: http://cppyy.readthedocs.io/\n  dev_url: https://bitbucket.org/wlav/cppyy-backend/src\n\nextra:\n  recipe-maintainers:\n    - saraedum\n    - isuruf\n",
  "req":{
