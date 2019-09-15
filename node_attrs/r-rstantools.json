@@ -103,8 +103,7 @@
    "summary":"Provides various tools for developers of R packages interfacing with 'Stan' <http://mc-stan.org>, including functions to set up the required package structure, S3 generics and default methods to unify function naming across 'Stan'-based R packages, and a vignette with recommendations for developers."
   },
   "build":{
-   "noarch":"generic",
-   "number":"2001",
+   "number":"0",
    "rpaths":[
     "lib/R/lib/",
     "lib/",
@@ -117,51 +116,58 @@
   "extra":{
    "recipe-maintainers":[
     "conda-forge/r",
-    "cbrueffer",
-    "johanneskoester",
-    "bgruening",
-    "daler",
-    "jdblischak",
     "conda-forge/r",
-    "cbrueffer",
-    "johanneskoester",
-    "bgruening",
-    "daler",
-    "jdblischak",
-    "conda-forge/r",
-    "cbrueffer",
-    "johanneskoester",
-    "bgruening",
-    "daler",
-    "jdblischak"
+    "conda-forge/r"
    ]
   },
   "package":{
    "name":"r-rstantools",
-   "version":"1.5.1"
+   "version":"2.0.0"
   },
   "requirements":{
    "build":[
+    "m2w64_c_compiler_stub",
+    "m2w64_cxx_compiler_stub",
+    "zip",
+    "c_compiler_stub",
+    "cxx_compiler_stub",
+    "c_compiler_stub",
+    "cxx_compiler_stub"
+   ],
+   "host":[
     "r-base",
+    "r-rcpp >=0.12.16",
+    "r-desc",
     "r-base",
-    "r-base"
+    "r-rcpp >=0.12.16",
+    "r-desc",
+    "r-base",
+    "r-rcpp >=0.12.16",
+    "r-desc"
    ],
    "run":[
     "r-base",
+    "gcc-libs",
+    "r-rcpp >=0.12.16",
+    "r-desc",
     "r-base",
-    "r-base"
+    "r-rcpp >=0.12.16",
+    "r-desc",
+    "r-base",
+    "r-rcpp >=0.12.16",
+    "r-desc"
    ]
   },
   "source":{
-   "fn":"rstantools_1.5.1.tar.gz",
-   "sha256":"5cab16c132c12e84bd08e18cd6ef25ba39d67a04ce61015fc4490659c7cfb485",
+   "fn":"rstantools_2.0.0.tar.gz",
+   "sha256":"4ae78aa39c3d4897f453e621a09961d6f2cda27a1b5657d4d4b32d3d89bd80c6",
    "url":[
-    "https://cran.r-project.org/src/contrib/rstantools_1.5.1.tar.gz",
-    "https://cran.r-project.org/src/contrib/Archive/rstantools/rstantools_1.5.1.tar.gz",
-    "https://cran.r-project.org/src/contrib/rstantools_1.5.1.tar.gz",
-    "https://cran.r-project.org/src/contrib/Archive/rstantools/rstantools_1.5.1.tar.gz",
-    "https://cran.r-project.org/src/contrib/rstantools_1.5.1.tar.gz",
-    "https://cran.r-project.org/src/contrib/Archive/rstantools/rstantools_1.5.1.tar.gz"
+    "https://cran.r-project.org/src/contrib/rstantools_2.0.0.tar.gz",
+    "https://cran.r-project.org/src/contrib/Archive/rstantools/rstantools_2.0.0.tar.gz",
+    "https://cran.r-project.org/src/contrib/rstantools_2.0.0.tar.gz",
+    "https://cran.r-project.org/src/contrib/Archive/rstantools/rstantools_2.0.0.tar.gz",
+    "https://cran.r-project.org/src/contrib/rstantools_2.0.0.tar.gz",
+    "https://cran.r-project.org/src/contrib/Archive/rstantools/rstantools_2.0.0.tar.gz"
    ]
   },
   "test":{
@@ -175,11 +181,19 @@
  "name":"r-rstantools",
  "new_version":"2.0.0",
  "pinning_version":"2019.09.08",
- "raw_meta_yaml":"{% set version = \"1.5.1\" %}\n\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-rstantools\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  fn: rstantools_{{ version }}.tar.gz\n  url:\n    - https://cran.r-project.org/src/contrib/rstantools_{{ version }}.tar.gz\n    - https://cran.r-project.org/src/contrib/Archive/rstantools/rstantools_{{ version }}.tar.gz\n  sha256: 5cab16c132c12e84bd08e18cd6ef25ba39d67a04ce61015fc4490659c7cfb485\n\nbuild:\n  noarch: generic\n  number: 2001\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - r-base\n\n  run:\n    - r-base\n\ntest:\n  commands:\n    - $R -e \"library('rstantools')\"  # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('rstantools')\\\"\"  # [win]\n\nabout:\n  home: http://mc-stan.org/, http://discourse.mc-stan.org\n  license: GPL (>= 3)\n  summary: Provides various tools for developers of R packages interfacing with\n    'Stan' <http://mc-stan.org>, including functions to set up the required package structure,\n    S3 generics and default methods to unify function naming across 'Stan'-based R packages,\n    and a vignette with recommendations for developers.\n  license_family: GPL3\n  license_file: '{{ environ[\"PREFIX\"] }}/lib/R/share/licenses/GPL-3'\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n    - cbrueffer\n    - johanneskoester\n    - bgruening\n    - daler\n    - jdblischak\n",
+ "raw_meta_yaml":"{% set version = \"2.0.0\" %}\n\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-rstantools\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  fn: rstantools_{{ version }}.tar.gz\n  url:\n    - https://cran.r-project.org/src/contrib/rstantools_{{ version }}.tar.gz\n    - https://cran.r-project.org/src/contrib/Archive/rstantools/rstantools_{{ version }}.tar.gz\n  sha256: 4ae78aa39c3d4897f453e621a09961d6f2cda27a1b5657d4d4b32d3d89bd80c6\n\nbuild:\n  number: 0\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - {{ compiler('c') }}              # [not win]\n    - {{ compiler('m2w64_c') }}        # [win]\n    - {{ compiler('cxx') }}            # [not win]\n    - {{ compiler('m2w64_cxx') }}      # [win]\n    - {{posix}}zip               # [win]\n  host:\n    - r-base\n    - r-rcpp >=0.12.16\n    - r-desc\n  run:\n    - r-base\n    - {{native}}gcc-libs         # [win]\n    - r-rcpp >=0.12.16\n    - r-desc\n\ntest:\n  commands:\n    - $R -e \"library('rstantools')\"           # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('rstantools')\\\"\"  # [win]\n\nabout:\n  home: http://mc-stan.org/, http://discourse.mc-stan.org\n  license: GPL (>= 3)\n  summary: Provides various tools for developers of R packages interfacing with\n    'Stan' <http://mc-stan.org>, including functions to set up the required package structure,\n    S3 generics and default methods to unify function naming across 'Stan'-based R packages,\n    and a vignette with recommendations for developers.\n  license_family: GPL3\n  license_file: '{{ environ[\"PREFIX\"] }}/lib/R/share/licenses/GPL-3'\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n",
  "req":{
   "__set__":true,
   "elements":[
-   "r-base"
+   "c_compiler_stub",
+   "cxx_compiler_stub",
+   "gcc-libs",
+   "m2w64_c_compiler_stub",
+   "m2w64_cxx_compiler_stub",
+   "r-base",
+   "r-desc",
+   "r-rcpp",
+   "zip"
   ]
  },
  "smithy_version":"3.4.6",
@@ -191,5 +205,5 @@
   "https://cran.r-project.org/src/contrib/rstantools_1.5.1.tar.gz",
   "https://cran.r-project.org/src/contrib/Archive/rstantools/rstantools_1.5.1.tar.gz"
  ],
- "version":"1.5.1"
+ "version":"2.0.0"
 }
