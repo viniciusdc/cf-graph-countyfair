@@ -83,7 +83,7 @@
   },
   "package":{
    "name":"cppyy-cling",
-   "version":"6.18.2.1"
+   "version":"6.18.2.2"
   },
   "requirements":{
    "build":[
@@ -130,15 +130,12 @@
   },
   "source":{
    "patches":[
-    "manylinux.patch",
     "cmake_flags.patch",
-    "manylinux.patch",
     "cmake_flags.patch",
-    "manylinux.patch",
     "cmake_flags.patch"
    ],
-   "sha256":"5da501922182a9c79285729f659174b907c7e3fbc373725637310dd833cd8991",
-   "url":"https://pypi.io/packages/source/c/cppyy-cling/cppyy-cling-6.18.2.1.tar.gz"
+   "sha256":"bc86c7d0d8234d21fc9860eaf5176afa313ed28a70a755ae98932397c1701509",
+   "url":"https://pypi.io/packages/source/c/cppyy-cling/cppyy-cling-6.18.2.2.tar.gz"
   },
   "test":{
    "commands":[
@@ -160,7 +157,7 @@
  "name":"cppyy-cling",
  "new_version":"6.18.2.1",
  "pinning_version":"2019.08.22",
- "raw_meta_yaml":"{% set name = \"cppyy-cling\" %}\n# The first three items of version define the version of ROOT that we're building from.\n{% set version = \"6.18.2.1\" %}\n{% set clang_version = \"5.0.0\" %}\n{% set clang_patches_version = \"6.16.00\" %}\n\npackage:\n  name: {{ name }}\n  version: {{ version }}\n\nsource:\n  url: https://pypi.io/packages/source/c/cppyy-cling/cppyy-cling-{{ version }}.tar.gz\n  sha256: 5da501922182a9c79285729f659174b907c7e3fbc373725637310dd833cd8991\n  patches:\n  - manylinux.patch\n  - cmake_flags.patch\n\nbuild:\n  number: 0\n  skip: True  # [win]\n\nrequirements:\n  build:\n    - {{ compiler('cxx') }}\n    - sed\n    - cmake\n  host:\n    - python\n    - pip\n    - zlib\n    - clangdev ={{ clang_version }}\n    - clang_variant * cling_{{ clang_patches_version }}\n    - llvmdev ==5\n    # Copied over from conda-forge's cling recipe:\n    # FIXME: The generated allDict.cxx.pch is dependent on version of the C++\n    # headers used As it is shipped in the macOS binaries we have to use the\n    # same one as in the compilers package\n    - libcxx =4  # [osx]\n  run:\n    - {{ compiler('cxx') }}\n    - python\n    # Copied over from conda-forge's cling recipe:\n    - libcxx =4  # [osx]\n\ntest:\n  commands:\n    - which rootcling\n    - which cppyy-generator\n    - which cling-config\n    - which genreflex\n\nabout:\n  home: https://pypi.org/project/cppyy-cling\n  license: BSD-3-Clause\n  license_family: BSD\n  license_file: LICENSE.txt\n  summary: 'A repackaging of Cling for Automatic Python-C++ Bindings'\n  description: |\n    A repackaging of Cling, the interactive C++ interpreter, including C/C++\n    wrappers that expose no further external headers or types.\n  doc_url: http://cppyy.readthedocs.io/\n  dev_url: https://bitbucket.org/wlav/cppyy-backend/src/master/cling/\n\nextra:\n  recipe-maintainers:\n    - saraedum\n    - isuruf\n",
+ "raw_meta_yaml":"{% set name = \"cppyy-cling\" %}\n# The first three items of version define the version of ROOT that we're building from.\n{% set version = \"6.18.2.2\" %}\n{% set clang_version = \"5.0.0\" %}\n{% set clang_patches_version = \"6.16.00\" %}\n\npackage:\n  name: {{ name }}\n  version: {{ version }}\n\nsource:\n  url: https://pypi.io/packages/source/c/cppyy-cling/cppyy-cling-{{ version }}.tar.gz\n  sha256: bc86c7d0d8234d21fc9860eaf5176afa313ed28a70a755ae98932397c1701509\n  patches:\n  - cmake_flags.patch\n\nbuild:\n  number: 0\n  skip: True  # [win]\n\nrequirements:\n  build:\n    - {{ compiler('cxx') }}\n    - sed\n    - cmake\n  host:\n    - python\n    - pip\n    - zlib\n    - clangdev ={{ clang_version }}\n    - clang_variant * cling_{{ clang_patches_version }}\n    - llvmdev ==5\n    # Copied over from conda-forge's cling recipe:\n    # FIXME: The generated allDict.cxx.pch is dependent on version of the C++\n    # headers used As it is shipped in the macOS binaries we have to use the\n    # same one as in the compilers package\n    - libcxx =4  # [osx]\n  run:\n    - {{ compiler('cxx') }}\n    - python\n    # Copied over from conda-forge's cling recipe:\n    - libcxx =4  # [osx]\n\ntest:\n  commands:\n    - which rootcling\n    - which cppyy-generator\n    - which cling-config\n    - which genreflex\n\nabout:\n  home: https://pypi.org/project/cppyy-cling\n  license: BSD-3-Clause\n  license_family: BSD\n  license_file: LICENSE.txt\n  summary: 'A repackaging of Cling for Automatic Python-C++ Bindings'\n  description: |\n    A repackaging of Cling, the interactive C++ interpreter, including C/C++\n    wrappers that expose no further external headers or types.\n  doc_url: http://cppyy.readthedocs.io/\n  dev_url: https://bitbucket.org/wlav/cppyy-backend/src/master/cling/\n\nextra:\n  recipe-maintainers:\n    - saraedum\n    - isuruf\n",
  "req":{
   "__set__":true,
   "elements":[
@@ -178,5 +175,5 @@
  },
  "smithy_version":"3.4.1",
  "url":"https://pypi.io/packages/source/c/cppyy-cling/cppyy-cling-6.18.2.1.tar.gz",
- "version":"6.18.2.1"
+ "version":"6.18.2.2"
 }
