@@ -35,8 +35,8 @@
   },
   "build":{
    "noarch":"python",
-   "number":"0",
-   "script":"python setup.py install --single-version-externally-managed --record record.txt"
+   "number":"1",
+   "script":" -m pip install . -vv"
   },
   "extra":{
    "recipe-maintainers":[
@@ -54,27 +54,33 @@
   },
   "requirements":{
    "build":[
-    "python",
+    "python >=3",
     "setuptools",
     "setuptools_scm",
-    "python",
+    "pip",
+    "python >=3",
     "setuptools",
     "setuptools_scm",
-    "python",
+    "pip",
+    "python >=3",
     "setuptools",
-    "setuptools_scm"
+    "setuptools_scm",
+    "pip"
    ],
    "run":[
+    "python >=3",
     "dask",
     "setuptools",
     "scikit-learn >=0.18",
     "scipy >=0.18.1",
     "multipledispatch >=0.4.9",
+    "python >=3",
     "dask",
     "setuptools",
     "scikit-learn >=0.18",
     "scipy >=0.18.1",
     "multipledispatch >=0.4.9",
+    "python >=3",
     "dask",
     "setuptools",
     "scikit-learn >=0.18",
@@ -101,12 +107,13 @@
  "name":"dask-glm",
  "new_version":"0.2.0",
  "pinning_version":"2018.10.16",
- "raw_meta_yaml":"{% set name = \"dask-glm\" %}\n{% set version = \"0.2.0\" %}\n{% set sha256 = \"58b86cebf04fe5b9e58092e1c467e32e60d01e11b71fdc628baaa9fc6d1adee5\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  fn: {{ name }}-{{ version }}.tar.gz\n  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz\n  sha256: {{ sha256 }}\n\nbuild:\n  noarch: python\n  number: 0\n  script: python setup.py install --single-version-externally-managed --record record.txt\n\nrequirements:\n  build:\n    - python\n    - setuptools\n    - setuptools_scm\n  run:\n    - dask\n    - setuptools\n    - scikit-learn >=0.18\n    - scipy >=0.18.1\n    - multipledispatch >=0.4.9\n\ntest:\n  imports:\n    - dask_glm\n    - dask_glm.estimators\n\nabout:\n  home: http://github.com/dask/dask-glm\n  license: BSD-3-Clause\n  license_family: BSD\n  license_file: LICENSE.txt\n  summary: 'Generalized Linear Models in Dask'\n  description: |\n      Generalized Linear Models for parallel and\n      distributed machine learning, built using dask.\n  doc_url: http://dask-glm.readthedocs.io/en/latest/\n  dev_url: https://github.com/dask/dask-glm\n\nextra:\n  recipe-maintainers:\n    - TomAugspurger\n    - cicdw\n",
+ "raw_meta_yaml":"{% set name = \"dask-glm\" %}\n{% set version = \"0.2.0\" %}\n{% set sha256 = \"58b86cebf04fe5b9e58092e1c467e32e60d01e11b71fdc628baaa9fc6d1adee5\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  fn: {{ name }}-{{ version }}.tar.gz\n  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz\n  sha256: {{ sha256 }}\n\nbuild:\n  noarch: python\n  number: 1\n  script: \"{{ PYTHON }} -m pip install . -vv\"\n\nrequirements:\n  build:\n    - python >=3\n    - setuptools\n    - setuptools_scm\n    - pip\n  run:\n    - python >=3\n    - dask\n    - setuptools\n    - scikit-learn >=0.18\n    - scipy >=0.18.1\n    - multipledispatch >=0.4.9\n\ntest:\n  imports:\n    - dask_glm\n    - dask_glm.estimators\n\nabout:\n  home: http://github.com/dask/dask-glm\n  license: BSD-3-Clause\n  license_family: BSD\n  license_file: LICENSE.txt\n  summary: 'Generalized Linear Models in Dask'\n  description: |\n      Generalized Linear Models for parallel and\n      distributed machine learning, built using dask.\n  doc_url: http://dask-glm.readthedocs.io/en/latest/\n  dev_url: https://github.com/dask/dask-glm\n\nextra:\n  recipe-maintainers:\n    - TomAugspurger\n    - cicdw\n",
  "req":{
   "__set__":true,
   "elements":[
    "dask",
    "multipledispatch",
+   "pip",
    "python",
    "scikit-learn",
    "scipy",
