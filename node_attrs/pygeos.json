@@ -39,14 +39,9 @@
     "set GEOS_INCLUDE_PATH=%LIBRARY_INC%",
     "set GEOS_LIBRARY_PATH=%LIBRARY_LIB%",
     " -m pip install . -vv",
-    "export GEOS_INCLUDE_PATH=${PREFIX}/include",
-    "export GEOS_LIBRARY_PATH=${PREFIX}/lib",
     " -m pip install . -vv",
-    "export GEOS_INCLUDE_PATH=${PREFIX}/include",
-    "export GEOS_LIBRARY_PATH=${PREFIX}/lib",
     " -m pip install . -vv"
-   ],
-   "skip":true
+   ]
   },
   "extra":{
    "recipe-maintainers":[
@@ -60,7 +55,7 @@
   },
   "package":{
    "name":"pygeos",
-   "version":"0.3"
+   "version":"0.4"
   },
   "requirements":{
    "build":[
@@ -95,13 +90,8 @@
    ]
   },
   "source":{
-   "patches":[
-    "inc_lib_path.patch",
-    "inc_lib_path.patch",
-    "inc_lib_path.patch"
-   ],
-   "sha256":"9a9209bee4c902f0beb4f1c8364243d2b5a4529c97f90181ffddaf26554653ff",
-   "url":"https://pypi.io/packages/source/p/pygeos/pygeos-0.3.tar.gz"
+   "sha256":"4b7f4a6600d47db8d48aa251c365c260c3ad163f4ae4a382ce32c67ad34ffee1",
+   "url":"https://pypi.io/packages/source/p/pygeos/pygeos-0.4.tar.gz"
   },
   "test":{
    "imports":[
@@ -114,7 +104,7 @@
  "name":"pygeos",
  "new_version":"0.4",
  "pinning_version":"2019.09.08",
- "raw_meta_yaml":"{% set version = \"0.3\" %}\n\npackage:\n  name: pygeos\n  version: {{ version }}\n\nsource:\n  url: https://pypi.io/packages/source/p/pygeos/pygeos-{{ version }}.tar.gz\n  sha256: 9a9209bee4c902f0beb4f1c8364243d2b5a4529c97f90181ffddaf26554653ff\n  patches:\n    # already fixed upstream, drop when a new version is available\n    - inc_lib_path.patch\n\nbuild:\n  number: 0\n  skip: True  # [win or py2k]\n  script:\n    # already fixed upstream, drop when a new version is available\n    - set GEOS_INCLUDE_PATH=%LIBRARY_INC%  # [win]\n    - set GEOS_LIBRARY_PATH=%LIBRARY_LIB%  # [win]\n    - export GEOS_INCLUDE_PATH=${PREFIX}/include  # [not win]\n    - export GEOS_LIBRARY_PATH=${PREFIX}/lib  # [not win]\n    - \"{{ PYTHON }} -m pip install . -vv\"\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n  host:\n    - python\n    - pip\n    - numpy\n    - geos\n  run:\n    - python\n    - {{ pin_compatible('numpy') }}\n    - geos\n\ntest:\n  imports:\n    - pygeos\n\nabout:\n  home: https://github.com/caspervdw/pygeos\n  license: BSD-3-Clause\n  license_family: BSD\n  license_file: LICENSE\n  summary: 'Wraps GEOS geometry functions in numpy ufuncs'\n\n  description: |\n    PyGEOS is a C/Python library with vectorized geometry functions.\n    The geometry operations are done in the open-source geometry library GEOS.\n    PyGEOS wraps these operations in NumPy ufuncs providing a performance\n    improvement when operating on arrays of geometries.\n  doc_url: https://pygeos.readthedocs.io/en/latest/\n  dev_url: https://github.com/caspervdw/pygeos\n\nextra:\n  recipe-maintainers:\n    - caspervdw\n    - jorisvandenbossche\n",
+ "raw_meta_yaml":"{% set version = \"0.4\" %}\n\npackage:\n  name: pygeos\n  version: {{ version }}\n\nsource:\n  url: https://pypi.io/packages/source/p/pygeos/pygeos-{{ version }}.tar.gz\n  sha256: 4b7f4a6600d47db8d48aa251c365c260c3ad163f4ae4a382ce32c67ad34ffee1\n\nbuild:\n  number: 0\n  skip: True  # [py2k]\n  script:\n    - set GEOS_INCLUDE_PATH=%LIBRARY_INC%  # [win]\n    - set GEOS_LIBRARY_PATH=%LIBRARY_LIB%  # [win]\n    - \"{{ PYTHON }} -m pip install . -vv\"\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n  host:\n    - python\n    - pip\n    - numpy\n    - geos\n  run:\n    - python\n    - {{ pin_compatible('numpy') }}\n    - geos\n\ntest:\n  imports:\n    - pygeos\n\nabout:\n  home: https://github.com/caspervdw/pygeos\n  license: BSD-3-Clause\n  license_family: BSD\n  license_file: LICENSE\n  summary: 'Wraps GEOS geometry functions in numpy ufuncs'\n\n  description: |\n    PyGEOS is a C/Python library with vectorized geometry functions.\n    The geometry operations are done in the open-source geometry library GEOS.\n    PyGEOS wraps these operations in NumPy ufuncs providing a performance\n    improvement when operating on arrays of geometries.\n  doc_url: https://pygeos.readthedocs.io/en/latest/\n  dev_url: https://github.com/caspervdw/pygeos\n\nextra:\n  recipe-maintainers:\n    - caspervdw\n    - jorisvandenbossche\n",
  "req":{
   "__set__":true,
   "elements":[
@@ -128,5 +118,5 @@
  },
  "smithy_version":"3.4.6",
  "url":"https://pypi.io/packages/source/p/pygeos/pygeos-0.3.tar.gz",
- "version":"0.3"
+ "version":"0.4"
 }
