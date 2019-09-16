@@ -105,7 +105,18 @@
    ]
   }
  ],
- "bad":false,
+ "bad":{
+  "exception":"local variable 'head_ref' referenced before assignment",
+  "traceback":[
+   "Traceback (most recent call last):",
+   "  File \"/root/repo/cf-scripts/conda_forge_tick/auto_tick.xsh\", line 656, in main",
+   "    hash_type=attrs.get('hash_type', 'sha256'))",
+   "  File \"/root/repo/cf-scripts/conda_forge_tick/auto_tick.xsh\", line 115, in run",
+   "    diffed_files = [_ for _ in $(git diff --name-only @(head_ref)...HEAD).split() if not (_.startswith('recipe') or _.startswith('migrators') or _.startswith('README'))]",
+   "UnboundLocalError: local variable 'head_ref' referenced before assignment",
+   ""
+  ]
+ },
  "conda-forge.yml":{},
  "feedstock_name":"marshmallow",
  "hash_type":"sha256",
