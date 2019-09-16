@@ -18,7 +18,18 @@
    ]
   }
  ],
- "bad":false,
+ "bad":{
+  "exception":"local variable 'head_ref' referenced before assignment",
+  "traceback":[
+   "Traceback (most recent call last):",
+   "  File \"/root/repo/cf-scripts/conda_forge_tick/auto_tick.xsh\", line 656, in main",
+   "    hash_type=attrs.get('hash_type', 'sha256'))",
+   "  File \"/root/repo/cf-scripts/conda_forge_tick/auto_tick.xsh\", line 115, in run",
+   "    diffed_files = [_ for _ in $(git diff --name-only @(head_ref)...HEAD).split() if not (_.startswith('recipe') or _.startswith('migrators') or _.startswith('README'))]",
+   "UnboundLocalError: local variable 'head_ref' referenced before assignment",
+   ""
+  ]
+ },
  "conda-forge.yml":{
   "provider":{
    "win":"azure"
@@ -75,7 +86,7 @@
   }
  },
  "name":"broot",
- "new_version":"0.9.4",
+ "new_version":"0.9.5",
  "pinning_version":"2019.09.08",
  "raw_meta_yaml":"{% set version = \"0.9.4\" %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: broot\n  version: {{ version }}\n\nsource:\n  url: https://github.com/Canop/broot/archive/v{{ version }}.tar.gz\n  sha256: f5e11f2249d24ce7a7b22b60af969ddce727da80b1e38164366c611d35bb0c23\n\nbuild:\n  number: 0\n  skip: true  # [win and vc<14]\n\nrequirements:\n  build:\n    - rust\n    - {{ compiler('c') }}\n    - {{native}}binutils\n\ntest:\n  commands:\n    - broot --help\n\nabout:\n  home: https://github.com/Canop/broot\n  license: MIT\n  license_file: LICENSE\n  summary: Balanced tree view + fuzzy search + BFS + customizable launcher\n  doc_url: https://dystroy.org/broot/\n\nextra:\n  recipe-maintainers:\n    - dbast\n",
  "req":{
