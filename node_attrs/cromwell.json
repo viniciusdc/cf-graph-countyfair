@@ -103,7 +103,40 @@
    ]
   }
  ],
- "bad":false,
+ "bad":{
+  "code":404,
+  "exception":"HTTP Error 404: Not Found",
+  "traceback":[
+   "Traceback (most recent call last):",
+   "  File \"/root/repo/cf-scripts/conda_forge_tick/auto_tick.xsh\", line 656, in main",
+   "    hash_type=attrs.get('hash_type', 'sha256'))",
+   "  File \"/root/repo/cf-scripts/conda_forge_tick/auto_tick.xsh\", line 98, in run",
+   "    migrate_return = migrator.migrate(recipe_dir, attrs, **kwargs)",
+   "  File \"/root/repo/cf-scripts/conda_forge_tick/migrators.xsh\", line 334, in migrate",
+   "    new_patterns = self.get_hash_patterns('meta.yaml', urls, hash_type)",
+   "  File \"/root/repo/cf-scripts/conda_forge_tick/migrators.xsh\", line 264, in get_hash_patterns",
+   "    hash = hash_url(url, hash_type)",
+   "  File \"/opt/conda/envs/run_env/lib/python3.7/site-packages/rever/tools.xsh\", line 207, in hash_url",
+   "    for b in stream_url_progress(url, verb='Hashing', quiet=quiet):",
+   "  File \"/opt/conda/envs/run_env/lib/python3.7/site-packages/rever/tools.xsh\", line 179, in stream_url_progress",
+   "    with urllib.request.urlopen(url) as f:",
+   "  File \"/opt/conda/envs/run_env/lib/python3.7/urllib/request.py\", line 222, in urlopen",
+   "    return opener.open(url, data, timeout)",
+   "  File \"/opt/conda/envs/run_env/lib/python3.7/urllib/request.py\", line 531, in open",
+   "    response = meth(req, response)",
+   "  File \"/opt/conda/envs/run_env/lib/python3.7/urllib/request.py\", line 641, in http_response",
+   "    'http', request, response, code, msg, hdrs)",
+   "  File \"/opt/conda/envs/run_env/lib/python3.7/urllib/request.py\", line 569, in error",
+   "    return self._call_chain(*args)",
+   "  File \"/opt/conda/envs/run_env/lib/python3.7/urllib/request.py\", line 503, in _call_chain",
+   "    result = func(*args)",
+   "  File \"/opt/conda/envs/run_env/lib/python3.7/urllib/request.py\", line 649, in http_error_default",
+   "    raise HTTPError(req.full_url, code, msg, hdrs, fp)",
+   "urllib.error.HTTPError: HTTP Error 404: Not Found",
+   ""
+  ],
+  "url":"https://github.com/broadinstitute/cromwell/releases/download/46/cromwell-46.jar"
+ },
  "conda-forge.yml":{},
  "feedstock_name":"cromwell",
  "hash_type":"sha256",
@@ -195,7 +228,7 @@
   }
  },
  "name":"cromwell",
- "new_version":"45.1",
+ "new_version":"46",
  "pinning_version":"2019.08.22",
  "raw_meta_yaml":"{% set version = \"45.1\" %}\n\npackage:\n  name: cromwell\n  version: {{ version }}\n\nsource:\n  - url: https://github.com/broadinstitute/cromwell/releases/download/{{ version }}/cromwell-{{ version }}.jar\n    sha256: 41be8b941ac2012f0d256a567024cacf965083a2a550ffc584c40c734e4af147\n    folder: cromwell\n  - url: https://github.com/broadinstitute/cromwell/releases/download/{{ version }}/womtool-{{ version }}.jar\n    sha256: 349e4a5dd5a6a7efcd3a8f5f5fd1d8a8d6f6912ec9adde285ce700c3a7e5dfe5\n    folder: womtool\n\nbuild:\n  # Cannot build on Windows because findutils is not available\n  skip: true  # [win]\n  number: 0\n\nrequirements:\n  run:\n    - openjdk >=8,<9\n    - python\n    - findutils\n\ntest:\n  commands:\n    - cromwell --version 2>&1 | grep \"cromwell\"\n    - womtool --help 2>&1 | grep \"Usage\"\n\nabout:\n  home: https://github.com/broadinstitute/cromwell\n  license: \"BSD-3-Clause\"\n  license_file: \"LICENSE.txt\"\n  summary: \"A Workflow Management System geared towards scientific workflows described in WDL\"\n\nextra:\n  recipe-maintainers:\n    - notestaff\n    - chapmanb\n    - micknudsen \n    - rhpvorderman\n",
  "req":{
