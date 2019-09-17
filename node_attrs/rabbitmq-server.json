@@ -199,7 +199,40 @@
    ]
   }
  ],
- "bad":false,
+ "bad":{
+  "code":404,
+  "exception":"HTTP Error 404: Not Found",
+  "traceback":[
+   "Traceback (most recent call last):",
+   "  File \"/root/repo/cf-scripts/conda_forge_tick/auto_tick.xsh\", line 656, in main",
+   "    hash_type=attrs.get('hash_type', 'sha256'))",
+   "  File \"/root/repo/cf-scripts/conda_forge_tick/auto_tick.xsh\", line 98, in run",
+   "    migrate_return = migrator.migrate(recipe_dir, attrs, **kwargs)",
+   "  File \"/root/repo/cf-scripts/conda_forge_tick/migrators.xsh\", line 334, in migrate",
+   "    new_patterns = self.get_hash_patterns('meta.yaml', urls, hash_type)",
+   "  File \"/root/repo/cf-scripts/conda_forge_tick/migrators.xsh\", line 264, in get_hash_patterns",
+   "    hash = hash_url(url, hash_type)",
+   "  File \"/opt/conda/envs/run_env/lib/python3.7/site-packages/rever/tools.xsh\", line 207, in hash_url",
+   "    for b in stream_url_progress(url, verb='Hashing', quiet=quiet):",
+   "  File \"/opt/conda/envs/run_env/lib/python3.7/site-packages/rever/tools.xsh\", line 179, in stream_url_progress",
+   "    with urllib.request.urlopen(url) as f:",
+   "  File \"/opt/conda/envs/run_env/lib/python3.7/urllib/request.py\", line 222, in urlopen",
+   "    return opener.open(url, data, timeout)",
+   "  File \"/opt/conda/envs/run_env/lib/python3.7/urllib/request.py\", line 531, in open",
+   "    response = meth(req, response)",
+   "  File \"/opt/conda/envs/run_env/lib/python3.7/urllib/request.py\", line 641, in http_response",
+   "    'http', request, response, code, msg, hdrs)",
+   "  File \"/opt/conda/envs/run_env/lib/python3.7/urllib/request.py\", line 569, in error",
+   "    return self._call_chain(*args)",
+   "  File \"/opt/conda/envs/run_env/lib/python3.7/urllib/request.py\", line 503, in _call_chain",
+   "    result = func(*args)",
+   "  File \"/opt/conda/envs/run_env/lib/python3.7/urllib/request.py\", line 649, in http_error_default",
+   "    raise HTTPError(req.full_url, code, msg, hdrs, fp)",
+   "urllib.error.HTTPError: HTTP Error 404: Not Found",
+   ""
+  ],
+  "url":"https://github.com/rabbitmq/rabbitmq-server/releases/download/v3.7.18/rabbitmq-server-generic-unix-3.7.18.tar.xz"
+ },
  "conda-forge.yml":{},
  "feedstock_name":"rabbitmq-server",
  "hash_type":"sha256",
@@ -272,7 +305,7 @@
   }
  },
  "name":"rabbitmq-server",
- "new_version":"3.7.17",
+ "new_version":"3.7.18",
  "pinning_version":"2019.07.26",
  "raw_meta_yaml":"{% set name = \"rabbitmq-server\" %}\n{% set version = \"3.7.16\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  fn: {{ name }}-{{ version }}.tar.xz\n  url: https://github.com/rabbitmq/{{ name }}/releases/download/v{{ version }}/{{ name }}-generic-unix-{{ version }}.tar.xz\n  sha256: a34011f8ff1682a1601d4b8e0167ad39b91fd8f0fb35b484c41efde9f104ed08\n  patches:\n    - a2f5620.patch  # wrapper to fake RABBITMQ_HOME location\n    - f52bca4.patch  # SYS_PREFIX is set to Conda's PREFIX\n\nbuild:\n  number: 0\n  skip: True  # [win]\n  no_link:\n    - etc/rabbitmq\n    - var/*/rabbitmq\n\nrequirements:\n  build:\n    - gettext\n\n  run:\n    - erlang >=20.3,<22\n\ntest:\n  commands:\n    - rabbitmq-server&  # [linux]\n    - sleep 2  # [linux]\n    - rabbitmqctl status  # [linux]\n    - rabbitmqctl stop  # [linux]\n\nabout:\n  home: http://www.rabbitmq.com\n  license: MPL 1.1\n  license_family: OTHER\n  license_file: LICENSE\n  summary: Open source multi-protocol messaging broker\n\n  description: |\n    RabbitMQ is lightweight and easy to deploy on premise and in the cloud. \n    It supports multiple messaging protocols. RabbitMQ can be deployed in \n    distributed and federated configurations to meet high-scale, \n    high-availability requirements.\n  doc_url: https://www.rabbitmq.com/documentation.html\n  dev_url: https://github.com/rabbitmq/rabbitmq-server\n\nextra:\n  recipe-maintainers:\n    - sodre\n",
  "req":{
