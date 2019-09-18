@@ -466,6 +466,23 @@
     "migrator_version",
     "version"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/318735201.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"Version",
+    "migrator_version":0,
+    "version":"125"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "version"
+   ]
   }
  ],
  "bad":false,
@@ -564,7 +581,7 @@
   }
  },
  "name":"diffoscope",
- "new_version":"124",
+ "new_version":"125",
  "pinning_version":"2019.09.08",
  "raw_meta_yaml":"{% set name = \"diffoscope\" %}\n{% set version = \"124\" %}\n\npackage:\n  name: {{ name }}\n  version: {{ version }}\n\nsource:\n  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz\n  sha256: 0cda0c786c95de21ea576b654039351fdc879ba8e6c40626a39349709daa51d9\n\nbuild:\n  number: 0\n  noarch: python\n  script: python -m pip install --no-deps --ignore-installed .\n  entry_points:\n    - diffoscope = diffoscope.main:main\n\nrequirements:\n  build:\n    - python >=3.5\n    - pip\n  run:\n    - python >=3.5\n    - python-libarchive-c\n    - python-magic\n    - python-tlsh\n\ntest:\n  source_files:\n    - tests\n  requires:\n    - pytest\n  imports:\n    - diffoscope\n  commands:\n    - diffoscope --help\n    - diffoscope --list-tools\n    - diffoscope --version\n    - |-\n      pytest ./tests -k \"\\\n        not assert_non_existing \\\n        and not berkeley_db \\\n        and not test_icc \\\n        and not test_item1_elf \\\n        and not test_code_is_black_clean \\\n        and not ocaml \\\n        and not test_ignore_readelf_errors \\\n        and not test_libmix_differences \\\n      \"\n\nabout:\n  home: https://diffoscope.org\n  license: GPL-3.0\n  summary: in-depth comparison of files, archives, and directories\n  license_family: GPL\n  license_file: COPYING\n  dev_url: https://anonscm.debian.org/cgit/reproducible/diffoscope.git\n  description: >\n    diffoscope will try to get to the bottom of what makes files or\n    directories different. It will recursively unpack archives of many kinds\n    and transform various binary formats into more human readable form to\n    compare them. It can compare two tarballs, ISO images, or PDF just as\n    easily.\n\nextra:\n  recipe-maintainers:\n    - bollwyvl\n",
  "req":{
