@@ -178,6 +178,23 @@
     "migrator_version",
     "version"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/318780883.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"Version",
+    "migrator_version":0,
+    "version":"1.9.0"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "version"
+   ]
   }
  ],
  "bad":false,
@@ -291,8 +308,8 @@
   }
  },
  "name":"gsd",
- "new_version":false,
- "pinning_version":"2019.08.12",
+ "new_version":"1.9.0",
+ "pinning_version":"2019.09.08",
  "raw_meta_yaml":"{% set name = \"gsd\" %}\n{% set version = \"1.8.1\" %}\n{% set sha256 = \"bb38d00b83b982904aade2013d0072f66c84faa52cec01df1b23cbbf62707b68\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  fn: {{ name }}-{{ version }}.tar.gz\n  url: https://glotzerlab.engin.umich.edu/Downloads/{{ name }}/{{ name }}-v{{ version }}.tar.gz\n  sha256: {{ sha256 }}\n\nbuild:\n  number: 0\n  # the upstream package does not support windows or python2.7\n  skip: true  # [win]\n  skip: true  # [py27]\n  script: \"{{ PYTHON }} -m pip install . -vv --no-deps\"\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n\n  host:\n    - setuptools\n    - cython\n    - python\n    - numpy\n    - pip\n\n  run:\n    - python\n    - {{ pin_compatible('numpy') }}\n\ntest:\n  requires:\n    - nose\n  imports:\n    - gsd\n    - gsd.fl\n    - gsd.pygsd\n    - gsd.hoomd\n  source_files:\n    - tests/\n    - setup.cfg\n  commands:\n    - nosetests\n\nabout:\n  home: https://github.com/glotzerlab/{{ name }}\n  license: BSD-2-Clause\n  license_family: BSD\n  license_file: LICENSE\n  summary: 'General simulation data'\n\n  description: |\n   GSD (General Simulation Data) is a file format specification\n   and a library to read and write it. The package also contains a python module\n   that reads and writes hoomd schema gsd files with an easy to use syntax.\n\n  doc_url: https://gsd.readthedocs.io\n  dev_url: https://github.com/glotzerlab/{{ name }}\n\nextra:\n  recipe-maintainers:\n    - bdice\n    - joaander\n",
  "req":{
   "__set__":true,
@@ -306,7 +323,7 @@
    "setuptools"
   ]
  },
- "smithy_version":"3.4.1",
+ "smithy_version":"3.4.7",
  "url":"https://glotzerlab.engin.umich.edu/Downloads/gsd/gsd-v1.8.1.tar.gz",
  "version":"1.8.1"
 }
