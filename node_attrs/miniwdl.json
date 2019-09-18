@@ -69,7 +69,24 @@
    ]
   }
  ],
- "bad":false,
+ "bad":{
+  "exception":"name 'bad_install' is not defined",
+  "traceback":[
+   "Traceback (most recent call last):",
+   "  File \"/root/repo/cf-scripts/conda_forge_tick/auto_tick.xsh\", line 656, in main",
+   "    hash_type=attrs.get('hash_type', 'sha256'))",
+   "  File \"/root/repo/cf-scripts/conda_forge_tick/auto_tick.xsh\", line 98, in run",
+   "    migrate_return = migrator.migrate(recipe_dir, attrs, **kwargs)",
+   "  File \"/root/repo/cf-scripts/conda_forge_tick/migrators.xsh\", line 393, in migrate",
+   "    return super().migrate(recipe_dir, attrs)",
+   "  File \"/root/repo/cf-scripts/conda_forge_tick/migrators.xsh\", line 134, in migrate",
+   "    if not mini_migrator.filter(attrs):",
+   "  File \"/root/repo/cf-scripts/conda_forge_tick/migrators.xsh\", line 62, in filter",
+   "    return not bool(set(bad_install) & set(scripts))",
+   "NameError: name 'bad_install' is not defined",
+   ""
+  ]
+ },
  "conda-forge.yml":{},
  "feedstock_name":"miniwdl",
  "hash_type":"sha256",
@@ -202,7 +219,7 @@
   }
  },
  "name":"miniwdl",
- "new_version":"0.4.0",
+ "new_version":"0.4.1",
  "pinning_version":"2019.08.19",
  "raw_meta_yaml":"{% set name = \"miniwdl\" %}\n{% set version = \"0.4.0\" %}\n\npackage:\n  name: \"{{ name|lower }}\"\n  version: \"{{ version }}\"\n\nsource:\n  url: \"https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz\"\n  sha256: 293999911ed799ff594e8562e9fd1196fb1cfa1972220a0feef9c1bd13169d72\n\nbuild:\n  noarch: python\n  number: 0\n  script: \"{{ PYTHON }} -m pip install . --no-deps --ignore-installed -vv \"\n  entry_points:\n    - miniwdl = WDL.CLI:main\n\nrequirements:\n  host:\n    - pip\n    - pbr\n    - python >=3.6\n    - setuptools\n    - docker-py\n    - argcomplete\n    - coloredlogs\n    - lark-parser 0.7.2\n    - pygtail >=0.11.0\n\n  run:\n    - python >=3.6\n    - setuptools\n    - docker-py\n    - argcomplete\n    - coloredlogs\n    - lark-parser 0.7.2\n    - pygtail >=0.11.0\ntest:\n  imports:\n    - WDL\n    - WDL.Env\n    - WDL.Error\n    - WDL.Expr\n    - WDL.StdLib\n    - WDL.Tree\n    - WDL.Type\n    - WDL.Value\n    - WDL.Walker\n  commands:\n    - miniwdl --help\n\nabout:\n  home: \"https://github.com/chanzuckerberg/miniwdl\"\n  license: \"MIT\"\n  license_family: \"MIT\"\n  license_file: \"LICENSE\"\n  summary: \"Developer toolkit for the Workflow Description Language (WDL)\"\n  description: >\n    miniwdl provides WDL developer productivity tools, a local runtime\n    implementation, and a foundation for language experimentation.\n\nextra:\n  recipe-maintainers:\n    - mlin\n    - rhpvorderman\n",
  "req":{
