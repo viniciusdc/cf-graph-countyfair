@@ -204,7 +204,7 @@
   }
  },
  "name":"lld",
- "new_version":"llvmorg-8.0.1",
+ "new_version":"llvmorg-9.0.0",
  "pinning_version":"2019.08.27",
  "raw_meta_yaml":"{% set version = \"8.0.1\" %}\n{% set sha256 = \"9fba1e94249bd7913e8a6c3aadcb308b76c8c3d83c5ce36c99c3f34d73873d88\" %}\n\npackage:\n  name: lld\n  version: {{ version }}\n\nsource:\n  fn: lld-{{ version }}.src.tar.xz\n  url: https://github.com/llvm/llvm-project/releases/download/llvmorg-{{ version }}/lld-{{ version }}.src.tar.xz\n  sha256: {{ sha256 }}\n\nbuild:\n  number: 0\n  skip: true  # [win and vc<14]\n\nrequirements:\n  build:\n    - cmake >=3.4.3\n    - ninja    # [win]\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n  host:\n    - llvmdev =={{ version }}\n    - swig\n    - llvm\n  run_constrained:\n    - llvmdev =={{ version }}\n\ntest:\n  commands:\n    - ld.lld --version  # [linux]\n    - lld-link /?  # [win]\n\nabout:\n  home: http://llvm.org/\n  license: NCSA\n  license_file: LICENSE.TXT\n  summary: The LLVM Linker\n\nextra:\n  recipe-maintainers:\n    - isuruf\n",
  "req":{
