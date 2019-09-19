@@ -122,7 +122,10 @@
  "conda-forge.yml":{
   "compiler_stack":"comp7",
   "max_py_ver":"37",
-  "max_r_ver":"35"
+  "max_r_ver":"35",
+  "provider":{
+   "win":"appveyor"
+  }
  },
  "feedstock_name":"libitk",
  "hash_type":"sha256",
@@ -141,7 +144,7 @@
    "summary":"Runtime libraries and header files for the Insight Toolkit for segmentation and registration."
   },
   "build":{
-   "number":"4"
+   "number":"5"
   },
   "extra":{
    "recipe-maintainers":[
@@ -173,16 +176,19 @@
     "cxx_compiler_stub"
    ],
    "host":[
+    "fftw",
     "jpeg",
     "libtiff",
     "libpng",
     "expat",
+    "fftw",
     "hdf5",
     "jpeg",
     "libtiff",
     "libpng",
     "zlib",
     "expat",
+    "fftw",
     "hdf5",
     "jpeg",
     "libtiff",
@@ -190,16 +196,19 @@
     "zlib"
    ],
    "run":[
+    "fftw",
     "jpeg",
     "libtiff",
     "libpng",
     "expat",
+    "fftw",
     "hdf5",
     "jpeg",
     "libtiff",
     "libpng",
     "zlib",
     "expat",
+    "fftw",
     "hdf5",
     "jpeg",
     "libtiff",
@@ -251,7 +260,7 @@
  "name":"libitk",
  "new_version":"5.0.1",
  "pinning_version":"2019.07.23",
- "raw_meta_yaml":"{% set version = \"4.13.2\" %}\n\npackage:\n  name: libitk\n  version: \"{{version}}\"\n\nsource:\n  url: https://github.com/InsightSoftwareConsortium/ITK/archive/v{{version}}.tar.gz\n  sha256: 98c2fd826e1987d797521d83031fcaa328135daf6524f7823363d66ab288c545\n\nbuild:\n    number: 4\n\nrequirements:\n  build:\n    - cmake    >=3.3\n    - ninja\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n  host:\n    - expat                     # [not win]\n    - hdf5                      # [not win]\n    - jpeg\n    - libtiff\n    - libpng\n    - zlib                      # [not win]\n  run:\n    - expat                     # [not win]\n    - hdf5                      # [not win]\n    - jpeg\n    - libtiff\n    - libpng\n    - zlib                      # [not win]\n\ntest:\n  requires:\n    - cmake\n    - {{ compiler(\"c\") }}\n    - {{ compiler(\"cxx\") }}\n  files:\n    - example\n    - ITK-JPEG.jpg\n  commands:\n    - test -d $PREFIX/include/ITK*                        # [not win]\n    - if not exist %LIBRARY_INC%\\\\ITK* exit 1             # [win]\n    - itkTestDriver -- echo \"Runtime ITK OK\"\n    - itkTestDriver --no-process --compare-MD5 ITK-JPEG.jpg 959e1682d19026fc62cfbdc140df31da\n    - cmake -D \"CMAKE_SYSTEM_PREFIX_PATH:FILEPATH=${PREFIX}\" ./example  # [not win]\n    - cmake --build . --config Release                                  # [not win]\n\nabout:\n  home: http://www.itk.org\n  license: Apache 2.0\n  license_file:\n    - LICENSE\n    - NOTICE\n  summary: Runtime libraries and header files for the Insight Toolkit for segmentation and registration.\n\nextra:\n    recipe-maintainers:\n      - blowekamp\n      - bluescarni\n",
+ "raw_meta_yaml":"{% set version = \"4.13.2\" %}\n\npackage:\n  name: libitk\n  version: \"{{version}}\"\n\nsource:\n  url: https://github.com/InsightSoftwareConsortium/ITK/archive/v{{version}}.tar.gz\n  sha256: 98c2fd826e1987d797521d83031fcaa328135daf6524f7823363d66ab288c545\n\nbuild:\n    number: 5\n\nrequirements:\n  build:\n    - cmake    >=3.3\n    - ninja\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n  host:\n    - expat                     # [not win]\n    - fftw\n    - hdf5                      # [not win]\n    - jpeg\n    - libtiff\n    - libpng\n    - zlib                      # [not win]\n  run:\n    - expat                     # [not win]\n    - fftw\n    - hdf5                      # [not win]\n    - jpeg\n    - libtiff\n    - libpng\n    - zlib                      # [not win]\n\ntest:\n  requires:\n    - cmake\n    - {{ compiler(\"c\") }}\n    - {{ compiler(\"cxx\") }}\n  files:\n    - example\n    - ITK-JPEG.jpg\n  commands:\n    - test -d $PREFIX/include/ITK*                        # [not win]\n    - if not exist %LIBRARY_INC%\\\\ITK* exit 1             # [win]\n    - itkTestDriver -- echo \"Runtime ITK OK\"\n    - itkTestDriver --no-process --compare-MD5 ITK-JPEG.jpg 959e1682d19026fc62cfbdc140df31da\n    - cmake -D \"CMAKE_SYSTEM_PREFIX_PATH:FILEPATH=${PREFIX}\" ./example  # [not win]\n    - cmake --build . --config Release                                  # [not win]\n\nabout:\n  home: http://www.itk.org\n  license: Apache 2.0\n  license_file:\n    - LICENSE\n    - NOTICE\n  summary: Runtime libraries and header files for the Insight Toolkit for segmentation and registration.\n\nextra:\n    recipe-maintainers:\n      - blowekamp\n      - bluescarni\n",
  "req":{
   "__set__":true,
   "elements":[
@@ -259,6 +268,7 @@
    "cmake",
    "cxx_compiler_stub",
    "expat",
+   "fftw",
    "hdf5",
    "jpeg",
    "libpng",
