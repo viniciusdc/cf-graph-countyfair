@@ -90,28 +90,28 @@
     "c_compiler_stub"
    ],
    "host":[
-    "python >=3.5",
+    "python",
     "pip",
     "numpy",
-    "python >=3.5",
+    "python",
     "pip",
     "numpy",
-    "python >=3.5",
+    "python",
     "pip",
     "numpy"
    ],
    "run":[
-    "python >=3.5",
+    "python",
     "compatible_pin_stub",
     "gridgen",
     "matplotlib",
     "pyproj",
-    "python >=3.5",
+    "python",
     "compatible_pin_stub",
     "gridgen",
     "matplotlib",
     "pyproj",
-    "python >=3.5",
+    "python",
     "compatible_pin_stub",
     "gridgen",
     "matplotlib",
@@ -123,9 +123,6 @@
    "url":"https://github.com/pygridgen/pygridgen/archive/v0.2.1.tar.gz"
   },
   "test":{
-   "commands":[
-    "conda inspect linkages -p $PREFIX $PKG_NAME"
-   ],
    "imports":[
     "pygridgen",
     "pygridgen",
@@ -141,7 +138,7 @@
  "name":"pygridgen",
  "new_version":"0.2.1",
  "pinning_version":"2019.09.08",
- "raw_meta_yaml":"{% set version = \"0.2.1\" %}\n\npackage:\n  name: pygridgen\n  version: {{ version }}\n\nsource:\n  url: https://github.com/pygridgen/pygridgen/archive/v{{ version }}.tar.gz\n  sha256: f6cb3d1b8228d38ed215015244f4e1b7e0bef15e9eda33ed8417d5c71c0e24be\n\n\nbuild:\n  number: 1\n  skip: True  # [win]\n  script: python -m pip install --no-deps --ignore-installed .\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n  host:\n    - python >=3.5\n    - pip\n    - numpy\n  run:\n    - python >=3.5\n    - {{ pin_compatible('numpy') }}\n    - gridgen\n    - matplotlib\n    - pyproj\n\ntest:\n  requires:\n    - pytest\n  imports:\n    - pygridgen\n  commands:\n    - conda inspect linkages -p $PREFIX $PKG_NAME  # [not win]\n    - conda inspect objects -p $PREFIX $PKG_NAME  # [osx]\n\nabout:\n  home: https://pygridgen.readthedocs.io/\n  license:  MIT\n  summary: Python interface to gridgen by Pavel Sakov\n\nextra:\n  recipe-maintainers:\n    - ocefpaf\n    - phobson\n",
+ "raw_meta_yaml":"{% set version = \"0.2.1\" %}\n\npackage:\n  name: pygridgen\n  version: {{ version }}\n\nsource:\n  url: https://github.com/pygridgen/pygridgen/archive/v{{ version }}.tar.gz\n  sha256: f6cb3d1b8228d38ed215015244f4e1b7e0bef15e9eda33ed8417d5c71c0e24be\n\n\nbuild:\n  number: 1\n  skip: True  # [win or py<35]\n  script: python -m pip install --no-deps --ignore-installed .\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n  host:\n    - python\n    - pip\n    - numpy\n  run:\n    - python\n    - {{ pin_compatible('numpy') }}\n    - gridgen\n    - matplotlib\n    - pyproj\n\ntest:\n  requires:\n    - pytest\n  imports:\n    - pygridgen\n\nabout:\n  home: https://pygridgen.readthedocs.io/\n  license:  MIT\n  summary: Python interface to gridgen by Pavel Sakov\n\nextra:\n  recipe-maintainers:\n    - ocefpaf\n    - phobson\n",
  "req":{
   "__set__":true,
   "elements":[
