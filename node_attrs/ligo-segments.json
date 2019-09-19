@@ -83,6 +83,8 @@
  "meta_yaml":{
   "about":{
    "description":"This module defines the segment and segmentlist objects, as well as the\ninfinity object used to define semi-infinite and infinite segments.\n",
+   "dev_url":"https://git.ligo.org/lscsoft/ligo-segments",
+   "doc_url":"https://lscsoft.docs.ligo.org/ligo-segments/",
    "home":"https://git.ligo.org/lscsoft/ligo-segments",
    "license":"GPLv3",
    "license_family":"GPL",
@@ -90,8 +92,9 @@
    "summary":"Representations of semi-open intervals"
   },
   "build":{
-   "number":"0",
-   "script":" -m pip install . --no-deps --ignore-installed -vv "
+   "ignore_run_exports":null,
+   "number":"1",
+   "script":" -m pip install . -vv"
   },
   "extra":{
    "recipe-maintainers":[
@@ -106,20 +109,21 @@
   },
   "requirements":{
    "build":[
-    "c_compiler_stub",
+    "m2w64_c_compiler_stub",
     "c_compiler_stub",
     "c_compiler_stub"
    ],
    "host":[
-    "python",
-    "setuptools",
+    "libpython",
     "pip",
     "python",
     "setuptools",
     "pip",
     "python",
     "setuptools",
-    "pip"
+    "pip",
+    "python",
+    "setuptools"
    ],
    "run":[
     "python",
@@ -134,11 +138,9 @@
    ]
   },
   "source":{
-   "fn":"ligo-segments-1.2.0.tar.gz",
    "patches":[
     "0001-ligo.segments-rename-__nonzero__-to-__bool__.patch",
     "0002-.value_slice_to_index-adjust-expectations.patch",
-    "minmax.patch",
     "0001-ligo.segments-rename-__nonzero__-to-__bool__.patch",
     "0002-.value_slice_to_index-adjust-expectations.patch",
     "0001-ligo.segments-rename-__nonzero__-to-__bool__.patch",
@@ -152,11 +154,8 @@
     "python test/segments_verify.py",
     "python test/segments_verify.py",
     "python test/segments_utils_verify.py",
-    "conda inspect linkages -p ${PREFIX} ${PKG_NAME}",
-    "conda inspect objects -p ${PREFIX} ${PKG_NAME}",
     "python test/segments_verify.py",
-    "python test/segments_utils_verify.py",
-    "conda inspect linkages -p ${PREFIX} ${PKG_NAME}"
+    "python test/segments_utils_verify.py"
    ],
    "imports":[
     "ligo.segments",
@@ -178,12 +177,14 @@
  "name":"ligo-segments",
  "new_version":"1.2.0",
  "pinning_version":"2019.01.29",
- "raw_meta_yaml":"{% set name = \"ligo-segments\" %}\n{% set version = \"1.2.0\" %}\n{% set sha256 = \"5edbcb88cae007c4e154a61cb2c9d0a6d6d4016c1ecaf0a59a667a267bd20e7a\" %}\n\npackage:\n  name: {{ name }}\n  version: {{ version }}\n\nsource:\n  fn: {{ name }}-{{ version }}.tar.gz\n  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz\n  sha256: {{ sha256 }}\n  patches:\n    # rename __nonzero__ -> __bool__\n    - 0001-ligo.segments-rename-__nonzero__-to-__bool__.patch\n    # fix bug in doctests\n    - 0002-.value_slice_to_index-adjust-expectations.patch\n    # build pure-python library on windows for python2\n    - pure-python-windows.patch  # [win and py<30]\n    # rename min max for windows\n    - minmax.patch  # [win]\n\nbuild:\n  number: 0\n  script: \"{{ PYTHON }} -m pip install . --no-deps --ignore-installed -vv \"\n\nrequirements:\n  build:\n    - {{ compiler('c') }}  # [not (win and py<30)]\n  host:\n    - python\n    - setuptools\n    - pip\n  run:\n    - python\n    - six\n    - ligo-common\n\ntest:\n  imports:\n    - ligo.segments\n    # utils requires LAL, which is [not win]\n    - ligo.segments.utils  # [not win]\n  source_files:\n    - test/*.py\n  requires:\n    - python-lal  # [not win]\n  commands:\n    - python test/segments_verify.py\n    - python test/segments_utils_verify.py  # [not win]\n    # inspect links\n    - conda inspect linkages -p ${PREFIX} ${PKG_NAME}  # [not win]\n    - conda inspect objects -p ${PREFIX} ${PKG_NAME}  # [osx]\n\nabout:\n  home: https://git.ligo.org/lscsoft/{{ name }}\n  license: GPLv3\n  license_family: GPL\n  license_file: LICENSE\n  summary: Representations of semi-open intervals\n  description: |\n    This module defines the segment and segmentlist objects, as well as the\n    infinity object used to define semi-infinite and infinite segments.\n\nextra:\n  recipe-maintainers:\n    - duncanmmacleod\n",
+ "raw_meta_yaml":"{% set name = \"ligo-segments\" %}\n{% set version = \"1.2.0\" %}\n{% set sha256 = \"5edbcb88cae007c4e154a61cb2c9d0a6d6d4016c1ecaf0a59a667a267bd20e7a\" %}\n\npackage:\n  name: {{ name }}\n  version: {{ version }}\n\nsource:\n  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz\n  sha256: {{ sha256 }}\n  patches:\n    # rename __nonzero__ -> __bool__\n    - 0001-ligo.segments-rename-__nonzero__-to-__bool__.patch\n    # fix bug in doctests\n    - 0002-.value_slice_to_index-adjust-expectations.patch\n\nbuild:\n  number: 1\n  script: \"{{ PYTHON }} -m pip install . -vv\"  # [unix]\n  ignore_run_exports:\n    - m2w64-gcc-libs  # [win]\n\nrequirements:\n  build:\n    - {{ compiler('c') }}  # [not win]\n    - {{ compiler('m2w64_c') }}  # [win]\n  host:\n    - libpython  # [win]\n    - pip\n    - python\n    - setuptools\n  run:\n    - python\n    - six\n    - ligo-common\n\ntest:\n  imports:\n    - ligo.segments\n    # utils requires LAL, which is [not win]\n    - ligo.segments.utils  # [not win]\n  source_files:\n    - test/*.py\n  requires:\n    - python-lal  # [not win]\n  commands:\n    - python test/segments_verify.py\n    - python test/segments_utils_verify.py  # [not win]\n\nabout:\n  home: https://git.ligo.org/lscsoft/{{ name }}\n  dev_url: https://git.ligo.org/lscsoft/{{ name }}\n  doc_url: https://lscsoft.docs.ligo.org/{{ name }}/\n  license: GPLv3\n  license_family: GPL\n  license_file: LICENSE\n  summary: Representations of semi-open intervals\n  description: |\n    This module defines the segment and segmentlist objects, as well as the\n    infinity object used to define semi-infinite and infinite segments.\n\nextra:\n  recipe-maintainers:\n    - duncanmmacleod\n",
  "req":{
   "__set__":true,
   "elements":[
    "c_compiler_stub",
+   "libpython",
    "ligo-common",
+   "m2w64_c_compiler_stub",
    "pip",
    "python",
    "setuptools",
