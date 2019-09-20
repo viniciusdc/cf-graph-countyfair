@@ -13,7 +13,7 @@
    "summary":"Netpbm is a toolkit for manipulation of graphic images, including conversion of images between a variety of different formats."
   },
   "build":{
-   "number":"0",
+   "number":"1",
    "skip":true
   },
   "extra":{
@@ -30,11 +30,13 @@
   "requirements":{
    "build":[
     "c_compiler_stub",
+    "pkg-config",
     "flex",
     "gettext",
     "make",
     "sed",
     "c_compiler_stub",
+    "pkg-config",
     "flex",
     "gettext",
     "make",
@@ -53,18 +55,21 @@
     "zlib",
     "libpng",
     "libxml2",
+    "ghostscript",
     "perl",
     "jpeg",
     "libtiff",
     "zlib",
     "libpng",
     "libxml2",
+    "ghostscript",
     "perl",
     "jpeg",
     "libtiff",
     "zlib",
     "libpng",
-    "libxml2"
+    "libxml2",
+    "ghostscript"
    ],
    "run":[
     "perl",
@@ -73,18 +78,21 @@
     "zlib",
     "libpng",
     "libxml2",
+    "ghostscript",
     "perl",
     "jpeg",
     "libtiff",
     "zlib",
     "libpng",
     "libxml2",
+    "ghostscript",
     "perl",
     "jpeg",
     "libtiff",
     "zlib",
     "libpng",
-    "libxml2"
+    "libxml2",
+    "ghostscript"
    ]
   },
   "source":{
@@ -125,13 +133,14 @@
  },
  "name":"netpbm",
  "new_version":false,
- "raw_meta_yaml":"{% set name = \"netpbm\" %}\n{% set version = \"10.73.28\" %}\n\npackage:\n  name: {{ name }}\n  version: {{ version }}\n\nsource:\n  url: https://sourceforge.net/projects/netpbm/files/super_stable/{{ version }}/netpbm-{{ version }}.tgz\n  sha256: c0d32d4b9a53fde47dd9a36f45653e0ef51f6c390517f10b0c5056d1a8a844bd\n\nbuild:\n  number: 0\n  skip: True  # [osx or win]\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - pkg-config  # [linux]\n    - flex\n    - gettext\n    - make\n    - sed\n  host:\n    - perl\n    - jpeg\n    - libtiff\n    - zlib\n    - libpng\n    - libxml2\n  run:\n    - perl\n    - jpeg\n    - libtiff\n    - zlib\n    - libpng\n    - libxml2\n\ntest:\n  commands:\n    - pnmtopng -version\n    - pnmtops -version\n    - ppmtogif -version\n    - pamscale -version\n    - tifftopnm -version\n    - jpegtopnm -version\n    - ppmtopgm -version\n    - pamcut -version\n    - bmptopnm -version\n\nabout:\n  home: http://netpbm.sourceforge.net\n  license: OTHER\n  license_file: doc/copyright_summary\n  summary: 'Netpbm is a toolkit for manipulation of graphic images, including conversion of images between a variety of different formats.'\n  doc_url: http://netpbm.sourceforge.net/doc/\n  dev_url: http://svn.code.sf.net/p/netpbm/code/\n\nextra:\n  recipe-maintainers:\n    - juliotux\n",
+ "raw_meta_yaml":"{% set name = \"netpbm\" %}\n{% set version = \"10.73.28\" %}\n\npackage:\n  name: {{ name }}\n  version: {{ version }}\n\nsource:\n  url: https://sourceforge.net/projects/netpbm/files/super_stable/{{ version }}/netpbm-{{ version }}.tgz\n  sha256: c0d32d4b9a53fde47dd9a36f45653e0ef51f6c390517f10b0c5056d1a8a844bd\n\nbuild:\n  number: 1\n  skip: True  # [win]\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - pkg-config\n    - flex\n    - gettext\n    - make\n    - sed\n  host:\n    - perl\n    - jpeg\n    - libtiff\n    - zlib\n    - libpng\n    - libxml2\n    - ghostscript\n  run:\n    - perl\n    - jpeg\n    - libtiff\n    - zlib\n    - libpng\n    - libxml2\n    - ghostscript\n\ntest:\n  commands:\n    - pnmtopng -version\n    - pnmtops -version\n    - ppmtogif -version\n    - pamscale -version\n    - tifftopnm -version\n    - jpegtopnm -version\n    - ppmtopgm -version\n    - pamcut -version\n    - bmptopnm -version\n\nabout:\n  home: http://netpbm.sourceforge.net\n  license: OTHER\n  license_file: doc/copyright_summary\n  summary: 'Netpbm is a toolkit for manipulation of graphic images, including conversion of images between a variety of different formats.'\n  doc_url: http://netpbm.sourceforge.net/doc/\n  dev_url: http://svn.code.sf.net/p/netpbm/code/\n\nextra:\n  recipe-maintainers:\n    - juliotux\n",
  "req":{
   "__set__":true,
   "elements":[
    "c_compiler_stub",
    "flex",
    "gettext",
+   "ghostscript",
    "jpeg",
    "libpng",
    "libtiff",
