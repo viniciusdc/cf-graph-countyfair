@@ -232,6 +232,23 @@
     "migrator_version",
     "version"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/319896701.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"Version",
+    "migrator_version":0,
+    "version":"3.9.2"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "version"
+   ]
   }
  ],
  "bad":false,
@@ -392,8 +409,8 @@
   }
  },
  "name":"libprotobuf",
- "new_version":"3.9.1",
- "pinning_version":"2019.07.26",
+ "new_version":"3.9.2",
+ "pinning_version":"2019.09.08",
  "raw_meta_yaml":"{% set version = \"3.9.1\" %}\n\npackage:\n  name: libprotobuf\n  version: {{ version }}\n\nsource:\n  - url: https://github.com/google/protobuf/archive/v{{ version }}/libprotobuf-v{{ version }}.tar.gz\n    sha256: 98e615d592d237f94db8bf033fba78cd404d979b0b70351a9e5aaff725398357\n    patches:\n      - 0001-remove-Werror-from-test-flags.patch  # [ppc64le or aarch64]\n  # these are git submodules from the 3.8.0 release \n  # https://github.com/google/protobuf/tree/v3.8.0/third_party\n  - url: https://github.com/google/benchmark/archive/5b7683f49e1e9223cf9927b24f6fd3d6bd82e3f8.zip\n    sha256: 866d3c8cadb3323251d4fe0e989ea0df51f30660badb73dad0f2d11e5bf1770f\n    folder: third_party/benchmark\n  - url: https://github.com/google/googletest/archive/5ec7f0c4a113e2f18ac2c6cc7df51ad6afc24081.zip\n    sha256: 629ba44a7dbc633da0add633b675add1810cd4f2e8e08558893de94b56a5808c\n    folder: third_party/googletest\n\nbuild:\n  number: 0\n  # Requires C++ 11, VS 2008 is not supported\n  skip: True  # [win and vc<14]\n  run_exports:\n    # breaks backwards compatibility and new SONAME each minor release\n    # https://abi-laboratory.pro/tracker/timeline/protobuf/\n    # One exception was that 3.6.1 was incompatible with 3.6.0\n    - {{ pin_subpackage('libprotobuf', max_pin='x.x') }}\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n    - cmake  # [win]\n    - autoconf  # [not win]\n    - automake  # [not win]\n    - libtool  # [not win]\n    - pkg-config  # [not win]\n    - unzip  # [not win]\n    - make  # [not win]\n  host:\n    - zlib\n  run:\n    - zlib\n\ntest:\n  commands:\n    - protoc --help\n    - test -f ${PREFIX}/lib/libprotobuf.a  # [not win]\n    - test -f ${PREFIX}/lib/libprotobuf${SHLIB_EXT}  # [not win]\n    - if not exist %PREFIX%\\\\Library\\\\lib\\\\libprotoc.lib exit 1  # [win]\n    - if not exist %PREFIX%\\\\Library\\\\lib\\\\libprotobuf.lib exit 1  # [win]\n    - if not exist %PREFIX%\\\\Library\\\\lib\\\\libprotobuf-lite.lib exit 1  # [win]\n\nabout:\n  home: https://developers.google.com/protocol-buffers/\n  license: BSD-3-Clause\n  license_family: BSD\n  license_file: LICENSE\n  summary: \"Protocol Buffers - Google's data interchange format. C++ Libraries\"\n  description: |\n    Protocol buffers are Google's language-neutral,\n    platform-neutral, extensible mechanism for serializing structured data-\n    think XML, but smaller, faster, and simpler.\n  doc_url: https://developers.google.com/protocol-buffers/\n  doc_source_url: https://github.com/google/protobuf/releases\n\nextra:\n  recipe-maintainers:\n    - dopplershift\n    - jakirkham\n    - jjhelmus\n    - ocefpaf\n    - wesm\n    - hajapy\n    - xhochy\n",
  "req":{
   "__set__":true,
@@ -410,7 +427,7 @@
    "zlib"
   ]
  },
- "smithy_version":"3.4.1",
+ "smithy_version":"3.4.8",
  "url":"https://github.com/google/protobuf/archive/v3.9.1/libprotobuf-v3.9.1.tar.gz",
  "version":"3.9.1"
 }
