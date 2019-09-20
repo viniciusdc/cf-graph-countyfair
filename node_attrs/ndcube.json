@@ -98,7 +98,7 @@
   },
   "build":{
    "noarch":"python",
-   "number":"1",
+   "number":"0",
    "script":"python setup.py install --offline --no-git --single-version-externally-managed --record record.txt"
   },
   "extra":{
@@ -116,41 +116,46 @@
   },
   "package":{
    "name":"ndcube",
-   "version":"1.1.3"
+   "version":"1.2.0"
   },
   "requirements":{
    "build":[
-    "python>3",
+    "python >3",
     "setuptools",
-    "astropy",
-    "python>3",
+    "setuptools_scm",
+    "python >3",
     "setuptools",
-    "astropy",
-    "python>3",
+    "setuptools_scm",
+    "python >3",
     "setuptools",
-    "astropy"
+    "setuptools_scm"
    ],
    "run":[
-    "python>3",
-    "astropy<3.1",
+    "python >3",
+    "astropy",
     "matplotlib",
-    "sunpy ==0.9",
-    "python>3",
-    "astropy<3.1",
+    "sunpy <=1.0.3",
+    "python >3",
+    "astropy",
     "matplotlib",
-    "sunpy ==0.9",
-    "python>3",
-    "astropy<3.1",
+    "sunpy <=1.0.3",
+    "python >3",
+    "astropy",
     "matplotlib",
-    "sunpy ==0.9"
+    "sunpy <=1.0.3"
    ]
   },
   "source":{
-   "fn":"ndcube-1.1.3.tar.gz",
-   "sha256":"8e663f62ce7092e215a7b46a9b6672c4850db80f424d8c16395c7ea2a0d4faf3",
-   "url":"https://pypi.io/packages/source/n/ndcube/ndcube-1.1.3.tar.gz"
+   "fn":"ndcube-1.2.0.tar.gz",
+   "sha256":"d0a4ffde4b0680d37a8f67f622517d3f733b83d331aaba3fc0f3836ab74b15e0",
+   "url":"https://pypi.io/packages/source/n/ndcube/ndcube-1.2.0.tar.gz"
   },
   "test":{
+   "commands":[
+    "pytest --pyargs ndcube",
+    "pytest --pyargs ndcube",
+    "pytest --pyargs ndcube"
+   ],
    "imports":[
     "ndcube",
     "ndcube.tests",
@@ -164,13 +169,18 @@
     "ndcube.tests",
     "ndcube.utils",
     "ndcube.utils.tests"
+   ],
+   "requires":[
+    "pytest-astropy",
+    "pytest-astropy",
+    "pytest-astropy"
    ]
   }
  },
  "name":"ndcube",
  "new_version":"1.2.0",
  "pinning_version":"2019.09.08",
- "raw_meta_yaml":"{% set name = \"ndcube\" %}\n{% set version = \"1.1.3\" %}\n{% set sha256 = \"8e663f62ce7092e215a7b46a9b6672c4850db80f424d8c16395c7ea2a0d4faf3\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  fn: {{ name }}-{{ version }}.tar.gz\n  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz\n  sha256: {{ sha256 }}\n\nbuild:\n  noarch: python\n  number: 1\n  script: python setup.py install --offline --no-git --single-version-externally-managed --record record.txt\n\nrequirements:\n  build:\n    - python>3\n    - setuptools\n    - astropy\n\n  run:\n    - python>3\n    - astropy<3.1\n    - matplotlib\n    - sunpy ==0.9\n\ntest:\n  imports:\n    - ndcube\n    - ndcube.tests\n    - ndcube.utils\n    - ndcube.utils.tests\n\nabout:\n  home: http://sunpy.org\n  license: BSD-2-Clause\n  license_file: 'LICENSE.rst'\n  summary: 'A base package for multi-dimensional contiguious and non-contiguious spatially aware arrays.'\n  license_family: BSD\n  dev_url: https://github.com/sunpy/ndcube\n\nextra:\n  recipe-maintainers:\n    - SolarDrew\n    - Cadair\n    - DanRyanIrish\n",
+ "raw_meta_yaml":"{% set name = \"ndcube\" %}\n{% set version = \"1.2.0\" %}\n{% set sha256 = \"d0a4ffde4b0680d37a8f67f622517d3f733b83d331aaba3fc0f3836ab74b15e0\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  fn: {{ name }}-{{ version }}.tar.gz\n  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz\n  sha256: {{ sha256 }}\n\nbuild:\n  noarch: python\n  number: 0\n  script: python setup.py install --offline --no-git --single-version-externally-managed --record record.txt\n\nrequirements:\n  build:\n    - python >3\n    - setuptools\n    - setuptools_scm\n\n  run:\n    - python >3\n    - astropy\n    - matplotlib\n    - sunpy <=1.0.3\n\ntest:\n  requires:\n    - pytest-astropy\n    \n  imports:\n    - ndcube\n    - ndcube.tests\n    - ndcube.utils\n    - ndcube.utils.tests\n    \n  commands:\n    - pytest --pyargs ndcube\n\nabout:\n  home: http://sunpy.org\n  license: BSD-2-Clause\n  license_file: 'LICENSE.rst'\n  summary: 'A base package for multi-dimensional contiguious and non-contiguious spatially aware arrays.'\n  license_family: BSD\n  dev_url: https://github.com/sunpy/ndcube\n\nextra:\n  recipe-maintainers:\n    - SolarDrew\n    - Cadair\n    - DanRyanIrish\n",
  "req":{
   "__set__":true,
   "elements":[
@@ -178,10 +188,11 @@
    "matplotlib",
    "python",
    "setuptools",
+   "setuptools_scm",
    "sunpy"
   ]
  },
  "smithy_version":"3.4.8",
  "url":"https://pypi.io/packages/source/n/ndcube/ndcube-1.1.3.tar.gz",
- "version":"1.1.3"
+ "version":"1.2.0"
 }
