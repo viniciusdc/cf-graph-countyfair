@@ -64,7 +64,22 @@
    ]
   }
  ],
- "bad":false,
+ "bad":{
+  "exception":"local variable 'hash' referenced before assignment",
+  "traceback":[
+   "Traceback (most recent call last):",
+   "  File \"/root/repo/cf-scripts/conda_forge_tick/auto_tick.xsh\", line 657, in main",
+   "    hash_type=attrs.get('hash_type', 'sha256'))",
+   "  File \"/root/repo/cf-scripts/conda_forge_tick/auto_tick.xsh\", line 98, in run",
+   "    migrate_return = migrator.migrate(recipe_dir, attrs, **kwargs)",
+   "  File \"/root/repo/cf-scripts/conda_forge_tick/migrators.xsh\", line 386, in migrate",
+   "    new_patterns = self.get_hash_patterns('meta.yaml', urls, hash_type)",
+   "  File \"/root/repo/cf-scripts/conda_forge_tick/migrators.xsh\", line 326, in get_hash_patterns",
+   "    n = '{}: {}'.format(hash_type, hash)",
+   "UnboundLocalError: local variable 'hash' referenced before assignment",
+   ""
+  ]
+ },
  "conda-forge.yml":{
   "compiler_stack":"comp7",
   "max_py_ver":"37",
@@ -165,7 +180,7 @@
   }
  },
  "name":"r-mgcv",
- "new_version":"1.8_27",
+ "new_version":"1.8_29",
  "pinning_version":"2019.07.15",
  "raw_meta_yaml":"{% set version = '1.8-28' %}\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-mgcv\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  url:\n    - {{ cran_mirror }}/src/contrib/mgcv_{{ version }}.tar.gz\n    - {{ cran_mirror }}/src/contrib/Archive/mgcv/mgcv_{{ version }}.tar.gz\n  sha256: b55ea8227cd5c263c266c3885fa3299aa6bd23b54186517f9299bf38a7bdd3ea\n\nbuild:\n  merge_build_host: True  # [win]\n  number: 1\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - {{ compiler('c') }}        # [not win]\n    - {{ compiler('m2w64_c') }}        # [win]\n    - {{posix}}filesystem        # [win]\n    - {{posix}}make\n    - {{posix}}sed               # [win]\n    - {{posix}}coreutils         # [win]\n    - {{posix}}zip               # [win]\n    - llvm-openmp                # [osx]\n  host:\n    - r-base\n    - r-matrix\n    - r-nlme >=3.1_64\n  run:\n    - r-base\n    - {{native}}gcc-libs         # [win]\n    - r-matrix\n    - r-nlme >=3.1_64\n    - llvm-openmp                # [osx]\n\ntest:\n  commands:\n    - $R -e \"library('mgcv')\"           # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('mgcv')\\\"\"  # [win]\n\nabout:\n  home: https://CRAN.R-project.org/package=mgcv\n  license: GPL (>= 2)\n  summary: 'Generalized additive (mixed) models, some of their extensions and  other generalized\n    ridge regression with multiple smoothing  parameter estimation by (Restricted) Marginal\n    Likelihood,  Generalized Cross Validation and similar, or using iterated  nested\n    Laplace approximation for fully Bayesian inference. See  Wood (2017) <doi:10.1201/9781315370279>\n    for an overview.  Includes a gam() function, a wide variety of smoothers, ''JAGS''  support\n    and distributions beyond the exponential family. '\n  license_family: GPL3\n  license_file: '{{ environ[\"PREFIX\"] }}/lib/R/share/licenses/GPL-2'\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n\n# Package: mgcv\n# Version: 1.8-28\n# Author: Simon Wood <simon.wood@r-project.org>\n# Maintainer: Simon Wood <simon.wood@r-project.org>\n# Title: Mixed GAM Computation Vehicle with Automatic Smoothness Estimation\n# Description: Generalized additive (mixed) models, some of their extensions and  other generalized ridge regression with multiple smoothing  parameter estimation by (Restricted) Marginal Likelihood,  Generalized Cross Validation and similar, or using iterated  nested Laplace approximation for fully Bayesian inference. See  Wood (2017) <doi:10.1201/9781315370279> for an overview.  Includes a gam() function, a wide variety of smoothers, 'JAGS'  support and distributions beyond the exponential family.\n# Priority: recommended\n# Depends: R (>= 2.14.0), nlme (>= 3.1-64)\n# Imports: methods, stats, graphics, Matrix, splines, utils\n# Suggests: parallel, survival, MASS\n# LazyLoad: yes\n# ByteCompile: yes\n# License: GPL (>= 2)\n# NeedsCompilation: yes\n# Packaged: 2019-03-21 08:56:32 UTC; sw283\n# Repository: CRAN\n# Date/Publication: 2019-03-21 11:40:07 UTC\n",
  "req":{
