@@ -49,7 +49,7 @@
      ],
      "run_exports":{
       "strong":[
-       "cudatoolkit 9.2|9.2.*"
+       "cudatoolkit |.*"
       ]
      },
      "script_env":[
@@ -84,7 +84,7 @@
       "cxx_compiler_stub"
      ]
     },
-    "version":"9.2"
+    "version":""
    },
    {
     "about":{
@@ -99,7 +99,7 @@
      ],
      "run_exports":{
       "strong":[
-       "cudatoolkit 9.2|9.2.*"
+       "cudatoolkit |.*"
       ]
      },
      "script_env":[
@@ -134,7 +134,7 @@
       "cxx_compiler_stub"
      ]
     },
-    "version":"9.2"
+    "version":""
    },
    {
     "about":{
@@ -149,7 +149,7 @@
      ],
      "run_exports":{
       "strong":[
-       "cudatoolkit 9.2|9.2.*"
+       "cudatoolkit |.*"
       ]
      },
      "script_env":[
@@ -184,7 +184,7 @@
       "cxx_compiler_stub"
      ]
     },
-    "version":"9.2"
+    "version":""
    }
   ],
   "package":{
@@ -193,7 +193,7 @@
  },
  "name":"nvcc",
  "new_version":false,
- "raw_meta_yaml":"{% set name = \"nvcc\" %}\n{% set version = environ.get(\"CUDA_VER\", \"9.2\") %}\n\npackage:\n  name: \"{{ name }}\"\n\nbuild:\n  number: 0\n  skip: true  # [not linux]\n\noutputs:\n  - name: \"{{ name }}_{{ target_platform }}\"\n    version: \"{{ version }}\"\n    script: install_nvcc.sh\n    build:\n      script_env:\n        - CUDA_HOME\n      ignore_run_exports:\n        - libgcc-ng\n      run_exports:\n        strong:\n          - cudatoolkit {{ version }}|{{ version }}.*\n    requirements:\n      host:\n        # Needed to symlink libcuda into sysroot libs.\n        - {{ compiler(\"c\") }}\n      run:\n    test:\n      requires:\n        - {{ compiler(\"c\") }}\n        # Host code is forwarded to a C++ compiler\n        - {{ compiler(\"cxx\") }}\n      files:\n        - test.cu\n      commands:\n        # Verify the symlink to the libcuda stub library exists.\n        - test -f \"$(${CC} --print-sysroot)/lib/libcuda.so\"\n        # Verify the activation scripts are in-place.\n        {% for state in [\"activate\", \"deactivate\"] %}\n        - test -f \"${PREFIX}/etc/conda/{{ state }}.d/{{ PKG_NAME }}_{{ state }}.sh\"\n        {% endfor %}\n        # Try using the activation scripts.\n        - if [ -z ${CUDA_HOME+x} ]; then echo \"CUDA_HOME is unset after activation\" && exit 1; else echo \"CUDA_HOME is set to '$CUDA_HOME'\"; fi\n        - source ${PREFIX}/etc/conda/deactivate.d/{{ PKG_NAME }}_deactivate.sh\n        - if [ -z ${CUDA_HOME+x} ]; then echo \"CUDA_HOME is unset after deactivation \"; else echo \"CUDA_HOME is set to '$CUDA_HOME' after deactivation\" && exit 1; fi\n        - source ${PREFIX}/etc/conda/activate.d/{{ PKG_NAME }}_activate.sh\n        - if [ -z ${CUDA_HOME+x} ]; then echo \"CUDA_HOME is unset after activation\" && exit 1; else echo \"CUDA_HOME is set to '$CUDA_HOME'\"; fi\n        # Try building something.\n        - nvcc test.cu\n    about:\n      home: https://github.com/conda-forge/nvcc-feedstock\n      license: BSD 3-Clause\n      license_file: LICENSE.txt\n      summary: A meta-package to enable the right nvcc.\n\nabout:\n  home: https://github.com/conda-forge/nvcc-feedstock\n  license: BSD 3-Clause\n  license_file: LICENSE.txt\n  summary: A meta-package to enable the right nvcc.\n\nextra:\n  recipe-maintainers:\n    - dillon-cullinan\n    - isuruf\n    - jakirkham\n    - kkraus14\n    - mike-wendt\n    - raydouglass\n",
+ "raw_meta_yaml":"{% set name = \"nvcc\" %}\n\npackage:\n  name: \"{{ name }}\"\n\nbuild:\n  number: 0\n  skip: true  # [not linux]\n\noutputs:\n  - name: \"{{ name }}_{{ target_platform }}\"\n    version: \"{{ CUDA_VER }}\"\n    script: install_nvcc.sh\n    build:\n      script_env:\n        - CUDA_HOME\n      ignore_run_exports:\n        - libgcc-ng\n      run_exports:\n        strong:\n          - cudatoolkit {{ CUDA_VER }}|{{ CUDA_VER }}.*\n    requirements:\n      host:\n        # Needed to symlink libcuda into sysroot libs.\n        - {{ compiler(\"c\") }}\n      run:\n    test:\n      requires:\n        - {{ compiler(\"c\") }}\n        # Host code is forwarded to a C++ compiler\n        - {{ compiler(\"cxx\") }}\n      files:\n        - test.cu\n      commands:\n        # Verify the symlink to the libcuda stub library exists.\n        - test -f \"$(${CC} --print-sysroot)/lib/libcuda.so\"\n        # Verify the activation scripts are in-place.\n        {% for state in [\"activate\", \"deactivate\"] %}\n        - test -f \"${PREFIX}/etc/conda/{{ state }}.d/{{ PKG_NAME }}_{{ state }}.sh\"\n        {% endfor %}\n        # Try using the activation scripts.\n        - if [ -z ${CUDA_HOME+x} ]; then echo \"CUDA_HOME is unset after activation\" && exit 1; else echo \"CUDA_HOME is set to '$CUDA_HOME'\"; fi\n        - source ${PREFIX}/etc/conda/deactivate.d/{{ PKG_NAME }}_deactivate.sh\n        - if [ -z ${CUDA_HOME+x} ]; then echo \"CUDA_HOME is unset after deactivation \"; else echo \"CUDA_HOME is set to '$CUDA_HOME' after deactivation\" && exit 1; fi\n        - source ${PREFIX}/etc/conda/activate.d/{{ PKG_NAME }}_activate.sh\n        - if [ -z ${CUDA_HOME+x} ]; then echo \"CUDA_HOME is unset after activation\" && exit 1; else echo \"CUDA_HOME is set to '$CUDA_HOME'\"; fi\n        # Try building something.\n        - nvcc test.cu\n    about:\n      home: https://github.com/conda-forge/nvcc-feedstock\n      license: BSD 3-Clause\n      license_file: LICENSE.txt\n      summary: A meta-package to enable the right nvcc.\n\nabout:\n  home: https://github.com/conda-forge/nvcc-feedstock\n  license: BSD 3-Clause\n  license_file: LICENSE.txt\n  summary: A meta-package to enable the right nvcc.\n\nextra:\n  recipe-maintainers:\n    - dillon-cullinan\n    - isuruf\n    - jakirkham\n    - kkraus14\n    - mike-wendt\n    - raydouglass\n",
  "req":{
   "__set__":true,
   "elements":[

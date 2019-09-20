@@ -65,6 +65,23 @@
     "migrator_version",
     "version"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/319630821.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"Version",
+    "migrator_version":0,
+    "version":"2.4.1"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "version"
+   ]
   }
  ],
  "bad":false,
@@ -154,7 +171,7 @@
   }
  },
  "name":"pybind11",
- "new_version":"2.4.0",
+ "new_version":"2.4.1",
  "pinning_version":"2019.09.08",
  "raw_meta_yaml":"{% set version = \"2.4.0\" %}\n{% set sha256 = \"7ae50b024afb0d880fbd30702f51d093b6bbcb76610670555887e74616e0333a\" %}\n\npackage:\n    name: pybind11\n    version: {{ version }}\n\nsource:\n    fn: pybind11-{{ version }}.tar.gz\n    url: https://github.com/pybind/pybind11/archive/v{{ version }}.tar.gz\n    sha256: {{ sha256 }}\n\nbuild:\n    number: 0\n\nrequirements:\n    build:\n        - cmake\n        - make  # [unix]\n        - {{ compiler('cxx') }}\n    host:\n        - python\n        - setuptools\n    run:\n        - python\n\ntest:\n    imports:\n        - pybind11\n    commands:\n        - test -f ${PREFIX}/share/cmake/pybind11/pybind11Config.cmake                                 # [unix]\n        - if exist %LIBRARY_PREFIX%\\share\\cmake\\pybind11\\pybind11Config.cmake (exit 0) else (exit 1)  # [win]\n        - test $(python -c \"import pybind11 as py; print(py.get_include())\") == \"${PREFIX}/include\"         # [unix]\n        - test $(python -c \"import pybind11 as py; print(py.get_include())\") == \"%LIBRARY_PREFIX%\\include\"  # [win]\n\nabout:\n    home: https://github.com/pybind/pybind11/\n    license: BSD 3-Clause\n    summary: Seamless operability between C++11 and Python\n    license_file: LICENSE\n\nextra:\n  recipe-maintainers:\n    - ax3l\n    - SylvainCorlay\n    - wjakob\n",
  "req":{
@@ -167,7 +184,7 @@
    "setuptools"
   ]
  },
- "smithy_version":"3.4.7",
+ "smithy_version":"3.4.8",
  "url":"https://github.com/pybind/pybind11/archive/v2.3.0.tar.gz",
  "version":"2.4.0"
 }
