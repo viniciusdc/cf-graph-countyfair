@@ -15,14 +15,17 @@
    "summary":"Abseil Common Libraries (C++)"
   },
   "build":{
-   "number":"1",
+   "number":"2",
    "skip":true
   },
   "extra":{
    "recipe-maintainers":[
     "njzjz",
+    "bluescarni",
     "njzjz",
-    "njzjz"
+    "bluescarni",
+    "njzjz",
+    "bluescarni"
    ]
   },
   "package":{
@@ -58,7 +61,7 @@
  },
  "name":"abseil-cpp",
  "new_version":"20190808",
- "raw_meta_yaml":"{% set name = \"abseil-cpp\" %}\n{% set version = \"20190808\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  url: https://github.com/abseil/{{ name }}/archive/{{ version }}.tar.gz\n  sha256: 8100085dada279bf3ee00cd064d43b5f55e5d913be0dfe2906f06f8f28d5b37e\n\nbuild:\n  number: 1\n  skip: True  # [win and vs<14]\n  skip: True  # [osx]\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n    - cmake\n    - make  # [not win]\n\ntest:\n  commands:\n    - test -f $PREFIX/lib/libabsl_base.a  # [not win]\n    - if not exist %LIBRARY_LIB%\\\\absl_base.lib exit 1  # [win]\n\nabout:\n  home: https://github.com/abseil/abseil-cpp\n  license: Apache-2.0\n  license_family: Apache\n  license_file: LICENSE\n  summary: 'Abseil Common Libraries (C++)'\n  description: |\n      Abseil is an open-source collection of C++ code (compliant to C++11)\n      designed to augment the C++ standard library.\n  doc_url: https://github.com/abseil/abseil-cpp\n  dev_url: https://github.com/abseil/abseil-cpp\n\nextra:\n  recipe-maintainers:\n    - njzjz\n",
+ "raw_meta_yaml":"{% set name = \"abseil-cpp\" %}\n{% set version = \"20190808\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  url: https://github.com/abseil/{{ name }}/archive/{{ version }}.tar.gz\n  sha256: 8100085dada279bf3ee00cd064d43b5f55e5d913be0dfe2906f06f8f28d5b37e\n\nbuild:\n  number: 2\n  skip: True  # [win and vc<14]\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n    - cmake\n    - make  # [not win]\n\ntest:\n  commands:\n    - test -f $PREFIX/lib/libabsl_base.a  # [not win]\n    - if not exist %LIBRARY_LIB%\\\\absl_base.lib exit 1  # [win]\n\nabout:\n  home: https://github.com/abseil/abseil-cpp\n  license: Apache-2.0\n  license_family: Apache\n  license_file: LICENSE\n  summary: 'Abseil Common Libraries (C++)'\n  description: |\n      Abseil is an open-source collection of C++ code (compliant to C++11)\n      designed to augment the C++ standard library.\n  doc_url: https://github.com/abseil/abseil-cpp\n  dev_url: https://github.com/abseil/abseil-cpp\n\nextra:\n  recipe-maintainers:\n    - njzjz\n    - bluescarni\n",
  "req":{
   "__set__":true,
   "elements":[
