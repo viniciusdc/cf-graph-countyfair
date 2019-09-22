@@ -120,7 +120,8 @@
    "summary":"Development headers and libraries for Clang"
   },
   "build":{
-   "number":"1"
+   "number":"0",
+   "skip":true
   },
   "extra":{
    "recipe-maintainers":[
@@ -155,14 +156,14 @@
       "subpackage_stub",
       "subpackage_stub",
       "subpackage_stub",
-      "llvmdev ==8.0.1"
+      "llvmdev ==9.0.0"
      ],
      "run":[
       "subpackage_stub",
       "subpackage_stub",
       "subpackage_stub",
       "subpackage_stub",
-      "llvmdev ==8.0.1"
+      "llvmdev ==9.0.0"
      ]
     },
     "script":"install_clangdev.bat",
@@ -182,8 +183,9 @@
       "ninja"
      ],
      "host":[
-      "llvmdev ==8.0.1",
-      "llvm ==8.0.1"
+      "llvmdev ==9.0.0",
+      "llvm ==9.0.0",
+      "subpackage_stub"
      ],
      "run":null
     },
@@ -203,14 +205,14 @@
       "ninja"
      ],
      "host":[
-      "llvmdev ==8.0.1",
-      "llvm ==8.0.1"
+      "llvmdev ==9.0.0",
+      "llvm ==9.0.0"
      ],
      "run":null,
      "run_constrained":[
-      "clangdev 8.0.1",
-      "clangxx 8.0.1",
-      "clang-tools 8.0.1"
+      "clangdev 9.0.0",
+      "clangxx 9.0.0",
+      "clang-tools 9.0.0"
      ]
     },
     "script":"install_clang.bat",
@@ -218,7 +220,8 @@
      "commands":[
       "clang --version",
       "clang-cl --version",
-      "clang-cpp --version"
+      "clang-cpp --version",
+      "if not exist %LIBRARY_LIB%\\\\clang\\\\9.0.0\\\\include\\\\stdatomic.h exit 1"
      ]
     }
    },
@@ -251,15 +254,16 @@
      "host":[
       "subpackage_stub",
       "subpackage_stub",
-      "llvmdev ==8.0.1",
-      "llvm ==8.0.1"
+      "subpackage_stub",
+      "llvmdev ==9.0.0",
+      "llvm ==9.0.0"
      ],
      "run":[
       "subpackage_stub",
       "subpackage_stub"
      ],
      "run_constrained":[
-      "clangdev 8.0.1"
+      "clangdev 9.0.0"
      ]
     },
     "script":"install_clang_tools.bat",
@@ -281,7 +285,7 @@
      ],
      "run":[
       "python",
-      "libclang ==8.0.1"
+      "libclang ==9.0.0"
      ]
     },
     "script":"build_python_bindings.sh",
@@ -308,7 +312,7 @@
     "name":"clangdev",
     "requirements":{
      "build":[
-      "clang_bootstrap_osx-64",
+      "cxx_compiler_stub",
       "cmake >=3.4.3",
       "make"
      ],
@@ -318,7 +322,7 @@
       "subpackage_stub",
       "subpackage_stub",
       "libcxx",
-      "llvmdev ==8.0.1"
+      "llvmdev ==9.0.0"
      ],
      "run":[
       "subpackage_stub",
@@ -326,7 +330,7 @@
       "subpackage_stub",
       "subpackage_stub",
       "compatible_pin_stub",
-      "llvmdev ==8.0.1"
+      "llvmdev ==9.0.0"
      ]
     },
     "script":"install_clangdev.sh",
@@ -341,14 +345,15 @@
     "name":"libclang",
     "requirements":{
      "build":[
-      "clang_bootstrap_osx-64",
+      "cxx_compiler_stub",
       "cmake >=3.4.3",
       "make"
      ],
      "host":[
       "libcxx",
-      "llvmdev ==8.0.1",
-      "llvm ==8.0.1"
+      "llvmdev ==9.0.0",
+      "llvm ==9.0.0",
+      "subpackage_stub"
      ],
      "run":[
       "compatible_pin_stub"
@@ -365,23 +370,23 @@
     "name":"clang",
     "requirements":{
      "build":[
-      "clang_bootstrap_osx-64",
+      "cxx_compiler_stub",
       "libcxx",
       "cmake >=3.4.3",
       "make"
      ],
      "host":[
       "libcxx",
-      "llvmdev ==8.0.1",
-      "llvm ==8.0.1"
+      "llvmdev ==9.0.0",
+      "llvm ==9.0.0"
      ],
      "run":[
       "compatible_pin_stub"
      ],
      "run_constrained":[
-      "clangdev 8.0.1",
-      "clangxx 8.0.1",
-      "clang-tools 8.0.1"
+      "clangdev 9.0.0",
+      "clangxx 9.0.0",
+      "clang-tools 9.0.0"
      ]
     },
     "script":"install_clang.sh",
@@ -390,7 +395,9 @@
       "clang --version",
       "clang-cl --version",
       "clang-cpp --version",
-      "clang-8 --version"
+      "clang-9 --version",
+      "test -f \"$PREFIX/lib/libclang-cpp.dylib\"",
+      "test -f \"$PREFIX/lib/clang/9.0.0/include/stdatomic.h\""
      ]
     }
    },
@@ -416,16 +423,17 @@
     "requirements":{
      "build":[
       "python >3",
-      "clang_bootstrap_osx-64",
+      "cxx_compiler_stub",
       "cmake >=3.4.3",
       "make"
      ],
      "host":[
       "subpackage_stub",
       "subpackage_stub",
+      "subpackage_stub",
       "libcxx",
-      "llvmdev ==8.0.1",
-      "llvm ==8.0.1"
+      "llvmdev ==9.0.0",
+      "llvm ==9.0.0"
      ],
      "run":[
       "subpackage_stub",
@@ -433,7 +441,7 @@
       "compatible_pin_stub"
      ],
      "run_constrained":[
-      "clangdev 8.0.1"
+      "clangdev 9.0.0"
      ]
     },
     "script":"install_clang_tools.sh",
@@ -454,7 +462,7 @@
      ],
      "run":[
       "python",
-      "libclang ==8.0.1"
+      "libclang ==9.0.0"
      ]
     },
     "script":"build_python_bindings.sh",
@@ -490,14 +498,14 @@
       "subpackage_stub",
       "subpackage_stub",
       "subpackage_stub",
-      "llvmdev ==8.0.1"
+      "llvmdev ==9.0.0"
      ],
      "run":[
       "subpackage_stub",
       "subpackage_stub",
       "subpackage_stub",
       "subpackage_stub",
-      "llvmdev ==8.0.1"
+      "llvmdev ==9.0.0"
      ]
     },
     "script":"install_clangdev.sh",
@@ -517,8 +525,9 @@
       "make"
      ],
      "host":[
-      "llvmdev ==8.0.1",
-      "llvm ==8.0.1"
+      "llvmdev ==9.0.0",
+      "llvm ==9.0.0",
+      "subpackage_stub"
      ],
      "run":null
     },
@@ -526,7 +535,7 @@
     "test":{
      "commands":[
       "test -f \"$PREFIX/lib/libclang.so\"",
-      "test -f \"$PREFIX/lib/libclang.so.8\""
+      "test -f \"$PREFIX/lib/libclang.so.9\""
      ]
     }
    },
@@ -539,14 +548,14 @@
       "make"
      ],
      "host":[
-      "llvmdev ==8.0.1",
-      "llvm ==8.0.1"
+      "llvmdev ==9.0.0",
+      "llvm ==9.0.0"
      ],
      "run":null,
      "run_constrained":[
-      "clangdev 8.0.1",
-      "clangxx 8.0.1",
-      "clang-tools 8.0.1"
+      "clangdev 9.0.0",
+      "clangxx 9.0.0",
+      "clang-tools 9.0.0"
      ]
     },
     "script":"install_clang.sh",
@@ -555,7 +564,10 @@
       "clang --version",
       "clang-cl --version",
       "clang-cpp --version",
-      "clang-8 --version"
+      "clang-9 --version",
+      "test -f \"$PREFIX/lib/libclang-cpp.so\"",
+      "test -f \"$PREFIX/lib/libclang-cpp.so.9\"",
+      "test -f \"$PREFIX/lib/clang/9.0.0/include/stdatomic.h\""
      ]
     }
    },
@@ -588,15 +600,16 @@
      "host":[
       "subpackage_stub",
       "subpackage_stub",
-      "llvmdev ==8.0.1",
-      "llvm ==8.0.1"
+      "subpackage_stub",
+      "llvmdev ==9.0.0",
+      "llvm ==9.0.0"
      ],
      "run":[
       "subpackage_stub",
       "subpackage_stub"
      ],
      "run_constrained":[
-      "clangdev 8.0.1"
+      "clangdev 9.0.0"
      ]
     },
     "script":"install_clang_tools.sh",
@@ -617,7 +630,7 @@
      ],
      "run":[
       "python",
-      "libclang ==8.0.1"
+      "libclang ==9.0.0"
      ]
     },
     "script":"build_python_bindings.sh",
@@ -643,7 +656,7 @@
   ],
   "package":{
    "name":"clang_packages",
-   "version":"8.0.1"
+   "version":"9.0.0"
   },
   "requirements":{
    "build":[
@@ -652,7 +665,7 @@
     "m2w64-xz",
     "python >3",
     "ninja",
-    "clang_bootstrap_osx-64",
+    "cxx_compiler_stub",
     "cmake >=3.4.3",
     "python >3",
     "make",
@@ -662,10 +675,10 @@
     "make"
    ],
    "host":[
-    "llvmdev ==8.0.1",
+    "llvmdev ==9.0.0",
     "libcxx",
-    "llvmdev ==8.0.1",
-    "llvmdev ==8.0.1"
+    "llvmdev ==9.0.0",
+    "llvmdev ==9.0.0"
    ]
   },
   "source":{
@@ -686,8 +699,8 @@
     "patches/0003-clang-Fix-normalizeProgramName-s-handling-of-dots-ou.patch",
     "patches/0001-Set-VERSION-in-osx-as-well.patch"
    ],
-   "sha256":"70effd69f7a8ab249f66b0a68aba8b08af52aa2ab710dfb8a0fba102685b1646",
-   "url":"https://github.com/llvm/llvm-project/releases/download/llvmorg-8.0.1/cfe-8.0.1.src.tar.xz"
+   "sha256":"7ba81eef7c22ca5da688fdf9d88c20934d2d6b40bfe150ffd338900890aa4610",
+   "url":"http://releases.llvm.org/9.0.0/cfe-9.0.0.src.tar.xz"
   },
   "test":{
    "commands":[
@@ -714,7 +727,7 @@
    "requires":[
     "cxx_compiler_stub",
     "cmake >=3.4.3",
-    "clang_bootstrap_osx-64",
+    "cxx_compiler_stub",
     "cmake >=3.4.3",
     "cxx_compiler_stub",
     "cmake >=3.4.3"
@@ -724,11 +737,10 @@
  "name":"clang_packages",
  "new_version":"llvmorg-9.0.0",
  "pinning_version":"2019.04.12",
- "raw_meta_yaml":"{% set version = \"8.0.1\" %}\n{% set major_version = version.split(\".\")[0] %}\n{% set sha256 = \"70effd69f7a8ab249f66b0a68aba8b08af52aa2ab710dfb8a0fba102685b1646\" %}\n{% set build_number = 1 %}\n\npackage:\n  name: clang_packages\n  version: {{ version }}\n\nsource:\n  url: https://github.com/llvm/llvm-project/releases/download/llvmorg-{{ version }}/cfe-{{ version }}.src.tar.xz\n  sha256: {{ sha256 }}\n  patches:\n    - patches/0001-Find-conda-gcc-installation.patch\n    - patches/0002-Fix-sysroot-detection-for-linux.patch\n    - patches/0002-clang-add-conda-specific-env-var-CONDA_BUILD_SYSROOT.patch\n    - patches/0003-clang-Fix-normalizeProgramName-s-handling-of-dots-ou.patch\n    - patches/0001-Set-VERSION-in-osx-as-well.patch\n\nbuild:\n  number: {{ build_number }}\n  skip: True  # [win and py<35]\n\nrequirements:\n  build:\n    - {{ compiler('cxx') }}    # [not osx]\n    - clang_bootstrap_osx-64   # [osx]\n    - cmake >=3.4.3\n    # Needed to unpack the source tarball\n    - m2w64-xz  # [win]\n    # \"compiling .pyc files\" fails without this\n    - python >3\n    # Building with ninja on windows for parallel builds\n    - ninja  # [win]\n    - make   # [unix]\n  host:\n    - libcxx {{cxx_compiler_version}}  # [osx]\n    - llvmdev =={{ version }}\n\ntest:\n  requires:\n    - {{ compiler('cxx') }}    # [not osx]\n    - clang_bootstrap_osx-64   # [osx]\n    - cmake >=3.4.3\n  files:\n    - mytest.c\n  commands:\n    - $PREFIX/bin/clang --version  # [unix]\n    - $PREFIX/bin/clang++ --version  # [unix]\n    - $PREFIX/bin/clang-check --version  # [unix]\n\n    - $PREFIX/bin/clang -v -c mytest.c      # [unix]\n    - \"%LIBRARY_BIN%/clang -v -c mytest.c\"  # [win]\n\n    - if not exist %LIBRARY_INC%\\\\clang\\\\Lex\\\\Lexer.h exit 1  # [win]\n    - test -f $PREFIX/include/clang/Lex/Lexer.h      # [unix]\n    - test -f $PREFIX/lib/libclangBasic.a            # [unix]\n\n\noutputs:\n  - name: clangdev\n    script: install_clangdev.sh    # [unix]\n    script: install_clangdev.bat   # [win]\n    requirements:\n      build:\n        - {{ compiler('cxx') }}    # [not osx]\n        - clang_bootstrap_osx-64   # [osx]\n        - cmake >=3.4.3\n        - ninja  # [win]\n        - make   # [unix]\n      host:\n        - {{ pin_subpackage(\"clang\", exact=True) }}\n        - {{ pin_subpackage(\"clangxx\", exact=True) }}\n        - {{ pin_subpackage(\"clang-tools\", exact=True) }}\n        - {{ pin_subpackage(\"libclang\", exact=True) }}\n        - libcxx {{cxx_compiler_version}}  # [osx]\n        - llvmdev =={{ version }}\n      run:\n        - {{ pin_subpackage(\"clang\", exact=True) }}\n        - {{ pin_subpackage(\"clangxx\", exact=True) }}\n        - {{ pin_subpackage(\"clang-tools\", exact=True) }}\n        - {{ pin_subpackage(\"libclang\", exact=True) }}\n        - {{ pin_compatible(\"libcxx\", max_pin=None) }}  # [osx]\n        - llvmdev =={{ version }}\n    test:\n      commands:\n        - test -f \"$PREFIX/include/clang/Config/config.h\"   # [unix]\n        - test -f \"$PREFIX/lib/libclangAST.a\"               # [unix]\n        - if not exist %LIBRARY_INC%\\\\clang/Config/config.h exit 1   # [win]\n        - if not exist %LIBRARY_LIB%\\\\clangAST.lib exit 1            # [win]\n\n  - name: libclang\n    script: install_libclang.sh    # [unix]\n    script: install_libclang.bat   # [win]\n    requirements:\n      build:\n        - {{ compiler('cxx') }}    # [not osx]\n        - clang_bootstrap_osx-64   # [osx]\n        - cmake >=3.4.3\n        - ninja  # [win]\n        - make   # [unix]\n      host:\n        - libcxx {{cxx_compiler_version}}  # [osx]\n        - llvmdev =={{ version }}\n        - llvm =={{ version }}\n      run:\n        - {{ pin_compatible(\"libcxx\", max_pin=None) }}  # [osx]\n    test:\n      commands:\n        - test -f \"$PREFIX/lib/libclang.so\"                     # [linux]\n        - test -f \"$PREFIX/lib/libclang.so.{{major_version}}\"   # [linux]\n        - test -f \"$PREFIX/lib/libclang.dylib\"                  # [osx]\n        - if not exist %LIBRARY_BIN%\\\\libclang.dll exit 1       # [win]\n\n  - name: clang\n    script: install_clang.sh       # [unix]\n    script: install_clang.bat      # [win]\n    requirements:\n      build:\n        - {{ compiler('cxx') }}    # [not osx]\n        - clang_bootstrap_osx-64   # [osx]\n        - libcxx                   # [osx]\n        - cmake >=3.4.3\n        - ninja  # [win]\n        - make   # [unix]\n      host:\n        - libcxx {{cxx_compiler_version}}  # [osx]\n        - llvmdev =={{ version }}\n        - llvm =={{ version }}\n      run:\n        - {{ pin_compatible(\"libcxx\", max_pin=None) }}  # [osx]\n      run_constrained:\n        - clangdev {{ version }}\n        - clangxx {{ version }}\n        - clang-tools {{ version }}\n    test:\n      commands:\n        - clang --version\n        - clang-cl --version\n        - clang-cpp --version\n        - clang-{{major_version}} --version   # [unix]\n\n  # Defaults provides this, so let's do the same in conda-forge\n  - name: clangxx\n    script: install_clangxx.sh       # [unix]\n    script: install_clangxx.bat      # [win]\n    requirements:\n      host:\n        - {{ pin_subpackage(\"clang\", exact=True) }}\n      run:\n        - {{ pin_subpackage(\"clang\", exact=True) }}\n    test:\n      commands:\n        - clang++ --version\n\n  - name: clang-tools\n    script: install_clang_tools.sh    # [unix]\n    script: install_clang_tools.bat   # [win]\n    requirements:\n      build:\n        # \"compiling .pyc files\" fails without this\n        - python >3\n        - {{ compiler('cxx') }}    # [not osx]\n        - clang_bootstrap_osx-64   # [osx]\n        - cmake >=3.4.3\n        - ninja  # [win]\n        - make   # [unix]\n      host:\n        - {{ pin_subpackage(\"clang\", exact=True) }}\n        - {{ pin_subpackage(\"clangxx\", exact=True) }}\n        - libcxx {{cxx_compiler_version}}  # [osx]\n        - llvmdev =={{ version }}\n        - llvm =={{ version }}\n      run:\n        - {{ pin_subpackage(\"clang\", exact=True) }}\n        - {{ pin_subpackage(\"clangxx\", exact=True) }}\n        - {{ pin_compatible(\"libcxx\", max_pin=None) }}  # [osx]\n      run_constrained:\n        - clangdev {{ version }}\n    test:\n      commands:\n        - clang-check --version\n\n  - name: python-clang\n    build:\n      noarch: python\n      # Building this output using this recipe is only supported on unix\n      # It can still be installed on Windows as it is marked as `noarch: python`\n      skip: true  # [win]\n    script: build_python_bindings.sh\n    requirements:\n      host:\n        - python\n      run:\n        - python\n        - libclang =={{version}}\n    test:\n      requires:\n        - nose\n      source_files:\n        - bindings/python/tests\n        - bindings/python/examples/cindex\n      imports:\n        - clang\n        - clang.cindex\n      commands:\n        - cd bindings/python\n        - cp tests/cindex/util.py tests\n        - nosetests -v\n\nabout:\n  home: http://llvm.org/\n  license: NCSA\n  license_file: LICENSE.TXT\n  summary: Development headers and libraries for Clang\n\nextra:\n  recipe-maintainers:\n    - inducer\n    - isuruf\n    - jakirkham\n    - mattwala\n    - SylvainCorlay\n",
+ "raw_meta_yaml":"{% set version = \"9.0.0\" %}\n{% set major_version = version.split(\".\")[0] %}\n{% set sha256 = \"7ba81eef7c22ca5da688fdf9d88c20934d2d6b40bfe150ffd338900890aa4610\" %}\n{% set build_number = 0 %}\n\npackage:\n  name: clang_packages\n  version: {{ version }}\n\nsource:\n  url: http://releases.llvm.org/{{ version }}/cfe-{{ version }}.src.tar.xz\n  sha256: {{ sha256 }}\n  patches:\n    - patches/0001-Find-conda-gcc-installation.patch\n    - patches/0002-Fix-sysroot-detection-for-linux.patch\n    - patches/0002-clang-add-conda-specific-env-var-CONDA_BUILD_SYSROOT.patch\n    - patches/0003-clang-Fix-normalizeProgramName-s-handling-of-dots-ou.patch\n    - patches/0001-Set-VERSION-in-osx-as-well.patch\n\nbuild:\n  number: {{ build_number }}\n  skip: True  # [win and vc<14]\n\nrequirements:\n  build:\n    - {{ compiler('cxx') }}\n    - cmake >=3.4.3\n    # Needed to unpack the source tarball\n    - m2w64-xz  # [win]\n    # \"compiling .pyc files\" fails without this\n    - python >3\n    # Building with ninja on windows for parallel builds\n    - ninja  # [win]\n    - make   # [unix]\n  host:\n    - libcxx {{cxx_compiler_version}}  # [osx]\n    - llvmdev =={{ version }}\n\ntest:\n  requires:\n    - {{ compiler('cxx') }}\n    - cmake >=3.4.3\n  files:\n    - mytest.c\n  commands:\n    - $PREFIX/bin/clang --version  # [unix]\n    - $PREFIX/bin/clang++ --version  # [unix]\n    - $PREFIX/bin/clang-check --version  # [unix]\n\n    - $PREFIX/bin/clang -v -c mytest.c      # [unix]\n    - \"%LIBRARY_BIN%/clang -v -c mytest.c\"  # [win]\n\n    - if not exist %LIBRARY_INC%\\\\clang\\\\Lex\\\\Lexer.h exit 1  # [win]\n    - test -f $PREFIX/include/clang/Lex/Lexer.h      # [unix]\n    - test -f $PREFIX/lib/libclangBasic.a            # [unix]\n\n\noutputs:\n  - name: clangdev\n    script: install_clangdev.sh    # [unix]\n    script: install_clangdev.bat   # [win]\n    requirements:\n      build:\n        - {{ compiler('cxx') }}\n        - cmake >=3.4.3\n        - ninja  # [win]\n        - make   # [unix]\n      host:\n        - {{ pin_subpackage(\"clang\", exact=True) }}\n        - {{ pin_subpackage(\"clangxx\", exact=True) }}\n        - {{ pin_subpackage(\"clang-tools\", exact=True) }}\n        - {{ pin_subpackage(\"libclang\", exact=True) }}\n        - libcxx {{cxx_compiler_version}}  # [osx]\n        - llvmdev =={{ version }}\n      run:\n        - {{ pin_subpackage(\"clang\", exact=True) }}\n        - {{ pin_subpackage(\"clangxx\", exact=True) }}\n        - {{ pin_subpackage(\"clang-tools\", exact=True) }}\n        - {{ pin_subpackage(\"libclang\", exact=True) }}\n        - {{ pin_compatible(\"libcxx\", max_pin=None) }}  # [osx]\n        - llvmdev =={{ version }}\n    test:\n      commands:\n        - test -f \"$PREFIX/include/clang/Config/config.h\"   # [unix]\n        - test -f \"$PREFIX/lib/libclangAST.a\"               # [unix]\n        - if not exist %LIBRARY_INC%\\\\clang/Config/config.h exit 1   # [win]\n        - if not exist %LIBRARY_LIB%\\\\clangAST.lib exit 1            # [win]\n\n  - name: libclang\n    script: install_libclang.sh    # [unix]\n    script: install_libclang.bat   # [win]\n    requirements:\n      build:\n        - {{ compiler('cxx') }}\n        - cmake >=3.4.3\n        - ninja  # [win]\n        - make   # [unix]\n      host:\n        - libcxx {{cxx_compiler_version}}  # [osx]\n        - llvmdev =={{ version }}\n        - llvm =={{ version }}\n        - {{ pin_subpackage(\"clang\", exact=True) }}\n      run:\n        - {{ pin_compatible(\"libcxx\", max_pin=None) }}  # [osx]\n    test:\n      commands:\n        - test -f \"$PREFIX/lib/libclang.so\"                     # [linux]\n        - test -f \"$PREFIX/lib/libclang.so.{{major_version}}\"   # [linux]\n        - test -f \"$PREFIX/lib/libclang.dylib\"                  # [osx]\n        - if not exist %LIBRARY_BIN%\\\\libclang.dll exit 1       # [win]\n\n  - name: clang\n    script: install_clang.sh       # [unix]\n    script: install_clang.bat      # [win]\n    requirements:\n      build:\n        - {{ compiler('cxx') }}\n        - libcxx                   # [osx]\n        - cmake >=3.4.3\n        - ninja  # [win]\n        - make   # [unix]\n      host:\n        - libcxx {{cxx_compiler_version}}  # [osx]\n        - llvmdev =={{ version }}\n        - llvm =={{ version }}\n      run:\n        - {{ pin_compatible(\"libcxx\", max_pin=None) }}  # [osx]\n      run_constrained:\n        - clangdev {{ version }}\n        - clangxx {{ version }}\n        - clang-tools {{ version }}\n    test:\n      commands:\n        - clang --version\n        - clang-cl --version\n        - clang-cpp --version\n        - clang-{{major_version}} --version   # [unix]\n        - test -f \"$PREFIX/lib/libclang-cpp.so\"                     # [linux]\n        - test -f \"$PREFIX/lib/libclang-cpp.so.{{major_version}}\"   # [linux]\n        - test -f \"$PREFIX/lib/libclang-cpp.dylib\"                  # [osx]\n        - test -f \"$PREFIX/lib/clang/{{ version }}/include/stdatomic.h\"                    # [unix]\n        - if not exist %LIBRARY_LIB%\\\\clang\\\\{{ version }}\\\\include\\\\stdatomic.h exit 1    # [win]\n\n  # Defaults provides this, so let's do the same in conda-forge\n  - name: clangxx\n    script: install_clangxx.sh       # [unix]\n    script: install_clangxx.bat      # [win]\n    requirements:\n      host:\n        - {{ pin_subpackage(\"clang\", exact=True) }}\n      run:\n        - {{ pin_subpackage(\"clang\", exact=True) }}\n    test:\n      commands:\n        - clang++ --version\n\n  - name: clang-tools\n    script: install_clang_tools.sh    # [unix]\n    script: install_clang_tools.bat   # [win]\n    requirements:\n      build:\n        # \"compiling .pyc files\" fails without this\n        - python >3\n        - {{ compiler('cxx') }}\n        - cmake >=3.4.3\n        - ninja  # [win]\n        - make   # [unix]\n      host:\n        - {{ pin_subpackage(\"clang\", exact=True) }}\n        - {{ pin_subpackage(\"clangxx\", exact=True) }}\n        - {{ pin_subpackage(\"libclang\", exact=True) }}\n        - libcxx {{cxx_compiler_version}}  # [osx]\n        - llvmdev =={{ version }}\n        - llvm =={{ version }}\n      run:\n        - {{ pin_subpackage(\"clang\", exact=True) }}\n        - {{ pin_subpackage(\"clangxx\", exact=True) }}\n        - {{ pin_compatible(\"libcxx\", max_pin=None) }}  # [osx]\n      run_constrained:\n        - clangdev {{ version }}\n    test:\n      commands:\n        - clang-check --version\n\n  - name: python-clang\n    build:\n      noarch: python\n      # Building this output using this recipe is only supported on unix\n      # It can still be installed on Windows as it is marked as `noarch: python`\n      skip: true  # [win]\n    script: build_python_bindings.sh\n    requirements:\n      host:\n        - python\n      run:\n        - python\n        - libclang =={{version}}\n    test:\n      requires:\n        - nose\n      source_files:\n        - bindings/python/tests\n        - bindings/python/examples/cindex\n      imports:\n        - clang\n        - clang.cindex\n      commands:\n        - cd bindings/python\n        - cp tests/cindex/util.py tests\n        - nosetests -v\n\nabout:\n  home: http://llvm.org/\n  license: NCSA\n  license_file: LICENSE.TXT\n  summary: Development headers and libraries for Clang\n\nextra:\n  recipe-maintainers:\n    - inducer\n    - isuruf\n    - jakirkham\n    - mattwala\n    - SylvainCorlay\n",
  "req":{
   "__set__":true,
   "elements":[
-   "clang_bootstrap_osx-64",
    "cmake",
    "compatible_pin_stub",
    "cxx_compiler_stub",
@@ -745,5 +757,5 @@
  },
  "smithy_version":"3.3.2",
  "url":"https://github.com/llvm/llvm-project/releases/download/llvmorg-8.0.1/cfe-8.0.1.src.tar.xz",
- "version":"8.0.1"
+ "version":"9.0.0"
 }
