@@ -174,7 +174,6 @@
   },
   "build":{
    "number":"0",
-   "script":" -m pip install . --no-deps --ignore-installed --no-cache-dir -vvv",
    "skip":true
   },
   "extra":{
@@ -186,37 +185,37 @@
   },
   "package":{
    "name":"galsim",
-   "version":"2.1.6"
+   "version":"2.2.1"
   },
   "requirements":{
    "build":[
     "cxx_compiler_stub",
+    "scons",
     "cxx_compiler_stub",
-    "cxx_compiler_stub"
+    "scons",
+    "cxx_compiler_stub",
+    "scons"
    ],
    "host":[
     "python",
-    "setuptools >=38",
-    "pip",
+    "numpy",
     "pybind11 >=2.2",
     "fftw >=3.3",
     "eigen >=3.3",
     "python",
-    "setuptools >=38",
-    "pip",
+    "numpy",
     "pybind11 >=2.2",
     "fftw >=3.3",
     "eigen >=3.3",
     "python",
-    "setuptools >=38",
-    "pip",
+    "numpy",
     "pybind11 >=2.2",
     "fftw >=3.3",
     "eigen >=3.3"
    ],
    "run":[
     "python",
-    "numpy",
+    "compatible_pin_stub",
     "future >=0.15",
     "astropy >=2.0",
     "pybind11 >=2.2",
@@ -224,7 +223,7 @@
     "eigen >=3.3",
     "lsstdesc.coord >=1.0.5",
     "python",
-    "numpy",
+    "compatible_pin_stub",
     "future >=0.15",
     "astropy >=2.0",
     "pybind11 >=2.2",
@@ -232,7 +231,7 @@
     "eigen >=3.3",
     "lsstdesc.coord >=1.0.5",
     "python",
-    "numpy",
+    "compatible_pin_stub",
     "future >=0.15",
     "astropy >=2.0",
     "pybind11 >=2.2",
@@ -242,14 +241,13 @@
    ]
   },
   "source":{
-   "fn":"GalSim-2.1.6.tar.gz",
    "patches":[
-    "setup.py.patch",
-    "setup.py.patch",
-    "setup.py.patch"
+    "0001-remove-run-install-checks.patch",
+    "0001-remove-run-install-checks.patch",
+    "0001-remove-run-install-checks.patch"
    ],
-   "sha256":"f04442e6e3159029c54ce0d61836f413302c0fcf5331439631ddb46d0aeacb7a",
-   "url":"https://pypi.io/packages/source/g/galsim/GalSim-2.1.6.tar.gz"
+   "sha256":"d5eada22e902c1fe6958751cd2317d4a15a7d8f3f29fcaeaed3d697e423d21c7",
+   "url":"https://github.com/Galsim-Developers/galsim/archive/v2.2.1.tar.gz"
   },
   "test":{
    "imports":[
@@ -262,24 +260,24 @@
  "name":"galsim",
  "new_version":"2.2.1",
  "pinning_version":"2019.09.08",
- "raw_meta_yaml":"{% set name = \"GalSim\" %}\n{% set version = \"2.1.6\" %}\n{% set sha256 = \"f04442e6e3159029c54ce0d61836f413302c0fcf5331439631ddb46d0aeacb7a\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  fn: {{ name }}-{{ version }}.tar.gz\n  url: https://pypi.io/packages/source/{{ name[0]|lower }}/{{ name|lower }}/{{ name }}-{{ version }}.tar.gz\n  sha256: {{ sha256 }}\n  patches:\n    - setup.py.patch\n\nbuild:\n  number: 0\n  skip: True  # [win]\n  script: \"{{ PYTHON }} -m pip install . --no-deps --ignore-installed --no-cache-dir -vvv\"\n\nrequirements:\n  build:\n    - {{ compiler('cxx') }}\n  host:\n    - python\n    - setuptools >=38\n    - pip\n    - pybind11 >=2.2\n    - fftw >=3.3\n    - eigen >=3.3\n\n  run:\n    - python\n    - numpy\n    - future >=0.15\n    - astropy >=2.0\n    - pybind11 >=2.2\n    - fftw >=3.3\n    - eigen >=3.3\n    - lsstdesc.coord >=1.0.5\n\ntest:\n  imports:\n    - galsim\n\nabout:\n  home: https://github.com/GalSim-developers/GalSim\n  license: BSD\n  license_file: LICENSE\n  summary: The modular galaxy image simulation toolkit\n  description: |\n    GalSim is open-source software for simulating images of astronomical objects\n    (stars, galaxies) in a variety of ways. The bulk of the calculations are\n    carried out in C++, and the user interface is in python. In addition, the\n    code can operate directly on \"config\" files, for those users who prefer not\n    to work in python. (http://adsabs.harvard.edu/abs/2015A%26C....10..121R)\n  doc_url: https://github.com/GalSim-developers/GalSim/wiki\n  dev_url: https://github.com/GalSim-developers/GalSim\n\nextra:\n  recipe-maintainers:\n    - beckermr\n",
+ "raw_meta_yaml":"{% set name = \"GalSim\" %}\n{% set version = \"2.2.1\" %}\n{% set sha256 = \"d5eada22e902c1fe6958751cd2317d4a15a7d8f3f29fcaeaed3d697e423d21c7\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  url: https://github.com/Galsim-Developers/galsim/archive/v{{ version }}.tar.gz\n  sha256: {{ sha256 }}\n  patches:\n    - 0001-remove-run-install-checks.patch\n\nbuild:\n  number: 0\n  skip: True  # [win]\n\nrequirements:\n  build:\n    - {{ compiler('cxx') }}\n    - scons\n\n  host:\n    - python\n    - numpy\n    - pybind11 >=2.2\n    - fftw >=3.3\n    - eigen >=3.3\n\n  run:\n    - python\n    - {{ pin_compatible('numpy') }}\n    - future >=0.15\n    - astropy >=2.0\n    - pybind11 >=2.2\n    - fftw >=3.3\n    - eigen >=3.3\n    - lsstdesc.coord >=1.0.5\n\ntest:\n  imports:\n    - galsim\n\nabout:\n  home: https://github.com/GalSim-developers/GalSim\n  license: BSD\n  license_file: LICENSE\n  summary: The modular galaxy image simulation toolkit\n  description: |\n    GalSim is open-source software for simulating images of astronomical objects\n    (stars, galaxies) in a variety of ways. The bulk of the calculations are\n    carried out in C++, and the user interface is in python. In addition, the\n    code can operate directly on \"config\" files, for those users who prefer not\n    to work in python. (http://adsabs.harvard.edu/abs/2015A%26C....10..121R)\n  doc_url: https://github.com/GalSim-developers/GalSim/wiki\n  dev_url: https://github.com/GalSim-developers/GalSim\n\nextra:\n  recipe-maintainers:\n    - beckermr\n",
  "req":{
   "__set__":true,
   "elements":[
    "astropy",
+   "compatible_pin_stub",
    "cxx_compiler_stub",
    "eigen",
    "fftw",
    "future",
    "lsstdesc.coord",
    "numpy",
-   "pip",
    "pybind11",
    "python",
-   "setuptools"
+   "scons"
   ]
  },
  "smithy_version":"3.4.5",
  "url":"https://pypi.io/packages/source/g/galsim/GalSim-2.1.6.tar.gz",
- "version":"2.1.6"
+ "version":"2.2.1"
 }
