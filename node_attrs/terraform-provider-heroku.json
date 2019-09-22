@@ -463,11 +463,11 @@
    "number":"0",
    "script":[
     "pushd src/github.com/terraform-providers/terraform-provider-heroku",
-    "go build -v -o %GOBIN%\\terraform-provider-heroku_v2.1.2_x4 .",
+    "go build -v -o %GOBIN%\\terraform-provider-heroku_v2.2.0_x4 .",
     "pushd src/github.com/terraform-providers/terraform-provider-heroku",
-    "go build -v -o $GOBIN/terraform-provider-heroku_v2.1.2_x4 .",
+    "go build -v -o $GOBIN/terraform-provider-heroku_v2.2.0_x4 .",
     "pushd src/github.com/terraform-providers/terraform-provider-heroku",
-    "go build -v -o $GOBIN/terraform-provider-heroku_v2.1.2_x4 ."
+    "go build -v -o $GOBIN/terraform-provider-heroku_v2.2.0_x4 ."
    ]
   },
   "extra":{
@@ -479,7 +479,7 @@
   },
   "package":{
    "name":"terraform-provider-heroku",
-   "version":"2.1.2"
+   "version":"2.2.0"
   },
   "requirements":{
    "build":[
@@ -496,34 +496,34 @@
   "source":[
    {
     "folder":"src/github.com/terraform-providers/terraform-provider-heroku",
-    "git_rev":"v2.1.2",
+    "git_rev":"v2.2.0",
     "git_url":"https://github.com/terraform-providers/terraform-provider-heroku"
    },
    {
     "folder":"src/github.com/terraform-providers/terraform-provider-heroku",
-    "sha256":"03e48a824fc21dcda828ee951089af18e4542f3a916b9b6b1bb5216b7c95f3b7",
-    "url":"https://github.com/terraform-providers/terraform-provider-heroku/archive/v2.1.2.tar.gz"
+    "sha256":"e4c2d99876d7cd09f6f80a14a4ff7f695c5bb1f3c3b1e5e1299dba27a77548d8",
+    "url":"https://github.com/terraform-providers/terraform-provider-heroku/archive/v2.2.0.tar.gz"
    },
    {
     "folder":"src/github.com/terraform-providers/terraform-provider-heroku",
-    "sha256":"03e48a824fc21dcda828ee951089af18e4542f3a916b9b6b1bb5216b7c95f3b7",
-    "url":"https://github.com/terraform-providers/terraform-provider-heroku/archive/v2.1.2.tar.gz"
+    "sha256":"e4c2d99876d7cd09f6f80a14a4ff7f695c5bb1f3c3b1e5e1299dba27a77548d8",
+    "url":"https://github.com/terraform-providers/terraform-provider-heroku/archive/v2.2.0.tar.gz"
    }
   ],
   "test":{
    "commands":[
-    "bash -euf -c \"echo 'provider \\\"heroku\\\" { version=\\\"2.1.2\\\" }' > init.tf\"",
+    "bash -euf -c \"echo 'provider \\\"heroku\\\" { version=\\\"2.2.0\\\" }' > init.tf\"",
     "terraform init",
     "test -f .terraform/plugins/_/lock.json",
-    "test ! -f .terraform/plugins/_/terraform-provider-heroku_v2.1.2_x4",
-    "bash -euf -c \"echo 'provider \\\"heroku\\\" { version=\\\"2.1.2\\\" }' > init.tf\"",
+    "test ! -f .terraform/plugins/_/terraform-provider-heroku_v2.2.0_x4",
+    "bash -euf -c \"echo 'provider \\\"heroku\\\" { version=\\\"2.2.0\\\" }' > init.tf\"",
     "terraform init",
     "test -f .terraform/plugins/_/lock.json",
-    "test ! -f .terraform/plugins/_/terraform-provider-heroku_v2.1.2_x4",
-    "bash -euf -c \"echo 'provider \\\"heroku\\\" { version=\\\"2.1.2\\\" }' > init.tf\"",
+    "test ! -f .terraform/plugins/_/terraform-provider-heroku_v2.2.0_x4",
+    "bash -euf -c \"echo 'provider \\\"heroku\\\" { version=\\\"2.2.0\\\" }' > init.tf\"",
     "terraform init",
     "test -f .terraform/plugins/_/lock.json",
-    "test ! -f .terraform/plugins/_/terraform-provider-heroku_v2.1.2_x4"
+    "test ! -f .terraform/plugins/_/terraform-provider-heroku_v2.2.0_x4"
    ],
    "requires":[
     "m2-bash",
@@ -534,7 +534,7 @@
  "name":"terraform-provider-heroku",
  "new_version":"2.2.0",
  "pinning_version":"2019.09.08",
- "raw_meta_yaml":"{% set provider = \"Heroku\" %}\n{% set goname = \"github.com/terraform-providers/terraform-provider-\"+provider.lower() %}\n{% set version = \"2.1.2\" %}\n\n{% set name = goname.split('/')[-1] %}\n{% set pkg_src = ('src/'+goname).replace(\"/\",os.sep) %}\n\n{% set x4_plugin = name + '_v' + version + \"_x4\" + (\".exe\" if win else \"\")%}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  - folder:  {{ pkg_src }}\n    url: https://{{ goname }}/archive/v{{ version }}.tar.gz  # [not win]\n    sha256: 03e48a824fc21dcda828ee951089af18e4542f3a916b9b6b1bb5216b7c95f3b7  # [not win]\n    git_url: https://{{ goname }}  # [win]\n    git_tag: v{{ version }}  # [win]\n\nbuild:\n  number: 0\n  script:\n    - pushd {{ pkg_src }}\n    - go build -v -o $GOBIN/{{ x4_plugin }} .  # [unix]\n    - go build -v -o %GOBIN%\\{{ x4_plugin }} .  # [win]\n\nrequirements:\n  build:\n    - {{ compiler('go') }} >=1.11.3\n  run:\n    - terraform >=0.10  # [unix]\n    - terraform >=0.11.11  # [win]\n\ntest:\n  requires:         # [win]\n    - m2-bash       # [win]\n    - m2-coreutils  # [win]\n\n  commands:\n    - bash -euf -c \"echo 'provider \\\"{{ provider|lower }}\\\" { version=\\\"{{ version }}\\\" }' > init.tf\"\n    - terraform init\n    # Tests that no plugins were downloaded\n    - test -f .terraform/plugins/{{ goos }}_{{ goarch }}/lock.json\n    - test ! -f .terraform/plugins/{{ goos }}_{{ goarch }}/{{ x4_plugin }}\n\nabout:\n  home: https://www.terraform.io\n  license: MPL 2.0\n  summary: The Terraform {{ provider }} provider\n  doc_url: https://www.terraform.io/docs/providers/{{ provider|lower }}/index.html\n  dev_url: https://github.com/terraform-providers/{{ name }}\n\nextra:\n  recipe-maintainers:\n    - sodre\n",
+ "raw_meta_yaml":"{% set provider = \"Heroku\" %}\n{% set goname = \"github.com/terraform-providers/terraform-provider-\"+provider.lower() %}\n{% set version = \"2.2.0\" %}\n\n{% set name = goname.split('/')[-1] %}\n{% set pkg_src = ('src/'+goname).replace(\"/\",os.sep) %}\n\n{% set x4_plugin = name + '_v' + version + \"_x4\" + (\".exe\" if win else \"\")%}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  - folder:  {{ pkg_src }}\n    url: https://{{ goname }}/archive/v{{ version }}.tar.gz  # [not win]\n    sha256: e4c2d99876d7cd09f6f80a14a4ff7f695c5bb1f3c3b1e5e1299dba27a77548d8  # [not win]\n    git_url: https://{{ goname }}  # [win]\n    git_tag: v{{ version }}  # [win]\n\nbuild:\n  number: 0\n  script:\n    - pushd {{ pkg_src }}\n    - go build -v -o $GOBIN/{{ x4_plugin }} .  # [unix]\n    - go build -v -o %GOBIN%\\{{ x4_plugin }} .  # [win]\n\nrequirements:\n  build:\n    - {{ compiler('go') }} >=1.11.3\n  run:\n    - terraform >=0.10  # [unix]\n    - terraform >=0.11.11  # [win]\n\ntest:\n  requires:         # [win]\n    - m2-bash       # [win]\n    - m2-coreutils  # [win]\n\n  commands:\n    - bash -euf -c \"echo 'provider \\\"{{ provider|lower }}\\\" { version=\\\"{{ version }}\\\" }' > init.tf\"\n    - terraform init\n    # Tests that no plugins were downloaded\n    - test -f .terraform/plugins/{{ goos }}_{{ goarch }}/lock.json\n    - test ! -f .terraform/plugins/{{ goos }}_{{ goarch }}/{{ x4_plugin }}\n\nabout:\n  home: https://www.terraform.io\n  license: MPL 2.0\n  summary: The Terraform {{ provider }} provider\n  doc_url: https://www.terraform.io/docs/providers/{{ provider|lower }}/index.html\n  dev_url: https://github.com/terraform-providers/{{ name }}\n\nextra:\n  recipe-maintainers:\n    - sodre\n",
  "req":{
   "__set__":true,
   "elements":[
@@ -544,5 +544,5 @@
  },
  "smithy_version":"3.4.7",
  "url":"https://github.com/terraform-providers/terraform-provider-heroku/archive/v2.1.2.tar.gz",
- "version":"2.1.2"
+ "version":"2.2.0"
 }

@@ -11,6 +11,7 @@
    "home":"http://ejeschke.github.com/ginga",
    "license":"BSD 3-clause",
    "license_family":"BSD",
+   "license_file":"LICENSE.rst",
    "summary":"An astronomical image viewer and toolkit"
   },
   "build":{
@@ -24,7 +25,7 @@
    ],
    "noarch":"python",
    "number":"0",
-   "script":"python setup.py install --offline --single-version-externally-managed --record=record.txt"
+   "script":" -m pip install . --no-deps --ignore-installed -vv"
   },
   "extra":{
    "recipe-maintainers":[
@@ -47,48 +48,43 @@
   },
   "package":{
    "name":"ginga",
-   "version":"2.7.2"
+   "version":"3.0.0"
   },
   "requirements":{
-   "build":[
-    "python",
-    "setuptools",
-    "astropy >=1.0",
-    "numpy >=1.9",
-    "qtpy >=1.1",
-    "setuptools >=1.0",
-    "python",
-    "setuptools",
-    "astropy >=1.0",
-    "numpy >=1.9",
-    "qtpy >=1.1",
-    "setuptools >=1.0",
-    "python",
-    "setuptools",
-    "astropy >=1.0",
-    "numpy >=1.9",
-    "qtpy >=1.1",
-    "setuptools >=1.0"
+   "host":[
+    "python >=3.5",
+    "pip",
+    "numpy >=1.13",
+    "python >=3.5",
+    "pip",
+    "numpy >=1.13",
+    "python >=3.5",
+    "pip",
+    "numpy >=1.13"
    ],
    "run":[
-    "python",
-    "astropy >=1.0",
-    "numpy >=1.9",
+    "python >=3.5",
+    "astropy >=3",
+    "numpy >=1.13",
     "qtpy >=1.1",
-    "python",
-    "astropy >=1.0",
-    "numpy >=1.9",
+    "python >=3.5",
+    "astropy >=3",
+    "numpy >=1.13",
     "qtpy >=1.1",
-    "python",
-    "astropy >=1.0",
-    "numpy >=1.9",
+    "python >=3.5",
+    "astropy >=3",
+    "numpy >=1.13",
     "qtpy >=1.1"
    ]
   },
   "source":{
-   "fn":"ginga-2.7.2.tar.gz",
-   "sha256":"f63f453c899d144a0e476a44608b8d8e66e80dd910564e8cb8d2c96249b028ad",
-   "url":"https://pypi.io/packages/source/g/ginga/ginga-2.7.2.tar.gz"
+   "patches":[
+    "setup.cfg.patch",
+    "setup.cfg.patch",
+    "setup.cfg.patch"
+   ],
+   "sha256":"f725751285c15df9b72eb3c35f61674e79c99719fb88ae3a65f999bb9973a191",
+   "url":"https://pypi.io/packages/source/g/ginga/ginga-3.0.0.tar.gz"
   },
   "test":{
    "commands":[
@@ -109,9 +105,6 @@
     "ginga.doc",
     "ginga.fonts",
     "ginga.gtk3w",
-    "ginga.gtk3w.plugins",
-    "ginga.gtkw",
-    "ginga.gtkw.plugins",
     "ginga.gw",
     "ginga.icons",
     "ginga.misc",
@@ -121,14 +114,16 @@
     "ginga.opengl",
     "ginga.pilw",
     "ginga.qtw",
-    "ginga.qtw.plugins",
     "ginga.rv",
     "ginga.rv.plugins",
     "ginga.table",
     "ginga.tkw",
     "ginga.util",
+    "ginga.util.io",
+    "ginga.util.wcsmod",
     "ginga.web",
     "ginga.web.bokehw",
+    "ginga.web.jupyterw",
     "ginga.web.pgw",
     "ginga",
     "ginga.aggw",
@@ -139,9 +134,6 @@
     "ginga.doc",
     "ginga.fonts",
     "ginga.gtk3w",
-    "ginga.gtk3w.plugins",
-    "ginga.gtkw",
-    "ginga.gtkw.plugins",
     "ginga.gw",
     "ginga.icons",
     "ginga.misc",
@@ -151,14 +143,16 @@
     "ginga.opengl",
     "ginga.pilw",
     "ginga.qtw",
-    "ginga.qtw.plugins",
     "ginga.rv",
     "ginga.rv.plugins",
     "ginga.table",
     "ginga.tkw",
     "ginga.util",
+    "ginga.util.io",
+    "ginga.util.wcsmod",
     "ginga.web",
     "ginga.web.bokehw",
+    "ginga.web.jupyterw",
     "ginga.web.pgw",
     "ginga",
     "ginga.aggw",
@@ -169,9 +163,6 @@
     "ginga.doc",
     "ginga.fonts",
     "ginga.gtk3w",
-    "ginga.gtk3w.plugins",
-    "ginga.gtkw",
-    "ginga.gtkw.plugins",
     "ginga.gw",
     "ginga.icons",
     "ginga.misc",
@@ -181,31 +172,38 @@
     "ginga.opengl",
     "ginga.pilw",
     "ginga.qtw",
-    "ginga.qtw.plugins",
     "ginga.rv",
     "ginga.rv.plugins",
     "ginga.table",
     "ginga.tkw",
     "ginga.util",
+    "ginga.util.io",
+    "ginga.util.wcsmod",
     "ginga.web",
     "ginga.web.bokehw",
+    "ginga.web.jupyterw",
     "ginga.web.pgw"
+   ],
+   "requires":[
+    "pytest",
+    "pytest",
+    "pytest"
    ]
   }
  },
  "name":"ginga",
- "new_version":"2.7.2",
- "raw_meta_yaml":"{% set name = \"ginga\" %}\n{% set version = \"2.7.2\" %}\n{% set hash_type = \"sha256\" %}\n{% set hash_value = \"f63f453c899d144a0e476a44608b8d8e66e80dd910564e8cb8d2c96249b028ad\" %}\n\npackage:\n  name: '{{ name|lower }}'\n  version: '{{ version }}'\n\nsource:\n  fn: '{{ name }}-{{ version }}.tar.gz'\n  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz\n  '{{ hash_type }}': '{{ hash_value }}'\n\nbuild:\n  noarch: python\n  number: 0\n  entry_points:\n    - ginga = ginga.rv.main:_main\n    - ggrc = ginga.misc.grc:_main\n  script: python setup.py install --offline --single-version-externally-managed --record=record.txt\n\nrequirements:\n  build:\n    - python\n    - setuptools\n    - astropy >=1.0\n    - numpy >=1.9\n    - qtpy >=1.1\n    - setuptools >=1.0\n  run:\n    - python\n    - astropy >=1.0\n    - numpy >=1.9\n    - qtpy >=1.1\n\ntest:\n  imports:\n    - ginga\n    - ginga.aggw\n    - ginga.cairow\n    - ginga.canvas\n    - ginga.canvas.types\n    - ginga.cvw\n    - ginga.doc\n    - ginga.fonts\n    - ginga.gtk3w\n    - ginga.gtk3w.plugins\n    - ginga.gtkw\n    - ginga.gtkw.plugins\n    - ginga.gw\n    - ginga.icons\n    - ginga.misc\n    - ginga.mockw\n    - ginga.mplw\n    - ginga.opencl\n    - ginga.opengl\n    - ginga.pilw\n    - ginga.qtw\n    - ginga.qtw.plugins\n    - ginga.rv\n    - ginga.rv.plugins\n    - ginga.table\n    - ginga.tkw\n    - ginga.util\n    - ginga.web\n    - ginga.web.bokehw\n    - ginga.web.pgw\n  commands:\n    - ginga --help\n    - ggrc --help\n\nabout:\n  home: http://ejeschke.github.com/ginga\n  license: BSD 3-clause\n  license_family: BSD\n  summary: An astronomical image viewer and toolkit\n  description: |\n    Ginga is a toolkit designed for building viewers for scientific image\n    data in Python, visualizing 2D pixel data in numpy arrays.\n    The Ginga toolkit centers around an image display class which supports\n    zooming and panning, color and intensity mapping, a choice of several\n    automatic cut levels algorithms and canvases for plotting scalable\n    geometric forms.  In addition to this widget, a general purpose\n    ''reference'' FITS viewer is provided, based on a plugin framework.\n    Ginga is distributed under an open-source BSD licence. Please see the\n    file LICENSE.txt in the top-level directory for details.\n  doc_url: http://ginga.readthedocs.io/\n  dev_url: https://github.com/ejeschke/ginga\n\nextra:\n  recipe-maintainers:\n    - mwcraig\n    - bsipocz\n    - ejeschke\n    - pllim\n    - pbvarga1\n",
+ "new_version":"3.0.0",
+ "raw_meta_yaml":"{% set name = \"ginga\" %}\n{% set version = \"3.0.0\" %}\n\npackage:\n  name: '{{ name|lower }}'\n  version: '{{ version }}'\n\nsource:\n  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz\n  sha256: 'f725751285c15df9b72eb3c35f61674e79c99719fb88ae3a65f999bb9973a191'\n  patches:\n    - setup.cfg.patch\n\nbuild:\n  noarch: python\n  number: 0\n  entry_points:\n    - ginga = ginga.rv.main:_main\n    - ggrc = ginga.misc.grc:_main\n  script: \"{{ PYTHON }} -m pip install . --no-deps --ignore-installed -vv\"\n\nrequirements:\n  host:\n    - python >=3.5\n    - pip\n    - numpy >=1.13\n  run:\n    - python >=3.5\n    - astropy >=3\n    - numpy >=1.13\n    - qtpy >=1.1\n\ntest:\n  requires:\n    - pytest\n  imports:\n    - ginga\n    - ginga.aggw\n    - ginga.cairow\n    - ginga.canvas\n    - ginga.canvas.types\n    - ginga.cvw\n    - ginga.doc\n    - ginga.fonts\n    - ginga.gtk3w\n    - ginga.gw\n    - ginga.icons\n    - ginga.misc\n    - ginga.mockw\n    - ginga.mplw\n    - ginga.opencl\n    - ginga.opengl\n    - ginga.pilw\n    - ginga.qtw\n    - ginga.rv\n    - ginga.rv.plugins\n    - ginga.table\n    - ginga.tkw\n    - ginga.util\n    - ginga.util.io\n    - ginga.util.wcsmod\n    - ginga.web\n    - ginga.web.bokehw\n    - ginga.web.jupyterw\n    - ginga.web.pgw\n  commands:\n    - ginga --help\n    - ggrc --help\n\nabout:\n  home: http://ejeschke.github.com/ginga\n  license: BSD 3-clause\n  license_family: BSD\n  license_file: LICENSE.rst\n  summary: An astronomical image viewer and toolkit\n  description: |\n    Ginga is a toolkit designed for building viewers for scientific image\n    data in Python, visualizing 2D pixel data in numpy arrays.\n    The Ginga toolkit centers around an image display class which supports\n    zooming and panning, color and intensity mapping, a choice of several\n    automatic cut levels algorithms and canvases for plotting scalable\n    geometric forms.  In addition to this widget, a general purpose\n    ''reference'' FITS viewer is provided, based on a plugin framework.\n    Ginga is distributed under an open-source BSD licence. Please see the\n    file LICENSE.txt in the top-level directory for details.\n  doc_url: http://ginga.readthedocs.io/\n  dev_url: https://github.com/ejeschke/ginga\n\nextra:\n  recipe-maintainers:\n    - mwcraig\n    - bsipocz\n    - ejeschke\n    - pllim\n    - pbvarga1\n",
  "req":{
   "__set__":true,
   "elements":[
    "astropy",
    "numpy",
+   "pip",
    "python",
-   "qtpy",
-   "setuptools"
+   "qtpy"
   ]
  },
  "url":"https://pypi.io/packages/source/g/ginga/ginga-2.7.2.tar.gz",
- "version":"2.7.2"
+ "version":"3.0.0"
 }
