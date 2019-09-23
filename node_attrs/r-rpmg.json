@@ -35,7 +35,22 @@
    ]
   }
  ],
- "bad":false,
+ "bad":{
+  "exception":"local variable 'hash' referenced before assignment",
+  "traceback":[
+   "Traceback (most recent call last):",
+   "  File \"/root/repo/cf-scripts/conda_forge_tick/auto_tick.xsh\", line 657, in main",
+   "    hash_type=attrs.get('hash_type', 'sha256'))",
+   "  File \"/root/repo/cf-scripts/conda_forge_tick/auto_tick.xsh\", line 98, in run",
+   "    migrate_return = migrator.migrate(recipe_dir, attrs, **kwargs)",
+   "  File \"/root/repo/cf-scripts/conda_forge_tick/migrators.xsh\", line 386, in migrate",
+   "    new_patterns = self.get_hash_patterns('meta.yaml', urls, hash_type)",
+   "  File \"/root/repo/cf-scripts/conda_forge_tick/migrators.xsh\", line 326, in get_hash_patterns",
+   "    n = '{}: {}'.format(hash_type, hash)",
+   "UnboundLocalError: local variable 'hash' referenced before assignment",
+   ""
+  ]
+ },
  "conda-forge.yml":{
   "compiler_stack":"comp7",
   "max_py_ver":"37",
@@ -112,7 +127,7 @@
   }
  },
  "name":"r-rpmg",
- "new_version":"2.2_1",
+ "new_version":"2.2_3",
  "pinning_version":"2019.07.15",
  "raw_meta_yaml":"{% set version = '2.2-2' %}\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-rpmg\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  fn: RPMG_{{ version }}.tar.gz\n  url:\n    - {{ cran_mirror }}/src/contrib/RPMG_{{ version }}.tar.gz\n    - {{ cran_mirror }}/src/contrib/Archive/RPMG/RPMG_{{ version }}.tar.gz\n  sha256: 01fd9d2149204090e1280b12b39fb94ef9d54470d9c70177bb6c9087ac87d8c3\n\nbuild:\n  noarch: generic\n  merge_build_host: True  # [win]\n  number: 1001\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - {{posix}}zip               # [win]\n  host:\n    - r-base\n  run:\n    - r-base\n\ntest:\n  commands:\n    - $R -e \"library('RPMG')\"           # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('RPMG')\\\"\"  # [win]\n\nabout:\n  home: https://CRAN.R-project.org/package=RPMG\n  license: GPL (>= 2)\n  summary: Really Poor Man's Graphical User Interface, used to create interactive R analysis\n    sessions with simple R commands.\n  license_family: GPL3\n  license_file: '{{ environ[\"PREFIX\"] }}/lib/R/share/licenses/GPL-3'\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n",
  "req":{
