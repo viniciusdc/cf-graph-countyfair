@@ -31,6 +31,23 @@
     "migrator_version",
     "version"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/320222359.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"Version",
+    "migrator_version":0,
+    "version":"19.1.0"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "version"
+   ]
   }
  ],
  "bad":false,
@@ -137,8 +154,8 @@
   }
  },
  "name":"ldaptor",
- "new_version":"19.0.0",
- "pinning_version":"2019.03.04",
+ "new_version":"19.1.0",
+ "pinning_version":"2019.09.08",
  "raw_meta_yaml":"{% set name = \"ldaptor\" %}\n{% set version = \"19.0.0\" %}\n{% set sha256 = \"100ee49fb76ffb2707653b2d7847715f8bc7469d8738391056c6a96ef63f27ea\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  fn: {{ name }}-{{ version }}.tar.gz\n  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz\n  sha256: {{ sha256 }}\n\nbuild:\n  noarch: python\n  number: 0\n  script: python -m pip install --no-deps --ignore-installed .\n\nrequirements:\n  host:\n    - pip\n    - python\n    - setuptools\n    - pycrypto\n    # FIXME: Build currently against previous twisted version, because of\n    # https://groups.google.com/a/continuum.io/forum/?fromgroups#!topic/anaconda/2_YQ3jGU1RQ \n    - twisted <17.1.0\n    - pyopenssl\n    - pyparsing\n    - zope.interface\n\n  run:\n    - python\n    - pycrypto\n    # FIXME: see above\n    - twisted <17.1.0\n    - pyopenssl\n    - pyparsing\n    - zope.interface\n\ntest:\n  imports:\n    - ldaptor\n    - ldaptor.protocols\n    - ldaptor.protocols.ldap\n    - ldaptor.protocols.ldap.autofill\n    - ldaptor.samba\n    - ldaptor.test\n\nabout:\n  home: https://github.com/twisted/ldaptor\n  license: MIT\n  license_family: MIT\n  summary: 'A Pure-Python Twisted library for LDAP'\n\nextra:\n  recipe-maintainers:\n    - stuertz\n",
  "req":{
   "__set__":true,
@@ -153,7 +170,7 @@
    "zope.interface"
   ]
  },
- "smithy_version":"3.2.14",
+ "smithy_version":"3.4.8",
  "url":"https://pypi.io/packages/source/l/ldaptor/ldaptor-19.0.0.tar.gz",
  "version":"19.0.0"
 }
