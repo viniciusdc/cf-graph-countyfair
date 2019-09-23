@@ -1,0 +1,82 @@
+{
+ "bad":"Upstream: Error getting upstream version",
+ "conda-forge.yml":{},
+ "feedstock_name":"libcap",
+ "hash_type":"sha256",
+ "meta_yaml":{
+  "about":{
+   "home":"https://directory.fsf.org/wiki/Libcap",
+   "license":"BSD-3-Clause",
+   "license_family":"BSD",
+   "license_file":"License",
+   "summary":"Implements the user-space interfaces to the POSIX 1003.1e capabilities available in Linux kernels"
+  },
+  "build":{
+   "number":"0",
+   "run_exports":[
+    "subpackage_stub",
+    "subpackage_stub",
+    "subpackage_stub"
+   ],
+   "skip":true
+  },
+  "extra":{
+   "recipe-maintainers":[
+    "scopatz",
+    "scopatz",
+    "scopatz"
+   ]
+  },
+  "package":{
+   "name":"libcap",
+   "version":"2.27"
+  },
+  "requirements":{
+   "build":[
+    "c_compiler_stub",
+    "make",
+    "pkg-config",
+    "c_compiler_stub",
+    "make",
+    "pkg-config",
+    "c_compiler_stub",
+    "make",
+    "pkg-config"
+   ],
+   "host":[
+    "attr",
+    "attr",
+    "attr"
+   ]
+  },
+  "source":{
+   "patches":[
+    "libcap-makefile.patch",
+    "libcap-makefile.patch",
+    "libcap-makefile.patch"
+   ],
+   "sha256":"dac1792d0118bee6aae6ba7fb93ff1602c6a9bda812fd63916eee1435b9c486a",
+   "url":"https://mirrors.edge.kernel.org/pub/linux/libs/security/linux-privs/libcap2/libcap-2.27.tar.xz"
+  },
+  "test":{
+   "commands":[
+    "test -f \"$PREFIX/lib/libcap.so\"",
+    "test -f \"$PREFIX/lib/libcap.so\"",
+    "test -f \"$PREFIX/lib/libcap.so\""
+   ]
+  }
+ },
+ "name":"libcap",
+ "raw_meta_yaml":"{% set name = \"libcap\" %}\n{% set version = \"2.27\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  url: https://mirrors.edge.kernel.org/pub/linux/libs/security/linux-privs/libcap2/libcap-{{ version }}.tar.xz\n  sha256: dac1792d0118bee6aae6ba7fb93ff1602c6a9bda812fd63916eee1435b9c486a\n  patches:\n    # This removes the installation of static libraries\n    - libcap-makefile.patch\n\nbuild:\n  number: 0\n  skip: True  # [not linux]\n  run_exports:\n    - {{ pin_subpackage('libcap', max_pin='x.x') }}\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - make\n    - pkg-config\n  host:\n    - attr\n\ntest:\n  commands:\n    - test -f \"$PREFIX/lib/libcap.so\"\n\nabout:\n  home: https://directory.fsf.org/wiki/Libcap\n  license: BSD-3-Clause\n  license_family: BSD\n  license_file: License\n  summary: 'Implements the user-space interfaces to the POSIX 1003.1e capabilities available in Linux kernels'\n\nextra:\n  recipe-maintainers:\n    - scopatz\n",
+ "req":{
+  "__set__":true,
+  "elements":[
+   "attr",
+   "c_compiler_stub",
+   "make",
+   "pkg-config"
+  ]
+ },
+ "url":"https://mirrors.edge.kernel.org/pub/linux/libs/security/linux-privs/libcap2/libcap-2.27.tar.xz",
+ "version":"2.27"
+}
