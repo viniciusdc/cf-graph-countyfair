@@ -41,6 +41,7 @@
     "name":"cctools",
     "requirements":{
      "build":[
+      "cxx_compiler_stub",
       "autoconf",
       "automake",
       "make"
@@ -81,15 +82,20 @@
     "name":"ld64",
     "requirements":{
      "build":[
+      "cxx_compiler_stub",
       "autoconf",
       "automake",
       "make"
      ],
      "host":[
       "llvm",
+      "clang",
       "tapi"
      ],
      "run":[
+      "compatible_pin_stub"
+     ],
+     "run_constrained":[
       "compatible_pin_stub"
      ]
     },
@@ -118,7 +124,7 @@
     "name":"cctools",
     "requirements":{
      "build":[
-      "clang_bootstrap_osx-64",
+      "cxx_compiler_stub",
       "autoconf",
       "automake",
       "make"
@@ -164,19 +170,23 @@
     "name":"ld64",
     "requirements":{
      "build":[
-      "clang_bootstrap_osx-64",
+      "cxx_compiler_stub",
       "autoconf",
       "automake",
       "make"
      ],
      "host":[
       "llvm",
+      "clang",
       "tapi",
       "libcxx"
      ],
      "run":[
       "compatible_pin_stub",
       "libcxx"
+     ],
+     "run_constrained":[
+      "compatible_pin_stub"
      ]
     },
     "script":"install-ld64.sh",
@@ -204,6 +214,7 @@
     "name":"cctools",
     "requirements":{
      "build":[
+      "cxx_compiler_stub",
       "autoconf",
       "automake",
       "make"
@@ -244,15 +255,20 @@
     "name":"ld64",
     "requirements":{
      "build":[
+      "cxx_compiler_stub",
       "autoconf",
       "automake",
       "make"
      ],
      "host":[
       "llvm",
+      "clang",
       "tapi"
      ],
      "run":[
+      "compatible_pin_stub"
+     ],
+     "run_constrained":[
       "compatible_pin_stub"
      ]
     },
@@ -271,15 +287,15 @@
   },
   "requirements":{
    "build":[
+    "cxx_compiler_stub",
     "autoconf",
     "automake",
     "make",
-    "clang_bootstrap_osx-64",
+    "cxx_compiler_stub",
     "autoconf",
     "automake",
     "make",
-    "gcc_linux-64",
-    "gxx_linux-64",
+    "cxx_compiler_stub",
     "autoconf",
     "automake",
     "make"
@@ -475,16 +491,15 @@
   ]
  },
  "name":"cctools-and-ld64",
- "raw_meta_yaml":"{% set cctools_version = '921' %}\n{% set cctools_sha256 = '53449a7f2e316c7df5e6b94fd04e12b6d0356f2487d77aad3000134e4c010cc5' %}\n{% set ld64_version = '409.12' %}\n{% set ld64_sha256 = 'c34561b44210668c51e49efdb7d1e814a33056051ac7698571605ab968d31d5f' %}\n{% set dyld_version = '551.4' %}\n{% set dyld_sha256 = '15f86b62fb91c75fcdfedfee2ef8759585d4b9ef9ed1757cae8f4f13bd58e51c' %}\n{% set native_compiler_subdir = 'linux-64' %}  # [linux]\n\npackage:\n  name: cctools-and-ld64\n  version: {{ ld64_version }}\n\nsource:\n  - url: https://opensource.apple.com/tarballs/cctools/cctools-{{ cctools_version }}.tar.gz\n    sha256: {{ cctools_sha256 }}\n    folder: cctools\n    patches:\n      - 001-cctools-remove_static_part.patch\n      - 100-cctools-add_sdkroot_headers.patch\n      - 101-cctools-fix-sdkroot_headers.diff\n      - 110-cctools-import_to_include.patch\n      - 120-cctools-fix_time_bugs.patch\n      - 130-cctools-add_compileguards.patch\n      - 140-cctools-remove_sysctl_osversion_detection.patch\n      - 160-cctools-map_64bit_arches.patch\n      - 170-cctools-fix_printf_format_bugs.patch\n      - 180-cctools-add_CROSS_SYSROOT.patch\n      - 190-cctools-default_arch.patch\n      - 210-cctools-dont_typedef_NxConstantString.patch\n      - 220-cctools-cross-prefixes-EXEEXT-and-progname_fixes.patch\n      - 240-cctools-use_strerror.patch\n      - 250-cctools-dont_assume_getattrlist.patch\n      - 260-cctools-ppc64_reenable.patch\n      - 270-cctools-dont_assume_vm_sync.patch\n      - 280-cctools-missing_includes.patch\n      - 290-cctools-error_as_weak_symbol.patch\n      - 300-cctools-undef___unused_for_sysctl.patch\n      - 340-cctools-win_O_BINARY.patch\n      - 350-cctools-win_fileio_mode.patch\n      - 360-cctools-win_TMPDIR_to_TEMP.patch\n      - 370-cctools-win_execute.patch\n      - 380-cctools-win_avoid_mmap_ofile.patch\n      - 400-cctools-_WIN64-fixes.patch\n      - 410-cctools-remove_inc_arch_sparc_reg_h_PC.patch\n      - 420-cctools-autoconfiscate.patch\n  - url: https://opensource.apple.com/tarballs/ld64/ld64-{{ ld64_version }}.tar.gz\n    sha256: {{ ld64_sha256 }}\n    folder: cctools/ld64\n    patches:\n      - 100-ld64-add_sdkroot_headers.patch\n      - 150-ld64-allow_glibc_or_bsd_qsort_r.patch\n      - 180-ld64-add_CROSS_SYSROOT.patch\n      - 200-ld64-add_typename.patch\n      - 280-ld64-missing_includes.patch\n      - 320-ld64-extern_C_log2_only_if___APPLE__.patch\n      - 330-ld64-extern_C___assert_rtn.patch\n      - 340-ld64-win_O_BINARY.patch\n      - 350-ld64-win_fileio_mode.patch\n      - 390-ld64-_WIN64-fixes.patch\n      - 420-ld64-autoconfiscate.patch\n      - 500-ld64-add-fake-CrashReporterClient.h.patch\n      - 520-ld64-fix-usr-local-and-usr-ordering.patch\n      - 530-ld64-add-conda-specific-env-vars-to-modify-lib-search-paths.patch\n      - 540-ld64-add-LD64_LOG_HASH_TABLE.patch\n      - 550-ld64-fix-errorneous-tapi-version-condition.diff\n  # We copy headers necessary for building cctools/ld64 from dyld and MacOSX10.9.sdk (on all OSes).\n  # older versions of these files are added by 100-add_sdkroot_headers.patch, we overwrite those...\n  #- url: https://opensource.apple.com/tarballs/dyld/dyld-{{ dyld_version }}.tar.gz\n  #  sha256: {{ dyld_sha256 }}\n  #  folder: bootstrap/dyld\n\nbuild:\n  number: 2\n  skip: True  # [not osx]\n  ignore_run_exports:\n    - zlib\n\nrequirements:\n  build:\n    # we use selectors rather than jinja2 here because we only want to use the native\n    #   compiler to build llvm and clang (which are natively cross-compilers.)\n    # We might want to split the runtime libs below into a separate recipe,\n    #    so that this recipe can use jinja2 instead.\n    - gcc_{{ native_compiler_subdir }}  # [linux]\n    - gxx_{{ native_compiler_subdir }}  # [linux]\n    - clang_bootstrap_osx-64  # [osx]\n    - autoconf\n    - automake\n    - make\n  host:\n    #- xar\n    # We only use the static library from this and only get away with that as it depends on nothing.\n    - zlib\n    - llvmdev\n    - libuuid   # [linux]\n    - tapi\n\noutputs:\n  - name: cctools\n    version: {{ cctools_version }}\n    script: install-cctools.sh\n    build:\n      activate_in_script: True\n      ignore_run_exports:\n        - zlib\n    requirements:\n      build:\n        - clang_bootstrap_osx-64  # [osx]\n        - autoconf\n        - automake\n        - make\n      host:\n        - zlib\n        - llvmdev\n        - tapi\n        - libcxx  # [osx]\n      run:\n        - libcxx  # [osx]\n    test:\n      commands:\n        - test -f $PREFIX/libexec/as/x86_64/as\n        - test -f $PREFIX/bin/{{ macos_machine }}-as\n        - test -f $PREFIX/bin/{{ macos_machine }}-ranlib\n        - test -f $PREFIX/bin/{{ macos_machine }}-ar\n        - test -f $PREFIX/bin/{{ macos_machine }}-otool\n        - test -f $PREFIX/bin/{{ macos_machine }}-install_name_tool\n        - test -f $PREFIX/bin/{{ macos_machine }}-strip\n    about:\n      home: https://opensource.apple.com/source\n      license: APSL-2.0\n      license_family: Other\n      license_file: cctools/APPLE_LICENSE\n      summary: Assembler, archiver, ranlib, libtool, otool et al for Darwin Mach-O files\n\n  - name: ld64\n    version: {{ ld64_version }}\n    script: install-ld64.sh\n    build:\n      activate_in_script: True\n      missing_dso_whitelist:\n        - /usr/lib/libxar.1.dylib  # [osx]\n    requirements:\n      build:\n        - clang_bootstrap_osx-64  # [osx]\n        - autoconf\n        - automake\n        - make\n      host:\n        - llvm\n        - tapi\n        - libcxx  # [osx]\n      run:\n        - {{ pin_compatible(\"tapi\") }}\n        - libcxx  # [osx]\n    test:\n      commands:\n        - test -f $PREFIX/bin/{{ macos_machine }}-ld\n    about:\n      home: https://opensource.apple.com/source\n      license: APSL-2.0\n      license_family: Other\n      license_file: cctools/ld64/APPLE_LICENSE\n      summary: Darwin Mach-O linker\n\nextra:\n  recipe-maintainers:\n    - isuruf\n    - mingwandroid\n",
+ "raw_meta_yaml":"{% set cctools_version = '921' %}\n{% set cctools_sha256 = '53449a7f2e316c7df5e6b94fd04e12b6d0356f2487d77aad3000134e4c010cc5' %}\n{% set ld64_version = '409.12' %}\n{% set ld64_sha256 = 'c34561b44210668c51e49efdb7d1e814a33056051ac7698571605ab968d31d5f' %}\n{% set dyld_version = '551.4' %}\n{% set dyld_sha256 = '15f86b62fb91c75fcdfedfee2ef8759585d4b9ef9ed1757cae8f4f13bd58e51c' %}\n{% set native_compiler_subdir = 'linux-64' %}  # [linux]\n\npackage:\n  name: cctools-and-ld64\n  version: {{ ld64_version }}\n\nsource:\n  - url: https://opensource.apple.com/tarballs/cctools/cctools-{{ cctools_version }}.tar.gz\n    sha256: {{ cctools_sha256 }}\n    folder: cctools\n    patches:\n      - 001-cctools-remove_static_part.patch\n      - 100-cctools-add_sdkroot_headers.patch\n      - 101-cctools-fix-sdkroot_headers.diff\n      - 110-cctools-import_to_include.patch\n      - 120-cctools-fix_time_bugs.patch\n      - 130-cctools-add_compileguards.patch\n      - 140-cctools-remove_sysctl_osversion_detection.patch\n      - 160-cctools-map_64bit_arches.patch\n      - 170-cctools-fix_printf_format_bugs.patch\n      - 180-cctools-add_CROSS_SYSROOT.patch\n      - 190-cctools-default_arch.patch\n      - 210-cctools-dont_typedef_NxConstantString.patch\n      - 220-cctools-cross-prefixes-EXEEXT-and-progname_fixes.patch\n      - 240-cctools-use_strerror.patch\n      - 250-cctools-dont_assume_getattrlist.patch\n      - 260-cctools-ppc64_reenable.patch\n      - 270-cctools-dont_assume_vm_sync.patch\n      - 280-cctools-missing_includes.patch\n      - 290-cctools-error_as_weak_symbol.patch\n      - 300-cctools-undef___unused_for_sysctl.patch\n      - 340-cctools-win_O_BINARY.patch\n      - 350-cctools-win_fileio_mode.patch\n      - 360-cctools-win_TMPDIR_to_TEMP.patch\n      - 370-cctools-win_execute.patch\n      - 380-cctools-win_avoid_mmap_ofile.patch\n      - 400-cctools-_WIN64-fixes.patch\n      - 410-cctools-remove_inc_arch_sparc_reg_h_PC.patch\n      - 420-cctools-autoconfiscate.patch\n  - url: https://opensource.apple.com/tarballs/ld64/ld64-{{ ld64_version }}.tar.gz\n    sha256: {{ ld64_sha256 }}\n    folder: cctools/ld64\n    patches:\n      - 100-ld64-add_sdkroot_headers.patch\n      - 150-ld64-allow_glibc_or_bsd_qsort_r.patch\n      - 180-ld64-add_CROSS_SYSROOT.patch\n      - 200-ld64-add_typename.patch\n      - 280-ld64-missing_includes.patch\n      - 320-ld64-extern_C_log2_only_if___APPLE__.patch\n      - 330-ld64-extern_C___assert_rtn.patch\n      - 340-ld64-win_O_BINARY.patch\n      - 350-ld64-win_fileio_mode.patch\n      - 390-ld64-_WIN64-fixes.patch\n      - 420-ld64-autoconfiscate.patch\n      - 500-ld64-add-fake-CrashReporterClient.h.patch\n      - 520-ld64-fix-usr-local-and-usr-ordering.patch\n      - 530-ld64-add-conda-specific-env-vars-to-modify-lib-search-paths.patch\n      - 540-ld64-add-LD64_LOG_HASH_TABLE.patch\n      - 550-ld64-fix-errorneous-tapi-version-condition.diff\n  # We copy headers necessary for building cctools/ld64 from dyld and MacOSX10.9.sdk (on all OSes).\n  # older versions of these files are added by 100-add_sdkroot_headers.patch, we overwrite those...\n  #- url: https://opensource.apple.com/tarballs/dyld/dyld-{{ dyld_version }}.tar.gz\n  #  sha256: {{ dyld_sha256 }}\n  #  folder: bootstrap/dyld\n\nbuild:\n  number: 2\n  skip: True  # [not osx]\n  ignore_run_exports:\n    - zlib\n\nrequirements:\n  build:\n    - {{ compiler('cxx') }}\n    - autoconf\n    - automake\n    - make\n  host:\n    #- xar\n    # We only use the static library from this and only get away with that as it depends on nothing.\n    - zlib\n    - llvmdev\n    - libuuid   # [linux]\n    - tapi\n\noutputs:\n  - name: cctools\n    version: {{ cctools_version }}\n    script: install-cctools.sh\n    build:\n      activate_in_script: True\n      ignore_run_exports:\n        - zlib\n    requirements:\n      build:\n        - {{ compiler('cxx') }}\n        - autoconf\n        - automake\n        - make\n      host:\n        - zlib\n        - llvmdev\n        - tapi\n        - libcxx  # [osx]\n      run:\n        - libcxx  # [osx]\n    test:\n      commands:\n        - test -f $PREFIX/libexec/as/x86_64/as\n        - test -f $PREFIX/bin/{{ macos_machine }}-as\n        - test -f $PREFIX/bin/{{ macos_machine }}-ranlib\n        - test -f $PREFIX/bin/{{ macos_machine }}-ar\n        - test -f $PREFIX/bin/{{ macos_machine }}-otool\n        - test -f $PREFIX/bin/{{ macos_machine }}-install_name_tool\n        - test -f $PREFIX/bin/{{ macos_machine }}-strip\n    about:\n      home: https://opensource.apple.com/source\n      license: APSL-2.0\n      license_family: Other\n      license_file: cctools/APPLE_LICENSE\n      summary: Assembler, archiver, ranlib, libtool, otool et al for Darwin Mach-O files\n\n  - name: ld64\n    version: {{ ld64_version }}\n    script: install-ld64.sh\n    build:\n      activate_in_script: True\n      missing_dso_whitelist:\n        - /usr/lib/libxar.1.dylib  # [osx]\n    requirements:\n      build:\n        - {{ compiler('cxx') }}\n        - autoconf\n        - automake\n        - make\n      host:\n        - llvm\n        - clang\n        - tapi\n        - libcxx  # [osx]\n      run:\n        - {{ pin_compatible(\"tapi\") }}\n        - libcxx  # [osx]\n      run_constrained:\n        - {{ pin_compatible(\"clang\") }}\n    test:\n      commands:\n        - test -f $PREFIX/bin/{{ macos_machine }}-ld\n    about:\n      home: https://opensource.apple.com/source\n      license: APSL-2.0\n      license_family: Other\n      license_file: cctools/ld64/APPLE_LICENSE\n      summary: Darwin Mach-O linker\n\nextra:\n  recipe-maintainers:\n    - isuruf\n    - mingwandroid\n",
  "req":{
   "__set__":true,
   "elements":[
    "autoconf",
    "automake",
-   "clang_bootstrap_osx-64",
+   "clang",
    "compatible_pin_stub",
-   "gcc_linux-64",
-   "gxx_linux-64",
+   "cxx_compiler_stub",
    "libcxx",
    "libuuid",
    "llvm",
