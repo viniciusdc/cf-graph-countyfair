@@ -93,6 +93,23 @@
     "migrator_version",
     "name"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/320715373.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"Version",
+    "migrator_version":0,
+    "version":"1.4_7"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "version"
+   ]
   }
  ],
  "bad":false,
@@ -187,8 +204,8 @@
   }
  },
  "name":"r-microbenchmark",
- "new_version":"1.4_6",
- "pinning_version":"2019.07.20",
+ "new_version":"1.4_7",
+ "pinning_version":"2019.09.08",
  "raw_meta_yaml":"{% set version = \"1.4-6\" %}\n\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-microbenchmark\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  fn: microbenchmark_{{ version }}.tar.gz\n  url:\n    - https://cran.r-project.org/src/contrib/microbenchmark_{{ version }}.tar.gz\n    - https://cran.r-project.org/src/contrib/Archive/microbenchmark/microbenchmark_{{ version }}.tar.gz\n  sha256: 7ac46a3b0df0677873db6c8ccfebcc3882e8c91caf0cf6168ea54ef55f77c1ea\n\nbuild:\n  merge_build_host: True  # [win]\n  number: 1\n  skip: true  # [win32]\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - posix                # [win]\n    - {{ compiler('c') }}        # [unix]\n    - {{ compiler('m2w64_c') }}  # [win]\n  host:\n    - r-base\n    - r-ggplot2\n  run:\n    - r-base\n    - r-ggplot2\n\ntest:\n  commands:\n    - $R -e \"library('microbenchmark')\"  # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('microbenchmark')\\\"\"  # [win]\n\nabout:\n  home: https://CRAN.R-project.org/package=microbenchmark\n  license: BSD_2_clause\n  summary: Provides infrastructure to accurately measure and compare the execution time of R\n    expressions.\n  license_family: BSD\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n    - johanneskoester\n    - bgruening\n",
  "req":{
   "__set__":true,
@@ -200,7 +217,7 @@
    "r-ggplot2"
   ]
  },
- "smithy_version":"3.4.1",
+ "smithy_version":"3.4.8",
  "url":[
   "https://cran.r-project.org/src/contrib/microbenchmark_1.4-6.tar.gz",
   "https://cran.r-project.org/src/contrib/Archive/microbenchmark/microbenchmark_1.4-6.tar.gz",
