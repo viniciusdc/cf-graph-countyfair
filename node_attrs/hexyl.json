@@ -2,6 +2,8 @@
  "bad":false,
  "conda-forge.yml":{
   "provider":{
+   "linux_aarch64":"default",
+   "linux_ppc64le":"default",
    "win":"azure"
   }
  },
@@ -16,7 +18,7 @@
    "summary":"A command-line hex viewer"
   },
   "build":{
-   "number":"0"
+   "number":"1"
   },
   "extra":{
    "recipe-maintainers":[
@@ -34,9 +36,9 @@
     "rust",
     "binutils",
     "rust",
-    "binutils",
+    "c_compiler_stub",
     "rust",
-    "binutils"
+    "c_compiler_stub"
    ]
   },
   "source":{
@@ -53,11 +55,12 @@
  },
  "name":"hexyl",
  "new_version":"0.5.1",
- "raw_meta_yaml":"{% set version = \"0.5.1\" %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: hexyl\n  version: {{ version }}\n\nsource:\n  url: https://github.com/sharkdp/hexyl/archive/v{{ version }}.tar.gz\n  sha256: 9c12bc6377d1efedc4a1731547448f7eb6ed17ee1c267aad9a35995b42091163\n\nbuild:\n  number: 0\n\nrequirements:\n  build:\n    - rust\n    - {{native}}binutils\n\ntest:\n  commands:\n    - hexyl --help\n\nabout:\n  home: https://github.com/sharkdp/hexyl\n  license: MIT\n  license_family: MIT\n  license_file: LICENSE-MIT\n  summary: A command-line hex viewer\n\nextra:\n  recipe-maintainers:\n    - apcamargo\n",
+ "raw_meta_yaml":"{% set version = \"0.5.1\" %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: hexyl\n  version: {{ version }}\n\nsource:\n  url: https://github.com/sharkdp/hexyl/archive/v{{ version }}.tar.gz\n  sha256: 9c12bc6377d1efedc4a1731547448f7eb6ed17ee1c267aad9a35995b42091163\n\nbuild:\n  number: 1\n\nrequirements:\n  build:\n    - rust\n    - {{ compiler('c') }}              # [unix]\n    - {{native}}binutils               # [win]\n\ntest:\n  commands:\n    - hexyl --help\n\nabout:\n  home: https://github.com/sharkdp/hexyl\n  license: MIT\n  license_family: MIT\n  license_file: LICENSE-MIT\n  summary: A command-line hex viewer\n\nextra:\n  recipe-maintainers:\n    - apcamargo\n",
  "req":{
   "__set__":true,
   "elements":[
    "binutils",
+   "c_compiler_stub",
    "rust"
   ]
  },
