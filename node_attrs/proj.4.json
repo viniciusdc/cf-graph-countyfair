@@ -136,7 +136,7 @@
    "summary":"Cartographic Projections and Coordinate Transformations Library"
   },
   "build":{
-   "number":"0",
+   "number":"1",
    "run_exports":[
     "subpackage_stub",
     "subpackage_stub",
@@ -190,6 +190,11 @@
     "sqlite",
     "sqlite",
     "sqlite"
+   ],
+   "run_constrained":[
+    "proj4 ==999999999999",
+    "proj4 ==999999999999",
+    "proj4 ==999999999999"
    ]
   },
   "source":[
@@ -242,7 +247,7 @@
  "name":"proj",
  "new_version":false,
  "pinning_version":"2019.08.27",
- "raw_meta_yaml":"{% set version = \"6.2.0\" %}\n{% set datumgrid_ver = \"1.8\" %}\n\npackage:\n  name: proj\n  version: {{ version }}\n\nsource:\n  - url: http://download.osgeo.org/proj/proj-{{ version }}.tar.gz\n    sha256: b300c0f872f632ad7f8eb60725edbf14f0f8f52db740a3ab23e7b94f1cd22a50\n  - url: http://download.osgeo.org/proj/proj-datumgrid-{{ datumgrid_ver }}.tar.gz\n    sha256: 3ff6618a0acc9f0b9b4f6a62e7ff0f7bf538fb4f74de47ad04da1317408fcc15\n    folder: data\n\nbuild:\n  number: 0\n  skip: True  # [win and vc<14]\n  run_exports:\n    # so name changes in bugfix revisions.  Pin to bugfix revision.\n    #    https://abi-laboratory.pro/tracker/timeline/proj/\n    - {{ pin_subpackage('proj', max_pin='x.x.x') }}\n\nrequirements:\n  build:\n    - cmake  # [win]\n    - pkg-config  # [not win]\n    - make  # [not win]\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n  host:\n    - sqlite\n  run:\n    - sqlite\n\ntest:\n  commands:\n    # Check if NAD27/NAD83 datum shifting is present if `conus` is present.\n    - test -f $PREFIX/share/proj/conus  # [not win]\n    - if not exist %LIBRARY_PREFIX%\\\\share\\\\proj\\\\conus exit 1  # [win]\n    - if not exist %LIBRARY_LIB%\\\\proj.lib exit 1  # [win]\n    - echo -105 40 | proj +proj=utm +zone=13 +ellps=WGS84\n    - echo -117 30 | cs2cs +proj=latlong +datum=NAD27 +to +proj=latlong +datum=NAD83\n    - echo -105 40 | cs2cs +init=epsg:4326 +to +init=epsg:2975\n\nabout:\n  home: https://proj.org/\n  license: MIT\n  license_file: COPYING\n  summary: 'Cartographic Projections and Coordinate Transformations Library'\n\nextra:\n  recipe-maintainers:\n    - ocefpaf\n    - pelson\n    - msarahan\n    - xylar\n    - snowman2\n",
+ "raw_meta_yaml":"{% set version = \"6.2.0\" %}\n{% set datumgrid_ver = \"1.8\" %}\n\npackage:\n  name: proj\n  version: {{ version }}\n\nsource:\n  - url: http://download.osgeo.org/proj/proj-{{ version }}.tar.gz\n    sha256: b300c0f872f632ad7f8eb60725edbf14f0f8f52db740a3ab23e7b94f1cd22a50\n  - url: http://download.osgeo.org/proj/proj-datumgrid-{{ datumgrid_ver }}.tar.gz\n    sha256: 3ff6618a0acc9f0b9b4f6a62e7ff0f7bf538fb4f74de47ad04da1317408fcc15\n    folder: data\n\nbuild:\n  number: 1\n  skip: True  # [win and vc<14]\n  run_exports:\n    # so name changes in bugfix revisions.  Pin to bugfix revision.\n    #    https://abi-laboratory.pro/tracker/timeline/proj/\n    - {{ pin_subpackage('proj', max_pin='x.x.x') }}\n\nrequirements:\n  build:\n    - cmake  # [win]\n    - pkg-config  # [not win]\n    - make  # [not win]\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n  host:\n    - sqlite\n  run:\n    - sqlite\n  run_constrained:\n    - proj4 ==999999999999\n\ntest:\n  commands:\n    # Check if NAD27/NAD83 datum shifting is present if `conus` is present.\n    - test -f $PREFIX/share/proj/conus  # [not win]\n    - if not exist %LIBRARY_PREFIX%\\\\share\\\\proj\\\\conus exit 1  # [win]\n    - if not exist %LIBRARY_LIB%\\\\proj.lib exit 1  # [win]\n    - echo -105 40 | proj +proj=utm +zone=13 +ellps=WGS84\n    - echo -117 30 | cs2cs +proj=latlong +datum=NAD27 +to +proj=latlong +datum=NAD83\n    - echo -105 40 | cs2cs +init=epsg:4326 +to +init=epsg:2975\n\nabout:\n  home: https://proj.org/\n  license: MIT\n  license_file: COPYING\n  summary: 'Cartographic Projections and Coordinate Transformations Library'\n\nextra:\n  recipe-maintainers:\n    - ocefpaf\n    - pelson\n    - msarahan\n    - xylar\n    - snowman2\n",
  "req":{
   "__set__":true,
   "elements":[

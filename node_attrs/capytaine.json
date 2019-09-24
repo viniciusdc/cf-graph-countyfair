@@ -33,6 +33,23 @@
     "migrator_version",
     "name"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/320795697.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"Version",
+    "migrator_version":0,
+    "version":"1.1"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "version"
+   ]
   }
  ],
  "bad":false,
@@ -162,8 +179,8 @@
   }
  },
  "name":"capytaine",
- "new_version":"1.0.1",
- "pinning_version":"2019.08.12",
+ "new_version":"1.1",
+ "pinning_version":"2019.09.08",
  "raw_meta_yaml":"{% set version = \"1.0.1\" %}\n{% set hash = \"899853fb7607c319fbfecde281750b4d607e6f50ac5d919d064726e2f186b033\" %}\n\npackage:\n  name: capytaine\n  version: {{ version }}\n\nsource:\n  url: https://github.com/mancellin/capytaine/archive/v{{version}}.tar.gz\n  sha256: {{ hash }}\n\nbuild:\n  skip: True  # [py<36]\n  number: 1\n  script: \"{{ PYTHON }} -m pip install . --no-deps -vv\"\n  entry_points:\n    - capytaine = capytaine.ui.cli:main\n\nrequirements:\n  build:\n    - {{ compiler('fortran') }}\n    - {{ compiler('c') }}\n    - {{ compiler('m2w64_c') }}  # [win]\n    - {{ compiler('m2w64_fortran') }}  # [win]\n    - llvm-openmp  # [osx]\n  host:\n    - python\n    - pip\n    - setuptools\n    - numpy\n    - llvm-openmp  # [osx]\n    - m2w64-toolchain  # [win]\n    - libpython  # [win]\n  run:\n    - python\n    - attrs\n    - {{ pin_compatible('numpy') }}\n    - pandas\n    - matplotlib\n    - scipy\n    - vtk\n    - xarray\n    - llvm-openmp  # [osx]\n\ntest:\n  imports:\n    - capytaine\n  requires:\n    - pytest\n  source_files:\n    - pytest/*.py\n    - pytest/**/*\n  commands:\n    - pytest\n    - capytaine --help\n\nabout:\n  home: https://github.com/mancellin/capytaine\n  license: GPL-3.0\n  license_family: GPL\n  license_file: LICENSE\n  summary: A Python-based linear potential flow solver based on Nemoh\n\nextra:\n  recipe-maintainers:\n    - mancellin\n",
  "req":{
   "__set__":true,
@@ -188,7 +205,7 @@
    "xarray"
   ]
  },
- "smithy_version":"3.4.1",
+ "smithy_version":"3.4.8",
  "url":"https://github.com/mancellin/capytaine/archive/v1.0.1.tar.gz",
  "version":"1.0.1"
 }
