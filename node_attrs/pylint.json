@@ -183,6 +183,23 @@
     "migrator_version",
     "version"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/320693304.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"Version",
+    "migrator_version":0,
+    "version":"2.4.0"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "version"
+   ]
   }
  ],
  "bad":false,
@@ -312,8 +329,8 @@
   }
  },
  "name":"pylint",
- "new_version":"2.3.1",
- "pinning_version":"2019.02.24",
+ "new_version":"2.4.0",
+ "pinning_version":"2019.09.08",
  "raw_meta_yaml":"{% set version = \"2.3.1\" %}\n\npackage:\n  name: pylint\n  version: {{ version }}\n\nsource:\n  url: https://pypi.io/packages/source/p/pylint/pylint-{{ version }}.tar.gz\n  sha256: 723e3db49555abaf9bf79dc474c6b9e2935ad82230b10c1138a71ea41ac0fff1\n\nbuild:\n  number: 0\n  skip: True  # [py<34]\n  script: \"{{ PYTHON }} -m pip install . --no-deps --ignore-installed --no-cache-dir -vvv\"\n  entry_points:\n    - pylint = pylint:run_pylint\n    - epylint = pylint:run_epylint\n    - pyreverse = pylint:run_pyreverse\n    - symilar = pylint:run_symilar\n\nrequirements:\n  host:\n    - python\n    - pip\n    - pytest-runner\n\n  run:\n    - python\n    - astroid >=2.2.0\n    - isort >=4.2.5\n    - mccabe\n    - colorama  # [win]\n\ntest:\n  imports:\n    - pylint\n    - pylint.checkers\n    - pylint.extensions\n    - pylint.pyreverse\n    - pylint.reporters\n    - pylint.reporters.ureports\n\n  commands:\n    - pylint --help\n    # Has no help option.\n    # Running without arguments is an error.\n    # So just check that it exists.\n    - type epylint  # [unix]\n    - where epylint  # [win]\n    - pyreverse --help\n    - symilar --help\n\nabout:\n  home: http://www.pylint.org/\n  license: GPL 2\n  license_file: COPYING\n  summary: 'python code static checker'\n  description: |\n    Pylint is a tool that checks for errors in Python code, tries to enforce a\n    coding standard and looks for code smells.\n  doc_url: https://pylint.readthedocs.io/en/latest/\n  doc_source_url: https://github.com/PyCQA/pylint/blob/master/doc/index.rst\n  dev_url: https://github.com/PyCQA/pylint/\n\nextra:\n  recipe-maintainers:\n    - jakirkham\n    - jjhelmus\n    - timleslie\n",
  "req":{
   "__set__":true,
@@ -327,7 +344,7 @@
    "python"
   ]
  },
- "smithy_version":"3.2.14",
+ "smithy_version":"3.4.8",
  "url":"https://pypi.io/packages/source/p/pylint/pylint-2.3.1.tar.gz",
  "version":"2.3.1"
 }
