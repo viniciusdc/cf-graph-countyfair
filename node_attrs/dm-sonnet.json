@@ -59,7 +59,7 @@
   },
   "package":{
    "name":"dm-sonnet",
-   "version":"1.32"
+   "version":"1.35"
   },
   "requirements":{
    "build":[
@@ -91,7 +91,7 @@
     "wrapt",
     "gast",
     "semantic_version",
-    "tensorflow >=1.5.0",
+    "tensorflow >=1.8.0",
     "tensorflow-probability <0.7",
     "contextlib2",
     "python",
@@ -100,7 +100,7 @@
     "wrapt",
     "gast",
     "semantic_version",
-    "tensorflow >=1.5.0",
+    "tensorflow >=1.8.0",
     "tensorflow-probability <0.7",
     "contextlib2",
     "python",
@@ -109,14 +109,14 @@
     "wrapt",
     "gast",
     "semantic_version",
-    "tensorflow >=1.5.0",
+    "tensorflow >=1.8.0",
     "tensorflow-probability <0.7",
     "contextlib2"
    ]
   },
   "source":{
-   "sha256":"917b50e6d535d2eb2fa5c7f211b30042f2d56d1564560bd79685ce98b156cf51",
-   "url":"https://github.com/deepmind/sonnet/archive/v1.32.tar.gz"
+   "sha256":"2e9e28b0181d5397338438f57ae0dd02486e3f713992241ac308e728775add41",
+   "url":"https://github.com/deepmind/sonnet/archive/v1.35.tar.gz"
   },
   "test":{
    "imports":[
@@ -129,7 +129,7 @@
  "name":"dm-sonnet",
  "new_version":"1.35",
  "pinning_version":"2019.09.24",
- "raw_meta_yaml":"{% set name = \"dm-sonnet\" %}\n{% set version = \"1.32\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  url: https://github.com/deepmind/sonnet/archive/v{{ version }}.tar.gz\n  sha256: 917b50e6d535d2eb2fa5c7f211b30042f2d56d1564560bd79685ce98b156cf51\n\nbuild:\n  number: 0\n  # skipping windows for now\n  skip: true  # [win]  \n  skip: true  # [win and vc<14]\n  script:\n    - protoc %SRC_DIR%\\\\sonnet\\\\protos\\\\module.proto --python_out=%SRC_DIR%\\\\sonnet\\\\protos -I=%SRC_DIR%\\\\sonnet\\\\protos  # [win]\n    - rmdir build  # [win]\n    - rm -rf build  # [osx]\n    - protoc $SRC_DIR/sonnet/protos/module.proto --python_out=$SRC_DIR/sonnet/protos -I=$SRC_DIR/sonnet/protos  # [unix]\n    - \"{{ PYTHON }} -m pip install . -vv\"\n\nrequirements:\n  build:\n    - {{ compiler('cxx') }}\n    - {{ compiler('c') }}\n    - protobuf\n  host:\n    - python\n    - pip\n    - setuptools\n  run:\n    - python\n    - absl-py\n    - six\n    - wrapt\n    - gast\n    - semantic_version\n    - tensorflow >=1.5.0\n    - tensorflow-probability <0.7\n    - contextlib2\n\ntest:\n  imports:\n    - sonnet\n\nabout:\n  home: https://github.com/deepmind/sonnet\n  license: Apache-2.0\n  license_family: Apache\n  license_file: LICENSE\n  summary: 'Sonnet is a library built on top of TensorFlow 2 designed to provide simple, composable abstractions for machine learning research.'\n  description: |\n    Sonnet has been designed and built by researchers at DeepMind. \n    It can be used to construct neural networks for many different \n    purposes (un/supervised learning, reinforcement learning, ...).\n    More specifically, Sonnet provides a simple but powerful programming \n    model centered around a single concept: snt.Module. Modules can hold \n    references to parameters, other modules and methods that apply some \n    function on the user input. Sonnet ships with many predefined modules \n    (e.g. snt.Linear, snt.Conv2D, snt.BatchNorm) and some predefined networks \n    of modules (e.g. snt.nets.MLP) but users are also encouraged to build their \n    own modules.\n  doc_url: https://sonnet.readthedocs.io/en/latest/\n  dev_url: https://github.com/deepmind/sonnet\n\nextra:\n  recipe-maintainers:\n    - marcelotrevisani\n    - asmith26\n",
+ "raw_meta_yaml":"{% set name = \"dm-sonnet\" %}\n{% set version = \"1.35\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  url: https://github.com/deepmind/sonnet/archive/v{{ version }}.tar.gz\n  sha256: 2e9e28b0181d5397338438f57ae0dd02486e3f713992241ac308e728775add41\n\nbuild:\n  number: 0\n  # skipping windows for now\n  skip: true  # [win]  \n  skip: true  # [win and vc<14]\n  script:\n    - protoc %SRC_DIR%\\\\sonnet\\\\protos\\\\module.proto --python_out=%SRC_DIR%\\\\sonnet\\\\protos -I=%SRC_DIR%\\\\sonnet\\\\protos  # [win]\n    - rmdir build  # [win]\n    - rm -rf build  # [osx]\n    - protoc $SRC_DIR/sonnet/protos/module.proto --python_out=$SRC_DIR/sonnet/protos -I=$SRC_DIR/sonnet/protos  # [unix]\n    - \"{{ PYTHON }} -m pip install . -vv\"\n\nrequirements:\n  build:\n    - {{ compiler('cxx') }}\n    - {{ compiler('c') }}\n    - protobuf\n  host:\n    - python\n    - pip\n    - setuptools\n  run:\n    - python\n    - absl-py\n    - six\n    - wrapt\n    - gast\n    - semantic_version\n    - tensorflow >=1.8.0\n    - tensorflow-probability <0.7\n    - contextlib2\n\ntest:\n  imports:\n    - sonnet\n\nabout:\n  home: https://github.com/deepmind/sonnet\n  license: Apache-2.0\n  license_family: Apache\n  license_file: LICENSE\n  summary: 'Sonnet is a library built on top of TensorFlow 2 designed to provide simple, composable abstractions for machine learning research.'\n  description: |\n    Sonnet has been designed and built by researchers at DeepMind. \n    It can be used to construct neural networks for many different \n    purposes (un/supervised learning, reinforcement learning, ...).\n    More specifically, Sonnet provides a simple but powerful programming \n    model centered around a single concept: snt.Module. Modules can hold \n    references to parameters, other modules and methods that apply some \n    function on the user input. Sonnet ships with many predefined modules \n    (e.g. snt.Linear, snt.Conv2D, snt.BatchNorm) and some predefined networks \n    of modules (e.g. snt.nets.MLP) but users are also encouraged to build their \n    own modules.\n  doc_url: https://sonnet.readthedocs.io/en/latest/\n  dev_url: https://github.com/deepmind/sonnet\n\nextra:\n  recipe-maintainers:\n    - marcelotrevisani\n    - asmith26\n",
  "req":{
   "__set__":true,
   "elements":[
@@ -151,5 +151,5 @@
  },
  "smithy_version":"3.4.8",
  "url":"https://github.com/deepmind/sonnet/archive/v1.32.tar.gz",
- "version":"1.32"
+ "version":"1.35"
 }
