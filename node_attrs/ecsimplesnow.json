@@ -67,7 +67,7 @@
    "summary":"A simple snow model"
   },
   "build":{
-   "number":"1",
+   "number":"0",
    "skip":true
   },
   "extra":{
@@ -79,11 +79,12 @@
   },
   "package":{
    "name":"ecsimplesnow",
-   "version":"1.1"
+   "version":"1.1.1"
   },
   "requirements":{
    "build":[
     "fortran_compiler_stub",
+    "cxx_compiler_stub",
     "cmake",
     "fortran_compiler_stub",
     "cmake",
@@ -92,8 +93,8 @@
    ]
   },
   "source":{
-   "sha256":"7595a140e60b570779fdea1aeea4d9c875c0765125423fd4f5ff28c20ea80e04",
-   "url":"https://github.com/permamodel/Snow_BMI_Fortran/archive/v1.1.tar.gz"
+   "sha256":"db498969f82d5f6bdc23aa8455bec65a1c707aeb571c27c68e9960b51915a49d",
+   "url":"https://github.com/permamodel/Snow_BMI_Fortran/archive/v1.1.1.tar.gz"
   },
   "test":{
    "commands":[
@@ -117,15 +118,16 @@
  "name":"ecsimplesnow",
  "new_version":"1.1.1",
  "pinning_version":"2019.09.24",
- "raw_meta_yaml":"{% set version = \"1.1\" %}\n\npackage:\n  name: ecsimplesnow\n  version: {{ version }}\n\nsource:\n  url: https://github.com/permamodel/Snow_BMI_Fortran/archive/v{{ version }}.tar.gz\n  sha256: 7595a140e60b570779fdea1aeea4d9c875c0765125423fd4f5ff28c20ea80e04\n\nbuild:\n  number: 1\n  skip: True  # [win]\n\nrequirements:\n  build:\n    - {{ compiler('fortran') }}\n    - cmake\n\ntest:\n  source_files:\n    - data\n  commands:\n    - cp data/tair.csv data/test_tair.csv\n    - cp data/prec.csv data/test_prec.csv\n    - run_bmisnow_model data/snow_model_test.cfg\n\nabout:\n  home: https://csdms.colorado.edu/wiki/Model:ECSimpleSnow\n  license: Apache-2.0\n  license_file: LICENSE\n  summary: 'A simple snow model'\n  description: |\n    ECSimpleSnow is a simple snow model cooperatively developed by\n    Kang Wang (University of Colorado Boulder), Ross Brown\n    (Environment Canada), and Bruce Brasnett (Canadian Meteorological\n    Centre). It employs an empirical algorithm to melt or accumulate\n    snow based on surface temperature and precipitation that has\n    fallen since the previous analysis step.\n  doc_url: https://csdms.colorado.edu/wiki/Model:ECSimpleSnow\n  dev_url: https://github.com/permamodel/Snow_BMI_Fortran\n\nextra:\n  recipe-maintainers:\n    - mdpiper\n",
+ "raw_meta_yaml":"{% set version = \"1.1.1\" %}\n\npackage:\n  name: ecsimplesnow\n  version: {{ version }}\n\nsource:\n  url: https://github.com/permamodel/Snow_BMI_Fortran/archive/v{{ version }}.tar.gz\n  sha256: db498969f82d5f6bdc23aa8455bec65a1c707aeb571c27c68e9960b51915a49d\n\nbuild:\n  number: 0\n  skip: true  # [win and vc<14]\n\nrequirements:\n  build:\n    - {{ compiler('fortran') }}\n    - {{ compiler('cxx') }}  # [win]\n    - cmake\n\ntest:\n  source_files:\n    - data\n  commands:\n    - cp data/tair.csv data/test_tair.csv\n    - cp data/prec.csv data/test_prec.csv\n    - run_bmisnow_model data/snow_model_test.cfg\n\nabout:\n  home: https://csdms.colorado.edu/wiki/Model:ECSimpleSnow\n  license: Apache-2.0\n  license_file: LICENSE\n  summary: 'A simple snow model'\n  description: |\n    ECSimpleSnow is a simple snow model cooperatively developed by\n    Kang Wang (University of Colorado Boulder), Ross Brown\n    (Environment Canada), and Bruce Brasnett (Canadian Meteorological\n    Centre). It employs an empirical algorithm to melt or accumulate\n    snow based on surface temperature and precipitation that has\n    fallen since the previous analysis step.\n  doc_url: https://csdms.colorado.edu/wiki/Model:ECSimpleSnow\n  dev_url: https://github.com/permamodel/Snow_BMI_Fortran\n\nextra:\n  recipe-maintainers:\n    - mdpiper\n",
  "req":{
   "__set__":true,
   "elements":[
    "cmake",
+   "cxx_compiler_stub",
    "fortran_compiler_stub"
   ]
  },
  "smithy_version":"3.4.8",
  "url":"https://github.com/permamodel/Snow_BMI_Fortran/archive/v1.1.tar.gz",
- "version":"1.1"
+ "version":"1.1.1"
 }
