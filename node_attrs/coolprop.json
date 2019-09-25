@@ -106,7 +106,7 @@
    "summary":"Open-source thermodynamic and transport properties database"
   },
   "build":{
-   "number":"1000",
+   "number":"1001",
    "script":"python -m pip install --no-deps --ignore-installed .",
    "skip":true
   },
@@ -141,13 +141,13 @@
    "run":[
     "python",
     "numpy",
-    "matplotlib",
+    "matplotlib-base",
     "python",
     "numpy",
-    "matplotlib",
+    "matplotlib-base",
     "python",
     "numpy",
-    "matplotlib"
+    "matplotlib-base"
    ]
   },
   "source":{
@@ -174,13 +174,13 @@
  "name":"coolprop",
  "new_version":"6.3.0",
  "pinning_version":"2019.05.11",
- "raw_meta_yaml":"{% set name = \"CoolProp\" %}\n\n{% set version = \"6.2.1\" %}\n{% set sha256 = \"d5b85af023ffc93d3f85770dee571712f3858f72579e89a7d13b2f796d933732\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz\n  sha256: {{ sha256 }}\n\nbuild:\n  number: 1000\n  script: \"python -m pip install --no-deps --ignore-installed .\"\n  skip: true  # [py>36]\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n  host:\n    - python\n    - pip\n  run:\n    - python\n    - numpy\n    - matplotlib\n\ntest:\n  imports:\n    - CoolProp\n    - CoolProp.tests\n    - CoolProp.Plots\n    - CoolProp.GUI\n\nabout:\n  home: https://github.com/CoolProp/CoolProp\n  license: MIT\n  license_family: MIT\n  license_file: LICENSE\n  summary: 'Open-source thermodynamic and transport properties database'\n\n  description: |\n    Open-source thermodynamic and transport properties database\n  doc_url: http://www.coolprop.org/\n  dev_url: https://github.com/CoolProp/CoolProp\n\nextra:\n  recipe-maintainers:\n    - danilomendesdias\n",
+ "raw_meta_yaml":"{% set name = \"CoolProp\" %}\n\n{% set version = \"6.2.1\" %}\n{% set sha256 = \"d5b85af023ffc93d3f85770dee571712f3858f72579e89a7d13b2f796d933732\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz\n  sha256: {{ sha256 }}\n\nbuild:\n  number: 1001\n  script: \"python -m pip install --no-deps --ignore-installed .\"\n  skip: true  # [py<34 or py>36]\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n  host:\n    - python\n    - pip\n  run:\n    - python\n    - numpy\n    - matplotlib-base\n\ntest:\n  imports:\n    - CoolProp\n    - CoolProp.tests\n    - CoolProp.Plots\n    - CoolProp.GUI\n\nabout:\n  home: https://github.com/CoolProp/CoolProp\n  license: MIT\n  license_family: MIT\n  license_file: LICENSE\n  summary: 'Open-source thermodynamic and transport properties database'\n\n  description: |\n    Open-source thermodynamic and transport properties database\n  doc_url: http://www.coolprop.org/\n  dev_url: https://github.com/CoolProp/CoolProp\n\nextra:\n  recipe-maintainers:\n    - danilomendesdias\n",
  "req":{
   "__set__":true,
   "elements":[
    "c_compiler_stub",
    "cxx_compiler_stub",
-   "matplotlib",
+   "matplotlib-base",
    "numpy",
    "pip",
    "python"
