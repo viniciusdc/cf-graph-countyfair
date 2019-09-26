@@ -33,6 +33,23 @@
     "migrator_version",
     "name"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/321824689.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"Version",
+    "migrator_version":0,
+    "version":"2.7.0"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "version"
+   ]
   }
  ],
  "bad":false,
@@ -118,8 +135,8 @@
   }
  },
  "name":"ldas-tools-diskcacheapi",
- "new_version":false,
- "pinning_version":"2019.05.31",
+ "new_version":"2.7.0",
+ "pinning_version":"2019.09.25",
  "raw_meta_yaml":"{% set name = \"ldas-tools-diskcacheAPI\" %}\n{% set version = \"2.6.3\" %}\n{% set sha256 = \"7dca15fbb47d915fb40c75ca990c72ffe622042fa2b625caacb0888115b1f8c7\" %}\n\n{% set ldas_tools_al_version = \"2.6.2\" %}\n{% set ldas_tools_ldasgen_version = \"2.6.3\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  fn: {{ name }}-{{ version }}.tar.gz\n  url: http://software.ligo.org/lscsoft/source/{{ name }}-{{ version }}.tar.gz\n  sha256: {{ sha256 }}\n\nbuild:\n  number: 1\n  skip: true  # [win]\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n    - pkg-config  # [not win]\n    - make  # [not win]\n  host:\n    - boost-cpp\n    - ldas-tools-al >={{ ldas_tools_al_version }}\n    - ldas-tools-ldasgen >={{ ldas_tools_ldasgen_version }}\n  run:\n    - ldas-tools-al >={{ ldas_tools_al_version }}\n    - ldas-tools-ldasgen >={{ ldas_tools_ldasgen_version }}\n\ntest:\n  commands:\n    # check executables\n    - diskcache --help\n    # check libraries\n    - conda inspect linkages -p $PREFIX $PKG_NAME  # [not win]\n    - conda inspect objects -p $PREFIX $PKG_NAME  # [osx]\n\nabout:\n  home: https://wiki.ligo.org/Computing/DASWG/LDASTools\n  doc_url: https://ldastools.docs.ligo.org/LDAS_Tools/Beta/doc/ldas-tools-diskcacheAPI/diskcache/html/\n  dev_url: https://git.ligo.org/ldastools/LDAS_Tools\n  license: GPLv2\n  license_family: GPL\n  license_file: COPYING\n  summary: LDAS tools diskcacheAPI library\n  description: |\n    LDAS tools diskcacheAPI library. This package provides the runtime\n    libraries and executables but does not provide the systemd\n    infrastructure to run diskcache as a service.\n\nextra:\n  recipe-maintainers:\n    - duncanmmacleod\n    - emaros\n",
  "req":{
   "__set__":true,
@@ -133,7 +150,7 @@
    "pkg-config"
   ]
  },
- "smithy_version":"3.3.4",
+ "smithy_version":"3.4.8",
  "url":"http://software.ligo.org/lscsoft/source/ldas-tools-diskcacheAPI-2.6.3.tar.gz",
  "version":"2.6.3"
 }
