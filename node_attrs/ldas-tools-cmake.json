@@ -98,6 +98,23 @@
     "migrator_version",
     "version"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/321942135.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"Version",
+    "migrator_version":0,
+    "version":"1.1.0"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "version"
+   ]
   }
  ],
  "bad":false,
@@ -167,7 +184,7 @@
   }
  },
  "name":"ldas-tools-cmake",
- "new_version":"1.0.8",
+ "new_version":"1.1.0",
  "pinning_version":"2019.09.25",
  "raw_meta_yaml":"{% set name = \"ldas-tools-cmake\" %}\n{% set version = \"1.0.7\" %}\n{% set sha256 = \"2e6f77e744aa4a0ab7ab32b08693e9bcc4ef022e352f28953c4678df4b3c9eba\" %}\n\npackage:\n  name: {{ name }}\n  version: {{ version }}\n\nsource:\n  fn: {{ name }}-{{ version }}.tar.gz\n  url: http://software.ligo.org/lscsoft/source/{{ name }}-{{ version }}.tar.gz\n  sha256: {{ sha256 }}\n\nbuild:\n  number: 0\n\nrequirements:\n  build:\n    - cmake >=3.6\n    - pkg-config  # [not win]\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n\ntest:\n  commands:\n    - exit $(test -f ${PREFIX}/share/ldas-tools/cmake/Modules/LDASToolsInstallDirs.cmake)  # [not win]\n    - exit $(test -f ${PREFIX}/share/ldas-tools/cmake/Modules/Autotools/ArchiveX/cx_ldas_pkg_check.cmake)  # [not win]\n    - exit $(test -f ${PREFIX}/lib/pkgconfig/ldastoolscmake.pc)  # [not win]\n    - if not exist %LIBRARY_PREFIX%\\share\\ldas-tools\\cmake\\Modules\\LDASToolsInstallDirs.cmake exit 1  # [win]\n    - if not exist %LIBRARY_PREFIX%\\share\\ldas-tools\\cmake\\Modules\\Autotools\\ArchiveX\\cx_ldas_pkg_check.cmake exit 1  # [win]\n\nabout:\n  home: https://git.ligo.org/ldastools/LDAS_Tools\n  license: GPLv2+\n  license_family: GPL\n  license_file: '{{ environ[\"RECIPE_DIR\"] }}/COPYING'\n  summary: CMake functions used by LDAS Tools\n\nextra:\n  recipe-maintainers:\n    - duncanmmacleod\n    - emaros\n",
  "req":{

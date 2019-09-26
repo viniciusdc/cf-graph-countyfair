@@ -35,22 +35,7 @@
    ]
   }
  ],
- "bad":{
-  "exception":"local variable 'hash' referenced before assignment",
-  "traceback":[
-   "Traceback (most recent call last):",
-   "  File \"/root/repo/cf-scripts/conda_forge_tick/auto_tick.xsh\", line 676, in main",
-   "    hash_type=attrs.get('hash_type', 'sha256'))",
-   "  File \"/root/repo/cf-scripts/conda_forge_tick/auto_tick.xsh\", line 98, in run",
-   "    migrate_return = migrator.migrate(recipe_dir, attrs, **kwargs)",
-   "  File \"/root/repo/cf-scripts/conda_forge_tick/migrators.xsh\", line 392, in migrate",
-   "    new_patterns = self.get_hash_patterns('meta.yaml', urls, hash_type)",
-   "  File \"/root/repo/cf-scripts/conda_forge_tick/migrators.xsh\", line 332, in get_hash_patterns",
-   "    n = '{}: {}'.format(hash_type, hash)",
-   "UnboundLocalError: local variable 'hash' referenced before assignment",
-   ""
-  ]
- },
+ "bad":false,
  "conda-forge.yml":{
   "compiler_stack":"comp7",
   "max_py_ver":"37",
@@ -64,15 +49,19 @@
  "meta_yaml":{
   "about":{
    "home":"https://CRAN.R-project.org/package=RPMG",
-   "license":"GPL (>= 2)",
-   "license_family":"GPL3",
-   "license_file":"/lib/R/share/licenses/GPL-3",
+   "license":"GPL-2",
+   "license_family":"GPL2",
+   "license_file":[
+    "/lib/R/share/licenses/GPL-2",
+    "/lib/R/share/licenses/GPL-2",
+    "/lib/R/share/licenses/GPL-2"
+   ],
    "summary":"Really Poor Man's Graphical User Interface, used to create interactive R analysis sessions with simple R commands."
   },
   "build":{
    "merge_build_host":true,
    "noarch":"generic",
-   "number":"1001",
+   "number":"0",
    "rpaths":[
     "lib/R/lib/",
     "lib/",
@@ -91,7 +80,7 @@
   },
   "package":{
    "name":"r-rpmg",
-   "version":"2.2_2"
+   "version":"2.2_3"
   },
   "requirements":{
    "build":null,
@@ -107,15 +96,14 @@
    ]
   },
   "source":{
-   "fn":"RPMG_2.2-2.tar.gz",
-   "sha256":"01fd9d2149204090e1280b12b39fb94ef9d54470d9c70177bb6c9087ac87d8c3",
+   "sha256":"74d5bada6a51d280296cb36fae4938c16ba9ed2fa37f3bfb60cf7c541c5b22b6",
    "url":[
-    "https://cran.r-project.org/src/contrib/RPMG_2.2-2.tar.gz",
-    "https://cran.r-project.org/src/contrib/Archive/RPMG/RPMG_2.2-2.tar.gz",
-    "https://cran.r-project.org/src/contrib/RPMG_2.2-2.tar.gz",
-    "https://cran.r-project.org/src/contrib/Archive/RPMG/RPMG_2.2-2.tar.gz",
-    "https://cran.r-project.org/src/contrib/RPMG_2.2-2.tar.gz",
-    "https://cran.r-project.org/src/contrib/Archive/RPMG/RPMG_2.2-2.tar.gz"
+    "https://cran.r-project.org/src/contrib/RPMG_2.2-3.tar.gz",
+    "https://cran.r-project.org/src/contrib/Archive/RPMG/RPMG_2.2-3.tar.gz",
+    "https://cran.r-project.org/src/contrib/RPMG_2.2-3.tar.gz",
+    "https://cran.r-project.org/src/contrib/Archive/RPMG/RPMG_2.2-3.tar.gz",
+    "https://cran.r-project.org/src/contrib/RPMG_2.2-3.tar.gz",
+    "https://cran.r-project.org/src/contrib/Archive/RPMG/RPMG_2.2-3.tar.gz"
    ]
   },
   "test":{
@@ -129,7 +117,7 @@
  "name":"r-rpmg",
  "new_version":"2.2_3",
  "pinning_version":"2019.07.15",
- "raw_meta_yaml":"{% set version = '2.2-2' %}\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-rpmg\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  fn: RPMG_{{ version }}.tar.gz\n  url:\n    - {{ cran_mirror }}/src/contrib/RPMG_{{ version }}.tar.gz\n    - {{ cran_mirror }}/src/contrib/Archive/RPMG/RPMG_{{ version }}.tar.gz\n  sha256: 01fd9d2149204090e1280b12b39fb94ef9d54470d9c70177bb6c9087ac87d8c3\n\nbuild:\n  noarch: generic\n  merge_build_host: True  # [win]\n  number: 1001\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - {{posix}}zip               # [win]\n  host:\n    - r-base\n  run:\n    - r-base\n\ntest:\n  commands:\n    - $R -e \"library('RPMG')\"           # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('RPMG')\\\"\"  # [win]\n\nabout:\n  home: https://CRAN.R-project.org/package=RPMG\n  license: GPL (>= 2)\n  summary: Really Poor Man's Graphical User Interface, used to create interactive R analysis\n    sessions with simple R commands.\n  license_family: GPL3\n  license_file: '{{ environ[\"PREFIX\"] }}/lib/R/share/licenses/GPL-3'\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n",
+ "raw_meta_yaml":"{% set version = '2.2-3' %}\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-rpmg\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  url:\n    - {{ cran_mirror }}/src/contrib/RPMG_{{ version }}.tar.gz\n    - {{ cran_mirror }}/src/contrib/Archive/RPMG/RPMG_{{ version }}.tar.gz\n  sha256: 74d5bada6a51d280296cb36fae4938c16ba9ed2fa37f3bfb60cf7c541c5b22b6\n\nbuild:\n  merge_build_host: True  # [win]\n  number: 0\n  noarch: generic\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - {{posix}}zip               # [win]\n  host:\n    - r-base\n  run:\n    - r-base\n\ntest:\n  commands:\n    - $R -e \"library('RPMG')\"           # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('RPMG')\\\"\"  # [win]\n\nabout:\n  home: https://CRAN.R-project.org/package=RPMG\n  license: GPL-2\n  summary: Really Poor Man's Graphical User Interface, used to create interactive R analysis\n    sessions with simple R commands.\n  license_family: GPL2\n  license_file:\n    - '{{ environ[\"PREFIX\"] }}/lib/R/share/licenses/GPL-2'\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n\n# Package: RPMG\n# Type: Package\n# Title: Graphical User Interface (GUI) for Interactive R Analysis Sessions\n# Version: 2.2-3\n# Date: 2019-09-20\n# Authors@R: c(person(given=\"Jonathan M.\", family=\"Lees\", role = c(\"aut\", \"cre\"),email = \"jonathan.lees@unc.edu\"), person(\"Jake\", \"Anderson\", role = \"ctb\", email = \"ajakef@gmail.com\"))\n# Author: Jonathan M. Lees [aut, cre], Jake Anderson [ctb]\n# Maintainer: Jonathan M. Lees <jonathan.lees@unc.edu>\n# Description: Really Poor Man's Graphical User Interface, used to create interactive R analysis sessions with simple R commands.\n# License: GPL (>= 2)\n# Packaged: 2019-09-20 14:34:59 UTC; lees\n# NeedsCompilation: no\n# Repository: CRAN\n# Date/Publication: 2019-09-23 10:30:02 UTC\n",
  "req":{
   "__set__":true,
   "elements":[
@@ -145,5 +133,5 @@
   "https://cran.r-project.org/src/contrib/RPMG_2.2-2.tar.gz",
   "https://cran.r-project.org/src/contrib/Archive/RPMG/RPMG_2.2-2.tar.gz"
  ],
- "version":"2.2_2"
+ "version":"2.2_3"
 }
