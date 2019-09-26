@@ -50,6 +50,23 @@
     "migrator_version",
     "version"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/321845776.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"Version",
+    "migrator_version":0,
+    "version":"2.6.7"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "version"
+   ]
   }
  ],
  "bad":false,
@@ -239,7 +256,7 @@
  },
  "name":"ldas-tools-al-swig",
  "new_version":"2.6.7",
- "pinning_version":"2018.11.27",
+ "pinning_version":"2019.09.25",
  "raw_meta_yaml":"{% set name = \"ldas-tools-al-swig\" %}\n{% set version = \"2.6.6\" %}\n{% set sha256 = \"18d242fea5719f9844f7515c660396c2bfa38f5546b0449ebe288e1237eb3e0c\" %}\n{% set ldas_tools_cmake_version = \"1.0.5\" %}\n\npackage:\n  name: {{ name }}\n  version: {{ version }}\n\nsource:\n  fn: {{ name }}-{{ version }}.tar.gz\n  url: http://software.ligo.org/lscsoft/source/{{ name }}-{{ version }}.tar.gz\n  sha256: {{ sha256 }}\n\nbuild:\n  number: 1001\n  skip: true  # [win]\n\nrequirements:\n  build:\n    - {{ compiler('cxx') }}\n    - cmake >=3.6\n    - pkg-config  # [not win]\n    - make  # [not win]\n    - swig\n  host:\n    - ldas-tools-cmake >={{ ldas_tools_cmake_version }}\n\ntest:\n  commands:\n    - test -f ${PREFIX}/include/ldastoolsal/gpstime.i  # [not win]\n\noutputs:\n  - name: ldas-tools-al-swig\n\n  - name: python-ldas-tools-al\n    script: install-python.sh\n    build:\n      activate_in_script: true\n    requirements:\n      build:\n        - {{ compiler('cxx') }}\n        - cmake >=3.6\n        - pkg-config  # [not win]\n        - make  # [not win]\n        - swig\n      host:\n        - ldas-tools-cmake >={{ ldas_tools_cmake_version }}\n        - python\n      run:\n        - python\n    test:\n      imports:\n        - LDAStools\n    about:\n      home: https://wiki.ligo.org/Computing/LDASTools\n      dev_url: https://git.ligo.org/ldastools/LDAS_Tools\n      license: GPLv3\n      license_family: GPL\n      license_file: COPYING\n      summary: Python bindings for the LDAS Tools abstraction toolkit\n\nabout:\n  home: https://wiki.ligo.org/Computing/LDASTools\n  dev_url: https://git.ligo.org/ldastools/LDAS_Tools\n  license: GPLv3\n  license_family: GPL\n  license_file: COPYING\n  summary: SWIG bindings for the LDAS Tools abstraction toolkit\n\nextra:\n  recipe-maintainers:\n    - duncanmmacleod\n    - emaros\n",
  "req":{
   "__set__":true,
@@ -253,7 +270,7 @@
    "swig"
   ]
  },
- "smithy_version":"3.1.12",
+ "smithy_version":"3.4.8",
  "url":"http://software.ligo.org/lscsoft/source/ldas-tools-al-swig-2.6.6.tar.gz",
  "version":"2.6.6"
 }
