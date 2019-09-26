@@ -279,6 +279,23 @@
     "migrator_version",
     "version"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/321555544.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"Version",
+    "migrator_version":0,
+    "version":"0.5.8"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "version"
+   ]
   }
  ],
  "bad":false,
@@ -390,8 +407,8 @@
   }
  },
  "name":"bilby",
- "new_version":"0.5.7",
- "pinning_version":"2019.09.08",
+ "new_version":"0.5.8",
+ "pinning_version":"2019.09.25",
  "raw_meta_yaml":"{% set name = \"bilby\" %}\n{% set version = \"0.5.7\" %}\n\npackage:\n  name: \"{{ name|lower }}\"\n  version: \"{{ version }}\"\n\nsource:\n  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz\n  sha256: d9a41f9831224463ca5b3d64810a03df2e336cbd403eeece715e924505484716\n\nbuild:\n  number: 0\n  noarch: python\n  script: \"{{ PYTHON }} -m pip install . --no-deps --ignore-installed -vvv \"\n  entry_points:\n    - bilby_plot=cli_bilby.plot_multiple_posteriors:main\n\nrequirements:\n  host:\n    - python\n    - pip\n    - setuptools\n  run:\n    - corner\n    - deepdish\n    - dill\n    - dynesty\n    - future\n    - matplotlib >=2.0\n    - numpy >=1.9\n    - pandas\n    - scipy\n\ntest:\n  commands:\n    - setx MPLBACKEND \"Agg\"  # [win]\n    - export MPLBACKEND=\"Agg\"  # [unix]\n    - bilby_plot --help\n    - python -c \"import bilby\"\n    - python -c \"import bilby.core\"\n    - python -c \"import bilby.gw\"\n    - python -c \"import bilby.hyper\"\n    - python -c \"import cli_bilby\"\n\nabout:\n  home: https://git.ligo.org/lscsoft/bilby\n  license: MIT\n  license_family: MIT\n  license_file: '{{ environ[\"RECIPE_DIR\"] }}/LICENSE.md'\n  summary: A user-friendly Bayesian inference library\n\nextra:\n  recipe-maintainers:\n    - duncanmmacleod\n    - GregoryAshton\n",
  "req":{
   "__set__":true,
