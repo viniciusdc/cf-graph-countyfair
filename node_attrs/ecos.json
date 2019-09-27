@@ -50,6 +50,23 @@
     "migrator_version",
     "version"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/322356276.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"ArchRebuild",
+    "migrator_version":1,
+    "name":"aarch64 and ppc64le addition"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "name"
+   ]
   }
  ],
  "bad":false,
@@ -141,7 +158,7 @@
  },
  "name":"ecos",
  "new_version":"2.0.7.post1",
- "pinning_version":"2018.11.13",
+ "pinning_version":"2019.09.27",
  "raw_meta_yaml":"{% set name = \"ecos\" %}\n{% set version = \"2.0.7\" %}\n{% set sha256 = \"5f7b57e4d6b5b655f551b1ba57966fc927ea0efd226d3c1f9519f9fbb21bf11d\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz\n  sha256: {{ sha256 }}\n\nbuild:\n  number: 1000\n  script: python -m pip install --no-deps --ignore-installed .\n  skip: true  # figure out Windows build later...  # [win]\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n  host:\n    - python\n    - pip\n    - numpy\n  run:\n    - python\n    - {{ pin_compatible('numpy') }}\n    - scipy >=0.9\n\ntest:\n  imports:\n    - ecos\n    - _ecos\n  files:\n    - test_interface_bb.py  # copied from repo; isn't in the sdist\n  commands:\n    - python test_interface_bb.py\n\nabout:\n  home: http://www.embotech.com/ECOS\n  license: GPL-3.0\n  license_family: GPL\n  license_file: LICENSE  # in recipe for now; https://github.com/embotech/ecos-python/pull/15\n  summary: 'Python interface for ECOS, a lightweight conic solver for second-order cone programming'\n  dev_url: https://github.com/embotech/ecos-python\n\nextra:\n  recipe-maintainers:\n    - dougalsutherland\n",
  "req":{
   "__set__":true,
@@ -154,7 +171,7 @@
    "scipy"
   ]
  },
- "smithy_version":"3.1.12",
+ "smithy_version":"3.4.8",
  "url":"https://pypi.io/packages/source/e/ecos/ecos-2.0.7.tar.gz",
  "version":"2.0.7"
 }
