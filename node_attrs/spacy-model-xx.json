@@ -135,7 +135,7 @@
   }
  },
  "name":"spacy-model-xx",
- "new_version":"xx_ent_wiki_sm-2.1.0",
+ "new_version":"xx_ent_wiki_sm-2.2.0",
  "raw_meta_yaml":"{% set prefix = \"spacy-model-\" %}\n{% set lang = \"xx\" %}\n{% set name = lang + \"_ent_wiki\" %}\n{% set version = \"2.0.0\" %}\n\npackage:\n  name: {{ prefix }}{{ lang|lower }}\n  version: {{ version }}\n\nsource:\n  - folder: sm\n    url: https://github.com/explosion/spacy-models/releases/download/{{ name }}_sm-{{ version }}/{{ name }}_sm-{{ version }}.tar.gz\n    sha256: 65d87a47bdde75d94879a1e6fba028d14f254e17b2692f170fe34a674dad8355\n\nbuild:\n  noarch: python\n  number: 0\n\ntest:\n  commands:\n    - echo \"make lint happy\"\n\noutputs:\n  - name: {{prefix}}{{ name }}_{{ size }}\n    script: build.sh  # [unix]\n    script: build.bat  # [win]\n    requirements:\n      host:\n        - python\n        - pip\n      run:\n        - python\n        - setuptools\n    test:\n      imports:\n        - {{ name }}_{{ size }}\n      requires:\n        - spacy {{ version.split('.')[0] }}.*\n      commands:\n        - python -c \"import {{ name }}_{{ size }} as m; m.load()\"\n        - python -c \"import spacy; spacy.load('{{ name }}_{{ size }}')\"\n\nabout:\n  home: https://spacy.io\n  license: CC BY-SA 3.0\n  summary: 'Multi-lingual CNN trained on Nothman et al. (2013) Wikipedia corpus.'\n\n  doc_url: https://spacy.io/models/xx\n\nextra:\n  recipe-maintainers:\n    - JIVJGFJZKF\n",
  "req":{
   "__set__":true,

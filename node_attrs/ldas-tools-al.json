@@ -135,15 +135,19 @@
  "meta_yaml":{
   "about":{
    "dev_url":"https://git.ligo.org/ldastools/LDAS_Tools",
-   "doc_url":"https://ldastools.docs.ligo.org/LDAS_Tools/Beta/doc/ldas-tools-al/ldastoolsal/html/",
-   "home":"https://ldastools.docs.ligo.org/LDAS_Tools/Beta/doc/ldas-tools-al/ldastoolsal/html/",
-   "license":"GPLv2",
+   "home":"https://wiki.ligo.org/Computing/LDASTools",
+   "license":"GPL-2.0-or-later",
    "license_family":"GPL",
    "license_file":"COPYING",
    "summary":"LDAS tools abstraction toolkit"
   },
   "build":{
-   "number":"1003",
+   "ignore_run_exports":[
+    "openssl",
+    "openssl",
+    "openssl"
+   ],
+   "number":"0",
    "skip":true
   },
   "extra":{
@@ -158,77 +162,64 @@
   },
   "package":{
    "name":"ldas-tools-al",
-   "version":"2.6.2"
+   "version":"2.6.3"
   },
   "requirements":{
    "build":[
-    "pkg-config",
-    "make",
     "c_compiler_stub",
     "cxx_compiler_stub",
-    "pkg-config",
-    "make",
+    "cmake >=3.6",
     "c_compiler_stub",
     "cxx_compiler_stub",
+    "cmake >=3.6",
     "pkg-config",
-    "make",
     "c_compiler_stub",
-    "cxx_compiler_stub"
+    "cxx_compiler_stub",
+    "cmake >=3.6",
+    "pkg-config"
    ],
    "host":[
-    "zlib",
-    "swig",
     "boost-cpp",
+    "ldas-tools-cmake >=1.0.8",
     "openssl",
-    "zlib",
-    "swig",
     "boost-cpp",
+    "ldas-tools-cmake >=1.0.8",
     "openssl",
-    "zlib",
-    "swig",
     "boost-cpp",
-    "openssl"
-   ],
-   "run":[
-    "zlib",
-    "openssl",
-    "zlib",
-    "openssl",
-    "zlib",
+    "ldas-tools-cmake >=1.0.8",
     "openssl"
    ]
   },
   "source":{
-   "fn":"ldas-tools-al-2.6.2.tar.gz",
-   "sha256":"c0dd009ba8e2cce9c627bf442b38460f075fc67b9186de7ba31921b1c32c2a66",
-   "url":"http://software.ligo.org/lscsoft/source/ldas-tools-al-2.6.2.tar.gz"
+   "sha256":"2ab6837b67960fd44756be212c71e4cc37981052b7129d9cd1c9f6e08cae7413",
+   "url":"http://software.ligo.org/lscsoft/source/ldas-tools-al-2.6.3.tar.gz"
   },
   "test":{
    "commands":[
-    "test -f ${PREFIX}/include/ldastoolsal/ldas_types.h",
-    "test -f ${PREFIX}/lib/libldastoolsal${SHLIB_EXT}",
-    "test -f ${PREFIX}/lib/pkgconfig/ldastoolsal.pc"
+    "pkg-config --print-errors --modversion ldastoolsal"
+   ],
+   "requires":[
+    "pkg-config"
    ]
   }
  },
  "name":"ldas-tools-al",
  "new_version":"2.6.3",
  "pinning_version":"2019.09.25",
- "raw_meta_yaml":"{% set name = \"ldas-tools-al\" %}\n{% set version = \"2.6.2\" %}\n{% set sha256 = \"c0dd009ba8e2cce9c627bf442b38460f075fc67b9186de7ba31921b1c32c2a66\" %}\n\npackage:\n  name: {{ name }}\n  version: {{ version }}\n\nsource:\n  fn: {{ name }}-{{ version }}.tar.gz\n  url: http://software.ligo.org/lscsoft/source/{{ name }}-{{ version }}.tar.gz\n  sha256: {{ sha256 }}\n\nbuild:\n  number: 1003\n  skip: true  # [win]\n\nrequirements:\n  build:\n    - pkg-config\n    - make\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n  host:\n    - zlib\n    - swig\n    - boost-cpp\n    - openssl\n  run:\n    - zlib\n    - openssl\n\ntest:\n  commands:\n    - test -f ${PREFIX}/include/ldastoolsal/ldas_types.h  # [not win]\n    - test -f ${PREFIX}/lib/libldastoolsal${SHLIB_EXT}  # [not win]\n    - test -f ${PREFIX}/lib/pkgconfig/ldastoolsal.pc  # [not win]\n\nabout:\n  home: https://ldastools.docs.ligo.org/LDAS_Tools/Beta/doc/ldas-tools-al/ldastoolsal/html/\n  doc_url: https://ldastools.docs.ligo.org/LDAS_Tools/Beta/doc/ldas-tools-al/ldastoolsal/html/\n  dev_url: https://git.ligo.org/ldastools/LDAS_Tools\n  license: GPLv2\n  license_family: GPL\n  license_file: COPYING\n  summary: LDAS tools abstraction toolkit\n\nextra:\n  recipe-maintainers:\n    - duncanmmacleod\n    - emaros\n",
+ "raw_meta_yaml":"{% set name = \"ldas-tools-al\" %}\n{% set version = \"2.6.3\" %}\n{% set sha256 = \"2ab6837b67960fd44756be212c71e4cc37981052b7129d9cd1c9f6e08cae7413\" %}\n\n# dependencies\n{% set ldas_tools_cmake_version = \"1.0.8\" %}\n\npackage:\n  name: \"{{ name }}\"\n  version: \"{{ version }}\"\n\nsource:\n  url: \"http://software.ligo.org/lscsoft/source/{{ name }}-{{ version }}.tar.gz\"\n  sha256: \"{{ sha256 }}\"\n\nbuild:\n  number: 0\n  skip: true  # [win]\n  ignore_run_exports:\n    # not sure we need openssl, but the cmake configure demands it\n    - openssl\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n    - cmake >=3.6\n    - pkg-config  # [unix]\n  host:\n    - boost-cpp\n    - ldas-tools-cmake >={{ ldas_tools_cmake_version }}\n    - openssl\n\ntest:\n  requires:\n    - pkg-config  # [unix]\n  commands:\n    - pkg-config --print-errors --modversion ldastoolsal  # [unix]\n\nabout:\n  home: \"https://wiki.ligo.org/Computing/LDASTools\"\n  dev_url: \"https://git.ligo.org/ldastools/LDAS_Tools\"\n  license: \"GPL-2.0-or-later\"\n  license_family: \"GPL\"\n  license_file: \"COPYING\"\n  summary: \"LDAS tools abstraction toolkit\"\n\nextra:\n  recipe-maintainers:\n    - duncanmmacleod\n    - emaros\n",
  "req":{
   "__set__":true,
   "elements":[
    "boost-cpp",
    "c_compiler_stub",
+   "cmake",
    "cxx_compiler_stub",
-   "make",
+   "ldas-tools-cmake",
    "openssl",
-   "pkg-config",
-   "swig",
-   "zlib"
+   "pkg-config"
   ]
  },
  "smithy_version":"3.4.8",
  "url":"http://software.ligo.org/lscsoft/source/ldas-tools-al-2.6.2.tar.gz",
- "version":"2.6.2"
+ "version":"2.6.3"
 }
