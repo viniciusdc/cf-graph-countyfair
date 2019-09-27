@@ -35,40 +35,7 @@
    ]
   }
  ],
- "bad":{
-  "code":404,
-  "exception":"HTTP Error 404: Not Found",
-  "traceback":[
-   "Traceback (most recent call last):",
-   "  File \"/root/repo/cf-scripts/conda_forge_tick/auto_tick.xsh\", line 676, in main",
-   "    hash_type=attrs.get('hash_type', 'sha256'))",
-   "  File \"/root/repo/cf-scripts/conda_forge_tick/auto_tick.xsh\", line 98, in run",
-   "    migrate_return = migrator.migrate(recipe_dir, attrs, **kwargs)",
-   "  File \"/root/repo/cf-scripts/conda_forge_tick/migrators.xsh\", line 392, in migrate",
-   "    new_patterns = self.get_hash_patterns('meta.yaml', urls, hash_type)",
-   "  File \"/root/repo/cf-scripts/conda_forge_tick/migrators.xsh\", line 322, in get_hash_patterns",
-   "    hash = hash_url(url, hash_type)",
-   "  File \"/opt/conda/envs/run_env/lib/python3.7/site-packages/rever/tools.xsh\", line 207, in hash_url",
-   "    for b in stream_url_progress(url, verb='Hashing', quiet=quiet):",
-   "  File \"/opt/conda/envs/run_env/lib/python3.7/site-packages/rever/tools.xsh\", line 179, in stream_url_progress",
-   "    with urllib.request.urlopen(url) as f:",
-   "  File \"/opt/conda/envs/run_env/lib/python3.7/urllib/request.py\", line 222, in urlopen",
-   "    return opener.open(url, data, timeout)",
-   "  File \"/opt/conda/envs/run_env/lib/python3.7/urllib/request.py\", line 531, in open",
-   "    response = meth(req, response)",
-   "  File \"/opt/conda/envs/run_env/lib/python3.7/urllib/request.py\", line 641, in http_response",
-   "    'http', request, response, code, msg, hdrs)",
-   "  File \"/opt/conda/envs/run_env/lib/python3.7/urllib/request.py\", line 569, in error",
-   "    return self._call_chain(*args)",
-   "  File \"/opt/conda/envs/run_env/lib/python3.7/urllib/request.py\", line 503, in _call_chain",
-   "    result = func(*args)",
-   "  File \"/opt/conda/envs/run_env/lib/python3.7/urllib/request.py\", line 649, in http_error_default",
-   "    raise HTTPError(req.full_url, code, msg, hdrs, fp)",
-   "urllib.error.HTTPError: HTTP Error 404: Not Found",
-   ""
-  ],
-  "url":"https://github.com/fribidi/fribidi/releases/download/v1.0.6/fribidi-1.0.6.tar.bz2"
- },
+ "bad":false,
  "conda-forge.yml":{
   "compiler_stack":"comp7",
   "max_py_ver":"37",
@@ -147,7 +114,7 @@
   }
  },
  "name":"fribidi",
- "new_version":"1.0.6",
+ "new_version":"1.0.5",
  "pinning_version":"2019.07.01",
  "raw_meta_yaml":"{% set version = \"1.0.5\" %}\n{% set sha256 = \"6a64f2a687f5c4f203a46fa659f43dd43d1f8b845df8d723107e8a7e6158e4ce\" %}\n\npackage:\n  name: fribidi\n  version:  {{ version }}\n\nsource:\n   url: https://github.com/fribidi/fribidi/releases/download/v{{ version }}/fribidi-{{ version }}.tar.bz2\n   sha256: {{ sha256 }}\n   patches:\n     - meson-rpaths.patch\n\nbuild:\n  number: 1002\n  skip: true  # [win]\n  run_exports:\n    - {{ pin_subpackage('fribidi') }}\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - meson\n    - ninja\n\ntest:\n  commands:\n    - conda inspect linkages -p $PREFIX $PKG_NAME  # [not win]\n    - conda inspect objects -p $PREFIX $PKG_NAME  # [osx]\n    - fribidi -h\n\nabout:\n  home: https://github.com/fribidi/fribidi\n  license: LGPL-2.1\n  license_file: COPYING\n  summary: The Free Implementation of the Unicode Bidirectional Algorithm.\n  description: |\n    One of the missing links stopping the penetration of free software in Middle\n    East is the lack of support for the Arabic and Hebrew alphabets. In order to\n    have proper Arabic and Hebrew support, the bidi algorithm needs to be\n    implemented. It is our hope that this library will stimulate more free\n    software in the Middle Eastern countries.\n  doc_url: https://github.com/fribidi/fribidi\n  dev_url: https://github.com/fribidi/fribidi\n\nextra:\n  recipe-maintainers:\n    - msarahan\n    - mariusvniekerk\n",
  "req":{
