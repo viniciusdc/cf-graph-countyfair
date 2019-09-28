@@ -13,7 +13,7 @@
    "summary":"A ROS-independent package for logging that seamlessly pipes into rosconsole/rosout for ROS-dependent packages."
   },
   "build":{
-   "number":"0",
+   "number":"1",
    "skip":true
   },
   "extra":{
@@ -52,8 +52,8 @@
   },
   "test":{
    "commands":[
-    "pkg-config --modversion console_bridge",
-    "test -f $PREFIX/lib/libconsole_bridge$SHLIB_EXT",
+    "if exist %PREFIX%\\\\Library\\\\CMake\\\\console_bridge-targets.cmake (exit 0) else (exit 1)",
+    "if exist %PREFIX%\\\\Library\\\\CMake\\\\console_bridge-config.cmake (exit 0) else (exit 1)",
     "pkg-config --modversion console_bridge",
     "test -f $PREFIX/lib/libconsole_bridge$SHLIB_EXT",
     "pkg-config --modversion console_bridge",
@@ -68,7 +68,7 @@
  },
  "name":"console_bridge",
  "new_version":"0.4.3",
- "raw_meta_yaml":"{% set name = \"console_bridge\" %}\n{% set version = \"0.4.3\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  url: https://github.com/ros/{{ name }}/archive/{{ version }}.tar.gz\n  sha256: 9f024a38f0947ed9fa67f58829980c2d90d84740e6de20d75cb00866f07a7a0b\n\nbuild:\n  number: 0\n  skip: true  # [win]\n\nrequirements:\n  build:\n    - {{ compiler('cxx') }}\n    - cmake\n    - make\n\ntest:\n  requires:\n    - pkg-config\n  commands:\n    - pkg-config --modversion {{ name }}\n    - test -f $PREFIX/lib/lib{{ name }}$SHLIB_EXT\n\nabout:\n  home: http://github.com/ros/console_bridge\n  license: BSD-3-Clause\n  license_family: BSD\n  license_file: LICENSE\n  summary: 'A ROS-independent package for logging that seamlessly pipes into rosconsole/rosout for ROS-dependent packages.'\n  dev_url: https://github.com/ros/console_bridge\n\nextra:\n  recipe-maintainers:\n    - jcarpent\n    - wolfv\n    - lesteve\n",
+ "raw_meta_yaml":"{% set name = \"console_bridge\" %}\n{% set version = \"0.4.3\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  url: https://github.com/ros/{{ name }}/archive/{{ version }}.tar.gz\n  sha256: 9f024a38f0947ed9fa67f58829980c2d90d84740e6de20d75cb00866f07a7a0b\n\nbuild:\n  number: 1\n  skip: true  # [win and vc<14]\n\nrequirements:\n  build:\n    - {{ compiler('cxx') }}\n    - cmake\n    - make\n\ntest:\n  requires:\n    - pkg-config\n  commands:\n    - pkg-config --modversion {{ name }}  # [unix or osx]\n    - test -f $PREFIX/lib/lib{{ name }}$SHLIB_EXT  # [unix or osx]\n    - if exist %PREFIX%\\\\Library\\\\CMake\\\\console_bridge-targets.cmake (exit 0) else (exit 1)  # [win]\n    - if exist %PREFIX%\\\\Library\\\\CMake\\\\console_bridge-config.cmake (exit 0) else (exit 1)  # [win]\n\nabout:\n  home: http://github.com/ros/console_bridge\n  license: BSD-3-Clause\n  license_family: BSD\n  license_file: LICENSE\n  summary: 'A ROS-independent package for logging that seamlessly pipes into rosconsole/rosout for ROS-dependent packages.'\n  dev_url: https://github.com/ros/console_bridge\n\nextra:\n  recipe-maintainers:\n    - jcarpent\n    - wolfv\n    - lesteve\n",
  "req":{
   "__set__":true,
   "elements":[
