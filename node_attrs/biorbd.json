@@ -50,6 +50,23 @@
     "migrator_version",
     "version"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/322550663.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"Version",
+    "migrator_version":0,
+    "version":"1.0.0"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "version"
+   ]
   }
  ],
  "bad":false,
@@ -169,8 +186,8 @@
   }
  },
  "name":"biorbd",
- "new_version":false,
- "pinning_version":"2019.06.18",
+ "new_version":"1.0.0",
+ "pinning_version":"2019.09.27",
  "raw_meta_yaml":"{% set name = \"biorbd\" %}\n{% set version = \"0.1.3\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  url: https://github.com/pyomeca/{{ name }}/archive/Release_{{ version }}.tar.gz\n  sha256: 5c5e4070c250ce74b53f45f9f3235bbeb6a264405723b7ba6b546799631bb106\n  \nbuild:\n  number: 0\n  skip: True  # [win and vc<14]\n  skip: True  # [py<35]\n  rpaths:\n    - lib/\n    - lib/{{ name }}/\n\nrequirements:\n  build:\n    - {{ compiler('cxx') }}\n    - cmake\n    - make  # [unix]\n  host:\n    - libblas\n    - libcblas\n    - boost-cpp\n    - eigen\n    - rbdl\n    - dlib-cpp\n    - python\n    - numpy\n    - swig\n  run:\n    - boost-cpp\n    - eigen\n    - rbdl\n    - dlib-cpp\n    - python\n    - numpy\n\ntest: \n  commands: \n    - test -f $PREFIX/lib/biorbd/libbiorbd$SHLIB_EXT  # [unix] \n    - if not exist %PREFIX%\\\\Lib\\\\biorbd*.lib exit 1  # [win]\n  imports:\n    - biorbd\n\nabout:\n  home: http://github.com/pyomeca/biorbd\n  license: MIT\n  license_family: MIT\n  license_file: LICENSE\n  summary: 'Biomechanical add-ons to the RigidBody Dynamics Library '\n\n  description: |\n    Biomechanical add-ons to the RigidBody Dynamics Library .\n  doc_url: https://github.com/pyomeca/biorbd/\n  dev_url: https://github.com/pyomeca/biorbd/\n\nextra:\n  recipe-maintainers:\n    - pariterre\n",
  "req":{
   "__set__":true,
@@ -189,7 +206,7 @@
    "swig"
   ]
  },
- "smithy_version":"3.3.7",
+ "smithy_version":"3.4.8",
  "url":"https://github.com/pyomeca/biorbd/archive/Release_0.1.3.tar.gz",
  "version":"0.1.3"
 }
