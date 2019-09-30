@@ -195,6 +195,23 @@
     "migrator_version",
     "name"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/322806580.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"Version",
+    "migrator_version":0,
+    "version":"3.12.0"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "version"
+   ]
   }
  ],
  "bad":false,
@@ -327,8 +344,8 @@
   }
  },
  "name":"slepc",
- "new_version":false,
- "pinning_version":"2019.08.22",
+ "new_version":"3.12.0",
+ "pinning_version":"2019.09.27",
  "raw_meta_yaml":"{% set version = \"3.11.2\" %}\n{% set sha256 = \"cd6a73ac0c9f689c12f2987000a7a28fa7df53fdc069fb59a2bb148699e741dd\" %}\n\n{% set version_xy = \".\".join(version.split(\".\")[:2]) %}\n\npackage:\n  name: slepc\n  version: {{version}}\n\nsource:\n  url: http://slepc.upv.es/download/distrib/slepc-{{version}}.tar.gz\n  sha256: {{sha256}}\n\nbuild:\n  skip: true  # [win]\n  number: 1\n  run_exports:\n    - {{ pin_subpackage('slepc', max_pin='x.x') }}\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n    - {{ compiler('fortran') }}\n  host:\n    - libblas\n    - liblapack\n    - python 2.7.*\n    - {{ mpi }}\n    - petsc {{ version_xy }}.*\n    - suitesparse\n  run:\n    - {{ mpi }}\n    - petsc\n    - suitesparse\n\ntest:\n  requires:\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n    - {{ compiler('fortran') }}\n    - pkg-config\n  files:\n    - tests/test10.c\n    - tests/test14f.F\n    - tests/makefile\n  commands:\n    - conda inspect objects  slepc  # [osx]\n    - conda inspect linkages slepc  # [not win]\n    - PKG_CONFIG_PATH=$PREFIX/lib/pkgconfig pkg-config --cflags SLEPc\n    - PKG_CONFIG_PATH=$PREFIX/lib/pkgconfig pkg-config --libs   SLEPc\n\nabout:\n  home: http://slepc.upv.es/\n  summary: 'SLEPc: Scalable Library for Eigenvalue Problem Computations'\n  license: BSD 2-Clause\n  license_file: LICENSE\n  license_family: BSD\n\nextra:\n  recipe-maintainers:\n    - dalcinl\n    - joseeroman\n    - minrk\n",
  "req":{
   "__set__":true,
@@ -343,7 +360,7 @@
    "suitesparse"
   ]
  },
- "smithy_version":"3.4.1",
+ "smithy_version":"3.4.8",
  "url":"http://slepc.upv.es/download/distrib/slepc-3.11.2.tar.gz",
  "version":"3.11.2"
 }

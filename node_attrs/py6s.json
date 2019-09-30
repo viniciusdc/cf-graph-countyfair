@@ -45,12 +45,13 @@
    "home":"http://py6s.rtwilson.com/",
    "license":"LGPL-3.0",
    "license_family":"LGPL",
+   "license_file":"COPYING.LESSER",
    "summary":"A Python interface to the 6S Radiative Transfer Model"
   },
   "build":{
    "noarch":"python",
-   "number":"0",
-   "script":"python -m pip install --no-deps --ignore-installed ."
+   "number":"1",
+   "script":" -m pip install . --no-deps -vv"
   },
   "extra":{
    "recipe-maintainers":[
@@ -67,13 +68,10 @@
    "host":[
     "pip",
     "python",
-    "setuptools",
     "pip",
     "python",
-    "setuptools",
     "pip",
-    "python",
-    "setuptools"
+    "python"
    ],
    "run":[
     "python",
@@ -97,7 +95,6 @@
    ]
   },
   "source":{
-   "fn":"Py6S-1.7.2.tar.gz",
    "sha256":"5c0d0b47607c4ecdf22a81242af8369fc3b99249da0e23e25e9e7ac554d9adcc",
    "url":"https://pypi.io/packages/source/P/Py6S/Py6S-1.7.2.tar.gz"
   },
@@ -118,7 +115,7 @@
  "name":"py6s",
  "new_version":"1.7.2",
  "pinning_version":"2018.10.16",
- "raw_meta_yaml":"{% set name = \"Py6S\" %}\n{% set version = \"1.7.2\" %}\n{% set sha256 = \"5c0d0b47607c4ecdf22a81242af8369fc3b99249da0e23e25e9e7ac554d9adcc\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  fn: {{ name }}-{{ version }}.tar.gz\n  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz\n  sha256: {{ sha256 }}\n\nbuild:\n  noarch: python\n  number: 0\n  script: python -m pip install --no-deps --ignore-installed .\n\nrequirements:\n  host:\n    - pip\n    - python\n    - setuptools\n  run:\n    - python\n    - pysolar 0.6\n    - matplotlib\n    - scipy\n    - numpy\n    - sixs\n\ntest:\n  imports:\n    - Py6S\n    - Py6S.Params\n    - Py6S.SixSHelpers\n\nabout:\n  home: http://py6s.rtwilson.com/\n  license: LGPL-3.0\n  license_family: LGPL\n\n  summary: A Python interface to the 6S Radiative Transfer Model\n\n  description: |\n    A wrapper for the 6S Radiative Transfer Model to make it easy to\n    run simulations with a variety of input parameters, and to produce outputs\n    in an easily processable form.\n\n  doc_url: http://py6s.readthedocs.io/en/latest/\n  dev_url: https://github.com/robintw/py6s\n\nextra:\n  recipe-maintainers:\n    - robintw\n",
+ "raw_meta_yaml":"{% set version = \"1.7.2\" %}\n\npackage:\n  name: py6s\n  version: {{ version }}\n\nsource:\n  url: https://pypi.io/packages/source/P/Py6S/Py6S-{{ version }}.tar.gz\n  sha256: 5c0d0b47607c4ecdf22a81242af8369fc3b99249da0e23e25e9e7ac554d9adcc\n\nbuild:\n  number: 1\n  noarch: python\n  script: \"{{ PYTHON }} -m pip install . --no-deps -vv\"\n\nrequirements:\n  host:\n    - pip\n    - python\n  run:\n    - python\n    - pysolar 0.6\n    - matplotlib\n    - scipy\n    - numpy\n    - sixs\n\ntest:\n  imports:\n    - Py6S\n    - Py6S.Params\n    - Py6S.SixSHelpers\n\nabout:\n  home: http://py6s.rtwilson.com/\n  license: LGPL-3.0\n  license_file: COPYING.LESSER\n  license_family: LGPL\n\n  summary: A Python interface to the 6S Radiative Transfer Model\n\n  description: |\n    A wrapper for the 6S Radiative Transfer Model to make it easy to\n    run simulations with a variety of input parameters, and to produce outputs\n    in an easily processable form.\n\n  doc_url: http://py6s.readthedocs.io/en/latest/\n  dev_url: https://github.com/robintw/py6s\n\nextra:\n  recipe-maintainers:\n    - robintw\n",
  "req":{
   "__set__":true,
   "elements":[
@@ -128,7 +125,6 @@
    "pysolar",
    "python",
    "scipy",
-   "setuptools",
    "sixs"
   ]
  },
