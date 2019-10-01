@@ -66,47 +66,15 @@
    ]
   }
  ],
- "bad":{
-  "code":404,
-  "exception":"HTTP Error 404: Not Found",
-  "traceback":[
-   "Traceback (most recent call last):",
-   "  File \"/root/repo/cf-scripts/conda_forge_tick/auto_tick.xsh\", line 677, in main",
-   "    hash_type=attrs.get('hash_type', 'sha256'))",
-   "  File \"/root/repo/cf-scripts/conda_forge_tick/auto_tick.xsh\", line 98, in run",
-   "    migrate_return = migrator.migrate(recipe_dir, attrs, **kwargs)",
-   "  File \"/root/repo/cf-scripts/conda_forge_tick/migrators.xsh\", line 392, in migrate",
-   "    new_patterns = self.get_hash_patterns('meta.yaml', urls, hash_type)",
-   "  File \"/root/repo/cf-scripts/conda_forge_tick/migrators.xsh\", line 322, in get_hash_patterns",
-   "    hash = hash_url(url, hash_type)",
-   "  File \"/opt/conda/envs/run_env/lib/python3.7/site-packages/rever/tools.xsh\", line 207, in hash_url",
-   "    for b in stream_url_progress(url, verb='Hashing', quiet=quiet):",
-   "  File \"/opt/conda/envs/run_env/lib/python3.7/site-packages/rever/tools.xsh\", line 179, in stream_url_progress",
-   "    with urllib.request.urlopen(url) as f:",
-   "  File \"/opt/conda/envs/run_env/lib/python3.7/urllib/request.py\", line 222, in urlopen",
-   "    return opener.open(url, data, timeout)",
-   "  File \"/opt/conda/envs/run_env/lib/python3.7/urllib/request.py\", line 531, in open",
-   "    response = meth(req, response)",
-   "  File \"/opt/conda/envs/run_env/lib/python3.7/urllib/request.py\", line 641, in http_response",
-   "    'http', request, response, code, msg, hdrs)",
-   "  File \"/opt/conda/envs/run_env/lib/python3.7/urllib/request.py\", line 569, in error",
-   "    return self._call_chain(*args)",
-   "  File \"/opt/conda/envs/run_env/lib/python3.7/urllib/request.py\", line 503, in _call_chain",
-   "    result = func(*args)",
-   "  File \"/opt/conda/envs/run_env/lib/python3.7/urllib/request.py\", line 649, in http_error_default",
-   "    raise HTTPError(req.full_url, code, msg, hdrs, fp)",
-   "urllib.error.HTTPError: HTTP Error 404: Not Found",
-   ""
-  ],
-  "url":"https://github.com/jedisct1/libsodium/releases/download/1.0.18/libsodium-1.0.18.tar.gz"
- },
+ "bad":false,
  "conda-forge.yml":{
   "compiler_stack":"comp7",
   "max_py_ver":"37",
   "max_r_ver":"35",
   "provider":{
-   "linux_aarch64":"azure",
-   "linux_ppc64le":"azure"
+   "linux_aarch64":"default",
+   "linux_ppc64le":"default",
+   "win":"default"
   }
  },
  "feedstock_name":"libsodium",
@@ -141,7 +109,7 @@
   },
   "package":{
    "name":"libsodium",
-   "version":"1.0.17"
+   "version":"1.0.18"
   },
   "requirements":{
    "build":[
@@ -155,9 +123,8 @@
    "host":null
   },
   "source":{
-   "fn":"libsodium-1.0.17.tar.gz",
-   "sha256":"0cc3dae33e642cc187b5ceb467e0ad0e1b51dcba577de1190e9ffa17766ac2b1",
-   "url":"https://github.com/jedisct1/libsodium/releases/download/1.0.17/libsodium-1.0.17.tar.gz"
+   "sha256":"6f504490b342a4f8a4c4a02fc9b866cbef8622d5df4e5452b46be121e46636c1",
+   "url":"https://download.libsodium.org/libsodium/releases/libsodium-1.0.18.tar.gz"
   },
   "test":{
    "commands":[
@@ -178,7 +145,7 @@
  "name":"libsodium",
  "new_version":"1.0.18",
  "pinning_version":"2019.02.15",
- "raw_meta_yaml":"{% set version = \"1.0.17\" %}\n\npackage:\n  name: libsodium\n  version: {{ version }}\n\nsource:\n  fn: libsodium-{{ version }}.tar.gz\n  url: https://github.com/jedisct1/libsodium/releases/download/{{ version }}/libsodium-{{ version }}.tar.gz\n  sha256: 0cc3dae33e642cc187b5ceb467e0ad0e1b51dcba577de1190e9ffa17766ac2b1\n\nbuild:\n  number: 0\n  run_exports:\n    # libsodium can bump its ABI version in patch releases,\n    # so we have to pin it down\n    - {{ pin_subpackage(\"libsodium\", max_pin=\"x.x.x\") }}\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - make\n  host:\n    - msinttypes  # [win and vc<14]\n\ntest:\n  commands:\n    - test -f ${PREFIX}/include/sodium.h         # [unix]\n    - test -f ${PREFIX}/lib/libsodium.a          # [unix]\n    - test -f ${PREFIX}/lib/libsodium.dylib      # [osx]\n    - test -f ${PREFIX}/lib/libsodium.so         # [linux]\n\n    - if not exist %LIBRARY_INC%\\sodium.h              exit 1  # [win]\n    - if not exist %LIBRARY_INC%\\sodium\\version.h      exit 1  # [win]\n    - if not exist %LIBRARY_BIN%\\libsodium.dll         exit 1  # [win]\n    - if not exist %LIBRARY_LIB%\\libsodium.lib         exit 1  # [win]\n    - if not exist %LIBRARY_LIB%\\libsodium_static.lib  exit 1  # [win]\n\nabout:\n  home: http://libsodium.org\n  license: ISC\n  license_file: LICENSE\n  summary: A modern and easy-to-use crypto library.\n  description: |\n    Sodium is a new, easy-to-use software library for encryption, decryption,\n    signatures, password hashing and more. It is a portable, cross-compilable,\n    installable, packageable fork of NaCl, with a compatible API, and an\n    extended API to improve usability even further. Its goal is to provide all\n    of the core operations needed to build higher-level cryptographic tools.\n  doc_url: https://download.libsodium.org/doc\n  dev_url: https://github.com/jedisct1/libsodium\n\nextra:\n  recipe-maintainers:\n    - jakirkham\n    - minrk\n",
+ "raw_meta_yaml":"{% set version = \"1.0.18\" %}\n\npackage:\n  name: libsodium\n  version: {{ version }}\n\nsource:\n  url: https://download.libsodium.org/libsodium/releases/libsodium-{{ version }}.tar.gz\n  sha256: 6f504490b342a4f8a4c4a02fc9b866cbef8622d5df4e5452b46be121e46636c1\n\nbuild:\n  number: 0\n  run_exports:\n    # libsodium can bump its ABI version in patch releases,\n    # so we have to pin it down\n    - {{ pin_subpackage(\"libsodium\", max_pin=\"x.x.x\") }}\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - make\n  host:\n    - msinttypes  # [win and vc<14]\n\ntest:\n  commands:\n    - test -f ${PREFIX}/include/sodium.h         # [unix]\n    - test -f ${PREFIX}/lib/libsodium.a          # [unix]\n    - test -f ${PREFIX}/lib/libsodium.dylib      # [osx]\n    - test -f ${PREFIX}/lib/libsodium.so         # [linux]\n\n    - if not exist %LIBRARY_INC%\\sodium.h              exit 1  # [win]\n    - if not exist %LIBRARY_INC%\\sodium\\version.h      exit 1  # [win]\n    - if not exist %LIBRARY_BIN%\\libsodium.dll         exit 1  # [win]\n    - if not exist %LIBRARY_LIB%\\libsodium.lib         exit 1  # [win]\n    - if not exist %LIBRARY_LIB%\\libsodium_static.lib  exit 1  # [win]\n\nabout:\n  home: http://libsodium.org\n  license: ISC\n  license_file: LICENSE\n  summary: A modern and easy-to-use crypto library.\n  description: |\n    Sodium is a new, easy-to-use software library for encryption, decryption,\n    signatures, password hashing and more. It is a portable, cross-compilable,\n    installable, packageable fork of NaCl, with a compatible API, and an\n    extended API to improve usability even further. Its goal is to provide all\n    of the core operations needed to build higher-level cryptographic tools.\n  doc_url: https://download.libsodium.org/doc\n  dev_url: https://github.com/jedisct1/libsodium\n\nextra:\n  recipe-maintainers:\n    - jakirkham\n    - minrk\n",
  "req":{
   "__set__":true,
   "elements":[
@@ -189,5 +156,5 @@
  "smithy_version":"3.2.13",
  "time":1568135270.4358048,
  "url":"https://github.com/jedisct1/libsodium/releases/download/1.0.17/libsodium-1.0.17.tar.gz",
- "version":"1.0.17"
+ "version":"1.0.18"
 }
