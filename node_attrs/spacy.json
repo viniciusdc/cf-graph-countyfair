@@ -317,6 +317,23 @@
     "migrator_version",
     "version"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/323807068.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"Version",
+    "migrator_version":0,
+    "version":"2.2.0"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "version"
+   ]
   }
  ],
  "bad":false,
@@ -456,8 +473,8 @@
   }
  },
  "name":"spacy",
- "new_version":"2.1.8",
- "pinning_version":"2019.07.26",
+ "new_version":"2.2.0",
+ "pinning_version":"2019.10.01",
  "raw_meta_yaml":"{% set name = \"spacy\" %}\n{% set version = \"2.1.8\" %}\n{% set sha256sum = \"9c510459a66703739d6ba6c958fcff2627399dd813829a020d5644b532034ab6\" %}\n\npackage:\n  name: {{ name }}\n  version: {{ version }}\n\nsource:\n  fn: {{ name }}-{{ version }}.tar.gz\n  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz\n  sha256: {{ sha256sum }}\n\n\nbuild:\n  number: 0\n  script: \"{{ PYTHON }} -m pip install . --no-deps --ignore-installed --no-cache-dir -vvv\"\n  skip: true  # [(win and py27) or (osx and py27)]\n\nrequirements:\n  build:\n    - pip\n    - {{ compiler('cxx') }}\n  host:\n    - pip\n    - python\n    - setuptools\n    - numpy 1.15.*\n    - wheel >=0.32,<0.33\n  run:\n    - python\n    - {{ pin_compatible('numpy', min_pin='1.15.x') }}\n    - murmurhash >=0.28.0,<1.1.0\n    - cymem >=2.0.2,<2.1.0\n    - preshed >=2.0.1,<2.1.0\n    - thinc >=7.0.4,<7.1.0\n    - cython-blis >=0.2.2,<0.3.0\n    - plac <1.0.0,>=0.9.6\n    - requests >=2.13.0,<3.0.0\n    - jsonschema\n    - wasabi >=0.0.12,<1.1.0\n    - srsly >=0.0.5,<1.1.0\n    - pathlib >=1.0.0,<2.0.0  # [py27]\n \ntest:\n  requires:\n    - pytest <4\n    - mock\n  imports:\n    - spacy\n  commands:\n    - python -m pytest --tb=native --pyargs {{ name }}\n\nabout:\n  home: https://spacy.io/\n  license: MIT\n  license_file: LICENSE\n  summary: Industrial-strength Natural Language Processing\n  description: |\n    spaCy is a library for advanced natural language processing in Python and\n    Cython.\n  doc_url: https://spacy.io\n  dev_url: https://github.com/explosion/spaCy\n\nextra:\n  recipe-maintainers:\n    - rmax\n    - honnibal\n    - ines\n    - danielfrg\n",
  "req":{
   "__set__":true,
@@ -481,7 +498,7 @@
    "wheel"
   ]
  },
- "smithy_version":"3.4.1",
+ "smithy_version":"3.4.8",
  "url":"https://pypi.io/packages/source/s/spacy/spacy-2.1.8.tar.gz",
  "version":"2.1.8"
 }
