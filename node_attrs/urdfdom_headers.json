@@ -13,7 +13,7 @@
    "summary":"Headers for URDF parsers"
   },
   "build":{
-   "number":"0",
+   "number":"1",
    "skip":true
   },
   "extra":{
@@ -37,7 +37,6 @@
    "build":[
     "cxx_compiler_stub",
     "cmake",
-    "make",
     "cxx_compiler_stub",
     "cmake",
     "make",
@@ -52,23 +51,20 @@
   },
   "test":{
    "commands":[
-    "pkg-config --modversion urdfdom_headers",
-    "test -f $PREFIX/include/urdf_model/model.h",
+    "if exist %PREFIX%\\\\Library\\\\CMake\\\\urdfdom_headers-config.cmake (exit 0) else (exit 1)",
     "pkg-config --modversion urdfdom_headers",
     "test -f $PREFIX/include/urdf_model/model.h",
     "pkg-config --modversion urdfdom_headers",
     "test -f $PREFIX/include/urdf_model/model.h"
    ],
    "requires":[
-    "pkg-config",
-    "pkg-config",
     "pkg-config"
    ]
   }
  },
  "name":"urdfdom_headers",
  "new_version":"1.0.4",
- "raw_meta_yaml":"{% set name = \"urdfdom_headers\" %}\n{% set version = \"1.0.4\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  url: https://github.com/ros/{{ name }}/archive/{{ version }}.tar.gz\n  sha256: 2b3040a5f4d1e421b32d80540dd1d09fa0ef46c1d4152210ca8753c462b90e31\n\nbuild:\n  number: 0\n  skip: true  # [win]\n\nrequirements:\n  build:\n    - {{ compiler('cxx') }}\n    - cmake\n    - make\n\ntest:\n  requires:\n    - pkg-config\n  commands:\n    - pkg-config --modversion {{ name }}\n    - test -f $PREFIX/include/urdf_model/model.h\n\nabout:\n  home: http://github.com/ros/{{ name }}\n  license: BSD-3-Clause\n  license_family: BSD\n  license_file: LICENSE\n  summary: 'Headers for URDF parsers'\n  dev_url: https://github.com/ros/{{ name }}\n\nextra:\n  recipe-maintainers:\n    - jcarpent\n    - wolfv\n    - lesteve\n",
+ "raw_meta_yaml":"{% set name = \"urdfdom_headers\" %}\n{% set version = \"1.0.4\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  url: https://github.com/ros/{{ name }}/archive/{{ version }}.tar.gz\n  sha256: 2b3040a5f4d1e421b32d80540dd1d09fa0ef46c1d4152210ca8753c462b90e31\n\nbuild:\n  number: 1\n  skip: true  # [win and vc<14]\n\nrequirements:\n  build:\n    - {{ compiler('cxx') }}\n    - cmake\n    - make  # [unix]\n\ntest:\n  requires:\n    - pkg-config  # [unix]\n  commands:\n    - pkg-config --modversion {{ name }}  # [unix]\n    - test -f $PREFIX/include/urdf_model/model.h  # [unix]\n\n    - if exist %PREFIX%\\\\Library\\\\CMake\\\\urdfdom_headers-config.cmake (exit 0) else (exit 1)  # [win]\n\nabout:\n  home: http://github.com/ros/{{ name }}\n  license: BSD-3-Clause\n  license_family: BSD\n  license_file: LICENSE\n  summary: 'Headers for URDF parsers'\n  dev_url: https://github.com/ros/{{ name }}\n\nextra:\n  recipe-maintainers:\n    - jcarpent\n    - wolfv\n    - lesteve\n",
  "req":{
   "__set__":true,
   "elements":[
