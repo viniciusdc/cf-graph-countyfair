@@ -68,13 +68,17 @@
    "home":"https://tidymodels.github.io/dials",
    "license":"GPL-2",
    "license_family":"GPL2",
-   "license_file":"/lib/R/share/licenses/GPL-2",
-   "summary":"Many models contain tuning parameters (i.e. parameters that cannot be directly estimated from the data). These tools can be used to define objects for creating, simulating, or validating values for such parameters. "
+   "license_file":[
+    "/lib/R/share/licenses/GPL-2",
+    "/lib/R/share/licenses/GPL-2",
+    "/lib/R/share/licenses/GPL-2"
+   ],
+   "summary":"Many models contain tuning parameters (i.e. parameters that cannot be directly estimated from the data). These tools can be used to define objects for creating, simulating, or validating values for such parameters."
   },
   "build":{
    "merge_build_host":true,
    "noarch":"generic",
-   "number":"1001",
+   "number":"0",
    "rpaths":[
     "lib/R/lib/",
     "lib/",
@@ -87,39 +91,22 @@
   "extra":{
    "recipe-maintainers":[
     "conda-forge/r",
-    "johanneskoester",
-    "bgruening",
-    "daler",
-    "jdblischak",
-    "cbrueffer",
-    "dbast",
     "philip-khor",
     "conda-forge/r",
-    "johanneskoester",
-    "bgruening",
-    "daler",
-    "jdblischak",
-    "cbrueffer",
-    "dbast",
     "philip-khor",
     "conda-forge/r",
-    "johanneskoester",
-    "bgruening",
-    "daler",
-    "jdblischak",
-    "cbrueffer",
-    "dbast",
     "philip-khor"
    ]
   },
   "package":{
    "name":"r-dials",
-   "version":"0.0.2"
+   "version":"0.0.3"
   },
   "requirements":{
    "build":null,
    "host":[
     "r-base",
+    "r-dicedesign",
     "r-dplyr",
     "r-glue",
     "r-purrr",
@@ -128,6 +115,7 @@
     "r-tibble",
     "r-withr",
     "r-base",
+    "r-dicedesign",
     "r-dplyr",
     "r-glue",
     "r-purrr",
@@ -136,6 +124,7 @@
     "r-tibble",
     "r-withr",
     "r-base",
+    "r-dicedesign",
     "r-dplyr",
     "r-glue",
     "r-purrr",
@@ -146,6 +135,7 @@
    ],
    "run":[
     "r-base",
+    "r-dicedesign",
     "r-dplyr",
     "r-glue",
     "r-purrr",
@@ -154,6 +144,7 @@
     "r-tibble",
     "r-withr",
     "r-base",
+    "r-dicedesign",
     "r-dplyr",
     "r-glue",
     "r-purrr",
@@ -162,6 +153,7 @@
     "r-tibble",
     "r-withr",
     "r-base",
+    "r-dicedesign",
     "r-dplyr",
     "r-glue",
     "r-purrr",
@@ -172,14 +164,14 @@
    ]
   },
   "source":{
-   "sha256":"b06031964d84d3aabf11fd8e65f50e38ace88c6136321f25908c8e247683e8c6",
+   "sha256":"023d88863344dc81527e47b5669df01b000577ac31dc0cbd5611301fd532d87a",
    "url":[
-    "https://cran.r-project.org/src/contrib/dials_0.0.2.tar.gz",
-    "https://cran.r-project.org/src/contrib/Archive/dials/dials_0.0.2.tar.gz",
-    "https://cran.r-project.org/src/contrib/dials_0.0.2.tar.gz",
-    "https://cran.r-project.org/src/contrib/Archive/dials/dials_0.0.2.tar.gz",
-    "https://cran.r-project.org/src/contrib/dials_0.0.2.tar.gz",
-    "https://cran.r-project.org/src/contrib/Archive/dials/dials_0.0.2.tar.gz"
+    "https://cran.r-project.org/src/contrib/dials_0.0.3.tar.gz",
+    "https://cran.r-project.org/src/contrib/Archive/dials/dials_0.0.3.tar.gz",
+    "https://cran.r-project.org/src/contrib/dials_0.0.3.tar.gz",
+    "https://cran.r-project.org/src/contrib/Archive/dials/dials_0.0.3.tar.gz",
+    "https://cran.r-project.org/src/contrib/dials_0.0.3.tar.gz",
+    "https://cran.r-project.org/src/contrib/Archive/dials/dials_0.0.3.tar.gz"
    ]
   },
   "test":{
@@ -193,11 +185,12 @@
  "name":"r-dials",
  "new_version":"0.0.3",
  "pinning_version":"2019.09.27",
- "raw_meta_yaml":"{% set version = '0.0.2' %}\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-dials\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  url:\n    - {{ cran_mirror }}/src/contrib/dials_{{ version }}.tar.gz\n    - {{ cran_mirror }}/src/contrib/Archive/dials/dials_{{ version }}.tar.gz\n  sha256: b06031964d84d3aabf11fd8e65f50e38ace88c6136321f25908c8e247683e8c6\n\nbuild:\n  noarch: generic\n  merge_build_host: True  # [win]\n  number: 1001\n  noarch: generic\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n\n  host:\n    - r-base\n    - r-dplyr\n    - r-glue\n    - r-purrr\n    - r-rlang\n    - r-scales\n    - r-tibble\n    - r-withr\n  run:\n    - r-base\n    - r-dplyr\n    - r-glue\n    - r-purrr\n    - r-rlang\n    - r-scales\n    - r-tibble\n    - r-withr\n\ntest:\n  commands:\n    - $R -e \"library('dials')\"           # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('dials')\\\"\"  # [win]\n\nabout:\n  home: https://tidymodels.github.io/dials\n  license: GPL-2\n  summary: 'Many models contain tuning parameters (i.e. parameters that cannot be directly estimated\n    from the data). These tools can be used to define objects for creating, simulating,\n    or validating values for such parameters. '\n  license_family: GPL2\n  license_file: '{{ environ[\"PREFIX\"] }}/lib/R/share/licenses/GPL-2'\n  license_file: '{{ environ[\"PREFIX\"] }}/lib/R/share/licenses/GPL-2'\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n    - johanneskoester\n    - bgruening\n    - daler\n    - jdblischak\n    - cbrueffer\n    - dbast\n    - philip-khor\n",
+ "raw_meta_yaml":"{% set version = '0.0.3' %}\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-dials\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  url:\n    - {{ cran_mirror }}/src/contrib/dials_{{ version }}.tar.gz\n    - {{ cran_mirror }}/src/contrib/Archive/dials/dials_{{ version }}.tar.gz\n  sha256: 023d88863344dc81527e47b5669df01b000577ac31dc0cbd5611301fd532d87a\n\nbuild:\n  merge_build_host: True  # [win]\n  number: 0\n  noarch: generic\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - {{posix}}zip               # [win]\n  host:\n    - r-base\n    - r-dicedesign\n    - r-dplyr\n    - r-glue\n    - r-purrr\n    - r-rlang\n    - r-scales\n    - r-tibble\n    - r-withr\n  run:\n    - r-base\n    - r-dicedesign\n    - r-dplyr\n    - r-glue\n    - r-purrr\n    - r-rlang\n    - r-scales\n    - r-tibble\n    - r-withr\n\ntest:\n  commands:\n    - $R -e \"library('dials')\"           # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('dials')\\\"\"  # [win]\n\nabout:\n  home: https://tidymodels.github.io/dials\n  license: GPL-2\n  summary: Many models contain tuning parameters (i.e. parameters that cannot be directly estimated\n    from the data). These tools can be used to define objects for creating, simulating,\n    or validating values for such parameters.\n  license_family: GPL2\n  license_file:\n    - '{{ environ[\"PREFIX\"] }}/lib/R/share/licenses/GPL-2'\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n    - philip-khor\n\n# Package: dials\n# Version: 0.0.3\n# Title: Tools for Creating Tuning Parameter Values\n# Description: Many models contain tuning parameters (i.e. parameters that cannot be directly estimated from the data). These tools can be used to define objects for creating, simulating, or validating values for such parameters.\n# Authors@R: c( person(given = \"Max\", family = \"Kuhn\", email = \"max@rstudio.com\", role = c(\"aut\", \"cre\")), person(\"RStudio\", role = \"cph\"))\n# License: GPL-2\n# URL: https://tidymodels.github.io/dials\n# BugReports: https://github.com/tidymodels/dials/issues\n# Encoding: UTF-8\n# LazyData: true\n# ByteCompile: true\n# RoxygenNote: 6.1.1\n# VignetteBuilder: knitr\n# Depends: scales, R (>= 2.10)\n# Imports: glue, purrr, tibble, rlang, utils, withr, DiceDesign, dplyr\n# Suggests: testthat, knitr, rpart, covr, kernlab, xml2\n# NeedsCompilation: no\n# Packaged: 2019-10-01 00:25:51 UTC; max\n# Author: Max Kuhn [aut, cre], RStudio [cph]\n# Maintainer: Max Kuhn <max@rstudio.com>\n# Repository: CRAN\n# Date/Publication: 2019-10-01 05:00:02 UTC\n",
  "req":{
   "__set__":true,
   "elements":[
    "r-base",
+   "r-dicedesign",
    "r-dplyr",
    "r-glue",
    "r-purrr",
@@ -216,5 +209,5 @@
   "https://cran.r-project.org/src/contrib/dials_0.0.2.tar.gz",
   "https://cran.r-project.org/src/contrib/Archive/dials/dials_0.0.2.tar.gz"
  ],
- "version":"0.0.2"
+ "version":"0.0.3"
 }
