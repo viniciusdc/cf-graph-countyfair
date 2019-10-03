@@ -151,52 +151,52 @@
    "host":[
     "libhwloc",
     "libtool",
-    "llvmdev ==8.0.0",
-    "clangdev ==8.0.0",
+    "llvmdev ==6.0.1",
+    "clangdev ==6.0.1",
+    "lld ==6.0.1",
     "khronos-opencl-icd-loader",
     "libhwloc",
     "libtool",
-    "llvmdev ==8.0.0",
-    "clangdev ==8.0.0",
+    "llvmdev ==6.0.1",
+    "clangdev ==6.0.1",
+    "lld ==6.0.1",
     "libcxx",
     "ocl-icd",
     "libhwloc",
     "libtool",
-    "llvmdev ==8.0.0",
-    "clangdev ==8.0.0"
+    "llvmdev ==6.0.1",
+    "clangdev ==6.0.1",
+    "lld ==6.0.1"
    ],
    "run":[
     "compatible_pin_stub",
-    "clangdev ==8.0.0",
     "libtool",
     "khronos-opencl-icd-loader",
     "compatible_pin_stub",
-    "clangdev ==8.0.0",
     "libtool",
     "ocl-icd",
     "compatible_pin_stub",
-    "clangdev ==8.0.0",
     "libtool"
    ]
   },
   "source":[
    {
     "patches":[
-     "paths-in-separate-compilation-unit.patch"
+     "708.patch"
     ],
     "sha256":"6527e3f47fab7c21e96bc757c4ae3303901f35e23f64642d6da5cc4c4fcc915a",
     "url":"https://github.com/pocl/pocl/archive/v1.3.tar.gz"
    },
    {
     "patches":[
-     "paths-in-separate-compilation-unit.patch"
+     "708.patch"
     ],
     "sha256":"6527e3f47fab7c21e96bc757c4ae3303901f35e23f64642d6da5cc4c4fcc915a",
     "url":"https://github.com/pocl/pocl/archive/v1.3.tar.gz"
    },
    {
     "patches":[
-     "paths-in-separate-compilation-unit.patch"
+     "708.patch"
     ],
     "sha256":"6527e3f47fab7c21e96bc757c4ae3303901f35e23f64642d6da5cc4c4fcc915a",
     "url":"https://github.com/pocl/pocl/archive/v1.3.tar.gz"
@@ -204,14 +204,30 @@
   ],
   "test":{
    "commands":[
-    "test -f $PREFIX/lib/libpocl${SHLIB_EXT}"
+    "curl -O https://raw.githubusercontent.com/inducer/pyopencl/master/examples/demo.py",
+    "python demo.py",
+    "test -f $PREFIX/lib/libpocl${SHLIB_EXT}",
+    "rm $PREFIX/etc/OpenCL/vendors/apple.icd",
+    "curl -O https://raw.githubusercontent.com/inducer/pyopencl/master/examples/demo.py",
+    "python demo.py",
+    "test -f $PREFIX/lib/libpocl${SHLIB_EXT}",
+    "curl -O https://raw.githubusercontent.com/inducer/pyopencl/master/examples/demo.py",
+    "python demo.py"
+   ],
+   "requires":[
+    "pyopencl",
+    "curl",
+    "pyopencl",
+    "curl",
+    "pyopencl",
+    "curl"
    ]
   }
  },
  "name":"pocl",
  "new_version":"1.3",
  "pinning_version":"2019.03.17",
- "raw_meta_yaml":"{% set name = \"pocl\" %}\n{% set version = \"1.3\" %}\n{% set build_number = 1 %}\n{% set sha256 = \"6527e3f47fab7c21e96bc757c4ae3303901f35e23f64642d6da5cc4c4fcc915a\" %}\n{% set llvm_version = \"8.0.0\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  - url: https://github.com/{{ name }}/{{ name }}/archive/v{{ version }}.tar.gz\n    sha256: {{ sha256 }}\n  #- git_url: https://github.com/pocl/pocl.git\n  #  git_rev: v1.3-RC3\n\n    patches:\n    # Put binary paths built in pocl into a separate compilation unit\n    # so that conda can successfully change them. (If they're not in\n    # a separate compilation unit, the compiler has a habit of evaluating\n    # strlen() and such at compile time.)\n    - paths-in-separate-compilation-unit.patch\n\nbuild:\n  number: {{ build_number }}\n  skip: True  # [win]\n  merge_build_host: True   # [cxx_compiler=='gxx']\n\nrequirements:\n  build:\n    - cmake\n    - pkg-config\n    - {{ compiler('cxx') }}\n  host:\n    - ocl-icd                            # [linux]\n    - khronos-opencl-icd-loader          # [osx]\n    - libhwloc\n    - libtool\n    - llvmdev =={{ llvm_version }}\n    - clangdev =={{ llvm_version }}\n    - libcxx                             # [osx]\n  run:\n    - ocl-icd                            # [linux]\n    - khronos-opencl-icd-loader          # [osx]\n    - {{ pin_compatible('libhwloc') }}\n\n    # Needed for $PREFIX/lib/clang/8.0.0/include/opencl-c.h\n    # FIXME: Slight overkill, as this brings in all of LLVM and Clang, for one\n    # measly header file that we *actually* want.\n    - clangdev =={{ llvm_version }}\n\n    - libtool\n\ntest:\n  #requires:\n    #- pyopencl\n    #- curl\n    #- osx-pocl-opencl  # [osx]\n\n  commands:\n    - test -f $PREFIX/lib/libpocl${SHLIB_EXT}     # [unix]\n    #- curl -O https://raw.githubusercontent.com/inducer/pyopencl/master/examples/demo.py\n    #- python demo.py\n\nabout:\n  home: http://portablecl.org/\n  license: MIT\n  license_file: LICENSE\n  summary: 'Portable Computing Language -- a CPU OpenCL implementation'\n  dev_url: https://github.com/pocl/pocl\n\nextra:\n  recipe-maintainers:\n    - inducer\n    - mattwala\n    - isuruf\n",
+ "raw_meta_yaml":"{% set name = \"pocl\" %}\n{% set version = \"1.3\" %}\n{% set build_number = 1 %}\n{% set sha256 = \"6527e3f47fab7c21e96bc757c4ae3303901f35e23f64642d6da5cc4c4fcc915a\" %}\n{% set llvm_version = \"6.0.1\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  - url: https://github.com/{{ name }}/{{ name }}/archive/v{{ version }}.tar.gz\n    sha256: {{ sha256 }}\n  #- git_url: https://github.com/pocl/pocl.git\n  #  git_rev: v1.3-RC3\n\n    patches:\n    # https://github.com/pocl/pocl/pull/708\n    - 708.patch\n\nbuild:\n  number: {{ build_number }}\n  skip: True  # [win]\n  merge_build_host: True   # [cxx_compiler=='gxx']\n\nrequirements:\n  build:\n    - cmake\n    - pkg-config\n    - {{ compiler('cxx') }}\n  host:\n    - ocl-icd                            # [linux]\n    - khronos-opencl-icd-loader          # [osx]\n    - libhwloc\n    - libtool\n    - llvmdev =={{ llvm_version }}\n    - clangdev =={{ llvm_version }}\n    - lld =={{ llvm_version }}\n    - libcxx                             # [osx]\n  run:\n    - ocl-icd                            # [linux]\n    - khronos-opencl-icd-loader          # [osx]\n    - {{ pin_compatible('libhwloc') }}\n    - libtool\n\ntest:\n  requires:\n    - pyopencl\n    - curl\n  commands:\n    - test -f $PREFIX/lib/libpocl${SHLIB_EXT}     # [unix]\n    # Remove apple icd so that only pocl is found\n    - rm $PREFIX/etc/OpenCL/vendors/apple.icd     # [osx]\n    - curl -O https://raw.githubusercontent.com/inducer/pyopencl/master/examples/demo.py\n    - python demo.py\n\nabout:\n  home: http://portablecl.org/\n  license: MIT\n  license_file: LICENSE\n  summary: 'Portable Computing Language -- a CPU OpenCL implementation'\n  dev_url: https://github.com/pocl/pocl\n\nextra:\n  recipe-maintainers:\n    - inducer\n    - mattwala\n    - isuruf\n",
  "req":{
   "__set__":true,
   "elements":[
@@ -223,6 +239,7 @@
    "libcxx",
    "libhwloc",
    "libtool",
+   "lld",
    "llvmdev",
    "ocl-icd",
    "pkg-config"
