@@ -13,7 +13,7 @@
    "summary":"URDF parser"
   },
   "build":{
-   "number":"0",
+   "number":"1",
    "run_exports":[
     "urdfdom",
     "urdfdom",
@@ -42,7 +42,6 @@
    "build":[
     "cxx_compiler_stub",
     "cmake",
-    "make",
     "cxx_compiler_stub",
     "cmake",
     "make",
@@ -74,28 +73,33 @@
    ]
   },
   "source":{
+   "patches":[
+    "cmake.patch",
+    "windows-install.patch",
+    "cmake.patch",
+    "windows-install.patch",
+    "cmake.patch",
+    "windows-install.patch"
+   ],
    "sha256":"839d939fbd91d115f928a6e02334638829c58d9c8ea2f81bfa3faffd233c154c",
    "url":"https://github.com/ros/urdfdom/archive/1.0.3.tar.gz"
   },
   "test":{
    "commands":[
-    "pkg-config --modversion urdfdom",
-    "test -f $PREFIX/lib/liburdfdom_model${SHLIB_EXT}",
+    "if exist %PREFIX%\\\\Library\\\\CMake\\\\urdfdom-config.cmake (exit 0) else (exit 1)",
     "pkg-config --modversion urdfdom",
     "test -f $PREFIX/lib/liburdfdom_model${SHLIB_EXT}",
     "pkg-config --modversion urdfdom",
     "test -f $PREFIX/lib/liburdfdom_model${SHLIB_EXT}"
    ],
    "requires":[
-    "pkg-config",
-    "pkg-config",
     "pkg-config"
    ]
   }
  },
  "name":"urdfdom",
  "new_version":"1.0.3",
- "raw_meta_yaml":"{% set name = \"urdfdom\" %}\n{% set version = \"1.0.3\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  url: https://github.com/ros/{{ name }}/archive/{{ version }}.tar.gz\n  sha256: 839d939fbd91d115f928a6e02334638829c58d9c8ea2f81bfa3faffd233c154c\n\nbuild:\n  number: 0\n  skip: true  # [win]\n  run_exports:\n    - urdfdom\n\nrequirements:\n  build:\n    - {{ compiler('cxx') }}\n    - cmake\n    - make\n  host:\n    - console_bridge\n    - tinyxml\n    - urdfdom_headers\n  run:\n    - console_bridge\n    - tinyxml\n    - urdfdom_headers\n\ntest:\n  requires:\n    - pkg-config\n  commands:\n    - pkg-config --modversion {{ name }}\n    - test -f $PREFIX/lib/lib{{ name }}_model${SHLIB_EXT}\n\nabout:\n  home: http://github.com/ros/urdfdom\n  license: BSD-3-Clause\n  license_family: BSD\n  license_file: LICENSE\n  summary: 'URDF parser'\n  dev_url: https://github.com/ros/urdfdom\n\nextra:\n  recipe-maintainers:\n    - jcarpent\n    - wolfv\n    - lesteve\n",
+ "raw_meta_yaml":"{% set name = \"urdfdom\" %}\n{% set version = \"1.0.3\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  url: https://github.com/ros/{{ name }}/archive/{{ version }}.tar.gz\n  sha256: 839d939fbd91d115f928a6e02334638829c58d9c8ea2f81bfa3faffd233c154c\n  patches:\n    - cmake.patch\n    - windows-install.patch\n\nbuild:\n  number: 1\n  skip: true  # [win and vc<14]\n  run_exports:\n    - urdfdom\n\nrequirements:\n  build:\n    - {{ compiler('cxx') }}\n    - cmake\n    - make  # [unix]\n  host:\n    - console_bridge\n    - tinyxml\n    - urdfdom_headers\n  run:\n    - console_bridge\n    - tinyxml\n    - urdfdom_headers\n\ntest:\n  requires:\n    - pkg-config  # [unix]\n  commands:\n    - pkg-config --modversion {{ name }}  # [unix]\n    - test -f $PREFIX/lib/lib{{ name }}_model${SHLIB_EXT}  # [unix]\n    - if exist %PREFIX%\\\\Library\\\\CMake\\\\urdfdom-config.cmake (exit 0) else (exit 1)  # [win]\n\nabout:\n  home: http://github.com/ros/urdfdom\n  license: BSD-3-Clause\n  license_family: BSD\n  license_file: LICENSE\n  summary: 'URDF parser'\n  dev_url: https://github.com/ros/urdfdom\n\nextra:\n  recipe-maintainers:\n    - jcarpent\n    - wolfv\n    - lesteve\n",
  "req":{
   "__set__":true,
   "elements":[
