@@ -83,11 +83,12 @@
    "home":"https://github.com/rstudio/htmltools",
    "license":"GPL (>= 2)",
    "license_family":"GPL3",
+   "license_file":"/lib/R/share/licenses/GPL-2",
    "summary":"Tools for HTML generation and output."
   },
   "build":{
    "merge_build_host":true,
-   "number":"1003",
+   "number":"0",
    "rpaths":[
     "lib/R/lib/",
     "lib/",
@@ -100,63 +101,69 @@
   "extra":{
    "recipe-maintainers":[
     "conda-forge/r",
-    "johanneskoester",
-    "bgruening",
     "conda-forge/r",
-    "johanneskoester",
-    "bgruening",
-    "conda-forge/r",
-    "johanneskoester",
-    "bgruening"
+    "conda-forge/r"
    ]
   },
   "package":{
    "name":"r-htmltools",
-   "version":"0.3.6"
+   "version":"0.4.0"
   },
   "requirements":{
    "build":[
-    "posix",
     "m2w64_c_compiler_stub",
     "m2w64_cxx_compiler_stub",
+    "filesystem",
+    "make",
+    "sed",
+    "coreutils",
+    "zip",
     "c_compiler_stub",
     "cxx_compiler_stub",
+    "make",
     "c_compiler_stub",
-    "cxx_compiler_stub"
+    "cxx_compiler_stub",
+    "make"
    ],
    "host":[
     "r-base",
     "r-rcpp",
     "r-digest",
+    "r-rlang",
     "r-base",
     "r-rcpp",
     "r-digest",
+    "r-rlang",
     "r-base",
     "r-rcpp",
-    "r-digest"
+    "r-digest",
+    "r-rlang"
    ],
    "run":[
     "r-base",
+    "gcc-libs",
     "r-rcpp",
     "r-digest",
+    "r-rlang",
     "r-base",
     "r-rcpp",
     "r-digest",
+    "r-rlang",
     "r-base",
     "r-rcpp",
-    "r-digest"
+    "r-digest",
+    "r-rlang"
    ]
   },
   "source":{
-   "fn":"htmltools_0.3.6.tar.gz",
-   "sha256":"44affb82f9c2fd76c9e2b58f9229adb003217932b68c3fdbf1327c8d74c868a2",
+   "sha256":"5b18552e1183b1b90b5cca8e7f95b57e8124c9d517b22aa64783b829513b811a",
    "url":[
-    "https://cran.r-project.org/src/contrib/htmltools_0.3.6.tar.gz",
-    "https://cran.r-project.org/src/contrib/Archive/htmltools/htmltools_0.3.6.tar.gz",
-    "https://cran.r-project.org/src/contrib/htmltools_0.3.6.tar.gz",
-    "https://cran.r-project.org/src/contrib/Archive/htmltools/htmltools_0.3.6.tar.gz",
-    "https://cran.r-project.org/src/contrib/htmltools_0.3.6.tar.gz",
-    "https://cran.r-project.org/src/contrib/Archive/htmltools/htmltools_0.3.6.tar.gz"
+    "https://cran.r-project.org/src/contrib/htmltools_0.4.0.tar.gz",
+    "https://cran.r-project.org/src/contrib/Archive/htmltools/htmltools_0.4.0.tar.gz",
+    "https://cran.r-project.org/src/contrib/htmltools_0.4.0.tar.gz",
+    "https://cran.r-project.org/src/contrib/Archive/htmltools/htmltools_0.4.0.tar.gz",
+    "https://cran.r-project.org/src/contrib/htmltools_0.4.0.tar.gz",
+    "https://cran.r-project.org/src/contrib/Archive/htmltools/htmltools_0.4.0.tar.gz"
    ]
   },
   "test":{
@@ -170,18 +177,24 @@
  "name":"r-htmltools",
  "new_version":"0.4.0",
  "pinning_version":"2019.10.01",
- "raw_meta_yaml":"{% set version = '0.3.6' %}\n\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-htmltools\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  fn: htmltools_{{ version }}.tar.gz\n  url:\n    - https://cran.r-project.org/src/contrib/htmltools_{{ version }}.tar.gz\n    - https://cran.r-project.org/src/contrib/Archive/htmltools/htmltools_{{ version }}.tar.gz\n  sha256: 44affb82f9c2fd76c9e2b58f9229adb003217932b68c3fdbf1327c8d74c868a2\n\nbuild:\n  merge_build_host: True  # [win]\n  number: 1003\n  skip: true  # [win32]\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - posix                # [win]\n    - {{ compiler('c') }}        # [unix]\n    - {{ compiler('m2w64_c') }}  # [win]\n    - {{ compiler('cxx') }}        # [unix]\n    - {{ compiler('m2w64_cxx') }}  # [win]\n  host:\n    - r-base\n    - r-rcpp\n    - r-digest\n\n  run:\n    - r-base\n    - r-rcpp\n    - r-digest\n\ntest:\n  commands:\n    - $R -e \"library('htmltools')\"  # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('htmltools')\\\"\"  # [win]\n\nabout:\n  home: https://github.com/rstudio/htmltools\n  license: GPL (>= 2)\n  summary: Tools for HTML generation and output.\n  license_family: GPL3\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n    - johanneskoester\n    - bgruening\n",
+ "raw_meta_yaml":"{% set version = '0.4.0' %}\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-htmltools\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  url:\n    - {{ cran_mirror }}/src/contrib/htmltools_{{ version }}.tar.gz\n    - {{ cran_mirror }}/src/contrib/Archive/htmltools/htmltools_{{ version }}.tar.gz\n  sha256: 5b18552e1183b1b90b5cca8e7f95b57e8124c9d517b22aa64783b829513b811a\n\nbuild:\n  merge_build_host: True  # [win]\n  number: 0\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - {{ compiler('c') }}              # [not win]\n    - {{ compiler('m2w64_c') }}        # [win]\n    - {{ compiler('cxx') }}            # [not win]\n    - {{ compiler('m2w64_cxx') }}      # [win]\n    - {{posix}}filesystem        # [win]\n    - {{posix}}make\n    - {{posix}}sed               # [win]\n    - {{posix}}coreutils         # [win]\n    - {{posix}}zip               # [win]\n  host:\n    - r-base\n    - r-rcpp\n    - r-digest\n    - r-rlang\n  run:\n    - r-base\n    - {{native}}gcc-libs         # [win]\n    - r-rcpp\n    - r-digest\n    - r-rlang\n\ntest:\n  commands:\n    - $R -e \"library('htmltools')\"           # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('htmltools')\\\"\"  # [win]\n\nabout:\n  home: https://github.com/rstudio/htmltools\n  license: GPL (>= 2)\n  summary: Tools for HTML generation and output.\n  license_family: GPL3\n  license_file: '{{ environ[\"PREFIX\"] }}/lib/R/share/licenses/GPL-2'\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n\n# Package: htmltools\n# Type: Package\n# Title: Tools for HTML\n# Version: 0.4.0\n# Author: RStudio, Inc.\n# Maintainer: Joe Cheng <joe@rstudio.com>\n# Description: Tools for HTML generation and output.\n# Depends: R (>= 2.14.1)\n# Imports: utils, digest, Rcpp, rlang\n# Suggests: markdown, testthat, withr\n# Enhances: knitr\n# License: GPL (>= 2)\n# URL: https://github.com/rstudio/htmltools\n# BugReports: https://github.com/rstudio/htmltools/issues\n# RoxygenNote: 6.1.1\n# LinkingTo: Rcpp\n# Encoding: UTF-8\n# Collate: 'RcppExports.R' 'html_dependency.R' 'html_escape.R' 'html_print.R' 'shim.R' 'utils.R' 'tags.R' 'template.R'\n# NeedsCompilation: yes\n# Packaged: 2019-10-04 17:43:48 UTC; jcheng\n# Repository: CRAN\n# Date/Publication: 2019-10-04 23:00:08 UTC\n",
  "req":{
   "__set__":true,
   "elements":[
    "c_compiler_stub",
+   "coreutils",
    "cxx_compiler_stub",
+   "filesystem",
+   "gcc-libs",
    "m2w64_c_compiler_stub",
    "m2w64_cxx_compiler_stub",
-   "posix",
+   "make",
    "r-base",
    "r-digest",
-   "r-rcpp"
+   "r-rcpp",
+   "r-rlang",
+   "sed",
+   "zip"
   ]
  },
  "smithy_version":"3.5.0",
@@ -193,5 +206,5 @@
   "https://cran.r-project.org/src/contrib/htmltools_0.3.6.tar.gz",
   "https://cran.r-project.org/src/contrib/Archive/htmltools/htmltools_0.3.6.tar.gz"
  ],
- "version":"0.3.6"
+ "version":"0.4.0"
 }
