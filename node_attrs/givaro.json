@@ -66,7 +66,7 @@
    ]
   }
  ],
- "bad":false,
+ "bad":"make_graph: 503",
  "conda-forge.yml":{
   "compiler_stack":"comp7",
   "max_py_ver":"37",
@@ -145,7 +145,7 @@
   }
  },
  "name":"givaro",
- "new_version":"4.1.1",
+ "new_version":false,
  "pinning_version":"2019.06.06",
  "raw_meta_yaml":"{% set version = \"4.1.1\" %}\n{% set name = \"givaro\" %}\n\npackage:\n  name: {{ name }}\n  version: {{ version }}\n\nsource:\n  fn: {{ name }}-{{ version }}.tar.gz\n  url: https://github.com/linbox-team/givaro/releases/download/v{{ version }}/{{ name }}-{{ version }}.tar.gz\n  sha256: 628049899386e91da245aee6cd446350fbca87e94863bc0d815066c08150487f\n\nbuild:\n  number: 0\n  skip: true  # [win]\n  run_exports:\n    - {{ pin_subpackage('givaro', max_pin='x.x.x') }}\n\nrequirements:\n  build:\n    - {{ compiler('cxx') }}\n    - libtool\n  host:\n    - gmp\n  run:\n    - gmp\n\ntest:\n  commands:\n    - test -f ${PREFIX}/include/givaro/givaromm.h\n    - test -f ${PREFIX}/lib/lib{{ name }}.a\n    - test -f ${PREFIX}/lib/lib{{ name }}.dylib  # [osx]\n    - test -f ${PREFIX}/lib/lib{{ name }}.so     # [linux]\n\nabout:\n  home: http://givaro.forge.imag.fr\n  license: GPLv2+\n  license_file: {{ SRC_DIR }}/COPYING\n  summary: Givaro - C++ library for arithmetic and algebraic computations\n  dev_url: https://github.com/linbox-team/givaro\n  doc_url: http://givaro.forge.imag.fr/givaro-html\n\nextra:\n  recipe-maintainers:\n    - isuruf\n    - saraedum\n",
  "req":{
