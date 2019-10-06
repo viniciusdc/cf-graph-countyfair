@@ -106,9 +106,7 @@
    "summary":"Open-source thermodynamic and transport properties database"
   },
   "build":{
-   "number":"1001",
-   "script":"python -m pip install --no-deps --ignore-installed .",
-   "skip":true
+   "number":"1002"
   },
   "extra":{
    "recipe-maintainers":[
@@ -125,18 +123,24 @@
    "build":[
     "c_compiler_stub",
     "cxx_compiler_stub",
+    "cmake",
     "c_compiler_stub",
     "cxx_compiler_stub",
+    "cmake",
     "c_compiler_stub",
-    "cxx_compiler_stub"
+    "cxx_compiler_stub",
+    "cmake"
    ],
    "host":[
     "python",
-    "pip",
+    "cython",
+    "setuptools",
     "python",
-    "pip",
+    "cython",
+    "setuptools",
     "python",
-    "pip"
+    "cython",
+    "setuptools"
    ],
    "run":[
     "python",
@@ -150,10 +154,152 @@
     "matplotlib-base"
    ]
   },
-  "source":{
-   "sha256":"d5b85af023ffc93d3f85770dee571712f3858f72579e89a7d13b2f796d933732",
-   "url":"https://pypi.io/packages/source/C/CoolProp/CoolProp-6.2.1.tar.gz"
-  },
+  "source":[
+   {
+    "patches":[
+     "setup.patch",
+     "CMakeLists.patch"
+    ],
+    "sha256":"e94a65e5bbf150e4010816160f66b2095dc70b598461bb1fa664bb5791922c93",
+    "url":"https://github.com/CoolProp/CoolProp/archive/v6.2.1.tar.gz"
+   },
+   {
+    "folder":"externals/Catch",
+    "sha256":"27bf01d20692e534a8963f96c6ca797df2b4ba6551db0379510c376558d75e3c",
+    "url":"https://github.com/catchorg/Catch2/archive/v1.12.2.tar.gz"
+   },
+   {
+    "folder":"externals/Eigen",
+    "sha256":"992855522dfdd0dea74d903dcd082cdb01c1ae72be5145e2fe646a0892989e43",
+    "url":"https://github.com/eigenteam/eigen-git-mirror/archive/3.3.5.tar.gz"
+   },
+   {
+    "folder":"externals/IF97",
+    "sha256":"d761daa6570b6e6ae9cf01554b845d22ae9d3d58f12f658d3670ed3a28fa888b",
+    "url":"https://github.com/CoolProp/IF97/archive/7108b0394d9b1e19d3f5ce0b9aeab02d41391daf.zip"
+   },
+   {
+    "folder":"externals/REFPROP-headers",
+    "sha256":"83de4a949ffaf16257c12b2edf72f6fd62cb7babdfa4d578fe17e341c9712b94",
+    "url":"https://github.com/CoolProp/REFPROP-headers/archive/5fccb00f750c93644a1b32d631b020bebf073eff.zip"
+   },
+   {
+    "folder":"externals/fmtlib",
+    "sha256":"46628a2f068d0e33c716be0ed9dcae4370242df135aed663a180b9fd8e36733d",
+    "url":"https://github.com/fmtlib/fmt/archive/4.1.0.tar.gz"
+   },
+   {
+    "folder":"externals/msgpack-c",
+    "sha256":"1b834ab0b5b41da1dbfb96dd4a673f6de7e79dbd7f212f45a553ff9cc54abf3b",
+    "url":"https://github.com/msgpack/msgpack-c/archive/cpp-3.0.1.tar.gz"
+   },
+   {
+    "folder":"externals/pybind11",
+    "sha256":"3a3b7b651afab1c5ba557f4c37d785a522b8030dfc765da26adc2ecd1de940ea",
+    "url":"https://github.com/pybind/pybind11/archive/v2.2.3.tar.gz"
+   },
+   {
+    "folder":"externals/rapidjson",
+    "sha256":"013edcc40afd7a550899e443ac70bc16b6a36867393be50f1def35674e2be08c",
+    "url":"https://github.com/Tencent/rapidjson/archive/73063f5002612c6bf64fe24f851cd5cc0d83eef9.zip"
+   },
+   {
+    "patches":[
+     "setup.patch",
+     "CMakeLists.patch"
+    ],
+    "sha256":"e94a65e5bbf150e4010816160f66b2095dc70b598461bb1fa664bb5791922c93",
+    "url":"https://github.com/CoolProp/CoolProp/archive/v6.2.1.tar.gz"
+   },
+   {
+    "folder":"externals/Catch",
+    "sha256":"27bf01d20692e534a8963f96c6ca797df2b4ba6551db0379510c376558d75e3c",
+    "url":"https://github.com/catchorg/Catch2/archive/v1.12.2.tar.gz"
+   },
+   {
+    "folder":"externals/Eigen",
+    "sha256":"992855522dfdd0dea74d903dcd082cdb01c1ae72be5145e2fe646a0892989e43",
+    "url":"https://github.com/eigenteam/eigen-git-mirror/archive/3.3.5.tar.gz"
+   },
+   {
+    "folder":"externals/IF97",
+    "sha256":"d761daa6570b6e6ae9cf01554b845d22ae9d3d58f12f658d3670ed3a28fa888b",
+    "url":"https://github.com/CoolProp/IF97/archive/7108b0394d9b1e19d3f5ce0b9aeab02d41391daf.zip"
+   },
+   {
+    "folder":"externals/REFPROP-headers",
+    "sha256":"83de4a949ffaf16257c12b2edf72f6fd62cb7babdfa4d578fe17e341c9712b94",
+    "url":"https://github.com/CoolProp/REFPROP-headers/archive/5fccb00f750c93644a1b32d631b020bebf073eff.zip"
+   },
+   {
+    "folder":"externals/fmtlib",
+    "sha256":"46628a2f068d0e33c716be0ed9dcae4370242df135aed663a180b9fd8e36733d",
+    "url":"https://github.com/fmtlib/fmt/archive/4.1.0.tar.gz"
+   },
+   {
+    "folder":"externals/msgpack-c",
+    "sha256":"1b834ab0b5b41da1dbfb96dd4a673f6de7e79dbd7f212f45a553ff9cc54abf3b",
+    "url":"https://github.com/msgpack/msgpack-c/archive/cpp-3.0.1.tar.gz"
+   },
+   {
+    "folder":"externals/pybind11",
+    "sha256":"3a3b7b651afab1c5ba557f4c37d785a522b8030dfc765da26adc2ecd1de940ea",
+    "url":"https://github.com/pybind/pybind11/archive/v2.2.3.tar.gz"
+   },
+   {
+    "folder":"externals/rapidjson",
+    "sha256":"013edcc40afd7a550899e443ac70bc16b6a36867393be50f1def35674e2be08c",
+    "url":"https://github.com/Tencent/rapidjson/archive/73063f5002612c6bf64fe24f851cd5cc0d83eef9.zip"
+   },
+   {
+    "patches":[
+     "setup.patch",
+     "CMakeLists.patch"
+    ],
+    "sha256":"e94a65e5bbf150e4010816160f66b2095dc70b598461bb1fa664bb5791922c93",
+    "url":"https://github.com/CoolProp/CoolProp/archive/v6.2.1.tar.gz"
+   },
+   {
+    "folder":"externals/Catch",
+    "sha256":"27bf01d20692e534a8963f96c6ca797df2b4ba6551db0379510c376558d75e3c",
+    "url":"https://github.com/catchorg/Catch2/archive/v1.12.2.tar.gz"
+   },
+   {
+    "folder":"externals/Eigen",
+    "sha256":"992855522dfdd0dea74d903dcd082cdb01c1ae72be5145e2fe646a0892989e43",
+    "url":"https://github.com/eigenteam/eigen-git-mirror/archive/3.3.5.tar.gz"
+   },
+   {
+    "folder":"externals/IF97",
+    "sha256":"d761daa6570b6e6ae9cf01554b845d22ae9d3d58f12f658d3670ed3a28fa888b",
+    "url":"https://github.com/CoolProp/IF97/archive/7108b0394d9b1e19d3f5ce0b9aeab02d41391daf.zip"
+   },
+   {
+    "folder":"externals/REFPROP-headers",
+    "sha256":"83de4a949ffaf16257c12b2edf72f6fd62cb7babdfa4d578fe17e341c9712b94",
+    "url":"https://github.com/CoolProp/REFPROP-headers/archive/5fccb00f750c93644a1b32d631b020bebf073eff.zip"
+   },
+   {
+    "folder":"externals/fmtlib",
+    "sha256":"46628a2f068d0e33c716be0ed9dcae4370242df135aed663a180b9fd8e36733d",
+    "url":"https://github.com/fmtlib/fmt/archive/4.1.0.tar.gz"
+   },
+   {
+    "folder":"externals/msgpack-c",
+    "sha256":"1b834ab0b5b41da1dbfb96dd4a673f6de7e79dbd7f212f45a553ff9cc54abf3b",
+    "url":"https://github.com/msgpack/msgpack-c/archive/cpp-3.0.1.tar.gz"
+   },
+   {
+    "folder":"externals/pybind11",
+    "sha256":"3a3b7b651afab1c5ba557f4c37d785a522b8030dfc765da26adc2ecd1de940ea",
+    "url":"https://github.com/pybind/pybind11/archive/v2.2.3.tar.gz"
+   },
+   {
+    "folder":"externals/rapidjson",
+    "sha256":"013edcc40afd7a550899e443ac70bc16b6a36867393be50f1def35674e2be08c",
+    "url":"https://github.com/Tencent/rapidjson/archive/73063f5002612c6bf64fe24f851cd5cc0d83eef9.zip"
+   }
+  ],
   "test":{
    "imports":[
     "CoolProp",
@@ -174,16 +320,18 @@
  "name":"coolprop",
  "new_version":"6.3.0",
  "pinning_version":"2019.05.11",
- "raw_meta_yaml":"{% set name = \"CoolProp\" %}\n\n{% set version = \"6.2.1\" %}\n{% set sha256 = \"d5b85af023ffc93d3f85770dee571712f3858f72579e89a7d13b2f796d933732\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz\n  sha256: {{ sha256 }}\n\nbuild:\n  number: 1001\n  script: \"python -m pip install --no-deps --ignore-installed .\"\n  skip: true  # [py<34 or py>36]\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n  host:\n    - python\n    - pip\n  run:\n    - python\n    - numpy\n    - matplotlib-base\n\ntest:\n  imports:\n    - CoolProp\n    - CoolProp.tests\n    - CoolProp.Plots\n    - CoolProp.GUI\n\nabout:\n  home: https://github.com/CoolProp/CoolProp\n  license: MIT\n  license_family: MIT\n  license_file: LICENSE\n  summary: 'Open-source thermodynamic and transport properties database'\n\n  description: |\n    Open-source thermodynamic and transport properties database\n  doc_url: http://www.coolprop.org/\n  dev_url: https://github.com/CoolProp/CoolProp\n\nextra:\n  recipe-maintainers:\n    - danilomendesdias\n",
+ "raw_meta_yaml":"{% set name = \"CoolProp\" %}\n\n# WARNING external resources may need update as well\n{% set version = \"6.2.1\" %}\n{% set sha256 = \"e94a65e5bbf150e4010816160f66b2095dc70b598461bb1fa664bb5791922c93\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  - url: https://github.com/CoolProp/{{ name }}/archive/v{{ version }}.tar.gz\n    sha256: {{ sha256 }}\n    patches:\n      - setup.patch\n      - CMakeLists.patch\n  # External dependencies\n  # See https://github.com/CoolProp/CoolProp/tree/master/externals\n  - url: https://github.com/catchorg/Catch2/archive/v1.12.2.tar.gz\n    sha256: 27bf01d20692e534a8963f96c6ca797df2b4ba6551db0379510c376558d75e3c\n    folder: externals/Catch\n  - url: https://github.com/eigenteam/eigen-git-mirror/archive/3.3.5.tar.gz\n    sha256: 992855522dfdd0dea74d903dcd082cdb01c1ae72be5145e2fe646a0892989e43\n    folder: externals/Eigen\n  - url: https://github.com/CoolProp/IF97/archive/7108b0394d9b1e19d3f5ce0b9aeab02d41391daf.zip\n    sha256: d761daa6570b6e6ae9cf01554b845d22ae9d3d58f12f658d3670ed3a28fa888b\n    folder: externals/IF97\n  - url: https://github.com/CoolProp/REFPROP-headers/archive/5fccb00f750c93644a1b32d631b020bebf073eff.zip\n    sha256: 83de4a949ffaf16257c12b2edf72f6fd62cb7babdfa4d578fe17e341c9712b94\n    folder: externals/REFPROP-headers\n  - url: https://github.com/fmtlib/fmt/archive/4.1.0.tar.gz\n    sha256: 46628a2f068d0e33c716be0ed9dcae4370242df135aed663a180b9fd8e36733d\n    folder: externals/fmtlib\n  - url: https://github.com/msgpack/msgpack-c/archive/cpp-3.0.1.tar.gz\n    sha256: 1b834ab0b5b41da1dbfb96dd4a673f6de7e79dbd7f212f45a553ff9cc54abf3b\n    folder: externals/msgpack-c\n  - url: https://github.com/pybind/pybind11/archive/v2.2.3.tar.gz\n    sha256: 3a3b7b651afab1c5ba557f4c37d785a522b8030dfc765da26adc2ecd1de940ea\n    folder: externals/pybind11\n  - url: https://github.com/Tencent/rapidjson/archive/73063f5002612c6bf64fe24f851cd5cc0d83eef9.zip\n    sha256: 013edcc40afd7a550899e443ac70bc16b6a36867393be50f1def35674e2be08c\n    folder: externals/rapidjson\n\nbuild:\n  number: 1002\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n    - cmake\n  host:\n    - python\n    - cython\n    - setuptools\n  run:\n    - python\n    - numpy\n    - matplotlib-base\n\ntest:\n  imports:\n    - CoolProp\n    - CoolProp.tests\n    - CoolProp.Plots  # [not py2k or not linux]\n    - CoolProp.GUI\n\nabout:\n  home: https://github.com/CoolProp/CoolProp\n  license: MIT\n  license_family: MIT\n  license_file: LICENSE\n  summary: 'Open-source thermodynamic and transport properties database'\n\n  description: |\n    Open-source thermodynamic and transport properties database\n  doc_url: http://www.coolprop.org/\n  dev_url: https://github.com/CoolProp/CoolProp\n\nextra:\n  recipe-maintainers:\n    - danilomendesdias\n",
  "req":{
   "__set__":true,
   "elements":[
    "c_compiler_stub",
+   "cmake",
    "cxx_compiler_stub",
+   "cython",
    "matplotlib-base",
    "numpy",
-   "pip",
-   "python"
+   "python",
+   "setuptools"
   ]
  },
  "smithy_version":"3.3.4",
