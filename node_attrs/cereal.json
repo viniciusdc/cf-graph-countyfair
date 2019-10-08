@@ -15,13 +15,16 @@
   },
   "build":{
    "noarch":"generic",
-   "number":"0"
+   "number":"1"
   },
   "extra":{
    "recipe-maintainers":[
     "saraedum",
+    "joaander",
     "saraedum",
-    "saraedum"
+    "joaander",
+    "saraedum",
+    "joaander"
    ]
   },
   "package":{
@@ -30,12 +33,17 @@
   },
   "requirements":{
    "build":[
-    "make",
-    "make",
-    "make"
+    "cmake",
+    "cmake",
+    "cmake"
    ]
   },
   "source":{
+   "patches":[
+    "no-compiler.patch",
+    "no-compiler.patch",
+    "no-compiler.patch"
+   ],
    "sha256":"1921f26d2e1daf9132da3c432e2fd02093ecaedf846e65d7679ddf868c7289c4",
    "url":"https://github.com/USCiLab/cereal/archive/v1.2.2.tar.gz"
   },
@@ -49,11 +57,11 @@
  },
  "name":"cereal",
  "new_version":"1.2.2",
- "raw_meta_yaml":"{% set name = \"cereal\" %}\n{% set version = \"1.2.2\" %}\n\npackage:\n  name: {{ name }}\n  version: {{ version }}\n\nsource:\n  url: https://github.com/USCiLab/{{ name }}/archive/v{{ version }}.tar.gz\n  sha256: 1921f26d2e1daf9132da3c432e2fd02093ecaedf846e65d7679ddf868c7289c4\n\nbuild:\n  noarch: generic\n  number: 0\n\nrequirements:\n  build:\n    # We do not actually need make, but conda requires us to have at least one requirement.\n    - make\n\ntest:\n  commands:\n    - test -f $PREFIX/include/cereal/cereal.hpp  # [not win]\n    - if not exist %LIBRARY_INC%\\\\cereal\\\\cereal.hpp exit 1  # [win]\n\nabout:\n  home: http://uscilab.github.io/cereal/\n  license: BSD-3-Clause\n  license_family: BSD\n  license_file: LICENSE\n  summary: 'A C++11 library for serialization'\n  doc_url: http://uscilab.github.io/cereal/\n  dev_url: http://github.com/USCiLab/cereal\n\nextra:\n  recipe-maintainers:\n    - saraedum\n",
+ "raw_meta_yaml":"{% set name = \"cereal\" %}\n{% set version = \"1.2.2\" %}\n\npackage:\n  name: {{ name }}\n  version: {{ version }}\n\nsource:\n  url: https://github.com/USCiLab/{{ name }}/archive/v{{ version }}.tar.gz\n  sha256: 1921f26d2e1daf9132da3c432e2fd02093ecaedf846e65d7679ddf868c7289c4\n\n  patches:\n    # remove cxx compiler dependency\n    - no-compiler.patch\n\nbuild:\n  noarch: generic\n  number: 1\n\nrequirements:\n  build:\n    - cmake\n\ntest:\n  commands:\n    - test -f $PREFIX/include/cereal/cereal.hpp  # [not win]\n    - if not exist %LIBRARY_INC%\\\\cereal\\\\cereal.hpp exit 1  # [win]\n\nabout:\n  home: http://uscilab.github.io/cereal/\n  license: BSD-3-Clause\n  license_family: BSD\n  license_file: LICENSE\n  summary: 'A C++11 library for serialization'\n  doc_url: http://uscilab.github.io/cereal/\n  dev_url: http://github.com/USCiLab/cereal\n\nextra:\n  recipe-maintainers:\n    - saraedum\n    - joaander\n",
  "req":{
   "__set__":true,
   "elements":[
-   "make"
+   "cmake"
   ]
  },
  "url":"https://github.com/USCiLab/cereal/archive/v1.2.2.tar.gz",
