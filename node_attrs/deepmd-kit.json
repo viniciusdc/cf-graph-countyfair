@@ -62,69 +62,102 @@
   },
   "package":{
    "name":"deepmd-kit",
-   "version":"0.12.7"
+   "version":"1.0.0"
   },
   "requirements":{
    "build":[
     "c_compiler_stub",
     "cxx_compiler_stub",
-    "cmake >=2.8",
+    "cmake >=3.7",
+    "ninja",
     "c_compiler_stub",
     "cxx_compiler_stub",
-    "cmake >=2.8",
+    "cmake >=3.7",
     "make",
+    "ninja",
     "c_compiler_stub",
     "cxx_compiler_stub",
-    "cmake >=2.8",
-    "make"
+    "cmake >=3.7",
+    "make",
+    "ninja"
    ],
    "host":[
     "python >=3.6",
+    "pip",
+    "scikit-build",
+    "m2r",
+    "tensorflow",
     "libtensorflow_cc",
+    "setuptools_scm",
+    "numpy",
+    "scipy",
     "python >=3.6",
+    "pip",
+    "scikit-build",
+    "m2r",
+    "tensorflow",
     "libtensorflow_cc",
+    "setuptools_scm",
+    "numpy",
+    "scipy",
     "python >=3.6",
-    "libtensorflow_cc"
+    "pip",
+    "scikit-build",
+    "m2r",
+    "tensorflow",
+    "libtensorflow_cc",
+    "setuptools_scm",
+    "numpy",
+    "scipy"
    ],
    "run":[
     "python",
     "tensorflow",
     "libtensorflow_cc",
+    "numpy",
+    "scipy",
     "python",
     "tensorflow",
     "libtensorflow_cc",
+    "numpy",
+    "scipy",
     "python",
     "tensorflow",
-    "libtensorflow_cc"
+    "libtensorflow_cc",
+    "numpy",
+    "scipy"
    ]
   },
   "source":{
-   "patches":[
-    "cxxflags.patch",
-    "cxxflags.patch",
-    "cxxflags.patch"
-   ],
-   "sha256":"490ac497f042c5c887403f5a0516b4e810a73412487a78fe58cd59ed7033d83e",
-   "url":"https://github.com/deepmodeling/deepmd-kit/archive/v0.12.7.tar.gz"
+   "sha256":"8613199ef885b7d3683cc5a54915768d24dbc2e230bfb80d97c90cbec246d8b5",
+   "url":"https://github.com/deepmodeling/deepmd-kit/archive/v1.0.0.tar.gz"
   },
   "test":{
    "commands":[
-    "dp_train -h",
-    "dp_test -h",
-    "dp_frz -h",
-    "dp_train -h",
-    "dp_test -h",
-    "dp_frz -h",
-    "dp_train -h",
-    "dp_test -h",
-    "dp_frz -h"
+    "dp -h",
+    "dp train -h",
+    "dp freeze -h",
+    "dp test -h",
+    "dp -h",
+    "dp train -h",
+    "dp freeze -h",
+    "dp test -h",
+    "dp -h",
+    "dp train -h",
+    "dp freeze -h",
+    "dp test -h"
+   ],
+   "imports":[
+    "deepmd",
+    "deepmd",
+    "deepmd"
    ]
   }
  },
  "name":"deepmd-kit",
  "new_version":"1.0.0",
  "pinning_version":"2019.10.01",
- "raw_meta_yaml":"{% set name = \"deepmd-kit\" %}\n{% set version = \"0.12.7\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  url: https://github.com/deepmodeling/{{ name }}/archive/v{{ version }}.tar.gz\n  sha256: 490ac497f042c5c887403f5a0516b4e810a73412487a78fe58cd59ed7033d83e \n  patches:\n    - cxxflags.patch\n\nbuild:\n  number: 0\n  skip: true  # [not linux]\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n    - cmake >=2.8\n    - make  # [unix]\n\n  host:\n    - python >=3.6\n    - libtensorflow_cc\n\n  run:\n    - python\n    - tensorflow\n    - libtensorflow_cc\n\ntest:\n  commands:\n    - dp_train -h\n    - dp_test -h\n    - dp_frz -h\n\nabout:\n  home: https://github.com/deepmodeling/deepmd-kit\n  license: LGPL-3.0\n  license_family: LGPL\n  license_file: LICENSE\n  summary: 'A deep learning package for many-body potential energy representation and molecular dynamics'\n  doc_url: https://github.com/deepmodeling/deepmd-kit\n  dev_url: https://github.com/deepmodeling/deepmd-kit\n\nextra:\n  recipe-maintainers:\n    - njzjz\n",
+ "raw_meta_yaml":"{% set name = \"deepmd-kit\" %}\n{% set version = \"1.0.0\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  url: https://github.com/deepmodeling/{{ name }}/archive/v{{ version }}.tar.gz\n  sha256: 8613199ef885b7d3683cc5a54915768d24dbc2e230bfb80d97c90cbec246d8b5 \n\nbuild:\n  number: 0\n  skip: true  # [not linux]\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n    - cmake >=3.7\n    - make  # [unix]\n    - ninja\n\n  host:\n    - python >=3.6\n    - pip\n    - scikit-build\n    - m2r\n    - tensorflow\n    - libtensorflow_cc\n    - setuptools_scm\n    - numpy\n    - scipy\n\n  run:\n    - python\n    - tensorflow\n    - libtensorflow_cc\n    - numpy\n    - scipy\n\ntest:\n  imports:\n    - deepmd\n  commands:\n    - dp -h\n    - dp train -h\n    - dp freeze -h\n    - dp test -h\n\nabout:\n  home: https://github.com/deepmodeling/deepmd-kit\n  license: LGPL-3.0\n  license_family: LGPL\n  license_file: LICENSE\n  summary: 'A deep learning package for many-body potential energy representation and molecular dynamics'\n  doc_url: https://github.com/deepmodeling/deepmd-kit\n  dev_url: https://github.com/deepmodeling/deepmd-kit\n\nextra:\n  recipe-maintainers:\n    - njzjz\n",
  "req":{
   "__set__":true,
   "elements":[
@@ -132,12 +165,19 @@
    "cmake",
    "cxx_compiler_stub",
    "libtensorflow_cc",
+   "m2r",
    "make",
+   "ninja",
+   "numpy",
+   "pip",
    "python",
+   "scikit-build",
+   "scipy",
+   "setuptools_scm",
    "tensorflow"
   ]
  },
  "smithy_version":"3.5.0",
  "url":"https://github.com/deepmodeling/deepmd-kit/archive/v0.12.6.tar.gz",
- "version":"0.12.7"
+ "version":"1.0.0"
 }
