@@ -102,15 +102,17 @@
    "summary":"A Sphinx plugin to automatically document click-based applications"
   },
   "build":{
-   "noarch":"python",
-   "number":"0",
+   "number":"1",
    "script":" -m pip install . --no-deps --ignore-installed --no-cache-dir -vvv"
   },
   "extra":{
    "recipe-maintainers":[
     "CurtLH",
+    "williamjamir",
     "CurtLH",
-    "CurtLH"
+    "williamjamir",
+    "CurtLH",
+    "williamjamir"
    ]
   },
   "package":{
@@ -131,11 +133,11 @@
    ],
    "run":[
     "python",
-    "sphinx >=1.5,<2.1",
+    "sphinx >=1.5,<3.0",
     "python",
-    "sphinx >=1.5,<2.1",
+    "sphinx >=1.5,<3.0",
     "python",
-    "sphinx >=1.5,<2.1"
+    "sphinx >=1.5,<3.0"
    ]
   },
   "source":{
@@ -153,7 +155,7 @@
  "name":"sphinx-click",
  "new_version":"2.3.0",
  "pinning_version":"2019.09.08",
- "raw_meta_yaml":"{% set name = \"sphinx-click\" %}\n{% set version = \"2.3.0\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz\n  sha256: 877d4e080f6ded85d566127c7256de8afae6ab4fdc7ef301f7cc906a8177e3e8\n\nbuild:\n  noarch: python\n  number: 0\n  script: \"{{ PYTHON }} -m pip install . --no-deps --ignore-installed --no-cache-dir -vvv\"\n\nrequirements:\n  host:\n    - python\n    - pip\n    - pbr >=2.0\n  run:\n    - python\n    - sphinx >=1.5,<2.1\n\ntest:\n  imports:\n    - sphinx_click\n\nabout:\n  home: https://pypi.org/project/sphinx-click/\n  license: MIT\n  license_family: MIT\n  license_file: LICENSE\n  summary: 'A Sphinx plugin to automatically document click-based applications' \n  description: |\n    sphinx-click is a Sphinx plugin that allows you to automatically extract \n    documentation from a click-based application and include it in your docs.\n  doc_url: https://sphinx-click.readthedocs.io/en/latest/\n  dev_url: https://github.com/click-contrib/sphinx-click\n\nextra:\n  recipe-maintainers:\n    - CurtLH\n",
+ "raw_meta_yaml":"{% set name = \"sphinx-click\" %}\n{% set version = \"2.3.0\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz\n  sha256: 877d4e080f6ded85d566127c7256de8afae6ab4fdc7ef301f7cc906a8177e3e8\n\nbuild:\n  skip: True  # [py<35]\n  number: 1\n  script: \"{{ PYTHON }} -m pip install . --no-deps --ignore-installed --no-cache-dir -vvv\"\n\nrequirements:\n  host:\n    - python\n    - pip\n    - pbr >=2.0\n  run:\n    - python\n    - sphinx >=1.5,<3.0\ntest:\n  imports:\n    - sphinx_click\n\nabout:\n  home: https://pypi.org/project/sphinx-click/\n  license: MIT\n  license_family: MIT\n  license_file: LICENSE\n  summary: 'A Sphinx plugin to automatically document click-based applications' \n  description: |\n    sphinx-click is a Sphinx plugin that allows you to automatically extract \n    documentation from a click-based application and include it in your docs.\n  doc_url: https://sphinx-click.readthedocs.io/en/latest/\n  dev_url: https://github.com/click-contrib/sphinx-click\n\nextra:\n  recipe-maintainers:\n    - CurtLH\n    - williamjamir\n",
  "req":{
   "__set__":true,
   "elements":[
