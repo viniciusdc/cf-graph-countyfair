@@ -133,18 +133,7 @@
    "summary":"A static analysis tool for C/C++ code."
   },
   "build":{
-   "number":"0",
-   "script":[
-    "mkdir build && cd build",
-    "cmake .. -DCMAKE_INSTALL_PREFIX=$PREFIX -DCMAKE_BUILD_TYPE=Release",
-    "VERBOSE=1 make install -j ${CPU_COUNT}",
-    "mkdir build && cd build",
-    "cmake .. -DCMAKE_INSTALL_PREFIX=$PREFIX -DCMAKE_BUILD_TYPE=Release -DCMAKE_OSX_SYSROOT=${CONDA_BUILD_SYSROOT}",
-    "VERBOSE=1 make install -j ${CPU_COUNT}",
-    "mkdir build && cd build",
-    "cmake .. -DCMAKE_INSTALL_PREFIX=$PREFIX -DCMAKE_BUILD_TYPE=Release",
-    "VERBOSE=1 make install -j ${CPU_COUNT}"
-   ],
+   "number":"1",
    "skip":true
   },
   "extra":{
@@ -162,20 +151,19 @@
    "build":[
     "c_compiler_stub",
     "cxx_compiler_stub",
+    "cmake",
     "c_compiler_stub",
     "cxx_compiler_stub",
+    "make",
+    "cmake",
     "c_compiler_stub",
-    "cxx_compiler_stub"
+    "cxx_compiler_stub",
+    "make",
+    "cmake"
    ],
    "host":[
-    "make",
-    "cmake",
     "pcre",
-    "make",
-    "cmake",
     "pcre",
-    "make",
-    "cmake",
     "pcre"
    ],
    "run":[
@@ -208,7 +196,7 @@
  "name":"cppcheck",
  "new_version":"1.89",
  "pinning_version":"2019.09.08",
- "raw_meta_yaml":"{% set name = \"cppcheck\" %}\n{% set version = \"1.88\" %}\n{% set sha256 = \"4aace0420d6aaa900b84b3329c5173c2294e251d2e24d8cba6e38254333dde3f\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  fn: {{ version }}.tar.gz\n  url: https://github.com/danmar/cppcheck/archive/{{ version }}.tar.gz\n  sha256: {{ sha256 }}\n  patches:\n    - force-char-cppcheck-1.87.patch\n\nbuild:\n  number: 0\n  skip: True   # [win]\n  script:\n    - mkdir build && cd build\n    - >-\n      cmake ..\n      -DCMAKE_INSTALL_PREFIX=$PREFIX\n      -DCMAKE_BUILD_TYPE=Release\n      -DCMAKE_OSX_SYSROOT=${CONDA_BUILD_SYSROOT}  # [osx]\n    - VERBOSE=1 make install -j ${CPU_COUNT}\n\nrequirements:\n  build:\n  - {{ compiler('c') }}\n  - {{ compiler('cxx') }}\n  host:\n  - make\n  - cmake\n  - pcre\n  run:\n  - pcre\n\ntest:\n  commands:\n    - cppcheck --version\n    - echo ';' > test.h; cppcheck --check-config test.h\n\nabout:\n  description:\n    Cppcheck is a static analysis tool for C/C++ code. Unlike C/C++ compilers\n    and many other analysis tools it does not detect syntax errors in the code.\n    Cppcheck primarily detects the types of bugs that the compilers normally do\n    not detect. The goal is to detect only real errors in the code (i.e. have\n    zero false positives).\n  home: 'http://cppcheck.sourceforge.net/'\n  dev_url: 'https://github.com/danmar/cppcheck'\n  license: 'GPLv3'\n  license_family: 'GPL'\n  license_file: COPYING\n  summary: 'A static analysis tool for C/C++ code.'\n\nextra:\n  recipe-maintainers:\n    - tovrstra\n",
+ "raw_meta_yaml":"{% set name = \"cppcheck\" %}\n{% set version = \"1.88\" %}\n{% set sha256 = \"4aace0420d6aaa900b84b3329c5173c2294e251d2e24d8cba6e38254333dde3f\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  fn: {{ version }}.tar.gz\n  url: https://github.com/danmar/cppcheck/archive/{{ version }}.tar.gz\n  sha256: {{ sha256 }}\n  patches:\n    - force-char-cppcheck-1.87.patch\n\nbuild:\n  number: 1\n  skip: True   # [win and vc<14]\n\nrequirements:\n  build:\n  - {{ compiler('c') }}\n  - {{ compiler('cxx') }}\n  - make  # [osx or unix]\n  - cmake\n  host:\n  - pcre\n  run:\n  - pcre\n\ntest:\n  commands:\n    - cppcheck --version\n    - echo ';' > test.h; cppcheck --check-config test.h\n\nabout:\n  description:\n    Cppcheck is a static analysis tool for C/C++ code. Unlike C/C++ compilers\n    and many other analysis tools it does not detect syntax errors in the code.\n    Cppcheck primarily detects the types of bugs that the compilers normally do\n    not detect. The goal is to detect only real errors in the code (i.e. have\n    zero false positives).\n  home: 'http://cppcheck.sourceforge.net/'\n  dev_url: 'https://github.com/danmar/cppcheck'\n  license: 'GPLv3'\n  license_family: 'GPL'\n  license_file: COPYING\n  summary: 'A static analysis tool for C/C++ code.'\n\nextra:\n  recipe-maintainers:\n    - tovrstra\n",
  "req":{
   "__set__":true,
   "elements":[
