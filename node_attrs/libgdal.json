@@ -32,7 +32,7 @@
    ]
   }
  ],
- "archived":false,
+ "archived":true,
  "bad":false,
  "conda-forge.yml":{
   "provider":{
@@ -274,7 +274,7 @@
   }
  },
  "name":"libgdal",
- "new_version":false,
+ "new_version":"3.0.1",
  "pinning_version":"2018.06.28",
  "raw_meta_yaml":"{% set version = \"2.3.1\" %}\n\npackage:\n  name: libgdal\n  version: {{ version }}\n\nsource:\n  url: http://download.osgeo.org/gdal/{{ version }}/gdal-{{ version }}.tar.xz\n  sha256: 9c4625c45a3ee7e49a604ef221778983dd9fd8104922a87f20b99d9bedb7725a\n  patches:\n    # BUILT_AS_DYNAMIC_LIB.\n    - windowshdf5.patch\n    # Use multiple cores on Windows.\n    - multiprocessor.patch\n    # disable 12 bit jpeg on Windows as we aren't using internal jpeg\n    - disable_jpeg12.patch\n\nbuild:\n  number: 2\n  skip: True  # [win and vc<14]\n\nrequirements:\n  build:\n    - pkg-config  # [not win]\n    - cmake  # [win]\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n  host:\n    - m2w64-xz  # [win]\n    - curl\n    - expat\n    - freexl\n    - geos\n    - geotiff\n    - giflib  # [not win]\n    - hdf4\n    - hdf5\n    - jpeg\n    - json-c  # [not win]\n    - kealib\n    - libdap4  # [not win]\n    - libkml  # [not win]\n    - libnetcdf\n    - libpng\n    - libspatialite\n    - libtiff\n    - openjpeg\n    - poppler  # [not win]\n    - postgresql\n    - proj4\n    - sqlite\n    - xerces-c\n    - zlib  # [not win]\n    - xz\n  run:\n    - curl\n    - expat\n    - freexl\n    - geos\n    - geotiff\n    - giflib  # [not win]\n    - hdf4\n    - hdf5\n    - jpeg\n    - json-c  # [not win]\n    - kealib\n    - libdap4  # [not win]\n    - libkml  # [not win]\n    - libnetcdf\n    - libpng\n    - libpq\n    - libspatialite\n    - libtiff\n    - openjpeg\n    - poppler  # [not win]\n    - proj4\n    - sqlite\n    - xerces-c\n    - zlib  # [not win]\n    - xz\n\ntest:\n  files:\n    - test_data\n  commands:\n    - gdal_grid --version\n    - gdal_rasterize --version\n    - gdal_translate --version\n    - gdaladdo --version\n    - gdalenhance --version\n    - gdalwarp --version\n    - gdalinfo --formats\n    - gdalinfo http://thredds.nersc.no/thredds/dodsC/greenpath/Model/topaz  # [not win]\n\nabout:\n  home: http://www.gdal.org/\n  license: MIT\n  license_file: LICENSE.TXT\n  summary: 'The Geospatial Data Abstraction Library (GDAL)'\n\nextra:\n  recipe-maintainers:\n    - ocefpaf\n    - kmuehlbauer\n    - gillins\n",
  "req":{

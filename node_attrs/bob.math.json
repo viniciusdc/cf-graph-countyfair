@@ -15,7 +15,7 @@
    ]
   }
  ],
- "archived":false,
+ "archived":true,
  "bad":false,
  "conda-forge.yml":{},
  "feedstock_name":"bob.math",
@@ -130,7 +130,7 @@
   }
  },
  "name":"bob.math",
- "new_version":false,
+ "new_version":"3.1.4",
  "raw_meta_yaml":"{% set version = \"2.0.6\" %}\n{% set variant = \"openblas\" %}\n\npackage:\n  name: bob.math\n  version: {{ version }}\n\nsource:\n  fn: bob.math-{{ version }}.zip\n  url: https://pypi.io/packages/source/b/bob.math/bob.math-{{ version }}.zip\n  md5: 02f27258a95220858bd16755359e4d15\n\nbuild:\n  number: 201\n  skip: true  # [win]\n  features:\n    - blas_{{ variant }}\n\nrequirements:\n  build:\n    - python\n    - toolchain\n    - setuptools\n    - bob.core\n    - boost 1.63.*\n    - cmake\n    - numpy x.x\n    - blas 1.1 {{ variant }}\n    - openblas 0.2.19|0.2.19.*\n    - pkg-config\n\n  run:\n    - python\n    - bob.core\n    - boost 1.63.*\n    - numpy x.x\n    - blas 1.1 {{ variant }}\n    - openblas 0.2.19|0.2.19.*\n\ntest:\n  requires:\n    - nose\n\n  imports:\n    - bob\n    - bob.math\n\n  commands:\n  # Use only 1 thread with OpenBLAS to avoid timeouts on CIs.\n  # This should have no other affect on the build. A user\n  # should still be able to set this (or not) to a different\n  # value at run-time to get the expected amount of parallelism.\n    - export OPENBLAS_NUM_THREADS=1\n    - nosetests -sv bob.math\n\nabout:\n  home: https://www.idiap.ch/software/bob/\n  license: BSD 3-Clause\n  summary: LAPACK and BLAS interfaces for Bob\n\nextra:\n  recipe-maintainers:\n    - 183amir\n",
  "req":{
   "__set__":true,
