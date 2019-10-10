@@ -557,42 +557,26 @@
     "migrator_version",
     "version"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/326843681.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"Version",
+    "migrator_version":0,
+    "version":"0.17.5"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "version"
+   ]
   }
  ],
- "bad":{
-  "code":404,
-  "exception":"HTTP Error 404: Not Found",
-  "traceback":[
-   "Traceback (most recent call last):",
-   "  File \"/root/repo/cf-scripts/conda_forge_tick/auto_tick.xsh\", line 678, in main",
-   "    hash_type=attrs.get('hash_type', 'sha256'))",
-   "  File \"/root/repo/cf-scripts/conda_forge_tick/auto_tick.xsh\", line 98, in run",
-   "    migrate_return = migrator.migrate(recipe_dir, attrs, **kwargs)",
-   "  File \"/root/repo/cf-scripts/conda_forge_tick/migrators.xsh\", line 463, in migrate",
-   "    new_patterns = self.get_hash_patterns('meta.yaml', urls, hash_type)",
-   "  File \"/root/repo/cf-scripts/conda_forge_tick/migrators.xsh\", line 380, in get_hash_patterns",
-   "    hash = hash_url(url, hash_type)",
-   "  File \"/opt/conda/envs/run_env/lib/python3.7/site-packages/rever/tools.xsh\", line 207, in hash_url",
-   "    for b in stream_url_progress(url, verb='Hashing', quiet=quiet):",
-   "  File \"/opt/conda/envs/run_env/lib/python3.7/site-packages/rever/tools.xsh\", line 179, in stream_url_progress",
-   "    with urllib.request.urlopen(url) as f:",
-   "  File \"/opt/conda/envs/run_env/lib/python3.7/urllib/request.py\", line 222, in urlopen",
-   "    return opener.open(url, data, timeout)",
-   "  File \"/opt/conda/envs/run_env/lib/python3.7/urllib/request.py\", line 531, in open",
-   "    response = meth(req, response)",
-   "  File \"/opt/conda/envs/run_env/lib/python3.7/urllib/request.py\", line 641, in http_response",
-   "    'http', request, response, code, msg, hdrs)",
-   "  File \"/opt/conda/envs/run_env/lib/python3.7/urllib/request.py\", line 569, in error",
-   "    return self._call_chain(*args)",
-   "  File \"/opt/conda/envs/run_env/lib/python3.7/urllib/request.py\", line 503, in _call_chain",
-   "    result = func(*args)",
-   "  File \"/opt/conda/envs/run_env/lib/python3.7/urllib/request.py\", line 649, in http_error_default",
-   "    raise HTTPError(req.full_url, code, msg, hdrs, fp)",
-   "urllib.error.HTTPError: HTTP Error 404: Not Found",
-   ""
-  ],
-  "url":"https://github.com/catboost/catboost/releases/download/v0.17.5/catboost-R-Linux-0.17.5.tgz"
- },
+ "bad":false,
  "conda-forge.yml":{
   "compiler_stack":"comp7",
   "max_py_ver":"37",
@@ -664,7 +648,7 @@
  },
  "name":"r-catboost",
  "new_version":"0.17.5",
- "pinning_version":"2019.09.27",
+ "pinning_version":"2019.10.08",
  "raw_meta_yaml":"{% set name = \"r-catboost\" %}\n{% set version = \"0.17.4\" %}\n{% set posix = 'm2-' if win else '' %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  url: https://github.com/catboost/catboost/releases/download/v{{ version }}/catboost-R-Linux-{{ version }}.tgz  # [linux]\n  sha256: 73c1ad6e98ff812323a73942dd4b7a6843a93ec6c60c05cd005c59007af23596  # [linux]\n\n  url: https://github.com/catboost/catboost/releases/download/v{{ version }}/catboost-R-Windows-{{ version }}.tgz  # [win]\n  sha256: 4e59859cdfa48da4c7f329d987fd7ec6a7da0ec443d806ff95321c8b22d6bcf7  # [win]\n\n  url: https://github.com/catboost/catboost/releases/download/v{{ version }}/catboost-R-Darwin-{{ version }}.tgz  # [osx]\n  sha256: 7d8e9dcb2f232473c31045ad4ecc6b792191c7010afb83c4c7ea13066f3e1e40  # [osx]\n\nbuild:\n  number: 0\n\nrequirements:\n  build:\n    - {{posix}}zip               # [win]\n    # dummy requirement\n    - make                       # [linux]\n  host:\n    - r-base\n    - r-jsonlite\n\n  run:\n    - r-base\n    - r-jsonlite\n\ntest:\n commands:\n    - $R -e \"library('catboost')\"  # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('catboost')\\\"\"  # [win].\n\nabout:\n  home: https://github.com/catboost/catboost\n  license: Apache 2.0\n  license_family: Apache\n  license_file: LICENSE.txt\n  summary: 'CatBoost is a machine learning algorithm that uses gradient boosting on decision trees. It is available as an open source library.'\n  doc_url: https://tech.yandex.com/catboost/doc/dg/concepts/about-docpage/\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n    - curious-odd-man\n",
  "req":{
   "__set__":true,
@@ -674,7 +658,7 @@
    "r-jsonlite"
   ]
  },
- "smithy_version":"3.4.8",
+ "smithy_version":"3.5.0",
  "url":"https://github.com/catboost/catboost/releases/download/v0.16.5/catboost-R-Linux-0.16.5.tgz",
  "version":"0.17.4"
 }
