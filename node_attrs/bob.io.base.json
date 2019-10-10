@@ -126,7 +126,7 @@
   }
  },
  "name":"bob.io.base",
- "new_version":"3.0.6",
+ "new_version":false,
  "raw_meta_yaml":"{% set version = \"2.0.12\" %}\n{% set build_number = \"1\" %}\n\n{% set hdf5_version = os.environ.get('HDF5_VERSION', '1.8.18|1.8.18.*').replace('\"','')|string %}\n{% set build_string = \"py{}_hdf5{}_{}\".format(environ.get('CONDA_PY', ''), hdf5_version.split('|')[0], build_number) %}\n\npackage:\n  name: bob.io.base\n  version: {{ version }}\n\nsource:\n  fn: bob.io.base-{{ version }}.zip\n  url: https://pypi.io/packages/source/b/bob.io.base/bob.io.base-{{ version }}.zip\n  md5: 1ad904bf9d5a689638fd978fc912967b\n\nbuild:\n  number: {{ build_number }}\n  string: {{ build_string }}\n  skip: true  # [win]\n\nrequirements:\n  build:\n    - python\n    - toolchain\n    - setuptools\n    - bob.extension\n    - bob.blitz\n    - bob.core\n    - hdf5 {{ hdf5_version }}\n    - cmake\n    - pkg-config\n    - boost 1.61.*\n\n  run:\n    - python\n    - bob.extension\n    - bob.blitz\n    - bob.core\n    - hdf5 {{ hdf5_version }}\n    - boost 1.61.*\n\ntest:\n  imports:\n    - bob\n    - bob.io\n    - bob.io.base\n\n  commands:\n    - nosetests -sv bob.io.base\n\n  requires:\n    - nose\n\nabout:\n  home: https://www.idiap.ch/software/bob/\n  license: Modified BSD License (3-clause)\n  summary: Basic IO for Bob\n\nextra:\n  recipe-maintainers:\n    - 183amir\n",
  "req":{
   "__set__":true,

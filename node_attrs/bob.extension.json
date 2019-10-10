@@ -134,7 +134,7 @@
   }
  },
  "name":"bob.extension",
- "new_version":"3.1.2",
+ "new_version":false,
  "raw_meta_yaml":"{% set version = \"2.3.7\" %}\n\npackage:\n  name: bob.extension\n  version: {{ version }}\n\nsource:\n  fn: bob.extension-{{ version }}.zip\n  url: https://pypi.io/packages/source/b/bob.extension/bob.extension-{{ version }}.zip\n  md5: 9e30ad3d58f64c8f6b603d916c633f95\n\nbuild:\n  entry_points:\n    - bob_new_version.py = bob.extension.scripts:new_version\n    - bob_dependecy_graph.py = bob.extension.scripts:dependency_graph\n  number: 0\n  skip: true  # [win]\n\nrequirements:\n  build:\n    - python\n    - toolchain\n    - setuptools\n\n  run:\n    - python\n    - setuptools\n\ntest:\n  requires:\n    - nose\n    - boost\n    - cmake\n    - pkg-config\n    - freetype\n    - libblitz\n    - numpy\n    - toolchain\n    - sphinx_rtd_theme\n\n  imports:\n    - bob\n    - bob.extension\n    - bob.extension.scripts\n\n  commands:\n    - bob_new_version.py --help\n    - bob_dependecy_graph.py --help\n    - export CFLAGS=\"${CFLAGS} -pthread\"  # [unix]\n    - export LDFLAGS=\"${LDFLAGS} -lpthread\"  # [unix]\n    - nosetests -sv bob.extension  # [not osx]\n    - DYLD_FALLBACK_LIBRARY_PATH=$PREFIX/lib nosetests -sv bob.extension  # [osx]\n\nabout:\n  home: https://www.idiap.ch/software/bob/\n  license: BSD 3-Clause\n  summary: Building of Python/C++ extensions for Bob\n\nextra:\n  recipe-maintainers:\n    - 183amir\n",
  "req":{
   "__set__":true,
