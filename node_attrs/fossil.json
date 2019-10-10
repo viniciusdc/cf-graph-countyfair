@@ -126,7 +126,8 @@
    "summary":"Fossil is a simple, high-reliability, distributed software configuration management system with these advanced features:\n"
   },
   "build":{
-   "number":"0"
+   "number":"0",
+   "skip":true
   },
   "extra":{
    "recipe-maintainers":[
@@ -137,14 +138,13 @@
   },
   "package":{
    "name":"fossil",
-   "version":"2.9"
+   "version":"2.10"
   },
   "requirements":{
    "build":[
     "c_compiler_stub",
     "cmake",
     "perl",
-    "python 3.6",
     "c_compiler_stub",
     "ccache",
     "make",
@@ -180,8 +180,8 @@
    ]
   },
   "source":{
-   "sha256":"1cb2ada92d43e3e7e008fe77f5e743d301c7ea34d4c36c42f255f873e73d8b4f",
-   "url":"https://www.fossil-scm.org/xfer/uv/fossil-src-2.9.tar.gz"
+   "sha256":"d8a3776d2ce77385ed5ff20a2776d13bb534fb2508e87351e14e94f91cd12b10",
+   "url":"https://www.fossil-scm.org/xfer/uv/fossil-src-2.10.tar.gz"
   },
   "test":{
    "commands":[
@@ -194,7 +194,7 @@
  "name":"fossil",
  "new_version":"2.10",
  "pinning_version":"2019.10.01",
- "raw_meta_yaml":"{% set name = \"fossil\" %}\n{% set version = \"2.9\" %}\n{% set am_version = \"1.15\" %} # keep synchronized with build.sh\n\npackage:\n  name: {{ name }}\n  version: {{ version }}\n\nsource:\n  url: https://www.fossil-scm.org/xfer/uv/{{ name }}-src-{{ version }}.tar.gz\n  sha256: 1cb2ada92d43e3e7e008fe77f5e743d301c7ea34d4c36c42f255f873e73d8b4f\n\nbuild:\n  number: 0\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - ccache  # [unix]\n    - cmake  # [win]\n    - make  # [unix]\n    - perl  # [win]\n    - python 3.6  # [win]\n  host:\n    - openssl\n    - sqlite  # [unix]\n    - tk\n    - zlib\n  run:\n    - openssl\n    - sqlite  # [unix]\n    - tk\n    - zlib\n\ntest:\n  commands:\n    - fossil --help\n\nabout:\n  home: https://fossil-scm.org\n  license: BSD-2-Clause\n  license_family: BSD\n  license_file: COPYRIGHT-BSD2.txt\n  summary: >\n    Fossil is a simple, high-reliability, distributed software configuration\n    management system with these advanced features:\n\n  doc_url: https://fossil-scm.org/index.html/doc/trunk/www/permutedindex.html\n  dev_url: https://fossil-scm.org/index.html/dir?ci=tip\n\nextra:\n  recipe-maintainers:\n    - bollwyvl\n",
+ "raw_meta_yaml":"{% set name = \"fossil\" %}\n{% set version = \"2.10\" %}\n\npackage:\n  name: {{ name }}\n  version: {{ version }}\n\nsource:\n  url: https://www.fossil-scm.org/xfer/uv/{{ name }}-src-{{ version }}.tar.gz\n  sha256: d8a3776d2ce77385ed5ff20a2776d13bb534fb2508e87351e14e94f91cd12b10\n\nbuild:\n  number: 0\n  skip: true  # [win and vc<14]\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - ccache  # [unix]\n    - cmake  # [win]\n    - make  # [unix]\n    - perl  # [win]\n  host:\n    - openssl\n    - sqlite  # [unix]\n    - tk\n    - zlib\n  run:\n    - openssl\n    - sqlite  # [unix]\n    - tk\n    - zlib\n\ntest:\n  commands:\n    - fossil --help\n\nabout:\n  home: https://fossil-scm.org\n  license: BSD-2-Clause\n  license_family: BSD\n  license_file: COPYRIGHT-BSD2.txt\n  summary: >\n    Fossil is a simple, high-reliability, distributed software configuration\n    management system with these advanced features:\n\n  doc_url: https://fossil-scm.org/index.html/doc/trunk/www/permutedindex.html\n  dev_url: https://fossil-scm.org/index.html/dir?ci=tip\n\nextra:\n  recipe-maintainers:\n    - bollwyvl\n",
  "req":{
   "__set__":true,
   "elements":[
@@ -204,7 +204,6 @@
    "make",
    "openssl",
    "perl",
-   "python",
    "sqlite",
    "tk",
    "zlib"
@@ -212,5 +211,5 @@
  },
  "smithy_version":"3.5.0",
  "url":"https://www.fossil-scm.org/xfer/uv/fossil-src-2.9.tar.gz",
- "version":"2.9"
+ "version":"2.10"
 }
