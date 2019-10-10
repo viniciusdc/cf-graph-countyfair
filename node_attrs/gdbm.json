@@ -20,7 +20,12 @@
  ],
  "archived":false,
  "bad":false,
- "conda-forge.yml":{},
+ "conda-forge.yml":{
+  "provider":{
+   "linux_aarch64":"default",
+   "linux_ppc64le":"default"
+  }
+ },
  "feedstock_name":"gdbm",
  "hash_type":"sha1",
  "meta_yaml":{
@@ -57,8 +62,11 @@
   "requirements":{
    "build":[
     "c_compiler_stub",
+    "make",
     "c_compiler_stub",
-    "c_compiler_stub"
+    "make",
+    "c_compiler_stub",
+    "make"
    ],
    "host":[
     "readline",
@@ -87,11 +95,12 @@
  "name":"gdbm",
  "new_version":false,
  "pinning_version":"2019.10.08",
- "raw_meta_yaml":"{% set name = \"gdbm\" %}\n{% set version = \"1.18\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  url: ftp://ftp.gnu.org/gnu/{{ name }}/{{ name }}-{{ version }}.tar.gz\n  sha1: 0f1056ab3beb1bf09dad06f8083f2c79716a5b1b\n\nbuild:\n  number: 1\n  run_exports:\n    # Please see ABI report\n    # https://abi-laboratory.pro/index.php?view=timeline&l=gdbm\n    - {{ pin_subpackage(name, max_pin='x.x') }}\n  skip: True  # [win]\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n  host:\n    - readline\n\ntest:\n  commands:\n    - gdbm_dump --version\n    - gdbm_load --version\n    - gdbmtool --version\n\nabout:\n  home: https://www.gnu.org.ua/software/gdbm/\n  license: GPL-3.0\n  license_family: GPL\n  license_file: COPYING\n  summary: >\n    A library of database functions that use extensible hashing and works\n    similar to the standard UNIX dbm functions.\n\nextra:\n  recipe-maintainers:\n    - hmaarrfk\n    - jakirkham\n",
+ "raw_meta_yaml":"{% set name = \"gdbm\" %}\n{% set version = \"1.18\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  url: ftp://ftp.gnu.org/gnu/{{ name }}/{{ name }}-{{ version }}.tar.gz\n  sha1: 0f1056ab3beb1bf09dad06f8083f2c79716a5b1b\n\nbuild:\n  number: 1\n  run_exports:\n    # Please see ABI report\n    # https://abi-laboratory.pro/index.php?view=timeline&l=gdbm\n    - {{ pin_subpackage(name, max_pin='x.x') }}\n  skip: True  # [win]\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - make\n  host:\n    - readline\n\ntest:\n  commands:\n    - gdbm_dump --version\n    - gdbm_load --version\n    - gdbmtool --version\n\nabout:\n  home: https://www.gnu.org.ua/software/gdbm/\n  license: GPL-3.0\n  license_family: GPL\n  license_file: COPYING\n  summary: >\n    A library of database functions that use extensible hashing and works\n    similar to the standard UNIX dbm functions.\n\nextra:\n  recipe-maintainers:\n    - hmaarrfk\n    - jakirkham\n",
  "req":{
   "__set__":true,
   "elements":[
    "c_compiler_stub",
+   "make",
    "readline"
   ]
  },
