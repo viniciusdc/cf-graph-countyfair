@@ -2,15 +2,32 @@
  "bad":false,
  "conda-forge.yml":{},
  "feedstock_name":"freeimage",
- "hash_type":"md5",
+ "hash_type":"sha256",
  "meta_yaml":{
   "about":{
    "home":"http://freeimage.sourceforge.net/",
-   "license":"GPLv2 and FreeImage Public License",
+   "license":"GPLv2 GPLv3 FreeImage",
+   "license_file":[
+    "license-fi.txt",
+    "license-gplv2.txt",
+    "license-gplv3.txt",
+    "license-fi.txt",
+    "license-gplv2.txt",
+    "license-gplv3.txt",
+    "license-fi.txt",
+    "license-gplv2.txt",
+    "license-gplv3.txt"
+   ],
    "summary":"Helps provide support for many common image formats (PNG, JPEG, TIFF, BMP and others)."
   },
   "build":{
+   "binary_relocation":false,
    "number":"0",
+   "run_exports":[
+    "subpackage_stub",
+    "subpackage_stub",
+    "subpackage_stub"
+   ],
    "skip":true
   },
   "extra":{
@@ -18,23 +35,38 @@
     "almarklein",
     "jakirkham",
     "msarahan",
+    "seanyen",
     "almarklein",
     "jakirkham",
     "msarahan",
+    "seanyen",
     "almarklein",
     "jakirkham",
-    "msarahan"
+    "msarahan",
+    "seanyen"
    ]
   },
   "package":{
    "name":"freeimage",
-   "version":"3.17.0"
+   "version":"3.18.0"
+  },
+  "requirements":{
+   "build":[
+    "c_compiler_stub",
+    "cxx_compiler_stub",
+    "c_compiler_stub",
+    "cxx_compiler_stub",
+    "make",
+    "c_compiler_stub",
+    "cxx_compiler_stub",
+    "make"
+   ]
   },
   "source":{
-   "fn":"FreeImage3170.zip",
-   "md5":"459e15f0ec75d6efa3c7bd63277ead86",
+   "fn":"FreeImage3180.zip",
    "patches":null,
-   "url":"http://optimate.dl.sourceforge.net/project/freeimage/Source%20Distribution/3.17.0/FreeImage3170.zip"
+   "sha256":"f41379682f9ada94ea7b34fe86bf9ee00935a3147be41b6569c9605a53e438fd",
+   "url":"http://downloads.sourceforge.net/freeimage/FreeImage3180.zip"
   },
   "test":{
    "commands":[
@@ -51,11 +83,15 @@
  },
  "name":"freeimage",
  "new_version":false,
- "raw_meta_yaml":"{% set version = \"3.17.0\" %}\n\n\npackage:\n    name: freeimage\n    version: {{ version }}\n    # note: also update version in run_test.py\n\nsource:\n    fn: FreeImage3170.zip\n    url: http://optimate.dl.sourceforge.net/project/freeimage/Source%20Distribution/{{ version }}/FreeImage{{ version.replace(\".\", \"\") }}.zip\n    md5: 459e15f0ec75d6efa3c7bd63277ead86\n    \n    patches:\n        - Makefile.osx.patch  # [osx]\n\nbuild:\n    number: 0\n    skip: true  # [win]\n\ntest:\n    requires:\n        - python\n    commands:\n        - python run_test.py\n\nabout:\n    home: http://freeimage.sourceforge.net/\n    license: GPLv2 and FreeImage Public License\n    summary: Helps provide support for many common image formats (PNG, JPEG, TIFF, BMP and others).\n\nextra:\n    recipe-maintainers:\n        - almarklein\n        - jakirkham\n        - msarahan\n",
+ "raw_meta_yaml":"{% set version = \"3.18.0\" %}\n\n\npackage:\n    name: freeimage\n    version: {{ version }}\n    # note: also update version in run_test.py\n\nsource:\n    fn: FreeImage{{ version.replace(\".\", \"\") }}.zip\n    url: http://downloads.sourceforge.net/freeimage/FreeImage{{ version.replace(\".\", \"\") }}.zip\n    sha256: f41379682f9ada94ea7b34fe86bf9ee00935a3147be41b6569c9605a53e438fd\n    patches:\n        - Makefile.osx.patch  # [osx]\n\nbuild:\n    number: 0\n    skip: true  # [win and vc<14]\n    binary_relocation: False  # [osx]\n    run_exports:\n        - {{ pin_subpackage('freeimage', max_pin='x.x') }}\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n    - make  # [unix]\n\ntest:\n    requires:\n        - python\n    commands:\n        - python run_test.py\n\nabout:\n    home: http://freeimage.sourceforge.net/\n    license: GPLv2 GPLv3 FreeImage\n    license_file:\n        - license-fi.txt\n        - license-gplv2.txt\n        - license-gplv3.txt\n    summary: Helps provide support for many common image formats (PNG, JPEG, TIFF, BMP and others).\n\nextra:\n    recipe-maintainers:\n        - almarklein\n        - jakirkham\n        - msarahan\n        - seanyen\n",
  "req":{
   "__set__":true,
-  "elements":[]
+  "elements":[
+   "c_compiler_stub",
+   "cxx_compiler_stub",
+   "make"
+  ]
  },
  "url":"http://optimate.dl.sourceforge.net/project/freeimage/Source%20Distribution/3.17.0/FreeImage3170.zip",
- "version":"3.17.0"
+ "version":"3.18.0"
 }
