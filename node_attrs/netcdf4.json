@@ -167,52 +167,28 @@
     "migrator_version",
     "name"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/328238923.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"MigrationYaml",
+    "migrator_object_version":1,
+    "migrator_version":0,
+    "name":"libnetcdf-4"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_object_version",
+    "migrator_version",
+    "name"
+   ]
   }
  ],
- "bad":{
-  "code":404,
-  "exception":"HTTP Error 404: Not Found",
-  "traceback":[
-   "Traceback (most recent call last):",
-   "  File \"/root/repo/cf-scripts/conda_forge_tick/auto_tick.xsh\", line 682, in main",
-   "    hash_type=attrs.get('hash_type', 'sha256'))",
-   "  File \"/root/repo/cf-scripts/conda_forge_tick/auto_tick.xsh\", line 98, in run",
-   "    migrate_return = migrator.migrate(recipe_dir, attrs, **kwargs)",
-   "  File \"/root/repo/cf-scripts/conda_forge_tick/migrators.xsh\", line 465, in migrate",
-   "    new_patterns = self.get_hash_patterns('meta.yaml', urls, hash_type)",
-   "  File \"/root/repo/cf-scripts/conda_forge_tick/migrators.xsh\", line 382, in get_hash_patterns",
-   "    hash = hash_url(url, hash_type)",
-   "  File \"/opt/conda/envs/run_env/lib/python3.7/site-packages/rever/tools.xsh\", line 207, in hash_url",
-   "    for b in stream_url_progress(url, verb='Hashing', quiet=quiet):",
-   "  File \"/opt/conda/envs/run_env/lib/python3.7/site-packages/rever/tools.xsh\", line 179, in stream_url_progress",
-   "    with urllib.request.urlopen(url) as f:",
-   "  File \"/opt/conda/envs/run_env/lib/python3.7/urllib/request.py\", line 222, in urlopen",
-   "    return opener.open(url, data, timeout)",
-   "  File \"/opt/conda/envs/run_env/lib/python3.7/urllib/request.py\", line 531, in open",
-   "    response = meth(req, response)",
-   "  File \"/opt/conda/envs/run_env/lib/python3.7/urllib/request.py\", line 641, in http_response",
-   "    'http', request, response, code, msg, hdrs)",
-   "  File \"/opt/conda/envs/run_env/lib/python3.7/urllib/request.py\", line 563, in error",
-   "    result = self._call_chain(*args)",
-   "  File \"/opt/conda/envs/run_env/lib/python3.7/urllib/request.py\", line 503, in _call_chain",
-   "    result = func(*args)",
-   "  File \"/opt/conda/envs/run_env/lib/python3.7/urllib/request.py\", line 755, in http_error_302",
-   "    return self.parent.open(new, timeout=req.timeout)",
-   "  File \"/opt/conda/envs/run_env/lib/python3.7/urllib/request.py\", line 531, in open",
-   "    response = meth(req, response)",
-   "  File \"/opt/conda/envs/run_env/lib/python3.7/urllib/request.py\", line 641, in http_response",
-   "    'http', request, response, code, msg, hdrs)",
-   "  File \"/opt/conda/envs/run_env/lib/python3.7/urllib/request.py\", line 569, in error",
-   "    return self._call_chain(*args)",
-   "  File \"/opt/conda/envs/run_env/lib/python3.7/urllib/request.py\", line 503, in _call_chain",
-   "    result = func(*args)",
-   "  File \"/opt/conda/envs/run_env/lib/python3.7/urllib/request.py\", line 649, in http_error_default",
-   "    raise HTTPError(req.full_url, code, msg, hdrs, fp)",
-   "urllib.error.HTTPError: HTTP Error 404: Not Found",
-   ""
-  ],
-  "url":"https://codeload.github.com/Unidata/netcdf4-python/zip/v1.5.2relrel"
- },
+ "bad":false,
  "conda-forge.yml":{
   "compiler_stack":"comp7",
   "max_py_ver":"37",
@@ -345,7 +321,7 @@
  },
  "name":"netcdf4",
  "new_version":"1.5.2rel",
- "pinning_version":"2019.06.06",
+ "pinning_version":"2019.10.11",
  "raw_meta_yaml":"{% set version = \"1.5.1.2\" %}\n\npackage:\n  name: netcdf4\n  version: {{ version }}\n\nsource:\n  url: https://github.com/Unidata/netcdf4-python/archive/v{{ version }}rel.tar.gz\n  sha256: b58ee907207d01d08b0cec2e2c2cb8d76cd435e12290a017512adbcb3d931e58\n\nbuild:\n  skip: True  # [win and vc<14]\n  number: 1\n  entry_points:\n    - ncinfo = netCDF4.utils:ncinfo\n    - nc4tonc3 = netCDF4.utils:nc4tonc3\n    - nc3tonc4 = netCDF4.utils:nc3tonc4\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n  host:\n    - python\n    - pip\n    - numpy\n    - cython >=0.19\n    - cftime >=1.0.1\n    - hdf5\n    - libnetcdf\n  run:\n    - python\n    - setuptools\n    - {{ pin_compatible('numpy') }}\n    - cftime\n    - hdf5\n    - libnetcdf\n\ntest:\n  imports:\n    - netCDF4\n    - cftime\n  commands:\n    - ncinfo -h\n    - nc4tonc3 -h\n    - nc3tonc4 -h\n\nabout:\n  home: http://github.com/Unidata/netcdf4-python\n  license: OSI Approved and MIT\n  license_file: COPYING\n  summary: 'Provides an object-oriented python interface to the netCDF version 4 library'\n  dev_url: https://github.com/Unidata/netcdf4-python\n  doc_url: https://unidata.github.io/netcdf4-python\n\nextra:\n  recipe-maintainers:\n    - ocefpaf\n    - pelson\n    - dopplershift\n    - xylar\n",
  "req":{
   "__set__":true,
@@ -362,7 +338,7 @@
    "setuptools"
   ]
  },
- "smithy_version":"3.3.6",
+ "smithy_version":"3.6.0",
  "time":1568135267.7063527,
  "url":"https://github.com/Unidata/netcdf4-python/archive/v1.5.1.2rel.tar.gz",
  "version":"1.5.1.2"
