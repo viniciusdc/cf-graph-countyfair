@@ -56,7 +56,7 @@
    "summary":"LCOV is an extension of GCOV, a GNU tool which provides information about what parts of a program are actually executed (i.e. \"covered\") while running a particular test case."
   },
   "build":{
-   "number":"1000"
+   "number":"0"
   },
   "extra":{
    "recipe-maintainers":[
@@ -67,7 +67,7 @@
   },
   "package":{
    "name":"lcov",
-   "version":"1.13"
+   "version":"1.14"
   },
   "requirements":{
    "build":[
@@ -84,44 +84,27 @@
     "perl"
    ]
   },
-  "source":[
-   {
-    "fn":"lcov-1.13.tar.gz",
-    "patches":[
-     "fix_perl_in_conda.patch"
-    ],
-    "sha256":"3650ad22773c56aaf8c5288e068dd35bd03f57659b6455dc6f8e21451c83b5e8",
-    "url":"https://github.com/linux-test-project/lcov/archive/v1.13.tar.gz"
-   },
-   {
-    "fn":"lcov-1.13.tar.gz",
-    "patches":[
-     "fix_perl_in_conda.patch"
-    ],
-    "sha256":"3650ad22773c56aaf8c5288e068dd35bd03f57659b6455dc6f8e21451c83b5e8",
-    "url":"https://github.com/linux-test-project/lcov/archive/v1.13.tar.gz"
-   },
-   {
-    "fn":"lcov-1.13.tar.gz",
-    "patches":[
-     "fix_perl_in_conda.patch"
-    ],
-    "sha256":"3650ad22773c56aaf8c5288e068dd35bd03f57659b6455dc6f8e21451c83b5e8",
-    "url":"https://github.com/linux-test-project/lcov/archive/v1.13.tar.gz"
-   }
-  ],
+  "source":{
+   "patches":[
+    "add_version.patch",
+    "add_version.patch",
+    "add_version.patch"
+   ],
+   "sha256":"f19eff1dcf5f40f4a57d959584acd318155873c43d723e25dd1b91636f94ca41",
+   "url":"https://github.com/linux-test-project/lcov/archive/v1.14.tar.gz"
+  },
   "test":{
    "commands":[
-    "lcov --help",
-    "lcov --help",
-    "lcov --help"
+    "lcov --version",
+    "lcov --version",
+    "lcov --version"
    ]
   }
  },
  "name":"lcov",
  "new_version":"1.14",
  "pinning_version":"2019.02.24",
- "raw_meta_yaml":"{% set version = \"1.13\" %}\n\npackage:\n  name: lcov\n  version: {{ version }}\n\nsource:\n  - url: https://github.com/linux-test-project/lcov/archive/v{{ version }}.tar.gz\n    fn: lcov-{{ version }}.tar.gz\n    sha256: 3650ad22773c56aaf8c5288e068dd35bd03f57659b6455dc6f8e21451c83b5e8\n    patches:\n      - fix_perl_in_conda.patch\n\nbuild:\n  number: 1000\n\nrequirements:\n  build:\n    - perl\n    - make\n  run:\n    - perl\n\ntest:\n  commands:\n    - lcov --help\n\nabout:\n  home: http://ltp.sourceforge.net/test/coverage/lcov.php\n  summary: 'LCOV is an extension of GCOV, a GNU tool which provides information about\n  what parts of a program are actually executed (i.e. \"covered\") while running\n  a particular test case.'\n  license: GPL-2\n  license_family: GPL-2\n  license_url: https://www.gnu.org/licenses/old-licenses/gpl-2.0.en.html\n  license_file: '{{ environ[\"SRC_DIR\"] }}/COPYING'\n\nextra:\n  recipe-maintainers:\n    - mjscosta\n",
+ "raw_meta_yaml":"{% set version = \"1.14\" %}  # remember to update add_version.patch\n{% set sha256 = \"f19eff1dcf5f40f4a57d959584acd318155873c43d723e25dd1b91636f94ca41\" %}\n\npackage:\n  name: lcov\n  version: {{ version }}\n\nsource:\n  url: https://github.com/linux-test-project/lcov/archive/v{{ version }}.tar.gz\n  sha256: {{ sha256 }}\n  patches:\n    - add_version.patch\n\nbuild:\n  number: 0\n\nrequirements:\n  build:\n    - perl\n    - make\n  run:\n    - perl\n\ntest:\n  commands:\n    - lcov --version\n\nabout:\n  home: http://ltp.sourceforge.net/test/coverage/lcov.php\n  summary: 'LCOV is an extension of GCOV, a GNU tool which provides information about\n  what parts of a program are actually executed (i.e. \"covered\") while running\n  a particular test case.'\n  license: GPL-2\n  license_family: GPL-2\n  license_url: https://www.gnu.org/licenses/old-licenses/gpl-2.0.en.html\n  license_file: '{{ environ[\"SRC_DIR\"] }}/COPYING'\n\nextra:\n  recipe-maintainers:\n    - mjscosta\n",
  "req":{
   "__set__":true,
   "elements":[
@@ -131,5 +114,5 @@
  },
  "smithy_version":"3.2.14",
  "url":"https://github.com/linux-test-project/lcov/archive/v1.13.tar.gz",
- "version":"1.13"
+ "version":"1.14"
 }
