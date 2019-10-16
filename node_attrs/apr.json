@@ -40,19 +40,23 @@
    "ignore_run_exports":[
     "expat"
    ],
-   "number":"0"
+   "number":"1",
+   "skip":true
   },
   "extra":{
    "recipe-maintainers":[
     "jakirkham",
     "mingwandroid",
     "nehaljwani",
+    "seanyen",
     "jakirkham",
     "mingwandroid",
     "nehaljwani",
+    "seanyen",
     "jakirkham",
     "mingwandroid",
-    "nehaljwani"
+    "nehaljwani",
+    "seanyen"
    ]
   },
   "outputs":[
@@ -73,7 +77,8 @@
     "test":{
      "commands":[
       "if not exist %LIBRARY_INC%\\\\apr.h             exit 1",
-      "if not exist %LIBRARY_BIN%\\\\libapr-1.dll      exit 1"
+      "if not exist %LIBRARY_BIN%\\\\libapr-1.dll      exit 1",
+      "if not exist %LIBRARY_LIB%\\\\libapr-1.lib      exit 1"
      ]
     },
     "version":"1.6.5"
@@ -99,7 +104,8 @@
     "test":{
      "commands":[
       "if not exist %LIBRARY_INC%\\\\apu.h             exit 1",
-      "if not exist %LIBRARY_BIN%\\\\libaprutil-1.dll  exit 1"
+      "if not exist %LIBRARY_BIN%\\\\libaprutil-1.dll  exit 1",
+      "if not exist %LIBRARY_LIB%\\\\libaprutil-1.lib  exit 1"
      ]
     },
     "version":"1.6.1"
@@ -122,7 +128,10 @@
     "script":"install_libapriconv.bat",
     "test":{
      "commands":[
-      "if not exist %LIBRARY_BIN%\\\\libapriconv-1.dll exit 1"
+      "if not exist %LIBRARY_INC%\\\\apr_iconv.h       exit 1",
+      "if not exist %LIBRARY_BIN%\\\\libapriconv-1.dll exit 1",
+      "if not exist %LIBRARY_LIB%\\\\libapriconv-1.lib exit 1",
+      "if not exist %LIBRARY_BIN%\\\\iconv\\\\utf-8.so   exit 1"
      ]
     },
     "version":"1.2.2"
@@ -287,6 +296,7 @@
   "requirements":{
    "build":[
     "c_compiler_stub",
+    "cmake",
     "c_compiler_stub",
     "c_compiler_stub"
    ],
@@ -306,59 +316,63 @@
   "source":[
    {
     "folder":"apr",
-    "sha256":"922e3e32ca304e864b080236dc490bfc5be0fbdfda3a9f971653dfa8489e0c1c",
-    "url":"http://www-us.apache.org/dist//apr/apr-1.6.5-win32-src.zip"
+    "sha256":"70dcf9102066a2ff2ffc47e93c289c8e54c95d8dda23b503f9e61bb0cbd2d105",
+    "url":"http://www-us.apache.org/dist//apr/apr-1.6.5.tar.gz"
    },
    {
     "folder":"apr-util",
-    "sha256":"9eb17fff6484333fe65b7972411ee33dfdb468896f85add0e1ff1b6751698b41",
-    "url":"http://www-us.apache.org/dist//apr/apr-util-1.6.1-win32-src.zip"
+    "sha256":"b65e40713da57d004123b6319828be7f1273fbc6490e145874ee1177e112c459",
+    "url":"http://www-us.apache.org/dist//apr/apr-util-1.6.1.tar.gz"
    },
    {
     "folder":"apr-iconv",
-    "sha256":"7b5dbcf81df98e31ef52deff78eee1746b7ea86025efd220c5faa62fabb76bdf",
-    "url":"http://www-us.apache.org/dist//apr/apr-iconv-1.2.2-win32-src.zip"
+    "sha256":"ce94c7722ede927ce1e5a368675ace17d96d60ff9b8918df216ee5c1298c6a5e",
+    "url":"http://www-us.apache.org/dist//apr/apr-iconv-1.2.2.tar.gz"
+   },
+   {
+    "path":"cmake/"
    },
    {
     "folder":"apr",
-    "sha256":"a67ca9fcf9c4ff59bce7f428a323c8b5e18667fdea7b0ebad47d194371b0a105",
-    "url":"http://www-us.apache.org/dist//apr/apr-1.6.5.tar.bz2"
+    "sha256":"70dcf9102066a2ff2ffc47e93c289c8e54c95d8dda23b503f9e61bb0cbd2d105",
+    "url":"http://www-us.apache.org/dist//apr/apr-1.6.5.tar.gz"
    },
    {
     "folder":"apr-util",
-    "sha256":"d3e12f7b6ad12687572a3a39475545a072608f4ba03a6ce8a3778f607dd0035b",
-    "url":"http://www-us.apache.org/dist//apr/apr-util-1.6.1.tar.bz2"
+    "sha256":"b65e40713da57d004123b6319828be7f1273fbc6490e145874ee1177e112c459",
+    "url":"http://www-us.apache.org/dist//apr/apr-util-1.6.1.tar.gz"
    },
    {
     "folder":"apr-iconv",
-    "sha256":"7d454e0fe32f2385f671000e3b755839d16aabd7291e3947c973c90377c35313",
-    "url":"http://www-us.apache.org/dist//apr/apr-iconv-1.2.2.tar.bz2"
+    "sha256":"ce94c7722ede927ce1e5a368675ace17d96d60ff9b8918df216ee5c1298c6a5e",
+    "url":"http://www-us.apache.org/dist//apr/apr-iconv-1.2.2.tar.gz"
    },
    {
     "folder":"apr",
-    "sha256":"a67ca9fcf9c4ff59bce7f428a323c8b5e18667fdea7b0ebad47d194371b0a105",
-    "url":"http://www-us.apache.org/dist//apr/apr-1.6.5.tar.bz2"
+    "sha256":"70dcf9102066a2ff2ffc47e93c289c8e54c95d8dda23b503f9e61bb0cbd2d105",
+    "url":"http://www-us.apache.org/dist//apr/apr-1.6.5.tar.gz"
    },
    {
     "folder":"apr-util",
-    "sha256":"d3e12f7b6ad12687572a3a39475545a072608f4ba03a6ce8a3778f607dd0035b",
-    "url":"http://www-us.apache.org/dist//apr/apr-util-1.6.1.tar.bz2"
+    "sha256":"b65e40713da57d004123b6319828be7f1273fbc6490e145874ee1177e112c459",
+    "url":"http://www-us.apache.org/dist//apr/apr-util-1.6.1.tar.gz"
    },
    {
     "folder":"apr-iconv",
-    "sha256":"7d454e0fe32f2385f671000e3b755839d16aabd7291e3947c973c90377c35313",
-    "url":"http://www-us.apache.org/dist//apr/apr-iconv-1.2.2.tar.bz2"
+    "sha256":"ce94c7722ede927ce1e5a368675ace17d96d60ff9b8918df216ee5c1298c6a5e",
+    "url":"http://www-us.apache.org/dist//apr/apr-iconv-1.2.2.tar.gz"
    }
   ]
  },
  "name":"apr",
  "new_version":"1.7.0",
  "pinning_version":"2019.03.17",
- "raw_meta_yaml":"{% set apr_ver = \"1.6.5\" %}\n{% set apu_ver = \"1.6.1\" %}\n{% set api_ver = \"1.2.2\" %}\n{% set mirror = \"http://www-us.apache.org/dist/\" %}\n\npackage:\n  name: apr\n  version: {{ apr_ver }}\n\nsource:\n  - url: {{ mirror }}/apr/apr-{{ apr_ver }}.tar.bz2                           # [unix]\n    folder: apr                                                               # [unix]\n    sha256: a67ca9fcf9c4ff59bce7f428a323c8b5e18667fdea7b0ebad47d194371b0a105  # [unix]\n  - url: {{ mirror }}/apr/apr-util-{{ apu_ver }}.tar.bz2                      # [unix]\n    folder: apr-util                                                          # [unix]\n    sha256: d3e12f7b6ad12687572a3a39475545a072608f4ba03a6ce8a3778f607dd0035b  # [unix]\n  - url: {{ mirror }}/apr/apr-iconv-{{ api_ver }}.tar.bz2                     # [unix]\n    folder: apr-iconv                                                         # [unix]\n    sha256: 7d454e0fe32f2385f671000e3b755839d16aabd7291e3947c973c90377c35313  # [unix]\n  - url: {{ mirror }}/apr/apr-{{ apr_ver }}-win32-src.zip                     # [win]\n    folder: apr                                                               # [win]\n    sha256: 922e3e32ca304e864b080236dc490bfc5be0fbdfda3a9f971653dfa8489e0c1c  # [win]\n  - url: {{ mirror }}/apr/apr-util-{{ apu_ver }}-win32-src.zip                # [win]\n    folder: apr-util                                                          # [win]\n    sha256: 9eb17fff6484333fe65b7972411ee33dfdb468896f85add0e1ff1b6751698b41  # [win]\n  - url: {{ mirror }}/apr/apr-iconv-{{ api_ver }}-win32-src.zip               # [win]\n    folder: apr-iconv                                                         # [win]\n    sha256: 7b5dbcf81df98e31ef52deff78eee1746b7ea86025efd220c5faa62fabb76bdf  # [win]\n\nbuild:\n  number: 0\n  ignore_run_exports:                                           # [win]\n    - expat                                                     # [win]\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n  host:\n    - expat                                                     # [win]\n  run:\n    - libapr\n    - libaprutil\n    - libapriconv\n\noutputs:\n  - name: libapr\n    version: {{ apr_ver }}\n    build:\n      run_exports:\n        # https://abi-laboratory.pro/tracker/timeline/apr/\n        # This is only on the basis of libapr.so\n        - {{ pin_subpackage('libapr', max_pin='x') }}\n    requirements:\n      build:\n        - {{ compiler('c') }}\n        - make                                                  # [unix]\n      host:\n    script: install_libapr.sh                                   # [unix]\n    script: install_libapr.bat                                  # [win]\n    test:\n      commands:\n        - apr-1-config --help                                   # [unix]\n\n        - if not exist %LIBRARY_INC%\\\\apr.h             exit 1  # [win]\n        - if not exist %LIBRARY_BIN%\\\\libapr-1.dll      exit 1  # [win]\n\n        - test -f ${PREFIX}/include/apr-1/apr.h                 # [unix]\n        - test -f ${PREFIX}/lib/libapr-1${SHLIB_EXT}            # [unix]\n\n  - name: libaprutil\n    version: {{ apu_ver }}\n    build:\n      run_exports:\n        - {{ pin_subpackage('libaprutil', max_pin='x') }}\n    requirements:\n      build:\n        - {{ compiler('c') }}\n        - make                                                  # [unix]\n      host:\n        - expat\n        - libapr\n        - libapriconv\n    script: install_libaprutil.sh                               # [unix]\n    script: install_libaprutil.bat                              # [win]\n    test:\n      commands:\n        - apu-1-config --help                                   # [unix]\n\n        - if not exist %LIBRARY_INC%\\\\apu.h             exit 1  # [win]\n        - if not exist %LIBRARY_BIN%\\\\libaprutil-1.dll  exit 1  # [win]\n\n        - test -f ${PREFIX}/include/apr-1/apu.h                 # [unix]\n        - test -f ${PREFIX}/lib/libaprutil-1${SHLIB_EXT}        # [unix]\n\n  - name: libapriconv\n    version: {{ api_ver }}\n    build:\n      run_exports:\n        - {{ pin_subpackage('libapriconv', max_pin='x') }}\n    requirements:\n      build:\n        - {{ compiler('c') }}\n        - make                                                  # [unix]\n      host:\n        - libapr\n    script: install_libapriconv.sh                              # [unix]\n    script: install_libapriconv.bat                             # [win]\n    test:\n      commands:\n        - if not exist %LIBRARY_BIN%\\\\libapriconv-1.dll exit 1  # [win]\n        - test -f ${PREFIX}/lib/libapriconv-1${SHLIB_EXT}       # [unix]\n\nabout:\n  home: http://apr.apache.org/\n  license: Apache-2.0\n  license_family: Apache\n  license_file: apr/LICENSE\n  summary: Maintains a consistent API with predictable behaviour\n  description: |\n    Apache Portable Run-time libraries have been designed to provide a common\n    interface to low level routines across any platform.The original goal of APR\n    was to combine all code in Apache to one common code base.\n  doc_url: https://apr.apache.org/docs/apr/1.6/index.html\n  dev_url: https://svn.apache.org/viewvc/apr\n  doc_source_url: https://github.com/apache/apr/tree/trunk/docs\n\nextra:\n  recipe-maintainers:\n    - jakirkham\n    - mingwandroid\n    - nehaljwani\n",
+ "raw_meta_yaml":"{% set apr_ver = \"1.6.5\" %}\n{% set apu_ver = \"1.6.1\" %}\n{% set api_ver = \"1.2.2\" %}\n{% set mirror = \"http://www-us.apache.org/dist/\" %}\n\npackage:\n  name: apr\n  version: {{ apr_ver }}\n\nsource:\n  - url: {{ mirror }}/apr/apr-{{ apr_ver }}.tar.gz\n    folder: apr\n    sha256: 70dcf9102066a2ff2ffc47e93c289c8e54c95d8dda23b503f9e61bb0cbd2d105\n  - url: {{ mirror }}/apr/apr-util-{{ apu_ver }}.tar.gz\n    folder: apr-util\n    sha256: b65e40713da57d004123b6319828be7f1273fbc6490e145874ee1177e112c459\n  - url: {{ mirror }}/apr/apr-iconv-{{ api_ver }}.tar.gz\n    folder: apr-iconv\n    sha256: ce94c7722ede927ce1e5a368675ace17d96d60ff9b8918df216ee5c1298c6a5e\n  - path: cmake/  # [win]\n\nbuild:\n  number: 1\n  ignore_run_exports:                                           # [win]\n    - expat                                                     # [win]\n  skip: true  # [win and vc<14]\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - cmake                                                     # [win]\n  host:\n    - expat                                                     # [win]\n  run:\n    - libapr\n    - libaprutil\n    - libapriconv\n\noutputs:\n  - name: libapr\n    version: {{ apr_ver }}\n    build:\n      run_exports:\n        # https://abi-laboratory.pro/tracker/timeline/apr/\n        # This is only on the basis of libapr.so\n        - {{ pin_subpackage('libapr', max_pin='x') }}\n    requirements:\n      build:\n        - {{ compiler('c') }}\n        - make                                                  # [unix]\n      host:\n    script: install_libapr.sh                                   # [unix]\n    script: install_libapr.bat                                  # [win]\n    test:\n      commands:\n        - apr-1-config --help                                   # [unix]\n\n        - if not exist %LIBRARY_INC%\\\\apr.h             exit 1  # [win]\n        - if not exist %LIBRARY_BIN%\\\\libapr-1.dll      exit 1  # [win]\n        - if not exist %LIBRARY_LIB%\\\\libapr-1.lib      exit 1  # [win]\n\n        - test -f ${PREFIX}/include/apr-1/apr.h                 # [unix]\n        - test -f ${PREFIX}/lib/libapr-1${SHLIB_EXT}            # [unix]\n\n  - name: libaprutil\n    version: {{ apu_ver }}\n    build:\n      run_exports:\n        - {{ pin_subpackage('libaprutil', max_pin='x') }}\n    requirements:\n      build:\n        - {{ compiler('c') }}\n        - make                                                  # [unix]\n      host:\n        - expat\n        - libapr\n        - libapriconv\n    script: install_libaprutil.sh                               # [unix]\n    script: install_libaprutil.bat                              # [win]\n    test:\n      commands:\n        - apu-1-config --help                                   # [unix]\n\n        - if not exist %LIBRARY_INC%\\\\apu.h             exit 1  # [win]\n        - if not exist %LIBRARY_BIN%\\\\libaprutil-1.dll  exit 1  # [win]\n        - if not exist %LIBRARY_LIB%\\\\libaprutil-1.lib  exit 1  # [win]\n\n        - test -f ${PREFIX}/include/apr-1/apu.h                 # [unix]\n        - test -f ${PREFIX}/lib/libaprutil-1${SHLIB_EXT}        # [unix]\n\n  - name: libapriconv\n    version: {{ api_ver }}\n    build:\n      run_exports:\n        - {{ pin_subpackage('libapriconv', max_pin='x') }}\n    requirements:\n      build:\n        - {{ compiler('c') }}\n        - make                                                  # [unix]\n      host:\n        - libapr\n    script: install_libapriconv.sh                              # [unix]\n    script: install_libapriconv.bat                             # [win]\n    test:\n      commands:\n        - if not exist %LIBRARY_INC%\\\\apr_iconv.h       exit 1  # [win]\n        - if not exist %LIBRARY_BIN%\\\\libapriconv-1.dll exit 1  # [win]\n        - if not exist %LIBRARY_LIB%\\\\libapriconv-1.lib exit 1  # [win]\n        - if not exist %LIBRARY_BIN%\\\\iconv\\\\utf-8.so   exit 1  # [win]\n        - test -f ${PREFIX}/lib/libapriconv-1${SHLIB_EXT}       # [unix]\n\nabout:\n  home: http://apr.apache.org/\n  license: Apache-2.0\n  license_family: Apache\n  license_file: apr/LICENSE\n  summary: Maintains a consistent API with predictable behaviour\n  description: |\n    Apache Portable Run-time libraries have been designed to provide a common\n    interface to low level routines across any platform.The original goal of APR\n    was to combine all code in Apache to one common code base.\n  doc_url: https://apr.apache.org/docs/apr/1.6/index.html\n  dev_url: https://svn.apache.org/viewvc/apr\n  doc_source_url: https://github.com/apache/apr/tree/trunk/docs\n\nextra:\n  recipe-maintainers:\n    - jakirkham\n    - mingwandroid\n    - nehaljwani\n    - seanyen\n",
  "req":{
   "__set__":true,
   "elements":[
    "c_compiler_stub",
+   "cmake",
    "expat",
    "libapr",
    "libapriconv",
