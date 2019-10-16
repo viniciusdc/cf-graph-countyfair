@@ -18,7 +18,7 @@
    ]
   }
  ],
- "bad":"Upstream: Error getting upstream version",
+ "bad":false,
  "conda-forge.yml":{
   "provider":{
    "win":"azure"
@@ -126,6 +126,10 @@
  },
  "name":"toolchain",
  "new_version":false,
+ "outputs_names":[
+  "toolchain",
+  "m2w64-toolchain_"
+ ],
  "pinning_version":"2019.01.21",
  "raw_meta_yaml":"package:\n  name: toolchain\n  version: 2.4.0\n\nbuild:\n  number: 0\n\noutputs:\n  - name: toolchain\n    # for windows, this is a placebo package.  The default conda-build activation stuff is all we use.\n    # we just don't want people to have to put selectors on their toolchain dep.\n    script: install-toolchain.sh      # [unix]\n    test:\n      commands:\n        # Verify the scripts are in-place.\n        {% for state in [\"activate\", \"deactivate\"] %}\n        - test -f \"${PREFIX}/etc/conda/{{ state }}.d/toolchain_{{ state }}.sh\"                        # [unix]\n        {% endfor %}\n        - echo \"I'm on windows, and there's nothing to do here.\"                                      # [win]\n{% if unix %}\n        - source ${PREFIX}/etc/conda/activate.d/toolchain_activate.sh\n        - if [ -z ${CC+x} ]; then echo \"CC is unset after activation\" && exit 1; else echo \"CC is set to '$CC'\"; fi\n        - source ${PREFIX}/etc/conda/deactivate.d/toolchain_deactivate.sh\n        - if [ -z ${CC+x} ]; then echo \"CC is unset after deactivation \"; else echo \"CC is set to '$CC' after deactivation\" && exit 1; fi\n\n  - name: toolchain_c_{{ target_platform }}\n    requirements:\n      - {{ pin_subpackage('toolchain', exact=True) }}\n    run_exports:                                                     # [linux]\n      strong:                                                        # [linux]\n        - libgcc-ng >=4.9                                            # [linux]\n\n  - name: toolchain_cxx_{{ target_platform }}\n    requirements:\n      - {{ pin_subpackage('toolchain', exact=True) }}\n    run_exports:                                                     # [linux]\n      strong:                                                        # [linux]\n        - libstdcxx-ng >=4.9                                         # [linux]\n\n  - name: toolchain_fort_{{ target_platform }}\n    requirements:\n      - {{ pin_subpackage('toolchain', exact=True) }}\n      - gcc                                                          # [osx]\n    run_exports:\n      strong:\n        - libgfortran >=3.0  # [unix]\n{% else %}\n  - name: m2w64-toolchain_{{ target_platform }}\n    requirements:\n      - m2w64-toolchain\n    run_exports:\n      strong:\n        - m2w64-gcc-libs\n{% endif %}\n\nabout:\n  home: https://github.com/conda-forge/toolchain-feedstock\n  license: BSD 3-Clause\n  summary: A meta-package to enable the right toolchain.\n\nextra:\n  recipe-maintainers:\n    - isuruf\n    - jakirkham\n    - msarahan\n    - patricksnape\n    - pelson\n    - scopatz\n",
  "req":{

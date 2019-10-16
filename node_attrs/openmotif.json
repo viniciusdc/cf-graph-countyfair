@@ -253,6 +253,11 @@
  },
  "name":"openmotif",
  "new_version":false,
+ "outputs_names":[
+  "openmotif-doc",
+  "openmotif-dev",
+  "openmotif"
+ ],
  "pinning_version":"2018.10.03",
  "raw_meta_yaml":"{% set name = \"openmotif\" %}\n{% set version = \"2.3.8\" %}\n{% set sha256 = \"859b723666eeac7df018209d66045c9853b50b4218cecadb794e2359619ebce7\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  fn: {{ name }}-{{ version }}.tar.gz\n  url: https://downloads.sourceforge.net/project/motif/Motif%20{{ version }}%20Source%20Code/motif-{{ version }}.tar.gz\n  sha256: {{ sha256 }}\n\nbuild:\n  number: 2\n  skip: True  # [win]\n\nrequirements:\n  build:\n    - pkg-config\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n  host:\n    - flex\n    - freetype\n    - fontconfig\n    - libpng\n    - jpeg\n    - xorg-libxt\n    - xorg-libxext\n    - xorg-libxft\n    - xorg-xbitmaps\n    - xorg-libxp\n    - xorg-libxmu\n    - xorg-makedepend\n    - libiconv\n\n  run:\n    - freetype\n    - fontconfig\n    - libpng\n    - jpeg\n    - xorg-libxt\n    - xorg-libxext\n    - xorg-libxft\n    - xorg-libxp\n    - xorg-libxmu\n    - libiconv\n\ntest:\n  commands:\n    - 'test \"`uil 2>&1| tr -d ''\\n''`\" = \"Severe: no source file specified\"'\n    - conda inspect linkages -p $PREFIX $PKG_NAME  # [not win]\n    - conda inspect objects -p $PREFIX $PKG_NAME  # [osx]\n\noutputs:\n  - name: openmotif-dev\n    script: install_dev.sh\n    build:\n      run_exports:\n        # clients need `openmotif` when using `openmotif-dev`\n        # ABI compatability looks rather unchanging:\n        # https://abi-laboratory.pro/index.php?view=timeline&l=motif\n        - {{ pin_subpackage('openmotif') }}\n    requirements:\n      # `openmotiv-dev` headers are exactly for same version\n      - {{ pin_subpackage('openmotif', exact=True) }}\n  - name: openmotif\n    script: install_main.sh\n  - name: openmotif-doc\n    script: install_doc.sh\n    requirements:\n      - {{ pin_subpackage('openmotif', exact=True) }}\n      \nabout:\n  home: http://motif.ics.com\n  license: LGPL-2.1\n  license_family: LGPL\n  license_file: COPYING\n  summary: 'Motif user interface component toolkit.'\n\nextra:\n  recipe-maintainers:\n    - epruesse\n",
  "req":{

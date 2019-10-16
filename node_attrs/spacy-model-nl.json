@@ -136,6 +136,9 @@
  },
  "name":"spacy-model-nl",
  "new_version":"xx_ent_wiki_sm-2.2.0",
+ "outputs_names":[
+  "spacy-model-nl_core_news_"
+ ],
  "raw_meta_yaml":"{% set prefix = \"spacy-model-\" %}\n{% set lang = \"nl\" %}\n{% set name = lang + \"_core_news\" %}\n{% set version = \"2.0.0\" %}\n\npackage:\n  name: {{ prefix }}{{ lang|lower }}\n  version: {{ version }}\n\nsource:\n  - folder: sm\n    url: https://github.com/explosion/spacy-models/releases/download/{{ name }}_sm-{{ version }}/{{ name }}_sm-{{ version }}.tar.gz\n    sha256: 1f79eedcb397f9bfdce88b771369ba576664daba111411e750bd65746530bd58\n\nbuild:\n  noarch: python\n  number: 0\n\ntest:\n  commands:\n    - echo \"make lint happy\"\n\noutputs:\n  - name: {{prefix}}{{ name }}_{{ size }}\n    script: build.sh  # [unix]\n    script: build.bat  # [win]\n    requirements:\n      host:\n        - python\n        - pip\n      run:\n        - python\n        - setuptools\n    test:\n      imports:\n        - {{ name }}_{{ size }}\n      requires:\n        - spacy {{ version.split('.')[0] }}.*\n      commands:\n        - python -c \"import {{ name }}_{{ size }} as m; m.load()\"\n        - python -c \"import spacy; spacy.load('{{ name }}_{{ size }}')\"\n\nabout:\n  home: https://spacy.io\n  license: CC BY-SA 4.0\n  summary: 'Dutch multi-task CNN trained on the Universal Dependencies and WikiNER corpus.'\n\n  doc_url: https://spacy.io/models/nl\n\nextra:\n  recipe-maintainers:\n    - JIVJGFJZKF\n",
  "req":{
   "__set__":true,
