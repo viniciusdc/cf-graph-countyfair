@@ -54,7 +54,7 @@
   },
   "package":{
    "name":"owlrl",
-   "version":"5.2.0"
+   "version":"5.2.1"
   },
   "requirements":{
    "host":[
@@ -83,49 +83,49 @@
     "patches":[
      "0001-remove-scripts.patch"
     ],
-    "sha256":"42c454b42027fa6955b74db11b5f0fee29281a1a99eadec5687bc66effe5c446",
-    "url":"https://pypi.io/packages/source/o/owlrl/owlrl-5.2.0.tar.gz"
+    "sha256":"efdebe76cf9ad148f316a9ae92e898e12b3b3690bd90218c898a2b676955b266",
+    "url":"https://pypi.io/packages/source/o/owlrl/owlrl-5.2.1.tar.gz"
    },
    {
     "folder":"src",
-    "sha256":"ad7b8a4d87be6f31a5d20bc53ed418fc5bc7ac752617bffc85607f7793ff11cc",
-    "url":"https://github.com/RDFLib/OWL-RL/archive/v5.2.0.tar.gz"
+    "sha256":"ec0a7c1496aba88fdad2b2709c7d0e75031fb18ac1d00ecdb861e687cad6949e",
+    "url":"https://github.com/RDFLib/OWL-RL/archive/v5.2.1.tar.gz"
    },
    {
     "folder":"dist",
     "patches":[
      "0001-remove-scripts.patch"
     ],
-    "sha256":"42c454b42027fa6955b74db11b5f0fee29281a1a99eadec5687bc66effe5c446",
-    "url":"https://pypi.io/packages/source/o/owlrl/owlrl-5.2.0.tar.gz"
+    "sha256":"efdebe76cf9ad148f316a9ae92e898e12b3b3690bd90218c898a2b676955b266",
+    "url":"https://pypi.io/packages/source/o/owlrl/owlrl-5.2.1.tar.gz"
    },
    {
     "folder":"src",
-    "sha256":"ad7b8a4d87be6f31a5d20bc53ed418fc5bc7ac752617bffc85607f7793ff11cc",
-    "url":"https://github.com/RDFLib/OWL-RL/archive/v5.2.0.tar.gz"
+    "sha256":"ec0a7c1496aba88fdad2b2709c7d0e75031fb18ac1d00ecdb861e687cad6949e",
+    "url":"https://github.com/RDFLib/OWL-RL/archive/v5.2.1.tar.gz"
    },
    {
     "folder":"dist",
     "patches":[
      "0001-remove-scripts.patch"
     ],
-    "sha256":"42c454b42027fa6955b74db11b5f0fee29281a1a99eadec5687bc66effe5c446",
-    "url":"https://pypi.io/packages/source/o/owlrl/owlrl-5.2.0.tar.gz"
+    "sha256":"efdebe76cf9ad148f316a9ae92e898e12b3b3690bd90218c898a2b676955b266",
+    "url":"https://pypi.io/packages/source/o/owlrl/owlrl-5.2.1.tar.gz"
    },
    {
     "folder":"src",
-    "sha256":"ad7b8a4d87be6f31a5d20bc53ed418fc5bc7ac752617bffc85607f7793ff11cc",
-    "url":"https://github.com/RDFLib/OWL-RL/archive/v5.2.0.tar.gz"
+    "sha256":"ec0a7c1496aba88fdad2b2709c7d0e75031fb18ac1d00ecdb861e687cad6949e",
+    "url":"https://github.com/RDFLib/OWL-RL/archive/v5.2.1.tar.gz"
    }
   ],
   "test":{
    "commands":[
     "owlrl --help",
-    "cd src && cd tests && pytest --cov=owlrl -k \"not test_dt_not_type\" -vv",
+    "cd src && cd test && pytest --cov=owlrl -k \"not dt_not_type and not maxqc1\" -vv",
     "owlrl --help",
-    "cd src && cd tests && pytest --cov=owlrl -k \"not test_dt_not_type\" -vv",
+    "cd src && cd test && pytest --cov=owlrl -k \"not dt_not_type and not maxqc1\" -vv",
     "owlrl --help",
-    "cd src && cd tests && pytest --cov=owlrl -k \"not test_dt_not_type\" -vv"
+    "cd src && cd test && pytest --cov=owlrl -k \"not dt_not_type and not maxqc1\" -vv"
    ],
    "imports":[
     "owlrl",
@@ -138,16 +138,16 @@
     "pytest-cov"
    ],
    "source_files":[
-    "src/tests",
-    "src/tests",
-    "src/tests"
+    "src/test",
+    "src/test",
+    "src/test"
    ]
   }
  },
  "name":"owlrl",
  "new_version":"5.2.1",
  "pinning_version":"2019.10.11",
- "raw_meta_yaml":"{% set name = \"owlrl\" %}\n{% set version = \"5.2.0\" %}\n\npackage:\n  name: {{ name }}\n  version: {{ version }}\n\nsource:\n  - folder: dist\n    url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz\n    sha256: 42c454b42027fa6955b74db11b5f0fee29281a1a99eadec5687bc66effe5c446\n    patches:\n      - 0001-remove-scripts.patch\n  - folder: src\n    url: https://github.com/RDFLib/OWL-RL/archive/v{{ version }}.tar.gz\n    sha256: ad7b8a4d87be6f31a5d20bc53ed418fc5bc7ac752617bffc85607f7793ff11cc\n\nbuild:\n  noarch: python\n  number: 0\n  entry_points:\n    - owlrl = owlrl._cli:main\n\nrequirements:\n  host:\n    - python >=3.5\n    - pip\n  run:\n    - python >=3.5\n    - rdflib >=4.2.2\n    - rdflib-jsonld >=0.4.0\n\ntest:\n  source_files:\n    - src/tests\n  requires:\n    - pytest-cov\n  imports:\n    - owlrl\n  commands:\n    - owlrl --help\n    - cd src && cd tests && pytest --cov=owlrl -k \"not test_dt_not_type\" -vv\n\nabout:\n  home: https://github.com/RDFLib/OWL-RL\n  license: W3C\n  license_family: OTHER\n  license_file: w3c.txt\n  summary: 'OWL-RL and RDFS based RDF Closure inferencing for Python'\n  description: |\n    A simple implementation of the OWL2 RL Profile, as well as a basic RDFS\n    inference, on top of RDFLib. Based mechanical forward chaining.\n  doc_url: https://owl-rl.readthedocs.io\n  doc_source_url: https://github.com/RDFLib/OWL-RL/blob/master/docs/source\n\nextra:\n  recipe-maintainers:\n    - bollwyvl\n    - satra\n",
+ "raw_meta_yaml":"{% set name = \"owlrl\" %}\n{% set version = \"5.2.1\" %}\n\npackage:\n  name: {{ name }}\n  version: {{ version }}\n\nsource:\n  - folder: dist\n    url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz\n    sha256: efdebe76cf9ad148f316a9ae92e898e12b3b3690bd90218c898a2b676955b266\n    patches:\n      - 0001-remove-scripts.patch\n  - folder: src\n    url: https://github.com/RDFLib/OWL-RL/archive/v{{ version }}.tar.gz\n    sha256: ec0a7c1496aba88fdad2b2709c7d0e75031fb18ac1d00ecdb861e687cad6949e\n\nbuild:\n  noarch: python\n  number: 0\n  entry_points:\n    - owlrl = owlrl._cli:main\n\nrequirements:\n  host:\n    - python >=3.5\n    - pip\n  run:\n    - python >=3.5\n    - rdflib >=4.2.2\n    - rdflib-jsonld >=0.4.0\n\ntest:\n  source_files:\n    - src/test\n  requires:\n    - pytest-cov\n  imports:\n    - owlrl\n  commands:\n    - owlrl --help\n    - cd src && cd test && pytest --cov=owlrl -k \"not dt_not_type and not maxqc1\" -vv\n\nabout:\n  home: https://github.com/RDFLib/OWL-RL\n  license: W3C\n  license_family: OTHER\n  license_file: w3c.txt\n  summary: 'OWL-RL and RDFS based RDF Closure inferencing for Python'\n  description: |\n    A simple implementation of the OWL2 RL Profile, as well as a basic RDFS\n    inference, on top of RDFLib. Based mechanical forward chaining.\n  doc_url: https://owl-rl.readthedocs.io\n  doc_source_url: https://github.com/RDFLib/OWL-RL/blob/master/docs/source\n\nextra:\n  recipe-maintainers:\n    - bollwyvl\n    - satra\n",
  "req":{
   "__set__":true,
   "elements":[
@@ -159,5 +159,5 @@
  },
  "smithy_version":"3.6.0",
  "url":"https://pypi.io/packages/source/o/owlrl/owlrl-5.2.0.tar.gz",
- "version":"5.2.0"
+ "version":"5.2.1"
 }
