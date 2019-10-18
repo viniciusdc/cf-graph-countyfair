@@ -63,35 +63,40 @@
  "meta_yaml":{
   "about":{
    "home":"http://avro.apache.org",
-   "license":"Apache 2.0",
+   "license":"Apache-2.0",
+   "license_family":"APACHE",
+   "license_file":"avro/LICENSE",
    "summary":"Avro is a serialization and RPC framework."
   },
   "build":{
-   "number":"1000",
-   "script":"python setup.py install --single-version-externally-managed --record record.txt"
+   "number":"0",
+   "script":" -m pip install . -vv --no-deps"
   },
   "extra":{
    "recipe-maintainers":[
     "mariusvniekerk",
     "kwilcox",
+    "setu4993",
     "mariusvniekerk",
     "kwilcox",
+    "setu4993",
     "mariusvniekerk",
-    "kwilcox"
+    "kwilcox",
+    "setu4993"
    ]
   },
   "package":{
    "name":"python-avro",
-   "version":"1.8.2"
+   "version":"1.9.1"
   },
   "requirements":{
-   "build":[
+   "host":[
+    "pip",
     "python",
-    "setuptools",
+    "pip",
     "python",
-    "setuptools",
-    "python",
-    "setuptools"
+    "pip",
+    "python"
    ],
    "run":[
     "python",
@@ -100,30 +105,33 @@
    ]
   },
   "source":{
-   "fn":"avro-python3-1.8.2.tar.gz",
-   "sha256":"a3e698f09e702571bc2283471ed97f7055ae4c055a037624d04a95a320242ccf",
-   "url":"http://archive.apache.org/dist/avro/avro-1.8.2/py3/avro-python3-1.8.2.tar.gz"
+   "fn":"avro-python3-1.9.1.tar.gz",
+   "sha256":"daab2cea71b942a1eb57d700d4a729e9d6cd93284d4dd4d65a378b9f958aa0d2",
+   "url":"https://pypi.io/packages/source/a/avro-python3/avro-python3-1.9.1.tar.gz"
   },
   "test":{
    "imports":[
     "avro",
+    "avro.schema",
     "avro",
-    "avro"
+    "avro.schema",
+    "avro",
+    "avro.schema"
    ]
   }
  },
  "name":"python-avro",
  "new_version":"1.9.1",
  "pinning_version":"2019.08.27",
- "raw_meta_yaml":"{% set version = \"1.8.2\" %}\n{% set mirror = \"http://archive.apache.org/dist\" %}\n\npackage:\n  name: python-avro\n  version: {{ version }}\n\nsource:  # [py27 or py3k]\n  # Avro exist as two versions in apache avro for py2 and py3.\n  fn: avro-{{ version }}.tar.gz  # [py27]\n  url: {{ mirror }}/avro/avro-{{ version }}/py/avro-{{ version }}.tar.gz  # [py27]\n  sha256: 'e4181a9dc686c82cbc9bb496787d659d55582c44ad74b69924c45f80f3d513a1'  # [py27]\n\n  fn: avro-python3-{{ version }}.tar.gz  # [py3k]\n  url: {{ mirror }}/avro/avro-{{ version }}/py3/avro-python3-{{ version }}.tar.gz  # [py3k]\n  sha256: 'a3e698f09e702571bc2283471ed97f7055ae4c055a037624d04a95a320242ccf'  # [py3k]\n\nbuild:\n  number: 1000\n  script: python setup.py install --single-version-externally-managed --record record.txt\n\nrequirements:\n    build:\n        - python\n        - setuptools\n    run:\n        - python\n\ntest:\n  imports:\n    - avro\n\nabout:\n  home: http://avro.apache.org\n  license: Apache 2.0\n  summary: 'Avro is a serialization and RPC framework.'\n\nextra:\n  recipe-maintainers:\n    - mariusvniekerk\n    - kwilcox\n",
+ "raw_meta_yaml":"{% set pip_name = 'avro' %}  # [py27]\n{% set pip_name = 'avro-python3' %}  # [py3k]\n{% set version = \"1.9.1\" %}\n\npackage:\n  name: python-avro\n  version: {{ version }}\n\nsource:  # [py27 or py3k]\n  # Avro exist as two versions in apache avro for py2 and py3k.\n  fn: {{ pip_name }}-{{ version }}.tar.gz  # [py27]\n  url: https://pypi.io/packages/source/{{ pip_name[0] }}/{{ pip_name }}/{{ pip_name }}-{{ version }}.tar.gz  # [py27]\n  sha256: 9fc06bf0b91877b1b6afac8ad35d66d2e545be2b9b2820e5fba4e35b767bfb9a  # [py27]\n\n  fn: {{ pip_name }}-{{ version }}.tar.gz  # [py3k]\n  url: https://pypi.io/packages/source/{{ pip_name[0] }}/{{ pip_name }}/{{ pip_name }}-{{ version }}.tar.gz  # [py3k]\n  sha256: daab2cea71b942a1eb57d700d4a729e9d6cd93284d4dd4d65a378b9f958aa0d2  # [py3k]\n\nbuild:\n  number: 0\n  script: \"{{ PYTHON }} -m pip install . -vv --no-deps\"\n\nrequirements:\n  host:\n    - pip\n    - python\n  run:\n    - python\n\ntest:\n  imports:\n    - avro\n    - avro.schema\n\nabout:\n  home: http://avro.apache.org\n  license: Apache-2.0\n  license_family: APACHE\n  license_file: src/avro/LICENSE  # [py27]\n  license_file: avro/LICENSE  # [py3k]\n  summary: 'Avro is a serialization and RPC framework.'\n\nextra:\n  recipe-maintainers:\n    - mariusvniekerk\n    - kwilcox\n    - setu4993\n",
  "req":{
   "__set__":true,
   "elements":[
-   "python",
-   "setuptools"
+   "pip",
+   "python"
   ]
  },
  "smithy_version":"3.4.1",
  "url":"http://archive.apache.org/dist/avro/avro-1.8.2/py3/avro-python3-1.8.2.tar.gz",
- "version":"1.8.2"
+ "version":"1.9.1"
 }
