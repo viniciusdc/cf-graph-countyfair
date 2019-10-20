@@ -47,6 +47,23 @@
     "migrator_version",
     "name"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/330116377.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"Version",
+    "migrator_version":0,
+    "version":"2.9"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "version"
+   ]
   }
  ],
  "bad":false,
@@ -142,8 +159,8 @@
   }
  },
  "name":"python-libarchive-c",
- "new_version":"2.8",
- "pinning_version":"2019.03.10",
+ "new_version":"2.9",
+ "pinning_version":"2019.10.11",
  "raw_meta_yaml":"{% set pypi = \"libarchive-c\" %}\n{% set name = \"python-libarchive-c\" %}\n{% set version = \"2.8\" %}\n{% set sha256 = \"06d44d5b9520bdac93048c72b7ed66d11a6626da16d2086f9aad079674d8e061\" %}\n\npackage:\n  name: {{ name }}\n  version: {{ version }}\n\nsource:\n  url: https://pypi.io/packages/source/{{ pypi[0] }}/{{ pypi }}/{{ pypi }}-{{ version }}.tar.gz\n  sha256: {{ sha256 }}\n  patches:\n    - 0001-Add-zstd-support.patch\n\nbuild:\n  number: 1004\n  script:\n  - set PYTHONHASHSEED=0  # [win]\n  - export PYTHONHASHSEED=0  # [not win]\n  - \"{{ PYTHON }} setup.py install --single-version-externally-managed --record=record.txt\"\n\nrequirements:\n  host:\n    - python\n    - setuptools\n  run:\n    - libarchive\n    - python\n\ntest:\n  files:\n    - test/hello_world.xar\n  imports:\n    - libarchive\n  commands:\n    - python -c \"import libarchive; libarchive.extract_file('test/hello_world.xar')\"  # [not win]\n    - python -c \"import libarchive; libarchive.extract_file('test\\\\hello_world.xar')\"  # [win]\n\nabout:\n  home: https://github.com/Changaco/python-libarchive-c\n  license: CC0-1.0\n  summary: Python interface to libarchive\n\nextra:\n  recipe-maintainers:\n    - bollwyvl\n    - mingwandroid\n    - ocefpaf\n",
  "req":{
   "__set__":true,
@@ -153,7 +170,7 @@
    "setuptools"
   ]
  },
- "smithy_version":"3.2.14",
+ "smithy_version":"3.6.0",
  "url":"https://pypi.io/packages/source/l/libarchive-c/libarchive-c-2.8.tar.gz",
  "version":"2.8"
 }
