@@ -195,6 +195,23 @@
     "migrator_version",
     "name"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/330121355.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"MigrationYaml",
+    "migrator_version":0,
+    "name":"zstd-1.4.3"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "name"
+   ]
   }
  ],
  "bad":false,
@@ -293,7 +310,7 @@
  },
  "name":"bgen",
  "new_version":"3.0.2",
- "pinning_version":"2019.05.31",
+ "pinning_version":"2019.10.11",
  "raw_meta_yaml":"{% set name = \"bgen\" %}\n{% set version = \"3.0.2\" %}\n{% set sha256 = \"e4237bc51641bf4d01da308b8efe11bfa2466df9935a53ced1e0efd86ca5d8f7\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  fn: {{ name }}-{{ version }}.tar.gz\n  url: https://github.com/limix/bgen/archive/{{ version }}.tar.gz\n  sha256: {{ sha256 }}\n\nbuild:\n  number: 1\n  skip: true  # [win and vc<14]\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - cmake\n  host:\n    - almosthere >=1.0.1\n    - conda-build\n    - zlib  # [win]\n    - zstd\n  run:\n    - almosthere >=1.0.1\n    - zlib  # [win]\n    - zstd\n\ntest:\n  commands:\n    - test -e $PREFIX/lib/libbgen.so                     # [linux]\n    - test -e $PREFIX/lib/libbgen_static.a               # [unix]\n    - test -e $PREFIX/include/bgen.h                     # [unix]\n    - test -e $PREFIX/lib/libbgen.dylib                  # [osx]\n    - conda inspect linkages -p $PREFIX $PKG_NAME        # [not win]\n    - conda inspect objects -p $PREFIX $PKG_NAME         # [osx]\n    - if NOT exist %LIBRARY_LIB%/bgen.lib exit 1         # [win]\n    - if NOT exist %LIBRARY_BIN%/bgen.dll exit 1         # [win]\n    - if NOT exist %LIBRARY_LIB%/bgen_static.lib exit 1  # [win]\n    - if NOT exist %LIBRARY_INC%/bgen.h exit 1           # [win]\n    - if NOT exist %LIBRARY_INC%/bgen/file.h exit 1      # [win]\n    - if NOT exist %LIBRARY_INC%/bgen/depr.h exit 1      # [win]\n    - if NOT exist %LIBRARY_INC%/bgen/str.h exit 1       # [win]\n    - if NOT exist %LIBRARY_INC%/bgen/geno.h exit 1      # [win]\n    - if NOT exist %LIBRARY_INC%/bgen/platform.h exit 1  # [win]\n    - if NOT exist %LIBRARY_INC%/bgen/meta.h exit 1      # [win]\n    - if NOT exist %LIBRARY_INC%/bgen/api.h exit 1       # [win]\n\nabout:\n  home: https://github.com/limix/bgen\n  license: MIT\n  license_family: MIT\n  license_file: LICENSE.md\n  summary: 'A BGEN file format reader'\n  doc_url: https://bgen.readthedocs.io\n  dev_url: https://github.com/limix/bgen\n\nextra:\n  recipe-maintainers:\n    - horta\n",
  "req":{
   "__set__":true,
@@ -306,7 +323,7 @@
    "zstd"
   ]
  },
- "smithy_version":"3.3.4",
+ "smithy_version":"3.6.0",
  "url":"https://github.com/limix/bgen/archive/3.0.2.tar.gz",
  "version":"3.0.2"
 }
