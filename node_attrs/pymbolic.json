@@ -51,7 +51,7 @@
   "build":{
    "noarch":"python",
    "number":"0",
-   "script":"python -m pip install --no-deps --ignore-installed ."
+   "script":"-m pip install . --no-deps -vv"
   },
   "extra":{
    "recipe-maintainers":[
@@ -62,7 +62,7 @@
   },
   "package":{
    "name":"pymbolic",
-   "version":"2019.1"
+   "version":"2019.2"
   },
   "requirements":{
    "build":[
@@ -98,9 +98,9 @@
    ]
   },
   "source":{
-   "fn":"pymbolic-2019.1.tar.gz",
-   "sha256":"d57ba2919f5b0482ccadcafee2518faec095a0a74a26ca7e137f289ddbb39733",
-   "url":"https://pypi.io/packages/source/p/pymbolic/pymbolic-2019.1.tar.gz"
+   "fn":"pymbolic-2019.2.tar.gz",
+   "sha256":"a7507864a76574d72bf5732497b247661c6ad73bb277cd9c8aae09e90a62e05a",
+   "url":"https://pypi.io/packages/source/p/pymbolic/pymbolic-2019.2.tar.gz"
   },
   "test":{
    "commands":[
@@ -128,7 +128,7 @@
  "name":"pymbolic",
  "new_version":"2019.2",
  "pinning_version":"2019.10.11",
- "raw_meta_yaml":"{% set name = \"pymbolic\" %}\n{% set version = \"2019.1\" %}\n{% set sha256 = \"d57ba2919f5b0482ccadcafee2518faec095a0a74a26ca7e137f289ddbb39733\" %}\n\npackage:\n    name: {{ name|lower }}\n    version: {{ version }}\n\nsource:\n    fn: {{ name }}-{{ version }}.tar.gz\n    url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz\n    sha256: {{ sha256 }}\n\nbuild:\n    noarch: python\n    number: 0\n    script: python -m pip install --no-deps --ignore-installed .\n\nrequirements:\n    build:\n        - python\n        - setuptools\n        - pytools\n        - six\n        - pip\n    run:\n        - python\n        - numpy\n        - pytools\n        - six\n\ntest:\n    requires:\n        - pytest\n    imports:\n        - {{ name }}\n    source_files:\n        - test\n    commands:\n        - \"(cd test && python -m pytest)\"  # [unix]\n        - cd test && python -m pytest  # [win]\n\nabout:\n    home: http://pypi.python.org/pypi/pymbolic\n    dev_url: http://github.com/inducer/pymbolic\n    doc_url: https://documen.tician.de/pymbolic\n    license: MIT\n    license_file: LICENSE\n    summary: A package for symbolic computation\n\nextra:\n    recipe-maintainers:\n        - inducer\n",
+ "raw_meta_yaml":"{% set name = \"pymbolic\" %}\n{% set version = \"2019.2\" %}\n{% set sha256 = \"a7507864a76574d72bf5732497b247661c6ad73bb277cd9c8aae09e90a62e05a\" %}\n\npackage:\n    name: {{ name|lower }}\n    version: {{ version }}\n\nsource:\n    fn: {{ name }}-{{ version }}.tar.gz\n    url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz\n    sha256: {{ sha256 }}\n\nbuild:\n    noarch: python\n    number: 0\n    script: {{ PYTHON }} -m pip install . --no-deps -vv\n\nrequirements:\n    build:\n        - python\n        - setuptools\n        - pytools\n        - six\n        - pip\n    run:\n        - python\n        - numpy\n        - pytools\n        - six\n\ntest:\n    requires:\n        - pytest\n    imports:\n        - {{ name }}\n    source_files:\n        - test\n    commands:\n        - \"(cd test && python -m pytest)\"  # [unix]\n        - cd test && python -m pytest  # [win]\n\nabout:\n    home: http://pypi.python.org/pypi/pymbolic\n    dev_url: http://github.com/inducer/pymbolic\n    doc_url: https://documen.tician.de/pymbolic\n    license: MIT\n    license_file: LICENSE\n    summary: A package for symbolic computation\n\nextra:\n    recipe-maintainers:\n        - inducer\n",
  "req":{
   "__set__":true,
   "elements":[
@@ -142,5 +142,5 @@
  },
  "smithy_version":"3.6.0",
  "url":"https://pypi.io/packages/source/p/pymbolic/pymbolic-2018.1.tar.gz",
- "version":"2019.1"
+ "version":"2019.2"
 }
