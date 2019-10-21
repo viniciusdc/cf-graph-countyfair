@@ -574,6 +574,23 @@
     "migrator_version",
     "version"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/330552656.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"Version",
+    "migrator_version":0,
+    "version":"0.18"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "version"
+   ]
   }
  ],
  "bad":false,
@@ -647,8 +664,8 @@
   }
  },
  "name":"r-catboost",
- "new_version":"0.17.5",
- "pinning_version":"2019.10.08",
+ "new_version":"0.18",
+ "pinning_version":"2019.10.11",
  "raw_meta_yaml":"{% set name = \"r-catboost\" %}\n{% set version = \"0.17.5\" %}\n{% set posix = 'm2-' if win else '' %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  url: https://github.com/catboost/catboost/releases/download/v{{ version }}/catboost-R-Linux-{{ version }}.tgz  # [linux]\n  sha256: d0b5f2140b57f709f793ed0cf3a883c85a0894e1399102307b26e73533a2aaaf  # [linux]\n\n  url: https://github.com/catboost/catboost/releases/download/v{{ version }}/catboost-R-Windows-{{ version }}.tgz  # [win]\n  sha256: 1f7871f20ce6b4d7bf01407224743b411fc79ec153b262cddcc0d29fbaa55a90  # [win]\n\n  url: https://github.com/catboost/catboost/releases/download/v{{ version }}/catboost-R-Darwin-{{ version }}.tgz  # [osx]\n  sha256: fbd89fcd21de4aef3eb1a5eec627133ec67d8acf68077002869484b60c5aa631  # [osx]\n\nbuild:\n  number: 0\n\nrequirements:\n  build:\n    - {{posix}}zip               # [win]\n    # dummy requirement\n    - make                       # [linux]\n  host:\n    - r-base\n    - r-jsonlite\n\n  run:\n    - r-base\n    - r-jsonlite\n\ntest:\n commands:\n    - $R -e \"library('catboost')\"  # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('catboost')\\\"\"  # [win].\n\nabout:\n  home: https://github.com/catboost/catboost\n  license: Apache 2.0\n  license_family: Apache\n  license_file: LICENSE.txt\n  summary: 'CatBoost is a machine learning algorithm that uses gradient boosting on decision trees. It is available as an open source library.'\n  doc_url: https://tech.yandex.com/catboost/doc/dg/concepts/about-docpage/\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n    - curious-odd-man\n",
  "req":{
   "__set__":true,
@@ -658,7 +675,7 @@
    "r-jsonlite"
   ]
  },
- "smithy_version":"3.5.0",
+ "smithy_version":"3.6.0",
  "url":"https://github.com/catboost/catboost/releases/download/v0.16.5/catboost-R-Linux-0.16.5.tgz",
  "version":"0.17.5"
 }
