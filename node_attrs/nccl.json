@@ -32,7 +32,7 @@
   },
   "package":{
    "name":"nccl",
-   "version":"2.4.6.1"
+   "version":"2.4.8.1"
   },
   "requirements":{
    "build":[
@@ -51,13 +51,8 @@
    ]
   },
   "source":{
-   "patches":[
-    "PR_220.patch",
-    "PR_220.patch",
-    "PR_220.patch"
-   ],
-   "sha256":"ea4421061a7b9c454f2e088f68bfdbbcefab80ce81cafc70ee6c7742b1439591",
-   "url":"https://github.com/NVIDIA/nccl/archive/v2.4.6-1.tar.gz"
+   "sha256":"e2260da448ebbebe437f74768a346d28c74eabdb92e372a3dc6652a626318924",
+   "url":"https://github.com/NVIDIA/nccl/archive/v2.4.8-1.tar.gz"
   },
   "test":{
    "commands":[
@@ -75,7 +70,7 @@
  },
  "name":"nccl",
  "new_version":"2.4.8-1",
- "raw_meta_yaml":"{% set name = \"nccl\" %}\n{% set version = \"2.4.6\" %}\n{% set revision = \"1\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}.{{ revision }}\n\nsource:\n  url: https://github.com/NVIDIA/nccl/archive/v{{ version }}-{{ revision }}.tar.gz\n  sha256: ea4421061a7b9c454f2e088f68bfdbbcefab80ce81cafc70ee6c7742b1439591\n  patches:\n    ########################################################################\n    # Patch to allow selection of static or dynamic CUDA runtime library.  #\n    #                                                                      #\n    # xref: https://github.com/NVIDIA/nccl/pull/220                        #\n    ########################################################################\n    - PR_220.patch\n\nbuild:\n  number: 0\n  skip: true  # [(not linux64) or (cuda_compiler_version == \"None\")]\n  run_exports:\n    # xref: https://github.com/NVIDIA/nccl/issues/218\n    - {{ pin_subpackage(name, max_pin=\"x\") }}\n\nrequirements:\n  build:\n    - {{ compiler(\"c\") }}\n    - {{ compiler(\"cxx\") }}\n    - {{ compiler(\"cuda\") }}\n    - make\n\ntest:\n  commands:\n    - test -f \"${PREFIX}/include/nccl.h\"\n    - test -f \"${PREFIX}/lib/libnccl.so\"\n    - test -f \"${PREFIX}/lib/libnccl_static.a\"\n\nabout:\n  home: https://developer.nvidia.com/nccl\n  license: BSD-3-Clause\n  license_family: BSD\n  license_file: LICENSE.txt\n  summary: Optimized primitives for collective multi-GPU communication\n\n  description: |\n    The NVIDIA Collective Communications Library (NCCL) implements multi-GPU\n    and multi-node collective communication primitives that are performance\n    optimized for NVIDIA GPUs. NCCL provides routines such as all-gather,\n    all-reduce, broadcast, reduce, reduce-scatter, that are optimized to\n    achieve high bandwidth over PCIe and NVLink high-speed interconnect.\n\n  doc_url: https://docs.nvidia.com/deeplearning/sdk/nccl-developer-guide/docs/index.html\n  dev_url: https://github.com/NVIDIA/nccl\n\nextra:\n  recipe-maintainers:\n    - jakirkham\n",
+ "raw_meta_yaml":"{% set name = \"nccl\" %}\n{% set version = \"2.4.8\" %}\n{% set revision = \"1\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}.{{ revision }}\n\nsource:\n  url: https://github.com/NVIDIA/nccl/archive/v{{ version }}-{{ revision }}.tar.gz\n  sha256: e2260da448ebbebe437f74768a346d28c74eabdb92e372a3dc6652a626318924\n\nbuild:\n  number: 0\n  skip: true  # [(not linux64) or (cuda_compiler_version == \"None\")]\n  run_exports:\n    # xref: https://github.com/NVIDIA/nccl/issues/218\n    - {{ pin_subpackage(name, max_pin=\"x\") }}\n\nrequirements:\n  build:\n    - {{ compiler(\"c\") }}\n    - {{ compiler(\"cxx\") }}\n    - {{ compiler(\"cuda\") }}\n    - make\n\ntest:\n  commands:\n    - test -f \"${PREFIX}/include/nccl.h\"\n    - test -f \"${PREFIX}/lib/libnccl.so\"\n    - test -f \"${PREFIX}/lib/libnccl_static.a\"\n\nabout:\n  home: https://developer.nvidia.com/nccl\n  license: BSD-3-Clause\n  license_family: BSD\n  license_file: LICENSE.txt\n  summary: Optimized primitives for collective multi-GPU communication\n\n  description: |\n    The NVIDIA Collective Communications Library (NCCL) implements multi-GPU\n    and multi-node collective communication primitives that are performance\n    optimized for NVIDIA GPUs. NCCL provides routines such as all-gather,\n    all-reduce, broadcast, reduce, reduce-scatter, that are optimized to\n    achieve high bandwidth over PCIe and NVLink high-speed interconnect.\n\n  doc_url: https://docs.nvidia.com/deeplearning/sdk/nccl-developer-guide/docs/index.html\n  dev_url: https://github.com/NVIDIA/nccl\n\nextra:\n  recipe-maintainers:\n    - jakirkham\n",
  "req":{
   "__set__":true,
   "elements":[
@@ -86,5 +81,5 @@
   ]
  },
  "url":"https://github.com/NVIDIA/nccl/archive/v2.4.6-1.tar.gz",
- "version":"2.4.6.1"
+ "version":"2.4.8.1"
 }
