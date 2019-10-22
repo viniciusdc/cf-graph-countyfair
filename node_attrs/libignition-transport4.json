@@ -1,5 +1,165 @@
 {
- "bad":"make_graph: 404",
+ "PRed":[
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/330912812.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"Version",
+    "migrator_version":0,
+    "version":"7.1.0"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "version"
+   ]
+  }
+ ],
+ "bad":false,
+ "conda-forge.yml":{},
  "feedstock_name":"libignition-transport4",
- "new_version":false
+ "hash_type":"sha256",
+ "meta_yaml":{
+  "about":{
+   "home":"https://bitbucket.org/ignitionrobotics/ign-transport",
+   "license":"Apache-2.0",
+   "license_file":"LICENSE",
+   "summary":"Ignition Transport"
+  },
+  "build":{
+   "number":"0",
+   "run_exports":[
+    "subpackage_stub",
+    "subpackage_stub",
+    "subpackage_stub"
+   ],
+   "skip":true
+  },
+  "extra":{
+   "recipe-maintainers":[
+    "seanyen",
+    "wolfv",
+    "traversaro",
+    "j-rivero",
+    "seanyen",
+    "wolfv",
+    "traversaro",
+    "j-rivero",
+    "seanyen",
+    "wolfv",
+    "traversaro",
+    "j-rivero"
+   ]
+  },
+  "package":{
+   "name":"libignition-transport4",
+   "version":"4.0.0"
+  },
+  "requirements":{
+   "build":[
+    "vs2017_win-64",
+    "cmake",
+    "pkg-config",
+    "cxx_compiler_stub",
+    "c_compiler_stub",
+    "make",
+    "cmake",
+    "pkg-config",
+    "cxx_compiler_stub",
+    "c_compiler_stub",
+    "make",
+    "cmake",
+    "pkg-config"
+   ],
+   "host":[
+    "libignition-msgs1",
+    "cppzmq",
+    "zeromq",
+    "libignition-msgs1",
+    "cppzmq",
+    "zeromq",
+    "libuuid",
+    "libprotobuf",
+    "libignition-msgs1",
+    "cppzmq",
+    "zeromq",
+    "libuuid",
+    "libprotobuf"
+   ],
+   "run":[
+    "libignition-msgs1",
+    "cppzmq",
+    "zeromq",
+    "libignition-msgs1",
+    "cppzmq",
+    "zeromq",
+    "libuuid",
+    "libprotobuf",
+    "libignition-msgs1",
+    "cppzmq",
+    "zeromq",
+    "libuuid",
+    "libprotobuf"
+   ]
+  },
+  "source":[
+   {
+    "patches":[
+     "ign_TEST.cc.patch"
+    ],
+    "sha256":"43d46b8eaed2ca4ace57591bb2f4d053513f527f6fd876516daa52d124d8dc6c",
+    "url":"https://bitbucket.org/ignitionrobotics/ign-transport/get/ignition-transport4_4.0.0.tar.gz"
+   },
+   {
+    "patches":null,
+    "sha256":"43d46b8eaed2ca4ace57591bb2f4d053513f527f6fd876516daa52d124d8dc6c",
+    "url":"https://bitbucket.org/ignitionrobotics/ign-transport/get/ignition-transport4_4.0.0.tar.gz"
+   },
+   {
+    "patches":null,
+    "sha256":"43d46b8eaed2ca4ace57591bb2f4d053513f527f6fd876516daa52d124d8dc6c",
+    "url":"https://bitbucket.org/ignitionrobotics/ign-transport/get/ignition-transport4_4.0.0.tar.gz"
+   }
+  ],
+  "test":{
+   "commands":[
+    "if exist %PREFIX%\\\\Library\\\\include\\\\ignition\\\\transport4\\\\ignition\\\\transport.hh (exit 0) else (exit 1)",
+    "if exist $PREFIX$\\\\Library\\\\lib\\\\ignition-transport4.lib (exit 0) else (exit 1)",
+    "if exist $PREFIX$\\\\Library\\\\bin\\\\ignition-transport4.dll (exit 0) else (exit 1)",
+    "if exist %PREFIX%\\\\Library\\\\lib\\\\cmake\\\\ignition-transport4\\\\ignition-transport4-config.cmake (exit 0) else (exit 1)",
+    "test -f ${PREFIX}/include/ignition/transport4/ignition/transport.hh",
+    "test -f ${PREFIX}/lib/libignition-transport4.dylib",
+    "test -f ${PREFIX}/lib/cmake/ignition-transport4/ignition-transport4-config.cmake",
+    "test -f ${PREFIX}/include/ignition/transport4/ignition/transport.hh",
+    "test -f ${PREFIX}/lib/libignition-transport4.so",
+    "test -f ${PREFIX}/lib/cmake/ignition-transport4/ignition-transport4-config.cmake"
+   ]
+  }
+ },
+ "name":"libignition-transport4",
+ "new_version":"7.1.0",
+ "pinning_version":"2019.10.11",
+ "raw_meta_yaml":"{% set base_name = \"libignition-transport\" %}\n{% set version = \"4.0.0\" %}\n{% set name = base_name + version.split('.')[0] %}\n\npackage:\n  name: {{ name }}\n  version: {{ version }}\n\nsource:\n  - url: https://bitbucket.org/ignitionrobotics/ign-transport/get/ignition-transport{{ version.split('.')[0] }}_{{ version }}.tar.gz\n    sha256: 43d46b8eaed2ca4ace57591bb2f4d053513f527f6fd876516daa52d124d8dc6c\n    patches:\n      - ign_TEST.cc.patch  # [win]\n\nbuild:\n  number: 0\n  skip: true  # [win and vc<14]\n  run_exports:\n    - {{ pin_subpackage(name, max_pin='x.x') }}\n\nrequirements:\n  build:\n    - {{ compiler('cxx') }}              # [not win]\n    - {{ compiler('c') }}                # [not win]\n    - vs2017_win-64                      # [win64]\n    - vs2017_win-32                      # [win32]\n    - make                               # [not win]\n    - cmake\n    - pkg-config\n  host:\n    - libignition-msgs1\n    - cppzmq\n    - zeromq\n    - libuuid                            # [not win]\n    - libprotobuf                        # [not win]\n  run:\n    - libignition-msgs1\n    - cppzmq\n    - zeromq\n    - libuuid                            # [not win]\n    - libprotobuf                        # [not win]\n\ntest:\n  commands:\n    - test -f ${PREFIX}/include/ignition/transport4/ignition/transport.hh  # [not win]\n    - test -f ${PREFIX}/lib/libignition-transport4.so  # [linux]\n    - test -f ${PREFIX}/lib/libignition-transport4.dylib  # [osx]\n    - test -f ${PREFIX}/lib/cmake/ignition-transport4/ignition-transport4-config.cmake  # [not win]\n    - if exist %PREFIX%\\\\Library\\\\include\\\\ignition\\\\transport4\\\\ignition\\\\transport.hh (exit 0) else (exit 1)  # [win]\n    - if exist $PREFIX$\\\\Library\\\\lib\\\\ignition-transport4.lib (exit 0) else (exit 1)  # [win]\n    - if exist $PREFIX$\\\\Library\\\\bin\\\\ignition-transport4.dll (exit 0) else (exit 1)  # [win]\n    - if exist %PREFIX%\\\\Library\\\\lib\\\\cmake\\\\ignition-transport4\\\\ignition-transport4-config.cmake (exit 0) else (exit 1)  # [win]\n\nabout:\n  home: https://bitbucket.org/ignitionrobotics/ign-transport\n  license: Apache-2.0\n  license_file: LICENSE\n  summary: 'Ignition Transport'\n\nextra:\n  recipe-maintainers:\n    - seanyen\n    - wolfv\n    - traversaro\n    - j-rivero\n",
+ "req":{
+  "__set__":true,
+  "elements":[
+   "c_compiler_stub",
+   "cmake",
+   "cppzmq",
+   "cxx_compiler_stub",
+   "libignition-msgs1",
+   "libprotobuf",
+   "libuuid",
+   "make",
+   "pkg-config",
+   "vs2017_win-64",
+   "zeromq"
+  ]
+ },
+ "smithy_version":"3.6.0",
+ "url":"https://bitbucket.org/ignitionrobotics/ign-transport/get/ignition-transport4_4.0.0.tar.gz",
+ "version":"4.0.0"
 }
