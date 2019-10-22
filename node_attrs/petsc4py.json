@@ -48,6 +48,25 @@
     "migrator_version",
     "name"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/331057300.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"MigrationYaml",
+    "migrator_object_version":1,
+    "migrator_version":0,
+    "name":"mpich-3.3"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_object_version",
+    "migrator_version",
+    "name"
+   ]
   }
  ],
  "bad":false,
@@ -66,7 +85,7 @@
    "summary":"Python bindings for PETSc"
   },
   "build":{
-   "number":"1",
+   "number":"2",
    "script":"PETSC_DIR=$PREFIX pip -v install --no-deps .",
    "skip":true
   },
@@ -74,10 +93,16 @@
    "recipe-maintainers":[
     "dalcinl",
     "minrk",
+    "davidbrochart",
+    "SylvainCorlay",
     "dalcinl",
     "minrk",
+    "davidbrochart",
+    "SylvainCorlay",
     "dalcinl",
-    "minrk"
+    "minrk",
+    "davidbrochart",
+    "SylvainCorlay"
    ]
   },
   "package":{
@@ -97,31 +122,31 @@
     "python",
     "pip",
     "numpy",
-    null,
+    "mpich",
     "petsc 3.11.*",
     "python",
     "pip",
     "numpy",
-    null,
+    "mpich",
     "petsc 3.11.*",
     "python",
     "pip",
     "numpy",
-    null,
+    "mpich",
     "petsc 3.11.*"
    ],
    "run":[
     "python",
     "compatible_pin_stub",
-    null,
+    "mpich",
     "petsc",
     "python",
     "compatible_pin_stub",
-    null,
+    "mpich",
     "petsc",
     "python",
     "compatible_pin_stub",
-    null,
+    "mpich",
     "petsc"
    ]
   },
@@ -133,21 +158,22 @@
  },
  "name":"petsc4py",
  "new_version":false,
- "pinning_version":"2019.08.22",
- "raw_meta_yaml":"{% set version = '3.11.0' %}\n{% set sha256 = '58f4f57ac96ec39273906859cdc388b1ae372045c726bfd2a01d4eca8bc4a1e6' %}\n\npackage:\n  name: petsc4py\n  version: {{version}}\n\nsource:\n  fn: petsc4py-{{version}}.tar.gz\n  url: https://bitbucket.org/petsc/petsc4py/downloads/petsc4py-{{version}}.tar.gz\n  sha256: {{sha256}}\n\nbuild:\n  number: 1\n  script: PETSC_DIR=$PREFIX pip -v install --no-deps .\n  skip: true  # [win]\n\nrequirements:\n  build:\n    - {{ compiler('fortran') }}\n    - {{ compiler('c') }}\n  host:\n    - python\n    - pip\n    - numpy\n    - {{mpi}}\n    - petsc {{version.rsplit('.', 1)[0]}}.*\n  run:\n    - python\n    - {{ pin_compatible('numpy') }}\n    - {{mpi}}\n    - petsc # pinned by petsc run_exports\n\nabout:\n  home: https://bitbucket.org/petsc/petsc4py\n  summary: Python bindings for PETSc\n  license: BSD 2-Clause\n  license_file: LICENSE.rst\n\nextra:\n  recipe-maintainers:\n    - dalcinl\n    - minrk\n",
+ "pinning_version":"2019.10.11",
+ "raw_meta_yaml":"{% set version = '3.11.0' %}\n{% set sha256 = '58f4f57ac96ec39273906859cdc388b1ae372045c726bfd2a01d4eca8bc4a1e6' %}\n\n{% set mpi = mpi or 'mpich' %}\n\npackage:\n  name: petsc4py\n  version: {{version}}\n\nsource:\n  fn: petsc4py-{{version}}.tar.gz\n  url: https://bitbucket.org/petsc/petsc4py/downloads/petsc4py-{{version}}.tar.gz\n  sha256: {{sha256}}\n\nbuild:\n  number: 2\n  script: PETSC_DIR=$PREFIX pip -v install --no-deps .\n  skip: true  # [win]\n\nrequirements:\n  build:\n    - {{ compiler('fortran') }}\n    - {{ compiler('c') }}\n  host:\n    - python\n    - pip\n    - numpy\n    - {{ mpi }}\n    - petsc {{version.rsplit('.', 1)[0]}}.*\n  run:\n    - python\n    - {{ pin_compatible('numpy') }}\n    - {{ mpi }}\n    - petsc # pinned by petsc run_exports\n\nabout:\n  home: https://bitbucket.org/petsc/petsc4py\n  summary: Python bindings for PETSc\n  license: BSD 2-Clause\n  license_file: LICENSE.rst\n\nextra:\n  recipe-maintainers:\n    - dalcinl\n    - minrk\n    - davidbrochart\n    - SylvainCorlay\n",
  "req":{
   "__set__":true,
   "elements":[
    "c_compiler_stub",
    "compatible_pin_stub",
    "fortran_compiler_stub",
+   "mpich",
    "numpy",
    "petsc",
    "pip",
    "python"
   ]
  },
- "smithy_version":"3.4.1",
+ "smithy_version":"3.6.0",
  "url":"https://bitbucket.org/petsc/petsc4py/downloads/petsc4py-3.11.0.tar.gz",
  "version":"3.11.0"
 }
