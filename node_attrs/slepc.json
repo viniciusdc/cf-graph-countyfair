@@ -248,11 +248,11 @@
    "home":"http://slepc.upv.es/",
    "license":"BSD 2-Clause",
    "license_family":"BSD",
-   "license_file":"LICENSE",
+   "license_file":"LICENSE.md",
    "summary":"SLEPc: Scalable Library for Eigenvalue Problem Computations"
   },
   "build":{
-   "number":"2",
+   "number":"0",
    "run_exports":[
     "subpackage_stub",
     "subpackage_stub",
@@ -275,7 +275,7 @@
   },
   "package":{
    "name":"slepc",
-   "version":"3.11.2"
+   "version":"3.12.0"
   },
   "requirements":{
    "build":[
@@ -297,19 +297,19 @@
     "libcblas",
     "liblapack",
     "mpich",
-    "petsc 3.11.*",
+    "petsc 3.12.*",
     "suitesparse",
     "libblas",
     "libcblas",
     "liblapack",
     "mpich",
-    "petsc 3.11.*",
+    "petsc 3.12.*",
     "suitesparse",
     "libblas",
     "libcblas",
     "liblapack",
     "mpich",
-    "petsc 3.11.*",
+    "petsc 3.12.*",
     "suitesparse"
    ],
    "run":[
@@ -325,8 +325,8 @@
    ]
   },
   "source":{
-   "sha256":"cd6a73ac0c9f689c12f2987000a7a28fa7df53fdc069fb59a2bb148699e741dd",
-   "url":"http://slepc.upv.es/download/distrib/slepc-3.11.2.tar.gz"
+   "sha256":"872831d961cf76389fafb7553231ae1a6676555850c98ea0e893c06f596b2e9e",
+   "url":"http://slepc.upv.es/download/distrib/slepc-3.12.0.tar.gz"
   },
   "test":{
    "commands":[
@@ -367,7 +367,7 @@
  "name":"slepc",
  "new_version":"3.12.0",
  "pinning_version":"2019.10.11",
- "raw_meta_yaml":"{% set version = \"3.11.2\" %}\n{% set sha256 = \"cd6a73ac0c9f689c12f2987000a7a28fa7df53fdc069fb59a2bb148699e741dd\" %}\n\n{% set version_xy = version.rsplit(\".\", 1)[0] %}\n{% set mpi = mpi or 'mpich' %}\n\npackage:\n  name: slepc\n  version: {{version}}\n\nsource:\n  url: http://slepc.upv.es/download/distrib/slepc-{{version}}.tar.gz\n  sha256: {{sha256}}\n\nbuild:\n  skip: true  # [win]\n  number: 2\n  run_exports:\n    - {{ pin_subpackage('slepc', max_pin='x.x') }}\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n    - {{ compiler('fortran') }}\n    - python 2.7.*\n  host:\n    - libblas\n    - libcblas\n    - liblapack\n    - {{ mpi }}\n    - petsc {{ version_xy }}.*\n    - suitesparse\n  run:\n    - {{ mpi }}\n    - petsc\n    - suitesparse\n\ntest:\n  requires:\n    - pkg-config\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n    - {{ compiler('fortran') }}\n  files:\n    - tests/test10.c\n    - tests/test14f.F\n    - tests/makefile\n  commands:\n    - PKG_CONFIG_PATH=$PREFIX/lib/pkgconfig pkg-config --cflags SLEPc\n    - PKG_CONFIG_PATH=$PREFIX/lib/pkgconfig pkg-config --libs   SLEPc\n\nabout:\n  home: http://slepc.upv.es/\n  summary: 'SLEPc: Scalable Library for Eigenvalue Problem Computations'\n  license: BSD 2-Clause\n  license_file: LICENSE\n  license_family: BSD\n\nextra:\n  recipe-maintainers:\n    - dalcinl\n    - joseeroman\n    - minrk\n",
+ "raw_meta_yaml":"{% set version = \"3.12.0\" %}\n{% set sha256 = \"872831d961cf76389fafb7553231ae1a6676555850c98ea0e893c06f596b2e9e\" %}\n\n{% set version_xy = version.rsplit(\".\", 1)[0] %}\n{% set mpi = mpi or 'mpich' %}\n\npackage:\n  name: slepc\n  version: {{version}}\n\nsource:\n  url: http://slepc.upv.es/download/distrib/slepc-{{version}}.tar.gz\n  sha256: {{sha256}}\n\nbuild:\n  skip: true  # [win]\n  number: 0\n  run_exports:\n    - {{ pin_subpackage('slepc', max_pin='x.x') }}\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n    - {{ compiler('fortran') }}\n    - python 2.7.*\n  host:\n    - libblas\n    - libcblas\n    - liblapack\n    - {{ mpi }}\n    - petsc {{ version_xy }}.*\n    - suitesparse\n  run:\n    - {{ mpi }}\n    - petsc\n    - suitesparse\n\ntest:\n  requires:\n    - pkg-config\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n    - {{ compiler('fortran') }}\n  files:\n    - tests/test10.c\n    - tests/test14f.F\n    - tests/makefile\n  commands:\n    - PKG_CONFIG_PATH=$PREFIX/lib/pkgconfig pkg-config --cflags SLEPc\n    - PKG_CONFIG_PATH=$PREFIX/lib/pkgconfig pkg-config --libs   SLEPc\n\nabout:\n  home: http://slepc.upv.es/\n  summary: 'SLEPc: Scalable Library for Eigenvalue Problem Computations'\n  license: BSD 2-Clause\n  license_file: LICENSE.md\n  license_family: BSD\n\nextra:\n  recipe-maintainers:\n    - dalcinl\n    - joseeroman\n    - minrk\n",
  "req":{
   "__set__":true,
   "elements":[
@@ -385,5 +385,5 @@
  },
  "smithy_version":"3.6.0",
  "url":"http://slepc.upv.es/download/distrib/slepc-3.11.2.tar.gz",
- "version":"3.11.2"
+ "version":"3.12.0"
 }
