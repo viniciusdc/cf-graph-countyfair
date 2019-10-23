@@ -53,14 +53,14 @@
    "summary":"A set of utilities for visualization and conversion of scientific data in the free portable HDF5 format"
   },
   "build":{
-   "number":"1105",
+   "number":"1106",
    "run_exports":[
     "h5utils * nompi_*",
     "h5utils * nompi_*",
     "h5utils * nompi_*"
    ],
    "skip":true,
-   "string":"nompi_h_1105"
+   "string":"nompi_h_1106"
   },
   "extra":{
    "recipe-maintainers":[
@@ -144,7 +144,7 @@
  "name":"h5utils",
  "new_version":false,
  "pinning_version":"2019.06.05",
- "raw_meta_yaml":"{% set name = \"h5utils\" %}\n{% set version = \"1.13.1\" %}\n{% set sha256 = \"c5a76f064d6daa3e65583dce2b61202510e67cf6590f076af9a8aa72511d7d65\" %}\n{% set build = 1005 %}\n\n# recipe-lint fails if mpi is undefined\n{% set mpi = mpi or 'nompi' %}\n{% if mpi == \"nompi\" %}\n# prioritize nompi via build number\n{% set build = build + 100 %}\n{% endif %}\n\npackage:\n  name: {{ name }}\n  version: {{ version }}\n\nsource:\n  fn: {{ name }}-{{ version }}.tar.gz\n  url: https://github.com/NanoComp/{{ name }}/releases/download/{{ version }}/{{ name }}-{{ version }}.tar.gz\n  sha256: {{ sha256 }}\n\nbuild:\n  number: {{ build }}\n  skip: true  # [win]\n  {% if mpi != \"nompi\" %}\n  {% set mpi_prefix = \"mpi_\" + mpi %}\n  {% else %}\n  {% set mpi_prefix = \"nompi\" %}\n  {% endif %}\n  # add build string so packages can depend on\n  # mpi or nompi variants\n  # dependencies:\n  # `h5utils * mpi_mpich_*` for mpich\n  # `h5utils * mpi_*` for any mpi\n  # `h5utils * nompi_*` for no mpi\n  string: \"{{ mpi_prefix }}_h{{ PKG_HASH }}_{{ build }}\"\n  run_exports:\n    - {{ name }} * {{ mpi_prefix }}_*\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n  host:\n    - {{ mpi }}  # [mpi != 'nompi']\n    - libpng\n    - hdf5 * {{ mpi_prefix }}_*\n    - zlib\n  run:\n    - {{ mpi }}  # [mpi != 'nompi']\n    - libpng\n    - hdf5\n    - zlib\n\ntest:\n  requires:\n    - h5py\n    - numpy\n  commands:\n    - h5topng -h\n    - h5totxt -h\n    - h5fromtxt -h\n    - h5tovtk -h\n\nabout:\n  home: http:/github.com/NanoComp/h5utils\n  license: MIT, GPL2\n  license_file: COPYING\n  summary: A set of utilities for visualization and conversion of scientific data in the free portable HDF5 format\n  doc_url: https://github.com/NanoComp/h5utils/tree/master/doc\n  dev_url: https://github.com/NanoComp/h5utils\n\nextra:\n  recipe-maintainers:\n    - ChristopherHogan\n",
+ "raw_meta_yaml":"{% set name = \"h5utils\" %}\n{% set version = \"1.13.1\" %}\n{% set sha256 = \"c5a76f064d6daa3e65583dce2b61202510e67cf6590f076af9a8aa72511d7d65\" %}\n{% set build = 1006 %}\n\n# recipe-lint fails if mpi is undefined\n{% set mpi = mpi or 'nompi' %}\n{% if mpi == \"nompi\" %}\n# prioritize nompi via build number\n{% set build = build + 100 %}\n{% endif %}\n\npackage:\n  name: {{ name }}\n  version: {{ version }}\n\nsource:\n  fn: {{ name }}-{{ version }}.tar.gz\n  url: https://github.com/NanoComp/{{ name }}/releases/download/{{ version }}/{{ name }}-{{ version }}.tar.gz\n  sha256: {{ sha256 }}\n\nbuild:\n  number: {{ build }}\n  skip: true  # [win]\n  {% if mpi != \"nompi\" %}\n  {% set mpi_prefix = \"mpi_\" + mpi %}\n  {% else %}\n  {% set mpi_prefix = \"nompi\" %}\n  {% endif %}\n  # add build string so packages can depend on\n  # mpi or nompi variants\n  # dependencies:\n  # `h5utils * mpi_mpich_*` for mpich\n  # `h5utils * mpi_*` for any mpi\n  # `h5utils * nompi_*` for no mpi\n  string: \"{{ mpi_prefix }}_h{{ PKG_HASH }}_{{ build }}\"\n  run_exports:\n    - {{ name }} * {{ mpi_prefix }}_*\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n  host:\n    - {{ mpi }}  # [mpi != 'nompi']\n    - libpng\n    - hdf5 * {{ mpi_prefix }}_*\n    - zlib\n  run:\n    - {{ mpi }}  # [mpi != 'nompi']\n    - libpng\n    - hdf5\n    - zlib\n\ntest:\n  requires:\n    - h5py\n    - numpy\n  commands:\n    - h5topng -h\n    - h5totxt -h\n    - h5fromtxt -h\n    - h5tovtk -h\n\nabout:\n  home: http:/github.com/NanoComp/h5utils\n  license: MIT, GPL2\n  license_file: COPYING\n  summary: A set of utilities for visualization and conversion of scientific data in the free portable HDF5 format\n  doc_url: https://github.com/NanoComp/h5utils/tree/master/doc\n  dev_url: https://github.com/NanoComp/h5utils\n\nextra:\n  recipe-maintainers:\n    - ChristopherHogan\n",
  "req":{
   "__set__":true,
   "elements":[
