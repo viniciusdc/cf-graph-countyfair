@@ -101,6 +101,23 @@
     "migrator_version",
     "name"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/331704340.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"Version",
+    "migrator_version":0,
+    "version":"1.17"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "version"
+   ]
   }
  ],
  "bad":false,
@@ -221,7 +238,7 @@
   }
  },
  "name":"r-ncdf4",
- "new_version":"1.16.1",
+ "new_version":"1.17",
  "pinning_version":"2019.10.11",
  "raw_meta_yaml":"{% set version = \"1.16.1\" %}\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-ncdf4\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  fn: ncdf4_{{ version }}.tar.gz\n  url:\n    - {{ cran_mirror }}/src/contrib/ncdf4_{{ version }}.tar.gz\n    - {{ cran_mirror }}/src/contrib/Archive/ncdf4/ncdf4_{{ version }}.tar.gz\n  sha256: 0dde2d6d1e8474f4abd15a61af8a2f7de564f13da00f1a01d7a479ab88587a20\n  patches:\n    - win.patch\n\nbuild:\n  merge_build_host: True  # [win]\n  number: 3\n  skip: true  # [win32]\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - {{ compiler('c') }}        # [not win]\n    - {{ compiler('m2w64_c') }}        # [win]\n    - {{posix}}filesystem        # [win]\n    - {{posix}}sed               # [win]\n    - {{posix}}grep              # [win]\n    - {{posix}}autoconf\n    - {{posix}}automake          # [not win]\n    - {{posix}}automake-wrapper  # [win]\n    - {{posix}}pkg-config\n    - {{posix}}make\n    - {{posix}}coreutils         # [win]\n    - {{posix}}zip               # [win]\n  host:\n    - r-base\n    - libnetcdf\n    - hdf5\n  run:\n    - r-base\n    - {{native}}gcc-libs         # [win]\n    - libnetcdf\n    - hdf5\n\ntest:\n  commands:\n    - $R -e \"library('ncdf4')\"           # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('ncdf4')\\\"\"  # [win]\n\nabout:\n  home: http://cirrus.ucsd.edu/~pierce/ncdf\n  license: GPL (>= 3)\n  summary: Provides a high-level R interface to data files written using Unidata's netCDF library\n    (version 4 or earlier), which are binary data files that are portable across platforms\n    and include metadata information in addition to the data sets.  Using this package,\n    netCDF files (either version 4 or \"classic\" version 3) can be opened and data sets\n    read in easily.  It is also easy to create new netCDF dimensions, variables, and\n    files, in either version 3 or 4 format, and manipulate existing netCDF files.  This\n    package replaces the former ncdf package, which only worked with netcdf version\n    3 files.  For various reasons the names of the functions have had to be changed\n    from the names in the ncdf package.  The old ncdf package is still available at\n    the URL given below, if you need to have backward compatibility.  It should be possible\n    to have both the ncdf and ncdf4 packages installed simultaneously without a problem.  However,\n    the ncdf package does not provide an interface for netcdf version 4 files.\n  license_family: GPL3\n  license_file: '{{ environ[\"PREFIX\"] }}/lib/R/share/licenses/GPL-3'\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n    - ocefpaf\n",
  "req":{
