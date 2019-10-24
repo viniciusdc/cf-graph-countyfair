@@ -83,7 +83,12 @@
    "summary":"A fast math parser library"
   },
   "build":{
-   "number":"0",
+   "number":"1",
+   "run_exports":[
+    "subpackage_stub",
+    "subpackage_stub",
+    "subpackage_stub"
+   ],
    "skip":true
   },
   "extra":{
@@ -135,7 +140,7 @@
  "name":"muparser",
  "new_version":"2.2.6.1",
  "pinning_version":"2018.10.01",
- "raw_meta_yaml":"{% set version = \"2.2.6.1\" %}\n\npackage:\n  name: muparser\n  version: {{ version }}\n\nsource:\n  fn: v{{ version }}.tar.gz\n  url: https://github.com/beltoforion/muparser/archive/v{{ version }}.tar.gz\n  sha256: d2562853d972b6ddb07af47ce8a1cdeeb8bb3fa9e8da308746de391db67897b3\n  patches:\n    - no-console.patch\n\nbuild:\n  number: 0\n\n  # Requires c++11 unavailable on vc9\n  skip: true  # [win and vc<14]\n\nrequirements:\n  build:\n    - cmake\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n\ntest:\n  commands:\n    - test -f ${PREFIX}/include/muParser.h  # [unix]\n    - test -f ${PREFIX}/lib/libmuparser${SHLIB_EXT}  # [unix]\n    - if not exist %PREFIX%\\\\Library\\\\include\\\\muParser.h exit 1  # [win]\n    - if not exist %PREFIX%\\\\Library\\\\lib\\\\muparser.lib exit 1  # [win]\n    - if not exist %PREFIX%\\\\Library\\\\bin\\\\muparser.dll exit 1  # [win]\n\nabout:\n  home: http://muparser.beltoforion.de/\n  license: MIT\n  license_file: License.txt\n  summary: A fast math parser library\n\nextra:\n  recipe-maintainers:\n    - jschueller\n",
+ "raw_meta_yaml":"{% set version = \"2.2.6.1\" %}\n\npackage:\n  name: muparser\n  version: {{ version }}\n\nsource:\n  fn: v{{ version }}.tar.gz\n  url: https://github.com/beltoforion/muparser/archive/v{{ version }}.tar.gz\n  sha256: d2562853d972b6ddb07af47ce8a1cdeeb8bb3fa9e8da308746de391db67897b3\n  patches:\n    - no-console.patch\n\nbuild:\n  number: 1\n  # Requires c++11 unavailable on vc9\n  skip: true  # [win and vc<14]\n  run_exports:\n    - {{ pin_subpackage('muparser', max_pin='x.x') }}\n\nrequirements:\n  build:\n    - cmake\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n\ntest:\n  commands:\n    - test -f ${PREFIX}/include/muParser.h  # [unix]\n    - test -f ${PREFIX}/lib/libmuparser${SHLIB_EXT}  # [unix]\n    - if not exist %PREFIX%\\\\Library\\\\include\\\\muParser.h exit 1  # [win]\n    - if not exist %PREFIX%\\\\Library\\\\lib\\\\muparser.lib exit 1  # [win]\n    - if not exist %PREFIX%\\\\Library\\\\bin\\\\muparser.dll exit 1  # [win]\n\nabout:\n  home: http://muparser.beltoforion.de/\n  license: MIT\n  license_file: License.txt\n  summary: A fast math parser library\n\nextra:\n  recipe-maintainers:\n    - jschueller\n",
  "req":{
   "__set__":true,
   "elements":[
