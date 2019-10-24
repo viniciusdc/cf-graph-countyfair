@@ -409,11 +409,11 @@
    "number":"0",
    "script":[
     "pushd src/github.com/terraform-providers/terraform-provider-cloudflare",
-    "go build -v -o %GOBIN%\\terraform-provider-cloudflare_v2.0.0_x4 .",
+    "go build -v -o %GOBIN%\\terraform-provider-cloudflare_v2.0.1_x4 .",
     "pushd src/github.com/terraform-providers/terraform-provider-cloudflare",
-    "go build -v -o $GOBIN/terraform-provider-cloudflare_v2.0.0_x4 .",
+    "go build -v -o $GOBIN/terraform-provider-cloudflare_v2.0.1_x4 .",
     "pushd src/github.com/terraform-providers/terraform-provider-cloudflare",
-    "go build -v -o $GOBIN/terraform-provider-cloudflare_v2.0.0_x4 ."
+    "go build -v -o $GOBIN/terraform-provider-cloudflare_v2.0.1_x4 ."
    ]
   },
   "extra":{
@@ -425,7 +425,7 @@
   },
   "package":{
    "name":"terraform-provider-cloudflare",
-   "version":"2.0.0"
+   "version":"2.0.1"
   },
   "requirements":{
    "build":[
@@ -442,34 +442,34 @@
   "source":[
    {
     "folder":"src/github.com/terraform-providers/terraform-provider-cloudflare",
-    "sha256":"8bb0ca5afe0ed78dfbd6c3e2b2cc440713aa108403261b047d7b149fc2a1c7f5",
-    "url":"https://github.com/terraform-providers/terraform-provider-cloudflare/archive/v2.0.0.tar.gz"
+    "sha256":"1e0d3060de70deb869655e9a6bf3953febc935c04fd14a1113a0b340a2650783",
+    "url":"https://github.com/terraform-providers/terraform-provider-cloudflare/archive/v2.0.1.tar.gz"
    },
    {
     "folder":"src/github.com/terraform-providers/terraform-provider-cloudflare",
-    "sha256":"8bb0ca5afe0ed78dfbd6c3e2b2cc440713aa108403261b047d7b149fc2a1c7f5",
-    "url":"https://github.com/terraform-providers/terraform-provider-cloudflare/archive/v2.0.0.tar.gz"
+    "sha256":"1e0d3060de70deb869655e9a6bf3953febc935c04fd14a1113a0b340a2650783",
+    "url":"https://github.com/terraform-providers/terraform-provider-cloudflare/archive/v2.0.1.tar.gz"
    },
    {
     "folder":"src/github.com/terraform-providers/terraform-provider-cloudflare",
-    "sha256":"8bb0ca5afe0ed78dfbd6c3e2b2cc440713aa108403261b047d7b149fc2a1c7f5",
-    "url":"https://github.com/terraform-providers/terraform-provider-cloudflare/archive/v2.0.0.tar.gz"
+    "sha256":"1e0d3060de70deb869655e9a6bf3953febc935c04fd14a1113a0b340a2650783",
+    "url":"https://github.com/terraform-providers/terraform-provider-cloudflare/archive/v2.0.1.tar.gz"
    }
   ],
   "test":{
    "commands":[
-    "bash -euf -c \"echo 'provider \\\"cloudflare\\\" { version=\\\"2.0.0\\\" }' > init.tf\"",
+    "bash -euf -c \"echo 'provider \\\"cloudflare\\\" { version=\\\"2.0.1\\\" }' > init.tf\"",
     "terraform init",
     "test -f .terraform/plugins/_/lock.json",
-    "test ! -f .terraform/plugins/_/terraform-provider-cloudflare_v2.0.0_x4",
-    "bash -euf -c \"echo 'provider \\\"cloudflare\\\" { version=\\\"2.0.0\\\" }' > init.tf\"",
+    "test ! -f .terraform/plugins/_/terraform-provider-cloudflare_v2.0.1_x4",
+    "bash -euf -c \"echo 'provider \\\"cloudflare\\\" { version=\\\"2.0.1\\\" }' > init.tf\"",
     "terraform init",
     "test -f .terraform/plugins/_/lock.json",
-    "test ! -f .terraform/plugins/_/terraform-provider-cloudflare_v2.0.0_x4",
-    "bash -euf -c \"echo 'provider \\\"cloudflare\\\" { version=\\\"2.0.0\\\" }' > init.tf\"",
+    "test ! -f .terraform/plugins/_/terraform-provider-cloudflare_v2.0.1_x4",
+    "bash -euf -c \"echo 'provider \\\"cloudflare\\\" { version=\\\"2.0.1\\\" }' > init.tf\"",
     "terraform init",
     "test -f .terraform/plugins/_/lock.json",
-    "test ! -f .terraform/plugins/_/terraform-provider-cloudflare_v2.0.0_x4"
+    "test ! -f .terraform/plugins/_/terraform-provider-cloudflare_v2.0.1_x4"
    ],
    "requires":[
     "m2-bash",
@@ -480,7 +480,7 @@
  "name":"terraform-provider-cloudflare",
  "new_version":"2.0.1",
  "pinning_version":"2019.10.11",
- "raw_meta_yaml":"{% set provider = \"CloudFlare\" %}\n{% set goname = \"github.com/terraform-providers/terraform-provider-\"+provider.lower() %}\n{% set version = \"2.0.0\" %}\n\n{% set name = goname.split('/')[-1] %}\n{% set pkg_src = ('src/'+goname).replace(\"/\",os.sep) %}\n\n{% set x4_plugin = name + '_v' + version + \"_x4\" + (\".exe\" if win else \"\")%}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  - folder:  {{ pkg_src }}\n    url: https://{{ goname }}/archive/v{{ version }}.tar.gz\n    sha256: 8bb0ca5afe0ed78dfbd6c3e2b2cc440713aa108403261b047d7b149fc2a1c7f5\n\n\nbuild:\n  number: 0\n  script:\n    - pushd {{ pkg_src }}\n    - go build -v -o $GOBIN/{{ x4_plugin }} .  # [unix]\n    - go build -v -o %GOBIN%\\{{ x4_plugin }} .  # [win]\n\nrequirements:\n  build:\n    - {{ compiler('go') }} >=1.11.3\n  run:\n    - terraform >=0.10  # [unix]\n    - terraform >=0.11.11  # [win]\n\ntest:\n  requires:         # [win]\n    - m2-bash       # [win]\n    - m2-coreutils  # [win]\n\n  commands:\n    - bash -euf -c \"echo 'provider \\\"{{ provider|lower }}\\\" { version=\\\"{{ version }}\\\" }' > init.tf\"\n    - terraform init\n    # Tests that no plugins were downloaded\n    - test -f .terraform/plugins/{{ goos }}_{{ goarch }}/lock.json\n    - test ! -f .terraform/plugins/{{ goos }}_{{ goarch }}/{{ x4_plugin }}\n\nabout:\n  home: https://www.terraform.io\n  license: MPL 2.0\n  summary: The Terraform {{ provider }} provider\n  doc_url: https://www.terraform.io/docs/providers/{{ provider|lower }}/index.html\n  dev_url: https://github.com/terraform-providers/{{ name }}\n\nextra:\n  recipe-maintainers:\n    - sodre\n",
+ "raw_meta_yaml":"{% set provider = \"CloudFlare\" %}\n{% set goname = \"github.com/terraform-providers/terraform-provider-\"+provider.lower() %}\n{% set version = \"2.0.1\" %}\n\n{% set name = goname.split('/')[-1] %}\n{% set pkg_src = ('src/'+goname).replace(\"/\",os.sep) %}\n\n{% set x4_plugin = name + '_v' + version + \"_x4\" + (\".exe\" if win else \"\")%}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  - folder:  {{ pkg_src }}\n    url: https://{{ goname }}/archive/v{{ version }}.tar.gz\n    sha256: 1e0d3060de70deb869655e9a6bf3953febc935c04fd14a1113a0b340a2650783\n\n\nbuild:\n  number: 0\n  script:\n    - pushd {{ pkg_src }}\n    - go build -v -o $GOBIN/{{ x4_plugin }} .  # [unix]\n    - go build -v -o %GOBIN%\\{{ x4_plugin }} .  # [win]\n\nrequirements:\n  build:\n    - {{ compiler('go') }} >=1.11.3\n  run:\n    - terraform >=0.10  # [unix]\n    - terraform >=0.11.11  # [win]\n\ntest:\n  requires:         # [win]\n    - m2-bash       # [win]\n    - m2-coreutils  # [win]\n\n  commands:\n    - bash -euf -c \"echo 'provider \\\"{{ provider|lower }}\\\" { version=\\\"{{ version }}\\\" }' > init.tf\"\n    - terraform init\n    # Tests that no plugins were downloaded\n    - test -f .terraform/plugins/{{ goos }}_{{ goarch }}/lock.json\n    - test ! -f .terraform/plugins/{{ goos }}_{{ goarch }}/{{ x4_plugin }}\n\nabout:\n  home: https://www.terraform.io\n  license: MPL 2.0\n  summary: The Terraform {{ provider }} provider\n  doc_url: https://www.terraform.io/docs/providers/{{ provider|lower }}/index.html\n  dev_url: https://github.com/terraform-providers/{{ name }}\n\nextra:\n  recipe-maintainers:\n    - sodre\n",
  "req":{
   "__set__":true,
   "elements":[
@@ -490,5 +490,5 @@
  },
  "smithy_version":"3.6.0",
  "url":"https://github.com/terraform-providers/terraform-provider-cloudflare/archive/v1.18.1.tar.gz",
- "version":"2.0.0"
+ "version":"2.0.1"
 }

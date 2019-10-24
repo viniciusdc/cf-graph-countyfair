@@ -50,6 +50,23 @@
     "migrator_version",
     "version"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/331818967.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"Version",
+    "migrator_version":0,
+    "version":"1.9.3"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "version"
+   ]
   }
  ],
  "bad":false,
@@ -115,7 +132,7 @@
   }
  },
  "name":"libspatialindex",
- "new_version":"1.9.2",
+ "new_version":"1.9.3",
  "pinning_version":"2019.10.11",
  "raw_meta_yaml":"{% set version = \"1.9.2\" %}\n\npackage:\n  name: libspatialindex\n  version: {{ version }}\n\nsource:\n  url: https://github.com/libspatialindex/libspatialindex/archive/{{ version }}.tar.gz\n  sha256: 64ae5a219d5987b7ad866272d97db2bd28e1c29724ccde1308c8070ae9103398\n\nbuild:\n  number: 0\n  skip: True  # [win and vc<14]\n  run_exports:\n    # https://github.com/conda-forge/libspatialindex-feedstock/pull/18#issuecomment-473935733\n    - {{ pin_subpackage('libspatialindex', max_pin='x.x') }}\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n    - cmake\n    - ninja  # [win]\n\ntest:\n  commands:\n    - test -f ${PREFIX}/lib/libspatialindex_c${SHLIB_EXT}  # [not win]\n\nabout:\n  home: http://libspatialindex.github.io\n  license: MIT\n  license_file: COPYING\n  summary: 'Extensible framework for robust spatial indexing'\n\nextra:\n  recipe-maintainers:\n    - ocefpaf\n",
  "req":{
