@@ -165,8 +165,12 @@
    "summary":"Fortran77 subroutines designed to solve large scale eigenvalue problems"
   },
   "build":{
-   "features":null,
-   "number":"1005"
+   "number":"1006",
+   "run_exports":[
+    "subpackage_stub",
+    "subpackage_stub",
+    "subpackage_stub"
+   ]
   },
   "extra":{
    "recipe-maintainers":[
@@ -220,7 +224,7 @@
  "name":"arpack",
  "new_version":"3.7.0",
  "pinning_version":"2019.08.12",
- "raw_meta_yaml":"{% set version = \"3.6.3\" %}\n\npackage:\n  name: arpack\n  version: {{ version }}\n\nsource:\n  fn: arpack-{{ version }}.tar.gz\n  url: https://github.com/opencollab/arpack-ng/archive/{{ version }}.tar.gz\n  sha256: 64f3551e5a2f8497399d82af3076b6a33bf1bc95fc46bbcabe66442db366f453\n\nbuild:\n  number: 1005\n  features:\n\nrequirements:\n  build:\n    - cmake\n    - {{ compiler('fortran') }}  # [unix]\n    - {{ compiler('c') }}  # [unix]\n    - {{ compiler('m2w64_fortran') }}  # [win]\n    - {{ compiler('m2w64_c') }}  # [win]\n  host:\n    - libblas\n    - liblapack\n\ntest:\n  commands:\n    - test -f ${PREFIX}/lib/libarpack.a  # [unix]\n    - test -f ${PREFIX}/lib/libarpack${SHLIB_EXT}  # [unix]\n    - if not exist %PREFIX%\\\\Library\\\\mingw-w64\\\\lib\\\\libarpack.a exit 1  # [win]\n    - if not exist %PREFIX%\\\\Library\\\\mingw-w64\\\\lib\\\\libarpack.dll.a exit 1  # [win]\n    - if not exist %PREFIX%\\\\Library\\\\mingw-w64\\\\bin\\\\libarpack.dll exit 1  # [win]\n\nabout:\n  home: https://github.com/opencollab/arpack-ng\n  license: BSD 3-Clause\n  license_file: COPYING\n  summary: Fortran77 subroutines designed to solve large scale eigenvalue problems\n\nextra:\n  recipe-maintainers:\n    - jschueller\n",
+ "raw_meta_yaml":"{% set version = \"3.6.3\" %}\n\npackage:\n  name: arpack\n  version: {{ version }}\n\nsource:\n  fn: arpack-{{ version }}.tar.gz\n  url: https://github.com/opencollab/arpack-ng/archive/{{ version }}.tar.gz\n  sha256: 64f3551e5a2f8497399d82af3076b6a33bf1bc95fc46bbcabe66442db366f453\n\nbuild:\n  number: 1006\n  run_exports:\n    - {{ pin_subpackage('arpack', max_pin='x.x') }}\n\nrequirements:\n  build:\n    - cmake\n    - {{ compiler('fortran') }}  # [unix]\n    - {{ compiler('c') }}  # [unix]\n    - {{ compiler('m2w64_fortran') }}  # [win]\n    - {{ compiler('m2w64_c') }}  # [win]\n  host:\n    - libblas\n    - liblapack\n\ntest:\n  commands:\n    - test -f ${PREFIX}/lib/libarpack.a  # [unix]\n    - test -f ${PREFIX}/lib/libarpack${SHLIB_EXT}  # [unix]\n    - if not exist %PREFIX%\\\\Library\\\\mingw-w64\\\\lib\\\\libarpack.a exit 1  # [win]\n    - if not exist %PREFIX%\\\\Library\\\\mingw-w64\\\\lib\\\\libarpack.dll.a exit 1  # [win]\n    - if not exist %PREFIX%\\\\Library\\\\mingw-w64\\\\bin\\\\libarpack.dll exit 1  # [win]\n\nabout:\n  home: https://github.com/opencollab/arpack-ng\n  license: BSD 3-Clause\n  license_file: COPYING\n  summary: Fortran77 subroutines designed to solve large scale eigenvalue problems\n\nextra:\n  recipe-maintainers:\n    - jschueller\n",
  "req":{
   "__set__":true,
   "elements":[
