@@ -136,7 +136,12 @@
    "summary":"Uncertainty treatment library"
   },
   "build":{
-   "number":"1"
+   "number":"0",
+   "run_exports":[
+    "subpackage_stub",
+    "subpackage_stub",
+    "subpackage_stub"
+   ]
   },
   "extra":{
    "recipe-maintainers":[
@@ -147,7 +152,7 @@
   },
   "package":{
    "name":"openturns",
-   "version":"1.13"
+   "version":"1.14rc1"
   },
   "requirements":{
    "build":[
@@ -170,7 +175,8 @@
     "hmat-oss",
     "cminpack",
     "ceres-solver",
-    "optpp",
+    "dlib",
+    "coinbonmin",
     "boost-cpp",
     "python",
     "matplotlib",
@@ -182,45 +188,28 @@
     "hmat-oss",
     "cminpack",
     "ceres-solver",
-    "optpp"
+    "dlib",
+    "coinbonmin"
    ],
    "run":[
     "python",
     "psutil",
     "python",
     "psutil",
-    "libxml2",
-    "muparser",
-    "tbb",
-    "nlopt",
     "hmat-oss",
     "cminpack",
-    "ceres-solver",
-    "optpp",
+    "dlib",
     "python",
     "psutil",
-    "libxml2",
-    "muparser",
-    "tbb",
-    "nlopt",
     "hmat-oss",
     "cminpack",
-    "ceres-solver",
-    "optpp"
+    "dlib"
    ]
   },
   "source":{
-   "fn":"openturns-1.13.tar.gz",
-   "patches":[
-    "0001-Fix-ANCOVA-for-sparse-decomposition.patch",
-    "0001-Add-UserDefined-setParameter.patch",
-    "0001-Fix-ANCOVA-for-sparse-decomposition.patch",
-    "0001-Add-UserDefined-setParameter.patch",
-    "0001-Fix-ANCOVA-for-sparse-decomposition.patch",
-    "0001-Add-UserDefined-setParameter.patch"
-   ],
-   "sha256":"dcdc1b37f7171c4106fa6392cc240ef780198d377938169d3f9ac0e541453930",
-   "url":"https://github.com/openturns/openturns/archive/v1.13.tar.gz"
+   "fn":"openturns-1.14rc1.tar.gz",
+   "sha256":"4c0c24dc1b8307e344313475ced5a9a5971a7d2ba11d39e2c2876ac27cf1660e",
+   "url":"https://github.com/openturns/openturns/archive/v1.14rc1.tar.gz"
   },
   "test":{
    "imports":[
@@ -233,7 +222,7 @@
  "name":"openturns",
  "new_version":"1.13",
  "pinning_version":"2019.05.31",
- "raw_meta_yaml":"{% set version = \"1.13\" %}\n\npackage:\n  name: openturns\n  version: {{ version }}\n\nsource:\n  fn: openturns-{{ version }}.tar.gz\n  url: https://github.com/openturns/openturns/archive/v{{ version }}.tar.gz\n  sha256: dcdc1b37f7171c4106fa6392cc240ef780198d377938169d3f9ac0e541453930\n  patches:\n    # https://github.com/openturns/openturns/pull/1183\n    - 0001-Fix-ANCOVA-for-sparse-decomposition.patch\n    - 0001-Add-UserDefined-setParameter.patch\n\nbuild:\n  number: 1\n\nrequirements:\n  build:\n    - cmake  # [not win]\n    - swig  # [not win]\n    - {{ compiler('c') }}  # [not win]\n    - {{ compiler('cxx') }}  # [not win]\n  host:\n    - boost-cpp  # [not win]\n    - python\n    - matplotlib\n    - liblapack  # [not win]\n    - libxml2  # [not win]\n    - muparser  # [not win]\n    - tbb-devel  # [not win]\n    - nlopt  # [not win]\n    - hmat-oss  # [not win]\n    - cminpack  # [not win]\n    - ceres-solver  # [not win]\n    - optpp  # [not win]\n  run:\n    - python\n    - psutil\n    - libxml2  # [not win]\n    - muparser  # [not win]\n    - tbb  # [not win]\n    - nlopt  # [not win]\n    - hmat-oss  # [not win]\n    - cminpack  # [not win]\n    - ceres-solver  # [not win]\n    - optpp  # [not win]\n\ntest:\n  imports:\n    - openturns\n\nabout:\n  home: http://openturns.org/\n  license: LGPL3\n  license_file: COPYING.LESSER\n  summary: Uncertainty treatment library\n\nextra:\n  recipe-maintainers:\n    - jschueller\n",
+ "raw_meta_yaml":"{% set version = \"1.14rc1\" %}\n\npackage:\n  name: openturns\n  version: {{ version }}\n\nsource:\n  fn: openturns-{{ version }}.tar.gz\n  url: https://github.com/openturns/openturns/archive/v{{ version }}.tar.gz\n  sha256: 4c0c24dc1b8307e344313475ced5a9a5971a7d2ba11d39e2c2876ac27cf1660e\n\nbuild:\n  number: 0\n  run_exports:\n    - {{ pin_subpackage('openturns', max_pin='x.x') }}\n\nrequirements:\n  build:\n    - cmake  # [not win]\n    - swig  # [not win]\n    - {{ compiler('c') }}  # [not win]\n    - {{ compiler('cxx') }}  # [not win]\n  host:\n    - boost-cpp  # [not win]\n    - python\n    - matplotlib\n    - liblapack  # [not win]\n    - libxml2  # [not win]\n    - muparser  # [not win]\n    - tbb-devel  # [not win]\n    - nlopt  # [not win]\n    - hmat-oss  # [not win]\n    - cminpack  # [not win]\n    - ceres-solver  # [not win]\n    - dlib  # [not win]\n    - coinbonmin  # [not win]\n  run:\n    - python\n    - psutil\n    - hmat-oss  # [not win]\n    - cminpack  # [not win]\n    - dlib  # [not win]\n\ntest:\n  imports:\n    - openturns\n\nabout:\n  home: http://openturns.org/\n  license: LGPL3\n  license_file: COPYING.LESSER\n  summary: Uncertainty treatment library\n\nextra:\n  recipe-maintainers:\n    - jschueller\n",
  "req":{
   "__set__":true,
   "elements":[
@@ -242,22 +231,22 @@
    "ceres-solver",
    "cmake",
    "cminpack",
+   "coinbonmin",
    "cxx_compiler_stub",
+   "dlib",
    "hmat-oss",
    "liblapack",
    "libxml2",
    "matplotlib",
    "muparser",
    "nlopt",
-   "optpp",
    "psutil",
    "python",
    "swig",
-   "tbb",
    "tbb-devel"
   ]
  },
  "smithy_version":"3.3.4",
  "url":"https://github.com/openturns/openturns/archive/v1.13.tar.gz",
- "version":"1.13"
+ "version":"1.14rc1"
 }
