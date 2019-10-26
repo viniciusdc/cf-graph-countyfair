@@ -101,62 +101,26 @@
     "migrator_version",
     "version"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/332766312.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"Version",
+    "migrator_version":0,
+    "version":"3.13.4"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "version"
+   ]
   }
  ],
- "bad":{
-  "code":404,
-  "exception":"HTTP Error 404: Not Found",
-  "traceback":[
-   "Traceback (most recent call last):",
-   "  File \"/root/repo/cf-scripts/conda_forge_tick/auto_tick.xsh\", line 682, in main",
-   "    hash_type=attrs.get('hash_type', 'sha256'))",
-   "  File \"/root/repo/cf-scripts/conda_forge_tick/auto_tick.xsh\", line 98, in run",
-   "    migrate_return = migrator.migrate(recipe_dir, attrs, **kwargs)",
-   "  File \"/root/repo/cf-scripts/conda_forge_tick/migrators.xsh\", line 465, in migrate",
-   "    new_patterns = self.get_hash_patterns('meta.yaml', urls, hash_type)",
-   "  File \"/root/repo/cf-scripts/conda_forge_tick/migrators.xsh\", line 382, in get_hash_patterns",
-   "    hash = hash_url(url, hash_type)",
-   "  File \"/opt/conda/envs/run_env/lib/python3.7/site-packages/rever/tools.xsh\", line 207, in hash_url",
-   "    for b in stream_url_progress(url, verb='Hashing', quiet=quiet):",
-   "  File \"/opt/conda/envs/run_env/lib/python3.7/site-packages/rever/tools.xsh\", line 179, in stream_url_progress",
-   "    with urllib.request.urlopen(url) as f:",
-   "  File \"/opt/conda/envs/run_env/lib/python3.7/urllib/request.py\", line 222, in urlopen",
-   "    return opener.open(url, data, timeout)",
-   "  File \"/opt/conda/envs/run_env/lib/python3.7/urllib/request.py\", line 531, in open",
-   "    response = meth(req, response)",
-   "  File \"/opt/conda/envs/run_env/lib/python3.7/urllib/request.py\", line 641, in http_response",
-   "    'http', request, response, code, msg, hdrs)",
-   "  File \"/opt/conda/envs/run_env/lib/python3.7/urllib/request.py\", line 563, in error",
-   "    result = self._call_chain(*args)",
-   "  File \"/opt/conda/envs/run_env/lib/python3.7/urllib/request.py\", line 503, in _call_chain",
-   "    result = func(*args)",
-   "  File \"/opt/conda/envs/run_env/lib/python3.7/urllib/request.py\", line 755, in http_error_302",
-   "    return self.parent.open(new, timeout=req.timeout)",
-   "  File \"/opt/conda/envs/run_env/lib/python3.7/urllib/request.py\", line 531, in open",
-   "    response = meth(req, response)",
-   "  File \"/opt/conda/envs/run_env/lib/python3.7/urllib/request.py\", line 641, in http_response",
-   "    'http', request, response, code, msg, hdrs)",
-   "  File \"/opt/conda/envs/run_env/lib/python3.7/urllib/request.py\", line 563, in error",
-   "    result = self._call_chain(*args)",
-   "  File \"/opt/conda/envs/run_env/lib/python3.7/urllib/request.py\", line 503, in _call_chain",
-   "    result = func(*args)",
-   "  File \"/opt/conda/envs/run_env/lib/python3.7/urllib/request.py\", line 755, in http_error_302",
-   "    return self.parent.open(new, timeout=req.timeout)",
-   "  File \"/opt/conda/envs/run_env/lib/python3.7/urllib/request.py\", line 531, in open",
-   "    response = meth(req, response)",
-   "  File \"/opt/conda/envs/run_env/lib/python3.7/urllib/request.py\", line 641, in http_response",
-   "    'http', request, response, code, msg, hdrs)",
-   "  File \"/opt/conda/envs/run_env/lib/python3.7/urllib/request.py\", line 569, in error",
-   "    return self._call_chain(*args)",
-   "  File \"/opt/conda/envs/run_env/lib/python3.7/urllib/request.py\", line 503, in _call_chain",
-   "    result = func(*args)",
-   "  File \"/opt/conda/envs/run_env/lib/python3.7/urllib/request.py\", line 649, in http_error_default",
-   "    raise HTTPError(req.full_url, code, msg, hdrs, fp)",
-   "urllib.error.HTTPError: HTTP Error 404: Not Found",
-   ""
-  ],
-  "url":"https://files.pythonhosted.org/packages/source/j/json_tricks/json_tricks-3.13.3.zip"
- },
+ "bad":false,
  "conda-forge.yml":{},
  "feedstock_name":"json_tricks",
  "hash_type":"sha256",
@@ -227,8 +191,8 @@
   }
  },
  "name":"json_tricks",
- "new_version":"3.13.3",
- "pinning_version":"2019.08.09",
+ "new_version":"3.13.4",
+ "pinning_version":"2019.10.25",
  "raw_meta_yaml":"{% set name = \"json_tricks\" %}\n{% set version = \"3.13.1\" %}\n{% set nbuild = 0 %}\n{% set sha256 = \"a613ed6ba2437e53ca15e35fc78c0763d3a6b483814b5eac07ab5e5d67c52262\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz\n  sha256: {{ sha256 }}\n\nbuild:\n  noarch: python\n  number: {{ nbuild }}\n  script: \"{{ PYTHON }} -m pip install . --no-deps -vv\"\n\nrequirements:\n  build:\n    - pip\n    - python\n    - setuptools\n  run:\n    - python\n    - numpy\n    - pandas\n    - pytz\n\ntest:\n  imports:\n    - json_tricks\n\nabout:\n  home: https://github.com/mverleg/pyjson_tricks\n  license: BSD-3-Clause\n  license_family: BSD\n  license_file: LICENSE.txt\n  summary: 'Extra features for Python''s JSON: comments, order, numpy, pandas, datetimes, and many more! Simple but customizable.'\n\n  description: |\n    The pyjson-tricks package brings several pieces of functionality to python handling of json files:\n    (1) store and load numpy arrays in human-readable format;\n    (2) store and load class instances both generic and customized;\n    (3) store and load date/times as a dictionary (including timezone);\n    (4) preserve map order {} using OrderedDict;\n    (5) allow for comments in json files by starting lines with #;\n    (6) sets, complex numbers, decimal, fraction, enums, compression, duplicate keys, etc.\n    As well as compression and disallowing duplicate keys.\n  doc_url: http://json-tricks.readthedocs.io/en/latest/\n  dev_url: https://github.com/mverleg/pyjson_tricks\n\nextra:\n  recipe-maintainers:\n    - jhkennedy\n",
  "req":{
   "__set__":true,
@@ -241,7 +205,7 @@
    "setuptools"
   ]
  },
- "smithy_version":"3.4.1",
+ "smithy_version":"3.6.0",
  "url":"https://pypi.io/packages/source/j/json_tricks/json_tricks-3.13.1.tar.gz",
  "version":"3.13.1"
 }
