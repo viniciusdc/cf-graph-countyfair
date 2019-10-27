@@ -49,7 +49,12 @@
    "summary":"An OpenCL ICD Loader under an open-source license"
   },
   "build":{
-   "number":"1003",
+   "number":"1004",
+   "run_exports":[
+    "pin_subpackage(\"ocl-icd\")",
+    "pin_subpackage(\"ocl-icd\")",
+    "pin_subpackage(\"ocl-icd\")"
+   ],
    "skip":true
   },
   "extra":{
@@ -113,7 +118,7 @@
  "name":"ocl-icd",
  "new_version":"2.2.12",
  "pinning_version":"2018.10.16",
- "raw_meta_yaml":"{% set name = \"ocl-icd\" %}\n{% set version = \"2.2.12\" %}\n{% set sha256 = \"17500e5788304eef5b52dbe784cec197bdae64e05eecf38317840d2d05484272\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  fn: {{ name }}-{{ version }}.tar.gz\n  url: https://github.com/OCL-dev/{{ name }}/archive/v{{ version }}.tar.gz\n  sha256: {{ sha256 }}\n  patches:\n  # Makes ocl-icd install the OpenCL headers it ships\n  - install-headers.patch\n  # Recursively check for icds in vendor dir\n  - check_icds_recursively.diff\n\nbuild:\n  number: 1003\n  skip: True  # [not linux]\n\nrequirements:\n  build:\n    - pkg-config\n    - libtool\n    - automake\n    - autoconf\n    - {{ compiler('c') }}\n  host:\n\ntest:\n  commands:\n    - test -f \"${PREFIX}/include/CL/cl.h\"     # [unix]\n    - test -f \"${PREFIX}/lib/libOpenCL.so.1\"  # [linux]\n    - test -d \"${PREFIX}/etc/OpenCL/vendors\"\n\nabout:\n  home: https://github.com/OCL-dev/ocl-icd\n  # https://forge.imag.fr/projects/ocl-icd/ also exists but appears out of date\n  license: BSD\n  license_file: COPYING\n  summary: 'An OpenCL ICD Loader under an open-source license'\n\nextra:\n  recipe-maintainers:\n    - inducer\n    - isuruf\n",
+ "raw_meta_yaml":"{% set name = \"ocl-icd\" %}\n{% set version = \"2.2.12\" %}\n{% set sha256 = \"17500e5788304eef5b52dbe784cec197bdae64e05eecf38317840d2d05484272\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  fn: {{ name }}-{{ version }}.tar.gz\n  url: https://github.com/OCL-dev/{{ name }}/archive/v{{ version }}.tar.gz\n  sha256: {{ sha256 }}\n  patches:\n  # Makes ocl-icd install the OpenCL headers it ships\n  - install-headers.patch\n  # Recursively check for icds in vendor dir\n  - check_icds_recursively.diff\n\nbuild:\n  number: 1004\n  skip: True  # [not linux]\n  run_exports:\n    - pin_subpackage(\"ocl-icd\")\n\nrequirements:\n  build:\n    - pkg-config\n    - libtool\n    - automake\n    - autoconf\n    - {{ compiler('c') }}\n  host:\n\ntest:\n  commands:\n    - test -f \"${PREFIX}/include/CL/cl.h\"     # [unix]\n    - test -f \"${PREFIX}/lib/libOpenCL.so.1\"  # [linux]\n    - test -d \"${PREFIX}/etc/OpenCL/vendors\"\n\nabout:\n  home: https://github.com/OCL-dev/ocl-icd\n  # https://forge.imag.fr/projects/ocl-icd/ also exists but appears out of date\n  license: BSD\n  license_file: COPYING\n  summary: 'An OpenCL ICD Loader under an open-source license'\n\nextra:\n  recipe-maintainers:\n    - inducer\n    - isuruf\n",
  "req":{
   "__set__":true,
   "elements":[
