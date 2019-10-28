@@ -88,7 +88,12 @@
    "summary":"A C++ library that implements commandline flags processing."
   },
   "build":{
-   "number":"1001"
+   "number":"1002",
+   "run_exports":[
+    "subpackage_stub",
+    "subpackage_stub",
+    "subpackage_stub"
+   ]
   },
   "extra":{
    "recipe-maintainers":[
@@ -148,7 +153,7 @@
  "name":"gflags",
  "new_version":"2.2.2",
  "pinning_version":"2019.06.09",
- "raw_meta_yaml":"{% set version = \"2.2.2\" %}\n\npackage:\n  name: gflags\n  version: {{ version }}\n\nsource:\n  fn: gflags-{{ version }}.tar.gz\n  url: https://github.com/gflags/gflags/archive/v{{ version }}.tar.gz\n  sha1: 4d42470afb7236fb0cf90f8bbb0cec588073c17c\n\n\nbuild:\n  number: 1001\n\nrequirements:\n  build:\n    - cmake\n    - make\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n  host:\n    - msinttypes  # [win and vc<14]\n\ntest:\n  commands:\n    - test -f ${PREFIX}/lib/libgflags.dylib                           # [osx]\n    - test -f ${PREFIX}/lib/libgflags_nothreads.dylib                 # [osx]\n    - test -f ${PREFIX}/lib/libgflags.so                              # [linux]\n    - test -f ${PREFIX}/lib/libgflags_nothreads.so                    # [linux]\n    - test -f ${PREFIX}/lib/libgflags.a                               # [not win]\n    - test -f ${PREFIX}/lib/libgflags_nothreads.a                     # [not win]\n    - if not exist %PREFIX%\\\\Library\\\\bin\\\\gflags.dll exit 1          # [win]\n    - if not exist %PREFIX%\\\\Library\\\\lib\\\\gflags.lib exit 1          # [win]\n    - if not exist %PREFIX%\\\\Library\\\\lib\\\\gflags_static.lib exit 1   # [win]\n\nabout:\n  home: https://github.com/gflags/gflags\n  license: BSD 3-Clause\n  license_file: COPYING.txt\n  summary: A C++ library that implements commandline flags processing.\n\nextra:\n  recipe-maintainers:\n    - jakirkham\n    - wesm\n    - xhochy\n",
+ "raw_meta_yaml":"{% set version = \"2.2.2\" %}\n\npackage:\n  name: gflags\n  version: {{ version }}\n\nsource:\n  fn: gflags-{{ version }}.tar.gz\n  url: https://github.com/gflags/gflags/archive/v{{ version }}.tar.gz\n  sha1: 4d42470afb7236fb0cf90f8bbb0cec588073c17c\n\n\nbuild:\n  number: 1002\n  run_exports:\n    - {{ pin_subpackage('gflags', max_pin='x.x') }}\n\nrequirements:\n  build:\n    - cmake\n    - make\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n  host:\n    - msinttypes  # [win and vc<14]\n\ntest:\n  commands:\n    - test -f ${PREFIX}/lib/libgflags.dylib                           # [osx]\n    - test -f ${PREFIX}/lib/libgflags_nothreads.dylib                 # [osx]\n    - test -f ${PREFIX}/lib/libgflags.so                              # [linux]\n    - test -f ${PREFIX}/lib/libgflags_nothreads.so                    # [linux]\n    - test -f ${PREFIX}/lib/libgflags.a                               # [not win]\n    - test -f ${PREFIX}/lib/libgflags_nothreads.a                     # [not win]\n    - if not exist %PREFIX%\\\\Library\\\\bin\\\\gflags.dll exit 1          # [win]\n    - if not exist %PREFIX%\\\\Library\\\\lib\\\\gflags.lib exit 1          # [win]\n    - if not exist %PREFIX%\\\\Library\\\\lib\\\\gflags_static.lib exit 1   # [win]\n\nabout:\n  home: https://github.com/gflags/gflags\n  license: BSD 3-Clause\n  license_file: COPYING.txt\n  summary: A C++ library that implements commandline flags processing.\n\nextra:\n  recipe-maintainers:\n    - jakirkham\n    - wesm\n    - xhochy\n",
  "req":{
   "__set__":true,
   "elements":[
