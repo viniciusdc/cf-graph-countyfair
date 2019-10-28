@@ -120,17 +120,20 @@
    "summary":"Scalable, Portable and Distributed Gradient Boosting (GBDT, GBRT or GBM) Library, for\nPython, R, Java, Scala, C++ and more. Runs on single machine, Hadoop, Spark, Flink\nand DataFlow\n"
   },
   "build":{
-   "number":"2",
+   "number":"3",
    "skip":true
   },
   "extra":{
    "recipe-maintainers":[
-    "beckermr",
     "aldanor",
     "beckermr",
+    "jakirkham",
     "aldanor",
     "beckermr",
-    "aldanor"
+    "jakirkham",
+    "aldanor",
+    "beckermr",
+    "jakirkham"
    ]
   },
   "outputs":[
@@ -282,13 +285,13 @@
       "git",
       "cmake",
       "make",
-      "llvm-openmp >=4.0.1"
+      "llvm-openmp"
      ],
      "host":[
-      "llvm-openmp >=4.0.1"
+      "llvm-openmp"
      ],
      "run":[
-      "llvm-openmp >=4.0.1"
+      "llvm-openmp"
      ]
     },
     "script":"install-libxgboost.sh"
@@ -306,19 +309,19 @@
      "build":[
       "c_compiler_stub",
       "cxx_compiler_stub",
-      "llvm-openmp >=4.0.1"
+      "llvm-openmp"
      ],
      "host":[
       "subpackage_stub",
       "python",
       "setuptools",
       "pip",
-      "llvm-openmp >=4.0.1"
+      "llvm-openmp"
      ],
      "run":[
       "subpackage_stub",
       "subpackage_stub",
-      "llvm-openmp >=4.0.1",
+      "llvm-openmp",
       "python",
       "numpy",
       "scipy",
@@ -350,7 +353,7 @@
     "requirements":{
      "host":[
       "python",
-      "llvm-openmp >=4.0.1"
+      "llvm-openmp"
      ],
      "run":[
       "python",
@@ -379,12 +382,12 @@
       "git",
       "cmake",
       "make",
-      "llvm-openmp >=4.0.1"
+      "llvm-openmp"
      ],
      "host":[
       "subpackage_stub",
       "r-base",
-      "llvm-openmp >=4.0.1",
+      "llvm-openmp",
       "r-matrix",
       "r-data.table",
       "r-magrittr",
@@ -394,7 +397,7 @@
      "run":[
       "subpackage_stub",
       "subpackage_stub",
-      "llvm-openmp >=4.0.1",
+      "llvm-openmp",
       "r-base",
       "r-matrix",
       "r-data.table",
@@ -580,7 +583,7 @@
     "git",
     "cmake",
     "make",
-    "llvm-openmp >=4.0.1",
+    "llvm-openmp",
     "c_compiler_stub",
     "cxx_compiler_stub",
     "git",
@@ -618,7 +621,7 @@
   "xgboost"
  ],
  "pinning_version":"2019.07.15",
- "raw_meta_yaml":"{% set name = \"xgboost\" %}\n{% set version = \"0.90\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  # we have to use git urls here to get the submodules needed for the\n  # build\n  git_url: https://github.com/dmlc/xgboost\n  git_tag: 515f5f5c4779ff5361dcd796e22d55937e1048ea\n  patches:\n    # xgboost patches\n    - 0001-conda-Unbundle-libxgboost.-dll-dylib-so.patch\n    - 0002-Fix-R-package-PKGROOT.patch\n    - 0003-Fix-R-package-mingw-w64-compiler-flags-remove-m64.patch\n\nbuild:\n  number: 2\n  skip: true  # [win or linux32 or py2k]\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n    - git\n    - cmake\n    - make\n    - llvm-openmp >=4.0.1  # [osx]\n  host:\n    - llvm-openmp >=4.0.1  # [osx]\n\noutputs:\n  - name: libxgboost\n    script: install-libxgboost.sh\n    requirements:\n      build:\n        - {{ compiler('c') }}\n        - {{ compiler('cxx') }}\n        - git\n        - cmake\n        - make\n        - llvm-openmp >=4.0.1  # [osx]\n      host:\n        - llvm-openmp >=4.0.1  # [osx]\n      run:\n        - llvm-openmp >=4.0.1  # [osx]\n\n  - name: _py-xgboost-mutex\n    version: 2.0\n    build:\n      string: cpu_0\n\n  - name: py-xgboost\n    script: install-py-xgboost.sh\n    requirements:\n      build:\n        - {{ compiler('c') }}\n        - {{ compiler('cxx') }}\n        - llvm-openmp >=4.0.1  # [osx]\n      host:\n        - {{ pin_subpackage('libxgboost', exact=True) }}\n        - python\n        - setuptools\n        - pip\n        - llvm-openmp >=4.0.1  # [osx]\n      run:\n        - {{ pin_subpackage('libxgboost', exact=True) }}\n        - {{ pin_subpackage('_py-xgboost-mutex', exact=True) }}\n        - llvm-openmp >=4.0.1  # [osx]\n        - python\n        - numpy\n        - scipy\n        - scikit-learn\n    test:\n      script: test-py-xgboost.py\n      imports:\n        - xgboost\n\n  - name: py-xgboost-cpu\n    requirements:\n      host:\n        - python\n      run:\n        - python\n        - {{ pin_subpackage('py-xgboost', exact=True) }}\n\n  - name: xgboost\n    requirements:\n      host:\n        - python\n        # we install llvm-opnemp here to convince conda to\n        # install llvm-openmp in the top-level host env above\n        - llvm-openmp >=4.0.1  # [osx]\n      run:\n        - python\n        - {{ pin_subpackage('py-xgboost', exact=True) }}\n\n  - name: _r-xgboost-mutex\n    version: 2.0\n    build:\n      string: cpu_0\n\n  - name: r-xgboost\n    script: install-r-xgboost.sh\n    build:\n      rpaths:\n        - lib/R/lib\n    requirements:\n      build:\n        - {{ compiler('c') }}\n        - {{ compiler('cxx') }}\n        - git\n        - cmake\n        - make\n        - llvm-openmp >=4.0.1  # [osx]\n      host:\n        - {{ pin_subpackage('libxgboost', exact=True) }}\n        - r-base\n        - llvm-openmp >=4.0.1  # [osx]\n        - r-matrix\n        - r-data.table\n        - r-magrittr\n        - r-stringi\n        - r-knitr\n      run:\n        - {{ pin_subpackage('libxgboost', exact=True) }}\n        - {{ pin_subpackage('_r-xgboost-mutex', exact=True) }}\n        - llvm-openmp >=4.0.1  # [osx]\n        - r-base\n        - r-matrix\n        - r-data.table\n        - r-magrittr\n        - r-stringi\n    test:\n      files:\n        - test-r-xgboost.r\n      commands:\n        - Rscript test-r-xgboost.r\n\n  - name: r-xgboost-cpu\n    requirements:\n      host:\n        - r-base\n      run:\n        - r-base\n        - {{ pin_subpackage('r-xgboost', exact=True) }}\n\nabout:\n  home: https://github.com/dmlc/xgboost\n  license: Apache-2.0\n  license_file: LICENSE\n  summary: |\n    Scalable, Portable and Distributed Gradient Boosting (GBDT, GBRT or GBM) Library, for\n    Python, R, Java, Scala, C++ and more. Runs on single machine, Hadoop, Spark, Flink\n    and DataFlow\n  description: |\n    XGBoost is an optimized distributed gradient boosting library designed to be highly efficient,\n    flexible and portable. It implements machine learning algorithms under the Gradient Boosting\n    framework. XGBoost provides a parallel tree boosting (also known as GBDT, GBM) that solve many\n    data science problems in a fast and accurate way. The same code runs on major distributed\n    environment (Hadoop, SGE, MPI) and can solve problems beyond billions of examples.\n  doc_url: https://xgboost.readthedocs.io/\n  dev_url: https://github.com/dmlc/xgboost/\n\nextra:\n  recipe-maintainers:\n    - beckermr\n    - aldanor\n",
+ "raw_meta_yaml":"{% set name = \"xgboost\" %}\n{% set version = \"0.90\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  # we have to use git urls here to get the submodules needed for the\n  # build\n  git_url: https://github.com/dmlc/xgboost\n  git_tag: 515f5f5c4779ff5361dcd796e22d55937e1048ea\n  patches:\n    # xgboost patches\n    - 0001-conda-Unbundle-libxgboost.-dll-dylib-so.patch\n    - 0002-Fix-R-package-PKGROOT.patch\n    - 0003-Fix-R-package-mingw-w64-compiler-flags-remove-m64.patch\n\nbuild:\n  number: 3\n  skip: true  # [win or linux32 or py2k]\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n    - git\n    - cmake\n    - make\n    - llvm-openmp  # [osx]\n  host:\n    - llvm-openmp  # [osx]\n\noutputs:\n  - name: libxgboost\n    script: install-libxgboost.sh\n    requirements:\n      build:\n        - {{ compiler('c') }}\n        - {{ compiler('cxx') }}\n        - git\n        - cmake\n        - make\n        - llvm-openmp  # [osx]\n      host:\n        - llvm-openmp  # [osx]\n      run:\n        - llvm-openmp  # [osx]\n\n  - name: _py-xgboost-mutex\n    version: 2.0\n    build:\n      string: cpu_0\n\n  - name: py-xgboost\n    script: install-py-xgboost.sh\n    requirements:\n      build:\n        - {{ compiler('c') }}\n        - {{ compiler('cxx') }}\n        - llvm-openmp  # [osx]\n      host:\n        - {{ pin_subpackage('libxgboost', exact=True) }}\n        - python\n        - setuptools\n        - pip\n        - llvm-openmp  # [osx]\n      run:\n        - {{ pin_subpackage('libxgboost', exact=True) }}\n        - {{ pin_subpackage('_py-xgboost-mutex', exact=True) }}\n        - llvm-openmp  # [osx]\n        - python\n        - numpy\n        - scipy\n        - scikit-learn\n    test:\n      script: test-py-xgboost.py\n      imports:\n        - xgboost\n\n  - name: py-xgboost-cpu\n    requirements:\n      host:\n        - python\n      run:\n        - python\n        - {{ pin_subpackage('py-xgboost', exact=True) }}\n\n  - name: xgboost\n    requirements:\n      host:\n        - python\n        # we install llvm-opnemp here to convince conda to\n        # install llvm-openmp in the top-level host env above\n        - llvm-openmp  # [osx]\n      run:\n        - python\n        - {{ pin_subpackage('py-xgboost', exact=True) }}\n\n  - name: _r-xgboost-mutex\n    version: 2.0\n    build:\n      string: cpu_0\n\n  - name: r-xgboost\n    script: install-r-xgboost.sh\n    build:\n      rpaths:\n        - lib/R/lib\n    requirements:\n      build:\n        - {{ compiler('c') }}\n        - {{ compiler('cxx') }}\n        - git\n        - cmake\n        - make\n        - llvm-openmp  # [osx]\n      host:\n        - {{ pin_subpackage('libxgboost', exact=True) }}\n        - r-base\n        - llvm-openmp  # [osx]\n        - r-matrix\n        - r-data.table\n        - r-magrittr\n        - r-stringi\n        - r-knitr\n      run:\n        - {{ pin_subpackage('libxgboost', exact=True) }}\n        - {{ pin_subpackage('_r-xgboost-mutex', exact=True) }}\n        - llvm-openmp  # [osx]\n        - r-base\n        - r-matrix\n        - r-data.table\n        - r-magrittr\n        - r-stringi\n    test:\n      files:\n        - test-r-xgboost.r\n      commands:\n        - Rscript test-r-xgboost.r\n\n  - name: r-xgboost-cpu\n    requirements:\n      host:\n        - r-base\n      run:\n        - r-base\n        - {{ pin_subpackage('r-xgboost', exact=True) }}\n\nabout:\n  home: https://github.com/dmlc/xgboost\n  license: Apache-2.0\n  license_file: LICENSE\n  summary: |\n    Scalable, Portable and Distributed Gradient Boosting (GBDT, GBRT or GBM) Library, for\n    Python, R, Java, Scala, C++ and more. Runs on single machine, Hadoop, Spark, Flink\n    and DataFlow\n  description: |\n    XGBoost is an optimized distributed gradient boosting library designed to be highly efficient,\n    flexible and portable. It implements machine learning algorithms under the Gradient Boosting\n    framework. XGBoost provides a parallel tree boosting (also known as GBDT, GBM) that solve many\n    data science problems in a fast and accurate way. The same code runs on major distributed\n    environment (Hadoop, SGE, MPI) and can solve problems beyond billions of examples.\n  doc_url: https://xgboost.readthedocs.io/\n  dev_url: https://github.com/dmlc/xgboost/\n\nextra:\n  recipe-maintainers:\n    - aldanor\n    - beckermr\n    - jakirkham\n",
  "req":{
   "__set__":true,
   "elements":[
