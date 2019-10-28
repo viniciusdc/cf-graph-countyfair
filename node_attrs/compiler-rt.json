@@ -103,7 +103,7 @@
    "summary":"compiler-rt runtime libraries"
   },
   "build":{
-   "number":"0",
+   "number":"1",
    "skip":true
   },
   "extra":{
@@ -147,11 +147,14 @@
     "clangdev 9.0.0",
     "llvmdev 9.0.0"
    ],
-   "run":null,
-   "run_constrained":[
-    "clangdev 9.0.0",
-    "clangdev 9.0.0",
-    "clangdev 9.0.0"
+   "run":[
+    "clang 9.0.0",
+    "clangxx 9.0.0",
+    "libcxx >=",
+    "clang 9.0.0",
+    "clangxx 9.0.0",
+    "clang 9.0.0",
+    "clangxx 9.0.0"
    ]
   },
   "source":{
@@ -168,20 +171,30 @@
   },
   "test":{
    "commands":[
-    "if not exist %LIBRARY_INC%\\\\include\\\\sanitizer\\\\asan_interface.h exit 1",
-    "test -f $PREFIX/include/sanitizer/asan_interface.h",
-    "test -f $PREFIX/include/sanitizer/asan_interface.h"
+    "sed \"s/@MACOSX_DEPLOYMENT_TARGET@/10.14/g\" test.c.in > test.c",
+    "sed \"s/@MACOSX_DEPLOYMENT_TARGET@/10.14/g\" test.c.in > test.c",
+    "clang -mmacosx-version-min= test.c",
+    "test -f $PREFIX/lib/clang/9.0.0/include/sanitizer/asan_interface.h",
+    "sed \"s/@MACOSX_DEPLOYMENT_TARGET@/10.14/g\" test.c.in > test.c",
+    "test -f $PREFIX/lib/clang/9.0.0/include/sanitizer/asan_interface.h"
+   ],
+   "files":[
+    "test.c.in",
+    "test.c.in",
+    "test.c.in"
    ]
   }
  },
  "name":"compiler-rt",
  "new_version":"llvmorg-10-init",
  "pinning_version":"2019.04.12",
- "raw_meta_yaml":"{% set name = \"compiler-rt\" %}\n{% set version = \"9.0.0\" %}\n{% set build_number = 0 %}\n{% set sha256 = \"56e4cd96dd1d8c346b07b4d6b255f976570c6f2389697347a6c3dcb9e820d10e\" %}\n\npackage:\n  name: {{ name }}\n  version: {{ version }}\n\nsource:\n  url: http://releases.llvm.org/{{ version }}/compiler-rt-{{ version }}.src.tar.xz\n  sha256: {{ sha256 }}\n  patches:\n    - no_codesign.diff\n    - macosx_10_9.patch\n\nbuild:\n  number: {{ build_number }}\n  # https://groups.google.com/forum/#!msg/llvm-dev/cQogF7NZcSw/gOVQDXWmCgAJ\n  skip: true  # [win]\n\nrequirements:\n  build:\n    - cmake >=3.4.3\n    - {{ compiler('cxx') }}\n    - python\n  host:\n    - clangdev {{ version }}\n    - llvmdev {{ version }}\n    - libcxx {{ cxx_compiler_version }}  # [osx]\n  run:\n    - libcxx >={{ cxx_compiler_version }}  # [osx]\n  run_constrained:\n    - clangdev {{ version }}\n\ntest:\n  commands:\n    - if not exist %LIBRARY_INC%\\\\include\\\\sanitizer\\\\asan_interface.h exit 1     # [win]\n    - test -f $PREFIX/include/sanitizer/asan_interface.h                  # [unix]\n\nabout:\n  home: http://llvm.org/\n  license: NCSA\n  license_file: LICENSE.TXT\n  summary: compiler-rt runtime libraries\n  description: |\n    builtins - low-level target-specific hooks required by code generation and other\n      runtime components\n    sanitizer runtimes - AddressSanitizer, ThreadSanitizer, UndefinedBehaviorSanitizer,\n      MemorySanitizer, LeakSanitizer, DataFlowSanitizer\n    profile - library which is used to collect coverage information\n    BlocksRuntime - target-independent implementation of Apple \"Blocks\" runtime\n      interfaces\n\nextra:\n  recipe-maintainers:\n    - SylvainCorlay\n    - inducer\n    - jakirkham\n    - isuruf\n",
+ "raw_meta_yaml":"{% set name = \"compiler-rt\" %}\n{% set version = \"9.0.0\" %}\n{% set build_number = 1 %}\n{% set sha256 = \"56e4cd96dd1d8c346b07b4d6b255f976570c6f2389697347a6c3dcb9e820d10e\" %}\n\npackage:\n  name: {{ name }}\n  version: {{ version }}\n\nsource:\n  url: http://releases.llvm.org/{{ version }}/compiler-rt-{{ version }}.src.tar.xz\n  sha256: {{ sha256 }}\n  patches:\n    - no_codesign.diff\n    - macosx_10_9.patch\n\nbuild:\n  number: {{ build_number }}\n  # https://groups.google.com/forum/#!msg/llvm-dev/cQogF7NZcSw/gOVQDXWmCgAJ\n  skip: true  # [win]\n\nrequirements:\n  build:\n    - cmake >=3.4.3\n    - {{ compiler('cxx') }}\n    - python\n  host:\n    - clangdev {{ version }}\n    - llvmdev {{ version }}\n    - libcxx {{ cxx_compiler_version }}  # [osx]\n  run:\n    - libcxx >={{ cxx_compiler_version }}  # [osx]\n    - clang {{ version }}\n    - clangxx {{ version }}\n\ntest:\n  files:\n    - test.c.in\n  commands:\n  {% set NEW_TARGET=\"10.\" ~ (((MACOSX_DEPLOYMENT_TARGET|default(\"10.13\")).split(\".\")[1])|int + 1) %}\n    - sed \"s/@MACOSX_DEPLOYMENT_TARGET@/{{ NEW_TARGET }}/g\" test.c.in > test.c\n    - clang -mmacosx-version-min={{ MACOSX_DEPLOYMENT_TARGET }} test.c  # [osx]\n    - test -f $PREFIX/lib/clang/{{ version }}/include/sanitizer/asan_interface.h  # [unix]\n\nabout:\n  home: http://llvm.org/\n  license: NCSA\n  license_file: LICENSE.TXT\n  summary: compiler-rt runtime libraries\n  description: |\n    builtins - low-level target-specific hooks required by code generation and other\n      runtime components\n    sanitizer runtimes - AddressSanitizer, ThreadSanitizer, UndefinedBehaviorSanitizer,\n      MemorySanitizer, LeakSanitizer, DataFlowSanitizer\n    profile - library which is used to collect coverage information\n    BlocksRuntime - target-independent implementation of Apple \"Blocks\" runtime\n      interfaces\n\nextra:\n  recipe-maintainers:\n    - SylvainCorlay\n    - inducer\n    - jakirkham\n    - isuruf\n",
  "req":{
   "__set__":true,
   "elements":[
+   "clang",
    "clangdev",
+   "clangxx",
    "cmake",
    "cxx_compiler_stub",
    "libcxx",
