@@ -31,6 +31,27 @@
     "migrator_version",
     "name"
    ]
+  },
+  {
+   "PR":{
+    "id":"ccfb7beb-2bbd-41e3-bb67-2be4bee9a4f2",
+    "merged_at":"never issued",
+    "state":"closed"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"MigrationYaml",
+    "migrator_object_version":1,
+    "migrator_version":0,
+    "name":"mpich-3.3"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_object_version",
+    "migrator_version",
+    "name"
+   ]
   }
  ],
  "bad":false,
@@ -57,7 +78,7 @@
    "summary":"Python bindings for MPI"
   },
   "build":{
-   "number":"0",
+   "number":"1",
    "script":"pip install --no-deps .",
    "skip":true
   },
@@ -67,14 +88,20 @@
     "minrk",
     "msarahan",
     "ocefpaf",
+    "davidbrochart",
+    "SylvainCorlay",
     "dalcinl",
     "minrk",
     "msarahan",
     "ocefpaf",
+    "davidbrochart",
+    "SylvainCorlay",
     "dalcinl",
     "minrk",
     "msarahan",
-    "ocefpaf"
+    "ocefpaf",
+    "davidbrochart",
+    "SylvainCorlay"
    ]
   },
   "package":{
@@ -90,21 +117,21 @@
    "host":[
     "python",
     "pip",
-    null,
+    "mpich",
     "python",
     "pip",
-    null,
+    "mpich",
     "python",
     "pip",
-    null
+    "mpich"
    ],
    "run":[
     "python",
-    null,
+    "mpich",
     "python",
-    null,
+    "mpich",
     "python",
-    null
+    "mpich"
    ]
   },
   "source":{
@@ -116,17 +143,18 @@
  },
  "name":"mpi4py",
  "new_version":false,
- "pinning_version":"2018.10.01",
- "raw_meta_yaml":"{% set version = '3.0.2' %}\n{% set sha256 = 'f8d629d1e3e3b7b89cb99d0e3bc5505e76cc42089829807950d5c56606ed48e0' %}\n\npackage:\n  name: mpi4py\n  version: {{ version }}\n\nsource:\n  fn: mpi4py-{{ version }}.tar.gz\n  url: https://bitbucket.org/mpi4py/mpi4py/downloads/mpi4py-{{ version }}.tar.gz\n  sha256: {{ sha256 }}\n\nbuild:\n  number: 0\n  script: pip install --no-deps .\n  # TODO: build with msmpi when it works\n  skip: true  # [win]\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n  host:\n    - python\n    - pip\n    - {{ mpi }}\n  run:\n    - python\n    - {{ mpi }}\n\ntest: {}\n\nabout:\n  home: https://mpi4py.bitbucket.io/\n  license: BSD 2-clause\n  license_family: BSD\n  license_file: LICENSE.rst\n  summary: Python bindings for MPI\n  description: |\n     MPI for Python provides bindings of the Message Passing Interface (MPI)\n     standard for the Python programming language, allowing any Python program\n     to exploit multiple processors.\n  doc_url: https://mpi4py.readthedocs.org/\n  dev_url: https://bitbucket.org/mpi4py/mpi4py\n\nextra:\n  recipe-maintainers:\n    - dalcinl\n    - minrk\n    - msarahan\n    - ocefpaf\n",
+ "pinning_version":"2019.10.28",
+ "raw_meta_yaml":"{% set version = '3.0.2' %}\n{% set sha256 = 'f8d629d1e3e3b7b89cb99d0e3bc5505e76cc42089829807950d5c56606ed48e0' %}\n{% set mpi = mpi or 'mpich' %}\n\npackage:\n  name: mpi4py\n  version: {{ version }}\n\nsource:\n  fn: mpi4py-{{ version }}.tar.gz\n  url: https://bitbucket.org/mpi4py/mpi4py/downloads/mpi4py-{{ version }}.tar.gz\n  sha256: {{ sha256 }}\n\nbuild:\n  number: 1\n  script: pip install --no-deps .\n  # TODO: build with msmpi when it works\n  skip: true  # [win]\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n  host:\n    - python\n    - pip\n    - {{ mpi }}\n  run:\n    - python\n    - {{ mpi }}\n\ntest: {}\n\nabout:\n  home: https://mpi4py.bitbucket.io/\n  license: BSD 2-clause\n  license_family: BSD\n  license_file: LICENSE.rst\n  summary: Python bindings for MPI\n  description: |\n     MPI for Python provides bindings of the Message Passing Interface (MPI)\n     standard for the Python programming language, allowing any Python program\n     to exploit multiple processors.\n  doc_url: https://mpi4py.readthedocs.org/\n  dev_url: https://bitbucket.org/mpi4py/mpi4py\n\nextra:\n  recipe-maintainers:\n    - dalcinl\n    - minrk\n    - msarahan\n    - ocefpaf\n    - davidbrochart\n    - SylvainCorlay\n",
  "req":{
   "__set__":true,
   "elements":[
    "c_compiler_stub",
+   "mpich",
    "pip",
    "python"
   ]
  },
- "smithy_version":"3.1.12",
+ "smithy_version":"3.6.0",
  "url":"https://bitbucket.org/mpi4py/mpi4py/downloads/mpi4py-3.0.2.tar.gz",
  "version":"3.0.2"
 }
