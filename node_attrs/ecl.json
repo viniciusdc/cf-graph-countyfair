@@ -33,6 +33,23 @@
     "migrator_version",
     "name"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/334524582.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"ArchRebuild",
+    "migrator_version":1,
+    "name":"aarch64 and ppc64le addition"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "name"
+   ]
   }
  ],
  "bad":false,
@@ -142,7 +159,7 @@
  },
  "name":"ecl",
  "new_version":false,
- "pinning_version":"2019.07.01",
+ "pinning_version":"2019.10.28",
  "raw_meta_yaml":"{% set version = \"16.1.3\" %}\n{% set name = \"ecl\" %}\n\npackage:\n  name: {{ name }}\n  version: {{ version }}\n\nsource:\n  fn: {{ name }}-{{ version }}.tgz\n  url: https://common-lisp.net/project/ecl/static/files/release/{{ name }}-{{ version }}.tgz\n  sha256: 76a585c616e8fa83a6b7209325a309da5bc0ca68e0658f396f49955638111254\n  patches:\n    # Patch from https://github.com/sagemath/sage\n    # Ignore write errors to stderr to avoid an infinite loop\n    - write_error.patch\n    # https://gitlab.com/embeddable-common-lisp/ecl/commit/6be9cb9dee2fc8df59604aa28413625898e70945.patch\n    - fix_osx_runtime_path.patch\n    # Backport changes from upstream to the atan implementation--this fixes a\n    # bug that turns up in maxima.\n    - atan.patch\n    # Backport from upstream to \"Prevent busy loop during ECL interpreter\n    # shutdown on Cygwin\" (for Sage)\n    - 47b1e98272b6.patch\n    # Backport to work around https://trac.sagemath.org/ticket/23011 in Sage\n    - 0c9e67345c36.patch\n\nbuild:\n  number: 1006\n  skip: true  # [win]\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - libtool\n  host:\n    - gmp\n    - readline\n    - bdw-gc\n  run:\n    - gmp\n    - readline\n    - {{ pin_compatible('bdw-gc') }}\n\ntest:\n  commands:\n    - test -f ${PREFIX}/include/{{ name }}/{{ name }}.h\n    - test -f ${PREFIX}/lib/lib{{ name }}.dylib  # [osx]\n    - test -f ${PREFIX}/lib/lib{{ name }}.so     # [linux]\n    - ecl --version\n\nabout:\n  home: https://common-lisp.net/project/ecl\n  license: GPLv2+\n  license_file: COPYING\n  summary: ECL (Embeddable Common-Lisp) is an interpreter of the Common-Lisp language.\n  doc_url: https://common-lisp.net/project/ecl/static/ecldoc/\n  dev_url: https://gitlab.com/embeddable-common-lisp/ecl\n\nextra:\n  recipe-maintainers:\n    - isuruf\n    - embray\n    - saraedum\n",
  "req":{
   "__set__":true,
@@ -155,7 +172,7 @@
    "readline"
   ]
  },
- "smithy_version":"3.4.0",
+ "smithy_version":"3.6.0",
  "url":"https://common-lisp.net/project/ecl/static/files/release/ecl-16.1.3.tgz",
  "version":"16.1.3"
 }
