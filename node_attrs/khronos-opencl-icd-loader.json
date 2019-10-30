@@ -31,6 +31,23 @@
     "migrator_version",
     "name"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/334065450.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"ArchRebuild",
+    "migrator_version":1,
+    "name":"aarch64 and ppc64le addition"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "name"
+   ]
   }
  ],
  "bad":false,
@@ -136,7 +153,7 @@
  },
  "name":"khronos-opencl-icd-loader",
  "new_version":false,
- "pinning_version":"2018.09.20",
+ "pinning_version":"2019.10.28",
  "raw_meta_yaml":"{% set version = \"44f384ae624675d6b0b92ce39a97cb7f4899d92a\" %}\n{% set sha256 = \"a8a5b2305f589f315403ca8390ab2ec57acbc99aae4fcabe7bb9632a6b11e89f\" %}\n\n{% set headers_version = \"03490c3f8cb3b8667942b084a3151de20649f57a\" %}\n{% set headers_sha256 = \"603e37c8d40a17e279360fa928b990d6b675660f5280af978d0e2014a68ad86d\" %}\n\npackage:\n  name: khronos-opencl-icd-loader\n  version: 2019.02.20\n\nsource:\n  - url: https://github.com/KhronosGroup/OpenCL-ICD-Loader/archive/{{ version }}.zip\n    sha256: {{ sha256 }}\n    patches:\n    # Khronos doesn't have an install target in their CMake. Add one.\n    - add-cmake-install.patch\n\n  - url: https://github.com/KhronosGroup/OpenCL-Headers/archive/{{ headers_version }}.zip\n    sha256: {{ headers_sha256 }}\n    folder: inc\n\nbuild:\n  number: 1\n\n  # We've got ocl-icd on Linux. No need to use\n  # this ... fantastic piece of software ... anywhere else.\n  # new versions don't support older MSVC\n  skip: true  # [linux or (win and vc<14)]\n\nrequirements:\n  build:\n    - cmake\n    - {{ compiler('c') }}\n    - python\n  host:\n  run:\n\ntest:\n  commands:\n    - if not exist %LIBRARY_INC%\\\\CL\\\\cl.h exit 1       # [win]\n    - if not exist %LIBRARY_BIN%\\\\OpenCL.dll exit 1     # [win]\n    - test -f $PREFIX/include/OpenCL/cl.h               # [osx]\n    - test -f $PREFIX/include/CL/cl.h                   # [linux]\n    - test -f $PREFIX/lib/libOpenCL${SHLIB_EXT}         # [unix]\n\n    # This crashes with a segfault. Likely for a lack of ICD to talk to.\n    # - cd %SRC_DIR%/build && ctest\n\nabout:\n  home: https://www.khronos.org/registry/cl/\n  dev_url: https://github.com/KhronosGroup/OpenCL-ICD-Loader\n  license: Apache v2.0\n  license_file: LICENSE\n  summary: A driver loader for OpenCL\n\nextra:\n  recipe-maintainers:\n    - inducer\n    - isuruf\n",
  "req":{
   "__set__":true,
@@ -146,7 +163,7 @@
    "python"
   ]
  },
- "smithy_version":"3.1.12",
+ "smithy_version":"3.6.0",
  "url":"https://github.com/KhronosGroup/OpenCL-ICD-Loader/archive/44f384ae624675d6b0b92ce39a97cb7f4899d92a.zip",
  "version":"2019.02.20"
 }
