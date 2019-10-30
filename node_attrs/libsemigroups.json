@@ -99,6 +99,23 @@
     "migrator_version",
     "version"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/334147093.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"ArchRebuild",
+    "migrator_version":1,
+    "name":"aarch64 and ppc64le addition"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "name"
+   ]
   }
  ],
  "bad":false,
@@ -168,7 +185,7 @@
  },
  "name":"libsemigroups",
  "new_version":"0.6.7",
- "pinning_version":"2019.03.14",
+ "pinning_version":"2019.10.28",
  "raw_meta_yaml":"{% set name = \"libsemigroups\" %}\n{% set version = \"0.6.7\" %}\n{% set sha256 = \"635ac5ef9251b22092028d6a28ce0493fff3ec7c0dc39a8600d90c8371db3a6c\" %}\n{% set repo = \"https://github.com/james-d-mitchell/libsemigroups\" %}\n{% set home = \"https://james-d-mitchell.github.io/libsemigroups/\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  url: {{ repo }}/releases/download/v{{ version }}/{{ name }}-{{ version }}.tar.gz\n  sha256: {{ sha256 }}\n  #git_rev: v{{ version }}\n  #git_url: {{ repo }}.git\n  #git_tag: autotools\n\nbuild:\n  number: 0\n  skip: true  # [win]\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n  host:\n\ntest:\n  commands:\n    - test -d ${PREFIX}/include/libsemigroups  # [unix]\n    - test -f ${PREFIX}/include/libsemigroups/semigroups.h  # [unix]\n    - test -f $PREFIX/lib/libsemigroups.dylib  # [osx]\n    - test -f $PREFIX/lib/libsemigroups.so     # [linux]\n    - test -f $PREFIX/lib/libsemigroups.a  # [unix]\n\n    - if exist %LIBRARY_PREFIX%\\include\\libsemigroups\\semigroups.h (exit 0) else (exit 1)  # [win]\n\nabout:\n  home: {{ home }}\n  license: GPL-3.0\n  license_file: LICENSE\n  summary: 'C++ library for semigroups and monoids'\n\n  description: |\n    libsemigroups is a C++ library for semigroups and monoids; it is partly based on\n    [Algorithms for computing finite semigroups](https://www.irif.fr/~jep/PDF/Rio.pdf),\n    [Expository Slides](https://www.irif.fr/~jep/PDF/Exposes/StAndrews.pdf), and\n    [Semigroupe 2.01](https://www.irif.fr/~jep/Logiciels/Semigroupe2.0/semigroupe2.html) by Jean-Eric Pin.\n  doc_url: {{ home }}\n  dev_url: {{ repo }}\n\nextra:\n  recipe-maintainers:\n    - james-d-mitchell\n    - nthiery\n",
  "req":{
   "__set__":true,
@@ -177,7 +194,7 @@
    "cxx_compiler_stub"
   ]
  },
- "smithy_version":"3.2.14",
+ "smithy_version":"3.6.0",
  "url":"https://github.com/james-d-mitchell/libsemigroups/releases/download/v0.6.7/libsemigroups-0.6.7.tar.gz",
  "version":"0.6.7"
 }

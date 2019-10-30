@@ -132,6 +132,23 @@
     "migrator_version",
     "version"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/334146860.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"ArchRebuild",
+    "migrator_version":1,
+    "name":"aarch64 and ppc64le addition"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "name"
+   ]
   }
  ],
  "bad":false,
@@ -219,7 +236,7 @@
  },
  "name":"mpfi",
  "new_version":false,
- "pinning_version":"2019.04.25",
+ "pinning_version":"2019.10.28",
  "raw_meta_yaml":"{% set version = \"1.5.4\" %}\n{% set name = \"mpfi\" %}\n\npackage:\n  name: {{ name }}\n  version: {{ version }}\n\nsource:\n  fn: {{ name }}-{{ version }}.tar.gz\n  url: https://gforge.inria.fr/frs/download.php/file/37331/mpfi-{{ version }}.tar.bz2\n  sha256: 2383d457b208c6cd3cf2e66b69c4ce47477b2a0db31fbec0cd4b1ebaa247192f\n\nbuild:\n  number: 1001\n  skip: true  # [win]\n  run_exports:\n    - {{ pin_subpackage('mpfi', max_pin='x.x') }}\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - libtool\n\n  host:\n    - gmp\n    - mpfr\n\n  run:\n    - gmp\n    - mpfr\n\ntest:\n  commands:\n    - test -f ${PREFIX}/include/{{ name }}.h\n    - test -f ${PREFIX}/lib/lib{{ name }}.a\n    - test -f ${PREFIX}/lib/lib{{ name }}${SHLIB_EXT}  # [unix]\n\nabout:\n  home: http://mpfi.gforge.inria.fr/\n  license: LGPL 3\n  license_file: COPYING\n  summary: A multiple precision interval arithmetic library based on MPFR\n  dev_url: https://gforge.inria.fr/scm/?group_id=157\n\nextra:\n  recipe-maintainers:\n    - isuruf\n    - marcelotrevisani\n",
  "req":{
   "__set__":true,
@@ -230,7 +247,7 @@
    "mpfr"
   ]
  },
- "smithy_version":"3.3.4",
+ "smithy_version":"3.6.0",
  "url":"https://gforge.inria.fr/frs/download.php/file/37331/mpfi-1.5.4.tar.bz2",
  "version":"1.5.4"
 }
