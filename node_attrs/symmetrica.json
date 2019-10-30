@@ -31,6 +31,23 @@
     "migrator_version",
     "name"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/334180736.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"ArchRebuild",
+    "migrator_version":1,
+    "name":"aarch64 and ppc64le addition"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "name"
+   ]
   }
  ],
  "bad":false,
@@ -124,7 +141,7 @@
  },
  "name":"symmetrica",
  "new_version":false,
- "pinning_version":"2018.09.11",
+ "pinning_version":"2019.10.28",
  "raw_meta_yaml":"{% set version = \"2.0\" %}\n{% set name = \"symmetrica\" %}\n\npackage:\n  name: {{ name }}\n  version: {{ version }}\n\nsource:\n  fn: {{ name }}-{{ version }}.tar.gz\n  # http://www.algorithm.uni-bayreuth.de/en/research/SYMMETRICA/SYM2_0_tar.gz\n  # not using upstream tarball because it has weird permissions and patching fails\n  url: http://mirrors.mit.edu/sage/spkg/upstream/symmetrica/symmetrica-{{ version }}.tar.bz2\n  sha256: 5d2b30c962aea6dd9c8ba7108e260194418d4ae096bc09748eddb561f5d624a9\n  patches:\n  - patches/bruch.patch           # store integers in a temporary variable before freeing memory\n  - patches/de.patch              # turn off banner\n  - patches/int32.patch           # use int32_t and uint32_t for type INT.\n  - patches/sort_sum_rename.patch # rename sort to sym_sort, sum to sym_sum\n  - patches/return_values.patch   # return 0 in functions expecting int\n  - patches/unistd.patch   # return 0 in functions expecting int\n\nbuild:\n  number: 1007\n  skip: True    # [win and vc<14]\n  run_exports:\n    - {{ pin_subpackage(\"symmetrica\", max_pin=\"x.x\") }}\n\nrequirements:\n  build:\n    - cmake\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n  host:\n  run:\n\ntest:\n  commands:\n    - test -f ${PREFIX}/include/symmetrica/macro.h   # [unix]\n    - test -f ${PREFIX}/lib/libsymmetrica${SHLIB_EXT}          # [unix]\n    - if not exist %LIBRARY_INC%\\\\symmetrica\\\\macro.h exit 1       # [win]\n    - if not exist %LIBRARY_LIB%\\\\symmetrica.lib exit 1           # [win]\n\nabout:\n  home: http://www.algorithm.uni-bayreuth.de/en/research/SYMMETRICA/index.html\n  license: ISC\n  license_file: {{ RECIPE_DIR }}/LICENSE\n  summary: |\n    Symmetrica is a collection of routines to handle several topics including\n    ordinary representation theory of the symmetric group and related groups\n\nextra:\n  recipe-maintainers:\n    - isuruf\n",
  "req":{
   "__set__":true,
@@ -134,7 +151,7 @@
    "cxx_compiler_stub"
   ]
  },
- "smithy_version":"3.1.12",
+ "smithy_version":"3.6.0",
  "url":"http://mirrors.mit.edu/sage/spkg/upstream/symmetrica/symmetrica-2.0.tar.bz2",
  "version":"2.0"
 }
