@@ -48,6 +48,23 @@
     "migrator_version",
     "name"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/334214964.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"ArchRebuild",
+    "migrator_version":1,
+    "name":"aarch64 and ppc64le addition"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "name"
+   ]
   }
  ],
  "bad":false,
@@ -170,7 +187,7 @@
  },
  "name":"lcalc",
  "new_version":false,
- "pinning_version":"2019.06.18",
+ "pinning_version":"2019.10.28",
  "raw_meta_yaml":"{% set version = \"1.23\" %}\n{% set name = \"lcalc\" %}\n\npackage:\n  name: {{ name }}\n  version: {{ version }}\n\nsource:\n  fn: {{ name }}-{{ version }}.tar.gz\n  url: http://mirrors.mit.edu/sage/spkg/upstream/lcalc/lcalc-{{ version }}.tar.bz2\n  #url:- http://oto.math.uwaterloo.ca/~mrubinst/L_function_public/CODE/L-{{ version }}.tar.gz\n  sha256: 83d4253ec2f38553b21190d6d0c6b71bab7ea14717f6dde5bd18f60775d3cdb0\n  patches:\n    - patches/clang.patch\n    - patches/lcalc-1.23_default_parameters_1.patch\n    - patches/lcalc-1.23_default_parameters_2.patch\n    - patches/Lcommon.h.patch\n    - patches/Makefile.patch\n    - patches/pari-2.7.patch\n    - patches/pari_include.patch\n    - patches/pari-mem.patch\n    - patches/time.h.patch\n    - patches/using_namespace_std.patch\n\nbuild:\n  number: 1004\n  skip: true  # [win]\n\nrequirements:\n  build:\n    - libtool\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n  host:\n    - pari\n    - gmp\n    - mpfr\n  run:\n    - pari\n    - gmp\n    - mpfr\n\ntest:\n  commands:\n    - test -f ${PREFIX}/include/libLfunction/L.h\n    - test -f ${PREFIX}/include/Lfunction/L.h\n    - test -f ${PREFIX}/lib/libLfunction.dylib     # [osx]\n    - test -f ${PREFIX}/lib/libLfunction.so        # [linux]\n\nabout:\n  home: http://oto.math.uwaterloo.ca/~mrubinst/L_function_public/L.html\n  license: GPLv2+\n  license_file: COPYING\n  summary: C++ L-function class library and command line interface\n\nextra:\n  recipe-maintainers:\n    - isuruf\n    - saraedum\n",
  "req":{
   "__set__":true,
@@ -183,7 +200,7 @@
    "pari"
   ]
  },
- "smithy_version":"3.3.7",
+ "smithy_version":"3.6.0",
  "url":"http://mirrors.mit.edu/sage/spkg/upstream/lcalc/lcalc-1.23.tar.bz2",
  "version":"1.23"
 }
