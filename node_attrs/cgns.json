@@ -71,7 +71,12 @@
    "summary":"CFD General Notation System (CGNS)"
   },
   "build":{
-   "number":"0",
+   "number":"1",
+   "run_exports":[
+    "subpackage_stub",
+    "subpackage_stub",
+    "subpackage_stub"
+   ],
    "skip":true
   },
   "extra":{
@@ -103,14 +108,6 @@
     "hdf5",
     "zlib",
     "hdf5"
-   ],
-   "run":[
-    "zlib",
-    "hdf5",
-    "zlib",
-    "hdf5",
-    "zlib",
-    "hdf5"
    ]
   },
   "source":{
@@ -128,7 +125,7 @@
  "name":"cgns",
  "new_version":"3.4.0",
  "pinning_version":"2019.08.12",
- "raw_meta_yaml":"{% set name = \"cgns\" %}\n{% set version = \"3.4.0\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  url: https://github.com/{{ name|upper }}/{{ name|upper }}/archive/v{{ version }}.tar.gz\n  sha256: 6372196caf25b27d38cf6f056258cb0bdd45757f49d9c59372b6dbbddb1e05da\n\nbuild:\n  number: 0\n  skip: true  # [win and vc<14]\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - cmake\n    - make  # [unix]\n  host:\n    - zlib\n    - hdf5\n  run:\n    - zlib\n    - hdf5\n\ntest:\n  commands:\n    - cgnscheck\n\nabout:\n  home: http://cgns.org\n  license: Zlib\n  license_file: LICENSE\n  summary: 'CFD General Notation System (CGNS)'\n  description: |\n    The CFD General Notation System (CGNS) provides a standard for\n    recording and recovering computer data associated with the\n    numerical solution of fluid dynamics equations.\n  doc_url: http://cgns.github.io/CGNS_docs_current/index.html\n  dev_url: https://github.com/CGNS/CGNS\n\nextra:\n  recipe-maintainers:\n    - mdpiper\n",
+ "raw_meta_yaml":"{% set name = \"cgns\" %}\n{% set version = \"3.4.0\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  url: https://github.com/{{ name|upper }}/{{ name|upper }}/archive/v{{ version }}.tar.gz\n  sha256: 6372196caf25b27d38cf6f056258cb0bdd45757f49d9c59372b6dbbddb1e05da\n\nbuild:\n  number: 1\n  skip: true  # [win and vc<14]\n  run_exports:\n    - {{ pin_subpackage('cgns', max_pin='x.x') }}\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - cmake\n    - make  # [unix]\n  host:\n    - zlib\n    - hdf5\n\ntest:\n  commands:\n    - cgnscheck\n\nabout:\n  home: http://cgns.org\n  license: Zlib\n  license_file: LICENSE\n  summary: 'CFD General Notation System (CGNS)'\n  description: |\n    The CFD General Notation System (CGNS) provides a standard for\n    recording and recovering computer data associated with the\n    numerical solution of fluid dynamics equations.\n  doc_url: http://cgns.github.io/CGNS_docs_current/index.html\n  dev_url: https://github.com/CGNS/CGNS\n\nextra:\n  recipe-maintainers:\n    - mdpiper\n",
  "req":{
   "__set__":true,
   "elements":[
