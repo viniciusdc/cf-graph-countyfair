@@ -30,10 +30,16 @@
   "about":{
    "home":"http://www.jmodelica.org/FMILibrary",
    "license":"BSD",
+   "license_file":"LICENSE.md",
    "summary":"Package written in C that enables integration of Functional Mock-up Units"
   },
   "build":{
-   "number":"1001"
+   "number":"1002",
+   "run_exports":[
+    "subpackage_stub",
+    "subpackage_stub",
+    "subpackage_stub"
+   ]
   },
   "extra":{
    "recipe-maintainers":[
@@ -60,14 +66,13 @@
    ]
   },
   "source":{
-   "fn":"FMILibrary-2.0.3-src.zip",
    "patches":[
     "undef_gnu_source.patch",
     "undef_gnu_source.patch",
     "undef_gnu_source.patch"
    ],
-   "sha256":"4cc21f9e2c4114a6f4e303f82ca897ec9aa1eb6f7f09fef85979ea5fca309d9a",
-   "url":"https://jmodelica.org/FMILibrary/FMILibrary-2.0.3-src.zip"
+   "sha256":"455017eea98b966eb5e6deb2f13ca0a9f0f5b204a866f00a41ee02944f3d6662",
+   "url":"https://github.com/conda-forge/fmilib-feedstock/raw/master/recipe/FMILibrary-2.0.3.tar.gz"
   },
   "test":{
    "commands":[
@@ -86,7 +91,7 @@
  "name":"fmilib",
  "new_version":false,
  "pinning_version":"2018.11.27",
- "raw_meta_yaml":"{% set version = \"2.0.3\" %}\n\npackage:\n  name: fmilib\n  version: {{ version }}\n\nsource:\n  fn: FMILibrary-{{ version }}-src.zip\n  url: https://jmodelica.org/FMILibrary/FMILibrary-{{ version }}-src.zip\n  sha256: 4cc21f9e2c4114a6f4e303f82ca897ec9aa1eb6f7f09fef85979ea5fca309d9a\n  patches:\n    # https://github.com/conda/conda-build/issues/3165\n    - undef_gnu_source.patch\n\nbuild:\n  number: 1001\n\nrequirements:\n  build:\n    - cmake\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n\ntest:\n  commands:\n    - test -f $PREFIX/include/fmilib.h                                # [unix]\n    - test -f $PREFIX/lib/libfmilib.a                                 # [unix]\n    - if not exist %PREFIX%\\\\Library\\\\lib\\\\fmilib.lib exit 1          # [win]\n    - if not exist %PREFIX%\\\\Library\\\\include\\\\fmilib.h exit 1        # [win]\n    - conda inspect linkages -p ${PREFIX} fmilib  # [not win]\n    - conda inspect objects -p ${PREFIX} fmilib  # [osx]\n\nabout:\n  home: http://www.jmodelica.org/FMILibrary\n  license: BSD\n  summary: Package written in C that enables integration of Functional Mock-up Units\n\nextra:\n  recipe-maintainers:\n    - jschueller\n",
+ "raw_meta_yaml":"{% set version = \"2.0.3\" %}\n\npackage:\n  name: fmilib\n  version: {{ version }}\n\nsource:\n  #url: https://jmodelica.org/FMILibrary/FMILibrary-{{ version }}-src.zip\n  #sha256: 4cc21f9e2c4114a6f4e303f82ca897ec9aa1eb6f7f09fef85979ea5fca309d9a\n  url: https://github.com/conda-forge/fmilib-feedstock/raw/master/recipe/FMILibrary-2.0.3.tar.gz\n  sha256: 455017eea98b966eb5e6deb2f13ca0a9f0f5b204a866f00a41ee02944f3d6662\n  patches:\n    # https://github.com/conda/conda-build/issues/3165\n    - undef_gnu_source.patch\n\nbuild:\n  number: 1002\n  run_exports:\n    - {{ pin_subpackage('fmilib', max_pin='x.x') }}\n\nrequirements:\n  build:\n    - cmake\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n\ntest:\n  commands:\n    - test -f $PREFIX/include/fmilib.h                                # [unix]\n    - test -f $PREFIX/lib/libfmilib.a                                 # [unix]\n    - if not exist %PREFIX%\\\\Library\\\\lib\\\\fmilib.lib exit 1          # [win]\n    - if not exist %PREFIX%\\\\Library\\\\include\\\\fmilib.h exit 1        # [win]\n    - conda inspect linkages -p ${PREFIX} fmilib  # [not win]\n    - conda inspect objects -p ${PREFIX} fmilib  # [osx]\n\nabout:\n  home: http://www.jmodelica.org/FMILibrary\n  license: BSD\n  license_file: LICENSE.md\n  summary: Package written in C that enables integration of Functional Mock-up Units\n\nextra:\n  recipe-maintainers:\n    - jschueller\n",
  "req":{
   "__set__":true,
   "elements":[

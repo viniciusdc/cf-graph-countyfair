@@ -286,6 +286,23 @@
     "migrator_version",
     "name"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/334248638.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"ArchRebuild",
+    "migrator_version":1,
+    "name":"aarch64 and ppc64le addition"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "name"
+   ]
   }
  ],
  "bad":false,
@@ -378,7 +395,7 @@
  },
  "name":"sympow",
  "new_version":"2.023.6",
- "pinning_version":"2019.06.18",
+ "pinning_version":"2019.10.28",
  "raw_meta_yaml":"{% set name = \"sympow\" %}\n{% set version = \"2.023.3\" %}\n{% set sha256 = \"a03fba6b84c83b1317ae9b4fe8eba67132229c9a1982426c0915f963b5ba674e\" %}\n\npackage:\n  name: {{ name }}\n  version: {{ version }}\n\nsource:\n  url:  https://salsa.debian.org/science-team/sympow/-/archive/upstream/{{ version }}/sympow-upstream-{{ version }}.tar.gz\n  sha256: {{ sha256 }}\n  patches:\n    - patches/0001-OSX-apparently-does-not-know-about-t.patch\n\nbuild:\n  number: 1003\n  skip: true  # [win]\n  ignore_run_exports:\n    - pari\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - libtool\n    - autoconf\n    - automake\n    - help2man\n  host:\n    - pari\n  run:\n    # new_data invokes PARI's GP\n    - pari\n\ntest:\n  commands:\n    - sympow -help\n    - sympow -new_data 2\n\nabout:\n  home: http://files.sagemath.org/spkg/upstream/sympow/index.html\n  license: BSD-variant\n  license_family: BSD\n  license_file: {{ SRC_DIR }}/COPYING\n  summary: A package to compute special values of symmetric power elliptic curve L-functions\n\nextra:\n  recipe-maintainers:\n    - isuruf\n    - saraedum\n",
  "req":{
   "__set__":true,
@@ -391,7 +408,7 @@
    "pari"
   ]
  },
- "smithy_version":"3.3.7",
+ "smithy_version":"3.6.0",
  "url":"https://salsa.debian.org/science-team/sympow/-/archive/upstream/2.023.3/sympow-upstream-2.023.3.tar.gz",
  "version":"2.023.3"
 }
