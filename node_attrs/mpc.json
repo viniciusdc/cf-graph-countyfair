@@ -31,6 +31,23 @@
     "migrator_version",
     "name"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/334121323.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"ArchRebuild",
+    "migrator_version":1,
+    "name":"aarch64 and ppc64le addition"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "name"
+   ]
   }
  ],
  "bad":false,
@@ -128,7 +145,7 @@
  },
  "name":"mpc",
  "new_version":false,
- "pinning_version":"2018.10.03",
+ "pinning_version":"2019.10.28",
  "raw_meta_yaml":"{% set version = \"1.1.0\" %}\n\npackage:\n  name: mpc\n  version: {{ version }}\n\nsource:\n  fn: mpc-{{ version }}.tar.gz\n  url: https://ftp.gnu.org/gnu/mpc/mpc-{{ version }}.tar.gz\n  sha256: 6985c538143c1208dcb1ac42cedad6ff52e267b47e5f970183a3e75125b43c2e\n  patches:\n  - patches/build-vc14.patch\n\nbuild:\n  number: 1006\n  skip: True  # [win and vc<14]\n  run_exports:\n    - {{ pin_subpackage(\"mpc\") }}\n\nrequirements:\n  build:\n    - libtool         # [unix]\n    - m4              # [unix]\n    - {{ compiler('c') }}\n  host:\n    - gmp             # [unix]\n    - mpir            # [win]\n    - mpfr\n  run:\n    - gmp             # [unix]\n    - mpir            # [win]\n    - mpfr\n\ntest:\n  commands:\n    - if not exist %LIBRARY_INC%\\\\mpc.h exit 1                  # [win]\n    - if not exist %LIBRARY_LIB%\\\\mpc.lib exit 1                # [win]\n    - if not exist %LIBRARY_BIN%\\\\mpc.dll exit 1                # [win]\n    - if not exist %LIBRARY_LIB%\\\\mpc_static.lib exit 1         # [win]\n    - test -f ${PREFIX}/include/mpc.h                           # [unix]\n    - test -f ${PREFIX}/lib/libmpc.a                            # [unix]\n    - test -f ${PREFIX}/lib/libmpc.dylib                        # [osx]\n    - test -f ${PREFIX}/lib/libmpc.so                           # [linux]\n\nabout:\n  home: http://www.multiprecision.org/\n  license: LGPL 3\n  license_file: {{ SRC_DIR }}/COPYING.LESSER\n  summary: A C library for the arithmetic of complex numbers with arbitrarily high precision.\n\nextra:\n  recipe-maintainers:\n    - isuruf\n    - jakirkham\n    - saraedum\n",
  "req":{
   "__set__":true,
@@ -141,7 +158,7 @@
    "mpir"
   ]
  },
- "smithy_version":"3.1.12",
+ "smithy_version":"3.6.0",
  "url":"https://ftp.gnu.org/gnu/mpc/mpc-1.1.0.tar.gz",
  "version":"1.1.0"
 }
