@@ -48,6 +48,23 @@
     "migrator_version",
     "version"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/334336876.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"ArchRebuild",
+    "migrator_version":1,
+    "name":"aarch64 and ppc64le addition"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "name"
+   ]
   }
  ],
  "bad":false,
@@ -169,7 +186,7 @@
  },
  "name":"xorg-libxrandr",
  "new_version":false,
- "pinning_version":"2019.03.15",
+ "pinning_version":"2019.10.28",
  "raw_meta_yaml":"{% set xorg_name = \"libXrandr\" %}\n{% set xorg_category = \"lib\" %}\n{% set name = \"xorg-\" ~ xorg_name %}\n{% set version = \"1.5.2\" %}\n{% set sha256 = \"8aea0ebe403d62330bb741ed595b53741acf45033d3bda1792f1d4cc3daee023\" %}\n{% set am_version = \"1.15\" %} # keep synchronized with build.sh\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  fn: {{ name }}-{{ version }}.tar.bz2\n  url: https://www.x.org/releases/individual/{{ xorg_category }}/{{ xorg_name }}-{{ version }}.tar.bz2\n  sha256: {{ sha256 }}\n\nbuild:\n  number: 1\n  detect_binary_files_with_prefix: true\n\nrequirements:\n  build:\n    - m2-autoconf  # [win]\n    - m2-automake{{ am_version }}  # [win]\n    - m2-libtool  # [win]\n    - m2w64-pkg-config  # [win]\n    - pkg-config  # [not win]\n    - posix  # [win]\n    - {{ compiler('c') }}        # [unix]\n    - {{ compiler('m2w64_c') }}  # [win]\n  host:\n    - pthread-stubs\n    - xorg-libx11 1.6.*\n    - xorg-libxrender\n    - xorg-libxext\n    - xorg-randrproto\n    - xorg-xextproto\n    - xorg-renderproto\n    - xorg-util-macros\n  run:\n    - xorg-libx11 1.6.*\n    - xorg-libxrender\n    - xorg-libxext\n    - xorg-randrproto\n    - xorg-xextproto\n    - xorg-renderproto\n\ntest:\n  commands:\n    {% set lib_idents = [ \"Xrandr\" ] %}\n    {% for lib_ident in lib_idents %}\n    - test -f $PREFIX/lib/lib{{ lib_ident }}.dylib  # [osx]\n    - test -f $PREFIX/lib/lib{{ lib_ident }}.so  # [linux]\n    - if not exist %PREFIX%/Library/lib/lib{{ lib_ident }}.dll.a exit /b 1  # [win]\n    - if not exist %PREFIX%/Library/bin/msys-{{ lib_ident }}-*.dll exit /b 1  # [win]\n    {% endfor %}\n    - conda inspect linkages -p $PREFIX $PKG_NAME  # [not win]\n    - conda inspect objects -p $PREFIX $PKG_NAME  # [osx]\n\nabout:\n  home: https://www.x.org/\n  license: MIT\n  license_family: MIT\n  license_file: COPYING\n  summary: 'The X.org Xrandr library'\n\nextra:\n  recipe-maintainers:\n    - Xarthisius\n    - pkgw\n    - scopatz\n",
  "req":{
   "__set__":true,
@@ -192,7 +209,7 @@
    "xorg-xextproto"
   ]
  },
- "smithy_version":"3.2.14",
+ "smithy_version":"3.6.0",
  "url":"https://www.x.org/releases/individual/lib/libXrandr-1.5.2.tar.bz2",
  "version":"1.5.2"
 }
