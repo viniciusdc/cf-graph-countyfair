@@ -67,6 +67,23 @@
     "migrator_version",
     "name"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/335100558.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"Version",
+    "migrator_version":0,
+    "version":"0.7.0"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "version"
+   ]
   }
  ],
  "bad":false,
@@ -195,8 +212,8 @@
   }
  },
  "name":"r-ggiraph",
- "new_version":"0.6.1",
- "pinning_version":"2019.07.20",
+ "new_version":"0.7.0",
+ "pinning_version":"2019.10.30",
  "raw_meta_yaml":"{% set version = \"0.6.1\" %}\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-ggiraph\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  url:\n    - {{ cran_mirror }}/src/contrib/ggiraph_{{ version }}.tar.gz\n    - {{ cran_mirror }}/src/contrib/Archive/ggiraph/ggiraph_{{ version }}.tar.gz\n  sha256: 392a56e08bdb2c3dee0b69f01ec3b5358c2395de9c1ed72986dc68657b1626c7\n\nbuild:\n  merge_build_host: True  # [win]\n  number: 1\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - {{ compiler('c') }}        # [not win]\n    - {{ compiler('cxx') }}      # [not win]\n    - {{ compiler('m2w64_c') }}        # [win]\n    - {{ compiler('m2w64_cxx') }}        # [win]\n    - {{posix}}filesystem        # [win]\n    - {{posix}}make\n    - {{posix}}sed               # [win]\n    - {{posix}}coreutils         # [win]\n    - {{posix}}zip               # [win]\n  host:\n    - r-base\n    - r-rcpp >=0.12.12\n    - r-gdtools >=0.1.6\n    - r-ggplot2 >=3.0.0\n    - r-htmltools\n    - r-htmlwidgets >=0.6\n    - r-xml2 >=1.0.0\n  run:\n    - r-base\n    - {{native}}gcc-libs         # [win]\n    - r-rcpp >=0.12.12\n    - r-gdtools >=0.1.6\n    - r-ggplot2 >=3.0.0\n    - r-htmltools\n    - r-htmlwidgets >=0.6\n    - r-xml2 >=1.0.0\n\ntest:\n  commands:\n    - $R -e \"library('ggiraph')\"           # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('ggiraph')\\\"\"  # [win]\n\nabout:\n  home: https://davidgohel.github.io/ggiraph\n  license: GPL-3\n  summary: Create interactive 'ggplot2' graphics using 'htmlwidgets'.\n  license_family: GPL3\n  license_file: '{{ environ[\"PREFIX\"] }}/lib/R/share/licenses/GPL-3'\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n\n# Package: ggiraph\n# Type: Package\n# Title: Make 'ggplot2' Graphics Interactive\n# Description: Create interactive 'ggplot2' graphics using 'htmlwidgets'.\n# Version: 0.6.0\n# Authors@R: c( person(\"David\", \"Gohel\", role = c(\"aut\", \"cre\"), email = \"david.gohel@ardata.fr\"), person(\"Mike\", \"Bostock\", role = c(\"cph\"), comment = \"d3.js\"),  person(\"Speros\", \"Kokenes\", role = c(\"cph\"), comment = \"d3-lasso\"),  person(\"Eric\", \"Shull\", role = c(\"cph\"), comment = \"saveSvgAsPng js library\"),  person(\"Eric\", \"Book\", role = c(\"ctb\"), comment = \"hline and vline geoms\") )\n# License: GPL-3\n# Copyright: See file COPYRIGHTS.\n# Imports: grid, ggplot2 (>= 3.0.0), htmlwidgets (>= 0.6), stats, xml2 (>= 1.0.0), htmltools, Rcpp (>= 0.12.12), gdtools (>= 0.1.6),\n# LinkingTo: Rcpp, gdtools\n# Suggests: knitr, testthat, rmarkdown, maps, shiny, sf (>= 0.3-4), dplyr\n# VignetteBuilder: knitr\n# URL: https://davidgohel.github.io/ggiraph\n# BugReports: https://github.com/davidgohel/ggiraph/issues\n# RoxygenNote: 6.1.0\n# NeedsCompilation: yes\n# Packaged: 2018-11-01 07:45:42 UTC; davidgohel\n# Author: David Gohel [aut, cre], Mike Bostock [cph] (d3.js), Speros Kokenes [cph] (d3-lasso), Eric Shull [cph] (saveSvgAsPng js library), Eric Book [ctb] (hline and vline geoms)\n# Maintainer: David Gohel <david.gohel@ardata.fr>\n# Repository: CRAN\n# Date/Publication: 2018-11-01 21:50:03 UTC\n",
  "req":{
   "__set__":true,
@@ -220,7 +237,7 @@
    "zip"
   ]
  },
- "smithy_version":"3.4.1",
+ "smithy_version":"3.6.0",
  "url":[
   "https://cran.r-project.org/src/contrib/ggiraph_0.6.1.tar.gz",
   "https://cran.r-project.org/src/contrib/Archive/ggiraph/ggiraph_0.6.1.tar.gz",
