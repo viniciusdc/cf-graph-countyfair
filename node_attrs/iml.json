@@ -71,7 +71,11 @@
  "conda-forge.yml":{
   "compiler_stack":"comp7",
   "max_py_ver":"37",
-  "max_r_ver":"35"
+  "max_r_ver":"35",
+  "provider":{
+   "linux_aarch64":"default",
+   "linux_ppc64le":"default"
+  }
  },
  "feedstock_name":"iml",
  "hash_type":"sha256",
@@ -101,10 +105,13 @@
   "requirements":{
    "build":[
     "libtool",
+    "make",
     "c_compiler_stub",
     "libtool",
+    "make",
     "c_compiler_stub",
     "libtool",
+    "make",
     "c_compiler_stub"
    ],
    "host":[
@@ -145,7 +152,7 @@
  "name":"iml",
  "new_version":false,
  "pinning_version":"2019.10.28",
- "raw_meta_yaml":"{% set version = \"1.0.5\" %}\n{% set name = \"iml\" %}\n\npackage:\n  name: {{ name }}\n  version: {{ version }}\n\nsource:\n  fn: {{ name }}-{{ version }}.tar.bz2\n  url: http://www.cs.uwaterloo.ca/~astorjoh/{{ name }}-{{ version }}.tar.bz2\n  sha256: 1dad666850895a5709b00b97422e2273f293cfadea7697a9f90b90953e847c2a\n\nbuild:\n  number: 1002\n  skip: true  # [win]\n  features:\n\nrequirements:\n  build:\n    - libtool\n    - {{ compiler('c') }}\n  host:\n    - libblas\n    - libcblas\n    - gmp\n  run:\n    - gmp\n\ntest:\n  commands:\n    - test -f ${PREFIX}/include/{{ name }}.h\n    - test -f ${PREFIX}/lib/lib{{ name }}.a\n    - test -f ${PREFIX}/lib/lib{{ name }}.dylib  # [osx]\n    - test -f ${PREFIX}/lib/lib{{ name }}.so     # [linux]\n\nabout:\n  home: https://cs.uwaterloo.ca/~astorjoh/iml.html\n  license: GPLv2\n  license_file: COPYING\n  summary: |\n    IML is a free library of C source code which implements algorithms for computing\n    exact solutions to dense systems of linear equations over the integers.\n\nextra:\n  recipe-maintainers:\n    - isuruf\n",
+ "raw_meta_yaml":"{% set version = \"1.0.5\" %}\n{% set name = \"iml\" %}\n\npackage:\n  name: {{ name }}\n  version: {{ version }}\n\nsource:\n  fn: {{ name }}-{{ version }}.tar.bz2\n  url: http://www.cs.uwaterloo.ca/~astorjoh/{{ name }}-{{ version }}.tar.bz2\n  sha256: 1dad666850895a5709b00b97422e2273f293cfadea7697a9f90b90953e847c2a\n\nbuild:\n  number: 1002\n  skip: true  # [win]\n  features:\n\nrequirements:\n  build:\n    - libtool\n    - make\n    - {{ compiler('c') }}\n  host:\n    - libblas\n    - libcblas\n    - gmp\n  run:\n    - gmp\n\ntest:\n  commands:\n    - test -f ${PREFIX}/include/{{ name }}.h\n    - test -f ${PREFIX}/lib/lib{{ name }}.a\n    - test -f ${PREFIX}/lib/lib{{ name }}.dylib  # [osx]\n    - test -f ${PREFIX}/lib/lib{{ name }}.so     # [linux]\n\nabout:\n  home: https://cs.uwaterloo.ca/~astorjoh/iml.html\n  license: GPLv2\n  license_file: COPYING\n  summary: |\n    IML is a free library of C source code which implements algorithms for computing\n    exact solutions to dense systems of linear equations over the integers.\n\nextra:\n  recipe-maintainers:\n    - isuruf\n",
  "req":{
   "__set__":true,
   "elements":[
@@ -153,7 +160,8 @@
    "gmp",
    "libblas",
    "libcblas",
-   "libtool"
+   "libtool",
+   "make"
   ]
  },
  "smithy_version":"3.6.0",
