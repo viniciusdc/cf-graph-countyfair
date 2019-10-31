@@ -155,22 +155,21 @@
     "python"
    ],
    "merge_build_host":true,
-   "number":"1",
-   "script":[
-    "export CUDA_TOOLKIT_ROOT_DIR=$BUILD_PREFIX/cuda-",
-    "export PATH=$CUDA_TOOLKIT_ROOT_DIR/bin:$PATH",
-    "get_cudatoolkit.py",
-    "-m pip install . --no-deps --ignore-installed --no-index --no-cache-dir -vv --install-option=\"-GNinja\" --install-option=\"--enable-cuda\"",
-    "export CUDA_TOOLKIT_ROOT_DIR=$BUILD_PREFIX/cuda-",
-    "export PATH=$CUDA_TOOLKIT_ROOT_DIR/bin:$PATH",
-    "get_cudatoolkit.py",
-    "-m pip install . --no-deps --ignore-installed --no-index --no-cache-dir -vv --install-option=\"-GNinja\" --install-option=\"--enable-cuda\"",
-    "export CUDA_TOOLKIT_ROOT_DIR=$BUILD_PREFIX/cuda-",
-    "export PATH=$CUDA_TOOLKIT_ROOT_DIR/bin:$PATH",
-    "get_cudatoolkit.py",
-    "-m pip install . --no-deps --ignore-installed --no-index --no-cache-dir -vv --install-option=\"-GNinja\" --install-option=\"--enable-cuda\""
+   "missing_dso_whitelist":[
+    "*/libcuda.*",
+    "*/libcuda.*",
+    "*/libcuda.*"
    ],
-   "string":"cudapyh_1"
+   "number":"102",
+   "script":[
+    "ln -s ${CUDA_HOME}/include/* ${CONDA_PREFIX}/include/",
+    "-m pip install . --no-deps --ignore-installed --no-index --no-cache-dir -vv --install-option=\"-GNinja\" --install-option=\"--disable-cuda\"",
+    "ln -s ${CUDA_HOME}/include/* ${CONDA_PREFIX}/include/",
+    "-m pip install . --no-deps --ignore-installed --no-index --no-cache-dir -vv --install-option=\"-GNinja\" --install-option=\"--disable-cuda\"",
+    "ln -s ${CUDA_HOME}/include/* ${CONDA_PREFIX}/include/",
+    "-m pip install . --no-deps --ignore-installed --no-index --no-cache-dir -vv --install-option=\"-GNinja\" --install-option=\"--disable-cuda\""
+   ],
+   "string":"pyh_102"
   },
   "extra":{
    "recipe-maintainers":[
@@ -208,27 +207,22 @@
     "cxx_compiler_stub",
     "git",
     "cxx_compiler_stub",
+    "cuda_compiler_stub",
     "git"
    ],
    "host":[
-    "cudatoolkit",
-    "conda",
     "pip",
     "python",
     "libopencv",
     "mkl-devel",
     "scikit-build",
     "setuptools_scm_git_archive",
-    "cudatoolkit",
-    "conda",
     "pip",
     "python",
     "libopencv",
     "mkl-devel",
     "scikit-build",
     "setuptools_scm_git_archive",
-    "cudatoolkit",
-    "conda",
     "pip",
     "python",
     "libopencv",
@@ -237,7 +231,6 @@
     "setuptools_scm_git_archive"
    ],
    "run":[
-    "compatible_pin_stub",
     "mkl",
     "mkl_fft",
     "numexpr",
@@ -249,7 +242,6 @@
     "scipy",
     "six",
     "tifffile",
-    "compatible_pin_stub",
     "mkl",
     "mkl_fft",
     "numexpr",
@@ -261,7 +253,6 @@
     "scipy",
     "six",
     "tifffile",
-    "compatible_pin_stub",
     "mkl",
     "mkl_fft",
     "numexpr",
@@ -281,30 +272,18 @@
     "git_url":"https://github.com/tomopy/tomopy.git"
    },
    {
-    "path":"get_cudatoolkit.py"
-   },
-   {
     "git_rev":"1.7.0",
     "git_url":"https://github.com/tomopy/tomopy.git"
    },
    {
-    "path":"get_cudatoolkit.py"
-   },
-   {
     "git_rev":"1.7.0",
     "git_url":"https://github.com/tomopy/tomopy.git"
-   },
-   {
-    "path":"get_cudatoolkit.py"
    }
   ],
   "test":{
    "commands":[
-    "export LD_LIBRARY_PATH=\"$CONDA_PREFIX/lib:$LD_LIBRARY_PATH\"",
     "nosetests test",
-    "export LD_LIBRARY_PATH=\"$CONDA_PREFIX/lib:$LD_LIBRARY_PATH\"",
     "nosetests test",
-    "export LD_LIBRARY_PATH=\"$CONDA_PREFIX/lib:$LD_LIBRARY_PATH\"",
     "nosetests test"
    ],
    "imports":[
@@ -342,13 +321,12 @@
  "name":"tomopy",
  "new_version":false,
  "pinning_version":"2019.05.21",
- "raw_meta_yaml":"{% set version = \"1.7.0\" %}\n{% set build = 1 %}\n\n# Set CUDA related variables\n{% if cuda != \"nogpu\" %}\n{% set cuda_build_prefix = \"cuda\" + cuda|string %}\n{% set cuda_install_option = \"--enable-cuda\" %}\n{% else %}\n{% set cuda_build_prefix = \"\" %}\n{% set cuda_install_option = \"--disable-cuda\" %}\n{% set build = build + 100 %}\n{% endif %}\n\npackage:\n    name: tomopy\n    version: {{ version }}\n\nsource:\n  # git checkout because PTL submodule is not included in GitHub tarball\n  - git_url: https://github.com/tomopy/tomopy.git\n    git_rev: {{ version }}\n  - path: get_cudatoolkit.py\n\nbuild:\n  number: {{ build }}\n  string: \"{{ cuda_build_prefix }}py{{ py }}h{{ PKG_HASH }}_{{ build }}\"\n  skip: true  # [py2k]\n  merge_build_host: True  # [win]\n  script:\n    - export CUDA_TOOLKIT_ROOT_DIR=$BUILD_PREFIX/cuda-{{ cuda }}\n    - export PATH=$CUDA_TOOLKIT_ROOT_DIR/bin:$PATH\n    - {{ PYTHON }} get_cudatoolkit.py {{ cuda }}  # [cuda != 'nogpu']\n    - {{ PYTHON }} -m pip install .\n      --no-deps --ignore-installed --no-index --no-cache-dir -vv\n      --install-option=\"-GNinja\"\n      --install-option=\"{{ cuda_install_option }}\"\n  ignore_run_exports:\n    - blas\n    - numpy\n    - python\n\nrequirements:\n  build:\n    - {{ compiler('cxx') }}\n    - git\n  host:\n    - cudatoolkit {{ cuda }}  # [cuda != 'nogpu']\n    - conda  # Only used to download cudatoolkit\n    - pip\n    - python\n    - libopencv\n    - mkl-devel\n    - scikit-build\n    - setuptools_scm_git_archive\n  run:\n    - {{ pin_compatible('cudatoolkit', min_pin='x.x', max_pin='x.x') }}  # [cuda != 'nogpu']\n    - futures  # [py2k]\n    - mkl\n    - mkl_fft\n    - numexpr\n    - numpy >1.12\n    - {{ pin_compatible('libopencv', min_pin='x.x', max_pin='x.x') }}\n    - pywavelets\n    - python\n    - scikit-image\n    - scipy\n    - six\n    - tifffile\n\ntest:\n  requires:\n    - nose\n  imports:\n    - tomopy\n    - tomopy.misc\n    - tomopy.prep\n    - tomopy.recon\n    - tomopy.sim\n    - tomopy.util\n  source_files:\n    - test/*\n  commands:\n    # Add the cudatoolkit to the library path\n    - export LD_LIBRARY_PATH=\"$CONDA_PREFIX/lib:$LD_LIBRARY_PATH\"  # [cuda != 'nogpu']\n    - nosetests test\n\napp:\n    own_environment: True\n\nabout:\n    home: http://tomopy.readthedocs.io\n    license: BSD 3-Clause\n    license_family: BSD\n    license_file: LICENSE.txt\n    summary: 'Tomographic reconstruction in Python.'\n    description: |\n      TomoPy is an open-source Python package for tomographic data\n      processing and image reconstruction.\n    doc_url: http://tomopy.readthedocs.io\n    dev_url: https://github.com/tomopy/tomopy\n\nextra:\n    recipe-maintainers:\n        - dgursoy\n        - decarlof\n        - licode\n        - ravescovi\n        - tacaswell\n        - oleksandr-pavlyk\n        - carterbox\n",
+ "raw_meta_yaml":"{% set version = \"1.7.0\" %}\n{% set build = 2 %}\n\n# Set CUDA related variables\n{% if linux64 and cuda_compiler_version != \"None\" %}\n{% set cuda_build_prefix = \"cuda\" + cuda_compiler_version|string %}\n{% set cuda_install_option = \"--enable-cuda\" %}\n{% else %}\n{% set cuda_build_prefix = \"\" %}\n{% set cuda_install_option = \"--disable-cuda\" %}\n{% set build = build + 100 %}\n{% endif %}\n\npackage:\n    name: tomopy\n    version: {{ version }}\n\nsource:\n  # git checkout because PTL submodule is not included in GitHub tarball\n  - git_url: https://github.com/tomopy/tomopy.git\n    git_rev: {{ version }}\n\nbuild:\n  number: {{ build }}\n  string: \"{{ cuda_build_prefix }}py{{ py }}h{{ PKG_HASH }}_{{ build }}\"\n  skip: true  # [py2k]\n  merge_build_host: True  # [win]\n  script:\n#     - export CUDA_TOOLKIT_ROOT_DIR=\"${CUDA_HOME}\"\n    - ln -s ${CUDA_HOME}/include/* ${CONDA_PREFIX}/include/\n    - {{ PYTHON }} -m pip install .\n      --no-deps --ignore-installed --no-index --no-cache-dir -vv\n      --install-option=\"-GNinja\"\n      --install-option=\"{{ cuda_install_option }}\"\n  ignore_run_exports:\n    - blas\n    - numpy\n    - python\n  missing_dso_whitelist:\n    - \"*/libcuda.*\"\n\nrequirements:\n  build:\n    - {{ compiler('cxx') }}\n    - {{ compiler('cuda') }}  # [linux64 and cuda_compiler_version != \"None\"]\n    - git\n  host:\n    - pip\n    - python\n    - libopencv\n    - mkl-devel\n    - scikit-build\n    - setuptools_scm_git_archive\n  run:\n    - futures  # [py2k]\n    - mkl\n    - mkl_fft\n    - numexpr\n    - numpy >1.12\n    - {{ pin_compatible('libopencv', min_pin='x.x', max_pin='x.x') }}\n    - pywavelets\n    - python\n    - scikit-image\n    - scipy\n    - six\n    - tifffile\n\ntest:\n  requires:\n    - nose\n  imports:\n    - tomopy\n    - tomopy.misc\n    - tomopy.prep\n    - tomopy.recon\n    - tomopy.sim\n    - tomopy.util\n  source_files:\n    - test/*\n  commands:\n    - nosetests test\n\napp:\n    own_environment: True\n\nabout:\n    home: http://tomopy.readthedocs.io\n    license: BSD 3-Clause\n    license_family: BSD\n    license_file: LICENSE.txt\n    summary: 'Tomographic reconstruction in Python.'\n    description: |\n      TomoPy is an open-source Python package for tomographic data\n      processing and image reconstruction.\n    doc_url: http://tomopy.readthedocs.io\n    dev_url: https://github.com/tomopy/tomopy\n\nextra:\n    recipe-maintainers:\n        - dgursoy\n        - decarlof\n        - licode\n        - ravescovi\n        - tacaswell\n        - oleksandr-pavlyk\n        - carterbox\n",
  "req":{
   "__set__":true,
   "elements":[
    "compatible_pin_stub",
-   "conda",
-   "cudatoolkit",
+   "cuda_compiler_stub",
    "cxx_compiler_stub",
    "git",
    "libopencv",
