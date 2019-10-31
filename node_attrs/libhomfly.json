@@ -19,7 +19,12 @@
   }
  ],
  "bad":false,
- "conda-forge.yml":{},
+ "conda-forge.yml":{
+  "provider":{
+   "linux_aarch64":"default",
+   "linux_ppc64le":"default"
+  }
+ },
  "feedstock_name":"libhomfly",
  "hash_type":"sha256",
  "meta_yaml":{
@@ -49,8 +54,11 @@
   "requirements":{
    "build":[
     "c_compiler_stub",
+    "make",
     "c_compiler_stub",
-    "c_compiler_stub"
+    "make",
+    "c_compiler_stub",
+    "make"
    ],
    "host":[
     "bdw-gc",
@@ -81,12 +89,13 @@
  "name":"libhomfly",
  "new_version":"1.02r6",
  "pinning_version":"2019.10.28",
- "raw_meta_yaml":"{% set name = \"libhomfly\" %}\n{% set version = \"1.02r6\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  url: https://github.com/miguelmarco/libhomfly/releases/download/{{ version }}/libhomfly-{{ version }}.tar.gz\n  sha256: f990d991d29a590c54b09eff68bc209c4cf2b8b12d945351688d2db8a0d30979\n\nbuild:\n  number: 0\n  skip: True  # [win]\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n  host:\n    - bdw-gc\n  run:\n    - bdw-gc\n\ntest:\n  commands:\n    - test -f $PREFIX/lib/libhomfly${SHLIB_EXT}\n    - test -f $PREFIX/include/homfly.h\n\nabout:\n  home: https://github.com/miguelmarco/libhomfly\n  license: Unlicense\n  license_family: MIT\n  license_file: LICENSE\n  summary: 'Library to compute the homfly polynomial of a link.'\n  dev_url: https://github.com/miguelmarco/libhomfly\n\nextra:\n  recipe-maintainers:\n    - isuruf\n",
+ "raw_meta_yaml":"{% set name = \"libhomfly\" %}\n{% set version = \"1.02r6\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  url: https://github.com/miguelmarco/libhomfly/releases/download/{{ version }}/libhomfly-{{ version }}.tar.gz\n  sha256: f990d991d29a590c54b09eff68bc209c4cf2b8b12d945351688d2db8a0d30979\n\nbuild:\n  number: 0\n  skip: True  # [win]\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - make\n  host:\n    - bdw-gc\n  run:\n    - bdw-gc\n\ntest:\n  commands:\n    - test -f $PREFIX/lib/libhomfly${SHLIB_EXT}\n    - test -f $PREFIX/include/homfly.h\n\nabout:\n  home: https://github.com/miguelmarco/libhomfly\n  license: Unlicense\n  license_family: MIT\n  license_file: LICENSE\n  summary: 'Library to compute the homfly polynomial of a link.'\n  dev_url: https://github.com/miguelmarco/libhomfly\n\nextra:\n  recipe-maintainers:\n    - isuruf\n",
  "req":{
   "__set__":true,
   "elements":[
    "bdw-gc",
-   "c_compiler_stub"
+   "c_compiler_stub",
+   "make"
   ]
  },
  "smithy_version":"3.6.0",

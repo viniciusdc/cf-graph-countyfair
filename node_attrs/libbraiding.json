@@ -19,7 +19,12 @@
   }
  ],
  "bad":false,
- "conda-forge.yml":{},
+ "conda-forge.yml":{
+  "provider":{
+   "linux_aarch64":"default",
+   "linux_ppc64le":"default"
+  }
+ },
  "feedstock_name":"libbraiding",
  "hash_type":"sha256",
  "meta_yaml":{
@@ -54,18 +59,21 @@
     "automake",
     "libtool",
     "m4",
+    "make",
     "c_compiler_stub",
     "cxx_compiler_stub",
     "autoconf",
     "automake",
     "libtool",
     "m4",
+    "make",
     "c_compiler_stub",
     "cxx_compiler_stub",
     "autoconf",
     "automake",
     "libtool",
-    "m4"
+    "m4",
+    "make"
    ],
    "host":null,
    "run":null
@@ -88,7 +96,7 @@
  "name":"libbraiding",
  "new_version":"1.0",
  "pinning_version":"2019.10.28",
- "raw_meta_yaml":"{% set name = \"libbraiding\" %}\n{% set version = \"1.0\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  url: https://github.com/miguelmarco/libbraiding/archive/{{ version }}.tar.gz\n  sha256: db713898a94f4515ec97021f8971f0c392366e675a53863ff4f170700fa386de\n\nbuild:\n  number: 0\n  skip: True  # [win]\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n    - autoconf\n    - automake\n    - libtool\n    - m4\n  host:\n  run:\n\ntest:\n  commands:\n    - test -f $PREFIX/lib/libbraiding${SHLIB_EXT}\n    - test -f $PREFIX/include/braiding.h\n\nabout:\n  home: https://github.com/miguelmarco/libbraiding\n  license: GPL-3.0\n  license_family: GPL\n  license_file: LICENSE\n  summary: 'cbraid/braiding are C++ libraries for computations on braid groups'\n  dev_url: https://github.com/miguelmarco/libbraiding\n\nextra:\n  recipe-maintainers:\n    - isuruf\n",
+ "raw_meta_yaml":"{% set name = \"libbraiding\" %}\n{% set version = \"1.0\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  url: https://github.com/miguelmarco/libbraiding/archive/{{ version }}.tar.gz\n  sha256: db713898a94f4515ec97021f8971f0c392366e675a53863ff4f170700fa386de\n\nbuild:\n  number: 0\n  skip: True  # [win]\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n    - autoconf\n    - automake\n    - libtool\n    - m4\n    - make\n  host:\n  run:\n\ntest:\n  commands:\n    - test -f $PREFIX/lib/libbraiding${SHLIB_EXT}\n    - test -f $PREFIX/include/braiding.h\n\nabout:\n  home: https://github.com/miguelmarco/libbraiding\n  license: GPL-3.0\n  license_family: GPL\n  license_file: LICENSE\n  summary: 'cbraid/braiding are C++ libraries for computations on braid groups'\n  dev_url: https://github.com/miguelmarco/libbraiding\n\nextra:\n  recipe-maintainers:\n    - isuruf\n",
  "req":{
   "__set__":true,
   "elements":[
@@ -97,7 +105,8 @@
    "c_compiler_stub",
    "cxx_compiler_stub",
    "libtool",
-   "m4"
+   "m4",
+   "make"
   ]
  },
  "smithy_version":"3.6.0",

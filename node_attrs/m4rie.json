@@ -54,7 +54,11 @@
  "conda-forge.yml":{
   "compiler_stack":"comp7",
   "max_py_ver":"37",
-  "max_r_ver":"35"
+  "max_r_ver":"35",
+  "provider":{
+   "linux_aarch64":"default",
+   "linux_ppc64le":"default"
+  }
  },
  "feedstock_name":"m4rie",
  "hash_type":"sha256",
@@ -68,7 +72,7 @@
    "summary":"M4RIE is a library for fast arithmetic with dense matrices over GF(2^e) for 2 \u2264 e \u2264 16."
   },
   "build":{
-   "number":"1000",
+   "number":"1001",
    "skip":true
   },
   "extra":{
@@ -86,10 +90,13 @@
    "build":[
     "libtool",
     "c_compiler_stub",
+    "make",
     "libtool",
     "c_compiler_stub",
+    "make",
     "libtool",
-    "c_compiler_stub"
+    "c_compiler_stub",
+    "make"
    ],
    "host":[
     "libpng",
@@ -135,7 +142,7 @@
  "name":"m4rie",
  "new_version":false,
  "pinning_version":"2019.10.28",
- "raw_meta_yaml":"{% set version = \"20150908\" %}\n{% set name = \"m4rie\" %}\n\npackage:\n  name: {{ name }}\n  version: {{ version }}\n\nsource:\n  fn: {{ name }}-{{ version }}.tar.gz\n  url: https://bitbucket.org/malb/m4rie/downloads/{{ name }}-{{ version }}.tar.gz\n  sha256: a0c3f46c399ed2e4af5aaad9de9db0962d15d5ccb9bd0e313df6b2c16bf8e0b1\n\nbuild:\n  number: 1000\n  skip: true  # [win]\n\nrequirements:\n  build:\n    - libtool\n    - {{ compiler('c') }}\n  host:\n    - libpng\n    - zlib\n    - m4ri\n  run:\n    - libpng\n    - zlib\n    - m4ri\n\ntest:\n  commands:\n    - test -f ${PREFIX}/include/m4rie/m4rie.h\n    - test -f ${PREFIX}/lib/lib{{ name }}.a\n    - test -f ${PREFIX}/lib/lib{{ name }}.dylib  # [osx]\n    - test -f ${PREFIX}/lib/lib{{ name }}.so     # [linux]\n\nabout:\n  home: https://bitbucket.org/malb/m4rie\n  license: GPLv2+\n  license_file: {{ SRC_DIR }}/COPYING\n  summary: M4RIE is a library for fast arithmetic with dense matrices over GF(2^e) for 2 \u2264 e \u2264 16.\n  dev_url: https://bitbucket.org/malb/m4rie\n  doc_url: https://malb.bitbucket.io/m4rie\n\nextra:\n  recipe-maintainers:\n    - isuruf\n",
+ "raw_meta_yaml":"{% set version = \"20150908\" %}\n{% set name = \"m4rie\" %}\n\npackage:\n  name: {{ name }}\n  version: {{ version }}\n\nsource:\n  fn: {{ name }}-{{ version }}.tar.gz\n  url: https://bitbucket.org/malb/m4rie/downloads/{{ name }}-{{ version }}.tar.gz\n  sha256: a0c3f46c399ed2e4af5aaad9de9db0962d15d5ccb9bd0e313df6b2c16bf8e0b1\n\nbuild:\n  number: 1001\n  skip: true  # [win]\n\nrequirements:\n  build:\n    - libtool\n    - {{ compiler('c') }}\n    - make\n  host:\n    - libpng\n    - zlib\n    - m4ri\n  run:\n    - libpng\n    - zlib\n    - m4ri\n\ntest:\n  commands:\n    - test -f ${PREFIX}/include/m4rie/m4rie.h\n    - test -f ${PREFIX}/lib/lib{{ name }}.a\n    - test -f ${PREFIX}/lib/lib{{ name }}.dylib  # [osx]\n    - test -f ${PREFIX}/lib/lib{{ name }}.so     # [linux]\n\nabout:\n  home: https://bitbucket.org/malb/m4rie\n  license: GPLv2+\n  license_file: {{ SRC_DIR }}/COPYING\n  summary: M4RIE is a library for fast arithmetic with dense matrices over GF(2^e) for 2 \u2264 e \u2264 16.\n  dev_url: https://bitbucket.org/malb/m4rie\n  doc_url: https://malb.bitbucket.io/m4rie\n\nextra:\n  recipe-maintainers:\n    - isuruf\n",
  "req":{
   "__set__":true,
   "elements":[
@@ -143,6 +150,7 @@
    "libpng",
    "libtool",
    "m4ri",
+   "make",
    "zlib"
   ]
  },

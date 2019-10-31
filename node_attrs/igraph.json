@@ -73,7 +73,11 @@
  "conda-forge.yml":{
   "compiler_stack":"comp7",
   "max_py_ver":"37",
-  "max_r_ver":"35"
+  "max_r_ver":"35",
+  "provider":{
+   "linux_aarch64":"default",
+   "linux_ppc64le":"default"
+  }
  },
  "feedstock_name":"igraph",
  "hash_type":"sha256",
@@ -112,14 +116,17 @@
     "cxx_compiler_stub",
     "fortran_compiler_stub",
     "pkg-config",
+    "make",
     "c_compiler_stub",
     "cxx_compiler_stub",
     "fortran_compiler_stub",
     "pkg-config",
+    "make",
     "c_compiler_stub",
     "cxx_compiler_stub",
     "fortran_compiler_stub",
-    "pkg-config"
+    "pkg-config",
+    "make"
    ],
    "host":[
     "gmp",
@@ -209,7 +216,7 @@
  "name":"igraph",
  "new_version":false,
  "pinning_version":"2019.10.28",
- "raw_meta_yaml":"{% set name = \"igraph\" %}\n{% set version = \"0.7.1\" %}\n\npackage:\n  name: {{ name }}\n  version: {{ version }}\n\nsource:\n  fn: {{ name }}-{{ version }}.tar.gz\n  url: http://igraph.org/nightly/get/c/{{ name }}-{{ version }}.tar.gz\n  sha256: d978030e27369bf698f3816ab70aa9141e9baf81c56cc4f55efbe5489b46b0df\n  patches:\n    - b215195214abb8355121a8430c86df04e1f00eae.patch  # fixes igraph/igraph#906\n    - 0387a58419552aa69be2ac6aaa2f77ad8d6e9add.patch  # [osx]\n    - ca8355ae35e05570ee56ac354a4146c0c8f7a8ec.patch  # fixes igraph/igraph#857\n\nbuild:\n  skip: True  # [win]\n  number: 1007\n  run_exports:\n    - {{ pin_subpackage(\"igraph\", max_pin=\"x.x\") }}\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n    - {{ compiler('fortran') }}\n    - pkg-config\n  host:\n    - gmp\n    - icu\n    - libiconv\n    - libxml2\n    - xz\n    - zlib\n  run:\n    - gmp\n    - icu\n    - libiconv\n    - libxml2\n    - xz\n    - zlib\n\ntest:\n  files:\n    - igraph_test.c\n  requires:\n    - pkg-config\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n    - {{ compiler('fortran') }}\n  commands:\n    - pkg-config --exists igraph\n    - conda inspect linkages -p $PREFIX {{ name|lower }}  # [not win]\n    - conda inspect objects -p $PREFIX {{ name|lower }}  # [osx]\n\nabout:\n  home: http://igraph.org\n  license: GPL2\n  license_family: GPL\n  license_file: COPYING\n  summary: 'An open source and free collection of network analysis tool.'\n  description: |\n    igraph is a collection of network analysis tools with the emphasis on efficiency,\n    portabiliy and ease of use. igraph is open source and free. igraph can be\n    programmed in R, Python and C/C++.\"\n\nextra:\n  recipe-maintainers:\n    - sodre\n",
+ "raw_meta_yaml":"{% set name = \"igraph\" %}\n{% set version = \"0.7.1\" %}\n\npackage:\n  name: {{ name }}\n  version: {{ version }}\n\nsource:\n  fn: {{ name }}-{{ version }}.tar.gz\n  url: http://igraph.org/nightly/get/c/{{ name }}-{{ version }}.tar.gz\n  sha256: d978030e27369bf698f3816ab70aa9141e9baf81c56cc4f55efbe5489b46b0df\n  patches:\n    - b215195214abb8355121a8430c86df04e1f00eae.patch  # fixes igraph/igraph#906\n    - 0387a58419552aa69be2ac6aaa2f77ad8d6e9add.patch  # [osx]\n    - ca8355ae35e05570ee56ac354a4146c0c8f7a8ec.patch  # fixes igraph/igraph#857\n\nbuild:\n  skip: True  # [win]\n  number: 1007\n  run_exports:\n    - {{ pin_subpackage(\"igraph\", max_pin=\"x.x\") }}\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n    - {{ compiler('fortran') }}\n    - pkg-config\n    - make\n  host:\n    - gmp\n    - icu\n    - libiconv\n    - libxml2\n    - xz\n    - zlib\n  run:\n    - gmp\n    - icu\n    - libiconv\n    - libxml2\n    - xz\n    - zlib\n\ntest:\n  files:\n    - igraph_test.c\n  requires:\n    - pkg-config\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n    - {{ compiler('fortran') }}\n  commands:\n    - pkg-config --exists igraph\n    - conda inspect linkages -p $PREFIX {{ name|lower }}  # [not win]\n    - conda inspect objects -p $PREFIX {{ name|lower }}  # [osx]\n\nabout:\n  home: http://igraph.org\n  license: GPL2\n  license_family: GPL\n  license_file: COPYING\n  summary: 'An open source and free collection of network analysis tool.'\n  description: |\n    igraph is a collection of network analysis tools with the emphasis on efficiency,\n    portabiliy and ease of use. igraph is open source and free. igraph can be\n    programmed in R, Python and C/C++.\"\n\nextra:\n  recipe-maintainers:\n    - sodre\n",
  "req":{
   "__set__":true,
   "elements":[
@@ -220,6 +227,7 @@
    "icu",
    "libiconv",
    "libxml2",
+   "make",
    "pkg-config",
    "xz",
    "zlib"
