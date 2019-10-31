@@ -19,7 +19,12 @@
   }
  ],
  "bad":false,
- "conda-forge.yml":{},
+ "conda-forge.yml":{
+  "provider":{
+   "linux_aarch64":"default",
+   "linux_ppc64le":"default"
+  }
+ },
  "feedstock_name":"zip",
  "hash_type":"sha256",
  "meta_yaml":{
@@ -30,8 +35,7 @@
    "summary":"simple program for unzipping files"
   },
   "build":{
-   "number":"0",
-   "script":"make -f unix/Makefile generic && mv zip $PREFIX/bin",
+   "number":"1",
    "skip":true
   },
   "extra":{
@@ -48,6 +52,18 @@
    "name":"zip",
    "version":"3.0"
   },
+  "requirements":{
+   "build":[
+    "c_compiler_stub",
+    "make",
+    "c_compiler_stub",
+    "make",
+    "c_compiler_stub",
+    "make"
+   ],
+   "host":null,
+   "run":null
+  },
   "source":{
    "sha256":"f0e8bb1f9b7eb0b01285495a2699df3a4b766784c1765a8f1aeedf63c0806369",
    "url":"ftp://ftp.info-zip.org/pub/infozip/src/zip30.tgz"
@@ -63,10 +79,13 @@
  "name":"zip",
  "new_version":false,
  "pinning_version":"2019.10.28",
- "raw_meta_yaml":"{% set version=\"3.0\" %}\n{% set sha256=\"f0e8bb1f9b7eb0b01285495a2699df3a4b766784c1765a8f1aeedf63c0806369\" %}\n\npackage:\n  name: zip\n  version: {{ version }}\n\nsource:\n  url: ftp://ftp.info-zip.org/pub/infozip/src/zip{{ version.replace(\".\", \"\") }}.tgz\n  sha256: {{ sha256 }}\n\nbuild:\n  number: 0\n  skip: True  # [win]\n  script: make -f unix/Makefile generic && mv zip $PREFIX/bin\n\ntest:\n  commands:\n    - zip -h\n\nabout:\n  home: http://www.info-zip.org/\n  license: BSD-like\n  license_file: LICENSE\n  summary: simple program for unzipping files\n\nextra:\n  recipe-maintainers:\n    - msarahan\n    - jerowe\n",
+ "raw_meta_yaml":"{% set version=\"3.0\" %}\n{% set sha256=\"f0e8bb1f9b7eb0b01285495a2699df3a4b766784c1765a8f1aeedf63c0806369\" %}\n\npackage:\n  name: zip\n  version: {{ version }}\n\nsource:\n  url: ftp://ftp.info-zip.org/pub/infozip/src/zip{{ version.replace(\".\", \"\") }}.tgz\n  sha256: {{ sha256 }}\n\nbuild:\n  number: 1\n  skip: True  # [win]\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - make\n  host:\n  run:\n\ntest:\n  commands:\n    - zip -h\n\nabout:\n  home: http://www.info-zip.org/\n  license: BSD-like\n  license_file: LICENSE\n  summary: simple program for unzipping files\n\nextra:\n  recipe-maintainers:\n    - msarahan\n    - jerowe\n",
  "req":{
   "__set__":true,
-  "elements":[]
+  "elements":[
+   "c_compiler_stub",
+   "make"
+  ]
  },
  "smithy_version":"3.6.0",
  "url":"ftp://ftp.info-zip.org/pub/infozip/src/zip30.tgz",

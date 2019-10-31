@@ -54,7 +54,11 @@
  "conda-forge.yml":{
   "compiler_stack":"comp7",
   "max_py_ver":"37",
-  "max_r_ver":"35"
+  "max_r_ver":"35",
+  "provider":{
+   "linux_aarch64":"default",
+   "linux_ppc64le":"default"
+  }
  },
  "feedstock_name":"rw",
  "hash_type":"sha256",
@@ -86,14 +90,17 @@
     "libtool",
     "automake",
     "pkg-config",
+    "make",
     "c_compiler_stub",
     "libtool",
     "automake",
     "pkg-config",
+    "make",
     "c_compiler_stub",
     "libtool",
     "automake",
     "pkg-config",
+    "make",
     "c_compiler_stub"
    ],
    "host":[
@@ -131,7 +138,7 @@
  "name":"rw",
  "new_version":false,
  "pinning_version":"2019.10.28",
- "raw_meta_yaml":"{% set version = \"0.8\" %}\n{% set name = \"rw\" %}\n\npackage:\n  name: {{ name }}\n  version: {{ version }}\n\nsource:\n  fn: {{ name }}-{{ version }}.tar.gz\n  url: https://excellmedia.dl.sourceforge.net/project/rankwidth/{{ name }}-{{ version }}.tar.gz\n  sha256: 60fd5320bef28a5156284fc224534376405f2655c6777a12a05fcacc0576d700\n\nbuild:\n  number: 1001\n  skip: true  # [win]\n\nrequirements:\n  build:\n    - libtool\n    - automake\n    - pkg-config\n    - {{ compiler('c') }}\n  host:\n    - m4\n    - igraph 0.7.*\n\n  run:\n    - igraph 0.7.*\n\ntest:\n  commands:\n    - test -f ${PREFIX}/include/{{ name }}.h\n    - test -f ${PREFIX}/lib/lib{{ name }}.a\n    - test -f ${PREFIX}/lib/lib{{ name }}.dylib     # [osx]\n    - test -f ${PREFIX}/lib/lib{{ name }}.so        # [linux]\n\nabout:\n  home: https://sourceforge.net/projects/rankwidth/\n  license: GPLv2\n  license_file: COPYING\n  summary: rw calculates rank-width and rank-decompositions\n  dev_url: https://sourceforge.net/p/rankwidth/code/HEAD/tree/\n\nextra:\n  recipe-maintainers:\n    - isuruf\n",
+ "raw_meta_yaml":"{% set version = \"0.8\" %}\n{% set name = \"rw\" %}\n\npackage:\n  name: {{ name }}\n  version: {{ version }}\n\nsource:\n  fn: {{ name }}-{{ version }}.tar.gz\n  url: https://excellmedia.dl.sourceforge.net/project/rankwidth/{{ name }}-{{ version }}.tar.gz\n  sha256: 60fd5320bef28a5156284fc224534376405f2655c6777a12a05fcacc0576d700\n\nbuild:\n  number: 1001\n  skip: true  # [win]\n\nrequirements:\n  build:\n    - libtool\n    - automake\n    - pkg-config\n    - make\n    - {{ compiler('c') }}\n  host:\n    - m4\n    - igraph 0.7.*\n\n  run:\n    - igraph 0.7.*\n\ntest:\n  commands:\n    - test -f ${PREFIX}/include/{{ name }}.h\n    - test -f ${PREFIX}/lib/lib{{ name }}.a\n    - test -f ${PREFIX}/lib/lib{{ name }}.dylib     # [osx]\n    - test -f ${PREFIX}/lib/lib{{ name }}.so        # [linux]\n\nabout:\n  home: https://sourceforge.net/projects/rankwidth/\n  license: GPLv2\n  license_file: COPYING\n  summary: rw calculates rank-width and rank-decompositions\n  dev_url: https://sourceforge.net/p/rankwidth/code/HEAD/tree/\n\nextra:\n  recipe-maintainers:\n    - isuruf\n",
  "req":{
   "__set__":true,
   "elements":[
@@ -140,6 +147,7 @@
    "igraph",
    "libtool",
    "m4",
+   "make",
    "pkg-config"
   ]
  },
