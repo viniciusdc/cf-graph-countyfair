@@ -82,7 +82,7 @@
  "hash_type":"sha256",
  "meta_yaml":{
   "about":{
-   "dev_url":"https://github.com/aiidateam/aiida_core",
+   "dev_url":"https://github.com/aiidateam/aiida-core",
    "doc_url":"https://aiida-core.readthedocs.io",
    "home":"http://aiida.net",
    "license":"MIT",
@@ -92,11 +92,11 @@
   },
   "build":{
    "entry_points":[
-    "verdi=aiida.cmdline.verdilib:run",
-    "verdi=aiida.cmdline.verdilib:run",
-    "verdi=aiida.cmdline.verdilib:run"
+    "verdi=aiida.cmdline.commands.cmd_verdi:verdi",
+    "verdi=aiida.cmdline.commands.cmd_verdi:verdi",
+    "verdi=aiida.cmdline.commands.cmd_verdi:verdi"
    ],
-   "number":"1",
+   "number":"0",
    "script":"python -m pip install . --no-deps --ignore-installed -vvv ",
    "skip":true
   },
@@ -105,12 +105,15 @@
     "ltalirz",
     "astamminger",
     "chrisjsewell",
+    "sphuber",
     "ltalirz",
     "astamminger",
     "chrisjsewell",
+    "sphuber",
     "ltalirz",
     "astamminger",
-    "chrisjsewell"
+    "chrisjsewell",
+    "sphuber"
    ]
   },
   "outputs":[
@@ -121,13 +124,15 @@
     "name":"aiida-core.services",
     "requirements":{
      "run":[
-      "postgresql>=9.4"
-     ],
-     "test":{
-      "commands":[
-       "postgres --help"
-      ]
-     }
+      "postgresql >=9.6",
+      "rabbitmq-server"
+     ]
+    },
+    "test":{
+     "commands":[
+      "postgres --help",
+      "rabbitmqctl help"
+     ]
     }
    },
    {
@@ -137,13 +142,15 @@
     "name":"aiida-core.services",
     "requirements":{
      "run":[
-      "postgresql>=9.4"
-     ],
-     "test":{
-      "commands":[
-       "postgres --help"
-      ]
-     }
+      "postgresql >=9.6",
+      "rabbitmq-server"
+     ]
+    },
+    "test":{
+     "commands":[
+      "postgres --help",
+      "rabbitmqctl help"
+     ]
     }
    },
    {
@@ -153,19 +160,21 @@
     "name":"aiida-core.services",
     "requirements":{
      "run":[
-      "postgresql>=9.4"
-     ],
-     "test":{
-      "commands":[
-       "postgres --help"
-      ]
-     }
+      "postgresql >=9.6",
+      "rabbitmq-server"
+     ]
+    },
+    "test":{
+     "commands":[
+      "postgres --help",
+      "rabbitmqctl help"
+     ]
     }
    }
   ],
   "package":{
    "name":"aiida-core",
-   "version":"0.12.4"
+   "version":"1.0.0"
   },
   "requirements":{
    "host":[
@@ -178,171 +187,153 @@
    ],
    "run":[
     "python",
-    "reentry==1.2.2",
-    "python-dateutil==2.7.2",
-    "python-mimeparse==1.6.0",
-    "django==1.7.11",
-    "django-extensions==1.5.0",
-    "tzlocal==1.5.1",
-    "pytz==2018.4",
-    "PyYAML==3.12",
-    "six==1.11.0",
-    "future==0.16.0",
-    "pathlib2==2.3.0",
-    "celery==3.1.25",
-    "billiard==3.3.0.23",
-    "amqp==1.4.9",
-    "anyjson==0.3.3",
-    "plumpy==0.7.12",
-    "portalocker==1.1.0",
-    "psutil==5.4.5",
-    "meld3==1.0.2",
-    "numpy==1.15.4",
-    "SQLAlchemy==1.0.19",
-    "SQLAlchemy-Utils==0.33.0",
-    "alembic==0.9.9",
-    "ujson==1.35",
-    "enum34==1.1.6",
-    "voluptuous==0.11.1",
-    "aldjemy==0.8.0",
-    "passlib==1.7.1",
-    "validate_email==1.3",
-    "click==6.7",
-    "click-plugins==1.0.3",
-    "click-spinner==0.1.7",
-    "tabulate==0.8.2",
-    "ete3==3.1.1",
-    "uritools==2.1.0",
-    "psycopg2==2.7.4",
-    "paramiko==2.4.2",
-    "ecdsa==0.13",
-    "ipython<6.0",
-    "chainmap",
-    "singledispatch",
+    "aldjemy ==0.9.1",
+    "alembic ==1.2.1",
+    "circus ==0.15.0",
+    "click-completion ==0.5.1",
+    "click-config-file ==0.5.0",
+    "click-spinner ==0.1.8",
+    "click ==7.0",
+    "django ==1.11.25",
+    "ete3 ==3.1.1",
+    "python-graphviz ==0.13",
+    "ipython >=4.0,<6.0",
+    "kiwipy[rmq] ==0.5.1",
+    "mock ==3.0.5",
+    "numpy ==1.16.4",
+    "paramiko ==2.6.0",
+    "passlib ==1.7.1",
+    "pika ==1.1.0",
+    "plumpy ==0.14.3",
+    "psutil ==5.6.3",
+    "psycopg2 ==2.8.3",
+    "python-dateutil ==2.8.0",
+    "pytz ==2019.3",
+    "pyyaml ==3.13",
+    "reentry >=1.3.0",
+    "simplejson ==3.16.0",
+    "six ==1.12.0",
+    "sqlalchemy-utils ==0.34.2",
+    "sqlalchemy ==1.3.10",
+    "tabulate ==0.8.5",
+    "tornado <5.0",
+    "tzlocal ==2.0.0",
+    "upf_to_json ==0.9.2",
+    "uritools ==2.2.0",
+    "wrapt ==1.11.2",
     "python",
-    "reentry==1.2.2",
-    "python-dateutil==2.7.2",
-    "python-mimeparse==1.6.0",
-    "django==1.7.11",
-    "django-extensions==1.5.0",
-    "tzlocal==1.5.1",
-    "pytz==2018.4",
-    "PyYAML==3.12",
-    "six==1.11.0",
-    "future==0.16.0",
-    "pathlib2==2.3.0",
-    "celery==3.1.25",
-    "billiard==3.3.0.23",
-    "amqp==1.4.9",
-    "anyjson==0.3.3",
-    "plumpy==0.7.12",
-    "portalocker==1.1.0",
-    "psutil==5.4.5",
-    "meld3==1.0.2",
-    "numpy==1.15.4",
-    "SQLAlchemy==1.0.19",
-    "SQLAlchemy-Utils==0.33.0",
-    "alembic==0.9.9",
-    "ujson==1.35",
-    "enum34==1.1.6",
-    "voluptuous==0.11.1",
-    "aldjemy==0.8.0",
-    "passlib==1.7.1",
-    "validate_email==1.3",
-    "click==6.7",
-    "click-plugins==1.0.3",
-    "click-spinner==0.1.7",
-    "tabulate==0.8.2",
-    "ete3==3.1.1",
-    "uritools==2.1.0",
-    "psycopg2==2.7.4",
-    "paramiko==2.4.2",
-    "ecdsa==0.13",
-    "ipython<6.0",
-    "chainmap",
-    "singledispatch",
+    "aldjemy ==0.9.1",
+    "alembic ==1.2.1",
+    "circus ==0.15.0",
+    "click-completion ==0.5.1",
+    "click-config-file ==0.5.0",
+    "click-spinner ==0.1.8",
+    "click ==7.0",
+    "django ==1.11.25",
+    "ete3 ==3.1.1",
+    "python-graphviz ==0.13",
+    "ipython >=4.0,<6.0",
+    "kiwipy[rmq] ==0.5.1",
+    "mock ==3.0.5",
+    "numpy ==1.16.4",
+    "paramiko ==2.6.0",
+    "passlib ==1.7.1",
+    "pika ==1.1.0",
+    "plumpy ==0.14.3",
+    "psutil ==5.6.3",
+    "psycopg2 ==2.8.3",
+    "python-dateutil ==2.8.0",
+    "pytz ==2019.3",
+    "pyyaml ==3.13",
+    "reentry >=1.3.0",
+    "simplejson ==3.16.0",
+    "six ==1.12.0",
+    "sqlalchemy-utils ==0.34.2",
+    "sqlalchemy ==1.3.10",
+    "tabulate ==0.8.5",
+    "tornado <5.0",
+    "tzlocal ==2.0.0",
+    "upf_to_json ==0.9.2",
+    "uritools ==2.2.0",
+    "wrapt ==1.11.2",
     "python",
-    "reentry==1.2.2",
-    "python-dateutil==2.7.2",
-    "python-mimeparse==1.6.0",
-    "django==1.7.11",
-    "django-extensions==1.5.0",
-    "tzlocal==1.5.1",
-    "pytz==2018.4",
-    "PyYAML==3.12",
-    "six==1.11.0",
-    "future==0.16.0",
-    "pathlib2==2.3.0",
-    "celery==3.1.25",
-    "billiard==3.3.0.23",
-    "amqp==1.4.9",
-    "anyjson==0.3.3",
-    "plumpy==0.7.12",
-    "portalocker==1.1.0",
-    "psutil==5.4.5",
-    "meld3==1.0.2",
-    "numpy==1.15.4",
-    "SQLAlchemy==1.0.19",
-    "SQLAlchemy-Utils==0.33.0",
-    "alembic==0.9.9",
-    "ujson==1.35",
-    "enum34==1.1.6",
-    "voluptuous==0.11.1",
-    "aldjemy==0.8.0",
-    "passlib==1.7.1",
-    "validate_email==1.3",
-    "click==6.7",
-    "click-plugins==1.0.3",
-    "click-spinner==0.1.7",
-    "tabulate==0.8.2",
-    "ete3==3.1.1",
-    "uritools==2.1.0",
-    "psycopg2==2.7.4",
-    "paramiko==2.4.2",
-    "ecdsa==0.13",
-    "ipython<6.0",
-    "chainmap",
-    "singledispatch"
+    "aldjemy ==0.9.1",
+    "alembic ==1.2.1",
+    "circus ==0.15.0",
+    "click-completion ==0.5.1",
+    "click-config-file ==0.5.0",
+    "click-spinner ==0.1.8",
+    "click ==7.0",
+    "django ==1.11.25",
+    "ete3 ==3.1.1",
+    "python-graphviz ==0.13",
+    "ipython >=4.0,<6.0",
+    "kiwipy[rmq] ==0.5.1",
+    "mock ==3.0.5",
+    "numpy ==1.16.4",
+    "paramiko ==2.6.0",
+    "passlib ==1.7.1",
+    "pika ==1.1.0",
+    "plumpy ==0.14.3",
+    "psutil ==5.6.3",
+    "psycopg2 ==2.8.3",
+    "python-dateutil ==2.8.0",
+    "pytz ==2019.3",
+    "pyyaml ==3.13",
+    "reentry >=1.3.0",
+    "simplejson ==3.16.0",
+    "six ==1.12.0",
+    "sqlalchemy-utils ==0.34.2",
+    "sqlalchemy ==1.3.10",
+    "tabulate ==0.8.5",
+    "tornado <5.0",
+    "tzlocal ==2.0.0",
+    "upf_to_json ==0.9.2",
+    "uritools ==2.2.0",
+    "wrapt ==1.11.2"
    ]
   },
   "source":{
-   "sha256":"2ca69d8947496fefbcdd1f45dd65d6e8b929f55bc68ff88bf976afa1fe04994a",
-   "url":"https://pypi.io/packages/source/a/aiida-core/aiida-core-0.12.4.tar.gz"
+   "sha256":"899fdf941542d33e840a2a8c8598f18f57af742ee1a94f7b814283a169fe923d",
+   "url":"https://pypi.io/packages/source/a/aiida-core/aiida-core-1.0.0.tar.gz"
   },
   "test":{
    "commands":[
-    "reentry scan",
-    "verdi help",
-    "reentry scan",
-    "verdi help",
-    "reentry scan",
-    "verdi help"
+    "reentry scan -r aiida",
+    "verdi --help",
+    "verdi --version",
+    "reentry scan -r aiida",
+    "verdi --help",
+    "verdi --version",
+    "reentry scan -r aiida",
+    "verdi --help",
+    "verdi --version"
    ],
    "imports":[
     "aiida",
     "aiida.cmdline",
     "aiida.common",
-    "aiida.control",
+    "aiida.common.hashing",
+    "aiida.manage",
     "aiida.restapi",
-    "aiida.scheduler",
-    "aiida.transport",
-    "aiida.utils",
+    "aiida.schedulers",
+    "aiida.transports",
     "aiida",
     "aiida.cmdline",
     "aiida.common",
-    "aiida.control",
+    "aiida.common.hashing",
+    "aiida.manage",
     "aiida.restapi",
-    "aiida.scheduler",
-    "aiida.transport",
-    "aiida.utils",
+    "aiida.schedulers",
+    "aiida.transports",
     "aiida",
     "aiida.cmdline",
     "aiida.common",
-    "aiida.control",
+    "aiida.common.hashing",
+    "aiida.manage",
     "aiida.restapi",
-    "aiida.scheduler",
-    "aiida.transport",
-    "aiida.utils"
+    "aiida.schedulers",
+    "aiida.transports"
    ]
   }
  },
@@ -353,57 +344,51 @@
   "aiida-core.services"
  ],
  "pinning_version":"2019.10.30",
- "raw_meta_yaml":"{% set name = \"aiida-core\" %}\n{% set version = \"0.12.4\" %}\n\npackage:\n  name: \"{{ name|lower }}\"\n  version: \"{{ version }}\"\n\nsource:\n  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz\n  sha256: 2ca69d8947496fefbcdd1f45dd65d6e8b929f55bc68ff88bf976afa1fe04994a\n\nbuild:\n  number: 1\n  entry_points:\n    - verdi=aiida.cmdline.verdilib:run\n  script: \"python -m pip install . --no-deps --ignore-installed -vvv \"\n  skip: True  # [py > 27]\n\nrequirements:\n  host:\n    - python\n    - pip\n  run:\n    - python\n    - reentry==1.2.2\n    - python-dateutil==2.7.2\n    - python-mimeparse==1.6.0\n    - django==1.7.11\n    - django-extensions==1.5.0\n    - tzlocal==1.5.1\n    - pytz==2018.4\n    - PyYAML==3.12\n    - six==1.11.0\n    - future==0.16.0\n    - pathlib2==2.3.0\n    - celery==3.1.25\n    - billiard==3.3.0.23\n    - amqp==1.4.9\n    - anyjson==0.3.3\n    - plumpy==0.7.12\n    - portalocker==1.1.0\n    - psutil==5.4.5\n    - meld3==1.0.2\n    - numpy==1.15.4\n    - SQLAlchemy==1.0.19\n    - SQLAlchemy-Utils==0.33.0\n    - alembic==0.9.9\n    - ujson==1.35\n    - enum34==1.1.6\n    - voluptuous==0.11.1\n    - aldjemy==0.8.0\n    - passlib==1.7.1\n    - validate_email==1.3\n    - click==6.7\n    - click-plugins==1.0.3\n    - click-spinner==0.1.7\n    - tabulate==0.8.2\n    - ete3==3.1.1\n    - uritools==2.1.0\n    - psycopg2==2.7.4\n    - paramiko==2.4.2\n    - ecdsa==0.13\n    - ipython<6.0\n    - chainmap\n    - singledispatch\n\ntest:\n  imports:\n    - aiida\n    - aiida.cmdline\n    - aiida.common\n    - aiida.control\n    - aiida.restapi\n    - aiida.scheduler\n    - aiida.transport\n    - aiida.utils\n  commands:\n    - reentry scan\n    - verdi help\n\noutputs:\n  - name: aiida-core\n  - name: aiida-core.services\n    requirements:\n      run:\n        - postgresql>=9.4\n      test:\n        commands:\n          - postgres --help\n\nabout:\n  home: http://aiida.net\n  license: MIT\n  license_family: MIT\n  license_file: LICENSE.txt\n  summary: AiiDA, an automated interactive infrastructure and database for computational science\n  doc_url: https://aiida-core.readthedocs.io\n  dev_url: https://github.com/aiidateam/aiida_core\n\nextra:\n  recipe-maintainers:\n    - ltalirz\n    - astamminger\n    - chrisjsewell\n",
+ "raw_meta_yaml":"{% set name = \"aiida-core\" %}\n{% set version = \"1.0.0\" %}\n\npackage:\n  name: \"{{ name|lower }}\"\n  version: \"{{ version }}\"\n\nsource:\n  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz\n  sha256: 899fdf941542d33e840a2a8c8598f18f57af742ee1a94f7b814283a169fe923d\n\nbuild:\n  number: 0\n  entry_points:\n    - verdi=aiida.cmdline.commands.cmd_verdi:verdi\n  script: \"python -m pip install . --no-deps --ignore-installed -vvv \"\n  skip: True  # [win or py > 36]\n\nrequirements:\n  host:\n    - python\n    - pip\n  run:\n    - python\n    - aldjemy ==0.9.1\n    - alembic ==1.2.1\n    - circus ==0.15.0\n    - click-completion ==0.5.1\n    - click-config-file ==0.5.0\n    - click-spinner ==0.1.8\n    - click ==7.0\n    - django ==1.11.25\n    - ete3 ==3.1.1\n    - enum34 ==1.1.6  # [py < 35]\n    - python-graphviz ==0.13\n    - ipython >=4.0,<6.0\n    - kiwipy[rmq] ==0.5.1\n    - mock ==3.0.5\n    - numpy ==1.16.4\n    - paramiko ==2.6.0\n    - passlib ==1.7.1\n    - pika ==1.1.0\n    - plumpy ==0.14.3\n    - psutil ==5.6.3\n    - psycopg2 ==2.8.3\n    - pyblake2 ==1.1.2  # [py < 36]\n    - python-dateutil ==2.8.0\n    - pytz ==2019.3\n    - pyyaml ==3.13\n    - reentry >=1.3.0\n    - simplejson ==3.16.0\n    - singledispatch >=3.4.0.3  # [py < 35]\n    - six ==1.12.0\n    - typing ==3.7.4.1  # [py < 35]\n    - sqlalchemy-utils ==0.34.2\n    - sqlalchemy ==1.3.10\n    - tabulate ==0.8.5\n    - tornado <5.0\n    - tzlocal ==2.0.0\n    - upf_to_json ==0.9.2\n    - uritools ==2.2.0\n    - wrapt ==1.11.2\n\ntest:\n  imports:\n    - aiida\n    - aiida.cmdline\n    - aiida.common\n    - aiida.common.hashing\n    - aiida.manage\n    - aiida.restapi\n    - aiida.schedulers\n    - aiida.transports\n  commands:\n    - reentry scan -r aiida\n    - verdi --help\n    - verdi --version\n\noutputs:\n  - name: aiida-core\n  - name: aiida-core.services\n    requirements:\n      run:\n        - postgresql >=9.6\n        - rabbitmq-server\n    test:\n      commands:\n        - postgres --help\n        - rabbitmqctl help\n\nabout:\n  home: http://aiida.net\n  license: MIT\n  license_family: MIT\n  license_file: LICENSE.txt\n  summary: AiiDA, an automated interactive infrastructure and database for computational science\n  doc_url: https://aiida-core.readthedocs.io\n  dev_url: https://github.com/aiidateam/aiida-core\n\nextra:\n  recipe-maintainers:\n    - ltalirz\n    - astamminger\n    - chrisjsewell\n    - sphuber\n",
  "req":{
   "__set__":true,
   "elements":[
    "aldjemy",
    "alembic",
-   "amqp",
-   "anyjson",
-   "billiard",
-   "celery",
-   "chainmap",
+   "circus",
    "click",
-   "click-plugins",
+   "click-completion",
+   "click-config-file",
    "click-spinner",
    "django",
-   "django-extensions",
-   "ecdsa",
-   "enum34",
    "ete3",
-   "future",
    "ipython",
-   "meld3",
+   "kiwipy",
+   "mock",
    "numpy",
    "paramiko",
    "passlib",
-   "pathlib2",
+   "pika",
    "pip",
    "plumpy",
-   "portalocker",
    "postgresql",
    "psutil",
    "psycopg2",
    "python",
    "python-dateutil",
-   "python-mimeparse",
+   "python-graphviz",
    "pytz",
    "pyyaml",
+   "rabbitmq-server",
    "reentry",
-   "singledispatch",
+   "simplejson",
    "six",
    "sqlalchemy",
    "sqlalchemy-utils",
    "tabulate",
+   "tornado",
    "tzlocal",
-   "ujson",
+   "upf_to_json",
    "uritools",
-   "validate_email",
-   "voluptuous"
+   "wrapt"
   ]
  },
  "smithy_version":"3.6.0",
  "url":"https://pypi.io/packages/source/a/aiida-core/aiida-core-0.12.4.tar.gz",
- "version":"0.12.4"
+ "version":"1.0.0"
 }
