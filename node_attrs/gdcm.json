@@ -147,22 +147,28 @@
     "migrator_version",
     "version"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/335626670.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"MigrationYaml",
+    "migrator_object_version":1,
+    "migrator_version":0,
+    "name":"python38"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_object_version",
+    "migrator_version",
+    "name"
+   ]
   }
  ],
- "bad":{
-  "exception":"makedirs() got an unexpected keyword argument 'exits_ok'",
-  "traceback":[
-   "Traceback (most recent call last):",
-   "  File \"/root/repo/cf-scripts/conda_forge_tick/auto_tick.xsh\", line 691, in main",
-   "    hash_type=attrs.get('hash_type', 'sha256'))",
-   "  File \"/root/repo/cf-scripts/conda_forge_tick/auto_tick.xsh\", line 98, in run",
-   "    migrate_return = migrator.migrate(recipe_dir, attrs, **kwargs)",
-   "  File \"/root/repo/cf-scripts/conda_forge_tick/migrators.xsh\", line 1377, in migrate",
-   "    os.makedirs(os.path.join(recipe_dir, '../.ci_support'), exits_ok=True)",
-   "TypeError: makedirs() got an unexpected keyword argument 'exits_ok'",
-   ""
-  ]
- },
+ "bad":false,
  "conda-forge.yml":{
   "compiler_stack":"comp7",
   "max_py_ver":"37",
@@ -267,7 +273,7 @@
  },
  "name":"gdcm",
  "new_version":"3.0.4",
- "pinning_version":"2019.08.27",
+ "pinning_version":"2019.11.01",
  "raw_meta_yaml":"{% set version = \"2.8.9\" %}\n{% set native = 'm2w64-' if win else '' %}\n{% set posix = 'm2-' if win else '' %}\n\npackage:\n  name: gdcm\n  version: {{ version }}\n\nsource:\n  url: https://github.com/malaterre/GDCM/archive/v{{ version }}.tar.gz\n  fn: GDCM-{{ version }}.tar.gz\n  sha256: 6379907946f0a0c682fb5f265053bfab5df9699265d212c47388da7c54045235\n  patches:\n    # patch for statically linked python\n    # https://stackoverflow.com/questions/50085173/swig-with-anaconda-environment-on-mac-os-throws-fatal-python-error-pythreadstat\n    - swig.patch  # [osx]\n\nbuild:\n  number: 0\n  ignore_run_exports:\n    - libuuid  # [unix]\n\nrequirements:\n  build:\n    - cmake\n    - ninja\n    - {{ compiler('c') }}    # [unix]\n    - {{ compiler('cxx') }}  # [unix]\n    - pkg-config             # [unix]\n    - swig\n    - m2w64-pkg-config        # [win]\n    - m2w64-toolchain        # [win]\n  host:\n    - python\n    # TODO: We need to add more things\n    - libuuid  # [unix]\n    - zlib\n    - openjpeg\n    - expat\n    - json-c\n    - libpython  # [win]\n    - libjpeg-turbo\n  run:\n    - python\n    - json-c\n\ntest:\n  commands:\n    - python -v -c \"import gdcm\"\n\nabout:\n  home: https://sourceforge.net/p/gdcm/gdcm/\n  license: BSD-2-Clause\n  summary: Grassroots DICOM, cross-platform DICOM implementation.\n\nextra:\n  recipe-maintainers:\n    - ivoflipse\n    - mariusvniekerk\n",
  "req":{
   "__set__":true,
@@ -290,7 +296,7 @@
    "zlib"
   ]
  },
- "smithy_version":"3.4.3",
+ "smithy_version":"3.6.1",
  "url":"https://github.com/malaterre/GDCM/archive/v2.8.9.tar.gz",
  "version":"2.8.9"
 }

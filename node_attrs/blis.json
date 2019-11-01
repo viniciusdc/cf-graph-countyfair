@@ -118,22 +118,28 @@
     "migrator_version",
     "version"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/335627844.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"MigrationYaml",
+    "migrator_object_version":1,
+    "migrator_version":0,
+    "name":"python38"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_object_version",
+    "migrator_version",
+    "name"
+   ]
   }
  ],
- "bad":{
-  "exception":"makedirs() got an unexpected keyword argument 'exits_ok'",
-  "traceback":[
-   "Traceback (most recent call last):",
-   "  File \"/root/repo/cf-scripts/conda_forge_tick/auto_tick.xsh\", line 691, in main",
-   "    hash_type=attrs.get('hash_type', 'sha256'))",
-   "  File \"/root/repo/cf-scripts/conda_forge_tick/auto_tick.xsh\", line 98, in run",
-   "    migrate_return = migrator.migrate(recipe_dir, attrs, **kwargs)",
-   "  File \"/root/repo/cf-scripts/conda_forge_tick/migrators.xsh\", line 1377, in migrate",
-   "    os.makedirs(os.path.join(recipe_dir, '../.ci_support'), exits_ok=True)",
-   "TypeError: makedirs() got an unexpected keyword argument 'exits_ok'",
-   ""
-  ]
- },
+ "bad":false,
  "conda-forge.yml":{
   "provider":{
    "win":"azure"
@@ -211,7 +217,7 @@
  },
  "name":"blis",
  "new_version":"0.6.0",
- "pinning_version":"2019.05.31",
+ "pinning_version":"2019.11.01",
  "raw_meta_yaml":"{% set name = \"blis\" %}\n{% set version = \"0.6.0\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  url: https://github.com/flame/blis/archive/{{ version }}.tar.gz\n  sha256: ad5765cc3f492d0c663f494850dafc4d72f901c332eb442f404814ff2995e5a9\n\nbuild:\n  number: 0\n  skip: True  # [win and vc<14]\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - clangdev               # [win or osx]\n    - llvmdev                # [win or osx]\n    - posix                  # [win]\n    - m2-sed                 # [win]\n    - sed                    # [unix]\n    - perl\n    - python >=3.5\n  host:\n  run:\n\ntest:\n  commands:\n    - test -f $PREFIX/lib/libblis.a                       # [unix]\n    - test -f $PREFIX/lib/libblis${SHLIB_EXT}             # [unix]\n    - test -f $PREFIX/include/blis/blis.h                 # [unix]\n    - test -f $PREFIX/include/blis/cblas.h                # [unix]\n    - if not exist %LIBRARY_INC%\\\\blis\\\\blis.h exit 1     # [win]\n    - if not exist %LIBRARY_INC%\\\\blis\\\\cblas.h exit 1    # [win]\n    - if not exist %LIBRARY_BIN%\\\\libblis.2.dll exit 1    # [win]\n    - if not exist %LIBRARY_LIB%\\\\blis.lib exit 1         # [win]\n    - if not exist %LIBRARY_LIB%\\\\libblis.lib exit 1      # [win]\n\nabout:\n  home: http://github.com/flame/blis\n  license: BSD-3-Clause\n  license_family: BSD\n  license_file: LICENSE\n  summary: 'BLAS-like Library Instantiation Software Framework'\n\nextra:\n  recipe-maintainers:\n    - isuruf\n",
  "req":{
   "__set__":true,
@@ -226,7 +232,7 @@
    "sed"
   ]
  },
- "smithy_version":"3.3.4",
+ "smithy_version":"3.6.1",
  "url":"https://github.com/flame/blis/archive/0.6.0.tar.gz",
  "version":"0.6.0"
 }

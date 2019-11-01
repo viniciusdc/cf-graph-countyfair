@@ -31,22 +31,28 @@
     "migrator_version",
     "name"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/335623547.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"MigrationYaml",
+    "migrator_object_version":1,
+    "migrator_version":0,
+    "name":"python38"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_object_version",
+    "migrator_version",
+    "name"
+   ]
   }
  ],
- "bad":{
-  "exception":"makedirs() got an unexpected keyword argument 'exits_ok'",
-  "traceback":[
-   "Traceback (most recent call last):",
-   "  File \"/root/repo/cf-scripts/conda_forge_tick/auto_tick.xsh\", line 691, in main",
-   "    hash_type=attrs.get('hash_type', 'sha256'))",
-   "  File \"/root/repo/cf-scripts/conda_forge_tick/auto_tick.xsh\", line 98, in run",
-   "    migrate_return = migrator.migrate(recipe_dir, attrs, **kwargs)",
-   "  File \"/root/repo/cf-scripts/conda_forge_tick/migrators.xsh\", line 1377, in migrate",
-   "    os.makedirs(os.path.join(recipe_dir, '../.ci_support'), exits_ok=True)",
-   "TypeError: makedirs() got an unexpected keyword argument 'exits_ok'",
-   ""
-  ]
- },
+ "bad":false,
  "conda-forge.yml":{},
  "feedstock_name":"sdl2_net",
  "hash_type":"sha256",
@@ -114,7 +120,7 @@
  },
  "name":"sdl2_net",
  "new_version":false,
- "pinning_version":"2018.09.11",
+ "pinning_version":"2019.11.01",
  "raw_meta_yaml":"{% set name = \"SDL2_net\" %}\n{% set version = \"2.0.1\" %}\n{% set sha256 = \"15ce8a7e5a23dafe8177c8df6e6c79b6749a03fff1e8196742d3571657609d21\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  fn:  {{ name }}-{{ version }}.tar.gz\n  url:  https://www.libsdl.org/projects/SDL_net/release/{{ name }}-{{ version }}.tar.gz\n  sha256: {{ sha256 }}\n\nbuild:\n  number: 0\n  features:\n    - vc9  # [win and py27]\n    - vc10  # [win and py34]\n    - vc14  # [win and py35]\n\nrequirements:\n  build:\n    - python  # [win]\n    - cmake  # [win]\n    - toolchain\n    - sdl2\n\n  run:\n    - sdl2\n\ntest:\n  requires:\n    - python {{ environ['PY_VER'] + '*' }}  # [win]\n  commands:\n    - test -f $PREFIX/lib/libSDL2_net.a  # [unix]\n    - test -f $PREFIX/lib/libSDL2_net.dylib  # [osx]\n    - test -f $PREFIX/lib/libSDL2_net.so  # [linux]\n    - test -f $PREFIX/include/SDL2/SDL_net.h  # [unix]\n    - if not exist %LIBRARY_LIB%\\\\SDL2_net.lib exit 1  # [win]\n    - if not exist %LIBRARY_BIN%\\\\SDL2_net.dll exit 1  # [win]\n    - if not exist %LIBRARY_INC%\\\\SDL2\\\\SDL_net.h exit 1  # [win]\n\nabout:\n  home: https://www.libsdl.org/projects/SDL_net/\n  license: ZLIB\n  license_file: COPYING.txt\n  summary: \"Small sample cross-platform networking library\"\n  description: |\n    Simple DirectMedia Layer is a cross-platform development library designed to provide low level access to audio, keyboard, mouse, joystick, and graphics hardware via OpenGL and Direct3D.\n  doc_url: https://www.libsdl.org/projects/SDL_net/docs/index.html\n  dev_url: http://hg.libsdl.org/SDL_net/\n\nextra:\n  recipe-maintainers:\n    - dschreij\n",
  "req":{
   "__set__":true,
@@ -125,7 +131,7 @@
    "toolchain"
   ]
  },
- "smithy_version":"3.1.12",
+ "smithy_version":"3.6.1",
  "url":"https://www.libsdl.org/projects/SDL_net/release/SDL2_net-2.0.1.tar.gz",
  "version":"2.0.1"
 }
