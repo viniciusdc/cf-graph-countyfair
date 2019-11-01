@@ -28,6 +28,25 @@
     "migrator_version",
     "name"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/335507690.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"MigrationYaml",
+    "migrator_object_version":1,
+    "migrator_version":0,
+    "name":"python38"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_object_version",
+    "migrator_version",
+    "name"
+   ]
   }
  ],
  "bad":false,
@@ -127,7 +146,7 @@
  },
  "name":"cgal",
  "new_version":false,
- "pinning_version":"2018.10.03",
+ "pinning_version":"2019.11.01",
  "raw_meta_yaml":"{% set version = \"4.14\" %}\n\npackage:\n  name: cgal\n  version: {{ version }}\n\nsource:\n  url: https://github.com/CGAL/cgal-swig-bindings/archive/55635605ed9287f963800d2e0dc5dac6bd3fa899.zip\n  sha256: efa305ae2f9c58fd8009f438900925cbf000d8f6789dd08551423640e06ab50a\n\nbuild:\n  number: 0\n  skip: true  # [(win and py<35)]\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n    - cmake\n    - eigen\n    - ninja  # [win]\n    - swig\n  host:\n    - cgal-cpp {{ version }}\n    - python\n  run:\n    - cgal-cpp {{ version }}\n    - python\n\ntest:\n  imports:\n    - CGAL\n    - CGAL.CGAL_Kernel\n    - CGAL.CGAL_Triangulation_2\n  commands:\n    - test -f ${PREFIX}/include/CGAL/AABB_tree.h  # [unix]\n    - test -f ${PREFIX}/lib/libCGAL${SHLIB_EXT}  # [unix]\n    - if not exist %LIBRARY_INC%\\CGAL\\AABB_tree.h exit 1  # [win]\n    - conda inspect linkages $PKG_NAME  # [not win]\n    - conda inspect objects $PKG_NAME  # [osx]\n\nabout:\n  home: http://www.cgal.org/\n  license: GPL3/LGPL3\n  summary: Computational Geometry Algorithms Library\n\nextra:\n  recipe-maintainers:\n    - tadeu\n",
  "req":{
   "__set__":true,
@@ -142,7 +161,7 @@
    "swig"
   ]
  },
- "smithy_version":"3.1.12",
+ "smithy_version":"3.6.0",
  "url":"https://github.com/CGAL/cgal-swig-bindings/archive/55635605ed9287f963800d2e0dc5dac6bd3fa899.zip",
  "version":"4.14"
 }

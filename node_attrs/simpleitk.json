@@ -16,6 +16,25 @@
     "migrator_version",
     "version"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/335511648.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"MigrationYaml",
+    "migrator_object_version":1,
+    "migrator_version":0,
+    "name":"python38"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_object_version",
+    "migrator_version",
+    "name"
+   ]
   }
  ],
  "bad":false,
@@ -103,7 +122,7 @@
  },
  "name":"simpleitk",
  "new_version":"1.2.3",
- "pinning_version":"2019.10.08",
+ "pinning_version":"2019.11.01",
  "raw_meta_yaml":"{% set name = \"simpleitk\" %}\n{% set version = \"1.2.3\" %}\n{% set sha256 = \"718980ebf9b704ea145c6764f0745da9c8794442d36cd01292a72683946c5e53\" %}\n{% set build_number = 0 %}\n\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  url: https://github.com/SimpleITK/SimpleITK/releases/download/v{{version}}/SimpleITK-{{version}}.tar.gz\n  sha256: {{ sha256 }}\n\nbuild:\n    number: \"{{build_number}}\"\n    skip: true  # [ win and py27 ]\n\nrequirements:\n  build:\n    - cmake   >=3.11\n    - ninja\n    - swig    >=3,<4\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n\n  host:\n    - python\n    - libitk\n    - libsimpleitk ={{ version }}\n    \n  run:\n    - vs2015_runtime  # [win]\n    - {{ pin_compatible('libitk', exact=True) }}\n    - python\n\ntest:\n  imports:\n    - SimpleITK\n\nabout:\n  home: http::/www.simpleitk.org\n  license: Apache 2.0\n  license_file: LICENSE\n  summary: Simplified interface to the Insight Toolkit for image registration and segmentation\n\nextra:\n    recipe-maintainers:\n      - blowekamp\n      - zivy\n",
  "req":{
   "__set__":true,
@@ -120,7 +139,7 @@
    "vs2015_runtime"
   ]
  },
- "smithy_version":"3.5.0",
+ "smithy_version":"3.6.0",
  "url":"https://github.com/SimpleITK/SimpleITK/releases/download/v1.2.2/SimpleITK-1.2.2.tar.gz",
  "version":"1.2.3"
 }

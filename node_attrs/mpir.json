@@ -48,6 +48,25 @@
     "migrator_version",
     "name"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/335502766.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"MigrationYaml",
+    "migrator_object_version":1,
+    "migrator_version":0,
+    "name":"python38"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_object_version",
+    "migrator_version",
+    "name"
+   ]
   }
  ],
  "bad":false,
@@ -156,7 +175,7 @@
  },
  "name":"mpir",
  "new_version":false,
- "pinning_version":"2019.07.26",
+ "pinning_version":"2019.11.01",
  "raw_meta_yaml":"{% set version = \"3.0.0\" %}\n\npackage:\n  name: mpir\n  version: {{ version }}\n\nsource:\n  fn: mpir-{{ version }}.tar.bz2\n  url: http://mpir.org/mpir-{{ version }}.tar.bz2\n  sha256: 52f63459cf3f9478859de29e00357f004050ead70b45913f2c2269d9708675bb\n\nbuild:\n  number: 1002\n  skip: true          # [win and vc<14]\n  run_exports:\n    - {{ pin_subpackage(\"mpir\") }}\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n    - m4              # [unix]\n    - python\n    - yasm            # [unix]\n  host:\n  run:\n\ntest:\n  requires:\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n  files:\n    - test.c\n  commands:\n    - if not exist %LIBRARY_INC%\\\\mpir.h exit 1                # [win]\n    - if not exist %LIBRARY_INC%\\\\mpirxx.h exit 1              # [win]\n    - if not exist %LIBRARY_INC%\\\\gmp.h exit 1                 # [win]\n    - if not exist %LIBRARY_INC%\\\\gmpxx.h exit 1               # [win]\n\n    - if not exist %LIBRARY_LIB%\\\\mpir.lib exit 1              # [win]\n    - if not exist %LIBRARY_LIB%\\\\gmp.lib exit 1               # [win]\n    - if not exist %LIBRARY_BIN%\\\\mpir.dll exit 1              # [win]\n    - if not exist %LIBRARY_BIN%\\\\gmp.dll exit 1               # [win]\n\n    - if not exist %LIBRARY_LIB%\\\\mpir_static.lib exit 1       # [win]\n    - if not exist %LIBRARY_LIB%\\\\mpirxx_static.lib exit 1     # [win]\n    - if not exist %LIBRARY_LIB%\\\\gmp_static.lib exit 1        # [win]\n    - if not exist %LIBRARY_LIB%\\\\gmpxx_static.lib exit 1      # [win]\n\n    - test -f $PREFIX/include/mpir.h                           # [unix]\n    - test -f $PREFIX/include/mpirxx.h                         # [unix]\n    - test -f $PREFIX/lib/libmpir.a                            # [unix]\n    - test -f $PREFIX/lib/libmpirxx.a                          # [unix]\n\n    - test -f $PREFIX/lib/libmpir.so                           # [linux]\n    - test -f $PREFIX/lib/libmpirxx.so                         # [linux]\n\n    - test -f $PREFIX/lib/libmpir.dylib                        # [osx]\n    - test -f $PREFIX/lib/libmpirxx.dylib                      # [osx]\n\nabout:\n  home: http://mpir.org/\n  license: LGPL 3\n  license_file: COPYING.LIB\n  summary: Multiple Precision Integers and Rationals.\n\nextra:\n  recipe-maintainers:\n    - isuruf\n    - jakirkham\n",
  "req":{
   "__set__":true,
@@ -168,7 +187,7 @@
    "yasm"
   ]
  },
- "smithy_version":"3.4.1",
+ "smithy_version":"3.6.0",
  "url":"http://mpir.org/mpir-3.0.0.tar.bz2",
  "version":"3.0.0"
 }
