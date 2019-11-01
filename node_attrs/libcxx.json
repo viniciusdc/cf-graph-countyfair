@@ -116,6 +116,25 @@
     "migrator_version",
     "name"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/335476023.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"MigrationYaml",
+    "migrator_object_version":1,
+    "migrator_version":0,
+    "name":"python38"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_object_version",
+    "migrator_version",
+    "name"
+   ]
   }
  ],
  "bad":false,
@@ -299,7 +318,7 @@
  "outputs_names":[
   "libcxx"
  ],
- "pinning_version":"2019.04.10",
+ "pinning_version":"2019.10.30",
  "raw_meta_yaml":"{% set version = \"9.0.0\" %}\n\npackage:\n  name: libcxx_and_libcxxabi\n  version: {{ version }}\n\nsource:\n  - url: http://releases.llvm.org/{{ version }}/libcxx-{{ version }}.src.tar.xz\n    sha256: 3c4162972b5d3204ba47ac384aa456855a17b5e97422723d4758251acf1ed28c\n    patches:\n      # See https://bugs.llvm.org/show_bug.cgi?id=39696\n      - ppc64le-constexpr.patch  # [ppc64le]\n  - url: http://releases.llvm.org/{{ version }}/libcxxabi-{{ version }}.src.tar.xz    # [linux]\n    sha256: 675041783565c906ac2f7f8b2bc5c40f14d871ecfa8ade34855aa18de95530e9          # [linux]\n    folder: libcxxabi                                                                 # [linux]\n\nbuild:\n  number: 1\n  skip: true  # [win]\n  ignore_run_exports:\n    - libstdcxx-ng\n\nrequirements:\n  build:\n    - cmake                   # [not osx]\n    - cmake-binary            # [osx]\n    - make                    # [not osx]\n    - {{ compiler('cxx') }}\n    - python >3               # [not osx]\n  host:\n    - clangdev {{ version }}  # [not osx]\n    - llvmdev {{ version }}   # [not osx]\n\ntest:\n  commands:\n    # this is not run but instead exists to make the conda-forge linter happy\n    - foo\n\noutputs:\n  - name: libcxx\n    files:\n      - include/c++\n      - Library/include/c++\n      - lib/libc++.*\n      - lib/libc++fs.*\n      - lib/libc++experimental.*\n      - Library/bin/c++*.dll\n      - Library/lib/c++*.lib\n      - Library/lib/libc++*.lib\n      - lib/libc++abi.*  # [not osx]\n    test:\n      requires:\n        - clang {{ version }}\n        - clangxx {{ version }}\n        - {{ compiler('cxx') }}  # [not osx]\n      script: compile_test.sh   # [unix]\n      files:\n        - test_sources\n\n      # Following 2 projects had issues with libc++, so check them\n      # before releasing just to be sure.\n      downstreams:          # [osx]\n        - python-symengine  # [osx]\n        - openturns         # [osx]\n\nabout:\n  home: http://llvm.org/\n  license: NCSA\n  license_file: LICENSE.TXT\n  summary: C++ standard library\n\nextra:\n  recipe-maintainers:\n    - SylvainCorlay\n    - inducer\n    - mattwala\n    - jakirkham\n    - isuruf\n",
  "req":{
   "__set__":true,
@@ -313,7 +332,7 @@
    "python"
   ]
  },
- "smithy_version":"3.3.2",
+ "smithy_version":"3.6.0",
  "url":"https://github.com/llvm/llvm-project/releases/download/llvmorg-8.0.1/libcxx-8.0.1.src.tar.xz",
  "version":"9.0.0"
 }
