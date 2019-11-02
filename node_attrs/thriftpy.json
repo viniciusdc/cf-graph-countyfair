@@ -31,6 +31,25 @@
     "migrator_version",
     "name"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/335819231.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"MigrationYaml",
+    "migrator_object_version":1,
+    "migrator_version":0,
+    "name":"python38"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_object_version",
+    "migrator_version",
+    "name"
+   ]
   }
  ],
  "bad":false,
@@ -148,7 +167,7 @@
  },
  "name":"thriftpy",
  "new_version":"0.3.9",
- "pinning_version":"2018.10.01",
+ "pinning_version":"2019.11.01",
  "raw_meta_yaml":"{% set name = \"thriftpy\" %}\n{% set version = \"0.3.9\" %}\n{% set sha256 = \"309e57d97b5bfa01601393ad4f245451e989d6206a59279e56866b264a99796d\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  fn: {{ name }}-{{ version }}.tar.gz\n  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz\n  sha256: {{ sha256 }}\n  patches:\n    - fix-parse-windows.patch\n\nbuild:\n  number: 1001\n  script: \n    - python -m pip install --no-deps --ignore-installed .\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n  host:\n    - python\n    - pip\n    - ply >=3.4,<4.0\n    # Cython extensions not enabled on windows\n    - cython  # [not win]\n\n  run:\n    - python\n    - ply >=3.4,<4.0\n\ntest:\n  imports:\n    - thriftpy\n    - thriftpy.contrib\n    - thriftpy.contrib.tracking\n    - thriftpy.parser\n    - thriftpy.protocol\n    - thriftpy.transport\n    - thriftpy.transport.buffered\n    - thriftpy.transport.framed\n    - thriftpy.transport.memory\n    # Cython extensions not enabled on windows\n    - thriftpy.protocol.cybin  # [not win]\n\n  requires:\n    - tornado >=4.0,<5.0\n\nabout:\n  home: https://thriftpy.readthedocs.org/\n  license: MIT\n  summary: 'Pure python implementation of Apache Thrift.'\n\nextra:\n  recipe-maintainers:\n    - mariusvniekerk\n    - mrocklin\n",
  "req":{
   "__set__":true,
@@ -160,7 +179,7 @@
    "python"
   ]
  },
- "smithy_version":"3.1.12",
+ "smithy_version":"3.6.1",
  "url":"https://pypi.io/packages/source/t/thriftpy/thriftpy-0.3.9.tar.gz",
  "version":"0.3.9"
 }
