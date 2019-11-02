@@ -80,11 +80,13 @@
   "about":{
    "home":"http://github.com/ludwigschwardt/python-gnureadline",
    "license":"GPL-3.0",
+   "license_family":"GPL",
+   "license_file":"LICENSE",
    "summary":"The standard Python readline extension statically linked against the GNU readline library"
   },
   "build":{
    "number":"0",
-   "script":"python setup.py install --single-version-externally-managed --record=record.txt",
+   "script":"python -m pip install .",
    "skip":true
   },
   "extra":{
@@ -103,12 +105,17 @@
   },
   "requirements":{
    "build":[
+    "c_compiler_stub",
+    "c_compiler_stub",
+    "c_compiler_stub"
+   ],
+   "host":[
     "python",
-    "setuptools",
+    "pip",
     "python",
-    "setuptools",
+    "pip",
     "python",
-    "setuptools"
+    "pip"
    ],
    "run":[
     "python",
@@ -132,12 +139,13 @@
  "name":"gnureadline",
  "new_version":"8.0.0",
  "pinning_version":"2019.11.01",
- "raw_meta_yaml":"{% set version = \"8.0.0\" %}\n\npackage:\n    name: gnureadline\n    version: {{ version }}\n\nsource:\n    fn: gnureadline-{{ version }}.tar.gz\n    url: https://pypi.io/packages/source/g/gnureadline/gnureadline-{{ version }}.tar.gz\n    md5: 47951eb3fc606de8319bb5ef898e63cf\n\nbuild:\n    number: 0\n    skip: True  # [not osx]\n    script: python setup.py install --single-version-externally-managed --record=record.txt\n\nrequirements:\n    build:\n        - python\n        - setuptools\n    run:\n        - python\n\ntest:\n  imports:\n      - gnureadline\n\nabout:\n    home: http://github.com/ludwigschwardt/python-gnureadline\n    license: GPL-3.0\n    summary: The standard Python readline extension statically linked against the GNU readline library\n\nextra:\n    recipe-maintainers:\n        - ocefpaf\n        - scopatz\n",
+ "raw_meta_yaml":"{% set version = \"8.0.0\" %}\n\npackage:\n    name: gnureadline\n    version: {{ version }}\n\nsource:\n    fn: gnureadline-{{ version }}.tar.gz\n    url: https://pypi.io/packages/source/g/gnureadline/gnureadline-{{ version }}.tar.gz\n    md5: 47951eb3fc606de8319bb5ef898e63cf\n\nbuild:\n    number: 0\n    skip: True  # [not osx]\n    script: python -m pip install .\n\nrequirements:\n    build:\n        - {{ compiler('c') }}\n    host:\n        - python\n        - pip\n    run:\n        - python\n\ntest:\n  imports:\n      - gnureadline\n\nabout:\n    home: http://github.com/ludwigschwardt/python-gnureadline\n    license: GPL-3.0\n    license_family: GPL\n    license_file: LICENSE\n    summary: The standard Python readline extension statically linked against the GNU readline library\n\nextra:\n    recipe-maintainers:\n        - ocefpaf\n        - scopatz\n",
  "req":{
   "__set__":true,
   "elements":[
-   "python",
-   "setuptools"
+   "c_compiler_stub",
+   "pip",
+   "python"
   ]
  },
  "smithy_version":"3.6.1",
