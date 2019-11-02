@@ -184,6 +184,25 @@
     "migrator_version",
     "version"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/335791844.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"MigrationYaml",
+    "migrator_object_version":1,
+    "migrator_version":0,
+    "name":"python38"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_object_version",
+    "migrator_version",
+    "name"
+   ]
   }
  ],
  "bad":false,
@@ -306,7 +325,7 @@
  },
  "name":"pyzmq",
  "new_version":"18.1.0",
- "pinning_version":"2019.07.26",
+ "pinning_version":"2019.11.01",
  "raw_meta_yaml":"{% set version = \"18.1.0\" %}\n\npackage:\n  name: pyzmq\n  version: {{ version }}\n\nsource:\n  # We use the pypi URL as it includes the prepared Cython files.\n  url: https://pypi.io/packages/source/p/pyzmq/pyzmq-{{ version }}.tar.gz\n  sha256: 93f44739db69234c013a16990e43db1aa0af3cf5a4b8b377d028ff24515fbeb3\n\nbuild:\n  number: 0\n\n# On Windows ZeroMQ is bundled with pyzmq.\n# On Windows pyzmq includes tweetnacl so libsodium is not used.\n# We should revisit these in the future. However, packaging libsodium\n# on Windows is complicated by the fact that they ship project files,\n# but don't include one for VS 2008, which we would need for Python 2.7.\nrequirements:\n  build:\n    - pkg-config  # [not win]\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n  host:\n    - python\n    - pip\n    - zeromq\n    - libsodium\n  run:\n    - python\n    - zeromq\n    - libsodium\n\ntest:\n  imports:\n    - zmq\n    - zmq.backend.cython.socket\n    - zmq.backend.cython.utils\n    - zmq.devices.monitoredqueue\n\n  requires:\n    - pytest\n\n  # We run the zmq tests on all platforms except Windows.\n  # The only reason not to run the tests on Windows is that\n  # they terminate with an interactive prompt. See also\n  # https://github.com/conda-forge/staged-recipes/pull/292#issuecomment-208080893.\n  commands:                # [not win]\n    - py.test --pyargs zmq.tests.test_socket  # [not win]\n\nabout:\n  home: https://github.com/zeromq/pyzmq\n  summary: Python bindings for zeromq\n  license: BSD 3-clause\n  license_file: COPYING.BSD\n\nextra:\n  recipe-maintainers:\n    - jakirkham\n    - minrk\n    - msarahan\n    - pelson\n    - SylvainCorlay\n    - JohanMabille\n    - ocefpaf\n",
  "req":{
   "__set__":true,
@@ -320,7 +339,7 @@
    "zeromq"
   ]
  },
- "smithy_version":"3.4.1",
+ "smithy_version":"3.6.1",
  "url":"https://pypi.io/packages/source/p/pyzmq/pyzmq-18.0.2.tar.gz",
  "version":"18.1.0"
 }

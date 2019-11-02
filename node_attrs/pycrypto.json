@@ -33,6 +33,25 @@
     "migrator_version",
     "name"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/335793113.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"MigrationYaml",
+    "migrator_object_version":1,
+    "migrator_version":0,
+    "name":"python38"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_object_version",
+    "migrator_version",
+    "name"
+   ]
   }
  ],
  "bad":false,
@@ -231,7 +250,7 @@
  },
  "name":"pycrypto",
  "new_version":"2.6.1",
- "pinning_version":"2019.02.24",
+ "pinning_version":"2019.11.01",
  "raw_meta_yaml":"{% set version = \"2.6.1\" %}\n\npackage:\n  name: pycrypto\n  version: {{ version }}\n\nsource:\n  fn: pycrypto-{{ version }}.tar.gz\n  url: https://pypi.io/packages/source/p/pycrypto/pycrypto-{{ version }}.tar.gz\n  md5: 55a61a054aa66812daf5161a0d5d7eda\n  patches:\n    # Patches from debian, some build related, others concerning CVEs\n    # Gotten from http://ftp.debian.org/debian/pool/main/p/python-crypto/\n    - 0001-dont-drop-g.patch\n    - 0002-fix-unresolved-reference-size.patch\n    - 0003-fix-epydoc-ignore.patch\n    - 0004-fix-cipher-iv-documentation.patch\n    - 0005-reenable-redefined-tests.patch\n    - 0006-fix-py3-errors.patch\n    - 0007-fix-except-shadows-builtin.patch\n    - 0008-multiprocessing-test.patch\n    - 0009-unittest-stream.patch\n    - 0010-deprecated-test-methods.patch\n    - 0011-asn1-decoding.patch\n    - 0012-CVE-2013-7459.patch\n    - 0013-Backport-of-fix-for-CVE-2018-6594-from-pycryptodome.patch\n\n    # Add a patch to fix an error in a test. See PR below for details.\n    # https://github.com/dlitz/pycrypto/pull/22\n    - pycrypto_PR_22.diff\n    # Fix a Python 3 compatibility issue. See PR below for details.\n    # https://github.com/dlitz/pycrypto/pull/46\n    - pycrypto_PR_46.diff\n    # Try a patch to fix Windows builds.\n    # https://github.com/dlitz/pycrypto/pull/199\n    - pycrypto_PR_199.diff\n    # Fixing a Windows testing issue.\n    # https://github.com/dlitz/pycrypto/pull/200\n    - pycrypto_PR_200.diff\n\nbuild:\n  number: 1003\n  script:\n    - set CL=/FI\"%VCINSTALLDIR%\\\\INCLUDE\\\\stdint.h\" %CL%  # [win and py>=35]\n    - export LDFLAGS=\"-headerpad_max_install_names\"       # [osx]\n    - \"{{ PYTHON }} -m pip install . --no-deps -vv\"\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n  host:\n    - python\n    - pip\n  run:\n    - python\n\ntest:\n  imports:\n    - Crypto\n    - Crypto.Cipher\n    - Crypto.Hash\n    - Crypto.Protocol\n    - Crypto.PublicKey\n    - Crypto.Random\n    - Crypto.Random.Fortuna\n    - Crypto.Random.OSRNG\n    - Crypto.SelfTest\n    - Crypto.SelfTest.Cipher\n    - Crypto.SelfTest.Hash\n    - Crypto.SelfTest.Protocol\n    - Crypto.SelfTest.PublicKey\n    - Crypto.SelfTest.Random\n    - Crypto.SelfTest.Random.Fortuna\n    - Crypto.SelfTest.Random.OSRNG\n    - Crypto.SelfTest.Signature\n    - Crypto.SelfTest.Util\n    - Crypto.Signature\n    - Crypto.Util\n\nabout:\n  home: http://www.pycrypto.org/\n  license: Public Domain\n  license_file: COPYRIGHT\n  summary: Cryptographic modules for Python.\n  description: |\n    pycrpto, the Python Cryptography Toolkit, is a collection of cryptographic\n    modules implementing various algorithms and protocols.\n  doc_url: https://www.dlitz.net/software/pycrypto/api/current/\n  doc_source_url: https://github.com/dlitz/pycrypto/tree/master/Doc\n  dev_url: https://github.com/dlitz/pycrypto\n\nextra:\n  recipe-maintainers:\n    - jakirkham\n    - jjhelmus\n    - mingwandroid\n",
  "req":{
   "__set__":true,
@@ -241,7 +260,7 @@
    "python"
   ]
  },
- "smithy_version":"3.2.14",
+ "smithy_version":"3.6.1",
  "url":"https://pypi.io/packages/source/p/pycrypto/pycrypto-2.6.1.tar.gz",
  "version":"2.6.1"
 }

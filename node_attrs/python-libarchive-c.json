@@ -64,6 +64,25 @@
     "migrator_version",
     "version"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/335794039.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"MigrationYaml",
+    "migrator_object_version":1,
+    "migrator_version":0,
+    "name":"python38"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_object_version",
+    "migrator_version",
+    "name"
+   ]
   }
  ],
  "bad":false,
@@ -174,7 +193,7 @@
  },
  "name":"python-libarchive-c",
  "new_version":"2.9",
- "pinning_version":"2019.10.11",
+ "pinning_version":"2019.11.01",
  "raw_meta_yaml":"{% set pypi = \"libarchive-c\" %}\n{% set name = \"python-libarchive-c\" %}\n{% set version = \"2.9\" %}\n\npackage:\n  name: {{ name }}\n  version: {{ version }}\n\nsource:\n  url: https://pypi.io/packages/source/{{ pypi[0] }}/{{ pypi }}/{{ pypi }}-{{ version }}.tar.gz\n  sha256: 9919344cec203f5db6596a29b5bc26b07ba9662925a05e24980b84709232ef60\n\nbuild:\n  number: 0\n  script:\n    - rd /s /q tests  # [win]\n    - \"{{ PYTHON }} -m pip install . -vv\"\n\nrequirements:\n  host:\n    - pip\n    - python\n  run:\n    - libarchive\n    - python\n\ntest:\n  source_files:\n    - tests  # [unix]\n    - README.rst\n  files:\n    - test/hello_world.xar\n  imports:\n    - libarchive\n  requires:\n    - mock\n    - pytest-cov\n  commands:\n    - python -c \"import libarchive; libarchive.extract_file('test/hello_world.xar')\"  # [not win]\n    - python -c \"import libarchive; libarchive.extract_file('test\\\\hello_world.xar')\"  # [win]\n    - python -c \"import os, shutil, libarchive; shutil.copytree(os.path.dirname(libarchive.__file__), 'libarchive')\"  # [unix]\n    - pytest --cov libarchive -vv  # [linux]\n    - pytest --cov libarchive -vv -k \"not test_fd and not test_files and not test_buffers\"  # [osx]\n\nabout:\n  home: https://github.com/Changaco/python-libarchive-c\n  license: CC0-1.0\n  license_family: CC\n  summary: Python interface to libarchive\n  license_file: cc0-1.0.txt\n\n\nextra:\n  recipe-maintainers:\n    - bollwyvl\n    - mingwandroid\n    - ocefpaf\n",
  "req":{
   "__set__":true,
@@ -184,7 +203,7 @@
    "python"
   ]
  },
- "smithy_version":"3.6.0",
+ "smithy_version":"3.6.1",
  "url":"https://pypi.io/packages/source/l/libarchive-c/libarchive-c-2.8.tar.gz",
  "version":"2.9"
 }
