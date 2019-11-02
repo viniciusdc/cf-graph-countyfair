@@ -38,7 +38,7 @@
    "summary":"NASA ancillary information system"
   },
   "build":{
-   "number":"1005",
+   "number":"1006",
    "skip":true
   },
   "extra":{
@@ -79,9 +79,17 @@
     "test_cspice.c",
     "test_cspice.c"
    ],
+   "imports":[
+    "spiceypy",
+    "spiceypy",
+    "spiceypy"
+   ],
    "requires":[
+    "spiceypy",
     "c_compiler_stub",
+    "spiceypy",
     "c_compiler_stub",
+    "spiceypy",
     "c_compiler_stub"
    ]
   }
@@ -89,7 +97,7 @@
  "name":"cspice",
  "new_version":false,
  "pinning_version":"2018.08.14",
- "raw_meta_yaml":"{% set name = \"cspice\" %}\n{% set version = \"66\" %}\n{% set root_url = \"https://naif.jpl.nasa.gov/pub/naif/misc/toolkit_N%(version)04d/C\"|format(version=version | int) %}\n\n{% set platform_segment = \"PC_Linux_GCC_64bit\" %}                                      # [linux64]\n{% set sha256 = \"93cd4fbce5818f8b7fecf3914c5756b8d41fd5bdaaeac1f4037b5a5410bc4768\" %}  # [linux64]\n{% set platform_segment = \"PC_Windows_VisualC_32bit\" %}                                # [win32]\n{% set sha256 = \"db48e5beddc0e50f7a0224bb2c6f2b39fc38f84628ad5cd455e847fc70aa5e75\" %}  # [win32]\n{% set platform_segment = \"PC_Windows_VisualC_64bit\" %}                                # [win64]\n{% set sha256 = \"b29dfb0b41ae8322c60ee9d162beb97433d21e12843ecbe03d819e5edef45920\" %}  # [win64]\n{% set platform_segment = \"MacIntel_OSX_AppleC_64bit\" %}                               # [osx]\n{% set sha256 = \"f5d48c4b0d558c5d71e8bf6fcdf135b0943210c1ff91f8191dfc447419a6b12e\" %}  # [osx]\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  fn: {{ name }}.tar.Z  # [not win]\n  fn: {{ name }}.zip  # [win]\n  url: {{ root_url }}/{{ platform_segment }}/packages/{{ name }}.tar.Z  # [not win]\n  url: {{ root_url }}/{{ platform_segment }}/packages/{{ name }}.zip  # [win]\n  sha256: {{ sha256 }}\n\nbuild:\n  number: 1005\n  skip: true  # [win and vc<14]\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n\ntest:\n  # Some package might need a `test/commands` key to check CLI.\n  # List all the packages/modules that `run_test.py` imports.\n  requires:\n    - {{ compiler('c') }}\n\n  files:\n    - test_cspice.c\n\n  commands:\n    - \"version\"  # [not win]\n    - \"chronos\"  # [not win]\n    - \"$CC test_cspice.c -I$PREFIX/include -L$PREFIX/lib -lcspice -o test_cspice\"  # [not win]\n    - \"LD_LIBRARY_PATH=$PREFIX/lib ./test_cspice\"  # [not win]\n\nabout:\n  home: https://naif.jpl.nasa.gov/naif/toolkit.html\n  license: Public Domain\n  summary: 'NASA ancillary information system'\n\n  description: |\n      SPICE is an ancillary information system that provides scientists and\n      engineers the capability to include space geometry and event data into\n      mission design, science observation planning, and science data analysis\n      software.\n  doc_url: https://naif.jpl.nasa.gov/pub/naif/toolkit_docs/C/index.html\n\nextra:\n  recipe-maintainers:\n    - juanlu001\n    - AndrewAnnex\n",
+ "raw_meta_yaml":"{% set name = \"cspice\" %}\n{% set version = \"66\" %}\n{% set root_url = \"https://naif.jpl.nasa.gov/pub/naif/misc/toolkit_N%(version)04d/C\"|format(version=version | int) %}\n\n{% set platform_segment = \"PC_Linux_GCC_64bit\" %}                                      # [linux64]\n{% set sha256 = \"93cd4fbce5818f8b7fecf3914c5756b8d41fd5bdaaeac1f4037b5a5410bc4768\" %}  # [linux64]\n{% set platform_segment = \"PC_Windows_VisualC_32bit\" %}                                # [win32]\n{% set sha256 = \"db48e5beddc0e50f7a0224bb2c6f2b39fc38f84628ad5cd455e847fc70aa5e75\" %}  # [win32]\n{% set platform_segment = \"PC_Windows_VisualC_64bit\" %}                                # [win64]\n{% set sha256 = \"b29dfb0b41ae8322c60ee9d162beb97433d21e12843ecbe03d819e5edef45920\" %}  # [win64]\n{% set platform_segment = \"MacIntel_OSX_AppleC_64bit\" %}                               # [osx]\n{% set sha256 = \"f5d48c4b0d558c5d71e8bf6fcdf135b0943210c1ff91f8191dfc447419a6b12e\" %}  # [osx]\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  fn: {{ name }}.tar.Z  # [not win]\n  fn: {{ name }}.zip  # [win]\n  url: {{ root_url }}/{{ platform_segment }}/packages/{{ name }}.tar.Z  # [not win]\n  url: {{ root_url }}/{{ platform_segment }}/packages/{{ name }}.zip  # [win]\n  sha256: {{ sha256 }}\n\nbuild:\n  number: 1006\n  skip: true  # [win and vc<14]\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n\ntest:\n  # Some package might need a `test/commands` key to check CLI.\n  # List all the packages/modules that `run_test.py` imports.\n  imports:\n    - spiceypy\n  requires:\n    - spiceypy\n    - {{ compiler('c') }}\n\n  files:\n    - test_cspice.c\n\n  commands:\n    - \"version\"  # [not win]\n    - \"chronos\"  # [not win]\n    - \"$CC test_cspice.c -I$PREFIX/include -L$PREFIX/lib -lcspice -o test_cspice\"  # [not win]\n    - \"LD_LIBRARY_PATH=$PREFIX/lib ./test_cspice\"  # [not win]\n\nabout:\n  home: https://naif.jpl.nasa.gov/naif/toolkit.html\n  license: Public Domain\n  summary: 'NASA ancillary information system'\n\n  description: |\n      SPICE is an ancillary information system that provides scientists and\n      engineers the capability to include space geometry and event data into\n      mission design, science observation planning, and science data analysis\n      software.\n  doc_url: https://naif.jpl.nasa.gov/pub/naif/toolkit_docs/C/index.html\n\nextra:\n  recipe-maintainers:\n    - juanlu001\n    - AndrewAnnex\n",
  "req":{
   "__set__":true,
   "elements":[
