@@ -79,6 +79,23 @@
     "migrator_version",
     "name"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/335918818.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"Version",
+    "migrator_version":0,
+    "version":"1.6.3"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "version"
+   ]
   }
  ],
  "bad":false,
@@ -176,8 +193,8 @@
   }
  },
  "name":"r-ore",
- "new_version":"1.6.2",
- "pinning_version":"2019.07.15",
+ "new_version":"1.6.3",
+ "pinning_version":"2019.11.01",
  "raw_meta_yaml":"{% set version = '1.6.2' %}\n\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-ore\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  fn: ore_{{ version }}.tar.gz\n  url:\n    - https://cran.r-project.org/src/contrib/ore_{{ version }}.tar.gz\n    - https://cran.r-project.org/src/contrib/Archive/ore/ore_{{ version }}.tar.gz\n  sha256: f5002915e91b410e3e5c8827da8a54b42fce76895c102c3794fc95fa248d3fd0\n\nbuild:\n  merge_build_host: True  # [win]\n  number: 1001\n  skip: true  # [win32]\n\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - posix                # [win]\n    - {{ compiler('c') }}        # [unix]\n    - {{ compiler('m2w64_c') }}  # [win]\n  host:\n    - r-base\n\n  run:\n    - r-base\n\ntest:\n  commands:\n    - $R -e \"library('ore')\"  # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('ore')\\\"\"  # [win]\n\nabout:\n  home: https://github.com/jonclayden/ore\n  license: BSD_3_clause\n  summary: Provides an alternative to R's built-in functionality for handling regular expressions,\n    based on the Onigmo library. Offers first-class compiled regex objects, partial\n    matching and function-based substitutions, amongst other features.\n  license_family: BSD\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n    - dpryan79\n    - johanneskoester\n    - bgruening\n    - daler\n    - jdblischak\n",
  "req":{
   "__set__":true,
@@ -188,7 +205,7 @@
    "r-base"
   ]
  },
- "smithy_version":"3.4.1",
+ "smithy_version":"3.6.1",
  "url":[
   "https://cran.r-project.org/src/contrib/ore_1.6.2.tar.gz",
   "https://cran.r-project.org/src/contrib/Archive/ore/ore_1.6.2.tar.gz",
