@@ -54,8 +54,8 @@
    "summary":"Python subprocess interface"
   },
   "build":{
-   "number":"1000",
-   "script":"python setup.py install --single-version-externally-managed --record record.txt",
+   "number":"1001",
+   "script":" -m pip install . -vv",
    "skip":true
   },
   "extra":{
@@ -72,11 +72,11 @@
   "requirements":{
    "build":[
     "python",
-    "setuptools",
+    "pip",
     "python",
-    "setuptools",
+    "pip",
     "python",
-    "setuptools"
+    "pip"
    ],
    "run":[
     "python",
@@ -100,12 +100,12 @@
  "name":"sh",
  "new_version":"1.12.14",
  "pinning_version":"2019.11.01",
- "raw_meta_yaml":"{% set name = \"sh\" %}\n{% set version = \"1.12.14\" %}\n{% set sha256 = \"b52bf5833ed01c7b5c5fb73a7f71b3d98d48e9b9b8764236237bdc7ecae850fc\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  fn: {{ name }}-{{ version }}.tar.gz\n  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz\n  sha256: {{ sha256 }}\n\nbuild:\n  number: 1000\n  skip: true  # [win]\n  script: python setup.py install --single-version-externally-managed --record record.txt\n\nrequirements:\n  build:\n    - python\n    - setuptools \n\n  run:\n    - python\n\ntest:\n  imports:\n    - sh\n\nabout:\n  home: https://github.com/amoffat/sh\n  license: MIT\n  license_family: MIT\n  license_file: LICENSE.txt\n  summary: Python subprocess interface\n\nextra:\n  recipe-maintainers:\n    - jakirkham\n",
+ "raw_meta_yaml":"{% set name = \"sh\" %}\n{% set version = \"1.12.14\" %}\n{% set sha256 = \"b52bf5833ed01c7b5c5fb73a7f71b3d98d48e9b9b8764236237bdc7ecae850fc\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  fn: {{ name }}-{{ version }}.tar.gz\n  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz\n  sha256: {{ sha256 }}\n\nbuild:\n  number: 1001\n  skip: true  # [win]\n  script: \"{{ PYTHON }} -m pip install . -vv\"\n\nrequirements:\n  build:\n    - python\n    - pip\n\n  run:\n    - python\n\ntest:\n  imports:\n    - sh\n\nabout:\n  home: https://github.com/amoffat/sh\n  license: MIT\n  license_family: MIT\n  license_file: LICENSE.txt\n  summary: Python subprocess interface\n\nextra:\n  recipe-maintainers:\n    - jakirkham\n",
  "req":{
   "__set__":true,
   "elements":[
-   "python",
-   "setuptools"
+   "pip",
+   "python"
   ]
  },
  "smithy_version":"3.6.1",
