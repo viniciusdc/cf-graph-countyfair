@@ -33,6 +33,23 @@
     "migrator_version",
     "name"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/336075499.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"Version",
+    "migrator_version":0,
+    "version":"2019.11.03"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "version"
+   ]
   }
  ],
  "bad":false,
@@ -171,8 +188,8 @@
   }
  },
  "name":"r-pec",
- "new_version":"2018.07.26",
- "pinning_version":"2019.07.15",
+ "new_version":"2019.11.03",
+ "pinning_version":"2019.11.01",
  "raw_meta_yaml":"{% set version = '2018.07.26' %}\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-pec\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  fn: pec_{{ version }}.tar.gz\n  url:\n    - {{ cran_mirror }}/src/contrib/pec_{{ version }}.tar.gz\n    - {{ cran_mirror }}/src/contrib/Archive/pec/pec_{{ version }}.tar.gz\n  sha256: 95c5612b55d2062f35f1ac97752f2c2e21edca394d5671a6b0b7d74da710b91f\n\nbuild:\n  merge_build_host: True  # [win]\n  number: 1001\n  skip: true  # [win32]\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - {{ compiler('c') }}        # [not win]\n    - {{ compiler('m2w64_c') }}        # [win]\n    - {{posix}}filesystem        # [win]\n    - {{posix}}make\n    - {{posix}}sed               # [win]\n    - {{posix}}coreutils         # [win]\n    - {{posix}}zip               # [win]\n  host:\n    - r-base\n    - r-foreach >=1.4.2\n    - r-prodlim >=1.4.9\n    - r-rms >=4.2_0\n    - r-survival >=2.37_7\n    - r-timereg >=1.8.9\n  run:\n    - r-base\n    - {{native}}gcc-libs         # [win]\n    - r-foreach >=1.4.2\n    - r-prodlim >=1.4.9\n    - r-rms >=4.2_0\n    - r-survival >=2.37_7\n    - r-timereg >=1.8.9\n\ntest:\n  commands:\n    - $R -e \"library('pec')\"           # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('pec')\\\"\"  # [win]\n\nabout:\n  home: https://CRAN.R-project.org/package=pec\n  license: GPL (>= 2)\n  summary: Validation of risk predictions obtained from survival models and competing risk models\n    based on censored data using inverse weighting and cross-validation.\n  license_family: GPL3\n  license_file: '{{ environ[\"PREFIX\"] }}/lib/R/share/licenses/GPL-3'\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n    - johanneskoester\n    - bgruening\n    - daler\n    - jdblischak\n    - cbrueffer\n    - dbast\n",
  "req":{
   "__set__":true,
@@ -193,7 +210,7 @@
    "zip"
   ]
  },
- "smithy_version":"3.4.1",
+ "smithy_version":"3.6.1",
  "url":[
   "https://cran.r-project.org/src/contrib/pec_2018.07.26.tar.gz",
   "https://cran.r-project.org/src/contrib/Archive/pec/pec_2018.07.26.tar.gz",

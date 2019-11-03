@@ -31,6 +31,25 @@
     "migrator_version",
     "name"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/336076666.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"MigrationYaml",
+    "migrator_object_version":1,
+    "migrator_version":0,
+    "name":"python38"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_object_version",
+    "migrator_version",
+    "name"
+   ]
   }
  ],
  "bad":false,
@@ -133,7 +152,7 @@
  },
  "name":"pygpu",
  "new_version":"0.7.6",
- "pinning_version":"2018.10.11",
+ "pinning_version":"2019.11.01",
  "raw_meta_yaml":"{% set version = \"0.7.6\" %}\n\npackage:\n  name: pygpu\n  version: {{ version }}\n\nsource:\n  fn: libgpuarray-{{ version }}.tar.gz\n  url: https://github.com/Theano/libgpuarray/releases/download/v{{ version }}/libgpuarray-{{ version }}.tar.gz\n  sha256: 887b6433a30282cb002117da89b05812c770fd9469f93950ff3866ddd02bfc64\n\nbuild:\n  number: 1000\n  script:\n    - export CFLAGS=\"${CFLAGS} -I${PREFIX}/include -L${PREFIX}/lib\"  # [unix]\n    - python setup.py install --single-version-externally-managed --record record.txt\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n  host:\n    - python\n    - cython >=0.25\n    - numpy\n    - mako\n    - setuptools\n    - libgpuarray =={{ version }}\n\n  run:\n    - python\n    - {{ pin_compatible('numpy') }}\n    - mako\n    - six\n    - libgpuarray =={{ version }}\n\ntest:\n  imports:\n    - pygpu\n    - pygpu.gpuarray\n\nabout:\n  home: http://github.com/Theano/libgpuarray\n  license: ISC\n  license_file: LICENSE\n  summary: 'Library to manipulate arrays on GPU'\n  doc_url: http://deeplearning.net/software/libgpuarray/\n  dev_url: http://github.com/Theano/libgpuarray\n\nextra:\n  recipe-maintainers:\n    - abergeron\n",
  "req":{
   "__set__":true,
@@ -149,7 +168,7 @@
    "six"
   ]
  },
- "smithy_version":"3.1.12",
+ "smithy_version":"3.6.1",
  "url":"https://github.com/Theano/libgpuarray/releases/download/v0.7.6/libgpuarray-0.7.6.tar.gz",
  "version":"0.7.6"
 }

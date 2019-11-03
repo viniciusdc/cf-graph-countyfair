@@ -47,6 +47,25 @@
     "migrator_version",
     "version"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/336077660.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"MigrationYaml",
+    "migrator_object_version":1,
+    "migrator_version":0,
+    "name":"python38"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_object_version",
+    "migrator_version",
+    "name"
+   ]
   }
  ],
  "bad":false,
@@ -285,7 +304,7 @@
   "ldas-tools-framecpp-swig",
   "python-ldas-tools-framecpp"
  ],
- "pinning_version":"2019.09.25",
+ "pinning_version":"2019.11.01",
  "raw_meta_yaml":"{% set name = \"ldas-tools-framecpp-swig\" %}\n{% set version = \"2.6.9\" %}\n{% set sha256 = \"4982b91dfc519a999e5262bd918d03357afa2d59fd9fdcdc180cb1c22038b019\" %}\n\n# dependencies\n{% set ldas_tools_cmake_version = \"1.0.8\" %}\n{% set ldas_tools_al_version = \"2.6.3\" %}\n{% set ldas_tools_al_swig_version = \"2.6.7\" %}\n{% set ldas_tools_framecpp_version = \"2.7.0\" %}\n\npackage:\n  name: \"{{ name }}\"\n  version: \"{{ version }}\"\n\nsource:\n  url: \"http://software.ligo.org/lscsoft/source/{{ name }}-{{ version }}.tar.gz\"\n  sha256: \"{{ sha256 }}\"\n\nbuild:\n  number: 0\n  skip: true  # [win]\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n    - cmake >=3.6\n    - pkg-config  # [not win]\n  host:\n    - ldas-tools-cmake >={{ ldas_tools_cmake_version }}\n    - ldas-tools-framecpp >={{ ldas_tools_framecpp_version }}\n    - swig >=3.0.7,<4.0.0a0\n  run:\n    - ldas-tools-framecpp >={{ ldas_tools_framecpp_version }}\n\ntest:\n  commands:\n    - test -f ${PREFIX}/include/framecpp/frameCPP.i  # [not win]\n    - test -f ${PREFIX}/include/framecpp/python/frameCPPMacros.i  # [not win]\n\noutputs:\n  - name: ldas-tools-framecpp-swig\n\n  - name: python-ldas-tools-framecpp\n    script: install-python.sh\n    build:\n      activate_in_script: True\n    requirements:\n      build:\n        - {{ compiler('c') }}\n        - {{ compiler('cxx') }}\n        - cmake >=3.6\n        - pkg-config  # [not win]\n      host:\n        - ldas-tools-cmake >={{ ldas_tools_cmake_version }}\n        - ldas-tools-al {{ ldas_tools_al_version }}\n        - ldas-tools-framecpp {{ ldas_tools_framecpp_version }}\n        - {{ pin_subpackage('ldas-tools-framecpp-swig', exact=True) }}\n        - numpy\n        - python\n        - swig >=3.0.7,<4.0.0a0\n      run:\n        - ldas-tools-al >={{ ldas_tools_al_version }}\n        - ldas-tools-framecpp >={{ ldas_tools_framecpp_version }}\n        - {{ pin_compatible('numpy') }}\n        - python\n        - python-ldas-tools-al >={{ ldas_tools_al_swig_version }}\n    test:\n      imports:\n        - LDAStools.frameCPP\n      commands:\n        # generate a test file, then read the channel list out of it\n        - framecpp_sample\n        - python -c \"from LDAStools import frameCPP; stream = frameCPP.IFrameFStream('Z-ilwd_test_frame-600000000-1.gwf'); toc = stream.GetTOC(); print(toc.GetADC())\"\n    about:\n      home: \"https://wiki.ligo.org/Computing/LDASTools\"\n      dev_url: \"https://git.ligo.org/ldastools/LDAS_Tools\"\n      license: \"GPL-3.0-or-later\"\n      license_family: \"GPL\"\n      license_file: \"COPYING\"\n      summary: \"Python bindings for the LDAS Tools frameCPP library\"\n      description: \"Python bindings for the LDAS Tools frameCPP library\"\n\nabout:\n  home: \"https://wiki.ligo.org/Computing/LDASTools\"\n  dev_url: \"https://git.ligo.org/ldastools/LDAS_Tools\"\n  license: \"GPL-3.0-or-later\"\n  license_family: \"GPL\"\n  license_file: \"COPYING\"\n  summary: \"SWIG bindings for the LDAS Tools frameCPP library\"\n\nextra:\n  recipe-maintainers:\n    - duncanmmacleod\n    - emaros\n",
  "req":{
   "__set__":true,
@@ -305,7 +324,7 @@
    "swig"
   ]
  },
- "smithy_version":"3.4.8",
+ "smithy_version":"3.6.1",
  "url":"http://software.ligo.org/lscsoft/source/ldas-tools-framecpp-swig-2.6.8.tar.gz",
  "version":"2.6.9"
 }

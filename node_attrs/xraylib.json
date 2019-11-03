@@ -48,6 +48,25 @@
     "migrator_version",
     "name"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/336077625.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"MigrationYaml",
+    "migrator_object_version":1,
+    "migrator_version":0,
+    "name":"python38"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_object_version",
+    "migrator_version",
+    "name"
+   ]
   }
  ],
  "bad":false,
@@ -169,7 +188,7 @@
  },
  "name":"xraylib",
  "new_version":false,
- "pinning_version":"2019.08.12",
+ "pinning_version":"2019.11.01",
  "raw_meta_yaml":"{% set version = \"3.3.0\" %}\n\npackage:\n  name: xraylib\n  version: {{ version }}\n\nsource:\n  url: http://lvserver.ugent.be/xraylib/xraylib-{{version}}.tar.gz\n  sha256: a22a73b8d90eb752b034bab1a4cf6abdd81b8c7dc5020bcb22132d2ee7aacd42\n\nbuild:\n  number: 1004\n\nrequirements:\n  build:\n    - m2-bash  # [win]\n    - m2-curl  # [win]\n    - m2-findutils  # [win]\n    - m2-diffutils  # [win]\n    - m2-gawk  # [win]\n    - m2-grep  # [win]\n    - m2-make  # [win]\n    - m2-sed  # [win]\n    - m2-which  # [win]\n    - m2-tar  # [win]\n    - {{ compiler('fortran') }}        # [unix]\n    - {{ compiler('m2w64_fortran') }}  # [win]\n    - {{ compiler('c') }}        # [unix]\n    - {{ compiler('m2w64_c') }}  # [win]\n    - {{ compiler('cxx') }}        # [unix]\n    - {{ compiler('m2w64_cxx') }}  # [win]\n  host:\n    - python\n    - setuptools\n    - cython\n    - numpy\n    - swig  # [not win]\n    - m2w64-binutils  # [win]\n    - m2w64-gcc  # [win]\n    - m2w64-tools-git  # [win]\n\n  run:\n    - python\n    - {{ pin_compatible('numpy') }}   # [not (win and (py35 or py36))]\n    - {{ pin_compatible('numpy') }}   # [win and py35]\n    - {{ pin_compatible('numpy') }}   # [win and py36]\n\ntest:\n  commands:\n    # The xraylib command does not work on Anaconda, as it would not be able\n    # to find the help text files. In my xraylib SDK for Windows, I rely on\n    # the registry to find them as the installer writes entries in it, but\n    # not sure how that would work here.\n    - xraylib  # [not win]\n    - conda inspect linkages -p $PREFIX $PKG_NAME  # [not win]\n    - conda inspect objects -p $PREFIX $PKG_NAME  # [osx]\n  imports:\n    - xraylib\n    - xraylib_np\n\nabout:\n  license: BSD 3-Clause\n  license_family: BSD\n  license_file: license_all.txt\n  home: https://github.com/tschoonj/xraylib/wiki\n  summary: A library for X-ray matter interaction cross sections for X-ray fluorescence applications\n\nextra:\n  recipe-maintainers:\n    - ericdill\n    - tacaswell\n    - licode\n    - tschoonj\n    - CJ-Wright\n    - mrakitin\n",
  "req":{
   "__set__":true,
@@ -201,7 +220,7 @@
    "swig"
   ]
  },
- "smithy_version":"3.4.1",
+ "smithy_version":"3.6.1",
  "url":"http://lvserver.ugent.be/xraylib/xraylib-3.3.0.tar.gz",
  "version":"3.3.0"
 }
