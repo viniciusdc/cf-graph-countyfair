@@ -226,7 +226,7 @@
    "summary":"Python libraries for Apache Arrow"
   },
   "build":{
-   "number":"1"
+   "number":"0"
   },
   "extra":{
    "recipe-maintainers":[
@@ -264,7 +264,7 @@
   },
   "package":{
    "name":"pyarrow",
-   "version":"0.15.0"
+   "version":"0.15.1"
   },
   "requirements":{
    "build":[
@@ -282,7 +282,7 @@
     "cxx_compiler_stub"
    ],
    "host":[
-    "arrow-cpp 0.15.0",
+    "arrow-cpp 0.15.1",
     "boost-cpp",
     "cython",
     "numpy 1.16.*",
@@ -290,7 +290,7 @@
     "setuptools",
     "setuptools_scm",
     "six",
-    "arrow-cpp 0.15.0",
+    "arrow-cpp 0.15.1",
     "boost-cpp",
     "cython",
     "numpy 1.16.*",
@@ -298,7 +298,7 @@
     "setuptools",
     "setuptools_scm",
     "six",
-    "arrow-cpp 0.15.0",
+    "arrow-cpp 0.15.1",
     "boost-cpp",
     "cython",
     "numpy 1.16.*",
@@ -338,14 +338,9 @@
    ]
   },
   "source":{
-   "fn":"apache-arrow-0.15.0.tar.gz",
-   "patches":[
-    "5646.patch",
-    "5646.patch",
-    "5646.patch"
-   ],
-   "sha256":"d1072d8c4bf9166949f4b722a89350a88b7c8912f51642a5d52283448acdfd58",
-   "url":"https://dist.apache.org/repos/dist/release/arrow/arrow-0.15.0/apache-arrow-0.15.0.tar.gz"
+   "fn":"apache-arrow-0.15.1.tar.gz",
+   "sha256":"9a2c58c72310eafebb4997244cbeeb8c26696320d0ae3eb3e8512f75ef856fc9",
+   "url":"https://dist.apache.org/repos/dist/release/arrow/arrow-0.15.1/apache-arrow-0.15.1.tar.gz"
   },
   "test":{
    "imports":[
@@ -371,7 +366,7 @@
  "name":"pyarrow",
  "new_version":"0.15.1",
  "pinning_version":"2019.10.30",
- "raw_meta_yaml":"{% set version = \"0.15.0\" %}\n{% set filename = \"apache-arrow-\" + version + \".tar.gz\" %}\n{% set checksum = \"d1072d8c4bf9166949f4b722a89350a88b7c8912f51642a5d52283448acdfd58\" %}\n\npackage:\n  name: pyarrow\n  version: {{ version }}\n\nsource:\n  fn: {{ filename }}\n  url: https://dist.apache.org/repos/dist/release/arrow/arrow-{{ version }}/{{ filename }}\n  sha256: {{ checksum }}\n  patches:\n    # Fixed in 0.15.1\n    - 5646.patch\n\nbuild:\n  number: 1\n  skip: true  # [win32]\n  skip: true  # [win and py<35]\n\nrequirements:\n  build:\n    - cmake\n    - ninja\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n  host:\n    # directly pin boost-cpp as we also seem to directly include boost symbols\n    # in the Python modules.\n    - arrow-cpp {{ version }}\n    - boost-cpp\n    - cython\n    - numpy 1.16.*\n    - python\n    - setuptools\n    - setuptools_scm\n    - six\n\n  run:\n    - {{ pin_compatible('arrow-cpp') }}\n    - {{ pin_compatible('numpy', lower_bound='1.16') }}\n    - boost-cpp\n    - futures  # [py==27]\n    - glog\n    - pandas\n    # empty parquet-cpp metapackage, force old versions to be uninstalled\n    - parquet-cpp 1.5.1.*\n    - python\n    - six\n    - snappy\n\ntest:\n  imports:\n    - pyarrow\n    - pyarrow.flight   # [not py==27]\n    - pyarrow.gandiva  # [not py==27]\n    - pyarrow.orc      # [unix]\n    - pyarrow.parquet\n    - pyarrow.plasma   # [unix]\n\nabout:\n  home: http://github.com/apache/arrow\n  license: Apache 2.0\n  license_file: LICENSE.txt\n  summary: 'Python libraries for Apache Arrow'\n\nextra:\n  recipe-maintainers:\n    - wesm\n    - xhochy\n    - jreback\n    - cpcloud\n    - pcmoritz\n    - robertnishihara\n    - siddharthteotia\n    - kou\n    - kszucs\n    - pitrou\n",
+ "raw_meta_yaml":"{% set version = \"0.15.1\" %}\n{% set filename = \"apache-arrow-\" + version + \".tar.gz\" %}\n{% set checksum = \"9a2c58c72310eafebb4997244cbeeb8c26696320d0ae3eb3e8512f75ef856fc9\" %}\n\npackage:\n  name: pyarrow\n  version: {{ version }}\n\nsource:\n  fn: {{ filename }}\n  url: https://dist.apache.org/repos/dist/release/arrow/arrow-{{ version }}/{{ filename }}\n  sha256: {{ checksum }}\n\nbuild:\n  number: 0\n  skip: true  # [win32]\n  skip: true  # [win and py<35]\n\nrequirements:\n  build:\n    - cmake\n    - ninja\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n  host:\n    # directly pin boost-cpp as we also seem to directly include boost symbols\n    # in the Python modules.\n    - arrow-cpp {{ version }}\n    - boost-cpp\n    - cython\n    - numpy 1.16.*\n    - python\n    - setuptools\n    - setuptools_scm\n    - six\n\n  run:\n    - {{ pin_compatible('arrow-cpp') }}\n    - {{ pin_compatible('numpy', lower_bound='1.16') }}\n    - boost-cpp\n    - futures  # [py==27]\n    - glog\n    - pandas\n    # empty parquet-cpp metapackage, force old versions to be uninstalled\n    - parquet-cpp 1.5.1.*\n    - python\n    - six\n    - snappy\n\ntest:\n  imports:\n    - pyarrow\n    - pyarrow.flight   # [not py==27]\n    - pyarrow.gandiva  # [not py==27]\n    - pyarrow.orc      # [unix]\n    - pyarrow.parquet\n    - pyarrow.plasma   # [unix]\n\nabout:\n  home: http://github.com/apache/arrow\n  license: Apache 2.0\n  license_file: LICENSE.txt\n  summary: 'Python libraries for Apache Arrow'\n\nextra:\n  recipe-maintainers:\n    - wesm\n    - xhochy\n    - jreback\n    - cpcloud\n    - pcmoritz\n    - robertnishihara\n    - siddharthteotia\n    - kou\n    - kszucs\n    - pitrou\n",
  "req":{
   "__set__":true,
   "elements":[
@@ -396,5 +391,5 @@
  },
  "smithy_version":"3.6.0",
  "url":"https://dist.apache.org/repos/dist/release/arrow/arrow-0.14.1/apache-arrow-0.14.1.tar.gz",
- "version":"0.15.0"
+ "version":"0.15.1"
 }
