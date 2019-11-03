@@ -31,6 +31,25 @@
     "migrator_version",
     "name"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/336049403.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"MigrationYaml",
+    "migrator_object_version":1,
+    "migrator_version":0,
+    "name":"python38"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_object_version",
+    "migrator_version",
+    "name"
+   ]
   }
  ],
  "bad":false,
@@ -125,7 +144,7 @@
  },
  "name":"louvain",
  "new_version":"0.6.1",
- "pinning_version":"2018.11.24",
+ "pinning_version":"2019.11.01",
  "raw_meta_yaml":"{% set name = \"louvain\" %}\n{% set version = \"0.6.1\" %}\n{% set md5 = \"818fb8f60a14dca135920797097ac4bf\" %}\n\npackage:\n  name: {{ name }}\n  version: {{ version }}\n\nsource:\n  fn: {{ name }}-{{ version }}.tar.gz\n  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz\n  md5: {{ md5 }}\n\nbuild:\n  number: 2\n  script: python setup.py install --single-version-externally-managed --record record.txt\n  # the main dependency 'igraph' is not windows ready yet\n  skip: True  # [win]\n\nrequirements:\n  build:\n    - pkg-config\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n  host:\n    - python\n    - setuptools\n    - igraph\n    - python-igraph\n  run:\n    # We need to include setuptools have access to the pkg_resources,\n    # see https://stackoverflow.com/questions/7446187/no-module-named-pkg-resources\n    - setuptools\n    - python\n    - igraph\n    - python-igraph\n\ntest:\n  imports:\n    - igraph\n    - louvain\n\nabout:\n  home: https://github.com/vtraag/louvain-igraph\n  license: GPLv3\n  license_family: GPL\n  license_file: LICENSE\n  summary: \"Implementation of the Louvain algorithm for various methods for use with igraph in python.\"\n  description: |\n    This package implements the louvain algorithm in C++ and\n    exposes it to python. It relies on (python-)igraph for it to\n    function. Besides the relative flexibility of the\n    implementation, it also scales well, and can be run on graphs\n    of millions of nodes (as long as they can fit in memory).\n    The core function is find_partition which finds the optimal\n    partition using the louvain algorithm for a number of\n    different methods.\n\nextra:\n  recipe-maintainers:\n    - vgauthier\n",
  "req":{
   "__set__":true,
@@ -139,7 +158,7 @@
    "setuptools"
   ]
  },
- "smithy_version":"3.1.12",
+ "smithy_version":"3.6.1",
  "url":"https://pypi.io/packages/source/l/louvain/louvain-0.6.1.tar.gz",
  "version":"0.6.1"
 }
