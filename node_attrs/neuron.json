@@ -84,6 +84,25 @@
     "migrator_version",
     "name"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/336083267.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"MigrationYaml",
+    "migrator_object_version":1,
+    "migrator_version":0,
+    "name":"python38"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_object_version",
+    "migrator_version",
+    "name"
+   ]
   }
  ],
  "bad":false,
@@ -227,7 +246,7 @@
  },
  "name":"neuron",
  "new_version":false,
- "pinning_version":"2019.07.01",
+ "pinning_version":"2019.11.01",
  "raw_meta_yaml":"{% set version = \"7.6.7\" %}\n{% set xy = version.rsplit('.', 1)[0] %}\n{% set build = 3 %}\n\n{% if not mpi %}\n# conda-smithy misbehaves if mpi is unset\n{% set mpi = 'nompi' %}\n{% endif %}\n\n{% if mpi == 'nompi' %}\n# prioritize nompi variant via build number\n{% set build = build + 100 %}\n{% endif %}\n\npackage:\n  name: neuron\n  version: {{ version }}\n\nsource:\n  fn: nrn-{{ version }}.tar.gz\n  url: https://www.neuron.yale.edu/ftp/neuron/versions/v{{ xy }}/{{ version }}/nrn-{{ version }}.tar.gz\n  sha256: 5a6133bfa818ec3278fc8d0ecd312674805ae42854f71552f8cd47d98ff6ad2d\n  patches:\n    - memacs.patch\n\nbuild:\n  number: {{ build }}\n  skip: true  # [win]\n\n  # there seem to be references to the build env in the output\n  # maybe this is the culprit for failed builds\n  merge_build_host: true  # [linux]\n\n  # add build string so packages can depend on\n  # mpi or nompi variants explicitly:\n  # `pkg * mpi_mpich_*` for mpich\n  # `pkg * mpi_*` for any mpi\n  # `pkg * nompi_*` for no mpi\n  {% if mpi == \"nompi\" %}\n  {% set mpi_prefix = \"nompi\" %}\n  {% else %}\n  {% set mpi_prefix = \"mpi_\" + mpi %}\n  {% endif %}\n  string: \"{{ mpi_prefix }}_py{{ py }}h{{ PKG_HASH }}_{{ build }}\"\n\n  run_exports:\n    {% if mpi == \"nompi\" %}\n    - {{ pin_compatible(\"neuron\") }}\n    {% else %}\n    - {{ pin_compatible(\"neuron\") }} {{ mpi_prefix }}_*\n    {% endif %}\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n    - autoconf\n    - automake\n    - bison\n    - flex\n    - pkg-config\n    - libtool\n  host:\n    - python\n    - cython\n    - numpy\n    - readline\n    - ncurses\n    - {{ mpi }}  # [mpi != \"nompi\"]\n  run:\n    - python\n    - numpy\n    - readline\n    - ncurses\n    - {{ mpi }}  # [mpi != \"nompi\"]\n\ntest:\n  requires:\n    - {{ compiler('c') }}\n    - scipy\n  files:\n    - Nap_Et2.mod\n    - test_mpi.py\n  imports:\n    - neuron\n    - neuron.rxd\n\nabout:\n  home: https://neuron.yale.edu\n  license: BSD 3-Clause\n  license_file: Copyright\n  summary: NEURON is a simulator for models of neurons and networks of neuron.\n\nextra:\n  recipe-maintainers:\n    - minrk\n",
  "req":{
   "__set__":true,
@@ -248,7 +267,7 @@
    "readline"
   ]
  },
- "smithy_version":"3.4.0",
+ "smithy_version":"3.6.1",
  "url":"https://www.neuron.yale.edu/ftp/neuron/versions/v7.6/7.6.7/nrn-7.6.7.tar.gz",
  "version":"7.6.7"
 }

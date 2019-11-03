@@ -149,6 +149,25 @@
     "migrator_version",
     "name"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/336082179.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"MigrationYaml",
+    "migrator_object_version":1,
+    "migrator_version":0,
+    "name":"python38"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_object_version",
+    "migrator_version",
+    "name"
+   ]
   }
  ],
  "bad":false,
@@ -274,7 +293,7 @@
  },
  "name":"pyopencl",
  "new_version":"2019.1.1",
- "pinning_version":"2019.10.30",
+ "pinning_version":"2019.11.01",
  "raw_meta_yaml":"{% set name = \"pyopencl\" %}\n{% set version = \"2019.1.1\" %}\n{% set build_number = 0 %}\n{% set sha256 = \"b324f0ea311c63a3d949a367e9d8c7d4061ca4e3fffaf6afcb0e62f7100bb63c\" %}\n\npackage:\n    name: {{ name|lower }}\n    version: {{ version }}\n\nsource:\n    fn: {{ name }}-{{ version }}.tar.gz\n    url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz\n    sha256: {{ sha256 }}\n    patches:\n        - osx_flags.diff\n\nbuild:\n    number: {{ build_number }}\n\nrequirements:\n    build:\n        - {{ compiler('cxx') }}\n        - {{ compiler('m2w64_cxx') }}  # [win and vc<14]\n    host:\n        - python\n        - libpython  # [win and vc<14]\n        - setuptools\n        - pybind11\n        - numpy\n        - ocl-icd  # [linux]\n        - khronos-opencl-icd-loader  # [win or osx]\n\n    run:\n        - python\n        - {{ pin_compatible(\"numpy\") }}\n        - pytools\n        # for pkg_resources\n        - setuptools\n        - six\n        - mako\n        - appdirs\n        - khronos-opencl-icd-loader  # [win or osx]\n        - ocl_icd_wrapper_apple  # [osx]\n        - ocl-icd  # [linux]\n\ntest:\n    requires:\n        - pytest\n        - pocl  >=0.14  # [linux]\n    imports:\n        - {{ name }}\n    source_files:\n        - test\n    commands:\n        - cd test && python -m pytest   # [osx]\n\nabout:\n    home: http://pypi.python.org/pypi/pyopencl\n    doc_url: https://documen.tician.de/pyopencl\n    dev_url: http://github.com/inducer/pyopencl\n    license: MIT\n    license_file: LICENSE\n    summary: Python wrapper for OpenCL\n    description: |\n\n        PyOpenCL lets you access GPUs, multi-core CPUs, and other massively\n        parallel compute devices from Python, through the OpenCL parallel\n        compute interface.\n\nextra:\n    recipe-maintainers:\n        - inducer\n        - isuruf\n",
  "req":{
   "__set__":true,
@@ -296,7 +315,7 @@
    "six"
   ]
  },
- "smithy_version":"3.6.0",
+ "smithy_version":"3.6.1",
  "url":"https://pypi.io/packages/source/p/pyopencl/pyopencl-2019.1.1.tar.gz",
  "version":"2019.1.1"
 }

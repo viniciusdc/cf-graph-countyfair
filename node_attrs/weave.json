@@ -47,6 +47,25 @@
     "migrator_version",
     "version"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/336082734.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"MigrationYaml",
+    "migrator_object_version":1,
+    "migrator_version":0,
+    "name":"python38"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_object_version",
+    "migrator_version",
+    "name"
+   ]
   }
  ],
  "bad":false,
@@ -127,7 +146,7 @@
  },
  "name":"weave",
  "new_version":"0.17.0",
- "pinning_version":"2019.02.24",
+ "pinning_version":"2019.11.01",
  "raw_meta_yaml":"{% set name = \"weave\" %}\n{% set version = \"0.17.0\" %}\n{% set sha256 = \"2703f3ae6d23ad47b5f09b6bcb7affd0fb587120a0c973e7be40ef24de709998\" %}\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  fn: {{ name }}-{{ version }}.tar.gz\n  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz\n  sha256: {{ sha256 }}\n\nbuild:\n  number: 2\n  skip: True  # [py3k or not x86_64]\n  script: \"{{ PYTHON }} -m pip install . --no-deps --ignore-installed --no-cache-dir -vvv\"\n\nrequirements:\n  host:\n    - python\n    - numpy\n    - pip\n  run:\n    - python\n    - numpy\n    - {{ compiler(\"cxx\") }}  # [not win]\n\ntest:\n  imports:\n    - weave\n  commands:\n    - python -c \"import weave;assert weave.inline('int x=42; return_val=x;') == 42\"  # [not win]\n\nabout:\n  home: https://pypi.python.org/pypi/weave\n  license: BSD-3-Clause\n  license_family: BSD\n  license_file: LICENSE.txt\n  summary: 'Weave: a C++ compiler for Python.'\n  description: |\n    Weave provides tools for including C/C++ code within Python code. Inlining\n    C/C++ code within Python generally results in speedups of 1.5x to 30x over\n    algorithms written in pure Python.\n    Weave is the stand-alone version of the deprecated Scipy submodule\n    ``scipy.weave``.   It is Python 2.x only, and is provided for users that need\n    new versions of Scipy (from which the ``weave`` submodule may be removed) but\n    have existing code that still depends on ``scipy.weave``.  For new code, users\n    are recommended to use Cython.\n  dev_url: http://www.github.com/scipy/weave\n\nextra:\n  recipe-maintainers:\n    - mstimberg\n",
  "req":{
   "__set__":true,
@@ -138,7 +157,7 @@
    "python"
   ]
  },
- "smithy_version":"3.2.14",
+ "smithy_version":"3.6.1",
  "url":"https://pypi.io/packages/source/w/weave/weave-0.17.0.tar.gz",
  "version":"0.17.0"
 }
