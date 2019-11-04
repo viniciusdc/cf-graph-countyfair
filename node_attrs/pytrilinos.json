@@ -67,6 +67,25 @@
     "migrator_version",
     "name"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/336486684.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"MigrationYaml",
+    "migrator_object_version":1,
+    "migrator_version":0,
+    "name":"python38"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_object_version",
+    "migrator_version",
+    "name"
+   ]
   }
  ],
  "bad":false,
@@ -212,7 +231,7 @@
  },
  "name":"pytrilinos",
  "new_version":false,
- "pinning_version":"2019.10.11",
+ "pinning_version":"2019.11.01",
  "raw_meta_yaml":"{% set name = \"PyTrilinos\" %}\n{% set version = \"12.10.1\" %}\n{% set sha256 = \"ea8ff573bb1f452f2585950cdabe7e2c84cb35013844c58dc878c66bd4245e06\" %}\n{% set mpi = 'mpich 3.2.*' %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  fn: trilinos-{{ version }}-Source.tar.gz\n  url: http://trilinos.csbsju.edu/download/files/trilinos-{{ version }}-Source.tar.gz\n  sha256: {{ sha256 }}\n  patches:\n    - 12.10-fixes.patch\n\nbuild:\n  number: 2\n  skip: true  # [win or py3k]\n\nrequirements:\n  build:\n    - cmake 3.9.6\n    - {{ compiler('fortran') }}\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n  host:\n    - {{ mpi }}\n    - python\n    - swig 3.0.10\n    - doxygen\n    - numpy\n    - mpi4py\n\n  run:\n    - {{ mpi }}\n    - mpi4py\n    - python\n    - {{ pin_compatible('numpy') }}\n\ntest:\n  requires:\n    - cmake 3.9.6\n    - mpi4py\n  imports:\n    - PyTrilinos.Teuchos\n    - PyTrilinos.Epetra\n    - PyTrilinos.TriUtils\n    - PyTrilinos.Tpetra\n    - PyTrilinos.EpetraExt\n    - PyTrilinos.Domi\n    - PyTrilinos.AztecOO\n    - PyTrilinos.Galeri\n    - PyTrilinos.Amesos\n    - PyTrilinos.IFPACK\n    - PyTrilinos.Komplex\n    - PyTrilinos.ML\n    - PyTrilinos.Anasazi\n\nabout:\n  home: https://trilinos.org\n  license: BSD-3-Clause\n  license_family: BSD\n  license_file: LICENSE\n  summary:\n    Python interfaces to Sandia's suite of HPC solvers and enabling technologies\n  description:\n    Python interfaces to fast, compiled object-oriented algorithms and\n    enabling technologies for the solution of large-scale, complex\n    multi-physics engineering and scientific problems.\n  dev_url: https://github.com/trilinos/Trilinos\n\nextra:\n  recipe-maintainers:\n    - wfspotz\n",
  "req":{
   "__set__":true,
@@ -230,7 +249,7 @@
    "swig"
   ]
  },
- "smithy_version":"3.6.0",
+ "smithy_version":"3.6.1",
  "url":"http://trilinos.csbsju.edu/download/files/trilinos-12.10.1-Source.tar.gz",
  "version":"12.10.1"
 }
