@@ -115,6 +115,25 @@
     "migrator_version",
     "version"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/336111264.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"MigrationYaml",
+    "migrator_object_version":1,
+    "migrator_version":0,
+    "name":"python38"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_object_version",
+    "migrator_version",
+    "name"
+   ]
   }
  ],
  "bad":false,
@@ -233,7 +252,7 @@
  },
  "name":"asap3",
  "new_version":"3.11.10",
- "pinning_version":"2019.08.11",
+ "pinning_version":"2019.11.01",
  "raw_meta_yaml":"{% set name = \"asap3\" %}\n{% set version = \"3.10.10\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz\n  sha256: 58cc70379ff3de727ad2e19882082c40a4780c72ae86e21decd15a8df1e202f0\n\nbuild:\n  number: 2\n  script: \"{{ PYTHON }} -m pip install . --no-deps --ignore-installed --no-cache-dir -vvv\"\n  skip: True  # [win]\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n    - openmpi\n  host:\n    - python\n    - pip\n    - numpy\n    - openblas\n  run:\n    - python\n    - {{ pin_compatible('numpy') }}\n    - ase\n\ntest:\n  requires:\n    - openmpi\n  files:\n    - Verlet*.pickle\n    - hostfile\n  source_files:\n    - Test\n  imports:\n    - asap3\n  commands:\n    - cp Verlet*.pickle hostfile Test\n    - cd Test\n    - python TestAll.py\n    - /usr/bin/sudo -n /usr/bin/yum -y -q install rsh  # [linux]\n    - mpirun -np 2 --hostfile hostfile asap-python TestAll.py --parallel\n\nabout:\n  home: https://wiki.fysik.dtu.dk/asap\n  license: LGPL-3.0\n  license_family: LGPL\n  license_file: LICENSE.txt\n  summary: 'ASAP is a calculator for doing large-scale classical molecular dynamics within ASE.'\n\n  description: |\n     ASAP is a tool for doing atomic-scale computer simulations\n     (mainly molecular dynamics) using classical potentials\n     (mainly Effective Medium Theory). It is intended to work \n     as an energy calculator in connection with the Atomic Simulation \n     Environment (ASE). However, some parts of the ASE are either \n     extended or reimplemented for reasons of efficiency and \n     ease-of-use on parallel computers.\n  doc_url: https://wiki.fysik.dtu.dk/asap/Manual\n  dev_url: https://gitlab.com/asap/asap\n\nextra:\n  recipe-maintainers:\n    - jochym\n",
  "req":{
   "__set__":true,
@@ -249,7 +268,7 @@
    "python"
   ]
  },
- "smithy_version":"3.4.1",
+ "smithy_version":"3.6.1",
  "url":"https://pypi.io/packages/source/a/asap3/asap3-3.10.10.tar.gz",
  "version":"3.10.10"
 }

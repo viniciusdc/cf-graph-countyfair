@@ -16,6 +16,25 @@
     "migrator_version",
     "name"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/336110900.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"MigrationYaml",
+    "migrator_object_version":1,
+    "migrator_version":0,
+    "name":"python38"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_object_version",
+    "migrator_version",
+    "name"
+   ]
   }
  ],
  "bad":false,
@@ -102,7 +121,7 @@
  },
  "name":"bullet",
  "new_version":"2.88",
- "pinning_version":"2019.01.09",
+ "pinning_version":"2019.11.01",
  "raw_meta_yaml":"{% set version = \"2.88\" %}\n\npackage:\n  name: bullet\n  version: {{ version }}\n\nsource:\n  fn: bullet3-{{ version }}.tar.gz\n  url: https://github.com/bulletphysics/bullet3/archive/{{ version }}.tar.gz\n  sha256: 21c135775527754fc2929db1db5144e92ad0218ae72840a9f162acb467a7bbf9\n  patches:\n    # https://github.com/bulletphysics/bullet3/pull/2055\n    - pybullet-fixes.patch\n    # wont build on linux+win\n    - disable-sharedmemory.patch\n\nbuild:\n  number: 1000\n\nrequirements:\n  build:\n    - cmake\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n    - msinttypes  # [win and py27]\n  host:\n    - python\n    - numpy\n    - msinttypes  # [win and py27]\n  run:\n    - python\n    - {{ pin_compatible('numpy') }}\n\ntest:\n  imports:\n    - pybullet\n\nabout:\n  home:  http://bulletphysics.org\n  license: zlib\n  license_file: LICENSE.txt\n  summary: Bullet Physics SDK real-time collision detection\n    and multi-physics simulation for VR, games, visual effects, robotics, machine learning etc.\n\nextra:\n  recipe-maintainers:\n    - xantares\n",
  "req":{
   "__set__":true,
@@ -115,7 +134,7 @@
    "python"
   ]
  },
- "smithy_version":"3.2.2",
+ "smithy_version":"3.6.1",
  "url":"https://github.com/bulletphysics/bullet3/archive/2.88.tar.gz",
  "version":"2.88"
 }
