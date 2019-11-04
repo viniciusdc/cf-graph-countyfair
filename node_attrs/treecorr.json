@@ -186,6 +186,25 @@
     "migrator_version",
     "version"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/336365445.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"MigrationYaml",
+    "migrator_object_version":1,
+    "migrator_version":0,
+    "name":"python38"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_object_version",
+    "migrator_version",
+    "name"
+   ]
   }
  ],
  "bad":false,
@@ -300,7 +319,7 @@
  },
  "name":"treecorr",
  "new_version":"4.0.9",
- "pinning_version":"2019.10.26",
+ "pinning_version":"2019.11.01",
  "raw_meta_yaml":"{% set name = \"TreeCorr\" %}\n{% set version = \"4.0.9\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz\n  sha256: 6a2708738e3aa408a505ab319c2a0b41f5119996dd2cc4519ae4e92948cc9cac\n\nbuild:\n  number: 0\n  skip: True  # [win]\n  script:\n    # the setup.py file does some fancy testing for being able to compile\n    # things right\n    - export CPATH=\"${PREFIX}/include:${CPATH}\"  # [linux]\n    - export LIBRARY_PATH=\"${PREFIX}/lib:${LIBRARY_PATH}\"  # [linux]\n    - \"{{ PYTHON }} -m pip install . --no-deps -vv\"\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n    - llvm-openmp  # [osx]\n    - ccache\n  host:\n    - python\n    - pip\n    - cffi\n    - llvm-openmp  # [osx]\n  run:\n    - python\n    - numpy\n    - cffi\n    - fitsio\n    - pyyaml\n    - pandas\n    - lsstdesc.coord\n    - llvm-openmp  # [osx]\n\ntest:\n  imports:\n    - treecorr\n  commands:\n    - corr2 --version\n    - corr3 --version\n\nabout:\n  home: https://github.com/rmjarvis/TreeCorr\n  license: BSD-2-Clause\n  license_family: BSD\n  license_file: TreeCorr_LICENSE\n  summary: |\n    TreeCorr is a package for efficiently computing 2-point and 3-point\n    correlation functions.\n  doc_url: http://rmjarvis.github.io/TreeCorr/\n  dev_url: https://github.com/rmjarvis/TreeCorr\n\nextra:\n  recipe-maintainers:\n    - beckermr\n",
  "req":{
   "__set__":true,
@@ -319,7 +338,7 @@
    "pyyaml"
   ]
  },
- "smithy_version":"3.6.0",
+ "smithy_version":"3.6.1",
  "url":"https://pypi.io/packages/source/T/TreeCorr/TreeCorr-4.0.8.tar.gz",
  "version":"4.0.9"
 }

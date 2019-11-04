@@ -238,7 +238,7 @@
   }
  },
  "name":"giflib",
- "new_version":"5.2.1",
+ "new_version":"5.2.0",
  "pinning_version":"2019.06.19",
  "raw_meta_yaml":"{% set version = \"5.1.9\" %}\n\npackage:\n  name: giflib\n  version: {{ version }}\n\nsource:\n  url: http://downloads.sourceforge.net/project/giflib/giflib-{{ version }}.tar.gz\n  sha256: 36ccab06aa43e5d608cdd74902f89c47fd55c348009798434ba5798967454057\n  patches:\n    - makefile.patch\n\nbuild:\n  number: 0\n  skip: True  # [win or osx]\n  run_exports:\n     # SONAME changes at patch revs.\n    #    https://abi-laboratory.pro/tracker/timeline/giflib/\n    - {{ pin_subpackage('giflib', max_pin='x.x.x') }}\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - make  # [not win]\n\ntest:\n  commands:\n    - gif2rgb -h  # [not win]\n    - gifbuild -h  # [not win]\n    - gifclrmp -h  # [not win]\n    - gifecho -h  # [not win]\n    - giffix -h  # [not win]\n    - gifinto -h  # [not win]\n    - giftext -h  # [not win]\n    - gif2rgb.exe -h  # [win]\n    - gifbuild.exe -h  # [win]\n    - gifclrmp.exe -h  # [win]\n    - gifecho.exe -h  # [win]\n    - giffix.exe -h  # [win]\n    - gifinto.exe -h  # [win]\n    - giftext.exe -h  # [win]\n\nabout:\n  home: http://giflib.sourceforge.net\n  license: MIT\n  license_file: COPYING\n  summary: Library for reading and writing gif images\n\nextra:\n  recipe-maintainers:\n    - ocefpaf\n    - 183amir\n    - msarahan\n",
  "req":{
