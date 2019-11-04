@@ -31,6 +31,25 @@
     "migrator_version",
     "name"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/336094679.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"MigrationYaml",
+    "migrator_object_version":1,
+    "migrator_version":0,
+    "name":"python38"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_object_version",
+    "migrator_version",
+    "name"
+   ]
   }
  ],
  "bad":false,
@@ -111,7 +130,7 @@
  },
  "name":"pybufr-ecmwf",
  "new_version":"0.82",
- "pinning_version":"2018.10.11",
+ "pinning_version":"2019.11.01",
  "raw_meta_yaml":"{% set version = \"0.82\" %}\n{% set sha256 = \"3f8375f2ced161a203c3521520fdeb8b8b5b088987c98b609abdff7408b78a4c\" %}\n\npackage:\n  name: pybufr-ecmwf\n  version: {{ version }}\n\nsource:\n  fn: pybufr-ecmwf-{{ version }}.tar.gz\n  url: https://pypi.io/packages/source/p/pybufr-ecmwf/pybufr-ecmwf-{{ version }}.tar.gz\n  sha256: {{ sha256 }}\n\nbuild:\n  number: 1\n  script:\n    - export DYLD_FALLBACK_LIBRARY_PATH=$PREFIX/lib  # [osx]\n    - export LDFLAGS=\"-undefined dynamic_lookup -bundle\"  # [osx]\n    - python setup.py install\n  skip: True  # [win]\n\nrequirements:\n  build:\n    - python\n    - numpy 1.8.*\n    - gcc\n  run:\n    - python\n    - numpy >=1.8\n    - libgcc  # [linux]\n    - libgfortran  # [osx]\n\ntest:\n  imports:\n    - pybufr_ecmwf\n  commands:\n    - conda inspect linkages -p $PREFIX pybufr-ecmwf  # [not win]\n    - conda inspect objects -p $PREFIX pybufr-ecmwf  # [osx]\n\nabout:\n  home: https://github.com/jdkloe/pybufr-ecmwf\n  license: LGPL-3.0\n  summary: 'Python interface around the ECMWF-BUFR library.'\n  description: |\n    A Python module that allows reading and writing BUFR formatted files, where\n    BUFR stands for Binary Universal Form for the Representation of\n    meteorological data.\n  dev_url: https://github.com/jdkloe/pybufr-ecmwf\n\nextra:\n  recipe-maintainers:\n    - cpaulik\n    - ocefpaf\n",
  "req":{
   "__set__":true,
@@ -123,7 +142,7 @@
    "python"
   ]
  },
- "smithy_version":"3.1.12",
+ "smithy_version":"3.6.1",
  "url":"https://pypi.io/packages/source/p/pybufr-ecmwf/pybufr-ecmwf-0.82.tar.gz",
  "version":"0.82"
 }

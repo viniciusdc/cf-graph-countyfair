@@ -65,6 +65,25 @@
     "migrator_version",
     "version"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/336096557.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"MigrationYaml",
+    "migrator_object_version":1,
+    "migrator_version":0,
+    "name":"python38"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_object_version",
+    "migrator_version",
+    "name"
+   ]
   }
  ],
  "bad":false,
@@ -183,7 +202,7 @@
  },
  "name":"imread",
  "new_version":"0.7.1",
- "pinning_version":"2019.05.06",
+ "pinning_version":"2019.11.01",
  "raw_meta_yaml":"{% set name = \"imread\" %}\n{% set version = \"0.7.1\" %}\n{% set sha256 = \"c343b546ab54acdb50dbe69d6793d64ead3ba6d585022f5a7ad4687b7f3db79b\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  fn: {{ name }}-{{ version }}.tar.gz\n  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz\n  sha256: {{ sha256 }}\n\nbuild:\n  number: 0\n  script:\n    - cp %LIBRARY_LIB%\\libpng.lib %LIBRARY_LIB%\\png.lib  # [win]\n    - python setup.py build_ext --include-dirs=${PREFIX}/include  # [unix]\n    - python setup.py install --single-version-externally-managed --record record.txt\n    - del %LIBRARY_LIB%\\png.lib  # [win]\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n  host:\n    - python\n    - setuptools\n    - numpy\n    - msinttypes  # [win]\n    - jpeg\n    - libpng\n    - libwebp\n    - libtiff\n    - zlib         # [win]\n\n  run:\n    - python\n    - {{ pin_compatible('numpy') }}\n    - jpeg\n    - libpng\n    - libwebp\n    - libtiff\n    - zlib         # [win]\n\ntest:\n  imports:\n    - imread\n\nabout:\n  home: https://imread.rtfd.io/\n  license: MIT\n  license_family: MIT\n  license_file: COPYING.MIT\n  summary: 'imread: Image reading library'\n\n  description: 'Mahotas-imread is a simple module to read images into numpy arrays.'\n  doc_url: https://imread.rtfd.io/\n  dev_url: https://github.com/luispedro/imread\n\nextra:\n  recipe-maintainers:\n    - luispedro\n",
  "req":{
   "__set__":true,
@@ -202,7 +221,7 @@
    "zlib"
   ]
  },
- "smithy_version":"3.3.4",
+ "smithy_version":"3.6.1",
  "url":"https://pypi.io/packages/source/i/imread/imread-0.7.1.tar.gz",
  "version":"0.7.1"
 }

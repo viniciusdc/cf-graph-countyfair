@@ -1,5 +1,26 @@
 {
- "bad":"Upstream: Error getting upstream version",
+ "PRed":[
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/336095445.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"MigrationYaml",
+    "migrator_object_version":1,
+    "migrator_version":0,
+    "name":"python38"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_object_version",
+    "migrator_version",
+    "name"
+   ]
+  }
+ ],
+ "bad":false,
  "conda-forge.yml":{},
  "feedstock_name":"nvidia-apex",
  "hash_type":"sha256",
@@ -255,6 +276,7 @@
   "nvidia-apex",
   "nvidia-apex-proc"
  ],
+ "pinning_version":"2019.11.01",
  "raw_meta_yaml":"{% set name = \"nvidia-apex\" %}\n{% set version = \"0.1\" %}\n{% set commit = \"088985936518be7e25795a30d8ab33affa9db6ed\" %}\n\n{% set nvidia_apex_proc_type = \"cpu\" if cuda_compiler_version == \"None\" else \"gpu\" %}  # [linux64]\n{% set nvidia_apex_proc_type = \"cpu\" %}                                                # [not linux64]\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  url: https://github.com/NVIDIA/apex/archive/{{ commit }}.tar.gz\n  sha256: cc5ce27aa30b5ade54d520fafc1cd7d293dfba58c51851759a034d03e3f370bb\n\nbuild:\n  number: 0\n  skip: True  # [osx or py2k or (win and vc<14)]\n\noutputs:\n  - name: nvidia-apex-proc\n    version: {{ version }}\n    build:\n      number: 0\n      string: \"{{ nvidia_apex_proc_type }}\"\n    test:\n      commands:\n        - exit 0\n    about:\n      home: https://github.com/conda-forge/nvidia-apex-feedstock\n      license: BSD-3-Clause\n      license_family: BSD\n      summary: A meta-package to select CPU or GPU nvidia-apex build.\n\n  - name: nvidia-apex\n    version: {{ version }}\n    build:\n      number: 1\n      script: python -m pip install . -vv\n    requirements:\n      build:\n        - {{ compiler('c') }}\n        - {{ compiler('cxx') }}\n        - {{ compiler('cuda') }}  # [linux64 and cuda_compiler_version != \"None\"]\n      host:\n        - python\n        - pytorch\n        - setuptools\n        - pip\n      run:\n        - python\n        - pytorch\n        - cxxfilt  # [linux]\n        - tqdm\n        - numpy\n        - PyYAML\n        - pytest\n      run_constrained:\n        - nvidia-apex-proc * {{ nvidia_apex_proc_type }}\n    test:\n      imports:\n        - apex\n        - apex.amp\n        - apex.parallel\n        - apex.optimizers\n        - apex.normalization.fused_layer_norm\n    about:\n      home: \"https://nvidia.github.io/apex/\"\n      license: BSD-3-Clause\n      license_family: BSD\n      license_file: LICENSE\n      summary: \"a Pytorch extension with NVIDIA-maintained utilities to streamline mixed precision and distributed training.\"\n      doc_url: \"https://nvidia.github.io/apex/\"\n      dev_url: \"https://github.com/NVIDIA/apex\"\n\nabout:\n  home: \"https://nvidia.github.io/apex/\"\n  license: BSD-3-Clause\n  license_family: BSD\n  license_file: LICENSE\n  summary: \"a Pytorch extension with NVIDIA-maintained utilities to streamline mixed precision and distributed training.\"\n  doc_url: \"https://nvidia.github.io/apex/\"\n  dev_url: \"https://github.com/NVIDIA/apex\"\n\nextra:\n  recipe-maintainers:\n    - oblute\n    - benhuff\n    - jakirkham\n    - rluria14\n",
  "req":{
   "__set__":true,
@@ -273,6 +295,7 @@
    "tqdm"
   ]
  },
+ "smithy_version":"3.6.1",
  "url":"https://github.com/NVIDIA/apex/archive/088985936518be7e25795a30d8ab33affa9db6ed.tar.gz",
  "version":"0.1"
 }

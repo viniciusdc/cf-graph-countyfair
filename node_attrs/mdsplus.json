@@ -99,6 +99,25 @@
     "migrator_version",
     "name"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/336096099.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"MigrationYaml",
+    "migrator_object_version":1,
+    "migrator_version":0,
+    "name":"python38"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_object_version",
+    "migrator_version",
+    "name"
+   ]
   }
  ],
  "bad":false,
@@ -230,7 +249,7 @@
  },
  "name":"mdsplus",
  "new_version":false,
- "pinning_version":"2019.08.12",
+ "pinning_version":"2019.11.01",
  "raw_meta_yaml":"{% set name = \"mdsplus\" %}\n{% set version = \"7.7.15\" %}\n{% set sha256 = \"37e0aa1d48f5aa279d80918039dc5538eb461e885828db8ee8e4f53992d4215c\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  fn: {{ name }}-{{ version }}.tar.gz\n  url: https://github.com/MDSplus/{{ name }}/archive/stable_release-{{ version | replace('.','-') }}.tar.gz\n  sha256: {{ sha256 }}\n  \n  #Patches are mostly to correct /usr/local type explicit statements of dependencies  ; issue raised at https://github.com/MDSplus/mdsplus/issues/1201\n  patches:\n    - configure.patch.osx  # [osx]\n    - configure.patch.linux  # [linux]\n    - mdsdcl_show_version.c.patch\n    - Makefile.in.patch\n    - mdstcpip_Makefile.in.patch\n    - mdsdcl_Makefile.in.patch\n\nbuild:\n  number: 1005\n  skip: True  # [win]\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n    - {{ compiler('fortran') }}\n  host:\n    - freetds 1.*\n    - icu 58.*\n    - libiconv 1.*\n    - libxml2 2.*\n    - perl\n    - pkg-config\n    - python\n    - readline 7.*\n    - setuptools\n  run:\n    - freetds 1.*\n    - icu 58.*\n    - libiconv 1.*\n    - libxml2 2.*\n    - numpy\n    - python\n    - readline 7.*\n\ntest:\n  imports:\n    - MDSplus\n\nabout:\n  home: http://www.mdsplus.org/\n  license: MIT\n  license_family: MIT\n  license_file: MDSplus-License.txt\n  summary: MDSplus data management system\n  description: |\n    MDSplus is a set of software tools for data acquisition and\n    storage and a methodology for management of complex\n    scientific data.\n\n    MDSplus allows all data from an experiment or simulation\n    code to be stored into a single, self-descriptive,\n    hierarchical structure. The system was designed to enable\n    users to easily construct complete and coherent data sets.\n\n    The MDSplus programming interface contains only a few basic\n    commands, simplifying data access even into complex\n    structures. Using the client/server model, data at remote\n    sites can be read or written without file transfers.\n    MDSplus includes x-windows and java tools for viewing data\n    or for modifying or viewing the underlying structures.\n  dev_url: https://github.com/MDSplus/mdsplus\n\nextra:\n  recipe-maintainers:\n    - smithsp\n",
  "req":{
   "__set__":true,
@@ -250,7 +269,7 @@
    "setuptools"
   ]
  },
- "smithy_version":"3.4.1",
+ "smithy_version":"3.6.1",
  "url":"https://github.com/MDSplus/mdsplus/archive/stable_release-7-7-15.tar.gz",
  "version":"7.7.15"
 }

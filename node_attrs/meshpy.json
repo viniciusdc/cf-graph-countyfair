@@ -16,6 +16,25 @@
     "migrator_version",
     "name"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/336096009.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"MigrationYaml",
+    "migrator_object_version":1,
+    "migrator_version":0,
+    "name":"python38"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_object_version",
+    "migrator_version",
+    "name"
+   ]
   }
  ],
  "bad":false,
@@ -138,7 +157,7 @@
  },
  "name":"meshpy",
  "new_version":"2018.2.1",
- "pinning_version":"2018.11.24",
+ "pinning_version":"2019.11.01",
  "raw_meta_yaml":"{% set name = \"meshpy\" %}\n{% set uname = \"MeshPy\" %}\n{% set version = \"2018.2.1\" %}\n{% set sha256 = \"4e6d18c2d19cda540967b6dc6ca844926020c9134cb4075c0f73d47fbbdb2f9e\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  fn: {{ uname }}-{{ version }}.tar.gz\n  url: https://pypi.io/packages/source/{{ uname[0] }}/{{ uname }}/{{ uname }}-{{ version }}.tar.gz\n  sha256: {{ sha256 }}\n\nbuild:\n  number: 1000\n  script:\n    - \"{{ PYTHON }} -m pip install . --no-deps -v\"\n    - echo src/cpp/tetgen-LICENSE >> doc/faq.rst\n  skip: True  # [win and py<35]\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n  host:\n    - python\n    - pip\n    - pytools\n    - numpy\n    - pytest\n    - six\n    - pybind11\n  run:\n    - python\n    - pytools\n    - numpy\n    - six\n\ntest:\n  source_files:\n    - test/*\n  requires:\n    - pytest\n  commands:\n    - pytest test\n  imports:\n    - meshpy\n\nabout:\n  home: http://github.com/inducer/meshpy\n  license: MIT, Proprietary (Triangle), AGPL-3.0 (TetGen)\n  license_file: doc/faq.rst\n  summary: 'Triangular and Tetrahedral Mesh Generator'\n\n  description: |\n\n    MeshPy offers quality triangular and tetrahedral mesh generation for\n    Python. Meshes of this type are chiefly used in finite-element\n    simulation codes, but also have many other applications ranging from\n    computer graphics to robotics.\n\n    In order to generate 2D and 3D meshes, MeshPy provides Python interfaces\n    to three well-regarded mesh generators,\n    [Triangle](http://www.cs.cmu.edu/~quake/triangle.html) by J. Shewchuk,\n    [TetGen](http://tetgen.berlios.de/) by Hang Si, and\n    [gmsh](http://www.geuz.org/gmsh/) by Christophe Geuzaine and\n    Jean-Francois Remacle. The former two are included in the package in\n    slightly modified versions. A generic mesh reader for the latter is\n    included, as is an easy way to run gmsh from a Python script.\n\n    As of Version 0.91.2, MeshPy also works with Python 3.\n\n  doc_url: https://documen.tician.de/meshpy\n  dev_url: https://github.com/inducer/meshpy\n\nextra:\n  recipe-maintainers:\n    - inducer\n    - isuruf\n",
  "req":{
   "__set__":true,
@@ -154,7 +173,7 @@
    "six"
   ]
  },
- "smithy_version":"3.1.12",
+ "smithy_version":"3.6.1",
  "url":"https://pypi.io/packages/source/M/MeshPy/MeshPy-2018.2.1.tar.gz",
  "version":"2018.2.1"
 }
