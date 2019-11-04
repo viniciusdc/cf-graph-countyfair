@@ -156,7 +156,7 @@
   }
  },
  "name":"r-gridsvg",
- "new_version":false,
+ "new_version":"1.7_1",
  "pinning_version":"2019.07.19",
  "raw_meta_yaml":"{% set version = '1.6-0' %}\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-gridsvg\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  fn: gridSVG_{{ version }}.tar.gz\n  url:\n    - {{ cran_mirror }}/src/contrib/gridSVG_{{ version }}.tar.gz\n    - {{ cran_mirror }}/src/contrib/Archive/gridSVG/gridSVG_{{ version }}.tar.gz\n  sha256: 122c8882e5f89a7aed6a141a68fd9291ec83ffd321385a3aeb4e536620b8dd1a\n\nbuild:\n  noarch: generic\n  merge_build_host: True  # [win]\n  number: 1002\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - {{posix}}zip               # [win]\n  host:\n    - r-base\n    - r-xml\n    - r-jsonlite\n  run:\n    - r-base\n    - r-xml\n    - r-jsonlite\n\ntest:\n  commands:\n    - $R -e \"library('gridSVG')\"           # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('gridSVG')\\\"\"  # [win]\n\nabout:\n  home: https://CRAN.R-project.org/package=gridSVG\n  license: GPL\n  summary: Functions to export graphics drawn with package grid to SVG format.  Additional functions\n    provide access to SVG features that are not available in standard R graphics, such\n    as hyperlinks,  animation, filters, masks, clipping paths, and gradient and pattern\n    fills.\n  license_family: GPL\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n    - johanneskoester\n    - bgruening\n    - daler\n    - jdblischak\n    - cbrueffer\n    - dbast\n",
  "req":{

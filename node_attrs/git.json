@@ -238,42 +238,26 @@
     "migrator_version",
     "version"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/336525903.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"Version",
+    "migrator_version":0,
+    "version":"2.24.0"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "version"
+   ]
   }
  ],
- "bad":{
-  "code":404,
-  "exception":"HTTP Error 404: Not Found",
-  "traceback":[
-   "Traceback (most recent call last):",
-   "  File \"/root/repo/cf-scripts/conda_forge_tick/auto_tick.xsh\", line 691, in main",
-   "    hash_type=attrs.get('hash_type', 'sha256'))",
-   "  File \"/root/repo/cf-scripts/conda_forge_tick/auto_tick.xsh\", line 98, in run",
-   "    migrate_return = migrator.migrate(recipe_dir, attrs, **kwargs)",
-   "  File \"/root/repo/cf-scripts/conda_forge_tick/migrators.xsh\", line 465, in migrate",
-   "    new_patterns = self.get_hash_patterns('meta.yaml', urls, hash_type)",
-   "  File \"/root/repo/cf-scripts/conda_forge_tick/migrators.xsh\", line 382, in get_hash_patterns",
-   "    hash = hash_url(url, hash_type)",
-   "  File \"/opt/conda/envs/run_env/lib/python3.7/site-packages/rever/tools.xsh\", line 207, in hash_url",
-   "    for b in stream_url_progress(url, verb='Hashing', quiet=quiet):",
-   "  File \"/opt/conda/envs/run_env/lib/python3.7/site-packages/rever/tools.xsh\", line 179, in stream_url_progress",
-   "    with urllib.request.urlopen(url) as f:",
-   "  File \"/opt/conda/envs/run_env/lib/python3.7/urllib/request.py\", line 222, in urlopen",
-   "    return opener.open(url, data, timeout)",
-   "  File \"/opt/conda/envs/run_env/lib/python3.7/urllib/request.py\", line 531, in open",
-   "    response = meth(req, response)",
-   "  File \"/opt/conda/envs/run_env/lib/python3.7/urllib/request.py\", line 641, in http_response",
-   "    'http', request, response, code, msg, hdrs)",
-   "  File \"/opt/conda/envs/run_env/lib/python3.7/urllib/request.py\", line 569, in error",
-   "    return self._call_chain(*args)",
-   "  File \"/opt/conda/envs/run_env/lib/python3.7/urllib/request.py\", line 503, in _call_chain",
-   "    result = func(*args)",
-   "  File \"/opt/conda/envs/run_env/lib/python3.7/urllib/request.py\", line 649, in http_error_default",
-   "    raise HTTPError(req.full_url, code, msg, hdrs, fp)",
-   "urllib.error.HTTPError: HTTP Error 404: Not Found",
-   ""
-  ],
-  "url":"https://github.com/git-for-windows/git/releases/download/v2.24.0.windows.1/PortableGit-2.24.0-64-bit.7z.exe"
- },
+ "bad":false,
  "conda-forge.yml":{
   "compiler_stack":"comp7",
   "max_py_ver":"37",
@@ -417,8 +401,8 @@
   }
  },
  "name":"git",
- "new_version":false,
- "pinning_version":"2019.08.12",
+ "new_version":"2.24.0",
+ "pinning_version":"2019.11.01",
  "raw_meta_yaml":"{% set version = \"2.23.0\" %}\n\npackage:\n  name: git\n  version: {{ version }}\n\nsource:\n  - url: https://github.com/git/git/archive/v{{ version }}.tar.gz  # [not win]\n    folder: code  # [not win]\n    sha256: 7d84f5d6f48e95b467a04a8aa1d474e0d21abc7877998af945568d2634fea46a  # [not win]\n    patches:  # [not win]\n      - 0001-macOS-Do-not-use-the-system-Wish-urgh.patch  # [not win]\n  - url: https://mirrors.edge.kernel.org/pub/software/scm/git/git-manpages-{{ version }}.tar.gz  # [not win]\n    folder: manpages  # [not win]\n    sha256: a5b0998f95c2290386d191d34780d145ea67e527fac98541e0350749bf76be75  # [not win]\n\n  - url: https://github.com/git-for-windows/git/releases/download/v{{ version }}.windows.1/PortableGit-{{ version }}-64-bit.7z.exe  # [win64]\n    folder: .  # [win64]\n    sha256: 501d8be861ebb8694df3f47f1f673996b1d1672e12559d4a07fae7a2eca3afc7  # [win64]\n\nbuild:\n  number: 2\n  # git hardcodes paths to external utilities (e.g. curl)\n  detect_binary_files_with_prefix: true\n\nrequirements:\n  build:\n    - {{ compiler('c') }}  # [unix]\n    - autoconf  # [unix]\n    - make      # [unix]\n    - 7za       # [win]\n  host:\n    - curl      # [unix]\n    - expat     # [unix]\n    - gettext   # [unix]\n    - libiconv  # [unix]\n    - openssl   # [unix]\n    - pcre      # [unix]\n    - perl      # [unix]\n    - tk        # [unix]\n    - zlib      # [unix]\n  run:\n    - curl      # [unix]\n    - expat     # [unix]\n    - gettext   # [unix]\n    - libiconv  # [unix]\n    - openssl   # [unix]\n    - pcre      # [unix]\n    - perl      # [unix]\n    - tk        # [unix]\n    - zlib      # [unix]\n\ntest:\n  commands:\n    # Verify git location.\n    - test -f $PREFIX/bin/git                               # [unix]\n    - test -f $PREFIX/bin/gitk                              # [unix]\n    - test -f $PREFIX/bin/git-credential-osxkeychain        # [osx]\n    - if not exist %LIBRARY_PREFIX%\\\\bin\\\\git.exe exit 1    # [win]\n\n    # Verify interactive support.\n    - test -f $PREFIX/libexec/git-core/git-add--interactive  # [unix]\n\n    # Run git commands.\n    - git --version\n    - git clone https://github.com/conda-forge/git-feedstock\n\n    # Git credential commands\n    - git-credential-osxkeychain 2>&1 | grep -q usage  # [osx]\n\n    # test completions\n    - bash $PREFIX/share/bash-completion/completions/git  # [unix]\n    - conda inspect linkages -p $PREFIX $PKG_NAME  # [not win]\n    - conda inspect objects -p $PREFIX $PKG_NAME  # [osx]\n\n    # confirm toplevel manpage\n    - test -f $PREFIX/man/man1/git.1  # [not win]\n\nabout:\n  home: https://git-scm.com/\n  license: GPL v2 and LGPL 2.1\n  license_file: code/COPYING  # [not win]\n  summary: distributed version control system\n\nextra:\n  recipe-maintainers:\n    - jakirkham\n    - msarahan\n    - pelson\n    - scopatz\n    - ocefpaf\n    - dougalsutherland\n",
  "req":{
   "__set__":true,
@@ -438,7 +422,7 @@
    "zlib"
   ]
  },
- "smithy_version":"3.4.1",
+ "smithy_version":"3.6.1",
  "url":"https://github.com/git/git/archive/v2.23.0.tar.gz",
  "version":"2.23.0"
 }
