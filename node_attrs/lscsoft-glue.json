@@ -98,6 +98,25 @@
     "migrator_version",
     "version"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/336303663.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"MigrationYaml",
+    "migrator_object_version":1,
+    "migrator_version":0,
+    "name":"python38"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_object_version",
+    "migrator_version",
+    "name"
+   ]
   }
  ],
  "bad":false,
@@ -227,7 +246,7 @@
  },
  "name":"lscsoft-glue",
  "new_version":"2.0.0",
- "pinning_version":"2019.02.15",
+ "pinning_version":"2019.11.01",
  "raw_meta_yaml":"{% set name = \"lscsoft-glue\" %}\n{% set version = \"2.0.0\" %}\n{% set sha256 = \"9bdfaebe4c921d83d1e3d1ca24379a644665e9d7530e7070665f387767c66923\" %}\n\npackage:\n  name: {{ name }}\n  version: {{ version }}\n\nsource:\n  fn: {{ name }}-{{ version }}.tar.gz\n  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz\n  sha256: {{ sha256 }}\n\nbuild:\n  number: 1\n  ignore_run_exports:\n    - m2w64-gcc-libs  # [win]\n\nrequirements:\n  build:\n    - {{ compiler('c') }}  # [unix]\n    - {{ compiler('m2w64_c') }}  # [win]\n  host:\n    - libpython  # [win]\n    - pip\n    - python\n    - setuptools\n  run:\n    - ligo-segments\n    - numpy\n    - pyopenssl\n    - python\n    - python-pegasus-wms\n    - six\n\ntest:\n  imports:\n    - glue\n    - glue.gpstime\n    - glue.iterutils\n    - glue.lal\n    - glue.ligolw\n    - glue.ligolw.ilwd\n    - glue.ligolw.tokenizer\n    - glue.pipeline\n    - glue.text_progress_bar\n    - glue.utils\n    - glue.workflow\n  commands:\n    # check links\n    - conda inspect linkages -p ${PREFIX} ${PKG_NAME}  # [not win]\n    - conda inspect objects -p ${PREFIX} ${PKG_NAME}  # [osx]\n\nabout:\n  home: https://git.ligo.org/lscsoft/{{ name }}\n  license: GPLv3\n  license_family: GPL\n  license_file: LICENSE\n  summary: Grid LSC User Engine\n  description: |\n    Glue is a collection of utilities for running data analysis pipelines\n    for online and offline analysis as well as accessing various grid\n    utilities.  It also provides the infrastructure for the segment\n    database.\n\nextra:\n  recipe-maintainers:\n    - duncanmmacleod\n    - rpfisher\n",
  "req":{
   "__set__":true,
@@ -245,7 +264,7 @@
    "six"
   ]
  },
- "smithy_version":"3.2.13",
+ "smithy_version":"3.6.1",
  "url":"https://pypi.io/packages/source/l/lscsoft-glue/lscsoft-glue-2.0.0.tar.gz",
  "version":"2.0.0"
 }
