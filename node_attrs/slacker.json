@@ -128,12 +128,14 @@
  "meta_yaml":{
   "about":{
    "home":"https://github.com/os/slacker",
-   "license":"Apache 2.0",
+   "license":"Apache-2.0",
+   "license_file":"LICENSE",
    "summary":"Slack API client"
   },
   "build":{
-   "number":"1000",
-   "script":"python setup.py install --single-version-externally-managed --record=record.txt"
+   "noarch":"python",
+   "number":"1001",
+   "script":" -m pip install . --no-deps -vv"
   },
   "extra":{
    "recipe-maintainers":[
@@ -157,12 +159,12 @@
   },
   "requirements":{
    "build":[
-    "setuptools",
     "python",
-    "setuptools",
+    "pip",
     "python",
-    "setuptools",
-    "python"
+    "pip",
+    "python",
+    "pip"
    ],
    "run":[
     "python",
@@ -174,7 +176,6 @@
    ]
   },
   "source":{
-   "fn":"slacker-0.12.0.tar.gz",
    "sha256":"7771d4edd2bf651f849b9ca84e54a9d343de4fd7a87fa8d31b872407441a4812",
    "url":"https://pypi.io/packages/source/s/slacker/slacker-0.12.0.tar.gz"
   },
@@ -189,13 +190,13 @@
  "name":"slacker",
  "new_version":"0.13.0",
  "pinning_version":"2019.11.01",
- "raw_meta_yaml":"{% set version = \"0.12.0\" %}\n{% set sha = \"7771d4edd2bf651f849b9ca84e54a9d343de4fd7a87fa8d31b872407441a4812\" %}\npackage:\n    name: slacker\n    version: {{ version }}\n\nsource:\n    url: https://pypi.io/packages/source/s/slacker/slacker-{{ version }}.tar.gz\n    fn: slacker-{{ version }}.tar.gz\n    sha256: {{ sha }}\n\nbuild:\n    number: 1000\n    script: python setup.py install --single-version-externally-managed --record=record.txt\n\nrequirements:\n    build:\n        - setuptools\n        - python\n    run:\n        - python\n        - requests\n\ntest:\n    imports:\n        - slacker\nabout:\n    home: https://github.com/os/slacker\n    license: Apache 2.0\n    summary: Slack API client\n\nextra:\n    recipe-maintainers:\n        - ericdill\n        - licode\n        - os\n        - tacaswell\n",
+ "raw_meta_yaml":"{% set version = \"0.12.0\" %}\n\npackage:\n  name: slacker\n  version: {{ version }}\n\nsource:\n  url: https://pypi.io/packages/source/s/slacker/slacker-{{ version }}.tar.gz\n  sha256: 7771d4edd2bf651f849b9ca84e54a9d343de4fd7a87fa8d31b872407441a4812\n\nbuild:\n  number: 1001\n  noarch: python\n  script: \"{{ PYTHON }} -m pip install . --no-deps -vv\"\n\nrequirements:\n  build:\n    - python\n    - pip \n  run:\n    - python\n    - requests\n\ntest:\n  imports:\n    - slacker\n\nabout:\n  home: https://github.com/os/slacker\n  license: Apache-2.0\n  license_file: LICENSE\n  summary: Slack API client\n\nextra:\n  recipe-maintainers:\n   - ericdill\n   - licode\n   - os\n   - tacaswell\n",
  "req":{
   "__set__":true,
   "elements":[
+   "pip",
    "python",
-   "requests",
-   "setuptools"
+   "requests"
   ]
  },
  "smithy_version":"3.6.1",

@@ -16,6 +16,25 @@
     "migrator_version",
     "name"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/336088705.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"MigrationYaml",
+    "migrator_object_version":1,
+    "migrator_version":0,
+    "name":"python38"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_object_version",
+    "migrator_version",
+    "name"
+   ]
   }
  ],
  "bad":false,
@@ -132,7 +151,7 @@
  },
  "name":"stir",
  "new_version":"stir_rel_3_00",
- "pinning_version":"2019.05.29",
+ "pinning_version":"2019.11.01",
  "raw_meta_yaml":"\n{% set name = \"STIR\" %}\n{% set version = \"3.0.1.dev2\" %}\n{% set sha256 = \"5a8be0cf3374118168203ccffc2198ab306a4d13d5412600660125c7a29439e8\" %}\n{% set treehash = \"course_MIC2018\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  fn: {{ name }}-{{ treehash }}.zip\n  url: https://github.com/UCL/{{ name }}/archive/{{ treehash }}.zip\n  sha256: {{ sha256 }}\n\nbuild:\n  skip: true  # [py2k]\n  skip: true  # [win and py<36]\n  skip: true  # [win]\n  skip: true  # [osx]\n  number: 1\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n    - cmake\n  host:\n    - python\n    - boost-cpp\n    - numpy\n    - swig\n  run:\n    - python\n    - {{ pin_compatible('numpy') }}\n\ntest:\n  requires:\n    - pytest\n  imports:\n    - stir\n  source_files:\n    - recon_test_pack\n    - src/swig/test/python\n  commands:\n    - conda inspect linkages -p $PREFIX {{ name|lower }}  # [not win]\n    - conda inspect objects -p $PREFIX {{ name|lower }}   # [osx]\n    - pytest src/swig/test/python\n    - cd recon_test_pack && ./run_tests.sh --nointbp  # [not win]\n    - cd recon_test_pack  # [win]\n    - run_tests  # [win]\n\n\nabout:\n  home: http://stir.sourceforge.net/\n  license: GPL and LGPL\n  license_family: GPL\n  license_file: LICENSE.txt\n  summary: 'Software for Tomographic Image Reconstruction'\n  description: |\n    STIR is Open Source software for use in tomographic imaging.\n    Its aim is to provide a Multi-Platform Object-Oriented framework for all data manipulations in tomographic imaging.\n  doc_url: http://stir.sourceforge.net/documentation\n  dev_url: https://github.com/UCL/STIR\n\nextra:\n  recipe-maintainers:\n    - olivierverdier\n    - KrisThielemans\n    - paskino\n    - casperdcl\n",
  "req":{
   "__set__":true,
@@ -147,7 +166,7 @@
    "swig"
   ]
  },
- "smithy_version":"3.3.4",
+ "smithy_version":"3.6.1",
  "url":"https://github.com/UCL/STIR/archive/course_MIC2018.zip",
  "version":"3.0.1.dev2"
 }

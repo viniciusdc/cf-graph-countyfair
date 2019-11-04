@@ -180,6 +180,25 @@
     "migrator_version",
     "version"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/336087453.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"MigrationYaml",
+    "migrator_object_version":1,
+    "migrator_version":0,
+    "name":"python38"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_object_version",
+    "migrator_version",
+    "name"
+   ]
   }
  ],
  "bad":false,
@@ -380,7 +399,7 @@
  },
  "name":"datalad",
  "new_version":"0.11.8",
- "pinning_version":"2019.10.11",
+ "pinning_version":"2019.11.01",
  "raw_meta_yaml":"{% set name = \"datalad\" %}\n{% set version = \"0.11.8\" %}\n{% set sha256 = \"8461106756033c8d87ee2e104860a19f4cc14274fa5814aeb7f52a21770926c4\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  fn: {{ name }}-{{ version }}.tar.gz\n  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz\n  sha256: {{ sha256 }}\n  patches:\n    # Should stay here\n    - 0001-Use-backports.lzma-instead-of-pyliblzma-in-setup.py.patch\n\nbuild:\n  number: 0\n  entry_points:\n    - datalad=datalad.cmdline.main:main\n    - git-annex-remote-datalad-archives=datalad.customremotes.archives:main\n    - git-annex-remote-datalad=datalad.customremotes.datalad:main\n  script: {{ PYTHON }} -m pip install . --no-deps -vv\n  # Do not even attempt until we get git-annex in there\n  # Also skip py2 for now since lacks python-dbus needed for secretstorage 2.x needed by keyring\n  skip: True  # [py<32]\n\nrequirements:\n  build:\n    - python\n    - pip\n    - setuptools\n    - pypandoc\n\n  run:\n    - appdirs\n    - boto\n    - chardet >=3.0.4\n    - colorama  # [win]\n    - exifread\n    - fasteners\n    - git-annex  # [linux]\n    - gitpython >=2.1.8\n    - humanize\n    - iso8601\n    - jsmin\n    - keyring >=8.0\n    - keyrings.alt\n    - mock >=1.0.1\n    - mutagen >=1.36\n    - msgpack-python\n    - patool >=1.7\n    - pygithub\n    - pyld <0.8|>=0.8.2\n    - pyperclip\n    - pyyaml\n    - backports.lzma  # [py<33]\n    - pillow\n    - python\n    - python-dateutil\n    # TODO\n    # - python-xmp-toolkit\n    - psutil\n    - requests >=1.2\n    - requests-ftp\n    - secretstorage  # [linux and py>32]\n    - simplejson\n    - six >=1.8.0\n    - tqdm\n    - whoosh\n    - wrapt\n    \ntest:\n  imports:\n    - datalad\n\n  requires:\n    - BeautifulSoup4\n    - httpretty >=0.8.14\n    - mock\n    - nibabel\n    - nose >=1.3.4\n    - vcrpy\n\nabout:\n  home: http://datalad.org\n  license: MIT\n  license_file: COPYING\n  summary: 'data distribution geared toward scientific datasets'\n  description: |\n    DataLad aims to make data management and data distribution more accessible.\n    To do that it stands on the shoulders of Git and Git-annex to deliver a\n    decentralized system for data exchange. This includes automated ingestion of\n    data from online portals, and exposing it in readily usable form as Git(-annex)\n    repositories, so-called datasets. The actual data storage and permission\n    management, however, remains with the original data providers.\n  doc_url: http://datalad.readthedocs.io/\n  dev_url: https://github.com/datalad/datalad\n\nextra:\n  recipe-maintainers:\n    - yarikoptic\n    - notestaff\n",
  "req":{
   "__set__":true,
@@ -423,7 +442,7 @@
    "wrapt"
   ]
  },
- "smithy_version":"3.6.0",
+ "smithy_version":"3.6.1",
  "url":"https://pypi.io/packages/source/d/datalad/datalad-0.11.7.tar.gz",
  "version":"0.11.8"
 }

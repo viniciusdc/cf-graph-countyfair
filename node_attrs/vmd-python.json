@@ -99,6 +99,25 @@
     "migrator_version",
     "name"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/336088330.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"MigrationYaml",
+    "migrator_object_version":1,
+    "migrator_version":0,
+    "name":"python38"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_object_version",
+    "migrator_version",
+    "name"
+   ]
   }
  ],
  "bad":false,
@@ -214,7 +233,7 @@
  },
  "name":"vmd-python",
  "new_version":"3.0.6",
- "pinning_version":"2019.10.11",
+ "pinning_version":"2019.11.01",
  "raw_meta_yaml":"{% set name = \"vmd-python\" %}\n{% set version = \"3.0.6\" %}\n{% set sha256 = \"bb98228ff5137ad9db294ba1085f6f7843cc1abcf7fab2c662cb5e2f71f550bd\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  fn: {{ name }}-v{{ version }}.tar.gz\n  url: https://github.com/Eigenstate/{{ name }}/archive/v{{ version }}.tar.gz\n  sha256: {{ sha256 }}\n\nbuild:\n  number: 1\n  skip: true  # [win]\n  script: python -m pip install --no-deps --ignore-installed .\n\nrequirements:\n  build:\n    - perl\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n  host:\n    - python\n    - pip\n    - libnetcdf\n    - expat\n    - numpy\n    - tk\n    - sqlite\n\n  run:\n    - python\n    - libnetcdf\n    - expat\n    - {{ pin_compatible('numpy') }}\n    - tk\n    - sqlite\n\ntest:\n  requires:\n    - pytest\n  commands:\n    - py.test --pyargs vmd\n    - conda inspect linkages -p $PREFIX {{ name|lower }}  # [not win]\n    - conda inspect objects -p $PREFIX {{ name|lower }}  # [osx]\n\nabout:\n  home: http://github.com/Eigenstate/vmd-python\n  license: VMD\n  license_file: LICENSE\n  summary: \"Visual Molecular Dynamics (VMD) Python bindings\"\n  description: |\n    vmd-python is Visual Molecular Dynamics (VMD) built as a Python extension\n    module, with a few usability improvements. It includes functionality for\n    loading and manipulating a variety of molecule file formats, working\n    with trajectories, and many assorted plugins.\n  doc_url: http://vmd.robinbetz.com\n  dev_url: https://github.com/Eigenstate/vmd-python\n\nextra:\n  recipe-maintainers:\n    - Eigenstate\n",
  "req":{
   "__set__":true,
@@ -232,7 +251,7 @@
    "tk"
   ]
  },
- "smithy_version":"3.6.0",
+ "smithy_version":"3.6.1",
  "url":"https://github.com/Eigenstate/vmd-python/archive/v3.0.6.tar.gz",
  "version":"3.0.6"
 }

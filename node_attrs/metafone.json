@@ -59,17 +59,19 @@
   "max_r_ver":"35"
  },
  "feedstock_name":"metafone",
- "hash_type":"md5",
+ "hash_type":"sha256",
  "meta_yaml":{
   "about":{
    "home":"https://github.com/oubiwann/metaphone",
-   "license":"BSD 3-clause",
+   "license":"BSD-3-Clause",
    "license_family":"BSD",
+   "license_file":"LICENSE",
    "summary":"A Python implementation of the double metaphone algorithms"
   },
   "build":{
-   "number":"1000",
-   "script":"python setup.py install --single-version-externally-managed --record record.txt"
+   "noarch":"python",
+   "number":"1001",
+   "script":" -m pip install . --no-deps -vv"
   },
   "extra":{
    "recipe-maintainers":[
@@ -88,13 +90,13 @@
   "requirements":{
    "build":[
     "python",
-    "setuptools",
+    "pip",
     "future",
     "python",
-    "setuptools",
+    "pip",
     "future",
     "python",
-    "setuptools",
+    "pip",
     "future"
    ],
    "run":[
@@ -107,8 +109,7 @@
    ]
   },
   "source":{
-   "fn":"Metafone-0.5.tar.gz",
-   "md5":"de53b4c513a985cca9b7a48181152b9b",
+   "sha256":"db34f0c1cedc1086493a5beec9a1a702325fd2b1d314515bd50f0a23131b0240",
    "url":"https://pypi.io/packages/source/M/Metafone/Metafone-0.5.tar.gz"
   },
   "test":{
@@ -122,13 +123,13 @@
  "name":"metafone",
  "new_version":"0.5",
  "pinning_version":"2019.11.01",
- "raw_meta_yaml":"{% set name = \"Metafone\" %}\n{% set version = \"0.5\" %}\n{% set hashtype = \"md5\" %}\n{% set hash = \"de53b4c513a985cca9b7a48181152b9b\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  fn: Metafone-{{ version }}.tar.gz\n  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz\n  {{ hashtype }}: {{ hash }}\n\nbuild:\n    number: 1000\n    script: python setup.py install --single-version-externally-managed --record record.txt\n\nrequirements:\n    build:\n        - python\n        - setuptools\n        - future\n    run:\n        - python\n        - future\n\ntest:\n    imports:\n        - metaphone\n\nabout:\n    home: https://github.com/oubiwann/metaphone\n    license: BSD 3-clause\n    license_family: BSD\n    summary: A Python implementation of the double metaphone algorithms\n\nextra:\n    recipe-maintainers:\n        - wyseguy7\n        - ericdill\n",
+ "raw_meta_yaml":"{% set version = \"0.5\" %}\n\npackage:\n  name: metafone\n  version: {{ version }}\n\nsource:\n  url: https://pypi.io/packages/source/M/Metafone/Metafone-{{ version }}.tar.gz\n  sha256: db34f0c1cedc1086493a5beec9a1a702325fd2b1d314515bd50f0a23131b0240\n\nbuild:\n  number: 1001\n  noarch: python\n  script: \"{{ PYTHON }} -m pip install . --no-deps -vv\"\n\nrequirements:\n  build:\n    - python\n    - pip\n    - future\n  run:\n    - python\n    - future\n\ntest:\n  imports:\n    - metaphone\n\nabout:\n  home: https://github.com/oubiwann/metaphone\n  license: BSD-3-Clause\n  license_file: LICENSE\n  license_family: BSD\n  summary: 'A Python implementation of the double metaphone algorithms'\n\nextra:\n  recipe-maintainers:\n    - wyseguy7\n    - ericdill\n",
  "req":{
   "__set__":true,
   "elements":[
    "future",
-   "python",
-   "setuptools"
+   "pip",
+   "python"
   ]
  },
  "smithy_version":"3.6.1",
