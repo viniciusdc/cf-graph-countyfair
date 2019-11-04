@@ -82,28 +82,22 @@
   },
   "package":{
    "name":"gwsumm",
-   "version":"0.1.5"
+   "version":"1.0.0"
   },
   "requirements":{
    "host":[
-    "jsmin",
-    "libsass",
     "pip",
     "python",
     "setuptools",
-    "jsmin",
-    "libsass",
     "pip",
     "python",
     "setuptools",
-    "jsmin",
-    "libsass",
     "pip",
     "python",
     "setuptools"
    ],
    "run":[
-    "python",
+    "python >=3.5",
     "python-dateutil",
     "lxml",
     "numpy >=1.10",
@@ -117,9 +111,10 @@
     "ligo-segments",
     "pygments",
     "MarkupPy",
-    "gwdetchar >=0.5.1",
-    "gwpy >=0.14.2",
-    "python",
+    "markdown",
+    "gwdetchar >=1.0.0",
+    "gwpy >=1.0.0",
+    "python >=3.5",
     "python-dateutil",
     "lxml",
     "numpy >=1.10",
@@ -133,9 +128,10 @@
     "ligo-segments",
     "pygments",
     "MarkupPy",
-    "gwdetchar >=0.5.1",
-    "gwpy >=0.14.2",
-    "python",
+    "markdown",
+    "gwdetchar >=1.0.0",
+    "gwpy >=1.0.0",
+    "python >=3.5",
     "python-dateutil",
     "lxml",
     "numpy >=1.10",
@@ -149,13 +145,14 @@
     "ligo-segments",
     "pygments",
     "MarkupPy",
-    "gwdetchar >=0.5.1",
-    "gwpy >=0.14.2"
+    "markdown",
+    "gwdetchar >=1.0.0",
+    "gwpy >=1.0.0"
    ]
   },
   "source":{
-   "sha256":"c6ec735463098c405af25f97052024ca71483040285345ec9b3dadf27e482f52",
-   "url":"https://pypi.io/packages/source/g/gwsumm/gwsumm-0.1.5.tar.gz"
+   "sha256":"cd1c67602a5e8e918cc39a3d3eebf89986d8c7e1b3900b40b321500f23670ad7",
+   "url":"https://pypi.io/packages/source/g/gwsumm/gwsumm-1.0.0.tar.gz"
   },
   "test":{
    "commands":[
@@ -168,8 +165,6 @@
     "gw_summary_pipe --help",
     "gwsumm-plot-guardian --help",
     "gwsumm-plot-triggers --help",
-    "test -f ${SP_DIR}/gwsumm/html/static/gwsumm.min.css",
-    "test -f ${SP_DIR}/gwsumm/html/static/gwsumm.min.js",
     "python -m pytest --pyargs gwsumm",
     "gw_summary --help",
     "gw_summary day --help",
@@ -179,8 +174,6 @@
     "gw_summary_pipe --help",
     "gwsumm-plot-guardian --help",
     "gwsumm-plot-triggers --help",
-    "test -f ${SP_DIR}/gwsumm/html/static/gwsumm.min.css",
-    "test -f ${SP_DIR}/gwsumm/html/static/gwsumm.min.js",
     "python -m pytest --pyargs gwsumm",
     "gw_summary --help",
     "gw_summary day --help",
@@ -189,9 +182,7 @@
     "gw_summary gps --help",
     "gw_summary_pipe --help",
     "gwsumm-plot-guardian --help",
-    "gwsumm-plot-triggers --help",
-    "test -f ${SP_DIR}/gwsumm/html/static/gwsumm.min.css",
-    "test -f ${SP_DIR}/gwsumm/html/static/gwsumm.min.js"
+    "gwsumm-plot-triggers --help"
    ],
    "imports":[
     "gwsumm",
@@ -271,16 +262,22 @@
     "gwsumm.utils"
    ],
    "requires":[
-    "pytest",
-    "pytest",
-    "pytest"
+    "pytest >=2.8,<3.7",
+    "coverage",
+    "flake8",
+    "pytest >=2.8,<3.7",
+    "coverage",
+    "flake8",
+    "pytest >=2.8,<3.7",
+    "coverage",
+    "flake8"
    ]
   }
  },
  "name":"gwsumm",
  "new_version":"1.0.0",
  "pinning_version":"2019.11.01",
- "raw_meta_yaml":"{% set name = \"gwsumm\" %}\n{% set version = \"0.1.5\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz\n  sha256: c6ec735463098c405af25f97052024ca71483040285345ec9b3dadf27e482f52\n\nbuild:\n  number: 0\n  skip: true  # [win]\n  script: \"{{ PYTHON }} -m pip install . --no-deps --ignore-installed --no-cache-dir -vvv\"\n\nrequirements:\n  host:\n    - jsmin\n    - libsass\n    - pip\n    - python\n    - setuptools\n  run:\n    - python\n    - enum34  # [py<34]\n    - python-dateutil\n    - lxml\n    - numpy >=1.10\n    - scipy >=1.2.0\n    - matplotlib >=2.0\n    - astropy >=1.2.1\n    - lalsuite\n    - gwtrigfind\n    - gwdatafind\n    - lscsoft-glue >=1.60.0\n    - ligo-segments\n    - pygments\n    - MarkupPy\n    - gwdetchar >=0.5.1\n    - gwpy >=0.14.2\n    - configparser  # [py<36]\n\ntest:\n  requires:\n    - pytest\n    - mock  # [py<30]\n  imports:\n    - gwsumm\n    - gwsumm.archive\n    - gwsumm.channels\n    - gwsumm.config\n    - gwsumm.data\n    - gwsumm.data.coherence\n    - gwsumm.data.mathutils\n    - gwsumm.data.range\n    - gwsumm.data.spectral\n    - gwsumm.data.timeseries\n    - gwsumm.data.utils\n    - gwsumm.globalv\n    - gwsumm.html\n    - gwsumm.html.bootstrap\n    - gwsumm.html.html5\n    - gwsumm.html.static\n    - gwsumm.io\n    - gwsumm.mode\n    - gwsumm.segments\n    - gwsumm.state\n    - gwsumm.state.all\n    - gwsumm.state.registry\n    - gwsumm.triggers\n    - gwsumm.units\n    - gwsumm.utils\n  commands:\n    # run unit tests\n    - python -m pytest --pyargs {{ name }}\n    # check scripts run ok\n    - gw_summary --help\n    - gw_summary day --help\n    - gw_summary week --help\n    - gw_summary month --help\n    - gw_summary gps --help\n    - gw_summary_pipe --help\n    - gwsumm-plot-guardian --help\n    - gwsumm-plot-triggers --help\n    # check HTML files were built and installed\n    - test -f ${SP_DIR}/gwsumm/html/static/gwsumm.min.css\n    - test -f ${SP_DIR}/gwsumm/html/static/gwsumm.min.js\n\nabout:\n  home: https://github.com/gwpy/gwsumm\n  license: GPL-3.0\n  license_family: GPL\n  license_file: LICENSE\n  summary: A python toolbox for Advanced LIGO detector characterisation\n  description: |\n    This package provides a python toolbox widely used for Advanced\n    LIGO detector characterisation and data quality. The tools contained\n    within summarise and archive sundry facets of the performance of the\n    LIGO instruments, and archive these data in a nested HTML structure.\n\nextra:\n  recipe-maintainers:\n    - alurban\n    - duncanmmacleod\n",
+ "raw_meta_yaml":"{% set name = \"gwsumm\" %}\n{% set version = \"1.0.0\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz\n  sha256: cd1c67602a5e8e918cc39a3d3eebf89986d8c7e1b3900b40b321500f23670ad7\n\nbuild:\n  number: 0\n  skip: true  # [win]\n  skip: true  # [osx]\n  skip: true  # [py2k]\n  script: \"{{ PYTHON }} -m pip install . --no-deps --ignore-installed --no-cache-dir -vvv\"\n\nrequirements:\n  host:\n    - pip\n    - python\n    - setuptools\n  run:\n    - python >=3.5\n    - python-dateutil\n    - lxml\n    - numpy >=1.10\n    - scipy >=1.2.0\n    - matplotlib >=2.0\n    - astropy >=1.2.1\n    - lalsuite\n    - gwtrigfind\n    - gwdatafind\n    - lscsoft-glue >=1.60.0\n    - ligo-segments\n    - pygments\n    - MarkupPy\n    - markdown\n    - gwdetchar >=1.0.0\n    - gwpy >=1.0.0\n    - configparser  # [py<36]\n\ntest:\n  requires:\n    - pytest >=2.8,<3.7\n    - coverage\n    - flake8\n  imports:\n    - gwsumm\n    - gwsumm.archive\n    - gwsumm.channels\n    - gwsumm.config\n    - gwsumm.data\n    - gwsumm.data.coherence\n    - gwsumm.data.mathutils\n    - gwsumm.data.range\n    - gwsumm.data.spectral\n    - gwsumm.data.timeseries\n    - gwsumm.data.utils\n    - gwsumm.globalv\n    - gwsumm.html\n    - gwsumm.html.bootstrap\n    - gwsumm.html.html5\n    - gwsumm.html.static\n    - gwsumm.io\n    - gwsumm.mode\n    - gwsumm.segments\n    - gwsumm.state\n    - gwsumm.state.all\n    - gwsumm.state.registry\n    - gwsumm.triggers\n    - gwsumm.units\n    - gwsumm.utils\n  commands:\n    # run unit tests\n    - python -m pytest --pyargs {{ name }}\n    # check scripts run ok\n    - gw_summary --help\n    - gw_summary day --help\n    - gw_summary week --help\n    - gw_summary month --help\n    - gw_summary gps --help\n    - gw_summary_pipe --help\n    - gwsumm-plot-guardian --help\n    - gwsumm-plot-triggers --help\n\nabout:\n  home: https://github.com/gwpy/gwsumm\n  license: GPL-3.0\n  license_family: GPL\n  license_file: LICENSE\n  summary: A python toolbox for Advanced LIGO detector characterisation\n  description: |\n    This package provides a python toolbox widely used for Advanced\n    LIGO detector characterisation and data quality. The tools contained\n    within summarise and archive sundry facets of the performance of the\n    LIGO instruments, and archive these data in a nested HTML structure.\n\nextra:\n  recipe-maintainers:\n    - alurban\n    - duncanmmacleod\n",
  "req":{
   "__set__":true,
   "elements":[
@@ -289,12 +286,11 @@
    "gwdetchar",
    "gwpy",
    "gwtrigfind",
-   "jsmin",
    "lalsuite",
-   "libsass",
    "ligo-segments",
    "lscsoft-glue",
    "lxml",
+   "markdown",
    "markuppy",
    "matplotlib",
    "numpy",
@@ -308,5 +304,5 @@
  },
  "smithy_version":"3.6.1",
  "url":"https://pypi.io/packages/source/g/gwsumm/gwsumm-0.1.5.tar.gz",
- "version":"0.1.5"
+ "version":"1.0.0"
 }
