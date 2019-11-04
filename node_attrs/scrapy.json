@@ -169,6 +169,25 @@
     "migrator_version",
     "version"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/336276659.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"MigrationYaml",
+    "migrator_object_version":1,
+    "migrator_version":0,
+    "name":"python38"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_object_version",
+    "migrator_version",
+    "name"
+   ]
   }
  ],
  "bad":false,
@@ -332,7 +351,7 @@
  },
  "name":"scrapy",
  "new_version":"1.8.0",
- "pinning_version":"2019.10.28",
+ "pinning_version":"2019.11.01",
  "raw_meta_yaml":"#\n# See the guidelines for updating this recipe for new releases:\n# https://github.com/scrapy/scrapy/wiki/Scrapy-release-procedure#conda-packages\n#\n{% set name = \"Scrapy\" %}\n{% set version = \"1.8.0\" %}\n{% set hash_type = \"sha256\" %}\n{% set hash_val = \"fe06576f9a4971de9dc0175c60fd92561e8275f2bad585c1cb5d65c5181b2db0\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  fn: {{ name }}-{{ version }}.tar.gz\n  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz\n  {{ hash_type }}: {{ hash_val }}\n\nbuild:\n  script: \"{{ PYTHON }} -m pip install . --no-deps -vv\"\n  number: 0\n\n# The requirements below shall match the requirements from the target package\n# version (check setup.py for changes).\nrequirements:\n  host:\n    - python\n    - pip\n    - setuptools\n\n  run:\n    - python\n    - setuptools\n    - twisted >=13.1.0  # [not py34 and not win]\n    - twisted >=13.1.0,<=19.2.0  # [py34 and not win]\n    - twisted >=16.4.0  # [win]\n    - w3lib >=1.17.0\n    - queuelib\n    - lxml  # [not py34]\n    - lxml <=4.3.5  # [py34]\n    - pyopenssl\n    - cssselect >=0.9\n    - six >=1.5.2\n    - parsel >=1.5.0\n    - pydispatcher >=2.0.5\n    - service_identity\n    - pywin32  # [win]\n\ntest:\n  requires:\n    - {{ compiler('c') }}\n    - {{ compiler(\"cxx\") }}\n    - brotlipy  # [win]\n    - pip\n  source_files:\n    - conftest.py\n    - requirements-py2.txt\n    - requirements-py3.txt\n    - scrapy\n    - tests\n  commands:\n    - scrapy version  # [not win]\n    - sed -i '/brotlipy/d' tests/requirements-py2.txt  # [win]\n    - pip install setuptools-scm  # required by indirect dependency pytest-forked\n    - pip install -ctests/constraints.txt -rrequirements-py2.txt -rtests/requirements-py2.txt Pillow!=3.0.0 botocore google-cloud-storage  # [py27]\n    - pip install -ctests/constraints.txt -rrequirements-py3.txt -rtests/requirements-py3.txt Pillow botocore google-cloud-storage  # [py3k]\n    - mv scrapy _scrapy\n    - rm tests/test_command_parse.py tests/test_command_shell.py tests/test_commands.py tests/test_crawler.py tests/test_downloader_handlers.py tests/test_exporters.py tests/test_feedexport.py tests/test_proxy_connect.py tests/test_utils_trackref.py  # [win]\n    - rm tests/test_command_parse.py tests/test_commands.py tests/test_crawler.py tests/test_downloader_handlers.py  # [osx]\n    - pytest _scrapy tests\n\nabout:\n  home: https://scrapy.org/\n  license: BSD 3-Clauses\n  license_file: LICENSE\n  summary: A high-level Python Screen Scraping framework\n  description: |\n    Scrapy is an open source and collaborative framework for extracting the\n    data you need from websites in a fast, simple, yet extensible way.\n  doc_url: https://docs.scrapy.org\n  dev_url: https://github.com/scrapy/scrapy\n\nextra:\n  recipe-maintainers:\n    - rmax\n    - redapple\n    - kmike\n    - Gallaecio\n    - wRAR\n    - dangra\n",
  "req":{
   "__set__":true,
@@ -353,7 +372,7 @@
    "w3lib"
   ]
  },
- "smithy_version":"3.6.0",
+ "smithy_version":"3.6.1",
  "url":"https://pypi.io/packages/source/S/Scrapy/Scrapy-1.7.3.tar.gz",
  "version":"1.8.0"
 }

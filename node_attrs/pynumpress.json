@@ -104,7 +104,7 @@
   },
   "build":{
    "number":"0",
-   "script":"python -m pip install --no-deps --ignore-installed ."
+   "script":"-m pip install . --no-deps -vv"
   },
   "extra":{
    "recipe-maintainers":[
@@ -161,7 +161,7 @@
  "name":"pynumpress",
  "new_version":"0.0.5",
  "pinning_version":"2019.11.01",
- "raw_meta_yaml":"{% set name = \"pynumpress\" %}\n{% set version = \"0.0.5\" %}\n{% set sha256 = \"1dfa54928a687f292a3901ec6c5383379029061b3bb5e8cdbeabf115e2ddc1e4\" %}\n\npackage:\n  name: '{{ name|lower }}'\n  version: '{{ version }}'\n\nsource:\n  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz\n  sha256: '{{ sha256 }}'\n\nbuild:\n  number: 0\n  script: python -m pip install --no-deps --ignore-installed .\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n  host:\n    - python\n    - pip\n    - numpy\n  run:\n    - python\n    - numpy\n\ntest:\n  imports:\n    - pynumpress\n\nabout:\n  home: https://github.com/mobiusklein/pynumpress\n  license: Apache-2.0\n  license_family: Apache\n  license_file: '{{ environ[\"RECIPE_DIR\"] }}/LICENSE'\n  summary: A thin, more convenient wrapper around MSNumpress\n\nextra:\n  recipe-maintainers:\n    - corburn\n",
+ "raw_meta_yaml":"{% set name = \"pynumpress\" %}\n{% set version = \"0.0.5\" %}\n{% set sha256 = \"1dfa54928a687f292a3901ec6c5383379029061b3bb5e8cdbeabf115e2ddc1e4\" %}\n\npackage:\n  name: '{{ name|lower }}'\n  version: '{{ version }}'\n\nsource:\n  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz\n  sha256: '{{ sha256 }}'\n\nbuild:\n  number: 0\n  script: {{ PYTHON }} -m pip install . --no-deps -vv\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n  host:\n    - python\n    - pip\n    - numpy\n  run:\n    - python\n    - numpy\n\ntest:\n  imports:\n    - pynumpress\n\nabout:\n  home: https://github.com/mobiusklein/pynumpress\n  license: Apache-2.0\n  license_family: Apache\n  license_file: '{{ environ[\"RECIPE_DIR\"] }}/LICENSE'\n  summary: A thin, more convenient wrapper around MSNumpress\n\nextra:\n  recipe-maintainers:\n    - corburn\n",
  "req":{
   "__set__":true,
   "elements":[

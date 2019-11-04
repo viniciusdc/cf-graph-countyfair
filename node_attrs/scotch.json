@@ -113,6 +113,23 @@
     "migrator_version",
     "name"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/336274452.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"Version",
+    "migrator_version":0,
+    "version":"6.0.9"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "version"
+   ]
   }
  ],
  "bad":false,
@@ -515,12 +532,12 @@
   }
  },
  "name":"scotch-pkgs",
- "new_version":false,
+ "new_version":"6.0.9",
  "outputs_names":[
   "ptscotch",
   "scotch"
  ],
- "pinning_version":"2019.09.08",
+ "pinning_version":"2019.11.01",
  "raw_meta_yaml":"{% set name = \"scotch\" %}\n{% set build = 1 %}\n{% set version = \"6.0.8\" %}\n{% set sha256 = \"0ba3f145026174304f910c8770a3cbb034f213c91d939573751cfbb4fd46d45e\" %}\n\n{% set major = version.split('.')[0] %}\npackage:\n  name: {{ name }}-pkgs\n  version: {{ version }}\n\nsource:\n  fn: {{ name }}-{{ version }}.tar.gz\n  url: https://gforge.inria.fr/frs/download.php/latestfile/298/scotch_{{ version }}.tar.gz\n  sha256: {{ sha256 }}\n  patches:\n    - patch1.diff\n    - debian-dynamic.patch\n\nbuild:\n  skip: true  # [win]\n  number: {{ build }}\n\noutputs:\n  - name: scotch\n    build:\n      script: ${RECIPE_DIR}/build.sh\n      run_exports:\n        - {{ pin_subpackage('scotch', max_pin='x.x.x') }}\n    requirements:\n      build:\n        - {{ compiler('c') }}\n        # preserve mpi variant for builds\n        - mpi * {{ mpi }}\n      host:\n        - bison\n        - flex\n        - zlib\n      run:\n        - zlib\n\n    test:\n      requires:\n        - {{ compiler('c') }}\n      source_files:\n        - src/check\n        - src/libscotch/common.h\n        - src/libscotch/module.h\n        - src/libscotch/fibo.h\n      files:\n        - Makefile.inc\n      commands:\n        {% for lib in [\n          'scotch',\n          'scotcherr',\n          'scotcherrexit',\n          'scotchmetis',\n          'esmumps',\n        ]\n        %}\n        - test -f \"${PREFIX}/lib/lib{{ lib }}${SHLIB_EXT}\"\n        - test -f \"${PREFIX}/lib/lib{{ lib }}-{{ major }}${SHLIB_EXT}\"\n        {% endfor %}\n        - test -f \"${PREFIX}/include/scotch.h\"\n        - test -f \"${PREFIX}/include/scotchf.h\"\n        - test -f \"${PREFIX}/include/esmumps.h\"\n        - test -f \"${PREFIX}/include/scotch/metis.h\"\n        - test ! -f \"${PREFIX}/include/metis.h\"\n  - name: ptscotch\n    build:\n      script: ${RECIPE_DIR}/build.sh\n      run_exports:\n        - {{ pin_subpackage('ptscotch', max_pin='x.x.x') }}\n    requirements:\n      build:\n        - {{ compiler('c') }}\n      host:\n        - flex\n        - {{ mpi }}\n        - scotch\n        - zlib\n      run:\n        - {{ mpi }}\n        - {{ pin_subpackage('scotch', max_pin='x.x.x') }}\n        - zlib\n    test:\n      requires:\n        - {{ compiler('c') }}\n        - {{ compiler('cxx') }}\n      source_files:\n        - src/check\n        - src/libscotch/common.h\n        - src/libscotch/module.h\n      files:\n        - Makefile.inc\n      commands:\n        {% for lib in [\n          'ptscotch',\n          'ptscotcherr',\n          'ptscotcherrexit',\n          'ptscotchparmetis',\n          'ptesmumps',\n        ]\n        %}\n        - test -f \"${PREFIX}/lib/lib{{ lib }}${SHLIB_EXT}\"\n        - test -f \"${PREFIX}/lib/lib{{ lib }}-{{ major }}${SHLIB_EXT}\"\n        {% endfor %}\n        - test -f \"${PREFIX}/include/ptscotch.h\"\n        - test -f \"${PREFIX}/include/ptscotchf.h\"\n        - test -f \"${PREFIX}/include/esmumps.h\"\n        - test -f \"${PREFIX}/include/scotch/parmetis.h\"\n        - test ! -f \"${PREFIX}/include/parmetis.h\"\n    about:\n      summary: 'PT-SCOTCH: (Parallel) Static Mapping, Graph, Mesh and Hypergraph Partitioning, and Parallel and Sequential Sparse Matrix Ordering Package'\n\n\n\nabout:\n  home: https://www.labri.fr/perso/pelegrin/scotch/\n  license: CeCILL-C\n  license_file: doc/CeCILL-C_V1-en.txt\n  summary: 'SCOTCH: Static Mapping, Graph, Mesh and Hypergraph Partitioning, and Parallel and Sequential Sparse Matrix Ordering Package'\n  description: |\n    Software package and libraries for sequential and parallel\n    graph partitioning, static mapping and clustering, sequential\n    mesh and hypergraph partitioning, and sequential and parallel\n    sparse matrix block ordering.\n  doc_url: http://gforge.inria.fr/docman/?group_id=248&dirid=326\n\nextra:\n  recipe-maintainers:\n    - basnijholt\n    - dalcinl\n    - minrk\n    - davidbrochart\n    - SylvainCorlay\n",
  "req":{
   "__set__":true,
@@ -534,7 +551,7 @@
    "zlib"
   ]
  },
- "smithy_version":"3.4.5",
+ "smithy_version":"3.6.1",
  "url":"https://gforge.inria.fr/frs/download.php/latestfile/298/scotch_6.0.8.tar.gz",
  "version":"6.0.8"
 }
