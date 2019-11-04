@@ -188,12 +188,7 @@
    "summary":"mlpack a fast, flexible machine learning library"
   },
   "build":{
-   "features":[
-    "blas_openblas",
-    "blas_openblas",
-    "blas_openblas"
-   ],
-   "number":"1202",
+   "number":"0",
    "skip":true
   },
   "extra":{
@@ -205,20 +200,26 @@
   },
   "package":{
    "name":"mlpack",
-   "version":"3.0.2"
+   "version":"3.2.1"
   },
   "requirements":{
    "build":[
+    "pkg-config",
     "cmake",
-    "compatible_pin_stub",
+    "make",
+    "cotire",
     "c_compiler_stub",
     "cxx_compiler_stub",
+    "pkg-config",
     "cmake",
-    "compatible_pin_stub",
+    "make",
+    "cotire",
     "c_compiler_stub",
     "cxx_compiler_stub",
+    "pkg-config",
     "cmake",
-    "compatible_pin_stub",
+    "make",
+    "cotire",
     "c_compiler_stub",
     "cxx_compiler_stub"
    ],
@@ -231,8 +232,10 @@
     "pandas  >=0.15.0",
     "armadillo >=6.500.0",
     "pytest-runner",
-    "blas 1.1 openblas",
     "openblas",
+    "ensmallen >=2.10.0",
+    "libcblas",
+    "libblas",
     "cython >=0.24",
     "setuptools",
     "boost",
@@ -241,8 +244,10 @@
     "pandas  >=0.15.0",
     "armadillo >=6.500.0",
     "pytest-runner",
-    "blas 1.1 openblas",
     "openblas",
+    "ensmallen >=2.10.0",
+    "libcblas",
+    "libblas",
     "cython >=0.24",
     "setuptools",
     "boost",
@@ -251,34 +256,38 @@
     "pandas  >=0.15.0",
     "armadillo >=6.500.0",
     "pytest-runner",
-    "blas 1.1 openblas",
-    "openblas"
+    "openblas",
+    "ensmallen >=2.10.0",
+    "libcblas",
+    "libblas"
    ],
    "run":[
     "boost",
     "python",
     "pandas  >=0.15.0",
     "armadillo >=6.500.0",
-    "blas 1.1 openblas",
     "openblas",
+    "compatible_pin_stub",
+    "ensmallen >=2.10.0",
     "boost",
     "python",
     "pandas  >=0.15.0",
     "armadillo >=6.500.0",
-    "blas 1.1 openblas",
     "openblas",
+    "compatible_pin_stub",
+    "ensmallen >=2.10.0",
     "boost",
     "python",
     "pandas  >=0.15.0",
     "armadillo >=6.500.0",
-    "blas 1.1 openblas",
-    "openblas"
+    "openblas",
+    "compatible_pin_stub",
+    "ensmallen >=2.10.0"
    ]
   },
   "source":{
-   "fn":"mlpack-3.0.2.tar.gz",
-   "sha256":"69e81178839594049d84526b8f9612825f238f7cfe1f6d579bd6461ed48e5aa0",
-   "url":"http://www.mlpack.org/files/mlpack-3.0.2.tar.gz"
+   "sha256":"3fa25157a0a6e91fd5ba223ebd911e5d86c0664d969ea3f7768d823448562f36",
+   "url":"http://www.mlpack.org/files/mlpack-3.2.1.tar.gz"
   },
   "test":{
    "commands":[
@@ -299,21 +308,26 @@
  "name":"mlpack",
  "new_version":"3.2.1",
  "pinning_version":"2019.10.01",
- "raw_meta_yaml":"{% set version = \"3.0.2\" %}\n{% set build_number = 1002 %}\n\n{% set variant = \"openblas\" %}\n{% set build_number = build_number + 200 %}\n\n\npackage:\n    name: mlpack\n    version: {{ version }}\n\nsource:\n    fn: mlpack-{{ version }}.tar.gz\n    url: http://www.mlpack.org/files/mlpack-{{ version }}.tar.gz\n    sha256: 69e81178839594049d84526b8f9612825f238f7cfe1f6d579bd6461ed48e5aa0\n\nbuild:\n  number: {{ build_number }}\n  skip: true  # [win or osx]\n  features:\n    - blas_{{ variant }}\n\nrequirements:\n  build:\n    - cmake\n    - {{ pin_compatible('numpy') }}\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n  host:\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n    - pkgconfig\n  host:\n    - cython >=0.24\n    - setuptools\n    - boost\n    - python\n    - numpy\n    - pandas  >=0.15.0\n    - armadillo >=6.500.0\n    - pytest-runner\n    - blas 1.1 {{ variant }}\n    - openblas\n  run:\n    - boost\n    - python\n    - pandas  >=0.15.0\n    - armadillo >=6.500.0\n    - blas 1.1 {{ variant }}\n    - openblas\ntest:\n  imports:\n    - mlpack\n    - mlpack.knn\n  commands:\n    - mlpack_knn --help\n\nabout:\n    home: http://www.mlpack.org\n    license: BSD-3.0\n    license_file: LICENSE.txt\n    summary: 'mlpack a fast, flexible machine learning library'\n    description: |\n      mlpack is an intuitive, fast, and flexible C++ machine learning library\n      with bindings to other languages. It is meant to be a machine learning analog\n      to LAPACK, and aims to implement a wide array of machine learning methods and\n      functions as a \"swiss army knife\" for machine learning researchers. In addition\n      to its powerful C++ interface, mlpack also provides command-line programs and\n      Python bindings.\n    doc_url: http://www.mlpack.org/docs.html\n    dev_url: https://github.com/mlpack/mlpack\n\nextra:\n    recipe-maintainers:\n      - marcelotrevisani\n",
+ "raw_meta_yaml":"{% set version = \"3.2.1\" %}\n\npackage:\n  name: mlpack\n  version: {{ version }}\n\nsource:\n  url: http://www.mlpack.org/files/mlpack-{{ version }}.tar.gz\n  sha256: 3fa25157a0a6e91fd5ba223ebd911e5d86c0664d969ea3f7768d823448562f36\n\nbuild:\n  number: 0\n  skip: true  # [win or osx]\n\nrequirements:\n  build:\n    - pkg-config\n    - cmake\n    - make\n    - cotire\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n  host:\n    - cython >=0.24\n    - setuptools\n    - boost\n    - python\n    - numpy\n    - pandas  >=0.15.0\n    - armadillo >=6.500.0\n    - pytest-runner\n    - openblas\n    - ensmallen >=2.10.0\n    - libcblas\n    - libblas\n  run:\n    - boost\n    - python\n    - pandas  >=0.15.0\n    - armadillo >=6.500.0\n    - openblas\n    - {{ pin_compatible('numpy') }}\n    - ensmallen >=2.10.0\ntest:\n  imports:\n    - mlpack\n    - mlpack.knn\n  commands:\n    - mlpack_knn --help\n\nabout:\n    home: http://www.mlpack.org\n    license: BSD-3.0\n    license_file: LICENSE.txt\n    summary: 'mlpack a fast, flexible machine learning library'\n    description: |\n      mlpack is an intuitive, fast, and flexible C++ machine learning library\n      with bindings to other languages. It is meant to be a machine learning analog\n      to LAPACK, and aims to implement a wide array of machine learning methods and\n      functions as a \"swiss army knife\" for machine learning researchers. In addition\n      to its powerful C++ interface, mlpack also provides command-line programs and\n      Python bindings.\n    doc_url: http://www.mlpack.org/docs.html\n    dev_url: https://github.com/mlpack/mlpack\n\nextra:\n    recipe-maintainers:\n      - marcelotrevisani\n",
  "req":{
   "__set__":true,
   "elements":[
    "armadillo",
-   "blas",
    "boost",
    "c_compiler_stub",
    "cmake",
    "compatible_pin_stub",
+   "cotire",
    "cxx_compiler_stub",
    "cython",
+   "ensmallen",
+   "libblas",
+   "libcblas",
+   "make",
    "numpy",
    "openblas",
    "pandas",
+   "pkg-config",
    "pytest-runner",
    "python",
    "setuptools"
@@ -321,5 +335,5 @@
  },
  "smithy_version":"3.4.8",
  "url":"http://www.mlpack.org/files/mlpack-3.0.2.tar.gz",
- "version":"3.0.2"
+ "version":"3.2.1"
 }
