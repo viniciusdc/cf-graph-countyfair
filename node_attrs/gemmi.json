@@ -192,7 +192,7 @@
    "summary":"Macromolecular crystallography library and utilities."
   },
   "build":{
-   "number":"0"
+   "number":"1"
   },
   "extra":{
    "recipe-maintainers":[
@@ -220,28 +220,27 @@
    ],
    "host":[
     "python",
-    "pip",
     "pybind11",
     "zlib",
     "python",
-    "pip",
     "pybind11",
     "zlib",
     "python",
-    "pip",
     "pybind11",
     "zlib"
    ],
    "run":[
     "python",
-    "zlib",
     "python",
-    "zlib",
-    "python",
-    "zlib"
+    "python"
    ]
   },
   "source":{
+   "patches":[
+    "gz.patch",
+    "gz.patch",
+    "gz.patch"
+   ],
    "sha256":"58952b58fb1edb2172e5b8e33f76d31913d457a4d42707dff68871baa7eae13d",
    "url":"https://github.com/project-gemmi/gemmi/archive/v0.3.1.tar.gz"
   },
@@ -261,7 +260,7 @@
  "name":"gemmi",
  "new_version":"0.3.1",
  "pinning_version":"2019.11.01",
- "raw_meta_yaml":"{% set name = \"gemmi\" %}\n{% set version = \"0.3.1\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  url: https://github.com/project-gemmi/{{ name }}/archive/v{{ version }}.tar.gz\n  sha256: 58952b58fb1edb2172e5b8e33f76d31913d457a4d42707dff68871baa7eae13d\n\nbuild:\n  number: 0\n  skip: true  # [win and py27]\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n    - cmake\n    - ninja  # [win]\n  host:\n    - python\n    - pip\n    - pybind11\n    - zlib\n  run: \n    - python\n    - zlib\n\ntest:\n  commands:\n    - gemmi --help\n  imports: \n    - gemmi\n\nabout:\n  home: https://project-gemmi.github.io/\n  license: MPL-2.0\n  license_family: OTHER\n  license_file: LICENSE.txt\n  summary: 'Macromolecular crystallography library and utilities.'\n  doc_url: https://gemmi.readthedocs.io/\n  dev_url: https://github.com/project-gemmi/gemmi\n\nextra:\n  recipe-maintainers:\n    - mcs07\n",
+ "raw_meta_yaml":"{% set name = \"gemmi\" %}\n{% set version = \"0.3.1\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  url: https://github.com/project-gemmi/{{ name }}/archive/v{{ version }}.tar.gz\n  sha256: 58952b58fb1edb2172e5b8e33f76d31913d457a4d42707dff68871baa7eae13d\n  patches:\n    - gz.patch\n\nbuild:\n  number: 1\n  skip: true  # [win and py27]\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n    - cmake\n    - ninja  # [win]\n  host:\n    - python\n    - pybind11\n    - zlib\n  run: \n    - python\n\ntest:\n  commands:\n    - gemmi --help\n  imports: \n    - gemmi\n\nabout:\n  home: https://project-gemmi.github.io/\n  license: MPL-2.0\n  license_family: OTHER\n  license_file: LICENSE.txt\n  summary: 'Macromolecular crystallography library and utilities.'\n  doc_url: https://gemmi.readthedocs.io/\n  dev_url: https://github.com/project-gemmi/gemmi\n\nextra:\n  recipe-maintainers:\n    - mcs07\n",
  "req":{
   "__set__":true,
   "elements":[
@@ -269,7 +268,6 @@
    "cmake",
    "cxx_compiler_stub",
    "ninja",
-   "pip",
    "pybind11",
    "python",
    "zlib"
