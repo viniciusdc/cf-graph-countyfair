@@ -132,7 +132,6 @@
     "coin3d",
     "soqt",
     "qt",
-    "colorama",
     "python",
     "coin3d",
     "soqt",
@@ -181,7 +180,7 @@
  "name":"pivy",
  "new_version":"0.6.4",
  "pinning_version":"2019.11.01",
- "raw_meta_yaml":"{% set name = \"pivy\" %}\n{% set version = \"0.6.5a3\" %}\n{% set sha256 = \"f28ba2ea9d1fc6308ed9fd6b1e40113cfd26e0790be1386fa940802b505bf44f\" %}\n\npackage:\n    name: {{ name }}\n    version: {{ version }}\n\nsource:\n    fn: {{ name }}.tar.gz\n    url: https://github.com/FreeCAD/pivy/archive/{{ version }}.tar.gz\n    sha256: {{ sha256 }}\n\nbuild:\n    number: 0\n\nrequirements:\n    build:\n        - {{ compiler(\"cxx\") }}\n        - {{ cdt('mesa-libgl-devel') }}  # [linux]\n        - msinttypes  # [win]\n        - cmake\n        - swig\n    host:\n        - python\n        - coin3d\n        - soqt\n        - qt\n        - colorama\n    run:\n        - python\n        - coin3d\n        - qt\n        - pyside2\n        - soqt\n\ntest:\n    imports:\n        - pivy.coin\n        - pivy.gui.soqt\n\nabout:\n    home: https://github.com/FreeCAD/pivy\n    license: ISC\n    license_file: LICENSE\n    summary: python bindings to coin3d.\n    doc_url: https://github.com/FreeCAD/pivy\n    dev_url: https://github.com/FreeCAD/pivy\n\nextra:\n    recipe-maintainers:\n        - looooo\n",
+ "raw_meta_yaml":"{% set name = \"pivy\" %}\n{% set version = \"0.6.5a3\" %}\n{% set sha256 = \"f28ba2ea9d1fc6308ed9fd6b1e40113cfd26e0790be1386fa940802b505bf44f\" %}\n\npackage:\n    name: {{ name }}\n    version: {{ version }}\n\nsource:\n    fn: {{ name }}.tar.gz\n    url: https://github.com/FreeCAD/pivy/archive/{{ version }}.tar.gz\n    sha256: {{ sha256 }}\n\nbuild:\n    number: 0\n\nrequirements:\n    build:\n        - {{ compiler(\"cxx\") }}\n        - {{ cdt('mesa-libgl-devel') }}  # [linux]\n        - msinttypes  # [win]\n        - cmake\n        - swig\n    host:\n        - python\n        - coin3d\n        - soqt\n        - qt\n        - colorama  # [not win]   \n    run:\n        - python\n        - coin3d\n        - qt\n        - pyside2\n        - soqt\n\ntest:\n    imports:\n        - pivy.coin\n        - pivy.gui.soqt\n\nabout:\n    home: https://github.com/FreeCAD/pivy\n    license: ISC\n    license_file: LICENSE\n    summary: python bindings to coin3d.\n    doc_url: https://github.com/FreeCAD/pivy\n    dev_url: https://github.com/FreeCAD/pivy\n\nextra:\n    recipe-maintainers:\n        - looooo\n",
  "req":{
   "__set__":true,
   "elements":[
