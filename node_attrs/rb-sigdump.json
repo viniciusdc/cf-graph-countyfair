@@ -67,6 +67,7 @@
   }
  },
  "name":"rb-sigdump",
+ "new_version":false,
  "raw_meta_yaml":"{% set name = \"sigdump\" %}\n{% set version = \"0.2.4\" %}\n\npackage:\n  name: rb-{{ name|lower }}\n  version: {{ version }}\n\nsource:\n  url: https://rubygems.org/downloads/{{ name }}-{{ version }}.gem\n  sha256: 0bf2176e55c1a262788623fe5ea57caddd6ba2abebe5e349d9d5e7c3a3010ed7\n\nbuild:\n  number: 0\n  script:\n    - gem install -N -l -V --norc --ignore-dependencies {{ name }}-{{ version }}.gem\n    - gem unpack {{ name }}-{{ version }}.gem\n  skip: {{ win }}\n\nrequirements:\n  host:\n    - ruby\n  run:\n    - ruby\n\ntest:\n  commands:\n    - ruby -r {{ name }} -e 'exit 0'\n\nabout:\n  home: https://rubygems.org/gems/{{ name }}\n  license: MIT\n  license_family: MIT\n  license_file: {{ name }}-{{ version }}/LICENSE\n  summary: |\n    Setup signal handler which dumps backtrace of running threads and\n    number of allocated objects per class.\n  doc_url: https://www.rubydoc.info/gems/{{ name }}\n  dev_url: https://github.com/frsyuki/sigdump\n\nextra:\n  recipe-maintainers:\n    - oblute\n    - benhuff\n    - sodre\n",
  "req":{
   "__set__":true,

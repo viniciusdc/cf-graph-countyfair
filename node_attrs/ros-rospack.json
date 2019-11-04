@@ -168,7 +168,7 @@
   }
  },
  "name":"ros-rospack",
- "new_version":"2.5.4",
+ "new_version":false,
  "pinning_version":"2019.11.01",
  "raw_meta_yaml":"package:\n  name: ros-rospack\n  version: 2.5.3\n\nsource:\n  url: https://github.com/ros-gbp/rospack-release/archive/release/melodic/rospack/2.5.3-0.tar.gz\n  fn: ros-rospack-2.5.3.tar.gz\n  sha256: 0b9db7d9b7c20d8f36204d3bda08ef5cf41f3f8f7e009862102603b9daf65429\n  patches:\n\nbuild:\n  number: 0\n  skip: true  # [win]\n  run_exports:\n    - {{ pin_subpackage('ros-rospack', 'x.x') }}\n\nrequirements:\n  build:\n    - {{ compiler('cxx') }}\n    - {{ compiler('c') }}\n    - cmake\n    - make  # [unix]\n  host:\n    - ros-conda-mutex * melodic\n    - ros-conda-base\n    - python\n    - catkin_pkg\n    - pkg-config\n    - boost-cpp\n    - gtest\n    - ros-cmake-modules\n    - tinyxml2\n    - ros-catkin\n  run:\n    - ros-conda-mutex * melodic\n    - ros-conda-base\n    - pkg-config\n    - boost-cpp\n    - rosdep\n    - tinyxml2\n    - ros-environment\n    - python\n\ntest:\n  requires:\n    - rospkg\n  commands:\n    - export ROS_ROOT=$PREFIX && python -c \"import rospkg;s = rospkg.RosPack();ret = s.get_path('rospack');print(ret)\"\n\nabout:\n  home: http://wiki.ros.org/rospack\n  summary: |\n    ROS Package Tool\n  description: |\n    ROS Package Tool\n  license: BSD-3-Clause\n  license_file: include/rospack/macros.h\n\nextra:\n  recipe-maintainers:\n    - wolfv\n    - lesteve\n    - seanyen\n",
  "req":{

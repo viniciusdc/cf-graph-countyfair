@@ -322,7 +322,7 @@
   }
  },
  "name":"consul",
- "new_version":"1.6.1",
+ "new_version":false,
  "pinning_version":"2019.09.08",
  "raw_meta_yaml":"{% set import_path = \"github.com/hashicorp/consul\" %}\n{% set version = \"1.6.1\" %}\n\n{% set name = import_path.split('/')[-1] %}\n{% set pkg_src = 'src' + os.sep+ import_path.replace(\"/\",os.sep) %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  - folder: {{ pkg_src }}\n    url: https://github.com/hashicorp/{{ name }}/archive/v{{ version }}.tar.gz\n    sha256: e31ee84ee95efe3c27ebac46ba9f7973f1f7017589b7aece22715e304fccd464\n\nbuild:\n  number: 0\n  script:\n    - pushd {{ pkg_src }}\n    - go install -v\n        -ldflags \"-X {{import_path}}/version.GitRelease='v{{version}}'\n                  -X {{import_path}}/version.VersionPrerelease=''\"\n        .\n\nrequirements:\n  build:\n    - {{ compiler('go') }}\n\ntest:\n  commands:\n    - {{ name|lower }} -v\n\nabout:\n  home: https://www.consul.io\n  license: MPL 2.0\n  summary: Service discovery and configuration made easy.\n  description: |\n    Consul is a tool for discovering and configuring services in your\n    infrastructure. It provides several key features, including:\n    Service Discovery, Health Checking, KV Store, Multi Datacenter.\n    Consul is designed to be friendly to both the DevOps community and\n    application developers, making it perfect for modern, elastic infrastructures.\n\n  doc_url: https://www.consul.io/docs/index.html\n\nextra:\n  recipe-maintainers:\n    - sodre\n",
  "req":{

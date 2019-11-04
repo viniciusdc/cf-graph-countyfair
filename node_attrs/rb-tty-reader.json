@@ -80,6 +80,7 @@
   }
  },
  "name":"rb-tty-reader",
+ "new_version":false,
  "raw_meta_yaml":"{% set name = \"tty-reader\" %}\n{% set version = \"0.6.0\" %}\n\npackage:\n  name: rb-{{ name|lower }}\n  version: {{ version }}\n\nsource:\n  url: https://rubygems.org/downloads/{{ name }}-{{ version }}.gem\n  sha256: 769124c3321f6e2ee5674b8925880ad65751ba49edafbd79275ba1825e3c0b09\n\nbuild:\n  noarch: generic\n  number: 0\n  script:\n    - gem install --norc -l -V --ignore-dependencies {{ name }}-{{ version }}.gem\n    - gem unpack {{ name }}-{{ version }}.gem\n  skip: {{ win }}\n\nrequirements:\n  host:\n    - ruby >=2.0.0\n  run:\n    - ruby >=2.0.0\n    - rb-tty-cursor >=0.7,<1.0\n    - rb-tty-screen >=0.7,<1.0\n    - rb-wisper >=2.0.0,<2.1.0\n\ntest:\n  commands:\n    - ruby -r {{ name }} -e 'exit 0'\n\nabout:\n  home: https://rubygems.org/gems/{{ name }}\n  license: MIT\n  license_family: MIT\n  license_file: {{ name }}-{{ version }}/LICENSE.txt\n  summary: 'A set of methods for processing keyboard input in character, line and multiline modes. It maintains history of entered input with an ability to recall and re-edit those inputs. It lets you register to listen for keystroke events and trigger custom key events yourself.'\n  doc_url: https://www.rubydoc.info/gems/{{ name }}\n  dev_url: https://github.com/piotrmurach/tty-reader\n\nextra:\n  recipe-maintainers:\n    - sodre\n    - rluria14\n    - benhuff\n    - oblute\n",
  "req":{
   "__set__":true,

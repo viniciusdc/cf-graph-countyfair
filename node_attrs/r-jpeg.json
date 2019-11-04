@@ -171,7 +171,7 @@
   }
  },
  "name":"r-jpeg",
- "new_version":"0.1_8.1",
+ "new_version":false,
  "pinning_version":"2019.07.15",
  "raw_meta_yaml":"{% set version = '0.1-8' %}\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-jpeg\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  fn: jpeg_{{ version }}.tar.gz\n  url:\n    - {{ cran_mirror }}/src/contrib/jpeg_{{ version }}.tar.gz\n    - {{ cran_mirror }}/src/contrib/Archive/jpeg/jpeg_{{ version }}.tar.gz\n  sha256: d032befeb3a414cefdbf70ba29a6c01541c54387cc0a1a98a4022d86cbe60a16\n\nbuild:\n  merge_build_host: True  # [win]\n  number: 1003\n  skip: true  # [win32]\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - {{ compiler('c') }}        # [not win]\n    - {{ compiler('m2w64_c') }}        # [win]\n    - {{posix}}filesystem        # [win]\n    - {{posix}}make\n    - {{posix}}sed               # [win]\n    - {{posix}}coreutils         # [win]\n    - {{posix}}zip               # [win]\n  host:\n    - r-base\n  run:\n    - r-base\n    - {{native}}gcc-libs         # [win]\n\ntest:\n  commands:\n    - $R -e \"library('jpeg')\"           # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('jpeg')\\\"\"  # [win]\n\nabout:\n  home: http://www.rforge.net/jpeg/\n  license: GPL-2 | GPL-3\n  summary: This package provides an easy and simple way to read, write and display bitmap images\n    stored in the JPEG format. It can read and write both files and in-memory raw vectors.\n  license_family: GPL3\n  license_file: '{{ environ[\"PREFIX\"] }}/lib/R/share/licenses/GPL-3'\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n    - johanneskoester\n    - bgruening\n    - daler\n    - jdblischak\n    - cbrueffer\n    - dbast\n",
  "req":{
