@@ -67,6 +67,25 @@
     "migrator_version",
     "version"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/336103913.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"MigrationYaml",
+    "migrator_object_version":1,
+    "migrator_version":0,
+    "name":"python38"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_object_version",
+    "migrator_version",
+    "name"
+   ]
   }
  ],
  "bad":false,
@@ -173,7 +192,7 @@
  },
  "name":"gudhi",
  "new_version":false,
- "pinning_version":"2019.07.26",
+ "pinning_version":"2019.11.01",
  "raw_meta_yaml":"{% set version = \"3.0.0\" %}\n{% set commit = \"de8e4aba94a0d5ecf933ad3ee1c05ccb866288b0\" %}\n{% set sha256 = \"0f8e081b1400b1f04cf0228d8915bb3e9cc5e913ececb7206e258cbfbda89a2f\" %}\n\npackage:\n  name: gudhi\n  version: {{ version }}\n\nsource:\n  url: https://github.com/GUDHI/gudhi-devel/archive/{{ commit }}.tar.gz\n  sha256: {{ sha256 }}\n\nbuild:\n  number: 0\n  # C++11 only supports vc14\n  skip: true  # [win and py2k]\n\nrequirements:\n  build:\n    - cmake\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n  host:\n    - python\n    - numpy\n    - setuptools\n    - cython\n    - boost-cpp {{ boost_version }}\n    - eigen\n    - cgal-cpp 4.14\n  run:\n    - python\n    - numpy\n    - setuptools\n    - boost-cpp {{ boost_version }}\n    - cgal-cpp 4.14\n\ntest:\n  commands:\n    - test -f ${PREFIX}/include/gudhi/Simplex_tree.h  # [unix]\n    - if not exist %LIBRARY_INC%\\gudhi\\Simplex_tree.h exit 1  # [win]\n    - conda inspect linkages $PKG_NAME  # [not win]\n    - conda inspect objects $PKG_NAME  # [osx]\n    - python -c \"import gudhi; diag1 = [[2.7, 3.7], [9.6, 14.0], [34.2, 34.974], [3.0, float('Inf')]]; diag2 = [[2.8, 4.45], [9.5, 14.1], [3.2, float('Inf')]]; assert gudhi.bottleneck_distance(diag1, diag2) == 0.75\"\nabout:\n  home: http://gudhi.gforge.inria.fr/\n  license: MIT/GPL3\n  license_file: LICENSE\n  summary: Geometry Understanding in Higher Dimensions\n  description: |\n    The GUDHI library is a generic open source C++ library, with a Python\n    interface, for Topological Data Analysis (TDA) and Higher Dimensional\n    Geometry Understanding. The library offers state-of-the-art data structures\n    and algorithms to construct simplicial complexes and compute persistent\n    homology.\n  doc_url: http://gudhi.gforge.inria.fr/python/{{ version }}/\nextra:\n  recipe-maintainers:\n    - VincentRouvreau\n",
  "req":{
   "__set__":true,
@@ -190,7 +209,7 @@
    "setuptools"
   ]
  },
- "smithy_version":"3.4.1",
+ "smithy_version":"3.6.1",
  "url":"https://github.com/GUDHI/gudhi-devel/archive/fa19484e31dbe0b63d50475f15e654a5e1a0c4e1.tar.gz",
  "version":"3.0.0"
 }

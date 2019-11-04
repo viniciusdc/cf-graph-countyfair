@@ -33,6 +33,25 @@
     "migrator_version",
     "name"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/336104599.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"MigrationYaml",
+    "migrator_object_version":1,
+    "migrator_version":0,
+    "name":"python38"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_object_version",
+    "migrator_version",
+    "name"
+   ]
   }
  ],
  "bad":false,
@@ -252,7 +271,7 @@
   "fastscapelib",
   "fastscapelib-python"
  ],
- "pinning_version":"2018.11.27",
+ "pinning_version":"2019.11.01",
  "raw_meta_yaml":"{% set name = \"fastscapelib\" %}\n{% set version = \"0.1.3\" %}\n{% set sha256 = \"5872275778af0e02490b33f4bec9d9fe3edbc501d89845ce769ef85b3f463944\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  fn: {{ name }}-{{ version }}.tar.gz\n  url: https://github.com/fastscape-lem/fastscapelib/archive/v{{ version }}.tar.gz\n  sha256: {{ sha256 }}\n\nbuild:\n  number: 1000\n  skip: True  # [win and vc<14]\n\noutputs:\n  - name: fastscapelib\n    script: install_cpp_headers.sh   # [unix]\n    script: install_cpp_headers.bat  # [win]\n    build:\n      activate_in_script: True\n    requirements:\n      build:\n        - {{ compiler('cxx') }}\n        - cmake\n      host:\n        - xtensor >=0.18.2,<0.19\n      run:\n        - xtensor >=0.18.2,<0.19\n    test:\n      commands:\n        - test -f ${PREFIX}/include/fastscapelib/fastscapelib.hpp  # [unix]\n        - test -f ${PREFIX}/lib/cmake/fastscapelib/fastscapelibConfig.cmake  # [unix]\n        - test -f ${PREFIX}/lib/cmake/fastscapelib/fastscapelibConfigVersion.cmake  # [unix]\n        - if exist %LIBRARY_PREFIX%\\include\\fastscapelib\\fastscapelib.hpp (exit 0) else (exit 1)  # [win]\n        - if exist %LIBRARY_PREFIX%\\lib\\cmake\\fastscapelibConfig.cmake (exit 0) else (exit 1)  # [win]\n        - if exist %LIBRARY_PREFIX%\\lib\\cmake\\fastscapelibConfigVersion.cmake (exit 0) else (exit 1)  # [win]\n  - name: fastscapelib-python\n    script: install_python.sh   # [unix]\n    script: install_python.bat  # [win]\n    build:\n      activate_in_script: True\n    requirements:\n      build:\n        - {{ compiler('c') }}\n        - {{ compiler('cxx') }}\n        - cmake\n      host:\n        - python\n        - setuptools\n        - numpy\n        - xtensor >=0.18.2,<0.20\n        - xtensor-python >=0.21,<0.23\n      run:\n        - python\n        - {{ pin_compatible('numpy') }}\n    test:\n      imports:\n        - fastscapelib\n\nabout:\n  home: https://github.com/fastscape-lem/fastscapelib\n  doc_url: https://fastscapelib.readthedocs.io\n  license: GPLv3\n  license_file: LICENSE\n  summary: 'Library for topographic analysis and modeling'\n  description: |\n    Fastscapelib is a C++ library that implements efficient algorithms\n    for processing topographic data and landscape evolution\n    modeling. It also has Python bindings.\n\nextra:\n  recipe-maintainers:\n    - benbovy\n",
  "req":{
   "__set__":true,
@@ -268,7 +287,7 @@
    "xtensor-python"
   ]
  },
- "smithy_version":"3.1.12",
+ "smithy_version":"3.6.1",
  "url":"https://github.com/fastscape-lem/fastscapelib/archive/v0.1.3.tar.gz",
  "version":"0.1.3"
 }

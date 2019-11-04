@@ -249,6 +249,25 @@
     "migrator_version",
     "name"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/336102353.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"MigrationYaml",
+    "migrator_object_version":1,
+    "migrator_version":0,
+    "name":"python38"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_object_version",
+    "migrator_version",
+    "name"
+   ]
   }
  ],
  "bad":false,
@@ -367,7 +386,7 @@
  },
  "name":"wrf-python",
  "new_version":"1.3.2.4",
- "pinning_version":"2019.08.12",
+ "pinning_version":"2019.11.01",
  "raw_meta_yaml":"{% set version = \"1.3.2\" %}\n\npackage:\n  name: wrf-python\n  version: {{ version }}\n\nsource:\n  fn: wrf-python-{{ version }}.tar.gz\n  url: https://github.com/NCAR/wrf-python/archive/{{ version }}.tar.gz\n  sha256: 1c228548f88848689168d0a4bc41a531123c87f9c552fe75fb1eadd091d3ad26 \n\nbuild:\n  number: 1\n  detect_binary_files_with_prefix: true\n\nrequirements:\n  build:\n    - {{ compiler('fortran') }}  # [unix]\n    - {{ compiler('m2w64_fortran') }}  # [win]\n    - {{ compiler('c') }}\n  host:\n    - setuptools\n    - python\n    - numpy  # [unix]\n    - numpy 1.14.*  # [win]\n    - wrapt\n  run:\n    - setuptools\n    - {{ pin_compatible('numpy') }}\n    - python\n    - wrapt\n    - xarray\n\ntest:\n  requires:\n    - setuptools\n    - netcdf4\n    - xarray\n  source_files:\n    - test/ci_tests\n  imports:\n    - wrf\n  commands:\n    - cd test/ci_tests && python utests.py\n\nabout:\n  home: https://github.com/NCAR/wrf-python\n  license: \"Apache-2.0\"\n  license_file: LICENSE\n  summary: \"Diagnostic and interpolation routines for WRF-ARW data.\"\n\nextra:\n  recipe-maintainers:\n    - bladwig1\n    - marylhaley\n    - khallock\n",
  "req":{
   "__set__":true,
@@ -383,7 +402,7 @@
    "xarray"
   ]
  },
- "smithy_version":"3.4.1",
+ "smithy_version":"3.6.1",
  "url":"https://github.com/NCAR/wrf-python/archive/1.3.2.tar.gz",
  "version":"1.3.2"
 }

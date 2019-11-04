@@ -62,6 +62,25 @@
     "migrator_version",
     "version"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/336104819.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"MigrationYaml",
+    "migrator_object_version":1,
+    "migrator_version":0,
+    "name":"python38"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_object_version",
+    "migrator_version",
+    "name"
+   ]
   }
  ],
  "bad":false,
@@ -154,7 +173,7 @@
  },
  "name":"deepgraph",
  "new_version":"0.2.2",
- "pinning_version":"2019.03.17",
+ "pinning_version":"2019.11.01",
  "raw_meta_yaml":"{% set name = \"DeepGraph\" %}\n{% set version = \"0.2.2\" %}\n{% set sha256 = \"7047e429dd5cc6e73b8d8f45d2ac615b35b04cd0c9ebd21bee198bea10a3fd46\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  fn: {{ name }}-{{ version }}.tar.gz\n  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz\n  sha256: {{ sha256 }}\n\nbuild:\n  number: 0\n  script:\n    - cythonize deepgraph/*.pyx  # [py>36]\n    - \"{{ PYTHON }} -m pip install . --no-deps --ignore-installed --no-cache-dir\"\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n  host:\n    - cython\n    - python\n    - pip\n    - numpy\n  run:\n    - python\n    - {{ pin_compatible('numpy') }}\n    - pandas\n\ntest:\n  imports:\n    - deepgraph\n\nabout:\n  home: https://github.com/deepgraph/deepgraph\n  license: BSD 3-Clause\n  license_family: BSD\n  license_file: LICENSE.txt\n  summary: 'Analyze Data with Pandas-based Networks.'\n  description: |\n    DeepGraph is a scalable, general-purpose data analysis package. It\n    implements a network representation based on pandas DataFrames and\n    provides methods to construct, partition and plot graphs, to interface\n    with popular network packages and more.\n  doc_url: https://deepgraph.readthedocs.io/\n\nextra:\n  recipe-maintainers:\n    - dominiktraxl\n",
  "req":{
   "__set__":true,
@@ -168,7 +187,7 @@
    "python"
   ]
  },
- "smithy_version":"3.3.2",
+ "smithy_version":"3.6.1",
  "url":"https://pypi.io/packages/source/D/DeepGraph/DeepGraph-0.2.2.tar.gz",
  "version":"0.2.2"
 }

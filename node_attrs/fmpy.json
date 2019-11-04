@@ -84,6 +84,25 @@
     "migrator_version",
     "version"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/336104477.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"MigrationYaml",
+    "migrator_object_version":1,
+    "migrator_version":0,
+    "name":"python38"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_object_version",
+    "migrator_version",
+    "name"
+   ]
   }
  ],
  "bad":false,
@@ -215,7 +234,7 @@
  },
  "name":"fmpy",
  "new_version":"0.2.14",
- "pinning_version":"2019.09.08",
+ "pinning_version":"2019.11.01",
  "raw_meta_yaml":"{% set name = \"fmpy\" %}\n{% set version = \"0.2.14\" %}\n{% set sha = \"34b774551043e19bc6d96b4247813f0ea57cf918ecf486f7ebaa388e1f1baa9b\" %}\n# calculate on macOS with: shasum -a 256 FMPy-*.tar.gz\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  url: https://github.com/CATIA-Systems/FMPy/archive/v{{ version }}.tar.gz\n  sha256: {{ sha }}\n\nbuild:\n  number: 0\n  # No qt 5.9 on vc9.\n  skip: True  # [win and py2k]\n  script: \"{{ PYTHON }} -m pip install . --no-deps -vv\"\n  entry_points:\n    - fmpy = fmpy.command_line:main\n\nrequirements:\n  build:\n    - lxml\n    - numpy\n    - pathlib\n    - pip\n    - pyqt\n    - python\n    - pywin32  # [win]\n  run:\n    - dask\n    - lxml\n    - matplotlib\n    - numpy\n    - pathlib\n    - python\n    - pyqt\n    - pyqtgraph\n    - pywin32  # [win]\n    - requests\n\ntest:\n  imports:\n    - fmpy\n    - fmpy.cross_check\n    - fmpy.examples\n    - fmpy.gui\n    - fmpy.ssp\n    - fmpy.ssp.examples\n    - fmpy.sundials\n\nabout:\n  home: https://github.com/CATIA-Systems/FMPy\n  license: BSD-3-Clause\n  license_family: BSD\n  license_file: '{{ environ[\"RECIPE_DIR\"] }}/LICENSE.txt'\n  summary: 'Simulate Functional Mockup Units (FMUs) in Python'\n  doc_url: https://fmpy.readthedocs.io/\n  dev_url: https://github.com/CATIA-Systems/FMPy\n\nextra:\n  recipe-maintainers:\n    - t-sommer\n    - wulmer\n",
  "req":{
   "__set__":true,
@@ -233,7 +252,7 @@
    "requests"
   ]
  },
- "smithy_version":"3.4.6",
+ "smithy_version":"3.6.1",
  "url":"https://github.com/CATIA-Systems/FMPy/archive/v0.2.12.tar.gz",
  "version":"0.2.14"
 }
