@@ -84,7 +84,7 @@
    "summary":"A deep learning package for many-body potential energy representation and molecular dynamics"
   },
   "build":{
-   "number":"2",
+   "number":"0",
    "skip":true
   },
   "extra":{
@@ -96,7 +96,7 @@
   },
   "package":{
    "name":"deepmd-kit",
-   "version":"1.0.1"
+   "version":"1.1.0"
   },
   "requirements":{
    "build":[
@@ -169,8 +169,8 @@
     "patches":[
      "win.patch"
     ],
-    "sha256":"95902bb737630e73fc20ea59f4d32fc063b7e00736f23e162a7015922914cec1",
-    "url":"https://github.com/deepmodeling/deepmd-kit/archive/v1.0.1.tar.gz"
+    "sha256":"faaeca5b446ae04f7303e23d3d438bd42103536d1332d7e9492aaedd767ac006",
+    "url":"https://github.com/deepmodeling/deepmd-kit/archive/v1.1.0.tar.gz"
    },
    {
     "folder":"lammps",
@@ -184,8 +184,8 @@
     "patches":[
      "osx.patch"
     ],
-    "sha256":"95902bb737630e73fc20ea59f4d32fc063b7e00736f23e162a7015922914cec1",
-    "url":"https://github.com/deepmodeling/deepmd-kit/archive/v1.0.1.tar.gz"
+    "sha256":"faaeca5b446ae04f7303e23d3d438bd42103536d1332d7e9492aaedd767ac006",
+    "url":"https://github.com/deepmodeling/deepmd-kit/archive/v1.1.0.tar.gz"
    },
    {
     "folder":"lammps",
@@ -197,8 +197,8 @@
    },
    {
     "patches":null,
-    "sha256":"95902bb737630e73fc20ea59f4d32fc063b7e00736f23e162a7015922914cec1",
-    "url":"https://github.com/deepmodeling/deepmd-kit/archive/v1.0.1.tar.gz"
+    "sha256":"faaeca5b446ae04f7303e23d3d438bd42103536d1332d7e9492aaedd767ac006",
+    "url":"https://github.com/deepmodeling/deepmd-kit/archive/v1.1.0.tar.gz"
    },
    {
     "folder":"lammps",
@@ -259,7 +259,7 @@
  "name":"deepmd-kit",
  "new_version":"1.1.0",
  "pinning_version":"2019.11.01",
- "raw_meta_yaml":"{% set name = \"deepmd-kit\" %}\n{% set version = \"1.0.1\" %}\n{% set lammpsversion = \"stable_7Aug2019\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  - url: https://github.com/deepmodeling/{{ name }}/archive/v{{ version }}.tar.gz\n    sha256: 95902bb737630e73fc20ea59f4d32fc063b7e00736f23e162a7015922914cec1 \n    patches:\n      - win.patch  # [win]\n      - osx.patch  # [osx]\n  - url: https://github.com/lammps/lammps/archive/{{ lammpsversion }}.tar.gz\n    sha256: 5380c1689a93d7922e3d65d9c186401d429878bb3cbe9a692580d3470d6a253f\n    folder: lammps\n    patches:\n      - deepmd.patch\n\nbuild:\n  number: 2\n  skip: true  # [win]\t\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n    - cmake >=3.7\n    - make  # [unix]\n    - ninja\n\n  host:\n    - python >=3.6\n    - pip\n    - scikit-build\n    - m2r\n    - tensorflow\n    - libtensorflow_cc  # [linux]\n    - setuptools_scm\n    - numpy\n    - scipy\n    - mpich  # [linux]\n    - zlib  # [linux]\n    - fftw  # [linux]\n    - libpng  # [linux]\n\n  run:\n    - python\n    - tensorflow\n    - libtensorflow_cc  # [linux]\n    - numpy\n    - scipy\n    - mpich  # [linux]\n    - fftw  # [linux]\n\ntest:\n  files:\n    - water_se_a.json\n  source_files:\n    - examples/water/data\n    - examples/water/lmp/water.lmp  # [linux]\n    - examples/water/lmp/in.lammps  # [linux]\n  imports:\n    - deepmd\n  commands:\n    - dp -h\n    - dp train -h\n    - dp freeze -h\n    - dp test -h\n    - lmp -help  # [linux]\n    - mv examples/water/data .\n    - mv examples/water/lmp/water.lmp .  # [linux]\n    - mv examples/water/lmp/in.lammps .  # [linux]\n    - dp train water_se_a.json\n    - dp freeze\n    - lmp -in in.lammps  # [linux]\n\nabout:\n  home: https://github.com/deepmodeling/deepmd-kit\n  license: LGPL-3.0\n  license_family: LGPL\n  license_file: LICENSE\n  summary: 'A deep learning package for many-body potential energy representation and molecular dynamics'\n  doc_url: https://github.com/deepmodeling/deepmd-kit\n  dev_url: https://github.com/deepmodeling/deepmd-kit\n\nextra:\n  recipe-maintainers:\n    - njzjz\n",
+ "raw_meta_yaml":"{% set name = \"deepmd-kit\" %}\n{% set version = \"1.1.0\" %}\n{% set lammpsversion = \"stable_7Aug2019\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  - url: https://github.com/deepmodeling/{{ name }}/archive/v{{ version }}.tar.gz\n    sha256: faaeca5b446ae04f7303e23d3d438bd42103536d1332d7e9492aaedd767ac006\n    patches:\n      - win.patch  # [win]\n      - osx.patch  # [osx]\n  - url: https://github.com/lammps/lammps/archive/{{ lammpsversion }}.tar.gz\n    sha256: 5380c1689a93d7922e3d65d9c186401d429878bb3cbe9a692580d3470d6a253f\n    folder: lammps\n    patches:\n      - deepmd.patch\n\nbuild:\n  number: 0\n  skip: true  # [win]\t\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n    - cmake >=3.7\n    - make  # [unix]\n    - ninja\n\n  host:\n    - python >=3.6\n    - pip\n    - scikit-build\n    - m2r\n    - tensorflow\n    - libtensorflow_cc  # [linux]\n    - setuptools_scm\n    - numpy\n    - scipy\n    - mpich  # [linux]\n    - zlib  # [linux]\n    - fftw  # [linux]\n    - libpng  # [linux]\n\n  run:\n    - python\n    - tensorflow\n    - libtensorflow_cc  # [linux]\n    - numpy\n    - scipy\n    - mpich  # [linux]\n    - fftw  # [linux]\n\ntest:\n  files:\n    - water_se_a.json\n  source_files:\n    - examples/water/data\n    - examples/water/lmp/water.lmp  # [linux]\n    - examples/water/lmp/in.lammps  # [linux]\n  imports:\n    - deepmd\n  commands:\n    - dp -h\n    - dp train -h\n    - dp freeze -h\n    - dp test -h\n    - lmp -help  # [linux]\n    - mv examples/water/data .\n    - mv examples/water/lmp/water.lmp .  # [linux]\n    - mv examples/water/lmp/in.lammps .  # [linux]\n    - dp train water_se_a.json\n    - dp freeze\n    - lmp -in in.lammps  # [linux]\n\nabout:\n  home: https://github.com/deepmodeling/deepmd-kit\n  license: LGPL-3.0\n  license_family: LGPL\n  license_file: LICENSE\n  summary: 'A deep learning package for many-body potential energy representation and molecular dynamics'\n  doc_url: https://github.com/deepmodeling/deepmd-kit\n  dev_url: https://github.com/deepmodeling/deepmd-kit\n\nextra:\n  recipe-maintainers:\n    - njzjz\n",
  "req":{
   "__set__":true,
   "elements":[
@@ -285,5 +285,5 @@
  },
  "smithy_version":"3.6.1",
  "url":"https://github.com/deepmodeling/deepmd-kit/archive/v0.12.6.tar.gz",
- "version":"1.0.1"
+ "version":"1.1.0"
 }
