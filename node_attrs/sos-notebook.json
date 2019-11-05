@@ -390,22 +390,30 @@
     "migrator_version",
     "version"
    ]
+  },
+  {
+   "PR":{
+    "id":"507df7b5-4a2a-4b29-b1d7-23dc7541d53a",
+    "merged_at":"never issued",
+    "state":"closed"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"MigrationYaml",
+    "migrator_object_version":1,
+    "migrator_version":0,
+    "name":"python38"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_object_version",
+    "migrator_version",
+    "name"
+   ]
   }
  ],
- "bad":{
-  "exception":"write() argument must be str, not dict",
-  "traceback":[
-   "Traceback (most recent call last):",
-   "  File \"/root/repo/cf-scripts/conda_forge_tick/auto_tick.xsh\", line 691, in main",
-   "    hash_type=attrs.get('hash_type', 'sha256'))",
-   "  File \"/root/repo/cf-scripts/conda_forge_tick/auto_tick.xsh\", line 98, in run",
-   "    migrate_return = migrator.migrate(recipe_dir, attrs, **kwargs)",
-   "  File \"/root/repo/cf-scripts/conda_forge_tick/migrators.xsh\", line 1384, in migrate",
-   "    f.write(self.yaml_contents)",
-   "TypeError: write() argument must be str, not dict",
-   ""
-  ]
- },
+ "bad":false,
  "conda-forge.yml":{
   "provider":{
    "win":"azure"
@@ -549,7 +557,7 @@
  },
  "name":"sos-notebook",
  "new_version":"0.20.7",
- "pinning_version":"2019.10.11",
+ "pinning_version":"2019.11.01",
  "raw_meta_yaml":"{% set name = \"sos-notebook\" %}\n{% set version = \"0.20.6\" %}\n\npackage:\n  name: \"{{ name|lower }}\"\n  version: \"{{ version }}\"\n\nsource:\n  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz\n  sha256: 39fb2beab290a2018223a5088e71cb5788457ec261e5e2abb9e40955ef57a1dd\n\nbuild:\n  number: 0\n  skip: true  # [py<36]\n  script:\n    - {{ PYTHON }} -m pip install . --no-deps --ignore-installed -vv\n    - {{ PYTHON }} -m sos_notebook.install --sys-prefix\n\nrequirements:\n  host:\n    - ipython\n    - notebook >=5.0.0\n    - pip\n    - python\n    - setuptools\n  run:\n    - ipykernel\n    - ipython\n    - markdown\n    - matplotlib\n    - nbconvert >=5.1.1\n    - nbformat\n    - notebook >=5.0.0\n    - pandas\n    - prometheus_client\n    - prompt_toolkit\n    - python\n    - sos >=0.19.2\n    - tabulate\n\ntest:\n  requires:\n    - nose\n    - pytest\n    - selenium\n  imports:\n    - sos_notebook\n  commands:\n    - jupyter kernelspec list | grep -w $PREFIX/share/jupyter/kernels/sos  # [unix]\n    - jupyter kernelspec list | findstr \\share\\jupyter\\kernels\\sos  # [win]\n    - jupyter run --kernel=sos ex.py\n  files:\n    - ex.py\n\nabout:\n  home: https://github.com/vatlab/SOS\n  license: BSD\n  license_family: BSD\n  license_file: LICENSE\n  summary: \"Script of Scripts (SoS): an interactive, cross-platform, and\n            cross-language workflow system for reproducible data analysis\"\n  doc_url: https://vatlab.github.io/sos-docs/\n  dev_url: https://github.com/vatlab/sos-notebook\n\nextra:\n  recipe-maintainers:\n    - BoPeng\n    - gaow\n    - jdblischak\n",
  "req":{
   "__set__":true,
@@ -571,7 +579,7 @@
    "tabulate"
   ]
  },
- "smithy_version":"3.6.0",
+ "smithy_version":"3.6.1",
  "url":"https://pypi.io/packages/source/s/sos-notebook/sos-notebook-0.20.2.tar.gz",
  "version":"0.20.6"
 }
