@@ -217,7 +217,40 @@
    ]
   }
  ],
- "bad":false,
+ "bad":{
+  "code":404,
+  "exception":"HTTP Error 404: Not Found",
+  "traceback":[
+   "Traceback (most recent call last):",
+   "  File \"/root/repo/cf-scripts/conda_forge_tick/auto_tick.xsh\", line 691, in main",
+   "    hash_type=attrs.get('hash_type', 'sha256'))",
+   "  File \"/root/repo/cf-scripts/conda_forge_tick/auto_tick.xsh\", line 98, in run",
+   "    migrate_return = migrator.migrate(recipe_dir, attrs, **kwargs)",
+   "  File \"/root/repo/cf-scripts/conda_forge_tick/migrators.xsh\", line 465, in migrate",
+   "    new_patterns = self.get_hash_patterns('meta.yaml', urls, hash_type)",
+   "  File \"/root/repo/cf-scripts/conda_forge_tick/migrators.xsh\", line 382, in get_hash_patterns",
+   "    hash = hash_url(url, hash_type)",
+   "  File \"/opt/conda/envs/run_env/lib/python3.7/site-packages/rever/tools.xsh\", line 207, in hash_url",
+   "    for b in stream_url_progress(url, verb='Hashing', quiet=quiet):",
+   "  File \"/opt/conda/envs/run_env/lib/python3.7/site-packages/rever/tools.xsh\", line 179, in stream_url_progress",
+   "    with urllib.request.urlopen(url) as f:",
+   "  File \"/opt/conda/envs/run_env/lib/python3.7/urllib/request.py\", line 222, in urlopen",
+   "    return opener.open(url, data, timeout)",
+   "  File \"/opt/conda/envs/run_env/lib/python3.7/urllib/request.py\", line 531, in open",
+   "    response = meth(req, response)",
+   "  File \"/opt/conda/envs/run_env/lib/python3.7/urllib/request.py\", line 641, in http_response",
+   "    'http', request, response, code, msg, hdrs)",
+   "  File \"/opt/conda/envs/run_env/lib/python3.7/urllib/request.py\", line 569, in error",
+   "    return self._call_chain(*args)",
+   "  File \"/opt/conda/envs/run_env/lib/python3.7/urllib/request.py\", line 503, in _call_chain",
+   "    result = func(*args)",
+   "  File \"/opt/conda/envs/run_env/lib/python3.7/urllib/request.py\", line 649, in http_error_default",
+   "    raise HTTPError(req.full_url, code, msg, hdrs, fp)",
+   "urllib.error.HTTPError: HTTP Error 404: Not Found",
+   ""
+  ],
+  "url":"https://github.com/facebook/zstd/releases/download/v1.4.4/zstd-1.4.4.zip"
+ },
  "conda-forge.yml":{
   "compiler_stack":"comp7",
   "max_py_ver":"37",
@@ -337,7 +370,7 @@
   }
  },
  "name":"zstd",
- "new_version":"1.4.3",
+ "new_version":"1.4.4",
  "pinning_version":"2019.08.19",
  "raw_meta_yaml":"{% set name = \"zstd\" %}\n{% set version = \"1.4.3\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  fn: {{ name }}-{{ version }}.tar.gz\n  url: https://github.com/facebook/{{ name }}/releases/download/v{{ version }}/{{ name }}-{{ version }}.tar.gz\n  sha256: e88ec8d420ff228610b77fba4fbf22b9f8b9d3f223a40ef59c9c075fcdad5767\n\nbuild:\n  number: 0\n  skip: True  # [win and vc<14]\n  run_exports:\n    # pretty bad removal of symbols in every other micro release:\n    #   https://abi-laboratory.pro/tracker/timeline/zstd/\n    - {{ pin_subpackage('zstd', max_pin='x.x.x') }}\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n    - msinttypes  # [win and vc<14]\n    - make   # [unix]\n    - ninja  # [win]\n    - cmake\n  host:\n    - zlib\n    - xz\n    - lz4-c\n  run:\n    - zlib\n    - xz\n    - lz4-c\n\ntest:\n  requires:\n    - pkg-config  # [unix]\n\n  commands:\n    - zstd -be -i5\n\n    - test -f ${PREFIX}/include/{{ name }}.h     # [unix]\n    - test -f ${PREFIX}/lib/lib{{ name }}.a      # [unix]\n    - test -f ${PREFIX}/lib/lib{{ name }}.so     # [linux]\n    - test -f ${PREFIX}/lib/lib{{ name }}.dylib  # [osx]\n\n    - if not exist %LIBRARY_INC%\\{{ name }}.h exit 1              # [win]\n    - if not exist %LIBRARY_BIN%\\lib{{ name }}.dll exit 1         # [win]\n    - if not exist %LIBRARY_LIB%\\lib{{ name }}.lib exit 1         # [win]\n    - if not exist %LIBRARY_LIB%\\lib{{ name }}_static.lib exit 1  # [win and vc>=14]\n\n    - export PKG_CONFIG_PATH=$PREFIX/lib/pkgconfig  # [unix]\n    - test -f ${PREFIX}/lib/pkgconfig/lib{{ name }}.pc  # [unix]\n    - pkg-config --cflags lib{{ name }}  # [unix]\n\nabout:\n  home: http://www.zstd.net\n  license: BSD 3-Clause\n  license_file: LICENSE\n  summary: \"Zstandard - Fast real-time compression algorithm\"\n  description: |\n    Zstandard is a real-time compression algorithm, providing high compression\n    ratios. It offers a very wide range of compression / speed trade-off, while\n    being backed by a very fast decoder. It also offers a special mode for\n    small data, called dictionary compression, and can create dictionaries from\n    any sample set. Zstandard library is provided as open source software using\n    a BSD license.\n  doc_url: https://facebook.github.io/zstd/zstd_manual.html\n  dev_url: https://github.com/facebook/zstd\n\nextra:\n  recipe-maintainers:\n    - rmax\n    - msarahan\n    - xhochy\n",
  "req":{
