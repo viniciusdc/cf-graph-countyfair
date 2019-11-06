@@ -1,4 +1,23 @@
 {
+ "PRed":[
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/337450438.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"Version",
+    "migrator_version":0,
+    "version":"4.2"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "version"
+   ]
+  }
+ ],
  "bad":false,
  "conda-forge.yml":{},
  "feedstock_name":"gcovr",
@@ -82,7 +101,8 @@
   }
  },
  "name":"gcovr",
- "new_version":"4.1",
+ "new_version":"4.2",
+ "pinning_version":"2019.11.01",
  "raw_meta_yaml":"{% set name = \"gcovr\" %}\n{% set version = \"4.1\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  url: https://github.com/{{ name }}/{{ name }}/archive/{{ version }}.tar.gz\n  sha256: 1ad8042fd4dc4c355fd7e605d395eefa2a59b1677dfdc308e0ef00083e8b37ee\n\nbuild:\n  noarch: python\n  number: 1\n  script:\n    # Removing tests because they mess up the package build in poor Windows.\n    # No preprocessor selector is used because it conflicts with noarch.\n    # Removing these files on other OSes than poor Windows should not hurt.\n    - rm -r gcovr/tests\n    - \"{{ PYTHON }} -m pip install . --no-deps -vv\"\n  entry_points:\n    - gcovr = gcovr.__main__:main\n\nrequirements:\n  host:\n    - python >=3.5\n    - pip\n    - setuptools\n  run:\n    - python >=3.5\n    - pyutilib\n    - jinja2\n\ntest:\n  imports:\n    - gcovr\n\nabout:\n  home: http://gcovr.com\n  license: BSD-3-Clause\n  license_family: BSD\n  license_file: LICENSE.txt\n  summary: 'generate GCC code coverage reports'\n  description: |\n    Gcovr provides a utility for managing the use of the GNU gcov utility and\n    generating summarized code coverage results. This command is inspired by the\n    Python coverage.py package, which provides a similar utility for Python.\n  doc_url: http://gcovr.com/guide.html\n  dev_url: https://github.com/gcovr/gcovr\n\nextra:\n  recipe-maintainers:\n    - tovrstra\n    - mjscosta\n",
  "req":{
   "__set__":true,
@@ -94,6 +114,7 @@
    "setuptools"
   ]
  },
+ "smithy_version":"3.6.1",
  "url":"https://github.com/gcovr/gcovr/archive/4.1.tar.gz",
  "version":"4.1"
 }
