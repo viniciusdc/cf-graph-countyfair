@@ -72,7 +72,11 @@
   }
  ],
  "bad":false,
- "conda-forge.yml":{},
+ "conda-forge.yml":{
+  "compiler_stack":"comp7",
+  "max_py_ver":"37",
+  "max_r_ver":"35"
+ },
  "feedstock_name":"mdbenchmark",
  "hash_type":"sha256",
  "meta_yaml":{
@@ -89,8 +93,8 @@
     "mdbenchmark = mdbenchmark.cli:cli",
     "mdbenchmark = mdbenchmark.cli:cli"
    ],
-   "number":"0",
-   "script":"python setup.py install --single-version-externally-managed --record record.txt",
+   "number":"1000",
+   "script":"python -m pip install --no-deps --ignore-installed -vv .",
    "skip":true
   },
   "extra":{
@@ -111,39 +115,42 @@
    "build":[
     "python",
     "setuptools",
+    "pip",
     "python",
     "setuptools",
+    "pip",
     "python",
-    "setuptools"
+    "setuptools",
+    "pip"
    ],
    "run":[
     "python",
     "numpy >=1.8",
     "datreant >=1.0.0",
-    "click==6.7",
+    "click >=6.7",
     "jinja2",
     "pandas",
-    "matplotlib <3.0",
+    "matplotlib >=2",
     "xdg <2",
     "python-levenshtein",
     "tabulate >=0.8.2",
     "python",
     "numpy >=1.8",
     "datreant >=1.0.0",
-    "click==6.7",
+    "click >=6.7",
     "jinja2",
     "pandas",
-    "matplotlib <3.0",
+    "matplotlib >=2",
     "xdg <2",
     "python-levenshtein",
     "tabulate >=0.8.2",
     "python",
     "numpy >=1.8",
     "datreant >=1.0.0",
-    "click==6.7",
+    "click >=6.7",
     "jinja2",
     "pandas",
-    "matplotlib <3.0",
+    "matplotlib >=2",
     "xdg <2",
     "python-levenshtein",
     "tabulate >=0.8.2"
@@ -158,19 +165,22 @@
    "commands":[
     "mdbenchmark",
     "mdbenchmark",
-    "mdbenchmark"
+    "xvfb-run --server-args=\":99 -screen 0 1024x768x24 -ac +extension GLX -noreset\" mdbenchmark"
    ],
    "imports":[
     "mdbenchmark",
     "mdbenchmark",
     "mdbenchmark"
+   ],
+   "requires":[
+    "libglu"
    ]
   }
  },
  "name":"mdbenchmark",
  "new_version":"2.0.0",
  "pinning_version":"2019.11.01",
- "raw_meta_yaml":"{% set name = \"mdbenchmark\" %}\n{% set version = \"2.0.0\" %}\n{% set sha256 = \"0749478d52d7651b7c9b05c4494431125e247531adfd38181b815e347e155558\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  fn: {{ name }}-{{ version }}.tar.gz\n  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz\n  sha256: {{ sha256 }}\n\nbuild:\n  number: 0\n  script: python setup.py install --single-version-externally-managed --record record.txt\n  skip: true  # [win]\n  entry_points:\n    - mdbenchmark = mdbenchmark.cli:cli\n\nrequirements:\n  build:\n    - python\n    - setuptools\n  run:\n    - python\n    - numpy >=1.8\n    - datreant >=1.0.0\n    - click==6.7\n    - jinja2\n    - pandas\n    - matplotlib <3.0\n    - xdg <2\n    - python-levenshtein\n    - tabulate >=0.8.2\n\ntest:\n  imports:\n    - mdbenchmark\n  commands:\n    - mdbenchmark\n\nabout:\n  home: https://github.com/bio-phys/MDBenchmark\n  license: GPL-3.0\n  license_family: GPL\n  license_file: LICENSE\n  summary: 'Benchmark molecular dynamics simulations'\n\nextra:\n  recipe-maintainers:\n    - kain88-de\n    - mimischi\n",
+ "raw_meta_yaml":"{% set name = \"mdbenchmark\" %}\n{% set version = \"2.0.0\" %}\n{% set sha256 = \"0749478d52d7651b7c9b05c4494431125e247531adfd38181b815e347e155558\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  fn: {{ name }}-{{ version }}.tar.gz\n  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz\n  sha256: {{ sha256 }}\n\nbuild:\n  number: 1000\n  script: python -m pip install --no-deps --ignore-installed -vv .\n  skip: true  # [win]\n  entry_points:\n    - mdbenchmark = mdbenchmark.cli:cli\n\nrequirements:\n  build:\n    - python\n    - setuptools\n    - pip\n  run:\n    - python\n    - numpy >=1.8\n    - datreant >=1.0.0\n    - click >=6.7\n    - jinja2\n    - pandas\n    - matplotlib >=2\n    - xdg <2\n    - python-levenshtein\n    - tabulate >=0.8.2\n\ntest:\n  requires:\n    - libglu  # [linux]\n  imports:\n    - mdbenchmark\n  commands:\n    - xvfb-run --server-args=\":99 -screen 0 1024x768x24 -ac +extension GLX -noreset\" mdbenchmark  # [linux]\n    - mdbenchmark  # [not linux]\n\nabout:\n  home: https://github.com/bio-phys/MDBenchmark\n  license: GPL-3.0\n  license_family: GPL\n  license_file: LICENSE\n  summary: 'Benchmark molecular dynamics simulations'\n\nextra:\n  recipe-maintainers:\n    - kain88-de\n    - mimischi\n",
  "req":{
   "__set__":true,
   "elements":[
@@ -180,6 +190,7 @@
    "matplotlib",
    "numpy",
    "pandas",
+   "pip",
    "python",
    "python-levenshtein",
    "setuptools",
