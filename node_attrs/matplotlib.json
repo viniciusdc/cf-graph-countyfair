@@ -262,7 +262,7 @@
    "summary":"Publication quality figures in Python"
   },
   "build":{
-   "number":"2"
+   "number":"0"
   },
   "extra":{
    "recipe-maintainers":[
@@ -412,7 +412,7 @@
   ],
   "package":{
    "name":"matplotlib-base",
-   "version":"3.1.1"
+   "version":"3.1.2"
   },
   "requirements":{
    "build":[
@@ -500,8 +500,8 @@
     "PR14891.patch",
     "PR14891.patch"
    ],
-   "sha256":"29d1a239bb7d1095d98d8831bb661519ab0d23e30d38ed47729f554f15e8cd3e",
-   "url":"https://github.com/matplotlib/matplotlib/archive/v3.1.1.tar.gz"
+   "sha256":"a48803e79013d01f22454fd718a575c6f9dadced211722637487fc2f7803620e",
+   "url":"https://github.com/matplotlib/matplotlib/archive/v3.1.2.tar.gz"
   },
   "test":{
    "imports":[
@@ -551,7 +551,7 @@
   "mpl_sample_data"
  ],
  "pinning_version":"2019.11.01",
- "raw_meta_yaml":"# Full credit goes to https://github.com/conda/conda-recipes for providing this recipe.\n# It has been subsequently adapted for automated building with conda-forge.\n\n{% set version = \"3.1.1\" %}\n\npackage:\n  name: matplotlib-base\n  version: {{ version }}\n\nsource:\n  url: https://github.com/matplotlib/matplotlib/archive/v{{ version }}.tar.gz\n  sha256: 29d1a239bb7d1095d98d8831bb661519ab0d23e30d38ed47729f554f15e8cd3e\n  patches:\n    # Find libpng on Windows.\n    - setupext.patch  # [win]\n    # https://github.com/matplotlib/matplotlib/pull/14891\n    - PR14891.patch\n\nbuild:\n  number: 2\n  skip: true  # [py<35]\n\nrequirements:\n  build:\n    - pkg-config  # [not win]\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n  host:\n    - python\n    - pip\n    - numpy\n    - cycler >=0.10\n    - python-dateutil\n    - freetype\n    - msinttypes  # [win]\n    - nose\n    - pyparsing\n    - libpng\n    - zlib  # [win]\n    - tk  # [linux]\n    - icu  # [linux]\n  run:\n    - python\n    - setuptools\n    - {{ pin_compatible('numpy') }}\n    - cycler >=0.10\n    - python-dateutil\n    - freetype\n    - pyparsing\n    - libpng\n    - tk  # [linux]\n    - icu  # [linux]\n    - tornado\n    - kiwisolver\n\ntest:\n  imports:\n    - matplotlib\n    - matplotlib.pyplot\n    - matplotlib._image\n    - matplotlib._path\n    - matplotlib._png\n    - matplotlib._tri\n    - matplotlib.backends._backend_agg\n    - matplotlib.ft2font\n    - matplotlib.ttconv\n    - matplotlib.backends._tkagg  # [not win]\n    - mpl_toolkits\n    - pylab\n\noutputs:\n  - name: matplotlib-base\n\n  - name: matplotlib\n    requirements:\n      host:\n        - python\n      run:\n        - python\n        - pyqt  # [not osx]\n        - {{ pin_subpackage('matplotlib-base', exact=True) }}\n    test:\n      imports:\n        - matplotlib\n\n  - name: mpl_sample_data\n    script: install-data.sh  # [not win]\n    script: install-data.bat  # [win]\n    requirements:\n      host:\n        - python\n      run:\n        - python\n        - {{ pin_subpackage('matplotlib-base', exact=True) }}\n    test:\n      imports:\n        - matplotlib.cbook\n      commands:\n        - python -c \"import matplotlib; matplotlib.cbook.get_sample_data('msft.csv', asfileobj=False)\"\n\nabout:\n  home: http://matplotlib.org/\n  license: PSF-based\n  license_url: http://matplotlib.sourceforge.net/users/license.html\n  license_family: PSF\n  license_file: LICENSE/LICENSE\n  summary: Publication quality figures in Python\n  description: |\n    matplotlib is a python 2D plotting library which produces publication\n    quality figures in a variety of hardcopy formats and interactive\n    environments across platforms. matplotlib can be used in Python scripts,\n    the Python and IPython shell (ala MATLAB or Mathematica), web\n    application servers, and six graphical user interface toolkits.\n  dev_url: https://github.com/matplotlib/matplotlib/\n  doc_url: http://matplotlib.org/contents.html\n\nextra:\n  recipe-maintainers:\n    - mdboom\n    - ocefpaf\n    - pelson\n    - tacaswell\n    - dopplershift\n",
+ "raw_meta_yaml":"# Full credit goes to https://github.com/conda/conda-recipes for providing this recipe.\n# It has been subsequently adapted for automated building with conda-forge.\n\n{% set version = \"3.1.2\" %}\n\npackage:\n  name: matplotlib-base\n  version: {{ version }}\n\nsource:\n  url: https://github.com/matplotlib/matplotlib/archive/v{{ version }}.tar.gz\n  sha256: a48803e79013d01f22454fd718a575c6f9dadced211722637487fc2f7803620e\n  patches:\n    # Find libpng on Windows.\n    - setupext.patch  # [win]\n    # https://github.com/matplotlib/matplotlib/pull/14891\n    - PR14891.patch\n\nbuild:\n  number: 0\n  skip: true  # [py<35]\n\nrequirements:\n  build:\n    - pkg-config  # [not win]\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n  host:\n    - python\n    - pip\n    - numpy\n    - cycler >=0.10\n    - python-dateutil\n    - freetype\n    - msinttypes  # [win]\n    - nose\n    - pyparsing\n    - libpng\n    - zlib  # [win]\n    - tk  # [linux]\n    - icu  # [linux]\n  run:\n    - python\n    - setuptools\n    - {{ pin_compatible('numpy') }}\n    - cycler >=0.10\n    - python-dateutil\n    - freetype\n    - pyparsing\n    - libpng\n    - tk  # [linux]\n    - icu  # [linux]\n    - tornado\n    - kiwisolver\n\ntest:\n  imports:\n    - matplotlib\n    - matplotlib.pyplot\n    - matplotlib._image\n    - matplotlib._path\n    - matplotlib._png\n    - matplotlib._tri\n    - matplotlib.backends._backend_agg\n    - matplotlib.ft2font\n    - matplotlib.ttconv\n    - matplotlib.backends._tkagg  # [not win]\n    - mpl_toolkits\n    - pylab\n\noutputs:\n  - name: matplotlib-base\n\n  - name: matplotlib\n    requirements:\n      host:\n        - python\n      run:\n        - python\n        - pyqt  # [not osx]\n        - {{ pin_subpackage('matplotlib-base', exact=True) }}\n    test:\n      imports:\n        - matplotlib\n\n  - name: mpl_sample_data\n    script: install-data.sh  # [not win]\n    script: install-data.bat  # [win]\n    requirements:\n      host:\n        - python\n      run:\n        - python\n        - {{ pin_subpackage('matplotlib-base', exact=True) }}\n    test:\n      imports:\n        - matplotlib.cbook\n      commands:\n        - python -c \"import matplotlib; matplotlib.cbook.get_sample_data('msft.csv', asfileobj=False)\"\n\nabout:\n  home: http://matplotlib.org/\n  license: PSF-based\n  license_url: http://matplotlib.sourceforge.net/users/license.html\n  license_family: PSF\n  license_file: LICENSE/LICENSE\n  summary: Publication quality figures in Python\n  description: |\n    matplotlib is a python 2D plotting library which produces publication\n    quality figures in a variety of hardcopy formats and interactive\n    environments across platforms. matplotlib can be used in Python scripts,\n    the Python and IPython shell (ala MATLAB or Mathematica), web\n    application servers, and six graphical user interface toolkits.\n  dev_url: https://github.com/matplotlib/matplotlib/\n  doc_url: http://matplotlib.org/contents.html\n\nextra:\n  recipe-maintainers:\n    - mdboom\n    - ocefpaf\n    - pelson\n    - tacaswell\n    - dopplershift\n",
  "req":{
   "__set__":true,
   "elements":[
@@ -581,5 +581,5 @@
  },
  "smithy_version":"3.6.1",
  "url":"https://github.com/matplotlib/matplotlib/archive/v3.1.1.tar.gz",
- "version":"3.1.1"
+ "version":"3.1.2"
 }
