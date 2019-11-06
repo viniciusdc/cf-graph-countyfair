@@ -186,7 +186,7 @@
    "summary":"RDKit is a collection of cheminformatics and machine-learning software written in C++ and Python."
   },
   "build":{
-   "number":"1"
+   "number":"0"
   },
   "extra":{
    "recipe-maintainers":[
@@ -200,7 +200,7 @@
   },
   "package":{
    "name":"rdkit",
-   "version":"2019.03.4"
+   "version":"2019.09.1"
   },
   "requirements":{
    "build":[
@@ -266,10 +266,14 @@
    ]
   },
   "source":{
-   "fn":"Release_2019_03_4.tar.gz",
-   "patches":null,
-   "sha256":"33c8eb5b3162296662ec06f8dd58e11fc21fa2ebcb13b456fcb3c4f3a39a357c",
-   "url":"https://github.com/rdkit/rdkit/archive/Release_2019_03_4.tar.gz"
+   "fn":"Release_2019_09_1.tar.gz",
+   "patches":[
+    "molhash-enum.patch",
+    "molhash-enum.patch",
+    "molhash-enum.patch"
+   ],
+   "sha256":"bfcb3c094cd0e7ec6fbebacde71f29f61df71601eb3d577eb295fd45771513eb",
+   "url":"https://github.com/rdkit/rdkit/archive/Release_2019_09_1.tar.gz"
   },
   "test":{
    "imports":[
@@ -321,7 +325,7 @@
  "name":"rdkit",
  "new_version":false,
  "pinning_version":"2019.08.11",
- "raw_meta_yaml":"{% set name = \"rdkit\" %}\n{% set version = \"2019.03.4\" %}\n{% set filename = \"Release_%s.tar.gz\" % version.replace(\".\", \"_\") %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  fn:  {{ filename }}\n  url: https://github.com/rdkit/rdkit/archive/{{ filename }}\n  sha256: 33c8eb5b3162296662ec06f8dd58e11fc21fa2ebcb13b456fcb3c4f3a39a357c\n  patches:\n    - vs2015.patch  # [win and py>=35]\n\nbuild:\n  number: 1\n  skip: true  # [py27]\n\nrequirements:\n  build:\n    - {{ compiler('cxx') }}\n    - cmake\n    - jom  # [win]\n  host:\n    - boost\n    - cairo\n    - eigen\n    - freetype\n    - python\n    - numpy\n    - pillow\n    - pandas\n  run:\n    - boost\n    - cairo\n    - python\n    - pillow\n    - pandas\n    - {{ pin_compatible('numpy') }}\n    - pycairo\n    - six\n\ntest:\n  imports:\n    - rdkit\n    - rdkit.Avalon\n    - rdkit.Chem\n    - rdkit.Chem.AllChem\n    - rdkit.DataManip\n    - rdkit.Dbase\n    - rdkit.DistanceGeometry\n    - rdkit.ForceField\n    - rdkit.Geometry\n    - rdkit.ML\n    - rdkit.Numerics\n    - rdkit.SimDivFilters\n    - rdkit.VLib\n    - rdkit.VLib.NodeLib\n\nabout:\n  home: http://rdkit.org\n  license: BSD 3-Clause\n  license_file: license.txt\n  summary: 'RDKit is a collection of cheminformatics and machine-learning software written in C++ and Python.'\n  doc_url: http://www.rdkit.org/docs/index.html\n  dev_url: https://github.com/rdkit/rdkit\n\nextra:\n  recipe-maintainers:\n    - pstjohn\n    - mcs07\n",
+ "raw_meta_yaml":"{% set name = \"rdkit\" %}\n{% set version = \"2019.09.1\" %}\n{% set filename = \"Release_%s.tar.gz\" % version.replace(\".\", \"_\") %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  fn:  {{ filename }}\n  url: https://github.com/rdkit/rdkit/archive/{{ filename }}\n  sha256: bfcb3c094cd0e7ec6fbebacde71f29f61df71601eb3d577eb295fd45771513eb\n  patches:\n    # Temporary patch for v2019.09.1 - see https://github.com/rdkit/rdkit/issues/2752\n    - molhash-enum.patch\n\nbuild:\n  number: 0\n  skip: true  # [py27]\n\nrequirements:\n  build:\n    - {{ compiler('cxx') }}\n    - cmake\n    - jom  # [win]\n  host:\n    - boost\n    - cairo\n    - eigen\n    - freetype\n    - python\n    - numpy\n    - pillow\n    - pandas\n  run:\n    - boost\n    - cairo\n    - python\n    - pillow\n    - pandas\n    - {{ pin_compatible('numpy') }}\n    - pycairo\n    - six\n\ntest:\n  imports:\n    - rdkit\n    - rdkit.Avalon\n    - rdkit.Chem\n    - rdkit.Chem.AllChem\n    - rdkit.DataManip\n    - rdkit.Dbase\n    - rdkit.DistanceGeometry\n    - rdkit.ForceField\n    - rdkit.Geometry\n    - rdkit.ML\n    - rdkit.Numerics\n    - rdkit.SimDivFilters\n    - rdkit.VLib\n    - rdkit.VLib.NodeLib\n\nabout:\n  home: http://rdkit.org\n  license: BSD 3-Clause\n  license_file: license.txt\n  summary: 'RDKit is a collection of cheminformatics and machine-learning software written in C++ and Python.'\n  doc_url: http://www.rdkit.org/docs/index.html\n  dev_url: https://github.com/rdkit/rdkit\n\nextra:\n  recipe-maintainers:\n    - pstjohn\n    - mcs07\n",
  "req":{
   "__set__":true,
   "elements":[
@@ -343,5 +347,5 @@
  },
  "smithy_version":"3.4.1",
  "url":"https://github.com/rdkit/rdkit/archive/Release_2019_03_4.tar.gz",
- "version":"2019.03.4"
+ "version":"2019.09.1"
 }
