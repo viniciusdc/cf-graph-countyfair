@@ -52,6 +52,23 @@
     "migrator_version",
     "name"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/337190225.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"Version",
+    "migrator_version":0,
+    "version":"1.25.0"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "version"
+   ]
   }
  ],
  "archived":false,
@@ -183,7 +200,7 @@
   }
  },
  "name":"grpcio",
- "new_version":"1.24.3",
+ "new_version":"1.25.0",
  "pinning_version":"2019.11.01",
  "raw_meta_yaml":"{% set version = \"1.23.0\" %}\n\npackage:\n  name: grpcio\n  version: {{ version }}\n\nsource:\n  url: https://pypi.io/packages/source/g/grpcio/grpcio-{{ version }}.tar.gz\n  sha256: 3cd3d99a8b5568d0d186f9520c16121a0f2a4bcad8e2b9884b76fb88a85a7774\n  patches:\n    - windows_ssl_lib_names.patch             # [win and openssl != \"1.1.1\" and openssl != \"1.1.1a\"]\n    - windows_ssl_lib_names_openssl111.patch  # [win and (openssl == \"1.1.1\" or openssl == \"1.1.1a\")]\n    - extra_include_and_lib_dirs.patch        # [win]\n\nbuild:\n  number: 0\n  # protobuf does not support Visual C++ 2008, skip windows py27\n  skip: True  # [win and vc<10]\n\nrequirements:\n  build:\n    - {{ compiler('c') }}     # [not win]\n    - {{ compiler('cxx') }}   # [not win]\n  host:\n    - python\n    - pip\n    - cython\n    - six >=1.5.2\n    - futures >=2.2.0   # [py27]\n    - enum34 >=1.0.4    # [py27]\n    - zlib\n    - openssl\n    - c-ares            # [unix]\n    - m2w64-toolchain   # [win]\n    - libpython         # [win]\n  run:\n    - python\n    - setuptools\n    - six >=1.5.2\n    - futures >=2.2.0   # [py27]\n    - enum34 >=1.0.4    # [py27]\n    - zlib\n    - openssl\n    - {{ pin_compatible(\"c-ares\") }}  # [unix]\n    - m2w64-gcc-libs   # [win]\n\ntest:\n  imports:\n    - grpc\n    - grpc._cython\n    - grpc._cython._cygrpc\n    - grpc.beta\n    - grpc.framework\n    - grpc.framework.common\n    - grpc.framework.foundation\n    - grpc.framework.interfaces\n    - grpc.framework.interfaces.base\n    - grpc.framework.interfaces.face\n\nabout:\n  home: https://grpc.io\n  license: Apache 2.0\n  license_file: '{{ environ[\"RECIPE_DIR\"] }}/LICENSE'\n  license_family: APACHE\n  summary: HTTP/2-based RPC framework\n\nextra:\n  recipe-maintainers:\n    - ocefpaf\n    - jcrist\n",
  "req":{
