@@ -83,7 +83,13 @@
    "summary":"Polar coordinate system plots for Qwt"
   },
   "build":{
-   "number":"6",
+   "merge_build_host":true,
+   "number":"7",
+   "run_exports":[
+    "subpackage_stub",
+    "subpackage_stub",
+    "subpackage_stub"
+   ],
    "skip":true
   },
   "extra":{
@@ -113,17 +119,29 @@
     "cdt_stub",
     "cdt_stub",
     "cdt_stub",
+    "cdt_stub",
+    "cdt_stub",
+    "cdt_stub",
+    "cdt_stub",
+    "cdt_stub",
+    "cdt_stub",
+    "cdt_stub",
+    "cdt_stub",
+    "cdt_stub",
+    "cdt_stub",
+    "cdt_stub",
+    "cdt_stub",
+    "cdt_stub",
+    "cdt_stub",
+    "cdt_stub",
+    "cdt_stub",
+    "cdt_stub",
+    "cdt_stub",
+    "cdt_stub",
+    "cdt_stub",
     "cdt_stub"
    ],
    "host":[
-    "qt",
-    "qwt",
-    "qt",
-    "qwt",
-    "qt",
-    "qwt"
-   ],
-   "run":[
     "qt",
     "qwt",
     "qt",
@@ -155,7 +173,7 @@
  "name":"qwtpolar",
  "new_version":false,
  "pinning_version":"2019.08.11",
- "raw_meta_yaml":"{% set version = \"1.1.1\" %}\n\npackage:\n  name: qwtpolar\n  version: {{ version }}\n\nsource:\n  url: https://sourceforge.net/projects/qwtpolar/files/qwtpolar/{{ version }}/qwtpolar-{{ version }}.tar.bz2\n  sha256: 6168baa9dbc8d527ae1ebf2631313291a1d545da268a05f4caa52ceadbe8b295\n  patches:\n    # Allow relocatable install\n    - qwtpolarconfig.pri.patch\n    # don't build debug on Windows - fails as Qwt isn't debug\n    - config.patch  # [win]\n    # add the _conda suffix patch\n    - conda_suffix.patch  # [win]\n\nbuild:\n  number: 6\n  skip: True  # [win and vc<14]\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n    - {{ cdt('mesa-libgl-devel') }}  # [linux]\n    - {{ cdt('mesa-dri-drivers') }}  # [linux]\n    - {{ cdt('libselinux') }}  # [linux]\n    - {{ cdt('libxdamage') }}  # [linux]\n    - {{ cdt('libxfixes') }}  # [linux]\n    - {{ cdt('libxxf86vm') }}  # [linux]\n    - {{ cdt('libxext-devel') }}  # [linux]\n    - {{ cdt('libxcb') }}  # [linux]\n    - {{ cdt('libXau') }}  # [linux]\n  host:\n    - qt\n    - qwt\n  run:\n    - qt\n    - qwt\n\ntest:\n  commands:\n    - test -f ${PREFIX}/lib/libqwtpolar${SHLIB_EXT}  # [not win]\n    - if not exist %LIBRARY_BIN%\\\\qwtpolar_conda.dll exit 1  # [win]\n    - if not exist %LIBRARY_LIB%\\\\qwtpolar_conda.lib exit 1  # [win]\n\nabout:\n  home: http://qwtpolar.sourceforge.net/\n  license: Qwt, Version 1.0\n  license_file: COPYING\n  summary: Polar coordinate system plots for Qwt\n\nextra:\n  recipe-maintainers:\n    - ceholden\n",
+ "raw_meta_yaml":"{% set version = \"1.1.1\" %}\n\npackage:\n  name: qwtpolar\n  version: {{ version }}\n\nsource:\n  url: https://sourceforge.net/projects/qwtpolar/files/qwtpolar/{{ version }}/qwtpolar-{{ version }}.tar.bz2\n  sha256: 6168baa9dbc8d527ae1ebf2631313291a1d545da268a05f4caa52ceadbe8b295\n  patches:\n    # Allow relocatable install\n    - qwtpolarconfig.pri.patch\n    # don't build debug on Windows - fails as Qwt isn't debug\n    - config.patch  # [win]\n    # add the _conda suffix patch\n    - conda_suffix.patch  # [win]\n\nbuild:\n  number: 7\n  skip: true  # [win and vc<14]\n  merge_build_host: true  # [linux]\n  run_exports:\n    - {{ pin_subpackage('qwtpolar', max_pin='x.x') }}\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n    - {{ cdt('xorg-x11-proto-devel') }}  # [linux]\n    - {{ cdt('libx11-devel') }}          # [linux]\n    - {{ cdt('libxext-devel') }}         # [linux]\n    - {{ cdt('libxrender-devel') }}      # [linux]\n    - {{ cdt('mesa-libgl-devel') }}      # [linux]\n    - {{ cdt('mesa-libegl-devel') }}     # [linux]\n    - {{ cdt('mesa-dri-drivers') }}      # [linux]\n    - {{ cdt('libxau-devel') }}          # [linux]\n    - {{ cdt('alsa-lib-devel') }}        # [linux]\n    - {{ cdt('gtk2-devel') }}            # [linux]\n    - {{ cdt('gtkmm24-devel') }}         # [linux]\n    - {{ cdt('libdrm-devel') }}          # [linux]\n    - {{ cdt('libxcomposite-devel') }}   # [linux]\n    - {{ cdt('libxcursor-devel') }}      # [linux]\n    - {{ cdt('libxi-devel') }}           # [linux]\n    - {{ cdt('libxrandr-devel') }}       # [linux]\n    - {{ cdt('pciutils-devel') }}        # [linux]\n    - {{ cdt('libxscrnsaver-devel') }}   # [linux]\n    - {{ cdt('libxtst-devel') }}         # [linux]\n    - {{ cdt('libselinux-devel') }}      # [linux]\n    - {{ cdt('libxdamage') }}            # [linux]\n    - {{ cdt('libxdamage-devel') }}      # [linux]\n    - {{ cdt('libxfixes') }}             # [linux]\n    - {{ cdt('libxfixes-devel') }}       # [linux]\n    - {{ cdt('libxxf86vm') }}            # [linux]\n    - {{ cdt('libxrandr') }}             # [linux]\n    - {{ cdt('alsa-lib') }}              # [linux]\n    - {{ cdt('xorg-x11-server-xvfb') }}  # [linux]\n    - {{ cdt('pciutils-devel') }}        # [linux]\n  host:\n    - qt\n    - qwt\n\ntest:\n  commands:\n    - test -f ${PREFIX}/lib/libqwtpolar${SHLIB_EXT}  # [not win]\n    - if not exist %LIBRARY_BIN%\\\\qwtpolar_conda.dll exit 1  # [win]\n    - if not exist %LIBRARY_LIB%\\\\qwtpolar_conda.lib exit 1  # [win]\n\nabout:\n  home: http://qwtpolar.sourceforge.net/\n  license: Qwt, Version 1.0\n  license_file: COPYING\n  summary: Polar coordinate system plots for Qwt\n\nextra:\n  recipe-maintainers:\n    - ceholden\n",
  "req":{
   "__set__":true,
   "elements":[
