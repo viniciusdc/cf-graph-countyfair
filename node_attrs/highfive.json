@@ -87,7 +87,7 @@
    "summary":"Header-only C++ HDF5 interface"
   },
   "build":{
-   "number":"1002",
+   "number":"0",
    "skip":true
   },
   "extra":{
@@ -95,17 +95,23 @@
     "wolfv",
     "SylvainCorlay",
     "JohanMabille",
+    "ferdonline",
+    "tdegeus",
     "wolfv",
     "SylvainCorlay",
     "JohanMabille",
+    "ferdonline",
+    "tdegeus",
     "wolfv",
     "SylvainCorlay",
-    "JohanMabille"
+    "JohanMabille",
+    "ferdonline",
+    "tdegeus"
    ]
   },
   "package":{
    "name":"highfive",
-   "version":"2.0"
+   "version":"2.1.1"
   },
   "requirements":{
    "build":[
@@ -126,9 +132,9 @@
    ]
   },
   "source":{
-   "fn":"HighFive-v2.0.tar.gz",
-   "sha256":"deee33d7f578e33dccb5d04771f4e01b89a980dd9a3ff449dd79156901ee8d25",
-   "url":"https://github.com/BlueBrain/HighFive/archive/v2.0.tar.gz"
+   "fn":"HighFive-v2.1.1.tar.gz",
+   "sha256":"52cffeda0d018f020f48e5460c051d5c2031c3a3c82133a21527f186a0c1650e",
+   "url":"https://github.com/BlueBrain/HighFive/archive/v2.1.1.tar.gz"
   },
   "test":{
    "commands":[
@@ -155,9 +161,9 @@
   }
  },
  "name":"highfive",
- "new_version":"2.1",
+ "new_version":"2.1.1",
  "pinning_version":"2019.10.28",
- "raw_meta_yaml":"{% set name = \"HighFive\" %}\n{% set version = \"2.0\" %}\n{% set sha256 = \"deee33d7f578e33dccb5d04771f4e01b89a980dd9a3ff449dd79156901ee8d25\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  fn: HighFive-v{{ version }}.tar.gz\n  url: https://github.com/BlueBrain/HighFive/archive/v{{ version }}.tar.gz\n  sha256: {{ sha256 }}\n\nbuild:\n  number: 1002\n  skip: true  # [win]\n\nrequirements:\n  build:\n    - {{ compiler('cxx') }}\n    - cmake\n  host:\n    - hdf5\n    - boost\n\ntest:\n  commands:\n    # Testing for installation of headers - non-exhaustive list.\n    - test -d $PREFIX/include/highfive  # [unix]\n    - test -f $PREFIX/include/highfive/H5Attribute.hpp  # [unix]\n    - test -d $PREFIX/include/highfive/bits  # [unix]\n    - test -f $PREFIX/include/highfive/bits/H5File_misc.hpp  # [unix]\n    - test -f $PREFIX/include/highfive/H5Exception.hpp  # [unix]\n    - test -f $PREFIX/share/HighFive/CMake/HighFiveConfig.cmake  # [unix]\n    - test -f $PREFIX/share/HighFive/CMake/HighFiveTargets.cmake  # [unix]\n    - if exist %LIBRARY_PREFIX%\\include\\highfive\\H5Attribute.hpp (exit 0) else (exit 1)  # [win]\n    - if exist %LIBRARY_PREFIX%\\include\\highfive\\bits\\H5File_misc.hpp (exit 0) else (exit 1)  # [win]\n    - if exist %LIBRARY_PREFIX%\\include\\highfive\\H5Exception.hpp (exit 0) else (exit 1)  # [win]\n    - if exist %LIBRARY_PREFIX%\\share\\HighFive\\CMake\\HighFiveConfig.cmake (exit 0) else (exit 1)  # [win]\n    - if exist %LIBRARY_PREFIX%\\share\\HighFive\\CMake\\HighFiveTargets.cmake (exit 0) else (exit 1)  # [win]\n\nabout:\n  home: https://github.com/BlueBrain/HighFive\n  license: BSL-1.0\n  license_file: LICENSE\n  summary: 'Header-only C++ HDF5 interface'\n  description: 'HighFive is a modern C++/C++11 friendly interface for libhdf5.'\n  dev_url: https://github.com/BlueBrain/HighFive\n\nextra:\n  recipe-maintainers:\n    - wolfv\n    - SylvainCorlay\n    - JohanMabille\n",
+ "raw_meta_yaml":"{% set name = \"HighFive\" %}\n{% set version = \"2.1.1\" %}\n{% set sha256 = \"52cffeda0d018f020f48e5460c051d5c2031c3a3c82133a21527f186a0c1650e\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  fn: HighFive-v{{ version }}.tar.gz\n  url: https://github.com/BlueBrain/HighFive/archive/v{{ version }}.tar.gz\n  sha256: {{ sha256 }}\n\nbuild:\n  number: 0\n  skip: true  # [win]\n\nrequirements:\n  build:\n    - {{ compiler('cxx') }}\n    - cmake\n  host:\n    - hdf5\n    - boost\n\ntest:\n  commands:\n    # Testing for installation of headers - non-exhaustive list.\n    - test -d $PREFIX/include/highfive  # [unix]\n    - test -f $PREFIX/include/highfive/H5Attribute.hpp  # [unix]\n    - test -d $PREFIX/include/highfive/bits  # [unix]\n    - test -f $PREFIX/include/highfive/bits/H5File_misc.hpp  # [unix]\n    - test -f $PREFIX/include/highfive/H5Exception.hpp  # [unix]\n    - test -f $PREFIX/share/HighFive/CMake/HighFiveConfig.cmake  # [unix]\n    - test -f $PREFIX/share/HighFive/CMake/HighFiveTargets.cmake  # [unix]\n    - if exist %LIBRARY_PREFIX%\\include\\highfive\\H5Attribute.hpp (exit 0) else (exit 1)  # [win]\n    - if exist %LIBRARY_PREFIX%\\include\\highfive\\bits\\H5File_misc.hpp (exit 0) else (exit 1)  # [win]\n    - if exist %LIBRARY_PREFIX%\\include\\highfive\\H5Exception.hpp (exit 0) else (exit 1)  # [win]\n    - if exist %LIBRARY_PREFIX%\\share\\HighFive\\CMake\\HighFiveConfig.cmake (exit 0) else (exit 1)  # [win]\n    - if exist %LIBRARY_PREFIX%\\share\\HighFive\\CMake\\HighFiveTargets.cmake (exit 0) else (exit 1)  # [win]\n\nabout:\n  home: https://github.com/BlueBrain/HighFive\n  license: BSL-1.0\n  license_file: LICENSE\n  summary: 'Header-only C++ HDF5 interface'\n  description: 'HighFive is a modern C++/C++11 friendly interface for libhdf5.'\n  dev_url: https://github.com/BlueBrain/HighFive\n\nextra:\n  recipe-maintainers:\n    - wolfv\n    - SylvainCorlay\n    - JohanMabille\n    - ferdonline\n    - tdegeus\n",
  "req":{
   "__set__":true,
   "elements":[
@@ -169,5 +175,5 @@
  },
  "smithy_version":"3.6.0",
  "url":"https://github.com/BlueBrain/HighFive/archive/v2.0.tar.gz",
- "version":"2.0"
+ "version":"2.1.1"
 }
