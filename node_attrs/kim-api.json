@@ -11,11 +11,11 @@
    "home":"https://openkim.org",
    "license":"CDDL-1.0",
    "license_family":"OTHER",
-   "license_file":"LICENSE.CDDL",
+   "license_file":"kim-api-2.1.3/LICENSE.CDDL",
    "summary":"The Open Knowledgebase of Interatomic Models (OpenKIM) aims to be an online resource for standardized testing, long-term warehousing and easy retrieval of interatomic models and data. "
   },
   "build":{
-   "number":"3",
+   "number":"4",
    "skip":true
   },
   "extra":{
@@ -39,16 +39,25 @@
     "cmake",
     "make",
     "vim",
+    "patch",
+    "tar",
+    "xz",
     "cxx_compiler_stub",
     "fortran_compiler_stub",
     "cmake",
     "make",
     "vim",
+    "patch",
+    "tar",
+    "xz",
     "cxx_compiler_stub",
     "fortran_compiler_stub",
     "cmake",
     "make",
-    "vim"
+    "vim",
+    "patch",
+    "tar",
+    "xz"
    ],
    "run":[
     "wget",
@@ -56,10 +65,29 @@
     "wget"
    ]
   },
-  "source":{
-   "sha256":"d433ad8edebe29311da6f362ff65830785cb880b2152735bf62676a77e19bbb4",
-   "url":"https://github.com/openkim/kim-api/archive/v2.1.3.tar.gz"
-  },
+  "source":[
+   {
+    "sha256":"88a5416006c65a2940d82fad49de0885aead05bfa8b59f87d287db5516b9c467",
+    "url":"https://s3.openkim.org/kim-api/kim-api-2.1.3.txz"
+   },
+   {
+    "path":"diff.patch"
+   },
+   {
+    "sha256":"88a5416006c65a2940d82fad49de0885aead05bfa8b59f87d287db5516b9c467",
+    "url":"https://s3.openkim.org/kim-api/kim-api-2.1.3.txz"
+   },
+   {
+    "path":"diff.patch"
+   },
+   {
+    "sha256":"88a5416006c65a2940d82fad49de0885aead05bfa8b59f87d287db5516b9c467",
+    "url":"https://s3.openkim.org/kim-api/kim-api-2.1.3.txz"
+   },
+   {
+    "path":"diff.patch"
+   }
+  ],
   "test":{
    "commands":[
     "kim-api-collections-management list",
@@ -70,7 +98,7 @@
  },
  "name":"kim-api",
  "new_version":"2.1.3",
- "raw_meta_yaml":"{% set name = \"kim-api\" %}\n{% set version = \"2.1.3\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  url: https://github.com/openkim/{{ name }}/archive/v{{ version }}.tar.gz\n  sha256: d433ad8edebe29311da6f362ff65830785cb880b2152735bf62676a77e19bbb4\n\nbuild:\n  number: 3\n  skip: true  # [win]\n\nrequirements:\n  build:\n    - {{ compiler('cxx') }}\n    - {{ compiler('fortran') }}\n    - cmake\n    - make\n    - vim\n  run:\n    - wget\n\ntest:\n  commands:\n    - kim-api-collections-management list\n\nabout:\n  home: https://openkim.org\n  license: CDDL-1.0\n  license_family: OTHER\n  license_file: LICENSE.CDDL\n  summary: 'The Open Knowledgebase of Interatomic Models (OpenKIM) aims to be an online resource for standardized testing, long-term warehousing and easy retrieval of interatomic models and data. '\n\n  description: |\n    The Open Knowledgebase of Interatomic Models (OpenKIM) aims to be an \n    online resource for standardized testing, long-term warehousing and \n    easy retrieval of interatomic models and data. \n  doc_url: https://kim-api.readthedocs.io/\n  dev_url: https://github.com/openkim/kim-api\n\nextra:\n  recipe-maintainers:\n    - jan-janssen\n    - ellio167\n",
+ "raw_meta_yaml":"{% set name = \"kim-api\" %}\n{% set version = \"2.1.3\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  - url: https://s3.openkim.org/kim-api/{{ name }}-{{ version }}.txz\n    sha256: 88a5416006c65a2940d82fad49de0885aead05bfa8b59f87d287db5516b9c467\n  - path: diff.patch\n\nbuild:\n  number: 4\n  skip: true  # [win]\n\nrequirements:\n  build:\n    - {{ compiler('cxx') }}\n    - {{ compiler('fortran') }}\n    - cmake\n    - make\n    - vim\n    - patch\n    - tar\n    - xz\n  run:\n    - wget\n\ntest:\n  commands:\n    - kim-api-collections-management list\n\nabout:\n  home: https://openkim.org\n  license: CDDL-1.0\n  license_family: OTHER\n  license_file: {{ name }}-{{ version }}/LICENSE.CDDL\n  summary: 'The Open Knowledgebase of Interatomic Models (OpenKIM) aims to be an online resource for standardized testing, long-term warehousing and easy retrieval of interatomic models and data. '\n\n  description: |\n    The Open Knowledgebase of Interatomic Models (OpenKIM) aims to be an\n    online resource for standardized testing, long-term warehousing and\n    easy retrieval of interatomic models and data.\n  doc_url: https://kim-api.readthedocs.io/\n  dev_url: https://github.com/openkim/kim-api\n\nextra:\n  recipe-maintainers:\n    - jan-janssen\n    - ellio167\n",
  "req":{
   "__set__":true,
   "elements":[
@@ -78,8 +106,11 @@
    "cxx_compiler_stub",
    "fortran_compiler_stub",
    "make",
+   "patch",
+   "tar",
    "vim",
-   "wget"
+   "wget",
+   "xz"
   ]
  },
  "url":"https://github.com/openkim/kim-api/archive/v2.1.3.tar.gz",
