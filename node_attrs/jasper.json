@@ -107,11 +107,7 @@
  "conda-forge.yml":{
   "compiler_stack":"comp7",
   "max_py_ver":"37",
-  "max_r_ver":"35",
-  "provider":{
-   "linux_aarch64":"azure",
-   "linux_ppc64le":"azure"
-  }
+  "max_r_ver":"35"
  },
  "feedstock_name":"jasper",
  "hash_type":"sha256",
@@ -126,25 +122,27 @@
    "missing_dso_whitelist":[
     "/System/Library/Frameworks/GLUT.framework/Versions/A/GLUT"
    ],
-   "number":"0",
+   "number":"1",
    "run_exports":[
     "subpackage_stub",
     "subpackage_stub",
     "subpackage_stub"
-   ],
-   "skip":true
+   ]
   },
   "extra":{
    "recipe-maintainers":[
     "jakirkham",
     "jhamman",
     "ocefpaf",
+    "seanyen",
     "jakirkham",
     "jhamman",
     "ocefpaf",
+    "seanyen",
     "jakirkham",
     "jhamman",
-    "ocefpaf"
+    "ocefpaf",
+    "seanyen"
    ]
   },
   "package":{
@@ -153,17 +151,7 @@
   },
   "requirements":{
    "build":[
-    "c_compiler_stub",
-    "cdt_stub",
-    "cdt_stub",
-    "cdt_stub",
-    "cdt_stub",
-    "cdt_stub",
-    "cdt_stub",
-    "cdt_stub",
-    "cdt_stub",
-    "cdt_stub",
-    "cdt_stub",
+    "vs2017_win-64",
     "cmake",
     "make",
     "c_compiler_stub",
@@ -195,6 +183,7 @@
    ],
    "host":[
     "jpeg",
+    "freeglut",
     "jpeg",
     "jpeg",
     "libglu",
@@ -202,6 +191,7 @@
    ],
    "run":[
     "jpeg",
+    "compatible_pin_stub",
     "jpeg",
     "jpeg",
     "compatible_pin_stub",
@@ -219,6 +209,7 @@
   },
   "test":{
    "commands":[
+    "if not exist %LIBRARY_BIN%\\\\jasper.dll exit 1",
     "jasper --version",
     "jasper --version",
     "jasper --version"
@@ -228,7 +219,7 @@
  "name":"jasper",
  "new_version":false,
  "pinning_version":"2019.02.15",
- "raw_meta_yaml":"{% set version = \"2.0.14\" %}\n\npackage:\n  name: jasper\n  version: {{ version }}\n\nsource:\n  url: http://www.ece.uvic.ca/~frodo/jasper/software/jasper-{{ version }}.tar.gz\n  sha256: 2a1f61e55afe8b4ce8115e1508c5d7cb314d56dfcc2dd323f90c072f88ccf57b\n  patches:\n    - CVE-2018-9055-330751ce.patch\n\nbuild:\n  number: 0\n  skip: True  # [win]\n  run_exports:\n    # no info.  Leaving at default behavior.\n    - {{ pin_subpackage('jasper') }}\n  missing_dso_whitelist:                                         # [osx]\n    - /System/Library/Frameworks/GLUT.framework/Versions/A/GLUT  # [osx]\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - {{ cdt('mesa-libgl-devel') }}     # [not aarch64]\n    - {{ cdt('mesa-dri-drivers') }}     # [not aarch64]\n    - {{ cdt('libxdamage') }}           # [not aarch64]\n    - {{ cdt('libselinux') }}           # [not aarch64]\n    - {{ cdt('libxext') }}              # [not aarch64]\n    - {{ cdt('libxfixes') }}            # [not aarch64]\n    - {{ cdt('libxcb') }}               # [not aarch64]\n    - {{ cdt('libxau') }}               # [not aarch64]\n    - {{ cdt('libxi') }}                # [not aarch64]\n    - {{ cdt('libxxf86vm') }}           # [not aarch64]\n    - cmake\n    - make\n  host:\n    - jpeg\n    - libglu                            # [linux64]\n    - freeglut                          # [linux64]\n  run:\n    - jpeg\n    - {{ pin_compatible('libglu') }}    # [linux64]\n    - {{ pin_compatible('freeglut') }}  # [linux64]\n\ntest:\n  commands:\n    - jasper --version\n\nabout:\n  home: http://www.ece.uvic.ca/~frodo/jasper/\n  license: JasPer 2.0\n  license_file: LICENSE\n  summary: 'A reference implementation of the codec specified in the JPEG-2000 Part-1 standard.'\n\nextra:\n  recipe-maintainers:\n    - jakirkham\n    - jhamman\n    - ocefpaf\n",
+ "raw_meta_yaml":"{% set version = \"2.0.14\" %}\n\npackage:\n  name: jasper\n  version: {{ version }}\n\nsource:\n  url: http://www.ece.uvic.ca/~frodo/jasper/software/jasper-{{ version }}.tar.gz\n  sha256: 2a1f61e55afe8b4ce8115e1508c5d7cb314d56dfcc2dd323f90c072f88ccf57b\n  patches:\n    - CVE-2018-9055-330751ce.patch\n\nbuild:\n  number: 1\n  run_exports:\n    # no info.  Leaving at default behavior.\n    - {{ pin_subpackage('jasper') }}\n  missing_dso_whitelist:                                         # [osx]\n    - /System/Library/Frameworks/GLUT.framework/Versions/A/GLUT  # [osx]\n\nrequirements:\n  build:\n    - {{ compiler('c') }}               # [not win]\n    - {{ cdt('mesa-libgl-devel') }}     # [not win and not aarch64]\n    - {{ cdt('mesa-dri-drivers') }}     # [not win and not aarch64]\n    - {{ cdt('libxdamage') }}           # [not win and not aarch64]\n    - {{ cdt('libselinux') }}           # [not win and not aarch64]\n    - {{ cdt('libxext') }}              # [not win and not aarch64]\n    - {{ cdt('libxfixes') }}            # [not win and not aarch64]\n    - {{ cdt('libxcb') }}               # [not win and not aarch64]\n    - {{ cdt('libxau') }}               # [not win and not aarch64]\n    - {{ cdt('libxi') }}                # [not win and not aarch64]\n    - {{ cdt('libxxf86vm') }}           # [not win and not aarch64]\n    - vs2017_win-64                     # [win64]\n    - cmake\n    - make\n  host:\n    - jpeg\n    - libglu                            # [linux64]\n    - freeglut                          # [linux64 or win]\n  run:\n    - jpeg\n    - {{ pin_compatible('libglu') }}    # [linux64]\n    - {{ pin_compatible('freeglut') }}  # [linux64 or win]\n\ntest:\n  commands:\n    - if not exist %LIBRARY_BIN%\\\\jasper.dll exit 1  # [win]\n    - jasper --version\n\nabout:\n  home: http://www.ece.uvic.ca/~frodo/jasper/\n  license: JasPer 2.0\n  license_file: LICENSE\n  summary: 'A reference implementation of the codec specified in the JPEG-2000 Part-1 standard.'\n\nextra:\n  recipe-maintainers:\n    - jakirkham\n    - jhamman\n    - ocefpaf\n    - seanyen\n",
  "req":{
   "__set__":true,
   "elements":[
@@ -239,7 +230,8 @@
    "freeglut",
    "jpeg",
    "libglu",
-   "make"
+   "make",
+   "vs2017_win-64"
   ]
  },
  "smithy_version":"3.2.13",
