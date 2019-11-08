@@ -200,6 +200,23 @@
     "migrator_version",
     "version"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/338530685.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"Version",
+    "migrator_version":0,
+    "version":"0.13.2"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "version"
+   ]
   }
  ],
  "bad":false,
@@ -301,7 +318,7 @@
   }
  },
  "name":"python-graphviz",
- "new_version":"0.13.1",
+ "new_version":"0.13.2",
  "pinning_version":"2019.11.01",
  "raw_meta_yaml":"{% set version = \"0.13\" %}\n{% set sha256 = \"dc08677f37c65a4a480f00df4bd0d19a0a103c06aad95f21a37f0b7fd440de81\" %}\n\npackage:\n  name: python-graphviz\n  version: {{ version }}\n\nsource:\n  fn: python-graphviz-{{ version }}.zip\n  url: https://pypi.io/packages/source/g/graphviz/graphviz-{{ version }}.zip\n  sha256: {{ sha256 }}\n\nbuild:\n  number: 0\n  noarch: python\n  script:\n    # Needed due to the Windows batch script wrappers in conda-forge Graphviz.\n    # see https://github.com/conda-forge/graphviz-feedstock/blob/bbfe3c7be2a448dd11db165a18c3edfd5ee6a95d/recipe/bld.bat#L27-L32\n    # Must patch manually as the source code and patch are CRLF and conda-build\n    # tries to convert the patch to LF, which then won't apply.\n    - pushd \"{{ RECIPE_DIR }}\"\n    - cp windows-bat.patch \"{{ SRC_DIR }}\"\n    - popd\n    - patch --binary -p0 -i windows-bat.patch\n    - python -m pip install --no-deps --ignore-installed \"${SRC_DIR}\"\n\nrequirements:\n  build:\n    - patch\n  host:\n    - python\n    - pip\n  run:\n    - python\n    - graphviz\n\ntest:\n  imports:\n    - graphviz\n  requires:\n    - dask\n\nabout:\n  home: https://github.com/xflr6/graphviz\n  doc_url: https://graphviz.readthedocs.io\n  dev_url: https://github.com/xflr6/graphviz\n\n  license: MIT\n  license_family: MIT\n  license_file: LICENSE.txt\n\n  summary: Simple Python interface for Graphviz\n  description: |\n    This package facilitates the creation and rendering of graph\n    descriptions in the DOT language of the Graphviz graph\n    drawing software from Python.\n\nextra:\n  recipe-maintainers:\n    - jakirkham\n    - scopatz\n",
  "req":{
