@@ -130,11 +130,12 @@
    "doc_url":"http://qcodes.github.io/Qcodes/",
    "home":"http://qcodes.github.io/Qcodes/",
    "license":"MIT",
+   "license_file":"LICENSE",
    "summary":"Modular data acquisition and analysis framework"
   },
   "build":{
    "number":"0",
-   "script":"python -m pip install --no-deps --ignore-installed ."
+   "script":" -m pip install . --no-deps -vv"
   },
   "extra":{
    "recipe-maintainers":[
@@ -148,7 +149,7 @@
   },
   "package":{
    "name":"qcodes",
-   "version":"0.1.11"
+   "version":"0.7.0"
   },
   "requirements":{
    "build":[
@@ -160,30 +161,59 @@
     "pip"
    ],
    "run":[
-    "numpy>=1.10,<1.14",
-    "pyvisa>=1.8",
-    "h5py>=2.6",
-    "websockets>=3.2",
+    "python",
+    "numpy >=1.10",
+    "pyvisa >=1.9.1",
+    "h5py >=2.6",
+    "websockets >=7.0",
     "jsonschema",
+    "ruamel.yaml",
     "pyzmq",
-    "numpy>=1.10,<1.14",
-    "pyvisa>=1.8",
-    "h5py>=2.6",
-    "websockets>=3.2",
+    "wrapt",
+    "pandas",
+    "tabulate",
+    "tqdm",
+    "applicationinsights",
+    "matplotlib >=2.2.3",
+    "requirements-parser",
+    "importlib-metadata",
+    "python",
+    "numpy >=1.10",
+    "pyvisa >=1.9.1",
+    "h5py >=2.6",
+    "websockets >=7.0",
     "jsonschema",
+    "ruamel.yaml",
     "pyzmq",
-    "numpy>=1.10,<1.14",
-    "pyvisa>=1.8",
-    "h5py>=2.6",
-    "websockets>=3.2",
+    "wrapt",
+    "pandas",
+    "tabulate",
+    "tqdm",
+    "applicationinsights",
+    "matplotlib >=2.2.3",
+    "requirements-parser",
+    "importlib-metadata",
+    "python",
+    "numpy >=1.10",
+    "pyvisa >=1.9.1",
+    "h5py >=2.6",
+    "websockets >=7.0",
     "jsonschema",
-    "pyzmq"
+    "ruamel.yaml",
+    "pyzmq",
+    "wrapt",
+    "pandas",
+    "tabulate",
+    "tqdm",
+    "applicationinsights",
+    "matplotlib >=2.2.3",
+    "requirements-parser",
+    "importlib-metadata"
    ]
   },
   "source":{
-   "fn":"qcodes-0.1.11.zip",
-   "sha256":"9cac506829f866aac98e772c613686607dce95b5aece13280793dffea36f32f1",
-   "url":"https://github.com/QCoDeS/Qcodes/archive/v0.1.11.zip"
+   "sha256":"78ab215a372847da435c1b3e11b84935dbd5ef12d45f99965f8c0cdec544c9ec",
+   "url":"https://github.com/QCoDeS/Qcodes/archive/v0.7.0.zip"
   },
   "test":{
    "imports":[
@@ -196,21 +226,30 @@
  "name":"qcodes",
  "new_version":"0.7.0",
  "pinning_version":"2019.11.01",
- "raw_meta_yaml":"{% set name = \"qcodes\" %}\n{% set version = \"0.1.11\" %}\n{% set sha256 = \"9cac506829f866aac98e772c613686607dce95b5aece13280793dffea36f32f1\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  fn: {{ name }}-{{ version }}.zip\n  url: https://github.com/QCoDeS/Qcodes/archive/v{{ version }}.zip\n  sha256: {{ sha256 }}\n\nbuild:\n  number: 0\n  skip: true  # [py<35]\n  script: python -m pip install --no-deps --ignore-installed .\n\nrequirements:\n  build:\n    - python\n    - pip\n  run:\n  - numpy>=1.10,<1.14\n  - pyvisa>=1.8\n  - h5py>=2.6\n  - websockets>=3.2\n  - jsonschema\n  - pyzmq\n\ntest:\n  imports:\n    - qcodes\n\nabout:\n  home: http://qcodes.github.io/Qcodes/\n  license: MIT\n  # license_file: LICENSE.md\n  summary: 'Modular data acquisition and analysis framework'\n  description: |\n    QCoDeS is a Python-based data acquisition framework developed \n    by the Copenhagen / Delft / Sydney / Microsoft quantum computing \n    consortium. While it has been developed to serve the needs of \n    nanoelectronic device experiments, it is not inherently limited \n    to such experiments, and can be used anywhere a system with many \n    degrees of freedom is controllable by computer.\n  doc_url: http://qcodes.github.io/Qcodes/\n  dev_url: https://github.com/QCoDeS/Qcodes\n\nextra:\n  recipe-maintainers:\n    - basnijholt\n    - AdriaanRol\n",
+ "raw_meta_yaml":"{% set version = \"0.7.0\" %}\n\npackage:\n  name: qcodes\n  version: {{ version }}\n\nsource:\n  url: https://github.com/QCoDeS/Qcodes/archive/v{{ version }}.zip\n  sha256: 78ab215a372847da435c1b3e11b84935dbd5ef12d45f99965f8c0cdec544c9ec\n\nbuild:\n  number: 0\n  skip: True  # [py27]\n  script: \"{{ PYTHON }} -m pip install . --no-deps -vv\"\n\nrequirements:\n  build:\n    - python\n    - pip\n  run:\n    - python\n    - numpy >=1.10\n    - pyvisa >=1.9.1\n    - h5py >=2.6\n    - websockets >=7.0\n    - jsonschema\n    - ruamel.yaml\n    - pyzmq\n    - wrapt\n    - pandas\n    - tabulate\n    - tqdm\n    - applicationinsights\n    - matplotlib >=2.2.3\n    - dataclasses  # [py36]\n    - requirements-parser\n    - importlib-metadata  # [py<38]\n\ntest:\n  imports:\n    - qcodes\n\nabout:\n  home: http://qcodes.github.io/Qcodes/\n  license: MIT\n  license_file: LICENSE\n  summary: 'Modular data acquisition and analysis framework'\n  description: |\n    QCoDeS is a Python-based data acquisition framework developed \n    by the Copenhagen / Delft / Sydney / Microsoft quantum computing \n    consortium. While it has been developed to serve the needs of \n    nanoelectronic device experiments, it is not inherently limited \n    to such experiments, and can be used anywhere a system with many \n    degrees of freedom is controllable by computer.\n  doc_url: http://qcodes.github.io/Qcodes/\n  dev_url: https://github.com/QCoDeS/Qcodes\n\nextra:\n  recipe-maintainers:\n    - basnijholt\n    - AdriaanRol\n",
  "req":{
   "__set__":true,
   "elements":[
+   "applicationinsights",
    "h5py",
+   "importlib-metadata",
    "jsonschema",
+   "matplotlib",
    "numpy",
+   "pandas",
    "pip",
    "python",
    "pyvisa",
    "pyzmq",
-   "websockets"
+   "requirements-parser",
+   "ruamel.yaml",
+   "tabulate",
+   "tqdm",
+   "websockets",
+   "wrapt"
   ]
  },
  "smithy_version":"3.6.1",
  "url":"https://github.com/QCoDeS/Qcodes/archive/v0.1.11.zip",
- "version":"0.1.11"
+ "version":"0.7.0"
 }
