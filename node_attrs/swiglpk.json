@@ -90,7 +90,7 @@
   },
   "build":{
    "number":"1000",
-   "script":" -m pip install . --no-deps --ignore-installed --no-cache-dir -vvv",
+   "script":" -m pip install . --no-deps -vv",
    "skip":true
   },
   "extra":{
@@ -142,8 +142,7 @@
    ]
   },
   "source":{
-   "fn":"swiglpk-4.65.0.tar.gz",
-   "sha256":"389e4179bf8eeeeb1d2e215298e133c961855998ed63da9d7d2e1fa207bb9fec",
+   "sha256":"407ac791e6b8e4eb36074e2da10164e4b9a82b67cd8fe3309725ef9a6cc48292",
    "url":"https://github.com/biosustain/swiglpk/archive/4.65.0.tar.gz"
   },
   "test":{
@@ -157,7 +156,7 @@
  "name":"swiglpk",
  "new_version":"4.65.0",
  "pinning_version":"2019.11.01",
- "raw_meta_yaml":"{% set name = \"swiglpk\" %}\n{% set version = \"4.65.0\" %}\n{% set sha256 = \"389e4179bf8eeeeb1d2e215298e133c961855998ed63da9d7d2e1fa207bb9fec\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  fn: {{ name }}-{{ version }}.tar.gz\n  url: https://github.com/biosustain/{{ name|lower }}/archive/{{ version }}.tar.gz\n  sha256: {{ sha256 }}\n\nbuild:\n  number: 1000\n  script: \"{{ PYTHON }} -m pip install . --no-deps --ignore-installed --no-cache-dir -vvv\"\n  skip: True  # [win]\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n    - make  # [unix]\n  host:\n    - python\n    - pip\n    - swig\n    - glpk\n  run:\n    - python\n    - swig\n    - glpk\n\ntest:\n  imports:\n    - swiglpk\n\nabout:\n  home: https://github.com/biosustain/swiglpk\n  license: GPL-3.0\n  license_file: LICENSE\n  summary: 'Simple swig bindings for the GNU Linear Programming Kit'\n  description: |\n    swiglpk is not a high-level wrapper for GLPK (take a look at optlang \n    if you are interested in a python-based mathematical programming language). \n    It just provides plain vanilla swig bindings to the underlying C library.\n  dev_url: https://github.com/biosustain/swiglpk\n\nextra:\n  recipe-maintainers:\n    - druvus\n",
+ "raw_meta_yaml":"{% set version = \"4.65.0\" %}\n\npackage:\n  name: swiglpk\n  version: {{ version }}\n\nsource:\n  url: https://github.com/biosustain/swiglpk/archive/{{ version }}.tar.gz\n  sha256: 407ac791e6b8e4eb36074e2da10164e4b9a82b67cd8fe3309725ef9a6cc48292\n\nbuild:\n  number: 1000\n  script: \"{{ PYTHON }} -m pip install . --no-deps -vv\"\n  skip: True  # [win]\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n    - make  # [unix]\n  host:\n    - python\n    - pip\n    - swig\n    - glpk\n  run:\n    - python\n    - swig\n    - glpk\n\ntest:\n  imports:\n    - swiglpk\n\nabout:\n  home: https://github.com/biosustain/swiglpk\n  license: GPL-3.0\n  license_file: LICENSE\n  summary: 'Simple swig bindings for the GNU Linear Programming Kit'\n  description: |\n    swiglpk is not a high-level wrapper for GLPK (take a look at optlang \n    if you are interested in a python-based mathematical programming language). \n    It just provides plain vanilla swig bindings to the underlying C library.\n  dev_url: https://github.com/biosustain/swiglpk\n\nextra:\n  recipe-maintainers:\n    - druvus\n",
  "req":{
   "__set__":true,
   "elements":[

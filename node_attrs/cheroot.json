@@ -217,6 +217,25 @@
     "migrator_version",
     "version"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/338725609.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"MigrationYaml",
+    "migrator_object_version":1,
+    "migrator_version":0,
+    "name":"python38"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_object_version",
+    "migrator_version",
+    "name"
+   ]
   }
  ],
  "bad":false,
@@ -234,23 +253,30 @@
    "summary":"Highly-optimized, pure-python HTTP server"
   },
   "build":{
-   "noarch":"python",
+   "entry_points":[
+    "cheroot = cheroot.cli:main",
+    "cheroot = cheroot.cli:main",
+    "cheroot = cheroot.cli:main"
+   ],
    "number":"0",
-   "script":"python -m pip install --no-deps --ignore-installed ."
+   "script":" -m pip install . -vv"
   },
   "extra":{
    "recipe-maintainers":[
     "pmlandwehr",
+    "carlodri",
     "pmlandwehr",
-    "pmlandwehr"
+    "carlodri",
+    "pmlandwehr",
+    "carlodri"
    ]
   },
   "package":{
    "name":"cheroot",
-   "version":"6.5.5"
+   "version":"8.2.1"
   },
   "requirements":{
-   "build":[
+   "host":[
     "python",
     "pip",
     "setuptools_scm >=1.15.0",
@@ -268,23 +294,27 @@
     "python",
     "six >=1.11.0",
     "more-itertools >=2.6",
-    "backports.functools_lru_cache",
+    "jaraco.functools",
     "python",
     "six >=1.11.0",
     "more-itertools >=2.6",
-    "backports.functools_lru_cache",
+    "jaraco.functools",
     "python",
     "six >=1.11.0",
     "more-itertools >=2.6",
-    "backports.functools_lru_cache"
+    "jaraco.functools"
    ]
   },
   "source":{
-   "fn":"cheroot-6.5.5.tar.gz",
-   "sha256":"f6a85e005adb5bc5f3a92b998ff0e48795d4d98a0fbb7edde47a7513d4100601",
-   "url":"https://pypi.org/packages/source/C/Cheroot/cheroot-6.5.5.tar.gz"
+   "sha256":"5b525b3e4a755adf78070ab54c1821fb860d4255a9317dba2b88eb2df2441cff",
+   "url":"https://pypi.io/packages/source/c/cheroot/cheroot-8.2.1.tar.gz"
   },
   "test":{
+   "commands":[
+    "cheroot -h",
+    "cheroot -h",
+    "cheroot -h"
+   ],
    "imports":[
     "cheroot",
     "cheroot.test",
@@ -297,12 +327,12 @@
  },
  "name":"cheroot",
  "new_version":"8.2.1",
- "pinning_version":"2019.09.25",
- "raw_meta_yaml":"{% set name = \"Cheroot\" %}\n{% set version = \"6.5.5\" %}\n{% set bundle = \"tar.gz\" %}\n{% set hash_type = \"sha256\" %}\n{% set hash = \"f6a85e005adb5bc5f3a92b998ff0e48795d4d98a0fbb7edde47a7513d4100601\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  fn: {{ name|lower }}-{{ version }}.{{ bundle }}\n  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name|lower }}-{{ version }}.{{ bundle }}\n  {{ hash_type }}: {{ hash }}\n\nbuild:\n  noarch: python\n  number: 0\n  script: python -m pip install --no-deps --ignore-installed .\n\nrequirements:\n  build:\n    - python\n    - pip\n    - setuptools_scm >=1.15.0\n    - setuptools_scm_git_archive >=1.0\n\n  run:\n    - python\n    - six >=1.11.0\n    - more-itertools >=2.6\n    - backports.functools_lru_cache\n\ntest:\n  imports:\n    - cheroot\n    - cheroot.test\n\n\nabout:\n  home: http://www.cherrypy.org\n  license: BSD 3-Clause\n  license_family: BSD\n  license_file: LICENSE.md\n  summary: 'Highly-optimized, pure-python HTTP server'\n  dev_url: https://github.com/cherrypy/cheroot\n  doc_url: https://cheroot.readthedocs.io/en/latest/\n\nextra:\n  recipe-maintainers:\n    - pmlandwehr\n",
+ "pinning_version":"2019.11.01",
+ "raw_meta_yaml":"{% set name = \"Cheroot\" %}\n{% set version = \"8.2.1\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  url: https://pypi.io/packages/source/{{ name[0]|lower }}/{{ name|lower }}/{{ name|lower }}-{{ version }}.tar.gz\n  sha256: 5b525b3e4a755adf78070ab54c1821fb860d4255a9317dba2b88eb2df2441cff\n\nbuild:\n  number: 0\n  script: \"{{ PYTHON }} -m pip install . -vv\"\n  entry_points:\n    - cheroot = cheroot.cli:main\n\nrequirements:\n  host:\n    - python\n    - pip\n    - setuptools_scm >=1.15.0\n    - setuptools_scm_git_archive >=1.0\n  run:\n    - python\n    - six >=1.11.0\n    - more-itertools >=2.6\n    - backports.functools_lru_cache  # [py<33]\n    - jaraco.functools\n\ntest:\n  imports:\n    - cheroot\n    - cheroot.test\n  commands:\n    - cheroot -h\n\nabout:\n  home: http://www.cherrypy.org\n  license: BSD 3-Clause\n  license_family: BSD\n  license_file: LICENSE.md\n  summary: 'Highly-optimized, pure-python HTTP server'\n  dev_url: https://github.com/cherrypy/cheroot\n  doc_url: https://cheroot.readthedocs.io/en/latest/\n\nextra:\n  recipe-maintainers:\n    - pmlandwehr\n    - carlodri\n",
  "req":{
   "__set__":true,
   "elements":[
-   "backports.functools_lru_cache",
+   "jaraco.functools",
    "more-itertools",
    "pip",
    "python",
@@ -311,7 +341,7 @@
    "six"
   ]
  },
- "smithy_version":"3.4.8",
+ "smithy_version":"3.6.2",
  "url":"https://pypi.org/packages/source/C/Cheroot/cheroot-6.5.5.tar.gz",
- "version":"6.5.5"
+ "version":"8.2.1"
 }
