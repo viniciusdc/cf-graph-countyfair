@@ -38,7 +38,12 @@
   }
  ],
  "bad":false,
- "conda-forge.yml":{},
+ "conda-forge.yml":{
+  "provider":{
+   "linux_aarch64":"default",
+   "linux_ppc64le":"default"
+  }
+ },
  "feedstock_name":"python-duckdb",
  "hash_type":"sha256",
  "meta_yaml":{
@@ -53,7 +58,7 @@
    "summary":"An Embeddable Analytical Database"
   },
   "build":{
-   "number":"0",
+   "number":"1",
    "script":"cd tools/pythonpkg && SETUPTOOLS_SCM_PRETEND_VERSION=0.1.1 $PREFIX/bin/python setup.py install",
    "skip":true
   },
@@ -72,14 +77,17 @@
    "build":[
     "cmake",
     "ninja",
+    "make",
     "c_compiler_stub",
     "cxx_compiler_stub",
     "cmake",
     "ninja",
+    "make",
     "c_compiler_stub",
     "cxx_compiler_stub",
     "cmake",
     "ninja",
+    "make",
     "c_compiler_stub",
     "cxx_compiler_stub"
    ],
@@ -127,7 +135,7 @@
  "name":"python-duckdb",
  "new_version":"0.1.1",
  "pinning_version":"2019.11.01",
- "raw_meta_yaml":"{% set name = \"duckdb\" %}\n{% set version = \"0.1.1\" %}\n\npackage:\n  name: python-{{ name|lower }}\n  version: {{ version }}\n\nsource:\n  url: https://github.com/cwida/{{ name }}/archive/v{{ version }}.tar.gz\n  sha256: 4c0bc6778049312f35ad2ec5360d9ebb6e43025c2720d71f328b6bc0a751faed\n\nbuild:\n  number: 0\n  skip: true  # [win]\n  script: \"cd tools/pythonpkg && SETUPTOOLS_SCM_PRETEND_VERSION={{ version }} $PREFIX/bin/python setup.py install\"\n\nrequirements:\n  build:\n    - cmake\n    - ninja\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n  host:\n    - python\n    - pip\n    - setuptools_scm\n    - numpy 1.16\n    - pandas\n  run:\n    - python\n    - {{ pin_compatible('numpy') }}\n    - pandas\n\ntest:\n  imports:\n    - duckdb\n\nabout:\n  home: https://www.duckdb.org/\n  license: MIT\n  license_family: MIT\n  license_file: LICENSE\n  summary: 'An Embeddable Analytical Database'\n  description: |\n    DuckDB is an embedded database designed to execute analytical SQL queries\n    fast while embedded in another process. It is designed to be easy to\n    install and easy to use.\n  doc_url: https://www.duckdb.org/docs/current/index.html\n  dev_url: https://github.com/cwida/duckdb\n\nextra:\n  recipe-maintainers:\n    - xhochy\n",
+ "raw_meta_yaml":"{% set name = \"duckdb\" %}\n{% set version = \"0.1.1\" %}\n\npackage:\n  name: python-{{ name|lower }}\n  version: {{ version }}\n\nsource:\n  url: https://github.com/cwida/{{ name }}/archive/v{{ version }}.tar.gz\n  sha256: 4c0bc6778049312f35ad2ec5360d9ebb6e43025c2720d71f328b6bc0a751faed\n\nbuild:\n  number: 1\n  skip: true  # [win]\n  script: \"cd tools/pythonpkg && SETUPTOOLS_SCM_PRETEND_VERSION={{ version }} $PREFIX/bin/python setup.py install\"\n\nrequirements:\n  build:\n    - cmake\n    - ninja\n    - make\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n  host:\n    - python\n    - pip\n    - setuptools_scm\n    - numpy 1.16\n    - pandas\n  run:\n    - python\n    - {{ pin_compatible('numpy') }}\n    - pandas\n\ntest:\n  imports:\n    - duckdb\n\nabout:\n  home: https://www.duckdb.org/\n  license: MIT\n  license_family: MIT\n  license_file: LICENSE\n  summary: 'An Embeddable Analytical Database'\n  description: |\n    DuckDB is an embedded database designed to execute analytical SQL queries\n    fast while embedded in another process. It is designed to be easy to\n    install and easy to use.\n  doc_url: https://www.duckdb.org/docs/current/index.html\n  dev_url: https://github.com/cwida/duckdb\n\nextra:\n  recipe-maintainers:\n    - xhochy\n",
  "req":{
   "__set__":true,
   "elements":[
@@ -135,6 +143,7 @@
    "cmake",
    "compatible_pin_stub",
    "cxx_compiler_stub",
+   "make",
    "ninja",
    "numpy",
    "pandas",
