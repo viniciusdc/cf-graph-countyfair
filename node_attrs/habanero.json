@@ -36,7 +36,7 @@
   "build":{
    "noarch":"python",
    "number":"0",
-   "script":"python setup.py install --single-version-externally-managed --record record.txt"
+   "script":" -m pip install . --no-deps -vv"
   },
   "extra":{
    "recipe-maintainers":[
@@ -47,30 +47,36 @@
   },
   "package":{
    "name":"habanero",
-   "version":"0.6.0"
+   "version":"0.7.0"
   },
   "requirements":{
-   "build":[
+   "host":[
     "python",
     "setuptools",
+    "pip",
     "python",
     "setuptools",
+    "pip",
     "python",
-    "setuptools"
+    "setuptools",
+    "pip"
    ],
    "run":[
     "python",
     "requests >=2.7.0",
+    "tqdm",
     "python",
     "requests >=2.7.0",
+    "tqdm",
     "python",
-    "requests >=2.7.0"
+    "requests >=2.7.0",
+    "tqdm"
    ]
   },
   "source":{
-   "fn":"v0.6.0.tar.gz",
-   "sha256":"fef58dd676d1aa74106df4bcf13134de8eb96dd8ac2bf9f11ec23c5d447aa1ec",
-   "url":"https://github.com/sckott/habanero/archive/v0.6.0.tar.gz"
+   "fn":"v0.7.0.tar.gz",
+   "sha256":"180a9c46bca7c0b166981d71184e46290c1e73ecb445a71fb8ffc14a57393434",
+   "url":"https://github.com/sckott/habanero/archive/v0.7.0.tar.gz"
   },
   "test":{
    "imports":[
@@ -83,16 +89,18 @@
  "name":"habanero",
  "new_version":"0.7.0",
  "pinning_version":"2019.11.01",
- "raw_meta_yaml":"{% set name = \"habanero\" %}\n{% set version = \"0.6.0\" %}\n{% set sha256 = \"fef58dd676d1aa74106df4bcf13134de8eb96dd8ac2bf9f11ec23c5d447aa1ec\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  fn: v{{ version }}.tar.gz\n  url: https://github.com/sckott/{{ name }}/archive/v{{ version }}.tar.gz\n  sha256: {{ sha256 }}\n\nbuild:\n  number: 0\n  script: python setup.py install --single-version-externally-managed --record record.txt\n  noarch: python\n\nrequirements:\n  build:\n    - python\n    - setuptools\n  run:\n    - python\n    - requests >=2.7.0\n\ntest:\n  imports:\n    - habanero\n\nabout:\n  home: https://github.com/sckott/habanero\n  license: MIT\n  license_family: MIT\n  license_file: LICENSE\n  summary: 'CrossRef Search Low-level client for Python'\n\n  description: |\n    This is a low level client for working with Crossref's search API.\n    It's been named to be more generic, as other organizations are/will\n    adopt Crossref's search API, making it possible to interact with all\n    from one client.\n  doc_url: http://habanero.readthedocs.io/\n  dev_url: https://github.com/sckott/habanero\n\nextra:\n  recipe-maintainers:\n    - bryanwweber\n",
+ "raw_meta_yaml":"{% set name = \"habanero\" %}\n{% set version = \"0.7.0\" %}\n{% set sha256 = \"180a9c46bca7c0b166981d71184e46290c1e73ecb445a71fb8ffc14a57393434\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  fn: v{{ version }}.tar.gz\n  url: https://github.com/sckott/{{ name }}/archive/v{{ version }}.tar.gz\n  sha256: {{ sha256 }}\n\nbuild:\n  number: 0\n  script: \"{{ PYTHON }} -m pip install . --no-deps -vv\"\n  noarch: python\n\nrequirements:\n  host:\n  - python\n  - setuptools\n  - pip\n  run:\n  - python\n  - requests >=2.7.0\n  - tqdm\n\ntest:\n  imports:\n    - habanero\n\nabout:\n  home: https://github.com/sckott/habanero\n  license: MIT\n  license_family: MIT\n  license_file: LICENSE\n  summary: 'CrossRef Search Low-level client for Python'\n\n  description: |\n    This is a low level client for working with Crossref's search API.\n    It's been named to be more generic, as other organizations are/will\n    adopt Crossref's search API, making it possible to interact with all\n    from one client.\n  doc_url: http://habanero.readthedocs.io/\n  dev_url: https://github.com/sckott/habanero\n\nextra:\n  recipe-maintainers:\n    - bryanwweber\n",
  "req":{
   "__set__":true,
   "elements":[
+   "pip",
    "python",
    "requests",
-   "setuptools"
+   "setuptools",
+   "tqdm"
   ]
  },
  "smithy_version":"3.6.2",
  "url":"https://github.com/sckott/habanero/archive/v0.6.0.tar.gz",
- "version":"0.6.0"
+ "version":"0.7.0"
 }

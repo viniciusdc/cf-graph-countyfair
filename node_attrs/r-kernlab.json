@@ -81,7 +81,22 @@
    ]
   }
  ],
- "bad":false,
+ "bad":{
+  "exception":"local variable 'hash' referenced before assignment",
+  "traceback":[
+   "Traceback (most recent call last):",
+   "  File \"/root/repo/cf-scripts/conda_forge_tick/auto_tick.xsh\", line 691, in main",
+   "    hash_type=attrs.get('hash_type', 'sha256'))",
+   "  File \"/root/repo/cf-scripts/conda_forge_tick/auto_tick.xsh\", line 98, in run",
+   "    migrate_return = migrator.migrate(recipe_dir, attrs, **kwargs)",
+   "  File \"/root/repo/cf-scripts/conda_forge_tick/migrators.xsh\", line 465, in migrate",
+   "    new_patterns = self.get_hash_patterns('meta.yaml', urls, hash_type)",
+   "  File \"/root/repo/cf-scripts/conda_forge_tick/migrators.xsh\", line 392, in get_hash_patterns",
+   "    n = '{}: {}'.format(hash_type, hash)",
+   "UnboundLocalError: local variable 'hash' referenced before assignment",
+   ""
+  ]
+ },
  "conda-forge.yml":{
   "compiler_stack":"comp7",
   "max_py_ver":"37",
@@ -190,7 +205,7 @@
   }
  },
  "name":"r-kernlab",
- "new_version":"0.9_27",
+ "new_version":"0.9_28",
  "pinning_version":"2019.07.15",
  "raw_meta_yaml":"{% set version = '0.9-27' %}\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-kernlab\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  fn: kernlab_{{ version }}.tar.gz\n  url:\n    - {{ cran_mirror }}/src/contrib/kernlab_{{ version }}.tar.gz\n    - {{ cran_mirror }}/src/contrib/Archive/kernlab/kernlab_{{ version }}.tar.gz\n  sha256: f6add50ed4097f04d09411491625f8d46eafc4f003b1c1cff78a6fff8cc31dd4\n\nbuild:\n  merge_build_host: True  # [win]\n  number: 1001\n  skip: true  # [win32]\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - {{ compiler('c') }}        # [not win]\n    - {{ compiler('cxx') }}      # [not win]\n    - {{ compiler('m2w64_c') }}        # [win]\n    - {{ compiler('m2w64_cxx') }}        # [win]\n    - {{posix}}filesystem        # [win]\n    - {{posix}}make\n    - {{posix}}sed               # [win]\n    - {{posix}}coreutils         # [win]\n    - {{posix}}zip               # [win]\n  host:\n    - r-base\n  run:\n    - r-base\n    - {{native}}gcc-libs         # [win]\n\ntest:\n  commands:\n    - $R -e \"library('kernlab')\"           # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('kernlab')\\\"\"  # [win]\n\nabout:\n  home: https://CRAN.R-project.org/package=kernlab\n  license: GPL-2\n  summary: Kernel-based machine learning methods for classification, regression, clustering,\n    novelty detection, quantile regression and dimensionality reduction.  Among other\n    methods 'kernlab' includes Support Vector Machines, Spectral Clustering, Kernel\n    PCA, Gaussian Processes and a QP solver.\n  license_family: GPL2\n  license_file: '{{ environ[\"PREFIX\"] }}/lib/R/share/licenses/GPL-2'\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n    - johanneskoester\n    - bgruening\n    - daler\n    - jdblischak\n    - cbrueffer\n    - dbast\n",
  "req":{
