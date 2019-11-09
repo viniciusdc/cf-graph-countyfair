@@ -322,6 +322,25 @@
     "migrator_version",
     "version"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/339016843.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"MigrationYaml",
+    "migrator_object_version":1,
+    "migrator_version":0,
+    "name":"python38"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_object_version",
+    "migrator_version",
+    "name"
+   ]
   }
  ],
  "bad":false,
@@ -1065,7 +1084,7 @@
   "sregistry-s3",
   "sregistry-swift"
  ],
- "pinning_version":"2019.10.28",
+ "pinning_version":"2019.11.01",
  "raw_meta_yaml":"{% set name = \"sregistry\" %}\n{% set version = \"0.2.31\" %}\n\npackage:\n  name: \"{{ name|lower }}\"\n  version: \"{{ version }}\"\n\nsource:\n  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz\n  sha256: 82570a70c57841eb2d03c72c9f0d0bb3bbafb571b2c06997875ab626d060b102\n\nbuild:\n  number: 0\n  entry_points:\n    - sregistry=sregistry.client:main\n  script: \"{{ PYTHON }} -m pip install . --no-deps --ignore-installed -vv \"\n  skip: True  # [win]\n\nrequirements:\n  host:\n    - pip\n    - pytest-runner\n    - python >=3\n    - setuptools\n  run:\n    - pygments >=2.1.3\n    - python >=3\n    - requests >=2.18.4\n    - sqlalchemy\n    - spython\n\ntest:\n  imports:\n    - sregistry\n    - sregistry.auth\n    - sregistry.client\n    - sregistry.database\n    - sregistry.logger\n    - sregistry.main\n    - sregistry.main.base\n    - sregistry.main.docker\n    - sregistry.main.gitlab\n    - sregistry.main.hub\n    - sregistry.main.nvidia\n    - sregistry.main.templates\n    - sregistry.main.templates.build\n    - sregistry.main.workers\n    - sregistry.tests\n    - sregistry.utils\n  commands:\n    - sregistry --help\n\noutputs:\n  - name: sregistry\n\n  - name: sregistry-registry\n    requirements:\n      host:\n        - python >=3\n      run:\n        - python >=3\n        - {{ pin_subpackage('sregistry', exact=True) }}\n        - python-dateutil >=2.5.3\n        - requests-toolbelt >=0.8.0\n    test:\n      imports:\n        - sregistry.main.registry\n  - name: sregistry-aws\n    requirements:\n      host:\n        - python >=3\n      run:\n        - python >=3\n        - {{ pin_subpackage('sregistry', exact=True) }}\n        - awscli >=1.16.19\n    test:\n      imports:\n        - sregistry.main.aws\n  - name: sregistry-swift\n    requirements:\n      host:\n        - python >=3\n      run:\n        - python >=3\n        - {{ pin_subpackage('sregistry', exact=True) }}\n        - python-swiftclient >=3.6.0\n        - python-keystoneclient >=3.5.0\n        - oauth2client >=3.0\n    test:\n      imports:\n        - sregistry.main.swift\n  - name: sregistry-dropbox\n    requirements:\n      host:\n        - python >=3\n      run:\n        - python >=3\n        - {{ pin_subpackage('sregistry', exact=True) }}\n        - dropbox >=8.5.1\n    test:\n      imports:\n        - sregistry.main.dropbox\n  - name: sregistry-globus\n    requirements:\n      host:\n        - python >=3\n      run:\n        - python >=3\n        - {{ pin_subpackage('sregistry', exact=True) }}\n        - oauth2client >=3.0\n        - globus-sdk >=1.5.0\n    test:\n      imports:\n        - sregistry.main.globus\n  - name: sregistry-google-storage\n    requirements:\n      host:\n        - python >=3\n      run:\n        - python >=3\n        - {{ pin_subpackage('sregistry', exact=True) }}\n        - oauth2client >=3.0\n        - google-cloud-storage >=1.4.0\n        - retrying >=1.3.3\n        - google-api-python-client >=1.6.4\n    test:\n      imports:\n        - sregistry.main.google_storage\n  - name: sregistry-google-build\n    requirements:\n      host:\n        - python >=3\n      run:\n        - python >=3\n        - {{ pin_subpackage('sregistry', exact=True) }}\n        - oauth2client >=3.0\n        - google-cloud-storage >=1.4.0\n        - retrying >=1.3.3\n        - google-api-python-client >=1.6.4\n    test:\n      imports:\n        - sregistry.main.google_build\n  - name: sregistry-google-drive\n    requirements:\n      host:\n        - python >=3\n      run:\n        - python >=3\n        - {{ pin_subpackage('sregistry', exact=True) }}\n        - oauth2client >=3.0\n        - google-api-python-client >=1.6.4\n    test:\n      imports:\n        - sregistry.main.google_drive\n  - name: sregistry-google-compute\n    requirements:\n      host:\n        - python >=3\n      run:\n        - python >=3\n        - {{ pin_subpackage('sregistry', exact=True) }}\n        - oauth2client >=3.0\n        - google-api-python-client >=1.6.4\n        - google-cloud-storage >=1.4.0\n        - retrying >=1.3.3\n    test:\n      imports:\n        - sregistry.main.google_storage\n  - name: sregistry-s3\n    requirements:\n      host:\n        - python >=3\n      run:\n        - python >=3\n        - {{ pin_subpackage('sregistry', exact=True) }}\n        - boto3 >=1.7.83\n    test:\n      imports:\n        - sregistry.main.s3\n\nabout:\n  home: https://github.com/singularityhub/sregistry-cli\n  license: MPL-2.0\n  license_family: OTHER\n  license_file: LICENSE\n  summary: Command line tool for working with container storage\n  doc_url: https://singularityhub.github.io/sregistry-cli\n  dev_url: https://github.com/singularityhub/sregistry-cli\n\nextra:\n  recipe-maintainers:\n    - tschoonj\n    - vsoch\n",
  "req":{
   "__set__":true,
@@ -1093,7 +1112,7 @@
    "subpackage_stub"
   ]
  },
- "smithy_version":"3.6.0",
+ "smithy_version":"3.6.2",
  "url":"https://pypi.io/packages/source/s/sregistry/sregistry-0.2.30.tar.gz",
  "version":"0.2.31"
 }
