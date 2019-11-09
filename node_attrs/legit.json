@@ -37,7 +37,7 @@
    ]
   }
  ],
- "bad":"Upstream: Error getting upstream version",
+ "bad":false,
  "conda-forge.yml":{
   "compiler_stack":"comp7",
   "max_py_ver":"37",
@@ -47,20 +47,23 @@
   }
  },
  "feedstock_name":"legit",
+ "hash_type":"sha256",
  "meta_yaml":{
   "about":{
    "home":"https://github.com/kennethreitz/legit",
-   "license":"BSD-3",
-   "summary":"Git for Humans."
+   "license":"BSD-3-Clause",
+   "license_file":"LICENSE",
+   "summary":"Git for Humans"
   },
   "build":{
    "entry_points":[
-    "legit = legit.cli:main",
-    "legit = legit.cli:main",
-    "legit = legit.cli:main"
+    "legit = legit.cli:cli",
+    "legit = legit.cli:cli",
+    "legit = legit.cli:cli"
    ],
-   "number":"1000",
-   "script":"python setup.py install --single-version-externally-managed --record record.txt"
+   "noarch":"python",
+   "number":"0",
+   "script":" -m pip install . --no-deps -vv"
   },
   "extra":{
    "recipe-maintainers":[
@@ -71,35 +74,41 @@
   },
   "package":{
    "name":"legit",
-   "version":"0.4.1"
+   "version":"1.1.0"
   },
   "requirements":{
    "build":[
     "python",
-    "setuptools",
+    "pip",
     "python",
-    "setuptools",
+    "pip",
     "python",
-    "setuptools"
+    "pip"
    ],
    "run":[
     "python",
     "clint",
+    "click",
+    "crayons",
     "gitpython",
     "six",
     "python",
     "clint",
+    "click",
+    "crayons",
     "gitpython",
     "six",
     "python",
     "clint",
+    "click",
+    "crayons",
     "gitpython",
     "six"
    ]
   },
   "source":{
-   "git_rev":"v0.4.1",
-   "git_url":"https://github.com/kennethreitz/legit"
+   "sha256":"25bd3809d657c9b0bd45a6a230dc7f58a56e6e068159d471ffeadb0cf4677b4d",
+   "url":"https://pypi.io/packages/source/l/legit/legit-1.1.0.tar.gz"
   },
   "test":{
    "commands":[
@@ -107,17 +116,17 @@
     "cd test-git-repo",
     "git init",
     "git remote add origin http://",
-    "legit help",
+    "legit -h",
     "mkdir test-git-repo",
     "cd test-git-repo",
     "git init",
     "git remote add origin http://",
-    "legit help",
+    "legit -h",
     "mkdir test-git-repo",
     "cd test-git-repo",
     "git init",
     "git remote add origin http://",
-    "legit help"
+    "legit -h"
    ],
    "imports":[
     "legit",
@@ -132,21 +141,23 @@
   }
  },
  "name":"legit",
- "new_version":false,
+ "new_version":"1.1.0",
  "pinning_version":"2019.11.01",
- "raw_meta_yaml":"{% set packagename = 'legit' %}\n{% set version = \"0.4.1\" %}\n{% set md5 = \"3917e991e72004406bd51ed1881b71d1\" %}\n\npackage:\n  name: {{ packagename }}\n  version: {{ version }}\n\nsource:\n  git_url: https://github.com/kennethreitz/legit\n  git_tag: v{{ version }}\n\nbuild:\n  number: 1000\n  script: python setup.py install --single-version-externally-managed --record record.txt\n  entry_points:\n    - legit = legit.cli:main\n\nrequirements:\n  build:\n    - python\n    - setuptools\n  run:\n    - python\n    - clint\n    - gitpython\n    - six\n\ntest:\n  imports:\n    - {{ packagename }}\n\n  commands:\n    - mkdir test-git-repo\n    - cd test-git-repo\n    - git init\n    # legit needs a remote or it exits with a non-zero status\n    # so we just need to add a fake one\n    - git remote add origin http://\n    - legit help\n  requires:\n    - git\n\nabout:\n  home: https://github.com/kennethreitz/legit\n  license: BSD-3\n  summary: 'Git for Humans.'\n\nextra:\n  recipe-maintainers:\n    - ericmjl\n",
+ "raw_meta_yaml":"{% set version = \"1.1.0\" %}\n\npackage:\n  name: legit\n  version: {{ version }}\n\nsource:\n  url: https://pypi.io/packages/source/l/legit/legit-{{ version }}.tar.gz\n  sha256: 25bd3809d657c9b0bd45a6a230dc7f58a56e6e068159d471ffeadb0cf4677b4d\n\nbuild:\n  number: 0\n  noarch: python\n  script: \"{{ PYTHON }} -m pip install . --no-deps -vv\"\n  entry_points:\n    - legit = legit.cli:cli\n\nrequirements:\n  build:\n    - python\n    - pip\n  run:\n    - python\n    - clint\n    - click\n    - crayons\n    - gitpython\n    - six\n\ntest:\n  imports:\n    - legit\n  commands:\n    - mkdir test-git-repo\n    - cd test-git-repo\n    - git init\n    # legit needs a remote or it exits with a non-zero status\n    # so we just need to add a fake one\n    - git remote add origin http://\n    - legit -h\n  requires:\n    - git\n\nabout:\n  home: https://github.com/kennethreitz/legit\n  license: BSD-3-Clause\n  license_file: LICENSE\n  summary: 'Git for Humans'\n\nextra:\n  recipe-maintainers:\n    - ericmjl\n",
  "req":{
   "__set__":true,
   "elements":[
+   "click",
    "clint",
+   "crayons",
    "gitpython",
+   "pip",
    "python",
-   "setuptools",
    "six"
   ]
  },
  "smithy_version":"3.6.1",
  "time":1568135274.8168817,
- "url":null,
- "version":"0.4.1"
+ "url":"https://pypi.io/packages/source/l/legit/legit-1.1.0.tar.gz",
+ "version":"1.1.0"
 }
