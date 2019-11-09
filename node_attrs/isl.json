@@ -64,6 +64,23 @@
     "migrator_version",
     "version"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/338977218.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"Version",
+    "migrator_version":0,
+    "version":"0.22"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "version"
+   ]
   }
  ],
  "bad":false,
@@ -143,8 +160,8 @@
   }
  },
  "name":"isl",
- "new_version":false,
- "pinning_version":"2019.03.17",
+ "new_version":"0.22",
+ "pinning_version":"2019.11.01",
  "raw_meta_yaml":"{% set version = \"0.21\" %}\n\npackage:\n  name: isl\n  version: {{ version }}\n\nsource:\n  fn: isl-{{ version }}.tar.bz2\n  url: http://isl.gforge.inria.fr/isl-{{ version }}.tar.bz2\n  md5: e2be862b79d74234e468981bcae2a964\n\nbuild:\n  number: 0\n  skip: True   # [win and vc<14]\n  run_exports:\n    - {{ pin_subpackage(\"isl\", max_pin=\"x.x\") }}\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - clangdev        # [win]\n    - lld             # [win]\n    - posix           # [win]\n  host:\n    - gmp             # [unix]\n  run:\n    - gmp             # [unix]\n\ntest:\n  commands:\n    - if not exist %LIBRARY_LIB%\\\\isl.lib exit 1            # [win]\n    - if not exist %LIBRARY_INC%\\\\isl\\\\options.h exit 1     # [win]\n    - test -f \"$PREFIX/lib/libisl.a\"            # [unix]\n    - test -f \"$PREFIX/lib/libisl${SHLIB_EXT}\"  # [unix]\n    - test -d \"$PREFIX/include/isl\"             # [unix]\n\nabout:\n  home: http://isl.gforge.inria.fr/\n  license: MIT\n  license_family: MIT\n  license_file: LICENSE\n  summary: a thread-safe C library for manipulating sets and relations of integer points bounded by affine constraints.\n\nextra:\n  recipe-maintainers:\n    - frol\n    - isuruf\n",
  "req":{
   "__set__":true,
@@ -156,7 +173,7 @@
    "posix"
   ]
  },
- "smithy_version":"3.3.2",
+ "smithy_version":"3.6.2",
  "url":"http://isl.gforge.inria.fr/isl-0.21.tar.bz2",
  "version":"0.21"
 }
