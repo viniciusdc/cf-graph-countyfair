@@ -143,7 +143,7 @@
   "max_py_ver":"37",
   "max_r_ver":"35",
   "provider":{
-   "win":"appveyor"
+   "win":"azure"
   }
  },
  "feedstock_name":"cartopy",
@@ -195,19 +195,19 @@
     "numpy",
     "msinttypes",
     "geos",
-    "proj4",
+    "proj",
     "python",
     "pip",
     "cython",
     "numpy",
     "geos",
-    "proj4",
+    "proj",
     "python",
     "pip",
     "cython",
     "numpy",
     "geos",
-    "proj4"
+    "proj"
    ],
    "run":[
     "python",
@@ -215,7 +215,7 @@
     "six",
     "pillow",
     "owslib",
-    "proj4",
+    "proj",
     "geos",
     "shapely",
     "scipy",
@@ -228,7 +228,7 @@
     "six",
     "pillow",
     "owslib",
-    "proj4",
+    "proj",
     "geos",
     "shapely",
     "scipy",
@@ -241,7 +241,7 @@
     "six",
     "pillow",
     "owslib",
-    "proj4",
+    "proj",
     "geos",
     "shapely",
     "scipy",
@@ -252,7 +252,12 @@
    ]
   },
   "source":{
-   "patches":null,
+   "patches":[
+    "proj6-fix.patch",
+    "cartopy.win.patch",
+    "proj6-fix.patch",
+    "proj6-fix.patch"
+   ],
    "sha256":"424bd9e9ddef6e48cbdee694ce589ec431be8591f15b6cb93cb2b333a29b2c61",
    "url":"https://pypi.io/packages/source/C/Cartopy/Cartopy-0.17.0.tar.gz"
   },
@@ -273,7 +278,7 @@
  "name":"cartopy",
  "new_version":"0.17.0",
  "pinning_version":"2019.11.01",
- "raw_meta_yaml":"{% set version = \"0.17.0\" %}\n\npackage:\n  name: cartopy\n  version: {{ version }}\n\nsource:\n  url: https://pypi.io/packages/source/C/Cartopy/Cartopy-{{version}}.tar.gz\n  sha256: 424bd9e9ddef6e48cbdee694ce589ec431be8591f15b6cb93cb2b333a29b2c61\n  patches:\n    # Cartopy geos_c patch.\n    - cartopy.win.patch  # [win]\n\nbuild:\n  skip: True  # [win and vc<14]\n  number: 1007\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n  host:\n    - python\n    - pip\n    - cython\n    - numpy\n    - msinttypes  # [win and vc<14]\n    - geos\n    - proj4\n  run:\n    - python\n    - {{ pin_compatible('numpy') }}\n    - six\n    - pillow\n    - owslib\n    - proj4\n    - geos\n    - shapely\n    - scipy\n    - pyshp\n    - matplotlib-base\n    - pyepsg\n    - pykdtree\n\ntest:\n  imports:\n    - cartopy\n    - cartopy.mpl.geoaxes\n    - cartopy.crs\n\nabout:\n  home: http://scitools.org.uk/cartopy\n  license: LGPL-3.0\n  license_file: COPYING\n  summary: 'A library providing cartographic tools for python.'\n\nextra:\n  recipe-maintainers:\n    - marqh\n    - ocefpaf\n    - pelson\n    - dopplershift\n",
+ "raw_meta_yaml":"{% set version = \"0.17.0\" %}\n\npackage:\n  name: cartopy\n  version: {{ version }}\n\nsource:\n  url: https://pypi.io/packages/source/C/Cartopy/Cartopy-{{version}}.tar.gz\n  sha256: 424bd9e9ddef6e48cbdee694ce589ec431be8591f15b6cb93cb2b333a29b2c61\n  patches:\n    # Cartopy geos_c patch.\n    - proj6-fix.patch\n    - cartopy.win.patch  # [win]\n\nbuild:\n  skip: True  # [win and vc<14]\n  number: 1007\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n  host:\n    - python\n    - pip\n    - cython\n    - numpy\n    - msinttypes  # [win and vc<14]\n    - geos\n    - proj\n  run:\n    - python\n    - {{ pin_compatible('numpy') }}\n    - six\n    - pillow\n    - owslib\n    - proj\n    - geos\n    - shapely\n    - scipy\n    - pyshp\n    - matplotlib-base\n    - pyepsg\n    - pykdtree\n\ntest:\n  imports:\n    - cartopy\n    - cartopy.mpl.geoaxes\n    - cartopy.crs\n\nabout:\n  home: http://scitools.org.uk/cartopy\n  license: LGPL-3.0\n  license_file: COPYING\n  summary: 'A library providing cartographic tools for python.'\n\nextra:\n  recipe-maintainers:\n    - marqh\n    - ocefpaf\n    - pelson\n    - dopplershift\n",
  "req":{
   "__set__":true,
   "elements":[
@@ -288,7 +293,7 @@
    "owslib",
    "pillow",
    "pip",
-   "proj4",
+   "proj",
    "pyepsg",
    "pykdtree",
    "pyshp",

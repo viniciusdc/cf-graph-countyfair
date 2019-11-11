@@ -190,7 +190,7 @@
   },
   "package":{
    "name":"laszip",
-   "version":"3.4.1"
+   "version":"3.4.3"
   },
   "requirements":{
    "build":[
@@ -208,9 +208,9 @@
    "run":null
   },
   "source":{
-   "fn":"laszip-3.4.1.tar.gz",
-   "sha256":"4b21e6cf1dced916c26f31cc5271fa461257cf2c96c81a2ce980f09ce4593cb4",
-   "url":"https://github.com/laszip/laszip/archive/3.4.1.tar.gz"
+   "fn":"laszip-src-3.4.3.tar.gz",
+   "sha256":"53f546a7f06fc969b38d1d71cceb1862b4fc2c4a0965191a0eee81a57c7b373d",
+   "url":"https://github.com/laszip/laszip/releases/download/3.4.3/laszip-src-3.4.3.tar.gz"
   },
   "test":{
    "commands":[
@@ -223,7 +223,7 @@
  "name":"laszip",
  "new_version":"3.4.3",
  "pinning_version":"2019.11.01",
- "raw_meta_yaml":"{% set name = \"laszip\" %}\n{% set version = \"3.4.1\" %}\n{% set sha256 = \"4b21e6cf1dced916c26f31cc5271fa461257cf2c96c81a2ce980f09ce4593cb4\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  fn: {{ name }}-{{ version }}.tar.gz\n  url: https://github.com/{{ name }}/{{ name }}/archive/{{ version }}.tar.gz\n  sha256: {{ sha256 }}\n\nbuild:\n  number: 0\n  skip: True  # [win and py!=36]\n\nrequirements:\n  build:\n    - cmake\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n  host:\n  run:\n\ntest:\n  commands:\n    - test -d $PREFIX/include/laszip  # [not win]\n    - if not exist %LIBRARY_INC%\\\\laszip exit 1  # [win]\n\nabout:\n  home: https://www.laszip.org\n  license: LGPL-2.0\n  license_family: LGPL\n  license_file: COPYING\n  summary: 'LASzip is a compression library for compressing ASPRS LAS format'\n  description: |\n    Quickly turns bulky LAS files into compact LAZ files without information loss.\n  doc_url: https://www.laszip.org/\n  dev_url: https://github.com/LASzip/LASzip\n\nextra:\n  recipe-maintainers:\n    - chambbj\n    - hobu\n",
+ "raw_meta_yaml":"{% set name = \"laszip\" %}\n{% set version = \"3.4.3\" %}\n{% set sha256 = \"53f546a7f06fc969b38d1d71cceb1862b4fc2c4a0965191a0eee81a57c7b373d\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  fn: laszip-src-{{ version }}.tar.gz\n  url: https://github.com/{{ name }}/{{ name }}/releases/download/{{ version }}/laszip-src-{{ version }}.tar.gz\n  sha256: {{ sha256 }}\n\nbuild:\n  number: 0\n  skip: True  # [win and py!=36]\n\nrequirements:\n  build:\n    - cmake\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n  host:\n  run:\n\ntest:\n  commands:\n    - test -d $PREFIX/include/laszip  # [not win]\n    - if not exist %LIBRARY_INC%\\\\laszip exit 1  # [win]\n\nabout:\n  home: https://www.laszip.org\n  license: LGPL-2.0\n  license_family: LGPL\n  license_file: COPYING\n  summary: 'LASzip is a compression library for compressing ASPRS LAS format'\n  description: |\n    Quickly turns bulky LAS files into compact LAZ files without information loss.\n  doc_url: https://www.laszip.org/\n  dev_url: https://github.com/LASzip/LASzip\n\nextra:\n  recipe-maintainers:\n    - chambbj\n    - hobu\n",
  "req":{
   "__set__":true,
   "elements":[
@@ -234,5 +234,5 @@
  },
  "smithy_version":"3.6.2",
  "url":"https://github.com/laszip/laszip/archive/3.4.1.tar.gz",
- "version":"3.4.1"
+ "version":"3.4.3"
 }

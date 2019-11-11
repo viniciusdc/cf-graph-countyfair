@@ -11,7 +11,7 @@
    "summary":"Implementation of the differential CGP (Cartesian Genetic Programming)"
   },
   "build":{
-   "number":"0"
+   "number":"1"
   },
   "extra":{
    "recipe-maintainers":[
@@ -52,7 +52,7 @@
     "obake-devel",
     "symengine",
     "python",
-    "numpy  1.14",
+    "numpy",
     "mpir",
     "boost",
     "boost-cpp",
@@ -64,7 +64,7 @@
     "obake-devel",
     "symengine",
     "python",
-    "numpy  1.14",
+    "numpy",
     "ipopt",
     "gmp",
     "boost",
@@ -77,7 +77,7 @@
     "obake-devel",
     "symengine",
     "python",
-    "numpy  1.14",
+    "numpy",
     "ipopt",
     "gmp"
    ],
@@ -118,7 +118,7 @@
  },
  "name":"dcgp-python",
  "new_version":"1.3",
- "raw_meta_yaml":"{% set version = \"1.3\" %}\n\npackage:\n  name: dcgp-python\n  version: {{ version }}\n\nsource:\n  url: https://github.com/darioizzo/dcgp/archive/v{{ version }}.tar.gz\n  sha256: 85c5318cdb514dcd3fc91ba45b9f112bdd4c0a321c311b7b6bd115cf7d03f294\n  patches:\n    - tokens_patch.diff  # [win]\n\nbuild:\n  number: 0\n  skip: true  # [(win and py<35) or win32]\n\nrequirements:\n  build:\n    - cmake\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n    - clang      # [win]\n    - ninja      # [win]\n  host:\n    - boost\n    - boost-cpp\n    - eigen\n    - audi\n    - pagmo\n    - pygmo\n    - tbb-devel\n    - obake-devel\n    - symengine\n    - python\n    # TODO: Remove the following in the feedstock\n    - numpy  1.14\n    - ipopt  # [unix]\n    - gmp    # [unix]\n    - mpir   # [win]\n  run:\n    - boost\n    - pyaudi\n    - pagmo\n    - pygmo\n    - {{ pin_compatible(\"symengine\", max_pin=\"x.x\") }}\n    - python\n    - {{ pin_compatible('numpy') }}\n    - ipopt  # [unix]\n    - gmp    # [unix]\n    - mpir   # [win]\n\nabout:\n  home: http://darioizzo.github.io/dcgp/\n  license: GPL v3 and LGPL v3\n  license_file: LICENSE\n  summary: 'Implementation of the differential CGP (Cartesian Genetic Programming)'\n\nextra:\n  recipe-maintainers:\n    - bluescarni\n    - darioizzo\n",
+ "raw_meta_yaml":"{% set version = \"1.3\" %}\n\npackage:\n  name: dcgp-python\n  version: {{ version }}\n\nsource:\n  url: https://github.com/darioizzo/dcgp/archive/v{{ version }}.tar.gz\n  sha256: 85c5318cdb514dcd3fc91ba45b9f112bdd4c0a321c311b7b6bd115cf7d03f294\n  patches:\n    - tokens_patch.diff  # [win]\n\nbuild:\n  number: 1\n  skip: true  # [(win and py<35) or win32]\n\nrequirements:\n  build:\n    - cmake\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n    - clang      # [win]\n    - ninja      # [win]\n  host:\n    - boost\n    - boost-cpp\n    - eigen\n    - audi\n    - pagmo\n    - pygmo\n    - tbb-devel\n    - obake-devel\n    - symengine\n    - python\n    - numpy\n    - ipopt  # [unix]\n    - gmp    # [unix]\n    - mpir   # [win]\n  run:\n    - boost\n    - pyaudi\n    - pagmo\n    - pygmo\n    - {{ pin_compatible(\"symengine\", max_pin=\"x.x\") }}\n    - python\n    - {{ pin_compatible('numpy') }}\n    - ipopt  # [unix]\n    - gmp    # [unix]\n    - mpir   # [win]\n\nabout:\n  home: http://darioizzo.github.io/dcgp/\n  license: GPL v3 and LGPL v3\n  license_file: LICENSE\n  summary: 'Implementation of the differential CGP (Cartesian Genetic Programming)'\n\nextra:\n  recipe-maintainers:\n    - bluescarni\n    - darioizzo\n",
  "req":{
   "__set__":true,
   "elements":[
