@@ -30,6 +30,25 @@
     "migrator_version",
     "name"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/339462535.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"MigrationYaml",
+    "migrator_object_version":1,
+    "migrator_version":0,
+    "name":"python38"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_object_version",
+    "migrator_version",
+    "name"
+   ]
   }
  ],
  "bad":false,
@@ -173,7 +192,7 @@
  },
  "name":"astro-gala",
  "new_version":"1.0",
- "pinning_version":"2018.10.16",
+ "pinning_version":"2019.11.01",
  "raw_meta_yaml":"{% set name = \"astro-gala\" %}\n{% set version = \"1.0\" %}\n{% set hash_type = \"sha256\" %}\n{% set hash_value = \"063cf29ba6373eae170b30e8b281378a4d2c70f55676e2bc332fafb0332129f9\" %}\n\npackage:\n  name: '{{ name|lower }}'\n  version: '{{ version }}'\n\nsource:\n  fn: '{{ name }}-{{ version }}.tar.gz'\n  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz\n  '{{ hash_type }}': '{{ hash_value }}'\n\nbuild:\n  number: 1\n  skip: true  # [win or py<35]\n  script: \"{{ PYTHON }} setup.py install --offline --single-version-externally-managed --record=record.txt\"\n\nrequirements:\n  build:\n    {{ compiler('c') }}\n  host:\n    - python\n    - setuptools\n    - numpy\n    - gsl\n  run:\n    - python\n    - astropy\n    - gsl\n    - pyyaml\n    - scipy\n    - {{ pin_compatible('numpy') }}\n\ntest:\n  imports:\n    - gala\n    - gala.coordinates\n    - gala.dynamics\n    - gala.dynamics._genfunc\n    - gala.dynamics.lyapunov\n    - gala.dynamics.mockstream\n    - gala.integrate\n    - gala.integrate.cyintegrators\n    - gala.integrate.cyintegrators.dopri\n    - gala.integrate.pyintegrators\n    - gala.potential\n    - gala.potential.frame\n    - gala.potential.frame.builtin\n    - gala.potential.hamiltonian\n    - gala.potential.potential\n    - gala.potential.potential.builtin\n    - gala.potential.scf\n\nabout:\n  home: http://gala.adrian.pw/\n  license: MIT\n  license_family: MIT\n  license_file: LICENSE\n  summary: Galactic and gravitational dynamics in Python\n  description: |\n    Gala is a Python package for Galactic astronomy and gravitational\n    dynamics. The bulk of the package centers around implementations of\n    gravitational potentials, numerical integration, and nonlinear dynamics.\n  doc_url: http://gala.adrian.pw\n  dev_url: https://github.com/adrn/gala\n\nextra:\n  recipe-maintainers:\n    - mwcraig\n    - bsipocz\n    - adrn\n",
  "req":{
   "__set__":true,
@@ -189,7 +208,7 @@
    "setuptools"
   ]
  },
- "smithy_version":"3.1.12",
+ "smithy_version":"3.6.2",
  "url":"https://pypi.io/packages/source/a/astro-gala/astro-gala-0.3.tar.gz",
  "version":"1.0"
 }
