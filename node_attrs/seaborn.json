@@ -43,15 +43,15 @@
    "dev_url":"https://github.com/mwaskom/seaborn",
    "doc_url":"https://seaborn.pydata.org",
    "home":"https://seaborn.pydata.org",
-   "license":"BSD 3-Clause",
+   "license":"BSD-3-Clause",
    "license_family":"BSD",
    "license_file":"LICENSE",
    "summary":"Statistical data visualization"
   },
   "build":{
    "noarch":"python",
-   "number":"1",
-   "script":"python -m pip install --no-deps --ignore-installed ."
+   "number":"2",
+   "script":" -m pip install . --no-deps -vv"
   },
   "extra":{
    "recipe-maintainers":[
@@ -72,15 +72,12 @@
   },
   "requirements":{
    "host":[
+    "python",
     "pip",
     "python",
-    "setuptools",
     "pip",
     "python",
-    "setuptools",
-    "pip",
-    "python",
-    "setuptools"
+    "pip"
    ],
    "run":[
     "python",
@@ -104,7 +101,6 @@
    ]
   },
   "source":{
-   "fn":"seaborn-0.9.0.tar.gz",
    "sha256":"76c83f794ca320fb6b23a7c6192d5e185a5fcf4758966a0c0a54baee46d41e2f",
    "url":"https://pypi.io/packages/source/s/seaborn/seaborn-0.9.0.tar.gz"
   },
@@ -119,7 +115,7 @@
  "name":"seaborn",
  "new_version":"0.9.0",
  "pinning_version":"2018.07.15",
- "raw_meta_yaml":"{% set version = \"0.9.0\" %}\n{% set name = \"seaborn\" %}\n{% set sha256 = \"76c83f794ca320fb6b23a7c6192d5e185a5fcf4758966a0c0a54baee46d41e2f\" %}\n\npackage:\n  name: {{ name }}\n  version: {{ version }}\n\nsource:\n  fn: {{ name }}-{{ version }}.tar.gz\n  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz\n  sha256: {{ sha256 }}\n\nbuild:\n  noarch: python\n  number: 1\n  script: python -m pip install --no-deps --ignore-installed .\n\nrequirements:\n  host:\n    - pip\n    - python\n    - setuptools\n  run:\n    - python\n    - numpy >=1.9.3\n    - matplotlib-base\n    - scipy >=0.15.2\n    - pandas >=0.14.0\n    - statsmodels >=0.5.0\n\ntest:\n  imports:\n    - {{ name }}\n\nabout:\n  home: https://seaborn.pydata.org\n  license: BSD 3-Clause\n  license_family: BSD\n  license_file: LICENSE\n  summary: Statistical data visualization\n  description: |\n    Seaborn is a Python visualization library based on matplotlib. It\n    provides a high-level interface for drawing attractive statistical graphics.\n  doc_url: https://seaborn.pydata.org\n  dev_url: https://github.com/mwaskom/seaborn\n\nextra:\n  recipe-maintainers:\n    - msarahan\n    - r-jain1\n    - croth1\n",
+ "raw_meta_yaml":"{% set version = \"0.9.0\" %}\n\npackage:\n  name: seaborn\n  version: {{ version }}\n\nsource:\n  url: https://pypi.io/packages/source/s/seaborn/seaborn-{{ version }}.tar.gz\n  sha256: 76c83f794ca320fb6b23a7c6192d5e185a5fcf4758966a0c0a54baee46d41e2f\n\nbuild:\n  number: 2\n  noarch: python\n  script: \"{{ PYTHON }} -m pip install . --no-deps -vv\"\n\nrequirements:\n  host:\n    - python\n    - pip\n  run:\n    - python\n    - numpy >=1.9.3\n    - matplotlib-base\n    - scipy >=0.15.2\n    - pandas >=0.14.0\n    - statsmodels >=0.5.0\n\ntest:\n  imports:\n    - seaborn\n\nabout:\n  home: https://seaborn.pydata.org\n  license: BSD-3-Clause\n  license_family: BSD\n  license_file: LICENSE\n  summary: Statistical data visualization\n  description: |\n    Seaborn is a Python visualization library based on matplotlib. It\n    provides a high-level interface for drawing attractive statistical graphics.\n  doc_url: https://seaborn.pydata.org\n  dev_url: https://github.com/mwaskom/seaborn\n\nextra:\n  recipe-maintainers:\n    - msarahan\n    - r-jain1\n    - croth1\n",
  "req":{
   "__set__":true,
   "elements":[
@@ -129,7 +125,6 @@
    "pip",
    "python",
    "scipy",
-   "setuptools",
    "statsmodels"
   ]
  },
