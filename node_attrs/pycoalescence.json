@@ -186,6 +186,25 @@
     "migrator_version",
     "version"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/339434105.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"MigrationYaml",
+    "migrator_object_version":1,
+    "migrator_version":0,
+    "name":"python38"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_object_version",
+    "migrator_version",
+    "name"
+   ]
   }
  ],
  "bad":false,
@@ -306,7 +325,7 @@
  },
  "name":"pycoalescence",
  "new_version":"1.2.7.post8",
- "pinning_version":"2019.10.11",
+ "pinning_version":"2019.11.01",
  "raw_meta_yaml":"{% set name = \"pycoalescence\" %}\n{% set version = \"1.2.7.post8\" %}\n{% set sha256 = \"6303b30a109d423486895ceba0f0124f904d7a66d7df265c7856c96deed8d86c\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  fn: {{ name }}-{{ version }}.tar.gz\n  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz\n  sha256: {{ sha256 }}\n\nbuild:\n  number: 0\n  script: '{{ PYTHON }} -m pip install . --no-deps --ignore-installed --no-cache-dir -vvv'\n  detect_binary_files_with_prefix: True\n  skip: True  # [(win and vc < 14)]\n\nrequirements:\n  build:\n    - {{ compiler('cxx') }}\n    - cmake >=3.6\n\n  host:\n    - python\n    - pip\n    - setuptools\n    - boost-cpp >=1.60.0,<1.68.0\n    - gdal >=2.1.0\n    - sqlite\n    - matplotlib\n    - numpy >=1.11.0\n    - configparser  # [py < 30]\n\n  run:\n    - python\n    - {{ pin_compatible('boost-cpp', max_pin='x.x.x') }}\n    - {{ pin_compatible('gdal', max_pin='x.x.x') }}\n    - sqlite\n    - matplotlib\n    - numpy\n    - scipy\n    - pandas\n    - configparser  # [py < 30]\n\ntest:\n  imports:\n    - pycoalescence\n    - pycoalescence.necsim\n\nabout:\n  home: https://bitbucket.org/thompsonsed/pycoalescence/\n  license: MIT\n  license_file: LICENSE.txt\n  summary: 'Ecological simulator for spatially explicit neutral models using coalescence methods'\n  description: |\n    pycoalescence is an API for easy interfacing with the necsim c++ neutral\n    simulator for ecological models under the effects of\n    dispersal, speciation and ecological drift in a spatially-explicit\n    manner.\n  doc_url: http://pycoalescence.readthedocs.io/\n  dev_url: https://bitbucket.org/thompsonsed/pycoalescence/\n\nextra:\n  recipe-maintainers:\n    - thompsonsed\n",
  "req":{
   "__set__":true,
@@ -326,7 +345,7 @@
    "sqlite"
   ]
  },
- "smithy_version":"3.6.0",
+ "smithy_version":"3.6.2",
  "url":"https://pypi.org/packages/source/p/pycoalescence/pycoalescence-1.2.7a45.tar.gz",
  "version":"1.2.7.post8"
 }

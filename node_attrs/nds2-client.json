@@ -97,15 +97,21 @@
  "meta_yaml":{
   "about":{
    "description":"The NDS2 client interface allows the user to down-load LIGO data\nfrom V1 and V2 LIGO Network Data Servers.\n\nThis package only provides the low-level C/C++ client and associated\nbinaries.  If you want to install the Python bindings, please install\nthe python-nds2-client package.\n",
-   "doc_url":"https://nds.docs.ligo.org/nds2-client/Beta/User/html/",
-   "home":"https://wiki.ligo.org/DASWG/NDSClient",
-   "license":"GPLv3",
+   "home":"https://wiki.ligo.org/Computing/NDSClient",
+   "license":"GPL-3.0-or-later",
    "license_family":"GPL",
    "license_file":"COPYING",
    "summary":"NDS2 Client interface"
   },
   "build":{
+   "error_overdepending":true,
+   "error_overlinking":true,
    "number":"0",
+   "run_exports":[
+    "subpackage_stub",
+    "subpackage_stub",
+    "subpackage_stub"
+   ],
    "skip":true
   },
   "extra":{
@@ -117,29 +123,28 @@
   },
   "package":{
    "name":"nds2-client",
-   "version":"0.16.3"
+   "version":"0.16.4"
   },
   "requirements":{
    "build":[
-    "make",
+    "c_compiler_stub",
+    "cxx_compiler_stub",
     "cmake >=3.6",
     "c_compiler_stub",
     "cxx_compiler_stub",
-    "make",
     "cmake >=3.6",
+    "make",
     "c_compiler_stub",
     "cxx_compiler_stub",
-    "make",
     "cmake >=3.6",
-    "c_compiler_stub",
-    "cxx_compiler_stub"
+    "make"
    ],
    "host":[
-    "libcurl",
+    "boost-cpp",
     "krb5",
-    "libcurl",
+    "boost-cpp",
     "cyrus-sasl",
-    "libcurl",
+    "boost-cpp",
     "cyrus-sasl"
    ],
    "run":[
@@ -149,37 +154,41 @@
    ]
   },
   "source":{
-   "fn":"nds2-client-0.16.3.tar.xz",
-   "sha256":"632f943052e6cbfaa9e13272c72c25b5e202cb6baaecdffdee90b3f6eba02767",
-   "url":"http://software.ligo.org/lscsoft/source/nds2-client-0.16.3.tar.gz"
+   "sha256":"bca6f96583c6710726ea318ac2feb9db3e7e7c9703e019366d1b4ee6f7a4ee87",
+   "url":"http://software.ligo.org/lscsoft/source/nds2-client-0.16.4.tar.gz"
   },
   "test":{
    "commands":[
     "nds_query --version",
     "nds-client-config --includedir --libdir",
     "nds_query --version",
+    "pkg-config --print-errors --modversion nds2-client libndscxx conlibndscxx nds-client-tester",
     "nds-client-config --includedir --libdir",
-    "nds_query --version"
+    "nds_query --version",
+    "pkg-config --print-errors --modversion nds2-client libndscxx conlibndscxx nds-client-tester"
+   ],
+   "requires":[
+    "pkg-config"
    ]
   }
  },
  "name":"nds2-client",
  "new_version":"0.16.4",
  "pinning_version":"2019.10.11",
- "raw_meta_yaml":"{% set name = \"nds2-client\" %}\n{% set version = \"0.16.3\" %}\n{% set sha256 = \"632f943052e6cbfaa9e13272c72c25b5e202cb6baaecdffdee90b3f6eba02767\" %}\n\npackage:\n  name: {{ name }}\n  version: {{ version }}\n\nsource:\n  fn: {{ name }}-{{ version }}.tar.xz\n  url: http://software.ligo.org/lscsoft/source/{{ name }}-{{ version }}.tar.gz\n  sha256: {{ sha256 }}\n\nbuild:\n  number: 0\n  skip: true  # [win]\n\nrequirements:\n  build:\n    - make\n    - cmake >=3.6\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n  host:\n    - libcurl\n    - krb5  # [win]\n    - cyrus-sasl  # [not win]\n  run:\n    - krb5  # [win]\n    - cyrus-sasl  # [not win]\n\ntest:\n  commands:\n    - nds-client-config --includedir --libdir  # [not win]\n    - nds_query --version\n\nabout:\n  home: https://wiki.ligo.org/DASWG/NDSClient\n  doc_url: https://nds.docs.ligo.org/nds2-client/Beta/User/html/\n  license: GPLv3\n  license_family: GPL\n  license_file: COPYING\n  summary: NDS2 Client interface\n  description: |\n    The NDS2 client interface allows the user to down-load LIGO data\n    from V1 and V2 LIGO Network Data Servers.\n\n    This package only provides the low-level C/C++ client and associated\n    binaries.  If you want to install the Python bindings, please install\n    the python-nds2-client package.\n\nextra:\n  recipe-maintainers:\n    - duncanmmacleod\n",
+ "raw_meta_yaml":"{% set name = \"nds2-client\" %}\n{% set version = \"0.16.4\" %}\n{% set sha256 = \"bca6f96583c6710726ea318ac2feb9db3e7e7c9703e019366d1b4ee6f7a4ee87\" %}\n\npackage:\n  name: \"{{ name|lower }}\"\n  version: \"{{ version }}\"\n\nsource:\n  url: \"http://software.ligo.org/lscsoft/source/{{ name }}-{{ version }}.tar.gz\"\n  sha256: \"{{ sha256 }}\"\n\nbuild:\n  error_overdepending: true\n  error_overlinking: true\n  number: 0\n  run_exports:\n    - {{ pin_subpackage(\"nds2-client\", max_pin=\"x.x\") }}\n  skip: true  # [win]\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n    - cmake >=3.6\n    - make  # [unix]\n  host:\n    - boost-cpp\n    - cyrus-sasl  # [not win]\n    - krb5  # [win]\n  run:\n    - cyrus-sasl  # [not win]\n    - krb5  # [win]\n\ntest:\n  requires:\n    - pkg-config  # [unix]\n  commands:\n    - nds-client-config --includedir --libdir  # [not win]\n    - nds_query --version\n    - pkg-config --print-errors --modversion nds2-client libndscxx conlibndscxx nds-client-tester  # [unix]\n\nabout:\n  home: \"https://wiki.ligo.org/Computing/NDSClient\"\n  license: \"GPL-3.0-or-later\"\n  license_family: \"GPL\"\n  license_file: \"COPYING\"\n  summary: \"NDS2 Client interface\"\n  description: |\n    The NDS2 client interface allows the user to down-load LIGO data\n    from V1 and V2 LIGO Network Data Servers.\n\n    This package only provides the low-level C/C++ client and associated\n    binaries.  If you want to install the Python bindings, please install\n    the python-nds2-client package.\n\nextra:\n  recipe-maintainers:\n    - duncanmmacleod\n",
  "req":{
   "__set__":true,
   "elements":[
+   "boost-cpp",
    "c_compiler_stub",
    "cmake",
    "cxx_compiler_stub",
    "cyrus-sasl",
    "krb5",
-   "libcurl",
    "make"
   ]
  },
  "smithy_version":"3.6.0",
  "url":"http://software.ligo.org/lscsoft/source/nds2-client-0.16.3.tar.gz",
- "version":"0.16.3"
+ "version":"0.16.4"
 }
