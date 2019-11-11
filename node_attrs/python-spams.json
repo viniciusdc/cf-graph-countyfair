@@ -371,6 +371,25 @@
     "migrator_version",
     "version"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/339415855.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"MigrationYaml",
+    "migrator_object_version":1,
+    "migrator_version":0,
+    "name":"python38"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_object_version",
+    "migrator_version",
+    "name"
+   ]
   }
  ],
  "bad":false,
@@ -505,7 +524,7 @@
  },
  "name":"python-spams",
  "new_version":false,
- "pinning_version":"2019.08.27",
+ "pinning_version":"2019.11.01",
  "raw_meta_yaml":"{% set version = \"2.6.1\" %}\n{% set date = \"2017-12-08\" %}\n{% set file_num = \"37237\" %}\n\n\npackage:\n  name: python-spams\n  version: {{ version }}\n\nsource:\n  fn: spams-python-{{ version }}.tar.gz\n  url: http://spams-devel.gforge.inria.fr/hitcounter2.php?file={{ file_num }}/spams-python-v{{ version }}-svn{{ date }}.tar.gz\n  sha256: 3012529c0461bd777228dce53c880f2a5fa2aaf22b5d673a1f22045a63f4d8bc\n\n  patches:\n    # patch setup.py to link to LLVM's OpenMP library instead of GCC's.\n    - llvm_openmp_setup.py.patch  # [osx]\n    # array creation requires integers for shape specification.\n    - spams.py.patch\n\nbuild:\n  skip: true  # [win or (osx and cxx_compiler == \"toolchain_cxx\")]\n  number: 1204\n  detect_binary_files_with_prefix: true\n  features:\n\nrequirements:\n  build:\n    - {{ compiler(\"cxx\") }}\n    - llvm-openmp                    # [osx]\n  host:\n    - libblas\n    - liblapack\n    - python\n    - pip\n    - llvm-openmp                    # [osx]\n    - numpy\n  run:\n    - python\n    - llvm-openmp                    # [osx]\n    - {{ pin_compatible('numpy') }}\n    - scipy\n    - six\n\ntest:\n  source_files:\n    # Test data\n    - extdata/boat.png\n    - extdata/lena.png\n    # Test suite\n    - test_decomp.py\n    - test_dictLearn.py\n    - test_linalg.py\n    - test_prox.py\n    - test_spams.py\n    - test_utils.py\n  requires:\n    - pillow\n  imports:\n    - spams\n\nabout:\n  home: http://spams-devel.gforge.inria.fr/\n  license: GPL 3\n  license_family: GPL\n  license_file: LICENSE.txt\n  summary: An optimization toolbox for solving various sparse estimation problems.\n\nextra:\n  recipe-maintainers:\n    - jakirkham\n    - zym1010\n",
  "req":{
   "__set__":true,
@@ -522,7 +541,7 @@
    "six"
   ]
  },
- "smithy_version":"3.4.1",
+ "smithy_version":"3.6.2",
  "url":"http://spams-devel.gforge.inria.fr/hitcounter2.php?file=37237/spams-python-v2.6.1-svn2017-12-08.tar.gz",
  "version":"2.6.1"
 }
