@@ -160,6 +160,25 @@
     "migrator_version",
     "name"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/339392439.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"MigrationYaml",
+    "migrator_object_version":1,
+    "migrator_version":0,
+    "name":"python38"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_object_version",
+    "migrator_version",
+    "name"
+   ]
   }
  ],
  "bad":false,
@@ -328,7 +347,7 @@
  },
  "name":"kwant",
  "new_version":false,
- "pinning_version":"2019.09.08",
+ "pinning_version":"2019.11.01",
  "raw_meta_yaml":"{% set name = \"kwant\" %}\n{% set version = \"1.4.1\" %}\n\npackage:\n  name: {{ name }}\n  version: {{ version }}\n\nsource:\n  fn: {{ name }}-{{ version }}.tar.gz\n  url: https://downloads.kwant-project.org/kwant/kwant-{{ version }}.tar.gz\n  sha256: 8c0ccf341dfa74e1d69f1508968c4d4e9fb36f74685f101897df6a84ed7043df\n  patches:\n    - skip_tests.patch  # [win]\n    - skip_test_basis_ordering.patch\n    - qsymm.patch  # backport https://gitlab.kwant-project.org/kwant/kwant/merge_requests/318\n\nbuild:\n  skip: true  # [py2k]\n  number: 2\n\nrequirements:\n  build:\n    - {{ compiler('fortran') }}\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n  host:\n    - libblas\n    - libcblas\n    - python\n    - cython\n    - mumps-seq  # [not win]\n    - numpy\n    - scipy\n    - pytest =4.6.4\n    - tinyarray\n  run:\n    - python\n    - mumps-seq  # [not win]\n    - {{ pin_compatible('numpy') }}\n    - matplotlib\n    - scipy\n    - pytest =4.6.4\n    - tinyarray\n    - sympy\n    - qsymm    \n    - vc 14  # [win and py>=35]\n\ntest:\n  imports:\n    - kwant\n    - kwant.graph\n    - kwant.graph.tests\n    - kwant.linalg\n    - kwant.linalg.tests\n    - kwant.physics\n    - kwant.physics.tests\n    - kwant.solvers\n    - kwant.solvers.tests\n    - kwant.tests\n  commands:\n    - conda inspect linkages -p $PREFIX kwant  # [not win]\n    - conda inspect objects -p $PREFIX kwant  # [osx]\n\nabout:\n  home: http://kwant-project.org/\n  license: BSD 2-Clause\n  license_file: LICENSE.rst\n  license_family: BSD\n  summary: 'Package for numerical quantum transport calculations.'\n  description: |\n    Kwant is a free (open source) Python package for numerical calculations on\n    tight-binding models with a strong focus on quantum transport. It is designed to\n    be flexible and easy to use. Thanks to the use of innovative algorithms, Kwant\n    is often faster than other available codes, even those entirely written in the\n    low level FORTRAN and C/C++ languages.\n  doc_url: https://kwant-project.org/doc/1/\n  dev_url: https://gitlab.kwant-project.org/kwant/kwant/\n\nextra:\n  recipe-maintainers:\n    - basnijholt\n    - jbweston\n    - akhmerov\n",
  "req":{
   "__set__":true,
@@ -352,7 +371,7 @@
    "vc"
   ]
  },
- "smithy_version":"3.4.8",
+ "smithy_version":"3.6.2",
  "url":"https://downloads.kwant-project.org/kwant/kwant-1.4.1.tar.gz",
  "version":"1.4.1"
 }

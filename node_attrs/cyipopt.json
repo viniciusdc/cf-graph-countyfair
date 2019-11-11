@@ -65,6 +65,25 @@
     "migrator_version",
     "name"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/339385740.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"MigrationYaml",
+    "migrator_object_version":1,
+    "migrator_version":0,
+    "name":"python38"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_object_version",
+    "migrator_version",
+    "name"
+   ]
   }
  ],
  "bad":false,
@@ -184,7 +203,7 @@
  },
  "name":"cyipopt",
  "new_version":"0.1.9",
- "pinning_version":"2018.11.27",
+ "pinning_version":"2019.11.01",
  "raw_meta_yaml":"{% set name = \"cyipopt\" %}\n{% set version = \"0.1.9\" %}\n{% set sha256 = \"b6cea96d5ffb9d3f55d993dd51575fa6137c1f94bdfd53b7b25f574989fffa38\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  fn: v{{ version }}.tar.gz\n  url: https://github.com/matthias-k/cyipopt/archive/v{{ version }}.tar.gz\n  sha256: {{ sha256 }}\n  patches:\n    - no_link_gfortran.patch\n\nbuild:\n  number: 1000\n  # TODO: Once ipopt is available for Windows in conda forge, remove the\n  # following line.\n  skip: True  # [win]\n  script: \"{{ PYTHON }} -m pip install . --no-deps --ignore-installed --no-cache-dir -vvv\"\n\nrequirements:\n  build:\n    - pkg-config  # [osx]\n    - {{ compiler('c') }}\n  host:\n    - pip\n    - python\n    - ipopt\n    - setuptools\n    - cython\n    - numpy\n    - scipy\n    - six\n  run:\n    - python\n    - ipopt\n    - {{ pin_compatible('numpy') }}\n    - scipy\n    - six\n    - future\n\ntest:\n  imports:\n    - ipopt\n  files:\n    - examplehs071.py\n  commands:\n    - python examplehs071.py\n\nabout:\n  home: https://github.com/matthias-k/cyipopt\n  license: EPL-1.0\n  summary: 'A Cython wrapper to the IPOPT optimization package'\n\n  description: |\n    Ipopt (Interior Point OPTimizer, pronounced eye-pea-Opt) is a software\n    package for large-scale nonlinear optimization. cyipopt is a python wrapper\n    around Ipopt. It enables using Ipopt from the comfort of the great Python\n    scripting language. Ipopt is available from the COIN-OR initiative, under\n    the Eclipse Public License (EPL).\n  doc_url: http://pythonhosted.org/ipopt/\n  dev_url: https://github.com/matthias-k/cyipopt\n\nextra:\n  recipe-maintainers:\n    - moorepants\n",
  "req":{
   "__set__":true,
@@ -203,7 +222,7 @@
    "six"
   ]
  },
- "smithy_version":"3.1.12",
+ "smithy_version":"3.6.2",
  "url":"https://github.com/matthias-k/cyipopt/archive/v0.1.9.tar.gz",
  "version":"0.1.9"
 }

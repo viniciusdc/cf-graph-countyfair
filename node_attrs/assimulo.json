@@ -65,6 +65,25 @@
     "migrator_version",
     "name"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/339386585.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"MigrationYaml",
+    "migrator_object_version":1,
+    "migrator_version":0,
+    "name":"python38"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_object_version",
+    "migrator_version",
+    "name"
+   ]
   }
  ],
  "bad":false,
@@ -182,7 +201,7 @@
  },
  "name":"assimulo",
  "new_version":"Assimulo-3.0",
- "pinning_version":"2019.08.12",
+ "pinning_version":"2019.11.01",
  "raw_meta_yaml":"{% set version = \"3.0\" %}\n\npackage:\n  name: assimulo\n  version: {{ version }}\n\nsource:\n  fn: Assimulo-{{ version }}.tar.gz\n  url: https://github.com/modelon/Assimulo/archive/Assimulo-{{ version }}.tar.gz\n  sha256: 6a1437af8ea0c9af3c0afa1efb44f5d1e11edfec1250ce3510f9e33397a04e6b\n  patches:\n    # find blas with dynamic extension\n    - blas_shared.patch\n    # https://github.com/modelon/Assimulo/pull/3\n    - 0001-Dont-output-to-stdout-on-solver-ImportError.patch\n\nbuild:\n  number: 1007\n\nrequirements:\n  build:\n    - {{ compiler('fortran') }}  # [unix]\n    - {{ compiler('c') }}\n  host:\n    - msinttypes  # [win and py27]\n    - libblas  # [unix]\n    - liblapack  # [unix]\n    - python\n    - pip\n    - numpy\n    - cython\n    - sundials\n  run:\n    - python\n    - {{ pin_compatible('numpy') }}\n    - scipy\n    - matplotlib\n    - sundials\n\ntest:\n  imports:\n    - assimulo\n    - assimulo.solvers\n    - assimulo.examples\n  requires:\n    - nose\n\nabout:\n  home: http://www.jmodelica.org/assimulo\n  license: LGPL\n  summary: A package for solving ordinary differential equations and differential algebraic equations.\n\nextra:\n  recipe-maintainers:\n    - chria\n    - jschueller\n",
  "req":{
   "__set__":true,
@@ -201,7 +220,7 @@
    "sundials"
   ]
  },
- "smithy_version":"3.4.1",
+ "smithy_version":"3.6.2",
  "url":"https://github.com/modelon/Assimulo/archive/Assimulo-3.0.tar.gz",
  "version":"3.0"
 }

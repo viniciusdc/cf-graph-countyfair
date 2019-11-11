@@ -101,6 +101,25 @@
     "migrator_version",
     "name"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/339387018.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"MigrationYaml",
+    "migrator_object_version":1,
+    "migrator_version":0,
+    "name":"python38"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_object_version",
+    "migrator_version",
+    "name"
+   ]
   }
  ],
  "bad":false,
@@ -218,7 +237,7 @@
  },
  "name":"scs",
  "new_version":"2.1.1-2",
- "pinning_version":"2019.10.01",
+ "pinning_version":"2019.11.01",
  "raw_meta_yaml":"{% set name = \"scs\" %}\n{% set version = \"2.1.1-2\" %}\n{% set sha256 = \"f816cfe3d4b4cff3ac2b8b96588c5960ddd2a3dc946bda6b09db04e7bc6577f2\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: \"{{ version|replace('-', '.') }}\"  # 2.1.1-2 => 2.1.1.2\n\nsource:\n  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz\n  sha256: {{ sha256 }}\n\nbuild:\n  number: 3\n  script: \"{{ PYTHON }} -m pip install . --no-deps -vv\"\n  skip: true  # [py==27 and (win or (not x86_64))]\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n  host:\n    - libblas\n    - liblapack\n    - python\n    - setuptools\n    - pip\n    - numpy\n  run:\n    - python\n    - {{ pin_compatible('numpy') }}\n    - scipy >=0.13.2\n\ntest:\n  imports:\n    - scs\n    - _scs_direct\n    - _scs_indirect\n  requires:\n    - nose\n  source_files:\n    - test/\n  commands:\n    - nosetests test\n\nabout:\n  home: https://github.com/bodono/scs-python\n  license: MIT\n  license_family: MIT\n  license_file: LICENSE\n  summary: 'Python interface for SCS, which solves convex cone problems'\n  description: |\n    Solves convex cone programs via operator splitting.\n    Can solve: linear programs (LPs), second-order cone programs (SOCPs),\n    semidefinite programs (SDPs), exponential cone programs (ECPs),\n    and power cone programs (PCPs), or problems with any combination of\n    those cones.\n  doc_url: https://github.com/bodono/scs-python\n  dev_url: https://github.com/bodono/scs-python\n\nextra:\n  recipe-maintainers:\n    - dougalsutherland\n    - mcg1969\n",
  "req":{
   "__set__":true,
@@ -234,7 +253,7 @@
    "setuptools"
   ]
  },
- "smithy_version":"3.5.0",
+ "smithy_version":"3.6.2",
  "url":"https://pypi.io/packages/source/s/scs/scs-2.1.1-2.tar.gz",
  "version":"2.1.1.2"
 }

@@ -84,6 +84,25 @@
     "migrator_version",
     "name"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/339383906.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"MigrationYaml",
+    "migrator_object_version":1,
+    "migrator_version":0,
+    "name":"python38"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_object_version",
+    "migrator_version",
+    "name"
+   ]
   }
  ],
  "bad":false,
@@ -268,7 +287,7 @@
  },
  "name":"obspy",
  "new_version":"1.1.1",
- "pinning_version":"2019.08.11",
+ "pinning_version":"2019.11.01",
  "raw_meta_yaml":"{% set version = \"1.1.1\" %}\n{% set sha256 = \"14e7ff1b87c2cb901f3a6bebb64cbc5e8d624a067319c242b55cf77c341018fc\" %}\n\npackage:\n  name: obspy\n  version: {{ version }}\n\nsource:\n  fn: obspy-{{ version }}.zip\n  url: https://pypi.io/packages/source/o/obspy/obspy-{{ version }}.zip\n  # url: https://github.com/obspy/obspy/files/2872202/obspy-1.1.1rc4.zip\n  sha256: {{ sha256 }}\n\nbuild:\n  number: 1\n  preserve_egg_dir: yes\n  detect_binary_files_with_prefix: true\n  script: python setup.py install --single-version-externally-managed --record record.txt\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n  host:\n    - python\n    - pip\n    - setuptools\n    - future\n    - numpy\n    - scipy\n    - matplotlib\n    - lxml\n    - sqlalchemy\n    - requests\n    - decorator\n  run:\n    - python\n    - setuptools\n    - future\n    - numpy <1.16\n    - scipy\n    - matplotlib\n    - lxml\n    - sqlalchemy\n    - requests\n    - decorator\n    - mock  # [py2k]\n    - basemap\n    # pyproj is a dep of basemap so it does not hurt to include it as dep right\n    # now\n    # dodge proj4 v5 for now, see obspy/obspy#2283\n    - pyproj\n    - proj4 <5\n\ntest:\n  requires:\n    - flake8\n    - matplotlib\n    - pyshp\n    - basemap\n  imports:\n    - obspy\n    - obspy.io.mseed\n  commands:\n    - python -c \"from obspy import read;\"\n    # test at least a few executables that should've bben installed\n    - obspy-print -h\n    - obspy-plot -h\n    - obspy-runtests -h\n    - obspy-scan -h\n\nabout:\n  home: https://obspy.org\n  license: LGPLv3\n  license_file: LICENSE.txt\n  summary: \"ObsPy: A Python Toolbox for seismology/seismological observatories.\"\n  description: |\n    ObsPy is an open-source project dedicated to provide a Python framework for\n    processing seismological data. It provides parsers for common file formats,\n    clients to access data centers and seismological signal processing routines\n    which allow the manipulation of seismological time series (see Beyreuther\n    et al. 2010, Megies et al. 2011, Krischer et al. 2015).\n  doc_url: http://docs.obspy.org/\n  dev_url: https://github.com/obspy/obspy\n\nextra:\n  recipe-maintainers:\n    - megies\n    - krischer\n    - barsch\n    - QuLogic\n    - ThomasLecocq\n",
  "req":{
   "__set__":true,
@@ -290,7 +309,7 @@
    "sqlalchemy"
   ]
  },
- "smithy_version":"3.4.1",
+ "smithy_version":"3.6.2",
  "url":"https://pypi.io/packages/source/o/obspy/obspy-1.1.1.zip",
  "version":"1.1.1"
 }

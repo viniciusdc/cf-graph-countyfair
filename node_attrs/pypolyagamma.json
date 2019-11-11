@@ -48,6 +48,25 @@
     "migrator_version",
     "version"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/339391258.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"MigrationYaml",
+    "migrator_object_version":1,
+    "migrator_version":0,
+    "name":"python38"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_object_version",
+    "migrator_version",
+    "name"
+   ]
   }
  ],
  "bad":false,
@@ -134,7 +153,7 @@
  },
  "name":"pypolyagamma",
  "new_version":"1.2.2",
- "pinning_version":"2018.11.27",
+ "pinning_version":"2019.11.01",
  "raw_meta_yaml":"{% set name = \"pypolyagamma\" %}\n{% set version = \"1.2.2\" %}\n\npackage:\n  name: {{ name }}\n  version: {{ version }}\n\nsource:\n  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz\n  sha256: afef0244a854754675d2056f6aba09923685983f07ab50357427ae26388d7ac7\n\nbuild:\n  number: 1000\n  skip: True  # [win]\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n  host:\n    - python\n    - pip\n    - numpy\n    - cython\n    {% if not compiler('c').startswith('toolchain') %}\n    - llvm-openmp  # [osx]\n    {% endif %}\n  run:\n    - python\n    - {{ pin_compatible('numpy') }}\n    - scipy\n    {% if not compiler('c').startswith('toolchain') %}\n    - llvm-openmp  # [osx]\n    {% endif %}\n\ntest:\n  imports:\n    - pypolyagamma\n\nabout:\n  home: https://github.com/slinderman/pypolyagamma\n  license: GPL-3\n  license_family: GPL\n  license_file: LICENSE\n  summary: A port of Jesse Windles PolyaGamma sampling code using Cython.\n\nextra:\n  recipe-maintainers:\n    - slinderman\n    - beckermr\n",
  "req":{
   "__set__":true,
@@ -150,7 +169,7 @@
    "scipy"
   ]
  },
- "smithy_version":"3.1.12",
+ "smithy_version":"3.6.2",
  "url":"https://pypi.io/packages/source/p/pypolyagamma/pypolyagamma-1.2.2.tar.gz",
  "version":"1.2.2"
 }

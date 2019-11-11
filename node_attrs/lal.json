@@ -169,6 +169,25 @@
     "migrator_version",
     "version"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/339383284.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"MigrationYaml",
+    "migrator_object_version":1,
+    "migrator_version":0,
+    "name":"python38"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_object_version",
+    "migrator_version",
+    "name"
+   ]
   }
  ],
  "bad":false,
@@ -471,7 +490,7 @@
   "lal",
   "python-lal"
  ],
- "pinning_version":"2019.06.19",
+ "pinning_version":"2019.11.01",
  "raw_meta_yaml":"{% set name = \"lal\" %}\n{% set version = \"6.20.2\" %}\n{% set sha256 = \"d8be097eda4082ff194496f4641a993939cff1651a60e6d69af8932bdec67ac1\" %}\n\n# define build number\n{% set build = 6 %}\n\n# default FFT implememntation to FFTW\n{% set fft_impl = fft_impl or 'fftw' %}\n\n# prefer FFTW builds over MKL using a build number offset\n{% if fft_impl == 'fftw' %}\n{% set build = build + 100 %}\n{% endif %}\n\npackage:\n  name: \"{{ name }}\"\n  version: \"{{ version }}\"\n\nsource:\n  url: \"http://software.ligo.org/lscsoft/source/lalsuite/{{ name }}-{{ version }}.tar.xz\"\n  sha256: \"{{ sha256 }}\"\n\nbuild:\n  error_overdepending: true\n  error_overlinking: true\n  ignore_run_exports:\n    - blas\n    # run_exports parsing for fftw is broken, so we ignore it\n    # manually, for now\n    - fftw\n  number: {{ build }}\n  skip: true  # [win]\n  string: \"{{ fft_impl }}_h{{ PKG_HASH }}_{{ PKG_BUILDNUM }}\"\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - pkg-config >=0.18.0\n    - make\n    - bc\n    - swig >=3.0.7\n  host:\n    - fftw * nompi*  # [fft_impl == \"fftw\"]\n    - gsl\n    - hdf5\n    - mkl-devel {{ mkl }}  # [fft_impl == \"mkl\"]\n    - zlib\n  run:\n    - fftw  # [fft_impl == \"fftw\"]\n    - gsl\n    - hdf5\n    - zlib\n\ntest:\n  commands:\n    - lal_version --verbose\n    - lal_simd_detect\n\noutputs:\n  - name: lal\n    build:\n      run_exports:\n        - {{ pin_subpackage(\"lal\", max_pin=\"x.x\") }}\n\n  - name: python-lal\n    script: install-python.sh\n    build:\n      error_overdepending: true\n      error_overlinking: true\n      string: \"{{ fft_impl }}_py{{ py }}h{{ PKG_HASH }}_{{ PKG_BUILDNUM }}\"\n    requirements:\n      build:\n        - {{ compiler('c') }}\n        - make\n        - pkg-config >=0.18.0\n        - swig >=3.0.7\n      host:\n        - gsl\n        - {{ pin_subpackage('lal', exact=True) }}\n        - mkl-devel {{ mkl }}  # [fft_impl == \"mkl\"]\n        - numpy\n        - python\n      run:\n        # NOTE: on linux, python-lal links the LAL dependencies\n        #       as well so we have to list them here. why this\n        #       doesn't happen on osx, I'm not sure.\n        - fftw  # [linux and fft_impl == \"fftw\"]\n        - gsl\n        - hdf5  # [linux]\n        - {{ pin_subpackage('lal', exact=True) }}\n        - ligo-segments\n        - lscsoft-glue\n        - mkl  # [fft_impl == \"mkl\"]\n        - {{ pin_compatible('numpy') }}\n        - python\n        - python-dateutil\n        - scipy\n        - six\n        - zlib  # [linux]\n    test:\n      imports:\n        - lal\n        - lal.antenna\n        - lal.gpstime\n        - lal.rate\n        - lal.series\n        - lal.utils\n    about:\n      home: \"https://wiki.ligo.org/Computing/LALSuite\"\n      doc_url: \"https://lscsoft.docs.ligo.org/lalsuite/lal/\"\n      dev_url: \"https://git.ligo.org/lscsoft/lalsuite/\"\n      license: \"GPL-3.0-or-later\"\n      license_family: \"GPL\"\n      license_file: \"COPYING\"\n      summary: \"LSC Algorithm Library\"\n      description: |\n        The LSC Algorithm Library for gravitational wave data analysis.\n        This package contains the Python bindings.\n\nabout:\n  home: \"https://wiki.ligo.org/Computing/LALSuite\"\n  doc_url: \"https://lscsoft.docs.ligo.org/lalsuite/lal/\"\n  dev_url: \"https://git.ligo.org/lscsoft/lalsuite/\"\n  license: \"GPL-3.0-or-later\"\n  license_family: \"GPL\"\n  license_file: \"COPYING\"\n  summary: \"LSC Algorithm Library\"\n  description: |\n    The LSC Algorithm Library for gravitational wave data analysis.\n    This package contains the shared-object libraries needed to run\n    applications that use the LAL library.  If you want to install\n    the Python bindings, please install the associated python-lal\n    package.\n\nextra:\n  recipe-maintainers:\n    - duncanmmacleod\n    - skymoo\n",
  "req":{
   "__set__":true,
@@ -495,7 +514,7 @@
    "zlib"
   ]
  },
- "smithy_version":"3.4.0",
+ "smithy_version":"3.6.2",
  "url":"http://software.ligo.org/lscsoft/source/lalsuite/lal-6.20.2.tar.xz",
  "version":"6.20.2"
 }
