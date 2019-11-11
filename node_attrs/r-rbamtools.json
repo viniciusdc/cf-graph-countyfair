@@ -50,6 +50,23 @@
     "migrator_version",
     "name"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/339353470.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"Version",
+    "migrator_version":0,
+    "version":"2.16.17"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "version"
+   ]
   }
  ],
  "bad":false,
@@ -165,8 +182,8 @@
   }
  },
  "name":"r-rbamtools",
- "new_version":"2.16.11.2",
- "pinning_version":"2019.07.19",
+ "new_version":"2.16.17",
+ "pinning_version":"2019.11.01",
  "raw_meta_yaml":"{% set version = \"2.16.11.2\" %}\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-rbamtools\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  url:\n    - {{ cran_mirror }}/src/contrib/rbamtools_{{ version }}.tar.gz\n    - {{ cran_mirror }}/src/contrib/Archive/rbamtools/rbamtools_{{ version }}.tar.gz\n  sha256: f2b7db3ca87596c70993b2cce926df966ac91d3efb21cc0bd931cfec7b58f33f\n\nbuild:\n  merge_build_host: True  # [win]\n  number: 1\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - {{ compiler('c') }}        # [not win]\n    - {{ compiler('cxx') }}      # [not win]\n    - {{ compiler('m2w64_c') }}        # [win]\n    - {{ compiler('m2w64_cxx') }}        # [win]\n    - {{posix}}filesystem        # [win]\n    - {{posix}}make\n    - {{posix}}sed               # [win]\n    - {{posix}}coreutils         # [win]\n    - {{posix}}zip               # [win]\n  host:\n    - r-base\n    - r-refgenome >=1.6.1\n  run:\n    - r-base\n    - {{native}}gcc-libs         # [win]\n    - r-refgenome >=1.6.1\n\ntest:\n  commands:\n    - $R -e \"library('rbamtools')\"           # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('rbamtools')\\\"\"  # [win]\n\nabout:\n  home: https://CRAN.R-project.org/package=rbamtools\n  license: Artistic-2.0\n  summary: Provides an R interface to functions of the 'SAMtools' C-Library by Heng Li <http://www.htslib.org/>.\n  license_family: OTHER\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n    - johanneskoester\n    - bgruening\n    - daler\n    - jdblischak\n    - cbrueffer\n    - dbast\n\n# Package: rbamtools\n# Type: Package\n# Title: Read and Write BAM (Binary Alignment) Files\n# Version: 2.16.11\n# Date: 2018-04-14\n# Authors@R: c(person(\"Wolfgang\", \"Kaisers\", role=c(\"aut\", \"cre\"), email=\"wolfgang.kaisers@gmail.com\"), person(\"Heng\", \"Li\", role=c(\"ctb\", \"cph\"),  email=\"lh3@sanger.ac.uk\"), person(\"Jue\", \"Ruan\", role=c(\"ctb\", \"cph\"), email=\"ruanjue@gmail.com\"))\n# Description: Provides an R interface to functions of the 'SAMtools' C-Library by Heng Li <http://www.htslib.org/>.\n# License: Artistic-2.0\n# Copyright: file inst/COPYRIGHTS\n# LazyLoad: yes\n# Depends: methods,refGenome (>= 1.6.1)\n# Suggests: xtable\n# Collate: rbamtools.R segmentize.R sampleBamFiles.R\n# Packaged: 2018-05-07 11:50:34 UTC; kaisers\n# Repository: CRAN\n# Date/Publication: 2018-05-07 12:40:46 UTC\n# NeedsCompilation: yes\n# Author: Wolfgang Kaisers [aut, cre], Heng Li [ctb, cph], Jue Ruan [ctb, cph]\n# Maintainer: Wolfgang Kaisers <wolfgang.kaisers@gmail.com>\n",
  "req":{
   "__set__":true,
@@ -185,7 +202,7 @@
    "zip"
   ]
  },
- "smithy_version":"3.4.1",
+ "smithy_version":"3.6.2",
  "url":[
   "https://cran.r-project.org/src/contrib/rbamtools_2.16.11.2.tar.gz",
   "https://cran.r-project.org/src/contrib/Archive/rbamtools/rbamtools_2.16.11.2.tar.gz",
