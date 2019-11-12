@@ -66,12 +66,14 @@
  "meta_yaml":{
   "about":{
    "home":"http://dxchange.readthedocs.org",
-   "license":"BSD 3-Clause",
-   "summary":"Data I/O for tomography."
+   "license":"BSD-3-Clause",
+   "license_file":"LICENSE.txt",
+   "summary":"Data I/O for tomography"
   },
   "build":{
-   "number":"1000",
-   "script":"python setup.py install --single-version-externally-managed --record=record.txt"
+   "noarch":"python",
+   "number":"1001",
+   "script":" -m pip install . --no-deps -vv"
   },
   "extra":{
    "recipe-maintainers":[
@@ -102,39 +104,39 @@
   "requirements":{
    "build":[
     "python",
-    "setuptools",
+    "pip",
     "python",
-    "setuptools",
+    "pip",
     "python",
-    "setuptools"
+    "pip"
    ],
    "run":[
+    "python",
     "dxfile",
     "edffile",
     "h5py",
     "netcdf4",
     "numpy",
-    "python",
     "scipy",
     "six",
     "spefile",
     "tifffile",
+    "python",
     "dxfile",
     "edffile",
     "h5py",
     "netcdf4",
     "numpy",
-    "python",
     "scipy",
     "six",
     "spefile",
     "tifffile",
+    "python",
     "dxfile",
     "edffile",
     "h5py",
     "netcdf4",
     "numpy",
-    "python",
     "scipy",
     "six",
     "spefile",
@@ -142,7 +144,6 @@
    ]
   },
   "source":{
-   "fn":"dxchange-0.1.5.tar.gz",
    "sha256":"023652ac8f29cf486bbcc0112d980b255c1b7b3d5e23e555b7e4b7e373117387",
    "url":"https://github.com/data-exchange/dxchange/archive/v0.1.5.tar.gz"
   },
@@ -166,7 +167,7 @@
  "name":"dxchange",
  "new_version":"0.1.5",
  "pinning_version":"2019.11.01",
- "raw_meta_yaml":"{% set version = \"0.1.5\" %}\n\npackage:\n    name: dxchange\n    version: {{ version }}\n\nsource:\n    url: https://github.com/data-exchange/dxchange/archive/v{{ version }}.tar.gz\n    fn: dxchange-{{ version }}.tar.gz\n    sha256: 023652ac8f29cf486bbcc0112d980b255c1b7b3d5e23e555b7e4b7e373117387\n\nbuild:\n    number: 1000\n    script: python setup.py install --single-version-externally-managed --record=record.txt\n\nrequirements:\n    build:\n        - python\n        - setuptools\n\n    run:\n        - dxfile\n        - edffile\n        - h5py\n        - netcdf4\n        - numpy\n        - python\n        - scipy\n        - six\n        - spefile\n        - tifffile\n\ntest:\n    imports:\n        - dxchange\n        - dxchange.reader\n        - dxchange.writer\n        - dxchange.exchange\n\nabout:\n    home: http://dxchange.readthedocs.org\n    license: BSD 3-Clause\n    summary: 'Data I/O for tomography.'\n\nextra:\n    recipe-maintainers:\n        - dgursoy\n        - decarlof\n        - ericdill\n        - licode\n        - ravescovi\n        - tacaswell\n",
+ "raw_meta_yaml":"{% set version = \"0.1.5\" %}\n\npackage:\n  name: dxchange\n  version: {{ version }}\n\nsource:\n  url: https://github.com/data-exchange/dxchange/archive/v{{ version }}.tar.gz\n  sha256: 023652ac8f29cf486bbcc0112d980b255c1b7b3d5e23e555b7e4b7e373117387\n\nbuild:\n  number: 1001\n  noarch: python\n  script: \"{{ PYTHON }} -m pip install . --no-deps -vv\"\n\nrequirements:\n  build:\n    - python\n    - pip\n  run:\n    - python\n    - dxfile\n    - edffile\n    - h5py\n    - netcdf4\n    - numpy\n    - scipy\n    - six\n    - spefile\n    - tifffile\n\ntest:\n  imports:\n    - dxchange\n    - dxchange.reader\n    - dxchange.writer\n    - dxchange.exchange\n\nabout:\n  home: http://dxchange.readthedocs.org\n  license: BSD-3-Clause\n  license_file: LICENSE.txt\n  summary: 'Data I/O for tomography'\n\nextra:\n  recipe-maintainers:\n    - dgursoy\n    - decarlof\n    - ericdill\n    - licode\n    - ravescovi\n    - tacaswell\n",
  "req":{
   "__set__":true,
   "elements":[
@@ -175,9 +176,9 @@
    "h5py",
    "netcdf4",
    "numpy",
+   "pip",
    "python",
    "scipy",
-   "setuptools",
    "six",
    "spefile",
    "tifffile"

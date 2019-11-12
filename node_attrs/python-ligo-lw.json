@@ -82,15 +82,19 @@
  "meta_yaml":{
   "about":{
    "description":"The LIGO Light-Weight XML format is widely used within gravitational-wave\ndata analysis pipelines.  This package provides a Python library to read,\nwrite, and interact with documents in this format.\n",
+   "dev_url":"https://git.ligo.org/kipp.cannon/python-ligo-lw",
+   "doc_url":"https://docs.ligo.org/kipp.cannon/python-ligo-lw/",
    "home":"https://git.ligo.org/kipp.cannon/python-ligo-lw",
-   "license":"GPLv3",
+   "license":"GPL-3.0-or-later",
    "license_family":"GPL",
    "license_file":"LICENSE",
    "summary":"LIGO Light-Weight XML I/O Library"
   },
   "build":{
+   "error_overdepending":true,
+   "error_overlinking":true,
    "number":"0",
-   "script":" -m pip install . --no-deps --ignore-installed --no-cache-dir -vvv",
+   "script":" -m pip install . -vv",
    "skip":true
   },
   "extra":{
@@ -102,7 +106,7 @@
   },
   "package":{
    "name":"python-ligo-lw",
-   "version":"1.5.3"
+   "version":"1.6.0"
   },
   "requirements":{
    "build":[
@@ -111,15 +115,15 @@
     "c_compiler_stub"
    ],
    "host":[
-    "python",
-    "setuptools",
     "pip",
     "python",
     "setuptools",
     "pip",
     "python",
     "setuptools",
-    "pip"
+    "pip",
+    "python",
+    "setuptools"
    ],
    "run":[
     "ligo-common",
@@ -151,9 +155,8 @@
    ]
   },
   "source":{
-   "fn":"python-ligo-lw-1.5.3.tar.gz",
-   "sha256":"dee77f85c93a844a3fc81059ac05c69e40f6d78a7070781cf3f6d0be6c3e3388",
-   "url":"https://pypi.io/packages/source/p/python-ligo-lw/python-ligo-lw-1.5.3.tar.gz"
+   "sha256":"5afb242628f9c77b9df40f59e4fd9ba0e09322ab42347d5b84b1e4fd9dd32c9a",
+   "url":"https://pypi.io/packages/source/p/python-ligo-lw/python-ligo-lw-1.6.0.tar.gz"
   },
   "test":{
    "commands":[
@@ -169,15 +172,12 @@
     "ligolw_print --help",
     "ligolw_segments --help",
     "ligolw_sqlite --help",
-    "conda inspect linkages -p ${PREFIX} ${PKG_NAME}",
-    "conda inspect objects -p ${PREFIX} ${PKG_NAME}",
     "ligolw_add --help",
     "ligolw_cut --help",
     "ligolw_no_ilwdchar --help",
     "ligolw_print --help",
     "ligolw_segments --help",
-    "ligolw_sqlite --help",
-    "conda inspect linkages -p ${PREFIX} ${PKG_NAME}"
+    "ligolw_sqlite --help"
    ],
    "imports":[
     "ligo.lw",
@@ -238,9 +238,9 @@
   }
  },
  "name":"python-ligo-lw",
- "new_version":"1.5.3",
+ "new_version":"1.6.0",
  "pinning_version":"2019.11.01",
- "raw_meta_yaml":"{% set name = \"python-ligo-lw\" %}\n{% set version = \"1.5.3\" %}\n{% set sha256 = \"dee77f85c93a844a3fc81059ac05c69e40f6d78a7070781cf3f6d0be6c3e3388\" %}\n\npackage:\n  name: {{ name }}\n  version: {{ version }}\n\nsource:\n  fn: {{ name }}-{{ version }}.tar.gz\n  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz\n  sha256: {{ sha256 }}\n\nbuild:\n  number: 0\n  script: \"{{ PYTHON }} -m pip install . --no-deps --ignore-installed --no-cache-dir -vvv\"\n  skip: true  # [win]\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n  host:\n    - python\n    - setuptools\n    - pip\n  run:\n    - ligo-common\n    - ligo-segments\n    - lscsoft-glue\n    - python\n    - pyyaml\n    - python-lal >=6.19.0\n    - six\n  run_constrained:\n    # pin to lscsoft-glue-2.0.0 to prevent file clobbering\n    - lscsoft-glue >=2.0.0\n\ntest:\n  imports:\n    - ligo.lw\n    - ligo.lw.array\n    - ligo.lw.dbtables\n    - ligo.lw.ilwd\n    - ligo.lw.ligolw\n    - ligo.lw.lsctables\n    - ligo.lw.param\n    - ligo.lw.table\n    - ligo.lw.tokenizer\n    - ligo.lw.types\n    - ligo.lw.utils\n    - ligo.lw.utils.coincs\n    - ligo.lw.utils.ligolw_add\n    - ligo.lw.utils.ligolw_sqlite\n    - ligo.lw.utils.process\n    - ligo.lw.utils.search_summary\n    - ligo.lw.utils.segments\n    - ligo.lw.utils.time_slide\n  commands:\n    # validate executables\n    - ligolw_add --help\n    - ligolw_cut --help\n    - ligolw_no_ilwdchar --help\n    - ligolw_print --help\n    - ligolw_segments --help\n    - ligolw_sqlite --help\n    # check links\n    - conda inspect linkages -p ${PREFIX} ${PKG_NAME}  # [not win]\n    - conda inspect objects -p ${PREFIX} ${PKG_NAME}  # [osx]\n\n\n\nabout:\n  home: https://git.ligo.org/kipp.cannon/{{ name }}\n  license: GPLv3\n  license_family: GPL\n  license_file: LICENSE\n  summary: LIGO Light-Weight XML I/O Library\n  description: |\n    The LIGO Light-Weight XML format is widely used within gravitational-wave\n    data analysis pipelines.  This package provides a Python library to read,\n    write, and interact with documents in this format.\n\nextra:\n  recipe-maintainers:\n    - duncanmmacleod\n",
+ "raw_meta_yaml":"{% set name = \"python-ligo-lw\" %}\n{% set version = \"1.6.0\" %}\n{% set sha256 = \"5afb242628f9c77b9df40f59e4fd9ba0e09322ab42347d5b84b1e4fd9dd32c9a\" %}\n\npackage:\n  name: \"{{ name|lower }}\"\n  version: \"{{ version }}\"\n\nsource:\n  url: \"https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz\"\n  sha256: \"{{ sha256 }}\"\n\nbuild:\n  error_overdepending: true\n  error_overlinking: true\n  number: 0\n  script: \"{{ PYTHON }} -m pip install . -vv\"\n  skip: true  # [win]\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n  host:\n    - pip\n    - python\n    - setuptools\n  run:\n    - ligo-common\n    - ligo-segments\n    - lscsoft-glue\n    - python\n    - pyyaml\n    - python-lal >=6.19.0\n    - six\n  run_constrained:\n    # pin to lscsoft-glue-2.0.0 to prevent file clobbering\n    - lscsoft-glue >=2.0.0\n\ntest:\n  imports:\n    - ligo.lw\n    - ligo.lw.array\n    - ligo.lw.dbtables\n    - ligo.lw.ilwd\n    - ligo.lw.ligolw\n    - ligo.lw.lsctables\n    - ligo.lw.param\n    - ligo.lw.table\n    - ligo.lw.tokenizer\n    - ligo.lw.types\n    - ligo.lw.utils\n    - ligo.lw.utils.coincs\n    - ligo.lw.utils.ligolw_add\n    - ligo.lw.utils.ligolw_sqlite\n    - ligo.lw.utils.process\n    - ligo.lw.utils.search_summary\n    - ligo.lw.utils.segments\n    - ligo.lw.utils.time_slide\n  commands:\n    - ligolw_add --help\n    - ligolw_cut --help\n    - ligolw_no_ilwdchar --help\n    - ligolw_print --help\n    - ligolw_segments --help\n    - ligolw_sqlite --help\n\nabout:\n  home: \"https://git.ligo.org/kipp.cannon/python-ligo-lw\"\n  doc_url: \"https://docs.ligo.org/kipp.cannon/python-ligo-lw/\"\n  dev_url: \"https://git.ligo.org/kipp.cannon/python-ligo-lw\"\n  license: \"GPL-3.0-or-later\"\n  license_family: \"GPL\"\n  license_file: \"LICENSE\"\n  summary: \"LIGO Light-Weight XML I/O Library\"\n  description: |\n    The LIGO Light-Weight XML format is widely used within gravitational-wave\n    data analysis pipelines.  This package provides a Python library to read,\n    write, and interact with documents in this format.\n\nextra:\n  recipe-maintainers:\n    - duncanmmacleod\n",
  "req":{
   "__set__":true,
   "elements":[
@@ -258,5 +258,5 @@
  },
  "smithy_version":"3.6.1",
  "url":"https://pypi.io/packages/source/p/python-ligo-lw/python-ligo-lw-1.5.3.tar.gz",
- "version":"1.5.3"
+ "version":"1.6.0"
 }
