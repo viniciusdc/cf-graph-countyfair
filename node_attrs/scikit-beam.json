@@ -116,6 +116,27 @@
     "migrator_version",
     "version"
    ]
+  },
+  {
+   "PR":{
+    "id":"dcd0325e-2fe2-49d4-83c2-373300bdc869",
+    "merged_at":"never issued",
+    "state":"closed"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"MigrationYaml",
+    "migrator_object_version":1,
+    "migrator_version":0,
+    "name":"python38"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_object_version",
+    "migrator_version",
+    "name"
+   ]
   }
  ],
  "bad":false,
@@ -247,7 +268,7 @@
  },
  "name":"scikit-beam",
  "new_version":"0.0.18",
- "pinning_version":"2019.08.22",
+ "pinning_version":"2019.11.01",
  "raw_meta_yaml":"{% set name = \"scikit-beam\" %}\n{% set version = \"0.0.18\" %}\n{% set sha256 = \"e3fb90495ab6ab454d930dfc24e8bf9678df0dd94af43b85c9389949af752ed5\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  url: https://github.com/{{ name }}/{{ name }}/archive/v{{ version }}.tar.gz\n  sha256: {{ sha256 }}\n\nbuild:\n  number: 0\n  skip: true  # [py<36]\n  script:\n    - python setup.py build_ext -i\n    - python setup.py install --single-version-externally-managed --record=record.txt\n\nrequirements:\n  build:\n    - autoconf  # [osx]\n    - {{ compiler('c') }}\n  host:\n    - python\n    - cython\n    - numpy\n    - setuptools\n    - six\n  run:\n    - python\n    - lmfit >=0.8.3\n    - scikit-image\n    - scipy\n    - six\n    - xraylib\n    - {{ pin_compatible('numpy') }}\n\ntest:\n  imports:\n    - skbeam\n    - skbeam.io\n    - skbeam.core\n    - skbeam.core.accumulators\n    - skbeam.core.constants\n    - skbeam.core.fitting\n    - skbeam.core.fitting.base\n    - skbeam.ext\n    - skbeam.core.fitting\n    - skbeam.core.constants.xrf\n    # has linux native library imports  # [not win]\n    - skbeam.ext.ctrans  # [not win]\n\nabout:\n  home: http://scikit-beam.github.io/scikit-beam\n  license: BSD 3-Clause\n  summary: Data analysis algorithms for X-Ray, Neutron and Electron sciences\n  license_file: LICENSE\n  license_family: BSD\n\nextra:\n  recipe-maintainers:\n    - conda-forge/event-model\n",
  "req":{
   "__set__":true,
@@ -266,7 +287,7 @@
    "xraylib"
   ]
  },
- "smithy_version":"3.4.1",
+ "smithy_version":"3.6.2",
  "url":"https://github.com/scikit-beam/scikit-beam/archive/v0.0.18.tar.gz",
  "version":"0.0.18"
 }

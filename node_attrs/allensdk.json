@@ -13,62 +13,30 @@
     "migrator_version",
     "name"
    ]
+  },
+  {
+   "PR":{
+    "id":"2238e1cf-1002-4283-9761-dbca872310f6",
+    "merged_at":"never issued",
+    "state":"closed"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"MigrationYaml",
+    "migrator_object_version":1,
+    "migrator_version":0,
+    "name":"python38"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_object_version",
+    "migrator_version",
+    "name"
+   ]
   }
  ],
- "bad":{
-  "code":404,
-  "exception":"HTTP Error 404: Not Found",
-  "traceback":[
-   "Traceback (most recent call last):",
-   "  File \"/root/repo/cf-scripts/conda_forge_tick/auto_tick.xsh\", line 694, in main",
-   "    hash_type=attrs.get('hash_type', 'sha256'))",
-   "  File \"/root/repo/cf-scripts/conda_forge_tick/auto_tick.xsh\", line 98, in run",
-   "    migrate_return = migrator.migrate(recipe_dir, attrs, **kwargs)",
-   "  File \"/root/repo/cf-scripts/conda_forge_tick/migrators.xsh\", line 464, in migrate",
-   "    new_patterns = self.get_hash_patterns('meta.yaml', urls, hash_type)",
-   "  File \"/root/repo/cf-scripts/conda_forge_tick/migrators.xsh\", line 381, in get_hash_patterns",
-   "    hash = hash_url(url, hash_type)",
-   "  File \"/opt/conda/envs/run_env/lib/python3.7/site-packages/rever/tools.xsh\", line 207, in hash_url",
-   "    for b in stream_url_progress(url, verb='Hashing', quiet=quiet):",
-   "  File \"/opt/conda/envs/run_env/lib/python3.7/site-packages/rever/tools.xsh\", line 179, in stream_url_progress",
-   "    with urllib.request.urlopen(url) as f:",
-   "  File \"/opt/conda/envs/run_env/lib/python3.7/urllib/request.py\", line 222, in urlopen",
-   "    return opener.open(url, data, timeout)",
-   "  File \"/opt/conda/envs/run_env/lib/python3.7/urllib/request.py\", line 531, in open",
-   "    response = meth(req, response)",
-   "  File \"/opt/conda/envs/run_env/lib/python3.7/urllib/request.py\", line 641, in http_response",
-   "    'http', request, response, code, msg, hdrs)",
-   "  File \"/opt/conda/envs/run_env/lib/python3.7/urllib/request.py\", line 563, in error",
-   "    result = self._call_chain(*args)",
-   "  File \"/opt/conda/envs/run_env/lib/python3.7/urllib/request.py\", line 503, in _call_chain",
-   "    result = func(*args)",
-   "  File \"/opt/conda/envs/run_env/lib/python3.7/urllib/request.py\", line 755, in http_error_302",
-   "    return self.parent.open(new, timeout=req.timeout)",
-   "  File \"/opt/conda/envs/run_env/lib/python3.7/urllib/request.py\", line 531, in open",
-   "    response = meth(req, response)",
-   "  File \"/opt/conda/envs/run_env/lib/python3.7/urllib/request.py\", line 641, in http_response",
-   "    'http', request, response, code, msg, hdrs)",
-   "  File \"/opt/conda/envs/run_env/lib/python3.7/urllib/request.py\", line 563, in error",
-   "    result = self._call_chain(*args)",
-   "  File \"/opt/conda/envs/run_env/lib/python3.7/urllib/request.py\", line 503, in _call_chain",
-   "    result = func(*args)",
-   "  File \"/opt/conda/envs/run_env/lib/python3.7/urllib/request.py\", line 755, in http_error_302",
-   "    return self.parent.open(new, timeout=req.timeout)",
-   "  File \"/opt/conda/envs/run_env/lib/python3.7/urllib/request.py\", line 531, in open",
-   "    response = meth(req, response)",
-   "  File \"/opt/conda/envs/run_env/lib/python3.7/urllib/request.py\", line 641, in http_response",
-   "    'http', request, response, code, msg, hdrs)",
-   "  File \"/opt/conda/envs/run_env/lib/python3.7/urllib/request.py\", line 569, in error",
-   "    return self._call_chain(*args)",
-   "  File \"/opt/conda/envs/run_env/lib/python3.7/urllib/request.py\", line 503, in _call_chain",
-   "    result = func(*args)",
-   "  File \"/opt/conda/envs/run_env/lib/python3.7/urllib/request.py\", line 649, in http_error_default",
-   "    raise HTTPError(req.full_url, code, msg, hdrs, fp)",
-   "urllib.error.HTTPError: HTTP Error 404: Not Found",
-   ""
-  ],
-  "url":"https://files.pythonhosted.org/packages/source/a/allensdk/allensdk-1.1.0.zip"
- },
+ "bad":false,
  "conda-forge.yml":{
   "provider":{
    "win":"appveyor"
@@ -172,7 +140,7 @@
  },
  "name":"allensdk",
  "new_version":"1.1.0",
- "pinning_version":"2019.01.29",
+ "pinning_version":"2019.11.01",
  "raw_meta_yaml":"{% set name = \"allensdk\" %}\n{% set version = \"0.14.4\" %}\n{% set sha256 = \"73c044fe5320af714d879e2b80e264fff26b30c164bc8134ba09882f7f7cc5f4\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz\n  sha256: {{ sha256 }}\n\nbuild:\n  number: 0\n  script: python -m pip install --no-deps --ignore-installed .\n\nrequirements:\n  build:\n    - python\n    - pip\n  run:\n    - python\n    - h5py >=2.3.1\n    - matplotlib >=1.4.3\n    - numpy >=1.12.1\n    - pandas >=0.16.2,<0.20.0\n    - jinja2 >=2.7.3\n    - scipy >=0.15.1\n    - six >=1.9.0\n    - pynrrd >=0.2.1\n    - future >=0.14.3\n    - requests\n    - requests-toolbelt\n    - simplejson >=3.10.0\n    - scikit-image >=0.13.0\n    - statsmodels >=0.8.0\n\ntest:\n  imports:\n    - allensdk\n\nabout:\n  home: http://alleninstitute.github.io/AllenSDK/\n  license: BSD\n  license_family: BSD\n  license_file: LICENSE.txt\n  summary: 'core libraries for the allensdk.'\n  description: |\n    The Allen Software Development Kit houses source code for reading and \n    processing Allen Brain Atlas data. The Allen SDK focuses on the Allen Brain Observatory, \n    Cell Types Database, and Mouse Brain Connectivity Atlas.\n  dev_url: https://github.com/AllenInstitute/AllenSDK\n\nextra:\n  recipe-maintainers:\n    - umarbrowser\n",
  "req":{
   "__set__":true,
@@ -195,7 +163,7 @@
    "statsmodels"
   ]
  },
- "smithy_version":"3.2.12",
+ "smithy_version":"3.6.2",
  "time":1568135300.6810517,
  "url":"https://pypi.io/packages/source/a/allensdk/allensdk-0.14.4.tar.gz",
  "version":"0.14.4"
