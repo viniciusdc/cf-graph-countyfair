@@ -85,24 +85,9 @@
   },
   "build":{
    "entry_points":[
-    "mmd = model_metadata.cli.main:main",
-    "mmd-dump = model_metadata.cli.main_dump:main",
-    "mmd-find = model_metadata.cli.main_find:main",
-    "mmd-install = model_metadata.cli.main_install:main",
-    "mmd-query = model_metadata.cli.main_query:main",
-    "mmd-stage = model_metadata.cli.main_stage:main",
-    "mmd = model_metadata.cli.main:main",
-    "mmd-dump = model_metadata.cli.main_dump:main",
-    "mmd-find = model_metadata.cli.main_find:main",
-    "mmd-install = model_metadata.cli.main_install:main",
-    "mmd-query = model_metadata.cli.main_query:main",
-    "mmd-stage = model_metadata.cli.main_stage:main",
-    "mmd = model_metadata.cli.main:main",
-    "mmd-dump = model_metadata.cli.main_dump:main",
-    "mmd-find = model_metadata.cli.main_find:main",
-    "mmd-install = model_metadata.cli.main_install:main",
-    "mmd-query = model_metadata.cli.main_query:main",
-    "mmd-stage = model_metadata.cli.main_stage:main"
+    "mmd = model_metadata.cli.main:mmd",
+    "mmd = model_metadata.cli.main:mmd",
+    "mmd = model_metadata.cli.main:mmd"
    ],
    "noarch":"python",
    "number":"0",
@@ -117,7 +102,7 @@
   },
   "package":{
    "name":"model_metadata",
-   "version":"0.5.0"
+   "version":"0.6.0"
   },
   "requirements":{
    "build":[
@@ -136,6 +121,7 @@
     "jinja2",
     "scripting",
     "binaryornot",
+    "click",
     "python",
     "packaging",
     "pyyaml",
@@ -143,50 +129,47 @@
     "jinja2",
     "scripting",
     "binaryornot",
+    "click",
     "python",
     "packaging",
     "pyyaml",
     "six",
     "jinja2",
     "scripting",
-    "binaryornot"
+    "binaryornot",
+    "click"
    ]
   },
   "source":{
-   "sha256":"d3168813642d5de5dde963c11456ae77f7843bee14daf34b76ee8088d699a784",
-   "url":"https://github.com/csdms/model_metadata/archive/v0.5.0.tar.gz"
+   "sha256":"bd9d5fbbd2965cf476fc5474003ac7bd9d925c75e4e71183e6cbdd13f211192f",
+   "url":"https://github.com/csdms/model_metadata/archive/v0.6.0.tar.gz"
   },
   "test":{
    "commands":[
     "mmd --help",
-    "mmd-dump --help",
-    "mmd-find --help",
-    "mmd-install --help",
-    "mmd-query --help",
-    "mmd-stage --help",
+    "mmd find --help",
+    "mmd query --help",
+    "mmd stage --help",
     "mmd --help",
-    "mmd-dump --help",
-    "mmd-find --help",
-    "mmd-install --help",
-    "mmd-query --help",
-    "mmd-stage --help",
+    "mmd find --help",
+    "mmd query --help",
+    "mmd stage --help",
     "mmd --help",
-    "mmd-dump --help",
-    "mmd-find --help",
-    "mmd-install --help",
-    "mmd-query --help",
-    "mmd-stage --help"
+    "mmd find --help",
+    "mmd query --help",
+    "mmd stage --help"
    ]
   }
  },
  "name":"model_metadata",
- "new_version":"0.5.0",
+ "new_version":"0.6.0",
  "pinning_version":"2019.05.11",
- "raw_meta_yaml":"{% set version = \"0.5.0\" %}\n\npackage:\n  name: model_metadata\n  version: {{ version }}\n\nsource:\n  url: https://github.com/csdms/model_metadata/archive/v{{ version }}.tar.gz\n  sha256: d3168813642d5de5dde963c11456ae77f7843bee14daf34b76ee8088d699a784\n\nbuild:\n  noarch: python\n  number: 0\n  script: \"{{ PYTHON }} -m pip install . --no-deps --ignore-installed --no-cache-dir -vvv\"\n  entry_points:\n    - mmd = model_metadata.cli.main:main\n    - mmd-dump = model_metadata.cli.main_dump:main\n    - mmd-find = model_metadata.cli.main_find:main\n    - mmd-install = model_metadata.cli.main_install:main\n    - mmd-query = model_metadata.cli.main_query:main\n    - mmd-stage = model_metadata.cli.main_stage:main\n\nrequirements:\n  build:\n    - python\n    - pip\n  run:\n    - python\n    - packaging\n    - pyyaml\n    - six\n    - jinja2\n    - scripting\n    - binaryornot\n\ntest:\n  commands:\n    - mmd --help\n    - mmd-dump --help\n    - mmd-find --help\n    - mmd-install --help\n    - mmd-query --help\n    - mmd-stage --help\n\nabout:\n  home: http://github.com/csdms/model_metadata\n  license: MIT\n  license_family: MIT\n  license_file: LICENSE\n  summary: Tools for working with CSDMS Model Metadata\n  description: |\n    The CSDMS model_metadata Python package provides tools for working\n    with CSDMS Model Metadata. Contained within this package are tools for\n    (1) parsing model metadata, (2) staging model simulations, (3)\n    validating model input parameters, and (4) running model simulations.\n  dev_url: http://github.com/csdms/model_metadata\n\nextra:\n  recipe-maintainers:\n    - mcflugen\n",
+ "raw_meta_yaml":"{% set version = \"0.6.0\" %}\n\npackage:\n  name: model_metadata\n  version: {{ version }}\n\nsource:\n  url: https://github.com/csdms/model_metadata/archive/v{{ version }}.tar.gz\n  sha256: bd9d5fbbd2965cf476fc5474003ac7bd9d925c75e4e71183e6cbdd13f211192f\n\nbuild:\n  noarch: python\n  number: 0\n  script: \"{{ PYTHON }} -m pip install . --no-deps --ignore-installed --no-cache-dir -vvv\"\n  entry_points:\n    - mmd = model_metadata.cli.main:mmd\n\nrequirements:\n  build:\n    - python\n    - pip\n  run:\n    - python\n    - packaging\n    - pyyaml\n    - six\n    - jinja2\n    - scripting\n    - binaryornot\n    - click\n\ntest:\n  commands:\n    - mmd --help\n    - mmd find --help\n    - mmd query --help\n    - mmd stage --help\n\nabout:\n  home: http://github.com/csdms/model_metadata\n  license: MIT\n  license_family: MIT\n  license_file: LICENSE\n  summary: Tools for working with CSDMS Model Metadata\n  description: |\n    The CSDMS model_metadata Python package provides tools for working\n    with CSDMS Model Metadata. Contained within this package are tools for\n    (1) parsing model metadata, (2) staging model simulations, (3)\n    validating model input parameters, and (4) running model simulations.\n  dev_url: http://github.com/csdms/model_metadata\n\nextra:\n  recipe-maintainers:\n    - mcflugen\n",
  "req":{
   "__set__":true,
   "elements":[
    "binaryornot",
+   "click",
    "jinja2",
    "packaging",
    "pip",
@@ -198,5 +181,5 @@
  },
  "smithy_version":"3.3.4",
  "url":"https://github.com/csdms/model_metadata/archive/v0.5.0.tar.gz",
- "version":"0.5.0"
+ "version":"0.6.0"
 }

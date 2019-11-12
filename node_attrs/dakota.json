@@ -35,6 +35,23 @@
     "migrator_version",
     "name"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/340070107.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"Version",
+    "migrator_version":0,
+    "version":"6.11"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "version"
+   ]
   }
  ],
  "bad":false,
@@ -199,7 +216,7 @@
   }
  },
  "name":"dakota",
- "new_version":false,
+ "new_version":"6.11",
  "pinning_version":"2019.11.01",
  "raw_meta_yaml":"{% set name = \"dakota\" %}\n{% set version = \"6.10\" %}\n{% set sha256sum = \"2a0d2f426c0f369cfa3c0b341061553e651a6f60377a59f83251d9d3c3821bad\" %}\n\npackage:\n    name: {{ name }}\n    version: {{ version }}\n\nsource:\n    fn: dakota{{ version }}.tar.gz\n    url: https://dakota.sandia.gov/sites/default/files/distributions/public/dakota-{{ version }}-release-public.src.tar.gz\n    sha256: {{ sha256sum }}\n    patches:\n        - surfpack_py_bindings.patch\n        - gsl.patch\n        - python.patch\n        - colin_boost170.patch\n        - tests.patch\n\nbuild:\n    number: 2\n    skip: true  # [win or osx or py<37]\n\nrequirements:\n    build:\n        - cmake\n        - {{ compiler('c') }}\n        - {{ compiler('cxx') }}\n        - {{ compiler('fortran') }}\n    host:\n        - openmpi\n        - pybind11\n        - boost-cpp\n        - libblas\n        - libcblas\n        - liblapack\n        - python\n        - perl\n        - numpy\n        - swig\n        - doxygen\n        - gsl\n        - hdf5\n        # - trilinos  # needs newer trilinos\n    run:\n        - boost-cpp\n        - python\n        - {{ pin_compatible(\"numpy\") }}\n        # - trilinos\ntest:\n    files:\n        - UQ.in\n        - rosenbrock.py\n    requires:\n        - perl\n        - liblapack 3.8 *openblas\n    imports:\n        - dakota\n        - dakota.interfacing\n        - dakota.interfacing.dprepro\n        - pysurfpack\n    commands:\n        - $PREFIX/share/dakota/test/dakota_test.perl --label-regex=AcceptanceTest\n        - dakota -i UQ.in\n\nabout:\n    home: https://dakota.sandia.gov\n    license: LGPL-3.0\n    license_family: LGPL\n    license_file: LICENSE\n    summary: 'The Dakota project delivers software for optimization and uncertainty quantification.'\n    description: |\n        The Dakota project delivers both state-of-the-art research and robust, \n        usable software for optimization and UQ. Broadly, the Dakota software's \n        advanced parametric analyses enable design exploration, model calibration, \n        risk analysis, and quantification of margins and uncertainty with computational\n        models. The Dakota toolkit provides a flexible, extensible interface \n        between such simulation codes and its iterative systems analysis methods.\n    doc_url: https://dakota.sandia.gov/content/610-reference-manual\n    dev_url: https://dakota.sandia.gov/\n\nextra:\n    recipe-maintainers:\n        - looooo\n",
  "req":{
@@ -225,7 +242,7 @@
    "swig"
   ]
  },
- "smithy_version":"3.6.1",
+ "smithy_version":"3.6.2",
  "url":"https://dakota.sandia.gov/sites/default/files/distributions/public/dakota-6.10-release-public.src.tar.gz",
  "version":"6.10"
 }
