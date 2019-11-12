@@ -239,7 +239,7 @@
    "summary":"An open source Message Passing Interface implementation."
   },
   "build":{
-   "number":"2",
+   "number":"0",
    "skip":true
   },
   "extra":{
@@ -279,8 +279,11 @@
       "fortran_compiler_stub",
       "perl 5.26.2"
      ],
-     "host":[],
+     "host":[
+      "zlib"
+     ],
      "run":[
+      "zlib",
       "mpi 1.0 openmpi"
      ]
     },
@@ -372,8 +375,11 @@
       "make",
       "perl 5.26.2"
      ],
-     "host":[],
+     "host":[
+      "zlib"
+     ],
      "run":[
+      "zlib",
       "mpi 1.0 openmpi"
      ]
     },
@@ -465,8 +471,11 @@
       "make",
       "perl 5.26.2"
      ],
-     "host":[],
+     "host":[
+      "zlib"
+     ],
      "run":[
+      "zlib",
       "mpi 1.0 openmpi"
      ]
     },
@@ -546,12 +555,12 @@
   ],
   "package":{
    "name":"openmpi-mpi",
-   "version":"4.0.1"
+   "version":"4.0.2"
   },
   "source":{
-   "fn":"openmpi-4.0.1.tar.bz2",
-   "sha256":"cce7b6d20522849301727f81282201d609553103ac0b09162cf28d102efb9709",
-   "url":"https://www.open-mpi.org/software/ompi/v4.0/downloads/openmpi-4.0.1.tar.bz2"
+   "fn":"openmpi-4.0.2.tar.bz2",
+   "sha256":"900bf751be72eccf06de9d186f7b1c4b5c2fa9fa66458e53b77778dffdfe4057",
+   "url":"https://www.open-mpi.org/software/ompi/v4.0/downloads/openmpi-4.0.2.tar.bz2"
   }
  },
  "name":"openmpi-mpi",
@@ -563,7 +572,7 @@
   "openmpi-mpifort"
  ],
  "pinning_version":"2019.10.01",
- "raw_meta_yaml":"{% set version = \"4.0.1\" %}\n{% set major = version.rpartition('.')[0] %}\n\npackage:\n  # must not match any outputs for requirements to be handled correctly\n  name: openmpi-mpi\n  version: {{ version }}\n\nsource:\n  fn: openmpi-{{ version }}.tar.bz2\n  url: https://www.open-mpi.org/software/ompi/v{{ major }}/downloads/openmpi-{{ version }}.tar.bz2\n  sha256: cce7b6d20522849301727f81282201d609553103ac0b09162cf28d102efb9709\n\nbuild:\n  number: 2\n  skip: True  # [win]\n\noutputs:\n  - name: openmpi\n    script: build-mpi.sh\n    build:\n      run_exports:\n        - {{ pin_subpackage('openmpi', min_pin='x.x.x', max_pin='x.x') }}\n    requirements:\n      build:\n        - {{ compiler('c') }}\n        - {{ compiler('cxx') }}\n        - {{ compiler('fortran') }}\n        - make  # [unix]\n        - perl 5.26.2\n      host: []\n      run:\n        - mpi 1.0 openmpi\n    test:\n      script: run_test.sh\n      files:\n        - mpiexec.sh\n        - tests/helloworld.sh\n\n  - name: openmpi-mpicc\n    build:\n      script:\n        - echo 'ok'  # [not osx]\n        # make CONDA_BUILD_SYSROOT a 'used variable'\n        # so that conda-build knows to pass it to the test env\n        - echo \"{{CONDA_BUILD_SYSROOT}}\"  # [osx]\n    requirements:\n      run:\n        - {{ pin_subpackage('openmpi', exact=True) }}\n        # host C compilers work fine (better) on mac\n        - {{ compiler('c') }}\n    test:\n      script: run_test.sh\n      files:\n        - mpiexec.sh\n        - tests/helloworld.c\n\n  - name: openmpi-mpicxx\n    build:\n      script:\n        - echo 'ok'  # [not osx]\n        # make CONDA_BUILD_SYSROOT a 'used variable'\n        # so that conda-build knows to pass it to the test env\n        - echo \"{{CONDA_BUILD_SYSROOT}}\"  # [osx]\n    requirements:\n      run:\n        - {{ pin_subpackage('openmpi', exact=True) }}\n        # host C compilers work fine (better) on mac\n        - {{ compiler('cxx') }}\n    test:\n      script: run_test.sh\n      files:\n        - mpiexec.sh\n        - tests/helloworld.cxx\n\n  - name: openmpi-mpifort\n    build:\n      script:\n        - echo 'ok'  # [not osx]\n        # make CONDA_BUILD_SYSROOT a 'used variable'\n        # so that conda-build knows to pass it to the test env\n        - echo \"{{CONDA_BUILD_SYSROOT}}\"  # [osx]\n    requirements:\n      run:\n        - {{ pin_subpackage('openmpi', exact=True) }}\n        - {{ compiler('fortran') }}\n    test:\n      script: run_test.sh\n      files:\n        - mpiexec.sh\n        - tests/helloworld.f\n        - tests/helloworld.f90\n\nabout:\n    home: https://www.open-mpi.org/\n    license: BSD 3-Clause\n    license_family: BSD\n    license_file: LICENSE\n    summary: 'An open source Message Passing Interface implementation.'\n    description: |\n        The Open MPI Project is an open source Message Passing Interface\n        implementation that is developed and maintained by a consortium of academic,\n        research, and industry partners.\n    doc_url: https://www.open-mpi.org/doc/\n    dev_url: https://github.com/open-mpi/ompi\n\nextra:\n    recipe-maintainers:\n        - astrofrog-conda-forge\n        - bekozi\n        - dalcinl\n        - minrk\n        - msarahan\n        - ocefpaf\n",
+ "raw_meta_yaml":"{% set version = \"4.0.2\" %}\n{% set major = version.rpartition('.')[0] %}\n\npackage:\n  # must not match any outputs for requirements to be handled correctly\n  name: openmpi-mpi\n  version: {{ version }}\n\nsource:\n  fn: openmpi-{{ version }}.tar.bz2\n  url: https://www.open-mpi.org/software/ompi/v{{ major }}/downloads/openmpi-{{ version }}.tar.bz2\n  sha256: 900bf751be72eccf06de9d186f7b1c4b5c2fa9fa66458e53b77778dffdfe4057\n\nbuild:\n  number: 0\n  skip: True  # [win]\n\noutputs:\n  - name: openmpi\n    script: build-mpi.sh\n    build:\n      run_exports:\n        - {{ pin_subpackage('openmpi', min_pin='x.x.x', max_pin='x.x') }}\n    requirements:\n      build:\n        - {{ compiler('c') }}\n        - {{ compiler('cxx') }}\n        - {{ compiler('fortran') }}\n        - make  # [unix]\n        - perl 5.26.2\n      host:\n        - zlib\n      run:\n        - zlib\n        - mpi 1.0 openmpi\n    test:\n      script: run_test.sh\n      files:\n        - mpiexec.sh\n        - tests/helloworld.sh\n\n  - name: openmpi-mpicc\n    build:\n      script:\n        - echo 'ok'  # [not osx]\n        # make CONDA_BUILD_SYSROOT a 'used variable'\n        # so that conda-build knows to pass it to the test env\n        - echo \"{{CONDA_BUILD_SYSROOT}}\"  # [osx]\n    requirements:\n      run:\n        - {{ pin_subpackage('openmpi', exact=True) }}\n        # host C compilers work fine (better) on mac\n        - {{ compiler('c') }}\n    test:\n      script: run_test.sh\n      files:\n        - mpiexec.sh\n        - tests/helloworld.c\n\n  - name: openmpi-mpicxx\n    build:\n      script:\n        - echo 'ok'  # [not osx]\n        # make CONDA_BUILD_SYSROOT a 'used variable'\n        # so that conda-build knows to pass it to the test env\n        - echo \"{{CONDA_BUILD_SYSROOT}}\"  # [osx]\n    requirements:\n      run:\n        - {{ pin_subpackage('openmpi', exact=True) }}\n        # host C compilers work fine (better) on mac\n        - {{ compiler('cxx') }}\n    test:\n      script: run_test.sh\n      files:\n        - mpiexec.sh\n        - tests/helloworld.cxx\n\n  - name: openmpi-mpifort\n    build:\n      script:\n        - echo 'ok'  # [not osx]\n        # make CONDA_BUILD_SYSROOT a 'used variable'\n        # so that conda-build knows to pass it to the test env\n        - echo \"{{CONDA_BUILD_SYSROOT}}\"  # [osx]\n    requirements:\n      run:\n        - {{ pin_subpackage('openmpi', exact=True) }}\n        - {{ compiler('fortran') }}\n    test:\n      script: run_test.sh\n      files:\n        - mpiexec.sh\n        - tests/helloworld.f\n        - tests/helloworld.f90\n\nabout:\n    home: https://www.open-mpi.org/\n    license: BSD 3-Clause\n    license_family: BSD\n    license_file: LICENSE\n    summary: 'An open source Message Passing Interface implementation.'\n    description: |\n        The Open MPI Project is an open source Message Passing Interface\n        implementation that is developed and maintained by a consortium of academic,\n        research, and industry partners.\n    doc_url: https://www.open-mpi.org/doc/\n    dev_url: https://github.com/open-mpi/ompi\n\nextra:\n    recipe-maintainers:\n        - astrofrog-conda-forge\n        - bekozi\n        - dalcinl\n        - minrk\n        - msarahan\n        - ocefpaf\n",
  "req":{
   "__set__":true,
   "elements":[
@@ -573,10 +582,11 @@
    "make",
    "mpi",
    "perl",
-   "subpackage_stub"
+   "subpackage_stub",
+   "zlib"
   ]
  },
  "smithy_version":"3.5.0",
  "url":"https://www.open-mpi.org/software/ompi/v4.0/downloads/openmpi-4.0.1.tar.bz2",
- "version":"4.0.1"
+ "version":"4.0.2"
 }
