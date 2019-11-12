@@ -126,7 +126,7 @@
   },
   "package":{
    "name":"petsc4py",
-   "version":"3.11.0"
+   "version":"3.12.0"
   },
   "requirements":{
    "build":[
@@ -142,17 +142,17 @@
     "pip",
     "numpy",
     "mpich",
-    "petsc 3.11.*",
+    "petsc 3.12.*",
     "python",
     "pip",
     "numpy",
     "mpich",
-    "petsc 3.11.*",
+    "petsc 3.12.*",
     "python",
     "pip",
     "numpy",
     "mpich",
-    "petsc 3.11.*"
+    "petsc 3.12.*"
    ],
    "run":[
     "python",
@@ -170,15 +170,15 @@
    ]
   },
   "source":{
-   "fn":"petsc4py-3.11.0.tar.gz",
-   "sha256":"58f4f57ac96ec39273906859cdc388b1ae372045c726bfd2a01d4eca8bc4a1e6",
-   "url":"https://bitbucket.org/petsc/petsc4py/downloads/petsc4py-3.11.0.tar.gz"
+   "fn":"petsc4py-3.12.0.tar",
+   "sha256":"fe3b189e77736bc0206ce28c5caa573dc97a829975f31fd6e8fa6f3e2512d719",
+   "url":"https://bitbucket.org/petsc/petsc4py/downloads/petsc4py-3.12.0.tar.gz"
   }
  },
  "name":"petsc4py",
  "new_version":false,
  "pinning_version":"2019.11.01",
- "raw_meta_yaml":"{% set version = '3.11.0' %}\n{% set sha256 = '58f4f57ac96ec39273906859cdc388b1ae372045c726bfd2a01d4eca8bc4a1e6' %}\n\n{% set mpi = mpi or 'mpich' %}\n\npackage:\n  name: petsc4py\n  version: {{version}}\n\nsource:\n  fn: petsc4py-{{version}}.tar.gz\n  url: https://bitbucket.org/petsc/petsc4py/downloads/petsc4py-{{version}}.tar.gz\n  sha256: {{sha256}}\n\nbuild:\n  number: 3\n  script: PETSC_DIR=$PREFIX pip -v install --no-deps .\n  skip: true  # [win]\n\nrequirements:\n  build:\n    - {{ compiler('fortran') }}\n    - {{ compiler('c') }}\n  host:\n    - python\n    - pip\n    - numpy\n    - {{ mpi }}\n    - petsc {{version.rsplit('.', 1)[0]}}.*\n  run:\n    - python\n    - {{ pin_compatible('numpy') }}\n    - {{ mpi }}\n    - petsc # pinned by petsc run_exports\n\nabout:\n  home: https://bitbucket.org/petsc/petsc4py\n  summary: Python bindings for PETSc\n  license: BSD 2-Clause\n  license_file: LICENSE.rst\n\nextra:\n  recipe-maintainers:\n    - dalcinl\n    - minrk\n    - davidbrochart\n    - SylvainCorlay\n",
+ "raw_meta_yaml":"{% set version = '3.12.0' %}\n{% set sha256 = '1a02fa0336c27583aabf399124ac0610ef20452cf6b837a1082f7788f17fadad' %}\n# FIXME: bitbucket sets the wrong content-encoding headers, resulting in downloading the unzipped .tar file\n# rather than the tar.gz file\n{% set sha256 = 'fe3b189e77736bc0206ce28c5caa573dc97a829975f31fd6e8fa6f3e2512d719' %}\n\n{% set mpi = mpi or 'mpich' %}\n\npackage:\n  name: petsc4py\n  version: {{version}}\n\nsource:\n  fn: petsc4py-{{version}}.tar\n  url: https://bitbucket.org/petsc/petsc4py/downloads/petsc4py-{{version}}.tar.gz\n  sha256: {{sha256}}\n\nbuild:\n  number: 3\n  script: PETSC_DIR=$PREFIX pip -v install --no-deps .\n  skip: true  # [win]\n\nrequirements:\n  build:\n    - {{ compiler('fortran') }}\n    - {{ compiler('c') }}\n  host:\n    - python\n    - pip\n    - numpy\n    - {{ mpi }}\n    - petsc {{version.rsplit('.', 1)[0]}}.*\n  run:\n    - python\n    - {{ pin_compatible('numpy') }}\n    - {{ mpi }}\n    - petsc # pinned by petsc run_exports\n\nabout:\n  home: https://bitbucket.org/petsc/petsc4py\n  summary: Python bindings for PETSc\n  license: BSD 2-Clause\n  license_file: LICENSE.rst\n\nextra:\n  recipe-maintainers:\n    - dalcinl\n    - minrk\n    - davidbrochart\n    - SylvainCorlay\n",
  "req":{
   "__set__":true,
   "elements":[
@@ -194,5 +194,5 @@
  },
  "smithy_version":"3.6.1",
  "url":"https://bitbucket.org/petsc/petsc4py/downloads/petsc4py-3.11.0.tar.gz",
- "version":"3.11.0"
+ "version":"3.12.0"
 }
