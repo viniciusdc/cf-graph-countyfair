@@ -16,42 +16,26 @@
     "migrator_version",
     "version"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/340548819.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"Version",
+    "migrator_version":0,
+    "version":"1.2.4"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "version"
+   ]
   }
  ],
- "bad":{
-  "code":404,
-  "exception":"HTTP Error 404: Not Found",
-  "traceback":[
-   "Traceback (most recent call last):",
-   "  File \"/root/repo/cf-scripts/conda_forge_tick/auto_tick.xsh\", line 693, in main",
-   "    hash_type=attrs.get('hash_type', 'sha256'))",
-   "  File \"/root/repo/cf-scripts/conda_forge_tick/auto_tick.xsh\", line 98, in run",
-   "    migrate_return = migrator.migrate(recipe_dir, attrs, **kwargs)",
-   "  File \"/root/repo/cf-scripts/conda_forge_tick/migrators.xsh\", line 467, in migrate",
-   "    new_patterns = self.get_hash_patterns('meta.yaml', urls, hash_type)",
-   "  File \"/root/repo/cf-scripts/conda_forge_tick/migrators.xsh\", line 384, in get_hash_patterns",
-   "    hash = hash_url(url, hash_type)",
-   "  File \"/opt/conda/envs/run_env/lib/python3.7/site-packages/rever/tools.xsh\", line 207, in hash_url",
-   "    for b in stream_url_progress(url, verb='Hashing', quiet=quiet):",
-   "  File \"/opt/conda/envs/run_env/lib/python3.7/site-packages/rever/tools.xsh\", line 179, in stream_url_progress",
-   "    with urllib.request.urlopen(url) as f:",
-   "  File \"/opt/conda/envs/run_env/lib/python3.7/urllib/request.py\", line 222, in urlopen",
-   "    return opener.open(url, data, timeout)",
-   "  File \"/opt/conda/envs/run_env/lib/python3.7/urllib/request.py\", line 531, in open",
-   "    response = meth(req, response)",
-   "  File \"/opt/conda/envs/run_env/lib/python3.7/urllib/request.py\", line 641, in http_response",
-   "    'http', request, response, code, msg, hdrs)",
-   "  File \"/opt/conda/envs/run_env/lib/python3.7/urllib/request.py\", line 569, in error",
-   "    return self._call_chain(*args)",
-   "  File \"/opt/conda/envs/run_env/lib/python3.7/urllib/request.py\", line 503, in _call_chain",
-   "    result = func(*args)",
-   "  File \"/opt/conda/envs/run_env/lib/python3.7/urllib/request.py\", line 649, in http_error_default",
-   "    raise HTTPError(req.full_url, code, msg, hdrs, fp)",
-   "urllib.error.HTTPError: HTTP Error 404: Not Found",
-   ""
-  ],
-  "url":"https://github.com/SimpleITK/SimpleITK/releases/download/v1.2.4/SimpleITK-1.2.4.zip"
- },
+ "bad":false,
  "conda-forge.yml":{
   "provider":{
    "win":"azure"
@@ -147,7 +131,7 @@
  },
  "name":"libsimpleitk",
  "new_version":"1.2.4",
- "pinning_version":"2019.10.08",
+ "pinning_version":"2019.11.13",
  "raw_meta_yaml":"{% set name = \"libsimpleitk\" %}\n{% set version = \"1.2.3\" %}\n{% set sha256 = \"718980ebf9b704ea145c6764f0745da9c8794442d36cd01292a72683946c5e53\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  url: https://github.com/SimpleITK/SimpleITK/releases/download/v{{version}}/SimpleITK-{{version}}.tar.gz\n  sha256: {{ sha256 }}\n\nbuild:\n    number: 0\n    skip: true  # [ win and py27 ]\n\nrequirements:\n  build:\n    - cmake   >=3.11\n    - ninja\n    - lua     5.1.*          # [ not win ]\n    - swig                   # [ win ]\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n\n  host:\n    - libitk  <5\n\n  run:\n    - vs2015_runtime  # [win]\n    - {{ pin_compatible('libitk', exact=True) }}\n\ntest:\n  requires:\n    - cmake\n    - {{ compiler(\"c\") }}\n    - {{ compiler(\"cxx\") }}\n  source_files:\n    - Examples\n  commands:\n    - test -d $PREFIX/include/SimpleITK*                                 # [not win]\n    - if not exist %LIBRARY_INC%\\\\SimpleITK* exit 1                      # [win]\n    - cmake -D \"CMAKE_SYSTEM_PREFIX_PATH:FILEPATH=${PREFIX}\" ./Examples  # [not win]\n    - cmake --build . --config Release                                   # [not win]\n\nabout:\n  home: http::/www.simpleitk.org\n  license: Apache 2.0\n  license_file: LICENSE\n  summary: Development headers and libraries for SimpleITK a simplified interface to the Insight Toolkit.\n\nextra:\n    recipe-maintainers:\n      - blowekamp\n      - zivy\n",
  "req":{
   "__set__":true,
@@ -163,7 +147,7 @@
    "vs2015_runtime"
   ]
  },
- "smithy_version":"3.5.0",
+ "smithy_version":"3.6.2",
  "url":"https://github.com/SimpleITK/SimpleITK/releases/download/v1.2.2/SimpleITK-1.2.2.tar.gz",
  "version":"1.2.3"
 }
