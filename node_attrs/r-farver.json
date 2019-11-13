@@ -50,6 +50,23 @@
     "migrator_version",
     "name"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/340486650.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"Version",
+    "migrator_version":0,
+    "version":"2.0.0"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "version"
+   ]
   }
  ],
  "bad":false,
@@ -166,8 +183,8 @@
   }
  },
  "name":"r-farver",
- "new_version":"1.1.0",
- "pinning_version":"2019.07.15",
+ "new_version":"2.0.0",
+ "pinning_version":"2019.11.13",
  "raw_meta_yaml":"{% set version = \"1.1.0\" %}\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-farver\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  fn: farver_{{ version }}.tar.gz\n  url:\n    - {{ cran_mirror }}/src/contrib/farver_{{ version }}.tar.gz\n    - {{ cran_mirror }}/src/contrib/Archive/farver/farver_{{ version }}.tar.gz\n  sha256: 2086f309135f37705280fe2df851ad91dc886ad8f2a6eb1f3983aa20427f94b6\n\nbuild:\n  merge_build_host: True  # [win]\n  number: 1\n  skip: true  # [win32]\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - {{ compiler('c') }}        # [not win]\n    - {{ compiler('cxx') }}      # [not win]\n    - {{ compiler('m2w64_c') }}        # [win]\n    - {{ compiler('m2w64_cxx') }}        # [win]\n    - {{posix}}filesystem        # [win]\n    - {{posix}}make\n    - {{posix}}sed               # [win]\n    - {{posix}}coreutils         # [win]\n    - {{posix}}zip               # [win]\n  host:\n    - r-base\n    - r-rcpp >=0.12.15\n  run:\n    - r-base\n    - {{native}}gcc-libs         # [win]\n    - r-rcpp >=0.12.15\n\ntest:\n  commands:\n    - $R -e \"library('farver')\"           # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('farver')\\\"\"  # [win]\n\nabout:\n  home: https://github.com/thomasp85/farver\n  license: MIT\n  summary: The encoding of colour can be handled in many different ways, using different colour\n    spaces. As different colour spaces have different uses, efficient conversion between\n    these representations are important. The  'farver' package provides a set of functions\n    that gives access to very fast colour space conversion and comparisons implemented\n    in C++, and offers  100-fold speed improvements over the 'convertColor' function\n    in the  'grDevices' package.\n  license_family: MIT\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n    - johanneskoester\n    - bgruening\n    - daler\n    - jdblischak\n    - cbrueffer\n    - dbast\n",
  "req":{
   "__set__":true,
@@ -186,7 +203,7 @@
    "zip"
   ]
  },
- "smithy_version":"3.4.1",
+ "smithy_version":"3.6.2",
  "url":[
   "https://cran.r-project.org/src/contrib/farver_1.1.0.tar.gz",
   "https://cran.r-project.org/src/contrib/Archive/farver/farver_1.1.0.tar.gz",
