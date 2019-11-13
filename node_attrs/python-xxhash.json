@@ -135,6 +135,23 @@
     "migrator_version",
     "version"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/340579475.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"ArchRebuild",
+    "migrator_version":1,
+    "name":"aarch64 and ppc64le addition"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "name"
+   ]
   }
  ],
  "bad":false,
@@ -212,7 +229,7 @@
  },
  "name":"python-xxhash",
  "new_version":"1.4.3",
- "pinning_version":"2019.11.01",
+ "pinning_version":"2019.11.13",
  "raw_meta_yaml":"{% set version = \"1.4.1\" %}\n{% set sha256 = \"6b5af8c37ff12745ae77f28e695c0d3a3327932fd229824e49382377e940fdf1\" %}\n{% set pip_name = 'xxhash' %}\n{% set name = 'python-xxhash' %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  sha256: {{ sha256 }}\n  url: https://pypi.io/packages/source/{{ pip_name[0] }}/{{ pip_name }}/{{ pip_name }}-{{ version }}.tar.gz\n\nbuild:\n  number: 0\n  script:\n    - python -m pip install --no-deps --ignore-installed .\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n  host:\n    - python\n    - msinttypes  # [win and py<35]\n    - pip\n  run:\n    - python\n\ntest:\n  imports:\n    - xxhash\n  commands:\n    - conda inspect linkages {{ name|lower }}  # [unix]\n    - conda inspect objects {{ name|lower }}   # [osx]\n\nabout:\n  home: https://github.com/ifduyue/python-xxhash\n  license: BSD-2-Clause\n  license_file: LICENSE\n  summary: 'Python binding for xxHash'\n  license_family: BSD\n\nextra:\n  recipe-maintainers:\n    - mariusvniekerk\n",
  "req":{
   "__set__":true,

@@ -33,6 +33,23 @@
     "migrator_version",
     "version"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/340580083.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"ArchRebuild",
+    "migrator_version":1,
+    "name":"aarch64 and ppc64le addition"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "name"
+   ]
   }
  ],
  "bad":false,
@@ -116,7 +133,7 @@
  },
  "name":"hepmc3",
  "new_version":false,
- "pinning_version":"2019.08.19",
+ "pinning_version":"2019.11.13",
  "raw_meta_yaml":"{% set name = \"HepMC3\" %}\n{% set version = \"3.1.2\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  url: http://hepmc.web.cern.ch/hepmc/releases/{{ name  }}-{{ version }}.tar.gz \n  sha256: 9f4f99214535a764054cadae81f41483a426487c358fad991318b6398eefcd1f\n  folder: source\n\nbuild:\n  number: 0\n  skip: True  # [win]\n\nrequirements:\n  build:\n    - {{ compiler('cxx') }}\n    - cmake\n\ntest:\n  source_files:\n    - source/test\n  requires:\n    - {{ compiler('cxx') }}\n    - {{ compiler('fortran') }}\n  commands:\n    # Workaround for lack of CONDA_BUILD_SYSROOT variable in staged recipes\n    - export CONDA_BUILD_SYSROOT=/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk  # [osx]\n    - cd source/test\n    - ${CXX} -std=c++11 testMass.cc -o testMass.exe -I${CONDA_PREFIX}/include -L${CONDA_PREFIX}/lib -lHepMC3\n      # Fix up the runpath\n    - ${INSTALL_NAME_TOOL} -change @rpath/libHepMC3.2.dylib $CONDA_PREFIX/lib/libHepMC3.dylib testMass.exe  # [osx]\n    - ./testMass.exe\n\nabout:\n  home: https://hepmc.web.cern.ch/hepmc/\n  license: GPL-3\n  license_family: GPL\n  license_file: source/LICENCE\n  summary: 'HepMC3 is a new rewrite of HepMC event record.'\n  description: |\n      HepMC3 is a new rewrite of HepMC event record. It uses shared pointers\n      for in-memory navigation and the POD concept for the persistency.\n  dev_url: https://gitlab.cern.ch/hepmc/HepMC3\n\nextra:\n  recipe-maintainers:\n    - henryiii\n    - chrisburr\n    - gartung\n",
  "req":{
   "__set__":true,
@@ -125,7 +142,7 @@
    "cxx_compiler_stub"
   ]
  },
- "smithy_version":"3.4.1",
+ "smithy_version":"3.6.2",
  "url":"http://hepmc.web.cern.ch/hepmc/releases/HepMC3-3.1.2.tar.gz",
  "version":"3.1.2"
 }
