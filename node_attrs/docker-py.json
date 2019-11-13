@@ -263,12 +263,12 @@
  "meta_yaml":{
   "about":{
    "home":"https://github.com/docker/docker-py/",
-   "license":"Apache 2.0",
+   "license":"Apache-2.0",
    "license_file":"LICENSE",
    "summary":"Python client for Docker."
   },
   "build":{
-   "number":"0",
+   "number":"1",
    "script":"-m pip install . --no-deps -vv"
   },
   "extra":{
@@ -306,6 +306,7 @@
     "six >=1.10.0",
     "websocket-client >=0.32.0",
     "docker-pycreds  >=0.3.0",
+    "pywin32 223",
     "appdirs >=1.4.3",
     "asn1crypto >=0.22.0",
     "cffi >=1.10.0",
@@ -352,10 +353,16 @@
    ]
   },
   "source":{
+   "patches":[
+    "pywin32.patch",
+    "pywin32.patch",
+    "pywin32.patch"
+   ],
    "sha256":"e82699b633b9ff15b7ab1bd71696efb62b6e5fece1d81ed5c83dc978177d7adf",
    "url":"https://github.com/docker/docker-py/archive/4.1.0.tar.gz"
   },
   "test":{
+   "commands":null,
    "imports":[
     "docker",
     "docker.api",
@@ -378,13 +385,18 @@
     "docker.utils",
     "docker.utils.ports",
     "docker.transport.unixconn"
+   ],
+   "requires":[
+    "setuptools",
+    "setuptools",
+    "setuptools"
    ]
   }
  },
  "name":"docker-py",
  "new_version":"4.1.0",
  "pinning_version":"2019.11.01",
- "raw_meta_yaml":"{% set version = \"4.1.0\" %}\n\npackage:\n  name: docker-py\n  version: {{ version }}\n\nsource:\n  url: https://github.com/docker/docker-py/archive/{{ version }}.tar.gz\n  sha256: e82699b633b9ff15b7ab1bd71696efb62b6e5fece1d81ed5c83dc978177d7adf\n\nbuild:\n  skip: True  # [win32]\n  # win32 requires pypiwin32, which we don't have a build of.\n  number: 0\n  script: {{ PYTHON }} -m pip install . --no-deps -vv\n\nrequirements:\n  build:\n    - python\n    - pip\n  run:\n    - python\n    - requests >=2.14.2\n    - six >=1.10.0\n    - websocket-client >=0.32.0\n    - docker-pycreds  >=0.3.0\n    - ssl_match_hostname >=3.5  # [py<35]\n    - ipaddress >=1.0.18  # [py<33]\n    - pypiwin32 >=219  # [win32]\n    - appdirs >=1.4.3\n    - asn1crypto >=0.22.0\n    - cffi >=1.10.0\n    - cryptography >=1.9\n    - docker-pycreds >=0.2.1\n    - enum34 >=1.1.6  # [py<34]\n    - idna >=2.5\n    - packaging >=16.8\n    - pycparser >=2.17\n    - pyopenssl >=17.0.0\n    - pyparsing >=2.2.0\n    - websocket-client >=0.40.0\n\ntest:\n  imports:\n    - docker\n    - docker.api\n    - docker.auth\n    - docker.tls\n    - docker.utils\n    - docker.utils.ports\n    - docker.transport.unixconn\n\nabout:\n  home: https://github.com/docker/docker-py/\n  license: Apache 2.0\n  license_file: LICENSE\n  summary: 'Python client for Docker.'\n\nextra:\n  recipe-maintainers:\n    - pmlandwehr\n    - ocefpaf\n    - scopatz\n    - mariusvniekerk\n",
+ "raw_meta_yaml":"{% set version = \"4.1.0\" %}\n\npackage:\n  name: docker-py\n  version: {{ version }}\n\nsource:\n  url: https://github.com/docker/docker-py/archive/{{ version }}.tar.gz\n  sha256: e82699b633b9ff15b7ab1bd71696efb62b6e5fece1d81ed5c83dc978177d7adf\n  patches:\n    - pywin32.patch\n\nbuild:\n  skip: True  # [win32 or win and py<36 or win and py>=38]\n  # docker-py requires pypiwin32==219 when py<36, which we don't have a build of.\n  number: 1\n  script: {{ PYTHON }} -m pip install . --no-deps -vv\n\nrequirements:\n  build:\n    - python\n    - pip\n  run:\n    - python\n    - requests >=2.14.2\n    - six >=1.10.0\n    - websocket-client >=0.32.0\n    - docker-pycreds  >=0.3.0\n    - ssl_match_hostname >=3.5  # [py<35]\n    - ipaddress >=1.0.18  # [py<33]\n    - pywin32 223  # [win and py>=36]\n    - appdirs >=1.4.3\n    - asn1crypto >=0.22.0\n    - cffi >=1.10.0\n    - cryptography >=1.9\n    - docker-pycreds >=0.2.1\n    - enum34 >=1.1.6  # [py<34]\n    - idna >=2.5\n    - packaging >=16.8\n    - pycparser >=2.17\n    - pyopenssl >=17.0.0\n    - pyparsing >=2.2.0\n    - websocket-client >=0.40.0\n\ntest:\n  requires:\n    - setuptools\n  imports:\n    - docker\n    - docker.api\n    - docker.auth\n    - docker.tls\n    - docker.utils\n    - docker.utils.ports\n    - docker.transport.unixconn\n  commands:\n    - python -c \"import docker; docker.DockerClient.from_env(version='auto')\"  # [win]\n    - python -c \"import pkg_resources; pkg_resources.require('docker')\"  # [win]\n\nabout:\n  home: https://github.com/docker/docker-py/\n  license: Apache-2.0\n  license_file: LICENSE\n  summary: 'Python client for Docker.'\n\nextra:\n  recipe-maintainers:\n    - pmlandwehr\n    - ocefpaf\n    - scopatz\n    - mariusvniekerk\n",
  "req":{
   "__set__":true,
   "elements":[
@@ -400,6 +412,7 @@
    "pyopenssl",
    "pyparsing",
    "python",
+   "pywin32",
    "requests",
    "six",
    "websocket-client"

@@ -1,0 +1,81 @@
+{
+ "bad":false,
+ "conda-forge.yml":{},
+ "feedstock_name":"fmt",
+ "hash_type":"sha256",
+ "meta_yaml":{
+  "about":{
+   "description":"{fmt} is an open-source formatting library for C++.\nIt can be used as a safe and fast alternative to (s)printf and iostreams.\n",
+   "dev_url":"https://github.com/fmtlib/fmt",
+   "doc_url":"https://fmt.dev/latest/",
+   "home":"https://fmt.dev/latest/",
+   "license":"MIT",
+   "license_family":"MIT",
+   "license_file":"LICENSE.rst",
+   "summary":"{fmt} is an open-source formatting library for C++"
+  },
+  "build":{
+   "number":"0",
+   "skip":true
+  },
+  "extra":{
+   "recipe-maintainers":[
+    "tdegeus",
+    "tdegeus",
+    "tdegeus"
+   ]
+  },
+  "package":{
+   "name":"fmt",
+   "version":"6.0.0"
+  },
+  "requirements":{
+   "build":[
+    "cxx_compiler_stub",
+    "cmake",
+    "cxx_compiler_stub",
+    "cmake",
+    "make",
+    "cxx_compiler_stub",
+    "cmake",
+    "make"
+   ]
+  },
+  "source":{
+   "fn":"fmt-6.0.0.tar.gz",
+   "sha256":"f1907a58d5e86e6c382e51441d92ad9e23aea63827ba47fd647eacc0d3a16c78",
+   "url":"https://github.com/fmtlib/fmt/archive/6.0.0.tar.gz"
+  },
+  "test":{
+   "commands":[
+    "if exist %LIBRARY_PREFIX%\\include\\fmt\\core.h (exit 0) else (exit 1)",
+    "if exist %LIBRARY_PREFIX%\\include\\fmt\\format.h (exit 0) else (exit 1)",
+    "if exist %LIBRARY_PREFIX%\\lib\\cmake\\fmt-config.cmake (exit 0) else (exit 1)",
+    "if exist %LIBRARY_PREFIX%\\lib\\lib\\fmt.dll",
+    "test -d ${PREFIX}/include/fmt",
+    "test -f ${PREFIX}/include/fmt/core.h",
+    "test -f ${PREFIX}/include/fmt/format.h",
+    "test -f ${PREFIX}/lib/cmake/fmt/fmt-config.cmake",
+    "test -f ${PREFIX}/lib/libfmt.dylib",
+    "test -d ${PREFIX}/include/fmt",
+    "test -f ${PREFIX}/include/fmt/core.h",
+    "test -f ${PREFIX}/include/fmt/format.h",
+    "test -f ${PREFIX}/lib/cmake/fmt/fmt-config.cmake",
+    "test -f ${PREFIX}/lib/libfmt.so"
+   ]
+  }
+ },
+ "name":"fmt",
+ "new_version":"6.0.0",
+ "raw_meta_yaml":"{% set name = \"fmt\" %}\n{% set version = \"6.0.0\" %}\n{% set sha256 = \"f1907a58d5e86e6c382e51441d92ad9e23aea63827ba47fd647eacc0d3a16c78\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  fn: {{ name }}-{{ version }}.tar.gz\n  url: https://github.com/fmtlib/fmt/archive/{{ version }}.tar.gz\n  sha256: {{ sha256 }}\n\nbuild:\n  number: 0\n  skip: True  # [win and vc<14]\n\nrequirements:\n  build:\n    - {{ compiler('cxx') }}\n    - cmake\n    - make  # [unix]\n\ntest:\n  commands:\n    - test -d ${PREFIX}/include/fmt  # [unix]\n    - test -f ${PREFIX}/include/fmt/core.h  # [unix]\n    - test -f ${PREFIX}/include/fmt/format.h  # [unix]\n    - test -f ${PREFIX}/lib/cmake/fmt/fmt-config.cmake  # [unix]\n    - test -f ${PREFIX}/lib/libfmt.so  # [linux]\n    - test -f ${PREFIX}/lib/libfmt.dylib  # [osx]\n    - if exist %LIBRARY_PREFIX%\\include\\fmt\\core.h (exit 0) else (exit 1)  # [win]\n    - if exist %LIBRARY_PREFIX%\\include\\fmt\\format.h (exit 0) else (exit 1)  # [win]\n    - if exist %LIBRARY_PREFIX%\\lib\\cmake\\fmt-config.cmake (exit 0) else (exit 1)  # [win]\n    - if exist %LIBRARY_PREFIX%\\lib\\lib\\fmt.dll  # [win]\n\nabout:\n  home: https://fmt.dev/latest/\n  license: MIT\n  license_family: MIT\n  license_file: LICENSE.rst\n  summary: '{fmt} is an open-source formatting library for C++'\n  description: |\n    {fmt} is an open-source formatting library for C++.\n    It can be used as a safe and fast alternative to (s)printf and iostreams.\n  doc_url: https://fmt.dev/latest/\n  dev_url: https://github.com/fmtlib/fmt\n\nextra:\n  recipe-maintainers:\n    - tdegeus\n",
+ "req":{
+  "__set__":true,
+  "elements":[
+   "cmake",
+   "cxx_compiler_stub",
+   "make"
+  ]
+ },
+ "url":"https://github.com/fmtlib/fmt/archive/6.0.0.tar.gz",
+ "version":"6.0.0"
+}
