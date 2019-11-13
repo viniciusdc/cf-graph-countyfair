@@ -137,6 +137,25 @@
     "migrator_version",
     "version"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/340603574.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"MigrationYaml",
+    "migrator_object_version":1,
+    "migrator_version":0,
+    "name":"protobuf310"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_object_version",
+    "migrator_version",
+    "name"
+   ]
   }
  ],
  "bad":false,
@@ -225,7 +244,7 @@
  },
  "name":"orc",
  "new_version":"1.6.1",
- "pinning_version":"2019.10.25",
+ "pinning_version":"2019.11.13",
  "raw_meta_yaml":"{% set version = \"1.6.1\" %}\n\npackage:\n  name: orc\n  version: {{ version }}\n\nsource:\n  url: https://archive.apache.org/dist/orc/orc-{{ version }}/orc-{{ version }}.tar.gz\n  sha256: 56a7622629f0101f12bf9470065c8283390a1967e4969975756b8d2dc03383c8\n  patches:\n    # ORC builds by default with -Werror but some dependencies omit warnings.\n    # This deactivates -Werror\n    - 0001-Deactivate-aggressive-failures-on-warnings.patch\n\nbuild:\n  number: 0\n  skip: True    # [win]\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n    - ninja       # [unix]\n    - cmake\n  host:\n    - zlib\n    - snappy\n    - libprotobuf\n    - lz4-c\n  run:\n    - libprotobuf\n\ntest:\n  commands:\n    - test -f $PREFIX/lib/liborc.a  # [unix]\n\nabout:\n  home: http://github.com/apache/orc\n  license: Apache-2.0\n  license_family: Apache\n  license_file: LICENSE\n  summary: 'C++ libraries for Apache ORC'\n\nextra:\n  recipe-maintainers:\n    - wesm\n    - xhochy\n",
  "req":{
   "__set__":true,
@@ -240,7 +259,7 @@
    "zlib"
   ]
  },
- "smithy_version":"3.6.0",
+ "smithy_version":"3.6.2",
  "url":"https://archive.apache.org/dist/orc/orc-1.6.0/orc-1.6.0.tar.gz",
  "version":"1.6.1"
 }
