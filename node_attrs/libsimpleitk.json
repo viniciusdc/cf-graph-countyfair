@@ -65,7 +65,7 @@
   },
   "package":{
    "name":"libsimpleitk",
-   "version":"1.2.3"
+   "version":"1.2.4"
   },
   "requirements":{
    "build":[
@@ -98,8 +98,8 @@
    ]
   },
   "source":{
-   "sha256":"718980ebf9b704ea145c6764f0745da9c8794442d36cd01292a72683946c5e53",
-   "url":"https://github.com/SimpleITK/SimpleITK/releases/download/v1.2.3/SimpleITK-1.2.3.tar.gz"
+   "sha256":"1d67ed4324fee0d7341a027de865bf915a34dfa82e2863d89037e2f2865f7559",
+   "url":"https://github.com/SimpleITK/SimpleITK/releases/download/v1.2.4/SimpleITK-1.2.4.tar.gz"
   },
   "test":{
    "commands":[
@@ -132,7 +132,7 @@
  "name":"libsimpleitk",
  "new_version":"1.2.4",
  "pinning_version":"2019.11.13",
- "raw_meta_yaml":"{% set name = \"libsimpleitk\" %}\n{% set version = \"1.2.3\" %}\n{% set sha256 = \"718980ebf9b704ea145c6764f0745da9c8794442d36cd01292a72683946c5e53\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  url: https://github.com/SimpleITK/SimpleITK/releases/download/v{{version}}/SimpleITK-{{version}}.tar.gz\n  sha256: {{ sha256 }}\n\nbuild:\n    number: 0\n    skip: true  # [ win and py27 ]\n\nrequirements:\n  build:\n    - cmake   >=3.11\n    - ninja\n    - lua     5.1.*          # [ not win ]\n    - swig                   # [ win ]\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n\n  host:\n    - libitk  <5\n\n  run:\n    - vs2015_runtime  # [win]\n    - {{ pin_compatible('libitk', exact=True) }}\n\ntest:\n  requires:\n    - cmake\n    - {{ compiler(\"c\") }}\n    - {{ compiler(\"cxx\") }}\n  source_files:\n    - Examples\n  commands:\n    - test -d $PREFIX/include/SimpleITK*                                 # [not win]\n    - if not exist %LIBRARY_INC%\\\\SimpleITK* exit 1                      # [win]\n    - cmake -D \"CMAKE_SYSTEM_PREFIX_PATH:FILEPATH=${PREFIX}\" ./Examples  # [not win]\n    - cmake --build . --config Release                                   # [not win]\n\nabout:\n  home: http::/www.simpleitk.org\n  license: Apache 2.0\n  license_file: LICENSE\n  summary: Development headers and libraries for SimpleITK a simplified interface to the Insight Toolkit.\n\nextra:\n    recipe-maintainers:\n      - blowekamp\n      - zivy\n",
+ "raw_meta_yaml":"{% set name = \"libsimpleitk\" %}\n{% set version = \"1.2.4\" %}\n{% set sha256 = \"1d67ed4324fee0d7341a027de865bf915a34dfa82e2863d89037e2f2865f7559\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  url: https://github.com/SimpleITK/SimpleITK/releases/download/v{{version}}/SimpleITK-{{version}}.tar.gz\n  sha256: {{ sha256 }}\n\nbuild:\n    number: 0\n    skip: true  # [ win and py27 ]\n\nrequirements:\n  build:\n    - cmake   >=3.11\n    - ninja\n    - lua     5.1.*          # [ not win ]\n    - swig                   # [ win ]\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n\n  host:\n    - libitk  <5\n\n  run:\n    - vs2015_runtime  # [win]\n    - {{ pin_compatible('libitk', exact=True) }}\n\ntest:\n  requires:\n    - cmake\n    - {{ compiler(\"c\") }}\n    - {{ compiler(\"cxx\") }}\n  source_files:\n    - Examples\n  commands:\n    - test -d $PREFIX/include/SimpleITK*                                 # [not win]\n    - if not exist %LIBRARY_INC%\\\\SimpleITK* exit 1                      # [win]\n    - cmake -D \"CMAKE_SYSTEM_PREFIX_PATH:FILEPATH=${PREFIX}\" ./Examples  # [not win]\n    - cmake --build . --config Release                                   # [not win]\n\nabout:\n  home: http::/www.simpleitk.org\n  license: Apache 2.0\n  license_file: LICENSE\n  summary: Development headers and libraries for SimpleITK a simplified interface to the Insight Toolkit.\n\nextra:\n    recipe-maintainers:\n      - blowekamp\n      - zivy\n",
  "req":{
   "__set__":true,
   "elements":[
@@ -149,5 +149,5 @@
  },
  "smithy_version":"3.6.2",
  "url":"https://github.com/SimpleITK/SimpleITK/releases/download/v1.2.2/SimpleITK-1.2.2.tar.gz",
- "version":"1.2.3"
+ "version":"1.2.4"
 }

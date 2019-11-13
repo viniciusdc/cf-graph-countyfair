@@ -537,6 +537,23 @@
     "migrator_version",
     "name"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/340695758.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"Version",
+    "migrator_version":0,
+    "version":"1.1.1"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "version"
+   ]
   }
  ],
  "bad":false,
@@ -697,8 +714,8 @@
   }
  },
  "name":"rasterio",
- "new_version":"1.1.0",
- "pinning_version":"2019.11.01",
+ "new_version":"1.1.1",
+ "pinning_version":"2019.11.13",
  "raw_meta_yaml":"{% set version = \"1.1.0\" %}\n\npackage:\n  name: rasterio\n  version: {{ version }}\n\nsource:\n  url: https://github.com/mapbox/rasterio/archive/{{ version }}.tar.gz\n  sha256: e1be3abf1a2b28dee6e509058352503ad030a20519b86252a25a43a364fec858\n\nbuild:\n  number: 0\n  skip: True  # [win and py27]\n  entry_points:\n    - rio = rasterio.rio.main:main_group\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n  host:\n    - python\n    - pip\n    - cython\n    - numpy\n    - libgdal\n  run:\n    - python\n    - setuptools >=0.9.8\n    - libgdal\n    - affine\n    - attrs\n    - click >=4,<8\n    - cligj >=0.5\n    - {{ pin_compatible('numpy') }}\n    - snuggs >=1.4.1\n    - click-plugins\n    - enum34  # [py<34]\n\ntest:\n  source_files:\n    - tests\n  imports:\n    - rasterio\n  requires:\n    - pytest >=2.8.2\n    - pytest-cov >=2.2.0\n    - ipython>=2.0\n    - boto3 >=1.2.4\n    # TclError: no display name and no $DISPLAY environment variable\n    - matplotlib-base  # [not (win or py27)]\n    - packaging\n    - hypothesis\n    - mock  # [py2k]\n    - futures  # [py2k]\n  files:\n    - test_data/test.tif\n  commands:\n    - rio --help\n    - rio info {{ RECIPE_DIR }}/test_data/test.tif  # [not win]\n    - rio info {{ RECIPE_DIR }}\\\\test_data\\\\test.tif  # [win]\n    - $PYTHON -m pytest -v -m \"not wheel\" -rxXs -k \"not test_mp_no_main_env\" tests  # [linux]\n    # no idea why those two geom test do not pass on macOS\n    - $PYTHON -m pytest -v -m \"not wheel\" -rxXs -k \"not (test_transform_geom_polygon_cutting or test_transform_geom_polygon_offset)\" tests  # [osx]\n    # Skipping some tests in Windows due to, most of them looks like file lock issues.\n    - python -m pytest -v -m \"not wheel\" -rxXs -k \"not (test_hit_ovr or test_file_in_handler_with_vfs or test_wrap_file or test_hit_ovr)\" tests  # [win]\nabout:\n  home: https://github.com/mapbox/rasterio\n  license: BSD-3-Clause\n  license_file: LICENSE.txt\n  summary: 'Rasterio reads and writes geospatial raster datasets'\n\nextra:\n  recipe-maintainers:\n    - ocefpaf\n    - ceholden\n    - snowman2\n",
  "req":{
   "__set__":true,
@@ -720,7 +737,7 @@
    "snuggs"
   ]
  },
- "smithy_version":"3.6.1",
+ "smithy_version":"3.6.2",
  "url":"https://github.com/mapbox/rasterio/archive/1.0.27.tar.gz",
  "version":"1.1.0"
 }
