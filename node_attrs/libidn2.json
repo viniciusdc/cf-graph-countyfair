@@ -98,6 +98,23 @@
     "migrator_version",
     "version"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/340944505.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"Version",
+    "migrator_version":0,
+    "version":"2.3.0"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "version"
+   ]
   }
  ],
  "bad":false,
@@ -176,8 +193,8 @@
   }
  },
  "name":"libidn2",
- "new_version":"2.2.0",
- "pinning_version":"2019.05.21",
+ "new_version":"2.3.0",
+ "pinning_version":"2019.11.13",
  "raw_meta_yaml":"{% set version = \"2.1.1\" %}\n\npackage:\n  name: libidn2\n  version: {{ version }}\n\nsource:\n  url: https://ftp.gnu.org/gnu/libidn/libidn2-{{ version }}.tar.gz\n  sha256: 95416080329298a13269e13175041b530cec3d98b54cafae9424b8dfd22078b1\n\nbuild:\n  skip: True  # [win]\n  number: 0\n  run_exports:\n    # _Amazing_ backwards compatibility so pin to major number:\n    #    https://abi-laboratory.pro/tracker/timeline/libidn2/\n    - {{ pin_subpackage('libidn2', min_pin='x', max_pin='x') }}\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - make\n    - pkg-config\n  host:\n    - gettext\n    - libunistring\n\ntest:\n  commands:\n    - test -f \"${PREFIX}/include/idn2.h\"\n    - test -f \"${PREFIX}/lib/libidn2${SHLIB_EXT}\"\n\nabout:\n  home: \"https://www.gnu.org/software/libidn/#libidn2\"\n  license: LGPLv2\n  license_file: COPYING\n  summary: \"Library for internationalized domain names (IDNA2008) support\"\n\nextra:\n  recipe-maintainers:\n    - hmaarrfk\n    # This recipe I got from\n    # - chenghlee\n",
  "req":{
   "__set__":true,
@@ -189,7 +206,7 @@
    "pkg-config"
   ]
  },
- "smithy_version":"3.3.4",
+ "smithy_version":"3.6.2",
  "url":"https://ftp.gnu.org/gnu/libidn/libidn2-2.1.1.tar.gz",
  "version":"2.1.1"
 }
