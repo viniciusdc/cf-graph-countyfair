@@ -353,7 +353,7 @@
   },
   "build":{
    "number":"0",
-   "script":" -m pip install . --no-deps --ignore-installed --no-cache-dir -vvv"
+   "script":" -m pip install . --no-deps -vv"
   },
   "extra":{
    "recipe-maintainers":[
@@ -382,20 +382,17 @@
     "cxx_compiler_stub"
    ],
    "host":[
-    "pip",
-    "numpy 1.15.*",
     "python",
-    "setuptools",
+    "pip",
+    "numpy 1.16.*",
     "wheel >=0.32.0,<0.33.0",
-    "pip",
-    "numpy 1.15.*",
     "python",
-    "setuptools",
+    "pip",
+    "numpy 1.16.*",
     "wheel >=0.32.0,<0.33.0",
-    "pip",
-    "numpy 1.15.*",
     "python",
-    "setuptools",
+    "pip",
+    "numpy 1.16.*",
     "wheel >=0.32.0,<0.33.0"
    ],
    "run":[
@@ -432,7 +429,6 @@
    ]
   },
   "source":{
-   "fn":"thinc-7.3.0.tar.gz",
    "sha256":"a9d5006f10571ae7ef2110707c39e760200f2c454c79a4ea603658c997f61248",
    "url":"https://pypi.io/packages/source/t/thinc/thinc-7.3.0.tar.gz"
   },
@@ -475,7 +471,7 @@
  "name":"thinc",
  "new_version":"7.3.1",
  "pinning_version":"2019.11.01",
- "raw_meta_yaml":"{% set name = \"thinc\" %}\n{% set version = \"7.3.0\" %}\n{% set sha256sum = \"a9d5006f10571ae7ef2110707c39e760200f2c454c79a4ea603658c997f61248\" %}\npackage:\n  name: {{ name }}\n  version: {{ version }}\n\nsource:\n  fn: {{ name }}-{{ version }}.tar.gz\n  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz\n  sha256: {{ sha256sum }}\n\nbuild:\n  number: 0\n  script: \"{{ PYTHON }} -m pip install . --no-deps --ignore-installed --no-cache-dir -vvv\"\n  skip: true  # [win and py27]\n\nrequirements:\n  build:\n    - pip\n    - {{ compiler('cxx') }}\n  host:\n    - pip\n    - numpy 1.15.*\n    - python\n    - setuptools\n    - wheel >=0.32.0,<0.33.0\n\n  run:\n    - python\n    - {{ pin_compatible('numpy') }}\n    - murmurhash >=0.28.0,<1.1.0\n    - cymem >=2.0.2,<2.1.0\n    - preshed >=3.0.2,<3.1.0\n    - cython-blis >=0.4.0,<0.5.0\n    - srsly >=0.0.4,<1.1.0\n    - wasabi >=0.0.9,<1.1.0\n    - plac >=0.9.6,<1.0.0\n    - tqdm >=4.10.0,<5.0.0\n    - pathlib >=1.0.0,<2.0.0  # [py27]\n\ntest:\n  requires:\n    - hypothesis\n    - pytest\n    - mock\n\n  imports:\n    - thinc\n    - thinc.api\n    - thinc.linear\n    - thinc.extra\n    - thinc.neural\n\n  commands:\n    - python -m pytest --tb=native --pyargs {{ name }}\n\nabout:\n  home: https://github.com/explosion/thinc/\n  license: MIT\n  license_file: LICENSE\n  summary: 'thinc: Learn super-sparse multi-class models'\n  description: |\n    thinc is a Cython library for learning models with millions of parameters\n    and dozens of classes. It drives https://spacy.io , a pipeline of very\n    efficient NLP components. I\u2019ve only used thinc from Cython; no real Python\n    API is currently available.\n\nextra:\n  recipe-maintainers:\n    - rmax\n    - honnibal\n    - ines\n",
+ "raw_meta_yaml":"{% set version = \"7.3.0\" %}\n\npackage:\n  name: thinc\n  version: {{ version }}\n\nsource:\n  url: https://pypi.io/packages/source/t/thinc/thinc-{{ version }}.tar.gz\n  sha256: a9d5006f10571ae7ef2110707c39e760200f2c454c79a4ea603658c997f61248\n\nbuild:\n  number: 0\n  script: \"{{ PYTHON }} -m pip install . --no-deps -vv\"\n  skip: true  # [win and py27]\n\nrequirements:\n  build:\n    - pip\n    - {{ compiler('cxx') }}\n  host:\n    - python\n    - pip\n    - numpy 1.16.*\n    - wheel >=0.32.0,<0.33.0\n\n  run:\n    - python\n    - {{ pin_compatible('numpy') }}\n    - murmurhash >=0.28.0,<1.1.0\n    - cymem >=2.0.2,<2.1.0\n    - preshed >=3.0.2,<3.1.0\n    - cython-blis >=0.4.0,<0.5.0\n    - srsly >=0.0.4,<1.1.0\n    - wasabi >=0.0.9,<1.1.0\n    - plac >=0.9.6,<1.0.0\n    - tqdm >=4.10.0,<5.0.0\n    - pathlib >=1.0.0,<2.0.0  # [py27]\n\ntest:\n  requires:\n    - hypothesis\n    - pytest\n    - mock\n  imports:\n    - thinc\n    - thinc.api\n    - thinc.linear\n    - thinc.extra\n    - thinc.neural\n\n  commands:\n    - python -m pytest --tb=native --pyargs thinc\n\nabout:\n  home: https://github.com/explosion/thinc/\n  license: MIT\n  license_file: LICENSE\n  summary: 'thinc: Learn super-sparse multi-class models'\n  description: |\n    thinc is a Cython library for learning models with millions of parameters\n    and dozens of classes. It drives https://spacy.io , a pipeline of very\n    efficient NLP components. I\u2019ve only used thinc from Cython; no real Python\n    API is currently available.\n\nextra:\n  recipe-maintainers:\n    - rmax\n    - honnibal\n    - ines\n",
  "req":{
   "__set__":true,
   "elements":[
@@ -489,7 +485,6 @@
    "plac",
    "preshed",
    "python",
-   "setuptools",
    "srsly",
    "tqdm",
    "wasabi",
