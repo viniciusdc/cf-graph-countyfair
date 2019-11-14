@@ -266,6 +266,23 @@
     "migrator_version",
     "version"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/341221188.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"Version",
+    "migrator_version":0,
+    "version":"0.12.15"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "version"
+   ]
   }
  ],
  "bad":false,
@@ -347,7 +364,7 @@
   }
  },
  "name":"terraform",
- "new_version":"0.12.14",
+ "new_version":"0.12.15",
  "pinning_version":"2019.11.13",
  "raw_meta_yaml":"{% set goname = \"github.com/hashicorp/terraform\" %}\n{% set version = \"0.12.13\" %}\n\n{% set name = goname.split('/')[-1] %}\n{% set pkg_src = ('src/'+goname).replace(\"/\",os.sep) %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  # We must use git here beause the program looks\n  # for the git sha&tag to determine its version\n  - folder: {{ pkg_src }}\n    url: https://{{ goname }}/archive/v{{version}}.tar.gz\n    sha256: d8194bb0861755433f7b4c574559a96bec2cd205513e4722f0d841b74b6d4fec\n\nbuild:\n  number: 0\n  script:\n    - pushd {{ pkg_src }}\n    - go install -v .\n\nrequirements:\n  build:\n    - {{ compiler('go') }}\n\ntest:\n  requires:\n    - m2-bash  # [win]\n  commands:\n    - bash -c \"{{ name|lower }} -v\"\n\nabout:\n  home: https://www.terraform.io\n  license: MPL 2.0\n  summary: Terraform is a tool for building, changing, and combining infrastructure safely and efficiently. \n  description: |\n    Terraform is a tool for building, changing, and versioning infrastructure safely and \n    efficiently. Terraform can manage existing and popular service providers as well as custom in-house \n    solutions.\n  doc_url: https://www.terraform.io/docs/index.html\n  dev_url: https://github.com/hashicorp/terraform.git\n\nextra:\n  recipe-maintainers:\n    - sodre\n    - mariusvniekerk\n",
  "req":{
