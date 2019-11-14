@@ -164,7 +164,7 @@
     "openssl",
     "openssl"
    ],
-   "number":"0",
+   "number":"1",
    "run_exports":[
     "subpackage_stub",
     "subpackage_stub",
@@ -210,6 +210,9 @@
     "boost-cpp",
     "ldas-tools-cmake >=1.1.1",
     "openssl"
+   ],
+   "run_constrained":[
+    "__osx >=10.9"
    ]
   },
   "source":{
@@ -228,7 +231,7 @@
  "name":"ldas-tools-al",
  "new_version":"2.6.4",
  "pinning_version":"2019.10.11",
- "raw_meta_yaml":"{% set name = \"ldas-tools-al\" %}\n{% set version = \"2.6.4\" %}\n{% set sha256 = \"5507e4d8a2b2ff8855f9e427c51836b43b58d6471cf04ad844e93e17a84372a9\" %}\n\n# dependencies\n{% set ldas_tools_cmake_version = \"1.1.1\" %}\n\npackage:\n  name: \"{{ name }}\"\n  version: \"{{ version }}\"\n\nsource:\n  url: \"http://software.ligo.org/lscsoft/source/{{ name }}-{{ version }}.tar.gz\"\n  sha256: \"{{ sha256 }}\"\n\nbuild:\n  number: 0\n  skip: true  # [win]\n  run_exports:\n    - {{ pin_subpackage(\"ldas-tools-al\", max_pin=\"x.x\") }}\n  ignore_run_exports:\n    # not sure we need openssl, but the cmake configure demands it\n    - openssl\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n    - cmake >=3.6\n    - pkg-config  # [unix]\n  host:\n    - boost-cpp\n    - ldas-tools-cmake >={{ ldas_tools_cmake_version }}\n    - openssl\n\ntest:\n  requires:\n    - pkg-config  # [unix]\n  commands:\n    - pkg-config --print-errors --modversion ldastoolsal  # [unix]\n\nabout:\n  home: \"https://wiki.ligo.org/Computing/LDASTools\"\n  dev_url: \"https://git.ligo.org/ldastools/LDAS_Tools\"\n  license: \"GPL-2.0-or-later\"\n  license_family: \"GPL\"\n  license_file: \"COPYING\"\n  summary: \"LDAS tools abstraction toolkit\"\n\nextra:\n  recipe-maintainers:\n    - duncanmmacleod\n    - emaros\n",
+ "raw_meta_yaml":"{% set name = \"ldas-tools-al\" %}\n{% set version = \"2.6.4\" %}\n{% set sha256 = \"5507e4d8a2b2ff8855f9e427c51836b43b58d6471cf04ad844e93e17a84372a9\" %}\n\n# dependencies\n{% set ldas_tools_cmake_version = \"1.1.1\" %}\n\npackage:\n  name: \"{{ name }}\"\n  version: \"{{ version }}\"\n\nsource:\n  url: \"http://software.ligo.org/lscsoft/source/{{ name }}-{{ version }}.tar.gz\"\n  sha256: \"{{ sha256 }}\"\n\nbuild:\n  number: 1\n  skip: true  # [win]\n  run_exports:\n    - {{ pin_subpackage(\"ldas-tools-al\", max_pin=\"x.x\") }}\n  ignore_run_exports:\n    # not sure we need openssl, but the cmake configure demands it\n    - openssl\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n    - cmake >=3.6\n    - pkg-config  # [unix]\n  host:\n    - boost-cpp\n    - ldas-tools-cmake >={{ ldas_tools_cmake_version }}\n    - openssl\n  run_constrained:  # [osx]\n    - __osx >={{ MACOSX_DEPLOYMENT_TARGET|default(\"10.9\") }}  # [osx]\n\ntest:\n  requires:\n    - pkg-config  # [unix]\n  commands:\n    - pkg-config --print-errors --modversion ldastoolsal  # [unix]\n\nabout:\n  home: \"https://wiki.ligo.org/Computing/LDASTools\"\n  dev_url: \"https://git.ligo.org/ldastools/LDAS_Tools\"\n  license: \"GPL-2.0-or-later\"\n  license_family: \"GPL\"\n  license_file: \"COPYING\"\n  summary: \"LDAS tools abstraction toolkit\"\n\nextra:\n  recipe-maintainers:\n    - duncanmmacleod\n    - emaros\n",
  "req":{
   "__set__":true,
   "elements":[

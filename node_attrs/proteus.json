@@ -53,14 +53,14 @@
    "summary":"Proteus is a Python package for rapidly developing computer models and numerical methods."
   },
   "build":{
-   "number":"0",
+   "number":"1",
    "run_exports":[
     "proteus * mpi_mpich_*",
     "proteus * mpi_mpich_*",
     "proteus * mpi_mpich_*"
    ],
    "skip":true,
-   "string":"mpi_mpich_h_0"
+   "string":"mpi_mpich_h_1"
   },
   "extra":{
    "recipe-maintainers":[
@@ -158,8 +158,14 @@
     "tetgen",
     "ncurses",
     "pychrono",
-    "compatible_pin_stub",
     "python 3",
+    "future",
+    "ipyparallel",
+    "pillow",
+    "recordtype",
+    "compatible_pin_stub",
+    "compatible_pin_stub",
+    "compatible_pin_stub",
     "matplotlib",
     "mpi4py",
     "nose",
@@ -170,8 +176,14 @@
     "tetgen",
     "ncurses",
     "pychrono",
-    "compatible_pin_stub",
     "python 3",
+    "future",
+    "ipyparallel",
+    "pillow",
+    "recordtype",
+    "compatible_pin_stub",
+    "compatible_pin_stub",
+    "compatible_pin_stub",
     "matplotlib",
     "mpi4py",
     "nose",
@@ -182,8 +194,14 @@
     "tetgen",
     "ncurses",
     "pychrono",
+    "python 3",
+    "future",
+    "ipyparallel",
+    "pillow",
+    "recordtype",
     "compatible_pin_stub",
-    "python 3"
+    "compatible_pin_stub",
+    "compatible_pin_stub"
    ]
   },
   "source":{
@@ -202,7 +220,7 @@
  "name":"proteus",
  "new_version":"1.7.1",
  "pinning_version":"2019.11.01",
- "raw_meta_yaml":"{% set name = \"proteus\" %}\n{% set version = \"1.7.1\" %}\n{% set build = 0 %}\n{% set sha256 = \"fa92cc384a83d6ad9ba3ce52aa4d8f7ed7624c97a597fd9faadfce553af5c9fe\" %}\n\n{% set mpi = mpi or 'mpich' %}\n\npackage:\n  name: {{ name }}\n  version: {{ version }}\n\nsource:\n  fn: proteus-{{ version }}.tar.gz\n  url: https://github.com/erdc/proteus/archive/{{ version }}.tar.gz\n  sha256: {{ sha256 }}\n\nbuild:\n  number: {{ build }}\n  skip: True  # [not linux]\n  {% set mpi_prefix = \"mpi_\" + mpi %}\n  string: \"{{ mpi_prefix }}_h{{ PKG_HASH }}_{{ build }}\"\n  run_exports:\n    - {{ name }} * {{ mpi_prefix }}_*\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n    - {{ compiler('fortran') }}\n    - make\n  host:\n    - setuptools\n    - cython\n    - daetk 1.0.1\n    - hdf5 =*=*mpich*\n    - metis 5\n    - {{ mpi }}\n    - numpy 1.14\n    - openblas 0.2\n    - parmetis 4.0\n    - petsc4py 3.11\n    - petsc 3.11\n    - python 3\n    - scorec\n    - superlu 5\n    - superlu_dist 6\n    - triangle 1.6\n    - pychrono\n    - mpi4py\n  run:\n    # This is an optional dependency\n    # - gmsh        [not osx]\n    - matplotlib\n    - mpi4py\n    - nose\n    - pytables\n    - pytest\n    - pytest-xdist\n    - scipy\n    - tetgen\n    - ncurses\n    - pychrono\n    - {{ pin_compatible('openblas', max_pin='x.x') }}\n    - python 3\n\ntest:\n  imports:\n    - proteus\n\nabout:\n  home: http://proteustoolkit.org\n  license: MIT\n  license_family: MIT\n  license_file: LICENSE.md\n  summary: Proteus is a Python package for rapidly developing computer models and numerical methods.\n  dev_url: https://github.com/erdc/proteus\n\nextra:\n  recipe-maintainers:\n    - davidbrochart\n    - SylvainCorlay\n",
+ "raw_meta_yaml":"{% set name = \"proteus\" %}\n{% set version = \"1.7.1\" %}\n{% set build = 1 %}\n{% set sha256 = \"fa92cc384a83d6ad9ba3ce52aa4d8f7ed7624c97a597fd9faadfce553af5c9fe\" %}\n\n{% set mpi = mpi or 'mpich' %}\n\npackage:\n  name: {{ name }}\n  version: {{ version }}\n\nsource:\n  fn: proteus-{{ version }}.tar.gz\n  url: https://github.com/erdc/proteus/archive/{{ version }}.tar.gz\n  sha256: {{ sha256 }}\n\nbuild:\n  number: {{ build }}\n  skip: True  # [not linux]\n  {% set mpi_prefix = \"mpi_\" + mpi %}\n  string: \"{{ mpi_prefix }}_h{{ PKG_HASH }}_{{ build }}\"\n  run_exports:\n    - {{ name }} * {{ mpi_prefix }}_*\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n    - {{ compiler('fortran') }}\n    - make\n  host:\n    - setuptools\n    - cython\n    - daetk 1.0.1\n    - hdf5 =*=*mpich*\n    - metis 5\n    - {{ mpi }}\n    - numpy 1.14\n    - openblas 0.2\n    - parmetis 4.0\n    - petsc4py 3.11\n    - petsc 3.11\n    - python 3\n    - scorec\n    - superlu 5\n    - superlu_dist 6\n    - triangle 1.6\n    - pychrono\n    - mpi4py\n  run:\n    # This is an optional dependency\n    # - gmsh        [not osx]\n    - matplotlib\n    - mpi4py\n    - nose\n    - pytables\n    - pytest\n    - pytest-xdist\n    - scipy\n    - tetgen\n    - ncurses\n    - pychrono\n    - python 3\n    - future\n    - ipyparallel\n    - pillow\n    - recordtype\n    - {{ pin_compatible('openblas', max_pin='x.x') }}\n    - {{ pin_compatible('petsc4py', max_pin='x.x') }}\n    - {{ pin_compatible('cython', max_pin='x.x') }}\n\ntest:\n  imports:\n    - proteus\n\nabout:\n  home: http://proteustoolkit.org\n  license: MIT\n  license_family: MIT\n  license_file: LICENSE.md\n  summary: Proteus is a Python package for rapidly developing computer models and numerical methods.\n  dev_url: https://github.com/erdc/proteus\n\nextra:\n  recipe-maintainers:\n    - davidbrochart\n    - SylvainCorlay\n",
  "req":{
   "__set__":true,
   "elements":[
@@ -212,7 +230,9 @@
    "cython",
    "daetk",
    "fortran_compiler_stub",
+   "future",
    "hdf5",
+   "ipyparallel",
    "make",
    "matplotlib",
    "metis",
@@ -225,11 +245,13 @@
    "parmetis",
    "petsc",
    "petsc4py",
+   "pillow",
    "pychrono",
    "pytables",
    "pytest",
    "pytest-xdist",
    "python",
+   "recordtype",
    "scipy",
    "scorec",
    "setuptools",
