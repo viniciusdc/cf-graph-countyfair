@@ -60,10 +60,10 @@
     "fluidmat2py = fluiddyn.util.matlab2py:main",
     "fluidcluster-help = fluiddyn.clusters:print_help_scheduler"
    ],
-   "number":"2100",
+   "number":"3100",
    "script":" -m pip install .[full] --no-deps --ignore-installed -vv ",
    "skip":true,
-   "string":"nompi_h_2100"
+   "string":"nompi_h_3100"
   },
   "extra":{
    "recipe-maintainers":[
@@ -109,7 +109,6 @@
     "nbstripout",
     "scipy",
     "matplotlib",
-    "opencv",
     "imageio",
     "sip",
     "scikit-image",
@@ -124,7 +123,6 @@
     "nbstripout",
     "scipy",
     "matplotlib",
-    "opencv",
     "imageio",
     "sip",
     "scikit-image",
@@ -139,7 +137,6 @@
     "nbstripout",
     "scipy",
     "matplotlib",
-    "opencv",
     "imageio",
     "sip",
     "scikit-image"
@@ -219,7 +216,7 @@
  "name":"fluiddyn",
  "new_version":"0.3.1",
  "pinning_version":"2019.11.01",
- "raw_meta_yaml":"{% set name = \"fluiddyn\" %}\n{% set version = \"0.3.1\" %}\n{% set build = 2000 %}\n# ensure mpi is defined (needed for conda-smithy recipe-lint)\n{% set mpi = mpi or 'nompi' %}\n\n{% if mpi == 'nompi' %}\n# prioritize nompi variant via build number\n{% set build = build + 100 %}\n{% endif %}\n\npackage:\n  name: \"{{ name|lower }}\"\n  version: \"{{ version }}\"\n\nsource:\n  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz\n  sha256: 488dcc8cd1660fd6eed939defeb21250114b5de9c94cc1d979136ea439789b33\n\nbuild:\n  number: {{ build }}\n  # add build string so packages can depend on\n  # mpi or nompi variants explicitly:\n  # `pkg * mpi_mpich_*` for mpich\n  # `pkg * mpi_*` for any mpi\n  # `pkg * nompi_*` for no mpi\n\n  {% if mpi != 'nompi' %}\n  {% set mpi_prefix = \"mpi_\" + mpi %}\n  {% else %}\n  {% set mpi_prefix = \"nompi\" %}\n  {% endif %}\n  string: \"{{ mpi_prefix }}_h{{ PKG_HASH }}_{{ build }}\"\n\n  {% if mpi != 'nompi' %}\n  run_exports:\n    - {{ name }}*{{ mpi_prefix }}_*\n  {% endif %}\n\n  skip: true  # [win and (mpi != 'nompi')]\n  entry_points:\n    - fluidinfo = fluiddyn.util.info:main\n    - fluidnbstripout = fluiddoc.fluidnbstripout:main\n    - fluiddocset = fluiddoc.fluiddocset:main\n    - fluiddump = fluiddyn.io.dump:main\n    - fluidmat2py = fluiddyn.util.matlab2py:main\n    - fluidcluster-help = fluiddyn.clusters:print_help_scheduler\n  script: \"{{ PYTHON }} -m pip install .[full] --no-deps --ignore-installed -vv \"\n\nrequirements:\n  host:\n    - pip\n    - python >=3.6\n    - {{ mpi }}  # [mpi != 'nompi']\n    - mpi4py  # [mpi != 'nompi']\n  run:\n    - python >=3.6\n    - numpy\n    - psutil >=5.2.1\n    - six\n    - {{ mpi }}  # [mpi != 'nompi']\n    - mpi4py  # [mpi != 'nompi']\n    - h5py\n    - h5netcdf\n    - nbstripout\n    - scipy\n    - matplotlib\n    - opencv\n    - imageio\n    - sip\n    - scikit-image\n\ntest:\n  imports:\n    - fluiddoc\n    - fluiddyn\n    - fluiddyn.calcul\n    - fluiddyn.calcul.test\n    - fluiddyn.clusters\n    - fluiddyn.clusters.test\n    - fluiddyn.io\n    - fluiddyn.io.test\n    - fluiddyn.output\n    - fluiddyn.output.test\n    - fluiddyn.util\n    - fluiddyn.util.matlab2py\n    - fluiddyn.util.matlab2py.test\n    - fluiddyn.util.test\n  commands:\n    - fluidinfo --help\n    - fluidnbstripout --help\n    - fluiddocset --help\n    - fluiddump --help\n    - fluidmat2py --help\n    - fluidcluster-help --help\n\nabout:\n  home: https://bitbucket.org/fluiddyn/fluiddyn\n  license: CeCILL-B\n  license_file: LICENSE.txt \n  summary: Framework for studying fluid dynamics.\n  description: |\n    FluidDyn project is an ecosystem of packages for research and teaching in\n    fluid dynamics. The Python package fluiddyn contains basic utilities to\n    manage File I/O for some esoteric formats, publication quality figures, job\n    submission on clusters, MPI powerful classes to handle parameters, arrays,\n    series of files simplified interfaces to calculate FFT, spherical harmonics\n    and much more.\n  doc_url: https://fluiddyn.readthedocs.io  \n\nextra:\n  recipe-maintainers:\n    - CyrilleBonamy\n    - paugier\n    - ashwinvis  \n",
+ "raw_meta_yaml":"{% set name = \"fluiddyn\" %}\n{% set version = \"0.3.1\" %}\n{% set build = 3000 %}\n# ensure mpi is defined (needed for conda-smithy recipe-lint)\n{% set mpi = mpi or 'nompi' %}\n\n{% if mpi == 'nompi' %}\n# prioritize nompi variant via build number\n{% set build = build + 100 %}\n{% endif %}\n\npackage:\n  name: \"{{ name|lower }}\"\n  version: \"{{ version }}\"\n\nsource:\n  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz\n  sha256: 488dcc8cd1660fd6eed939defeb21250114b5de9c94cc1d979136ea439789b33\n\nbuild:\n  number: {{ build }}\n  # add build string so packages can depend on\n  # mpi or nompi variants explicitly:\n  # `pkg * mpi_mpich_*` for mpich\n  # `pkg * mpi_*` for any mpi\n  # `pkg * nompi_*` for no mpi\n\n  {% if mpi != 'nompi' %}\n  {% set mpi_prefix = \"mpi_\" + mpi %}\n  {% else %}\n  {% set mpi_prefix = \"nompi\" %}\n  {% endif %}\n  string: \"{{ mpi_prefix }}_h{{ PKG_HASH }}_{{ build }}\"\n\n  {% if mpi != 'nompi' %}\n  run_exports:\n    - {{ name }}*{{ mpi_prefix }}_*\n  {% endif %}\n\n  skip: true  # [win and (mpi != 'nompi')]\n  entry_points:\n    - fluidinfo = fluiddyn.util.info:main\n    - fluidnbstripout = fluiddoc.fluidnbstripout:main\n    - fluiddocset = fluiddoc.fluiddocset:main\n    - fluiddump = fluiddyn.io.dump:main\n    - fluidmat2py = fluiddyn.util.matlab2py:main\n    - fluidcluster-help = fluiddyn.clusters:print_help_scheduler\n  script: \"{{ PYTHON }} -m pip install .[full] --no-deps --ignore-installed -vv \"\n\nrequirements:\n  host:\n    - pip\n    - python >=3.6\n    - {{ mpi }}  # [mpi != 'nompi']\n    - mpi4py  # [mpi != 'nompi']\n  run:\n    - python >=3.6\n    - numpy\n    - psutil >=5.2.1\n    - six\n    - {{ mpi }}  # [mpi != 'nompi']\n    - mpi4py  # [mpi != 'nompi']\n    - h5py\n    - h5netcdf\n    - nbstripout\n    - scipy\n    - matplotlib\n#    - opencv\n    - imageio\n    - sip\n    - scikit-image\n\ntest:\n  imports:\n    - fluiddoc\n    - fluiddyn\n    - fluiddyn.calcul\n    - fluiddyn.calcul.test\n    - fluiddyn.clusters\n    - fluiddyn.clusters.test\n    - fluiddyn.io\n    - fluiddyn.io.test\n    - fluiddyn.output\n    - fluiddyn.output.test\n    - fluiddyn.util\n    - fluiddyn.util.matlab2py\n    - fluiddyn.util.matlab2py.test\n    - fluiddyn.util.test\n  commands:\n    - fluidinfo --help\n    - fluidnbstripout --help\n    - fluiddocset --help\n    - fluiddump --help\n    - fluidmat2py --help\n    - fluidcluster-help --help\n\nabout:\n  home: https://bitbucket.org/fluiddyn/fluiddyn\n  license: CeCILL-B\n  license_file: LICENSE.txt \n  summary: Framework for studying fluid dynamics.\n  description: |\n    FluidDyn project is an ecosystem of packages for research and teaching in\n    fluid dynamics. The Python package fluiddyn contains basic utilities to\n    manage File I/O for some esoteric formats, publication quality figures, job\n    submission on clusters, MPI powerful classes to handle parameters, arrays,\n    series of files simplified interfaces to calculate FFT, spherical harmonics\n    and much more.\n  doc_url: https://fluiddyn.readthedocs.io  \n\nextra:\n  recipe-maintainers:\n    - CyrilleBonamy\n    - paugier\n    - ashwinvis  \n",
  "req":{
   "__set__":true,
   "elements":[
@@ -231,7 +228,6 @@
    "nbstripout",
    "nompi",
    "numpy",
-   "opencv",
    "pip",
    "psutil",
    "python",
