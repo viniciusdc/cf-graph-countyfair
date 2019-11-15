@@ -831,6 +831,23 @@
     "migrator_version",
     "version"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/341582610.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"Version",
+    "migrator_version":0,
+    "version":"3.10.12"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "version"
+   ]
   }
  ],
  "bad":false,
@@ -986,12 +1003,12 @@
   }
  },
  "name":"uproot-base",
- "new_version":"3.10.11",
+ "new_version":"3.10.12",
  "outputs_names":[
   "uproot",
   "uproot-base"
  ],
- "pinning_version":"2019.11.01",
+ "pinning_version":"2019.11.14",
  "raw_meta_yaml":"{% set name = \"uproot\" %}\n{% set version = \"3.10.11\" %}\n\npackage:\n  name: {{ name }}-base\n  version: {{ version }}\n\nsource:\n  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz\n  sha256: 07fb6327522e38575f8521cac3d760e9905c9782d2b58e2e20f1c9e35822adb4\n\nbuild:\n  number: 0\n  script: \"{{ PYTHON }} -m pip install . --no-deps -vv\"\n\nrequirements:\n  host:\n    - python\n    - pip\n    - pytest-runner\n  run:\n    - python\n    - numpy >=1.13.1\n    - awkward >=0.12.0,<1.0\n    - uproot-methods >=0.7.0\n    - cachetools\n\ntest:\n  imports:\n    - {{ name }}\n\noutputs:\n  - name: {{ name }}-base\n\n  - name: {{ name }}\n    requirements:\n      host:\n        - python\n      run:\n        - python\n        - {{ pin_subpackage(name+'-base', exact=True) }}\n        - backports.lzma  # [py27]\n        - lz4\n        - python-xxhash\n        - requests\n        - xrootd  # [unix]\n    test:\n      imports:\n        - uproot\n\nabout:\n  home: https://github.com/scikit-hep/{{ name }}\n  license: BSD-3-Clause\n  license_family: BSD\n  license_file: LICENSE\n  summary: 'ROOT I/O in pure Python and Numpy.'\n  description: |\n    uproot (originally \u03bcproot, for \u201cmicro-Python ROOT\u201d) is a reader and a writer\n    of the ROOT file format using only Python and Numpy. Unlike the standard C++\n    ROOT implementation, uproot is only an I/O library, primarily intended to\n    stream data into machine learning libraries in Python. Unlike PyROOT and\n    root_numpy, uproot does not depend on C++ ROOT. Instead, it uses Numpy calls\n    to rapidly cast data blocks in the ROOT file as Numpy arrays.\n  dev_url: https://github.com/scikit-hep/{{ name }}\n  doc_url: https://{{ name }}.readthedocs.io/en/latest/\n\nextra:\n  recipe-maintainers:\n    - chrisburr\n    - jpivarski\n",
  "req":{
   "__set__":true,

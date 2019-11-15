@@ -158,6 +158,23 @@
     "migrator_version",
     "name"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/341583860.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"Version",
+    "migrator_version":0,
+    "version":"5.0.0"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "version"
+   ]
   }
  ],
  "bad":false,
@@ -337,8 +354,8 @@
   }
  },
  "name":"omniscidb-cpu",
- "new_version":"4.8.1",
- "pinning_version":"2019.11.13",
+ "new_version":"5.0.0",
+ "pinning_version":"2019.11.14",
  "raw_meta_yaml":"{% set name = \"omniscidb-cpu\" %}\n{% set version = \"4.8.1\" %}\n{% set sha256 = \"300cdbbaa9108879f7ec22d9cf6210ca2700a3ef99c356a5c00fbf3aeb3a4713\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  url: https://github.com/omnisci/omniscidb/archive/v{{ version }}.tar.gz\n  sha256: {{ sha256 }}\n\nbuild:\n  number: 0\n  skip: True  # [win]\n\nrequirements:\n  build:\n    # In OSX, we use clang++ from clangdev as a compiler\n    - {{ compiler('cxx') }}   # [not osx]\n    - {{ compiler('c') }}     # [not osx]\n    - boost-cpp 1.68.*        # to avoid cmake picking up boost-cpp 1.70+\n    - cmake 3.14.*\n    - make\n    - go\n    - maven\n  host:\n    - {{ compiler('cxx') }}    # [not osx]\n    - {{ compiler('c') }}      # [not osx]\n    - boost-cpp 1.68.*\n    - llvmdev\n    - clangdev\n    - double-conversion\n    - snappy\n    - gflags\n    - glog\n    - libarchive\n    - libkml\n    - libpng\n    - blosc\n    - libgdal >=2.3.*,<3\n    - arrow-cpp >=0.13.0\n    - thrift-cpp >=0.11.0\n    - ncurses\n    - flex\n    - bisonpp\n    - openssl\n    - librdkafka\n  run:\n    - boost-cpp 1.68.*\n    - arrow-cpp >=0.13.0\n    - snappy\n    - double-conversion\n    - libgdal >=2.3.*,<3\n    - glog\n    - gflags\n    - openjdk 8.*\n    - ncurses\n    - xz\n    - bzip2\n    - zlib\n    - librdkafka\n    # omnscidb UDF support calls clang++ in loadtime\n    - {{ compiler('cxx') }}   # [not osx]\n    - llvmdev\n    - clangdev\n\n\nabout:\n  home: https://www.omnisci.com/\n  license: Apache-2.0\n  license_family: Apache\n  license_file: LICENSE.md\n  summary: 'The OmniSci database'\n\n  description: |\n    OmniSciDB is an in-memory, column store, SQL relational database \n    that was designed from the ground up to run on GPUs.\n  doc_url: https://www.omnisci.com/docs/latest/\n  dev_url: https://github.com/omnisci/omniscidb\n\nextra:\n  recipe-maintainers:\n    - xmnlab\n    - pearu\n    - andrewseidl\n",
  "req":{
   "__set__":true,

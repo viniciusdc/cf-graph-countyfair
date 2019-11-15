@@ -52,6 +52,23 @@
     "migrator_version",
     "name"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/341584886.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"Version",
+    "migrator_version":0,
+    "version":"2.5.0"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "version"
+   ]
   }
  ],
  "bad":false,
@@ -187,8 +204,8 @@
   }
  },
  "name":"aws-parallelcluster",
- "new_version":"2.4.1",
- "pinning_version":"2019.11.01",
+ "new_version":"2.5.0",
+ "pinning_version":"2019.11.14",
  "raw_meta_yaml":"{% set name = \"aws-parallelcluster\" %}\n{% set version = \"2.4.1\" %}\n\npackage:\n  name: \"{{ name|lower }}\"\n  version: \"{{ version }}\"\n\nsource:\n  url: \"https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz\"\n  sha256: f419d22a5de81842a6662c27657ac80794027213e7fff42b7561983f0eace998\n  patches:\n    - 0001-removed-tests.patch\n\nbuild:\n  number: 0\n  entry_points:\n    - pcluster = pcluster.cli:main\n    - awsbqueues = awsbatch.awsbqueues:main\n    - awsbhosts = awsbatch.awsbhosts:main\n    - awsbstat = awsbatch.awsbstat:main\n    - awsbkill = awsbatch.awsbkill:main\n    - awsbsub = awsbatch.awsbsub:main\n    - awsbout = awsbatch.awsbout:main\n  script: \"{{ PYTHON }} -m pip install . --no-deps --ignore-installed -vv \"\n\nrequirements:\n  host:\n    - pip\n    - python\n  run:\n    - python\n    - setuptools\n    - boto3 >=1.9.54\n    - future >=0.16.0,<=0.17.1\n    - tabulate >=0.8.2,<=0.8.3\n    - configparser >=3.5.0,<=3.5.3  # [py2k]\n\ntest:\n  imports:\n    - awsbatch\n    - pcluster\n  commands:\n    - pcluster --help\n    - awsbqueues --help\n    - awsbhosts --help\n    - awsbstat --help\n    - awsbkill --help\n    - awsbsub --help\n    - awsbout --help\n\nabout:\n  home: \"https://github.com/aws/aws-parallelcluster\"\n  license: \"Apache-2.0\"\n  license_family: \"APACHE\"\n  license_file: '{{ environ[\"RECIPE_DIR\"] }}/LICENSE.txt'\n  summary: \"AWS ParallelCluster is an AWS supported Open Source cluster management tool to deploy and manage HPC clusters in the AWS cloud.\"\n  doc_url: \"https://aws-parallelcluster.readthedocs.io/en/v{{ version }}/\"\n  dev_url: \"https://github.com/aws/aws-parallelcluster\"\n\nextra:\n  recipe-maintainers:\n    - notestaff\n    - sean-smith\n    - lukeseawalker\n",
  "req":{
   "__set__":true,
@@ -201,7 +218,7 @@
    "tabulate"
   ]
  },
- "smithy_version":"3.6.1",
+ "smithy_version":"3.6.2",
  "url":"https://pypi.io/packages/source/a/aws-parallelcluster/aws-parallelcluster-2.4.1.tar.gz",
  "version":"2.4.1"
 }
