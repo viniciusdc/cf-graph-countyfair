@@ -45,12 +45,13 @@
    "home":"https://github.com/matplotlib/pytest-mpl",
    "license":"BSD 2-Clause",
    "license_family":"BSD",
+   "license_file":"LICENSE",
    "summary":"pytest plugin to help with testing figures output from Matplotlib"
   },
   "build":{
    "noarch":"python",
    "number":"0",
-   "script":"python setup.py install --single-version-externally-managed --record record.txt"
+   "script":" -m pip install . --no-deps -vv"
   },
   "extra":{
    "recipe-maintainers":[
@@ -64,57 +65,62 @@
   },
   "package":{
    "name":"pytest-mpl",
-   "version":"0.10"
+   "version":"0.11"
   },
   "requirements":{
-   "build":[
+   "host":[
     "python",
+    "pip",
     "setuptools",
     "python",
+    "pip",
     "setuptools",
     "python",
+    "pip",
     "setuptools"
    ],
    "run":[
     "python",
-    "setuptools",
     "pytest",
     "matplotlib",
     "nose",
+    "pillow",
     "python",
-    "setuptools",
     "pytest",
     "matplotlib",
     "nose",
+    "pillow",
     "python",
-    "setuptools",
     "pytest",
     "matplotlib",
-    "nose"
+    "nose",
+    "pillow"
    ]
   },
   "source":{
-   "fn":"pytest-mpl-0.10.tar.gz",
-   "sha256":"7006e63bf1ca9c50bea3d189c0f862751a16ce40bb373197b218f57af5b837c0",
-   "url":"https://pypi.io/packages/source/p/pytest-mpl/pytest-mpl-0.10.tar.gz"
+   "fn":"pytest-mpl-0.11.tar.gz",
+   "sha256":"26c5a47a8fdbc04652f18b65c587da642c6cc0354680ee44b16c161d9800a2ce",
+   "url":"https://pypi.io/packages/source/p/pytest-mpl/pytest-mpl-0.11.tar.gz"
   },
   "test":{
    "commands":[
-    "py.test --traceconfig | grep pytest-mpl-0.10",
-    "py.test --traceconfig | grep pytest-mpl-0.10",
-    "py.test --traceconfig | grep pytest-mpl-0.10"
+    "py.test --traceconfig | grep pytest-mpl-0.11",
+    "py.test --traceconfig | grep pytest-mpl-0.11",
+    "py.test --traceconfig | grep pytest-mpl-0.11"
    ]
   }
  },
  "name":"pytest-mpl",
  "new_version":"0.11",
  "pinning_version":"2019.11.14",
- "raw_meta_yaml":"{% set name = \"pytest-mpl\" %}\n{% set version = \"0.10\" %}\n{% set sha256 = \"7006e63bf1ca9c50bea3d189c0f862751a16ce40bb373197b218f57af5b837c0\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  fn: {{name}}-{{version}}.tar.gz\n  url: https://pypi.io/packages/source/{{name[0]}}/{{name}}/{{name}}-{{version}}.tar.gz\n  sha256: {{sha256}}\n\nbuild:\n    number: 0\n    noarch: python\n    script: python setup.py install --single-version-externally-managed --record record.txt\n\nrequirements:\n  build:\n    - python\n    - setuptools\n\n  run:\n    - python\n    - setuptools\n    - pytest\n    - matplotlib\n    - nose\n\ntest:\n  commands:\n    - \"py.test --traceconfig | grep pytest-mpl-{{version}}\"\n\nabout:\n  home: https://github.com/matplotlib/pytest-mpl\n  license: BSD 2-Clause\n  license_family: BSD\n  summary: 'pytest plugin to help with testing figures output from Matplotlib'\n  dev_url: https://github.com/matplotlib/pytest-mpl\n\nextra:\n  recipe-maintainers:\n    - dopplershift\n    - astrofrog-conda-forge\n",
+ "raw_meta_yaml":"{% set name = \"pytest-mpl\" %}\n{% set version = \"0.11\" %}\n{% set sha256 = \"26c5a47a8fdbc04652f18b65c587da642c6cc0354680ee44b16c161d9800a2ce\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  fn: {{name}}-{{version}}.tar.gz\n  url: https://pypi.io/packages/source/{{name[0]}}/{{name}}/{{name}}-{{version}}.tar.gz\n  sha256: {{sha256}}\n\nbuild:\n    number: 0\n    noarch: python\n    script: \"{{ PYTHON }} -m pip install . --no-deps -vv\"\n\nrequirements:\n  host:\n    - python\n    - pip\n    - setuptools\n\n  run:\n    - python\n    - pytest\n    - matplotlib\n    - nose\n    - pillow\n\ntest:\n  commands:\n    - \"py.test --traceconfig | grep pytest-mpl-{{version}}\"\n\nabout:\n  home: https://github.com/matplotlib/pytest-mpl\n  license: BSD 2-Clause\n  license_file: LICENSE\n  license_family: BSD\n  summary: 'pytest plugin to help with testing figures output from Matplotlib'\n  dev_url: https://github.com/matplotlib/pytest-mpl\n\nextra:\n  recipe-maintainers:\n    - dopplershift\n    - astrofrog-conda-forge\n",
  "req":{
   "__set__":true,
   "elements":[
    "matplotlib",
    "nose",
+   "pillow",
+   "pip",
    "pytest",
    "python",
    "setuptools"
@@ -122,5 +128,5 @@
  },
  "smithy_version":"3.6.2",
  "url":"https://pypi.io/packages/source/p/pytest-mpl/pytest-mpl-0.10.tar.gz",
- "version":"0.10"
+ "version":"0.11"
 }
