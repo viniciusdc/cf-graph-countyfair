@@ -79,6 +79,23 @@
     "migrator_version",
     "name"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/341769300.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"Version",
+    "migrator_version":0,
+    "version":"0.3.3.7.0"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "version"
+   ]
   }
  ],
  "bad":false,
@@ -202,8 +219,8 @@
   }
  },
  "name":"r-rcppeigen",
- "new_version":"0.3.3.5.0",
- "pinning_version":"2019.07.15",
+ "new_version":"0.3.3.7.0",
+ "pinning_version":"2019.11.14",
  "raw_meta_yaml":"{% set version = \"0.3.3.5.0\" %}\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-rcppeigen\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  fn: RcppEigen_{{ version }}.tar.gz\n  url:\n    - {{ cran_mirror }}/src/contrib/RcppEigen_{{ version }}.tar.gz\n    - {{ cran_mirror }}/src/contrib/Archive/RcppEigen/RcppEigen_{{ version }}.tar.gz\n  sha256: e5c6af17770c5f57b7cf2fba04ad1a519901b446e8138bfff221952458207f05\n\nbuild:\n  merge_build_host: True  # [win]\n  number: 1\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - {{ compiler('c') }}        # [not win]\n    - {{ compiler('cxx') }}      # [not win]\n    - {{ compiler('m2w64_c') }}        # [win]\n    - {{ compiler('m2w64_cxx') }}        # [win]\n    - {{posix}}filesystem        # [win]\n    - {{posix}}make\n    - {{posix}}sed               # [win]\n    - {{posix}}coreutils         # [win]\n    - {{posix}}zip               # [win]\n  host:\n    - r-base\n    - r-matrix >=1.1_0\n    - r-rcpp >=0.11.0\n  run:\n    - r-base\n    - {{native}}gcc-libs         # [win]\n    - r-matrix >=1.1_0\n    - r-rcpp >=0.11.0\n\ntest:\n  commands:\n    - $R -e \"library('RcppEigen')\"           # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('RcppEigen')\\\"\"  # [win]\n\nabout:\n  home: http://dirk.eddelbuettel.com/code/rcpp.eigen.html\n  license: GPL (>= 2)\n  summary: 'R and ''Eigen'' integration using ''Rcpp''. ''Eigen'' is a C++ template library for\n    linear algebra: matrices, vectors, numerical solvers and related algorithms.  It\n    supports dense and sparse matrices on integer, floating point and complex numbers,\n    decompositions of such matrices, and solutions of linear systems. Its performance\n    on many algorithms is comparable with some of the best implementations based on\n    ''Lapack'' and level-3 ''BLAS''. The ''RcppEigen'' package includes the header files\n    from the ''Eigen'' C++ template library (currently version 3.3.4). Thus users do\n    not need to install ''Eigen'' itself in order to use ''RcppEigen''. Since version\n    3.1.1, ''Eigen'' is licensed under the Mozilla Public License (version 2); earlier\n    version were licensed under the GNU LGPL version 3 or later. ''RcppEigen'' (the\n    ''Rcpp'' bindings/bridge to ''Eigen'') is licensed under the GNU GPL version 2 or\n    later, as is the rest of ''Rcpp''.'\n  license_family: GPL3\n  license_file: '{{ environ[\"PREFIX\"] }}/lib/R/share/licenses/GPL-3'\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n    - johanneskoester\n    - bgruening\n    - daler\n    - jdblischak\n    - cbrueffer\n    - dbast\n",
  "req":{
   "__set__":true,
@@ -223,7 +240,7 @@
    "zip"
   ]
  },
- "smithy_version":"3.4.1",
+ "smithy_version":"3.6.2",
  "url":[
   "https://cran.r-project.org/src/contrib/RcppEigen_0.3.3.5.0.tar.gz",
   "https://cran.r-project.org/src/contrib/Archive/RcppEigen/RcppEigen_0.3.3.5.0.tar.gz",
