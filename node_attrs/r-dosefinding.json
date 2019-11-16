@@ -35,7 +35,22 @@
    ]
   }
  ],
- "bad":false,
+ "bad":{
+  "exception":"local variable 'hash' referenced before assignment",
+  "traceback":[
+   "Traceback (most recent call last):",
+   "  File \"/root/repo/cf-scripts/conda_forge_tick/auto_tick.xsh\", line 693, in main",
+   "    hash_type=attrs.get('hash_type', 'sha256'))",
+   "  File \"/root/repo/cf-scripts/conda_forge_tick/auto_tick.xsh\", line 98, in run",
+   "    migrate_return = migrator.migrate(recipe_dir, attrs, **kwargs)",
+   "  File \"/root/repo/cf-scripts/conda_forge_tick/migrators.xsh\", line 467, in migrate",
+   "    new_patterns = self.get_hash_patterns('meta.yaml', urls, hash_type)",
+   "  File \"/root/repo/cf-scripts/conda_forge_tick/migrators.xsh\", line 394, in get_hash_patterns",
+   "    n = '{}: {}'.format(hash_type, hash)",
+   "UnboundLocalError: local variable 'hash' referenced before assignment",
+   ""
+  ]
+ },
  "conda-forge.yml":{
   "compiler_stack":"comp7",
   "max_py_ver":"37",
@@ -153,7 +168,7 @@
   }
  },
  "name":"r-dosefinding",
- "new_version":"0.9_16",
+ "new_version":"0.9_17",
  "pinning_version":"2019.07.15",
  "raw_meta_yaml":"{% set version = '0.9-16' %}\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-dosefinding\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  fn: DoseFinding_{{ version }}.tar.gz\n  url:\n    - {{ cran_mirror }}/src/contrib/DoseFinding_{{ version }}.tar.gz\n    - {{ cran_mirror }}/src/contrib/Archive/DoseFinding/DoseFinding_{{ version }}.tar.gz\n  sha256: 3f211e022d25bcdeb4532743c293fc460ccb46456f62614daf2e56e268499959\n\nbuild:\n  merge_build_host: True  # [win]\n  number: 1002\n  skip: true  # [win32]\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - {{ compiler('c') }}        # [not win]\n    - {{ compiler('m2w64_c') }}        # [win]\n    - {{posix}}filesystem        # [win]\n    - {{posix}}make\n    - {{posix}}sed               # [win]\n    - {{posix}}coreutils         # [win]\n    - {{posix}}zip               # [win]\n  host:\n    - r-base\n    - r-lattice\n    - r-mvtnorm\n  run:\n    - r-base\n    - {{native}}gcc-libs         # [win]\n    - r-lattice\n    - r-mvtnorm\n\ntest:\n  commands:\n    - $R -e \"library('DoseFinding')\"           # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('DoseFinding')\\\"\"  # [win]\n\nabout:\n  home: https://CRAN.R-project.org/package=DoseFinding\n  license: GPL-3\n  summary: 'The DoseFinding package provides functions for the design and analysis of dose-finding\n    experiments (with focus on pharmaceutical Phase II clinical trials). It provides\n    functions for: multiple contrast tests, fitting non-linear dose-response models\n    (using Bayesian and non-Bayesian estimation), calculating optimal designs and an\n    implementation of the MCPMod methodology.'\n  license_family: GPL3\n  license_file: '{{ environ[\"PREFIX\"] }}/lib/R/share/licenses/GPL-3'\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n    - johanneskoester\n    - bgruening\n    - daler\n    - jdblischak\n    - cbrueffer\n    - dbast\n",
  "req":{
