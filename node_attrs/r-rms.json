@@ -81,7 +81,22 @@
    ]
   }
  ],
- "bad":false,
+ "bad":{
+  "exception":"local variable 'hash' referenced before assignment",
+  "traceback":[
+   "Traceback (most recent call last):",
+   "  File \"/root/repo/cf-scripts/conda_forge_tick/auto_tick.xsh\", line 693, in main",
+   "    hash_type=attrs.get('hash_type', 'sha256'))",
+   "  File \"/root/repo/cf-scripts/conda_forge_tick/auto_tick.xsh\", line 98, in run",
+   "    migrate_return = migrator.migrate(recipe_dir, attrs, **kwargs)",
+   "  File \"/root/repo/cf-scripts/conda_forge_tick/migrators.xsh\", line 467, in migrate",
+   "    new_patterns = self.get_hash_patterns('meta.yaml', urls, hash_type)",
+   "  File \"/root/repo/cf-scripts/conda_forge_tick/migrators.xsh\", line 394, in get_hash_patterns",
+   "    n = '{}: {}'.format(hash_type, hash)",
+   "UnboundLocalError: local variable 'hash' referenced before assignment",
+   ""
+  ]
+ },
  "conda-forge.yml":{
   "compiler_stack":"comp7",
   "max_py_ver":"37",
@@ -243,7 +258,7 @@
   }
  },
  "name":"r-rms",
- "new_version":"5.1_3.1",
+ "new_version":"5.1_4",
  "pinning_version":"2019.08.19",
  "raw_meta_yaml":"{% set version = '5.1-3.1' %}\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-rms\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  url:\n    - {{ cran_mirror }}/src/contrib/rms_{{ version }}.tar.gz\n    - {{ cran_mirror }}/src/contrib/Archive/rms/rms_{{ version }}.tar.gz\n  sha256: 0946d9547a4e3ff020a61ab3fce38f88aa9545729683e2bfefeb960edec82b37\n\nbuild:\n  merge_build_host: True  # [win]\n  number: 2\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - {{ compiler('c') }}              # [not win]\n    - {{ compiler('m2w64_c') }}        # [win]\n    - {{ compiler('fortran') }}        # [not win]\n    - {{ compiler('m2w64_fortran') }}  # [win]\n    - {{posix}}filesystem        # [win]\n    - {{posix}}make\n    - {{posix}}sed               # [win]\n    - {{posix}}coreutils         # [win]\n    - {{posix}}zip               # [win]\n  host:\n    - r-base\n    - r-hmisc >=4.1_1\n    - r-sparsem\n    - r-ggplot2 >=2.2\n    - r-htmltable >=1.11.0\n    - r-htmltools\n    - r-lattice\n    - r-multcomp\n    - r-nlme >=3.1_123\n    - r-polspline\n    - r-quantreg\n    - r-rpart\n    - r-survival >=2.40_1\n  run:\n    - r-base\n    - {{native}}gcc-libs         # [win]\n    - r-hmisc >=4.1_1\n    - r-sparsem\n    - r-ggplot2 >=2.2\n    - r-htmltable >=1.11.0\n    - r-htmltools\n    - r-lattice\n    - r-multcomp\n    - r-nlme >=3.1_123\n    - r-polspline\n    - r-quantreg\n    - r-rpart\n    - r-survival >=2.40_1\n\ntest:\n  commands:\n    - $R -e \"library('rms')\"           # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('rms')\\\"\"  # [win]\n\nabout:\n  home: http://biostat.mc.vanderbilt.edu/rms\n  license: GPL (>= 2)\n  summary: \"Regression modeling, testing, estimation, validation, graphics, prediction, and typesetting\n    by storing enhanced model design attributes in the fit.  'rms' is a collection of\n    functions that assist with and streamline modeling.  It also contains functions\n    for binary and ordinal logistic regression models, ordinal models for continuous\n    Y with a variety of distribution families, and the Buckley-James multiple regression\n    model for right-censored responses, and implements penalized maximum likelihood\n    estimation for logistic and ordinary linear models.  'rms' works with almost any\n    regression model, but it was especially written to work with binary or ordinal regression\n    models, Cox regression, accelerated failure time models, ordinary linear models,\\tthe\n    Buckley-James model, generalized least squares for serially or spatially correlated\n    observations, generalized linear models, and quantile regression.\"\n  license_family: GPL3\n  license_file: '{{ environ[\"PREFIX\"] }}/lib/R/share/licenses/GPL-2'\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n\n# Package: rms\n# Version: 5.1-3.1\n# Date: 2019-01-27\n# Title: Regression Modeling Strategies\n# Author: Frank E Harrell Jr <f.harrell@vanderbilt.edu>\n# Maintainer: Frank E Harrell Jr <f.harrell@vanderbilt.edu>\n# Depends: Hmisc (>= 4.1-1), survival (>= 2.40-1), lattice, ggplot2 (>= 2.2), SparseM\n# Imports: methods, quantreg, rpart, nlme (>= 3.1-123), polspline, multcomp, htmlTable (>= 1.11.0), htmltools\n# Suggests: boot, tcltk, plotly (>= 4.5.6)\n# Description: Regression modeling, testing, estimation, validation, graphics, prediction, and typesetting by storing enhanced model design attributes in the fit.  'rms' is a collection of functions that assist with and streamline modeling.  It also contains functions for binary and ordinal logistic regression models, ordinal models for continuous Y with a variety of distribution families, and the Buckley-James multiple regression model for right-censored responses, and implements penalized maximum likelihood estimation for logistic and ordinary linear models.  'rms' works with almost any regression model, but it was especially written to work with binary or ordinal regression models, Cox regression, accelerated failure time models, ordinary linear models,\tthe Buckley-James model, generalized least squares for serially or spatially correlated observations, generalized linear models, and quantile regression.\n# License: GPL (>= 2)\n# URL: http://biostat.mc.vanderbilt.edu/rms\n# LazyLoad: yes\n# NeedsCompilation: yes\n# Packaged: 2019-04-21 11:25:24 UTC; ripley\n# Repository: CRAN\n# Date/Publication: 2019-04-22 06:59:10 UTC\n",
  "req":{
