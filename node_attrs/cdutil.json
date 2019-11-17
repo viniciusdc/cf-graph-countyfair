@@ -76,17 +76,29 @@
   },
   "build":{
    "noarch":"python",
-   "number":"0",
-   "script":"python setup.py install"
+   "number":"1",
+   "script":" -m pip install . --no-deps -vv"
   },
   "extra":{
    "recipe-maintainers":[
     "dnadeau4",
     "doutriaux1",
+    "xylar",
+    "downiec",
+    "muryanto1",
+    "jasonb5",
     "dnadeau4",
     "doutriaux1",
+    "xylar",
+    "downiec",
+    "muryanto1",
+    "jasonb5",
     "dnadeau4",
-    "doutriaux1"
+    "doutriaux1",
+    "xylar",
+    "downiec",
+    "muryanto1",
+    "jasonb5"
    ]
   },
   "package":{
@@ -94,14 +106,17 @@
    "version":"8.2"
   },
   "requirements":{
-   "build":[
+   "host":[
     "python",
+    "pip",
     "setuptools",
     "cdat_info >=8.1",
     "python",
+    "pip",
     "setuptools",
     "cdat_info >=8.1",
     "python",
+    "pip",
     "setuptools",
     "cdat_info >=8.1"
    ],
@@ -135,13 +150,14 @@
  "name":"cdutil",
  "new_version":"8.2",
  "pinning_version":"2019.08.19",
- "raw_meta_yaml":"{% set name = \"cdutil\" %}\n{% set version = \"8.2\" %}\n\npackage:\n    name: cdutil\n    version: {{ version }}\n\nsource:\n    url: https://github.com/CDAT/cdutil/archive/v{{ version }}.tar.gz\n    sha256: 9c28ddce4cf4e3a84b1e8ca52198e07630c80a9353e951d6253971f115346c28\n\n\nbuild:\n  number: 0\n  noarch: python\n  script: python setup.py install\n\nrequirements:\n  build:\n    - python\n    - setuptools\n    - cdat_info >=8.1\n  run:\n    - python\n    - cdms2\n    - genutil >=8.1.1\n    - cdat_info >=8.1\n\ntest:\n  commands:\n    - export CDAT_ANONYMOUS_LOG=false && python -c \"import cdutil\"\n\nabout:\n    home:  http://github.com/CDAT/cdutil\n    summary: A set of tools to manipulate climate data\n    license: BSD\n    license_file: bsd-3-clause.txt\n\nextra:\n  recipe-maintainers:\n    - dnadeau4\n    - doutriaux1\n",
+ "raw_meta_yaml":"{% set name = \"cdutil\" %}\n{% set version = \"8.2\" %}\n\npackage:\n    name: cdutil\n    version: {{ version }}\n\nsource:\n    url: https://github.com/CDAT/cdutil/archive/v{{ version }}.tar.gz\n    sha256: 9c28ddce4cf4e3a84b1e8ca52198e07630c80a9353e951d6253971f115346c28\n\n\nbuild:\n  number: 1\n  noarch: python\n  script: \"{{ PYTHON }} -m pip install . --no-deps -vv\"\n\nrequirements:\n  host:\n    - python\n    - pip\n    - setuptools\n    - cdat_info >=8.1\n  run:\n    - python\n    - cdms2\n    - genutil >=8.1.1\n    - cdat_info >=8.1\n\ntest:\n  commands:\n    - export CDAT_ANONYMOUS_LOG=false && python -c \"import cdutil\"\n\nabout:\n    home: http://github.com/CDAT/cdutil\n    summary: A set of tools to manipulate climate data\n    license: BSD\n    license_file: bsd-3-clause.txt\n\nextra:\n  recipe-maintainers:\n    - dnadeau4\n    - doutriaux1\n    - xylar\n    - downiec\n    - muryanto1\n    - jasonb5\n",
  "req":{
   "__set__":true,
   "elements":[
    "cdat_info",
    "cdms2",
    "genutil",
+   "pip",
    "python",
    "setuptools"
   ]

@@ -364,10 +364,54 @@
     "migrator_version",
     "version"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/341815379.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"ArchRebuild",
+    "migrator_version":1,
+    "name":"aarch64 and ppc64le addition"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "name"
+   ]
+  },
+  {
+   "PR":{
+    "id":"1e3b797a-698c-4dc0-9f7c-99cd817bccf7",
+    "merged_at":"never issued",
+    "state":"closed"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"MigrationYaml",
+    "migrator_object_version":1,
+    "migrator_version":0,
+    "name":"python38"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_object_version",
+    "migrator_version",
+    "name"
+   ]
   }
  ],
  "bad":false,
- "conda-forge.yml":{},
+ "conda-forge.yml":{
+  "provider":{
+   "linux_aarch64":"default",
+   "linux_ppc64le":"default",
+   "win:azure":null
+  }
+ },
  "feedstock_name":"tqdm",
  "hash_type":"sha256",
  "meta_yaml":{
@@ -386,8 +430,7 @@
     "tqdm = tqdm._main:main",
     "tqdm = tqdm._main:main"
    ],
-   "noarch":"python",
-   "number":"0",
+   "number":"1",
    "script":"-m pip install . --no-deps -vv"
   },
   "extra":{
@@ -444,8 +487,8 @@
  },
  "name":"tqdm",
  "new_version":"4.38.0",
- "pinning_version":"2019.11.01",
- "raw_meta_yaml":"{% set version = \"4.38.0\" %}\n\npackage:\n  name: tqdm\n  version: {{ version }}\n\nsource:\n  url: https://pypi.io/packages/source/t/tqdm/tqdm-{{ version }}.tar.gz\n  sha256: c1d677f3a85fa291b34bdf8f770f877119b9754b32673699653556f85e2c2f13\n\nbuild:\n  noarch: python\n  entry_points:\n    - tqdm = tqdm._main:main\n  number: 0\n  script: {{ PYTHON }} -m pip install . --no-deps -vv\n\nrequirements:\n  host:\n    - python\n    - pip\n  run:\n    - python\n\ntest:\n  imports:\n    - tqdm\n\n  commands:\n    - tqdm --help\n    - tqdm -v\n\nabout:\n  home: https://pypi.python.org/pypi/tqdm\n  license: MPLv2.0, MIT\n  license_family: MIT\n  license_file: LICENCE\n  summary: 'A Fast, Extensible Progress Meter'\n  dev_url: https://github.com/tqdm/tqdm\n  doc_url: https://github.com/tqdm/tqdm\n\nextra:\n  recipe-maintainers:\n    - casperdcl\n    - pmlandwehr\n    - ericdill\n",
+ "pinning_version":"2019.11.14",
+ "raw_meta_yaml":"{% set version = \"4.38.0\" %}\n\npackage:\n  name: tqdm\n  version: {{ version }}\n\nsource:\n  url: https://pypi.io/packages/source/t/tqdm/tqdm-{{ version }}.tar.gz\n  sha256: c1d677f3a85fa291b34bdf8f770f877119b9754b32673699653556f85e2c2f13\n\nbuild:\n  # This package can be made noarch again once \n  # conda-standalone is built for aarch64\n  # https://github.com/conda-forge/miniforge/pull/2\n  # noarch: python\n  entry_points:\n    - tqdm = tqdm._main:main\n  number: 1\n  script: {{ PYTHON }} -m pip install . --no-deps -vv\n\nrequirements:\n  host:\n    - python\n    - pip\n  run:\n    - python\n\ntest:\n  imports:\n    - tqdm\n\n  commands:\n    - tqdm --help\n    - tqdm -v\n\nabout:\n  home: https://pypi.python.org/pypi/tqdm\n  license: MPLv2.0, MIT\n  license_family: MIT\n  license_file: LICENCE\n  summary: 'A Fast, Extensible Progress Meter'\n  dev_url: https://github.com/tqdm/tqdm\n  doc_url: https://github.com/tqdm/tqdm\n\nextra:\n  recipe-maintainers:\n    - casperdcl\n    - pmlandwehr\n    - ericdill\n",
  "req":{
   "__set__":true,
   "elements":[
