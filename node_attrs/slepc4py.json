@@ -50,6 +50,27 @@
     "migrator_version",
     "name"
    ]
+  },
+  {
+   "PR":{
+    "id":"6131d67f-8e08-4e52-92a8-0c7659e3f693",
+    "merged_at":"never issued",
+    "state":"closed"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"MigrationYaml",
+    "migrator_object_version":1,
+    "migrator_version":0,
+    "name":"petsc-3.12"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_object_version",
+    "migrator_version",
+    "name"
+   ]
   }
  ],
  "bad":false,
@@ -152,7 +173,7 @@
  },
  "name":"slepc4py",
  "new_version":false,
- "pinning_version":"2019.11.01",
+ "pinning_version":"2019.11.14",
  "raw_meta_yaml":"\n{% set name = 'slepc4py' %}\n{% set version = '3.12.0' %}\n{% set sha256 = '6310a641ebe4b02a547a9f8a9a3c72d44c9fb05b7a5c0c3a9bf6e6a3f1ff07ce' %}\n\n{% set version_xy = \".\".join(version.split(\".\")[:2]) + \".*\" %}\n\npackage:\n  name: {{ name }}\n  version: {{version}}\n\nsource:\n  fn: slepc4py-{{version}}.tar.gz\n  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz\n  sha256: {{sha256}}\n\nbuild:\n  number: 1\n  script: PETSC_DIR=$PREFIX SLEPC_DIR=$PREFIX pip -v install --no-deps .\n  skip: true  # [win]\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n  host:\n    - python\n    - pip\n    - numpy\n    - {{ mpi }}\n    - petsc {{ version_xy }}\n    - slepc {{ version_xy }}\n    - petsc4py {{ version_xy }}\n  run:\n    - python\n    - {{ pin_compatible('numpy') }}\n    - {{ mpi }}\n    - petsc {{ version_xy }}\n    - slepc {{ version_xy }}\n    - petsc4py {{ version_xy }}\n  run_constrained:\n    - mpi4py >=3.0.1\n\nabout:\n  home: https://bitbucket.org/slepc/slepc4py\n  summary: Python bindings for SLEPc\n  license: BSD 2-Clause\n  license_file: LICENSE.rst\n\nextra:\n  recipe-maintainers:\n    - dalcinl\n    - joseeroman\n    - minrk\n",
  "req":{
   "__set__":true,
