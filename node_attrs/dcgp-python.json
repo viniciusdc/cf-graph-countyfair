@@ -33,6 +33,23 @@
     "migrator_version",
     "version"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/341904085.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"Version",
+    "migrator_version":0,
+    "version":"1.4.2"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "version"
+   ]
   }
  ],
  "bad":false,
@@ -153,8 +170,8 @@
   }
  },
  "name":"dcgp-python",
- "new_version":"1.4.1",
- "pinning_version":"2019.11.13",
+ "new_version":"1.4.2",
+ "pinning_version":"2019.11.14",
  "raw_meta_yaml":"{% set version = \"1.4.1\" %}\n\npackage:\n  name: dcgp-python\n  version: {{ version }}\n\nsource:\n  url: https://github.com/darioizzo/dcgp/archive/v{{ version }}.tar.gz\n  sha256: b9ba2a55e8585b1f2e4255e7b593963017413024ab59acf018dbf5c962af48c1\n  patches:\n    - tokens_patch.diff  # [win]\n\nbuild:\n  number: 0\n  skip: true  # [(win and py<35) or win32]\n\nrequirements:\n  build:\n    - cmake\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n    - clang      # [win]\n    - ninja      # [win]\n  host:\n    - boost\n    - boost-cpp\n    - eigen\n    - audi\n    - pagmo\n    - pygmo\n    - tbb-devel\n    - obake-devel\n    - symengine\n    - python\n    - numpy\n    - ipopt  # [unix]\n    - gmp    # [unix]\n    - mpir   # [win]\n  run:\n    - boost\n    - pyaudi\n    - pagmo\n    - pygmo\n    - {{ pin_compatible(\"symengine\", max_pin=\"x.x\") }}\n    - python\n    - {{ pin_compatible('numpy') }}\n    - ipopt  # [unix]\n    - gmp    # [unix]\n    - mpir   # [win]\n\nabout:\n  home: http://darioizzo.github.io/dcgp/\n  license: GPL v3 and LGPL v3\n  license_file: LICENSE\n  summary: 'Implementation of the differential CGP (Cartesian Genetic Programming)'\n\nextra:\n  recipe-maintainers:\n    - bluescarni\n    - darioizzo\n",
  "req":{
   "__set__":true,
