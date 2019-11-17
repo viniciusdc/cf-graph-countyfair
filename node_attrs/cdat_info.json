@@ -51,8 +51,8 @@
   },
   "build":{
    "noarch":"python",
-   "number":"4",
-   "script":" -m pip install . --no-deps -vv"
+   "number":"5",
+   "script":"python setup.py install"
   },
   "extra":{
    "recipe-maintainers":[
@@ -84,13 +84,10 @@
    "host":[
     "python",
     "setuptools",
-    "pip",
     "python",
     "setuptools",
-    "pip",
     "python",
-    "setuptools",
-    "pip"
+    "setuptools"
    ],
    "run":[
     "python",
@@ -112,11 +109,6 @@
    "url":"https://github.com/CDAT/cdat_info/archive/v8.2.tar.gz"
   },
   "test":{
-   "commands":[
-    "test -f $PREFIX/share/cdat/cdat_runtests.json",
-    "test -f $PREFIX/share/cdat/cdat_runtests.json",
-    "test -f $PREFIX/share/cdat/cdat_runtests.json"
-   ],
    "imports":[
     "cdat_info",
     "cdat_info",
@@ -127,13 +119,12 @@
  "name":"cdat_info",
  "new_version":"8.2",
  "pinning_version":"2018.10.08",
- "raw_meta_yaml":"{% set version = \"8.2\" %}\n{% set actual_version = \"8.2\" %}\n\npackage:\n  name: cdat_info\n  version: {{ version }}\n\nsource:\n    url: https://github.com/CDAT/cdat_info/archive/v{{ actual_version }}.tar.gz\n    sha256: 2bcac2498a9e892793a9461e96f2736adb41500e0e371ea1f0a5bb9b659d686a\n\nbuild:\n  number: 4\n  noarch: python\n  script: \"{{ PYTHON }} -m pip install . --no-deps -vv\"\n\nrequirements:\n  host:\n    - python\n    - setuptools\n    - pip\n  run:\n    - python\n    - requests\n    - nbformat\n    - openssl >1.1\n\ntest:\n  imports:\n    - cdat_info\n  commands:\n    - test -f $PREFIX/share/cdat/cdat_runtests.json\n\nabout:\n  home:  http://cdat.llnl.gov\n  license: BSD\n  license_file: bsd-3-clause.txt\n  summary: 'Climate Data Analysis Tools'\n  description: |                                                                                                                                             \n    is a powerful and complete front-end to a rich set of visual-data \n    exploration and analysis capabilities well suited for climate-data \n    analysis problems.\n  dev_url: http://github.com/CDAT/cdat_info\n\nextra:\n  recipe-maintainers:\n    - dnadeau4\n    - doutriaux1\n    - muryanto1\n    - downiec\n    - jasonb5\n    - xylar\n",
+ "raw_meta_yaml":"{% set version = \"8.2\" %}\n{% set actual_version = \"8.2\" %}\n\npackage:\n  name: cdat_info\n  version: {{ version }}\n\nsource:\n    url: https://github.com/CDAT/cdat_info/archive/v{{ actual_version }}.tar.gz\n    sha256: 2bcac2498a9e892793a9461e96f2736adb41500e0e371ea1f0a5bb9b659d686a\n\nbuild:\n  number: 5\n  noarch: python\n  script: python setup.py install\n\nrequirements:\n  host:\n    - python\n    - setuptools\n  run:\n    - python\n    - requests\n    - nbformat\n    - openssl >1.1\n\ntest:\n  imports:\n    - cdat_info\n\nabout:\n  home:  http://cdat.llnl.gov\n  license: BSD\n  license_file: bsd-3-clause.txt\n  summary: 'Climate Data Analysis Tools'\n  description: |                                                                                                                                             \n    is a powerful and complete front-end to a rich set of visual-data \n    exploration and analysis capabilities well suited for climate-data \n    analysis problems.\n  dev_url: http://github.com/CDAT/cdat_info\n\nextra:\n  recipe-maintainers:\n    - dnadeau4\n    - doutriaux1\n    - muryanto1\n    - downiec\n    - jasonb5\n    - xylar\n",
  "req":{
   "__set__":true,
   "elements":[
    "nbformat",
    "openssl",
-   "pip",
    "python",
    "requests",
    "setuptools"
