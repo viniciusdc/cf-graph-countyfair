@@ -122,7 +122,7 @@
   },
   "build":{
    "merge_build_host":true,
-   "number":"1",
+   "number":"0",
    "rpaths":[
     "lib/R/lib/",
     "lib/",
@@ -150,7 +150,7 @@
   },
   "package":{
    "name":"r-protviz",
-   "version":"0.4.0"
+   "version":"0.5.1"
   },
   "requirements":{
    "build":[
@@ -187,15 +187,15 @@
    ]
   },
   "source":{
-   "fn":"protViz_0.4.0.tar.gz",
-   "sha256":"e1f5aa20c1104d925a15a108e04d57286b4c3e6419d6998643e24f6509161194",
+   "fn":"protViz_0.5.1.tar.gz",
+   "sha256":"5b2ec208289bf5d09db080a364e216fe9cadf20d46695e9a1f03531943fdf633",
    "url":[
-    "https://cran.r-project.org/src/contrib/protViz_0.4.0.tar.gz",
-    "https://cran.r-project.org/src/contrib/Archive/protViz/protViz_0.4.0.tar.gz",
-    "https://cran.r-project.org/src/contrib/protViz_0.4.0.tar.gz",
-    "https://cran.r-project.org/src/contrib/Archive/protViz/protViz_0.4.0.tar.gz",
-    "https://cran.r-project.org/src/contrib/protViz_0.4.0.tar.gz",
-    "https://cran.r-project.org/src/contrib/Archive/protViz/protViz_0.4.0.tar.gz"
+    "https://cran.r-project.org/src/contrib/protViz_0.5.1.tar.gz",
+    "https://cran.r-project.org/src/contrib/Archive/protViz/protViz_0.5.1.tar.gz",
+    "https://cran.r-project.org/src/contrib/protViz_0.5.1.tar.gz",
+    "https://cran.r-project.org/src/contrib/Archive/protViz/protViz_0.5.1.tar.gz",
+    "https://cran.r-project.org/src/contrib/protViz_0.5.1.tar.gz",
+    "https://cran.r-project.org/src/contrib/Archive/protViz/protViz_0.5.1.tar.gz"
    ]
   },
   "test":{
@@ -209,7 +209,7 @@
  "name":"r-protviz",
  "new_version":"0.5.1",
  "pinning_version":"2019.11.14",
- "raw_meta_yaml":"{% set version = \"0.4.0\" %}\n\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-protviz\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  fn: protViz_{{ version }}.tar.gz\n  url:\n    - {{ cran_mirror }}/src/contrib/protViz_{{ version }}.tar.gz\n    - {{ cran_mirror }}/src/contrib/Archive/protViz/protViz_{{ version }}.tar.gz\n  sha256: e1f5aa20c1104d925a15a108e04d57286b4c3e6419d6998643e24f6509161194\n\nbuild:\n  merge_build_host: True  # [win]\n  number: 1\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\n# Suggests: lattice, RUnit, xtable\nrequirements:\n  build:\n    - {{ compiler('c') }}        # [not win]\n    - {{ compiler('cxx') }}      # [not win]\n    - {{ compiler('m2w64_c') }}        # [win]\n    - {{ compiler('m2w64_cxx') }}        # [win]\n    - {{posix}}filesystem        # [win]\n    - {{posix}}make\n    - {{posix}}sed               # [win]\n    - {{posix}}coreutils         # [win]\n    - {{posix}}zip               # [win]\n\n  host:\n    - r-base\n    - r-rcpp >=0.12.8\n\n  run:\n    - r-base\n    - {{native}}gcc-libs         # [win]\n    - r-rcpp >=0.12.8\n\ntest:\n  commands:\n    - $R -e \"library('protViz')\"           # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('protViz')\\\"\"  # [win]\n\nabout:\n  home: https://github.com/protViz/protViz/\n  license: GPL-3\n  summary: Helps with quality checks, visualizations  and analysis of mass spectrometry data,\n    coming from proteomics  experiments. The package is developed, tested and used at\n    the Functional  Genomics Center Zurich. We use this package mainly for prototyping,  teaching,\n    and having fun with proteomics data. But it can also be  used to do data analysis\n    for small scale data sets.\n  license_family: GPL3\n  license_file: '{{ environ[\"PREFIX\"] }}/lib/R/share/licenses/GPL-3'\n\nextra:\n   recipe-maintainers:\n    - conda-forge/r\n    - MathiasHaudgaard\n    - FrodePedersen\n    - ArneKr\n",
+ "raw_meta_yaml":"{% set version = \"0.5.1\" %}\n\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-protviz\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  fn: protViz_{{ version }}.tar.gz\n  url:\n    - {{ cran_mirror }}/src/contrib/protViz_{{ version }}.tar.gz\n    - {{ cran_mirror }}/src/contrib/Archive/protViz/protViz_{{ version }}.tar.gz\n  sha256: 5b2ec208289bf5d09db080a364e216fe9cadf20d46695e9a1f03531943fdf633\n\nbuild:\n  merge_build_host: True  # [win]\n  number: 0\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\n# Suggests: lattice, RUnit, xtable\nrequirements:\n  build:\n    - {{ compiler('c') }}        # [not win]\n    - {{ compiler('cxx') }}      # [not win]\n    - {{ compiler('m2w64_c') }}        # [win]\n    - {{ compiler('m2w64_cxx') }}        # [win]\n    - {{posix}}filesystem        # [win]\n    - {{posix}}make\n    - {{posix}}sed               # [win]\n    - {{posix}}coreutils         # [win]\n    - {{posix}}zip               # [win]\n\n  host:\n    - r-base\n    - r-rcpp >=0.12.8\n\n  run:\n    - r-base\n    - {{native}}gcc-libs         # [win]\n    - r-rcpp >=0.12.8\n\ntest:\n  commands:\n    - $R -e \"library('protViz')\"           # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('protViz')\\\"\"  # [win]\n\nabout:\n  home: https://github.com/protViz/protViz/\n  license: GPL-3\n  summary: Helps with quality checks, visualizations  and analysis of mass spectrometry data,\n    coming from proteomics  experiments. The package is developed, tested and used at\n    the Functional  Genomics Center Zurich. We use this package mainly for prototyping,  teaching,\n    and having fun with proteomics data. But it can also be  used to do data analysis\n    for small scale data sets.\n  license_family: GPL3\n  license_file: '{{ environ[\"PREFIX\"] }}/lib/R/share/licenses/GPL-3'\n\nextra:\n   recipe-maintainers:\n    - conda-forge/r\n    - MathiasHaudgaard\n    - FrodePedersen\n    - ArneKr\n",
  "req":{
   "__set__":true,
   "elements":[
@@ -236,5 +236,5 @@
   "https://cran.r-project.org/src/contrib/protViz_0.4.0.tar.gz",
   "https://cran.r-project.org/src/contrib/Archive/protViz/protViz_0.4.0.tar.gz"
  ],
- "version":"0.4.0"
+ "version":"0.5.1"
 }
