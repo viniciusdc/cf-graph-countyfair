@@ -117,40 +117,7 @@
    ]
   }
  ],
- "bad":{
-  "code":404,
-  "exception":"HTTP Error 404: Not Found",
-  "traceback":[
-   "Traceback (most recent call last):",
-   "  File \"/root/repo/cf-scripts/conda_forge_tick/auto_tick.xsh\", line 693, in main",
-   "    hash_type=attrs.get('hash_type', 'sha256'))",
-   "  File \"/root/repo/cf-scripts/conda_forge_tick/auto_tick.xsh\", line 98, in run",
-   "    migrate_return = migrator.migrate(recipe_dir, attrs, **kwargs)",
-   "  File \"/root/repo/cf-scripts/conda_forge_tick/migrators.xsh\", line 467, in migrate",
-   "    new_patterns = self.get_hash_patterns('meta.yaml', urls, hash_type)",
-   "  File \"/root/repo/cf-scripts/conda_forge_tick/migrators.xsh\", line 384, in get_hash_patterns",
-   "    hash = hash_url(url, hash_type)",
-   "  File \"/opt/conda/envs/run_env/lib/python3.7/site-packages/rever/tools.xsh\", line 207, in hash_url",
-   "    for b in stream_url_progress(url, verb='Hashing', quiet=quiet):",
-   "  File \"/opt/conda/envs/run_env/lib/python3.7/site-packages/rever/tools.xsh\", line 179, in stream_url_progress",
-   "    with urllib.request.urlopen(url) as f:",
-   "  File \"/opt/conda/envs/run_env/lib/python3.7/urllib/request.py\", line 222, in urlopen",
-   "    return opener.open(url, data, timeout)",
-   "  File \"/opt/conda/envs/run_env/lib/python3.7/urllib/request.py\", line 531, in open",
-   "    response = meth(req, response)",
-   "  File \"/opt/conda/envs/run_env/lib/python3.7/urllib/request.py\", line 641, in http_response",
-   "    'http', request, response, code, msg, hdrs)",
-   "  File \"/opt/conda/envs/run_env/lib/python3.7/urllib/request.py\", line 569, in error",
-   "    return self._call_chain(*args)",
-   "  File \"/opt/conda/envs/run_env/lib/python3.7/urllib/request.py\", line 503, in _call_chain",
-   "    result = func(*args)",
-   "  File \"/opt/conda/envs/run_env/lib/python3.7/urllib/request.py\", line 649, in http_error_default",
-   "    raise HTTPError(req.full_url, code, msg, hdrs, fp)",
-   "urllib.error.HTTPError: HTTP Error 404: Not Found",
-   ""
-  ],
-  "url":"https://github.com/conda/constructor/releases/download/3.0.1/constructor-3.0.1.tar.gz"
- },
+ "bad":false,
  "conda-forge.yml":{
   "compiler_stack":"comp7",
   "max_py_ver":"37",
@@ -165,6 +132,9 @@
  "hash_type":"sha256",
  "meta_yaml":{
   "about":{
+   "description":"Constructor is a tool for constructing an installer for a collection of\nconda packages. It creates an Anaconda-like installer consisting of\npackages.\n",
+   "dev_url":"https://github.com/conda/constructor",
+   "doc_url":"https://conda.io/projects/conda/en/latest/",
    "home":"http://github.com/conda/constructor",
    "license":"BSD 3-Clause",
    "license_family":"BSD",
@@ -178,37 +148,30 @@
     "constructor = constructor.main:main"
    ],
    "number":"0",
-   "script":[
-    "mkdir %PREFIX%\\standalone_conda",
-    "COPY conda-4.7.5-.exe %PREFIX%\\standalone_conda\\conda.exe",
-    "pip install --no-deps -vv .",
-    "mkdir $PREFIX/standalone_conda",
-    "cp conda-4.7.5-.exe $PREFIX/standalone_conda/conda.exe",
-    "pip install --no-deps -vv .",
-    "mkdir $PREFIX/standalone_conda",
-    "cp conda-4.7.5-.exe $PREFIX/standalone_conda/conda.exe",
-    "pip install --no-deps -vv ."
-   ]
+   "script":" -m pip install . -vv"
   },
   "extra":{
    "recipe-maintainers":[
     "jakirkham",
     "mbargull",
     "msarahan",
+    "hadim",
     "jakirkham",
     "mbargull",
     "msarahan",
+    "hadim",
     "jakirkham",
     "mbargull",
-    "msarahan"
+    "msarahan",
+    "hadim"
    ]
   },
   "package":{
    "name":"constructor",
-   "version":"3.0.0"
+   "version":"3.0.1"
   },
   "requirements":{
-   "build":[
+   "host":[
     "python",
     "pip",
     "python",
@@ -217,59 +180,44 @@
     "pip"
    ],
    "run":[
-    "python",
     "conda >=4.6",
-    "ruamel_yaml",
+    "python",
+    "ruamel_yaml >=0.11.14,<0.16",
+    "conda-standalone",
     "pillow >=3.1",
     "nsis >=3.01",
-    "python",
     "conda >=4.6",
-    "ruamel_yaml",
     "python",
+    "ruamel_yaml >=0.11.14,<0.16",
+    "conda-standalone",
     "conda >=4.6",
-    "ruamel_yaml"
+    "python",
+    "ruamel_yaml >=0.11.14,<0.16",
+    "conda-standalone"
    ]
   },
   "source":[
    {
-    "patches":[
-     "0001-make-directory-arg-optional.patch"
-    ],
-    "sha256":"d19643c60c8681d96877a27a16dd7b03959f8e2fa10dfc7c8ec5637c14bc693a",
-    "url":"https://github.com/conda/constructor/releases/download/3.0.0/constructor-3.0.0.tar.gz"
+    "sha256":"228ff80a3fdbc40ab3b45910e299c9f171248d4291e76df15567add29a74dadd",
+    "url":"https://github.com/conda/constructor/archive/3.0.1.tar.gz"
    },
    {
-    "sha256":"c8fc8faf1a743dd074cb1f9af692e085764618ce0af2dc822ed7c29da834fff1",
-    "url":"https://repo.anaconda.com/pkgs/misc/conda-execs/conda-4.7.5-.exe"
+    "sha256":"228ff80a3fdbc40ab3b45910e299c9f171248d4291e76df15567add29a74dadd",
+    "url":"https://github.com/conda/constructor/archive/3.0.1.tar.gz"
    },
    {
-    "patches":[
-     "0001-make-directory-arg-optional.patch"
-    ],
-    "sha256":"d19643c60c8681d96877a27a16dd7b03959f8e2fa10dfc7c8ec5637c14bc693a",
-    "url":"https://github.com/conda/constructor/releases/download/3.0.0/constructor-3.0.0.tar.gz"
-   },
-   {
-    "sha256":"feecde5cfe722d0d60350d49bf670fb8631c95d32cab47fd3615788f9a67d4f5",
-    "url":"https://repo.anaconda.com/pkgs/misc/conda-execs/conda-4.7.5-.exe"
-   },
-   {
-    "patches":[
-     "0001-make-directory-arg-optional.patch"
-    ],
-    "sha256":"d19643c60c8681d96877a27a16dd7b03959f8e2fa10dfc7c8ec5637c14bc693a",
-    "url":"https://github.com/conda/constructor/releases/download/3.0.0/constructor-3.0.0.tar.gz"
-   },
-   {
-    "sha256":"9d4898273879809f551e2fc6277a8b1d25be61e3a1de3e7983dc6339419c4337",
-    "url":"https://repo.anaconda.com/pkgs/misc/conda-execs/conda-4.7.5-.exe"
+    "sha256":"228ff80a3fdbc40ab3b45910e299c9f171248d4291e76df15567add29a74dadd",
+    "url":"https://github.com/conda/constructor/archive/3.0.1.tar.gz"
    }
   ],
   "test":{
    "commands":[
-    "constructor --test",
-    "constructor --test",
-    "constructor --test"
+    "constructor -V",
+    "constructor --test .",
+    "constructor -V",
+    "constructor --test .",
+    "constructor -V",
+    "constructor --test ."
    ],
    "imports":[
     "constructor",
@@ -281,11 +229,12 @@
  "name":"constructor",
  "new_version":"3.0.1",
  "pinning_version":"2019.08.09",
- "raw_meta_yaml":"{% set version = \"3.0.0\" %}\n{% set sha256 = \"d19643c60c8681d96877a27a16dd7b03959f8e2fa10dfc7c8ec5637c14bc693a\" %}\n{% set standalone_ver = \"4.7.5\" %}\n\npackage:\n  name: constructor\n  version: {{ version }}\n\nsource:\n  - url: https://github.com/conda/constructor/releases/download/{{ version }}/constructor-{{ version }}.tar.gz\n    sha256: {{ sha256 }}\n    patches:\n      # can be removed in 3.0.1\n      - 0001-make-directory-arg-optional.patch\n\n  - url: https://repo.anaconda.com/pkgs/misc/conda-execs/conda-{{ standalone_ver }}-{{ SUBDIR }}.exe\n    sha256: 9d4898273879809f551e2fc6277a8b1d25be61e3a1de3e7983dc6339419c4337  # [linux64]\n    sha256: feecde5cfe722d0d60350d49bf670fb8631c95d32cab47fd3615788f9a67d4f5  # [osx]\n    sha256: 4e4a594a5ae598a36821a7dc67de1891b90fee089aaf66fb6c22912459c957d1  # [linux and ppc64le]\n    sha256: c8fc8faf1a743dd074cb1f9af692e085764618ce0af2dc822ed7c29da834fff1  # [win64]\n    sha256: 55a8f338f6d8e7bd12c11946a32c470d8bc809e330cb2e97f3ccee85bc944494  # [win32]\n\nbuild:\n  number: 0\n  script:\n    - mkdir $PREFIX/standalone_conda  # [not win]\n    - cp conda-{{ standalone_ver }}-{{ SUBDIR }}.exe $PREFIX/standalone_conda/conda.exe  # [not win]\n    - mkdir %PREFIX%\\standalone_conda  # [win]\n    - COPY conda-{{ standalone_ver }}-{{ SUBDIR }}.exe %PREFIX%\\standalone_conda\\conda.exe  # [win]\n    - pip install --no-deps -vv .\n  entry_points:\n    - constructor = constructor.main:main\n\nrequirements:\n  build:\n    - python\n    - pip\n  run:\n    - python\n    - conda >=4.6\n    - ruamel_yaml\n    - pillow >=3.1     # [win]\n    - nsis >=3.01      # [win]\n\ntest:\n  imports:\n    - constructor\n  commands:\n    - constructor --test\n\nabout:\n  home: http://github.com/conda/constructor\n  license: BSD 3-Clause\n  license_family: BSD\n  license_file: LICENSE.txt\n  summary: create installer from conda packages\n\nextra:\n  recipe-maintainers:\n    - jakirkham\n    - mbargull\n    - msarahan\n",
+ "raw_meta_yaml":"{% set version = \"3.0.1\" %}\n{% set sha256 = \"228ff80a3fdbc40ab3b45910e299c9f171248d4291e76df15567add29a74dadd\" %}\n{% set standalone_ver = \"4.7.5\" %}\n\npackage:\n  name: constructor\n  version: {{ version }}\n\nsource:\n  - url: https://github.com/conda/constructor/archive/{{ version }}.tar.gz\n    sha256: {{ sha256 }}\n\nbuild:\n  number: 0\n  script: \"{{ PYTHON }} -m pip install . -vv\"\n  entry_points:\n    - constructor = constructor.main:main\n\nrequirements:\n  host:\n    - python\n    - pip\n  run:\n    - conda >=4.6\n    - python\n    - ruamel_yaml >=0.11.14,<0.16\n    - conda-standalone\n    - pillow >=3.1  # [win]\n    - nsis >=3.01  # [win]\n\ntest:\n  imports:\n    - constructor\n  commands:\n    - constructor -V\n    - constructor --test .\n\nabout:\n  home: http://github.com/conda/constructor\n  license: BSD 3-Clause\n  license_family: BSD\n  license_file: LICENSE.txt\n  summary: create installer from conda packages\n  description: |\n    Constructor is a tool for constructing an installer for a collection of\n    conda packages. It creates an Anaconda-like installer consisting of\n    packages.\n  doc_url: https://conda.io/projects/conda/en/latest/\n  dev_url: https://github.com/conda/constructor\n\nextra:\n  recipe-maintainers:\n    - jakirkham\n    - mbargull\n    - msarahan\n    - hadim\n",
  "req":{
   "__set__":true,
   "elements":[
    "conda",
+   "conda-standalone",
    "nsis",
    "pillow",
    "pip",
@@ -295,5 +244,5 @@
  },
  "smithy_version":"3.4.1",
  "url":"https://github.com/conda/constructor/releases/download/3.0.0/constructor-3.0.0.tar.gz",
- "version":"3.0.0"
+ "version":"3.0.1"
 }
