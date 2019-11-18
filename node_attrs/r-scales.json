@@ -65,6 +65,23 @@
     "migrator_version",
     "name"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/342240498.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"Version",
+    "migrator_version":0,
+    "version":"1.1.0"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "version"
+   ]
   }
  ],
  "bad":false,
@@ -193,8 +210,8 @@
   }
  },
  "name":"r-scales",
- "new_version":"1.0.0",
- "pinning_version":"2019.07.15",
+ "new_version":"1.1.0",
+ "pinning_version":"2019.11.14",
  "raw_meta_yaml":"{% set version = '1.0.0' %}\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-scales\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  fn: scales_{{ version }}.tar.gz\n  url:\n    - {{ cran_mirror }}/src/contrib/scales_{{ version }}.tar.gz\n    - {{ cran_mirror }}/src/contrib/Archive/scales/scales_{{ version }}.tar.gz\n  sha256: 0c1f4a14edd336a404da34a3cc71a6a9d0ca2040ba19360c41a79f36e06ca30c\n\nbuild:\n  merge_build_host: True  # [win]\n  number: 1002\n  skip: true  # [win32]\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - {{ compiler('c') }}        # [not win]\n    - {{ compiler('cxx') }}      # [not win]\n    - {{ compiler('m2w64_c') }}        # [win]\n    - {{ compiler('m2w64_cxx') }}        # [win]\n    - {{posix}}filesystem        # [win]\n    - {{posix}}make\n    - {{posix}}sed               # [win]\n    - {{posix}}coreutils         # [win]\n    - {{posix}}zip               # [win]\n  host:\n    - r-base\n    - r-r6\n    - r-rcolorbrewer\n    - r-rcpp\n    - r-labeling\n    - r-munsell >=0.5\n    - r-viridislite\n  run:\n    - r-base\n    - {{native}}gcc-libs         # [win]\n    - r-r6\n    - r-rcolorbrewer\n    - r-rcpp\n    - r-labeling\n    - r-munsell >=0.5\n    - r-viridislite\n\ntest:\n  commands:\n    - $R -e \"library('scales')\"           # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('scales')\\\"\"  # [win]\n\nabout:\n  home: https://scales.r-lib.org, https://github.com/r-lib/scales\n  license: MIT\n  summary: Graphical scales map data to aesthetics, and provide methods for automatically determining\n    breaks and labels for axes and legends.\n  license_family: MIT\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n",
  "req":{
   "__set__":true,
@@ -218,7 +235,7 @@
    "zip"
   ]
  },
- "smithy_version":"3.4.1",
+ "smithy_version":"3.6.2",
  "url":[
   "https://cran.r-project.org/src/contrib/scales_1.0.0.tar.gz",
   "https://cran.r-project.org/src/contrib/Archive/scales/scales_1.0.0.tar.gz",
