@@ -90,7 +90,7 @@
   }
  },
  "name":"tsl_hopscotch_map",
- "new_version":"v2.2.1",
+ "new_version":"v2.2.0",
  "pinning_version":"2018.12.12",
  "raw_meta_yaml":"{% set name = \"tsl_hopscotch_map\" %}\n{% set version = \"v2.1.0\" %}\n{% set sha256 = \"e3a3b66e89e29a6583a522d3410d212b8e6b13a987245a9f6dfb439df8b00bf4\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  fn: {{ name }}-{{ version }}.tar.gz\n  url: https://github.com/Tessil/hopscotch-map/archive/{{ version }}.tar.gz\n  sha256: {{ sha256 }}\n\nbuild:\n  number: 2000\n  skip: True  # [win and vc<14]\n\nrequirements:\n  build:\n    - {{ compiler('cxx') }}\n    - cmake\n\ntest:\n  commands:\n    - test -d ${PREFIX}/include/tsl  # [unix]\n    - test -f ${PREFIX}/include/tsl/hopscotch_map.h  # [unix]\n    - test -f ${PREFIX}/lib/cmake/tsl_hopscotch_map/tsl_hopscotch_mapConfig.cmake  # [unix]\n    - test -f ${PREFIX}/lib/cmake/tsl_hopscotch_map/tsl_hopscotch_mapConfigVersion.cmake  # [unix]\n    - if exist %LIBRARY_PREFIX%\\include\\tsl\\hopscotch_map.h (exit 0) else (exit 1)  # [win]\n    - if exist %LIBRARY_PREFIX%\\lib\\cmake\\tsl_hopscotch_mapConfig.cmake (exit 0) else (exit 1)  # [win]\n    - if exist %LIBRARY_PREFIX%\\lib\\cmake\\tsl_hopscotch_mapConfigVersion.cmake (exit 0) else (exit 1)  # [win]\n\nabout:\n  home: https://github.com/Tessil/hopscotch-map\n  license: BSD 3-Clause\n  license_family: BSD\n  license_file: LICENSE\n  summary: 'C++ hash map and hash set using hopscotch hashing'\n  description: 'C++ hash map and hash set using hopscotch hashing'\n  doc_url: https://tessil.github.io/hopscotch-map/\n  dev_url: https://github.com/Tessil/hopscotch-map\n\nextra:\n  recipe-maintainers:\n    - SylvainCorlay\n    - JohanMabille\n",
  "req":{
