@@ -33,6 +33,23 @@
     "migrator_version",
     "name"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/342626141.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"Version",
+    "migrator_version":0,
+    "version":"0.2.2"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "version"
+   ]
   }
  ],
  "bad":false,
@@ -59,7 +76,7 @@
    "summary":"A C library for parsing and emitting YAML"
   },
   "build":{
-   "number":"1001",
+   "number":"0",
    "run_exports":[
     "subpackage_stub",
     "subpackage_stub",
@@ -73,77 +90,75 @@
     "pelson",
     "mingwandroid",
     "ocefpaf",
+    "seanyen",
     "jakirkham",
     "msarahan",
     "pelson",
     "mingwandroid",
     "ocefpaf",
+    "seanyen",
     "jakirkham",
     "msarahan",
     "pelson",
     "mingwandroid",
-    "ocefpaf"
+    "ocefpaf",
+    "seanyen"
    ]
   },
   "package":{
    "name":"yaml",
-   "version":"0.1.7"
+   "version":"0.2.1"
   },
   "requirements":{
    "build":[
+    "vs2017_win-64",
+    "cmake",
+    "pkg-config",
+    "ninja",
+    "cxx_compiler_stub",
     "c_compiler_stub",
     "cmake",
-    "c_compiler_stub",
     "pkg-config",
-    "libtool",
-    "make",
+    "ninja",
+    "cxx_compiler_stub",
     "c_compiler_stub",
+    "cmake",
     "pkg-config",
-    "libtool",
-    "make"
-   ],
-   "host":null,
-   "run":null
+    "ninja"
+   ]
   },
   "source":{
-   "patches":[
-    "CMakeLists.txt.patch",
-    "CMakeLists.txt.patch",
-    "CMakeLists.txt.patch"
-   ],
-   "sha256":"8088e457264a98ba451a90b8661fcb4f9d6f478f7265d48322a196cec2480729",
-   "url":"http://pyyaml.org/download/libyaml/yaml-0.1.7.tar.gz"
+   "sha256":"1d2aeb87f7d317f1496e4c39410d913840714874a354970300f375eec9303dc4",
+   "url":"https://github.com/yaml/libyaml/archive/0.2.1.tar.gz"
   },
   "test":{
    "commands":[
     "if not exist \"%LIBRARY_INC%\\\\yaml.h\" exit 1",
-    "if not exist \"%LIBRARY_LIB%\\\\yaml_static.lib\" exit 1",
     "if not exist \"%LIBRARY_LIB%\\\\yaml.lib\" exit 1",
     "if not exist \"%LIBRARY_BIN%\\\\yaml.dll\" exit 1",
     "test -f \"${PREFIX}/include/yaml.h\"",
-    "test -f \"${PREFIX}/lib/libyaml.a\"",
-    "test -f \"${PREFIX}/lib/libyaml.dylib\"",
+    "test -f \"${PREFIX}/lib/libyaml${SHLIB_EXT}\"",
     "test -f \"${PREFIX}/include/yaml.h\"",
-    "test -f \"${PREFIX}/lib/libyaml.a\"",
-    "test -f \"${PREFIX}/lib/libyaml.so\""
+    "test -f \"${PREFIX}/lib/libyaml${SHLIB_EXT}\""
    ]
   }
  },
  "name":"yaml",
- "new_version":false,
- "pinning_version":"2019.02.15",
- "raw_meta_yaml":"{% set version = \"0.1.7\" %}\n\npackage:\n  name: yaml\n  version: {{ version }}\n\nsource:\n  url: http://pyyaml.org/download/libyaml/yaml-{{ version }}.tar.gz\n  sha256: 8088e457264a98ba451a90b8661fcb4f9d6f478f7265d48322a196cec2480729\n  patches:\n    # Change CMakeLists so that we can build static and shared libraries.\n    # See this PR ( https://github.com/yaml/libyaml/pull/10 ) for details.\n    - CMakeLists.txt.patch\n\nbuild:\n  number: 1001\n  run_exports:\n    # good recent history, but not much info on how they treat minor ver:\n    #   https://abi-laboratory.pro/tracker/timeline/yaml/\n    - {{ pin_subpackage('yaml', max_pin='x.x') }}\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - cmake              # [win]\n    - pkg-config         # [unix]\n    - libtool            # [unix]\n    - make               # [unix]\n  host:\n  run:\n\ntest:\n  commands:\n    # Check headers.\n    - test -f \"${PREFIX}/include/yaml.h\"              # [unix]\n    - if not exist \"%LIBRARY_INC%\\\\yaml.h\" exit 1     # [win]\n\n    # Check libraries.\n    - test -f \"${PREFIX}/lib/libyaml.a\"               # [unix]\n    - test -f \"${PREFIX}/lib/libyaml.dylib\"           # [osx]\n    - test -f \"${PREFIX}/lib/libyaml.so\"              # [linux]\n    - if not exist \"%LIBRARY_LIB%\\\\yaml_static.lib\" exit 1  # [win]\n    - if not exist \"%LIBRARY_LIB%\\\\yaml.lib\" exit 1   # [win]\n    - if not exist \"%LIBRARY_BIN%\\\\yaml.dll\" exit 1   # [win]\n\nabout:\n  home: http://pyyaml.org/wiki/LibYAML\n  license: MIT\n  summary: A C library for parsing and emitting YAML\n  description: |\n    YAML is a human friendly data serialization standard for all programming\n    languages.\n  doc_url: http://www.yaml.org/spec/1.2/spec.html\n  doc_source_url: https://github.com/yaml/www.yaml.org/tree/master/docs\n  dev_url: https://github.com/yaml\n\nextra:\n  recipe-maintainers:\n    - jakirkham\n    - msarahan\n    - pelson\n    - mingwandroid\n    - ocefpaf\n",
+ "new_version":"0.2.2",
+ "pinning_version":"2019.11.18",
+ "raw_meta_yaml":"{% set version = \"0.2.1\" %}\n\npackage:\n  name: yaml\n  version: {{ version }}\n\nsource:\n  url: https://github.com/yaml/libyaml/archive/{{ version }}.tar.gz\n  sha256: 1d2aeb87f7d317f1496e4c39410d913840714874a354970300f375eec9303dc4\n\nbuild:\n  number: 0\n  run_exports:\n    # good recent history, but not much info on how they treat minor ver:\n    #   https://abi-laboratory.pro/tracker/timeline/yaml/\n    - {{ pin_subpackage('yaml', max_pin='x.x') }}\n\nrequirements:\n  build:\n    - {{ compiler('cxx') }}              # [not win]\n    - {{ compiler('c') }}                # [not win]\n    - vs2017_win-64                      # [win64]\n    - vs2017_win-32                      # [win32]\n    - cmake\n    - pkg-config\n    - ninja\n\ntest:\n  commands:\n    # Check headers.\n    - test -f \"${PREFIX}/include/yaml.h\"              # [not win]\n    - if not exist \"%LIBRARY_INC%\\\\yaml.h\" exit 1     # [win]\n\n    # Check libraries.\n    - test -f \"${PREFIX}/lib/libyaml${SHLIB_EXT}\"     # [not win]\n    - if not exist \"%LIBRARY_LIB%\\\\yaml.lib\" exit 1   # [win]\n    - if not exist \"%LIBRARY_BIN%\\\\yaml.dll\" exit 1   # [win]\n\nabout:\n  home: http://pyyaml.org/wiki/LibYAML\n  license: MIT\n  summary: A C library for parsing and emitting YAML\n  description: |\n    YAML is a human friendly data serialization standard for all programming\n    languages.\n  doc_url: http://www.yaml.org/spec/1.2/spec.html\n  doc_source_url: https://github.com/yaml/www.yaml.org/tree/master/docs\n  dev_url: https://github.com/yaml\n\nextra:\n  recipe-maintainers:\n    - jakirkham\n    - msarahan\n    - pelson\n    - mingwandroid\n    - ocefpaf\n    - seanyen\n",
  "req":{
   "__set__":true,
   "elements":[
    "c_compiler_stub",
    "cmake",
-   "libtool",
-   "make",
-   "pkg-config"
+   "cxx_compiler_stub",
+   "ninja",
+   "pkg-config",
+   "vs2017_win-64"
   ]
  },
- "smithy_version":"3.2.13",
+ "smithy_version":"3.6.2",
  "url":"http://pyyaml.org/download/libyaml/yaml-0.1.7.tar.gz",
- "version":"0.1.7"
+ "version":"0.2.1"
 }
