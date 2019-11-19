@@ -33,6 +33,23 @@
     "migrator_version",
     "name"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/342650590.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"Version",
+    "migrator_version":0,
+    "version":"2.2_0"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "version"
+   ]
   }
  ],
  "bad":false,
@@ -128,8 +145,8 @@
   }
  },
  "name":"r-pvclust",
- "new_version":"2.0_0",
- "pinning_version":"2019.07.19",
+ "new_version":"2.2_0",
+ "pinning_version":"2019.11.18",
  "raw_meta_yaml":"{% set version = '2.0-0' %}\n\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-pvclust\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  fn: pvclust_{{ version }}.tar.gz\n  url:\n    - https://cran.r-project.org/src/contrib/pvclust_{{ version }}.tar.gz\n    - https://cran.r-project.org/src/contrib/Archive/pvclust/pvclust_{{ version }}.tar.gz\n  sha256: 1a4615214992307fd7c786cf4607a3ae2af5c0d4067f5053e1c195798a70d741\n\nbuild:\n  noarch: generic\n  number: 1002\n\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - r-base\n\n  run:\n    - r-base\n\ntest:\n  commands:\n    - $R -e \"library('pvclust')\"  # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('pvclust')\\\"\"  # [win]\n\nabout:\n  home: http://www.sigmath.es.osaka-u.ac.jp/shimo-lab/prog/pvclust/\n  license: GPL (>= 2)\n  summary: An implementation of multiscale bootstrap resampling for assessing the uncertainty\n    in hierarchical cluster analysis. It provides AU (approximately unbiased) p-value\n    as well as BP (bootstrap probability) value for each cluster in a dendrogram.\n  license_family: GPL\n  license_file: '{{ environ[\"PREFIX\"] }}/lib/R/share/licenses/GPL-3'   # [unix]\n  license_file: '{{ environ[\"PREFIX\"] }}\\R\\share\\licenses\\GPL-3'   # [win]\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n    - dpryan79\n    - sebastian-luna-valero\n    - johanneskoester\n    - bgruening\n    - daler\n    - jdblischak\n",
  "req":{
   "__set__":true,
@@ -137,7 +154,7 @@
    "r-base"
   ]
  },
- "smithy_version":"3.4.1",
+ "smithy_version":"3.6.2",
  "url":[
   "https://cran.r-project.org/src/contrib/pvclust_2.0-0.tar.gz",
   "https://cran.r-project.org/src/contrib/Archive/pvclust/pvclust_2.0-0.tar.gz",

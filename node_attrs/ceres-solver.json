@@ -16,6 +16,25 @@
     "migrator_version",
     "name"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/342652408.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"MigrationYaml",
+    "migrator_object_version":1,
+    "migrator_version":0,
+    "name":"suitesparse-5.4"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_object_version",
+    "migrator_version",
+    "name"
+   ]
   }
  ],
  "bad":false,
@@ -125,7 +144,7 @@
  },
  "name":"ceres-solver",
  "new_version":false,
- "pinning_version":"2019.05.11",
+ "pinning_version":"2019.11.18",
  "raw_meta_yaml":"{% set version = \"1.14.0\" %}\n\npackage:\n  name: ceres-solver\n  version: {{ version }}\n\nsource:\n  url: http://ceres-solver.org/ceres-solver-{{ version }}.tar.gz\n  sha256: 4744005fc3b902fed886ea418df70690caa8e2ff6b5a90f3dd88a3d291ef8e8e\n\nbuild:\n  number: 5\n  skip: true  # [win and vc<14]\n  run_exports: \n    - {{ pin_subpackage('ceres-solver', max_pin='x.x') }}\n\nrequirements:\n  build:\n    - cmake\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n\n  host:\n    - glog\n    - gflags\n    - libblas\n    - libcblas\n    - liblapack\n    - suitesparse  # [unix]\n    - tbb\n    - eigen\n\n  run:\n    - glog\n    - gflags\n    - suitesparse  # [unix]\n    - tbb\n    - eigen\n\ntest:\n  commands:\n    - test -f ${PREFIX}/include/ceres/ceres.h  # [unix]\n    - test -f ${PREFIX}/lib/libceres${SHLIB_EXT}  # [unix]\n    - if not exist %PREFIX%\\\\Library\\\\include\\\\ceres\\\\ceres.h exit 1  # [win]\n    - if not exist %PREFIX%\\\\Library\\\\lib\\\\ceres.lib exit 1  # [win]\n    - if not exist %PREFIX%\\\\Library\\\\bin\\\\ceres.dll exit 1  # [win]\n\nabout:\n  home: http://ceres-solver.org\n  license: BSD-3-Clause\n  license_file: LICENSE\n  summary: A large scale non-linear optimization library\n\nextra:\n  recipe-maintainers:\n    - jschueller\n",
  "req":{
   "__set__":true,
@@ -143,7 +162,7 @@
    "tbb"
   ]
  },
- "smithy_version":"3.3.4",
+ "smithy_version":"3.6.2",
  "url":"http://ceres-solver.org/ceres-solver-1.14.0.tar.gz",
  "version":"1.14.0"
 }
