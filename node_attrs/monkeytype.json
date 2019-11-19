@@ -81,6 +81,23 @@
     "migrator_version",
     "version"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/342440014.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"Version",
+    "migrator_version":0,
+    "version":"19.11.0"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "version"
+   ]
   }
  ],
  "bad":false,
@@ -212,8 +229,8 @@
   }
  },
  "name":"monkeytype",
- "new_version":"19.5.0",
- "pinning_version":"2019.05.11",
+ "new_version":"19.11.0",
+ "pinning_version":"2019.11.18",
  "raw_meta_yaml":"{% set name = \"MonkeyType\" %}\n{% set version = \"19.5.0\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  - folder: dist\n    url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz\n    sha256: 67c8a5694fbc78b3c763eccca834bcbc0a7964969fa467f78e43a4141d650787\n  - folder: src\n    url: https://github.com/Instagram/{{ name }}/archive/v{{ version }}.tar.gz\n    sha256: e96ac6ac643a77467960ca863d62bb3695f3dbfd30fef8271f9ef1f190f9f440\n\nbuild:\n  number: 0\n  noarch: python\n  entry_points:\n    - monkeytype=monkeytype.cli:entry_point_main\n  script: cd dist && python -m pip install --no-deps --ignore-installed .\n\nrequirements:\n  build:\n    - pip\n    - python >=3.6\n    - setuptools\n  run:\n    - python >=3.6\n    - retype\n\ntest:\n  source_files:\n    - src/tests\n  requires:\n    - cython\n    - django\n    - pytest\n    - {{ compiler('c') }}\n  imports:\n    - monkeytype\n  commands:\n    - monkeytype --help\n    - cd src && cd tests\n    - python -m pytest -k \"not test_includes_otherwise\"\n\n\nabout:\n  home: https://github.com/Instagram/MonkeyType\n  license: BSD-3-Clause\n  license_family: BSD\n  license_file: src/LICENSE\n  summary: Generating type annotations from sampled production types\n\n  description: |\n    MonkeyType collects runtime types of function arguments and return values,\n    and can automatically generate stub files or even add draft type\n    annotations directly to your Python code based on the types collected at\n    runtime.\n\nextra:\n  recipe-maintainers:\n    - bollwyvl\n    - nehaljwani\n",
  "req":{
   "__set__":true,
@@ -224,7 +241,7 @@
    "setuptools"
   ]
  },
- "smithy_version":"3.3.4",
+ "smithy_version":"3.6.2",
  "url":"https://pypi.io/packages/source/M/MonkeyType/MonkeyType-19.5.0.tar.gz",
  "version":"19.5.0"
 }
