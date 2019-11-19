@@ -65,6 +65,25 @@
     "migrator_version",
     "name"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/342799654.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"MigrationYaml",
+    "migrator_object_version":1,
+    "migrator_version":0,
+    "name":"libtiff-4.1.0"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_object_version",
+    "migrator_version",
+    "name"
+   ]
   }
  ],
  "bad":false,
@@ -209,7 +228,7 @@
  },
  "name":"libgd",
  "new_version":"gd-2.2.5",
- "pinning_version":"2019.10.28",
+ "pinning_version":"2019.11.18",
  "raw_meta_yaml":"{% set version = \"2.2.5\" %}\n\npackage:\n  name: libgd\n  version: {{ version }}\n\nsource:\n  url: https://github.com/libgd/libgd/releases/download/gd-{{version}}/libgd-{{ version }}.tar.gz\n  sha256: a66111c9b4a04e818e9e2a37d7ae8d4aae0939a100a36b0ffb52c706a09074b5\n  patches:\n    # see: https://github.com/libgd/libgd/issues/367\n    - patches/linux-fontconfig-basic.patch\n\nbuild:\n  skip: True  # [win]\n  number: 1006\n  run_exports:\n    # https://abi-laboratory.pro/?view=timeline&l=libgd\n    - {{ pin_subpackage('libgd', max_pin='x.x') }}\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - automake\n    - libtool\n    - gettext\n    - pkg-config\n    - make\n  host:\n    - expat\n    - fontconfig\n    - freetype\n    - icu\n    - jpeg\n    - libiconv  # [osx]\n    - libpng\n    - libtiff\n    - libwebp\n    - zlib\n  run:\n    - expat\n    - fontconfig\n    - freetype\n    - icu\n    - jpeg\n    - libiconv  # [osx]\n    - libpng\n    - libtiff\n    - libwebp\n    - zlib\n\ntest:\n  commands:\n    - test -f $PREFIX/lib/libgd.a  # [linux]\n    - test -f $PREFIX/lib/libgd${SHLIB_EXT}  # [not win]\n\nabout:\n    home: http://libgd.github.io/\n    summary: 'Library for the dynamic creation of images'\n    license: GD\n    license_family: BSD\n    license_file: COPYING\n\nextra:\n  recipe-maintainers:\n    - croth1\n    - ChrisBarker-NOAA\n    - ocefpaf\n",
  "req":{
   "__set__":true,
@@ -232,7 +251,7 @@
    "zlib"
   ]
  },
- "smithy_version":"3.6.0",
+ "smithy_version":"3.6.2",
  "url":"https://github.com/libgd/libgd/releases/download/gd-2.2.5/libgd-2.2.5.tar.gz",
  "version":"2.2.5"
 }
