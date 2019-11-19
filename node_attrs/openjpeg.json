@@ -50,6 +50,25 @@
     "migrator_version",
     "name"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/342706722.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"MigrationYaml",
+    "migrator_object_version":1,
+    "migrator_version":0,
+    "name":"libtiff-4.1.0"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_object_version",
+    "migrator_version",
+    "name"
+   ]
   }
  ],
  "bad":false,
@@ -157,7 +176,7 @@
  },
  "name":"openjpeg",
  "new_version":"2.3.1",
- "pinning_version":"2019.08.27",
+ "pinning_version":"2019.11.18",
  "raw_meta_yaml":"{% set version = \"2.3.1\" %}\n\npackage:\n  name: openjpeg\n  version: {{ version }}\n\nsource:\n  url: https://github.com/uclouvain/openjpeg/archive/v{{ version }}.tar.gz\n  sha256: 63f5a4713ecafc86de51bfad89cc07bb788e9bba24ebbf0c4ca637621aadb6a9\n\nbuild:\n  number: 1\n  run_exports:\n    # good compatibility in 2.x series, check before new release\n    # http://www.openjpeg.org/abi-check/timeline/openjpeg/\n    - {{ pin_subpackage('openjpeg') }}\n\nrequirements:\n  build:\n    - cmake\n    - make\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n  host:\n    - libtiff\n    - libpng\n    - zlib\n  run:\n    - libtiff\n    - libpng\n    - zlib\n\ntest:\n  files:\n    - p0_01.j2k\n  commands:\n    - opj_dump -i p0_01.j2k\n    - conda inspect linkages -p $PREFIX $PKG_NAME  # [not win]\n    - conda inspect objects -p $PREFIX $PKG_NAME  # [osx]\n\nabout:\n    home: http://www.openjpeg.org/\n    license: BSD 2-Clause\n    license_file: LICENSE\n    summary: 'An open-source JPEG 2000 codec written in C'\n\nextra:\n  recipe-maintainers:\n    - gillins\n    - mingwandroid\n    - ocefpaf\n",
  "req":{
   "__set__":true,
@@ -171,7 +190,7 @@
    "zlib"
   ]
  },
- "smithy_version":"3.4.1",
+ "smithy_version":"3.6.2",
  "url":"https://github.com/uclouvain/openjpeg/archive/v2.3.1.tar.gz",
  "version":"2.3.1"
 }
