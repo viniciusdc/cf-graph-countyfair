@@ -123,7 +123,7 @@
   "max_py_ver":"37",
   "max_r_ver":"35",
   "provider":{
-   "linux_ppc64le":"default"
+   "linux_ppc64le":"azure"
   }
  },
  "feedstock_name":"suitesparse",
@@ -136,7 +136,7 @@
    "summary":"A suite of sparse matrix algorithms"
   },
   "build":{
-   "number":"1204",
+   "number":"0",
    "run_exports":[
     "subpackage_stub",
     "subpackage_stub",
@@ -165,7 +165,7 @@
   },
   "package":{
    "name":"suitesparse",
-   "version":"4.5.6"
+   "version":"5.4.0"
   },
   "requirements":{
    "build":[
@@ -206,17 +206,35 @@
    ]
   },
   "source":{
-   "fn":"SuiteSparse-4.5.6.tar.gz",
+   "fn":"SuiteSparse-5.4.0.tar.gz",
    "patches":[
     "install_name.patch",
+    "suitesparse-config.patch",
+    "disable-coverage-clang.patch",
+    "skip-graphblas-mongoose.patch",
     "install_name.patch",
-    "install_name.patch"
+    "suitesparse-config.patch",
+    "disable-coverage-clang.patch",
+    "skip-graphblas-mongoose.patch",
+    "install_name.patch",
+    "suitesparse-config.patch",
+    "disable-coverage-clang.patch",
+    "skip-graphblas-mongoose.patch"
    ],
-   "sha256":"de5fb496bdc029e55955e05d918a1862a177805fbbd5b957e8b5ce6632f6c77e",
-   "url":"http://faculty.cse.tamu.edu/davis/SuiteSparse/SuiteSparse-4.5.6.tar.gz"
+   "sha256":"374dd136696c653e34ef3212dc8ab5b61d9a67a6791d5ec4841efb838e94dbd1",
+   "url":"http://faculty.cse.tamu.edu/davis/SuiteSparse/SuiteSparse-5.4.0.tar.gz"
   },
   "test":{
    "commands":[
+    "test ! -f ${PREFIX}/bin/mongoose",
+    "test ! -f ${PREFIX}/include/GraphBLAS.h",
+    "test ! -f ${PREFIX}/include/Mongoose.hpp",
+    "test ! -f ${PREFIX}/lib/libgraphblas${SHLIB_EXT}",
+    "test ! -f ${PREFIX}/lib/libmongoose${SHLIB_EXT}",
+    "test ! -f ${PREFIX}/lib/libgraphblas.a",
+    "test ! -f ${PREFIX}/lib/libmongoose.a",
+    "test -f ${PREFIX}/include/amd.h",
+    "test -f ${PREFIX}/include/umfpack.h",
     "test -f ${PREFIX}/lib/libamd${SHLIB_EXT}",
     "test -f ${PREFIX}/lib/libbtf${SHLIB_EXT}",
     "test -f ${PREFIX}/lib/libcamd${SHLIB_EXT}",
@@ -229,6 +247,7 @@
     "test -f ${PREFIX}/lib/librbio${SHLIB_EXT}",
     "test -f ${PREFIX}/lib/libspqr${SHLIB_EXT}",
     "test -f ${PREFIX}/lib/libsuitesparseconfig${SHLIB_EXT}",
+    "test -f ${PREFIX}/lib/libumfpack${SHLIB_EXT}",
     "test -f ${PREFIX}/lib/libumfpack${SHLIB_EXT}",
     "test -f ${PREFIX}/lib/libamd.a",
     "test -f ${PREFIX}/lib/libbtf.a",
@@ -243,6 +262,15 @@
     "test -f ${PREFIX}/lib/libspqr.a",
     "test -f ${PREFIX}/lib/libsuitesparseconfig.a",
     "test -f ${PREFIX}/lib/libumfpack.a",
+    "test ! -f ${PREFIX}/bin/mongoose",
+    "test ! -f ${PREFIX}/include/GraphBLAS.h",
+    "test ! -f ${PREFIX}/include/Mongoose.hpp",
+    "test ! -f ${PREFIX}/lib/libgraphblas${SHLIB_EXT}",
+    "test ! -f ${PREFIX}/lib/libmongoose${SHLIB_EXT}",
+    "test ! -f ${PREFIX}/lib/libgraphblas.a",
+    "test ! -f ${PREFIX}/lib/libmongoose.a",
+    "test -f ${PREFIX}/include/amd.h",
+    "test -f ${PREFIX}/include/umfpack.h",
     "test -f ${PREFIX}/lib/libamd${SHLIB_EXT}",
     "test -f ${PREFIX}/lib/libbtf${SHLIB_EXT}",
     "test -f ${PREFIX}/lib/libcamd${SHLIB_EXT}",
@@ -255,6 +283,7 @@
     "test -f ${PREFIX}/lib/librbio${SHLIB_EXT}",
     "test -f ${PREFIX}/lib/libspqr${SHLIB_EXT}",
     "test -f ${PREFIX}/lib/libsuitesparseconfig${SHLIB_EXT}",
+    "test -f ${PREFIX}/lib/libumfpack${SHLIB_EXT}",
     "test -f ${PREFIX}/lib/libumfpack${SHLIB_EXT}",
     "test -f ${PREFIX}/lib/libamd.a",
     "test -f ${PREFIX}/lib/libbtf.a",
@@ -269,6 +298,15 @@
     "test -f ${PREFIX}/lib/libspqr.a",
     "test -f ${PREFIX}/lib/libsuitesparseconfig.a",
     "test -f ${PREFIX}/lib/libumfpack.a",
+    "test ! -f ${PREFIX}/bin/mongoose",
+    "test ! -f ${PREFIX}/include/GraphBLAS.h",
+    "test ! -f ${PREFIX}/include/Mongoose.hpp",
+    "test ! -f ${PREFIX}/lib/libgraphblas${SHLIB_EXT}",
+    "test ! -f ${PREFIX}/lib/libmongoose${SHLIB_EXT}",
+    "test ! -f ${PREFIX}/lib/libgraphblas.a",
+    "test ! -f ${PREFIX}/lib/libmongoose.a",
+    "test -f ${PREFIX}/include/amd.h",
+    "test -f ${PREFIX}/include/umfpack.h",
     "test -f ${PREFIX}/lib/libamd${SHLIB_EXT}",
     "test -f ${PREFIX}/lib/libbtf${SHLIB_EXT}",
     "test -f ${PREFIX}/lib/libcamd${SHLIB_EXT}",
@@ -281,6 +319,7 @@
     "test -f ${PREFIX}/lib/librbio${SHLIB_EXT}",
     "test -f ${PREFIX}/lib/libspqr${SHLIB_EXT}",
     "test -f ${PREFIX}/lib/libsuitesparseconfig${SHLIB_EXT}",
+    "test -f ${PREFIX}/lib/libumfpack${SHLIB_EXT}",
     "test -f ${PREFIX}/lib/libumfpack${SHLIB_EXT}",
     "test -f ${PREFIX}/lib/libamd.a",
     "test -f ${PREFIX}/lib/libbtf.a",
@@ -301,7 +340,7 @@
  "name":"suitesparse",
  "new_version":"5.4.0",
  "pinning_version":"2019.04.18",
- "raw_meta_yaml":"{% set version = \"4.5.6\" %}\n\n\npackage:\n  name: suitesparse\n  version: {{ version }}\n\nsource:\n  fn: SuiteSparse-{{ version }}.tar.gz\n  url: http://faculty.cse.tamu.edu/davis/SuiteSparse/SuiteSparse-{{ version }}.tar.gz\n  sha256: de5fb496bdc029e55955e05d918a1862a177805fbbd5b957e8b5ce6632f6c77e\n  patches:\n    - install_name.patch\n\nbuild:\n  skip: true  # [win]\n  number: 1204\n  run_exports:\n    - {{ pin_subpackage(\"suitesparse\") }}\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n    - cmake\n    - make\n  host:\n    - libblas\n    - libcblas\n    - liblapack\n    - tbb-devel\n    - metis\n  run:\n    - metis\n\ntest:\n  commands:\n    - test -f ${PREFIX}/lib/libamd${SHLIB_EXT}\n    - test -f ${PREFIX}/lib/libbtf${SHLIB_EXT}\n    - test -f ${PREFIX}/lib/libcamd${SHLIB_EXT}\n    - test -f ${PREFIX}/lib/libccolamd${SHLIB_EXT}\n    - test -f ${PREFIX}/lib/libcholmod${SHLIB_EXT}\n    - test -f ${PREFIX}/lib/libcolamd${SHLIB_EXT}\n    - test -f ${PREFIX}/lib/libcxsparse${SHLIB_EXT}\n    - test -f ${PREFIX}/lib/libklu${SHLIB_EXT}\n    - test -f ${PREFIX}/lib/libldl${SHLIB_EXT}\n    - test -f ${PREFIX}/lib/librbio${SHLIB_EXT}\n    - test -f ${PREFIX}/lib/libspqr${SHLIB_EXT}\n    - test -f ${PREFIX}/lib/libsuitesparseconfig${SHLIB_EXT}\n    - test -f ${PREFIX}/lib/libumfpack${SHLIB_EXT}\n    - test -f ${PREFIX}/lib/libamd.a\n    - test -f ${PREFIX}/lib/libbtf.a\n    - test -f ${PREFIX}/lib/libcamd.a\n    - test -f ${PREFIX}/lib/libccolamd.a\n    - test -f ${PREFIX}/lib/libcholmod.a\n    - test -f ${PREFIX}/lib/libcolamd.a\n    - test -f ${PREFIX}/lib/libcxsparse.a\n    - test -f ${PREFIX}/lib/libklu.a\n    - test -f ${PREFIX}/lib/libldl.a\n    - test -f ${PREFIX}/lib/librbio.a\n    - test -f ${PREFIX}/lib/libspqr.a\n    - test -f ${PREFIX}/lib/libsuitesparseconfig.a\n    - test -f ${PREFIX}/lib/libumfpack.a\n\nabout:\n  home: http://faculty.cse.tamu.edu/davis/suitesparse.html\n  license: LGPL v2 (AMD, BTF, etc), BSD 3-clause (UFget), GPL v2 (UMFPACK, RBIO, SPQR, GPUQRENGINE), Apache 2.0 (Metis)\n  license_file: LICENSE.txt\n  summary: A suite of sparse matrix algorithms\n\nextra:\n  recipe-maintainers:\n    - grlee77\n    - jakirkham\n    - basnijholt\n    - minrk\n    - jayfurmanek\n",
+ "raw_meta_yaml":"{% set version = \"5.4.0\" %}\n\npackage:\n  name: suitesparse\n  version: {{ version }}\n\nsource:\n  fn: SuiteSparse-{{ version }}.tar.gz\n  url: http://faculty.cse.tamu.edu/davis/SuiteSparse/SuiteSparse-{{ version }}.tar.gz\n  sha256: 374dd136696c653e34ef3212dc8ab5b61d9a67a6791d5ec4841efb838e94dbd1\n  patches:\n    - install_name.patch\n    - suitesparse-config.patch\n    - disable-coverage-clang.patch\n    - skip-graphblas-mongoose.patch\n\nbuild:\n  skip: true  # [win]\n  number: 0\n  run_exports:\n    - {{ pin_subpackage(\"suitesparse\") }}\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n    - cmake\n    - make\n  host:\n    - libblas\n    - libcblas\n    - liblapack\n    - tbb-devel\n    - metis\n  run:\n    - metis\n\ntest:\n  commands:\n    # graphblas and mongoose are omitted\n    - test ! -f ${PREFIX}/bin/mongoose\n    - test ! -f ${PREFIX}/include/GraphBLAS.h\n    - test ! -f ${PREFIX}/include/Mongoose.hpp\n    - test ! -f ${PREFIX}/lib/libgraphblas${SHLIB_EXT}\n    - test ! -f ${PREFIX}/lib/libmongoose${SHLIB_EXT}\n    - test ! -f ${PREFIX}/lib/libgraphblas.a\n    - test ! -f ${PREFIX}/lib/libmongoose.a\n\n    - test -f ${PREFIX}/include/amd.h\n    - test -f ${PREFIX}/include/umfpack.h\n    - test -f ${PREFIX}/lib/libamd${SHLIB_EXT}\n    - test -f ${PREFIX}/lib/libbtf${SHLIB_EXT}\n    - test -f ${PREFIX}/lib/libcamd${SHLIB_EXT}\n    - test -f ${PREFIX}/lib/libccolamd${SHLIB_EXT}\n    - test -f ${PREFIX}/lib/libcholmod${SHLIB_EXT}\n    - test -f ${PREFIX}/lib/libcolamd${SHLIB_EXT}\n    - test -f ${PREFIX}/lib/libcxsparse${SHLIB_EXT}\n    - test -f ${PREFIX}/lib/libklu${SHLIB_EXT}\n    - test -f ${PREFIX}/lib/libldl${SHLIB_EXT}\n    - test -f ${PREFIX}/lib/librbio${SHLIB_EXT}\n    - test -f ${PREFIX}/lib/libspqr${SHLIB_EXT}\n    - test -f ${PREFIX}/lib/libsuitesparseconfig${SHLIB_EXT}\n    - test -f ${PREFIX}/lib/libumfpack${SHLIB_EXT}\n    - test -f ${PREFIX}/lib/libumfpack${SHLIB_EXT}\n    - test -f ${PREFIX}/lib/libamd.a\n    - test -f ${PREFIX}/lib/libbtf.a\n    - test -f ${PREFIX}/lib/libcamd.a\n    - test -f ${PREFIX}/lib/libccolamd.a\n    - test -f ${PREFIX}/lib/libcholmod.a\n    - test -f ${PREFIX}/lib/libcolamd.a\n    - test -f ${PREFIX}/lib/libcxsparse.a\n    - test -f ${PREFIX}/lib/libklu.a\n    - test -f ${PREFIX}/lib/libldl.a\n    - test -f ${PREFIX}/lib/librbio.a\n    - test -f ${PREFIX}/lib/libspqr.a\n    - test -f ${PREFIX}/lib/libsuitesparseconfig.a\n    - test -f ${PREFIX}/lib/libumfpack.a\n\nabout:\n  home: http://faculty.cse.tamu.edu/davis/suitesparse.html\n  license: LGPL v2 (AMD, BTF, etc), BSD 3-clause (UFget), GPL v2 (UMFPACK, RBIO, SPQR, GPUQRENGINE), Apache 2.0 (Metis)\n  license_file: LICENSE.txt\n  summary: A suite of sparse matrix algorithms\n\nextra:\n  recipe-maintainers:\n    - grlee77\n    - jakirkham\n    - basnijholt\n    - minrk\n    - jayfurmanek\n",
  "req":{
   "__set__":true,
   "elements":[
@@ -318,5 +357,5 @@
  },
  "smithy_version":"3.3.3",
  "url":"http://faculty.cse.tamu.edu/davis/SuiteSparse/SuiteSparse-4.5.6.tar.gz",
- "version":"4.5.6"
+ "version":"5.4.0"
 }

@@ -226,7 +226,7 @@
   },
   "build":{
    "detect_binary_files_with_prefix":true,
-   "number":"1",
+   "number":"2",
    "skip":true
   },
   "extra":{
@@ -268,6 +268,8 @@
    ],
    "host":[
     "cmake",
+    "openjpeg",
+    "libpng",
     "libnetcdf",
     "hdf5",
     "m2-bash",
@@ -279,14 +281,14 @@
     "m2-diffutils",
     "m2-perl",
     "cmake",
-    "jasper",
+    "openjpeg",
     "libpng",
     "libnetcdf",
     "libaec",
     "hdf5",
     "perl",
     "cmake",
-    "jasper",
+    "openjpeg",
     "libpng",
     "libnetcdf",
     "libaec",
@@ -294,14 +296,16 @@
     "perl"
    ],
    "run":[
+    "openjpeg",
+    "libpng",
     "libnetcdf",
     "hdf5",
-    "jasper",
+    "openjpeg",
     "libpng",
     "libnetcdf",
     "libaec",
     "hdf5",
-    "jasper",
+    "openjpeg",
     "libpng",
     "libnetcdf",
     "libaec",
@@ -309,6 +313,11 @@
    ]
   },
   "source":{
+   "patches":[
+    "fix-tests-path.patch",
+    "fix-tests-path.patch",
+    "fix-tests-path.patch"
+   ],
    "sha256":"16da742691c0ac81ccc378ae3f97311ef0dfdc82505aa4c652eb773e911cc9d6",
    "url":"https://confluence.ecmwf.int/download/attachments/45757960/eccodes-2.14.1-Source.tar.gz"
   },
@@ -329,7 +338,7 @@
  "name":"eccodes",
  "new_version":"2.14.1",
  "pinning_version":"2019.10.11",
- "raw_meta_yaml":"{% set version = \"2.14.1\" %}\n\npackage:\n  name: eccodes\n  version: {{ version }}\n\nsource:\n  url: https://confluence.ecmwf.int/download/attachments/45757960/eccodes-{{ version }}-Source.tar.gz\n  sha256: 16da742691c0ac81ccc378ae3f97311ef0dfdc82505aa4c652eb773e911cc9d6\n\nbuild:\n  number: 1\n  skip: true  # [win and vc<14]\n  detect_binary_files_with_prefix: true\n\nrequirements:\n  build:\n    - {{ compiler('fortran') }}  # [not win]\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n  host:\n    - cmake\n    - jasper  # [not win]\n    - libpng  # [not win]\n    - libnetcdf\n    - libaec  # [not win]\n    - hdf5\n    # These are only used for testing, that is why we don't need them in `run`.\n    - perl  # [not win]\n    - m2-bash  # [win]\n    - m2-findutils  # [win]\n    - m2-coreutils  # [win]\n    - m2-grep  # [win]\n    - m2-sed  # [win]\n    - m2-gawk  # [win]\n    - m2-diffutils  # [win]\n    - m2-perl  # [win]\n  run:\n    - jasper  # [not win]\n    - libpng  # [not win]\n    - libnetcdf\n    - libaec  # [not win]\n    - hdf5\n\ntest:\n  commands:\n    - codes_info\n    - ls $(codes_info -s)  # [not win]\n    - ls $(codes_info -d)  # [not win]\n    - for /F \"tokens=* USEBACKQ\" %%F IN (`codes_info -s`) DO (ls %%F)  # [win]\n    - for /F \"tokens=* USEBACKQ\" %%F IN (`codes_info -d`) DO (ls %%F)  # [win]\n\nabout:\n  home: https://software.ecmwf.int/wiki/display/ECC/ecCodes+Home\n  license: Apache 2.0\n  license_file: LICENSE\n  license_family: Apache\n  summary: ECMWF ecCodes Copyright 2005-2018 ECMWF.\n\nextra:\n  recipe-maintainers:\n    - kmuehlbauer\n    - kynan\n    - ocefpaf\n    - pelson\n    - StephanSiemen\n    - dtip\n",
+ "raw_meta_yaml":"{% set version = \"2.14.1\" %}\n\npackage:\n  name: eccodes\n  version: {{ version }}\n\nsource:\n  url: https://confluence.ecmwf.int/download/attachments/45757960/eccodes-{{ version }}-Source.tar.gz\n  sha256: 16da742691c0ac81ccc378ae3f97311ef0dfdc82505aa4c652eb773e911cc9d6\n  patches:\n    - fix-tests-path.patch\n\nbuild:\n  number: 2\n  skip: true  # [win and vc<14]\n  detect_binary_files_with_prefix: true\n\nrequirements:\n  build:\n    - {{ compiler('fortran') }}  # [not win]\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n  host:\n    - cmake\n    - openjpeg \n    - libpng\n    - libnetcdf\n    - libaec  # [not win]\n    - hdf5\n    # These are only used for testing, that is why we don't need them in `run`.\n    - perl  # [not win]\n    - m2-bash  # [win]\n    - m2-findutils  # [win]\n    - m2-coreutils  # [win]\n    - m2-grep  # [win]\n    - m2-sed  # [win]\n    - m2-gawk  # [win]\n    - m2-diffutils  # [win]\n    - m2-perl  # [win]\n  run:\n    - openjpeg\n    - libpng\n    - libnetcdf\n    - libaec  # [not win]\n    - hdf5\n\ntest:\n  commands:\n    - codes_info\n    - ls $(codes_info -s)  # [not win]\n    - ls $(codes_info -d)  # [not win]\n    - for /F \"tokens=* USEBACKQ\" %%F IN (`codes_info -s`) DO (ls %%F)  # [win]\n    - for /F \"tokens=* USEBACKQ\" %%F IN (`codes_info -d`) DO (ls %%F)  # [win]\n\nabout:\n  home: https://software.ecmwf.int/wiki/display/ECC/ecCodes+Home\n  license: Apache 2.0\n  license_file: LICENSE\n  license_family: Apache\n  summary: ECMWF ecCodes Copyright 2005-2018 ECMWF.\n\nextra:\n  recipe-maintainers:\n    - kmuehlbauer\n    - kynan\n    - ocefpaf\n    - pelson\n    - StephanSiemen\n    - dtip\n",
  "req":{
   "__set__":true,
   "elements":[
@@ -338,7 +347,6 @@
    "cxx_compiler_stub",
    "fortran_compiler_stub",
    "hdf5",
-   "jasper",
    "libaec",
    "libnetcdf",
    "libpng",
@@ -350,6 +358,7 @@
    "m2-grep",
    "m2-perl",
    "m2-sed",
+   "openjpeg",
    "perl"
   ]
  },
