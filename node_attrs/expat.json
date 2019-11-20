@@ -35,7 +35,7 @@
    ]
   }
  ],
- "bad":"make_graph: 502",
+ "bad":false,
  "conda-forge.yml":{
   "compiler_stack":"comp7",
   "max_py_ver":"37",
@@ -117,7 +117,7 @@
   }
  },
  "name":"expat",
- "new_version":false,
+ "new_version":"R_2_2_9",
  "pinning_version":"2019.01.21",
  "raw_meta_yaml":"{% set version = \"2.2.5\" %}\n{% set ver = version|replace(\".\", \"_\") %}\n\npackage:\n  name: expat\n  version: {{ version }}\n\nsource:\n  url: https://github.com/libexpat/libexpat/releases/download/R_{{ ver }}/expat-{{ version }}.tar.bz2\n  sha256: d9dc32efba7e74f788fcc4f212a43216fc37cf5f23f4c2339664d473353aedf6\n\nbuild:\n  number: 1004\n  run_exports:\n    # changes soname at major versions, default settings OK\n    # https://abi-laboratory.pro/tracker/timeline/expat/\n    - {{ pin_subpackage('expat') }}\n\nrequirements:\n  build:\n    - cmake  # [win]\n    - make  # [unix]\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n  host:\n    - msinttypes  # [win and vc<14]\n\ntest:\n  commands:\n    - xmlwf -h\n\nabout:\n  home: http://expat.sourceforge.net/\n  license: MIT\n  license_family: MIT\n  license_file: COPYING\n  summary: 'Expat XML parser library in C'\n\nextra:\n  recipe-maintainers:\n    - kwilcox\n    - ocefpaf\n    - pelson\n    - mingwandroid\n    - msarahan\n    - scopatz\n",
  "req":{

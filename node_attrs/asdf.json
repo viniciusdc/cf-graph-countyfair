@@ -228,7 +228,7 @@
    "home":"http://github.com/spacetelescope/asdf",
    "license":"BSD 3-clause",
    "license_family":"BSD",
-   "license_file":"",
+   "license_file":"licenses/LICENSE.rst",
    "summary":"Python tools to handle ASDF files"
   },
   "build":{
@@ -239,53 +239,62 @@
    ],
    "noarch":"python",
    "number":"0",
-   "script":"python setup.py install --offline --single-version-externally-managed --record=record.txt"
+   "script":" -m pip install . --no-deps -vv"
   },
   "extra":{
    "recipe-maintainers":[
     "mwcraig",
     "bsipocz",
     "drdavella",
+    "jhunkeler",
     "mwcraig",
     "bsipocz",
     "drdavella",
+    "jhunkeler",
     "mwcraig",
     "bsipocz",
-    "drdavella"
+    "drdavella",
+    "jhunkeler"
    ]
   },
   "package":{
    "name":"asdf",
-   "version":"2.3.1"
+   "version":"2.4.2"
   },
   "requirements":{
-   "build":[
-    "python",
+   "host":[
+    "pip",
+    "python >=3.3",
     "setuptools",
+    "setuptools_scm",
     "six >=1.9.0",
-    "python",
+    "pip",
+    "python >=3.3",
     "setuptools",
+    "setuptools_scm",
     "six >=1.9.0",
-    "python",
+    "pip",
+    "python >=3.3",
     "setuptools",
+    "setuptools_scm",
     "six >=1.9.0"
    ],
    "run":[
-    "python",
+    "python >=3.3",
     "pyyaml >=3.10",
     "jsonschema >=2.3.0",
     "six >=1.9.0",
     "pytest >=2.7.2",
     "numpy >=1.8",
     "semantic_version >=2.3.1",
-    "python",
+    "python >=3.3",
     "pyyaml >=3.10",
     "jsonschema >=2.3.0",
     "six >=1.9.0",
     "pytest >=2.7.2",
     "numpy >=1.8",
     "semantic_version >=2.3.1",
-    "python",
+    "python >=3.3",
     "pyyaml >=3.10",
     "jsonschema >=2.3.0",
     "six >=1.9.0",
@@ -295,9 +304,9 @@
    ]
   },
   "source":{
-   "fn":"asdf-2.3.1.tar.gz",
-   "sha256":"deea56c2c685e56802bfd328f9df9a60b4d209774251c4166a2605b4ad023697",
-   "url":"https://pypi.io/packages/source/a/asdf/asdf-2.3.1.tar.gz"
+   "fn":"asdf-2.4.2.tar.gz",
+   "sha256":"6ff3557190c6a33781dae3fd635a8edf0fa0c24c6aca27d8679af36408ea8ff2",
+   "url":"https://pypi.io/packages/source/a/asdf/asdf-2.4.2.tar.gz"
   },
   "test":{
    "commands":[
@@ -327,21 +336,23 @@
  "name":"asdf",
  "new_version":"2.4.2",
  "pinning_version":"2019.08.27",
- "raw_meta_yaml":"{% set name = \"asdf\" %}\n{% set version = \"2.3.1\" %}\n{% set hash_type = \"sha256\" %}\n{% set hash_value = \"deea56c2c685e56802bfd328f9df9a60b4d209774251c4166a2605b4ad023697\" %}\npackage:\n  name: '{{ name|lower }}'\n  version: '{{ version }}'\n\nsource:\n  fn: '{{ name }}-{{ version }}.tar.gz'\n  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz\n  '{{ hash_type }}': '{{ hash_value }}'\n\nbuild:\n  noarch: python\n  number: 0\n  entry_points:\n    - asdftool = asdf.commands.main:main\n  script: python setup.py install --offline --single-version-externally-managed --record=record.txt\n\nrequirements:\n  build:\n    - python\n    - setuptools\n    - six >=1.9.0\n  run:\n    - python\n    - pyyaml >=3.10\n    - jsonschema >=2.3.0\n    - six >=1.9.0\n    - pytest >=2.7.2\n    - numpy >=1.8\n    - semantic_version >=2.3.1\n\ntest:\n  imports:\n    - asdf\n    - asdf.commands\n    - asdf.extern\n    - asdf.tags\n    - asdf.tags.core\n  commands:\n    - asdftool --help\n\nabout:\n  home: http://github.com/spacetelescope/asdf\n  license: BSD 3-clause\n  license_family: BSD\n  license_file: ''\n  summary: Python tools to handle ASDF files\n  description: |\n    Python library for reading and writing ASDF files. The Advanced Scientific\n    Data Format (ASDF) is a next generation interchange format for scientific\n    data.\n  doc_url: http://asdf.readthedocs.io/\n  dev_url: http://github.com/spacetelescope/asdf\n\nextra:\n  recipe-maintainers:\n    - mwcraig\n    - bsipocz\n    - drdavella\n",
+ "raw_meta_yaml":"{% set name = \"asdf\" %}\n{% set version = \"2.4.2\" %}\n{% set hash_type = \"sha256\" %}\n{% set hash_value = \"6ff3557190c6a33781dae3fd635a8edf0fa0c24c6aca27d8679af36408ea8ff2\" %}\npackage:\n  name: '{{ name|lower }}'\n  version: '{{ version }}'\n\nsource:\n  fn: '{{ name }}-{{ version }}.tar.gz'\n  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz\n  '{{ hash_type }}': '{{ hash_value }}'\n\nbuild:\n  noarch: python\n  number: 0\n  entry_points:\n    - asdftool = asdf.commands.main:main\n  script: \"{{ PYTHON }} -m pip install . --no-deps -vv\"\n\nrequirements:\n  host:\n    - pip\n    - python >=3.3\n    - setuptools\n    - setuptools_scm\n    - six >=1.9.0\n  run:\n    - python >=3.3\n    - pyyaml >=3.10\n    - jsonschema >=2.3.0\n    - six >=1.9.0\n    - pytest >=2.7.2\n    - numpy >=1.8\n    - semantic_version >=2.3.1\n\ntest:\n  imports:\n    - asdf\n    - asdf.commands\n    - asdf.extern\n    - asdf.tags\n    - asdf.tags.core\n  commands:\n    - asdftool --help\n\nabout:\n  home: http://github.com/spacetelescope/asdf\n  license: BSD 3-clause\n  license_family: BSD\n  license_file: licenses/LICENSE.rst\n  summary: Python tools to handle ASDF files\n  description: |\n    Python library for reading and writing ASDF files. The Advanced Scientific\n    Data Format (ASDF) is a next generation interchange format for scientific\n    data.\n  doc_url: http://asdf.readthedocs.io/\n  dev_url: http://github.com/spacetelescope/asdf\n\nextra:\n  recipe-maintainers:\n    - mwcraig\n    - bsipocz\n    - drdavella\n    - jhunkeler\n",
  "req":{
   "__set__":true,
   "elements":[
    "jsonschema",
    "numpy",
+   "pip",
    "pytest",
    "python",
    "pyyaml",
    "semantic_version",
    "setuptools",
+   "setuptools_scm",
    "six"
   ]
  },
  "smithy_version":"3.4.1",
  "url":"https://pypi.io/packages/source/a/asdf/asdf-2.3.1.tar.gz",
- "version":"2.3.1"
+ "version":"2.4.2"
 }
