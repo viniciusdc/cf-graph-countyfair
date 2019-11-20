@@ -1,6 +1,7 @@
 {
- "bad":false,
+ "bad":"make_graph: 503",
  "feedstock_name":"gitlab-runner",
+ "new_version":false,
  "raw_meta_yaml":"{% set import_path = \"gitlab.com/gitlab-org/gitlab-runner\" %}\n{% set version = \"12.1.0\" %}\n{% set branch = '-'.join(version.split('.')[:2] +['stable']) %}\n{% set built = datetime.datetime.now().isoformat() %}\n\n{% set name = import_path.split('/')[-1] %}\n{% set pkg_src = ('src/'+import_path).replace(\"/\", os.sep) %}\n\npackage:\n  name: \"{{ name|lower }}\"\n  version: \"{{ version }}\"\n\nsource:\n  - folder: {{ pkg_src }}\n    url: https://{{ import_path }}/-/archive/v{{ version }}/{{ name }}-v{{ version }}.tar.bz2\n    sha256: 49e7993e1eabc362ec99562e84931e699b77948efb6669f3e98a5dc40f2b2b66\n\nbuild:\n  number: 0\n  script:\n    - pushd {{ pkg_src }}\n    {% set flags = dict(VERSION=version, REVISION=\"%PKG_BUILDNUM%\" if win else \"$PKG_BUILDNUM\", BRANCH=branch, BUILT=built) %}\n    - go install -v -ldflags \"{% for key,value in flags.items() %}-X {{ import_path }}/common.{{ key }}='{{ value }}' {% endfor %}\" .\n\nrequirements:\n  build:\n    - {{ compiler(\"go\") }}\n\ntest:\n  commands:\n    - gitlab-runner --version\n\nabout:\n  summary: \"The official GitLab CI runner written in Go\"\n  license: \"MIT\"\n  license_family: MIT\n  license_file: {{ pkg_src }}/LICENSE\n  home: \"https://gitlab.com/gitlab-org/gitlab-runner\"\n  dev_url: \"https://gitlab.com/gitlab-org/gitlab-runner\"\n  doc_url: \"https://docs.gitlab.com/runner/\"\n\nextra:\n  recipe-maintainers:\n    - duncanmmacleod\n    - sodre\n",
  "time":1568135263.5648887
 }
