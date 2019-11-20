@@ -36,7 +36,7 @@
    "summary":"pybind11 details for xtensor"
   },
   "build":{
-   "number":"0"
+   "number":"1"
   },
   "extra":{
    "recipe-maintainers":[
@@ -73,12 +73,15 @@
     "python",
     "setuptools",
     "pkgconfig",
+    "pybind11",
     "python",
     "setuptools",
     "pkgconfig",
+    "pybind11",
     "python",
     "setuptools",
-    "pkgconfig"
+    "pkgconfig",
+    "pybind11"
    ]
   },
   "source":{
@@ -111,7 +114,7 @@
  "name":"pyxtensor",
  "new_version":"0.1.0",
  "pinning_version":"2019.11.01",
- "raw_meta_yaml":"{% set name = \"pyxtensor\" %}\n{% set version = \"0.1.0\" %}\n{% set sha256 = \"3dc386a38e228ce5d6cae541c2daeb5b98fa7e6645cce10313932a3a252036f0\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  fn: {{ name }}-{{ version }}.tar.gz\n  url: https://github.com/tdegeus/pyxtensor/archive/v{{ version }}.tar.gz\n  sha256: {{ sha256 }}\n\nbuild:\n  number: 0\n\nrequirements:\n  build:\n    - {{ compiler('cxx') }}\n    - cmake\n  host:\n    - python\n    - pip\n    - setuptools\n  run:\n    - python\n    - setuptools\n    - pkgconfig\n\ntest:\n  commands:\n    - test -d ${PREFIX}/include/pyxtensor  # [unix]\n    - test -f ${PREFIX}/include/pyxtensor/pybind11_xarray.hpp  # [unix]\n    - test -f ${PREFIX}/include/pyxtensor/pybind11_xtensor.hpp  # [unix]\n    - test -f ${PREFIX}/include/pyxtensor/pybind11_xtensor_fixed.hpp  # [unix]\n    - test -f ${PREFIX}/include/pyxtensor/pyxtensor.hpp  # [unix]\n    - test -f ${PREFIX}/lib/cmake/pyxtensor/pyxtensorConfig.cmake  # [unix]\n    - if exist %LIBRARY_PREFIX%\\include\\pyxtensor\\pybind11_xarray.hpp (exit 0) else (exit 1)  # [win]\n    - if exist %LIBRARY_PREFIX%\\include\\pyxtensor\\pybind11_xtensor.hpp (exit 0) else (exit 1)  # [win]\n    - if exist %LIBRARY_PREFIX%\\include\\pyxtensor\\pybind11_xtensor_fixed.hpp (exit 0) else (exit 1)  # [win]\n    - if exist %LIBRARY_PREFIX%\\include\\pyxtensor\\pyxtensor.hpp (exit 0) else (exit 1)  # [win]\n    - if exist %LIBRARY_PREFIX%\\lib\\cmake\\pyxtensorConfig.cmake (exit 0) else (exit 1)  # [win]\n\nabout:\n  home: https://github.com/tdegeus/pyxtensor\n  license: MIT\n  license_family: MIT\n  license_file: LICENSE\n  summary: 'pybind11 details for xtensor'\n  description: 'pybind11 details for xtensor'\n  doc_url: https://github.com/tdegeus/pyxtensor\n  dev_url: https://github.com/tdegeus/pyxtensor\n\nextra:\n  recipe-maintainers:\n    - tdegeus\n",
+ "raw_meta_yaml":"{% set name = \"pyxtensor\" %}\n{% set version = \"0.1.0\" %}\n{% set sha256 = \"3dc386a38e228ce5d6cae541c2daeb5b98fa7e6645cce10313932a3a252036f0\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  fn: {{ name }}-{{ version }}.tar.gz\n  url: https://github.com/tdegeus/pyxtensor/archive/v{{ version }}.tar.gz\n  sha256: {{ sha256 }}\n\nbuild:\n  number: 1\n\nrequirements:\n  build:\n    - {{ compiler('cxx') }}\n    - cmake\n  host:\n    - python\n    - pip\n    - setuptools\n  run:\n    - python\n    - setuptools\n    - pkgconfig\n    - pybind11\n\ntest:\n  commands:\n    - test -d ${PREFIX}/include/pyxtensor  # [unix]\n    - test -f ${PREFIX}/include/pyxtensor/pybind11_xarray.hpp  # [unix]\n    - test -f ${PREFIX}/include/pyxtensor/pybind11_xtensor.hpp  # [unix]\n    - test -f ${PREFIX}/include/pyxtensor/pybind11_xtensor_fixed.hpp  # [unix]\n    - test -f ${PREFIX}/include/pyxtensor/pyxtensor.hpp  # [unix]\n    - test -f ${PREFIX}/lib/cmake/pyxtensor/pyxtensorConfig.cmake  # [unix]\n    - if exist %LIBRARY_PREFIX%\\include\\pyxtensor\\pybind11_xarray.hpp (exit 0) else (exit 1)  # [win]\n    - if exist %LIBRARY_PREFIX%\\include\\pyxtensor\\pybind11_xtensor.hpp (exit 0) else (exit 1)  # [win]\n    - if exist %LIBRARY_PREFIX%\\include\\pyxtensor\\pybind11_xtensor_fixed.hpp (exit 0) else (exit 1)  # [win]\n    - if exist %LIBRARY_PREFIX%\\include\\pyxtensor\\pyxtensor.hpp (exit 0) else (exit 1)  # [win]\n    - if exist %LIBRARY_PREFIX%\\lib\\cmake\\pyxtensorConfig.cmake (exit 0) else (exit 1)  # [win]\n\nabout:\n  home: https://github.com/tdegeus/pyxtensor\n  license: MIT\n  license_family: MIT\n  license_file: LICENSE\n  summary: 'pybind11 details for xtensor'\n  description: 'pybind11 details for xtensor'\n  doc_url: https://github.com/tdegeus/pyxtensor\n  dev_url: https://github.com/tdegeus/pyxtensor\n\nextra:\n  recipe-maintainers:\n    - tdegeus\n",
  "req":{
   "__set__":true,
   "elements":[
@@ -119,6 +122,7 @@
    "cxx_compiler_stub",
    "pip",
    "pkgconfig",
+   "pybind11",
    "python",
    "setuptools"
   ]
