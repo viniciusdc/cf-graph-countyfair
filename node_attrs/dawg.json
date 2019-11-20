@@ -66,8 +66,8 @@
    "summary":"DAFSA-based dictionary-like read-only objects for Python"
   },
   "build":{
-   "number":"0",
-   "script":"python setup.py install --single-version-externally-managed --record record.txt"
+   "number":"1",
+   "script":" -m pip install . -vv"
   },
   "extra":{
    "recipe-maintainers":[
@@ -91,11 +91,11 @@
    ],
    "host":[
     "python",
-    "setuptools",
+    "pip",
     "python",
-    "setuptools",
+    "pip",
     "python",
-    "setuptools"
+    "pip"
    ],
    "run":[
     "python",
@@ -104,7 +104,11 @@
    ]
   },
   "source":{
-   "fn":"DAWG-0.7.8.tar.gz",
+   "patches":[
+    "41.patch",
+    "41.patch",
+    "41.patch"
+   ],
    "sha256":"30d5da3e48b8cbe5ec94c5a202d2962780d3895ba0883123e6788565f71b2953",
    "url":"https://pypi.io/packages/source/D/DAWG/DAWG-0.7.8.tar.gz"
   },
@@ -119,14 +123,14 @@
  "name":"dawg",
  "new_version":"0.7.8",
  "pinning_version":"2019.11.01",
- "raw_meta_yaml":"{% set name = \"DAWG\" %}\n{% set version = \"0.7.8\" %}\n{% set sha256 = \"30d5da3e48b8cbe5ec94c5a202d2962780d3895ba0883123e6788565f71b2953\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  fn: {{ name }}-{{ version }}.tar.gz\n  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz\n  sha256: {{ sha256 }}\n\nbuild:\n  number: 0\n  script: python setup.py install --single-version-externally-managed --record record.txt\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n  host:\n    - python\n    - setuptools\n  run:\n    - python\n\ntest:\n  imports:\n    - dawg\n\nabout:\n  home: https://github.com/pytries/DAWG\n  license: MIT\n  license_family: MIT\n  license_file: LICENSE\n  summary: 'DAFSA-based dictionary-like read-only objects for Python'\n  doc_url: http://dawg.readthedocs.io\n\nextra:\n  recipe-maintainers:\n    - mcs07\n",
+ "raw_meta_yaml":"{% set name = \"DAWG\" %}\n{% set version = \"0.7.8\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz\n  sha256: 30d5da3e48b8cbe5ec94c5a202d2962780d3895ba0883123e6788565f71b2953\n  patches:\n    # 2 commits from upstream PR #41 that fix build with python 3.7+\n    - 41.patch\n\nbuild:\n  number: 1\n  script: \"{{ PYTHON }} -m pip install . -vv\"\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n  host:\n    - python\n    - pip\n  run:\n    - python\n\ntest:\n  imports:\n    - dawg\n\nabout:\n  home: https://github.com/pytries/DAWG\n  license: MIT\n  license_family: MIT\n  license_file: LICENSE\n  summary: 'DAFSA-based dictionary-like read-only objects for Python'\n  doc_url: http://dawg.readthedocs.io\n\nextra:\n  recipe-maintainers:\n    - mcs07\n",
  "req":{
   "__set__":true,
   "elements":[
    "c_compiler_stub",
    "cxx_compiler_stub",
-   "python",
-   "setuptools"
+   "pip",
+   "python"
   ]
  },
  "smithy_version":"3.6.1",
