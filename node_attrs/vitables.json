@@ -90,7 +90,7 @@
   },
   "build":{
    "number":"5",
-   "script":" -m pip install . -vv --no-deps"
+   "script":" -m pip install . --no-deps -vv"
   },
   "extra":{
    "recipe-maintainers":[
@@ -111,26 +111,23 @@
    ],
    "host":[
     "python",
-    "setuptools",
-    "pytables >=3.0",
-    "cython",
-    "pyqt",
-    "qtpy >=1.2.1",
     "pip",
-    "python",
-    "setuptools",
     "pytables >=3.0",
     "cython",
     "pyqt",
     "qtpy >=1.2.1",
+    "python",
     "pip",
-    "python",
-    "setuptools",
     "pytables >=3.0",
     "cython",
     "pyqt",
     "qtpy >=1.2.1",
-    "pip"
+    "python",
+    "pip",
+    "pytables >=3.0",
+    "cython",
+    "pyqt",
+    "qtpy >=1.2.1"
    ],
    "run":[
     "python",
@@ -148,7 +145,6 @@
    ]
   },
   "source":{
-   "fn":"vitables-3.0.0.tar.gz",
    "sha256":"b4067584a94b7270fe878ca53a474e0a60a9e63c43b9783991a69c3fb17ec291",
    "url":"https://github.com/uvemas/ViTables/archive/v3.0.0.tar.gz"
   },
@@ -168,7 +164,7 @@
  "name":"vitables",
  "new_version":"3.0.0",
  "pinning_version":"2019.11.01",
- "raw_meta_yaml":"{% set name = \"vitables\" %}\n{% set version = \"3.0.0\" %}\n{% set sha256 = \"b4067584a94b7270fe878ca53a474e0a60a9e63c43b9783991a69c3fb17ec291\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  fn: {{ name }}-{{ version }}.tar.gz\n  url: https://github.com/uvemas/ViTables/archive/v{{ version }}.tar.gz\n  sha256: {{ sha256 }}\n\nbuild:\n  number: 5\n  script: \"{{ PYTHON }} -m pip install . -vv --no-deps\"\n  skip: True  # [py<36]\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n  host:\n    - python\n    - setuptools\n    - pytables >=3.0\n    - cython\n    - pyqt\n    - qtpy >=1.2.1\n    - pip\n  run:\n    - python\n    - pytables >=3.0\n    - pyqt\n    - qtpy >=1.2.1\n\ntest:\n  imports:\n    - vitables.utils\n  commands:\n    - test -f $PREFIX/bin/vitables  # [unix]\n    - if not exist %PREFIX%\\\\Scripts\\\\vitables.exe exit 1  # [win]\n\nabout:\n  home: http://vitables.org/\n  license: GPL v3\n  license_family: GPL\n  license_file: LICENSE.txt\n  summary: 'ViTables, a GUI for PyTables'\n  description: |\n    ViTables is a graphical tool for browsing and editing files in both PyTables\n    and HDF5 format. With ViTables you can easily navigate through the data\n    hierarchy, view and modify metadata, view actual data and more.\n  doc_url: http://vitables.org/\n  dev_url: https://github.com/uvemas/ViTables\n\nextra:\n  recipe-maintainers:\n    - scopatz\n",
+ "raw_meta_yaml":"{% set version = \"3.0.0\" %}\n\npackage:\n  name: vitables\n  version: {{ version }}\n\nsource:\n  url: https://github.com/uvemas/ViTables/archive/v{{ version }}.tar.gz\n  sha256: b4067584a94b7270fe878ca53a474e0a60a9e63c43b9783991a69c3fb17ec291\n\nbuild:\n  number: 5\n  script: \"{{ PYTHON }} -m pip install . --no-deps -vv\"\n  skip: True  # [py<36]\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n  host:\n    - python\n    - pip\n    - pytables >=3.0\n    - cython\n    - pyqt\n    - qtpy >=1.2.1\n  run:\n    - python\n    - pytables >=3.0\n    - pyqt\n    - qtpy >=1.2.1\n\ntest:\n  imports:\n    - vitables.utils\n  commands:\n    - test -f $PREFIX/bin/vitables  # [unix]\n    - if not exist %PREFIX%\\\\Scripts\\\\vitables.exe exit 1  # [win]\n\nabout:\n  home: http://vitables.org/\n  license: GPL v3\n  license_family: GPL\n  license_file: LICENSE.txt\n  summary: 'ViTables, a GUI for PyTables'\n  description: |\n    ViTables is a graphical tool for browsing and editing files in both PyTables\n    and HDF5 format. With ViTables you can easily navigate through the data\n    hierarchy, view and modify metadata, view actual data and more.\n  doc_url: http://vitables.org/\n  dev_url: https://github.com/uvemas/ViTables\n\nextra:\n  recipe-maintainers:\n    - scopatz\n",
  "req":{
   "__set__":true,
   "elements":[
@@ -178,8 +174,7 @@
    "pyqt",
    "pytables",
    "python",
-   "qtpy",
-   "setuptools"
+   "qtpy"
   ]
  },
  "smithy_version":"3.6.1",
