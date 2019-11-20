@@ -123,7 +123,7 @@
    "home":"https://github.com/CATIA-Systems/FMPy",
    "license":"BSD-3-Clause",
    "license_family":"BSD",
-   "license_file":"/LICENSE.txt",
+   "license_file":"LICENSE.txt",
    "summary":"Simulate Functional Mockup Units (FMUs) in Python"
   },
   "build":{
@@ -132,8 +132,9 @@
     "fmpy = fmpy.command_line:main",
     "fmpy = fmpy.command_line:main"
    ],
-   "number":"0",
-   "script":" -m pip install . --no-deps -vv"
+   "number":"1",
+   "script":" -m pip install . --no-deps -vv",
+   "skip":true
   },
   "extra":{
    "recipe-maintainers":[
@@ -151,52 +152,52 @@
   },
   "requirements":{
    "build":[
+    "python",
+    "pip",
     "lxml",
     "numpy",
     "pathlib",
-    "pip",
     "pyqt",
-    "python",
     "pywin32",
+    "python",
+    "pip",
     "lxml",
     "numpy",
     "pathlib",
-    "pip",
     "pyqt",
     "python",
+    "pip",
     "lxml",
     "numpy",
     "pathlib",
-    "pip",
-    "pyqt",
-    "python"
+    "pyqt"
    ],
    "run":[
+    "python",
     "dask",
     "lxml",
     "matplotlib",
     "numpy",
     "pathlib",
-    "python",
     "pyqt",
     "pyqtgraph",
     "pywin32",
     "requests",
+    "python",
     "dask",
     "lxml",
     "matplotlib",
     "numpy",
     "pathlib",
-    "python",
     "pyqt",
     "pyqtgraph",
     "requests",
+    "python",
     "dask",
     "lxml",
     "matplotlib",
     "numpy",
     "pathlib",
-    "python",
     "pyqt",
     "pyqtgraph",
     "requests"
@@ -235,7 +236,7 @@
  "name":"fmpy",
  "new_version":"0.2.14",
  "pinning_version":"2019.11.01",
- "raw_meta_yaml":"{% set name = \"fmpy\" %}\n{% set version = \"0.2.14\" %}\n{% set sha = \"34b774551043e19bc6d96b4247813f0ea57cf918ecf486f7ebaa388e1f1baa9b\" %}\n# calculate on macOS with: shasum -a 256 FMPy-*.tar.gz\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  url: https://github.com/CATIA-Systems/FMPy/archive/v{{ version }}.tar.gz\n  sha256: {{ sha }}\n\nbuild:\n  number: 0\n  # No qt 5.9 on vc9.\n  skip: True  # [win and py2k]\n  script: \"{{ PYTHON }} -m pip install . --no-deps -vv\"\n  entry_points:\n    - fmpy = fmpy.command_line:main\n\nrequirements:\n  build:\n    - lxml\n    - numpy\n    - pathlib\n    - pip\n    - pyqt\n    - python\n    - pywin32  # [win]\n  run:\n    - dask\n    - lxml\n    - matplotlib\n    - numpy\n    - pathlib\n    - python\n    - pyqt\n    - pyqtgraph\n    - pywin32  # [win]\n    - requests\n\ntest:\n  imports:\n    - fmpy\n    - fmpy.cross_check\n    - fmpy.examples\n    - fmpy.gui\n    - fmpy.ssp\n    - fmpy.ssp.examples\n    - fmpy.sundials\n\nabout:\n  home: https://github.com/CATIA-Systems/FMPy\n  license: BSD-3-Clause\n  license_family: BSD\n  license_file: '{{ environ[\"RECIPE_DIR\"] }}/LICENSE.txt'\n  summary: 'Simulate Functional Mockup Units (FMUs) in Python'\n  doc_url: https://fmpy.readthedocs.io/\n  dev_url: https://github.com/CATIA-Systems/FMPy\n\nextra:\n  recipe-maintainers:\n    - t-sommer\n    - wulmer\n",
+ "raw_meta_yaml":"{% set version = \"0.2.14\" %}\n\npackage:\n  name: fmpy\n  version: {{ version }}\n\nsource:\n  url: https://github.com/CATIA-Systems/FMPy/archive/v{{ version }}.tar.gz\n  sha256: 34b774551043e19bc6d96b4247813f0ea57cf918ecf486f7ebaa388e1f1baa9b\n\nbuild:\n  number: 1\n  skip: True  # [win and vc<14]\n  script: \"{{ PYTHON }} -m pip install . --no-deps -vv\"\n  entry_points:\n    - fmpy = fmpy.command_line:main\n\nrequirements:\n  build:\n    - python\n    - pip\n    - lxml\n    - numpy\n    - pathlib\n    - pyqt\n    - pywin32  # [win]\n  run:\n    - python\n    - dask\n    - lxml\n    - matplotlib\n    - numpy\n    - pathlib\n    - pyqt\n    - pyqtgraph\n    - pywin32  # [win]\n    - requests\n\ntest:\n  imports:\n    - fmpy\n    - fmpy.cross_check\n    - fmpy.examples\n    - fmpy.gui\n    - fmpy.ssp\n    - fmpy.ssp.examples\n    - fmpy.sundials\n\nabout:\n  home: https://github.com/CATIA-Systems/FMPy\n  license: BSD-3-Clause\n  license_family: BSD\n  license_file: LICENSE.txt\n  summary: 'Simulate Functional Mockup Units (FMUs) in Python'\n  doc_url: https://fmpy.readthedocs.io/\n  dev_url: https://github.com/CATIA-Systems/FMPy\n\nextra:\n  recipe-maintainers:\n    - t-sommer\n    - wulmer\n",
  "req":{
   "__set__":true,
   "elements":[
