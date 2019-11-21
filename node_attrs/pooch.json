@@ -237,18 +237,19 @@
  "hash_type":"sha256",
  "meta_yaml":{
   "about":{
-   "description":"Pooch will manage downloading your sample data files over HTTP from a server and\nstoring them in a local directory. (1) Download a file only if it's not in the local\nstorage. (2) Check the SHA256 hash to make sure the file is not corrupted or needs\nupdating. (3) If the hash is different from the registry, Pooch will download a new\nversion of the file. (4) If the hash still doesn't match, Pooch will raise an\nexception warning of possible data corruption.\n",
+   "description":"Pooch manages your remote data files. It automatically downloads and stores\nthem in a local directory (using HTTP or FTP), with support for versioning,\ncorruption checks, and custom download and post-processing operations.\n",
    "dev_url":"https://github.com/fatiando/pooch",
    "doc_url":"https://www.fatiando.org/pooch",
    "home":"https://github.com/fatiando/pooch",
    "license":"BSD-3-Clause",
    "license_family":"BSD",
    "license_file":"LICENSE.txt",
-   "summary":"A friend to fetch your Python library's sample data files"
+   "summary":"A friend to fetch your data files"
   },
   "build":{
+   "noarch":"python",
    "number":"0",
-   "script":" -m pip install . --no-deps --ignore-installed --no-cache-dir -vvv"
+   "script":" -m pip install . --no-deps -vv"
   },
   "extra":{
    "recipe-maintainers":[
@@ -262,40 +263,35 @@
   },
   "package":{
    "name":"pooch",
-   "version":"0.6.0"
+   "version":"0.7.0"
   },
   "requirements":{
-   "build":[
-    "python",
-    "python",
-    "python"
-   ],
    "host":[
-    "python",
+    "python >=3.5",
     "pip",
-    "python",
+    "python >=3.5",
     "pip",
-    "python",
+    "python >=3.5",
     "pip"
    ],
    "run":[
-    "python",
+    "python >=3.5",
     "requests",
     "packaging",
     "appdirs",
-    "python",
+    "python >=3.5",
     "requests",
     "packaging",
     "appdirs",
-    "python",
+    "python >=3.5",
     "requests",
     "packaging",
     "appdirs"
    ]
   },
   "source":{
-   "sha256":"74c63d3da3cfbde60f70b2ce85aa137ff920614072ad0c6df181aab547cdb714",
-   "url":"https://pypi.io/packages/source/p/pooch/pooch-0.6.0.tar.gz"
+   "sha256":"2fb8c521258fa557bb9d23cf8009dc750224a739ba4c6302ff2b111b59f9729c",
+   "url":"https://pypi.io/packages/source/p/pooch/pooch-0.7.0.tar.gz"
   },
   "test":{
    "commands":[
@@ -318,7 +314,7 @@
  "name":"pooch",
  "new_version":"0.7.0",
  "pinning_version":"2019.11.18",
- "raw_meta_yaml":"{% set name = \"pooch\" %}\n{% set version = \"0.6.0\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz\n  sha256: 74c63d3da3cfbde60f70b2ce85aa137ff920614072ad0c6df181aab547cdb714\n\nbuild:\n  number: 0\n  script: \"{{ PYTHON }} -m pip install . --no-deps --ignore-installed --no-cache-dir -vvv\"\n\nrequirements:\n  build:\n    - python\n  host:\n    - python\n    - pip\n  run:\n    - python\n    - requests\n    - packaging\n    - appdirs\n    - backports.tempfile  # [py2k]\n    - pathlib  # [py2k]\n\ntest:\n  requires:\n    - pytest\n  imports:\n    - pooch\n  commands:\n    - pytest --pyargs pooch.tests.test_integration\n\nabout:\n  home: https://github.com/fatiando/pooch\n  license: BSD-3-Clause\n  license_family: BSD\n  license_file: LICENSE.txt\n  summary: \"A friend to fetch your Python library's sample data files\"\n  description: |\n    Pooch will manage downloading your sample data files over HTTP from a server and\n    storing them in a local directory. (1) Download a file only if it's not in the local\n    storage. (2) Check the SHA256 hash to make sure the file is not corrupted or needs\n    updating. (3) If the hash is different from the registry, Pooch will download a new\n    version of the file. (4) If the hash still doesn't match, Pooch will raise an\n    exception warning of possible data corruption.\n  doc_url: https://www.fatiando.org/pooch\n  dev_url: https://github.com/fatiando/pooch\n\nextra:\n  recipe-maintainers:\n    - leouieda\n    - dopplershift\n",
+ "raw_meta_yaml":"{% set name = \"pooch\" %}\n{% set version = \"0.7.0\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz\n  sha256: 2fb8c521258fa557bb9d23cf8009dc750224a739ba4c6302ff2b111b59f9729c\n\nbuild:\n  noarch: python\n  number: 0\n  script: \"{{ PYTHON }} -m pip install . --no-deps -vv\"\n\nrequirements:\n  host:\n    - python >=3.5\n    - pip\n  run:\n    - python >=3.5\n    - requests\n    - packaging\n    - appdirs\n\ntest:\n  requires:\n    - pytest\n  imports:\n    - pooch\n  commands:\n    - pytest --pyargs pooch.tests.test_integration\n\nabout:\n  home: https://github.com/fatiando/pooch\n  license: BSD-3-Clause\n  license_family: BSD\n  license_file: LICENSE.txt\n  summary: \"A friend to fetch your data files\"\n  description: |\n    Pooch manages your remote data files. It automatically downloads and stores\n    them in a local directory (using HTTP or FTP), with support for versioning,\n    corruption checks, and custom download and post-processing operations.\n  doc_url: https://www.fatiando.org/pooch\n  dev_url: https://github.com/fatiando/pooch\n\nextra:\n  recipe-maintainers:\n    - leouieda\n    - dopplershift\n",
  "req":{
   "__set__":true,
   "elements":[
@@ -331,5 +327,5 @@
  },
  "smithy_version":"3.6.2",
  "url":"https://pypi.io/packages/source/p/pooch/pooch-0.5.2.tar.gz",
- "version":"0.6.0"
+ "version":"0.7.0"
 }
