@@ -115,6 +115,23 @@
     "migrator_version",
     "name"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/344000839.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"Version",
+    "migrator_version":0,
+    "version":"2.0"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "version"
+   ]
   }
  ],
  "bad":false,
@@ -262,8 +279,8 @@
   }
  },
  "name":"r-skimr",
- "new_version":"1.0.7",
- "pinning_version":"2019.07.15",
+ "new_version":"2.0",
+ "pinning_version":"2019.11.18",
  "raw_meta_yaml":"{% set version = \"1.0.7\" %}\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-skimr\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  url:\n    - {{ cran_mirror }}/src/contrib/skimr_{{ version }}.tar.gz\n    - {{ cran_mirror }}/src/contrib/Archive/skimr/skimr_{{ version }}.tar.gz\n  sha256: 693aa28a1390941000e1051cd68bcfe1fe86241b19dee3a831ff54d23792757d\n\nbuild:\n  merge_build_host: True  # [win]\n  number: 1\n  noarch: generic\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - {{posix}}zip               # [win]\n  host:\n    - r-base\n    - r-cli\n    - r-dplyr >=0.7\n    - r-knitr >=1.2\n    - r-magrittr\n    - r-pander\n    - r-purrr\n    - r-rlang\n    - r-stringr >=1.1\n    - r-tibble >=0.6\n    - r-tidyr >=0.7\n    - r-tidyselect >=0.2.4\n  run:\n    - r-base\n    - r-cli\n    - r-dplyr >=0.7\n    - r-knitr >=1.2\n    - r-magrittr\n    - r-pander\n    - r-purrr\n    - r-rlang\n    - r-stringr >=1.1\n    - r-tibble >=0.6\n    - r-tidyr >=0.7\n    - r-tidyselect >=0.2.4\n\ntest:\n  commands:\n    - $R -e \"library('skimr')\"           # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('skimr')\\\"\"  # [win]\n\nabout:\n  home: https://github.com/ropenscilabs/skimr\n  license: GPL-3\n  summary: A simple to use summary function that can be used with pipes and displays nicely in\n    the console. The default summary statistics may be  modified by the user as can\n    the default formatting. Support for data frames  and vectors is included, and users\n    can implement their own skim methods for specific object types as described in a\n    vignette. Default summaries include support for inline spark graphs. Instructions\n    for managing these on  specific operating systems are given in the \"Using skimr\"\n    vignette and the  README.\n  license_family: GPL3\n  license_file: '{{ environ[\"PREFIX\"] }}/lib/R/share/licenses/GPL-3'\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n    - philip-khor\n\n# Package: skimr\n# Title: Compact and Flexible Summaries of Data\n# Version: 1.0.4\n# Authors@R: c( person(\"Amelia\", \"McNamara\", email=\"amcnamara@smith.edu\", role = \"aut\"), person(\"Eduardo\", \"Arino de la Rubia\", email=\"earino@gmail.com\", role = \"aut\"), person(\"Hao\", \"Zhu\", email=\"haozhu233@gmail.com\", role = \"aut\"), person(\"Julia\", \"Lowndes\", email=\"lowndes@nceas.ucsb.edu\", role = 'ctb'), person(\"Shannon\", \"Ellis\", email=\"sellis18@jhmi.edu\", role = \"aut\"), person(\"Elin\", \"Waring\", email=\"elin.waring@gmail.com\", role = \"cre\"), person(\"Michael\", \"Quinn\", email=\"msquinn@google.com\", role = \"aut\"), person(\"Hope\", \"McLeod\", email=\"hmgit2@gmail.com\", role = 'ctb'), person(\"Hadley\", \"Wickham\", email=\"hadley@rstudio.com\", role = 'ctb'), person(\"Kirill\", \"Muller\", email=\"krlmlr+r@mailbox.org\", role = 'ctb'), person(family = \"RStudio, Inc.\", role = \"cph\", comment = \"Spark functions\"), person(\"Connor\", \"Kirkpatrick\", email=\"hello@connorkirkpatrick.com\", role = 'ctb'), person(\"Scott\", \"Brenstuhl\", email=\"brenstsr@miamioh.edu\", role = 'ctb'), person(\"Patrick\", \"Schratz\", email=\"patrick.schratz@gmail.com\", role = 'ctb'), person(\"lbusett\", \"\", email=\"lbusett@gmail.com\", role='ctb'), person(\"Mikko\",\"Korpela\", email=\"mvkorpel@iki.fi\", role='ctb'), person(\"Jennifer\",\"Thompson\", email=\"thompson.jennifer@gmail.com\", role='ctb'), person(\"Harris\",\"McGehee\", email=\"mcgehee.harris@gmail.com\", role='ctb') )\n# Description: A simple to use summary function that can be used with pipes and displays nicely in the console. The default summary statistics may be  modified by the user as can the default formatting. Support for data frames  and vectors is included, and users can implement their own skim methods for specific object types as described in a vignette. Default summaries include support for inline spark graphs. Instructions for managing these on  specific operating systems are given in the \"Using skimr\" vignette and the  README.\n# Depends: R (>= 3.1.2)\n# Imports: cli, dplyr (>= 0.7), magrittr, pander, purrr, rlang, stats, stringr (>= 1.1), knitr (>= 1.2), tibble (>= 0.6), tidyr (>= 0.7), tidyselect (>= 0.2.4)\n# Suggests: extrafont, rmarkdown, testthat (>= 2.0.0), withr, covr\n# License: GPL-3\n# Encoding: UTF-8\n# LazyData: true\n# URL: https://github.com/ropenscilabs/skimr\n# BugReports: https://github.com/ropenscilabs/skimr/issues\n# VignetteBuilder: knitr\n# RoxygenNote: 6.1.1\n# Collate: 'dplyr.r' 'skimr-package.R' 'formats.R' 'stats.R' 'functions.R' 'kable.R' 'options.R' 'pander.R' 'skim.R' 'skim_print.R' 'skim_v.R' 'summary.R' 'utils.R' 'wide.R'\n# NeedsCompilation: no\n# Packaged: 2019-01-13 17:23:04 UTC; elinwaring\n# Author: Amelia McNamara [aut], Eduardo Arino de la Rubia [aut], Hao Zhu [aut], Julia Lowndes [ctb], Shannon Ellis [aut], Elin Waring [cre], Michael Quinn [aut], Hope McLeod [ctb], Hadley Wickham [ctb], Kirill Muller [ctb], RStudio, Inc. [cph] (Spark functions), Connor Kirkpatrick [ctb], Scott Brenstuhl [ctb], Patrick Schratz [ctb], lbusett [ctb], Mikko Korpela [ctb], Jennifer Thompson [ctb], Harris McGehee [ctb]\n# Maintainer: Elin Waring <elin.waring@gmail.com>\n# Repository: CRAN\n# Date/Publication: 2019-01-13 17:50:03 UTC\n",
  "req":{
   "__set__":true,
@@ -282,7 +299,7 @@
    "r-tidyselect"
   ]
  },
- "smithy_version":"3.4.1",
+ "smithy_version":"3.6.2",
  "url":[
   "https://cran.r-project.org/src/contrib/skimr_1.0.7.tar.gz",
   "https://cran.r-project.org/src/contrib/Archive/skimr/skimr_1.0.7.tar.gz",
