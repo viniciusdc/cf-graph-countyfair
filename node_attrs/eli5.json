@@ -101,8 +101,7 @@
    "summary":"Debug machine learning classifiers and explain their predictions"
   },
   "build":{
-   "noarch":"python",
-   "number":"0",
+   "number":"1",
    "script":" -m pip install . --no-deps -vv"
   },
   "extra":{
@@ -137,7 +136,6 @@
     "singledispatch >=3.4.0.3",
     "six",
     "scikit-learn >=0.18",
-    "typing",
     "python-graphviz",
     "tabulate >=0.7.7",
     "python",
@@ -148,7 +146,6 @@
     "singledispatch >=3.4.0.3",
     "six",
     "scikit-learn >=0.18",
-    "typing",
     "python-graphviz",
     "tabulate >=0.7.7",
     "python",
@@ -159,7 +156,6 @@
     "singledispatch >=3.4.0.3",
     "six",
     "scikit-learn >=0.18",
-    "typing",
     "python-graphviz",
     "tabulate >=0.7.7"
    ]
@@ -180,7 +176,7 @@
  "name":"eli5",
  "new_version":"0.10.1",
  "pinning_version":"2019.08.27",
- "raw_meta_yaml":"{% set name = \"eli5\" %}\n{% set version = \"0.10.1\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  fn: {{ name }}-{{ version }}.tar.gz\n  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz\n  sha256: 62f4b5d6a55ff3299e830144112144eafbd275f86eb7cd560c1a229cd2be2a2b\n\nbuild:\n  number: 0\n  noarch: python\n  script: \"{{ PYTHON }} -m pip install . --no-deps -vv\"\n\nrequirements:\n  host:\n    - python\n    - pip\n  run:\n    - python\n    - attrs >16.0.0\n    - jinja2\n    - numpy >=1.9.0\n    - scipy\n    - singledispatch >=3.4.0.3\n    - six\n    - scikit-learn >=0.18\n    - typing\n    - python-graphviz\n    - tabulate >=0.7.7\n\ntest:\n  imports:\n    - eli5\n\nabout:\n  home: https://eli5.readthedocs.io/\n  license: MIT\n  license_file: LICENSE.txt\n  summary: \"Debug machine learning classifiers and explain their predictions\"\n  description: |\n    ELI5 is a Python package which helps to debug machine learning classifiers\n    and explain their predictions.\n  doc_url: https://eli5.readthedocs.io/en/latest/\n  dev_url: https://github.com/TeamHG-Memex/eli5/\n\nextra:\n  recipe-maintainers:\n    - rmax\n    - xhochy\n",
+ "raw_meta_yaml":"{% set name = \"eli5\" %}\n{% set version = \"0.10.1\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  fn: {{ name }}-{{ version }}.tar.gz\n  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz\n  sha256: 62f4b5d6a55ff3299e830144112144eafbd275f86eb7cd560c1a229cd2be2a2b\n\nbuild:\n  # Cannot use `noarch: python` as this uses typing\n  number: 1\n  script: \"{{ PYTHON }} -m pip install . --no-deps -vv\"\n\nrequirements:\n  host:\n    - python\n    - pip\n  run:\n    - python\n    - attrs >16.0.0\n    - jinja2\n    - numpy >=1.9.0\n    - scipy\n    - singledispatch >=3.4.0.3\n    - six\n    - scikit-learn >=0.18\n    - typing  # [py<36]\n    - python-graphviz\n    - tabulate >=0.7.7\n\ntest:\n  imports:\n    - eli5\n\nabout:\n  home: https://eli5.readthedocs.io/\n  license: MIT\n  license_file: LICENSE.txt\n  summary: \"Debug machine learning classifiers and explain their predictions\"\n  description: |\n    ELI5 is a Python package which helps to debug machine learning classifiers\n    and explain their predictions.\n  doc_url: https://eli5.readthedocs.io/en/latest/\n  dev_url: https://github.com/TeamHG-Memex/eli5/\n\nextra:\n  recipe-maintainers:\n    - rmax\n    - xhochy\n",
  "req":{
   "__set__":true,
   "elements":[
@@ -194,8 +190,7 @@
    "scipy",
    "singledispatch",
    "six",
-   "tabulate",
-   "typing"
+   "tabulate"
   ]
  },
  "smithy_version":"3.4.1",
