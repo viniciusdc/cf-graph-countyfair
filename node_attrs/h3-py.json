@@ -1,4 +1,27 @@
 {
+ "PRed":[
+  {
+   "PR":{
+    "id":"90683ef4-5189-4445-ae15-43a9eadcfbcd",
+    "merged_at":"never issued",
+    "state":"closed"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"MigrationYaml",
+    "migrator_object_version":1,
+    "migrator_version":0,
+    "name":"python38"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_object_version",
+    "migrator_version",
+    "name"
+   ]
+  }
+ ],
  "bad":false,
  "conda-forge.yml":{},
  "feedstock_name":"h3-py",
@@ -13,9 +36,9 @@
    "summary":"Python bindings for H3, a hierarchical hexagonal geospatial indexing system developed by Uber Technologies"
   },
   "build":{
-   "noarch":"python",
-   "number":"0",
-   "script":"-m pip install . -vv"
+   "number":"1",
+   "script":"-m pip install . -vv",
+   "skip":true
   },
   "extra":{
    "recipe-maintainers":[
@@ -48,30 +71,34 @@
    ],
    "run":[
     "python >2.7",
+    "h3",
     "python >2.7",
-    "python >2.7"
+    "h3",
+    "python >2.7",
+    "h3"
    ]
   },
   "source":{
    "patches":[
-    "setup.patch",
-    "setup.patch",
-    "setup.patch"
+    "setup_h3.patch",
+    "setup_h3.patch",
+    "setup_h3.patch"
    ],
    "sha256":"a292a5a63bcf535f0137141019f3defd21ad2fbd258dc8de587f921cf2c5b41d",
    "url":"https://pypi.io/packages/source/h/h3/h3-3.4.3.tar.gz"
   },
   "test":{
-   "imports":[
-    "h3",
-    "h3",
-    "h3"
+   "commands":[
+    "python -c \"from h3 import h3\"",
+    "python -c \"from h3 import h3\"",
+    "python -c \"from h3 import h3\""
    ]
   }
  },
  "name":"h3-py",
  "new_version":"3.4.3",
- "raw_meta_yaml":"{% set name = \"h3\" %}\n{% set version = \"3.4.3\" %}\n\npackage:\n  name: {{ name|lower }}-py\n  version: {{ version }}\n\nsource:\n  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz\n  sha256: a292a5a63bcf535f0137141019f3defd21ad2fbd258dc8de587f921cf2c5b41d\n  patches:\n    # patch to override setup.py to use the conda distribution of H3 \n    - setup.patch\n\nbuild:\n  noarch: python\n  number: 0\n  script: {{ PYTHON }} -m pip install . -vv\n\nrequirements:\n  host:\n    - pip\n    - python >2.7\n    - h3\n  run:\n    - python >2.7\n\ntest:\n  imports:\n    - h3\n\nabout:\n  home: https://github.com/uber/h3-py.git\n  license: Apache-2.0\n  license_family: Apache\n  license_file: LICENSE.txt\n  summary: Python bindings for H3, a hierarchical hexagonal geospatial indexing system developed by Uber Technologies\n  dev_url: https://github.com/uber/h3-py.git\n\nextra:\n  recipe-maintainers:\n    - benhuff\n    - oblute\n    - geoHeil\n",
+ "pinning_version":"2019.11.18",
+ "raw_meta_yaml":"{% set name = \"h3\" %}\n{% set version = \"3.4.3\" %}\n\npackage:\n  name: {{ name|lower }}-py\n  version: {{ version }}\n\nsource:\n  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz\n  sha256: a292a5a63bcf535f0137141019f3defd21ad2fbd258dc8de587f921cf2c5b41d\n  patches:\n    # patch to override setup.py and h3.py to load shared libraries from conda distribution of H3\n    - setup_h3.patch\n\nbuild:\n  number: 1\n  skip: True  # [win]\n  script: {{ PYTHON }} -m pip install . -vv\n\nrequirements:\n  host:\n    - pip\n    - python >2.7\n    - h3\n  run:\n    - python >2.7\n    - h3\n\ntest:\n  commands:\n    - python -c \"from h3 import h3\"\n\nabout:\n  home: https://github.com/uber/h3-py.git\n  license: Apache-2.0\n  license_family: Apache\n  license_file: LICENSE.txt\n  summary: Python bindings for H3, a hierarchical hexagonal geospatial indexing system developed by Uber Technologies\n  dev_url: https://github.com/uber/h3-py.git\n\nextra:\n  recipe-maintainers:\n    - benhuff\n    - oblute\n    - geoHeil\n",
  "req":{
   "__set__":true,
   "elements":[
@@ -80,6 +107,7 @@
    "python"
   ]
  },
+ "smithy_version":"3.6.2",
  "url":"https://pypi.io/packages/source/h/h3/h3-3.4.3.tar.gz",
  "version":"3.4.3"
 }
