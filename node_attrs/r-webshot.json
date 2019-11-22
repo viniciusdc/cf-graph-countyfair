@@ -33,6 +33,23 @@
     "migrator_version",
     "name"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/344721738.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"Version",
+    "migrator_version":0,
+    "version":"0.5.2"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "version"
+   ]
   }
  ],
  "bad":false,
@@ -151,8 +168,8 @@
   }
  },
  "name":"r-webshot",
- "new_version":"0.5.1",
- "pinning_version":"2019.07.15",
+ "new_version":"0.5.2",
+ "pinning_version":"2019.11.20",
  "raw_meta_yaml":"{% set version = '0.5.1' %}\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-webshot\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  fn: webshot_{{ version }}.tar.gz\n  url:\n    - {{ cran_mirror }}/src/contrib/webshot_{{ version }}.tar.gz\n    - {{ cran_mirror }}/src/contrib/Archive/webshot/webshot_{{ version }}.tar.gz\n  sha256: b9750d206c6fa0f1f16cc212b0a34f4f4bfa916962d2c877f0ee9a33620f4b23\n\nbuild:\n  noarch: generic\n  merge_build_host: True  # [win]\n  number: 1001\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - {{posix}}zip               # [win]\n  host:\n    - r-base\n    - r-callr\n    - r-jsonlite\n    - r-magrittr\n  run:\n    - r-base\n    - r-callr\n    - r-jsonlite\n    - r-magrittr\n\ntest:\n  commands:\n    - $R -e \"library('webshot')\"           # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('webshot')\\\"\"  # [win]\n\nabout:\n  home: https://github.com/wch/webshot/\n  license: GPL-2\n  summary: Takes screenshots of web pages, including Shiny applications and R Markdown documents.\n  license_family: GPL2\n  license_file: '{{ environ[\"PREFIX\"] }}/lib/R/share/licenses/GPL-2'\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n    - ocefpaf\n    - johanneskoester\n    - bgruening\n    - daler\n    - jdblischak\n    - cbrueffer\n    - dbast\n",
  "req":{
   "__set__":true,
@@ -163,7 +180,7 @@
    "r-magrittr"
   ]
  },
- "smithy_version":"3.4.1",
+ "smithy_version":"3.6.2",
  "url":[
   "https://cran.r-project.org/src/contrib/webshot_0.5.1.tar.gz",
   "https://cran.r-project.org/src/contrib/Archive/webshot/webshot_0.5.1.tar.gz",
