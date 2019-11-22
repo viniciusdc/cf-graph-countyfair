@@ -80,6 +80,7 @@
   },
   "build":{
    "number":"3",
+   "script":" -m pip install . --no-deps -vv",
    "skip":true
   },
   "extra":{
@@ -95,42 +96,43 @@
   },
   "requirements":{
    "build":[
-    "toolchain",
+    "c_compiler_stub",
+    "c_compiler_stub",
+    "c_compiler_stub"
+   ],
+   "host":[
     "python",
     "cython",
-    "numpy x.x",
-    "toolchain",
+    "numpy",
+    "pip",
     "python",
     "cython",
-    "numpy x.x",
-    "toolchain",
+    "numpy",
+    "pip",
     "python",
     "cython",
-    "numpy x.x"
+    "numpy",
+    "pip"
    ],
    "run":[
     "python",
-    "numpy x.x",
+    "compatible_pin_stub",
     "scipy",
     "mpi4py",
-    "cython",
     "pyfftw",
     "python",
-    "numpy x.x",
+    "compatible_pin_stub",
     "scipy",
     "mpi4py",
-    "cython",
     "pyfftw",
     "python",
-    "numpy x.x",
+    "compatible_pin_stub",
     "scipy",
     "mpi4py",
-    "cython",
     "pyfftw"
    ]
   },
   "source":{
-   "fn":"mpiFFT4py-1.0.2.tar.gz",
    "sha256":"5d2bc067123b3b4d068bc85bccd693aa7287600d8c34c079ea1ca069342f9b58",
    "url":"https://github.com/spectralDNS/mpiFFT4py/archive/mpiFFT4py-1.0.2.tar.gz"
   },
@@ -144,28 +146,25 @@
     "pytest",
     "pytest",
     "pytest"
-   ],
-   "source_files":[
-    "tests",
-    "tests",
-    "tests"
    ]
   }
  },
  "name":"mpifft4py",
  "new_version":"1.0.3",
  "pinning_version":"2019.11.01",
- "raw_meta_yaml":"{% set name = \"mpiFFT4py\" %}\n{% set version = \"1.0.2\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  fn: {{ name }}-{{ version }}.tar.gz\n  url: https://github.com/spectralDNS/{{ name }}/archive/{{ name }}-{{ version }}.tar.gz\n  sha256: 5d2bc067123b3b4d068bc85bccd693aa7287600d8c34c079ea1ca069342f9b58\n\nbuild:\n  skip: true  # [win]\n  number: 3\n\nrequirements:\n  build:\n    - toolchain\n    - python\n    - cython\n    - numpy x.x\n\n  run:\n    - python\n    - numpy x.x\n    - scipy\n    - mpi4py\n    - cython\n    - pyfftw\n\ntest:\n  source_files:\n    - tests\n\n  requires:\n    - pytest\n\n  imports:\n    - mpiFFT4py\n\nabout:\n  home: https://github.com/spectralDNS/mpiFFT4py\n  license: LGPL-3.0\n  license_file: LICENSE\n  summary: 'Parallel FFT in 3D or 2D using MPI for Python. Slab or pencil decomposition possible in 3D.'\n  description: |\n    mpiFFT4py performs FFTs in parallel in Python. It is developed to be able\n    to do FFTs in parallel on a three-dimensional computational box\n    (a structured grid), but there are also routines for doing the FFTs on a\n    2D mesh. It implements both the slab and the pencil decompositions.\n\nextra:\n  recipe-maintainers:\n    - mikaem\n",
+ "raw_meta_yaml":"{% set version = \"1.0.2\" %}\n\npackage:\n  name: mpifft4py\n  version: {{ version }}\n\nsource:\n  url: https://github.com/spectralDNS/mpiFFT4py/archive/mpiFFT4py-{{ version }}.tar.gz\n  sha256: 5d2bc067123b3b4d068bc85bccd693aa7287600d8c34c079ea1ca069342f9b58\n\nbuild:\n  number: 3\n  skip: true  # [win]\n  script: \"{{ PYTHON }} -m pip install . --no-deps -vv\"\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n  host:\n    - python\n    - cython\n    - numpy\n    - pip\n  run:\n    - python\n    - {{ pin_compatible('numpy') }}\n    - scipy\n    - mpi4py\n    - pyfftw\n\ntest:\n  requires:\n    - pytest\n  imports:\n    - mpiFFT4py\n\nabout:\n  home: https://github.com/spectralDNS/mpiFFT4py\n  license: LGPL-3.0\n  license_file: LICENSE\n  summary: 'Parallel FFT in 3D or 2D using MPI for Python. Slab or pencil decomposition possible in 3D.'\n  description: |\n    mpiFFT4py performs FFTs in parallel in Python. It is developed to be able\n    to do FFTs in parallel on a three-dimensional computational box\n    (a structured grid), but there are also routines for doing the FFTs on a\n    2D mesh. It implements both the slab and the pencil decompositions.\n\nextra:\n  recipe-maintainers:\n    - mikaem\n",
  "req":{
   "__set__":true,
   "elements":[
+   "c_compiler_stub",
+   "compatible_pin_stub",
    "cython",
    "mpi4py",
    "numpy",
+   "pip",
    "pyfftw",
    "python",
-   "scipy",
-   "toolchain"
+   "scipy"
   ]
  },
  "smithy_version":"3.6.2",
