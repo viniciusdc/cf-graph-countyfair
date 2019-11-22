@@ -313,7 +313,7 @@
   }
  },
  "name":"etcd",
- "new_version":"3.4.3",
+ "new_version":"3.4.1",
  "pinning_version":"2019.10.11",
  "raw_meta_yaml":"{% set import_path = \"github.com/coreos/etcd\" %}\n{% set version = \"3.3.15\" %}\n\n{% set name = import_path.split('/')[-1] %}\n{% set pkg_src = 'src' + os.sep+ import_path.replace(\"/\",os.sep) %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  - folder: {{ pkg_src }}\n    url: https://{{ import_path | replace(\"coreos\", \"etcd-io\") }}/archive/v{{ version }}.tar.gz\n    sha256: 3da9bba24d1d4c434d39b8f603c0f481d5888c2a9b7600d3d2cd0cc5d58804e2\n\nbuild:\n  number: 0\n  skip: True  # [win32]\n  script:\n    - pushd {{ pkg_src }}\n    {% for path in [ \".\", \"./etcdctl\" ] %}\n    - go install -v {{ path }}\n    {% endfor %}\n\nrequirements:\n  build:\n    - {{ compiler('go') }}\n\ntest:\n  commands:\n    - etcd --version\n    - etcdctl --version\n\nabout:\n  home: https://etcd.io\n  license: Apache-2.0\n  license_family: Apache\n  license_file: {{ pkg_src }}/LICENSE\n  summary: A distributed, reliable key-value store for the most critical data of a distributed system.\n  doc_url: https://etcd.io/docs\n  dev_url: https://github.com/etcd-io/etcd\n\nextra:\n  recipe-maintainers:\n    - sodre\n",
  "req":{
