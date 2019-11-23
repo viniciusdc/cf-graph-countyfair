@@ -115,6 +115,23 @@
     "migrator_version",
     "version"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/344788221.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"Version",
+    "migrator_version":0,
+    "version":"1.4.14"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "version"
+   ]
   }
  ],
  "bad":false,
@@ -174,8 +191,8 @@
   }
  },
  "name":"xapian-core",
- "new_version":"1.4.13",
- "pinning_version":"2019.10.11",
+ "new_version":"1.4.14",
+ "pinning_version":"2019.11.20",
  "raw_meta_yaml":"{% set name = \"xapian-core\" %}\n{% set version = \"1.4.13\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  url: https://oligarchy.co.uk/xapian/{{ version }}/xapian-core-{{ version }}.tar.xz\n  sha256: 93f8ffffa80c5e6036befbf356f34456cc18c2f745cef85e9b4cfc254042137c\n\nbuild:\n  number: 0\n  skip: True  # [win]\n  script: |\n    LDFLAGS=$LDFLAGS \\\n    ./configure \\\n    CXXFLAGS=-I$PREFIX/include \\\n    --prefix=$PREFIX\n\n    make && make install\n    rm -rf $PREFIX/share/doc/xapian-core\n\n  run_exports:\n    {{ pin_subpackage('xapian-core', max_pin='x.x.x') }}\n\nrequirements:\n  build:\n    - {{ compiler('cxx') }}\n\n  host:\n    - zlib\n\ntest:\n  commands:\n    xapian-config --version\n\nabout:\n  home: http://xapian.org\n  license: GPL-2.0+\n  license_family: GPL\n  license_file: COPYING\n  summary: Xapian is an Open Source Search Engine Library, written in C++.\n  description: |\n    Xapian is an Open Source search engine library which allows developers\n    to add advanced indexing and search facilities to their own applications.\n    It has built-in support for several families of weighting models and also\n    supports a rich set of boolean query operators.\n  doc_url: https://xapian.org/docs/\n  dev_url: https://xapian.org/bleeding\n\nextra:\n  recipe-maintainers:\n    - kohr-h\n",
  "req":{
   "__set__":true,
@@ -184,7 +201,7 @@
    "zlib"
   ]
  },
- "smithy_version":"3.6.0",
+ "smithy_version":"3.6.2",
  "url":"https://oligarchy.co.uk/xapian/1.4.12/xapian-core-1.4.12.tar.xz",
  "version":"1.4.13"
 }

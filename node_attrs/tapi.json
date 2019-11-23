@@ -29,11 +29,14 @@
    "home":"https://github.com/ributzka/tapi",
    "license":"UIUC",
    "license_family":"MIT",
-   "license_file":"tapi/LICENSE.TXT",
+   "license_file":[
+    "LICENSE.APPLE-LIBTAPI.txt",
+    "LICENSE.LLVM.txt"
+   ],
    "summary":"TAPI is a Text-based Application Programming Interface"
   },
   "build":{
-   "number":"3",
+   "number":"4",
    "skip":true
   },
   "extra":{
@@ -54,81 +57,25 @@
     "clang_bootstrap_osx-64",
     "cmake",
     "ninja",
+    "cxx_compiler_stub",
     "cmake",
     "ninja"
    ],
-   "host":[
-    "libcxx",
-    "libcxx",
-    "libcxx"
-   ]
+   "host":null
   },
   "source":[
    {
-    "folder":"tapi",
-    "patches":[
-     "patches/1-support-zippered.patch",
-     "patches/2-support-zippered.patch"
-    ],
-    "sha256":"827e996529974305ef7933f3fa790f7ed068caa29db8f8c30b8a83c6826503f7",
-    "url":"https://opensource.apple.com/tarballs/tapi/tapi-1000.10.8.tar.gz"
-   },
-   {
-    "folder":"clang",
-    "sha256":"30db6f2f6ab90818393203bd95b409af73b876c1535bc4dec9f2554cf9e16387",
-    "url":"https://github.com/apple/swift-clang/archive/swift-4.2-branch.tar.gz"
-   },
-   {
-    "folder":"llvm",
-    "sha256":"0cd37cce5aee48d785352a1e6ae28cc80c26b99de82910d7bd5d0476ea4c5c28",
-    "url":"https://github.com/apple/swift-llvm/archive/swift-4.2-branch.tar.gz"
-   },
-   {
-    "folder":"tapi",
-    "patches":[
-     "patches/1-support-zippered.patch",
-     "patches/2-support-zippered.patch"
-    ],
-    "sha256":"827e996529974305ef7933f3fa790f7ed068caa29db8f8c30b8a83c6826503f7",
-    "url":"https://opensource.apple.com/tarballs/tapi/tapi-1000.10.8.tar.gz"
-   },
-   {
-    "folder":"clang",
-    "sha256":"30db6f2f6ab90818393203bd95b409af73b876c1535bc4dec9f2554cf9e16387",
-    "url":"https://github.com/apple/swift-clang/archive/swift-4.2-branch.tar.gz"
-   },
-   {
-    "folder":"llvm",
-    "sha256":"0cd37cce5aee48d785352a1e6ae28cc80c26b99de82910d7bd5d0476ea4c5c28",
-    "url":"https://github.com/apple/swift-llvm/archive/swift-4.2-branch.tar.gz"
-   },
-   {
-    "folder":"tapi",
-    "patches":[
-     "patches/1-support-zippered.patch",
-     "patches/2-support-zippered.patch"
-    ],
-    "sha256":"827e996529974305ef7933f3fa790f7ed068caa29db8f8c30b8a83c6826503f7",
-    "url":"https://opensource.apple.com/tarballs/tapi/tapi-1000.10.8.tar.gz"
-   },
-   {
-    "folder":"clang",
-    "sha256":"30db6f2f6ab90818393203bd95b409af73b876c1535bc4dec9f2554cf9e16387",
-    "url":"https://github.com/apple/swift-clang/archive/swift-4.2-branch.tar.gz"
-   },
-   {
-    "folder":"llvm",
-    "sha256":"0cd37cce5aee48d785352a1e6ae28cc80c26b99de82910d7bd5d0476ea4c5c28",
-    "url":"https://github.com/apple/swift-llvm/archive/swift-4.2-branch.tar.gz"
+    "sha256":"b91b4cb52ca7f174381fb8142d1b64608e840980238b859de36476869eea9430",
+    "url":"https://github.com/tpoechtrager/apple-libtapi/archive/cd9885b97fdff92cc41e886bba4a404c42fdf71b.tar.gz"
    }
   ],
   "test":{
    "commands":[
-    "test -f $PREFIX/lib/libtapi.dylib",
+    "test -f $PREFIX/lib/libtapi${SHLIB_EXT}",
     "test -f $PREFIX/include/tapi/tapi.h",
-    "test -f $PREFIX/lib/libtapi.dylib",
+    "test -f $PREFIX/lib/libtapi${SHLIB_EXT}",
     "test -f $PREFIX/include/tapi/tapi.h",
-    "test -f $PREFIX/lib/libtapi.dylib",
+    "test -f $PREFIX/lib/libtapi${SHLIB_EXT}",
     "test -f $PREFIX/include/tapi/tapi.h"
    ]
   }
@@ -136,13 +83,13 @@
  "name":"tapi",
  "new_version":false,
  "pinning_version":"2019.10.11",
- "raw_meta_yaml":"{% set name = \"tapi\" %}\n{% set version = \"1000.10.8\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  - url: https://opensource.apple.com/tarballs/tapi/tapi-{{ version }}.tar.gz\n    sha256: 827e996529974305ef7933f3fa790f7ed068caa29db8f8c30b8a83c6826503f7\n    folder: tapi\n    patches:\n      - patches/1-support-zippered.patch\n      - patches/2-support-zippered.patch\n\n  - url: https://github.com/apple/swift-clang/archive/swift-4.2-branch.tar.gz\n    sha256: 30db6f2f6ab90818393203bd95b409af73b876c1535bc4dec9f2554cf9e16387\n    folder: clang\n\n  - url: https://github.com/apple/swift-llvm/archive/swift-4.2-branch.tar.gz\n    sha256: 0cd37cce5aee48d785352a1e6ae28cc80c26b99de82910d7bd5d0476ea4c5c28\n    folder: llvm\n\nbuild:\n  number: 3\n  skip: True  # [not osx]\n\nrequirements:\n  build:\n    - clang_bootstrap_osx-64  # [osx]\n    - cmake\n    - ninja\n  host:\n    - libcxx\n{% if cxx_compiler_version is defined %}\n  run:\n    - libcxx >={{cxx_compiler_version}}\n{% endif %}\n\ntest:\n  commands:\n    - test -f $PREFIX/lib/libtapi.dylib\n    - test -f $PREFIX/include/tapi/tapi.h\n\nabout:\n  home: https://github.com/ributzka/tapi\n  license: UIUC\n  license_family: MIT\n  license_file: tapi/LICENSE.TXT\n  summary: 'TAPI is a Text-based Application Programming Interface'\n  doc_url: https://opensource.apple.com/source/tapi/tapi-{{ version }}/Readme.md\n  dev_url: https://github.com/ributzka/tapi\n\nextra:\n  recipe-maintainers:\n    - isuruf\n",
+ "raw_meta_yaml":"{% set name = \"tapi\" %}\n{% set version = \"1000.10.8\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  - url: https://opensource.apple.com/tarballs/tapi/tapi-{{ version }}.tar.gz  # [osx]\n    sha256: 827e996529974305ef7933f3fa790f7ed068caa29db8f8c30b8a83c6826503f7   # [osx]\n    folder: tapi                                                               # [osx]\n    patches:                                                                   # [osx]\n      - patches/1-support-zippered.patch                                       # [osx]\n      - patches/2-support-zippered.patch                                       # [osx]\n\n  - url: https://github.com/apple/swift-clang/archive/swift-4.2-branch.tar.gz  # [osx]\n    sha256: 30db6f2f6ab90818393203bd95b409af73b876c1535bc4dec9f2554cf9e16387   # [osx]\n    folder: clang                                                              # [osx]\n\n  - url: https://github.com/apple/swift-llvm/archive/swift-4.2-branch.tar.gz   # [osx]\n    sha256: 0cd37cce5aee48d785352a1e6ae28cc80c26b99de82910d7bd5d0476ea4c5c28   # [osx]\n    folder: llvm                                                               # [osx]\n\n  - url: https://github.com/tpoechtrager/apple-libtapi/archive/cd9885b97fdff92cc41e886bba4a404c42fdf71b.tar.gz  # [linux]\n    sha256: b91b4cb52ca7f174381fb8142d1b64608e840980238b859de36476869eea9430   # [linux]\n\nbuild:\n  number: 4\n  skip: True  # [win]\n\nrequirements:\n  build:\n    - clang_bootstrap_osx-64  # [osx]\n    - {{ compiler('cxx') }}   # [linux]\n    - cmake\n    - ninja\n  host:\n    - libcxx                  # [osx]\n{% if cxx_compiler_version is defined %}\n  run:\n    - libcxx >={{cxx_compiler_version}}  # [osx]\n{% endif %}\n\ntest:\n  commands:\n    - test -f $PREFIX/lib/libtapi${SHLIB_EXT}\n    - test -f $PREFIX/include/tapi/tapi.h\n\nabout:\n  home: https://github.com/ributzka/tapi\n  license: UIUC\n  license_family: MIT\n  license_file:\n    - tapi/LICENSE.TXT           # [osx]\n    - llvm/LICENSE.TXT           # [osx]\n    - LICENSE.APPLE-LIBTAPI.txt  # [linux]\n    - LICENSE.LLVM.txt           # [linux]\n  summary: 'TAPI is a Text-based Application Programming Interface'\n  doc_url: https://opensource.apple.com/source/tapi/tapi-{{ version }}/Readme.md\n  dev_url: https://github.com/ributzka/tapi\n\nextra:\n  recipe-maintainers:\n    - isuruf\n",
  "req":{
   "__set__":true,
   "elements":[
    "clang_bootstrap_osx-64",
    "cmake",
-   "libcxx",
+   "cxx_compiler_stub",
    "ninja"
   ]
  },
