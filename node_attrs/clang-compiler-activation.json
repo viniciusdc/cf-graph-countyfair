@@ -11,7 +11,7 @@
    "summary":"clang compilers for conda-build 3"
   },
   "build":{
-   "number":"3",
+   "number":"5",
    "skip":true
   },
   "extra":{
@@ -29,7 +29,10 @@
     "name":"clang_",
     "requirements":[
      "clang 9.0.0",
-     "compiler-rt 9.0.0"
+     "cctools",
+     "ld64",
+     "compiler-rt 9.0.0",
+     "compiler-rt_ 9.0.0"
     ],
     "script":"install-clang.sh",
     "test":{
@@ -41,18 +44,17 @@
     "requirements":{
      "host":[
       "clangxx 9.0.0",
-      "libcxx 9.0.0",
       "subpackage_stub"
      ],
      "run":[
       "clangxx 9.0.0",
-      "compatible_pin_stub",
+      "libcxx >=9.0.0",
       "subpackage_stub"
      ]
     },
     "run_exports":{
      "strong":[
-      "compatible_pin_stub"
+      "libcxx >=9.0.0"
      ]
     },
     "script":"install-clangxx.sh",
@@ -76,7 +78,8 @@
       "lib/",
       "libexec/",
       "share/"
-     ]
+     ],
+     "skip":true
     },
     "name":"clang_bootstrap_",
     "requirements":{
@@ -97,7 +100,8 @@
      "clang 9.0.0",
      "cctools",
      "ld64",
-     "compiler-rt 9.0.0"
+     "compiler-rt 9.0.0",
+     "compiler-rt_ 9.0.0"
     ],
     "script":"install-clang.sh",
     "test":{
@@ -116,13 +120,13 @@
      ],
      "run":[
       "clangxx 9.0.0",
-      "compatible_pin_stub",
+      "libcxx >=9.0.0",
       "subpackage_stub"
      ]
     },
     "run_exports":{
      "strong":[
-      "compatible_pin_stub"
+      "libcxx >=9.0.0"
      ]
     },
     "script":"install-clangxx.sh",
@@ -172,7 +176,10 @@
     "name":"clang_",
     "requirements":[
      "clang 9.0.0",
-     "compiler-rt 9.0.0"
+     "cctools",
+     "ld64",
+     "compiler-rt 9.0.0",
+     "compiler-rt_ 9.0.0"
     ],
     "script":"install-clang.sh",
     "test":{
@@ -184,18 +191,17 @@
     "requirements":{
      "host":[
       "clangxx 9.0.0",
-      "libcxx 9.0.0",
       "subpackage_stub"
      ],
      "run":[
       "clangxx 9.0.0",
-      "compatible_pin_stub",
+      "libcxx >=9.0.0",
       "subpackage_stub"
      ]
     },
     "run_exports":{
      "strong":[
-      "compatible_pin_stub"
+      "libcxx >=9.0.0"
      ]
     },
     "script":"install-clangxx.sh",
@@ -219,7 +225,8 @@
       "lib/",
       "libexec/",
       "share/"
-     ]
+     ],
+     "skip":true
     },
     "name":"clang_bootstrap_",
     "requirements":{
@@ -254,15 +261,15 @@
   "clang_bootstrap_",
   "clangxx_"
  ],
- "raw_meta_yaml":"{% set version = \"9.0.0\" %}\n\npackage:\n  name: clang-compiler-activation\n  version: {{ version }}\n\nbuild:\n  skip: True  # [not osx]\n  number: 3\n\nrequirements:\n  build:\n    - libcxx {{ version }}\n\noutputs:\n  - name: clang_{{ target_platform }}\n    script: install-clang.sh\n    requirements:\n      - clang {{ version }}\n      - cctools                                  # [osx]\n      - ld64                                     # [osx]\n      - compiler-rt {{ version }}\n    test:\n      commands:\n        - {{ macos_machine }}-clang --version    # [osx]\n\n  - name: clangxx_{{ target_platform }}\n    script: install-clangxx.sh\n    requirements:\n      host:\n        - clangxx {{ version }}\n        - libcxx {{ version }}\n        - {{ pin_subpackage('clang_' ~ target_platform, min_pin='x.x.x.x.x.x.x.x', max_pin='x.x.x.x.x.x.x.x') }}\n      run:\n        - clangxx {{ version }}\n        - {{ pin_compatible('libcxx', max_pin=None) }}\n        - {{ pin_subpackage('clang_' ~ target_platform, min_pin='x.x.x.x.x.x.x.x', max_pin='x.x.x.x.x.x.x.x') }}\n    # Since transitive run_exports are not currently possible\n    # (here I would like the run dependency on clangxx to pull in the run_exports from it).\n    run_exports:\n      strong:\n        - {{ pin_compatible('libcxx', max_pin=None) }}\n    test:\n      commands:\n        - {{ macos_machine }}-clang++ --version    # [osx]\n\n  - name: clang_bootstrap_{{ target_platform }}\n    requirements:\n      host:\n        - clangxx {{ version }}\n        - libcxx {{ version }}\n        - cctools                                  # [osx]\n        - ld64                                     # [osx]\n        - {{ pin_subpackage('clang_' ~ target_platform, exact=True) }}\n        - {{ pin_subpackage('clangxx_' ~ target_platform, exact=True) }}\n    build:\n      always_include_files:\n        - bin/\n        - etc/\n        - include/\n        - lib/\n        - libexec/\n        - share/\n    test:\n      commands:\n        - {{ macos_machine }}-clang --version      # [osx]\n        - {{ macos_machine }}-clang++ --version    # [osx]\n    about:\n      home: https://llvm.org\n      license: Apache-2.0\n      license_family: Apache\n      license_file: LLVM_LICENSE.txt\n      summary: 'clang compiler components in one package for bootstrapping clang'\n\nabout:\n  home: http://github.com/AnacondaRecipes/aggregate\n  license: BSD-3-Clause\n  license_family: BSD\n  license_file: LICENSE.txt\n  summary: 'clang compilers for conda-build 3'\n\nextra:\n  recipe-maintainers:\n    - isuruf\n    - mingwandroid\n",
+ "raw_meta_yaml":"{% set version = \"9.0.0\" %}\n\npackage:\n  name: clang-compiler-activation\n  version: {{ version }}\n\nbuild:\n  skip: True  # [win]\n  number: 5\n\nrequirements:\n  build:\n    - libcxx {{ version }}\n\noutputs:\n  - name: clang_{{ cross_target_platform }}\n    script: install-clang.sh\n    requirements:\n      - clang {{ version }}\n      - cctools\n      - ld64\n      # This brings in libraries for linux too. Split this again?\n      - compiler-rt {{ version }}\n      - compiler-rt_{{ cross_target_platform }} {{ version }}\n    test:\n      commands:\n        - {{ macos_machine }}-clang --version    # [osx]\n\n  - name: clangxx_{{ cross_target_platform }}\n    script: install-clangxx.sh\n    requirements:\n      host:\n        - clangxx {{ version }}\n        - libcxx {{ version }}  # [osx]\n        - {{ pin_subpackage('clang_' ~ cross_target_platform, min_pin='x.x.x.x.x.x.x.x', max_pin='x.x.x.x.x.x.x.x') }}\n      run:\n        - clangxx {{ version }}\n        # This is not needed in Linux for cross-compiling in a conda-build env, but is needed outside\n        - libcxx >={{ version }}\n        - {{ pin_subpackage('clang_' ~ cross_target_platform, min_pin='x.x.x.x.x.x.x.x', max_pin='x.x.x.x.x.x.x.x') }}\n    # Since transitive run_exports are not currently possible\n    # (here I would like the run dependency on clangxx to pull in the run_exports from it).\n    run_exports:\n      strong:\n        - libcxx >={{ version }}\n    test:\n      commands:\n        - {{ macos_machine }}-clang++ --version    # [osx]\n\n  - name: clang_bootstrap_{{ cross_target_platform }}\n    requirements:\n      host:\n        - clangxx {{ version }}\n        - libcxx {{ version }}\n        - cctools                                  # [osx]\n        - ld64                                     # [osx]\n        - {{ pin_subpackage('clang_' ~ cross_target_platform, exact=True) }}\n        - {{ pin_subpackage('clangxx_' ~ cross_target_platform, exact=True) }}\n    build:\n      always_include_files:\n        - bin/\n        - etc/\n        - include/\n        - lib/\n        - libexec/\n        - share/\n      skip: True  # [not osx]\n    test:\n      commands:\n        - {{ macos_machine }}-clang --version      # [osx]\n        - {{ macos_machine }}-clang++ --version    # [osx]\n    about:\n      home: https://llvm.org\n      license: Apache-2.0\n      license_family: Apache\n      license_file: LLVM_LICENSE.txt\n      summary: 'clang compiler components in one package for bootstrapping clang'\n\nabout:\n  home: http://github.com/AnacondaRecipes/aggregate\n  license: BSD-3-Clause\n  license_family: BSD\n  license_file: LICENSE.txt\n  summary: 'clang compilers for conda-build 3'\n\nextra:\n  recipe-maintainers:\n    - isuruf\n    - mingwandroid\n",
  "req":{
   "__set__":true,
   "elements":[
    "cctools",
    "clang",
    "clangxx",
-   "compatible_pin_stub",
    "compiler-rt",
+   "compiler-rt_",
    "ld64",
    "libcxx",
    "subpackage_stub"
