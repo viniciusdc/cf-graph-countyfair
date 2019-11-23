@@ -118,6 +118,7 @@
    "doc_url":"http://caffe.berkeleyvision.org/tutorial/",
    "home":"http://caffe.berkeleyvision.org/",
    "license":"BSD-2-Clause",
+   "license_file":"LICENSE",
    "summary":"A deep learning framework made with expression, speed, and modularity in mind"
   },
   "build":{
@@ -158,7 +159,7 @@
     "python",
     "boost",
     "cython",
-    "hdf5 1.10.4",
+    "hdf5",
     "gflags",
     "glog",
     "h5py",
@@ -183,7 +184,7 @@
     "python",
     "boost",
     "cython",
-    "hdf5 1.10.4",
+    "hdf5",
     "gflags",
     "glog",
     "h5py",
@@ -208,7 +209,7 @@
     "python",
     "boost",
     "cython",
-    "hdf5 1.10.4",
+    "hdf5",
     "gflags",
     "glog",
     "h5py",
@@ -332,7 +333,7 @@
  "name":"caffe",
  "new_version":"1.0",
  "pinning_version":"2019.11.18",
- "raw_meta_yaml":"{% set version = \"1.0\" %}\n\npackage:\n  name: caffe\n  version: {{ version }}\n\nsource:\n  url: https://github.com/BVLC/caffe/archive/{{ version }}.tar.gz\n  sha256: 71d3c9eb8a183150f965a465824d01fe82826c22505f7aa314f700ace03fa77f\n  patches:\n    - backport_6638-support-opencv4.patch\n\nbuild:\n  number: 203\n  detect_binary_files_with_prefix: False\n  skip: True  # [win or osx or blas_impl != 'openblas']\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n  host:\n    - python\n    - boost\n    - cython\n    # Unpin hdf5 when the new h5py is released.\n    - hdf5 1.10.4\n    - gflags\n    - glog\n    - h5py\n    - ipython\n    - leveldb\n    - protobuf\n    - lmdb\n    - libcblas      # [blas_impl == 'mkl']\n    - mkl-include   # [blas_impl == 'mkl']\n    - mkl           # [blas_impl == 'mkl']\n    - mkl-devel     # [blas_impl == 'mkl']\n    # Some of its dependencies are not built with openblas 0.3.6 yet.\n    - openblas      # [blas_impl == 'openblas']\n    - matplotlib\n    - networkx\n    - nose\n    - opencv\n    - pandas\n    - pillow\n    - python-dateutil\n    - python-gflags\n    - python-leveldb\n    - pyyaml\n    - scikit-image\n    - six\n    - snappy\n    - numpy\n  run:\n    - python\n    - boost\n    - opencv\n    - gflags\n    - lmdb\n    - h5py\n    - ipython\n    - matplotlib\n    - networkx\n    - {{ pin_compatible('numpy') }}\n    - pandas\n    - protobuf\n    - python-dateutil\n    - python-gflags\n    - python-leveldb\n    - pyyaml\n    - scikit-image\n    - scipy\n    - six\n\ntest:\n  commands:\n    # Test commands.\n    - command -v \"${PREFIX}/bin/caffe\"                        # [unix]\n    - command -v \"${PREFIX}/bin/classification\"               # [unix]\n    - command -v \"${PREFIX}/bin/compute_image_mean\"           # [unix]\n    - command -v \"${PREFIX}/bin/convert_cifar_data\"           # [unix]\n    - command -v \"${PREFIX}/bin/convert_imageset\"             # [unix]\n    - command -v \"${PREFIX}/bin/convert_mnist_data\"           # [unix]\n    - command -v \"${PREFIX}/bin/convert_mnist_siamese_data\"   # [unix]\n    - command -v \"${PREFIX}/bin/device_query\"                 # [unix]\n    - command -v \"${PREFIX}/bin/extract_features\"             # [unix]\n    - command -v \"${PREFIX}/bin/finetune_net\"                 # [unix]\n    - command -v \"${PREFIX}/bin/net_speed_benchmark\"          # [unix]\n    - command -v \"${PREFIX}/bin/test_net\"                     # [unix]\n    - command -v \"${PREFIX}/bin/train_net\"                    # [unix]\n    - command -v \"${PREFIX}/bin/upgrade_net_proto_binary\"     # [unix]\n    - command -v \"${PREFIX}/bin/upgrade_net_proto_text\"       # [unix]\n    - command -v \"${PREFIX}/bin/upgrade_solver_proto_text\"    # [unix]\n\n    # Test includes.\n    - test -d \"${PREFIX}/include/caffe\"                       # [unix]\n\n    # Test libraries.\n    - test -f \"${PREFIX}/lib/libcaffe${SHLIB_EXT}\"            # [unix]\n    - test -f \"${PREFIX}/lib/libcaffe.a\"                      # [unix]\n    \n\n  imports:\n    - caffe\n\nabout:\n  home: http://caffe.berkeleyvision.org/\n  license: BSD-2-Clause\n  summary: \"A deep learning framework made with expression, speed, and modularity in mind\"\n  description: |\n    Caffe is a deep learning framework brewed for expression, speed,modularity, openness and community.\n  doc_url: http://caffe.berkeleyvision.org/tutorial/\n  doc_source_url: https://github.com/BVLC/caffe\n\nextra:\n  recipe-maintainers:\n    - jakirkham\n    - 183amir\n    - marcelotrevisani\n    - ocefpaf\n",
+ "raw_meta_yaml":"{% set version = \"1.0\" %}\n\npackage:\n  name: caffe\n  version: {{ version }}\n\nsource:\n  url: https://github.com/BVLC/caffe/archive/{{ version }}.tar.gz\n  sha256: 71d3c9eb8a183150f965a465824d01fe82826c22505f7aa314f700ace03fa77f\n  patches:\n    - backport_6638-support-opencv4.patch\n\nbuild:\n  number: 203\n  detect_binary_files_with_prefix: False\n  skip: True  # [win or osx or blas_impl != 'openblas']\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n  host:\n    - python\n    - boost\n    - cython\n    - hdf5\n    - gflags\n    - glog\n    - h5py\n    - ipython\n    - leveldb\n    - protobuf\n    - lmdb\n    - libcblas      # [blas_impl == 'mkl']\n    - mkl-include   # [blas_impl == 'mkl']\n    - mkl           # [blas_impl == 'mkl']\n    - mkl-devel     # [blas_impl == 'mkl']\n    # Some of its dependencies are not built with openblas 0.3.6 yet.\n    - openblas      # [blas_impl == 'openblas']\n    - matplotlib\n    - networkx\n    - nose\n    - opencv\n    - pandas\n    - pillow\n    - python-dateutil\n    - python-gflags\n    - python-leveldb\n    - pyyaml\n    - scikit-image\n    - six\n    - snappy\n    - numpy\n  run:\n    - python\n    - boost\n    - opencv\n    - gflags\n    - lmdb\n    - h5py\n    - ipython\n    - matplotlib\n    - networkx\n    - {{ pin_compatible('numpy') }}\n    - pandas\n    - protobuf\n    - python-dateutil\n    - python-gflags\n    - python-leveldb\n    - pyyaml\n    - scikit-image\n    - scipy\n    - six\n\ntest:\n  commands:\n    # Test commands.\n    - command -v \"${PREFIX}/bin/caffe\"                        # [unix]\n    - command -v \"${PREFIX}/bin/classification\"               # [unix]\n    - command -v \"${PREFIX}/bin/compute_image_mean\"           # [unix]\n    - command -v \"${PREFIX}/bin/convert_cifar_data\"           # [unix]\n    - command -v \"${PREFIX}/bin/convert_imageset\"             # [unix]\n    - command -v \"${PREFIX}/bin/convert_mnist_data\"           # [unix]\n    - command -v \"${PREFIX}/bin/convert_mnist_siamese_data\"   # [unix]\n    - command -v \"${PREFIX}/bin/device_query\"                 # [unix]\n    - command -v \"${PREFIX}/bin/extract_features\"             # [unix]\n    - command -v \"${PREFIX}/bin/finetune_net\"                 # [unix]\n    - command -v \"${PREFIX}/bin/net_speed_benchmark\"          # [unix]\n    - command -v \"${PREFIX}/bin/test_net\"                     # [unix]\n    - command -v \"${PREFIX}/bin/train_net\"                    # [unix]\n    - command -v \"${PREFIX}/bin/upgrade_net_proto_binary\"     # [unix]\n    - command -v \"${PREFIX}/bin/upgrade_net_proto_text\"       # [unix]\n    - command -v \"${PREFIX}/bin/upgrade_solver_proto_text\"    # [unix]\n\n    # Test includes.\n    - test -d \"${PREFIX}/include/caffe\"                       # [unix]\n\n    # Test libraries.\n    - test -f \"${PREFIX}/lib/libcaffe${SHLIB_EXT}\"            # [unix]\n    - test -f \"${PREFIX}/lib/libcaffe.a\"                      # [unix]\n    \n\n  imports:\n    - caffe\n\nabout:\n  home: http://caffe.berkeleyvision.org/\n  license: BSD-2-Clause\n  license_file: LICENSE\n  summary: \"A deep learning framework made with expression, speed, and modularity in mind\"\n  description: |\n    Caffe is a deep learning framework brewed for expression, speed,modularity, openness and community.\n  doc_url: http://caffe.berkeleyvision.org/tutorial/\n  doc_source_url: https://github.com/BVLC/caffe\n\nextra:\n  recipe-maintainers:\n    - jakirkham\n    - 183amir\n    - marcelotrevisani\n    - ocefpaf\n",
  "req":{
   "__set__":true,
   "elements":[
