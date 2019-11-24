@@ -98,17 +98,21 @@
    "summary":"Unidata NetCDF C++ Library"
   },
   "build":{
-   "number":"11",
-   "skip":true
+   "number":"112",
+   "skip":true,
+   "string":"nompi_h_112"
   },
   "extra":{
    "recipe-maintainers":[
     "kmuehlbauer",
     "ocefpaf",
+    "xylar",
     "kmuehlbauer",
     "ocefpaf",
+    "xylar",
     "kmuehlbauer",
-    "ocefpaf"
+    "ocefpaf",
+    "xylar"
    ]
   },
   "package":{
@@ -128,20 +132,32 @@
     "cxx_compiler_stub"
    ],
    "host":[
-    "libnetcdf",
     "hdf5",
+    "hdf5 * nompi_*",
     "libnetcdf",
+    "libnetcdf * nompi_*",
+    "nompi",
     "hdf5",
+    "hdf5 * nompi_*",
     "libnetcdf",
-    "hdf5"
+    "libnetcdf * nompi_*",
+    "nompi",
+    "hdf5",
+    "hdf5 * nompi_*",
+    "libnetcdf",
+    "libnetcdf * nompi_*",
+    "nompi"
    ],
    "run":[
-    "libnetcdf",
-    "hdf5",
-    "libnetcdf",
-    "hdf5",
-    "libnetcdf",
-    "hdf5"
+    "hdf5 * nompi_*",
+    "libnetcdf * nompi_*",
+    "nompi",
+    "hdf5 * nompi_*",
+    "libnetcdf * nompi_*",
+    "nompi",
+    "hdf5 * nompi_*",
+    "libnetcdf * nompi_*",
+    "nompi"
    ]
   },
   "source":{
@@ -158,7 +174,7 @@
  "name":"netcdf-cxx4",
  "new_version":"4.3.1",
  "pinning_version":"2019.10.11",
- "raw_meta_yaml":"{% set version = \"4.3.0\" %}\n\npackage:\n  name: netcdf-cxx4\n  version: {{ version }}\n\nsource:\n  url: https://github.com/Unidata/netcdf-cxx4/archive/v{{ version }}.tar.gz\n  sha256: 25da1c97d7a01bc4cee34121c32909872edd38404589c0427fefa1301743f18f\n\nbuild:\n  number: 11\n  skip: True  # [win]\n\nrequirements:\n  build:\n    - cmake\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n  host:\n    - libnetcdf\n    - hdf5\n  run:\n    - libnetcdf\n    - hdf5\n\ntest:\n  commands:\n    #- ncxx4-config --all  # FIXME: no ncxx4-config for cmake yet.\n    - test -f ${PREFIX}/lib/libnetcdf-cxx4.a  # [not win]\n    - test -f ${PREFIX}/lib/libnetcdf_c++4.a  # [not win]\n\nabout:\n  home: https://github.com/Unidata/netcdf-cxx4\n  license: http://www.unidata.ucar.edu/software/netcdf/copyright.html\n  license_file: COPYRIGHT\n  summary: Unidata NetCDF C++ Library\n\nextra:\n  recipe-maintainers:\n    - kmuehlbauer\n    - ocefpaf\n",
+ "raw_meta_yaml":"{% set version = \"4.3.0\" %}\n{% set build = 12 %}\n\n# recipe-lint fails if mpi is undefined\n{% set mpi = mpi or 'nompi' %}\n{% if mpi == \"nompi\" %}\n# prioritize nompi via build number\n{% set build = build + 100 %}\n{% endif %}\n\npackage:\n  name: netcdf-cxx4\n  version: {{ version }}\n\nsource:\n  url: https://github.com/Unidata/netcdf-cxx4/archive/v{{ version }}.tar.gz\n  sha256: 25da1c97d7a01bc4cee34121c32909872edd38404589c0427fefa1301743f18f\n\nbuild:\n  number: {{ build }}\n  skip: True  # [win]\n\n  # add build string so packages can depend on\n  # mpi or nompi variants explicitly:\n  # `netcdf-cxx4 * mpi_mpich_*` for mpich\n  # `netcdf-cxx4 * mpi_*` for any mpi\n  # `netcdf-cxx4 * nompi_*` for no mpi\n\n  {% if mpi != 'nompi' %}\n  {% set mpi_prefix = \"mpi_\" + mpi %}\n  {% else %}\n  {% set mpi_prefix = \"nompi\" %}\n  {% endif %}\n  string: \"{{ mpi_prefix }}_h{{ PKG_HASH }}_{{ build }}\"\n\nrequirements:\n  build:\n    - cmake\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n  host:\n    # need to list hdf5 and libnetcdf twice to get version pinning from\n    # conda_build_config and build pinning from {{ mpi_prefix }}\n    - hdf5\n    - hdf5 * {{ mpi_prefix }}_*\n    - libnetcdf\n    - libnetcdf * {{ mpi_prefix }}_*\n    - {{ mpi }}  # [mpi != 'nompi']\n  run:\n    - hdf5 * {{ mpi_prefix }}_*\n    - libnetcdf * {{ mpi_prefix }}_*\n    - {{ mpi }}  # [mpi != 'nompi']\n    - openssh  # [mpi == 'openmpi']\n\ntest:\n  commands:\n    #- ncxx4-config --all  # FIXME: no ncxx4-config for cmake yet.\n    - test -f ${PREFIX}/lib/libnetcdf-cxx4.a  # [not win]\n    - test -f ${PREFIX}/lib/libnetcdf_c++4.a  # [not win]\n\nabout:\n  home: https://github.com/Unidata/netcdf-cxx4\n  license: http://www.unidata.ucar.edu/software/netcdf/copyright.html\n  license_file: COPYRIGHT\n  summary: Unidata NetCDF C++ Library\n\nextra:\n  recipe-maintainers:\n    - kmuehlbauer\n    - ocefpaf\n    - xylar\n",
  "req":{
   "__set__":true,
   "elements":[
@@ -166,7 +182,8 @@
    "cmake",
    "cxx_compiler_stub",
    "hdf5",
-   "libnetcdf"
+   "libnetcdf",
+   "nompi"
   ]
  },
  "smithy_version":"3.6.0",
