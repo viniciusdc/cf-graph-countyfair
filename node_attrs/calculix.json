@@ -67,6 +67,23 @@
     "migrator_version",
     "name"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/344955480.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"Version",
+    "migrator_version":0,
+    "version":"2.16"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "version"
+   ]
   }
  ],
  "bad":false,
@@ -152,8 +169,8 @@
   }
  },
  "name":"calculix",
- "new_version":false,
- "pinning_version":"2019.08.19",
+ "new_version":"2.16",
+ "pinning_version":"2019.11.20",
  "raw_meta_yaml":"{% set name = \"calculix\" %}\n{% set version = \"2.15\" %}\n{% set sha256 = \"bc7dba721935af51b60c1b5aa1529a420476fc6432a7bec5254f8dfabaeb8a34\" %}\n\npackage:\n  name: {{ name }}\n  version: {{ version }}\n\nsource:\n  fn: {{ name }}_{{ version }}.tar.bz2\n  url: http://www.dhondt.de/ccx_{{ version }}.src.tar.bz2\n  sha256: {{ sha256 }}\n  patches:\n    - mingw.patch  # [win]\n\nbuild:\n  number: 1004\n\nrequirements:\n  build:\n    - {{ compiler(\"c\") }}  # [unix]\n    - {{ compiler('m2w64_c') }}  # [win]\n    - {{ compiler(\"fortran\") }}  # [unix]\n    - {{ compiler('m2w64_fortran') }}  # [win]\n    - perl\n    - llvm-openmp  # [osx]\n  host:\n    - libblas\n    - arpack\n    - spooles\n    - llvm-openmp  # [osx]\n  run:\n    - arpack\n    - llvm-openmp  # [osx]\n\ntest:\n  commands:\n    - test -f ${PREFIX}/bin/ccx  # [unix]\n    - test -f %LIBRARY_PREFIX%\\bin\\ccx.exe  # [win]\n\nabout:\n  home: http://www.dhondt.de/\n  license: GPL 2\n  license_family: GPL\n  license_file: '{{ environ[\"RECIPE_DIR\"] }}/LICENSE'\n  summary: 3D Structural Finite Element Program\n  description: A Free Software Three-Dimensional Structural\n               Finite Element Program\n  doc_url: http://www.dhondt.de/ccx_{{ version }}.pdf\n  dev_url: http://www.dhondt.de/\n\nextra:\n  recipe-maintainers:\n    - looooo\n",
  "req":{
   "__set__":true,
@@ -169,7 +186,7 @@
    "spooles"
   ]
  },
- "smithy_version":"3.4.1",
+ "smithy_version":"3.6.2",
  "url":"http://www.dhondt.de/ccx_2.15.src.tar.bz2",
  "version":"2.15"
 }
