@@ -19,22 +19,16 @@
   }
  ],
  "bad":"Upstream: Error getting upstream version",
- "conda-forge.yml":{},
+ "conda-forge.yml":{
+  "provider":{
+   "win":"appveyor"
+  }
+ },
  "feedstock_name":"vc",
  "meta_yaml":{
-  "about":{
-   "home":"https://github.com/conda/conda/wiki/VC-features",
-   "license":"BSD 3-Clause",
-   "summary":"A meta-package to track VC features."
-  },
   "build":{
-   "number":"0",
-   "skip":true,
-   "track_features":[
-    "vc9",
-    "vc9",
-    "vc9"
-   ]
+   "number":"11",
+   "skip":true
   },
   "extra":{
    "recipe-maintainers":[
@@ -43,42 +37,188 @@
     "pelson",
     "patricksnape",
     "msarahan",
+    "isuruf",
     "jakirkham",
     "183amir",
     "pelson",
     "patricksnape",
     "msarahan",
+    "isuruf",
     "jakirkham",
     "183amir",
     "pelson",
     "patricksnape",
-    "msarahan"
+    "msarahan",
+    "isuruf"
    ]
   },
+  "outputs":[
+   {
+    "about":{
+     "license":"BSD 3-clause",
+     "summary":"Activation and version verification of MSVC 14 (VS 2015) compiler"
+    },
+    "name":"vs2015_",
+    "run_exports":{
+     "strong":[
+      "subpackage_stub",
+      "subpackage_stub"
+     ]
+    },
+    "script":"install_activate.bat",
+    "track_features":[
+     "vc14"
+    ]
+   },
+   {
+    "build":{
+     "no_link":[
+      "*.dll\n",
+      "Library/bin/*.dll"
+     ]
+    },
+    "name":"vs2015_runtime",
+    "script":"install_runtime.bat"
+   },
+   {
+    "about":{
+     "description":"This metapackage is used to activate vc features without\ndepending on Python.\n",
+     "dev_url":"https://github.com/conda/conda/wiki/VC-features",
+     "doc_url":"https://github.com/conda/conda/wiki/VC-features",
+     "home":"https://github.com/conda/conda/wiki/VC-features",
+     "license":"Modified BSD License (3-clause)",
+     "license_family":"BSD",
+     "summary":"A meta-package to track VC features."
+    },
+    "name":"vc",
+    "requirements":{
+     "run":[
+      "subpackage_stub"
+     ]
+    },
+    "track_features":[
+     "vc14"
+    ],
+    "version":"14"
+   },
+   {
+    "about":{
+     "license":"BSD 3-clause",
+     "summary":"Activation and version verification of MSVC 14 (VS 2015) compiler"
+    },
+    "name":"vs2015_",
+    "run_exports":{
+     "strong":[
+      "subpackage_stub",
+      "subpackage_stub"
+     ]
+    },
+    "script":"install_activate.bat",
+    "track_features":[
+     "vc14"
+    ]
+   },
+   {
+    "build":{
+     "no_link":[
+      "*.dll\n",
+      "Library/bin/*.dll"
+     ]
+    },
+    "name":"vs2015_runtime",
+    "script":"install_runtime.bat"
+   },
+   {
+    "about":{
+     "description":"This metapackage is used to activate vc features without\ndepending on Python.\n",
+     "dev_url":"https://github.com/conda/conda/wiki/VC-features",
+     "doc_url":"https://github.com/conda/conda/wiki/VC-features",
+     "home":"https://github.com/conda/conda/wiki/VC-features",
+     "license":"Modified BSD License (3-clause)",
+     "license_family":"BSD",
+     "summary":"A meta-package to track VC features."
+    },
+    "name":"vc",
+    "requirements":{
+     "run":[
+      "subpackage_stub"
+     ]
+    },
+    "track_features":[
+     "vc14"
+    ],
+    "version":"14"
+   },
+   {
+    "about":{
+     "license":"BSD 3-clause",
+     "summary":"Activation and version verification of MSVC 14 (VS 2015) compiler"
+    },
+    "name":"vs2015_",
+    "run_exports":{
+     "strong":[
+      "subpackage_stub",
+      "subpackage_stub"
+     ]
+    },
+    "script":"install_activate.bat",
+    "track_features":[
+     "vc14"
+    ]
+   },
+   {
+    "build":{
+     "no_link":[
+      "*.dll\n",
+      "Library/bin/*.dll"
+     ]
+    },
+    "name":"vs2015_runtime",
+    "script":"install_runtime.bat"
+   },
+   {
+    "about":{
+     "description":"This metapackage is used to activate vc features without\ndepending on Python.\n",
+     "dev_url":"https://github.com/conda/conda/wiki/VC-features",
+     "doc_url":"https://github.com/conda/conda/wiki/VC-features",
+     "home":"https://github.com/conda/conda/wiki/VC-features",
+     "license":"Modified BSD License (3-clause)",
+     "license_family":"BSD",
+     "summary":"A meta-package to track VC features."
+    },
+    "name":"vc",
+    "requirements":{
+     "run":[
+      "subpackage_stub"
+     ]
+    },
+    "track_features":[
+     "vc14"
+    ],
+    "version":"14"
+   }
+  ],
   "package":{
-   "name":"vc",
-   "version":"9"
-  },
-  "requirements":{
-   "run":[
-    "vs2008_runtime",
-    "vs2008_runtime",
-    "vs2008_runtime"
-   ]
-  },
-  "test":{}
+   "name":"vs2015",
+   "version":"14.0.25420"
+  }
  },
- "name":"vc",
+ "name":"vs2015",
  "new_version":false,
+ "outputs_names":[
+  "vc",
+  "vs2015_",
+  "vs2015_runtime"
+ ],
  "pinning_version":"2019.01.21",
- "raw_meta_yaml":"# Switch the version of this recipe based on the VC_VERSION environment variable.\n{% set VERSION = os.environ.get('VC_VERSION', '9')|string %}\n{% set runtime_years = {'9': '2008', '10': '2010', '14': '2015'} %}\n{% set runtime_year = runtime_years[VERSION] %}\n\npackage:\n  name: vc\n  version: {{ VERSION }}\n\nbuild:\n  number: 0\n  track_features:\n    - vc{{ VERSION }}\n  skip: true  # [not win]\n\nrequirements:\n  run:\n    - vs{{ runtime_year }}_runtime\n\n# We don't need to test anything here - this is purely a metapackage.\ntest: {}\n\nabout:\n  home: https://github.com/conda/conda/wiki/VC-features\n  license: BSD 3-Clause\n  summary: A meta-package to track VC features.\n\nextra:\n  recipe-maintainers:\n    - jakirkham\n    - 183amir\n    - pelson\n    - patricksnape\n    - msarahan\n",
+ "raw_meta_yaml":"# version numbering is explained at https://stackoverflow.com/questions/42730478/version-numbers-for-visual-studio-2017-boost-and-cmake\n#     This version number follows the \"platform toolset\"\n{% set vcver=\"14\" %}\n{% set vsyear=\"2015\" %}\n{% set fullver=\"14.0.25420\" %}\n\npackage:\n  name: vs{{ vsyear }}\n  version: {{ fullver }}\n\nbuild:\n  number: 11\n  skip: True  [not win]\n\noutputs:\n  - name: vs{{ vsyear }}_{{ cross_compiler_target_platform }}\n    script: install_activate.bat\n    track_features:\n      - vc{{vcver}}\n    run_exports:\n      strong:\n        # compatible within major version.  This is MSFT's incrementing of the UCRT version.  It was\n        #    14.0 with VS2015, and 14.1 with VS2017 - if the major version changes, we're assuming\n        #    that binary compatibility breaks.\n        - {{ pin_subpackage('vc') }}\n        - {{ pin_subpackage('vs' ~ vsyear ~ '_runtime', max_pin=None) }}\n    about:\n      summary: Activation and version verification of MSVC {{ vcver }} (VS {{ vsyear }}) compiler\n      license: BSD 3-clause\n\n  - name: vs{{ vsyear }}_runtime\n    script: install_runtime.bat\n    build:\n      no_link:\n        - |\n          *.dll\n        - Library/bin/*.dll\n\n  - name: vc\n    version: {{ vcver }}\n    track_features:\n      - vc{{vcver}}\n    requirements:\n      run:\n        # Set lower bound for runtime (no upper bound).  Upper bound is still present, but\n        #    it's part of the run_exports for the compiler: assume that when vcver's major version changes,\n        #    MSFT has broken our binary compatibility.\n        - {{ pin_subpackage('vs' ~ vsyear ~ '_runtime', max_pin=None) }}\n    about:\n      home: https://github.com/conda/conda/wiki/VC-features\n      license: Modified BSD License (3-clause)\n      license_family: BSD\n      summary: A meta-package to track VC features.\n      description: |\n          This metapackage is used to activate vc features without\n          depending on Python.\n      doc_url: https://github.com/conda/conda/wiki/VC-features\n      dev_url: https://github.com/conda/conda/wiki/VC-features\n\nextra:\n  recipe-maintainers:\n    - jakirkham\n    - 183amir\n    - pelson\n    - patricksnape\n    - msarahan\n    - isuruf\n",
  "req":{
   "__set__":true,
   "elements":[
-   "vs2008_runtime"
+   "subpackage_stub"
   ]
  },
  "smithy_version":"3.2.10",
  "time":1568135269.6369736,
- "version":"9"
+ "version":"14.0.25420"
 }
