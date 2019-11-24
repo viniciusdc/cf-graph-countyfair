@@ -141,8 +141,8 @@
   },
   "build":{
    "noarch":"python",
-   "number":"0",
-   "script":"python -m pip install --no-deps --ignore-installed ."
+   "number":"1",
+   "script":" -m pip install . -vv --no-deps"
   },
   "extra":{
    "recipe-maintainers":[
@@ -173,19 +173,16 @@
     "nb_conda_kernels >=2.2.0",
     "packaging",
     "requests",
-    "typing",
     "python >=3.5",
     "notebook >=4.3.1",
     "nb_conda_kernels >=2.2.0",
     "packaging",
     "requests",
-    "typing",
     "python >=3.5",
     "notebook >=4.3.1",
     "nb_conda_kernels >=2.2.0",
     "packaging",
-    "requests",
-    "typing"
+    "requests"
    ]
   },
   "source":{
@@ -203,7 +200,7 @@
  "name":"jupyter_conda",
  "new_version":"3.1.1",
  "pinning_version":"2019.09.08",
- "raw_meta_yaml":"{% set name = \"jupyter_conda\" %}\n{% set version = \"3.1.1\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n  \nsource:\n  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz\n  sha256: a7a4f0fbaa4ff91026626d13ddea35f3266b5720495c11b0ceaab5c5d22d456c\n\nbuild:\n  noarch: python\n  number: 0\n  script: python -m pip install --no-deps --ignore-installed .\n\nrequirements:\n  host:\n    - python\n    - pip\n  run:\n    - python >=3.5\n    - notebook >=4.3.1\n    - nb_conda_kernels >=2.2.0\n    - packaging\n    - requests\n    - typing\n\ntest:\n  imports:\n    - jupyter_conda\n\nabout:\n  home: https://github.com/fcollonval/jupyter_conda\n  license: BSD-3-Clause\n  license_family: BSD\n  license_file: LICENSE\n  summary: Conda environment and package access extension from within Jupyter\n\nextra:\n  recipe-maintainers:\n    - fcollonval\n    - dbast\n",
+ "raw_meta_yaml":"{% set name = \"jupyter_conda\" %}\n{% set version = \"3.1.1\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n  \nsource:\n  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz\n  sha256: a7a4f0fbaa4ff91026626d13ddea35f3266b5720495c11b0ceaab5c5d22d456c\n\nbuild:\n  noarch: python\n  number: 1\n  script: \"{{ PYTHON }} -m pip install . -vv --no-deps\"\n\nrequirements:\n  host:\n    - python\n    - pip\n  run:\n    - python >=3.5\n    - notebook >=4.3.1\n    - nb_conda_kernels >=2.2.0\n    - packaging\n    - requests\n\ntest:\n  imports:\n    - jupyter_conda\n\nabout:\n  home: https://github.com/fcollonval/jupyter_conda\n  license: BSD-3-Clause\n  license_family: BSD\n  license_file: LICENSE\n  summary: Conda environment and package access extension from within Jupyter\n\nextra:\n  recipe-maintainers:\n    - fcollonval\n    - dbast\n",
  "req":{
   "__set__":true,
   "elements":[
@@ -212,8 +209,7 @@
    "packaging",
    "pip",
    "python",
-   "requests",
-   "typing"
+   "requests"
   ]
  },
  "smithy_version":"3.4.5",
