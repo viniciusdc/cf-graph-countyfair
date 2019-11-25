@@ -536,6 +536,23 @@
     "migrator_version",
     "version"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/345184973.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"Version",
+    "migrator_version":0,
+    "version":"42.0.1"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "version"
+   ]
   }
  ],
  "bad":false,
@@ -649,7 +666,7 @@
   }
  },
  "name":"setuptools",
- "new_version":"42.0.0",
+ "new_version":"42.0.1",
  "pinning_version":"2019.11.20",
  "raw_meta_yaml":"{% set version = \"42.0.0\" %}\n\npackage:\n  name: setuptools\n  version: {{ version }}\n\nsource:\n  url: https://github.com/pypa/setuptools/archive/v{{ version }}.tar.gz\n  sha256: c60bd4cbb2a963c73993951ff4ec7ef0044015c3ffd42e573f6c4e615d1c7cf8\n  patches:\n    # Don't create requires.txt with exact pinnings\n    - 0001-Remove-exact-pinning-on-certifi-and-wincertstore.patch\n    # Modify setuptools to fail if used in conda build (encourage people to add all deps in meta.yaml).\n    - 0002-disable-downloads-inside-conda-build.patch\n\nbuild:\n  number: 0\n  entry_points:\n    - easy_install = setuptools.command.easy_install:main\n\nrequirements:\n  host:\n    - python\n    - certifi  >=2016.9.26\n    - wincertstore  >=0.2  # [win]\n  run:\n    - python\n    - certifi  >=2016.9.26\n    - wincertstore  >=0.2  # [win]\n\ntest:\n  commands:\n    - easy_install --help\n  imports:\n    - setuptools\n    - easy_install\n    - pkg_resources\n\nabout:\n  home: https://github.com/pypa/setuptools\n  license: MIT\n  license_file: LICENSE\n  license_family: MIT\n  summary: Download, build, install, upgrade, and uninstall Python packages\n  description: |\n    Setuptools is a fully-featured, actively-maintained, and stable library\n    designed to facilitate packaging Python projects.\n  doc_url: http://pythonhosted.org/setuptools/\n  dev_url: https://github.com/pypa/setuptools\n  doc_source_url: https://github.com/pypa/setuptools/tree/master/docs\n\nextra:\n  recipe-maintainers:\n    - jakirkham\n    - jjhelmus\n    - msarahan\n    - ocefpaf\n    - nicoddemus\n    - mingwandroid\n",
  "req":{
