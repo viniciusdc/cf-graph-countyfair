@@ -187,7 +187,7 @@
    ]
   }
  ],
- "bad":"Upstream: Error getting upstream version",
+ "bad":false,
  "conda-forge.yml":{
   "compiler_stack":"comp7",
   "max_py_ver":"37",
@@ -202,20 +202,24 @@
    "summary":"The Earth System Modeling Framework (ESMF) is software for building and\ncoupling weather, climate, and related models.'\n"
   },
   "build":{
-   "number":"1",
-   "skip":true
+   "number":"2",
+   "skip":true,
+   "string":"nompi_h_2"
   },
   "extra":{
    "recipe-maintainers":[
     "ocefpaf",
     "bekozi",
     "rokuingh",
+    "xylar",
     "ocefpaf",
     "bekozi",
     "rokuingh",
+    "xylar",
     "ocefpaf",
     "bekozi",
-    "rokuingh"
+    "rokuingh",
+    "xylar"
    ]
   },
   "package":{
@@ -239,36 +243,45 @@
    ],
    "host":[
     "netcdf-fortran",
-    "libnetcdf",
+    "netcdf-fortran * nompi_*",
     "hdf5",
-    "mpich",
+    "hdf5 * nompi_*",
+    "libnetcdf",
+    "libnetcdf * nompi_*",
+    "nompi",
     "netcdf-fortran",
-    "libnetcdf",
+    "netcdf-fortran * nompi_*",
     "hdf5",
-    "mpich",
+    "hdf5 * nompi_*",
+    "libnetcdf",
+    "libnetcdf * nompi_*",
+    "nompi",
     "netcdf-fortran",
-    "libnetcdf",
+    "netcdf-fortran * nompi_*",
     "hdf5",
-    "mpich"
+    "hdf5 * nompi_*",
+    "libnetcdf",
+    "libnetcdf * nompi_*",
+    "nompi"
    ],
    "run":[
-    "netcdf-fortran",
-    "libnetcdf",
-    "hdf5",
-    "mpich",
-    "netcdf-fortran",
-    "libnetcdf",
-    "hdf5",
-    "mpich",
-    "netcdf-fortran",
-    "libnetcdf",
-    "hdf5",
-    "mpich"
+    "netcdf-fortran * nompi_*",
+    "libnetcdf * nompi_*",
+    "hdf5 * nompi_*",
+    "nompi",
+    "netcdf-fortran * nompi_*",
+    "libnetcdf * nompi_*",
+    "hdf5 * nompi_*",
+    "nompi",
+    "netcdf-fortran * nompi_*",
+    "libnetcdf * nompi_*",
+    "hdf5 * nompi_*",
+    "nompi"
    ]
   },
   "source":{
-   "git_rev":"ESMF_8_0_0",
-   "git_url":"git://git.code.sf.net/p/esmf/esmf"
+   "sha256":"75c34c41806e703551b6b79566edf34c23f1eebcf821749e5320e860e565d94f",
+   "url":"http://www.earthsystemmodeling.org/esmf_releases/public/ESMF_8_0_0/esmf_8_0_0_src.tar.gz"
   },
   "test":{
    "commands":[
@@ -284,7 +297,7 @@
  "name":"esmf",
  "new_version":false,
  "pinning_version":"2019.11.20",
- "raw_meta_yaml":"{% set version = \"8.0.0\" %}\n{% set ver = version.replace(\".\", \"_\") %}\n\npackage:\n  name: esmf\n  version: {{ version }}\n\nsource:\n  git_url: git://git.code.sf.net/p/esmf/esmf\n  git_tag: ESMF_8_0_0\n\nbuild:\n  number: 1\n  skip: True  # [win]\n\nrequirements:\n  build:\n    - perl\n    - {{ compiler('fortran') }}\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n  host:\n    - netcdf-fortran\n    - libnetcdf\n    - hdf5\n    - mpich\n  run:\n    - netcdf-fortran\n    - libnetcdf\n    - hdf5\n    - mpich\n\ntest:\n  commands:\n    - ESMF_Info\n    - ESMF_RegridWeightGen --help\n\nabout:\n  home: http://www.earthsystemmodeling.org/\n  license: University of Illinois/NCSA (NCSA)\n  summary: |\n    The Earth System Modeling Framework (ESMF) is software for building and\n    coupling weather, climate, and related models.'\n\nextra:\n  recipe-maintainers:\n    - ocefpaf\n    - bekozi\n    - rokuingh\n",
+ "raw_meta_yaml":"{% set version = \"8.0.0\" %}\n{% set ver = version.replace(\".\", \"_\") %}\n{% set build = 2 %}\n\n# ensure mpi is defined (needed for conda-smithy recipe-lint)\n{% set mpi = mpi or 'nompi' %}\n\n{% if mpi == 'mpich' %}\n# prioritize mpich variant, which was previously the only option, via build number\n{% set build = build + 100 %}\n{% endif %}\n\npackage:\n  name: esmf\n  version: {{ version }}\n\nsource:\n  url: http://www.earthsystemmodeling.org/esmf_releases/public/ESMF_{{ ver }}/esmf_{{ ver }}_src.tar.gz\n  sha256: 75c34c41806e703551b6b79566edf34c23f1eebcf821749e5320e860e565d94f\n\nbuild:\n  number: {{ build }}\n  skip: True  # [win]\n\n  # add build string so packages can depend on\n  # mpi or nompi variants explicitly:\n  # `esmf * mpi_mpich_*` for mpich\n  # `esmf * mpi_*` for any mpi\n  # `esmf * nompi_*` for no mpi\n\n  {% if mpi != 'nompi' %}\n  {% set mpi_prefix = \"mpi_\" + mpi %}\n  {% else %}\n  {% set mpi_prefix = \"nompi\" %}\n  {% endif %}\n  string: \"{{ mpi_prefix }}_h{{ PKG_HASH }}_{{ build }}\"\n\nrequirements:\n  build:\n    - perl\n    - {{ compiler('fortran') }}\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n  host:\n    # need to list netcdf-fortran, hdf5 and libnetcdf twice to get version\n    # pinning from conda_build_config and build pinning from {{ mpi_prefix }}\n    - netcdf-fortran\n    - netcdf-fortran * {{ mpi_prefix }}_*\n    - hdf5\n    - hdf5 * {{ mpi_prefix }}_*\n    - libnetcdf\n    - libnetcdf * {{ mpi_prefix }}_*\n    - {{ mpi }}  # [mpi != 'nompi']\n  run:\n    - netcdf-fortran * {{ mpi_prefix }}_*\n    - libnetcdf * {{ mpi_prefix }}_*\n    - hdf5 * {{ mpi_prefix }}_*\n    - {{ mpi }}  # [mpi != 'nompi']\n    - openssh  # [mpi == 'openmpi']\n\ntest:\n  commands:\n    - ESMF_Info\n    - ESMF_RegridWeightGen --help\n\nabout:\n  home: http://www.earthsystemmodeling.org/\n  license: University of Illinois/NCSA (NCSA)\n  summary: |\n    The Earth System Modeling Framework (ESMF) is software for building and\n    coupling weather, climate, and related models.'\n\nextra:\n  recipe-maintainers:\n    - ocefpaf\n    - bekozi\n    - rokuingh\n    - xylar\n",
  "req":{
   "__set__":true,
   "elements":[
@@ -293,13 +306,13 @@
    "fortran_compiler_stub",
    "hdf5",
    "libnetcdf",
-   "mpich",
    "netcdf-fortran",
+   "nompi",
    "perl"
   ]
  },
  "smithy_version":"3.6.2",
  "time":1568135264.605674,
- "url":null,
+ "url":"http://www.earthsystemmodeling.org/esmf_releases/public/ESMF_8_0_0/esmf_8_0_0_src.tar.gz",
  "version":"8.0.0"
 }
