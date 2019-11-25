@@ -157,7 +157,7 @@
  "hash_type":"sha256",
  "meta_yaml":{
   "about":{
-   "description":"This package helps the user to generate summary webpages to\nvisualise the output from both LALInference and Bilby.\n",
+   "description":"This package helps the user to generate summary webpages to\nvisualise the output from any parameter estimation code\n",
    "doc_url":"https://docs.ligo.org/charlie.hoy/pesummary/",
    "home":"https://git.ligo.org/charlie.hoy/pesummary",
    "license":"MIT",
@@ -168,32 +168,32 @@
   "build":{
    "entry_points":[
     "summaryconvert = pesummary.gw.file.one_format:main",
-    "summarypages = cli.summarypages:main",
-    "summaryplots = cli.summaryplots:main",
-    "summarypublication = cli.summarypublication:main",
-    "summaryclassification = cli.summaryclassification:main",
-    "summaryclean = cli.summaryclean:main",
-    "summaryreview = cli.summaryreview:main",
-    "summarycombine = cli.summarycombine:main",
-    "summarycombine_metafiles = cli.summarycombine_metafiles:main",
+    "summarypages = pesummary.cli.summarypages:main",
+    "summaryplots = pesummary.cli.summaryplots:main",
+    "summarypublication = pesummary.cli.summarypublication:main",
+    "summaryclassification = pesummary.cli.summaryclassification:main",
+    "summaryclean = pesummary.cli.summaryclean:main",
+    "summaryreview = pesummary.cli.summaryreview:main",
+    "summarycombine = pesummary.cli.summarycombine:main",
+    "summarycombine_metafiles = pesummary.cli.summarycombine_metafiles:main",
     "summaryconvert = pesummary.gw.file.one_format:main",
-    "summarypages = cli.summarypages:main",
-    "summaryplots = cli.summaryplots:main",
-    "summarypublication = cli.summarypublication:main",
-    "summaryclassification = cli.summaryclassification:main",
-    "summaryclean = cli.summaryclean:main",
-    "summaryreview = cli.summaryreview:main",
-    "summarycombine = cli.summarycombine:main",
-    "summarycombine_metafiles = cli.summarycombine_metafiles:main",
+    "summarypages = pesummary.cli.summarypages:main",
+    "summaryplots = pesummary.cli.summaryplots:main",
+    "summarypublication = pesummary.cli.summarypublication:main",
+    "summaryclassification = pesummary.cli.summaryclassification:main",
+    "summaryclean = pesummary.cli.summaryclean:main",
+    "summaryreview = pesummary.cli.summaryreview:main",
+    "summarycombine = pesummary.cli.summarycombine:main",
+    "summarycombine_metafiles = pesummary.cli.summarycombine_metafiles:main",
     "summaryconvert = pesummary.gw.file.one_format:main",
-    "summarypages = cli.summarypages:main",
-    "summaryplots = cli.summaryplots:main",
-    "summarypublication = cli.summarypublication:main",
-    "summaryclassification = cli.summaryclassification:main",
-    "summaryclean = cli.summaryclean:main",
-    "summaryreview = cli.summaryreview:main",
-    "summarycombine = cli.summarycombine:main",
-    "summarycombine_metafiles = cli.summarycombine_metafiles:main"
+    "summarypages = pesummary.cli.summarypages:main",
+    "summaryplots = pesummary.cli.summaryplots:main",
+    "summarypublication = pesummary.cli.summarypublication:main",
+    "summaryclassification = pesummary.cli.summaryclassification:main",
+    "summaryclean = pesummary.cli.summaryclean:main",
+    "summaryreview = pesummary.cli.summaryreview:main",
+    "summarycombine = pesummary.cli.summarycombine:main",
+    "summarycombine_metafiles = pesummary.cli.summarycombine_metafiles:main"
    ],
    "noarch":"python",
    "number":"0",
@@ -211,7 +211,7 @@
   },
   "package":{
    "name":"pesummary",
-   "version":"0.1.8"
+   "version":"0.2.1"
   },
   "requirements":{
    "host":[
@@ -242,6 +242,7 @@
     "scipy",
     "seaborn",
     "statsmodels",
+    "pepredicates",
     "astropy",
     "corner",
     "deepdish",
@@ -258,6 +259,7 @@
     "scipy",
     "seaborn",
     "statsmodels",
+    "pepredicates",
     "astropy",
     "corner",
     "deepdish",
@@ -273,17 +275,13 @@
     "python-lalsimulation",
     "scipy",
     "seaborn",
-    "statsmodels"
+    "statsmodels",
+    "pepredicates"
    ]
   },
   "source":{
-   "patches":[
-    "version.patch",
-    "version.patch",
-    "version.patch"
-   ],
-   "sha256":"b2dad65438eacb914e3fabb80b3f41ac9048fa1880026379311cc7fff98e8de4",
-   "url":"https://pypi.io/packages/source/p/pesummary/pesummary-0.1.8.tar.gz"
+   "sha256":"ae38586032d395fde8618818c4b12f138ca7d63dd8f7237046f11dabafc26de6",
+   "url":"https://pypi.io/packages/source/p/pesummary/pesummary-0.2.1.tar.gz"
   },
   "test":{
    "commands":[
@@ -361,7 +359,7 @@
  "name":"pesummary",
  "new_version":"0.2.2",
  "pinning_version":"2019.10.30",
- "raw_meta_yaml":"{% set name = \"pesummary\" %}\n{% set version = \"0.1.8\" %}\n\npackage:\n  name: \"{{ name|lower }}\"\n  version: \"{{ version }}\"\n\nsource:\n  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz\n  sha256: b2dad65438eacb914e3fabb80b3f41ac9048fa1880026379311cc7fff98e8de4\n  patches:\n    - version.patch\n\nbuild:\n  number: 0\n  noarch: python\n  script: \"{{ PYTHON }} -m pip install . --no-deps --ignore-installed -vv \"\n  entry_points:\n    - summaryconvert = pesummary.gw.file.one_format:main\n    - summarypages = cli.summarypages:main\n    - summaryplots = cli.summaryplots:main\n    - summarypublication = cli.summarypublication:main\n    - summaryclassification = cli.summaryclassification:main\n    - summaryclean = cli.summaryclean:main\n    - summaryreview = cli.summaryreview:main\n    - summarycombine = cli.summarycombine:main\n    - summarycombine_metafiles = cli.summarycombine_metafiles:main\n\nrequirements:\n  host:\n    - pip\n    - python >=3.6\n    - setuptools\n  run:\n    - astropy\n    - corner\n    - deepdish\n    - gwpy\n    - h5py\n    - lscsoft-glue\n    - matplotlib-base\n    - numpy\n    - pandas\n    - pygments\n    - python >=3.6\n    - python-lal\n    - python-lalsimulation\n    - scipy\n    - seaborn\n    - statsmodels\n\ntest:\n  imports:\n    - pesummary\n    - pesummary.core.css\n    - pesummary.core.file\n    - pesummary.core.file.formats\n    - pesummary.core.js\n    - pesummary.core.file\n    - pesummary.core.plots\n    - pesummary.core.webpage\n    - pesummary.gw\n    - pesummary.gw.file\n    - pesummary.gw.file.formats\n    - pesummary.gw.pepredicates\n    - pesummary.gw.plots\n    - pesummary.utils\n  commands:\n    - summarypages --help\n    - summaryplots --help\n    - summarypublication --help\n    - summaryclassification --help\n    - summaryclean --help\n    - summaryreview --help\n    - summarycombine --help\n    - summarycombine_metafiles --help\n\nabout:\n  home: https://git.ligo.org/charlie.hoy/pesummary\n  doc_url: https://docs.ligo.org/charlie.hoy/pesummary/\n  license: MIT\n  license_family: MIT\n  license_file: LICENSE\n  summary: Python package to produce summary pages for Parameter estimation codes\n  description: |\n    This package helps the user to generate summary webpages to\n    visualise the output from both LALInference and Bilby.\n\nextra:\n  recipe-maintainers:\n    - duncanmmacleod\n    - hoyc1\n",
+ "raw_meta_yaml":"{% set name = \"pesummary\" %}\n{% set version = \"0.2.1\" %}\n\npackage:\n  name: \"{{ name|lower }}\"\n  version: \"{{ version }}\"\n\nsource:\n  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz\n  sha256: ae38586032d395fde8618818c4b12f138ca7d63dd8f7237046f11dabafc26de6\n\nbuild:\n  number: 0\n  noarch: python\n  script: \"{{ PYTHON }} -m pip install . --no-deps --ignore-installed -vv \"\n  entry_points:\n    - summaryconvert = pesummary.gw.file.one_format:main\n    - summarypages = pesummary.cli.summarypages:main\n    - summaryplots = pesummary.cli.summaryplots:main\n    - summarypublication = pesummary.cli.summarypublication:main\n    - summaryclassification = pesummary.cli.summaryclassification:main\n    - summaryclean = pesummary.cli.summaryclean:main\n    - summaryreview = pesummary.cli.summaryreview:main\n    - summarycombine = pesummary.cli.summarycombine:main\n    - summarycombine_metafiles = pesummary.cli.summarycombine_metafiles:main\n\nrequirements:\n  host:\n    - pip\n    - python >=3.6\n    - setuptools\n  run:\n    - astropy\n    - corner\n    - deepdish\n    - gwpy\n    - h5py\n    - lscsoft-glue\n    - matplotlib-base\n    - numpy\n    - pandas\n    - pygments\n    - python >=3.6\n    - python-lal\n    - python-lalsimulation\n    - scipy\n    - seaborn\n    - statsmodels\n    - pepredicates\n\ntest:\n  imports:\n    - pesummary\n    - pesummary.core.css\n    - pesummary.core.file\n    - pesummary.core.file.formats\n    - pesummary.core.js\n    - pesummary.core.file\n    - pesummary.core.plots\n    - pesummary.core.webpage\n    - pesummary.gw\n    - pesummary.gw.file\n    - pesummary.gw.file.formats\n    - pesummary.gw.pepredicates\n    - pesummary.gw.plots\n    - pesummary.utils\n  commands:\n    - summarypages --help\n    - summaryplots --help\n    - summarypublication --help\n    - summaryclassification --help\n    - summaryclean --help\n    - summaryreview --help\n    - summarycombine --help\n    - summarycombine_metafiles --help\n\nabout:\n  home: https://git.ligo.org/charlie.hoy/pesummary\n  doc_url: https://docs.ligo.org/charlie.hoy/pesummary/\n  license: MIT\n  license_family: MIT\n  license_file: LICENSE\n  summary: Python package to produce summary pages for Parameter estimation codes\n  description: |\n    This package helps the user to generate summary webpages to\n    visualise the output from any parameter estimation code\n\nextra:\n  recipe-maintainers:\n    - duncanmmacleod\n    - hoyc1\n",
  "req":{
   "__set__":true,
   "elements":[
@@ -374,6 +372,7 @@
    "matplotlib-base",
    "numpy",
    "pandas",
+   "pepredicates",
    "pip",
    "pygments",
    "python",
@@ -387,5 +386,5 @@
  },
  "smithy_version":"3.6.0",
  "url":"https://pypi.io/packages/source/p/pesummary/pesummary-0.1.7.tar.gz",
- "version":"0.1.8"
+ "version":"0.2.1"
 }
