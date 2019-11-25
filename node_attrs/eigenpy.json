@@ -171,6 +171,23 @@
     "migrator_version",
     "name"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/345080606.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"Version",
+    "migrator_version":0,
+    "version":"1.6.8"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "version"
+   ]
   }
  ],
  "bad":false,
@@ -278,8 +295,8 @@
   }
  },
  "name":"eigenpy",
- "new_version":"1.6.7",
- "pinning_version":"2019.11.18",
+ "new_version":"1.6.8",
+ "pinning_version":"2019.11.20",
  "raw_meta_yaml":"{% set name = \"eigenpy\" %}\n{% set version = \"1.6.7\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  url: https://github.com/stack-of-tasks/{{ name }}/releases/download/v{{ version }}/{{ name }}-{{ version }}.tar.gz\n  sha256: 1cc9f2d0cb8c7fba0aff55e6d1042799bd3acffdf350301e171b0e0ebb740690\n  patches:\n    - windows.patch\n\nbuild:\n  number: 0\n  skip: true  # [win and vc<14]\n\nrequirements:\n  build:\n    - {{ compiler('cxx') }}  # [not win]\n    - vs2017_win-64  # [win64]\n    - vs2017_win-32  # [win32]\n    - cmake\n    - make  # [not win]\n    - pkg-config\n  host:\n    - eigen\n    - boost\n    - python\n    - numpy\n  run:\n    - boost\n    - python\n    - {{ pin_compatible('numpy') }}\n\ntest:\n  requires:\n    - pkg-config\n  imports:\n    - eigenpy\n  commands:\n    - pkg-config --modversion eigenpy\n\nabout:\n  home: http://github.com/stack-of-tasks/eigenpy\n  license: BSD-2-Clause\n  license_family: BSD\n  license_file: COPYING.LESSER\n  summary: 'Bindings between Numpy and Eigen using Boost.Python'\n  dev_url: https://github.com/stack-of-tasks/eigenpy\n\nextra:\n  recipe-maintainers:\n    - jcarpent\n    - wolfv\n    - lesteve\n    - seanyen\n",
  "req":{
   "__set__":true,
