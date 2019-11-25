@@ -330,7 +330,7 @@
     "iptest = IPython.testing.iptestcontroller:main",
     "iptest3 = IPython.testing.iptestcontroller:main"
    ],
-   "number":"0",
+   "number":"1",
    "script":" -m pip install . --no-deps --ignore-installed --no-cache-dir -vvv"
   },
   "extra":{
@@ -386,7 +386,7 @@
     "decorator",
     "jedi >=0.10",
     "pickleshare",
-    "prompt_toolkit >=2.0.0",
+    "prompt_toolkit >=2.0.0,<3",
     "pygments",
     "python",
     "traitlets >=4.2",
@@ -396,7 +396,7 @@
     "jedi >=0.10",
     "pexpect",
     "pickleshare",
-    "prompt_toolkit >=2.0.0",
+    "prompt_toolkit >=2.0.0,<3",
     "pygments",
     "python",
     "traitlets >=4.2",
@@ -405,7 +405,7 @@
     "jedi >=0.10",
     "pexpect",
     "pickleshare",
-    "prompt_toolkit >=2.0.0",
+    "prompt_toolkit >=2.0.0,<3",
     "pygments",
     "python",
     "traitlets >=4.2"
@@ -513,7 +513,7 @@
  "name":"ipython",
  "new_version":"7.9.0",
  "pinning_version":"2019.11.01",
- "raw_meta_yaml":"{% set version = \"7.9.0\" %}\n\npackage:\n  name: ipython\n  version: {{ version }}\n\nsource:\n  url: https://pypi.io/packages/source/i/ipython/ipython-{{ version }}.tar.gz\n  sha256: dfd303b270b7b5232b3d08bd30ec6fd685d8a58cabd54055e3d69d8f029f7280\n\nbuild:\n  number: 0\n  script: \"{{ PYTHON }} -m pip install . --no-deps --ignore-installed --no-cache-dir -vvv\"\n  skip: True  # [py2k]\n  entry_points:\n    - ipython = IPython:start_ipython\n    - ipython3 = IPython:start_ipython\n    - iptest = IPython.testing.iptestcontroller:main\n    - iptest3 = IPython.testing.iptestcontroller:main\n\nrequirements:\n  host:\n    - pip\n    - python\n  run:\n    - appnope  # [osx]\n    - backcall\n    - colorama  # [win]\n    - decorator\n    - jedi >=0.10\n    - pexpect  # [unix]\n    - pickleshare\n    - prompt_toolkit >=2.0.0\n    - pygments\n    - python\n    - traitlets >=4.2\n    - win_unicode_console >=0.5  # [win and py<36]\n\ntest:\n  requires:\n    - curio  # [unix]\n    - nbformat\n    - nose >=0.10.1\n    - numpy\n    - pygments\n    - requests\n    - testpath\n    # We should uncomment the deps below as soon as the python 3.8 migration is done.\n    # - ipykernel  # [not (aarch64 or ppc64le)]\n    # - trio   # [not (aarch64 or ppc64le)]\n    # - matplotlib  # [not (aarch64 or ppc64le)]\n  imports:\n    - IPython\n    - IPython.core\n    - IPython.core.magics\n    - IPython.core.tests\n    - IPython.extensions\n    - IPython.extensions.tests\n    - IPython.external\n    - IPython.external.decorators\n    - IPython.lib\n    - IPython.lib.tests\n    - IPython.sphinxext\n    - IPython.terminal\n    - IPython.terminal.pt_inputhooks\n    - IPython.terminal.tests\n    - IPython.testing\n    - IPython.testing.plugin\n    - IPython.testing.tests\n    - IPython.utils\n    - IPython.utils.tests\n  commands:\n    - ipython -h\n    - ipython3 -h\n    # [unix and not (aarch64 or ppc64le)]\n    - NOSE_EXCLUDE=\"test_history|recursion\" iptest\n\nabout:\n  home: https://ipython.org/\n  license: BSD-3-Clause\n  license_family: BSD\n  license_file: LICENSE\n  summary: \"IPython: Productive Interactive Computing\"\n  description: |\n    IPython provides a rich architecture for interactive computing with\n    a powerful interactive shell, a kernel for Jupyter, high performance\n    tools for parallel computing, and more.\n  doc_url: https://ipython.readthedocs.io/\n  dev_url: https://github.com/ipython/ipython\n\nextra:\n  recipe-maintainers:\n    - Carreau\n    - jakirkham\n    - fperez\n    - ellisonbg\n    - minrk\n    - ocefpaf\n    - pelson\n    - takluyver\n    - bollwyvl\n    - blink1073\n",
+ "raw_meta_yaml":"{% set version = \"7.9.0\" %}\n\npackage:\n  name: ipython\n  version: {{ version }}\n\nsource:\n  url: https://pypi.io/packages/source/i/ipython/ipython-{{ version }}.tar.gz\n  sha256: dfd303b270b7b5232b3d08bd30ec6fd685d8a58cabd54055e3d69d8f029f7280\n\nbuild:\n  number: 1\n  script: \"{{ PYTHON }} -m pip install . --no-deps --ignore-installed --no-cache-dir -vvv\"\n  skip: True  # [py2k]\n  entry_points:\n    - ipython = IPython:start_ipython\n    - ipython3 = IPython:start_ipython\n    - iptest = IPython.testing.iptestcontroller:main\n    - iptest3 = IPython.testing.iptestcontroller:main\n\nrequirements:\n  host:\n    - pip\n    - python\n  run:\n    - appnope  # [osx]\n    - backcall\n    - colorama  # [win]\n    - decorator\n    - jedi >=0.10\n    - pexpect  # [unix]\n    - pickleshare\n    - prompt_toolkit >=2.0.0,<3\n    - pygments\n    - python\n    - traitlets >=4.2\n    - win_unicode_console >=0.5  # [win and py<36]\n\ntest:\n  requires:\n    - curio  # [unix]\n    - nbformat\n    - nose >=0.10.1\n    - numpy\n    - pygments\n    - requests\n    - testpath\n    # We should uncomment the deps below as soon as the python 3.8 migration is done.\n    # - ipykernel  # [not (aarch64 or ppc64le)]\n    # - trio   # [not (aarch64 or ppc64le)]\n    # - matplotlib  # [not (aarch64 or ppc64le)]\n  imports:\n    - IPython\n    - IPython.core\n    - IPython.core.magics\n    - IPython.core.tests\n    - IPython.extensions\n    - IPython.extensions.tests\n    - IPython.external\n    - IPython.external.decorators\n    - IPython.lib\n    - IPython.lib.tests\n    - IPython.sphinxext\n    - IPython.terminal\n    - IPython.terminal.pt_inputhooks\n    - IPython.terminal.tests\n    - IPython.testing\n    - IPython.testing.plugin\n    - IPython.testing.tests\n    - IPython.utils\n    - IPython.utils.tests\n  commands:\n    - ipython -h\n    - ipython3 -h\n    # [unix and not (aarch64 or ppc64le)]\n    - NOSE_EXCLUDE=\"test_history|recursion\" iptest\n\nabout:\n  home: https://ipython.org/\n  license: BSD-3-Clause\n  license_family: BSD\n  license_file: LICENSE\n  summary: \"IPython: Productive Interactive Computing\"\n  description: |\n    IPython provides a rich architecture for interactive computing with\n    a powerful interactive shell, a kernel for Jupyter, high performance\n    tools for parallel computing, and more.\n  doc_url: https://ipython.readthedocs.io/\n  dev_url: https://github.com/ipython/ipython\n\nextra:\n  recipe-maintainers:\n    - Carreau\n    - jakirkham\n    - fperez\n    - ellisonbg\n    - minrk\n    - ocefpaf\n    - pelson\n    - takluyver\n    - bollwyvl\n    - blink1073\n",
  "req":{
   "__set__":true,
   "elements":[
