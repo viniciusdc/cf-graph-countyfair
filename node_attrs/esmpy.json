@@ -49,20 +49,24 @@
    "summary":"ESMPy is a Python interface to the Earth System Modeling Framework (ESMF) regridding utility."
   },
   "build":{
-   "number":"0",
-   "skip":true
+   "number":"1",
+   "skip":true,
+   "string":"nompi_pyh_1"
   },
   "extra":{
    "recipe-maintainers":[
     "ocefpaf",
     "bekozi",
     "rokuingh",
+    "xylar",
     "ocefpaf",
     "bekozi",
     "rokuingh",
+    "xylar",
     "ocefpaf",
     "bekozi",
-    "rokuingh"
+    "rokuingh",
+    "xylar"
    ]
   },
   "package":{
@@ -70,30 +74,42 @@
    "version":"8.0.0"
   },
   "requirements":{
-   "build":[
+   "host":[
     "python",
     "numpy",
-    "esmf 8.0.0",
+    "esmf 8.0.0 nompi_*",
     "nose",
+    "nompi",
+    "mpi4py",
     "python",
     "numpy",
-    "esmf 8.0.0",
+    "esmf 8.0.0 nompi_*",
     "nose",
+    "nompi",
+    "mpi4py",
     "python",
     "numpy",
-    "esmf 8.0.0",
-    "nose"
+    "esmf 8.0.0 nompi_*",
+    "nose",
+    "nompi",
+    "mpi4py"
    ],
    "run":[
     "python",
     "numpy",
-    "esmf 8.0.0",
+    "esmf 8.0.0 nompi_*",
+    "nompi",
+    "mpi4py",
     "python",
     "numpy",
-    "esmf 8.0.0",
+    "esmf 8.0.0 nompi_*",
+    "nompi",
+    "mpi4py",
     "python",
     "numpy",
-    "esmf 8.0.0"
+    "esmf 8.0.0 nompi_*",
+    "nompi",
+    "mpi4py"
    ]
   },
   "source":{
@@ -111,11 +127,13 @@
  "name":"esmpy",
  "new_version":false,
  "pinning_version":"2019.11.01",
- "raw_meta_yaml":"{% set version = \"8.0.0\" %}\n{% set ver = version.replace(\".\", \"_\") %}\n\npackage:\n  name: esmpy\n  version: {{ version }}\n\nsource:\n  url: http://www.earthsystemmodeling.org/esmf_releases/public/ESMF_{{ ver }}/esmf_{{ ver }}_src.tar.gz\n  sha256: 75c34c41806e703551b6b79566edf34c23f1eebcf821749e5320e860e565d94f\n\nbuild:\n  number: 0\n  skip: True  # [win]\n\nrequirements:\n  build:\n    - python\n    - numpy\n    - esmf {{ version }}\n    - nose\n  run:\n    - python\n    - numpy\n    - esmf {{ version }}\n\ntest:\n  imports:\n    - ESMF\n\nabout:\n  home: https://www.earthsystemcog.org/projects/esmpy/\n  license: The University of Illinois/NCSA\n  license_file: LICENSE\n  summary: ESMPy is a Python interface to the Earth System Modeling Framework (ESMF) regridding utility.\n\nextra:\n  recipe-maintainers:\n    - ocefpaf\n    - bekozi\n    - rokuingh\n",
+ "raw_meta_yaml":"{% set version = \"8.0.0\" %}\n{% set ver = version.replace(\".\", \"_\") %}\n{% set build = 1 %}\n\n# recipe-lint fails if mpi is undefined\n{% set mpi = mpi or 'nompi' %}\n\n{% if mpi == 'mpich' %}\n# prioritize mpich variant, which was previously the only option, via build number\n{% set build = build + 100 %}\n{% endif %}\n\npackage:\n  name: esmpy\n  version: {{ version }}\n\nsource:\n  url: http://www.earthsystemmodeling.org/esmf_releases/public/ESMF_{{ ver }}/esmf_{{ ver }}_src.tar.gz\n  sha256: 75c34c41806e703551b6b79566edf34c23f1eebcf821749e5320e860e565d94f\n\nbuild:\n  number: {{ build }}\n  skip: True  # [win]\n\n  # add build string so packages can depend on\n  # mpi or nompi variants explicitly:\n  # `esmf * mpi_mpich_*` for mpich\n  # `esmf * mpi_*` for any mpi\n  # `esmf * nompi_*` for no mpi\n\n  {% if mpi != 'nompi' %}\n  {% set mpi_prefix = \"mpi_\" + mpi %}\n  {% else %}\n  {% set mpi_prefix = \"nompi\" %}\n  {% endif %}\n  string: \"{{ mpi_prefix }}_py{{ CONDA_PY }}h{{ PKG_HASH }}_{{ build }}\"\n\nrequirements:\n  host:\n    - python\n    - numpy\n    - esmf {{ version }} {{ mpi_prefix }}_*\n    - nose\n    - {{ mpi }}  # [mpi != 'nompi']\n    - mpi4py  # [mpi != 'nompi']\n  run:\n    - python\n    - numpy\n    - esmf {{ version }} {{ mpi_prefix }}_*\n    - {{ mpi }}  # [mpi != 'nompi']\n    - mpi4py  # [mpi != 'nompi']\n    - openssh  # [mpi == 'openmpi']\n\ntest:\n  imports:\n    - ESMF\n\nabout:\n  home: https://www.earthsystemcog.org/projects/esmpy/\n  license: The University of Illinois/NCSA\n  license_file: LICENSE\n  summary: ESMPy is a Python interface to the Earth System Modeling Framework (ESMF) regridding utility.\n\nextra:\n  recipe-maintainers:\n    - ocefpaf\n    - bekozi\n    - rokuingh\n    - xylar\n",
  "req":{
   "__set__":true,
   "elements":[
    "esmf",
+   "mpi4py",
+   "nompi",
    "nose",
    "numpy",
    "python"
