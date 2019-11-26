@@ -67,7 +67,22 @@
    ]
   }
  ],
- "bad":false,
+ "bad":{
+  "exception":"local variable 'hash' referenced before assignment",
+  "traceback":[
+   "Traceback (most recent call last):",
+   "  File \"/root/repo/cf-scripts/conda_forge_tick/auto_tick.xsh\", line 693, in main",
+   "    hash_type=attrs.get('hash_type', 'sha256'))",
+   "  File \"/root/repo/cf-scripts/conda_forge_tick/auto_tick.xsh\", line 98, in run",
+   "    migrate_return = migrator.migrate(recipe_dir, attrs, **kwargs)",
+   "  File \"/root/repo/cf-scripts/conda_forge_tick/migrators.xsh\", line 467, in migrate",
+   "    new_patterns = self.get_hash_patterns('meta.yaml', urls, hash_type)",
+   "  File \"/root/repo/cf-scripts/conda_forge_tick/migrators.xsh\", line 394, in get_hash_patterns",
+   "    n = '{}: {}'.format(hash_type, hash)",
+   "UnboundLocalError: local variable 'hash' referenced before assignment",
+   ""
+  ]
+ },
  "conda-forge.yml":{
   "compiler_stack":"comp7",
   "max_py_ver":"37",
@@ -173,7 +188,7 @@
   }
  },
  "name":"r-e1071",
- "new_version":"1.7_2",
+ "new_version":"1.7_3",
  "pinning_version":"2019.07.15",
  "raw_meta_yaml":"{% set version = '1.7-2' %}\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-e1071\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  url:\n    - {{ cran_mirror }}/src/contrib/e1071_{{ version }}.tar.gz\n    - {{ cran_mirror }}/src/contrib/Archive/e1071/e1071_{{ version }}.tar.gz\n  sha256: 721c299ce83047312acfa3e0c4b3d4c223d84a4c53400c73465cca2c92913752\n\nbuild:\n  merge_build_host: True  # [win]\n  number: 1\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - {{ compiler('c') }}              # [not win]\n    - {{ compiler('m2w64_c') }}        # [win]\n    - {{ compiler('cxx') }}            # [not win]\n    - {{ compiler('m2w64_cxx') }}      # [win]\n    - {{posix}}filesystem        # [win]\n    - {{posix}}sed               # [win]\n    - {{posix}}grep              # [win]\n    - {{posix}}autoconf\n    - {{posix}}automake          # [not win]\n    - {{posix}}automake-wrapper  # [win]\n    - {{posix}}pkg-config\n    - {{posix}}make\n    - {{posix}}coreutils         # [win]\n    - {{posix}}zip               # [win]\n  host:\n    - r-base\n    - r-class\n  run:\n    - r-base\n    - {{native}}gcc-libs         # [win]\n    - r-class\n\ntest:\n  commands:\n    - $R -e \"library('e1071')\"           # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('e1071')\\\"\"  # [win]\n\nabout:\n  home: https://CRAN.R-project.org/package=e1071\n  license: GPL-2 | GPL-3\n  summary: Functions for latent class analysis, short time Fourier transform, fuzzy clustering,\n    support vector machines, shortest path computation, bagged clustering, naive Bayes\n    classifier, ...\n  license_family: GPL3\n  license_file: '{{ environ[\"PREFIX\"] }}/lib/R/share/licenses/GPL-2'\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n\n# Package: e1071\n# Version: 1.7-2\n# Title: Misc Functions of the Department of Statistics, Probability Theory Group (Formerly: E1071), TU Wien\n# Imports: graphics, grDevices, class, stats, methods, utils\n# Suggests: cluster, mlbench, nnet, randomForest, rpart, SparseM, xtable, Matrix, MASS, slam\n# Authors@R: c(person(given = \"David\", family = \"Meyer\", role = c(\"aut\", \"cre\"), email = \"David.Meyer@R-project.org\"), person(given = \"Evgenia\", family = \"Dimitriadou\", role = c(\"aut\",\"cph\")), person(given = \"Kurt\", family = \"Hornik\", role = \"aut\"), person(given = \"Andreas\", family = \"Weingessel\", role = \"aut\"), person(given = \"Friedrich\", family = \"Leisch\", role = \"aut\"), person(given = \"Chih-Chung\", family = \"Chang\", role = c(\"ctb\",\"cph\"), comment = \"libsvm C++-code\"), person(given = \"Chih-Chen\", family = \"Lin\", role = c(\"ctb\",\"cph\"), comment = \"libsvm C++-code\"))\n# Description: Functions for latent class analysis, short time Fourier transform, fuzzy clustering, support vector machines, shortest path computation, bagged clustering, naive Bayes classifier, ...\n# License: GPL-2 | GPL-3\n# LazyLoad: yes\n# NeedsCompilation: yes\n# Packaged: 2019-06-04 09:05:01 UTC; meyer\n# Author: David Meyer [aut, cre], Evgenia Dimitriadou [aut, cph], Kurt Hornik [aut], Andreas Weingessel [aut], Friedrich Leisch [aut], Chih-Chung Chang [ctb, cph] (libsvm C++-code), Chih-Chen Lin [ctb, cph] (libsvm C++-code)\n# Maintainer: David Meyer <David.Meyer@R-project.org>\n# Repository: CRAN\n# Date/Publication: 2019-06-05 08:20:27 UTC\n",
  "req":{

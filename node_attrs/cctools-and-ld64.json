@@ -29,7 +29,7 @@
     "zlib",
     "zlib"
    ],
-   "number":"1",
+   "number":"2",
    "skip":true
   },
   "extra":{
@@ -84,6 +84,7 @@
       "test -f $PREFIX/bin/-ranlib",
       "test -f $PREFIX/bin/-ar",
       "test -f $PREFIX/bin/-otool",
+      "$PREFIX/bin/-otool -l $PREFIX/bin/-otool",
       "test -f $PREFIX/bin/-install_name_tool",
       "test -f $PREFIX/bin/-strip"
      ]
@@ -173,6 +174,7 @@
       "test -f $PREFIX/bin/-ranlib",
       "test -f $PREFIX/bin/-ar",
       "test -f $PREFIX/bin/-otool",
+      "$PREFIX/bin/-otool -l $PREFIX/bin/-otool",
       "test -f $PREFIX/bin/-install_name_tool",
       "test -f $PREFIX/bin/-strip"
      ]
@@ -264,6 +266,7 @@
       "test -f $PREFIX/bin/-ranlib",
       "test -f $PREFIX/bin/-ar",
       "test -f $PREFIX/bin/-otool",
+      "$PREFIX/bin/-otool -l $PREFIX/bin/-otool",
       "test -f $PREFIX/bin/-install_name_tool",
       "test -f $PREFIX/bin/-strip"
      ]
@@ -321,15 +324,18 @@
     "cxx_compiler_stub",
     "autoconf",
     "automake",
+    "libtool",
     "make",
     "cxx_compiler_stub",
     "autoconf",
     "automake",
+    "libtool",
     "make",
     "clangxx",
     "cxx_compiler_stub",
     "autoconf",
     "automake",
+    "libtool",
     "make"
    ],
    "host":[
@@ -347,14 +353,23 @@
   },
   "source":[
    {
+    "patches":[
+     "dont_link_with_libcxxabi.patch"
+    ],
     "sha256":"891981cb7c5490f4abdc32bf505d1b3151a7d64435a3aa36d3a0c296a34a8f64",
     "url":"https://github.com/tpoechtrager/cctools-port/archive/927.0.2-ld64-450.3.tar.gz"
    },
    {
+    "patches":[
+     "dont_link_with_libcxxabi.patch"
+    ],
     "sha256":"891981cb7c5490f4abdc32bf505d1b3151a7d64435a3aa36d3a0c296a34a8f64",
     "url":"https://github.com/tpoechtrager/cctools-port/archive/927.0.2-ld64-450.3.tar.gz"
    },
    {
+    "patches":[
+     "dont_link_with_libcxxabi.patch"
+    ],
     "sha256":"891981cb7c5490f4abdc32bf505d1b3151a7d64435a3aa36d3a0c296a34a8f64",
     "url":"https://github.com/tpoechtrager/cctools-port/archive/927.0.2-ld64-450.3.tar.gz"
    }
@@ -367,7 +382,7 @@
   "ld64"
  ],
  "pinning_version":"2019.10.30",
- "raw_meta_yaml":"{% set cctools_version = '927.0.2' %}\n{% set ld64_version = '450.3' %}\n{% set native_compiler_subdir = 'linux-64' %}  # [linux]\n\npackage:\n  name: cctools-and-ld64\n  version: {{ ld64_version }}\n\nsource:\n  - url: https://github.com/tpoechtrager/cctools-port/archive/{{ cctools_version }}-ld64-{{ ld64_version }}.tar.gz\n    sha256: 891981cb7c5490f4abdc32bf505d1b3151a7d64435a3aa36d3a0c296a34a8f64\n\nbuild:\n  number: 1\n  skip: True  # [win]\n  ignore_run_exports:\n    - zlib\n\nrequirements:\n  build:\n    - clangxx  # [linux]\n    - {{ compiler('cxx') }}\n    - autoconf\n    - automake\n    - make\n  host:\n    #- xar\n    # We only use the static library from this and only get away with that as it depends on nothing.\n    - zlib\n    - llvmdev\n    - libuuid   # [linux]\n    - tapi\n\noutputs:\n  - name: cctools\n    version: {{ cctools_version }}\n    script: install-cctools.sh\n    build:\n      activate_in_script: True\n      ignore_run_exports:\n        - zlib\n    requirements:\n      build:\n        - {{ compiler('cxx') }}\n        - autoconf\n        - automake\n        - make\n      host:\n        - zlib\n        - llvmdev\n        - llvm\n        - tapi\n        - libcxx  # [osx]\n        - {{ pin_subpackage(\"ld64\", max_pin=\"x.x\") }}\n      run:\n        - libcxx  # [osx]\n        - {{ pin_subpackage(\"ld64\", max_pin=\"x.x\") }}\n    test:\n      commands:\n        - test -f $PREFIX/libexec/as/x86_64/as\n        - test -f $PREFIX/bin/{{ macos_machine }}-as\n        - test -f $PREFIX/bin/{{ macos_machine }}-ranlib\n        - test -f $PREFIX/bin/{{ macos_machine }}-ar\n        - test -f $PREFIX/bin/{{ macos_machine }}-otool\n        - test -f $PREFIX/bin/{{ macos_machine }}-install_name_tool\n        - test -f $PREFIX/bin/{{ macos_machine }}-strip\n    about:\n      home: https://github.com/tpoechtrager/cctools-port\n      license: APSL-2.0\n      license_family: Other\n      license_file: cctools/APPLE_LICENSE\n      summary: Assembler, archiver, ranlib, libtool, otool et al for Darwin Mach-O files\n\n  - name: ld64\n    version: {{ ld64_version }}\n    script: install-ld64.sh\n    build:\n      activate_in_script: True\n      missing_dso_whitelist:\n        - /usr/lib/libxar.1.dylib  # [osx]\n    requirements:\n      build:\n        - {{ compiler('cxx') }}\n        - autoconf\n        - automake\n        - make\n      host:\n        - llvm\n        - clang\n        - tapi\n        - libcxx  # [osx]\n        - libuuid  # [linux]\n      run:\n        - {{ pin_compatible(\"tapi\") }}\n        - libcxx  # [osx]\n      run_constrained:\n        - {{ pin_compatible(\"clang\") }}\n    test:\n      commands:\n        - test -f $PREFIX/bin/{{ macos_machine }}-ld\n    about:\n      home: https://github.com/tpoechtrager/cctools-port\n      license: APSL-2.0\n      license_family: Other\n      license_file: cctools/ld64/APPLE_LICENSE\n      summary: Darwin Mach-O linker\n\nextra:\n  recipe-maintainers:\n    - isuruf\n    - mingwandroid\n",
+ "raw_meta_yaml":"{% set cctools_version = '927.0.2' %}\n{% set ld64_version = '450.3' %}\n{% set native_compiler_subdir = 'linux-64' %}  # [linux]\n\npackage:\n  name: cctools-and-ld64\n  version: {{ ld64_version }}\n\nsource:\n  - url: https://github.com/tpoechtrager/cctools-port/archive/{{ cctools_version }}-ld64-{{ ld64_version }}.tar.gz\n    sha256: 891981cb7c5490f4abdc32bf505d1b3151a7d64435a3aa36d3a0c296a34a8f64\n    patches:\n      - dont_link_with_libcxxabi.patch\n\nbuild:\n  number: 2\n  skip: True  # [win]\n  ignore_run_exports:\n    - zlib\n\nrequirements:\n  build:\n    - clangxx  # [linux]\n    - {{ compiler('cxx') }}\n    - autoconf\n    - automake\n    - libtool\n    - make\n  host:\n    #- xar\n    # We only use the static library from this and only get away with that as it depends on nothing.\n    - zlib\n    - llvmdev\n    - libuuid   # [linux]\n    - tapi\n\noutputs:\n  - name: cctools\n    version: {{ cctools_version }}\n    script: install-cctools.sh\n    build:\n      activate_in_script: True\n      ignore_run_exports:\n        - zlib\n    requirements:\n      build:\n        - {{ compiler('cxx') }}\n        - autoconf\n        - automake\n        - make\n      host:\n        - zlib\n        - llvmdev\n        - llvm\n        - tapi\n        - libcxx  # [osx]\n        - {{ pin_subpackage(\"ld64\", max_pin=\"x.x\") }}\n      run:\n        - libcxx  # [osx]\n        - {{ pin_subpackage(\"ld64\", max_pin=\"x.x\") }}\n    test:\n      commands:\n        - test -f $PREFIX/libexec/as/x86_64/as\n        - test -f $PREFIX/bin/{{ macos_machine }}-as\n        - test -f $PREFIX/bin/{{ macos_machine }}-ranlib\n        - test -f $PREFIX/bin/{{ macos_machine }}-ar\n        - test -f $PREFIX/bin/{{ macos_machine }}-otool\n        # Check that otool is functioning\n        - $PREFIX/bin/{{ macos_machine }}-otool -l $PREFIX/bin/{{ macos_machine }}-otool\n        - test -f $PREFIX/bin/{{ macos_machine }}-install_name_tool\n        - test -f $PREFIX/bin/{{ macos_machine }}-strip\n    about:\n      home: https://github.com/tpoechtrager/cctools-port\n      license: APSL-2.0\n      license_family: Other\n      license_file: cctools/APPLE_LICENSE\n      summary: Assembler, archiver, ranlib, libtool, otool et al for Darwin Mach-O files\n\n  - name: ld64\n    version: {{ ld64_version }}\n    script: install-ld64.sh\n    build:\n      activate_in_script: True\n      missing_dso_whitelist:\n        - /usr/lib/libxar.1.dylib  # [osx]\n    requirements:\n      build:\n        - {{ compiler('cxx') }}\n        - autoconf\n        - automake\n        - make\n      host:\n        - llvm\n        - clang\n        - tapi\n        - libcxx  # [osx]\n        - libuuid  # [linux]\n      run:\n        - {{ pin_compatible(\"tapi\") }}\n        - libcxx  # [osx]\n      run_constrained:\n        - {{ pin_compatible(\"clang\") }}\n    test:\n      commands:\n        - test -f $PREFIX/bin/{{ macos_machine }}-ld\n    about:\n      home: https://github.com/tpoechtrager/cctools-port\n      license: APSL-2.0\n      license_family: Other\n      license_file: cctools/ld64/APPLE_LICENSE\n      summary: Darwin Mach-O linker\n\nextra:\n  recipe-maintainers:\n    - isuruf\n    - mingwandroid\n",
  "req":{
   "__set__":true,
   "elements":[
@@ -378,6 +393,7 @@
    "compatible_pin_stub",
    "cxx_compiler_stub",
    "libcxx",
+   "libtool",
    "libuuid",
    "llvm",
    "llvmdev",
