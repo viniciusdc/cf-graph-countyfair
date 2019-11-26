@@ -220,8 +220,9 @@
    "summary":"Suite of programs for manipulating NetCDF/HDF4 files"
   },
   "build":{
-   "number":"1",
-   "skip":true
+   "number":"2",
+   "skip":true,
+   "string":"nompi_h_2"
   },
   "extra":{
    "recipe-maintainers":[
@@ -261,6 +262,7 @@
     "libnetcdf 4.6.1",
     "udunits2",
     "zlib",
+    "nompi",
     "libblas",
     "libcblas",
     "antlr >=2.7.7,<3",
@@ -272,10 +274,13 @@
     "expat",
     "gsl",
     "hdf5",
+    "hdf5  * nompi_*",
     "krb5",
     "libnetcdf",
+    "libnetcdf  * nompi_*",
     "udunits2",
     "zlib",
+    "nompi",
     "libblas",
     "libcblas",
     "antlr >=2.7.7,<3",
@@ -287,10 +292,13 @@
     "expat",
     "gsl",
     "hdf5",
+    "hdf5  * nompi_*",
     "krb5",
     "libnetcdf",
+    "libnetcdf  * nompi_*",
     "udunits2",
-    "zlib"
+    "zlib",
+    "nompi"
    ],
    "run":[
     "curl",
@@ -299,24 +307,27 @@
     "hdf5",
     "libnetcdf 4.6.1",
     "udunits2",
+    "nompi",
     "curl",
-    "esmf",
+    "esmf * nompi_*",
     "expat",
     "gsl",
     "hdf5",
     "krb5",
-    "libnetcdf",
+    "libnetcdf * nompi_*",
     "udunits2",
     "tempest-remap",
+    "nompi",
     "curl",
-    "esmf",
+    "esmf * nompi_*",
     "expat",
     "gsl",
     "hdf5",
     "krb5",
-    "libnetcdf",
+    "libnetcdf * nompi_*",
     "udunits2",
-    "tempest-remap"
+    "tempest-remap",
+    "nompi"
    ]
   },
   "source":{
@@ -345,7 +356,7 @@
  "name":"nco",
  "new_version":false,
  "pinning_version":"2019.10.11",
- "raw_meta_yaml":"{% set version = \"4.8.1\" %}\n\npackage:\n  name: nco\n  version: {{ version }}\n\nsource:\n  url: https://github.com/nco/nco/archive/{{ version }}.tar.gz\n  sha256: ddae3fed46c266798ed1176d6a70b36376d2d320fa933c716a623172d1e13c68\n\nbuild:\n  number: 1\n  skip: True  # [win and vc<14]\n\nrequirements:\n  build:\n    - cmake  # [win]\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n  host:\n    - libblas\n    - libcblas\n    - antlr >=2.7.7,<3\n    - bison  # [not win]\n    - texinfo  # [not win]\n    - flex  # [not win]\n    - m4  # [not win]\n    - curl\n    - expat\n    - gsl\n    - hdf5\n    - krb5  # [not win]\n    - libnetcdf  # [not win]\n    - libnetcdf 4.6.1  # [win]\n    - udunits2\n    - zlib\n  run:\n    - curl\n    - esmf  # [not win]\n    - expat\n    - gsl\n    - hdf5\n    - krb5  # [not win]\n    - libnetcdf  # [not win]\n    - libnetcdf 4.6.1  # [win]\n    - udunits2\n    - tempest-remap  # [not win]\n\ntest:\n  source_files:\n    - data/in.cdl\n  commands:\n    - ncks --help\n    - ncap2 --help\n    - ncks -M \"http://tds.marine.rutgers.edu/thredds/dodsC/roms/espresso/2013_da/his/ESPRESSO_Real-Time_v2_History_Best\"\n\nabout:\n  home: http://nco.sourceforge.net/\n  license: GPL-3.0\n  license_file: COPYING\n  summary: 'Suite of programs for manipulating NetCDF/HDF4 files'\n\nextra:\n  recipe-maintainers:\n    - ocefpaf\n    - kwilcox\n    - xylar\n",
+ "raw_meta_yaml":"{% set version = \"4.8.1\" %}\n{% set build = 2 %}\n\n# ensure mpi is defined (needed for conda-smithy recipe-lint)\n{% set mpi = mpi or 'nompi' %}\n\n{% if mpi == 'mpich' %}\n# prioritize mpich variant, which was previously the only option, via build number\n{% set build = build + 100 %}\n{% endif %}\n\npackage:\n  name: nco\n  version: {{ version }}\n\nsource:\n  url: https://github.com/nco/nco/archive/{{ version }}.tar.gz\n  sha256: ddae3fed46c266798ed1176d6a70b36376d2d320fa933c716a623172d1e13c68\n\nbuild:\n  number: {{ build }}\n  skip: True  # [(win and vc<14) or (win and (mpi != 'nompi')) ]\n\n  # add build string so packages can depend on\n  # mpi or nompi variants explicitly:\n  # `nco * mpi_mpich_*` for mpich\n  # `nco * mpi_*` for any mpi\n  # `nco * nompi_*` for no mpi\n\n  {% if mpi != 'nompi' %}\n  {% set mpi_prefix = \"mpi_\" + mpi %}\n  {% else %}\n  {% set mpi_prefix = \"nompi\" %}\n  {% endif %}\n  string: \"{{ mpi_prefix }}_h{{ PKG_HASH }}_{{ build }}\"\n\nrequirements:\n  build:\n    - cmake  # [win]\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n  host:\n    - libblas\n    - libcblas\n    - antlr >=2.7.7,<3\n    - bison  # [not win]\n    - texinfo  # [not win]\n    - flex  # [not win]\n    - m4  # [not win]\n    - curl\n    - expat\n    - gsl\n    - hdf5\n    - hdf5  * {{ mpi_prefix }}_*  # [not win]\n    - krb5  # [not win]\n    - libnetcdf  # [not win]\n    - libnetcdf  * {{ mpi_prefix }}_*  # [not win]\n    - libnetcdf 4.6.1  # [win]\n    - udunits2\n    - zlib\n    - {{ mpi }}  # [mpi != 'nompi']\n  run:\n    - curl\n    - esmf * {{ mpi_prefix }}_*  # [not win]\n    - expat\n    - gsl\n    - hdf5\n    - krb5  # [not win]\n    - libnetcdf * {{ mpi_prefix }}_*  # [not win]\n    - libnetcdf 4.6.1  # [win]\n    - udunits2\n    - tempest-remap  # [not win]\n    - {{ mpi }}  # [mpi != 'nompi']\n\ntest:\n  source_files:\n    - data/in.cdl\n  commands:\n    - ncks --help\n    - ncap2 --help\n    - ncks -M \"http://tds.marine.rutgers.edu/thredds/dodsC/roms/espresso/2013_da/his/ESPRESSO_Real-Time_v2_History_Best\"\n\nabout:\n  home: http://nco.sourceforge.net/\n  license: GPL-3.0\n  license_file: COPYING\n  summary: 'Suite of programs for manipulating NetCDF/HDF4 files'\n\nextra:\n  recipe-maintainers:\n    - ocefpaf\n    - kwilcox\n    - xylar\n",
  "req":{
   "__set__":true,
   "elements":[
@@ -365,6 +376,7 @@
    "libcblas",
    "libnetcdf",
    "m4",
+   "nompi",
    "tempest-remap",
    "texinfo",
    "udunits2",
