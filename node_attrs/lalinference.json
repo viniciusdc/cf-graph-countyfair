@@ -135,6 +135,25 @@
     "migrator_version",
     "version"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/345562324.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"MigrationYaml",
+    "migrator_object_version":1,
+    "migrator_version":0,
+    "name":"python38"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_object_version",
+    "migrator_version",
+    "name"
+   ]
   }
  ],
  "bad":false,
@@ -592,7 +611,7 @@
   "lalinference",
   "python-lalinference"
  ],
- "pinning_version":"2019.07.13",
+ "pinning_version":"2019.11.20",
  "raw_meta_yaml":"{% set name = \"lalinference\" %}\n{% set version = \"1.11.2\" %}\n{% set sha256 = \"84fd4d5b49f1f16d7cb55746ae63e07d3c8aa7a6ea544107cd441edeb03ab4fd\" %}\n\n# dependencies\n{% set chealpix_version = \"3.30.0\" %}\n{% set lal_version = \"6.19.2\" %}\n{% set lalburst_version = \"1.5.1\" %}\n{% set lalframe_version = \"1.4.0\" %}\n{% set lalinspiral_version = \"1.8.1\" %}\n{% set lalmetaio_version = \"1.5.0\" %}\n{% set lalpulsar_version = \"1.17.1\" %}\n{% set lalsimulation_version = \"1.8.2\" %}\n{% set swig_version = \"3.0.7\" %}\n\npackage:\n  name: \"{{ name }}\"\n  version: \"{{ version }}\"\n\nsource:\n  url: \"http://software.ligo.org/lscsoft/source/lalsuite/{{ name }}-{{ version }}.tar.xz\"\n  sha256: \"{{ sha256 }}\"\n  patches:\n    - no-metaio.patch\n\nbuild:\n  error_overdepending: true\n  error_overlinking: true\n  ignore_run_exports:\n    - hdf5  # [osx]\n  number: 2\n  skip: true  # [win]\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - help2man\n    - make\n    - pkg-config\n    - swig >={{ swig_version }}\n  host:\n    - chealpix >={{ chealpix_version }}\n    - gsl\n    - hdf5\n    - lal >={{ lal_version }} fftw*\n    - lalframe >={{ lalframe_version }}\n    - lalmetaio >={{ lalmetaio_version }}\n    - lalsimulation >={{ lalsimulation_version }}\n    - lalburst >={{ lalburst_version }}\n    - lalinspiral >={{ lalinspiral_version }}\n    - lalpulsar >={{ lalpulsar_version }}\n    - libcblas\n    - llvm-openmp  # [osx]\n    - openmp  # [linux]\n  run:\n    - chealpix >={{ chealpix_version }}\n    - gsl\n    - hdf5\n    - lal >={{ lal_version }}\n    - lalframe >={{ lalframe_version }}\n    - lalmetaio >={{ lalmetaio_version }}\n    - lalsimulation >={{ lalsimulation_version }}\n    - lalburst >={{ lalburst_version }}\n    - lalinspiral >={{ lalinspiral_version }}\n    - lalpulsar >={{ lalpulsar_version }}\n    - libcblas\n    - llvm-openmp  # [osx]\n    - openmp  # [linux]\n    - zlib  # [linux]\n\ntest:\n  requires:\n    - pkg-config  # [unix]\n  commands:\n    - test -f \"${LALINFERENCE_DATADIR}/lalinference_pipe_example.ini\"  # [unix]\n    - lalinference_bench --psdlength 1000 --psdstart 1 --seglen 8 --srate 4096 --trigtime 0 --ifo H1 --H1-channel LALSimAdLIGO --H1-cache LALSimAdLIGO --dataseed 1324 --Niter 10 --fix-chirpmass 1.21\n    #- lalinference_burst --help\n    - lalinference_datadump --help\n    - lalinference_injectedlike --help\n    - lalinference_nest --help\n    - lalinference_version --verbose\n    - pkg-config --print-errors --modversion lalinference  # [unix]\n\noutputs:\n  - name: lalinference\n    build:\n      run_exports:\n        - {{ pin_subpackage(\"lalinference\", max_pin=\"x.x\") }}\n\n  - name: python-lalinference\n    script: install-python.sh\n    build:\n      error_overdepending: true\n      error_overlinking: true\n      ignore_run_exports:\n        - libcblas  # [not linux]\n    requirements:\n      build:\n        - {{ compiler('c') }}\n        - make\n        - pkg-config\n        - swig >={{ swig_version }}\n      host:\n        - chealpix >={{ chealpix_version }}\n        - gsl\n        - {{ pin_subpackage('lalinference', exact=True) }}\n        - libcblas\n        - numpy\n        - python\n      run:\n        - astropy >=1.1.1\n        - chealpix >={{ chealpix_version }}\n        - gsl\n        - hdf5  # [linux]\n        - healpy >=1.9.1\n        - h5py\n        - lal >={{ lal_version }}\n        - lalframe >={{ lalframe_version }}  # [linux]\n        - lalmetaio >={{ lalmetaio_version }}  # [linux]\n        - lalsimulation >={{ lalsimulation_version }}  # [linux]\n        - lalburst >={{ lalburst_version }}  # [linux]\n        - lalinspiral >={{ lalinspiral_version }}  # [linux]\n        - lalpulsar >={{ lalpulsar_version }}  # [linux]\n        - {{ pin_subpackage('lalinference', exact=True) }}\n        - libcblas  # [linux]\n        - lscsoft-glue >=1.54.1\n        - matplotlib-base >=1.2.0\n        - {{ pin_compatible('numpy') }}\n        - python\n        - python-lal >={{ lal_version }}\n        - python-lalmetaio >={{ lalmetaio_version }}\n        - python-lalsimulation >={{ lalsimulation_version }}\n        - python-lalburst >={{ lalburst_version }}\n        - python-lalinspiral >={{ lalinspiral_version }}\n        - python-lalpulsar >={{ lalpulsar_version }}\n        - scipy >=0.8\n        - shapely\n        - zlib  # [linux]\n    test:\n      imports:\n        - lalinference\n        - lalinference.distance\n        - lalinference.imrtgr\n        - lalinference.imrtgr.imrtgrutils\n        - lalinference.imrtgr.nrutils\n        - lalinference.imrtgr.pneqns\n        - lalinference.moc\n        - lalinference.nest2pos\n        - lalinference.rapid_pe\n        - lalinference.rapid_pe.common_cl\n        - lalinference.rapid_pe.dagutils\n        - lalinference.rapid_pe.mcsampler\n        - lalinference.rapid_pe.statutils\n        - lalinference.rapid_pe.synchlib\n        - lalinference.rapid_pe.xmlutils\n        - lalinference.tiger\n        - lalinference.tiger.make_injtimes\n        - lalinference.tiger.omegascans_dag\n        - lalinference.tiger.postproc\n    about:\n      home: \"https://wiki.ligo.org/Computing/LALSuite\"\n      doc_url: \"https://docs.ligo.org/lscsoft/lalsuite/lalinference/\"\n      dev_url: \"https://git.ligo.org/lscsoft/lalsuite/\"\n      license: \"GPL-3.0-or-later\"\n      license_family: \"GPL\"\n      license_file: \"COPYING\"\n      summary: \"LSC Algorithm Inference Library\"\n      description: |\n        The LSC Algorithm Inference Library for gravitational wave data\n        analysis.  This package contains the python bindings.\n\nabout:\n  home: \"https://wiki.ligo.org/Computing/LALSuite\"\n  doc_url: \"https://docs.ligo.org/lscsoft/lalsuite/lalinference/\"\n  dev_url: \"https://git.ligo.org/lscsoft/lalsuite/\"\n  license: \"GPL-3.0-or-later\"\n  license_family: \"GPL\"\n  license_file: \"COPYING\"\n  summary: \"LSC Algorithm Inference Library\"\n  description: |\n    The LSC Algorithm Inference Library for gravitational wave data analysis.\n    This package contains the shared-object libraries needed to run\n    applications that use the LAL Inference library.  If you want to install\n    the Python bindings, please install the associated python-lalinference\n    package.\n\nextra:\n  recipe-maintainers:\n    - duncanmmacleod\n    - skymoo\n    - vivienr\n",
  "req":{
   "__set__":true,
@@ -635,7 +654,7 @@
    "zlib"
   ]
  },
- "smithy_version":"3.4.0",
+ "smithy_version":"3.6.2",
  "url":"http://software.ligo.org/lscsoft/source/lalsuite/lalinference-1.11.2.tar.xz",
  "version":"1.11.2"
 }
