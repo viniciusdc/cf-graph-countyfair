@@ -45,7 +45,7 @@
   },
   "package":{
    "name":"cgal-cpp",
-   "version":"4.14.1"
+   "version":"5.0"
   },
   "requirements":{
    "build":[
@@ -83,8 +83,8 @@
    ]
   },
   "source":{
-   "sha256":"d4ec2528b88a7c3a07b0b86db96c216822f85b951bf4bc7f9d1f26bf6c369afe",
-   "url":"https://github.com/CGAL/cgal/releases/download/releases/CGAL-4.14.1/CGAL-4.14.1.tar.xz"
+   "sha256":"e1e7e932988c5d149aa471c1afd69915b7603b5b31b9b317a0debb20ecd42dcc",
+   "url":"https://github.com/CGAL/cgal/releases/download/releases/CGAL-5.0/CGAL-5.0.tar.xz"
   },
   "test":{
    "commands":[
@@ -103,7 +103,6 @@
     "cmake --build . --config Release",
     "test_.exe",
     "test -f ${PREFIX}/include/CGAL/AABB_tree.h",
-    "test -f ${PREFIX}/lib/libCGAL${SHLIB_EXT}",
     "cd test",
     "mkdir build_default",
     "cd build_default",
@@ -117,7 +116,6 @@
     "cmake --build . --config Release",
     "./test_",
     "test -f ${PREFIX}/include/CGAL/AABB_tree.h",
-    "test -f ${PREFIX}/lib/libCGAL${SHLIB_EXT}",
     "cd test",
     "mkdir build_default",
     "cd build_default",
@@ -157,7 +155,7 @@
  "name":"cgal-cpp",
  "new_version":"CGAL-5.0",
  "pinning_version":"2019.05.29",
- "raw_meta_yaml":"{% set version = \"4.14.1\" %}\n\npackage:\n  name: cgal-cpp\n  version: {{ version }}\n\nsource:\n  url: https://github.com/CGAL/cgal/releases/download/releases/CGAL-{{ version }}/CGAL-{{ version }}.tar.xz\n  sha256: d4ec2528b88a7c3a07b0b86db96c216822f85b951bf4bc7f9d1f26bf6c369afe\n\nbuild:\n  number: 0\n  skip: true  # [win and vc<14]\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n    - cmake\n  host:\n    - boost-cpp\n    - mpfr\n    - eigen\n  run:\n    - boost-cpp\n    - mpfr\n    - eigen\n\ntest:\n  requires:\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n    - cmake\n    - make  # [unix]\n    - ninja\n  files:\n    - test\n  commands:\n    - echo on  # [win]\n    - test -f ${PREFIX}/include/CGAL/AABB_tree.h  # [unix]\n    - test -f ${PREFIX}/lib/libCGAL${SHLIB_EXT}  # [unix]\n    - if not exist %LIBRARY_INC%\\CGAL\\AABB_tree.h exit 1  # [win]\n\n    # Builds a simple program\n    - cd test\n\n    - mkdir build_default\n    - cd build_default\n    - cmake .. -G\"NMake Makefiles\" -DCMAKE_BUILD_TYPE=Release -DCMAKE_VERBOSE_MAKEFILE:BOOL=ON  # [win]\n    - cmake .. -G\"$CMAKE_GENERATOR\" -DCMAKE_BUILD_TYPE=Release -DCMAKE_VERBOSE_MAKEFILE:BOOL=ON  # [unix]\n    - cmake --build . --config Release\n    - ./test_  # [unix]\n    - test_.exe  # [win]\n    - cd ..\n\n    - mkdir build_ninja\n    - cd build_ninja\n    - cmake .. -G\"Ninja\" -DCMAKE_BUILD_TYPE=Release\n    - cmake --build . --config Release\n    - ./test_  # [unix]\n    - test_.exe  # [win]\n\nabout:\n  home: http://www.cgal.org/\n  license: GPL3/LGPL3\n  summary: Computational Geometry Algorithms Library\n\nextra:\n  recipe-maintainers:\n    - tadeu\n",
+ "raw_meta_yaml":"{% set version = \"5.0\" %}\n\npackage:\n  name: cgal-cpp\n  version: {{ version }}\n\nsource:\n  url: https://github.com/CGAL/cgal/releases/download/releases/CGAL-{{ version }}/CGAL-{{ version }}.tar.xz\n  sha256: e1e7e932988c5d149aa471c1afd69915b7603b5b31b9b317a0debb20ecd42dcc\n\nbuild:\n  number: 0\n  skip: true  # [win and vc<14]\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n    - cmake\n  host:\n    - boost-cpp\n    - mpfr\n    - eigen\n  run:\n    - boost-cpp\n    - mpfr\n    - eigen\n\ntest:\n  requires:\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n    - cmake\n    - make  # [unix]\n    - ninja\n  files:\n    - test\n  commands:\n    - echo on  # [win]\n    - test -f ${PREFIX}/include/CGAL/AABB_tree.h  # [unix]\n    - if not exist %LIBRARY_INC%\\CGAL\\AABB_tree.h exit 1  # [win]\n\n    # Builds a simple program\n    - cd test\n\n    - mkdir build_default\n    - cd build_default\n    - cmake .. -G\"NMake Makefiles\" -DCMAKE_BUILD_TYPE=Release -DCMAKE_VERBOSE_MAKEFILE:BOOL=ON  # [win]\n    - cmake .. -G\"$CMAKE_GENERATOR\" -DCMAKE_BUILD_TYPE=Release -DCMAKE_VERBOSE_MAKEFILE:BOOL=ON  # [unix]\n    - cmake --build . --config Release\n    - ./test_  # [unix]\n    - test_.exe  # [win]\n    - cd ..\n\n    - mkdir build_ninja\n    - cd build_ninja\n    - cmake .. -G\"Ninja\" -DCMAKE_BUILD_TYPE=Release\n    - cmake --build . --config Release\n    - ./test_  # [unix]\n    - test_.exe  # [win]\n\nabout:\n  home: http://www.cgal.org/\n  license: GPL3/LGPL3\n  summary: Computational Geometry Algorithms Library\n\nextra:\n  recipe-maintainers:\n    - tadeu\n",
  "req":{
   "__set__":true,
   "elements":[
@@ -171,5 +169,5 @@
  },
  "smithy_version":"3.3.4",
  "url":"https://github.com/CGAL/cgal/releases/download/releases%2FCGAL-4.14/CGAL-4.14.zip",
- "version":"4.14.1"
+ "version":"5.0"
 }
