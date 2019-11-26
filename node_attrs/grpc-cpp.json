@@ -596,6 +596,25 @@
     "migrator_version",
     "name"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/345762138.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"MigrationYaml",
+    "migrator_object_version":1,
+    "migrator_version":0,
+    "name":"protobuf311"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_object_version",
+    "migrator_version",
+    "name"
+   ]
   }
  ],
  "bad":false,
@@ -721,7 +740,7 @@
  },
  "name":"grpc-cpp",
  "new_version":"1.25.0",
- "pinning_version":"2019.11.13",
+ "pinning_version":"2019.11.26",
  "raw_meta_yaml":"{% set name = \"grpc-cpp\" %}\n{% set version = \"1.25.0\" %}\n\npackage:\n  name: {{ name | lower }}\n  version: {{ version }}\n\nsource:\n  - url: https://github.com/grpc/grpc/archive/v{{ version }}.tar.gz\n    sha256: ffbe61269160ea745e487f79b0fd06b6edd3d50c6d9123f053b5634737cf2f69\n    patches:\n      # Building the Objective C plugin fails on Windows, skip it.\n      - 0001-remove-objective-c-target.patch  # [win]\n\nbuild:\n  number: 1\n  # Requires C++ 11, VS 2008 is not supported\n  skip: True  # [win and vc<14]\n  run_exports:\n    - {{ pin_subpackage('grpc-cpp', max_pin='x.x') }}\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n    - cmake\n    # `protoc` is also used for building\n    - libprotobuf\n    - ninja\n  host:\n    - c-ares\n    - gflags\n    - libprotobuf\n    - openssl\n    - zlib\n  run:\n    # Need to pin libprotobuf to the same version used when building,\n    # otherwise we may get a different SO ABI version.\n    # For example 3.6.1 is ABI-incompatible with 3.6.0...\n    - {{ pin_compatible(\"libprotobuf\", min_pin=\"x.x.x\", max_pin=\"x.x.x\") }}\n    - zlib\n\ntest:\n  commands:\n    - grpc_cpp_plugin < /dev/null  # [not win]\n    - grpc_cpp_plugin < NUL  # [win]\n    - if not exist %PREFIX%\\\\Library\\\\lib\\\\address_sorting.lib exit 1  # [win]\n    - if not exist %PREFIX%\\\\Library\\\\lib\\\\gpr.lib exit 1  # [win]\n    - if not exist %PREFIX%\\\\Library\\\\lib\\\\grpc.lib exit 1  # [win]\n    - if not exist %PREFIX%\\\\Library\\\\lib\\\\grpc++.lib exit 1  # [win]\n\nabout:\n  home: https://grpc.io/\n  license: \"Apache 2.0\"\n  license_family: APACHE\n  license_file: LICENSE\n  summary: \"gRPC - A high-performance, open-source universal RPC framework\"\n  description: |\n    gRPC is a modern, open source, high-performance remote procedure call\n    (RPC) framework that can run anywhere. gRPC enables client and server\n    applications to communicate transparently, and simplifies the building\n    of connected systems.\n\n    This package contains the gRPC C++ libraries and header files, as well\n    as the code generation plugins.\n  doc_url: https://grpc.io/docs/\n\nextra:\n  recipe-maintainers:\n    - pitrou\n    - xhochy\n    - wesm\n",
  "req":{
   "__set__":true,
