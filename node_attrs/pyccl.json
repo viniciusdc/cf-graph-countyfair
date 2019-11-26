@@ -67,7 +67,7 @@
    "summary":"DESC Core Cosmology Library: cosmology routines with validated numerical accuracy"
   },
   "build":{
-   "number":"1",
+   "number":"2",
    "skip":true
   },
   "extra":{
@@ -125,18 +125,18 @@
    ],
    "run":[
     "python",
-    "pycamb >=1",
+    "camb >=1",
     "pyyaml",
     "fftw",
     "compatible_pin_stub",
     "python",
-    "pycamb >=1",
+    "camb >=1",
     "pyyaml",
     "fftw",
     "compatible_pin_stub",
     "llvm-openmp",
     "python",
-    "pycamb >=1",
+    "camb >=1",
     "pyyaml",
     "fftw",
     "compatible_pin_stub"
@@ -162,11 +162,12 @@
  "name":"pyccl",
  "new_version":"2.0.1",
  "pinning_version":"2019.11.01",
- "raw_meta_yaml":"{% set name = \"pyccl\" %}\n{% set version = \"2.0.1\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz\n  sha256: be8bb0f2bd1e56382371f06e7926f1821dc8d6250bbac37c5d0fdc4b6c421bb1\n  patches:\n    - remove_setuptools_build.patch\n\nbuild:\n  number: 1\n  skip: True  # [win]\n\nrequirements:\n  build:\n    - cmake\n    - make\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n  host:\n    - python\n    - pip\n    - setuptools_scm\n    - fftw\n    - gsl\n    - numpy\n    - swig\n    - libcblas\n    - llvm-openmp  # [osx]\n  run:\n    - python\n    - pycamb >=1\n    - pyyaml\n    - fftw  # apparently FFTW doesn't have a run export\n    - {{ pin_compatible('numpy') }}\n    - llvm-openmp  # [osx]\n\ntest:\n  imports:\n    - pyccl\n\nabout:\n  home: https://github.com/LSSTDESC/CCL\n  license: BSD-3-Clause\n  license_family: BSD\n  license_file: LICENSE\n  summary: 'DESC Core Cosmology Library: cosmology routines with validated numerical accuracy'\n\nextra:\n  recipe-maintainers:\n    - beckermr\n",
+ "raw_meta_yaml":"{% set name = \"pyccl\" %}\n{% set version = \"2.0.1\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz\n  sha256: be8bb0f2bd1e56382371f06e7926f1821dc8d6250bbac37c5d0fdc4b6c421bb1\n  patches:\n    - remove_setuptools_build.patch\n\nbuild:\n  number: 2\n  skip: True  # [win]\n\nrequirements:\n  build:\n    - cmake\n    - make\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n  host:\n    - python\n    - pip\n    - setuptools_scm\n    - fftw\n    - gsl\n    - numpy\n    - swig\n    - libcblas\n    - llvm-openmp  # [osx]\n  run:\n    - python\n    - camb >=1\n    - pyyaml\n    - fftw  # apparently FFTW doesn't have a run export\n    - {{ pin_compatible('numpy') }}\n    - llvm-openmp  # [osx]\n\ntest:\n  imports:\n    - pyccl\n\nabout:\n  home: https://github.com/LSSTDESC/CCL\n  license: BSD-3-Clause\n  license_family: BSD\n  license_file: LICENSE\n  summary: 'DESC Core Cosmology Library: cosmology routines with validated numerical accuracy'\n\nextra:\n  recipe-maintainers:\n    - beckermr\n",
  "req":{
   "__set__":true,
   "elements":[
    "c_compiler_stub",
+   "camb",
    "cmake",
    "compatible_pin_stub",
    "cxx_compiler_stub",
@@ -177,7 +178,6 @@
    "make",
    "numpy",
    "pip",
-   "pycamb",
    "python",
    "pyyaml",
    "setuptools_scm",
