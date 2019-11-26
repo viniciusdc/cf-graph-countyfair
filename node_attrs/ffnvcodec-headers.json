@@ -77,7 +77,7 @@
   }
  },
  "name":"ffnvcodec-headers",
- "new_version":"n9.1.23.0",
+ "new_version":"n9.1.23.1",
  "pinning_version":"2018.11.24",
  "raw_meta_yaml":"{% set name = 'ffnvcodec-headers' %}\n{% set version = '8.2.15.4' %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  url: 'https://github.com/FFmpeg/nv-codec-headers/releases/download/n{{ version }}/nv-codec-headers-{{ version }}.tar.gz'\n  sha256: 9a567b45ece1930e65803411f12736d8925f0d1adbc31e962cb5c441969940f0\n\nbuild:\n  number: 1001\n  skip: True  # [osx]\n  script: make PREFIX={{ PREFIX }} install\n\nrequirements:\n  build:\n    # git provides the sed command\n    - git   # [win]\n    - make\n\ntest:\n  commands:\n     - test -f ${PREFIX}/include/ffnvcodec/dynlink_cuda.h      # [unix]\n     - test -f ${PREFIX}/include/ffnvcodec/dynlink_cuviddec.h  # [unix]\n     - test -f ${PREFIX}/include/ffnvcodec/dynlink_loader.h    # [unix]\n     - test -f ${PREFIX}/include/ffnvcodec/dynlink_nvcuvid.h   # [unix]\n     - test -f ${PREFIX}/include/ffnvcodec/nvEncodeAPI.h       # [unix]\n     - test -f ${PREFIX}/lib/pkgconfig/ffnvcodec.pc            # [unix]\n\nabout:\n  home: https://git.videolan.org/?p=ffmpeg/nv-codec-headers.gi\n  license: MIT\n  license_file: LICENSE\n  summary: 'FFmpeg version of headers required to interface with Nvidias codec APIs'\n  description: |\n    FFmpeg version of headers required to interface with Nvidias codec APIs.\n\n    Corresponds to Video Codec SDK version 8.2.25.\n\n    Minimum required driver versions:\n    Linux: 396.24 or newer\n    Windows: 397.93 or newer\n\n    Optional CUDA 10 features:\n    Linux: 410.48 or newer\n    Windows: 411.31 or newer\n\nextra:\n  recipe-maintainers:\n    - hmaarrfk\n    - sdvillal\n",
  "req":{
