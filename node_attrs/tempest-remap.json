@@ -36,8 +36,9 @@
    "summary":"Remapping software for climate applications"
   },
   "build":{
-   "number":"3",
-   "skip":true
+   "number":"104",
+   "skip":true,
+   "string":"nompi_h_104"
   },
   "extra":{
    "recipe-maintainers":[
@@ -75,29 +76,44 @@
     "libblas",
     "liblapack",
     "hdf5",
+    "hdf5 * nompi_*",
     "libnetcdf",
+    "libnetcdf * nompi_*",
+    "netcdf-cxx-legacy",
+    "netcdf-cxx-legacy * nompi_*",
     "libblas",
     "liblapack",
     "hdf5",
+    "hdf5 * nompi_*",
     "libnetcdf",
+    "libnetcdf * nompi_*",
+    "netcdf-cxx-legacy",
+    "netcdf-cxx-legacy * nompi_*",
     "libblas",
     "liblapack",
     "hdf5",
-    "libnetcdf"
+    "hdf5 * nompi_*",
+    "libnetcdf",
+    "libnetcdf * nompi_*",
+    "netcdf-cxx-legacy",
+    "netcdf-cxx-legacy * nompi_*"
    ],
    "run":[
     "libblas",
     "liblapack",
-    "hdf5",
-    "libnetcdf",
+    "hdf5 * nompi_*",
+    "libnetcdf * nompi_*",
+    "netcdf-cxx-legacy * nompi_*",
     "libblas",
     "liblapack",
-    "hdf5",
-    "libnetcdf",
+    "hdf5 * nompi_*",
+    "libnetcdf * nompi_*",
+    "netcdf-cxx-legacy * nompi_*",
     "libblas",
     "liblapack",
-    "hdf5",
-    "libnetcdf"
+    "hdf5 * nompi_*",
+    "libnetcdf * nompi_*",
+    "netcdf-cxx-legacy * nompi_*"
    ]
   },
   "source":{
@@ -121,7 +137,7 @@
  "name":"tempest-remap",
  "new_version":"2.0.3",
  "pinning_version":"2019.10.11",
- "raw_meta_yaml":"{% set name = \"tempest-remap\" %}\n{% set version = \"2.0.3\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  url: https://github.com/ClimateGlobalChange/tempestremap/archive/v{{ version }}.tar.gz\n  sha256: b4578c2cb101ba091a10dc914e15ac968257f5db27ca78bc9fb5dbd70bce191f\n\nbuild:\n  number: 3\n  skip: True  # [win]\n\nrequirements:\n  build:\n    - autoconf\n    - automake\n    - libtool\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n  host:\n    - libblas\n    - liblapack\n    - hdf5\n    - libnetcdf\n  run:\n    - libblas\n    - liblapack\n    - hdf5\n    - libnetcdf\n\ntest:\n  commands:\n    - test -f ${PREFIX}/lib/libTempestRemap.a\n    - test -f ${PREFIX}/lib/libTempestRemap${SHLIB_EXT}\n    - GenerateCSMesh --res 64 --alt --file gravitySam.000000.3d.cubedSphere.g\n\nabout:\n  home: https://github.com/ClimateGlobalChange/tempestremap\n  license: BSD-3-Clause\n  license_family: BSD\n  license_file: LICENSE\n  summary: Remapping software for climate applications\n  description: |\n    TempestRemap is a conservative, consistent and monotone remapping package\n    for arbitrary grid geometry with support for finite volumes and finite\n    elements. There is still quite a bit of work to be done, but any feedback is\n    appreciated on the software in its current form.\n\n    If you choose to use this software in your work, please cite our papers:\n\n    Paul A. Ullrich and Mark A. Taylor, 2015: Arbitrary-Order Conservative and\n    Consistent Remapping and a Theory of Linear Maps: Part 1. Mon. Wea. Rev.,\n    143, 2419\u20132440, doi: 10.1175/MWR-D-14-00343.1\n\n    Paul A. Ullrich, Darshi Devendran and Hans Johansen, 2016: Arbitrary-Order\n    Conservative and Consistent Remapping and a Theory of Linear Maps, Part 2.\n    Mon. Weather Rev., 144, 1529-1549, doi: 10.1175/MWR-D-15-0301.1.\n  doc_url: https://github.com/ClimateGlobalChange/tempestremap\n  dev_url: https://github.com/ClimateGlobalChange/tempestremap\n\nextra:\n  recipe-maintainers:\n    - jhkennedy\n    - xylar\n",
+ "raw_meta_yaml":"{% set name = \"tempest-remap\" %}\n{% set version = \"2.0.3\" %}\n{% set build = 4 %}\n\n# recipe-lint fails if mpi is undefined\n{% set mpi = mpi or 'nompi' %}\n{% if mpi == \"nompi\" %}\n# prioritize nompi via build number\n{% set build = build + 100 %}\n{% endif %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  url: https://github.com/ClimateGlobalChange/tempestremap/archive/v{{ version }}.tar.gz\n  sha256: b4578c2cb101ba091a10dc914e15ac968257f5db27ca78bc9fb5dbd70bce191f\n\nbuild:\n  skip: True  # [win]\n  number: {{ build }}\n\n  # add build string so packages can depend on\n  # mpi or nompi variants explicitly:\n  # `tempest-remap * mpi_mpich_*` for mpich\n  # `tempest-remap * mpi_*` for any mpi\n  # `tempest-remap * nompi_*` for no mpi\n\n  {% if mpi != 'nompi' %}\n  {% set mpi_prefix = \"mpi_\" + mpi %}\n  {% else %}\n  {% set mpi_prefix = \"nompi\" %}\n  {% endif %}\n  string: \"{{ mpi_prefix }}_h{{ PKG_HASH }}_{{ build }}\"\n\nrequirements:\n  build:\n    - autoconf\n    - automake\n    - libtool\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n  host:\n    - libblas\n    - liblapack\n    # need to list hdf5, libnetcdf and netcdf-cxx-legacy twice to get version\n    # pinning from conda_build_config and build pinning from {{ mpi_prefix }}\n    - hdf5\n    - hdf5 * {{ mpi_prefix }}_*\n    - libnetcdf\n    - libnetcdf * {{ mpi_prefix }}_*\n    - netcdf-cxx-legacy\n    - netcdf-cxx-legacy * {{ mpi_prefix }}_*\n  run:\n    - libblas\n    - liblapack\n    - hdf5 * {{ mpi_prefix }}_*\n    - libnetcdf * {{ mpi_prefix }}_*\n    - netcdf-cxx-legacy * {{ mpi_prefix }}_*\n\ntest:\n  commands:\n    - test -f ${PREFIX}/lib/libTempestRemap.a\n    - test -f ${PREFIX}/lib/libTempestRemap${SHLIB_EXT}\n    - GenerateCSMesh --res 64 --alt --file gravitySam.000000.3d.cubedSphere.g\n\nabout:\n  home: https://github.com/ClimateGlobalChange/tempestremap\n  license: BSD-3-Clause\n  license_family: BSD\n  license_file: LICENSE\n  summary: Remapping software for climate applications\n  description: |\n    TempestRemap is a conservative, consistent and monotone remapping package\n    for arbitrary grid geometry with support for finite volumes and finite\n    elements. There is still quite a bit of work to be done, but any feedback is\n    appreciated on the software in its current form.\n\n    If you choose to use this software in your work, please cite our papers:\n\n    Paul A. Ullrich and Mark A. Taylor, 2015: Arbitrary-Order Conservative and\n    Consistent Remapping and a Theory of Linear Maps: Part 1. Mon. Wea. Rev.,\n    143, 2419\u20132440, doi: 10.1175/MWR-D-14-00343.1\n\n    Paul A. Ullrich, Darshi Devendran and Hans Johansen, 2016: Arbitrary-Order\n    Conservative and Consistent Remapping and a Theory of Linear Maps, Part 2.\n    Mon. Weather Rev., 144, 1529-1549, doi: 10.1175/MWR-D-15-0301.1.\n  doc_url: https://github.com/ClimateGlobalChange/tempestremap\n  dev_url: https://github.com/ClimateGlobalChange/tempestremap\n\nextra:\n  recipe-maintainers:\n    - jhkennedy\n    - xylar\n",
  "req":{
   "__set__":true,
   "elements":[
@@ -133,7 +149,8 @@
    "libblas",
    "liblapack",
    "libnetcdf",
-   "libtool"
+   "libtool",
+   "netcdf-cxx-legacy"
   ]
  },
  "smithy_version":"3.6.0",
