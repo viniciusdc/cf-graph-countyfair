@@ -460,7 +460,7 @@
   },
   "build":{
    "detect_binary_files_with_prefix":true,
-   "number":"0"
+   "number":"1"
   },
   "extra":{
    "recipe-maintainers":[
@@ -587,7 +587,7 @@
  "name":"poppler",
  "new_version":"0.82.0",
  "pinning_version":"2019.11.26",
- "raw_meta_yaml":"{% set version = \"0.82.0\" %}\n\npackage:\n  name: poppler\n  version: {{ version }}\n\nsource:\n  url: https://poppler.freedesktop.org/poppler-{{ version }}.tar.xz\n  sha256: 234f8e573ea57fb6a008e7c1e56bfae1af5d1adf0e65f47555e1ae103874e4df\n  patches:\n    - g-ir-scanner-libpath.patch\n    - cmakelists.win.patch  # [win]\n    - exportsymbols.patch  # [win]\n    # system headers must be included before jpeg on Windows\n    - includesystembeforejpeg.patch  # [win]\n    - vs2015-no-for-loop-constexpr.win.patch  # [win]\n\nbuild:\n  number: 0\n  detect_binary_files_with_prefix: true\n  skip: true  # [(unix and (cxx_compiler == 'toolchain_cxx')) or (win and py27)]\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n    - pkg-config  # [not win]\n    - cmake\n    - make\n    - perl\n  host:\n    - python 3.7\n    - cairo  # [not win]\n    - curl\n    - freetype\n    - glib\n    - gobject-introspection 1.*  # [not win]\n    - jpeg\n    - libpng\n    - libtiff\n    - openjpeg\n    - zlib\n  run:\n    - poppler-data\n    - cairo  # [not win]\n    - curl\n    - freetype\n    - glib\n    - jpeg\n    - libpng\n    - libtiff\n    - openjpeg\n    - zlib\n\ntest:\n  commands:\n    - pdfunite --help\n    - pdftocairo --help  # [not win]\n\nabout:\n  home: https://poppler.freedesktop.org/\n  license: GPLv2\n  license_family: GPL\n  license_file: COPYING\n  summary: 'The Poppler PDF manipulation library.'\n\nextra:\n  recipe-maintainers:\n    - pkgw\n    - ocefpaf\n",
+ "raw_meta_yaml":"{% set version = \"0.82.0\" %}\n\npackage:\n  name: poppler\n  version: {{ version }}\n\nsource:\n  url: https://poppler.freedesktop.org/poppler-{{ version }}.tar.xz\n  sha256: 234f8e573ea57fb6a008e7c1e56bfae1af5d1adf0e65f47555e1ae103874e4df\n  patches:\n    - g-ir-scanner-libpath.patch\n    - cmakelists.win.patch  # [win]\n    - exportsymbols.patch  # [win]\n    # system headers must be included before jpeg on Windows\n    - includesystembeforejpeg.patch  # [win]\n    - vs2015-no-for-loop-constexpr.win.patch  # [win]\n\nbuild:\n  number: 1\n  detect_binary_files_with_prefix: true\n  skip: true  # [(unix and (cxx_compiler == 'toolchain_cxx')) or (win and py27)]\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n    - pkg-config  # [not win]\n    - cmake\n    - make\n    - perl\n  host:\n    - python 3.7\n    - cairo  # [not win]\n    - curl\n    - freetype\n    - glib\n    - gobject-introspection 1.*  # [not win]\n    - jpeg\n    - libpng\n    - libtiff\n    - openjpeg\n    - zlib\n  run:\n    - poppler-data\n    - cairo  # [not win]\n    - curl\n    - freetype\n    - glib\n    - jpeg\n    - libpng\n    - libtiff\n    - openjpeg\n    - zlib\n\ntest:\n  commands:\n    - pdfunite --help\n    - pdftocairo --help  # [not win]\n\nabout:\n  home: https://poppler.freedesktop.org/\n  license: GPLv2\n  license_family: GPL\n  license_file: COPYING\n  summary: 'The Poppler PDF manipulation library.'\n\nextra:\n  recipe-maintainers:\n    - pkgw\n    - ocefpaf\n",
  "req":{
   "__set__":true,
   "elements":[
