@@ -11,8 +11,9 @@
    "summary":"Legacy Unidata NetCDF C++ Library"
   },
   "build":{
-   "number":"0",
-   "skip":true
+   "number":"101",
+   "skip":true,
+   "string":"nompi_h_101"
   },
   "extra":{
    "recipe-maintainers":[
@@ -35,20 +36,32 @@
     "cxx_compiler_stub"
    ],
    "host":[
-    "libnetcdf",
     "hdf5",
+    "hdf5 * nompi_*",
     "libnetcdf",
+    "libnetcdf * nompi_*",
+    "nompi",
     "hdf5",
+    "hdf5 * nompi_*",
     "libnetcdf",
-    "hdf5"
+    "libnetcdf * nompi_*",
+    "nompi",
+    "hdf5",
+    "hdf5 * nompi_*",
+    "libnetcdf",
+    "libnetcdf * nompi_*",
+    "nompi"
    ],
    "run":[
-    "libnetcdf",
-    "hdf5",
-    "libnetcdf",
-    "hdf5",
-    "libnetcdf",
-    "hdf5"
+    "hdf5 * nompi_*",
+    "libnetcdf * nompi_*",
+    "nompi",
+    "hdf5 * nompi_*",
+    "libnetcdf * nompi_*",
+    "nompi",
+    "hdf5 * nompi_*",
+    "libnetcdf * nompi_*",
+    "nompi"
    ],
    "run_constrained":[
     "netcdf-cxx4 >=9999",
@@ -58,9 +71,12 @@
   },
   "source":{
    "patches":[
-    "configure.patch",
-    "configure.patch",
-    "configure.patch"
+    "0001-configure.patch",
+    "0002-remove-error-check-in-configure.patch",
+    "0001-configure.patch",
+    "0002-remove-error-check-in-configure.patch",
+    "0001-configure.patch",
+    "0002-remove-error-check-in-configure.patch"
    ],
    "sha256":"95ed6ab49a0ee001255eac4e44aacb5ca4ea96ba850c08337a3e4c9a0872ccd1",
    "url":"https://www.unidata.ucar.edu/downloads/netcdf/ftp/netcdf-cxx-4.2.tar.gz"
@@ -86,14 +102,15 @@
   }
  },
  "name":"netcdf-cxx-legacy",
- "raw_meta_yaml":"{% set version = \"4.2\" %}\n\npackage:\n  name: netcdf-cxx-legacy\n  version: {{ version }}\n\nsource:\n  url: https://www.unidata.ucar.edu/downloads/netcdf/ftp/netcdf-cxx-{{ version }}.tar.gz\n  sha256: 95ed6ab49a0ee001255eac4e44aacb5ca4ea96ba850c08337a3e4c9a0872ccd1\n  patches:\n    # remove VERSION file that is problematic in OSX\n    - configure.patch\n\nbuild:\n  number: 0\n  skip: True  # [win]\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n  host:\n    - libnetcdf\n    - hdf5\n  run:\n    - libnetcdf\n    - hdf5\n  run_constrained:\n    - netcdf-cxx4 >=9999\n\ntest:\n  commands:\n    - test -f $PREFIX/lib/libnetcdf_c++.a\n    - test -f $PREFIX/lib/libnetcdf_c++${SHLIB_EXT}\n    - test -f $PREFIX/include/ncvalues.h\n    - test -f $PREFIX/include/netcdfcpp.h\n    - test -f $PREFIX/include/netcdf.hh\n\nabout:\n  home: https://www.unidata.ucar.edu/downloads/netcdf/\n  license: http://www.unidata.ucar.edu/software/netcdf/copyright.html\n  license_file: COPYRIGHT\n  summary: Legacy Unidata NetCDF C++ Library\n\nextra:\n  recipe-maintainers:\n    - xylar\n",
+ "raw_meta_yaml":"{% set version = \"4.2\" %}\n{% set build = 1 %}\n\n# recipe-lint fails if mpi is undefined\n{% set mpi = mpi or 'nompi' %}\n{% if mpi == \"nompi\" %}\n# prioritize nompi via build number\n{% set build = build + 100 %}\n{% endif %}\n\npackage:\n  name: netcdf-cxx-legacy\n  version: {{ version }}\n\nsource:\n  url: https://www.unidata.ucar.edu/downloads/netcdf/ftp/netcdf-cxx-{{ version }}.tar.gz\n  sha256: 95ed6ab49a0ee001255eac4e44aacb5ca4ea96ba850c08337a3e4c9a0872ccd1\n  patches:\n    # remove VERSION file that is problematic in OSX\n    - 0001-configure.patch\n    - 0002-remove-error-check-in-configure.patch\n\nbuild:\n  number: {{ build }}\n  skip: True  # [win]\n\n  # add build string so packages can depend on\n  # mpi or nompi variants explicitly:\n  # `netcdf-cxx-legacy * mpi_mpich_*` for mpich\n  # `netcdf-cxx-legacy * mpi_*` for any mpi\n  # `netcdf-cxx-legacy * nompi_*` for no mpi\n\n  {% if mpi != 'nompi' %}\n  {% set mpi_prefix = \"mpi_\" + mpi %}\n  {% else %}\n  {% set mpi_prefix = \"nompi\" %}\n  {% endif %}\n  string: \"{{ mpi_prefix }}_h{{ PKG_HASH }}_{{ build }}\"\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n  host:\n    # need to list hdf5 and libnetcdf twice to get version pinning from\n    # conda_build_config and build pinning from {{ mpi_prefix }}\n    - hdf5\n    - hdf5 * {{ mpi_prefix }}_*\n    - libnetcdf\n    - libnetcdf * {{ mpi_prefix }}_*\n    - {{ mpi }}  # [mpi != 'nompi']\n  run:\n    - hdf5 * {{ mpi_prefix }}_*\n    - libnetcdf * {{ mpi_prefix }}_*\n    - {{ mpi }}  # [mpi != 'nompi']\n    - openssh  # [mpi == 'openmpi']\n  run_constrained:\n    - netcdf-cxx4 >=9999\n\ntest:\n  commands:\n    - test -f $PREFIX/lib/libnetcdf_c++.a\n    - test -f $PREFIX/lib/libnetcdf_c++${SHLIB_EXT}\n    - test -f $PREFIX/include/ncvalues.h\n    - test -f $PREFIX/include/netcdfcpp.h\n    - test -f $PREFIX/include/netcdf.hh\n\nabout:\n  home: https://www.unidata.ucar.edu/downloads/netcdf/\n  license: http://www.unidata.ucar.edu/software/netcdf/copyright.html\n  license_file: COPYRIGHT\n  summary: Legacy Unidata NetCDF C++ Library\n\nextra:\n  recipe-maintainers:\n    - xylar\n",
  "req":{
   "__set__":true,
   "elements":[
    "c_compiler_stub",
    "cxx_compiler_stub",
    "hdf5",
-   "libnetcdf"
+   "libnetcdf",
+   "nompi"
   ]
  },
  "url":"https://www.unidata.ucar.edu/downloads/netcdf/ftp/netcdf-cxx-4.2.tar.gz",
