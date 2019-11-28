@@ -118,6 +118,25 @@
     "migrator_version",
     "name"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/346730135.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"MigrationYaml",
+    "migrator_object_version":1,
+    "migrator_version":0,
+    "name":"geos-3.8.0"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_object_version",
+    "migrator_version",
+    "name"
+   ]
   }
  ],
  "bad":false,
@@ -291,7 +310,7 @@
  },
  "name":"rsgislib",
  "new_version":false,
- "pinning_version":"2019.11.01",
+ "pinning_version":"2019.11.26",
  "raw_meta_yaml":"{% set version = \"4.0.6\" %}\n\npackage:\n  name: rsgislib\n  version: {{ version }}\n\nsource:\n  url: https://bitbucket.org/petebunting/rsgislib/downloads/rsgislib-{{ version }}.tar.gz\n  sha256: 692a69cb9498c8a30a566efe34edd579fd53dff01a891e299a93188205d0a0ab\n\nbuild:\n  number: 1\n  # CGAL etc do not support earlier than vc14\n  skip: True  # [win and vc<14]\n\nrequirements:\n  build:\n    - cmake\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n  host:\n    - python\n    - hdf5\n    - xerces-c\n    - muparser\n    - gsl\n    - geos\n    - gdal >=3.0.1\n    - boost-cpp\n    - kealib\n    # cgal pulls in appropriate mpir/mpfr/gmp etc for platform\n    - cgal-cpp\n  run:\n    - python\n    - hdf5\n    - xerces-c\n    - muparser\n    - gsl\n    - geos\n    - gdal >=3.0.1\n    - boost-cpp\n    - kealib\n    # cgal pulls in appropriate mpir/mpfr/gmp etc for platform\n    - cgal-cpp\n\ntest:\n  source_files:\n    - python_tests\n  commands:\n    # Random crashing under Windows. Skip for now\n    - cd python_tests/RSGISLibTests && python RSGIStests.py --all  # [not win]\n  imports:\n    - rsgislib\n    - rsgislib.imagecalibration\n    - rsgislib.classification\n    - rsgislib.elevation\n    - rsgislib.imagecalc\n    - rsgislib.imagefilter\n    - rsgislib.imageregistration\n    - rsgislib.imageutils\n    - rsgislib.rastergis\n    - rsgislib.segmentation\n    - rsgislib.vectorutils\n    - rsgislib.zonalstats\n    # get a memory error here - must investigate\n    #- rsgislib.histocube\n    - rsgislib.imagemorphology\n\nabout:\n  home: http://www.rsgislib.org\n  license: GPL-3.0\n  license_file: LICENSE.txt\n  summary: The Remote Sensing and GIS software library (RSGISLib) is a collection of Python modules for processing remote sensing and GIS datasets.\n\nextra:\n  recipe-maintainers:\n    - danclewley\n    - petebunting\n    - gillins\n",
  "req":{
   "__set__":true,
@@ -311,7 +330,7 @@
    "xerces-c"
   ]
  },
- "smithy_version":"3.6.1",
+ "smithy_version":"3.6.3",
  "url":"https://bitbucket.org/petebunting/rsgislib/downloads/rsgislib-3.6.14.tar.gz",
  "version":"4.0.6"
 }
