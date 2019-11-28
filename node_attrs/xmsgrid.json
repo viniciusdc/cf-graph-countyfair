@@ -110,7 +110,7 @@
   },
   "package":{
    "name":"xmsgrid",
-   "version":"4.1.0"
+   "version":"4.2.0"
   },
   "requirements":{
    "build":[
@@ -119,7 +119,7 @@
     "zlib",
     "xmscore",
     "python",
-    "pybind11=2.2",
+    "pybind11 >2.3.0",
     "boost-cpp",
     "pip",
     "cxx_compiler_stub",
@@ -127,7 +127,7 @@
     "zlib",
     "xmscore",
     "python",
-    "pybind11=2.2",
+    "pybind11 >2.3.0",
     "boost-cpp",
     "pip",
     "cxx_compiler_stub",
@@ -135,7 +135,7 @@
     "zlib",
     "xmscore",
     "python",
-    "pybind11=2.2",
+    "pybind11 >2.3.0",
     "boost-cpp",
     "pip"
    ],
@@ -152,8 +152,13 @@
    ]
   },
   "source":{
-   "sha256":"25895912db6dd88eed03502ed2ddbc989258201396f74f677a57be7c7a2befae",
-   "url":"https://github.com/Aquaveo/xmsgrid/archive/4.1.0.tar.gz"
+   "patches":[
+    "0001-Fix-pybind11-cmake-path.patch",
+    "0001-Fix-pybind11-cmake-path.patch",
+    "0001-Fix-pybind11-cmake-path.patch"
+   ],
+   "sha256":"8eb6584771c639554cf04e9203b3d5b39395cf40e2490f6348afe2195900b882",
+   "url":"https://github.com/Aquaveo/xmsgrid/archive/4.2.0.tar.gz"
   },
   "test":{
    "commands":[
@@ -179,7 +184,7 @@
  "name":"xmsgrid",
  "new_version":"4.2.0",
  "pinning_version":"2019.11.26",
- "raw_meta_yaml":"{% set version = \"4.1.0\" %}\n\npackage:\n  name: xmsgrid\n  version: {{ version }}\n\nsource:\n  url: https://github.com/Aquaveo/xmsgrid/archive/{{ version }}.tar.gz\n  sha256: 25895912db6dd88eed03502ed2ddbc989258201396f74f677a57be7c7a2befae\n\nbuild:\n  number: 0\n  skip: True  # [py27]\n  merge_build_host: true\n\nrequirements:\n  build:\n    - {{ compiler('cxx') }}\n    - cmake >=3.0.0\n    # just to avoid build/host merge issues\n    # but these should be in host.\n    - zlib\n    - xmscore\n    - python\n    - pybind11=2.2\n    - boost-cpp\n    - pip\n  run:\n    - xmscore\n    - python\n    - numpy\n\ntest:\n  source_files:\n    - _package/*.py\n    - _package/**/*.py\n  commands:\n    - python -m unittest discover -v -p *_pyt.py -s ./_package/tests\n  imports:\n    - xms.grid\n\nabout:\n  home: aquaveo.com\n  license: BSD-2-Clause\n  license_file: LICENSE\n  summary: \"Grid library for XMS libraries and products\"\n  doc_url: https://aquaveo.github.io/xmsgrid\n  dev_url: https://github.com/Aquaveo/xmsgrid\n\nextra:\n  recipe-maintainers:\n    - swainn\n    - Tsubashi\n    - gagelarsen\n    - alemon-aquaveo\n",
+ "raw_meta_yaml":"{% set version = \"4.2.0\" %}\n\npackage:\n  name: xmsgrid\n  version: {{ version }}\n\nsource:\n  url: https://github.com/Aquaveo/xmsgrid/archive/{{ version }}.tar.gz\n  sha256: 8eb6584771c639554cf04e9203b3d5b39395cf40e2490f6348afe2195900b882\n  patches:\n    - 0001-Fix-pybind11-cmake-path.patch\n\nbuild:\n  number: 0\n  skip: True  # [py27]\n  merge_build_host: true\n\nrequirements:\n  build:\n    - {{ compiler('cxx') }}\n    - cmake >=3.0.0\n    # just to avoid build/host merge issues\n    # but these should be in host.\n    - zlib\n    - xmscore\n    - python\n    # need newer pybind11 builds for cmake path patch\n    - pybind11 >2.3.0\n    - boost-cpp\n    - pip\n  run:\n    - xmscore\n    - python\n    - numpy\n\ntest:\n  source_files:\n    - _package/*.py\n    - _package/**/*.py\n  commands:\n    - python -m unittest discover -v -p *_pyt.py -s ./_package/tests\n  imports:\n    - xms.grid\n\nabout:\n  home: aquaveo.com\n  license: BSD-2-Clause\n  license_file: LICENSE\n  summary: \"Grid library for XMS libraries and products\"\n  doc_url: https://aquaveo.github.io/xmsgrid\n  dev_url: https://github.com/Aquaveo/xmsgrid\n\nextra:\n  recipe-maintainers:\n    - swainn\n    - Tsubashi\n    - gagelarsen\n    - alemon-aquaveo\n",
  "req":{
   "__set__":true,
   "elements":[
@@ -196,5 +201,5 @@
  },
  "smithy_version":"3.6.3",
  "url":"https://github.com/Aquaveo/xmsgrid/archive/4.1.0.tar.gz",
- "version":"4.1.0"
+ "version":"4.2.0"
 }
