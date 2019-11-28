@@ -83,19 +83,19 @@
     "cxx_compiler_stub",
     "cmake >=3.0.0",
     "python",
-    "pybind11=2.2",
+    "pybind11 >2.3.0",
     "boost-cpp",
     "pip",
     "cxx_compiler_stub",
     "cmake >=3.0.0",
     "python",
-    "pybind11=2.2",
+    "pybind11 >2.3.0",
     "boost-cpp",
     "pip",
     "cxx_compiler_stub",
     "cmake >=3.0.0",
     "python",
-    "pybind11=2.2",
+    "pybind11 >2.3.0",
     "boost-cpp",
     "pip"
    ],
@@ -109,6 +109,11 @@
    ]
   },
   "source":{
+   "patches":[
+    "0001-Fix-pybind11-cmake-path.patch",
+    "0001-Fix-pybind11-cmake-path.patch",
+    "0001-Fix-pybind11-cmake-path.patch"
+   ],
    "sha256":"a58610c9cf4319fdc34c4d62222a12a90c4c17279f4fa69fae38db044d6eb798",
    "url":"https://github.com/Aquaveo/xmscore/archive/3.1.0.tar.gz"
   },
@@ -136,7 +141,7 @@
  "name":"xmscore",
  "new_version":"3.1.0",
  "pinning_version":"2019.11.01",
- "raw_meta_yaml":"{% set version = \"3.1.0\" %}\n\npackage:\n  name: xmscore\n  version: {{ version }}\n\nsource:\n  url: https://github.com/Aquaveo/xmscore/archive/{{ version }}.tar.gz\n  sha256: a58610c9cf4319fdc34c4d62222a12a90c4c17279f4fa69fae38db044d6eb798\n\nbuild:\n  number: 0\n  skip: True  # [py27]\n  merge_build_host: true\n\nrequirements:\n  build:\n    - {{ compiler('cxx') }}\n    - cmake >=3.0.0\n    # just to avoid build/host merge issues\n    # but these should be in host.\n    - python\n    - pybind11=2.2\n    - boost-cpp\n    - pip\n  run:\n    - python\n    - numpy\n\ntest:\n  source_files:\n    - _package/*.py\n    - _package/**/*.py\n  commands:\n    - python -m unittest discover -v -p *_pyt.py -s ./_package/tests\n  imports:\n    - xms.core\n\nabout:\n  home: aquaveo.com\n  license: BSD-2-Clause\n  license_file: LICENSE\n  summary: \"Support library for XMS libraries and products\"\n  doc_url: https://aquaveo.github.io/xmscore\n  dev_url: https://github.com/Aquaveo/xmscore\n\nextra:\n  recipe-maintainers:\n    - swainn\n    - Tsubashi\n    - gagelarsen\n    - alemon-aquaveo\n",
+ "raw_meta_yaml":"{% set version = \"3.1.0\" %}\n\npackage:\n  name: xmscore\n  version: {{ version }}\n\nsource:\n  url: https://github.com/Aquaveo/xmscore/archive/{{ version }}.tar.gz\n  sha256: a58610c9cf4319fdc34c4d62222a12a90c4c17279f4fa69fae38db044d6eb798\n  patches:\n    - 0001-Fix-pybind11-cmake-path.patch\n\nbuild:\n  number: 0\n  skip: True  # [py27]\n  merge_build_host: true\n\nrequirements:\n  build:\n    - {{ compiler('cxx') }}\n    - cmake >=3.0.0\n    # just to avoid build/host merge issues\n    # but these should be in host.\n    - python\n    # need newer pybind11 builds for cmake path patch\n    - pybind11 >2.3.0\n    - boost-cpp\n    - pip\n  run:\n    - python\n    - numpy\n\ntest:\n  source_files:\n    - _package/*.py\n    - _package/**/*.py\n  commands:\n    - python -m unittest discover -v -p *_pyt.py -s ./_package/tests\n  imports:\n    - xms.core\n\nabout:\n  home: aquaveo.com\n  license: BSD-2-Clause\n  license_file: LICENSE\n  summary: \"Support library for XMS libraries and products\"\n  doc_url: https://aquaveo.github.io/xmscore\n  dev_url: https://github.com/Aquaveo/xmscore\n\nextra:\n  recipe-maintainers:\n    - swainn\n    - Tsubashi\n    - gagelarsen\n    - alemon-aquaveo\n",
  "req":{
   "__set__":true,
   "elements":[
