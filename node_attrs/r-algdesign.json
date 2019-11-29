@@ -48,24 +48,26 @@
     "migrator_version",
     "name"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/346911146.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"Version",
+    "migrator_version":0,
+    "version":"1.2.0"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "version"
+   ]
   }
  ],
- "bad":{
-  "exception":"local variable 'hash' referenced before assignment",
-  "traceback":[
-   "Traceback (most recent call last):",
-   "  File \"/root/repo/cf-scripts/conda_forge_tick/auto_tick.xsh\", line 693, in main",
-   "    hash_type=attrs.get('hash_type', 'sha256'))",
-   "  File \"/root/repo/cf-scripts/conda_forge_tick/auto_tick.xsh\", line 98, in run",
-   "    migrate_return = migrator.migrate(recipe_dir, attrs, **kwargs)",
-   "  File \"/root/repo/cf-scripts/conda_forge_tick/migrators.xsh\", line 467, in migrate",
-   "    new_patterns = self.get_hash_patterns('meta.yaml', urls, hash_type)",
-   "  File \"/root/repo/cf-scripts/conda_forge_tick/migrators.xsh\", line 394, in get_hash_patterns",
-   "    n = '{}: {}'.format(hash_type, hash)",
-   "UnboundLocalError: local variable 'hash' referenced before assignment",
-   ""
-  ]
- },
+ "bad":false,
  "conda-forge.yml":{
   "compiler_stack":"comp7",
   "max_py_ver":"37",
@@ -171,8 +173,8 @@
   }
  },
  "name":"r-algdesign",
- "new_version":"1.1_7.3.1",
- "pinning_version":"2019.07.15",
+ "new_version":"1.2.0",
+ "pinning_version":"2019.11.26",
  "raw_meta_yaml":"{% set version = '1.1-7.3' %}\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-algdesign\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  fn: AlgDesign_{{ version }}.tar.gz\n  url:\n    - {{ cran_mirror }}/src/contrib/AlgDesign_{{ version }}.tar.gz\n    - {{ cran_mirror }}/src/contrib/Archive/AlgDesign/AlgDesign_{{ version }}.tar.gz\n  sha256: df0d56111401474b7f06eaf9ce7145a1cb73b3c5ec4817bad06f56db48af872e\n\nbuild:\n  merge_build_host: True  # [win]\n  number: 1003\n  skip: true  # [win32]\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - {{ compiler('c') }}        # [not win]\n    - {{ compiler('m2w64_c') }}        # [win]\n    - {{posix}}filesystem        # [win]\n    - {{posix}}make\n    - {{posix}}sed               # [win]\n    - {{posix}}coreutils         # [win]\n    - {{posix}}zip               # [win]\n  host:\n    - r-base\n  run:\n    - r-base\n    - {{native}}gcc-libs         # [win]\n\ntest:\n  commands:\n    - $R -e \"library('AlgDesign')\"           # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('AlgDesign')\\\"\"  # [win]\n\nabout:\n  home: https://github.com/jvbraun/AlgDesign\n  license: GPL (>= 2)\n  summary: Algorithmic experimental designs. Calculates exact and approximate theory experimental\n    designs for D,A, and I criteria. Very large designs may be created. Experimental\n    designs may be blocked or blocked designs created from a candidate list, using several\n    criteria.  The blocking can be done when whole and within plot factors interact.\n  license_family: GPL3\n  license_file: '{{ environ[\"PREFIX\"] }}/lib/R/share/licenses/GPL-3'\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n    - johanneskoester\n    - bgruening\n    - daler\n    - jdblischak\n    - cbrueffer\n    - dbast\n",
  "req":{
   "__set__":true,
@@ -188,7 +190,7 @@
    "zip"
   ]
  },
- "smithy_version":"3.4.1",
+ "smithy_version":"3.6.3",
  "url":[
   "https://cran.r-project.org/src/contrib/AlgDesign_1.1-7.3.tar.gz",
   "https://cran.r-project.org/src/contrib/Archive/AlgDesign/AlgDesign_1.1-7.3.tar.gz",
