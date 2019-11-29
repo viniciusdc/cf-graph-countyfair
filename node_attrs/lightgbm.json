@@ -144,6 +144,23 @@
     "migrator_version",
     "version"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/346870318.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"Version",
+    "migrator_version":0,
+    "version":"2.3.1"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "version"
+   ]
   }
  ],
  "bad":false,
@@ -241,8 +258,8 @@
   }
  },
  "name":"lightgbm",
- "new_version":"2.3.0",
- "pinning_version":"2019.09.27",
+ "new_version":"2.3.1",
+ "pinning_version":"2019.11.26",
  "raw_meta_yaml":"{% set name = \"lightgbm\" %}\n{% set version = \"2.3.0\" %}\n{% set sha256 = \"37225b9f816ea3365ff5988fc8a3717e46ac99a5f223986c86c86cec4f111b54\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  fn: {{ name }}-{{ version }}.tar.gz\n  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz\n  sha256: {{ sha256 }}\n\nbuild:\n  number: 0\n  script: \"{{ PYTHON }} -m pip install . --no-deps --ignore-installed --no-cache-dir -vvv\"  # [not osx]\n  script: 'export LDFLAGS=\"${LDFLAGS} -L$PREFIX/lib\"; {{ PYTHON }} -m pip install . --no-deps --ignore-installed --no-cache-dir -vvv'  # [osx]\n  skip: True  # [win32]\n\nrequirements:\n  build:\n    - cmake >=3.8\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n  host:\n    - python\n    - pip\n    - setuptools\n    - clangdev 4.0*  # [osx]\n    - libcxx 4.0.*  # [osx]\n    - openmp 4.0.*  # [osx]\n  run:\n    - python\n    - numpy\n    - scipy\n    - scikit-learn\n    - clangdev 4.0*  # [osx]\n    - libcxx 4.0.*  # [osx]\n    - openmp 4.0.*  # [osx]\n\ntest:\n  imports:\n    - lightgbm\n\nabout:\n  home: https://github.com/Microsoft/LightGBM\n  license: MIT\n  license_family: MIT\n  license_file: LICENSE\n  summary: 'LightGBM is a gradient boosting framework that uses tree based learning algorithms.'\n\n  description: |\n    A fast, distributed, high performance gradient boosting (GBDT, GBRT, GBM or MART) framework based on decision tree algorithms, used for ranking, classification and many other machine learning tasks.\n  doc_url: http://lightgbm.readthedocs.io/en/latest/\n  dev_url: https://github.com/Microsoft/LightGBM\n\nextra:\n  recipe-maintainers:\n    - synapticarbors\n    - aldanor\n",
  "req":{
   "__set__":true,
@@ -261,7 +278,7 @@
    "setuptools"
   ]
  },
- "smithy_version":"3.4.8",
+ "smithy_version":"3.6.3",
  "url":"https://pypi.io/packages/source/l/lightgbm/lightgbm-2.2.3.tar.gz",
  "version":"2.3.0"
 }
