@@ -101,6 +101,23 @@
     "migrator_version",
     "version"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/347043738.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"Version",
+    "migrator_version":0,
+    "version":"19.47.14903"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "version"
+   ]
   }
  ],
  "bad":false,
@@ -182,8 +199,8 @@
   }
  },
  "name":"intel-compute-runtime",
- "new_version":"19.46.14807",
- "pinning_version":"2019.11.20",
+ "new_version":"19.47.14903",
+ "pinning_version":"2019.11.26",
  "raw_meta_yaml":"{% set version = \"19.43.14583\" %}\n\npackage:\n  name: intel-compute-runtime\n  version: {{ version }}\n\nsource:\n  url: https://github.com/intel/compute-runtime/archive/{{ version }}.tar.gz\n  sha256: abf31f9f85b722584eca6360b03f6b207511d109ee85b40f724092e03594c8bc\n  patches:\n    - add_rt.diff\n    - install_icd.diff\n\nbuild:\n  number: 0\n  skip: True  # [not linux]\n\nrequirements:\n  build:\n    - {{ compiler('cxx') }}\n    - cmake\n    - make\n    - pkg-config\n  host:\n    - intel-gmmlib\n    - intel-graphics-compiler\n  run:\n    - {{ pin_compatible(\"intel-gmmlib\", exact=True) }}\n    - {{ pin_compatible(\"intel-graphics-compiler\", exact=True) }}\n\ntest:\n  commands:\n    - test -f ${PREFIX}/lib/intel-opencl/libigdrcl${SHLIB_EXT}  # [unix]\n    - test -f ${PREFIX}/etc/OpenCL/vendors/intel.icd  # [unix]\n\nabout:\n  home: https://github.com/intel/compute-runtime\n  license: MIT\n  license_family: MIT\n  license_file: LICENSE\n  summary: 'Intel(R) Graphics Compute Runtime for OpenCL(TM)'\n\nextra:\n  recipe-maintainers:\n    - isuruf\n",
  "req":{
   "__set__":true,
@@ -197,7 +214,7 @@
    "pkg-config"
   ]
  },
- "smithy_version":"3.6.2",
+ "smithy_version":"3.6.3",
  "url":"https://github.com/intel/compute-runtime/archive/19.38.14237.tar.gz",
  "version":"19.43.14583"
 }
