@@ -35,36 +35,26 @@
     "migrator_version",
     "name"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/347121698.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"Version",
+    "migrator_version":0,
+    "version":"0.10.0"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "version"
+   ]
   }
  ],
- "bad":{
-  "exception":"Command '['/usr/bin/patch', '-p1', '--ignore-whitespace', '-i', '/root/repo/cf-graph/feedstocks/lief-feedstock/recipe/0001-Allow-building-from-released-tarball.patch']' returned non-zero exit status 1.",
-  "traceback":[
-   "Traceback (most recent call last):",
-   "  File \"/root/repo/cf-scripts/conda_forge_tick/auto_tick.xsh\", line 693, in main",
-   "    hash_type=attrs.get('hash_type', 'sha256'))",
-   "  File \"/root/repo/cf-scripts/conda_forge_tick/auto_tick.xsh\", line 98, in run",
-   "    migrate_return = migrator.migrate(recipe_dir, attrs, **kwargs)",
-   "  File \"/root/repo/cf-scripts/conda_forge_tick/migrators.xsh\", line 475, in migrate",
-   "    return super().migrate(recipe_dir, attrs)",
-   "  File \"/root/repo/cf-scripts/conda_forge_tick/migrators.xsh\", line 204, in migrate",
-   "    mini_migrator.migrate(recipe_dir, attrs, **kwargs)",
-   "  File \"/root/repo/cf-scripts/conda_forge_tick/migrators.xsh\", line 106, in migrate",
-   "    cb_work_dir = provide(md)",
-   "  File \"/opt/conda/envs/run_env/lib/python3.6/site-packages/conda_build/source.py\", line 698, in provide",
-   "    apply_patch(src_dir, join(metadata.path, patch), metadata.config, git)",
-   "  File \"/opt/conda/envs/run_env/lib/python3.6/site-packages/conda_build/source.py\", line 597, in apply_patch",
-   "    check_call_env([patch] + patch_args, cwd=src_dir, stdout=stdout, stderr=stderr)",
-   "  File \"/opt/conda/envs/run_env/lib/python3.6/site-packages/conda_build/utils.py\", line 398, in check_call_env",
-   "    return _func_defaulting_env_to_os_environ('call', *popenargs, **kwargs)",
-   "  File \"/opt/conda/envs/run_env/lib/python3.6/site-packages/conda_build/utils.py\", line 389, in _func_defaulting_env_to_os_environ",
-   "    subprocess.check_call(_args, **kwargs)",
-   "  File \"/opt/conda/envs/run_env/lib/python3.6/subprocess.py\", line 291, in check_call",
-   "    raise CalledProcessError(retcode, cmd)",
-   "subprocess.CalledProcessError: Command '['/usr/bin/patch', '-p1', '--ignore-whitespace', '-i', '/root/repo/cf-graph/feedstocks/lief-feedstock/recipe/0001-Allow-building-from-released-tarball.patch']' returned non-zero exit status 1.",
-   ""
-  ]
- },
+ "bad":false,
  "conda-forge.yml":{
   "provider":{
    "linux_aarch64":"default",
@@ -79,12 +69,13 @@
    "doc_source_url":"https://github.com/lief-project/LIEF/tree/master/doc",
    "doc_url":"https://lief.quarkslab.com/doc/stable/index.html",
    "home":"https://lief.quarkslab.com/",
-   "license":"Apache 2.0",
+   "license":"Apache-2.0",
    "license_family":"Apache",
+   "license_file":"LICENSE",
    "summary":"A cross platform library to parse, modify and abstract ELF, PE and MachO formats."
   },
   "build":{
-   "number":1,
+   "number":"1",
    "skip":true
   },
   "extra":{
@@ -312,18 +303,21 @@
     "git",
     "jom",
     "cmake",
+    "python",
     "c_compiler_stub",
     "cxx_compiler_stub",
     "git",
     "pkg-config",
     "cmake",
     "make",
+    "python",
     "c_compiler_stub",
     "cxx_compiler_stub",
     "git",
     "pkg-config",
     "cmake",
-    "make"
+    "make",
+    "python"
    ]
   },
   "source":[
@@ -371,8 +365,8 @@
   "liblief",
   "py-lief"
  ],
- "pinning_version":"2019.11.01",
- "raw_meta_yaml":"{% set version = \"0.9.0\" %}\n\npackage:\n  name: lief\n  version: {{ version }}\n\nsource:\n  - url: https://github.com/lief-project/LIEF/archive/{{ version }}.tar.gz\n    fn: lief-{{ version }}.tar.gz\n    sha256: 8f1a12d69d9f6bd8404d4f5809549d1c7f3138cacf3bccd1192cb4f46bfb9eb7\n    patches:\n      - 0001-Allow-building-from-released-tarball.patch\n      - 0002-MSVC-Add-bigobj-flag.patch\n      - 0003-Export-LIEF-Object-and-LIEF-MachO-DataCodeEntry-clas.patch\n      - 0004-MachO-Fix-has_dynamic_symbol_command.patch\n      - 0005-Link-Python-extension-module-to-shared-LIEF-library.patch\n\nbuild:\n  number: 1\n  # Python 2.7 is not supported on Windows\n  # lief_easyloggingpp\\src\\easylogging++.h(327) : fatal error C1189: #error :  \"C++0x (or higher) support not detected! (Is `-std=c++11' missing?)\n  skip: True  # [win]\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n    - git\n    - pkg-config            # [not win]\n    - jom                   # [win]\n    - cmake\n    - make                  # [unix]\n    - python                # [aarch64]\n\noutputs:\n  - name: py-lief\n    script: install-py-lief.sh   # [unix]\n    script: install-py-lief.bat  # [win]\n    build:\n      run_exports:\n        - {{ pin_subpackage('py-lief', max_pin='x.x') }}\n    requirements:\n      build:\n        - {{ compiler('c') }}\n        - {{ compiler('cxx') }}\n        - git\n        - pkg-config            # [not win]\n        - jom                   # [win]\n        - cmake\n        - make                  # [unix]\n      host:\n        - {{ pin_subpackage('liblief', exact=True) }}\n        - python\n        - setuptools\n      run:\n        - {{ pin_subpackage('liblief', exact=True) }}\n        - python\n    test:\n      requires:\n        - {{ compiler('cxx') }}\n      imports:\n        - lief\n\n  - name: liblief\n    script: install-liblief.sh        # [unix]\n    script: install-liblief.bat       # [win]\n    build:\n      run_exports:\n        - {{ pin_subpackage('liblief', max_pin='x.x') }}\n    requirements:\n      build:\n        - {{ compiler('c') }}\n        - {{ compiler('cxx') }}\n        - git\n        - pkg-config            # [not win]\n        - jom                   # [win]\n        - cmake\n        - make                  # [unix]\n    test:\n      files:\n        - tests\n      script: run_test_liblief.sh\n      requires:\n        - {{ compiler('c') }}\n        - {{ compiler('cxx') }}\n        - cmake\n        - jom                   # [win]\n        - make                  # [unix]\n\nabout:\n  home: https://lief.quarkslab.com/\n  license: Apache 2.0\n  license_family: Apache\n  summary: A cross platform library to parse, modify and abstract ELF, PE and MachO formats.\n  description: |\n    It turns out that many projects need to parse executable formats and they usually re-implement\n    their own parser. Moreover these parsers are usually bound to one language.\n    LIEF attempts to fill this void.\n  doc_url: https://lief.quarkslab.com/doc/stable/index.html\n  doc_source_url: https://github.com/lief-project/LIEF/tree/master/doc\n\nextra:\n  recipe-maintainers:\n    - isuruf\n    - mingwandroid\n    - msarahan\n",
+ "pinning_version":"2019.11.26",
+ "raw_meta_yaml":"{% set version = \"0.9.0\" %}\n\npackage:\n  name: lief\n  version: {{ version }}\n\nsource:\n  - url: https://github.com/lief-project/LIEF/archive/{{ version }}.tar.gz\n    fn: lief-{{ version }}.tar.gz\n    sha256: 8f1a12d69d9f6bd8404d4f5809549d1c7f3138cacf3bccd1192cb4f46bfb9eb7\n    patches:\n      - 0001-Allow-building-from-released-tarball.patch\n      - 0002-MSVC-Add-bigobj-flag.patch\n      - 0003-Export-LIEF-Object-and-LIEF-MachO-DataCodeEntry-clas.patch\n      - 0004-MachO-Fix-has_dynamic_symbol_command.patch\n      - 0005-Link-Python-extension-module-to-shared-LIEF-library.patch\n\nbuild:\n  number: 1\n  # Python 2.7 is not supported on Windows\n  # lief_easyloggingpp\\src\\easylogging++.h(327) : fatal error C1189: #error :  \"C++0x (or higher) support not detected! (Is `-std=c++11' missing?)\n  skip: True  # [win]\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n    - git\n    - pkg-config            # [not win]\n    - jom                   # [win]\n    - cmake\n    - make                  # [unix]\n    - python\n\noutputs:\n  - name: py-lief\n    script: install-py-lief.sh   # [unix]\n    script: install-py-lief.bat  # [win]\n    build:\n      run_exports:\n        - {{ pin_subpackage('py-lief', max_pin='x.x') }}\n    requirements:\n      build:\n        - {{ compiler('c') }}\n        - {{ compiler('cxx') }}\n        - git\n        - pkg-config            # [not win]\n        - jom                   # [win]\n        - cmake\n        - make                  # [unix]\n      host:\n        - {{ pin_subpackage('liblief', exact=True) }}\n        - python\n        - setuptools\n      run:\n        - {{ pin_subpackage('liblief', exact=True) }}\n        - python\n    test:\n      requires:\n        - {{ compiler('cxx') }}\n      imports:\n        - lief\n\n  - name: liblief\n    script: install-liblief.sh        # [unix]\n    script: install-liblief.bat       # [win]\n    build:\n      run_exports:\n        - {{ pin_subpackage('liblief', max_pin='x.x') }}\n    requirements:\n      build:\n        - {{ compiler('c') }}\n        - {{ compiler('cxx') }}\n        - git\n        - pkg-config            # [not win]\n        - jom                   # [win]\n        - cmake\n        - make                  # [unix]\n    test:\n      files:\n        - tests\n      script: run_test_liblief.sh\n      requires:\n        - {{ compiler('c') }}\n        - {{ compiler('cxx') }}\n        - cmake\n        - jom                   # [win]\n        - make                  # [unix]\n\nabout:\n  home: https://lief.quarkslab.com/\n  license: Apache-2.0\n  license_file: LICENSE\n  license_family: Apache\n  summary: A cross platform library to parse, modify and abstract ELF, PE and MachO formats.\n  description: |\n    It turns out that many projects need to parse executable formats and they usually re-implement\n    their own parser. Moreover these parsers are usually bound to one language.\n    LIEF attempts to fill this void.\n  doc_url: https://lief.quarkslab.com/doc/stable/index.html\n  doc_source_url: https://github.com/lief-project/LIEF/tree/master/doc\n\nextra:\n  recipe-maintainers:\n    - isuruf\n    - mingwandroid\n    - msarahan\n",
  "req":{
   "__set__":true,
   "elements":[
@@ -388,7 +382,7 @@
    "subpackage_stub"
   ]
  },
- "smithy_version":"3.6.1",
+ "smithy_version":"3.6.3",
  "url":"https://github.com/lief-project/LIEF/archive/0.9.0.tar.gz",
  "version":"0.9.0"
 }
