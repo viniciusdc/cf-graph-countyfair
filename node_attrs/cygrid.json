@@ -56,7 +56,7 @@
    "summary":"Cygrid is a cython-powered convolution-based gridding module for astronomy"
   },
   "build":{
-   "number":"2",
+   "number":"3",
    "script":" setup.py install --single-version-externally-managed --record record.txt --offline"
   },
   "extra":{
@@ -84,33 +84,33 @@
     "python",
     "pip",
     "setuptools",
-    "astropy >=2.1",
+    "astropy",
     "cython",
     "numpy",
     "llvm-openmp",
     "python",
     "pip",
     "setuptools",
-    "astropy >=2.1",
+    "astropy",
     "cython",
     "numpy",
     "python",
     "pip",
     "setuptools",
-    "astropy >=2.1",
+    "astropy",
     "cython",
     "numpy"
    ],
    "run":[
     "python",
-    "astropy >=2.1",
+    "astropy",
     "compatible_pin_stub",
     "python",
     "llvm-openmp",
-    "astropy >=2.1",
+    "astropy",
     "compatible_pin_stub",
     "python",
-    "astropy >=2.1",
+    "astropy",
     "compatible_pin_stub"
    ]
   },
@@ -131,7 +131,7 @@
  "name":"cygrid",
  "new_version":"1.0.1",
  "pinning_version":"2019.11.01",
- "raw_meta_yaml":"{% set name = \"cygrid\" %}\n{% set version = \"1.0.1\" %}\n{% set sha256 = \"a32de71407b414375ff477e73078c44438b602de050ad90995bdaf6f8b39d390\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  fn: {{ name }}-{{ version }}.tar.gz\n  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz\n  sha256: {{ sha256 }}\n\nbuild:\n  number: 2\n  skip: True  # [py27]\n  script: \"{{ PYTHON }} setup.py install --single-version-externally-managed --record record.txt --offline\"\n\nrequirements:\n  build:\n    - {{ compiler('cxx') }}\n    - llvm-openmp  # [osx]\n\n  host:\n    - llvm-openmp  # [osx]\n    - python\n    - pip\n    - setuptools\n    - astropy >=2.1\n    - cython\n    - numpy\n\n  run:\n    - python\n    - llvm-openmp  # [osx]\n    - astropy >=2.1\n    - {{ pin_compatible('numpy') }}\n\ntest:\n  imports:\n    - cygrid\n\n  commands:\n     python -c \"import cygrid; cygrid.test()\"\n\nabout:\n  home: https://github.com/bwinkel/{{ name }}\n  license: GPL-3.0\n  license_family: GPL\n  license_file: licenses/README.rst\n  summary: 'Cygrid is a cython-powered convolution-based gridding module for astronomy'\n  description: |\n      Cygrid allows to resample a number of spectra (or data points) to a\n      regular grid - a data cube - using any valid astronomical FITS/WCS\n      projection. The method is a based on serialized convolution with finite\n      gridding kernels. Currently, only Gaussian (radial-symmetric or\n      elliptical) kernels are provided (which has the drawback of slight\n      degradation of the effective resolution). The algorithm has very small\n      memory footprint, allows easy parallelization, and is very fast.\n  dev_url: https://github.com/bwinkel/{{ name }}\n\nextra:\n  recipe-maintainers:\n    - bwinkel\n    - DanielLenz\n",
+ "raw_meta_yaml":"{% set name = \"cygrid\" %}\n{% set version = \"1.0.1\" %}\n{% set sha256 = \"a32de71407b414375ff477e73078c44438b602de050ad90995bdaf6f8b39d390\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  fn: {{ name }}-{{ version }}.tar.gz\n  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz\n  sha256: {{ sha256 }}\n\nbuild:\n  number: 3\n  skip: True  # [py27]\n  script: \"{{ PYTHON }} setup.py install --single-version-externally-managed --record record.txt --offline\"\n\nrequirements:\n  build:\n    - {{ compiler('cxx') }}\n    - llvm-openmp  # [osx]\n\n  host:\n    - llvm-openmp  # [osx]\n    - python\n    - pip\n    - setuptools\n    - astropy\n    - cython\n    - numpy\n\n  run:\n    - python\n    - llvm-openmp  # [osx]\n    - astropy\n    - {{ pin_compatible('numpy') }}\n\ntest:\n  imports:\n    - cygrid\n\n  commands:\n     python -c \"import cygrid; cygrid.test()\"\n\nabout:\n  home: https://github.com/bwinkel/{{ name }}\n  license: GPL-3.0\n  license_family: GPL\n  license_file: licenses/README.rst\n  summary: 'Cygrid is a cython-powered convolution-based gridding module for astronomy'\n  description: |\n      Cygrid allows to resample a number of spectra (or data points) to a\n      regular grid - a data cube - using any valid astronomical FITS/WCS\n      projection. The method is a based on serialized convolution with finite\n      gridding kernels. Currently, only Gaussian (radial-symmetric or\n      elliptical) kernels are provided (which has the drawback of slight\n      degradation of the effective resolution). The algorithm has very small\n      memory footprint, allows easy parallelization, and is very fast.\n  dev_url: https://github.com/bwinkel/{{ name }}\n\nextra:\n  recipe-maintainers:\n    - bwinkel\n    - DanielLenz\n",
  "req":{
   "__set__":true,
   "elements":[
