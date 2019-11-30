@@ -1,0 +1,84 @@
+{
+ "bad":false,
+ "conda-forge.yml":{},
+ "feedstock_name":"charls",
+ "hash_type":"sha256",
+ "meta_yaml":{
+  "about":{
+   "home":"https://github.com/team-charls/charls",
+   "license":"BSD-3-Clause",
+   "license_family":"BSD",
+   "license_file":"License.txt",
+   "summary":"CharLS is a C++ implementation of the JPEG-LS standard for lossless and near-lossless image compression and decompression. JPEG-LS is a low-complexity image compression standard that matches JPEG 2000 compression ratios."
+  },
+  "build":{
+   "number":"0",
+   "skip":true
+  },
+  "extra":{
+   "recipe-maintainers":[
+    "hmaarrfk",
+    "hmaarrfk",
+    "hmaarrfk"
+   ]
+  },
+  "package":{
+   "name":"charls",
+   "version":"2.0.0"
+  },
+  "requirements":{
+   "build":[
+    "c_compiler_stub",
+    "cxx_compiler_stub",
+    "cmake",
+    "ninja",
+    "c_compiler_stub",
+    "cxx_compiler_stub",
+    "cmake",
+    "make",
+    "c_compiler_stub",
+    "cxx_compiler_stub",
+    "cmake",
+    "make"
+   ]
+  },
+  "source":{
+   "patches":[
+    "remove_dll_import_definitions.patch",
+    "remove_dll_import_definitions.patch",
+    "remove_dll_import_definitions.patch"
+   ],
+   "sha256":"528c6a3cc168a44e73f2890d8f4a35104a54d752eba3d6a643f050b72dd67cfa",
+   "url":"https://github.com/team-charls/charls/archive/2.0.0.tar.gz"
+  },
+  "test":{
+   "commands":[
+    "if not exist %LIBRARY_LIB%\\\\CharLS.lib exit 1",
+    "if not exist %LIBRARY_BIN%\\\\CharLS.dll exit 1",
+    "if not exist %LIBRARY_INC%\\\\CharLS\\\\charls.h exit 1",
+    "if not exist %LIBRARY_INC%\\\\CharLS\\\\publictypes.h exit 1",
+    "test -f $PREFIX/lib/libCharLS${SHLIB_EXT}",
+    "test -f $PREFIX/include/CharLS/charls.h",
+    "test -f $PREFIX/include/CharLS/publictypes.h",
+    "test -f $PREFIX/lib/libCharLS${SHLIB_EXT}",
+    "test -f $PREFIX/include/CharLS/charls.h",
+    "test -f $PREFIX/include/CharLS/publictypes.h"
+   ]
+  }
+ },
+ "name":"charls",
+ "new_version":"2.0.0",
+ "raw_meta_yaml":"{% set version = \"2.0.0\" %}\n\npackage:\n  name: charls\n  version: {{ version }}\n\nsource:\n  url: https://github.com/team-charls/charls/archive/{{ version }}.tar.gz\n  sha256: 528c6a3cc168a44e73f2890d8f4a35104a54d752eba3d6a643f050b72dd67cfa\n  patches:\n    - remove_dll_import_definitions.patch\n\nbuild:\n  skip: True  # [win and vc<14]\n  number: 0\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n    - cmake\n    - make   # [not win]\n    - ninja  # [win]\n\ntest:\n  commands:\n    - test -f $PREFIX/lib/libCharLS${SHLIB_EXT}     # [unix]\n    - test -f $PREFIX/include/CharLS/charls.h       # [unix]\n    - test -f $PREFIX/include/CharLS/publictypes.h  # [unix]\n    - if not exist %LIBRARY_LIB%\\\\CharLS.lib exit 1             # [win]\n    - if not exist %LIBRARY_BIN%\\\\CharLS.dll exit 1             # [win]\n    - if not exist %LIBRARY_INC%\\\\CharLS\\\\charls.h exit 1       # [win]\n    - if not exist %LIBRARY_INC%\\\\CharLS\\\\publictypes.h exit 1  # [win]\n\nabout:\n  home: https://github.com/team-charls/charls\n  license: BSD-3-Clause\n  license_family: BSD\n  # License file name will change to LICENSE.md in 2.1.0\n  # license_file: LICENSE.md\n  license_file: License.txt\n  summary: 'CharLS is a C++ implementation of the JPEG-LS standard for lossless and near-lossless image compression and decompression. JPEG-LS is a low-complexity image compression standard that matches JPEG 2000 compression ratios.'\n\nextra:\n  recipe-maintainers:\n    - hmaarrfk\n",
+ "req":{
+  "__set__":true,
+  "elements":[
+   "c_compiler_stub",
+   "cmake",
+   "cxx_compiler_stub",
+   "make",
+   "ninja"
+  ]
+ },
+ "url":"https://github.com/team-charls/charls/archive/2.0.0.tar.gz",
+ "version":"2.0.0"
+}
