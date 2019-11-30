@@ -128,10 +128,10 @@
  "hash_type":"sha256",
  "meta_yaml":{
   "about":{
-   "description":"libsemigroups is a C++ library for semigroups and monoids; it is partly based on\n[Algorithms for computing finite semigroups](https://www.irif.fr/~jep/PDF/Rio.pdf),\n[Expository Slides](https://www.irif.fr/~jep/PDF/Exposes/StAndrews.pdf), and\n[Semigroupe 2.01](https://www.irif.fr/~jep/Logiciels/Semigroupe2.0/semigroupe2.html) by Jean-Eric Pin.\n",
-   "dev_url":"https://github.com/james-d-mitchell/libsemigroups",
-   "doc_url":"https://james-d-mitchell.github.io/libsemigroups/",
-   "home":"https://james-d-mitchell.github.io/libsemigroups/",
+   "description":"libsemigroups is a C++ library for semigroups and monoids.\n",
+   "dev_url":"https://github.com/libsemigroups/libsemigroups",
+   "doc_url":"https://libsemigroups.github.io/libsemigroups/",
+   "home":"https://libsemigroups.github.io/libsemigroups/",
    "license":"GPL-3.0",
    "license_file":"LICENSE",
    "summary":"C++ library for semigroups and monoids"
@@ -152,7 +152,7 @@
   },
   "package":{
    "name":"libsemigroups",
-   "version":"0.6.7"
+   "version":"1.0.2"
   },
   "requirements":{
    "build":[
@@ -163,21 +163,22 @@
     "c_compiler_stub",
     "cxx_compiler_stub"
    ],
-   "host":null
+   "host":[],
+   "run":[]
   },
   "source":{
-   "sha256":"635ac5ef9251b22092028d6a28ce0493fff3ec7c0dc39a8600d90c8371db3a6c",
-   "url":"https://github.com/james-d-mitchell/libsemigroups/releases/download/v0.6.7/libsemigroups-0.6.7.tar.gz"
+   "sha256":"9c1887bd158cfff3c8a8f511840969d23285980702b6548fb7332e35ce30dda0",
+   "url":"https://github.com/libsemigroups/libsemigroups/releases/download/v1.0.2/libsemigroups-1.0.2.tar.gz"
   },
   "test":{
    "commands":[
-    "if exist %LIBRARY_PREFIX%\\include\\libsemigroups\\semigroups.h (exit 0) else (exit 1)",
+    "if exist %LIBRARY_PREFIX%\\include\\libsemigroups\\libsemigroups.hpp (exit 0) else (exit 1)",
     "test -d ${PREFIX}/include/libsemigroups",
-    "test -f ${PREFIX}/include/libsemigroups/semigroups.h",
+    "test -f ${PREFIX}/include/libsemigroups/libsemigroups.hpp",
     "test -f $PREFIX/lib/libsemigroups.dylib",
     "test -f $PREFIX/lib/libsemigroups.a",
     "test -d ${PREFIX}/include/libsemigroups",
-    "test -f ${PREFIX}/include/libsemigroups/semigroups.h",
+    "test -f ${PREFIX}/include/libsemigroups/libsemigroups.hpp",
     "test -f $PREFIX/lib/libsemigroups.so",
     "test -f $PREFIX/lib/libsemigroups.a"
    ]
@@ -186,7 +187,7 @@
  "name":"libsemigroups",
  "new_version":"0.6.7",
  "pinning_version":"2019.10.28",
- "raw_meta_yaml":"{% set name = \"libsemigroups\" %}\n{% set version = \"0.6.7\" %}\n{% set sha256 = \"635ac5ef9251b22092028d6a28ce0493fff3ec7c0dc39a8600d90c8371db3a6c\" %}\n{% set repo = \"https://github.com/james-d-mitchell/libsemigroups\" %}\n{% set home = \"https://james-d-mitchell.github.io/libsemigroups/\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  url: {{ repo }}/releases/download/v{{ version }}/{{ name }}-{{ version }}.tar.gz\n  sha256: {{ sha256 }}\n  #git_rev: v{{ version }}\n  #git_url: {{ repo }}.git\n  #git_tag: autotools\n\nbuild:\n  number: 0\n  skip: true  # [win]\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n  host:\n\ntest:\n  commands:\n    - test -d ${PREFIX}/include/libsemigroups  # [unix]\n    - test -f ${PREFIX}/include/libsemigroups/semigroups.h  # [unix]\n    - test -f $PREFIX/lib/libsemigroups.dylib  # [osx]\n    - test -f $PREFIX/lib/libsemigroups.so     # [linux]\n    - test -f $PREFIX/lib/libsemigroups.a  # [unix]\n\n    - if exist %LIBRARY_PREFIX%\\include\\libsemigroups\\semigroups.h (exit 0) else (exit 1)  # [win]\n\nabout:\n  home: {{ home }}\n  license: GPL-3.0\n  license_file: LICENSE\n  summary: 'C++ library for semigroups and monoids'\n\n  description: |\n    libsemigroups is a C++ library for semigroups and monoids; it is partly based on\n    [Algorithms for computing finite semigroups](https://www.irif.fr/~jep/PDF/Rio.pdf),\n    [Expository Slides](https://www.irif.fr/~jep/PDF/Exposes/StAndrews.pdf), and\n    [Semigroupe 2.01](https://www.irif.fr/~jep/Logiciels/Semigroupe2.0/semigroupe2.html) by Jean-Eric Pin.\n  doc_url: {{ home }}\n  dev_url: {{ repo }}\n\nextra:\n  recipe-maintainers:\n    - james-d-mitchell\n    - nthiery\n",
+ "raw_meta_yaml":"{% set name = \"libsemigroups\" %}\n{% set version = \"1.0.2\" %}\n{% set sha256 = \"9c1887bd158cfff3c8a8f511840969d23285980702b6548fb7332e35ce30dda0\" %}\n{% set repo = \"https://github.com/libsemigroups/libsemigroups\" %}\n{% set home = \"https://libsemigroups.github.io/libsemigroups/\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  url: {{ repo }}/releases/download/v{{ version }}/{{ name }}-{{ version }}.tar.gz\n  sha256: {{ sha256 }}\n\nbuild:\n  number: 0\n  skip: true  # [win]\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n  host: []\n  run: []\n\ntest:\n  commands:\n    - test -d ${PREFIX}/include/libsemigroups                    # [unix]\n    - test -f ${PREFIX}/include/libsemigroups/libsemigroups.hpp  # [unix]\n    - test -f $PREFIX/lib/libsemigroups.dylib                    # [osx]\n    - test -f $PREFIX/lib/libsemigroups.so                       # [linux]\n    - test -f $PREFIX/lib/libsemigroups.a                        # [unix]\n\n    - if exist %LIBRARY_PREFIX%\\include\\libsemigroups\\libsemigroups.hpp (exit 0) else (exit 1)  # [win]\n\nabout:\n  home: {{ home }}\n  license: GPL-3.0\n  license_file: LICENSE\n  summary: 'C++ library for semigroups and monoids'\n\n  description: |\n    libsemigroups is a C++ library for semigroups and monoids.\n  doc_url: {{ home }}\n  dev_url: {{ repo }}\n\nextra:\n  recipe-maintainers:\n    - james-d-mitchell\n    - nthiery\n",
  "req":{
   "__set__":true,
   "elements":[
@@ -196,5 +197,5 @@
  },
  "smithy_version":"3.6.0",
  "url":"https://github.com/james-d-mitchell/libsemigroups/releases/download/v0.6.7/libsemigroups-0.6.7.tar.gz",
- "version":"0.6.7"
+ "version":"1.0.2"
 }
