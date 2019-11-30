@@ -65,6 +65,23 @@
     "migrator_version",
     "name"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/347201256.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"Version",
+    "migrator_version":0,
+    "version":"1.1_221.2"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "version"
+   ]
   }
  ],
  "bad":false,
@@ -173,8 +190,8 @@
   }
  },
  "name":"r-sdmtools",
- "new_version":"1.1_221.1",
- "pinning_version":"2019.07.19",
+ "new_version":"1.1_221.2",
+ "pinning_version":"2019.11.26",
  "raw_meta_yaml":"{% set version = \"1.1-221.1\" %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-sdmtools\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  fn: SDMTools_{{ version }}.tar.gz\n  url:\n    - https://cran.r-project.org/src/contrib/SDMTools_{{ version }}.tar.gz\n    - https://cran.r-project.org/src/contrib/Archive/SDMTools/SDMTools_{{ version }}.tar.gz\n  sha256: 3825856263bdb648ca018b27dc6ab8ceaef24691215c197f8d5cd17718b54fbb\n  patches:\n    - b.patch\n\nbuild:\n  merge_build_host: True  # [win]\n  number: 1\n  skip: true  # [win32]\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - posix                # [win]\n    - {{ compiler('c') }}        # [unix]\n    - {{ compiler('m2w64_c') }}  # [win]\n  host:\n    - r-base\n    - r-r.utils\n\n  run:\n    - r-base\n    - r-r.utils\n\ntest:\n  commands:\n    - $R -e \"library('SDMTools')\"  # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('SDMTools')\\\"\"  # [win]\n\nabout:\n  home: http://www.rforge.net/SDMTools/\n  license: GPL-3\n  summary: This packages provides a set of tools for post processing the outcomes of species\n    distribution modeling exercises. It includes novel methods for comparing models\n    and tracking changes in distributions through time. It further includes methods\n    for visualizing outcomes, selecting thresholds, calculating measures of accuracy\n    and landscape fragmentation statistics, etc.. This package was made possible in\n    part by financial support from the Australian Research Council & ARC Research Network\n    for Earth System Science.\n  license_family: GPL\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n    - dpryan79\n    - bgruening\n    - daler\n    - johanneskoester\n    - rvalieris\n",
  "req":{
   "__set__":true,
@@ -186,7 +203,7 @@
    "r-r.utils"
   ]
  },
- "smithy_version":"3.4.1",
+ "smithy_version":"3.6.3",
  "url":[
   "https://cran.r-project.org/src/contrib/SDMTools_1.1-221.1.tar.gz",
   "https://cran.r-project.org/src/contrib/Archive/SDMTools/SDMTools_1.1-221.1.tar.gz",
