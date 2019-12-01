@@ -114,11 +114,16 @@
    "home":"http://statnet.org/",
    "license":"GPL (>= 2)",
    "license_family":"GPL3",
+   "license_file":[
+    "/lib/R/share/licenses/GPL-3",
+    "/lib/R/share/licenses/GPL-3",
+    "/lib/R/share/licenses/GPL-3"
+   ],
    "summary":"Tools to create and modify network objects.  The network class can represent a range of relational data types, and supports arbitrary vertex/edge/graph attributes."
   },
   "build":{
    "merge_build_host":true,
-   "number":"1",
+   "number":"0",
    "rpaths":[
     "lib/R/lib/",
     "lib/",
@@ -131,37 +136,22 @@
   "extra":{
    "recipe-maintainers":[
     "conda-forge/r",
-    "dpryan79",
     "MathiasHaudgaard",
     "FrodePedersen",
     "ArneKr",
-    "Johanneskoester",
-    "Bgruening",
-    "Daler",
-    "Jdblischak",
     "conda-forge/r",
-    "dpryan79",
     "MathiasHaudgaard",
     "FrodePedersen",
     "ArneKr",
-    "Johanneskoester",
-    "Bgruening",
-    "Daler",
-    "Jdblischak",
     "conda-forge/r",
-    "dpryan79",
     "MathiasHaudgaard",
     "FrodePedersen",
-    "ArneKr",
-    "Johanneskoester",
-    "Bgruening",
-    "Daler",
-    "Jdblischak"
+    "ArneKr"
    ]
   },
   "package":{
    "name":"r-network",
-   "version":"1.15"
+   "version":"1.16.0"
   },
   "requirements":{
    "build":[
@@ -201,15 +191,15 @@
    ]
   },
   "source":{
-   "fn":"network_1.15.tar.gz",
-   "sha256":"5cbe5c0369e5f8363e33a86f14fd33ce8727166106381627ecd13b7452e14cb3",
+   "fn":"network_1.16.0.tar.gz",
+   "sha256":"a24f51457439c7186ffa1fe53719742c501929ac1a354e458754a83f280fce36",
    "url":[
-    "https://cran.r-project.org/src/contrib/network_1.15.tar.gz",
-    "https://cran.r-project.org/src/contrib/Archive/network/network_1.15.tar.gz",
-    "https://cran.r-project.org/src/contrib/network_1.15.tar.gz",
-    "https://cran.r-project.org/src/contrib/Archive/network/network_1.15.tar.gz",
-    "https://cran.r-project.org/src/contrib/network_1.15.tar.gz",
-    "https://cran.r-project.org/src/contrib/Archive/network/network_1.15.tar.gz"
+    "https://cran.r-project.org/src/contrib/network_1.16.0.tar.gz",
+    "https://cran.r-project.org/src/contrib/Archive/network/network_1.16.0.tar.gz",
+    "https://cran.r-project.org/src/contrib/network_1.16.0.tar.gz",
+    "https://cran.r-project.org/src/contrib/Archive/network/network_1.16.0.tar.gz",
+    "https://cran.r-project.org/src/contrib/network_1.16.0.tar.gz",
+    "https://cran.r-project.org/src/contrib/Archive/network/network_1.16.0.tar.gz"
    ]
   },
   "test":{
@@ -223,7 +213,7 @@
  "name":"r-network",
  "new_version":"1.16.0",
  "pinning_version":"2019.11.26",
- "raw_meta_yaml":"{% set version = \"1.15\" %}\n\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-network\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  fn: network_{{ version }}.tar.gz\n  url:\n    - {{ cran_mirror }}/src/contrib/network_{{ version }}.tar.gz\n    - {{ cran_mirror }}/src/contrib/Archive/network/network_{{ version }}.tar.gz\n  sha256: 5cbe5c0369e5f8363e33a86f14fd33ce8727166106381627ecd13b7452e14cb3\n\nbuild:\n  merge_build_host: True  # [win]\n  number: 1\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\n# Suggests: sna, statnet.common, testthat\nrequirements:\n  build:\n    - {{ compiler('c') }}        # [not win]\n    - {{ compiler('m2w64_c') }}        # [win]\n    - {{posix}}filesystem        # [win]\n    - {{posix}}make\n    - {{posix}}sed               # [win]\n    - {{posix}}coreutils         # [win]\n    - {{posix}}zip               # [win]\n\n  host:\n    - r-base\n    - r-tibble\n    - r-magrittr\n  run:\n    - r-base\n    - r-tibble\n    - r-magrittr\n    - {{native}}gcc-libs         # [win]\n\ntest:\n  commands:\n    - $R -e \"library('network')\"           # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('network')\\\"\"  # [win]\n\nabout:\n  home: http://statnet.org/\n  license: GPL (>= 2)\n  summary: Tools to create and modify network objects.  The network class can represent a range\n    of relational data types, and supports arbitrary vertex/edge/graph attributes.\n  license_family: GPL3\n\nextra:\n   recipe-maintainers:\n    - conda-forge/r\n    - dpryan79\n    - MathiasHaudgaard\n    - FrodePedersen\n    - ArneKr\n    - Johanneskoester\n    - Bgruening\n    - Daler\n    - Jdblischak\n",
+ "raw_meta_yaml":"{% set version = \"1.16.0\" %}\n\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-network\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  fn: network_{{ version }}.tar.gz\n  url:\n    - {{ cran_mirror }}/src/contrib/network_{{ version }}.tar.gz\n    - {{ cran_mirror }}/src/contrib/Archive/network/network_{{ version }}.tar.gz\n  sha256: a24f51457439c7186ffa1fe53719742c501929ac1a354e458754a83f280fce36\n\nbuild:\n  merge_build_host: True  # [win]\n  number: 0\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\n# Suggests: sna, statnet.common, testthat\nrequirements:\n  build:\n    - {{ compiler('c') }}        # [not win]\n    - {{ compiler('m2w64_c') }}        # [win]\n    - {{posix}}filesystem        # [win]\n    - {{posix}}make\n    - {{posix}}sed               # [win]\n    - {{posix}}coreutils         # [win]\n    - {{posix}}zip               # [win]\n\n  host:\n    - r-base\n    - r-tibble\n    - r-magrittr\n  run:\n    - r-base\n    - r-tibble\n    - r-magrittr\n    - {{native}}gcc-libs         # [win]\n\ntest:\n  commands:\n    - $R -e \"library('network')\"           # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('network')\\\"\"  # [win]\n\nabout:\n  home: http://statnet.org/\n  license: GPL (>= 2)\n  summary: Tools to create and modify network objects.  The network class can represent a range\n    of relational data types, and supports arbitrary vertex/edge/graph attributes.\n  license_family: GPL3\n  license_file:\n    - '{{ environ[\"PREFIX\"] }}/lib/R/share/licenses/GPL-3'\n\nextra:\n   recipe-maintainers:\n    - conda-forge/r\n    - MathiasHaudgaard\n    - FrodePedersen\n    - ArneKr\n",
  "req":{
   "__set__":true,
   "elements":[
@@ -249,5 +239,5 @@
   "https://cran.r-project.org/src/contrib/network_1.15.tar.gz",
   "https://cran.r-project.org/src/contrib/Archive/network/network_1.15.tar.gz"
  ],
- "version":"1.15"
+ "version":"1.16.0"
 }
