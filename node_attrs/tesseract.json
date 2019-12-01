@@ -84,6 +84,25 @@
     "migrator_version",
     "name"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/347272483.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"MigrationYaml",
+    "migrator_object_version":1,
+    "migrator_version":0,
+    "name":"libtiff-4.1.0"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_object_version",
+    "migrator_version",
+    "name"
+   ]
   }
  ],
  "bad":false,
@@ -266,7 +285,7 @@
  },
  "name":"tesseract",
  "new_version":"4.1.0",
- "pinning_version":"2019.11.01",
+ "pinning_version":"2019.11.26",
  "raw_meta_yaml":"{% set name = \"tesseract\" %}\n{% set version = \"4.1.0\" %}\n{% set sha256 = \"5c5ed5f1a76888dc57a83704f24ae02f8319849f5c4cf19d254296978a1a1961\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  - url: https://github.com/tesseract-ocr/{{ name }}/archive/{{ version }}.tar.gz\n    sha256: {{ sha256 }}\n    folder: tesseract\n  - url: https://github.com/tesseract-ocr/tessdata_fast/archive/4.0.0.tar.gz\n    sha256: f1b71e97f27bafffb6a730ee66fd9dc021afc38f318fdc80a464a84a519227fe\n    folder: tessdata_fast\n\nbuild:\n  number: 1\n  skip: True  # [win and vc<14]\n  run_exports:\n    - {{ pin_subpackage(name, max_pin='x.x.x') }}\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n    - autoconf  # [not win]\n    - automake  # [not win]\n    - libtool  # [not win]\n    - pkg-config  # [not win]\n    - cmake  # [win]\n\n  host:\n    - giflib  # [not win]\n    - libarchive\n    - jpeg\n    - leptonica\n    - libpng\n    - libtiff\n    - libwebp\n    - openjpeg\n    - xz  # [not win]\n    - zlib\n\n  run:\n    - libpng\n    - jpeg\n    - libtiff\n    - zlib\n    - leptonica\n    - libwebp\n    - libarchive\n    - xz  # [not win]\n    - openjpeg\n    - giflib  # [not win]\n\n\ntest:\n  files:\n    - eurotext.tif\n  commands:\n    - tesseract --help\n    - tesseract --list-langs\n    - tesseract eurotext.tif outputbase\n\nabout:\n  home: https://github.com/tesseract-ocr/tesseract\n  license: Apache-2.0\n  license_family: Apache\n  license_file: tesseract/LICENSE\n  summary: 'An optical character recognition (OCR) engine'\n\n  description: |\n    Tesseract is an OCR engine with support for unicode and the ability\n    to recognize more than 100 languages out of the box. It can be\n    trained to recognize other languages.\n  doc_url: https://github.com/tesseract-ocr/tesseract\n  dev_url: https://github.com/tesseract-ocr/tesseract\n\nextra:\n  recipe-maintainers:\n    - CurtLH\n    - carlodri\n    - adbeda\n",
  "req":{
   "__set__":true,
@@ -290,7 +309,7 @@
    "zlib"
   ]
  },
- "smithy_version":"3.6.1",
+ "smithy_version":"3.6.3",
  "url":"https://github.com/tesseract-ocr/tesseract/archive/4.1.0.tar.gz",
  "version":"4.1.0"
 }
