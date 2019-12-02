@@ -35,7 +35,22 @@
    ]
   }
  ],
- "bad":false,
+ "bad":{
+  "exception":"local variable 'hash' referenced before assignment",
+  "traceback":[
+   "Traceback (most recent call last):",
+   "  File \"/root/repo/cf-scripts/conda_forge_tick/auto_tick.xsh\", line 693, in main",
+   "    hash_type=attrs.get('hash_type', 'sha256'))",
+   "  File \"/root/repo/cf-scripts/conda_forge_tick/auto_tick.xsh\", line 98, in run",
+   "    migrate_return = migrator.migrate(recipe_dir, attrs, **kwargs)",
+   "  File \"/root/repo/cf-scripts/conda_forge_tick/migrators.xsh\", line 467, in migrate",
+   "    new_patterns = self.get_hash_patterns('meta.yaml', urls, hash_type)",
+   "  File \"/root/repo/cf-scripts/conda_forge_tick/migrators.xsh\", line 394, in get_hash_patterns",
+   "    n = '{}: {}'.format(hash_type, hash)",
+   "UnboundLocalError: local variable 'hash' referenced before assignment",
+   ""
+  ]
+ },
  "conda-forge.yml":{
   "compiler_stack":"comp7",
   "max_py_ver":"37",
@@ -137,7 +152,7 @@
   }
  },
  "name":"r-rcppnumerical",
- "new_version":"0.3_3",
+ "new_version":"0.4_0",
  "pinning_version":"2019.07.19",
  "raw_meta_yaml":"{% set version = '0.3-3' %}\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-rcppnumerical\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  url:\n    - {{ cran_mirror }}/src/contrib/RcppNumerical_{{ version }}.tar.gz\n    - {{ cran_mirror }}/src/contrib/Archive/RcppNumerical/RcppNumerical_{{ version }}.tar.gz\n  sha256: 58ef73db1df2c26b1663f9652bf2b43c8e057877b8d927a84e307bd3b9931c97\n\nbuild:\n  merge_build_host: True  # [win]\n  number: 1\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - {{ compiler('c') }}              # [not win]\n    - {{ compiler('m2w64_c') }}        # [win]\n    - {{ compiler('cxx') }}            # [not win]\n    - {{ compiler('m2w64_cxx') }}      # [win]\n    - {{posix}}filesystem        # [win]\n    - {{posix}}make\n    - {{posix}}sed               # [win]\n    - {{posix}}coreutils         # [win]\n    - {{posix}}zip               # [win]\n  host:\n    - r-base\n    - r-rcpp\n    - r-rcppeigen\n  run:\n    - r-base\n    - {{native}}gcc-libs         # [win]\n    - r-rcpp\n    - r-rcppeigen\n\ntest:\n  commands:\n    - $R -e \"library('RcppNumerical')\"           # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('RcppNumerical')\\\"\"  # [win]\n\nabout:\n  home: https://github.com/yixuan/RcppNumerical\n  license: GPL (>= 2)\n  summary: A collection of open source libraries for numerical computing (numerical integration,\n    optimization, etc.) and their integration with 'Rcpp'.\n  license_family: GPL3\n  license_file: inst/COPYRIGHTS\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n\n# Package: RcppNumerical\n# Type: Package\n# Title: 'Rcpp' Integration for Numerical Computing Libraries\n# Version: 0.3-3\n# Date: 2019-06-10\n# Authors@R: c( person(\"Yixuan\", \"Qiu\", , \"yixuan.qiu@cos.name\", c(\"aut\", \"cre\")), person(\"Sreekumar\", \"Balan\", role = \"aut\", comment = \"Numerical integration library\"), person(\"Matt\", \"Beall\", role = \"aut\", comment = \"Numerical integration library\"), person(\"Mark\", \"Sauder\", role = \"aut\", comment = \"Numerical integration library\"), person(\"Naoaki\", \"Okazaki\", role = \"aut\", comment = \"The libLBFGS library\"), person(\"Thomas\", \"Hahn\", role = \"aut\", comment = \"The Cuba library\") )\n# Maintainer: Yixuan Qiu <yixuan.qiu@cos.name>\n# Description: A collection of open source libraries for numerical computing (numerical integration, optimization, etc.) and their integration with 'Rcpp'.\n# License: GPL (>= 2)\n# Copyright: See file COPYRIGHTS\n# URL: https://github.com/yixuan/RcppNumerical\n# BugReports: https://github.com/yixuan/RcppNumerical/issues\n# LazyData: TRUE\n# Imports: Rcpp\n# LinkingTo: Rcpp, RcppEigen\n# Suggests: knitr, rmarkdown, prettydoc, mvtnorm, RcppEigen\n# VignetteBuilder: knitr, rmarkdown\n# RoxygenNote: 6.1.1\n# NeedsCompilation: yes\n# Packaged: 2019-06-11 01:40:53 UTC; qyx\n# Author: Yixuan Qiu [aut, cre], Sreekumar Balan [aut] (Numerical integration library), Matt Beall [aut] (Numerical integration library), Mark Sauder [aut] (Numerical integration library), Naoaki Okazaki [aut] (The libLBFGS library), Thomas Hahn [aut] (The Cuba library)\n# Repository: CRAN\n# Date/Publication: 2019-06-11 04:30:17 UTC\n",
  "req":{
