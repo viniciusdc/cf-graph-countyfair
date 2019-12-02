@@ -14,6 +14,42 @@
     "migrator_name",
     "migrator_version"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/347715487.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"ArchRebuild",
+    "migrator_version":1,
+    "name":"aarch64 and ppc64le addition"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "name"
+   ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/347716125.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"MigrationYaml",
+    "migrator_object_version":1,
+    "migrator_version":0,
+    "name":"python38"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_object_version",
+    "migrator_version",
+    "name"
+   ]
   }
  ],
  "bad":false,
@@ -31,9 +67,8 @@
    "summary":"Object-oriented filesystem paths"
   },
   "build":{
-   "noarch":"python",
    "number":"1",
-   "script":"python -m pip install --no-deps --ignore-installed ."
+   "script":"--version"
   },
   "extra":{
    "recipe-maintainers":[
@@ -76,8 +111,8 @@
  },
  "name":"pathlib",
  "new_version":"1.0.1",
- "pinning_version":"2018.07.01",
- "raw_meta_yaml":"{% set name = \"pathlib\" %}\n{% set version = \"1.0.1\" %}\n{% set sha256 = \"6940718dfc3eff4258203ad5021090933e5c04707d5ca8cc9e73c94a7894ea9f\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  fn: {{ name }}-{{ version }}.tar.gz\n  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz\n  sha256: {{ sha256 }}\n\nbuild:\n  noarch: python\n  number: 1\n  script: python -m pip install --no-deps --ignore-installed .\n\nrequirements:\n  host:\n    - pip\n    - python\n\n  run:\n    - python\n\ntest:\n  imports:\n    - pathlib\n\nabout:\n  home: https://pathlib.readthedocs.org/\n  license: MIT\n  license_family: MIT\n  license_file: LICENSE.txt\n  summary: 'Object-oriented filesystem paths'\n  doc_url: https://pathlib.readthedocs.org/\n  dev_url: https://bitbucket.org/pitrou/pathlib\n\nextra:\n  recipe-maintainers:\n    - proinsias\n",
+ "pinning_version":"2019.11.26",
+ "raw_meta_yaml":"{% set name = \"pathlib\" %}\n{% set version = \"1.0.1\" %}\n{% set sha256 = \"6940718dfc3eff4258203ad5021090933e5c04707d5ca8cc9e73c94a7894ea9f\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  fn: {{ name }}-{{ version }}.tar.gz\n  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz\n  sha256: {{ sha256 }}\n\nbuild:\n  number: 1\n  script: {{ PYTHON }} -m pip install . -vv  # [py==27]\n  script: {{ PYTHON }} --version             # [py>=34]\n\nrequirements:\n  host:\n    - pip\n    - python\n\n  run:\n    - python\n\ntest:\n  imports:\n    - pathlib\n\nabout:\n  home: https://pathlib.readthedocs.org/\n  license: MIT\n  license_family: MIT\n  license_file: LICENSE.txt\n  summary: 'Object-oriented filesystem paths'\n  doc_url: https://pathlib.readthedocs.org/\n  dev_url: https://bitbucket.org/pitrou/pathlib\n\nextra:\n  recipe-maintainers:\n    - proinsias\n",
  "req":{
   "__set__":true,
   "elements":[
@@ -85,7 +120,7 @@
    "python"
   ]
  },
- "smithy_version":"3.1.6",
+ "smithy_version":"3.6.3",
  "url":"https://pypi.io/packages/source/p/pathlib/pathlib-1.0.1.tar.gz",
  "version":"1.0.1"
 }
