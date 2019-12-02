@@ -66,7 +66,7 @@
    ]
   }
  ],
- "bad":false,
+ "bad":"make_graph: 503",
  "conda-forge.yml":{
   "compiler_stack":"comp7",
   "max_py_ver":"37",
@@ -178,7 +178,7 @@
   }
  },
  "name":"r-pbdzmq",
- "new_version":"0.3_3",
+ "new_version":false,
  "pinning_version":"2019.07.15",
  "raw_meta_yaml":"{% set version = '0.3-3' %}\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-pbdzmq\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  url:\n    - {{ cran_mirror }}/src/contrib/pbdZMQ_{{ version }}.tar.gz\n    - {{ cran_mirror }}/src/contrib/Archive/pbdZMQ/pbdZMQ_{{ version }}.tar.gz\n  sha256: ae26c13400e2acfb6463ff9b67156847a22ec79f3b53baf65119efaba1636eca\n\nbuild:\n  merge_build_host: True  # [win]\n  number: 1002\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - {{ compiler('c') }}        # [not win]\n    - {{ compiler('cxx') }}      # [not win]\n    - {{ compiler('m2w64_c') }}        # [win]\n    - {{ compiler('m2w64_cxx') }}        # [win]\n    - {{posix}}filesystem        # [win]\n    - {{posix}}sed               # [win]\n    - {{posix}}grep              # [win]\n    - {{posix}}autoconf\n    - {{posix}}automake          # [not win]\n    - {{posix}}automake-wrapper  # [win]\n    - {{posix}}pkg-config\n    - {{posix}}make\n    - {{posix}}coreutils         # [win]\n    - {{posix}}zip               # [win]\n  host:\n    - r-base\n    - zeromq\n  run:\n    - r-base\n    - {{native}}gcc-libs         # [win]\n    - zeromq\n\ntest:\n  commands:\n    - $R -e \"library('pbdZMQ')\"           # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('pbdZMQ')\\\"\"  # [win]\n\nabout:\n  home: http://r-pbd.org/\n  license: GPL-3\n  summary: \"'ZeroMQ' is a well-known library for high-performance asynchronous messaging in\n    scalable, distributed applications.  This package provides high level R wrapper\n    functions to easily utilize 'ZeroMQ'. We mainly focus on interactive client/server\n    programming frameworks. For convenience, a minimal 'ZeroMQ' library (4.2.2) is\n    shipped with 'pbdZMQ', which can be used if no system installation of 'ZeroMQ'\n    is available.  A few wrapper functions compatible with 'rzmq' are also provided.\"\n  license_family: GPL3\n  license_file: '{{ environ[\"PREFIX\"] }}/lib/R/share/licenses/GPL-3'\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n    - ocefpaf\n    - mingwandroid\n",
  "req":{
