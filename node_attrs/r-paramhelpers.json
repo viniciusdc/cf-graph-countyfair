@@ -50,6 +50,23 @@
     "migrator_version",
     "name"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/347682600.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"Version",
+    "migrator_version":0,
+    "version":"1.13"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "version"
+   ]
   }
  ],
  "bad":false,
@@ -184,8 +201,8 @@
   }
  },
  "name":"r-paramhelpers",
- "new_version":"1.12",
- "pinning_version":"2019.07.15",
+ "new_version":"1.13",
+ "pinning_version":"2019.11.26",
  "raw_meta_yaml":"{% set version = \"1.12\" %}\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-paramhelpers\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  fn: ParamHelpers_{{ version }}.tar.gz\n  url:\n    - {{ cran_mirror }}/src/contrib/ParamHelpers_{{ version }}.tar.gz\n    - {{ cran_mirror }}/src/contrib/Archive/ParamHelpers/ParamHelpers_{{ version }}.tar.gz\n  sha256: b54db9e6608ba530345c380c757a60cb2b78ab08992a890b1a41914ce7abcc14\n\nbuild:\n  merge_build_host: True  # [win]\n  number: 1\n  skip: true  # [win32]\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - {{ compiler('c') }}        # [not win]\n    - {{ compiler('m2w64_c') }}        # [win]\n    - {{posix}}filesystem        # [win]\n    - {{posix}}make\n    - {{posix}}sed               # [win]\n    - {{posix}}coreutils         # [win]\n    - {{posix}}zip               # [win]\n  host:\n    - r-base\n    - r-bbmisc >=1.10\n    - r-backports\n    - r-checkmate >=1.8.2\n    - r-fastmatch\n  run:\n    - r-base\n    - {{native}}gcc-libs         # [win]\n    - r-bbmisc >=1.10\n    - r-backports\n    - r-checkmate >=1.8.2\n    - r-fastmatch\n\ntest:\n  commands:\n    - $R -e \"library('ParamHelpers')\"           # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('ParamHelpers')\\\"\"  # [win]\n\nabout:\n  home: https://github.com/berndbischl/ParamHelpers\n  license: BSD_2_clause\n  summary: Functions for parameter descriptions and operations in black-box optimization, tuning\n    and machine learning. Parameters can be described (type, constraints, defaults,\n    etc.), combined to parameter sets and can in general be programmed on. A useful\n    OptPath object (archive) to log function evaluations is also provided.\n  license_family: BSD\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n    - nick-youngblut\n    - johanneskoester\n    - bgruening\n    - daler\n    - jdblischak\n    - cbrueffer\n    - dbast\n",
  "req":{
   "__set__":true,
@@ -205,7 +222,7 @@
    "zip"
   ]
  },
- "smithy_version":"3.4.1",
+ "smithy_version":"3.6.3",
  "url":[
   "https://cran.r-project.org/src/contrib/ParamHelpers_1.12.tar.gz",
   "https://cran.r-project.org/src/contrib/Archive/ParamHelpers/ParamHelpers_1.12.tar.gz",
