@@ -167,6 +167,23 @@
     "migrator_version",
     "version"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/347544556.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"Version",
+    "migrator_version":0,
+    "version":"0.99.31"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "version"
+   ]
   }
  ],
  "bad":false,
@@ -301,8 +318,8 @@
   }
  },
  "name":"r-desctools",
- "new_version":"0.99.30",
- "pinning_version":"2019.10.11",
+ "new_version":"0.99.31",
+ "pinning_version":"2019.11.26",
  "raw_meta_yaml":"{% set version = \"0.99.29\" %}\n\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-desctools\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  fn: DescTools_{{ version }}.tar.gz\n  url:\n    - https://cran.r-project.org/src/contrib/DescTools_{{ version }}.tar.gz\n    - https://cran.r-project.org/src/contrib/Archive/DescTools/DescTools_{{ version }}.tar.gz\n  sha256: 511ac75a852d0da5fec04b250646720d5e297997465e7176c5856c856bdc2646\n\nbuild:\n  merge_build_host: True  # [win]\n  number: 0\n  rpaths:\n    - lib/R/lib/\n    - lib/\n      \nrequirements:\n  build:\n    - posix                # [win]\n    - {{ compiler('fortran') }}        # [unix]\n    - {{ compiler('m2w64_fortran') }}  # [win]\n    - {{ compiler('cxx') }}            # [unix]\n    - {{ compiler('m2w64_cxx') }}      # [win]\n    \n  host:\n    - r-base\n    - r-bh\n    - r-mass\n    - r-rcpp >=0.12.10\n    - r-boot\n    - r-expm\n    - r-foreign\n    - r-manipulate\n    - r-mvtnorm\n\n  run:\n    - r-base\n    - r-bh\n    - r-mass\n    - r-rcpp >=0.12.10\n    - r-boot\n    - r-expm\n    - r-foreign\n    - r-manipulate\n    - r-mvtnorm\n\ntest:\n  commands:\n    - $R -e \"library('DescTools')\"  # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('DescTools')\\\"\"  # [win]\n\nabout:\n  home: https://CRAN.R-project.org/package=DescTools\n  license: GPL (>= 2)\n  summary: A collection of miscellaneous basic statistic functions and convenience wrappers for\n    efficiently describing data. The author's intention was to create a toolbox, which\n    facilitates the (notoriously time consuming) first descriptive tasks in data analysis,\n    consisting of calculating descriptive statistics, drawing graphical summaries and\n    reporting the results. The package contains furthermore functions to produce documents\n    using MS Word (or PowerPoint) and functions to import data from Excel. Many of the\n    included functions can be found scattered in other packages and other sources written\n    partly by Titans of R. The reason for collecting them here, was primarily to have\n    them consolidated in ONE instead of dozens of packages (which themselves might depend\n    on other packages which are not needed at all), and to provide a common and consistent\n    interface as far as function and arguments naming, NA handling, recycling rules\n    etc. are concerned. Google style guides were used as naming rules (in absence of\n    convincing alternatives). The 'camel style' was consequently applied to functions\n    borrowed from contributed R packages as well.\n  license_family: GPL3\n  license_file: '{{ environ[\"PREFIX\"] }}/lib/R/share/licenses/GPL-3'\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n",
  "req":{
   "__set__":true,
@@ -323,7 +340,7 @@
    "r-rcpp"
   ]
  },
- "smithy_version":"3.6.0",
+ "smithy_version":"3.6.3",
  "url":[
   "https://cran.r-project.org/src/contrib/DescTools_0.99.28.tar.gz",
   "https://cran.r-project.org/src/contrib/Archive/DescTools/DescTools_0.99.28.tar.gz",
