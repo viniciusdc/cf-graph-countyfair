@@ -379,7 +379,7 @@
   },
   "package":{
    "name":"libprotobuf",
-   "version":"3.11.0"
+   "version":"3.11.1"
   },
   "requirements":{
    "build":[
@@ -418,8 +418,8 @@
   "source":[
    {
     "patches":null,
-    "sha256":"6d356a6279cc76d2d5c4dfa6541641264b59eae0bc96b852381361e3400d1f1c",
-    "url":"https://github.com/google/protobuf/archive/v3.11.0/libprotobuf-v3.11.0.tar.gz"
+    "sha256":"4f8e805825c53bbc3c9f6b6abc009b5b5679e4702bccfca1121c42ff5ec801c7",
+    "url":"https://github.com/google/protobuf/archive/v3.11.1/libprotobuf-v3.11.1.tar.gz"
    },
    {
     "folder":"third_party/benchmark",
@@ -433,8 +433,8 @@
    },
    {
     "patches":null,
-    "sha256":"6d356a6279cc76d2d5c4dfa6541641264b59eae0bc96b852381361e3400d1f1c",
-    "url":"https://github.com/google/protobuf/archive/v3.11.0/libprotobuf-v3.11.0.tar.gz"
+    "sha256":"4f8e805825c53bbc3c9f6b6abc009b5b5679e4702bccfca1121c42ff5ec801c7",
+    "url":"https://github.com/google/protobuf/archive/v3.11.1/libprotobuf-v3.11.1.tar.gz"
    },
    {
     "folder":"third_party/benchmark",
@@ -448,8 +448,8 @@
    },
    {
     "patches":null,
-    "sha256":"6d356a6279cc76d2d5c4dfa6541641264b59eae0bc96b852381361e3400d1f1c",
-    "url":"https://github.com/google/protobuf/archive/v3.11.0/libprotobuf-v3.11.0.tar.gz"
+    "sha256":"4f8e805825c53bbc3c9f6b6abc009b5b5679e4702bccfca1121c42ff5ec801c7",
+    "url":"https://github.com/google/protobuf/archive/v3.11.1/libprotobuf-v3.11.1.tar.gz"
    },
    {
     "folder":"third_party/benchmark",
@@ -480,7 +480,7 @@
  "name":"libprotobuf",
  "new_version":"3.11.1",
  "pinning_version":"2019.11.26",
- "raw_meta_yaml":"{% set version = \"3.11.0\" %}\n\npackage:\n  name: libprotobuf\n  version: {{ version }}\n\nsource:\n  - url: https://github.com/google/protobuf/archive/v{{ version }}/libprotobuf-v{{ version }}.tar.gz\n    sha256: 6d356a6279cc76d2d5c4dfa6541641264b59eae0bc96b852381361e3400d1f1c\n    patches:\n      - 0001-remove-Werror-from-test-flags.patch  # [ppc64le or aarch64]\n  # these are git submodules from the 3.10.1 release\n  # https://github.com/google/protobuf/tree/v3.10.1/third_party\n  - url: https://github.com/google/benchmark/archive/5b7683f49e1e9223cf9927b24f6fd3d6bd82e3f8.tar.gz\n    sha256: 5dc92703f811f94e2aa63bdab07ab749f28a094befa6cdfd5fe177f947590a48\n    folder: third_party/benchmark\n  - url: https://github.com/google/googletest/archive/5ec7f0c4a113e2f18ac2c6cc7df51ad6afc24081.tar.gz\n    sha256: 0e2f36e8e403c125fd0ab02171bdb786d3b6b3875b6ccf3b2eb7969be8faecd0\n    folder: third_party/googletest\n\nbuild:\n  number: 0\n  # Requires C++ 11, VS 2008 is not supported\n  skip: True  # [win and vc<14]\n  run_exports:\n    # breaks backwards compatibility and new SONAME each minor release\n    # https://abi-laboratory.pro/tracker/timeline/protobuf/\n    # One exception was that 3.6.1 was incompatible with 3.6.0\n    - {{ pin_subpackage('libprotobuf', max_pin='x.x') }}\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n    - cmake  # [win]\n    - ninja  # [win]\n    - autoconf  # [not win]\n    - automake  # [not win]\n    - libtool  # [not win]\n    - pkg-config  # [not win]\n    - unzip  # [not win]\n    - make  # [not win]\n  host:\n    - zlib\n  run:\n    - zlib\n\ntest:\n  commands:\n    - protoc --help\n    - test -f ${PREFIX}/lib/libprotobuf.a  # [not win]\n    - test -f ${PREFIX}/lib/libprotobuf${SHLIB_EXT}  # [not win]\n    - if not exist %PREFIX%\\\\Library\\\\lib\\\\libprotoc.lib exit 1  # [win]\n    - if not exist %PREFIX%\\\\Library\\\\lib\\\\libprotobuf.lib exit 1  # [win]\n    - if not exist %PREFIX%\\\\Library\\\\lib\\\\libprotobuf-lite.lib exit 1  # [win]\n\nabout:\n  home: https://developers.google.com/protocol-buffers/\n  license: BSD-3-Clause\n  license_family: BSD\n  license_file: LICENSE\n  summary: \"Protocol Buffers - Google's data interchange format. C++ Libraries\"\n  description: |\n    Protocol buffers are Google's language-neutral,\n    platform-neutral, extensible mechanism for serializing structured data-\n    think XML, but smaller, faster, and simpler.\n  doc_url: https://developers.google.com/protocol-buffers/\n  doc_source_url: https://github.com/google/protobuf/releases\n\nextra:\n  recipe-maintainers:\n    - dopplershift\n    - jakirkham\n    - jjhelmus\n    - ocefpaf\n    - wesm\n    - hajapy\n    - xhochy\n",
+ "raw_meta_yaml":"{% set version = \"3.11.1\" %}\n\npackage:\n  name: libprotobuf\n  version: {{ version }}\n\nsource:\n  - url: https://github.com/google/protobuf/archive/v{{ version }}/libprotobuf-v{{ version }}.tar.gz\n    sha256: 4f8e805825c53bbc3c9f6b6abc009b5b5679e4702bccfca1121c42ff5ec801c7\n    patches:\n      - 0001-remove-Werror-from-test-flags.patch  # [ppc64le or aarch64]\n  # these are git submodules from the 3.10.1 release\n  # https://github.com/google/protobuf/tree/v3.10.1/third_party\n  - url: https://github.com/google/benchmark/archive/5b7683f49e1e9223cf9927b24f6fd3d6bd82e3f8.tar.gz\n    sha256: 5dc92703f811f94e2aa63bdab07ab749f28a094befa6cdfd5fe177f947590a48\n    folder: third_party/benchmark\n  - url: https://github.com/google/googletest/archive/5ec7f0c4a113e2f18ac2c6cc7df51ad6afc24081.tar.gz\n    sha256: 0e2f36e8e403c125fd0ab02171bdb786d3b6b3875b6ccf3b2eb7969be8faecd0\n    folder: third_party/googletest\n\nbuild:\n  number: 0\n  # Requires C++ 11, VS 2008 is not supported\n  skip: True  # [win and vc<14]\n  run_exports:\n    # breaks backwards compatibility and new SONAME each minor release\n    # https://abi-laboratory.pro/tracker/timeline/protobuf/\n    # One exception was that 3.6.1 was incompatible with 3.6.0\n    - {{ pin_subpackage('libprotobuf', max_pin='x.x') }}\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n    - cmake  # [win]\n    - ninja  # [win]\n    - autoconf  # [not win]\n    - automake  # [not win]\n    - libtool  # [not win]\n    - pkg-config  # [not win]\n    - unzip  # [not win]\n    - make  # [not win]\n  host:\n    - zlib\n  run:\n    - zlib\n\ntest:\n  commands:\n    - protoc --help\n    - test -f ${PREFIX}/lib/libprotobuf.a  # [not win]\n    - test -f ${PREFIX}/lib/libprotobuf${SHLIB_EXT}  # [not win]\n    - if not exist %PREFIX%\\\\Library\\\\lib\\\\libprotoc.lib exit 1  # [win]\n    - if not exist %PREFIX%\\\\Library\\\\lib\\\\libprotobuf.lib exit 1  # [win]\n    - if not exist %PREFIX%\\\\Library\\\\lib\\\\libprotobuf-lite.lib exit 1  # [win]\n\nabout:\n  home: https://developers.google.com/protocol-buffers/\n  license: BSD-3-Clause\n  license_family: BSD\n  license_file: LICENSE\n  summary: \"Protocol Buffers - Google's data interchange format. C++ Libraries\"\n  description: |\n    Protocol buffers are Google's language-neutral,\n    platform-neutral, extensible mechanism for serializing structured data-\n    think XML, but smaller, faster, and simpler.\n  doc_url: https://developers.google.com/protocol-buffers/\n  doc_source_url: https://github.com/google/protobuf/releases\n\nextra:\n  recipe-maintainers:\n    - dopplershift\n    - jakirkham\n    - jjhelmus\n    - ocefpaf\n    - wesm\n    - hajapy\n    - xhochy\n",
  "req":{
   "__set__":true,
   "elements":[
@@ -499,5 +499,5 @@
  },
  "smithy_version":"3.6.3",
  "url":"https://github.com/google/protobuf/archive/v3.9.1/libprotobuf-v3.9.1.tar.gz",
- "version":"3.11.0"
+ "version":"3.11.1"
 }
