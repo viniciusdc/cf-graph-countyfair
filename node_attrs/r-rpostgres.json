@@ -73,7 +73,7 @@
   },
   "build":{
    "merge_build_host":true,
-   "number":"1004",
+   "number":"0",
    "rpaths":[
     "lib/R/lib/",
     "lib/",
@@ -86,38 +86,24 @@
   "extra":{
    "recipe-maintainers":[
     "conda-forge/r",
-    "johanneskoester",
-    "bgruening",
-    "daler",
-    "jdblischak",
-    "cbrueffer",
     "halldc",
     "fhoehle",
     "conda-forge/r",
-    "johanneskoester",
-    "bgruening",
-    "daler",
-    "jdblischak",
-    "cbrueffer",
     "halldc",
     "fhoehle",
     "conda-forge/r",
-    "johanneskoester",
-    "bgruening",
-    "daler",
-    "jdblischak",
-    "cbrueffer",
     "halldc",
     "fhoehle"
    ]
   },
   "package":{
    "name":"r-rpostgres",
-   "version":"1.1.1"
+   "version":"1.1.2"
   },
   "requirements":{
    "build":[
-    "m2w64-toolchain",
+    "m2w64_c_compiler_stub",
+    "m2w64_cxx_compiler_stub",
     "filesystem",
     "sed",
     "grep",
@@ -204,15 +190,14 @@
    ]
   },
   "source":{
-   "fn":"RPostgres_1.1.1.tar.gz",
-   "sha256":"d1fc96d426cfb25c8dd0076bf8b672b37059c45078cd58e62f6cb664d6a445e8",
+   "sha256":"7fb328fe515c8ae779c10ed60a1bed4862e8d2200acfaf1c72db2afabab1c82e",
    "url":[
-    "https://cran.r-project.org/src/contrib/RPostgres_1.1.1.tar.gz",
-    "https://cran.r-project.org/src/contrib/Archive/RPostgres/RPostgres_1.1.1.tar.gz",
-    "https://cran.r-project.org/src/contrib/RPostgres_1.1.1.tar.gz",
-    "https://cran.r-project.org/src/contrib/Archive/RPostgres/RPostgres_1.1.1.tar.gz",
-    "https://cran.r-project.org/src/contrib/RPostgres_1.1.1.tar.gz",
-    "https://cran.r-project.org/src/contrib/Archive/RPostgres/RPostgres_1.1.1.tar.gz"
+    "https://cran.r-project.org/src/contrib/RPostgres_1.1.2.tar.gz",
+    "https://cran.r-project.org/src/contrib/Archive/RPostgres/RPostgres_1.1.2.tar.gz",
+    "https://cran.r-project.org/src/contrib/RPostgres_1.1.2.tar.gz",
+    "https://cran.r-project.org/src/contrib/Archive/RPostgres/RPostgres_1.1.2.tar.gz",
+    "https://cran.r-project.org/src/contrib/RPostgres_1.1.2.tar.gz",
+    "https://cran.r-project.org/src/contrib/Archive/RPostgres/RPostgres_1.1.2.tar.gz"
    ]
   },
   "test":{
@@ -234,7 +219,7 @@
  "name":"r-rpostgres",
  "new_version":"1.1.2",
  "pinning_version":"2019.11.26",
- "raw_meta_yaml":"{% set version = '1.1.1' %}\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-rpostgres\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  fn: RPostgres_{{ version }}.tar.gz\n  url:\n    - {{ cran_mirror }}/src/contrib/RPostgres_{{ version }}.tar.gz\n    - {{ cran_mirror }}/src/contrib/Archive/RPostgres/RPostgres_{{ version }}.tar.gz\n  sha256: d1fc96d426cfb25c8dd0076bf8b672b37059c45078cd58e62f6cb664d6a445e8\n\nbuild:\n  merge_build_host: True  # [win]\n  number: 1004\n  skip: true  # [win32]\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - {{ compiler('c') }}        # [not win]\n    - {{ compiler('cxx') }}      # [not win]\n    - m2w64-toolchain            # [win]\n    - {{posix}}filesystem        # [win]\n    - {{posix}}sed               # [win]\n    - {{posix}}grep              # [win]\n    - {{posix}}autoconf\n    - {{posix}}automake          # [not win]\n    - {{posix}}automake-wrapper  # [win]\n    - {{posix}}pkg-config\n    - {{posix}}make\n    - {{posix}}coreutils         # [win]\n    - {{posix}}zip               # [win]\n  host:\n    - r-base\n    - r-bh\n    - r-dbi >=1.0.0\n    - r-rcpp >=0.11.4.2\n    - r-bit64\n    - r-blob >=1.1.1\n    - r-hms\n    - r-plogr >=0.2.0\n    - r-withr\n    - postgresql\n  run:\n    - r-base\n    - {{native}}gcc-libs         # [win]\n    # BH is the header-only part of Boost and thus a compile-time requirement only\n    # - r-bh\n    - r-dbi >=1.0.0\n    - r-rcpp >=0.11.4.2\n    - r-bit64\n    - r-blob >=1.1.1\n    - r-hms\n    - r-plogr >=0.2.0\n    - r-withr\n    - libpq\n\ntest:\n  commands:\n    - $R -e \"library('RPostgres')\"           # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('RPostgres')\\\"\"  # [win]\n    - conda inspect linkages -p $PREFIX r-rpostgres  # [not win]\n    - conda inspect objects -p $PREFIX r-rpostgres  # [osx]\n  requires:\n    - conda-build\nabout:\n  home: https://github.com/r-dbi/RPostgres\n  license: GPL-2\n  summary: |\n    Fully 'DBI'-compliant 'Rcpp'-backed interface to 'PostgreSQL' <https://www.postgresql.org/>,\n    an open-source relational database.\n  license_family: GPL2\n  license_file: '{{ environ[\"PREFIX\"] }}/lib/R/share/licenses/GPL-2'\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n    - johanneskoester\n    - bgruening\n    - daler\n    - jdblischak\n    - cbrueffer\n    - halldc\n    - fhoehle\n",
+ "raw_meta_yaml":"{% set version = '1.1.2' %}\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-rpostgres\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  url:\n    - {{ cran_mirror }}/src/contrib/RPostgres_{{ version }}.tar.gz\n    - {{ cran_mirror }}/src/contrib/Archive/RPostgres/RPostgres_{{ version }}.tar.gz\n  sha256: 7fb328fe515c8ae779c10ed60a1bed4862e8d2200acfaf1c72db2afabab1c82e\n\nbuild:\n  merge_build_host: True  # [win]\n  number: 0\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - {{ compiler('c') }}              # [not win]\n    - {{ compiler('m2w64_c') }}        # [win]\n    - {{ compiler('cxx') }}            # [not win]\n    - {{ compiler('m2w64_cxx') }}      # [win]\n    - {{posix}}filesystem        # [win]\n    - {{posix}}sed               # [win]\n    - {{posix}}grep              # [win]\n    - {{posix}}autoconf\n    - {{posix}}automake          # [not win]\n    - {{posix}}automake-wrapper  # [win]\n    - {{posix}}pkg-config\n    - {{posix}}make\n    - {{posix}}coreutils         # [win]\n    - {{posix}}zip               # [win]\n  host:\n    - r-base\n    - r-bh\n    - r-dbi >=1.0.0\n    - r-rcpp >=0.11.4.2\n    - r-bit64\n    - r-blob >=1.1.1\n    - r-hms\n    - r-plogr >=0.2.0\n    - r-withr\n    - postgresql\n  run:\n    - r-base\n    - {{native}}gcc-libs         # [win]\n    # BH is the header-only part of Boost and thus a compile-time requirement only\n    # - r-bh\n    - r-dbi >=1.0.0\n    - r-rcpp >=0.11.4.2\n    - r-bit64\n    - r-blob >=1.1.1\n    - r-hms\n    - r-plogr >=0.2.0\n    - r-withr\n    - libpq\n\ntest:\n  commands:\n    - $R -e \"library('RPostgres')\"           # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('RPostgres')\\\"\"  # [win]\n    - conda inspect linkages -p $PREFIX r-rpostgres  # [not win]\n    - conda inspect objects -p $PREFIX r-rpostgres  # [osx]\n  requires:\n    - conda-build\nabout:\n  home: https://github.com/r-dbi/RPostgres\n  license: GPL-2\n  summary: |\n    Fully 'DBI'-compliant 'Rcpp'-backed interface to 'PostgreSQL' <https://www.postgresql.org/>,\n    an open-source relational database.\n  license_family: GPL2\n  license_file: '{{ environ[\"PREFIX\"] }}/lib/R/share/licenses/GPL-2'\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n    - halldc\n    - fhoehle\n",
  "req":{
   "__set__":true,
   "elements":[
@@ -248,7 +233,8 @@
    "gcc-libs",
    "grep",
    "libpq",
-   "m2w64-toolchain",
+   "m2w64_c_compiler_stub",
+   "m2w64_cxx_compiler_stub",
    "make",
    "pkg-config",
    "postgresql",
@@ -274,5 +260,5 @@
   "https://cran.r-project.org/src/contrib/RPostgres_1.1.1.tar.gz",
   "https://cran.r-project.org/src/contrib/Archive/RPostgres/RPostgres_1.1.1.tar.gz"
  ],
- "version":"1.1.1"
+ "version":"1.1.2"
 }
