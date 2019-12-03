@@ -86,14 +86,17 @@
    "summary":"the LIBpcap interface to various kernel packet capture mechanism"
   },
   "build":{
-   "number":"0",
+   "number":"1",
    "skip":true
   },
   "extra":{
    "recipe-maintainers":[
     "nehaljwani",
+    "seanyen",
     "nehaljwani",
-    "nehaljwani"
+    "seanyen",
+    "nehaljwani",
+    "seanyen"
    ]
   },
   "package":{
@@ -103,9 +106,9 @@
   "requirements":{
    "build":[
     "c_compiler_stub",
-    "flex",
-    "bison",
-    "m4",
+    "cmake",
+    "ninja",
+    "winflexbison",
     "c_compiler_stub",
     "flex",
     "bison",
@@ -118,12 +121,18 @@
   },
   "source":{
    "fn":"libpcap-1.9.1.tar.gz",
+   "patches":null,
    "sha256":"635237637c5b619bcceba91900666b64d56ecb7be63f298f601ec786ce087094",
    "url":"http://www.tcpdump.org/release/libpcap-1.9.1.tar.gz"
   },
   "test":{
    "commands":[
-    "test -f $PREFIX/lib/libpcap.so",
+    "if not exist \"%LIBRARY_LIB%\\\\pcap.lib\" exit 1",
+    "if not exist \"%LIBRARY_BIN%\\\\pcap.dll\" exit 1",
+    "if not exist \"%LIBRARY_INC%\\\\pcap.h\" exit 1",
+    "test -f $PREFIX/lib/libpcap${SHLIB_EXT}",
+    "test -f $PREFIX/include/pcap.h",
+    "test -f $PREFIX/lib/libpcap${SHLIB_EXT}",
     "test -f $PREFIX/include/pcap.h"
    ]
   }
@@ -131,14 +140,17 @@
  "name":"libpcap",
  "new_version":"1.9.1",
  "pinning_version":"2019.09.27",
- "raw_meta_yaml":"{% set name = \"libpcap\" %}\n{% set version = \"1.9.1\" %}\n{% set sha256 = \"635237637c5b619bcceba91900666b64d56ecb7be63f298f601ec786ce087094\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  fn: {{ name }}-{{ version }}.tar.gz\n  url: http://www.tcpdump.org/release/{{ name }}-{{ version }}.tar.gz\n  sha256: {{ sha256 }}\n\nbuild:\n  number: 0\n  skip: True  # [win]\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - flex\n    - bison\n    - m4\n\ntest:\n  commands:\n    - test -f $PREFIX/lib/libpcap.so      # [linux]\n    - test -f $PREFIX/lib/libpcap.dylib   # [osx]\n    - test -f $PREFIX/include/pcap.h      # [unix]\n\nabout:\n  home: www.tcpdump.org\n  license: BSD 3-Clause\n  license_family: BSD\n  license_file: LICENSE\n  summary: 'the LIBpcap interface to various kernel packet capture mechanism'\n  doc_url: http://www.tcpdump.org/#documentation\n  dev_url: https://github.com/the-tcpdump-group/libpcap\n\nextra:\n  recipe-maintainers:\n    - nehaljwani\n",
+ "raw_meta_yaml":"{% set name = \"libpcap\" %}\n{% set version = \"1.9.1\" %}\n{% set sha256 = \"635237637c5b619bcceba91900666b64d56ecb7be63f298f601ec786ce087094\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  fn: {{ name }}-{{ version }}.tar.gz\n  url: http://www.tcpdump.org/release/{{ name }}-{{ version }}.tar.gz\n  sha256: {{ sha256 }}\n  patches:\n    - fix-install.patch  # [win]\n\nbuild:\n  number: 1\n  skip: true  # [vc<14]\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - flex                  # [not win]\n    - bison                 # [not win]\n    - m4                    # [not win]\n    - cmake                 # [win]\n    - ninja                 # [win]\n    - winflexbison          # [win]\n\ntest:\n  commands:\n    - test -f $PREFIX/lib/libpcap${SHLIB_EXT}   # [not win]\n    - test -f $PREFIX/include/pcap.h            # [not win]\n    - if not exist \"%LIBRARY_LIB%\\\\pcap.lib\" exit 1   # [win]\n    - if not exist \"%LIBRARY_BIN%\\\\pcap.dll\" exit 1   # [win]\n    - if not exist \"%LIBRARY_INC%\\\\pcap.h\" exit 1     # [win]\n\nabout:\n  home: www.tcpdump.org\n  license: BSD 3-Clause\n  license_family: BSD\n  license_file: LICENSE\n  summary: 'the LIBpcap interface to various kernel packet capture mechanism'\n  doc_url: http://www.tcpdump.org/#documentation\n  dev_url: https://github.com/the-tcpdump-group/libpcap\n\nextra:\n  recipe-maintainers:\n    - nehaljwani\n    - seanyen\n",
  "req":{
   "__set__":true,
   "elements":[
    "bison",
    "c_compiler_stub",
+   "cmake",
    "flex",
-   "m4"
+   "m4",
+   "ninja",
+   "winflexbison"
   ]
  },
  "smithy_version":"3.4.8",
