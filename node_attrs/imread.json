@@ -118,7 +118,7 @@
  "hash_type":"sha256",
  "meta_yaml":{
   "about":{
-   "description":"Mahotas-imread is a simple module to read images into numpy arrays.",
+   "description":"Mahotas-imread is a simple module to read images into numpy arrays",
    "dev_url":"https://github.com/luispedro/imread",
    "doc_url":"https://imread.rtfd.io/",
    "home":"https://imread.rtfd.io/",
@@ -128,7 +128,7 @@
    "summary":"imread: Image reading library"
   },
   "build":{
-   "number":"0",
+   "number":"1",
    "script":[
     "cp %LIBRARY_LIB%\\libpng.lib %LIBRARY_LIB%\\png.lib",
     "python setup.py install --single-version-externally-managed --record record.txt",
@@ -137,7 +137,8 @@
     "python setup.py install --single-version-externally-managed --record record.txt",
     "python setup.py build_ext --include-dirs=${PREFIX}/include",
     "python setup.py install --single-version-externally-managed --record record.txt"
-   ]
+   ],
+   "skip":true
   },
   "extra":{
    "recipe-maintainers":[
@@ -161,7 +162,7 @@
    ],
    "host":[
     "python",
-    "setuptools",
+    "pip",
     "numpy",
     "msinttypes",
     "jpeg",
@@ -170,14 +171,14 @@
     "libtiff",
     "zlib",
     "python",
-    "setuptools",
+    "pip",
     "numpy",
     "jpeg",
     "libpng",
     "libwebp",
     "libtiff",
     "python",
-    "setuptools",
+    "pip",
     "numpy",
     "jpeg",
     "libpng",
@@ -207,7 +208,6 @@
    ]
   },
   "source":{
-   "fn":"imread-0.7.1.tar.gz",
    "sha256":"c343b546ab54acdb50dbe69d6793d64ead3ba6d585022f5a7ad4687b7f3db79b",
    "url":"https://pypi.io/packages/source/i/imread/imread-0.7.1.tar.gz"
   },
@@ -222,7 +222,7 @@
  "name":"imread",
  "new_version":"0.7.1",
  "pinning_version":"2019.11.18",
- "raw_meta_yaml":"{% set name = \"imread\" %}\n{% set version = \"0.7.1\" %}\n{% set sha256 = \"c343b546ab54acdb50dbe69d6793d64ead3ba6d585022f5a7ad4687b7f3db79b\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  fn: {{ name }}-{{ version }}.tar.gz\n  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz\n  sha256: {{ sha256 }}\n\nbuild:\n  number: 0\n  script:\n    - cp %LIBRARY_LIB%\\libpng.lib %LIBRARY_LIB%\\png.lib  # [win]\n    - python setup.py build_ext --include-dirs=${PREFIX}/include  # [unix]\n    - python setup.py install --single-version-externally-managed --record record.txt\n    - del %LIBRARY_LIB%\\png.lib  # [win]\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n  host:\n    - python\n    - setuptools\n    - numpy\n    - msinttypes  # [win]\n    - jpeg\n    - libpng\n    - libwebp\n    - libtiff\n    - zlib         # [win]\n\n  run:\n    - python\n    - {{ pin_compatible('numpy') }}\n    - jpeg\n    - libpng\n    - libwebp\n    - libtiff\n    - zlib         # [win]\n\ntest:\n  imports:\n    - imread\n\nabout:\n  home: https://imread.rtfd.io/\n  license: MIT\n  license_family: MIT\n  license_file: COPYING.MIT\n  summary: 'imread: Image reading library'\n\n  description: 'Mahotas-imread is a simple module to read images into numpy arrays.'\n  doc_url: https://imread.rtfd.io/\n  dev_url: https://github.com/luispedro/imread\n\nextra:\n  recipe-maintainers:\n    - luispedro\n",
+ "raw_meta_yaml":"{% set version = \"0.7.1\" %}\n\npackage:\n  name: imread\n  version: {{ version }}\n\nsource:\n  url: https://pypi.io/packages/source/i/imread/imread-{{ version }}.tar.gz\n  sha256: c343b546ab54acdb50dbe69d6793d64ead3ba6d585022f5a7ad4687b7f3db79b\n\nbuild:\n  number: 1\n  skip: True  # [win and vc<14]\n  script:\n    - cp %LIBRARY_LIB%\\libpng.lib %LIBRARY_LIB%\\png.lib  # [win]\n    - python setup.py build_ext --include-dirs=${PREFIX}/include  # [unix]\n    - python setup.py install --single-version-externally-managed --record record.txt\n    - del %LIBRARY_LIB%\\png.lib  # [win]\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n  host:\n    - python\n    - pip\n    - numpy\n    - msinttypes  # [win]\n    - jpeg\n    - libpng\n    - libwebp\n    - libtiff\n    - zlib         # [win]\n  run:\n    - python\n    - {{ pin_compatible('numpy') }}\n    - jpeg\n    - libpng\n    - libwebp\n    - libtiff\n    - zlib         # [win]\n\ntest:\n  imports:\n    - imread\n\nabout:\n  home: https://imread.rtfd.io/\n  license: MIT\n  license_family: MIT\n  license_file: COPYING.MIT\n  summary: 'imread: Image reading library'\n\n  description: 'Mahotas-imread is a simple module to read images into numpy arrays'\n  doc_url: https://imread.rtfd.io/\n  dev_url: https://github.com/luispedro/imread\n\nextra:\n  recipe-maintainers:\n    - luispedro\n",
  "req":{
   "__set__":true,
   "elements":[
@@ -235,8 +235,8 @@
    "libwebp",
    "msinttypes",
    "numpy",
+   "pip",
    "python",
-   "setuptools",
    "zlib"
   ]
  },
