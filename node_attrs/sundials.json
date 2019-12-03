@@ -214,6 +214,25 @@
     "migrator_version",
     "name"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/348427052.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"MigrationYaml",
+    "migrator_object_version":1,
+    "migrator_version":0,
+    "name":"suitesparse-5.6"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_object_version",
+    "migrator_version",
+    "name"
+   ]
   }
  ],
  "bad":false,
@@ -320,7 +339,7 @@
  },
  "name":"sundials",
  "new_version":"5.0.0",
- "pinning_version":"2019.11.18",
+ "pinning_version":"2019.12.02",
  "raw_meta_yaml":"{% set name = \"sundials\" %}\n{% set version = \"5.0.0\" %}\n\npackage:\n  name: {{ name }}\n  version: {{ version }}\n\nsource:\n  fn: {{ name }}-{{ version }}.tar.gz\n  url: http://computation.llnl.gov/projects/{{ name }}/download/{{ name }}-{{ version }}.tar.gz\n  sha256: 345141ec01c641d0bdfb3476c478b7e74fd6a7192a478a27cafe75d9da2d7dd3\n\nbuild:\n  number: 2\n  run_exports:\n    - {{ pin_subpackage('sundials', max_pin='x.x') }}\n\nrequirements:\n  build:\n    - cmake\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n  host:\n    - msinttypes  # [win and vc<14]\n    - liblapack  # [not win]\n    - suitesparse  # [not win]\n  run:\n    - suitesparse  # [not win]\n\ntest:\n  requires:\n    - cmake\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n  files:\n    - CMakeLists.txt\n    - cvRoberts_dns.c\n    - cvRoberts_klu.c\n    - cvAdvDiff_bndL.c\n    - cvAdvDiff_bnd_omp.c\n  commands:\n    - conda inspect linkages -p ${PREFIX} sundials  # [not win]\n    - conda inspect objects -p ${PREFIX} sundials  # [osx]\n\nabout:\n  home: http://computation.llnl.gov/casc/sundials/main.html\n  license: BSD 3-Clause\n  license_file: LICENSE\n  summary: 'SUite of Nonlinear and DIfferential/ALgebraic equation Solvers'\n\nextra:\n  recipe-maintainers:\n    - bjodah\n    - jschueller\n",
  "req":{
   "__set__":true,
@@ -333,7 +352,7 @@
    "suitesparse"
   ]
  },
- "smithy_version":"3.6.2",
+ "smithy_version":"3.6.3",
  "url":"http://computation.llnl.gov/projects/sundials/download/sundials-4.1.0.tar.gz",
  "version":"5.0.0"
 }
