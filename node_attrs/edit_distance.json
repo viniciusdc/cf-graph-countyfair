@@ -55,7 +55,7 @@
    ],
    "noarch":"python",
    "number":"0",
-   "script":"python -m pip install --no-deps --ignore-installed ."
+   "script":"-m pip install . --no-deps -vv"
   },
   "extra":{
    "recipe-maintainers":[
@@ -66,7 +66,7 @@
   },
   "package":{
    "name":"edit_distance",
-   "version":"1.0.3"
+   "version":"1.0.4"
   },
   "requirements":{
    "host":[
@@ -84,8 +84,8 @@
    ]
   },
   "source":{
-   "sha256":"0903d0baabee61f97254f483447928a97e6d84eae19b0224eecf31433e6f8b42",
-   "url":"https://pypi.io/packages/source/e/edit_distance/edit_distance-1.0.3.tar.gz"
+   "sha256":"89bc025a9683601cb08215672f49c513c8025b3c7e63a2f9f48fbcc034eae8a5",
+   "url":"https://pypi.io/packages/source/e/edit_distance/edit_distance-1.0.4.tar.gz"
   },
   "test":{
    "commands":[
@@ -103,7 +103,7 @@
  "name":"edit_distance",
  "new_version":"1.0.4",
  "pinning_version":"2019.12.02",
- "raw_meta_yaml":"{% set name = \"edit_distance\" %}\n{% set version = \"1.0.3\" %}\n{% set sha256 = \"0903d0baabee61f97254f483447928a97e6d84eae19b0224eecf31433e6f8b42\" %}\n\npackage:\n  name: '{{ name|lower }}'\n  version: '{{ version }}'\n\nsource:\n  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz\n  sha256: {{ sha256 }}\n\nbuild:\n  number: 0\n  noarch: python\n  entry_points:\n    - edit-distance = edit_distance.code:main\n  script: python -m pip install --no-deps --ignore-installed . \n\nrequirements:\n  host:\n    - python\n    - pip\n  run:\n    - python\n\ntest:\n  imports:\n    - edit_distance\n  commands:\n    - edit-distance ${RECIPE_DIR}/meta.yaml ${RECIPE_DIR}/meta.yaml  # [not win]\n    - edit-distance %RECIPE_DIR%/meta.yaml %RECIPE_DIR%/meta.yaml  # [win]\n\nabout:\n  home: https://github.com/belambert/editdistance\n  license: BSD-2-Clause\n  license_family: BSD\n  license_file: '{{ environ[\"RECIPE_DIR\"] }}/LICENSE.txt'\n  summary: Computing edit distance on arbitrary Python sequences.\n  description: |\n    Python module for computing edit distances and alignments between sequences.\n    I needed a way to compute edit distances between sequences in Python. I \n    wasn't able to find any appropriate libraries that do this so I wrote my \n    own. There appear to be numerous edit distance libraries available for \n    computing edit distances between two strings, but not between two sequences.\n    This is written entirely in Python. This implementation could likely be \n    optimized to be faster within Python. And could probably be much faster if\n    implemented in C. \n    The library API is modeled after difflib.SequenceMatcher. This is very \n    similar to difflib, except that this module computes edit distance \n    (Levenshtein distance) rather than the Ratcliff and Oberhelp method \n    that Python's difflib uses.\n  doc_url: http://edit-distance.readthedocs.io/en/latest/\n  dev_url: https://github.com/belambert/edit-distance\n\nextra:\n  recipe-maintainers:\n    - CurtLH\n",
+ "raw_meta_yaml":"{% set name = \"edit_distance\" %}\n{% set version = \"1.0.4\" %}\n{% set sha256 = \"89bc025a9683601cb08215672f49c513c8025b3c7e63a2f9f48fbcc034eae8a5\" %}\n\npackage:\n  name: '{{ name|lower }}'\n  version: '{{ version }}'\n\nsource:\n  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz\n  sha256: {{ sha256 }}\n\nbuild:\n  number: 0\n  noarch: python\n  entry_points:\n    - edit-distance = edit_distance.code:main\n  script: {{ PYTHON }} -m pip install . --no-deps -vv\n\nrequirements:\n  host:\n    - python\n    - pip\n  run:\n    - python\n\ntest:\n  imports:\n    - edit_distance\n  commands:\n    - edit-distance ${RECIPE_DIR}/meta.yaml ${RECIPE_DIR}/meta.yaml  # [not win]\n    - edit-distance %RECIPE_DIR%/meta.yaml %RECIPE_DIR%/meta.yaml  # [win]\n\nabout:\n  home: https://github.com/belambert/editdistance\n  license: BSD-2-Clause\n  license_family: BSD\n  license_file: '{{ environ[\"RECIPE_DIR\"] }}/LICENSE.txt'\n  summary: Computing edit distance on arbitrary Python sequences.\n  description: |\n    Python module for computing edit distances and alignments between sequences.\n    I needed a way to compute edit distances between sequences in Python. I \n    wasn't able to find any appropriate libraries that do this so I wrote my \n    own. There appear to be numerous edit distance libraries available for \n    computing edit distances between two strings, but not between two sequences.\n    This is written entirely in Python. This implementation could likely be \n    optimized to be faster within Python. And could probably be much faster if\n    implemented in C. \n    The library API is modeled after difflib.SequenceMatcher. This is very \n    similar to difflib, except that this module computes edit distance \n    (Levenshtein distance) rather than the Ratcliff and Oberhelp method \n    that Python's difflib uses.\n  doc_url: http://edit-distance.readthedocs.io/en/latest/\n  dev_url: https://github.com/belambert/edit-distance\n\nextra:\n  recipe-maintainers:\n    - CurtLH\n",
  "req":{
   "__set__":true,
   "elements":[
@@ -113,5 +113,5 @@
  },
  "smithy_version":"3.6.3",
  "url":"https://pypi.io/packages/source/e/edit_distance/edit_distance-1.0.3.tar.gz",
- "version":"1.0.3"
+ "version":"1.0.4"
 }
