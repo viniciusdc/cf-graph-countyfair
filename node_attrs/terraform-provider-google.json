@@ -647,11 +647,11 @@
    "number":"0",
    "script":[
     "pushd src/github.com/terraform-providers/terraform-provider-google",
-    "go build -v -o %GOBIN%\\terraform-provider-google_v2.18.1_x4 .",
+    "go build -v -o %GOBIN%\\terraform-provider-google_v3.0.0_x4 .",
     "pushd src/github.com/terraform-providers/terraform-provider-google",
-    "go build -v -o $GOBIN/terraform-provider-google_v2.18.1_x4 .",
+    "go build -v -o $GOBIN/terraform-provider-google_v3.0.0_x4 .",
     "pushd src/github.com/terraform-providers/terraform-provider-google",
-    "go build -v -o $GOBIN/terraform-provider-google_v2.18.1_x4 ."
+    "go build -v -o $GOBIN/terraform-provider-google_v3.0.0_x4 ."
    ]
   },
   "extra":{
@@ -666,7 +666,7 @@
   },
   "package":{
    "name":"terraform-provider-google",
-   "version":"2.18.1"
+   "version":"3.0.0"
   },
   "requirements":{
    "build":[
@@ -683,34 +683,34 @@
   "source":[
    {
     "folder":"src/github.com/terraform-providers/terraform-provider-google",
-    "sha256":"5c6e5bebe9a88780761d8dec9fdc3f6295b8cbc99eb072683489f404bfe6222f",
-    "url":"https://github.com/terraform-providers/terraform-provider-google/archive/v2.18.1.tar.gz"
+    "sha256":"7974b2f4f9e52e18f661770d85f0ec31ff1490f76ae8c29f72b7196d3bb46ff5",
+    "url":"https://github.com/terraform-providers/terraform-provider-google/archive/v3.0.0.tar.gz"
    },
    {
     "folder":"src/github.com/terraform-providers/terraform-provider-google",
-    "sha256":"5c6e5bebe9a88780761d8dec9fdc3f6295b8cbc99eb072683489f404bfe6222f",
-    "url":"https://github.com/terraform-providers/terraform-provider-google/archive/v2.18.1.tar.gz"
+    "sha256":"7974b2f4f9e52e18f661770d85f0ec31ff1490f76ae8c29f72b7196d3bb46ff5",
+    "url":"https://github.com/terraform-providers/terraform-provider-google/archive/v3.0.0.tar.gz"
    },
    {
     "folder":"src/github.com/terraform-providers/terraform-provider-google",
-    "sha256":"5c6e5bebe9a88780761d8dec9fdc3f6295b8cbc99eb072683489f404bfe6222f",
-    "url":"https://github.com/terraform-providers/terraform-provider-google/archive/v2.18.1.tar.gz"
+    "sha256":"7974b2f4f9e52e18f661770d85f0ec31ff1490f76ae8c29f72b7196d3bb46ff5",
+    "url":"https://github.com/terraform-providers/terraform-provider-google/archive/v3.0.0.tar.gz"
    }
   ],
   "test":{
    "commands":[
-    "bash -euf -c \"echo 'provider \\\"google\\\" { version=\\\"2.18.1\\\" }' > init.tf\"",
+    "bash -euf -c \"echo 'provider \\\"google\\\" { version=\\\"3.0.0\\\" }' > init.tf\"",
     "terraform init",
     "test -f .terraform/plugins/_/lock.json",
-    "test ! -f .terraform/plugins/_/terraform-provider-google_v2.18.1_x4",
-    "bash -euf -c \"echo 'provider \\\"google\\\" { version=\\\"2.18.1\\\" }' > init.tf\"",
+    "test ! -f .terraform/plugins/_/terraform-provider-google_v3.0.0_x4",
+    "bash -euf -c \"echo 'provider \\\"google\\\" { version=\\\"3.0.0\\\" }' > init.tf\"",
     "terraform init",
     "test -f .terraform/plugins/_/lock.json",
-    "test ! -f .terraform/plugins/_/terraform-provider-google_v2.18.1_x4",
-    "bash -euf -c \"echo 'provider \\\"google\\\" { version=\\\"2.18.1\\\" }' > init.tf\"",
+    "test ! -f .terraform/plugins/_/terraform-provider-google_v3.0.0_x4",
+    "bash -euf -c \"echo 'provider \\\"google\\\" { version=\\\"3.0.0\\\" }' > init.tf\"",
     "terraform init",
     "test -f .terraform/plugins/_/lock.json",
-    "test ! -f .terraform/plugins/_/terraform-provider-google_v2.18.1_x4"
+    "test ! -f .terraform/plugins/_/terraform-provider-google_v3.0.0_x4"
    ],
    "requires":[
     "m2-bash",
@@ -721,7 +721,7 @@
  "name":"terraform-provider-google",
  "new_version":"3.0.0",
  "pinning_version":"2019.12.02",
- "raw_meta_yaml":"{% set provider = \"google\" %}\n{% set goname = \"github.com/terraform-providers/terraform-provider-\"+provider.lower() %}\n{% set version = \"2.18.1\" %}\n\n{% set name = goname.split('/')[-1] %}\n{% set pkg_src = ('src/'+goname).replace(\"/\",os.sep) %}\n\n{% set x4_plugin = name + '_v' + version + \"_x4\" + (\".exe\" if win else \"\")%}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  - folder:  {{ pkg_src }}\n    url: https://{{ goname }}/archive/v{{ version }}.tar.gz\n    sha256: 5c6e5bebe9a88780761d8dec9fdc3f6295b8cbc99eb072683489f404bfe6222f\n\nbuild:\n  number: 0\n  script:\n    - pushd {{ pkg_src }}\n    - go build -v -o $GOBIN/{{ x4_plugin }} .  # [unix]\n    - go build -v -o %GOBIN%\\{{ x4_plugin }} .  # [win]\n\nrequirements:\n  build:\n    - {{ compiler('go') }} >=1.11.3\n  run:\n    - terraform >=0.10  # [unix]\n    - terraform >=0.11.11  # [win]\n\ntest:\n  requires:         # [win]\n    - m2-bash       # [win]\n    - m2-coreutils  # [win]\n\n  commands:\n    - bash -euf -c \"echo 'provider \\\"{{ provider|lower }}\\\" { version=\\\"{{ version }}\\\" }' > init.tf\"\n    - terraform init\n    # Tests that no plugins were downloaded\n    - test -f .terraform/plugins/{{ goos }}_{{ goarch }}/lock.json\n    - test ! -f .terraform/plugins/{{ goos }}_{{ goarch }}/{{ x4_plugin }}\n\nabout:\n  home: https://www.terraform.io\n  license: MPL 2.0\n  summary: The Terraform Google provider\n  doc_url: https://www.terraform.io/docs/providers/{{ provider }}/index.html\n  dev_url: https://github.com/terraform-providers/{{ name }}\n\nextra:\n  recipe-maintainers:\n    - sodre\n    - agcopenhaver\n",
+ "raw_meta_yaml":"{% set provider = \"google\" %}\n{% set goname = \"github.com/terraform-providers/terraform-provider-\"+provider.lower() %}\n{% set version = \"3.0.0\" %}\n\n{% set name = goname.split('/')[-1] %}\n{% set pkg_src = ('src/'+goname).replace(\"/\",os.sep) %}\n\n{% set x4_plugin = name + '_v' + version + \"_x4\" + (\".exe\" if win else \"\")%}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  - folder:  {{ pkg_src }}\n    url: https://{{ goname }}/archive/v{{ version }}.tar.gz\n    sha256: 7974b2f4f9e52e18f661770d85f0ec31ff1490f76ae8c29f72b7196d3bb46ff5\n\nbuild:\n  number: 0\n  script:\n    - pushd {{ pkg_src }}\n    - go build -v -o $GOBIN/{{ x4_plugin }} .  # [unix]\n    - go build -v -o %GOBIN%\\{{ x4_plugin }} .  # [win]\n\nrequirements:\n  build:\n    - {{ compiler('go') }} >=1.11.3\n  run:\n    - terraform >=0.10  # [unix]\n    - terraform >=0.11.11  # [win]\n\ntest:\n  requires:         # [win]\n    - m2-bash       # [win]\n    - m2-coreutils  # [win]\n\n  commands:\n    - bash -euf -c \"echo 'provider \\\"{{ provider|lower }}\\\" { version=\\\"{{ version }}\\\" }' > init.tf\"\n    - terraform init\n    # Tests that no plugins were downloaded\n    - test -f .terraform/plugins/{{ goos }}_{{ goarch }}/lock.json\n    - test ! -f .terraform/plugins/{{ goos }}_{{ goarch }}/{{ x4_plugin }}\n\nabout:\n  home: https://www.terraform.io\n  license: MPL 2.0\n  summary: The Terraform Google provider\n  doc_url: https://www.terraform.io/docs/providers/{{ provider }}/index.html\n  dev_url: https://github.com/terraform-providers/{{ name }}\n\nextra:\n  recipe-maintainers:\n    - sodre\n    - agcopenhaver\n",
  "req":{
   "__set__":true,
   "elements":[
@@ -731,5 +731,5 @@
  },
  "smithy_version":"3.6.3",
  "url":"https://github.com/terraform-providers/terraform-provider-google/archive/v2.14.0.tar.gz",
- "version":"2.18.1"
+ "version":"3.0.0"
 }
