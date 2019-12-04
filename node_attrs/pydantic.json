@@ -523,6 +523,11 @@
    ]
   },
   "source":{
+   "patches":[
+    "0001-change-cython-nthreads-default-to-zero.patch",
+    "0001-change-cython-nthreads-default-to-zero.patch",
+    "0001-change-cython-nthreads-default-to-zero.patch"
+   ],
    "sha256":"da10b034750addbd95a328654d20364c479f4e2e26e0f72933204d61cbc8fa78",
    "url":"https://pypi.io/packages/source/p/pydantic/pydantic-1.2.tar.gz"
   },
@@ -537,7 +542,7 @@
  "name":"pydantic",
  "new_version":"1.2",
  "pinning_version":"2019.12.02",
- "raw_meta_yaml":"{% set name = \"pydantic\" %}\n{% set version = \"1.2\" %}\n{% set repo_url = \"https://github.com/samuelcolvin/pydantic\" %}\n{% set docs_url = \"https://pydantic-docs.helpmanual.io\" %}\n\npackage:\n  name: {{ name }}\n  version: {{ version }}\n\nsource:\n  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz\n  sha256: da10b034750addbd95a328654d20364c479f4e2e26e0f72933204d61cbc8fa78\n\nbuild:\n  number: 0\n  script: \"{{ PYTHON }} -m pip install . --no-deps --ignore-installed -vv\"\n  skip: True  # [py2k or py35]\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n  host:\n    - python\n    - pip\n    - cython  # [not win]\n  run:\n    - python\n    - dataclasses >=0.6  # [py36]\n\ntest:\n  imports:\n    - {{ name }}\n\nabout:\n  home: {{ repo_url }}\n  license: MIT\n  license_family: MIT\n  license_file: LICENSE\n  summary: 'Data validation and settings management using python type hinting'\n  description: |\n    Data validation and settings management using python type hinting.\n    See documentation <{{ docs_url }}> for more details.\n  doc_url: {{ docs_url }}\n  dev_url: {{ repo_url }}\n\nextra:\n  recipe-maintainers:\n  - samuelcolvin\n  - dgasmith\n",
+ "raw_meta_yaml":"{% set name = \"pydantic\" %}\n{% set version = \"1.2\" %}\n{% set repo_url = \"https://github.com/samuelcolvin/pydantic\" %}\n{% set docs_url = \"https://pydantic-docs.helpmanual.io\" %}\n\npackage:\n  name: {{ name }}\n  version: {{ version }}\n\nsource:\n  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz\n  sha256: da10b034750addbd95a328654d20364c479f4e2e26e0f72933204d61cbc8fa78\n  patches:\n  - '0001-change-cython-nthreads-default-to-zero.patch'\n\nbuild:\n  number: 0\n  script: \"{{ PYTHON }} -m pip install . --no-deps --ignore-installed -vv\"\n  skip: True  # [py2k or py35]\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n  host:\n    - python\n    - pip\n    - cython  # [not win]\n  run:\n    - python\n    - dataclasses >=0.6  # [py36]\n\ntest:\n  imports:\n    - {{ name }}\n\nabout:\n  home: {{ repo_url }}\n  license: MIT\n  license_family: MIT\n  license_file: LICENSE\n  summary: 'Data validation and settings management using python type hinting'\n  description: |\n    Data validation and settings management using python type hinting.\n    See documentation <{{ docs_url }}> for more details.\n  doc_url: {{ docs_url }}\n  dev_url: {{ repo_url }}\n\nextra:\n  recipe-maintainers:\n  - samuelcolvin\n  - dgasmith\n",
  "req":{
   "__set__":true,
   "elements":[
