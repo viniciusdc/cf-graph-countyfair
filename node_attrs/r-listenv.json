@@ -47,6 +47,23 @@
     "migrator_version",
     "name"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/349673018.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"Version",
+    "migrator_version":0,
+    "version":"0.8.0"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "version"
+   ]
   }
  ],
  "bad":false,
@@ -143,8 +160,8 @@
   }
  },
  "name":"r-listenv",
- "new_version":"0.7.0",
- "pinning_version":"2019.07.15",
+ "new_version":"0.8.0",
+ "pinning_version":"2019.12.02",
  "raw_meta_yaml":"{% set version = '0.7.0' %}\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-listenv\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  fn: listenv_{{ version }}.tar.gz\n  url:\n    - {{ cran_mirror }}/src/contrib/listenv_{{ version }}.tar.gz\n    - {{ cran_mirror }}/src/contrib/Archive/listenv/listenv_{{ version }}.tar.gz\n  sha256: 6126020b111870baea08b36afa82777cd578e88c17db5435cd137f11b3964555\n\nbuild:\n  noarch: generic\n  merge_build_host: True  # [win]\n  number: 1002\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - {{posix}}zip               # [win]\n  host:\n    - r-base\n  run:\n    - r-base\n\ntest:\n  commands:\n    - $R -e \"library('listenv')\"           # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('listenv')\\\"\"  # [win]\n\nabout:\n  home: https://github.com/HenrikBengtsson/listenv\n  license: LGPL (>= 2.1)\n  summary: List environments are environments that have list-like properties.  For instance,\n    the elements of a list environment are ordered and can be accessed and iterated\n    over using index subsetting, e.g. 'x <- listenv(a = 1, b = 2); for (i in seq_along(x))\n    x[[i]] <- x[[i]] ^ 2; y <- as.list(x)'.\n  license_family: LGPL\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n    - johanneskoester\n    - bgruening\n    - daler\n    - jdblischak\n    - cbrueffer\n    - dbast\n",
  "req":{
   "__set__":true,
@@ -152,7 +169,7 @@
    "r-base"
   ]
  },
- "smithy_version":"3.4.1",
+ "smithy_version":"3.6.3",
  "url":[
   "https://cran.r-project.org/src/contrib/listenv_0.7.0.tar.gz",
   "https://cran.r-project.org/src/contrib/Archive/listenv/listenv_0.7.0.tar.gz",
