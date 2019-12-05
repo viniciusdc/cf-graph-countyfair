@@ -48,6 +48,23 @@
     "migrator_version",
     "name"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/349312517.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"Version",
+    "migrator_version":0,
+    "version":"0.1_11"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "version"
+   ]
   }
  ],
  "bad":false,
@@ -148,8 +165,8 @@
   }
  },
  "name":"r-multicool",
- "new_version":"0.1_10",
- "pinning_version":"2019.07.15",
+ "new_version":"0.1_11",
+ "pinning_version":"2019.12.02",
  "raw_meta_yaml":"{% set version = '0.1-10' %}\n\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-multicool\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  fn: multicool_{{ version }}.tar.gz\n  url:\n    - https://cran.r-project.org/src/contrib/multicool_{{ version }}.tar.gz\n    - https://cran.r-project.org/src/contrib/Archive/multicool/multicool_{{ version }}.tar.gz\n  sha256: 5bb0cb0d9eb64420c862877247a79bb0afadacfe23262ec8c3fa26e5e34d6ff9\n\nbuild:\n  merge_build_host: True  # [win]\n  number: 1003\n  skip: true  # [win32]\n\n  rpaths:\n    - lib/R/lib/\n    - lib/\nrequirements:\n  build:\n    - posix                # [win]\n    - {{ compiler('c') }}        # [unix]\n    - {{ compiler('m2w64_c') }}  # [win]\n    - {{ compiler('cxx') }}        # [unix]\n    - {{ compiler('m2w64_cxx') }}  # [win]\n  host:\n    - r-base\n    - r-rcpp >=0.11.2\n\n  run:\n    - r-base\n    - r-rcpp >=0.11.2\n\ntest:\n  commands:\n    - $R -e \"library('multicool')\"  # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('multicool')\\\"\"  # [win]\n\nabout:\n  home: https://CRAN.R-project.org/package=multicool\n  license: GPL-2\n  summary: A set of tools to permute multisets without loops or hash tables and to generate integer\n    partitions. The permutation functions are based on C code from Aaron Williams. Cool-lex\n    order is similar to colexicographical order. The algorithm is described in Williams,\n    A. (2009)  <DOI:10.1145/1496770.1496877> Loopless Generation of Multiset Permutations\n    by Prefix Shifts. Symposium on Discrete Algorithms, New York, United States. The\n    permutation code is distributed without restrictions. The code for stable and efficient\n    computation of multinomial coefficients comes from Dave Barber. The code can be\n    download from <http://tamivox.org/dave/multinomial/code.html> and is distributed\n    without conditions. The package also generates the integer partitions of a positive,\n    non-zero integer n. The C++ code for this is based on Python code from Jerome Kelleher\n    which can be found here <http://jeromekelleher.net/tag/integer-partitions.html>.\n    The C++ code and Python code are distributed without conditions.\n  license_family: GPL2\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n    - johanneskoester\n    - bgruening\n    - daler\n",
  "req":{
   "__set__":true,
@@ -163,7 +180,7 @@
    "r-rcpp"
   ]
  },
- "smithy_version":"3.4.1",
+ "smithy_version":"3.6.3",
  "url":[
   "https://cran.r-project.org/src/contrib/multicool_0.1-10.tar.gz",
   "https://cran.r-project.org/src/contrib/Archive/multicool/multicool_0.1-10.tar.gz",
