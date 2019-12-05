@@ -80,14 +80,19 @@
  "meta_yaml":{
   "about":{
    "home":"https://github.com/HenrikBengtsson/listenv",
-   "license":"LGPL (>= 2.1)",
+   "license":"LGPL-2.1",
    "license_family":"LGPL",
+   "license_file":[
+    "/lib/R/share/licenses/LGPL-2.1",
+    "/lib/R/share/licenses/LGPL-2.1",
+    "/lib/R/share/licenses/LGPL-2.1"
+   ],
    "summary":"List environments are environments that have list-like properties.  For instance, the elements of a list environment are ordered and can be accessed and iterated over using index subsetting, e.g. 'x <- listenv(a = 1, b = 2); for (i in seq_along(x)) x[[i]] <- x[[i]] ^ 2; y <- as.list(x)'."
   },
   "build":{
    "merge_build_host":true,
    "noarch":"generic",
-   "number":"1002",
+   "number":"0",
    "rpaths":[
     "lib/R/lib/",
     "lib/",
@@ -100,31 +105,13 @@
   "extra":{
    "recipe-maintainers":[
     "conda-forge/r",
-    "johanneskoester",
-    "bgruening",
-    "daler",
-    "jdblischak",
-    "cbrueffer",
-    "dbast",
     "conda-forge/r",
-    "johanneskoester",
-    "bgruening",
-    "daler",
-    "jdblischak",
-    "cbrueffer",
-    "dbast",
-    "conda-forge/r",
-    "johanneskoester",
-    "bgruening",
-    "daler",
-    "jdblischak",
-    "cbrueffer",
-    "dbast"
+    "conda-forge/r"
    ]
   },
   "package":{
    "name":"r-listenv",
-   "version":"0.7.0"
+   "version":"0.8.0"
   },
   "requirements":{
    "build":null,
@@ -140,15 +127,14 @@
    ]
   },
   "source":{
-   "fn":"listenv_0.7.0.tar.gz",
-   "sha256":"6126020b111870baea08b36afa82777cd578e88c17db5435cd137f11b3964555",
+   "sha256":"fd2aaf3ff2d8d546ce33d1cb38e68401613975117c1f9eb98a7b41facf5c485f",
    "url":[
-    "https://cran.r-project.org/src/contrib/listenv_0.7.0.tar.gz",
-    "https://cran.r-project.org/src/contrib/Archive/listenv/listenv_0.7.0.tar.gz",
-    "https://cran.r-project.org/src/contrib/listenv_0.7.0.tar.gz",
-    "https://cran.r-project.org/src/contrib/Archive/listenv/listenv_0.7.0.tar.gz",
-    "https://cran.r-project.org/src/contrib/listenv_0.7.0.tar.gz",
-    "https://cran.r-project.org/src/contrib/Archive/listenv/listenv_0.7.0.tar.gz"
+    "https://cran.r-project.org/src/contrib/listenv_0.8.0.tar.gz",
+    "https://cran.r-project.org/src/contrib/Archive/listenv/listenv_0.8.0.tar.gz",
+    "https://cran.r-project.org/src/contrib/listenv_0.8.0.tar.gz",
+    "https://cran.r-project.org/src/contrib/Archive/listenv/listenv_0.8.0.tar.gz",
+    "https://cran.r-project.org/src/contrib/listenv_0.8.0.tar.gz",
+    "https://cran.r-project.org/src/contrib/Archive/listenv/listenv_0.8.0.tar.gz"
    ]
   },
   "test":{
@@ -162,7 +148,7 @@
  "name":"r-listenv",
  "new_version":"0.8.0",
  "pinning_version":"2019.12.02",
- "raw_meta_yaml":"{% set version = '0.7.0' %}\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-listenv\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  fn: listenv_{{ version }}.tar.gz\n  url:\n    - {{ cran_mirror }}/src/contrib/listenv_{{ version }}.tar.gz\n    - {{ cran_mirror }}/src/contrib/Archive/listenv/listenv_{{ version }}.tar.gz\n  sha256: 6126020b111870baea08b36afa82777cd578e88c17db5435cd137f11b3964555\n\nbuild:\n  noarch: generic\n  merge_build_host: True  # [win]\n  number: 1002\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - {{posix}}zip               # [win]\n  host:\n    - r-base\n  run:\n    - r-base\n\ntest:\n  commands:\n    - $R -e \"library('listenv')\"           # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('listenv')\\\"\"  # [win]\n\nabout:\n  home: https://github.com/HenrikBengtsson/listenv\n  license: LGPL (>= 2.1)\n  summary: List environments are environments that have list-like properties.  For instance,\n    the elements of a list environment are ordered and can be accessed and iterated\n    over using index subsetting, e.g. 'x <- listenv(a = 1, b = 2); for (i in seq_along(x))\n    x[[i]] <- x[[i]] ^ 2; y <- as.list(x)'.\n  license_family: LGPL\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n    - johanneskoester\n    - bgruening\n    - daler\n    - jdblischak\n    - cbrueffer\n    - dbast\n",
+ "raw_meta_yaml":"{% set version = '0.8.0' %}\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-listenv\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  url:\n    - {{ cran_mirror }}/src/contrib/listenv_{{ version }}.tar.gz\n    - {{ cran_mirror }}/src/contrib/Archive/listenv/listenv_{{ version }}.tar.gz\n  sha256: fd2aaf3ff2d8d546ce33d1cb38e68401613975117c1f9eb98a7b41facf5c485f\n\nbuild:\n  merge_build_host: True  # [win]\n  number: 0\n  noarch: generic\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - {{posix}}zip               # [win]\n  host:\n    - r-base\n  run:\n    - r-base\n\ntest:\n  commands:\n    - $R -e \"library('listenv')\"           # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('listenv')\\\"\"  # [win]\n\nabout:\n  home: https://github.com/HenrikBengtsson/listenv\n  license: LGPL-2.1\n  summary: List environments are environments that have list-like properties.  For instance,\n    the elements of a list environment are ordered and can be accessed and iterated\n    over using index subsetting, e.g. 'x <- listenv(a = 1, b = 2); for (i in seq_along(x))\n    x[[i]] <- x[[i]] ^ 2; y <- as.list(x)'.\n  license_family: LGPL\n  license_file:\n    - '{{ environ[\"PREFIX\"] }}/lib/R/share/licenses/LGPL-2.1'\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n\n# Package: listenv\n# Version: 0.8.0\n# Depends: R (>= 3.1.2)\n# Suggests: R.utils, R.rsp, markdown\n# VignetteBuilder: R.rsp\n# Title: Environments Behaving (Almost) as Lists\n# Authors@R: c(person(\"Henrik\", \"Bengtsson\", role=c(\"aut\", \"cre\", \"cph\"), email = \"henrikb@braju.com\"))\n# Description: List environments are environments that have list-like properties.  For instance, the elements of a list environment are ordered and can be accessed and iterated over using index subsetting, e.g. 'x <- listenv(a = 1, b = 2); for (i in seq_along(x)) x[[i]] <- x[[i]] ^ 2; y <- as.list(x)'.\n# License: LGPL (>= 2.1)\n# LazyLoad: TRUE\n# URL: https://github.com/HenrikBengtsson/listenv\n# BugReports: https://github.com/HenrikBengtsson/listenv/issues\n# RoxygenNote: 7.0.2\n# NeedsCompilation: no\n# Packaged: 2019-12-05 19:44:24 UTC; hb\n# Author: Henrik Bengtsson [aut, cre, cph]\n# Maintainer: Henrik Bengtsson <henrikb@braju.com>\n# Repository: CRAN\n# Date/Publication: 2019-12-05 21:40:02 UTC\n",
  "req":{
   "__set__":true,
   "elements":[
@@ -178,5 +164,5 @@
   "https://cran.r-project.org/src/contrib/listenv_0.7.0.tar.gz",
   "https://cran.r-project.org/src/contrib/Archive/listenv/listenv_0.7.0.tar.gz"
  ],
- "version":"0.7.0"
+ "version":"0.8.0"
 }
