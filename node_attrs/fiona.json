@@ -377,7 +377,7 @@
   },
   "package":{
    "name":"fiona",
-   "version":"1.8.11"
+   "version":"1.8.12"
   },
   "requirements":{
    "build":[
@@ -442,8 +442,13 @@
    ]
   },
   "source":{
-   "sha256":"1e7ca9e051f5bffa1c43c70d573da9ca223fc076b84fa73380614fc02b9eb7f6",
-   "url":"https://pypi.io/packages/source/F/Fiona/Fiona-1.8.11.tar.gz"
+   "patches":[
+    "argparse_pyversion.patch",
+    "argparse_pyversion.patch",
+    "argparse_pyversion.patch"
+   ],
+   "sha256":"c9266ddf6ae2a64fcea20014ddf27f800ac07584f2fdb09c2a02f3b3a52e371c",
+   "url":"https://pypi.io/packages/source/F/Fiona/Fiona-1.8.12.tar.gz"
   },
   "test":{
    "commands":[
@@ -494,7 +499,7 @@
  "name":"fiona",
  "new_version":"1.8.12",
  "pinning_version":"2019.12.02",
- "raw_meta_yaml":"{% set version = \"1.8.11\" %}\n\npackage:\n  name: fiona\n  version: {{ version }}\n\nsource:\n  url: https://pypi.io/packages/source/F/Fiona/Fiona-{{ version }}.tar.gz\n  sha256: 1e7ca9e051f5bffa1c43c70d573da9ca223fc076b84fa73380614fc02b9eb7f6\n\nbuild:\n  number: 0\n  skip: True  # [win and vc<14]\n  entry_points:\n    - fio = fiona.fio.main:main_group\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n  host:\n    - python\n    - pip\n    - cython >=0.28.3\n    - numpy\n    - libgdal\n  run:\n    - python\n    - setuptools\n    - gdal\n    - {{ pin_compatible('numpy') }}\n    - attrs >=17\n    - click >=4.0,<8\n    - cligj >=0.5\n    - click-plugins >=1.0\n    - six >=1.7\n    - munch\n    - shapely\n    - enum34  # [py<34]\n\ntest:\n  source_files:\n    - tests\n  imports:\n    - fiona\n    - fiona.fio\n  requires:\n    - pytest >=3\n    - boto3 >=1.2.4\n    - packaging\n    - pytest-catchlog\n    - mock  # [py2k]\n  files:\n    - test_data\n  commands:\n    - fio --help\n    - fio ls test_data/test.shp\n    - fio info test_data/test.shp\n\nabout:\n  home: http://github.com/Toblerity/Fiona\n  license: BSD-3-Clause\n  license_file: LICENSE.txt\n  summary: 'Fiona reads and writes spatial data files'\n\nextra:\n  recipe-maintainers:\n    - ocefpaf\n    - jorisvandenbossche\n",
+ "raw_meta_yaml":"{% set version = \"1.8.12\" %}\n\npackage:\n  name: fiona\n  version: {{ version }}\n\nsource:\n  url: https://pypi.io/packages/source/F/Fiona/Fiona-{{ version }}.tar.gz\n  sha256: c9266ddf6ae2a64fcea20014ddf27f800ac07584f2fdb09c2a02f3b3a52e371c\n  patches:\n    - argparse_pyversion.patch\n\nbuild:\n  number: 0\n  skip: True  # [win and vc<14]\n  entry_points:\n    - fio = fiona.fio.main:main_group\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n  host:\n    - python\n    - pip\n    - cython >=0.28.3\n    - numpy\n    - libgdal\n  run:\n    - python\n    - setuptools\n    - gdal\n    - {{ pin_compatible('numpy') }}\n    - attrs >=17\n    - click >=4.0,<8\n    - cligj >=0.5\n    - click-plugins >=1.0\n    - six >=1.7\n    - munch\n    - argparse  # [py<27]\n    - ordereddict  # [py<27]\n    - enum34  # [py<34]\n    - shapely  # only option calc we include by default\n\ntest:\n  source_files:\n    - tests\n  imports:\n    - fiona\n    - fiona.fio\n  requires:\n    - pytest >=3\n    - boto3 >=1.2.4\n    - packaging\n    - pytest-catchlog\n    - mock  # [py2k]\n  files:\n    - test_data\n  commands:\n    - fio --help\n    - fio ls test_data/test.shp\n    - fio info test_data/test.shp\n\nabout:\n  home: http://github.com/Toblerity/Fiona\n  license: BSD-3-Clause\n  license_file: LICENSE.txt\n  summary: 'Fiona reads and writes spatial data files'\n\nextra:\n  recipe-maintainers:\n    - ocefpaf\n    - jorisvandenbossche\n",
  "req":{
   "__set__":true,
   "elements":[
@@ -519,5 +524,5 @@
  },
  "smithy_version":"3.6.3",
  "url":"https://pypi.io/packages/source/F/Fiona/Fiona-1.8.6.tar.gz",
- "version":"1.8.11"
+ "version":"1.8.12"
 }
