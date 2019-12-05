@@ -73,7 +73,40 @@
    ]
   }
  ],
- "bad":false,
+ "bad":{
+  "code":404,
+  "exception":"HTTP Error 404: Not Found",
+  "traceback":[
+   "Traceback (most recent call last):",
+   "  File \"/root/repo/cf-scripts/conda_forge_tick/auto_tick.xsh\", line 745, in main",
+   "    hash_type=attrs.get('hash_type', 'sha256'))",
+   "  File \"/root/repo/cf-scripts/conda_forge_tick/auto_tick.xsh\", line 98, in run",
+   "    migrate_return = migrator.migrate(recipe_dir, attrs, **kwargs)",
+   "  File \"/root/repo/cf-scripts/conda_forge_tick/migrators.xsh\", line 467, in migrate",
+   "    new_patterns = self.get_hash_patterns('meta.yaml', urls, hash_type)",
+   "  File \"/root/repo/cf-scripts/conda_forge_tick/migrators.xsh\", line 384, in get_hash_patterns",
+   "    hash = hash_url(url, hash_type)",
+   "  File \"/opt/conda/envs/run_env/lib/python3.7/site-packages/rever/tools.xsh\", line 207, in hash_url",
+   "    for b in stream_url_progress(url, verb='Hashing', quiet=quiet):",
+   "  File \"/opt/conda/envs/run_env/lib/python3.7/site-packages/rever/tools.xsh\", line 179, in stream_url_progress",
+   "    with urllib.request.urlopen(url) as f:",
+   "  File \"/opt/conda/envs/run_env/lib/python3.7/urllib/request.py\", line 222, in urlopen",
+   "    return opener.open(url, data, timeout)",
+   "  File \"/opt/conda/envs/run_env/lib/python3.7/urllib/request.py\", line 531, in open",
+   "    response = meth(req, response)",
+   "  File \"/opt/conda/envs/run_env/lib/python3.7/urllib/request.py\", line 641, in http_response",
+   "    'http', request, response, code, msg, hdrs)",
+   "  File \"/opt/conda/envs/run_env/lib/python3.7/urllib/request.py\", line 569, in error",
+   "    return self._call_chain(*args)",
+   "  File \"/opt/conda/envs/run_env/lib/python3.7/urllib/request.py\", line 503, in _call_chain",
+   "    result = func(*args)",
+   "  File \"/opt/conda/envs/run_env/lib/python3.7/urllib/request.py\", line 649, in http_error_default",
+   "    raise HTTPError(req.full_url, code, msg, hdrs, fp)",
+   "urllib.error.HTTPError: HTTP Error 404: Not Found",
+   ""
+  ],
+  "url":"https://github.com/libvips/libvips/releases/download/v8.8.4/vips-8.8.4a.zip"
+ },
  "conda-forge.yml":{},
  "feedstock_name":"libvips",
  "hash_type":"sha256",
@@ -260,7 +293,7 @@
   }
  },
  "name":"libvips",
- "new_version":"8.8.3",
+ "new_version":"8.8.4",
  "pinning_version":"2019.11.26",
  "raw_meta_yaml":"# Notes\n# \n# - `niftiio`, `openexr` and `libheif` are missing\n# \n# - `imagemagick` is built with `jpeg`, not `libjpeg-turbo`, so we must use\n#   `jpeg` too. This is very unfortunate. It would be good if IM could move\n#   to turbo as well.\n\n{% set name = \"libvips\" %}\n{% set version = \"8.8.3\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  url: https://github.com/libvips/libvips/releases/download/v{{ version }}/vips-{{ version }}a.tar.gz\n  sha256: 3fe3c323c942172d454983b53606afff62bb472d9038eceb4b583f5dfd04b812\n\nbuild:\n  number: 1\n  skip: true  # [win]\n  run_exports:\n    # SO name changes at minor rev bumps.\n    - {{ pin_subpackage('libvips', max_pin='x.x') }}\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n    - make\n    - pkg-config        # [not win]\n  host:\n    - bzip2 \n    - cairo \n    - cfitsio \n    - expat\n    - fftw\n    - fontconfig\n    - freetype\n    - gdk-pixbuf\n    - giflib\n    - glib\n    - gstreamer-orc <0.4.30\n    - hdf5\n    - imagemagick <7.0.9\n    - jpeg\n    - lcms2\n    - libexif\n    - libgsf\n    - libmatio\n    - libpng\n    - librsvg \n    - libtiff\n    - libwebp\n    - openslide\n    - pango\n    - poppler\n    - zlib\n  run:\n    - fftw\n    - gdk-pixbuf\n    - gstreamer-orc <0.4.30\n    - libexif\n    - libgsf\n    - libmatio\n    - librsvg \n    - libwebp\n    - libxml2\n    - imagemagick <7.0.9\n    - openslide\n    - pango\n    - poppler\n\ntest:\n  commands:\n    - vips --version\n\nabout:\n  home: https://libvips.github.io/libvips\n  license: LGPL-2.1\n  license_family: LGPL\n  license_file: COPYING\n  summary: 'A fast image processing library with low memory needs'\n  description: |\n    libvips is a demand-driven, horizontally threaded image processing\n    library. Compared to similar libraries, libvips runs quickly and uses\n    little memory.  It has around 300 operations covering arithmetic,\n    histograms, convolution, morphological operations, frequency filtering,\n    colour, resampling, statistics and others. It supports a large range of\n    numeric formats, from 8-bit int to 128-bit complex. Images can have any\n    number of bands. It supports a good range of image formats, including\n    JPEG, TIFF, OME-TIFF, PNG, WebP, FITS, Matlab, PDF, SVG, HDR,\n    PPM, CSV, GIF, Analyze, DeepZoom, and OpenSlide. It can also load images\n    via ImageMagick or GraphicsMagick, letting it load formats like DICOM.\n  doc_url: https://libvips.github.io/libvips/API/current\n  dev_url: https://github.com/libvips/libvips\n\nextra:\n  recipe-maintainers:\n    - sebastian-luna-valero\n    - jcupitt\n",
  "req":{

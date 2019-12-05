@@ -118,16 +118,15 @@
  "bad":false,
  "conda-forge.yml":{},
  "feedstock_name":"openfst",
- "hash_type":"sha1",
+ "hash_type":"sha256",
  "meta_yaml":{
   "about":{
-   "description":"OpenFST library was developed by contributors <http://www.openfst.org/twiki/bin/view/FST/FstContributors> from Google Research and NYU's Courant Institute. It is intended to be comprehensive, flexible, efficient and scale well to large problems.\n",
-   "dev_url":"http://www.openfst.org/twiki/bin/view/Forum/FstForum",
-   "doc_url":"http://www.openfst.org/doxygen/fst/html",
-   "home":"http://www.openfst.org/",
+   "description":"A library for constructing, combining, optimizing, and searching weighted\nfinite-state transducers (FSTs)\n",
+   "doc_url":"http://www.openfst.org/twiki/bin/view/FST/FstQuickTour",
+   "home":"http://openfst.org",
    "license":"Apache-2.0",
    "license_file":"COPYING",
-   "summary":"A library for constructing, combining, optimizing, and searching weighted finite-state transducers (FSTs)"
+   "summary":"Weighted finite-state transducers"
   },
   "build":{
    "number":"0",
@@ -135,51 +134,76 @@
   },
   "extra":{
    "recipe-maintainers":[
+    "183amir",
+    "kylebgorman",
     "mcernak",
     "183amir",
+    "kylebgorman",
     "mcernak",
     "183amir",
-    "mcernak",
-    "183amir"
+    "kylebgorman",
+    "mcernak"
    ]
   },
   "package":{
    "name":"openfst",
-   "version":"1.6.1"
+   "version":"1.7.5"
   },
   "requirements":{
    "build":[
-    "automake",
-    "c_compiler_stub",
     "cxx_compiler_stub",
-    "automake",
-    "c_compiler_stub",
+    "make",
     "cxx_compiler_stub",
-    "automake",
-    "c_compiler_stub",
-    "cxx_compiler_stub"
+    "make",
+    "cxx_compiler_stub",
+    "make"
    ],
-   "host":null
+   "host":[
+    "zlib",
+    "zlib",
+    "zlib"
+   ]
   },
   "source":{
-   "fn":"openfst-1.6.1.tar.gz",
-   "sha1":"c623a39394158cc5abd2e54c6dd7934b07394440",
-   "url":"http://www.openfst.org/twiki/pub/FST/FstDownload/openfst-1.6.1.tar.gz"
+   "sha256":"85031ee2052dcc7c4f2f7d224599ba6467481168e36df515edd44aa4fa6de0de",
+   "url":"http://www.openfst.org/twiki/pub/FST/FstDownload/openfst-1.7.5.tar.gz"
+  },
+  "test":{
+   "commands":[
+    "fstinfo --helpshort >/dev/null || [[ $? == 1 ]]",
+    "fstcompress --helpshort >/dev/null || [[ $? == 1 ]]",
+    "farinfo --helpshort >/dev/null || [[ $? == 1 ]]",
+    "fstspecial --helpshort >/dev/null || [[ $? == 1 ]]",
+    "mpdtcompose --helpshort >/dev/null || [[ $? == 1 ]]",
+    "pdtcompose --helpshort >/dev/null || [[ $? == 1 ]]",
+    "fstinfo --helpshort >/dev/null || [[ $? == 1 ]]",
+    "fstcompress --helpshort >/dev/null || [[ $? == 1 ]]",
+    "farinfo --helpshort >/dev/null || [[ $? == 1 ]]",
+    "fstspecial --helpshort >/dev/null || [[ $? == 1 ]]",
+    "mpdtcompose --helpshort >/dev/null || [[ $? == 1 ]]",
+    "pdtcompose --helpshort >/dev/null || [[ $? == 1 ]]",
+    "fstinfo --helpshort >/dev/null || [[ $? == 1 ]]",
+    "fstcompress --helpshort >/dev/null || [[ $? == 1 ]]",
+    "farinfo --helpshort >/dev/null || [[ $? == 1 ]]",
+    "fstspecial --helpshort >/dev/null || [[ $? == 1 ]]",
+    "mpdtcompose --helpshort >/dev/null || [[ $? == 1 ]]",
+    "pdtcompose --helpshort >/dev/null || [[ $? == 1 ]]"
+   ]
   }
  },
  "name":"openfst",
  "new_version":"1.7.5",
  "pinning_version":"2019.02.21",
- "raw_meta_yaml":"{% set version = \"1.6.1\" %}\n{% set sha256 = \"c623a39394158cc5abd2e54c6dd7934b07394440\" %}\n\npackage:\n  name: openfst\n  version: {{ version }}\n\nsource:\n  fn: openfst-{{ version }}.tar.gz\n  url: http://www.openfst.org/twiki/pub/FST/FstDownload/openfst-{{ version }}.tar.gz\n  sha1: {{ sha256 }}\n\nbuild:\n  number: 0\n  skip: true  # [win]\n\nrequirements:\n  build:\n    - automake\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n  host:\n\nabout:\n  home: http://www.openfst.org/\n  license: Apache-2.0\n  license_file: COPYING\n  summary: 'A library for constructing, combining, optimizing, and searching weighted finite-state transducers (FSTs)'\n  description: |\n    OpenFST library was developed by contributors <http://www.openfst.org/twiki/bin/view/FST/FstContributors> from Google Research and NYU's Courant Institute. It is intended to be comprehensive, flexible, efficient and scale well to large problems.\n  doc_url: http://www.openfst.org/doxygen/fst/html\n  dev_url: http://www.openfst.org/twiki/bin/view/Forum/FstForum\n\nextra:\n  recipe-maintainers:\n    - mcernak\n    - 183amir\n",
+ "raw_meta_yaml":"{% set name = \"openfst\" %}\n{% set version = \"1.7.5\" %}\n\npackage: \n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  url: http://www.openfst.org/twiki/pub/FST/FstDownload/{{ name }}-{{ version }}.tar.gz\n  sha256: 85031ee2052dcc7c4f2f7d224599ba6467481168e36df515edd44aa4fa6de0de\n  \nbuild:\n  number: 0\n  skip: true  # [win]\n\nrequirements:\n  build:\n    - {{ compiler('cxx') }}\n    - make\n  host:\n    - zlib\n\ntest:\n  # If behaving properly these will have return code 1.\n  commands:\n    - fstinfo --helpshort >/dev/null || [[ $? == 1 ]]\n    - fstcompress --helpshort >/dev/null || [[ $? == 1 ]]\n    - farinfo --helpshort >/dev/null || [[ $? == 1 ]]\n    - fstspecial --helpshort >/dev/null || [[ $? == 1 ]]\n    - mpdtcompose --helpshort >/dev/null || [[ $? == 1 ]]\n    - pdtcompose --helpshort >/dev/null || [[ $? == 1 ]]\n\nabout:\n  home: http://openfst.org\n  license: Apache-2.0\n  license_file: COPYING\n  summary: Weighted finite-state transducers\n  description: |\n    A library for constructing, combining, optimizing, and searching weighted \n    finite-state transducers (FSTs)\n  doc_url: http://www.openfst.org/twiki/bin/view/FST/FstQuickTour\n\nextra:\n  recipe-maintainers:\n    - 183amir\n    - kylebgorman\n    - mcernak\n",
  "req":{
   "__set__":true,
   "elements":[
-   "automake",
-   "c_compiler_stub",
-   "cxx_compiler_stub"
+   "cxx_compiler_stub",
+   "make",
+   "zlib"
   ]
  },
  "smithy_version":"3.2.14",
  "url":"http://www.openfst.org/twiki/pub/FST/FstDownload/openfst-1.6.1.tar.gz",
- "version":"1.6.1"
+ "version":"1.7.5"
 }

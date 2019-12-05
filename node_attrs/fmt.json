@@ -16,6 +16,23 @@
     "migrator_version",
     "version"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/349552360.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"Version",
+    "migrator_version":0,
+    "version":"6.1.1"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "version"
+   ]
   }
  ],
  "bad":false,
@@ -111,7 +128,7 @@
  },
  "name":"fmt",
  "new_version":"6.1.1",
- "pinning_version":"2019.11.26",
+ "pinning_version":"2019.12.02",
  "raw_meta_yaml":"{% set name = \"fmt\" %}\n{% set version = \"6.1.0\" %}\n{% set sha256 = \"8fb84291a7ed6b4db4769115b57fa56d5467b1ab8c3ba5bdf78c820e4bd17944\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  url: https://github.com/fmtlib/fmt/archive/{{ version }}.tar.gz\n  sha256: {{ sha256 }}\n  patches:\n    - patches/0001-Add-a-missing-decimal-point-in-exponent-notation-wit.patch\n    - patches/0002-Fix-compilation-with-MinGW.patch\n    - patches/0003-Update-ChangeLog.rst.patch\n    - patches/0004-Export-assert_fail-with-FMT_API.-This-fixes-dll-buil.patch\n    - patches/0005-Remove-unneeded-FMT_API.patch\n    - patches/0006-Remove-TYPES.patch\n    - patches/0007-Revert-1433-because-of-build-failures-1450.patch\n\nbuild:\n  number: 0\n  skip: True  # [win and vc<14]\n\nrequirements:\n  build:\n    - {{ compiler('cxx') }}\n    - cmake\n    - make  # [unix]\n\ntest:\n  commands:\n    - test -d ${PREFIX}/include/fmt  # [unix]\n    - test -f ${PREFIX}/include/fmt/core.h  # [unix]\n    - test -f ${PREFIX}/include/fmt/format.h  # [unix]\n    - test -f ${PREFIX}/lib/cmake/fmt/fmt-config.cmake  # [unix]\n    - test -f ${PREFIX}/lib/libfmt.so  # [linux]\n    - test -f ${PREFIX}/lib/libfmt.dylib  # [osx]\n    - if exist %LIBRARY_PREFIX%\\include\\fmt\\core.h (exit 0) else (exit 1)  # [win]\n    - if exist %LIBRARY_PREFIX%\\include\\fmt\\format.h (exit 0) else (exit 1)  # [win]\n    - if exist %LIBRARY_PREFIX%\\lib\\cmake\\fmt-config.cmake (exit 0) else (exit 1)  # [win]\n    - if exist %LIBRARY_PREFIX%\\bin\\fmt.dll (exit 0) else (exit 1)  # [win]\n\nabout:\n  home: https://fmt.dev/latest/\n  license: MIT\n  license_family: MIT\n  license_file: LICENSE.rst\n  summary: '{fmt} is an open-source formatting library for C++'\n  description: |\n    {fmt} is an open-source formatting library for C++.\n    It can be used as a safe and fast alternative to (s)printf and iostreams.\n  doc_url: https://fmt.dev/latest/\n  dev_url: https://github.com/fmtlib/fmt\n\nextra:\n  recipe-maintainers:\n    - tdegeus\n    - vitaut\n",
  "req":{
   "__set__":true,

@@ -154,6 +154,23 @@
     "migrator_version",
     "name"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/349552581.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"Version",
+    "migrator_version":0,
+    "version":"0.7.4"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "version"
+   ]
   }
  ],
  "bad":false,
@@ -276,7 +293,7 @@
  },
  "name":"msprime",
  "new_version":"0.7.4",
- "pinning_version":"2019.11.01",
+ "pinning_version":"2019.12.02",
  "raw_meta_yaml":"{% set name = \"msprime\" %}\n{% set version = \"0.7.3\" %}\n{% set sha256 = \"0af8d7ba577b66b150cb6ff03a3aa7d75e6824bf7f8241aad902393997e4a6ab\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz\n  sha256: {{ sha256 }}\n\nbuild:\n  number: 1\n  script: python -m pip install --no-deps --ignore-installed --verbose .\n  entry_points:\n    - mspms=msprime.cli:mspms_main\n    - msp=msprime.cli:msp_main\n  # We use this to skip Python2 builds rather than specifying python3 >=3.6 below\n  # as this broke windows builds.\n  skip: true  # [py<35]\n\n# Following the guidance here for building against numpy:\n# https://conda-forge.org/docs/meta.html#building-against-numpy\n# Not pinning GSL here because it is included in the conda-forge-pinning.\nrequirements:\n  build:\n    - {{ compiler('c') }}\n  host:\n    - setuptools\n    - setuptools_scm\n    - python \n    - pip\n    - numpy\n    - gsl\n  run:\n    - python\n    - {{ pin_compatible('numpy') }}\n    - gsl\n    - six\n    - h5py\n    - svgwrite\n    - jsonschema\n    - tskit\n\ntest:\n  imports:\n    - msprime\n  commands:\n    - mspms --help\n    - msp --help\n\nabout:\n  home: http://pypi.python.org/pypi/msprime\n  license: GPL-3.0\n  license_family: GPL\n  license_file: 'LICENSE'\n  summary: A fast and accurate coalescent simulator.\n  description: Reimplementation of Hudson's classical simulator using tskit.\n  doc_url: 'http://msprime.readthedocs.io/en/stable'\n  dev_url: 'https://github.com/jeromekelleher/msprime'\n\nextra:\n  recipe-maintainers:\n    - jeromekelleher\n",
  "req":{
   "__set__":true,
@@ -296,7 +313,7 @@
    "tskit"
   ]
  },
- "smithy_version":"3.6.1",
+ "smithy_version":"3.6.3",
  "url":"https://pypi.io/packages/source/m/msprime/msprime-0.7.3.tar.gz",
  "version":"0.7.3"
 }
