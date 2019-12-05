@@ -129,7 +129,7 @@
   },
   "build":{
    "number":"0",
-   "script":"python setup.py install --offline --single-version-externally-managed --record=record.txt"
+   "script":"-m pip install . --no-deps -vv"
   },
   "extra":{
    "recipe-maintainers":[
@@ -146,21 +146,27 @@
   },
   "package":{
    "name":"naima",
-   "version":"0.8.4"
+   "version":"0.9.0"
   },
   "requirements":{
-   "build":[
+   "host":[
     "python",
     "setuptools",
+    "setuptools_scm",
+    "pip",
     "python",
     "setuptools",
+    "setuptools_scm",
+    "pip",
     "python",
-    "setuptools"
+    "setuptools",
+    "setuptools_scm",
+    "pip"
    ],
    "run":[
     "python",
     "astropy >=1.0.2",
-    "emcee >=2.2.0",
+    "emcee >=2.2.0,<3.0",
     "corner",
     "matplotlib",
     "scipy",
@@ -168,7 +174,7 @@
     "pyyaml",
     "python",
     "astropy >=1.0.2",
-    "emcee >=2.2.0",
+    "emcee >=2.2.0,<3.0",
     "corner",
     "matplotlib",
     "scipy",
@@ -176,7 +182,7 @@
     "pyyaml",
     "python",
     "astropy >=1.0.2",
-    "emcee >=2.2.0",
+    "emcee >=2.2.0,<3.0",
     "corner",
     "matplotlib",
     "scipy",
@@ -185,9 +191,9 @@
    ]
   },
   "source":{
-   "fn":"naima-0.8.4.tar.gz",
-   "sha256":"db81fee78f4ed6e0230a4f22f967b56c3e1edf351bcbafbc8e3d7cecd4a5fe24",
-   "url":"https://pypi.io/packages/source/n/naima/naima-0.8.4.tar.gz"
+   "fn":"naima-0.9.0.tar.gz",
+   "sha256":"a4c2ead64673f763e1527c4ed925ab8416ae8c8eac3efebaae32174518082b59",
+   "url":"https://pypi.io/packages/source/n/naima/naima-0.9.0.tar.gz"
   },
   "test":{
    "imports":[
@@ -200,7 +206,7 @@
  "name":"naima",
  "new_version":"0.9.0",
  "pinning_version":"2019.11.01",
- "raw_meta_yaml":"{% set name = \"naima\" %}\n\n{% set version = \"0.8.4\" %}\n{% set hash_type = \"sha256\" %}\n{% set hash_value = \"db81fee78f4ed6e0230a4f22f967b56c3e1edf351bcbafbc8e3d7cecd4a5fe24\" %}\n\npackage:\n  name: '{{ name|lower }}'\n  version: '{{ version }}'\n\nsource:\n  fn: '{{ name }}-{{ version }}.tar.gz'\n  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz\n  '{{ hash_type }}': '{{ hash_value }}'\n\nbuild:\n  number: 0\n  script: python setup.py install --offline --single-version-externally-managed --record=record.txt\n  skip: true  # [osx and py35]\n\nrequirements:\n  build:\n    - python\n    - setuptools\n  run:\n    - python\n    - astropy >=1.0.2\n    - emcee >=2.2.0\n    - corner\n    - matplotlib\n    - scipy\n    - h5py\n    - pyyaml\n\ntest:\n  imports:\n    - naima\n\nabout:\n  home: http://github.com/zblz/naima\n  license: BSD 3-clause\n  license_family: BSD\n  license_file: LICENSE.rst\n  summary: Derivation of non-thermal particle distributions through MCMC spectral fitting\n  description: |\n    naima is a Python package for computation of non-thermal radiation from\n    relativistic particle populations. It includes tools to perform MCMC\n    fitting of radiative models to X-ray, GeV, and TeV spectra using emcee, an\n    affine-invariant ensemble sampler for Markov Chain Monte Carlo.\n  doc_url: https://naima.readthedocs.io\n  dev_url: http://github.com/zblz/naima\n\nextra:\n  recipe-maintainers:\n    - mwcraig\n    - bsipocz\n    - zblz\n",
+ "raw_meta_yaml":"{% set name = \"naima\" %}\n\n{% set version = \"0.9.0\" %}\n{% set hash_type = \"sha256\" %}\n{% set hash_value = \"a4c2ead64673f763e1527c4ed925ab8416ae8c8eac3efebaae32174518082b59\" %}\n\npackage:\n  name: '{{ name|lower }}'\n  version: '{{ version }}'\n\nsource:\n  fn: '{{ name }}-{{ version }}.tar.gz'\n  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz\n  '{{ hash_type }}': '{{ hash_value }}'\n\nbuild:\n  # noarch: python\n  number: 0\n  script: {{ PYTHON }} -m pip install . --no-deps -vv\n  skip: True  # [py2k]\n\nrequirements:\n  host:\n    - python\n    - setuptools\n    - setuptools_scm\n    - pip\n  run:\n    - python\n    - astropy >=1.0.2\n    - emcee >=2.2.0,<3.0\n    - corner\n    - matplotlib\n    - scipy\n    - h5py\n    - pyyaml\n\ntest:\n  imports:\n    - naima\n\nabout:\n  home: http://github.com/zblz/naima\n  license: BSD 3-clause\n  license_family: BSD\n  license_file: LICENSE.rst\n  summary: Derivation of non-thermal particle distributions through MCMC spectral fitting\n  description: |\n    naima is a Python package for computation of non-thermal radiation from\n    relativistic particle populations. It includes tools to perform MCMC\n    fitting of radiative models to X-ray, GeV, and TeV spectra using emcee, an\n    affine-invariant ensemble sampler for Markov Chain Monte Carlo.\n  doc_url: https://naima.readthedocs.io\n  dev_url: http://github.com/zblz/naima\n\nextra:\n  recipe-maintainers:\n    - mwcraig\n    - bsipocz\n    - zblz\n",
  "req":{
   "__set__":true,
   "elements":[
@@ -209,13 +215,15 @@
    "emcee",
    "h5py",
    "matplotlib",
+   "pip",
    "python",
    "pyyaml",
    "scipy",
-   "setuptools"
+   "setuptools",
+   "setuptools_scm"
   ]
  },
  "smithy_version":"3.6.2",
  "url":"https://pypi.io/packages/source/n/naima/naima-0.8.4.tar.gz",
- "version":"0.8.4"
+ "version":"0.9.0"
 }
