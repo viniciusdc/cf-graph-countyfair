@@ -137,6 +137,23 @@
     "migrator_version",
     "name"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/350118077.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"Version",
+    "migrator_version":0,
+    "version":"0.1.12"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "version"
+   ]
   }
  ],
  "bad":false,
@@ -260,8 +277,8 @@
   }
  },
  "name":"tectonic",
- "new_version":false,
- "pinning_version":"2019.07.20",
+ "new_version":"0.1.12",
+ "pinning_version":"2019.12.02",
  "raw_meta_yaml":"{% set name = \"tectonic\" %}\n{% set version = \"0.1.11\" %}\n{% set sha256 = \"cfb7dfc2995c753049e2ac009f4f8ee5b3951d721e169132551d92b1098c2f1a\" %}\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  fn: {{ name }}-{{ version }}.tar.gz\n  url: https://crates.io/api/v1/crates/{{ name }}/{{ version }}/download\n  sha256: {{ sha256 }}\n  patches:\n    - fix-format-macros.patch\n\nbuild:\n  number: 1002\n\nrequirements:\n  build:\n    - rust\n    - {{posix}}patch         # [win]\n    - {{native}}pkg-config\n    - {{ compiler('c') }}    # [not win]\n    - {{ compiler('cxx') }}  # [not win]\n    - vs2015_win-64          # [win] -- VS2008 too annoying to support\n\n  host:\n    - fontconfig  # [not osx]\n    - freetype\n    - graphite2\n    - harfbuzz\n    - icu\n    - libpng >=1.6.35  # [win] -- needed for some reason to get a package new enough to have a pkg-config file\n    - openssl\n    - zlib\n\n  run:\n    - fontconfig  # [not osx]\n    - freetype\n    - graphite2\n    - harfbuzz\n    - icu\n    - libpng\n    - openssl\n    - zlib\n\ntest:\n  commands:\n    - conda inspect linkages -p $PREFIX $PKG_NAME  # [not win]\n    - conda inspect objects -p $PREFIX $PKG_NAME  # [osx]\n    - tectonic --help\n\nabout:\n  home: https://tectonic-typesetting.github.io/\n  license: MIT\n  license_family: MIT\n  license_file: LICENSE\n  summary: 'A modernized, complete, standalone TeX/LaTeX engine.'\n  doc_url: https://tectonic-typesetting.github.io/learn.html\n  dev_url: https://github.com/tectonic-typesetting/tectonic/\n\nextra:\n  recipe-maintainers:\n    - pkgw\n",
  "req":{
   "__set__":true,
@@ -282,7 +299,7 @@
    "zlib"
   ]
  },
- "smithy_version":"3.4.1",
+ "smithy_version":"3.6.3",
  "url":"https://crates.io/api/v1/crates/tectonic/0.1.11/download",
  "version":"0.1.11"
 }
