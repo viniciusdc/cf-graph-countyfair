@@ -128,6 +128,7 @@
    "home":"https://github.com/uweschmitt/autowrap",
    "license":"BSD-3-Clause",
    "license_family":"BSD",
+   "license_file":"LICENSE",
    "summary":"Generates Python Extension modules from commented Cython CXD files"
   },
   "build":{
@@ -136,8 +137,9 @@
     "autowrap = autowrap.Main:main",
     "autowrap = autowrap.Main:main"
    ],
-   "number":"1000",
-   "script":"python setup.py install --single-version-externally-managed --record record.txt"
+   "noarch":"python",
+   "number":"0",
+   "script":"-m pip install . --ignore-installed --no-deps -vv"
   },
   "extra":{
    "recipe-maintainers":[
@@ -148,41 +150,30 @@
   },
   "package":{
    "name":"autowrap",
-   "version":"0.18.1"
+   "version":"0.20.0"
   },
   "requirements":{
-   "build":[
-    "c_compiler_stub",
-    "c_compiler_stub",
-    "c_compiler_stub"
-   ],
    "host":[
     "python",
-    "setuptools",
-    "cython >=0.19",
+    "pip",
     "python",
-    "setuptools",
-    "cython >=0.19",
+    "pip",
     "python",
-    "setuptools",
-    "cython >=0.19"
+    "pip"
    ],
    "run":[
     "python",
-    "setuptools",
     "cython >=0.19",
     "python",
-    "setuptools",
     "cython >=0.19",
     "python",
-    "setuptools",
     "cython >=0.19"
    ]
   },
   "source":{
-   "fn":"autowrap-0.18.1.tar.gz",
-   "sha256":"dbea9bfbc4ec694e2e4d8c61451c5d17852dd2775950bdcae7f24e5dd1dee190",
-   "url":"https://pypi.io/packages/source/a/autowrap/autowrap-0.18.1.tar.gz"
+   "fn":"autowrap-0.20.0.tar.gz",
+   "sha256":"805d91639fe45f897a9184e942aae9e53c6e8d16e65efba336c528fbd6853afd",
+   "url":"https://pypi.io/packages/source/a/autowrap/autowrap-0.20.0.tar.gz"
   },
   "test":{
    "commands":[
@@ -203,17 +194,16 @@
  "name":"autowrap",
  "new_version":"0.20.0",
  "pinning_version":"2019.11.01",
- "raw_meta_yaml":"{% set name = \"autowrap\" %}\n{% set version = \"0.18.1\" %}\n{% set sha256 = \"dbea9bfbc4ec694e2e4d8c61451c5d17852dd2775950bdcae7f24e5dd1dee190\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  fn: {{ name }}-{{ version }}.tar.gz\n  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz\n  sha256: {{ sha256 }}\n\nbuild:\n  number: 1000\n  script: python setup.py install --single-version-externally-managed --record record.txt\n  entry_points:\n    - autowrap = autowrap.Main:main\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n  host:\n    - python\n    - setuptools\n    - cython >=0.19\n  run:\n    - python\n    - setuptools\n    - cython >=0.19\n\ntest:\n  imports:\n    - autowrap\n    - autowrap.data_files\n  commands:\n    - autowrap --version\n\nabout:\n  home: https://github.com/uweschmitt/autowrap\n  license: BSD-3-Clause\n  license_family: BSD\n  # autowrap does not include its license file in the latest pypi release,\n  # but will in the next release.  (TODO for next release)\n  summary: 'Generates Python Extension modules from commented Cython CXD files'\n  dev_url: https://github.com/uweschmitt/autowrap\n\nextra:\n  recipe-maintainers:\n    - aseyboldt\n",
+ "raw_meta_yaml":"{% set name = \"autowrap\" %}\n{% set version = \"0.20.0\" %}\n{% set sha256 = \"805d91639fe45f897a9184e942aae9e53c6e8d16e65efba336c528fbd6853afd\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  fn: {{ name }}-{{ version }}.tar.gz\n  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz\n  sha256: {{ sha256 }}\n\nbuild:\n  number: 0\n  noarch: python\n  script: {{ PYTHON }} -m pip install . --ignore-installed --no-deps -vv\n  entry_points:\n    - autowrap = autowrap.Main:main\n\nrequirements:\n  host:\n    - python\n    - pip\n  run:\n    - python\n    - cython >=0.19\n\ntest:\n  imports:\n    - autowrap\n    - autowrap.data_files\n  commands:\n    - autowrap --version\n\nabout:\n  home: https://github.com/uweschmitt/autowrap\n  license: BSD-3-Clause\n  license_family: BSD\n  license_file: LICENSE\n  summary: 'Generates Python Extension modules from commented Cython CXD files'\n  dev_url: https://github.com/uweschmitt/autowrap\n\nextra:\n  recipe-maintainers:\n    - aseyboldt\n",
  "req":{
   "__set__":true,
   "elements":[
-   "c_compiler_stub",
    "cython",
-   "python",
-   "setuptools"
+   "pip",
+   "python"
   ]
  },
  "smithy_version":"3.6.1",
  "url":"https://pypi.io/packages/source/a/autowrap/autowrap-0.18.1.tar.gz",
- "version":"0.18.1"
+ "version":"0.20.0"
 }
