@@ -47,6 +47,23 @@
     "migrator_version",
     "name"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/349784396.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"Version",
+    "migrator_version":0,
+    "version":"0.14.0"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "version"
+   ]
   }
  ],
  "bad":false,
@@ -167,8 +184,8 @@
   }
  },
  "name":"r-r.cache",
- "new_version":"0.13.0",
- "pinning_version":"2019.07.15",
+ "new_version":"0.14.0",
+ "pinning_version":"2019.12.02",
  "raw_meta_yaml":"{% set version = '0.13.0' %}\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-r.cache\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  fn: R.cache_{{ version }}.tar.gz\n  url:\n    - {{ cran_mirror }}/src/contrib/R.cache_{{ version }}.tar.gz\n    - {{ cran_mirror }}/src/contrib/Archive/R.cache/R.cache_{{ version }}.tar.gz\n  sha256: d3d4a99a676734ea53e96747d87857fa69615e59858804e92f8ad9ddcf62c5c1\n\nbuild:\n  noarch: generic\n  merge_build_host: True  # [win]\n  number: 1002\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - {{posix}}zip               # [win]\n  host:\n    - r-base\n    - r-r.methodss3 >=1.7.1\n    - r-r.oo >=1.21.0\n    - r-r.utils >=2.6.0\n    - r-digest >=0.6.13\n  run:\n    - r-base\n    - r-r.methodss3 >=1.7.1\n    - r-r.oo >=1.21.0\n    - r-r.utils >=2.6.0\n    - r-digest >=0.6.13\n\ntest:\n  commands:\n    - $R -e \"library('R.cache')\"           # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('R.cache')\\\"\"  # [win]\n\nabout:\n  home: https://github.com/HenrikBengtsson/R.cache\n  license: LGPL (>= 2.1)\n  summary: Memoization can be used to speed up repetitive and computational expensive function\n    calls.  The first time a function that implements memoization is called the results\n    are stored in a cache memory.  The next time the function is called with the same\n    set of parameters, the results are momentarily retrieved from the cache avoiding\n    repeating the calculations.  With this package, any R object can be cached in a\n    key-value storage where the key can be an arbitrary set of R objects.  The cache\n    memory is persistent (on the file system).\n  license_family: LGPL\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n    - johanneskoester\n    - bgruening\n    - daler\n    - jdblischak\n    - cbrueffer\n    - dbast\n",
  "req":{
   "__set__":true,
@@ -180,7 +197,7 @@
    "r-r.utils"
   ]
  },
- "smithy_version":"3.4.1",
+ "smithy_version":"3.6.3",
  "url":[
   "https://cran.r-project.org/src/contrib/R.cache_0.13.0.tar.gz",
   "https://cran.r-project.org/src/contrib/Archive/R.cache/R.cache_0.13.0.tar.gz",
