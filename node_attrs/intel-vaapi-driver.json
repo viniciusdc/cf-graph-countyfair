@@ -50,6 +50,23 @@
     "migrator_version",
     "version"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/349822399.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"Version",
+    "migrator_version":0,
+    "version":"2.4.0"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "version"
+   ]
   }
  ],
  "bad":false,
@@ -125,8 +142,8 @@
   }
  },
  "name":"intel-vaapi-driver",
- "new_version":"2.4.0.pre1",
- "pinning_version":"2019.11.20",
+ "new_version":"2.4.0",
+ "pinning_version":"2019.12.02",
  "raw_meta_yaml":"{% set name = \"intel-vaapi-driver\" %}\n{% set version = \"2.3.0\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  url: https://github.com/intel/{{ name }}/releases/download/{{ version }}/{{ name }}-{{ version }}.tar.bz2\n  sha1: 89096f99da753ac5858304e6c17f5dd9e7581d5b\n\nbuild:\n  skip: True  # [not linux]\n  number: 1000\n  # https://github.com/intel/intel-vaapi-driver/blob/master/NEWS\n  run_exports:\n    - {{ pin_subpackage('intel-vaapi-driver', max_pin='x.x') }}\n  script:\n    - ./configure --prefix=$PREFIX --enable-hybrid-codec\n    - make -j$(nproc) install\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - pkg-config\n  host:\n    - intel-hybrid-driver\n\ntest:\n  commands:\n    - test -f $PREFIX/lib/dri/i965_drv_video.so\n\nabout:\n  home: https://github.com/intel/intel-vaapi-driver\n  license: MIT\n  license_family: MIT\n  license_file: COPYING\n  summary: 'VA-API (Video Acceleration API) user mode driver for Intel GEN Graphics family'\n\n  # The remaining entries in this section are optional, but recommended\n  description: |\n    VA-API is an open-source library and API specification, which provides\n    access to graphics hardware acceleration capabilities for video processing.\n    It consists of a main library and driver-specific acceleration backends for\n    each supported hardware vendor.\n\n    The current video driver backend provides a bridge to the GEN GPUs through\n    the packaging of buffers and commands to be sent to the i915 driver for\n    exercising both hardware and shader functionality for video decode, encode,\n    and processing.\n\nextra:\n  recipe-maintainers:\n    - hmaarrfk\n",
  "req":{
   "__set__":true,
@@ -136,7 +153,7 @@
    "pkg-config"
   ]
  },
- "smithy_version":"3.6.2",
+ "smithy_version":"3.6.3",
  "url":"https://github.com/intel/intel-vaapi-driver/releases/download/2.3.0/intel-vaapi-driver-2.3.0.tar.bz2",
  "version":"2.3.0"
 }
