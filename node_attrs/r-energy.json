@@ -81,7 +81,22 @@
    ]
   }
  ],
- "bad":false,
+ "bad":{
+  "exception":"local variable 'hash' referenced before assignment",
+  "traceback":[
+   "Traceback (most recent call last):",
+   "  File \"/root/repo/cf-scripts/conda_forge_tick/auto_tick.xsh\", line 745, in main",
+   "    hash_type=attrs.get('hash_type', 'sha256'))",
+   "  File \"/root/repo/cf-scripts/conda_forge_tick/auto_tick.xsh\", line 98, in run",
+   "    migrate_return = migrator.migrate(recipe_dir, attrs, **kwargs)",
+   "  File \"/root/repo/cf-scripts/conda_forge_tick/migrators.xsh\", line 467, in migrate",
+   "    new_patterns = self.get_hash_patterns('meta.yaml', urls, hash_type)",
+   "  File \"/root/repo/cf-scripts/conda_forge_tick/migrators.xsh\", line 394, in get_hash_patterns",
+   "    n = '{}: {}'.format(hash_type, hash)",
+   "UnboundLocalError: local variable 'hash' referenced before assignment",
+   ""
+  ]
+ },
  "conda-forge.yml":{
   "compiler_stack":"comp7",
   "max_py_ver":"37",
@@ -187,7 +202,7 @@
   }
  },
  "name":"r-energy",
- "new_version":"1.7_6",
+ "new_version":"1.7_7",
  "pinning_version":"2019.07.15",
  "raw_meta_yaml":"{% set version = '1.7-6' %}\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-energy\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  url:\n    - {{ cran_mirror }}/src/contrib/energy_{{ version }}.tar.gz\n    - {{ cran_mirror }}/src/contrib/Archive/energy/energy_{{ version }}.tar.gz\n  sha256: 900edbb28e1f1bccd78580828470628cf75eb6333b63e1a58e4da7fc5c5fa89a\n\nbuild:\n  merge_build_host: True  # [win]\n  number: 0\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - {{ compiler('c') }}              # [not win]\n    - {{ compiler('m2w64_c') }}        # [win]\n    - {{ compiler('cxx') }}            # [not win]\n    - {{ compiler('m2w64_cxx') }}      # [win]\n    - {{posix}}filesystem        # [win]\n    - {{posix}}make\n    - {{posix}}sed               # [win]\n    - {{posix}}coreutils         # [win]\n    - {{posix}}zip               # [win]\n  host:\n    - r-base\n    - r-rcpp >=0.12.6\n    - r-boot\n  run:\n    - r-base\n    - {{native}}gcc-libs         # [win]\n    - r-rcpp >=0.12.6\n    - r-boot\n\ntest:\n  commands:\n    - $R -e \"library('energy')\"           # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('energy')\\\"\"  # [win]\n\nabout:\n  home: https://github.com/mariarizzo/energy\n  license: GPL-2\n  summary: E-statistics (energy) tests and statistics for multivariate and univariate inference,\n    including distance correlation, one-sample, two-sample, and multi-sample tests for\n    comparing multivariate distributions, are implemented. Measuring and testing multivariate\n    independence based on distance correlation, partial distance correlation, multivariate\n    goodness-of-fit tests, k-groups and hierarchical clustering based on energy  distance,\n    testing for multivariate normality, distance components (disco) for non-parametric  analysis\n    of structured data, and other energy statistics/methods are implemented.\n  license_family: GPL2\n  license_file:\n    - '{{ environ[\"PREFIX\"] }}/lib/R/share/licenses/GPL-2'\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n\n# Package: energy\n# Title: E-Statistics: Multivariate Inference via the Energy of Data\n# Version: 1.7-6\n# Date: 2019-07-04\n# Authors@R: c( person(\"Maria\", \"Rizzo\", , \"mrizzo@bgsu.edu\", c(\"aut\", \"cre\")), person(\"Gabor\", \"Szekely\", , , \"aut\"))\n# Description: E-statistics (energy) tests and statistics for multivariate and univariate inference, including distance correlation, one-sample, two-sample, and multi-sample tests for comparing multivariate distributions, are implemented. Measuring and testing multivariate independence based on distance correlation, partial distance correlation, multivariate goodness-of-fit tests, k-groups and hierarchical clustering based on energy  distance, testing for multivariate normality, distance components (disco) for non-parametric  analysis of structured data, and other energy statistics/methods are implemented.\n# Imports: Rcpp (>= 0.12.6), stats, boot\n# LinkingTo: Rcpp\n# Suggests: MASS, CompQuadForm\n# Depends: R (>= 2.10)\n# URL: https://github.com/mariarizzo/energy\n# License: GPL (>= 2)\n# NeedsCompilation: yes\n# Repository: CRAN\n# Packaged: 2019-07-05 23:21:29 UTC; maria\n# Author: Maria Rizzo [aut, cre], Gabor Szekely [aut]\n# Maintainer: Maria Rizzo <mrizzo@bgsu.edu>\n# Date/Publication: 2019-07-06 15:40:03 UTC\n",
  "req":{
