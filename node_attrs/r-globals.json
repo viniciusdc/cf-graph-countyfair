@@ -115,6 +115,23 @@
     "migrator_version",
     "name"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/350348646.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"Version",
+    "migrator_version":0,
+    "version":"0.12.5"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "version"
+   ]
   }
  ],
  "bad":false,
@@ -217,8 +234,8 @@
   }
  },
  "name":"r-globals",
- "new_version":"0.12.4",
- "pinning_version":"2019.07.15",
+ "new_version":"0.12.5",
+ "pinning_version":"2019.12.02",
  "raw_meta_yaml":"{% set version = \"0.12.4\" %}\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-globals\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  fn: globals_{{ version }}.tar.gz\n  url:\n    - {{ cran_mirror }}/src/contrib/globals_{{ version }}.tar.gz\n    - {{ cran_mirror }}/src/contrib/Archive/globals/globals_{{ version }}.tar.gz\n  sha256: 7985356ad75afa1f795f8267a20dee847020c0207252dc075c614cef55d8fe6b\n\nbuild:\n  noarch: generic\n  merge_build_host: True  # [win]\n  number: 1\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - {{posix}}zip               # [win]\n  host:\n    - r-base\n    - r-codetools\n  run:\n    - r-base\n    - r-codetools\n\ntest:\n  commands:\n    - $R -e \"library('globals')\"           # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('globals')\\\"\"  # [win]\n\nabout:\n  home: https://github.com/HenrikBengtsson/globals\n  license: LGPL (>= 2.1)\n  summary: Identifies global (\"unknown\" or \"free\") objects in R expressions by code inspection\n    using various strategies, e.g. conservative or liberal. The objective of this package\n    is to make it as simple as possible to identify global objects for the purpose of\n    exporting them in distributed compute environments.\n  license_family: LGPL\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n    - johanneskoester\n    - bgruening\n    - daler\n    - jdblischak\n    - cbrueffer\n    - dbast\n",
  "req":{
   "__set__":true,
@@ -227,7 +244,7 @@
    "r-codetools"
   ]
  },
- "smithy_version":"3.4.1",
+ "smithy_version":"3.6.3",
  "url":[
   "https://cran.r-project.org/src/contrib/globals_0.12.4.tar.gz",
   "https://cran.r-project.org/src/contrib/Archive/globals/globals_0.12.4.tar.gz",
