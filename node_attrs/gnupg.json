@@ -194,6 +194,23 @@
     "migrator_version",
     "version"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/350305810.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"Version",
+    "migrator_version":0,
+    "version":"2.2.19"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "version"
+   ]
   }
  ],
  "bad":false,
@@ -315,8 +332,8 @@
   }
  },
  "name":"gnupg",
- "new_version":"2.2.18",
- "pinning_version":"2019.11.20",
+ "new_version":"2.2.19",
+ "pinning_version":"2019.12.02",
  "raw_meta_yaml":"{% set name = \"gnupg\" %}\n{% set version = \"2.2.17\" %}\n{% set sha256 = \"afa262868e39b651a2db4c071fba90415154243e83a830ca00516f9a807fd514\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  fn: {{ name }}-{{ version }}.tar.gz\n  url: https://www.gnupg.org/ftp/gcrypt/gnupg/gnupg-{{ version }}.tar.bz2\n  sha256: {{ sha256 }}\n\nbuild:\n  number: 0\n  script:\n    - export CPPFLAGS=\"-DIN_EXCL_UNLINK=0x04000000 $CPPFLAGS\"  # [linux]\n    - export LDFLAGS=\"-lrt $LDFLAGS\"                           # [linux]\n    - ./configure --prefix=\"$PREFIX\"\n    - make\n    - make install\n  skip: true  # [win]\n  run_exports:\n    - {{ pin_subpackage('gnupg', max_pin='x.x') }}\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n  host:\n    - bzip2\n    - sqlite\n    - libgcrypt\n    - libgpg-error\n    - libksba\n    - libassuan\n    - ntbtls\n    - npth\n    - readline\n    - libiconv\n  run:\n    - bzip2\n    - readline\n    - libiconv\n    - sqlite\n\ntest:\n  commands:\n    - gpg --help\n    - conda inspect linkages {{ name }}  # [unix]\n    - conda inspect objects {{ name }}   # [osx]\n\nabout:\n  home: https://www.gnupg.org\n  summary: The New GNU Privacy Guard\n  license: LGPL-3\n  license_family: GPL\n  license_file: COPYING\n  description: |\n    GnuPG is a complete and free implementation of the OpenPGP standard as defined\n    by RFC4880 (also known as PGP). GnuPG allows you to encrypt and sign your data\n    and communications; it features a versatile key management system, along with\n    access modules for all kinds of public key directories. GnuPG, also known as GPG,\n    is a command line tool with features for easy integration with other applications.\n    A wealth of frontend applications and libraries are available. GnuPG also provides\n    support for S/MIME and Secure Shell (ssh).\n\nextra:\n  recipe-maintainers:\n    - mariusvniekerk\n",
  "req":{
   "__set__":true,
@@ -335,7 +352,7 @@
    "sqlite"
   ]
  },
- "smithy_version":"3.6.2",
+ "smithy_version":"3.6.3",
  "url":"https://www.gnupg.org/ftp/gcrypt/gnupg/gnupg-2.2.17.tar.bz2",
  "version":"2.2.17"
 }
