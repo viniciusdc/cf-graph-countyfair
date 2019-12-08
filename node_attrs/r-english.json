@@ -66,7 +66,22 @@
    ]
   }
  ],
- "bad":false,
+ "bad":{
+  "exception":"local variable 'hash' referenced before assignment",
+  "traceback":[
+   "Traceback (most recent call last):",
+   "  File \"/root/repo/cf-scripts/conda_forge_tick/auto_tick.xsh\", line 745, in main",
+   "    hash_type=attrs.get('hash_type', 'sha256'))",
+   "  File \"/root/repo/cf-scripts/conda_forge_tick/auto_tick.xsh\", line 98, in run",
+   "    migrate_return = migrator.migrate(recipe_dir, attrs, **kwargs)",
+   "  File \"/root/repo/cf-scripts/conda_forge_tick/migrators.xsh\", line 467, in migrate",
+   "    new_patterns = self.get_hash_patterns('meta.yaml', urls, hash_type)",
+   "  File \"/root/repo/cf-scripts/conda_forge_tick/migrators.xsh\", line 394, in get_hash_patterns",
+   "    n = '{}: {}'.format(hash_type, hash)",
+   "UnboundLocalError: local variable 'hash' referenced before assignment",
+   ""
+  ]
+ },
  "conda-forge.yml":{
   "compiler_stack":"comp7",
   "max_py_ver":"37",
@@ -145,7 +160,7 @@
   }
  },
  "name":"r-english",
- "new_version":"1.2_3",
+ "new_version":"1.2_4",
  "pinning_version":"2019.07.15",
  "raw_meta_yaml":"{% set version = '1.2-3' %}\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-english\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  url:\n    - {{ cran_mirror }}/src/contrib/english_{{ version }}.tar.gz\n    - {{ cran_mirror }}/src/contrib/Archive/english/english_{{ version }}.tar.gz\n  sha256: 28394ff685a321fb52265a221f85f0fba5fe46149caee3695df1ead43f1fd2bf\n\nbuild:\n  merge_build_host: True  # [win]\n  number: 1\n  noarch: generic\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - {{posix}}zip               # [win]\n  host:\n    - r-base\n  run:\n    - r-base\n\ntest:\n  commands:\n    - $R -e \"library('english')\"           # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('english')\\\"\"  # [win]\n\nabout:\n  home: https://CRAN.R-project.org/package=english\n  license: GPL-2\n  summary: Allow numbers to be presented in an English language version, one, two, three, ...  Ordinals\n    are also available, first, second, third, ...\n  license_family: GPL2\n  license_file: '{{ environ[\"PREFIX\"] }}/lib/R/share/licenses/GPL-2'\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n    - CurtLH\n\n# Package: english\n# Type: Package\n# Title: Translate Integers into English\n# Version: 1.2-3\n# Date: 2019-03-16\n# Author: John Fox, Bill Venables, Anthony Damico and Anne Pier Salverda\n# Maintainer: Bill Venables <Bill.Venables@gmail.com>\n# Description: Allow numbers to be presented in an English language version, one, two, three, ...  Ordinals are also available, first, second, third, ...\n# Suggests: utils, knitr, rmarkdown\n# License: GPL-2\n# LazyLoad: yes\n# NeedsCompilation: no\n# Encoding: UTF-8\n# RoxygenNote: 6.1.1\n# VignetteBuilder: knitr\n# Packaged: 2019-03-23 06:11:28 UTC; bill\n# Repository: CRAN\n# Date/Publication: 2019-03-23 06:30:03 UTC\n",
  "req":{
