@@ -152,7 +152,7 @@
   },
   "package":{
    "name":"ostaphep",
-   "version":"1.4.3.0"
+   "version":"1.4.4.0"
   },
   "requirements":{
    "build":[
@@ -170,41 +170,56 @@
     "make"
    ],
    "host":[
-    "root >=6.16.0",
+    "root_base",
+    "root-binaries",
     "python",
-    "ipython",
     "gsl",
-    "root >=6.16.0",
+    "root_base",
+    "root-binaries",
     "python",
-    "ipython",
     "gsl",
-    "root >=6.16.0",
+    "root_base",
+    "root-binaries",
     "python",
-    "ipython",
     "gsl"
    ],
    "run":[
     "python",
-    "root",
     "future",
     "ipython",
-    "gsl",
+    "scipy",
+    "numpy",
+    "pathos",
+    "dill",
+    "multiprocess",
+    "ppft",
+    "terminaltables",
     "python",
-    "root",
     "future",
     "ipython",
-    "gsl",
+    "scipy",
+    "numpy",
+    "pathos",
+    "dill",
+    "multiprocess",
+    "ppft",
+    "terminaltables",
     "python",
-    "root",
     "future",
     "ipython",
-    "gsl"
+    "scipy",
+    "numpy",
+    "pathos",
+    "dill",
+    "multiprocess",
+    "ppft",
+    "terminaltables"
    ]
   },
   "source":{
    "folder":"ostap",
-   "sha256":"be1b31e5f43a290c3e3d6a785d3ce945839eb6e038af7c69344dc62c4cf6b96e",
-   "url":"https://github.com/OstapHEP/ostap/archive/1.4.3.0.tar.gz"
+   "sha256":"6bd56c21689c30bc018fa5c3bacb4a567c5cfc6cb2627b85ed1b824005acae16",
+   "url":"https://github.com/OstapHEP/ostap/archive/v1.4.4.0.tar.gz"
   },
   "test":{
    "imports":[
@@ -218,24 +233,32 @@
   }
  },
  "name":"ostaphep",
- "new_version":"1.4.3.1",
+ "new_version":"1.4.5.0",
  "pinning_version":"2019.11.01",
- "raw_meta_yaml":"{% set name = \"OstapHEP\" %}\n{% set version = \"1.4.3.0\" %}\n{% set hash = \"be1b31e5f43a290c3e3d6a785d3ce945839eb6e038af7c69344dc62c4cf6b96e\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  url: https://github.com/OstapHEP/ostap/archive/{{ version }}.tar.gz\n  sha256: {{ hash }}\n  folder: ostap\n\nbuild:\n  number: 0\n  skip: True  # [not linux]  \n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n    - cmake\n    - make\n  host:\n    - root >=6.16.0\n    - python\n    - ipython\n    - gsl\n  run:\n    - python \n    - root \n    - future\n    - ipython\n    - gsl\ntest:\n  imports:\n    - ostap\n    - ostap.core.core\nabout:\n  home: https://github.com/OstapHEP/ostap\n  license: BSD-3-Clause \n  license_family: BSD\n  license_file: ostap/LICENSE\n  dev_url: https://github.com/OstapHEP/ostap\n  summary: |\n       The Ostap project is a community-driven \n       initiative aiming to provide more user friendly and more intuitive interface\n       to ROOT and PyROOT and extending the existing functionality.\n  description: |\n      Nowadays ROOT and PyROOT are de-facto standard tools for performing physics analysis.\n      The Ostap project is a community-driven initiative aiming to provide more user friendly \n      and more intuitive interface to ROOT and PyROOT and extending the existing functionality.\n      Project started in 2009 from the private collections of python functions\n      used in Kali - framework for calibration of LHCb electromagnetic calorimeter. \n      A lot of functionality is picked from Bender project - python based physics analysis environment used in LHCb experiemnt.\n      Till Autumn 2016 the project was a part of LHCb software suit and with great success has been used \n      for preparation of approximately 30 physics papers. A standalone, LHCb independent version, has appeared at start of 2017\n      Key features include:\n       * Very easy manipulations with ROOT and RooFit objects: histograms, trees, datasets, etc\n       * Very easy interface to RooFit machinery\n       * Extended set of models.PDFs for RooFit\n       * Powerful, pickle-based persistency for object\n       * Interactive ostap analysis environment\nextra:\n  recipe-maintainers:\n    - TatianaOvsiannikova\n    - VanyaBelyaev\n",
+ "raw_meta_yaml":"{% set name = \"OstapHEP\" %}\n{% set version = \"1.4.4.0\" %}\n{% set hash = \"6bd56c21689c30bc018fa5c3bacb4a567c5cfc6cb2627b85ed1b824005acae16\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  url: https://github.com/OstapHEP/ostap/archive/v{{ version }}.tar.gz\n  sha256: {{ hash }}\n  folder: ostap\n\nbuild:\n  number: 0\n  skip: True  # [not linux]\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n    - cmake\n    - make\n  host:\n    - root_base\n    - root-binaries\n    - python\n    - gsl\n  run:\n    - python\n    - future\n    - ipython\n    - configparser  # [py2k]\n    - scipy\n    - numpy\n    - pathos\n    - dill\n    - multiprocess\n    - ppft\n    - terminaltables\ntest:\n  imports:\n    - ostap\n    - ostap.core.core\n\nabout:\n  home: https://github.com/OstapHEP/ostap\n  license: BSD-3-Clause\n  license_family: BSD\n  license_file: ostap/LICENSE\n  dev_url: https://github.com/OstapHEP/ostap\n  summary: |\n       The Ostap project is a community-driven\n       initiative aiming to provide more user friendly and more intuitive interface\n       to ROOT and PyROOT and extending the existing functionality.\n  description: |\n      Nowadays ROOT and PyROOT are de-facto standard tools for performing physics analysis.\n      The Ostap project is a community-driven initiative aiming to provide more user friendly\n      and more intuitive interface to ROOT and PyROOT and extending the existing functionality.\n      Project started in 2009 from the private collections of python functions\n      used in Kali - framework for calibration of LHCb electromagnetic calorimeter.\n      A lot of functionality is picked from Bender project - python based physics analysis environment used in LHCb experiemnt.\n      Till Autumn 2016 the project was a part of LHCb software suit and with great success has been used\n      for preparation of approximately 30 physics papers. A standalone, LHCb independent version, has appeared at start of 2017\n      Key features include:\n       * Very easy manipulations with ROOT and RooFit objects: histograms, trees, datasets, etc\n       * Very easy interface to RooFit machinery\n       * Extended set of models.PDFs for RooFit\n       * Powerful, pickle-based persistency for object\n       * Interactive ostap analysis environment\n\nextra:\n  recipe-maintainers:\n    - TatianaOvsiannikova\n    - VanyaBelyaev\n",
  "req":{
   "__set__":true,
   "elements":[
    "c_compiler_stub",
    "cmake",
    "cxx_compiler_stub",
+   "dill",
    "future",
    "gsl",
    "ipython",
    "make",
+   "multiprocess",
+   "numpy",
+   "pathos",
+   "ppft",
    "python",
-   "root"
+   "root-binaries",
+   "root_base",
+   "scipy",
+   "terminaltables"
   ]
  },
  "smithy_version":"3.6.2",
  "url":"https://github.com/OstapHEP/ostap/archive/1.4.3.0.tar.gz",
- "version":"1.4.3.0"
+ "version":"1.4.4.0"
 }

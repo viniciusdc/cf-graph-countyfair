@@ -277,7 +277,7 @@
   },
   "package":{
    "name":"fmrib-unpack",
-   "version":"1.4.5"
+   "version":"1.5.0"
   },
   "requirements":{
    "host":[
@@ -292,50 +292,50 @@
     "python >=3.5",
     "h5py",
     "numpy",
-    "pandas",
+    "pandas >=0.24",
     "pyparsing",
     "six",
     "pytables",
     "jupyter",
     "notebook",
     "pygments",
+    "bash_kernel",
     "python >=3.5",
     "h5py",
     "numpy",
-    "pandas",
+    "pandas >=0.24",
     "pyparsing",
     "six",
     "pytables",
     "jupyter",
     "notebook",
     "pygments",
+    "bash_kernel",
     "python >=3.5",
     "h5py",
     "numpy",
-    "pandas",
+    "pandas >=0.24",
     "pyparsing",
     "six",
     "pytables",
     "jupyter",
     "notebook",
-    "pygments"
+    "pygments",
+    "bash_kernel"
    ]
   },
   "source":{
-   "sha256":"10fe2efcbb3c40343ffc600cc0e95a63cbfea44377e0cf89cccc16709af9e0db",
-   "url":"https://pypi.io/packages/source/f/fmrib-unpack/fmrib-unpack-1.4.5.tar.gz"
+   "sha256":"dd56c3fa70be243cf2aa2bf93db7c6cd80a0b8dcb7fe74964303231fe01dbbec",
+   "url":"https://pypi.io/packages/source/f/fmrib-unpack/fmrib-unpack-1.5.0.tar.gz"
   },
   "test":{
    "commands":[
-    "pip install bash_kernel",
     "funpack -V",
     "funpack_demo -h",
     "pytest -v --cov=funpack --pyargs funpack.tests -k \"not (lowMemory or HDF or test_demo)\"",
-    "pip install bash_kernel",
     "funpack -V",
     "funpack_demo -h",
     "pytest -v --cov=funpack --pyargs funpack.tests -k \"not (lowMemory or HDF or test_demo)\"",
-    "pip install bash_kernel",
     "funpack -V",
     "funpack_demo -h",
     "pytest -v --cov=funpack --pyargs funpack.tests -k \"not (lowMemory or HDF or test_demo)\""
@@ -371,10 +371,11 @@
  "name":"fmrib-unpack",
  "new_version":"1.5.0",
  "pinning_version":"2019.12.02",
- "raw_meta_yaml":"{% set name = \"fmrib-unpack\" %}\n{% set version = \"1.4.5\" %}\n{% set sha256 = \"10fe2efcbb3c40343ffc600cc0e95a63cbfea44377e0cf89cccc16709af9e0db\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz\n  sha256: {{ sha256 }}\n\nbuild:\n  noarch: python\n  number: 0\n  script: \"{{ PYTHON }} -m pip install . --no-deps -vv\"\n  entry_points:\n   - funpack      = funpack.main:main\n   - funpack_demo = funpack.scripts.demo:main\n\nrequirements:\n  host:\n    - python >=3.5\n    - pip\n  run:\n    - python >=3.5\n    - h5py\n    - numpy\n    - pandas\n    - pyparsing\n    - six\n    - pytables\n    - jupyter\n    - notebook\n    - pygments\n\ntest:\n  requires:\n    - pip\n    - coverage\n    - pytest\n    - pytest-cov\n    - jinja2\n    - notebook\n    - jupyter\n    - pygments\n\n  commands:\n    # bash_kernel is not available on\n    # conda, but is imported by the\n    # funpack.scripts.demo module\n    - pip install bash_kernel\n    - funpack -V\n    - funpack_demo -h\n    - pytest -v --cov=funpack --pyargs funpack.tests -k \"not (lowMemory or HDF or test_demo)\"\n\n\nabout:\n  home: https://git.fmrib.ox.ac.uk/fsl/funpack/\n  license: Apache-2.0\n  license_family: Apache\n  license_file: LICENSE\n  summary: 'The FMRIB UKBioBank Normalisation, Parsing And Cleaning Kit'\n  dev_url: https://git.fmrib.ox.ac.uk/fsl/funpack/\n\nextra:\n  recipe-maintainers:\n    - pauldmccarthy\n",
+ "raw_meta_yaml":"{% set name = \"fmrib-unpack\" %}\n{% set version = \"1.5.0\" %}\n{% set sha256 = \"dd56c3fa70be243cf2aa2bf93db7c6cd80a0b8dcb7fe74964303231fe01dbbec\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz\n  sha256: {{ sha256 }}\n\nbuild:\n  noarch: python\n  number: 0\n  script: \"{{ PYTHON }} -m pip install . --no-deps -vv\"\n  entry_points:\n   - funpack      = funpack.main:main\n   - funpack_demo = funpack.scripts.demo:main\n\nrequirements:\n  host:\n    - python >=3.5\n    - pip\n  run:\n    - python >=3.5\n    - h5py\n    - numpy\n    - pandas >=0.24\n    - pyparsing\n    - six\n    - pytables\n    - jupyter\n    - notebook\n    - pygments\n    - bash_kernel\n\ntest:\n  requires:\n    - pip\n    - coverage\n    - pytest\n    - pytest-cov\n    - jinja2\n    - notebook\n    - jupyter\n    - pygments\n\n  commands:\n    - funpack -V\n    - funpack_demo -h\n\n# check test markers\n    - pytest -v --cov=funpack --pyargs funpack.tests -k \"not (lowMemory or HDF or test_demo)\"\n\n\nabout:\n  home: https://git.fmrib.ox.ac.uk/fsl/funpack/\n  license: Apache-2.0\n  license_family: Apache\n  license_file: LICENSE\n  summary: 'The FMRIB UKBioBank Normalisation, Parsing And Cleaning Kit'\n  dev_url: https://git.fmrib.ox.ac.uk/fsl/funpack/\n\nextra:\n  recipe-maintainers:\n    - pauldmccarthy\n",
  "req":{
   "__set__":true,
   "elements":[
+   "bash_kernel",
    "h5py",
    "jupyter",
    "notebook",
@@ -390,5 +391,5 @@
  },
  "smithy_version":"3.6.3",
  "url":"https://pypi.io/packages/source/f/fmrib-unpack/fmrib-unpack-1.4.1.tar.gz",
- "version":"1.4.5"
+ "version":"1.5.0"
 }

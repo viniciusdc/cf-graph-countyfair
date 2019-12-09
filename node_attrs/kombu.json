@@ -239,14 +239,13 @@
    "dev_url":"https://github.com/celery/kombu",
    "doc_url":"https://kombu.readthedocs.org",
    "home":"https://kombu.readthedocs.org",
-   "license":"BSD 3-Clause",
+   "license":"BSD-3-Clause",
    "license_file":"LICENSE",
    "summary":"Messaging library for Python"
   },
   "build":{
-   "noarch":"python",
-   "number":"0",
-   "script":"-m pip install . --no-deps -vv"
+   "number":"1",
+   "script":" -m pip install . --no-deps -vv"
   },
   "extra":{
    "recipe-maintainers":[
@@ -276,21 +275,17 @@
    ],
    "run":[
     "python",
-    "simplejson",
-    "sqlalchemy",
-    "amqp >=2.5.2,<3.0",
+    "importlib_metadata >=0.18",
+    "amqp >=2.5.2,<2.6",
     "python",
-    "simplejson",
-    "sqlalchemy",
-    "amqp >=2.5.2,<3.0",
+    "importlib_metadata >=0.18",
+    "amqp >=2.5.2,<2.6",
     "python",
-    "simplejson",
-    "sqlalchemy",
-    "amqp >=2.5.2,<3.0"
+    "importlib_metadata >=0.18",
+    "amqp >=2.5.2,<2.6"
    ]
   },
   "source":{
-   "fn":"kombu-4.6.7.tar.gz",
    "sha256":"67b32ccb6fea030f8799f8fd50dd08e03a4b99464ebc4952d71d8747b1a52ad1",
    "url":"https://pypi.org/packages/source/k/kombu/kombu-4.6.7.tar.gz"
   },
@@ -301,7 +296,6 @@
     "kombu.asynchronous.aws",
     "kombu.asynchronous.http",
     "kombu.transport",
-    "kombu.transport.sqlalchemy",
     "kombu.transport.virtual",
     "kombu.utils",
     "kombu",
@@ -309,7 +303,6 @@
     "kombu.asynchronous.aws",
     "kombu.asynchronous.http",
     "kombu.transport",
-    "kombu.transport.sqlalchemy",
     "kombu.transport.virtual",
     "kombu.utils",
     "kombu",
@@ -317,7 +310,6 @@
     "kombu.asynchronous.aws",
     "kombu.asynchronous.http",
     "kombu.transport",
-    "kombu.transport.sqlalchemy",
     "kombu.transport.virtual",
     "kombu.utils"
    ]
@@ -326,15 +318,14 @@
  "name":"kombu",
  "new_version":"4.6.7",
  "pinning_version":"2019.12.02",
- "raw_meta_yaml":"{% set name = \"kombu\" %}\n{% set version = \"4.6.7\" %}\n{% set sha256 = \"67b32ccb6fea030f8799f8fd50dd08e03a4b99464ebc4952d71d8747b1a52ad1\" %}\n{% set build = 0 %}\n\npackage:\n    name: {{ name|lower }}\n    version: {{ version }}\n\nsource:\n    fn: {{ name }}-{{ version }}.tar.gz\n    url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz\n    sha256: {{ sha256 }}\n\nbuild:\n    noarch: python\n    number: {{ build }}\n    script: {{ PYTHON }} -m pip install . --no-deps -vv\n\nrequirements:\n    build:\n        - python\n        - pip\n\n    run:\n        - python\n        - simplejson\n        - sqlalchemy\n        - amqp >=2.5.2,<3.0\n\ntest:\n    imports:\n        - kombu\n        - kombu.asynchronous\n        - kombu.asynchronous.aws\n        - kombu.asynchronous.http\n        - kombu.transport\n        - kombu.transport.sqlalchemy\n        - kombu.transport.virtual\n        - kombu.utils\n\nabout:\n    home: https://kombu.readthedocs.org\n    license_file: LICENSE\n    license: BSD 3-Clause\n    summary: 'Messaging library for Python'\n    dev_url: https://github.com/celery/kombu\n    doc_url: https://kombu.readthedocs.org\n\nextra:\n    recipe-maintainers:\n        - anguslees\n        - kwilcox\n        - pmlandwehr\n",
+ "raw_meta_yaml":"{% set version = \"4.6.7\" %}\n\npackage:\n  name: kombu\n  version: {{ version }}\n\nsource:\n  url: https://pypi.org/packages/source/k/kombu/kombu-{{ version }}.tar.gz\n  sha256: 67b32ccb6fea030f8799f8fd50dd08e03a4b99464ebc4952d71d8747b1a52ad1\n\nbuild:\n  number: 1\n  script: \"{{ PYTHON }} -m pip install . --no-deps -vv\"\n\nrequirements:\n  build:\n    - python\n    - pip\n  run:\n    - python\n    - importlib_metadata >=0.18  # [py<=37]\n    - amqp >=2.5.2,<2.6\n\ntest:\n  imports:\n    - kombu\n    - kombu.asynchronous\n    - kombu.asynchronous.aws\n    - kombu.asynchronous.http\n    - kombu.transport\n    - kombu.transport.virtual\n    - kombu.utils\n\nabout:\n  home: https://kombu.readthedocs.org\n  license_file: LICENSE\n  license: BSD-3-Clause\n  summary: 'Messaging library for Python'\n  dev_url: https://github.com/celery/kombu\n  doc_url: https://kombu.readthedocs.org\n\nextra:\n  recipe-maintainers:\n    - anguslees\n    - kwilcox\n    - pmlandwehr\n",
  "req":{
   "__set__":true,
   "elements":[
    "amqp",
+   "importlib_metadata",
    "pip",
-   "python",
-   "simplejson",
-   "sqlalchemy"
+   "python"
   ]
  },
  "smithy_version":"3.6.3",
