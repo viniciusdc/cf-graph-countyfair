@@ -337,7 +337,7 @@
  "meta_yaml":{
   "about":{
    "home":"https://software.ecmwf.int/wiki/display/MAGP/",
-   "license":"Apache 2.0",
+   "license":"Apache-2.0",
    "license_family":"Apache",
    "license_file":[
     "LICENSE_for_source_files",
@@ -350,11 +350,11 @@
     "COPYING",
     "LICENSE"
    ],
-   "summary":"ECMWF's Meteorological plotting software"
+   "summary":"ECMWF's Meteorological plotting software."
   },
   "build":{
    "detect_binary_files_with_prefix":true,
-   "number":"4",
+   "number":"5",
    "skip":true
   },
   "extra":{
@@ -398,14 +398,7 @@
     "cxx_compiler_stub",
     "cmake",
     "c_compiler_stub",
-    "cxx_compiler_stub",
-    "cdt_stub",
-    "cdt_stub",
-    "cdt_stub",
-    "cdt_stub",
-    "cdt_stub",
-    "cdt_stub",
-    "cdt_stub"
+    "cxx_compiler_stub"
    ],
    "host":[
     "boost",
@@ -428,7 +421,6 @@
     "eccodes",
     "libnetcdf",
     "jinja2",
-    "qt",
     "zlib",
     "magics-python",
     "pkg-config",
@@ -441,7 +433,6 @@
     "eccodes",
     "libnetcdf",
     "jinja2",
-    "qt",
     "zlib",
     "magics-python"
    ],
@@ -462,7 +453,6 @@
     "eccodes",
     "simplejson",
     "libnetcdf",
-    "qt",
     "zlib",
     "magics-python",
     "expat",
@@ -472,9 +462,13 @@
     "eccodes",
     "simplejson",
     "libnetcdf",
-    "qt",
     "zlib",
     "magics-python"
+   ],
+   "run_constrained":[
+    "magics-metview ==9999999999",
+    "magics-metview ==9999999999",
+    "magics-metview ==9999999999"
    ]
   },
   "source":{
@@ -492,32 +486,35 @@
   "test":{
    "commands":[
     "set | grep \"MAGPLUS_HOME\"",
-    "printf \"%s\\n\" \"${MAGPLUS_HOME:?MAGPLUS_HOME is not set\"",
-    "printf \"%s\\n\" \"${MAGPLUS_HOME:?MAGPLUS_HOME is not set\""
+    "printf \"%s\\n\" \"${MAGPLUS_HOME:?MAGPLUS_HOME is not set}\"",
+    "printf \"%s\\n\" \"${MAGPLUS_HOME:?MAGPLUS_HOME is not set}\""
    ],
-   "imports":null,
-   "requires":[
-    "cdt_stub",
-    "cdt_stub",
-    "cdt_stub",
-    "cdt_stub",
-    "cdt_stub",
-    "cdt_stub",
-    "cdt_stub"
+   "imports":[
+    "Magics",
+    "Magics.macro",
+    "Magics.metgram",
+    "Magics.toolbox",
+    "Magics",
+    "Magics.macro",
+    "Magics.metgram",
+    "Magics.toolbox",
+    "Magics",
+    "Magics.macro",
+    "Magics.metgram",
+    "Magics.toolbox"
    ]
   }
  },
  "name":"magics",
  "new_version":"4.2.0",
  "pinning_version":"2019.11.18",
- "raw_meta_yaml":"{% set version = \"4.2.0\" %}\n\npackage:\n  name: magics\n  version: {{ version }}\n\nsource:\n  url: https://confluence.ecmwf.int/download/attachments/3473464/Magics-{{ version }}-Source.tar.gz\n  sha256: d45701515d3329e1b3944d535c4d19f834d22a747a30da1d8c88b80affeb70cd\n  patches:\n    - 0001-Find-proj_6_0.lib-if-proj.lib-isn-t-found.patch\n    - 0010-Fix-for-Windows-build.patch\n\nbuild:\n  number: 4\n  skip: True  # [(win and vc<14)]\n  detect_binary_files_with_prefix: true\n\nrequirements:\n  build:\n    - cmake\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n    # the CDTs below are needed when building with Metview enabled\n    - {{ cdt('mesa-libgl-devel') }}  # [linux]\n    - {{ cdt('mesa-dri-drivers') }}  # [linux]\n    - {{ cdt('libselinux') }}  # [linux]\n    - {{ cdt('libxdamage') }}  # [linux]\n    - {{ cdt('libxfixes') }}  # [linux]\n    - {{ cdt('libxxf86vm') }}  # [linux]\n    - {{ cdt('libxcb') }}  # [linux]\n    - m2-bash  # [win]\n    - m2-findutils  # [win]\n    - m2-coreutils  # [win]\n    - m2-grep  # [win]\n    - m2-sed  # [win]\n    - m2-gawk  # [win]\n    - m2-diffutils  # [win]\n    - m2-unzip  # [win]\n  host:\n    - pkg-config  # [not win]\n    - boost\n    - expat\n    - glib  # [not win]\n    - pango  # [not win]\n    - cairo  # [not win]\n    - proj\n    - eccodes\n    - libnetcdf\n    - pthreads-win32  # [win]\n    - libiconv  # [win]\n    - jinja2\n    - qt  # [not win]\n    - zlib\n    - magics-python\n  run:\n    - expat\n    - pango  # [not win]\n    - cairo  # [not win]\n    - proj\n    - eccodes\n    - simplejson\n    - libnetcdf\n    - pthreads-win32  # [win]\n    - libiconv  # [win]\n    - qt  # [not win]\n    - zlib\n    - magics-python\n\ntest:\n  requires:\n    # the CDTs below are needed when building with Metview enabled\n    - {{ cdt('mesa-libgl-devel') }}  # [linux]\n    - {{ cdt('mesa-dri-drivers') }}  # [linux]\n    - {{ cdt('libselinux') }}  # [linux]\n    - {{ cdt('libxdamage') }}  # [linux]\n    - {{ cdt('libxfixes') }}  # [linux]\n    - {{ cdt('libxxf86vm') }}  # [linux]\n    - {{ cdt('libxcb') }}  # [linux]\n  commands:\n    - printf \"%s\\n\" \"${MAGPLUS_HOME:?MAGPLUS_HOME is not set\"  # [not win]\n    - set | grep \"MAGPLUS_HOME\"  # [win]\n  imports:\n    - Magics  # [not linux]\n    - Magics.macro  # [not linux]\n    - Magics.metgram  # [not linux]\n    - Magics.toolbox  # [not linux]\n\nabout:\n  home: https://software.ecmwf.int/wiki/display/MAGP/\n  license: Apache 2.0\n  license_file:\n    - LICENSE_for_source_files\n    - COPYING\n    - LICENSE\n\n  license_family: Apache\n  summary: ECMWF's Meteorological plotting software\n\nextra:\n  recipe-maintainers:\n    - kynan\n    - carletes\n    - StephanSiemen\n    - dtip\n    - iainrussell\n",
+ "raw_meta_yaml":"{% set name = \"Magics\" %}\n{% set version = \"4.2.0\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  url: https://confluence.ecmwf.int/download/attachments/3473464/{{ name }}-{{ version }}-Source.tar.gz\n  sha256: d45701515d3329e1b3944d535c4d19f834d22a747a30da1d8c88b80affeb70cd\n  patches:\n    - 0001-Find-proj_6_0.lib-if-proj.lib-isn-t-found.patch\n    - 0010-Fix-for-Windows-build.patch\n\nbuild:\n  number: 5\n  skip: True  # [(win and vc<14)]\n  detect_binary_files_with_prefix: true\n\nrequirements:\n  build:\n    - cmake\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n    - m2-bash  # [win]\n    - m2-findutils  # [win]\n    - m2-coreutils  # [win]\n    - m2-grep  # [win]\n    - m2-sed  # [win]\n    - m2-gawk  # [win]\n    - m2-diffutils  # [win]\n    - m2-unzip  # [win]\n  host:\n    - pkg-config  # [not win]\n    - boost\n    - expat\n    - glib  # [not win]\n    - pango  # [not win]\n    - cairo  # [not win]\n    - proj\n    - eccodes\n    - libnetcdf\n    - pthreads-win32  # [win]\n    - libiconv  # [win]\n    - jinja2\n    - zlib\n    - magics-python\n  run:\n    - expat\n    - pango  # [not win]\n    - cairo  # [not win]\n    - proj\n    - eccodes\n    - simplejson\n    - libnetcdf\n    - pthreads-win32  # [win]\n    - libiconv  # [win]\n    - zlib\n    - magics-python\n  run_constrained:\n    # magics is incompatible with magics-metview\n    - magics-metview ==9999999999\n\ntest:\n  commands:\n    - printf \"%s\\n\" \"${MAGPLUS_HOME:?MAGPLUS_HOME is not set}\"  # [not win]\n    - set | grep \"MAGPLUS_HOME\"  # [win]\n  imports:\n    - Magics\n    - Magics.macro\n    - Magics.metgram\n    - Magics.toolbox\n\nabout:\n  home: https://software.ecmwf.int/wiki/display/MAGP/\n  license: Apache-2.0\n  license_file:\n    - LICENSE_for_source_files\n    - COPYING\n    - LICENSE\n\n  license_family: Apache\n  summary: \"ECMWF's Meteorological plotting software.\"\n\nextra:\n  recipe-maintainers:\n    - kynan\n    - carletes\n    - StephanSiemen\n    - dtip\n    - iainrussell\n",
  "req":{
   "__set__":true,
   "elements":[
    "boost",
    "c_compiler_stub",
    "cairo",
-   "cdt_stub",
    "cmake",
    "cxx_compiler_stub",
    "eccodes",
@@ -539,7 +536,6 @@
    "pkg-config",
    "proj",
    "pthreads-win32",
-   "qt",
    "simplejson",
    "zlib"
   ]
