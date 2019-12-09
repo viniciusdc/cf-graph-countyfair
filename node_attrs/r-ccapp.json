@@ -48,6 +48,26 @@
     "migrator_version",
     "name"
    ]
+  },
+  {
+   "PR":{
+    "head":{
+     "ref":"<this_is_not_a_branch>"
+    },
+    "state":"closed"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"Version",
+    "migrator_version":0,
+    "version":"0.3.3"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "version"
+   ]
   }
  ],
  "bad":false,
@@ -182,8 +202,8 @@
   }
  },
  "name":"r-ccapp",
- "new_version":"0.3.2",
- "pinning_version":"2019.07.20",
+ "new_version":"0.3.3",
+ "pinning_version":"2019.12.02",
  "raw_meta_yaml":"{% set version = '0.3.2' %}\n\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-ccapp\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  fn: ccaPP_{{ version }}.tar.gz\n  url:\n    - https://cran.r-project.org/src/contrib/ccaPP_{{ version }}.tar.gz\n    - https://cran.r-project.org/src/contrib/Archive/ccaPP/ccaPP_{{ version }}.tar.gz\n\n  sha256: f27e556f523aa09af4c8a8460b37b2975ddd69f3f431157215e42eac31bfda98\n\nbuild:\n  merge_build_host: True  # [win]\n  number: 1003\n  skip: true  # [win32]\n\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - posix                # [win]\n    - {{ compiler('c') }}        # [unix]\n    - {{ compiler('m2w64_c') }}  # [win]\n    - {{ compiler('cxx') }}        # [unix]\n    - {{ compiler('m2w64_cxx') }}  # [win]\n  host:\n    - r-base\n    - r-rcpp >=0.11.0\n    - r-rcpparmadillo >=0.4.100.0\n    - r-pcapp >=1.8_1\n    - r-robustbase\n\n  run:\n    - r-base\n    - r-rcpp >=0.11.0\n    - r-rcpparmadillo >=0.4.100.0\n    - r-pcapp >=1.8_1\n    - r-robustbase\n\ntest:\n  commands:\n    - $R -e \"library('ccaPP')\"  # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('ccaPP')\\\"\"  # [win]\n\nabout:\n  home: https://CRAN.R-project.org/package=ccaPP\n  license: GPL (>= 2)\n  summary: Canonical correlation analysis and maximum correlation via projection pursuit, as\n    well as fast implementations of correlation estimators, with a focus on robust and\n    non-parametric methods.\n  license_family: GPL3\n  license_file: '{{ environ[\"PREFIX\"] }}/lib/R/share/licenses/GPL-3'\nextra:\n   recipe-maintainers:\n    - conda-forge/r\n    - dpryan79\n    - MathiasHaudgaard\n    - FrodePedersen\n    - ArneKr\n    - johanneskoester\n    - bgruening\n    - daler\n    - jdblischak\n",
  "req":{
   "__set__":true,
@@ -200,7 +220,7 @@
    "r-robustbase"
   ]
  },
- "smithy_version":"3.4.1",
+ "smithy_version":"3.6.3",
  "url":[
   "https://cran.r-project.org/src/contrib/ccaPP_0.3.2.tar.gz",
   "https://cran.r-project.org/src/contrib/Archive/ccaPP/ccaPP_0.3.2.tar.gz",
