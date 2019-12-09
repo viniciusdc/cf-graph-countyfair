@@ -196,7 +196,7 @@
   }
  },
  "name":"assimulo",
- "new_version":"Assimulo-3.0",
+ "new_version":"Assimulo-3.1",
  "pinning_version":"2019.11.01",
  "raw_meta_yaml":"{% set version = \"3.1\" %}\n\npackage:\n  name: assimulo\n  version: {{ version }}\n\nsource:\n  git_url: https://github.com/modelon/Assimulo.git\n  git_rev: 9a3b2781c7458b31c945fc9bffab3ca9d03ec090\n  patches:\n    # find blas with dynamic extension\n    - blas_shared.patch  # [unix]\n    # sundials 5.x\n    - sundials5.patch  # [unix]\n\nbuild:\n  number: 0\n\nrequirements:\n  build:\n    - {{ compiler('fortran') }}  # [unix]\n    - {{ compiler('c') }}\n  host:\n    - msinttypes  # [win and py27]\n    - libblas  # [unix]\n    - liblapack  # [unix]\n    - python\n    - pip\n    - numpy\n    - cython\n    - sundials\n  run:\n    - python\n    - {{ pin_compatible('numpy') }}\n    - scipy\n    - matplotlib\n    - sundials\n\ntest:\n  imports:\n    - assimulo\n    - assimulo.solvers\n    - assimulo.examples\n  requires:\n    - nose\n\nabout:\n  home: http://www.jmodelica.org/assimulo\n  license: LGPL\n  license_file: LICENSE\n  summary: A package for solving ordinary differential equations and differential algebraic equations.\n\nextra:\n  recipe-maintainers:\n    - chria\n    - jschueller\n",
  "req":{
