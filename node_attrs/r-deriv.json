@@ -64,6 +64,26 @@
     "migrator_version",
     "version"
    ]
+  },
+  {
+   "PR":{
+    "head":{
+     "ref":"<this_is_not_a_branch>"
+    },
+    "state":"closed"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"Version",
+    "migrator_version":0,
+    "version":"4.0"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "version"
+   ]
   }
  ],
  "bad":false,
@@ -144,7 +164,7 @@
  },
  "name":"r-deriv",
  "new_version":"4.0",
- "pinning_version":"2019.09.08",
+ "pinning_version":"2019.12.02",
  "raw_meta_yaml":"{% set version = \"3.9.0\" %}\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-deriv\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  fn: Deriv_{{ version }}.tar.gz\n  url:\n    - {{ cran_mirror }}/src/contrib/Deriv_{{ version }}.tar.gz\n    - {{ cran_mirror }}/src/contrib/Archive/Deriv/Deriv_{{ version }}.tar.gz\n  sha256: bc4fa2e67c75d6513d35555af9a0a0a36df33ba80a54835f3a74bc6582a89842\n\nbuild:\n  noarch: generic\n  merge_build_host: True  # [win]\n  number: 0\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - {{posix}}zip               # [win]\n  host:\n    - r-base\n  run:\n    - r-base\n\ntest:\n  commands:\n    - $R -e \"library('Deriv')\"           # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('Deriv')\\\"\"  # [win]\n\nabout:\n  home: https://CRAN.R-project.org/package=Deriv\n  license: GPL (>= 3)\n  summary: R-based solution for symbolic differentiation. It admits user-defined function as\n    well as function substitution in arguments of functions to be differentiated. Some\n    symbolic simplification is part of the work.\n  license_family: GPL3\n  license_file: '{{ environ[\"PREFIX\"] }}/lib/R/share/licenses/GPL-3'\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n",
  "req":{
   "__set__":true,
@@ -152,7 +172,7 @@
    "r-base"
   ]
  },
- "smithy_version":"3.4.8",
+ "smithy_version":"3.6.3",
  "url":[
   "https://cran.r-project.org/src/contrib/Deriv_3.8.5.tar.gz",
   "https://cran.r-project.org/src/contrib/Archive/Deriv/Deriv_3.8.5.tar.gz",

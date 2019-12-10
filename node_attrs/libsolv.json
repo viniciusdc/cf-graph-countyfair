@@ -118,6 +118,26 @@
     "migrator_version",
     "version"
    ]
+  },
+  {
+   "PR":{
+    "head":{
+     "ref":"<this_is_not_a_branch>"
+    },
+    "state":"closed"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"Version",
+    "migrator_version":0,
+    "version":"0.7.10"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "version"
+   ]
   }
  ],
  "bad":false,
@@ -200,7 +220,7 @@
  },
  "name":"libsolv",
  "new_version":"0.7.10",
- "pinning_version":"2019.11.20",
+ "pinning_version":"2019.12.02",
  "raw_meta_yaml":"{% set name = \"libsolv\" %}\n{% set version = \"0.7.9\" %}\n{% set sha256 = \"8e360675c925ba4cec4e75acb533cce01e4e8424e841e4599107a55c8ad43abe\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  fn: {{ name }}-{{ version }}.tar.gz\n  url: https://github.com/openSUSE/libsolv/archive/{{ version }}.tar.gz\n  sha256: {{ sha256 }}\n\nbuild:\n  number: 0\n  skip: True  # [win and vc<14]\n  run_exports:\n    - {{ pin_subpackage(name, max_pin='x.x') }}\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n    - cmake\n  host:\n    - zlib\n\ntest:\n  commands:\n    - test -f $PREFIX/lib/libsolv.so  # [linux]\n    - test -f $PREFIX/lib/libsolv.so.1  # [linux]\n    - test -f $PREFIX/lib/libsolv.dylib  # [osx]\n    - test -f $PREFIX/include/solv/repo.h  # [unix]\n    - if exist %LIBRARY_INC%\\\\solv\\\\repo.h (exit 0) else (exit 1)  # [win]\n\nabout:\n  home: https://github.com/openSUSE/libsolv\n  license: BSD 3-Clause\n  license_family: BSD\n  license_file: LICENSE.BSD\n  summary: 'Library for solving packages and reading repositories'\n  description: 'libsolv, a free package dependency solver using a satisfiability algorithm.'\n  dev_url: https://github.com/openSUSE/libsolv\n\nextra:\n  recipe-maintainers:\n    - SylvainCorlay\n    - JohanMabille\n    - wolfv\n",
  "req":{
   "__set__":true,
@@ -211,7 +231,7 @@
    "zlib"
   ]
  },
- "smithy_version":"3.6.2",
+ "smithy_version":"3.6.3",
  "url":"https://github.com/openSUSE/libsolv/archive/0.7.5.tar.gz",
  "version":"0.7.9"
 }
