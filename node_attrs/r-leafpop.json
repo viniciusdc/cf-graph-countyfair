@@ -53,7 +53,7 @@
   },
   "build":{
    "merge_build_host":true,
-   "number":"2",
+   "number":"0",
    "rpaths":[
     "lib/R/lib/",
     "lib/",
@@ -73,7 +73,7 @@
   },
   "package":{
    "name":"r-leafpop",
-   "version":"0.0.1"
+   "version":"0.0.5"
   },
   "requirements":{
    "build":[
@@ -93,67 +93,70 @@
    ],
    "host":[
     "r-base",
-    "r-rcpp >=1.0.0",
+    "r-base",
     "r-base64enc",
     "r-brew",
-    "r-gdalutils",
+    "r-htmltools",
     "r-htmlwidgets",
+    "r-sf",
     "r-svglite",
     "r-uuid",
     "r-base",
-    "r-rcpp >=1.0.0",
+    "r-base",
     "r-base64enc",
     "r-brew",
-    "r-gdalutils",
+    "r-htmltools",
     "r-htmlwidgets",
+    "r-sf",
     "r-svglite",
     "r-uuid",
     "r-base",
-    "r-rcpp >=1.0.0",
+    "r-base",
     "r-base64enc",
     "r-brew",
-    "r-gdalutils",
+    "r-htmltools",
     "r-htmlwidgets",
+    "r-sf",
     "r-svglite",
     "r-uuid"
    ],
    "run":[
     "r-base",
     "gcc-libs",
-    "r-rcpp >=1.0.0",
     "r-base64enc",
     "r-brew",
-    "r-gdalutils",
+    "r-htmltools",
     "r-htmlwidgets",
+    "r-sf",
     "r-svglite",
     "r-uuid",
     "r-base",
-    "r-rcpp >=1.0.0",
     "r-base64enc",
     "r-brew",
-    "r-gdalutils",
+    "r-htmltools",
     "r-htmlwidgets",
+    "r-sf",
     "r-svglite",
     "r-uuid",
     "r-base",
-    "r-rcpp >=1.0.0",
     "r-base64enc",
     "r-brew",
-    "r-gdalutils",
+    "r-htmltools",
     "r-htmlwidgets",
+    "r-sf",
     "r-svglite",
     "r-uuid"
    ]
   },
   "source":{
-   "sha256":"c8ebf7beddc683cace34c437fc935ddca74d4752b527f80b3faea7071c598aad",
+   "sha256":"0640480770b67b6cf827ed65f0258c354d9b456dbc1bac56329bbeb36c246057",
    "url":[
-    "https://cran.r-project.org/src/contrib/leafpop_0.0.1.tar.gz",
-    "https://cran.r-project.org/src/contrib/Archive/leafpop/leafpop_0.0.1.tar.gz",
-    "https://cran.r-project.org/src/contrib/leafpop_0.0.1.tar.gz",
-    "https://cran.r-project.org/src/contrib/Archive/leafpop/leafpop_0.0.1.tar.gz",
-    "https://cran.r-project.org/src/contrib/leafpop_0.0.1.tar.gz",
-    "https://cran.r-project.org/src/contrib/Archive/leafpop/leafpop_0.0.1.tar.gz"
+    "https://cran.r-project.org/src/contrib/leafpop_0.0.5.tar.gz",
+    "https://cran.r-project.org/src/contrib/Archive/leafpop/leafpop_0.0.5.tar.gz",
+    "https://cran.r-project.org/src/contrib/leafpop_0.0.5.tar.gz",
+    "https://cran.r-project.org/src/contrib/Archive/leafpop/leafpop_0.0.5.tar.gz",
+    "https://cran.r-project.org/src/contrib/leafpop_0.0.5.tar.gz",
+    "https://cran.r-project.org/src/contrib/Archive/leafpop/leafpop_0.0.5.tar.gz"
    ]
   },
   "test":{
@@ -167,7 +170,7 @@
  "name":"r-leafpop",
  "new_version":"0.0.5",
  "pinning_version":"2019.12.02",
- "raw_meta_yaml":"{% set version = '0.0.1' %}\n\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-leafpop\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  url:\n    - {{ cran_mirror }}/src/contrib/leafpop_{{ version }}.tar.gz\n    - {{ cran_mirror }}/src/contrib/Archive/leafpop/leafpop_{{ version }}.tar.gz\n  sha256: c8ebf7beddc683cace34c437fc935ddca74d4752b527f80b3faea7071c598aad\n\nbuild:\n  number: 2\n  merge_build_host: True  # [win]\n  script: R CMD INSTALL --build .\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - {{ compiler('c') }}  # [not win]\n    - {{ compiler('cxx') }}  # [not win]\n    - {{ compiler('m2w64_c') }}  # [win]\n    - {{ compiler('m2w64_cxx') }}  # [win]\n    - {{posix}}filesystem  # [win]\n    - {{posix}}make\n    - {{posix}}sed  # [win]\n    - {{posix}}coreutils  # [win]\n    - {{posix}}zip  # [win]\n  host:\n    - r-base\n    - r-rcpp >=1.0.0\n    - r-base64enc\n    - r-brew\n    - r-gdalutils\n    - r-htmlwidgets\n    - r-svglite\n    - r-uuid\n  run:\n    - r-base\n    - {{native}}gcc-libs  # [win]\n    - r-rcpp >=1.0.0\n    - r-base64enc\n    - r-brew\n    - r-gdalutils\n    - r-htmlwidgets\n    - r-svglite\n    - r-uuid\n\ntest:\n  commands:\n    - $R -e \"library('leafpop')\"  # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('leafpop')\\\"\"  # [win]\n\nabout:\n  home: https://CRAN.R-project.org/package=leafpop\n  license: MIT\n  license_file: LICENSE\n  summary: Creates 'HTML' strings to embed tables, images or graphs in pop-ups of interactive\n    maps created with packages like 'leaflet' or 'mapview'. Handles local images located\n    on the file system or via remote URL. Handles graphs created  with 'lattice' or\n    'ggplot2' as well as interactive plots created with 'htmlwidgets'.\n  license_family: MIT\n\nextra:\n  recipe-maintainers:\n    - ocefpaf\n",
+ "raw_meta_yaml":"{% set version = \"0.0.5\" %}\n\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-leafpop\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  url:\n    - {{ cran_mirror }}/src/contrib/leafpop_{{ version }}.tar.gz\n    - {{ cran_mirror }}/src/contrib/Archive/leafpop/leafpop_{{ version }}.tar.gz\n  sha256: 0640480770b67b6cf827ed65f0258c354d9b456dbc1bac56329bbeb36c246057\n\nbuild:\n  number: 0\n  merge_build_host: True  # [win]\n  script: R CMD INSTALL --build .\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - {{ compiler('c') }}  # [not win]\n    - {{ compiler('cxx') }}  # [not win]\n    - {{ compiler('m2w64_c') }}  # [win]\n    - {{ compiler('m2w64_cxx') }}  # [win]\n    - {{posix}}filesystem  # [win]\n    - {{posix}}make\n    - {{posix}}sed  # [win]\n    - {{posix}}coreutils  # [win]\n    - {{posix}}zip  # [win]\n  host:\n    - r-base\n    - r-base\n    - r-base64enc\n    - r-brew\n    - r-htmltools\n    - r-htmlwidgets\n    - r-sf\n    - r-svglite\n    - r-uuid\n  run:\n    - r-base\n    - {{native}}gcc-libs  # [win]\n    - r-base64enc\n    - r-brew\n    - r-htmltools\n    - r-htmlwidgets\n    - r-sf\n    - r-svglite\n    - r-uuid\n\n\ntest:\n  commands:\n    - $R -e \"library('leafpop')\"  # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('leafpop')\\\"\"  # [win]\n\nabout:\n  home: https://CRAN.R-project.org/package=leafpop\n  license: MIT\n  license_file: LICENSE\n  summary: Creates 'HTML' strings to embed tables, images or graphs in pop-ups of interactive\n    maps created with packages like 'leaflet' or 'mapview'. Handles local images located\n    on the file system or via remote URL. Handles graphs created  with 'lattice' or\n    'ggplot2' as well as interactive plots created with 'htmlwidgets'.\n  license_family: MIT\n\nextra:\n  recipe-maintainers:\n    - ocefpaf\n",
  "req":{
   "__set__":true,
   "elements":[
@@ -182,9 +185,9 @@
    "r-base",
    "r-base64enc",
    "r-brew",
-   "r-gdalutils",
+   "r-htmltools",
    "r-htmlwidgets",
-   "r-rcpp",
+   "r-sf",
    "r-svglite",
    "r-uuid",
    "sed",
@@ -200,5 +203,5 @@
   "https://cran.r-project.org/src/contrib/leafpop_0.0.1.tar.gz",
   "https://cran.r-project.org/src/contrib/Archive/leafpop/leafpop_0.0.1.tar.gz"
  ],
- "version":"0.0.1"
+ "version":"0.0.5"
 }

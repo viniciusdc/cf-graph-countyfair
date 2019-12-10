@@ -76,7 +76,7 @@
   }
  },
  "name":"allthekernels",
- "new_version":"1.0.2",
+ "new_version":"1.1.0",
  "raw_meta_yaml":"{% set name = \"allthekernels\" %}\n{% set version = \"1.0.2\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz\n  sha256: 492d463e3ff7d33f082591dec4a68d59e104be5b33376bced6f89bfbe32eae95\n\nbuild:\n  noarch: python\n  number: 0\n  # Using the --no-binary option to prevent pip to build the wheel, so that\n  # the full path to python is included in the kernelspec.\n  script: \"{{ PYTHON }} -m pip install . -vv --no-binary :all:\"\n\nrequirements:\n  host:\n    - python >=3\n    - pip\n  run:\n    - python >=3\n    - ipykernel >=4.3,<6\n    - jupyter_client >=5,<6\n    - pyzmq >=15.2,<19\n    - tornado >=4,<6\n\ntest:\n  imports:\n    - allthekernels\n\nabout:\n  home: http://github.com/minrk/allthekernels\n  license: MIT\n  license_family: MIT\n  license_file: LICENSE\n  summary: 'Multiplexing kernel for Jupyter'\n  description: |\n    Multiplexing kernel for Jupyter\n    Use all your kernels in a single notebook.\n    Specify which kernel each should run by starting the cell with\n    >kernel-name    \n  doc_url: https://github.com/minrk/allthekernels\n  dev_url: https://github.com/minrk/allthekernels\n\nextra:\n  recipe-maintainers:\n    - SylvainCorlay\n    - wolfv\n    - minrk\n",
  "req":{
   "__set__":true,

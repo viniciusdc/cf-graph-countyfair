@@ -62,6 +62,26 @@
     "migrator_version",
     "name"
    ]
+  },
+  {
+   "PR":{
+    "head":{
+     "ref":"<this_is_not_a_branch>"
+    },
+    "state":"closed"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"Version",
+    "migrator_version":0,
+    "version":"0.7.0"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "version"
+   ]
   }
  ],
  "bad":false,
@@ -155,8 +175,8 @@
   }
  },
  "name":"openlibm",
- "new_version":"0.6.0",
- "pinning_version":"2018.08.28",
+ "new_version":"0.7.0",
+ "pinning_version":"2019.12.02",
  "raw_meta_yaml":"{% set name = \"openlibm\" %}\n{% set version = \"0.6.0\" %}\n{% set sha256 = \"d45439093d1fd15e2ac3acf69955e462401c7a160d3330256cb4a86c51bdae28\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  fn: {{ name }}-{{ version }}.tar.gz\n  url: https://github.com/JuliaLang/openlibm/archive/v{{ version }}.tar.gz\n  sha256: {{ sha256 }}\n  patches:\n    - 0001-no-CC-override.patch\n\nbuild:\n  number: 1001\n  skip: true  # [win and vc<14]\n\nrequirements:\n  build:\n    - {{ compiler(\"c\") }}  # [not win]\n    - {{ compiler(\"m2w64_c\") }}  # [win]\n  host:\n\ntest:\n  requires:\n    - {{ compiler(\"c\") }}\n  files:\n    - test_openlibm.c\n  commands:\n    - test -d \"${PREFIX}/include/openlibm\"                         # [unix]\n    - test -f \"${PREFIX}/lib/libopenlibm.a\"                        # [unix]\n    - test -f \"${PREFIX}/lib/libopenlibm${SHLIB_EXT}\"              # [unix]\n    - if not exist \"%LIBRARY_BIN%\\\\libopenlibm.dll\" exit 1         # [win]\n    - if not exist \"%LIBRARY_INC%\\\\openlibm\\\\openlibm.h\" exit 1    # [win]\n    - if not exist \"%LIBRARY_LIB%\\\\libopenlibm.lib\" exit 1         # [win]\n    - if not exist \"%LIBRARY_LIB%\\\\libopenlibm_static.lib\" exit 1  # [win]\n    - echo on  # [win]\n    - cl /Tc test_openlibm.c /I %CONDA_PREFIX%\\Library\\include\\openlibm /link /LIBPATH:\"%CONDA_PREFIX%\\Library\\lib\" libopenlibm_static.lib /out:test_openlibm.exe  # [win]\n    - test_openlibm.exe  # [win]\n    - ${CC} -o test_openlibm test_openlibm.c -I${CONDA_PREFIX}/include/openlibm -L${CONDA_PREFIX}/lib -lopenlibm ${CFLAGS} ${LDFLAGS}  # [unix]\n    - ./test_openlibm  # [unix]\n\nabout:\n  home: http://openlibm.org/\n  license: MIT, ISC, BSD 2-Clause\n  license_file: LICENSE.md\n  summary: \"High quality system independent, portable, open source libm implementation\"\n  dev_url: https://github.com/JuliaLang/openlibm\n\nextra:\n  recipe-maintainers:\n    - dfornika\n    - jakirkham\n    - SylvainCorlay\n",
  "req":{
   "__set__":true,
@@ -165,7 +185,7 @@
    "m2w64_c_compiler_stub"
   ]
  },
- "smithy_version":"3.1.12",
+ "smithy_version":"3.6.3",
  "url":"https://github.com/JuliaLang/openlibm/archive/v0.6.0.tar.gz",
  "version":"0.6.0"
 }

@@ -137,7 +137,7 @@
   }
  },
  "name":"r-sna",
- "new_version":"2.4",
+ "new_version":"2.5",
  "pinning_version":"2019.07.15",
  "raw_meta_yaml":"{% set version = '2.4' %}\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-sna\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  fn: sna_{{ version }}.tar.gz\n  url:\n    - {{ cran_mirror }}/src/contrib/sna_{{ version }}.tar.gz\n    - {{ cran_mirror }}/src/contrib/Archive/sna/sna_{{ version }}.tar.gz\n  sha256: 2292b3190e8d879e494527ae9d9d1174c31cb4183749ecb455aedd8d534048cf\n\nbuild:\n  merge_build_host: True  # [win]\n  number: 1002\n  skip: true  # [win32]\n\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - {{ compiler('c') }}        # [not win]\n    - {{ compiler('m2w64_c') }}        # [win]\n    - {{posix}}filesystem        # [win]\n    - {{posix}}make\n    - {{posix}}sed  # [win]\n    - {{posix}}coreutils  # [win]\n\n  host:\n    - r-base\n    - r-network\n    - r-statnet.common\n\n  run:\n    - r-base\n    - {{native}}gcc-libs         # [win]\n    - r-network\n    - r-statnet.common\n\ntest:\n  commands:\n    - $R -e \"library('sna')\"           # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('sna')\\\"\"  # [win]\n\nabout:\n  home: http://www.statnet.org\n  license: GPL (>= 2)\n  summary: A range of tools for social network analysis, including node and graph-level indices,\n    structural distance and covariance methods, structural equivalence detection, network\n    regression, random graph generation, and 2D/3D network visualization.\n  license_family: GPL3\n  license_file: '{{ environ[\"PREFIX\"] }}/lib/R/share/licenses/GPL-3'\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n    - stevierene82\n",
  "req":{

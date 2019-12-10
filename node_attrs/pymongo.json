@@ -131,6 +131,26 @@
     "migrator_version",
     "name"
    ]
+  },
+  {
+   "PR":{
+    "head":{
+     "ref":"<this_is_not_a_branch>"
+    },
+    "state":"closed"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"Version",
+    "migrator_version":0,
+    "version":"3.10.0"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "version"
+   ]
   }
  ],
  "bad":false,
@@ -227,8 +247,8 @@
   }
  },
  "name":"pymongo",
- "new_version":"3.9.0",
- "pinning_version":"2019.11.01",
+ "new_version":"3.10.0",
+ "pinning_version":"2019.12.02",
  "raw_meta_yaml":"{% set version = \"3.9.0\" %}\n\npackage:\n  name: pymongo\n  version: {{ version }}\n\nsource:\n  url: https://github.com/mongodb/mongo-python-driver/archive/{{ version }}.tar.gz\n  fn: pymongo-{{ version }}.tar.gz\n  sha256: 1f471a6fb5465e2ebb91b6d9fb6922555996d55961bed08e999103f55634708c\n\nbuild:\n  number: 0\n  script: python setup.py install --single-version-externally-managed --record=record.txt\n  script_env:  # [osx]\n    - TRAVIS   # [osx]\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n  host:\n    - python\n    - setuptools\n  run:\n    - python\n\ntest:\n  source_files:\n    - .\n  imports:\n    - bson\n    - gridfs\n    - pymongo\n  requires:  # [not win]\n    - mongodb  # [not win]\n    - setuptools  # [not win]\n\nabout:\n  home: https://github.com/mongodb/mongo-python-driver\n  license: Apache 2.0\n  license_file: LICENSE\n  summary: Python driver for MongoDB http://www.mongodb.org\n\nextra:\n  recipe-maintainers:\n    - licode\n    - tacaswell\n    - CJ-Wright\n",
  "req":{
   "__set__":true,
@@ -239,7 +259,7 @@
    "setuptools"
   ]
  },
- "smithy_version":"3.6.1",
+ "smithy_version":"3.6.3",
  "url":"https://github.com/mongodb/mongo-python-driver/archive/3.8.0.tar.gz",
  "version":"3.9.0"
 }

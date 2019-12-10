@@ -18,7 +18,7 @@
    ]
   }
  ],
- "bad":false,
+ "bad":"Upstream: Error getting upstream version",
  "conda-forge.yml":{
   "provider":{
    "win":"azure"
@@ -28,20 +28,13 @@
  "hash_type":"sha256",
  "meta_yaml":{
   "about":{
-   "home":"https://git-scm.com/",
-   "license":"git: GPLv2, LGPLv2.1, bash: GPLv3+",
-   "license_file":"LICENSE.txt",
-   "summary":"Repackage of the Git Bash for Windows."
+   "home":"https://anaconda.org/conda-forge/git",
+   "license":"GPL-2 AND LGPL-2.1 AND GPL-3",
+   "license_family":"OTHER",
+   "license_file":"LICENSE",
+   "summary":"A dummy package that depends on conda-forge::git"
   },
   "build":{
-   "no_link":[
-    "Library/git-bash/*",
-    "bin/*",
-    "Library/git-bash/*",
-    "bin/*",
-    "Library/git-bash/*",
-    "bin/*"
-   ],
    "number":"0",
    "skip":true
   },
@@ -54,63 +47,37 @@
   },
   "package":{
    "name":"git-bash",
-   "version":"2.22.0"
+   "version":"2.24.0"
   },
   "requirements":{
-   "build":[
-    "m2-patch",
-    "m2-patch",
-    "m2-patch"
+   "run":[
+    "conda-forge::git =2.24.0",
+    "conda-forge::git =2.24.0",
+    "conda-forge::git =2.24.0"
    ]
   },
-  "source":[
-   {
-    "sha256":"356190e3e3569cb55114ee19da2a9bb793f26329df22ba79441749f89e9ca60a",
-    "url":"https://anaconda.org/anaconda/7za/920/download/win-64/7za-920-0.tar.bz2"
-   },
-   {
-    "sha256":"2d935dc309568a9694711ac080967388c98b69907fb015f6536a4a0920084e0c",
-    "url":"https://github.com/git-for-windows/git/releases/download/v2.22.0.windows.1/PortableGit-2.22.0-64-bit.7z.exe"
-   },
-   {
-    "sha256":"356190e3e3569cb55114ee19da2a9bb793f26329df22ba79441749f89e9ca60a",
-    "url":"https://anaconda.org/anaconda/7za/920/download/win-64/7za-920-0.tar.bz2"
-   },
-   {
-    "sha256":"2d935dc309568a9694711ac080967388c98b69907fb015f6536a4a0920084e0c",
-    "url":"https://github.com/git-for-windows/git/releases/download/v2.22.0.windows.1/PortableGit-2.22.0-64-bit.7z.exe"
-   },
-   {
-    "sha256":"356190e3e3569cb55114ee19da2a9bb793f26329df22ba79441749f89e9ca60a",
-    "url":"https://anaconda.org/anaconda/7za/920/download/win-64/7za-920-0.tar.bz2"
-   },
-   {
-    "sha256":"2d935dc309568a9694711ac080967388c98b69907fb015f6536a4a0920084e0c",
-    "url":"https://github.com/git-for-windows/git/releases/download/v2.22.0.windows.1/PortableGit-2.22.0-64-bit.7z.exe"
-   }
-  ],
   "test":{
    "commands":[
-    "cmd /c %PREFIX%\\bin\\bash.bat --version\n",
-    "cmd /c %PREFIX%\\bin\\bash.bat -c \"if [[ $(echo hello | cp /dev/stdin /dev/stdout) != 'hello' ]]; then exit 1; fi\"\n",
-    "cmd /c %PREFIX%\\bin\\bash.bat --version\n",
-    "cmd /c %PREFIX%\\bin\\bash.bat -c \"if [[ $(echo hello | cp /dev/stdin /dev/stdout) != 'hello' ]]; then exit 1; fi\"\n",
-    "cmd /c %PREFIX%\\bin\\bash.bat --version\n",
-    "cmd /c %PREFIX%\\bin\\bash.bat -c \"if [[ $(echo hello | cp /dev/stdin /dev/stdout) != 'hello' ]]; then exit 1; fi\"\n"
+    "bash --version",
+    "git --version",
+    "bash --version",
+    "git --version",
+    "bash --version",
+    "git --version"
    ]
   }
  },
  "name":"git-bash",
  "new_version":false,
  "pinning_version":"2019.02.24",
- "raw_meta_yaml":"{% set name = \"git-bash\" %}\n{% set version = \"2.22.0\" %}\n\npackage:\n  name: {{ name }}\n  version: {{ version }}\n\nsource:\n  - url: https://anaconda.org/anaconda/7za/920/download/win-64/7za-920-0.tar.bz2\n    sha256: 356190e3e3569cb55114ee19da2a9bb793f26329df22ba79441749f89e9ca60a\n  - url: https://github.com/git-for-windows/git/releases/download/v{{ version }}.windows.1/PortableGit-{{ version }}-64-bit.7z.exe\n    sha256: 2d935dc309568a9694711ac080967388c98b69907fb015f6536a4a0920084e0c\n\nbuild:\n  skip: True  # [not win64]\n  number: 0\n  no_link:\n    - Library/{{ name }}/*\n    - bin/*\n\nrequirements:\n  build:\n    - m2-patch\n\ntest:\n  commands:\n    - |\n      cmd /c %PREFIX%\\bin\\bash.bat --version\n    - |\n      cmd /c %PREFIX%\\bin\\bash.bat -c \"if [[ $(echo hello | cp /dev/stdin /dev/stdout) != 'hello' ]]; then exit 1; fi\"\n\nabout:\n  home: https://git-scm.com/\n  license: \"git: GPLv2, LGPLv2.1, bash: GPLv3+\"\n  license_file: LICENSE.txt\n  summary: \"Repackage of the Git Bash for Windows.\"\n\nextra:\n  recipe-maintainers:\n    - kiwi0fruit\n",
+ "raw_meta_yaml":"{% set name = \"git-bash\" %}\n{% set version = \"2.24.0\" %}\n\npackage:\n  name: {{ name }}\n  version: {{ version }}\n\nbuild:\n  skip: True  # [not win64]\n  number: 0\n\nrequirements:\n  run:\n    - conda-forge::git ={{ version }}\n\ntest:\n  commands:\n    - bash --version\n    - git --version\n    # - |\n    #   bash -c \"if [[ $(echo hello | cp /dev/stdin /dev/stdout) != 'hello' ]]; then exit 1; fi\"\n\nabout:\n  home: https://anaconda.org/conda-forge/git\n  license: GPL-2 AND LGPL-2.1 AND GPL-3\n  license_family: OTHER\n  license_file: LICENSE\n  summary: \"A dummy package that depends on conda-forge::git\"\n\nextra:\n  recipe-maintainers:\n    - kiwi0fruit\n",
  "req":{
   "__set__":true,
   "elements":[
-   "m2-patch"
+   "conda-forge::git"
   ]
  },
  "smithy_version":"3.2.14",
  "url":"https://anaconda.org/anaconda/7za/920/download/win-64/7za-920-0.tar.bz2",
- "version":"2.22.0"
+ "version":"2.24.0"
 }
