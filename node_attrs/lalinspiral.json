@@ -86,6 +86,26 @@
     "migrator_version",
     "name"
    ]
+  },
+  {
+   "PR":{
+    "head":{
+     "ref":"<this_is_not_a_branch>"
+    },
+    "state":"closed"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"Version",
+    "migrator_version":0,
+    "version":"1.10.0"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "version"
+   ]
   }
  ],
  "bad":false,
@@ -381,7 +401,7 @@
   "lalinspiral",
   "python-lalinspiral"
  ],
- "pinning_version":"2019.11.13",
+ "pinning_version":"2019.12.02",
  "raw_meta_yaml":"{% set name = \"lalinspiral\" %}\n{% set version = \"1.9.0\" %}\n{% set sha256 = \"bad8ed78dcfdfaaab4bb808387f708053cd3c76d21e732e8ceb60d0ad8be1916\" %}\n\n{% set lal_version = \"6.20.0\" %}\n{% set lalframe_version = \"1.4.0\" %}\n{% set lalmetaio_version = \"1.5.0\" %}\n{% set lalsimulation_version = \"1.9.0\" %}\n{% set swig_version = \"3.0.7\" %}\n\npackage:\n  name: {{ name }}\n  version: {{ version }}\n\nsource:\n  url: http://software.ligo.org/lscsoft/source/lalsuite/{{ name }}-{{ version }}.tar.xz\n  sha256: {{ sha256 }}\n  patches:\n    # https://git.ligo.org/lscsoft/lalsuite/merge_requests/799\n    - libframe.patch\n\nbuild:\n  error_overdepending: true\n  error_overlinking: true\n  number: 2\n  skip: true  # [win]\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - make\n    - pkg-config\n    - swig >={{ swig_version }}\n  host:\n    - gsl\n    - lal >={{ lal_version }}\n    - lalframe >={{ lalframe_version }}\n    - lalmetaio >={{ lalmetaio_version }}\n    - lalsimulation >={{ lalsimulation_version }}\n    - metaio\n  run:\n    - gsl\n    - lal >={{ lal_version }}\n    - lalframe >={{ lalframe_version }}\n    - lalmetaio >={{ lalmetaio_version }}\n    - lalsimulation >={{ lalsimulation_version }}\n    - metaio\n\ntest:\n  commands:\n    - lalinspiral_version --verbose\n\noutputs:\n  - name: lalinspiral\n    build:\n      run_exports:\n        - {{ pin_subpackage(\"lalinspiral\", max_pin=\"x.x\") }}\n\n  - name: python-lalinspiral\n    script: install-python.sh\n    requirements:\n      build:\n        - {{ compiler('c') }}\n        - make\n        - pkg-config\n        - swig >={{ swig_version }}\n      host:\n        - {{ pin_subpackage('lalinspiral', exact=True) }}\n        - numpy\n        - python\n      run:\n        - gsl  # [linux]\n        - lal >={{ lal_version }}\n        - {{ pin_subpackage('lalinspiral', exact=True) }}\n        - lalframe  # [linux]\n        - lalmetaio  # [linux]\n        - lalsimulation  # [linux]\n        - lscsoft-glue\n        - metaio  # [linux]\n        - {{ pin_compatible('numpy') }}\n        - python\n        - python-lal >={{ lal_version }}\n        - python-lalburst >=1.5.1\n        - python-lalframe >={{ lalframe_version }}\n        - python-lalmetaio >={{ lalmetaio_version }}\n        - python-lalsimulation >={{ lalsimulation_version }}\n        - python-ligo-lw\n    test:\n      imports:\n        - lalinspiral\n        - lalinspiral.inspinjfind\n        - lalinspiral.sbank\n        - lalinspiral.thinca\n    about:\n      home: https://wiki.ligo.org/Computing/DASWG/LALSuite\n      doc_url: https://docs.ligo.org/lscsoft/lalsuite/lalinspiral/\n      dev_url: https://git.ligo.org/lscsoft/lalsuite/\n      license: GPLv3\n      license_family: GPL\n      license_file: COPYING\n      summary: LSC Algorithm Inspiral Library\n      description: |\n        The LSC Algorithm Inspiral Library for gravitational wave data analysis.\n        This package contains the python bindings.\n\nabout:\n  home: https://wiki.ligo.org/Computing/DASWG/LALSuite\n  doc_url: https://docs.ligo.org/lscsoft/lalsuite/lalinspiral/\n  dev_url: https://git.ligo.org/lscsoft/lalsuite/\n  license: GPLv3\n  license_family: GPL\n  license_file: COPYING\n  summary: LSC Algorithm Inspiral Library\n  description: |\n    The LSC Algorithm Inspiral Library for gravitational wave data analysis.\n    This package contains the shared-object libraries needed to run\n    applications that use the LAL Inspiral library.  If you want to install\n    the Python bindings, please install the associated python-lalinspiral\n    package.\n\nextra:\n  recipe-maintainers:\n    - duncanmmacleod\n    - skymoo\n",
  "req":{
   "__set__":true,
@@ -409,7 +429,7 @@
    "swig"
   ]
  },
- "smithy_version":"3.6.2",
+ "smithy_version":"3.6.3",
  "url":"http://software.ligo.org/lscsoft/source/lalsuite/lalinspiral-1.9.0.tar.xz",
  "version":"1.9.0"
 }
