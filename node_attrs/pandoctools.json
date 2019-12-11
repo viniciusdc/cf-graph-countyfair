@@ -160,6 +160,26 @@
     "migrator_version",
     "version"
    ]
+  },
+  {
+   "PR":{
+    "head":{
+     "ref":"<this_is_not_a_branch>"
+    },
+    "state":"closed"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"Version",
+    "migrator_version":0,
+    "version":"2.8.0.3"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "version"
+   ]
   }
  ],
  "bad":false,
@@ -333,7 +353,7 @@
   }
  },
  "name":"pandoctools",
- "new_version":"2.8.0.2",
+ "new_version":"2.8.0.3",
  "pinning_version":"2019.12.02",
  "raw_meta_yaml":"{% set name = \"pandoctools\" %}\n{% set version = \"2.8.0.2\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz\n  sha256: c989b61f484bb305abe966c92fd0e2fdcb313479a2ba65fc12de999255fcd1f1\n\nbuild:\n  noarch: python\n  number: 0\n  entry_points:\n    - cat-md = pandoctools.cat_md.cat_md:cli\n    - pandoctools = pandoctools.cli.cli:pandoctools\n    - pandoctools-resolve = pandoctools.pandoctools_resolve.resolve:cli\n    - pandoctools-ready = pandoctools.ready.ready:ready\n    - regex-replace = pandoctools.regex_replace.cli:cli\n  script: \"{{ PYTHON }} -m pip install . --no-deps -vv\"\n\nrequirements:\n  host:\n    - python >=3.6\n    - pip\n  run:\n    - python >=3.6\n    - pip >=10.0.1\n    - setuptools\n    - click\n    - pyyaml\n    - notebook\n    - jupyter\n    - numpy\n    - panflute >=1.12.4\n    - knitty >=0.5.0\n    - pyppdf >=0.0.11\n    - sugartex >=0.1.16\n    - shortcutter >=0.1.19\n    - py-pandoc-crossref >=0.3.5.0.1\n    - py-pandoc >=2.8.0.1\n    - libsass\n    - py-mathjax <3.0\n    - shutilwhich-cwdpatch >=0.1.0\n    - jupyter_console >=6.0.0\n    - py-open-fonts >=0.4.9\n\ntest:\n  imports:\n    - pandoctools\n    - pandoctools.ready\n    - pandoctools.shared_vars\n    - pandoctools.pandoctools_resolve\n    - pandoctools.cli\n    - pandoctools.cat_md\n    - pandoctools.regex_replace\n  commands:\n    - pandoctools --help\n    - pandoctools-ready\n    - pandoctools-resolve Default\n    - regex-replace --help\n    - |\n      echo hello | cat-md - -\n\nabout:\n  home: https://github.com/kiwi0fruit/pandoctools\n  license: GPL2+\n  license_family: GPL2\n  license_file: LICENSE\n  summary: \"Profile manager of text processing pipelines: Pandoc filters, any text CLI filters. Atom+Markdown+Pandoc+Jupyter workflow, export to ipynb\"\n  doc_url: https://github.com/kiwi0fruit/pandoctools\n  dev_url: https://github.com/kiwi0fruit/pandoctools\n\nextra:\n  recipe-maintainers:\n    - kiwi0fruit\n",
  "req":{
