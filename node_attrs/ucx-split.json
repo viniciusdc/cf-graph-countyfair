@@ -93,6 +93,26 @@
     "migrator_version",
     "version"
    ]
+  },
+  {
+   "PR":{
+    "head":{
+     "ref":"<this_is_not_a_branch>"
+    },
+    "state":"closed"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"Version",
+    "migrator_version":0,
+    "version":"2.5"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "version"
+   ]
   }
  ],
  "bad":false,
@@ -323,12 +343,12 @@
   }
  },
  "name":"ucx-split",
- "new_version":"1.6.1",
+ "new_version":"2.5",
  "outputs_names":[
   "ucx",
   "ucx-proc"
  ],
- "pinning_version":"2019.10.08",
+ "pinning_version":"2019.12.02",
  "raw_meta_yaml":"{% set ucx_version = \"1.6.1\" %}\n{% set ucx_proc_version = \"1.0.0\" %}\n{% set number = \"7\" %}\n\n{% set ucx_proc_type = \"cpu\" if cuda_compiler_version == \"None\" else \"gpu\" %}\n\n\npackage:\n  name: ucx-split\n\nsource:\n  url: https://github.com/openucx/ucx/archive/v{{ ucx_version }}.tar.gz\n  sha256: 20b2970b3e714ff2d41937e53525d49c3012df7ef7eb7fcb75ae47efd7bd1396\n  patches:\n    #####################################################\n    # Fix a linking issue with `test_link_map`.         #\n    #                                                   #\n    # xref: https://github.com/openucx/ucx/issues/4218  #\n    #####################################################\n    - fixes_4218.diff\n\nbuild:\n  skip: true  # [not linux]\n  number: 0\n\noutputs:\n  - name: ucx-proc\n    version: {{ ucx_proc_version }}\n    build:\n      number: 0\n      string: \"{{ ucx_proc_type }}\"\n    test:\n      commands:\n        - exit 0\n    about:\n      home: https://github.com/conda-forge/ucx-feedstock\n      license: BSD-3-Clause\n      license_family: BSD\n      summary: A meta-package to select CPU or GPU UCX build.\n\n  - name: ucx\n    version: {{ ucx_version }}\n    build:\n      number: {{ number }}\n    requirements:\n      build:\n        - {{ compiler(\"c\") }}\n        - {{ compiler(\"cxx\") }}\n        - {{ compiler(\"cuda\") }}         # [cuda_compiler_version != \"None\"]\n        - {{ cdt(\"libnl\") }}\n        - {{ cdt(\"libibcm-devel\") }}\n        - {{ cdt(\"libibverbs-devel\") }}\n        - {{ cdt(\"librdmacm-devel\") }}\n        - {{ cdt(\"numactl-devel\") }}\n        - automake\n        - autoconf\n        - libtool\n        - make\n        - pkg-config\n      host:\n      run_constrained:\n        - ucx-proc * {{ ucx_proc_type }}\n    script: install_ucx.sh\n    test:\n      commands:\n        - test -f \"${PREFIX}/bin/ucx_info\"\n        # Requires driver for GPU test.\n        - ${PREFIX}/bin/ucx_info -v         # [cuda_compiler_version == \"None\"]\n    about:\n      home: https://github.com/openucx/ucx\n      license: BSD-3-Clause\n      license_family: BSD\n      license_file: LICENSE\n      summary: Unified Communication X.\n\nabout:\n  home: https://github.com/openucx/ucx\n  license: BSD-3-Clause\n  license_family: BSD\n  license_file: LICENSE\n  summary: Unified Communication X.\n\nextra:\n  recipe-maintainers:\n    - Akshay-Venkatesh\n    - jakirkham\n    - quasiben\n    - TomAugspurger\n",
  "req":{
   "__set__":true,
@@ -344,6 +364,6 @@
    "pkg-config"
   ]
  },
- "smithy_version":"3.5.0",
+ "smithy_version":"3.6.3",
  "url":"https://github.com/openucx/ucx/releases/download/v1.5.1/ucx-1.5.1.tar.gz"
 }

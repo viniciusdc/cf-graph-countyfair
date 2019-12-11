@@ -67,7 +67,7 @@
    ]
   }
  ],
- "bad":"make_graph: 503",
+ "bad":false,
  "conda-forge.yml":{
   "compiler_stack":"comp7",
   "max_py_ver":"37",
@@ -162,7 +162,7 @@
   }
  },
  "name":"r-mcmc",
- "new_version":false,
+ "new_version":"0.9_6",
  "pinning_version":"2019.07.15",
  "raw_meta_yaml":"{% set version = \"0.9-6\" %}\n\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-mcmc\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  fn: mcmc_{{ version }}.tar.gz\n  url:\n    - https://cran.r-project.org/src/contrib/mcmc_{{ version }}.tar.gz\n    - https://cran.r-project.org/src/contrib/Archive/mcmc/mcmc_{{ version }}.tar.gz\n  sha256: 443a189fff907830627029dd55d925db9a70562d8bda7bfae97414ab955186b9\n\nbuild:\n  merge_build_host: True  # [win]\n  number: 1\n  skip: true  # [win32]\n\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - posix                # [win]\n    - {{ compiler('c') }}        # [unix]\n    - {{ compiler('m2w64_c') }}  # [win]\n  host:\n    - r-base\n\n  run:\n    - r-base\n\ntest:\n  commands:\n    - $R -e \"library('mcmc')\"  # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('mcmc')\\\"\"  # [win]\n\nabout:\n  home: http://www.stat.umn.edu/geyer/mcmc/, https://github.com/cjgeyer/mcmc\n  license: MIT\n  summary: Simulates continuous distributions of random vectors using Markov chain Monte Carlo\n    (MCMC).  Users specify the distribution by an R function that evaluates the log\n    unnormalized density.  Algorithms are random walk Metropolis algorithm (function\n    metrop), simulated tempering (function temper), and morphometric random walk Metropolis\n    (Johnson and Geyer, 2012, <https://doi.org/10.1214/12-AOS1048>, function morph.metrop),\n    which achieves geometric ergodicity by change of variable.\n  license_family: MIT\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n    - dpryan79\n    - johanneskoester\n    - bgruening\n    - daler\n    - jdblischak\n",
  "req":{

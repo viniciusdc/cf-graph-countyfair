@@ -149,7 +149,40 @@
    ]
   }
  ],
- "bad":false,
+ "bad":{
+  "code":404,
+  "exception":"HTTP Error 404: Not Found",
+  "traceback":[
+   "Traceback (most recent call last):",
+   "  File \"/root/repo/cf-scripts/conda_forge_tick/auto_tick.xsh\", line 750, in main",
+   "    dry_run=args.dry_run)",
+   "  File \"/root/repo/cf-scripts/conda_forge_tick/auto_tick.xsh\", line 98, in run",
+   "    migrate_return = migrator.migrate(recipe_dir, attrs, **kwargs)",
+   "  File \"/root/repo/cf-scripts/conda_forge_tick/migrators.xsh\", line 467, in migrate",
+   "    new_patterns = self.get_hash_patterns('meta.yaml', urls, hash_type)",
+   "  File \"/root/repo/cf-scripts/conda_forge_tick/migrators.xsh\", line 384, in get_hash_patterns",
+   "    hash = hash_url(url, hash_type)",
+   "  File \"/opt/conda/envs/run_env/lib/python3.7/site-packages/rever/tools.xsh\", line 207, in hash_url",
+   "    for b in stream_url_progress(url, verb='Hashing', quiet=quiet):",
+   "  File \"/opt/conda/envs/run_env/lib/python3.7/site-packages/rever/tools.xsh\", line 179, in stream_url_progress",
+   "    with urllib.request.urlopen(url) as f:",
+   "  File \"/opt/conda/envs/run_env/lib/python3.7/urllib/request.py\", line 222, in urlopen",
+   "    return opener.open(url, data, timeout)",
+   "  File \"/opt/conda/envs/run_env/lib/python3.7/urllib/request.py\", line 531, in open",
+   "    response = meth(req, response)",
+   "  File \"/opt/conda/envs/run_env/lib/python3.7/urllib/request.py\", line 641, in http_response",
+   "    'http', request, response, code, msg, hdrs)",
+   "  File \"/opt/conda/envs/run_env/lib/python3.7/urllib/request.py\", line 569, in error",
+   "    return self._call_chain(*args)",
+   "  File \"/opt/conda/envs/run_env/lib/python3.7/urllib/request.py\", line 503, in _call_chain",
+   "    result = func(*args)",
+   "  File \"/opt/conda/envs/run_env/lib/python3.7/urllib/request.py\", line 649, in http_error_default",
+   "    raise HTTPError(req.full_url, code, msg, hdrs, fp)",
+   "urllib.error.HTTPError: HTTP Error 404: Not Found",
+   ""
+  ],
+  "url":"http://releases.llvm.org/10-init/lld-10-init.src.tar.xz"
+ },
  "conda-forge.yml":{
   "provider":{
    "win":"azure"
@@ -225,7 +258,7 @@
   }
  },
  "name":"lld",
- "new_version":"llvmorg-10-init",
+ "new_version":"10-init",
  "pinning_version":"2019.10.08",
  "raw_meta_yaml":"{% set version = \"9.0.0\" %}\n{% set sha256 = \"31c6748b235d09723fb73fea0c816ed5a3fab0f96b66f8fbc546a0fcc8688f91\" %}\n\npackage:\n  name: lld\n  version: {{ version }}\n\nsource:\n  url: http://releases.llvm.org/{{ version }}/lld-{{ version }}.src.tar.xz\n  sha256: {{ sha256 }}\n  patches:\n    - cmake.diff\n\nbuild:\n  number: 0\n  skip: true  # [win and vc<14]\n\nrequirements:\n  build:\n    - cmake >=3.4.3\n    - ninja    # [win]\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n  host:\n    - llvmdev =={{ version }}\n    - swig\n    - llvm\n  run_constrained:\n    - llvm =={{ version }}\n\ntest:\n  commands:\n    - ld.lld --version  # [linux]\n    - lld-link /?  # [win]\n\nabout:\n  home: http://llvm.org/\n  license: NCSA\n  license_file: LICENSE.TXT\n  summary: The LLVM Linker\n\nextra:\n  recipe-maintainers:\n    - isuruf\n",
  "req":{

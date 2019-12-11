@@ -1,4 +1,26 @@
 {
+ "PRed":[
+  {
+   "PR":{
+    "head":{
+     "ref":"<this_is_not_a_branch>"
+    },
+    "state":"closed"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"Version",
+    "migrator_version":0,
+    "version":"2.2.5"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "version"
+   ]
+  }
+ ],
  "bad":false,
  "conda-forge.yml":{
   "provider":{
@@ -150,10 +172,11 @@
   }
  },
  "name":"spacy-model-fr",
- "new_version":"pt_core_news_sm-2.2.5",
+ "new_version":"2.2.5",
  "outputs_names":[
   "spacy-model-fr_core_news_"
  ],
+ "pinning_version":"2019.12.02",
  "raw_meta_yaml":"{% set prefix = \"spacy-model-\" %}\n{% set lang = \"fr\" %}\n{% set name = lang + \"_core_news\" %}\n{% set version = \"2.0.0\" %}\n\npackage:\n  name: {{ prefix }}{{ lang|lower }}\n  version: {{ version }}\n\nsource:\n  - folder: sm\n    url: https://github.com/explosion/spacy-models/releases/download/{{ name }}_sm-{{ version }}/{{ name }}_sm-{{ version }}.tar.gz\n    sha256: bd1656ed72815f793a445d80dc7eed0fede1800963684636e36c3c434caa90fe\n  - folder: md\n    url: https://github.com/explosion/spacy-models/releases/download/{{ name }}_md-{{ version }}/{{ name }}_md-{{ version }}.tar.gz\n    sha256: 9aa2119982e20f8a44bbdbe6a35c52e1aa64f4dc42fe16570a88db400d517b1a\n\nbuild:\n  noarch: python\n  number: 0\n\ntest:\n  commands:\n    - echo \"make lint happy\"\n\noutputs:\n  - name: {{prefix}}{{ name }}_{{ size }}\n    script: build.sh  # [unix]\n    script: build.bat  # [win]\n    requirements:\n      host:\n        - python\n        - pip\n      run:\n        - python\n        - setuptools\n    test:\n      imports:\n        - {{ name }}_{{ size }}\n      requires:\n        - spacy {{ version.split('.')[0] }}.*\n      commands:\n        - python -c \"import {{ name }}_{{ size }} as m; m.load()\"\n        - python -c \"import spacy; spacy.load('{{ name }}_{{ size }}')\"\n\nabout:\n  home: https://spacy.io\n  license: CC BY-SA 3.0\n  summary: 'French multi-task CNN trained on the French Sequoia (Universal Dependencies) and WikiNER corpus.'\n\n  doc_url: https://spacy.io/models/fr\n\nextra:\n  recipe-maintainers:\n    - sodre\n",
  "req":{
   "__set__":true,
@@ -163,6 +186,7 @@
    "setuptools"
   ]
  },
+ "smithy_version":"3.6.3",
  "url":"https://github.com/explosion/spacy-models/releases/download/fr_core_news_sm-2.0.0/fr_core_news_sm-2.0.0.tar.gz",
  "version":"2.0.0"
 }
