@@ -219,7 +219,7 @@
    "summary":"A C++ / Python platform to perform parallel computations of optimisation tasks (global and local) via the asynchronous generalized island model"
   },
   "build":{
-   "number":"1",
+   "number":"2",
    "skip":true
   },
   "extra":{
@@ -232,13 +232,197 @@
     "darioizzo"
    ]
   },
+  "outputs":[
+   {
+    "files":[
+     "Library/bin/pagmo.dll"
+    ],
+    "name":"pagmo",
+    "requirements":{
+     "host":[
+      "eigen",
+      "nlopt",
+      "boost-cpp",
+      "tbb-devel"
+     ],
+     "run":[
+      "compatible_pin_stub"
+     ]
+    },
+    "test":{
+     "commands":[
+      "if not exist %PREFIX%\\\\Library\\\\bin\\\\pagmo.dll exit 1"
+     ]
+    }
+   },
+   {
+    "build":{
+     "run_exports":[
+      "subpackage_stub",
+      "compatible_pin_stub",
+      "compatible_pin_stub",
+      "compatible_pin_stub",
+      "compatible_pin_stub"
+     ]
+    },
+    "files":[
+     "Library/include/pagmo",
+     "Library/lib/pagmo.lib",
+     "Library/lib/cmake/pagmo"
+    ],
+    "name":"pagmo-devel",
+    "requirements":{
+     "host":[
+      "eigen",
+      "nlopt",
+      "boost-cpp",
+      "tbb-devel"
+     ],
+     "run":[
+      "subpackage_stub",
+      "eigen",
+      "boost-cpp",
+      "tbb-devel"
+     ]
+    },
+    "test":{
+     "commands":[
+      "if not exist %PREFIX%\\\\Library\\\\include\\\\pagmo\\\\config.hpp exit 1",
+      "if not exist %PREFIX%\\\\Library\\\\lib\\\\pagmo.lib exit 1"
+     ]
+    }
+   },
+   {
+    "files":[
+     "lib/libpagmo*",
+     "lib/libpagmo.*.dylib"
+    ],
+    "name":"pagmo",
+    "requirements":{
+     "host":[
+      "eigen",
+      "nlopt",
+      "boost-cpp",
+      "tbb-devel",
+      "ipopt"
+     ],
+     "run":[
+      "compatible_pin_stub",
+      "ipopt"
+     ]
+    },
+    "test":{
+     "commands":[
+      "test -f $PREFIX/lib/libpagmo.dylib"
+     ]
+    }
+   },
+   {
+    "build":{
+     "run_exports":[
+      "subpackage_stub",
+      "compatible_pin_stub",
+      "compatible_pin_stub",
+      "compatible_pin_stub",
+      "compatible_pin_stub"
+     ]
+    },
+    "files":[
+     "include/pagmo",
+     "lib/cmake/pagmo"
+    ],
+    "name":"pagmo-devel",
+    "requirements":{
+     "host":[
+      "eigen",
+      "nlopt",
+      "boost-cpp",
+      "tbb-devel",
+      "ipopt"
+     ],
+     "run":[
+      "subpackage_stub",
+      "eigen",
+      "boost-cpp",
+      "tbb-devel",
+      "ipopt"
+     ]
+    },
+    "test":{
+     "commands":[
+      "test -f $PREFIX/include/pagmo/config.hpp"
+     ]
+    }
+   },
+   {
+    "files":[
+     "lib/libpagmo*",
+     "lib/libpagmo.so.*"
+    ],
+    "name":"pagmo",
+    "requirements":{
+     "host":[
+      "eigen",
+      "nlopt",
+      "boost-cpp",
+      "tbb-devel",
+      "ipopt"
+     ],
+     "run":[
+      "compatible_pin_stub",
+      "ipopt"
+     ]
+    },
+    "test":{
+     "commands":[
+      "test -f $PREFIX/lib/libpagmo.so"
+     ]
+    }
+   },
+   {
+    "build":{
+     "run_exports":[
+      "subpackage_stub",
+      "compatible_pin_stub",
+      "compatible_pin_stub",
+      "compatible_pin_stub",
+      "compatible_pin_stub"
+     ]
+    },
+    "files":[
+     "include/pagmo",
+     "lib/cmake/pagmo"
+    ],
+    "name":"pagmo-devel",
+    "requirements":{
+     "host":[
+      "eigen",
+      "nlopt",
+      "boost-cpp",
+      "tbb-devel",
+      "ipopt"
+     ],
+     "run":[
+      "subpackage_stub",
+      "eigen",
+      "boost-cpp",
+      "tbb-devel",
+      "ipopt"
+     ]
+    },
+    "test":{
+     "commands":[
+      "test -f $PREFIX/include/pagmo/config.hpp"
+     ]
+    }
+   }
+  ],
   "package":{
    "name":"pagmo",
    "version":"2.11.4"
   },
   "requirements":{
    "build":[
-    "cmake",
     "c_compiler_stub",
     "cxx_compiler_stub",
     "cmake",
@@ -246,74 +430,35 @@
     "cxx_compiler_stub",
     "cmake",
     "c_compiler_stub",
-    "cxx_compiler_stub"
-   ],
-   "host":[
-    "eigen",
-    "nlopt",
-    "boost-cpp",
-    "tbb",
-    "tbb-devel",
-    "eigen",
-    "nlopt",
-    "boost-cpp",
-    "tbb",
-    "tbb-devel",
-    "ipopt",
-    "eigen",
-    "nlopt",
-    "boost-cpp",
-    "tbb",
-    "tbb-devel",
-    "ipopt"
-   ],
-   "run":[
-    "eigen",
-    "nlopt",
-    "boost-cpp",
-    "tbb",
-    "tbb-devel",
-    "eigen",
-    "nlopt",
-    "boost-cpp",
-    "tbb",
-    "tbb-devel",
-    "ipopt",
-    "eigen",
-    "nlopt",
-    "boost-cpp",
-    "tbb",
-    "tbb-devel",
-    "ipopt"
+    "cxx_compiler_stub",
+    "cmake"
    ]
   },
   "source":{
    "sha256":"7756cf4b4a427a856137c40c3fdf27422fcf546249b70f9ba4c213ef1fbee051",
    "url":"https://github.com/esa/pagmo2/archive/v2.11.4.tar.gz"
-  },
-  "test":{
-   "commands":[
-    "if not exist %LIBRARY_INC%\\\\pagmo\\\\pagmo.hpp exit 1",
-    "test -f $PREFIX/include/pagmo/pagmo.hpp",
-    "test -f $PREFIX/include/pagmo/pagmo.hpp"
-   ]
   }
  },
  "name":"pagmo",
  "new_version":"2.11.4",
+ "outputs_names":[
+  "pagmo",
+  "pagmo-devel"
+ ],
  "pinning_version":"2019.09.27",
- "raw_meta_yaml":"{% set version = \"2.11.4\" %}\n\npackage:\n  name: pagmo\n  version: {{ version }}\n\nsource:\n  url: https://github.com/esa/pagmo2/archive/v{{ version }}.tar.gz\n  sha256: 7756cf4b4a427a856137c40c3fdf27422fcf546249b70f9ba4c213ef1fbee051\n\nbuild:\n  number: 1\n  skip: True  # [win and vc<14]\n\nrequirements:\n  build:\n    - cmake\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n  host:\n    - eigen\n    - nlopt\n    - boost-cpp\n    - tbb\n    - tbb-devel\n    - ipopt               # [unix]\n  run:\n    - eigen\n    - nlopt\n    - boost-cpp\n    - tbb\n    - tbb-devel\n    - ipopt               # [unix]\n\ntest:\n  commands:\n    - test -f $PREFIX/include/pagmo/pagmo.hpp               # [unix]\n    - if not exist %LIBRARY_INC%\\\\pagmo\\\\pagmo.hpp exit 1   # [win]\n\nabout:\n  home: https://esa.github.io/pagmo2/\n  license: GPL v3 and LGPL v3\n  license_file: COPYING.lgpl3\n  summary: 'A C++ / Python platform to perform parallel computations of optimisation tasks (global and local) via the asynchronous generalized island model'\n\nextra:\n  recipe-maintainers:\n    - bluescarni\n    - darioizzo\n",
+ "raw_meta_yaml":"{% set version = \"2.11.4\" %}\n\npackage:\n  name: pagmo\n  version: {{ version }}\n\nsource:\n  url: https://github.com/esa/pagmo2/archive/v{{ version }}.tar.gz\n  sha256: 7756cf4b4a427a856137c40c3fdf27422fcf546249b70f9ba4c213ef1fbee051\n\nbuild:\n  number: 2\n  skip: True  # [win and vc<14]\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n    - cmake\n\noutputs:\n  - name: pagmo\n    requirements:\n      host:\n        - eigen\n        - nlopt\n        - boost-cpp\n        - tbb-devel\n        - ipopt  # [unix]\n      run:\n        # NOTE: nlopt and tbb\n        # use run_exports().\n        - {{ pin_compatible('boost-cpp', max_pin='x.x') }}\n        - ipopt  # [unix]\n    files:\n      - lib/libpagmo*{{ SHLIB_EXT }}   # [not win]\n      - lib/libpagmo.so.*              # [linux]\n      - lib/libpagmo.*.dylib           # [osx]\n      - Library/bin/pagmo.dll          # [win]\n    test:\n      commands:\n        - test -f $PREFIX/lib/libpagmo.so                                     # [linux]\n        - test -f $PREFIX/lib/libpagmo.dylib                                  # [osx]\n        - if not exist %PREFIX%\\\\Library\\\\bin\\\\pagmo.dll exit 1               # [win]\n\n  - name: pagmo-devel\n    build:\n      run_exports:\n        # API/ABI change at minor rev bumps.\n        - {{ pin_subpackage('pagmo', max_pin='x.x') }}\n        - {{ pin_compatible('boost-cpp', max_pin='x.x') }}\n        - {{ pin_compatible('tbb', max_pin=None) }}\n        - {{ pin_compatible('nlopt', max_pin='x.x') }}\n        - {{ pin_compatible('ipopt', max_pin='x.x') }}\n    requirements:\n      host:\n        - eigen\n        - nlopt\n        - boost-cpp\n        - tbb-devel\n        - ipopt  # [unix]\n      run:\n        - {{ pin_subpackage(\"pagmo\", exact=True) }}\n        - eigen\n        - boost-cpp\n        - tbb-devel\n        - ipopt  # [unix]\n    files:\n      - include/pagmo            # [not win]\n      - lib/cmake/pagmo          # [not win]\n      - Library/include/pagmo    # [win]\n      - Library/lib/pagmo.lib    # [win]\n      - Library/lib/cmake/pagmo  # [win]\n    test:\n      commands:\n        - test -f $PREFIX/include/pagmo/config.hpp                            # [unix]\n        - if not exist %PREFIX%\\\\Library\\\\include\\\\pagmo\\\\config.hpp exit 1   # [win]\n        - if not exist %PREFIX%\\\\Library\\\\lib\\\\pagmo.lib exit 1               # [win]\n\nabout:\n  home: https://esa.github.io/pagmo2/\n  license: GPL v3 and LGPL v3\n  license_file: COPYING.lgpl3\n  summary: 'A C++ / Python platform to perform parallel computations of optimisation tasks (global and local) via the asynchronous generalized island model'\n\nextra:\n  recipe-maintainers:\n    - bluescarni\n    - darioizzo\n",
  "req":{
   "__set__":true,
   "elements":[
    "boost-cpp",
    "c_compiler_stub",
    "cmake",
+   "compatible_pin_stub",
    "cxx_compiler_stub",
    "eigen",
    "ipopt",
    "nlopt",
-   "tbb",
+   "subpackage_stub",
    "tbb-devel"
   ]
  },

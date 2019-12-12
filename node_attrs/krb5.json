@@ -157,6 +157,23 @@
     "migrator_version",
     "name"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/352592022.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"Version",
+    "migrator_version":0,
+    "version":"1.16.4"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "version"
+   ]
   }
  ],
  "bad":false,
@@ -267,8 +284,8 @@
   }
  },
  "name":"krb5",
- "new_version":false,
- "pinning_version":"2019.10.30",
+ "new_version":"1.16.4",
+ "pinning_version":"2019.12.02",
  "raw_meta_yaml":"{% set version = \"1.16.3\" %}\n\npackage:\n  name: krb5\n  version: {{ version }}\n\nsource:\n  url: https://github.com/krb5/krb5/archive/krb5-{{ version }}-final.tar.gz\n  sha256: abc88d8f69f135ccca4c28a7ebe10f4ee52a06a453e612e98f61a4a037e13d2b\n  patches:\n    - eafnosupport.patch  # [win and vc<14]\n    - jsoneoverflow.patch  # [win and vc<14]\n    - afxres.patch  # [win and vc<14]\n    - lshutil.patch  # [win and vc<14]\n    # - escape_curly_braces.patch\n\nbuild:\n  number: 1001\n  run_exports:\n    # stable within minor revisions: https://abi-laboratory.pro/tracker/timeline/krb5/\n    - {{ pin_subpackage('krb5', max_pin='x.x') }}\n  missing_dso_whitelist:          # [osx]\n    - /usr/lib/libresolv.9.dylib  # [osx]\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n    - bison       # [not win]\n    - autoconf    # [not win]\n    - posix       # [win]\n    - perl        # [win]\n    - pkg-config  # [unix]\n    - make        # [unix]\n    - python 3.7  # [not win]\n    - python      # [win]\n    - openssl\n  host:\n    - msinttypes  # [win and vc<14]\n    - libedit     # [unix]\n    - openssl\n    - tk\n  run:\n    - {{ pin_compatible('libedit') }}  # [unix]\n\ntest:\n  requires:\n    # without this the solver goes into a strange corner and returns python 2.0\n    - python 3.7.*  # [not win]\n    - python        # [win]\n  commands:\n    - conda inspect linkages -p $PREFIX krb5  # [not win]\n    - conda inspect objects -p $PREFIX krb5  # [osx]\n\nabout:\n  home: http://web.mit.edu/kerberos/\n  license: MIT\n  license_file: doc/notice.rst\n  summary: 'A network authentication protocol.'\n\nextra:\n  recipe-maintainers:\n    - pelson\n    - ocefpaf\n    - mingwandroid\n    - mariusvniekerk\n",
  "req":{
   "__set__":true,
@@ -289,7 +306,7 @@
    "tk"
   ]
  },
- "smithy_version":"3.6.0",
+ "smithy_version":"3.6.3",
  "url":"https://github.com/krb5/krb5/archive/krb5-1.16.3-final.tar.gz",
  "version":"1.16.3"
 }
