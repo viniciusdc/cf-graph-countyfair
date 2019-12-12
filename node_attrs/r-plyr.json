@@ -83,11 +83,12 @@
    "home":"http://had.co.nz/plyr, https://github.com/hadley/plyr",
    "license":"MIT",
    "license_family":"MIT",
+   "license_file":"LICENSE",
    "summary":"A set of tools that solves a common set of problems: you need to break a big problem down into manageable pieces, operate on each piece and then put all the pieces back together.  For example, you might want to fit a model to each spatial location or time point in your study, summarise data by panels or collapse high-dimensional arrays to simpler summary statistics. The development of 'plyr' has been generously supported by 'Becton Dickinson'."
   },
   "build":{
    "merge_build_host":true,
-   "number":"1003",
+   "number":"0",
    "rpaths":[
     "lib/R/lib/",
     "lib/",
@@ -100,28 +101,13 @@
   "extra":{
    "recipe-maintainers":[
     "conda-forge/r",
-    "johanneskoester",
-    "bgruening",
-    "daler",
-    "jdblischak",
-    "cbrueffer",
     "conda-forge/r",
-    "johanneskoester",
-    "bgruening",
-    "daler",
-    "jdblischak",
-    "cbrueffer",
-    "conda-forge/r",
-    "johanneskoester",
-    "bgruening",
-    "daler",
-    "jdblischak",
-    "cbrueffer"
+    "conda-forge/r"
    ]
   },
   "package":{
    "name":"r-plyr",
-   "version":"1.8.4"
+   "version":"1.8.5"
   },
   "requirements":{
    "build":[
@@ -158,15 +144,15 @@
    ]
   },
   "source":{
-   "fn":"plyr_1.8.4.tar.gz",
-   "sha256":"60b522d75961007658c9806f8394db27989f1154727cb0bb970062c96ec9eac5",
+   "fn":"plyr_1.8.5.tar.gz",
+   "sha256":"ea008c59a4a7211a09dfc2e4f25d286fc109424c17f01671f72aec97c75a9574",
    "url":[
-    "https://cran.r-project.org/src/contrib/plyr_1.8.4.tar.gz",
-    "https://cran.r-project.org/src/contrib/Archive/plyr/plyr_1.8.4.tar.gz",
-    "https://cran.r-project.org/src/contrib/plyr_1.8.4.tar.gz",
-    "https://cran.r-project.org/src/contrib/Archive/plyr/plyr_1.8.4.tar.gz",
-    "https://cran.r-project.org/src/contrib/plyr_1.8.4.tar.gz",
-    "https://cran.r-project.org/src/contrib/Archive/plyr/plyr_1.8.4.tar.gz"
+    "https://cran.r-project.org/src/contrib/plyr_1.8.5.tar.gz",
+    "https://cran.r-project.org/src/contrib/Archive/plyr/plyr_1.8.5.tar.gz",
+    "https://cran.r-project.org/src/contrib/plyr_1.8.5.tar.gz",
+    "https://cran.r-project.org/src/contrib/Archive/plyr/plyr_1.8.5.tar.gz",
+    "https://cran.r-project.org/src/contrib/plyr_1.8.5.tar.gz",
+    "https://cran.r-project.org/src/contrib/Archive/plyr/plyr_1.8.5.tar.gz"
    ]
   },
   "test":{
@@ -180,7 +166,7 @@
  "name":"r-plyr",
  "new_version":"1.8.5",
  "pinning_version":"2019.12.02",
- "raw_meta_yaml":"{% set version = '1.8.4' %}\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-plyr\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  fn: plyr_{{ version }}.tar.gz\n  url:\n    - {{ cran_mirror }}/src/contrib/plyr_{{ version }}.tar.gz\n    - {{ cran_mirror }}/src/contrib/Archive/plyr/plyr_{{ version }}.tar.gz\n  sha256: 60b522d75961007658c9806f8394db27989f1154727cb0bb970062c96ec9eac5\n\nbuild:\n  merge_build_host: True  # [win]\n  number: 1003\n  skip: true  # [win32]\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - {{ compiler('c') }}        # [not win]\n    - {{ compiler('cxx') }}      # [not win]\n    - {{ compiler('m2w64_c') }}        # [win]\n    - {{ compiler('m2w64_cxx') }}        # [win]\n    - {{posix}}filesystem        # [win]\n    - {{posix}}make\n    - {{posix}}sed               # [win]\n    - {{posix}}coreutils         # [win]\n    - {{posix}}zip               # [win]\n  host:\n    - r-base\n    - r-rcpp >=0.11.0\n  run:\n    - r-base\n    - {{native}}gcc-libs         # [win]\n    - r-rcpp >=0.11.0\n\ntest:\n  commands:\n    - $R -e \"library('plyr')\"           # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('plyr')\\\"\"  # [win]\n\nabout:\n  home: http://had.co.nz/plyr, https://github.com/hadley/plyr\n  license: MIT\n  summary: 'A set of tools that solves a common set of problems: you need to break a big problem\n    down into manageable pieces, operate on each piece and then put all the pieces back\n    together.  For example, you might want to fit a model to each spatial location or\n    time point in your study, summarise data by panels or collapse high-dimensional\n    arrays to simpler summary statistics. The development of ''plyr'' has been generously\n    supported by ''Becton Dickinson''.'\n  license_family: MIT\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n    - johanneskoester\n    - bgruening\n    - daler\n    - jdblischak\n    - cbrueffer\n",
+ "raw_meta_yaml":"{% set version = \"1.8.5\" %}\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-plyr\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  fn: plyr_{{ version }}.tar.gz\n  url:\n    - {{ cran_mirror }}/src/contrib/plyr_{{ version }}.tar.gz\n    - {{ cran_mirror }}/src/contrib/Archive/plyr/plyr_{{ version }}.tar.gz\n  sha256: ea008c59a4a7211a09dfc2e4f25d286fc109424c17f01671f72aec97c75a9574\n\nbuild:\n  merge_build_host: True  # [win]\n  number: 0\n  skip: true  # [win32]\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - {{ compiler('c') }}        # [not win]\n    - {{ compiler('cxx') }}      # [not win]\n    - {{ compiler('m2w64_c') }}        # [win]\n    - {{ compiler('m2w64_cxx') }}        # [win]\n    - {{posix}}filesystem        # [win]\n    - {{posix}}make\n    - {{posix}}sed               # [win]\n    - {{posix}}coreutils         # [win]\n    - {{posix}}zip               # [win]\n  host:\n    - r-base\n    - r-rcpp >=0.11.0\n  run:\n    - r-base\n    - {{native}}gcc-libs         # [win]\n    - r-rcpp >=0.11.0\n\ntest:\n  commands:\n    - $R -e \"library('plyr')\"           # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('plyr')\\\"\"  # [win]\n\nabout:\n  home: http://had.co.nz/plyr, https://github.com/hadley/plyr\n  license: MIT\n  license_file: LICENSE\n  summary: 'A set of tools that solves a common set of problems: you need to break a big problem\n    down into manageable pieces, operate on each piece and then put all the pieces back\n    together.  For example, you might want to fit a model to each spatial location or\n    time point in your study, summarise data by panels or collapse high-dimensional\n    arrays to simpler summary statistics. The development of ''plyr'' has been generously\n    supported by ''Becton Dickinson''.'\n  license_family: MIT\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n",
  "req":{
   "__set__":true,
   "elements":[
@@ -207,5 +193,5 @@
   "https://cran.r-project.org/src/contrib/plyr_1.8.4.tar.gz",
   "https://cran.r-project.org/src/contrib/Archive/plyr/plyr_1.8.4.tar.gz"
  ],
- "version":"1.8.4"
+ "version":"1.8.5"
 }
