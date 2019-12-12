@@ -242,7 +242,7 @@
   }
  },
  "name":"ogre",
- "new_version":"1.12.1",
+ "new_version":"1.12.3",
  "pinning_version":"2019.11.20",
  "raw_meta_yaml":"{% set name = \"ogre\" %}\n{% set version = \"1.10.12\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  url: https://github.com/OGRECave/{{ name }}/archive/v{{ version }}.tar.gz\n  sha256: 5b755a91bcb2a48a01c74109a9b41592533700622a8394c62589dce2adeddead\n  patches:\n    - 0001-enable-pkg-config-for-Windows.patch\n\nbuild:\n  number: 2\n  skip: true  # [osx or win and vc<14]\n  run_exports:\n    - {{ pin_subpackage('ogre', max_pin='x.x') }}\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n    - cmake\n    - pkg-config\n    - make  # [unix]\n  host:\n    - xorg-libx11  # [unix]\n    - xorg-libxaw  # [unix]\n    - xorg-libxt  # [unix]\n    - freetype\n  run:\n    - xorg-libx11  # [unix]\n    - xorg-libxaw  # [unix]\n    - xorg-libxt  # [unix]\n    - freetype\n\ntest:\n  commands:\n    - if exist %PREFIX%\\\\Library\\\\bin\\\\OgreMain.dll (exit 0) else (exit 1)  # [win]\n\nabout:\n  home: https://www.ogre3d.org/\n  license: MIT\n  license_file: LICENSE\n  summary: 'OGRE is a scene-oriented, flexible 3D engine written in C++ designed to make it easier and more intuitive for developers to produce games and demos utilising 3D hardware.'\n\nextra:\n  recipe-maintainers:\n    - seanyen\n    - wolfv\n",
  "req":{
