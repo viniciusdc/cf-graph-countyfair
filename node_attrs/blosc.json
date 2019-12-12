@@ -93,9 +93,29 @@
     "migrator_version",
     "version"
    ]
+  },
+  {
+   "PR":{
+    "head":{
+     "ref":"<this_is_not_a_branch>"
+    },
+    "state":"closed"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"Version",
+    "migrator_version":0,
+    "version":"1.17.1"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "version"
+   ]
   }
  ],
- "bad":"Upstream: Error getting upstream version",
+ "bad":false,
  "conda-forge.yml":{
   "compiler_stack":"comp7",
   "max_py_ver":"37",
@@ -182,8 +202,8 @@
   }
  },
  "name":"blosc",
- "new_version":false,
- "pinning_version":"2019.07.22",
+ "new_version":"1.17.1",
+ "pinning_version":"2019.12.02",
  "raw_meta_yaml":"{% set version = \"1.17.0\" %}\n\npackage:\n  name: blosc\n  version: {{ version }}\n\nsource:\n  url: https://github.com/Blosc/c-blosc/archive/v{{ version }}.tar.gz\n  sha256: 75d98c752b8cf0d4a6380a3089d56523f175b0afa2d0cf724a1bd0a1a8f975a4\n\nbuild:\n  number: 1\n  run_exports:\n    - {{ pin_subpackage('blosc') }}\n\nrequirements:\n  build:\n    - cmake\n    - make  # [unix]\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n  host:\n\ntest:\n  commands:\n    - test -e $PREFIX/include/blosc.h                    # [unix]\n    - test -e $PREFIX/include/blosc-export.h             # [unix]\n    - test -e $PREFIX/lib/libblosc.a                     # [unix]\n    - test -e $PREFIX/lib/libblosc${SHLIB_EXT}           # [unix]\n    - if not exist %LIBRARY_INC%\\\\blosc.h exit 1         # [win]\n    - if not exist %LIBRARY_INC%\\\\blosc-export.h exit 1  # [win]\n    - if not exist %LIBRARY_BIN%\\\\blosc.dll exit 1       # [win]\n    - if not exist %LIBRARY_LIB%\\\\blosc.lib exit 1       # [win]\n    - if not exist %LIBRARY_LIB%\\\\libblosc.lib exit 1    # [win]\n\nabout:\n  home: https://github.com/Blosc/c-blosc\n  license: BSD 3-Clause\n  license_file: LICENSES/BLOSC.txt\n  summary: 'A blocking, shuffling and loss-less compression library that can be faster than `memcpy()`'\n\nextra:\n  recipe-maintainers:\n    - danielfrg\n    - FrancescElies\n    - jakirkham\n    - beckermr\n",
  "req":{
   "__set__":true,
@@ -194,7 +214,7 @@
    "make"
   ]
  },
- "smithy_version":"3.4.1",
+ "smithy_version":"3.6.3",
  "time":1568135274.1212597,
  "url":"https://github.com/Blosc/c-blosc/archive/v1.17.0.tar.gz",
  "version":"1.17.0"
