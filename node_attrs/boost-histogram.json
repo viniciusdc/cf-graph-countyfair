@@ -54,7 +54,30 @@
    ]
   }
  ],
- "bad":false,
+ "bad":{
+  "exception":"Command '['git', 'remote', 'add', 'upstream', 'https://github.com/conda-forge/boost-histogram-feedstock.git', '-q']' returned non-zero exit status 129.",
+  "traceback":[
+   "Traceback (most recent call last):",
+   "  File \"/root/repo/cf-scripts/conda_forge_tick/auto_tick.xsh\", line 750, in main",
+   "    dry_run=args.dry_run)",
+   "  File \"/root/repo/cf-scripts/conda_forge_tick/auto_tick.xsh\", line 83, in run",
+   "    gh=gh)",
+   "  File \"/root/repo/cf-scripts/conda_forge_tick/git_utils.xsh\", line 146, in get_repo",
+   "    git remote add upstream @(upstream) -q",
+   "  File \"/opt/conda/envs/run_env/lib/python3.7/site-packages/xonsh/__amalgam__.py\", line 22475, in subproc_captured_hiddenobject",
+   "    return run_subproc(cmds, captured=\"hiddenobject\")",
+   "  File \"/opt/conda/envs/run_env/lib/python3.7/site-packages/xonsh/__amalgam__.py\", line 22438, in run_subproc",
+   "    command.end()",
+   "  File \"/opt/conda/envs/run_env/lib/python3.7/site-packages/xonsh/__amalgam__.py\", line 15680, in end",
+   "    self._end(tee_output=tee_output)",
+   "  File \"/opt/conda/envs/run_env/lib/python3.7/site-packages/xonsh/__amalgam__.py\", line 15699, in _end",
+   "    self._raise_subproc_error()",
+   "  File \"/opt/conda/envs/run_env/lib/python3.7/site-packages/xonsh/__amalgam__.py\", line 15825, in _raise_subproc_error",
+   "    raise subprocess.CalledProcessError(rtn, spec.args, output=self.output)",
+   "subprocess.CalledProcessError: Command '['git', 'remote', 'add', 'upstream', 'https://github.com/conda-forge/boost-histogram-feedstock.git', '-q']' returned non-zero exit status 129.",
+   ""
+  ]
+ },
  "conda-forge.yml":{
   "provider":{
    "linux_aarch64":"default",
@@ -152,7 +175,7 @@
   }
  },
  "name":"boost-histogram",
- "new_version":"0.6.0",
+ "new_version":"0.6.1",
  "pinning_version":"2019.11.26",
  "raw_meta_yaml":"{% set name = \"boost-histogram\" %}\n{% set version = \"0.6.0\" %}\n\npackage:\n  name: \"{{ name|lower }}\"\n  version: \"{{ version }}\"\n\nsource:\n  url: https://pypi.io/packages/source/b/boost_histogram/boost-histogram-{{ version }}.tar.gz\n  sha256: 0ff28baaa7fc17d5616ba6a3651249cffca9bc337f8ba1c2eeaefab7499a0a5a\n\nbuild:\n  number: 0\n  script: \"NPY_NUM_BUILD_JOBS=1 {{ PYTHON }} -m pip install . -vvv\"  # [linux and ppc64le]\n  script: \"{{ PYTHON }} -m pip install . -vvv\"  # [not (linux and ppc64le)]\n  skip: true  # [win and vc<14]\n\nrequirements:\n  build:\n    - {{ compiler('cxx') }}            # [not win]\n    - vs2017_{{ target_platform  }}    # [win]\n  host:\n    - python\n    - pip\n    - numpy\n  run:\n    - python\n    - {{ pin_compatible('numpy') }}\n\ntest:\n  source_files:\n    - tests\n  imports:\n    - boost_histogram\n  requires:\n    - futures  # [py2k]\n    - pytest\n    - pytest-benchmark\n  commands:\n    - pytest .\n\nabout:\n  home: https://github.com/scikit-hep/boost-histogram\n  license: BSD-3-Clause\n  license_family: BSD\n  license_file: LICENSE\n  summary: The Boost::Histogram Python wrapper.\n  dev_url: https://github.com/scikit-hep/boost-histogram\n  doc_url: https://boost-histogram.readthedocs.io\n\nextra:\n  recipe-maintainers:\n    - chrisburr\n    - henryiii\n    - HDembinski\n",
  "req":{
