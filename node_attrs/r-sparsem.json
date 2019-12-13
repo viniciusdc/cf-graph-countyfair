@@ -119,7 +119,7 @@
   },
   "build":{
    "merge_build_host":true,
-   "number":"1003",
+   "number":"0",
    "rpaths":[
     "lib/R/lib/",
     "lib/",
@@ -156,7 +156,7 @@
   },
   "package":{
    "name":"r-sparsem",
-   "version":"1.77"
+   "version":"1.78"
   },
   "requirements":{
    "build":[
@@ -187,15 +187,15 @@
    ]
   },
   "source":{
-   "fn":"SparseM_1.77.tar.gz",
-   "sha256":"a9329fef14ae4fc646df1f4f6e57efb0211811599d015f7bc04c04285495d45c",
+   "fn":"SparseM_1.78.tar.gz",
+   "sha256":"d6b79ec881a10c91cb03dc23e6e783080ded9db4f2cb723755aa0d7d29a8b432",
    "url":[
-    "https://cran.r-project.org/src/contrib/SparseM_1.77.tar.gz",
-    "https://cran.r-project.org/src/contrib/Archive/SparseM/SparseM_1.77.tar.gz",
-    "https://cran.r-project.org/src/contrib/SparseM_1.77.tar.gz",
-    "https://cran.r-project.org/src/contrib/Archive/SparseM/SparseM_1.77.tar.gz",
-    "https://cran.r-project.org/src/contrib/SparseM_1.77.tar.gz",
-    "https://cran.r-project.org/src/contrib/Archive/SparseM/SparseM_1.77.tar.gz"
+    "https://cran.r-project.org/src/contrib/SparseM_1.78.tar.gz",
+    "https://cran.r-project.org/src/contrib/Archive/SparseM/SparseM_1.78.tar.gz",
+    "https://cran.r-project.org/src/contrib/SparseM_1.78.tar.gz",
+    "https://cran.r-project.org/src/contrib/Archive/SparseM/SparseM_1.78.tar.gz",
+    "https://cran.r-project.org/src/contrib/SparseM_1.78.tar.gz",
+    "https://cran.r-project.org/src/contrib/Archive/SparseM/SparseM_1.78.tar.gz"
    ]
   },
   "test":{
@@ -209,7 +209,7 @@
  "name":"r-sparsem",
  "new_version":"1.78",
  "pinning_version":"2019.12.02",
- "raw_meta_yaml":"{% set version = '1.77' %}\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-sparsem\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  fn: SparseM_{{ version }}.tar.gz\n  url:\n    - {{ cran_mirror }}/src/contrib/SparseM_{{ version }}.tar.gz\n    - {{ cran_mirror }}/src/contrib/Archive/SparseM/SparseM_{{ version }}.tar.gz\n  sha256: a9329fef14ae4fc646df1f4f6e57efb0211811599d015f7bc04c04285495d45c\n\nbuild:\n  merge_build_host: True  # [win]\n  number: 1003\n  skip: true  # [win32]\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - {{ compiler('c') }}        # [not win]\n    - {{ compiler('fortran') }}  # [not win]\n    - {{ compiler('m2w64_c') }}        # [win]\n    - {{ compiler('m2w64_fortran') }}        # [win]\n    - {{posix}}filesystem        # [win]\n    - {{posix}}make\n    - {{posix}}sed               # [win]\n    - {{posix}}coreutils         # [win]\n    - {{posix}}zip               # [win]\n  host:\n    - r-base\n  run:\n    - r-base\n    - {{native}}gcc-libs         # [win]\n\ntest:\n  commands:\n    - $R -e \"library('SparseM')\"           # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('SparseM')\\\"\"  # [win]\n\nabout:\n  home: http://www.econ.uiuc.edu/~roger/research/sparse/sparse.html\n  license: GPL (>= 2)\n  summary: 'Some basic linear algebra functionality for sparse matrices is provided:  including\n    Cholesky decomposition and backsolving as well as  standard R subsetting and Kronecker\n    products.'\n  license_family: GPL3\n  license_file: '{{ environ[\"PREFIX\"] }}/lib/R/share/licenses/GPL-3'\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n    - croth1\n    - johanneskoester\n    - bgruening\n    - daler\n    - jdblischak\n    - cbrueffer\n",
+ "raw_meta_yaml":"{% set version = \"1.78\" %}\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-sparsem\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  fn: SparseM_{{ version }}.tar.gz\n  url:\n    - {{ cran_mirror }}/src/contrib/SparseM_{{ version }}.tar.gz\n    - {{ cran_mirror }}/src/contrib/Archive/SparseM/SparseM_{{ version }}.tar.gz\n  sha256: d6b79ec881a10c91cb03dc23e6e783080ded9db4f2cb723755aa0d7d29a8b432\n\nbuild:\n  merge_build_host: True  # [win]\n  number: 0\n  skip: true  # [win32]\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - {{ compiler('c') }}        # [not win]\n    - {{ compiler('fortran') }}  # [not win]\n    - {{ compiler('m2w64_c') }}        # [win]\n    - {{ compiler('m2w64_fortran') }}        # [win]\n    - {{posix}}filesystem        # [win]\n    - {{posix}}make\n    - {{posix}}sed               # [win]\n    - {{posix}}coreutils         # [win]\n    - {{posix}}zip               # [win]\n  host:\n    - r-base\n  run:\n    - r-base\n    - {{native}}gcc-libs         # [win]\n\ntest:\n  commands:\n    - $R -e \"library('SparseM')\"           # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('SparseM')\\\"\"  # [win]\n\nabout:\n  home: http://www.econ.uiuc.edu/~roger/research/sparse/sparse.html\n  license: GPL (>= 2)\n  summary: 'Some basic linear algebra functionality for sparse matrices is provided:  including\n    Cholesky decomposition and backsolving as well as  standard R subsetting and Kronecker\n    products.'\n  license_family: GPL3\n  license_file: '{{ environ[\"PREFIX\"] }}/lib/R/share/licenses/GPL-3'\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n    - croth1\n    - johanneskoester\n    - bgruening\n    - daler\n    - jdblischak\n    - cbrueffer\n",
  "req":{
   "__set__":true,
   "elements":[
@@ -235,5 +235,5 @@
   "https://cran.r-project.org/src/contrib/SparseM_1.77.tar.gz",
   "https://cran.r-project.org/src/contrib/Archive/SparseM/SparseM_1.77.tar.gz"
  ],
- "version":"1.77"
+ "version":"1.78"
 }
