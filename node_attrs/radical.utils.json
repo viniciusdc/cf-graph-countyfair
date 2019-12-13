@@ -239,7 +239,30 @@
    ]
   }
  ],
- "bad":false,
+ "bad":{
+  "exception":"Command '['git', 'remote', 'add', 'upstream', 'https://github.com/conda-forge/radical.utils-feedstock.git', '-q']' returned non-zero exit status 129.",
+  "traceback":[
+   "Traceback (most recent call last):",
+   "  File \"/root/repo/cf-scripts/conda_forge_tick/auto_tick.xsh\", line 750, in main",
+   "    dry_run=args.dry_run)",
+   "  File \"/root/repo/cf-scripts/conda_forge_tick/auto_tick.xsh\", line 83, in run",
+   "    gh=gh)",
+   "  File \"/root/repo/cf-scripts/conda_forge_tick/git_utils.xsh\", line 146, in get_repo",
+   "    git remote add upstream @(upstream) -q",
+   "  File \"/opt/conda/envs/run_env/lib/python3.7/site-packages/xonsh/__amalgam__.py\", line 22475, in subproc_captured_hiddenobject",
+   "    return run_subproc(cmds, captured=\"hiddenobject\")",
+   "  File \"/opt/conda/envs/run_env/lib/python3.7/site-packages/xonsh/__amalgam__.py\", line 22438, in run_subproc",
+   "    command.end()",
+   "  File \"/opt/conda/envs/run_env/lib/python3.7/site-packages/xonsh/__amalgam__.py\", line 15680, in end",
+   "    self._end(tee_output=tee_output)",
+   "  File \"/opt/conda/envs/run_env/lib/python3.7/site-packages/xonsh/__amalgam__.py\", line 15699, in _end",
+   "    self._raise_subproc_error()",
+   "  File \"/opt/conda/envs/run_env/lib/python3.7/site-packages/xonsh/__amalgam__.py\", line 15825, in _raise_subproc_error",
+   "    raise subprocess.CalledProcessError(rtn, spec.args, output=self.output)",
+   "subprocess.CalledProcessError: Command '['git', 'remote', 'add', 'upstream', 'https://github.com/conda-forge/radical.utils-feedstock.git', '-q']' returned non-zero exit status 129.",
+   ""
+  ]
+ },
  "conda-forge.yml":{},
  "feedstock_name":"radical.utils",
  "hash_type":"sha256",
@@ -329,7 +352,7 @@
   }
  },
  "name":"radical.utils",
- "new_version":"0.90.6",
+ "new_version":"0.90.7",
  "pinning_version":"2019.12.02",
  "raw_meta_yaml":"{% set name = \"radical.utils\" %}\n{% set version = \"0.90.3\" %}\n{% set sha256 = \"be7be20d2c0daa4c973ab38011da81764680eda2d38d306d2443a0ebd9fe03c4\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz\n  sha256: {{ sha256 }}\n\nbuild:\n  number: 0\n  script: \"{{ PYTHON }} -m pip install . --no-deps --ignore-installed --no-cache-dir -vvv\"\n  skip: True  # [py2k or win]\n\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n  host:\n    - python\n    - pip\n  run:\n    - python\n    - future\n    - colorama\n    - netifaces\n    - setproctitle\n    - regex\n    - pyzmq \n    - msgpack-python\n    - pymongo\n    \ntest:\n  imports:\n    - radical.utils\n  \nabout:\n  home: https://github.com/radical-cybertools/radical.utils\n  license: MIT\n  license_family: MIT\n  license_file: LICENSE.md\n  summary: 'Shared code and tools for various RADICAL Projects (http://radical.rutgers.edu/)'\n  description: |\n    This Python package contains shared code and tools for various Radical Group projects.\n  dev_url: https://github.com/radical-cybertools/radical.utils\n\nextra:\n  recipe-maintainers:\n    - andre-merzky\n    - iparask\n",
  "req":{
