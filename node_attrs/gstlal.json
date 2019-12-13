@@ -35,7 +35,30 @@
    ]
   }
  ],
- "bad":false,
+ "bad":{
+  "exception":"Command '['git', 'remote', 'add', 'upstream', 'https://github.com/conda-forge/gstlal-feedstock.git', '-q']' returned non-zero exit status 129.",
+  "traceback":[
+   "Traceback (most recent call last):",
+   "  File \"/root/repo/cf-scripts/conda_forge_tick/auto_tick.xsh\", line 750, in main",
+   "    dry_run=args.dry_run)",
+   "  File \"/root/repo/cf-scripts/conda_forge_tick/auto_tick.xsh\", line 83, in run",
+   "    gh=gh)",
+   "  File \"/root/repo/cf-scripts/conda_forge_tick/git_utils.xsh\", line 146, in get_repo",
+   "    git remote add upstream @(upstream) -q",
+   "  File \"/opt/conda/envs/run_env/lib/python3.7/site-packages/xonsh/__amalgam__.py\", line 22475, in subproc_captured_hiddenobject",
+   "    return run_subproc(cmds, captured=\"hiddenobject\")",
+   "  File \"/opt/conda/envs/run_env/lib/python3.7/site-packages/xonsh/__amalgam__.py\", line 22438, in run_subproc",
+   "    command.end()",
+   "  File \"/opt/conda/envs/run_env/lib/python3.7/site-packages/xonsh/__amalgam__.py\", line 15680, in end",
+   "    self._end(tee_output=tee_output)",
+   "  File \"/opt/conda/envs/run_env/lib/python3.7/site-packages/xonsh/__amalgam__.py\", line 15699, in _end",
+   "    self._raise_subproc_error()",
+   "  File \"/opt/conda/envs/run_env/lib/python3.7/site-packages/xonsh/__amalgam__.py\", line 15825, in _raise_subproc_error",
+   "    raise subprocess.CalledProcessError(rtn, spec.args, output=self.output)",
+   "subprocess.CalledProcessError: Command '['git', 'remote', 'add', 'upstream', 'https://github.com/conda-forge/gstlal-feedstock.git', '-q']' returned non-zero exit status 129.",
+   ""
+  ]
+ },
  "conda-forge.yml":{},
  "feedstock_name":"gstlal",
  "hash_type":"sha256",
@@ -306,7 +329,7 @@
   }
  },
  "name":"gstlal",
- "new_version":false,
+ "new_version":"1.5.1",
  "pinning_version":"2019.06.27",
  "raw_meta_yaml":"{% set name = \"gstlal\" %}\n{% set version = \"1.5.0\" %}\n{% set sha256 = \"87077e24d62b63f500f51194124fb203ed21381242ee241aa13887b1f9de6d07\" %}\n\npackage:\n  name: \"{{ name|lower }}\"\n  version: \"{{ version }}\"\n\nsource:\n  url: http://software.ligo.org/lscsoft/source/{{ name }}-{{ version }}.tar.gz\n  sha256: {{ sha256 }}\n  patches:\n    - no-pygtk.patch\n    - python-lib-loc.patch\n\nbuild:\n  number: 1\n  skip: true  # [win or py!=27]\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - pkg-config\n    - make\n  host:\n    - fftw\n    - gsl\n    - gstreamer 1.14.4\n    - gst-orc >=0.4\n    - gst-plugins-base\n    - gst-python\n    - lal >=6.19.0\n    - lalmetaio >=1.4.0\n    - lalburst >=1.5.0\n    - lalinspiral >=1.8.0\n    - lalsimulation >=1.8.0\n    - numpy\n    - pygobject >=3.14\n    - python\n    - python-lal\n    - zlib\n  run:\n    - fftw\n    - glib\n    - gsl\n    - {{ pin_compatible('gstreamer') }}\n    - gst-orc >=0.4\n    - gst-plugins-base\n    - gst-python\n    - lal >=6.19.0\n    - lalmetaio >=1.4.0\n    - lalburst >=1.5.0\n    - lalinspiral >=1.8.0\n    - lalsimulation >=1.8.0\n    - ligo-segments >=1.0.0\n    - lscsoft-glue >=1.59.3\n    - matplotlib-base\n    - {{ pin_compatible('numpy') }}\n    - pyfftw\n    - pygobject >=3.14\n    - python 2.7\n    - python\n    - python-lal\n    - python-lalsimulation\n    - python-ligo-lw >=1.2.0\n\ntest:\n  imports:\n    - gstlal\n    - gstlal.bottle\n    - gstlal.coherent_null\n    - gstlal.datasource\n    - gstlal.elements\n    #- gstlal.matplotlibhelper - broken, see lscsoft/gstlal#15\n    - gstlal.misc\n    #- gstlal.multirate_datasource - requires GSTLAL_FIR_WHITEN variable, see below\n    - gstlal.pipeio\n    - gstlal.pipeparts\n    - gstlal.plotpsd\n    - gstlal.plotutil\n    - gstlal.reference_psd\n    - gstlal.simplehandler\n    - gstlal.simulation\n    - gstlal.stats\n  commands:\n    # set variables\n    - export TMPDIR=$(python -c \"import tempfile; print(tempfile.gettempdir())\")\n    - export GSTLAL_FIR_WHITEN=0\n    # check last import\n    - ${PYTHON} -c \"import gstlal.multirate_datasource\"\n    # check executables\n    - gstlal_asd_txt_from_psd_xml --help\n    - gstlal_fake_frames --help\n    #- gstlal_fake_frames_pipe --help <requires gstlal-ugly>\n    - gstlal_launch --help\n    - gstlal_ligo_data_find_check --help\n    - gstlal_play --help\n    - gstlal_plot_psd --help\n    - gstlal_plot_psd_horizon --help\n    - gstlal_psd_polyfit --help\n    - gstlal_psd_xml_from_asd_txt --help\n    - gstlal_reference_psd --help\n    - gstlal_spectrum_movie --help\n\nabout:\n  home: https://wiki.ligo.org/Computing/DASWG/GstLAL\n  dev_url: https://git.ligo.org/lscsoft/gstlal/\n  doc_url: https://docs.ligo.org/lscsoft/gstlal/{{ name }}/{{ name }}.html\n  license: GPLv2\n  license_family: GPL\n  license_file: COPYING\n  summary: GSTLAL\n  description: |\n    This package provides a variety of gstreamer elements for\n    gravitational-wave data analysis and some libraries to help write\n    such elements.  The code here sits on top of several other libraries,\n    notably the LIGO Algorithm Library (LAL), FFTW, the GNU Scientific\n    Library (GSL), and, of course, GStreamer.\n    This package contains the plugins and shared libraries required to run\n    gstlal-based applications.\n\nextra:\n  recipe-maintainers:\n    - duncanmmacleod\n    - myNameIsPatrick\n",
  "req":{
