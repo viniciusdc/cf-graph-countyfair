@@ -38,7 +38,7 @@
    "summary":"tcsh shell is an enhanced but completely compatible version of the Berkeley UNIX C shell"
   },
   "build":{
-   "number":"1",
+   "number":"0",
    "script":[
     "./configure --prefix=",
     "make",
@@ -64,7 +64,7 @@
   },
   "package":{
    "name":"tcsh",
-   "version":"6.20.00"
+   "version":"6.22.02"
   },
   "requirements":{
    "build":[
@@ -87,8 +87,8 @@
    ]
   },
   "source":{
-   "sha256":"5559d9508c4d90506a8a03a2ae62441944b99b60710268adb9aafd64f092f2d4",
-   "url":"https://github.com/tcsh-org/tcsh/archive/TCSH6_20_00.tar.gz"
+   "sha256":"f4f1ba643a5b36718f80709dadf81ded65356e3c82d3f548c68f57e9f61295b6",
+   "url":"https://github.com/tcsh-org/tcsh/archive/TCSH6_22_02.tar.gz"
   },
   "test":{
    "commands":[
@@ -101,7 +101,7 @@
  "name":"tcsh",
  "new_version":"6_22_02",
  "pinning_version":"2019.12.02",
- "raw_meta_yaml":"{% set name = \"tcsh\" %}\n{% set version = \"6.20.00\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  url: https://github.com/tcsh-org/tcsh/archive/TCSH6_20_00.tar.gz\n  sha256: 5559d9508c4d90506a8a03a2ae62441944b99b60710268adb9aafd64f092f2d4\n\nbuild:\n  number: 1\n  skip: True  # [win]\n  script: \n    - ./configure --prefix={{ PREFIX }}\n    - make\n    - make install\n    - make install.man\n\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - make\n  host:\n    - ncurses\n  run:\n    - ncurses\n\ntest:\n  commands:\n    - tcsh --version\n\nabout:\n  home: https://web.archive.org/web/20100212221424/http://www.tcsh.org/Home\n  license: Public Domain\n  license_file: Copyright\n  summary: 'tcsh shell is an enhanced but completely compatible version of the Berkeley UNIX C shell'\n  description: |\n    Tcsh is a version of the Berkeley C-Shell, with the addition of a \n    command line editor, command and file name completion, listing, etc.\n    and a bunch of small additions to the shell itself.\n  doc_url: https://web.archive.org/web/20100216160602/http://www.tcsh.org/tcsh.html/top.html\n  dev_url: http://github.com/tcsh-org/tcsh\n\nextra:\n  recipe-maintainers:\n    - bernt-matthias\n",
+ "raw_meta_yaml":"{% set name = \"tcsh\" %}\n{% set version = \"6_22_02\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version | replace(\"_\", \".\") }}\n\nsource:\n  url: https://github.com/tcsh-org/tcsh/archive/TCSH{{ version }}.tar.gz\n  sha256: f4f1ba643a5b36718f80709dadf81ded65356e3c82d3f548c68f57e9f61295b6\n\nbuild:\n  number: 0\n  skip: True  # [win]\n  script: \n    - ./configure --prefix={{ PREFIX }}\n    - make\n    - make install\n    - make install.man\n\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - make\n  host:\n    - ncurses\n  run:\n    - ncurses\n\ntest:\n  commands:\n    - tcsh --version\n\nabout:\n  home: https://web.archive.org/web/20100212221424/http://www.tcsh.org/Home\n  license: Public Domain\n  license_file: Copyright\n  summary: 'tcsh shell is an enhanced but completely compatible version of the Berkeley UNIX C shell'\n  description: |\n    Tcsh is a version of the Berkeley C-Shell, with the addition of a \n    command line editor, command and file name completion, listing, etc.\n    and a bunch of small additions to the shell itself.\n  doc_url: https://web.archive.org/web/20100216160602/http://www.tcsh.org/tcsh.html/top.html\n  dev_url: http://github.com/tcsh-org/tcsh\n\nextra:\n  recipe-maintainers:\n    - bernt-matthias\n",
  "req":{
   "__set__":true,
   "elements":[
@@ -112,5 +112,5 @@
  },
  "smithy_version":"3.6.3",
  "url":"https://github.com/tcsh-org/tcsh/archive/TCSH6_20_00.tar.gz",
- "version":"6.20.00"
+ "version":"6.22.02"
 }
