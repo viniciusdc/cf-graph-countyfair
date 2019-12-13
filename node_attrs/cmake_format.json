@@ -52,7 +52,30 @@
    ]
   }
  ],
- "bad":false,
+ "bad":{
+  "exception":"Command '['git', 'remote', 'add', 'upstream', 'https://github.com/conda-forge/cmake_format-feedstock.git', '-q']' returned non-zero exit status 129.",
+  "traceback":[
+   "Traceback (most recent call last):",
+   "  File \"/root/repo/cf-scripts/conda_forge_tick/auto_tick.xsh\", line 750, in main",
+   "    dry_run=args.dry_run)",
+   "  File \"/root/repo/cf-scripts/conda_forge_tick/auto_tick.xsh\", line 83, in run",
+   "    gh=gh)",
+   "  File \"/root/repo/cf-scripts/conda_forge_tick/git_utils.xsh\", line 146, in get_repo",
+   "    git remote add upstream @(upstream) -q",
+   "  File \"/opt/conda/envs/run_env/lib/python3.7/site-packages/xonsh/__amalgam__.py\", line 22475, in subproc_captured_hiddenobject",
+   "    return run_subproc(cmds, captured=\"hiddenobject\")",
+   "  File \"/opt/conda/envs/run_env/lib/python3.7/site-packages/xonsh/__amalgam__.py\", line 22438, in run_subproc",
+   "    command.end()",
+   "  File \"/opt/conda/envs/run_env/lib/python3.7/site-packages/xonsh/__amalgam__.py\", line 15680, in end",
+   "    self._end(tee_output=tee_output)",
+   "  File \"/opt/conda/envs/run_env/lib/python3.7/site-packages/xonsh/__amalgam__.py\", line 15699, in _end",
+   "    self._raise_subproc_error()",
+   "  File \"/opt/conda/envs/run_env/lib/python3.7/site-packages/xonsh/__amalgam__.py\", line 15825, in _raise_subproc_error",
+   "    raise subprocess.CalledProcessError(rtn, spec.args, output=self.output)",
+   "subprocess.CalledProcessError: Command '['git', 'remote', 'add', 'upstream', 'https://github.com/conda-forge/cmake_format-feedstock.git', '-q']' returned non-zero exit status 129.",
+   ""
+  ]
+ },
  "conda-forge.yml":{},
  "feedstock_name":"cmake_format",
  "hash_type":"sha256",
@@ -133,7 +156,7 @@
   }
  },
  "name":"cmake_format",
- "new_version":"0.6.2",
+ "new_version":"0.6.3",
  "pinning_version":"2019.11.26",
  "raw_meta_yaml":"{% set name = \"cmake_format\" %}\n{% set version = \"0.6.2\" %}\n\npackage:\n  name: \"{{ name|lower }}\"\n  version: \"{{ version }}\"\n\nsource:\n  url: \"https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz\"\n  sha256: 524438c6ce855367e3d319997341caa16e8d999db1b53d8ac2d14ebcf3c91c5b\n\nbuild:\n  number: 0\n  noarch: python\n  entry_points:\n    - cmake-format=cmake_format.__main__:main\n    - cmake-annotate=cmake_format.annotate:main\n  script: \"{{ PYTHON }} -m pip install . -vv \"\n\nrequirements:\n  host:\n    - pip\n    - python\n  run:\n    - python\n    - six\n\ntest:\n  imports:\n    - cmake_format\n    - cmake_format.command_tests\n    - cmake_format.parse_funs\n  commands:\n    - cmake-format --help\n    - cmake-annotate --help\n\nabout:\n  home: \"https://github.com/cheshirekow/cmake_format\"\n  license: GPL-3\n  license_family: GPL\n  license_file: LICENSE\n  summary: \"Can format your listfiles so they don't look like crap\"\n\nextra:\n  recipe-maintainers:\n    - xhochy\n",
  "req":{
