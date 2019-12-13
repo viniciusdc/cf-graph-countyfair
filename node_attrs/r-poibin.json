@@ -35,7 +35,30 @@
    ]
   }
  ],
- "bad":false,
+ "bad":{
+  "exception":"Command '['git', 'remote', 'add', 'upstream', 'https://github.com/conda-forge/r-poibin-feedstock.git', '-q']' returned non-zero exit status 129.",
+  "traceback":[
+   "Traceback (most recent call last):",
+   "  File \"/root/repo/cf-scripts/conda_forge_tick/auto_tick.xsh\", line 750, in main",
+   "    dry_run=args.dry_run)",
+   "  File \"/root/repo/cf-scripts/conda_forge_tick/auto_tick.xsh\", line 83, in run",
+   "    gh=gh)",
+   "  File \"/root/repo/cf-scripts/conda_forge_tick/git_utils.xsh\", line 146, in get_repo",
+   "    git remote add upstream @(upstream) -q",
+   "  File \"/opt/conda/envs/run_env/lib/python3.7/site-packages/xonsh/__amalgam__.py\", line 22475, in subproc_captured_hiddenobject",
+   "    return run_subproc(cmds, captured=\"hiddenobject\")",
+   "  File \"/opt/conda/envs/run_env/lib/python3.7/site-packages/xonsh/__amalgam__.py\", line 22438, in run_subproc",
+   "    command.end()",
+   "  File \"/opt/conda/envs/run_env/lib/python3.7/site-packages/xonsh/__amalgam__.py\", line 15680, in end",
+   "    self._end(tee_output=tee_output)",
+   "  File \"/opt/conda/envs/run_env/lib/python3.7/site-packages/xonsh/__amalgam__.py\", line 15699, in _end",
+   "    self._raise_subproc_error()",
+   "  File \"/opt/conda/envs/run_env/lib/python3.7/site-packages/xonsh/__amalgam__.py\", line 15825, in _raise_subproc_error",
+   "    raise subprocess.CalledProcessError(rtn, spec.args, output=self.output)",
+   "subprocess.CalledProcessError: Command '['git', 'remote', 'add', 'upstream', 'https://github.com/conda-forge/r-poibin-feedstock.git', '-q']' returned non-zero exit status 129.",
+   ""
+  ]
+ },
  "conda-forge.yml":{
   "compiler_stack":"comp7",
   "max_py_ver":"37",
@@ -122,7 +145,7 @@
   }
  },
  "name":"r-poibin",
- "new_version":"1.3",
+ "new_version":"1.4",
  "pinning_version":"2019.07.19",
  "raw_meta_yaml":"{% set version = '1.3' %}\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-poibin\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  url:\n    - {{ cran_mirror }}/src/contrib/poibin_{{ version }}.tar.gz\n    - {{ cran_mirror }}/src/contrib/Archive/poibin/poibin_{{ version }}.tar.gz\n  sha256: e31a84b57a7a4d8e81d27e233e71ba69c25058887f2aa1a284ef0857e6ed7852\n\nbuild:\n  merge_build_host: True  # [win]\n  number: 1001\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - {{ compiler('c') }}        # [not win]\n    - {{ compiler('m2w64_c') }}        # [win]\n    - {{posix}}filesystem        # [win]\n    - {{posix}}make\n    - {{posix}}sed               # [win]\n    - {{posix}}coreutils         # [win]\n    - {{posix}}zip               # [win]\n  host:\n    - r-base\n  run:\n    - r-base\n    - {{native}}gcc-libs         # [win]\n\ntest:\n  commands:\n    - $R -e \"library('poibin')\"           # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('poibin')\\\"\"  # [win]\n\nabout:\n  home: https://CRAN.R-project.org/package=poibin\n  license: GPL-2\n  summary: Implementation of both the exact and approximation methods for computing the cdf of\n    the Poisson binomial distribution. It also provides the pmf, quantile function,\n    and random number generation for the Poisson binomial distribution.\n  license_family: GPL2\n  license_file: '{{ environ[\"PREFIX\"] }}/lib/R/share/licenses/GPL-2'\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n\n# Package: poibin\n# Type: Package\n# Title: The Poisson Binomial Distribution\n# Version: 1.3\n# Date: 2018-05-16\n# Author: Yili Hong\n# Maintainer: Yili Hong <yilihong@vt.edu>\n# Description: Implementation of both the exact and approximation methods for computing the cdf of the Poisson binomial distribution. It also provides the pmf, quantile function, and random number generation for the Poisson binomial distribution.\n# License: GPL-2\n# LazyLoad: yes\n# NeedsCompilation: yes\n# Packaged: 2018-05-16 13:40:15 UTC; yilihong\n# Repository: CRAN\n# Date/Publication: 2018-05-16 13:58:26 UTC\n",
  "req":{
