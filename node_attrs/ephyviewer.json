@@ -1,5 +1,28 @@
 {
- "bad":false,
+ "bad":{
+  "exception":"Command '['git', 'remote', 'add', 'upstream', 'https://github.com/conda-forge/ephyviewer-feedstock.git', '-q']' returned non-zero exit status 129.",
+  "traceback":[
+   "Traceback (most recent call last):",
+   "  File \"/root/repo/cf-scripts/conda_forge_tick/auto_tick.xsh\", line 750, in main",
+   "    dry_run=args.dry_run)",
+   "  File \"/root/repo/cf-scripts/conda_forge_tick/auto_tick.xsh\", line 83, in run",
+   "    gh=gh)",
+   "  File \"/root/repo/cf-scripts/conda_forge_tick/git_utils.xsh\", line 146, in get_repo",
+   "    git remote add upstream @(upstream) -q",
+   "  File \"/opt/conda/envs/run_env/lib/python3.7/site-packages/xonsh/__amalgam__.py\", line 22475, in subproc_captured_hiddenobject",
+   "    return run_subproc(cmds, captured=\"hiddenobject\")",
+   "  File \"/opt/conda/envs/run_env/lib/python3.7/site-packages/xonsh/__amalgam__.py\", line 22438, in run_subproc",
+   "    command.end()",
+   "  File \"/opt/conda/envs/run_env/lib/python3.7/site-packages/xonsh/__amalgam__.py\", line 15680, in end",
+   "    self._end(tee_output=tee_output)",
+   "  File \"/opt/conda/envs/run_env/lib/python3.7/site-packages/xonsh/__amalgam__.py\", line 15699, in _end",
+   "    self._raise_subproc_error()",
+   "  File \"/opt/conda/envs/run_env/lib/python3.7/site-packages/xonsh/__amalgam__.py\", line 15825, in _raise_subproc_error",
+   "    raise subprocess.CalledProcessError(rtn, spec.args, output=self.output)",
+   "subprocess.CalledProcessError: Command '['git', 'remote', 'add', 'upstream', 'https://github.com/conda-forge/ephyviewer-feedstock.git', '-q']' returned non-zero exit status 129.",
+   ""
+  ]
+ },
  "conda-forge.yml":{},
  "feedstock_name":"ephyviewer",
  "hash_type":"sha256",
@@ -92,7 +115,7 @@
   }
  },
  "name":"ephyviewer",
- "new_version":"1.2.0",
+ "new_version":"1.2.1",
  "raw_meta_yaml":"{% set name = \"ephyviewer\" %}\n{% set version = \"1.2.0\" %}\n{% set sha256 = \"47a4bf49e6cbfb605caf1b835a9d5a6b91c30a103249744aab5e776535ca9787\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz\n  sha256: {{ sha256 }}\n\nbuild:\n  noarch: python\n  number: 0\n  entry_points:\n    - ephyviewer=ephyviewer.scripts:launch_standalone_ephyviewer\n  script: \"{{ PYTHON }} -m pip install . -vv\"\n\nrequirements:\n  host:\n    - pip\n    - python >=3.4\n  run:\n    - matplotlib >=2.0\n    - numpy\n    - pyqtgraph >=0.10.0\n    - python >=3.4\n    - scipy\n  run_constrained:\n    - python-neo >=0.6\n\ntest:\n  imports:\n    - ephyviewer\n    - ephyviewer.datasource\n    - ephyviewer.icons\n    - ephyviewer.tests\n\nabout:\n  home: https://github.com/NeuralEnsemble/ephyviewer\n  license: MIT\n  license_family: MIT\n  license_file: LICENSE\n  summary: Simple viewers for ephys signals, events, video and more\n  description: |\n    ephyviewer is a Python library based on pyqtgraph for building custom\n    viewers for electrophysiological signals, video, events, epochs, spike\n    trains, data tables, and time-frequency representations of signals. It also\n    provides an epoch encoder for creating annotations.\n  doc_url: https://ephyviewer.readthedocs.io/\n  dev_url: https://github.com/NeuralEnsemble/ephyviewer\n\nextra:\n  recipe-maintainers:\n    - jpgill86\n    - samuelgarcia\n",
  "req":{
   "__set__":true,
