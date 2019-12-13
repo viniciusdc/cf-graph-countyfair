@@ -442,7 +442,30 @@
    ]
   }
  ],
- "bad":false,
+ "bad":{
+  "exception":"Command '['git', 'remote', 'add', 'upstream', 'https://github.com/conda-forge/snowflake-connector-python-feedstock.git', '-q']' returned non-zero exit status 129.",
+  "traceback":[
+   "Traceback (most recent call last):",
+   "  File \"/root/repo/cf-scripts/conda_forge_tick/auto_tick.xsh\", line 750, in main",
+   "    dry_run=args.dry_run)",
+   "  File \"/root/repo/cf-scripts/conda_forge_tick/auto_tick.xsh\", line 83, in run",
+   "    gh=gh)",
+   "  File \"/root/repo/cf-scripts/conda_forge_tick/git_utils.xsh\", line 146, in get_repo",
+   "    git remote add upstream @(upstream) -q",
+   "  File \"/opt/conda/envs/run_env/lib/python3.7/site-packages/xonsh/__amalgam__.py\", line 22475, in subproc_captured_hiddenobject",
+   "    return run_subproc(cmds, captured=\"hiddenobject\")",
+   "  File \"/opt/conda/envs/run_env/lib/python3.7/site-packages/xonsh/__amalgam__.py\", line 22438, in run_subproc",
+   "    command.end()",
+   "  File \"/opt/conda/envs/run_env/lib/python3.7/site-packages/xonsh/__amalgam__.py\", line 15680, in end",
+   "    self._end(tee_output=tee_output)",
+   "  File \"/opt/conda/envs/run_env/lib/python3.7/site-packages/xonsh/__amalgam__.py\", line 15699, in _end",
+   "    self._raise_subproc_error()",
+   "  File \"/opt/conda/envs/run_env/lib/python3.7/site-packages/xonsh/__amalgam__.py\", line 15825, in _raise_subproc_error",
+   "    raise subprocess.CalledProcessError(rtn, spec.args, output=self.output)",
+   "subprocess.CalledProcessError: Command '['git', 'remote', 'add', 'upstream', 'https://github.com/conda-forge/snowflake-connector-python-feedstock.git', '-q']' returned non-zero exit status 129.",
+   ""
+  ]
+ },
  "conda-forge.yml":{
   "compiler_stack":"comp7",
   "max_py_ver":"37",
@@ -578,7 +601,7 @@
   }
  },
  "name":"snowflake-connector-python",
- "new_version":"2.1.0",
+ "new_version":"2.1.1",
  "pinning_version":"2019.11.26",
  "raw_meta_yaml":"{% set name = \"snowflake-connector-python\" %}\n{% set version = \"2.0.2\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz\n  sha256: 59bd6b04e6ce14e53d0252701495b46261fa45acc8915d59566fc41658270207\n\nbuild:\n  number: 0\n  script: \"{{ PYTHON }} -m pip install . --no-deps -vvv\"\n  entry_points:\n    - snowflake-dump-ocsp-response = snowflake.connector.tool.dump_ocsp_response:main\n    - snowflake-dump-ocsp-response-cache = snowflake.connector.tool.dump_ocsp_response_cache:main\n    - snowflake-dump-certs = snowflake.connector.tool.dump_certs:main\n    - snowflake-export-certs = snowflake.connector.tool.export_certs:main\n\nrequirements:\n  host:\n    - python\n    - pip\n  run:\n    - python\n    - azure-common\n    - azure-storage-blob\n    - boto3 >=1.4.4,<1.10.0\n    - botocore >=1.5.0,<1.13.0\n    - certifi\n    - future\n    - six\n    - pytz\n    - pycryptodomex >=3.2,!=3.5.0\n    - pyOpenSSL >=16.2.0\n    - cffi >=1.9\n    - cryptography >=1.8.2\n    - ijson\n    - pyjwt\n    - idna\n    - asn1crypto <1.0.0a0\n    - pyasn1 >=0.4.0,<0.5.0  # [py==27]\n    - pyasn1-modules >=0.2.0,<0.3.0  # [py==27]\n    - enum34  # [py==27]\n    - urllib3 >=1.21.1,<1.25  # [py==27]\n    - keyring !=16.1.0\n    - pyarrow >=0.14.0  # [py3k]\n\ntest:\n  imports:\n    - snowflake\n    - snowflake.connector\n\nabout:\n  home: https://github.com/snowflakedb/snowflake-connector-python\n  license: Apache-2.0\n  license_family: Apache\n  license_file: LICENSE.txt\n  summary: 'Snowflake Connector for Python'\n  description: |\n    The Snowflake Connector for Python provides an interface for \n    developing Python applications that can connect to Snowflake \n    and perform all standard operations. It provides a programming \n    alternative to developing applications in Java or C/C++ using \n    the Snowflake JDBC or ODBC drivers.\n  doc_url: https://docs.snowflake.net/manuals/user-guide/python-connector.html\n  dev_url: https://github.com/snowflakedb/snowflake-connector-python\n\nextra:\n  recipe-maintainers:\n    - hajapy\n",
  "req":{
