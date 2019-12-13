@@ -32,7 +32,30 @@
    ]
   }
  ],
- "bad":false,
+ "bad":{
+  "exception":"Command '['git', 'remote', 'add', 'upstream', 'https://github.com/conda-forge/jaraco.stream-feedstock.git', '-q']' returned non-zero exit status 129.",
+  "traceback":[
+   "Traceback (most recent call last):",
+   "  File \"/root/repo/cf-scripts/conda_forge_tick/auto_tick.xsh\", line 750, in main",
+   "    dry_run=args.dry_run)",
+   "  File \"/root/repo/cf-scripts/conda_forge_tick/auto_tick.xsh\", line 83, in run",
+   "    gh=gh)",
+   "  File \"/root/repo/cf-scripts/conda_forge_tick/git_utils.xsh\", line 146, in get_repo",
+   "    git remote add upstream @(upstream) -q",
+   "  File \"/opt/conda/envs/run_env/lib/python3.7/site-packages/xonsh/__amalgam__.py\", line 22475, in subproc_captured_hiddenobject",
+   "    return run_subproc(cmds, captured=\"hiddenobject\")",
+   "  File \"/opt/conda/envs/run_env/lib/python3.7/site-packages/xonsh/__amalgam__.py\", line 22438, in run_subproc",
+   "    command.end()",
+   "  File \"/opt/conda/envs/run_env/lib/python3.7/site-packages/xonsh/__amalgam__.py\", line 15680, in end",
+   "    self._end(tee_output=tee_output)",
+   "  File \"/opt/conda/envs/run_env/lib/python3.7/site-packages/xonsh/__amalgam__.py\", line 15699, in _end",
+   "    self._raise_subproc_error()",
+   "  File \"/opt/conda/envs/run_env/lib/python3.7/site-packages/xonsh/__amalgam__.py\", line 15825, in _raise_subproc_error",
+   "    raise subprocess.CalledProcessError(rtn, spec.args, output=self.output)",
+   "subprocess.CalledProcessError: Command '['git', 'remote', 'add', 'upstream', 'https://github.com/conda-forge/jaraco.stream-feedstock.git', '-q']' returned non-zero exit status 129.",
+   ""
+  ]
+ },
  "conda-forge.yml":{},
  "feedstock_name":"jaraco.stream",
  "hash_type":"sha256",
@@ -98,7 +121,7 @@
   }
  },
  "name":"jaraco.stream",
- "new_version":"2.0",
+ "new_version":"3.0.0",
  "pinning_version":"2018.12.28",
  "raw_meta_yaml":"{% set name = \"jaraco.stream\" %}\n{% set version = \"2.0\" %}\n{% set compress_type = \"tar.gz\" %}\n{% set hash_type = \"sha256\" %}\n{% set hash = \"c2e9d507d8cf04a3ff916b57eaf46bacb8a9f8895b55ead853de9c47b8f5daa4\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  fn: {{ name }}-{{ version }}.{{ compress_type }}\n  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.{{ compress_type }}\n  {{ hash_type }}: {{ hash }}\n\nbuild:\n  noarch: python\n  number: 0\n  script: python -m pip install --no-deps --ignore-installed .\n\n\nrequirements:\n  build:\n    - python\n    - pip\n    - setuptools_scm >=1.15.0\n\n  run:\n    - python\n    - six\n\ntest:\n  imports:\n    - jaraco\n    - jaraco.stream\n\nabout:\n  home: https://github.com/jaraco/jaraco.stream\n  # license_file: jaraco doesn't include license files - see https://github.com/jaraco/skeleton/issues/1\n  license: MIT\n  license_family: MIT\n  summary: 'Routines for dealing with data streams'\n  dev_url: https://github.com/jaraco/jaraco.stream\n\nextra:\n  recipe-maintainers:\n    - pmlandwehr\n",
  "req":{
