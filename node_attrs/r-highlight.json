@@ -50,6 +50,23 @@
     "migrator_version",
     "version"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/353154254.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"Version",
+    "migrator_version":0,
+    "version":"0.4.7.4"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "version"
+   ]
   }
  ],
  "bad":false,
@@ -161,8 +178,8 @@
   }
  },
  "name":"r-highlight",
- "new_version":"0.4.7.3",
- "pinning_version":"2019.11.26",
+ "new_version":"0.4.7.4",
+ "pinning_version":"2019.12.02",
  "raw_meta_yaml":"{% set version = '0.4.7.2' %}\n\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-highlight\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  fn: highlight_{{ version }}.tar.gz\n  url:\n    - {{ cran_mirror }}/src/contrib/highlight_{{ version }}.tar.gz\n    - {{ cran_mirror }}/src/contrib/Archive/highlight/highlight_{{ version }}.tar.gz\n  sha256: 20581d440dabd3bfd18872aa2d4b87d1dd071a8359f8c44cc3c3af47df548175\n\nbuild:\n  merge_build_host: True  # [win]\n  number: 1002\n\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - {{ compiler('c') }}        # [not win]\n    - {{ compiler('cxx') }}      # [not win]\n    - {{ compiler('m2w64_c') }}        # [win]\n    - {{ compiler('m2w64_cxx') }}        # [win]\n    - {{posix}}filesystem        # [win]\n    - {{posix}}make\n    - {{posix}}sed               # [win]\n    - {{posix}}coreutils         # [win]\n    - {{posix}}zip               # [win]\n\n  host:\n    - r-base\n\n  run:\n    - r-base\n    - {{native}}gcc-libs         # [win]\n\ntest:\n  commands:\n    - $R -e \"library('highlight')\"           # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('highlight')\\\"\"  # [win]\n\nabout:\n  home: https://github.com/romainfrancois/highlight\n  license: GPL (>= 3)\n  summary: Syntax highlighter for R code based  on the results of the R parser. Rendering in\n    HTML and latex  markup. Custom Sweave driver performing syntax highlighting  of\n    R code chunks.\n  license_family: GPL3\n  license_file: '{{ environ[\"PREFIX\"] }}/lib/R/share/licenses/GPL-3'\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n    - johanneskoester\n    - bgruening\n    - daler\n    - jdblischak\n    - cbrueffer\n    - dbast\n",
  "req":{
   "__set__":true,
@@ -180,7 +197,7 @@
    "zip"
   ]
  },
- "smithy_version":"3.6.3",
+ "smithy_version":"3.6.5",
  "url":[
   "https://cran.r-project.org/src/contrib/highlight_0.4.7.2.tar.gz",
   "https://cran.r-project.org/src/contrib/Archive/highlight/highlight_0.4.7.2.tar.gz",
