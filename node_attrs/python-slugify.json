@@ -310,7 +310,7 @@
   }
  },
  "name":"python-slugify",
- "new_version":"4.0.0",
+ "new_version":"3.0.6",
  "pinning_version":"2019.10.11",
  "raw_meta_yaml":"{% set name = \"python-slugify\" %}\n{% set version = \"4.0.0\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  fn: {{ name }}-{{ version }}.tar.gz\n  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz\n  sha256: a8fc3433821140e8f409a9831d13ae5deccd0b033d4744d94b31fea141bdd84c\n  patches:\n      - fix_command.patch\n\nbuild:\n  noarch: python\n  number: 0\n  script: {{ PYTHON }} -m pip install . --no-deps -vv\n  entry_points:\n    - slugify = slugify.cli:main\n\nrequirements:\n  host:\n    - pip\n    - python\n    - setuptools\n\n  run:\n    - python\n    - text-unidecode 1.2\n    - unidecode >=0.04.16\n\ntest:\n  imports:\n    - slugify\n\n  source_files:\n    - test.py\n\n  commands:\n    - slugify --help\n    - python test.py\n\n\nabout:\n  home: https://github.com/un33k/python-slugify\n  license: MIT\n  license_family: MIT\n  license_file: LICENSE\n  summary: 'A Python Slugify application that handles Unicode'\n  dev_url: https://github.com/un33k/python-slugify\n\nextra:\n  recipe-maintainers:\n    - proinsias\n    - sodre\n",
  "req":{
