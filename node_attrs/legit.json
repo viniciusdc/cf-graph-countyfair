@@ -158,7 +158,7 @@
   }
  },
  "name":"legit",
- "new_version":"1.1.0",
+ "new_version":"1.2.0",
  "pinning_version":"2019.12.02",
  "raw_meta_yaml":"{% set version = \"1.2.0\" %}\n\npackage:\n  name: legit\n  version: {{ version }}\n\nsource:\n  url: https://pypi.io/packages/source/l/legit/legit-{{ version }}.tar.gz\n  sha256: 2c78b97b5947d03d55160b36255dafd3c3f3b1994148519c09a5846db21af059\n\nbuild:\n  number: 0\n  noarch: python\n  script: \"{{ PYTHON }} -m pip install . --no-deps -vv\"\n  entry_points:\n    - legit = legit.cli:cli\n\nrequirements:\n  build:\n    - python\n    - pip\n  run:\n    - python\n    - clint\n    - click\n    - crayons\n    - gitpython\n    - six\n\ntest:\n  imports:\n    - legit\n  commands:\n    - mkdir test-git-repo\n    - cd test-git-repo\n    - git init\n    # legit needs a remote or it exits with a non-zero status\n    # so we just need to add a fake one\n    - git remote add origin http://\n    - legit -h\n  requires:\n    - git\n\nabout:\n  home: https://github.com/kennethreitz/legit\n  license: BSD-3-Clause\n  license_file: LICENSE\n  summary: 'Git for Humans'\n\nextra:\n  recipe-maintainers:\n    - ericmjl\n",
  "req":{

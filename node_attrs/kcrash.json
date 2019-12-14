@@ -1,4 +1,23 @@
 {
+ "PRed":[
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/353200013.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"Version",
+    "migrator_version":0,
+    "version":"5.65.0"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "version"
+   ]
+  }
+ ],
  "bad":false,
  "conda-forge.yml":{},
  "feedstock_name":"kcrash",
@@ -97,6 +116,7 @@
  },
  "name":"kcrash",
  "new_version":"5.65.0",
+ "pinning_version":"2019.12.02",
  "raw_meta_yaml":"{% set name = \"kcrash\" %}\n{% set version = \"5.64.0\" %}\n{% set major_minor = \".\".join(version.split(\".\")[:2]) %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  url: https://download.kde.org/stable/frameworks/{{ major_minor }}/kcrash-{{ version }}.tar.xz\n  sha256: 9e9ad5e7a6a3e9a128128a7863204f8c4a555bd8659d8ed4ef4cc6bb2fc48290\n\nbuild:\n  number: 0\n  skip: true  # [not linux]\n  run_exports:\n    - {{ pin_subpackage('kcrash', max_pin='x.x') }}\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n    - cmake\n    - make\n    - extra-cmake-modules\n    - {{ cdt('mesa-libgl-devel') }}  # [linux]\n    - {{ cdt('mesa-dri-drivers') }}  # [linux]\n    - {{ cdt('libselinux') }}  # [linux]\n    - {{ cdt('libxdamage') }}  # [linux]\n    - {{ cdt('libxxf86vm') }}  # [linux]\n  host:\n    - xorg-libxfixes  # [linux]\n    - xorg-libx11\n    - xorg-libxext\n    - xcb-util-keysyms\n    - qt\n    - kcoreaddons\n    - kwindowsystem\n  run:\n    - xorg-libx11\n\ntest:\n  commands:\n    - test -f ${PREFIX}/lib/libKF5Crash.so\n\nabout:\n  home: https://api.kde.org/frameworks/kcrash/html/index.html\n  license: LGPL-v2.1-or-later\n  license_family: GPL\n  license_file: COPYING.LIB\n  summary: 'Graceful handling of application crashes'\n  description: |\n    KCrash provides support for intercepting and handling application crashes.\n  dev_url: https://cgit.kde.org/kcrash.git/tree\n\nextra:\n  recipe-maintainers:\n    - scopatz\n",
  "req":{
   "__set__":true,
@@ -116,6 +136,7 @@
    "xorg-libxfixes"
   ]
  },
+ "smithy_version":"3.6.5",
  "url":"https://download.kde.org/stable/frameworks/5.64/kcrash-5.64.0.tar.xz",
  "version":"5.64.0"
 }
