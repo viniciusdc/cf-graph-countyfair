@@ -200,6 +200,23 @@
     "migrator_version",
     "name"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/353209521.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"Version",
+    "migrator_version":0,
+    "version":"19.19"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "version"
+   ]
   }
  ],
  "bad":false,
@@ -330,8 +347,8 @@
   }
  },
  "name":"dlib",
- "new_version":"19.18",
- "pinning_version":"2019.11.01",
+ "new_version":"19.19",
+ "pinning_version":"2019.12.02",
  "raw_meta_yaml":"{% set name = \"dlib\" %}\n{% set version = \"19.18\" %}\n\npackage:\n  name: {{ name }}\n  version: {{ version }}\n\nsource:\n  url: https://github.com/davisking/{{ name }}/archive/v{{ version }}.tar.gz\n  sha256: e9a8540ad0ff84eda92dea7127cd7d078457caf7ced64400c25c9a0b8c96e242\n\n  patches:\n    - lapack_sgetrf.patch      # [unix]\n    #- win_jpeg_png.patch       # [win]\n    #- win_release_flags.patch  # [win]\n    - cxx11_detection.patch\n\nbuild:\n  skip: true  # [win and py<35]\n  number: 1\n  run_exports:\n    - {{ pin_subpackage('dlib', max_pin='x.x') }}\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n    - cmake\n  host:\n    - python\n    - pybind11\n    - liblapack   # [not win]\n    - libcblas  # [not win]\n    - numpy\n    - jpeg\n    - libpng\n    - sqlite  # [not win]\n  run:\n    - python\n    - {{ pin_compatible('numpy') }}\n    - jpeg\n    - libpng\n    - sqlite  # [not win]\n\ntest:\n  files:\n    - test_data/face.jpg\n    - test_data/face.png\n    - test_data/images.xml\n\n  requires:\n    - tqdm\n    - pillow\n\n  imports:\n    - dlib\n\nabout:\n  home: http://dlib.net/\n  license: BSL-1.0\n  license_file: dlib/LICENSE.txt\n  summary: Modern C++ toolkit containing machine learning algorithms with Python bindings\n\nextra:\n  recipe-maintainers:\n    - patricksnape\n    - aldanor\n",
  "req":{
   "__set__":true,
@@ -350,7 +367,7 @@
    "sqlite"
   ]
  },
- "smithy_version":"3.6.1",
+ "smithy_version":"3.6.5",
  "url":"https://github.com/davisking/dlib/archive/v19.17.tar.gz",
  "version":"19.18"
 }
