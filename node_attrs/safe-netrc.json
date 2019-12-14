@@ -47,16 +47,17 @@
  "hash_type":"sha256",
  "meta_yaml":{
   "about":{
+   "description":"This package provides a subclass of the Python standard library netrc.netrc class to add some custom behaviors.",
    "home":"https://git.ligo.org/emfollow/safe-netrc",
-   "license":"GPLv2+",
+   "license":"GPL-2.0-or-later",
    "license_family":"GPL",
    "license_file":"/LICENSE.md",
    "summary":"Safe netrc file parser"
   },
   "build":{
-   "number":"1000",
-   "script":" -m pip install . --no-deps --ignore-installed -vv ",
-   "skip":true
+   "noarch":"python",
+   "number":"1001",
+   "script":" -m pip install . --no-deps --ignore-installed -vv "
   },
   "extra":{
    "recipe-maintainers":[
@@ -71,14 +72,14 @@
   },
   "requirements":{
    "host":[
-    "python",
     "pip",
+    "python",
     "setuptools >=30.3.0",
-    "python",
     "pip",
+    "python",
     "setuptools >=30.3.0",
-    "python",
     "pip",
+    "python",
     "setuptools >=30.3.0"
    ],
    "run":[
@@ -93,9 +94,9 @@
   },
   "test":{
    "commands":[
-    "python -m pytest --pyargs safe_netrc",
-    "python -m pytest --pyargs safe_netrc",
-    "python -m pytest --pyargs safe_netrc"
+    "python -m pytest -v -rs --pyargs safe_netrc.tests",
+    "python -m pytest -v -rs --pyargs safe_netrc.tests",
+    "python -m pytest -v -rs --pyargs safe_netrc.tests"
    ],
    "imports":[
     "safe_netrc",
@@ -112,7 +113,7 @@
  "name":"safe-netrc",
  "new_version":"0.0.1",
  "pinning_version":"2019.11.01",
- "raw_meta_yaml":"{% set name = \"safe-netrc\" %}\n{% set version = \"0.0.1\" %}\n\npackage:\n  name: \"{{ name|lower }}\"\n  version: \"{{ version }}\"\n\nsource:\n  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz\n  sha256: 38dc3d66f78c6b21beff2e60b45e24159589d193033520e84d370070a958b6ff\n\nbuild:\n  number: 1000\n  skip: true  # [win]\n  script: \"{{ PYTHON }} -m pip install . --no-deps --ignore-installed -vv \"\n\nrequirements:\n  host:\n    - python\n    - pip\n    - setuptools >=30.3.0\n  run:\n    - python\n\ntest:\n  imports:\n    - safe_netrc\n  requires:\n    - pytest\n  commands:\n    - python -m pytest --pyargs safe_netrc\n\nabout:\n  home: https://git.ligo.org/emfollow/safe-netrc\n  license: GPLv2+\n  license_family: GPL\n  license_file: '{{ environ[\"RECIPE_DIR\"] }}/LICENSE.md'\n  summary: Safe netrc file parser\n\nextra:\n  recipe-maintainers:\n    - duncanmmacleod\n",
+ "raw_meta_yaml":"{% set name = \"safe-netrc\" %}\n{% set version = \"0.0.1\" %}\n\npackage:\n  name: \"{{ name|lower }}\"\n  version: \"{{ version }}\"\n\nsource:\n  url: \"https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz\"\n  sha256: 38dc3d66f78c6b21beff2e60b45e24159589d193033520e84d370070a958b6ff\n\nbuild:\n  noarch: \"python\"\n  number: 1001\n  script: \"{{ PYTHON }} -m pip install . --no-deps --ignore-installed -vv \"\n\nrequirements:\n  host:\n    - pip\n    - python\n    - setuptools >=30.3.0\n  run:\n    - python\n\ntest:\n  imports:\n    - safe_netrc\n  requires:\n    - pytest\n  commands:\n    - python -m pytest -v -rs --pyargs safe_netrc.tests\n\nabout:\n  home: \"https://git.ligo.org/emfollow/safe-netrc\"\n  license: \"GPL-2.0-or-later\"\n  license_family: \"GPL\"\n  license_file: '{{ environ[\"RECIPE_DIR\"] }}/LICENSE.md'\n  summary: \"Safe netrc file parser\"\n  description: \"This package provides a subclass of the Python standard library netrc.netrc class to add some custom behaviors.\"\n\nextra:\n  recipe-maintainers:\n    - duncanmmacleod\n",
  "req":{
   "__set__":true,
   "elements":[
