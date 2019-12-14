@@ -249,7 +249,7 @@
   }
  },
  "name":"python-blosc",
- "new_version":"1.8.2",
+ "new_version":"1.8.3",
  "pinning_version":"2019.11.01",
  "raw_meta_yaml":"{% set name = \"blosc\" %}\n{% set version = \"1.8.1\" %}\n{% set sha256 = \"d2122eaa88eb5296fe0ee8031990eb61e2420eed823c305073aa9a9b77bd7b0e\" %}\n\npackage:\n  name: python-{{ name|lower }}\n  version: {{ version }}\n\nsource:\n  fn: {{ name }}-{{ version }}.tar.gz\n  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz\n  sha256: {{ sha256 }}\n\nbuild:\n  number: 0\n  script:\n    - \"{{ PYTHON }} -m pip install . -vv --install-option=--blosc=\\\"$PREFIX\\\"\"  # [unix]\n    - \"{{ PYTHON }} -m pip install . -vv --install-option=--blosc=\\\"%LIBRARY_BIN%\\\"\"  # [win]\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n  host:\n    - python\n    - pip\n    - blosc\n  run:\n    - python\n    - blosc\n    - numpy\n\ntest:\n  imports:\n    - blosc\n  commands:\n    - python -c \"import blosc; blosc.print_versions()\"\n    - python -c \"import blosc; blosc.test()\"\n\nabout:\n  home: https://github.com/Blosc/python-blosc\n  license_family: BSD\n  license: BSD 3-Clause\n  license_file: LICENSES/PYTHON-BLOSC.txt\n  summary: 'A Python wrapper for the extremely fast Blosc compression library'\n\nextra:\n  recipe-maintainers:\n    - danielfrg\n    - FrancescElies\n    - beckermr\n",
  "req":{
