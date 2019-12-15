@@ -47,6 +47,23 @@
     "migrator_version",
     "name"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/353259874.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"Version",
+    "migrator_version":0,
+    "version":"1.1.0"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "version"
+   ]
   }
  ],
  "bad":false,
@@ -144,8 +161,8 @@
   }
  },
  "name":"r-dbi",
- "new_version":"1.0.0",
- "pinning_version":"2019.07.15",
+ "new_version":"1.1.0",
+ "pinning_version":"2019.12.02",
  "raw_meta_yaml":"{% set version = '1.0.0' %}\n\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-dbi\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  fn: DBI_{{ version }}.tar.gz\n  url:\n    - {{ cran_mirror }}/src/contrib/DBI_{{ version }}.tar.gz\n    - {{ cran_mirror }}/src/contrib/Archive/DBI/DBI_{{ version }}.tar.gz\n  sha256: ff16f118eb3f759183441835e932b87358dd80ab9800ce576a8f3df1b6f01cf5\n\nbuild:\n  noarch: generic\n  merge_build_host: True  # [win]\n  number: 1002\n\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - {{posix}}zip               # [win]\n\n  host:\n    - r-base\n\n  run:\n    - r-base\n\ntest:\n  commands:\n    - $R -e \"library('DBI')\"           # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('DBI')\\\"\"  # [win]\n\nabout:\n  home: http://r-dbi.github.io/DBI\n  license: LGPL (>= 2)\n  summary: A database interface definition for communication between R and relational database\n    management systems.  All classes in this package are virtual and need to be extended\n    by the various R/DBMS implementations.\n  license_family: LGPL\n  license_file: '{{ environ[\"PREFIX\"] }}/lib/R/share/licenses/LGPL-2'  # [unix]\n  license_file: '{{ environ[\"PREFIX\"] }}\\R\\share\\licenses\\LGPL-2'  # [win]\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n    - johanneskoester\n    - bgruening\n    - daler\n    - jdblischak\n    - cbrueffer\n    - dbast\n",
  "req":{
   "__set__":true,
@@ -153,7 +170,7 @@
    "r-base"
   ]
  },
- "smithy_version":"3.4.1",
+ "smithy_version":"3.6.5",
  "url":[
   "https://cran.r-project.org/src/contrib/DBI_1.0.0.tar.gz",
   "https://cran.r-project.org/src/contrib/Archive/DBI/DBI_1.0.0.tar.gz",
