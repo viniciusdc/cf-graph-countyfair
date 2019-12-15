@@ -35,7 +35,22 @@
    ]
   }
  ],
- "bad":false,
+ "bad":{
+  "exception":"local variable 'hash' referenced before assignment",
+  "traceback":[
+   "Traceback (most recent call last):",
+   "  File \"/root/repo/cf-scripts/conda_forge_tick/auto_tick.xsh\", line 750, in main",
+   "    dry_run=args.dry_run)",
+   "  File \"/root/repo/cf-scripts/conda_forge_tick/auto_tick.xsh\", line 98, in run",
+   "    migrate_return = migrator.migrate(recipe_dir, attrs, **kwargs)",
+   "  File \"/root/repo/cf-scripts/conda_forge_tick/migrators.xsh\", line 467, in migrate",
+   "    new_patterns = self.get_hash_patterns('meta.yaml', urls, hash_type)",
+   "  File \"/root/repo/cf-scripts/conda_forge_tick/migrators.xsh\", line 394, in get_hash_patterns",
+   "    n = '{}: {}'.format(hash_type, hash)",
+   "UnboundLocalError: local variable 'hash' referenced before assignment",
+   ""
+  ]
+ },
  "conda-forge.yml":{
   "compiler_stack":"comp7",
   "max_py_ver":"37",
@@ -146,7 +161,7 @@
   }
  },
  "name":"r-ordinal",
- "new_version":"2019.4_25",
+ "new_version":"2019.12_10",
  "pinning_version":"2019.07.15",
  "raw_meta_yaml":"{% set version = '2019.4-25' %}\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-ordinal\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  url:\n    - {{ cran_mirror }}/src/contrib/ordinal_{{ version }}.tar.gz\n    - {{ cran_mirror }}/src/contrib/Archive/ordinal/ordinal_{{ version }}.tar.gz\n  sha256: 2812ad7a123cae5dbe053d1fe5f2d9935afc799314077eac185c844e3c9d79df\n\nbuild:\n  merge_build_host: True  # [win]\n  number: 1\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - {{ compiler('c') }}              # [not win]\n    - {{ compiler('m2w64_c') }}        # [win]\n    - {{posix}}filesystem        # [win]\n    - {{posix}}make\n    - {{posix}}sed               # [win]\n    - {{posix}}coreutils         # [win]\n    - {{posix}}zip               # [win]\n  host:\n    - r-base\n    - r-mass\n    - r-matrix\n    - r-numderiv\n    - r-ucminf\n  run:\n    - r-base\n    - {{native}}gcc-libs         # [win]\n    - r-mass\n    - r-matrix\n    - r-numderiv\n    - r-ucminf\n\ntest:\n  commands:\n    - $R -e \"library('ordinal')\"           # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('ordinal')\\\"\"  # [win]\n\nabout:\n  home: https://github.com/runehaubo/ordinal\n  license: GPL (>= 2)\n  summary: Implementation of cumulative link (mixed) models also known as ordered regression\n    models, proportional odds models, proportional hazards models for grouped survival\n    times and ordered logit/probit/... models. Estimation is via maximum likelihood\n    and mixed models are fitted with the Laplace approximation and adaptive Gauss-Hermite\n    quadrature. Multiple random effect terms are allowed and they may be nested, crossed\n    or partially nested/crossed. Restrictions of symmetry and equidistance can be imposed\n    on the thresholds (cut-points/intercepts). Standard model methods are available\n    (summary, anova, drop-methods, step, confint, predict etc.) in addition to profile\n    methods and slice methods for visualizing the likelihood function and checking convergence.\n  license_family: GPL3\n  license_file: '{{ environ[\"PREFIX\"] }}/lib/R/share/licenses/GPL-2'\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n\n# Package: ordinal\n# Type: Package\n# Title: Regression Models for Ordinal Data\n# Version: 2019.4-25\n# Date: 2019-04-25\n# Authors@R: person(given=\"Rune Haubo Bojesen\", family=\"Christensen\", email=\"rune.haubo@gmail.com\", role=c(\"aut\", \"cre\"))\n# LazyData: true\n# ByteCompile: yes\n# Depends: R (>= 2.13.0), stats, methods\n# Imports: ucminf, MASS, Matrix, numDeriv\n# Suggests: lme4, nnet, xtable, testthat (>= 0.8), tools\n# Description: Implementation of cumulative link (mixed) models also known as ordered regression models, proportional odds models, proportional hazards models for grouped survival times and ordered logit/probit/... models. Estimation is via maximum likelihood and mixed models are fitted with the Laplace approximation and adaptive Gauss-Hermite quadrature. Multiple random effect terms are allowed and they may be nested, crossed or partially nested/crossed. Restrictions of symmetry and equidistance can be imposed on the thresholds (cut-points/intercepts). Standard model methods are available (summary, anova, drop-methods, step, confint, predict etc.) in addition to profile methods and slice methods for visualizing the likelihood function and checking convergence.\n# License: GPL (>= 2)\n# NeedsCompilation: yes\n# URL: https://github.com/runehaubo/ordinal\n# BugReports: https://github.com/runehaubo/ordinal/issues\n# Packaged: 2019-04-25 18:44:48 UTC; rhbc\n# Author: Rune Haubo Bojesen Christensen [aut, cre]\n# Maintainer: Rune Haubo Bojesen Christensen <rune.haubo@gmail.com>\n# Repository: CRAN\n# Date/Publication: 2019-04-25 20:30:04 UTC\n",
  "req":{
