@@ -495,7 +495,7 @@
       "setuptools >=34.0.0"
      ],
      "run":[
-      "google-cloud-bigquery-core 1.23.0",
+      "google-cloud-bigquery-core 1.23.1",
       "python",
       "google-cloud-bigquery-storage >=0.6.0,<0.8.0dev",
       "ipython >=5.0.0",
@@ -554,7 +554,8 @@
       "python",
       "google-cloud-core >=1.0.3,<2.0.0dev",
       "google-resumable-media >=0.3.1,<0.6.0dev",
-      "protobuf >=3.6.0"
+      "protobuf >=3.6.0",
+      "six >=1.13.0,<2.0.0dev"
      ]
     },
     "test":{
@@ -602,7 +603,7 @@
       "setuptools >=34.0.0"
      ],
      "run":[
-      "google-cloud-bigquery-core 1.23.0",
+      "google-cloud-bigquery-core 1.23.1",
       "python",
       "google-cloud-bigquery-storage >=0.6.0,<0.8.0dev",
       "ipython >=5.0.0",
@@ -660,7 +661,8 @@
       "python",
       "google-cloud-core >=1.0.3,<2.0.0dev",
       "google-resumable-media >=0.3.1,<0.6.0dev",
-      "protobuf >=3.6.0"
+      "protobuf >=3.6.0",
+      "six >=1.13.0,<2.0.0dev"
      ]
     },
     "test":{
@@ -708,7 +710,7 @@
       "setuptools >=34.0.0"
      ],
      "run":[
-      "google-cloud-bigquery-core 1.23.0",
+      "google-cloud-bigquery-core 1.23.1",
       "python",
       "google-cloud-bigquery-storage >=0.6.0,<0.8.0dev",
       "ipython >=5.0.0",
@@ -766,7 +768,8 @@
       "python",
       "google-cloud-core >=1.0.3,<2.0.0dev",
       "google-resumable-media >=0.3.1,<0.6.0dev",
-      "protobuf >=3.6.0"
+      "protobuf >=3.6.0",
+      "six >=1.13.0,<2.0.0dev"
      ]
     },
     "test":{
@@ -794,7 +797,7 @@
   ],
   "package":{
    "name":"google-cloud-bigquery-split",
-   "version":"1.23.0"
+   "version":"1.23.1"
   },
   "requirements":{
    "host":[
@@ -810,9 +813,9 @@
    ]
   },
   "source":{
-   "fn":"google-cloud-bigquery-1.23.0.tar.gz",
-   "sha256":"ca0c550e1d56d16c0394e893d59cd26a7f1eb70eadc559b74f9c20e5f3fe6988",
-   "url":"https://pypi.io/packages/source/g/google-cloud-bigquery/google-cloud-bigquery-1.23.0.tar.gz"
+   "fn":"google-cloud-bigquery-1.23.1.tar.gz",
+   "sha256":"99c341592d711d8f131fe80d842f7e1b04b2ca1faefa1ffedf4dec1b382cebf6",
+   "url":"https://pypi.io/packages/source/g/google-cloud-bigquery/google-cloud-bigquery-1.23.1.tar.gz"
   }
  },
  "name":"google-cloud-bigquery-split",
@@ -822,7 +825,7 @@
   "google-cloud-bigquery-core"
  ],
  "pinning_version":"2019.12.02",
- "raw_meta_yaml":"{% set name = \"google-cloud-bigquery\" %}\n{% set version = \"1.23.0\" %}\n{% set sha256 = \"ca0c550e1d56d16c0394e893d59cd26a7f1eb70eadc559b74f9c20e5f3fe6988\" %}\n{% set dev_url = \"https://github.com/googleapis/google-cloud-python/tree/master/bigquery\" %}\n{% set doc_url = \"https://googleapis.dev/python/bigquery/latest/index.html\" %}\n\npackage:\n  name: \"{{ name|lower }}-split\"\n  version: {{ version }}\n\nsource:\n  fn: {{ name }}-{{ version }}.tar.gz\n  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz\n  sha256: {{ sha256 }}\n\nbuild:\n  number: 0\n  # Conda package for protobuf does not support Python 2.7 on Windows due to\n  # requirement on C++ 11. VS 2008 is not supported.\n  skip: true  # [win and vc<14]\n\nrequirements:\n  host:\n    - python\n    - pip >=18.1\n    - setuptools >=34.0.0\n\noutputs:\n  - name: {{ name }}\n    build:\n      number: 0\n      noarch: python\n\n    requirements:\n      host:\n        - python\n        - pip >=18.1\n        - setuptools >=34.0.0\n\n      run:\n        - {{ name }}-core {{ version }}\n        - python\n        - google-cloud-bigquery-storage >=0.6.0,<0.8.0dev\n        - ipython >=5.0.0\n        - pandas >=0.17.1\n        - pyarrow >=0.13.0\n        - tqdm >=4.0.0,<=5.0.0dev\n\n    test:\n      imports:\n        - google.api_core\n        - google.cloud.bigquery\n        - google.cloud.bigquery.client\n        - google.cloud.bigquery.dataset\n        - google.cloud.bigquery.encryption_configuration\n        - google.cloud.bigquery.enums\n        - google.cloud.bigquery.external_config\n        - google.cloud.bigquery.job\n        - google.cloud.bigquery.magics\n        - google.cloud.bigquery.model\n        - google.cloud.bigquery.query\n        - google.cloud.bigquery.retry\n        - google.cloud.bigquery.routine\n        - google.cloud.bigquery.schema\n        - google.cloud.bigquery.table\n        - google.cloud.bigquery_v2\n        - google.cloud.bigquery_v2.gapic.enums\n        - google.cloud.bigquery_v2.types\n\n    about:\n      home: {{ dev_url }}\n      license: Apache-2.0\n      license_family: Apache\n      license_file: LICENSE\n      summary: \"Batteries-included library for BigQuery API\"\n      description: |\n        {{ name }} installs {{ name }}-core and the extra requirements for\n        pandas and pyarrow integrations.\n\n        Supported Python Versions\n        -------------------------\n        Python >= 3.5\n\n        Deprecated Python Versions\n        --------------------------\n        Python == 2.7\n\n        - Python 2.7 support will be removed on January 1, 2020.\n        - protobuf does not support Visual C++ 2008, windows py27 package not available\n      doc_url: {{ doc_url }}\n      dev_url: {{ dev_url }}\n\n  - name: {{ name }}-core\n    build:\n      number: 0\n      script: \"{{ PYTHON }} -m pip install . --no-deps --ignore-installed -vvv \"\n      skip: True  # [win and vc<14]\n\n    requirements:\n      host:\n        - python\n        - pip >=18.1\n        - setuptools >=34.0.0\n\n      run:\n        - python\n        # Backport of enum for Python < 3.4.\n        - enum34  # [py2k]\n        - google-cloud-core >=1.0.3,<2.0.0dev\n        - google-resumable-media >=0.3.1,<0.6.0dev\n        - protobuf >=3.6.0\n\n    test:\n      imports:\n        - google.api_core\n        - google.cloud.bigquery\n        - google.cloud.bigquery.client\n        - google.cloud.bigquery.dataset\n        - google.cloud.bigquery.encryption_configuration\n        - google.cloud.bigquery.enums\n        - google.cloud.bigquery.external_config\n        - google.cloud.bigquery.job\n        - google.cloud.bigquery.model\n        - google.cloud.bigquery.query\n        - google.cloud.bigquery.retry\n        - google.cloud.bigquery.routine\n        - google.cloud.bigquery.schema\n        - google.cloud.bigquery.table\n        - google.cloud.bigquery_v2\n        - google.cloud.bigquery_v2.gapic.enums\n        - google.cloud.bigquery_v2.types\n\n    about:\n      home: {{ dev_url }}\n      license: Apache-2.0\n      license_family: Apache\n      license_file: LICENSE\n      summary: \"Core library for BigQuery API\"\n      description: |\n        {{ name }}-core the core client library for connecting to the BigQuery API.\n\n        Supported Python Versions\n        -------------------------\n        Python >= 3.5\n\n        Deprecated Python Versions\n        --------------------------\n        Python == 2.7\n\n        - Python 2.7 support will be removed on January 1, 2020.\n        - protobuf does not support Visual C++ 2008, windows py27 package not available\n      doc_url: {{ doc_url }}\n      dev_url: {{ dev_url }}\n\nabout:\n  home: {{ dev_url }}\n  license: Apache-2.0\n  license_family: Apache\n  license_file: LICENSE\n  summary: \"BigQuery API client library\"\n  doc_url: {{ doc_url }}\n  dev_url: {{ dev_url }}\n\nextra:\n  recipe-maintainers:\n    - parthea\n    - tswast\n",
+ "raw_meta_yaml":"{% set name = \"google-cloud-bigquery\" %}\n{% set version = \"1.23.1\" %}\n{% set sha256 = \"99c341592d711d8f131fe80d842f7e1b04b2ca1faefa1ffedf4dec1b382cebf6\" %}\n{% set dev_url = \"https://github.com/googleapis/google-cloud-python/tree/master/bigquery\" %}\n{% set doc_url = \"https://googleapis.dev/python/bigquery/latest/index.html\" %}\n\npackage:\n  name: \"{{ name|lower }}-split\"\n  version: {{ version }}\n\nsource:\n  fn: {{ name }}-{{ version }}.tar.gz\n  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz\n  sha256: {{ sha256 }}\n\nbuild:\n  number: 0\n  # Conda package for protobuf does not support Python 2.7 on Windows due to\n  # requirement on C++ 11. VS 2008 is not supported.\n  skip: true  # [win and vc<14]\n\nrequirements:\n  host:\n    - python\n    - pip >=18.1\n    - setuptools >=34.0.0\n\noutputs:\n  - name: {{ name }}\n    build:\n      number: 0\n      noarch: python\n\n    requirements:\n      host:\n        - python\n        - pip >=18.1\n        - setuptools >=34.0.0\n\n      run:\n        - {{ name }}-core {{ version }}\n        - python\n        - google-cloud-bigquery-storage >=0.6.0,<0.8.0dev\n        - ipython >=5.0.0\n        - pandas >=0.17.1\n        - pyarrow >=0.13.0\n        - tqdm >=4.0.0,<=5.0.0dev\n\n    test:\n      imports:\n        - google.api_core\n        - google.cloud.bigquery\n        - google.cloud.bigquery.client\n        - google.cloud.bigquery.dataset\n        - google.cloud.bigquery.encryption_configuration\n        - google.cloud.bigquery.enums\n        - google.cloud.bigquery.external_config\n        - google.cloud.bigquery.job\n        - google.cloud.bigquery.magics\n        - google.cloud.bigquery.model\n        - google.cloud.bigquery.query\n        - google.cloud.bigquery.retry\n        - google.cloud.bigquery.routine\n        - google.cloud.bigquery.schema\n        - google.cloud.bigquery.table\n        - google.cloud.bigquery_v2\n        - google.cloud.bigquery_v2.gapic.enums\n        - google.cloud.bigquery_v2.types\n\n    about:\n      home: {{ dev_url }}\n      license: Apache-2.0\n      license_family: Apache\n      license_file: LICENSE\n      summary: \"Batteries-included library for BigQuery API\"\n      description: |\n        {{ name }} installs {{ name }}-core and the extra requirements for\n        pandas and pyarrow integrations.\n\n        Supported Python Versions\n        -------------------------\n        Python >= 3.5\n\n        Deprecated Python Versions\n        --------------------------\n        Python == 2.7\n\n        - Python 2.7 support will be removed on January 1, 2020.\n        - protobuf does not support Visual C++ 2008, windows py27 package not available\n      doc_url: {{ doc_url }}\n      dev_url: {{ dev_url }}\n\n  - name: {{ name }}-core\n    build:\n      number: 0\n      script: \"{{ PYTHON }} -m pip install . --no-deps --ignore-installed -vvv \"\n      skip: True  # [win and vc<14]\n\n    requirements:\n      host:\n        - python\n        - pip >=18.1\n        - setuptools >=34.0.0\n\n      run:\n        - python\n        # Backport of enum for Python < 3.4.\n        - enum34  # [py2k]\n        - google-cloud-core >=1.0.3,<2.0.0dev\n        - google-resumable-media >=0.3.1,<0.6.0dev\n        - protobuf >=3.6.0\n        - six >=1.13.0,<2.0.0dev\n\n    test:\n      imports:\n        - google.api_core\n        - google.cloud.bigquery\n        - google.cloud.bigquery.client\n        - google.cloud.bigquery.dataset\n        - google.cloud.bigquery.encryption_configuration\n        - google.cloud.bigquery.enums\n        - google.cloud.bigquery.external_config\n        - google.cloud.bigquery.job\n        - google.cloud.bigquery.model\n        - google.cloud.bigquery.query\n        - google.cloud.bigquery.retry\n        - google.cloud.bigquery.routine\n        - google.cloud.bigquery.schema\n        - google.cloud.bigquery.table\n        - google.cloud.bigquery_v2\n        - google.cloud.bigquery_v2.gapic.enums\n        - google.cloud.bigquery_v2.types\n\n    about:\n      home: {{ dev_url }}\n      license: Apache-2.0\n      license_family: Apache\n      license_file: LICENSE\n      summary: \"Core library for BigQuery API\"\n      description: |\n        {{ name }}-core the core client library for connecting to the BigQuery API.\n\n        Supported Python Versions\n        -------------------------\n        Python >= 3.5\n\n        Deprecated Python Versions\n        --------------------------\n        Python == 2.7\n\n        - Python 2.7 support will be removed on January 1, 2020.\n        - protobuf does not support Visual C++ 2008, windows py27 package not available\n      doc_url: {{ doc_url }}\n      dev_url: {{ dev_url }}\n\nabout:\n  home: {{ dev_url }}\n  license: Apache-2.0\n  license_family: Apache\n  license_file: LICENSE\n  summary: \"BigQuery API client library\"\n  doc_url: {{ doc_url }}\n  dev_url: {{ dev_url }}\n\nextra:\n  recipe-maintainers:\n    - parthea\n    - tswast\n",
  "req":{
   "__set__":true,
   "elements":[
@@ -837,10 +840,11 @@
    "pyarrow",
    "python",
    "setuptools",
+   "six",
    "tqdm"
   ]
  },
  "smithy_version":"3.6.5",
  "url":"https://pypi.io/packages/source/g/google-cloud-bigquery/google-cloud-bigquery-1.19.0.tar.gz",
- "version":"1.23.0"
+ "version":"1.23.1"
 }
