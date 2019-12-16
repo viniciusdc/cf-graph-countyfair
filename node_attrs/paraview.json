@@ -261,6 +261,25 @@
     "migrator_version",
     "name"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/353625097.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"MigrationYaml",
+    "migrator_object_version":1,
+    "migrator_version":0,
+    "name":"libnetcdf473"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_object_version",
+    "migrator_version",
+    "name"
+   ]
   }
  ],
  "bad":false,
@@ -482,7 +501,7 @@
  },
  "name":"paraview",
  "new_version":"5.7.1",
- "pinning_version":"2019.11.26",
+ "pinning_version":"2019.12.02",
  "raw_meta_yaml":"{% set version = \"5.7.1\" %}\n{% set maj_min = \".\".join(version.split(\".\")[:2]) %}\n\npackage:\n  name: paraview\n  version: {{ version }}\n\nsource:\n  url: http://paraview.org/files/v{{ maj_min }}/ParaView-v{{ version }}.tar.gz\n  md5: 8b9758f0966fff48e1d5cae9306a78e9\n  patches:\n    # py38 support: https://gitlab.kitware.com/vtk/vtk/merge_requests/5883\n    - MR5883.patch\n    # missing opengl link: https://gitlab.kitware.com/vtk/vtk/merge_requests/5734\n    - MR5734.patch\n\nbuild:\n  number: 5\n  skip: true  # [win and vc<14]\n  skip: true  # [py2k]\n  run_exports:\n    - {{ pin_subpackage('paraview', max_pin='x.x') }}\n\nrequirements:\n  build:\n    - cmake\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n    - eigen\n    - {{ cdt('xorg-x11-proto-devel') }}  # [linux]\n    - {{ cdt('libx11-devel') }}          # [linux]\n    - {{ cdt('libxext-devel') }}         # [linux]\n    - {{ cdt('libxrender-devel') }}      # [linux]\n    - {{ cdt('mesa-libgl-devel') }}      # [linux]\n    - {{ cdt('mesa-libegl-devel') }}     # [linux]\n    - {{ cdt('mesa-dri-drivers') }}      # [linux]\n    - {{ cdt('libxau-devel') }}          # [linux]\n    - {{ cdt('alsa-lib-devel') }}        # [linux]\n    - {{ cdt('gtk2-devel') }}            # [linux]\n    - {{ cdt('gtkmm24-devel') }}         # [linux]\n    - {{ cdt('libdrm-devel') }}          # [linux]\n    - {{ cdt('libxcomposite-devel') }}   # [linux]\n    - {{ cdt('libxcursor-devel') }}      # [linux]\n    - {{ cdt('libxi-devel') }}           # [linux]\n    - {{ cdt('libxrandr-devel') }}       # [linux]\n    - {{ cdt('pciutils-devel') }}        # [linux]\n    - {{ cdt('libxscrnsaver-devel') }}   # [linux]\n    - {{ cdt('libxtst-devel') }}         # [linux]\n    - {{ cdt('libselinux-devel') }}      # [linux]\n    - {{ cdt('libxdamage') }}            # [linux]\n    - {{ cdt('libxdamage-devel') }}      # [linux]\n    - {{ cdt('libxfixes') }}             # [linux]\n    - {{ cdt('libxfixes-devel') }}       # [linux]\n    - {{ cdt('libxxf86vm') }}            # [linux]\n    - {{ cdt('libxrandr') }}             # [linux]\n    - {{ cdt('alsa-lib') }}              # [linux]\n    - {{ cdt('xorg-x11-server-xvfb') }}  # [linux]\n    - {{ cdt('libxt-devel') }}           # [linux]\n    - {{ cdt('libsm-devel') }}           # [linux]\n    - {{ cdt('libice-devel') }}          # [linux]\n    - {{ cdt('libuuid-devel') }}         # [linux]\n  host:\n    - python\n    - hdf5\n    - libpng\n    - jpeg\n    - libtiff\n    - libxml2\n    - zlib\n    - freetype\n    - libprotobuf\n    - lz4-c\n    - expat\n    - libnetcdf\n    - glew\n    - double-conversion\n    - jsoncpp\n    - xz\n    - cgns\n    - qt\n  run:\n    - python\n    - numpy\n    - matplotlib\n    - twisted\n\ntest:\n  imports:\n    - paraview\n    - paraview.collaboration\n    - paraview.coprocessing\n    - paraview.cpexport\n    - paraview.cpstate\n    - paraview.lookuptable\n    - paraview.numeric\n    - paraview.numpy_support\n    - paraview.python_view\n    - paraview.cpstate\n    - paraview.servermanager\n    - paraview.simple\n    - paraview.util\n\n  commands:\n    - pvpython --version 2>&1 | grep paraview\n\nabout:\n   home: http://www.paraview.org\n   license: BSD 3-Clause\n   license_file: Copyright.txt\n   summary: ParaView is an open-source, multi-platform data analysis and visualization application based on Visualization Toolkit (VTK).\n\nextra:\n  recipe-maintainers:\n    - bgruening\n    - jschueller\n",
  "req":{
   "__set__":true,
@@ -515,7 +534,7 @@
    "zlib"
   ]
  },
- "smithy_version":"3.6.2",
+ "smithy_version":"3.6.5",
  "url":"http://paraview.org/files/v5.7/ParaView-v5.7.0-RC2.tar.gz",
  "version":"5.7.1"
 }
