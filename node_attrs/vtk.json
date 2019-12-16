@@ -155,6 +155,25 @@
     "migrator_version",
     "name"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/353590243.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"MigrationYaml",
+    "migrator_object_version":1,
+    "migrator_version":0,
+    "name":"libnetcdf473"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_object_version",
+    "migrator_version",
+    "name"
+   ]
   }
  ],
  "bad":false,
@@ -452,7 +471,7 @@
  },
  "name":"vtk",
  "new_version":false,
- "pinning_version":"2019.11.18",
+ "pinning_version":"2019.12.02",
  "raw_meta_yaml":"{% set version = \"8.2.0\" %}\n{% set build_number = 6 %}\n\n{% set minor_version = \".\".join(version.split(\".\")[:2]) %}\n\n{% set build_number = build_number + 200 %}   # [not VTK_WITH_OSMESA]\n\npackage:\n  name: vtk\n  version: {{ version }}\n\nsource:\n  url: http://www.vtk.org/files/release/{{ minor_version }}/VTK-{{ version }}.tar.gz\n  fn:  VTK-{{ version }}.tar.gz\n  sha256: 34c3dc775261be5e45a8049155f7228b6bd668106c72a3c435d95730d17d57bb\n  patches:\n    - 0001-Link-libpython-optionally-make-vtkPython-dep-compile.patch\n    - 0002-VTKGenerateExportHeader-Prefer-dumpversion-over-vers.patch\n    - 0003-py38.patch\n\nbuild:\n  skip: True  # [win and py27]\n  number: {{ build_number }}\n  features:\n    - mesalib   # [VTK_WITH_OSMESA]\n\nrequirements:\n  build:\n    - {{ compiler(\"cxx\") }}\n    - cmake\n    - ninja\n    - {{ cdt('libxcb') }}  # [linux and not VTK_WITH_OSMESA]\n    - {{ cdt('libxau') }}  # [linux and not VTK_WITH_OSMESA]\n    - {{ cdt('libuuid') }}  # [linux and not VTK_WITH_OSMESA]\n    - {{ cdt('libxext') }}  # [linux and not VTK_WITH_OSMESA]\n    - {{ cdt('libxfixes') }}  # [linux and not VTK_WITH_OSMESA]\n    - {{ cdt('libxxf86vm') }}  # [linux and not VTK_WITH_OSMESA]\n    - {{ cdt('libxdamage') }}  # [linux and not VTK_WITH_OSMESA]\n    - {{ cdt('libselinux') }}  # [linux and not VTK_WITH_OSMESA]\n    - {{ cdt('libsm-devel') }}  # [linux and not VTK_WITH_OSMESA]\n    - {{ cdt('libice-devel') }}  # [linux and not VTK_WITH_OSMESA]\n    - {{ cdt('libx11-devel') }}  # [linux and not VTK_WITH_OSMESA]\n    - {{ cdt('mesa-libgl-devel') }}  # [linux and not VTK_WITH_OSMESA]\n    - {{ cdt('mesa-dri-drivers') }}  # [linux and not VTK_WITH_OSMESA]\n    - {{ cdt('xorg-x11-proto-devel') }}  # [linux and not VTK_WITH_OSMESA]\n\n  host:\n    - python\n    # VTK Third Party dependencies\n    - zlib\n    - freetype\n    - hdf5\n    - libxml2\n    - libpng\n    - jpeg\n    - libtiff\n    - jsoncpp\n    - expat\n    - tbb\n    - tbb-devel\n    - mesalib   # [VTK_WITH_OSMESA]\n    - libnetcdf\n    - lz4-c\n    - xorg-libxt  # [linux]\n    - boost-cpp\n\n  run:\n    - python\n    - future  # used in the generated python wrappers\n    # VTK Third Party dependencies\n    - zlib\n    - freetype\n    - hdf5\n    - libxml2\n    - libpng\n    - jpeg\n    - libtiff\n    - jsoncpp\n    - expat\n    - tbb\n    - mesalib   # [VTK_WITH_OSMESA]\n    - libnetcdf\n    - lz4-c\n    - xorg-libxt  # [linux]\n\n  run_constrained:\n    # Paraview bundles its own VTK that has conflicting Python vtkmodules\n    - paraview ==9999999999\n\ntest:\n  imports:\n    - vtk\n    - vtk.vtkChartsCore\n    - vtk.vtkCommonCore\n    - vtk.vtkFiltersCore\n    - vtk.vtkFiltersGeneric\n    - vtk.vtkGeovisCore\n    - vtk.vtkFiltersHybrid\n    - vtk.vtkIOCore\n    - vtk.vtkImagingCore\n    - vtk.vtkInfovisCore\n    - vtk.vtkRenderingCore\n    - vtk.vtkViewsCore\n    - vtk.vtkRenderingVolume\n    - vtk.vtkInteractionWidgets\n    - vtkmodules\n    - vtkmodules.vtkChartsCore\n    - vtkmodules.vtkCommonCore\n    - vtkmodules.vtkFiltersCore\n    - vtkmodules.vtkFiltersGeneric\n    - vtkmodules.vtkGeovisCore\n    - vtkmodules.vtkFiltersHybrid\n    - vtkmodules.vtkIOCore\n    - vtkmodules.vtkImagingCore\n    - vtkmodules.vtkInfovisCore\n    - vtkmodules.vtkRenderingCore\n    - vtkmodules.vtkViewsCore\n    - vtkmodules.vtkRenderingVolume\n    - vtkmodules.vtkInteractionWidgets\n\n  requires:\n    - setuptools\n\nabout:\n  home: http://www.vtk.org/\n  license: BSD 3-Clause\n  license_file: Copyright.txt\n  summary: >\n    The Visualization Toolkit (VTK) is an open-source, freely available software\n    system for 3D computer graphics, modeling, image processing, volume\n    rendering, scientific visualization, and information visualization.\n\nextra:\n  recipe-maintainers:\n    - ivoflipse\n    - Maxyme\n    - ccordoba12\n    - grlee77\n    - msarahan\n    - patricksnape\n    - dfroger\n    - tadeu\n    - marcelotrevisani\n",
  "req":{
   "__set__":true,
@@ -480,7 +499,7 @@
    "zlib"
   ]
  },
- "smithy_version":"3.6.2",
+ "smithy_version":"3.6.5",
  "url":"http://www.vtk.org/files/release/8.2/VTK-8.2.0.tar.gz",
  "version":"8.2.0"
 }

@@ -152,6 +152,25 @@
     "migrator_version",
     "name"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/353590490.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"MigrationYaml",
+    "migrator_object_version":1,
+    "migrator_version":0,
+    "name":"libnetcdf473"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_object_version",
+    "migrator_version",
+    "name"
+   ]
   }
  ],
  "bad":false,
@@ -258,7 +277,7 @@
  },
  "name":"netcdf-fortran",
  "new_version":"4.5.2",
- "pinning_version":"2019.10.11",
+ "pinning_version":"2019.12.02",
  "raw_meta_yaml":"{% set version = \"4.5.2\" %}\n{% set build = 2 %}\n\n# recipe-lint fails if mpi is undefined\n{% set mpi = mpi or 'nompi' %}\n{% if mpi == \"nompi\" %}\n# prioritize nompi via build number\n{% set build = build + 100 %}\n{% endif %}\n\npackage:\n  name: netcdf-fortran\n  version: {{ version }}\n\nsource:\n  url: https://github.com/Unidata/netcdf-fortran/archive/v{{ version }}.tar.gz\n  sha256: 0b05c629c70d6d224a3be28699c066bfdfeae477aea211fbf034d973a8309b49\n  patches:\n    - no_clang.patch\n\nbuild:\n  number: {{ build }}\n  skip: True  # [win]\n\n  # add build string so packages can depend on\n  # mpi or nompi variants explicitly:\n  # `netcdf-fortran * mpi_mpich_*` for mpich\n  # `netcdf-fortran * mpi_*` for any mpi\n  # `netcdf-fortran * nompi_*` for no mpi\n\n  {% if mpi != 'nompi' %}\n  {% set mpi_prefix = \"mpi_\" + mpi %}\n  {% else %}\n  {% set mpi_prefix = \"nompi\" %}\n  {% endif %}\n  string: \"{{ mpi_prefix }}_h{{ PKG_HASH }}_{{ build }}\"\n\nrequirements:\n  build:\n    - cmake\n    - pkg-config  # [not win]\n    - {{ compiler('fortran') }}\n    - {{ compiler('c') }}\n  host:\n    # need to list hdf5 and libnetcdf twice to get version pinning from conda_build_config\n    # and build pinning from {{ mpi_prefix }}\n    - libnetcdf\n    - libnetcdf * {{ mpi_prefix }}_*\n    - hdf5\n    - hdf5 * {{ mpi_prefix }}_*\n    - {{ mpi }}  # [mpi != 'nompi']\n  run:\n    - libnetcdf * {{ mpi_prefix }}_*\n    - hdf5 * {{ mpi_prefix }}_*\n    - {{ mpi }}  # [mpi != 'nompi']\n\ntest:\n  commands:\n    - nf-config --help\n    - test -f $PREFIX/lib/libnetcdf.a  # [not win]\n\nabout:\n  home: https://github.com/Unidata/netcdf-fortran\n  license: http://www.unidata.ucar.edu/software/netcdf/copyright.html\n  license_file: COPYRIGHT\n  summary: 'Unidata NetCDF Fortran Library'\n\nextra:\n  recipe-maintainers:\n    - ocefpaf\n    - bekozi\n    - beckermr\n    - xylar\n",
  "req":{
   "__set__":true,
@@ -272,7 +291,7 @@
    "pkg-config"
   ]
  },
- "smithy_version":"3.6.0",
+ "smithy_version":"3.6.5",
  "url":"https://github.com/Unidata/netcdf-fortran/archive/v4.5.1.tar.gz",
  "version":"4.5.2"
 }
