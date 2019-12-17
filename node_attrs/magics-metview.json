@@ -1,5 +1,26 @@
 {
- "bad":"Upstream: Error getting upstream version",
+ "PRed":[
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/354103108.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"MigrationYaml",
+    "migrator_object_version":1,
+    "migrator_version":0,
+    "name":"libnetcdf473"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_object_version",
+    "migrator_version",
+    "name"
+   ]
+  }
+ ],
+ "bad":false,
  "conda-forge.yml":{},
  "feedstock_name":"magics-metview",
  "hash_type":"sha256",
@@ -168,6 +189,7 @@
   }
  },
  "name":"magics-metview",
+ "pinning_version":"2019.12.02",
  "raw_meta_yaml":"{% set name = \"Magics\" %}\n{% set version = \"4.2.0\" %}\n\npackage:\n  name: magics-metview\n  version: {{ version }}\n\nsource:\n  url: https://confluence.ecmwf.int/download/attachments/3473464/{{ name }}-{{ version }}-Source.tar.gz\n  sha256: d45701515d3329e1b3944d535c4d19f834d22a747a30da1d8c88b80affeb70cd\n  patches:\n    - 0001-Find-proj_6_0.lib-if-proj.lib-isn-t-found.patch\n    - 0002-Fix-for-Windows-build.patch\n\nbuild:\n  number: 1\n  skip: True  # [win]\n  detect_binary_files_with_prefix: true\n  run_exports:\n    # See https://docs.conda.io/projects/conda-build/en/latest/resources/define-metadata.html#export-runtime-requirements\n    - {{ pin_subpackage('magics-metview', max_pin='x.x') }}\n\nrequirements:\n  build:\n    - cmake\n    - make\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n    # the CDTs below are needed when building with Metview enabled\n    - {{ cdt('mesa-libgl-devel') }}  # [linux]\n    - {{ cdt('mesa-dri-drivers') }}  # [linux]\n    - {{ cdt('libselinux') }}  # [linux]\n    - {{ cdt('libxdamage') }}  # [linux]\n    - {{ cdt('libxfixes') }}  # [linux]\n    - {{ cdt('libxxf86vm') }}  # [linux]\n    - {{ cdt('libxcb') }}  # [linux]\n  host:\n    - pkg-config\n    - boost\n    - expat\n    - glib\n    - pango\n    - cairo\n    - proj\n    - eccodes\n    - libnetcdf\n    - jinja2\n    - qt\n    - zlib\n    # See https://conda-forge.org/docs/maintainer/knowledge_base.html#libgl\n    - xorg-libxfixes  # [linux]\n  run:\n    - expat\n    - pango\n    - cairo\n    - proj\n    - eccodes\n    - simplejson\n    - libnetcdf\n    - qt\n    - zlib\n  run_constrained:\n    # magics-metview is incompatible with magics\n    - magics ==9999999999\n\ntest:\n  commands:\n    - printf \"%s\\n\" \"${MAGPLUS_HOME:?MAGPLUS_HOME is not set}\"\n    - which magjsonx\n    - test -f $PREFIX/lib/libMagPlus${SHLIB_EXT}  # [unix]\n    - test -f $PREFIX/lib/libMagPlusSingle${SHLIB_EXT}  # [unix]\n    - test -f $PREFIX/lib/libMagPlusDouble${SHLIB_EXT}  # [unix]\n\nabout:\n  home: https://software.ecmwf.int/wiki/display/MAGP/\n  license: Apache-2.0\n  license_file:\n    - LICENSE_for_source_files\n    - COPYING\n    - LICENSE\n\n  license_family: Apache\n  summary: \"ECMWF's Meteorological plotting software Magics built with Metview enabled\"\n\nextra:\n  recipe-maintainers:\n    - dtip\n",
  "req":{
   "__set__":true,
@@ -193,6 +215,7 @@
    "zlib"
   ]
  },
+ "smithy_version":"3.6.5",
  "url":"https://confluence.ecmwf.int/download/attachments/3473464/Magics-4.2.0-Source.tar.gz",
  "version":"4.2.0"
 }
