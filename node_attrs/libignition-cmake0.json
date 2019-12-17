@@ -36,58 +36,67 @@
    ]
   },
   "package":{
-   "name":"libignition-cmake0",
-   "version":"0.6.1"
+   "name":"libignition-cmake2",
+   "version":"2.1.1"
   },
   "requirements":{
    "build":[
-    "vs2017_win-64",
-    "cmake",
     "cxx_compiler_stub",
     "c_compiler_stub",
-    "make",
     "cmake",
+    "ninja",
     "cxx_compiler_stub",
     "c_compiler_stub",
-    "make",
-    "cmake"
+    "cmake",
+    "ninja",
+    "pkgconfig",
+    "cxx_compiler_stub",
+    "c_compiler_stub",
+    "cmake",
+    "ninja",
+    "pkgconfig"
    ]
   },
   "source":[
    {
-    "sha256":"d5409b66b4c05087d744eb60cd5c9ce3792541d071e4f40951c2e5c501874956",
-    "url":"https://bitbucket.org/ignitionrobotics/ign-cmake/get/ignition-cmake_0.6.1.tar.gz"
+    "patches":null,
+    "sha256":"32e9c96930375bd3c2681269ae6a2d2364cd9013a14e510410780ea0cc92763d",
+    "url":"https://bitbucket.org/ignitionrobotics/ign-cmake/get/ignition-cmake2_2.1.1.tar.gz"
    },
    {
-    "sha256":"d5409b66b4c05087d744eb60cd5c9ce3792541d071e4f40951c2e5c501874956",
-    "url":"https://bitbucket.org/ignitionrobotics/ign-cmake/get/ignition-cmake_0.6.1.tar.gz"
+    "patches":null,
+    "sha256":"32e9c96930375bd3c2681269ae6a2d2364cd9013a14e510410780ea0cc92763d",
+    "url":"https://bitbucket.org/ignitionrobotics/ign-cmake/get/ignition-cmake2_2.1.1.tar.gz"
    },
    {
-    "sha256":"d5409b66b4c05087d744eb60cd5c9ce3792541d071e4f40951c2e5c501874956",
-    "url":"https://bitbucket.org/ignitionrobotics/ign-cmake/get/ignition-cmake_0.6.1.tar.gz"
+    "patches":[
+     "examples.patch"
+    ],
+    "sha256":"32e9c96930375bd3c2681269ae6a2d2364cd9013a14e510410780ea0cc92763d",
+    "url":"https://bitbucket.org/ignitionrobotics/ign-cmake/get/ignition-cmake2_2.1.1.tar.gz"
    }
   ],
   "test":{
    "commands":[
-    "if exist %PREFIX%\\\\Library\\\\lib\\\\cmake\\\\ignition-cmake0\\\\ignition-cmake0-config.cmake (exit 0) else (exit 1)",
-    "test -f ${PREFIX}/lib/cmake/ignition-cmake0/ignition-cmake0-config.cmake",
-    "test -f ${PREFIX}/lib/cmake/ignition-cmake0/ignition-cmake0-config.cmake"
+    "if exist %PREFIX%\\\\Library\\\\share\\\\cmake\\\\ignition-cmake2\\\\ignition-cmake2-config.cmake (exit 0) else (exit 1)",
+    "test -f ${PREFIX}/share/cmake/ignition-cmake2/ignition-cmake2-config.cmake",
+    "test -f ${PREFIX}/share/cmake/ignition-cmake2/ignition-cmake2-config.cmake"
    ]
   }
  },
- "name":"libignition-cmake0",
+ "name":"libignition-cmake2",
  "new_version":false,
- "raw_meta_yaml":"{% set base_name = \"libignition-cmake\" %}\n{% set version = \"0.6.1\" %}\n{% set name = base_name + version.split('.')[0] %}\n\npackage:\n  name: {{ name }}\n  version: {{ version }}\n\nsource:\n  - url: https://bitbucket.org/ignitionrobotics/ign-cmake/get/ignition-cmake_{{ version }}.tar.gz\n    sha256: d5409b66b4c05087d744eb60cd5c9ce3792541d071e4f40951c2e5c501874956\n\nbuild:\n  number: 0\n  skip: true  # [win and vc<14]\n  run_exports:\n    - {{ pin_subpackage(name, max_pin='x.x') }}\n\nrequirements:\n  build:\n    - {{ compiler('cxx') }}              # [not win]\n    - {{ compiler('c') }}                # [not win]\n    - vs2017_win-64                      # [win64]\n    - vs2017_win-32                      # [win32]\n    - make                               # [not win]\n    - cmake\n\ntest:\n  commands:\n    - test -f ${PREFIX}/lib/cmake/ignition-cmake0/ignition-cmake0-config.cmake  # [not win]\n    - if exist %PREFIX%\\\\Library\\\\lib\\\\cmake\\\\ignition-cmake0\\\\ignition-cmake0-config.cmake (exit 0) else (exit 1)  # [win]\n\nabout:\n  home: https://bitbucket.org/ignitionrobotics/ign-cmake\n  license: Apache-2.0\n  license_file: LICENSE\n  summary: 'Ignition CMake : CMake Modules for Ignition Projects'\n\nextra:\n  recipe-maintainers:\n    - seanyen\n    - wolfv\n    - traversaro\n    - j-rivero\n",
+ "raw_meta_yaml":"{% set base_name = \"libignition-cmake\" %}\n{% set version = \"2.1.1\" %}\n{% set major_version = version.split('.')[0] %}\n{% set name = base_name + major_version %}\n\npackage:\n  name: {{ name }}\n  version: {{ version }}\n\nsource:\n  - url: https://bitbucket.org/ignitionrobotics/ign-cmake/get/ignition-cmake{{ major_version }}_{{ version }}.tar.gz\n    sha256: 32e9c96930375bd3c2681269ae6a2d2364cd9013a14e510410780ea0cc92763d\n    patches:\n      - examples.patch  # [linux]\n\nbuild:\n  number: 0\n  skip: true  # [win and vc<14]\n  run_exports:\n    - {{ pin_subpackage(name, max_pin='x.x') }}\n\nrequirements:\n  build:\n    - {{ compiler('cxx') }}\n    - {{ compiler('c') }}\n    - cmake\n    - ninja\n    - pkgconfig  # [not win]\n\ntest:\n  commands:\n    - test -f ${PREFIX}/share/cmake/ignition-cmake{{ major_version }}/ignition-cmake{{ major_version }}-config.cmake  # [not win]\n    - if exist %PREFIX%\\\\Library\\\\share\\\\cmake\\\\ignition-cmake{{ major_version }}\\\\ignition-cmake{{ major_version }}-config.cmake (exit 0) else (exit 1)  # [win]\n\nabout:\n  home: https://bitbucket.org/ignitionrobotics/ign-cmake\n  license: Apache-2.0\n  license_file: LICENSE\n  summary: 'Ignition CMake : CMake Modules for Ignition Projects'\n\nextra:\n  recipe-maintainers:\n    - seanyen\n    - wolfv\n    - traversaro\n    - j-rivero\n",
  "req":{
   "__set__":true,
   "elements":[
    "c_compiler_stub",
    "cmake",
    "cxx_compiler_stub",
-   "make",
-   "vs2017_win-64"
+   "ninja",
+   "pkgconfig"
   ]
  },
  "url":"https://bitbucket.org/ignitionrobotics/ign-cmake/get/ignition-cmake_0.6.1.tar.gz",
- "version":"0.6.1"
+ "version":"2.1.1"
 }
