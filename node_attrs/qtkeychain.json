@@ -99,6 +99,23 @@
     "migrator_version",
     "name"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/354197574.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"Version",
+    "migrator_version":0,
+    "version":"0.10.0"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "version"
+   ]
   }
  ],
  "bad":false,
@@ -181,8 +198,8 @@
   }
  },
  "name":"qtkeychain",
- "new_version":"0.9.1",
- "pinning_version":"2019.08.08",
+ "new_version":"0.10.0",
+ "pinning_version":"2019.12.17",
  "raw_meta_yaml":"{% set version = \"0.9.1\" %}\n\npackage:\n  name: qtkeychain\n  version: {{ version }}\n\nsource:\n  url: https://github.com/frankosterfeld/qtkeychain/archive/v{{ version }}.tar.gz\n  sha256: 9c2762d9d0759a65cdb80106d547db83c6e9fdea66f1973c6e9014f867c6f28e\n  patches:\n    - enable_language.patch\n\nbuild:\n  skip: True  # [win and vc<14]\n  number: 1002\n\nrequirements:\n  build:\n    - pkg-config  # [unix]\n    - cmake\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n  host:\n    - qt\n  run:\n    - qt\n\ntest:\n  commands:\n    - test -f ${PREFIX}/lib/libqt5keychain${SHLIB_EXT}  # [not win]\n    - if not exist %LIBRARY_BIN%\\\\qt5keychain.dll exit 1  # [win]\n    - if not exist %LIBRARY_LIB%\\\\qt5keychain.lib exit 1  # [win]\n\nabout:\n  home: https://github.com/frankosterfeld/qtkeychain\n  license: BSD-3-Clause\n  license_file: COPYING\n  summary: 'QtKeychain is a Qt API to store passwords and other secret data securely'\n\nextra:\n  recipe-maintainers:\n    - ceholden\n    - gillins\n",
  "req":{
   "__set__":true,
@@ -194,7 +211,7 @@
    "qt"
   ]
  },
- "smithy_version":"3.4.1",
+ "smithy_version":"3.6.5",
  "url":"https://github.com/frankosterfeld/qtkeychain/archive/v0.9.1.tar.gz",
  "version":"0.9.1"
 }
