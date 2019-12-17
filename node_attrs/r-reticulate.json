@@ -96,6 +96,23 @@
     "migrator_version",
     "name"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/354131991.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"Version",
+    "migrator_version":0,
+    "version":"1.14"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "version"
+   ]
   }
  ],
  "bad":false,
@@ -205,8 +222,8 @@
   }
  },
  "name":"r-reticulate",
- "new_version":"1.13",
- "pinning_version":"2019.07.15",
+ "new_version":"1.14",
+ "pinning_version":"2019.12.02",
  "raw_meta_yaml":"{% set version = '1.13' %}\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-reticulate\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  url:\n    - {{ cran_mirror }}/src/contrib/reticulate_{{ version }}.tar.gz\n    - {{ cran_mirror }}/src/contrib/Archive/reticulate/reticulate_{{ version }}.tar.gz\n  sha256: adbe41d556b667c4419d563680f8608a56b0f792b8bc427b3bf4c584ff819de3\n\nbuild:\n  merge_build_host: True  # [win]\n  number: 0\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - {{ compiler('c') }}              # [not win]\n    - {{ compiler('m2w64_c') }}        # [win]\n    - {{ compiler('cxx') }}            # [not win]\n    - {{ compiler('m2w64_cxx') }}      # [win]\n    - {{posix}}filesystem        # [win]\n    - {{posix}}make\n    - {{posix}}sed               # [win]\n    - {{posix}}coreutils         # [win]\n    - {{posix}}zip               # [win]\n  host:\n    - r-base\n    - r-matrix\n    - r-rcpp >=0.12.7\n    - r-jsonlite\n  run:\n    - r-base\n    - {{native}}gcc-libs         # [win]\n    - r-matrix\n    - r-rcpp >=0.12.7\n    - r-jsonlite\n\ntest:\n  commands:\n    - $R -e \"library('reticulate')\"           # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('reticulate')\\\"\"  # [win]\n\nabout:\n  home: https://github.com/rstudio/reticulate\n  license: Apache 2.0\n  summary: Interface to 'Python' modules, classes, and functions. When calling into 'Python',\n    R data types are automatically converted to their equivalent 'Python' types. When\n    values are returned from 'Python' to R they are converted back to R types. Compatible\n    with all versions of 'Python' >= 2.7.\n  license_family: APACHE\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n\n# Package: reticulate\n# Type: Package\n# Title: Interface to 'Python'\n# Version: 1.13\n# Authors@R: c( person(\"Kevin\", \"Ushey\", role = c(\"aut\", \"cre\"), email = \"kevin@rstudio.com\"), person(\"JJ\", \"Allaire\", role = c(\"aut\"), email = \"jj@rstudio.com\"), person(\"RStudio\", role = c(\"cph\", \"fnd\")), person(\"Yuan\", \"Tang\", role = c(\"aut\", \"cph\"), email = \"terrytangyuan@gmail.com\", comment = c(ORCID = \"0000-0001-5243-233X\")), person(\"Dirk\", \"Eddelbuettel\", role = c(\"ctb\", \"cph\"), email = \"edd@debian.org\"), person(\"Bryan\", \"Lewis\", role = c(\"ctb\", \"cph\"), email = \"blewis@illposed.net\"), person(\"Marcus\", \"Geelnard\", role = c(\"ctb\", \"cph\"), comment = \"TinyThread library, http://tinythreadpp.bitsnbites.eu/\") )\n# Description: Interface to 'Python' modules, classes, and functions. When calling into 'Python', R data types are automatically converted to their equivalent 'Python' types. When values are returned from 'Python' to R they are converted back to R types. Compatible with all versions of 'Python' >= 2.7.\n# License: Apache License 2.0\n# URL: https://github.com/rstudio/reticulate\n# BugReports: https://github.com/rstudio/reticulate/issues\n# SystemRequirements: Python (>= 2.7.0)\n# Encoding: UTF-8\n# LazyData: true\n# Depends: R (>= 3.0)\n# Imports: utils, graphics, jsonlite, Rcpp (>= 0.12.7), Matrix\n# Suggests: testthat, knitr, callr, rmarkdown\n# LinkingTo: Rcpp\n# RoxygenNote: 6.1.1\n# VignetteBuilder: knitr\n# NeedsCompilation: yes\n# Packaged: 2019-07-24 21:47:39 UTC; kevinushey\n# Author: Kevin Ushey [aut, cre], JJ Allaire [aut], RStudio [cph, fnd], Yuan Tang [aut, cph] (<https://orcid.org/0000-0001-5243-233X>), Dirk Eddelbuettel [ctb, cph], Bryan Lewis [ctb, cph], Marcus Geelnard [ctb, cph] (TinyThread library, http://tinythreadpp.bitsnbites.eu/)\n# Maintainer: Kevin Ushey <kevin@rstudio.com>\n# Repository: CRAN\n# Date/Publication: 2019-07-24 22:40:03 UTC\n",
  "req":{
   "__set__":true,
@@ -227,7 +244,7 @@
    "zip"
   ]
  },
- "smithy_version":"3.4.1",
+ "smithy_version":"3.6.5",
  "url":[
   "https://cran.r-project.org/src/contrib/reticulate_1.13.tar.gz",
   "https://cran.r-project.org/src/contrib/Archive/reticulate/reticulate_1.13.tar.gz",
