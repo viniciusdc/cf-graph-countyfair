@@ -280,7 +280,7 @@
   },
   "package":{
    "name":"scipy",
-   "version":"1.3.2"
+   "version":"1.3.3"
   },
   "requirements":{
    "build":[
@@ -335,8 +335,8 @@
     "gh10591.patch",
     "gh10591.patch"
    ],
-   "sha256":"ac0937d29a3f93cc26737fdf318c09408e9a48adee1648a25d0cdce5647b8eb4",
-   "url":"https://github.com/scipy/scipy/archive/v1.3.2.tar.gz"
+   "sha256":"91269acb6d073f09743e8b6549fe5f8adb4329218a4e2c027074b54ba68c1e22",
+   "url":"https://github.com/scipy/scipy/archive/v1.3.3.tar.gz"
   },
   "test":{
    "requires":[
@@ -355,7 +355,7 @@
  "name":"scipy",
  "new_version":"1.4.0",
  "pinning_version":"2019.12.02",
- "raw_meta_yaml":"{% set version = \"1.3.2\" %}\n\npackage:\n  name: scipy\n  version: {{ version }}\n\nsource:\n  url: https://github.com/scipy/scipy/archive/v{{ version }}.tar.gz\n  sha256: ac0937d29a3f93cc26737fdf318c09408e9a48adee1648a25d0cdce5647b8eb4\n  patches:\n    - gh10591.patch\n    - relax_gmres_error_check.patch  # [aarch64]\n    - skip_problematic_boost_test.patch  # [aarch64 or ppc64le]\n    - skip_problematic_root_finding.patch  # [aarch64 or ppc64le]\n    - skip_TestIDCTIVFloat_aarch64.patch  # [aarch64]\n    - skip_white_tophat03.patch  # [aarch64 or ppc64le]\n    # remove this patch when updating to 1.3.3\n{% if version == \"1.3.2\" %}\n    - scipy-1.3.2-bad-tests.patch  # [osx and py == 38]\n    - gh11046.patch                # [ppc64le]\n{% endif %}\n\n\nbuild:\n  number: 0\n  skip: true  # [win or py2k]\n\nrequirements:\n  build:\n    - {{ compiler('fortran') }}\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n  host:\n    - libblas\n    - libcblas\n    - liblapack\n    - python\n    - setuptools\n    - cython\n    - numpy\n    - pip\n  run:\n    - python\n    - {{ pin_compatible('numpy') }}\n\ntest:\n  requires:\n    - pytest\n    - pytest-xdist\n    - mpmath\n{% if version == \"1.3.2\" %}\n    - blas * netlib  # [ppc64le]\n{% endif %}\n\nabout:\n  home: http://www.scipy.org/\n  license: BSD-3-Clause\n  license_file: LICENSE.txt\n  summary: Scientific Library for Python\n  description: |\n    SciPy is a Python-based ecosystem of open-source software for mathematics,\n    science, and engineering.\n  doc_url: http://www.scipy.org/docs.html\n  dev_url: https://github.com/scipy/scipy\n\nextra:\n  recipe-maintainers:\n    - jakirkham\n    - msarahan\n    - rgommers\n    - ocefpaf\n    - beckermr\n",
+ "raw_meta_yaml":"{% set version = \"1.3.3\" %}\n{% set ver_major_minor = \".\".join(version.split(\".\")[:2]) %}\n\npackage:\n  name: scipy\n  version: {{ version }}\n\nsource:\n  url: https://github.com/scipy/scipy/archive/v{{ version }}.tar.gz\n  sha256: 91269acb6d073f09743e8b6549fe5f8adb4329218a4e2c027074b54ba68c1e22\n  patches:\n    - gh10591.patch\n    - relax_gmres_error_check.patch  # [aarch64]\n    - skip_problematic_boost_test.patch  # [aarch64 or ppc64le]\n    - skip_problematic_root_finding.patch  # [aarch64 or ppc64le]\n    - skip_TestIDCTIVFloat_aarch64.patch  # [aarch64]\n    - skip_white_tophat03.patch  # [aarch64 or ppc64le]\n    # remove this patch when updating to 1.4\n{% if ver_major_minor == \"1.3\" %}\n    - gh11046.patch                # [ppc64le]\n{% endif %}\n\n\nbuild:\n  number: 0\n  skip: true  # [win or py2k]\n\nrequirements:\n  build:\n    - {{ compiler('fortran') }}\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n  host:\n    - libblas\n    - libcblas\n    - liblapack\n    - python\n    - setuptools\n    - cython\n    - numpy\n    - pip\n  run:\n    - python\n    - {{ pin_compatible('numpy') }}\n\ntest:\n  requires:\n    - pytest\n    - pytest-xdist\n    - mpmath\n{% if ver_major_minor == \"1.3\" %}\n    - blas * netlib  # [ppc64le]\n{% endif %}\n\nabout:\n  home: http://www.scipy.org/\n  license: BSD-3-Clause\n  license_file: LICENSE.txt\n  summary: Scientific Library for Python\n  description: |\n    SciPy is a Python-based ecosystem of open-source software for mathematics,\n    science, and engineering.\n  doc_url: http://www.scipy.org/docs.html\n  dev_url: https://github.com/scipy/scipy\n\nextra:\n  recipe-maintainers:\n    - jakirkham\n    - msarahan\n    - rgommers\n    - ocefpaf\n    - beckermr\n",
  "req":{
   "__set__":true,
   "elements":[
@@ -375,5 +375,5 @@
  },
  "smithy_version":"3.6.5",
  "url":"https://github.com/scipy/scipy/archive/v1.3.1.tar.gz",
- "version":"1.3.2"
+ "version":"1.3.3"
 }
