@@ -217,6 +217,23 @@
     "migrator_version",
     "name"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/354608351.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"Version",
+    "migrator_version":0,
+    "version":"2.12.0"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "version"
+   ]
   }
  ],
  "bad":false,
@@ -326,8 +343,8 @@
   }
  },
  "name":"pygmo",
- "new_version":"2.11.4",
- "pinning_version":"2019.11.18",
+ "new_version":"2.12.0",
+ "pinning_version":"2019.12.17",
  "raw_meta_yaml":"{% set version = \"2.11.4\" %}\n\npackage:\n  name: pygmo\n  version: {{ version }}\n\nsource:\n  url: https://github.com/esa/pagmo2/archive/v{{ version }}.tar.gz\n  sha256: 7756cf4b4a427a856137c40c3fdf27422fcf546249b70f9ba4c213ef1fbee051\n\nbuild:\n  number: 3\n  skip: true  # [(win and py<35) or win32]\n  ignore_run_exports:\n    # pagmo-devel will automatically\n    # put nlopt and ipopt as run dependencies,\n    # but we don't actually need any symbol\n    # from these libraries in pygmo's module.\n    # Thus, remove them from the runtime\n    # requirements.\n    - nlopt\n    - ipopt  # [unix]\n\nrequirements:\n  build:\n    - cmake\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n  host:\n    - pagmo-devel\n    - boost\n    - boost-cpp\n    - numpy\n    - cloudpickle\n    - ipyparallel  # [py<38]\n    - python\n  run:\n    - boost\n    - boost-cpp\n    - {{ pin_compatible('numpy') }}\n    - cloudpickle\n    - ipyparallel  # [py<38]\n    - python\n\nabout:\n  home: https://esa.github.io/pagmo2/\n  license: GPL v3 and LGPL v3\n  license_file: COPYING.lgpl3\n  summary: 'A C++ / Python platform to perform parallel computations of optimisation tasks (global and local) via the asynchronous generalized island model'\n\nextra:\n  recipe-maintainers:\n    - ccordoba12\n    - bluescarni\n    - darioizzo\n",
  "req":{
   "__set__":true,
@@ -345,7 +362,7 @@
    "python"
   ]
  },
- "smithy_version":"3.6.2",
+ "smithy_version":"3.6.5",
  "url":"https://github.com/esa/pagmo2/archive/v2.11.3.tar.gz",
  "version":"2.11.4"
 }
