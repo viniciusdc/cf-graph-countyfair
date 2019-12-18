@@ -93,6 +93,23 @@
     "migrator_version",
     "version"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/354667724.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"Version",
+    "migrator_version":0,
+    "version":"0.9.2"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "version"
+   ]
   }
  ],
  "bad":false,
@@ -186,8 +203,8 @@
   }
  },
  "name":"chemfiles-lib",
- "new_version":"0.9.1",
- "pinning_version":"2019.03.11",
+ "new_version":"0.9.2",
+ "pinning_version":"2019.12.17",
  "raw_meta_yaml":"# Chemfiles version and SHA256\n{% set version = \"0.9.1\" %}\n{% set prerelease = \"\" %}\n{% set sha256 = \"71c0c7263f9595ff045aed37a5564797400b5661bb7912120ce96efd8b4ab0c3\" %}\n\n# Chemfiles test data git version and SHA256\n{% set data_git = \"a6d074210791532045e42d7a8b252a0169eff4a7\" %}\n{% set data_sha256 = \"8291c31a3d3fac188aaa21cbe3b957428c2202496334a64e76ab9c0e03a37c43\" %}\n\npackage:\n  name: chemfiles-lib\n  version: {{ version }}{{ prerelease | list | reject(\"equalto\", \"-\") | join }}\n\nsource:\n  - fn: chemfiles-{{ version }}{{ prerelease }}.tar.gz\n    url: https://github.com/chemfiles/chemfiles/archive/{{ version }}{{ prerelease }}.tar.gz\n    sha256: {{ sha256 }}\n  - url: https://github.com/chemfiles/tests-data/archive/{{ data_git }}.tar.gz\n    sha256: {{ data_sha256 }}\n    folder: tests/data\n\n{% set CMAKE_INSTALL_PREFIX = \"$PREFIX\" %}  # [not win]\n{% set CMAKE_INSTALL_PREFIX = \"%PREFIX%/Library\" %}  # [win]\n{% set CMAKE_COMPILERS = \"\" %}  # [not win]\n{% set CMAKE_COMPILERS = \"-DCMAKE_C_COMPILER=cl.exe -DCMAKE_CXX_COMPILER=cl.exe\" %}  # [win]\n\nbuild:\n  skip: true  # [win and vc<14]\n  number: 2\n  script: |\n    cmake -G Ninja {{ CMAKE_COMPILERS }} -DCMAKE_BUILD_TYPE=Release -DBUILD_SHARED_LIBS=ON -DCMAKE_INSTALL_PREFIX={{ CMAKE_INSTALL_PREFIX }} .\n    cmake --build . --config Release --target install\n\n    # Build and run the tests\n    cmake -E touch tests/data/{{ data_git }}\n    cmake -DCHFL_BUILD_TESTS=ON -DCHFL_BUILD_DOCTESTS=OFF .\n    cmake --build . --config Release\n    ctest --output-on-failure -C Release\n\nrequirements:\n  build:\n    - cmake\n    - ninja\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n  run:\n    - libcxx >=8  # [osx]\n\ntest:\n  commands:\n    - test -f $PREFIX/lib/libchemfiles$SHLIB_EXT  # [unix]\n    - if not exist %PREFIX%\\\\Library\\\\bin\\\\chemfiles.dll exit 1  # [win]\n\nabout:\n  home: https://chemfiles.org\n  license: BSD\n  license_file: LICENSE\n  summary: Modern library for chemistry file reading and writing\n  doc_url: https://chemfiles.org/chemfiles/{{ version }}/\n  dev_url: https://github.com/chemfiles/chemfiles\n\nextra:\n  recipe-maintainers:\n    - luthaf\n",
  "req":{
   "__set__":true,
@@ -198,7 +215,7 @@
    "ninja"
   ]
  },
- "smithy_version":"3.2.14",
+ "smithy_version":"3.6.5",
  "url":"https://github.com/chemfiles/chemfiles/archive/0.9.1.tar.gz",
  "version":"0.9.1"
 }
