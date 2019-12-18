@@ -33,6 +33,23 @@
     "migrator_version",
     "name"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/354696657.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"Version",
+    "migrator_version":0,
+    "version":"0.4"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "version"
+   ]
   }
  ],
  "bad":false,
@@ -142,8 +159,8 @@
   }
  },
  "name":"r-timeroc",
- "new_version":"0.3",
- "pinning_version":"2019.07.19",
+ "new_version":"0.4",
+ "pinning_version":"2019.12.17",
  "raw_meta_yaml":"{% set version = '0.3' %}\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-timeroc\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  fn: timeROC_{{ version }}.tar.gz\n  url:\n    - {{ cran_mirror }}/src/contrib/timeROC_{{ version }}.tar.gz\n    - {{ cran_mirror }}/src/contrib/Archive/timeROC/timeROC_{{ version }}.tar.gz\n  sha256: 6b2a96edb8c2cb61bde07290ee3e05a4e65040243e738ec0fdf77a55d67d8676\n\nbuild:\n  noarch: generic\n  merge_build_host: True  # [win]\n  number: 1001\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - {{posix}}zip               # [win]\n  host:\n    - r-base\n    - r-mvtnorm >=1.0_1\n    - r-pec >=2.4.4\n  run:\n    - r-base\n    - r-mvtnorm >=1.0_1\n    - r-pec >=2.4.4\n\ntest:\n  commands:\n    - $R -e \"library('timeROC')\"           # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('timeROC')\\\"\"  # [win]\n\nabout:\n  home: https://CRAN.R-project.org/package=timeROC\n  license: GPL (>= 2)\n  summary: Estimation of time-dependent ROC curve and area under time dependent ROC curve (AUC)\n    in the presence of censored data, with or without competing risks. Confidence intervals\n    of AUCs and tests for comparing AUCs of two rival markers measured on the same subjects\n    can be computed, using the iid-representation of the AUC estimator. Plot functions\n    for time-dependent ROC curves and AUC curves are provided. Time-dependent Positive\n    Predictive Values (PPV) and Negative Predictive Values (NPV) can also be computed.\n  license_family: GPL3\n  license_file: '{{ environ[\"PREFIX\"] }}/lib/R/share/licenses/GPL-3'\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n    - johanneskoester\n    - bgruening\n    - daler\n    - jdblischak\n    - cbrueffer\n    - dbast\n",
  "req":{
   "__set__":true,
@@ -153,7 +170,7 @@
    "r-pec"
   ]
  },
- "smithy_version":"3.4.1",
+ "smithy_version":"3.6.5",
  "url":[
   "https://cran.r-project.org/src/contrib/timeROC_0.3.tar.gz",
   "https://cran.r-project.org/src/contrib/Archive/timeROC/timeROC_0.3.tar.gz",
