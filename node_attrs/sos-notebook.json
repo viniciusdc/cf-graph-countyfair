@@ -462,6 +462,23 @@
     "migrator_version",
     "version"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/354430880.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"Version",
+    "migrator_version":0,
+    "version":"0.21.1"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "version"
+   ]
   }
  ],
  "bad":false,
@@ -607,8 +624,8 @@
   }
  },
  "name":"sos-notebook",
- "new_version":"0.21.0",
- "pinning_version":"2019.11.20",
+ "new_version":"0.21.1",
+ "pinning_version":"2019.12.17",
  "raw_meta_yaml":"{% set name = \"sos-notebook\" %}\n{% set version = \"0.21.0\" %}\n\npackage:\n  name: \"{{ name|lower }}\"\n  version: \"{{ version }}\"\n\nsource:\n  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz\n  sha256: da988f891e0333d8dc69ac962d24af472370186fb53bd9951307a154873c3e1c\n\nbuild:\n  number: 0\n  skip: true  # [py<36]\n  script:\n    - {{ PYTHON }} -m pip install . --no-deps --ignore-installed -vv\n    - {{ PYTHON }} -m sos_notebook.install --sys-prefix\n\nrequirements:\n  host:\n    - ipython\n    - notebook >=5.0.0\n    - pip\n    - python\n    - setuptools\n  run:\n    - ipykernel\n    - ipython\n    - markdown\n    - matplotlib\n    - nbconvert >=5.1.1\n    - nbformat\n    - notebook >=5.0.0\n    - pandas\n    - prometheus_client\n    - prompt_toolkit\n    - python\n    - sos >=0.19.2\n    - tabulate\n\ntest:\n  requires:\n    - nose\n    - pytest\n    - selenium\n  imports:\n    - sos_notebook\n  commands:\n    - jupyter kernelspec list | grep -w $PREFIX/share/jupyter/kernels/sos  # [unix]\n    - jupyter kernelspec list | findstr \\share\\jupyter\\kernels\\sos  # [win]\n    - jupyter run --kernel=sos ex.py\n  files:\n    - ex.py\n\nabout:\n  home: https://github.com/vatlab/SOS\n  license: BSD\n  license_family: BSD\n  license_file: LICENSE\n  summary: \"Script of Scripts (SoS): an interactive, cross-platform, and\n            cross-language workflow system for reproducible data analysis\"\n  doc_url: https://vatlab.github.io/sos-docs/\n  dev_url: https://github.com/vatlab/sos-notebook\n\nextra:\n  recipe-maintainers:\n    - BoPeng\n    - gaow\n    - jdblischak\n",
  "req":{
   "__set__":true,
@@ -630,7 +647,7 @@
    "tabulate"
   ]
  },
- "smithy_version":"3.6.2",
+ "smithy_version":"3.6.5",
  "url":"https://pypi.io/packages/source/s/sos-notebook/sos-notebook-0.20.2.tar.gz",
  "version":"0.21.0"
 }
