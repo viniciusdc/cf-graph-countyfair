@@ -101,6 +101,23 @@
     "migrator_version",
     "name"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/354750393.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"Version",
+    "migrator_version":0,
+    "version":"0.12.0"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "version"
+   ]
   }
  ],
  "bad":false,
@@ -198,8 +215,8 @@
   }
  },
  "name":"r-xtensor",
- "new_version":"0.11.1",
- "pinning_version":"2019.07.19",
+ "new_version":"0.12.0",
+ "pinning_version":"2019.12.17",
  "raw_meta_yaml":"{% set name = \"r-xtensor\" %}\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' %}\n{% set version = \"0.11.1\" %}\n{% set sha256 = \"0a69e0c36e10d878c280b78c7fccdf2987704b927c1898d979c7bb98064de5db\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  fn: {{ name }}-{{ version }}.tar.gz\n  url: https://github.com/QuantStack/Xtensor.R/archive/{{ version }}.tar.gz\n  sha256: {{ sha256 }}\n\nbuild:\n  number: 1\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - {{ compiler('cxx') }}      # [not win]\n    - {{ compiler('m2w64_cxx') }}        # [win]\n    - {{posix}}filesystem        # [win]\n    - {{posix}}make\n    - {{posix}}sed               # [win]\n    - {{posix}}coreutils         # [win]\n    - {{posix}}zip               # [win]\n  host:\n    - r-base\n    - xtensor-r >=0.11.1,<0.12.0\n  run:\n    - r-base\n    - {{native}}gcc-libs         # [win]\n    - {{ pin_compatible('xtensor-r', max_pin='x.x') }}\n\ntest:\n  commands:\n    - $R -e \"library('xtensor')\"           # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('xtensor')\\\"\"  # [win]\n\nabout:\n  home: http://github.com/QuantStack/Xtensor.R\n  license: BSD-3-Clause\n  license_family: BSD\n  license_file: LICENSE\n  summary: 'R bindings for xtensor, the C++ tensor algebra library'\n  description: 'Multi dimensional arrays with broadcasting and lazy computing'\n  doc_url: http://xtensor-r.readthedocs.io/\n  dev_url: https://github.com/QuantStack/xtensor-r\n\nextra:\n  recipe-maintainers:\n    - SylvainCorlay\n    - JohanMabille\n    - wolfv\n",
  "req":{
   "__set__":true,
@@ -217,7 +234,7 @@
    "zip"
   ]
  },
- "smithy_version":"3.4.1",
+ "smithy_version":"3.6.5",
  "url":"https://github.com/QuantStack/Xtensor.R/archive/0.11.1.tar.gz",
  "version":"0.11.1"
 }
