@@ -86,7 +86,11 @@
   }
  ],
  "bad":false,
- "conda-forge.yml":{},
+ "conda-forge.yml":{
+  "compiler_stack":"comp7",
+  "max_py_ver":"37",
+  "max_r_ver":"35"
+ },
  "feedstock_name":"holopy",
  "hash_type":"sha256",
  "meta_yaml":{
@@ -96,119 +100,133 @@
    "doc_url":"http://holopy.readthedocs.io/",
    "home":"http://manoharan.seas.harvard.edu/holopy",
    "license":"GPL v3",
-   "license_file":"COPYING",
+   "license_file":"LICENSE",
    "summary":"Holopy is a python based tool for working with digital holograms and light scattering"
   },
   "build":{
    "number":"0",
-   "script":"python setup.py install --single-version-externally-managed --record record.txt",
-   "skip":true
+   "script":" setup.py install"
   },
   "extra":{
    "recipe-maintainers":[
+    "ralex0",
     "barkls",
     "vnmanoharan",
+    "ralex0",
     "barkls",
     "vnmanoharan",
+    "ralex0",
     "barkls",
     "vnmanoharan"
    ]
   },
   "package":{
    "name":"holopy",
-   "version":"3.2.1"
+   "version":"3.3.0"
   },
   "requirements":{
    "build":[
+    "c_compiler_stub",
+    "c_compiler_stub",
+    "fortran_compiler_stub",
+    "c_compiler_stub",
+    "fortran_compiler_stub"
+   ],
+   "host":[
     "python",
-    "numpy 1.12.*",
+    "pip",
+    "compatible_pin_stub",
     "setuptools",
-    "gcc",
-    "toolchain3",
+    "m2w64-toolchain",
+    "nose",
     "python",
-    "numpy 1.12.*",
+    "pip",
+    "compatible_pin_stub",
     "setuptools",
-    "gcc",
-    "toolchain3",
+    "nose",
     "python",
-    "numpy 1.12.*",
+    "pip",
+    "compatible_pin_stub",
     "setuptools",
-    "gcc",
-    "toolchain3"
+    "nose"
    ],
    "run":[
     "python",
-    "numpy >=1.12",
+    "compatible_pin_stub",
     "scipy",
-    "pyyaml",
+    "pyyaml <5.2",
     "pillow",
     "h5py",
-    "emcee",
     "matplotlib",
-    "xarray >=0.10.0",
+    "xarray",
     "h5netcdf",
     "python",
-    "numpy >=1.12",
+    "compatible_pin_stub",
     "scipy",
-    "pyyaml",
+    "pyyaml <5.2",
     "pillow",
     "h5py",
-    "emcee",
     "matplotlib",
-    "xarray >=0.10.0",
+    "xarray",
     "h5netcdf",
-    "libgfortran",
     "python",
-    "numpy >=1.12",
+    "compatible_pin_stub",
     "scipy",
-    "pyyaml",
+    "pyyaml <5.2",
     "pillow",
     "h5py",
-    "emcee",
     "matplotlib",
-    "xarray >=0.10.0",
-    "h5netcdf",
-    "libgcc"
+    "xarray",
+    "h5netcdf"
    ]
   },
   "source":{
-   "fn":"holopy-3.2.1.tar.gz",
-   "sha256":"6994fb24ef20dabdb016ee0e624e474507f5abd48c6135837b09ccccc5b6ee77",
-   "url":"https://github.com/manoharan-lab/HoloPy/archive/3.2.1.tar.gz"
+   "fn":"holopy-3.3.0.tar.gz",
+   "sha256":"66f61c07cb916d8f77254361bc3e77b07df77b1934306665ac9f3d271bd267f5",
+   "url":"https://github.com/manoharan-lab/holopy/archive/3.3.0.tar.gz"
   },
   "test":{
    "imports":[
     "holopy",
+    "holopy.scattering.theory.mie_f.mieangfuncs",
+    "holopy.scattering.theory.mie_f.scsmfo_min",
+    "holopy.scattering.theory.tmatrix",
     "holopy",
-    "holopy"
+    "holopy.scattering.theory.mie_f.mieangfuncs",
+    "holopy.scattering.theory.mie_f.scsmfo_min",
+    "holopy.scattering.theory.tmatrix",
+    "holopy",
+    "holopy.scattering.theory.mie_f.mieangfuncs",
+    "holopy.scattering.theory.mie_f.scsmfo_min",
+    "holopy.scattering.theory.tmatrix"
    ]
   }
  },
  "name":"holopy",
  "new_version":"3.3.0",
  "pinning_version":"2019.12.18",
- "raw_meta_yaml":"{% set name = \"HoloPy\" %}\n{% set version = \"3.2.1\" %}\n{% set sha256 = \"6994fb24ef20dabdb016ee0e624e474507f5abd48c6135837b09ccccc5b6ee77\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  fn: {{ name|lower }}-{{ version }}.tar.gz\n  url: https://github.com/manoharan-lab/{{ name }}/archive/{{ version }}.tar.gz\n  sha256: {{ sha256 }}\n\nbuild:\n  number: 0\n  skip: True  # [py2k or win]\n  script: python setup.py install --single-version-externally-managed --record record.txt\n\nrequirements:\n  build:\n    - python\n    - numpy 1.12.*\n    - setuptools\n    - gcc\n    - toolchain3\n\n  run:\n    - python\n    - numpy >=1.12\n    - scipy\n    - pyyaml\n    - pillow\n    - h5py\n    - emcee\n    - matplotlib\n    - xarray >=0.10.0\n    - h5netcdf\n    - libgcc  # [linux]\n    - libgfortran  # [osx]\n    \ntest:\n  imports:\n    - holopy\n\nabout:\n  home: http://manoharan.seas.harvard.edu/holopy\n  license: GPL v3\n  license_file: COPYING\n  summary: 'Holopy is a python based tool for working with digital holograms and light scattering'\n\n  description: |\n    HoloPy is a software package for computational light scattering and digital holography. \n    It has tools for managing data and metadata, doing reconstructions, computing light scattering\n    from micron scale particles or clusters of such particles, and fitting scattering models to\n    digital holograms to measure particle parameters. HoloPy is free and open source software (GPL v3).\n  doc_url: http://holopy.readthedocs.io/\n  dev_url: https://github.com/manoharan-lab/holopy\n\nextra:\n  recipe-maintainers:\n    - barkls\n    - vnmanoharan\n",
+ "raw_meta_yaml":"{% set name = \"holopy\" %}\n{% set repo = \"manoharan-lab\" %}\n{% set version = \"3.3.0\" %}\n{% set sha256 = \"66f61c07cb916d8f77254361bc3e77b07df77b1934306665ac9f3d271bd267f5\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  fn: {{ name|lower }}-{{ version }}.tar.gz\n  url: https://github.com/{{ repo }}/{{ name }}/archive/{{ version }}.tar.gz\n  sha256: {{ sha256 }}\n\nbuild:\n  number: 0\n  skip: True  # [py2k]\n  script: \"{{ PYTHON }} setup.py install\"\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - {{ compiler('fortran') }}  # [not win]\n  host:\n    - python\n    - pip\n    - {{ pin_compatible('numpy') }}\n    - setuptools\n    - m2w64-toolchain  # [win]\n    - nose\n  run:\n    - python\n    - {{ pin_compatible('numpy') }}\n    - scipy\n    - pyyaml <5.2\n    - pillow\n    - h5py\n    - matplotlib\n    - xarray\n    - h5netcdf\n\ntest:\n  imports:\n    - holopy\n    - holopy.scattering.theory.mie_f.mieangfuncs\n    - holopy.scattering.theory.mie_f.scsmfo_min\n    - holopy.scattering.theory.tmatrix\n\nabout:\n  home: http://manoharan.seas.harvard.edu/holopy\n  license: GPL v3\n  license_file: LICENSE\n  summary: 'Holopy is a python based tool for working with digital holograms and light scattering'\n\n  description: |\n    HoloPy is a software package for computational light scattering and digital holography.\n    It has tools for managing data and metadata, doing reconstructions, computing light scattering\n    from micron scale particles or clusters of such particles, and fitting scattering models to\n    digital holograms to measure particle parameters. HoloPy is free and open source software (GPL v3).\n  doc_url: http://holopy.readthedocs.io/\n  dev_url: https://github.com/manoharan-lab/holopy\n\nextra:\n  recipe-maintainers:\n    - ralex0\n    - barkls\n    - vnmanoharan\n",
  "req":{
   "__set__":true,
   "elements":[
-   "emcee",
-   "gcc",
+   "c_compiler_stub",
+   "compatible_pin_stub",
+   "fortran_compiler_stub",
    "h5netcdf",
    "h5py",
-   "libgcc",
-   "libgfortran",
+   "m2w64-toolchain",
    "matplotlib",
-   "numpy",
+   "nose",
    "pillow",
+   "pip",
    "python",
    "pyyaml",
    "scipy",
    "setuptools",
-   "toolchain3",
    "xarray"
   ]
  },
  "smithy_version":"3.6.5",
  "url":"https://github.com/manoharan-lab/HoloPy/archive/3.2.1.tar.gz",
- "version":"3.2.1"
+ "version":"3.3.0"
 }
