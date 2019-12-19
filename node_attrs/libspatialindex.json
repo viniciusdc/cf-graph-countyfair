@@ -132,7 +132,7 @@
   }
  },
  "name":"libspatialindex",
- "new_version":"1.9.1",
+ "new_version":"1.9.3",
  "pinning_version":"2019.10.11",
  "raw_meta_yaml":"{% set version = \"1.9.0\" %}\n\npackage:\n  name: libspatialindex\n  version: {{ version }}\n\nsource:\n  url: https://github.com/libspatialindex/libspatialindex/archive/{{ version }}.tar.gz\n  sha256: 7c8809cd7e827efdc8bd80f786cf2a2d4f25adb92f954d46f7f28ad410bd46e2\n\nbuild:\n  number: 2\n  skip: True  # [win and vc<14]\n  run_exports:\n    - {{ pin_subpackage('libspatialindex', max_pin='x.x.x') }}\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n    - cmake\n    - ninja  # [win]\n\ntest:\n  commands:\n    - test -f ${PREFIX}/lib/libspatialindex_c${SHLIB_EXT}  # [not win]\n\nabout:\n  home: http://libspatialindex.github.io\n  license: MIT\n  license_file: COPYING\n  summary: 'Extensible framework for robust spatial indexing'\n\nextra:\n  recipe-maintainers:\n    - ocefpaf\n",
  "req":{
