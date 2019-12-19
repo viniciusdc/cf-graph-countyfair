@@ -167,7 +167,7 @@
   }
  },
  "name":"yappi",
- "new_version":"1.2.1",
+ "new_version":"1.2.3",
  "pinning_version":"2019.12.02",
  "raw_meta_yaml":"{% set name = \"yappi\" %}\n{% set version = \"1.0\" %}\n{% set hash_type = \"sha256\" %}\n{% set hash = \"7f814131515d51db62b1a3468bcb84de30499124752806a5a6e11caf0b4344bf\" %}\n\npackage:\n  name: {{ name }}\n  version: {{ version }}\n\nsource:\n  fn: {{ name }}-{{ version }}.tar.gz\n  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz\n  {{ hash_type }}: {{ hash }}\n\nbuild:\n  entry_points:\n    - yappi = yappi:main\n  script: \"{{ PYTHON }} -m pip install . --no-deps --ignore-installed --no-cache-dir -vvv\"\n  number: 0\n\nrequirements:\n  build:\n    - {{ compiler('cxx') }}\n  host:\n    - pip\n    - python\n  run:\n    - python\n\ntest:\n  imports:\n    - yappi\n\n  commands:\n    - yappi --help\n\nabout:\n  home: https://bitbucket.org/sumerc/yappi\n  license: MIT\n  # license file not available in package, see:\n  # https://bitbucket.org/sumerc/yappi/pull-requests/27\n  license_file: '{{ environ[\"RECIPE_DIR\"] }}/LICENSE'\n  summary: 'Yet Another Python Profiler'\n  license_family: MIT\n  dev_url: https://bitbucket.org/sumerc/yappi\n\nextra:\n  recipe-maintainers:\n    - nicoddemus\n",
  "req":{
