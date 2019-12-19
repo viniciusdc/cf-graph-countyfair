@@ -328,7 +328,7 @@
   }
  },
  "name":"z5py",
- "new_version":"2.0.0",
+ "new_version":"2.0.1",
  "pinning_version":"2019.11.13",
  "raw_meta_yaml":"{% set version = \"1.5.1\" %}\n{% set checksum = \"9745bbc1675ff360769a33742ca4d9e180942e5fbe691dab6f9e3bbcb95d6519\" %}\n\npackage:\n  name: z5py\n  version: {{ version }}\n\nsource:\n    url: https://github.com/constantinpape/z5/archive/{{ version }}.tar.gz\n    sha256: {{ checksum }}\n    patches:\n        - patches/cmake_lz4_patch.file\n\nbuild:\n  number: 0\n  skip: True  # [win and vc<14]\n  skip: True  # [py27]\n\nrequirements:\n  build:\n    - cmake\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n  host:\n    - python\n    - boost-cpp >=1.63\n    - numpy\n    - xtensor >=0.19,<0.20\n    - xtensor-python >=0.22,<0.23\n    - xsimd >=7,<8\n    - blosc\n    - bzip2\n    - lz4-c\n    - xz\n    - zlib\n    - nlohmann_json\n  run:\n    - python\n    - {{ pin_compatible('numpy') }}\n    - blosc\n    - bzip2\n    - lz4-c\n    - xz\n    - zlib\n\ntest:\n  imports:\n    - z5py\n  source_files:\n    - src/python/test/*.py\n  commands:\n    - python -m unittest discover -s src/python/test -v\n\nabout:\n  home: https://github.com/constantinpape/z5\n  license: MIT\n  license_file: LICENSE\n  summary: Lightweight C++ and Python interface for datasets in zarr and N5 format.\n\nextra:\n  recipe-maintainers:\n    - constantinpape\n    - SylvainCorlay\n",
  "req":{
