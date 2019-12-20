@@ -121,7 +121,7 @@
  "hash_type":"sha256",
  "meta_yaml":{
   "about":{
-   "description":"The signac framework aids in the management of large and heterogeneous\ndata spaces. It provides a simple and robust data model to create a\nwell-defined indexable storage layout for data and metadata.\nThis makes it easier to operate on large data spaces, streamlines\npost-processing and analysis and makes data collectively accessible.\nThe implementation is in pure python and tested for versions 2.7.x and\n3.4+. There are no hard dependencies to allow painless transition into\nvarious environments, some extra features are available via optional\ndependencies.\n",
+   "description":"The signac framework aids in the management of large and heterogeneous\ndata spaces. It provides a simple and robust data model to create a\nwell-defined indexable storage layout for data and metadata.\nThis makes it easier to operate on large data spaces, streamlines\npost-processing and analysis and makes data collectively accessible.\n",
    "dev_url":"https://github.com/glotzerlab/signac",
    "doc_url":"https://docs.signac.io",
    "home":"https://signac.io",
@@ -142,46 +142,64 @@
   },
   "extra":{
    "recipe-maintainers":[
+    "bdice",
     "csadorf",
+    "mikemhenry",
+    "vyasr",
+    "bdice",
     "csadorf",
-    "csadorf"
+    "mikemhenry",
+    "vyasr",
+    "bdice",
+    "csadorf",
+    "mikemhenry",
+    "vyasr"
    ]
   },
   "package":{
    "name":"signac",
-   "version":"1.2.0"
+   "version":"1.3.0"
   },
   "requirements":{
    "host":[
     "pip",
-    "python",
+    "python >=3.5",
     "setuptools",
     "pip",
-    "python",
+    "python >=3.5",
     "setuptools",
     "pip",
-    "python",
+    "python >=3.5",
     "setuptools"
    ],
    "run":[
-    "python",
-    "pymongo >=3",
-    "passlib",
     "bcrypt",
-    "python",
-    "pymongo >=3",
+    "deprecation >=2",
+    "filelock >=3.0,<4",
+    "packaging >=15.0",
     "passlib",
+    "pymongo >=3",
+    "python >=3.5",
     "bcrypt",
-    "python",
-    "pymongo >=3",
+    "deprecation >=2",
+    "filelock >=3.0,<4",
+    "packaging >=15.0",
     "passlib",
-    "bcrypt"
+    "pymongo >=3",
+    "python >=3.5",
+    "bcrypt",
+    "deprecation >=2",
+    "filelock >=3.0,<4",
+    "packaging >=15.0",
+    "passlib",
+    "pymongo >=3",
+    "python >=3.5"
    ]
   },
   "source":{
-   "fn":"signac-1.2.0.tar.gz",
-   "sha256":"12d68ca551fc06238df3c39f21146ff3866eaaad3fd60101d9f845ec8ce8c805",
-   "url":"https://github.com/glotzerlab/signac/archive/v1.2.0.tar.gz"
+   "fn":"signac-1.3.0.tar.gz",
+   "sha256":"af5aa9e03ed976d1f2ee950b50b5a8907b31540254b79e6126ba5c7891fcf01b",
+   "url":"https://github.com/glotzerlab/signac/archive/v1.3.0.tar.gz"
   },
   "test":{
    "imports":[
@@ -206,11 +224,14 @@
  "name":"signac",
  "new_version":"1.3.0",
  "pinning_version":"2019.07.22",
- "raw_meta_yaml":"{% set name = \"signac\" %}\n{% set version = \"1.2.0\" %}\n{% set sha256 = \"12d68ca551fc06238df3c39f21146ff3866eaaad3fd60101d9f845ec8ce8c805\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  fn: {{ name }}-{{ version }}.tar.gz\n  url: https://github.com/glotzerlab/signac/archive/v{{ version }}.tar.gz\n  sha256: {{ sha256 }}\n\nbuild:\n  noarch: python\n  number: 0\n  script: python -m pip install --no-deps --ignore-installed .\n  entry_points:\n    - signac = signac.__main__:main\n\nrequirements:\n  host:\n    - pip\n    - python\n    - setuptools\n  run:\n    - python\n    - pymongo >=3\n    - passlib\n    - bcrypt\n\ntest:\n  imports:\n    - signac\n    - signac.common\n    - signac.contrib\n    - signac.core\n    - signac.db\n\nabout:\n  home: https://signac.io\n  license: BSD 3-Clause\n  license_family: BSD\n  license_file: LICENSE.txt\n  summary: 'Simple, extensible data management framework.'\n  description: |\n    The signac framework aids in the management of large and heterogeneous\n    data spaces. It provides a simple and robust data model to create a\n    well-defined indexable storage layout for data and metadata.\n    This makes it easier to operate on large data spaces, streamlines\n    post-processing and analysis and makes data collectively accessible.\n    The implementation is in pure python and tested for versions 2.7.x and\n    3.4+. There are no hard dependencies to allow painless transition into\n    various environments, some extra features are available via optional\n    dependencies.\n  doc_url: https://docs.signac.io\n  dev_url: https://github.com/glotzerlab/signac\n\nextra:\n  recipe-maintainers:\n    - csadorf\n",
+ "raw_meta_yaml":"{% set name = \"signac\" %}\n{% set version = \"1.3.0\" %}\n{% set sha256 = \"af5aa9e03ed976d1f2ee950b50b5a8907b31540254b79e6126ba5c7891fcf01b\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  fn: {{ name }}-{{ version }}.tar.gz\n  url: https://github.com/glotzerlab/signac/archive/v{{ version }}.tar.gz\n  sha256: {{ sha256 }}\n\nbuild:\n  noarch: python\n  number: 0\n  script: python -m pip install --no-deps --ignore-installed .\n  entry_points:\n    - signac = signac.__main__:main\n\nrequirements:\n  host:\n    - pip\n    - python >=3.5\n    - setuptools\n  run:\n    - bcrypt\n    - deprecation >=2\n    - filelock >=3.0,<4\n    - packaging >=15.0\n    - passlib\n    - pymongo >=3\n    - python >=3.5\n\ntest:\n  imports:\n    - signac\n    - signac.common\n    - signac.contrib\n    - signac.core\n    - signac.db\n\nabout:\n  home: https://signac.io\n  license: BSD 3-Clause\n  license_family: BSD\n  license_file: LICENSE.txt\n  summary: 'Simple, extensible data management framework.'\n  description: |\n    The signac framework aids in the management of large and heterogeneous\n    data spaces. It provides a simple and robust data model to create a\n    well-defined indexable storage layout for data and metadata.\n    This makes it easier to operate on large data spaces, streamlines\n    post-processing and analysis and makes data collectively accessible.\n  doc_url: https://docs.signac.io\n  dev_url: https://github.com/glotzerlab/signac\n\nextra:\n  recipe-maintainers:\n    - bdice\n    - csadorf\n    - mikemhenry\n    - vyasr\n",
  "req":{
   "__set__":true,
   "elements":[
    "bcrypt",
+   "deprecation",
+   "filelock",
+   "packaging",
    "passlib",
    "pip",
    "pymongo",
@@ -220,5 +241,5 @@
  },
  "smithy_version":"3.4.1",
  "url":"https://github.com/glotzerlab/signac/archive/v1.2.0.tar.gz",
- "version":"1.2.0"
+ "version":"1.3.0"
 }
