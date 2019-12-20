@@ -35,7 +35,22 @@
    ]
   }
  ],
- "bad":false,
+ "bad":{
+  "exception":"local variable 'hash' referenced before assignment",
+  "traceback":[
+   "Traceback (most recent call last):",
+   "  File \"/root/repo/cf-scripts/conda_forge_tick/auto_tick.xsh\", line 750, in main",
+   "    dry_run=args.dry_run)",
+   "  File \"/root/repo/cf-scripts/conda_forge_tick/auto_tick.xsh\", line 98, in run",
+   "    migrate_return = migrator.migrate(recipe_dir, attrs, **kwargs)",
+   "  File \"/root/repo/cf-scripts/conda_forge_tick/migrators.xsh\", line 467, in migrate",
+   "    new_patterns = self.get_hash_patterns('meta.yaml', urls, hash_type)",
+   "  File \"/root/repo/cf-scripts/conda_forge_tick/migrators.xsh\", line 394, in get_hash_patterns",
+   "    n = '{}: {}'.format(hash_type, hash)",
+   "UnboundLocalError: local variable 'hash' referenced before assignment",
+   ""
+  ]
+ },
  "conda-forge.yml":{
   "compiler_stack":"comp7",
   "max_py_ver":"37",
@@ -136,7 +151,7 @@
   }
  },
  "name":"r-optextras",
- "new_version":"2016_8.8",
+ "new_version":"2019_12.4",
  "pinning_version":"2019.07.15",
  "raw_meta_yaml":"{% set version = '2016-8.8' %}\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-optextras\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  fn: optextras_{{ version }}.tar.gz\n  url:\n    - {{ cran_mirror }}/src/contrib/optextras_{{ version }}.tar.gz\n    - {{ cran_mirror }}/src/contrib/Archive/optextras/optextras_{{ version }}.tar.gz\n  sha256: 8c91d0dadfbd545610bcfb84e7b205be3ca05c2005062266b3c04e844df8980f\n\nbuild:\n  noarch: generic\n  merge_build_host: True  # [win]\n  number: 1002\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - {{posix}}zip               # [win]\n  host:\n    - r-base\n    - r-numderiv\n  run:\n    - r-base\n    - r-numderiv\n\ntest:\n  commands:\n    - $R -e \"library('optextras')\"           # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('optextras')\\\"\"  # [win]\n\nabout:\n  home: https://CRAN.R-project.org/package=optextras\n  license: GPL-2\n  summary: Tools to assist in safely applying user generated objective and  derivative function\n    to optimization programs. These are primarily function  minimization methods with\n    at most bounds and masks on the parameters. Provides a way to check the basic computation\n    of objective functions that  the user provides, along with proposed gradient and\n    Hessian functions,  as well as to wrap such functions to avoid failures when inadmissible\n    parameters  are provided. Check bounds and masks. Check scaling or optimality conditions.  Perform\n    an axial search to seek lower points on the objective function surface.  Includes\n    forward, central and backward gradient approximation codes.\n  license_family: GPL2\n  license_file: '{{ environ[\"PREFIX\"] }}/lib/R/share/licenses/GPL-2'\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n    - johanneskoester\n    - bgruening\n    - daler\n    - jdblischak\n    - cbrueffer\n    - dbast\n",
  "req":{

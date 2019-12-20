@@ -147,7 +147,7 @@
   }
  },
  "name":"cpnest",
- "new_version":"0.9.7",
+ "new_version":"0.9.8",
  "pinning_version":"2019.11.01",
  "raw_meta_yaml":"{% set name = \"cpnest\" %}\n{% set version = \"0.9.7\" %}\n\npackage:\n  name: \"{{ name|lower }}\"\n  version: \"{{ version }}\"\n\nsource:\n  url: \"https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz\"\n  sha256: d698aa9ebf924a6a5e54c29165b75cf67f38616179256495e02e4e75391c718f\n  patches:\n    - libm.patch\n\nbuild:\n  number: 1\n  script: \"{{ PYTHON }} -m pip install . --no-deps --ignore-installed -vv\"\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n  host:\n    - cython\n    - numpy\n    - pip\n    - python\n    - setuptools\n  run:\n    - corner\n    - {{ pin_compatible('numpy') }}\n    - python\n    - scipy\n    - tqdm\n\ntest:\n  imports:\n    - cpnest\n    - cpnest.NestedSampling\n    - cpnest.cpnest\n    - cpnest.model\n    - cpnest.nest2pos\n    - cpnest.parameter\n    - cpnest.proposal\n    - cpnest.sampler\n  commands:\n    # cpnest.plot imports matplotlib.pyplot but doesn't force\n    # a non-interactive backend (which is fine | DMM)\n    - setx MPLBACKEND \"Agg\"  # [win]\n    - export MPLBACKEND=\"Agg\"  # [unix]\n    - python -c \"import cpnest.plot\"\n\nabout:\n  home: \"https://github.com/johnveitch/cpnest\"\n  license: \"MIT\"\n  license_family: \"MIT\"\n  license_file: \"LICENSE\"\n  summary: \"CPNest: Parallel nested sampling\"\n  doc_url: \"https://johnveitch.github.io/cpnest/\"\n  dev_url: \"https://github.com/johnveitch/cpnest\"\n\nextra:\n  recipe-maintainers:\n    - duncanmmacleod\n    - johnveitch\n    - wdpozzo\n",
  "req":{
