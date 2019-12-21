@@ -112,6 +112,23 @@
     "migrator_version",
     "version"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/355992425.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"Version",
+    "migrator_version":0,
+    "version":"1.90"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "version"
+   ]
   }
  ],
  "bad":false,
@@ -194,8 +211,8 @@
   }
  },
  "name":"cppcheck",
- "new_version":"1.89",
- "pinning_version":"2019.09.08",
+ "new_version":"1.90",
+ "pinning_version":"2019.12.18",
  "raw_meta_yaml":"{% set name = \"cppcheck\" %}\n{% set version = \"1.88\" %}\n{% set sha256 = \"4aace0420d6aaa900b84b3329c5173c2294e251d2e24d8cba6e38254333dde3f\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  fn: {{ version }}.tar.gz\n  url: https://github.com/danmar/cppcheck/archive/{{ version }}.tar.gz\n  sha256: {{ sha256 }}\n  patches:\n    - force-char-cppcheck-1.87.patch\n\nbuild:\n  number: 1\n  skip: True   # [win and vc<14]\n\nrequirements:\n  build:\n  - {{ compiler('c') }}\n  - {{ compiler('cxx') }}\n  - make  # [osx or unix]\n  - cmake\n  host:\n  - pcre\n  run:\n  - pcre\n\ntest:\n  commands:\n    - cppcheck --version\n    - echo ';' > test.h; cppcheck --check-config test.h\n\nabout:\n  description:\n    Cppcheck is a static analysis tool for C/C++ code. Unlike C/C++ compilers\n    and many other analysis tools it does not detect syntax errors in the code.\n    Cppcheck primarily detects the types of bugs that the compilers normally do\n    not detect. The goal is to detect only real errors in the code (i.e. have\n    zero false positives).\n  home: 'http://cppcheck.sourceforge.net/'\n  dev_url: 'https://github.com/danmar/cppcheck'\n  license: 'GPLv3'\n  license_family: 'GPL'\n  license_file: COPYING\n  summary: 'A static analysis tool for C/C++ code.'\n\nextra:\n  recipe-maintainers:\n    - tovrstra\n",
  "req":{
   "__set__":true,
@@ -207,7 +224,7 @@
    "pcre"
   ]
  },
- "smithy_version":"3.4.5",
+ "smithy_version":"3.6.5",
  "url":"https://github.com/danmar/cppcheck/archive/1.88.tar.gz",
  "version":"1.88"
 }
