@@ -259,7 +259,7 @@
   }
  },
  "name":"pyretis",
- "new_version":"2.2.1",
+ "new_version":"2.3.0",
  "pinning_version":"2019.11.01",
  "raw_meta_yaml":"{% set name = \"pyretis\" %}\n{% set version = \"2.2.1\" %}\n{% set sha256 = \"9f4705bcb804802202e63a50b28f71805398f6b725e62a867ecf5c796d9bd53c\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  fn: {{ name }}-{{ version }}.tar.gz\n  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz\n  sha256: {{ sha256 }}\n\nbuild:\n  skip: true  # [py<36]\n  number: 0\n  script: \"{{ PYTHON }} -m pip install . -vv\" \n\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n  host:\n    - python\n    - pip\n    - setuptools\n    - cython\n    - numpy\n    - zlib\n    - msinttypes  # [win and py27]\n  run:\n    - python\n    - cython\n    - sphinx\n    - sphinx_bootstrap_theme\n    - setuptools\n    - {{ pin_compatible('numpy') }}\n    - scipy\n    - pandas\n    - pytables\n    - zlib\n    - colorama\n    - tqdm\n    - docutils\n    - matplotlib\n    - jinja2\n    - mdtraj\n\ntest:\n  imports:\n    - pyretis\n\nabout:\n  home: http://www.pyretis.org\n  license: LGPLv2.1+\n  license_file: LICENSE\n  summary: 'PyRETIS: A well-done, medium-sized python library for rare events, DOI: 10.1002/jcc.24900'\n\nextra:\n  recipe-maintainers:\n    - EnricoRiccardi\n    - andersle\n    - sroet\n",
  "req":{
