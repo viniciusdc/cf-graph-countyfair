@@ -248,8 +248,7 @@
   },
   "build":{
    "number":"0",
-   "script":" -m pip install . --no-deps --ignore-installed --no-cache-dir -vvv",
-   "skip":true
+   "script":" -m pip install . --no-deps --ignore-installed --no-cache-dir -vvv"
   },
   "extra":{
    "recipe-maintainers":[
@@ -263,28 +262,22 @@
   },
   "package":{
    "name":"gwdetchar",
-   "version":"1.0.0"
+   "version":"1.0.1"
   },
   "requirements":{
    "host":[
-    "jsmin",
-    "libsass",
     "pip",
     "python",
     "setuptools",
-    "jsmin",
-    "libsass",
     "pip",
     "python",
     "setuptools",
-    "jsmin",
-    "libsass",
     "pip",
     "python",
     "setuptools"
    ],
    "run":[
-    "python >=3.5",
+    "python",
     "astropy >=1.2",
     "beautifulsoup4",
     "gwdatafind",
@@ -293,7 +286,7 @@
     "lxml",
     "markuppy >=1.14",
     "matplotlib >=2.0.0",
-    "numpy >=1.10",
+    "numpy >=1.16",
     "pandas",
     "pycondor",
     "pytz",
@@ -303,7 +296,7 @@
     "scikit-learn",
     "scipy >=1.2.0",
     "setuptools",
-    "python >=3.5",
+    "python",
     "astropy >=1.2",
     "beautifulsoup4",
     "gwdatafind",
@@ -312,7 +305,7 @@
     "lxml",
     "markuppy >=1.14",
     "matplotlib >=2.0.0",
-    "numpy >=1.10",
+    "numpy >=1.16",
     "pandas",
     "pycondor",
     "pytz",
@@ -322,7 +315,7 @@
     "scikit-learn",
     "scipy >=1.2.0",
     "setuptools",
-    "python >=3.5",
+    "python",
     "astropy >=1.2",
     "beautifulsoup4",
     "gwdatafind",
@@ -331,7 +324,7 @@
     "lxml",
     "markuppy >=1.14",
     "matplotlib >=2.0.0",
-    "numpy >=1.10",
+    "numpy >=1.16",
     "pandas",
     "pycondor",
     "pytz",
@@ -344,8 +337,8 @@
    ]
   },
   "source":{
-   "sha256":"3be2d05e8459aec336e853409f5a077f0d4f996ea753853fce4009705223c281",
-   "url":"https://pypi.io/packages/source/g/gwdetchar/gwdetchar-1.0.0.tar.gz"
+   "sha256":"88db3af35d052e77ab9f69812a4825caca40a696984f867502c15bf9c65d8ece",
+   "url":"https://pypi.io/packages/source/g/gwdetchar/gwdetchar-1.0.1.tar.gz"
   },
   "test":{
    "commands":[
@@ -476,7 +469,7 @@
  "name":"gwdetchar",
  "new_version":"1.0.1",
  "pinning_version":"2019.11.01",
- "raw_meta_yaml":"{% set name = \"gwdetchar\" %}\n{% set version = \"1.0.0\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz\n  sha256: 3be2d05e8459aec336e853409f5a077f0d4f996ea753853fce4009705223c281\n\nbuild:\n  number: 0\n  skip: true  # [win]\n  skip: True  # [py2k]\n  script: \"{{ PYTHON }} -m pip install . --no-deps --ignore-installed --no-cache-dir -vvv\"\n\nrequirements:\n  host:\n    - jsmin\n    - libsass\n    - pip\n    - python\n    - setuptools\n  run:\n    - python >=3.5\n    - astropy >=1.2\n    - beautifulsoup4\n    - gwdatafind\n    - gwpy >=0.13.0\n    - gwtrigfind\n    - lxml\n    - markuppy >=1.14\n    - matplotlib >=2.0.0\n    - numpy >=1.10\n    - pandas\n    - pathlib2  # [py<36]\n    - pycondor\n    - pytz\n    - coloredlogs\n    - pygments\n    - python-ldas-tools-framecpp\n    - scikit-learn\n    - scipy >=1.2.0\n    - setuptools\n\ntest:\n  requires:\n    - flake8\n    - pytest\n    - coverage\n  imports:\n    - gwdetchar\n    - gwdetchar.cds\n    - gwdetchar.cli\n    - gwdetchar.condor\n    - gwdetchar.const\n    - gwdetchar.daq\n    - gwdetchar.io\n    - gwdetchar.io.html\n    - gwdetchar.io.datafind\n    - gwdetchar.io.tests\n    - gwdetchar.lasso\n    - gwdetchar.lasso.plot\n    - gwdetchar.lasso.tests\n    - gwdetchar.plot\n    - gwdetchar.omega\n    - gwdetchar.omega.plot\n    - gwdetchar.omega.html\n    - gwdetchar.omega.config\n    - gwdetchar.omega.tests\n    - gwdetchar.saturation\n    - gwdetchar.scattering\n    - gwdetchar.scattering.plot\n    - gwdetchar.scattering.tests\n    - gwdetchar.tests\n    - gwdetchar.utils\n  commands:\n    # run unit tests\n    - python -m pytest --pyargs {{ name }}\n    # check scripts run ok\n    - gwdetchar-lasso-correlation --help\n    - gwdetchar-mct --help\n    - gwdetchar-omega --help\n    - gwdetchar-omega-batch --help\n    - gwdetchar-overflow --help\n    - gwdetchar-scattering --help\n    - python -m gwdetchar.scattering --help\n    - gwdetchar-slow-correlation --help\n    - gwdetchar-software-saturations --help\n    - python -m gwdetchar.nagios --help\n\nabout:\n  home: https://gwdetchar.readthedocs.io\n  license: GPLv3\n  license_family: GPL\n  license_file: LICENSE\n  summary: A python package for gravitational-wave detector characterisation\n  description: |\n    This package provides a set of python utilities for gravitational-wave\n    detector characterisation and data quality.\n\nextra:\n  recipe-maintainers:\n    - alurban\n    - duncanmmacleod\n",
+ "raw_meta_yaml":"{% set name = \"gwdetchar\" %}\n{% set version = \"1.0.1\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz\n  sha256: 88db3af35d052e77ab9f69812a4825caca40a696984f867502c15bf9c65d8ece\n\nbuild:\n  number: 0\n  script: \"{{ PYTHON }} -m pip install . --no-deps --ignore-installed --no-cache-dir -vvv\"\n\nrequirements:\n  host:\n    - pip\n    - python\n    - setuptools\n  run:\n    - python\n    - astropy >=1.2\n    - beautifulsoup4\n    - gwdatafind\n    - gwpy >=0.13.0\n    - gwtrigfind\n    - lxml\n    - markuppy >=1.14\n    - matplotlib >=2.0.0\n    - numpy >=1.16\n    - pandas\n    - pathlib2  # [py<36]\n    - pycondor\n    - pytz\n    - coloredlogs\n    - pygments\n    - python-ldas-tools-framecpp\n    - scikit-learn\n    - scipy >=1.2.0\n    - setuptools\n\ntest:\n  requires:\n    - flake8\n    - pytest\n    - coverage\n  imports:\n    - gwdetchar\n    - gwdetchar.cds\n    - gwdetchar.cli\n    - gwdetchar.condor\n    - gwdetchar.const\n    - gwdetchar.daq\n    - gwdetchar.io\n    - gwdetchar.io.html\n    - gwdetchar.io.datafind\n    - gwdetchar.io.tests\n    - gwdetchar.lasso\n    - gwdetchar.lasso.plot\n    - gwdetchar.lasso.tests\n    - gwdetchar.plot\n    - gwdetchar.omega\n    - gwdetchar.omega.plot\n    - gwdetchar.omega.html\n    - gwdetchar.omega.config\n    - gwdetchar.omega.tests\n    - gwdetchar.saturation\n    - gwdetchar.scattering\n    - gwdetchar.scattering.plot\n    - gwdetchar.scattering.tests\n    - gwdetchar.tests\n    - gwdetchar.utils\n  commands:\n    # run unit tests\n    - python -m pytest --pyargs {{ name }}\n    # check scripts run ok\n    - gwdetchar-lasso-correlation --help\n    - gwdetchar-mct --help\n    - gwdetchar-omega --help\n    - gwdetchar-omega-batch --help\n    - gwdetchar-overflow --help\n    - gwdetchar-scattering --help\n    - python -m gwdetchar.scattering --help\n    - gwdetchar-slow-correlation --help\n    - gwdetchar-software-saturations --help\n    - python -m gwdetchar.nagios --help\n\nabout:\n  home: https://gwdetchar.readthedocs.io\n  license: GPLv3\n  license_family: GPL\n  license_file: LICENSE\n  summary: A python package for gravitational-wave detector characterisation\n  description: |\n    This package provides a set of python utilities for gravitational-wave\n    detector characterisation and data quality.\n\nextra:\n  recipe-maintainers:\n    - alurban\n    - duncanmmacleod\n",
  "req":{
   "__set__":true,
   "elements":[
@@ -486,8 +479,6 @@
    "gwdatafind",
    "gwpy",
    "gwtrigfind",
-   "jsmin",
-   "libsass",
    "lxml",
    "markuppy",
    "matplotlib",
@@ -506,5 +497,5 @@
  },
  "smithy_version":"3.6.1",
  "url":"https://pypi.io/packages/source/g/gwdetchar/gwdetchar-0.5.3.tar.gz",
- "version":"1.0.0"
+ "version":"1.0.1"
 }
