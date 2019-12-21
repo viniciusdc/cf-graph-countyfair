@@ -97,15 +97,19 @@
  "meta_yaml":{
   "about":{
    "home":"https://personality-project.org/r/psych https://personality-project.org/r/psych-manual.pdf",
-   "license":"GPL (>= 2)",
-   "license_family":"GPL3",
-   "license_file":"/lib/R/share/licenses/GPL-3",
+   "license":"GPL-2",
+   "license_family":"GPL2",
+   "license_file":[
+    "/lib/R/share/licenses/GPL-2",
+    "/lib/R/share/licenses/GPL-2",
+    "/lib/R/share/licenses/GPL-2"
+   ],
    "summary":"A general purpose toolbox for personality, psychometric theory and experimental psychology.   Functions are primarily for multivariate analysis and scale construction using factor analysis, principal component analysis, cluster analysis and reliability analysis, although others provide basic descriptive statistics. Item Response Theory is done using  factor analysis of tetrachoric and polychoric correlations. Functions for analyzing data at multiple levels include within and between group statistics, including correlations and factor analysis.   Functions for simulating and testing particular item and test structures are included. Several functions  serve as a useful front end for structural equation modeling.  Graphical displays of path diagrams, factor analysis and structural equation models are created using basic graphics. Some of the functions are written to support a book on psychometric theory as well as publications in personality research. For more information, see the <https://personality-project.org/r> web page."
   },
   "build":{
    "merge_build_host":true,
    "noarch":"generic",
-   "number":"1",
+   "number":"0",
    "rpaths":[
     "lib/R/lib/",
     "lib/",
@@ -118,78 +122,60 @@
   "extra":{
    "recipe-maintainers":[
     "conda-forge/r",
-    "johanneskoester",
-    "bgruening",
-    "daler",
-    "jdblischak",
-    "cbrueffer",
-    "dbast",
     "conda-forge/r",
-    "johanneskoester",
-    "bgruening",
-    "daler",
-    "jdblischak",
-    "cbrueffer",
-    "dbast",
-    "conda-forge/r",
-    "johanneskoester",
-    "bgruening",
-    "daler",
-    "jdblischak",
-    "cbrueffer",
-    "dbast"
+    "conda-forge/r"
    ]
   },
   "package":{
    "name":"r-psych",
-   "version":"1.8.12"
+   "version":"1.9.12"
   },
   "requirements":{
+   "build":null,
    "host":[
     "r-base",
-    "r-mnormt",
     "r-foreign",
     "r-lattice",
+    "r-mnormt",
     "r-nlme",
     "r-base",
-    "r-mnormt",
     "r-foreign",
     "r-lattice",
+    "r-mnormt",
     "r-nlme",
     "r-base",
-    "r-mnormt",
     "r-foreign",
     "r-lattice",
+    "r-mnormt",
     "r-nlme"
    ],
    "run":[
     "r-base",
-    "r-mnormt",
     "r-foreign",
     "r-lattice",
+    "r-mnormt",
     "r-nlme",
     "r-base",
-    "r-mnormt",
     "r-foreign",
     "r-lattice",
+    "r-mnormt",
     "r-nlme",
     "r-base",
-    "r-mnormt",
     "r-foreign",
     "r-lattice",
+    "r-mnormt",
     "r-nlme"
    ]
   },
   "source":{
-   "fn":"psych_1.8.12.tar.gz",
-   "sha256":"6e175e049bc1ee5b79a9e51ccafb22b962b4e6c839ce5c9cfa1ad83967037743",
+   "sha256":"c0dbb42a1df725b71af6c058bf04059c028594878e5bae82087524aaa577278f",
    "url":[
-    "https://cran.r-project.org/src/contrib/psych_1.8.12.tar.gz",
-    "https://cran.r-project.org/src/contrib/Archive/psych/psych_1.8.12.tar.gz",
-    "https://cran.r-project.org/src/contrib/psych_1.8.12.tar.gz",
-    "https://cran.r-project.org/src/contrib/Archive/psych/psych_1.8.12.tar.gz",
-    "https://cran.r-project.org/src/contrib/psych_1.8.12.tar.gz",
-    "https://cran.r-project.org/src/contrib/Archive/psych/psych_1.8.12.tar.gz"
+    "https://cran.r-project.org/src/contrib/psych_1.9.12.tar.gz",
+    "https://cran.r-project.org/src/contrib/Archive/psych/psych_1.9.12.tar.gz",
+    "https://cran.r-project.org/src/contrib/psych_1.9.12.tar.gz",
+    "https://cran.r-project.org/src/contrib/Archive/psych/psych_1.9.12.tar.gz",
+    "https://cran.r-project.org/src/contrib/psych_1.9.12.tar.gz",
+    "https://cran.r-project.org/src/contrib/Archive/psych/psych_1.9.12.tar.gz"
    ]
   },
   "test":{
@@ -203,7 +189,7 @@
  "name":"r-psych",
  "new_version":"1.9.12",
  "pinning_version":"2019.12.18",
- "raw_meta_yaml":"{% set version = \"1.8.12\" %}\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-psych\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  fn: psych_{{ version }}.tar.gz\n  url:\n    - {{ cran_mirror }}/src/contrib/psych_{{ version }}.tar.gz\n    - {{ cran_mirror }}/src/contrib/Archive/psych/psych_{{ version }}.tar.gz\n  sha256: 6e175e049bc1ee5b79a9e51ccafb22b962b4e6c839ce5c9cfa1ad83967037743\n\nbuild:\n  noarch: generic\n  merge_build_host: True  # [win]\n  number: 1\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  host:\n    - r-base\n    - r-mnormt\n    - r-foreign\n    - r-lattice\n    - r-nlme\n  run:\n    - r-base\n    - r-mnormt\n    - r-foreign\n    - r-lattice\n    - r-nlme\n\ntest:\n  commands:\n    - $R -e \"library('psych')\"           # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('psych')\\\"\"  # [win]\n\nabout:\n  home: https://personality-project.org/r/psych https://personality-project.org/r/psych-manual.pdf\n  license: GPL (>= 2)\n  summary: A general purpose toolbox for personality, psychometric theory and experimental psychology.   Functions\n    are primarily for multivariate analysis and scale construction using factor analysis,\n    principal component analysis, cluster analysis and reliability analysis, although\n    others provide basic descriptive statistics. Item Response Theory is done using  factor\n    analysis of tetrachoric and polychoric correlations. Functions for analyzing data\n    at multiple levels include within and between group statistics, including correlations\n    and factor analysis.   Functions for simulating and testing particular item and\n    test structures are included. Several functions  serve as a useful front end for\n    structural equation modeling.  Graphical displays of path diagrams, factor analysis\n    and structural equation models are created using basic graphics. Some of the functions\n    are written to support a book on psychometric theory as well as publications in\n    personality research. For more information, see the <https://personality-project.org/r>\n    web page.\n  license_family: GPL3\n  license_file: '{{ environ[\"PREFIX\"] }}/lib/R/share/licenses/GPL-3'  # [unix]\n  license_file: '{{ environ[\"PREFIX\"] }}\\R\\share\\licenses\\GPL-3'  # [win]\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n    - johanneskoester\n    - bgruening\n    - daler\n    - jdblischak\n    - cbrueffer\n    - dbast\n",
+ "raw_meta_yaml":"{% set version = '1.9.12' %}\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-psych\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  url:\n    - {{ cran_mirror }}/src/contrib/psych_{{ version }}.tar.gz\n    - {{ cran_mirror }}/src/contrib/Archive/psych/psych_{{ version }}.tar.gz\n  sha256: c0dbb42a1df725b71af6c058bf04059c028594878e5bae82087524aaa577278f\n\nbuild:\n  merge_build_host: True  # [win]\n  number: 0\n  noarch: generic\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - {{posix}}zip               # [win]\n  host:\n    - r-base\n    - r-foreign\n    - r-lattice\n    - r-mnormt\n    - r-nlme\n  run:\n    - r-base\n    - r-foreign\n    - r-lattice\n    - r-mnormt\n    - r-nlme\n\ntest:\n  commands:\n    - $R -e \"library('psych')\"           # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('psych')\\\"\"  # [win]\n\nabout:\n  home: https://personality-project.org/r/psych https://personality-project.org/r/psych-manual.pdf\n  license: GPL-2\n  summary: A general purpose toolbox for personality, psychometric theory and experimental psychology.   Functions\n    are primarily for multivariate analysis and scale construction using factor analysis,\n    principal component analysis, cluster analysis and reliability analysis, although\n    others provide basic descriptive statistics. Item Response Theory is done using  factor\n    analysis of tetrachoric and polychoric correlations. Functions for analyzing data\n    at multiple levels include within and between group statistics, including correlations\n    and factor analysis.   Functions for simulating and testing particular item and\n    test structures are included. Several functions  serve as a useful front end for\n    structural equation modeling.  Graphical displays of path diagrams, factor analysis\n    and structural equation models are created using basic graphics. Some of the functions\n    are written to support a book on psychometric theory as well as publications in\n    personality research. For more information, see the <https://personality-project.org/r>\n    web page.\n  license_family: GPL2\n  license_file:\n    - '{{ environ[\"PREFIX\"] }}/lib/R/share/licenses/GPL-2'\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n\n# Package: psych\n# Version: 1.9.12\n# Date: 2019-12-14\n# Title: Procedures for Psychological, Psychometric, and Personality Research\n# Authors@R: person(\"William\", \"Revelle\", role =c(\"aut\",\"cre\"), email=\"revelle@northwestern.edu\", comment=c(ORCID  = \"0000-0003-4880-9610\") )\n# Description: A general purpose toolbox for personality, psychometric theory and experimental psychology.   Functions are primarily for multivariate analysis and scale construction using factor analysis, principal component analysis, cluster analysis and reliability analysis, although others provide basic descriptive statistics. Item Response Theory is done using  factor analysis of tetrachoric and polychoric correlations. Functions for analyzing data at multiple levels include within and between group statistics, including correlations and factor analysis.   Functions for simulating and testing particular item and test structures are included. Several functions  serve as a useful front end for structural equation modeling.  Graphical displays of path diagrams, factor analysis and structural equation models are created using basic graphics. Some of the functions are written to support a book on psychometric theory as well as publications in personality research. For more information, see the <https://personality-project.org/r> web page.\n# License: GPL (>= 2)\n# Imports: mnormt,parallel,stats,graphics,grDevices,methods,foreign,lattice,nlme\n# Suggests: GPArotation, lavaan, sem, lme4,Rcsdp, graph, Rgraphviz,psychTools\n# LazyData: yes\n# ByteCompile: TRUE\n# URL: https://personality-project.org/r/psych https://personality-project.org/r/psych-manual.pdf\n# NeedsCompilation: no\n# Packaged: 2019-12-15 20:23:29 UTC; WR\n# Author: William Revelle [aut, cre] (<https://orcid.org/0000-0003-4880-9610>)\n# Maintainer: William Revelle <revelle@northwestern.edu>\n# Repository: CRAN\n# Date/Publication: 2019-12-20 16:40:02 UTC\n",
  "req":{
   "__set__":true,
   "elements":[
@@ -223,5 +209,5 @@
   "https://cran.r-project.org/src/contrib/psych_1.8.12.tar.gz",
   "https://cran.r-project.org/src/contrib/Archive/psych/psych_1.8.12.tar.gz"
  ],
- "version":"1.8.12"
+ "version":"1.9.12"
 }
