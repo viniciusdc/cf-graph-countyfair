@@ -113,28 +113,32 @@
  "hash_type":"sha256",
  "meta_yaml":{
   "about":{
-   "description":"import / export of med-files (please give us more information)",
+   "description":"The purpose of the MED module is to provide a standard for storing and recovering computer data associated to numerical meshes and fields, and to facilitate the exchange between codes and solvers.\n",
    "dev_url":"http://www.salome-platform.org/",
    "doc_url":"http://www.salome-platform.org/",
-   "home":"http://www.salome-platform.org/",
+   "home":"https://www.salome-platform.org/user-section/about/med",
    "license":"LGPLv3.0",
    "license_family":"LGPL",
    "license_file":"COPYING",
-   "summary":"geometry mesh formats"
+   "summary":"MED : interoperable format for data interchange between mesh based solvers."
   },
   "build":{
-   "number":"1001"
+   "number":"0",
+   "skip":true
   },
   "extra":{
    "recipe-maintainers":[
     "looooo",
+    "ldallolio-irt",
     "looooo",
-    "looooo"
+    "ldallolio-irt",
+    "looooo",
+    "ldallolio-irt"
    ]
   },
   "package":{
    "name":"libmed",
-   "version":"3.3.1"
+   "version":"4.0.0"
   },
   "requirements":{
    "build":[
@@ -155,40 +159,35 @@
     "cxx_compiler_stub"
    ],
    "host":[
-    "hdf5 1.8*",
+    "hdf5 1.10.3|1.10.4",
     "zlib",
     "python",
     "swig",
-    "hdf5 1.8*",
+    "hdf5 1.10.3|1.10.4",
     "zlib",
     "python",
     "swig",
-    "hdf5 1.8*",
+    "hdf5 1.10.3|1.10.4",
     "zlib",
     "python",
     "swig"
    ],
    "run":[
-    "hdf5",
+    "hdf5 1.10.3|1.10.4",
     "zlib",
     "python",
-    "hdf5",
+    "hdf5 1.10.3|1.10.4",
     "zlib",
     "python",
-    "hdf5",
+    "hdf5 1.10.3|1.10.4",
     "zlib",
     "python"
    ]
   },
   "source":{
-   "fn":"libmed 3.3.1.tar.gz",
-   "patches":[
-    "swig.patch",
-    "swig.patch",
-    "swig.patch"
-   ],
-   "sha256":"dd631ef813838bc7413ff0dd6461d7a0d725bcfababdf772ece67610a8d22588",
-   "url":"http://files.salome-platform.org/Salome/other/med-3.3.1.tar.gz"
+   "fn":"libmed 4.0.0.tar.gz",
+   "sha256":"a474e90b5882ce69c5e9f66f6359c53b8b73eb448c5f631fa96e8cd2c14df004",
+   "url":"https://files.salome-platform.org/Salome/other/med-4.0.0.tar.gz"
   },
   "test":{
    "imports":[
@@ -201,7 +200,7 @@
  "name":"libmed",
  "new_version":"4.0.0",
  "pinning_version":"2019.11.01",
- "raw_meta_yaml":"{% set name = \"libmed\" %}\n{% set version = \"3.3.1\" %}\n{% set sha256 = \"dd631ef813838bc7413ff0dd6461d7a0d725bcfababdf772ece67610a8d22588\" %}\n\n\npackage:\n    name: libmed\n    version: 3.3.1\n\nsource:\n    fn: {{ name }} {{ version }}.tar.gz\n    url: http://files.salome-platform.org/Salome/other/med-{{ version }}.tar.gz\n    sha256: {{ sha256  }}\n\n    patches:\n        - swig.patch\n\nbuild:\n    number: 1001\n    skip: true  # [py<35]\n\nrequirements:\n    build:\n        - ninja\n        - cmake\n        - {{ compiler('fortran') }}\n        - {{ compiler('c') }}\n        - {{ compiler('cxx') }}\n    host:\n        - hdf5 1.8*\n        - zlib\n        - python\n        - swig\n    run:\n        - hdf5\n        - zlib\n        - python\n\n\ntest:\n    imports:\n        - med\n\nabout:\n    home: http://www.salome-platform.org/\n    license: LGPLv3.0\n    license_family: LGPL\n    license_file: COPYING\n    summary: geometry mesh formats\n    description: import / export of med-files (please give us more information)\n    doc_url: http://www.salome-platform.org/\n    dev_url: http://www.salome-platform.org/\n\nextra:\n    recipe-maintainers:\n        - looooo\n",
+ "raw_meta_yaml":"{% set name = \"libmed\" %}\n{% set version = \"4.0.0\" %}\n{% set sha256 = \"a474e90b5882ce69c5e9f66f6359c53b8b73eb448c5f631fa96e8cd2c14df004\" %}\n\n\npackage:\n    name: libmed\n    version: 4.0.0\n\nsource:\n    fn: {{ name }} {{ version }}.tar.gz\n    url: https://files.salome-platform.org/Salome/other/med-{{ version }}.tar.gz\n    sha256: {{ sha256  }}\n    #git_url: https://salsa.debian.org/science-team/med-fichier\n    #git_rev: 8a0b0d21d4bac79772797b0a800cf4d5bf77bc32    \n\nbuild:\n    number: 0\n    skip: True  # [py2k or osx or win]\n\nrequirements:\n    build:\n        - ninja\n        - cmake\n        - {{ compiler('fortran') }}\n        - {{ compiler('c') }}\n        - {{ compiler('cxx') }}\n    host:\n        - hdf5 1.10.3|1.10.4\n        - zlib\n        - python\n        - swig\n    run:\n        - hdf5 1.10.3|1.10.4\n        - zlib\n        - python\n\n\ntest:\n    imports:\n        - med\n\nabout:\n    home: https://www.salome-platform.org/user-section/about/med\n    license: LGPLv3.0\n    license_family: LGPL\n    license_file: COPYING\n    summary: 'MED : interoperable format for data interchange between mesh based solvers.'\n    description: |\n        The purpose of the MED module is to provide a standard for storing and recovering computer data associated to numerical meshes and fields, and to facilitate the exchange between codes and solvers.\n    doc_url: http://www.salome-platform.org/\n    dev_url: http://www.salome-platform.org/\n\nextra:\n    recipe-maintainers:\n        - looooo\n        - ldallolio-irt\n",
  "req":{
   "__set__":true,
   "elements":[
@@ -218,5 +217,5 @@
  },
  "smithy_version":"3.6.1",
  "url":"http://files.salome-platform.org/Salome/other/med-3.3.1.tar.gz",
- "version":"3.3.1"
+ "version":"4.0.0"
 }
