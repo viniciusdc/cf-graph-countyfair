@@ -232,7 +232,7 @@
   }
  },
  "name":"pyfmi",
- "new_version":"2.5.6",
+ "new_version":"2.5.7",
  "pinning_version":"2019.12.02",
  "raw_meta_yaml":"{% set name = \"PyFMI\" %}\n{% set version = \"2.5.4\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  fn: {{ name }}-{{ version }}.tar.gz\n  url: https://github.com/modelon/PyFMI/archive/PyFMI-{{ version }}.tar.gz\n  sha256: e321ff4ba5932c128a9939f93c9dba8e556feff4a5a7e2d86b7bce90c3356f61\n  patches:\n    # https://github.com/modelon/PyFMI/issues/12\n    - logging.patch\n\nbuild:\n  number: 1\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n  host:\n    - python\n    - pip\n    - fmilib\n    - numpy\n    - cython\n  run:\n    - python\n    - fmilib\n    - {{ pin_compatible('numpy') }}\n    - scipy\n    - lxml\n    - assimulo >=3.0\n\ntest:\n  imports:\n    - pyfmi\n    - pyfmi.common\n    - pyfmi.common.plotting\n    - pyfmi.examples\n    - pyfmi.simulation\n\nabout:\n  home: http://www.jmodelica.org/\n  license: LGPL\n  license_file: LICENSE\n  summary: PyFMI is a package for loading and interacting with Functional Mock-Up Units\n\nextra:\n  recipe-maintainers:\n    - jschueller\n    - chria\n",
  "req":{
