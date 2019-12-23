@@ -96,24 +96,26 @@
     "migrator_version",
     "name"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/356397393.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"Version",
+    "migrator_version":0,
+    "version":"0.23_6"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "version"
+   ]
   }
  ],
- "bad":{
-  "exception":"local variable 'hash' referenced before assignment",
-  "traceback":[
-   "Traceback (most recent call last):",
-   "  File \"/root/repo/cf-scripts/conda_forge_tick/auto_tick.xsh\", line 750, in main",
-   "    dry_run=args.dry_run)",
-   "  File \"/root/repo/cf-scripts/conda_forge_tick/auto_tick.xsh\", line 98, in run",
-   "    migrate_return = migrator.migrate(recipe_dir, attrs, **kwargs)",
-   "  File \"/root/repo/cf-scripts/conda_forge_tick/migrators.xsh\", line 467, in migrate",
-   "    new_patterns = self.get_hash_patterns('meta.yaml', urls, hash_type)",
-   "  File \"/root/repo/cf-scripts/conda_forge_tick/migrators.xsh\", line 394, in get_hash_patterns",
-   "    n = '{}: {}'.format(hash_type, hash)",
-   "UnboundLocalError: local variable 'hash' referenced before assignment",
-   ""
-  ]
- },
+ "bad":false,
  "conda-forge.yml":{
   "compiler_stack":"comp7",
   "max_py_ver":"37",
@@ -223,7 +225,7 @@
  },
  "name":"r-ttr",
  "new_version":"0.23_6",
- "pinning_version":"2019.08.19",
+ "pinning_version":"2019.12.18",
  "raw_meta_yaml":"{% set version = '0.23-5' %}\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-ttr\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  url:\n    - {{ cran_mirror }}/src/contrib/TTR_{{ version }}.tar.gz\n    - {{ cran_mirror }}/src/contrib/Archive/TTR/TTR_{{ version }}.tar.gz\n  sha256: e6e5229083d3e810d1d61ec62cab6e84a71e8e6669e6aa18b1a57cd5bdbdb13b\n\nbuild:\n  merge_build_host: True  # [win]\n  number: 0\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - {{ compiler('c') }}              # [not win]\n    - {{ compiler('m2w64_c') }}        # [win]\n    - {{posix}}filesystem        # [win]\n    - {{posix}}make\n    - {{posix}}sed               # [win]\n    - {{posix}}coreutils         # [win]\n    - {{posix}}zip               # [win]\n  host:\n    - r-base\n    - r-curl\n    - r-xts >=0.10_0\n    - r-zoo\n  run:\n    - r-base\n    - {{native}}gcc-libs         # [win]\n    - r-curl\n    - r-xts >=0.10_0\n    - r-zoo\n\ntest:\n  commands:\n    - $R -e \"library('TTR')\"           # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('TTR')\\\"\"  # [win]\n\nabout:\n  home: https://github.com/joshuaulrich/TTR\n  license: GPL-2\n  summary: Functions and data to construct technical trading rules with R.\n  license_family: GPL2\n  license_file:\n    - '{{ environ[\"PREFIX\"] }}/lib/R/share/licenses/GPL-2'\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n\n# Package: TTR\n# Type: Package\n# Title: Technical Trading Rules\n# Version: 0.23-5\n# Author: Joshua Ulrich\n# Maintainer: Joshua Ulrich <josh.m.ulrich@gmail.com>\n# Imports: xts (>= 0.10-0), zoo, curl\n# LinkingTo: xts\n# Enhances: quantmod\n# Suggests: RUnit\n# Description: Functions and data to construct technical trading rules with R.\n# License: GPL-2\n# URL: https://github.com/joshuaulrich/TTR\n# BugReports: https://github.com/joshuaulrich/TTR/issues\n# NeedsCompilation: yes\n# Packaged: 2019-09-22 18:04:34 UTC; josh\n# Repository: CRAN\n# Date/Publication: 2019-09-23 08:20:06 UTC\n",
  "req":{
   "__set__":true,
@@ -242,7 +244,7 @@
    "zip"
   ]
  },
- "smithy_version":"3.4.1",
+ "smithy_version":"3.6.5",
  "url":[
   "https://cran.r-project.org/src/contrib/TTR_0.23-4.tar.gz",
   "https://cran.r-project.org/src/contrib/Archive/TTR/TTR_0.23-4.tar.gz",

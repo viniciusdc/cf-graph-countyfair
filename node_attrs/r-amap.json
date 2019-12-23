@@ -79,24 +79,26 @@
     "migrator_version",
     "name"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/356398754.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"Version",
+    "migrator_version":0,
+    "version":"0.8_18"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "version"
+   ]
   }
  ],
- "bad":{
-  "exception":"local variable 'hash' referenced before assignment",
-  "traceback":[
-   "Traceback (most recent call last):",
-   "  File \"/root/repo/cf-scripts/conda_forge_tick/auto_tick.xsh\", line 750, in main",
-   "    dry_run=args.dry_run)",
-   "  File \"/root/repo/cf-scripts/conda_forge_tick/auto_tick.xsh\", line 98, in run",
-   "    migrate_return = migrator.migrate(recipe_dir, attrs, **kwargs)",
-   "  File \"/root/repo/cf-scripts/conda_forge_tick/migrators.xsh\", line 467, in migrate",
-   "    new_patterns = self.get_hash_patterns('meta.yaml', urls, hash_type)",
-   "  File \"/root/repo/cf-scripts/conda_forge_tick/migrators.xsh\", line 394, in get_hash_patterns",
-   "    n = '{}: {}'.format(hash_type, hash)",
-   "UnboundLocalError: local variable 'hash' referenced before assignment",
-   ""
-  ]
- },
+ "bad":false,
  "conda-forge.yml":{
   "compiler_stack":"comp7",
   "max_py_ver":"37",
@@ -201,7 +203,7 @@
  },
  "name":"r-amap",
  "new_version":"0.8_18",
- "pinning_version":"2019.08.19",
+ "pinning_version":"2019.12.18",
  "raw_meta_yaml":"{% set version = '0.8-16' %}\n\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-amap\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  fn: amap_{{ version }}.tar.gz\n  url:\n    - {{ cran_mirror }}/src/contrib/amap_{{ version }}.tar.gz\n    - {{ cran_mirror }}/src/contrib/Archive/amap/amap_{{ version }}.tar.gz\n  sha256: d3775ad7f660581f7d2f070e426be95ae0d6743622943e6f5491988e5217d4e2\n\nbuild:\n  merge_build_host: True  # [win]\n  number: 1002\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\n# Suggests: Biobase\nrequirements:\n  build:\n    - {{ compiler('c') }}        # [not win]\n    - {{ compiler('cxx') }}      # [not win]\n    - {{ compiler('fortran') }}  # [not win]\n    - {{ compiler('m2w64_c') }}        # [win]\n    - {{ compiler('m2w64_cxx') }}        # [win]\n    - {{ compiler('m2w64_fortran') }}        # [win]\n    - {{posix}}filesystem        # [win]\n    - {{posix}}sed               # [win]\n    - {{posix}}grep              # [win]\n    - {{posix}}autoconf\n    - {{posix}}automake          # [not win]\n    - {{posix}}automake-wrapper  # [win]\n    - {{posix}}pkg-config\n    - {{posix}}make\n    - {{posix}}coreutils         # [win]\n    - {{posix}}zip               # [win]\n\n  host:\n    - r-base\n\n  run:\n    - r-base\n    - {{native}}gcc-libs         # [win]\n\ntest:\n  commands:\n    - $R -e \"library('amap')\"           # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('amap')\\\"\"  # [win]\n\nabout:\n  home: http://mulcyber.toulouse.inra.fr/projects/amap/\n  license: GPL\n  license_file: '{{ environ[\"PREFIX\"] }}/lib/R/share/licenses/GPL-3'\n  summary: Tools for Clustering and Principal Component Analysis (With robust methods, and parallelized\n    functions).\n  license_family: GPL\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n",
  "req":{
   "__set__":true,
@@ -226,7 +228,7 @@
    "zip"
   ]
  },
- "smithy_version":"3.4.1",
+ "smithy_version":"3.6.5",
  "time":1568135283.2741225,
  "url":[
   "https://cran.r-project.org/src/contrib/amap_0.8-16.tar.gz",

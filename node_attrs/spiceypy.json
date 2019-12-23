@@ -115,7 +115,7 @@
   },
   "build":{
    "noarch":"python",
-   "number":"1",
+   "number":"0",
    "script":"-m pip install . --no-deps -vv"
   },
   "extra":{
@@ -130,7 +130,7 @@
   },
   "package":{
    "name":"spiceypy",
-   "version":"2.3.1"
+   "version":"2.3.2"
   },
   "requirements":{
    "host":[
@@ -157,20 +157,17 @@
    ]
   },
   "source":{
-   "fn":"spiceypy-2.3.1.tar.gz",
+   "fn":"spiceypy-2.3.2.tar.gz",
    "patches":[
     "0001-Remove-CSPICE-installation-logic.patch",
     "0002-Get-rid-of-setup_requires.patch",
-    "0003-added-cross-platform-tmp-directory-for-unit-tests.patch",
     "0001-Remove-CSPICE-installation-logic.patch",
     "0002-Get-rid-of-setup_requires.patch",
-    "0003-added-cross-platform-tmp-directory-for-unit-tests.patch",
     "0001-Remove-CSPICE-installation-logic.patch",
-    "0002-Get-rid-of-setup_requires.patch",
-    "0003-added-cross-platform-tmp-directory-for-unit-tests.patch"
+    "0002-Get-rid-of-setup_requires.patch"
    ],
-   "sha256":"a2896f23c417921fe0aab987b06403fa5db669dc80619c5eef492a6dfd3297b8",
-   "url":"https://pypi.io/packages/source/s/spiceypy/spiceypy-2.3.1.tar.gz"
+   "sha256":"a10064b5b266e2e2363e1060c77db8653677eada0103970b47d9c75e08ba906f",
+   "url":"https://pypi.io/packages/source/s/spiceypy/spiceypy-2.3.2.tar.gz"
   },
   "test":{
    "commands":[
@@ -188,8 +185,14 @@
    ],
    "requires":[
     "pytest",
+    "pandas",
+    "numpy",
     "pytest",
-    "pytest"
+    "pandas",
+    "numpy",
+    "pytest",
+    "pandas",
+    "numpy"
    ],
    "source_files":[
     "spiceypy/tests",
@@ -201,7 +204,7 @@
  "name":"spiceypy",
  "new_version":"2.3.2",
  "pinning_version":"2019.10.11",
- "raw_meta_yaml":"{% set name = \"spiceypy\" %}\n{% set version = \"2.3.1\" %}\n{% set sha256 = \"a2896f23c417921fe0aab987b06403fa5db669dc80619c5eef492a6dfd3297b8\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  fn: {{ name }}-{{ version }}.tar.gz\n  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz\n  sha256: {{ sha256 }}\n\n  patches:\n    - 0001-Remove-CSPICE-installation-logic.patch\n    - 0002-Get-rid-of-setup_requires.patch\n    - 0003-added-cross-platform-tmp-directory-for-unit-tests.patch\n\nbuild:\n  number: 1\n  noarch: python\n\n  script: {{ PYTHON }} -m pip install . --no-deps -vv\n\nrequirements:\n  host:\n    - python\n    - pip\n  run:\n    - python\n    - cspice ==66\n    - numpy\n    - six\n\ntest:\n  imports:\n    - spiceypy\n    - spiceypy.utils\n  requires:\n    - pytest\n  source_files:\n    - spiceypy/tests\n  commands:\n    - python -m pytest spiceypy -rpP -v --verbose --tb=long\n\nabout:\n  home: https://github.com/AndrewAnnex/SpiceyPy\n  license: MIT\n  license_file: LICENSE\n  summary: 'The NASA JPL NAIF SPICE toolkit wrapper written in Python'\n\n  description: |\n      SpiceyPy is a python wrapper for the SPICE Toolkit. SPICE is an\n      essential tool for scientists and engineers alike in the planetary\n      science field for Solar System Geometry.\n  doc_url: http://spiceypy.readthedocs.io/\n\nextra:\n  recipe-maintainers:\n    - juanlu001\n    - AndrewAnnex\n",
+ "raw_meta_yaml":"{% set name = \"spiceypy\" %}\n{% set version = \"2.3.2\" %}\n{% set sha256 = \"a10064b5b266e2e2363e1060c77db8653677eada0103970b47d9c75e08ba906f\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  fn: {{ name }}-{{ version }}.tar.gz\n  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz\n  sha256: {{ sha256 }}\n\n  patches:\n    - 0001-Remove-CSPICE-installation-logic.patch\n    - 0002-Get-rid-of-setup_requires.patch\n\nbuild:\n  number: 0\n  noarch: python\n\n  script: {{ PYTHON }} -m pip install . --no-deps -vv\n\nrequirements:\n  host:\n    - python\n    - pip\n  run:\n    - python\n    - cspice ==66\n    - numpy\n    - six\n\ntest:\n  imports:\n    - spiceypy\n    - spiceypy.utils\n  requires:\n    - pytest\n    - pandas\n    - numpy\n  source_files:\n    - spiceypy/tests\n  commands:\n    - python -m pytest spiceypy -rpP -v --verbose --tb=long\n\nabout:\n  home: https://github.com/AndrewAnnex/SpiceyPy\n  license: MIT\n  license_file: LICENSE\n  summary: 'The NASA JPL NAIF SPICE toolkit wrapper written in Python'\n\n  description: |\n      SpiceyPy is a python wrapper for the SPICE Toolkit. SPICE is an\n      essential tool for scientists and engineers alike in the planetary\n      science field for Solar System Geometry.\n  doc_url: http://spiceypy.readthedocs.io/\n\nextra:\n  recipe-maintainers:\n    - juanlu001\n    - AndrewAnnex\n",
  "req":{
   "__set__":true,
   "elements":[
@@ -214,5 +217,5 @@
  },
  "smithy_version":"3.6.0",
  "url":"https://pypi.io/packages/source/s/spiceypy/spiceypy-2.2.1.tar.gz",
- "version":"2.3.1"
+ "version":"2.3.2"
 }

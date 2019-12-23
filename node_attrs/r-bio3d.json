@@ -62,24 +62,26 @@
     "migrator_version",
     "name"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/356397707.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"Version",
+    "migrator_version":0,
+    "version":"2.4_0"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "version"
+   ]
   }
  ],
- "bad":{
-  "exception":"local variable 'hash' referenced before assignment",
-  "traceback":[
-   "Traceback (most recent call last):",
-   "  File \"/root/repo/cf-scripts/conda_forge_tick/auto_tick.xsh\", line 750, in main",
-   "    dry_run=args.dry_run)",
-   "  File \"/root/repo/cf-scripts/conda_forge_tick/auto_tick.xsh\", line 98, in run",
-   "    migrate_return = migrator.migrate(recipe_dir, attrs, **kwargs)",
-   "  File \"/root/repo/cf-scripts/conda_forge_tick/migrators.xsh\", line 467, in migrate",
-   "    new_patterns = self.get_hash_patterns('meta.yaml', urls, hash_type)",
-   "  File \"/root/repo/cf-scripts/conda_forge_tick/migrators.xsh\", line 394, in get_hash_patterns",
-   "    n = '{}: {}'.format(hash_type, hash)",
-   "UnboundLocalError: local variable 'hash' referenced before assignment",
-   ""
-  ]
- },
+ "bad":false,
  "conda-forge.yml":{
   "compiler_stack":"comp7",
   "max_py_ver":"37",
@@ -204,7 +206,7 @@
  },
  "name":"r-bio3d",
  "new_version":"2.4_0",
- "pinning_version":"2019.07.20",
+ "pinning_version":"2019.12.18",
  "raw_meta_yaml":"{% set version = '2.3-4' %}\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-bio3d\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  fn: bio3d_{{ version }}.tar.gz\n  url:\n    - {{ cran_mirror }}/src/contrib/bio3d_{{ version }}.tar.gz\n    - {{ cran_mirror }}/src/contrib/Archive/bio3d/bio3d_{{ version }}.tar.gz\n  sha256: f9b39ab242cbedafcd98c1732cb1f5c0dd9ef66e28be39695e3420dd93e2bafe\n\nbuild:\n  merge_build_host: True  # [win]\n  number: 1001\n  skip: true  # [win32]\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - {{ compiler('c') }}        # [not win]\n    - {{ compiler('cxx') }}      # [not win]\n    - {{ compiler('m2w64_c') }}        # [win]\n    - {{ compiler('m2w64_cxx') }}        # [win]\n    - {{posix}}filesystem        # [win]\n    - {{posix}}make\n    - {{posix}}sed               # [win]\n    - {{posix}}coreutils         # [win]\n    - {{posix}}zip               # [win]\n  host:\n    - r-base\n    - r-rcpp\n  run:\n    - r-base\n    - {{native}}gcc-libs         # [win]\n    - r-rcpp\n\ntest:\n  commands:\n    - $R -e \"library('bio3d')\"           # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('bio3d')\\\"\"  # [win]\n\nabout:\n  home: http://thegrantlab.org/bio3d/, http://bitbucket.org/Grantlab/bio3d\n  license: GPL (>= 2)\n  summary: Utilities to process, organize and explore protein structure, sequence and dynamics\n    data. Features include the ability to read and write structure, sequence and dynamic\n    trajectory data, perform sequence and structure database searches, data summaries,\n    atom selection, alignment, superposition, rigid core identification, clustering,\n    torsion analysis, distance matrix analysis, structure and sequence conservation\n    analysis, normal mode analysis, principal component analysis of heterogeneous structure\n    data, and correlation network analysis from normal mode and molecular dynamics data.\n    In addition, various utility functions are provided to enable the statistical and\n    graphical power of the R environment to work with biological sequence and structural\n    data. Please refer to the URLs below for more information.\n  license_family: GPL3\n  license_file: '{{ environ[\"PREFIX\"] }}/lib/R/share/licenses/GPL-3'\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n    - MathiasHaudgaard\n    - FrodePedersen\n    - ArneKr\n    - johanneskoester\n    - bgruening\n    - daler\n    - jdblischak\n    - cbrueffer\n    - dbast\n",
  "req":{
   "__set__":true,
@@ -223,7 +225,7 @@
    "zip"
   ]
  },
- "smithy_version":"3.4.1",
+ "smithy_version":"3.6.5",
  "url":[
   "https://cran.r-project.org/src/contrib/bio3d_2.3-4.tar.gz",
   "https://cran.r-project.org/src/contrib/Archive/bio3d/bio3d_2.3-4.tar.gz",
