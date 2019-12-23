@@ -128,15 +128,19 @@
  "hash_type":"sha256",
  "meta_yaml":{
   "about":{
-   "home":"http://www.jstatsoft.org/v33/i01/.",
+   "home":"https://glmnet.stanford.edu, https://dx.doi.org/10.18637/jss.v033.i01, https://dx.doi.org/10.18637/jss.v039.i05",
    "license":"GPL-2",
    "license_family":"GPL2",
-   "license_file":"/lib/R/share/licenses/GPL-2",
-   "summary":"Extremely efficient procedures for fitting the entire lasso or elastic-net regularization path for linear regression, logistic and multinomial regression models, Poisson regression and the Cox model. Two recent additions are the multiple-response Gaussian, and the grouped multinomial regression. The algorithm uses cyclical coordinate descent in a path-wise fashion, as described in the paper linked to via the URL below."
+   "license_file":[
+    "/lib/R/share/licenses/GPL-2",
+    "/lib/R/share/licenses/GPL-2",
+    "/lib/R/share/licenses/GPL-2"
+   ],
+   "summary":"Extremely efficient procedures for fitting the entire lasso or elastic-net regularization path for linear regression, logistic and multinomial regression models, Poisson regression and the Cox model. Two recent additions are the multiple-response Gaussian, and the grouped multinomial regression. The algorithm uses cyclical coordinate descent in a path-wise fashion, as described in the papers listed in the URL below."
   },
   "build":{
    "merge_build_host":true,
-   "number":"2",
+   "number":"0",
    "rpaths":[
     "lib/R/lib/",
     "lib/",
@@ -155,7 +159,7 @@
   },
   "package":{
    "name":"r-glmnet",
-   "version":"2.0_18"
+   "version":"3.0_2"
   },
   "requirements":{
    "build":[
@@ -177,35 +181,41 @@
     "r-base",
     "r-matrix >=1.0_6",
     "r-foreach",
+    "r-shape",
     "r-base",
     "r-matrix >=1.0_6",
     "r-foreach",
+    "r-shape",
     "r-base",
     "r-matrix >=1.0_6",
-    "r-foreach"
+    "r-foreach",
+    "r-shape"
    ],
    "run":[
     "r-base",
     "gcc-libs",
     "r-matrix >=1.0_6",
     "r-foreach",
+    "r-shape",
     "r-base",
     "r-matrix >=1.0_6",
     "r-foreach",
+    "r-shape",
     "r-base",
     "r-matrix >=1.0_6",
-    "r-foreach"
+    "r-foreach",
+    "r-shape"
    ]
   },
   "source":{
-   "sha256":"e8dce9d7b8105f9cc18ba981d420de64a53b09abee219660d3612915d554256b",
+   "sha256":"f48956a75af7e2be045198873fc9eb637a549af1db83dcf76cac3774bfb3762c",
    "url":[
-    "https://cran.r-project.org/src/contrib/glmnet_2.0-18.tar.gz",
-    "https://cran.r-project.org/src/contrib/Archive/glmnet/glmnet_2.0-18.tar.gz",
-    "https://cran.r-project.org/src/contrib/glmnet_2.0-18.tar.gz",
-    "https://cran.r-project.org/src/contrib/Archive/glmnet/glmnet_2.0-18.tar.gz",
-    "https://cran.r-project.org/src/contrib/glmnet_2.0-18.tar.gz",
-    "https://cran.r-project.org/src/contrib/Archive/glmnet/glmnet_2.0-18.tar.gz"
+    "https://cran.r-project.org/src/contrib/glmnet_3.0-2.tar.gz",
+    "https://cran.r-project.org/src/contrib/Archive/glmnet/glmnet_3.0-2.tar.gz",
+    "https://cran.r-project.org/src/contrib/glmnet_3.0-2.tar.gz",
+    "https://cran.r-project.org/src/contrib/Archive/glmnet/glmnet_3.0-2.tar.gz",
+    "https://cran.r-project.org/src/contrib/glmnet_3.0-2.tar.gz",
+    "https://cran.r-project.org/src/contrib/Archive/glmnet/glmnet_3.0-2.tar.gz"
    ]
   },
   "test":{
@@ -219,7 +229,7 @@
  "name":"r-glmnet",
  "new_version":"3.0_2",
  "pinning_version":"2019.12.18",
- "raw_meta_yaml":"{% set version = '2.0-18' %}\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-glmnet\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  url:\n    - {{ cran_mirror }}/src/contrib/glmnet_{{ version }}.tar.gz\n    - {{ cran_mirror }}/src/contrib/Archive/glmnet/glmnet_{{ version }}.tar.gz\n  sha256: e8dce9d7b8105f9cc18ba981d420de64a53b09abee219660d3612915d554256b\n\nbuild:\n  merge_build_host: True  # [win]\n  number: 2\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - {{ compiler('c') }}              # [not win]\n    - {{ compiler('m2w64_c') }}        # [win]\n    - {{ compiler('fortran') }}        # [not win]\n    - {{ compiler('m2w64_fortran') }}  # [win]\n    - {{posix}}filesystem        # [win]\n    - {{posix}}make\n    - {{posix}}sed               # [win]\n    - {{posix}}coreutils         # [win]\n    - {{posix}}zip               # [win]\n  host:\n    - r-base\n    - r-matrix >=1.0_6\n    - r-foreach\n  run:\n    - r-base\n    - {{native}}gcc-libs         # [win]\n    - r-matrix >=1.0_6\n    - r-foreach\n\ntest:\n  commands:\n    - $R -e \"library('glmnet')\"           # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('glmnet')\\\"\"  # [win]\n\nabout:\n  home: http://www.jstatsoft.org/v33/i01/.\n  license: GPL-2\n  summary: Extremely efficient procedures for fitting the entire lasso or elastic-net regularization\n    path for linear regression, logistic and multinomial regression models, Poisson\n    regression and the Cox model. Two recent additions are the multiple-response Gaussian,\n    and the grouped multinomial regression. The algorithm uses cyclical coordinate descent\n    in a path-wise fashion, as described in the paper linked to via the URL below.\n  license_family: GPL2\n  license_file: '{{ environ[\"PREFIX\"] }}/lib/R/share/licenses/GPL-2'\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n\n# Package: glmnet\n# Type: Package\n# Title: Lasso and Elastic-Net Regularized Generalized Linear Models\n# Version: 2.0-18\n# Date: 2019-05-18\n# Author: Jerome Friedman [aut, cre], Trevor Hastie [aut, cre], Rob Tibshirani [aut, cre], Noah Simon [aut, ctb], Balasubramanian Narasimhan [aut, ctb], Junyang Qian [ctb]\n# Maintainer: Trevor Hastie <hastie@stanford.edu>\n# Depends: Matrix (>= 1.0-6), utils, foreach\n# Imports: methods\n# Suggests: survival, knitr, lars\n# Description: Extremely efficient procedures for fitting the entire lasso or elastic-net regularization path for linear regression, logistic and multinomial regression models, Poisson regression and the Cox model. Two recent additions are the multiple-response Gaussian, and the grouped multinomial regression. The algorithm uses cyclical coordinate descent in a path-wise fashion, as described in the paper linked to via the URL below.\n# License: GPL-2\n# VignetteBuilder: knitr\n# URL: http://www.jstatsoft.org/v33/i01/.\n# NeedsCompilation: yes\n# Packaged: 2019-05-19 00:31:37 UTC; hastie\n# Repository: CRAN\n# Date/Publication: 2019-05-20 05:10:12 UTC\n",
+ "raw_meta_yaml":"{% set version = '3.0-2' %}\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-glmnet\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  url:\n    - {{ cran_mirror }}/src/contrib/glmnet_{{ version }}.tar.gz\n    - {{ cran_mirror }}/src/contrib/Archive/glmnet/glmnet_{{ version }}.tar.gz\n  sha256: f48956a75af7e2be045198873fc9eb637a549af1db83dcf76cac3774bfb3762c\n\nbuild:\n  merge_build_host: True  # [win]\n  number: 0\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - {{ compiler('c') }}              # [not win]\n    - {{ compiler('m2w64_c') }}        # [win]\n    - {{ compiler('fortran') }}        # [not win]\n    - {{ compiler('m2w64_fortran') }}  # [win]\n    - {{posix}}filesystem        # [win]\n    - {{posix}}make\n    - {{posix}}sed               # [win]\n    - {{posix}}coreutils         # [win]\n    - {{posix}}zip               # [win]\n  host:\n    - r-base\n    - r-matrix >=1.0_6\n    - r-foreach\n    - r-shape\n  run:\n    - r-base\n    - {{native}}gcc-libs         # [win]\n    - r-matrix >=1.0_6\n    - r-foreach\n    - r-shape\n\ntest:\n  commands:\n    - $R -e \"library('glmnet')\"           # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('glmnet')\\\"\"  # [win]\n\nabout:\n  home: https://glmnet.stanford.edu, https://dx.doi.org/10.18637/jss.v033.i01, https://dx.doi.org/10.18637/jss.v039.i05\n  license: GPL-2\n  summary: Extremely efficient procedures for fitting the entire lasso or elastic-net regularization\n    path for linear regression, logistic and multinomial regression models, Poisson\n    regression and the Cox model. Two recent additions are the multiple-response Gaussian,\n    and the grouped multinomial regression. The algorithm uses cyclical coordinate descent\n    in a path-wise fashion, as described in the papers listed in the URL below.\n  license_family: GPL2\n  license_file:\n    - '{{ environ[\"PREFIX\"] }}/lib/R/share/licenses/GPL-2'\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n\n# Package: glmnet\n# Type: Package\n# Title: Lasso and Elastic-Net Regularized Generalized Linear Models\n# Version: 3.0-2\n# Date: 2019-12-09\n# Authors@R: c(person(\"Jerome\", \"Friedman\", role=c(\"aut\")), person(\"Trevor\", \"Hastie\", role=c(\"aut\", \"cre\"), email = \"hastie@stanford.edu\"), person(\"Rob\", \"Tibshirani\", role=c(\"aut\")), person(\"Balasubramanian\", \"Narasimhan\", role=c(\"aut\")), person(\"Noah\", \"Simon\", role=c(\"aut\")), person(\"Junyang\", \"Qian\", role=c(\"ctb\")))\n# Depends: R (>= 3.6.0), Matrix (>= 1.0-6)\n# Imports: methods, utils, foreach, shape\n# Suggests: survival, knitr, lars\n# Description: Extremely efficient procedures for fitting the entire lasso or elastic-net regularization path for linear regression, logistic and multinomial regression models, Poisson regression and the Cox model. Two recent additions are the multiple-response Gaussian, and the grouped multinomial regression. The algorithm uses cyclical coordinate descent in a path-wise fashion, as described in the papers listed in the URL below.\n# License: GPL-2\n# VignetteBuilder: knitr\n# Encoding: UTF-8\n# URL: https://glmnet.stanford.edu, https://dx.doi.org/10.18637/jss.v033.i01, https://dx.doi.org/10.18637/jss.v039.i05\n# RoxygenNote: 6.1.1\n# NeedsCompilation: yes\n# Packaged: 2019-12-11 01:55:13 UTC; hastie\n# Author: Jerome Friedman [aut], Trevor Hastie [aut, cre], Rob Tibshirani [aut], Balasubramanian Narasimhan [aut], Noah Simon [aut], Junyang Qian [ctb]\n# Maintainer: Trevor Hastie <hastie@stanford.edu>\n# Repository: CRAN\n# Date/Publication: 2019-12-11 17:00:02 UTC\n",
  "req":{
   "__set__":true,
   "elements":[
@@ -234,6 +244,7 @@
    "r-base",
    "r-foreach",
    "r-matrix",
+   "r-shape",
    "sed",
    "zip"
   ]
@@ -247,5 +258,5 @@
   "https://cran.r-project.org/src/contrib/glmnet_2.0-18.tar.gz",
   "https://cran.r-project.org/src/contrib/Archive/glmnet/glmnet_2.0-18.tar.gz"
  ],
- "version":"2.0_18"
+ "version":"3.0_2"
 }
