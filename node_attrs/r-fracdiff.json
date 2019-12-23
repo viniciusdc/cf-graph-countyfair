@@ -48,6 +48,23 @@
     "migrator_version",
     "name"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/356426303.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"Version",
+    "migrator_version":0,
+    "version":"1.5_0"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "version"
+   ]
   }
  ],
  "bad":false,
@@ -157,7 +174,7 @@
  },
  "name":"r-fracdiff",
  "new_version":"1.5_0",
- "pinning_version":"2019.07.15",
+ "pinning_version":"2019.12.18",
  "raw_meta_yaml":"{% set version = '1.4-2' %}\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-fracdiff\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  fn: fracdiff_{{ version }}.tar.gz\n  url:\n    - {{ cran_mirror }}/src/contrib/fracdiff_{{ version }}.tar.gz\n    - {{ cran_mirror }}/src/contrib/Archive/fracdiff/fracdiff_{{ version }}.tar.gz\n  sha256: 983781cedc2b4e3ba9fa020213957d5133ae9cd6710bc61d6225728e2f6e850e\n\nbuild:\n  merge_build_host: True  # [win]\n  number: 1003\n  skip: true  # [win32]\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - {{ compiler('c') }}        # [not win]\n    - {{ compiler('m2w64_c') }}        # [win]\n    - {{posix}}filesystem        # [win]\n    - {{posix}}make\n    - {{posix}}sed               # [win]\n    - {{posix}}coreutils         # [win]\n    - {{posix}}zip               # [win]\n  host:\n    - r-base\n  run:\n    - r-base\n    - {{native}}gcc-libs         # [win]\n\ntest:\n  commands:\n    - $R -e \"library('fracdiff')\"           # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('fracdiff')\\\"\"  # [win]\n\nabout:\n  home: https://CRAN.R-project.org/package=fracdiff\n  license: GPL (>= 2)\n  summary: Maximum likelihood estimation of the parameters of a fractionally differenced ARIMA(p,d,q)\n    model (Haslett and Raftery, Appl.Statistics, 1989).\n  license_family: GPL3\n  license_file: '{{ environ[\"PREFIX\"] }}/lib/R/share/licenses/GPL-3'\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n    - johanneskoester\n    - bgruening\n    - daler\n    - jdblischak\n    - cbrueffer\n    - dbast\n",
  "req":{
   "__set__":true,
@@ -173,7 +190,7 @@
    "zip"
   ]
  },
- "smithy_version":"3.4.1",
+ "smithy_version":"3.6.5",
  "url":[
   "https://cran.r-project.org/src/contrib/fracdiff_1.4-2.tar.gz",
   "https://cran.r-project.org/src/contrib/Archive/fracdiff/fracdiff_1.4-2.tar.gz",

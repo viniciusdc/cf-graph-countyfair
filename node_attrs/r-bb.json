@@ -33,6 +33,23 @@
     "migrator_version",
     "name"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/356430925.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"Version",
+    "migrator_version":0,
+    "version":"2019.10_1"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "version"
+   ]
   }
  ],
  "bad":false,
@@ -137,7 +154,7 @@
  },
  "name":"r-bb",
  "new_version":"2019.10_1",
- "pinning_version":"2019.07.19",
+ "pinning_version":"2019.12.18",
  "raw_meta_yaml":"{% set version = '2014.10-1' %}\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-bb\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  fn: BB_{{ version }}.tar.gz\n  url:\n    - {{ cran_mirror }}/src/contrib/BB_{{ version }}.tar.gz\n    - {{ cran_mirror }}/src/contrib/Archive/BB/BB_{{ version }}.tar.gz\n  sha256: a09f67e3a6ef36db660e4dc92832dfad4a7591ae9fadc2a265c8770ffb1e2fd2\n\nbuild:\n  noarch: generic\n  merge_build_host: True  # [win]\n  number: 1002\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - {{posix}}zip               # [win]\n  host:\n    - r-base\n    - r-quadprog\n  run:\n    - r-base\n    - r-quadprog\n\ntest:\n  commands:\n    - $R -e \"library('BB')\"           # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('BB')\\\"\"  # [win]\n\nabout:\n  home: http://www.jhsph.edu/agingandhealth/People/Faculty_personal_pages/Varadhan.html\n  license: GPL-3\n  summary: Barzilai-Borwein spectral methods for solving nonlinear system of equations, and for\n    optimizing nonlinear objective functions subject to simple constraints. A tutorial\n    style introduction to this package is available in a vignette on the CRAN download\n    page or, when the package is loaded in an R session, with vignette(\"BB\").\n  license_family: GPL3\n  license_file: '{{ environ[\"PREFIX\"] }}/lib/R/share/licenses/GPL-3'\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n    - johanneskoester\n    - bgruening\n    - daler\n    - jdblischak\n    - cbrueffer\n    - dbast\n",
  "req":{
   "__set__":true,
@@ -146,7 +163,7 @@
    "r-quadprog"
   ]
  },
- "smithy_version":"3.4.1",
+ "smithy_version":"3.6.5",
  "url":[
   "https://cran.r-project.org/src/contrib/BB_2014.10-1.tar.gz",
   "https://cran.r-project.org/src/contrib/Archive/BB/BB_2014.10-1.tar.gz",

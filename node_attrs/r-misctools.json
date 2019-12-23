@@ -33,6 +33,23 @@
     "migrator_version",
     "name"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/356430149.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"Version",
+    "migrator_version":0,
+    "version":"0.6_26"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "version"
+   ]
   }
  ],
  "bad":false,
@@ -113,7 +130,7 @@
  },
  "name":"r-misctools",
  "new_version":"0.6_26",
- "pinning_version":"2019.07.15",
+ "pinning_version":"2019.12.18",
  "raw_meta_yaml":"{% set version = '0.6-22' %}\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-misctools\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  fn: miscTools_{{ version }}.tar.gz\n  url:\n    - {{ cran_mirror }}/src/contrib/miscTools_{{ version }}.tar.gz\n    - {{ cran_mirror }}/src/contrib/Archive/miscTools/miscTools_{{ version }}.tar.gz\n  sha256: d00bb2602d1d31e9e1e13c8868cfe69d432bbe15afa8d4bbb83b3c9e0b9dcfea\n\nbuild:\n  noarch: generic\n  merge_build_host: True  # [win]\n  number: 1002\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - {{posix}}zip               # [win]\n  host:\n    - r-base\n  run:\n    - r-base\n\ntest:\n  commands:\n    - $R -e \"library('miscTools')\"           # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('miscTools')\\\"\"  # [win]\n\nabout:\n  home: http://www.micEcon.org\n  license: GPL (>= 2)\n  summary: Miscellaneous small tools and utilities. Many of them facilitate the work with matrices,\n    e.g. inserting rows or columns, creating symmetric matrices, or checking for semidefiniteness.\n    Other tools facilitate the work with regression models, e.g. extracting the standard\n    errors, obtaining the number of (estimated) parameters, or calculating R-squared\n    values.\n  license_family: GPL3\n  license_file: '{{ environ[\"PREFIX\"] }}/lib/R/share/licenses/GPL-3'\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n",
  "req":{
   "__set__":true,
@@ -121,7 +138,7 @@
    "r-base"
   ]
  },
- "smithy_version":"3.4.1",
+ "smithy_version":"3.6.5",
  "url":[
   "https://cran.r-project.org/src/contrib/miscTools_0.6-22.tar.gz",
   "https://cran.r-project.org/src/contrib/Archive/miscTools/miscTools_0.6-22.tar.gz",
