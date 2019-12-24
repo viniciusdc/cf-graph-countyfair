@@ -231,6 +231,23 @@
     "migrator_version",
     "version"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/356492918.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"Version",
+    "migrator_version":0,
+    "version":"1.4.1"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "version"
+   ]
   }
  ],
  "bad":false,
@@ -352,7 +369,7 @@
  },
  "name":"scipy",
  "new_version":"1.4.1",
- "pinning_version":"2019.12.02",
+ "pinning_version":"2019.12.18",
  "raw_meta_yaml":"{% set version = \"1.4.0\" %}\n{% set ver_major_minor = \".\".join(version.split(\".\")[:2]) %}\n\npackage:\n  name: scipy\n  version: {{ version }}\n\nsource:\n  url: https://github.com/scipy/scipy/archive/v{{ version }}.tar.gz\n  sha256: 3e3bdd41e726e35ef576e46374278e2193aa19fbf5905214355153e65c280e1f\n\nbuild:\n  number: 0\n  skip: true  # [win or py2k]\n\nrequirements:\n  build:\n    - {{ compiler('fortran') }}\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n  host:\n    - libblas\n    - libcblas\n    - liblapack\n    - python\n    - setuptools\n    - cython\n    - pybind11\n    - numpy\n    - pip\n  run:\n    - python\n    - {{ pin_compatible('numpy') }}\n\ntest:\n  requires:\n    - pytest\n    - pytest-xdist\n    - mpmath\n{% if ver_major_minor == \"1.4\" %}\n    - blas * netlib  # [ppc64le]\n{% endif %}\n\nabout:\n  home: http://www.scipy.org/\n  license: BSD-3-Clause\n  license_file: LICENSE.txt\n  summary: Scientific Library for Python\n  description: |\n    SciPy is a Python-based ecosystem of open-source software for mathematics,\n    science, and engineering.\n  doc_url: http://www.scipy.org/docs.html\n  dev_url: https://github.com/scipy/scipy\n\nextra:\n  recipe-maintainers:\n    - jakirkham\n    - msarahan\n    - rgommers\n    - ocefpaf\n    - beckermr\n",
  "req":{
   "__set__":true,
