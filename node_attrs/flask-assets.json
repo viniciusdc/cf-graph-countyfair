@@ -27,16 +27,15 @@
    "dev_url":"http://github.com/miracle2k/flask-assets",
    "doc_url":"https://flask-assets.readthedocs.io/",
    "home":"http://github.com/miracle2k/flask-assets",
-   "license":"BSD 2-Clause",
+   "license":"BSD-2-Clause",
    "license_family":"BSD",
    "license_file":"LICENSE",
-   "summary":"Asset management for Flask, to compress and merge CSS and Javascript files."
+   "summary":"Asset management for Flask, to compress and merge CSS and Javascript files"
   },
   "build":{
    "noarch":"python",
    "number":"0",
-   "preserve_egg_dir":true,
-   "script":"python setup.py install --single-version-externally-managed --record=record.txt"
+   "script":" -m pip install . -vv"
   },
   "extra":{
    "recipe-maintainers":[
@@ -47,41 +46,35 @@
   },
   "package":{
    "name":"flask-assets",
-   "version":"0.12"
+   "version":"2.0"
   },
   "requirements":{
    "build":[
     "python",
-    "setuptools",
+    "pip",
     "python",
-    "setuptools",
+    "pip",
     "python",
-    "setuptools"
+    "pip"
    ],
    "run":[
     "python",
     "setuptools",
     "flask >=0.8",
-    "webassets >=0.11.1",
+    "webassets >=2.0",
     "python",
     "setuptools",
     "flask >=0.8",
-    "webassets >=0.11.1",
+    "webassets >=2.0",
     "python",
     "setuptools",
     "flask >=0.8",
-    "webassets >=0.11.1"
+    "webassets >=2.0"
    ]
   },
   "source":{
-   "fn":"Flask-Assets-0.12.tar.gz",
-   "patches":[
-    "setup.patch",
-    "setup.patch",
-    "setup.patch"
-   ],
-   "sha256":"6031527b89fb3509d1581d932affa5a79dd348cfffb58d0aef99a43461d47847",
-   "url":"https://pypi.io/packages/source/F/Flask-Assets/Flask-Assets-0.12.tar.gz"
+   "sha256":"1dfdea35e40744d46aada72831f7613d67bf38e8b20ccaaa9e91fdc37aa3b8c2",
+   "url":"https://pypi.io/packages/source/F/Flask-Assets/Flask-Assets-2.0.tar.gz"
   },
   "test":{
    "imports":[
@@ -94,11 +87,12 @@
  "name":"flask-assets",
  "new_version":"2.0",
  "pinning_version":"2019.12.18",
- "raw_meta_yaml":"{%set name = \"Flask-Assets\" %}\n{%set version = \"0.12\" %}\n{%set compress_type = \"tar.gz\" %}\n{%set hash_type = \"sha256\" %}\n{%set hash_val = \"6031527b89fb3509d1581d932affa5a79dd348cfffb58d0aef99a43461d47847\" %}\n{%set build_num = \"0\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  fn: {{ name }}-{{ version }}.{{ compress_type }}\n  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.{{ compress_type }}\n  {{ hash_type }}: {{ hash_val }}\n  patches:\n      # patch fixes a label for utf-8 encoding - see https://github.com/miracle2k/flask-assets/pull/117\n      - setup.patch\n\nbuild:\n  preserve_egg_dir: True\n  noarch: python\n\n  number: {{ build_num }}\n  script: python setup.py install --single-version-externally-managed --record=record.txt\n\nrequirements:\n  build:\n    - python\n    - setuptools\n\n  run:\n    - python\n    - setuptools\n    - flask >=0.8\n    - webassets >=0.11.1\n\ntest:\n  imports:\n    - flask_assets\n\nabout:\n  home: http://github.com/miracle2k/flask-assets\n  license: BSD 2-Clause\n  license_file: LICENSE\n  license_family: BSD\n  summary: 'Asset management for Flask, to compress and merge CSS and Javascript files.'\n  doc_url: https://flask-assets.readthedocs.io/\n  dev_url: http://github.com/miracle2k/flask-assets\n\nextra:\n  recipe-maintainers:\n    - pmlandwehr\n",
+ "raw_meta_yaml":"{% set version = \"2.0\" %}\n\npackage:\n  name: flask-assets\n  version: {{ version }}\n\nsource:\n  url: https://pypi.io/packages/source/F/Flask-Assets/Flask-Assets-{{ version }}.tar.gz\n  sha256: 1dfdea35e40744d46aada72831f7613d67bf38e8b20ccaaa9e91fdc37aa3b8c2\n\nbuild:\n  number: 0\n  noarch: python\n  script: \"{{ PYTHON }} -m pip install . -vv\"\n\nrequirements:\n  build:\n    - python\n    - pip\n  run:\n    - python\n    - setuptools\n    - flask >=0.8\n    - webassets >={{ version}}\n\ntest:\n  imports:\n    - flask_assets\n\nabout:\n  home: http://github.com/miracle2k/flask-assets\n  license: BSD-2-Clause\n  license_file: LICENSE\n  license_family: BSD\n  summary: 'Asset management for Flask, to compress and merge CSS and Javascript files'\n  doc_url: https://flask-assets.readthedocs.io/\n  dev_url: http://github.com/miracle2k/flask-assets\n\nextra:\n  recipe-maintainers:\n    - pmlandwehr\n",
  "req":{
   "__set__":true,
   "elements":[
    "flask",
+   "pip",
    "python",
    "setuptools",
    "webassets"
@@ -106,5 +100,5 @@
  },
  "smithy_version":"3.6.5",
  "url":"https://pypi.io/packages/source/F/Flask-Assets/Flask-Assets-0.12.tar.gz",
- "version":"0.12"
+ "version":"2.0"
 }
