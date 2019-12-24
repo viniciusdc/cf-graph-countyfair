@@ -60,7 +60,7 @@
     "px = px:main",
     "px = px:main"
    ],
-   "number":"1",
+   "number":"0",
    "script":" -m pip install . -vv",
    "skip":true
   },
@@ -76,7 +76,7 @@
   },
   "package":{
    "name":"px-proxy",
-   "version":"0.4.0"
+   "version":"2018.11.20"
   },
   "requirements":{
    "host":[
@@ -89,30 +89,31 @@
    ],
    "run":[
     "python",
+    "keyring",
     "netaddr",
+    "ntlm-auth",
     "psutil",
     "pywin32",
     "winkerberos",
     "python",
+    "keyring",
     "netaddr",
+    "ntlm-auth",
     "psutil",
     "pywin32",
     "winkerberos",
     "python",
+    "keyring",
     "netaddr",
+    "ntlm-auth",
     "psutil",
     "pywin32",
     "winkerberos"
    ]
   },
   "source":{
-   "patches":[
-    "setup.patch",
-    "setup.patch",
-    "setup.patch"
-   ],
-   "sha256":"b6546e70483461357033b3918ee2b72f812c34025b030b37db2059eb68a4f459",
-   "url":"https://github.com/genotrance/px/archive/v0.4.0.tar.gz"
+   "sha256":"9c293b0247c9440db5ff0bfe6122eafa9551eb72ff4693b2be1b3525e9f2312f",
+   "url":"https://github.com/genotrance/px/archive/2018-11-20.tar.gz"
   },
   "test":{
    "imports":[
@@ -125,11 +126,13 @@
  "name":"px-proxy",
  "new_version":"2018-11-20",
  "pinning_version":"2019.12.18",
- "raw_meta_yaml":"{% set name = \"px-proxy\" %}\n{% set version = \"0.4.0\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  url: https://github.com/genotrance/{{ name[:2] }}/archive/v{{ version }}.tar.gz\n  sha256: b6546e70483461357033b3918ee2b72f812c34025b030b37db2059eb68a4f459\n  patches:\n    - setup.patch\n\nbuild:\n  number: 1\n  script: \"{{ PYTHON }} -m pip install . -vv\"\n  skip: True  # [not win]\n  entry_points:\n    - px = px:main\n\nrequirements:\n  host:\n    - python\n    - pip\n  run:\n    - python\n    - futures  # [py2k]\n    - netaddr\n    - psutil\n    - pywin32\n    - winkerberos\n\ntest:\n  imports:\n    - px\n\nabout:\n  home: https://github.com/genotrance/px\n  license: MIT\n  license_family: MIT\n  license_file: LICENSE.txt\n  summary: 'An HTTP proxy server to automatically authenticate through an NTLM proxy'\n  description: |\n    Px is a HTTP(s) proxy server that allows applications to authenticate through\n    an NTLM or Windows Kerberos authenticated proxy server, typically used in\n    corporate deployments, without having to deal with the actual handshake. It is\n    primarily designed to run on Windows systems and authenticates on behalf of the\n    application using the currently logged in Windows user account.\n\nextra:\n  recipe-maintainers:\n    - fcollonval\n    - genotrance\n",
+ "raw_meta_yaml":"{% set name = \"px-proxy\" %}\n{% set version = \"2018-11-20\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version|replace(\"-\", \".\") }}\n\nsource:\n  url: https://github.com/genotrance/{{ name[:2] }}/archive/{{ version }}.tar.gz\n  sha256: 9c293b0247c9440db5ff0bfe6122eafa9551eb72ff4693b2be1b3525e9f2312f\n\nbuild:\n  number: 0\n  script: \"{{ PYTHON }} -m pip install . -vv\"\n  skip: True  # [not win]\n  entry_points:\n    - px = px:main\n\nrequirements:\n  host:\n    - python\n    - pip\n  run:\n    - python\n    - futures  # [py2k]\n    - keyring\n    - netaddr\n    - ntlm-auth\n    - psutil\n    - pywin32\n    - winkerberos\n\ntest:\n  imports:\n    - px\n\nabout:\n  home: https://github.com/genotrance/px\n  license: MIT\n  license_family: MIT\n  license_file: LICENSE.txt\n  summary: 'An HTTP proxy server to automatically authenticate through an NTLM proxy'\n  description: |\n    Px is a HTTP(s) proxy server that allows applications to authenticate through\n    an NTLM or Windows Kerberos authenticated proxy server, typically used in\n    corporate deployments, without having to deal with the actual handshake. It is\n    primarily designed to run on Windows systems and authenticates on behalf of the\n    application using the currently logged in Windows user account.\n\nextra:\n  recipe-maintainers:\n    - fcollonval\n    - genotrance\n",
  "req":{
   "__set__":true,
   "elements":[
+   "keyring",
    "netaddr",
+   "ntlm-auth",
    "pip",
    "psutil",
    "python",
@@ -140,5 +143,5 @@
  "smithy_version":"3.6.5",
  "time":1568135311.7006843,
  "url":"https://github.com/genotrance/px/archive/v0.4.0.tar.gz",
- "version":"0.4.0"
+ "version":"2018.11.20"
 }
