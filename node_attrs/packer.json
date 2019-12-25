@@ -1,0 +1,87 @@
+{
+ "bad":"Upstream: Error getting upstream version",
+ "conda-forge.yml":{},
+ "feedstock_name":"packer",
+ "hash_type":"sha256",
+ "meta_yaml":{
+  "about":{
+   "description":"Terraform is a tool for building, changing, and versioning infrastructure safely and\nefficiently. Terraform can manage existing and popular service providers as well as custom in-house\nsolutions.\n",
+   "dev_url":"https://github.com/hashicorp/terraform.git",
+   "doc_url":"https://www.terraform.io/docs/index.html",
+   "home":"https://www.packer.io",
+   "license":"MPL 2.0",
+   "summary":"Terraform is a tool for building, changing, and combining infrastructure safely and efficiently."
+  },
+  "build":{
+   "number":"0",
+   "script":[
+    "pushd src/github.com/hashicorp/packer",
+    "go install -v .",
+    "pushd src/github.com/hashicorp/packer",
+    "go install -v .",
+    "pushd src/github.com/hashicorp/packer",
+    "go install -v ."
+   ]
+  },
+  "extra":{
+   "recipe-maintainers":[
+    "sodre",
+    "mariusvniekerk",
+    "sodre",
+    "mariusvniekerk",
+    "sodre",
+    "mariusvniekerk"
+   ]
+  },
+  "package":{
+   "name":"packer",
+   "version":"1.5.1"
+  },
+  "requirements":{
+   "build":[
+    "go_compiler_stub",
+    "m2w64_c_compiler_stub",
+    "go_compiler_stub",
+    "c_compiler_stub",
+    "go_compiler_stub",
+    "c_compiler_stub"
+   ],
+   "run_constrained":null
+  },
+  "source":[
+   {
+    "folder":"src/github.com/hashicorp/packer",
+    "sha256":"97ba9fd9615259cfab3601daa81d81bba88ac1107633dc7f83e3ada06306fc5f",
+    "url":"https://github.com/hashicorp/packer/archive/v1.5.1.tar.gz"
+   },
+   {
+    "folder":"src/github.com/hashicorp/packer",
+    "sha256":"97ba9fd9615259cfab3601daa81d81bba88ac1107633dc7f83e3ada06306fc5f",
+    "url":"https://github.com/hashicorp/packer/archive/v1.5.1.tar.gz"
+   },
+   {
+    "folder":"src/github.com/hashicorp/packer",
+    "sha256":"97ba9fd9615259cfab3601daa81d81bba88ac1107633dc7f83e3ada06306fc5f",
+    "url":"https://github.com/hashicorp/packer/archive/v1.5.1.tar.gz"
+   }
+  ],
+  "test":{
+   "commands":[
+    "bash -c \"packer -v\""
+   ],
+   "requires":null
+  }
+ },
+ "name":"packer",
+ "raw_meta_yaml":"{% set goname = \"github.com/hashicorp/packer\" %}\n{% set version = \"1.5.1\" %}\n\n{% set name = goname.split('/')[-1] %}\n{% set pkg_src = ('src/'+goname).replace(\"/\",os.sep) %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  # We must use git here beause the program looks\n  # for the git sha&tag to determine its version\n  - folder: {{ pkg_src }}\n    url: https://{{ goname }}/archive/v{{ version }}.tar.gz\n    sha256: 97ba9fd9615259cfab3601daa81d81bba88ac1107633dc7f83e3ada06306fc5f\n\nbuild:\n  number: 0\n  script:\n    - pushd {{ pkg_src }}\n    - go install -v .\n\nrequirements:\n  build:\n    - {{ compiler('go') }}\n    - {{ compiler('c') }}              # [unix]\n    - {{ compiler('m2w64_c') }}        # [win]\n  run_constrained:\n    - __osx >={{ MACOSX_DEPLOYMENT_TARGET|default(\"10.9\") }}  # [osx]\n\ntest:\n  requires:\n    - m2-bash  # [win]\n  commands:\n    - bash -c \"{{ name|lower }} -v\"  # [unix]\n\nabout:\n  home: https://www.packer.io\n  license: MPL 2.0\n  summary: Terraform is a tool for building, changing, and combining infrastructure safely and efficiently. \n  description: |\n    Terraform is a tool for building, changing, and versioning infrastructure safely and \n    efficiently. Terraform can manage existing and popular service providers as well as custom in-house \n    solutions.\n  doc_url: https://www.terraform.io/docs/index.html\n  dev_url: https://github.com/hashicorp/terraform.git\n\nextra:\n  recipe-maintainers:\n    - sodre\n    - mariusvniekerk\n",
+ "req":{
+  "__set__":true,
+  "elements":[
+   "c_compiler_stub",
+   "go_compiler_stub",
+   "m2w64_c_compiler_stub"
+  ]
+ },
+ "url":"https://github.com/hashicorp/packer/archive/v1.5.1.tar.gz",
+ "version":"1.5.1"
+}
