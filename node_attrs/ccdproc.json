@@ -99,7 +99,7 @@
   "build":{
    "noarch":"python",
    "number":"0",
-   "script":"python -m pip install --no-deps --ignore-installed ."
+   "script":"-m pip install . --no-deps -vv"
   },
   "extra":{
    "recipe-maintainers":[
@@ -119,19 +119,22 @@
   },
   "package":{
    "name":"ccdproc",
-   "version":"2.0.1"
+   "version":"2.1.0"
   },
   "requirements":{
    "host":[
     "pip",
     "python >=3",
     "setuptools",
+    "setuptools_scm",
     "pip",
     "python >=3",
     "setuptools",
+    "setuptools_scm",
     "pip",
     "python >=3",
-    "setuptools"
+    "setuptools",
+    "setuptools_scm"
    ],
    "run":[
     "python >=3",
@@ -158,13 +161,8 @@
    ]
   },
   "source":{
-   "patches":[
-    "setup.cfg.patch",
-    "setup.cfg.patch",
-    "setup.cfg.patch"
-   ],
-   "sha256":"f1ba228d048969d18b6dbd4b81c36029e168101439d16a44ecc8435d5955527f",
-   "url":"https://pypi.io/packages/source/c/ccdproc/ccdproc-2.0.1.tar.gz"
+   "sha256":"7e4b157c57bef39bcf87b4ca60f47f25ffb148d5df53f8b0664a121df0c95a36",
+   "url":"https://pypi.io/packages/source/c/ccdproc/ccdproc-2.1.0.tar.gz"
   },
   "test":{
    "imports":[
@@ -180,7 +178,7 @@
  "name":"ccdproc",
  "new_version":"2.1.0",
  "pinning_version":"2019.12.18",
- "raw_meta_yaml":"{% set name = \"ccdproc\" %}\n{% set version = \"2.0.1\" %}\n\npackage:\n  version: '{{ version }}'\n  name: '{{ name|lower }}'\n\nsource:\n  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz\n  sha256: \"f1ba228d048969d18b6dbd4b81c36029e168101439d16a44ecc8435d5955527f\"\n  patches:\n    - setup.cfg.patch\n\nbuild:\n  noarch: python\n  number: 0\n  script: python -m pip install --no-deps --ignore-installed .\n\nrequirements:\n  host:\n    - pip\n    - python >=3\n    - setuptools\n  run:\n    - python >=3\n    - astropy >=2.0\n    - numpy\n    - scipy\n    - astroscrappy >=1.0.5\n    - reproject >=0.5\n    - scikit-image\n\ntest:\n  imports:\n    - ccdproc\n    - ccdproc.utils\n\nabout:\n  home: http://ccdproc.readthedocs.io/\n  license: BSD 3-clause\n  license_family: BSD\n  license_file: LICENSE.rst\n  summary: Astropy affiliated package for reducing optical/IR CCD data\n  description: |\n    Ccdproc is is an affiliated package for the AstroPy package for basic data\n    reductions of CCD images. The ccdproc package provides many of the\n    necessary tools for processing of ccd images built on a framework to\n    provide error propagation and bad pixel tracking throughout the reduction\n    process.\n  doc_url: http://ccdproc.readthedocs.io/\n  dev_url: https://github.com/astropy/ccdproc\n\nextra:\n  recipe-maintainers:\n    - mwcraig\n    - crawfordsm\n    - MSeifert04\n    - bsipocz\n",
+ "raw_meta_yaml":"{% set name = \"ccdproc\" %}\n{% set version = \"2.1.0\" %}\n\npackage:\n  version: '{{ version }}'\n  name: '{{ name|lower }}'\n\nsource:\n  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz\n  sha256: 7e4b157c57bef39bcf87b4ca60f47f25ffb148d5df53f8b0664a121df0c95a36\n\nbuild:\n  noarch: python\n  number: 0\n  script: {{ PYTHON }} -m pip install . --no-deps -vv\n\nrequirements:\n  host:\n    - pip\n    - python >=3\n    - setuptools\n    - setuptools_scm\n  run:\n    - python >=3\n    - astropy >=2.0\n    - numpy\n    - scipy\n    - astroscrappy >=1.0.5\n    - reproject >=0.5\n    - scikit-image\n\ntest:\n  imports:\n    - ccdproc\n    - ccdproc.utils\n\nabout:\n  home: http://ccdproc.readthedocs.io/\n  license: BSD 3-clause\n  license_family: BSD\n  license_file: LICENSE.rst\n  summary: Astropy affiliated package for reducing optical/IR CCD data\n  description: |\n    Ccdproc is is an affiliated package for the AstroPy package for basic data\n    reductions of CCD images. The ccdproc package provides many of the\n    necessary tools for processing of ccd images built on a framework to\n    provide error propagation and bad pixel tracking throughout the reduction\n    process.\n  doc_url: http://ccdproc.readthedocs.io/\n  dev_url: https://github.com/astropy/ccdproc\n\nextra:\n  recipe-maintainers:\n    - mwcraig\n    - crawfordsm\n    - MSeifert04\n    - bsipocz\n",
  "req":{
   "__set__":true,
   "elements":[
@@ -192,10 +190,11 @@
    "reproject",
    "scikit-image",
    "scipy",
-   "setuptools"
+   "setuptools",
+   "setuptools_scm"
   ]
  },
  "smithy_version":"3.6.5",
  "url":"https://pypi.io/packages/source/c/ccdproc/ccdproc-2.0.1.tar.gz",
- "version":"2.0.1"
+ "version":"2.1.0"
 }
