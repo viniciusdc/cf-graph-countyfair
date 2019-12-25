@@ -427,7 +427,7 @@
   },
   "package":{
    "name":"hub",
-   "version":"2.12.3"
+   "version":"2.12.8"
   },
   "requirements":{
    "build":[
@@ -441,25 +441,25 @@
   "source":[
    {
     "folder":"src/github.com/github/hub",
-    "sha256":"197242fea670353688c541d2e4584b449f18c354a01d89bf1667ea33c0071ddc",
-    "url":"https://github.com/github/hub/archive/v2.12.3.tar.gz"
+    "sha256":"72d09397967c85b118fc1be25dc0fc54353f4dea09f804687a287949c7de7ebe",
+    "url":"https://github.com/github/hub/archive/v2.12.8.tar.gz"
    },
    {
     "folder":"src/github.com/github/hub",
-    "sha256":"197242fea670353688c541d2e4584b449f18c354a01d89bf1667ea33c0071ddc",
-    "url":"https://github.com/github/hub/archive/v2.12.3.tar.gz"
+    "sha256":"72d09397967c85b118fc1be25dc0fc54353f4dea09f804687a287949c7de7ebe",
+    "url":"https://github.com/github/hub/archive/v2.12.8.tar.gz"
    },
    {
     "folder":"src/github.com/github/hub",
-    "sha256":"197242fea670353688c541d2e4584b449f18c354a01d89bf1667ea33c0071ddc",
-    "url":"https://github.com/github/hub/archive/v2.12.3.tar.gz"
+    "sha256":"72d09397967c85b118fc1be25dc0fc54353f4dea09f804687a287949c7de7ebe",
+    "url":"https://github.com/github/hub/archive/v2.12.8.tar.gz"
    }
   ],
   "test":{
    "commands":[
-    "bash -euf -c \" hub version | grep -q 'hub version 2.12.3'; etc_conda=$PREFIX/etc/conda; for F in activate deactivate; do test -r $etc_conda/$F.d/hub.sh; test -f $etc_conda/$F.d/hub.ps1; done; test -r $LIBRARY_PREFIX/etc/bash_completion.d/hub.sh; \"",
-    "hub version | grep -q 'hub version 2.12.3'; etc_conda=$PREFIX/etc/conda; for F in activate deactivate; do test -r $etc_conda/$F.d/hub.sh; done; test -r $PREFIX/etc/bash_completion.d/hub.sh;",
-    "hub version | grep -q 'hub version 2.12.3'; etc_conda=$PREFIX/etc/conda; for F in activate deactivate; do test -r $etc_conda/$F.d/hub.sh; done; test -r $PREFIX/etc/bash_completion.d/hub.sh;"
+    "bash -euf -c \" hub version | grep -q 'hub version 2.12.8'; etc_conda=$PREFIX/etc/conda; for F in activate deactivate; do test -r $etc_conda/$F.d/hub.sh; test -f $etc_conda/$F.d/hub.ps1; done; test -r $LIBRARY_PREFIX/etc/bash_completion.d/hub.sh; \"",
+    "hub version | grep -q 'hub version 2.12.8'; etc_conda=$PREFIX/etc/conda; for F in activate deactivate; do test -r $etc_conda/$F.d/hub.sh; done; test -r $PREFIX/etc/bash_completion.d/hub.sh;",
+    "hub version | grep -q 'hub version 2.12.8'; etc_conda=$PREFIX/etc/conda; for F in activate deactivate; do test -r $etc_conda/$F.d/hub.sh; done; test -r $PREFIX/etc/bash_completion.d/hub.sh;"
    ],
    "requires":null
   }
@@ -467,7 +467,7 @@
  "name":"hub",
  "new_version":"2.13.0",
  "pinning_version":"2019.10.01",
- "raw_meta_yaml":"{% set goname = \"github.com/github/hub\" %}\n{% set version = \"2.12.3\" %}\n\n{% set name = goname.split('/')[-1] %}\n{% set pkg_src = ('src/'+goname).replace(\"/\",os.sep) %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  - folder: {{ pkg_src }}\n    url: https://{{ goname }}/archive/v{{ version }}.tar.gz\n    sha256: 197242fea670353688c541d2e4584b449f18c354a01d89bf1667ea33c0071ddc\n\nbuild:\n  number: 0\n  script:\n    - pushd {{ pkg_src }}\n    - go install -v .\n\n    # Note the semicolons\n    -\n      bash -euf -c '                                         # [ win ]\n        etc_conda=$PREFIX/etc/conda;\n        for F in activate deactivate; do\n          mkdir -p $etc_conda/$F.d;\n          cp -v $RECIPE_DIR/$F.sh $etc_conda/$F.d/hub.sh;\n          cp -v $RECIPE_DIR/$F.ps1 $etc_conda/$F.d/hub.ps1;  # [win]\n        done;\n        mkdir -p\n          $PREFIX/etc/bash_completion.d;                 # [unix]\n          $LIBRARY_PREFIX/etc/bash_completion.d;         # [win]\n        cp etc/hub.bash_completion.sh\n          $PREFIX/etc/bash_completion.d/hub.sh;          # [unix]\n          $LIBRARY_PREFIX/etc/bash_completion.d/hub.sh;  # [win]\n      '                                                  # [win]\n\nrequirements:\n  build:\n    - {{ compiler('go') }}\n    - m2-coreutils  # [ win ]\n    - m2-bash  # [win]\n\ntest:\n  requires:\n    - m2-grep  # [ win ]\n  commands:\n    -\n      bash -euf -c \"                                           # [win]\n        hub version\n          | grep -q '{{ name }} version {{ version }}';\n        etc_conda=$PREFIX/etc/conda;\n        for F in activate deactivate; do\n          test -r $etc_conda/$F.d/hub.sh;\n          test -f $etc_conda/$F.d/hub.ps1;                     # [win]\n        done;\n        test -r $PREFIX/etc/bash_completion.d/hub.sh;          # [unix]\n        test -r $LIBRARY_PREFIX/etc/bash_completion.d/hub.sh;  # [win]\n      \"                                                        # [win]\n\nabout:\n  home: https://github.com/github/hub\n  license: MIT\n  license_family: MIT\n  license_file: src/github.com/github/hub/LICENSE\n  summary: 'git + hub = github'\n\n  description: |\n    hub is a command line tool that wraps git in order to extend it with\n    extra features and commands that make working with GitHub easier.\n  dev_url: https://github.com/github/hub\n\nextra:\n  recipe-maintainers:\n    - sodre\n    - asford\n",
+ "raw_meta_yaml":"{% set goname = \"github.com/github/hub\" %}\n{% set version = \"2.12.8\" %}\n\n{% set name = goname.split('/')[-1] %}\n{% set pkg_src = ('src/'+goname).replace(\"/\",os.sep) %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  - folder: {{ pkg_src }}\n    url: https://{{ goname }}/archive/v{{ version }}.tar.gz\n    sha256: 72d09397967c85b118fc1be25dc0fc54353f4dea09f804687a287949c7de7ebe\n\nbuild:\n  number: 0\n  script:\n    - pushd {{ pkg_src }}\n    - go install -v .\n\n    # Note the semicolons\n    -\n      bash -euf -c '                                         # [ win ]\n        etc_conda=$PREFIX/etc/conda;\n        for F in activate deactivate; do\n          mkdir -p $etc_conda/$F.d;\n          cp -v $RECIPE_DIR/$F.sh $etc_conda/$F.d/hub.sh;\n          cp -v $RECIPE_DIR/$F.ps1 $etc_conda/$F.d/hub.ps1;  # [win]\n        done;\n        mkdir -p\n          $PREFIX/etc/bash_completion.d;                 # [unix]\n          $LIBRARY_PREFIX/etc/bash_completion.d;         # [win]\n        cp etc/hub.bash_completion.sh\n          $PREFIX/etc/bash_completion.d/hub.sh;          # [unix]\n          $LIBRARY_PREFIX/etc/bash_completion.d/hub.sh;  # [win]\n      '                                                  # [win]\n\nrequirements:\n  build:\n    - {{ compiler('go') }}\n    - m2-coreutils  # [ win ]\n    - m2-bash  # [win]\n\ntest:\n  requires:\n    - m2-grep  # [ win ]\n  commands:\n    -\n      bash -euf -c \"                                           # [win]\n        hub version\n          | grep -q '{{ name }} version {{ version }}';\n        etc_conda=$PREFIX/etc/conda;\n        for F in activate deactivate; do\n          test -r $etc_conda/$F.d/hub.sh;\n          test -f $etc_conda/$F.d/hub.ps1;                     # [win]\n        done;\n        test -r $PREFIX/etc/bash_completion.d/hub.sh;          # [unix]\n        test -r $LIBRARY_PREFIX/etc/bash_completion.d/hub.sh;  # [win]\n      \"                                                        # [win]\n\nabout:\n  home: https://github.com/github/hub\n  license: MIT\n  license_family: MIT\n  license_file: src/github.com/github/hub/LICENSE\n  summary: 'git + hub = github'\n\n  description: |\n    hub is a command line tool that wraps git in order to extend it with\n    extra features and commands that make working with GitHub easier.\n  dev_url: https://github.com/github/hub\n\nextra:\n  recipe-maintainers:\n    - sodre\n    - asford\n",
  "req":{
   "__set__":true,
   "elements":[
@@ -478,5 +478,5 @@
  },
  "smithy_version":"3.5.0",
  "url":"https://github.com/github/hub/archive/v2.12.3.tar.gz",
- "version":"2.12.3"
+ "version":"2.12.8"
 }
