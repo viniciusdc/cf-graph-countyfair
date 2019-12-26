@@ -188,6 +188,23 @@
     "migrator_version",
     "version"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/356992634.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"Version",
+    "migrator_version":0,
+    "version":"0.19.2"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "version"
+   ]
   }
  ],
  "bad":false,
@@ -287,7 +304,7 @@
   }
  },
  "name":"biotite",
- "new_version":"0.19.1",
+ "new_version":"0.19.2",
  "pinning_version":"2019.12.18",
  "raw_meta_yaml":"{% set version = \"0.19.0\" %}\n{% set number = \"2\" %}\n{% set sha256 = \"cebaf71e396090826ad4d07b3b73f1016387d82c3343264110f5a36fcebe1efe\" %}\n\npackage:\n  name: biotite\n  version: {{ version }}\n\nsource:\n  url: https://github.com/biotite-dev/biotite/archive/v{{ version }}.tar.gz\n  sha256: {{ sha256 }}\n\nbuild:\n  number: {{ number }}\n  script: \"{{ PYTHON }} -m pip install . --no-deps --ignore-installed -vv\"\n  skip: True  # [py < 36]\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n  host:\n    - python\n    - pip\n    - setuptools >=30.0\n    - wheel >=0.30\n    - cython >=0.28\n    - numpy =1.13  # [py < 37]\n    - numpy =1.14  # [py >= 37]\n  run:\n    - python\n    - requests >=2.12\n    - {{ pin_compatible('numpy') }}\n    - msgpack-python\n\ntest:\n  source_files:\n    - tests/\n  requires:\n    - pytest\n  commands:\n    - pytest --ignore=tests//application --ignore=tests//database --ignore=tests//test_doctest.py tests\n\nabout:\n  home: https://www.biotite-python.org/\n  license: BSD 3-Clause\n  license_family: BSD\n  license_file: LICENSE.rst\n  summary: \"A comprehensive library for computational molecular biology\"\n  doc_url: https://www.biotite-python.org/\n  dev_url: https://github.com/biotite-dev/biotite\n\nextra:\n  recipe-maintainers:\n    - padix-key\n",
  "req":{
