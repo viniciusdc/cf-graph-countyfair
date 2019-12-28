@@ -137,6 +137,23 @@
     "migrator_version",
     "version"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/357515653.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"Version",
+    "migrator_version":0,
+    "version":"3.18.0"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "version"
+   ]
   }
  ],
  "bad":false,
@@ -248,7 +265,7 @@
   }
  },
  "name":"labelme",
- "new_version":"3.17.0",
+ "new_version":"3.18.0",
  "pinning_version":"2019.12.18",
  "raw_meta_yaml":"{% set name = \"labelme\" %}\n{% set version = \"3.16.7\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz\n  sha256: 2a4ac2387623fb34b7d5fbef411d20a5a774542efbee3a8004bffc44ec91c2da\n  patches:\n    - disable_automatic_install_of_qt.patch\n\nbuild:\n  number: 0\n  # too lazy to build python 2.7 for an interactive tool\n  skip: true  # [py==27]\n  script: \"{{ PYTHON }} -m pip install . -vv\"\n  entry_points:\n    - labelme = labelme.main:main\n    - labelme_draw_json = labelme.cli.draw_json:main\n    - labelme_draw_label_png = labelme.cli.draw_label_png:main\n    - labelme_json_to_dataset = labelme.cli.json_to_dataset:main\n  osx_is_app: True\n\nrequirements:\n  host:\n    - python\n    - pip\n  run:\n    - python\n    - matplotlib\n    - numpy\n    - pillow\n    - pyyaml\n    - termcolor\n    - qtpy\n\ntest:\n  requires:\n    - pyqt\n  commands:\n    - labelme --help\n\napp:\n  entry: labelme\n  icon: {{ SRC_DIR }}/labelme/icons/icon.png\n  summary: 'Image Polygonal Annotation with Python'\n  type: desk\n\nabout:\n  home: https://github.com/wkentaro/labelme\n  license: GPL-3.0\n  license_family: GPL\n  license_file: LICENSE\n  summary: 'Image Polygonal Annotation with Python (polygon, rectangle, circle, line, point and image-level flag annotation).'\n  description: |\n    Labelme is a graphical image annotation tool inspired by http://labelme.csail.mit.edu.\n    It is written in Python and uses Qt for its graphical interface.\n\nextra:\n  recipe-maintainers:\n    - hmaarrfk\n",
  "req":{
