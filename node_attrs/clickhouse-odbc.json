@@ -73,7 +73,7 @@
    "summary":"ODBC driver for ClickHouse"
   },
   "build":{
-   "number":"2002",
+   "number":"2003",
    "skip":true
   },
   "extra":{
@@ -154,7 +154,7 @@
  "name":"clickhouse-odbc",
  "new_version":"2018-09-03",
  "pinning_version":"2019.12.18",
- "raw_meta_yaml":"{% set name = \"clickhouse-odbc\" %}\n{% set version = \"1.0.0.20181017\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  url: https://github.com/yandex/{{ name }}/archive/v{{ version }}.tar.gz\n  sha256: 73a5ef6ec8ab9b09b45965cec387daed06a4999a84e7f234bb03a78f6accd346\n  patches:\n    # https://github.com/yandex/clickhouse-odbc/pull/150\n    - cac38224ae9ac657c80f56410e701b1509d03333.patch\n    # This patch is already merged in master\n    - 72c8e9acd1a28c501b2bcb2306b8f242b5b73fb6.patch\n\nbuild:\n  number: 2002\n  skip: true  # [win]\n  skip: true  # [c_compiler == \"toolchain_c\" and linux]\n\nrequirements:\n  build:\n    - cmake\n    - ninja\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n  host:\n    - openssl\n    - poco\n    - libtool\n    - unixodbc\n  run:\n    - openssl\n    - poco\n    - unixodbc\n\ntest:\n  commands:\n    - test -f $PREFIX/lib/odbc/libclickhouseodbc${SHLIB_EXT}  # [unix]\n    - test -f $PREFIX/lib/odbc/libclickhouseodbcw${SHLIB_EXT}  # [unix]\n    - conda inspect linkages -p $PREFIX $PKG_NAME  # [not win]\n    - conda inspect objects -p $PREFIX $PKG_NAME  # [osx]\n\nabout:\n  home: https://github.com/yandex/clickhouse-odbc\n  license: Apache 2.0\n  license_family: Apache\n  license_file: LICENSE\n  summary: 'ODBC driver for ClickHouse'\n  doc_url: http://clickhouse.yandex/\n  dev_url: https://github.com/yandex/clickhouse-odbc\n\nextra:\n  recipe-maintainers:\n    - kszucs\n    - xhochy\n",
+ "raw_meta_yaml":"{% set name = \"clickhouse-odbc\" %}\n{% set version = \"1.0.0.20181017\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  url: https://github.com/yandex/{{ name }}/archive/v{{ version }}.tar.gz\n  sha256: 73a5ef6ec8ab9b09b45965cec387daed06a4999a84e7f234bb03a78f6accd346\n  patches:\n    # https://github.com/yandex/clickhouse-odbc/pull/150\n    - cac38224ae9ac657c80f56410e701b1509d03333.patch\n    # This patch is already merged in master\n    - 72c8e9acd1a28c501b2bcb2306b8f242b5b73fb6.patch\n\nbuild:\n  number: 2003\n  skip: true  # [win]\n\nrequirements:\n  build:\n    - cmake\n    - ninja\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n  host:\n    - openssl\n    - poco\n    - libtool\n    - unixodbc\n  run:\n    - openssl\n    - poco\n    - unixodbc\n\ntest:\n  commands:\n    - test -f $PREFIX/lib/odbc/libclickhouseodbc${SHLIB_EXT}  # [unix]\n    - test -f $PREFIX/lib/odbc/libclickhouseodbcw${SHLIB_EXT}  # [unix]\n    - conda inspect linkages -p $PREFIX $PKG_NAME  # [not win]\n    - conda inspect objects -p $PREFIX $PKG_NAME  # [osx]\n\nabout:\n  home: https://github.com/yandex/clickhouse-odbc\n  license: Apache 2.0\n  license_family: Apache\n  license_file: LICENSE\n  summary: 'ODBC driver for ClickHouse'\n  doc_url: http://clickhouse.yandex/\n  dev_url: https://github.com/yandex/clickhouse-odbc\n\nextra:\n  recipe-maintainers:\n    - kszucs\n    - xhochy\n",
  "req":{
   "__set__":true,
   "elements":[
