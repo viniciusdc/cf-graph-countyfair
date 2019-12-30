@@ -510,7 +510,7 @@
    "summary":"PETSc: Portable, Extensible Toolkit for Scientific Computation"
   },
   "build":{
-   "number":"2",
+   "number":"3",
    "run_exports":[
     "subpackage_stub",
     "subpackage_stub",
@@ -571,6 +571,7 @@
     "ptscotch",
     "scalapack",
     "superlu",
+    "superlu_dist",
     "scotch",
     "mumps-mpi",
     "suitesparse",
@@ -585,6 +586,7 @@
     "ptscotch",
     "scalapack",
     "superlu",
+    "superlu_dist",
     "scotch",
     "mumps-mpi",
     "suitesparse",
@@ -599,6 +601,7 @@
     "ptscotch",
     "scalapack",
     "superlu",
+    "superlu_dist",
     "scotch",
     "mumps-mpi",
     "suitesparse"
@@ -611,6 +614,7 @@
     "ptscotch",
     "scalapack",
     "superlu",
+    "superlu_dist",
     "scotch",
     "mumps-mpi",
     "suitesparse",
@@ -621,6 +625,7 @@
     "ptscotch",
     "scalapack",
     "superlu",
+    "superlu_dist",
     "scotch",
     "mumps-mpi",
     "suitesparse",
@@ -631,6 +636,7 @@
     "ptscotch",
     "scalapack",
     "superlu",
+    "superlu_dist",
     "scotch",
     "mumps-mpi",
     "suitesparse"
@@ -691,7 +697,7 @@
  "name":"petsc",
  "new_version":"3.12.2",
  "pinning_version":"2019.12.02",
- "raw_meta_yaml":"{% set version = \"3.12.2\" %}\n{% set sha256 = \"c30bf8a005e850d1db137b7807a1b780286f70e650e5eba251061133ebd27f63\" %}\n\n{% set mpi = mpi or 'mpich' %}\n\npackage:\n  name: petsc\n  version: {{ version }}\n\nsource:\n  fn: petsc-{{ version }}.tar.gz\n  url: http://ftp.mcs.anl.gov/pub/petsc/release-snapshots/petsc-lite-{{ version }}.tar.gz\n  sha256: {{ sha256 }}\n  patches:\n    - ignore-not-invalid.patch\n    - no-cppflags-in-pkgconfig-cflags.patch\n\nbuild:\n  skip: true  # [win]\n  number: 2\n  run_exports:\n    - {{ pin_subpackage('petsc', max_pin='x.x')}}\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n    - {{ compiler('fortran') }}\n    - pkg-config\n    - python\n  host:\n    - libblas\n    - libcblas\n    - liblapack\n    - cmake\n    - {{ mpi }}\n    - hypre\n    - metis\n    - parmetis\n    - ptscotch\n    - scalapack\n    - superlu\n    - scotch\n    - mumps-mpi\n    - suitesparse\n  run:\n    - {{ mpi }}\n    - hypre\n    - metis\n    - parmetis\n    - ptscotch\n    - scalapack\n    - superlu\n    - scotch\n    - mumps-mpi\n    - suitesparse\n\ntest:\n  requires:\n    - pkg-config\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n    - {{ compiler('fortran') }}\n  files:\n    - tests/ex1.c\n    - tests/ex1f.F90\n    - tests/makefile\n  commands:\n    - pkg-config --validate PETSc\n    - pkg-config --cflags PETSc\n    - pkg-config --libs PETSc\n\nabout:\n  home: http://www.mcs.anl.gov/petsc/\n  summary: 'PETSc: Portable, Extensible Toolkit for Scientific Computation'\n  license: BSD 2-Clause\n  license_file: LICENSE\n  license_family: BSD\n\nextra:\n  recipe-maintainers:\n    - dalcinl\n    - minrk\n    - davidbrochart\n    - SylvainCorlay\n    - martinRenou\n",
+ "raw_meta_yaml":"{% set version = \"3.12.2\" %}\n{% set sha256 = \"c30bf8a005e850d1db137b7807a1b780286f70e650e5eba251061133ebd27f63\" %}\n\n{% set mpi = mpi or 'mpich' %}\n\npackage:\n  name: petsc\n  version: {{ version }}\n\nsource:\n  fn: petsc-{{ version }}.tar.gz\n  url: http://ftp.mcs.anl.gov/pub/petsc/release-snapshots/petsc-lite-{{ version }}.tar.gz\n  sha256: {{ sha256 }}\n  patches:\n    - ignore-not-invalid.patch\n    - no-cppflags-in-pkgconfig-cflags.patch\n\nbuild:\n  skip: true  # [win]\n  number: 3\n  run_exports:\n    - {{ pin_subpackage('petsc', max_pin='x.x')}}\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n    - {{ compiler('fortran') }}\n    - pkg-config\n    - python\n  host:\n    - libblas\n    - libcblas\n    - liblapack\n    - cmake\n    - {{ mpi }}\n    - hypre\n    - metis\n    - parmetis\n    - ptscotch\n    - scalapack\n    - superlu\n{% if mpi == \"mpich\" %}\n    - superlu_dist\n{% endif %}\n    - scotch\n    - mumps-mpi\n    - suitesparse\n  run:\n    - {{ mpi }}\n    - hypre\n    - metis\n    - parmetis\n    - ptscotch\n    - scalapack\n    - superlu\n{% if mpi == \"mpich\" %}\n    - superlu_dist\n{% endif %}\n    - scotch\n    - mumps-mpi\n    - suitesparse\n\ntest:\n  requires:\n    - pkg-config\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n    - {{ compiler('fortran') }}\n  files:\n    - tests/ex1.c\n    - tests/ex1f.F90\n    - tests/makefile\n  commands:\n    - pkg-config --validate PETSc\n    - pkg-config --cflags PETSc\n    - pkg-config --libs PETSc\n\nabout:\n  home: http://www.mcs.anl.gov/petsc/\n  summary: 'PETSc: Portable, Extensible Toolkit for Scientific Computation'\n  license: BSD 2-Clause\n  license_file: LICENSE\n  license_family: BSD\n\nextra:\n  recipe-maintainers:\n    - dalcinl\n    - minrk\n    - davidbrochart\n    - SylvainCorlay\n    - martinRenou\n",
  "req":{
   "__set__":true,
   "elements":[
@@ -713,7 +719,8 @@
    "scalapack",
    "scotch",
    "suitesparse",
-   "superlu"
+   "superlu",
+   "superlu_dist"
   ]
  },
  "smithy_version":"3.6.3",
