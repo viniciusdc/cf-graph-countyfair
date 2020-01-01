@@ -68,8 +68,8 @@
    "summary":"Spyder plugin that integrates the Python memory profiler."
   },
   "build":{
-   "number":"0",
-   "script":"python setup.py install --single-version-externally-managed --record=record.txt"
+   "number":"1",
+   "script":" -m pip install . --no-deps -vv"
   },
   "extra":{
    "recipe-maintainers":[
@@ -89,24 +89,24 @@
    "version":"0.2.0"
   },
   "requirements":{
-   "build":[
+   "host":[
     "python",
-    "setuptools",
+    "pip",
     "python",
-    "setuptools",
+    "pip",
     "python",
-    "setuptools"
+    "pip"
    ],
    "run":[
     "memory_profiler",
     "python",
-    "spyder >=4",
+    "spyder >=4,<5",
     "memory_profiler",
     "python",
-    "spyder >=4",
+    "spyder >=4,<5",
     "memory_profiler",
     "python",
-    "spyder >=4"
+    "spyder >=4,<5"
    ]
   },
   "source":{
@@ -124,13 +124,13 @@
  "name":"spyder-memory-profiler",
  "new_version":"0.2.0",
  "pinning_version":"2019.12.02",
- "raw_meta_yaml":"{% set name = \"spyder-memory-profiler\" %}\n{% set version = \"0.2.0\" %}\n{% set hash_type = \"sha256\" %}\n{% set hash = \"d2fcb369c84e09b247514fc2ce608666124a04c2e05a71f7466bb26ca2c1169c\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  fn: {{ name }}-{{ version }}.tar.gz\n  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name.replace('-', '_') }}-{{ version }}.tar.gz\n  {{ hash_type }}: {{ hash }}\n\nbuild:\n  number: 0\n  script: python setup.py install --single-version-externally-managed --record=record.txt\n\nrequirements:\n  build:\n    - python\n    - setuptools\n\n  run:\n    - memory_profiler\n    - python\n    - spyder >=4\n\ntest:\n  # On Linux, importing requires an X server\n  files:\n    - test_import.py  # [linux]\n  imports:\n    - spyder_memory_profiler  # [not linux]\n\nabout:\n  home: https://github.com/spyder-ide/spyder-memory-profiler\n  license: MIT\n  license_family: MIT\n  license_file: LICENSE.txt\n  summary: Spyder plugin that integrates the Python memory profiler.\n  description: |\n    This is a plugin for the Spyder IDE that integrates the Python memory profiler.\n    It allows you to see the memory usage in every line.\n  dev_url: https://github.com/spyder-ide/spyder-memory-profiler\n\nextra:\n  recipe-maintainers:\n    - ccordoba12\n    - jitseniesen\n    - goanpeca\n",
+ "raw_meta_yaml":"{% set name = \"spyder-memory-profiler\" %}\n{% set version = \"0.2.0\" %}\n{% set hash_type = \"sha256\" %}\n{% set hash = \"d2fcb369c84e09b247514fc2ce608666124a04c2e05a71f7466bb26ca2c1169c\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  fn: {{ name }}-{{ version }}.tar.gz\n  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name.replace('-', '_') }}-{{ version }}.tar.gz\n  {{ hash_type }}: {{ hash }}\n\nbuild:\n  number: 1\n  script: \"{{ PYTHON }} -m pip install . --no-deps -vv\"\n\nrequirements:\n  host:\n    - python\n    - pip\n\n  run:\n    - memory_profiler\n    - python\n    - spyder >=4,<5\n\ntest:\n  # On Linux, importing requires an X server\n  files:\n    - test_import.py  # [linux]\n  imports:\n    - spyder_memory_profiler  # [not linux]\n\nabout:\n  home: https://github.com/spyder-ide/spyder-memory-profiler\n  license: MIT\n  license_family: MIT\n  license_file: LICENSE.txt\n  summary: Spyder plugin that integrates the Python memory profiler.\n  description: |\n    This is a plugin for the Spyder IDE that integrates the Python memory profiler.\n    It allows you to see the memory usage in every line.\n  dev_url: https://github.com/spyder-ide/spyder-memory-profiler\n\nextra:\n  recipe-maintainers:\n    - ccordoba12\n    - jitseniesen\n    - goanpeca\n",
  "req":{
   "__set__":true,
   "elements":[
    "memory_profiler",
+   "pip",
    "python",
-   "setuptools",
    "spyder"
   ]
  },
