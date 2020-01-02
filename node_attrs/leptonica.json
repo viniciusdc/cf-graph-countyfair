@@ -86,42 +86,26 @@
     "migrator_version",
     "name"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/358532191.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"Version",
+    "migrator_version":0,
+    "version":"1.79.0"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "version"
+   ]
   }
  ],
- "bad":{
-  "code":404,
-  "exception":"HTTP Error 404: Not Found",
-  "traceback":[
-   "Traceback (most recent call last):",
-   "  File \"/root/repo/cf-scripts/conda_forge_tick/auto_tick.xsh\", line 748, in main",
-   "    migrator_uid, pr_json = run(attrs=attrs, migrator=migrator, gh=gh,",
-   "  File \"/root/repo/cf-scripts/conda_forge_tick/auto_tick.xsh\", line 98, in run",
-   "    migrate_return = migrator.migrate(recipe_dir, attrs, **kwargs)",
-   "  File \"/root/repo/cf-scripts/conda_forge_tick/migrators.xsh\", line 473, in migrate",
-   "    new_patterns = self.get_hash_patterns('meta.yaml', urls, hash_type)",
-   "  File \"/root/repo/cf-scripts/conda_forge_tick/migrators.xsh\", line 389, in get_hash_patterns",
-   "    hash = hash_url(url, hash_type)",
-   "  File \"/opt/conda/envs/run_env/lib/python3.8/site-packages/rever/tools.xsh\", line 207, in hash_url",
-   "    for b in stream_url_progress(url, verb='Hashing', quiet=quiet):",
-   "  File \"/opt/conda/envs/run_env/lib/python3.8/site-packages/rever/tools.xsh\", line 179, in stream_url_progress",
-   "    with urllib.request.urlopen(url) as f:",
-   "  File \"/opt/conda/envs/run_env/lib/python3.8/urllib/request.py\", line 222, in urlopen",
-   "    return opener.open(url, data, timeout)",
-   "  File \"/opt/conda/envs/run_env/lib/python3.8/urllib/request.py\", line 531, in open",
-   "    response = meth(req, response)",
-   "  File \"/opt/conda/envs/run_env/lib/python3.8/urllib/request.py\", line 640, in http_response",
-   "    response = self.parent.error(",
-   "  File \"/opt/conda/envs/run_env/lib/python3.8/urllib/request.py\", line 569, in error",
-   "    return self._call_chain(*args)",
-   "  File \"/opt/conda/envs/run_env/lib/python3.8/urllib/request.py\", line 502, in _call_chain",
-   "    result = func(*args)",
-   "  File \"/opt/conda/envs/run_env/lib/python3.8/urllib/request.py\", line 649, in http_error_default",
-   "    raise HTTPError(req.full_url, code, msg, hdrs, fp)",
-   "urllib.error.HTTPError: HTTP Error 404: Not Found",
-   ""
-  ],
-  "url":"https://github.com/DanBloomberg/leptonica/releases/download/1.79.0/leptonica-1.79.0.tar.gz"
- },
+ "bad":false,
  "conda-forge.yml":{
   "compiler_stack":"comp7",
   "max_py_ver":"37",
@@ -225,7 +209,7 @@
  },
  "name":"leptonica",
  "new_version":"1.79.0",
- "pinning_version":"2019.11.26",
+ "pinning_version":"2019.12.18",
  "raw_meta_yaml":"{% set name = \"leptonica\" %}\n{% set version = \"1.78.0\" %}\n{% set sha256 = \"e2ed2e81e7a22ddf45d2c05f0bc8b9ae7450545d995bfe28517ba408d14a5a88\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  fn: {{ name }}-{{ version }}.tar.gz\n  url: https://github.com/DanBloomberg/{{ name }}/releases/download/{{ version }}/{{ name }}-{{ version }}.tar.gz\n  sha256: {{ sha256 }}\n  patches:\n    - cmake.patch  # [win]\n\nbuild:\n  number: 1\n  skip: True  # [win and vc<14]\n  run_exports:\n    - {{ pin_subpackage(name, max_pin='x.x') }}\n\n# TODO: conda-forge giflib missing headers on windows?\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - autoconf  # [not win]\n    - automake  # [not win]\n    - libtool  # [not win]\n    - m4  # [not win]\n    - pkg-config  # [not win]\n    - cmake  # [win]\n  host:\n    - giflib  # [not win]\n    - jpeg\n    - libpng\n    - libtiff\n    - libwebp\n    - openjpeg\n    - xz\n    - zlib\n  run:\n    # libwebp doesn't have run_exports yet (on version in conda-forge-pinning)\n    - libwebp\n\ntest:\n  commands:\n    - convertfilestopdf --help 2>&1 | grep 'resolution' &> /dev/null  # [not win]\n\nabout:\n  home: https://github.com/DanBloomberg/leptonica\n  license: BSD 2-Clause\n  license_family: BSD\n  license_file: leptonica-license.txt\n  summary: 'Useful for image processing and image analysis applications'\n  description: |\n    Leptonica is a pedagogically-oriented open source site containing\t\n    software that is broadly useful for image processing and image\t\n    analysis applications.\n  doc_url: http://www.leptonica.org/\n  dev_url: https://github.com/DanBloomberg/leptonica\n\nextra:\n  recipe-maintainers:\n    - CurtLH\n",
  "req":{
   "__set__":true,
@@ -247,7 +231,7 @@
    "zlib"
   ]
  },
- "smithy_version":"3.6.2",
+ "smithy_version":"3.6.5",
  "url":"https://github.com/DanBloomberg/leptonica/releases/download/1.78.0/leptonica-1.78.0.tar.gz",
  "version":"1.78.0"
 }
