@@ -72,7 +72,12 @@
    "summary":"A fast compressor/decompressor"
   },
   "build":{
-   "number":"1002"
+   "number":"1003",
+   "run_exports":[
+    "subpackage_stub",
+    "subpackage_stub",
+    "subpackage_stub"
+   ]
   },
   "extra":{
    "recipe-maintainers":[
@@ -151,7 +156,7 @@
  "name":"snappy",
  "new_version":"1.1.7",
  "pinning_version":"2019.06.09",
- "raw_meta_yaml":"{% set version = \"1.1.7\" %}\n{% set sha256 = \"3dfa02e873ff51a11ee02b9ca391807f0c8ea0529a4924afa645fbf97163f9d4\" %}\n{% set build = 1002 %}\n\npackage:\n  name: snappy\n  version: {{ version }}\n\nsource:\n  url: https://github.com/google/snappy/archive/{{ version }}.tar.gz\n  fn: snappy-{{ version }}.tar.gz\n  sha256: {{ sha256 }}\n  patches:\n    # Have snappy-unittest not run the slow-ish microbenchmarks, but just\n    # the quick correctness tests, without bothering with gflags (which didn't\n    # work out of the box). This is the recommended method in the README.\n    - skip-microbenchmarks.patch\n    # Name the static library snappy_static.lib on windows, to distinguish from\n    # the dynamic library, since they have the same suffix there.\n    # https://github.com/google/snappy/pull/57\n    - windows-static-lib-name.patch\n\nbuild:\n  number: {{ build }}\n\nrequirements:\n  build:\n    - cmake\n    - make\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n  host:\n    - msinttypes  # [win]\n\ntest:\n  commands:\n    - test -e $PREFIX/include/snappy.h               # [unix]\n    - test -e $PREFIX/include/snappy-stubs-public.h  # [unix]\n    - test -e $PREFIX/lib/libsnappy$SHLIB_EXT        # [unix]\n    - test -e $PREFIX/lib/libsnappy.a                # [unix]\n    - if not exist %LIBRARY_INC%\\snappy.h exit 1               # [win]\n    - if not exist %LIBRARY_INC%\\snappy-stubs-public.h exit 1  # [win]\n    - if not exist %LIBRARY_LIB%\\snappy.lib exit 1             # [win]\n    - if not exist %LIBRARY_BIN%\\snappy.dll exit 1             # [win]\n    - if not exist %LIBRARY_LIB%\\snappy_static.lib exit 1      # [win]\n\nabout:\n  home: https://github.com/google/snappy\n  summary: A fast compressor/decompressor\n  license: BSD 3-clause\n  license_file: COPYING\n  license_family: BSD\n\nextra:\n  recipe-maintainers:\n    - groutr\n    - jakirkham\n    - wesm\n    - xhochy\n    - dougalsutherland\n    - MaxRis\n",
+ "raw_meta_yaml":"{% set version = \"1.1.7\" %}\n{% set sha256 = \"3dfa02e873ff51a11ee02b9ca391807f0c8ea0529a4924afa645fbf97163f9d4\" %}\n{% set build = 1003 %}\n\npackage:\n  name: snappy\n  version: {{ version }}\n\nsource:\n  url: https://github.com/google/snappy/archive/{{ version }}.tar.gz\n  fn: snappy-{{ version }}.tar.gz\n  sha256: {{ sha256 }}\n  patches:\n    # Have snappy-unittest not run the slow-ish microbenchmarks, but just\n    # the quick correctness tests, without bothering with gflags (which didn't\n    # work out of the box). This is the recommended method in the README.\n    - skip-microbenchmarks.patch\n    # Name the static library snappy_static.lib on windows, to distinguish from\n    # the dynamic library, since they have the same suffix there.\n    # https://github.com/google/snappy/pull/57\n    - windows-static-lib-name.patch\n\nbuild:\n  number: {{ build }}\n  run_exports:\n    # SO name seems to be changing with patch versions\n    # https://abi-laboratory.pro/?view=timeline&l=snappy\n    - {{ pin_subpackage('snappy', max_pin='x.x.x') }}\n\nrequirements:\n  build:\n    - cmake\n    - make\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n  host:\n    - msinttypes  # [win]\n\ntest:\n  commands:\n    - test -e $PREFIX/include/snappy.h               # [unix]\n    - test -e $PREFIX/include/snappy-stubs-public.h  # [unix]\n    - test -e $PREFIX/lib/libsnappy$SHLIB_EXT        # [unix]\n    - test -e $PREFIX/lib/libsnappy.a                # [unix]\n    - if not exist %LIBRARY_INC%\\snappy.h exit 1               # [win]\n    - if not exist %LIBRARY_INC%\\snappy-stubs-public.h exit 1  # [win]\n    - if not exist %LIBRARY_LIB%\\snappy.lib exit 1             # [win]\n    - if not exist %LIBRARY_BIN%\\snappy.dll exit 1             # [win]\n    - if not exist %LIBRARY_LIB%\\snappy_static.lib exit 1      # [win]\n\nabout:\n  home: https://github.com/google/snappy\n  summary: A fast compressor/decompressor\n  license: BSD 3-clause\n  license_file: COPYING\n  license_family: BSD\n\nextra:\n  recipe-maintainers:\n    - groutr\n    - jakirkham\n    - wesm\n    - xhochy\n    - dougalsutherland\n    - MaxRis\n",
  "req":{
   "__set__":true,
   "elements":[
