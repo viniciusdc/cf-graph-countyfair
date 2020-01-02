@@ -163,6 +163,23 @@
     "migrator_version",
     "version"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/358548889.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"ArchRebuild",
+    "migrator_version":1,
+    "name":"aarch64 and ppc64le addition"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "name"
+   ]
   }
  ],
  "bad":false,
@@ -277,7 +294,7 @@
  },
  "name":"eclib",
  "new_version":"20190909",
- "pinning_version":"2019.12.02",
+ "pinning_version":"2019.12.18",
  "raw_meta_yaml":"{% set version = \"20190909\" %}\n{% set name = \"eclib\" %}\n\npackage:\n  name: {{ name }}\n  version: {{ version }}\n\nsource:\n  fn: {{ name }}-{{ version }}.tar.gz\n  url: https://github.com/JohnCremona/eclib/archive/v{{ version }}.tar.gz\n  sha256: 695e45e14aa521a3eab15d6fcc58e2aa014d601acca9b573388b3660d57c1320\n\nbuild:\n  number: 0\n  skip: true  # [win]\n  run_exports:\n    - {{ pin_subpackage('eclib', max_pin='x') }}\n\nrequirements:\n  build:\n    - {{ compiler('cxx') }}\n    - libtool\n    - automake\n  host:\n    - pari\n    - ntl\n    - libflint\n    - mpfr\n    - gmp\n    - gf2x\n  run:\n    - {{ pin_compatible('pari') }}\n    - ntl\n    - libflint\n    - mpfr\n    - gmp\n    - gf2x\n\ntest:\n  commands:\n    - test -f ${PREFIX}/include/eclib/arith.h\n    - test -f ${PREFIX}/lib/libec.a\n    - test -f ${PREFIX}/lib/libec.dylib     # [osx]\n    - test -f ${PREFIX}/lib/libec.so        # [linux]\n\nabout:\n  home: https://github.com/JohnCremona/eclib\n  license: GPLv2\n  license_file: COPYING\n  summary: |\n    The eclib package includes mwrank (for 2-descent on elliptic curves over Q) and\n    modular symbol code used to create the elliptic curve database.\n  dev_url: https://github.com/JohnCremona/eclib\n\nextra:\n  recipe-maintainers:\n    - isuruf\n    - saraedum\n",
  "req":{
   "__set__":true,
@@ -294,7 +311,7 @@
    "pari"
   ]
  },
- "smithy_version":"3.6.3",
+ "smithy_version":"3.6.5",
  "url":"https://github.com/JohnCremona/eclib/archive/v20190226.tar.gz",
  "version":"20190909"
 }
