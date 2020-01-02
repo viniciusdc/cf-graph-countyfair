@@ -53,7 +53,11 @@
  "conda-forge.yml":{
   "compiler_stack":"comp7",
   "max_py_ver":"37",
-  "max_r_ver":"35"
+  "max_r_ver":"35",
+  "provider":{
+   "linux_aarch64":"default",
+   "linux_ppc64le":"default"
+  }
  },
  "feedstock_name":"gfan",
  "hash_type":"sha256",
@@ -66,7 +70,7 @@
    "summary":"Gfan is a software package for computing Gr\u00f6bner fans and tropical varieties"
   },
   "build":{
-   "number":"1001",
+   "number":"1002",
    "skip":true
   },
   "extra":{
@@ -86,8 +90,11 @@
   "requirements":{
    "build":[
     "cxx_compiler_stub",
+    "make",
     "cxx_compiler_stub",
-    "cxx_compiler_stub"
+    "make",
+    "cxx_compiler_stub",
+    "make"
    ],
    "host":[
     "gmp",
@@ -130,13 +137,14 @@
  "name":"gfan",
  "new_version":false,
  "pinning_version":"2019.10.28",
- "raw_meta_yaml":"{% set version = \"0.6.2\" %}\n{% set name = \"gfan\" %}\n\npackage:\n  name: {{ name }}\n  version: {{ version }}\n\nsource:\n  fn: {{ name }}{{ version }}.tar.gz\n  url: http://home.math.au.dk/jensen/software/gfan/gfan{{ version }}.tar.gz\n  sha256: a674d5e5dc43634397de0d55dd5da3c32bd358d05f72b73a50e62c1a1686f10a\n  patches:\n    # Patches taken from https://github.com/sagemath/sage\n    - patches/nodel.patch\n    # patch Makefile to use CXXFLAGS, LDFLAGS, etc.\n    - patches/Makefile.patch\n\nbuild:\n  number: 1001\n  skip: true  # [win]\n\nrequirements:\n  build:\n    - {{ compiler('cxx') }}\n\n  host:\n    - gmp\n    - cddlib\n\n  run:\n    - gmp\n    - cddlib\n\ntest:\n  commands:\n    - test -f ${PREFIX}/bin/gfan\n\nabout:\n  home: http://home.math.au.dk/jensen/software/gfan/gfan.html\n  license: GPLv2+\n  license_file: COPYING\n  summary: Gfan is a software package for computing Gr\u00f6bner fans and tropical varieties\n  doc_url: http://home.math.au.dk/jensen/software/gfan/gfanmanual0.5.pdf\n\nextra:\n  recipe-maintainers:\n    - isuruf\n    - saraedum\n",
+ "raw_meta_yaml":"{% set version = \"0.6.2\" %}\n{% set name = \"gfan\" %}\n\npackage:\n  name: {{ name }}\n  version: {{ version }}\n\nsource:\n  fn: {{ name }}{{ version }}.tar.gz\n  url: http://home.math.au.dk/jensen/software/gfan/gfan{{ version }}.tar.gz\n  sha256: a674d5e5dc43634397de0d55dd5da3c32bd358d05f72b73a50e62c1a1686f10a\n  patches:\n    # Patches taken from https://github.com/sagemath/sage\n    - patches/nodel.patch\n    # patch Makefile to use CXXFLAGS, LDFLAGS, etc.\n    - patches/Makefile.patch\n\nbuild:\n  number: 1002\n  skip: true  # [win]\n\nrequirements:\n  build:\n    - {{ compiler('cxx') }}\n    - make\n  host:\n    - gmp\n    - cddlib\n\n  run:\n    - gmp\n    - cddlib\n\ntest:\n  commands:\n    - test -f ${PREFIX}/bin/gfan\n\nabout:\n  home: http://home.math.au.dk/jensen/software/gfan/gfan.html\n  license: GPLv2+\n  license_file: COPYING\n  summary: Gfan is a software package for computing Gr\u00f6bner fans and tropical varieties\n  doc_url: http://home.math.au.dk/jensen/software/gfan/gfanmanual0.5.pdf\n\nextra:\n  recipe-maintainers:\n    - isuruf\n    - saraedum\n",
  "req":{
   "__set__":true,
   "elements":[
    "cddlib",
    "cxx_compiler_stub",
-   "gmp"
+   "gmp",
+   "make"
   ]
  },
  "smithy_version":"3.6.0",

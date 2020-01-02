@@ -122,7 +122,11 @@
  "conda-forge.yml":{
   "compiler_stack":"comp7",
   "max_py_ver":"37",
-  "max_r_ver":"35"
+  "max_r_ver":"35",
+  "provider":{
+   "linux_aarch64":"default",
+   "linux_ppc64le":"default"
+  }
  },
  "feedstock_name":"libsemigroups",
  "hash_type":"sha256",
@@ -158,10 +162,22 @@
    "build":[
     "c_compiler_stub",
     "cxx_compiler_stub",
+    "make",
+    "automake",
+    "autoconf",
+    "libtool",
     "c_compiler_stub",
     "cxx_compiler_stub",
+    "make",
+    "automake",
+    "autoconf",
+    "libtool",
     "c_compiler_stub",
-    "cxx_compiler_stub"
+    "cxx_compiler_stub",
+    "make",
+    "automake",
+    "autoconf",
+    "libtool"
    ],
    "host":[],
    "run":[]
@@ -187,12 +203,16 @@
  "name":"libsemigroups",
  "new_version":"0.6.7",
  "pinning_version":"2019.10.28",
- "raw_meta_yaml":"{% set name = \"libsemigroups\" %}\n{% set version = \"1.0.3\" %}\n{% set sha256 = \"6adc2e023ad1349f0a942355b88241198d23790e62216bfeb62c356d803119da\" %}\n{% set repo = \"https://github.com/libsemigroups/libsemigroups\" %}\n{% set home = \"https://libsemigroups.github.io/libsemigroups/\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  url: {{ repo }}/releases/download/v{{ version }}/{{ name }}-{{ version }}.tar.gz\n  sha256: {{ sha256 }}\n\nbuild:\n  number: 0\n  skip: true  # [win]\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n  host: []\n  run: []\n\ntest:\n  commands:\n    - test -d ${PREFIX}/include/libsemigroups                    # [unix]\n    - test -f ${PREFIX}/include/libsemigroups/libsemigroups.hpp  # [unix]\n    - test -f $PREFIX/lib/libsemigroups.dylib                    # [osx]\n    - test -f $PREFIX/lib/libsemigroups.so                       # [linux]\n    - test -f $PREFIX/lib/libsemigroups.a                        # [unix]\n\n    - if exist %LIBRARY_PREFIX%\\include\\libsemigroups\\libsemigroups.hpp (exit 0) else (exit 1)  # [win]\n\nabout:\n  home: {{ home }}\n  license: GPL-3.0\n  license_file: LICENSE\n  summary: 'C++ library for semigroups and monoids'\n\n  description: |\n    libsemigroups is a C++ library for semigroups and monoids.\n  doc_url: {{ home }}\n  dev_url: {{ repo }}\n\nextra:\n  recipe-maintainers:\n    - james-d-mitchell\n    - nthiery\n",
+ "raw_meta_yaml":"{% set name = \"libsemigroups\" %}\n{% set version = \"1.0.3\" %}\n{% set sha256 = \"6adc2e023ad1349f0a942355b88241198d23790e62216bfeb62c356d803119da\" %}\n{% set repo = \"https://github.com/libsemigroups/libsemigroups\" %}\n{% set home = \"https://libsemigroups.github.io/libsemigroups/\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  url: {{ repo }}/releases/download/v{{ version }}/{{ name }}-{{ version }}.tar.gz\n  sha256: {{ sha256 }}\n\nbuild:\n  number: 0\n  skip: true  # [win]\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n    - make\n    - automake\n    - autoconf\n    - libtool\n  host: []\n  run: []\n\ntest:\n  commands:\n    - test -d ${PREFIX}/include/libsemigroups                    # [unix]\n    - test -f ${PREFIX}/include/libsemigroups/libsemigroups.hpp  # [unix]\n    - test -f $PREFIX/lib/libsemigroups.dylib                    # [osx]\n    - test -f $PREFIX/lib/libsemigroups.so                       # [linux]\n    - test -f $PREFIX/lib/libsemigroups.a                        # [unix]\n\n    - if exist %LIBRARY_PREFIX%\\include\\libsemigroups\\libsemigroups.hpp (exit 0) else (exit 1)  # [win]\n\nabout:\n  home: {{ home }}\n  license: GPL-3.0\n  license_file: LICENSE\n  summary: 'C++ library for semigroups and monoids'\n\n  description: |\n    libsemigroups is a C++ library for semigroups and monoids.\n  doc_url: {{ home }}\n  dev_url: {{ repo }}\n\nextra:\n  recipe-maintainers:\n    - james-d-mitchell\n    - nthiery\n",
  "req":{
   "__set__":true,
   "elements":[
+   "autoconf",
+   "automake",
    "c_compiler_stub",
-   "cxx_compiler_stub"
+   "cxx_compiler_stub",
+   "libtool",
+   "make"
   ]
  },
  "smithy_version":"3.6.0",
