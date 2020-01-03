@@ -35,7 +35,32 @@
    ]
   }
  ],
- "bad":false,
+ "bad":{
+  "exception":"Command '['git', 'clone', '-q', 'https://github.com/regro-cf-autotick-bot/bumps.git', './feedstocks/bumps-feedstock']' returned non-zero exit status 128.",
+  "traceback":[
+   "Traceback (most recent call last):",
+   "  File \"/root/repo/cf-scripts/conda_forge_tick/auto_tick.py\", line 658, in main",
+   "    migrator_uid, pr_json = run(",
+   "  File \"/root/repo/cf-scripts/conda_forge_tick/auto_tick.py\", line 120, in run",
+   "    feedstock_dir, repo = get_repo(",
+   "  File \"/root/repo/cf-scripts/conda_forge_tick/git_utils.py\", line 134, in get_repo",
+   "    if fetch_repo(",
+   "  File \"/root/repo/cf-scripts/conda_forge_tick/git_xonsh_utils.xsh\", line 9, in fetch_repo",
+   "    p = ![git clone -q @(origin) @(feedstock_dir)]",
+   "  File \"/opt/conda/envs/run_env/lib/python3.8/site-packages/xonsh/__amalgam__.py\", line 22475, in subproc_captured_hiddenobject",
+   "    return run_subproc(cmds, captured=\"hiddenobject\")",
+   "  File \"/opt/conda/envs/run_env/lib/python3.8/site-packages/xonsh/__amalgam__.py\", line 22438, in run_subproc",
+   "    command.end()",
+   "  File \"/opt/conda/envs/run_env/lib/python3.8/site-packages/xonsh/__amalgam__.py\", line 15680, in end",
+   "    self._end(tee_output=tee_output)",
+   "  File \"/opt/conda/envs/run_env/lib/python3.8/site-packages/xonsh/__amalgam__.py\", line 15699, in _end",
+   "    self._raise_subproc_error()",
+   "  File \"/opt/conda/envs/run_env/lib/python3.8/site-packages/xonsh/__amalgam__.py\", line 15825, in _raise_subproc_error",
+   "    raise subprocess.CalledProcessError(rtn, spec.args, output=self.output)",
+   "subprocess.CalledProcessError: Command '['git', 'clone', '-q', 'https://github.com/regro-cf-autotick-bot/bumps.git', './feedstocks/bumps-feedstock']' returned non-zero exit status 128.",
+   ""
+  ]
+ },
  "conda-forge.yml":{},
  "feedstock_name":"bumps",
  "hash_type":"sha256",
@@ -131,7 +156,7 @@
   }
  },
  "name":"bumps",
- "new_version":"0.7.13",
+ "new_version":"0.7.14",
  "pinning_version":"2019.10.11",
  "raw_meta_yaml":"{% set name = \"bumps\" %}\n{% set version = \"0.7.13\" %}\n\npackage:\n  name: \"{{ name|lower }}\"\n  version: \"{{ version }}\"\n\nsource:\n  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz\n  sha256: fdcf335b800d892edfdbc87fdd539cb45166d8667edbec3dfbb1a3b5c3a35547\n  patches:\n    - scripts.patch # use entry points instead of installing scripts\n\nbuild:\n  noarch: python\n  number: 0\n  script: \"{{ PYTHON }} -m pip install . --no-deps --ignore-installed -vvv \"\n  entry_points:\n          - bumps = bumps.cli:main\n\nrequirements:\n  host:\n    - pip\n    - python\n    - six\n  run:\n    - python\n    - six\n    - numpy\n    - scipy\n\ntest:\n  imports:\n    - bumps\n    - bumps.dream\n    - bumps.gui\n    - bumps.mystic\n    - bumps.mystic.examples\n    - bumps.mystic.optimizer\n    - bumps.numdifftools\n\nabout:\n  home: http://www.reflectometry.org/danse/software.html\n  license: PUBLIC-DOMAIN\n  summary: Data fitting with bayesian uncertainty analysis\n  doc_url: https://bumps.readthedocs.io/en/latest/\n  dev_url: https://github.com/bumps/bumps \n\nextra:\n  recipe-maintainers:\n    - tschoonj\n",
  "req":{
