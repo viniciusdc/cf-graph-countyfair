@@ -54,7 +54,11 @@
  "conda-forge.yml":{
   "compiler_stack":"comp7",
   "max_py_ver":"37",
-  "max_r_ver":"35"
+  "max_r_ver":"35",
+  "provider":{
+   "linux_aarch64":"default",
+   "linux_ppc64le":"default"
+  }
  },
  "feedstock_name":"ppl",
  "hash_type":"sha256",
@@ -92,12 +96,15 @@
   "requirements":{
    "build":[
     "libtool",
+    "make",
     "c_compiler_stub",
     "cxx_compiler_stub",
     "libtool",
+    "make",
     "c_compiler_stub",
     "cxx_compiler_stub",
     "libtool",
+    "make",
     "c_compiler_stub",
     "cxx_compiler_stub"
    ],
@@ -147,7 +154,7 @@
  "name":"ppl",
  "new_version":false,
  "pinning_version":"2019.11.01",
- "raw_meta_yaml":"{% set version = \"1.2\" %}\n{% set name = \"ppl\" %}\n\npackage:\n  name: {{ name }}\n  version: {{ version }}\n\nsource:\n  fn: {{ name }}-{{ version }}.tar.gz\n  url: http://bugseng.com/products/ppl/download/ftp/releases/{{ version }}/{{ name }}-{{ version }}.tar.gz\n  sha256: 6bc36dd4a87abc429d8f9c00c53e334e5041a9b0857cfc00dbad6ef14294aac8\n  patches:\n    - cling.patch\n\nbuild:\n  number: 1003\n  skip: true  # [win]\n  run_exports:\n    # pin exact version of ppl, there has not been a release in many years so\n    # we have no idea what the next version is going to look like\n    - {{ pin_subpackage(\"ppl\", max_pin=\"x.x\") }}\n\nrequirements:\n  build:\n    - libtool\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n  host:\n    - m4\n    - gmp\n    - glpk\n  run:\n    - gmp\n    - glpk\n\ntest:\n  commands:\n    - test -f ${PREFIX}/include/{{ name }}.hh\n    - test -f ${PREFIX}/lib/lib{{ name }}.a\n    - test -f ${PREFIX}/lib/lib{{ name }}.dylib  # [osx]\n    - test -f ${PREFIX}/lib/lib{{ name }}.so     # [linux]\n\nabout:\n  home: http://bugseng.com/products/ppl/\n  license: GPL v3+\n  license_file: {{ SRC_DIR }}/COPYING\n  summary: |\n    The Parma Polyhedra Library (PPL) provides numerical abstractions\n    especially targeted at applications in the field of analysis and\n    verification of complex systems.\n  doc_url: http://bugseng.com/products/ppl/documentation\n\nextra:\n  recipe-maintainers:\n    - isuruf\n    - saraedum\n",
+ "raw_meta_yaml":"{% set version = \"1.2\" %}\n{% set name = \"ppl\" %}\n\npackage:\n  name: {{ name }}\n  version: {{ version }}\n\nsource:\n  fn: {{ name }}-{{ version }}.tar.gz\n  url: http://bugseng.com/products/ppl/download/ftp/releases/{{ version }}/{{ name }}-{{ version }}.tar.gz\n  sha256: 6bc36dd4a87abc429d8f9c00c53e334e5041a9b0857cfc00dbad6ef14294aac8\n  patches:\n    - cling.patch\n\nbuild:\n  number: 1003\n  skip: true  # [win]\n  run_exports:\n    # pin exact version of ppl, there has not been a release in many years so\n    # we have no idea what the next version is going to look like\n    - {{ pin_subpackage(\"ppl\", max_pin=\"x.x\") }}\n\nrequirements:\n  build:\n    - libtool\n    - make\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n  host:\n    - m4\n    - gmp\n    - glpk\n  run:\n    - gmp\n    - glpk\n\ntest:\n  commands:\n    - test -f ${PREFIX}/include/{{ name }}.hh\n    - test -f ${PREFIX}/lib/lib{{ name }}.a\n    - test -f ${PREFIX}/lib/lib{{ name }}.dylib  # [osx]\n    - test -f ${PREFIX}/lib/lib{{ name }}.so     # [linux]\n\nabout:\n  home: http://bugseng.com/products/ppl/\n  license: GPL v3+\n  license_file: {{ SRC_DIR }}/COPYING\n  summary: |\n    The Parma Polyhedra Library (PPL) provides numerical abstractions\n    especially targeted at applications in the field of analysis and\n    verification of complex systems.\n  doc_url: http://bugseng.com/products/ppl/documentation\n\nextra:\n  recipe-maintainers:\n    - isuruf\n    - saraedum\n",
  "req":{
   "__set__":true,
   "elements":[
@@ -156,7 +163,8 @@
    "glpk",
    "gmp",
    "libtool",
-   "m4"
+   "m4",
+   "make"
   ]
  },
  "smithy_version":"3.6.1",

@@ -94,6 +94,23 @@
     "migrator_version",
     "version"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/358836906.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"Version",
+    "migrator_version":0,
+    "version":"0.10.2"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "version"
+   ]
   }
  ],
  "bad":false,
@@ -213,8 +230,8 @@
   }
  },
  "name":"ablog",
- "new_version":"0.10.1",
- "pinning_version":"2019.12.17",
+ "new_version":"0.10.2",
+ "pinning_version":"2019.12.18",
  "raw_meta_yaml":"{% set name = \"ablog\" %}\n{% set version = \"0.10.1\" %}\n{% set sha256 = \"ca0ce1c3ee3f752062cd1f78c277d835565f92ef74cb9183c0d980c7522a7128\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  fn: {{ name }}-{{ version }}.tar.gz\n  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz\n  sha256: {{ sha256 }}\n\nbuild:\n  number: 0\n  script: {{ PYTHON }} -m pip install . --no-deps -vv\n  entry_points:\n    - ablog = ablog.commands:ablog_main\n  skip: true  # [py27]\n\nrequirements:\n  build:\n    - python\n    - pip\n    - setuptools_scm\n  run:\n    - python\n    - werkzeug\n    - sphinx >=2.0\n    - alabaster\n    - invoke\n    - python-dateutil\n    - sphinx-automodapi\n    - watchdog\n\ntest:\n  requires:\n    - git\n    - nbsphinx\n  commands:\n    - ablog --version\n    - git clone --depth 1 --branch v{{ version }} https://github.com/sunpy/ablog\n    - cd ablog/docs\n    - ablog build -T\n    - ablog build -b latex -T -d .doctrees -w _latex\n    - ablog build -T -b json\n    - ablog build -T -b pickle\n\nabout:\n  home: https://github.com/sunpy/ablog\n  license: MIT\n  license_file: LICENSE.rst\n  license_family: MIT\n  summary: 'ABlog for blogging with Sphinx'\n  description: |\n    A Sphinx extension that converts any documentation or personal website\n    project into a full-fledged blog.\n  doc_url: http://ablog.readthedocs.org\n  dev_url: https://github.com/sunpy/ablog\n\nextra:\n  recipe-maintainers:\n    - nabobalis\n    - cadair\n",
  "req":{
   "__set__":true,
