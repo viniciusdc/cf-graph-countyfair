@@ -100,6 +100,23 @@
     "migrator_version",
     "version"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/358884431.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"ArchRebuild",
+    "migrator_version":1,
+    "name":"aarch64 and ppc64le addition"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "name"
+   ]
   }
  ],
  "bad":false,
@@ -304,7 +321,7 @@
   "brial",
   "libbrial"
  ],
- "pinning_version":"2019.12.02",
+ "pinning_version":"2019.12.18",
  "raw_meta_yaml":"{% set version = \"1.2.5\" %}\n{% set name = \"brial-split\" %}\n\npackage:\n  name: {{ name }}\n  version: {{ version }}\n\nsource:\n  url: https://github.com/BRiAl/BRiAl/releases/download/{{ version }}/brial-{{ version }}.tar.bz2\n  sha256: c4921d5008ac9122452e6f93abb696ef21ceac8e7170008ea7c7b05508da8d34\n\nbuild:\n  number: 1\n  skip: true  # [win]\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n    - libtool\n    - pkg-config\n\ntest:\n  commands:\n    - test -f ${PREFIX}/include/polybori.h\n    - test -f ${PREFIX}/lib/lib{{ name }}.a\n    - test -f ${PREFIX}/lib/lib{{ name }}.so        # [linux]\n    - test -f ${PREFIX}/lib/lib{{ name }}.dylib     # [osx]\n    # Cannot run tests for python library as sageruntime is required.\n    - test -f $SP_DIR/brial/PyPolyBoRi.py\n\noutputs:\n  - name: libbrial\n    script: build_libbrial.sh\n    requirements:\n      build:\n        - {{ compiler('c') }}\n        - {{ compiler('cxx') }}\n        - libtool\n        - pkg-config\n      host:\n        - libpng\n        - boost-cpp\n        - m4ri\n        - zlib\n      run:\n        - libpng\n        - m4ri\n        - zlib\n\n  - name: brial\n    build:\n      noarch: python\n    script: build_brial.sh\n    requirements:\n      host:\n        - python\n        - pip\n        - libbrial {{ version }}\n      run:\n        - python\n        - libbrial {{ version }}\n\nabout:\n  home: https://github.com/BRiAl/BRiAl\n  license: GPLv2+\n  license_file: {{ SRC_DIR }}/LICENSE\n  summary: Brial - successor to PolyBoRi\n  description: |\n    The core of PolyBoRi is a C++ library, which provides high-level data\n    types for Boolean polynomials and monomials, exponent vectors, as well\n    as for the underlying polynomial rings and subsets of the powerset of\n    the Boolean variables. As a unique approach, binary decision diagrams\n    are used as internal storage type for polynomial structures. On top of\n    this C++-library we provide a Python interface. This allows parsing of\n    complex polynomial systems, as well as sophisticated and extendable\n    strategies for Gr\u00f6bner base computation. PolyBoRi features a powerful\n    reference implementation for Gr\u00f6bner basis computation.\n  dev_url: https://github.com/BRiAl/BRiAl\n\nextra:\n  recipe-maintainers:\n    - isuruf\n    - saraedum\n",
  "req":{
   "__set__":true,
@@ -322,7 +339,7 @@
    "zlib"
   ]
  },
- "smithy_version":"3.6.3",
+ "smithy_version":"3.6.5",
  "url":"https://github.com/BRiAl/BRiAl/releases/download/1.2.5/brial-1.2.5.tar.bz2",
  "version":"1.2.5"
 }
