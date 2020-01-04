@@ -165,7 +165,7 @@
    "urllib.error.HTTPError: HTTP Error 404: Not Found",
    ""
   ],
-  "url":"http://releases.llvm.org/10-init/openmp-10-init.src.tar.xz"
+  "url":"https://github.com/llvm/llvm-project/releases/download/llvmorg-10-init/openmp-10-init.src.tar.xz"
  },
  "conda-forge.yml":{
   "provider":{
@@ -219,12 +219,12 @@
       "ninja"
      ],
      "host":[
-      "llvmdev 9.0.0|9.0.0.*"
+      "llvmdev 9.0.1|9.0.1.*"
      ],
      "run_constrained":[
-      "clangdev 9.0.0|9.0.0.*",
-      "llvmdev 9.0.0|9.0.0.*",
-      "openmp 9.0.0|9.0.0.*"
+      "clangdev 9.0.1|9.0.1.*",
+      "llvmdev 9.0.1|9.0.1.*",
+      "openmp 9.0.1|9.0.1.*"
      ]
     },
     "script":"bld-llvm-openmp.bat"
@@ -245,12 +245,12 @@
       "perl"
      ],
      "host":[
-      "llvmdev 9.0.0|9.0.0.*"
+      "llvmdev 9.0.1|9.0.1.*"
      ],
      "run_constrained":[
-      "clangdev 9.0.0|9.0.0.*",
-      "llvmdev 9.0.0|9.0.0.*",
-      "openmp 9.0.0|9.0.0.*"
+      "clangdev 9.0.1|9.0.1.*",
+      "llvmdev 9.0.1|9.0.1.*",
+      "openmp 9.0.1|9.0.1.*"
      ]
     },
     "script":"build-llvm-openmp.sh"
@@ -271,12 +271,12 @@
       "perl"
      ],
      "host":[
-      "llvmdev 9.0.0|9.0.0.*"
+      "llvmdev 9.0.1|9.0.1.*"
      ],
      "run_constrained":[
-      "clangdev 9.0.0|9.0.0.*",
-      "llvmdev 9.0.0|9.0.0.*",
-      "openmp 9.0.0|9.0.0.*"
+      "clangdev 9.0.1|9.0.1.*",
+      "llvmdev 9.0.1|9.0.1.*",
+      "openmp 9.0.1|9.0.1.*"
      ]
     },
     "script":"build-llvm-openmp.sh"
@@ -284,11 +284,11 @@
   ],
   "package":{
    "name":"llvm-openmp",
-   "version":"9.0.0"
+   "version":"9.0.1"
   },
   "source":{
-   "sha256":"9979eb1133066376cc0be29d1682bc0b0e7fb541075b391061679111ae4d3b5b",
-   "url":"http://releases.llvm.org/9.0.0/openmp-9.0.0.src.tar.xz"
+   "sha256":"5c94060f846f965698574d9ce22975c0e9f04c9b14088c3af5f03870af75cace",
+   "url":"https://github.com/llvm/llvm-project/releases/download/llvmorg-9.0.1/openmp-9.0.1.src.tar.xz"
   },
   "test":{
    "commands":[
@@ -327,7 +327,7 @@
   "llvm-openmp"
  ],
  "pinning_version":"2019.10.11",
- "raw_meta_yaml":"{% set name = \"llvm-openmp\" %}\n{% set version = \"9.0.0\" %}\n{% set sha256 = \"9979eb1133066376cc0be29d1682bc0b0e7fb541075b391061679111ae4d3b5b\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  url: http://releases.llvm.org/{{ version }}/openmp-{{ version }}.src.tar.xz\n  sha256: {{ sha256 }}\n\nbuild:\n  number: 0\n  skip: true  # [win and vc<14]\n\ntest:\n  requires:\n    - clangdev\n    - {{ compiler('cxx') }}  # [unix]\n    - vs2017_{{ target_platform }}  # [win]\n  commands:\n    - if not exist %LIBRARY_BIN%\\\\libomp.dll exit 1   # [win]\n    - test -f $PREFIX/lib/libomp.so                   # [linux]\n    - test -f $PREFIX/lib/libomp.dylib                # [osx]\n    - if not exist %LIBRARY_LIB%\\\\libomp.lib exit 1   # [win]\n    - if not exist %LIBRARY_INC%\\\\omp.h exit 1        # [win]\n    - test -f $PREFIX/include/omp.h                   # [unix]\n    - $PREFIX/bin/clang -v -fopenmp -I$PREFIX/include -L$PREFIX/lib -Wl,-rpath,$PREFIX/lib omp_hello.c -o omp_hello  # [not win]\n    - \"%LIBRARY_BIN%\\\\clang -v -fopenmp -I%LIBRARY_INC% -L%LIBRARY_LIB% omp_hello.c -o omp_hello.exe\"  # [win]\n    - ./omp_hello            # [unix]\n    - \"%cd%\\\\omp_hello.exe\"  # [win]\n  files:\n    - omp_hello.c\n\noutputs:\n  - name: llvm-openmp\n    script: build-llvm-openmp.sh  # [not win]\n    script: bld-llvm-openmp.bat   # [win]\n    build:\n      run_exports:\n        strong:\n          - {{ pin_subpackage(\"llvm-openmp\", max_pin=None) }}\n    requirements:\n      build:\n        - {{ compiler('cxx') }}  # [unix]\n        - vs2017_{{ target_platform }}  # [win]\n        - cmake\n        - perl\n        - ninja  # [win]\n      host:\n        - llvmdev {{ version }}|{{ version }}.*\n      run_constrained:\n        - clangdev {{ version }}|{{ version }}.*\n        - llvmdev {{ version }}|{{ version }}.*\n        - openmp {{ version }}|{{ version }}.*\n\nabout:\n  home: http://openmp.llvm.org/\n  license: NCSA\n  license_file: LICENSE.txt\n  summary: The OpenMP API supports multi-platform shared-memory parallel programming in C/C++ and Fortran.\n\nextra:\n  recipe-maintainers:\n    - inducer\n    - jakirkham\n    - yesimon\n    - isuruf\n",
+ "raw_meta_yaml":"{% set name = \"llvm-openmp\" %}\n{% set version = \"9.0.1\" %}\n{% set sha256 = \"5c94060f846f965698574d9ce22975c0e9f04c9b14088c3af5f03870af75cace\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  url: https://github.com/llvm/llvm-project/releases/download/llvmorg-{{ version }}/openmp-{{ version }}.src.tar.xz\n  sha256: {{ sha256 }}\n\nbuild:\n  number: 0\n  skip: true  # [win and vc<14]\n\ntest:\n  requires:\n    - clangdev\n    - {{ compiler('cxx') }}  # [unix]\n    - vs2017_{{ target_platform }}  # [win]\n  commands:\n    - if not exist %LIBRARY_BIN%\\\\libomp.dll exit 1   # [win]\n    - test -f $PREFIX/lib/libomp.so                   # [linux]\n    - test -f $PREFIX/lib/libomp.dylib                # [osx]\n    - if not exist %LIBRARY_LIB%\\\\libomp.lib exit 1   # [win]\n    - if not exist %LIBRARY_INC%\\\\omp.h exit 1        # [win]\n    - test -f $PREFIX/include/omp.h                   # [unix]\n    - $PREFIX/bin/clang -v -fopenmp -I$PREFIX/include -L$PREFIX/lib -Wl,-rpath,$PREFIX/lib omp_hello.c -o omp_hello  # [not win]\n    - \"%LIBRARY_BIN%\\\\clang -v -fopenmp -I%LIBRARY_INC% -L%LIBRARY_LIB% omp_hello.c -o omp_hello.exe\"  # [win]\n    - ./omp_hello            # [unix]\n    - \"%cd%\\\\omp_hello.exe\"  # [win]\n  files:\n    - omp_hello.c\n\noutputs:\n  - name: llvm-openmp\n    script: build-llvm-openmp.sh  # [not win]\n    script: bld-llvm-openmp.bat   # [win]\n    build:\n      run_exports:\n        strong:\n          - {{ pin_subpackage(\"llvm-openmp\", max_pin=None) }}\n    requirements:\n      build:\n        - {{ compiler('cxx') }}  # [unix]\n        - vs2017_{{ target_platform }}  # [win]\n        - cmake\n        - perl\n        - ninja  # [win]\n      host:\n        - llvmdev {{ version }}|{{ version }}.*\n      run_constrained:\n        - clangdev {{ version }}|{{ version }}.*\n        - llvmdev {{ version }}|{{ version }}.*\n        - openmp {{ version }}|{{ version }}.*\n\nabout:\n  home: http://openmp.llvm.org/\n  license: NCSA\n  license_file: LICENSE.txt\n  summary: The OpenMP API supports multi-platform shared-memory parallel programming in C/C++ and Fortran.\n\nextra:\n  recipe-maintainers:\n    - inducer\n    - jakirkham\n    - yesimon\n    - isuruf\n",
  "req":{
   "__set__":true,
   "elements":[
@@ -341,5 +341,5 @@
  },
  "smithy_version":"3.6.0",
  "url":"https://github.com/llvm/llvm-project/releases/download/llvmorg-8.0.1/openmp-8.0.1.src.tar.xz",
- "version":"9.0.0"
+ "version":"9.0.1"
 }
