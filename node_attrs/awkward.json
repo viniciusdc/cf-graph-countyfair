@@ -656,6 +656,23 @@
     "migrator_version",
     "version"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/359169080.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"Version",
+    "migrator_version":0,
+    "version":"0.12.19"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "version"
+   ]
   }
  ],
  "bad":false,
@@ -900,12 +917,12 @@
   ]
  },
  "name":"awkward",
- "new_version":"0.12.18",
+ "new_version":"0.12.19",
  "outputs_names":[
   "awkward",
   "awkward-numba"
  ],
- "pinning_version":"2019.12.02",
+ "pinning_version":"2019.12.18",
  "raw_meta_yaml":"{% set name = \"awkward\" %}\n{% set version = \"0.12.18\" %}\n{% set build_number = 0 %}\n\npackage:\n  name: {{ name }}\n  version: {{ version }}\n\nsource:\n  - url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz\n    sha256: 9b3df4f2be92ac7d16709f15769c97591f25f0442061f1a4cc8715feb268e45c\n    folder: {{ name }}\n  - url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}-numba/{{ name }}-numba-{{ version }}.tar.gz\n    sha256: cd3560cf4c3295e8f2db1d0fef4b76dc0d39fd0573c14a6e4f8421023ded3308\n    folder: {{ name }}-numba\n\nbuild:\n  number: {{ build_number }}\n  noarch: python\n\n# Specifying `python` as a top-level build requirements to force conda to\n# render the recipe correctly\nrequirements:\n  host:\n    - python\n  run:\n    - python\n\noutputs:\n  - name: {{ name }}\n    version: {{ version }}\n    build:\n      number: {{ build_number }}\n      script: \"{{ PYTHON }} -m pip install {{ name }} --no-deps -vv\"\n      noarch: python\n    requirements:\n      build:\n      host:\n        - python\n        - pip\n        - pytest-runner\n      run:\n        - python\n        - numpy >=1.13.1\n    test:\n      imports:\n        - awkward\n\n  - name: {{ name }}-numba\n    version: {{ version }}\n    build:\n      number: {{ build_number }}\n      script: \"{{ PYTHON }} -m pip install {{ name }}-numba --no-deps -vv\"\n      noarch: python\n    requirements:\n      build:\n      host:\n        - python\n        - pip\n        - pytest-runner\n      run:\n        - python\n        - numba <0.46\n        - awkward =={{ version }}\n    test:\n      imports:\n        - awkward.numba\n\nabout:\n  home: https://github.com/scikit-hep/{{ name }}\n  license: BSD-3-Clause\n  license_family: BSD\n  license_file: {{ name }}/LICENSE\n  summary: 'Manipulate arrays of complex data structures as easily as Numpy.'\n  dev_url: https://github.com/scikit-hep/{{ name }}\n\nextra:\n  recipe-maintainers:\n    - chrisburr\n    - jpivarski\n",
  "req":{
   "__set__":true,
