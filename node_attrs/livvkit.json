@@ -56,7 +56,7 @@
    ],
    "noarch":"python",
    "number":"0",
-   "script":"python -m pip install --no-deps --ignore-installed ."
+   "script":"-m pip install . --no-deps -vv"
   },
   "extra":{
    "recipe-maintainers":[
@@ -67,50 +67,53 @@
   },
   "package":{
    "name":"livvkit",
-   "version":"2.1.6"
+   "version":"3.0.0"
   },
   "requirements":{
    "host":[
     "pip",
-    "python",
+    "python >=3.6",
     "setuptools",
     "pip",
-    "python",
+    "python >=3.6",
     "setuptools",
     "pip",
-    "python",
+    "python >=3.6",
     "setuptools"
    ],
    "run":[
-    "python",
-    "six",
+    "python >=3.6",
     "numpy",
     "scipy",
-    "cython",
     "netCDF4",
     "matplotlib",
+    "jinja2",
     "json_tricks ==3.11.0",
-    "python",
-    "six",
+    "pybtex",
+    "pandas",
+    "python >=3.6",
     "numpy",
     "scipy",
-    "cython",
     "netCDF4",
     "matplotlib",
+    "jinja2",
     "json_tricks ==3.11.0",
-    "python",
-    "six",
+    "pybtex",
+    "pandas",
+    "python >=3.6",
     "numpy",
     "scipy",
-    "cython",
     "netCDF4",
     "matplotlib",
-    "json_tricks ==3.11.0"
+    "jinja2",
+    "json_tricks ==3.11.0",
+    "pybtex",
+    "pandas"
    ]
   },
   "source":{
-   "sha256":"f6eba931d8cf9942512dcaa91f2d404c121faaafc3e1377f2c45ad19655fea88",
-   "url":"https://pypi.io/packages/source/l/livvkit/livvkit-2.1.6.tar.gz"
+   "sha256":"fb5b105c8322b62256db705df550eb23d6c9b11aad1ce1cd5a76ccc34da92031",
+   "url":"https://pypi.io/packages/source/l/livvkit/livvkit-3.0.0.tar.gz"
   },
   "test":{
    "commands":[
@@ -128,23 +131,24 @@
  "name":"livvkit",
  "new_version":"3.0.0",
  "pinning_version":"2019.12.18",
- "raw_meta_yaml":"{% set name = \"livvkit\" %}\n{% set version = \"2.1.6\" %}\n{% set sha256 = \"f6eba931d8cf9942512dcaa91f2d404c121faaafc3e1377f2c45ad19655fea88\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  url:  https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz\n  sha256: {{ sha256 }} \n\nbuild:\n  noarch: python\n  number: 0\n  script: python -m pip install --no-deps --ignore-installed .\n  entry_points:\n  - livv = livvkit.__main__:main\n\nrequirements:\n  host:\n    - pip\n    - python\n    - setuptools\n  run:\n    - python\n    - six\n    - numpy\n    - scipy\n    - cython\n    - netCDF4\n    - matplotlib\n    - json_tricks ==3.11.0\n\ntest:\n  imports:\n    - livvkit\n  commands:\n    - livv --version\n\nabout:\n  home: http://github.com/LIVVkit/LIVVkit\n  license: BSD-3-Clause\n  license_family: BSD\n  license_file: LICENSE\n  summary: 'The land ice verification and validation toolkit'\n\n  description: |\n   LIVVkit is a python-based toolkit for verification and validation of ice sheet models.\n   It aims to provide both model V&V (numerical verification, physical validation) and \n   software V&V (code verification and performance validation).\n  doc_url: https://livvkit.github.io/Docs\n  dev_url: https://github.com/LIVVkit/LIVVkit\n\nextra:\n  recipe-maintainers:\n    - jhkennedy\n",
+ "raw_meta_yaml":"{% set name = \"livvkit\" %}\n{% set version = \"3.0.0\" %}\n{% set sha256 = \"fb5b105c8322b62256db705df550eb23d6c9b11aad1ce1cd5a76ccc34da92031\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  url:  https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz\n  sha256: {{ sha256 }} \n\nbuild:\n  noarch: python\n  number: 0\n  script: {{ PYTHON }} -m pip install . --no-deps -vv\n  entry_points:\n  - livv = livvkit.__main__:main\n\nrequirements:\n  host:\n    - pip\n    - python >=3.6\n    - setuptools\n  run:\n    - python >=3.6\n    - numpy\n    - scipy\n    - netCDF4\n    - matplotlib\n    - jinja2\n    - json_tricks ==3.11.0\n    - pybtex\n    - pandas\n\ntest:\n  imports:\n    - livvkit\n  commands:\n    - livv --version\n\nabout:\n  home: http://github.com/LIVVkit/LIVVkit\n  license: BSD-3-Clause\n  license_family: BSD\n  license_file: LICENSE\n  summary: 'The land ice verification and validation toolkit'\n\n  description: |\n   LIVVkit is a python-based toolkit for verification and validation of ice sheet models.\n   It aims to provide both model V&V (numerical verification, physical validation) and \n   software V&V (code verification and performance validation).\n  doc_url: https://livvkit.github.io/Docs\n  dev_url: https://github.com/LIVVkit/LIVVkit\n\nextra:\n  recipe-maintainers:\n    - jhkennedy\n",
  "req":{
   "__set__":true,
   "elements":[
-   "cython",
+   "jinja2",
    "json_tricks",
    "matplotlib",
    "netcdf4",
    "numpy",
+   "pandas",
    "pip",
+   "pybtex",
    "python",
    "scipy",
-   "setuptools",
-   "six"
+   "setuptools"
   ]
  },
  "smithy_version":"3.6.5",
  "url":"https://pypi.io/packages/source/l/livvkit/livvkit-2.1.6.tar.gz",
- "version":"2.1.6"
+ "version":"3.0.0"
 }
