@@ -154,7 +154,40 @@
    ]
   }
  ],
- "bad":false,
+ "bad":{
+  "code":404,
+  "exception":"HTTP Error 404: Not Found",
+  "traceback":[
+   "Traceback (most recent call last):",
+   "  File \"/root/repo/cf-scripts/conda_forge_tick/auto_tick.py\", line 659, in main",
+   "    migrator_uid, pr_json = run(",
+   "  File \"/root/repo/cf-scripts/conda_forge_tick/auto_tick.py\", line 133, in run",
+   "    migrate_return = migrator.migrate(recipe_dir, feedstock_ctx.attrs, **kwargs)",
+   "  File \"/root/repo/cf-scripts/conda_forge_tick/migrators/core.py\", line 644, in migrate",
+   "    new_patterns = self.get_hash_patterns(\"meta.yaml\", urls, hash_type)",
+   "  File \"/root/repo/cf-scripts/conda_forge_tick/migrators/core.py\", line 523, in get_hash_patterns",
+   "    hash_ = hash_url(url, hash_type)",
+   "  File \"/opt/conda/envs/run_env/lib/python3.8/site-packages/rever/tools.xsh\", line 207, in hash_url",
+   "    for b in stream_url_progress(url, verb='Hashing', quiet=quiet):",
+   "  File \"/opt/conda/envs/run_env/lib/python3.8/site-packages/rever/tools.xsh\", line 179, in stream_url_progress",
+   "    with urllib.request.urlopen(url) as f:",
+   "  File \"/opt/conda/envs/run_env/lib/python3.8/urllib/request.py\", line 222, in urlopen",
+   "    return opener.open(url, data, timeout)",
+   "  File \"/opt/conda/envs/run_env/lib/python3.8/urllib/request.py\", line 531, in open",
+   "    response = meth(req, response)",
+   "  File \"/opt/conda/envs/run_env/lib/python3.8/urllib/request.py\", line 640, in http_response",
+   "    response = self.parent.error(",
+   "  File \"/opt/conda/envs/run_env/lib/python3.8/urllib/request.py\", line 569, in error",
+   "    return self._call_chain(*args)",
+   "  File \"/opt/conda/envs/run_env/lib/python3.8/urllib/request.py\", line 502, in _call_chain",
+   "    result = func(*args)",
+   "  File \"/opt/conda/envs/run_env/lib/python3.8/urllib/request.py\", line 649, in http_error_default",
+   "    raise HTTPError(req.full_url, code, msg, hdrs, fp)",
+   "urllib.error.HTTPError: HTTP Error 404: Not Found",
+   ""
+  ],
+  "url":"https://github.com/llvm/llvm-project/releases/download/llvmorg-9.0.1/libcxx-10-init.src.tar.xz"
+ },
  "conda-forge.yml":{
   "compiler_stack":"comp7",
   "provider":{
@@ -178,7 +211,7 @@
     "libstdcxx-ng",
     "libstdcxx-ng"
    ],
-   "number":"1",
+   "number":"0",
    "skip":true
   },
   "extra":{
@@ -210,17 +243,24 @@
      "lib/libc++experimental.*",
      "Library/bin/c++*.dll",
      "Library/lib/c++*.lib",
-     "Library/lib/libc++*.lib",
-     "lib/libc++abi.*"
+     "Library/lib/libc++*.lib"
     ],
     "name":"libcxx",
-    "test":{
-     "files":[
-      "test_sources"
-     ],
-     "requires":[
-      "clangdev 5.0.0",
-      "cxx_compiler_stub"
+    "requirements":{
+     "run":null
+    }
+   },
+   {
+    "build":{
+     "skip":true
+    },
+    "files":[
+     "lib/libc++abi.*"
+    ],
+    "name":"libcxxabi",
+    "requirements":{
+     "run_constrained":[
+      "subpackage_stub"
      ]
     }
    },
@@ -236,14 +276,22 @@
      "Library/lib/libc++*.lib"
     ],
     "name":"libcxx",
-    "test":{
-     "files":[
-      "test_sources"
-     ],
-     "requires":[
-      "clangdev 5.0.0"
-     ],
-     "script":"compile_test.sh"
+    "requirements":{
+     "run":[
+      "subpackage_stub"
+     ]
+    }
+   },
+   {
+    "build":null,
+    "files":[
+     "lib/libc++abi.*"
+    ],
+    "name":"libcxxabi",
+    "requirements":{
+     "run_constrained":[
+      "subpackage_stub"
+     ]
     }
    },
    {
@@ -255,33 +303,39 @@
      "lib/libc++experimental.*",
      "Library/bin/c++*.dll",
      "Library/lib/c++*.lib",
-     "Library/lib/libc++*.lib",
-     "lib/libc++abi.*"
+     "Library/lib/libc++*.lib"
     ],
     "name":"libcxx",
-    "test":{
-     "files":[
-      "test_sources"
-     ],
-     "requires":[
-      "clangdev 5.0.0",
-      "cxx_compiler_stub"
-     ],
-     "script":"compile_test.sh"
+    "requirements":{
+     "run":[
+      "subpackage_stub"
+     ]
+    }
+   },
+   {
+    "build":null,
+    "files":[
+     "lib/libc++abi.*"
+    ],
+    "name":"libcxxabi",
+    "requirements":{
+     "run_constrained":[
+      "subpackage_stub"
+     ]
     }
    }
   ],
   "package":{
    "name":"libcxx_and_libcxxabi",
-   "version":"5.0.0"
+   "version":"9.0.1"
   },
   "requirements":{
    "build":[
     "cmake",
-    "make",
     "cxx_compiler_stub",
     "python >3",
-    "cmake-binary",
+    "cmake",
+    "make",
     "cxx_compiler_stub",
     "cmake",
     "make",
@@ -289,60 +343,88 @@
     "python >3"
    ],
    "host":[
-    "clangdev 5.0.0",
-    "llvmdev 5.0.0"
+    "clangdev 9.0.1",
+    "llvmdev 9.0.1"
    ]
   },
   "source":[
    {
     "patches":null,
-    "sha256":"eae5981e9a21ef0decfcac80a1af584ddb064a32805f95a57c7c83a5eb28c9b1",
-    "url":"http://releases.llvm.org/5.0.0/libcxx-5.0.0.src.tar.xz"
+    "sha256":"0981ff11b862f4f179a13576ab0a2f5530f46bd3b6b4a90f568ccc6a62914b34",
+    "url":"https://github.com/llvm/llvm-project/releases/download/llvmorg-9.0.1/libcxx-9.0.1.src.tar.xz"
    },
    {
     "patches":null,
-    "sha256":"eae5981e9a21ef0decfcac80a1af584ddb064a32805f95a57c7c83a5eb28c9b1",
-    "url":"http://releases.llvm.org/5.0.0/libcxx-5.0.0.src.tar.xz"
-   },
-   {
-    "patches":null,
-    "sha256":"eae5981e9a21ef0decfcac80a1af584ddb064a32805f95a57c7c83a5eb28c9b1",
-    "url":"http://releases.llvm.org/5.0.0/libcxx-5.0.0.src.tar.xz"
+    "sha256":"0981ff11b862f4f179a13576ab0a2f5530f46bd3b6b4a90f568ccc6a62914b34",
+    "url":"https://github.com/llvm/llvm-project/releases/download/llvmorg-9.0.1/libcxx-9.0.1.src.tar.xz"
    },
    {
     "folder":"libcxxabi",
-    "sha256":"176918c7eb22245c3a5c56ef055e4d69f5345b4a98833e0e8cb1a19cab6b8911",
-    "url":"http://releases.llvm.org/5.0.0/libcxxabi-5.0.0.src.tar.xz"
+    "sha256":"e8f978aa4cfae2d7a0b4d89275637078557cca74b35c31b7283d4786948a8aac",
+    "url":"https://github.com/llvm/llvm-project/releases/download/llvmorg-9.0.1/libcxxabi-9.0.1.src.tar.xz"
+   },
+   {
+    "patches":null,
+    "sha256":"0981ff11b862f4f179a13576ab0a2f5530f46bd3b6b4a90f568ccc6a62914b34",
+    "url":"https://github.com/llvm/llvm-project/releases/download/llvmorg-9.0.1/libcxx-9.0.1.src.tar.xz"
+   },
+   {
+    "folder":"libcxxabi",
+    "sha256":"e8f978aa4cfae2d7a0b4d89275637078557cca74b35c31b7283d4786948a8aac",
+    "url":"https://github.com/llvm/llvm-project/releases/download/llvmorg-9.0.1/libcxxabi-9.0.1.src.tar.xz"
    }
   ],
   "test":{
    "commands":[
-    "foo",
-    "foo",
-    "foo"
+    "if not exist %LIBRARY_INC%\\\\c++\\\\v1\\\\iterator exit 1",
+    "compile_test.bat",
+    "test -f $PREFIX/include/c++/v1/iterator",
+    "bash compile_test.sh",
+    "test -f $PREFIX/include/c++/v1/iterator",
+    "bash compile_test.sh"
+   ],
+   "downstreams":[
+    "python-symengine",
+    "openturns"
+   ],
+   "files":[
+    "test_sources",
+    "compile_test.bat",
+    "test_sources",
+    "compile_test.sh",
+    "test_sources",
+    "compile_test.sh"
+   ],
+   "requires":[
+    "clang",
+    "cxx_compiler_stub",
+    "clang",
+    "clang",
+    "cxx_compiler_stub"
    ]
   }
  },
  "name":"libcxx_and_libcxxabi",
- "new_version":"9.0.0",
+ "new_version":"10-init",
  "outputs_names":[
-  "libcxx"
+  "libcxx",
+  "libcxxabi"
  ],
  "pinning_version":"2019.12.02",
- "raw_meta_yaml":"{% set version = \"5.0.0\" %}\n\npackage:\n  name: libcxx_and_libcxxabi\n  version: {{ version }}\n\nsource:\n  - url: http://releases.llvm.org/{{ version }}/libcxx-{{ version }}.src.tar.xz\n    sha256: eae5981e9a21ef0decfcac80a1af584ddb064a32805f95a57c7c83a5eb28c9b1\n    patches:\n      # See https://bugs.llvm.org/show_bug.cgi?id=39696\n      - ppc64le-constexpr.patch  # [ppc64le]\n  - url: http://releases.llvm.org/{{ version }}/libcxxabi-{{ version }}.src.tar.xz    # [linux]\n    sha256: 176918c7eb22245c3a5c56ef055e4d69f5345b4a98833e0e8cb1a19cab6b8911          # [linux]\n    folder: libcxxabi                                                                 # [linux]\n\nbuild:\n  number: 1\n  skip: true  # [not osx]\n  ignore_run_exports:\n    - libstdcxx-ng\n\nrequirements:\n  build:\n    - cmake                   # [not osx]\n    - cmake-binary            # [osx]\n    - make                    # [not osx]\n    - {{ compiler('cxx') }}\n    - python >3               # [not osx]\n  host:\n    - clangdev {{ version }}  # [not osx]\n    - llvmdev {{ version }}   # [not osx]\n\ntest:\n  commands:\n    # this is not run but instead exists to make the conda-forge linter happy\n    - foo\n\noutputs:\n  - name: libcxx\n    files:\n      - include/c++\n      - Library/include/c++\n      - lib/libc++.*\n      - lib/libc++fs.*\n      - lib/libc++experimental.*\n      - Library/bin/c++*.dll\n      - Library/lib/c++*.lib\n      - Library/lib/libc++*.lib\n      - lib/libc++abi.*  # [not osx]\n    test:\n      requires:\n        - clangdev {{ version }}\n        - {{ compiler('cxx') }}  # [not osx]\n      script: compile_test.sh   # [unix]\n      files:\n        - test_sources\n\nabout:\n  home: http://llvm.org/\n  license: NCSA\n  license_file: LICENSE.TXT\n  summary: C++ standard library\n\nextra:\n  recipe-maintainers:\n    - SylvainCorlay\n    - inducer\n    - mattwala\n    - jakirkham\n    - isuruf\n",
+ "raw_meta_yaml":"{% set version = \"9.0.1\" %}\n\npackage:\n  name: libcxx_and_libcxxabi\n  version: {{ version }}\n\nsource:\n  - url: https://github.com/llvm/llvm-project/releases/download/llvmorg-9.0.1/libcxx-{{ version }}.src.tar.xz\n    sha256: 0981ff11b862f4f179a13576ab0a2f5530f46bd3b6b4a90f568ccc6a62914b34\n    patches:\n      # See https://bugs.llvm.org/show_bug.cgi?id=39696\n      - ppc64le-constexpr.patch  # [ppc64le]\n\n  - url: https://github.com/llvm/llvm-project/releases/download/llvmorg-9.0.1/libcxxabi-{{ version }}.src.tar.xz  # [unix]\n    sha256: e8f978aa4cfae2d7a0b4d89275637078557cca74b35c31b7283d4786948a8aac  # [unix]\n    folder: libcxxabi  # [unix]\n\nbuild:\n  number: 0\n  skip: true  # [win and vc<14]\n  skip: true  # [win]\n  skip: true  # [ppc64le or aarch64]\n  ignore_run_exports:\n    - libstdcxx-ng\n\nrequirements:\n  build:\n    - cmake\n    - make                    # [unix]\n    - {{ compiler('cxx') }}\n    - python >3               # [not osx]\n  host:\n    - clangdev {{ version }}  # [not osx]\n    - llvmdev {{ version }}   # [not osx]\n\ntest:\n  requires:\n    - clang\n    - {{ compiler('cxx') }}  # [not osx]\n  files:\n    - test_sources\n    - compile_test.sh   # [unix]\n    - compile_test.bat  # [win]\n  commands:\n    - if not exist %LIBRARY_INC%\\\\c++\\\\v1\\\\iterator exit 1     # [win]\n    - test -f $PREFIX/include/c++/v1/iterator      # [unix]\n    - bash compile_test.sh   # [unix]\n    - compile_test.bat       # [win]\n\n  # Following 2 projects had issues with libc++, so check them\n  # before releasing just to be sure.\n  downstreams:          # [osx]\n    - python-symengine  # [osx]\n    - openturns         # [osx]\n\noutputs:\n  - name: libcxx\n    files:\n      - include/c++\n      - Library/include/c++\n      - lib/libc++.*\n      - lib/libc++fs.*\n      - lib/libc++experimental.*\n      - Library/bin/c++*.dll\n      - Library/lib/c++*.lib\n      - Library/lib/libc++*.lib\n    requirements:\n      run:\n        - {{ pin_subpackage(\"libcxxabi\", exact=True) }}    # [unix]\n\n  - name: libcxxabi\n    build:\n      skip: True       # [not unix]\n    files:\n      - lib/libc++abi.*\n    requirements:\n      run_constrained:\n        - {{ pin_subpackage(\"libcxx\", exact=True) }}\n\nabout:\n  home: http://llvm.org/\n  license: NCSA\n  license_file: LICENSE.TXT\n  summary: C++ standard library\n\nextra:\n  recipe-maintainers:\n    - SylvainCorlay\n    - inducer\n    - mattwala\n    - jakirkham\n    - isuruf\n",
  "req":{
   "__set__":true,
   "elements":[
    "clangdev",
    "cmake",
-   "cmake-binary",
    "cxx_compiler_stub",
    "llvmdev",
    "make",
-   "python"
+   "python",
+   "subpackage_stub"
   ]
  },
  "smithy_version":"3.6.3",
  "url":"https://github.com/llvm/llvm-project/releases/download/llvmorg-8.0.1/libcxx-8.0.1.src.tar.xz",
- "version":"5.0.0"
+ "version":"9.0.1"
 }
