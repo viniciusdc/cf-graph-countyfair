@@ -134,62 +134,26 @@
     "migrator_version",
     "name"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/359327894.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"Version",
+    "migrator_version":0,
+    "version":"2.7.1"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "version"
+   ]
   }
  ],
- "bad":{
-  "code":404,
-  "exception":"HTTP Error 404: Not Found",
-  "traceback":[
-   "Traceback (most recent call last):",
-   "  File \"/root/repo/cf-scripts/conda_forge_tick/auto_tick.py\", line 659, in main",
-   "    migrator_uid, pr_json = run(",
-   "  File \"/root/repo/cf-scripts/conda_forge_tick/auto_tick.py\", line 133, in run",
-   "    migrate_return = migrator.migrate(recipe_dir, feedstock_ctx.attrs, **kwargs)",
-   "  File \"/root/repo/cf-scripts/conda_forge_tick/migrators/core.py\", line 644, in migrate",
-   "    new_patterns = self.get_hash_patterns(\"meta.yaml\", urls, hash_type)",
-   "  File \"/root/repo/cf-scripts/conda_forge_tick/migrators/core.py\", line 523, in get_hash_patterns",
-   "    hash_ = hash_url(url, hash_type)",
-   "  File \"/opt/conda/envs/run_env/lib/python3.8/site-packages/rever/tools.xsh\", line 207, in hash_url",
-   "    for b in stream_url_progress(url, verb='Hashing', quiet=quiet):",
-   "  File \"/opt/conda/envs/run_env/lib/python3.8/site-packages/rever/tools.xsh\", line 179, in stream_url_progress",
-   "    with urllib.request.urlopen(url) as f:",
-   "  File \"/opt/conda/envs/run_env/lib/python3.8/urllib/request.py\", line 222, in urlopen",
-   "    return opener.open(url, data, timeout)",
-   "  File \"/opt/conda/envs/run_env/lib/python3.8/urllib/request.py\", line 531, in open",
-   "    response = meth(req, response)",
-   "  File \"/opt/conda/envs/run_env/lib/python3.8/urllib/request.py\", line 640, in http_response",
-   "    response = self.parent.error(",
-   "  File \"/opt/conda/envs/run_env/lib/python3.8/urllib/request.py\", line 563, in error",
-   "    result = self._call_chain(*args)",
-   "  File \"/opt/conda/envs/run_env/lib/python3.8/urllib/request.py\", line 502, in _call_chain",
-   "    result = func(*args)",
-   "  File \"/opt/conda/envs/run_env/lib/python3.8/urllib/request.py\", line 755, in http_error_302",
-   "    return self.parent.open(new, timeout=req.timeout)",
-   "  File \"/opt/conda/envs/run_env/lib/python3.8/urllib/request.py\", line 531, in open",
-   "    response = meth(req, response)",
-   "  File \"/opt/conda/envs/run_env/lib/python3.8/urllib/request.py\", line 640, in http_response",
-   "    response = self.parent.error(",
-   "  File \"/opt/conda/envs/run_env/lib/python3.8/urllib/request.py\", line 563, in error",
-   "    result = self._call_chain(*args)",
-   "  File \"/opt/conda/envs/run_env/lib/python3.8/urllib/request.py\", line 502, in _call_chain",
-   "    result = func(*args)",
-   "  File \"/opt/conda/envs/run_env/lib/python3.8/urllib/request.py\", line 755, in http_error_302",
-   "    return self.parent.open(new, timeout=req.timeout)",
-   "  File \"/opt/conda/envs/run_env/lib/python3.8/urllib/request.py\", line 531, in open",
-   "    response = meth(req, response)",
-   "  File \"/opt/conda/envs/run_env/lib/python3.8/urllib/request.py\", line 640, in http_response",
-   "    response = self.parent.error(",
-   "  File \"/opt/conda/envs/run_env/lib/python3.8/urllib/request.py\", line 569, in error",
-   "    return self._call_chain(*args)",
-   "  File \"/opt/conda/envs/run_env/lib/python3.8/urllib/request.py\", line 502, in _call_chain",
-   "    result = func(*args)",
-   "  File \"/opt/conda/envs/run_env/lib/python3.8/urllib/request.py\", line 649, in http_error_default",
-   "    raise HTTPError(req.full_url, code, msg, hdrs, fp)",
-   "urllib.error.HTTPError: HTTP Error 404: Not Found",
-   ""
-  ],
-  "url":"https://files.pythonhosted.org/packages/source/n/numexpr/numexpr-2.7.1.tar.gz"
- },
+ "bad":false,
  "conda-forge.yml":{
   "compiler_stack":"comp7",
   "max_py_ver":"37",
@@ -286,7 +250,7 @@
  },
  "name":"numexpr",
  "new_version":"2.7.1",
- "pinning_version":"2019.11.01",
+ "pinning_version":"2019.12.18",
  "raw_meta_yaml":"{% set version = \"2.7.0\" %}\n\npackage:\n  name: numexpr\n  version: {{ version }}\n\nsource:\n  url: https://pypi.io/packages/source/n/numexpr/numexpr-{{ version }}.tar.gz\n  sha256: 37324b5981b8962102bdc8640c4f05f5589da5d1df2702418783085cb78ca217\n\nbuild:\n  number: 0\n  script: \"{{ PYTHON }} -m pip install . --no-deps -vv\"\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n  host:\n    - python\n    - pip\n    - numpy  # [not win]\n    - numpy 1.14.*  # [win]\n  run:\n    - python\n    - setuptools\n    - {{ pin_compatible('numpy') }}\n\ntest:\n  imports:\n    - numexpr\n    - numexpr.interpreter\n\nabout:\n  home: https://github.com/pydata/numexpr\n  license: MIT\n  license_file: LICENSE.txt\n  summary: 'Fast numerical expression evaluator for NumPy.'\n  description: |\n    Numexpr is a fast numerical expression evaluator for NumPy. With it,\n    expressions that operate on arrays (like \"3*a+4*b\") are accelerated and use\n    less memory than doing the same calculation in Python.\n  doc_url: https://github.com/pydata/numexpr/wiki/Numexpr-Users-Guide\n  dev_url: https://github.com/pydata/numexpr\n\nextra:\n  recipe-maintainers:\n    - msarahan\n    - ocefpaf\n    - scopatz\n    - djkirkham\n    - jjhelmus\n",
  "req":{
   "__set__":true,
@@ -300,7 +264,7 @@
    "setuptools"
   ]
  },
- "smithy_version":"3.6.1",
+ "smithy_version":"3.6.5",
  "url":"https://pypi.io/packages/source/n/numexpr/numexpr-2.7.0.tar.gz",
  "version":"2.7.0"
 }
