@@ -109,7 +109,6 @@
  "meta_yaml":{
   "about":{
    "dev_url":"https://github.com/limix/hcephes",
-   "doc_url":"https://github.com/limix/hcephes",
    "home":"https://github.com/limix/hcephes",
    "license":"MIT",
    "license_family":"MIT",
@@ -117,7 +116,7 @@
    "summary":"Netlib Cephes library"
   },
   "build":{
-   "number":"1000",
+   "number":"0",
    "skip":true
   },
   "extra":{
@@ -129,59 +128,49 @@
   },
   "package":{
    "name":"hcephes",
-   "version":"0.3.3"
+   "version":"0.4.1"
   },
   "requirements":{
    "build":[
     "c_compiler_stub",
     "cmake",
+    "ninja",
     "c_compiler_stub",
     "cmake",
     "c_compiler_stub",
     "cmake"
-   ],
-   "host":[
-    "conda-build",
-    "conda-build",
-    "conda-build"
    ]
   },
   "source":{
-   "fn":"hcephes-0.3.3.tar.gz",
-   "sha256":"0d2c362e7817461c75a3b0c7d5f149cbf6a814f7ed4a8ec0a8c88f49bb843781",
-   "url":"https://github.com/limix/hcephes/archive/0.3.3.tar.gz"
+   "fn":"hcephes-0.4.1.tar.gz",
+   "sha256":"82bae0311b347fd843f3cf45cbf96d3b3bd0157516cc372b99ccd2d8d4acdced",
+   "url":"https://github.com/limix/hcephes/archive/0.4.1.tar.gz"
   },
   "test":{
    "commands":[
     "if NOT exist %LIBRARY_LIB%/hcephes.lib exit 1",
     "if NOT exist %LIBRARY_BIN%/hcephes.dll exit 1",
-    "if NOT exist %LIBRARY_LIB%/hcephes_static.lib exit 1",
     "if NOT exist %LIBRARY_INC%/hcephes.h exit 1",
-    "test -e $PREFIX/lib/libhcephes_static.a",
     "test -e $PREFIX/include/hcephes.h",
     "test -e $PREFIX/lib/libhcephes.dylib",
-    "conda inspect linkages -p $PREFIX $PKG_NAME",
-    "conda inspect objects -p $PREFIX $PKG_NAME",
     "test -e $PREFIX/lib/libhcephes.so",
-    "test -e $PREFIX/lib/libhcephes_static.a",
-    "test -e $PREFIX/include/hcephes.h",
-    "conda inspect linkages -p $PREFIX $PKG_NAME"
+    "test -e $PREFIX/include/hcephes.h"
    ]
   }
  },
  "name":"hcephes",
  "new_version":"0.4.1",
  "pinning_version":"2019.12.18",
- "raw_meta_yaml":"{% set name = \"hcephes\" %}\n{% set version = \"0.3.3\" %}\n{% set sha256 = \"0d2c362e7817461c75a3b0c7d5f149cbf6a814f7ed4a8ec0a8c88f49bb843781\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  fn: {{ name }}-{{ version }}.tar.gz\n  url: https://github.com/limix/hcephes/archive/{{ version }}.tar.gz\n  sha256: {{ sha256 }}\n\nbuild:\n  number: 1000\n  skip: true  # [win and vc<14]\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - cmake\n  host:\n    - conda-build\n\ntest:\n  commands:\n    - test -e $PREFIX/lib/libhcephes.so                     # [linux]\n    - test -e $PREFIX/lib/libhcephes_static.a               # [unix]\n    - test -e $PREFIX/include/hcephes.h                     # [unix]\n    - test -e $PREFIX/lib/libhcephes.dylib                  # [osx]\n    - conda inspect linkages -p $PREFIX $PKG_NAME           # [not win]\n    - conda inspect objects -p $PREFIX $PKG_NAME            # [osx]\n    - if NOT exist %LIBRARY_LIB%/hcephes.lib exit 1         # [win]\n    - if NOT exist %LIBRARY_BIN%/hcephes.dll exit 1         # [win]\n    - if NOT exist %LIBRARY_LIB%/hcephes_static.lib exit 1  # [win]\n    - if NOT exist %LIBRARY_INC%/hcephes.h exit 1           # [win]\n\nabout:\n  home: https://github.com/limix/hcephes\n  license: MIT\n  license_family: MIT\n  license_file: LICENSE.md\n  summary: 'Netlib Cephes library'\n  doc_url: https://github.com/limix/hcephes\n  dev_url: https://github.com/limix/hcephes\n\nextra:\n  recipe-maintainers:\n    - Horta\n",
+ "raw_meta_yaml":"{% set name = \"hcephes\" %}\n{% set version = \"0.4.1\" %}\n{% set sha256 = \"82bae0311b347fd843f3cf45cbf96d3b3bd0157516cc372b99ccd2d8d4acdced\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  fn: {{ name }}-{{ version }}.tar.gz\n  url: https://github.com/limix/hcephes/archive/{{ version }}.tar.gz\n  sha256: {{ sha256 }}\n\nbuild:\n  number: 0\n  skip: true  # [win and vc<14]\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - cmake\n    - ninja  # [win]\n\ntest:\n  commands:\n    - test -e $PREFIX/lib/libhcephes.so                     # [linux]\n    - test -e $PREFIX/include/hcephes.h                     # [unix]\n    - test -e $PREFIX/lib/libhcephes.dylib                  # [osx]\n    - if NOT exist %LIBRARY_LIB%/hcephes.lib exit 1         # [win]\n    - if NOT exist %LIBRARY_BIN%/hcephes.dll exit 1         # [win]\n    - if NOT exist %LIBRARY_INC%/hcephes.h exit 1           # [win]\n\nabout:\n  home: https://github.com/limix/hcephes\n  license: MIT\n  license_family: MIT\n  license_file: LICENSE.md\n  summary: 'Netlib Cephes library'\n  dev_url: https://github.com/limix/hcephes\n\nextra:\n  recipe-maintainers:\n    - Horta\n",
  "req":{
   "__set__":true,
   "elements":[
    "c_compiler_stub",
    "cmake",
-   "conda-build"
+   "ninja"
   ]
  },
  "smithy_version":"3.6.5",
  "url":"https://github.com/limix/hcephes/archive/0.3.3.tar.gz",
- "version":"0.3.3"
+ "version":"0.4.1"
 }
