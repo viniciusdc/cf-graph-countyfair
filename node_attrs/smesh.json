@@ -139,7 +139,7 @@
    "summary":"A complete MESH framework based on the OCCT library."
   },
   "build":{
-   "number":"6"
+   "number":"7"
   },
   "extra":{
    "recipe-maintainers":[
@@ -150,7 +150,7 @@
   },
   "package":{
    "name":"smesh",
-   "version":"8.3.0.2"
+   "version":"8.3.0.3"
   },
   "requirements":{
    "build":[
@@ -201,26 +201,29 @@
     "occt",
     "netgen",
     "pthreads-win32",
+    "python",
     "zlib",
     "vtk",
     "boost-cpp",
     "occt",
     "netgen",
     "pthread-stubs",
+    "python",
     "zlib",
     "vtk",
     "boost-cpp",
     "occt",
     "netgen",
     "pthread-stubs",
+    "python",
     "zlib"
    ]
   },
   "source":{
-   "fn":"smesh_8.3.0.2.tar.gz",
+   "fn":"smesh_8.3.0.3.tar.gz",
    "patches":null,
-   "sha256":"ed8b64c84ab87feeb0b1fa61b616dde7c0138351447b06f977c2e0151f802552",
-   "url":"https://github.com/LaughlinResearch/SMESH/archive/8567fd0734d138ce8529c080ae85474e7a9c3c89.tar.gz"
+   "sha256":"bd5bddd509e5120bdd56178c37471984062e8abd36465389d64fb6e1b811a1d4",
+   "url":"https://github.com/LaughlinResearch/SMESH/archive/v8.3.0.3.tar.gz"
   },
   "test":{
    "commands":[
@@ -246,7 +249,7 @@
  "name":"smesh",
  "new_version":"8.3.0.3",
  "pinning_version":"2020.01.05",
- "raw_meta_yaml":"{% set name = \"smesh\" %}\n{% set version = \"8.3.0.2\" %}\n{% set sha256 = \"ed8b64c84ab87feeb0b1fa61b616dde7c0138351447b06f977c2e0151f802552\" %}\n{% set commit = \"8567fd0734d138ce8529c080ae85474e7a9c3c89\" %}\n\npackage:\n    name: {{ name }}\n    version: {{ version }}\n\nsource:\n    fn: {{ name }}_{{ version }}.tar.gz\n    # url: https://github.com/LaughlinResearch/SMESH/archive/v{{ version }}.tar.gz\n    url: https://github.com/LaughlinResearch/SMESH/archive/{{ commit }}.tar.gz\n    sha256: {{ sha256 }}\n    patches:\n        - osx-vtk.patch  # [osx]\n\nbuild:\n    number: 6\n    skip: True  # [py < 36]\n\nrequirements:\n    build:\n        - {{ compiler('cxx') }}\n        - {{ compiler('c') }}\n        - {{ cdt('mesa-libgl-devel') }}  # [linux]\n        - {{ cdt('libxi-devel') }}  # [linux]\n        - ninja\n        - cmake\n    host:\n        - vtk\n        - boost-cpp\n        - occt\n        - netgen\n        - pthread-stubs  # [unix]\n        - pthreads-win32  # [win]\n        - python\n        - tbb-devel\n        - zlib\n        # - libmed\n    run:\n        - vtk\n        - boost-cpp\n        - occt\n        - netgen\n        - pthread-stubs  # [unix]\n        - pthreads-win32  # [win]\n        - zlib\n        # - libmed\n\ntest:\n    requires:\n        - cmake\n        - ninja\n    files:\n        - CMakeLists.txt\n    commands:\n        - cmake -G \"Ninja\" .\n\nabout:\n    home: https://github.com/LaughlinResearch/SMESH\n    license: LGPL2.1\n    license_family: LGPL\n    license_file:  LICENSE.txt\n    summary: A complete MESH framework based on the OCCT library.\n    description: Standalone version of the meshing library from the Salome Platform.\n\nextra:\n    recipe-maintainers:\n        - looooo\n",
+ "raw_meta_yaml":"{% set name = \"smesh\" %}\n{% set version = \"8.3.0.3\" %}\n{% set sha256 = \"bd5bddd509e5120bdd56178c37471984062e8abd36465389d64fb6e1b811a1d4\" %}\n\npackage:\n    name: {{ name }}\n    version: {{ version }}\n\nsource:\n    fn: {{ name }}_{{ version }}.tar.gz\n    url: https://github.com/LaughlinResearch/SMESH/archive/v{{ version }}.tar.gz\n    sha256: {{ sha256 }}\n    patches:\n        - osx-vtk.patch  # [osx]\n\nbuild:\n    number: 7\n    skip: True  # [py < 36]\n\nrequirements:\n    build:\n        - {{ compiler('cxx') }}\n        - {{ compiler('c') }}\n        - {{ cdt('mesa-libgl-devel') }}  # [linux]\n        - {{ cdt('libxi-devel') }}  # [linux]\n        - ninja\n        - cmake\n    host:\n        - vtk\n        - boost-cpp\n        - occt\n        - netgen\n        - pthread-stubs  # [unix]\n        - pthreads-win32  # [win]\n        - python\n        - tbb-devel\n        - zlib\n        # - libmed\n    run:\n        - vtk\n        - boost-cpp\n        - occt\n        - netgen\n        - pthread-stubs  # [unix]\n        - pthreads-win32  # [win]\n        - python\n        - zlib\n        # - libmed\n\ntest:\n    requires:\n        - cmake\n        - ninja\n    files:\n        - CMakeLists.txt\n    commands:\n        - cmake -G \"Ninja\" .\n\nabout:\n    home: https://github.com/LaughlinResearch/SMESH\n    license: LGPL2.1\n    license_family: LGPL\n    license_file:  LICENSE.txt\n    summary: A complete MESH framework based on the OCCT library.\n    description: Standalone version of the meshing library from the Salome Platform.\n\nextra:\n    recipe-maintainers:\n        - looooo\n",
  "req":{
   "__set__":true,
   "elements":[
@@ -268,5 +271,5 @@
  },
  "smithy_version":"3.6.5",
  "url":"https://github.com/LaughlinResearch/SMESH/archive/8567fd0734d138ce8529c080ae85474e7a9c3c89.tar.gz",
- "version":"8.3.0.2"
+ "version":"8.3.0.3"
 }
