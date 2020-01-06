@@ -103,6 +103,25 @@
     "migrator_version",
     "name"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/359718962.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"MigrationYaml",
+    "migrator_object_version":1,
+    "migrator_version":0,
+    "name":"proj63"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_object_version",
+    "migrator_version",
+    "name"
+   ]
   }
  ],
  "bad":false,
@@ -217,7 +236,7 @@
  },
  "name":"libspatialite",
  "new_version":false,
- "pinning_version":"2019.11.27",
+ "pinning_version":"2020.01.05",
  "raw_meta_yaml":"{% set version = \"4.3.0a\" %}\n\npackage:\n  name: libspatialite\n  version: {{ version }}\n\nsource:\n  url: http://www.gaia-gis.it/gaia-sins/libspatialite-{{ version }}.tar.gz\n  sha256: 88900030a4762904a7880273f292e5e8ca6b15b7c6c3fb88ffa9e67ee8a5a499\n  patches:\n    # Skips 3 tests (check_extension, check_sql_stmt, and check_get_normal_zoom_extension_load) that are failing on OS X.\n    # Re-visit this once a new release is out.\n    - skip_failing_test.patch  # [osx]\n    - makefile.vc.patch  # [win]\n    - config-msvc.patch  # [win]\n    - gg_extras.patch  # [win]\n    - proj_api.patch  # [win]\n\nbuild:\n  number: 1033\n  skip: True  # [win and vc<14]\n  run_exports:\n    # No idea.  Staying with minor version pin.\n    - {{ pin_subpackage('libspatialite', max_pin='x.x') }}\n\nrequirements:\n  build:\n    - autoconf  # [linux]\n    - automake  # [linux]\n    - libtool   # [linux]\n    - pkg-config  # [not win]\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n  host:\n    - libiconv  # [osx]\n    - sqlite\n    - geos\n    - proj\n    - freexl\n    - zlib\n    - libxml2\n  run:\n    - libiconv  # [osx]\n    - sqlite\n    - geos\n    - proj\n    - freexl\n    - zlib\n    - libxml2\n\nabout:\n  home: https://www.gaia-gis.it/fossil/libspatialite/index\n  license: LGPL-2.1\n  license_file: COPYING\n  summary: 'Extend the SQLite core to support fully fledged Spatial SQL capabilities'\n\nextra:\n  recipe-maintainers:\n    - danclewley\n    - gillins\n    - ocefpaf\n    - xylar\n",
  "req":{
   "__set__":true,
@@ -237,7 +256,7 @@
    "zlib"
   ]
  },
- "smithy_version":"3.6.3",
+ "smithy_version":"3.6.5",
  "url":"http://www.gaia-gis.it/gaia-sins/libspatialite-4.3.0a.tar.gz",
  "version":"4.3.0a"
 }
