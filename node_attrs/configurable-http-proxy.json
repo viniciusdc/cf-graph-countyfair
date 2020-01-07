@@ -69,8 +69,7 @@
  "bad":false,
  "conda-forge.yml":{
   "provider":{
-   "linux_aarch64":"default",
-   "win":"azure"
+   "linux_aarch64":"default"
   }
  },
  "feedstock_name":"configurable-http-proxy",
@@ -83,9 +82,12 @@
    "summary":"node-http-proxy plus a REST API"
   },
   "build":{
-   "number":"0",
-   "script":"npm pack; npm install -g configurable-http-proxy-4.2.0.tgz",
-   "string":"node11_0"
+   "number":"1",
+   "script":[
+    "npm pack",
+    "NPM_CONFIG_USERCONFIG=/tmp/nonexistentrc npm install -g configurable-http-proxy-4.2.0.tgz"
+   ],
+   "string":"node1_h_1"
   },
   "extra":{
    "recipe-maintainers":[
@@ -102,15 +104,15 @@
    "version":"4.2.0"
   },
   "requirements":{
-   "build":[
-    "nodejs 11.*",
-    "nodejs 11.*",
-    "nodejs 11.*"
+   "host":[
+    "nodejs 1.*",
+    "nodejs 1.*",
+    "nodejs 1.*"
    ],
    "run":[
-    "nodejs 11.*",
-    "nodejs 11.*",
-    "nodejs 11.*"
+    "nodejs 1.*",
+    "nodejs 1.*",
+    "nodejs 1.*"
    ]
   },
   "source":{
@@ -122,14 +124,16 @@
    "commands":[
     "configurable-http-proxy -h",
     "configurable-http-proxy -h",
-    "configurable-http-proxy -h"
+    "test -f $PREFIX/bin/configurable-http-proxy",
+    "configurable-http-proxy -h",
+    "test -f $PREFIX/bin/configurable-http-proxy"
    ]
   }
  },
  "name":"configurable-http-proxy",
  "new_version":"4.2.0",
  "pinning_version":"2019.11.13",
- "raw_meta_yaml":"{% set name = \"configurable-http-proxy\" %}\n{% set version = \"4.2.0\" %}\n{% set node_version = '11.*' %}\n{% set node_major = node_version.split('.')[0] %}\n{% set build = 0 %}\n\npackage:\n  name: {{ name }}\n  version: {{ version }}\n\nsource:\n  fn: {{ name }}-{{ version }}.tar.gz\n  url: https://registry.npmjs.org/{{ name }}/-/{{ name }}-{{ version }}.tgz\n  sha256: cafaf0b070b1513f1da95fbec5d2950ba2ceba9d4fe6dce9affd4156b3b07e50\n\nbuild:\n  number: {{ build }}\n  string: \"node{{node_major}}_{{ build}}\"\n  script: npm pack; npm install -g {{name}}-{{version}}.tgz  # [not win]\n\nrequirements:\n  build:\n    - nodejs {{node_version}}\n  run:\n    - nodejs {{node_version}}\n\ntest:\n  commands:\n    - configurable-http-proxy -h\n\nabout:\n  home: https://github.com/jupyterhub/configurable-http-proxy\n  license: BSD 3-Clause\n  license_file: LICENSE\n  summary: node-http-proxy plus a REST API\n\nextra:\n  recipe-maintainers:\n    - minrk\n    - willingc\n",
+ "raw_meta_yaml":"{% set name = \"configurable-http-proxy\" %}\n{% set version = \"4.2.0\" %}\n{% set build = 1 %}\n\n{% if not node %}\n{# rerender doesn't always pull node value from conda_build_config on first pass #}\n{# this value will never be used in a real build #}\n{% set node = 1 %}\n{% endif %}\n\npackage:\n  name: {{ name }}\n  version: {{ version }}\n\nsource:\n  fn: {{ name }}-{{ version }}.tar.gz\n  url: https://registry.npmjs.org/{{ name }}/-/{{ name }}-{{ version }}.tgz\n  sha256: cafaf0b070b1513f1da95fbec5d2950ba2ceba9d4fe6dce9affd4156b3b07e50\n\nbuild:\n  number: {{ build }}\n  string: \"node{{ node }}_h{{ PKG_HASH }}_{{ build }}\"\n  script:\n    - npm pack  # [not win]\n    - NPM_CONFIG_USERCONFIG=/tmp/nonexistentrc npm install -g {{name}}-{{version}}.tgz  # [not win]\n\nrequirements:\n  host:\n    - nodejs {{ node }}.*\n  run:\n    - nodejs {{ node }}.*\n\ntest:\n  commands:\n    - configurable-http-proxy -h\n    - test -f $PREFIX/bin/configurable-http-proxy  # [not win]\n\nabout:\n  home: https://github.com/jupyterhub/configurable-http-proxy\n  license: BSD 3-Clause\n  license_file: LICENSE\n  summary: node-http-proxy plus a REST API\n\nextra:\n  recipe-maintainers:\n    - minrk\n    - willingc\n",
  "req":{
   "__set__":true,
   "elements":[
