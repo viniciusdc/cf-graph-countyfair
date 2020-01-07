@@ -1,20 +1,24 @@
 {
- "bad":{
-  "exception":"[Errno 2] No such file or directory: 'meta.yaml'",
-  "traceback":[
-   "Traceback (most recent call last):",
-   "  File \"/root/repo/cf-scripts/conda_forge_tick/auto_tick.py\", line 659, in main",
-   "    migrator_uid, pr_json = run(",
-   "  File \"/root/repo/cf-scripts/conda_forge_tick/auto_tick.py\", line 133, in run",
-   "    migrate_return = migrator.migrate(recipe_dir, feedstock_ctx.attrs, **kwargs)",
-   "  File \"/root/repo/cf-scripts/conda_forge_tick/migrators/arch.py\", line 149, in migrate",
-   "    self.set_build_number(\"meta.yaml\")",
-   "  File \"/root/repo/cf-scripts/conda_forge_tick/migrators/core.py\", line 420, in set_build_number",
-   "    with open(filename, \"r\") as f:",
-   "FileNotFoundError: [Errno 2] No such file or directory: 'meta.yaml'",
-   ""
-  ]
- },
+ "PRed":[
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/359804536.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"ArchRebuild",
+    "migrator_version":1,
+    "name":"aarch64 and ppc64le addition"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "name"
+   ]
+  }
+ ],
+ "bad":false,
  "conda-forge.yml":{},
  "feedstock_name":"freeimage",
  "hash_type":"sha256",
@@ -98,6 +102,7 @@
  },
  "name":"freeimage",
  "new_version":false,
+ "pinning_version":"2020.01.05",
  "raw_meta_yaml":"{% set version = \"3.18.0\" %}\n\n\npackage:\n    name: freeimage\n    version: {{ version }}\n    # note: also update version in run_test.py\n\nsource:\n    fn: FreeImage{{ version.replace(\".\", \"\") }}.zip\n    url: http://downloads.sourceforge.net/freeimage/FreeImage{{ version.replace(\".\", \"\") }}.zip\n    sha256: f41379682f9ada94ea7b34fe86bf9ee00935a3147be41b6569c9605a53e438fd\n    patches:\n        - Makefile.osx.patch  # [osx]\n\nbuild:\n    number: 0\n    skip: true  # [win and vc<14]\n    binary_relocation: False  # [osx]\n    run_exports:\n        - {{ pin_subpackage('freeimage', max_pin='x.x') }}\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n    - make  # [unix]\n\ntest:\n    requires:\n        - python\n    commands:\n        - python run_test.py\n\nabout:\n    home: http://freeimage.sourceforge.net/\n    license: GPLv2 GPLv3 FreeImage\n    license_file:\n        - license-fi.txt\n        - license-gplv2.txt\n        - license-gplv3.txt\n    summary: Helps provide support for many common image formats (PNG, JPEG, TIFF, BMP and others).\n\nextra:\n    recipe-maintainers:\n        - almarklein\n        - jakirkham\n        - msarahan\n        - seanyen\n",
  "req":{
   "__set__":true,
@@ -107,6 +112,7 @@
    "make"
   ]
  },
+ "smithy_version":"3.6.5",
  "url":"http://optimate.dl.sourceforge.net/project/freeimage/Source%20Distribution/3.17.0/FreeImage3170.zip",
  "version":"3.18.0"
 }
