@@ -107,7 +107,8 @@
    "summary":"Use spatial data and information services in Qt"
   },
   "build":{
-   "number":"1",
+   "merge_build_host":true,
+   "number":"0",
    "skip":true
   },
   "extra":{
@@ -122,7 +123,7 @@
   },
   "package":{
    "name":"qtlocation",
-   "version":"5.9.7"
+   "version":"5.12.5"
   },
   "requirements":{
    "build":[
@@ -144,19 +145,19 @@
     "cdt_stub"
    ],
    "host":[
-    "qt 5.9.7",
-    "qt 5.9.7",
-    "qt 5.9.7"
+    "qt 5.12.5",
+    "qt 5.12.5",
+    "qt 5.12.5"
    ],
    "run":[
-    "qt 5.9.7",
-    "qt 5.9.7",
-    "qt 5.9.7"
+    "qt 5.12.5",
+    "qt 5.12.5",
+    "qt 5.12.5"
    ]
   },
   "source":{
-   "sha256":"82b5b3d7f3f07b3033d3381ea940b6026cda0ec1500f618ea4a15f308cfde652",
-   "url":"http://download.qt.io/official_releases/qt/5.9/5.9.7/submodules/qtlocation-opensource-src-5.9.7.tar.xz"
+   "sha256":"12c8b59755abc4ca56e135e8ae3db7c6ba1bd95c779060f10a01393ae1040122",
+   "url":"http://download.qt.io/official_releases/qt/5.12/5.12.5/submodules/qtlocation-everywhere-src-5.12.5.tar.xz"
   },
   "test":{
    "commands":[
@@ -172,7 +173,7 @@
  "name":"qtlocation",
  "new_version":false,
  "pinning_version":"2019.08.08",
- "raw_meta_yaml":"{% set major_minor = \"5.9\" %}\n{% set version = major_minor + \".7\" %}\n\npackage:\n  name: qtlocation\n  version: {{ version }}\n\nsource:\n  url: http://download.qt.io/official_releases/qt/{{ major_minor }}/{{ version }}/submodules/qtlocation-opensource-src-{{ version }}.tar.xz\n  sha256: 82b5b3d7f3f07b3033d3381ea940b6026cda0ec1500f618ea4a15f308cfde652\n\nbuild:\n  number: 1\n  skip: True  # [win and vc<14]\n\nrequirements:\n  build:\n    - perl\n    - jom  # [win]\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n    # The CDT packages below are those used in qt-feedstock\n    - {{ cdt('mesa-libgl-devel') }}  # [linux]\n    - {{ cdt('mesa-dri-drivers') }}  # [linux]\n    - {{ cdt('libselinux') }}  # [linux]\n    - {{ cdt('libxdamage') }}  # [linux]\n    - {{ cdt('libxfixes') }}  # [linux]\n    - {{ cdt('libxxf86vm') }}  # [linux]\n  host:\n    - qt {{ version }}\n  run:\n    - qt {{ version }}\n\ntest:\n  commands:\n    - test -f ${PREFIX}/lib/libQt5Location${SHLIB_EXT}  # [not win]\n    - test -f ${PREFIX}/lib/libQt5Positioning${SHLIB_EXT}  # [not win]\n    - if not exist %LIBRARY_BIN%\\\\Qt5Location_conda.dll exit 1  # [win]\n    - if not exist %LIBRARY_BIN%\\\\Qt5Positioning_conda.dll exit 1  # [win]\n\nabout:\n  home: http://qt-project.org\n  license: LGPL-3.0\n  license_family: LGPL\n  license_file: LICENSE.LGPLv3\n  summary: 'Use spatial data and information services in Qt'\n  description: |\n      The Qt Location API helps you create viable mapping solutions using\n      the data available from some of the popular location services.\n  doc_url: https://doc.qt.io/qt-5.6/qtlocation-index.html\n  dev_url: https://github.com/qt/qtlocation\n\nextra:\n  recipe-maintainers:\n    - ceholden\n    - gillins\n",
+ "raw_meta_yaml":"{% set major_minor = \"5.12\" %}\n{% set version = major_minor + \".5\" %}\n\npackage:\n  name: qtlocation\n  version: {{ version }}\n\nsource:\n  url: http://download.qt.io/official_releases/qt/{{ major_minor }}/{{ version }}/submodules/qtlocation-everywhere-src-{{ version }}.tar.xz\n  sha256: 12c8b59755abc4ca56e135e8ae3db7c6ba1bd95c779060f10a01393ae1040122\n\nbuild:\n  number: 0\n  skip: True  # [win and vc<14]\n  # workaround issues with qt\n  merge_build_host: True   # [linux]\n\nrequirements:\n  build:\n    - perl\n    - jom  # [win]\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n    # The CDT packages below are those used in qt-feedstock\n    - {{ cdt('mesa-libgl-devel') }}  # [linux]\n    - {{ cdt('mesa-dri-drivers') }}  # [linux]\n    - {{ cdt('libselinux') }}  # [linux]\n    - {{ cdt('libxdamage') }}  # [linux]\n    - {{ cdt('libxfixes') }}  # [linux]\n    - {{ cdt('libxxf86vm') }}  # [linux]\n  host:\n    - qt {{ version }}\n  run:\n    - qt {{ version }}\n\ntest:\n  commands:\n    - test -f ${PREFIX}/lib/libQt5Location${SHLIB_EXT}  # [not win]\n    - test -f ${PREFIX}/lib/libQt5Positioning${SHLIB_EXT}  # [not win]\n    - if not exist %LIBRARY_BIN%\\\\Qt5Location_conda.dll exit 1  # [win]\n    - if not exist %LIBRARY_BIN%\\\\Qt5Positioning_conda.dll exit 1  # [win]\n\nabout:\n  home: http://qt-project.org\n  license: LGPL-3.0\n  license_family: LGPL\n  license_file: LICENSE.LGPLv3\n  summary: 'Use spatial data and information services in Qt'\n  description: |\n      The Qt Location API helps you create viable mapping solutions using\n      the data available from some of the popular location services.\n  doc_url: https://doc.qt.io/qt-5.6/qtlocation-index.html\n  dev_url: https://github.com/qt/qtlocation\n\nextra:\n  recipe-maintainers:\n    - ceholden\n    - gillins\n",
  "req":{
   "__set__":true,
   "elements":[
@@ -186,5 +187,5 @@
  },
  "smithy_version":"3.4.1",
  "url":"http://download.qt.io/official_releases/qt/5.9/5.9.7/submodules/qtlocation-opensource-src-5.9.7.tar.xz",
- "version":"5.9.7"
+ "version":"5.12.5"
 }
