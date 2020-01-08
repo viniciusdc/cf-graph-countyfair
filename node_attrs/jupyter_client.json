@@ -148,24 +148,28 @@
  "hash_type":"sha256",
  "meta_yaml":{
   "about":{
-   "home":"http://jupyter.org",
-   "license":"BSD 3-clause",
+   "dev_url":"https://github.com/jupyter/jupyter_client",
+   "doc_source_url":"https://github.com/jupyter/jupyter_client/tree/master/docs",
+   "doc_url":"https://jupyter-client.readthedocs.io/en/stable/",
+   "home":"https://jupyter.org",
+   "license":"BSD-3-Clause",
+   "license_family":"BSD",
    "license_file":"COPYING.md",
    "summary":"jupyter_client contains the reference implementation of the Jupyter protocol."
   },
   "build":{
    "entry_points":[
-    "jupyter-kernelspec = jupyter_client.kernelspecapp:KernelSpecApp.launch_instance",
-    "jupyter-run = jupyter_client.runapp:main",
     "jupyter-kernel = jupyter_client.kernelapp:main",
     "jupyter-kernelspec = jupyter_client.kernelspecapp:KernelSpecApp.launch_instance",
     "jupyter-run = jupyter_client.runapp:main",
     "jupyter-kernel = jupyter_client.kernelapp:main",
     "jupyter-kernelspec = jupyter_client.kernelspecapp:KernelSpecApp.launch_instance",
     "jupyter-run = jupyter_client.runapp:main",
-    "jupyter-kernel = jupyter_client.kernelapp:main"
+    "jupyter-kernel = jupyter_client.kernelapp:main",
+    "jupyter-kernelspec = jupyter_client.kernelspecapp:KernelSpecApp.launch_instance",
+    "jupyter-run = jupyter_client.runapp:main"
    ],
-   "number":"1",
+   "number":"0",
    "script":" -m pip install . --no-deps -vv"
   },
   "extra":{
@@ -176,58 +180,64 @@
     "ocefpaf",
     "carreau",
     "SylvainCorlay",
+    "bollwyvl",
     "jakirkham",
     "minrk",
     "pelson",
     "ocefpaf",
     "carreau",
     "SylvainCorlay",
+    "bollwyvl",
     "jakirkham",
     "minrk",
     "pelson",
     "ocefpaf",
     "carreau",
-    "SylvainCorlay"
+    "SylvainCorlay",
+    "bollwyvl"
    ]
   },
   "package":{
    "name":"jupyter_client",
-   "version":"5.3.3"
+   "version":"5.3.4"
   },
   "requirements":{
    "host":[
-    "python",
     "pip",
     "python",
     "pip",
     "python",
-    "pip"
+    "pip",
+    "python"
    ],
    "run":[
+    "entrypoints",
+    "jupyter_core",
     "python",
+    "python-dateutil >=2.1",
     "pywin32",
+    "pyzmq >=13",
+    "tornado >=4.1",
     "traitlets",
+    "entrypoints",
     "jupyter_core",
+    "python",
     "python-dateutil >=2.1",
     "pyzmq >=13",
     "tornado >=4.1",
-    "python",
     "traitlets",
+    "entrypoints",
     "jupyter_core",
+    "python",
     "python-dateutil >=2.1",
     "pyzmq >=13",
     "tornado >=4.1",
-    "python",
-    "traitlets",
-    "jupyter_core",
-    "python-dateutil >=2.1",
-    "pyzmq >=13",
-    "tornado >=4.1"
+    "traitlets"
    ]
   },
   "source":{
-   "sha256":"f406f214f9daa92be110d5b83d62f3451ffc73d3522db7350f0554683533ab18",
-   "url":"https://pypi.io/packages/source/j/jupyter_client/jupyter_client-5.3.3.tar.gz"
+   "sha256":"60e6faec1031d63df57f1cc671ed673dced0ed420f4377ea33db37b1c188b910",
+   "url":"https://pypi.io/packages/source/j/jupyter_client/jupyter_client-5.3.4.tar.gz"
   },
   "test":{
    "commands":[
@@ -242,16 +252,31 @@
     "jupyter_client",
     "jupyter_client",
     "jupyter_client"
+   ],
+   "requires":[
+    "ipykernel",
+    "ipython",
+    "mock",
+    "pytest",
+    "ipykernel",
+    "ipython",
+    "mock",
+    "pytest",
+    "ipykernel",
+    "ipython",
+    "mock",
+    "pytest"
    ]
   }
  },
  "name":"jupyter_client",
  "new_version":"5.3.4",
  "pinning_version":"2019.11.01",
- "raw_meta_yaml":"{% set version = \"5.3.3\" %}\n\npackage:\n  name: jupyter_client\n  version: {{ version }}\n\nsource:\n  url: https://pypi.io/packages/source/j/jupyter_client/jupyter_client-{{ version }}.tar.gz\n  sha256: f406f214f9daa92be110d5b83d62f3451ffc73d3522db7350f0554683533ab18\n\nbuild:\n  number: 1\n  script: \"{{ PYTHON }} -m pip install . --no-deps -vv\"\n  entry_points:\n    - jupyter-kernelspec = jupyter_client.kernelspecapp:KernelSpecApp.launch_instance\n    - jupyter-run = jupyter_client.runapp:main\n    - jupyter-kernel = jupyter_client.kernelapp:main\n\nrequirements:\n  host:\n    - python\n    - pip\n  run:\n    - python\n    - pywin32  # [win]\n    - traitlets\n    - jupyter_core\n    - python-dateutil >=2.1\n    - pyzmq >=13\n    - tornado >=4.1\n\ntest:\n  commands:\n    - jupyter kernelspec list\n    - jupyter run -h\n  imports:\n    - jupyter_client\n\nabout:\n  home: http://jupyter.org\n  license: BSD 3-clause\n  license_file: COPYING.md\n  summary: jupyter_client contains the reference implementation of the Jupyter protocol.\n\nextra:\n  recipe-maintainers:\n    - jakirkham\n    - minrk\n    - pelson\n    - ocefpaf\n    - carreau\n    - SylvainCorlay\n",
+ "raw_meta_yaml":"{% set version = \"5.3.4\" %}\n\npackage:\n  name: jupyter_client\n  version: {{ version }}\n\nsource:\n  url: https://pypi.io/packages/source/j/jupyter_client/jupyter_client-{{ version }}.tar.gz\n  sha256: 60e6faec1031d63df57f1cc671ed673dced0ed420f4377ea33db37b1c188b910\n\nbuild:\n  number: 0\n  script: \"{{ PYTHON }} -m pip install . --no-deps -vv\"\n  entry_points:\n    - jupyter-kernel = jupyter_client.kernelapp:main\n    - jupyter-kernelspec = jupyter_client.kernelspecapp:KernelSpecApp.launch_instance\n    - jupyter-run = jupyter_client.runapp:main\n\nrequirements:\n  host:\n    - pip\n    - python\n  run:\n    - entrypoints\n    - jupyter_core\n    - python\n    - python-dateutil >=2.1\n    - pywin32  # [win]\n    - pyzmq >=13\n    - tornado >=4.1\n    - traitlets\n\ntest:\n  requires:\n    - ipykernel\n    - ipython\n    - mock\n    - pytest\n  imports:\n    - jupyter_client\n  commands:\n    - jupyter kernelspec list\n    - jupyter run -h\n\nabout:\n  home: https://jupyter.org\n  license: BSD-3-Clause\n  license_family: BSD\n  license_file: COPYING.md\n  summary: jupyter_client contains the reference implementation of the Jupyter protocol.\n  dev_url: https://github.com/jupyter/jupyter_client\n  doc_url: https://jupyter-client.readthedocs.io/en/stable/\n  doc_source_url: https://github.com/jupyter/jupyter_client/tree/master/docs\n\nextra:\n  recipe-maintainers:\n    - jakirkham\n    - minrk\n    - pelson\n    - ocefpaf\n    - carreau\n    - SylvainCorlay\n    - bollwyvl\n",
  "req":{
   "__set__":true,
   "elements":[
+   "entrypoints",
    "jupyter_core",
    "pip",
    "python",
@@ -264,5 +289,5 @@
  },
  "smithy_version":"3.6.1",
  "url":"https://pypi.io/packages/source/j/jupyter_client/jupyter_client-5.3.1.tar.gz",
- "version":"5.3.3"
+ "version":"5.3.4"
 }
