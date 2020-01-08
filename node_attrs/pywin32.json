@@ -180,7 +180,7 @@
   }
  },
  "name":"pywin32",
- "new_version":"226",
+ "new_version":"227",
  "pinning_version":"2019.11.13",
  "raw_meta_yaml":"{% set version = \"225\" %}\n\npackage:\n  name: pywin32\n  version: {{ version }}\n\nsource:\n  url: https://github.com/mhammond/pywin32/archive/b{{ version }}.tar.gz\n  sha256: b8bd621f91dfec2e836695aa333231dcf97d826ffd06e9bc0bf3a0c6265a7f6f\n  patches:\n    - disable_exchange_modules.patch\n\nbuild:\n  number: 0\n  script:\n    - \"{{ PYTHON }} setup.py -q install --record=record.txt\"\n    - copy %PREFIX%\\Lib\\site-packages\\pywin32_system32\\*.dll %LIBRARY_BIN%\n  skip: True  # [not win or py27]\n\nrequirements:\n  build:\n    - {{ compiler(\"c\") }}\n  host:\n    - python\n    - pip\n  run:\n    - python\n\nabout:\n  home: https://github.com/mhammond/pywin32\n  license: PSF\n  license_file: Pythonwin/License.txt\n  summary: Python extensions for Windows\n\nextra:\n  recipe-maintainers:\n    - nicoddemus\n    - carlodri\n",
  "req":{
