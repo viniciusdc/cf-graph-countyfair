@@ -16,6 +16,23 @@
     "migrator_version",
     "version"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/360566628.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"Version",
+    "migrator_version":0,
+    "version":"0.3.3"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "version"
+   ]
   }
  ],
  "bad":false,
@@ -177,8 +194,8 @@
   }
  },
  "name":"r-languageserver",
- "new_version":"0.3.2",
- "pinning_version":"2019.10.25",
+ "new_version":"0.3.3",
+ "pinning_version":"2020.01.07",
  "raw_meta_yaml":"{% set version = '0.3.2' %}\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-languageserver\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  url:\n    - {{ cran_mirror }}/src/contrib/languageserver_{{ version }}.tar.gz\n    - {{ cran_mirror }}/src/contrib/Archive/languageserver/languageserver_{{ version }}.tar.gz\n  sha256: 758260ea0506b284373262fb6f1fc1d89688e7b5f757569ef26462075462a2e9\n\nbuild:\n  merge_build_host: True  # [win]\n  number: 0\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - {{ compiler('c') }}              # [not win]\n    - {{ compiler('m2w64_c') }}        # [win]\n    - {{posix}}filesystem        # [win]\n    - {{posix}}make\n    - {{posix}}sed               # [win]\n    - {{posix}}coreutils         # [win]\n    - {{posix}}zip               # [win]\n  host:\n    - r-base\n    - r-r6\n    - r-callr >=3.0.0\n    - r-collections >=0.2.0\n    - r-desc\n    - r-jsonlite\n    - r-lintr >=2.0.0\n    - r-readr\n    - r-repr\n    - r-stringr\n    - r-styler >=1.0.2\n    - r-xml2\n    - r-xmlparsedata\n  run:\n    - r-base\n    - {{native}}gcc-libs         # [win]\n    - r-r6\n    - r-callr >=3.0.0\n    - r-collections >=0.2.0\n    - r-desc\n    - r-jsonlite\n    - r-lintr >=2.0.0\n    - r-readr\n    - r-repr\n    - r-stringr\n    - r-styler >=1.0.2\n    - r-xml2\n    - r-xmlparsedata\n\ntest:\n  commands:\n    - $R -e \"library('languageserver')\"           # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('languageserver')\\\"\"  # [win]\n\nabout:\n  home: https://github.com/REditorSupport/languageserver\n  license: MIT\n  summary: An implementation of the Language Server Protocol for R. The Language Server protocol\n    is used by an editor client to integrate features like auto completion. See <https://microsoft.github.io/language-server-protocol>\n    for details.\n  license_family: MIT\n  license_file:\n    - '{{ environ[\"PREFIX\"] }}/lib/R/share/licenses/MIT'\n    - LICENSE\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n\n# Type: Package\n# Package: languageserver\n# Title: Language Server Protocol\n# Version: 0.3.2\n# Date: 2019-10-25\n# Author: Randy Lai\n# Maintainer: Randy Lai <randy.cs.lai@gmail.com>\n# Description: An implementation of the Language Server Protocol for R. The Language Server protocol is used by an editor client to integrate features like auto completion. See <https://microsoft.github.io/language-server-protocol> for details.\n# License: MIT + file LICENSE\n# URL: https://github.com/REditorSupport/languageserver\n# Depends: R (>= 3.4.0)\n# Imports: callr (>= 3.0.0), collections (>= 0.2.0), desc, jsonlite, lintr (>= 2.0.0), R6, readr, repr, stringr, styler (>= 1.0.2), tools, utils, xml2, xmlparsedata\n# Suggests: fs, knitr, magrittr, processx, purrr, testthat, withr\n# ByteCompile: yes\n# Encoding: UTF-8\n# LazyData: true\n# NeedsCompilation: yes\n# RoxygenNote: 6.1.1\n# Packaged: 2019-10-25 22:32:06 UTC; randy\n# Repository: CRAN\n# Date/Publication: 2019-10-26 04:40:02 UTC\n",
  "req":{
   "__set__":true,
@@ -206,7 +223,7 @@
    "zip"
   ]
  },
- "smithy_version":"3.6.0",
+ "smithy_version":"3.6.5",
  "url":[
   "https://cran.r-project.org/src/contrib/languageserver_0.3.1.tar.gz",
   "https://cran.r-project.org/src/contrib/Archive/languageserver/languageserver_0.3.1.tar.gz",
