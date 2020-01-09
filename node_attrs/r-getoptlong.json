@@ -80,13 +80,22 @@
  "meta_yaml":{
   "about":{
    "home":"https://github.com/jokergoo/GetoptLong",
-   "license":"GPL (>= 2)",
-   "license_family":"GPL3",
-   "summary":"This is yet another command-line argument parser which wraps the  powerful Perl module Getopt::Long and with some adaptation for easier use in R. It also provides a simple way for variable interpolation in R."
+   "license":"MIT",
+   "license_family":"MIT",
+   "license_file":[
+    "/lib/R/share/licenses/MIT",
+    "LICENSE",
+    "/lib/R/share/licenses/MIT",
+    "LICENSE",
+    "/lib/R/share/licenses/MIT",
+    "LICENSE"
+   ],
+   "summary":"This is yet another command-line argument parser which wraps the powerful Perl module Getopt::Long and with some adaptation for easier use in R. It also provides a simple way for variable interpolation in R."
   },
   "build":{
+   "merge_build_host":true,
    "noarch":"generic",
-   "number":"1002",
+   "number":"0",
    "rpaths":[
     "lib/R/lib/",
     "lib/",
@@ -99,63 +108,48 @@
   "extra":{
    "recipe-maintainers":[
     "conda-forge/r",
-    "dpryan79",
-    "johanneskoester",
-    "bgruening",
-    "daler",
-    "jdblischak",
     "conda-forge/r",
-    "dpryan79",
-    "johanneskoester",
-    "bgruening",
-    "daler",
-    "jdblischak",
-    "conda-forge/r",
-    "dpryan79",
-    "johanneskoester",
-    "bgruening",
-    "daler",
-    "jdblischak"
+    "conda-forge/r"
    ]
   },
   "package":{
    "name":"r-getoptlong",
-   "version":"0.1.7"
+   "version":"0.1.8"
   },
   "requirements":{
-   "build":[
+   "build":null,
+   "host":[
     "r-base",
-    "r-globaloptions >=0.0.10",
+    "r-globaloptions >=0.1.0",
     "r-rjson",
     "r-base",
-    "r-globaloptions >=0.0.10",
+    "r-globaloptions >=0.1.0",
     "r-rjson",
     "r-base",
-    "r-globaloptions >=0.0.10",
+    "r-globaloptions >=0.1.0",
     "r-rjson"
    ],
    "run":[
     "r-base",
-    "r-globaloptions >=0.0.10",
+    "r-globaloptions >=0.1.0",
     "r-rjson",
     "r-base",
-    "r-globaloptions >=0.0.10",
+    "r-globaloptions >=0.1.0",
     "r-rjson",
     "r-base",
-    "r-globaloptions >=0.0.10",
+    "r-globaloptions >=0.1.0",
     "r-rjson"
    ]
   },
   "source":{
-   "fn":"GetoptLong_0.1.7.tar.gz",
-   "sha256":"b9a98881db407eae9b711c4fa9170168fd5f3be1f8485cd8f28d0a60ace083ba",
+   "sha256":"6c0edb7233b79fb7f4789a825e8e7d7eee50b5e85b7fd5b7d74b9440fd9e1dd1",
    "url":[
-    "https://cran.r-project.org/src/contrib/GetoptLong_0.1.7.tar.gz",
-    "https://cran.r-project.org/src/contrib/Archive/GetoptLong/GetoptLong_0.1.7.tar.gz",
-    "https://cran.r-project.org/src/contrib/GetoptLong_0.1.7.tar.gz",
-    "https://cran.r-project.org/src/contrib/Archive/GetoptLong/GetoptLong_0.1.7.tar.gz",
-    "https://cran.r-project.org/src/contrib/GetoptLong_0.1.7.tar.gz",
-    "https://cran.r-project.org/src/contrib/Archive/GetoptLong/GetoptLong_0.1.7.tar.gz"
+    "https://cran.r-project.org/src/contrib/GetoptLong_0.1.8.tar.gz",
+    "https://cran.r-project.org/src/contrib/Archive/GetoptLong/GetoptLong_0.1.8.tar.gz",
+    "https://cran.r-project.org/src/contrib/GetoptLong_0.1.8.tar.gz",
+    "https://cran.r-project.org/src/contrib/Archive/GetoptLong/GetoptLong_0.1.8.tar.gz",
+    "https://cran.r-project.org/src/contrib/GetoptLong_0.1.8.tar.gz",
+    "https://cran.r-project.org/src/contrib/Archive/GetoptLong/GetoptLong_0.1.8.tar.gz"
    ]
   },
   "test":{
@@ -169,7 +163,7 @@
  "name":"r-getoptlong",
  "new_version":"0.1.8",
  "pinning_version":"2020.01.08",
- "raw_meta_yaml":"{% set version = \"0.1.7\" %}\n\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-getoptlong\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  fn: GetoptLong_{{ version }}.tar.gz\n  url:\n    - https://cran.r-project.org/src/contrib/GetoptLong_{{ version }}.tar.gz\n    - https://cran.r-project.org/src/contrib/Archive/GetoptLong/GetoptLong_{{ version }}.tar.gz\n  sha256: b9a98881db407eae9b711c4fa9170168fd5f3be1f8485cd8f28d0a60ace083ba\n\nbuild:\n  noarch: generic\n  number: 1002\n\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - r-base\n    - r-globaloptions >=0.0.10\n    - r-rjson\n\n  run:\n    - r-base\n    - r-globaloptions >=0.0.10\n    - r-rjson\n\ntest:\n  commands:\n    - $R -e \"library('GetoptLong')\"  # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('GetoptLong')\\\"\"  # [win]\n\nabout:\n  home: https://github.com/jokergoo/GetoptLong\n  license: GPL (>= 2)\n  summary: This is yet another command-line argument parser which wraps the  powerful Perl module\n    Getopt::Long and with some adaptation for easier use in R. It also provides a simple\n    way for variable interpolation in R.\n  license_family: GPL3\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n    - dpryan79\n    - johanneskoester\n    - bgruening\n    - daler\n    - jdblischak\n",
+ "raw_meta_yaml":"{% set version = \"0.1.8\" %}\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-getoptlong\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  url:\n    - {{ cran_mirror }}/src/contrib/GetoptLong_{{ version }}.tar.gz\n    - {{ cran_mirror }}/src/contrib/Archive/GetoptLong/GetoptLong_{{ version }}.tar.gz\n  sha256: 6c0edb7233b79fb7f4789a825e8e7d7eee50b5e85b7fd5b7d74b9440fd9e1dd1\n\nbuild:\n  merge_build_host: True  # [win]\n  noarch: generic\n  number: 0\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - {{posix}}zip               # [win]\n  host:\n    - r-base\n    - r-globaloptions >=0.1.0\n    - r-rjson\n  run:\n    - r-base\n    - r-globaloptions >=0.1.0\n    - r-rjson\n\ntest:\n  commands:\n    - $R -e \"library('GetoptLong')\"  # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('GetoptLong')\\\"\"  # [win]\n\nabout:\n  home: https://github.com/jokergoo/GetoptLong\n  license: MIT\n  summary: This is yet another command-line argument parser which wraps the powerful Perl module\n    Getopt::Long and with some adaptation for easier use in R. It also provides a simple\n    way for variable interpolation in R.\n  license_family: MIT\n  license_file:\n    - '{{ environ[\"PREFIX\"] }}/lib/R/share/licenses/MIT'\n    - LICENSE\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n",
  "req":{
   "__set__":true,
   "elements":[
@@ -187,5 +181,5 @@
   "https://cran.r-project.org/src/contrib/GetoptLong_0.1.7.tar.gz",
   "https://cran.r-project.org/src/contrib/Archive/GetoptLong/GetoptLong_0.1.7.tar.gz"
  ],
- "version":"0.1.7"
+ "version":"0.1.8"
 }
