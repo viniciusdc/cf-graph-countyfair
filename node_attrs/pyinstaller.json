@@ -69,6 +69,23 @@
     "migrator_version",
     "name"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/361115132.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"Version",
+    "migrator_version":0,
+    "version":"3.6"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "version"
+   ]
   }
  ],
  "bad":false,
@@ -239,8 +256,8 @@
   }
  },
  "name":"pyinstaller",
- "new_version":"3.5",
- "pinning_version":"2019.11.01",
+ "new_version":"3.6",
+ "pinning_version":"2020.01.08",
  "raw_meta_yaml":"{% set name = \"PyInstaller\" %}\n{% set version = \"3.5\" %}\n{% set sha256 = \"ee7504022d1332a3324250faf2135ea56ac71fdb6309cff8cd235de26b1d0a96\" %}\n\npackage:\n  name: {{ name.lower() }}\n  version: {{ version }}\n\nsource:\n  fn: PyInstaller-{{ version }}.tar.bz2\n  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz\n  sha256: {{ sha256 }}\n  patches:\n    - 0001-depend-bindepend-find-statically-linked-libraries.patch\n\nbuild:\n  number: 1\n  skip: True  # [osx]\n  entry_points:\n    - pyinstaller = PyInstaller.__main__:run\n    - pyi-archive_viewer = PyInstaller.utils.cliutils.archive_viewer:run\n    - pyi-bindepend = PyInstaller.utils.cliutils.bindepend:run\n    - pyi-grab_version = PyInstaller.utils.cliutils.grab_version:run\n    - pyi-makespec = PyInstaller.utils.cliutils.makespec:run\n    - pyi-set_version = PyInstaller.utils.cliutils.set_version:run\n  script:\n    - export LDFLAGS=\"${LDFLAGS} -L${PREFIX}/lib\"               # [unix]\n    - pushd bootloader\n    - waf --prefix=\"${PREFIX}\" --clang distclean all            # [osx]\n    - waf --prefix=\"${PREFIX}\" --gcc --no-lsb distclean all     # [linux]\n    - waf --prefix=\"%LIBRARY_PREFIX%\" distclean all             # [win]\n    - popd\n    - \"{{ PYTHON }} -m pip install . --no-deps -vv\"\n  preserve_egg_dir: True\n\nrequirements:\n  build:\n    - {{ compiler(\"c\") }}\n    - pip\n    - python\n    - setuptools\n  host:\n    - pip\n    - python\n    - setuptools\n    - waf\n    - zlib\n\n  run:\n    - python\n    - setuptools\n    - pefile >=2017.9.3  # [win]\n    - pycrypto\n    - pywin32  # [win]\n    - pywin32-ctypes  # [win]\n    - zlib\n    - dis3  # [py27]\n    - macholib >=1.8\n\ntest:\n  imports:\n    - PyInstaller\n\n  commands:\n    - pyinstaller --help\n    - pyi-archive_viewer --help\n    - pyi-bindepend --help\n    - pyi-makespec --help\n    # These are designed for Windows only.\n    - pyi-grab_version --help     # [win]\n    - pyi-set_version --help      # [win]\n\n  files:\n    - hello.py\n\nabout:\n  home: http://www.pyinstaller.org\n  license: GPL 2\n  license_file: COPYING.txt\n  summary: PyInstaller bundles a Python application and all its dependencies into a single package.\n\nextra:\n  recipe-maintainers:\n    - jakirkham\n    - nicoddemus\n    - hadim\n",
  "req":{
   "__set__":true,
@@ -258,7 +275,7 @@
    "zlib"
   ]
  },
- "smithy_version":"3.6.1",
+ "smithy_version":"3.6.5",
  "url":"https://pypi.io/packages/source/P/PyInstaller/PyInstaller-3.5.tar.gz",
  "version":"3.5"
 }
