@@ -91,7 +91,7 @@
   "build":{
    "merge_build_host":true,
    "noarch":"generic",
-   "number":"1",
+   "number":"0",
    "rpaths":[
     "lib/R/lib/",
     "lib/",
@@ -104,28 +104,13 @@
   "extra":{
    "recipe-maintainers":[
     "conda-forge/r",
-    "johanneskoester",
-    "bgruening",
-    "daler",
-    "jdblischak",
-    "cbrueffer",
     "conda-forge/r",
-    "johanneskoester",
-    "bgruening",
-    "daler",
-    "jdblischak",
-    "cbrueffer",
-    "conda-forge/r",
-    "johanneskoester",
-    "bgruening",
-    "daler",
-    "jdblischak",
-    "cbrueffer"
+    "conda-forge/r"
    ]
   },
   "package":{
    "name":"r-stapler",
-   "version":"0.6.6"
+   "version":"0.7.1"
   },
   "requirements":{
    "build":null,
@@ -153,15 +138,15 @@
    ]
   },
   "source":{
-   "fn":"stapler_0.6.6.tar.gz",
-   "sha256":"5c21eca70b51cbe9f783360f9f8750009516a654cbdb4807e7dc69c84b5d0a8a",
+   "fn":"stapler_0.7.1.tar.gz",
+   "sha256":"53691b3e791636d5280e75212cc59d1672b4e185e6e878e512f53b712c54f0af",
    "url":[
-    "https://cran.r-project.org/src/contrib/stapler_0.6.6.tar.gz",
-    "https://cran.r-project.org/src/contrib/Archive/stapler/stapler_0.6.6.tar.gz",
-    "https://cran.r-project.org/src/contrib/stapler_0.6.6.tar.gz",
-    "https://cran.r-project.org/src/contrib/Archive/stapler/stapler_0.6.6.tar.gz",
-    "https://cran.r-project.org/src/contrib/stapler_0.6.6.tar.gz",
-    "https://cran.r-project.org/src/contrib/Archive/stapler/stapler_0.6.6.tar.gz"
+    "https://cran.r-project.org/src/contrib/stapler_0.7.1.tar.gz",
+    "https://cran.r-project.org/src/contrib/Archive/stapler/stapler_0.7.1.tar.gz",
+    "https://cran.r-project.org/src/contrib/stapler_0.7.1.tar.gz",
+    "https://cran.r-project.org/src/contrib/Archive/stapler/stapler_0.7.1.tar.gz",
+    "https://cran.r-project.org/src/contrib/stapler_0.7.1.tar.gz",
+    "https://cran.r-project.org/src/contrib/Archive/stapler/stapler_0.7.1.tar.gz"
    ]
   },
   "test":{
@@ -175,7 +160,7 @@
  "name":"r-stapler",
  "new_version":"0.7.1",
  "pinning_version":"2020.01.08",
- "raw_meta_yaml":"{% set version = \"0.6.6\" %}\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-stapler\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  fn: stapler_{{ version }}.tar.gz\n  url:\n    - {{ cran_mirror }}/src/contrib/stapler_{{ version }}.tar.gz\n    - {{ cran_mirror }}/src/contrib/Archive/stapler/stapler_{{ version }}.tar.gz\n  sha256: 5c21eca70b51cbe9f783360f9f8750009516a654cbdb4807e7dc69c84b5d0a8a\n\nbuild:\n  noarch: generic\n  merge_build_host: True  # [win]\n  number: 1\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - {{posix}}zip               # [win]\n  host:\n    - r-base\n    - r-rnifti\n    - r-matrixstats\n  run:\n    - r-base\n    - r-rnifti\n    - r-matrixstats\n\ntest:\n  commands:\n    - $R -e \"library('stapler')\"           # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('stapler')\\\"\"  # [win]\n\nabout:\n  home: https://github.com/muschellij2/stapler\n  license: GPL-3\n  summary: An implementation of Simultaneous Truth and  Performance Level Estimation (STAPLE)\n    <doi:10.1109/TMI.2004.828354>.  This method is used when there are multiple raters\n    for an object, typically an image, and this method fuses these ratings into one\n    rating.  It uses an expectation-maximization method to estimate this rating and\n    the individual specificity/sensitivity for each rater.\n  license_family: GPL3\n  license_file: '{{ environ[\"PREFIX\"] }}/lib/R/share/licenses/GPL-3'\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n    - johanneskoester\n    - bgruening\n    - daler\n    - jdblischak\n    - cbrueffer\n",
+ "raw_meta_yaml":"{% set version = \"0.7.1\" %}\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-stapler\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  fn: stapler_{{ version }}.tar.gz\n  url:\n    - {{ cran_mirror }}/src/contrib/stapler_{{ version }}.tar.gz\n    - {{ cran_mirror }}/src/contrib/Archive/stapler/stapler_{{ version }}.tar.gz\n  sha256: 53691b3e791636d5280e75212cc59d1672b4e185e6e878e512f53b712c54f0af\n\nbuild:\n  noarch: generic\n  merge_build_host: True  # [win]\n  number: 0\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - {{posix}}zip               # [win]\n  host:\n    - r-base\n    - r-rnifti\n    - r-matrixstats\n  run:\n    - r-base\n    - r-rnifti\n    - r-matrixstats\n\ntest:\n  commands:\n    - $R -e \"library('stapler')\"           # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('stapler')\\\"\"  # [win]\n\nabout:\n  home: https://github.com/muschellij2/stapler\n  license: GPL-3\n  summary: An implementation of Simultaneous Truth and  Performance Level Estimation (STAPLE)\n    <doi:10.1109/TMI.2004.828354>.  This method is used when there are multiple raters\n    for an object, typically an image, and this method fuses these ratings into one\n    rating.  It uses an expectation-maximization method to estimate this rating and\n    the individual specificity/sensitivity for each rater.\n  license_family: GPL3\n  license_file: '{{ environ[\"PREFIX\"] }}/lib/R/share/licenses/GPL-3'\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n",
  "req":{
   "__set__":true,
   "elements":[
@@ -193,5 +178,5 @@
   "https://cran.r-project.org/src/contrib/stapler_0.6.6.tar.gz",
   "https://cran.r-project.org/src/contrib/Archive/stapler/stapler_0.6.6.tar.gz"
  ],
- "version":"0.6.6"
+ "version":"0.7.1"
 }
