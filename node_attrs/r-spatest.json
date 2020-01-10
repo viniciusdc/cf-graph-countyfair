@@ -33,6 +33,23 @@
     "migrator_version",
     "name"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/361471167.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"Version",
+    "migrator_version":0,
+    "version":"3.0.2"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "version"
+   ]
   }
  ],
  "bad":false,
@@ -132,8 +149,8 @@
   }
  },
  "name":"r-spatest",
- "new_version":"3.0.0",
- "pinning_version":"2019.07.19",
+ "new_version":"3.0.2",
+ "pinning_version":"2020.01.08",
  "raw_meta_yaml":"{% set version = '3.0.0' %}\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-spatest\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  url:\n    - {{ cran_mirror }}/src/contrib/SPAtest_{{ version }}.tar.gz\n    - {{ cran_mirror }}/src/contrib/Archive/SPAtest/SPAtest_{{ version }}.tar.gz\n  sha256: 3ead98ce9aefc1f4f69dab70e2e0331de618f78bddabd7361d94f402e4aa085f\n\nbuild:\n  noarch: generic\n  merge_build_host: True  # [win]\n  number: 1001\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - {{posix}}zip               # [win]\n  host:\n    - r-base\n  run:\n    - r-base\n\ntest:\n  commands:\n    - $R -e \"library('SPAtest')\"           # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('SPAtest')\\\"\"  # [win]\n\nabout:\n  home: https://github.com/leeshawn/SPAtest\n  license: GPL (>= 2)\n  summary: Performs score test using saddlepoint approximation to estimate the null distribution.\n    Also prepares summary statistics for meta-analysis and performs meta-analysis to\n    combine multiple association results.\n  license_family: GPL3\n  license_file: '{{ environ[\"PREFIX\"] }}/lib/R/share/licenses/GPL-3'\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n    - johanneskoester\n    - bgruening\n    - daler\n    - jdblischak\n    - cbrueffer\n    - dbast\n    - endrebak\n",
  "req":{
   "__set__":true,
@@ -141,7 +158,7 @@
    "r-base"
   ]
  },
- "smithy_version":"3.4.1",
+ "smithy_version":"3.6.5",
  "url":[
   "https://cran.r-project.org/src/contrib/SPAtest_3.0.0.tar.gz",
   "https://cran.r-project.org/src/contrib/Archive/SPAtest/SPAtest_3.0.0.tar.gz",
