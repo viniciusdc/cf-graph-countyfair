@@ -65,6 +65,23 @@
     "migrator_version",
     "name"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/361424980.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"Version",
+    "migrator_version":0,
+    "version":"2.1.0"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "version"
+   ]
   }
  ],
  "bad":false,
@@ -157,8 +174,8 @@
   }
  },
  "name":"r-mrmre",
- "new_version":"2.0.9",
- "pinning_version":"2019.07.20",
+ "new_version":"2.1.0",
+ "pinning_version":"2020.01.08",
  "raw_meta_yaml":"{% set version = \"2.0.9\" %}\n\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-mrmre\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  fn: mRMRe_{{ version }}.tar.gz\n  url:\n    - {{ cran_mirror }}/src/contrib/mRMRe_{{ version }}.tar.gz\n    - {{ cran_mirror }}/src/contrib/Archive/mRMRe/mRMRe_{{ version }}.tar.gz\n\n  sha256: 77e82d7a5467c09bf3112be2d8427003599f401c6903ca8a0c8169a4134f60fe\n\nbuild:\n  merge_build_host: True  # [win]\n  number: 1\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - posix                # [win]\n    - {{ compiler('m2w64_c') }}  # [win]\n    - {{ compiler('m2w64_cxx') }}  # [win]\n    - {{ compiler('c') }}        # [linux or osx and c_compiler == \"toolchain_c\"]\n    - {{ compiler('cxx') }}      # [linux or osx and c_compiler == \"toolchain_c\"]\n  host:\n    - r-base\n    - r-igraph\n    - r-survival\n  run:\n    - libcxx                # [osx and c_compiler == \"clang\"]\n    - llvm-openmp           # [osx and c_compiler == \"clang\"]\n    - r-base\n    - r-igraph\n    - r-survival\n\n\ntest:\n  commands:\n    - $R -e \"library('mRMRe')\"  # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('mRMRe')\\\"\"  # [win]\n\nabout:\n  home: https://cran.r-project.org/web/packages/mRMRe/index.html\n  license: Artistic-2.0\n  summary: Computes mutual information matrices from continuous, categorical and survival variables,\n    as well as feature selection with minimum redundancy, maximum relevance (mRMR) and\n    a new ensemble mRMR technique.\n  license_family: OTHER\nextra:\n   recipe-maintainers:\n    - conda-forge/r\n",
  "req":{
   "__set__":true,
@@ -170,7 +187,7 @@
    "r-survival"
   ]
  },
- "smithy_version":"3.4.1",
+ "smithy_version":"3.6.5",
  "url":[
   "https://cran.r-project.org/src/contrib/mRMRe_2.0.9.tar.gz",
   "https://cran.r-project.org/src/contrib/Archive/mRMRe/mRMRe_2.0.9.tar.gz",
