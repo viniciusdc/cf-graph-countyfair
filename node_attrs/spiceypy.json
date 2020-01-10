@@ -98,6 +98,23 @@
     "migrator_version",
     "version"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/361243368.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"Version",
+    "migrator_version":0,
+    "version":"3.0.0"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "version"
+   ]
   }
  ],
  "bad":false,
@@ -202,8 +219,8 @@
   }
  },
  "name":"spiceypy",
- "new_version":"2.3.2",
- "pinning_version":"2019.10.11",
+ "new_version":"3.0.0",
+ "pinning_version":"2020.01.08",
  "raw_meta_yaml":"{% set name = \"spiceypy\" %}\n{% set version = \"2.3.2\" %}\n{% set sha256 = \"a10064b5b266e2e2363e1060c77db8653677eada0103970b47d9c75e08ba906f\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  fn: {{ name }}-{{ version }}.tar.gz\n  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz\n  sha256: {{ sha256 }}\n\n  patches:\n    - 0001-Remove-CSPICE-installation-logic.patch\n    - 0002-Get-rid-of-setup_requires.patch\n\nbuild:\n  number: 0\n  noarch: python\n\n  script: {{ PYTHON }} -m pip install . --no-deps -vv\n\nrequirements:\n  host:\n    - python\n    - pip\n  run:\n    - python\n    - cspice ==66\n    - numpy\n    - six\n\ntest:\n  imports:\n    - spiceypy\n    - spiceypy.utils\n  requires:\n    - pytest\n    - pandas\n    - numpy\n  source_files:\n    - spiceypy/tests\n  commands:\n    - python -m pytest spiceypy -rpP -v --verbose --tb=long\n\nabout:\n  home: https://github.com/AndrewAnnex/SpiceyPy\n  license: MIT\n  license_file: LICENSE\n  summary: 'The NASA JPL NAIF SPICE toolkit wrapper written in Python'\n\n  description: |\n      SpiceyPy is a python wrapper for the SPICE Toolkit. SPICE is an\n      essential tool for scientists and engineers alike in the planetary\n      science field for Solar System Geometry.\n  doc_url: http://spiceypy.readthedocs.io/\n\nextra:\n  recipe-maintainers:\n    - juanlu001\n    - AndrewAnnex\n",
  "req":{
   "__set__":true,
@@ -215,7 +232,7 @@
    "six"
   ]
  },
- "smithy_version":"3.6.0",
+ "smithy_version":"3.6.5",
  "url":"https://pypi.io/packages/source/s/spiceypy/spiceypy-2.2.1.tar.gz",
  "version":"2.3.2"
 }
