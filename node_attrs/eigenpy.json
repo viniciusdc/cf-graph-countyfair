@@ -224,7 +224,40 @@
    ]
   }
  ],
- "bad":false,
+ "bad":{
+  "code":404,
+  "exception":"HTTP Error 404: Not Found",
+  "traceback":[
+   "Traceback (most recent call last):",
+   "  File \"/root/repo/cf-scripts/conda_forge_tick/auto_tick.py\", line 659, in main",
+   "    migrator_uid, pr_json = run(",
+   "  File \"/root/repo/cf-scripts/conda_forge_tick/auto_tick.py\", line 133, in run",
+   "    migrate_return = migrator.migrate(recipe_dir, feedstock_ctx.attrs, **kwargs)",
+   "  File \"/root/repo/cf-scripts/conda_forge_tick/migrators/core.py\", line 647, in migrate",
+   "    new_patterns = self.get_hash_patterns(\"meta.yaml\", urls, hash_type)",
+   "  File \"/root/repo/cf-scripts/conda_forge_tick/migrators/core.py\", line 526, in get_hash_patterns",
+   "    hash_ = hash_url(url, hash_type)",
+   "  File \"/opt/conda/envs/run_env/lib/python3.8/site-packages/rever/tools.xsh\", line 207, in hash_url",
+   "    for b in stream_url_progress(url, verb='Hashing', quiet=quiet):",
+   "  File \"/opt/conda/envs/run_env/lib/python3.8/site-packages/rever/tools.xsh\", line 179, in stream_url_progress",
+   "    with urllib.request.urlopen(url) as f:",
+   "  File \"/opt/conda/envs/run_env/lib/python3.8/urllib/request.py\", line 222, in urlopen",
+   "    return opener.open(url, data, timeout)",
+   "  File \"/opt/conda/envs/run_env/lib/python3.8/urllib/request.py\", line 531, in open",
+   "    response = meth(req, response)",
+   "  File \"/opt/conda/envs/run_env/lib/python3.8/urllib/request.py\", line 640, in http_response",
+   "    response = self.parent.error(",
+   "  File \"/opt/conda/envs/run_env/lib/python3.8/urllib/request.py\", line 569, in error",
+   "    return self._call_chain(*args)",
+   "  File \"/opt/conda/envs/run_env/lib/python3.8/urllib/request.py\", line 502, in _call_chain",
+   "    result = func(*args)",
+   "  File \"/opt/conda/envs/run_env/lib/python3.8/urllib/request.py\", line 649, in http_error_default",
+   "    raise HTTPError(req.full_url, code, msg, hdrs, fp)",
+   "urllib.error.HTTPError: HTTP Error 404: Not Found",
+   ""
+  ],
+  "url":"https://github.com/stack-of-tasks/eigenpy/releases/download/v1.6.13/eigenpy-1.6.13.tar.gz"
+ },
  "conda-forge.yml":{},
  "feedstock_name":"eigenpy",
  "hash_type":"sha256",
@@ -324,7 +357,7 @@
   }
  },
  "name":"eigenpy",
- "new_version":"1.6.12",
+ "new_version":"1.6.13",
  "pinning_version":"2019.12.02",
  "raw_meta_yaml":"{% set name = \"eigenpy\" %}\n{% set version = \"1.6.12\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  url: https://github.com/stack-of-tasks/{{ name }}/releases/download/v{{ version }}/{{ name }}-{{ version }}.tar.gz\n  sha256: 1f39382acacc8876fa164b3f319767811a709f0a27a7be5e1c79324f59e39cc1\n\nbuild:\n  number: 0\n  skip: true  # [win and vc<14]\n\nrequirements:\n  build:\n    - {{ compiler('cxx') }}  # [not win]\n    - vs2017_win-64  # [win64]\n    - vs2017_win-32  # [win32]\n    - cmake\n    - make  # [not win]\n    - pkg-config\n  host:\n    - eigen\n    - boost\n    - python\n    - numpy\n  run:\n    - boost\n    - python\n    - {{ pin_compatible('numpy') }}\n\ntest:\n  requires:\n    - pkg-config\n  imports:\n    - eigenpy\n  commands:\n    - pkg-config --modversion eigenpy\n\nabout:\n  home: http://github.com/stack-of-tasks/eigenpy\n  license: BSD-2-Clause\n  license_family: BSD\n  license_file: COPYING.LESSER\n  summary: 'Bindings between Numpy and Eigen using Boost.Python'\n  dev_url: https://github.com/stack-of-tasks/eigenpy\n\nextra:\n  recipe-maintainers:\n    - jcarpent\n    - wolfv\n    - lesteve\n    - seanyen\n",
  "req":{
