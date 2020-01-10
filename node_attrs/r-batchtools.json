@@ -50,6 +50,23 @@
     "migrator_version",
     "name"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/361547028.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"Version",
+    "migrator_version":0,
+    "version":"0.9.12"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "version"
+   ]
   }
  ],
  "bad":false,
@@ -232,8 +249,8 @@
   }
  },
  "name":"r-batchtools",
- "new_version":"0.9.11",
- "pinning_version":"2019.07.19",
+ "new_version":"0.9.12",
+ "pinning_version":"2020.01.08",
  "raw_meta_yaml":"{% set version = '0.9.11' %}\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-batchtools\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  fn: batchtools_{{ version }}.tar.gz\n  url:\n    - {{ cran_mirror }}/src/contrib/batchtools_{{ version }}.tar.gz\n    - {{ cran_mirror }}/src/contrib/Archive/batchtools/batchtools_{{ version }}.tar.gz\n  sha256: 1b64166c944ed7693abe1496421b8cdb338097b9c338a98e76654b767d10b20a\n\nbuild:\n  merge_build_host: True  # [win]\n  number: 1002\n  skip: true  # [win32]\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - {{ compiler('c') }}        # [not win]\n    - {{ compiler('m2w64_c') }}        # [win]\n    - {{posix}}filesystem        # [win]\n    - {{posix}}make\n    - {{posix}}sed               # [win]\n    - {{posix}}coreutils         # [win]\n    - {{posix}}zip               # [win]\n  host:\n    - r-base\n    - r-r6\n    - r-backports >=1.1.2\n    - r-base64url >=1.1\n    - r-brew\n    - r-checkmate >=1.8.5\n    - r-data.table >=1.11.2\n    - r-digest >=0.6.9\n    - r-fs >=1.2.0\n    - r-progress >=1.1.1\n    - r-rappdirs\n    - r-stringi\n    - r-withr >=2.0.0\n  run:\n    - r-base\n    - {{native}}gcc-libs         # [win]\n    - r-r6\n    - r-backports >=1.1.2\n    - r-base64url >=1.1\n    - r-brew\n    - r-checkmate >=1.8.5\n    - r-data.table >=1.11.2\n    - r-digest >=0.6.9\n    - r-fs >=1.2.0\n    - r-progress >=1.1.1\n    - r-rappdirs\n    - r-stringi\n    - r-withr >=2.0.0\n\ntest:\n  commands:\n    - $R -e \"library('batchtools')\"           # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('batchtools')\\\"\"  # [win]\n\nabout:\n  home: https://github.com/mllg/batchtools\n  license: LGPL-3\n  summary: As a successor of the packages 'BatchJobs' and 'BatchExperiments', this package provides\n    a parallel implementation of the Map function for high performance computing systems\n    managed by schedulers 'IBM Spectrum LSF' (<https://www.ibm.com/us-en/marketplace/hpc-workload-management>),\n    'OpenLava' (<http://www.openlava.org/>), 'Univa Grid Engine'/'Oracle Grid Engine'\n    (<http://www.univa.com/>), 'Slurm' (<http://slurm.schedmd.com/>), 'TORQUE/PBS' (<http://www.adaptivecomputing.com/products/open-source/torque/>),\n    or 'Docker Swarm' (<https://docs.docker.com/swarm/>). A multicore and socket mode\n    allow the parallelization on a local machines, and multiple machines can be hooked\n    up via SSH to create a makeshift cluster. Moreover, the package provides an abstraction\n    mechanism to define large-scale computer experiments in a well-organized and reproducible\n    way.\n  license_family: LGPL\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n    - johanneskoester\n    - bgruening\n    - daler\n    - jdblischak\n    - cbrueffer\n    - dbast\n    - nick-youngblut\n",
  "req":{
   "__set__":true,
@@ -261,7 +278,7 @@
    "zip"
   ]
  },
- "smithy_version":"3.4.1",
+ "smithy_version":"3.6.5",
  "url":[
   "https://cran.r-project.org/src/contrib/batchtools_0.9.11.tar.gz",
   "https://cran.r-project.org/src/contrib/Archive/batchtools/batchtools_0.9.11.tar.gz",
