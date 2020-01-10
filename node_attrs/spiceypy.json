@@ -115,6 +115,23 @@
     "migrator_version",
     "version"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/361566689.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"Version",
+    "migrator_version":0,
+    "version":"3.0.1"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "version"
+   ]
   }
  ],
  "bad":false,
@@ -219,7 +236,7 @@
   }
  },
  "name":"spiceypy",
- "new_version":"3.0.0",
+ "new_version":"3.0.1",
  "pinning_version":"2020.01.08",
  "raw_meta_yaml":"{% set name = \"spiceypy\" %}\n{% set version = \"3.0.0\" %}\n{% set sha256 = \"d786348c36d35707f5bfd587e04628ed0ce7c34fab1044e6b66f2dce11038b73\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  fn: {{ name }}-{{ version }}.tar.gz\n  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz\n  sha256: {{ sha256 }}\n\n  patches:\n    - 0001-simpler-patch-for-conda-forge-dist.patch\n    - 0002-Get-rid-of-setup_requires.patch\n\nbuild:\n  number: 0\n  noarch: python\n  script: {{ PYTHON }} -m pip install . --no-deps -vv\n\nrequirements:\n  host:\n    - python >=3.6\n    - pip\n    - numpy >=1.17.0\n  run:\n    - python >=3.6\n    - cspice ==66\n    - numpy >=1.17.0\n\ntest:\n  imports:\n    - spiceypy\n    - spiceypy.utils\n  requires:\n    - pytest\n    - pandas\n    - numpy >=1.17.0\n  source_files:\n    - spiceypy/tests\n  commands:\n    - python -m pytest spiceypy -rpP -v --verbose --tb=long\n\nabout:\n  home: https://github.com/AndrewAnnex/SpiceyPy\n  license: MIT\n  license_file: LICENSE\n  summary: 'The NASA JPL NAIF SPICE toolkit wrapper written in Python'\n\n  description: |\n      SpiceyPy is a python wrapper for the SPICE Toolkit. SPICE is an\n      essential tool for scientists and engineers alike in the planetary\n      science field for Solar System Geometry.\n  doc_url: http://spiceypy.readthedocs.io/\n\nextra:\n  recipe-maintainers:\n    - juanlu001\n    - AndrewAnnex\n",
  "req":{
