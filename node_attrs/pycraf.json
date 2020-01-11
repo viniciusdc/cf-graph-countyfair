@@ -73,6 +73,23 @@
     "migrator_version",
     "version"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/361761870.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"Version",
+    "migrator_version":0,
+    "version":"1.0.1"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "version"
+   ]
   }
  ],
  "bad":false,
@@ -208,7 +225,7 @@
   }
  },
  "name":"pycraf",
- "new_version":"1.0.0",
+ "new_version":"1.0.1",
  "pinning_version":"2020.01.10",
  "raw_meta_yaml":"{% set name = \"pycraf\" %}\n{% set version = \"1.0.0\" %}\n{% set sha256 = \"58c047ede8d0cbabd7176a95c2ed2c16174d162fcb5ba505a1bad2ab87ec8197\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  fn: {{ name }}-{{ version }}.tar.gz\n  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz\n  sha256: {{ sha256 }}\n\nbuild:\n  number: 0\n  skip: True  # [py27]\n  script: \"{{ PYTHON }} setup.py install --single-version-externally-managed --record record.txt --offline\"\n\nrequirements:\n  build:\n    - {{ compiler('cxx') }}\n  \n  host:\n    - openmp 4.0.*  # [osx]\n    - python\n    - pip\n    - setuptools\n    - astropy\n    - cython\n    - numpy 1.11.*\n    - scipy\n\n  run:\n    - python\n    - openmp 4.0.*  # [osx]\n    - astropy\n    - {{ pin_compatible('numpy') }}\n    - scipy\n    - h5py\n    - matplotlib >=2.0\n    - pyproj\n\ntest:\n  imports:\n    - pycraf\n    - pycraf.conversions\n    - pycraf.atm\n    - pycraf.pathprof\n    - pycraf.antenna\n    - pycraf.protection\n    - pycraf.geospatial\n    - pycraf.satellite\n    - pycraf.geometry\n    - pycraf.mc\n    - pycraf.utils\n\n  commands:\n     python -c \"import pycraf; pycraf.test()\"\n\nabout:\n  home: https://github.com/bwinkel/pycraf\n  license: GPL-3.0\n  license_family: GPL\n  license_file: licenses/README.rst\n  summary: 'A Python package for spectrum-management compatibility studies'\n  description: |\n      The pycraf package provides functions and procedures for various tasks in spectrum-management compatibility studies.\n  dev_url: https://github.com/bwinkel/pycraf\n\nextra:\n  recipe-maintainers:\n    - bwinkel\n",
  "req":{
