@@ -16,6 +16,23 @@
     "migrator_version",
     "version"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/361720518.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"Version",
+    "migrator_version":0,
+    "version":"5.66.0"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "version"
+   ]
   }
  ],
  "bad":false,
@@ -101,8 +118,8 @@
   }
  },
  "name":"kconfig",
- "new_version":"5.65.0",
- "pinning_version":"2019.12.02",
+ "new_version":"5.66.0",
+ "pinning_version":"2020.01.10",
  "raw_meta_yaml":"{% set name = \"kconfig\" %}\n{% set version = \"5.65.0\" %}\n{% set major_minor = \".\".join(version.split(\".\")[:2]) %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  url: https://download.kde.org/stable/frameworks/{{ major_minor }}/kconfig-{{ version }}.tar.xz\n  sha256: 8dfa064effdf559e1179e9d7e5ec12ff9d79fcfef1859bd1793557261e94a6ed\n\nbuild:\n  number: 0\n  skip: true  # [not linux]\n  run_exports:\n    - {{ pin_subpackage('kconfig', max_pin='x.x') }}\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n    - cmake\n    - make\n    - extra-cmake-modules\n    - {{ cdt('mesa-libgl-devel') }}  # [linux]\n    - {{ cdt('mesa-dri-drivers') }}  # [linux]\n    - {{ cdt('libselinux') }}  # [linux]\n    - {{ cdt('libxdamage') }}  # [linux]\n    - {{ cdt('libxxf86vm') }}  # [linux]\n  host:\n    - qt >=5.11.0\n    - mesalib\n    - xorg-libxfixes  # [linux]\n    - xorg-libxext\n\ntest:\n  commands:\n    - test -f ${PREFIX}/lib/libKF5ConfigCore.so\n\nabout:\n  home: https://api.kde.org/frameworks/kconfig/html/index.html\n  license: LGPL-v2.1-or-later\n  license_family: GPL\n  license_file: COPYING.LIB\n  summary: 'Persistent platform-independent application settings.'\n  description: |\n    KConfig provides an advanced configuration system. It is made of two parts:\n    KConfigCore and KConfigGui.\n  dev_url: https://cgit.kde.org/kconfig.git/tree\n\nextra:\n  recipe-maintainers:\n    - scopatz\n",
  "req":{
   "__set__":true,

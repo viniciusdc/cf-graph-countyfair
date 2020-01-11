@@ -16,6 +16,23 @@
     "migrator_version",
     "version"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/361721386.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"Version",
+    "migrator_version":0,
+    "version":"5.66.0"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "version"
+   ]
   }
  ],
  "bad":false,
@@ -98,8 +115,8 @@
   }
  },
  "name":"kpackage",
- "new_version":"5.65.0",
- "pinning_version":"2019.12.02",
+ "new_version":"5.66.0",
+ "pinning_version":"2020.01.10",
  "raw_meta_yaml":"{% set name = \"kpackage\" %}\n{% set version = \"5.65.0\" %}\n{% set major_minor = \".\".join(version.split(\".\")[:2]) %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  url: https://download.kde.org/stable/frameworks/{{ major_minor }}/kpackage-{{ version }}.tar.xz\n  sha256: 5ac5f6a687c244709487bc47d7aeca276ad7a925d7618fdf04a7af0e1e3fa581\n\nbuild:\n  number: 0\n  skip: true  # [not linux]\n  run_exports:\n    - {{ pin_subpackage('kpackage', max_pin='x.x') }}\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n    - cmake\n    - make\n    - extra-cmake-modules\n    #- {{ cdt('mesa-libgl-devel') }}  # [linux]\n    #- {{ cdt('mesa-dri-drivers') }}  # [linux]\n    #- {{ cdt('libselinux') }}  # [linux]\n    #- {{ cdt('libxdamage') }}  # [linux]\n    #- {{ cdt('libxxf86vm') }}  # [linux]\n  host:\n    #- xorg-libxfixes  # [linux]\n    - qt\n    - ki18n\n    - karchive\n    - kcoreaddons\n\ntest:\n  commands:\n    - test -f ${PREFIX}/lib/libKF5Package.so\n\nabout:\n  home: https://api.kde.org/frameworks/kpackage/html/index.html\n  license: GPL-v2\n  license_family: GPL\n  license_file: COPYING\n  summary: 'Installation and loading of additional content (ex: scripts, images...) as packages'\n  description: |\n    The KPackage framework lets the user install and load packages of\n    non binary content such as scripted extensions or graphic assets,\n    as if they were traditional plugins.\n  dev_url: https://cgit.kde.org/kpackage.git/tree\n\nextra:\n  recipe-maintainers:\n    - scopatz\n",
  "req":{
   "__set__":true,

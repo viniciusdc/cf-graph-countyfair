@@ -16,6 +16,23 @@
     "migrator_version",
     "version"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/361720684.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"Version",
+    "migrator_version":0,
+    "version":"5.66.0"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "version"
+   ]
   }
  ],
  "bad":false,
@@ -107,8 +124,8 @@
   }
  },
  "name":"kguiaddons",
- "new_version":"5.65.0",
- "pinning_version":"2019.12.02",
+ "new_version":"5.66.0",
+ "pinning_version":"2020.01.10",
  "raw_meta_yaml":"{% set name = \"kguiaddons\" %}\n{% set version = \"5.65.0\" %}\n{% set major_minor = \".\".join(version.split(\".\")[:2]) %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  url: https://download.kde.org/stable/frameworks/{{ major_minor }}/kguiaddons-{{ version }}.tar.xz\n  sha256: f6b34db7c21ced8179351f2bf38c7c073fa4e0f6de2f9d03986aedba4f87488d\n\nbuild:\n  number: 0\n  skip: true  # [not linux]\n  run_exports:\n    - {{ pin_subpackage('kguiaddons', max_pin='x.x') }}\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n    - cmake\n    - make\n    - extra-cmake-modules\n    - {{ cdt('mesa-libgl-devel') }}  # [linux]\n    - {{ cdt('mesa-dri-drivers') }}  # [linux]\n    - {{ cdt('libselinux') }}  # [linux]\n    - {{ cdt('libxdamage') }}  # [linux]\n    - {{ cdt('libxxf86vm') }}  # [linux]\n  host:\n    - xorg-libxfixes  # [linux]\n    - xorg-libxext\n    - xorg-libx11\n    - qt\n  run:\n    - xorg-libx11\n\ntest:\n  commands:\n    - test -f ${PREFIX}/lib/libKF5GuiAddons.so\n\nabout:\n  home: https://api.kde.org/frameworks/kguiaddons/html/index.html\n  license: GPL-v2\n  license_family: GPL\n  license_file: COPYING\n  summary: 'Utilities for graphical user interfaces'\n  description: |\n    The KDE GUI addons provide utilities for graphical user interfaces\n    in the areas of colors, fonts, text, images, keyboard input.\n  doc_url: https://api.kde.org/frameworks/karchive/html/index.html\n  dev_url: https://cgit.kde.org/kguiaddons.git/tree\n\nextra:\n  recipe-maintainers:\n    - scopatz\n",
  "req":{
   "__set__":true,
