@@ -99,7 +99,7 @@
  "hash_type":"sha256",
  "meta_yaml":{
   "about":{
-   "dev_url":"https://github.com/QuantStack/xwidgets",
+   "dev_url":"https://github.com/jupyter-xeus/xwidgets",
    "doc_url":"http://xwidgets.readthedocs.io",
    "home":"http://quantstack.net/xwidgets",
    "license":"BSD-3-Clause",
@@ -134,7 +134,7 @@
   },
   "package":{
    "name":"xwidgets",
-   "version":"0.19.0"
+   "version":"0.20.0"
   },
   "requirements":{
    "build":[
@@ -146,20 +146,20 @@
     "cxx_compiler_stub"
    ],
    "host":[
-    "xeus >=0.21.1,<0.22",
+    "xeus >=0.23.3,<0.24",
     "cppzmq 4.3.0",
     "xtl >=0.6.5,<0.7",
-    "xproperty >=0.8.1,<0.9",
+    "xproperty >=0.10.0,<0.11",
     "nlohmann_json >=3.6.1,<4.0",
-    "xeus >=0.21.1,<0.22",
+    "xeus >=0.23.3,<0.24",
     "cppzmq 4.3.0",
     "xtl >=0.6.5,<0.7",
-    "xproperty >=0.8.1,<0.9",
+    "xproperty >=0.10.0,<0.11",
     "nlohmann_json >=3.6.1,<4.0",
-    "xeus >=0.21.1,<0.22",
+    "xeus >=0.23.3,<0.24",
     "cppzmq 4.3.0",
     "xtl >=0.6.5,<0.7",
-    "xproperty >=0.8.1,<0.9",
+    "xproperty >=0.10.0,<0.11",
     "nlohmann_json >=3.6.1,<4.0"
    ],
    "run":[
@@ -178,9 +178,9 @@
    ]
   },
   "source":{
-   "fn":"xwidgets-0.19.0.tar.gz",
-   "sha256":"0eb4b7b2f63b7135b475810311c455011bb81577ac526e3b70e7dcc7112daa33",
-   "url":"https://github.com/QuantStack/xwidgets/archive/0.19.0.tar.gz"
+   "fn":"xwidgets-0.20.0.tar.gz",
+   "sha256":"e16298c558cc2708c514857d2c3b77183bcd42c299e69c5bd0470263f0be7065",
+   "url":"https://github.com/jupyter-xeus/xwidgets/archive/0.20.0.tar.gz"
   },
   "test":{
    "commands":[
@@ -201,7 +201,7 @@
  "name":"xwidgets",
  "new_version":"0.20.0",
  "pinning_version":"2020.01.10",
- "raw_meta_yaml":"{% set name = \"xwidgets\" %}\n{% set version = \"0.19.0\" %}\n{% set sha256 = \"0eb4b7b2f63b7135b475810311c455011bb81577ac526e3b70e7dcc7112daa33\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  fn: {{ name }}-{{ version }}.tar.gz\n  url: https://github.com/QuantStack/xwidgets/archive/{{ version }}.tar.gz\n  sha256: {{ sha256 }}\n\nbuild:\n  number: 0\n  skip: true  # [win and vc<14]\n  run_exports:\n    - {{ pin_subpackage(name, max_pin='x.x') }}\n\nrequirements:\n  build:\n    - cmake\n    - {{ compiler('cxx') }}\n  host:\n    - xeus >=0.21.1,<0.22\n    - cppzmq 4.3.0\n    - xtl >=0.6.5,<0.7\n    - xproperty >=0.8.1,<0.9\n    - nlohmann_json >=3.6.1,<4.0\n  run:\n    # cppzmq, xtl, xproperty and nlohmann_json\n    # are header-only but required at runtime (!)\n    # in the context of xwidgets being used in xeus-cling\n    - {{ pin_compatible('cppzmq', max_pin='x.x') }}\n    - {{ pin_compatible('xtl', max_pin='x.x') }}\n    - {{ pin_compatible('xproperty', max_pin='x.x') }}\n    - {{ pin_compatible('nlohmann_json', max_pin='x.x') }}\n\ntest:\n  commands:\n    - test -d ${PREFIX}/include/xwidgets  # [unix]\n    - test -f ${PREFIX}/include/xwidgets/xtransport.hpp  # [unix]\n    - test -f ${PREFIX}/lib/cmake/xwidgets/xwidgetsConfig.cmake  # [unix]\n    - test -f ${PREFIX}/lib/cmake/xwidgets/xwidgetsConfigVersion.cmake  # [unix]\n    - if exist %LIBRARY_PREFIX%\\include\\xwidgets\\xtransport.hpp (exit 0) else (exit 1)  # [win]\n    - if exist %LIBRARY_PREFIX%\\lib\\xwidgetsConfig.cmake (exit 0) else (exit 1)  # [win]\n    - if exist %LIBRARY_PREFIX%\\lib\\xwidgetsConfigVersion.cmake (exit 0) else (exit 1)  # [win]\n\nabout:\n  home: http://quantstack.net/xwidgets\n  license: BSD-3-Clause\n  license_family: BSD\n  license_file: LICENSE\n  summary: 'C++ implementation of the Jupyter Interactive widgets'\n  doc_url: http://xwidgets.readthedocs.io\n  dev_url: https://github.com/QuantStack/xwidgets\n\nextra:\n  recipe-maintainers:\n    - SylvainCorlay\n    - JohanMabille\n    - gouarin\n    - martinRenou\n",
+ "raw_meta_yaml":"{% set name = \"xwidgets\" %}\n{% set version = \"0.20.0\" %}\n{% set sha256 = \"e16298c558cc2708c514857d2c3b77183bcd42c299e69c5bd0470263f0be7065\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  fn: {{ name }}-{{ version }}.tar.gz\n  url: https://github.com/jupyter-xeus/xwidgets/archive/{{ version }}.tar.gz\n  sha256: {{ sha256 }}\n\nbuild:\n  number: 0\n  skip: true  # [win and vc<14]\n  run_exports:\n    - {{ pin_subpackage(name, max_pin='x.x') }}\n\nrequirements:\n  build:\n    - cmake\n    - {{ compiler('cxx') }}\n  host:\n    - xeus >=0.23.3,<0.24\n    - cppzmq 4.3.0\n    - xtl >=0.6.5,<0.7\n    - xproperty >=0.10.0,<0.11\n    - nlohmann_json >=3.6.1,<4.0\n  run:\n    # cppzmq, xtl, xproperty and nlohmann_json\n    # are header-only but required at runtime (!)\n    # in the context of xwidgets being used in xeus-cling\n    - {{ pin_compatible('cppzmq', max_pin='x.x') }}\n    - {{ pin_compatible('xtl', max_pin='x.x') }}\n    - {{ pin_compatible('xproperty', max_pin='x.x') }}\n    - {{ pin_compatible('nlohmann_json', max_pin='x.x') }}\n\ntest:\n  commands:\n    - test -d ${PREFIX}/include/xwidgets  # [unix]\n    - test -f ${PREFIX}/include/xwidgets/xtransport.hpp  # [unix]\n    - test -f ${PREFIX}/lib/cmake/xwidgets/xwidgetsConfig.cmake  # [unix]\n    - test -f ${PREFIX}/lib/cmake/xwidgets/xwidgetsConfigVersion.cmake  # [unix]\n    - if exist %LIBRARY_PREFIX%\\include\\xwidgets\\xtransport.hpp (exit 0) else (exit 1)  # [win]\n    - if exist %LIBRARY_PREFIX%\\lib\\xwidgetsConfig.cmake (exit 0) else (exit 1)  # [win]\n    - if exist %LIBRARY_PREFIX%\\lib\\xwidgetsConfigVersion.cmake (exit 0) else (exit 1)  # [win]\n\nabout:\n  home: http://quantstack.net/xwidgets\n  license: BSD-3-Clause\n  license_family: BSD\n  license_file: LICENSE\n  summary: 'C++ implementation of the Jupyter Interactive widgets'\n  doc_url: http://xwidgets.readthedocs.io\n  dev_url: https://github.com/jupyter-xeus/xwidgets\n\nextra:\n  recipe-maintainers:\n    - SylvainCorlay\n    - JohanMabille\n    - gouarin\n    - martinRenou\n",
  "req":{
   "__set__":true,
   "elements":[
@@ -217,5 +217,5 @@
  },
  "smithy_version":"3.6.5",
  "url":"https://github.com/QuantStack/xwidgets/archive/0.19.0.tar.gz",
- "version":"0.19.0"
+ "version":"0.20.0"
 }
