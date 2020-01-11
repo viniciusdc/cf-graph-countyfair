@@ -185,6 +185,23 @@
     "migrator_version",
     "version"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/361708349.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"Version",
+    "migrator_version":0,
+    "version":"1.0.2"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "version"
+   ]
   }
  ],
  "bad":false,
@@ -272,8 +289,8 @@
   }
  },
  "name":"pygit2",
- "new_version":"1.0.1",
- "pinning_version":"2019.12.18",
+ "new_version":"1.0.2",
+ "pinning_version":"2020.01.10",
  "raw_meta_yaml":"{% set name = \"pygit2\" %}\n{% set version = \"0.28.2\" %}\n{% set sha256 = \"4d8c3fbbf2e5793a9984681a94e6ac2f1bc91a92cbac762dbdfbea296b917f86\" %}\n\n{% set version_major = version.split(\".\")[0] %}\n{% set version_minor = version.split(\".\")[1] %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  fn: {{ name }}-{{ version }}.tar.gz\n  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz\n  sha256: {{ sha256 }}\n\nbuild:\n  number: 0\n  features:\n    - vc9    # [win and py27]\n    - vc10   # [win and py34]\n    - vc14   # [win and py35]\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n\n  host:\n    - python\n    - pip\n    - cffi\n    - libgit2 {{version_major}}.{{version_minor}}.*\n\n  run:\n    - python\n    - cffi\n    - six\n    - libgit2 {{version_major}}.{{version_minor}}.*\n\ntest:\n  imports:\n    - pygit2\n\nabout:\n  home: http://github.com/libgit2/pygit2\n  summary: 'Python bindings for libgit2.'\n  license: GPLv2 with linking exception\n  license_family: GPL2\n  license_file: COPYING\n  doc_url: http://www.pygit2.org/\n  dev_url: https://github.com/libgit2/pygit2\n\nextra:\n  recipe-maintainers:\n    - kszucs\n",
  "req":{
   "__set__":true,
