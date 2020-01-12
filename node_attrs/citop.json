@@ -16,6 +16,23 @@
     "migrator_version",
     "version"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/361846262.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"Version",
+    "migrator_version":0,
+    "version":"0.2.0"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "version"
+   ]
   }
  ],
  "bad":false,
@@ -87,8 +104,8 @@
   }
  },
  "name":"citop",
- "new_version":"0.1.2",
- "pinning_version":"2019.12.18",
+ "new_version":"0.2.0",
+ "pinning_version":"2020.01.10",
  "raw_meta_yaml":"{% set goname = \"github.com/nbedos/citop\" %}\n{% set version = \"0.1.2\" %}\n\n{% set name = goname.split('/')[-1] %}\n{% set pkg_src = ('src/'+goname).replace(\"/\",os.sep) %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  - folder: {{ pkg_src }}\n    url: https://{{ goname }}/archive/{{ version }}.tar.gz\n    sha256: 6402f352998bfcd3b8700e9771b77ff0bd53197ad035f2b7c615ee65ef874169\n\nbuild:\n  number: 1\n  skip: true  # [win]\n  script:\n    - pushd {{ pkg_src }}\n    - go build -ldflags \"-X main.Version={{ version }}\" -v -o $GOBIN/{{ name }} .       # [unix]\n\nrequirements:\n  build:\n    - {{ compiler(\"go\") }} >=1.11\n\ntest:\n  commands:\n    - citop --version\n\nabout:\n  home: https://github.com/nbedos/citop\n  license: BSD-3-Clause\n  license_family: BSD\n  license_file: {{ pkg_src }}/LICENSE\n  summary: |\n    A UNIX program to monitor Continuous Integration pipelines from the command line.\n    citop stands for Continous Integration Table Of Pipelines.\n  dev_url: https://github.com/nbedos/citop\n  doc_url: https://nbedos.github.io/citop/citop.man\n\nextra:\n  recipe-maintainers:\n    - luizirber\n",
  "req":{
   "__set__":true,
