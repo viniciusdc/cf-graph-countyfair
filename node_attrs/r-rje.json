@@ -50,6 +50,23 @@
     "migrator_version",
     "version"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/361840085.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"Version",
+    "migrator_version":0,
+    "version":"1.10.13"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "version"
+   ]
   }
  ],
  "bad":false,
@@ -149,8 +166,8 @@
   }
  },
  "name":"r-rje",
- "new_version":"1.10.10",
- "pinning_version":"2019.08.22",
+ "new_version":"1.10.13",
+ "pinning_version":"2020.01.10",
  "raw_meta_yaml":"{% set version = '1.10.10' %}\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-rje\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  url:\n    - {{ cran_mirror }}/src/contrib/rje_{{ version }}.tar.gz\n    - {{ cran_mirror }}/src/contrib/Archive/rje/rje_{{ version }}.tar.gz\n  sha256: 42ffe1a9d4b0bea2dcc855d5855bba50fbae8b1963db2729e72db1a6cb461bc4\n\nbuild:\n  merge_build_host: True  # [win]\n  number: 0\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - {{ compiler('c') }}              # [not win]\n    - {{ compiler('m2w64_c') }}        # [win]\n    - {{posix}}filesystem        # [win]\n    - {{posix}}make\n    - {{posix}}sed               # [win]\n    - {{posix}}coreutils         # [win]\n    - {{posix}}zip               # [win]\n  host:\n    - r-base\n    - r-knitr\n  run:\n    - r-base\n    - {{native}}gcc-libs         # [win]\n    - r-knitr\n\ntest:\n  commands:\n    - $R -e \"library('rje')\"           # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('rje')\\\"\"  # [win]\n\nabout:\n  home: https://CRAN.R-project.org/package=rje\n  license: GPL-2\n  summary: A series of functions in some way considered useful to the author.  These include\n    functions for subsetting tables and generating indices for arrays, conditioning\n    and intervening in probability distributions, generating combinations and more...\n  license_family: GPL2\n  license_file:\n    - '{{ environ[\"PREFIX\"] }}/lib/R/share/licenses/GPL-2'\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n\n# Package: rje\n# Type: Package\n# Title: Miscellaneous Useful Functions for Statistics\n# Version: 1.10.10\n# Authors@R: c(person(\"Robin\", \"Evans\", email=\"evans@stats.ox.ac.uk\", role=c(\"aut\", \"cre\")), person(\"Mathias\", \"Drton\", role=c(\"ctb\")))\n# Description: A series of functions in some way considered useful to the author.  These include functions for subsetting tables and generating indices for arrays, conditioning and intervening in probability distributions, generating combinations and more...\n# Depends: R (>= 2.0.0),\n# License: GPL (>= 2)\n# LazyLoad: yes\n# Imports: knitr\n# Suggests: testthat, rmarkdown\n# VignetteBuilder: knitr\n# Packaged: 2019-08-26 11:15:48 UTC; evans\n# Author: Robin Evans [aut, cre], Mathias Drton [ctb]\n# Maintainer: Robin Evans <evans@stats.ox.ac.uk>\n# RoxygenNote: 6.1.1\n# NeedsCompilation: yes\n# Repository: CRAN\n# Date/Publication: 2019-08-28 04:30:02 UTC\n",
  "req":{
   "__set__":true,
@@ -167,7 +184,7 @@
    "zip"
   ]
  },
- "smithy_version":"3.4.1",
+ "smithy_version":"3.6.5",
  "url":[
   "https://cran.r-project.org/src/contrib/rje_1.10.10.tar.gz",
   "https://cran.r-project.org/src/contrib/Archive/rje/rje_1.10.10.tar.gz",

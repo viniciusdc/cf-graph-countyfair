@@ -105,7 +105,7 @@
   },
   "build":{
    "merge_build_host":true,
-   "number":"1003",
+   "number":"0",
    "rpaths":[
     "lib/R/lib/",
     "lib/",
@@ -145,7 +145,7 @@
   },
   "package":{
    "name":"r-geor",
-   "version":"1.7_5.2.1"
+   "version":"1.7_5.2.2"
   },
   "requirements":{
    "build":[
@@ -197,20 +197,20 @@
    ]
   },
   "source":{
-   "fn":"geoR_1.7-5.2.1.tar.gz",
+   "fn":"geoR_1.7-5.2.2.tar.gz",
    "patches":[
     "no_tcltk.patch",
     "no_tcltk.patch",
     "no_tcltk.patch"
    ],
-   "sha256":"3895e49c005a5745738d190ccaad43bb0aa49c74465d4d0b4dd88c5850ed63b9",
+   "sha256":"07cc0c000473fac1068358fa0d3be273d75e5b3bd48a74df191743867db2ac80",
    "url":[
-    "https://cran.r-project.org/src/contrib/geoR_1.7-5.2.1.tar.gz",
-    "https://cran.r-project.org/src/contrib/Archive/geoR/geoR_1.7-5.2.1.tar.gz",
-    "https://cran.r-project.org/src/contrib/geoR_1.7-5.2.1.tar.gz",
-    "https://cran.r-project.org/src/contrib/Archive/geoR/geoR_1.7-5.2.1.tar.gz",
-    "https://cran.r-project.org/src/contrib/geoR_1.7-5.2.1.tar.gz",
-    "https://cran.r-project.org/src/contrib/Archive/geoR/geoR_1.7-5.2.1.tar.gz"
+    "https://cran.r-project.org/src/contrib/geoR_1.7-5.2.2.tar.gz",
+    "https://cran.r-project.org/src/contrib/Archive/geoR/geoR_1.7-5.2.2.tar.gz",
+    "https://cran.r-project.org/src/contrib/geoR_1.7-5.2.2.tar.gz",
+    "https://cran.r-project.org/src/contrib/Archive/geoR/geoR_1.7-5.2.2.tar.gz",
+    "https://cran.r-project.org/src/contrib/geoR_1.7-5.2.2.tar.gz",
+    "https://cran.r-project.org/src/contrib/Archive/geoR/geoR_1.7-5.2.2.tar.gz"
    ]
   },
   "test":{
@@ -224,7 +224,7 @@
  "name":"r-geor",
  "new_version":"1.7_5.2.2",
  "pinning_version":"2020.01.10",
- "raw_meta_yaml":"{% set version = '1.7-5.2.1' %}\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-geor\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  fn: geoR_{{ version }}.tar.gz\n  url:\n    - {{ cran_mirror }}/src/contrib/geoR_{{ version }}.tar.gz\n    - {{ cran_mirror }}/src/contrib/Archive/geoR/geoR_{{ version }}.tar.gz\n  sha256: 3895e49c005a5745738d190ccaad43bb0aa49c74465d4d0b4dd88c5850ed63b9\n  patches:\n    # https://github.com/rocker-org/rocker/issues/213#issuecomment-278909502\n    - no_tcltk.patch\n\nbuild:\n  merge_build_host: True  # [win]\n  number: 1003\n  skip: true  # [win32]\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - {{ compiler('c') }}        # [not win]\n    - {{ compiler('m2w64_c') }}        # [win]\n    - {{posix}}filesystem        # [win]\n    - {{posix}}make\n    - {{posix}}sed               # [win]\n    - {{posix}}coreutils         # [win]\n    - {{posix}}zip               # [win]\n  host:\n    - r-base\n    - r-mass\n    - r-randomfields\n    - r-sp\n    - r-splancs\n  run:\n    - r-base\n    - {{native}}gcc-libs         # [win]\n    - r-mass\n    - r-randomfields\n    - r-sp\n    - r-splancs\n\ntest:\n  commands:\n    - $R -e \"library('geoR')\"           # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('geoR')\\\"\"  # [win]\n\nabout:\n  home: http://www.leg.ufpr.br/geoR\n  license: GPL (>= 2)\n  summary: Geostatistical analysis including traditional, likelihood-based and Bayesian methods.\n  license_family: GPL3\n  license_file: '{{ environ[\"PREFIX\"] }}/lib/R/share/licenses/GPL-3'\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n    - ocefpaf\n    - johanneskoester\n    - bgruening\n    - daler\n    - jdblischak\n    - cbrueffer\n    - dbast\n",
+ "raw_meta_yaml":"{% set version = \"1.7-5.2.2\" %}\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-geor\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  fn: geoR_{{ version }}.tar.gz\n  url:\n    - {{ cran_mirror }}/src/contrib/geoR_{{ version }}.tar.gz\n    - {{ cran_mirror }}/src/contrib/Archive/geoR/geoR_{{ version }}.tar.gz\n  sha256: 07cc0c000473fac1068358fa0d3be273d75e5b3bd48a74df191743867db2ac80\n  patches:\n    # https://github.com/rocker-org/rocker/issues/213#issuecomment-278909502\n    - no_tcltk.patch\n\nbuild:\n  merge_build_host: True  # [win]\n  number: 0\n  skip: true  # [win32]\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - {{ compiler('c') }}        # [not win]\n    - {{ compiler('m2w64_c') }}        # [win]\n    - {{posix}}filesystem        # [win]\n    - {{posix}}make\n    - {{posix}}sed               # [win]\n    - {{posix}}coreutils         # [win]\n    - {{posix}}zip               # [win]\n  host:\n    - r-base\n    - r-mass\n    - r-randomfields\n    - r-sp\n    - r-splancs\n  run:\n    - r-base\n    - {{native}}gcc-libs         # [win]\n    - r-mass\n    - r-randomfields\n    - r-sp\n    - r-splancs\n\ntest:\n  commands:\n    - $R -e \"library('geoR')\"           # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('geoR')\\\"\"  # [win]\n\nabout:\n  home: http://www.leg.ufpr.br/geoR\n  license: GPL (>= 2)\n  summary: Geostatistical analysis including traditional, likelihood-based and Bayesian methods.\n  license_family: GPL3\n  license_file: '{{ environ[\"PREFIX\"] }}/lib/R/share/licenses/GPL-3'\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n    - ocefpaf\n    - johanneskoester\n    - bgruening\n    - daler\n    - jdblischak\n    - cbrueffer\n    - dbast\n",
  "req":{
   "__set__":true,
   "elements":[
@@ -252,5 +252,5 @@
   "https://cran.r-project.org/src/contrib/geoR_1.7-5.2.1.tar.gz",
   "https://cran.r-project.org/src/contrib/Archive/geoR/geoR_1.7-5.2.1.tar.gz"
  ],
- "version":"1.7_5.2.1"
+ "version":"1.7_5.2.2"
 }
