@@ -118,6 +118,23 @@
     "migrator_version",
     "name"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/362772348.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"Version",
+    "migrator_version":0,
+    "version":"1.5.5"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "version"
+   ]
   }
  ],
  "bad":false,
@@ -321,8 +338,8 @@
   }
  },
  "name":"cyclus",
- "new_version":"1.5.4",
- "pinning_version":"2019.11.01",
+ "new_version":"1.5.5",
+ "pinning_version":"2020.01.10",
  "raw_meta_yaml":"{% set version = \"1.5.4\" %}\n{% set sha256 = \"57b4b68d81852d4c7350d3788cfeaf6093cb9cdf8dd524fe10ad33581f55e043\" %}\n\npackage:\n  name: cyclus\n  version: {{ version }}\n\nsource:\n  fn: cyclus-{{ version }}-{{ sha256 }}.tar.gz\n  url: https://github.com/cyclus/cyclus/archive/{{ version }}.tar.gz\n  sha256: {{ sha256 }}\n\nbuild:\n  number: 0\n  skip: True  # [win or py<=27 or py>=37]\n  detect_binary_files_with_prefix: true\n\nrequirements:\n  build:\n    - cmake\n    - pkg-config\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n  host:\n    - python\n    - glibmm\n    - glib 2.56\n    - jinja2\n    - pandas\n    - cython 0.26\n    - coincbc <2.9.10\n    - boost-cpp <1.69\n    - libblas\n    - libcblas\n    - liblapack\n    - libxmlpp\n    - bzip2\n    - hdf5\n    - sqlite\n    - pcre\n    - gettext\n    - xz\n  run:\n    - python\n    - jinja2\n    - pandas\n    - glibmm\n    - glib 2.56\n    - libxmlpp\n    - {{ pin_compatible(\"coincbc\", max_pin=\"x.x.x\") }}\n    - libblas\n    - libcblas\n    - liblapack\n    - {{ pin_compatible(\"boost-cpp\", max_pin=\"x.x.x\") }}\n    - hdf5\n    - sqlite\n    - pcre\n    - gettext\n    - bzip2\n    - xz\n    - websockets\n    - pprintpp\n\ntest:\n  requires:\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n    - setuptools\n    - nose\n    - pytables\n  source_files:\n    - tests\n\nabout:\n  home: http://fuelcycle.org/\n  license: BSD 3-clause\n  license_file: LICENSE.rst\n  summary: \"The agent-based fuel cycle simulator.\"\n\nextra:\n  recipe-maintainers:\n    - scopatz\n    - gonuke\n    - bam241\n    - katyhuff\n    - FlanFlanagan\n",
  "req":{
   "__set__":true,
@@ -354,7 +371,7 @@
    "xz"
   ]
  },
- "smithy_version":"3.6.1",
+ "smithy_version":"3.6.5",
  "url":"https://github.com/cyclus/cyclus/archive/1.5.4.tar.gz",
  "version":"1.5.4"
 }
