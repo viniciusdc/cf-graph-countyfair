@@ -33,6 +33,23 @@
     "migrator_version",
     "name"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/362551470.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"Version",
+    "migrator_version":0,
+    "version":"2.4"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "version"
+   ]
   }
  ],
  "bad":false,
@@ -138,8 +155,8 @@
   }
  },
  "name":"r-fma",
- "new_version":"2.3",
- "pinning_version":"2019.07.19",
+ "new_version":"2.4",
+ "pinning_version":"2020.01.10",
  "raw_meta_yaml":"{% set version = '2.3' %}\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-fma\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  url:\n    - {{ cran_mirror }}/src/contrib/fma_{{ version }}.tar.gz\n    - {{ cran_mirror }}/src/contrib/Archive/fma/fma_{{ version }}.tar.gz\n  sha256: f516eff79e14d4ffefcdc2db06d97ae57f998e37e871264457078f671384fafc\n\nbuild:\n  noarch: generic\n  merge_build_host: True  # [win]\n  number: 1001\n  noarch: generic\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n\n  host:\n    - r-base\n    - r-forecast\n  run:\n    - r-base\n    - r-forecast\n\ntest:\n  commands:\n    - $R -e \"library('fma')\"           # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('fma')\\\"\"  # [win]\n\nabout:\n  home: http://robjhyndman.com/software/fma/\n  license: GPL (>= 2)\n  summary: 'All data sets from \"Forecasting: methods and applications\" by Makridakis, Wheelwright\n    & Hyndman (Wiley, 3rd ed., 1998).'\n  license_family: GPL3\n  license_file: '{{ environ[\"PREFIX\"] }}/lib/R/share/licenses/GPL-3'\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n    - johanneskoester\n    - bgruening\n    - daler\n    - jdblischak\n    - cbrueffer\n    - dbast\n    - philip-khor\n",
  "req":{
   "__set__":true,
@@ -148,7 +165,7 @@
    "r-forecast"
   ]
  },
- "smithy_version":"3.4.1",
+ "smithy_version":"3.6.5",
  "url":[
   "https://cran.r-project.org/src/contrib/fma_2.3.tar.gz",
   "https://cran.r-project.org/src/contrib/Archive/fma/fma_2.3.tar.gz",
