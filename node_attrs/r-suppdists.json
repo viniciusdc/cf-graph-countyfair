@@ -33,6 +33,23 @@
     "migrator_version",
     "name"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/362481896.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"Version",
+    "migrator_version":0,
+    "version":"1.1_9.5"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "version"
+   ]
   }
  ],
  "bad":false,
@@ -147,8 +164,8 @@
   }
  },
  "name":"r-suppdists",
- "new_version":"1.1_9.4",
- "pinning_version":"2019.07.15",
+ "new_version":"1.1_9.5",
+ "pinning_version":"2020.01.10",
  "raw_meta_yaml":"{% set version = '1.1-9.4' %}\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-suppdists\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  fn: SuppDists_{{ version }}.tar.gz\n  url:\n    - {{ cran_mirror }}/src/contrib/SuppDists_{{ version }}.tar.gz\n    - {{ cran_mirror }}/src/contrib/Archive/SuppDists/SuppDists_{{ version }}.tar.gz\n  sha256: fcb571150af66b95dcf0627298c54f7813671d60521a00ed157f63fc2247ddb9\n\nbuild:\n  merge_build_host: True  # [win]\n  number: 1002\n  skip: true  # [win32]\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - {{ compiler('c') }}        # [not win]\n    - {{ compiler('cxx') }}      # [not win]\n    - {{ compiler('m2w64_c') }}        # [win]\n    - {{ compiler('m2w64_cxx') }}        # [win]\n    - {{posix}}filesystem        # [win]\n    - {{posix}}make\n    - {{posix}}sed               # [win]\n    - {{posix}}coreutils         # [win]\n    - {{posix}}zip               # [win]\n  host:\n    - r-base\n  run:\n    - r-base\n    - {{native}}gcc-libs         # [win]\n\ntest:\n  commands:\n    - $R -e \"library('SuppDists')\"           # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('SuppDists')\\\"\"  # [win]\n\nabout:\n  home: no longer valid\n  license: GPL (>= 2)\n  summary: Ten distributions supplementing those built into R. Inverse Gauss, Kruskal-Wallis,\n    Kendall's Tau, Friedman's chi squared, Spearman's rho, maximum F ratio, the Pearson\n    product moment correlation coefficient, Johnson distributions, normal scores and\n    generalized hypergeometric distributions. In addition two random number generators\n    of George Marsaglia are included.\n  license_family: GPL3\n  license_file: '{{ environ[\"PREFIX\"] }}/lib/R/share/licenses/GPL-3'\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n    - qwhelan\n    - johanneskoester\n    - bgruening\n    - daler\n    - jdblischak\n    - cbrueffer\n    - dbast\n",
  "req":{
   "__set__":true,
@@ -166,7 +183,7 @@
    "zip"
   ]
  },
- "smithy_version":"3.4.1",
+ "smithy_version":"3.6.5",
  "url":[
   "https://cran.r-project.org/src/contrib/SuppDists_1.1-9.4.tar.gz",
   "https://cran.r-project.org/src/contrib/Archive/SuppDists/SuppDists_1.1-9.4.tar.gz",
