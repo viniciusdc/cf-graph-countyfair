@@ -48,7 +48,7 @@
   "build":{
    "noarch":"python",
    "number":"0",
-   "script":"python -m pip install --no-deps --ignore-installed ."
+   "script":"-m pip install . --no-deps -vv"
   },
   "extra":{
    "recipe-maintainers":[
@@ -62,7 +62,7 @@
   },
   "package":{
    "name":"pytools",
-   "version":"2019.1.1"
+   "version":"2020.1"
   },
   "requirements":{
    "build":[
@@ -98,9 +98,9 @@
    ]
   },
   "source":{
-   "fn":"pytools-2019.1.1.tar.gz",
-   "sha256":"ce2d702ae4ef10a70197b00b93141461140d00578f2a862fa946ca1446a300db",
-   "url":"https://pypi.io/packages/source/p/pytools/pytools-2019.1.1.tar.gz"
+   "fn":"pytools-2020.1.tar.gz",
+   "sha256":"c132d17855584ad61c6e00f3ff11146499755944afc400cce9eae0ecf03d04a6",
+   "url":"https://pypi.io/packages/source/p/pytools/pytools-2020.1.tar.gz"
   },
   "test":{
    "commands":[
@@ -128,7 +128,7 @@
  "name":"pytools",
  "new_version":"2020.1",
  "pinning_version":"2020.01.10",
- "raw_meta_yaml":"{% set name = \"pytools\" %}\n{% set version = \"2019.1.1\" %}\n{% set build_number = 0 %}\n{% set sha256 = \"ce2d702ae4ef10a70197b00b93141461140d00578f2a862fa946ca1446a300db\" %}\n\npackage:\n    name: {{ name|lower }}\n    version: {{ version }}\n\nsource:\n    fn: {{ name }}-{{ version }}.tar.gz\n    url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz\n    sha256: {{ sha256 }}\n\nbuild:\n    number: {{ build_number }}\n    noarch: python\n    script: python -m pip install --no-deps --ignore-installed .\n\nrequirements:\n    build:\n        - python\n        - setuptools\n        - six\n        - pip\n    run:\n        - python\n        - numpy\n        - decorator >=3.2.0\n        - appdirs >=1.4.0\n        - six\n\ntest:\n    requires:\n        - pytest\n    imports:\n        - {{ name }}\n    source_files:\n        - test\n    commands:\n        - cd test && python -m pytest\n\n\nabout:\n    home: http://pypi.python.org/pypi/{{ name }}\n    license: MIT\n    license_file: LICENSE\n    summary: A collection of tools for Python\n\n    description: |\n        Pytools is a big bag of things that are \"missing\" from the Python standard\n        library. This is mainly a dependency of my other software packages, and is\n        probably of little interest to you unless you use those. If you're curious\n        nonetheless, here's what's on offer.\n\n    dev_url: http://github.com/inducer/{{ name }}\n\nextra:\n    recipe-maintainers:\n        - inducer\n        - ocefpaf\n",
+ "raw_meta_yaml":"{% set name = \"pytools\" %}\n{% set version = \"2020.1\" %}\n{% set build_number = 0 %}\n{% set sha256 = \"c132d17855584ad61c6e00f3ff11146499755944afc400cce9eae0ecf03d04a6\" %}\n\npackage:\n    name: {{ name|lower }}\n    version: {{ version }}\n\nsource:\n    fn: {{ name }}-{{ version }}.tar.gz\n    url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz\n    sha256: {{ sha256 }}\n\nbuild:\n    number: {{ build_number }}\n    noarch: python\n    script: {{ PYTHON }} -m pip install . --no-deps -vv\n\nrequirements:\n    build:\n        - python\n        - setuptools\n        - six\n        - pip\n    run:\n        - python\n        - numpy\n        - decorator >=3.2.0\n        - appdirs >=1.4.0\n        - six\n\ntest:\n    requires:\n        - pytest\n    imports:\n        - {{ name }}\n    source_files:\n        - test\n    commands:\n        - cd test && python -m pytest\n\n\nabout:\n    home: http://pypi.python.org/pypi/{{ name }}\n    license: MIT\n    license_file: LICENSE\n    summary: A collection of tools for Python\n\n    description: |\n        Pytools is a big bag of things that are \"missing\" from the Python standard\n        library. This is mainly a dependency of my other software packages, and is\n        probably of little interest to you unless you use those. If you're curious\n        nonetheless, here's what's on offer.\n\n    dev_url: http://github.com/inducer/{{ name }}\n\nextra:\n    recipe-maintainers:\n        - inducer\n        - ocefpaf\n",
  "req":{
   "__set__":true,
   "elements":[
@@ -143,5 +143,5 @@
  },
  "smithy_version":"3.6.5",
  "url":"https://pypi.io/packages/source/p/pytools/pytools-2019.1.1.tar.gz",
- "version":"2019.1.1"
+ "version":"2020.1"
 }
