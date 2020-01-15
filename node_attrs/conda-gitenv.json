@@ -38,7 +38,7 @@
    ],
    "noarch":"python",
    "number":"0",
-   "script":"python setup.py install --single-version-externally-managed --record record.txt"
+   "script":" -m pip install . --no-deps -vv"
   },
   "extra":{
    "recipe-maintainers":[
@@ -55,42 +55,42 @@
   },
   "package":{
    "name":"conda-gitenv",
-   "version":"0.3.1"
+   "version":"0.4.0"
   },
   "requirements":{
-   "build":[
+   "host":[
     "python",
-    "setuptools",
+    "pip",
     "python",
-    "setuptools",
+    "pip",
     "python",
-    "setuptools"
+    "pip"
    ],
    "run":[
     "python",
     "gitpython",
     "pyyaml",
-    "conda",
+    "conda 4.3.*",
     "conda-build-all",
     "conda-build",
     "python",
     "gitpython",
     "pyyaml",
-    "conda",
+    "conda 4.3.*",
     "conda-build-all",
     "conda-build",
     "python",
     "gitpython",
     "pyyaml",
-    "conda",
+    "conda 4.3.*",
     "conda-build-all",
     "conda-build"
    ]
   },
   "source":{
-   "fn":"conda-gitenv-0.3.1.tar.gz",
-   "sha256":"baa170ef677381612d49e5156aa147d16c03148604b3894629267a49360739a7",
-   "url":"https://github.com/SciTools/conda-gitenv/archive/v0.3.1.tar.gz"
+   "fn":"conda-gitenv-0.4.0.tar.gz",
+   "sha256":"4540184e41a1c02b1fea53235f365b7d87ff82a8e8c1640251170ab27a4b5ee1",
+   "url":"https://github.com/SciTools/conda-gitenv/archive/v0.4.0.tar.gz"
   },
   "test":{
    "commands":[
@@ -114,13 +114,18 @@
     "conda_gitenv",
     "conda_gitenv",
     "conda_gitenv"
+   ],
+   "requires":[
+    "git",
+    "git",
+    "git"
    ]
   }
  },
  "name":"conda-gitenv",
  "new_version":"0.4.0",
  "pinning_version":"2020.01.10",
- "raw_meta_yaml":"{% set name = \"conda-gitenv\" %}\n{% set version = \"0.3.1\" %}\n{% set sha = \"baa170ef677381612d49e5156aa147d16c03148604b3894629267a49360739a7\" %}\n\npackage:\n  name: {{ name }} \n  version: {{ version }}\n\nsource:\n  fn: {{ name }}-{{ version }}.tar.gz\n  url: https://github.com/SciTools/{{ name }}/archive/v{{ version }}.tar.gz\n  sha256: {{ sha }} \n\nbuild:\n  number: 0\n  script: python setup.py install --single-version-externally-managed --record record.txt\n  noarch: python\n  entry_points:\n    - conda-gitenv = conda_gitenv.cli:main\n\nrequirements:\n  build:\n    - python\n    - setuptools\n  run:\n    - python\n    - gitpython\n    - pyyaml\n    - conda\n    - conda-build-all\n    - conda-build\n\ntest:\n  imports:\n    - conda_gitenv\n  commands:\n    - conda gitenv --help\n    - conda gitenv resolve --help\n    - conda gitenv autotag --help\n    - conda gitenv autolabel --help\n    - conda gitenv deploy --help\n\nabout:\n  home: https://github.com/SciTools/{{ name }}\n  license: BSD 3-Clause\n  license_family: BSD\n  license_file: LICENSE\n  summary: 'Track environment specifications using a git repo.'\n\nextra:\n  recipe-maintainers:\n    - pelson\n    - bjlittle\n    - lbdreyer\n",
+ "raw_meta_yaml":"{% set name = \"conda-gitenv\" %}\n{% set version = \"0.4.0\" %}\n{% set sha = \"4540184e41a1c02b1fea53235f365b7d87ff82a8e8c1640251170ab27a4b5ee1\" %}\n\npackage:\n  name: {{ name }} \n  version: {{ version }}\n\nsource:\n  fn: {{ name }}-{{ version }}.tar.gz\n  url: https://github.com/SciTools/{{ name }}/archive/v{{ version }}.tar.gz\n  sha256: {{ sha }} \n\nbuild:\n  number: 0\n  script: \"{{ PYTHON }} -m pip install . --no-deps -vv\"\n  noarch: python\n  entry_points:\n    - conda-gitenv = conda_gitenv.cli:main\n\nrequirements:\n  host:\n    - python\n    - pip\n  run:\n    - python\n    - gitpython\n    - pyyaml\n    - conda 4.3.*\n    - conda-build-all\n    - conda-build\n\ntest:\n  requires:\n    - git\n  imports:\n    - conda_gitenv\n  commands:\n    - conda gitenv --help\n    - conda gitenv resolve --help\n    - conda gitenv autotag --help\n    - conda gitenv autolabel --help\n    - conda gitenv deploy --help\n\nabout:\n  home: https://github.com/SciTools/{{ name }}\n  license: BSD 3-Clause\n  license_family: BSD\n  license_file: LICENSE\n  summary: 'Track environment specifications using a git repo.'\n\nextra:\n  recipe-maintainers:\n    - pelson\n    - bjlittle\n    - lbdreyer\n",
  "req":{
   "__set__":true,
   "elements":[
@@ -128,12 +133,12 @@
    "conda-build",
    "conda-build-all",
    "gitpython",
+   "pip",
    "python",
-   "pyyaml",
-   "setuptools"
+   "pyyaml"
   ]
  },
  "smithy_version":"3.6.5",
  "url":"https://github.com/SciTools/conda-gitenv/archive/v0.3.1.tar.gz",
- "version":"0.3.1"
+ "version":"0.4.0"
 }
