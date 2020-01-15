@@ -185,20 +185,20 @@
   },
   "package":{
    "name":"blis",
-   "version":"0.6.0"
+   "version":"0.6.1"
   },
   "requirements":{
    "build":[
     "c_compiler_stub",
-    "clangdev",
-    "llvmdev",
-    "posix",
+    "clangxx",
+    "llvm-tools",
+    "autotools_clang_conda",
     "m2-sed",
     "perl",
     "python >=3.5",
     "c_compiler_stub",
-    "clangdev",
-    "llvmdev",
+    "clangxx",
+    "llvm-tools",
     "sed",
     "perl",
     "python >=3.5",
@@ -211,14 +211,14 @@
    "run":null
   },
   "source":{
-   "sha256":"ad5765cc3f492d0c663f494850dafc4d72f901c332eb442f404814ff2995e5a9",
-   "url":"https://github.com/flame/blis/archive/0.6.0.tar.gz"
+   "sha256":"76b22f29b7789cf117c0873d2a6b2a6d61f903869168148f2e7306353c105c37",
+   "url":"https://github.com/flame/blis/archive/0.6.1.tar.gz"
   },
   "test":{
    "commands":[
     "if not exist %LIBRARY_INC%\\\\blis\\\\blis.h exit 1",
     "if not exist %LIBRARY_INC%\\\\blis\\\\cblas.h exit 1",
-    "if not exist %LIBRARY_BIN%\\\\libblis.2.dll exit 1",
+    "if not exist %LIBRARY_BIN%\\\\libblis.3.dll exit 1",
     "if not exist %LIBRARY_LIB%\\\\blis.lib exit 1",
     "if not exist %LIBRARY_LIB%\\\\libblis.lib exit 1",
     "test -f $PREFIX/lib/libblis.a",
@@ -235,21 +235,21 @@
  "name":"blis",
  "new_version":"0.6.1",
  "pinning_version":"2020.01.10",
- "raw_meta_yaml":"{% set name = \"blis\" %}\n{% set version = \"0.6.0\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  url: https://github.com/flame/blis/archive/{{ version }}.tar.gz\n  sha256: ad5765cc3f492d0c663f494850dafc4d72f901c332eb442f404814ff2995e5a9\n\nbuild:\n  number: 0\n  skip: True  # [win and vc<14]\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - clangdev               # [win or osx]\n    - llvmdev                # [win or osx]\n    - posix                  # [win]\n    - m2-sed                 # [win]\n    - sed                    # [unix]\n    - perl\n    - python >=3.5\n  host:\n  run:\n\ntest:\n  commands:\n    - test -f $PREFIX/lib/libblis.a                       # [unix]\n    - test -f $PREFIX/lib/libblis${SHLIB_EXT}             # [unix]\n    - test -f $PREFIX/include/blis/blis.h                 # [unix]\n    - test -f $PREFIX/include/blis/cblas.h                # [unix]\n    - if not exist %LIBRARY_INC%\\\\blis\\\\blis.h exit 1     # [win]\n    - if not exist %LIBRARY_INC%\\\\blis\\\\cblas.h exit 1    # [win]\n    - if not exist %LIBRARY_BIN%\\\\libblis.2.dll exit 1    # [win]\n    - if not exist %LIBRARY_LIB%\\\\blis.lib exit 1         # [win]\n    - if not exist %LIBRARY_LIB%\\\\libblis.lib exit 1      # [win]\n\nabout:\n  home: http://github.com/flame/blis\n  license: BSD-3-Clause\n  license_family: BSD\n  license_file: LICENSE\n  summary: 'BLAS-like Library Instantiation Software Framework'\n\nextra:\n  recipe-maintainers:\n    - isuruf\n",
+ "raw_meta_yaml":"{% set name = \"blis\" %}\n{% set version = \"0.6.1\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  url: https://github.com/flame/blis/archive/{{ version }}.tar.gz\n  sha256: 76b22f29b7789cf117c0873d2a6b2a6d61f903869168148f2e7306353c105c37\n\nbuild:\n  number: 0\n  skip: True  # [win and vc<14]\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - clangxx                # [win or osx]\n    - llvm-tools             # [win or osx]\n    - autotools_clang_conda  # [win]\n    - m2-sed                 # [win]\n    - sed                    # [unix]\n    - perl\n    - python >=3.5\n  host:\n  run:\n\ntest:\n  commands:\n    - test -f $PREFIX/lib/libblis.a                       # [unix]\n    - test -f $PREFIX/lib/libblis${SHLIB_EXT}             # [unix]\n    - test -f $PREFIX/include/blis/blis.h                 # [unix]\n    - test -f $PREFIX/include/blis/cblas.h                # [unix]\n    - if not exist %LIBRARY_INC%\\\\blis\\\\blis.h exit 1     # [win]\n    - if not exist %LIBRARY_INC%\\\\blis\\\\cblas.h exit 1    # [win]\n    - if not exist %LIBRARY_BIN%\\\\libblis.3.dll exit 1    # [win]\n    - if not exist %LIBRARY_LIB%\\\\blis.lib exit 1         # [win]\n    - if not exist %LIBRARY_LIB%\\\\libblis.lib exit 1      # [win]\n\nabout:\n  home: http://github.com/flame/blis\n  license: BSD-3-Clause\n  license_family: BSD\n  license_file: LICENSE\n  summary: 'BLAS-like Library Instantiation Software Framework'\n\nextra:\n  recipe-maintainers:\n    - isuruf\n",
  "req":{
   "__set__":true,
   "elements":[
+   "autotools_clang_conda",
    "c_compiler_stub",
-   "clangdev",
-   "llvmdev",
+   "clangxx",
+   "llvm-tools",
    "m2-sed",
    "perl",
-   "posix",
    "python",
    "sed"
   ]
  },
  "smithy_version":"3.6.5",
  "url":"https://github.com/flame/blis/archive/0.6.0.tar.gz",
- "version":"0.6.0"
+ "version":"0.6.1"
 }
