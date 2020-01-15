@@ -60,8 +60,11 @@
   "extra":{
    "recipe-maintainers":[
     "lheagy",
+    "jcapriot",
     "lheagy",
-    "lheagy"
+    "jcapriot",
+    "lheagy",
+    "jcapriot"
    ]
   },
   "package":{
@@ -124,7 +127,7 @@
  "name":"discretize",
  "new_version":"0.4.11",
  "pinning_version":"2020.01.10",
- "raw_meta_yaml":"{% set version = \"0.4.10\" %}\n\npackage:\n  name: discretize\n  version: {{ version }}\n\nsource:\n  url: https://pypi.io/packages/source/d/discretize/discretize-{{ version }}.tar.gz\n  sha256: ba05bd02fb1b04ed95f626936dc72908ae4a15fb8909c048bebfaa17a8bf4ef7\n\nbuild:\n  number: 0\n  script: \"{{ PYTHON }} -m pip install . -vv\"\n\nrequirements:\n  build:\n    - {{ compiler('cxx') }}\n  host:\n    - python\n    - pip\n    - numpy\n    - cython >=0.2\n  run:\n    - python\n    - {{ pin_compatible('numpy') }}\n    - scipy >=0.13\n    - pymatsolver >=0.1.2\n    - properties\n    - vectormath\n\ntest:\n  imports:\n    - discretize\n\nabout:\n  home: http://github.com/simpeg/discretize\n  license: MIT\n  license_family: MIT\n  license_file: LICENSE\n  summary: \"Discretization tools for finite volume and inverse problems\"\n\nextra:\n  recipe-maintainers:\n    - lheagy\n",
+ "raw_meta_yaml":"{% set version = \"0.4.10\" %}\n\npackage:\n  name: discretize\n  version: {{ version }}\n\nsource:\n  url: https://pypi.io/packages/source/d/discretize/discretize-{{ version }}.tar.gz\n  sha256: ba05bd02fb1b04ed95f626936dc72908ae4a15fb8909c048bebfaa17a8bf4ef7\n\nbuild:\n  number: 0\n  script: \"{{ PYTHON }} -m pip install . -vv\"\n  skip: True  # [py2k]\n\nrequirements:\n  build:\n    - {{ compiler('cxx') }}\n  host:\n    - python\n    - pip\n    - numpy\n    - cython >=0.2\n  run:\n    - python\n    - {{ pin_compatible('numpy') }}\n    - scipy >=0.13\n    - pymatsolver >=0.1.2\n    - properties\n    - vectormath\n\ntest:\n  imports:\n    - discretize\n\nabout:\n  home: http://github.com/simpeg/discretize\n  license: MIT\n  license_family: MIT\n  license_file: LICENSE\n  summary: \"Discretization tools for finite volume and inverse problems\"\n\nextra:\n  recipe-maintainers:\n    - lheagy\n    - jcapriot\n",
  "req":{
   "__set__":true,
   "elements":[
