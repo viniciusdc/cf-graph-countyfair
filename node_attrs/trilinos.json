@@ -81,7 +81,7 @@
  "hash_type":"sha256",
  "meta_yaml":{
   "about":{
-   "description":"Fast, compiled object-oriented algorithms and enabling technologies for the solution of large-scale, complex multi-physics engineering and scientific problems.",
+   "description":"Fast, compiled object-oriented algorithms and enabling technologies that support the solution of large-scale, complex multi-physics engineering and scientific problems.",
    "dev_url":"https://github.com/trilinos/Trilinos",
    "home":"https://trilinos.org",
    "license":"BSD-3-Clause",
@@ -90,29 +90,29 @@
    "summary":"Sandia's suite of HPC solvers and enabling technologies"
   },
   "build":{
-   "number":"1006",
+   "number":"0",
    "skip":true
   },
   "extra":{
    "recipe-maintainers":[
-    "wfspotz",
-    "wfspotz",
-    "wfspotz"
+    "pyt-viper",
+    "pyt-viper",
+    "pyt-viper"
    ]
   },
   "package":{
    "name":"trilinos",
-   "version":"12.12.1"
+   "version":"12.18.1"
   },
   "requirements":{
    "build":[
-    "cmake >=2.8.11",
+    "cmake >=3.10.0",
     "c_compiler_stub",
     "cxx_compiler_stub",
-    "cmake >=2.8.11",
+    "cmake >=3.10.0",
     "c_compiler_stub",
     "cxx_compiler_stub",
-    "cmake >=2.8.11",
+    "cmake >=3.10.0",
     "c_compiler_stub",
     "cxx_compiler_stub"
    ],
@@ -135,27 +135,32 @@
     "boost-cpp",
     null,
     "boost-cpp"
+   ],
+   "run_constrained":[
+    "pytrilinos ==999999999",
+    "pytrilinos ==999999999",
+    "pytrilinos ==999999999"
    ]
   },
   "source":{
-   "sha256":"5474c5329c6309224a7e1726cf6f0d855025b2042959e4e2be2748bd6bb49e18",
-   "url":"https://github.com/trilinos/Trilinos/archive/trilinos-release-12-12-1.tar.gz"
+   "sha256":"7d2e1a1a3e2d2ce78bb248c63411fed5007c827b87cadee3d13c1a45c09a89cf",
+   "url":"https://github.com/trilinos/Trilinos/archive/trilinos-release-12-18-1.tar.gz"
   },
   "test":{
    "commands":[
     "if not exist %PREFIX%\\\\Library\\\\include\\\\TeuchosCore_ConfigDefs.hpp exit 1",
     "if not exist %PREFIX%\\\\Library\\\\lib\\\\teuchoscore.lib exit 1",
     "test -f $PREFIX/include/TeuchosCore_ConfigDefs.hpp",
-    "test -f $PREFIX/lib/libteuchoscore.12.12.1.dylib",
+    "test -f $PREFIX/lib/libteuchoscore.12.18.1.dylib",
     "test -f $PREFIX/include/TeuchosCore_ConfigDefs.hpp",
-    "test -f $PREFIX/lib/libteuchoscore.so.12.12.1"
+    "test -f $PREFIX/lib/libteuchoscore.so.12.18.1"
    ]
   }
  },
  "name":"trilinos",
  "new_version":"0.2.0",
  "pinning_version":"2019.05.29",
- "raw_meta_yaml":"{% set version = \"12.12.1\" %}\n\npackage:\n  name: trilinos\n  version: {{ version }}\n\nsource:\n  url: https://github.com/trilinos/Trilinos/archive/trilinos-release-12-12-1.tar.gz\n  sha256: 5474c5329c6309224a7e1726cf6f0d855025b2042959e4e2be2748bd6bb49e18\n\nbuild:\n  number: 1006\n  skip: true  # [win and vc!=14]\n\nrequirements:\n  build:\n    - cmake >=2.8.11\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n  host:\n    - libblas\n    - liblapack\n    - {{ mpi }}  # [unix]\n    - boost-cpp\n  run:\n    - {{ mpi }}  # [unix]\n    - boost-cpp\n\ntest:\n  commands:\n    - test -f $PREFIX/include/TeuchosCore_ConfigDefs.hpp        # [unix]\n    - test -f $PREFIX/lib/libteuchoscore.{{ version }}.dylib    # [osx]\n    - test -f $PREFIX/lib/libteuchoscore.so.{{ version }}       # [linux]\n    - if not exist %PREFIX%\\\\Library\\\\include\\\\TeuchosCore_ConfigDefs.hpp exit 1  # [win]\n    - if not exist %PREFIX%\\\\Library\\\\lib\\\\teuchoscore.lib exit 1  # [win]\n\nabout:\n  home: https://trilinos.org\n  license: BSD-3-Clause\n  license_family: BSD\n  license_file: LICENSE\n  summary:\n    Sandia's suite of HPC solvers and enabling technologies\n  description:\n    Fast, compiled object-oriented algorithms and enabling\n    technologies for the solution of large-scale, complex\n    multi-physics engineering and scientific problems.\n  dev_url: https://github.com/trilinos/Trilinos\n\nextra:\n  recipe-maintainers:\n    - wfspotz\n",
+ "raw_meta_yaml":"{% set version = \"12.18.1\" %}\n\npackage:\n  name: trilinos\n  version: {{ version }}\n\nsource:\n  url: https://github.com/trilinos/Trilinos/archive/trilinos-release-{{ version | replace('.', '-') }}.tar.gz\n  sha256: 7d2e1a1a3e2d2ce78bb248c63411fed5007c827b87cadee3d13c1a45c09a89cf\n\nbuild:\n  number: 0\n  skip: true  # [win]\n\nrequirements:\n  build:\n    - cmake >=3.10.0\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n  host:\n    - libblas\n    - liblapack\n    - {{ mpi }}  # [unix]\n    - boost-cpp\n  run:\n    - {{ mpi }}  # [unix]\n    - boost-cpp\n  run_constrained:\n    - pytrilinos ==999999999\n\ntest:\n  commands:\n    - test -f $PREFIX/include/TeuchosCore_ConfigDefs.hpp        # [unix]\n    - test -f $PREFIX/lib/libteuchoscore.{{ version }}.dylib    # [osx]\n    - test -f $PREFIX/lib/libteuchoscore.so.{{ version }}       # [linux]\n    - if not exist %PREFIX%\\\\Library\\\\include\\\\TeuchosCore_ConfigDefs.hpp exit 1  # [win]\n    - if not exist %PREFIX%\\\\Library\\\\lib\\\\teuchoscore.lib exit 1  # [win]\n\nabout:\n  home: https://trilinos.org\n  license: BSD-3-Clause\n  license_family: BSD\n  license_file: LICENSE\n  summary:\n    Sandia's suite of HPC solvers and enabling technologies\n  description:\n    Fast, compiled object-oriented algorithms and enabling\n    technologies that support the solution of large-scale,\n    complex multi-physics engineering and scientific problems.\n  dev_url: https://github.com/trilinos/Trilinos\n\nextra:\n  recipe-maintainers:\n    - pyt-viper\n",
  "req":{
   "__set__":true,
   "elements":[
@@ -169,5 +174,5 @@
  },
  "smithy_version":"3.3.4",
  "url":"https://github.com/trilinos/Trilinos/archive/trilinos-release-12-12-1.tar.gz",
- "version":"12.12.1"
+ "version":"12.18.1"
 }
