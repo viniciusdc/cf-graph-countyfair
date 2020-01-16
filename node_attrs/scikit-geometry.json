@@ -56,8 +56,7 @@
    "summary":"Scientific Python Geometric Algorithms Library"
   },
   "build":{
-   "number":"0",
-   "skip":true
+   "number":"1"
   },
   "extra":{
    "recipe-maintainers":[
@@ -84,33 +83,32 @@
    ],
    "host":[
     "pip",
-    "python 3.*",
+    "python",
     "pybind11",
     "cgal-cpp",
     "cgal",
     "pip",
-    "python 3.*",
+    "python",
     "pybind11",
     "cgal-cpp",
     "cgal",
     "pip",
-    "python 3.*",
+    "python",
     "pybind11",
     "cgal-cpp",
     "cgal"
    ],
    "run":[
-    "python 3.*",
+    "python",
     "cgal-cpp",
     "cgal",
     "vs2015_runtime",
     "mpir",
     "mpfr",
-    "gmp",
     "cgal-cpp",
     "boost-cpp",
     "matplotlib-base",
-    "python 3.*",
+    "python",
     "cgal-cpp",
     "cgal",
     "mpfr",
@@ -118,7 +116,7 @@
     "cgal-cpp",
     "boost-cpp",
     "matplotlib-base",
-    "python 3.*",
+    "python",
     "cgal-cpp",
     "cgal",
     "mpfr",
@@ -136,15 +134,18 @@
   "test":{
    "imports":[
     "skgeom",
+    "skgeom.draw",
     "skgeom",
-    "skgeom"
+    "skgeom.draw",
+    "skgeom",
+    "skgeom.draw"
    ]
   }
  },
  "name":"scikit-geometry",
  "new_version":"0.1.1",
  "pinning_version":"2020.01.10",
- "raw_meta_yaml":"{% set name = \"scikit-geometry\" %}\n{% set version = \"0.1.1\" %}\n\npackage:\n  name: \"{{ name|lower }}\"\n  version: \"{{ version }}\"\n\nsource:\n  url: https://github.com/scikit-geometry/{{ name }}/archive/{{ version }}.tar.gz\n  sha256: 1f49fe69754c74d644e37f343f28f302c022b1a10fcf8cfd5326eccfa83e0b41\n  patches:\n    - osx_cpp14.patch  # [osx]\n\nbuild:\n  number: 0\n  skip: true  # [win]\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n  host:\n    - pip\n    - python 3.*\n    - pybind11\n    - cgal-cpp\n    - cgal\n  run:\n    - python 3.*\n    - cgal-cpp\n    - cgal\n    - vs2015_runtime  # [win]\n    - mpir  # [win]\n    - mpfr\n    - gmp\n    - cgal-cpp\n    - boost-cpp\n    - matplotlib-base\n\ntest:\n  imports:\n    - skgeom\n\nabout:\n  home: https://github.com/scikit-geometry/scikit-geometry\n  license: LGPL-3.0-or-later\n  license_file: LICENSE\n  summary: Scientific Python Geometric Algorithms Library\n  doc_url: https://scikit-geometry.github.io/scikit-geometry\n  dev_url: https://github.com/scikit-geometry/scikit-geometry\n\nextra:\n  recipe-maintainers:\n    - wolfv\n    - SylvainCorlay\n",
+ "raw_meta_yaml":"{% set name = \"scikit-geometry\" %}\n{% set version = \"0.1.1\" %}\n\npackage:\n  name: \"{{ name|lower }}\"\n  version: \"{{ version }}\"\n\nsource:\n  url: https://github.com/scikit-geometry/{{ name }}/archive/{{ version }}.tar.gz\n  sha256: 1f49fe69754c74d644e37f343f28f302c022b1a10fcf8cfd5326eccfa83e0b41\n  patches:\n    - osx_cpp14.patch  # [osx]\n\nbuild:\n  number: 1\n  skip: true  # [py<35]\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n  host:\n    - pip\n    - python\n    - pybind11\n    - cgal-cpp\n    - cgal\n  run:\n    - python\n    - cgal-cpp\n    - cgal\n    - vs2015_runtime  # [win]\n    - mpir  # [win]\n    - mpfr\n    - gmp  # [not win]\n    - cgal-cpp\n    - boost-cpp\n    - matplotlib-base\n\ntest:\n  imports:\n    - skgeom\n    - skgeom.draw\n\nabout:\n  home: https://github.com/scikit-geometry/scikit-geometry\n  license: LGPL-3.0-or-later\n  license_file: LICENSE\n  summary: Scientific Python Geometric Algorithms Library\n  doc_url: https://scikit-geometry.github.io/scikit-geometry\n  dev_url: https://github.com/scikit-geometry/scikit-geometry\n\nextra:\n  recipe-maintainers:\n    - wolfv\n    - SylvainCorlay\n",
  "req":{
   "__set__":true,
   "elements":[
