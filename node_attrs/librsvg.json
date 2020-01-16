@@ -518,6 +518,23 @@
     "migrator_version",
     "version"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/363410039.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"Version",
+    "migrator_version":0,
+    "version":"2.47.2"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "version"
+   ]
   }
  ],
  "bad":false,
@@ -635,8 +652,8 @@
   }
  },
  "name":"librsvg",
- "new_version":"2.47.1",
- "pinning_version":"2019.11.20",
+ "new_version":"2.47.2",
+ "pinning_version":"2020.01.10",
  "raw_meta_yaml":"{% set version = \"2.46.4\" %}\n{% set version_major = version.split('.', 1)[0] %}\n{% set version_majmin = version.rsplit('.', 1)[0] %}\n{% set sha256 = \"b45b9ee3b64c58baaf800bcdff5fcd04d79930dba4c56e46e0d3b0aead40cc29\" %}\n\npackage:\n  name: librsvg\n  version: {{ version }}\n\nsource:\n  fn: librsvg-{{ version }}.tar.xz\n  url: http://ftp.gnome.org/pub/gnome/sources/librsvg/{{ version_majmin }}/librsvg-{{ version }}.tar.xz\n  sha256: {{ sha256 }}\n\nbuild:\n  number: 0\n  skip: true  # [win]\n  run_exports:\n    # Looks good but no new info after 2.43 so keeping it x.x for safety.\n    # https://abi-laboratory.pro/?view=timeline&l=librsvg\n    - {{ pin_subpackage('librsvg', max_pin='x') }}\n\nrequirements:\n  build:\n    - make\n    - pkg-config\n    - rust\n    - {{ compiler('c') }}\n  host:\n    - glib\n    - libxml2\n    - cairo\n    - gdk-pixbuf\n    - libcroco 0.6.*\n    - pango\n  run:\n    - glib\n    - libxml2\n    - cairo\n    - gdk-pixbuf\n    - libcroco 0.6.*\n    - pango\n\ntest:\n  commands:\n    - test -f $PREFIX/lib/librsvg-{{ version_major }}$SHLIB_EXT\n    - rsvg-convert --version\n\nabout:\n  home: https://wiki.gnome.org/Projects/LibRsvg\n  license: LGPLv2\n  license_file: COPYING.LIB\n  summary: librsvg is a library to render SVG files using cairo.\n\nextra:\n  recipe-maintainers:\n    - jenzopr\n    - pkgw\n",
  "req":{
   "__set__":true,
@@ -653,7 +670,7 @@
    "rust"
   ]
  },
- "smithy_version":"3.6.2",
+ "smithy_version":"3.6.5",
  "url":"http://ftp.gnome.org/pub/gnome/sources/librsvg/2.44/librsvg-2.44.15.tar.xz",
  "version":"2.46.4"
 }
