@@ -65,6 +65,23 @@
     "migrator_version",
     "name"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/363780276.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"Version",
+    "migrator_version":0,
+    "version":"3.1"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "version"
+   ]
   }
  ],
  "bad":false,
@@ -176,8 +193,8 @@
   }
  },
  "name":"r-leaps",
- "new_version":"3.0",
- "pinning_version":"2019.08.19",
+ "new_version":"3.1",
+ "pinning_version":"2020.01.10",
  "raw_meta_yaml":"{% set version = '3.0' %}\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-leaps\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  fn: leaps_{{ version }}.tar.gz\n  url:\n    - {{ cran_mirror }}/src/contrib/leaps_{{ version }}.tar.gz\n    - {{ cran_mirror }}/src/contrib/Archive/leaps/leaps_{{ version }}.tar.gz\n  sha256: 55a879cdad5a4c9bc3b5697dd4d364b3a094a49d8facb6692f5ce6af82adf285\n\nbuild:\n  merge_build_host: True  # [win]\n  number: 1004\n  skip: true  # [win32]\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - {{ compiler('c') }}        # [not win]\n    - {{ compiler('fortran') }}  # [not win]\n    - {{ compiler('m2w64_c') }}        # [win]\n    - {{ compiler('m2w64_fortran') }}        # [win]\n    - {{posix}}filesystem        # [win]\n    - {{posix}}make\n    - {{posix}}sed               # [win]\n    - {{posix}}coreutils         # [win]\n    - {{posix}}zip               # [win]\n  host:\n    - r-base\n  run:\n    - r-base\n    - {{native}}gcc-libs         # [win]\n\ntest:\n  commands:\n    - $R -e \"library('leaps')\"           # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('leaps')\\\"\"  # [win]\n\nabout:\n  home: https://CRAN.R-project.org/package=leaps\n  license: GPL (>= 2)\n  summary: Regression subset selection, including exhaustive search.\n  license_family: GPL3\n  license_file: '{{ environ[\"PREFIX\"] }}/lib/R/share/licenses/GPL-3'\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n    - johanneskoester\n    - bgruening\n    - daler\n    - jdblischak\n    - cbrueffer\n    - dbast\n",
  "req":{
   "__set__":true,
@@ -195,7 +212,7 @@
    "zip"
   ]
  },
- "smithy_version":"3.4.1",
+ "smithy_version":"3.6.5",
  "url":[
   "https://cran.r-project.org/src/contrib/leaps_3.0.tar.gz",
   "https://cran.r-project.org/src/contrib/Archive/leaps/leaps_3.0.tar.gz",
