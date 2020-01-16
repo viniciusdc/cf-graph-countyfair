@@ -65,6 +65,23 @@
     "migrator_version",
     "name"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/363474379.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"Version",
+    "migrator_version":0,
+    "version":"1.2.2.1"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "version"
+   ]
   }
  ],
  "bad":false,
@@ -171,8 +188,8 @@
   }
  },
  "name":"r-modelmetrics",
- "new_version":"1.2.2",
- "pinning_version":"2019.07.15",
+ "new_version":"1.2.2.1",
+ "pinning_version":"2020.01.10",
  "raw_meta_yaml":"{% set version = '1.2.2' %}\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-modelmetrics\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  url:\n    - {{ cran_mirror }}/src/contrib/ModelMetrics_{{ version }}.tar.gz\n    - {{ cran_mirror }}/src/contrib/Archive/ModelMetrics/ModelMetrics_{{ version }}.tar.gz\n  sha256: 66d6fc75658287fdbae4d437b51d26781e138b8baa558345fb9e5a2df86a0d95\n\nbuild:\n  merge_build_host: True  # [win]\n  number: 1\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - {{ compiler('c') }}        # [not win]\n    - {{ compiler('cxx') }}      # [not win]\n    - {{ compiler('m2w64_c') }}        # [win]\n    - {{ compiler('m2w64_cxx') }}        # [win]\n    - {{posix}}filesystem        # [win]\n    - {{posix}}make\n    - {{posix}}sed               # [win]\n    - {{posix}}coreutils         # [win]\n    - {{posix}}zip               # [win]\n    - llvm-openmp                # [osx]\n  host:\n    - r-base\n    - r-rcpp\n    - r-data.table\n  run:\n    - r-base\n    - {{native}}gcc-libs         # [win]\n    - r-rcpp\n    - r-data.table\n    - llvm-openmp                # [osx]\n\ntest:\n  commands:\n    - $R -e \"library('ModelMetrics')\"           # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('ModelMetrics')\\\"\"  # [win]\n\nabout:\n  home: https://CRAN.R-project.org/package=ModelMetrics\n  license: GPL (>= 2)\n  summary: Collection of metrics for evaluating models written in C++ using 'Rcpp'. Popular metrics\n    include area under the curve, log loss, root mean square error, etc.\n  license_family: GPL3\n  license_file: '{{ environ[\"PREFIX\"] }}/lib/R/share/licenses/GPL-2'\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n\n# Package: ModelMetrics\n# Title: Rapid Calculation of Model Metrics\n# Version: 1.2.2\n# Date: 2018-11-03\n# Authors@R: person(\"Tyler\", \"Hunt\", email = \"thunt@snapfinance.com\", role = c(\"aut\", \"cre\"))\n# Description: Collection of metrics for evaluating models written in C++ using 'Rcpp'. Popular metrics include area under the curve, log loss, root mean square error, etc.\n# Depends: R (>= 3.2.2)\n# License: GPL (>= 2)\n# Encoding: UTF-8\n# LazyData: true\n# LinkingTo: Rcpp\n# Imports: Rcpp, data.table\n# RoxygenNote: 6.0.1\n# Suggests: testthat\n# NeedsCompilation: yes\n# Packaged: 2018-11-03 16:37:41 UTC; tylerhunt\n# Author: Tyler Hunt [aut, cre]\n# Maintainer: Tyler Hunt <thunt@snapfinance.com>\n# Repository: CRAN\n# Date/Publication: 2018-11-03 17:00:14 UTC\n",
  "req":{
   "__set__":true,
@@ -193,7 +210,7 @@
    "zip"
   ]
  },
- "smithy_version":"3.4.1",
+ "smithy_version":"3.6.5",
  "url":[
   "https://cran.r-project.org/src/contrib/ModelMetrics_1.2.2.tar.gz",
   "https://cran.r-project.org/src/contrib/Archive/ModelMetrics/ModelMetrics_1.2.2.tar.gz",

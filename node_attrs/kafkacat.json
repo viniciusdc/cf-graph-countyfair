@@ -119,7 +119,7 @@
   }
  },
  "name":"kafkacat",
- "new_version":"1.5.0",
+ "new_version":"1.4.0",
  "pinning_version":"2019.09.08",
  "raw_meta_yaml":"{% set name = \"kafkacat\" %}\n{% set version = \"1.3.1\" %}\n{% set sha256hash = \"385f231d7edee417c71b43f6f9d6dd843e9e41bff1bd30483792c6271c09b12b\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  fn: {{ name }}-{{ version }}.tar.gz\n  url: https://github.com/edenhill/{{ name }}/archive/{{ version }}.tar.gz\n  sha256: {{ sha256hash }}\n\nbuild:\n  number: 0\n  skip: true  # [win]\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n  host:\n    # Compiling with latest 0.9.4 breaks backwards ABI compatibility.\n    - librdkafka\n    - yajl 2.1.*\n\n  run:\n    - librdkafka\n    - yajl 2.1.*\n\ntest:\n  commands:\n    - kafkacat -V\n\n    - conda inspect linkages {{ name }}  # [unix]\n    - conda inspect objects {{ name }}   # [osx]\n\nabout:\n  home: https://github.com/edenhill/kafkacat\n  license: BSD 2-Clause\n  license_file: LICENSE\n  summary: \"Generic command line non-JVM Apache Kafka producer and consumer\"\n\nextra:\n  recipe-maintainers:\n    - rmax\n",
  "req":{
