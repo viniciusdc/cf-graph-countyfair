@@ -253,6 +253,23 @@
     "migrator_version",
     "version"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/363703909.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"Version",
+    "migrator_version":0,
+    "version":"2.8.2"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "version"
+   ]
   }
  ],
  "bad":false,
@@ -358,8 +375,8 @@
   }
  },
  "name":"hoomd",
- "new_version":"2.8.1",
- "pinning_version":"2019.11.26",
+ "new_version":"2.8.2",
+ "pinning_version":"2020.01.10",
  "raw_meta_yaml":"{% set name = \"hoomd\" %}\n{% set version = \"2.8.1\" %}\n{% set sha256 = \"9c8899eee4fd8ba48df2d9b9f85ed4d7c00ec288225dbcce6316c16d46798331\" %}\n\npackage:\n  name: {{ name }}\n  version: \"{{ version }}\"\n\nsource:\n  fn: {{ name }}-{{ version }}.tar.gz\n  url: https://glotzerlab.engin.umich.edu/Downloads/{{ name }}/{{ name }}-v{{ version }}.tar.gz\n  sha256: {{ sha256 }}\n\nbuild:\n  number: 1\n  # upstream package does not support windows or py27\n  skip: true  # [win]\n  skip: true  # [py27]\n\n  rpaths:\n    - lib/\n    - lib/python3.8/site-packages/{{ name }}  # [py38]\n    - lib/python3.7/site-packages/{{ name }}  # [py37]\n    - lib/python3.6/site-packages/{{ name }}  # [py36]\n\nrequirements:\n  build:\n    - {{ compiler('cxx') }}\n    - cmake\n    - pkg-config\n    - ninja\n\n  host:\n    - python\n    - numpy\n    - tbb-devel\n    - tbb\n\n  run:\n    - python\n    - numpy\n    - tbb\n\ntest:\n  imports:\n  - hoomd\n  - hoomd.md\n  - hoomd.hpmc\n\nabout:\n  home: http://glotzerlab.engin.umich.edu/hoomd-blue/\n  license: BSD-3-Clause\n  license_family: BSD\n  license_file: LICENSE\n  summary: 'HOOMD-blue is a general-purpose particle simulation toolkit.'\n\n  description: |\n    You define particle initial conditions and interactions in a high-level python script. Then tell HOOMD-blue how you want\n    to execute the job and it takes care of the rest. Python job scripts give you unlimited flexibility to create custom\n    initialization routines, control simulation parameters, and perform in situ analysis.\n  doc_url: https://hoomd-blue.readthedocs.io\n  dev_url: https://glotzerlab.com/glotzerlab/{{ name }}\n\nextra:\n  recipe-maintainers:\n    - joaander\n    - bdice\n",
  "req":{
   "__set__":true,
@@ -374,7 +391,7 @@
    "tbb-devel"
   ]
  },
- "smithy_version":"3.6.2",
+ "smithy_version":"3.6.5",
  "url":"https://glotzerlab.engin.umich.edu/Downloads/hoomd/hoomd-v2.6.0.tar.gz",
  "version":"2.8.1"
 }
