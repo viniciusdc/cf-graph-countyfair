@@ -54,7 +54,32 @@
    ]
   }
  ],
- "bad":false,
+ "bad":{
+  "exception":"SHA256 mismatch: '15793f5d0512a372b4e7d2284058ad32ce7dd27126b105fb0b2245130445db33' != '168cdcec8fb9152e84a87ca6fd261b3d54c8f6358f42ab3b813b14a7193bb50b'",
+  "traceback":[
+   "Traceback (most recent call last):",
+   "  File \"/root/repo/cf-scripts/conda_forge_tick/auto_tick.py\", line 659, in main",
+   "    migrator_uid, pr_json = run(",
+   "  File \"/root/repo/cf-scripts/conda_forge_tick/auto_tick.py\", line 133, in run",
+   "    migrate_return = migrator.migrate(recipe_dir, feedstock_ctx.attrs, **kwargs)",
+   "  File \"/root/repo/cf-scripts/conda_forge_tick/migrators/core.py\", line 655, in migrate",
+   "    return super().migrate(recipe_dir, attrs)",
+   "  File \"/root/repo/cf-scripts/conda_forge_tick/migrators/core.py\", line 302, in migrate",
+   "    mini_migrator.migrate(recipe_dir, attrs, **kwargs)",
+   "  File \"/root/repo/cf-scripts/conda_forge_tick/migrators/core.py\", line 147, in migrate",
+   "    cb_work_dir = _get_source_code(recipe_dir)",
+   "  File \"/root/repo/cf-scripts/conda_forge_tick/migrators/core.py\", line 71, in _get_source_code",
+   "    return provide(md)",
+   "  File \"/opt/conda/envs/run_env/lib/python3.8/site-packages/conda_build/source.py\", line 650, in provide",
+   "    unpack(source_dict, src_dir, metadata.config.src_cache, recipe_path=metadata.path,",
+   "  File \"/opt/conda/envs/run_env/lib/python3.8/site-packages/conda_build/source.py\", line 139, in unpack",
+   "    src_path, unhashed_fn = download_to_cache(cache_folder, recipe_path, source_dict, verbose)",
+   "  File \"/opt/conda/envs/run_env/lib/python3.8/site-packages/conda_build/source.py\", line 104, in download_to_cache",
+   "    raise RuntimeError(\"%s mismatch: '%s' != '%s'\" %",
+   "RuntimeError: SHA256 mismatch: '15793f5d0512a372b4e7d2284058ad32ce7dd27126b105fb0b2245130445db33' != '168cdcec8fb9152e84a87ca6fd261b3d54c8f6358f42ab3b813b14a7193bb50b'",
+   ""
+  ]
+ },
  "conda-forge.yml":{
   "compiler_stack":"comp7",
   "max_py_ver":"37",
@@ -132,7 +157,7 @@
   }
  },
  "name":"antlr-python-runtime",
- "new_version":"4.7.2",
+ "new_version":"4.8",
  "pinning_version":"2019.11.01",
  "raw_meta_yaml":"{% set name = \"antlr4-python2-runtime\" %}  # [py2k]\n{% set name = \"antlr4-python3-runtime\" %}  # [py3k]\n{% set version = \"4.7.2\" %}\n\npackage:\n  name: antlr-python-runtime\n  version: {{ version }}\n\nsource:\n  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz\n  sha256: 580825bdd89ed6200170710cb26cc1e64f96f145870d8c2cfdf162cb0b8b9212  # [py2k]\n  sha256: 168cdcec8fb9152e84a87ca6fd261b3d54c8f6358f42ab3b813b14a7193bb50b  # [py3k]\n\nbuild:\n  number: 1000\n  script: \"{{ PYTHON }} -m pip install . --no-deps --ignore-installed --no-cache-dir -vvv\"\n\nrequirements:\n  build:\n    - python\n    - pip\n  run:\n    - python\n\ntest:\n  imports:\n    - antlr4\n    - antlr4.atn\n    - antlr4.dfa\n    - antlr4.error\n    - antlr4.tree\n    - antlr4.xpath\n\nabout:\n  home: http://www.antlr.org\n  license: BSD-3-Clause\n  license_family: BSD\n  summary: This is the Python runtime for ANTLR.\n  dev_url: https://github.com/antlr/antlr4\n  doc_url: https://github.com/antlr/antlr4/blob/master/doc/python-target.md\n\nextra:\n  recipe-maintainers:\n    - bollwyvl\n",
  "req":{
