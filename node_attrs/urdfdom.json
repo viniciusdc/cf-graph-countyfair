@@ -1,4 +1,23 @@
 {
+ "PRed":[
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/364282262.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"Version",
+    "migrator_version":0,
+    "version":"1.0.4"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "version"
+   ]
+  }
+ ],
  "bad":false,
  "conda-forge.yml":{},
  "feedstock_name":"urdfdom",
@@ -98,7 +117,8 @@
   }
  },
  "name":"urdfdom",
- "new_version":"1.0.3",
+ "new_version":"1.0.4",
+ "pinning_version":"2020.01.10",
  "raw_meta_yaml":"{% set name = \"urdfdom\" %}\n{% set version = \"1.0.3\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  url: https://github.com/ros/{{ name }}/archive/{{ version }}.tar.gz\n  sha256: 839d939fbd91d115f928a6e02334638829c58d9c8ea2f81bfa3faffd233c154c\n  patches:\n    - cmake.patch\n    - windows-install.patch\n\nbuild:\n  number: 1\n  skip: true  # [win and vc<14]\n  run_exports:\n    - urdfdom\n\nrequirements:\n  build:\n    - {{ compiler('cxx') }}\n    - cmake\n    - make  # [unix]\n  host:\n    - console_bridge\n    - tinyxml\n    - urdfdom_headers\n  run:\n    - console_bridge\n    - tinyxml\n    - urdfdom_headers\n\ntest:\n  requires:\n    - pkg-config  # [unix]\n  commands:\n    - pkg-config --modversion {{ name }}  # [unix]\n    - test -f $PREFIX/lib/lib{{ name }}_model${SHLIB_EXT}  # [unix]\n    - if exist %PREFIX%\\\\Library\\\\CMake\\\\urdfdom-config.cmake (exit 0) else (exit 1)  # [win]\n\nabout:\n  home: http://github.com/ros/urdfdom\n  license: BSD-3-Clause\n  license_family: BSD\n  license_file: LICENSE\n  summary: 'URDF parser'\n  dev_url: https://github.com/ros/urdfdom\n\nextra:\n  recipe-maintainers:\n    - jcarpent\n    - wolfv\n    - lesteve\n",
  "req":{
   "__set__":true,
@@ -111,6 +131,7 @@
    "urdfdom_headers"
   ]
  },
+ "smithy_version":"3.6.5",
  "url":"https://github.com/ros/urdfdom/archive/1.0.3.tar.gz",
  "version":"1.0.3"
 }
