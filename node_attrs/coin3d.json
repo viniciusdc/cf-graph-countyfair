@@ -58,7 +58,7 @@
    "summary":"Coin3D is a c++ high-level 3D graphics toolkit."
   },
   "build":{
-   "number":"1006"
+   "number":"1007"
   },
   "extra":{
    "recipe-maintainers":[
@@ -114,14 +114,13 @@
    ]
   },
   "source":{
-   "fn":"coin3d.tar.gz",
    "patches":[
-    "cmake.patch",
-    "cmake.patch",
-    "cmake.patch"
+    "0001-cpack.d-is-now-optional.patch",
+    "0001-cpack.d-is-now-optional.patch",
+    "0001-cpack.d-is-now-optional.patch"
    ],
-   "sha256":"1fdfb04a40dfaba5f98db100a8142371557912cd348b5d0770dec9e2963810ce",
-   "url":"https://bitbucket.org/VolkerEnderlein/coin/get/99d4d98.tar.gz"
+   "sha256":"b00d2a8e9d962397cf9bf0d9baa81bcecfbd16eef675a98c792f5cf49eb6e805",
+   "url":"https://github.com/coin3d/coin/archive/Coin-4.0.0.tar.gz"
   },
   "test":{
    "commands":[
@@ -147,7 +146,7 @@
  "name":"coin3d",
  "new_version":false,
  "pinning_version":"2019.05.29",
- "raw_meta_yaml":"{% set name = \"coin3d\" %}\n{% set version = \"4.0.0\" %}\n{% set commit = \"99d4d98\" %}\n{% set sha256 = \"1fdfb04a40dfaba5f98db100a8142371557912cd348b5d0770dec9e2963810ce\" %}\n\npackage:\n    name: {{ name }}\n    version: {{ version }}\n\nsource:\n    fn: {{ name }}.tar.gz\n    url: https://bitbucket.org/VolkerEnderlein/coin/get/{{ commit }}.tar.gz\n    # url: https://bitbucket.org/Coin3D/coin/get/{{ commit }}.tar.gz\n    sha256: {{ sha256 }}\n    patches:\n        - cmake.patch\n\nbuild:\n    number: 1006\n    skip: true  # [win and py<35]\n\nrequirements:\n    build:\n        - {{ compiler('cxx') }}\n        - {{ cdt('mesa-libgl-devel') }}  # [linux]\n        - {{ cdt('mesa-dri-drivers') }}  # [linux]\n        - {{ cdt('libxdamage') }}  # [linux]\n        - {{ cdt('libselinux') }}  # [linux]\n        - {{ cdt('libXxf86vm') }}  # [linux]\n        - cmake\n        - ninja\n    host:\n        - boost-cpp\n        - libglu  # [linux]\n        - xorg-libxt  # [linux]\n        - xorg-libxmu  # [linux]\n        - xorg-libxi  # [linux]\n        - expat\n    run:\n        - boost-cpp\n        - libglu  # [linux]\n        - xorg-libxt  # [linux]\n        - xorg-libxmu  # [linux]\n        - xorg-libxi  # [linux]\n        - expat\n\ntest:\n    requires:\n        - {{ cdt('mesa-libgl-devel') }}  # [linux]\n        - {{ compiler('c') }}\n        - {{ compiler('cxx') }}\n    files:\n        - test.cpp  # [linux]\n    commands:\n        - ${CXX} -o test test.cpp -Wl,-rpath-link -lCoin -L${PREFIX}/lib/ -I${PREFIX}/include/  # [linux]\n        - ./test  # [linux]\n        - where /r \"%PREFIX%\"  Coin4.dll  # [win]\n        - test -f ${PREFIX}/lib/libCoin.dylib  # [osx]\n\nabout:\n    home: https://bitbucket.org/Coin3D/coin/wiki/Home\n    license: BSD 3-Clause\n    license_family: BSD\n    license_file: COPYING\n    summary: Coin3D is a c++ high-level 3D graphics toolkit.\n    description: Coin3D is a high-level, retained-mode toolkit \n                 for effective 3D graphics development.\n                 It is API compatible with Open Inventor 2.1.\n    doc_url: https://bitbucket.org/Coin3D/coin/wiki/Home\n    dev_url: https://bitbucket.org/Coin3D/coin/wiki/Home\n\nextra:\n    recipe-maintainers:\n        - looooo\n",
+ "raw_meta_yaml":"{% set name = \"coin3d\" %}\n{% set version = \"4.0.0\" %}\n{% set sha256 = \"b00d2a8e9d962397cf9bf0d9baa81bcecfbd16eef675a98c792f5cf49eb6e805\" %}\n\npackage:\n    name: {{ name }}\n    version: {{ version }}\n\nsource:\n    url: https://github.com/coin3d/coin/archive/Coin-{{ version }}.tar.gz\n    sha256: {{ sha256 }}\n    patches:\n        - 0001-cpack.d-is-now-optional.patch\n\n\nbuild:\n    number: 1007\n    skip: true  # [win and py<35]\n\nrequirements:\n    build:\n        - {{ compiler('cxx') }}\n        - {{ cdt('mesa-libgl-devel') }}  # [linux]\n        - {{ cdt('mesa-dri-drivers') }}  # [linux]\n        - {{ cdt('libxdamage') }}  # [linux]\n        - {{ cdt('libselinux') }}  # [linux]\n        - {{ cdt('libXxf86vm') }}  # [linux]\n        - cmake\n        - ninja\n    host:\n        - boost-cpp\n        - libglu  # [linux]\n        - xorg-libxt  # [linux]\n        - xorg-libxmu  # [linux]\n        - xorg-libxi  # [linux]\n        - expat\n    run:\n        - boost-cpp\n        - libglu  # [linux]\n        - xorg-libxt  # [linux]\n        - xorg-libxmu  # [linux]\n        - xorg-libxi  # [linux]\n        - expat\n\ntest:\n    requires:\n        - {{ cdt('mesa-libgl-devel') }}  # [linux]\n        - {{ compiler('c') }}\n        - {{ compiler('cxx') }}\n    files:\n        - test.cpp  # [linux]\n    commands:\n        - ${CXX} -o test test.cpp -Wl,-rpath-link -lCoin -L${PREFIX}/lib/ -I${PREFIX}/include/  # [linux]\n        - ./test  # [linux]\n        - where /r \"%PREFIX%\"  Coin4.dll  # [win]\n        - test -f ${PREFIX}/lib/libCoin.dylib  # [osx]\n\nabout:\n    home: https://bitbucket.org/Coin3D/coin/wiki/Home\n    license: BSD 3-Clause\n    license_family: BSD\n    license_file: COPYING\n    summary: Coin3D is a c++ high-level 3D graphics toolkit.\n    description: Coin3D is a high-level, retained-mode toolkit \n                 for effective 3D graphics development.\n                 It is API compatible with Open Inventor 2.1.\n    doc_url: https://bitbucket.org/Coin3D/coin/wiki/Home\n    dev_url: https://bitbucket.org/Coin3D/coin/wiki/Home\n\nextra:\n    recipe-maintainers:\n        - looooo\n",
  "req":{
   "__set__":true,
   "elements":[
