@@ -191,7 +191,7 @@
   },
   "package":{
    "name":"scikit-build",
-   "version":"0.9.0"
+   "version":"0.10.0"
   },
   "requirements":{
    "build":[
@@ -230,18 +230,21 @@
    ],
    "run":[
     "cmake",
+    "distro",
     "packaging",
     "python",
     "ninja",
     "setuptools",
     "wheel",
     "cmake",
+    "distro",
     "packaging",
     "python",
     "ninja",
     "setuptools",
     "wheel",
     "cmake",
+    "distro",
     "packaging",
     "python",
     "ninja",
@@ -250,9 +253,19 @@
    ]
   },
   "source":{
-   "fn":"scikit-build-0.9.0.tar.gz",
-   "sha256":"b7ac5a574ca5a4b0891aeaf5b0340de9fdc88d0081669dca494cef5b9fa760b0",
-   "url":"https://github.com/scikit-build/scikit-build/archive/0.9.0.tar.gz"
+   "patches":[
+    "0001-Replace-platform.linux_distribution-with-distro.id.patch",
+    "0002-FindPythonExtensions-Fix-deprecated-warning-and-use-correct-python-extension-suffix-on-windows.patch",
+    "0003-Use-the-MACOSX_DEPLOYMENT_TARGET-env-variable.patch",
+    "0001-Replace-platform.linux_distribution-with-distro.id.patch",
+    "0002-FindPythonExtensions-Fix-deprecated-warning-and-use-correct-python-extension-suffix-on-windows.patch",
+    "0003-Use-the-MACOSX_DEPLOYMENT_TARGET-env-variable.patch",
+    "0001-Replace-platform.linux_distribution-with-distro.id.patch",
+    "0002-FindPythonExtensions-Fix-deprecated-warning-and-use-correct-python-extension-suffix-on-windows.patch",
+    "0003-Use-the-MACOSX_DEPLOYMENT_TARGET-env-variable.patch"
+   ],
+   "sha256":"2beec252813b20327072c15e9d997f15972aedcc6a130d0154979ff0fdb1b010",
+   "url":"https://github.com/scikit-build/scikit-build/archive/0.10.0.tar.gz"
   },
   "test":{
    "imports":[
@@ -273,6 +286,8 @@
     "ninja",
     "cython",
     "requests",
+    "c_compiler_stub",
+    "cxx_compiler_stub",
     "mock",
     "path.py",
     "pytest",
@@ -310,13 +325,14 @@
  "name":"scikit-build",
  "new_version":"0.10.0",
  "pinning_version":"2019.11.01",
- "raw_meta_yaml":"{% set name = \"scikit-build\" %}\n{% set version = \"0.9.0\" %}\n{% set sha256 = \"b7ac5a574ca5a4b0891aeaf5b0340de9fdc88d0081669dca494cef5b9fa760b0\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  fn: {{ name }}-{{ version }}.tar.gz\n  url: https://github.com/scikit-build/scikit-build/archive/{{ version }}.tar.gz\n  sha256: {{ sha256 }}\n\nbuild:\n  number: 0\n  script: \"{{ PYTHON }} -m pip install . --no-deps --ignore-installed --no-cache-dir -vvv\"\n\nrequirements:\n  build:\n    - cmake\n    - ninja\n    - pip\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n  host:\n    - packaging\n    - pip\n    - python\n    - setuptools\n    - wheel\n  run:\n    - cmake\n    - packaging\n    - python\n    - ninja\n    - setuptools\n    - wheel\n\ntest:\n  imports:\n    - skbuild\n  source_files:\n    - tests/*\n  requires:\n    - {{ compiler('c') }}  # [linux]\n    - {{ compiler('cxx') }}  # [linux]\n    - mock\n    - path.py\n    - pytest\n    - pytest-mock\n    - pytest-cov\n    - pytest-runner\n    - six\n    - git\n    - cmake\n    - ninja\n    - cython\n    - requests\n\nabout:\n  home: http://github.com/scikit-build/scikit-build\n  license: MIT\n  license_family: MIT\n  license_file: LICENSE\n  summary: 'Improved build system generator for CPython C extensions.'\n  doc_url: http://scikit-build.readthedocs.org\n  dev_url: http://github.com/scikit-build/scikit-build\n\nextra:\n  recipe-maintainers:\n    - isuruf\n    - scopatz\n    - jcfr\n    - msarahan\n",
+ "raw_meta_yaml":"{% set version = \"0.10.0\" %}\n{% set sha256 = \"2beec252813b20327072c15e9d997f15972aedcc6a130d0154979ff0fdb1b010\" %}\n\npackage:\n  name: scikit-build\n  version: {{ version }}\n\nsource:\n  url: https://github.com/scikit-build/scikit-build/archive/{{ version }}.tar.gz\n  sha256: {{ sha256 }}\n  patches:\n    - 0001-Replace-platform.linux_distribution-with-distro.id.patch\n    - 0002-FindPythonExtensions-Fix-deprecated-warning-and-use-correct-python-extension-suffix-on-windows.patch\n    - 0003-Use-the-MACOSX_DEPLOYMENT_TARGET-env-variable.patch\n\nbuild:\n  number: 0\n  script: \"{{ PYTHON }} -m pip install . --no-deps --ignore-installed --no-cache-dir -vvv\"\n\nrequirements:\n  build:\n    - cmake\n    - ninja\n    - pip\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n  host:\n    - packaging\n    - pip\n    - python\n    - setuptools\n    - wheel\n  run:\n    - cmake\n    - distro\n    - packaging\n    - python\n    - ninja\n    - setuptools\n    - wheel\n\ntest:\n  imports:\n    - skbuild\n  source_files:\n    - tests/*\n  requires:\n    - {{ compiler('c') }}  # [unix]\n    - {{ compiler('cxx') }}  # [unix]\n    - mock\n    - path.py\n    - pytest\n    - pytest-mock\n    - pytest-cov\n    - pytest-runner\n    - six\n    - git\n    - cmake\n    - ninja\n    - cython\n    - requests\n\nabout:\n  home: http://github.com/scikit-build/scikit-build\n  license: MIT\n  license_family: MIT\n  license_file: LICENSE\n  summary: 'Improved build system generator for CPython C extensions.'\n  doc_url: http://scikit-build.readthedocs.org\n  dev_url: http://github.com/scikit-build/scikit-build\n\nextra:\n  recipe-maintainers:\n    - isuruf\n    - scopatz\n    - jcfr\n    - msarahan\n",
  "req":{
   "__set__":true,
   "elements":[
    "c_compiler_stub",
    "cmake",
    "cxx_compiler_stub",
+   "distro",
    "ninja",
    "packaging",
    "pip",
@@ -327,5 +343,5 @@
  },
  "smithy_version":"3.6.1",
  "url":"https://github.com/scikit-build/scikit-build/archive/0.9.0.tar.gz",
- "version":"0.9.0"
+ "version":"0.10.0"
 }
