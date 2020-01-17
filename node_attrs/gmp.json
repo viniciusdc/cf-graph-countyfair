@@ -48,6 +48,23 @@
     "migrator_version",
     "name"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/364187856.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"Version",
+    "migrator_version":0,
+    "version":"6.2.0"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "version"
+   ]
   }
  ],
  "bad":false,
@@ -137,8 +154,8 @@
   }
  },
  "name":"gmp",
- "new_version":false,
- "pinning_version":"2019.02.24",
+ "new_version":"6.2.0",
+ "pinning_version":"2020.01.10",
  "raw_meta_yaml":"{% set version = \"6.1.2\" %}\n\npackage:\n  name: gmp\n  version: {{ version }}\n\nsource:\n  fn: gmp-{{ version }}.tar.bz2\n  url: https://gmplib.org/download/gmp/gmp-{{ version }}.tar.bz2\n  sha256: 5275bb04f4863a13516b2f39392ac5e272f5e1bb8057b18aec1c9b79d73d8fb2\n\nbuild:\n  number: 1000\n  skip: true  # [win]\n  run_exports:\n    - {{ pin_subpackage(\"gmp\") }}\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n    - m4\n    - make\n  host:\n\ntest:\n  requires:\n    - {{ compiler('c') }}\n\n  files:\n    - test.c\n\n  commands:\n    - test -f ${PREFIX}/lib/libgmp.a        # [unix]\n    - test -f ${PREFIX}/lib/libgmp.dylib    # [osx]\n    - test -f ${PREFIX}/lib/libgmp.so       # [linux]\n    - test -f ${PREFIX}/lib/libgmpxx.a      # [unix]\n    - test -f ${PREFIX}/lib/libgmpxx.dylib  # [osx]\n    - test -f ${PREFIX}/lib/libgmpxx.so     # [linux]\n\nabout:\n  home: http://gmplib.org/\n  license: GPL 2 and LGPL 3\n  license_file: COPYING.LESSERv3\n  summary: The GNU multiprecision library.\n\nextra:\n  recipe-maintainers:\n    - asmeurer\n    - isuruf\n    - jakirkham\n",
  "req":{
   "__set__":true,
@@ -149,7 +166,7 @@
    "make"
   ]
  },
- "smithy_version":"3.2.14",
+ "smithy_version":"3.6.5",
  "url":"https://gmplib.org/download/gmp/gmp-6.1.2.tar.bz2",
  "version":"6.1.2"
 }

@@ -118,9 +118,28 @@
     "migrator_version",
     "version"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/364192909.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"MigrationYaml",
+    "migrator_object_version":1,
+    "migrator_version":0,
+    "name":"python38"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_object_version",
+    "migrator_version",
+    "name"
+   ]
   }
  ],
- "bad":"Upstream: Error getting upstream version",
+ "bad":false,
  "conda-forge.yml":{
   "provider":{
    "win":"azure"
@@ -320,7 +339,7 @@
  },
  "name":"tomopy",
  "new_version":false,
- "pinning_version":"2019.05.21",
+ "pinning_version":"2020.01.10",
  "raw_meta_yaml":"{% set version = \"1.7.0\" %}\n{% set build = 2 %}\n\n# Set CUDA related variables\n{% if linux64 and cuda_compiler_version != \"None\" %}\n{% set cuda_build_prefix = \"cuda\" + cuda_compiler_version|string %}\n{% set cuda_install_option = \"--enable-cuda\" %}\n{% else %}\n{% set cuda_build_prefix = \"\" %}\n{% set cuda_install_option = \"--disable-cuda\" %}\n{% set build = build + 100 %}\n{% endif %}\n\npackage:\n    name: tomopy\n    version: {{ version }}\n\nsource:\n  # git checkout because PTL submodule is not included in GitHub tarball\n  - git_url: https://github.com/tomopy/tomopy.git\n    git_rev: {{ version }}\n\nbuild:\n  number: {{ build }}\n  string: \"{{ cuda_build_prefix }}py{{ py }}h{{ PKG_HASH }}_{{ build }}\"\n  skip: true  # [py2k]\n  merge_build_host: True  # [win]\n  script:\n#     - export CUDA_TOOLKIT_ROOT_DIR=\"${CUDA_HOME}\"\n    - ln -s ${CUDA_HOME}/include/* ${CONDA_PREFIX}/include/\n    - {{ PYTHON }} -m pip install .\n      --no-deps --ignore-installed --no-index --no-cache-dir -vv\n      --install-option=\"-GNinja\"\n      --install-option=\"{{ cuda_install_option }}\"\n  ignore_run_exports:\n    - blas\n    - numpy\n    - python\n  missing_dso_whitelist:\n    - \"*/libcuda.*\"\n\nrequirements:\n  build:\n    - {{ compiler('cxx') }}\n    - {{ compiler('cuda') }}  # [linux64 and cuda_compiler_version != \"None\"]\n    - git\n  host:\n    - pip\n    - python\n    - libopencv\n    - mkl-devel\n    - scikit-build\n    - setuptools_scm_git_archive\n  run:\n    - futures  # [py2k]\n    - mkl\n    - mkl_fft\n    - numexpr\n    - numpy >1.12\n    - {{ pin_compatible('libopencv', min_pin='x.x', max_pin='x.x') }}\n    - pywavelets\n    - python\n    - scikit-image\n    - scipy\n    - six\n    - tifffile\n\ntest:\n  requires:\n    - nose\n  imports:\n    - tomopy\n    - tomopy.misc\n    - tomopy.prep\n    - tomopy.recon\n    - tomopy.sim\n    - tomopy.util\n  source_files:\n    - test/*\n  commands:\n    - nosetests test\n\napp:\n    own_environment: True\n\nabout:\n    home: http://tomopy.readthedocs.io\n    license: BSD 3-Clause\n    license_family: BSD\n    license_file: LICENSE.txt\n    summary: 'Tomographic reconstruction in Python.'\n    description: |\n      TomoPy is an open-source Python package for tomographic data\n      processing and image reconstruction.\n    doc_url: http://tomopy.readthedocs.io\n    dev_url: https://github.com/tomopy/tomopy\n\nextra:\n    recipe-maintainers:\n        - dgursoy\n        - decarlof\n        - licode\n        - ravescovi\n        - tacaswell\n        - oleksandr-pavlyk\n        - carterbox\n",
  "req":{
   "__set__":true,
@@ -346,7 +365,7 @@
    "tifffile"
   ]
  },
- "smithy_version":"3.3.4",
+ "smithy_version":"3.6.5",
  "time":1568135268.7257266,
  "url":null,
  "version":"1.7.0"

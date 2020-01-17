@@ -99,6 +99,25 @@
     "migrator_version",
     "name"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/364193160.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"MigrationYaml",
+    "migrator_object_version":1,
+    "migrator_version":0,
+    "name":"python38"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_object_version",
+    "migrator_version",
+    "name"
+   ]
   }
  ],
  "bad":false,
@@ -195,7 +214,7 @@
  },
  "name":"slycot",
  "new_version":"0.3.5.0",
- "pinning_version":"2019.08.12",
+ "pinning_version":"2020.01.10",
  "raw_meta_yaml":"{% set name = \"slycot\" %}\n{% set version = \"0.3.5.0\" %}\n{% set sha256 = \"cad98d5ea4f0a034cf398c39189f587620a0b03f1d4b71e77cd622a327f13adf\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  fn: {{ name }}-{{ version }}.tar.gz\n  # for testing still, should switch over to pypi package when available\n  # url: https://github.com/python-control/Slycot/archive/v{{ version }}.tar.gz\n  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz\n  sha256: {{ sha256 }}\n\nbuild:\n  number: 1\n  # problem with python2.7 configuration on windows and osx\n  skip: true                     # [win and py==27]\n  skip: true                     # [osx and py==27]\n\n# TODO: (later) solve imperfections\n# * the clang compiler on osx gives a link error, thought to be related to\n#   cmake and env. Try later when this may be fixed. Alternative: gcc\n# * the mkl library does not link on osx or win. Alternative: openblas\n\nrequirements:\n  build:\n    - {{ compiler('fortran') }}\n    - {{ compiler('c') }}\n  host:\n    - libblas\n    - libcblas\n    - liblapack\n    - python\n    - numpy\n    - scikit-build\n  run:\n    - python\n    - {{ pin_compatible('numpy') }}\n\ntest:\n  imports:\n    - slycot\n\nabout:\n  home: https://github.com/python-control/Slycot\n  dev_url: https://github.com/python-control/Slycot\n  license: GPL-2.0\n  license_family: GPL\n  license_file: COPYING\n  summary: 'Slycot: a wrapper for the SLICOT control and systems library'\n  description: |\n    Slycot wraps the SLICOT library which is used for control and systems\n    analysis.\n\nextra:\n  recipe-maintainers:\n    - moorepants\n    - murrayrm\n    - repagh\n",
  "req":{
   "__set__":true,
@@ -211,7 +230,7 @@
    "scikit-build"
   ]
  },
- "smithy_version":"3.4.1",
+ "smithy_version":"3.6.5",
  "url":"https://pypi.io/packages/source/s/slycot/slycot-0.3.5.0.tar.gz",
  "version":"0.3.5.0"
 }

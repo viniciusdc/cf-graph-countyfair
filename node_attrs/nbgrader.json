@@ -103,6 +103,25 @@
     "migrator_version",
     "version"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/364193387.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"MigrationYaml",
+    "migrator_object_version":1,
+    "migrator_version":0,
+    "name":"python38"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_object_version",
+    "migrator_version",
+    "name"
+   ]
   }
  ],
  "bad":false,
@@ -249,7 +268,7 @@
  },
  "name":"nbgrader",
  "new_version":"0.6.1",
- "pinning_version":"2019.11.01",
+ "pinning_version":"2020.01.10",
  "raw_meta_yaml":"{% set version = \"0.6.1\" %}\n\npackage:\n  name: nbgrader\n  version: {{ version }}\n\nsource:\n  url: https://github.com/jupyter/nbgrader/archive/v{{ version }}.tar.gz\n  sha256: 58912a318fd3b6ae3a0298d916b55481753f5fc068424ce6da6a4ddee731dd40\n\nbuild:\n  number: 0\n  # Cannot be noarch b/c of the post/pre scripts.\n  script: \"{{ PYTHON }} -m pip install . --no-deps -vv\"\n  entry_points:\n    - nbgrader = nbgrader.apps.nbgraderapp:main\n\nrequirements:\n  build:\n    - python\n    - pip\n  run:\n    - python\n    - sqlalchemy\n    - python-dateutil\n    - jupyter\n    - notebook >=4.2\n    - nbconvert >=5.6\n    - nbformat\n    - traitlets\n    - jupyter_core\n    - jupyter_client\n    - tornado\n    - six >=1.11\n    - requests\n    - jsonschema\n    - alembic\n    - fuzzywuzzy\n\ntest:\n  source_files:\n    - '*'\n  requires:\n    - pytest\n    - selenium\n    - requests-mock\n  imports:\n    - nbgrader\n  commands:\n    - nbgrader -h\n    - export USER=$(whoami)  # [not win]\n    - pytest -s -rxs -v -m \"not (nbextensions)\" -k \"not (test_submission_dicts or test_notebook_submission_dicts or test_get_submissions or test_get_notebook_submissions or test_get_student_notebook_submissions or test_validate_glob or test_filter_notebook or test_force or test_single_file)\"  # [not win]\n\nabout:\n  home: https://github.com/jupyter/nbgrader\n  license: BSD-3-Clause\n  license_family: BSD\n  license_file: LICENSE\n  summary: 'A system for assigning and grading Jupyter notebooks'\n\nextra:\n  recipe-maintainers:\n    - jhamrick\n    - lgpage\n    - ocefpaf\n",
  "req":{
   "__set__":true,
@@ -273,7 +292,7 @@
    "traitlets"
   ]
  },
- "smithy_version":"3.6.2",
+ "smithy_version":"3.6.5",
  "url":"https://github.com/jupyter/nbgrader/archive/v0.6.0.tar.gz",
  "version":"0.6.1"
 }
