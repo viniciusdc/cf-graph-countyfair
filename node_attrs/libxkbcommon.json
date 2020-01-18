@@ -50,6 +50,23 @@
     "migrator_version",
     "version"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/364466265.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"Version",
+    "migrator_version":0,
+    "version":"0.10.0"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "version"
+   ]
   }
  ],
  "bad":false,
@@ -155,8 +172,8 @@
   }
  },
  "name":"libxkbcommon",
- "new_version":"0.9.1",
- "pinning_version":"2019.10.11",
+ "new_version":"0.10.0",
+ "pinning_version":"2020.01.10",
  "raw_meta_yaml":"{% set name = \"libxkbcommon\" %}\n{% set version = \"0.9.1\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  url: https://github.com/xkbcommon/{{ name }}/archive/xkbcommon-{{ version }}.tar.gz\n  sha256: 4d869ed841a27ca4a2e5ca41ca6bacc97f8f6b42b1aa6ae9ee29c6e9768e2f1a\n\nbuild:\n  number: 0\n  skip: true  # [win or osx]\n  missing_dso_whitelist:\n    - /lib/libc.so.6\n  run_exports:\n    - {{ pin_subpackage('libxkbcommon') }}\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n    - meson\n    - ninja\n    - m4\n    - bison\n    - cmake\n    - pkg-config\n  host:\n    - xorg-libxau\n    - {{ cdt('xorg-x11-proto-devel') }}\n    - libxcb\n    - xcb-proto\n    - pthread-stubs\n\ntest:\n  commands:\n    - test -f \"${PREFIX}/lib/libxkbcommon${SHLIB_EXT}\"\n\nabout:\n  home: https://github.com/xkbcommon/libxkbcommon\n  license: MIT/X11 Derivative\n  license_family: MIT\n  license_file: LICENSE\n  summary: 'keymap handling library for toolkits and window systems'\n  description: |\n    libxkbcommon is a keyboard keymap compiler and support library which\n    processes a reduced subset of keymaps as defined by the XKB (X Keyboard\n    Extension) specification.\n  doc_url: https://xkbcommon.org/\n  dev_url: https://github.com/xkbcommon/libxkbcommon\n\nextra:\n  recipe-maintainers:\n    - scopatz\n",
  "req":{
   "__set__":true,
@@ -176,7 +193,7 @@
    "xorg-libxau"
   ]
  },
- "smithy_version":"3.6.0",
+ "smithy_version":"3.6.5",
  "url":"https://github.com/xkbcommon/libxkbcommon/archive/xkbcommon-0.8.4.tar.gz",
  "version":"0.9.1"
 }
