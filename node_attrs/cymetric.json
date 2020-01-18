@@ -30,6 +30,25 @@
     "migrator_version",
     "version"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/364389920.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"MigrationYaml",
+    "migrator_object_version":1,
+    "migrator_version":0,
+    "name":"python38"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_object_version",
+    "migrator_version",
+    "name"
+   ]
   }
  ],
  "bad":false,
@@ -43,12 +62,12 @@
    "home":"http://fuelcycle.org",
    "license":"BSD 3-clause",
    "license_family":"BSD",
+   "license_file":"LICENSE.rst",
    "summary":"Cyclus Metrics"
   },
   "build":{
-   "noarch":"python",
-   "number":"1",
-   "script":"python setup.py install --prefix ${PREFIX}"
+   "number":"0",
+   "skip":true
   },
   "extra":{
    "recipe-maintainers":[
@@ -57,43 +76,46 @@
     "bam241",
     "katyhuff",
     "FlanFlanagan",
+    "stompsjo",
     "scopatz",
     "gonuke",
     "bam241",
     "katyhuff",
     "FlanFlanagan",
+    "stompsjo",
     "scopatz",
     "gonuke",
     "bam241",
     "katyhuff",
-    "FlanFlanagan"
+    "FlanFlanagan",
+    "stompsjo"
    ]
   },
   "package":{
    "name":"cymetric",
-   "version":"1.5.3"
+   "version":"1.5.5"
   },
   "requirements":{
-   "build":[
+   "host":[
     "python",
     "python",
     "python"
    ],
    "run":[
     "python",
-    "cyclus >=1.5.*",
+    "cyclus 1.5.5",
     "numpy",
     "pandas",
     "pytables",
     "python-graphviz",
     "python",
-    "cyclus >=1.5.*",
+    "cyclus 1.5.5",
     "numpy",
     "pandas",
     "pytables",
     "python-graphviz",
     "python",
-    "cyclus >=1.5.*",
+    "cyclus 1.5.5",
     "numpy",
     "pandas",
     "pytables",
@@ -101,22 +123,35 @@
    ]
   },
   "source":{
-   "fn":"cymetric-1.5.3-40ba76b01c7a50b39fd2ac043990cce54e339c2ef3e14da18bbd64e5bc733fc6.tar.gz",
-   "sha256":"40ba76b01c7a50b39fd2ac043990cce54e339c2ef3e14da18bbd64e5bc733fc6",
-   "url":"https://github.com/cyclus/cymetric/archive/1.5.3.tar.gz"
+   "fn":"cymetric-1.5.5-2f2c9fa0ab53d6c00419949f92824188a2f0f67e169a3d09eb1b317c4f9cd88a.tar.gz",
+   "sha256":"2f2c9fa0ab53d6c00419949f92824188a2f0f67e169a3d09eb1b317c4f9cd88a",
+   "url":"https://github.com/cyclus/cymetric/archive/1.5.5.tar.gz"
   },
   "test":{
    "imports":[
     "cymetric",
     "cymetric",
     "cymetric"
+   ],
+   "requires":[
+    "nose",
+    "cycamore 1.5.5",
+    "nose",
+    "cycamore 1.5.5",
+    "nose",
+    "cycamore 1.5.5"
+   ],
+   "source_files":[
+    "tests",
+    "tests",
+    "tests"
    ]
   }
  },
  "name":"cymetric",
  "new_version":"1.5.5",
  "pinning_version":"2020.01.10",
- "raw_meta_yaml":"{% set version = \"1.5.3\" %}\n{% set sha256 = \"40ba76b01c7a50b39fd2ac043990cce54e339c2ef3e14da18bbd64e5bc733fc6\" %}\n\npackage:\n  name: cymetric\n  version: {{ version }}\n\nsource:\n  fn: cymetric-{{ version }}-{{ sha256 }}.tar.gz\n  url: https://github.com/cyclus/cymetric/archive/{{ version }}.tar.gz\n  sha256: {{ sha256 }}\n\nbuild:\n  number: 1\n  noarch: python\n  script: python setup.py install --prefix ${PREFIX}\n\nrequirements:\n  build:\n    - python\n  run:\n    - python\n    - cyclus >=1.5.*\n    #- pyne  # this is working locally, but not on conda-forge for some weird reason\n    - numpy\n    - pandas\n    - pytables\n    - python-graphviz\n\ntest:\n  imports:\n    - cymetric\n\nabout:\n  home: http://fuelcycle.org\n  license: BSD 3-clause\n  license_family: BSD\n  summary: 'Cyclus Metrics'\n  doc_url: http://fuelcycle.org/user/cymetric/index.html\n  dev_url: https://github.com/cyclus/cymetric\n\nextra:\n  recipe-maintainers:\n    - scopatz\n    - gonuke\n    - bam241\n    - katyhuff\n    - FlanFlanagan\n",
+ "raw_meta_yaml":"{% set version = \"1.5.5\" %}\n{% set sha256 = \"2f2c9fa0ab53d6c00419949f92824188a2f0f67e169a3d09eb1b317c4f9cd88a\" %}\n\npackage:\n  name: cymetric\n  version: {{ version }}\n\nsource:\n  fn: cymetric-{{ version }}-{{ sha256 }}.tar.gz\n  url: https://github.com/cyclus/cymetric/archive/{{ version }}.tar.gz\n  sha256: {{ sha256 }}\n\nbuild:\n  number: 0\n  skip: True  # [win or osx or py<=27]\n\nrequirements:\n  host:\n    - python\n  run:\n    - python\n    - cyclus {{ version }}\n    - numpy\n    - pandas\n    - pytables\n    - python-graphviz\n\ntest:\n  requires:\n    - nose\n    - cycamore {{ version }}\n  imports:\n    - cymetric\n  source_files:\n    - tests\n\nabout:\n  home: http://fuelcycle.org\n  license: BSD 3-clause\n  license_file: LICENSE.rst\n  license_family: BSD\n  summary: 'Cyclus Metrics'\n  doc_url: http://fuelcycle.org/user/cymetric/index.html\n  dev_url: https://github.com/cyclus/cymetric\n\nextra:\n  recipe-maintainers:\n    - scopatz\n    - gonuke\n    - bam241\n    - katyhuff\n    - FlanFlanagan\n    - stompsjo\n",
  "req":{
   "__set__":true,
   "elements":[
@@ -130,5 +165,5 @@
  },
  "smithy_version":"3.6.5",
  "url":"https://github.com/cyclus/cymetric/archive/1.5.3.tar.gz",
- "version":"1.5.3"
+ "version":"1.5.5"
 }
