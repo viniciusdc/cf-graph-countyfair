@@ -209,7 +209,7 @@
   },
   "package":{
    "name":"libva",
-   "version":"2.6.0"
+   "version":"2.6.1"
   },
   "requirements":{
    "build":[
@@ -244,9 +244,9 @@
    ]
   },
   "source":{
-   "fn":"libva-2.6.0.tar.gz",
-   "sha256":"5566755739503ef53beafad7fd7e155e68039e9af78e051e27f1715a420a0952",
-   "url":"https://github.com/intel/libva/archive/2.6.0.tar.gz"
+   "fn":"libva-2.6.1.tar.gz",
+   "sha256":"965f581e096508ece26ea9bef8bd769e93f9d1fe6840e309cc925cfef35ad13f",
+   "url":"https://github.com/intel/libva/archive/2.6.1.tar.gz"
   },
   "test":{
    "commands":[
@@ -277,7 +277,7 @@
  "name":"libva",
  "new_version":"2.6.1",
  "pinning_version":"2020.01.10",
- "raw_meta_yaml":"{% set name = \"libva\" %}\n{% set version = \"2.6.0\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  url: https://github.com/intel/{{ name }}/archive/{{ version }}.tar.gz\n  fn: libva-{{ version }}.tar.gz\n  sha256: 5566755739503ef53beafad7fd7e155e68039e9af78e051e27f1715a420a0952\n\nbuild:\n  skip: True  # [not linux]\n  number: 0\n  # https://abi-laboratory.pro/index.php?view=timeline&l=libva\n  run_exports:\n    - {{ pin_subpackage('libva', max_pin='x.x') }}\n  # https://01.org/linuxgraphics/documentation/build-guide-0\n  script:\n    - touch Makefile.am\n    - touch */Makefile.am\n    - touch */*/Makefile.am\n    - touch configure.ac\n    - ./autogen.sh --prefix=$PREFIX\n    - make -j$(nproc) install\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - autoconf\n    - automake\n    - libtool\n    - pkg-config\n  host:\n    - libdrm\n    - mesalib\n  run:\n    - mesalib\n\ntest:\n  commands:\n    - test -f $PREFIX/include/va/va.h\n    - test -f $PREFIX/lib/libva.so\n    - test -f $PREFIX/lib/libva.so.2\n    - test -f $PREFIX/lib/pkgconfig/libva.pc\n    - test -f $PREFIX/lib/pkgconfig/libva-drm.pc\n    - test -f $PREFIX/lib/libva-drm.so\n    - test -f $PREFIX/lib/libva-drm.so.2\n\nabout:\n  home: https://github.com/intel/libva\n  license: MIT\n  license_family: MIT\n  license_file: COPYING\n  summary: 'Libva is an implementation for VA-API (Video Acceleration API)'\n\n  # The remaining entries in this section are optional, but recommended\n  description: |\n    VA-API is an open-source library and API specification, which provides\n    access to graphics hardware acceleration capabilities for video processing.\n    It consists of a main library and driver-specific acceleration backends\n    for each supported hardware vendor.\n\nextra:\n  recipe-maintainers:\n    - hmaarrfk\n",
+ "raw_meta_yaml":"{% set name = \"libva\" %}\n{% set version = \"2.6.1\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  url: https://github.com/intel/{{ name }}/archive/{{ version }}.tar.gz\n  fn: libva-{{ version }}.tar.gz\n  sha256: 965f581e096508ece26ea9bef8bd769e93f9d1fe6840e309cc925cfef35ad13f\n\nbuild:\n  skip: True  # [not linux]\n  number: 0\n  # https://abi-laboratory.pro/index.php?view=timeline&l=libva\n  run_exports:\n    - {{ pin_subpackage('libva', max_pin='x.x') }}\n  # https://01.org/linuxgraphics/documentation/build-guide-0\n  script:\n    - touch Makefile.am\n    - touch */Makefile.am\n    - touch */*/Makefile.am\n    - touch configure.ac\n    - ./autogen.sh --prefix=$PREFIX\n    - make -j$(nproc) install\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - autoconf\n    - automake\n    - libtool\n    - pkg-config\n  host:\n    - libdrm\n    - mesalib\n  run:\n    - mesalib\n\ntest:\n  commands:\n    - test -f $PREFIX/include/va/va.h\n    - test -f $PREFIX/lib/libva.so\n    - test -f $PREFIX/lib/libva.so.2\n    - test -f $PREFIX/lib/pkgconfig/libva.pc\n    - test -f $PREFIX/lib/pkgconfig/libva-drm.pc\n    - test -f $PREFIX/lib/libva-drm.so\n    - test -f $PREFIX/lib/libva-drm.so.2\n\nabout:\n  home: https://github.com/intel/libva\n  license: MIT\n  license_family: MIT\n  license_file: COPYING\n  summary: 'Libva is an implementation for VA-API (Video Acceleration API)'\n\n  # The remaining entries in this section are optional, but recommended\n  description: |\n    VA-API is an open-source library and API specification, which provides\n    access to graphics hardware acceleration capabilities for video processing.\n    It consists of a main library and driver-specific acceleration backends\n    for each supported hardware vendor.\n\nextra:\n  recipe-maintainers:\n    - hmaarrfk\n",
  "req":{
   "__set__":true,
   "elements":[
@@ -292,5 +292,5 @@
  },
  "smithy_version":"3.6.5",
  "url":"https://github.com/intel/libva/archive/2.5.0.tar.gz",
- "version":"2.6.0"
+ "version":"2.6.1"
 }
