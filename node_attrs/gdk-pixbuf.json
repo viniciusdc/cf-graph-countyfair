@@ -155,7 +155,7 @@
    "summary":"GdkPixbuf is a library for image loading and manipulation."
   },
   "build":{
-   "number":"1005",
+   "number":"0",
    "run_exports":[
     "subpackage_stub",
     "subpackage_stub",
@@ -175,19 +175,22 @@
   },
   "package":{
    "name":"gdk-pixbuf",
-   "version":"2.36.12"
+   "version":"2.38.2"
   },
   "requirements":{
    "build":[
     "pkg-config",
     "c_compiler_stub",
-    "make",
+    "meson",
+    "ninja",
     "pkg-config",
     "c_compiler_stub",
-    "make",
+    "meson",
+    "ninja",
     "pkg-config",
     "c_compiler_stub",
-    "make"
+    "meson",
+    "ninja"
    ],
    "host":[
     "glib",
@@ -238,25 +241,27 @@
   "source":{
    "patches":[
     "0001-changed-perl-script-to-use-env.patch",
-    "no-shared-mime-info.patch",
+    "meson-rpaths-common.patch",
+    "meson-rpaths-non-macos.patch",
     "0001-changed-perl-script-to-use-env.patch",
-    "no-shared-mime-info.patch",
+    "meson-rpaths-common.patch",
     "0001-changed-perl-script-to-use-env.patch",
-    "no-shared-mime-info.patch"
+    "meson-rpaths-common.patch",
+    "meson-rpaths-non-macos.patch"
    ],
-   "sha256":"fff85cf48223ab60e3c3c8318e2087131b590fd6f1737e42cb3759a3b427a334",
-   "url":"http://ftp.gnome.org/pub/gnome/sources/gdk-pixbuf/2.36/gdk-pixbuf-2.36.12.tar.xz"
+   "sha256":"73fa651ec0d89d73dd3070b129ce2203a66171dfc0bd2caa3570a9c93d2d0781",
+   "url":"http://ftp.gnome.org/pub/gnome/sources/gdk-pixbuf/2.38/gdk-pixbuf-2.38.2.tar.xz"
   },
   "test":{
    "commands":[
     "gdk-pixbuf-csource --version",
-    "gdk-pixbuf-query-loaders --help",
+    "gdk-pixbuf-query-loaders",
     "gdk-pixbuf-pixdata --help",
     "gdk-pixbuf-csource --version",
-    "gdk-pixbuf-query-loaders --help",
+    "gdk-pixbuf-query-loaders",
     "gdk-pixbuf-pixdata --help",
     "gdk-pixbuf-csource --version",
-    "gdk-pixbuf-query-loaders --help",
+    "gdk-pixbuf-query-loaders",
     "gdk-pixbuf-pixdata --help"
    ]
   }
@@ -264,7 +269,7 @@
  "name":"gdk-pixbuf",
  "new_version":"2.38.2",
  "pinning_version":"2020.01.10",
- "raw_meta_yaml":"{% set name = \"gdk-pixbuf\" %}\n{% set version = \"2.36.12\" %}\n{% set sha256 = \"fff85cf48223ab60e3c3c8318e2087131b590fd6f1737e42cb3759a3b427a334\" %}\n\npackage:\n    name: {{ name|lower }}\n    version: {{ version }}\n\nsource:\n    sha256: {{ sha256 }}\n    url: http://ftp.gnome.org/pub/gnome/sources/{{ name }}/{{ '.'.join(version.split('.')[:2]) }}/{{ name }}-{{ version }}.tar.xz\n    patches:\n      - 0001-changed-perl-script-to-use-env.patch\n      - no-shared-mime-info.patch\n\nbuild:\n  number: 1005\n  skip: True  # [win]\n  run_exports:\n    # https://abi-laboratory.pro/?view=timeline&l=gdk-pixbuf\n    - {{ pin_subpackage('gdk-pixbuf', max_pin='x') }}\n\nrequirements:\n  build:\n    - pkg-config\n    - {{ compiler('c') }}\n    - make\n  host:\n    - gettext  # [osx]\n    - glib\n    - gobject-introspection\n    - make\n    - jpeg\n    - libtiff\n    - libpng\n    - zlib\n  run:\n    - gettext  # [osx]\n    - glib\n    - gobject-introspection\n    - jpeg\n    - libtiff\n    - libpng\n    - zlib\n\ntest:\n  commands:\n    - gdk-pixbuf-csource --version\n    - gdk-pixbuf-query-loaders --help\n    - gdk-pixbuf-pixdata --help\n\nabout:\n  home: https://developer.gnome.org/gdk-pixbuf/\n  license: GPL-2.0\n  license_family: GPL\n  license_file: COPYING\n  summary: \"GdkPixbuf is a library for image loading and manipulation.\"\n\nextra:\n  recipe-maintainers:\n    - notestaff\n    - pkgw\n",
+ "raw_meta_yaml":"{% set name = \"gdk-pixbuf\" %}\n{% set version = \"2.38.2\" %}\n{% set sha256 = \"73fa651ec0d89d73dd3070b129ce2203a66171dfc0bd2caa3570a9c93d2d0781\" %}\n\npackage:\n    name: {{ name|lower }}\n    version: {{ version }}\n\nsource:\n    sha256: {{ sha256 }}\n    url: http://ftp.gnome.org/pub/gnome/sources/{{ name }}/{{ '.'.join(version.split('.')[:2]) }}/{{ name }}-{{ version }}.tar.xz\n    patches:\n      - 0001-changed-perl-script-to-use-env.patch\n      - meson-rpaths-common.patch\n      - meson-rpaths-non-macos.patch  # [not osx]\n\nbuild:\n  number: 0\n  skip: True  # [win]\n  run_exports:\n    # https://abi-laboratory.pro/?view=timeline&l=gdk-pixbuf\n    - {{ pin_subpackage('gdk-pixbuf', max_pin='x') }}\n\nrequirements:\n  build:\n    - pkg-config\n    - {{ compiler('c') }}\n    - meson\n    - ninja\n  host:\n    - gettext  # [osx]\n    - glib\n    - gobject-introspection\n    - make\n    - jpeg\n    - libtiff\n    - libpng\n    - zlib\n  run:\n    - gettext  # [osx]\n    - glib\n    - gobject-introspection\n    - jpeg\n    - libtiff\n    - libpng\n    - zlib\n\ntest:\n  commands:\n    - gdk-pixbuf-csource --version\n    - gdk-pixbuf-query-loaders\n    - gdk-pixbuf-pixdata --help\n\nabout:\n  home: https://developer.gnome.org/gdk-pixbuf/\n  license: GPL-2.0\n  license_family: GPL\n  license_file: COPYING\n  summary: \"GdkPixbuf is a library for image loading and manipulation.\"\n\nextra:\n  recipe-maintainers:\n    - notestaff\n    - pkgw\n",
  "req":{
   "__set__":true,
   "elements":[
@@ -276,11 +281,13 @@
    "libpng",
    "libtiff",
    "make",
+   "meson",
+   "ninja",
    "pkg-config",
    "zlib"
   ]
  },
  "smithy_version":"3.6.5",
  "url":"http://ftp.gnome.org/pub/gnome/sources/gdk-pixbuf/2.36/gdk-pixbuf-2.36.12.tar.xz",
- "version":"2.36.12"
+ "version":"2.38.2"
 }
