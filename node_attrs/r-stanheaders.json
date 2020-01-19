@@ -96,6 +96,23 @@
     "migrator_version",
     "version"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/364561844.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"Version",
+    "migrator_version":0,
+    "version":"2.21.0_1"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "version"
+   ]
   }
  ],
  "bad":false,
@@ -204,8 +221,8 @@
   }
  },
  "name":"r-stanheaders",
- "new_version":"2.19.0",
- "pinning_version":"2019.08.27",
+ "new_version":"2.21.0_1",
+ "pinning_version":"2020.01.10",
  "raw_meta_yaml":"{% set version = '2.19.0' %}\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-stanheaders\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  url:\n    - {{ cran_mirror }}/src/contrib/StanHeaders_{{ version }}.tar.gz\n    - {{ cran_mirror }}/src/contrib/Archive/StanHeaders/StanHeaders_{{ version }}.tar.gz\n  sha256: a0ab8f996a7a903a37491f6e4e8cf8b9f51bf0c13a5326171fab90692fe14592\n\nbuild:\n  merge_build_host: True  # [win]\n  number: 0\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - {{ compiler('c') }}              # [not win]\n    - {{ compiler('m2w64_c') }}        # [win]\n    - {{ compiler('cxx') }}            # [not win]\n    - {{ compiler('m2w64_cxx') }}      # [win]\n    - {{ compiler('fortran') }}        # [not win]\n    - {{ compiler('m2w64_fortran') }}  # [win]\n    - {{posix}}filesystem        # [win]\n    - {{posix}}make\n    - {{posix}}sed               # [win]\n    - {{posix}}coreutils         # [win]\n    - {{posix}}zip               # [win]\n  host:\n    - r-base\n  run:\n    - r-base\n    - {{native}}gcc-libs         # [win]\n\ntest:\n  commands:\n    - $R -e \"library('StanHeaders')\"           # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('StanHeaders')\\\"\"  # [win]\n\nabout:\n  home: http://mc-stan.org/\n  license: BSD_3_clause\n  summary: The C++ header files of the Stan project are provided by this package, but it contains\n    no R code or function documentation. There is a shared object containing part of\n    the 'CVODES' library, but it is not accessible from R. 'StanHeaders' is only useful\n    for developers who want to utilize the 'LinkingTo' directive of their package's\n    DESCRIPTION file to build on the Stan library without incurring unnecessary dependencies.\n    The Stan project develops a probabilistic programming language that implements full\n    or approximate Bayesian statistical inference via Markov Chain Monte Carlo or 'variational'\n    methods and implements (optionally penalized) maximum likelihood estimation via\n    optimization. The Stan library includes an advanced automatic differentiation scheme,\n    'templated' statistical and linear algebra functions that can handle the automatically\n    'differentiable' scalar types (and doubles, 'ints', etc.), and a parser for the\n    Stan language. The 'rstan' package provides user-facing R functions to parse, compile,\n    test, estimate, and analyze Stan models.\n  license_family: BSD\n  license_file:\n    - '{{ environ[\"PREFIX\"] }}/lib/R/share/licenses/BSD_3_clause'\n    - LICENSE\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n    - croth1\n    - mdehollander\n\n# Package: StanHeaders\n# Date: 2019-09-05\n# Title: C++ Header Files for Stan\n# Authors@R: c(person(\"Ben\",family=\"Goodrich\", email=\"benjamin.goodrich@columbia.edu\", role=c('cre','aut')), person(\"Joshua\", \"Pritikin\", role = \"ctb\"), person(\"Andrew\", \"Gelman\", role = \"aut\"), person(\"Bob\", \"Carpenter\",  role = \"aut\"), person(\"Matt\", \"Hoffman\", role = \"aut\"), person(\"Daniel\", \"Lee\", role = \"aut\"), person(\"Michael\", \"Betancourt\", role = \"aut\"), person(\"Marcus\", \"Brubaker\", role = \"aut\"), person(\"Jiqiang\", \"Guo\", role = \"aut\"), person(\"Peter\", \"Li\", role = \"aut\"), person(\"Allen\", \"Riddell\", role = \"aut\"), person(\"Marco\", \"Inacio\", role = \"aut\"), person(\"Mitzi\", \"Morris\", role = \"aut\"), person(\"Jeffrey\", \"Arnold\", role = \"aut\"), person(\"Rob\", \"Goedman\", role = \"aut\"), person(\"Brian\", \"Lau\", role = \"aut\"), person(\"Rob\", \"Trangucci\", role = \"aut\"), person(\"Jonah\", \"Gabry\", role = \"aut\"), person(\"Alp\", \"Kucukelbir\", role = \"aut\"), person(\"Robert\", \"Grant\", role = \"aut\"), person(\"Dustin\", \"Tran\", role = \"aut\"), person(\"Michael\", \"Malecki\", role = \"aut\"), person(\"Yuanjun\", \"Gao\", role = \"aut\"), person(\"Trustees of\", \"Columbia University\", role = \"cph\"), person(\"Lawrence Livermore\", \"National Security\", role = \"cph\", comment = \"CVODES\"), person(\"The Regents of the\", \"University of California\", role = \"cph\", comment = \"CVODES\"), person(\"Southern Methodist\", \"University\", role = \"cph\", comment = \"CVODES\"))\n# URL: http://mc-stan.org/\n# Description: The C++ header files of the Stan project are provided by this package, but it contains no R code or function documentation. There is a shared object containing part of the 'CVODES' library, but it is not accessible from R. 'StanHeaders' is only useful for developers who want to utilize the 'LinkingTo' directive of their package's DESCRIPTION file to build on the Stan library without incurring unnecessary dependencies. The Stan project develops a probabilistic programming language that implements full or approximate Bayesian statistical inference via Markov Chain Monte Carlo or 'variational' methods and implements (optionally penalized) maximum likelihood estimation via optimization. The Stan library includes an advanced automatic differentiation scheme, 'templated' statistical and linear algebra functions that can handle the automatically 'differentiable' scalar types (and doubles, 'ints', etc.), and a parser for the Stan language. The 'rstan' package provides user-facing R functions to parse, compile, test, estimate, and analyze Stan models.\n# Suggests: Rcpp, RcppEigen, BH, knitr (>= 1.15.1), rmarkdown, Matrix, methods, rstan\n# VignetteBuilder: knitr\n# SystemRequirements: pandoc\n# Depends: R (>= 3.4.0)\n# Version: 2.19.0\n# License: BSD_3_clause + file LICENSE\n# NeedsCompilation: yes\n# Packaged: 2019-09-05 18:28:20 UTC; ben\n# Author: Ben Goodrich [cre, aut], Joshua Pritikin [ctb], Andrew Gelman [aut], Bob Carpenter [aut], Matt Hoffman [aut], Daniel Lee [aut], Michael Betancourt [aut], Marcus Brubaker [aut], Jiqiang Guo [aut], Peter Li [aut], Allen Riddell [aut], Marco Inacio [aut], Mitzi Morris [aut], Jeffrey Arnold [aut], Rob Goedman [aut], Brian Lau [aut], Rob Trangucci [aut], Jonah Gabry [aut], Alp Kucukelbir [aut], Robert Grant [aut], Dustin Tran [aut], Michael Malecki [aut], Yuanjun Gao [aut], Trustees of Columbia University [cph], Lawrence Livermore National Security [cph] (CVODES), The Regents of the University of California [cph] (CVODES), Southern Methodist University [cph] (CVODES)\n# Maintainer: Ben Goodrich <benjamin.goodrich@columbia.edu>\n# Repository: CRAN\n# Date/Publication: 2019-09-07 07:00:17 UTC\n",
  "req":{
   "__set__":true,
@@ -225,7 +242,7 @@
    "zip"
   ]
  },
- "smithy_version":"3.4.5",
+ "smithy_version":"3.6.5",
  "url":[
   "https://cran.r-project.org/src/contrib/StanHeaders_2.19.0.tar.gz",
   "https://cran.r-project.org/src/contrib/Archive/StanHeaders/StanHeaders_2.19.0.tar.gz",
