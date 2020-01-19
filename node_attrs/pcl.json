@@ -67,6 +67,23 @@
     "migrator_version",
     "name"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/364556432.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"Version",
+    "migrator_version":0,
+    "version":"1.10.0"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "version"
+   ]
   }
  ],
  "bad":false,
@@ -171,8 +188,8 @@
   }
  },
  "name":"pcl",
- "new_version":"1.9.1",
- "pinning_version":"2019.05.29",
+ "new_version":"1.10.0",
+ "pinning_version":"2020.01.10",
  "raw_meta_yaml":"{% set name = \"pcl\" %}\n{% set version = \"1.9.1\" %}\n{% set sha256 = \"0add34d53cd27f8c468a59b8e931a636ad3174b60581c0387abb98a9fc9cddb6\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  fn: {{ name }}-{{ version }}.tar.gz\n  url: https://github.com/pointcloudlibrary/{{ name }}/archive/{{ name }}-{{ version }}.tar.gz\n  sha256: {{ sha256 }}\n  patches:\n    - except.patch\n    - flann.patch  # [osx]\n    - boost1.70.patch\n\nbuild:\n  number: 1004\n  skip: true  # [win and vc<14]\n\nrequirements:\n  build:\n    - {{ compiler('cxx') }}\n    - cmake\n    - ninja  # [win]\n  host:\n    - flann\n    - eigen\n    - boost-cpp\n    - qhull\n  run:\n    - flann\n    - {{ pin_compatible('boost-cpp', max_pin='x.x.x') }}\n    - qhull\n\n\ntest:\n  commands:\n    - test -d $PREFIX/include/{{ name }}-1.9/{{ name }}              # [not win]\n    - if not exist %LIBRARY_INC%\\\\{{ name }}-1.9\\\\{{ name }} exit 1  # [win]\n    - conda inspect linkages -p $PREFIX {{ name|lower }}             # [not win]\n    - conda inspect objects -p $PREFIX {{ name|lower }}              # [osx]\n\nabout:\n  home: http://www.pointclouds.org\n  license: BSD 3-Clause\n  license_family: BSD\n  license_file: LICENSE.txt\n  summary: 'Point Cloud Library (PCL)'\n  description: |\n    The Point Cloud Library (PCL) is a standalone, large scale, open project for 2D/3D image and point cloud processing.\n  doc_url: http://www.pointclouds.org\n  dev_url: https://github.com/pointcloudlibrary/pcl\n\nextra:\n  recipe-maintainers:\n    - chambbj\n    - hobu\n",
  "req":{
   "__set__":true,
@@ -187,7 +204,7 @@
    "qhull"
   ]
  },
- "smithy_version":"3.3.4",
+ "smithy_version":"3.6.5",
  "url":"https://github.com/pointcloudlibrary/pcl/archive/pcl-1.9.1.tar.gz",
  "version":"1.9.1"
 }
