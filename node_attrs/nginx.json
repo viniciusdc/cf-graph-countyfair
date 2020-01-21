@@ -442,6 +442,23 @@
     "migrator_version",
     "version"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/365327589.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"Version",
+    "migrator_version":0,
+    "version":"1.17.8"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "version"
+   ]
   }
  ],
  "bad":false,
@@ -547,8 +564,8 @@
   }
  },
  "name":"nginx",
- "new_version":"1.17.7",
- "pinning_version":"2019.12.18",
+ "new_version":"1.17.8",
+ "pinning_version":"2020.01.10",
  "raw_meta_yaml":"{% set name = \"nginx\" %}\n{% set version = \"1.17.5\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  fn: {{ name }}-{{ version }}.tar.gz\n  url: https://nginx.org/download/{{ name }}-{{ version }}.tar.gz\n  sha256: 63ee35e15a75af028ffa1f995e2b9c120b59ef5f1b61a23b8a4c33c262fc10c3\n  patches:\n    - pcre-config.patch  # find pcre in PREFIX instead of /usr\n\nbuild:\n  number: 0\n  no_link:\n    - etc/*\n    - var/log/nginx/*\n  skip: True  # [win]\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n    - {{ compiler('fortran') }}\n  host:\n    - libgd 2.2.*\n    - libxslt 1.1.*\n    - openssl\n    - pcre 8.*\n    - zlib\n  run:\n    - libgd 2.2.*\n    - libxslt 1.1.*\n    - openssl\n    - pcre 8.*\n\ntest:\n  commands:\n    - conda inspect linkages -p $PREFIX $PKG_NAME  # [unix]\n    - conda inspect objects -p $PREFIX $PKG_NAME  # [osx]\n\nabout:\n  home: http://www.nginx.org\n  license: BSD-2-Clause\n  license_family: BSD\n  license_file: LICENSE\n  summary: Nginx is an HTTP and reverse proxy server\n  description: |\n    Nginx can act as a reverse proxy server for TCP, UDP, HTTP, HTTPS, SMTP,\n    POP3, IMAP, and gRPC protocols, as well as a load balancer and an HTTP cache.\n    Nginx uses an asynchronous event-driven approach to handling requests.\n  doc_url: http://nginx.org/en/docs\n  dev_url: http://hg.nginx.org/nginx\n\nextra:\n  recipe-maintainers:\n    - sodre\n",
  "req":{
   "__set__":true,
