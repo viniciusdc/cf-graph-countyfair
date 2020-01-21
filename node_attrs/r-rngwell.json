@@ -33,6 +33,23 @@
     "migrator_version",
     "name"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/365251496.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"Version",
+    "migrator_version":0,
+    "version":"0.10_6"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "version"
+   ]
   }
  ],
  "bad":false,
@@ -147,8 +164,8 @@
   }
  },
  "name":"r-rngwell",
- "new_version":"0.10_5",
- "pinning_version":"2019.07.15",
+ "new_version":"0.10_6",
+ "pinning_version":"2020.01.10",
  "raw_meta_yaml":"{% set version = '0.10-5' %}\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-rngwell\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  fn: rngWELL_{{ version }}.tar.gz\n  url:\n    - {{ cran_mirror }}/src/contrib/rngWELL_{{ version }}.tar.gz\n    - {{ cran_mirror }}/src/contrib/Archive/rngWELL/rngWELL_{{ version }}.tar.gz\n  sha256: 4b9ac0d8b8303147dc6ffda03cac91bca6e85f5ba4c5d431c74fcf5744d19e2c\n\nbuild:\n  merge_build_host: True  # [win]\n  number: 1001\n  skip: true  # [win32]\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - {{ compiler('c') }}        # [not win]\n    - {{ compiler('m2w64_c') }}        # [win]\n    - {{posix}}filesystem        # [win]\n    - {{posix}}sed               # [win]\n    - {{posix}}grep              # [win]\n    - {{posix}}autoconf\n    - {{posix}}automake          # [not win]\n    - {{posix}}automake-wrapper  # [win]\n    - {{posix}}pkg-config\n    - {{posix}}make\n    - {{posix}}coreutils         # [win]\n    - {{posix}}zip               # [win]\n  host:\n    - r-base\n  run:\n    - r-base\n    - {{native}}gcc-libs         # [win]\n\ntest:\n  commands:\n    - $R -e \"library('rngWELL')\"           # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('rngWELL')\\\"\"  # [win]\n\nabout:\n  home: https://CRAN.R-project.org/package=rngWELL\n  license: BSD_3_clause\n  summary: 'It is a dedicated package to WELL pseudo random generators, which were introduced\n    in Panneton et al. (2006), ``Improved Long-Period Generators Based on Linear Recurrences\n    Modulo 2'''', ACM Transactions on Mathematical Software. But this package is not\n    intended to be used directly, you are strongly __encouraged__ to use the ''randtoolbox''\n    package, which depends on this package. '\n  license_family: BSD\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n    - johanneskoester\n    - bgruening\n    - daler\n    - jdblischak\n    - cbrueffer\n",
  "req":{
   "__set__":true,
@@ -169,7 +186,7 @@
    "zip"
   ]
  },
- "smithy_version":"3.4.1",
+ "smithy_version":"3.6.5",
  "url":[
   "https://cran.r-project.org/src/contrib/rngWELL_0.10-5.tar.gz",
   "https://cran.r-project.org/src/contrib/Archive/rngWELL/rngWELL_0.10-5.tar.gz",
