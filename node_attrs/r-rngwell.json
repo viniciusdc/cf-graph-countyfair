@@ -68,11 +68,19 @@
    "home":"https://CRAN.R-project.org/package=rngWELL",
    "license":"BSD_3_clause",
    "license_family":"BSD",
-   "summary":"It is a dedicated package to WELL pseudo random generators, which were introduced in Panneton et al. (2006), ``Improved Long-Period Generators Based on Linear Recurrences Modulo 2'', ACM Transactions on Mathematical Software. But this package is not intended to be used directly, you are strongly __encouraged__ to use the 'randtoolbox' package, which depends on this package. "
+   "license_file":[
+    "/lib/R/share/licenses/BSD_3_clause",
+    "LICENSE",
+    "/lib/R/share/licenses/BSD_3_clause",
+    "LICENSE",
+    "/lib/R/share/licenses/BSD_3_clause",
+    "LICENSE"
+   ],
+   "summary":"It is a dedicated package to WELL pseudo random generators, which were introduced in Panneton et al. (2006), ``Improved Long-Period Generators Based on Linear Recurrences Modulo 2'', ACM Transactions on Mathematical Software. But this package is not intended to be used directly, you are strongly __encouraged__ to use the 'randtoolbox' package, which depends on this package."
   },
   "build":{
    "merge_build_host":true,
-   "number":"1001",
+   "number":"0",
    "rpaths":[
     "lib/R/lib/",
     "lib/",
@@ -85,28 +93,13 @@
   "extra":{
    "recipe-maintainers":[
     "conda-forge/r",
-    "johanneskoester",
-    "bgruening",
-    "daler",
-    "jdblischak",
-    "cbrueffer",
     "conda-forge/r",
-    "johanneskoester",
-    "bgruening",
-    "daler",
-    "jdblischak",
-    "cbrueffer",
-    "conda-forge/r",
-    "johanneskoester",
-    "bgruening",
-    "daler",
-    "jdblischak",
-    "cbrueffer"
+    "conda-forge/r"
    ]
   },
   "package":{
    "name":"r-rngwell",
-   "version":"0.10_5"
+   "version":"0.10_6"
   },
   "requirements":{
    "build":[
@@ -144,15 +137,14 @@
    ]
   },
   "source":{
-   "fn":"rngWELL_0.10-5.tar.gz",
-   "sha256":"4b9ac0d8b8303147dc6ffda03cac91bca6e85f5ba4c5d431c74fcf5744d19e2c",
+   "sha256":"7b0b695f467c8b58cd8406d5554cb5fc62ab14689c89052b70f5487c9366525e",
    "url":[
-    "https://cran.r-project.org/src/contrib/rngWELL_0.10-5.tar.gz",
-    "https://cran.r-project.org/src/contrib/Archive/rngWELL/rngWELL_0.10-5.tar.gz",
-    "https://cran.r-project.org/src/contrib/rngWELL_0.10-5.tar.gz",
-    "https://cran.r-project.org/src/contrib/Archive/rngWELL/rngWELL_0.10-5.tar.gz",
-    "https://cran.r-project.org/src/contrib/rngWELL_0.10-5.tar.gz",
-    "https://cran.r-project.org/src/contrib/Archive/rngWELL/rngWELL_0.10-5.tar.gz"
+    "https://cran.r-project.org/src/contrib/rngWELL_0.10-6.tar.gz",
+    "https://cran.r-project.org/src/contrib/Archive/rngWELL/rngWELL_0.10-6.tar.gz",
+    "https://cran.r-project.org/src/contrib/rngWELL_0.10-6.tar.gz",
+    "https://cran.r-project.org/src/contrib/Archive/rngWELL/rngWELL_0.10-6.tar.gz",
+    "https://cran.r-project.org/src/contrib/rngWELL_0.10-6.tar.gz",
+    "https://cran.r-project.org/src/contrib/Archive/rngWELL/rngWELL_0.10-6.tar.gz"
    ]
   },
   "test":{
@@ -166,7 +158,7 @@
  "name":"r-rngwell",
  "new_version":"0.10_6",
  "pinning_version":"2020.01.10",
- "raw_meta_yaml":"{% set version = '0.10-5' %}\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-rngwell\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  fn: rngWELL_{{ version }}.tar.gz\n  url:\n    - {{ cran_mirror }}/src/contrib/rngWELL_{{ version }}.tar.gz\n    - {{ cran_mirror }}/src/contrib/Archive/rngWELL/rngWELL_{{ version }}.tar.gz\n  sha256: 4b9ac0d8b8303147dc6ffda03cac91bca6e85f5ba4c5d431c74fcf5744d19e2c\n\nbuild:\n  merge_build_host: True  # [win]\n  number: 1001\n  skip: true  # [win32]\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - {{ compiler('c') }}        # [not win]\n    - {{ compiler('m2w64_c') }}        # [win]\n    - {{posix}}filesystem        # [win]\n    - {{posix}}sed               # [win]\n    - {{posix}}grep              # [win]\n    - {{posix}}autoconf\n    - {{posix}}automake          # [not win]\n    - {{posix}}automake-wrapper  # [win]\n    - {{posix}}pkg-config\n    - {{posix}}make\n    - {{posix}}coreutils         # [win]\n    - {{posix}}zip               # [win]\n  host:\n    - r-base\n  run:\n    - r-base\n    - {{native}}gcc-libs         # [win]\n\ntest:\n  commands:\n    - $R -e \"library('rngWELL')\"           # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('rngWELL')\\\"\"  # [win]\n\nabout:\n  home: https://CRAN.R-project.org/package=rngWELL\n  license: BSD_3_clause\n  summary: 'It is a dedicated package to WELL pseudo random generators, which were introduced\n    in Panneton et al. (2006), ``Improved Long-Period Generators Based on Linear Recurrences\n    Modulo 2'''', ACM Transactions on Mathematical Software. But this package is not\n    intended to be used directly, you are strongly __encouraged__ to use the ''randtoolbox''\n    package, which depends on this package. '\n  license_family: BSD\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n    - johanneskoester\n    - bgruening\n    - daler\n    - jdblischak\n    - cbrueffer\n",
+ "raw_meta_yaml":"{% set version = '0.10-6' %}\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-rngwell\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  url:\n    - {{ cran_mirror }}/src/contrib/rngWELL_{{ version }}.tar.gz\n    - {{ cran_mirror }}/src/contrib/Archive/rngWELL/rngWELL_{{ version }}.tar.gz\n  sha256: 7b0b695f467c8b58cd8406d5554cb5fc62ab14689c89052b70f5487c9366525e\n\nbuild:\n  merge_build_host: True  # [win]\n  number: 0\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - {{ compiler('c') }}              # [not win]\n    - {{ compiler('m2w64_c') }}        # [win]\n    - {{posix}}filesystem        # [win]\n    - {{posix}}sed               # [win]\n    - {{posix}}grep              # [win]\n    - {{posix}}autoconf\n    - {{posix}}automake          # [not win]\n    - {{posix}}automake-wrapper  # [win]\n    - {{posix}}pkg-config\n    - {{posix}}make\n    - {{posix}}coreutils         # [win]\n    - {{posix}}zip               # [win]\n  host:\n    - r-base\n  run:\n    - r-base\n    - {{native}}gcc-libs         # [win]\n\ntest:\n  commands:\n    - $R -e \"library('rngWELL')\"           # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('rngWELL')\\\"\"  # [win]\n\nabout:\n  home: https://CRAN.R-project.org/package=rngWELL\n  license: BSD_3_clause\n  summary: It is a dedicated package to WELL pseudo random generators, which were introduced\n    in Panneton et al. (2006), ``Improved Long-Period Generators Based on Linear Recurrences\n    Modulo 2'', ACM Transactions on Mathematical Software. But this package is not intended\n    to be used directly, you are strongly __encouraged__ to use the 'randtoolbox' package,\n    which depends on this package.\n  license_family: BSD\n  license_file:\n    - '{{ environ[\"PREFIX\"] }}/lib/R/share/licenses/BSD_3_clause'\n    - LICENSE\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n\n# Package: rngWELL\n# Type: Package\n# Title: Toolbox for WELL Random Number Generators\n# Version: 0.10-6\n# Author: C code by F. Panneton, P. L'Ecuyer and M. Matsumoto and R port by Christophe Dutang and Petr Savicky <savicky@cs.cas.cz>.\n# Maintainer: Christophe Dutang <christophe.dutang@ensimag.fr>\n# Description: It is a dedicated package to WELL pseudo random generators, which were introduced in Panneton et al. (2006), ``Improved Long-Period Generators Based on Linear Recurrences Modulo 2'', ACM Transactions on Mathematical Software. But this package is not intended to be used directly, you are strongly __encouraged__ to use the 'randtoolbox' package, which depends on this package.\n# Depends: R (>= 3.0.0)\n# License: BSD_3_clause + file LICENSE\n# NeedsCompilation: yes\n# Packaged: 2020-01-20 12:37:12 UTC; dutang\n# Repository: CRAN\n# Date/Publication: 2020-01-21 09:30:02 UTC\n",
  "req":{
   "__set__":true,
   "elements":[
@@ -195,5 +187,5 @@
   "https://cran.r-project.org/src/contrib/rngWELL_0.10-5.tar.gz",
   "https://cran.r-project.org/src/contrib/Archive/rngWELL/rngWELL_0.10-5.tar.gz"
  ],
- "version":"0.10_5"
+ "version":"0.10_6"
 }

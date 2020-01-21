@@ -79,6 +79,23 @@
     "migrator_version",
     "name"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/365300194.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"Version",
+    "migrator_version":0,
+    "version":"1.1.20"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "version"
+   ]
   }
  ],
  "bad":false,
@@ -182,8 +199,8 @@
   }
  },
  "name":"r-idpmisc",
- "new_version":"1.1.19",
- "pinning_version":"2019.07.20",
+ "new_version":"1.1.20",
+ "pinning_version":"2020.01.10",
  "raw_meta_yaml":"{% set version = \"1.1.19\" %}\n\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-idpmisc\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  fn: IDPmisc_{{ version }}.tar.gz\n  url:\n    - https://cran.r-project.org/src/contrib/IDPmisc_{{ version }}.tar.gz\n    - https://cran.r-project.org/src/contrib/Archive/IDPmisc/IDPmisc_{{ version }}.tar.gz\n  sha256: 0d5e35252c7ec2654a3d64949bdc0977cc8479f8ada97bccd0d90d70aadb0c8f\n\nbuild:\n  merge_build_host: True  # [win]\n  number: 1\n  skip: true  # [win32]\n\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - posix                # [win]\n    - {{ compiler('c') }}        # [unix]\n    - {{ compiler('m2w64_c') }}  # [win]\n  host:\n    - r-base\n    - r-lattice >=0.19_26\n\n  run:\n    - r-base\n    - r-lattice >=0.19_26\n\ntest:\n  commands:\n    - $R -e \"library('IDPmisc')\"  # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('IDPmisc')\\\"\"  # [win]\n\nabout:\n  home: https://CRAN.R-project.org/package=IDPmisc\n  license: GPL (>= 3)\n  summary: |\n    The IDPmisc package contains different high-level graphics functions for displaying\n    large datasets, displaying circular data in a very flexible way, finding local maxima,\n    brewing color ramps, drawing nice arrows, zooming 2D-plots, creating figures with\n    differently colored margin and plot region.  In addition, the package contains auxiliary\n    functions for data manipulation like omitting observations with irregular values\n    or selecting data by logical vectors, which include NAs. Other functions are especially\n    useful in spectroscopy and analyses of environmental data: robust baseline fitting,\n    finding peaks in spectra.\n  license_family: GPL3\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n    - dpryan79\n    - johanneskoester\n    - bgruening\n    - daler\n    - jdblischak\n",
  "req":{
   "__set__":true,
@@ -195,7 +212,7 @@
    "r-lattice"
   ]
  },
- "smithy_version":"3.4.1",
+ "smithy_version":"3.6.5",
  "url":[
   "https://cran.r-project.org/src/contrib/IDPmisc_1.1.19.tar.gz",
   "https://cran.r-project.org/src/contrib/Archive/IDPmisc/IDPmisc_1.1.19.tar.gz",

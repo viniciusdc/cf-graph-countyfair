@@ -33,6 +33,23 @@
     "migrator_version",
     "version"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/365299144.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"Version",
+    "migrator_version":0,
+    "version":"1.0.3151"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "version"
+   ]
   }
  ],
  "bad":false,
@@ -119,8 +136,8 @@
   }
  },
  "name":"intel-graphics-compiler",
- "new_version":"1.0.3041",
- "pinning_version":"2019.12.18",
+ "new_version":"1.0.3151",
+ "pinning_version":"2020.01.10",
  "raw_meta_yaml":"{% set name = \"intel-graphics-compiler\" %}\n{% set version = \"1.0.3041\" %}\n{% set llvm_version = \"9.0.0\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  url: https://github.com/intel/{{ name }}/archive/igc-{{ version }}.tar.gz\n  sha256: 91233f7c2fb5f1e829232815a0e3b80585f7f7537360aa1445955973ad0d928d\n\nbuild:\n  number: 0\n  skip: True  # [not linux]\n\nrequirements:\n  build:\n    - {{ compiler('cxx') }}\n    - cmake\n    - make\n    - flex\n    - bison\n  host:\n    - llvmdev   {{ llvm_version }}\n    - llvm      {{ llvm_version }}\n    - clangdev  {{ llvm_version }}\n    - intel-opencl-clang {{ llvm_version }}\n  run:\n    - intel-opencl-clang {{ llvm_version }}\n  run_constrained:\n    - llvmdev   {{ llvm_version }}\n    - clangdev  {{ llvm_version }}\n\ntest:\n  commands:\n    - test -f ${PREFIX}/lib/libiga64${SHLIB_EXT}  # [unix]\n\nabout:\n  home: https://github.com/intel/intel-graphics-compiler\n  license: MIT\n  license_file: LICENSE.md\n  license_family: MIT\n  summary: 'The Intel(R) Graphics Compiler for OpenCL(TM) is an llvm based compiler for OpenCL(TM) targeting Intel Gen graphics hardware architecture.'\n\nextra:\n  recipe-maintainers:\n    - isuruf\n",
  "req":{
   "__set__":true,
