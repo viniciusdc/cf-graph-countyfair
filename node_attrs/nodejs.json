@@ -864,9 +864,26 @@
     "migrator_version",
     "version"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/365467123.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"Version",
+    "migrator_version":0,
+    "version":"13.7.0"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "version"
+   ]
   }
  ],
- "bad":"Upstream: unknown source",
+ "bad":false,
  "conda-forge.yml":{
   "compiler_stack":"comp7",
   "max_py_ver":"37",
@@ -981,8 +998,8 @@
   }
  },
  "name":"nodejs",
- "new_version":"13.6.0",
- "pinning_version":"2020.01.07",
+ "new_version":"13.7.0",
+ "pinning_version":"2020.01.10",
  "raw_meta_yaml":"{% set version = \"13.6.0\" %}\n\npackage:\n  name: nodejs\n  version: {{ version }}\n\nsource:\n  fn: node-v{{ version }}.tar.gz\n  url: https://nodejs.org/dist/v{{ version }}/node-v{{ version }}.tar.gz  # [not win]\n  sha256: c1db19b4cf23b3903ac3048dad44a05397a63854b2a159fedc454eb15650369a  # [not win]\n  url: https://nodejs.org/dist/v{{ version }}/node-v{{ version }}-win-x64.zip  # [win]\n  sha256: 7fe37b34a4673a071bea52fcaf913ec422cf6fd79fd025bfb22de42ccc77f386  # [win]\n  patches:\n    - linux-librt.patch  # [not win]\n    - cinttypes.patch  # [linux]\n\nbuild:\n  number: 0\n  ignore_prefix_files:\n    - bin/node\n\nrequirements:\n  build:\n    - {{ compiler('c') }}  # [not win]\n    - {{ compiler('cxx') }}  # [not win]\n    - python 3.7  # [not win]\n    - git  # [linux]\n    - make  # [linux]\n    - pkg-config  # [not win]\n  host:\n    - vs2015_runtime  # [win]\n    - icu  # [not win]\n    - libuv >=1.33  # [not win]\n    - openssl  >=1.1.1d  # [not win]\n    - zlib  # [not win]\n  run:\n    - vs2015_runtime  # [win]\n    - icu  # [not win]\n    - libuv  # [not win]\n    - openssl  # [not win]\n    - zlib  # [not win]\n  run_constrained:  # [osx]\n    - __osx >={{ MACOSX_DEPLOYMENT_TARGET|default(\"10.9\") }}  # [osx]\n\ntest:\n  commands:\n    - node -h\n    - node -v\n    - npm version\n    - npm install -h\n    - npm config get prefix -g\n    - test $(echo \"console.log(1 + 3)\" | node) == 4  # [not win]\n\nabout:\n  home: https://nodejs.org/\n  license: MIT\n  license_file: LICENSE\n  summary: a platform for easily building fast, scalable network applications\n\nextra:\n  recipe-maintainers:\n    - minrk\n    - msarahan\n    - pelson\n    - blink1073\n",
  "req":{
   "__set__":true,
