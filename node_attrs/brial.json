@@ -117,42 +117,26 @@
     "migrator_version",
     "name"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/365548622.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"Version",
+    "migrator_version":0,
+    "version":"1.2.7"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "version"
+   ]
   }
  ],
- "bad":{
-  "code":404,
-  "exception":"HTTP Error 404: Not Found",
-  "traceback":[
-   "Traceback (most recent call last):",
-   "  File \"/root/repo/cf-scripts/conda_forge_tick/auto_tick.py\", line 659, in main",
-   "    migrator_uid, pr_json = run(",
-   "  File \"/root/repo/cf-scripts/conda_forge_tick/auto_tick.py\", line 133, in run",
-   "    migrate_return = migrator.migrate(recipe_dir, feedstock_ctx.attrs, **kwargs)",
-   "  File \"/root/repo/cf-scripts/conda_forge_tick/migrators/core.py\", line 647, in migrate",
-   "    new_patterns = self.get_hash_patterns(\"meta.yaml\", urls, hash_type)",
-   "  File \"/root/repo/cf-scripts/conda_forge_tick/migrators/core.py\", line 526, in get_hash_patterns",
-   "    hash_ = hash_url(url, hash_type)",
-   "  File \"/opt/conda/envs/run_env/lib/python3.8/site-packages/rever/tools.xsh\", line 207, in hash_url",
-   "    for b in stream_url_progress(url, verb='Hashing', quiet=quiet):",
-   "  File \"/opt/conda/envs/run_env/lib/python3.8/site-packages/rever/tools.xsh\", line 179, in stream_url_progress",
-   "    with urllib.request.urlopen(url) as f:",
-   "  File \"/opt/conda/envs/run_env/lib/python3.8/urllib/request.py\", line 222, in urlopen",
-   "    return opener.open(url, data, timeout)",
-   "  File \"/opt/conda/envs/run_env/lib/python3.8/urllib/request.py\", line 531, in open",
-   "    response = meth(req, response)",
-   "  File \"/opt/conda/envs/run_env/lib/python3.8/urllib/request.py\", line 640, in http_response",
-   "    response = self.parent.error(",
-   "  File \"/opt/conda/envs/run_env/lib/python3.8/urllib/request.py\", line 569, in error",
-   "    return self._call_chain(*args)",
-   "  File \"/opt/conda/envs/run_env/lib/python3.8/urllib/request.py\", line 502, in _call_chain",
-   "    result = func(*args)",
-   "  File \"/opt/conda/envs/run_env/lib/python3.8/urllib/request.py\", line 649, in http_error_default",
-   "    raise HTTPError(req.full_url, code, msg, hdrs, fp)",
-   "urllib.error.HTTPError: HTTP Error 404: Not Found",
-   ""
-  ],
-  "url":"https://github.com/BRiAl/BRiAl/releases/download/1.2.7/brial-1.2.7.tar.bz2"
- },
+ "bad":false,
  "conda-forge.yml":{
   "compiler_stack":"comp7",
   "max_py_ver":"37",
@@ -364,7 +348,7 @@
   "brial",
   "libbrial"
  ],
- "pinning_version":"2019.12.18",
+ "pinning_version":"2020.01.10",
  "raw_meta_yaml":"{% set version = \"1.2.5\" %}\n{% set name = \"brial-split\" %}\n\npackage:\n  name: {{ name }}\n  version: {{ version }}\n\nsource:\n  url: https://github.com/BRiAl/BRiAl/releases/download/{{ version }}/brial-{{ version }}.tar.bz2\n  sha256: c4921d5008ac9122452e6f93abb696ef21ceac8e7170008ea7c7b05508da8d34\n\nbuild:\n  number: 1\n  skip: true  # [win]\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n    - libtool\n    - pkg-config\n    - make\n\ntest:\n  commands:\n    - test -f ${PREFIX}/include/polybori.h\n    - test -f ${PREFIX}/lib/lib{{ name }}.a\n    - test -f ${PREFIX}/lib/lib{{ name }}.so        # [linux]\n    - test -f ${PREFIX}/lib/lib{{ name }}.dylib     # [osx]\n    # Cannot run tests for python library as sageruntime is required.\n    - test -f $SP_DIR/brial/PyPolyBoRi.py\n\noutputs:\n  - name: libbrial\n    script: build_libbrial.sh\n    requirements:\n      build:\n        - {{ compiler('c') }}\n        - {{ compiler('cxx') }}\n        - libtool\n        - pkg-config\n        - make\n      host:\n        - libpng\n        - boost-cpp\n        - m4ri\n        - zlib\n      run:\n        - libpng\n        - m4ri\n        - zlib\n\n  - name: brial\n    build:\n      noarch: python\n    script: build_brial.sh\n    requirements:\n      host:\n        - python\n        - pip\n        - libbrial {{ version }}\n      run:\n        - python\n        - libbrial {{ version }}\n\nabout:\n  home: https://github.com/BRiAl/BRiAl\n  license: GPLv2+\n  license_file: {{ SRC_DIR }}/LICENSE\n  summary: Brial - successor to PolyBoRi\n  description: |\n    The core of PolyBoRi is a C++ library, which provides high-level data\n    types for Boolean polynomials and monomials, exponent vectors, as well\n    as for the underlying polynomial rings and subsets of the powerset of\n    the Boolean variables. As a unique approach, binary decision diagrams\n    are used as internal storage type for polynomial structures. On top of\n    this C++-library we provide a Python interface. This allows parsing of\n    complex polynomial systems, as well as sophisticated and extendable\n    strategies for Gr\u00f6bner base computation. PolyBoRi features a powerful\n    reference implementation for Gr\u00f6bner basis computation.\n  dev_url: https://github.com/BRiAl/BRiAl\n\nextra:\n  recipe-maintainers:\n    - isuruf\n    - saraedum\n",
  "req":{
   "__set__":true,
