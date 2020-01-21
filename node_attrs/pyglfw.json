@@ -221,7 +221,7 @@
   }
  },
  "name":"pyglfw",
- "new_version":"1.10.0",
+ "new_version":"1.10.1",
  "pinning_version":"2020.01.10",
  "raw_meta_yaml":"{% set name = \"pyGLFW\" %}\n{% set pypi_name = \"glfw\" %}\n{% set version = \"1.10.0\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  url: https://pypi.io/packages/source/{{ pypi_name[0] }}/{{ pypi_name }}/{{ pypi_name }}-{{ version }}.tar.gz\n  sha256: 1bf790992c922923a27bb3d07b00faee97c95dc214708ea7ff1e0c8e22fc6276\n\nbuild:\n  number: 0\n  script: \"{{ PYTHON }} -m pip install . -vv\"\n  # glfw is not / cannot be packaged for Python 2.7 on conda-forge for now, so\n  # skip the build of pyGLFW on this platform.\n  skip: True  # [win and py2k]\n\nrequirements:\n  host:\n    - python\n    - pip\n  run:\n    - python\n    - glfw\n\ntest:\n  imports:\n    - glfw\n\nabout:\n  home: https://github.com/FlorianRhiem/pyGLFW\n  license: MIT\n  license_family: MIT\n  license_file: LICENSE.txt\n  summary: 'This module provides Python bindings for GLFW'\n\nextra:\n  recipe-maintainers:\n    - hoechenberger\n    - kastman\n",
  "req":{

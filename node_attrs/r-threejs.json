@@ -149,7 +149,7 @@
   }
  },
  "name":"r-threejs",
- "new_version":"0.3.1",
+ "new_version":"0.3.3",
  "pinning_version":"2019.07.15",
  "raw_meta_yaml":"{% set version = '0.3.1' %}\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-threejs\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  fn: threejs_{{ version }}.tar.gz\n  url:\n    - {{ cran_mirror }}/src/contrib/threejs_{{ version }}.tar.gz\n    - {{ cran_mirror }}/src/contrib/Archive/threejs/threejs_{{ version }}.tar.gz\n  sha256: 71750b741672a435ecf749b69c72f0681aa8bb795e317f4e3056d5e33f6d79e8\n\nbuild:\n  noarch: generic\n  merge_build_host: True  # [win]\n  number: 1001\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - {{posix}}zip               # [win]\n  host:\n    - r-base\n    - r-base64enc\n    - r-crosstalk\n    - r-htmlwidgets >=0.3.2\n    - r-igraph >=1.0.0\n  run:\n    - r-base\n    - r-base64enc\n    - r-crosstalk\n    - r-htmlwidgets >=0.3.2\n    - r-igraph >=1.0.0\n\ntest:\n  commands:\n    - $R -e \"library('threejs')\"           # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('threejs')\\\"\"  # [win]\n\nabout:\n  home: https://bwlewis.github.io/rthreejs\n  license: MIT\n  summary: Create interactive 3D scatter plots, network plots, and globes using the 'three.js'\n    visualization library (<https://threejs.org>).\n  license_family: MIT\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n",
  "req":{
