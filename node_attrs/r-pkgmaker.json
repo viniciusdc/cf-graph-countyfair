@@ -33,6 +33,23 @@
     "migrator_version",
     "name"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/365848665.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"Version",
+    "migrator_version":0,
+    "version":"0.31"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "version"
+   ]
   }
  ],
  "bad":false,
@@ -184,8 +201,8 @@
   }
  },
  "name":"r-pkgmaker",
- "new_version":"0.27",
- "pinning_version":"2019.07.15",
+ "new_version":"0.31",
+ "pinning_version":"2020.01.16",
  "raw_meta_yaml":"{% set version = '0.27' %}\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-pkgmaker\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  fn: pkgmaker_{{ version }}.tar.gz\n  url:\n    - {{ cran_mirror }}/src/contrib/pkgmaker_{{ version }}.tar.gz\n    - {{ cran_mirror }}/src/contrib/Archive/pkgmaker/pkgmaker_{{ version }}.tar.gz\n  sha256: 17a289d8f596ba5637b07077b3bff22411a2c2263c0b7de59fe848666555ec6a\n\nbuild:\n  noarch: generic\n  merge_build_host: True  # [win]\n  number: 1001\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - {{posix}}zip               # [win]\n  host:\n    - r-base\n    - r-bibtex >=0.4\n    - r-codetools\n    - r-digest\n    - r-magrittr\n    - r-registry\n    - r-stringi\n    - r-stringr\n    - r-withr\n    - r-xtable\n  run:\n    - r-base\n    - r-bibtex >=0.4\n    - r-codetools\n    - r-digest\n    - r-magrittr\n    - r-registry\n    - r-stringi\n    - r-stringr\n    - r-withr\n    - r-xtable\n\ntest:\n  commands:\n    - $R -e \"library('pkgmaker')\"           # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('pkgmaker')\\\"\"  # [win]\n\nabout:\n  home: https://renozao.github.io/pkgmaker\n  license: GPL (>= 2)\n  summary: Provides some low-level utilities to use for package development. It currently provides\n    managers for multiple package specific options and registries, vignette, unit test\n    and bibtex related utilities. It serves as a base package for packages like NMF,\n    RcppOctave, doRNG, and as an incubator package for other general purposes utilities,\n    that will eventually be packaged separately. It is still under heavy development\n    and changes in the interface(s) are more than likely to happen.\n  license_family: GPL3\n  license_file: '{{ environ[\"PREFIX\"] }}/lib/R/share/licenses/GPL-3'\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n    - johanneskoester\n    - bgruening\n    - daler\n    - jdblischak\n    - cbrueffer\n    - dbast\n",
  "req":{
   "__set__":true,
@@ -202,7 +219,7 @@
    "r-xtable"
   ]
  },
- "smithy_version":"3.4.1",
+ "smithy_version":"3.6.5",
  "url":[
   "https://cran.r-project.org/src/contrib/pkgmaker_0.27.tar.gz",
   "https://cran.r-project.org/src/contrib/Archive/pkgmaker/pkgmaker_0.27.tar.gz",
