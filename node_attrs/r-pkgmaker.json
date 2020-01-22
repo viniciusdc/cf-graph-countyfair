@@ -66,15 +66,19 @@
  "meta_yaml":{
   "about":{
    "home":"https://renozao.github.io/pkgmaker",
-   "license":"GPL (>= 2)",
-   "license_family":"GPL3",
-   "license_file":"/lib/R/share/licenses/GPL-3",
+   "license":"GPL-2",
+   "license_family":"GPL2",
+   "license_file":[
+    "/lib/R/share/licenses/GPL-2",
+    "/lib/R/share/licenses/GPL-2",
+    "/lib/R/share/licenses/GPL-2"
+   ],
    "summary":"Provides some low-level utilities to use for package development. It currently provides managers for multiple package specific options and registries, vignette, unit test and bibtex related utilities. It serves as a base package for packages like NMF, RcppOctave, doRNG, and as an incubator package for other general purposes utilities, that will eventually be packaged separately. It is still under heavy development and changes in the interface(s) are more than likely to happen."
   },
   "build":{
    "merge_build_host":true,
    "noarch":"generic",
-   "number":"1001",
+   "number":"0",
    "rpaths":[
     "lib/R/lib/",
     "lib/",
@@ -87,36 +91,19 @@
   "extra":{
    "recipe-maintainers":[
     "conda-forge/r",
-    "johanneskoester",
-    "bgruening",
-    "daler",
-    "jdblischak",
-    "cbrueffer",
-    "dbast",
     "conda-forge/r",
-    "johanneskoester",
-    "bgruening",
-    "daler",
-    "jdblischak",
-    "cbrueffer",
-    "dbast",
-    "conda-forge/r",
-    "johanneskoester",
-    "bgruening",
-    "daler",
-    "jdblischak",
-    "cbrueffer",
-    "dbast"
+    "conda-forge/r"
    ]
   },
   "package":{
    "name":"r-pkgmaker",
-   "version":"0.27"
+   "version":"0.31"
   },
   "requirements":{
    "build":null,
    "host":[
     "r-base",
+    "r-assertthat",
     "r-bibtex >=0.4",
     "r-codetools",
     "r-digest",
@@ -127,6 +114,7 @@
     "r-withr",
     "r-xtable",
     "r-base",
+    "r-assertthat",
     "r-bibtex >=0.4",
     "r-codetools",
     "r-digest",
@@ -137,6 +125,7 @@
     "r-withr",
     "r-xtable",
     "r-base",
+    "r-assertthat",
     "r-bibtex >=0.4",
     "r-codetools",
     "r-digest",
@@ -149,6 +138,7 @@
    ],
    "run":[
     "r-base",
+    "r-assertthat",
     "r-bibtex >=0.4",
     "r-codetools",
     "r-digest",
@@ -159,6 +149,7 @@
     "r-withr",
     "r-xtable",
     "r-base",
+    "r-assertthat",
     "r-bibtex >=0.4",
     "r-codetools",
     "r-digest",
@@ -169,6 +160,7 @@
     "r-withr",
     "r-xtable",
     "r-base",
+    "r-assertthat",
     "r-bibtex >=0.4",
     "r-codetools",
     "r-digest",
@@ -181,15 +173,14 @@
    ]
   },
   "source":{
-   "fn":"pkgmaker_0.27.tar.gz",
-   "sha256":"17a289d8f596ba5637b07077b3bff22411a2c2263c0b7de59fe848666555ec6a",
+   "sha256":"cb12a54889f14d4d05d8fba890ffc7c981db301f81fb7fe6819c777ea7d98631",
    "url":[
-    "https://cran.r-project.org/src/contrib/pkgmaker_0.27.tar.gz",
-    "https://cran.r-project.org/src/contrib/Archive/pkgmaker/pkgmaker_0.27.tar.gz",
-    "https://cran.r-project.org/src/contrib/pkgmaker_0.27.tar.gz",
-    "https://cran.r-project.org/src/contrib/Archive/pkgmaker/pkgmaker_0.27.tar.gz",
-    "https://cran.r-project.org/src/contrib/pkgmaker_0.27.tar.gz",
-    "https://cran.r-project.org/src/contrib/Archive/pkgmaker/pkgmaker_0.27.tar.gz"
+    "https://cran.r-project.org/src/contrib/pkgmaker_0.31.tar.gz",
+    "https://cran.r-project.org/src/contrib/Archive/pkgmaker/pkgmaker_0.31.tar.gz",
+    "https://cran.r-project.org/src/contrib/pkgmaker_0.31.tar.gz",
+    "https://cran.r-project.org/src/contrib/Archive/pkgmaker/pkgmaker_0.31.tar.gz",
+    "https://cran.r-project.org/src/contrib/pkgmaker_0.31.tar.gz",
+    "https://cran.r-project.org/src/contrib/Archive/pkgmaker/pkgmaker_0.31.tar.gz"
    ]
   },
   "test":{
@@ -203,10 +194,11 @@
  "name":"r-pkgmaker",
  "new_version":"0.31",
  "pinning_version":"2020.01.16",
- "raw_meta_yaml":"{% set version = '0.27' %}\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-pkgmaker\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  fn: pkgmaker_{{ version }}.tar.gz\n  url:\n    - {{ cran_mirror }}/src/contrib/pkgmaker_{{ version }}.tar.gz\n    - {{ cran_mirror }}/src/contrib/Archive/pkgmaker/pkgmaker_{{ version }}.tar.gz\n  sha256: 17a289d8f596ba5637b07077b3bff22411a2c2263c0b7de59fe848666555ec6a\n\nbuild:\n  noarch: generic\n  merge_build_host: True  # [win]\n  number: 1001\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - {{posix}}zip               # [win]\n  host:\n    - r-base\n    - r-bibtex >=0.4\n    - r-codetools\n    - r-digest\n    - r-magrittr\n    - r-registry\n    - r-stringi\n    - r-stringr\n    - r-withr\n    - r-xtable\n  run:\n    - r-base\n    - r-bibtex >=0.4\n    - r-codetools\n    - r-digest\n    - r-magrittr\n    - r-registry\n    - r-stringi\n    - r-stringr\n    - r-withr\n    - r-xtable\n\ntest:\n  commands:\n    - $R -e \"library('pkgmaker')\"           # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('pkgmaker')\\\"\"  # [win]\n\nabout:\n  home: https://renozao.github.io/pkgmaker\n  license: GPL (>= 2)\n  summary: Provides some low-level utilities to use for package development. It currently provides\n    managers for multiple package specific options and registries, vignette, unit test\n    and bibtex related utilities. It serves as a base package for packages like NMF,\n    RcppOctave, doRNG, and as an incubator package for other general purposes utilities,\n    that will eventually be packaged separately. It is still under heavy development\n    and changes in the interface(s) are more than likely to happen.\n  license_family: GPL3\n  license_file: '{{ environ[\"PREFIX\"] }}/lib/R/share/licenses/GPL-3'\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n    - johanneskoester\n    - bgruening\n    - daler\n    - jdblischak\n    - cbrueffer\n    - dbast\n",
+ "raw_meta_yaml":"{% set version = '0.31' %}\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-pkgmaker\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  url:\n    - {{ cran_mirror }}/src/contrib/pkgmaker_{{ version }}.tar.gz\n    - {{ cran_mirror }}/src/contrib/Archive/pkgmaker/pkgmaker_{{ version }}.tar.gz\n  sha256: cb12a54889f14d4d05d8fba890ffc7c981db301f81fb7fe6819c777ea7d98631\n\nbuild:\n  merge_build_host: True  # [win]\n  number: 0\n  noarch: generic\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - {{posix}}zip               # [win]\n  host:\n    - r-base\n    - r-assertthat\n    - r-bibtex >=0.4\n    - r-codetools\n    - r-digest\n    - r-magrittr\n    - r-registry\n    - r-stringi\n    - r-stringr\n    - r-withr\n    - r-xtable\n  run:\n    - r-base\n    - r-assertthat\n    - r-bibtex >=0.4\n    - r-codetools\n    - r-digest\n    - r-magrittr\n    - r-registry\n    - r-stringi\n    - r-stringr\n    - r-withr\n    - r-xtable\n\ntest:\n  commands:\n    - $R -e \"library('pkgmaker')\"           # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('pkgmaker')\\\"\"  # [win]\n\nabout:\n  home: https://renozao.github.io/pkgmaker\n  license: GPL-2\n  summary: Provides some low-level utilities to use for package development. It currently provides\n    managers for multiple package specific options and registries, vignette, unit test\n    and bibtex related utilities. It serves as a base package for packages like NMF,\n    RcppOctave, doRNG, and as an incubator package for other general purposes utilities,\n    that will eventually be packaged separately. It is still under heavy development\n    and changes in the interface(s) are more than likely to happen.\n  license_family: GPL2\n  license_file:\n    - '{{ environ[\"PREFIX\"] }}/lib/R/share/licenses/GPL-2'\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n\n# Package: pkgmaker\n# Type: Package\n# Title: Development Utilities for R Packages\n# Version: 0.31\n# Date: 2020-01-21\n# Authors@R: person(\"Renaud\", \"Gaujoux\", email = \"renozao@protonmail.com\", role = c(\"aut\", \"cre\"))\n# Description: Provides some low-level utilities to use for package development. It currently provides managers for multiple package specific options and registries, vignette, unit test and bibtex related utilities. It serves as a base package for packages like NMF, RcppOctave, doRNG, and as an incubator package for other general purposes utilities, that will eventually be packaged separately. It is still under heavy development and changes in the interface(s) are more than likely to happen.\n# License: GPL (>= 2)\n# URL: https://renozao.github.io/pkgmaker\n# BugReports: http://github.com/renozao/pkgmaker/issues\n# LazyLoad: yes\n# Encoding: UTF-8\n# Depends: R (>= 3.0.0), methods, stats, registry\n# Imports: tools, grDevices, utils, graphics, codetools, digest, stringi, magrittr, stringr, xtable, withr, bibtex (>= 0.4), assertthat\n# Suggests: devtools (>= 0.8), roxygen2, RUnit, testthat, knitr, rmarkdown, yaml, Biobase, datasets\n# Collate: 'bibtex.R' 'colors.R' 'data.R' 'namespace.R' 'utils.R' 'devutils.R' 'files.R' 'graphics.R' 'options.R' 'logging.R' 'unitTests.R' 'is.R' 'knitr.R' 'registry.R' 'package-extra.R' 'package.R' 'packages.R' 'project.R' 'rd.R' 'user.R' 'vignette.R' 'with.r'\n# RoxygenNote: 7.0.2\n# NeedsCompilation: no\n# Packaged: 2020-01-21 19:29:08 UTC; renaud\n# Author: Renaud Gaujoux [aut, cre]\n# Maintainer: Renaud Gaujoux <renozao@protonmail.com>\n# Repository: CRAN\n# Date/Publication: 2020-01-22 12:50:02 UTC\n",
  "req":{
   "__set__":true,
   "elements":[
+   "r-assertthat",
    "r-base",
    "r-bibtex",
    "r-codetools",
@@ -228,5 +220,5 @@
   "https://cran.r-project.org/src/contrib/pkgmaker_0.27.tar.gz",
   "https://cran.r-project.org/src/contrib/Archive/pkgmaker/pkgmaker_0.27.tar.gz"
  ],
- "version":"0.27"
+ "version":"0.31"
 }
