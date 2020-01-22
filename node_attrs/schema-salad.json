@@ -358,6 +358,23 @@
     "migrator_version",
     "version"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/365743946.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"Version",
+    "migrator_version":0,
+    "version":"5.0.20200122085940"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "version"
+   ]
   }
  ],
  "bad":false,
@@ -375,7 +392,7 @@
   "about":{
    "dev_url":"https://github.com/common-workflow-language/schema_salad",
    "home":"https://github.com/common-workflow-language/schema_salad",
-   "license":"Apache Software",
+   "license":"Apache-2.0",
    "license_family":"APACHE",
    "license_file":"LICENSE.txt",
    "summary":"Schema Annotations for Linked Avro Data (SALAD)"
@@ -390,7 +407,7 @@
     "schema-salad-doc=schema_salad.makedoc:main"
    ],
    "number":"0",
-   "script":" -m pip install . --no-deps --ignore-installed -vvv "
+   "script":" -m pip install . --no-deps -vv"
   },
   "extra":{
    "recipe-maintainers":[
@@ -413,54 +430,53 @@
    "host":[
     "python",
     "pip",
-    "setuptools",
     "python",
     "pip",
-    "setuptools",
     "python",
-    "pip",
-    "setuptools"
+    "pip"
    ],
    "run":[
     "python",
-    "cachecontrol >=0.11.7,<0.12",
-    "lockfile >=0.9",
-    "mistune >=0.8.1,<0.9",
+    "setuptools",
+    "requests >=1.0",
+    "ruamel.yaml >=0.12.4,<0.16|>=0.16.5,<0.17.0a0",
     "rdflib >=4.2.2,<4.3.0",
     "rdflib-jsonld >=0.3.0,<0.5.0",
-    "requests >=1.0",
-    "ruamel.yaml >=0.12.4,<0.16",
-    "setuptools",
-    "six >=1.8.0",
+    "mistune >=0.8.1,<0.9",
+    "cachecontrol >=0.11.7,<0.12",
+    "lockfile >=0.9",
     "typing_extensions",
-    "future",
     "python",
-    "cachecontrol >=0.11.7,<0.12",
-    "lockfile >=0.9",
-    "mistune >=0.8.1,<0.9",
+    "setuptools",
+    "requests >=1.0",
+    "ruamel.yaml >=0.12.4,<0.16|>=0.16.5,<0.17.0a0",
     "rdflib >=4.2.2,<4.3.0",
     "rdflib-jsonld >=0.3.0,<0.5.0",
-    "requests >=1.0",
-    "ruamel.yaml >=0.12.4,<0.16",
-    "setuptools",
-    "six >=1.8.0",
+    "mistune >=0.8.1,<0.9",
+    "cachecontrol >=0.11.7,<0.12",
+    "lockfile >=0.9",
     "typing_extensions",
-    "future",
     "python",
-    "cachecontrol >=0.11.7,<0.12",
-    "lockfile >=0.9",
-    "mistune >=0.8.1,<0.9",
+    "setuptools",
+    "requests >=1.0",
+    "ruamel.yaml >=0.12.4,<0.16|>=0.16.5,<0.17.0a0",
     "rdflib >=4.2.2,<4.3.0",
     "rdflib-jsonld >=0.3.0,<0.5.0",
-    "requests >=1.0",
-    "ruamel.yaml >=0.12.4,<0.16",
-    "setuptools",
-    "six >=1.8.0",
-    "typing_extensions",
-    "future"
+    "mistune >=0.8.1,<0.9",
+    "cachecontrol >=0.11.7,<0.12",
+    "lockfile >=0.9",
+    "typing_extensions"
    ]
   },
   "source":{
+   "patches":[
+    "0001-Workaround-for-pytest-realpath-issue-on-Python-3.8-and-Windows.patch",
+    "0002-Allow-all-ruamel.yaml-0.16-versions-in-setup.py.patch",
+    "0001-Workaround-for-pytest-realpath-issue-on-Python-3.8-and-Windows.patch",
+    "0002-Allow-all-ruamel.yaml-0.16-versions-in-setup.py.patch",
+    "0001-Workaround-for-pytest-realpath-issue-on-Python-3.8-and-Windows.patch",
+    "0002-Allow-all-ruamel.yaml-0.16-versions-in-setup.py.patch"
+   ],
    "sha256":"cdcef470a36eb047fc98bcebb08ba5f93f64ba0b2e27bad009f98ebc3810ac12",
    "url":"https://pypi.io/packages/source/s/schema-salad/schema-salad-5.0.20200105154004.tar.gz"
   },
@@ -468,10 +484,13 @@
    "commands":[
     "schema-salad-tool --help",
     "schema-salad-doc --help",
+    "python -m pytest --pyargs schema_salad",
     "schema-salad-tool --help",
     "schema-salad-doc --help",
+    "python -m pytest --pyargs schema_salad",
     "schema-salad-tool --help",
-    "schema-salad-doc --help"
+    "schema-salad-doc --help",
+    "python -m pytest --pyargs schema_salad"
    ],
    "imports":[
     "schema_salad",
@@ -480,18 +499,22 @@
     "schema_salad.tests",
     "schema_salad",
     "schema_salad.tests"
+   ],
+   "requires":[
+    "pytest <5",
+    "pytest <5",
+    "pytest <5"
    ]
   }
  },
  "name":"schema-salad",
- "new_version":"5.0.20200105154004",
- "pinning_version":"2019.12.18",
- "raw_meta_yaml":"{% set name = \"schema-salad\" %}\n\n{% set version = \"5.0.20200105154004\" %}\n\npackage:\n  name: \"{{ name|lower }}\"\n  version: \"{{ version }}\"\n\nsource:\n  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz\n  sha256: cdcef470a36eb047fc98bcebb08ba5f93f64ba0b2e27bad009f98ebc3810ac12\n\n\nbuild:\n  skip: true  # [py2k]\n  number: 0\n  entry_points:\n    - schema-salad-tool=schema_salad.main:main\n    - schema-salad-doc=schema_salad.makedoc:main\n  script: \"{{ PYTHON }} -m pip install . --no-deps --ignore-installed -vvv \"\n\nrequirements:\n  host:\n    - python\n    - pip\n    - setuptools\n\n  run:\n    - python\n    - cachecontrol >=0.11.7,<0.12\n    - lockfile >=0.9\n    - mistune >=0.8.1,<0.9\n    - rdflib >=4.2.2,<4.3.0\n    - rdflib-jsonld >=0.3.0,<0.5.0\n    - requests >=1.0\n    - ruamel.yaml >=0.12.4,<0.16\n    - setuptools\n    - six >=1.8.0\n    - typing >=3.7.4  # [py<35]\n    - typing_extensions\n    - future\n\ntest:\n  imports:\n    - schema_salad\n    - schema_salad.tests\n  commands:\n    - schema-salad-tool --help\n    - schema-salad-doc --help\n\nabout:\n  home: https://github.com/common-workflow-language/schema_salad\n  license: Apache Software\n  license_family: APACHE\n  license_file: LICENSE.txt\n  summary: Schema Annotations for Linked Avro Data (SALAD)\n  dev_url: https://github.com/common-workflow-language/schema_salad\n\nextra:\n  recipe-maintainers:\n    - croth1\n    - chapmanb\n    - pvanheus\n",
+ "new_version":"5.0.20200122085940",
+ "pinning_version":"2020.01.16",
+ "raw_meta_yaml":"{% set version = \"5.0.20200105154004\" %}\n\npackage:\n  name: schema-salad\n  version: {{ version }}\n\nsource:\n  url: https://pypi.io/packages/source/s/schema-salad/schema-salad-{{ version }}.tar.gz\n  sha256: cdcef470a36eb047fc98bcebb08ba5f93f64ba0b2e27bad009f98ebc3810ac12\n  patches:\n    # Workaround for https://github.com/pytest-dev/pytest/issues/6489\n    - 0001-Workaround-for-pytest-realpath-issue-on-Python-3.8-and-Windows.patch\n    - 0002-Allow-all-ruamel.yaml-0.16-versions-in-setup.py.patch\n\nbuild:\n  skip: True  # [py<30]\n  number: 0\n  entry_points:\n    - schema-salad-tool=schema_salad.main:main\n    - schema-salad-doc=schema_salad.makedoc:main\n  script: \"{{ PYTHON }} -m pip install . --no-deps -vv\"\n\nrequirements:\n  host:\n    - python\n    - pip\n  run:\n    - python\n    - setuptools\n    - requests >=1.0\n    # Avoid ruamel.yaml >=0.16,<0.16.5 due to builds with broken dependency.\n    # ref: https://github.com/conda-forge/ruamel.yaml-feedstock/pull/117\n    - ruamel.yaml >=0.12.4,<0.16|>=0.16.5,<0.17.0a0\n    - rdflib >=4.2.2,<4.3.0\n    - rdflib-jsonld >=0.3.0,<0.5.0\n    - mistune >=0.8.1,<0.9\n    - cachecontrol >=0.11.7,<0.12\n    - lockfile >=0.9\n    - typing_extensions\n    - typing >=3.7.4  # [py<35]\n\ntest:\n  requires:\n    - pytest <5\n  imports:\n    - schema_salad\n    - schema_salad.tests\n  commands:\n    - schema-salad-tool --help\n    - schema-salad-doc --help\n    - python -m pytest --pyargs schema_salad\n\nabout:\n  home: https://github.com/common-workflow-language/schema_salad\n  license: Apache-2.0\n  license_family: APACHE\n  license_file: LICENSE.txt\n  summary: Schema Annotations for Linked Avro Data (SALAD)\n  dev_url: https://github.com/common-workflow-language/schema_salad\n\nextra:\n  recipe-maintainers:\n    - croth1\n    - chapmanb\n    - pvanheus\n",
  "req":{
   "__set__":true,
   "elements":[
    "cachecontrol",
-   "future",
    "lockfile",
    "mistune",
    "pip",
@@ -501,7 +524,6 @@
    "requests",
    "ruamel.yaml",
    "setuptools",
-   "six",
    "typing_extensions"
   ]
  },
