@@ -94,8 +94,9 @@
    "summary":"A Launcher for QuantLab based applications."
   },
   "build":{
+   "noarch":"python",
    "number":"0",
-   "script":"python setup.py install --single-version-externally-managed --record record.txt"
+   "script":" -m pip install . --no-deps --ignore-installed"
   },
   "extra":{
    "recipe-maintainers":[
@@ -106,14 +107,17 @@
   },
   "package":{
    "name":"quantlab_launcher",
-   "version":"0.1.2"
+   "version":"0.3.0"
   },
   "requirements":{
-   "build":[
+   "host":[
+    "pip",
     "python",
     "setuptools",
+    "pip",
     "python",
     "setuptools",
+    "pip",
     "python",
     "setuptools"
    ],
@@ -127,9 +131,8 @@
    ]
   },
   "source":{
-   "fn":"quantlab_launcher-0.1.2.tar.gz",
-   "sha256":"72906177c5ea234e5f62cc79c182e08fb19b0a1b16ac8c89777192bae152bfe4",
-   "url":"https://pypi.io/packages/source/q/quantlab_launcher/quantlab_launcher-0.1.2.tar.gz"
+   "sha256":"d4fb4372a3022604d36d71c0f59b5010bccb540ab0ca8d8f47674dedca659c24",
+   "url":"https://pypi.io/packages/source/q/quantlab_launcher/quantlab_launcher-0.3.0.tar.gz"
   },
   "test":{
    "imports":[
@@ -142,16 +145,17 @@
  "name":"quantlab_launcher",
  "new_version":"0.3.0",
  "pinning_version":"2019.12.02",
- "raw_meta_yaml":"{% set name = \"quantlab_launcher\" %}\n{% set version = \"0.1.2\" %}\n{% set sha256 = \"72906177c5ea234e5f62cc79c182e08fb19b0a1b16ac8c89777192bae152bfe4\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  fn: {{ name }}-{{ version }}.tar.gz\n  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz\n  sha256: {{ sha256 }}\n\nbuild:\n  number: 0\n  script: python setup.py install --single-version-externally-managed --record record.txt\n\nrequirements:\n  build:\n    - python\n    - setuptools\n  run:\n    - python\n    - notebook >=4.2\n\ntest:\n  imports:\n    - quantlab_launcher\n\nabout:\n  home: https://github.com/quantlabio/quantlab_launcher\n  license: BSD 3-Clause\n  license_file: LICENSE\n  summary: A Launcher for QuantLab based applications.\n\nextra:\n  recipe-maintainers:\n    - lab4quant\n",
+ "raw_meta_yaml":"{% set version = \"0.3.0\" %}\n{% set sha256 = \"d4fb4372a3022604d36d71c0f59b5010bccb540ab0ca8d8f47674dedca659c24\" %}\n\npackage:\n  name: quantlab_launcher\n  version: {{ version }}\n\nsource:\n  url: https://pypi.io/packages/source/q/quantlab_launcher/quantlab_launcher-{{ version }}.tar.gz\n  sha256: {{ sha256 }}\n\nbuild:\n  number: 0\n  noarch: python\n  script: \"{{ PYTHON }} -m pip install . --no-deps --ignore-installed\"\n\nrequirements:\n  host:\n    - pip\n    - python\n    - setuptools\n  run:\n    - python\n    - notebook >=4.2\n\ntest:\n  imports:\n    - quantlab_launcher\n\nabout:\n  home: https://github.com/quantlabio/quantlab_launcher\n  license: BSD 3-Clause\n  license_file: LICENSE\n  summary: A Launcher for QuantLab based applications.\n\nextra:\n  recipe-maintainers:\n    - lab4quant\n",
  "req":{
   "__set__":true,
   "elements":[
    "notebook",
+   "pip",
    "python",
    "setuptools"
   ]
  },
  "smithy_version":"3.6.3",
  "url":"https://pypi.io/packages/source/q/quantlab_launcher/quantlab_launcher-0.1.2.tar.gz",
- "version":"0.1.2"
+ "version":"0.3.0"
 }
