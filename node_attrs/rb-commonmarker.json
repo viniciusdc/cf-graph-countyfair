@@ -33,6 +33,23 @@
     "migrator_version",
     "version"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/366282481.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"Version",
+    "migrator_version":0,
+    "version":"0.21.0"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "version"
+   ]
   }
  ],
  "bad":false,
@@ -114,8 +131,8 @@
   }
  },
  "name":"rb-commonmarker",
- "new_version":"0.20.2",
- "pinning_version":"2019.12.17",
+ "new_version":"0.21.0",
+ "pinning_version":"2020.01.16",
  "raw_meta_yaml":"{% set name = \"commonmarker\" %}\n{% set version = \"0.20.2\" %}\n\npackage:\n  name: rb-{{ name|lower }}\n  version: {{ version }}\n\nsource:\n  url: https://rubygems.org/downloads/{{ name }}-{{ version }}.gem\n  sha256: 6c3792e83f380d93f230370cfde1575fe8f873ee45ba6dc197c67d7842179985\n\nbuild:\n  number: 0\n  script:\n    - gem install -N -l -V --norc --ignore-dependencies {{ name }}-{{ version }}.gem\n    - gem unpack {{ name }}-{{ version }}.gem\n    - make -C {{ PREFIX }}/lib/ruby/gems/{{ ruby }}.0/gems/{{ name }}-{{ version }}/ext/{{ name }} clean\n  skip: {{ win }}\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n  host:\n    - ruby\n  run:\n    - ruby\n    - rb-ruby-enum >=0.5,<1\n\ntest:\n  commands:\n    - commonmarker --help\n    - ruby -r {{ name }} -e 'exit 0'\n\nabout:\n  home: https://rubygems.org/gems/{{ name }}\n  license: MIT\n  license_family: MIT\n  license_file: {{ name }}-{{ version }}/LICENSE.txt\n  summary: A fast, safe, extensible parser for CommonMark. This wraps the official libcmark library.\n\n  doc_url: https://www.rubydoc.info/gems/{{ name }}\n  dev_url: https://github.com/gjtorikian/{{ name }}\n\nextra:\n  recipe-maintainers:\n    - sodre\n",
  "req":{
   "__set__":true,
