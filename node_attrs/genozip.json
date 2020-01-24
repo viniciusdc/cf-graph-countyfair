@@ -50,6 +50,23 @@
     "migrator_version",
     "version"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/366641576.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"Version",
+    "migrator_version":0,
+    "version":"1.0.37"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "version"
+   ]
   }
  ],
  "bad":false,
@@ -148,7 +165,7 @@
   }
  },
  "name":"genozip",
- "new_version":"1.0.36",
+ "new_version":"1.0.37",
  "pinning_version":"2020.01.16",
  "raw_meta_yaml":"{% set version = \"1.0.36\" %}\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: genozip\n  version: {{ version }}\n\nsource:\n  url: https://github.com/divonlan/genozip/archive/genozip-{{ version }}.tar.gz\n  sha256: 47e2039d8139096bfc44c8037ec60f3e4c2dc297d0b19ec91d33b20da0b6627b\n \nbuild:\n  skip: True  # [win]\n  number: 0\n\nrequirements:\n  build:    \n    - {{ compiler('c') }}        # [not win]\n    - {{ compiler('m2w64_c') }}  # [win]\n    - {{posix}}make\n    - {{posix}}sed               # [win]\n    - {{posix}}coreutils         # [win]\n    - bzip2\n  host:\n    - {{native}}gcc-libs         # [win]\n    - zlib\n    - bzip2\n  run:\n    - {{native}}gcc-libs         # [win]\n    - zlib\n    - bzip2\n\ntest:\n  source_files: \n    - test-file.vcf\n\n  commands:\n    {% set genozip_executables = [\n      \"genozip\",\n      \"genounzip\",\n      \"genocat\",\n      \"genols\"\n    ] %}\n    {% for executable in genozip_executables %}\n    - test -f ${PREFIX}/bin/{{ executable }}  # [unix]\n    {% endfor %}\n    - which genozip.exe  # [win]\n    - genozip --password abc --test test-file.vcf 2>&1  \n  \nabout:\n  home: https://github.com/divonlan/genozip\n  dev_url: https://github.com/divonlan/genozip\n  license: CUSTOM\n  license_family: OTHER\n  license_file: \n    - LICENSE.non-commercial.txt\n    - LICENSE.commercial.txt\n  summary: Compressor for VCF genomic files, up to 5x better than gzip and faster too\n  description: |\n    genozip is a compressor for VCF genomic files (it compresses .vcf or .vcf.gz or .vcf.bz2 files). \n    It is very easy to use - in fact, if you're familiar with gzip, it works pretty much the same.\n    It achieves x2 to x5 better compression ratios than gzip because it leverages some properties\n    of the genomic data, such as linkage disequilibrium, to compress better. \n    It is also a lot faster than gzip. \n    The compression is lossless - the decompressed file is identical to the original file.\n    Contact: info@genozip.com\n\nextra:\n  recipe-maintainers:\n    - divonlan\n",
  "req":{
