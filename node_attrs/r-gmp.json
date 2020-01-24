@@ -82,6 +82,23 @@
     "migrator_version",
     "name"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/366885359.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"Version",
+    "migrator_version":0,
+    "version":"0.5_13.6"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "version"
+   ]
   }
  ],
  "bad":false,
@@ -190,8 +207,8 @@
   }
  },
  "name":"r-gmp",
- "new_version":"0.5_13.5",
- "pinning_version":"2019.07.15",
+ "new_version":"0.5_13.6",
+ "pinning_version":"2020.01.24",
  "raw_meta_yaml":"{% set version = '0.5-13.5' %}\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-gmp\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  url:\n    - {{ cran_mirror }}/src/contrib/gmp_{{ version }}.tar.gz\n    - {{ cran_mirror }}/src/contrib/Archive/gmp/gmp_{{ version }}.tar.gz\n  sha256: f681ab2ff3d1e379ba8ac44a8abddd08d08170723e885abc0b469b6fa8fe5510\n\nbuild:\n  merge_build_host: True  # [win]\n  number: 1\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - {{ compiler('c') }}              # [not win]\n    - {{ compiler('m2w64_c') }}        # [win]\n    - {{ compiler('cxx') }}            # [not win]\n    - {{ compiler('m2w64_cxx') }}      # [win]\n    - {{posix}}filesystem        # [win]\n    - {{posix}}sed               # [win]\n    - {{posix}}grep              # [win]\n    - {{posix}}autoconf\n    - {{posix}}automake          # [not win]\n    - {{posix}}automake-wrapper  # [win]\n    - {{posix}}pkg-config\n    - {{posix}}make\n    - {{posix}}coreutils         # [win]\n    - {{posix}}zip               # [win]\n  host:\n    - r-base\n    - {{native}}gmp >=5.0.1,<7\n  run:\n    - r-base\n    - {{native}}gmp >=5.0.1,<7\n    - {{native}}gcc-libs         # [win]\n\ntest:\n  commands:\n    - $R -e \"library('gmp')\"           # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('gmp')\\\"\"  # [win]\n\nabout:\n  home: https://CRAN.R-project.org/package=gmp\n  license: GPL\n  summary: Multiple Precision Arithmetic (big integers and rationals, prime number tests, matrix\n    computation), \"arithmetic without limitations\" using the C library GMP (GNU Multiple\n    Precision Arithmetic).\n  license_family: GPL\n  license_file: '{{ environ[\"PREFIX\"] }}/lib/R/share/licenses/GPL-3'\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n\n# Package: gmp\n# Version: 0.5-13.5\n# Date: 2019-02-21\n# Title: Multiple Precision Arithmetic\n# Author: Antoine Lucas, Immanuel Scholz, Rainer Boehme <rb-gmp@reflex-studio.de>, Sylvain Jasson <jasson@toulouse.inra.fr>, Martin Maechler <maechler@stat.math.ethz.ch>\n# Maintainer: Antoine Lucas <antoinelucas@gmail.com>\n# Description: Multiple Precision Arithmetic (big integers and rationals, prime number tests, matrix computation), \"arithmetic without limitations\" using the C library GMP (GNU Multiple Precision Arithmetic).\n# Depends: R (>= 3.0.0)\n# Imports: methods\n# Suggests: Rmpfr\n# SystemRequirements: gmp (>= 4.2.3)\n# License: GPL\n# BuildResaveData: no\n# LazyDataNote: not available, as we use data/*.R *and* our classes\n# NeedsCompilation: yes\n# Packaged: 2019-03-11 13:49:47 UTC; l0413674\n# Repository: CRAN\n# Date/Publication: 2019-03-11 16:00:02 UTC\n",
  "req":{
   "__set__":true,
@@ -215,7 +232,7 @@
    "zip"
   ]
  },
- "smithy_version":"3.4.1",
+ "smithy_version":"3.6.5",
  "url":[
   "https://cran.r-project.org/src/contrib/gmp_0.5-13.5.tar.gz",
   "https://cran.r-project.org/src/contrib/Archive/gmp/gmp_0.5-13.5.tar.gz",
