@@ -83,17 +83,20 @@
   },
   "build":{
    "noarch":"python",
-   "number":"0",
-   "script":"python -m pip install --no-deps --ignore-installed ."
+   "number":"1",
+   "script":" -m pip install . -vv"
   },
   "extra":{
    "recipe-maintainers":[
     "aldanor",
     "Tinche",
+    "xylar",
     "aldanor",
     "Tinche",
+    "xylar",
     "aldanor",
-    "Tinche"
+    "Tinche",
+    "xylar"
    ]
   },
   "package":{
@@ -101,23 +104,23 @@
    "version":"0.9.0"
   },
   "requirements":{
-   "build":[
-    "python >=3.5",
+   "host":[
+    "python >=3.5,<3.8",
     "pip",
     "attrs >=17.3",
-    "python >=3.5",
+    "python >=3.5,<3.8",
     "pip",
     "attrs >=17.3",
-    "python >=3.5",
+    "python >=3.5,<3.8",
     "pip",
     "attrs >=17.3"
    ],
    "run":[
-    "python >=3.5",
+    "python >=3.5,<3.8",
     "attrs >=17.3",
-    "python >=3.5",
+    "python >=3.5,<3.8",
     "attrs >=17.3",
-    "python >=3.5",
+    "python >=3.5,<3.8",
     "attrs >=17.3"
    ]
   },
@@ -140,7 +143,7 @@
  "name":"cattrs",
  "new_version":"1.0.0",
  "pinning_version":"2019.12.18",
- "raw_meta_yaml":"{% set name = \"cattrs\" %}\n{% set version = \"0.9.0\" %}\n{% set sha256 = \"2232a568e079f30601de63839f4101283cb594c8719f5311bede25f89d0e09b7\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  fn: {{ name }}-{{ version }}.tar.gz\n  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz\n  sha256: {{ sha256 }}\n\nbuild:\n  number: 0\n  script: python -m pip install --no-deps --ignore-installed .\n  noarch: python\n\nrequirements:\n  build:\n    - python >=3.5\n    - pip\n    - attrs >=17.3\n  run:\n    - python >=3.5\n    - attrs >=17.3\n\ntest:\n  imports:\n    - cattr\n    - cattr.converters\n\n  ### Lines below can be uncommented if/when tests stop using relative imports and\n  ### instead import from the installed package like they're supposed to.\n\n  # requires:\n  #   - pytest\n  #   - hypothesis\n  # commands:\n  #   - py.test -v tests\n  # source_files:\n  #   - tests\n\nabout:\n  home: https://github.com/Tinche/cattrs\n  license: MIT\n  license_family: MIT\n  license_file: LICENSE\n  summary: 'Complex custom class converters for attrs.'\n  description: |\n    cattrs is an open source Python library for structuring and unstructuring data.\n    cattrs works best with attrs classes and the usual Python collections, but other\n    kinds of classes are supported by manually registering converters.\n  doc_url: https://cattrs.readthedocs.io/en/latest/\n  dev_url: https://github.com/Tinche/cattrs\n\nextra:\n  recipe-maintainers:\n    - aldanor\n    - Tinche\n",
+ "raw_meta_yaml":"{% set name = \"cattrs\" %}\n{% set version = \"0.9.0\" %}\n{% set sha256 = \"2232a568e079f30601de63839f4101283cb594c8719f5311bede25f89d0e09b7\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  fn: {{ name }}-{{ version }}.tar.gz\n  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz\n  sha256: {{ sha256 }}\n\nbuild:\n  number: 1\n  script: \"{{ PYTHON }} -m pip install . -vv\"\n  noarch: python\n\nrequirements:\n  host:\n    - python >=3.5,<3.8\n    - pip\n    - attrs >=17.3\n  run:\n    - python >=3.5,<3.8\n    - attrs >=17.3\n\ntest:\n  imports:\n    - cattr\n    - cattr.converters\n\n  ### Lines below can be uncommented if/when tests stop using relative imports and\n  ### instead import from the installed package like they're supposed to.\n\n  # requires:\n  #   - pytest\n  #   - hypothesis\n  # commands:\n  #   - py.test -v tests\n  # source_files:\n  #   - tests\n\nabout:\n  home: https://github.com/Tinche/cattrs\n  license: MIT\n  license_family: MIT\n  license_file: LICENSE\n  summary: 'Complex custom class converters for attrs.'\n  description: |\n    cattrs is an open source Python library for structuring and unstructuring data.\n    cattrs works best with attrs classes and the usual Python collections, but other\n    kinds of classes are supported by manually registering converters.\n  doc_url: https://cattrs.readthedocs.io/en/latest/\n  dev_url: https://github.com/Tinche/cattrs\n\nextra:\n  recipe-maintainers:\n    - aldanor\n    - Tinche\n    - xylar\n",
  "req":{
   "__set__":true,
   "elements":[
