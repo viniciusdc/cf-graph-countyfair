@@ -1,48 +1,24 @@
 {
- "bad":{
-  "code":404,
-  "exception":"HTTP Error 404: Not Found",
-  "traceback":[
-   "Traceback (most recent call last):",
-   "  File \"/root/repo/cf-scripts/conda_forge_tick/auto_tick.py\", line 659, in main",
-   "    migrator_uid, pr_json = run(",
-   "  File \"/root/repo/cf-scripts/conda_forge_tick/auto_tick.py\", line 133, in run",
-   "    migrate_return = migrator.migrate(recipe_dir, feedstock_ctx.attrs, **kwargs)",
-   "  File \"/root/repo/cf-scripts/conda_forge_tick/migrators/core.py\", line 647, in migrate",
-   "    new_patterns = self.get_hash_patterns(\"meta.yaml\", urls, hash_type)",
-   "  File \"/root/repo/cf-scripts/conda_forge_tick/migrators/core.py\", line 526, in get_hash_patterns",
-   "    hash_ = hash_url(url, hash_type)",
-   "  File \"/opt/conda/envs/run_env/lib/python3.8/site-packages/rever/tools.xsh\", line 207, in hash_url",
-   "    for b in stream_url_progress(url, verb='Hashing', quiet=quiet):",
-   "  File \"/opt/conda/envs/run_env/lib/python3.8/site-packages/rever/tools.xsh\", line 179, in stream_url_progress",
-   "    with urllib.request.urlopen(url) as f:",
-   "  File \"/opt/conda/envs/run_env/lib/python3.8/urllib/request.py\", line 222, in urlopen",
-   "    return opener.open(url, data, timeout)",
-   "  File \"/opt/conda/envs/run_env/lib/python3.8/urllib/request.py\", line 531, in open",
-   "    response = meth(req, response)",
-   "  File \"/opt/conda/envs/run_env/lib/python3.8/urllib/request.py\", line 640, in http_response",
-   "    response = self.parent.error(",
-   "  File \"/opt/conda/envs/run_env/lib/python3.8/urllib/request.py\", line 563, in error",
-   "    result = self._call_chain(*args)",
-   "  File \"/opt/conda/envs/run_env/lib/python3.8/urllib/request.py\", line 502, in _call_chain",
-   "    result = func(*args)",
-   "  File \"/opt/conda/envs/run_env/lib/python3.8/urllib/request.py\", line 755, in http_error_302",
-   "    return self.parent.open(new, timeout=req.timeout)",
-   "  File \"/opt/conda/envs/run_env/lib/python3.8/urllib/request.py\", line 531, in open",
-   "    response = meth(req, response)",
-   "  File \"/opt/conda/envs/run_env/lib/python3.8/urllib/request.py\", line 640, in http_response",
-   "    response = self.parent.error(",
-   "  File \"/opt/conda/envs/run_env/lib/python3.8/urllib/request.py\", line 569, in error",
-   "    return self._call_chain(*args)",
-   "  File \"/opt/conda/envs/run_env/lib/python3.8/urllib/request.py\", line 502, in _call_chain",
-   "    result = func(*args)",
-   "  File \"/opt/conda/envs/run_env/lib/python3.8/urllib/request.py\", line 649, in http_error_default",
-   "    raise HTTPError(req.full_url, code, msg, hdrs, fp)",
-   "urllib.error.HTTPError: HTTP Error 404: Not Found",
-   ""
-  ],
-  "url":"https://codeload.github.com/NVIDIA/nccl/tar.gz/v2.5.7-1-1"
- },
+ "PRed":[
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/367072026.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"Version",
+    "migrator_version":0,
+    "version":"2.5.7-1"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "version"
+   ]
+  }
+ ],
+ "bad":false,
  "conda-forge.yml":{},
  "feedstock_name":"nccl",
  "hash_type":"sha256",
@@ -113,7 +89,8 @@
  },
  "name":"nccl",
  "new_version":"2.5.7-1",
- "raw_meta_yaml":"{% set name = \"nccl\" %}\n{% set version = \"2.5.6\" %}\n{% set revision = \"1\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}.{{ revision }}\n\nsource:\n  url: https://github.com/NVIDIA/nccl/archive/v{{ version }}-{{ revision }}.tar.gz\n  sha256: 38a37d98be11f43232b988719226866b407f08b9666dcaf345796bd8f354ef54\n\nbuild:\n  number: 0\n  skip: true  # [(not linux64) or (cuda_compiler_version == \"None\")]\n  run_exports:\n    # xref: https://github.com/NVIDIA/nccl/issues/218\n    - {{ pin_subpackage(name, max_pin=\"x\") }}\n\nrequirements:\n  build:\n    - {{ compiler(\"c\") }}\n    - {{ compiler(\"cxx\") }}\n    - {{ compiler(\"cuda\") }}\n    - make\n\ntest:\n  commands:\n    - test -f \"${PREFIX}/include/nccl.h\"\n    - test -f \"${PREFIX}/lib/libnccl.so\"\n    - test -f \"${PREFIX}/lib/libnccl_static.a\"\n\nabout:\n  home: https://developer.nvidia.com/nccl\n  license: BSD-3-Clause\n  license_family: BSD\n  license_file: LICENSE.txt\n  summary: Optimized primitives for collective multi-GPU communication\n\n  description: |\n    The NVIDIA Collective Communications Library (NCCL) implements multi-GPU\n    and multi-node collective communication primitives that are performance\n    optimized for NVIDIA GPUs. NCCL provides routines such as all-gather,\n    all-reduce, broadcast, reduce, reduce-scatter, that are optimized to\n    achieve high bandwidth over PCIe and NVLink high-speed interconnect.\n\n  doc_url: https://docs.nvidia.com/deeplearning/sdk/nccl-developer-guide/docs/index.html\n  dev_url: https://github.com/NVIDIA/nccl\n\nextra:\n  recipe-maintainers:\n    - jakirkham\n",
+ "pinning_version":"2020.01.24",
+ "raw_meta_yaml":"{% set name = \"nccl\" %}\n{% set version = \"2.5.6-1\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version|replace(\"-\", \".\") }}\n\nsource:\n  url: https://github.com/NVIDIA/nccl/archive/v{{ version }}.tar.gz\n  sha256: 38a37d98be11f43232b988719226866b407f08b9666dcaf345796bd8f354ef54\n\nbuild:\n  number: 0\n  skip: true  # [(not linux64) or (cuda_compiler_version == \"None\")]\n  run_exports:\n    # xref: https://github.com/NVIDIA/nccl/issues/218\n    - {{ pin_subpackage(name, max_pin=\"x\") }}\n\nrequirements:\n  build:\n    - {{ compiler(\"c\") }}\n    - {{ compiler(\"cxx\") }}\n    - {{ compiler(\"cuda\") }}\n    - make\n\ntest:\n  commands:\n    - test -f \"${PREFIX}/include/nccl.h\"\n    - test -f \"${PREFIX}/lib/libnccl.so\"\n    - test -f \"${PREFIX}/lib/libnccl_static.a\"\n\nabout:\n  home: https://developer.nvidia.com/nccl\n  license: BSD-3-Clause\n  license_family: BSD\n  license_file: LICENSE.txt\n  summary: Optimized primitives for collective multi-GPU communication\n\n  description: |\n    The NVIDIA Collective Communications Library (NCCL) implements multi-GPU\n    and multi-node collective communication primitives that are performance\n    optimized for NVIDIA GPUs. NCCL provides routines such as all-gather,\n    all-reduce, broadcast, reduce, reduce-scatter, that are optimized to\n    achieve high bandwidth over PCIe and NVLink high-speed interconnect.\n\n  doc_url: https://docs.nvidia.com/deeplearning/sdk/nccl-developer-guide/docs/index.html\n  dev_url: https://github.com/NVIDIA/nccl\n\nextra:\n  recipe-maintainers:\n    - jakirkham\n",
  "req":{
   "__set__":true,
   "elements":[
@@ -123,6 +100,7 @@
    "make"
   ]
  },
+ "smithy_version":"3.6.6",
  "url":"https://github.com/NVIDIA/nccl/archive/v2.4.6-1.tar.gz",
  "version":"2.5.6.1"
 }
