@@ -50,6 +50,23 @@
     "migrator_version",
     "name"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/367251228.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"Version",
+    "migrator_version":0,
+    "version":"0.10.0"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "version"
+   ]
   }
  ],
  "bad":false,
@@ -152,8 +169,8 @@
   }
  },
  "name":"watchdog",
- "new_version":"0.9.0",
- "pinning_version":"2019.11.01",
+ "new_version":"0.10.0",
+ "pinning_version":"2020.01.24",
  "raw_meta_yaml":"{% set name = \"watchdog\" %}\n{% set version = \"0.9.0\" %}\n{% set hash_type = \"sha256\" %}\n{% set hash = \"965f658d0732de3188211932aeb0bb457587f04f63ab4c1e33eab878e9de961d\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  fn: {{ name }}-{{ version }}.tar.gz\n  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz\n  {{ hash_type }}: {{ hash }}\n\nbuild:\n  number: 1\n  entry_points:\n    - watchmedo = watchdog.watchmedo:main\n  script: python -m pip install --no-deps --ignore-installed .\n\nrequirements:\n  host:\n    - pip\n    - python\n    - setuptools\n  run:\n    - python\n    - argh >=0.24.1\n    - pathtools >=0.1.1\n    - pyyaml >=3.10\n\ntest:\n  imports:\n    - watchdog\n    - watchdog.observers\n    - watchdog.tricks\n    - watchdog.utils\n  commands:\n    - watchmedo --help\n    - test -f $SP_DIR/_watchdog_fsevents.so  # [osx and py2k]\n    - test -f $SP_DIR/_watchdog_fsevents.cpython-37m-darwin.so  # [osx and py==37]\n\nabout:\n  home: http://github.com/gorakhargosh/watchdog\n  license: Apache 2.0\n  license_file: LICENSE\n  summary: 'Filesystem events monitoring'\n  doc_url: http://pythonhosted.org/watchdog\n\nextra:\n  recipe-maintainers:\n    - goanpeca\n    - rlaverde\n    - ccordoba12\n    - andfoy\n",
  "req":{
   "__set__":true,
@@ -166,7 +183,7 @@
    "setuptools"
   ]
  },
- "smithy_version":"3.6.1",
+ "smithy_version":"3.6.6",
  "url":"https://pypi.io/packages/source/w/watchdog/watchdog-0.9.0.tar.gz",
  "version":"0.9.0"
 }
