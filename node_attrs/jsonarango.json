@@ -40,8 +40,7 @@
     "cmake",
     "make",
     "cxx_compiler_stub",
-    "cmake",
-    "make"
+    "cmake"
    ],
    "host":[
     "curl",
@@ -57,17 +56,11 @@
    "url":"https://bitbucket.org/gems4/jsonarango/get/v0.1.0.tar.gz"
   },
   "test":{
-   "commands":[
-    "if exist %LIBRARY_PREFIX%\\include\\jsonarango\\arangoquery.h (exit 0) else (exit 1)",
-    "test -d ${PREFIX}/include/jsonarango",
-    "test -f ${PREFIX}/include/jsonarango/arangoquery.h",
-    "test -d ${PREFIX}/include/jsonarango",
-    "test -f ${PREFIX}/include/jsonarango/arangoquery.h"
-   ]
+   "commands":null
   }
  },
  "name":"jsonarango",
- "raw_meta_yaml":"{% set version = \"0.1.0\" %}\n\npackage:\n  name: jsonarango\n  version: {{ version }}\n\nsource:\n  url: https://bitbucket.org/gems4/jsonarango/get/v{{ version }}.tar.gz\n  sha256: 347a0c4148a3020dce878ebf01854f14a1f5acd96125c230b50991dc9d2797fe\n\nbuild:\n  number: 0\n  skip: True  # [win and vc<14]\n  skip: True  # [osx]\n\nrequirements:\n  build:\n    - {{ compiler('cxx') }}\n    - cmake\n    - ninja  # [win]\n    - make  # [unix]\n  host:\n    - curl\n    - velocypack\n\ntest:\n  commands:\n    - test -d ${PREFIX}/include/jsonarango  # [unix]\n    - test -f ${PREFIX}/include/jsonarango/arangoquery.h  # [unix]\n    - if exist %LIBRARY_PREFIX%\\include\\jsonarango\\arangoquery.h (exit 0) else (exit 1)  # [win]\n\nabout:\n  home: https://bitbucket.org/gems4/jsonarango\n  license: LGPL-3.0\n  license_family: LGPL\n  license_file: LICENSE\n  summary: A lightweight ArangoDB client C++ library, providing CRUD and query operations \n  doc_url: https://bitbucket.org/gems4/jsonarango\n  dev_url: https://bitbucket.org/gems4/jsonarango\n\nextra:\n  recipe-maintainers:\n    - gdmiron\n    - sdmytrievs\n",
+ "raw_meta_yaml":"{% set version = \"0.1.0\" %}\n\npackage:\n  name: jsonarango\n  version: {{ version }}\n\nsource:\n  url: https://bitbucket.org/gems4/jsonarango/get/v{{ version }}.tar.gz\n  sha256: 347a0c4148a3020dce878ebf01854f14a1f5acd96125c230b50991dc9d2797fe\n\nbuild:\n  number: 0\n  skip: True  # [win and vc<14]\n\nrequirements:\n  build:\n    - {{ compiler('cxx') }}\n    - cmake\n    - ninja  # [win]\n    - make  # [unix and osx]\n  host:\n    - curl\n    - velocypack\n\ntest:\n  commands:\n    - test -d ${PREFIX}/include/jsonarango  # [unix and osx]\n    - test -f ${PREFIX}/include/jsonarango/arangoquery.h  # [unix and osx]\n    - if exist %LIBRARY_PREFIX%\\include\\jsonarango\\arangoquery.h (exit 0) else (exit 1)  # [win]\n\nabout:\n  home: https://bitbucket.org/gems4/jsonarango\n  license: LGPL-3.0\n  license_family: LGPL\n  license_file: LICENSE\n  summary: A lightweight ArangoDB client C++ library, providing CRUD and query operations \n  doc_url: https://bitbucket.org/gems4/jsonarango\n  dev_url: https://bitbucket.org/gems4/jsonarango\n\nextra:\n  recipe-maintainers:\n    - gdmiron\n    - sdmytrievs\n",
  "req":{
   "__set__":true,
   "elements":[
