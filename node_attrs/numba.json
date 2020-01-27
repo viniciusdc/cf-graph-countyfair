@@ -366,8 +366,7 @@
     " -m pip install . --no-deps --ignore-installed -vvv",
     " buildscripts/remove_unwanted_files.py",
     " -m pip install . --no-deps --ignore-installed -vvv"
-   ],
-   "skip":true
+   ]
   },
   "extra":{
    "recipe-maintainers":[
@@ -387,7 +386,7 @@
   },
   "package":{
    "name":"numba",
-   "version":"0.47.0"
+   "version":"0.48.0"
   },
   "requirements":{
    "build":[
@@ -435,8 +434,8 @@
    ]
   },
   "source":{
-   "sha256":"e4ef73bed412e588147d565c5761c006a74f8369386ad59af810ecde34a42270",
-   "url":"https://github.com/numba/numba/archive/0.47.0.tar.gz"
+   "sha256":"7cadc9075a2675c9152ee36642cea34210a41ca6c5cc6f1cb47d2834f0e67bdf",
+   "url":"https://github.com/numba/numba/archive/0.48.0.tar.gz"
   },
   "test":{
    "imports":[
@@ -556,7 +555,7 @@
  "name":"numba",
  "new_version":"0.48.0",
  "pinning_version":"2020.01.27",
- "raw_meta_yaml":"{% set name = \"numba\" %}\n{% set version = \"0.47.0\" %}\n{% set sha256 = \"e4ef73bed412e588147d565c5761c006a74f8369386ad59af810ecde34a42270\" %}\n\npackage:\n  name: numba\n  version: {{ version }}\n\nsource:\n  # url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz  # 0.42.1 is N/A in pypi\n  url: https://github.com/numba/{{ name }}/archive/{{ version }}.tar.gz\n  sha256: {{ sha256 }}\n\nbuild:\n  number: 0\n  entry_points:\n    - pycc = numba.pycc:main\n    - numba = numba.numba_entry:main\n  script:\n    - \"{{ PYTHON }} buildscripts/remove_unwanted_files.py\"   # the script is not available in pypi tar-ball\n    - \"{{ PYTHON }} -m pip install . --no-deps --ignore-installed -vvv\"\n  ignore_run_exports:\n      # TBB is entirely optional\n      - tbb\n  skip: true  # [win and vc<14]\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n\n  host:\n    - python\n    - pip\n    - setuptools\n    - llvmlite 0.31.*\n    - numpy\n    - tbb-devel >=2018.0.5  # [linux]\n    - enum34                # [py2k]\n    - singledispatch        # [py2k]\n    - funcsigs              # [py2k]\n\n  run:\n    - python\n    - {{ pin_compatible('llvmlite', max_pin='x.x') }}\n    - {{ pin_compatible('numpy') }}\n    - enum34          # [py2k]\n    - singledispatch  # [py2k]\n    - funcsigs        # [py2k]\n    # needed for pkg_resources\n    - setuptools\n\n  run_constrained:\n    # If TBB is present it must be at least this version from Anaconda due to\n    # build flag issues triggering UB in defaults::tbb=2018.0.4\n    # See https://github.com/numba/numba/pull/3202#issuecomment-415939206 ff.\n    - tbb >=2018.0.5  # [linux]\n\ntest:\n  requires:\n    # TODO: Remove the following conditional.\n    #       ref: https://github.com/numba/numba/pull/5029\n    {% if environ['PKG_VERSION'] != \"0.47.0\" or environ['PY_VER'] != \"3.8\" %}\n    - jinja2\n    {% endif %}\n    # Required to test optional Numba features\n    - cffi\n    - scipy\n    - ipython\n    - setuptools\n    - faulthandler             # [py2k]\n    - tbb >=2018.0.5           # [linux]\n    - intel-openmp             # [osx]\n    # Need these for AOT. Do not init msvc as it may not be present\n    - {{ compiler('c') }}      # [not win]\n    - {{ compiler('cxx') }}    # [not win]\n\n  imports:\n    - numba\n    - numba.annotations\n    - numba.cuda\n    - numba.cuda.cudadrv\n    - numba.cuda.kernels\n    - numba.cuda.simulator\n    - numba.cuda.simulator.cudadrv\n    - numba.cuda.tests\n    - numba.cuda.tests.cudadrv\n    - numba.cuda.tests.cudadrv.data\n    - numba.cuda.tests.cudapy\n    - numba.cuda.tests.cudasim\n    - numba.cuda.tests.nocuda\n    - numba.datamodel\n    - numba.jitclass\n    - numba.npyufunc\n    - numba.pycc\n    - numba.rewrites\n    - numba.runtime\n    - numba.scripts\n    - numba.servicelib\n    - numba.targets\n    - numba.testing\n    - numba.tests\n    - numba.tests.npyufunc\n    - numba.typeconv\n    - numba.types\n    - numba.typing\n    - numba.unsafe\n\nabout:\n  home: http://numba.github.com\n  license: BSD 2-clause\n  license_family: BSD\n  license_file: LICENSE\n  summary: NumPy aware dynamic Python compiler using LLVM\n  description: | \n    Numba is an Open Source NumPy-aware optimizing compiler for Python \n    sponsored by Anaconda, Inc. It uses the remarkable LLVM compiler \n    infrastructure to compile Python syntax to machine code.\"\n  doc_url: http://numba.pydata.org/\n  dev_url: https://github.com/numba/numba\n\nextra:\n  recipe-maintainers:\n    - souravsingh\n    - marcelotrevisani\n    - henryiii\n    - mbargull\n",
+ "raw_meta_yaml":"{% set name = \"numba\" %}\n{% set version = \"0.48.0\" %}\n{% set sha256 = \"7cadc9075a2675c9152ee36642cea34210a41ca6c5cc6f1cb47d2834f0e67bdf\" %}\n\npackage:\n  name: numba\n  version: {{ version }}\n\nsource:\n  # url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz\n  url: https://github.com/numba/{{ name }}/archive/{{ version }}.tar.gz\n  sha256: {{ sha256 }}\n\nbuild:\n  number: 0\n  entry_points:\n    - pycc = numba.pycc:main\n    - numba = numba.numba_entry:main\n  script:\n    - \"{{ PYTHON }} buildscripts/remove_unwanted_files.py\"   # the script is not available in pypi tar-ball\n    - \"{{ PYTHON }} -m pip install . --no-deps --ignore-installed -vvv\"\n  ignore_run_exports:\n      # TBB is entirely optional\n      - tbb\n  skip: true  # [py2k]\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n\n  host:\n    - python\n    - pip\n    - setuptools\n    - llvmlite 0.31.*\n    - numpy\n    - tbb-devel >=2018.0.5  # [linux]\n\n  run:\n    - python\n    - {{ pin_compatible('llvmlite', max_pin='x.x') }}\n    - {{ pin_compatible('numpy') }}\n    # needed for pkg_resources\n    - setuptools\n\n  run_constrained:\n    # If TBB is present it must be at least this version from Anaconda due to\n    # build flag issues triggering UB in defaults::tbb=2018.0.4\n    # See https://github.com/numba/numba/pull/3202#issuecomment-415939206 ff.\n    - tbb >=2018.0.5  # [linux]\n\ntest:\n  requires:\n    # Required to test optional Numba features\n    - jinja2\n    - cffi\n    - scipy\n    - ipython\n    - setuptools\n    - tbb >=2018.0.5           # [linux]\n    - intel-openmp             # [osx]\n    # Need these for AOT. Do not init msvc as it may not be present\n    - {{ compiler('c') }}      # [not win]\n    - {{ compiler('cxx') }}    # [not win]\n\n  imports:\n    - numba\n    - numba.annotations\n    - numba.cuda\n    - numba.cuda.cudadrv\n    - numba.cuda.kernels\n    - numba.cuda.simulator\n    - numba.cuda.simulator.cudadrv\n    - numba.cuda.tests\n    - numba.cuda.tests.cudadrv\n    - numba.cuda.tests.cudadrv.data\n    - numba.cuda.tests.cudapy\n    - numba.cuda.tests.cudasim\n    - numba.cuda.tests.nocuda\n    - numba.datamodel\n    - numba.jitclass\n    - numba.npyufunc\n    - numba.pycc\n    - numba.rewrites\n    - numba.runtime\n    - numba.scripts\n    - numba.servicelib\n    - numba.targets\n    - numba.testing\n    - numba.tests\n    - numba.tests.npyufunc\n    - numba.typeconv\n    - numba.types\n    - numba.typing\n    - numba.unsafe\n\nabout:\n  home: http://numba.github.com\n  license: BSD 2-clause\n  license_family: BSD\n  license_file: LICENSE\n  summary: NumPy aware dynamic Python compiler using LLVM\n  description: | \n    Numba is an Open Source NumPy-aware optimizing compiler for Python \n    sponsored by Anaconda, Inc. It uses the remarkable LLVM compiler \n    infrastructure to compile Python syntax to machine code.\"\n  doc_url: http://numba.pydata.org/\n  dev_url: https://github.com/numba/numba\n\nextra:\n  recipe-maintainers:\n    - souravsingh\n    - marcelotrevisani\n    - henryiii\n    - mbargull\n",
  "req":{
   "__set__":true,
   "elements":[
@@ -573,5 +572,5 @@
  },
  "smithy_version":"3.6.6",
  "url":"https://github.com/numba/numba/archive/0.45.1.tar.gz",
- "version":"0.47.0"
+ "version":"0.48.0"
 }
