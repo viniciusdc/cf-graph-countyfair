@@ -80,7 +80,7 @@
   },
   "package":{
    "name":"plumed",
-   "version":"2.5.3"
+   "version":"2.6.0"
   },
   "requirements":{
    "build":[
@@ -114,11 +114,16 @@
     "xdrfile",
     "zlib"
    ],
-   "run":null
+   "run":[
+    "gawk",
+    "gawk",
+    "llvm-openmp",
+    "gawk"
+   ]
   },
   "source":{
-   "sha256":"543288be667dc4201fc461ecd2dd4878ddfbeac682d0c021c99ea8e501c7c9dc",
-   "url":"https://github.com/plumed/plumed2/archive/v2.5.3.tar.gz"
+   "sha256":"3d57ae460607a49547ef38a52c4ac93493a3966857c352280a9c05f5dcdb1820",
+   "url":"https://github.com/plumed/plumed2/archive/v2.6.0.tar.gz"
   },
   "test":{
    "commands":[
@@ -156,12 +161,13 @@
  "name":"plumed",
  "new_version":"2.6.0",
  "pinning_version":"2020.01.27",
- "raw_meta_yaml":"{% set name = \"plumed\" %}\n{% set version = \"2.5.3\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  url: https://github.com/plumed/plumed2/archive/v{{ version }}.tar.gz\n  sha256: 543288be667dc4201fc461ecd2dd4878ddfbeac682d0c021c99ea8e501c7c9dc\n\nbuild:\n  number: 0\n  skip: True  # [win]\n# Most programs should link libplumedWrapper.a so that libplumedKernel.so will be loaded\n# with dlopen. There is no need for pinning thus.\n# Programs linking libplumed.so should pin to min_pin='x.x', max_pin='x'.\n# Programs linking libplumedKernel.so should pin to min_pin='x.x.x'. max_pin='x.x.x'.\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n    - llvm-openmp  # [osx]\n    - make\n# xxd is provided by package vim and used during build\n    - vim  # [linux]\n  host:\n    - gsl\n    - libblas\n    - liblapack\n    - llvm-openmp  # [osx]\n    - xdrfile\n    - zlib\n  run:\n    - llvm-openmp  # [osx]\n\ntest:\n  commands:\n    - plumed info --root\n    - plumed info --long-version\n    - plumed-patch -h\n    - plumed config has external_blas external_lapack gsl xdrfile zlib\n    - $PREFIX/lib/plumed/plumed-runtime -h\n    - test -f $PREFIX/lib/libplumed$SHLIB_EXT\n    - test -f $PREFIX/lib/libplumedWrapper.a\n    - test -f $PREFIX/lib/libplumedKernel$SHLIB_EXT\n    - conda inspect linkages -p $PREFIX $PKG_NAME\n    - conda inspect objects -p $PREFIX $PKG_NAME  # [osx]\n\nabout:\n  home: http://www.plumed.org/\n  license: LGPL-3.0\n  license_family: GPL\n  license_file: COPYING.LESSER\n  summary: 'Free energy calculations in molecular systems'\n  description: |\n    PLUMED is an open source library for free energy calculations in\n    molecular systems which works together with some of the most\n    popular molecular dynamics engines.\n  doc_url: https://www.plumed.org/doc\n  dev_url: https://github.com/plumed/plumed2\n\nextra:\n  recipe-maintainers:\n    - GiovanniBussi\n",
+ "raw_meta_yaml":"{% set name = \"plumed\" %}\n{% set version = \"2.6.0\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  url: https://github.com/plumed/plumed2/archive/v{{ version }}.tar.gz\n  sha256: 3d57ae460607a49547ef38a52c4ac93493a3966857c352280a9c05f5dcdb1820\n\nbuild:\n  number: 0\n  skip: True  # [win]\n# Most programs should link libplumedWrapper.a so that libplumedKernel.so will be loaded\n# with dlopen. There is no need for pinning thus.\n# Programs linking libplumed.so should pin to min_pin='x.x', max_pin='x'.\n# Programs linking libplumedKernel.so should pin to min_pin='x.x.x'. max_pin='x.x.x'.\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n    - llvm-openmp  # [osx]\n    - make\n# xxd is provided by package vim and used during build\n    - vim  # [linux]\n  host:\n    - gsl\n    - libblas\n    - liblapack\n    - llvm-openmp  # [osx]\n    - xdrfile\n    - zlib\n  run:\n    - gawk\n    - llvm-openmp  # [osx]\n\ntest:\n  commands:\n    - plumed info --root\n    - plumed info --long-version\n    - plumed-patch -h\n    - plumed config has external_blas external_lapack gsl xdrfile zlib\n    - $PREFIX/lib/plumed/plumed-runtime -h\n    - test -f $PREFIX/lib/libplumed$SHLIB_EXT\n    - test -f $PREFIX/lib/libplumedWrapper.a\n    - test -f $PREFIX/lib/libplumedKernel$SHLIB_EXT\n    - conda inspect linkages -p $PREFIX $PKG_NAME\n    - conda inspect objects -p $PREFIX $PKG_NAME  # [osx]\n\nabout:\n  home: http://www.plumed.org/\n  license: LGPL-3.0\n  license_family: GPL\n  license_file: COPYING.LESSER\n  summary: 'Free energy calculations in molecular systems'\n  description: |\n    PLUMED is an open source library for free energy calculations in\n    molecular systems which works together with some of the most\n    popular molecular dynamics engines.\n  doc_url: https://www.plumed.org/doc\n  dev_url: https://github.com/plumed/plumed2\n\nextra:\n  recipe-maintainers:\n    - GiovanniBussi\n",
  "req":{
   "__set__":true,
   "elements":[
    "c_compiler_stub",
    "cxx_compiler_stub",
+   "gawk",
    "gsl",
    "libblas",
    "liblapack",
@@ -174,5 +180,5 @@
  },
  "smithy_version":"3.6.6",
  "url":"https://github.com/plumed/plumed2/archive/v2.5.2.tar.gz",
- "version":"2.5.3"
+ "version":"2.6.0"
 }
