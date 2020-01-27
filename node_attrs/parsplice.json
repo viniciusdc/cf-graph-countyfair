@@ -36,9 +36,9 @@
    "summary":"Parallel Trajectory Splicing AMD Code"
   },
   "build":{
-   "number":"0",
+   "number":"1",
    "skip":true,
-   "string":"py__0"
+   "string":"py__1"
   },
   "extra":{
    "recipe-maintainers":[
@@ -114,6 +114,11 @@
    ]
   },
   "source":{
+   "patches":[
+    "python3.patch",
+    "python3.patch",
+    "python3.patch"
+   ],
    "sha256":"573a8bb2371f659c852a6ed8347ddf98d4f142a121ad17045f8dbbbabde75c52",
    "url":"https://gitlab.com/exaalt/parsplice/-/archive/4a48ef86be45746b769f6ba02a3da71125bc7b75/parsplice-4a48ef86be45746b769f6ba02a3da71125bc7b75.tar.gz"
   },
@@ -127,7 +132,7 @@
  },
  "name":"parsplice",
  "pinning_version":"2020.01.24",
- "raw_meta_yaml":"{% set name = \"parsplice\" %}\n{% set version = \"1.1.2.dev0\" %}\n{% set build = 0 %}\n{% set build_string = \"py{}_{}_{}\".format(environ.get('CONDA_PY', ''), mpi, build) %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  url: https://gitlab.com/exaalt/{{ name }}/-/archive/4a48ef86be45746b769f6ba02a3da71125bc7b75/{{ name }}-4a48ef86be45746b769f6ba02a3da71125bc7b75.tar.gz\n  sha256: 573a8bb2371f659c852a6ed8347ddf98d4f142a121ad17045f8dbbbabde75c52\n\nbuild:\n  number: {{ build }}\n  string: {{ build_string }}\n  skip: true  # [not linux]\n\nrequirements:\n  build:\n    - {{ compiler('cxx') }}\n    - cmake\n    - make\n    - pkg-config\n  host:\n    - python\n    - boost-cpp\n    - eigen\n    - nauty\n    - {{ mpi }}\n    - lammps\n    - libdb\n  run:\n    - python\n    - boost-cpp\n    - eigen\n    - nauty\n    - {{ mpi }}\n    - lammps\n    - libdb\n\ntest:\n  commands:\n    - parsplice --help\n\nabout:\n  home: https://gitlab.com/exaalt/parsplice\n  license: BSD-3-Clause\n  license_family: BSD\n  license_file: LICENSE.txt\n  summary: 'Parallel Trajectory Splicing AMD Code'\n\n  description: |\n    The ParSplice code implements the Parallel Trajectory Splicing \n    algorithm described in [1]. This method is part of the Accelerated \n    Molecular Dynamics family of techniques developed in Los Alamos \n    National Laboratory over the last 16 years. These methods aim at \n    generating high-quality trajectories of ensembles of atoms in \n    materials. \n  doc_url: https://gitlab.com/exaalt/parsplice/wikis/home\n  dev_url: https://gitlab.com/exaalt/parsplice\n\nextra:\n  recipe-maintainers:\n    - jan-janssen\n",
+ "raw_meta_yaml":"{% set name = \"parsplice\" %}\n{% set version = \"1.1.2.dev0\" %}\n{% set build = 1 %}\n{% set build_string = \"py{}_{}_{}\".format(environ.get('CONDA_PY', ''), mpi, build) %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  url: https://gitlab.com/exaalt/{{ name }}/-/archive/4a48ef86be45746b769f6ba02a3da71125bc7b75/{{ name }}-4a48ef86be45746b769f6ba02a3da71125bc7b75.tar.gz\n  sha256: 573a8bb2371f659c852a6ed8347ddf98d4f142a121ad17045f8dbbbabde75c52\n  patches:\n    - python3.patch\n\nbuild:\n  number: {{ build }}\n  string: {{ build_string }}\n  skip: true  # [not linux]\n\nrequirements:\n  build:\n    - {{ compiler('cxx') }}\n    - cmake\n    - make\n    - pkg-config\n  host:\n    - python\n    - boost-cpp\n    - eigen\n    - nauty\n    - {{ mpi }}\n    - lammps\n    - libdb\n  run:\n    - python\n    - boost-cpp\n    - eigen\n    - nauty\n    - {{ mpi }}\n    - lammps\n    - libdb\n\ntest:\n  commands:\n    - parsplice --help\n\nabout:\n  home: https://gitlab.com/exaalt/parsplice\n  license: BSD-3-Clause\n  license_family: BSD\n  license_file: LICENSE.txt\n  summary: 'Parallel Trajectory Splicing AMD Code'\n\n  description: |\n    The ParSplice code implements the Parallel Trajectory Splicing \n    algorithm described in [1]. This method is part of the Accelerated \n    Molecular Dynamics family of techniques developed in Los Alamos \n    National Laboratory over the last 16 years. These methods aim at \n    generating high-quality trajectories of ensembles of atoms in \n    materials. \n  doc_url: https://gitlab.com/exaalt/parsplice/wikis/home\n  dev_url: https://gitlab.com/exaalt/parsplice\n\nextra:\n  recipe-maintainers:\n    - jan-janssen\n",
  "req":{
   "__set__":true,
   "elements":[
