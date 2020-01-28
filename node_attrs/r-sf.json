@@ -152,6 +152,23 @@
     "migrator_version",
     "version"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/368173241.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"Version",
+    "migrator_version":0,
+    "version":"0.8_1"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "version"
+   ]
   }
  ],
  "bad":false,
@@ -275,7 +292,7 @@
  },
  "name":"r-sf",
  "new_version":"0.8_1",
- "pinning_version":"2019.10.01",
+ "pinning_version":"2020.01.27",
  "raw_meta_yaml":"{% set version = \"0.8-0\" %}\n\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-sf\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  url:  # [not win]\n    - https://cran.r-project.org/src/contrib/sf_{{ version }}.tar.gz  # [not win]\n    - https://cran.r-project.org/src/contrib/Archive/sf/sf_{{ version }}.tar.gz  # [not win]\n  sha256: 8ee354f70b073bce124f2c138ebd2748936f890a7b4c380075c189cf36c0be15  # [not win]\n  url: https://cran.r-project.org/bin/windows/contrib/{{ r_base[0:3] }}/sf_{{ version }}.zip  # [win]\n  {% if r_base[0:3] == '3.5' %}\n  sha256: 29a8ca02060350748c53e862ecd8e1bf40b3557b62c61e98e1c122cf0462e18d  # [win]\n  {% else %}\n  sha256: 302a3868a52a2084e2631a5f10df713b5b9f786aa8c384e392579c7e3edc7d2b  # [win]  \n  {% endif %}\nbuild:\n  number: 0\n  merge_build_host: True  # [win]\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - {{ compiler('c') }}       # [unix]\n    - {{ compiler('cxx') }}     # [unix]\n    - {{ compiler('m2w64_c') }}       # [win]\n    - {{ compiler('m2w64_cxx') }}     # [win]\n    - posix    # [win]\n    - pkg-config\n  host:\n    - r-base\n    - r-dbi >=0.8\n    - r-rcpp\n    - r-classint\n    - r-magrittr\n    - r-units >=0.6_0\n    - libgdal  # [not win]\n    - proj4  # [not win]\n  run:\n    - r-base\n    - r-dbi >=0.8\n    - r-rcpp\n    - r-classint >=0.2_1\n    - r-magrittr\n    - r-units >=0.6_0\n    - libgdal  # [not win]\n    - proj4  # [not win]\n\ntest:\n  commands:\n    - $R -e \"library('sf')\"  # [not win]\n    - R -e \\\"library('sf')\\\"  # [win]\n\nabout:\n  home: https://github.com/r-spatial/sf/\n  license: GPL-2.0 | MIT\n  license_file: LICENSE\n  summary: Support for simple features, a standardized way to encode spatial vector data. Binds\n    to 'GDAL' for reading and writing data, to 'GEOS' for geometrical operations, and\n    to 'PROJ' for projection conversions and datum transformations.\n  license_family: GPL2\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n    - mingwandroid\n",
  "req":{
   "__set__":true,
@@ -296,7 +313,7 @@
    "r-units"
   ]
  },
- "smithy_version":"3.5.0",
+ "smithy_version":"3.6.6",
  "url":[
   "https://cran.r-project.org/src/contrib/sf_0.7-6.tar.gz",
   "https://cran.r-project.org/src/contrib/Archive/sf/sf_0.7-6.tar.gz"
