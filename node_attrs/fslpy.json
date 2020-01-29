@@ -336,6 +336,23 @@
     "migrator_version",
     "version"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/368592039.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"Version",
+    "migrator_version":0,
+    "version":"2.8.0"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "version"
+   ]
   }
  ],
  "bad":false,
@@ -501,8 +518,8 @@
   }
  },
  "name":"fslpy",
- "new_version":"2.7.0",
- "pinning_version":"2019.11.01",
+ "new_version":"2.8.0",
+ "pinning_version":"2020.01.27",
  "raw_meta_yaml":"{% set name = \"fslpy\" %}\n{% set version = \"2.7.0\" %}\n{% set sha256 = \"c04e84b3d65c913c0f2a87d5cac1c99546bf3f7243c47a3d326d34244b8bd5e8\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz\n  sha256: {{ sha256 }}\n  patches:\n    - test_dicom.py.patch\n\nbuild:\n  noarch: python\n  number: 0\n  script: \"{{ PYTHON }} -m pip install . --no-deps --ignore-installed --no-cache-dir -vvv\"\n  entry_points:\n    - immv           = fsl.scripts.immv:main\n    - imcp           = fsl.scripts.imcp:main\n    - imglob         = fsl.scripts.imglob:main\n    - atlasq         = fsl.scripts.atlasq:main\n    - atlasquery     = fsl.scripts.atlasq:atlasquery_emulation\n    - fsl_ents       = fsl.scripts.fsl_ents:main\n    - resample_image = fsl.scripts.resample_image:main\n    - fsl_apply_x5   = fsl.scripts.fsl_apply_x5:main\n    - fsl_convert_x5 = fsl.scripts.fsl_convert_x5:main\n\nrequirements:\n  host:\n    - python >=3.5\n    - pip\n    - numpy\n  run:\n    - python >=3.5\n    - {{ pin_compatible('numpy') }}\n    - scipy >=0.18\n    - nibabel >=2.3.1\n    - six 1.*\n    - h5py >=2.9\n  run_constrained:\n    - indexed_gzip >=0.7\n    - wxpython >=4\n    - trimesh >=2.37.29\n    - rtree 0.8.3.*\n    - dcm2niix >=1.0.20171215\n    - pillow >=3.2.0\n\ntest:\n  source_files:\n    - tests\n  requires:\n    - mock\n    - coverage\n    - pytest\n    - pytest-cov\n    - trimesh >=2.37.29\n    - rtree 0.8.3.*\n    - indexed_gzip >=0.7\n    - dcm2niix >=1.0.20171215\n    - pillow >=3.2.0\n  commands:\n    - pytest -x -v --cov=fsl -m \"not (wxtest or unixtest or longtest or fsltest or noroottest)\" tests\n\n\nabout:\n  home: https://git.fmrib.ox.ac.uk/fsl/fslpy/\n  license: Apache-2.0\n  license_family: Apache\n  license_file: LICENSE\n  summary: 'The FSL Python library'\n  dev_url: https://git.fmrib.ox.ac.uk/fsl/fslpy/\n\nextra:\n  recipe-maintainers:\n    - pauldmccarthy\n",
  "req":{
   "__set__":true,
@@ -517,7 +534,7 @@
    "six"
   ]
  },
- "smithy_version":"3.6.1",
+ "smithy_version":"3.6.6",
  "url":"https://pypi.io/packages/source/f/fslpy/fslpy-2.5.0.tar.gz",
  "version":"2.7.0"
 }
