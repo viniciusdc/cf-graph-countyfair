@@ -144,7 +144,7 @@
     "lib/python*/site-packages/fbprophet/stan_model/prophet_model.pkl",
     "lib/python*/site-packages/fbprophet/stan_model/prophet_model.pkl"
    ],
-   "number":"0",
+   "number":"1",
    "script":"-m pip install . -vv"
   },
   "extra":{
@@ -196,7 +196,7 @@
    "run":[
     "m2w64-toolchain",
     "python",
-    "matplotlib >=2.0.0",
+    "matplotlib-base >=2.0.0",
     "pandas >=0.20.1",
     "pystan >=2.14",
     "lunardate >=0.1.5",
@@ -207,7 +207,7 @@
     "c_compiler_stub",
     "cxx_compiler_stub",
     "python",
-    "matplotlib >=2.0.0",
+    "matplotlib-base >=2.0.0",
     "pandas >=0.20.1",
     "pystan >=2.14",
     "lunardate >=0.1.5",
@@ -218,7 +218,7 @@
     "c_compiler_stub",
     "cxx_compiler_stub",
     "python",
-    "matplotlib >=2.0.0",
+    "matplotlib-base >=2.0.0",
     "pandas >=0.20.1",
     "pystan >=2.14",
     "lunardate >=0.1.5",
@@ -249,7 +249,7 @@
  "name":"fbprophet",
  "new_version":"0.5",
  "pinning_version":"2019.11.01",
- "raw_meta_yaml":"{% set name = \"fbprophet\" %}\n{% set version = \"0.5\" %}\n{% set bundle = \"tar.gz\" %}\n{% set hash_type = \"sha256\" %}\n{% set hash = \"c67fde2845db52dbdb4becd312b271575ce1c804be666ed1eee94339c5a35127\" %}\n{% set build = 0 %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  fn: {{ name }}-{{ version }}.{{ bundle }}\n  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.{{ bundle }}\n  {{ hash_type }}: {{ hash }}\n\nbuild:\n  number: {{ build }}\n  script: {{ PYTHON }} -m pip install . -vv\n  skip: True  # [win and py27]\n  binary_has_prefix_files:\n    - Lib/site-packages/fbprophet/stan_model/prophet_model.pkl          # [win]\n    - lib/python*/site-packages/fbprophet/stan_model/prophet_model.pkl  # [unix]\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n  host:\n    - python\n    - pip\n    - setuptools\n    - cython >=0.22\n    - pystan >=2.14\n    # Pystan models depend on numpy and as they are compiled and pickled we\n    # need to pin numpy version. Note that 1.10 is not available for win+py36.\n    - numpy 1.11.*\n  run:\n    - m2w64-toolchain        # [win]\n    - {{ compiler('c') }}    # [not win]\n    - {{ compiler('cxx') }}  # [not win]\n    - python\n    - matplotlib >=2.0.0\n    - pandas >=0.20.1\n    - pystan >=2.14\n    - lunardate >=0.1.5\n    - convertdate >=2.1.2\n    - holidays >=0.9.5\n    - numpy >=1.11\n    # setuptools is required for pkg_resources\n    - setuptools\n\ntest:\n  requires:\n    - pytest\n\n  commands:\n    - py.test -v --pyargs fbprophet\n\nabout:\n  home: https://facebook.github.io/prophet/\n  license: BSD 3-Clause\n  license_family: BSD\n  license_file: LICENSE\n  summary: 'Automatic Forecasting Procedure'\n  description: |\n    Implements a procedure for forecasting time series data based on an\n    additive model where non-linear trends are fit with yearly, weekly, and\n    daily seasonality, plus holiday effects. It works best with time series\n    that have strong seasonal effects and several seasons of historical data.\n    Prophet is robust to missing data and shifts in the trend, and typically\n    handles outliers well.\n  doc_url: https://facebook.github.io/prophet/docs/quick_start.html\n  dev_url: https://github.com/facebook/prophet\n\nextra:\n  recipe-maintainers:\n    - pmlandwehr\n    - rmax\n    - bletham\n",
+ "raw_meta_yaml":"{% set name = \"fbprophet\" %}\n{% set version = \"0.5\" %}\n{% set bundle = \"tar.gz\" %}\n{% set hash_type = \"sha256\" %}\n{% set hash = \"c67fde2845db52dbdb4becd312b271575ce1c804be666ed1eee94339c5a35127\" %}\n{% set build = 1 %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  fn: {{ name }}-{{ version }}.{{ bundle }}\n  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.{{ bundle }}\n  {{ hash_type }}: {{ hash }}\n\nbuild:\n  number: {{ build }}\n  script: {{ PYTHON }} -m pip install . -vv\n  skip: True  # [win and py27]\n  binary_has_prefix_files:\n    - Lib/site-packages/fbprophet/stan_model/prophet_model.pkl          # [win]\n    - lib/python*/site-packages/fbprophet/stan_model/prophet_model.pkl  # [unix]\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n  host:\n    - python\n    - pip\n    - setuptools\n    - cython >=0.22\n    - pystan >=2.14\n    # Pystan models depend on numpy and as they are compiled and pickled we\n    # need to pin numpy version. Note that 1.10 is not available for win+py36.\n    - numpy 1.11.*\n  run:\n    - m2w64-toolchain        # [win]\n    - {{ compiler('c') }}    # [not win]\n    - {{ compiler('cxx') }}  # [not win]\n    - python\n    - matplotlib-base >=2.0.0\n    - pandas >=0.20.1\n    - pystan >=2.14\n    - lunardate >=0.1.5\n    - convertdate >=2.1.2\n    - holidays >=0.9.5\n    - numpy >=1.11\n    # setuptools is required for pkg_resources\n    - setuptools\n\ntest:\n  requires:\n    - pytest\n\n  commands:\n    - py.test -v --pyargs fbprophet\n\nabout:\n  home: https://facebook.github.io/prophet/\n  license: BSD 3-Clause\n  license_family: BSD\n  license_file: LICENSE\n  summary: 'Automatic Forecasting Procedure'\n  description: |\n    Implements a procedure for forecasting time series data based on an\n    additive model where non-linear trends are fit with yearly, weekly, and\n    daily seasonality, plus holiday effects. It works best with time series\n    that have strong seasonal effects and several seasons of historical data.\n    Prophet is robust to missing data and shifts in the trend, and typically\n    handles outliers well.\n  doc_url: https://facebook.github.io/prophet/docs/quick_start.html\n  dev_url: https://github.com/facebook/prophet\n\nextra:\n  recipe-maintainers:\n    - pmlandwehr\n    - rmax\n    - bletham\n",
  "req":{
   "__set__":true,
   "elements":[
@@ -260,7 +260,7 @@
    "holidays",
    "lunardate",
    "m2w64-toolchain",
-   "matplotlib",
+   "matplotlib-base",
    "numpy",
    "pandas",
    "pip",
