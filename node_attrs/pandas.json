@@ -83,60 +83,7 @@
    ]
   }
  ],
- "bad":{
-  "code":404,
-  "exception":"HTTP Error 404: Not Found",
-  "traceback":[
-   "Traceback (most recent call last):",
-   "  File \"/root/repo/cf-scripts/conda_forge_tick/auto_tick.py\", line 660, in main",
-   "    migrator_uid, pr_json = run(",
-   "  File \"/root/repo/cf-scripts/conda_forge_tick/auto_tick.py\", line 133, in run",
-   "    migrate_return = migrator.migrate(recipe_dir, feedstock_ctx.attrs, **kwargs)",
-   "  File \"/root/repo/cf-scripts/conda_forge_tick/migrators/core.py\", line 647, in migrate",
-   "    new_patterns = self.get_hash_patterns(\"meta.yaml\", urls, hash_type)",
-   "  File \"/root/repo/cf-scripts/conda_forge_tick/migrators/core.py\", line 526, in get_hash_patterns",
-   "    hash_ = hash_url(url, hash_type)",
-   "  File \"/opt/conda/envs/run_env/lib/python3.8/site-packages/rever/tools.xsh\", line 207, in hash_url",
-   "    for b in stream_url_progress(url, verb='Hashing', quiet=quiet):",
-   "  File \"/opt/conda/envs/run_env/lib/python3.8/site-packages/rever/tools.xsh\", line 179, in stream_url_progress",
-   "    with urllib.request.urlopen(url) as f:",
-   "  File \"/opt/conda/envs/run_env/lib/python3.8/urllib/request.py\", line 222, in urlopen",
-   "    return opener.open(url, data, timeout)",
-   "  File \"/opt/conda/envs/run_env/lib/python3.8/urllib/request.py\", line 531, in open",
-   "    response = meth(req, response)",
-   "  File \"/opt/conda/envs/run_env/lib/python3.8/urllib/request.py\", line 640, in http_response",
-   "    response = self.parent.error(",
-   "  File \"/opt/conda/envs/run_env/lib/python3.8/urllib/request.py\", line 563, in error",
-   "    result = self._call_chain(*args)",
-   "  File \"/opt/conda/envs/run_env/lib/python3.8/urllib/request.py\", line 502, in _call_chain",
-   "    result = func(*args)",
-   "  File \"/opt/conda/envs/run_env/lib/python3.8/urllib/request.py\", line 755, in http_error_302",
-   "    return self.parent.open(new, timeout=req.timeout)",
-   "  File \"/opt/conda/envs/run_env/lib/python3.8/urllib/request.py\", line 531, in open",
-   "    response = meth(req, response)",
-   "  File \"/opt/conda/envs/run_env/lib/python3.8/urllib/request.py\", line 640, in http_response",
-   "    response = self.parent.error(",
-   "  File \"/opt/conda/envs/run_env/lib/python3.8/urllib/request.py\", line 563, in error",
-   "    result = self._call_chain(*args)",
-   "  File \"/opt/conda/envs/run_env/lib/python3.8/urllib/request.py\", line 502, in _call_chain",
-   "    result = func(*args)",
-   "  File \"/opt/conda/envs/run_env/lib/python3.8/urllib/request.py\", line 755, in http_error_302",
-   "    return self.parent.open(new, timeout=req.timeout)",
-   "  File \"/opt/conda/envs/run_env/lib/python3.8/urllib/request.py\", line 531, in open",
-   "    response = meth(req, response)",
-   "  File \"/opt/conda/envs/run_env/lib/python3.8/urllib/request.py\", line 640, in http_response",
-   "    response = self.parent.error(",
-   "  File \"/opt/conda/envs/run_env/lib/python3.8/urllib/request.py\", line 569, in error",
-   "    return self._call_chain(*args)",
-   "  File \"/opt/conda/envs/run_env/lib/python3.8/urllib/request.py\", line 502, in _call_chain",
-   "    result = func(*args)",
-   "  File \"/opt/conda/envs/run_env/lib/python3.8/urllib/request.py\", line 649, in http_error_default",
-   "    raise HTTPError(req.full_url, code, msg, hdrs, fp)",
-   "urllib.error.HTTPError: HTTP Error 404: Not Found",
-   ""
-  ],
-  "url":"https://files.pythonhosted.org/packages/source/p/pandas/pandas-1.0.0.tar.gz"
- },
+ "bad":false,
  "conda-forge.yml":{
   "compiler_stack":"comp7",
   "max_py_ver":"37",
@@ -184,7 +131,7 @@
   },
   "package":{
    "name":"pandas",
-   "version":"0.25.3"
+   "version":"1.0.0"
   },
   "requirements":{
    "build":[
@@ -225,8 +172,8 @@
    ]
   },
   "source":{
-   "sha256":"52da74df8a9c9a103af0a72c9d5fdc8e0183a90884278db7f386b5692a2220a4",
-   "url":"https://github.com/pandas-dev/pandas/releases/download/v0.25.3/pandas-0.25.3.tar.gz"
+   "sha256":"3ea6cc86931f57f18b1240572216f09922d91b19ab8a01cf24734394a3db3bec",
+   "url":"https://github.com/pandas-dev/pandas/releases/download/v1.0.0/pandas-1.0.0.tar.gz"
   },
   "test":{
    "imports":[
@@ -239,7 +186,7 @@
  "name":"pandas",
  "new_version":"1.0.0",
  "pinning_version":"2019.11.01",
- "raw_meta_yaml":"{% set version = \"0.25.3\" %}\n\npackage:\n  name: pandas\n  version: {{ version }}\n\nsource:\n  url: https://pypi.io/packages/source/p/pandas/pandas-{{ version }}.tar.gz\n  url: https://github.com/pandas-dev/pandas/releases/download/v{{ version }}/pandas-{{ version }}.tar.gz\n  sha256: 52da74df8a9c9a103af0a72c9d5fdc8e0183a90884278db7f386b5692a2220a4\n\nbuild:\n  number: 0\n  script: {{ PYTHON }} -m pip install --no-deps --ignore-installed .\n  skip: True  # [py2k]\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n  host:\n    - python\n    - pip\n    - cython >=0.28.2\n    - numpy\n  run:\n    - python\n    - {{ pin_compatible('numpy') }}\n    - python-dateutil >=2.6.1\n    - pytz >=2017.2\n\ntest:\n  imports:\n    - pandas\n\nabout:\n  home: http://pandas.pydata.org\n  license: BSD 3-clause\n  license_file: LICENSE\n  summary: 'High-performance, easy-to-use data structures and data analysis tools.'\n\nextra:\n  recipe-maintainers:\n    - jreback\n    - jorisvandenbossche\n    - msarahan\n    - ocefpaf\n    - TomAugspurger\n    - WillAyd\n",
+ "raw_meta_yaml":"{% set version = \"1.0.0\" %}\n\npackage:\n  name: pandas\n  version: {{ version }}\n\nsource:\n  url: https://pypi.io/packages/source/p/pandas/pandas-{{ version }}.tar.gz\n  url: https://github.com/pandas-dev/pandas/releases/download/v{{ version }}/pandas-{{ version }}.tar.gz\n  sha256: 3ea6cc86931f57f18b1240572216f09922d91b19ab8a01cf24734394a3db3bec\n\nbuild:\n  number: 0\n  script: {{ PYTHON }} -m pip install --no-deps --ignore-installed .\n  skip: True  # [py2k]\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n  host:\n    - python\n    - pip\n    - cython >=0.28.2\n    - numpy\n  run:\n    - python\n    - {{ pin_compatible('numpy') }}\n    - python-dateutil >=2.6.1\n    - pytz >=2017.2\n\ntest:\n  imports:\n    - pandas\n\nabout:\n  home: http://pandas.pydata.org\n  license: BSD 3-clause\n  license_file: LICENSE\n  summary: 'High-performance, easy-to-use data structures and data analysis tools.'\n\nextra:\n  recipe-maintainers:\n    - jreback\n    - jorisvandenbossche\n    - msarahan\n    - ocefpaf\n    - TomAugspurger\n    - WillAyd\n",
  "req":{
   "__set__":true,
   "elements":[
@@ -256,5 +203,5 @@
  },
  "smithy_version":"3.6.1",
  "url":"https://github.com/pandas-dev/pandas/releases/download/v0.25.1/pandas-0.25.1.tar.gz",
- "version":"0.25.3"
+ "version":"1.0.0"
 }
