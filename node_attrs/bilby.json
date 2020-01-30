@@ -381,6 +381,23 @@
     "migrator_version",
     "version"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/368891143.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"Version",
+    "migrator_version":0,
+    "version":"0.6.4"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "version"
+   ]
   }
  ],
  "bad":false,
@@ -537,8 +554,8 @@
   }
  },
  "name":"bilby",
- "new_version":"0.6.3",
- "pinning_version":"2019.12.18",
+ "new_version":"0.6.4",
+ "pinning_version":"2020.01.27",
  "raw_meta_yaml":"{% set name = \"bilby\" %}\n{% set version = \"0.6.3\" %}\n\npackage:\n  name: \"{{ name|lower }}\"\n  version: \"{{ version }}\"\n\nsource:\n  url: \"https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz\"\n  sha256: 9c82fa27d5a6affa37671104419c5dae0b505121503e0f112f77bd427c032276\n\nbuild:\n  number: 0\n  noarch: python\n  script: \"{{ PYTHON }} -m pip install . -vv\"\n  entry_points:\n    - bilby_convert_resume = cli_bilby.resume:main\n    - bilby_plot = cli_bilby.plot_multiple_posteriors:main\n    - bilby_result = cli_bilby.bilby_result:main\n\nrequirements:\n  host:\n    - pip\n    - python\n    - setuptools\n  run:\n    - corner\n    - deepdish\n    - dill\n    - dynesty >=1.0.0\n    - emcee\n    - future\n    - matplotlib-base >=2.0\n    - numpy >=1.9\n    - pandas\n    - python\n    - scipy\n    - tqdm\n\ntest:\n  requires:\n    - gwpy\n    - python-lal\n    - python-lalsimulation\n  imports:\n    - bilby\n    - bilby.core\n    - bilby.core.sampler\n    - bilby.gw\n    - bilby.gw.detector\n    - bilby.gw.sampler\n    - bilby.hyper\n    - cli_bilby\n  commands:\n    # check entry points\n    - bilby_plot --help\n    - bilby_result --help\n    - bilby_convert_resume --help\n    # check PSD from file works (validates data files)\n    - python -c \"from bilby.gw.detector import PowerSpectralDensity; print(PowerSpectralDensity.from_aligo().psd_array)\"\n\nabout:\n  home: \"https://git.ligo.org/lscsoft/bilby\"\n  dev_url: \"https://git.ligo.org/lscsoft/bilby\"\n  doc_url: \"https://lscsoft.docs.ligo.org/bilby/\"\n  license: \"MIT\"\n  license_family: \"MIT\"\n  license_file: \"LICENSE.md\"\n  summary: \"A user-friendly Bayesian inference library\"\n\nextra:\n  recipe-maintainers:\n    - duncanmmacleod\n    - GregoryAshton\n",
  "req":{
   "__set__":true,
@@ -559,7 +576,7 @@
    "tqdm"
   ]
  },
- "smithy_version":"3.6.5",
+ "smithy_version":"3.6.6",
  "url":"https://pypi.io/packages/source/b/bilby/bilby-0.5.6.tar.gz",
  "version":"0.6.3"
 }
