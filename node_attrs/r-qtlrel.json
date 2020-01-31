@@ -99,6 +99,23 @@
     "migrator_version",
     "version"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/369774514.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"Version",
+    "migrator_version":0,
+    "version":"1.5"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "version"
+   ]
   }
  ],
  "bad":false,
@@ -209,8 +226,8 @@
   }
  },
  "name":"r-qtlrel",
- "new_version":"1.4",
- "pinning_version":"2019.11.01",
+ "new_version":"1.5",
+ "pinning_version":"2020.01.27",
  "raw_meta_yaml":"{% set version = \"1.4\" %}\n\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-qtlrel\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  fn: QTLRel_{{ version }}.tar.gz\n  url:\n    - https://cran.r-project.org/src/contrib/QTLRel_{{ version }}.tar.gz\n    - https://cran.r-project.org/src/contrib/Archive/QTLRel/QTLRel_{{ version }}.tar.gz\n\n  sha256: 8b30478f0d113cf8e02da44a57c100cd88c74f1f48f1022e79aea9d88f8328da\n\nbuild:\n  merge_build_host: True   # [win]\n  skip: True  # [r_base == \"3.5.1\"]\n  number: 0\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - posix                # [win]\n    - {{ compiler('m2w64_c') }}  # [win]\n    - {{ compiler('m2w64_cxx') }}  # [win]\n    - {{ compiler('m2w64_fortran') }}  # [win]\n    - {{ compiler('c') }}  # [not win]\n    - {{ compiler('cxx') }}  # [not win]\n    - {{ compiler('fortran') }}  # [not win]\n  host:\n    - r-base\n    - r-gdata\n    - r-lattice\n\n  run:\n    - r-base\n    - r-gdata\n    - r-lattice\n\ntest:\n  commands:\n    - $R -e \"library('QTLRel')\"  # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('QTLRel')\\\"\"  # [win]\n\nabout:\n  home: https://CRAN.R-project.org/package=QTLRel\n  license: GPL (>= 2)\n  summary: This software provides tools for quantitative trait mapping in populations such as\n    advanced intercross lines where relatedness among individuals should not be ignored.\n    It can estimate background genetic variance components, impute missing genotypes,\n    simulate genotypes, perform a genome scan for putative quantitative trait loci (QTL),\n    and plot mapping results. It also has functions to calculate identity coefficients\n    from pedigrees, especially suitable for pedigrees that consist of a large number\n    of generations, or estimate identity coefficients from genotypic data in certain\n    circumstances.\n  license_family: GPL3\n  license_file: '{{ environ[\"PREFIX\"] }}/lib/R/share/licenses/GPL-3'\nextra:\n   recipe-maintainers:\n    - conda-forge/r\n    - MathiasHaudgaard\n    - FrodePedersen\n    - ArneKr\n",
  "req":{
   "__set__":true,
@@ -227,7 +244,7 @@
    "r-lattice"
   ]
  },
- "smithy_version":"3.6.2",
+ "smithy_version":"3.6.6",
  "url":[
   "https://cran.r-project.org/src/contrib/QTLRel_1.1.tar.gz",
   "https://cran.r-project.org/src/contrib/Archive/QTLRel/QTLRel_1.1.tar.gz",
