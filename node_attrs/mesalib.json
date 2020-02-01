@@ -33,6 +33,23 @@
     "migrator_version",
     "version"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/369913674.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"ArchRebuild",
+    "migrator_version":1,
+    "name":"aarch64 and ppc64le addition"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "name"
+   ]
   }
  ],
  "bad":false,
@@ -133,7 +150,7 @@
  },
  "name":"mesalib",
  "new_version":false,
- "pinning_version":"2019.04.25",
+ "pinning_version":"2020.01.27",
  "raw_meta_yaml":"{% set name = \"mesaLib\" %}\n{% set version = \"17.3.9\" %}  # [linux]\n# 17.1 uses fstatat which isn't defined on OSX 10.9 (which conda-forge uses)\n# It was added in OSX 10.12\n# https://github.com/conda-forge/mesalib-feedstock/pull/18#issuecomment-450589848\n# https://github.com/conda-forge/mesalib-feedstock/pull/20#discussion_r244547648\n{% set version = \"17.0.7\" %}  # [osx]\n\npackage:\n  name: {{ name|lower }}\n  version: \"{{ version }}\"\n\nsource:\n  fn: {{ name }}-{{ version }}.tar.gz\n  url: ftp://ftp.freedesktop.org/pub/mesa/mesa-{{ version }}.tar.gz\n  sha256: 4d625f65a1ff4cd8cfeb39e38f047507c6dea047502a0d53113c96f54588f340  # [linux]\n  sha256: bc68d13c6b1a053b855ac453ebf7e62bd89511adf44bad6c613e09f7fa13390a  # [osx]\n  patches:\n    # https://patchwork.freedesktop.org/patch/214086/\n    - 1-1-gallivm-Fix-build-after-llvm-r328839.patch\n\nbuild:\n  skip: True  # [win]\n  # OSX toolchain compiler seems to fail\n  # See build logs here\n  # https://travis-ci.org/conda-forge/mesalib-feedstock/builds/473694795\n  skip: True  # [osx and c_compiler == \"toolchain_c\"]\n  number: 1001\n  track_features:\n      - mesalib\n\nrequirements:\n  build:\n      - {{ compiler('c') }}\n      - {{ compiler('cxx') }}\n      - pkg-config\n      - python 2.*\n      - mako\n      - zlib\n  host:\n      - pthread-stubs\n      - llvmdev\n      - expat\n      - zlib\n\ntest:\n  commands:\n      - test -f $PREFIX/lib/libOSMesa32${SHLIB_EXT}  # [unix]\n\nabout:\n  home: http://www.mesa3d.org\n  license: MIT\n  license_file: docs/license.html\n  summary: Mesa is an open-source implementation of the OpenGL specification - a system for rendering interactive 3D graphics.\n\nextra:\n    recipe-maintainers:\n      - dnadeau4\n      - doutriaux1\n      - sankhesh\n      - danlipsa\n",
  "req":{
   "__set__":true,
@@ -149,7 +166,7 @@
    "zlib"
   ]
  },
- "smithy_version":"3.3.4",
+ "smithy_version":"3.6.6",
  "url":"ftp://ftp.freedesktop.org/pub/mesa/mesa-17.0.7.tar.gz",
  "version":"17.0.7"
 }
