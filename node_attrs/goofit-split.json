@@ -63,6 +63,7 @@
  "hash_type":"sha256",
  "meta_yaml":{
   "about":{
+   "description":"GooFit is split into GPU and CPU versions on Linux. If you want to install for gpus, you can do:\n\n```bash\nconda install goofit goofit-proc=*=gpu\n```\n\nYou can add `cudatoolkit=10.0` or `9.2` if you want a specific toolkit version.\n\nThe OpenMP CPU version is default, but can be explicitly requested with:\n\n```bash\nconda install goofit goofit-proc=*=cpu\n```\n",
    "home":"https://github.com/GooFit/GooFit",
    "license":"LGPL-3.0-only",
    "license_family":"LGPL",
@@ -115,7 +116,8 @@
      "build":[
       "c_compiler_stub",
       "cxx_compiler_stub",
-      "cmake"
+      "cmake ==3.15.*",
+      "make"
      ],
      "host":[
       "python",
@@ -133,8 +135,8 @@
     "script":"build-cpu.sh",
     "test":{
      "commands":[
-      "$PYTHON -m pytest python/tests/test_exp.py",
-      "$PYTHON -c \"import sys, pkgutil; sys.exit(pkgutil.find_loader('goofit') is None)\""
+      "$PYTHON -m goofit",
+      "$PYTHON -m pytest python/tests/test_exp.py"
      ],
      "imports":[
       "goofit"
@@ -146,7 +148,7 @@
       "python/tests/test_exp.py"
      ]
     },
-    "version":"2.2.2"
+    "version":"2.2.3"
    },
    {
     "about":{
@@ -176,7 +178,8 @@
      "build":[
       "c_compiler_stub",
       "cxx_compiler_stub",
-      "cmake",
+      "cmake ==3.15.*",
+      "make",
       "llvm-openmp"
      ],
      "host":[
@@ -198,8 +201,8 @@
     "script":"build-cpu.sh",
     "test":{
      "commands":[
-      "$PYTHON -m pytest python/tests/test_exp.py",
-      "$PYTHON -c \"import sys, pkgutil; sys.exit(pkgutil.find_loader('goofit') is None)\""
+      "$PYTHON -m goofit",
+      "$PYTHON -m pytest python/tests/test_exp.py"
      ],
      "imports":[
       "goofit"
@@ -211,7 +214,7 @@
       "python/tests/test_exp.py"
      ]
     },
-    "version":"2.2.2"
+    "version":"2.2.3"
    },
    {
     "about":{
@@ -242,14 +245,13 @@
       "c_compiler_stub",
       "cxx_compiler_stub",
       "cuda_compiler_stub",
-      "cmake",
-      "libgomp"
+      "cmake ==3.15.*",
+      "make"
      ],
      "host":[
       "python",
       "scikit-build",
-      "pip",
-      "libgomp"
+      "pip"
      ],
      "run":[
       "python",
@@ -263,26 +265,27 @@
     "script":"build-gpu.sh",
     "test":{
      "commands":[
-      "$PYTHON -c \"import sys, pkgutil; sys.exit(pkgutil.find_loader('goofit') is None)\""
+      "$PYTHON -m goofit"
      ],
-     "imports":null,
-     "requires":null,
-     "source_files":null
+     "imports":[
+      "goofit"
+     ],
+     "requires":[
+      "pytest"
+     ],
+     "source_files":[
+      "python/tests/test_exp.py"
+     ]
     },
-    "version":"2.2.2"
+    "version":"2.2.3"
    }
   ],
   "package":{
    "name":"goofit-split"
   },
   "source":{
-   "patches":[
-    "patches/thrustorder-2.2.2.patch",
-    "patches/thrustorder-2.2.2.patch",
-    "patches/thrustorder-2.2.2.patch"
-   ],
-   "sha256":"82884fd3021555da0953776f81199cbea60287f6bca87b0ecdaa5dd212692c67",
-   "url":"https://pypi.io/packages/source/g/goofit/goofit-2.2.2.tar.gz"
+   "sha256":"7f80e9a8091bc029a92f562539e330587245885329456d8b7783127b6ae7aae8",
+   "url":"https://pypi.io/packages/source/g/goofit/goofit-2.2.3.tar.gz"
   }
  },
  "name":"goofit-split",
@@ -292,7 +295,7 @@
   "goofit-proc"
  ],
  "pinning_version":"2020.01.27",
- "raw_meta_yaml":"{% set version = \"2.2.2\" %}\n{% set name = \"goofit\" %}\n\n{% set goofit_proc_type = \"cpu\" if cuda_compiler_version|default(\"None\") == \"None\" else \"gpu\" %}\n{% set goofit_cuda_supported = [\"None\", \"9.2\", \"10.0\"] %}\n\npackage:\n  name: goofit-split\n\nsource:\n  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz\n  sha256: 82884fd3021555da0953776f81199cbea60287f6bca87b0ecdaa5dd212692c67\n  patches:\n    - patches/thrustorder-2.2.2.patch\n  \nbuild:\n  skip: true  # [win]\n  {% if cuda_compiler_version|default(\"None\") not in goofit_cuda_supported %}\n  skip: true\n  {% endif %}\n  number: 0\n\noutputs:\n  - name: goofit-proc\n    version: \"1.0.0\"\n    build:\n      number: 0\n      string: \"{{ goofit_proc_type }}\"\n    test:\n      commands:\n        - exit 0\n    about:\n      home: https://github.com/conda-forge/goofit-feedstock\n      license: BSD-3-Clause\n      license_family: BSD\n      summary: A meta-package to select CPU or GPU GooFit build.\n\n  - name: goofit\n    version: {{ version }}\n    build:\n      number: 0\n    requirements:\n      build:\n        - {{ compiler(\"c\") }}\n        - {{ compiler(\"cxx\") }}\n        - {{ compiler(\"cuda\") }}  # [linux and cuda_compiler_version != \"None\"]\n        - cmake\n        - llvm-openmp  # [osx]\n        - libgomp      # [linux and not aarch64]\n      host:\n        - python\n        - scikit-build\n        - pip\n        - llvm-openmp  # [osx]\n        - libgomp      # [linux and not aarch64]\n      run:\n        - python\n        - numpy >=1.11.1\n        - llvm-openmp  # [osx]\n        - libgomp      # [linux and not aarch64]\n      run_constrained:\n        - goofit-proc * {{ goofit_proc_type }}\n        - __osx >={{ MACOSX_DEPLOYMENT_TARGET|default(\"10.9\") }}  # [osx]\n\n    script: build-cpu.sh  # [not linux or cuda_compiler_version == \"None\"]\n    script: build-gpu.sh  # [linux and cuda_compiler_version != \"None\"]\n\n    test:\n      requires:\n        - pytest  # [not linux or cuda_compiler_version == \"None\"]\n      source_files:\n        - python/tests/test_exp.py  # [not linux or cuda_compiler_version == \"None\"]\n      imports:\n        - goofit  # [not linux or cuda_compiler_version == \"None\"]\n      commands:\n        - $PYTHON -m pytest python/tests/test_exp.py  # [not linux or cuda_compiler_version == \"None\"]\n        - $PYTHON -c \"import sys, pkgutil; sys.exit(pkgutil.find_loader('goofit') is None)\"\n\nabout:\n  home: https://github.com/GooFit/GooFit\n  license: LGPL-3.0-only\n  license_family: LGPL\n  license_file: LICENSE\n  summary: A fitting package for GPU and CPU\n\nextra:\n  recipe-maintainers:\n    - chrisburr\n    - danielsibemol\n    - henryiii\n",
+ "raw_meta_yaml":"{% set version = \"2.2.3\" %}\n{% set name = \"goofit\" %}\n\n{% set goofit_proc_type = \"cpu\" if cuda_compiler_version|default(\"None\") == \"None\" else \"gpu\" %}\n{% set goofit_cuda_supported = [\"None\", \"9.2\", \"10.0\"] %}\n\npackage:\n  name: goofit-split\n\nsource:\n  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz\n  sha256: 7f80e9a8091bc029a92f562539e330587245885329456d8b7783127b6ae7aae8\n  \nbuild:\n  skip: true  # [win]\n  {% if cuda_compiler_version|default(\"None\") not in goofit_cuda_supported %}\n  skip: true\n  {% endif %}\n  number: 0\n\noutputs:\n  - name: goofit-proc\n    version: \"1.0.0\"\n    build:\n      number: 0\n      string: \"{{ goofit_proc_type }}\"\n    test:\n      commands:\n        - exit 0\n    about:\n      home: https://github.com/conda-forge/goofit-feedstock\n      license: BSD-3-Clause\n      license_family: BSD\n      summary: A meta-package to select CPU or GPU GooFit build.\n\n  - name: goofit\n    version: {{ version }}\n    build:\n      number: 0\n    requirements:\n      build:\n        - {{ compiler(\"c\") }}\n        - {{ compiler(\"cxx\") }}\n        - {{ compiler(\"cuda\") }}  # [linux and cuda_compiler_version != \"None\"]\n        - cmake ==3.15.*\n        - make\n        - llvm-openmp  # [osx]\n        - libgomp      # [linux and not aarch64 and cuda_compiler_version == \"None\"]\n      host:\n        - python\n        - scikit-build\n        - pip\n        - llvm-openmp  # [osx]\n        - libgomp      # [linux and not aarch64 and cuda_compiler_version == \"None\"]\n      run:\n        - python\n        - numpy >=1.11.1\n        - llvm-openmp  # [osx]\n        - libgomp      # [linux and not aarch64]\n      run_constrained:\n        - goofit-proc * {{ goofit_proc_type }}\n        - __osx >={{ MACOSX_DEPLOYMENT_TARGET|default(\"10.9\") }}  # [osx]\n\n    script: build-cpu.sh  # [not linux or cuda_compiler_version == \"None\"]\n    script: build-gpu.sh  # [linux and cuda_compiler_version != \"None\"]\n\n    test:\n      requires:\n        - pytest\n      source_files:\n        - python/tests/test_exp.py\n      imports:\n        - goofit\n      commands:\n        - $PYTHON -m goofit\n        - $PYTHON -m pytest python/tests/test_exp.py  # [not linux or cuda_compiler_version == \"None\"]\n\nabout:\n  home: https://github.com/GooFit/GooFit\n  license: LGPL-3.0-only\n  license_family: LGPL\n  license_file: LICENSE\n  summary: A fitting package for GPU and CPU\n  description: |\n    GooFit is split into GPU and CPU versions on Linux. If you want to install for gpus, you can do:\n    \n    ```bash\n    conda install goofit goofit-proc=*=gpu\n    ```\n    \n    You can add `cudatoolkit=10.0` or `9.2` if you want a specific toolkit version.\n    \n    The OpenMP CPU version is default, but can be explicitly requested with:\n    \n    ```bash\n    conda install goofit goofit-proc=*=cpu\n    ```\n\nextra:\n  recipe-maintainers:\n    - chrisburr\n    - danielsibemol\n    - henryiii\n",
  "req":{
   "__set__":true,
   "elements":[
@@ -302,6 +305,7 @@
    "cxx_compiler_stub",
    "libgomp",
    "llvm-openmp",
+   "make",
    "numpy",
    "pip",
    "python",
