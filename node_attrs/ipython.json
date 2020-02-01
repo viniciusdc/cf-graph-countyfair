@@ -410,8 +410,8 @@
   "about":{
    "description":"IPython provides a rich architecture for interactive computing with\na powerful interactive shell, a kernel for Jupyter, high performance\ntools for parallel computing, and more.\n",
    "dev_url":"https://github.com/ipython/ipython",
-   "doc_url":"https://ipython.readthedocs.io/",
-   "home":"https://ipython.org/",
+   "doc_url":"https://ipython.readthedocs.io",
+   "home":"https://ipython.org",
    "license":"BSD-3-Clause",
    "license_family":"BSD",
    "license_file":"LICENSE",
@@ -471,7 +471,7 @@
   },
   "package":{
    "name":"ipython",
-   "version":"7.11.1"
+   "version":"7.12.0"
   },
   "requirements":{
    "host":[
@@ -492,6 +492,7 @@
     "pygments",
     "python",
     "traitlets >=4.2",
+    "setuptools >=18.5",
     "appnope",
     "backcall",
     "decorator",
@@ -502,6 +503,7 @@
     "pygments",
     "python",
     "traitlets >=4.2",
+    "setuptools >=18.5",
     "backcall",
     "decorator",
     "jedi >=0.10",
@@ -510,24 +512,28 @@
     "prompt_toolkit >=2.0.0,<4,!=3.0.0,!=3.0.1",
     "pygments",
     "python",
-    "traitlets >=4.2"
+    "traitlets >=4.2",
+    "setuptools >=18.5"
    ]
   },
   "source":{
-   "sha256":"0f4bcf18293fb666df8511feec0403bdb7e061a5842ea6e88a3177b0ceb34ead",
-   "url":"https://pypi.io/packages/source/i/ipython/ipython-7.11.1.tar.gz"
+   "sha256":"d9459e7237e2e5858738ff9c3e26504b79899b58a6d49e574d352493d80684c6",
+   "url":"https://pypi.io/packages/source/i/ipython/ipython-7.12.0.tar.gz"
   },
   "test":{
    "commands":[
     "ipython -h",
     "ipython3 -h",
     "NOSE_EXCLUDE=\"test_history|recursion\" iptest",
+    "python -m pip check",
     "ipython -h",
     "ipython3 -h",
     "NOSE_EXCLUDE=\"test_history|recursion\" iptest",
+    "python -m pip check",
     "ipython -h",
     "ipython3 -h",
-    "NOSE_EXCLUDE=\"test_history|recursion\" iptest"
+    "NOSE_EXCLUDE=\"test_history|recursion\" iptest",
+    "python -m pip check"
    ],
    "imports":[
     "IPython",
@@ -595,6 +601,10 @@
     "pygments",
     "requests",
     "testpath",
+    "ipykernel",
+    "trio",
+    "matplotlib",
+    "pip",
     "curio",
     "nbformat",
     "nose >=0.10.1",
@@ -602,20 +612,28 @@
     "pygments",
     "requests",
     "testpath",
+    "ipykernel",
+    "trio",
+    "matplotlib",
+    "pip",
     "curio",
     "nbformat",
     "nose >=0.10.1",
     "numpy",
     "pygments",
     "requests",
-    "testpath"
+    "testpath",
+    "ipykernel",
+    "trio",
+    "matplotlib",
+    "pip"
    ]
   }
  },
  "name":"ipython",
  "new_version":"7.12.0",
  "pinning_version":"2020.01.27",
- "raw_meta_yaml":"{% set version = \"7.11.1\" %}\n\npackage:\n  name: ipython\n  version: {{ version }}\n\nsource:\n  url: https://pypi.io/packages/source/i/ipython/ipython-{{ version }}.tar.gz\n  sha256: 0f4bcf18293fb666df8511feec0403bdb7e061a5842ea6e88a3177b0ceb34ead\n\nbuild:\n  number: 0\n  script: \"{{ PYTHON }} -m pip install . --no-deps --ignore-installed --no-cache-dir -vvv\"\n  skip: True  # [py<36]\n  entry_points:\n    - ipython = IPython:start_ipython\n    - ipython3 = IPython:start_ipython\n    - iptest = IPython.testing.iptestcontroller:main\n    - iptest3 = IPython.testing.iptestcontroller:main\n\nrequirements:\n  host:\n    - pip\n    - python\n  run:\n    - appnope  # [osx]\n    - backcall\n    - colorama  # [win]\n    - decorator\n    - jedi >=0.10\n    - pexpect  # [unix]\n    - pickleshare\n    - prompt_toolkit >=2.0.0,<4,!=3.0.0,!=3.0.1\n    - pygments\n    - python\n    - traitlets >=4.2\n\ntest:\n  requires:\n    - curio  # [unix]\n    - nbformat\n    - nose >=0.10.1\n    - numpy\n    - pygments\n    - requests\n    - testpath\n    # We should uncomment the deps below as soon as the python 3.8 migration is done.\n    # - ipykernel  # [not (aarch64 or ppc64le)]\n    # - trio   # [not (aarch64 or ppc64le)]\n    # - matplotlib  # [not (aarch64 or ppc64le)]\n  imports:\n    - IPython\n    - IPython.core\n    - IPython.core.magics\n    - IPython.core.tests\n    - IPython.extensions\n    - IPython.extensions.tests\n    - IPython.external\n    - IPython.external.decorators\n    - IPython.lib\n    - IPython.lib.tests\n    - IPython.sphinxext\n    - IPython.terminal\n    - IPython.terminal.pt_inputhooks\n    - IPython.terminal.tests\n    - IPython.testing\n    - IPython.testing.plugin\n    - IPython.testing.tests\n    - IPython.utils\n    - IPython.utils.tests\n  commands:\n    - ipython -h\n    - ipython3 -h\n    # [unix and not (aarch64 or ppc64le)]\n    - NOSE_EXCLUDE=\"test_history|recursion\" iptest\n\nabout:\n  home: https://ipython.org/\n  license: BSD-3-Clause\n  license_family: BSD\n  license_file: LICENSE\n  summary: \"IPython: Productive Interactive Computing\"\n  description: |\n    IPython provides a rich architecture for interactive computing with\n    a powerful interactive shell, a kernel for Jupyter, high performance\n    tools for parallel computing, and more.\n  doc_url: https://ipython.readthedocs.io/\n  dev_url: https://github.com/ipython/ipython\n\nextra:\n  recipe-maintainers:\n    - Carreau\n    - jakirkham\n    - fperez\n    - ellisonbg\n    - minrk\n    - ocefpaf\n    - pelson\n    - takluyver\n    - bollwyvl\n    - blink1073\n",
+ "raw_meta_yaml":"{% set version = \"7.12.0\" %}\n\npackage:\n  name: ipython\n  version: {{ version }}\n\nsource:\n  url: https://pypi.io/packages/source/i/ipython/ipython-{{ version }}.tar.gz\n  sha256: d9459e7237e2e5858738ff9c3e26504b79899b58a6d49e574d352493d80684c6\n\nbuild:\n  number: 0\n  script: \"{{ PYTHON }} -m pip install . --no-deps --ignore-installed --no-cache-dir -vvv\"\n  skip: True  # [py<36]\n  entry_points:\n    - ipython = IPython:start_ipython\n    - ipython3 = IPython:start_ipython\n    - iptest = IPython.testing.iptestcontroller:main\n    - iptest3 = IPython.testing.iptestcontroller:main\n\nrequirements:\n  host:\n    - pip\n    - python\n  run:\n    - appnope  # [osx]\n    - backcall\n    - colorama  # [win]\n    - decorator\n    - jedi >=0.10\n    - pexpect  # [unix]\n    - pickleshare\n    - prompt_toolkit >=2.0.0,<4,!=3.0.0,!=3.0.1\n    - pygments\n    - python\n    - traitlets >=4.2\n    - setuptools >=18.5\n\ntest:\n  requires:\n    - curio  # [unix]\n    - nbformat\n    - nose >=0.10.1\n    - numpy\n    - pygments\n    - requests\n    - testpath\n    - ipykernel\n    - trio\n    - matplotlib\n    - pip\n  imports:\n    - IPython\n    - IPython.core\n    - IPython.core.magics\n    - IPython.core.tests\n    - IPython.extensions\n    - IPython.extensions.tests\n    - IPython.external\n    - IPython.external.decorators\n    - IPython.lib\n    - IPython.lib.tests\n    - IPython.sphinxext\n    - IPython.terminal\n    - IPython.terminal.pt_inputhooks\n    - IPython.terminal.tests\n    - IPython.testing\n    - IPython.testing.plugin\n    - IPython.testing.tests\n    - IPython.utils\n    - IPython.utils.tests\n  commands:\n    - ipython -h\n    - ipython3 -h\n    - NOSE_EXCLUDE=\"test_history|recursion\" iptest\n    - python -m pip check\n\nabout:\n  home: https://ipython.org\n  license: BSD-3-Clause\n  license_family: BSD\n  license_file: LICENSE\n  summary: \"IPython: Productive Interactive Computing\"\n  description: |\n    IPython provides a rich architecture for interactive computing with\n    a powerful interactive shell, a kernel for Jupyter, high performance\n    tools for parallel computing, and more.\n  doc_url: https://ipython.readthedocs.io\n  dev_url: https://github.com/ipython/ipython\n\nextra:\n  recipe-maintainers:\n    - Carreau\n    - jakirkham\n    - fperez\n    - ellisonbg\n    - minrk\n    - ocefpaf\n    - pelson\n    - takluyver\n    - bollwyvl\n    - blink1073\n",
  "req":{
   "__set__":true,
   "elements":[
@@ -630,10 +648,11 @@
    "prompt_toolkit",
    "pygments",
    "python",
+   "setuptools",
    "traitlets"
   ]
  },
  "smithy_version":"3.6.6",
  "url":"https://pypi.io/packages/source/i/ipython/ipython-7.8.0.tar.gz",
- "version":"7.11.1"
+ "version":"7.12.0"
 }
