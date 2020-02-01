@@ -16,6 +16,23 @@
     "migrator_version",
     "name"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/369935382.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"ArchRebuild",
+    "migrator_version":1,
+    "name":"aarch64 and ppc64le addition"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "name"
+   ]
   }
  ],
  "bad":false,
@@ -90,7 +107,7 @@
  },
  "name":"json-c",
  "new_version":false,
- "pinning_version":"2018.09.11",
+ "pinning_version":"2020.01.27",
  "raw_meta_yaml":"{% set version = \"0.13.1\" %}\n\npackage:\n  name: json-c\n  version: {{ version.split('-')[0] }}\n\nsource:\n  url: https://s3.amazonaws.com/json-c_releases/releases/json-c-{{ version }}.tar.gz\n  sha256: b87e608d4d3f7bfdd36ef78d56d53c74e66ab278d318b71e6002a369d36f4873\n  patches:\n    - 00-add-library-inc.patch\n\nbuild:\n  number: 1001\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - autoconf  # [not win]\n    - automake  # [not win]\n    - libtool  # [not win]\n    - cmake  # [win]\n    - make\n  host:\n    - msinttypes  # [win and vc<=9]\n\ntest:\n  commands:\n    - test -f ${PREFIX}/lib/libjson-c.a  # [not win]\n    - test -f ${PREFIX}/lib/libjson-c${SHLIB_EXT}  # [not win]\n    - if not exist %LIBRARY_BIN%/json-c.dll exit 1  # [win]\n    - if not exist %LIBRARY_LIB%/json-c.lib exit 1  # [win]\n\nabout:\n  home: https://github.com/json-c/json-c/wiki\n  license: MIT\n  license_file: COPYING\n  summary: 'A JSON implementation in C'\n\nextra:\n  recipe-maintainers:\n    - ocefpaf\n    - sodre\n",
  "req":{
   "__set__":true,
@@ -103,7 +120,7 @@
    "make"
   ]
  },
- "smithy_version":"3.1.12",
+ "smithy_version":"3.6.6",
  "url":"https://s3.amazonaws.com/json-c_releases/releases/json-c-0.13.1.tar.gz",
  "version":"0.13.1"
 }
