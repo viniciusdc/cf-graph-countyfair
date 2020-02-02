@@ -111,15 +111,19 @@
  "hash_type":"sha256",
  "meta_yaml":{
   "about":{
-   "home":"https://cran.r-project.org/web/packages/qtl/index.html",
+   "home":"https://rqtl.org, https://github.com/kbroman/qtl",
    "license":"GPL-3",
    "license_family":"GPL3",
-   "license_file":"/lib/R/share/licenses/GPL-3",
-   "summary":"Analysis of experimental crosses to identify genes (called quantitative trait loci,\nQTLs) contributing to variation in quantitative traits.\n"
+   "license_file":[
+    "/lib/R/share/licenses/GPL-3",
+    "/lib/R/share/licenses/GPL-3",
+    "/lib/R/share/licenses/GPL-3"
+   ],
+   "summary":"Analysis of experimental crosses to identify genes (called quantitative trait loci, QTLs) contributing to variation in quantitative traits. Broman et al. (2003) <doi:10.1093/bioinformatics/btg112>."
   },
   "build":{
    "merge_build_host":true,
-   "number":"1",
+   "number":"0",
    "rpaths":[
     "lib/R/lib/",
     "lib/",
@@ -147,14 +151,23 @@
   },
   "package":{
    "name":"r-qtl",
-   "version":"1.44_9"
+   "version":"1.45_11"
   },
   "requirements":{
    "build":[
-    "posix",
     "m2w64_c_compiler_stub",
+    "m2w64_cxx_compiler_stub",
+    "filesystem",
+    "make",
+    "sed",
+    "coreutils",
+    "zip",
     "c_compiler_stub",
-    "c_compiler_stub"
+    "cxx_compiler_stub",
+    "make",
+    "c_compiler_stub",
+    "cxx_compiler_stub",
+    "make"
    ],
    "host":[
     "r-base",
@@ -163,20 +176,20 @@
    ],
    "run":[
     "r-base",
+    "gcc-libs",
     "r-base",
     "r-base"
    ]
   },
   "source":{
-   "fn":"qtl_1.44-9.tar.gz",
-   "sha256":"315063f0c3fbb95cd2169eb4109ade0339e8f3c28670b38c3167214b9bdf950e",
+   "sha256":"206128fa526c302fee486f5ce74ed92466a0588584ca3654fca63a018c7cd8b4",
    "url":[
-    "https://cran.r-project.org/src/contrib/qtl_1.44-9.tar.gz",
-    "https://cran.r-project.org/src/contrib/Archive/qtl/qtl_1.44-9.tar.gz",
-    "https://cran.r-project.org/src/contrib/qtl_1.44-9.tar.gz",
-    "https://cran.r-project.org/src/contrib/Archive/qtl/qtl_1.44-9.tar.gz",
-    "https://cran.r-project.org/src/contrib/qtl_1.44-9.tar.gz",
-    "https://cran.r-project.org/src/contrib/Archive/qtl/qtl_1.44-9.tar.gz"
+    "https://cran.r-project.org/src/contrib/qtl_1.45-11.tar.gz",
+    "https://cran.r-project.org/src/contrib/Archive/qtl/qtl_1.45-11.tar.gz",
+    "https://cran.r-project.org/src/contrib/qtl_1.45-11.tar.gz",
+    "https://cran.r-project.org/src/contrib/Archive/qtl/qtl_1.45-11.tar.gz",
+    "https://cran.r-project.org/src/contrib/qtl_1.45-11.tar.gz",
+    "https://cran.r-project.org/src/contrib/Archive/qtl/qtl_1.45-11.tar.gz"
    ]
   },
   "test":{
@@ -190,14 +203,21 @@
  "name":"r-qtl",
  "new_version":"1.45_11",
  "pinning_version":"2020.01.27",
- "raw_meta_yaml":"{% set version = \"1.44-9\" %}\n\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-qtl\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  fn: qtl_{{ version }}.tar.gz\n  url:\n    - https://cran.r-project.org/src/contrib/qtl_{{ version }}.tar.gz\n    - https://cran.r-project.org/src/contrib/Archive/qtl/qtl_{{ version }}.tar.gz\n\n  sha256: 315063f0c3fbb95cd2169eb4109ade0339e8f3c28670b38c3167214b9bdf950e\n\nbuild:\n  merge_build_host: True  # [win]\n  number: 1\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - posix                # [win]\n    - {{ compiler('m2w64_c') }}  # [win]\n    - {{compiler('c')}}    # [not win]\n  host:\n    - r-base\n  run:\n    - r-base\n\ntest:\n  commands:\n    - $R -e \"library('qtl')\"  # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('qtl')\\\"\"  # [win]\n\nabout:\n  home: https://cran.r-project.org/web/packages/qtl/index.html\n  license: GPL-3\n  license_file: '{{ environ[\"PREFIX\"] }}/lib/R/share/licenses/GPL-3'\n  summary: |\n    Analysis of experimental crosses to identify genes (called quantitative trait loci,\n    QTLs) contributing to variation in quantitative traits.\n  license_family: GPL3\nextra:\n   recipe-maintainers:\n    - conda-forge/r\n    - MathiasHaudgaard\n    - FrodePedersen\n    - ArneKr\n",
+ "raw_meta_yaml":"{% set version = '1.45-11' %}\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-qtl\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  url:\n    - {{ cran_mirror }}/src/contrib/qtl_{{ version }}.tar.gz\n    - {{ cran_mirror }}/src/contrib/Archive/qtl/qtl_{{ version }}.tar.gz\n  sha256: 206128fa526c302fee486f5ce74ed92466a0588584ca3654fca63a018c7cd8b4\n\nbuild:\n  merge_build_host: True  # [win]\n  number: 0\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - {{ compiler('c') }}              # [not win]\n    - {{ compiler('m2w64_c') }}        # [win]\n    - {{ compiler('cxx') }}            # [not win]\n    - {{ compiler('m2w64_cxx') }}      # [win]\n    - {{posix}}filesystem        # [win]\n    - {{posix}}make\n    - {{posix}}sed               # [win]\n    - {{posix}}coreutils         # [win]\n    - {{posix}}zip               # [win]\n  host:\n    - r-base\n  run:\n    - r-base\n    - {{native}}gcc-libs         # [win]\n\ntest:\n  commands:\n    - $R -e \"library('qtl')\"           # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('qtl')\\\"\"  # [win]\n\nabout:\n  home: https://rqtl.org, https://github.com/kbroman/qtl\n  license: GPL-3\n  summary: Analysis of experimental crosses to identify genes (called quantitative trait loci,\n    QTLs) contributing to variation in quantitative traits. Broman et al. (2003) <doi:10.1093/bioinformatics/btg112>.\n  license_family: GPL3\n  license_file:\n    - '{{ environ[\"PREFIX\"] }}/lib/R/share/licenses/GPL-3'\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n    - MathiasHaudgaard\n    - FrodePedersen\n    - ArneKr\n\n# Package: qtl\n# Version: 1.45-11\n# Date: 2020-02-01\n# Title: Tools for Analyzing QTL Experiments\n# Author: Karl W Broman <broman@wisc.edu> and Hao Wu, with ideas from Gary Churchill and Saunak Sen and contributions from Danny Arends, Robert Corty, Timothee Flutre, Ritsert Jansen, Pjotr Prins, Lars Ronnegard, Rohan Shah, Laura Shannon, Quoc Tran, Aaron Wolen, and Brian Yandell\n# Maintainer: Karl W Broman <broman@wisc.edu>\n# Description: Analysis of experimental crosses to identify genes (called quantitative trait loci, QTLs) contributing to variation in quantitative traits. Broman et al. (2003) <doi:10.1093/bioinformatics/btg112>.\n# Depends: R (>= 2.14.0)\n# Imports: parallel, graphics, stats, utils, grDevices\n# Suggests: testthat\n# License: GPL-3\n# URL: https://rqtl.org, https://github.com/kbroman/qtl\n# BugReports: https://github.com/kbroman/qtl/issues\n# Encoding: UTF-8\n# ByteCompile: true\n# NeedsCompilation: yes\n# Packaged: 2020-02-01 18:45:36 UTC; kbroman\n# Repository: CRAN\n# Date/Publication: 2020-02-02 16:40:05 UTC\n",
  "req":{
   "__set__":true,
   "elements":[
    "c_compiler_stub",
+   "coreutils",
+   "cxx_compiler_stub",
+   "filesystem",
+   "gcc-libs",
    "m2w64_c_compiler_stub",
-   "posix",
-   "r-base"
+   "m2w64_cxx_compiler_stub",
+   "make",
+   "r-base",
+   "sed",
+   "zip"
   ]
  },
  "requirements":{
@@ -205,8 +225,14 @@
    "__set__":true,
    "elements":[
     "c_compiler_stub",
+    "coreutils",
+    "cxx_compiler_stub",
+    "filesystem",
     "m2w64_c_compiler_stub",
-    "posix"
+    "m2w64_cxx_compiler_stub",
+    "make",
+    "sed",
+    "zip"
    ]
   },
   "host":{
@@ -218,6 +244,7 @@
   "run":{
    "__set__":true,
    "elements":[
+    "gcc-libs",
     "r-base"
    ]
   },
@@ -233,8 +260,14 @@
    "__set__":true,
    "elements":[
     "c_compiler_stub",
+    "coreutils",
+    "cxx_compiler_stub",
+    "filesystem",
     "m2w64_c_compiler_stub",
-    "posix"
+    "m2w64_cxx_compiler_stub",
+    "make",
+    "sed",
+    "zip"
    ]
   },
   "host":{
@@ -246,6 +279,7 @@
   "run":{
    "__set__":true,
    "elements":[
+    "gcc-libs",
     "r-base"
    ]
   },
@@ -262,5 +296,5 @@
   "https://cran.r-project.org/src/contrib/qtl_1.44-9.tar.gz",
   "https://cran.r-project.org/src/contrib/Archive/qtl/qtl_1.44-9.tar.gz"
  ],
- "version":"1.44_9"
+ "version":"1.45_11"
 }
