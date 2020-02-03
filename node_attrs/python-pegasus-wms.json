@@ -33,6 +33,23 @@
     "migrator_version",
     "version"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/370502558.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"Version",
+    "migrator_version":0,
+    "version":"4.9.3"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "version"
+   ]
   }
  ],
  "bad":false,
@@ -161,8 +178,8 @@
   }
  },
  "name":"python-pegasus-wms",
- "new_version":"4.9.2",
- "pinning_version":"2019.07.26",
+ "new_version":"4.9.3",
+ "pinning_version":"2020.01.27",
  "raw_meta_yaml":"{% set name = \"python-pegasus-wms\" %}\n{% set version = \"4.9.2\" %}\n{% set sha256 = \"9f81d4e7f227c4ccfd04bc8196c2b44384c870be07ef47d9f05b1469ec1c15f5\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  fn: pegasus-python-source-{{ version }}.tar.gz\n  url: http://download.pegasus.isi.edu/pegasus/{{ version }}/pegasus-python-source-{{ version }}.tar.gz\n  sha256: {{ sha256 }}\n  patches:\n    # remove call to deprecated commands module\n    - commands.patch\n    # fix indentation\n    - indent.patch\n    # use configobj release instead of vendored\n    - configobj.patch\n    # use pamela instead of pam\n    - pamela.patch\n    # fix use of flask-cache\n    - flask-cache.patch\n\nbuild:\n  number: 0\n  noarch: python\n  script: \"{{ PYTHON }} -m pip install . --no-deps --ignore-installed -vv \"\n\nrequirements:\n  host:\n    - python\n    - setuptools\n    - pip\n  run:\n    - python\n    - boto >=2.48.0\n    - configobj\n    # flask-cache itself needs flask <1.0.0a0\n    - flask >=0.12.4,<1.0.0a0\n    - flask-cache >=0.13.1\n    - flask-sqlalchemy >=0.16\n    - future\n    - itsdangerous >=0.24\n    - jinja2 >=2.8.1\n    - markupsafe >=1.0\n    - pamela\n    - psycopg2 >=2.6\n    - pyparsing\n    - pyopenssl >=16.2.0\n    - requests >=2.18.4\n    - sqlalchemy >=0.8.0\n    - werkzeug >=0.14.1\n\ntest:\n  imports:\n    - Pegasus.DAX3\n\nabout:\n  home: \"https://pegasus.isi.edu\"\n  license: Apache 2.0\n  license_family: APACHE\n  license_file: '{{ environ[\"RECIPE_DIR\"] }}/LICENSE'\n  summary: This package contains the Python APIs for Pegasus WMS\n  description: |\n    This package contains the Python APIs for Pegasus WMS, including:\n\n    - The DAX API (Versions 2 and 3)\n    - The PDAX API (Version 2)\n    - The monitoring API\n    - The Stampede database API\n    - The Pegasus statistics API\n    - The Pegasus plots API\n    - Misc. Pegasus utilities\n\nextra:\n  recipe-maintainers:\n    - duncanmmacleod\n",
  "req":{
   "__set__":true,
@@ -228,7 +245,7 @@
    "elements":[]
   }
  },
- "smithy_version":"3.4.1",
+ "smithy_version":"3.6.7",
  "strong_exports":false,
  "total_requirements":{
   "build":{
