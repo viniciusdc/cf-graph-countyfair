@@ -152,10 +152,11 @@
   "about":{
    "description":"pyFAI is an azimuthal integration library that tries to be fast (as fast\nas C and even more using OpenCL and GPU). It is based on histogramming of\nthe 2theta/Q positions of each (center of) pixel weighted by the intensity\nof each pixel, but parallel version uses a SparseMatrix-DenseVector\nmultiplication. Neighboring output bins get also a contribution of pixels\nnext to the border thanks to pixel splitting. Finally pyFAI provides also\ntools to calibrate the experimental setup using Debye-Scherrer rings of a\nreference compound.\n",
    "dev_url":"https://github.com/silx-kit/pyFAI/",
-   "doc_url":"http://pythonhosted.org/pyFAI/",
+   "doc_url":"http://www.silx.org/doc/pyFAI/latest/",
    "home":"https://github.com/silx-kit/pyFAI/",
-   "license":"GPL-3",
-   "license_file":"LICENSES.txt",
+   "license":"MIT",
+   "license_family":"MIT",
+   "license_file":"copyright",
    "summary":"Python implementation of fast azimuthal integration"
   },
   "build":{
@@ -206,7 +207,7 @@
     "pyFAI-saxs = pyFAI.app.saxs:main",
     "pyFAI-waxs = pyFAI.app.waxs:main"
    ],
-   "number":"1"
+   "number":"0"
   },
   "extra":{
    "recipe-maintainers":[
@@ -232,7 +233,7 @@
   },
   "package":{
    "name":"pyfai",
-   "version":"0.18.0"
+   "version":"0.19.0"
   },
   "requirements":{
    "build":[
@@ -252,6 +253,7 @@
     "fabio",
     "h5py",
     "pip",
+    "numexpr",
     "python",
     "setuptools",
     "numpy",
@@ -260,6 +262,7 @@
     "fabio",
     "h5py",
     "pip",
+    "numexpr",
     "python",
     "setuptools",
     "numpy",
@@ -267,7 +270,8 @@
     "scipy",
     "fabio",
     "h5py",
-    "pip"
+    "pip",
+    "numexpr"
    ],
    "run":[
     "python",
@@ -279,6 +283,8 @@
     "lxml",
     "matplotlib",
     "silx",
+    "numexpr",
+    "setuptools",
     "python",
     "compatible_pin_stub",
     "fabio",
@@ -288,6 +294,8 @@
     "lxml",
     "matplotlib",
     "silx",
+    "numexpr",
+    "setuptools",
     "python",
     "compatible_pin_stub",
     "fabio",
@@ -296,13 +304,15 @@
     "pillow",
     "lxml",
     "matplotlib",
-    "silx"
+    "silx",
+    "numexpr",
+    "setuptools"
    ]
   },
   "source":{
-   "fn":"v0.18.0.tar.gz",
-   "sha256":"4637eaa40a5a3b10c97ef0fea9e6f935c4ae93eb8df48643d567db7796cb3ef8",
-   "url":"https://github.com/silx-kit/pyFAI/archive/v0.18.0.tar.gz"
+   "fn":"v0.19.0.tar.gz",
+   "sha256":"1e329d2bdd6f4ddc4c70460bb0b994a33b6885bff810b11a7871d83ef8756281",
+   "url":"https://github.com/silx-kit/pyFAI/archive/v0.19.0.tar.gz"
   },
   "test":{
    "imports":[
@@ -324,7 +334,7 @@
  "name":"pyfai",
  "new_version":"0.19.0",
  "pinning_version":"2020.01.27",
- "raw_meta_yaml":"{% set name = \"pyfai\" %}\n{% set version = \"0.18.0\" %}\n{% set sha256 = \"4637eaa40a5a3b10c97ef0fea9e6f935c4ae93eb8df48643d567db7796cb3ef8\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  fn: v{{ version }}.tar.gz\n  url: https://github.com/silx-kit/pyFAI/archive/v{{ version }}.tar.gz\n  sha256: {{ sha256 }}\n\nbuild:\n  number: 1\n  entry_points:\n    - check_calib = pyFAI.app.check_calib:main\n    - detector2nexus = pyFAI.app.detector2nexus:main\n    - diff_map = pyFAI.app.diff_map:main\n    - diff_tomo = pyFAI.app.diff_tomo:main\n    - eiger-mask = pyFAI.app.eiger_mask:main\n    - MX-calibrate = pyFAI.app.mx_calibrate:main\n    - pyFAI-average = pyFAI.app.average:main\n    - pyFAI-benchmark = pyFAI.app.benchmark:main\n    - pyFAI-calib = pyFAI.app.calib:main\n    - pyFAI-calib2 = pyFAI.app.calib2:main\n    - pyFAI-drawmask = pyFAI.app.drawmask:main\n    - pyFAI-integrate = pyFAI.app.integrate:main\n    - pyFAI-recalib = pyFAI.app.recalib:main\n    - pyFAI-saxs = pyFAI.app.saxs:main\n    - pyFAI-waxs = pyFAI.app.waxs:main\n  skip: True  # [py2k and win]\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n  host:\n    - python\n    - setuptools\n    - numpy\n    - cython\n    - scipy\n    - fabio\n    - h5py\n    - pip\n\n  run:\n    - python\n    - {{ pin_compatible('numpy') }}\n    - fabio\n    - scipy\n    - h5py\n    - pillow\n    - lxml\n    - matplotlib\n    - silx\n\ntest:\n  imports:\n    - pyFAI\n    - pyFAI.test\n    - pyFAI.third_party\n    - pyFAI.gui\n# Bring these back when CDT/yum stuff is done\n#  commands:\n#    - pyFAI-calib -h\n\nabout:\n  home: https://github.com/silx-kit/pyFAI/\n  license: GPL-3\n  license_file: LICENSES.txt\n  summary: 'Python implementation of fast azimuthal integration'\n\n  description: |\n    pyFAI is an azimuthal integration library that tries to be fast (as fast\n    as C and even more using OpenCL and GPU). It is based on histogramming of\n    the 2theta/Q positions of each (center of) pixel weighted by the intensity\n    of each pixel, but parallel version uses a SparseMatrix-DenseVector\n    multiplication. Neighboring output bins get also a contribution of pixels\n    next to the border thanks to pixel splitting. Finally pyFAI provides also\n    tools to calibrate the experimental setup using Debye-Scherrer rings of a\n    reference compound.\n  doc_url: http://pythonhosted.org/pyFAI/\n  dev_url: https://github.com/silx-kit/pyFAI/\n\nextra:\n  recipe-maintainers:\n    - CJ-Wright\n    - tacaswell\n    - chiahaoliu\n    - tschoonj\n    - kif\n    - t20100\n",
+ "raw_meta_yaml":"{% set name = \"pyfai\" %}\n{% set version = \"0.19.0\" %}\n{% set sha256 = \"1e329d2bdd6f4ddc4c70460bb0b994a33b6885bff810b11a7871d83ef8756281\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  fn: v{{ version }}.tar.gz\n  url: https://github.com/silx-kit/pyFAI/archive/v{{ version }}.tar.gz\n  sha256: {{ sha256 }}\n\nbuild:\n  number: 0\n  entry_points:\n    - check_calib = pyFAI.app.check_calib:main\n    - detector2nexus = pyFAI.app.detector2nexus:main\n    - diff_map = pyFAI.app.diff_map:main\n    - diff_tomo = pyFAI.app.diff_tomo:main\n    - eiger-mask = pyFAI.app.eiger_mask:main\n    - MX-calibrate = pyFAI.app.mx_calibrate:main\n    - pyFAI-average = pyFAI.app.average:main\n    - pyFAI-benchmark = pyFAI.app.benchmark:main\n    - pyFAI-calib = pyFAI.app.calib:main\n    - pyFAI-calib2 = pyFAI.app.calib2:main\n    - pyFAI-drawmask = pyFAI.app.drawmask:main\n    - pyFAI-integrate = pyFAI.app.integrate:main\n    - pyFAI-recalib = pyFAI.app.recalib:main\n    - pyFAI-saxs = pyFAI.app.saxs:main\n    - pyFAI-waxs = pyFAI.app.waxs:main\n  skip: True  # [py2k and win]\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n  host:\n    - python\n    - setuptools\n    - numpy\n    - cython\n    - scipy\n    - fabio\n    - h5py\n    - pip\n    - numexpr\n\n  run:\n    - python\n    - {{ pin_compatible('numpy') }}\n    - fabio\n    - scipy\n    - h5py\n    - pillow\n    - lxml\n    - matplotlib\n    - silx\n    - numexpr\n    - setuptools\n\ntest:\n  imports:\n    - pyFAI\n    - pyFAI.test\n    - pyFAI.third_party\n    - pyFAI.gui\n# Bring these back when CDT/yum stuff is done\n#  commands:\n#    - pyFAI-calib -h\n\nabout:\n  home: https://github.com/silx-kit/pyFAI/\n  license: MIT\n  license_family: MIT\n  license_file: copyright\n  summary: 'Python implementation of fast azimuthal integration'\n\n  description: |\n    pyFAI is an azimuthal integration library that tries to be fast (as fast\n    as C and even more using OpenCL and GPU). It is based on histogramming of\n    the 2theta/Q positions of each (center of) pixel weighted by the intensity\n    of each pixel, but parallel version uses a SparseMatrix-DenseVector\n    multiplication. Neighboring output bins get also a contribution of pixels\n    next to the border thanks to pixel splitting. Finally pyFAI provides also\n    tools to calibrate the experimental setup using Debye-Scherrer rings of a\n    reference compound.\n  doc_url: http://www.silx.org/doc/pyFAI/latest/\n  dev_url: https://github.com/silx-kit/pyFAI/\n\nextra:\n  recipe-maintainers:\n    - CJ-Wright\n    - tacaswell\n    - chiahaoliu\n    - tschoonj\n    - kif\n    - t20100\n",
  "req":{
   "__set__":true,
   "elements":[
@@ -336,6 +346,7 @@
    "h5py",
    "lxml",
    "matplotlib",
+   "numexpr",
    "numpy",
    "pillow",
    "pip",
@@ -359,6 +370,7 @@
     "cython",
     "fabio",
     "h5py",
+    "numexpr",
     "numpy",
     "pip",
     "python",
@@ -374,9 +386,11 @@
     "h5py",
     "lxml",
     "matplotlib",
+    "numexpr",
     "pillow",
     "python",
     "scipy",
+    "setuptools",
     "silx"
    ]
   },
@@ -401,6 +415,7 @@
     "cython",
     "fabio",
     "h5py",
+    "numexpr",
     "numpy",
     "pip",
     "python",
@@ -416,9 +431,11 @@
     "h5py",
     "lxml",
     "matplotlib",
+    "numexpr",
     "pillow",
     "python",
     "scipy",
+    "setuptools",
     "silx"
    ]
   },
@@ -428,5 +445,5 @@
   }
  },
  "url":"https://github.com/silx-kit/pyFAI/archive/v0.18.0.tar.gz",
- "version":"0.18.0"
+ "version":"0.19.0"
 }
