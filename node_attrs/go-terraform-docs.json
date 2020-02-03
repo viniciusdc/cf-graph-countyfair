@@ -67,6 +67,23 @@
     "migrator_version",
     "version"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/370483547.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"Version",
+    "migrator_version":0,
+    "version":"0.8.2"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "version"
+   ]
   }
  ],
  "bad":false,
@@ -146,8 +163,8 @@
   }
  },
  "name":"go-terraform-docs",
- "new_version":"0.8.1",
- "pinning_version":"2020.01.10",
+ "new_version":"0.8.2",
+ "pinning_version":"2020.01.27",
  "raw_meta_yaml":"{% set import_path = \"github.com/segmentio/terraform-docs\" %}\n{% set version = \"0.8.1\" %}\n\t\n{% set name = import_path.split('/')[-1] %}\n{% set pkg_src = ('src/'+import_path).replace(\"/\", os.sep) %}\n\npackage:\n  name: go-{{ name|lower }}\n  version: \"0.8.1\"\n\nsource:\n  - folder: {{ pkg_src }}\n    url: https://{{ import_path }}/archive/v{{version}}.tar.gz\n    sha256: b7ae9b6a295aafdceb900386ab38573c90d6af4ba1a6dda3f588b79b99e5d83f\n\nbuild:\n  number: 0\n  script:\n    - pushd {{ pkg_src }}\n    - go install -v\n        -ldflags \"-X main.version={{ version }}\"\n        .\n\nrequirements:\n  build:\n    - {{ compiler(\"go\") }}\n\ntest:\n  commands:\n    - which terraform-docs  # [not win]\n    - where terraform-docs  # [win]\n    - terraform-docs --help\n\nabout:\n  home: https://{{ import_path }}\n\n  license: MIT\n  license_family: MIT\n  license_file: {{ pkg_src }}/LICENSE\n  summary: 'Generate docs from Terraform modules'\n\nextra:\n  recipe-maintainers:\n    - andrew-mcgrath\n    - pierrsc\n",
  "req":{
   "__set__":true,
@@ -175,7 +192,7 @@
    "elements":[]
   }
  },
- "smithy_version":"3.6.5",
+ "smithy_version":"3.6.7",
  "strong_exports":false,
  "total_requirements":{
   "build":{
