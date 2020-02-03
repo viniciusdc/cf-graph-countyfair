@@ -235,7 +235,7 @@
    "summary":"Modern C++ toolkit containing machine learning algorithms with Python bindings"
   },
   "build":{
-   "number":"0",
+   "number":"1",
    "run_exports":[
     "subpackage_stub",
     "subpackage_stub",
@@ -294,18 +294,10 @@
    "run":[
     "python",
     "compatible_pin_stub",
-    "jpeg",
-    "libpng",
     "python",
     "compatible_pin_stub",
-    "jpeg",
-    "libpng",
-    "sqlite",
     "python",
-    "compatible_pin_stub",
-    "jpeg",
-    "libpng",
-    "sqlite"
+    "compatible_pin_stub"
    ]
   },
   "source":{
@@ -349,7 +341,7 @@
  "name":"dlib",
  "new_version":"19.19",
  "pinning_version":"2019.12.02",
- "raw_meta_yaml":"{% set name = \"dlib\" %}\n{% set version = \"19.19\" %}\n\npackage:\n  name: {{ name }}\n  version: {{ version }}\n\nsource:\n  url: https://github.com/davisking/{{ name }}/archive/v{{ version }}.tar.gz\n  sha256: 7af455bb422d3ae5ef369c51ee64e98fa68c39435b0fa23be2e5d593a3d45b87\n\n  patches:\n    - lapack_sgetrf.patch      # [unix]\n    #- win_jpeg_png.patch       # [win]\n    #- win_release_flags.patch  # [win]\n    - cxx11_detection.patch\n\nbuild:\n  skip: true  # [win and py<35]\n  number: 0\n  run_exports:\n    - {{ pin_subpackage('dlib', max_pin='x.x') }}\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n    - cmake\n  host:\n    - python\n    - pybind11\n    - liblapack   # [not win]\n    - libcblas  # [not win]\n    - numpy\n    - jpeg\n    - libpng\n    - sqlite  # [not win]\n  run:\n    - python\n    - {{ pin_compatible('numpy') }}\n    - jpeg\n    - libpng\n    - sqlite  # [not win]\n\ntest:\n  files:\n    - test_data/face.jpg\n    - test_data/face.png\n    - test_data/images.xml\n\n  requires:\n    - tqdm\n    - pillow\n\n  imports:\n    - dlib\n\nabout:\n  home: http://dlib.net/\n  license: BSL-1.0\n  license_file: dlib/LICENSE.txt\n  summary: Modern C++ toolkit containing machine learning algorithms with Python bindings\n\nextra:\n  recipe-maintainers:\n    - patricksnape\n    - aldanor\n",
+ "raw_meta_yaml":"{% set name = \"dlib\" %}\n{% set version = \"19.19\" %}\n\npackage:\n  name: {{ name }}\n  version: {{ version }}\n\nsource:\n  url: https://github.com/davisking/{{ name }}/archive/v{{ version }}.tar.gz\n  sha256: 7af455bb422d3ae5ef369c51ee64e98fa68c39435b0fa23be2e5d593a3d45b87\n\n  patches:\n    - lapack_sgetrf.patch      # [unix]\n    - cxx11_detection.patch\n\nbuild:\n  skip: true  # [win and py<35]\n  number: 1\n  run_exports:\n    - {{ pin_subpackage('dlib', max_pin='x.x') }}\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n    - cmake\n  host:\n    - python\n    - pybind11\n    - liblapack   # [not win]\n    - libcblas  # [not win]\n    - numpy\n    - jpeg\n    - libpng\n    - sqlite  # [not win]\n  run:\n    - python\n    - {{ pin_compatible('numpy') }}\n\ntest:\n  files:\n    - test_data/face.jpg\n    - test_data/face.png\n    - test_data/images.xml\n\n  requires:\n    - tqdm\n    - pillow\n\n  imports:\n    - dlib\n\nabout:\n  home: http://dlib.net/\n  license: BSL-1.0\n  license_file: dlib/LICENSE.txt\n  summary: Modern C++ toolkit containing machine learning algorithms with Python bindings\n\nextra:\n  recipe-maintainers:\n    - patricksnape\n    - aldanor\n",
  "req":{
   "__set__":true,
   "elements":[
@@ -393,10 +385,7 @@
    "__set__":true,
    "elements":[
     "compatible_pin_stub",
-    "jpeg",
-    "libpng",
-    "python",
-    "sqlite"
+    "python"
    ]
   },
   "test":{
@@ -435,10 +424,7 @@
    "__set__":true,
    "elements":[
     "compatible_pin_stub",
-    "jpeg",
-    "libpng",
-    "python",
-    "sqlite"
+    "python"
    ]
   },
   "test":{
