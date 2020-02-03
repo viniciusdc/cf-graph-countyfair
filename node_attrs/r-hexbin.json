@@ -113,6 +113,23 @@
     "migrator_version",
     "version"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/370429084.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"Version",
+    "migrator_version":0,
+    "version":"1.28.1"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "version"
+   ]
   }
  ],
  "bad":false,
@@ -211,8 +228,8 @@
   }
  },
  "name":"r-hexbin",
- "new_version":"1.28.0",
- "pinning_version":"2019.11.01",
+ "new_version":"1.28.1",
+ "pinning_version":"2020.01.27",
  "raw_meta_yaml":"{% set version = \"1.28.0\" %}\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-hexbin\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  url:\n    - {{ cran_mirror }}/src/contrib/hexbin_{{ version }}.tar.gz\n    - {{ cran_mirror }}/src/contrib/Archive/hexbin/hexbin_{{ version }}.tar.gz\n  sha256: cda0d4b637ddd63eaaed70eb7b3ced09216dbf63e7803d6dfe3c8d3fc392a82c\n\nbuild:\n  merge_build_host: True  # [win]\n  number: 0\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - {{ compiler('c') }}        # [not win]\n    - {{ compiler('fortran') }}  # [not win]\n    - {{ compiler('m2w64_c') }}        # [win]\n    - {{ compiler('m2w64_fortran') }}        # [win]\n    - {{posix}}filesystem        # [win]\n    - {{posix}}make\n    - {{posix}}sed               # [win]\n    - {{posix}}coreutils         # [win]\n    - {{posix}}zip               # [win]\n  host:\n    - r-base\n    - r-lattice\n  run:\n    - r-base\n    - {{native}}gcc-libs         # [win]\n    - r-lattice\n\ntest:\n  commands:\n    - $R -e \"library('hexbin')\"           # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('hexbin')\\\"\"  # [win]\n\nabout:\n  home: http://github.com/edzer/hexbin\n  license: GPL-2\n  summary: Binning and plotting functions for hexagonal bins.\n  license_family: GPL2\n  license_file: '{{ environ[\"PREFIX\"] }}/lib/R/share/licenses/GPL-2'\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n\n# Package: hexbin\n# Version: 1.27.3\n# Title: Hexagonal Binning Routines\n# Author: Dan Carr <dcarr@voxel.galaxy.gmu.edu>, ported by Nicholas Lewin-Koh and Martin Maechler <maechler@stat.math.ethz.ch>, contains copies of lattice functions written by Deepayan Sarkar  <deepayan.sarkar@r-project.org>\n# Maintainer: Edzer Pebesma <edzer.pebesma@uni-muenster.de>\n# Depends: R (>= 2.0.1), methods\n# Imports: lattice, grid, graphics, grDevices, stats, utils\n# Suggests: marray, affy, Biobase, limma\n# Description: Binning and plotting functions for hexagonal bins.\n# Collate: lattice.R BTC.R BTY.R grid.hexagons.R grid.hexlegend.R hbox.R hdiffplot.R hexbinList.R hexbinplot.R hexbin.s4.R hexpanel.R hexplom.R hexPlotMA.R hexutil.R hexViewport.R HO.R LINGRAY.R LOCS.R MAG.R RB.R smoothHexbin.R\n# License: GPL-2\n# NeedsCompilation: yes\n# URL: http://github.com/edzer/hexbin\n# Packaged: 2019-05-14 13:56:49 UTC; edzer\n# Repository: CRAN\n# Date/Publication: 2019-05-14 14:50:03 UTC\n",
  "req":{
   "__set__":true,
@@ -266,7 +283,7 @@
    "elements":[]
   }
  },
- "smithy_version":"3.6.2",
+ "smithy_version":"3.6.7",
  "strong_exports":false,
  "total_requirements":{
   "build":{

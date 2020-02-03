@@ -282,6 +282,23 @@
     "migrator_version",
     "version"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/370429827.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"Version",
+    "migrator_version":0,
+    "version":"2.0.0"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "version"
+   ]
   }
  ],
  "bad":false,
@@ -394,8 +411,8 @@
   }
  },
  "name":"gsd",
- "new_version":"1.10.0",
- "pinning_version":"2019.11.26",
+ "new_version":"2.0.0",
+ "pinning_version":"2020.01.27",
  "raw_meta_yaml":"{% set name = \"gsd\" %}\n{% set version = \"1.10.0\" %}\n{% set sha256 = \"6c121775106ee9073787fd3ea7c5608710f62a041d5e82b171247b057410aec3\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  fn: {{ name }}-{{ version }}.tar.gz\n  url: https://glotzerlab.engin.umich.edu/Downloads/{{ name }}/{{ name }}-v{{ version }}.tar.gz\n  sha256: {{ sha256 }}\n\nbuild:\n  number: 0\n  # the upstream package does not support python2.7\n  skip: true  # [py27]\n  script: \"{{ PYTHON }} -m pip install . -vv --no-deps\"\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n\n  host:\n    - setuptools\n    - cython\n    - python\n    - numpy\n    - pip\n\n  run:\n    - python\n    - {{ pin_compatible('numpy') }}\n\ntest:\n  requires:\n    - pytest\n  imports:\n    - gsd\n    - gsd.fl\n    - gsd.pygsd\n    - gsd.hoomd\n  source_files:\n    - tests/\n    - setup.cfg\n  commands:\n    - pytest\n\nabout:\n  home: https://github.com/glotzerlab/{{ name }}\n  license: BSD-2-Clause\n  license_family: BSD\n  license_file: LICENSE\n  summary: 'General simulation data'\n\n  description: |\n   GSD (General Simulation Data) is a file format specification\n   and a library to read and write it. The package also contains a python module\n   that reads and writes hoomd schema gsd files with an easy to use syntax.\n\n  doc_url: https://gsd.readthedocs.io\n  dev_url: https://github.com/glotzerlab/{{ name }}\n\nextra:\n  recipe-maintainers:\n    - bdice\n    - joaander\n",
  "req":{
   "__set__":true,
@@ -440,7 +457,7 @@
    ]
   }
  },
- "smithy_version":"3.6.2",
+ "smithy_version":"3.6.7",
  "strong_exports":false,
  "total_requirements":{
   "build":{
