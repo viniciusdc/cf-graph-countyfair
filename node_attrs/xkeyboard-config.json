@@ -80,7 +80,7 @@
   },
   "package":{
    "name":"xkeyboard-config",
-   "version":"2.28"
+   "version":"2.29"
   },
   "requirements":{
    "build":[
@@ -91,6 +91,7 @@
     "intltool",
     "perl-xml-parser",
     "libxslt",
+    "python >=3",
     "c_compiler_stub",
     "make",
     "autoconf",
@@ -98,13 +99,15 @@
     "intltool",
     "perl-xml-parser",
     "libxslt",
+    "python >=3",
     "c_compiler_stub",
     "make",
     "autoconf",
     "pkg-config",
     "intltool",
     "perl-xml-parser",
-    "libxslt"
+    "libxslt",
+    "python >=3"
    ],
    "host":[
     "xorg-xproto",
@@ -116,8 +119,13 @@
    ]
   },
   "source":{
-   "sha256":"69adb25b0fc64e4075f8ec0eab8d869892419f474f91fb69db1713de2062bdce",
-   "url":"http://www.x.org/releases/individual/data/xkeyboard-config/xkeyboard-config-2.28.tar.bz2"
+   "patches":[
+    "map-variants.py.patch",
+    "map-variants.py.patch",
+    "map-variants.py.patch"
+   ],
+   "sha256":"1d4175278bf06000683656763a8b1d3282c61a314b6db41260c8efe92d621802",
+   "url":"http://www.x.org/releases/individual/data/xkeyboard-config/xkeyboard-config-2.29.tar.bz2"
   },
   "test":{
    "commands":[
@@ -130,7 +138,7 @@
  "name":"xkeyboard-config",
  "new_version":"2.29",
  "pinning_version":"2020.01.27",
- "raw_meta_yaml":"{% set name = \"xkeyboard-config\" %}\n{% set version = \"2.28\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  url: http://www.x.org/releases/individual/data/{{ name }}/{{ name }}-{{ version }}.tar.bz2\n  sha256: 69adb25b0fc64e4075f8ec0eab8d869892419f474f91fb69db1713de2062bdce\n\nbuild:\n  number: 0\n  skip: true  # [not linux]\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - make\n    - autoconf\n    - pkg-config\n    # the following are expected in the build environment for some reason\n    - intltool\n    - perl-xml-parser\n    - libxslt\n  host:\n    - xorg-xproto\n    - xorg-libx11\n\ntest:\n  commands:\n    - test -f \"${PREFIX}/share/X11/xkb/geometry/hp\"\n\nabout:\n  home: https://www.freedesktop.org/wiki/Software/XKeyboardConfig/\n  license: MIT\n  license_family: MIT\n  license_file: COPYING\n  summary: 'The non-arch keyboard configuration database for X Windows'\n  description: |\n    The goal is to provide the consistent, well-structured, frequently\n    released open source of X keyboard configuration data for X Window\n    System implementations (free, open source and commercial).\n    The project is targeted to XKB-based systems.\n  doc_url: https://www.freedesktop.org/wiki/Software/XKeyboardConfig/\n  dev_url: https://www.freedesktop.org/wiki/Software/XKeyboardConfig/Development/\n\nextra:\n  recipe-maintainers:\n    - scopatz\n",
+ "raw_meta_yaml":"{% set name = \"xkeyboard-config\" %}\n{% set version = \"2.29\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  url: http://www.x.org/releases/individual/data/{{ name }}/{{ name }}-{{ version }}.tar.bz2\n  sha256: 1d4175278bf06000683656763a8b1d3282c61a314b6db41260c8efe92d621802\n  patches:\n    # use conda's Python\n    - map-variants.py.patch\n\nbuild:\n  number: 0\n  skip: true  # [not linux]\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - make\n    - autoconf\n    - pkg-config\n    # the following are expected in the build environment for some reason\n    - intltool\n    - perl-xml-parser\n    - libxslt\n    - python >=3\n  host:\n    - xorg-xproto\n    - xorg-libx11\n\ntest:\n  commands:\n    - test -f \"${PREFIX}/share/X11/xkb/geometry/hp\"\n\nabout:\n  home: https://www.freedesktop.org/wiki/Software/XKeyboardConfig/\n  license: MIT\n  license_family: MIT\n  license_file: COPYING\n  summary: 'The non-arch keyboard configuration database for X Windows'\n  description: |\n    The goal is to provide the consistent, well-structured, frequently\n    released open source of X keyboard configuration data for X Window\n    System implementations (free, open source and commercial).\n    The project is targeted to XKB-based systems.\n  doc_url: https://www.freedesktop.org/wiki/Software/XKeyboardConfig/\n  dev_url: https://www.freedesktop.org/wiki/Software/XKeyboardConfig/Development/\n\nextra:\n  recipe-maintainers:\n    - scopatz\n",
  "req":{
   "__set__":true,
   "elements":[
@@ -141,6 +149,7 @@
    "make",
    "perl-xml-parser",
    "pkg-config",
+   "python",
    "xorg-libx11",
    "xorg-xproto"
   ]
@@ -155,7 +164,8 @@
     "libxslt",
     "make",
     "perl-xml-parser",
-    "pkg-config"
+    "pkg-config",
+    "python"
    ]
   },
   "host":{
@@ -186,7 +196,8 @@
     "libxslt",
     "make",
     "perl-xml-parser",
-    "pkg-config"
+    "pkg-config",
+    "python >=3"
    ]
   },
   "host":{
@@ -206,5 +217,5 @@
   }
  },
  "url":"http://www.x.org/releases/individual/data/xkeyboard-config/xkeyboard-config-2.27.tar.bz2",
- "version":"2.28"
+ "version":"2.29"
 }

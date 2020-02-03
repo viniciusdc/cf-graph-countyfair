@@ -96,6 +96,23 @@
     "migrator_version",
     "name"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/370526383.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"Version",
+    "migrator_version":0,
+    "version":"1.0.0"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "version"
+   ]
   }
  ],
  "bad":false,
@@ -239,8 +256,8 @@
   }
  },
  "name":"r-glmmtmb",
- "new_version":"0.2.3",
- "pinning_version":"2019.07.15",
+ "new_version":"1.0.0",
+ "pinning_version":"2020.01.27",
  "raw_meta_yaml":"{% set version = \"0.2.3\" %}\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-glmmtmb\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  fn: glmmTMB_{{ version }}.tar.gz\n  url:\n    - {{ cran_mirror }}/src/contrib/glmmTMB_{{ version }}.tar.gz\n    - {{ cran_mirror }}/src/contrib/Archive/glmmTMB/glmmTMB_{{ version }}.tar.gz\n  sha256: 6b6f62addaa54b32b975bc984110e245330749ebf69bed4a297f9da1b89fb00c\n\nbuild:\n  merge_build_host: True  # [win]\n  number: 1\n  skip: true  # [win32]\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - {{ compiler('c') }}        # [not win]\n    - {{ compiler('cxx') }}      # [not win]\n    - {{ compiler('m2w64_c') }}        # [win]\n    - {{ compiler('m2w64_cxx') }}        # [win]\n    - {{posix}}filesystem        # [win]\n    - {{posix}}make\n    - {{posix}}sed               # [win]\n    - {{posix}}coreutils         # [win]\n    - {{posix}}zip               # [win]\n  host:\n    - r-base\n    - r-matrix\n    - r-rcppeigen\n    - r-tmb >=1.7.13\n    - r-lme4 >=1.1_10\n    - r-nlme\n  run:\n    - r-base\n    - {{native}}gcc-libs         # [win]\n    - r-matrix\n    - r-rcppeigen\n    - r-tmb >=1.7.13\n    - r-lme4 >=1.1_10\n    - r-nlme\n\ntest:\n  commands:\n    - $R -e \"library('glmmTMB')\"           # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('glmmTMB')\\\"\"  # [win]\n\nabout:\n  home: https://github.com/glmmTMB\n  license: AGPL-3\n  summary: Fit linear and generalized linear mixed models with various extensions, including\n    zero-inflation. The models are fitted using maximum likelihood estimation via 'TMB'\n    (Template Model Builder). Random effects are assumed to be Gaussian on the scale\n    of the linear predictor and are integrated out using the Laplace approximation.\n    Gradients are calculated using automatic differentiation.\n  license_family: AGPL\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n    - johanneskoester\n    - bgruening\n    - daler\n    - jdblischak\n    - cbrueffer\n    - dbast\n    - ccwang002\n",
  "req":{
   "__set__":true,
@@ -306,7 +323,7 @@
    "elements":[]
   }
  },
- "smithy_version":"3.4.1",
+ "smithy_version":"3.6.7",
  "strong_exports":false,
  "total_requirements":{
   "build":{
