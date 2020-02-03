@@ -65,6 +65,23 @@
     "migrator_version",
     "name"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/370371348.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"Version",
+    "migrator_version":0,
+    "version":"1.1_1"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "version"
+   ]
   }
  ],
  "bad":false,
@@ -203,8 +220,8 @@
   }
  },
  "name":"r-gnm",
- "new_version":"1.1_0",
- "pinning_version":"2019.07.15",
+ "new_version":"1.1_1",
+ "pinning_version":"2020.01.27",
  "raw_meta_yaml":"{% set version = '1.1-0' %}\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-gnm\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  fn: gnm_{{ version }}.tar.gz\n  url:\n    - {{ cran_mirror }}/src/contrib/gnm_{{ version }}.tar.gz\n    - {{ cran_mirror }}/src/contrib/Archive/gnm/gnm_{{ version }}.tar.gz\n  sha256: b43a91fbe51848a414858ece413d2886d2fbbed4c2d88da0243c350275e7a705\n\nbuild:\n  merge_build_host: True  # [win]\n  number: 1003\n  skip: true  # [win32]\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - {{ compiler('c') }}        # [not win]\n    - {{ compiler('m2w64_c') }}        # [win]\n    - {{posix}}filesystem        # [win]\n    - {{posix}}make\n    - {{posix}}sed               # [win]\n    - {{posix}}coreutils         # [win]\n    - {{posix}}zip               # [win]\n  host:\n    - r-base\n    - r-mass\n    - r-matrix\n    - r-nnet\n    - r-qvcalc >=0.8_3\n    - r-relimp\n  run:\n    - r-base\n    - {{native}}gcc-libs         # [win]\n    - r-mass\n    - r-matrix\n    - r-nnet\n    - r-qvcalc >=0.8_3\n    - r-relimp\n\ntest:\n  commands:\n    - $R -e \"library('gnm')\"           # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('gnm')\\\"\"  # [win]\n\nabout:\n  home: https://github.com/hturner/gnm\n  license: GPL-2 | GPL-3\n  summary: Functions to specify and fit generalized nonlinear models, including models with multiplicative\n    interaction terms such as the UNIDIFF model from sociology and the AMMI model from\n    crop science, and many others.  Over-parameterized representations of models are\n    used throughout; functions are provided for inference on estimable parameter combinations,\n    as well as standard methods for diagnostics etc.\n  license_family: GPL3\n  license_file: '{{ environ[\"PREFIX\"] }}/lib/R/share/licenses/GPL-3'\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n    - johanneskoester\n    - bgruening\n    - daler\n    - jdblischak\n    - cbrueffer\n    - dbast\n",
  "req":{
   "__set__":true,
@@ -266,7 +283,7 @@
    "elements":[]
   }
  },
- "smithy_version":"3.4.1",
+ "smithy_version":"3.6.7",
  "strong_exports":false,
  "total_requirements":{
   "build":{

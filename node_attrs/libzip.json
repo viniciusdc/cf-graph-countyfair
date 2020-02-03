@@ -113,6 +113,23 @@
     "migrator_version",
     "version"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/370373025.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"Version",
+    "migrator_version":0,
+    "version":"1.6.1"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "version"
+   ]
   }
  ],
  "bad":false,
@@ -203,8 +220,8 @@
   }
  },
  "name":"libzip",
- "new_version":"1.6.0",
- "pinning_version":"2020.01.16",
+ "new_version":"1.6.1",
+ "pinning_version":"2020.01.27",
  "raw_meta_yaml":"{% set name = \"libzip\" %}\n{% set version = \"1.5.1\" %}\n{% set sha256 = \"47eaa45faa448c72bd6906e5a096846c469a185f293cafd8456abb165841b3f2\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  fn: {{ name }}-{{ version }}.tar.gz\n  url: https://libzip.org/download/libzip-{{ version }}.tar.gz\n  sha256: {{ sha256 }}\n\nbuild:\n  # Skip py35 since py36 is built and uses same vc14\n  number: 1005\n\nrequirements:\n  build:\n    - cmake\n    - perl 5.26.*  # avoid making a matrix of perl builds\n    - {{ compiler('c') }}\n  host:\n    - zlib\n    - bzip2\n    - openssl\n    # perl is needed to run the package tests\n  run:\n    - zlib\n    - bzip2\n    - openssl\n\ntest:\n  commands:\n    - test -f ${PREFIX}/bin/ziptool  # [linux or osx]\n    - test -f ${PREFIX}/lib/libzip.so  # [linux]\n    - test -f ${PREFIX}/lib/libzip.dylib  # [osx]\n    - if not exist %LIBRARY_BIN%\\\\ziptool.exe exit 1  # [win]\n    - if not exist %LIBRARY_LIB%\\\\zip.lib exit 1  # [win]\n\nabout:\n  home: https://libzip.org/\n  license: BSD-3-Clause\n  license_family: BSD\n  license_file: LICENSE\n  summary: 'A C library for reading, creating, and modifying zip archives.'\n  description: |\n      libzip is a C library for reading, creating, and modifying zip archives.\n      Files can be added from data buffers, files, or compressed data copied\n      directly from other zip archives. Changes made without closing the\n      archive can be reverted. The API is documented by man pages.\n  doc_url: https://libzip.org/documentation/\n  dev_url: https://github.com/nih-at/libzip\n\nextra:\n  recipe-maintainers:\n    - ceholden\n",
  "req":{
   "__set__":true,
@@ -247,7 +264,7 @@
    "elements":[]
   }
  },
- "smithy_version":"3.6.5",
+ "smithy_version":"3.6.7",
  "strong_exports":false,
  "total_requirements":{
   "build":{
