@@ -64,6 +64,23 @@
     "migrator_version",
     "version"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/370935424.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"ArchRebuild",
+    "migrator_version":1,
+    "name":"aarch64 and ppc64le addition"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "name"
+   ]
   }
  ],
  "bad":false,
@@ -133,7 +150,7 @@
  },
  "name":"configurable-http-proxy",
  "new_version":"4.2.0",
- "pinning_version":"2019.11.13",
+ "pinning_version":"2020.01.27",
  "raw_meta_yaml":"{% set name = \"configurable-http-proxy\" %}\n{% set version = \"4.2.0\" %}\n{% set build = 2 %}\n\n{% if not node %}\n{# rerender doesn't always pull node value from conda_build_config on first pass #}\n{# this value will never be used in a real build #}\n{% set node = 1 %}\n{% endif %}\n\npackage:\n  name: {{ name }}\n  version: {{ version }}\n\nsource:\n  fn: {{ name }}-{{ version }}.tar.gz\n  url: https://registry.npmjs.org/{{ name }}/-/{{ name }}-{{ version }}.tgz\n  sha256: cafaf0b070b1513f1da95fbec5d2950ba2ceba9d4fe6dce9affd4156b3b07e50\n\nbuild:\n  number: {{ build }}\n  string: \"node{{ node }}_h{{ PKG_HASH }}_{{ build }}\"\n  script:\n    - npm pack  # [not win]\n    - NPM_CONFIG_USERCONFIG=/tmp/nonexistentrc npm install -g {{name}}-{{version}}.tgz  # [not win]\n\nrequirements:\n  host:\n    - nodejs {{ node }}.*\n  run:\n    - nodejs {{ node }}.*\n\ntest:\n  commands:\n    - configurable-http-proxy -h\n    - test -f $PREFIX/bin/configurable-http-proxy  # [not win]\n    - if not exist %PREFIX%\\\\configurable-http-proxy exit 1    # [win]\n\nabout:\n  home: https://github.com/jupyterhub/configurable-http-proxy\n  license: BSD 3-Clause\n  license_file: LICENSE\n  summary: node-http-proxy plus a REST API\n\nextra:\n  recipe-maintainers:\n    - minrk\n    - willingc\n",
  "req":{
   "__set__":true,
@@ -163,7 +180,7 @@
    "elements":[]
   }
  },
- "smithy_version":"3.6.2",
+ "smithy_version":"3.6.7",
  "strong_exports":false,
  "total_requirements":{
   "build":{
