@@ -225,6 +225,7 @@
    "home":"http://pgcli.com",
    "license":"BSD-3-Clause",
    "license_family":"BSD",
+   "license_file":"LICENSE.txt",
    "summary":"CLI for Postgres Database. With auto-completion and syntax highlighting."
   },
   "build":{
@@ -235,18 +236,21 @@
    ],
    "noarch":"python",
    "number":"0",
-   "script":"python -m pip install --no-deps --ignore-installed ."
+   "script":"-m pip install . --no-deps -vv"
   },
   "extra":{
    "recipe-maintainers":[
     "mariusvniekerk",
+    "dhirschfeld",
     "mariusvniekerk",
-    "mariusvniekerk"
+    "dhirschfeld",
+    "mariusvniekerk",
+    "dhirschfeld"
    ]
   },
   "package":{
    "name":"pgcli",
-   "version":"2.1.1"
+   "version":"2.2.0"
   },
   "requirements":{
    "host":[
@@ -262,39 +266,39 @@
    ],
    "run":[
     "python",
-    "pgspecial >=1.11.2",
+    "pgspecial >=1.11.8",
     "click >=4.1",
-    "cli_helpers >=1.0.1",
+    "cli_helpers >=1.2.1",
     "pygments >=2.0",
-    "prompt_toolkit >=2.0.0,<3.0.0",
-    "psycopg2 >=2.7.4",
-    "sqlparse >=0.2.2,<0.3.0",
+    "prompt_toolkit >=2.0.6,<3.0.0",
+    "psycopg2 >=2.8",
+    "sqlparse >=0.3.0,<0.4",
     "configobj >=5.0.6",
     "humanize >=0.5.1",
     "wcwidth >=0.1.6",
     "setproctitle >=1.1.9",
     "tabulate",
     "python",
-    "pgspecial >=1.11.2",
+    "pgspecial >=1.11.8",
     "click >=4.1",
-    "cli_helpers >=1.0.1",
+    "cli_helpers >=1.2.1",
     "pygments >=2.0",
-    "prompt_toolkit >=2.0.0,<3.0.0",
-    "psycopg2 >=2.7.4",
-    "sqlparse >=0.2.2,<0.3.0",
+    "prompt_toolkit >=2.0.6,<3.0.0",
+    "psycopg2 >=2.8",
+    "sqlparse >=0.3.0,<0.4",
     "configobj >=5.0.6",
     "humanize >=0.5.1",
     "wcwidth >=0.1.6",
     "setproctitle >=1.1.9",
     "tabulate",
     "python",
-    "pgspecial >=1.11.2",
+    "pgspecial >=1.11.8",
     "click >=4.1",
-    "cli_helpers >=1.0.1",
+    "cli_helpers >=1.2.1",
     "pygments >=2.0",
-    "prompt_toolkit >=2.0.0,<3.0.0",
-    "psycopg2 >=2.7.4",
-    "sqlparse >=0.2.2,<0.3.0",
+    "prompt_toolkit >=2.0.6,<3.0.0",
+    "psycopg2 >=2.8",
+    "sqlparse >=0.3.0,<0.4",
     "configobj >=5.0.6",
     "humanize >=0.5.1",
     "wcwidth >=0.1.6",
@@ -303,9 +307,9 @@
    ]
   },
   "source":{
-   "fn":"pgcli-2.1.1.tar.gz",
-   "sha256":"84e0817a29c3cacaaaf85351422bdb90f230f2550e4af558c25536fd235ab6ca",
-   "url":"https://pypi.io/packages/source/p/pgcli/pgcli-2.1.1.tar.gz"
+   "fn":"pgcli-2.2.0.tar.gz",
+   "sha256":"54138a31e6736a34c63b84a6d134c9292c9a73543cc0f66e80a0aaf79259d39b",
+   "url":"https://pypi.io/packages/source/p/pgcli/pgcli-2.2.0.tar.gz"
   },
   "test":{
    "commands":[
@@ -332,7 +336,7 @@
  "name":"pgcli",
  "new_version":"2.2.0",
  "pinning_version":"2019.12.02",
- "raw_meta_yaml":"{% set name = \"pgcli\" %}\n{% set version = \"2.1.1\" %}\n{% set sha256 = \"84e0817a29c3cacaaaf85351422bdb90f230f2550e4af558c25536fd235ab6ca\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  fn: {{ name }}-{{ version }}.tar.gz\n  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz\n  sha256: {{ sha256 }}\n\nbuild:\n  noarch: python\n  number: 0\n  script: python -m pip install --no-deps --ignore-installed .\n  entry_points:\n    - pgcli=pgcli.main:cli\n\nrequirements:\n  host:\n    - pip\n    - python\n    - setuptools\n  run:\n    - python\n    - pgspecial >=1.11.2\n    - click >=4.1\n    - cli_helpers >=1.0.1\n    - pygments >=2.0\n    - prompt_toolkit >=2.0.0,<3.0.0\n    - psycopg2 >=2.7.4\n    - sqlparse >=0.2.2,<0.3.0\n    - configobj >=5.0.6\n    - humanize >=0.5.1\n    - wcwidth >=0.1.6\n    - setproctitle >=1.1.9\n    - tabulate\n\ntest:\n  imports:\n    - pgcli\n    - pgcli.packages\n    - pgcli.packages.parseutils\n    - pgcli.packages.pgliterals\n  commands:\n    - pgcli --help\n\nabout:\n  home: http://pgcli.com\n  license: BSD-3-Clause\n  license_family: BSD\n  # xref: https://github.com/dbcli/pgcli/pull/728\n  #license_file: LICENSE.txt\n  summary: 'CLI for Postgres Database. With auto-completion and syntax highlighting.'\n  doc_url: http://simplejson.readthedocs.io/\n  dev_url: https://github.com/dbcli/pgcli\n\nextra:\n  recipe-maintainers:\n    - mariusvniekerk\n",
+ "raw_meta_yaml":"{% set name = \"pgcli\" %}\n{% set version = \"2.2.0\" %}\n{% set sha256 = \"54138a31e6736a34c63b84a6d134c9292c9a73543cc0f66e80a0aaf79259d39b\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  fn: {{ name }}-{{ version }}.tar.gz\n  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz\n  sha256: {{ sha256 }}\n\nbuild:\n  noarch: python\n  number: 0\n  script: {{ PYTHON }} -m pip install . --no-deps -vv\n  entry_points:\n    - pgcli=pgcli.main:cli\n\nrequirements:\n  host:\n    - pip\n    - python\n    - setuptools\n  run:\n    - python\n    - pgspecial >=1.11.8\n    - click >=4.1\n    - cli_helpers >=1.2.1\n    - pygments >=2.0\n    - prompt_toolkit >=2.0.6,<3.0.0\n    - psycopg2 >=2.8\n    - sqlparse >=0.3.0,<0.4\n    - configobj >=5.0.6\n    - humanize >=0.5.1\n    - wcwidth >=0.1.6\n    - setproctitle >=1.1.9\n    - tabulate\n\ntest:\n  imports:\n    - pgcli\n    - pgcli.packages\n    - pgcli.packages.parseutils\n    - pgcli.packages.pgliterals\n  commands:\n    - pgcli --help\n\nabout:\n  home: http://pgcli.com\n  license: BSD-3-Clause\n  license_file: LICENSE.txt\n  license_family: BSD\n  # xref: https://github.com/dbcli/pgcli/pull/728\n  #license_file: LICENSE.txt\n  summary: 'CLI for Postgres Database. With auto-completion and syntax highlighting.'\n  doc_url: http://simplejson.readthedocs.io/\n  dev_url: https://github.com/dbcli/pgcli\n\nextra:\n  recipe-maintainers:\n    - mariusvniekerk\n    - dhirschfeld\n",
  "req":{
   "__set__":true,
   "elements":[
@@ -407,17 +411,17 @@
   "run":{
    "__set__":true,
    "elements":[
-    "cli_helpers >=1.0.1",
+    "cli_helpers >=1.2.1",
     "click >=4.1",
     "configobj >=5.0.6",
     "humanize >=0.5.1",
-    "pgspecial >=1.11.2",
-    "prompt_toolkit >=2.0.0,<3.0.0",
-    "psycopg2 >=2.7.4",
+    "pgspecial >=1.11.8",
+    "prompt_toolkit >=2.0.6,<3.0.0",
+    "psycopg2 >=2.8",
     "pygments >=2.0",
     "python",
     "setproctitle >=1.1.9",
-    "sqlparse >=0.2.2,<0.3.0",
+    "sqlparse >=0.3.0,<0.4",
     "tabulate",
     "wcwidth >=0.1.6"
    ]
@@ -428,5 +432,5 @@
   }
  },
  "url":"https://pypi.io/packages/source/p/pgcli/pgcli-2.1.1.tar.gz",
- "version":"2.1.1"
+ "version":"2.2.0"
 }
