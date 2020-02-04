@@ -238,7 +238,7 @@
   },
   "build":{
    "number":"0",
-   "script":" -m pip install . --no-deps --ignore-installed -vvv --global-option='build_ext' --global-option='--cython-always'",
+   "script":" -m pip install . -vv --global-option='build_ext' --global-option='--cython-always'",
    "skip":true
   },
   "extra":{
@@ -253,7 +253,7 @@
   },
   "package":{
    "name":"uvloop",
-   "version":"0.12.2"
+   "version":"0.14.0"
   },
   "requirements":{
    "build":[
@@ -281,14 +281,13 @@
    ]
   },
   "source":{
-   "fn":"uvloop-0.12.2.tar.gz",
    "patches":[
-    "0001-sys.set_coroutine_wrapper-is-removed-in-Python-3.8.patch",
-    "0001-sys.set_coroutine_wrapper-is-removed-in-Python-3.8.patch",
-    "0001-sys.set_coroutine_wrapper-is-removed-in-Python-3.8.patch"
+    "0001-Prefer-SO_REUSEPORT-over-uv.SO_REUSEPORT.patch",
+    "0001-Prefer-SO_REUSEPORT-over-uv.SO_REUSEPORT.patch",
+    "0001-Prefer-SO_REUSEPORT-over-uv.SO_REUSEPORT.patch"
    ],
-   "sha256":"c48692bf4587ce281d641087658eca275a5ad3b63c78297bbded96570ae9ce8f",
-   "url":"https://pypi.io/packages/source/u/uvloop/uvloop-0.12.2.tar.gz"
+   "sha256":"123ac9c0c7dd71464f58f1b4ee0bbd81285d96cdda8bc3519281b8973e3a461e",
+   "url":"https://pypi.io/packages/source/u/uvloop/uvloop-0.14.0.tar.gz"
   },
   "test":{
    "imports":[
@@ -301,7 +300,7 @@
  "name":"uvloop",
  "new_version":"0.14.0",
  "pinning_version":"2019.11.01",
- "raw_meta_yaml":"{% set name = \"uvloop\" %}\n{% set version = \"0.12.2\" %}\n{% set hash_type = \"sha256\" %}\n{% set hash_value = \"c48692bf4587ce281d641087658eca275a5ad3b63c78297bbded96570ae9ce8f\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  fn: {{ name }}-{{ version }}.tar.gz\n  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz\n  {{ hash_type }}: {{ hash_value }}\n  patches:\n    - 0001-sys.set_coroutine_wrapper-is-removed-in-Python-3.8.patch\n\nbuild:\n  number: 0\n  script: \"{{ PYTHON }} -m pip install . --no-deps --ignore-installed -vvv --global-option='build_ext' --global-option='--cython-always'\"\n  skip: True  # [py2k or win]\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - make  # [unix]\n  host:\n    - python\n    - cython >=0.28\n    - pip\n  run:\n    - python\n\ntest:\n  imports:\n    - uvloop\n\nabout:\n  home: http://github.com/MagicStack/uvloop\n  # Multiple licenses! : Apache 2.0, MIT\n  license: MIT\n  license_file: LICENSE-MIT\n  summary: Ultra fast implementation of asyncio event loop on top of libuv.\n  description: |\n      uvloop is a fast, drop-in replacement of the built-in asyncio event loop.\n      uvloop is implemented in Cython and uses libuv under the hood.\n  doc_url: http://uvloop.readthedocs.org\n  dev_url: https://github.com/MagicStack/uvloop\n\nextra:\n  recipe-maintainers:\n    - nehaljwani\n    - carlodri\n",
+ "raw_meta_yaml":"{% set name = \"uvloop\" %}\n{% set version = \"0.14.0\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz\n  sha256: 123ac9c0c7dd71464f58f1b4ee0bbd81285d96cdda8bc3519281b8973e3a461e\n  patches:\n    - 0001-Prefer-SO_REUSEPORT-over-uv.SO_REUSEPORT.patch\n\nbuild:\n  number: 0\n  script: \"{{ PYTHON }} -m pip install . -vv --global-option='build_ext' --global-option='--cython-always'\"\n  skip: True  # [py2k or win]\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - make  # [unix]\n  host:\n    - python\n    - cython >=0.28\n    - pip\n  run:\n    - python\n\ntest:\n  imports:\n    - uvloop\n\nabout:\n  home: http://github.com/MagicStack/uvloop\n  # Multiple licenses! : Apache 2.0, MIT\n  license: MIT\n  license_file: LICENSE-MIT\n  summary: Ultra fast implementation of asyncio event loop on top of libuv.\n  description: |\n      uvloop is a fast, drop-in replacement of the built-in asyncio event loop.\n      uvloop is implemented in Cython and uses libuv under the hood.\n  doc_url: http://uvloop.readthedocs.org\n  dev_url: https://github.com/MagicStack/uvloop\n\nextra:\n  recipe-maintainers:\n    - nehaljwani\n    - carlodri\n",
  "req":{
   "__set__":true,
   "elements":[
@@ -369,5 +368,5 @@
   }
  },
  "url":"https://pypi.io/packages/source/u/uvloop/uvloop-0.12.2.tar.gz",
- "version":"0.12.2"
+ "version":"0.14.0"
 }
