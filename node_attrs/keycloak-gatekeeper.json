@@ -41,7 +41,7 @@
    "urllib.error.HTTPError: HTTP Error 404: Not Found",
    ""
   ],
-  "url":"https://codeload.github.com/keycloak/keycloak-gatekeeper/tar.gz/v8.0.1"
+  "url":"https://codeload.github.com/keycloak/keycloak-gatekeeper/tar.gz/v8.0.2"
  },
  "conda-forge.yml":{
   "provider":{
@@ -147,7 +147,7 @@
   }
  },
  "name":"keycloak-gatekeeper",
- "new_version":"8.0.1",
+ "new_version":"8.0.2",
  "raw_meta_yaml":"{% set goname = \"github.com/keycloak/keycloak-gatekeeper\" %}\n{% set version = \"2.3.0\" %}\n\n{% set name = goname.split('/')[-1] %}\n{% set pkg_src = ('src/'+goname).replace(\"/\", \"\\\\\" if win else \"/\") %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  - folder: {{ pkg_src }}\n    url: https://{{ goname}}/archive/v{{ version }}.tar.gz\n    sha256: cb19406a35797165fb135a5152c8e6ace17315f892ad5a3d0e13b89ca9aae2cd\n    patches:\n      # Parse and Verify the ID Token before trying to use the access-token\n      - access_token.patch\n\nbuild:\n  number: 3\n  script:\n    - pushd {{ pkg_src }}\n    - dep ensure\n    - patch -p1 -i {{ RECIPE_DIR }}{{ os.sep }}client_secret.patch\n    - patch -p1 -i {{ RECIPE_DIR }}{{ os.sep }}rs512.patch\n    - go test -v .\n    - go install -v .\n\nrequirements:\n  build:\n    - {{ compiler(\"go\") }} >=1.11.3\n    - go-dep\n    - patch  # [unix]\n    - m2-patch  # [win]\n\ntest:\n  requires:\n    - m2-bash  # [win]\n  commands:\n    - bash -c \"{{ name|lower }} -v\"\n\nabout:\n  home: https://github.com/keycloak/keycloak-gatekeeper\n\n  license: Apache 2.0\n  license_family: Apache\n  license_file: {{ pkg_src }}/LICENSE\n  summary: 'An adapter for use with OpenID Connect that supports both access tokens in a browser cookie or bearer tokens'\n\n  description: |\n    Keycloak is an open source Identity and Access Management solution aimed\n    at modern applications and services. It makes it easy to secure applications\n    and services with little to no code. Some of its features include Single-Sign On,\n    Identity Brokering and Social Login, User Federation and Client Adapters.\n  doc_url: https://www.keycloak.org/docs/latest/securing_apps/index.html#_keycloak_generic_adapter\n\n  dev_url: https://github.com/keycloak/keycloak-gatekeeper\n\nextra:\n  recipe-maintainers:\n    - adbeda\n    - sodre\n",
  "req":{
   "__set__":true,
