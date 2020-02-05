@@ -33,7 +33,12 @@
   }
  ],
  "bad":false,
- "conda-forge.yml":{},
+ "conda-forge.yml":{
+  "provider":{
+   "linux_aarch64":"default",
+   "linux_ppc64le":"default"
+  }
+ },
  "feedstock_name":"lzop",
  "hash_type":"sha256",
  "meta_yaml":{
@@ -63,8 +68,11 @@
   "requirements":{
    "build":[
     "c_compiler_stub",
+    "make",
     "c_compiler_stub",
-    "c_compiler_stub"
+    "make",
+    "c_compiler_stub",
+    "make"
    ],
    "host":[
     "lzo",
@@ -92,19 +100,21 @@
  "name":"lzop",
  "new_version":false,
  "pinning_version":"2020.01.27",
- "raw_meta_yaml":"{% set name = \"lzop\" %}\n{% set version = \"1.04\" %}\n\npackage:\n  name: \"{{ name|lower }}\"\n  version: \"{{ version }}\"\n\nsource:\n  url: http://www.lzop.org/download/{{ name }}-{{ version }}.tar.gz\n  sha256: 7e72b62a8a60aff5200a047eea0773a8fb205caf7acbe1774d95147f305a2f41\n\nbuild:\n  number: 2\n  skip: True  # [win]\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n  host:\n    - lzo\n  run:\n    - lzo\n\ntest:\n  commands:\n    - lzop -h\n\nabout:\n  home: http://www.lzop.org/\n  license: GNU GPL\n  license_family: GPL\n  license_file: COPYING\n  summary: 'lzop is a file compressor which is very similar to gzip.'\n  doc_url: http://www.lzop.org/lzop_man.php\n\nextra:\n  recipe-maintainers:\n    - npavlovikj\n",
+ "raw_meta_yaml":"{% set name = \"lzop\" %}\n{% set version = \"1.04\" %}\n\npackage:\n  name: \"{{ name|lower }}\"\n  version: \"{{ version }}\"\n\nsource:\n  url: http://www.lzop.org/download/{{ name }}-{{ version }}.tar.gz\n  sha256: 7e72b62a8a60aff5200a047eea0773a8fb205caf7acbe1774d95147f305a2f41\n\nbuild:\n  number: 2\n  skip: True  # [win]\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - make\n  host:\n    - lzo\n  run:\n    - lzo\n\ntest:\n  commands:\n    - lzop -h\n\nabout:\n  home: http://www.lzop.org/\n  license: GNU GPL\n  license_family: GPL\n  license_file: COPYING\n  summary: 'lzop is a file compressor which is very similar to gzip.'\n  doc_url: http://www.lzop.org/lzop_man.php\n\nextra:\n  recipe-maintainers:\n    - npavlovikj\n",
  "req":{
   "__set__":true,
   "elements":[
    "c_compiler_stub",
-   "lzo"
+   "lzo",
+   "make"
   ]
  },
  "requirements":{
   "build":{
    "__set__":true,
    "elements":[
-    "c_compiler_stub"
+    "c_compiler_stub",
+    "make"
    ]
   },
   "host":{
@@ -130,7 +140,8 @@
   "build":{
    "__set__":true,
    "elements":[
-    "c_compiler_stub"
+    "c_compiler_stub",
+    "make"
    ]
   },
   "host":{
