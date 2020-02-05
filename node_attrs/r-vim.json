@@ -65,6 +65,23 @@
     "migrator_version",
     "name"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/371463262.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"Version",
+    "migrator_version":0,
+    "version":"5.1.0"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "version"
+   ]
   }
  ],
  "bad":false,
@@ -256,8 +273,8 @@
   }
  },
  "name":"r-vim",
- "new_version":"4.8.0",
- "pinning_version":"2019.07.15",
+ "new_version":"5.1.0",
+ "pinning_version":"2020.01.28",
  "raw_meta_yaml":"{% set version = \"4.8.0\" %}\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-vim\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  fn: VIM_{{ version }}.tar.gz\n  url:\n    - {{ cran_mirror }}/src/contrib/VIM_{{ version }}.tar.gz\n    - {{ cran_mirror }}/src/contrib/Archive/VIM/VIM_{{ version }}.tar.gz\n  sha256: 3c6b4fdc10c0375e3fdc56b34a8c05661155bd3166a8b3f36b0addf73d51a423\n\nbuild:\n  merge_build_host: True  # [win]\n  number: 1\n  skip: true  # [win32]\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - {{ compiler('c') }}        # [not win]\n    - {{ compiler('cxx') }}      # [not win]\n    - {{ compiler('m2w64_c') }}        # [win]\n    - {{ compiler('m2w64_cxx') }}        # [win]\n    - {{posix}}filesystem        # [win]\n    - {{posix}}make\n    - {{posix}}sed  # [win]\n    - {{posix}}coreutils  # [win]\n  host:\n    - r-base\n    - r-mass\n    - r-rcpp\n    - r-car\n    - r-colorspace\n    - r-data.table >=1.9.4\n    - r-e1071\n    - r-laeken\n    - r-nnet\n    - r-ranger\n    - r-robustbase\n    - r-sp\n    - r-vcd\n  run:\n    - r-base\n    - {{native}}gcc-libs         # [win]\n    - r-mass\n    - r-rcpp\n    - r-car\n    - r-colorspace\n    - r-data.table >=1.9.4\n    - r-e1071\n    - r-laeken\n    - r-nnet\n    - r-ranger\n    - r-robustbase\n    - r-sp\n    - r-vcd\n\ntest:\n  commands:\n    - $R -e \"library('VIM')\"           # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('VIM')\\\"\"  # [win]\n\nabout:\n  home: https://github.com/statistikat/VIM\n  license: GPL (>= 2)\n  summary: New tools for the visualization of missing and/or imputed values are introduced, which\n    can be used for exploring the data and the structure of the missing and/or imputed\n    values. Depending on this structure of the missing values, the corresponding methods\n    may help to identify the mechanism generating the missing values and allows to explore\n    the data including missing values. In addition, the quality of imputation can be\n    visually explored using various univariate, bivariate, multiple and multivariate\n    plot methods. A graphical user interface available in the separate package VIMGUI\n    allows an easy handling of the implemented plot methods.\n  license_family: GPL3\n  license_file: '{{ environ[\"PREFIX\"] }}/lib/R/share/licenses/GPL-3'\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n    - dpryan79\n    - MathiasHaudgaard\n    - FrodePedersen\n    - ArneKr\n    - johanneskoester\n    - bgruening\n    - daler\n    - jdblischak\n    - cbrueffer\n",
  "req":{
   "__set__":true,
@@ -342,7 +359,7 @@
    "elements":[]
   }
  },
- "smithy_version":"3.4.1",
+ "smithy_version":"3.6.7",
  "strong_exports":false,
  "total_requirements":{
   "build":{

@@ -746,7 +746,7 @@
   },
   "package":{
    "name":"grpc-cpp",
-   "version":"1.26.0"
+   "version":"1.27.0"
   },
   "requirements":{
    "build":[
@@ -767,16 +767,19 @@
     "ninja"
    ],
    "host":[
+    "abseil-cpp",
     "c-ares",
     "gflags",
     "libprotobuf",
     "openssl",
     "zlib",
+    "abseil-cpp",
     "c-ares",
     "gflags",
     "libprotobuf",
     "openssl",
     "zlib",
+    "abseil-cpp",
     "c-ares",
     "gflags",
     "libprotobuf",
@@ -794,16 +797,16 @@
   },
   "source":[
    {
-    "sha256":"2fcb7f1ab160d6fd3aaade64520be3e5446fc4c6fa7ba6581afdc4e26094bd81",
-    "url":"https://github.com/grpc/grpc/archive/v1.26.0.tar.gz"
+    "sha256":"3ccc4e5ae8c1ce844456e39cc11f1c991a7da74396faabe83d779836ef449bce",
+    "url":"https://github.com/grpc/grpc/archive/v1.27.0.tar.gz"
    },
    {
-    "sha256":"2fcb7f1ab160d6fd3aaade64520be3e5446fc4c6fa7ba6581afdc4e26094bd81",
-    "url":"https://github.com/grpc/grpc/archive/v1.26.0.tar.gz"
+    "sha256":"3ccc4e5ae8c1ce844456e39cc11f1c991a7da74396faabe83d779836ef449bce",
+    "url":"https://github.com/grpc/grpc/archive/v1.27.0.tar.gz"
    },
    {
-    "sha256":"2fcb7f1ab160d6fd3aaade64520be3e5446fc4c6fa7ba6581afdc4e26094bd81",
-    "url":"https://github.com/grpc/grpc/archive/v1.26.0.tar.gz"
+    "sha256":"3ccc4e5ae8c1ce844456e39cc11f1c991a7da74396faabe83d779836ef449bce",
+    "url":"https://github.com/grpc/grpc/archive/v1.27.0.tar.gz"
    }
   ],
   "test":{
@@ -821,10 +824,11 @@
  "name":"grpc-cpp",
  "new_version":"1.27.0",
  "pinning_version":"2020.01.27",
- "raw_meta_yaml":"{% set name = \"grpc-cpp\" %}\n{% set version = \"1.26.0\" %}\n\npackage:\n  name: {{ name | lower }}\n  version: {{ version }}\n\nsource:\n  - url: https://github.com/grpc/grpc/archive/v{{ version }}.tar.gz\n    sha256: 2fcb7f1ab160d6fd3aaade64520be3e5446fc4c6fa7ba6581afdc4e26094bd81\n\nbuild:\n  number: 0\n  # Requires C++ 11, VS 2008 is not supported\n  skip: True  # [win and vc<14]\n  run_exports:\n    - {{ pin_subpackage('grpc-cpp', max_pin='x.x') }}\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n    - cmake\n    # `protoc` is also used for building\n    - libprotobuf\n    - ninja\n  host:\n    - c-ares\n    - gflags\n    - libprotobuf\n    - openssl\n    - zlib\n  run:\n    # Need to pin libprotobuf to the same version used when building,\n    # otherwise we may get a different SO ABI version.\n    # For example 3.6.1 is ABI-incompatible with 3.6.0...\n    - {{ pin_compatible(\"libprotobuf\", min_pin=\"x.x.x\", max_pin=\"x.x.x\") }}\n    - zlib\n\ntest:\n  commands:\n    - grpc_cpp_plugin < /dev/null  # [not win]\n    - grpc_cpp_plugin < NUL  # [win]\n    - if not exist %PREFIX%\\\\Library\\\\lib\\\\address_sorting.lib exit 1  # [win]\n    - if not exist %PREFIX%\\\\Library\\\\lib\\\\gpr.lib exit 1  # [win]\n    - if not exist %PREFIX%\\\\Library\\\\lib\\\\grpc.lib exit 1  # [win]\n    - if not exist %PREFIX%\\\\Library\\\\lib\\\\grpc++.lib exit 1  # [win]\n\nabout:\n  home: https://grpc.io/\n  license: \"Apache 2.0\"\n  license_family: APACHE\n  license_file: LICENSE\n  summary: \"gRPC - A high-performance, open-source universal RPC framework\"\n  description: |\n    gRPC is a modern, open source, high-performance remote procedure call\n    (RPC) framework that can run anywhere. gRPC enables client and server\n    applications to communicate transparently, and simplifies the building\n    of connected systems.\n\n    This package contains the gRPC C++ libraries and header files, as well\n    as the code generation plugins.\n  doc_url: https://grpc.io/docs/\n\nextra:\n  recipe-maintainers:\n    - pitrou\n    - xhochy\n    - wesm\n",
+ "raw_meta_yaml":"{% set name = \"grpc-cpp\" %}\n{% set version = \"1.27.0\" %}\n\npackage:\n  name: {{ name | lower }}\n  version: {{ version }}\n\nsource:\n  - url: https://github.com/grpc/grpc/archive/v{{ version }}.tar.gz\n    sha256: 3ccc4e5ae8c1ce844456e39cc11f1c991a7da74396faabe83d779836ef449bce\n\nbuild:\n  number: 0\n  # Requires C++ 11, VS 2008 is not supported\n  skip: True  # [win and vc<14]\n  run_exports:\n    - {{ pin_subpackage('grpc-cpp', max_pin='x.x') }}\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n    - cmake\n    # `protoc` is also used for building\n    - libprotobuf\n    - ninja\n  host:\n    - abseil-cpp\n    - c-ares\n    - gflags\n    - libprotobuf\n    - openssl\n    - zlib\n  run:\n    # Need to pin libprotobuf to the same version used when building,\n    # otherwise we may get a different SO ABI version.\n    # For example 3.6.1 is ABI-incompatible with 3.6.0...\n    - {{ pin_compatible(\"libprotobuf\", min_pin=\"x.x.x\", max_pin=\"x.x.x\") }}\n    - zlib\n\ntest:\n  commands:\n    - grpc_cpp_plugin < /dev/null  # [not win]\n    - grpc_cpp_plugin < NUL  # [win]\n    - if not exist %PREFIX%\\\\Library\\\\lib\\\\address_sorting.lib exit 1  # [win]\n    - if not exist %PREFIX%\\\\Library\\\\lib\\\\gpr.lib exit 1  # [win]\n    - if not exist %PREFIX%\\\\Library\\\\lib\\\\grpc.lib exit 1  # [win]\n    - if not exist %PREFIX%\\\\Library\\\\lib\\\\grpc++.lib exit 1  # [win]\n\nabout:\n  home: https://grpc.io/\n  license: \"Apache 2.0\"\n  license_family: APACHE\n  license_file: LICENSE\n  summary: \"gRPC - A high-performance, open-source universal RPC framework\"\n  description: |\n    gRPC is a modern, open source, high-performance remote procedure call\n    (RPC) framework that can run anywhere. gRPC enables client and server\n    applications to communicate transparently, and simplifies the building\n    of connected systems.\n\n    This package contains the gRPC C++ libraries and header files, as well\n    as the code generation plugins.\n  doc_url: https://grpc.io/docs/\n\nextra:\n  recipe-maintainers:\n    - pitrou\n    - xhochy\n    - wesm\n",
  "req":{
   "__set__":true,
   "elements":[
+   "abseil-cpp",
    "c-ares",
    "c_compiler_stub",
    "cmake",
@@ -851,6 +855,7 @@
   "host":{
    "__set__":true,
    "elements":[
+    "abseil-cpp",
     "c-ares",
     "gflags",
     "libprotobuf",
@@ -886,6 +891,7 @@
   "host":{
    "__set__":true,
    "elements":[
+    "abseil-cpp",
     "c-ares",
     "gflags",
     "libprotobuf",
@@ -906,5 +912,5 @@
   }
  },
  "url":"https://github.com/grpc/grpc/archive/v1.23.0.tar.gz",
- "version":"1.26.0"
+ "version":"1.27.0"
 }

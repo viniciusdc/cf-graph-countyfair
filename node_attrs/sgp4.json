@@ -65,7 +65,7 @@
   "build":{
    "noarch":"python",
    "number":"0",
-   "script":"python -m pip install --no-deps --ignore-installed ."
+   "script":"-m pip install . --no-deps -vv"
   },
   "extra":{
    "recipe-maintainers":[
@@ -79,7 +79,7 @@
   },
   "package":{
    "name":"sgp4",
-   "version":"2.2"
+   "version":"2.3"
   },
   "requirements":{
    "host":[
@@ -97,8 +97,8 @@
    ]
   },
   "source":{
-   "sha256":"0393dd1e607a19d32db14a40b86ec73d792a7ccdc485837855eed85beefe15ac",
-   "url":"https://pypi.io/packages/source/s/sgp4/sgp4-2.2.tar.gz"
+   "sha256":"e6820bf43d598561bc15283076b9b3b358c22767cf3269d81dfbefc65d61b12f",
+   "url":"https://pypi.io/packages/source/s/sgp4/sgp4-2.3.tar.gz"
   },
   "test":{
    "commands":[
@@ -124,7 +124,7 @@
  "name":"sgp4",
  "new_version":"2.3",
  "pinning_version":"2020.01.27",
- "raw_meta_yaml":"{% set name = \"sgp4\" %}\n{% set version = \"2.2\" %}\n{% set sha256 = \"0393dd1e607a19d32db14a40b86ec73d792a7ccdc485837855eed85beefe15ac\" %}\n\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  url: https://pypi.io/packages/source/s/sgp4/sgp4-{{ version }}.tar.gz\n  sha256: {{ sha256 }}\n\nbuild:\n  noarch: python\n  number: 0\n  script: python -m pip install --no-deps --ignore-installed .\n\nrequirements:\n  host:\n    - pip\n    - python\n  run:\n    - python\n\ntest:\n  requires:\n    - numpy\n  imports:\n    - sgp4\n    - sgp4.tests\n  commands:\n    - python -m unittest -v sgp4.tests\n\nabout:\n  home: https://github.com/brandon-rhodes/python-sgp4\n  license: MIT\n  license_file: {{ environ.RECIPE_DIR }}/LICENSE\n  summary: 'Python implementation of most recent version of the SGP4 satellite tracking algorithm.'\n\n  description: |\n    Python implementation of most recent version\n    of the SGP4 satellite tracking algorithm.\n\nextra:\n  recipe-maintainers:\n    - jochym\n    - brandon-rhodes\n",
+ "raw_meta_yaml":"{% set name = \"sgp4\" %}\n{% set version = \"2.3\" %}\n{% set sha256 = \"e6820bf43d598561bc15283076b9b3b358c22767cf3269d81dfbefc65d61b12f\" %}\n\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  url: https://pypi.io/packages/source/s/sgp4/sgp4-{{ version }}.tar.gz\n  sha256: {{ sha256 }}\n\nbuild:\n  noarch: python\n  number: 0\n  script: {{ PYTHON }} -m pip install . --no-deps -vv\n\nrequirements:\n  host:\n    - pip\n    - python\n  run:\n    - python\n\ntest:\n  requires:\n    - numpy\n  imports:\n    - sgp4\n    - sgp4.tests\n  commands:\n    - python -m unittest -v sgp4.tests\n\nabout:\n  home: https://github.com/brandon-rhodes/python-sgp4\n  license: MIT\n  license_file: {{ environ.RECIPE_DIR }}/LICENSE\n  summary: 'Python implementation of most recent version of the SGP4 satellite tracking algorithm.'\n\n  description: |\n    Python implementation of most recent version\n    of the SGP4 satellite tracking algorithm.\n\nextra:\n  recipe-maintainers:\n    - jochym\n    - brandon-rhodes\n",
  "req":{
   "__set__":true,
   "elements":[
@@ -185,5 +185,5 @@
   }
  },
  "url":"https://github.com/brandon-rhodes/python-sgp4/archive/v1.4.tar.gz",
- "version":"2.2"
+ "version":"2.3"
 }
