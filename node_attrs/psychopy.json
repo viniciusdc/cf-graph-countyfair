@@ -198,7 +198,8 @@
     "psychopy = psychopy.app.psychopyApp:main",
     "psychopy = psychopy.app.psychopyApp:main"
    ],
-   "number":"5",
+   "number":"0",
+   "osx_is_app":true,
    "script":" -m pip install --no-deps . -vv"
   },
   "extra":{
@@ -216,7 +217,7 @@
   },
   "package":{
    "name":"psychopy",
-   "version":"3.2.4"
+   "version":"2020.1.0"
   },
   "requirements":{
    "host":[
@@ -225,7 +226,8 @@
     "python",
     "pip",
     "python",
-    "pip"
+    "pip",
+    "distro"
    ],
    "run":[
     "python",
@@ -254,6 +256,7 @@
     "psutil",
     "pyglet >=1.4.9",
     "glfw",
+    "javascripthon",
     "pyglfw",
     "pyopengl",
     "pyosf",
@@ -274,6 +277,7 @@
     "wxpython !=4.0.2, !=4.0.3",
     "xlrd",
     "python",
+    "python.app",
     "arabic_reshaper",
     "astunparse",
     "configobj",
@@ -299,6 +303,7 @@
     "psutil",
     "pyglet >=1.4.9",
     "glfw",
+    "javascripthon",
     "pyglfw",
     "pyobjc-framework-quartz",
     "pyopengl",
@@ -322,6 +327,7 @@
     "arabic_reshaper",
     "astunparse",
     "configobj",
+    "distro",
     "esprima-python",
     "freetype-py",
     "future",
@@ -344,6 +350,7 @@
     "psutil",
     "pyglet >=1.4.9",
     "glfw !=3.3.1",
+    "javascripthon",
     "pyglfw",
     "pyopengl",
     "pyosf",
@@ -364,13 +371,8 @@
    ]
   },
   "source":{
-   "patches":[
-    "gltools-win.patch",
-    "gltools-win.patch",
-    "gltools-win.patch"
-   ],
-   "sha256":"28a8c425b2baab127346a148aa52fd4e098359506efac5df2b205177a03ec4e8",
-   "url":"https://pypi.io/packages/source/P/PsychoPy/PsychoPy-3.2.4.zip"
+   "sha256":"79c9d182674fbe8da1b921239da17fc463caf56f6a4938e7660708348312db0e",
+   "url":"https://pypi.io/packages/source/P/PsychoPy/PsychoPy-2020.1.0.zip"
   },
   "test":{
    "commands":[
@@ -394,13 +396,14 @@
  "name":"psychopy",
  "new_version":"2020.1.0",
  "pinning_version":"2020.01.28",
- "raw_meta_yaml":"{% set name = \"PsychoPy\" %}\n{% set version = \"3.2.4\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.zip\n  sha256: 28a8c425b2baab127346a148aa52fd4e098359506efac5df2b205177a03ec4e8\n  patches:\n    - gltools-win.patch\n\nbuild:\n  number: 5\n  skip: true  # [py<36]\n  script: \"{{ PYTHON }} -m pip install --no-deps . -vv\"\n  entry_points:\n    - psychopy = psychopy.app.psychopyApp:main\n\nrequirements:\n  host:\n    - python\n    - pip\n  run:\n    - python\n    - arabic_reshaper\n    - astunparse\n    - configobj\n    - esprima-python\n    - freetype-py\n    - future\n    - gevent\n    - gitpython\n    - greenlet\n    - hdf5\n    - imageio >=2.5\n    - imageio-ffmpeg\n    - json_tricks\n    - matplotlib\n    - moviepy\n    - msgpack-numpy\n    - msgpack-python\n    - numpy\n    - opencv\n    - openpyxl\n    - pandas\n    - pillow\n    - psutil\n    - pyglet >=1.4.9\n    - glfw                     # [not linux]\n    - glfw !=3.3.1             # [linux]\n    - pyglfw\n    - pyobjc-framework-quartz  # [osx]\n    - pyopengl\n    - pyosf\n    - pyqmix >=2018.12.13      # [not linux]\n    - pyqt\n    - pyserial\n    - pysoundfile              # [not win]\n    - pytables\n    - python-bidi\n    - python-gitlab\n    - python-sounddevice\n    - pywin32                  # [win]\n    - pyWinhook                # [win]\n    - pyyaml\n    - pyzmq\n    - questplus >=2019.3\n    - requests\n    - scipy\n    - wxpython !=4.0.2, !=4.0.3\n    - xlrd\n\ntest:\n  files:\n    - run_tests.py\n  requires:\n    - libglu                   # [linux]\n  commands:\n    # This is to test the entry point.\n    - psychopy --version\n\n    # We moved all \"import ...\" tests to `run_tests.py` because on Linux, we\n    # need to run the tests through xvfb-run as most of them require a\n    # (virtual) display. On Windows and macOS, we run the script directly.\n    # Note that some essential tests are disabled on Linux due to problems with\n    # the CI system; see `run_tests.py` for details.\n\n    - python run_tests.py      # [not linux]\n    # https://stackoverflow.com/a/30029944/1944216\n    - xvfb-run --server-args=\":99 -screen 0 1024x768x24 -ac +extension GLX -noreset\" python run_tests.py  # [linux]\n\nabout:\n  home: https://www.psychopy.org\n  license: GPL-3.0\n  license_family: GPL\n  license_file: LICENSE\n  summary: 'Psychology experiment software in Python'\n  description: |\n    PsychoPy is an open-source package for creating psychology stimuli in\n    Python (A real and free alternative to Matlab). PsychoPy combines the\n    graphical strengths of OpenGL with the easy Python syntax to give\n    psychophysics a free and simple stimulus presentation and control package.\n  doc_url:  https://www.psychopy.org/documentation.html\n  dev_url: https://github.com/psychopy/psychopy\n\nextra:\n  recipe-maintainers:\n    - kastman\n    - peircej\n    - hoechenberger\n",
+ "raw_meta_yaml":"{% set name = \"PsychoPy\" %}\n{% set version = \"2020.1.0\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.zip\n  sha256: 79c9d182674fbe8da1b921239da17fc463caf56f6a4938e7660708348312db0e\n\nbuild:\n  number: 0\n  skip: true  # [py<36]\n  script: \"{{ PYTHON }} -m pip install --no-deps . -vv\"\n  entry_points:\n    - psychopy = psychopy.app.psychopyApp:main\n  osx_is_app: True\n\nrequirements:\n  host:\n    - python\n    - pip\n    - distro  # [linux]\n  run:\n    - python\n    - python.app               # [osx]\n    - arabic_reshaper\n    - astunparse\n    - configobj\n    - distro                   # [linux]\n    - esprima-python\n    - freetype-py\n    - future\n    - gevent\n    - gitpython\n    - greenlet\n    - hdf5\n    - imageio >=2.5\n    - imageio-ffmpeg\n    - json_tricks\n    - matplotlib\n    - moviepy\n    - msgpack-numpy\n    - msgpack-python\n    - numpy\n    - opencv\n    - openpyxl\n    - pandas\n    - pillow\n    - psutil\n    - pyglet >=1.4.9\n    - glfw                     # [not linux]\n    - glfw !=3.3.1             # [linux]\n    - javascripthon            # [py>=3.5]\n    - pyglfw\n    - pyobjc-framework-quartz  # [osx]\n    - pyopengl\n    - pyosf\n    - pyqmix >=2018.12.13      # [not linux]\n    - pyqt\n    - pyserial\n    - pysoundfile              # [not win]\n    - pytables\n    - python-bidi\n    - python-gitlab\n    - python-sounddevice\n    - pywin32                  # [win]\n    - pyWinhook                # [win]\n    - pyyaml\n    - pyzmq\n    - questplus >=2019.3\n    - requests\n    - scipy\n    - wxpython !=4.0.2, !=4.0.3\n    - xlrd\n\ntest:\n  files:\n    - run_tests.py\n  requires:\n    - libglu                   # [linux]\n  commands:\n    # This is to test the entry point.\n    - psychopy --version\n\n    # We moved all \"import ...\" tests to `run_tests.py` because on Linux, we\n    # need to run the tests through xvfb-run as most of them require a\n    # (virtual) display. On Windows and macOS, we run the script directly.\n    # Note that some essential tests are disabled on Linux due to problems with\n    # the CI system; see `run_tests.py` for details.\n\n    - python run_tests.py      # [not linux]\n    # https://stackoverflow.com/a/30029944/1944216\n    - xvfb-run --server-args=\":99 -screen 0 1024x768x24 -ac +extension GLX -noreset\" python run_tests.py  # [linux]\n\nabout:\n  home: https://www.psychopy.org\n  license: GPL-3.0\n  license_family: GPL\n  license_file: LICENSE\n  summary: 'Psychology experiment software in Python'\n  description: |\n    PsychoPy is an open-source package for creating psychology stimuli in\n    Python (A real and free alternative to Matlab). PsychoPy combines the\n    graphical strengths of OpenGL with the easy Python syntax to give\n    psychophysics a free and simple stimulus presentation and control package.\n  doc_url:  https://www.psychopy.org/documentation.html\n  dev_url: https://github.com/psychopy/psychopy\n\nextra:\n  recipe-maintainers:\n    - kastman\n    - peircej\n    - hoechenberger\n",
  "req":{
   "__set__":true,
   "elements":[
    "arabic_reshaper",
    "astunparse",
    "configobj",
+   "distro",
    "esprima-python",
    "freetype-py",
    "future",
@@ -411,6 +414,7 @@
    "hdf5",
    "imageio",
    "imageio-ffmpeg",
+   "javascripthon",
    "json_tricks",
    "matplotlib",
    "moviepy",
@@ -437,6 +441,7 @@
    "python-bidi",
    "python-gitlab",
    "python-sounddevice",
+   "python.app",
    "pywin32",
    "pywinhook",
    "pyyaml",
@@ -456,6 +461,7 @@
   "host":{
    "__set__":true,
    "elements":[
+    "distro",
     "pip",
     "python"
    ]
@@ -466,6 +472,7 @@
     "arabic_reshaper",
     "astunparse",
     "configobj",
+    "distro",
     "esprima-python",
     "freetype-py",
     "future",
@@ -476,6 +483,7 @@
     "hdf5",
     "imageio",
     "imageio-ffmpeg",
+    "javascripthon",
     "json_tricks",
     "matplotlib",
     "moviepy",
@@ -501,6 +509,7 @@
     "python-bidi",
     "python-gitlab",
     "python-sounddevice",
+    "python.app",
     "pywin32",
     "pywinhook",
     "pyyaml",
@@ -529,6 +538,7 @@
   "host":{
    "__set__":true,
    "elements":[
+    "distro",
     "pip",
     "python"
    ]
@@ -539,6 +549,7 @@
     "arabic_reshaper",
     "astunparse",
     "configobj",
+    "distro",
     "esprima-python",
     "freetype-py",
     "future",
@@ -550,6 +561,7 @@
     "hdf5",
     "imageio >=2.5",
     "imageio-ffmpeg",
+    "javascripthon",
     "json_tricks",
     "matplotlib",
     "moviepy",
@@ -576,6 +588,7 @@
     "python-bidi",
     "python-gitlab",
     "python-sounddevice",
+    "python.app",
     "pywin32",
     "pyyaml",
     "pyzmq",
@@ -594,5 +607,5 @@
   }
  },
  "url":"https://pypi.io/packages/source/P/PsychoPy/PsychoPy-3.2.2.zip",
- "version":"3.2.4"
+ "version":"2020.1.0"
 }
