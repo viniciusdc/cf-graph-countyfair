@@ -319,12 +319,12 @@
    "version":"1.2.1"
   },
   "requirements":{
-   "build":[
-    "python >=3",
+   "host":[
+    "python",
     "pip",
-    "python >=3",
+    "python",
     "pip",
-    "python >=3",
+    "python",
     "pip"
    ],
    "run":[
@@ -361,9 +361,9 @@
   },
   "test":{
    "commands":[
-    "python ./test.py --pynwb",
-    "python ./test.py --pynwb",
-    "python ./test.py --pynwb"
+    "python ./test.py",
+    "python ./test.py",
+    "python ./test.py"
    ],
    "imports":[
     "pynwb",
@@ -383,7 +383,7 @@
  "name":"pynwb",
  "new_version":"1.2.1",
  "pinning_version":"2020.01.27",
- "raw_meta_yaml":"{% set name = \"pynwb\" %}\n{% set version = \"1.2.1\" %}\n{% set sha256 = \"9d128beaaa259121def0dd784d9a53fc3bf44400f20a350ec2cebb210e54b31c\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  fn: {{ name }}-{{ version }}.tar.gz\n  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz\n  sha256: {{ sha256 }}\n\nbuild:\n  number: 0\n  script: {{ PYTHON }} -m pip install . --no-deps -vv\n\nrequirements:\n  build:\n    - python >=3\n    - pip\n  run:\n    - python\n    - setuptools\n    - h5py >=2.9\n    - hdmf 1.5.4,<2\n    - numpy >=1.16\n    - pandas >=0.23\n    - python-dateutil >=2.7\n    - ruamel.yaml >=0.15\n\ntest:\n  imports:\n    - pynwb\n  source_files:\n    - test.py\n    - tests\n  commands:\n    - python ./test.py --pynwb\n\nabout:\n  home: https://github.com/NeurodataWithoutBorders/pynwb\n  license: BSD-3-Clause\n  license_file: license.txt\n  summary: 'A Python API for working with Neurodata stored in the NWB Format'\n  description: |\n    Neurophysiology (NWB:N) is a project to develop a unified data format for\n    cellular-based neurophysiology data, focused on the dynamics of groups of\n    neurons measured under a large range of experimental conditions.\n    The NWB:N team consists of neuroscientists and software developers\n    who recognize that adoption of a unified data format is an important\n    step toward breaking down the barriers to data sharing in neuroscience.\n  doc_url: http://pynwb.readthedocs.io/en/latest/\n\nextra:\n  recipe-maintainers:\n    - ajtritt\n    - bendichter\n    - dorukozturk\n    - jcfr\n    - oruebel\n    - rly\n",
+ "raw_meta_yaml":"{% set name = \"pynwb\" %}\n{% set version = \"1.2.1\" %}\n{% set sha256 = \"9d128beaaa259121def0dd784d9a53fc3bf44400f20a350ec2cebb210e54b31c\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  fn: {{ name }}-{{ version }}.tar.gz\n  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz\n  sha256: {{ sha256 }}\n\nbuild:\n  number: 0\n  script: {{ PYTHON }} -m pip install . --no-deps -vv\n  skip: True  # [py<33]\n\nrequirements:\n  host:\n    - python\n    - pip\n  run:\n    - python\n    - setuptools\n    - h5py >=2.9\n    - hdmf 1.5.4,<2\n    - numpy >=1.16\n    - pandas >=0.23\n    - python-dateutil >=2.7\n    - ruamel.yaml >=0.15\n\ntest:\n  imports:\n    - pynwb\n  source_files:\n    - test.py\n    - tests\n  commands:\n    - python ./test.py\n\nabout:\n  home: https://github.com/NeurodataWithoutBorders/pynwb\n  license: BSD-3-Clause\n  license_file: license.txt\n  summary: 'A Python API for working with Neurodata stored in the NWB Format'\n  description: |\n    Neurophysiology (NWB:N) is a project to develop a unified data format for\n    cellular-based neurophysiology data, focused on the dynamics of groups of\n    neurons measured under a large range of experimental conditions.\n    The NWB:N team consists of neuroscientists and software developers\n    who recognize that adoption of a unified data format is an important\n    step toward breaking down the barriers to data sharing in neuroscience.\n  doc_url: http://pynwb.readthedocs.io/en/latest/\n\nextra:\n  recipe-maintainers:\n    - ajtritt\n    - bendichter\n    - dorukozturk\n    - jcfr\n    - oruebel\n    - rly\n",
  "req":{
   "__set__":true,
   "elements":[
@@ -401,14 +401,14 @@
  "requirements":{
   "build":{
    "__set__":true,
+   "elements":[]
+  },
+  "host":{
+   "__set__":true,
    "elements":[
     "pip",
     "python"
    ]
-  },
-  "host":{
-   "__set__":true,
-   "elements":[]
   },
   "run":{
    "__set__":true,
@@ -433,14 +433,14 @@
  "total_requirements":{
   "build":{
    "__set__":true,
-   "elements":[
-    "pip",
-    "python >=3"
-   ]
+   "elements":[]
   },
   "host":{
    "__set__":true,
-   "elements":[]
+   "elements":[
+    "pip",
+    "python"
+   ]
   },
   "run":{
    "__set__":true,
