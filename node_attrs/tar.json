@@ -79,6 +79,23 @@
     "migrator_version",
     "version"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/371637683.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"ArchRebuild",
+    "migrator_version":1,
+    "name":"aarch64 and ppc64le addition"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "name"
+   ]
   }
  ],
  "bad":false,
@@ -170,7 +187,7 @@
  },
  "name":"tar",
  "new_version":false,
- "pinning_version":"2019.02.21",
+ "pinning_version":"2020.01.28",
  "raw_meta_yaml":"{% set name = \"tar\" %}\n{% set version = \"1.32\" %}\n{% set sha256 = \"d0d3ae07f103323be809bc3eac0dcc386d52c5262499fe05511ac4788af1fdd8\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  fn: {{ name }}-{{ version }}.tar.gz\n  url: http://ftp.gnu.org/gnu/{{ name }}/{{ name }}-{{ version }}.tar.xz\n  sha256: {{ sha256 }}\n\nbuild:\n  number: 0\n  script: mkdir -p $PREFIX/lib && FORCE_UNSAFE_CONFIGURE=1 ./configure --prefix=$PREFIX && make && make check && make install && make installcheck\n  skip: True  # [not linux]\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - xz\n    - make\n    - binutils\n    - coreutils\n    - pkg-config\ntest:\n  requires:\n    - make\n    - binutils\n    - coreutils\n    - bzip2\n    - xz\n    - lzip\n    - lzop\n  commands:\n    - tar --version | grep {{ version }}\n\nabout:\n  home: https://www.gnu.org/software/tar/\n  license: GPLv3\n  license_family: GPL\n  license_file: COPYING\n  summary: 'GNU tape archive program'\n\n  description: |\n    GNU tar saves many files together into a single tape or disk\n    archive, and can restore individual files from the archive.  It includes\n    multivolume support, the ability to archive sparse files, automatic archive\n    compression/decompression, remote archives and special features that allow\n    tar to be used for incremental and full backups.\n\nextra:\n  recipe-maintainers:\n    - notestaff\n",
  "req":{
   "__set__":true,
@@ -216,7 +233,7 @@
    ]
   }
  },
- "smithy_version":"3.2.14",
+ "smithy_version":"3.6.8",
  "strong_exports":false,
  "total_requirements":{
   "build":{
