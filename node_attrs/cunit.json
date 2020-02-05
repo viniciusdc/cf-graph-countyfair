@@ -54,7 +54,11 @@
  "conda-forge.yml":{
   "compiler_stack":"comp7",
   "max_py_ver":"37",
-  "max_r_ver":"35"
+  "max_r_ver":"35",
+  "provider":{
+   "linux_aarch64":"default",
+   "linux_ppc64le":"default"
+  }
  },
  "feedstock_name":"cunit",
  "hash_type":"md5",
@@ -86,16 +90,19 @@
     "automake",
     "c_compiler_stub",
     "cxx_compiler_stub",
+    "make",
     "libtool",
     "autoconf",
     "automake",
     "c_compiler_stub",
     "cxx_compiler_stub",
+    "make",
     "libtool",
     "autoconf",
     "automake",
     "c_compiler_stub",
-    "cxx_compiler_stub"
+    "cxx_compiler_stub",
+    "make"
    ],
    "host":null,
    "run":null
@@ -118,7 +125,7 @@
  "name":"cunit",
  "new_version":false,
  "pinning_version":"2020.01.27",
- "raw_meta_yaml":"{% set version = \"2.1.3\" %}\n{% set version_url = \"2.1-3\" %}\n\npackage:\n  name: cunit\n  version: {{ version }}\n\nsource:\n  fn: CUnit-{{ version }}.tar.gz\n  url: https://sourceforge.net/projects/cunit/files/CUnit/{{ version_url }}/CUnit-{{ version_url }}.tar.bz2\n  md5: b5f1a9f6093869c070c6e4a9450cc10c\n\nbuild:\n  number: 1001\n  skip: True  # [win]\n\nrequirements:\n  build:\n    - libtool\n    - autoconf\n    - automake\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n  host:\n  run:\n\ntest:\n  commands:\n    - test -f ${PREFIX}/lib/libcunit.a\n    - test -f ${PREFIX}/lib/libcunit.so  # [linux]\n    - test -f ${PREFIX}/lib/libcunit.dylib  # [osx]\n\nabout:\n  home: http://sourceforge.net/projects/cunit/\n  license: LGPL v2\n  summary: A Unit Testing Framework for C\n\nextra:\n    recipe-maintainers:\n      - grlee77\n",
+ "raw_meta_yaml":"{% set version = \"2.1.3\" %}\n{% set version_url = \"2.1-3\" %}\n\npackage:\n  name: cunit\n  version: {{ version }}\n\nsource:\n  fn: CUnit-{{ version }}.tar.gz\n  url: https://sourceforge.net/projects/cunit/files/CUnit/{{ version_url }}/CUnit-{{ version_url }}.tar.bz2\n  md5: b5f1a9f6093869c070c6e4a9450cc10c\n\nbuild:\n  number: 1001\n  skip: True  # [win]\n\nrequirements:\n  build:\n    - libtool\n    - autoconf\n    - automake\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n    - make\n  host:\n  run:\n\ntest:\n  commands:\n    - test -f ${PREFIX}/lib/libcunit.a\n    - test -f ${PREFIX}/lib/libcunit.so  # [linux]\n    - test -f ${PREFIX}/lib/libcunit.dylib  # [osx]\n\nabout:\n  home: http://sourceforge.net/projects/cunit/\n  license: LGPL v2\n  summary: A Unit Testing Framework for C\n\nextra:\n    recipe-maintainers:\n      - grlee77\n",
  "req":{
   "__set__":true,
   "elements":[
@@ -126,7 +133,8 @@
    "automake",
    "c_compiler_stub",
    "cxx_compiler_stub",
-   "libtool"
+   "libtool",
+   "make"
   ]
  },
  "requirements":{
@@ -137,7 +145,8 @@
     "automake",
     "c_compiler_stub",
     "cxx_compiler_stub",
-    "libtool"
+    "libtool",
+    "make"
    ]
   },
   "host":{
@@ -163,7 +172,8 @@
     "automake",
     "c_compiler_stub",
     "cxx_compiler_stub",
-    "libtool"
+    "libtool",
+    "make"
    ]
   },
   "host":{

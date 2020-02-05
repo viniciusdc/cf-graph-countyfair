@@ -35,6 +35,23 @@
     "migrator_version",
     "name"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/371438885.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"ArchRebuild",
+    "migrator_version":1,
+    "name":"aarch64 and ppc64le addition"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "name"
+   ]
   }
  ],
  "bad":false,
@@ -151,7 +168,7 @@
  },
  "name":"cyrus-sasl",
  "new_version":false,
- "pinning_version":"2019.02.24",
+ "pinning_version":"2020.01.28",
  "raw_meta_yaml":"{% set name = \"cyrus-sasl\" %}\n{% set version = \"2.1.27\" %}\n\npackage:\n  name: {{ name }}\n  version: {{ version }}\n\nsource:\n  # The source releases are strange.  Lets use the tagged source tarball instead\n  # - url: https://github.com/cyrusimap/cyrus-sasl/releases/download/cyrus-sasl-{{ version }}/cyrus-sasl-{{ version }}.tar.gz\n  #   sha256: 26866b1549b00ffd020f188a43c258017fa1c382b3ddadd8201536f72efb05d5\n  # - url: ftp://ftp.cyrusimap.org/cyrus-sasl/{{ name }}-{{ version }}.tar.gz\n  \n  url: https://github.com/cyrusimap/cyrus-sasl/archive/cyrus-sasl-{{ version }}.tar.gz\n  sha256: b564d773803dc4cff42d2bdc04c80f2b105897a724c247817d4e4a99dd6b9976\n  \n  patches:\n    # - 0001-Include-stddef-in-sasl-h-for-size_t.patch\n    # Patches for disabling framework things\n    #- makefile.patch  # [osx]\n    #- include_makefile.patch  # [osx]\n    #- lib_makefile.patch  # [osx]\n    \nbuild:\n  number: 0\n  skip: True  # [win]\n  missing_dso_whitelist:          # [osx]\n    - /usr/lib/libresolv.9.dylib  # [osx]\n    - /usr/lib/libpam.2.dylib     # [osx]\n  run_exports:\n    # https://abi-laboratory.pro/tracker/timeline/cyrus-sasl/\n    # SONAME was changed once in a patch release but it was 6 years ago so\n    # giving them the benefit of the doubt that it was a one-off mistake.\n    - {{ pin_subpackage('cyrus-sasl') }}\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n    - libtool\n    - pkg-config\n    - automake\n    - autoconf\n    - make\n  host:\n    - krb5\n    - openssl\n    - libntlm\n  run:\n    - krb5\n    - openssl\n    - libntlm\n    \ntest:\n  commands:\n    - echo \"DONE\"\n\nabout:\n  home: https://www.cyrusimap.org/sasl/\n  license: BSD-3-Clause-Attribution\n  license_family: BSD\n  license_file: COPYING\n  summary: |\n    This is the Cyrus SASL API implementation. It can be used on the client or server side to provide\n    authentication and authorization services. See RFC 4422 for more information.\n  description: |\n    Simple Authentication and Security Layer (SASL) is a specification that describes how\n    authentication mechanisms can be plugged into an application protocol on the wire. Cyrus\n    SASL is an implementation of SASL that makes it easy for application developers to integrate\n    authentication mechanisms into their application in a generic way.\n  dev_url: https://github.com/cyrusimap/cyrus-sasl\n  doc_url: https://www.cyrusimap.org/sasl/\n\nextra:\n  recipe-maintainers:\n    - mariusvniekerk\n    - martindurant\n    - mingwandroid\n    - wesm\n",
  "req":{
   "__set__":true,
@@ -202,7 +219,7 @@
    "elements":[]
   }
  },
- "smithy_version":"3.2.14",
+ "smithy_version":"3.6.7",
  "strong_exports":false,
  "total_requirements":{
   "build":{
