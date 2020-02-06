@@ -110,15 +110,17 @@
    "summary":"Python interface for ECOS, a lightweight conic solver for second-order cone programming"
   },
   "build":{
-   "number":"0",
-   "script":"-m pip install . --no-deps -vv",
-   "skip":true
+   "number":"1",
+   "script":"-m pip install . --no-deps -vv"
   },
   "extra":{
    "recipe-maintainers":[
     "dougalsutherland",
+    "h-vetinari",
     "dougalsutherland",
-    "dougalsutherland"
+    "h-vetinari",
+    "dougalsutherland",
+    "h-vetinari"
    ]
   },
   "package":{
@@ -182,7 +184,7 @@
  "name":"ecos",
  "new_version":"2.0.7.post1",
  "pinning_version":"2019.11.01",
- "raw_meta_yaml":"{% set name = \"ecos\" %}\n{% set version = \"2.0.7.post1\" %}\n{% set sha256 = \"83e90f42b3f32e2a93f255c3cfad2da78dbd859119e93844c45d2fca20bdc758\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz\n  sha256: {{ sha256 }}\n\nbuild:\n  number: 0\n  script: {{ PYTHON }} -m pip install . --no-deps -vv\n  skip: true  # figure out Windows build later...  # [win]\n  skip: true  # [py27 and (ppc64le or aarch64)]\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n  host:\n    - python\n    - pip\n    - numpy\n  run:\n    - python\n    - {{ pin_compatible('numpy') }}\n    - scipy >=0.9\n\ntest:\n  imports:\n    - ecos\n    - _ecos\n  files:\n    - test_interface_bb.py  # copied from repo; isn't in the sdist\n  commands:\n    - python test_interface_bb.py\n\nabout:\n  home: http://www.embotech.com/ECOS\n  license: GPL-3.0\n  license_family: GPL\n  license_file: LICENSE  # in recipe for now; https://github.com/embotech/ecos-python/pull/15\n  summary: 'Python interface for ECOS, a lightweight conic solver for second-order cone programming'\n  dev_url: https://github.com/embotech/ecos-python\n\nextra:\n  recipe-maintainers:\n    - dougalsutherland\n",
+ "raw_meta_yaml":"{% set name = \"ecos\" %}\n{% set version = \"2.0.7.post1\" %}\n{% set sha256 = \"83e90f42b3f32e2a93f255c3cfad2da78dbd859119e93844c45d2fca20bdc758\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz\n  sha256: {{ sha256 }}\n\nbuild:\n  number: 1\n  script: {{ PYTHON }} -m pip install . --no-deps -vv\n  skip: true  # [py27 and (ppc64le or aarch64)]\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n  host:\n    - python\n    - pip\n    - numpy\n  run:\n    - python\n    - {{ pin_compatible('numpy') }}\n    - scipy >=0.9\n\ntest:\n  imports:\n    - ecos\n    - _ecos\n  files:\n    - test_interface_bb.py  # copied from repo; isn't in the sdist\n  commands:\n    - python test_interface_bb.py\n\nabout:\n  home: http://www.embotech.com/ECOS\n  license: GPL-3.0\n  license_family: GPL\n  license_file: LICENSE  # in recipe for now; https://github.com/embotech/ecos-python/pull/15\n  summary: 'Python interface for ECOS, a lightweight conic solver for second-order cone programming'\n  dev_url: https://github.com/embotech/ecos-python\n\nextra:\n  recipe-maintainers:\n    - dougalsutherland\n    - h-vetinari\n",
  "req":{
   "__set__":true,
   "elements":[
