@@ -147,6 +147,23 @@
     "migrator_version",
     "version"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/372091737.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"Version",
+    "migrator_version":0,
+    "version":"2.4.5"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "version"
+   ]
   }
  ],
  "bad":false,
@@ -273,8 +290,8 @@
   }
  },
  "name":"pyspark",
- "new_version":"2.4.4",
- "pinning_version":"2019.08.27",
+ "new_version":"2.4.5",
+ "pinning_version":"2020.01.28",
  "raw_meta_yaml":"{% set name = \"pyspark\" %}\n{% set version = \"2.4.4\" %}\n\npackage:\n  name: \"{{ name|lower }}\"\n  version: \"{{ version }}\"\n\nsource:\n  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz\n  sha256: 13655eb113b8cf5f3f85b24fd92f86c4668a723723bd68949d028fa0df2cf694\n  patches:\n    - 0001-Disable-symlinks-on-Windows.patch\n\nbuild:\n  noarch: python\n  number: 0\n  script: \"{{ PYTHON }} -m pip install . --no-deps --ignore-installed -vv \"\n\nrequirements:\n  host:\n    - pip\n    - pypandoc\n    - python\n    - setuptools\n  run:\n    - numpy >=1.7\n    - pandas >=0.19.2\n    - py4j ==0.10.7\n    - python\n\ntest:\n  commands:\n    - bash -c \"compgen -c spark && compgen -c pyspark\"  # [not win]\n    - where *spark*                                     # [win]\n  imports:\n    - pyspark\n    - pyspark.ml\n    - pyspark.ml.linalg\n    - pyspark.ml.param\n    - pyspark.mllib\n    - pyspark.mllib.linalg\n    - pyspark.mllib.stat\n    - pyspark.sql\n    - pyspark.streaming\n\nabout:\n  home: http://spark.apache.org/\n  license: Apache 2.0\n  # Not yet available in the pypi release\n  license_file: '{{ environ[\"RECIPE_DIR\"] }}/LICENSE.txt'\n  summary: 'Apache Spark'\n  description: Apache Spark is a fast and general engine for large-scale data processing.\n\nextra:\n  recipe-maintainers:\n    - parente\n    - ericdill\n    - quasiben\n    - dbast\n    - mariusvniekerk\n",
  "req":{
   "__set__":true,
@@ -316,7 +333,7 @@
    "elements":[]
   }
  },
- "smithy_version":"3.4.1",
+ "smithy_version":"3.6.8",
  "strong_exports":false,
  "total_requirements":{
   "build":{
