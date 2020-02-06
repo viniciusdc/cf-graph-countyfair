@@ -239,6 +239,23 @@
     "migrator_version",
     "version"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/371664228.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"Version",
+    "migrator_version":0,
+    "version":"0.7.2"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "version"
+   ]
   }
  ],
  "bad":false,
@@ -338,7 +355,7 @@
   }
  },
  "name":"pygram11",
- "new_version":"0.7.1",
+ "new_version":"0.7.2",
  "pinning_version":"2020.01.28",
  "raw_meta_yaml":"{% set name = \"pygram11\" %}\n{% set version = \"0.6.1\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz\n  sha256: eea52496b4af3b6e0d65414031d2b5124ae598e4e97bcb64b46e5c1b67000e12\n\nbuild:\n  number: 0\n  skip: True  # [win or py2k]\n  script: \"{{ PYTHON }} -m pip install . --no-deps -vv\"\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n    - llvm-openmp  # [osx]\n  host:\n    - llvm-openmp  # [osx]\n    - python\n    - pip\n    - setuptools >=40.1\n    - numpy >=1.14\n  run:\n    - llvm-openmp  # [osx]\n    - python\n    - {{ pin_compatible('numpy') }}\n\ntest:\n  requires:\n    - pytest\n    - numpy >=1.12\n  source_files:\n    - tests\n  imports:\n    - {{ name }}\n  commands:\n    - pytest --ignore=extern\n\nabout:\n  home: http://github.com/douglasdavis/{{ name }}\n  license: MIT\n  license_family: MIT\n  license_file: LICENSE\n  summary: \"Simple and fast histogramming in Python via pybind11 and OpenMP\"\n  description: |\n    Simple and fast histogramming with a NumPy like API, built on pybind11 and\n    accelerated with OpenMP.\n  doc_url: https://{{ name }}.readthedocs.io/\n  dev_url: https://github.com/douglasdavis/{{ name }}\n\nextra:\n  recipe-maintainers:\n    - douglasdavis\n",
  "req":{
@@ -368,7 +385,6 @@
    "elements":[
     "llvm-openmp",
     "numpy",
-    "openmp",
     "pip",
     "python",
     "setuptools"
@@ -379,7 +395,6 @@
    "elements":[
     "compatible_pin_stub",
     "llvm-openmp",
-    "openmp",
     "python"
    ]
   },
