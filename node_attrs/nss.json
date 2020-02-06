@@ -192,7 +192,11 @@
  "conda-forge.yml":{
   "compiler_stack":"comp7",
   "max_py_ver":"37",
-  "max_r_ver":"35"
+  "max_r_ver":"35",
+  "provider":{
+   "linux_aarch64":"azure",
+   "linux_ppc64le":"azure"
+  }
  },
  "feedstock_name":"nss",
  "hash_type":"sha256",
@@ -231,36 +235,39 @@
     "autoconf",
     "cmake",
     "pkg-config",
+    "make",
     "c_compiler_stub",
     "cxx_compiler_stub",
     "autoconf",
     "cmake",
     "pkg-config",
+    "make",
     "c_compiler_stub",
     "cxx_compiler_stub",
     "autoconf",
     "cmake",
-    "pkg-config"
+    "pkg-config",
+    "make"
    ],
    "host":[
-    "nspr 4.20",
+    "nspr",
     "sqlite",
     "zlib",
-    "nspr 4.20",
+    "nspr",
     "sqlite",
     "zlib",
-    "nspr 4.20",
+    "nspr",
     "sqlite",
     "zlib"
    ],
    "run":[
-    "compatible_pin_stub",
+    "nspr",
     "sqlite",
     "zlib",
-    "compatible_pin_stub",
+    "nspr",
     "sqlite",
     "zlib",
-    "compatible_pin_stub",
+    "nspr",
     "sqlite",
     "zlib"
    ]
@@ -292,15 +299,15 @@
  "name":"nss",
  "new_version":"3.49",
  "pinning_version":"2020.01.16",
- "raw_meta_yaml":"{% set version = \"3.47\" %}\n{% set version_us = version.replace(\".\", \"_\") %}\n\npackage:\n  name: nss\n  version: {{ version }}\n\nsource:\n  fn: nss-{{ version }}.tgz\n  url: https://ftp.mozilla.org/pub/security/nss/releases/NSS_{{ version_us }}_RTM/src/nss-{{ version }}.tar.gz\n  sha256: 6cd0c4438b616bdacc0b5f25ff1506b0d07ee97ea6c95d514c5487200a155fa7\n  patches:\n    # Adds auto-generated nss.pc and nss-config script, and allows building without nspr in the source tree \n    - nss-3.39-standalone-1.patch\n\nbuild:\n  number: 0\n  skip: true  # [win]\n  skip: true  # [osx and c_compiler == \"toolchain_c\"]\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n    - autoconf\n    - cmake\n    - pkg-config\n    \n  host:\n    - nspr 4.20\n    - sqlite\n    - zlib\n\n  run:\n    - {{ pin_compatible('nspr', max_pin='x') }}\n    - sqlite\n    - zlib\n\ntest:\n  commands:\n    - test -f ${PREFIX}/lib/libnspr4${SHLIB_EXT}         # [unix]\n    - test -f ${PREFIX}/lib/libplds4${SHLIB_EXT}         # [unix]\n    - test -f ${PREFIX}/lib/libplc4${SHLIB_EXT}          # [unix]\n    - test -f ${PREFIX}/lib/libsoftokn3${SHLIB_EXT}      # [unix]\n    - test -f ${PREFIX}/lib/libsoftokn3.chk              # [unix]\n    - test -f ${PREFIX}/lib/libnss3${SHLIB_EXT}          # [unix]\n    - test -f ${PREFIX}/lib/libsmime3${SHLIB_EXT}        # [unix]\n    - test -f ${PREFIX}/lib/libssl3${SHLIB_EXT}          # [unix]\n    - test -f ${PREFIX}/lib/libnssckbi${SHLIB_EXT}       # [unix]\n\nabout:\n  home: https://developer.mozilla.org/en-US/docs/Mozilla/Projects/NSS\n  license: MPL 2\n  license_file: nss/COPYING\n  summary: A set of libraries designed to support cross-platform development of security-enabled client and server applications.\n  description: |\n    Network Security Services (NSS) is a set of libraries designed to support\n    cross-platform development of security-enabled client and server\n    applications. Applications built with NSS can support SSL v3, TLS,\n    PKCS #5, PKCS #7, PKCS #11, PKCS #12, S/MIME, X.509 v3 certificates,\n    and other security standards.\n  doc_url: https://developer.mozilla.org/en-US/docs/Mozilla/Projects/NSS\n  dev_url: https://hg.mozilla.org/projects/nss\n\nextra:\n  recipe-maintainers:\n    - marcelotrevisani\n    - jakirkham\n",
+ "raw_meta_yaml":"{% set version = \"3.47\" %}\n{% set version_us = version.replace(\".\", \"_\") %}\n\npackage:\n  name: nss\n  version: {{ version }}\n\nsource:\n  fn: nss-{{ version }}.tgz\n  url: https://ftp.mozilla.org/pub/security/nss/releases/NSS_{{ version_us }}_RTM/src/nss-{{ version }}.tar.gz\n  sha256: 6cd0c4438b616bdacc0b5f25ff1506b0d07ee97ea6c95d514c5487200a155fa7\n  patches:\n    # Adds auto-generated nss.pc and nss-config script, and allows building without nspr in the source tree \n    - nss-3.39-standalone-1.patch\n\nbuild:\n  number: 0\n  skip: true  # [win]\n  skip: true  # [osx and c_compiler == \"toolchain_c\"]\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n    - autoconf\n    - cmake\n    - pkg-config\n    - make\n\n  host:\n    - nspr\n    - sqlite\n    - zlib\n\n  run:\n    - nspr\n    - sqlite\n    - zlib\n\ntest:\n  commands:\n    - test -f ${PREFIX}/lib/libnspr4${SHLIB_EXT}         # [unix]\n    - test -f ${PREFIX}/lib/libplds4${SHLIB_EXT}         # [unix]\n    - test -f ${PREFIX}/lib/libplc4${SHLIB_EXT}          # [unix]\n    - test -f ${PREFIX}/lib/libsoftokn3${SHLIB_EXT}      # [unix]\n    - test -f ${PREFIX}/lib/libsoftokn3.chk              # [unix]\n    - test -f ${PREFIX}/lib/libnss3${SHLIB_EXT}          # [unix]\n    - test -f ${PREFIX}/lib/libsmime3${SHLIB_EXT}        # [unix]\n    - test -f ${PREFIX}/lib/libssl3${SHLIB_EXT}          # [unix]\n    - test -f ${PREFIX}/lib/libnssckbi${SHLIB_EXT}       # [unix]\n\nabout:\n  home: https://developer.mozilla.org/en-US/docs/Mozilla/Projects/NSS\n  license: MPL 2\n  license_file: nss/COPYING\n  summary: A set of libraries designed to support cross-platform development of security-enabled client and server applications.\n  description: |\n    Network Security Services (NSS) is a set of libraries designed to support\n    cross-platform development of security-enabled client and server\n    applications. Applications built with NSS can support SSL v3, TLS,\n    PKCS #5, PKCS #7, PKCS #11, PKCS #12, S/MIME, X.509 v3 certificates,\n    and other security standards.\n  doc_url: https://developer.mozilla.org/en-US/docs/Mozilla/Projects/NSS\n  dev_url: https://hg.mozilla.org/projects/nss\n\nextra:\n  recipe-maintainers:\n    - marcelotrevisani\n    - jakirkham\n",
  "req":{
   "__set__":true,
   "elements":[
    "autoconf",
    "c_compiler_stub",
    "cmake",
-   "compatible_pin_stub",
    "cxx_compiler_stub",
+   "make",
    "nspr",
    "pkg-config",
    "sqlite",
@@ -315,6 +322,7 @@
     "c_compiler_stub",
     "cmake",
     "cxx_compiler_stub",
+    "make",
     "pkg-config"
    ]
   },
@@ -329,7 +337,7 @@
   "run":{
    "__set__":true,
    "elements":[
-    "compatible_pin_stub",
+    "nspr",
     "sqlite",
     "zlib"
    ]
@@ -349,13 +357,14 @@
     "c_compiler_stub",
     "cmake",
     "cxx_compiler_stub",
+    "make",
     "pkg-config"
    ]
   },
   "host":{
    "__set__":true,
    "elements":[
-    "nspr 4.20",
+    "nspr",
     "sqlite",
     "zlib"
    ]
@@ -363,7 +372,7 @@
   "run":{
    "__set__":true,
    "elements":[
-    "compatible_pin_stub",
+    "nspr",
     "sqlite",
     "zlib"
    ]
