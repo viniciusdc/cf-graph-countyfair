@@ -51,47 +51,53 @@
   "build":{
    "noarch":"python",
    "number":"0",
-   "script":"python setup.py install --single-version-externally-managed --record record.txt"
+   "script":" -m pip install . -vv"
   },
   "extra":{
    "recipe-maintainers":[
     "ozagordi",
+    "KingDarBoja",
     "ozagordi",
-    "ozagordi"
+    "KingDarBoja",
+    "ozagordi",
+    "KingDarBoja"
    ]
   },
   "package":{
    "name":"gql",
-   "version":"0.1.0"
+   "version":"0.3.0"
   },
   "requirements":{
-   "build":[
+   "host":[
     "python",
-    "setuptools",
+    "pip",
     "python",
-    "setuptools",
+    "pip",
     "python",
-    "setuptools"
+    "pip"
    ],
    "run":[
     "python",
     "six >=1.10.0",
-    "graphql-core >=0.5.0",
-    "promise >=0.4.0",
+    "graphql-core >=2,<3",
+    "promise >=2.0,<3",
+    "requests >=2.12,<3",
     "python",
     "six >=1.10.0",
-    "graphql-core >=0.5.0",
-    "promise >=0.4.0",
+    "graphql-core >=2,<3",
+    "promise >=2.0,<3",
+    "requests >=2.12,<3",
     "python",
     "six >=1.10.0",
-    "graphql-core >=0.5.0",
-    "promise >=0.4.0"
+    "graphql-core >=2,<3",
+    "promise >=2.0,<3",
+    "requests >=2.12,<3"
    ]
   },
   "source":{
-   "fn":"gql-0.1.0.tar.gz",
-   "sha256":"d20cf1eb1c6d54558174a3dcc3cf1ca0e07678cb1123804c2e165838238350f4",
-   "url":"https://pypi.io/packages/source/g/gql/gql-0.1.0.tar.gz"
+   "fn":"gql-0.3.0.tar.gz",
+   "sha256":"42c03890f8475f46751939dedbd276b471463b5f2345c9c54b6cf84d9e58b1e8",
+   "url":"https://pypi.io/packages/source/g/gql/gql-0.3.0.tar.gz"
   },
   "test":{
    "imports":[
@@ -107,28 +113,29 @@
  "name":"gql",
  "new_version":"0.3.0",
  "pinning_version":"2020.01.24",
- "raw_meta_yaml":"{% set name = \"gql\" %}\n{% set version = \"0.1.0\" %}\n{% set file_ext = \"tar.gz\" %}\n{% set hash_type = \"sha256\" %}\n{% set hash_value = \"d20cf1eb1c6d54558174a3dcc3cf1ca0e07678cb1123804c2e165838238350f4\" %}\n\npackage:\n  name: '{{ name|lower }}'\n  version: '{{ version }}'\n\nsource:\n  fn: '{{ name }}-{{ version }}.{{ file_ext }}'\n  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.{{ file_ext }}\n  '{{ hash_type }}': '{{ hash_value }}'\n\nbuild:\n  noarch: python\n  number: 0\n  script: python setup.py install --single-version-externally-managed --record record.txt\n\nrequirements:\n  build:\n    - python\n    - setuptools\n  run:\n    - python\n    - six >=1.10.0\n    - graphql-core >=0.5.0\n    - promise >=0.4.0\n\ntest:\n  imports:\n    - gql\n    - gql.transport\n\nabout:\n  home: https://github.com/graphql-python/gql\n  license: MIT\n  license_family: MIT\n  license_file: '{{ environ[\"RECIPE_DIR\"] }}/LICENSE'\n  summary: GraphQL client for Python\n  description: \"This is a GraphQL client for Python. Plays nicely with graphene, graphql-core, graphql-js and\\\n    any other GraphQL implementation compatible with the spec.\"\nextra:\n  recipe-maintainers:\n    - ozagordi\n",
+ "raw_meta_yaml":"{% set name = \"gql\" %}\n{% set version = \"0.3.0\" %}\n{% set file_ext = \"tar.gz\" %}\n{% set hash_type = \"sha256\" %}\n{% set hash_value = \"42c03890f8475f46751939dedbd276b471463b5f2345c9c54b6cf84d9e58b1e8\" %}\n\npackage:\n  name: '{{ name|lower }}'\n  version: '{{ version }}'\n\nsource:\n  fn: '{{ name }}-{{ version }}.{{ file_ext }}'\n  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.{{ file_ext }}\n  '{{ hash_type }}': '{{ hash_value }}'\n\nbuild:\n  noarch: python\n  number: 0\n  script: \"{{ PYTHON }} -m pip install . -vv\"\n\nrequirements:\n  host:\n    - python\n    - pip\n  run:\n    - python\n    - six >=1.10.0\n    - graphql-core >=2,<3\n    - promise >=2.0,<3\n    - requests >=2.12,<3\n\ntest:\n  imports:\n    - gql\n    - gql.transport\n\nabout:\n  home: https://github.com/graphql-python/gql\n  license: MIT\n  license_family: MIT\n  license_file: '{{ environ[\"RECIPE_DIR\"] }}/LICENSE'\n  summary: GraphQL client for Python\n  description: \"This is a GraphQL client for Python. Plays nicely with graphene, graphql-core, graphql-js and\\\n    any other GraphQL implementation compatible with the spec.\"\nextra:\n  recipe-maintainers:\n    - ozagordi\n    - KingDarBoja\n",
  "req":{
   "__set__":true,
   "elements":[
    "graphql-core",
+   "pip",
    "promise",
    "python",
-   "setuptools",
+   "requests",
    "six"
   ]
  },
  "requirements":{
   "build":{
    "__set__":true,
-   "elements":[
-    "python",
-    "setuptools"
-   ]
+   "elements":[]
   },
   "host":{
    "__set__":true,
-   "elements":[]
+   "elements":[
+    "pip",
+    "python"
+   ]
   },
   "run":{
    "__set__":true,
@@ -136,6 +143,7 @@
     "graphql-core",
     "promise",
     "python",
+    "requests",
     "six"
    ]
   },
@@ -149,21 +157,22 @@
  "total_requirements":{
   "build":{
    "__set__":true,
-   "elements":[
-    "python",
-    "setuptools"
-   ]
+   "elements":[]
   },
   "host":{
    "__set__":true,
-   "elements":[]
+   "elements":[
+    "pip",
+    "python"
+   ]
   },
   "run":{
    "__set__":true,
    "elements":[
-    "graphql-core >=0.5.0",
-    "promise >=0.4.0",
+    "graphql-core >=2,<3",
+    "promise >=2.0,<3",
     "python",
+    "requests >=2.12,<3",
     "six >=1.10.0"
    ]
   },
@@ -173,5 +182,5 @@
   }
  },
  "url":"https://pypi.io/packages/source/g/gql/gql-0.1.0.tar.gz",
- "version":"0.1.0"
+ "version":"0.3.0"
 }
