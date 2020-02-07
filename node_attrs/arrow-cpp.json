@@ -583,16 +583,13 @@
    "license":"Apache 2.0",
    "license_file":[
     "LICENSE.txt",
-    "LLVM_LICENSE.txt",
     "LICENSE.txt",
-    "LLVM_LICENSE.txt",
-    "LICENSE.txt",
-    "LLVM_LICENSE.txt"
+    "LICENSE.txt"
    ],
    "summary":"C++ libraries for Apache Arrow"
   },
   "build":{
-   "number":"6",
+   "number":"0",
    "run_exports":[
     "subpackage_stub",
     "subpackage_stub",
@@ -639,7 +636,7 @@
   },
   "package":{
    "name":"arrow-cpp",
-   "version":"0.15.1"
+   "version":"0.16.0"
   },
   "requirements":{
    "build":[
@@ -659,12 +656,11 @@
     "cxx_compiler_stub"
    ],
    "host":[
+    "aws-sdk-cpp",
     "boost-cpp",
     "brotli",
     "bzip2",
     "c-ares",
-    "double-conversion",
-    "flatbuffers",
     "gflags",
     "glog",
     "grpc-cpp",
@@ -678,15 +674,13 @@
     "re2",
     "snappy",
     "thrift-cpp >=0.11",
-    "uriparser",
     "zlib",
     "zstd",
+    "aws-sdk-cpp",
     "boost-cpp",
     "brotli",
     "bzip2",
     "c-ares",
-    "double-conversion",
-    "flatbuffers",
     "gflags",
     "glog",
     "grpc-cpp",
@@ -701,15 +695,13 @@
     "re2",
     "snappy",
     "thrift-cpp >=0.11",
-    "uriparser",
     "zlib",
     "zstd",
+    "aws-sdk-cpp",
     "boost-cpp",
     "brotli",
     "bzip2",
     "c-ares",
-    "double-conversion",
-    "flatbuffers",
     "gflags",
     "glog",
     "grpc-cpp",
@@ -724,16 +716,15 @@
     "re2",
     "snappy",
     "thrift-cpp >=0.11",
-    "uriparser",
     "zlib",
     "zstd"
    ],
    "run":[
     "compatible_pin_stub",
+    "aws-sdk-cpp",
     "boost-cpp",
     "brotli",
     "c-ares",
-    "double-conversion",
     "gflags",
     "glog",
     "grpc-cpp",
@@ -741,14 +732,13 @@
     "python",
     "re2",
     "snappy",
-    "uriparser",
     "zlib",
     "zstd",
     "compatible_pin_stub",
+    "aws-sdk-cpp",
     "boost-cpp",
     "brotli",
     "c-ares",
-    "double-conversion",
     "gflags",
     "glog",
     "grpc-cpp",
@@ -756,14 +746,13 @@
     "python",
     "re2",
     "snappy",
-    "uriparser",
     "zlib",
     "zstd",
     "compatible_pin_stub",
+    "aws-sdk-cpp",
     "boost-cpp",
     "brotli",
     "c-ares",
-    "double-conversion",
     "gflags",
     "glog",
     "grpc-cpp",
@@ -771,15 +760,14 @@
     "python",
     "re2",
     "snappy",
-    "uriparser",
     "zlib",
     "zstd"
    ]
   },
   "source":{
-   "fn":"apache-arrow-0.15.1.tar.gz",
-   "sha256":"9a2c58c72310eafebb4997244cbeeb8c26696320d0ae3eb3e8512f75ef856fc9",
-   "url":"https://dist.apache.org/repos/dist/release/arrow/arrow-0.15.1/apache-arrow-0.15.1.tar.gz"
+   "fn":"apache-arrow-0.16.0.tar.gz",
+   "sha256":"261992de4029a1593195ff4000501503bd403146471b3168bd2cc414ad0fb7f5",
+   "url":"https://dist.apache.org/repos/dist/release/arrow/arrow-0.16.0/apache-arrow-0.16.0.tar.gz"
   },
   "test":{
    "commands":[
@@ -787,11 +775,13 @@
     "if not exist %LIBRARY_INC%\\\\gandiva\\\\engine.h exit 1",
     "if not exist %LIBRARY_INC%\\\\parquet\\\\api\\\\reader.h exit 1",
     "if not exist %PREFIX%\\\\Library\\\\bin\\\\arrow.dll exit 1",
+    "if not exist %PREFIX%\\\\Library\\\\bin\\\\arrow_dataset.dll exit 1",
     "if not exist %PREFIX%\\\\Library\\\\bin\\\\arrow_flight.dll exit 1",
     "if not exist %PREFIX%\\\\Library\\\\bin\\\\arrow_python.dll exit 1",
     "if not exist %PREFIX%\\\\Library\\\\bin\\\\parquet.dll exit 1",
     "if not exist %PREFIX%\\\\Library\\\\bin\\\\gandiva.dll exit 1",
     "if exist %PREFIX%\\\\Library\\\\lib\\\\arrow_static.lib exit 1",
+    "if exist %PREFIX%\\\\Library\\\\lib\\\\arrow_dataset_static.lib exit 1",
     "if exist %PREFIX%\\\\Library\\\\lib\\\\arrow_flight_static.lib exit 1",
     "if exist %PREFIX%\\\\Library\\\\lib\\\\arrow_python_static.lib exit 1",
     "if exist %PREFIX%\\\\Library\\\\lib\\\\parquet_static.lib exit 1",
@@ -802,11 +792,13 @@
     "test -f $PREFIX/include/gandiva/engine.h",
     "test -f $PREFIX/include/parquet/api/reader.h",
     "test -f $PREFIX/lib/libarrow.dylib",
+    "test -f $PREFIX/lib/libarrow_dataset.dylib",
     "test -f $PREFIX/lib/libarrow_python.dylib",
     "test -f $PREFIX/lib/libgandiva.dylib",
     "test -f $PREFIX/lib/libparquet.dylib",
     "test -f $PREFIX/lib/libplasma.dylib",
     "test ! -f $PREFIX/lib/libarrow.a",
+    "test ! -f $PREFIX/lib/libarrow_dataset.a",
     "test ! -f $PREFIX/lib/libarrow_flight.a",
     "test ! -f $PREFIX/lib/libarrow_python.a",
     "test ! -f $PREFIX/lib/libplasma.a",
@@ -820,12 +812,14 @@
     "test -f $PREFIX/include/gandiva/engine.h",
     "test -f $PREFIX/include/parquet/api/reader.h",
     "test -f $PREFIX/lib/libarrow.so",
+    "test -f $PREFIX/lib/libarrow_dataset.so",
     "test -f $PREFIX/lib/libarrow_flight.so",
     "test -f $PREFIX/lib/libarrow_python.so",
     "test -f $PREFIX/lib/libparquet.so",
     "test -f $PREFIX/lib/libgandiva.so",
     "test -f $PREFIX/lib/libplasma.so",
     "test ! -f $PREFIX/lib/libarrow.a",
+    "test ! -f $PREFIX/lib/libarrow_dataset.a",
     "test ! -f $PREFIX/lib/libarrow_flight.a",
     "test ! -f $PREFIX/lib/libarrow_python.a",
     "test ! -f $PREFIX/lib/libplasma.a",
@@ -838,11 +832,12 @@
  "name":"arrow-cpp",
  "new_version":"0.16.0",
  "pinning_version":"2020.01.28",
- "raw_meta_yaml":"{% set version = \"0.15.1\" %}\n{% set filename = \"apache-arrow-\" + version + \".tar.gz\" %}\n{% set checksum = \"9a2c58c72310eafebb4997244cbeeb8c26696320d0ae3eb3e8512f75ef856fc9\" %}\n\npackage:\n  name: arrow-cpp\n  version: {{ version }}\n\nsource:\n  fn: {{ filename }}\n  url: https://dist.apache.org/repos/dist/release/arrow/arrow-{{ version }}/{{ filename }}\n  sha256: {{ checksum }}\n\nbuild:\n  number: 6\n  skip: true  # [win and vc<14]\n  run_exports:\n    - {{ pin_subpackage(\"arrow-cpp\", max_pin=\"x.x.x\") }}\n\nrequirements:\n  build:\n    - cmake\n    - autoconf  # [unix]\n    - ninja\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n  host:\n    - boost-cpp\n    - brotli\n    - bzip2\n    - c-ares\n    - double-conversion\n    - flatbuffers\n    - gflags\n    - glog\n    - grpc-cpp\n    - libprotobuf\n    - clangdev 7.*\n    - llvmdev 7.*\n    - lz4-c\n    - numpy 1.16.*\n    - orc  # [unix]\n    - python\n    - rapidjson\n    - re2\n    - snappy\n    - thrift-cpp >=0.11\n    - uriparser\n    - zlib\n    - zstd\n\n  run:\n    - {{ pin_compatible('numpy', lower_bound='1.16') }}\n    - boost-cpp\n    - brotli\n    - c-ares\n    - double-conversion\n    - gflags\n    - glog\n    - grpc-cpp\n    - lz4-c\n    - python\n    - re2\n    - snappy\n    - uriparser\n    - zlib\n    - zstd\n\ntest:\n  commands:\n    # headers\n    - test -f $PREFIX/include/arrow/api.h              # [unix]\n    - test -f $PREFIX/include/arrow/flight/types.h     # [unix]\n    - test -f $PREFIX/include/plasma/client.h          # [unix]\n    - test -f $PREFIX/include/gandiva/engine.h         # [unix]\n    - test -f $PREFIX/include/parquet/api/reader.h     # [unix]\n    - if not exist %LIBRARY_INC%\\\\arrow\\\\api.h exit 1            # [win]\n    - if not exist %LIBRARY_INC%\\\\gandiva\\\\engine.h exit 1       # [win]\n    - if not exist %LIBRARY_INC%\\\\parquet\\\\api\\\\reader.h exit 1  # [win]\n\n    # shared\n    - test -f $PREFIX/lib/libarrow.so            # [linux]\n    - test -f $PREFIX/lib/libarrow_flight.so     # [linux]\n    - test -f $PREFIX/lib/libarrow_python.so     # [linux]\n    - test -f $PREFIX/lib/libparquet.so          # [linux]\n    - test -f $PREFIX/lib/libgandiva.so          # [linux]\n    - test -f $PREFIX/lib/libplasma.so           # [linux]\n    - test -f $PREFIX/lib/libarrow.dylib         # [osx]\n    - test -f $PREFIX/lib/libarrow_python.dylib  # [osx]\n    - test -f $PREFIX/lib/libgandiva.dylib       # [osx]\n    - test -f $PREFIX/lib/libparquet.dylib       # [osx]\n    - test -f $PREFIX/lib/libplasma.dylib        # [osx]\n    - if not exist %PREFIX%\\\\Library\\\\bin\\\\arrow.dll exit 1         # [win]\n    - if not exist %PREFIX%\\\\Library\\\\bin\\\\arrow_flight.dll exit 1  # [win]\n    - if not exist %PREFIX%\\\\Library\\\\bin\\\\arrow_python.dll exit 1  # [win]\n    - if not exist %PREFIX%\\\\Library\\\\bin\\\\parquet.dll exit 1       # [win]\n    - if not exist %PREFIX%\\\\Library\\\\bin\\\\gandiva.dll exit 1       # [win]\n\n    # absence of static libraries\n    - test ! -f $PREFIX/lib/libarrow.a         # [unix]\n    - test ! -f $PREFIX/lib/libarrow_flight.a  # [unix]\n    - test ! -f $PREFIX/lib/libarrow_python.a  # [unix]\n    - test ! -f $PREFIX/lib/libplasma.a        # [unix]\n    - test ! -f $PREFIX/lib/libparquet.a       # [unix]\n    - test ! -f $PREFIX/lib/libgandiva.a       # [unix]\n    - if exist %PREFIX%\\\\Library\\\\lib\\\\arrow_static.lib exit 1         # [win]\n    - if exist %PREFIX%\\\\Library\\\\lib\\\\arrow_flight_static.lib exit 1  # [win]\n    - if exist %PREFIX%\\\\Library\\\\lib\\\\arrow_python_static.lib exit 1  # [win]\n    - if exist %PREFIX%\\\\Library\\\\lib\\\\parquet_static.lib exit 1       # [win]\n    - if exist %PREFIX%\\\\Library\\\\lib\\\\gandiva_static.lib exit 1       # [win]\n\n    # conda tools\n    - conda inspect linkages -p $PREFIX $PKG_NAME  # [not win]\n    - conda inspect objects -p $PREFIX $PKG_NAME   # [osx]\n\nabout:\n  home: http://github.com/apache/arrow\n  license: Apache 2.0\n  license_file:\n    - LICENSE.txt\n    # TODO(kszucs): LLVM_LICENSE will be included in the next release,\n    # so remove it from 0.15 https://github.com/apache/arrow/pull/5250\n    - LLVM_LICENSE.txt\n  summary: 'C++ libraries for Apache Arrow'\n\nextra:\n  recipe-maintainers:\n    - wesm\n    - xhochy\n    - leifwalsh\n    - jreback\n    - cpcloud\n    - pcmoritz\n    - robertnishihara\n    - siddharthteotia\n    - kou\n    - kszucs\n    - pitrou\n",
+ "raw_meta_yaml":"{% set version = \"0.16.0\" %}\n{% set filename = \"apache-arrow-\" + version + \".tar.gz\" %}\n{% set checksum = \"261992de4029a1593195ff4000501503bd403146471b3168bd2cc414ad0fb7f5\" %}\n\npackage:\n  name: arrow-cpp\n  version: {{ version }}\n\nsource:\n  fn: {{ filename }}\n  url: https://dist.apache.org/repos/dist/release/arrow/arrow-{{ version }}/{{ filename }}\n  sha256: {{ checksum }}\n\nbuild:\n  number: 0\n  skip: true  # [win and vc<14]\n  run_exports:\n    - {{ pin_subpackage(\"arrow-cpp\", max_pin=\"x.x.x\") }}\n\nrequirements:\n  build:\n    - cmake\n    - autoconf  # [unix]\n    - ninja\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n  host:\n    - aws-sdk-cpp\n    - boost-cpp\n    - brotli\n    - bzip2\n    - c-ares\n    - gflags\n    - glog\n    - grpc-cpp\n    - libprotobuf\n    - clangdev 7.*\n    - llvmdev 7.*\n    - lz4-c\n    - numpy 1.16.*\n    - orc  # [unix]\n    - python\n    - rapidjson\n    - re2\n    - snappy\n    - thrift-cpp >=0.11\n    - zlib\n    - zstd\n\n  run:\n    - {{ pin_compatible('numpy', lower_bound='1.16') }}\n    - aws-sdk-cpp\n    - boost-cpp\n    - brotli\n    - c-ares\n    - gflags\n    - glog\n    - grpc-cpp\n    - lz4-c\n    - python\n    - re2\n    - snappy\n    - zlib\n    - zstd\n\ntest:\n  commands:\n    # headers\n    - test -f $PREFIX/include/arrow/api.h              # [unix]\n    - test -f $PREFIX/include/arrow/flight/types.h     # [unix]\n    - test -f $PREFIX/include/plasma/client.h          # [unix]\n    - test -f $PREFIX/include/gandiva/engine.h         # [unix]\n    - test -f $PREFIX/include/parquet/api/reader.h     # [unix]\n    - if not exist %LIBRARY_INC%\\\\arrow\\\\api.h exit 1            # [win]\n    - if not exist %LIBRARY_INC%\\\\gandiva\\\\engine.h exit 1       # [win]\n    - if not exist %LIBRARY_INC%\\\\parquet\\\\api\\\\reader.h exit 1  # [win]\n\n    # shared\n    - test -f $PREFIX/lib/libarrow.so            # [linux]\n    - test -f $PREFIX/lib/libarrow_dataset.so    # [linux]\n    - test -f $PREFIX/lib/libarrow_flight.so     # [linux]\n    - test -f $PREFIX/lib/libarrow_python.so     # [linux]\n    - test -f $PREFIX/lib/libparquet.so          # [linux]\n    - test -f $PREFIX/lib/libgandiva.so          # [linux]\n    - test -f $PREFIX/lib/libplasma.so           # [linux]\n    - test -f $PREFIX/lib/libarrow.dylib          # [osx]\n    - test -f $PREFIX/lib/libarrow_dataset.dylib  # [osx]\n    - test -f $PREFIX/lib/libarrow_python.dylib   # [osx]\n    - test -f $PREFIX/lib/libgandiva.dylib        # [osx]\n    - test -f $PREFIX/lib/libparquet.dylib        # [osx]\n    - test -f $PREFIX/lib/libplasma.dylib         # [osx]\n    - if not exist %PREFIX%\\\\Library\\\\bin\\\\arrow.dll exit 1          # [win]\n    - if not exist %PREFIX%\\\\Library\\\\bin\\\\arrow_dataset.dll exit 1  # [win]\n    - if not exist %PREFIX%\\\\Library\\\\bin\\\\arrow_flight.dll exit 1   # [win]\n    - if not exist %PREFIX%\\\\Library\\\\bin\\\\arrow_python.dll exit 1   # [win]\n    - if not exist %PREFIX%\\\\Library\\\\bin\\\\parquet.dll exit 1        # [win]\n    - if not exist %PREFIX%\\\\Library\\\\bin\\\\gandiva.dll exit 1        # [win]\n\n    # absence of static libraries\n    - test ! -f $PREFIX/lib/libarrow.a          # [unix]\n    - test ! -f $PREFIX/lib/libarrow_dataset.a  # [unix]\n    - test ! -f $PREFIX/lib/libarrow_flight.a   # [unix]\n    - test ! -f $PREFIX/lib/libarrow_python.a   # [unix]\n    - test ! -f $PREFIX/lib/libplasma.a         # [unix]\n    - test ! -f $PREFIX/lib/libparquet.a        # [unix]\n    - test ! -f $PREFIX/lib/libgandiva.a        # [unix]\n    - if exist %PREFIX%\\\\Library\\\\lib\\\\arrow_static.lib exit 1          # [win]\n    - if exist %PREFIX%\\\\Library\\\\lib\\\\arrow_dataset_static.lib exit 1  # [win]\n    - if exist %PREFIX%\\\\Library\\\\lib\\\\arrow_flight_static.lib exit 1   # [win]\n    - if exist %PREFIX%\\\\Library\\\\lib\\\\arrow_python_static.lib exit 1   # [win]\n    - if exist %PREFIX%\\\\Library\\\\lib\\\\parquet_static.lib exit 1        # [win]\n    - if exist %PREFIX%\\\\Library\\\\lib\\\\gandiva_static.lib exit 1        # [win]\n\n    # conda tools\n    - conda inspect linkages -p $PREFIX $PKG_NAME  # [not win]\n    - conda inspect objects -p $PREFIX $PKG_NAME   # [osx]\n\nabout:\n  home: http://github.com/apache/arrow\n  license: Apache 2.0\n  license_file:\n    - LICENSE.txt\n  summary: 'C++ libraries for Apache Arrow'\n\nextra:\n  recipe-maintainers:\n    - wesm\n    - xhochy\n    - leifwalsh\n    - jreback\n    - cpcloud\n    - pcmoritz\n    - robertnishihara\n    - siddharthteotia\n    - kou\n    - kszucs\n    - pitrou\n",
  "req":{
   "__set__":true,
   "elements":[
    "autoconf",
+   "aws-sdk-cpp",
    "boost-cpp",
    "brotli",
    "bzip2",
@@ -852,8 +847,6 @@
    "cmake",
    "compatible_pin_stub",
    "cxx_compiler_stub",
-   "double-conversion",
-   "flatbuffers",
    "gflags",
    "glog",
    "grpc-cpp",
@@ -868,7 +861,6 @@
    "re2",
    "snappy",
    "thrift-cpp",
-   "uriparser",
    "zlib",
    "zstd"
   ]
@@ -887,13 +879,12 @@
   "host":{
    "__set__":true,
    "elements":[
+    "aws-sdk-cpp",
     "boost-cpp",
     "brotli",
     "bzip2",
     "c-ares",
     "clangdev",
-    "double-conversion",
-    "flatbuffers",
     "gflags",
     "glog",
     "grpc-cpp",
@@ -907,7 +898,6 @@
     "re2",
     "snappy",
     "thrift-cpp",
-    "uriparser",
     "zlib",
     "zstd"
    ]
@@ -915,11 +905,11 @@
   "run":{
    "__set__":true,
    "elements":[
+    "aws-sdk-cpp",
     "boost-cpp",
     "brotli",
     "c-ares",
     "compatible_pin_stub",
-    "double-conversion",
     "gflags",
     "glog",
     "grpc-cpp",
@@ -927,7 +917,6 @@
     "python",
     "re2",
     "snappy",
-    "uriparser",
     "zlib",
     "zstd"
    ]
@@ -953,13 +942,12 @@
   "host":{
    "__set__":true,
    "elements":[
+    "aws-sdk-cpp",
     "boost-cpp",
     "brotli",
     "bzip2",
     "c-ares",
     "clangdev 7.*",
-    "double-conversion",
-    "flatbuffers",
     "gflags",
     "glog",
     "grpc-cpp",
@@ -973,7 +961,6 @@
     "re2",
     "snappy",
     "thrift-cpp >=0.11",
-    "uriparser",
     "zlib",
     "zstd"
    ]
@@ -981,11 +968,11 @@
   "run":{
    "__set__":true,
    "elements":[
+    "aws-sdk-cpp",
     "boost-cpp",
     "brotli",
     "c-ares",
     "compatible_pin_stub",
-    "double-conversion",
     "gflags",
     "glog",
     "grpc-cpp",
@@ -993,7 +980,6 @@
     "python",
     "re2",
     "snappy",
-    "uriparser",
     "zlib",
     "zstd"
    ]
@@ -1004,5 +990,5 @@
   }
  },
  "url":"https://dist.apache.org/repos/dist/release/arrow/arrow-0.14.1/apache-arrow-0.14.1.tar.gz",
- "version":"0.15.1"
+ "version":"0.16.0"
 }
