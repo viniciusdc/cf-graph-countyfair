@@ -48,6 +48,23 @@
     "migrator_version",
     "name"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/372407292.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"Version",
+    "migrator_version":0,
+    "version":"1.2.0"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "version"
+   ]
   }
  ],
  "bad":false,
@@ -174,8 +191,8 @@
   }
  },
  "name":"r-mixtools",
- "new_version":"1.1.0",
- "pinning_version":"2019.07.19",
+ "new_version":"1.2.0",
+ "pinning_version":"2020.01.28",
  "raw_meta_yaml":"{% set version = '1.1.0' %}\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-mixtools\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  fn: mixtools_{{ version }}.tar.gz\n  url:\n    - {{ cran_mirror }}/src/contrib/mixtools_{{ version }}.tar.gz\n    - {{ cran_mirror }}/src/contrib/Archive/mixtools/mixtools_{{ version }}.tar.gz\n  sha256: 543fd8d8dc8d4b6079ebf491cf97f27d6225e1a6e65d8fd48553ada23ba88d8f\n\nbuild:\n  merge_build_host: True  # [win]\n  number: 1003\n  skip: true  # [win32]\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - {{ compiler('c') }}        # [not win]\n    - {{ compiler('m2w64_c') }}        # [win]\n    - {{posix}}filesystem        # [win]\n    - {{posix}}make\n    - {{posix}}sed               # [win]\n    - {{posix}}coreutils         # [win]\n    - {{posix}}zip               # [win]\n  host:\n    - r-base\n    - r-mass\n    - r-segmented\n    - r-survival\n  run:\n    - r-base\n    - {{native}}gcc-libs         # [win]\n    - r-mass\n    - r-segmented\n    - r-survival\n\ntest:\n  commands:\n    - $R -e \"library('mixtools')\"           # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('mixtools')\\\"\"  # [win]\n\nabout:\n  home: https://CRAN.R-project.org/package=mixtools\n  license: GPL (>= 2)\n  summary: Analyzes finite mixture models for various parametric and semiparametric settings.  This\n    includes mixtures of parametric distributions (normal, multivariate normal, multinomial,\n    gamma), various Reliability Mixture Models (RMMs), mixtures-of-regressions settings\n    (linear regression, logistic regression, Poisson regression, linear regression with\n    changepoints, predictor-dependent mixing proportions, random effects regressions,\n    hierarchical mixtures-of-experts), and tools for selecting the number of components\n    (bootstrapping the likelihood ratio test statistic and model selection criteria).  Bayesian\n    estimation of mixtures-of-linear-regressions models is available as well as a novel\n    data depth method for obtaining credible bands.  This package is based upon work\n    supported by the National Science Foundation under Grant No. SES-0518772.\n  license_family: GPL3\n  license_file: '{{ environ[\"PREFIX\"] }}/lib/R/share/licenses/GPL-3'\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n    - johanneskoester\n    - bgruening\n    - daler\n    - jdblischak\n    - cbrueffer\n    - dbast\n",
  "req":{
   "__set__":true,
@@ -231,7 +248,7 @@
    "elements":[]
   }
  },
- "smithy_version":"3.4.1",
+ "smithy_version":"3.6.8",
  "strong_exports":false,
  "total_requirements":{
   "build":{
