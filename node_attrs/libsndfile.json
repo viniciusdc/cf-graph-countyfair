@@ -68,7 +68,11 @@
  "conda-forge.yml":{
   "compiler_stack":"comp7",
   "max_py_ver":"37",
-  "max_r_ver":"35"
+  "max_r_ver":"35",
+  "provider":{
+   "linux_aarch64":"default",
+   "linux_ppc64le":"default"
+  }
  },
  "feedstock_name":"libsndfile",
  "hash_type":"sha256",
@@ -117,10 +121,13 @@
    "build":[
     "c_compiler_stub",
     "cxx_compiler_stub",
+    "make",
     "c_compiler_stub",
     "cxx_compiler_stub",
+    "make",
     "c_compiler_stub",
-    "cxx_compiler_stub"
+    "cxx_compiler_stub",
+    "make"
    ],
    "host":[
     "libflac",
@@ -159,7 +166,7 @@
  "name":"libsndfile",
  "new_version":false,
  "pinning_version":"2020.01.28",
- "raw_meta_yaml":"{% set name = \"libsndfile\" %}\n{% set version = \"1.0.28\" %}\n{% set sha256 = \"1ff33929f042fa333aed1e8923aa628c3ee9e1eb85512686c55092d1e5a9dfa9\" %}\n\npackage:\n    name: {{ name|lower }}\n    version: {{ version }}\n\nsource:\n    fn: {{ name }}-{{ version }}.tar.gz\n    url: http://www.mega-nerd.com/{{ name }}/files/{{ name }}-{{ version }}.tar.gz\n    sha256: {{ sha256 }}\n\nbuild:\n    number: 1000\n    skip: true  # [win]\n    run_exports:\n        # https://abi-laboratory.pro/?view=timeline&l=libsndfile\n        - {{ pin_subpackage(name, max_pin=\"x.x\") }}\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n  host:\n    - libflac\n    - libvorbis\n    - libogg\n  # libflac, libvorbis and libogg don't specify run exports\n  run:\n    - libflac\n    - libvorbis\n    - libogg\ntest:\n  commands:\n    - test -f $PREFIX/lib/libsndfile.dylib  # [osx]\n    - test -f $PREFIX/lib/libsndfile.so  # [linux]\n\nabout:\n    home: http://www.mega-nerd.com/libsndfile\n    dev_url: https://github.com/erikd/libsndfile\n    license: LGPL-2.1\n    license_family: LGPL\n    license_file: COPYING\n    summary: \"libsndfile - a C library for reading and writing files containing sampled sound (such as MS Windows WAV and the Apple/SGI AIFF format) through one standard library interface\"\n\nextra:\n  recipe-maintainers:\n    - hbredin\n    - thomasfillon\n    - SylvainCorlay\n    - wolfv\n    - JohanMabille\n",
+ "raw_meta_yaml":"{% set name = \"libsndfile\" %}\n{% set version = \"1.0.28\" %}\n{% set sha256 = \"1ff33929f042fa333aed1e8923aa628c3ee9e1eb85512686c55092d1e5a9dfa9\" %}\n\npackage:\n    name: {{ name|lower }}\n    version: {{ version }}\n\nsource:\n    fn: {{ name }}-{{ version }}.tar.gz\n    url: http://www.mega-nerd.com/{{ name }}/files/{{ name }}-{{ version }}.tar.gz\n    sha256: {{ sha256 }}\n\nbuild:\n    number: 1000\n    skip: true  # [win]\n    run_exports:\n        # https://abi-laboratory.pro/?view=timeline&l=libsndfile\n        - {{ pin_subpackage(name, max_pin=\"x.x\") }}\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n    - make\n  host:\n    - libflac\n    - libvorbis\n    - libogg\n  # libflac, libvorbis and libogg don't specify run exports\n  run:\n    - libflac\n    - libvorbis\n    - libogg\ntest:\n  commands:\n    - test -f $PREFIX/lib/libsndfile.dylib  # [osx]\n    - test -f $PREFIX/lib/libsndfile.so  # [linux]\n\nabout:\n    home: http://www.mega-nerd.com/libsndfile\n    dev_url: https://github.com/erikd/libsndfile\n    license: LGPL-2.1\n    license_family: LGPL\n    license_file: COPYING\n    summary: \"libsndfile - a C library for reading and writing files containing sampled sound (such as MS Windows WAV and the Apple/SGI AIFF format) through one standard library interface\"\n\nextra:\n  recipe-maintainers:\n    - hbredin\n    - thomasfillon\n    - SylvainCorlay\n    - wolfv\n    - JohanMabille\n",
  "req":{
   "__set__":true,
   "elements":[
@@ -167,7 +174,8 @@
    "cxx_compiler_stub",
    "libflac",
    "libogg",
-   "libvorbis"
+   "libvorbis",
+   "make"
   ]
  },
  "requirements":{
@@ -175,7 +183,8 @@
    "__set__":true,
    "elements":[
     "c_compiler_stub",
-    "cxx_compiler_stub"
+    "cxx_compiler_stub",
+    "make"
    ]
   },
   "host":{
@@ -206,7 +215,8 @@
    "__set__":true,
    "elements":[
     "c_compiler_stub",
-    "cxx_compiler_stub"
+    "cxx_compiler_stub",
+    "make"
    ]
   },
   "host":{
