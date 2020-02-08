@@ -101,7 +101,7 @@
   }
  },
  "name":"csm",
- "new_version":"v3.0.3.3",
+ "new_version":"v3.0.3.2",
  "pinning_version":"2020.01.10",
  "raw_meta_yaml":"{% set name = \"csm\" %}\n{% set version = \"v3.0.3.1\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  url: https://github.com/sminster/{{ name }}/archive/{{ version }}.tar.gz\n  sha256: dbb207704c54d9d0358c77e1773f6a11272110d4c609bde75f88eb78767da1a1\n  patches:\n     - patches/add_cmake.patch  # Adds the CMake build system\n\nbuild:\n  number: 1001\n\nrequirements:\n  build:\n    - {{ compiler('cxx') }}  # [linux]\n  host:\n    - cmake\n\ntest:\n  commands:\n    - test -e $PREFIX/lib/libcsmapi.so  # [linux]\n    - test -e $PREFIX/lib/libcsmapi.dylib  # [osx]\n    - test -e $PREFIX/include/csm/Isd.h  # [not win]\n    - test -e $PREFIX/include/csm/csm.h  # [not win]\n    - if not exist %LIBRARY_BIN%\\csmapi.dll exit 1  # [win]\n    - if not exist %LIBRARY_INC%\\csm\\Ellipsoid.h exit 1  # [win]\n\nabout:\n  home: http://github.com/sminster/csm\n  license: Public Domain\n  license_file: LICENSE\n  summary: 'The Community Sensor Model API'\n  description: |\n    csm is a C++ API for terrestrial and planetary sensor models\n\nextra:\n  recipe-maintainers:\n    - jlaura\n",
  "req":{
