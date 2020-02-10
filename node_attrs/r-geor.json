@@ -82,6 +82,23 @@
     "migrator_version",
     "version"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/373361854.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"Version",
+    "migrator_version":0,
+    "version":"1.8_1"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "version"
+   ]
   }
  ],
  "bad":false,
@@ -222,8 +239,8 @@
   }
  },
  "name":"r-geor",
- "new_version":"1.7_5.2.2",
- "pinning_version":"2020.01.10",
+ "new_version":"1.8_1",
+ "pinning_version":"2020.01.28",
  "raw_meta_yaml":"{% set version = \"1.7-5.2.2\" %}\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-geor\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  fn: geoR_{{ version }}.tar.gz\n  url:\n    - {{ cran_mirror }}/src/contrib/geoR_{{ version }}.tar.gz\n    - {{ cran_mirror }}/src/contrib/Archive/geoR/geoR_{{ version }}.tar.gz\n  sha256: 07cc0c000473fac1068358fa0d3be273d75e5b3bd48a74df191743867db2ac80\n  patches:\n    # https://github.com/rocker-org/rocker/issues/213#issuecomment-278909502\n    - no_tcltk.patch\n\nbuild:\n  merge_build_host: True  # [win]\n  number: 0\n  skip: true  # [win32]\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - {{ compiler('c') }}        # [not win]\n    - {{ compiler('m2w64_c') }}        # [win]\n    - {{posix}}filesystem        # [win]\n    - {{posix}}make\n    - {{posix}}sed               # [win]\n    - {{posix}}coreutils         # [win]\n    - {{posix}}zip               # [win]\n  host:\n    - r-base\n    - r-mass\n    - r-randomfields\n    - r-sp\n    - r-splancs\n  run:\n    - r-base\n    - {{native}}gcc-libs         # [win]\n    - r-mass\n    - r-randomfields\n    - r-sp\n    - r-splancs\n\ntest:\n  commands:\n    - $R -e \"library('geoR')\"           # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('geoR')\\\"\"  # [win]\n\nabout:\n  home: http://www.leg.ufpr.br/geoR\n  license: GPL (>= 2)\n  summary: Geostatistical analysis including traditional, likelihood-based and Bayesian methods.\n  license_family: GPL3\n  license_file: '{{ environ[\"PREFIX\"] }}/lib/R/share/licenses/GPL-3'\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n    - ocefpaf\n    - johanneskoester\n    - bgruening\n    - daler\n    - jdblischak\n    - cbrueffer\n    - dbast\n",
  "req":{
   "__set__":true,
@@ -282,7 +299,7 @@
    "elements":[]
   }
  },
- "smithy_version":"3.6.5",
+ "smithy_version":"3.6.8",
  "strong_exports":false,
  "total_requirements":{
   "build":{
