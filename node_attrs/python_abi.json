@@ -17,7 +17,7 @@
   },
   "build":{
    "number":"0",
-   "string":null
+   "string":"0_"
   },
   "extra":{
    "recipe-maintainers":[
@@ -36,7 +36,11 @@
     "python",
     "python"
    ],
-   "run_constrained":null
+   "run_constrained":[
+    "pypy <0a0",
+    "pypy <0a0",
+    "pypy <0a0"
+   ]
   },
   "test":{
    "commands":[
@@ -47,7 +51,7 @@
   }
  },
  "name":"python_abi",
- "raw_meta_yaml":"package:\n  name: python_abi\n  version: {{ python_version }}\n\nbuild:\n  number: 0\n  string: {{ python_abi_tag }}\n  track_features: pypy   # [python_impl == \"pypy\"]\n  skip: True  # [python_impl == \"pypy\"]\n\nrequirements:\n  run:\n    - python {{ python_requirement }}\n  run_constrained:\n    - pypy <0a0   # [python_impl == \"cpython\"]\n\ntest:\n  commands:\n    - python --version\n\nabout:\n  home: https://github.com/conda-forge/python_abi-feedstock\n  summary: Metapackage to select python implementation\n  license: BSD-3-Clause\n  license_family: BSD\n  license_file: LICENSE\n\nextra:\n  recipe-maintainers:\n    - isuruf\n",
+ "raw_meta_yaml":"{% set build_num = 0 %}\n\npackage:\n  name: python_abi\n  version: {{ python_version }}\n\nbuild:\n  number: {{ build_num }}\n  string: {{ build_num }}_{{ python_abi_tag }}\n\nrequirements:\n  run:\n    - python {{ python_requirement }}\n  run_constrained:\n    - pypy <0a0\n\ntest:\n  commands:\n    - python --version\n\nabout:\n  home: https://github.com/conda-forge/python_abi-feedstock\n  summary: Metapackage to select python implementation\n  license: BSD-3-Clause\n  license_family: BSD\n  license_file: LICENSE\n\nextra:\n  recipe-maintainers:\n    - isuruf\n",
  "req":{
   "__set__":true,
   "elements":[
