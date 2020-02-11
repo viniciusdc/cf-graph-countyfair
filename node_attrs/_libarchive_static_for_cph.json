@@ -88,7 +88,40 @@
    ]
   }
  ],
- "bad":false,
+ "bad":{
+  "code":404,
+  "exception":"HTTP Error 404: Not Found",
+  "traceback":[
+   "Traceback (most recent call last):",
+   "  File \"/root/repo/cf-scripts/conda_forge_tick/auto_tick.py\", line 622, in main",
+   "    migrator_uid, pr_json = run(",
+   "  File \"/root/repo/cf-scripts/conda_forge_tick/auto_tick.py\", line 136, in run",
+   "    migrate_return = migrator.migrate(recipe_dir, feedstock_ctx.attrs, **kwargs)",
+   "  File \"/root/repo/cf-scripts/conda_forge_tick/migrators/version.py\", line 223, in migrate",
+   "    new_patterns = self.get_hash_patterns(\"meta.yaml\", urls, hash_type)",
+   "  File \"/root/repo/cf-scripts/conda_forge_tick/migrators/version.py\", line 102, in get_hash_patterns",
+   "    hash_ = hash_url(url, hash_type)",
+   "  File \"/opt/conda/envs/run_env/lib/python3.8/site-packages/rever/tools.xsh\", line 207, in hash_url",
+   "    for b in stream_url_progress(url, verb='Hashing', quiet=quiet):",
+   "  File \"/opt/conda/envs/run_env/lib/python3.8/site-packages/rever/tools.xsh\", line 179, in stream_url_progress",
+   "    with urllib.request.urlopen(url) as f:",
+   "  File \"/opt/conda/envs/run_env/lib/python3.8/urllib/request.py\", line 222, in urlopen",
+   "    return opener.open(url, data, timeout)",
+   "  File \"/opt/conda/envs/run_env/lib/python3.8/urllib/request.py\", line 531, in open",
+   "    response = meth(req, response)",
+   "  File \"/opt/conda/envs/run_env/lib/python3.8/urllib/request.py\", line 640, in http_response",
+   "    response = self.parent.error(",
+   "  File \"/opt/conda/envs/run_env/lib/python3.8/urllib/request.py\", line 569, in error",
+   "    return self._call_chain(*args)",
+   "  File \"/opt/conda/envs/run_env/lib/python3.8/urllib/request.py\", line 502, in _call_chain",
+   "    result = func(*args)",
+   "  File \"/opt/conda/envs/run_env/lib/python3.8/urllib/request.py\", line 649, in http_error_default",
+   "    raise HTTPError(req.full_url, code, msg, hdrs, fp)",
+   "urllib.error.HTTPError: HTTP Error 404: Not Found",
+   ""
+  ],
+  "url":"https://github.com/libarchive/libarchive/releases/download/v3.4.2/libarchive-3.4.2.tar.gz"
+ },
  "conda-forge.yml":{
   "provider":{
    "linux_aarch64":"default",
@@ -235,7 +268,7 @@
   }
  },
  "name":"_libarchive_static_for_cph",
- "new_version":"3.4.1",
+ "new_version":"3.4.2",
  "pinning_version":"2019.12.18",
  "raw_meta_yaml":"{% set version = \"3.3.3\" %}\n# 3.4.0 breaks some symlink stuff on macos.  Holding back for now.\n\n# Recipe for a static libarchive with support for the features needed for\n# conda-package-handling (bzip2, zlib, zstd).\n# This is not a general purpose libarchive\n\npackage:\n  name: _libarchive_static_for_cph\n  version: {{ version }}\n\nsource:\n  url: https://github.com/libarchive/libarchive/releases/download/v{{ version }}/libarchive-{{ version }}.tar.gz\n  sha256: ba7eb1781c9fbbae178c4c6bad1c6eb08edab9a1496c64833d1715d022b30e2e\n  patches:\n    - patches/0001-Add-lib-to-CMAKE_FIND_LIBRARY_PREFIXES-for-lzma.patch\n    - patches/0002-xar-fix-bad-seek-in-move_reading_point.patch\n    - patches/0003-VC9-compatibility-test-for-BCryptDeriveKeyPBKDF2.patch\n    - patches/0004-VC9-compatibility-define-BCRYPT_SUCCESS.patch\n    # This should not be applied in general. It exists so I can build it for\n    # debugging Visual Studio where warnings are errors for some reason.\n    # Hiding warnings is poor practice.\n    # - patches/0005-VC9-compatibility-ignore-some-warnings.patch\n    - patches/0006-VC-openssl-define-inline-as-__inline.patch\n    # These warnings are errors when compiling lz-4 support\n    - patches/0007-CMake-VC9-compatibility-ignore-some-warnings.patch\n    - patches/0008-VC9-compatibility-remove-C99.patch\n    - patches/0009-CMake-Force-Multi-threaded-DLL-runtime.patch\n    # 3.4.0 added official support for symlinks on win\n    - patches/0010-Use-CreateSymbolicLinkW-on-Windows-for-symlinks-WIP.patch\n\nbuild:\n  number: 3\n  ignore_run_exports:\n    - bzip2\n    - libiconv\n    - zlib\n    - zstd\n  # HACK: case-sensitive mismatch in latest conda-build\n  missing_dso_whitelist:\n    - Library/bin/VCRUNTIME140.dll    # [win]\n    - \"*/MSVCR90.dll\"                 # [win]\n    - \"MSVCR90.dll\"                   # [win]\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    # Does not work in this recips at present\n    # we manually convert C99 to C89 instead.\n    # - c99-to-c89  # [win and vc<14]\n    - msinttypes  # [win and vc<14]\n    - autoconf    # [unix]\n    - automake    # [unix]\n    - libtool     # [unix]\n    - pkg-config  # [unix]\n    - cmake       # [win]\n    - make        # [unix]\n    - m2-patch    # [win]\n  host:\n    - msinttypes  # [win and vc<14]\n    - bzip2\n    - libiconv    # [osx]\n    - zlib\n    # on win + vc9 a zstd package with a static library is needed,\n    # defaults has one but conda-forge does not (yet).  Use the default\n    # package by specifying the full version and build string\n    - zstd 1.3.7 h1b0e4d7_0  # [win and vc<14]\n    - zstd                   # [not (win and vc<14)]\n\ntest:\n  commands:\n    # Verify headers are in place.\n    - test -f \"${PREFIX}/include/archive.h\"                              # [unix]\n    - test -f \"${PREFIX}/include/archive_entry.h\"                        # [unix]\n    - if not exist %PREFIX%\\Library\\include\\archive.h exit /b 1         # [win]\n    - if not exist %PREFIX%\\Library\\include\\archive_entry.h exit /b 1   # [win]\n\n    # Verify libraries are in place.\n    - test -f \"${PREFIX}/lib/libarchive.a\"                               # [unix]\n    - test -f \"${PREFIX}/lib/libarchive_and_deps.a\"                      # [unix]\n    - if not exist %PREFIX%\\Library\\lib\\archive_static.lib exit /b 1    # [win]\n    - if not exist %PREFIX%\\Library\\lib\\archive_and_deps.lib exit /b 1  # [win]\n\nabout:\n  home: http://www.libarchive.org/\n  summary: a static build of libarchive containing only conda-related parts\n  license: BSD-2-Clause\n  license_file:\n    - static_deps_licenses/bzip2.txt\n    - static_deps_licenses/libarchive.txt\n    - static_deps_licenses/zlib.txt\n    - static_deps_licenses/zstd.txt\n    - static_deps_licenses/msinttypes.txt  # [win and py27]\n    - static_deps_licenses/libiconv.txt    # [osx]\n\nextra:\n  recipe-maintainers:\n    - msarahan\n    - jjhelmus\n",
  "req":{
