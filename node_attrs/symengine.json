@@ -82,42 +82,26 @@
     "migrator_version",
     "version"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/373418814.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"Version",
+    "migrator_version":0,
+    "version":"0.6.0"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "version"
+   ]
   }
  ],
- "bad":{
-  "code":404,
-  "exception":"HTTP Error 404: Not Found",
-  "traceback":[
-   "Traceback (most recent call last):",
-   "  File \"/root/repo/cf-scripts/conda_forge_tick/auto_tick.py\", line 622, in main",
-   "    migrator_uid, pr_json = run(",
-   "  File \"/root/repo/cf-scripts/conda_forge_tick/auto_tick.py\", line 136, in run",
-   "    migrate_return = migrator.migrate(recipe_dir, feedstock_ctx.attrs, **kwargs)",
-   "  File \"/root/repo/cf-scripts/conda_forge_tick/migrators/core.py\", line 647, in migrate",
-   "    new_patterns = self.get_hash_patterns(\"meta.yaml\", urls, hash_type)",
-   "  File \"/root/repo/cf-scripts/conda_forge_tick/migrators/core.py\", line 526, in get_hash_patterns",
-   "    hash_ = hash_url(url, hash_type)",
-   "  File \"/opt/conda/envs/run_env/lib/python3.8/site-packages/rever/tools.xsh\", line 207, in hash_url",
-   "    for b in stream_url_progress(url, verb='Hashing', quiet=quiet):",
-   "  File \"/opt/conda/envs/run_env/lib/python3.8/site-packages/rever/tools.xsh\", line 179, in stream_url_progress",
-   "    with urllib.request.urlopen(url) as f:",
-   "  File \"/opt/conda/envs/run_env/lib/python3.8/urllib/request.py\", line 222, in urlopen",
-   "    return opener.open(url, data, timeout)",
-   "  File \"/opt/conda/envs/run_env/lib/python3.8/urllib/request.py\", line 531, in open",
-   "    response = meth(req, response)",
-   "  File \"/opt/conda/envs/run_env/lib/python3.8/urllib/request.py\", line 640, in http_response",
-   "    response = self.parent.error(",
-   "  File \"/opt/conda/envs/run_env/lib/python3.8/urllib/request.py\", line 569, in error",
-   "    return self._call_chain(*args)",
-   "  File \"/opt/conda/envs/run_env/lib/python3.8/urllib/request.py\", line 502, in _call_chain",
-   "    result = func(*args)",
-   "  File \"/opt/conda/envs/run_env/lib/python3.8/urllib/request.py\", line 649, in http_error_default",
-   "    raise HTTPError(req.full_url, code, msg, hdrs, fp)",
-   "urllib.error.HTTPError: HTTP Error 404: Not Found",
-   ""
-  ],
-  "url":"https://github.com/symengine/symengine/releases/download/v0.6.0/symengine-0.6.0.tar.gz"
- },
+ "bad":false,
  "conda-forge.yml":{
   "compiler_stack":"comp7",
   "max_py_ver":"37",
@@ -217,7 +201,7 @@
  },
  "name":"symengine",
  "new_version":"0.6.0",
- "pinning_version":"2019.09.08",
+ "pinning_version":"2020.01.28",
  "raw_meta_yaml":"{% set version = \"0.5.0\" %}\n{% set maj_min = \".\".join(version.split(\".\")[:2]) %}\n\npackage:\n  name: symengine\n  version: {{ version }}\n\nsource:\n  fn: v{{ version }}.tar.gz\n  url: https://github.com/symengine/symengine/releases/download/v{{ version }}/symengine-{{ version }}.tar.gz\n  sha256: 5d02002f00d16a0928d1056e6ecb8f34fd59f3bfd8ed0009a55700334dbae29b\n\nbuild:\n  number: 0\n  skip: True  # [win and vc<14]\n\nrequirements:\n  build:\n    - cmake\n    - make             # [unix]\n    - ninja            # [win]\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n  host:\n    - gmp              # [unix]\n    - mpfr\n    - mpc\n    - mpir             # [win]\n    - llvmdev\n    - libflint         # [unix]\n  run:\n    - gmp              # [unix]\n    - mpfr\n    - {{ pin_compatible(\"mpc\") }}\n    - {{ pin_compatible(\"mpir\") }}         # [win]\n    - {{ pin_compatible(\"libflint\") }}     # [unix]\n\ntest:\n  commands:\n    - if not exist %LIBRARY_INC%\\\\symengine\\\\basic.h exit 1     # [win]\n    - if not exist %LIBRARY_LIB%\\\\symengine.lib exit 1          # [win]\n    - if not exist %LIBRARY_BIN%\\\\symengine-{{ maj_min }}.dll exit 1          # [win]\n    - test -f $PREFIX/include/symengine/basic.h                 # [unix]\n    - test -f $PREFIX/lib/libsymengine.so                       # [linux]\n    - test -f $PREFIX/lib/libsymengine.dylib                    # [osx]\n\nabout:\n  home: https://github.com/symengine/symengine\n  license: MIT\n  license_file: LICENSE\n  summary: 'SymEngine is a fast symbolic manipulation library, written in C++'\n\nextra:\n  recipe-maintainers:\n    - isuruf\n    - certik\n",
  "req":{
   "__set__":true,
@@ -271,7 +255,7 @@
    "elements":[]
   }
  },
- "smithy_version":"3.4.5",
+ "smithy_version":"3.6.8",
  "strong_exports":false,
  "time":1568135268.8001008,
  "total_requirements":{
