@@ -101,6 +101,23 @@
     "migrator_version",
     "version"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/373455275.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"Version",
+    "migrator_version":0,
+    "version":"0.6.0"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "version"
+   ]
   }
  ],
  "bad":false,
@@ -219,8 +236,8 @@
   }
  },
  "name":"python-symengine",
- "new_version":"0.5.1",
- "pinning_version":"2019.11.01",
+ "new_version":"0.6.0",
+ "pinning_version":"2020.01.28",
  "raw_meta_yaml":"{% set version = \"0.5.1\" %}\n\npackage:\n  name: python-symengine\n  version: {{ version }}\n\nsource:\n  url: https://github.com/symengine/symengine.py/archive/v{{ version }}.tar.gz\n  sha256: 88cd9426835a7f58d3f9e901408f2c09f3e34d6ab384500089efbe3dd84b1c2a\n\nbuild:\n  number: 0\n  skip: true        # [win and not py>=35]\n\nrequirements:\n  build:\n    - cmake\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n    - make   # [unix]\n    - ninja  # [win]\n  host:\n    - symengine     {{ \".\".join(version.split(\".\")[:2]) }}\n    - gmp           # [unix]\n    - mpir          # [win]\n    - mpfr\n    - mpc\n    - libflint         # [unix]\n    - python\n    - cython\n    - setuptools\n  run:\n    - {{ pin_compatible(\"symengine\", max_pin=\"x.x\") }}\n    - python\n    - gmp           # [unix]\n    - mpir          # [win]\n    - mpfr\n    - mpc\n    - libflint         # [unix]\n\ntest:\n  requires:\n    - pytest\n    - sympy\n  imports:\n    - symengine\n\nabout:\n  home: https://github.com/symengine/symengine.py\n  license: MIT\n  license_file: LICENSE\n  summary: 'Python wrappers for SymEngine, a fast symbolic manipulation library, written in C++'\n\nextra:\n  recipe-maintainers:\n    - isuruf\n    - certik\n",
  "req":{
   "__set__":true,
@@ -287,7 +304,7 @@
    ]
   }
  },
- "smithy_version":"3.6.1",
+ "smithy_version":"3.6.8",
  "strong_exports":false,
  "total_requirements":{
   "build":{
