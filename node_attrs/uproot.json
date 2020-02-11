@@ -899,6 +899,23 @@
     "migrator_version",
     "version"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/373782612.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"Version",
+    "migrator_version":0,
+    "version":"3.11.3"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "version"
+   ]
   }
  ],
  "bad":false,
@@ -1108,12 +1125,12 @@
   }
  },
  "name":"uproot-base",
- "new_version":"3.11.2",
+ "new_version":"3.11.3",
  "outputs_names":[
   "uproot",
   "uproot-base"
  ],
- "pinning_version":"2020.01.27",
+ "pinning_version":"2020.01.28",
  "raw_meta_yaml":"{% set name = \"uproot\" %}\n{% set version = \"3.11.2\" %}\n\npackage:\n  name: {{ name }}-base\n  version: {{ version }}\n\nsource:\n  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz\n  sha256: 50a0642ee8002964f86a6fd6947a155a97ead2f1c0574f00241a010288f9c8ae\n\nbuild:\n  number: 0\n  script: \"{{ PYTHON }} -m pip install . --no-deps -vv\"\n\nrequirements:\n  host:\n    - python\n    - pip\n    - pytest-runner\n  run:\n    - python\n    - numpy >=1.13.1\n    - awkward >=0.12.0,<1.0\n    - uproot-methods >=0.7.0\n    - cachetools\n\ntest:\n  source_files:\n    - tests\n  requires:\n    - pytest\n    - mock\n  imports:\n    - uproot\n  commands:\n    - pytest .\n\noutputs:\n  - name: {{ name }}-base\n\n  - name: {{ name }}\n    requirements:\n      host:\n        - python\n      run:\n        - python\n        - {{ pin_subpackage(name+'-base', exact=True) }}\n        - backports.lzma  # [py27]\n        - lz4\n        - python-xxhash\n        - requests\n        - xrootd  # [unix]\n        - zstandard\n    test:\n      source_files:\n        - tests\n      requires:\n        - pytest\n        - mock\n      imports:\n        - uproot\n      commands:\n        - pytest .\n\nabout:\n  home: https://github.com/scikit-hep/{{ name }}\n  license: BSD-3-Clause\n  license_family: BSD\n  license_file: LICENSE\n  summary: 'ROOT I/O in pure Python and Numpy.'\n  description: |\n    uproot (originally \u03bcproot, for \u201cmicro-Python ROOT\u201d) is a reader and a writer\n    of the ROOT file format using only Python and Numpy. Unlike the standard C++\n    ROOT implementation, uproot is only an I/O library, primarily intended to\n    stream data into machine learning libraries in Python. Unlike PyROOT and\n    root_numpy, uproot does not depend on C++ ROOT. Instead, it uses Numpy calls\n    to rapidly cast data blocks in the ROOT file as Numpy arrays.\n  dev_url: https://github.com/scikit-hep/{{ name }}\n  doc_url: https://{{ name }}.readthedocs.io/en/latest/\n\nextra:\n  recipe-maintainers:\n    - chrisburr\n    - jpivarski\n",
  "req":{
   "__set__":true,
@@ -1170,7 +1187,7 @@
    ]
   }
  },
- "smithy_version":"3.6.6",
+ "smithy_version":"3.6.8",
  "strong_exports":false,
  "total_requirements":{
   "build":{
