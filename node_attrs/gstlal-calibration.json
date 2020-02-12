@@ -20,7 +20,27 @@
    ]
   }
  ],
- "bad":"Upstream: Error getting upstream version",
+ "bad":{
+  "exception":"Failed to put item: An error occurred (ValidationException) on request (FCF81QTC90GSPLP1BNU1PVK2KVVV4KQNSO5AEMVJF66Q9ASUAAJG) on table (pr_json) when calling the PutItem operation: Attempting to store more than 38 significant digits in a Number",
+  "traceback":[
+   "Traceback (most recent call last):",
+   "  File \"/root/repo/cf-scripts/conda_forge_tick/auto_tick.py\", line 651, in main",
+   "    migrator_uid, pr_json = run(",
+   "  File \"/root/repo/cf-scripts/conda_forge_tick/auto_tick.py\", line 209, in run",
+   "    PRJson.dump(pr_json)",
+   "  File \"/root/repo/cf-scripts/conda_forge_tick/dynamo_models.py\", line 33, in dump",
+   "    item.save()",
+   "  File \"/opt/conda/envs/run_env/lib/python3.8/site-packages/pynamodb/models.py\", line 405, in save",
+   "    data = self._get_connection().put_item(*args, **kwargs)",
+   "  File \"/opt/conda/envs/run_env/lib/python3.8/site-packages/pynamodb/connection/table.py\", line 131, in put_item",
+   "    return self.connection.put_item(",
+   "  File \"/opt/conda/envs/run_env/lib/python3.8/site-packages/pynamodb/connection/base.py\", line 972, in put_item",
+   "    six.raise_from(PutError(\"Failed to put item: {}\".format(e), e), None)",
+   "  File \"<string>\", line 3, in raise_from",
+   "pynamodb.exceptions.PutError: Failed to put item: An error occurred (ValidationException) on request (FCF81QTC90GSPLP1BNU1PVK2KVVV4KQNSO5AEMVJF66Q9ASUAAJG) on table (pr_json) when calling the PutItem operation: Attempting to store more than 38 significant digits in a Number",
+   ""
+  ]
+ },
  "conda-forge.yml":{},
  "feedstock_name":"gstlal-calibration",
  "hash_type":"sha256",
@@ -36,7 +56,7 @@
    "summary":"GStreamer for GW data analysis (calibration parts)"
   },
   "build":{
-   "number":"0",
+   "number":"1",
    "skip":true
   },
   "extra":{
@@ -165,7 +185,7 @@
  },
  "name":"gstlal-calibration",
  "pinning_version":"2020.01.28",
- "raw_meta_yaml":"{% set name = \"gstlal-calibration\" %}\n{% set version = \"1.2.12\" %}\n\npackage:\n  name: \"{{ name|lower }}\"\n  version: \"{{ version }}\"\n\nsource:\n  url: \"http://software.ligo.org/lscsoft/source/{{ name }}-{{ version }}.tar.gz\"\n  sha256: d9c9619569c71754f7cad62e288a08f2f450f8d31940ef403df1fa8c8f8eacba\n  patches:\n    - missing-links.patch\n\nbuild:\n  number: 0\n  skip: true  # [win or py>=30]\n  skip: true  # [osx]\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - make  # [unix]\n    - pkg-config  # [unix]\n  host:\n    - fftw\n    - glib\n    - gsl\n    - gstreamer\n    - gst-plugins-base\n    - gstlal >=1.5.0\n    - lal >=6.19.0\n    - lalmetaio >=1.5.0\n    - python\n  run:\n    - fftw\n    - glib\n    - gsl\n    - gstreamer\n    - gst-plugins-base\n    - gstlal >=1.5.0\n    - kafka-python\n    - lal >=6.19.2\n    - lalmetaio >=1.5.0\n    - ligo-scald\n    - ligo-segments\n    - python\n    - python-lal\n  run_constrained:\n    - __osx >={{ MACOSX_DEPLOYMENT_TARGET|default(\"10.9\") }}  # [osx]\n\ntest:\n  imports:\n    - gstlal.calibhandler\n    - gstlal.calibration_parts\n  commands:\n    # check executables\n    - gstlal_calibration_aggregator --help\n    - gstlal_compute_strain --help\n\nabout:\n  home: \"https://lscsoft.docs.ligo.org/gstlal/\"\n  dev_url: \"https://git.ligo.org/lscsoft/gstlal/\"\n  doc_url: \"https://lscsoft.docs.ligo.org/gstlal/\"\n  license: \"GPL-2.0-or-later\"\n  license_family: \"GPL\"\n  license_file: \"COPYING\"\n  summary: \"GStreamer for GW data analysis (calibration parts)\"\n  description: |\n    This package contains the plugins and shared libraries required to\n    run the gstlal calibration software.\n\nextra:\n  recipe-maintainers:\n    - duncanmmacleod\n    - myNameIsPatrick\n",
+ "raw_meta_yaml":"{% set name = \"gstlal-calibration\" %}\n{% set version = \"1.2.12\" %}\n\npackage:\n  name: \"{{ name|lower }}\"\n  version: \"{{ version }}\"\n\nsource:\n  url: \"http://software.ligo.org/lscsoft/source/{{ name }}-{{ version }}.tar.gz\"\n  sha256: d9c9619569c71754f7cad62e288a08f2f450f8d31940ef403df1fa8c8f8eacba\n  patches:\n    - missing-links.patch\n\nbuild:\n  number: 1\n  skip: true  # [win or py>=30]\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - make  # [unix]\n    - pkg-config  # [unix]\n  host:\n    - fftw\n    - glib\n    - gsl\n    - gstreamer\n    - gst-plugins-base\n    - gstlal >=1.5.0\n    - lal >=6.19.0\n    - lalmetaio >=1.5.0\n    - python\n  run:\n    - fftw\n    - glib\n    - gsl\n    - gstreamer\n    - gst-plugins-base\n    - gstlal >=1.5.0\n    - kafka-python\n    - lal >=6.19.2\n    - lalmetaio >=1.5.0\n    - ligo-scald\n    - ligo-segments\n    - python\n    - python-lal\n  run_constrained:\n    - __osx >={{ MACOSX_DEPLOYMENT_TARGET|default(\"10.9\") }}  # [osx]\n\ntest:\n  imports:\n    - gstlal.calibhandler\n    - gstlal.calibration_parts\n  commands:\n    # check executables\n    - gstlal_calibration_aggregator --help\n    - gstlal_compute_strain --help\n\nabout:\n  home: \"https://lscsoft.docs.ligo.org/gstlal/\"\n  dev_url: \"https://git.ligo.org/lscsoft/gstlal/\"\n  doc_url: \"https://lscsoft.docs.ligo.org/gstlal/\"\n  license: \"GPL-2.0-or-later\"\n  license_family: \"GPL\"\n  license_file: \"COPYING\"\n  summary: \"GStreamer for GW data analysis (calibration parts)\"\n  description: |\n    This package contains the plugins and shared libraries required to\n    run the gstlal calibration software.\n\nextra:\n  recipe-maintainers:\n    - duncanmmacleod\n    - myNameIsPatrick\n",
  "req":{
   "__set__":true,
   "elements":[
