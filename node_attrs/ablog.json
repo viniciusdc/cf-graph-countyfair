@@ -166,7 +166,7 @@
   },
   "package":{
    "name":"ablog",
-   "version":"0.10.2"
+   "version":"0.10.3"
   },
   "requirements":{
    "build":[
@@ -182,7 +182,7 @@
    ],
    "run":[
     "python",
-    "werkzeug",
+    "werkzeug <1.0.0",
     "sphinx >=2.0",
     "alabaster",
     "invoke",
@@ -190,7 +190,7 @@
     "sphinx-automodapi",
     "watchdog",
     "python",
-    "werkzeug",
+    "werkzeug <1.0.0",
     "sphinx >=2.0",
     "alabaster",
     "invoke",
@@ -198,7 +198,7 @@
     "sphinx-automodapi",
     "watchdog",
     "python",
-    "werkzeug",
+    "werkzeug <1.0.0",
     "sphinx >=2.0",
     "alabaster",
     "invoke",
@@ -208,28 +208,28 @@
    ]
   },
   "source":{
-   "fn":"ablog-0.10.2.tar.gz",
-   "sha256":"680afd56460d7afc6f484c63aaf41eaff03c82a50795929bc5e65036ec37c103",
-   "url":"https://pypi.io/packages/source/a/ablog/ablog-0.10.2.tar.gz"
+   "fn":"ablog-0.10.3.tar.gz",
+   "sha256":"20caf0c567e8b94f9a255467758ed847220df3490501d71c3cdfcddcbbec7860",
+   "url":"https://pypi.io/packages/source/a/ablog/ablog-0.10.3.tar.gz"
   },
   "test":{
    "commands":[
     "ablog --version",
-    "git clone --depth 1 --branch v0.10.2 https://github.com/sunpy/ablog",
+    "git clone --depth 1 --branch v0.10.3 https://github.com/sunpy/ablog",
     "cd ablog/docs",
     "ablog build -T",
     "ablog build -b latex -T -d .doctrees -w _latex",
     "ablog build -T -b json",
     "ablog build -T -b pickle",
     "ablog --version",
-    "git clone --depth 1 --branch v0.10.2 https://github.com/sunpy/ablog",
+    "git clone --depth 1 --branch v0.10.3 https://github.com/sunpy/ablog",
     "cd ablog/docs",
     "ablog build -T",
     "ablog build -b latex -T -d .doctrees -w _latex",
     "ablog build -T -b json",
     "ablog build -T -b pickle",
     "ablog --version",
-    "git clone --depth 1 --branch v0.10.2 https://github.com/sunpy/ablog",
+    "git clone --depth 1 --branch v0.10.3 https://github.com/sunpy/ablog",
     "cd ablog/docs",
     "ablog build -T",
     "ablog build -b latex -T -d .doctrees -w _latex",
@@ -238,18 +238,18 @@
    ],
    "requires":[
     "git",
-    "nbsphinx",
+    "nbsphinx <0.5.0",
     "git",
-    "nbsphinx",
+    "nbsphinx <0.5.0",
     "git",
-    "nbsphinx"
+    "nbsphinx <0.5.0"
    ]
   }
  },
  "name":"ablog",
  "new_version":"0.10.3",
  "pinning_version":"2020.02.12",
- "raw_meta_yaml":"{% set name = \"ablog\" %}\n{% set version = \"0.10.2\" %}\n{% set sha256 = \"680afd56460d7afc6f484c63aaf41eaff03c82a50795929bc5e65036ec37c103\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  fn: {{ name }}-{{ version }}.tar.gz\n  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz\n  sha256: {{ sha256 }}\n\nbuild:\n  number: 0\n  script: {{ PYTHON }} -m pip install . --no-deps -vv\n  entry_points:\n    - ablog = ablog.commands:ablog_main\n  skip: true  # [py27]\n\nrequirements:\n  build:\n    - python\n    - pip\n    - setuptools_scm\n  run:\n    - python\n    - werkzeug\n    - sphinx >=2.0\n    - alabaster\n    - invoke\n    - python-dateutil\n    - sphinx-automodapi\n    - watchdog\n\ntest:\n  requires:\n    - git\n    - nbsphinx\n  commands:\n    - ablog --version\n    - git clone --depth 1 --branch v{{ version }} https://github.com/sunpy/ablog\n    - cd ablog/docs\n    - ablog build -T\n    - ablog build -b latex -T -d .doctrees -w _latex\n    - ablog build -T -b json\n    - ablog build -T -b pickle\n\nabout:\n  home: https://github.com/sunpy/ablog\n  license: MIT\n  license_file: LICENSE.rst\n  license_family: MIT\n  summary: 'ABlog for blogging with Sphinx'\n  description: |\n    A Sphinx extension that converts any documentation or personal website\n    project into a full-fledged blog.\n  doc_url: http://ablog.readthedocs.org\n  dev_url: https://github.com/sunpy/ablog\n\nextra:\n  recipe-maintainers:\n    - nabobalis\n    - cadair\n",
+ "raw_meta_yaml":"{% set name = \"ablog\" %}\n{% set version = \"0.10.3\" %}\n{% set sha256 = \"20caf0c567e8b94f9a255467758ed847220df3490501d71c3cdfcddcbbec7860\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  fn: {{ name }}-{{ version }}.tar.gz\n  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz\n  sha256: {{ sha256 }}\n\nbuild:\n  number: 0\n  script: {{ PYTHON }} -m pip install . --no-deps -vv\n  entry_points:\n    - ablog = ablog.commands:ablog_main\n  skip: true  # [py27]\n\nrequirements:\n  build:\n    - python\n    - pip\n    - setuptools_scm\n  run:\n    - python\n    - werkzeug <1.0.0\n    - sphinx >=2.0\n    - alabaster\n    - invoke\n    - python-dateutil\n    - sphinx-automodapi\n    - watchdog\n\ntest:\n  requires:\n    - git\n    - nbsphinx <0.5.0\n  commands:\n    - ablog --version\n    - git clone --depth 1 --branch v{{ version }} https://github.com/sunpy/ablog\n    - cd ablog/docs\n    - ablog build -T\n    - ablog build -b latex -T -d .doctrees -w _latex\n    - ablog build -T -b json\n    - ablog build -T -b pickle\n\nabout:\n  home: https://github.com/sunpy/ablog\n  license: MIT\n  license_file: LICENSE.rst\n  license_family: MIT\n  summary: 'ABlog for blogging with Sphinx'\n  description: |\n    A Sphinx extension that converts any documentation or personal website\n    project into a full-fledged blog.\n  doc_url: http://ablog.readthedocs.org\n  dev_url: https://github.com/sunpy/ablog\n\nextra:\n  recipe-maintainers:\n    - nabobalis\n    - cadair\n",
  "req":{
   "__set__":true,
   "elements":[
@@ -324,17 +324,17 @@
     "sphinx >=2.0",
     "sphinx-automodapi",
     "watchdog",
-    "werkzeug"
+    "werkzeug <1.0.0"
    ]
   },
   "test":{
    "__set__":true,
    "elements":[
     "git",
-    "nbsphinx"
+    "nbsphinx <0.5.0"
    ]
   }
  },
  "url":"https://pypi.io/packages/source/a/ablog/ablog-0.9.5.tar.gz",
- "version":"0.10.2"
+ "version":"0.10.3"
 }
