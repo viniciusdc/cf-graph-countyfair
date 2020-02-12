@@ -63,8 +63,8 @@
    "description":"GStreamer Python binding overrides",
    "dev_url":"https://gitlab.freedesktop.org/gstreamer/gst-python",
    "home":"http://gstreamer.freedesktop.org/modules/gst-python.html",
-   "license":"LGPL-2.0",
-   "license_family":"GPL",
+   "license":"LGPL-2.1-or-later",
+   "license_family":"LGPL",
    "license_file":"COPYING",
    "summary":"GStreamer Python binding overrides"
   },
@@ -86,40 +86,45 @@
   "requirements":{
    "build":[
     "c_compiler_stub",
-    "pkg-config",
-    "make",
     "c_compiler_stub",
-    "pkg-config",
     "make",
-    "c_compiler_stub",
     "pkg-config",
-    "make"
+    "c_compiler_stub",
+    "make",
+    "pkg-config"
    ],
    "host":[
-    "python",
+    "glib",
     "gstreamer 1.14.5",
-    "gst-plugins-base 1.14.5",
     "pygobject",
     "python",
+    "glib",
     "gstreamer 1.14.5",
-    "gst-plugins-base 1.14.5",
     "pygobject",
     "python",
+    "glib",
     "gstreamer 1.14.5",
-    "gst-plugins-base 1.14.5",
-    "pygobject"
+    "pygobject",
+    "python"
    ],
    "run":[
-    "python",
+    "glib",
     "pygobject",
     "python",
+    "glib",
     "pygobject",
     "python",
-    "pygobject"
+    "glib",
+    "pygobject",
+    "python"
    ]
   },
   "source":{
-   "patches":null,
+   "patches":[
+    "python-libs-3.8.patch",
+    "python-libs-3.8.patch",
+    "python-libs-3.8.patch"
+   ],
    "sha256":"18afc00a2d67e6c1bae172241ac2521b3c2cc74b8b0273433e71edc9572add5a",
    "url":"https://gstreamer.freedesktop.org/src/gst-python/gst-python-1.14.5.tar.xz"
   },
@@ -127,10 +132,7 @@
    "commands":[
     "python -c \"import gi; gi.require_version('Gst', '1.0')\"",
     "python -c \"import gi; gi.require_version('Gst', '1.0')\"",
-    "conda inspect linkages -p ${PREFIX} ${PKG_NAME}",
-    "conda inspect objects -p ${PREFIX} ${PKG_NAME}",
-    "python -c \"import gi; gi.require_version('Gst', '1.0')\"",
-    "conda inspect linkages -p ${PREFIX} ${PKG_NAME}"
+    "python -c \"import gi; gi.require_version('Gst', '1.0')\""
    ],
    "imports":[
     "gi.repository.Gst",
@@ -142,12 +144,12 @@
  "name":"gst-python",
  "new_version":false,
  "pinning_version":"2019.11.01",
- "raw_meta_yaml":"{% set name = \"gst-python\" %}\n{% set version = \"1.14.5\" %}\n{% set sha256 = \"18afc00a2d67e6c1bae172241ac2521b3c2cc74b8b0273433e71edc9572add5a\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  url: https://gstreamer.freedesktop.org/src/{{ name }}/{{ name }}-{{ version }}.tar.xz\n  sha256: {{ sha256 }}\n  patches:\n    - python-ldflags.patch  # [osx and py>=30]\n\nbuild:\n  number: 0\n  skip: true  # [win]\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - pkg-config\n    - make\n  host:\n    - python\n    - gstreamer {{ version }}\n    - gst-plugins-base {{ version }}\n    - pygobject\n  run:\n    - python\n    - pygobject\n\ntest:\n  imports:\n    - gi.repository.Gst\n  commands:\n    - python -c \"import gi; gi.require_version('Gst', '1.0')\"\n    - conda inspect linkages -p ${PREFIX} ${PKG_NAME}  # [not win]\n    - conda inspect objects -p ${PREFIX} ${PKG_NAME}  # [osx]\n\nabout:\n  home: http://gstreamer.freedesktop.org/modules/gst-python.html\n  dev_url: https://gitlab.freedesktop.org/gstreamer/gst-python\n  license: LGPL-2.0\n  license_family: GPL\n  license_file: COPYING\n  summary: GStreamer Python binding overrides\n  description: GStreamer Python binding overrides\n\nextra:\n  recipe-maintainers:\n    - duncanmmacleod\n",
+ "raw_meta_yaml":"{% set name = \"gst-python\" %}\n{% set version = \"1.14.5\" %}\n{% set sha256 = \"18afc00a2d67e6c1bae172241ac2521b3c2cc74b8b0273433e71edc9572add5a\" %}\n\npackage:\n  name: \"{{ name|lower }}\"\n  version: \"{{ version }}\"\n\nsource:\n  url: \"https://gstreamer.freedesktop.org/src/{{ name }}/{{ name }}-{{ version }}.tar.xz\"\n  sha256: \"{{ sha256 }}\"\n  patches:\n    - python-ldflags.patch  # [osx and py>=30 and py<38]\n    # for python3.8 and above, just use -lpython3.8\n    - python-libs-3.8.patch  # [py>=38]\n\nbuild:\n  number: 0\n  skip: true  # [win]\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - make  # [unix]\n    - pkg-config  # [unix]\n  host:\n    - glib\n    - gstreamer {{ version }}\n    - pygobject\n    - python\n  run:\n    - glib\n    - pygobject\n    - python\n\ntest:\n  imports:\n    - gi.repository.Gst\n  commands:\n    - python -c \"import gi; gi.require_version('Gst', '1.0')\"\n\nabout:\n  home: \"http://gstreamer.freedesktop.org/modules/gst-python.html\"\n  dev_url: \"https://gitlab.freedesktop.org/gstreamer/gst-python\"\n  license: \"LGPL-2.1-or-later\"\n  license_family: \"LGPL\"\n  license_file: \"COPYING\"\n  summary: \"GStreamer Python binding overrides\"\n  description: \"GStreamer Python binding overrides\"\n\nextra:\n  recipe-maintainers:\n    - duncanmmacleod\n",
  "req":{
   "__set__":true,
   "elements":[
    "c_compiler_stub",
-   "gst-plugins-base",
+   "glib",
    "gstreamer",
    "make",
    "pkg-config",
@@ -167,7 +169,7 @@
   "host":{
    "__set__":true,
    "elements":[
-    "gst-plugins-base",
+    "glib",
     "gstreamer",
     "pygobject",
     "python"
@@ -176,6 +178,7 @@
   "run":{
    "__set__":true,
    "elements":[
+    "glib",
     "pygobject",
     "python"
    ]
@@ -199,7 +202,7 @@
   "host":{
    "__set__":true,
    "elements":[
-    "gst-plugins-base 1.14.5",
+    "glib",
     "gstreamer 1.14.5",
     "pygobject",
     "python"
@@ -208,6 +211,7 @@
   "run":{
    "__set__":true,
    "elements":[
+    "glib",
     "pygobject",
     "python"
    ]
