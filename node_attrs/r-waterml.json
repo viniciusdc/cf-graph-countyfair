@@ -33,6 +33,23 @@
     "migrator_version",
     "name"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/374252597.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"Version",
+    "migrator_version":0,
+    "version":"1.9.0"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "version"
+   ]
   }
  ],
  "bad":false,
@@ -151,8 +168,8 @@
   }
  },
  "name":"r-waterml",
- "new_version":"1.7.1",
- "pinning_version":"2019.07.19",
+ "new_version":"1.9.0",
+ "pinning_version":"2020.01.28",
  "raw_meta_yaml":"{% set version = '1.7.1' %}\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-waterml\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  fn: WaterML_{{ version }}.tar.gz\n  url:\n    - {{ cran_mirror }}/src/contrib/WaterML_{{ version }}.tar.gz\n    - {{ cran_mirror }}/src/contrib/Archive/WaterML/WaterML_{{ version }}.tar.gz\n  sha256: b2685dc6242f8024450c0c5c596d4c9d03a4a1c66b56fa66e0a90e2ab0550c2b\n\nbuild:\n  noarch: generic\n  merge_build_host: True  # [win]\n  number: 1002\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - {{posix}}zip               # [win]\n  host:\n    - r-base\n    - r-rjsonio\n    - r-xml\n    - r-httr\n  run:\n    - r-base\n    - r-rjsonio\n    - r-xml\n    - r-httr\n\ntest:\n  commands:\n    - $R -e \"library('WaterML')\"           # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('WaterML')\\\"\"  # [win]\n\nabout:\n  home: https://github.com/jirikadlec2/waterml\n  license: MIT\n  license_file: LICENSE\n  summary: 'Lets you connect to any of the Consortium of Universities for the Advancement of\n    Hydrologic Sciences, Inc. (''CUAHSI'') Water Data Center ''WaterOneFlow'' web services\n    and read any ''WaterML'' hydrological time series data file. To see list of available\n    web services, see <http://hiscentral.cuahsi.org>. All versions of ''WaterML'' (1.0,\n    1.1 and 2.0) and both types of the web service protocol (''SOAP'' and ''REST'')\n    are supported. The package has six data download functions: GetServices(): show\n    all public web services from the HIS Central Catalog. HISCentral_GetSites() and\n    HISCentral_GetSeriesCatalog(): search for sites or time series from the HIS Central\n    catalog based on geographic bounding box, server, or keyword. GetVariables(): Show\n    a data.frame with all variables on the server. GetSites(): Show a data.frame with\n    all sites on the server. GetSiteInfo(): Show what variables, methods and quality\n    control levels are available at the specific site. GetValues(): Given a site code,\n    variable code, start time and end time, fetch a data.frame of all the observation\n    time series data values. The GetValues() function can also parse ''WaterML'' data\n    from a custom URL or from a local file. The package also has five data upload functions:\n    AddSites(), AddVariables(), AddMethods(), AddSources(), and AddValues(). These functions\n    can be used for uploading data to a ''HydroServer Lite'' Observations Data Model\n    (''ODM'') database via the ''JSON'' data upload web service interface.'\n  license_family: MIT\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n    - ocefpaf\n    - johanneskoester\n    - bgruening\n    - daler\n    - jdblischak\n    - cbrueffer\n    - dbast\n",
  "req":{
   "__set__":true,
@@ -191,7 +208,7 @@
    "elements":[]
   }
  },
- "smithy_version":"3.4.1",
+ "smithy_version":"3.6.8",
  "strong_exports":false,
  "total_requirements":{
   "build":{
