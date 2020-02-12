@@ -71,9 +71,9 @@
  ],
  "bad":false,
  "conda-forge.yml":{
-  "compiler_stack":"comp7",
-  "max_py_ver":"37",
-  "max_r_ver":"35",
+  "bot":{
+   "automerge":true
+  },
   "provider":{
    "linux_aarch64":"default",
    "linux_ppc64le":"default",
@@ -118,7 +118,7 @@
   },
   "package":{
    "name":"pcre",
-   "version":"8.43"
+   "version":"8.44"
   },
   "requirements":{
    "build":[
@@ -143,8 +143,8 @@
     "0001-Define-snprintf-for-old-VS.patch",
     "0001-Define-snprintf-for-old-VS.patch"
    ],
-   "sha256":"0b8e7465dc5e98c757cc3650a20a7843ee4c3edf50aaf60bb33fd879690d2c73",
-   "url":"https://ftp.pcre.org/pub/pcre/pcre-8.43.tar.gz"
+   "sha256":"aecafd4af3bd0f3935721af77b889d9024b2e01d96b58471bd91a3063fb47728",
+   "url":"https://ftp.pcre.org/pub/pcre/pcre-8.44.tar.gz"
   },
   "test":{
    "commands":[
@@ -198,7 +198,7 @@
  "name":"pcre",
  "new_version":"8.44",
  "pinning_version":"2020.01.28",
- "raw_meta_yaml":"{% set version = \"8.43\" %}\n\npackage:\n  name: pcre\n  version: {{ version }}\n\nsource:\n  url: https://ftp.pcre.org/pub/pcre/pcre-{{ version }}.tar.gz\n  sha256: 0b8e7465dc5e98c757cc3650a20a7843ee4c3edf50aaf60bb33fd879690d2c73\n  patches:\n    - 0001-Define-snprintf-for-old-VS.patch\n\nbuild:\n  number: 0\n  run_exports:\n    # mostly OK, but some scary symbol removal.  Let's try for trusting them.\n    #    https://abi-laboratory.pro/tracker/timeline/pcre/\n    - {{ pin_subpackage('pcre', max_pin='x') }}\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n    - cmake        # [win]\n    - pkg-config   # [not win]\n    - libtool      # [not win]\n    - make         # [unix]\n\ntest:\n  commands:\n    # CLI tests.\n    - pcre-config --version                             # [not win]\n    - pcregrep --help\n    - pcretest --help\n\n    # Verify headers.\n    - test -f \"${PREFIX}/include/pcre.h\"  # [not win]\n    - test -f \"${PREFIX}/include/pcre_scanner.h\"  # [not win]\n    - test -f \"${PREFIX}/include/pcre_stringpiece.h\"  # [not win]\n    - test -f \"${PREFIX}/include/pcrecpp.h\"  # [not win]\n    - test -f \"${PREFIX}/include/pcrecpparg.h\"  # [not win]\n    - test -f \"${PREFIX}/include/pcreposix.h\"  # [not win]\n    - if not exist %LIBRARY_INC%\\pcre.h exit 1  # [win]\n    - if not exist %LIBRARY_INC%\\pcre_scanner.h exit 1  # [win]\n    - if not exist %LIBRARY_INC%\\pcre_stringpiece.h exit 1  # [win]\n    - if not exist %LIBRARY_INC%\\pcrecpp.h exit 1  # [win]\n    - if not exist %LIBRARY_INC%\\pcrecpparg.h exit 1  # [win]\n    - if not exist %LIBRARY_INC%\\pcreposix.h exit 1  # [win]\n\n    # Verify libraries.\n    - test -f \"${PREFIX}/lib/libpcre.a\"  # [not win]\n    - test -f \"${PREFIX}/lib/libpcre${SHLIB_EXT}\"  # [not win]\n    - test -f \"${PREFIX}/lib/libpcrecpp.a\"  # [not win]\n    - test -f \"${PREFIX}/lib/libpcrecpp${SHLIB_EXT}\"  # [not win]\n    - test -f \"${PREFIX}/lib/libpcreposix.a\"  # [not win]\n    - test -f \"${PREFIX}/lib/libpcreposix${SHLIB_EXT}\"  # [not win]\n    - if not exist %LIBRARY_LIB%\\pcre.lib exit 1  # [win]\n    - if not exist %LIBRARY_BIN%\\pcre.dll exit 1  # [win]\n    - if not exist %LIBRARY_LIB%\\pcreposix.lib exit 1  # [win]\n    - if not exist %LIBRARY_BIN%\\pcreposix.dll exit 1  # [win]\n    - if not exist %LIBRARY_LIB%\\pcrecpp.lib exit 1  # [win]\n    - if not exist %LIBRARY_BIN%\\pcrecpp.dll exit 1  # [win]\n\nabout:\n  home: http://www.pcre.org/\n  license: BSD 3-Clause\n  license_file: LICENCE\n  summary: Regular expression pattern matching using the same syntax and semantics as Perl 5.\n\nextra:\n  recipe-maintainers:\n    - jakirkham\n    - scopatz\n    - sebastian-luna-valero\n    - saraedum\n    - ocefpaf\n",
+ "raw_meta_yaml":"{% set version = \"8.44\" %}\n\npackage:\n  name: pcre\n  version: {{ version }}\n\nsource:\n  url: https://ftp.pcre.org/pub/pcre/pcre-{{ version }}.tar.gz\n  sha256: aecafd4af3bd0f3935721af77b889d9024b2e01d96b58471bd91a3063fb47728\n  patches:\n    - 0001-Define-snprintf-for-old-VS.patch\n\nbuild:\n  number: 0\n  run_exports:\n    # mostly OK, but some scary symbol removal.  Let's try for trusting them.\n    #    https://abi-laboratory.pro/tracker/timeline/pcre/\n    - {{ pin_subpackage('pcre', max_pin='x') }}\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n    - cmake        # [win]\n    - pkg-config   # [not win]\n    - libtool      # [not win]\n    - make         # [unix]\n\ntest:\n  commands:\n    # CLI tests.\n    - pcre-config --version                             # [not win]\n    - pcregrep --help\n    - pcretest --help\n\n    # Verify headers.\n    - test -f \"${PREFIX}/include/pcre.h\"  # [not win]\n    - test -f \"${PREFIX}/include/pcre_scanner.h\"  # [not win]\n    - test -f \"${PREFIX}/include/pcre_stringpiece.h\"  # [not win]\n    - test -f \"${PREFIX}/include/pcrecpp.h\"  # [not win]\n    - test -f \"${PREFIX}/include/pcrecpparg.h\"  # [not win]\n    - test -f \"${PREFIX}/include/pcreposix.h\"  # [not win]\n    - if not exist %LIBRARY_INC%\\pcre.h exit 1  # [win]\n    - if not exist %LIBRARY_INC%\\pcre_scanner.h exit 1  # [win]\n    - if not exist %LIBRARY_INC%\\pcre_stringpiece.h exit 1  # [win]\n    - if not exist %LIBRARY_INC%\\pcrecpp.h exit 1  # [win]\n    - if not exist %LIBRARY_INC%\\pcrecpparg.h exit 1  # [win]\n    - if not exist %LIBRARY_INC%\\pcreposix.h exit 1  # [win]\n\n    # Verify libraries.\n    - test -f \"${PREFIX}/lib/libpcre.a\"  # [not win]\n    - test -f \"${PREFIX}/lib/libpcre${SHLIB_EXT}\"  # [not win]\n    - test -f \"${PREFIX}/lib/libpcrecpp.a\"  # [not win]\n    - test -f \"${PREFIX}/lib/libpcrecpp${SHLIB_EXT}\"  # [not win]\n    - test -f \"${PREFIX}/lib/libpcreposix.a\"  # [not win]\n    - test -f \"${PREFIX}/lib/libpcreposix${SHLIB_EXT}\"  # [not win]\n    - if not exist %LIBRARY_LIB%\\pcre.lib exit 1  # [win]\n    - if not exist %LIBRARY_BIN%\\pcre.dll exit 1  # [win]\n    - if not exist %LIBRARY_LIB%\\pcreposix.lib exit 1  # [win]\n    - if not exist %LIBRARY_BIN%\\pcreposix.dll exit 1  # [win]\n    - if not exist %LIBRARY_LIB%\\pcrecpp.lib exit 1  # [win]\n    - if not exist %LIBRARY_BIN%\\pcrecpp.dll exit 1  # [win]\n\nabout:\n  home: http://www.pcre.org/\n  license: BSD 3-Clause\n  license_file: LICENCE\n  summary: Regular expression pattern matching using the same syntax and semantics as Perl 5.\n\nextra:\n  recipe-maintainers:\n    - jakirkham\n    - scopatz\n    - sebastian-luna-valero\n    - saraedum\n    - ocefpaf\n",
  "req":{
   "__set__":true,
   "elements":[
@@ -263,5 +263,5 @@
   }
  },
  "url":"ftp://ftp.csx.cam.ac.uk/pub/software/programming/pcre/pcre-8.41.tar.gz",
- "version":"8.43"
+ "version":"8.44"
 }
