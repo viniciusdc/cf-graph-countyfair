@@ -37,7 +37,27 @@
    ]
   }
  ],
- "bad":false,
+ "bad":{
+  "exception":"Failed to put item: An error occurred (ValidationException) on request (LMAB01BLTONEC35BETLRU1L017VV4KQNSO5AEMVJF66Q9ASUAAJG) on table (pr_json) when calling the PutItem operation: Attempting to store more than 38 significant digits in a Number",
+  "traceback":[
+   "Traceback (most recent call last):",
+   "  File \"/root/repo/cf-scripts/conda_forge_tick/auto_tick.py\", line 651, in main",
+   "    migrator_uid, pr_json = run(",
+   "  File \"/root/repo/cf-scripts/conda_forge_tick/auto_tick.py\", line 209, in run",
+   "    PRJson.dump(pr_json)",
+   "  File \"/root/repo/cf-scripts/conda_forge_tick/dynamo_models.py\", line 33, in dump",
+   "    item.save()",
+   "  File \"/opt/conda/envs/run_env/lib/python3.8/site-packages/pynamodb/models.py\", line 405, in save",
+   "    data = self._get_connection().put_item(*args, **kwargs)",
+   "  File \"/opt/conda/envs/run_env/lib/python3.8/site-packages/pynamodb/connection/table.py\", line 131, in put_item",
+   "    return self.connection.put_item(",
+   "  File \"/opt/conda/envs/run_env/lib/python3.8/site-packages/pynamodb/connection/base.py\", line 972, in put_item",
+   "    six.raise_from(PutError(\"Failed to put item: {}\".format(e), e), None)",
+   "  File \"<string>\", line 3, in raise_from",
+   "pynamodb.exceptions.PutError: Failed to put item: An error occurred (ValidationException) on request (LMAB01BLTONEC35BETLRU1L017VV4KQNSO5AEMVJF66Q9ASUAAJG) on table (pr_json) when calling the PutItem operation: Attempting to store more than 38 significant digits in a Number",
+   ""
+  ]
+ },
  "conda-forge.yml":{},
  "feedstock_name":"gstlal-inspiral",
  "hash_type":"sha256",
