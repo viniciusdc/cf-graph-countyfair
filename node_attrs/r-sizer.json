@@ -33,6 +33,23 @@
     "migrator_version",
     "name"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/374710190.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"Version",
+    "migrator_version":0,
+    "version":"0.1_7"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "version"
+   ]
   }
  ],
  "bad":false,
@@ -133,8 +150,8 @@
   }
  },
  "name":"r-sizer",
- "new_version":"0.1_5",
- "pinning_version":"2019.07.19",
+ "new_version":"0.1_7",
+ "pinning_version":"2020.02.12",
  "raw_meta_yaml":"{% set version = '0.1-5' %}\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-sizer\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  fn: SiZer_{{ version }}.tar.gz\n  url:\n    - {{ cran_mirror }}/src/contrib/SiZer_{{ version }}.tar.gz\n    - {{ cran_mirror }}/src/contrib/Archive/SiZer/SiZer_{{ version }}.tar.gz\n  sha256: d844b947ef2dc77e1b1ea1e6aeb325e478e8a05533e416f172dfa1a27e3eb4d1\n\nbuild:\n  noarch: generic\n  merge_build_host: True  # [win]\n  number: 1001\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - {{posix}}zip               # [win]\n  host:\n    - r-base\n    - r-boot\n  run:\n    - r-base\n    - r-boot\n\ntest:\n  commands:\n    - $R -e \"library('SiZer')\"           # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('SiZer')\\\"\"  # [win]\n\nabout:\n  home: https://github.com/dereksonderegger/SiZer\n  license: GPL (>= 2)\n  summary: Calculates and plots the SiZer map for scatterplot data.  A  SiZer map is a way of\n    examining when the p-th derivative of a  scatterplot-smoother is significantly negative,\n    possibly zero or  significantly positive across a range of smoothing bandwidths.\n  license_family: GPL3\n  license_file: '{{ environ[\"PREFIX\"] }}/lib/R/share/licenses/GPL-3'\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n    - johanneskoester\n    - bgruening\n    - daler\n    - jdblischak\n    - cbrueffer\n",
  "req":{
   "__set__":true,
@@ -167,7 +184,7 @@
    "elements":[]
   }
  },
- "smithy_version":"3.4.1",
+ "smithy_version":"3.6.8",
  "strong_exports":false,
  "total_requirements":{
   "build":{
