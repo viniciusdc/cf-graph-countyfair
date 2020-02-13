@@ -47,6 +47,23 @@
     "migrator_version",
     "name"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/374836352.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"Version",
+    "migrator_version":0,
+    "version":"1.7_15"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "version"
+   ]
   }
  ],
  "bad":false,
@@ -163,8 +180,8 @@
   }
  },
  "name":"r-ade4",
- "new_version":"1.7_13",
- "pinning_version":"2019.07.15",
+ "new_version":"1.7_15",
+ "pinning_version":"2020.02.12",
  "raw_meta_yaml":"{% set version = '1.7-13' %}\n\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-ade4\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  fn: ade4_{{ version }}.tar.gz\n  url:\n    - {{ cran_mirror }}/src/contrib/ade4_{{ version }}.tar.gz\n    - {{ cran_mirror }}/src/contrib/Archive/ade4/ade4_{{ version }}.tar.gz\n  sha256: f5d0a7356ae63f82d3adb481a39007e7b0d70211b8724aa686af0c89c994e99b\n\nbuild:\n  merge_build_host: True  # [win]\n  number: 1001\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\n# Suggests: ade4TkGUI, adegraphics, adephylo, ape, CircStats, deldir, lattice, pixmap, sp, spdep, splancs, waveslim\nrequirements:\n  build:\n    - {{ compiler('c') }}        # [not win]\n    - {{ compiler('m2w64_c') }}        # [win]\n    - {{posix}}filesystem        # [win]\n    - {{posix}}make\n    - {{posix}}sed               # [win]\n    - {{posix}}coreutils         # [win]\n    - {{posix}}zip               # [win]\n\n  host:\n    - r-base\n    - r-mass\n\n  run:\n    - r-base\n    - {{native}}gcc-libs         # [win]\n    - r-mass\n\ntest:\n  commands:\n    - $R -e \"library('ade4')\"           # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('ade4')\\\"\"  # [win]\n\nabout:\n  home: 'http://pbil.univ-lyon1.fr/ADE-4, Mailing list: http://listes.univ-lyon1.fr/wws/info/adelist'\n\n  license: GPL (>= 2)\n  summary: Tools for multivariate data analysis. Several methods are provided for the analysis\n    (i.e., ordination) of one-table (e.g., principal component analysis, correspondence\n    analysis), two-table (e.g., coinertia analysis, redundancy analysis), three-table\n    (e.g., RLQ analysis) and K-table (e.g., STATIS, multiple coinertia analysis). The\n    philosophy of the package is described in Dray and Dufour (2007) <doi:10.18637/jss.v022.i04>.\n  license_family: GPL3\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n    - dpryan79\n    - johanneskoester\n    - bgruening\n    - daler\n    - jdblischak\n    - cbrueffer\n    - nick-youngblut\n",
  "req":{
   "__set__":true,
@@ -214,7 +231,7 @@
    "elements":[]
   }
  },
- "smithy_version":"3.4.1",
+ "smithy_version":"3.6.8",
  "strong_exports":false,
  "total_requirements":{
   "build":{
