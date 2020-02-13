@@ -84,6 +84,21 @@
     "migrator_version",
     "name"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/374650540.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"MatplotlibBase",
+    "migrator_version":0
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version"
+   ]
   }
  ],
  "bad":false,
@@ -217,7 +232,7 @@
  },
  "name":"pymc",
  "new_version":"2.3.7",
- "pinning_version":"2019.11.01",
+ "pinning_version":"2020.02.12",
  "raw_meta_yaml":"{% set version = \"2.3.7\" %}\n\npackage:\n  name: pymc\n  version: {{ version }}\n\nsource:\n  url: https://github.com/pymc-devs/pymc/archive/v{{version}}.tar.gz\n  sha256: 12765987a5d64eaf210b1a32053990a0a4cacf2458e93d9b35ebab239032a4b5\n\nbuild:\n  number: 1002\n  skip: True  # [win]\n  skip: True  # [py>36]\n  script:\n    - export LDFLAGS=\"-undefined dynamic_lookup -bundle\"  # [osx]\n    - \"{{ PYTHON }} -m pip install . --no-deps --ignore-installed -vvv\"\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - {{ compiler('fortran') }}\n  host:\n    - libblas\n    - libcblas\n    - python\n    - numpy\n    - pip\n  run:\n    - python\n    - {{ pin_compatible('numpy') }}\n    - scipy\n    - matplotlib\n\ntest:\n  imports:\n    - pymc\n    - pymc.database\n    - pymc.examples\n    - pymc.gp\n    - pymc.gp.cov_funs\n    - pymc.Container_values\n    - pymc.LazyFunction\n    - pymc.flib\n    - pymc.gp.cov_funs.distances\n    - pymc.gp.cov_funs.isotropic_cov_funs\n    - pymc.gp.incomplete_chol\n    - pymc.gp.linalg_utils\n\nabout:\n  home: http://github.com/pymc-devs/pymc\n  license: AFL-3.0\n  license_family: OTHER\n  license_file: LICENSE\n  summary: 'PyMC: Bayesian Stochastic Modelling in Python'\n\n  description: |\n    PyMC is a python module that implements Bayesian statistical models and fitting algorithms, including Markov chain Monte Carlo. Its flexibility and extensibility make it applicable to a large suite of problems. Along with core sampling functionality, PyMC includes methods for summarizing output, plotting, goodness-of-fit and convergence diagnostics.\n  doc_url: http://pymc-devs.github.io/pymc/\n  dev_url: https://github.com/pymc-devs/pymc\n\nextra:\n  recipe-maintainers:\n    - fonnesbeck\n    - ocefpaf\n",
  "req":{
   "__set__":true,
@@ -266,7 +281,7 @@
    "elements":[]
   }
  },
- "smithy_version":"3.6.2",
+ "smithy_version":"3.6.8",
  "strong_exports":false,
  "total_requirements":{
   "build":{
