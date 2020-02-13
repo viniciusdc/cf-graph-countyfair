@@ -90,7 +90,7 @@
    "summary":"Sandia's suite of HPC solvers and enabling technologies"
   },
   "build":{
-   "number":"0",
+   "number":"1",
    "skip":true
   },
   "extra":{
@@ -120,21 +120,27 @@
     "libblas",
     "liblapack",
     "boost-cpp",
+    "scikit-umfpack",
     "libblas",
     "liblapack",
     null,
     "boost-cpp",
+    "scikit-umfpack",
     "libblas",
     "liblapack",
     null,
-    "boost-cpp"
+    "boost-cpp",
+    "scikit-umfpack"
    ],
    "run":[
     "boost-cpp",
+    "scikit-umfpack",
     null,
     "boost-cpp",
+    "scikit-umfpack",
     null,
-    "boost-cpp"
+    "boost-cpp",
+    "scikit-umfpack"
    ],
    "run_constrained":[
     "pytrilinos ==999999999",
@@ -160,7 +166,7 @@
  "name":"trilinos",
  "new_version":"0.2.0",
  "pinning_version":"2019.05.29",
- "raw_meta_yaml":"{% set version = \"12.18.1\" %}\n\npackage:\n  name: trilinos\n  version: {{ version }}\n\nsource:\n  url: https://github.com/trilinos/Trilinos/archive/trilinos-release-{{ version | replace('.', '-') }}.tar.gz\n  sha256: 7d2e1a1a3e2d2ce78bb248c63411fed5007c827b87cadee3d13c1a45c09a89cf\n\nbuild:\n  number: 0\n  skip: true  # [win]\n\nrequirements:\n  build:\n    - cmake >=3.10.0\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n  host:\n    - libblas\n    - liblapack\n    - {{ mpi }}  # [unix]\n    - boost-cpp\n  run:\n    - {{ mpi }}  # [unix]\n    - boost-cpp\n  run_constrained:\n    - pytrilinos ==999999999\n\ntest:\n  commands:\n    - test -f $PREFIX/include/TeuchosCore_ConfigDefs.hpp        # [unix]\n    - test -f $PREFIX/lib/libteuchoscore.{{ version }}.dylib    # [osx]\n    - test -f $PREFIX/lib/libteuchoscore.so.{{ version }}       # [linux]\n    - if not exist %PREFIX%\\\\Library\\\\include\\\\TeuchosCore_ConfigDefs.hpp exit 1  # [win]\n    - if not exist %PREFIX%\\\\Library\\\\lib\\\\teuchoscore.lib exit 1  # [win]\n\nabout:\n  home: https://trilinos.org\n  license: BSD-3-Clause\n  license_family: BSD\n  license_file: LICENSE\n  summary:\n    Sandia's suite of HPC solvers and enabling technologies\n  description:\n    Fast, compiled object-oriented algorithms and enabling\n    technologies that support the solution of large-scale,\n    complex multi-physics engineering and scientific problems.\n  dev_url: https://github.com/trilinos/Trilinos\n\nextra:\n  recipe-maintainers:\n    - pyt-viper\n",
+ "raw_meta_yaml":"{% set version = \"12.18.1\" %}\n\npackage:\n  name: trilinos\n  version: {{ version }}\n\nsource:\n  url: https://github.com/trilinos/Trilinos/archive/trilinos-release-{{ version | replace('.', '-') }}.tar.gz\n  sha256: 7d2e1a1a3e2d2ce78bb248c63411fed5007c827b87cadee3d13c1a45c09a89cf\n\nbuild:\n  number: 1\n  skip: true  # [win]\n\nrequirements:\n  build:\n    - cmake >=3.10.0\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n  host:\n    - libblas\n    - liblapack\n    - {{ mpi }}  # [unix]\n    - boost-cpp\n    - scikit-umfpack\n  run:\n    - {{ mpi }}  # [unix]\n    - boost-cpp\n    - scikit-umfpack\n  run_constrained:\n    - pytrilinos ==999999999\n\ntest:\n  commands:\n    - test -f $PREFIX/include/TeuchosCore_ConfigDefs.hpp        # [unix]\n    - test -f $PREFIX/lib/libteuchoscore.{{ version }}.dylib    # [osx]\n    - test -f $PREFIX/lib/libteuchoscore.so.{{ version }}       # [linux]\n    - if not exist %PREFIX%\\\\Library\\\\include\\\\TeuchosCore_ConfigDefs.hpp exit 1  # [win]\n    - if not exist %PREFIX%\\\\Library\\\\lib\\\\teuchoscore.lib exit 1  # [win]\n\nabout:\n  home: https://trilinos.org\n  license: BSD-3-Clause\n  license_family: BSD\n  license_file: LICENSE\n  summary:\n    Sandia's suite of HPC solvers and enabling technologies\n  description:\n    Fast, compiled object-oriented algorithms and enabling\n    technologies that support the solution of large-scale,\n    complex multi-physics engineering and scientific problems.\n  dev_url: https://github.com/trilinos/Trilinos\n\nextra:\n  recipe-maintainers:\n    - pyt-viper\n",
  "req":{
   "__set__":true,
   "elements":[
@@ -169,7 +175,8 @@
    "cmake",
    "cxx_compiler_stub",
    "libblas",
-   "liblapack"
+   "liblapack",
+   "scikit-umfpack"
   ]
  },
  "requirements":{
@@ -186,13 +193,15 @@
    "elements":[
     "boost-cpp",
     "libblas",
-    "liblapack"
+    "liblapack",
+    "scikit-umfpack"
    ]
   },
   "run":{
    "__set__":true,
    "elements":[
-    "boost-cpp"
+    "boost-cpp",
+    "scikit-umfpack"
    ]
   },
   "test":{
@@ -216,13 +225,15 @@
    "elements":[
     "boost-cpp",
     "libblas",
-    "liblapack"
+    "liblapack",
+    "scikit-umfpack"
    ]
   },
   "run":{
    "__set__":true,
    "elements":[
-    "boost-cpp"
+    "boost-cpp",
+    "scikit-umfpack"
    ]
   },
   "test":{
