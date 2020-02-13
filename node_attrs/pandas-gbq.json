@@ -205,8 +205,9 @@
    "summary":"Pandas interface to Google BigQuery"
   },
   "build":{
-   "number":"1",
-   "script":"-m pip install . --no-deps -vv"
+   "noarch":"python",
+   "number":"0",
+   "script":"python -m pip install . --no-deps -vv"
   },
   "extra":{
    "recipe-maintainers":[
@@ -226,34 +227,31 @@
   },
   "package":{
    "name":"pandas-gbq",
-   "version":"0.13.0"
+   "version":"0.13.1"
   },
   "requirements":{
    "build":[
-    "python",
-    "setuptools",
     "pip",
-    "python",
-    "setuptools",
     "pip",
-    "python",
-    "setuptools",
     "pip"
    ],
    "run":[
-    "python",
+    "python >=3.5.0",
+    "setuptools",
     "pandas >=0.19.0",
     "pydata-google-auth",
     "google-auth >=1.0.1",
     "google-auth-oauthlib >=0.0.1",
     "google-cloud-bigquery >=1.11.0",
-    "python",
+    "python >=3.5.0",
+    "setuptools",
     "pandas >=0.19.0",
     "pydata-google-auth",
     "google-auth >=1.0.1",
     "google-auth-oauthlib >=0.0.1",
     "google-cloud-bigquery >=1.11.0",
-    "python",
+    "python >=3.5.0",
+    "setuptools",
     "pandas >=0.19.0",
     "pydata-google-auth",
     "google-auth >=1.0.1",
@@ -262,22 +260,35 @@
    ]
   },
   "source":{
-   "fn":"pandas-gbq-0.13.0.tar.gz",
-   "sha256":"af5da17712349749ecb0799c510ead2dd6499b7593a24cd5fb7cb59fccb1bad2",
-   "url":"https://pypi.io/packages/source/p/pandas-gbq/pandas-gbq-0.13.0.tar.gz"
+   "fn":"pandas-gbq-0.13.1.tar.gz",
+   "sha256":"b394aa388e6229cd4fe652709cc02597c6fa2e336e2ab973d35cc58635370b0b",
+   "url":"https://pypi.io/packages/source/p/pandas-gbq/pandas-gbq-0.13.1.tar.gz"
   },
   "test":{
+   "commands":[
+    "python -m pip check",
+    "python -m pip check",
+    "python -m pip check"
+   ],
    "imports":[
     "pandas_gbq",
     "pandas_gbq",
     "pandas_gbq"
+   ],
+   "requires":[
+    "python",
+    "pip",
+    "python",
+    "pip",
+    "python",
+    "pip"
    ]
   }
  },
  "name":"pandas-gbq",
  "new_version":"0.13.1",
  "pinning_version":"2020.02.12",
- "raw_meta_yaml":"{% set version = \"0.13.0\" %}\n{% set name = \"pandas-gbq\" %}\n{% set sha256 = \"af5da17712349749ecb0799c510ead2dd6499b7593a24cd5fb7cb59fccb1bad2\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  fn: {{ name }}-{{ version }}.tar.gz\n  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz\n  sha256: {{ sha256 }}\n\nbuild:\n  number: 1\n  script: {{ PYTHON }} -m pip install . --no-deps -vv\n  skip: True  # [py2k]\n\nrequirements:\n  build:\n    - python\n    - setuptools\n    - pip\n\n  run:\n    - python\n    - pandas >=0.19.0\n    - pydata-google-auth\n    - google-auth >=1.0.1\n    - google-auth-oauthlib >=0.0.1\n    - google-cloud-bigquery >=1.11.0\n\ntest:\n  imports:\n    - pandas_gbq\n\nabout:\n  home: https://github.com/pydata/pandas-gbq\n  license: BSD 3-clause\n  license_file: LICENSE.txt\n  summary: 'Pandas interface to Google BigQuery'\n\n  doc_url: http://pandas-gbq.readthedocs.io\n  dev_url: https://github.com/pydata/pandas-gbq\n\nextra:\n  recipe-maintainers:\n    - jreback\n    - leahecole\n    - parthea\n    - tswast\n",
+ "raw_meta_yaml":"{% set version = \"0.13.1\" %}\n{% set name = \"pandas-gbq\" %}\n{% set sha256 = \"b394aa388e6229cd4fe652709cc02597c6fa2e336e2ab973d35cc58635370b0b\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  fn: {{ name }}-{{ version }}.tar.gz\n  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz\n  sha256: {{ sha256 }}\n\nbuild:\n  noarch: python\n  number: 0\n  script: python -m pip install . --no-deps -vv\n\nrequirements:\n  build:\n    - pip\n\n  run:\n    - python >=3.5.0\n    - setuptools\n    - pandas >=0.19.0\n    - pydata-google-auth\n    - google-auth >=1.0.1\n    - google-auth-oauthlib >=0.0.1\n    - google-cloud-bigquery >=1.11.0\n\ntest:\n  requires:\n    - python\n    - pip\n  imports:\n    - pandas_gbq\n  commands:\n    - python -m pip check\n\nabout:\n  home: https://github.com/pydata/pandas-gbq\n  license: BSD 3-clause\n  license_file: LICENSE.txt\n  summary: 'Pandas interface to Google BigQuery'\n\n  doc_url: http://pandas-gbq.readthedocs.io\n  dev_url: https://github.com/pydata/pandas-gbq\n\nextra:\n  recipe-maintainers:\n    - jreback\n    - leahecole\n    - parthea\n    - tswast\n",
  "req":{
   "__set__":true,
   "elements":[
@@ -295,9 +306,7 @@
   "build":{
    "__set__":true,
    "elements":[
-    "pip",
-    "python",
-    "setuptools"
+    "pip"
    ]
   },
   "host":{
@@ -312,12 +321,16 @@
     "google-cloud-bigquery",
     "pandas",
     "pydata-google-auth",
-    "python"
+    "python",
+    "setuptools"
    ]
   },
   "test":{
    "__set__":true,
-   "elements":[]
+   "elements":[
+    "pip",
+    "python"
+   ]
   }
  },
  "smithy_version":"3.6.8",
@@ -326,9 +339,7 @@
   "build":{
    "__set__":true,
    "elements":[
-    "pip",
-    "python",
-    "setuptools"
+    "pip"
    ]
   },
   "host":{
@@ -343,14 +354,18 @@
     "google-cloud-bigquery >=1.11.0",
     "pandas >=0.19.0",
     "pydata-google-auth",
-    "python"
+    "python >=3.5.0",
+    "setuptools"
    ]
   },
   "test":{
    "__set__":true,
-   "elements":[]
+   "elements":[
+    "pip",
+    "python"
+   ]
   }
  },
  "url":"https://pypi.io/packages/source/p/pandas-gbq/pandas-gbq-0.11.0.tar.gz",
- "version":"0.13.0"
+ "version":"0.13.1"
 }
