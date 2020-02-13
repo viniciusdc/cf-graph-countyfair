@@ -149,6 +149,23 @@
     "migrator_version",
     "version"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/374929940.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"Version",
+    "migrator_version":0,
+    "version":"6.3.1"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "version"
+   ]
   }
  ],
  "bad":false,
@@ -279,8 +296,8 @@
   }
  },
  "name":"proj",
- "new_version":"6.3.0",
- "pinning_version":"2019.12.18",
+ "new_version":"6.3.1",
+ "pinning_version":"2020.02.12",
  "raw_meta_yaml":"{% set version = \"6.3.0\" %}\n{% set datumgrid_ver = \"1.8\" %}\n\npackage:\n  name: proj\n  version: {{ version }}\n\nsource:\n  - url: http://download.osgeo.org/proj/proj-{{ version }}.tar.gz\n    sha256: 68ce9ba0005d442c2c1d238a3b9bc6654c358159b4af467b91e8d5b407c79c77\n  - url: http://download.osgeo.org/proj/proj-datumgrid-{{ datumgrid_ver }}.tar.gz\n    sha256: 3ff6618a0acc9f0b9b4f6a62e7ff0f7bf538fb4f74de47ad04da1317408fcc15\n    folder: data\n\nbuild:\n  number: 1\n  skip: True  # [win and vc<14]\n  run_exports:\n    # so name changes in bugfix revisions.  Pin to bugfix revision.\n    #    https://abi-laboratory.pro/tracker/timeline/proj/\n    - {{ pin_subpackage('proj', max_pin='x.x.x') }}\n\nrequirements:\n  build:\n    - cmake  # [win]\n    - pkg-config  # [not win]\n    - make  # [not win]\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n  host:\n    - sqlite\n  run:\n    - sqlite\n  run_constrained:\n    - proj4 ==999999999999\n\ntest:\n  commands:\n    # Check if NAD27/NAD83 datum shifting is present if `conus` is present.\n    - test -f $PREFIX/share/proj/conus  # [not win]\n    - if not exist %LIBRARY_PREFIX%\\\\share\\\\proj\\\\conus exit 1  # [win]\n    - if not exist %LIBRARY_LIB%\\\\proj.lib exit 1  # [win]\n    - echo -105 40 | proj +proj=utm +zone=13 +ellps=WGS84\n    - echo -117 30 | cs2cs +proj=latlong +datum=NAD27 +to +proj=latlong +datum=NAD83\n    - echo -105 40 | cs2cs +init=epsg:4326 +to +init=epsg:2975\n\nabout:\n  home: https://proj.org/\n  license: MIT\n  license_file: COPYING\n  summary: 'Cartographic Projections and Coordinate Transformations Library'\n\nextra:\n  recipe-maintainers:\n    - ocefpaf\n    - pelson\n    - msarahan\n    - xylar\n    - snowman2\n",
  "req":{
   "__set__":true,
@@ -321,7 +338,7 @@
    "elements":[]
   }
  },
- "smithy_version":"3.6.5",
+ "smithy_version":"3.6.8",
  "strong_exports":false,
  "total_requirements":{
   "build":{
