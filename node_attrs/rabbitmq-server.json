@@ -323,7 +323,7 @@
   }
  },
  "name":"rabbitmq-server",
- "new_version":"3.8.2",
+ "new_version":"3.7.24",
  "pinning_version":"2019.10.30",
  "raw_meta_yaml":"{% set name = \"rabbitmq-server\" %}\n{% set version = \"3.7.16\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  fn: {{ name }}-{{ version }}.tar.xz\n  url: https://github.com/rabbitmq/{{ name }}/releases/download/v{{ version }}/{{ name }}-generic-unix-{{ version }}.tar.xz\n  sha256: a34011f8ff1682a1601d4b8e0167ad39b91fd8f0fb35b484c41efde9f104ed08\n  patches:\n    - a2f5620.patch  # wrapper to fake RABBITMQ_HOME location\n    - f52bca4.patch  # SYS_PREFIX is set to Conda's PREFIX\n\nbuild:\n  number: 0\n  skip: True  # [win]\n  no_link:\n    - etc/rabbitmq\n    - var/*/rabbitmq\n\nrequirements:\n  build:\n    - gettext\n\n  run:\n    - erlang >=20.3,<22\n\ntest:\n  commands:\n    - rabbitmq-server&  # [linux]\n    - sleep 2  # [linux]\n    - rabbitmqctl status  # [linux]\n    - rabbitmqctl stop  # [linux]\n\nabout:\n  home: http://www.rabbitmq.com\n  license: MPL 1.1\n  license_family: OTHER\n  license_file: LICENSE\n  summary: Open source multi-protocol messaging broker\n\n  description: |\n    RabbitMQ is lightweight and easy to deploy on premise and in the cloud. \n    It supports multiple messaging protocols. RabbitMQ can be deployed in \n    distributed and federated configurations to meet high-scale, \n    high-availability requirements.\n  doc_url: https://www.rabbitmq.com/documentation.html\n  dev_url: https://github.com/rabbitmq/rabbitmq-server\n\nextra:\n  recipe-maintainers:\n    - sodre\n",
  "req":{
