@@ -103,7 +103,7 @@
    "summary":"Python interfaces to Sandia's suite of HPC solvers and enabling technologies"
   },
   "build":{
-   "number":"0",
+   "number":"1",
    "skip":true
   },
   "extra":{
@@ -139,32 +139,38 @@
     "doxygen",
     "numpy",
     "mpi4py",
+    "scikit-umfpack",
     "mpi",
     "python",
     "swig 3.0.11",
     "doxygen",
     "numpy",
     "mpi4py",
+    "scikit-umfpack",
     "mpi",
     "python",
     "swig 3.0.11",
     "doxygen",
     "numpy",
-    "mpi4py"
+    "mpi4py",
+    "scikit-umfpack"
    ],
    "run":[
     "mpi",
-    "mpi4py",
     "python",
+    "mpi4py",
     "compatible_pin_stub",
+    "scikit-umfpack",
     "mpi",
-    "mpi4py",
     "python",
+    "mpi4py",
     "compatible_pin_stub",
+    "scikit-umfpack",
     "mpi",
-    "mpi4py",
     "python",
-    "compatible_pin_stub"
+    "mpi4py",
+    "compatible_pin_stub",
+    "scikit-umfpack"
    ],
    "run_constrained":[
     "trilinos ==999999999",
@@ -236,7 +242,7 @@
  "name":"pytrilinos",
  "new_version":false,
  "pinning_version":"2019.11.01",
- "raw_meta_yaml":"{% set name = \"PyTrilinos\" %}\n{% set version = \"12.18.1\" %}\n\npackage:\n  name: {{ name | lower }}\n  version: {{ version }}\n\nsource:\n  url: http://github.com/trilinos/Trilinos/archive/trilinos-release-{{ version | replace('.', '-') }}.tar.gz\n  sha256: 7d2e1a1a3e2d2ce78bb248c63411fed5007c827b87cadee3d13c1a45c09a89cf\n  patches:\n    - 12.18-fixes.patch\n\nbuild:\n  number: 0\n  skip: True  # [ win ]\n\nrequirements:\n  build:\n    - cmake >=3.10.0\n    - {{ compiler('fortran') }}\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n  host:\n    - mpi\n    - python\n    - swig 3.0.11\n    - doxygen\n    - numpy\n    - mpi4py\n  run:\n    - mpi\n    - mpi4py\n    - python\n    - {{ pin_compatible('numpy') }}\n  run_constrained:\n    - trilinos ==999999999\n\ntest:\n  requires:\n    - cmake >=3.10.0\n    - mpi4py\n  imports:\n    - PyTrilinos.Teuchos\n    - PyTrilinos.Epetra\n    - PyTrilinos.TriUtils\n    - PyTrilinos.Tpetra\n    - PyTrilinos.EpetraExt\n    - PyTrilinos.Domi\n    - PyTrilinos.AztecOO\n    - PyTrilinos.Galeri\n    - PyTrilinos.Amesos\n    - PyTrilinos.IFPACK\n    - PyTrilinos.Komplex\n    - PyTrilinos.ML\n    - PyTrilinos.Anasazi\n\nabout:\n  home: https://trilinos.github.io\n  license: BSD-3-Clause\n  license_family: BSD\n  license_file: LICENSE\n  summary:\n    Python interfaces to Sandia's suite of HPC solvers and enabling technologies\n  description:\n    Python interfaces to fast, compiled object-oriented algorithms and\n    enabling technologies that support the solution of large-scale, complex\n    multi-physics engineering and scientific problems.\n  dev_url: https://github.com/trilinos/Trilinos\n\nextra:\n  recipe-maintainers:\n    - pyt-viper\n",
+ "raw_meta_yaml":"{% set name = \"PyTrilinos\" %}\n{% set version = \"12.18.1\" %}\n\npackage:\n  name: {{ name | lower }}\n  version: {{ version }}\n\nsource:\n  url: http://github.com/trilinos/Trilinos/archive/trilinos-release-{{ version | replace('.', '-') }}.tar.gz\n  sha256: 7d2e1a1a3e2d2ce78bb248c63411fed5007c827b87cadee3d13c1a45c09a89cf\n  patches:\n    - 12.18-fixes.patch\n\nbuild:\n  number: 1\n  skip: True  # [ win ]\n\nrequirements:\n  build:\n    - cmake >=3.10.0\n    - {{ compiler('fortran') }}\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n  host:\n    - mpi\n    - python\n    - swig 3.0.11\n    - doxygen\n    - numpy\n    - mpi4py\n    - scikit-umfpack\n  run:\n    - mpi\n    - python\n    - mpi4py\n    - {{ pin_compatible('numpy') }}\n    - scikit-umfpack\n  run_constrained:\n    - trilinos ==999999999\n\ntest:\n  requires:\n    - cmake >=3.10.0\n    - mpi4py\n  imports:\n    - PyTrilinos.Teuchos\n    - PyTrilinos.Epetra\n    - PyTrilinos.TriUtils\n    - PyTrilinos.Tpetra\n    - PyTrilinos.EpetraExt\n    - PyTrilinos.Domi\n    - PyTrilinos.AztecOO\n    - PyTrilinos.Galeri\n    - PyTrilinos.Amesos\n    - PyTrilinos.IFPACK\n    - PyTrilinos.Komplex\n    - PyTrilinos.ML\n    - PyTrilinos.Anasazi\n\nabout:\n  home: https://trilinos.github.io\n  license: BSD-3-Clause\n  license_family: BSD\n  license_file: LICENSE\n  summary:\n    Python interfaces to Sandia's suite of HPC solvers and enabling technologies\n  description:\n    Python interfaces to fast, compiled object-oriented algorithms and\n    enabling technologies that support the solution of large-scale, complex\n    multi-physics engineering and scientific problems.\n  dev_url: https://github.com/trilinos/Trilinos\n\nextra:\n  recipe-maintainers:\n    - pyt-viper\n",
  "req":{
   "__set__":true,
   "elements":[
@@ -250,6 +256,7 @@
    "mpi4py",
    "numpy",
    "python",
+   "scikit-umfpack",
    "swig"
   ]
  },
@@ -271,6 +278,7 @@
     "mpi4py",
     "numpy",
     "python",
+    "scikit-umfpack",
     "swig"
    ]
   },
@@ -280,7 +288,8 @@
     "compatible_pin_stub",
     "mpi",
     "mpi4py",
-    "python"
+    "python",
+    "scikit-umfpack"
    ]
   },
   "test":{
@@ -311,6 +320,7 @@
     "mpi4py",
     "numpy",
     "python",
+    "scikit-umfpack",
     "swig 3.0.11"
    ]
   },
@@ -320,7 +330,8 @@
     "compatible_pin_stub",
     "mpi",
     "mpi4py",
-    "python"
+    "python",
+    "scikit-umfpack"
    ]
   },
   "test":{
