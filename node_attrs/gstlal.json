@@ -140,7 +140,7 @@
   },
   "package":{
    "name":"gstlal",
-   "version":"1.5.1"
+   "version":"1.6.0"
   },
   "requirements":{
    "build":[
@@ -156,7 +156,7 @@
    ],
    "host":[
     "fftw",
-    "gobject-introspection",
+    "gobject-introspection >=1.30.0",
     "gsl",
     "gstreamer",
     "gst-plugins-base",
@@ -173,7 +173,7 @@
     "python-ligo-lw >=1.5.3",
     "zlib",
     "fftw",
-    "gobject-introspection",
+    "gobject-introspection >=1.30.0",
     "gsl",
     "gstreamer",
     "gst-plugins-base",
@@ -190,7 +190,7 @@
     "python-ligo-lw >=1.5.3",
     "zlib",
     "fftw",
-    "gobject-introspection",
+    "gobject-introspection >=1.30.0",
     "gsl",
     "gstreamer",
     "gst-plugins-base",
@@ -210,6 +210,7 @@
    "run":[
     "fftw",
     "glib",
+    "gobject-introspection >=1.30.0",
     "gsl",
     "gstreamer",
     "gst-plugins-base",
@@ -232,8 +233,10 @@
     "python-lal >=6.19.0",
     "python-lalsimulation",
     "python-ligo-lw >=1.5.3",
+    "scipy",
     "fftw",
     "glib",
+    "gobject-introspection >=1.30.0",
     "gsl",
     "gstreamer",
     "gst-plugins-base",
@@ -256,8 +259,10 @@
     "python-lal >=6.19.0",
     "python-lalsimulation",
     "python-ligo-lw >=1.5.3",
+    "scipy",
     "fftw",
     "glib",
+    "gobject-introspection >=1.30.0",
     "gsl",
     "gstreamer",
     "gst-plugins-base",
@@ -279,7 +284,8 @@
     "python-avahi",
     "python-lal >=6.19.0",
     "python-lalsimulation",
-    "python-ligo-lw >=1.5.3"
+    "python-ligo-lw >=1.5.3",
+    "scipy"
    ]
   },
   "source":{
@@ -294,8 +300,8 @@
     "no-pygtk.patch",
     "python-lib-loc.patch"
    ],
-   "sha256":"92926bfc692adea418b8aaaf87663eae10970c78bf4dd0e2fd36c1b68c43392f",
-   "url":"http://software.ligo.org/lscsoft/source/gstlal-1.5.1.tar.gz"
+   "sha256":"53d0679a5167f1fd189d612e67042bcabae40f580d849e12f237497b794f0973",
+   "url":"http://software.ligo.org/lscsoft/source/gstlal-1.6.0.tar.gz"
   },
   "test":{
    "commands":[
@@ -413,7 +419,7 @@
  "name":"gstlal",
  "new_version":"1.6.0",
  "pinning_version":"2020.01.28",
- "raw_meta_yaml":"{% set name = \"gstlal\" %}\n{% set version = \"1.5.1\" %}\n\npackage:\n  name: \"{{ name|lower }}\"\n  version: \"{{ version }}\"\n\nsource:\n  url: \"http://software.ligo.org/lscsoft/source/{{ name }}-{{ version }}.tar.gz\"\n  sha256: 92926bfc692adea418b8aaaf87663eae10970c78bf4dd0e2fd36c1b68c43392f\n  patches:\n    - out-of-tree.patch\n    - no-pygtk.patch\n    - python-lib-loc.patch\n\nbuild:\n  error_overdepending: true\n  error_overlinking: true\n  number: 2\n  skip: true  # [win or py>=30]\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - pkg-config\n    - make\n  host:\n    - fftw\n    - gobject-introspection\n    - gsl\n    - gstreamer\n    - gst-plugins-base\n    - gst-python\n    - lal >=6.19.0\n    - lalmetaio >=1.4.0\n    - lalburst >=1.5.0\n    - lalinspiral >=1.8.0\n    - lalsimulation >=1.8.0\n    - numpy\n    - pygobject >=3.22\n    - python\n    - python-lal\n    - python-ligo-lw >=1.5.3\n    - zlib\n  run:\n    - fftw\n    - glib\n    - gsl\n    - gstreamer\n    - gst-plugins-base\n    - gst-plugins-good\n    - gst-python\n    - lal >=6.19.0\n    - lalmetaio >=1.4.0\n    - lalburst >=1.5.0\n    - lalinspiral >=1.8.0\n    - lalsimulation >=1.8.0\n    - ligo-segments >=1.2.0\n    - lscsoft-glue >=2.0.0\n    - matplotlib-base\n    - {{ pin_compatible('numpy') }}\n    - pyfftw\n    - pygobject >=3.14\n    - python 2.7\n    - python\n    - python-avahi\n    - python-lal >=6.19.0\n    - python-lalsimulation\n    - python-ligo-lw >=1.5.3\n\ntest:\n  imports:\n    - gstlal\n    - gstlal.bottle\n    - gstlal.coherent_null\n    - gstlal.dagfile\n    - gstlal.datasource\n    - gstlal.elements\n    - gstlal.httpinterface\n    - gstlal.matplotlibhelper\n    - gstlal.misc\n    #- gstlal.multirate_datasource - requires GSTLAL_FIR_WHITEN variable, see below\n    - gstlal.pipeio\n    - gstlal.pipeline\n    - gstlal.pipeparts\n    - gstlal.plotpsd\n    - gstlal.plotutil\n    - gstlal.reference_psd\n    - gstlal.servicediscovery\n    - gstlal.simplehandler\n    - gstlal.simulation\n    - gstlal.stats\n  requires:\n    - pkg-config\n  commands:\n    # set variables\n    - export TMPDIR=$(python -c \"import tempfile; print(tempfile.gettempdir())\")\n    - export GSTLAL_FIR_WHITEN=0\n    # check last import (which requires GSTLAL_FIR_WHITEN)\n    - ${PYTHON} -c \"import gstlal.multirate_datasource\"\n    # check executables\n    - gstlal_asd_txt_from_psd_xml --help\n    - gstlal_fake_frames --help\n    - gstlal_launch --help\n    - gstlal_ligo_data_find_check --help\n    - gstlal_play --help\n    - gstlal_plot_psd --help\n    - gstlal_plot_psd_horizon --help\n    - gstlal_psd_polyfit --help\n    - gstlal_psd_xml_from_asd_txt --help\n    - gstlal_reference_psd --help\n    - gstlal_spectrum_movie --help\n    # check pkg-config\n    - pkg-config --print-errors --modversion gstlal  # [unix]\n\nabout:\n  home: \"https://lscsoft.docs.ligo.org/gstlal/\"\n  dev_url: \"https://git.ligo.org/lscsoft/gstlal/\"\n  doc_url: \"https://lscsoft.docs.ligo.org/gstlal/\"\n  license: \"GPL-2.0-or-later\"\n  license_family: \"GPL\"\n  license_file: \"COPYING\"\n  summary: \"GStreamer for GW data analysis\"\n  description: |\n    This package provides a variety of gstreamer elements for\n    gravitational-wave data analysis and some libraries to help write\n    such elements.  The code here sits on top of several other libraries,\n    notably the LIGO Algorithm Library (LAL), FFTW, the GNU Scientific\n    Library (GSL), and, of course, GStreamer.\n    This package contains the plugins and shared libraries required to run\n    gstlal-based applications.\n\nextra:\n  recipe-maintainers:\n    - duncanmmacleod\n    - myNameIsPatrick\n",
+ "raw_meta_yaml":"{% set name = \"gstlal\" %}\n{% set version = \"1.6.0\" %}\n\npackage:\n  name: \"{{ name|lower }}\"\n  version: \"{{ version }}\"\n\nsource:\n  url: \"http://software.ligo.org/lscsoft/source/{{ name }}-{{ version }}.tar.gz\"\n  sha256: 53d0679a5167f1fd189d612e67042bcabae40f580d849e12f237497b794f0973\n  patches:\n    - out-of-tree.patch\n    - no-pygtk.patch\n    - python-lib-loc.patch\n\nbuild:\n  error_overdepending: true\n  error_overlinking: true\n  number: 2\n  skip: true  # [win or py>=30]\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - pkg-config\n    - make\n  host:\n    - fftw\n    - gobject-introspection >=1.30.0\n    - gsl\n    - gstreamer\n    - gst-plugins-base\n    - gst-python\n    - lal >=6.19.0\n    - lalmetaio >=1.4.0\n    - lalburst >=1.5.0\n    - lalinspiral >=1.8.0\n    - lalsimulation >=1.8.0\n    - numpy\n    - pygobject >=3.22\n    - python\n    - python-lal\n    - python-ligo-lw >=1.5.3\n    - zlib\n  run:\n    - fftw\n    - glib\n    - gobject-introspection >=1.30.0\n    - gsl\n    - gstreamer\n    - gst-plugins-base\n    - gst-plugins-good\n    - gst-python\n    - lal >=6.19.0\n    - lalmetaio >=1.4.0\n    - lalburst >=1.5.0\n    - lalinspiral >=1.8.0\n    - lalsimulation >=1.8.0\n    - ligo-segments >=1.2.0\n    - lscsoft-glue >=2.0.0\n    - matplotlib-base\n    - {{ pin_compatible('numpy') }}\n    - pyfftw\n    - pygobject >=3.14\n    - python 2.7\n    - python\n    - python-avahi\n    - python-lal >=6.19.0\n    - python-lalsimulation\n    - python-ligo-lw >=1.5.3\n    - scipy\n\ntest:\n  imports:\n    - gstlal\n    - gstlal.bottle\n    - gstlal.coherent_null\n    - gstlal.dagfile\n    - gstlal.datasource\n    - gstlal.elements\n    - gstlal.httpinterface\n    - gstlal.matplotlibhelper\n    - gstlal.misc\n    #- gstlal.multirate_datasource - requires GSTLAL_FIR_WHITEN variable, see below\n    - gstlal.pipeio\n    - gstlal.pipeline\n    - gstlal.pipeparts\n    - gstlal.plotpsd\n    - gstlal.plotutil\n    - gstlal.reference_psd\n    - gstlal.servicediscovery\n    - gstlal.simplehandler\n    - gstlal.simulation\n    - gstlal.stats\n  requires:\n    - pkg-config\n  commands:\n    # set variables\n    - export TMPDIR=$(python -c \"import tempfile; print(tempfile.gettempdir())\")\n    - export GSTLAL_FIR_WHITEN=0\n    # check last import (which requires GSTLAL_FIR_WHITEN)\n    - ${PYTHON} -c \"import gstlal.multirate_datasource\"\n    # check executables\n    - gstlal_asd_txt_from_psd_xml --help\n    - gstlal_fake_frames --help\n    - gstlal_launch --help\n    - gstlal_ligo_data_find_check --help\n    - gstlal_play --help\n    - gstlal_plot_psd --help\n    - gstlal_plot_psd_horizon --help\n    - gstlal_psd_polyfit --help\n    - gstlal_psd_xml_from_asd_txt --help\n    - gstlal_reference_psd --help\n    - gstlal_spectrum_movie --help\n    # check pkg-config\n    - pkg-config --print-errors --modversion gstlal  # [unix]\n\nabout:\n  home: \"https://lscsoft.docs.ligo.org/gstlal/\"\n  dev_url: \"https://git.ligo.org/lscsoft/gstlal/\"\n  doc_url: \"https://lscsoft.docs.ligo.org/gstlal/\"\n  license: \"GPL-2.0-or-later\"\n  license_family: \"GPL\"\n  license_file: \"COPYING\"\n  summary: \"GStreamer for GW data analysis\"\n  description: |\n    This package provides a variety of gstreamer elements for\n    gravitational-wave data analysis and some libraries to help write\n    such elements.  The code here sits on top of several other libraries,\n    notably the LIGO Algorithm Library (LAL), FFTW, the GNU Scientific\n    Library (GSL), and, of course, GStreamer.\n    This package contains the plugins and shared libraries required to run\n    gstlal-based applications.\n\nextra:\n  recipe-maintainers:\n    - duncanmmacleod\n    - myNameIsPatrick\n",
  "req":{
   "__set__":true,
   "elements":[
@@ -445,6 +451,7 @@
    "python-lal",
    "python-lalsimulation",
    "python-ligo-lw",
+   "scipy",
    "zlib"
   ]
  },
@@ -485,6 +492,7 @@
     "compatible_pin_stub",
     "fftw",
     "glib",
+    "gobject-introspection",
     "gsl",
     "gst-plugins-base",
     "gst-plugins-good",
@@ -504,7 +512,8 @@
     "python-avahi",
     "python-lal",
     "python-lalsimulation",
-    "python-ligo-lw"
+    "python-ligo-lw",
+    "scipy"
    ]
   },
   "test":{
@@ -529,7 +538,7 @@
    "__set__":true,
    "elements":[
     "fftw",
-    "gobject-introspection",
+    "gobject-introspection >=1.30.0",
     "gsl",
     "gst-plugins-base",
     "gst-python",
@@ -553,6 +562,7 @@
     "compatible_pin_stub",
     "fftw",
     "glib",
+    "gobject-introspection >=1.30.0",
     "gsl",
     "gst-plugins-base",
     "gst-plugins-good",
@@ -573,7 +583,8 @@
     "python-avahi",
     "python-lal >=6.19.0",
     "python-lalsimulation",
-    "python-ligo-lw >=1.5.3"
+    "python-ligo-lw >=1.5.3",
+    "scipy"
    ]
   },
   "test":{
@@ -584,5 +595,5 @@
   }
  },
  "url":"http://software.ligo.org/lscsoft/source/gstlal-1.5.0.tar.gz",
- "version":"1.5.1"
+ "version":"1.6.0"
 }
