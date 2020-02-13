@@ -256,6 +256,23 @@
     "migrator_version",
     "version"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/374755853.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"Version",
+    "migrator_version":0,
+    "version":"2.0.0"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "version"
+   ]
   }
  ],
  "bad":false,
@@ -392,8 +409,8 @@
   }
  },
  "name":"pyuvdata",
- "new_version":"1.5.0",
- "pinning_version":"2020.01.10",
+ "new_version":"2.0.0",
+ "pinning_version":"2020.02.12",
  "raw_meta_yaml":"{% set name = \"pyuvdata\" %}\n{% set version = \"1.5.0\" %}\n{% set sha256 = \"12e7734799e55b05712ad8d3aa38f5cc75b4a17feb417133bd3fd0f252996df5\" %}\n\npackage:\n  name: {{ name }}\n  version: \"{{ version }}\"\n\nsource:\n  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz\n  sha256: {{ sha256 }}\n  patches:\n    - warnings.patch\n\nbuild:\n  number: 0\n  script: \"{{ PYTHON }} -m pip install . --no-deps --ignore-installed --no-cache-dir -vvv\"\n  skip: true  # [win]\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n  host:\n    - six >=1.10\n    - astropy >=2.0.16\n    - numpy >=1.15.*  # pyuvdata requires this\n    - h5py\n    - pip\n    - python\n    - scipy\n    - setuptools\n    - pytest-runner\n  run:\n    - six >=1.10\n    - astropy >=2.0.16\n    - {{ pin_compatible('numpy') }}\n    - python\n    - scipy\n    - h5py\n\ntest:\n  requires:\n    - git\n    - astropy-healpix\n    - pytest\n    - python-casacore\n    - pyyaml\n  imports:\n    - pyuvdata\n  commands:\n    - pytest --pyargs pyuvdata\n\nabout:\n  home: https://github.com/RadioAstronomySoftwareGroup/pyuvdata\n  license: BSD 2-clause\n  license_family: BSD\n  license_file: LICENSE\n  summary: 'an interface for astronomical interferometeric datasets in python'\n\nextra:\n  recipe-maintainers:\n    - bhazelton\n    - pkgw\n",
  "req":{
   "__set__":true,
@@ -456,7 +473,7 @@
    ]
   }
  },
- "smithy_version":"3.6.5",
+ "smithy_version":"3.6.8",
  "strong_exports":false,
  "total_requirements":{
   "build":{
