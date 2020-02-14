@@ -128,7 +128,7 @@
   }
  },
  "name":"inferno",
- "new_version":"0.4.0",
+ "new_version":"v0.4.1",
  "pinning_version":"2019.12.18",
  "raw_meta_yaml":"{% set version = \"v0.4.0\" %}\n{% set checksum = \"550a183cf84b6f0ad1a883e25d4852a713c5fe5403fb9b4fee54246084424a9c\" %}\n\npackage:\n    name: inferno\n    version: {{ version }}\n\nsource:\n    url: https://github.com/inferno-pytorch/inferno/archive/{{ version }}.tar.gz\n    sha256: {{ checksum }}\n\nbuild:\n    number: 0\n    script: \"{{ PYTHON }} -m pip install . --no-deps --ignore-installed --no-cache-dir -vvv\"\n    noarch: python\n\nrequirements:\n    host:\n        - python >=3.6\n        - pip\n        - pytest-runner\n\n    run:\n        - python >=3.6\n        - pyyaml\n        - scipy\n        - scikit-image\n        - h5py\n        - dill\n        - networkx\n        - tensorboardx >=1.4\n        - pytorch >=0.3,<1.2\n        - torchvision >=0.2,<0.3\n\n# FIXME we use a dummy test here because the pytorch import fails\n# because it tries to use a version build against cuda, which cannot be loaded in travis\ntest:\n    imports:\n        # - inferno\n        - os\n\nabout:\n    license: Apache 2.0\n    license_file: LICENSE\n    license_family: APACHE\n    summary: A utility library around PyTorch\n    home: https://github.com/inferno-pytorch/inferno\n\nextra:\n    recipe-maintainers:\n        - constantinpape\n        - nasimrahaman\n",
  "req":{
