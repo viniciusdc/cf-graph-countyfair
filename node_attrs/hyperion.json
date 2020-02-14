@@ -62,6 +62,23 @@
     "migrator_name",
     "migrator_version"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/375600115.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"MatplotlibBase",
+    "migrator_version":0,
+    "name":"matplotlib-to-matplotlib-base"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "name"
+   ]
   }
  ],
  "bad":false,
@@ -160,7 +177,7 @@
  },
  "name":"hyperion",
  "new_version":"0.9.10",
- "pinning_version":"2019.12.02",
+ "pinning_version":"2020.02.12",
  "raw_meta_yaml":"{% set version = \"0.9.10\" %}\n\npackage:\n  name: hyperion\n  version: {{version}}\n\nsource:\n  fn: Hyperion-{{version}}.tar.gz\n  url: https://pypi.io/packages/source/h/hyperion/Hyperion-{{version}}.tar.gz\n  sha256: f80d62ee9212244aa39a2c59c3b6a767eb587a58883234122e790d5f383c9690\n\nbuild:\n  number: 1000\n  script: python -m pip install --no-deps --ignore-installed .\n  skip: True  # [win]\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n  host:\n    - python\n    - pip\n    - setuptools\n    - numpy 1.11.*\n  run:\n    - hyperion-fortran 0.9.10\n    - python\n    - numpy >=1.11\n    - matplotlib >=1.5\n    - h5py >=2.4\n    - astropy >=1.2\n\n    # We need to exclude yt 3.3.0 and 3.3.1 because they include a\n    # bug that causes Hyperion to not work properly when dealing with\n    # octree grids.\n    - yt >=3.2,!=3.3.0,!=3.3.1\n\ntest:\n  imports:\n    - hyperion\n    - hyperion.util.interpolate\n  commands:\n    - hyperion --help\n\nabout:\n  home: https://github.com/hyperion-rt/hyperion\n  license: BSD 2-Clause\n  summary: Hyperion Radiation Transfer Code\n\nextra:\n  recipe-maintainers:\n    - astrofrog-conda-forge\n",
  "req":{
   "__set__":true,
@@ -212,7 +229,7 @@
    "elements":[]
   }
  },
- "smithy_version":"3.6.3",
+ "smithy_version":"3.6.8",
  "strong_exports":false,
  "total_requirements":{
   "build":{
