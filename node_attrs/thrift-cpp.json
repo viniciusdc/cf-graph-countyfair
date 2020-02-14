@@ -158,10 +158,11 @@
   "about":{
    "home":"http://thrift.apache.org",
    "license":"Apache 2.0",
+   "license_file":"LICENSE",
    "summary":"Compiler and C++ libraries and headers for the Apache Thrift RPC system"
   },
   "build":{
-   "number":"1004",
+   "number":"0",
    "run_exports":[
     "subpackage_stub",
     "subpackage_stub",
@@ -187,13 +188,15 @@
   },
   "package":{
    "name":"thrift-cpp",
-   "version":"0.12.0"
+   "version":"0.13.0"
   },
   "requirements":{
    "build":[
     "c_compiler_stub",
     "cxx_compiler_stub",
     "cmake",
+    "ninja",
+    "m2-patch",
     "c_compiler_stub",
     "cxx_compiler_stub",
     "bison",
@@ -241,25 +244,20 @@
   "source":[
    {
     "patches":[
-     "0001-disable-qt5.patch"
+     "thrift-0.13.0-windows-fixes.patch"
     ],
-    "sha256":"c336099532b765a6815173f62df0ed897528a9d551837d627c1f87fadad90428",
-    "url":"http://archive.apache.org/dist/thrift/0.12.0/thrift-0.12.0.tar.gz"
+    "sha256":"7ad348b88033af46ce49148097afe354d513c1fca7c607b59c33ebb6064b5179",
+    "url":"http://archive.apache.org/dist/thrift/0.13.0/thrift-0.13.0.tar.gz"
    },
    {
-    "patches":[
-     "realloc-xcode.patch",
-     "0001-disable-qt5.patch"
-    ],
-    "sha256":"c336099532b765a6815173f62df0ed897528a9d551837d627c1f87fadad90428",
-    "url":"http://archive.apache.org/dist/thrift/0.12.0/thrift-0.12.0.tar.gz"
+    "patches":null,
+    "sha256":"7ad348b88033af46ce49148097afe354d513c1fca7c607b59c33ebb6064b5179",
+    "url":"http://archive.apache.org/dist/thrift/0.13.0/thrift-0.13.0.tar.gz"
    },
    {
-    "patches":[
-     "0001-disable-qt5.patch"
-    ],
-    "sha256":"c336099532b765a6815173f62df0ed897528a9d551837d627c1f87fadad90428",
-    "url":"http://archive.apache.org/dist/thrift/0.12.0/thrift-0.12.0.tar.gz"
+    "patches":null,
+    "sha256":"7ad348b88033af46ce49148097afe354d513c1fca7c607b59c33ebb6064b5179",
+    "url":"http://archive.apache.org/dist/thrift/0.13.0/thrift-0.13.0.tar.gz"
    }
   ],
   "test":{
@@ -268,10 +266,10 @@
     "if not exist %PREFIX%\\\\Library\\\\bin\\\\thrift.exe exit 1",
     "if not exist %PREFIX%\\\\Library\\\\lib\\\\thriftmd.lib exit 1",
     "test -f $PREFIX/bin/thrift",
-    "test -f $PREFIX/lib/libthrift.a",
+    "test -f $PREFIX/lib/libthrift${SHLIB_EXT}",
     "test -f $PREFIX/include/thrift/Thrift.h",
     "test -f $PREFIX/bin/thrift",
-    "test -f $PREFIX/lib/libthrift.a",
+    "test -f $PREFIX/lib/libthrift${SHLIB_EXT}",
     "test -f $PREFIX/include/thrift/Thrift.h"
    ]
   }
@@ -279,7 +277,7 @@
  "name":"thrift-cpp",
  "new_version":"0.13.0",
  "pinning_version":"2019.10.11",
- "raw_meta_yaml":"{% set version = \"0.12.0\" %}\n{% set WIN_FLEX_BIZON_VERSION = \"2.4.9\" %}\n{% set LIBEVENT_VERSION = \"2.1.7\" %}\n\npackage:\n  name: thrift-cpp\n  version: {{ version }}\n\nsource:\n  - url: http://archive.apache.org/dist/thrift/{{ version }}/thrift-{{ version }}.tar.gz\n    sha256: c336099532b765a6815173f62df0ed897528a9d551837d627c1f87fadad90428\n    patches:\n      # - unix_workaround-for-boost-1.63.0.patch  # [unix]\n      - realloc-xcode.patch  # [osx]\n      - 0001-disable-qt5.patch\n  {% if win %}\n  - url: https://github.com/lexxmark/winflexbison/releases/download/v.{{ WIN_FLEX_BIZON_VERSION }}/win_flex_bison-{{ WIN_FLEX_BIZON_VERSION }}.zip\n    folder: thirdparty\\dist\\winflexbison\n  - url: https://github.com/nmathewson/Libevent/archive/release-{{ LIBEVENT_VERSION }}-rc.zip\n    folder: thirdparty\\src\\libevent\n  {% endif %}\n\nbuild:\n  number: 1004\n  skip: true  # [win and vc<14]\n  run_exports:\n    - {{ pin_subpackage(\"thrift-cpp\", max_pin=\"x.x\") }}\n\nrequirements:\n  build:\n    - {{ compiler(\"c\") }}\n    - {{ compiler(\"cxx\") }}\n    - bison           # [unix]\n    - cmake\n    - flex            # [unix]\n    - libtool         # [unix]\n    - m4              # [unix]\n    - pkg-config      # [unix]\n    - make            # [unix]\n  host:\n    - boost-cpp\n    - libevent        # [unix]\n    - openssl\n    - zlib\n  run:\n    - openssl\n    - zlib\n    - boost-cpp\n\ntest:\n  commands:\n    - test -f $PREFIX/bin/thrift                                        # [unix]\n    - test -f $PREFIX/lib/libthrift.a                                   # [unix]\n    - test -f $PREFIX/include/thrift/Thrift.h                           # [unix]\n    - if not exist %PREFIX%\\\\Library\\\\include\\\\thrift\\\\Thrift.h exit 1  # [win]\n    - if not exist %PREFIX%\\\\Library\\\\bin\\\\thrift.exe exit 1            # [win]\n    - if not exist %PREFIX%\\\\Library\\\\lib\\\\thriftmd.lib exit 1          # [win]\n\nabout:\n  home: http://thrift.apache.org\n  license: Apache 2.0\n  summary: 'Compiler and C++ libraries and headers for the Apache Thrift RPC system'\n\nextra:\n  recipe-maintainers:\n    - wesm\n    - msarahan\n    - jakirkham\n    - xhochy\n",
+ "raw_meta_yaml":"{% set version = \"0.13.0\" %}\n{% set WIN_FLEX_BIZON_VERSION = \"2.5.20\" %}\n{% set LIBEVENT_VERSION = \"2.1.8\" %}\n\npackage:\n  name: thrift-cpp\n  version: {{ version }}\n\nsource:\n  - url: http://archive.apache.org/dist/thrift/{{ version }}/thrift-{{ version }}.tar.gz\n    sha256: 7ad348b88033af46ce49148097afe354d513c1fca7c607b59c33ebb6064b5179\n    patches:\n      - thrift-0.13.0-windows-fixes.patch  # [win]\n  {% if win %}\n  - url: https://github.com/lexxmark/winflexbison/releases/download/v{{ WIN_FLEX_BIZON_VERSION }}/win_flex_bison-{{ WIN_FLEX_BIZON_VERSION }}.zip\n    folder: thirdparty\\dist\\winflexbison\n  - url: https://github.com/nmathewson/Libevent/archive/release-{{ LIBEVENT_VERSION }}-stable.zip\n    folder: thirdparty\\src\\libevent\n  {% endif %}\n\nbuild:\n  number: 0\n  skip: true  # [win and vc<14]\n  run_exports:\n    - {{ pin_subpackage(\"thrift-cpp\", max_pin=\"x.x\") }}\n\nrequirements:\n  build:\n    - {{ compiler(\"c\") }}\n    - {{ compiler(\"cxx\") }}\n    - bison           # [unix]\n    - cmake\n    - flex            # [unix]\n    - libtool         # [unix]\n    - m4              # [unix]\n    - pkg-config      # [unix]\n    - make            # [unix]\n    - ninja           # [win]\n    - m2-patch        # [win]\n  host:\n    - boost-cpp\n    - libevent        # [unix]\n    - openssl\n    - zlib\n  run:\n    - openssl\n    - zlib\n    - boost-cpp\n\ntest:\n  commands:\n    - test -f $PREFIX/bin/thrift                                        # [unix]\n    - test -f $PREFIX/lib/libthrift${SHLIB_EXT}                         # [unix]\n    - test -f $PREFIX/include/thrift/Thrift.h                           # [unix]\n    - if not exist %PREFIX%\\\\Library\\\\include\\\\thrift\\\\Thrift.h exit 1  # [win]\n    - if not exist %PREFIX%\\\\Library\\\\bin\\\\thrift.exe exit 1            # [win]\n    - if not exist %PREFIX%\\\\Library\\\\lib\\\\thriftmd.lib exit 1          # [win]\n\nabout:\n  home: http://thrift.apache.org\n  license: Apache 2.0\n  license_file: LICENSE\n  summary: >-\n    Compiler and C++ libraries and headers for the Apache Thrift RPC system\n\nextra:\n  recipe-maintainers:\n    - wesm\n    - msarahan\n    - jakirkham\n    - xhochy\n",
  "req":{
   "__set__":true,
   "elements":[
@@ -291,8 +289,10 @@
    "flex",
    "libevent",
    "libtool",
+   "m2-patch",
    "m4",
    "make",
+   "ninja",
    "openssl",
    "pkg-config",
    "zlib"
@@ -308,8 +308,10 @@
     "cxx_compiler_stub",
     "flex",
     "libtool",
+    "m2-patch",
     "m4",
     "make",
+    "ninja",
     "pkg-config"
    ]
   },
@@ -347,8 +349,10 @@
     "cxx_compiler_stub",
     "flex",
     "libtool",
+    "m2-patch",
     "m4",
     "make",
+    "ninja",
     "pkg-config"
    ]
   },
@@ -375,5 +379,5 @@
   }
  },
  "url":"http://archive.apache.org/dist/thrift/0.12.0/thrift-0.12.0.tar.gz",
- "version":"0.12.0"
+ "version":"0.13.0"
 }
