@@ -52,6 +52,23 @@
     "migrator_version",
     "name"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/375678017.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"MatplotlibBase",
+    "migrator_version":0,
+    "name":"matplotlib-to-matplotlib-base"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "name"
+   ]
   }
  ],
  "bad":false,
@@ -134,7 +151,7 @@
  },
  "name":"deepxde",
  "new_version":"0.4.0",
- "pinning_version":"2019.12.02",
+ "pinning_version":"2020.02.12",
  "raw_meta_yaml":"{% set name = \"DeepXDE\" %}\n{% set version = \"0.4.0\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz\n  sha256: 0eb8b78ecb707044dd5c15b6db7ef471251afd6a909f783df1a06571ef795026\n\nbuild:\n  number: 0\n  # Skip windows with Python 2.7 as TensorFlow does not support it well.\n  skip: True  # [win and py27]\n  script: \"{{ PYTHON }} -m pip install . -vv\"\n\nrequirements:\n  host:\n    - python\n    - pip\n    - numpy\n  run:\n    - python\n    - {{ pin_compatible('numpy') }}\n    - matplotlib\n    - salib\n    - scikit-learn\n    - scipy\n    - tensorflow\n\ntest:\n  imports:\n    # Skip the import test on Linux as TensorFlow require a more recent\n    # version of GLIBC++ than the VM used to build and test package.\n    - deepxde  # [not linux]\n\nabout:\n  home: https://github.com/lululxvi/deepxde\n  license: Apache-2.0\n  license_family: Apache\n  license_file: LICENSE\n  summary: 'Deep learning library for solving differential equations'\n\n  description: |\n    DeepXDE is a deep learning library for solving differential equations on top of TensorFlow.\n    Use DeepXDE if you need a deep learning library that\n    solves partial differential equations (PDEs),\n    solves integro-differential equations (IDEs),\n    solves fractional partial differential equations (fPDEs),\n    solves inverse problems for differential equations,\n    approximates functions from a dataset with/without constraints,\n    approximates functions from multi-fidelity data,\n    and approximates operators.\n  doc_url: https://deepxde.readthedocs.io\n  dev_url: https://github.com/lululxvi/deepxde\n\nextra:\n  recipe-maintainers:\n    - lululxvi\n",
  "req":{
   "__set__":true,
@@ -180,7 +197,7 @@
    "elements":[]
   }
  },
- "smithy_version":"3.6.3",
+ "smithy_version":"3.6.8",
  "strong_exports":false,
  "total_requirements":{
   "build":{
