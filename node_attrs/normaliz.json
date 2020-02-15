@@ -84,42 +84,26 @@
     "migrator_version",
     "name"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/375719854.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"Version",
+    "migrator_version":0,
+    "version":"3.8.4"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "version"
+   ]
   }
  ],
- "bad":{
-  "code":404,
-  "exception":"HTTP Error 404: Not Found",
-  "traceback":[
-   "Traceback (most recent call last):",
-   "  File \"/root/repo/cf-scripts/conda_forge_tick/auto_tick.py\", line 654, in main",
-   "    migrator_uid, pr_json = run(",
-   "  File \"/root/repo/cf-scripts/conda_forge_tick/auto_tick.py\", line 139, in run",
-   "    migrate_return = migrator.migrate(recipe_dir, feedstock_ctx.attrs, **kwargs)",
-   "  File \"/root/repo/cf-scripts/conda_forge_tick/migrators/version.py\", line 223, in migrate",
-   "    new_patterns = self.get_hash_patterns(\"meta.yaml\", urls, hash_type)",
-   "  File \"/root/repo/cf-scripts/conda_forge_tick/migrators/version.py\", line 102, in get_hash_patterns",
-   "    hash_ = hash_url(url, hash_type)",
-   "  File \"/opt/conda/envs/run_env/lib/python3.8/site-packages/rever/tools.xsh\", line 207, in hash_url",
-   "    for b in stream_url_progress(url, verb='Hashing', quiet=quiet):",
-   "  File \"/opt/conda/envs/run_env/lib/python3.8/site-packages/rever/tools.xsh\", line 179, in stream_url_progress",
-   "    with urllib.request.urlopen(url) as f:",
-   "  File \"/opt/conda/envs/run_env/lib/python3.8/urllib/request.py\", line 222, in urlopen",
-   "    return opener.open(url, data, timeout)",
-   "  File \"/opt/conda/envs/run_env/lib/python3.8/urllib/request.py\", line 531, in open",
-   "    response = meth(req, response)",
-   "  File \"/opt/conda/envs/run_env/lib/python3.8/urllib/request.py\", line 640, in http_response",
-   "    response = self.parent.error(",
-   "  File \"/opt/conda/envs/run_env/lib/python3.8/urllib/request.py\", line 569, in error",
-   "    return self._call_chain(*args)",
-   "  File \"/opt/conda/envs/run_env/lib/python3.8/urllib/request.py\", line 502, in _call_chain",
-   "    result = func(*args)",
-   "  File \"/opt/conda/envs/run_env/lib/python3.8/urllib/request.py\", line 649, in http_error_default",
-   "    raise HTTPError(req.full_url, code, msg, hdrs, fp)",
-   "urllib.error.HTTPError: HTTP Error 404: Not Found",
-   ""
-  ],
-  "url":"https://github.com/Normaliz/Normaliz/releases/download/v3.8.4/normaliz-3.8.4-full.zip"
- },
+ "bad":false,
  "conda-forge.yml":{
   "provider":{
    "linux_aarch64":"default",
@@ -228,7 +212,7 @@
  },
  "name":"normaliz",
  "new_version":"3.8.4",
- "pinning_version":"2019.12.18",
+ "pinning_version":"2020.02.12",
  "raw_meta_yaml":"{% set name = \"normaliz\" %}\n{% set version = \"3.8.1\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  url: https://github.com/Normaliz/Normaliz/releases/download/v{{ version }}/normaliz-{{ version }}-full.zip\n  sha256: 89d4551a8d527623768cea2e265200af35b896ab5e70352940769b7408bad3e1\n  patches:\n    - extern-kill.patch\n\nbuild:\n  number: 3\n  skip: True  # [win and vc<14]\n  run_exports:\n    - {{ pin_subpackage(\"normaliz\") }}\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n    - llvm-openmp          # [osx or win]\n    - autotools_clang_conda  # [win]\n    - autoconf             # [not win]\n    - automake             # [not win]\n    - libtool              # [not win]\n    - make                 # [not win]\n  host:\n    - boost-cpp\n    - gmp                  # [not win]\n    - mpir                 # [win]\n    - llvm-openmp          # [osx or win]\n    - e-antic              # [not win]\n    - libflint             # [not win]\n    - arb                  # [not win]\n    - nauty\n    - pthreads-win32       # [win]\n  run:\n    - llvm-openmp          # [osx or win]\n\ntest:\n  commands:\n    - test -f \"$PREFIX/lib/libnormaliz.a\"                       # [not win]\n    - test -f \"$PREFIX/lib/libnormaliz${SHLIB_EXT}\"             # [not win]\n    - test -f \"$PREFIX/include/libnormaliz/matrix.h\"            # [not win]\n    - if not exist %LIBRARY_LIB%\\\\normaliz.lib exit 1         # [win]\n    - if not exist %LIBRARY_LIB%\\\\normaliz_static.lib exit 1  # [win]\n    - if not exist %LIBRARY_INC%\\\\libnormaliz\\\\matrix.h exit 1   # [win]\n\nabout:\n  home: https://www.normaliz.uni-osnabrueck.de\n  license: GPL-3.0\n  license_family: GPL\n  license_file: COPYING\n  summary: ' Normaliz is an open source tool for computations in affine monoids, vector configurations, lattice polytopes, and rational cones.'\n  dev_url: https://github.com/Normaliz/Normaliz\n\nextra:\n  recipe-maintainers:\n    - isuruf\n    - saraedum\n",
  "req":{
   "__set__":true,
@@ -291,7 +275,7 @@
    "elements":[]
   }
  },
- "smithy_version":"3.6.5",
+ "smithy_version":"3.6.8",
  "strong_exports":false,
  "total_requirements":{
   "build":{

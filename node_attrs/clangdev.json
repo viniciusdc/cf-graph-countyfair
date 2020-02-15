@@ -120,42 +120,26 @@
     "migrator_version",
     "name"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/375719183.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"Version",
+    "migrator_version":0,
+    "version":"11-init"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "version"
+   ]
   }
  ],
- "bad":{
-  "code":404,
-  "exception":"HTTP Error 404: Not Found",
-  "traceback":[
-   "Traceback (most recent call last):",
-   "  File \"/root/repo/cf-scripts/conda_forge_tick/auto_tick.py\", line 654, in main",
-   "    migrator_uid, pr_json = run(",
-   "  File \"/root/repo/cf-scripts/conda_forge_tick/auto_tick.py\", line 139, in run",
-   "    migrate_return = migrator.migrate(recipe_dir, feedstock_ctx.attrs, **kwargs)",
-   "  File \"/root/repo/cf-scripts/conda_forge_tick/migrators/version.py\", line 223, in migrate",
-   "    new_patterns = self.get_hash_patterns(\"meta.yaml\", urls, hash_type)",
-   "  File \"/root/repo/cf-scripts/conda_forge_tick/migrators/version.py\", line 102, in get_hash_patterns",
-   "    hash_ = hash_url(url, hash_type)",
-   "  File \"/opt/conda/envs/run_env/lib/python3.8/site-packages/rever/tools.xsh\", line 207, in hash_url",
-   "    for b in stream_url_progress(url, verb='Hashing', quiet=quiet):",
-   "  File \"/opt/conda/envs/run_env/lib/python3.8/site-packages/rever/tools.xsh\", line 179, in stream_url_progress",
-   "    with urllib.request.urlopen(url) as f:",
-   "  File \"/opt/conda/envs/run_env/lib/python3.8/urllib/request.py\", line 222, in urlopen",
-   "    return opener.open(url, data, timeout)",
-   "  File \"/opt/conda/envs/run_env/lib/python3.8/urllib/request.py\", line 531, in open",
-   "    response = meth(req, response)",
-   "  File \"/opt/conda/envs/run_env/lib/python3.8/urllib/request.py\", line 640, in http_response",
-   "    response = self.parent.error(",
-   "  File \"/opt/conda/envs/run_env/lib/python3.8/urllib/request.py\", line 569, in error",
-   "    return self._call_chain(*args)",
-   "  File \"/opt/conda/envs/run_env/lib/python3.8/urllib/request.py\", line 502, in _call_chain",
-   "    result = func(*args)",
-   "  File \"/opt/conda/envs/run_env/lib/python3.8/urllib/request.py\", line 649, in http_error_default",
-   "    raise HTTPError(req.full_url, code, msg, hdrs, fp)",
-   "urllib.error.HTTPError: HTTP Error 404: Not Found",
-   ""
-  ],
-  "url":"https://github.com/llvm/llvm-project/releases/download/llvmorg-11-init/clang-11-init.src.tar.xz"
- },
+ "bad":false,
  "conda-forge.yml":{
   "compiler_stack":"comp7",
   "provider":{
@@ -921,7 +905,7 @@
   "libclang",
   "python-clang"
  ],
- "pinning_version":"2019.10.30",
+ "pinning_version":"2020.02.12",
  "raw_meta_yaml":"{% set version = \"9.0.1\" %}\n{% set major_version = version.split(\".\")[0] %}\n{% set build_number = 0 %}\n\npackage:\n  name: clang_packages\n  version: {{ version }}\n\nsource:\n  - url: https://github.com/llvm/llvm-project/releases/download/llvmorg-{{ version }}/clang-{{ version }}.src.tar.xz\n    sha256: 5778512b2e065c204010f88777d44b95250671103e434f9dc7363ab2e3804253\n    patches:\n      - patches/0001-Find-conda-gcc-installation.patch\n      - patches/0002-Fix-sysroot-detection-for-linux.patch\n      - patches/0002-clang-add-conda-specific-env-var-CONDA_BUILD_SYSROOT.patch\n      - patches/0003-clang-Fix-normalizeProgramName-s-handling-of-dots-ou.patch\n      - patches/0001-Set-VERSION-in-osx-as-well.patch\n      - patches/amd-roc-2.7.0.diff   # [variant != \"hcc\"]\n      - patches/amd-roc-hcc-2.7.0.diff  # [variant == \"hcc\"]\n    folder: .\n  - url: https://github.com/llvm/llvm-project/releases/download/llvmorg-{{ version }}/clang-tools-extra-{{ version }}.src.tar.xz\n    sha256: b26fd72a78bd7db998a26270ec9ec6a01346651d88fa87b4b323e13049fb6f07\n    folder: tools/extra\n\nbuild:\n  number: {{ build_number }}\n  skip: True  # [win and vc<14]\n\nrequirements:\n  build:\n    - {{ compiler('cxx') }}\n    - cmake >=3.4.3\n    # Needed to unpack the source tarball\n    - m2w64-xz  # [win]\n    # \"compiling .pyc files\" fails without this\n    - python >3\n    # Building with ninja on windows for parallel builds\n    - ninja  # [win]\n    - make   # [unix]\n  host:\n    - libcxx {{cxx_compiler_version}}  # [osx]\n    - llvmdev =={{ version }}\n\ntest:\n  requires:\n    - {{ compiler('cxx') }}\n    - cmake >=3.4.3\n  files:\n    - mytest.c\n  commands:\n    - $PREFIX/bin/clang --version  # [unix]\n    - $PREFIX/bin/clang++ --version  # [unix]\n    - $PREFIX/bin/clang-check --version  # [unix]\n\n    - $PREFIX/bin/clang -v -c mytest.c      # [unix]\n    - \"%LIBRARY_BIN%/clang -v -c mytest.c\"  # [win]\n\n    - if not exist %LIBRARY_INC%\\\\clang\\\\Lex\\\\Lexer.h exit 1  # [win]\n    - test -f $PREFIX/include/clang/Lex/Lexer.h      # [unix]\n    - test -f $PREFIX/lib/libclangBasic.a            # [unix]\n\n\noutputs:\n  - name: clangdev\n    script: install_clangdev.sh    # [unix]\n    script: install_clangdev.bat   # [win]\n    build:\n      track_features:\n        - hcc          # [variant==\"hcc\"]\n      string: \"{{ variant }}_h{{ PKG_HASH }}_{{ build_number }}\"\n    requirements:\n      build:\n        - {{ compiler('cxx') }}\n        - cmake >=3.4.3\n        - ninja  # [win]\n        - make   # [unix]\n      host:\n        - {{ pin_subpackage(\"clang\", exact=True) }}\n        - {{ pin_subpackage(\"clangxx\", exact=True) }}\n        - {{ pin_subpackage(\"clang-tools\", exact=True) }}\n        - {{ pin_subpackage(\"libclang\", exact=True) }}\n        - libcxx {{cxx_compiler_version}}  # [osx]\n        - llvmdev =={{ version }}\n      run:\n        - {{ pin_subpackage(\"clang\", exact=True) }}\n        - {{ pin_subpackage(\"clangxx\", exact=True) }}\n        - {{ pin_subpackage(\"clang-tools\", exact=True) }}\n        - {{ pin_subpackage(\"libclang\", exact=True) }}\n        - {{ pin_compatible(\"libcxx\", max_pin=None) }}  # [osx]\n        - llvmdev =={{ version }}\n    test:\n      commands:\n        - test -f \"$PREFIX/include/clang/Config/config.h\"   # [unix]\n        - test -f \"$PREFIX/lib/libclangAST.a\"               # [unix]\n        - if not exist %LIBRARY_INC%\\\\clang/Config/config.h exit 1   # [win]\n        - if not exist %LIBRARY_LIB%\\\\clangAST.lib exit 1            # [win]\n\n  - name: libclang\n    script: install_libclang.sh    # [unix]\n    script: install_libclang.bat   # [win]\n    build:\n      track_features:\n        - hcc          # [variant==\"hcc\"]\n      string: \"{{ variant }}_h{{ PKG_HASH }}_{{ build_number }}\"\n    requirements:\n      build:\n        - {{ compiler('cxx') }}\n        - cmake >=3.4.3\n        - ninja  # [win]\n        - make   # [unix]\n      host:\n        - libcxx {{cxx_compiler_version}}  # [osx]\n        - llvmdev =={{ version }}\n        - llvm =={{ version }}\n        - {{ pin_subpackage(\"clang\", exact=True) }}\n      run:\n        - {{ pin_compatible(\"libcxx\", max_pin=None) }}  # [osx]\n    test:\n      commands:\n        - test -f \"$PREFIX/lib/libclang.so\"                     # [linux]\n        - test -f \"$PREFIX/lib/libclang.so.{{major_version}}\"   # [linux]\n        - test -f \"$PREFIX/lib/libclang.dylib\"                  # [osx]\n        - if not exist %LIBRARY_BIN%\\\\libclang.dll exit 1       # [win]\n\n  - name: clang\n    script: install_clang.sh       # [unix]\n    script: install_clang.bat      # [win]\n    build:\n      track_features:\n        - hcc          # [variant==\"hcc\"]\n      string: \"{{ variant }}_h{{ PKG_HASH }}_{{ build_number }}\"\n    requirements:\n      build:\n        - {{ compiler('cxx') }}\n        - libcxx                   # [osx]\n        - cmake >=3.4.3\n        - ninja  # [win]\n        - make   # [unix]\n      host:\n        - libcxx {{cxx_compiler_version}}  # [osx]\n        - llvmdev =={{ version }}\n        - llvm =={{ version }}\n      run:\n        - {{ pin_compatible(\"libcxx\", max_pin=None) }}  # [osx]\n      run_constrained:\n        - clangdev {{ version }}\n        - clangxx {{ version }}\n        - clang-tools {{ version }}\n    test:\n      commands:\n        - clang --version\n        - clang-cl --version\n        - clang-cpp --version\n        - clang-{{major_version}} --version   # [unix]\n        - test -f \"$PREFIX/lib/libclang-cpp.so\"                     # [linux]\n        - test -f \"$PREFIX/lib/libclang-cpp.so.{{major_version}}\"   # [linux]\n        - test -f \"$PREFIX/lib/libclang-cpp.dylib\"                  # [osx]\n        - test -f \"$PREFIX/lib/clang/{{ version }}/include/stdatomic.h\"                    # [unix]\n        - if not exist %LIBRARY_LIB%\\\\clang\\\\{{ version }}\\\\include\\\\stdatomic.h exit 1    # [win]\n\n  # Defaults provides this, so let's do the same in conda-forge\n  - name: clangxx\n    script: install_clangxx.sh       # [unix]\n    script: install_clangxx.bat      # [win]\n    build:\n      track_features:\n        - hcc          # [variant==\"hcc\"]\n      string: \"{{ variant }}_h{{ PKG_HASH }}_{{ build_number }}\"\n    requirements:\n      host:\n        - {{ pin_subpackage(\"clang\", exact=True) }}\n      run:\n        - {{ pin_subpackage(\"clang\", exact=True) }}\n    test:\n      requires:\n        - {{ compiler(\"cxx\") }}\n      files:\n        - mytest.cxx\n      commands:\n        - clang++ --version\n        - clang++ -v -c mytest.cxx\n\n  - name: clang-tools\n    script: install_clang_tools.sh    # [unix]\n    script: install_clang_tools.bat   # [win]\n    build:\n      track_features:\n        - hcc          # [variant==\"hcc\"]\n      string: \"{{ variant }}_h{{ PKG_HASH }}_{{ build_number }}\"\n    requirements:\n      build:\n        # \"compiling .pyc files\" fails without this\n        - python >3\n        - {{ compiler('cxx') }}\n        - cmake >=3.4.3\n        - ninja  # [win]\n        - make   # [unix]\n      host:\n        - {{ pin_subpackage(\"clang\", exact=True) }}\n        - {{ pin_subpackage(\"clangxx\", exact=True) }}\n        - {{ pin_subpackage(\"libclang\", exact=True) }}\n        - libcxx {{cxx_compiler_version}}  # [osx]\n        - llvmdev =={{ version }}\n        - llvm =={{ version }}\n      run:\n        - {{ pin_subpackage(\"clang\", exact=True) }}\n        - {{ pin_subpackage(\"clangxx\", exact=True) }}\n        - {{ pin_compatible(\"libcxx\", max_pin=None) }}  # [osx]\n      run_constrained:\n        - clangdev {{ version }}\n    test:\n      commands:\n        - clang-check --version\n        - clang-tidy --version\n\n  - name: python-clang\n    build:\n      noarch: python\n      # Building this output using this recipe is only supported on unix\n      # It can still be installed on Windows as it is marked as `noarch: python`\n      skip: true  # [win]\n      track_features:\n        - hcc          # [variant==\"hcc\"]\n      string: \"{{ variant }}_h{{ PKG_HASH }}_{{ build_number }}\"\n    script: build_python_bindings.sh\n    requirements:\n      host:\n        - python\n      run:\n        - python\n        - libclang =={{version}}\n    test:\n      requires:\n        - nose\n      source_files:\n        - bindings/python/tests\n        - bindings/python/examples/cindex\n      imports:\n        - clang\n        - clang.cindex\n      commands:\n        - cd bindings/python\n        - cp tests/cindex/util.py tests\n        - nosetests -v\n\nabout:\n  home: http://llvm.org/\n  license: NCSA\n  license_file: LICENSE.TXT\n  summary: Development headers and libraries for Clang\n\nextra:\n  recipe-maintainers:\n    - inducer\n    - isuruf\n    - jakirkham\n    - mattwala\n    - SylvainCorlay\n",
  "req":{
   "__set__":true,
@@ -982,7 +966,7 @@
    ]
   }
  },
- "smithy_version":"3.6.0",
+ "smithy_version":"3.6.8",
  "strong_exports":false,
  "total_requirements":{
   "build":{

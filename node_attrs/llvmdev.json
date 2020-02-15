@@ -135,42 +135,26 @@
     "migrator_version",
     "name"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/375719053.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"Version",
+    "migrator_version":0,
+    "version":"11-init"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "version"
+   ]
   }
  ],
- "bad":{
-  "code":404,
-  "exception":"HTTP Error 404: Not Found",
-  "traceback":[
-   "Traceback (most recent call last):",
-   "  File \"/root/repo/cf-scripts/conda_forge_tick/auto_tick.py\", line 654, in main",
-   "    migrator_uid, pr_json = run(",
-   "  File \"/root/repo/cf-scripts/conda_forge_tick/auto_tick.py\", line 139, in run",
-   "    migrate_return = migrator.migrate(recipe_dir, feedstock_ctx.attrs, **kwargs)",
-   "  File \"/root/repo/cf-scripts/conda_forge_tick/migrators/version.py\", line 223, in migrate",
-   "    new_patterns = self.get_hash_patterns(\"meta.yaml\", urls, hash_type)",
-   "  File \"/root/repo/cf-scripts/conda_forge_tick/migrators/version.py\", line 102, in get_hash_patterns",
-   "    hash_ = hash_url(url, hash_type)",
-   "  File \"/opt/conda/envs/run_env/lib/python3.8/site-packages/rever/tools.xsh\", line 207, in hash_url",
-   "    for b in stream_url_progress(url, verb='Hashing', quiet=quiet):",
-   "  File \"/opt/conda/envs/run_env/lib/python3.8/site-packages/rever/tools.xsh\", line 179, in stream_url_progress",
-   "    with urllib.request.urlopen(url) as f:",
-   "  File \"/opt/conda/envs/run_env/lib/python3.8/urllib/request.py\", line 222, in urlopen",
-   "    return opener.open(url, data, timeout)",
-   "  File \"/opt/conda/envs/run_env/lib/python3.8/urllib/request.py\", line 531, in open",
-   "    response = meth(req, response)",
-   "  File \"/opt/conda/envs/run_env/lib/python3.8/urllib/request.py\", line 640, in http_response",
-   "    response = self.parent.error(",
-   "  File \"/opt/conda/envs/run_env/lib/python3.8/urllib/request.py\", line 569, in error",
-   "    return self._call_chain(*args)",
-   "  File \"/opt/conda/envs/run_env/lib/python3.8/urllib/request.py\", line 502, in _call_chain",
-   "    result = func(*args)",
-   "  File \"/opt/conda/envs/run_env/lib/python3.8/urllib/request.py\", line 649, in http_error_default",
-   "    raise HTTPError(req.full_url, code, msg, hdrs, fp)",
-   "urllib.error.HTTPError: HTTP Error 404: Not Found",
-   ""
-  ],
-  "url":"https://github.com/llvm/llvm-project/releases/download/llvmorg-11-init/llvm-11-init.src.tar.xz"
- },
+ "bad":false,
  "conda-forge.yml":{
   "compiler_stack":"comp7",
   "max_py_ver":"37",
@@ -659,7 +643,7 @@
   "llvm-tools",
   "llvmdev"
  ],
- "pinning_version":"2019.10.30",
+ "pinning_version":"2020.02.12",
  "raw_meta_yaml":"{% set version = \"9.0.1\" %}\n{% set sha256 = \"00a1ee1f389f81e9979f3a640a01c431b3021de0d42278f6508391a2f0b81c9a\" %}\n\n{% set build_number = 0 %}\n{% set major_ver = version.split(\".\")[0] %}\n\npackage:\n  name: llvm-package\n  version: {{ version }}\n\nsource:\n  url: https://github.com/llvm/llvm-project/releases/download/llvmorg-{{ version }}/llvm-{{ version }}.src.tar.xz\n  sha256: {{ sha256 }}\n  patches:\n    - patches/intel-D47188-svml-VF.patch    # Fixes vectorizer and extends SVML support\n    # Revert an upstream change for Numba\n    # ref: https://github.com/numba/llvmlite/blob/v0.29.0/conda-recipes/0001-Revert-Limit-size-of-non-GlobalValue-name.patch\n    - patches/numba-0001-Revert-Limit-size-of-non-GlobalValue-name.patch\n    - patches/amd-roc-2.7.0.diff\n\nbuild:\n  number: {{ build_number }}\n  skip:  true  # [(win and vc<14) or aarch64 or ppc64le]\n  merge_build_host: False\n\nrequirements:\n  build:\n    - {{ compiler('cxx') }}            # [linux]\n    - vs2017_{{ target_platform  }}    # [win]\n    - clang_bootstrap_osx-64           # [osx]\n    - cmake\n    - ninja     # [win]\n    - python    >=3\n    - make\n    - libcxx {{cxx_compiler_version}}  # [osx]\n  host:\n    - libcxx {{cxx_compiler_version}}  # [osx]\n\noutputs:\n  # Contains everything\n  - name: llvmdev\n    script: install_llvm.sh                         # [not win]\n    script: install_llvm.bat                        # [win]\n    build:\n      skip:  true  # [(win and vc<14) or aarch64 or ppc64le]\n      activate_in_script: True\n    requirements:\n      build:\n        - {{ compiler('cxx') }}            # [linux]\n        - vs2017_{{ target_platform  }}    # [win]\n        - clang_bootstrap_osx-64           # [osx]\n        - cmake\n        - ninja     # [win]\n        - python    >=3\n      host:\n        - {{ pin_subpackage(\"libllvm\" + major_ver, exact=True) }}\n        - {{ pin_subpackage(\"llvm-tools\", exact=True) }}\n      run:\n        - {{ pin_subpackage(\"libllvm\" + major_ver, exact=True) }}\n        - {{ pin_subpackage(\"llvm-tools\", exact=True) }}\n        - libcxx >={{ cxx_compiler_version }}  # [osx]\n    test:\n      commands:\n        - $PREFIX/bin/llvm-config --libs                         # [not win]\n        - if not exist %LIBRARY_INC%\\\\llvm\\\\Pass.h exit 1        # [win]\n        - test -f $PREFIX/include/llvm/Pass.h                    # [unix]\n        - test -f $PREFIX/lib/libLLVMCore.a                      # [not win]\n        - $PREFIX/libexec/llvm/not false                               # [not win]\n        - if not exist \"%LIBRARY_PREFIX%\"\\\\libexec\\llvm\\not.exe exit 1        # [win]\n\n  # Contains the shared libraries. To make different LLVM libraries co-installable\n  # soversion is appended to the package name.\n  - name: libllvm{{ major_ver }}\n    script: install_llvm.sh                         # [not win]\n    build:\n      skip:  true  # [(win and vc<14) or aarch64 or ppc64le]\n      activate_in_script: True\n      run_exports:                                                 # [not win]\n        - {{ pin_subpackage(\"libllvm\" + major_ver, exact=True) }}  # [not win]\n    requirements:\n      build:\n        - {{ compiler('cxx') }}            # [linux]\n        - vs2017_{{ target_platform  }}    # [win]\n        - clang_bootstrap_osx-64           # [osx]\n        - cmake                    # [not win]\n        - python    >=3            # [not win]\n      host:\n        - libcxx >={{ cxx_compiler_version }}  # [osx]\n      run:\n        - libcxx >={{ cxx_compiler_version }}  # [osx]\n    test:\n      commands:\n        - test -f $PREFIX/lib/libLLVM-{{ major_ver }}${SHLIB_EXT}  # [unix]\n\n  # This is a meta package so that people can use the latest libllvm and also\n  # for run_exports\n  - name: llvm\n    build:\n      skip:  true  # [(win and vc<14) or aarch64 or ppc64le]\n      run_exports:                                                    # [not win]\n        - {{ pin_subpackage(\"libllvm\" + major_ver, max_pin=\"x.x\") }}  # [not win]\n    requirements:\n      build:\n      host:\n        - {{ pin_subpackage(\"libllvm\" + major_ver, exact=True) }}  # [not win]\n      run:                                                         # [not win]\n        - {{ pin_subpackage(\"libllvm\" + major_ver, exact=True) }}  # [not win]\n      run_constrained:                                             # [not win]\n        - llvmdev   {{ version }}                                  # [not win]\n    test:\n      commands:\n        - echo \"Hello World!\"\n\n  # Contains LLVM tools\n  - name: llvm-tools\n    script: install_llvm.sh                         # [not win]\n    script: install_llvm.bat                        # [win]\n    build:\n      skip:  true  # [(win and vc<14) or aarch64 or ppc64le]\n      activate_in_script: True\n    requirements:\n      build:\n        - {{ compiler('cxx') }}            # [linux]\n        - vs2017_{{ target_platform  }}    # [win]\n        - clang_bootstrap_osx-64           # [osx]\n        - cmake\n        - ninja     # [win]\n        - python    >=3\n      host:\n        - {{ pin_subpackage(\"libllvm\" + major_ver, exact=True) }}\n      run:\n        - {{ pin_subpackage(\"libllvm\" + major_ver, exact=True) }}\n      run_constrained:\n        - llvmdev   {{ version }}\n    test:\n      commands:\n        - $PREFIX/bin/llc -version                               # [not win]\n        - if not exist \"%LIBRARY_BIN%\"\\\\llc.exe exit 1           # [win]\n        - llc -version                                           # [win]\n\n  - name: lit\n    build:\n      noarch: python\n      script: \"python -m pip install utils/lit --no-deps -vv\"\n      activate_in_script: True\n      skip: True  # [not linux]\n      entry_points:\n        - lit = lit:main\n    requirements:\n      host:\n        - python >=3\n        - pip\n      run:\n        - python\n    test:\n      imports:\n        - lit\n\nabout:\n  home: http://llvm.org/\n  dev_url: https://github.com/llvm-mirror/llvm\n  license: LLVM-Exception\n  license_file: LICENSE.TXT\n  license_family: Apache\n  summary: Development headers and libraries for LLVM\n\nextra:\n  recipe-maintainers:\n    - inducer\n    - pitrou\n    - jakirkham\n    - mingwandroid\n    - mattwala\n    - SylvainCorlay\n    - isuruf\n",
  "req":{
   "__set__":true,
@@ -712,7 +696,7 @@
    "elements":[]
   }
  },
- "smithy_version":"3.6.0",
+ "smithy_version":"3.6.8",
  "strong_exports":false,
  "total_requirements":{
   "build":{

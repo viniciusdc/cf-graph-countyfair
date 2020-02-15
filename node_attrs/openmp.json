@@ -131,42 +131,26 @@
     "migrator_version",
     "name"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/375719239.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"Version",
+    "migrator_version":0,
+    "version":"11-init"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "version"
+   ]
   }
  ],
- "bad":{
-  "code":404,
-  "exception":"HTTP Error 404: Not Found",
-  "traceback":[
-   "Traceback (most recent call last):",
-   "  File \"/root/repo/cf-scripts/conda_forge_tick/auto_tick.py\", line 654, in main",
-   "    migrator_uid, pr_json = run(",
-   "  File \"/root/repo/cf-scripts/conda_forge_tick/auto_tick.py\", line 139, in run",
-   "    migrate_return = migrator.migrate(recipe_dir, feedstock_ctx.attrs, **kwargs)",
-   "  File \"/root/repo/cf-scripts/conda_forge_tick/migrators/version.py\", line 223, in migrate",
-   "    new_patterns = self.get_hash_patterns(\"meta.yaml\", urls, hash_type)",
-   "  File \"/root/repo/cf-scripts/conda_forge_tick/migrators/version.py\", line 102, in get_hash_patterns",
-   "    hash_ = hash_url(url, hash_type)",
-   "  File \"/opt/conda/envs/run_env/lib/python3.8/site-packages/rever/tools.xsh\", line 207, in hash_url",
-   "    for b in stream_url_progress(url, verb='Hashing', quiet=quiet):",
-   "  File \"/opt/conda/envs/run_env/lib/python3.8/site-packages/rever/tools.xsh\", line 179, in stream_url_progress",
-   "    with urllib.request.urlopen(url) as f:",
-   "  File \"/opt/conda/envs/run_env/lib/python3.8/urllib/request.py\", line 222, in urlopen",
-   "    return opener.open(url, data, timeout)",
-   "  File \"/opt/conda/envs/run_env/lib/python3.8/urllib/request.py\", line 531, in open",
-   "    response = meth(req, response)",
-   "  File \"/opt/conda/envs/run_env/lib/python3.8/urllib/request.py\", line 640, in http_response",
-   "    response = self.parent.error(",
-   "  File \"/opt/conda/envs/run_env/lib/python3.8/urllib/request.py\", line 569, in error",
-   "    return self._call_chain(*args)",
-   "  File \"/opt/conda/envs/run_env/lib/python3.8/urllib/request.py\", line 502, in _call_chain",
-   "    result = func(*args)",
-   "  File \"/opt/conda/envs/run_env/lib/python3.8/urllib/request.py\", line 649, in http_error_default",
-   "    raise HTTPError(req.full_url, code, msg, hdrs, fp)",
-   "urllib.error.HTTPError: HTTP Error 404: Not Found",
-   ""
-  ],
-  "url":"https://github.com/llvm/llvm-project/releases/download/llvmorg-11-init/openmp-11-init.src.tar.xz"
- },
+ "bad":false,
  "conda-forge.yml":{
   "provider":{
    "linux_ppc64le":"default",
@@ -365,7 +349,7 @@
  "outputs_names":[
   "llvm-openmp"
  ],
- "pinning_version":"2019.10.11",
+ "pinning_version":"2020.02.12",
  "raw_meta_yaml":"{% set name = \"openmp\" %}\n{% set version = \"9.0.1\" %}\n{% set sha256 = \"5c94060f846f965698574d9ce22975c0e9f04c9b14088c3af5f03870af75cace\" %}\n{% set openmp_ver = \"4.5\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  url: https://github.com/llvm/llvm-project/releases/download/llvmorg-{{ version }}/openmp-{{ version }}.src.tar.xz\n  sha256: {{ sha256 }}\n\nbuild:\n  number: 2\n  skip: true  # [win and vc<14]\n\noutputs:\n  - name: llvm-openmp\n    script: build-llvm-openmp.sh  # [not win]\n    script: bld-llvm-openmp.bat   # [win]\n    build:\n      ignore_run_exports:\n        - libgcc-ng\n        - libstdcxx-ng\n        - _openmp_mutex\n      run_exports:\n        strong:\n          - {{ pin_subpackage(\"llvm-openmp\", max_pin=None) }}\n          - _openmp_mutex >={{ openmp_ver }}  # [linux]\n          - _openmp_mutex * *_llvm            # [linux]\n    requirements:\n      build:\n        - {{ compiler('cxx') }}  # [unix]\n        - vs2017_{{ target_platform }}  # [win]\n        - cmake\n        - make  # [unix]\n        - perl\n        - ninja  # [win]\n      host:\n        - llvmdev {{ version }}|{{ version }}.*\n      run_constrained:\n        - clangdev {{ version }}|{{ version }}.*\n        - llvmdev {{ version }}|{{ version }}.*\n        - openmp {{ version }}|{{ version }}.*\n    test:\n      requires:\n        - clangxx\n        - {{ compiler('cxx') }}  # [unix]\n        - vs2017_{{ target_platform }}  # [win]\n      commands:\n        - if not exist %LIBRARY_BIN%\\\\libomp.dll exit 1   # [win]\n        - test -f $PREFIX/lib/libomp.so                   # [linux]\n        - test -f $PREFIX/lib/libomp.dylib                # [osx]\n        - if not exist %LIBRARY_LIB%\\\\libomp.lib exit 1   # [win]\n        - if not exist %LIBRARY_INC%\\\\omp.h exit 1        # [win]\n        - test -f $PREFIX/include/omp.h                   # [unix]\n        - $PREFIX/bin/clang -v -fopenmp -I$PREFIX/include -L$PREFIX/lib -Wl,-rpath,$PREFIX/lib omp_hello.c -o omp_hello  # [not win]\n        - \"%LIBRARY_BIN%\\\\clang -v -fopenmp -I%LIBRARY_INC% -L%LIBRARY_LIB% omp_hello.c -o omp_hello.exe\"  # [win]\n        - ./omp_hello            # [unix]\n        - \"%cd%\\\\omp_hello.exe\"  # [win]\n      files:\n        - omp_hello.c\n\nabout:\n  home: http://openmp.llvm.org/\n  license: NCSA\n  license_file: LICENSE.txt\n  summary: The OpenMP API supports multi-platform shared-memory parallel programming in C/C++ and Fortran.\n\nextra:\n  recipe-maintainers:\n    - inducer\n    - jakirkham\n    - yesimon\n    - isuruf\n    - beckermr\n",
  "req":{
   "__set__":true,
@@ -410,7 +394,7 @@
    ]
   }
  },
- "smithy_version":"3.6.0",
+ "smithy_version":"3.6.8",
  "strong_exports":true,
  "total_requirements":{
   "build":{

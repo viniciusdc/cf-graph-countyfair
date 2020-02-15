@@ -84,52 +84,46 @@
     "migrator_version",
     "version"
    ]
+  },
+  {
+   "PR":{
+    "head":{
+     "ref":"<this_is_not_a_branch>"
+    },
+    "state":"closed"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"Version",
+    "migrator_version":0,
+    "version":"3SMv3grids"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "version"
+   ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/375720882.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"MatplotlibBase",
+    "migrator_version":0,
+    "name":"matplotlib-to-matplotlib-base"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "name"
+   ]
   }
  ],
- "bad":{
-  "code":404,
-  "exception":"HTTP Error 404: Not Found",
-  "traceback":[
-   "Traceback (most recent call last):",
-   "  File \"/root/repo/cf-scripts/conda_forge_tick/auto_tick.py\", line 654, in main",
-   "    migrator_uid, pr_json = run(",
-   "  File \"/root/repo/cf-scripts/conda_forge_tick/auto_tick.py\", line 139, in run",
-   "    migrate_return = migrator.migrate(recipe_dir, feedstock_ctx.attrs, **kwargs)",
-   "  File \"/root/repo/cf-scripts/conda_forge_tick/migrators/version.py\", line 223, in migrate",
-   "    new_patterns = self.get_hash_patterns(\"meta.yaml\", urls, hash_type)",
-   "  File \"/root/repo/cf-scripts/conda_forge_tick/migrators/version.py\", line 102, in get_hash_patterns",
-   "    hash_ = hash_url(url, hash_type)",
-   "  File \"/opt/conda/envs/run_env/lib/python3.8/site-packages/rever/tools.xsh\", line 207, in hash_url",
-   "    for b in stream_url_progress(url, verb='Hashing', quiet=quiet):",
-   "  File \"/opt/conda/envs/run_env/lib/python3.8/site-packages/rever/tools.xsh\", line 179, in stream_url_progress",
-   "    with urllib.request.urlopen(url) as f:",
-   "  File \"/opt/conda/envs/run_env/lib/python3.8/urllib/request.py\", line 222, in urlopen",
-   "    return opener.open(url, data, timeout)",
-   "  File \"/opt/conda/envs/run_env/lib/python3.8/urllib/request.py\", line 531, in open",
-   "    response = meth(req, response)",
-   "  File \"/opt/conda/envs/run_env/lib/python3.8/urllib/request.py\", line 640, in http_response",
-   "    response = self.parent.error(",
-   "  File \"/opt/conda/envs/run_env/lib/python3.8/urllib/request.py\", line 563, in error",
-   "    result = self._call_chain(*args)",
-   "  File \"/opt/conda/envs/run_env/lib/python3.8/urllib/request.py\", line 502, in _call_chain",
-   "    result = func(*args)",
-   "  File \"/opt/conda/envs/run_env/lib/python3.8/urllib/request.py\", line 755, in http_error_302",
-   "    return self.parent.open(new, timeout=req.timeout)",
-   "  File \"/opt/conda/envs/run_env/lib/python3.8/urllib/request.py\", line 531, in open",
-   "    response = meth(req, response)",
-   "  File \"/opt/conda/envs/run_env/lib/python3.8/urllib/request.py\", line 640, in http_response",
-   "    response = self.parent.error(",
-   "  File \"/opt/conda/envs/run_env/lib/python3.8/urllib/request.py\", line 569, in error",
-   "    return self._call_chain(*args)",
-   "  File \"/opt/conda/envs/run_env/lib/python3.8/urllib/request.py\", line 502, in _call_chain",
-   "    result = func(*args)",
-   "  File \"/opt/conda/envs/run_env/lib/python3.8/urllib/request.py\", line 649, in http_error_default",
-   "    raise HTTPError(req.full_url, code, msg, hdrs, fp)",
-   "urllib.error.HTTPError: HTTP Error 404: Not Found",
-   ""
-  ],
-  "url":"https://codeload.github.com/MPAS-Dev/geometric_features/tar.gz/3SMv3grids"
- },
+ "bad":false,
  "conda-forge.yml":{},
  "feedstock_name":"geometric_features",
  "hash_type":"sha256",
@@ -276,7 +270,7 @@
  },
  "name":"geometric_features",
  "new_version":"3SMv3grids",
- "pinning_version":"2020.01.28",
+ "pinning_version":"2020.02.12",
  "raw_meta_yaml":"{% set name = \"geometric_features\" %}\n{% set version = \"0.1.5\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  url: https://github.com/MPAS-Dev/{{ name }}/archive/{{ version }}.tar.gz\n  sha256: 081a6ea128272989b2700d4975f80f7309c13470592219adeb52a0a95c0a6527\n\nbuild:\n  number: 0\n  script: \"{{ PYTHON }} -m pip install . --no-deps -vv\"\n  noarch: python\n  entry_points:\n    - combine_features = geometric_features.__main__:combine_features\n    - difference_features = geometric_features.__main__:difference_features\n    - fix_features_at_antimeridian = geometric_features.__main__:fix_features_at_antimeridian\n    - merge_features = geometric_features.__main__:merge_features\n    - plot_features = geometric_features.__main__:plot_features\n    - set_group_name = geometric_features.__main__:set_group_name\n    - simplify_features = geometric_features.__main__:simplify_features\n    - split_features = geometric_features.__main__:split_features\n    - tag_features = geometric_features.__main__:tag_features\n\nrequirements:\n  host:\n    - python\n    - pip\n  run:\n    - python\n    - numpy\n    - matplotlib\n    - cartopy\n    - shapely\n    - requests\n    - progressbar2\n\ntest:\n  requires:\n    - pytest\n  imports:\n    - geometric_features\n    - pytest\n  commands:\n    - pytest --pyargs geometric_features\n    - combine_features -v\n    - difference_features -v\n    - fix_features_at_antimeridian -v\n    - merge_features -v\n    - plot_features -v\n    - set_group_name -v\n    - simplify_features -v\n    - split_features -v\n    - tag_features -v\n\nabout:\n  home: https://github.com/MPAS-Dev/geometric_features\n  license: BSD 3-Clause\n  license_family: BSD\n  license_file: LICENSE\n  summary: 'Tools for manipulating collections of geojson geometric features'\n  description: |\n    Tools for manipulating regions, transects, and points in geojson format\n    for use in initializing climate models and analyzing their output.\n  doc_url: https://github.com/MPAS-Dev/geometric_features/README.md\n  dev_url: https://github.com/MPAS-Dev/geometric_features\n\nextra:\n  recipe-maintainers:\n    - xylar\n",
  "req":{
   "__set__":true,

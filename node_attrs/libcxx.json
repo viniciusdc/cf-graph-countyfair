@@ -152,42 +152,26 @@
     "migrator_version",
     "version"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/375719107.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"Version",
+    "migrator_version":0,
+    "version":"11-init"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "version"
+   ]
   }
  ],
- "bad":{
-  "code":404,
-  "exception":"HTTP Error 404: Not Found",
-  "traceback":[
-   "Traceback (most recent call last):",
-   "  File \"/root/repo/cf-scripts/conda_forge_tick/auto_tick.py\", line 654, in main",
-   "    migrator_uid, pr_json = run(",
-   "  File \"/root/repo/cf-scripts/conda_forge_tick/auto_tick.py\", line 139, in run",
-   "    migrate_return = migrator.migrate(recipe_dir, feedstock_ctx.attrs, **kwargs)",
-   "  File \"/root/repo/cf-scripts/conda_forge_tick/migrators/version.py\", line 223, in migrate",
-   "    new_patterns = self.get_hash_patterns(\"meta.yaml\", urls, hash_type)",
-   "  File \"/root/repo/cf-scripts/conda_forge_tick/migrators/version.py\", line 102, in get_hash_patterns",
-   "    hash_ = hash_url(url, hash_type)",
-   "  File \"/opt/conda/envs/run_env/lib/python3.8/site-packages/rever/tools.xsh\", line 207, in hash_url",
-   "    for b in stream_url_progress(url, verb='Hashing', quiet=quiet):",
-   "  File \"/opt/conda/envs/run_env/lib/python3.8/site-packages/rever/tools.xsh\", line 179, in stream_url_progress",
-   "    with urllib.request.urlopen(url) as f:",
-   "  File \"/opt/conda/envs/run_env/lib/python3.8/urllib/request.py\", line 222, in urlopen",
-   "    return opener.open(url, data, timeout)",
-   "  File \"/opt/conda/envs/run_env/lib/python3.8/urllib/request.py\", line 531, in open",
-   "    response = meth(req, response)",
-   "  File \"/opt/conda/envs/run_env/lib/python3.8/urllib/request.py\", line 640, in http_response",
-   "    response = self.parent.error(",
-   "  File \"/opt/conda/envs/run_env/lib/python3.8/urllib/request.py\", line 569, in error",
-   "    return self._call_chain(*args)",
-   "  File \"/opt/conda/envs/run_env/lib/python3.8/urllib/request.py\", line 502, in _call_chain",
-   "    result = func(*args)",
-   "  File \"/opt/conda/envs/run_env/lib/python3.8/urllib/request.py\", line 649, in http_error_default",
-   "    raise HTTPError(req.full_url, code, msg, hdrs, fp)",
-   "urllib.error.HTTPError: HTTP Error 404: Not Found",
-   ""
-  ],
-  "url":"https://github.com/llvm/llvm-project/releases/download/llvmorg-9.0.1/libcxx-11-init.src.tar.xz"
- },
+ "bad":false,
  "conda-forge.yml":{
   "compiler_stack":"comp7",
   "provider":{
@@ -404,7 +388,7 @@
   "libcxx",
   "libcxxabi"
  ],
- "pinning_version":"2019.12.02",
+ "pinning_version":"2020.02.12",
  "raw_meta_yaml":"{% set version = \"9.0.1\" %}\n\npackage:\n  name: libcxx_and_libcxxabi\n  version: {{ version }}\n\nsource:\n  - url: https://github.com/llvm/llvm-project/releases/download/llvmorg-9.0.1/libcxx-{{ version }}.src.tar.xz\n    sha256: 0981ff11b862f4f179a13576ab0a2f5530f46bd3b6b4a90f568ccc6a62914b34\n    patches:\n      # See https://bugs.llvm.org/show_bug.cgi?id=39696\n      - ppc64le-constexpr.patch  # [ppc64le]\n\n  - url: https://github.com/llvm/llvm-project/releases/download/llvmorg-9.0.1/libcxxabi-{{ version }}.src.tar.xz  # [linux]\n    sha256: e8f978aa4cfae2d7a0b4d89275637078557cca74b35c31b7283d4786948a8aac  # [linux]\n    folder: libcxxabi  # [linux]\n\nbuild:\n  number: 1\n  skip: true  # [win and vc<14]\n  skip: true  # [win]\n  skip: true  # [ppc64le or aarch64]\n  ignore_run_exports:\n    - libstdcxx-ng\n\nrequirements:\n  build:\n    - cmake\n    - make                    # [unix]\n    - {{ compiler('cxx') }}\n    - python >3               # [not osx]\n  host:\n    - clangdev {{ version }}  # [not osx]\n    - llvmdev {{ version }}   # [not osx]\n\ntest:\n  requires:\n    - clang\n    - {{ compiler('cxx') }}  # [not osx]\n  files:\n    - test_sources\n    - compile_test.sh   # [unix]\n    - compile_test.bat  # [win]\n  commands:\n    - if not exist %LIBRARY_INC%\\\\c++\\\\v1\\\\iterator exit 1     # [win]\n    - test -f $PREFIX/include/c++/v1/iterator      # [unix]\n    - bash compile_test.sh   # [unix]\n    - compile_test.bat       # [win]\n    # !!!!!!!!!!!! README !!!!!!!!!!!!!!!!!!\n    # we do not ship libcxxabi on OSX - this breaks exception passing\n    - if [ -f $PREFIX/lib/libc++abi.dylib ]; then exit 1; fi  # [osx]\n    - test -f $PREFIX/lib/libc++abi.so  # [linux]\n\n  # Following 2 projects had issues with libc++, so check them\n  # before releasing just to be sure.\n  downstreams:          # [osx]\n    - python-symengine  # [osx]\n    - openturns         # [osx]\n\noutputs:\n  - name: libcxx\n    files:\n      - include/c++\n      - Library/include/c++\n      - lib/libc++.*\n      - lib/libc++fs.*\n      - lib/libc++experimental.*\n      - Library/bin/c++*.dll\n      - Library/lib/c++*.lib\n      - Library/lib/libc++*.lib\n    requirements:                                          # [linux]\n      run:                                                 # [linux]\n        - {{ pin_subpackage(\"libcxxabi\", exact=True) }}    # [linux]\n\n  - name: libcxxabi\n    build:\n      skip: True       # [not linux]\n    files:\n      - lib/libc++abi.*\n    requirements:\n      run_constrained:\n        - {{ pin_subpackage(\"libcxx\", exact=True) }}\n\nabout:\n  home: http://llvm.org/\n  license: NCSA\n  license_file: LICENSE.TXT\n  summary: C++ standard library\n\nextra:\n  recipe-maintainers:\n    - SylvainCorlay\n    - inducer\n    - mattwala\n    - jakirkham\n    - isuruf\n    - beckermr\n",
  "req":{
   "__set__":true,
@@ -449,7 +433,7 @@
    ]
   }
  },
- "smithy_version":"3.6.3",
+ "smithy_version":"3.6.8",
  "strong_exports":false,
  "total_requirements":{
   "build":{

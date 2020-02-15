@@ -16,52 +16,26 @@
     "migrator_version",
     "name"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/375720078.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"Version",
+    "migrator_version":0,
+    "version":"2.4.1"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "version"
+   ]
   }
  ],
- "bad":{
-  "code":404,
-  "exception":"HTTP Error 404: Not Found",
-  "traceback":[
-   "Traceback (most recent call last):",
-   "  File \"/root/repo/cf-scripts/conda_forge_tick/auto_tick.py\", line 654, in main",
-   "    migrator_uid, pr_json = run(",
-   "  File \"/root/repo/cf-scripts/conda_forge_tick/auto_tick.py\", line 139, in run",
-   "    migrate_return = migrator.migrate(recipe_dir, feedstock_ctx.attrs, **kwargs)",
-   "  File \"/root/repo/cf-scripts/conda_forge_tick/migrators/version.py\", line 223, in migrate",
-   "    new_patterns = self.get_hash_patterns(\"meta.yaml\", urls, hash_type)",
-   "  File \"/root/repo/cf-scripts/conda_forge_tick/migrators/version.py\", line 102, in get_hash_patterns",
-   "    hash_ = hash_url(url, hash_type)",
-   "  File \"/opt/conda/envs/run_env/lib/python3.8/site-packages/rever/tools.xsh\", line 207, in hash_url",
-   "    for b in stream_url_progress(url, verb='Hashing', quiet=quiet):",
-   "  File \"/opt/conda/envs/run_env/lib/python3.8/site-packages/rever/tools.xsh\", line 179, in stream_url_progress",
-   "    with urllib.request.urlopen(url) as f:",
-   "  File \"/opt/conda/envs/run_env/lib/python3.8/urllib/request.py\", line 222, in urlopen",
-   "    return opener.open(url, data, timeout)",
-   "  File \"/opt/conda/envs/run_env/lib/python3.8/urllib/request.py\", line 531, in open",
-   "    response = meth(req, response)",
-   "  File \"/opt/conda/envs/run_env/lib/python3.8/urllib/request.py\", line 640, in http_response",
-   "    response = self.parent.error(",
-   "  File \"/opt/conda/envs/run_env/lib/python3.8/urllib/request.py\", line 563, in error",
-   "    result = self._call_chain(*args)",
-   "  File \"/opt/conda/envs/run_env/lib/python3.8/urllib/request.py\", line 502, in _call_chain",
-   "    result = func(*args)",
-   "  File \"/opt/conda/envs/run_env/lib/python3.8/urllib/request.py\", line 755, in http_error_302",
-   "    return self.parent.open(new, timeout=req.timeout)",
-   "  File \"/opt/conda/envs/run_env/lib/python3.8/urllib/request.py\", line 531, in open",
-   "    response = meth(req, response)",
-   "  File \"/opt/conda/envs/run_env/lib/python3.8/urllib/request.py\", line 640, in http_response",
-   "    response = self.parent.error(",
-   "  File \"/opt/conda/envs/run_env/lib/python3.8/urllib/request.py\", line 569, in error",
-   "    return self._call_chain(*args)",
-   "  File \"/opt/conda/envs/run_env/lib/python3.8/urllib/request.py\", line 502, in _call_chain",
-   "    result = func(*args)",
-   "  File \"/opt/conda/envs/run_env/lib/python3.8/urllib/request.py\", line 649, in http_error_default",
-   "    raise HTTPError(req.full_url, code, msg, hdrs, fp)",
-   "urllib.error.HTTPError: HTTP Error 404: Not Found",
-   ""
-  ],
-  "url":"https://github.com/AcademySoftwareFoundation/openexr/releases/download/v2.4.1/ilmbase-2.4.1.tar.gz"
- },
+ "bad":false,
  "conda-forge.yml":{
   "compiler_stack":"comp7",
   "max_py_ver":"37",
@@ -179,7 +153,7 @@
  },
  "name":"ilmbase",
  "new_version":"2.4.1",
- "pinning_version":"2018.10.10",
+ "pinning_version":"2020.02.12",
  "raw_meta_yaml":"{% set name = \"IlmBase\" %}\n{% set version = \"2.3.0\" %}\n{% set sha256 = \"456978d1a978a5f823c7c675f3f36b0ae14dba36638aeaa3c4b0e784f12a3862\" %}\n\npackage:\n  name: \"{{ name|lower }}\"\n  version: \"{{ version }}\"\n\nsource:\n  url: https://github.com/openexr/openexr/releases/download/v{{ version }}/{{ name|lower }}-{{ version }}.tar.gz\n  sha256: {{ sha256 }}\n\nbuild:\n  number: 1001\n  skip: true  # [win and vc<14]\n  run_exports:\n    # https\\://abi-laboratory.pro/\\?view\\=timeline\\&l\\=ilmbase\n    - {{ pin_subpackage(name|lower, max_pin='x.x') }}\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n    - cmake  # [win]\n\n  host:\n    - zlib\n\ntest:\n  commands:\n    - test -f ${PREFIX}/include/OpenEXR/half.h                            # [unix]\n    - test -f ${PREFIX}/include/OpenEXR/IlmThread.h                       # [unix]\n    - test -f ${PREFIX}/include/OpenEXR/ImathMath.h                       # [unix]\n    - test -f ${PREFIX}/include/OpenEXR/Iex.h                             # [unix]\n    - test -f ${PREFIX}/include/OpenEXR/IexMathExc.h                      # [unix]\n    - test -f ${PREFIX}/lib/libHalf.a                                     # [unix]\n    - test -f ${PREFIX}/lib/libHalf${SHLIB_EXT}                           # [unix]\n    - test -f ${PREFIX}/lib/libIlmThread.a                                # [unix]\n    - test -f ${PREFIX}/lib/libIlmThread${SHLIB_EXT}                      # [unix]\n    - test -f ${PREFIX}/lib/libImath.a                                    # [unix]\n    - test -f ${PREFIX}/lib/libImath${SHLIB_EXT}                          # [unix]\n    - test -f ${PREFIX}/lib/libIex.a                                      # [unix]\n    - test -f ${PREFIX}/lib/libIex${SHLIB_EXT}                            # [unix]\n    - test -f ${PREFIX}/lib/libIexMath.a                                  # [unix]\n    - test -f ${PREFIX}/lib/libIexMath${SHLIB_EXT}                        # [unix]\n    - if not exist %LIBRARY_PREFIX%\\include\\OpenEXR\\half.h  exit 1        # [win]\n    - if not exist %LIBRARY_PREFIX%\\include\\OpenEXR\\IlmThread.h  exit 1   # [win]\n    - if not exist %LIBRARY_PREFIX%\\include\\OpenEXR\\ImathMath.h  exit 1   # [win]\n    - if not exist %LIBRARY_PREFIX%\\include\\OpenEXR\\Iex.h  exit 1         # [win]\n    - if not exist %LIBRARY_PREFIX%\\include\\OpenEXR\\IexMathExc.h exit 1   # [win]\n    - if not exist %LIBRARY_PREFIX%\\lib\\Half.lib  exit 1                  # [win]\n    - if not exist %LIBRARY_PREFIX%\\lib\\Half_s.lib  exit 1                # [win]\n    - if not exist %LIBRARY_PREFIX%\\lib\\IlmThread.lib  exit 1             # [win]\n    - if not exist %LIBRARY_PREFIX%\\lib\\IlmThread_s.lib  exit 1           # [win]\n    - if not exist %LIBRARY_PREFIX%\\lib\\Imath.lib  exit 1                 # [win]\n    - if not exist %LIBRARY_PREFIX%\\lib\\Imath_s.lib  exit 1               # [win]\n    - if not exist %LIBRARY_PREFIX%\\lib\\Iex.lib  exit 1                   # [win]\n    - if not exist %LIBRARY_PREFIX%\\lib\\Iex_s.lib  exit 1                 # [win]\n    - if not exist %LIBRARY_PREFIX%\\lib\\IexMath.lib  exit 1               # [win]\n    - if not exist %LIBRARY_PREFIX%\\lib\\IexMath_s.lib  exit 1             # [win]\n\nabout:\n  home: http://www.openexr.com/\n  license: Modified BSD\n  license_family: BSD\n  license_file: LICENSE\n  summary: 'IlmBase libraries required for OpenEXR.'\n  doc_url: http://www.openexr.com/documentation.html\n\nextra:\n  recipe-maintainers:\n    - npavlovikj\n    - SylvainCorlay\n    - wolfv\n    - JohanMabille\n",
  "req":{
   "__set__":true,
@@ -214,7 +188,7 @@
    "elements":[]
   }
  },
- "smithy_version":"3.1.12",
+ "smithy_version":"3.6.8",
  "strong_exports":false,
  "total_requirements":{
   "build":{
