@@ -255,7 +255,7 @@
    "summary":"Python driver with native interface for ClickHouse"
   },
   "build":{
-   "number":"0",
+   "number":"1",
    "script":" -m pip install . -vv"
   },
   "extra":{
@@ -302,12 +302,15 @@
     "python",
     "six",
     "pytz",
+    "tzlocal",
     "python",
     "six",
     "pytz",
+    "tzlocal",
     "python",
     "six",
-    "pytz"
+    "pytz",
+    "tzlocal"
    ]
   },
   "source":{
@@ -316,6 +319,11 @@
    "url":"https://pypi.io/packages/source/c/clickhouse-driver/clickhouse-driver-0.1.2.tar.gz"
   },
   "test":{
+   "commands":[
+    "pip check",
+    "pip check",
+    "pip check"
+   ],
    "imports":[
     "clickhouse_driver",
     "clickhouse_driver.columns",
@@ -335,13 +343,18 @@
     "clickhouse_driver.settings",
     "clickhouse_driver.streams",
     "clickhouse_driver.util"
+   ],
+   "requires":[
+    "pip",
+    "pip",
+    "pip"
    ]
   }
  },
  "name":"clickhouse-driver",
  "new_version":"0.1.2",
  "pinning_version":"2019.11.01",
- "raw_meta_yaml":"{% set name = \"clickhouse-driver\" %}\n{% set version = \"0.1.2\" %}\n{% set sha256 = \"733479f888c7021cb80f5a94a9e50898318f44a7af798e2d012296cc0b75ee4e\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  fn: {{ name }}-{{ version }}.tar.gz\n  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz\n  sha256: {{ sha256 }}\n\nbuild:\n  number: 0\n  script: \"{{ PYTHON }} -m pip install . -vv\"\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n  host:\n    - pip\n    - cython\n    - python\n\n  run:\n    - python\n    - six\n    - pytz\n    - enum34  # [py27]\n\ntest:\n  imports:\n    - clickhouse_driver\n    - clickhouse_driver.columns\n    - clickhouse_driver.compression\n    - clickhouse_driver.settings\n    - clickhouse_driver.streams\n    - clickhouse_driver.util\n\nabout:\n  home: https://github.com/mymarilyn/clickhouse-driver\n  license: MIT\n  summary: 'Python driver with native interface for ClickHouse'\n  license_family: MIT\n  license_file: LICENSE\n\nextra:\n  recipe-maintainers:\n    - kszucs\n    - xzkostyan\n    - cpcloud\n    - xmnlab\n    - xhochy\n",
+ "raw_meta_yaml":"{% set name = \"clickhouse-driver\" %}\n{% set version = \"0.1.2\" %}\n{% set sha256 = \"733479f888c7021cb80f5a94a9e50898318f44a7af798e2d012296cc0b75ee4e\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  fn: {{ name }}-{{ version }}.tar.gz\n  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz\n  sha256: {{ sha256 }}\n\nbuild:\n  number: 1\n  script: \"{{ PYTHON }} -m pip install . -vv\"\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n  host:\n    - pip\n    - cython\n    - python\n\n  run:\n    - python\n    - six\n    - pytz\n    - tzlocal\n    - ipaddress  # [py27]\n    - enum34  # [py27]\n\ntest:\n  imports:\n    - clickhouse_driver\n    - clickhouse_driver.columns\n    - clickhouse_driver.compression\n    - clickhouse_driver.settings\n    - clickhouse_driver.streams\n    - clickhouse_driver.util\n  requires:\n    - pip\n  commands:\n    - pip check\n\nabout:\n  home: https://github.com/mymarilyn/clickhouse-driver\n  license: MIT\n  summary: 'Python driver with native interface for ClickHouse'\n  license_family: MIT\n  license_file: LICENSE\n\nextra:\n  recipe-maintainers:\n    - kszucs\n    - xzkostyan\n    - cpcloud\n    - xmnlab\n    - xhochy\n",
  "req":{
   "__set__":true,
   "elements":[
@@ -350,7 +363,8 @@
    "pip",
    "python",
    "pytz",
-   "six"
+   "six",
+   "tzlocal"
   ]
  },
  "requirements":{
@@ -373,12 +387,15 @@
    "elements":[
     "python",
     "pytz",
-    "six"
+    "six",
+    "tzlocal"
    ]
   },
   "test":{
    "__set__":true,
-   "elements":[]
+   "elements":[
+    "pip"
+   ]
   }
  },
  "smithy_version":"3.6.1",
@@ -403,12 +420,15 @@
    "elements":[
     "python",
     "pytz",
-    "six"
+    "six",
+    "tzlocal"
    ]
   },
   "test":{
    "__set__":true,
-   "elements":[]
+   "elements":[
+    "pip"
+   ]
   }
  },
  "url":"https://pypi.io/packages/source/c/clickhouse-driver/clickhouse-driver-0.1.0.tar.gz",
