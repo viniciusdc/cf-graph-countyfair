@@ -149,6 +149,23 @@
     "migrator_version",
     "version"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/375849806.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"Version",
+    "migrator_version":0,
+    "version":"1.19.1"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "version"
+   ]
   }
  ],
  "bad":false,
@@ -244,8 +261,8 @@
   }
  },
  "name":"pycairo",
- "new_version":"1.19.0",
- "pinning_version":"2020.01.16",
+ "new_version":"1.19.1",
+ "pinning_version":"2020.02.12",
  "raw_meta_yaml":"{% set name = \"pycairo\" %}\n{% set version = \"1.19.0\" %}\n{% set sha256 = \"4f5ba9374a46c98729dd3727d993f5e17ed0286fd6738ed464fe4efa0612d19c\" %}\n\npackage:\n  name: {{ name }}\n  version: {{ version }}\n\nsource:\n  url: https://github.com/pygobject/pycairo/releases/download/v{{ version }}/{{ name }}-{{ version }}.tar.gz\n  sha256: {{ sha256 }}\n  patches:\n    - windows.patch  # [win]\n\nbuild:\n  number: 0\n  detect_binary_files_with_prefix: true\n  skip: true  # [py < 35]\n\nrequirements:\n  build:\n    - pkg-config  # [not win]\n    - posix  # [win]\n    - {{ compiler('c') }}\n  host:\n    - m2w64-pkg-config  # [win]\n    - cairo\n    - cython\n    - pip\n    - pthread-stubs\n    - python\n    - xorg-libx11 1.6.*\n    - xorg-xproto\n  run:\n    - cairo\n    - python\n\ntest:\n  imports:\n    - cairo\n  commands:\n    - conda inspect linkages -p $PREFIX $PKG_NAME  # [not win]\n    - conda inspect objects -p $PREFIX $PKG_NAME  # [osx]\n\nabout:\n  home: http://cairographics.org/pycairo/\n  license: LGPL 2.1, MPL 1.1\n  license_file: COPYING\n  summary: 'Python bindings for the Cairo graphics library.'\n  dev_url: https://github.com/pygobject/pycairo/\n\nextra:\n  recipe-maintainers:\n    - pkgw\n",
  "req":{
   "__set__":true,
@@ -297,7 +314,7 @@
    "elements":[]
   }
  },
- "smithy_version":"3.6.5",
+ "smithy_version":"3.6.8",
  "strong_exports":false,
  "total_requirements":{
   "build":{
