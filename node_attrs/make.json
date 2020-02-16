@@ -93,7 +93,7 @@
   }
  },
  "name":"make",
- "new_version":false,
+ "new_version":"4.3",
  "pinning_version":"2019.01.29",
  "raw_meta_yaml":"# Jinja variables help maintain the recipe as you'll update the version only here.\n{% set version = \"4.2\" %}\n{% set sha256 = \"4e5ce3b62fe5d75ff8db92b7f6df91e476d10c3aceebf1639796dc5bfece655f\" %}\n\npackage:\n  name: make\n  version: {{ version }}\n\nsource:\n  fn: make-{{ version }}.tar.bz2\n  url: https://ftp.gnu.org/gnu/make/make-{{ version }}.tar.bz2\n  sha256: {{ sha256 }}\n\nbuild:\n  number: 0\n  detect_binary_files_with_prefix: False\n\nrequirements:\n  build:\n    - {{ compiler(\"c\") }}        # [unix]\n    - {{ compiler(\"m2w64_c\") }}  # [win]\n\ntest:\n  commands:\n    - $PREFIX/bin/make --help  # [unix]\n    - '\"%LIBRARY_BIN%\\gnumake.exe\" --help'  # [win]\n    - '\"%LIBRARY_BIN%\\make.exe\" --help'  # [win]\n\nabout:\n  home: https://www.gnu.org/software/make/\n  license: GPLv3\n  license_file: COPYING\n  summary: >-\n    GNU Make is a tool which controls the generation of executables and other\n    non-source files of a program from the program's source files.\n  doc_url: https://www.gnu.org/software/make/manual/\n\nextra:\n  recipe-maintainers:\n    - asmeurer\n    - scopatz\n",
  "req":{

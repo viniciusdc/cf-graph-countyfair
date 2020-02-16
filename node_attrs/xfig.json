@@ -139,7 +139,7 @@
   }
  },
  "name":"xfig",
- "new_version":false,
+ "new_version":"3.2.7a",
  "pinning_version":"2018.09.27",
  "raw_meta_yaml":"{% set name = \"xfig\" %}\n{% set version = \"3.2.6a\" %}\n{% set sha256 = \"a87aeb5d424aadb84ede137291bbe8649551209a807c94f0956fc323b819267c\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  fn: {{ name }}-{{ version }}.tar.xz\n  url: https://sourceforge.net/projects/mcj/files/{{ name }}-{{ version }}.tar.xz\n  sha256: {{ sha256 }}\n\nbuild:\n  number: 1001\n  skip: True  # [win]\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n  host:\n    - libpng\n    - jpeg\n    - ghostscript\n    - xorg-libx11\n    - xorg-libxaw3d\n    - xorg-libxpm\n    - xorg-libxmu\n    - xorg-libxt\n  run:\n    - libpng\n    - jpeg\n    - ghostscript\n    - xorg-libx11\n    - xorg-libxaw3d\n    - xorg-libxpm\n    - xorg-libxmu\n    - xorg-libxt\n\ntest:\n  commands:\n    - conda inspect linkages -p $PREFIX $PKG_NAME  # [not win]\n    - conda inspect objects -p $PREFIX $PKG_NAME  # [osx]\n    - xfig -v\n\nabout:\n  home: http://mcj.sourceforge.net\n  license: freeware\n  summary: 'vector drawing tool'\n\n  description: |\n    Xfig is an interactive drawing tool which runs under X Window System\n    Version 11 Release 4 (X11R4) or later, on most UNIX-compatible platforms,\n    and e.g. under Darwin on the MacIntosh and any X server under Microsoft\n    Windows. See the installation section for details. It is freeware, and\n    available via anonymous ftp.\n\nextra:\n  recipe-maintainers:\n    - epruesse\n",
  "req":{
