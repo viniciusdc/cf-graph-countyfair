@@ -99,6 +99,23 @@
     "migrator_version",
     "version"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/375778985.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"ArchRebuild",
+    "migrator_version":1,
+    "name":"aarch64 and ppc64le addition"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "name"
+   ]
   }
  ],
  "bad":false,
@@ -201,7 +218,7 @@
  },
  "name":"symengine",
  "new_version":"0.6.0",
- "pinning_version":"2020.01.28",
+ "pinning_version":"2020.02.12",
  "raw_meta_yaml":"{% set version = \"0.6.0\" %}\n{% set maj_min = \".\".join(version.split(\".\")[:2]) %}\n\npackage:\n  name: symengine\n  version: {{ version }}\n\nsource:\n  fn: v{{ version }}.tar.gz\n  url: https://github.com/symengine/symengine/releases/download/v{{ version }}/symengine-{{ version }}.tar.gz\n  sha256: 4d2caa86c03eaaa8ed004084d02f87b5c51b6229f8ba70d161227e22d6302f0a\n\nbuild:\n  number: 0\n  skip: True  # [win and vc<14]\n\nrequirements:\n  build:\n    - cmake\n    - make             # [unix]\n    - ninja            # [win]\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n  host:\n    - gmp              # [unix]\n    - mpfr\n    - mpc\n    - mpir             # [win]\n    - llvmdev          # [unix]\n    - llvmdev  8.*     # [win]\n    - libflint         # [unix]\n  run:\n    - gmp              # [unix]\n    - mpfr\n    - {{ pin_compatible(\"mpc\") }}\n    - {{ pin_compatible(\"mpir\") }}         # [win]\n    - {{ pin_compatible(\"libflint\") }}     # [unix]\n\ntest:\n  commands:\n    - if not exist %LIBRARY_INC%\\\\symengine\\\\basic.h exit 1     # [win]\n    - if not exist %LIBRARY_LIB%\\\\symengine.lib exit 1          # [win]\n    - if not exist %LIBRARY_BIN%\\\\symengine-{{ maj_min }}.dll exit 1          # [win]\n    - test -f $PREFIX/include/symengine/basic.h                 # [unix]\n    - test -f $PREFIX/lib/libsymengine.so                       # [linux]\n    - test -f $PREFIX/lib/libsymengine.dylib                    # [osx]\n\nabout:\n  home: https://github.com/symengine/symengine\n  license: MIT\n  license_file: LICENSE\n  summary: 'SymEngine is a fast symbolic manipulation library, written in C++'\n\nextra:\n  recipe-maintainers:\n    - isuruf\n    - certik\n",
  "req":{
   "__set__":true,
