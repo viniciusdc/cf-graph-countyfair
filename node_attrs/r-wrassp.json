@@ -86,9 +86,6 @@
  ],
  "bad":false,
  "conda-forge.yml":{
-  "compiler_stack":"comp7",
-  "max_py_ver":"37",
-  "max_r_ver":"35",
   "provider":{
    "win":"azure"
   }
@@ -105,7 +102,7 @@
   },
   "build":{
    "merge_build_host":true,
-   "number":"1001",
+   "number":"0",
    "rpaths":[
     "lib/R/lib/",
     "lib/",
@@ -118,31 +115,13 @@
   "extra":{
    "recipe-maintainers":[
     "conda-forge/r",
-    "johanneskoester",
-    "bgruening",
-    "daler",
-    "jdblischak",
-    "cbrueffer",
-    "dbast",
     "conda-forge/r",
-    "johanneskoester",
-    "bgruening",
-    "daler",
-    "jdblischak",
-    "cbrueffer",
-    "dbast",
-    "conda-forge/r",
-    "johanneskoester",
-    "bgruening",
-    "daler",
-    "jdblischak",
-    "cbrueffer",
-    "dbast"
+    "conda-forge/r"
    ]
   },
   "package":{
    "name":"r-wrassp",
-   "version":"0.1.8"
+   "version":"0.1.9"
   },
   "requirements":{
    "build":[
@@ -159,26 +138,32 @@
    ],
    "host":[
     "r-base",
+    "r-tibble",
     "r-base",
-    "r-base"
+    "r-tibble",
+    "r-base",
+    "r-tibble"
    ],
    "run":[
     "r-base",
     "gcc-libs",
+    "r-tibble",
     "r-base",
-    "r-base"
+    "r-tibble",
+    "r-base",
+    "r-tibble"
    ]
   },
   "source":{
-   "fn":"wrassp_0.1.8.tar.gz",
-   "sha256":"f3e8c595f364ab3c558121d5706f7918b18720ac7b48e74f722643763b055d14",
+   "fn":"wrassp_0.1.9.tar.gz",
+   "sha256":"15e2594035922c7402116e7caec321ed29324e5b849be12ccfe4276a1ed0e827",
    "url":[
-    "https://cran.r-project.org/src/contrib/wrassp_0.1.8.tar.gz",
-    "https://cran.r-project.org/src/contrib/Archive/wrassp/wrassp_0.1.8.tar.gz",
-    "https://cran.r-project.org/src/contrib/wrassp_0.1.8.tar.gz",
-    "https://cran.r-project.org/src/contrib/Archive/wrassp/wrassp_0.1.8.tar.gz",
-    "https://cran.r-project.org/src/contrib/wrassp_0.1.8.tar.gz",
-    "https://cran.r-project.org/src/contrib/Archive/wrassp/wrassp_0.1.8.tar.gz"
+    "https://cran.r-project.org/src/contrib/wrassp_0.1.9.tar.gz",
+    "https://cran.r-project.org/src/contrib/Archive/wrassp/wrassp_0.1.9.tar.gz",
+    "https://cran.r-project.org/src/contrib/wrassp_0.1.9.tar.gz",
+    "https://cran.r-project.org/src/contrib/Archive/wrassp/wrassp_0.1.9.tar.gz",
+    "https://cran.r-project.org/src/contrib/wrassp_0.1.9.tar.gz",
+    "https://cran.r-project.org/src/contrib/Archive/wrassp/wrassp_0.1.9.tar.gz"
    ]
   },
   "test":{
@@ -192,7 +177,7 @@
  "name":"r-wrassp",
  "new_version":"0.1.9",
  "pinning_version":"2020.02.12",
- "raw_meta_yaml":"{% set version = '0.1.8' %}\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-wrassp\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  fn: wrassp_{{ version }}.tar.gz\n  url:\n    - {{ cran_mirror }}/src/contrib/wrassp_{{ version }}.tar.gz\n    - {{ cran_mirror }}/src/contrib/Archive/wrassp/wrassp_{{ version }}.tar.gz\n  sha256: f3e8c595f364ab3c558121d5706f7918b18720ac7b48e74f722643763b055d14\n\nbuild:\n  merge_build_host: True  # [win]\n  number: 1001\n  skip: true  # [win32]\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - {{ compiler('c') }}        # [not win]\n    - {{ compiler('m2w64_c') }}        # [win]\n    - {{posix}}filesystem        # [win]\n    - {{posix}}make\n    - {{posix}}sed               # [win]\n    - {{posix}}coreutils         # [win]\n    - {{posix}}zip               # [win]\n  host:\n    - r-base\n  run:\n    - r-base\n    - {{native}}gcc-libs         # [win]\n\ntest:\n  commands:\n    - $R -e \"library('wrassp')\"           # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('wrassp')\\\"\"  # [win]\n\nabout:\n  home: https://github.com/IPS-LMU/wrassp\n  license: GPL (>= 3)\n  summary: A wrapper around Michel Scheffers's 'libassp' (<http://libassp.sourceforge.net/>).  The\n    'libassp' (Advanced Speech Signal Processor) library aims at providing functionality\n    for handling speech signal files in most common audio formats and for performing\n    analyses common in phonetic science/speech science. This includes the calculation\n    of formants, fundamental frequency, root mean square, auto correlation, a variety\n    of spectral analyses, zero crossing rate, filtering etc. This wrapper provides R\n    with a large subset of 'libassp's signal processing functions and provides them\n    to the user in a (hopefully) user-friendly manner.\n  license_family: GPL3\n  license_file: '{{ environ[\"PREFIX\"] }}/lib/R/share/licenses/GPL-3'\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n    - johanneskoester\n    - bgruening\n    - daler\n    - jdblischak\n    - cbrueffer\n    - dbast\n",
+ "raw_meta_yaml":"{% set version = \"0.1.9\" %}\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-wrassp\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  fn: wrassp_{{ version }}.tar.gz\n  url:\n    - {{ cran_mirror }}/src/contrib/wrassp_{{ version }}.tar.gz\n    - {{ cran_mirror }}/src/contrib/Archive/wrassp/wrassp_{{ version }}.tar.gz\n  sha256: 15e2594035922c7402116e7caec321ed29324e5b849be12ccfe4276a1ed0e827\n\nbuild:\n  merge_build_host: True  # [win]\n  number: 0\n  skip: true  # [win32]\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - {{ compiler('c') }}        # [not win]\n    - {{ compiler('m2w64_c') }}        # [win]\n    - {{posix}}filesystem        # [win]\n    - {{posix}}make\n    - {{posix}}sed               # [win]\n    - {{posix}}coreutils         # [win]\n    - {{posix}}zip               # [win]\n  host:\n    - r-base\n    - r-tibble\n  run:\n    - r-base\n    - {{native}}gcc-libs         # [win]\n    - r-tibble\n\ntest:\n  commands:\n    - $R -e \"library('wrassp')\"           # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('wrassp')\\\"\"  # [win]\n\nabout:\n  home: https://github.com/IPS-LMU/wrassp\n  license: GPL (>= 3)\n  summary: A wrapper around Michel Scheffers's 'libassp' (<http://libassp.sourceforge.net/>).  The\n    'libassp' (Advanced Speech Signal Processor) library aims at providing functionality\n    for handling speech signal files in most common audio formats and for performing\n    analyses common in phonetic science/speech science. This includes the calculation\n    of formants, fundamental frequency, root mean square, auto correlation, a variety\n    of spectral analyses, zero crossing rate, filtering etc. This wrapper provides R\n    with a large subset of 'libassp's signal processing functions and provides them\n    to the user in a (hopefully) user-friendly manner.\n  license_family: GPL3\n  license_file: '{{ environ[\"PREFIX\"] }}/lib/R/share/licenses/GPL-3'\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n",
  "req":{
   "__set__":true,
   "elements":[
@@ -203,6 +188,7 @@
    "m2w64_c_compiler_stub",
    "make",
    "r-base",
+   "r-tibble",
    "sed",
    "zip"
   ]
@@ -223,14 +209,16 @@
   "host":{
    "__set__":true,
    "elements":[
-    "r-base"
+    "r-base",
+    "r-tibble"
    ]
   },
   "run":{
    "__set__":true,
    "elements":[
     "gcc-libs",
-    "r-base"
+    "r-base",
+    "r-tibble"
    ]
   },
   "test":{
@@ -256,14 +244,16 @@
   "host":{
    "__set__":true,
    "elements":[
-    "r-base"
+    "r-base",
+    "r-tibble"
    ]
   },
   "run":{
    "__set__":true,
    "elements":[
     "gcc-libs",
-    "r-base"
+    "r-base",
+    "r-tibble"
    ]
   },
   "test":{
@@ -279,5 +269,5 @@
   "https://cran.r-project.org/src/contrib/wrassp_0.1.8.tar.gz",
   "https://cran.r-project.org/src/contrib/Archive/wrassp/wrassp_0.1.8.tar.gz"
  ],
- "version":"0.1.8"
+ "version":"0.1.9"
 }
