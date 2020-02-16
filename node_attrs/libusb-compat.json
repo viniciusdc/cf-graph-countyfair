@@ -1,5 +1,38 @@
 {
- "bad":false,
+ "bad":{
+  "code":404,
+  "exception":"HTTP Error 404: Not Found",
+  "traceback":[
+   "Traceback (most recent call last):",
+   "  File \"/root/repo/cf-scripts/conda_forge_tick/auto_tick.py\", line 654, in main",
+   "    migrator_uid, pr_json = run(",
+   "  File \"/root/repo/cf-scripts/conda_forge_tick/auto_tick.py\", line 139, in run",
+   "    migrate_return = migrator.migrate(recipe_dir, feedstock_ctx.attrs, **kwargs)",
+   "  File \"/root/repo/cf-scripts/conda_forge_tick/migrators/version.py\", line 223, in migrate",
+   "    new_patterns = self.get_hash_patterns(\"meta.yaml\", urls, hash_type)",
+   "  File \"/root/repo/cf-scripts/conda_forge_tick/migrators/version.py\", line 102, in get_hash_patterns",
+   "    hash_ = hash_url(url, hash_type)",
+   "  File \"/opt/conda/envs/run_env/lib/python3.8/site-packages/rever/tools.xsh\", line 207, in hash_url",
+   "    for b in stream_url_progress(url, verb='Hashing', quiet=quiet):",
+   "  File \"/opt/conda/envs/run_env/lib/python3.8/site-packages/rever/tools.xsh\", line 179, in stream_url_progress",
+   "    with urllib.request.urlopen(url) as f:",
+   "  File \"/opt/conda/envs/run_env/lib/python3.8/urllib/request.py\", line 222, in urlopen",
+   "    return opener.open(url, data, timeout)",
+   "  File \"/opt/conda/envs/run_env/lib/python3.8/urllib/request.py\", line 531, in open",
+   "    response = meth(req, response)",
+   "  File \"/opt/conda/envs/run_env/lib/python3.8/urllib/request.py\", line 640, in http_response",
+   "    response = self.parent.error(",
+   "  File \"/opt/conda/envs/run_env/lib/python3.8/urllib/request.py\", line 569, in error",
+   "    return self._call_chain(*args)",
+   "  File \"/opt/conda/envs/run_env/lib/python3.8/urllib/request.py\", line 502, in _call_chain",
+   "    result = func(*args)",
+   "  File \"/opt/conda/envs/run_env/lib/python3.8/urllib/request.py\", line 649, in http_error_default",
+   "    raise HTTPError(req.full_url, code, msg, hdrs, fp)",
+   "urllib.error.HTTPError: HTTP Error 404: Not Found",
+   ""
+  ],
+  "url":"http://downloads.sourceforge.net/libusb/libusb-1.0.4.tar.gz"
+ },
  "conda-forge.yml":{},
  "feedstock_name":"libusb-compat",
  "hash_type":"sha256",
@@ -72,7 +105,7 @@
   }
  },
  "name":"libusb-compat",
- "new_version":false,
+ "new_version":"1.0.4",
  "raw_meta_yaml":"{% set version = \"0.1.12\" %}\n\npackage:\n  name: libusb-compat\n  version: {{ version }}\n\nsource:\n  url: http://downloads.sourceforge.net/libusb/libusb-{{ version }}.tar.gz\n  sha256: 37f6f7d9de74196eb5fc0bbe0aea9b5c939de7f500acba3af6fd643f3b538b44\n\nbuild:\n  number: 0\n  run_exports:\n    # This package is very unlikely to change in the near future as it is\n    # legacy code\n    - {{ pin_subpackage('libusb-compat') }}\n  # For now, start with linux builds ony\n  skip: True  # [not linux]\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n    - libtool  # [unix]\n    - pkg-config  # [unix]\n    - make  # [unix]\n\ntest:\n  commands:\n    - test -f $PREFIX/include/usb.h\n    - test -f $PREFIX/include/usbpp.h\n    - test -f $PREFIX/bin/libusb-config\n    - test -f $PREFIX/lib/libusb.so\n    - test -f $PREFIX/lib/libusb-0.1.so.4\n\nabout:\n  home: https://sourceforge.net/projects/libusb/files/libusb-0.1%20%28LEGACY%29/\n  license: LGPL-2.1\n  license_family: LGPL\n  license_file: LICENSE\n  summary: '(Legacy) A cross-platform library that gives apps easy access to USB devices'\n\nextra:\n  recipe-maintainers:\n    - hmaarrfk\n",
  "req":{
   "__set__":true,
