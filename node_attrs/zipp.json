@@ -186,6 +186,23 @@
     "migrator_version",
     "version"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/376281342.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"Version",
+    "migrator_version":0,
+    "version":"3.0.0"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "version"
+   ]
   }
  ],
  "bad":false,
@@ -281,7 +298,7 @@
   }
  },
  "name":"zipp",
- "new_version":"2.2.1",
+ "new_version":"3.0.0",
  "pinning_version":"2020.02.12",
  "raw_meta_yaml":"{% set name = \"zipp\" %}\n{% set version = \"2.2.0\" %}\n\npackage:\n  name: \"{{ name|lower }}\"\n  version: \"{{ version }}\"\n\nsource:\n  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz\n  sha256: 5c56e330306215cd3553342cfafc73dda2c60792384117893f3a83f8a1209f50\n  patches:\n    # See https://github.com/jaraco/zipp/pull/30\n    - use-scm-version.patch\n\nbuild:\n  number: 0\n  noarch: python\n  script: \"{{ PYTHON }} -m pip install . --no-deps --ignore-installed -vv \"\n\nrequirements:\n  host:\n    - pip\n    - python >=3.6\n    - setuptools_scm >=3.4\n    - toml\n  run:\n    - python >=3.6\n\ntest:\n  source_files:\n    - test_zipp.py\n  requires:\n    - pip\n    # this is a downstream that has a version requirement on zipp\n    - importlib_metadata\n    - jaraco.itertools\n  imports:\n    - zipp\n  commands:\n    - python -m unittest test_zipp.py\n    - pip check\n\nabout:\n  home: https://github.com/jaraco/zipp\n  license: MIT\n  license_family: MIT\n  license_file: LICENSE\n  summary: A pathlib-compatible Zipfile object wrapper\n  doc_url: https://zipp.readthedocs.io/en/latest\n  dev_url: https://github.com/jaraco/zipp\n\nextra:\n  recipe-maintainers:\n    - nehaljwani\n",
  "req":{
