@@ -268,6 +268,23 @@
     "migrator_version",
     "version"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/376743485.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"Version",
+    "migrator_version":0,
+    "version":"10_1_5"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "version"
+   ]
   }
  ],
  "bad":false,
@@ -373,8 +390,8 @@
   }
  },
  "name":"orekit",
- "new_version":"10_1_4",
- "pinning_version":"2020.01.28",
+ "new_version":"10_1_5",
+ "pinning_version":"2020.02.12",
  "raw_meta_yaml":"{% set name = \"orekit\" %}\n{% set version = \"10.0\" %}\n{% set artifact_filename = \"v10_0_4\" %}\n{% set sha256 = \"d2ac8c4d8613e89821afb562e77d7c18518d0201e1b3d7e06839d98f873bb7ba\" %}  # [not osx]\n{% set sha256 = \"b217a078823125d187f07d8b422c6e4d5d2a7f042ea40f875ad2a87c3f8672b3\" %}  # [osx]\n\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  fn: {{ artifact_filename }}.zip  # [not osx]\n  url: https://github.com/petrushy/orekit_python_artifacts/archive/{{ artifact_filename }}.zip  # [not osx]\n  fn: {{ artifact_filename }}.tar.gz  # [osx]\n  url: https://github.com/petrushy/orekit_python_artifacts/archive/{{ artifact_filename }}.tar.gz  # [osx]\n  sha256: {{ sha256 }}\n\nbuild:\n  number: 8\n\n  rpaths:\n    - lib/\n    - jre/lib/amd64/\n    - jre/lib/amd64/server/\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n  host:\n    - python\n    - setuptools\n    - jcc >=3.6\n    # Force anaconda openjdk \n    - openjdk 8.0.152\n\n  run:\n    - python\n    # Force anaconda openjdk\n    - openjdk 8.0.152\n\ntest:\n  imports:\n    - orekit\n\n  source_files:\n    - test/*.py\n    - test/orekit-data.zip\n    - test/resources.zip\n\nabout:\n  home: https://www.orekit.org/forge/projects/orekit-python-wrapper\n  license: Apache-2.0\n  license_family: Apache\n  license_file: LICENSE.txt\n  summary: 'An accurate and efficient core layer for space flight dynamics applications'\n\n  description:\n    Orekit aims at providing accurate and efficient low level components for\n    the development of flight dynamics applications. It is designed to be\n    easily used in very different contexts, from quick studies up to critical operations.\n    As a library, Orekit provides basic elements (orbits, dates, attitude, frames, ...) and\n    various algorithms to handle them (conversions, propagations, pointing, ....).\n\n    The Orekit library is written in java. This package provides a python wrapper to that library.\n\n  doc_url: https://www.orekit.org/static/apidocs/\n\nextra:\n  recipe-maintainers:\n    - petrushy\n",
  "req":{
   "__set__":true,
