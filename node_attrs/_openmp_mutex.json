@@ -2,7 +2,6 @@
  "bad":"Upstream: Error getting upstream version",
  "conda-forge.yml":{
   "provider":{
-   "linux_aarch64":"default",
    "linux_ppc64le":"default"
   }
  },
@@ -25,14 +24,18 @@
     "_openmp_mutex",
     "_openmp_mutex"
    ],
-   "number":"1",
    "run_exports":[
     "subpackage_stub",
     "subpackage_stub",
     "subpackage_stub"
    ],
    "skip":true,
-   "string":"1_llvm"
+   "string":"0_llvm",
+   "track_features":[
+    "llvm_openmp",
+    "llvm_openmp",
+    "llvm_openmp"
+   ]
   },
   "extra":{
    "recipe-maintainers":[
@@ -97,7 +100,7 @@
   }
  },
  "name":"_openmp_mutex",
- "raw_meta_yaml":"{% set name = \"_openmp_mutex\" %}\n{% set version = \"4.5\" %}\n{% set build = \"1\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  path: .\n\nbuild:\n  number: {{ build }}\n  string: {{ build }}_llvm\n  skip: true  # [not linux]\n  always_include_files:\n    # this major version has to match the libgomp version from gcc\n    - lib/libgomp.so.1\n  # Remove track_features because directly depending on mutex=*=*llvm\n  # would make the downstream package have low priority\n  # For eg: newer blas packages are not used by the solver\n  # track_features:\n  #  - llvm_openmp\n  ignore_run_exports:\n    - _openmp_mutex\n  run_exports:\n    - {{ pin_subpackage('_openmp_mutex', max_pin=None) }}\n\nrequirements:\n  host:\n    - llvm-openmp >=9.0.1\n  run:\n    - llvm-openmp >=9.0.1\n    - _libgcc_mutex {{ _libgcc_mutex }}  # [linux64 or ppc64le]\n\ntest:\n  requires:\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n  commands:\n    - test -f $PREFIX/lib/libgomp.so.1\n    - if [ ! \"$PREFIX/lib/libgomp.so.1\" -ef \"$PREFIX/lib/libomp.so\" ]; then exit 1; fi\n    - rm -f omp_hello && ${CC} -v -fopenmp omp_hello.c -o omp_hello && ./omp_hello\n    - ldd omp_hello  # [linux]\n    - rm -f omp_hello && ${CXX} -v -fopenmp omp_hello.c -o omp_hello && ./omp_hello\n    - ldd omp_hello  # [linux]\n  files:\n    - omp_hello.c\n\nabout:\n  summary: OpenMP Implementation Mutex\n  license: BSD-3-Clause\n  license_file: LICENSE\n  home: https://github.com/conda-forge/openmp-feedstock\n\nextra:\n  recipe-maintainers:\n    - isuruf\n    - beckermr\n",
+ "raw_meta_yaml":"{% set name = \"_openmp_mutex\" %}\n{% set version = \"4.5\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  path: .\n\nbuild:\n  string: 0_llvm\n  skip: true  # [not (linux64 or ppc64le)]\n  always_include_files:\n    # this major version has to match the libgomp version from gcc\n    - lib/libgomp.so.1\n  track_features:\n    - llvm_openmp\n  ignore_run_exports:\n    - _openmp_mutex\n  run_exports:\n    - {{ pin_subpackage('_openmp_mutex', max_pin=None) }}\n\nrequirements:\n  host:\n    - llvm-openmp >=9.0.1\n  run:\n    - llvm-openmp >=9.0.1\n    # the selector here serves no real purpose, but conda appears\n    # to error without it, so here we are\n    - _libgcc_mutex {{ _libgcc_mutex }}  # [linux]\n\ntest:\n  requires:\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n  commands:\n    - test -f $PREFIX/lib/libgomp.so.1\n    - if [ ! \"$PREFIX/lib/libgomp.so.1\" -ef \"$PREFIX/lib/libomp.so\" ]; then exit 1; fi\n    - rm -f omp_hello && ${CC} -v -fopenmp omp_hello.c -o omp_hello && ./omp_hello\n    - ldd omp_hello  # [linux]\n    - rm -f omp_hello && ${CXX} -v -fopenmp omp_hello.c -o omp_hello && ./omp_hello\n    - ldd omp_hello  # [linux]\n  files:\n    - omp_hello.c\n\nabout:\n  summary: OpenMP Implementation Mutex\n  license: BSD-3-Clause\n  license_file: LICENSE\n  home: https://github.com/conda-forge/openmp-feedstock\n\nextra:\n  recipe-maintainers:\n    - isuruf\n    - beckermr\n",
  "req":{
   "__set__":true,
   "elements":[
