@@ -79,6 +79,23 @@
     "migrator_version",
     "name"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/376500593.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"Version",
+    "migrator_version":0,
+    "version":"2.9_2"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "version"
+   ]
   }
  ],
  "bad":false,
@@ -226,8 +243,8 @@
   }
  },
  "name":"r-mboost",
- "new_version":"2.9_1",
- "pinning_version":"2019.07.15",
+ "new_version":"2.9_2",
+ "pinning_version":"2020.02.12",
  "raw_meta_yaml":"{% set version = '2.9-1' %}\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-mboost\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  fn: mboost_{{ version }}.tar.gz\n  url:\n    - {{ cran_mirror }}/src/contrib/mboost_{{ version }}.tar.gz\n    - {{ cran_mirror }}/src/contrib/Archive/mboost/mboost_{{ version }}.tar.gz\n  sha256: 67ed26093fc2c1e57d7fac842a51a0de0162e448d4dab09c0054baee801f2a0a\n\nbuild:\n  merge_build_host: True  # [win]\n  number: 1001\n  skip: true  # [win32]\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - {{ compiler('c') }}        # [not win]\n    - {{ compiler('m2w64_c') }}        # [win]\n    - {{posix}}filesystem        # [win]\n    - {{posix}}make\n    - {{posix}}sed               # [win]\n    - {{posix}}coreutils         # [win]\n    - {{posix}}zip               # [win]\n  host:\n    - r-base\n    - r-matrix\n    - r-lattice\n    - r-nnls\n    - r-partykit >=1.2_1\n    - r-quadprog\n    - r-stabs >=0.5_0\n    - r-survival\n  run:\n    - r-base\n    - {{native}}gcc-libs         # [win]\n    - r-matrix\n    - r-lattice\n    - r-nnls\n    - r-partykit >=1.2_1\n    - r-quadprog\n    - r-stabs >=0.5_0\n    - r-survival\n\ntest:\n  commands:\n    - $R -e \"library('mboost')\"           # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('mboost')\\\"\"  # [win]\n\nabout:\n  home: https://github.com/boost-R/mboost\n  license: GPL-2\n  summary: Functional gradient descent algorithm (boosting) for optimizing general risk functions\n    utilizing component-wise (penalised) least squares estimates or regression trees\n    as base-learners for fitting generalized linear, additive and interaction models\n    to potentially high-dimensional data.\n  license_family: GPL2\n  license_file: '{{ environ[\"PREFIX\"] }}/lib/R/share/licenses/GPL-2'\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n    - johanneskoester\n    - bgruening\n    - daler\n    - jdblischak\n    - cbrueffer\n",
  "req":{
   "__set__":true,
@@ -295,7 +312,7 @@
    "elements":[]
   }
  },
- "smithy_version":"3.4.1",
+ "smithy_version":"3.6.8",
  "strong_exports":false,
  "total_requirements":{
   "build":{
