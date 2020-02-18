@@ -50,7 +50,7 @@
    ]
   }
  ],
- "bad":"make_graph: 503",
+ "bad":false,
  "conda-forge.yml":{
   "compiler_stack":"comp7",
   "max_py_ver":"37",
@@ -141,7 +141,7 @@
   }
  },
  "name":"r-rtsne",
- "new_version":false,
+ "new_version":"0.15",
  "pinning_version":"2019.07.15",
  "raw_meta_yaml":"{% set version = '0.15' %}\n\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-rtsne\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  fn: Rtsne_{{ version }}.tar.gz\n  url:\n    - https://cran.r-project.org/src/contrib/Rtsne_{{ version }}.tar.gz\n    - https://cran.r-project.org/src/contrib/Archive/Rtsne/Rtsne_{{ version }}.tar.gz\n  sha256: 56376e4f0a382fad3d3d40e2cb0562224be5265b827622bcd235e8fc63df276c\n\nbuild:\n  merge_build_host: True  # [win]\n  number: 1\n  skip: true  # [win32]\n\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - posix                # [win]\n    - {{ compiler('c') }}        # [unix]\n    - {{ compiler('m2w64_c') }}  # [win]\n    - {{ compiler('cxx') }}        # [unix]\n    - {{ compiler('m2w64_cxx') }}  # [win]\n    - llvm-openmp  # [osx]\n  host:\n    - r-base\n    - r-rcpp\n\n  run:\n    - r-base\n    - r-rcpp\n    - llvm-openmp  # [osx]\n\ntest:\n  commands:\n    - $R -e \"library('Rtsne')\"  # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('Rtsne')\\\"\"  # [win]\n\nabout:\n  home: https://github.com/jkrijthe/Rtsne\n  license: BSD_3_clause\n  summary: An R wrapper around the fast T-distributed Stochastic Neighbor Embedding implementation\n    by Van der Maaten  (see <https://github.com/lvdmaaten/bhtsne/> for more information\n    on the original implementation).\n  license_family: BSD\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n",
  "req":{
