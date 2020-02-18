@@ -122,9 +122,6 @@
  ],
  "bad":false,
  "conda-forge.yml":{
-  "compiler_stack":"comp7",
-  "max_py_ver":"37",
-  "max_r_ver":"35",
   "provider":{
    "win":"azure"
   }
@@ -160,7 +157,7 @@
   },
   "package":{
    "name":"r-rvg",
-   "version":"0.2.3"
+   "version":"0.2.4"
   },
   "requirements":{
    "build":[
@@ -221,14 +218,14 @@
    ]
   },
   "source":{
-   "sha256":"f5311b1c70c5340d1f7a2bf30cc9b898e68c97caa07b98a8db0e6f802c9758df",
+   "sha256":"0544d3fbfcde6be5921a72505a82614654ee2d2b774cc4ab60f1c582ef95f089",
    "url":[
-    "https://cran.r-project.org/src/contrib/rvg_0.2.3.tar.gz",
-    "https://cran.r-project.org/src/contrib/Archive/rvg/rvg_0.2.3.tar.gz",
-    "https://cran.r-project.org/src/contrib/rvg_0.2.3.tar.gz",
-    "https://cran.r-project.org/src/contrib/Archive/rvg/rvg_0.2.3.tar.gz",
-    "https://cran.r-project.org/src/contrib/rvg_0.2.3.tar.gz",
-    "https://cran.r-project.org/src/contrib/Archive/rvg/rvg_0.2.3.tar.gz"
+    "https://cran.r-project.org/src/contrib/rvg_0.2.4.tar.gz",
+    "https://cran.r-project.org/src/contrib/Archive/rvg/rvg_0.2.4.tar.gz",
+    "https://cran.r-project.org/src/contrib/rvg_0.2.4.tar.gz",
+    "https://cran.r-project.org/src/contrib/Archive/rvg/rvg_0.2.4.tar.gz",
+    "https://cran.r-project.org/src/contrib/rvg_0.2.4.tar.gz",
+    "https://cran.r-project.org/src/contrib/Archive/rvg/rvg_0.2.4.tar.gz"
    ]
   },
   "test":{
@@ -242,7 +239,7 @@
  "name":"r-rvg",
  "new_version":"0.2.4",
  "pinning_version":"2020.02.12",
- "raw_meta_yaml":"{% set version = \"0.2.3\" %}\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-rvg\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  url:\n    - {{ cran_mirror }}/src/contrib/rvg_{{ version }}.tar.gz\n    - {{ cran_mirror }}/src/contrib/Archive/rvg/rvg_{{ version }}.tar.gz\n  sha256: f5311b1c70c5340d1f7a2bf30cc9b898e68c97caa07b98a8db0e6f802c9758df\n\nbuild:\n  merge_build_host: True  # [win]\n  number: 0\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - {{ compiler('c') }}              # [not win]\n    - {{ compiler('m2w64_c') }}        # [win]\n    - {{ compiler('cxx') }}            # [not win]\n    - {{ compiler('m2w64_cxx') }}      # [win]\n    - {{posix}}filesystem        # [win]\n    - {{posix}}make\n    - {{posix}}sed               # [win]\n    - {{posix}}coreutils         # [win]\n    - {{posix}}zip               # [win]\n  host:\n    - r-base\n    - r-rcpp >=0.12.12\n    - r-gdtools >=0.2.1\n    - r-officer >=0.3.6\n    - r-rlang\n    - r-xml2 >=1.0.0\n  run:\n    - r-base\n    - {{native}}gcc-libs         # [win]\n    - r-rcpp >=0.12.12\n    - r-gdtools >=0.2.1\n    - r-officer >=0.3.6\n    - r-rlang\n    - r-xml2 >=1.0.0\n\ntest:\n  commands:\n    - $R -e \"library('rvg')\"           # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('rvg')\\\"\"  # [win]\n\nabout:\n  home: https://github.com/davidgohel/rvg\n  license: GPL-3\n  summary: Vector Graphics devices for Microsoft  PowerPoint and Excel. Functions extending package\n    'officer' are provided to  embed 'DrawingML' graphics into 'Microsoft PowerPoint'\n    presentations and  'Microsoft Excel' workbooks.\n  license_family: GPL3\n  license_file: '{{ environ[\"PREFIX\"] }}/lib/R/share/licenses/GPL-3'\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n\n# Package: rvg\n# Type: Package\n# Title: R Graphics Devices for Vector Graphics Output\n# Version: 0.2.1\n# Authors@R: c( person(\"David\", \"Gohel\", role = c(\"aut\", \"cre\"), email = \"david.gohel@ardata.fr\"), person(\"Bob\", \"Rudis\", role = c(\"ctb\"), comment = \"the javascript code used by function set_attr\"), person(\"Francois\", \"Brunetti\", role = c(\"ctb\"), email = \"francois.brunetti@lysis-consultants.fr\", comment = \"clipping algorithms\") )\n# Description: Vector Graphics devices for Microsoft  PowerPoint and Excel. Functions extending package 'officer' are provided to  embed 'DrawingML' graphics into 'Microsoft PowerPoint' presentations and  'Microsoft Excel' workbooks.\n# License: GPL-3\n# Encoding: UTF-8\n# Depends: R (>= 3.0)\n# Imports: grDevices, Rcpp (>= 0.12.12), officer (>= 0.3.5), gdtools (>= 0.1.6), xml2 (>= 1.0.0), rlang\n# LinkingTo: Rcpp, gdtools\n# Suggests: htmltools, testthat, covr, grid\n# URL: https://github.com/davidgohel/rvg\n# BugReports: https://github.com/davidgohel/rvg/issues\n# RoxygenNote: 6.1.1\n# NeedsCompilation: yes\n# Packaged: 2019-06-24 22:50:51 UTC; davidgohel\n# Author: David Gohel [aut, cre], Bob Rudis [ctb] (the javascript code used by function set_attr), Francois Brunetti [ctb] (clipping algorithms)\n# Maintainer: David Gohel <david.gohel@ardata.fr>\n# Repository: CRAN\n# Date/Publication: 2019-06-25 09:30:03 UTC\n",
+ "raw_meta_yaml":"{% set version = \"0.2.4\" %}\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-rvg\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  url:\n    - {{ cran_mirror }}/src/contrib/rvg_{{ version }}.tar.gz\n    - {{ cran_mirror }}/src/contrib/Archive/rvg/rvg_{{ version }}.tar.gz\n  sha256: 0544d3fbfcde6be5921a72505a82614654ee2d2b774cc4ab60f1c582ef95f089\n\nbuild:\n  merge_build_host: True  # [win]\n  number: 0\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - {{ compiler('c') }}              # [not win]\n    - {{ compiler('m2w64_c') }}        # [win]\n    - {{ compiler('cxx') }}            # [not win]\n    - {{ compiler('m2w64_cxx') }}      # [win]\n    - {{posix}}filesystem        # [win]\n    - {{posix}}make\n    - {{posix}}sed               # [win]\n    - {{posix}}coreutils         # [win]\n    - {{posix}}zip               # [win]\n  host:\n    - r-base\n    - r-rcpp >=0.12.12\n    - r-gdtools >=0.2.1\n    - r-officer >=0.3.6\n    - r-rlang\n    - r-xml2 >=1.0.0\n  run:\n    - r-base\n    - {{native}}gcc-libs         # [win]\n    - r-rcpp >=0.12.12\n    - r-gdtools >=0.2.1\n    - r-officer >=0.3.6\n    - r-rlang\n    - r-xml2 >=1.0.0\n\ntest:\n  commands:\n    - $R -e \"library('rvg')\"           # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('rvg')\\\"\"  # [win]\n\nabout:\n  home: https://github.com/davidgohel/rvg\n  license: GPL-3\n  summary: Vector Graphics devices for Microsoft  PowerPoint and Excel. Functions extending package\n    'officer' are provided to  embed 'DrawingML' graphics into 'Microsoft PowerPoint'\n    presentations and  'Microsoft Excel' workbooks.\n  license_family: GPL3\n  license_file: '{{ environ[\"PREFIX\"] }}/lib/R/share/licenses/GPL-3'\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n\n# Package: rvg\n# Type: Package\n# Title: R Graphics Devices for Vector Graphics Output\n# Version: 0.2.1\n# Authors@R: c( person(\"David\", \"Gohel\", role = c(\"aut\", \"cre\"), email = \"david.gohel@ardata.fr\"), person(\"Bob\", \"Rudis\", role = c(\"ctb\"), comment = \"the javascript code used by function set_attr\"), person(\"Francois\", \"Brunetti\", role = c(\"ctb\"), email = \"francois.brunetti@lysis-consultants.fr\", comment = \"clipping algorithms\") )\n# Description: Vector Graphics devices for Microsoft  PowerPoint and Excel. Functions extending package 'officer' are provided to  embed 'DrawingML' graphics into 'Microsoft PowerPoint' presentations and  'Microsoft Excel' workbooks.\n# License: GPL-3\n# Encoding: UTF-8\n# Depends: R (>= 3.0)\n# Imports: grDevices, Rcpp (>= 0.12.12), officer (>= 0.3.5), gdtools (>= 0.1.6), xml2 (>= 1.0.0), rlang\n# LinkingTo: Rcpp, gdtools\n# Suggests: htmltools, testthat, covr, grid\n# URL: https://github.com/davidgohel/rvg\n# BugReports: https://github.com/davidgohel/rvg/issues\n# RoxygenNote: 6.1.1\n# NeedsCompilation: yes\n# Packaged: 2019-06-24 22:50:51 UTC; davidgohel\n# Author: David Gohel [aut, cre], Bob Rudis [ctb] (the javascript code used by function set_attr), Francois Brunetti [ctb] (clipping algorithms)\n# Maintainer: David Gohel <david.gohel@ardata.fr>\n# Repository: CRAN\n# Date/Publication: 2019-06-25 09:30:03 UTC\n",
  "req":{
   "__set__":true,
   "elements":[
@@ -360,5 +357,5 @@
   "https://cran.r-project.org/src/contrib/rvg_0.2.1.tar.gz",
   "https://cran.r-project.org/src/contrib/Archive/rvg/rvg_0.2.1.tar.gz"
  ],
- "version":"0.2.3"
+ "version":"0.2.4"
 }
