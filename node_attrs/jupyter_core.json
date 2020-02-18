@@ -117,6 +117,23 @@
     "migrator_version",
     "version"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/376842070.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"Version",
+    "migrator_version":0,
+    "version":"4.6.3"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "version"
+   ]
   }
  ],
  "bad":false,
@@ -234,8 +251,8 @@
   }
  },
  "name":"jupyter_core",
- "new_version":"4.6.2",
- "pinning_version":"2020.01.28",
+ "new_version":"4.6.3",
+ "pinning_version":"2020.02.12",
  "raw_meta_yaml":"{% set version = \"4.6.2\" %}\n\npackage:\n  name: jupyter_core\n  version: {{ version }}\n\nsource:\n  url: https://pypi.io/packages/source/j/jupyter_core/jupyter_core-{{ version }}.tar.gz\n  sha256: 185dfe42800585ca860aa47b5fe0211ee2c33246576d2d664b0b0b8d22aacf3a\n\nbuild:\n  number: 0\n  script: {{ PYTHON }} -m pip install . --no-deps -vv\n  entry_points:\n    - jupyter = jupyter_core.command:main\n    - jupyter-migrate = jupyter_core.migrate:main\n    - jupyter-troubleshoot = jupyter_core.troubleshoot:main\n\nrequirements:\n  build:\n    - pip\n    - python\n  run:\n    - python\n    - pywin32  # [win]\n    - traitlets\n\n{% set skip_all = \"not test_not_on_path and not test_path_priority\" %}\n{% set skip_win_py2k = \" and not test_migrate_config\" %}\n{% set skip = skip_all %}  # [not(win and py2k)]\n{% set skip = skip_all ~ skip_win_py2k %}  # [win and py2k]\ntest:\n  requires:\n    - ipykernel\n    - mock  # [py2k]\n    - nose\n    - pytest\n  commands:\n    - jupyter -h\n    - jupyter-migrate -h\n    - jupyter-troubleshoot --help\n    - python -m pytest --pyargs jupyter_core -k \"{{ skip }}\"\n  imports:\n    - jupyter_core\n\nabout:\n  home: https://jupyter.org\n  license: BSD-3-Clause\n  license_family: BSD\n  license_file: COPYING.md\n  summary: Core common functionality of Jupyter projects.\n  dev_url: https://github.com/jupyter/jupyter_core\n  doc_url: https://jupyter-core.readthedocs.io\n  doc_source_url: https://github.com/jupyter/jupyter_core/tree/master/docs\n\nextra:\n  recipe-maintainers:\n    - jakirkham\n    - pelson\n    - minrk\n    - ocefpaf\n    - bollwyvl\n",
  "req":{
   "__set__":true,
