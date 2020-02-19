@@ -525,6 +525,23 @@
     "migrator_version",
     "version"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/377348481.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"Version",
+    "migrator_version":0,
+    "version":"2.2.1"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "version"
+   ]
   }
  ],
  "bad":false,
@@ -706,8 +723,8 @@
   }
  },
  "name":"snowflake-connector-python",
- "new_version":"2.2.0",
- "pinning_version":"2020.01.27",
+ "new_version":"2.2.1",
+ "pinning_version":"2020.02.19",
  "raw_meta_yaml":"{% set name = \"snowflake-connector-python\" %}\n{% set version = \"2.2.0\" %}\n\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz\n  sha256: ee6c9d26e80782022b75ccdfac778451b969d8daba68ab0915d1a5c3b0ec78b4\n  patches:\n    - 0001-Fixes-for-conda-build-with-Arrow-support.patch\n\nbuild:\n  number: 0\n  skip: true  # [py2k]\n  script: \n    - \"ENABLE_EXT_MODULES=true {{ PYTHON }} -m pip install . --no-deps -vvv\"  # [unix]\n    - \"{{ PYTHON }} -m pip install . --no-deps -vvv\"  # [win]\n  entry_points:\n    - snowflake-dump-ocsp-response = snowflake.connector.tool.dump_ocsp_response:main\n    - snowflake-dump-ocsp-response-cache = snowflake.connector.tool.dump_ocsp_response_cache:main\n    - snowflake-dump-certs = snowflake.connector.tool.dump_certs:main\n    - snowflake-export-certs = snowflake.connector.tool.export_certs:main\n\nrequirements:\n  build:\n    - {{ compiler('c') }}  # [unix]\n    - {{ compiler('cxx') }}  # [unix]\n  host:\n    - python\n    - pip\n    - cython  # [unix]\n    - pyarrow  # [unix]\n    - numpy 1.16.*  # [unix]\n  run:\n    - python\n    - azure-common <2.0.0\n    - azure-storage-blob <12.0.0\n    - boto3 >=1.4.4,<1.12.0\n    - botocore >=1.5.0,<1.15.0\n    - requests <2.23.0\n    - urllib3 >=1.20,<1.26.0\n    - certifi <2021.0.0\n    - pytz <2021.0\n    - pycryptodomex >=3.2,!=3.5.0,<4.0.0\n    - pyOpenSSL >=16.2.0,<21.0.0\n    - cffi >=1.9,<1.14\n    - cryptography >=1.8.2,<3.0.0\n    - ijson <3.0.0\n    - pyjwt <2.0.0\n    - idna <3.0.0\n    - oscrypto <2.0.0\n    - asn1crypto >0.24.0,<2.0.0\n    - keyring !=16.1.0   # [py3k]\n    - pyarrow >=0.15.1,<0.16.0  # [py>34]\n    - pandas <1.0.0  # [py>35]\n\ntest:\n  requires:\n    - pip\n  imports:\n    - snowflake\n    - snowflake.connector\n    - snowflake.connector.arrow_result  # [unix]\n  commands:\n    - pip check\n\nabout:\n  home: https://github.com/snowflakedb/snowflake-connector-python\n  license: Apache-2.0\n  license_family: Apache\n  license_file: LICENSE.txt\n  summary: 'Snowflake Connector for Python'\n  description: |\n    The Snowflake Connector for Python provides an interface for\n    developing Python applications that can connect to Snowflake\n    and perform all standard operations. It provides a programming\n    alternative to developing applications in Java or C/C++ using\n    the Snowflake JDBC or ODBC drivers.\n  doc_url: https://docs.snowflake.net/manuals/user-guide/python-connector.html\n  dev_url: https://github.com/snowflakedb/snowflake-connector-python\n\nextra:\n  recipe-maintainers:\n    - hajapy\n    - talues\n    - xhochy\n",
  "req":{
   "__set__":true,
@@ -791,7 +808,7 @@
    ]
   }
  },
- "smithy_version":"3.6.6",
+ "smithy_version":"3.6.8",
  "strong_exports":false,
  "total_requirements":{
   "build":{
