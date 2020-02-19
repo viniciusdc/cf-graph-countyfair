@@ -47,6 +47,23 @@
     "migrator_version",
     "name"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/376986007.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"Version",
+    "migrator_version":0,
+    "version":"0.6_15"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "version"
+   ]
   }
  ],
  "bad":false,
@@ -162,8 +179,8 @@
   }
  },
  "name":"r-klar",
- "new_version":"0.6_14",
- "pinning_version":"2019.07.15",
+ "new_version":"0.6_15",
+ "pinning_version":"2020.02.12",
  "raw_meta_yaml":"{% set version = '0.6-14' %}\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-klar\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  fn: klaR_{{ version }}.tar.gz\n  url:\n    - {{ cran_mirror }}/src/contrib/klaR_{{ version }}.tar.gz\n    - {{ cran_mirror }}/src/contrib/Archive/klaR/klaR_{{ version }}.tar.gz\n  sha256: 51e9d9149ba77874ccecc816a2a75619e2f9615c091f6e8969da20615c2b29bd\n\nbuild:\n  noarch: generic\n  merge_build_host: True  # [win]\n  number: 1001\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - {{posix}}zip               # [win]\n  host:\n    - r-base\n    - r-mass\n    - r-combinat\n    - r-questionr\n  run:\n    - r-base\n    - r-mass\n    - r-combinat\n    - r-questionr\n\ntest:\n  commands:\n    - $R -e \"library('klaR')\"           # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('klaR')\\\"\"  # [win]\n\nabout:\n  home: http://www.statistik.tu-dortmund.de\n  license: GPL-2\n  summary: Miscellaneous functions for classification and visualization, e.g. regularized discriminant\n    analysis, sknn() kernel-density naive Bayes,  an interface to 'svmlight' and stepclass()\n    wrapper variable selection  for supervised classification, partimat() visualization\n    of classification rules  and shardsplot() of cluster results as well as kmodes()\n    clustering for categorical data,  corclust() variable clustering, variable extraction\n    from different variable clustering models  and weight of evidence preprocessing.\n  license_family: GPL2\n  license_file: '{{ environ[\"PREFIX\"] }}/lib/R/share/licenses/GPL-2'\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n    - johanneskoester\n    - bgruening\n    - daler\n    - jdblischak\n    - cbrueffer\n    - dbast\n",
  "req":{
   "__set__":true,
@@ -202,7 +219,7 @@
    "elements":[]
   }
  },
- "smithy_version":"3.4.1",
+ "smithy_version":"3.6.8",
  "strong_exports":false,
  "total_requirements":{
   "build":{
