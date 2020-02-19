@@ -35,7 +35,11 @@
  ],
  "archived":true,
  "bad":false,
- "conda-forge.yml":{},
+ "conda-forge.yml":{
+  "bot":{
+   "automerge":true
+  }
+ },
  "feedstock_name":"genpy",
  "hash_type":"sha256",
  "meta_yaml":{
@@ -43,18 +47,23 @@
    "dev_url":"http://github.com/inducer/genpy",
    "home":"http://pypi.python.org/pypi/genpy",
    "license":"MIT",
+   "license_family":"MIT",
    "license_file":"LICENSE",
    "summary":"AST-based Python source generation"
   },
   "build":{
+   "noarch":"python",
    "number":"0",
-   "script":"python setup.py install --single-version-externally-managed --record record.txt"
+   "script":"-m pip install . -vv"
   },
   "extra":{
    "recipe-maintainers":[
     "inducer",
+    "isuruf",
     "inducer",
-    "inducer"
+    "isuruf",
+    "inducer",
+    "isuruf"
    ]
   },
   "package":{
@@ -62,22 +71,13 @@
    "version":"2016.1.3"
   },
   "requirements":{
-   "build":[
+   "host":[
     "python",
-    "setuptools",
-    "six",
-    "numpy",
-    "pytools",
+    "pip",
     "python",
-    "setuptools",
-    "six",
-    "numpy",
-    "pytools",
+    "pip",
     "python",
-    "setuptools",
-    "six",
-    "numpy",
-    "pytools"
+    "pip"
    ],
    "run":[
     "python",
@@ -95,7 +95,6 @@
    ]
   },
   "source":{
-   "fn":"genpy-2016.1.3.tar.gz",
    "sha256":"1c11726f1e8ace8bbdfc87816403c9a59f53a8c3d45c99187ae17c9725d87a91",
    "url":"https://pypi.io/packages/source/g/genpy/genpy-2016.1.3.tar.gz"
   },
@@ -110,31 +109,28 @@
  "name":"genpy",
  "new_version":false,
  "pinning_version":"2018.10.11",
- "raw_meta_yaml":"{% set name = \"genpy\" %}\n{% set version = \"2016.1.3\" %}\n{% set sha256 = \"1c11726f1e8ace8bbdfc87816403c9a59f53a8c3d45c99187ae17c9725d87a91\" %}\n\npackage:\n    name: {{ name|lower }}\n    version: {{ version }}\n\nsource:\n    fn: {{ name }}-{{ version }}.tar.gz\n    url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz\n    sha256: {{ sha256 }}\n\nbuild:\n    number: 0\n    script: python setup.py install --single-version-externally-managed --record record.txt\n\nrequirements:\n    build:\n        - python\n        - setuptools\n        - six\n        - numpy\n        - pytools\n    run:\n        - python\n        - numpy\n        - pytools\n        - six\n\ntest:\n    imports:\n        - {{ name }}\n\nabout:\n    home: http://pypi.python.org/pypi/genpy\n    license: MIT\n    license_file: LICENSE\n    summary: AST-based Python source generation\n    dev_url: http://github.com/inducer/genpy\n\nextra:\n    recipe-maintainers:\n        - inducer\n",
+ "raw_meta_yaml":"{% set name = \"genpy\" %}\n{% set version = \"2016.1.3\" %}\n{% set sha256 = \"1c11726f1e8ace8bbdfc87816403c9a59f53a8c3d45c99187ae17c9725d87a91\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz\n  sha256: {{ sha256 }}\n\nbuild:\n  number: 0\n  noarch: python\n  script: {{ PYTHON }} -m pip install . -vv\n\nrequirements:\n  host:\n    - python\n    - pip\n  run:\n    - python\n    - numpy\n    - pytools\n    - six\n\ntest:\n  imports:\n    - {{ name }}\n\nabout:\n  home: http://pypi.python.org/pypi/genpy\n  license: MIT\n  license_file: LICENSE\n  license_family: MIT\n  summary: AST-based Python source generation\n  dev_url: http://github.com/inducer/genpy\n\nextra:\n  recipe-maintainers:\n    - inducer\n    - isuruf\n",
  "req":{
   "__set__":true,
   "elements":[
    "numpy",
+   "pip",
    "python",
    "pytools",
-   "setuptools",
    "six"
   ]
  },
  "requirements":{
   "build":{
    "__set__":true,
-   "elements":[
-    "numpy",
-    "python",
-    "pytools",
-    "setuptools",
-    "six"
-   ]
+   "elements":[]
   },
   "host":{
    "__set__":true,
-   "elements":[]
+   "elements":[
+    "pip",
+    "python"
+   ]
   },
   "run":{
    "__set__":true,
@@ -155,17 +151,14 @@
  "total_requirements":{
   "build":{
    "__set__":true,
-   "elements":[
-    "numpy",
-    "python",
-    "pytools",
-    "setuptools",
-    "six"
-   ]
+   "elements":[]
   },
   "host":{
    "__set__":true,
-   "elements":[]
+   "elements":[
+    "pip",
+    "python"
+   ]
   },
   "run":{
    "__set__":true,
