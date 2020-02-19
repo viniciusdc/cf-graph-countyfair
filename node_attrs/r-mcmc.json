@@ -86,9 +86,6 @@
  ],
  "bad":false,
  "conda-forge.yml":{
-  "compiler_stack":"comp7",
-  "max_py_ver":"37",
-  "max_r_ver":"35",
   "provider":{
    "win":"azure"
   }
@@ -100,11 +97,12 @@
    "home":"http://www.stat.umn.edu/geyer/mcmc/, https://github.com/cjgeyer/mcmc",
    "license":"MIT",
    "license_family":"MIT",
+   "license_file":"LICENSE",
    "summary":"Simulates continuous distributions of random vectors using Markov chain Monte Carlo (MCMC).  Users specify the distribution by an R function that evaluates the log unnormalized density.  Algorithms are random walk Metropolis algorithm (function metrop), simulated tempering (function temper), and morphometric random walk Metropolis (Johnson and Geyer, 2012, <https://doi.org/10.1214/12-AOS1048>, function morph.metrop), which achieves geometric ergodicity by change of variable."
   },
   "build":{
    "merge_build_host":true,
-   "number":"1",
+   "number":"0",
    "rpaths":[
     "lib/R/lib/",
     "lib/",
@@ -138,7 +136,7 @@
   },
   "package":{
    "name":"r-mcmc",
-   "version":"0.9_6"
+   "version":"0.9_6.1"
   },
   "requirements":{
    "build":[
@@ -159,15 +157,15 @@
    ]
   },
   "source":{
-   "fn":"mcmc_0.9-6.tar.gz",
-   "sha256":"443a189fff907830627029dd55d925db9a70562d8bda7bfae97414ab955186b9",
+   "fn":"mcmc_0.9-6.1.tar.gz",
+   "sha256":"692bb1cd4a9d09ddcbec3bcaaa4daccd06303f12188dfe51a95b467f558336c4",
    "url":[
-    "https://cran.r-project.org/src/contrib/mcmc_0.9-6.tar.gz",
-    "https://cran.r-project.org/src/contrib/Archive/mcmc/mcmc_0.9-6.tar.gz",
-    "https://cran.r-project.org/src/contrib/mcmc_0.9-6.tar.gz",
-    "https://cran.r-project.org/src/contrib/Archive/mcmc/mcmc_0.9-6.tar.gz",
-    "https://cran.r-project.org/src/contrib/mcmc_0.9-6.tar.gz",
-    "https://cran.r-project.org/src/contrib/Archive/mcmc/mcmc_0.9-6.tar.gz"
+    "https://cran.r-project.org/src/contrib/mcmc_0.9-6.1.tar.gz",
+    "https://cran.r-project.org/src/contrib/Archive/mcmc/mcmc_0.9-6.1.tar.gz",
+    "https://cran.r-project.org/src/contrib/mcmc_0.9-6.1.tar.gz",
+    "https://cran.r-project.org/src/contrib/Archive/mcmc/mcmc_0.9-6.1.tar.gz",
+    "https://cran.r-project.org/src/contrib/mcmc_0.9-6.1.tar.gz",
+    "https://cran.r-project.org/src/contrib/Archive/mcmc/mcmc_0.9-6.1.tar.gz"
    ]
   },
   "test":{
@@ -181,7 +179,7 @@
  "name":"r-mcmc",
  "new_version":"0.9_6.1",
  "pinning_version":"2020.02.12",
- "raw_meta_yaml":"{% set version = \"0.9-6\" %}\n\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-mcmc\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  fn: mcmc_{{ version }}.tar.gz\n  url:\n    - https://cran.r-project.org/src/contrib/mcmc_{{ version }}.tar.gz\n    - https://cran.r-project.org/src/contrib/Archive/mcmc/mcmc_{{ version }}.tar.gz\n  sha256: 443a189fff907830627029dd55d925db9a70562d8bda7bfae97414ab955186b9\n\nbuild:\n  merge_build_host: True  # [win]\n  number: 1\n  skip: true  # [win32]\n\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - posix                # [win]\n    - {{ compiler('c') }}        # [unix]\n    - {{ compiler('m2w64_c') }}  # [win]\n  host:\n    - r-base\n\n  run:\n    - r-base\n\ntest:\n  commands:\n    - $R -e \"library('mcmc')\"  # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('mcmc')\\\"\"  # [win]\n\nabout:\n  home: http://www.stat.umn.edu/geyer/mcmc/, https://github.com/cjgeyer/mcmc\n  license: MIT\n  summary: Simulates continuous distributions of random vectors using Markov chain Monte Carlo\n    (MCMC).  Users specify the distribution by an R function that evaluates the log\n    unnormalized density.  Algorithms are random walk Metropolis algorithm (function\n    metrop), simulated tempering (function temper), and morphometric random walk Metropolis\n    (Johnson and Geyer, 2012, <https://doi.org/10.1214/12-AOS1048>, function morph.metrop),\n    which achieves geometric ergodicity by change of variable.\n  license_family: MIT\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n    - dpryan79\n    - johanneskoester\n    - bgruening\n    - daler\n    - jdblischak\n",
+ "raw_meta_yaml":"{% set version = \"0.9-6.1\" %}\n\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-mcmc\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  fn: mcmc_{{ version }}.tar.gz\n  url:\n    - https://cran.r-project.org/src/contrib/mcmc_{{ version }}.tar.gz\n    - https://cran.r-project.org/src/contrib/Archive/mcmc/mcmc_{{ version }}.tar.gz\n  sha256: 692bb1cd4a9d09ddcbec3bcaaa4daccd06303f12188dfe51a95b467f558336c4\n\nbuild:\n  merge_build_host: True  # [win]\n  number: 0\n  skip: true  # [win32]\n\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - posix                # [win]\n    - {{ compiler('c') }}        # [unix]\n    - {{ compiler('m2w64_c') }}  # [win]\n  host:\n    - r-base\n\n  run:\n    - r-base\n\ntest:\n  commands:\n    - $R -e \"library('mcmc')\"  # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('mcmc')\\\"\"  # [win]\n\nabout:\n  home: http://www.stat.umn.edu/geyer/mcmc/, https://github.com/cjgeyer/mcmc\n  license: MIT\n  license_file: LICENSE\n  summary: Simulates continuous distributions of random vectors using Markov chain Monte Carlo\n    (MCMC).  Users specify the distribution by an R function that evaluates the log\n    unnormalized density.  Algorithms are random walk Metropolis algorithm (function\n    metrop), simulated tempering (function temper), and morphometric random walk Metropolis\n    (Johnson and Geyer, 2012, <https://doi.org/10.1214/12-AOS1048>, function morph.metrop),\n    which achieves geometric ergodicity by change of variable.\n  license_family: MIT\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n    - dpryan79\n    - johanneskoester\n    - bgruening\n    - daler\n    - jdblischak\n",
  "req":{
   "__set__":true,
   "elements":[
@@ -253,5 +251,5 @@
   "https://cran.r-project.org/src/contrib/mcmc_0.9-6.tar.gz",
   "https://cran.r-project.org/src/contrib/Archive/mcmc/mcmc_0.9-6.tar.gz"
  ],
- "version":"0.9_6"
+ "version":"0.9_6.1"
 }
