@@ -342,9 +342,6 @@
  ],
  "bad":false,
  "conda-forge.yml":{
-  "compiler_stack":"comp7",
-  "max_py_ver":"37",
-  "max_r_ver":"35",
   "provider":{
    "win":"azure"
   }
@@ -391,7 +388,7 @@
   },
   "package":{
    "name":"luigi",
-   "version":"2.8.11"
+   "version":"2.8.12"
   },
   "requirements":{
    "host":[
@@ -412,22 +409,22 @@
     "python",
     "setuptools",
     "tornado >=4.0,<6",
-    "python-daemon <2.2.0",
+    "python-daemon",
     "python-dateutil >=2.7.5,<3",
     "prometheus_client ==0.5.0",
     "toml <2.0.0",
     "python",
     "setuptools",
     "tornado >=4.0,<6",
-    "python-daemon <2.2.0",
+    "python-daemon",
     "python-dateutil >=2.7.5,<3",
     "prometheus_client ==0.5.0",
     "toml <2.0.0"
    ]
   },
   "source":{
-   "sha256":"19bf0a254efea6bd15cd2b7c4354cd00fd74b47c278d7a2bb9afcc44be40f704",
-   "url":"https://github.com/spotify/luigi/archive/2.8.11.tar.gz"
+   "sha256":"02d7af97d5254bc7f04f1070f3ac2e8bba559ca11e73f252a37bef3d2fbd1483",
+   "url":"https://github.com/spotify/luigi/archive/2.8.12.tar.gz"
   },
   "test":{
    "commands":[
@@ -439,10 +436,12 @@
     "luigid --help",
     "luigi-grep --help",
     "luigi-deps --help",
+    "pip check",
     "luigi --help",
     "luigid --help",
     "luigi-grep --help",
-    "luigi-deps --help"
+    "luigi-deps --help",
+    "pip check"
    ],
    "imports":[
     "luigi",
@@ -460,13 +459,18 @@
     "luigi.contrib.hdfs",
     "luigi.tools",
     "luigi.scheduler"
+   ],
+   "requires":[
+    "pip",
+    "pip",
+    "pip"
    ]
   }
  },
  "name":"luigi",
  "new_version":"2.8.12",
  "pinning_version":"2020.02.12",
- "raw_meta_yaml":"{% set version = \"2.8.11\" %}\n\npackage:\n  name: luigi\n  version: {{ version }}\n\nsource:\n  url: https://github.com/spotify/luigi/archive/{{ version }}.tar.gz\n  sha256: 19bf0a254efea6bd15cd2b7c4354cd00fd74b47c278d7a2bb9afcc44be40f704\n\nbuild:\n  number: 0\n  script: \"{{ PYTHON }} -m pip install . --no-deps -vv\"\n  entry_points:\n    - luigi = luigi.cmdline:luigi_run\n    - luigid = luigi.cmdline:luigid\n    - luigi-grep = luigi.tools.luigi_grep:main\n    - luigi-deps = luigi.tools.deps:main\n\nrequirements:\n  host:\n    - python\n    - pip\n  run:\n    - python\n    - setuptools\n    - tornado >=4.0,<6\n    - python-daemon <2.2.0  # [not win]\n    - python-dateutil >=2.7.5,<3\n    - enum34  # [py<34]\n    - prometheus_client ==0.5.0\n    - toml <2.0.0\n\ntest:\n  imports:\n    - luigi\n    - luigi.contrib\n    - luigi.contrib.hdfs\n    - luigi.tools\n    - luigi.scheduler\n  commands:\n    - luigi --help\n    - luigid --help\n    - luigi-grep --help\n    - luigi-deps --help\n\nabout:\n  home: https://github.com/spotify/luigi\n  license_file: LICENSE\n  license: Apache-2.0\n  license_family: Apache\n  summary: 'Workflow mgmgt + task scheduling + dependency resolution.'\n  dev_url: https://github.com/spotify/luigi\n  doc_url: https://luigi.readthedocs.io/en/stable/\n\nextra:\n  recipe-maintainers:\n    - ocefpaf\n    - kwilcox\n",
+ "raw_meta_yaml":"{% set version = \"2.8.12\" %}\n\npackage:\n  name: luigi\n  version: {{ version }}\n\nsource:\n  url: https://github.com/spotify/luigi/archive/{{ version }}.tar.gz\n  sha256: 02d7af97d5254bc7f04f1070f3ac2e8bba559ca11e73f252a37bef3d2fbd1483\n\nbuild:\n  number: 0\n  script: \"{{ PYTHON }} -m pip install . --no-deps -vv\"\n  entry_points:\n    - luigi = luigi.cmdline:luigi_run\n    - luigid = luigi.cmdline:luigid\n    - luigi-grep = luigi.tools.luigi_grep:main\n    - luigi-deps = luigi.tools.deps:main\n\nrequirements:\n  host:\n    - python\n    - pip\n  run:\n    - python\n    - setuptools\n    - tornado >=4.0,<6\n    # cf doesn't have this package to satisfy this dependency on win\n    # - python-daemon <2.2.0  # [win]\n    - python-daemon  # [not win]\n    - python-dateutil >=2.7.5,<3\n    - enum34 >1.1.0  # [py<34]\n    - prometheus_client ==0.5.0\n    - toml <2.0.0\n\ntest:\n  requires:\n    - pip\n  imports:\n    - luigi\n    - luigi.contrib\n    - luigi.contrib.hdfs\n    - luigi.tools\n    - luigi.scheduler\n  commands:\n    - luigi --help\n    - luigid --help\n    - luigi-grep --help\n    - luigi-deps --help\n    - pip check  # [not win]\n\nabout:\n  home: https://github.com/spotify/luigi\n  license_file: LICENSE\n  license: Apache-2.0\n  license_family: Apache\n  summary: 'Workflow mgmgt + task scheduling + dependency resolution.'\n  dev_url: https://github.com/spotify/luigi\n  doc_url: https://luigi.readthedocs.io/en/stable/\n\nextra:\n  recipe-maintainers:\n    - ocefpaf\n    - kwilcox\n",
  "req":{
   "__set__":true,
   "elements":[
@@ -506,7 +510,9 @@
   },
   "test":{
    "__set__":true,
-   "elements":[]
+   "elements":[
+    "pip"
+   ]
   }
  },
  "smithy_version":"3.6.8",
@@ -528,7 +534,7 @@
    "elements":[
     "prometheus_client ==0.5.0",
     "python",
-    "python-daemon <2.2.0",
+    "python-daemon",
     "python-dateutil >=2.7.5,<3",
     "setuptools",
     "toml <2.0.0",
@@ -537,9 +543,11 @@
   },
   "test":{
    "__set__":true,
-   "elements":[]
+   "elements":[
+    "pip"
+   ]
   }
  },
  "url":"https://github.com/spotify/luigi/archive/2.8.9.tar.gz",
- "version":"2.8.11"
+ "version":"2.8.12"
 }

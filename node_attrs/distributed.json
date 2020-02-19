@@ -658,14 +658,31 @@
    ]
   }
  ],
- "bad":false,
+ "bad":{
+  "exception":"Failed to put item: An error occurred (ValidationException) on request (VD1RU842NAQA16DN2E7B06HUJ3VV4KQNSO5AEMVJF66Q9ASUAAJG) on table (pr_json) when calling the PutItem operation: Attempting to store more than 38 significant digits in a Number",
+  "traceback":[
+   "Traceback (most recent call last):",
+   "  File \"/root/repo/cf-scripts/conda_forge_tick/auto_tick.py\", line 674, in main",
+   "    hash_type=attrs.get(\"hash_type\", \"sha256\"),",
+   "  File \"/root/repo/cf-scripts/conda_forge_tick/auto_tick.py\", line 210, in run",
+   "    PRJson.dump(pr_json)",
+   "  File \"/root/repo/cf-scripts/conda_forge_tick/dynamo_models.py\", line 33, in dump",
+   "    item.save()",
+   "  File \"/opt/conda/envs/run_env/lib/python3.7/site-packages/pynamodb/models.py\", line 405, in save",
+   "    data = self._get_connection().put_item(*args, **kwargs)",
+   "  File \"/opt/conda/envs/run_env/lib/python3.7/site-packages/pynamodb/connection/table.py\", line 139, in put_item",
+   "    return_item_collection_metrics=return_item_collection_metrics)",
+   "  File \"/opt/conda/envs/run_env/lib/python3.7/site-packages/pynamodb/connection/base.py\", line 972, in put_item",
+   "    six.raise_from(PutError(\"Failed to put item: {}\".format(e), e), None)",
+   "  File \"<string>\", line 3, in raise_from",
+   "pynamodb.exceptions.PutError: Failed to put item: An error occurred (ValidationException) on request (VD1RU842NAQA16DN2E7B06HUJ3VV4KQNSO5AEMVJF66Q9ASUAAJG) on table (pr_json) when calling the PutItem operation: Attempting to store more than 38 significant digits in a Number",
+   ""
+  ]
+ },
  "conda-forge.yml":{
-  "compiler_stack":"comp7",
-  "max_py_ver":"37",
-  "max_r_ver":"35",
   "provider":{
-   "osx":"circle",
-   "win":"azure"
+   "linux_aarch64":"default",
+   "linux_ppc64le":"default"
   }
  },
  "feedstock_name":"distributed",
@@ -694,8 +711,7 @@
     "dask-ssh=distributed.cli.dask_ssh:go",
     "dask-worker=distributed.cli.dask_worker:go"
    ],
-   "noarch":"python",
-   "number":"1",
+   "number":"0",
    "script":" -m pip install . --no-deps --ignore-installed --no-cache-dir -vvv"
   },
   "extra":{
@@ -728,56 +744,56 @@
   },
   "package":{
    "name":"distributed",
-   "version":"2.10.0"
+   "version":"2.11.0"
   },
   "requirements":{
    "host":[
-    "python >=3.6",
+    "python",
     "pip",
-    "python >=3.6",
+    "python",
     "pip",
-    "python >=3.6",
+    "python",
     "pip"
    ],
    "run":[
-    "python >=3.6",
+    "python",
     "click >=6.6",
     "cloudpickle >=0.2.2",
     "cytoolz >=0.7.4",
     "dask-core >=2.9.0",
-    "msgpack-python <1.0.0",
+    "msgpack-python >=0.6.0",
     "psutil >=5.0",
     "pyyaml",
     "sortedcontainers !=2.0.0,!=2.0.1",
-    "tblib",
+    "tblib >=1.6.0",
     "toolz >=0.7.4",
     "tornado >=5",
     "zict >=0.1.3",
     "setuptools",
-    "python >=3.6",
+    "python",
     "click >=6.6",
     "cloudpickle >=0.2.2",
     "cytoolz >=0.7.4",
     "dask-core >=2.9.0",
-    "msgpack-python <1.0.0",
+    "msgpack-python >=0.6.0",
     "psutil >=5.0",
     "pyyaml",
     "sortedcontainers !=2.0.0,!=2.0.1",
-    "tblib",
+    "tblib >=1.6.0",
     "toolz >=0.7.4",
     "tornado >=5",
     "zict >=0.1.3",
     "setuptools",
-    "python >=3.6",
+    "python",
     "click >=6.6",
     "cloudpickle >=0.2.2",
     "cytoolz >=0.7.4",
     "dask-core >=2.9.0",
-    "msgpack-python <1.0.0",
+    "msgpack-python >=0.6.0",
     "psutil >=5.0",
     "pyyaml",
     "sortedcontainers !=2.0.0,!=2.0.1",
-    "tblib",
+    "tblib >=1.6.0",
     "toolz >=0.7.4",
     "tornado >=5",
     "zict >=0.1.3",
@@ -785,8 +801,8 @@
    ]
   },
   "source":{
-   "sha256":"2f8cca741a20f776929cbad3545f2df64cf60207fb21f774ef24aad6f6589e8b",
-   "url":"https://pypi.io/packages/source/d/distributed/distributed-2.10.0.tar.gz"
+   "sha256":"8252e9e6387db3862c9b56b5e028b5a592fa82dcbe100bffc34be58ccd74e01c",
+   "url":"https://pypi.io/packages/source/d/distributed/distributed-2.11.0.tar.gz"
   },
   "test":{
    "commands":[
@@ -825,7 +841,7 @@
  "name":"distributed",
  "new_version":"2.11.0",
  "pinning_version":"2020.02.19",
- "raw_meta_yaml":"{% set version = \"2.10.0\" %}\n\npackage:\n  name: distributed\n  version: \"{{ version }}\"\n\nsource:\n  url: https://pypi.io/packages/source/d/distributed/distributed-{{ version }}.tar.gz\n  sha256: 2f8cca741a20f776929cbad3545f2df64cf60207fb21f774ef24aad6f6589e8b\n\nbuild:\n  number: 1\n  entry_points:\n    - dask-scheduler=distributed.cli.dask_scheduler:go\n    - dask-ssh=distributed.cli.dask_ssh:go\n    - dask-worker=distributed.cli.dask_worker:go\n  script: \"{{ PYTHON }} -m pip install . --no-deps --ignore-installed --no-cache-dir -vvv\"\n  noarch: python\n\nrequirements:\n  host:\n    - python >=3.6\n    - pip\n\n  run:\n    - python >=3.6\n    - click >=6.6\n    - cloudpickle >=0.2.2\n    - cytoolz >=0.7.4\n    - dask-core >=2.9.0\n    - msgpack-python <1.0.0\n    - psutil >=5.0\n    - pyyaml\n    - sortedcontainers !=2.0.0,!=2.0.1\n    - tblib\n    - toolz >=0.7.4\n    - tornado >=5\n    - zict >=0.1.3\n    - setuptools\n\ntest:\n  imports:\n    - distributed\n    - distributed.cli\n    - distributed.comm\n    - distributed.deploy\n    - distributed.diagnostics\n    - distributed.protocol\n  commands:\n    - dask-scheduler --help\n    - dask-ssh --help\n    - dask-worker --help\n\nabout:\n  home: http://distributed.readthedocs.io/en/latest/\n  license: BSD 3-Clause\n  license_file: LICENSE.txt\n  license_family: BSD\n  summary: 'Distributed computing with Dask'\n  description: |\n    Distributed is a lightweight library for distributed computing in Python.\n    It extends both the concurrent.futures and dask APIs to moderate sized\n    clusters.\n  doc_url: https://distributed.dask.org\n  doc_source_url: https://github.com/dask/distributed/blob/master/docs/source/index.rst\n  dev_url: https://github.com/dask/distributed\n\nextra:\n  recipe-maintainers:\n    - mrocklin\n    - jcrist\n    - martindurant\n    - jakirkham\n    - marcelotrevisani\n    - ogrisel\n    - tomaugspurger\n    - jrbourbeau\n",
+ "raw_meta_yaml":"{% set version = \"2.11.0\" %}\n\npackage:\n  name: distributed\n  version: \"{{ version }}\"\n\nsource:\n  url: https://pypi.io/packages/source/d/distributed/distributed-{{ version }}.tar.gz\n  sha256: 8252e9e6387db3862c9b56b5e028b5a592fa82dcbe100bffc34be58ccd74e01c\n\nbuild:\n  number: 0\n  entry_points:\n    - dask-scheduler=distributed.cli.dask_scheduler:go\n    - dask-ssh=distributed.cli.dask_ssh:go\n    - dask-worker=distributed.cli.dask_worker:go\n  script: \"{{ PYTHON }} -m pip install . --no-deps --ignore-installed --no-cache-dir -vvv\"\n  skip: True  # [py<36]\n\nrequirements:\n  host:\n    - python\n    - pip\n\n  run:\n    - python\n    - click >=6.6\n    - cloudpickle >=0.2.2\n    - cytoolz >=0.7.4\n    - dask-core >=2.9.0\n    - msgpack-python >=0.6.0\n    - psutil >=5.0\n    - pyyaml\n    - sortedcontainers !=2.0.0,!=2.0.1\n    - tblib >=1.6.0\n    - toolz >=0.7.4\n    - tornado >=5  # [py<38]\n    - tornado >=6.0.3  # [py>=38]\n    - zict >=0.1.3\n    - setuptools\n\ntest:\n  imports:\n    - distributed\n    - distributed.cli\n    - distributed.comm\n    - distributed.deploy\n    - distributed.diagnostics\n    - distributed.protocol\n  commands:\n    - dask-scheduler --help\n    - dask-ssh --help\n    - dask-worker --help\n\nabout:\n  home: http://distributed.readthedocs.io/en/latest/\n  license: BSD 3-Clause\n  license_file: LICENSE.txt\n  license_family: BSD\n  summary: 'Distributed computing with Dask'\n  description: |\n    Distributed is a lightweight library for distributed computing in Python.\n    It extends both the concurrent.futures and dask APIs to moderate sized\n    clusters.\n  doc_url: https://distributed.dask.org\n  doc_source_url: https://github.com/dask/distributed/blob/master/docs/source/index.rst\n  dev_url: https://github.com/dask/distributed\n\nextra:\n  recipe-maintainers:\n    - mrocklin\n    - jcrist\n    - martindurant\n    - jakirkham\n    - marcelotrevisani\n    - ogrisel\n    - tomaugspurger\n    - jrbourbeau\n",
  "req":{
   "__set__":true,
   "elements":[
@@ -893,7 +909,7 @@
    "__set__":true,
    "elements":[
     "pip",
-    "python >=3.6"
+    "python"
    ]
   },
   "run":{
@@ -903,13 +919,13 @@
     "cloudpickle >=0.2.2",
     "cytoolz >=0.7.4",
     "dask-core >=2.9.0",
-    "msgpack-python <1.0.0",
+    "msgpack-python >=0.6.0",
     "psutil >=5.0",
-    "python >=3.6",
+    "python",
     "pyyaml",
     "setuptools",
     "sortedcontainers !=2.0.0,!=2.0.1",
-    "tblib",
+    "tblib >=1.6.0",
     "toolz >=0.7.4",
     "tornado >=5",
     "zict >=0.1.3"
@@ -921,5 +937,5 @@
   }
  },
  "url":"https://pypi.io/packages/source/d/distributed/distributed-2.3.2.tar.gz",
- "version":"2.10.0"
+ "version":"2.11.0"
 }
