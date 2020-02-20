@@ -35,9 +35,9 @@
   },
   "build":{
    "entry_points":[
-    "compact = compaction.cli:main",
-    "compact = compaction.cli:main",
-    "compact = compaction.cli:main"
+    "compact = compaction.cli:compact",
+    "compact = compaction.cli:compact",
+    "compact = compaction.cli:compact"
    ],
    "noarch":"python",
    "number":"0",
@@ -52,7 +52,7 @@
   },
   "package":{
    "name":"compaction",
-   "version":"0.1.2"
+   "version":"0.2.0"
   },
   "requirements":{
    "host":[
@@ -88,29 +88,55 @@
    ]
   },
   "source":{
-   "sha256":"f13dfad27140295f850a1ea8a8b140d5ce483b3d3a4f2ca701203b7a9493ee87",
-   "url":"https://pypi.io/packages/source/c/compaction/compaction-0.1.2.tar.gz"
+   "sha256":"ea2fd5acc94255b50bd6d61f8f63df7b0419a45a177e9e9a6edb2a9dc64ce5b6",
+   "url":"https://github.com/mcflugen/compaction/archive/v0.2.0.tar.gz"
   },
   "test":{
    "commands":[
     "compact --help",
-    "compact --version",
+    "compact show --help",
+    "compact setup --help",
+    "compact run --help",
+    "mkdir example && compact run $(compact setup example)",
+    "pytest --mypy --pyargs compaction --doctest-modules -o doctest_optionflags=\"NORMALIZE_WHITESPACE IGNORE_EXCEPTION_DETAIL ALLOW_UNICODE\"",
     "compact --help",
-    "compact --version",
+    "compact show --help",
+    "compact setup --help",
+    "compact run --help",
+    "mkdir example && compact run $(compact setup example)",
+    "pytest --mypy --pyargs compaction --doctest-modules -o doctest_optionflags=\"NORMALIZE_WHITESPACE IGNORE_EXCEPTION_DETAIL ALLOW_UNICODE\"",
     "compact --help",
-    "compact --version"
+    "compact show --help",
+    "compact setup --help",
+    "compact run --help",
+    "mkdir example && compact run $(compact setup example)",
+    "pytest --mypy --pyargs compaction --doctest-modules -o doctest_optionflags=\"NORMALIZE_WHITESPACE IGNORE_EXCEPTION_DETAIL ALLOW_UNICODE\""
    ],
    "imports":[
     "compaction",
     "compaction",
     "compaction"
+   ],
+   "requires":[
+    "pytest",
+    "pytest-benchmark",
+    "pytest-datadir",
+    "pytest-mypy",
+    "pytest",
+    "pytest-benchmark",
+    "pytest-datadir",
+    "pytest-mypy",
+    "pytest",
+    "pytest-benchmark",
+    "pytest-datadir",
+    "pytest-mypy"
    ]
   }
  },
  "name":"compaction",
  "new_version":"0.2.0",
  "pinning_version":"2020.02.19",
- "raw_meta_yaml":"{% set version = \"0.1.2\" %}\n\npackage:\n  name: compaction\n  version: {{ version }}\n\nsource:\n  url: https://pypi.io/packages/source/c/compaction/compaction-{{ version }}.tar.gz\n  sha256: f13dfad27140295f850a1ea8a8b140d5ce483b3d3a4f2ca701203b7a9493ee87\n\nbuild:\n  noarch: python\n  number: 0\n  script: \"{{ PYTHON }} -m pip install . -vv\"\n  entry_points:\n    - compact = compaction.cli:main\n\nrequirements:\n  host:\n    - python >=3\n    - pip\n  run:\n    - python >=3\n    - click\n    - landlab\n    - numpy\n    - pandas\n    - pyyaml\n    - scipy\n\ntest:\n  commands:\n    - compact --help\n    - compact --version\n  imports:\n    - compaction\n\nabout:\n  home: http://github.com/mcflugen/compaction\n  license: MIT\n  license_family: MIT\n  license_file: LICENSE\n  summary: \"Compact columns of sediment\"\n  description: |\n    Sediment compaction and corresponding porosity variations are modeled\n    by a simple exponential with depth. The porosity solution is derived\n    analytically as a complicated function of pore water pressure, but the\n    underlying form is shown to approximate an exponential except near the\n    surface where the behavior is linear.\n  doc_url: http://compaction.readthedocs.io\n  dev_url: http://github.com/mcflugen/compaction\n\nextra:\n  recipe-maintainers:\n    - mcflugen\n",
+ "raw_meta_yaml":"{% set name = \"compaction\" %}\n{% set version = \"0.2.0\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  url: https://github.com/mcflugen/{{ name }}/archive/v{{ version }}.tar.gz\n  sha256: ea2fd5acc94255b50bd6d61f8f63df7b0419a45a177e9e9a6edb2a9dc64ce5b6\n\nbuild:\n  noarch: python\n  number: 0\n  script: \"{{ PYTHON }} -m pip install . -vv\"\n  entry_points:\n    - compact = compaction.cli:compact\n\nrequirements:\n  host:\n    - python >=3\n    - pip\n  run:\n    - python >=3\n    - click\n    - landlab\n    - numpy\n    - pandas\n    - pyyaml\n    - scipy\n\ntest:\n  requires:\n    - pytest\n    - pytest-benchmark\n    - pytest-datadir\n    - pytest-mypy\n  imports:\n    - compaction\n  commands:\n    - compact --help\n    - compact show --help\n    - compact setup --help\n    - compact run --help\n    - mkdir example && compact run $(compact setup example)\n    - pytest --mypy --pyargs compaction --doctest-modules -o doctest_optionflags=\"NORMALIZE_WHITESPACE IGNORE_EXCEPTION_DETAIL ALLOW_UNICODE\"\n\nabout:\n  home: http://github.com/mcflugen/compaction\n  license: MIT\n  license_family: MIT\n  license_file: LICENSE\n  summary: \"Compact columns of sediment\"\n  description: |\n    Sediment compaction and corresponding porosity variations are modeled\n    by a simple exponential with depth. The porosity solution is derived\n    analytically as a complicated function of pore water pressure, but the\n    underlying form is shown to approximate an exponential except near the\n    surface where the behavior is linear.\n  doc_url: http://compaction.readthedocs.io\n  dev_url: http://github.com/mcflugen/compaction\n\nextra:\n  recipe-maintainers:\n    - mcflugen\n",
  "req":{
   "__set__":true,
   "elements":[
@@ -150,7 +176,12 @@
   },
   "test":{
    "__set__":true,
-   "elements":[]
+   "elements":[
+    "pytest",
+    "pytest-benchmark",
+    "pytest-datadir",
+    "pytest-mypy"
+   ]
   }
  },
  "smithy_version":"3.6.8",
@@ -181,9 +212,14 @@
   },
   "test":{
    "__set__":true,
-   "elements":[]
+   "elements":[
+    "pytest",
+    "pytest-benchmark",
+    "pytest-datadir",
+    "pytest-mypy"
+   ]
   }
  },
  "url":"https://pypi.io/packages/source/c/compaction/compaction-0.1.2.tar.gz",
- "version":"0.1.2"
+ "version":"0.2.0"
 }
