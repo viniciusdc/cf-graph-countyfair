@@ -334,7 +334,7 @@
    "summary":"ParaView is an open-source, multi-platform data analysis and visualization application based on Visualization Toolkit (VTK)."
   },
   "build":{
-   "number":"1",
+   "number":"2",
    "run_exports":[
     "subpackage_stub",
     "subpackage_stub",
@@ -354,7 +354,7 @@
   },
   "package":{
    "name":"paraview",
-   "version":"5.8.0rc3"
+   "version":"5.8.0"
   },
   "requirements":{
    "build":[
@@ -484,8 +484,8 @@
    ]
   },
   "source":{
-   "md5":"35f2979bef7efbd90b495648625c9c87",
-   "url":"http://paraview.org/files/v5.8/ParaView-v5.8.0-RC3.tar.gz"
+   "md5":"8151ed24eeeae5bc8ba038bb544eb409",
+   "url":"http://paraview.org/files/v5.8/ParaView-v5.8.0.tar.gz"
   },
   "test":{
    "commands":[
@@ -541,7 +541,7 @@
  "name":"paraview",
  "new_version":"5.7.1",
  "pinning_version":"2020.02.19",
- "raw_meta_yaml":"{% set version = \"5.8.0rc3\" %}\n{% set maj_min = \".\".join(version.split(\".\")[:2]) %}\n\npackage:\n  name: paraview\n  version: {{ version }}\n\nsource:\n  url: http://paraview.org/files/v{{ maj_min }}/ParaView-v5.8.0-RC3.tar.gz\n  md5: 35f2979bef7efbd90b495648625c9c87\n\nbuild:\n  number: 1\n  skip: true  # [win and vc<14]\n  skip: true  # [py2k]\n  run_exports:\n    - {{ pin_subpackage('paraview', max_pin='x.x') }}\n\nrequirements:\n  build:\n    - cmake\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n    - eigen\n    - {{ cdt('xorg-x11-proto-devel') }}  # [linux]\n    - {{ cdt('libx11-devel') }}          # [linux]\n    - {{ cdt('libxext-devel') }}         # [linux]\n    - {{ cdt('libxrender-devel') }}      # [linux]\n    - {{ cdt('mesa-libgl-devel') }}      # [linux]\n    - {{ cdt('mesa-libegl-devel') }}     # [linux]\n    - {{ cdt('mesa-dri-drivers') }}      # [linux]\n    - {{ cdt('libxau-devel') }}          # [linux]\n    - {{ cdt('alsa-lib-devel') }}        # [linux]\n    - {{ cdt('gtk2-devel') }}            # [linux]\n    - {{ cdt('gtkmm24-devel') }}         # [linux]\n    - {{ cdt('libdrm-devel') }}          # [linux]\n    - {{ cdt('libxcomposite-devel') }}   # [linux]\n    - {{ cdt('libxcursor-devel') }}      # [linux]\n    - {{ cdt('libxi-devel') }}           # [linux]\n    - {{ cdt('libxrandr-devel') }}       # [linux]\n    - {{ cdt('pciutils-devel') }}        # [linux]\n    - {{ cdt('libxscrnsaver-devel') }}   # [linux]\n    - {{ cdt('libxtst-devel') }}         # [linux]\n    - {{ cdt('libselinux-devel') }}      # [linux]\n    - {{ cdt('libxdamage') }}            # [linux]\n    - {{ cdt('libxdamage-devel') }}      # [linux]\n    - {{ cdt('libxfixes') }}             # [linux]\n    - {{ cdt('libxfixes-devel') }}       # [linux]\n    - {{ cdt('libxxf86vm') }}            # [linux]\n    - {{ cdt('libxrandr') }}             # [linux]\n    - {{ cdt('alsa-lib') }}              # [linux]\n    - {{ cdt('xorg-x11-server-xvfb') }}  # [linux]\n    - {{ cdt('libxt-devel') }}           # [linux]\n    - {{ cdt('libsm-devel') }}           # [linux]\n    - {{ cdt('libice-devel') }}          # [linux]\n    - {{ cdt('libuuid-devel') }}         # [linux]\n  host:\n    - python\n    - hdf5\n    - libpng\n    - jpeg\n    - libtiff\n    - libxml2\n    - zlib\n    - freetype\n    - libprotobuf\n    - lz4-c\n    - expat\n    - libnetcdf\n    - glew\n    - double-conversion\n    - jsoncpp\n    - xz\n    - cgns\n    - qt\n    - boost-cpp\n    - pugixml\n    - libtheora\n  run:\n    - python\n    - numpy\n    - matplotlib-base\n    - twisted\n\ntest:\n  imports:\n    - paraview\n    - paraview.collaboration\n    - paraview.coprocessing\n    - paraview.cpexport\n    - paraview.cpstate\n    - paraview.lookuptable\n    - paraview.numeric\n    - paraview.numpy_support\n    - paraview.python_view\n    - paraview.cpstate\n    - paraview.servermanager\n    - paraview.simple\n    - paraview.util\n\n  commands:\n    - python -c \"from paraview.simple import VisItNek5000Reader\"\n    # https://gitlab.kitware.com/paraview/paraview/issues/19645\n    - pvpython --version  # [not osx]\n\nabout:\n   home: http://www.paraview.org\n   license: BSD 3-Clause\n   license_file: Copyright.txt\n   summary: ParaView is an open-source, multi-platform data analysis and visualization application based on Visualization Toolkit (VTK).\n\nextra:\n  recipe-maintainers:\n    - bgruening\n    - jschueller\n",
+ "raw_meta_yaml":"{% set version = \"5.8.0\" %}\n{% set maj_min = \".\".join(version.split(\".\")[:2]) %}\n\npackage:\n  name: paraview\n  version: {{ version }}\n\nsource:\n  url: http://paraview.org/files/v{{ maj_min }}/ParaView-v5.8.0.tar.gz\n  md5: 8151ed24eeeae5bc8ba038bb544eb409\n\nbuild:\n  number: 2\n  skip: true  # [win and vc<14]\n  skip: true  # [py2k]\n  run_exports:\n    - {{ pin_subpackage('paraview', max_pin='x.x') }}\n\nrequirements:\n  build:\n    - cmake\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n    - eigen\n    - {{ cdt('xorg-x11-proto-devel') }}  # [linux]\n    - {{ cdt('libx11-devel') }}          # [linux]\n    - {{ cdt('libxext-devel') }}         # [linux]\n    - {{ cdt('libxrender-devel') }}      # [linux]\n    - {{ cdt('mesa-libgl-devel') }}      # [linux]\n    - {{ cdt('mesa-libegl-devel') }}     # [linux]\n    - {{ cdt('mesa-dri-drivers') }}      # [linux]\n    - {{ cdt('libxau-devel') }}          # [linux]\n    - {{ cdt('alsa-lib-devel') }}        # [linux]\n    - {{ cdt('gtk2-devel') }}            # [linux]\n    - {{ cdt('gtkmm24-devel') }}         # [linux]\n    - {{ cdt('libdrm-devel') }}          # [linux]\n    - {{ cdt('libxcomposite-devel') }}   # [linux]\n    - {{ cdt('libxcursor-devel') }}      # [linux]\n    - {{ cdt('libxi-devel') }}           # [linux]\n    - {{ cdt('libxrandr-devel') }}       # [linux]\n    - {{ cdt('pciutils-devel') }}        # [linux]\n    - {{ cdt('libxscrnsaver-devel') }}   # [linux]\n    - {{ cdt('libxtst-devel') }}         # [linux]\n    - {{ cdt('libselinux-devel') }}      # [linux]\n    - {{ cdt('libxdamage') }}            # [linux]\n    - {{ cdt('libxdamage-devel') }}      # [linux]\n    - {{ cdt('libxfixes') }}             # [linux]\n    - {{ cdt('libxfixes-devel') }}       # [linux]\n    - {{ cdt('libxxf86vm') }}            # [linux]\n    - {{ cdt('libxrandr') }}             # [linux]\n    - {{ cdt('alsa-lib') }}              # [linux]\n    - {{ cdt('xorg-x11-server-xvfb') }}  # [linux]\n    - {{ cdt('libxt-devel') }}           # [linux]\n    - {{ cdt('libsm-devel') }}           # [linux]\n    - {{ cdt('libice-devel') }}          # [linux]\n    - {{ cdt('libuuid-devel') }}         # [linux]\n  host:\n    - python\n    - hdf5\n    - libpng\n    - jpeg\n    - libtiff\n    - libxml2\n    - zlib\n    - freetype\n    - libprotobuf\n    - lz4-c\n    - expat\n    - libnetcdf\n    - glew\n    - double-conversion\n    - jsoncpp\n    - xz\n    - cgns\n    - qt\n    - boost-cpp\n    - pugixml\n    - libtheora\n  run:\n    - python\n    - numpy\n    - matplotlib-base\n    - twisted\n\ntest:\n  imports:\n    - paraview\n    - paraview.collaboration\n    - paraview.coprocessing\n    - paraview.cpexport\n    - paraview.cpstate\n    - paraview.lookuptable\n    - paraview.numeric\n    - paraview.numpy_support\n    - paraview.python_view\n    - paraview.cpstate\n    - paraview.servermanager\n    - paraview.simple\n    - paraview.util\n\n  commands:\n    - python -c \"from paraview.simple import VisItNek5000Reader\"\n    # https://gitlab.kitware.com/paraview/paraview/issues/19645\n    - pvpython --version  # [not osx]\n\nabout:\n   home: http://www.paraview.org\n   license: BSD 3-Clause\n   license_file: Copyright.txt\n   summary: ParaView is an open-source, multi-platform data analysis and visualization application based on Visualization Toolkit (VTK).\n\nextra:\n  recipe-maintainers:\n    - bgruening\n    - jschueller\n",
  "req":{
   "__set__":true,
   "elements":[
@@ -681,5 +681,5 @@
   }
  },
  "url":"http://paraview.org/files/v5.7/ParaView-v5.7.0-RC2.tar.gz",
- "version":"5.8.0rc3"
+ "version":"5.8.0"
 }
