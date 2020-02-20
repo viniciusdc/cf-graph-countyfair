@@ -1,25 +1,26 @@
 {
- "bad":{
-  "exception":"Failed to put item: An error occurred (ValidationException) on request (S5IV8LALC7T4PKPI2E19VJA6KFVV4KQNSO5AEMVJF66Q9ASUAAJG) on table (pr_json) when calling the PutItem operation: Attempting to store more than 38 significant digits in a Number",
-  "traceback":[
-   "Traceback (most recent call last):",
-   "  File \"/root/repo/cf-scripts/conda_forge_tick/auto_tick.py\", line 674, in main",
-   "    hash_type=attrs.get(\"hash_type\", \"sha256\"),",
-   "  File \"/root/repo/cf-scripts/conda_forge_tick/auto_tick.py\", line 210, in run",
-   "    PRJson.dump(pr_json)",
-   "  File \"/root/repo/cf-scripts/conda_forge_tick/dynamo_models.py\", line 33, in dump",
-   "    item.save()",
-   "  File \"/opt/conda/envs/run_env/lib/python3.7/site-packages/pynamodb/models.py\", line 405, in save",
-   "    data = self._get_connection().put_item(*args, **kwargs)",
-   "  File \"/opt/conda/envs/run_env/lib/python3.7/site-packages/pynamodb/connection/table.py\", line 139, in put_item",
-   "    return_item_collection_metrics=return_item_collection_metrics)",
-   "  File \"/opt/conda/envs/run_env/lib/python3.7/site-packages/pynamodb/connection/base.py\", line 972, in put_item",
-   "    six.raise_from(PutError(\"Failed to put item: {}\".format(e), e), None)",
-   "  File \"<string>\", line 3, in raise_from",
-   "pynamodb.exceptions.PutError: Failed to put item: An error occurred (ValidationException) on request (S5IV8LALC7T4PKPI2E19VJA6KFVV4KQNSO5AEMVJF66Q9ASUAAJG) on table (pr_json) when calling the PutItem operation: Attempting to store more than 38 significant digits in a Number",
-   ""
-  ]
- },
+ "PRed":[
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/360e0821-cf80-45f4-88d4-23b85bf74c88.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"MigrationYaml",
+    "migrator_object_version":1,
+    "migrator_version":0,
+    "name":"boost172"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_object_version",
+    "migrator_version",
+    "name"
+   ]
+  }
+ ],
+ "bad":false,
  "conda-forge.yml":{},
  "feedstock_name":"libsdformat",
  "hash_type":"sha256",
@@ -148,6 +149,7 @@
  },
  "name":"libsdformat",
  "new_version":false,
+ "pinning_version":"2020.02.19",
  "raw_meta_yaml":"{% set name = \"libsdformat\" %}\n{% set version = \"9.1.0\" %}\n\npackage:\n  name: {{ name }}\n  version: {{ version }}\n\nsource:\n  - url: https://bitbucket.org/osrf/sdformat/get/sdformat{{ version.split('.')[0] }}_{{ version }}.tar.gz\n    sha256: 407599011850143d4de8ca9d5d7370b9f48f2b1d6404d381dfdd4ec23b4e6520\n    patches:\n      - sdformat.patch\n\nbuild:\n  number: 0\n  skip: true  # [osx or win and vc<14]\n  run_exports:\n    - {{ pin_subpackage(name, max_pin='x.x') }}\n\nrequirements:\n  build:\n    - {{ compiler('cxx') }}              # [not win]\n    - {{ compiler('c') }}                # [not win]\n    - vs2017_win-64                      # [win64]\n    - vs2017_win-32                      # [win32]\n    - ninja                              # [not win]\n    - ruby                               # [not win]\n    - cmake\n    - pkg-config\n  host:\n    - libignition-math6\n    - urdfdom\n    - boost-cpp >=1.71\n    - tinyxml\n    - console_bridge\n  run:\n    - libignition-math6\n    - urdfdom\n    - boost-cpp >=1.71\n    - tinyxml\n    - console_bridge\n\ntest:\n  commands:\n    - test -f ${PREFIX}/include/sdformat-9.1/sdf/sdf.hh  # [not win]\n    - test -f ${PREFIX}/lib/libsdformat9.so  # [linux]\n    - test -f ${PREFIX}/lib/cmake/sdformat9/sdformat9-config.cmake  # [not win]\n    - if not exist %LIBRARY_INC%\\\\sdformat-9.1\\\\sdf\\\\sdf.hh exit 1  # [win]\n    - if not exist %LIBRARY_LIB%\\\\sdformat9.lib exit 1  # [win]\n    - if not exist %LIBRARY_BIN%\\\\sdformat9.dll exit 1  # [win]\n    - if not exist %LIBRARY_LIB%\\\\cmake\\\\sdformat9\\\\sdformat9-config.cmake exit 1  # [win]\n\nabout:\n  home: http://sdformat.org/\n  license: Apache-2.0\n  license_file: LICENSE\n  summary: |\n    Simulation Description Format (SDF) parser and description files.\n\nextra:\n  recipe-maintainers:\n    - seanyen\n    - j-rivero\n    - conda-forge/ros-core\n",
  "req":{
   "__set__":true,
@@ -204,6 +206,7 @@
    "elements":[]
   }
  },
+ "smithy_version":"3.6.8",
  "strong_exports":false,
  "total_requirements":{
   "build":{
