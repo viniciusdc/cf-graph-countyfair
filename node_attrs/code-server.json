@@ -147,7 +147,7 @@
   }
  },
  "name":"code-server",
- "new_version":"2.1698",
+ "new_version":"99.0.0-testing",
  "pinning_version":"2020.02.12",
  "raw_meta_yaml":"{% set name = \"code-server\" %}\n{% set version = \"2.1692-vsc1.39.2\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  url: https://github.com/cdr/{{ name }}/archive/{{ version }}.tar.gz\n  sha256: 73292bbdc857443210d8d7b4a641683a31d1039aef69c374480000b544a7307b\n  patches:\n    - node-binary.patch\n\nbuild:\n  number: 0\n  binary_relocation: False  # [osx]\n  skip: true  # [win]\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n    - python 2.7.*\n    - nodejs 10.*\n    - yarn\n    - pkg-config  # [linux]\n  host:\n    - nodejs 10.*\n    - libxkbfile  # [linux]\n    - xorg-libx11  # [linux]\n    - icu\n    - libuv\n    - openssl\n    - zlib\n  run:\n    - nodejs 10.*\n    - icu\n    - openssl\n    - libuv\n    - zlib\n\ntest:\n  commands:\n    - code-server --help\n\nabout:\n  home: https://github.com/cdr/code-server\n  license: MIT\n  license_family: MIT\n  license_file:\n   - LICENSE\n   - LICENSE.vscode.txt\n   - ThirdPartyNotices.vscode.txt\n  summary: 'Run VS Code on a remote server.'\n\nextra:\n  recipe-maintainers:\n    - xhochy\n",
  "req":{
