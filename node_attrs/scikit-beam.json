@@ -154,6 +154,23 @@
     "migrator_version",
     "version"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/377527769.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"Version",
+    "migrator_version":0,
+    "version":"0.0.20"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "version"
+   ]
   }
  ],
  "bad":false,
@@ -284,8 +301,8 @@
   }
  },
  "name":"scikit-beam",
- "new_version":"0.0.19",
- "pinning_version":"2020.01.27",
+ "new_version":"0.0.20",
+ "pinning_version":"2020.02.19",
  "raw_meta_yaml":"{% set name = \"scikit-beam\" %}\n{% set version = \"0.0.19\" %}\n{% set sha256 = \"904d63d4b60dc56f7e89dc05951145636dd9f24d56e13cbbcc3ba1030cd5fae1\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  url: https://github.com/{{ name }}/{{ name }}/archive/v{{ version }}.tar.gz\n  sha256: {{ sha256 }}\n\nbuild:\n  number: 0\n  skip: true  # [py<36]\n  script:\n    - python setup.py build_ext -i\n    - python setup.py install --single-version-externally-managed --record=record.txt\n\nrequirements:\n  build:\n    - autoconf  # [osx]\n    - {{ compiler('c') }}\n  host:\n    - python\n    - cython\n    - numpy\n    - setuptools\n    - six\n  run:\n    - python\n    - lmfit >=0.8.3\n    - scikit-image\n    - scipy\n    - six\n    - xraylib\n    - {{ pin_compatible('numpy') }}\n\ntest:\n  imports:\n    - skbeam\n    - skbeam.io\n    - skbeam.core\n    - skbeam.core.accumulators\n    - skbeam.core.constants\n    - skbeam.core.fitting\n    - skbeam.core.fitting.base\n    - skbeam.ext\n    - skbeam.core.fitting\n    - skbeam.core.constants.xrf\n    # has linux native library imports  # [not win]\n    - skbeam.ext.ctrans  # [not win]\n\nabout:\n  home: http://scikit-beam.github.io/scikit-beam\n  license: BSD 3-Clause\n  summary: Data analysis algorithms for X-Ray, Neutron and Electron sciences\n  license_file: LICENSE\n  license_family: BSD\n\nextra:\n  recipe-maintainers:\n    - conda-forge/event-model\n",
  "req":{
   "__set__":true,
@@ -339,7 +356,7 @@
    "elements":[]
   }
  },
- "smithy_version":"3.6.6",
+ "smithy_version":"3.6.8",
  "strong_exports":false,
  "total_requirements":{
   "build":{
