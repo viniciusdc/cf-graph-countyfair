@@ -273,6 +273,25 @@
     "migrator_version",
     "version"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/2faa9d1d-0fa9-494d-abb4-ad3ee14404c4.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"MigrationYaml",
+    "migrator_object_version":1,
+    "migrator_version":0,
+    "name":"boost172"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_object_version",
+    "migrator_version",
+    "name"
+   ]
   }
  ],
  "bad":false,
@@ -391,7 +410,7 @@
  },
  "name":"z5py",
  "new_version":"2.0.5",
- "pinning_version":"2020.02.12",
+ "pinning_version":"2020.02.19",
  "raw_meta_yaml":"{% set version = \"2.0.5\" %}\n{% set checksum = \"594ce65aac1afef61b246776c6b3262210df59c92775aafd41831286c1275d98\" %}\n\npackage:\n  name: z5py\n  version: {{ version }}\n\nsource:\n    url: https://github.com/constantinpape/z5/archive/{{ version }}.tar.gz\n    sha256: {{ checksum }}\n\nbuild:\n  number: 0\n  skip: True  # [win and vc<14]\n  skip: True  # [py27]\n\nrequirements:\n  build:\n    - cmake\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n  host:\n    - python\n    - boost-cpp >=1.63\n    - numpy\n    - xtensor >=0.19,<0.20\n    - xtensor-python >=0.22,<0.23\n    - xsimd >=7,<8\n    - blosc\n    - bzip2\n    - xz\n    - zlib\n    - nlohmann_json\n    # lz4 builds on conda are broken\n    # - lz4-c\n  run:\n    - python\n    - {{ pin_compatible('numpy') }}\n    - blosc\n    - bzip2\n    - xz\n    - zlib\n    # we build with boost filesystem on macos and so\n    # we need to pin the boost version, see also\n    # https://github.com/conda-forge/z5py-feedstock/issues/24\n    - {{ pin_compatible('boost-cpp') }}  # [osx]\n    # lz4 builds on conda are broken\n    # - lz4-c\n\ntest:\n  imports:\n    - z5py\n  #source_files:\n  #  - src/python/test/*.py\n  #commands:\n  #  - python -m unittest discover -s src/python/test -v\n\nabout:\n  home: https://github.com/constantinpape/z5\n  license: MIT\n  license_file: LICENSE\n  summary: Lightweight C++ and Python interface for datasets in zarr and N5 format.\n\nextra:\n  recipe-maintainers:\n    - constantinpape\n    - SylvainCorlay\n",
  "req":{
   "__set__":true,

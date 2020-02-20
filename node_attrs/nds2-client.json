@@ -84,6 +84,25 @@
     "migrator_version",
     "version"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/377676817.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"MigrationYaml",
+    "migrator_object_version":1,
+    "migrator_version":0,
+    "name":"boost172"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_object_version",
+    "migrator_version",
+    "name"
+   ]
   }
  ],
  "bad":false,
@@ -174,7 +193,7 @@
  },
  "name":"nds2-client",
  "new_version":"0.16.4",
- "pinning_version":"2019.10.11",
+ "pinning_version":"2020.02.19",
  "raw_meta_yaml":"{% set name = \"nds2-client\" %}\n{% set version = \"0.16.4\" %}\n{% set sha256 = \"bca6f96583c6710726ea318ac2feb9db3e7e7c9703e019366d1b4ee6f7a4ee87\" %}\n\npackage:\n  name: \"{{ name|lower }}\"\n  version: \"{{ version }}\"\n\nsource:\n  url: \"http://software.ligo.org/lscsoft/source/{{ name }}-{{ version }}.tar.gz\"\n  sha256: \"{{ sha256 }}\"\n\nbuild:\n  error_overdepending: true\n  error_overlinking: true\n  number: 0\n  run_exports:\n    - {{ pin_subpackage(\"nds2-client\", max_pin=\"x.x\") }}\n  skip: true  # [win]\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n    - cmake >=3.6\n    - make  # [unix]\n  host:\n    - boost-cpp\n    - cyrus-sasl  # [not win]\n    - krb5  # [win]\n  run:\n    - cyrus-sasl  # [not win]\n    - krb5  # [win]\n\ntest:\n  requires:\n    - pkg-config  # [unix]\n  commands:\n    - nds-client-config --includedir --libdir  # [not win]\n    - nds_query --version\n    - pkg-config --print-errors --modversion nds2-client libndscxx conlibndscxx nds-client-tester  # [unix]\n\nabout:\n  home: \"https://wiki.ligo.org/Computing/NDSClient\"\n  license: \"GPL-3.0-or-later\"\n  license_family: \"GPL\"\n  license_file: \"COPYING\"\n  summary: \"NDS2 Client interface\"\n  description: |\n    The NDS2 client interface allows the user to down-load LIGO data\n    from V1 and V2 LIGO Network Data Servers.\n\n    This package only provides the low-level C/C++ client and associated\n    binaries.  If you want to install the Python bindings, please install\n    the python-nds2-client package.\n\nextra:\n  recipe-maintainers:\n    - duncanmmacleod\n",
  "req":{
   "__set__":true,
@@ -220,7 +239,7 @@
    ]
   }
  },
- "smithy_version":"3.6.0",
+ "smithy_version":"3.6.8",
  "strong_exports":false,
  "total_requirements":{
   "build":{
