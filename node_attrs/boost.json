@@ -166,29 +166,28 @@
     "migrator_version",
     "name"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/41adb4a2-9659-4847-a46f-28d921dbf8aa.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"MigrationYaml",
+    "migrator_object_version":1,
+    "migrator_version":0,
+    "name":"boost172"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_object_version",
+    "migrator_version",
+    "name"
+   ]
   }
  ],
- "bad":{
-  "exception":"Failed to put item: An error occurred (ValidationException) on request (KU63HIQJCJIPRMACJK4VPKI8QBVV4KQNSO5AEMVJF66Q9ASUAAJG) on table (pr_json) when calling the PutItem operation: Attempting to store more than 38 significant digits in a Number",
-  "traceback":[
-   "Traceback (most recent call last):",
-   "  File \"/root/repo/cf-scripts/conda_forge_tick/auto_tick.py\", line 674, in main",
-   "    hash_type=attrs.get(\"hash_type\", \"sha256\"),",
-   "  File \"/root/repo/cf-scripts/conda_forge_tick/auto_tick.py\", line 210, in run",
-   "    PRJson.dump(pr_json)",
-   "  File \"/root/repo/cf-scripts/conda_forge_tick/dynamo_models.py\", line 33, in dump",
-   "    item.save()",
-   "  File \"/opt/conda/envs/run_env/lib/python3.7/site-packages/pynamodb/models.py\", line 405, in save",
-   "    data = self._get_connection().put_item(*args, **kwargs)",
-   "  File \"/opt/conda/envs/run_env/lib/python3.7/site-packages/pynamodb/connection/table.py\", line 139, in put_item",
-   "    return_item_collection_metrics=return_item_collection_metrics)",
-   "  File \"/opt/conda/envs/run_env/lib/python3.7/site-packages/pynamodb/connection/base.py\", line 972, in put_item",
-   "    six.raise_from(PutError(\"Failed to put item: {}\".format(e), e), None)",
-   "  File \"<string>\", line 3, in raise_from",
-   "pynamodb.exceptions.PutError: Failed to put item: An error occurred (ValidationException) on request (KU63HIQJCJIPRMACJK4VPKI8QBVV4KQNSO5AEMVJF66Q9ASUAAJG) on table (pr_json) when calling the PutItem operation: Attempting to store more than 38 significant digits in a Number",
-   ""
-  ]
- },
+ "bad":false,
  "conda-forge.yml":{
   "compiler_stack":"comp7",
   "max_py_ver":"37",
@@ -310,7 +309,7 @@
  },
  "name":"boost",
  "new_version":"1.72.0",
- "pinning_version":"2020.01.27",
+ "pinning_version":"2020.02.20",
  "raw_meta_yaml":"{% set version = \"1.72.0\" %}\n{% set filename = \"boost_%s.tar.bz2\" % version.replace(\".\", \"_\") %}\n\npackage:\n  name: boost\n  version: {{ version }}\n\nsource:\n  fn:  {{ filename }}\n  url: https://dl.bintray.com/boostorg/release/{{ version }}/source/{{ filename }}\n  sha256: 59c9b274bc451cf91a9ba1dd2c7fdcaf5d60b1b3aa83f2c9fa143417cc660722\n  patches:\n    - fix-include-dir.patch  # [py3k and py<38]\n\nbuild:\n  number: 0\n  skip: true  # [win and vc<14]\n\nrequirements:\n  build:\n    - {{ compiler('cxx') }}\n\n  host:\n    - python\n    - numpy\n    - boost-cpp  {{ version }}\n\n  run:\n    - python\n    - {{ pin_compatible('numpy') }}\n    - boost-cpp  {{ version }}\n\ntest:\n  commands:\n    # Verify Python headers are installed.\n    - test -f $PREFIX/include/boost/python.hpp                 # [unix]\n    - test -d $PREFIX/include/boost/python                     # [unix]\n    - if not exist %LIBRARY_INC%\\\\boost\\\\python.hpp exit 1     # [win]\n    - if not exist %LIBRARY_INC%\\\\boost\\\\python exit 1         # [win]\n\n    # Verify libraries.\n    {% set boost_libs = [\n            \"python%s\" % py,\n            \"numpy%s\" % py\n    ] %}\n    {% for each_boost_lib in boost_libs %}\n    - test -f $PREFIX/lib/libboost_{{ each_boost_lib }}.a                                                 # [unix]\n    - test -f $PREFIX/lib/libboost_{{ each_boost_lib }}${SHLIB_EXT}                                       # [unix]\n    - if not exist %PREFIX%\\\\Library\\\\bin\\\\boost_{{ each_boost_lib }}.dll exit 1                          # [win]\n    - if not exist %PREFIX%\\\\Library\\\\lib\\\\boost_{{ each_boost_lib }}.lib exit 1                          # [win]\n    - if not exist %PREFIX%\\\\Library\\\\lib\\\\libboost_{{ each_boost_lib }}.lib exit 1                       # [win]\n    {% endfor %}\n    - conda inspect linkages -p $PREFIX boost  # [not win]\n    - conda inspect objects -p $PREFIX boost  # [osx]\n\nabout:\n  home: http://www.boost.org/\n  license: Boost-1.0\n  license_file: LICENSE_1_0.txt\n  summary: Free peer-reviewed portable C++ source libraries.\n\nextra:\n  recipe-maintainers:\n    - ccordoba12\n    - jakirkham\n    - msarahan\n    - ocefpaf\n    - jschueller\n    - scopatz\n    - isuruf\n",
  "req":{
   "__set__":true,
@@ -350,7 +349,7 @@
    "elements":[]
   }
  },
- "smithy_version":"3.6.6",
+ "smithy_version":"3.6.8",
  "strong_exports":false,
  "total_requirements":{
   "build":{
