@@ -64,6 +64,23 @@
     "migrator_version",
     "version"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/378410999.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"Version",
+    "migrator_version":0,
+    "version":"2020.2"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "version"
+   ]
   }
  ],
  "bad":false,
@@ -146,8 +163,8 @@
   }
  },
  "name":"r-squarem",
- "new_version":"2020.1",
- "pinning_version":"2020.01.10",
+ "new_version":"2020.2",
+ "pinning_version":"2020.02.20",
  "raw_meta_yaml":"{% set version = \"2020.1\" %}\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-squarem\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  fn: SQUAREM_{{ version }}.tar.gz\n  url:\n    - {{ cran_mirror }}/src/contrib/SQUAREM_{{ version }}.tar.gz\n    - {{ cran_mirror }}/src/contrib/Archive/SQUAREM/SQUAREM_{{ version }}.tar.gz\n  sha256: 7a6103584e693813821f5da5c132abb347bec00fff3bd8dce182c78676e88a6c\n\nbuild:\n  noarch: generic\n  merge_build_host: True  # [win]\n  number: 0\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - {{posix}}zip               # [win]\n  host:\n    - r-base\n  run:\n    - r-base\n\ntest:\n  commands:\n    - $R -e \"library('SQUAREM')\"           # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('SQUAREM')\\\"\"  # [win]\n\nabout:\n  home: http://www.jhsph.edu/agingandhealth/People/Faculty_personal_pages/Varadhan.html\n  license: GPL (>= 2)\n  summary: Algorithms for accelerating the convergence of slow, monotone sequences from smooth,\n    contraction mapping such as the EM algorithm. It can be used to accelerate any smooth,\n    linearly convergent acceleration scheme.  A tutorial style introduction to this\n    package is available in a vignette on the CRAN download page or, when the package\n    is loaded in an R session, with vignette(\"SQUAREM\").\n  license_family: GPL3\n  license_file: '{{ environ[\"PREFIX\"] }}/lib/R/share/licenses/GPL-3'\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n    - rvalieris\n",
  "req":{
   "__set__":true,
@@ -177,7 +194,7 @@
    "elements":[]
   }
  },
- "smithy_version":"3.6.5",
+ "smithy_version":"3.6.8",
  "strong_exports":false,
  "total_requirements":{
   "build":{

@@ -51,7 +51,7 @@
    "summary":"A tool for managing large files with git"
   },
   "build":{
-   "number":"0",
+   "number":"1",
    "skip":true
   },
   "extra":{
@@ -87,6 +87,7 @@
     "bzip2",
     "ncurses",
     "libffi",
+    "libxml2",
     "c_compiler_stub",
     "cxx_compiler_stub",
     "stack >=1.9.3",
@@ -101,6 +102,7 @@
     "bzip2",
     "ncurses",
     "libffi",
+    "libxml2",
     "c_compiler_stub",
     "cxx_compiler_stub",
     "stack >=1.9.3",
@@ -114,7 +116,8 @@
     "libtool",
     "bzip2",
     "ncurses",
-    "libffi"
+    "libffi",
+    "libxml2"
    ],
    "host":[
     "gmp",
@@ -124,9 +127,10 @@
     "sqlite",
     "dbus",
     "libffi",
-    "libxml2",
+    "libiconv",
     "openssh",
     "lsof",
+    "rsync",
     "gmp",
     "zlib",
     "ncurses",
@@ -134,9 +138,10 @@
     "sqlite",
     "dbus",
     "libffi",
-    "libxml2",
+    "libiconv",
     "openssh",
     "lsof",
+    "rsync",
     "gmp",
     "zlib",
     "ncurses",
@@ -144,30 +149,25 @@
     "sqlite",
     "dbus",
     "libffi",
-    "libxml2",
+    "libiconv",
     "openssh",
-    "lsof"
+    "lsof",
+    "rsync"
    ],
    "run":[
     "rsync",
     "git >=2.1",
-    "libmagic",
     "curl",
-    "libiconv",
     "openssh",
     "lsof",
     "rsync",
     "git >=2.1",
-    "libmagic",
     "curl",
-    "libiconv",
     "openssh",
     "lsof",
     "rsync",
     "git >=2.1",
-    "libmagic",
     "curl",
-    "libiconv",
     "openssh",
     "lsof"
    ]
@@ -232,7 +232,7 @@
  "name":"git-annex",
  "new_version":false,
  "pinning_version":"2018.12.18",
- "raw_meta_yaml":"{% set name = \"git-annex\" %}\n{% set version = \"7.20200219\" %}\n{% set sha256 = \"a8ac72fc4750e52a3419b69d23665e51e55fcf74f89eb6b47e395e891294fc5f\" %}\n\n#\n# This recipe builds GHC, the Haskell compiler used to compile git-annex, from source, then uses it\n# to compile git-annex.  It would be better to separate GHC into its own recipe, and have the\n# git-annex recipe depend on that, but I could not make that work.  Hopefully someone with a better\n# understanding of ghc and conda-forge can eventually rewrite the recipes in the more proper way.\n#\n# For related discussions see\n# https://github.com/conda-forge/git-annex-feedstock/pull/44\n# https://github.com/bioconda/bioconda-recipes/pull/16008\n#\n\n{% set ghc_src_version = \"8.6.5\" %}\n{% set ghc_src_sha256 = \"4d4aa1e96f4001b934ac6193ab09af5d6172f41f5a5d39d8e43393b9aafee361\" %}\n{% set ghc_bootstrap_version = \"8.4.2\" %}\n{% set ghc_bootstrap_linux_sha256 = \"28c31489ed9a83af4400685ec8bc72a6d43d08958d75b2dc35d29a894a5c9d93\" %}\n\npackage:\n  name: {{ name }}\n  version: {{ version }}\n\nsource:\n  - url: https://hackage.haskell.org/package/{{ name }}-{{ version }}/{{ name }}-{{ version }}.tar.gz\n    sha256: {{ sha256 }}\n    folder: git_annex_main\n    patches:\n      - 0001-added-extra-deps-for-fdo-notify-and-magic.patch\n\n  - url: https://downloads.haskell.org/~ghc/{{ ghc_bootstrap_version }}/ghc-{{ ghc_bootstrap_version }}-x86_64-centos67-linux.tar.xz  # [linux]\n    sha256: {{ ghc_bootstrap_linux_sha256 }}  # [linux]\n    folder: ghc_bootstrap\n\n  - url: https://downloads.haskell.org/~ghc/{{ ghc_src_version }}/ghc-{{ ghc_src_version }}-src.tar.xz\n    sha256: {{ ghc_src_sha256 }}\n    folder: ghc_src\n\nbuild:\n  number: 0\n  skip: True  # [not linux]\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n    - stack >=1.9.3\n    - perl\n    - coreutils\n    - binutils\n    - pkg-config\n    - xz\n    - automake\n    - autoconf\n    - libtool\n    - bzip2\n    - ncurses\n    - libffi\n  host:\n    - gmp\n    - zlib\n    - ncurses\n    - libmagic\n    - sqlite\n    - dbus\n    - libffi\n    - libxml2\n    - openssh\n    - lsof\n  run:\n    - rsync\n    - git >=2.1\n    - libmagic\n    - curl\n    - libiconv\n    - openssh\n    - lsof\n\ntest:\n  commands:\n    - git-annex version\n    - git-annex test\n\nabout:\n  home: http://git-annex.branchable.com\n  license: AGPL-3.0\n  license_family: AGPL\n  license_file: LICENSE\n  summary: A tool for managing large files with git\n  description: |\n    git-annex allows managing files with git, without checking the file contents into git.\n    It is useful when dealing with files larger than git can currently easily handle.\n    The contents can be stored locally or in various remote repositories; git-annex tracks\n    which contents is stored where.\n\nextra:\n  recipe-maintainers:\n    - notestaff\n    - yarikoptic\n    - joeyh\n",
+ "raw_meta_yaml":"{% set name = \"git-annex\" %}\n{% set version = \"7.20200219\" %}\n{% set sha256 = \"a8ac72fc4750e52a3419b69d23665e51e55fcf74f89eb6b47e395e891294fc5f\" %}\n\n#\n# This recipe builds GHC, the Haskell compiler used to compile git-annex, from source, then uses it\n# to compile git-annex.  It would be better to separate GHC into its own recipe, and have the\n# git-annex recipe depend on that, but I could not make that work.  Hopefully someone with a better\n# understanding of ghc and conda-forge can eventually rewrite the recipes in the more proper way.\n#\n# For related discussions see\n# https://github.com/conda-forge/git-annex-feedstock/pull/44\n# https://github.com/bioconda/bioconda-recipes/pull/16008\n#\n\n{% set ghc_src_version = \"8.6.5\" %}\n{% set ghc_src_sha256 = \"4d4aa1e96f4001b934ac6193ab09af5d6172f41f5a5d39d8e43393b9aafee361\" %}\n{% set ghc_bootstrap_version = \"8.4.2\" %}\n{% set ghc_bootstrap_linux_sha256 = \"28c31489ed9a83af4400685ec8bc72a6d43d08958d75b2dc35d29a894a5c9d93\" %}\n\npackage:\n  name: {{ name }}\n  version: {{ version }}\n\nsource:\n  - url: https://hackage.haskell.org/package/{{ name }}-{{ version }}/{{ name }}-{{ version }}.tar.gz\n    sha256: {{ sha256 }}\n    folder: git_annex_main\n    patches:\n      - 0001-added-extra-deps-for-fdo-notify-and-magic.patch\n\n  - url: https://downloads.haskell.org/~ghc/{{ ghc_bootstrap_version }}/ghc-{{ ghc_bootstrap_version }}-x86_64-centos67-linux.tar.xz  # [linux]\n    sha256: {{ ghc_bootstrap_linux_sha256 }}  # [linux]\n    folder: ghc_bootstrap\n\n  - url: https://downloads.haskell.org/~ghc/{{ ghc_src_version }}/ghc-{{ ghc_src_version }}-src.tar.xz\n    sha256: {{ ghc_src_sha256 }}\n    folder: ghc_src\n\nbuild:\n  number: 1\n  skip: True  # [not linux]\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n    - stack >=1.9.3\n    - perl\n    - coreutils\n    - binutils\n    - pkg-config\n    - xz\n    - automake\n    - autoconf\n    - libtool\n    - bzip2\n    - ncurses\n    - libffi\n    - libxml2\n  host:\n    - gmp\n    - zlib\n    - ncurses\n    - libmagic\n    - sqlite\n    - dbus\n    - libffi\n    - libiconv\n    - openssh\n    - lsof\n    - rsync\n  run:\n    - rsync\n    - git >=2.1\n    - curl\n    - openssh\n    - lsof\n\ntest:\n  commands:\n    - git-annex version\n    - git-annex test\n\nabout:\n  home: http://git-annex.branchable.com\n  license: AGPL-3.0\n  license_family: AGPL\n  license_file: LICENSE\n  summary: A tool for managing large files with git\n  description: |\n    git-annex allows managing files with git, without checking the file contents into git.\n    It is useful when dealing with files larger than git can currently easily handle.\n    The contents can be stored locally or in various remote repositories; git-annex tracks\n    which contents is stored where.\n\nextra:\n  recipe-maintainers:\n    - notestaff\n    - yarikoptic\n    - joeyh\n",
  "req":{
   "__set__":true,
   "elements":[
@@ -277,6 +277,7 @@
     "cxx_compiler_stub",
     "libffi",
     "libtool",
+    "libxml2",
     "ncurses",
     "perl",
     "pkg-config",
@@ -290,11 +291,12 @@
     "dbus",
     "gmp",
     "libffi",
+    "libiconv",
     "libmagic",
-    "libxml2",
     "lsof",
     "ncurses",
     "openssh",
+    "rsync",
     "sqlite",
     "zlib"
    ]
@@ -304,8 +306,6 @@
    "elements":[
     "curl",
     "git",
-    "libiconv",
-    "libmagic",
     "lsof",
     "openssh",
     "rsync"
@@ -331,6 +331,7 @@
     "cxx_compiler_stub",
     "libffi",
     "libtool",
+    "libxml2",
     "ncurses",
     "perl",
     "pkg-config",
@@ -344,11 +345,12 @@
     "dbus",
     "gmp",
     "libffi",
+    "libiconv",
     "libmagic",
-    "libxml2",
     "lsof",
     "ncurses",
     "openssh",
+    "rsync",
     "sqlite",
     "zlib"
    ]
@@ -358,8 +360,6 @@
    "elements":[
     "curl",
     "git >=2.1",
-    "libiconv",
-    "libmagic",
     "lsof",
     "openssh",
     "rsync"
