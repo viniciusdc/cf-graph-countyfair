@@ -18,6 +18,25 @@
     "migrator_version",
     "name"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/89b81213-1dfa-4cad-83b0-e469bd97f9aa.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"MigrationYaml",
+    "migrator_object_version":2,
+    "migrator_version":0,
+    "name":"boost172"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_object_version",
+    "migrator_version",
+    "name"
+   ]
   }
  ],
  "bad":false,
@@ -149,7 +168,7 @@
  },
  "name":"libsdformat",
  "new_version":false,
- "pinning_version":"2020.02.19",
+ "pinning_version":"2020.02.20",
  "raw_meta_yaml":"{% set name = \"libsdformat\" %}\n{% set version = \"9.1.0\" %}\n\npackage:\n  name: {{ name }}\n  version: {{ version }}\n\nsource:\n  - url: https://bitbucket.org/osrf/sdformat/get/sdformat{{ version.split('.')[0] }}_{{ version }}.tar.gz\n    sha256: 407599011850143d4de8ca9d5d7370b9f48f2b1d6404d381dfdd4ec23b4e6520\n    patches:\n      - sdformat.patch\n\nbuild:\n  number: 0\n  skip: true  # [osx or win and vc<14]\n  run_exports:\n    - {{ pin_subpackage(name, max_pin='x.x') }}\n\nrequirements:\n  build:\n    - {{ compiler('cxx') }}              # [not win]\n    - {{ compiler('c') }}                # [not win]\n    - vs2017_win-64                      # [win64]\n    - vs2017_win-32                      # [win32]\n    - ninja                              # [not win]\n    - ruby                               # [not win]\n    - cmake\n    - pkg-config\n  host:\n    - libignition-math6\n    - urdfdom\n    - boost-cpp >=1.71\n    - tinyxml\n    - console_bridge\n  run:\n    - libignition-math6\n    - urdfdom\n    - boost-cpp >=1.71\n    - tinyxml\n    - console_bridge\n\ntest:\n  commands:\n    - test -f ${PREFIX}/include/sdformat-9.1/sdf/sdf.hh  # [not win]\n    - test -f ${PREFIX}/lib/libsdformat9.so  # [linux]\n    - test -f ${PREFIX}/lib/cmake/sdformat9/sdformat9-config.cmake  # [not win]\n    - if not exist %LIBRARY_INC%\\\\sdformat-9.1\\\\sdf\\\\sdf.hh exit 1  # [win]\n    - if not exist %LIBRARY_LIB%\\\\sdformat9.lib exit 1  # [win]\n    - if not exist %LIBRARY_BIN%\\\\sdformat9.dll exit 1  # [win]\n    - if not exist %LIBRARY_LIB%\\\\cmake\\\\sdformat9\\\\sdformat9-config.cmake exit 1  # [win]\n\nabout:\n  home: http://sdformat.org/\n  license: Apache-2.0\n  license_file: LICENSE\n  summary: |\n    Simulation Description Format (SDF) parser and description files.\n\nextra:\n  recipe-maintainers:\n    - seanyen\n    - j-rivero\n    - conda-forge/ros-core\n",
  "req":{
   "__set__":true,

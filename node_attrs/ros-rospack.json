@@ -71,29 +71,28 @@
     "migrator_version",
     "name"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/12593b03-ec2c-4f0e-abac-dc0d0256f44b.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"MigrationYaml",
+    "migrator_object_version":2,
+    "migrator_version":0,
+    "name":"boost172"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_object_version",
+    "migrator_version",
+    "name"
+   ]
   }
  ],
- "bad":{
-  "exception":"Failed to put item: An error occurred (ValidationException) on request (LM1Q8JFJFE6NNQID4A4FTTMQHBVV4KQNSO5AEMVJF66Q9ASUAAJG) on table (pr_json) when calling the PutItem operation: Attempting to store more than 38 significant digits in a Number",
-  "traceback":[
-   "Traceback (most recent call last):",
-   "  File \"/root/repo/cf-scripts/conda_forge_tick/auto_tick.py\", line 674, in main",
-   "    hash_type=attrs.get(\"hash_type\", \"sha256\"),",
-   "  File \"/root/repo/cf-scripts/conda_forge_tick/auto_tick.py\", line 210, in run",
-   "    PRJson.dump(pr_json)",
-   "  File \"/root/repo/cf-scripts/conda_forge_tick/dynamo_models.py\", line 33, in dump",
-   "    item.save()",
-   "  File \"/opt/conda/envs/run_env/lib/python3.7/site-packages/pynamodb/models.py\", line 405, in save",
-   "    data = self._get_connection().put_item(*args, **kwargs)",
-   "  File \"/opt/conda/envs/run_env/lib/python3.7/site-packages/pynamodb/connection/table.py\", line 139, in put_item",
-   "    return_item_collection_metrics=return_item_collection_metrics)",
-   "  File \"/opt/conda/envs/run_env/lib/python3.7/site-packages/pynamodb/connection/base.py\", line 972, in put_item",
-   "    six.raise_from(PutError(\"Failed to put item: {}\".format(e), e), None)",
-   "  File \"<string>\", line 3, in raise_from",
-   "pynamodb.exceptions.PutError: Failed to put item: An error occurred (ValidationException) on request (LM1Q8JFJFE6NNQID4A4FTTMQHBVV4KQNSO5AEMVJF66Q9ASUAAJG) on table (pr_json) when calling the PutItem operation: Attempting to store more than 38 significant digits in a Number",
-   ""
-  ]
- },
+ "bad":false,
  "conda-forge.yml":{},
  "feedstock_name":"ros-rospack",
  "hash_type":"sha256",
@@ -225,7 +224,7 @@
  },
  "name":"ros-rospack",
  "new_version":"2.5.4",
- "pinning_version":"2020.02.19",
+ "pinning_version":"2020.02.20",
  "raw_meta_yaml":"package:\n  name: ros-rospack\n  version: 2.5.3\n\nsource:\n  url: https://github.com/ros-gbp/rospack-release/archive/release/melodic/rospack/2.5.3-0.tar.gz\n  fn: ros-rospack-2.5.3.tar.gz\n  sha256: 0b9db7d9b7c20d8f36204d3bda08ef5cf41f3f8f7e009862102603b9daf65429\n  patches:\n\nbuild:\n  number: 1\n  skip: true  # [win]\n  run_exports:\n    - {{ pin_subpackage('ros-rospack', 'x.x') }}\n\nrequirements:\n  build:\n    - {{ compiler('cxx') }}\n    - {{ compiler('c') }}\n    - cmake\n    - make  # [unix]\n  host:\n    - ros-conda-mutex * melodic\n    - ros-conda-base\n    - python\n    - catkin_pkg\n    - pkg-config\n    - boost-cpp\n    - gtest\n    - ros-cmake-modules\n    - tinyxml2\n    - ros-catkin\n  run:\n    - ros-conda-mutex * melodic\n    - ros-conda-base\n    - pkg-config\n    - boost-cpp\n    - rosdep\n    - tinyxml2\n    - ros-environment\n    - python\n\ntest:\n  requires:\n    - rospkg\n  commands:\n    - export ROS_ROOT=$PREFIX && python -c \"import rospkg;s = rospkg.RosPack();ret = s.get_path('rospack');print(ret)\"\n\nabout:\n  home: http://wiki.ros.org/rospack\n  summary: |\n    ROS Package Tool\n  description: |\n    ROS Package Tool\n  license: BSD-3-Clause\n  license_file: include/rospack/macros.h\n\nextra:\n  recipe-maintainers:\n    - wolfv\n    - lesteve\n    - seanyen\n",
  "req":{
   "__set__":true,

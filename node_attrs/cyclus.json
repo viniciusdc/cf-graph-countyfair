@@ -154,6 +154,25 @@
     "migrator_version",
     "name"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/378504030.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"MigrationYaml",
+    "migrator_object_version":2,
+    "migrator_version":0,
+    "name":"boost172"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_object_version",
+    "migrator_version",
+    "name"
+   ]
   }
  ],
  "bad":false,
@@ -314,7 +333,7 @@
  },
  "name":"cyclus",
  "new_version":"1.5.5",
- "pinning_version":"2020.02.19",
+ "pinning_version":"2020.02.20",
  "raw_meta_yaml":"{% set version = \"1.5.5\" %}\n{% set sha256 = \"1fdfd5019a0b423259d91d77c9c8969bc3c2be59a3a13731904331a3257ac05f\" %}\n\npackage:\n  name: cyclus\n  version: {{ version }}\n\nsource:\n  fn: cyclus-{{ version }}-{{ sha256 }}.tar.gz\n  url: https://github.com/cyclus/cyclus/archive/{{ version }}.tar.gz\n  sha256: {{ sha256 }}\n\nbuild:\n  number: 1\n  skip: True  # [win or osx or py<=27]\n  detect_binary_files_with_prefix: true\n  preserve_egg_dir: True\n    \nrequirements:\n  build:\n    - cmake\n    - pkg-config\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n  host:\n    - coincbc <2.9.10\n    - boost-cpp <1.69\n    - libxmlpp\n    - libxml2\n    - hdf5\n    - glibmm\n    - glib 2.56\n    - python\n    - jinja2\n    - pandas\n    - cython  # [ not (py36 and osx) ]\n    - cython <0.28  # [ py36 and osx ]\n  run:\n    - python\n    - {{ pin_compatible(\"boost-cpp\", max_pin=\"x.x.x\") }}\n    - {{ pin_compatible(\"coincbc\", max_pin=\"x.x.x\") }}\n    - sqlite\n    - hdf5\n    - libxmlpp\n    - libxml2\n    - glibmm\n    - glib 2.56\n    - pandas\n    - jinja2\n    - pytables\n\ntest:\n  requires:\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n    - nose\n  source_files:\n    - tests\n\nabout:\n  home: http://fuelcycle.org/\n  license: BSD 3-clause\n  license_file: LICENSE.rst\n  summary: \"The agent-based fuel cycle simulator.\"\n\nextra:\n  recipe-maintainers:\n    - scopatz\n    - gonuke\n    - bam241\n    - katyhuff\n    - FlanFlanagan\n    - stompsjo\n",
  "req":{
   "__set__":true,

@@ -20,6 +20,25 @@
     "migrator_version",
     "name"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/378510769.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"MigrationYaml",
+    "migrator_object_version":2,
+    "migrator_version":0,
+    "name":"boost172"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_object_version",
+    "migrator_version",
+    "name"
+   ]
   }
  ],
  "bad":false,
@@ -475,7 +494,7 @@
   "prismatic_gui",
   "pyprismatic"
  ],
- "pinning_version":"2019.12.02",
+ "pinning_version":"2020.02.20",
  "raw_meta_yaml":"{% set version = \"1.2.1\" %}\n{% set build = 1 %}\n\n{% set processor = processor or 'cpu' %}\n\npackage:\n  name: prismatic_split\n  version: {{ version }}\n\nsource:\n  url: https://github.com/prism-em/prismatic/archive/{{ version }}.tar.gz\n  sha256: 844f659575dd98999b7c4864e850a7ec735f297ab1fb6c2d2be91d7f9720fe70\n  patches:\n    - patch_apple_target_lib.txt\n\nbuild:\n  number: {{ build }}\n\noutputs:\n  - name: prismatic\n    build:\n      number: {{ build }}\n      skip: True  # [win or py2k]\n      string: \"py{{ py }}_{{processor}}_h{{ PKG_HASH }}_{{ build }}\"  # [not osx]\n      string: \"{{processor}}_h{{ PKG_HASH }}_{{ build }}\"  # [osx]\n    requirements:\n      host:\n        - python  # [not osx]\n      run:\n        - {{ pin_subpackage('prismatic_cli', exact=True) }}\n        - {{ pin_subpackage('prismatic_gui', exact=True) }}\n        - {{ pin_subpackage('pyprismatic', exact=True) }}  # [not osx]\n    test:\n      source_files:\n        - SI100.XYZ\n      commands:\n        - prismatic -i SI100.XYZ\n        - command -v prismatic-gui  # [linux]\n        - test -f $PREFIX/Applications/prismatic-gui.app/Contents/MacOS/prismatic-gui  # [osx]\n        - python -c \"import pyprismatic; pyprismatic.demo()\"  # [not osx]\n\n\n\n  - name: prismatic_cli\n    build:\n      skip: True  # [win]\n      string: \"{{processor}}_h{{ PKG_HASH }}_{{ build }}\"\n      script: bash ${RECIPE_DIR}/combined_build_install.sh cli  # [not win]\n\n    requirements:\n      build:\n        - {{ compiler('c') }}                \n        - {{ compiler('cxx') }}              \n        - {{ cdt('libxext-devel') }}         # [linux]\n        - {{ cdt('mesa-libgl-devel') }}      # [linux]\n        - {{ cdt('mesa-dri-drivers') }}      # [linux]\n        - {{ cdt('libxau-devel') }}          # [linux]\n        - {{ cdt('libselinux-devel') }}      # [linux]\n        - {{ cdt('libxdamage') }}            # [linux]\n        - {{ cdt('libxfixes') }}             # [linux]\n        - {{ cdt('libxxf86vm') }}            # [linux]\n        - make                               # [unix]\n        - cmake\n      host:\n        - boost\n        - hdf5\n        - fftw\n        - zlib\n      run:\n        - zlib\n        - hdf5\n        - fftw\n\n\n    test:\n      source_files:\n        - SI100.XYZ\n      commands:\n        - prismatic -i SI100.XYZ\n\n\n  - name: prismatic_gui\n    build:\n      skip: True  # [win]\n      string: \"{{processor}}_h{{ PKG_HASH }}_{{ build }}\"\n      script: bash ${RECIPE_DIR}/combined_build_install.sh gui  # [not win]\n\n    requirements:\n      build:\n        - {{ compiler('c') }}                \n        - {{ compiler('cxx') }}              \n        - {{ cdt('libxext-devel') }}         # [linux]\n        - {{ cdt('mesa-libgl-devel') }}      # [linux]\n        - {{ cdt('mesa-dri-drivers') }}      # [linux]\n        - {{ cdt('libxau-devel') }}          # [linux]\n        - {{ cdt('libselinux-devel') }}      # [linux]\n        - {{ cdt('libxdamage') }}            # [linux]\n        - {{ cdt('libxfixes') }}             # [linux]\n        - {{ cdt('libxxf86vm') }}            # [linux]\n        - make                               # [unix]\n        - cmake\n      host:\n        - boost\n        - hdf5\n        - fftw\n        - qt\n        - h5py\n        - zlib\n      run:\n        - zlib\n      \n    test:\n      commands:\n        - command -v prismatic-gui  # [linux]\n        - test -f $PREFIX/Applications/prismatic-gui.app/Contents/MacOS/prismatic-gui  # [osx]\n\n  - name: pyprismatic\n    build:\n      skip: True  # [win or py2k or osx]\n      string: \"py{{ py }}_{{processor}}_h{{ PKG_HASH }}_{{ build }}\"\n      script: bash ${RECIPE_DIR}/combined_build_install.sh py  # [not win]\n\n    requirements:\n      build:\n        - {{ compiler('c') }}                \n        - {{ compiler('cxx') }}              \n        - {{ cdt('libxext-devel') }}         # [linux]\n        - {{ cdt('mesa-libgl-devel') }}      # [linux]\n        - {{ cdt('mesa-dri-drivers') }}      # [linux]\n        - {{ cdt('libxau-devel') }}          # [linux]\n        - {{ cdt('libselinux-devel') }}      # [linux]\n        - {{ cdt('libxdamage') }}            # [linux]\n        - {{ cdt('libxfixes') }}             # [linux]\n        - {{ cdt('libxxf86vm') }}            # [linux]\n        - make                               # [unix]\n        - cmake\n      host:\n        - python\n        - pip\n        - boost\n        - hdf5\n        - fftw\n        - qt\n        - h5py\n        - zlib\n      run:\n        - python\n        - numpy\n        - h5py\n        - zlib\n\n    test:\n      commands:\n        - python -c \"import pyprismatic; pyprismatic.demo()\"\n\nabout:\n  home: http://prism-em.com/\n  license: GPL-3.0-only\n  license_file: LICENSE\n  summary: 'CPU / GPU software for fast simulation of Scanning Transmission Electron Microscopy (STEM) experiments'\n  description: |\n    CPU / GPU software for fast simulation of Scanning Transmission Electron Microscopy (STEM) experiments\n  dev_url: https://github.com/prism-em/prismatic\n\nextra:\n  recipe-maintainers:\n    - ericpre\n    - douglowe\n    - tschoonj\n",
  "req":{
   "__set__":true,
@@ -538,7 +557,7 @@
    "elements":[]
   }
  },
- "smithy_version":"3.6.3",
+ "smithy_version":"3.6.8",
  "strong_exports":false,
  "total_requirements":{
   "build":{
