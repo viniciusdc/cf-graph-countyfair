@@ -142,19 +142,16 @@
     "pushd src/k8s.io/helm",
     "mkdir",
     "cp helm",
-    "cp tiller",
     "pushd src/k8s.io/helm",
-    "make bootstrap build test-unit",
+    "make build test-unit",
     "pushd bin",
     "mkdir",
     "cp helm",
-    "cp tiller",
     "pushd src/k8s.io/helm",
-    "make bootstrap build test-unit",
+    "make build test-unit",
     "pushd bin",
     "mkdir",
-    "cp helm",
-    "cp tiller"
+    "cp helm"
    ]
   },
   "extra":{
@@ -166,17 +163,20 @@
   },
   "package":{
    "name":"kubernetes-helm",
-   "version":"2.14.1"
+   "version":"3.0.0"
   },
   "requirements":{
    "build":[
-    "go_compiler_stub",
+    "c_compiler_stub",
+    "cgo_compiler_stub",
     "go-glide",
     "go-gox",
-    "go_compiler_stub",
+    "c_compiler_stub",
+    "cgo_compiler_stub",
     "go-glide",
     "go-gox",
-    "go_compiler_stub",
+    "c_compiler_stub",
+    "cgo_compiler_stub",
     "go-glide",
     "go-gox"
    ]
@@ -184,50 +184,49 @@
   "source":[
    {
     "folder":"src/k8s.io/helm",
-    "sha256":"604780d3fabeb27e7ab7a30c6e29ce64bcd2203501ea35e5231c97965b0255a0",
-    "url":"https://storage.googleapis.com/kubernetes-helm/helm-v2.14.1-windows-amd64.tar.gz"
+    "sha256":"ea3da9092214a11ed3a21a0b7bbd738c25b63cdefbb90f1c921aab7bbcce62c6",
+    "url":"https://get.helm.sh/helm-v3.0.0-windows-amd64.zip"
    },
    {
     "folder":"src/k8s.io/helm",
-    "git_rev":"v2.14.1",
+    "git_rev":"v3.0.0",
     "git_url":"https://github.com/helm/helm"
    },
    {
     "folder":"src/k8s.io/helm",
-    "git_rev":"v2.14.1",
+    "git_rev":"v3.0.0",
     "git_url":"https://github.com/helm/helm"
    }
   ],
   "test":{
    "commands":[
     "helm --help",
-    "tiller -version",
     "helm --help",
-    "tiller -version",
-    "helm --help",
-    "tiller -version"
+    "helm --help"
    ]
   }
  },
  "name":"kubernetes-helm",
  "new_version":false,
  "pinning_version":"2019.01.09",
- "raw_meta_yaml":"{% set goname = \"k8s.io/helm\" %}\n{% set version = \"2.14.1\" %}\n\n\n{% set name = goname.split('/')[-1] %}\n{% set pkg_src = ('src/'+goname).replace(\"/\", \"\\\\\" if win else \"/\") %}\n\npackage:\n  name: kubernetes-{{ name|lower }}\n  version: {{ version }}\n\nsource:\n  - folder: {{ pkg_src }}\n    git_url: https://github.com/helm/helm  # [unix]\n    git_tag: v{{ version }}                # [unix]\n    url: https://storage.googleapis.com/kubernetes-{{ name }}/{{ name }}-v{{ version }}-windows-amd64.tar.gz  # [win]\n    sha256: 604780d3fabeb27e7ab7a30c6e29ce64bcd2203501ea35e5231c97965b0255a0  # [win]\n\nbuild:\n  number: 0\n  script:\n    - pushd {{ pkg_src }}\n    - make bootstrap build test-unit  # [unix]\n    - pushd bin  # [unix]\n\n    - mkdir {{ target_gobin }}\n    - cp helm{{ target_goexe }} {{ target_gobin }}\n    - cp tiller{{ target_goexe }} {{ target_gobin }}\n\nrequirements:\n  build:\n    - {{ compiler('go') }}\n    - go-glide\n    - go-gox\n\ntest:\n  commands:\n    - helm --help\n    - tiller -version\n\nabout:\n  home: https://www.helm.sh\n  license: Apache-2.0\n  license_family: Apache\n  license_file: {{ pkg_src }}/LICENSE\n  summary: Helm is a package manager for kubernetes\n  doc_url: https://docs.helm.sh\n  dev_url: https://github.com/helm/helm\n\nextra:\n  recipe-maintainers:\n    - sodre\n",
+ "raw_meta_yaml":"{% set goname = \"k8s.io/helm\" %}\n{% set version = \"3.0.0\" %}\n\n\n{% set name = goname.split('/')[-1] %}\n{% set pkg_src = ('src/'+goname).replace(\"/\", \"\\\\\" if win else \"/\") %}\n\npackage:\n  name: kubernetes-{{ name|lower }}\n  version: {{ version }}\n\nsource:\n  - folder: {{ pkg_src }}\n    git_url: https://github.com/helm/helm  # [unix]\n    git_tag: v{{ version }}                # [unix]\n    url: https://get.helm.sh/{{ name }}-v{{ version }}-windows-amd64.zip  # [win]\n    sha256: ea3da9092214a11ed3a21a0b7bbd738c25b63cdefbb90f1c921aab7bbcce62c6  # [win]\n\nbuild:\n  number: 0\n  script:\n    - pushd {{ pkg_src }}\n    - make build test-unit  # [unix]\n    - pushd bin  # [unix]\n\n    - mkdir {{ target_gobin }}\n    - cp helm{{ target_goexe }} {{ target_gobin }}\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - {{ compiler('cgo') }}\n    - go-glide\n    - go-gox\n\ntest:\n  commands:\n    - helm --help\n\nabout:\n  home: https://www.helm.sh\n  license: Apache-2.0\n  license_family: Apache\n  license_file: {{ pkg_src }}/LICENSE\n  summary: Helm is a package manager for kubernetes\n  doc_url: https://docs.helm.sh\n  dev_url: https://github.com/helm/helm\n\nextra:\n  recipe-maintainers:\n    - sodre\n",
  "req":{
   "__set__":true,
   "elements":[
+   "c_compiler_stub",
+   "cgo_compiler_stub",
    "go-glide",
-   "go-gox",
-   "go_compiler_stub"
+   "go-gox"
   ]
  },
  "requirements":{
   "build":{
    "__set__":true,
    "elements":[
+    "c_compiler_stub",
+    "cgo_compiler_stub",
     "go-glide",
-    "go-gox",
-    "go_compiler_stub"
+    "go-gox"
    ]
   },
   "host":{
@@ -249,9 +248,10 @@
   "build":{
    "__set__":true,
    "elements":[
+    "c_compiler_stub",
+    "cgo_compiler_stub",
     "go-glide",
-    "go-gox",
-    "go_compiler_stub"
+    "go-gox"
    ]
   },
   "host":{
@@ -268,5 +268,5 @@
   }
  },
  "url":"https://storage.googleapis.com/kubernetes-helm/helm-v2.14.1-windows-amd64.tar.gz",
- "version":"2.14.1"
+ "version":"3.0.0"
 }
