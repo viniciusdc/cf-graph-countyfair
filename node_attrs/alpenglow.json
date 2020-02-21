@@ -183,12 +183,18 @@
    "doc_url":"http://alpenglow.readthedocs.io/",
    "home":"https://github.com/rpalovics/Alpenglow",
    "license":"Apache-2.0",
-   "license_file":"LICENSE",
+   "license_file":[
+    "alpenglow/LICENSE",
+    "sip/LICENSE",
+    "alpenglow/LICENSE",
+    "sip/LICENSE",
+    "alpenglow/LICENSE",
+    "sip/LICENSE"
+   ],
    "summary":"Open Source Recommender Framework with Time-aware Learning and Evaluation"
   },
   "build":{
-   "number":"1",
-   "script":"python setup.py install --single-version-externally-managed --record=record.txt"
+   "number":"0"
   },
   "extra":{
    "recipe-maintainers":[
@@ -199,7 +205,7 @@
   },
   "package":{
    "name":"alpenglow",
-   "version":"1.0.1"
+   "version":"1.0.2"
   },
   "requirements":{
    "build":[
@@ -209,46 +215,82 @@
     "c_compiler_stub",
     "cxx_compiler_stub",
     "fortran_compiler_stub",
+    "make",
     "c_compiler_stub",
     "cxx_compiler_stub",
-    "fortran_compiler_stub"
+    "fortran_compiler_stub",
+    "make"
    ],
    "host":[
     "python",
-    "sip >=4.19.20,<5",
     "setuptools",
     "eigen",
     "numpy",
+    "pip",
     "python",
-    "sip >=4.19.20,<5",
     "setuptools",
     "eigen",
     "numpy",
+    "pip",
     "python",
-    "sip >=4.19.20,<5",
     "setuptools",
     "eigen",
-    "numpy"
+    "numpy",
+    "pip"
    ],
    "run":[
     "python",
     "pandas",
     "numpy",
-    "sip >=4.19.20,<5",
     "python",
     "pandas",
     "numpy",
-    "sip >=4.19.20,<5",
     "python",
     "pandas",
-    "numpy",
-    "sip >=4.19.20,<5"
+    "numpy"
    ]
   },
-  "source":{
-   "sha256":"b4534cacd8bee6b3d5e1b3d0a544bb8498cf1972118eeeaf7f90b802f138c595",
-   "url":"https://github.com/rpalovics/Alpenglow/archive/v1.0.1.tar.gz"
-  },
+  "source":[
+   {
+    "folder":"sip",
+    "patches":[
+     "0001-Do-not-override-CC-CXX-LINK-in-sipgen-Makefile.patch"
+    ],
+    "sha256":"04cc2f87ac97e8718d8e1ef036e3ec26050ab44c21f9277618d5b67432fcbfd6",
+    "url":"https://www.riverbankcomputing.com/static/Downloads/sip/4.19.20/sip-4.19.20.tar.gz"
+   },
+   {
+    "folder":"alpenglow",
+    "sha256":"aae90af6b4730824ba15a3e8a868dff8e09f3db3d89b9b23ac2c70cbe1230246",
+    "url":"https://github.com/rpalovics/Alpenglow/archive/v1.0.2.tar.gz"
+   },
+   {
+    "folder":"sip",
+    "patches":[
+     "0001-Do-not-override-CC-CXX-LINK-in-sipgen-Makefile.patch"
+    ],
+    "sha256":"04cc2f87ac97e8718d8e1ef036e3ec26050ab44c21f9277618d5b67432fcbfd6",
+    "url":"https://www.riverbankcomputing.com/static/Downloads/sip/4.19.20/sip-4.19.20.tar.gz"
+   },
+   {
+    "folder":"alpenglow",
+    "sha256":"aae90af6b4730824ba15a3e8a868dff8e09f3db3d89b9b23ac2c70cbe1230246",
+    "url":"https://github.com/rpalovics/Alpenglow/archive/v1.0.2.tar.gz"
+   },
+   {
+    "folder":"sip",
+    "patches":[
+     "0001-Do-not-override-CC-CXX-LINK-in-sipgen-Makefile.patch"
+    ],
+    "sha256":"04cc2f87ac97e8718d8e1ef036e3ec26050ab44c21f9277618d5b67432fcbfd6",
+    "url":"https://www.riverbankcomputing.com/static/Downloads/sip/4.19.20/sip-4.19.20.tar.gz"
+   },
+   {
+    "folder":"alpenglow",
+    "sha256":"aae90af6b4730824ba15a3e8a868dff8e09f3db3d89b9b23ac2c70cbe1230246",
+    "url":"https://github.com/rpalovics/Alpenglow/archive/v1.0.2.tar.gz"
+   }
+  ],
   "test":{
    "imports":[
     "alpenglow",
@@ -281,7 +323,7 @@
  "name":"alpenglow",
  "new_version":"1.0.2",
  "pinning_version":"2020.02.20",
- "raw_meta_yaml":"{% set version = \"1.0.1\" %}\n{% set sha256 = \"b4534cacd8bee6b3d5e1b3d0a544bb8498cf1972118eeeaf7f90b802f138c595\" %}\n# curl -sL https://github.com/rpalovics/Alpenglow/archive/vX.X.X.tar.gz | openssl sha256\n\npackage:\n  name: alpenglow\n  version: {{ version }}\n\nsource:\n  url: https://github.com/rpalovics/Alpenglow/archive/v{{ version }}.tar.gz\n  sha256: {{ sha256 }}\n\nbuild:\n  skip: True  # [py<35]\n  number: 1\n  script: python setup.py install --single-version-externally-managed --record=record.txt\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n    - {{ compiler('fortran') }}\n  host:\n    - python\n    - sip >=4.19.20,<5\n    - setuptools\n    - eigen\n    - numpy\n  run:\n    - python\n    - pandas\n    - numpy\n    - sip >=4.19.20,<5\n\ntest:\n  imports:\n    - alpenglow\n    - alpenglow.experiments\n    - alpenglow.evaluation\n    - alpenglow.utils\n    - alpenglow.offline\n    - alpenglow.offline.models\n    - alpenglow.offline.evaluation\n    - alpenglow.cpp\n\nabout:\n  home: https://github.com/rpalovics/Alpenglow\n  summary: Open Source Recommender Framework with Time-aware Learning and Evaluation\n  license: Apache-2.0\n  license_file: LICENSE\n  doc_url: http://alpenglow.readthedocs.io/\n\nextra:\n  recipe-maintainers:\n    - proto-n\n",
+ "raw_meta_yaml":"{% set version = \"1.0.2\" %}\n{% set sha256 = \"aae90af6b4730824ba15a3e8a868dff8e09f3db3d89b9b23ac2c70cbe1230246\" %}\n{% set sip_version = \"4.19.20\" %}\n{% set sip_sha256 = \"04cc2f87ac97e8718d8e1ef036e3ec26050ab44c21f9277618d5b67432fcbfd6\" %}\n# curl -sL https://github.com/rpalovics/Alpenglow/archive/vX.X.X.tar.gz | openssl sha256\n\npackage:\n  name: alpenglow\n  version: {{ version }}\n\nsource:\n  - url:  https://www.riverbankcomputing.com/static/Downloads/sip/{{ sip_version }}/sip-{{ sip_version }}.tar.gz\n    sha256: {{ sip_sha256 }}\n    folder: sip\n    patches:\n      - 0001-Do-not-override-CC-CXX-LINK-in-sipgen-Makefile.patch\n  - url: https://github.com/rpalovics/Alpenglow/archive/v{{ version }}.tar.gz\n    sha256: {{ sha256 }}\n    folder: alpenglow\n\nbuild:\n  skip: True  # [py<35]\n  number: 0\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n    - {{ compiler('fortran') }}\n    - make  # [not win]\n  host:\n    - python\n    - setuptools\n    - eigen\n    - numpy\n    - pip\n  run:\n    - python\n    - pandas\n    - numpy\n\ntest:\n  imports:\n    - alpenglow\n    - alpenglow.experiments\n    - alpenglow.evaluation\n    - alpenglow.utils\n    - alpenglow.offline\n    - alpenglow.offline.models\n    - alpenglow.offline.evaluation\n    - alpenglow.cpp\n\nabout:\n  home: https://github.com/rpalovics/Alpenglow\n  summary: Open Source Recommender Framework with Time-aware Learning and Evaluation\n  license: Apache-2.0\n  license_file:\n    - alpenglow/LICENSE\n    - sip/LICENSE\n  doc_url: http://alpenglow.readthedocs.io/\n\nextra:\n  recipe-maintainers:\n    - proto-n\n",
  "req":{
   "__set__":true,
   "elements":[
@@ -289,11 +331,12 @@
    "cxx_compiler_stub",
    "eigen",
    "fortran_compiler_stub",
+   "make",
    "numpy",
    "pandas",
+   "pip",
    "python",
-   "setuptools",
-   "sip"
+   "setuptools"
   ]
  },
  "requirements":{
@@ -302,7 +345,8 @@
    "elements":[
     "c_compiler_stub",
     "cxx_compiler_stub",
-    "fortran_compiler_stub"
+    "fortran_compiler_stub",
+    "make"
    ]
   },
   "host":{
@@ -310,9 +354,9 @@
    "elements":[
     "eigen",
     "numpy",
+    "pip",
     "python",
-    "setuptools",
-    "sip"
+    "setuptools"
    ]
   },
   "run":{
@@ -320,8 +364,7 @@
    "elements":[
     "numpy",
     "pandas",
-    "python",
-    "sip"
+    "python"
    ]
   },
   "test":{
@@ -337,7 +380,8 @@
    "elements":[
     "c_compiler_stub",
     "cxx_compiler_stub",
-    "fortran_compiler_stub"
+    "fortran_compiler_stub",
+    "make"
    ]
   },
   "host":{
@@ -345,9 +389,9 @@
    "elements":[
     "eigen",
     "numpy",
+    "pip",
     "python",
-    "setuptools",
-    "sip >=4.19.20,<5"
+    "setuptools"
    ]
   },
   "run":{
@@ -355,8 +399,7 @@
    "elements":[
     "numpy",
     "pandas",
-    "python",
-    "sip >=4.19.20,<5"
+    "python"
    ]
   },
   "test":{
@@ -365,5 +408,5 @@
   }
  },
  "url":"https://github.com/rpalovics/Alpenglow/archive/v0.1.9.tar.gz",
- "version":"1.0.1"
+ "version":"1.0.2"
 }
