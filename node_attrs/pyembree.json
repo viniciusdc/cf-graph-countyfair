@@ -84,6 +84,23 @@
     "migrator_version",
     "name"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/378112766.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"ArchRebuild",
+    "migrator_version":1,
+    "name":"aarch64 and ppc64le addition"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "name"
+   ]
   }
  ],
  "bad":false,
@@ -179,7 +196,7 @@
  },
  "name":"pyembree",
  "new_version":"0.1.6",
- "pinning_version":"2019.11.01",
+ "pinning_version":"2020.02.20",
  "raw_meta_yaml":"{% set name = \"pyembree\" %}\n{% set org = \"scopatz\" %}\n{% set version = \"0.1.6\" %}\n{% set sha256 = \"d16823a8886c9e8e8c451243460ccde7e659dac78e1ddfae7110895dae324777\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  fn: {{ name }}-{{ version }}-{{ sha256 }}.tar.gz\n  url: https://github.com/{{ org }}/{{ name }}/archive/{{ version }}.tar.gz\n  sha256: {{ sha256 }}\n\nbuild:\n  number: 0\n  skip: True  # [win]\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n  host:\n    - python\n    - setuptools\n    - cython >=0.25.2\n    - numpy\n    - embree\n  run:\n    - python\n    - {{ pin_compatible('numpy') }}\n    - embree\n\ntest:\n  imports:\n    - pyembree\n  commands:\n    - conda inspect linkages -p $PREFIX $PKG_NAME  # [not win]\n    - conda inspect objects -p $PREFIX $PKG_NAME  # [osx]\n\nabout:\n  home: https://github.com/scopatz/pyembree\n  license: BSD 2-clause\n  license_file: LICENSE\n  summary: 'Python Wrapper for Embree'\n  dev_url: https://github.com/scopatz/pyembree\n\nextra:\n  recipe-maintainers:\n    - scopatz\n    - Xarthisius\n    - ocefpaf\n",
  "req":{
   "__set__":true,
@@ -225,7 +242,7 @@
    "elements":[]
   }
  },
- "smithy_version":"3.6.1",
+ "smithy_version":"3.6.8",
  "strong_exports":false,
  "total_requirements":{
   "build":{
