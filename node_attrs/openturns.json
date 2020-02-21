@@ -187,6 +187,25 @@
     "migrator_version",
     "name"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/378484749.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"MigrationYaml",
+    "migrator_object_version":2,
+    "migrator_version":0,
+    "name":"boost172"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_object_version",
+    "migrator_version",
+    "name"
+   ]
   }
  ],
  "bad":false,
@@ -297,7 +316,7 @@
  },
  "name":"openturns",
  "new_version":"1.14",
- "pinning_version":"2020.02.19",
+ "pinning_version":"2020.02.20",
  "raw_meta_yaml":"{% set version = \"1.14\" %}\n\npackage:\n  name: openturns\n  version: {{ version }}\n\nsource:\n  fn: openturns-{{ version }}.tar.gz\n  url: https://github.com/openturns/openturns/archive/v{{ version }}.tar.gz\n  sha256: 22f55bb3bc6e94a5308d94ad6b6272ea74145ba172746fdc1252a5869eb492a8\n  patches:\n    # fix dlib test\n    - a7c1dbdf8ff43e8140061a55df89052bdaa0c20f.patch\n    - 48f81dfcd404e621cb403d97c1dd82843320a5c7.patch\n\nbuild:\n  number: 4\n  run_exports:\n    - {{ pin_subpackage('openturns', max_pin='x.x') }}\n\nrequirements:\n  build:\n    - cmake  # [not win]\n    - swig  # [not win]\n    - {{ compiler('c') }}  # [not win]\n    - {{ compiler('cxx') }}  # [not win]\n  host:\n    - boost-cpp  # [not win]\n    - python\n    - matplotlib-base\n    - liblapack  # [not win]\n    - libxml2  # [not win]\n    - muparser  # [not win]\n    - tbb-devel  # [not win]\n    - nlopt  # [not win]\n    - hmat-oss  # [not win]\n    - cminpack  # [not win]\n    - ceres-solver  # [not win]\n    - dlib-cpp  # [not win]\n    - coinbonmin  # [not win]\n  run:\n    - python\n    - psutil\n    - tbb-devel  # [not win]\n\ntest:\n  imports:\n    - openturns\n\nabout:\n  home: http://openturns.org/\n  license: LGPL3\n  license_file: COPYING.LESSER\n  summary: Uncertainty treatment library\n\nextra:\n  recipe-maintainers:\n    - jschueller\n",
  "req":{
   "__set__":true,
