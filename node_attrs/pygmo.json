@@ -293,9 +293,6 @@
  ],
  "bad":false,
  "conda-forge.yml":{
-  "compiler_stack":"comp7",
-  "max_py_ver":"37",
-  "max_r_ver":"35",
   "provider":{
    "win":"azure"
   }
@@ -317,7 +314,7 @@
     "nlopt",
     "ipopt"
    ],
-   "number":"1"
+   "number":"2"
   },
   "extra":{
    "recipe-maintainers":[
@@ -399,7 +396,7 @@
  "name":"pygmo",
  "new_version":"2.13.0",
  "pinning_version":"2020.02.20",
- "raw_meta_yaml":"{% set version = \"2.13.0\" %}\n\npackage:\n  name: pygmo\n  version: {{ version }}\n\nsource:\n  url: https://github.com/esa/pagmo2/archive/v{{ version }}.tar.gz\n  sha256: 4431e61cae9f27b692b78b30e2a08362dfd35960c3840dae04ef28af8305e621\n\nbuild:\n  number: 1\n  skip: true  # [py<35]\n  ignore_run_exports:\n    # pagmo-devel will automatically\n    # put nlopt and ipopt as run dependencies,\n    # but we don't actually need any symbol\n    # from these libraries in pygmo's module.\n    # Thus, remove them from the runtime\n    # requirements.\n    - nlopt\n    - ipopt  # [unix]\n\nrequirements:\n  build:\n    - cmake\n    - {{ compiler('cxx') }}            # [not win]\n    - {{ compiler('c') }}              # [not win]\n    - vs2017_{{ target_platform  }}    # [win]\n  host:\n    - pagmo-devel\n    - boost\n    - boost-cpp\n    - numpy\n    - cloudpickle\n    - ipyparallel  # [py<38]\n    - python\n  run:\n    - {{ pin_compatible('boost', max_pin='x.x') }}\n    - {{ pin_compatible('boost-cpp', max_pin='x.x') }}\n    - {{ pin_compatible('numpy') }}\n    - cloudpickle\n    - ipyparallel  # [py<38]\n    - python\n\nabout:\n  home: https://esa.github.io/pagmo2/\n  license: GPL v3 and LGPL v3\n  license_file: COPYING.lgpl3\n  summary: 'A C++ / Python platform to perform parallel computations of optimisation tasks (global and local) via the asynchronous generalized island model'\n\nextra:\n  recipe-maintainers:\n    - ccordoba12\n    - bluescarni\n    - darioizzo\n",
+ "raw_meta_yaml":"{% set version = \"2.13.0\" %}\n\npackage:\n  name: pygmo\n  version: {{ version }}\n\nsource:\n  url: https://github.com/esa/pagmo2/archive/v{{ version }}.tar.gz\n  sha256: 4431e61cae9f27b692b78b30e2a08362dfd35960c3840dae04ef28af8305e621\n\nbuild:\n  number: 2\n  skip: true  # [py<35]\n  ignore_run_exports:\n    # pagmo-devel will automatically\n    # put nlopt and ipopt as run dependencies,\n    # but we don't actually need any symbol\n    # from these libraries in pygmo's module.\n    # Thus, remove them from the runtime\n    # requirements.\n    - nlopt\n    - ipopt  # [unix]\n\nrequirements:\n  build:\n    - cmake\n    - {{ compiler('cxx') }}            # [not win]\n    - {{ compiler('c') }}              # [not win]\n    - vs2017_{{ target_platform  }}    # [win]\n  host:\n    - pagmo-devel\n    - boost\n    - boost-cpp\n    - numpy\n    - cloudpickle\n    - ipyparallel  # [py<38]\n    - python\n  run:\n    - {{ pin_compatible('boost', max_pin='x.x') }}\n    - {{ pin_compatible('boost-cpp', max_pin='x.x') }}\n    - {{ pin_compatible('numpy') }}\n    - cloudpickle\n    - ipyparallel  # [py<38]\n    - python\n\nabout:\n  home: https://esa.github.io/pagmo2/\n  license: GPL v3 and LGPL v3\n  license_file: COPYING.lgpl3\n  summary: 'A C++ / Python platform to perform parallel computations of optimisation tasks (global and local) via the asynchronous generalized island model'\n\nextra:\n  recipe-maintainers:\n    - ccordoba12\n    - bluescarni\n    - darioizzo\n",
  "req":{
   "__set__":true,
   "elements":[
