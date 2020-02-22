@@ -251,29 +251,28 @@
     "migrator_version",
     "name"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/329c5194-138e-48b6-b0f6-18a98da1c400.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"MigrationYaml",
+    "migrator_object_version":2,
+    "migrator_version":0,
+    "name":"boost172"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_object_version",
+    "migrator_version",
+    "name"
+   ]
   }
  ],
- "bad":{
-  "exception":"Failed to put item: An error occurred (ValidationException) on request (EIBNTIKSC3IANG7669I114M6S3VV4KQNSO5AEMVJF66Q9ASUAAJG) on table (pr_json) when calling the PutItem operation: Attempting to store more than 38 significant digits in a Number",
-  "traceback":[
-   "Traceback (most recent call last):",
-   "  File \"/root/repo/cf-scripts/conda_forge_tick/auto_tick.py\", line 674, in main",
-   "    hash_type=attrs.get(\"hash_type\", \"sha256\"),",
-   "  File \"/root/repo/cf-scripts/conda_forge_tick/auto_tick.py\", line 210, in run",
-   "    PRJson.dump(pr_json)",
-   "  File \"/root/repo/cf-scripts/conda_forge_tick/dynamo_models.py\", line 33, in dump",
-   "    item.save()",
-   "  File \"/opt/conda/envs/run_env/lib/python3.7/site-packages/pynamodb/models.py\", line 405, in save",
-   "    data = self._get_connection().put_item(*args, **kwargs)",
-   "  File \"/opt/conda/envs/run_env/lib/python3.7/site-packages/pynamodb/connection/table.py\", line 139, in put_item",
-   "    return_item_collection_metrics=return_item_collection_metrics)",
-   "  File \"/opt/conda/envs/run_env/lib/python3.7/site-packages/pynamodb/connection/base.py\", line 972, in put_item",
-   "    six.raise_from(PutError(\"Failed to put item: {}\".format(e), e), None)",
-   "  File \"<string>\", line 3, in raise_from",
-   "pynamodb.exceptions.PutError: Failed to put item: An error occurred (ValidationException) on request (EIBNTIKSC3IANG7669I114M6S3VV4KQNSO5AEMVJF66Q9ASUAAJG) on table (pr_json) when calling the PutItem operation: Attempting to store more than 38 significant digits in a Number",
-   ""
-  ]
- },
+ "bad":false,
  "conda-forge.yml":{
   "provider":{
    "win":"azure"
@@ -511,7 +510,7 @@
   "pagmo",
   "pagmo-devel"
  ],
- "pinning_version":"2020.02.19",
+ "pinning_version":"2020.02.20",
  "raw_meta_yaml":"{% set version = \"2.13.0\" %}\n\npackage:\n  name: pagmo\n  version: {{ version }}\n\nsource:\n  url: https://github.com/esa/pagmo2/archive/v{{ version }}.tar.gz\n  sha256: 4431e61cae9f27b692b78b30e2a08362dfd35960c3840dae04ef28af8305e621\n\nbuild:\n  number: 2\n  skip: True  # [win and vc<14]\n\nrequirements:\n  build:\n    - {{ compiler('cxx') }}            # [not win]\n    - {{ compiler('c') }}              # [not win]\n    - vs2017_{{ target_platform  }}    # [win]\n    - cmake\n\noutputs:\n  - name: pagmo\n    requirements:\n      host:\n        - eigen\n        - nlopt\n        - boost-cpp\n        - tbb-devel\n        - ipopt  # [unix]\n      run:\n        # NOTE: nlopt and tbb\n        # use run_exports().\n        - {{ pin_compatible('boost-cpp', max_pin='x.x') }}\n        - ipopt  # [unix]\n    files:\n      - lib/libpagmo*{{ SHLIB_EXT }}   # [not win]\n      - lib/libpagmo.so.*              # [linux]\n      - lib/libpagmo.*.dylib           # [osx]\n      - Library/bin/pagmo.dll          # [win]\n    test:\n      commands:\n        - test -f $PREFIX/lib/libpagmo.so                                     # [linux]\n        - test -f $PREFIX/lib/libpagmo.dylib                                  # [osx]\n        - if not exist %PREFIX%\\\\Library\\\\bin\\\\pagmo.dll exit 1               # [win]\n\n  - name: pagmo-devel\n    build:\n      run_exports:\n        # NOTE: don't need to list tbb, as\n        # the pagmo public headers do not\n        # use tbb (thus, a dependee of pagmo\n        # does not need to link to tbb).\n        # pagmo's API and ABI change at minor rev bumps.\n        - {{ pin_subpackage('pagmo', max_pin='x.x') }}\n        - {{ pin_compatible('boost-cpp', max_pin='x.x') }}\n        - {{ pin_compatible('nlopt', max_pin='x.x') }}\n        - {{ pin_compatible('ipopt', max_pin='x.x') }}\n    requirements:\n      host:\n        - eigen\n        - nlopt\n        - boost-cpp\n        - tbb-devel\n        - ipopt  # [unix]\n      run:\n        - {{ pin_subpackage(\"pagmo\", exact=True) }}\n        - eigen\n        - boost-cpp\n        - tbb-devel\n        - ipopt  # [unix]\n    files:\n      - include/pagmo            # [not win]\n      - lib/cmake/pagmo          # [not win]\n      - Library/include/pagmo    # [win]\n      - Library/lib/pagmo.lib    # [win]\n      - Library/lib/cmake/pagmo  # [win]\n    test:\n      commands:\n        - test -f $PREFIX/include/pagmo/config.hpp                            # [unix]\n        - if not exist %PREFIX%\\\\Library\\\\include\\\\pagmo\\\\config.hpp exit 1   # [win]\n        - if not exist %PREFIX%\\\\Library\\\\lib\\\\pagmo.lib exit 1               # [win]\n\nabout:\n  home: https://esa.github.io/pagmo2/\n  license: GPL v3 and LGPL v3\n  license_file: COPYING.lgpl3\n  summary: 'A C++ / Python platform to perform parallel computations of optimisation tasks (global and local) via the asynchronous generalized island model'\n\nextra:\n  recipe-maintainers:\n    - bluescarni\n    - darioizzo\n",
  "req":{
   "__set__":true,

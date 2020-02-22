@@ -50,6 +50,23 @@
     "migrator_version",
     "name"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/378548395.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"Version",
+    "migrator_version":0,
+    "version":"2.4.8.1"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "version"
+   ]
   }
  ],
  "bad":false,
@@ -147,8 +164,8 @@
   }
  },
  "name":"r-fda",
- "new_version":"2.4.8",
- "pinning_version":"2019.07.19",
+ "new_version":"2.4.8.1",
+ "pinning_version":"2020.02.20",
  "raw_meta_yaml":"{% set version = \"2.4.8\" %}\n\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-fda\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  fn: fda_{{ version }}.tar.gz\n  url:\n    - https://cran.r-project.org/src/contrib/fda_{{ version }}.tar.gz\n    - https://cran.r-project.org/src/contrib/Archive/fda/fda_{{ version }}.tar.gz\n  sha256: 425b9ce2f145e258e9d9118177d5c3a80c61215bf5e750ecbf118607d7cf6958\n\nbuild:\n  noarch: generic\n  number: 1002\n\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - r-base\n    - r-matrix\n\n  run:\n    - r-base\n    - r-matrix\n\ntest:\n  commands:\n    - $R -e \"library('fda')\"  # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('fda')\\\"\"  # [win]\n\nabout:\n  home: http://www.functionaldata.org\n  license: GPL (>= 2)\n  summary: |\n    These functions were developed to support functional data analysis as described in\n    Ramsay, J. O. and Silverman, B. W. (2005) Functional Data Analysis. New York: Springer.  They\n    were ported from earlier versions in Matlab and S-PLUS.  An introduction appears\n    in Ramsay, J. O., Hooker, Giles, and Graves, Spencer (2009) Functional Data Analysis\n    with R and Matlab (Springer). The package includes data sets and script files working\n    many examples including all but one of the 76 figures in this latter book.  Matlab\n    versions of the code and sample analyses are no longer distributed through CRAN,\n    as they were when the book was published.  For those, ftp from <http://www.psych.mcgill.ca/misc/fda/downloads/FDAfuns/>\n    There you find a set of .zip files containing the functions and sample analyses,\n    as well as two .txt files giving instructions for installation and some additional\n    information. The changes from Version 2.4.1 are fixes of bugs in density.fd and\n    removal of functions create.polynomial.basis, polynompen, and  polynomial. These\n    were deleted because the monomial basis does the same thing and because there were\n    errors in the code.\n  license_family: GPL3\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n    - dpryan79\n    - johanneskoester\n    - bgruening\n    - daler\n    - jdblischak\n",
  "req":{
   "__set__":true,
@@ -181,7 +198,7 @@
    "elements":[]
   }
  },
- "smithy_version":"3.4.1",
+ "smithy_version":"3.6.8",
  "strong_exports":false,
  "total_requirements":{
   "build":{

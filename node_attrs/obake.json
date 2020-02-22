@@ -69,29 +69,28 @@
     "migrator_version",
     "name"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/29daf179-4de7-4acd-bc77-4da8721d5d32.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"MigrationYaml",
+    "migrator_object_version":2,
+    "migrator_version":0,
+    "name":"boost172"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_object_version",
+    "migrator_version",
+    "name"
+   ]
   }
  ],
- "bad":{
-  "exception":"Failed to put item: An error occurred (ValidationException) on request (IM0SBONM3K4CRTDR2K05AT0VVVVV4KQNSO5AEMVJF66Q9ASUAAJG) on table (pr_json) when calling the PutItem operation: Attempting to store more than 38 significant digits in a Number",
-  "traceback":[
-   "Traceback (most recent call last):",
-   "  File \"/root/repo/cf-scripts/conda_forge_tick/auto_tick.py\", line 674, in main",
-   "    hash_type=attrs.get(\"hash_type\", \"sha256\"),",
-   "  File \"/root/repo/cf-scripts/conda_forge_tick/auto_tick.py\", line 210, in run",
-   "    PRJson.dump(pr_json)",
-   "  File \"/root/repo/cf-scripts/conda_forge_tick/dynamo_models.py\", line 33, in dump",
-   "    item.save()",
-   "  File \"/opt/conda/envs/run_env/lib/python3.7/site-packages/pynamodb/models.py\", line 405, in save",
-   "    data = self._get_connection().put_item(*args, **kwargs)",
-   "  File \"/opt/conda/envs/run_env/lib/python3.7/site-packages/pynamodb/connection/table.py\", line 139, in put_item",
-   "    return_item_collection_metrics=return_item_collection_metrics)",
-   "  File \"/opt/conda/envs/run_env/lib/python3.7/site-packages/pynamodb/connection/base.py\", line 972, in put_item",
-   "    six.raise_from(PutError(\"Failed to put item: {}\".format(e), e), None)",
-   "  File \"<string>\", line 3, in raise_from",
-   "pynamodb.exceptions.PutError: Failed to put item: An error occurred (ValidationException) on request (IM0SBONM3K4CRTDR2K05AT0VVVVV4KQNSO5AEMVJF66Q9ASUAAJG) on table (pr_json) when calling the PutItem operation: Attempting to store more than 38 significant digits in a Number",
-   ""
-  ]
- },
+ "bad":false,
  "conda-forge.yml":{},
  "feedstock_name":"obake",
  "hash_type":"sha256",
@@ -350,7 +349,7 @@
   "obake",
   "obake-devel"
  ],
- "pinning_version":"2020.02.19",
+ "pinning_version":"2020.02.20",
  "raw_meta_yaml":"{% set version = \"0.4.0\" %}\n\npackage:\n  name: obake\n  version: {{ version }}\n\nsource:\n  url: https://github.com/bluescarni/obake/archive/v{{ version }}.tar.gz\n  sha256: 185e6e49e97efe516a3a483c6b5d9347fc3627dd57ca433591c3010803c19abf\n\nbuild:\n  number: 2\n  skip: true   # [win and vc<14]\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n    - cmake\n    - clang      # [win]\n    - ninja      # [win]\n\noutputs:\n\n  - name: obake\n    requirements:\n      build:\n        - {{ compiler('c') }}\n        - {{ compiler('cxx') }}\n        - cmake\n        - clang      # [win]\n        - ninja      # [win]\n      host:\n        - abseil-cpp\n        - tbb-devel\n        - mppp\n        - boost-cpp\n        - backtrace    # [linux]\n      run:\n        - backtrace    # [linux]\n    files:\n      - lib/libobake*{{ SHLIB_EXT }}   # [not win]\n      - lib/libobake.so.*              # [linux]\n      - lib/libobake.*.dylib           # [osx]\n      - Library/bin/obake.dll          # [win]\n    test:\n      commands:\n        - test -f $PREFIX/lib/libobake.so                                     # [linux]\n        - test -f $PREFIX/lib/libobake.dylib                                  # [osx]\n        - if not exist %PREFIX%\\\\Library\\\\bin\\\\obake.dll exit 1               # [win]\n\n  - name: obake-devel\n    build:\n      run_exports:\n        # SO name changes at minor rev bumps.\n        - {{ pin_subpackage('obake', max_pin='x.x') }}\n        - {{ pin_compatible('boost-cpp', max_pin='x.x') }}\n        - {{ pin_compatible('tbb', max_pin=None) }}\n        - {{ pin_compatible('mppp', max_pin=\"x.x\") }}\n    requirements:\n      build:\n        - {{ compiler('c') }}\n        - {{ compiler('cxx') }}\n        - cmake\n        - clang      # [win]\n        - ninja      # [win]\n      host:\n        - abseil-cpp\n        - tbb-devel\n        - mppp\n        - boost-cpp\n        - backtrace    # [linux]\n      run:\n        - abseil-cpp\n        - tbb-devel\n        - boost-cpp\n        - backtrace    # [linux]\n        - {{ pin_subpackage(\"obake\", exact=True) }}\n    files:\n      - include/obake            # [not win]\n      - lib/cmake/obake          # [not win]\n      - Library/include/obake    # [win]\n      - Library/lib/obake.lib    # [win]\n      - Library/lib/cmake/obake  # [win]\n    test:\n      commands:\n        - test -f $PREFIX/include/obake/config.hpp                            # [unix]\n        - if not exist %PREFIX%\\\\Library\\\\include\\\\obake\\\\config.hpp exit 1   # [win]\n        - if not exist %PREFIX%\\\\Library\\\\lib\\\\obake.lib exit 1               # [win]\n\nabout:\n  home: https://bluescarni.github.io/obake/\n  license: MPL-2.0\n  license_file: LICENSE\n  summary: 'A C++17 library for the symbolic manipulation of sparse polynomials and other closely-related mathematical objects'\n\nextra:\n  recipe-maintainers:\n    - bluescarni\n",
  "req":{
   "__set__":true,
