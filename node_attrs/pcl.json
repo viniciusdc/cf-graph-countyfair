@@ -103,29 +103,28 @@
     "migrator_version",
     "name"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/3fee3199-1ebd-42a2-a262-d6dbe09a9f70.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"MigrationYaml",
+    "migrator_object_version":2,
+    "migrator_version":0,
+    "name":"boost172"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_object_version",
+    "migrator_version",
+    "name"
+   ]
   }
  ],
- "bad":{
-  "exception":"Failed to put item: An error occurred (ValidationException) on request (I468KFD7EGS4BOMVBOEKRHCO33VV4KQNSO5AEMVJF66Q9ASUAAJG) on table (pr_json) when calling the PutItem operation: Attempting to store more than 38 significant digits in a Number",
-  "traceback":[
-   "Traceback (most recent call last):",
-   "  File \"/root/repo/cf-scripts/conda_forge_tick/auto_tick.py\", line 688, in main",
-   "    hash_type=attrs.get(\"hash_type\", \"sha256\"),",
-   "  File \"/root/repo/cf-scripts/conda_forge_tick/auto_tick.py\", line 218, in run",
-   "    PRJson.dump(pr_json)",
-   "  File \"/root/repo/cf-scripts/conda_forge_tick/dynamo_models.py\", line 33, in dump",
-   "    item.save()",
-   "  File \"/opt/conda/envs/run_env/lib/python3.7/site-packages/pynamodb/models.py\", line 405, in save",
-   "    data = self._get_connection().put_item(*args, **kwargs)",
-   "  File \"/opt/conda/envs/run_env/lib/python3.7/site-packages/pynamodb/connection/table.py\", line 139, in put_item",
-   "    return_item_collection_metrics=return_item_collection_metrics)",
-   "  File \"/opt/conda/envs/run_env/lib/python3.7/site-packages/pynamodb/connection/base.py\", line 972, in put_item",
-   "    six.raise_from(PutError(\"Failed to put item: {}\".format(e), e), None)",
-   "  File \"<string>\", line 3, in raise_from",
-   "pynamodb.exceptions.PutError: Failed to put item: An error occurred (ValidationException) on request (I468KFD7EGS4BOMVBOEKRHCO33VV4KQNSO5AEMVJF66Q9ASUAAJG) on table (pr_json) when calling the PutItem operation: Attempting to store more than 38 significant digits in a Number",
-   ""
-  ]
- },
+ "bad":false,
  "conda-forge.yml":{
   "provider":{
    "win":"azure"
@@ -225,7 +224,7 @@
  },
  "name":"pcl",
  "new_version":"1.10.0",
- "pinning_version":"2020.02.19",
+ "pinning_version":"2020.02.20",
  "raw_meta_yaml":"{% set name = \"pcl\" %}\n{% set version = \"1.9.1\" %}\n{% set sha256 = \"0add34d53cd27f8c468a59b8e931a636ad3174b60581c0387abb98a9fc9cddb6\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  fn: {{ name }}-{{ version }}.tar.gz\n  url: https://github.com/pointcloudlibrary/{{ name }}/archive/{{ name }}-{{ version }}.tar.gz\n  sha256: {{ sha256 }}\n  patches:\n    - except.patch\n    - flann.patch  # [osx]\n    - boost1.70.patch\n\nbuild:\n  number: 1005\n  skip: true  # [win and vc<14]\n\nrequirements:\n  build:\n    - {{ compiler('cxx') }}\n    - cmake\n    - ninja  # [win]\n  host:\n    - flann\n    - eigen\n    - boost-cpp\n    - qhull\n  run:\n    - flann\n    - {{ pin_compatible('boost-cpp', max_pin='x.x.x') }}\n    - qhull\n\n\ntest:\n  commands:\n    - test -d $PREFIX/include/{{ name }}-1.9/{{ name }}              # [not win]\n    - if not exist %LIBRARY_INC%\\\\{{ name }}-1.9\\\\{{ name }} exit 1  # [win]\n    - conda inspect linkages -p $PREFIX {{ name|lower }}             # [not win]\n    - conda inspect objects -p $PREFIX {{ name|lower }}              # [osx]\n\nabout:\n  home: http://www.pointclouds.org\n  license: BSD 3-Clause\n  license_family: BSD\n  license_file: LICENSE.txt\n  summary: 'Point Cloud Library (PCL)'\n  description: |\n    The Point Cloud Library (PCL) is a standalone, large scale, open project for 2D/3D image and point cloud processing.\n  doc_url: http://www.pointclouds.org\n  dev_url: https://github.com/pointcloudlibrary/pcl\n\nextra:\n  recipe-maintainers:\n    - chambbj\n    - hobu\n",
  "req":{
   "__set__":true,
