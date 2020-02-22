@@ -132,7 +132,7 @@
   "build":{
    "noarch":"python",
    "number":"0",
-   "script":"python -m pip install --no-deps --ignore-installed ."
+   "script":"-m pip install . --no-deps -vv"
   },
   "extra":{
    "recipe-maintainers":[
@@ -155,7 +155,7 @@
   },
   "package":{
    "name":"jplephem",
-   "version":"2.12"
+   "version":"2.13"
   },
   "requirements":{
    "host":[
@@ -182,14 +182,14 @@
    ]
   },
   "source":{
-   "fn":"jplephem-2.12.tar.gz",
+   "fn":"jplephem-2.13.tar.gz",
    "patches":[
     "0001_use-setuptools.patch",
     "0001_use-setuptools.patch",
     "0001_use-setuptools.patch"
    ],
-   "sha256":"35a3b67444c7b03433e5ffff89fe10fd78d9bc88c12aafd001631227a1782023",
-   "url":"https://pypi.io/packages/source/j/jplephem/jplephem-2.12.tar.gz"
+   "sha256":"17685ac008cfc35e1fdde33477eca730dad75c8cd3e1505aedf49ac3e322cecc",
+   "url":"https://pypi.io/packages/source/j/jplephem/jplephem-2.13.tar.gz"
   },
   "test":{
    "commands":[
@@ -221,7 +221,7 @@
  "name":"jplephem",
  "new_version":"2.13",
  "pinning_version":"2020.02.20",
- "raw_meta_yaml":"{% set name = \"jplephem\" %}\n{% set version = \"2.12\" %}\n{% set sha256 = \"35a3b67444c7b03433e5ffff89fe10fd78d9bc88c12aafd001631227a1782023\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  fn: {{ name }}-{{ version }}.tar.gz\n  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz\n  sha256: {{ sha256 }}\n  patches:\n    - 0001_use-setuptools.patch\n\nbuild:\n  noarch: python\n  number: 0\n  script: python -m pip install --no-deps --ignore-installed .\n\nrequirements:\n  host:\n    - pip\n    - python\n    - setuptools\n    - numpy\n  run:\n    - python\n    - numpy\n\ntest:\n  requires:\n    - curl\n  imports:\n    - jplephem\n  commands:\n    - curl -sS -O https://naif.jpl.nasa.gov/pub/naif/generic_kernels/spk/planets/a_old_versions/de421.bsp\n    - curl -sS -O https://naif.jpl.nasa.gov/pub/naif/generic_kernels/spk/planets/a_old_versions/de405.bsp\n    - curl -sS -O https://naif.jpl.nasa.gov/pub/naif/generic_kernels/pck/moon_pa_de421_1900-2050.bpc\n    - python -m unittest discover jplephem\n\nabout:\n  home: https://pypi.python.org/pypi/jplephem\n  license: MIT\n  license_file: LICENSE.txt\n  summary: \"Python version of NASA DE4xx ephemerides, the basis for the Astronomical Alamanac\"\n\nextra:\n  recipe-maintainers:\n    - juanlu001\n    - brandon-rhodes\n    - jochym\n    - ReimarBauer\n    - EndlessDex\n",
+ "raw_meta_yaml":"{% set name = \"jplephem\" %}\n{% set version = \"2.13\" %}\n{% set sha256 = \"17685ac008cfc35e1fdde33477eca730dad75c8cd3e1505aedf49ac3e322cecc\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  fn: {{ name }}-{{ version }}.tar.gz\n  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz\n  sha256: {{ sha256 }}\n  patches:\n    - 0001_use-setuptools.patch\n\nbuild:\n  noarch: python\n  number: 0\n  script: {{ PYTHON }} -m pip install . --no-deps -vv\n\nrequirements:\n  host:\n    - pip\n    - python\n    - setuptools\n    - numpy\n  run:\n    - python\n    - numpy\n\ntest:\n  requires:\n    - curl\n  imports:\n    - jplephem\n  commands:\n    - curl -sS -O https://naif.jpl.nasa.gov/pub/naif/generic_kernels/spk/planets/a_old_versions/de421.bsp\n    - curl -sS -O https://naif.jpl.nasa.gov/pub/naif/generic_kernels/spk/planets/a_old_versions/de405.bsp\n    - curl -sS -O https://naif.jpl.nasa.gov/pub/naif/generic_kernels/pck/moon_pa_de421_1900-2050.bpc\n    - python -m unittest discover jplephem\n\nabout:\n  home: https://pypi.python.org/pypi/jplephem\n  license: MIT\n  license_file: LICENSE.txt\n  summary: \"Python version of NASA DE4xx ephemerides, the basis for the Astronomical Alamanac\"\n\nextra:\n  recipe-maintainers:\n    - juanlu001\n    - brandon-rhodes\n    - jochym\n    - ReimarBauer\n    - EndlessDex\n",
  "req":{
   "__set__":true,
   "elements":[
@@ -290,5 +290,5 @@
   }
  },
  "url":"https://pypi.io/packages/source/j/jplephem/jplephem-2.9.tar.gz",
- "version":"2.12"
+ "version":"2.13"
 }
