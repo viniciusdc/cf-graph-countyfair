@@ -164,11 +164,16 @@
   "about":{
    "home":"http://giflib.sourceforge.net",
    "license":"MIT",
-   "license_file":"COPYING",
+   "license_file":[
+    "COPYING",
+    "getopt_LICENSE.txt",
+    "COPYING",
+    "COPYING"
+   ],
    "summary":"Library for reading and writing gif images"
   },
   "build":{
-   "number":"1",
+   "number":"2",
    "run_exports":[
     "subpackage_stub",
     "subpackage_stub",
@@ -182,14 +187,17 @@
     "183amir",
     "msarahan",
     "isuruf",
+    "wolfv",
     "ocefpaf",
     "183amir",
     "msarahan",
     "isuruf",
+    "wolfv",
     "ocefpaf",
     "183amir",
     "msarahan",
-    "isuruf"
+    "isuruf",
+    "wolfv"
    ]
   },
   "package":{
@@ -199,6 +207,7 @@
   "requirements":{
    "build":[
     "c_compiler_stub",
+    "git",
     "cmake",
     "c_compiler_stub",
     "make",
@@ -208,19 +217,35 @@
     "cmake"
    ]
   },
-  "source":{
-   "sha256":"31da5562f44c5f15d63340a09a4fd62b48c45620cd302f77a6d9acf0077879bd",
-   "url":"http://downloads.sourceforge.net/project/giflib/giflib-5.2.1.tar.gz"
-  },
+  "source":[
+   {
+    "patches":[
+     "fix_win.patch"
+    ],
+    "sha256":"31da5562f44c5f15d63340a09a4fd62b48c45620cd302f77a6d9acf0077879bd",
+    "url":"http://downloads.sourceforge.net/project/giflib/giflib-5.2.1.tar.gz"
+   },
+   {
+    "path":"getopt.h"
+   },
+   {
+    "patches":null,
+    "sha256":"31da5562f44c5f15d63340a09a4fd62b48c45620cd302f77a6d9acf0077879bd",
+    "url":"http://downloads.sourceforge.net/project/giflib/giflib-5.2.1.tar.gz"
+   },
+   {
+    "patches":null,
+    "sha256":"31da5562f44c5f15d63340a09a4fd62b48c45620cd302f77a6d9acf0077879bd",
+    "url":"http://downloads.sourceforge.net/project/giflib/giflib-5.2.1.tar.gz"
+   }
+  ],
   "test":{
    "commands":[
-    "gif2rgb.exe -h",
-    "gifbuild.exe -h",
-    "gifclrmp.exe -h",
-    "gifecho.exe -h",
-    "giffix.exe -h",
-    "gifinto.exe -h",
-    "giftext.exe -h",
+    "gif2rgb -h",
+    "gifbuild -h",
+    "giffix -h",
+    "giftext -h",
+    "gifclrmp -h",
     "gif2rgb -h",
     "gifbuild -h",
     "giffix -h",
@@ -237,12 +262,13 @@
  "name":"giflib",
  "new_version":"5.2.1",
  "pinning_version":"2019.06.19",
- "raw_meta_yaml":"{% set version = \"5.2.1\" %}\n\npackage:\n  name: giflib\n  version: {{ version }}\n\nsource:\n  url: http://downloads.sourceforge.net/project/giflib/giflib-{{ version }}.tar.gz\n  sha256: 31da5562f44c5f15d63340a09a4fd62b48c45620cd302f77a6d9acf0077879bd\n\nbuild:\n  number: 1\n  skip: True  # [win]\n  run_exports:\n    # SONAME changes at minor revs.\n    #    https://abi-laboratory.pro/tracker/timeline/giflib/\n    - {{ pin_subpackage('giflib', max_pin='x.x') }}\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - make  # [not win]\n    - cmake\n\ntest:\n  commands:\n    - gif2rgb -h  # [not win]\n    - gifbuild -h  # [not win]\n    - giffix -h  # [not win]\n    - giftext -h  # [not win]\n    - gifclrmp -h  # [not win]\n    - gif2rgb.exe -h  # [win]\n    - gifbuild.exe -h  # [win]\n    - gifclrmp.exe -h  # [win]\n    - gifecho.exe -h  # [win]\n    - giffix.exe -h  # [win]\n    - gifinto.exe -h  # [win]\n    - giftext.exe -h  # [win]\n\nabout:\n  home: http://giflib.sourceforge.net\n  license: MIT\n  license_file: COPYING\n  summary: Library for reading and writing gif images\n\nextra:\n  recipe-maintainers:\n    - ocefpaf\n    - 183amir\n    - msarahan\n    - isuruf\n",
+ "raw_meta_yaml":"{% set version = \"5.2.1\" %}\n\npackage:\n  name: giflib\n  version: {{ version }}\n\nsource:\n  - url: http://downloads.sourceforge.net/project/giflib/giflib-{{ version }}.tar.gz\n    sha256: 31da5562f44c5f15d63340a09a4fd62b48c45620cd302f77a6d9acf0077879bd\n    patches:\n      - fix_win.patch  # [win]\n  # add a getopt polyfill\n  - path: getopt.h  # [win]\n\nbuild:\n  number: 2\n  skip: true  # [win and vc<14]\n  run_exports:\n    # SONAME changes at minor revs.\n    #    https://abi-laboratory.pro/tracker/timeline/giflib/\n    - {{ pin_subpackage('giflib', max_pin='x.x') }}\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - make  # [not win]\n    - git  # [win]\n    - cmake\n\ntest:\n  commands:\n    - gif2rgb -h\n    - gifbuild -h\n    - giffix -h\n    - giftext -h\n    - gifclrmp -h\n\nabout:\n  home: http://giflib.sourceforge.net\n  license: MIT\n  license_file:\n    - COPYING\n    - getopt_LICENSE.txt  # [win]\n  summary: Library for reading and writing gif images\n\nextra:\n  recipe-maintainers:\n    - ocefpaf\n    - 183amir\n    - msarahan\n    - isuruf\n    - wolfv\n",
  "req":{
   "__set__":true,
   "elements":[
    "c_compiler_stub",
    "cmake",
+   "git",
    "make"
   ]
  },
@@ -252,6 +278,7 @@
    "elements":[
     "c_compiler_stub",
     "cmake",
+    "git",
     "make"
    ]
   },
@@ -276,6 +303,7 @@
    "elements":[
     "c_compiler_stub",
     "cmake",
+    "git",
     "make"
    ]
   },
