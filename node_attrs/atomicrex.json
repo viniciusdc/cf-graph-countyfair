@@ -37,29 +37,28 @@
     "migrator_version",
     "name"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/36b08d5b-01c1-465e-95b8-baf47432803c.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"MigrationYaml",
+    "migrator_object_version":2,
+    "migrator_version":0,
+    "name":"boost172"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_object_version",
+    "migrator_version",
+    "name"
+   ]
   }
  ],
- "bad":{
-  "exception":"Failed to put item: An error occurred (ValidationException) on request (IEFO9AMUGPGL7SN5C23KRE1TQNVV4KQNSO5AEMVJF66Q9ASUAAJG) on table (pr_json) when calling the PutItem operation: Attempting to store more than 38 significant digits in a Number",
-  "traceback":[
-   "Traceback (most recent call last):",
-   "  File \"/root/repo/cf-scripts/conda_forge_tick/auto_tick.py\", line 688, in main",
-   "    hash_type=attrs.get(\"hash_type\", \"sha256\"),",
-   "  File \"/root/repo/cf-scripts/conda_forge_tick/auto_tick.py\", line 218, in run",
-   "    PRJson.dump(pr_json)",
-   "  File \"/root/repo/cf-scripts/conda_forge_tick/dynamo_models.py\", line 33, in dump",
-   "    item.save()",
-   "  File \"/opt/conda/envs/run_env/lib/python3.7/site-packages/pynamodb/models.py\", line 405, in save",
-   "    data = self._get_connection().put_item(*args, **kwargs)",
-   "  File \"/opt/conda/envs/run_env/lib/python3.7/site-packages/pynamodb/connection/table.py\", line 139, in put_item",
-   "    return_item_collection_metrics=return_item_collection_metrics)",
-   "  File \"/opt/conda/envs/run_env/lib/python3.7/site-packages/pynamodb/connection/base.py\", line 972, in put_item",
-   "    six.raise_from(PutError(\"Failed to put item: {}\".format(e), e), None)",
-   "  File \"<string>\", line 3, in raise_from",
-   "pynamodb.exceptions.PutError: Failed to put item: An error occurred (ValidationException) on request (IEFO9AMUGPGL7SN5C23KRE1TQNVV4KQNSO5AEMVJF66Q9ASUAAJG) on table (pr_json) when calling the PutItem operation: Attempting to store more than 38 significant digits in a Number",
-   ""
-  ]
- },
+ "bad":false,
  "conda-forge.yml":{},
  "feedstock_name":"atomicrex",
  "hash_type":"sha256",
@@ -164,7 +163,7 @@
  },
  "name":"atomicrex",
  "new_version":false,
- "pinning_version":"2020.02.19",
+ "pinning_version":"2020.02.20",
  "raw_meta_yaml":"{% set name = \"atomicrex\" %}\n{% set version = \"1.0\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  url: https://gitlab.com/{{ name }}/{{ name }}/-/archive/{{ version }}/{{ name }}-{{ version }}.tar.gz\n  sha256: f90d7a46987a363c2d14d693e7ac1d0e966b8a0a852aafe3254b30f006ea6555\n  patches:\n    - conda.patch\n\nbuild:\n  number: 1\n  skip: true  # [not linux]\n\nrequirements:\n  build:\n    - {{ compiler('cxx') }}\n    - {{ compiler('fortran') }}\n    - make\n    - cmake \n    - vim  # required for xxd \n  host:\n    - python\n    - boost-cpp\n    - libxml2\n    - muparser\n    - nlopt\n    - pybind11\n  run:\n    - python\n    - boost-cpp\n    - libxml2\n    - muparser\n    - nlopt\n\ntest:\n  imports:\n    - atomicrex\n\nabout:\n  home: https://www.atomicrex.org\n  license: GPL-3.0\n  license_family: GPL\n  license_file: LICENSE.txt\n  summary: 'A tool for the construction of interaction models'\n\n  description: |\n    atomicrex is a versatile tool for the construction of advanced \n    atomistic models. It is written in C++ and python. It was primarily \n    developed to fit interatomic potential models. Thanks to its \n    flexible generic structure its application range, however, is much \n    larger. \n  doc_url: https://www.atomicrex.org\n  dev_url: https://gitlab.com/atomicrex/atomicrex\n\nextra:\n  recipe-maintainers:\n    - jan-janssen\n",
  "req":{
   "__set__":true,
