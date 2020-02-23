@@ -1,48 +1,24 @@
 {
- "bad":{
-  "code":404,
-  "exception":"HTTP Error 404: Not Found",
-  "traceback":[
-   "Traceback (most recent call last):",
-   "  File \"/root/repo/cf-scripts/conda_forge_tick/auto_tick.py\", line 688, in main",
-   "    hash_type=attrs.get(\"hash_type\", \"sha256\"),",
-   "  File \"/root/repo/cf-scripts/conda_forge_tick/auto_tick.py\", line 147, in run",
-   "    migrate_return = migrator.migrate(recipe_dir, feedstock_ctx.attrs, **kwargs)",
-   "  File \"/root/repo/cf-scripts/conda_forge_tick/migrators/version.py\", line 224, in migrate",
-   "    new_patterns = self.get_hash_patterns(\"meta.yaml\", urls, hash_type)",
-   "  File \"/root/repo/cf-scripts/conda_forge_tick/migrators/version.py\", line 103, in get_hash_patterns",
-   "    hash_ = hash_url(url, hash_type)",
-   "  File \"/opt/conda/envs/run_env/lib/python3.7/site-packages/rever/tools.xsh\", line 207, in hash_url",
-   "    for b in stream_url_progress(url, verb='Hashing', quiet=quiet):",
-   "  File \"/opt/conda/envs/run_env/lib/python3.7/site-packages/rever/tools.xsh\", line 179, in stream_url_progress",
-   "    with urllib.request.urlopen(url) as f:",
-   "  File \"/opt/conda/envs/run_env/lib/python3.7/urllib/request.py\", line 222, in urlopen",
-   "    return opener.open(url, data, timeout)",
-   "  File \"/opt/conda/envs/run_env/lib/python3.7/urllib/request.py\", line 531, in open",
-   "    response = meth(req, response)",
-   "  File \"/opt/conda/envs/run_env/lib/python3.7/urllib/request.py\", line 641, in http_response",
-   "    'http', request, response, code, msg, hdrs)",
-   "  File \"/opt/conda/envs/run_env/lib/python3.7/urllib/request.py\", line 563, in error",
-   "    result = self._call_chain(*args)",
-   "  File \"/opt/conda/envs/run_env/lib/python3.7/urllib/request.py\", line 503, in _call_chain",
-   "    result = func(*args)",
-   "  File \"/opt/conda/envs/run_env/lib/python3.7/urllib/request.py\", line 755, in http_error_302",
-   "    return self.parent.open(new, timeout=req.timeout)",
-   "  File \"/opt/conda/envs/run_env/lib/python3.7/urllib/request.py\", line 531, in open",
-   "    response = meth(req, response)",
-   "  File \"/opt/conda/envs/run_env/lib/python3.7/urllib/request.py\", line 641, in http_response",
-   "    'http', request, response, code, msg, hdrs)",
-   "  File \"/opt/conda/envs/run_env/lib/python3.7/urllib/request.py\", line 569, in error",
-   "    return self._call_chain(*args)",
-   "  File \"/opt/conda/envs/run_env/lib/python3.7/urllib/request.py\", line 503, in _call_chain",
-   "    result = func(*args)",
-   "  File \"/opt/conda/envs/run_env/lib/python3.7/urllib/request.py\", line 649, in http_error_default",
-   "    raise HTTPError(req.full_url, code, msg, hdrs, fp)",
-   "urllib.error.HTTPError: HTTP Error 404: Not Found",
-   ""
-  ],
-  "url":"https://codeload.github.com/keycloak/keycloak-gatekeeper/tar.gz/v9.0.0"
- },
+ "PRed":[
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/378729990.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"Version",
+    "migrator_version":0,
+    "version":"9.0.0"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "version"
+   ]
+  }
+ ],
+ "bad":false,
  "conda-forge.yml":{
   "provider":{
    "win":"azure"
@@ -148,6 +124,7 @@
  },
  "name":"keycloak-gatekeeper",
  "new_version":"9.0.0",
+ "pinning_version":"2020.02.20",
  "raw_meta_yaml":"{% set goname = \"github.com/keycloak/keycloak-gatekeeper\" %}\n{% set version = \"2.3.0\" %}\n\n{% set name = goname.split('/')[-1] %}\n{% set pkg_src = ('src/'+goname).replace(\"/\", \"\\\\\" if win else \"/\") %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  - folder: {{ pkg_src }}\n    url: https://{{ goname}}/archive/v{{ version }}.tar.gz\n    sha256: cb19406a35797165fb135a5152c8e6ace17315f892ad5a3d0e13b89ca9aae2cd\n    patches:\n      # Parse and Verify the ID Token before trying to use the access-token\n      - access_token.patch\n\nbuild:\n  number: 3\n  script:\n    - pushd {{ pkg_src }}\n    - dep ensure\n    - patch -p1 -i {{ RECIPE_DIR }}{{ os.sep }}client_secret.patch\n    - patch -p1 -i {{ RECIPE_DIR }}{{ os.sep }}rs512.patch\n    - go test -v .\n    - go install -v .\n\nrequirements:\n  build:\n    - {{ compiler(\"go\") }} >=1.11.3\n    - go-dep\n    - patch  # [unix]\n    - m2-patch  # [win]\n\ntest:\n  requires:\n    - m2-bash  # [win]\n  commands:\n    - bash -c \"{{ name|lower }} -v\"\n\nabout:\n  home: https://github.com/keycloak/keycloak-gatekeeper\n\n  license: Apache 2.0\n  license_family: Apache\n  license_file: {{ pkg_src }}/LICENSE\n  summary: 'An adapter for use with OpenID Connect that supports both access tokens in a browser cookie or bearer tokens'\n\n  description: |\n    Keycloak is an open source Identity and Access Management solution aimed\n    at modern applications and services. It makes it easy to secure applications\n    and services with little to no code. Some of its features include Single-Sign On,\n    Identity Brokering and Social Login, User Federation and Client Adapters.\n  doc_url: https://www.keycloak.org/docs/latest/securing_apps/index.html#_keycloak_generic_adapter\n\n  dev_url: https://github.com/keycloak/keycloak-gatekeeper\n\nextra:\n  recipe-maintainers:\n    - adbeda\n    - sodre\n",
  "req":{
   "__set__":true,
@@ -181,6 +158,7 @@
    "elements":[]
   }
  },
+ "smithy_version":"3.6.8",
  "strong_exports":false,
  "time":1568135305.982172,
  "total_requirements":{
