@@ -67,29 +67,28 @@
     "migrator_version",
     "name"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/1a89e573-9b81-40fb-87c8-615b6017f5c1.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"MigrationYaml",
+    "migrator_object_version":2,
+    "migrator_version":0,
+    "name":"boost172"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_object_version",
+    "migrator_version",
+    "name"
+   ]
   }
  ],
- "bad":{
-  "exception":"Failed to put item: An error occurred (ValidationException) on request (147HODMKQA1O319KN75R6GOMQFVV4KQNSO5AEMVJF66Q9ASUAAJG) on table (pr_json) when calling the PutItem operation: Attempting to store more than 38 significant digits in a Number",
-  "traceback":[
-   "Traceback (most recent call last):",
-   "  File \"/root/repo/cf-scripts/conda_forge_tick/auto_tick.py\", line 688, in main",
-   "    hash_type=attrs.get(\"hash_type\", \"sha256\"),",
-   "  File \"/root/repo/cf-scripts/conda_forge_tick/auto_tick.py\", line 218, in run",
-   "    PRJson.dump(pr_json)",
-   "  File \"/root/repo/cf-scripts/conda_forge_tick/dynamo_models.py\", line 33, in dump",
-   "    item.save()",
-   "  File \"/opt/conda/envs/run_env/lib/python3.7/site-packages/pynamodb/models.py\", line 405, in save",
-   "    data = self._get_connection().put_item(*args, **kwargs)",
-   "  File \"/opt/conda/envs/run_env/lib/python3.7/site-packages/pynamodb/connection/table.py\", line 139, in put_item",
-   "    return_item_collection_metrics=return_item_collection_metrics)",
-   "  File \"/opt/conda/envs/run_env/lib/python3.7/site-packages/pynamodb/connection/base.py\", line 972, in put_item",
-   "    six.raise_from(PutError(\"Failed to put item: {}\".format(e), e), None)",
-   "  File \"<string>\", line 3, in raise_from",
-   "pynamodb.exceptions.PutError: Failed to put item: An error occurred (ValidationException) on request (147HODMKQA1O319KN75R6GOMQFVV4KQNSO5AEMVJF66Q9ASUAAJG) on table (pr_json) when calling the PutItem operation: Attempting to store more than 38 significant digits in a Number",
-   ""
-  ]
- },
+ "bad":false,
  "conda-forge.yml":{
   "provider":{
    "win":"azure"
@@ -176,7 +175,7 @@
  },
  "name":"clsparse",
  "new_version":"0.10.2.0",
- "pinning_version":"2020.02.19",
+ "pinning_version":"2020.02.20",
  "raw_meta_yaml":"{% set name = \"clSPARSE\" %}\n{% set version = \"0.10.2.0\" %}\n{% set sha256 = \"952b26670625646c5386299a4d360aaa9cd2139555376b48aaed163a6ea60325\" %}\n\n{% set OSX_VARIANT = os.environ.get(\"OSX_VARIANT\", \"native\") %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  fn: {{ name }}-{{ version }}.tar.gz\n  url: https://github.com/clMathLibraries/{{ name }}/archive/v{{ version }}.tar.gz\n  sha256: {{ sha256 }}\n\nbuild:\n  number: 3\n  script_env:\n    - OSX_VARIANT\n\n{% if OSX_VARIANT != \"native\" %}\n  skip: True  # [not osx]\n{% else %}\n  skip: True  # [win and py<36]\n{% endif %}\n\n  features:\n{% if OSX_VARIANT == \"pocl\" %}\n    - osx_pocl_opencl            # [osx]\n{% endif %}\n\nrequirements:\n  build:\n    - cmake\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n  host:\n    - boost-cpp\n    - clhpp\n    - gtest\n    - ocl-icd                    # [linux]\n    - khronos-opencl-icd-loader  # [win]\n{% if OSX_VARIANT == \"pocl\" %}\n    - osx-pocl-opencl            # [osx]\n    - pocl >=0.14                # [unix]\n{% endif %}\n\n  run:\n    - khronos-opencl-icd-loader  # [win]\n    - ocl-icd                    # [linux]\n{% if OSX_VARIANT == \"pocl\" %}\n    - osx-pocl-opencl            # [osx]\n    - pocl >=0.14                # [unix]\n{% endif %}\n\ntest:\n  requires:\n    - python {{ environ['PY_VER'] + '*' }}              # [win]\n\n  commands:\n    # Check files\n    - test -f \"${PREFIX}/include/clSPARSE.h\"           # [unix]\n    - test -f \"${PREFIX}/lib/libclSPARSE.so\"           # [linux]\n    - test -f \"${PREFIX}/lib/libclSPARSE.dylib\"        # [osx]\n    - if not exist %LIBRARY_INC%\\\\clSPARSE.h exit 1    # [win]\n    - if not exist %LIBRARY_BIN%\\\\clSPARSE.dll exit 1  # [win]\n    - if not exist %LIBRARY_LIB%\\\\clSPARSE.lib exit 1  # [win]\n\nabout:\n  home: https://github.com/clMathLibraries/{{ name }}\n  license: Apache 2.0\n  license_file: LICENSE\n  summary: A software library containing Sparse functions written in OpenCL\n\nextra:\n  recipe-maintainers:\n    - inducer\n    - jakirkham\n",
  "req":{
   "__set__":true,
