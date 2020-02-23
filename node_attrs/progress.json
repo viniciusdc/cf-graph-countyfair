@@ -87,14 +87,17 @@
   },
   "build":{
    "noarch":"python",
-   "number":0,
-   "script":"python setup.py install --single-version-externally-managed --record=record.txt"
+   "number":"1",
+   "script":"-m pip install . -vv"
   },
   "extra":{
    "recipe-maintainers":[
     "SoapZA",
+    "marcelotrevisani",
     "SoapZA",
-    "SoapZA"
+    "marcelotrevisani",
+    "SoapZA",
+    "marcelotrevisani"
    ]
   },
   "package":{
@@ -102,13 +105,13 @@
    "version":"1.5"
   },
   "requirements":{
-   "build":[
+   "host":[
     "python",
-    "setuptools",
+    "pip",
     "python",
-    "setuptools",
+    "pip",
     "python",
-    "setuptools"
+    "pip"
    ],
    "run":[
     "python",
@@ -117,40 +120,52 @@
    ]
   },
   "source":{
-   "fn":"progress-1.5.tar.gz",
    "sha256":"69ecedd1d1bbe71bf6313d88d1e6c4d2957b7f1d4f71312c211257f7dae64372",
    "url":"https://pypi.io/packages/source/p/progress/progress-1.5.tar.gz"
   },
   "test":{
+   "commands":[
+    "pip check",
+    "pip check",
+    "pip check"
+   ],
    "imports":[
     "progress",
+    "progress.bar",
     "progress",
-    "progress"
+    "progress.bar",
+    "progress",
+    "progress.bar"
+   ],
+   "requires":[
+    "pip",
+    "pip",
+    "pip"
    ]
   }
  },
  "name":"progress",
  "new_version":"1.5",
  "pinning_version":"2019.03.04",
- "raw_meta_yaml":"{% set name = \"progress\" %}\n{% set version = \"1.5\" %}\n{% set hash_type = \"sha256\" %}\n{% set hash_val = \"69ecedd1d1bbe71bf6313d88d1e6c4d2957b7f1d4f71312c211257f7dae64372\" %}\n\npackage:\n  name: {{ name }}\n  version: {{ version }}\n\nsource:\n  fn: {{ name }}-{{ version }}.tar.gz\n  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz\n  {{ hash_type }}: {{ hash_val }}\n\nbuild:\n  number: 0\n  noarch: python\n  script: python setup.py install --single-version-externally-managed --record=record.txt\n\nrequirements:\n  build:\n    - python\n    - setuptools\n\n  run:\n    - python\n\ntest:\n  imports:\n    - progress\n\nabout:\n  home: https://github.com/verigak/progress\n  license: ISC\n  license_family: MIT\n  license_file: LICENSE\n  summary: 'Easy progress reporting for Python'\n  doc_url: https://pypi.python.org/pypi/progress\n  dev_url: https://github.com/verigak/progress\n\nextra:\n  recipe-maintainers:\n    - SoapZA\n",
+ "raw_meta_yaml":"{% set name = \"progress\" %}\n{% set version = \"1.5\" %}\n\n\npackage:\n  name: {{ name }}\n  version: {{ version }}\n\nsource:\n  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz\n  sha256: 69ecedd1d1bbe71bf6313d88d1e6c4d2957b7f1d4f71312c211257f7dae64372\n\nbuild:\n  number: 1\n  noarch: python\n  script: {{ PYTHON }} -m pip install . -vv\n\nrequirements:\n  host:\n    - python\n    - pip\n  run:\n    - python\n\ntest:\n  imports:\n    - progress\n    - progress.bar\n  commands:\n    - pip check\n  requires:\n    - pip\n\nabout:\n  home: https://github.com/verigak/progress\n  license: ISC\n  license_family: MIT\n  license_file: LICENSE\n  summary: 'Easy progress reporting for Python'\n  doc_url: https://pypi.python.org/pypi/progress\n  dev_url: https://github.com/verigak/progress\n\nextra:\n  recipe-maintainers:\n    - SoapZA\n    - marcelotrevisani\n",
  "req":{
   "__set__":true,
   "elements":[
-   "python",
-   "setuptools"
+   "pip",
+   "python"
   ]
  },
  "requirements":{
   "build":{
    "__set__":true,
-   "elements":[
-    "python",
-    "setuptools"
-   ]
+   "elements":[]
   },
   "host":{
    "__set__":true,
-   "elements":[]
+   "elements":[
+    "pip",
+    "python"
+   ]
   },
   "run":{
    "__set__":true,
@@ -160,7 +175,9 @@
   },
   "test":{
    "__set__":true,
-   "elements":[]
+   "elements":[
+    "pip"
+   ]
   }
  },
  "smithy_version":"3.2.14",
@@ -168,14 +185,14 @@
  "total_requirements":{
   "build":{
    "__set__":true,
-   "elements":[
-    "python",
-    "setuptools"
-   ]
+   "elements":[]
   },
   "host":{
    "__set__":true,
-   "elements":[]
+   "elements":[
+    "pip",
+    "python"
+   ]
   },
   "run":{
    "__set__":true,
@@ -185,7 +202,9 @@
   },
   "test":{
    "__set__":true,
-   "elements":[]
+   "elements":[
+    "pip"
+   ]
   }
  },
  "url":"https://pypi.io/packages/source/p/progress/progress-1.5.tar.gz",
