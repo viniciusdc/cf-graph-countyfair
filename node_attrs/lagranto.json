@@ -202,7 +202,7 @@
   }
  },
  "name":"lagranto",
- "new_version":"0.1.8",
+ "new_version":"0.2.0",
  "pinning_version":"2020.02.12",
  "raw_meta_yaml":"{% set name = \"Lagranto\" %}\n{% set version = \"0.1.7\" %}\n{% set sha256 = \"17babbf24a91760fdebc2deda10efd67b97399078721347052b9d49fa0ba4286\" %}\n\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  fn: {{ name }}-{{ version }}.tar.gz\n  url: https://git.iac.ethz.ch/atmosdyn/Lagranto/repository/v{{version}}/archive.tar.gz\n  sha256: {{ sha256 }}\n\nbuild:\n  number: 1001\n  skip: True  # [win]\n  script: \"{{ PYTHON }} -m pip install . -vv --no-deps\"\n\nrequirements:\n  host:\n    - python\n    - pip\n  run:\n    - python\n    - numpy <1.14  # [py2k]\n    - numpy  # [py3k]\n    - cartopy\n    - netcdf4\n    - path.py\n    - matplotlib\n\ntest:\n  requires:\n    - pytest\n  source_files:\n    - tests\n  commands:\n    # FIXME - commenting out tests for python 2.7 due to bug in upstream package\n    # See issue here: https://github.com/conda-forge/lagranto-feedstock/issues/9\n    - export MPLBACKEND=\"AGG\"\n    - python -c 'import lagranto'\n    - pytest  # [not py2k]\n\nabout:\n  home: http://www.lagranto.ethz.ch\n  license: GPL-3.0\n  license_family: GPL\n  license_file: LICENSE.txt\n  summary: 'Library to work with trajectories.'\n  doc_url: https://lagranto.readthedocs.io/en/latest/\n  dev_url: https://git.iac.ethz.ch/atmosdyn/Lagranto\n\nextra:\n  recipe-maintainers:\n    - npiaget\n    - michaesp\n",
  "req":{
