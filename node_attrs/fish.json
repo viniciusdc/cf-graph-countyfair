@@ -113,11 +113,7 @@
   }
  ],
  "bad":false,
- "conda-forge.yml":{
-  "compiler_stack":"comp7",
-  "max_py_ver":"37",
-  "max_r_ver":"35"
- },
+ "conda-forge.yml":{},
  "feedstock_name":"fish",
  "hash_type":"sha256",
  "meta_yaml":{
@@ -142,16 +138,22 @@
   },
   "package":{
    "name":"fish",
-   "version":"3.0.2"
+   "version":"3.1.0"
   },
   "requirements":{
    "build":[
-    "c_compiler_stub",
     "cxx_compiler_stub",
-    "c_compiler_stub",
+    "cmake",
+    "make",
+    "pcre2",
     "cxx_compiler_stub",
-    "c_compiler_stub",
-    "cxx_compiler_stub"
+    "cmake",
+    "make",
+    "pcre2",
+    "cxx_compiler_stub",
+    "cmake",
+    "make",
+    "pcre2"
    ],
    "host":[
     "ncurses",
@@ -160,14 +162,17 @@
    ],
    "run":[
     "ncurses",
+    "pcre2",
     "ncurses",
-    "ncurses"
+    "pcre2",
+    "ncurses",
+    "pcre2"
    ]
   },
   "source":{
-   "fn":"fish-3.0.2.tar.gz",
-   "sha256":"14728ccc6b8e053d01526ebbd0822ca4eb0235e6487e832ec1d0d22f1395430e",
-   "url":"https://github.com/fish-shell/fish-shell/releases/download/3.0.2/fish-3.0.2.tar.gz"
+   "fn":"fish-3.1.0.tar.gz",
+   "sha256":"e5db1e6839685c56f172e1000c138e290add4aa521f187df4cd79d4eab294368",
+   "url":"https://github.com/fish-shell/fish-shell/releases/download/3.1.0/fish-3.1.0.tar.gz"
   },
   "test":{
    "commands":[
@@ -183,21 +188,25 @@
  "name":"fish",
  "new_version":"3.1.0",
  "pinning_version":"2020.01.28",
- "raw_meta_yaml":"{% set name = \"fish\" %}\n{% set version = \"3.0.2\" %}\n{% set sha256 = \"14728ccc6b8e053d01526ebbd0822ca4eb0235e6487e832ec1d0d22f1395430e\" %}\n\npackage:\n  name: {{ name }}\n  version: {{ version }}\n\nsource:\n  fn: {{ name }}-{{ version }}.tar.gz\n  url: https://github.com/fish-shell/fish-shell/releases/download/{{ version }}/{{ name }}-{{ version }}.tar.gz\n  sha256: {{ sha256 }}\n\nbuild:\n  number: 0\n  skip: True  # [win]\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n  host:\n    - ncurses\n  run:\n    - ncurses\n\ntest:\n  commands:\n    - fish -v\n    - fish_indent -v\n    # - fish_key_reader -v  # returns 1 for any flag, so we can't really test it.\n\nabout:\n  home: https://fishshell.com/\n  license: GPL2\n  license_file: COPYING\n  summary: 'The user-friendly command line shell.'\n  doc_url: https://fishshell.com/docs/current/index.html\n  dev_url: https://github.com/fish-shell/fish-shell\n\nextra:\n  recipe-maintainers:\n    - mdraw\n",
+ "raw_meta_yaml":"{% set name = \"fish\" %}\n{% set version = \"3.1.0\" %}\n{% set sha256 = \"e5db1e6839685c56f172e1000c138e290add4aa521f187df4cd79d4eab294368\" %}\n\npackage:\n  name: {{ name }}\n  version: {{ version }}\n\nsource:\n  fn: {{ name }}-{{ version }}.tar.gz\n  url: https://github.com/fish-shell/fish-shell/releases/download/{{ version }}/{{ name }}-{{ version }}.tar.gz\n  sha256: {{ sha256 }}\n\nbuild:\n  number: 0\n  skip: True  # [win or osx]\n\nrequirements:\n  build:\n    - {{ compiler('cxx') }}\n    - cmake\n    - make\n    - pcre2\n  host:\n    - ncurses\n  run:\n    - ncurses\n    - pcre2\n\ntest:\n  commands:\n    - fish -v\n    - fish_indent -v\n    # - fish_key_reader -v  # returns 1 for any flag, so we can't really test it.\n\nabout:\n  home: https://fishshell.com/\n  license: GPL2\n  license_file: COPYING\n  summary: 'The user-friendly command line shell.'\n  doc_url: https://fishshell.com/docs/current/index.html\n  dev_url: https://github.com/fish-shell/fish-shell\n\nextra:\n  recipe-maintainers:\n    - mdraw\n",
  "req":{
   "__set__":true,
   "elements":[
-   "c_compiler_stub",
+   "cmake",
    "cxx_compiler_stub",
-   "ncurses"
+   "make",
+   "ncurses",
+   "pcre2"
   ]
  },
  "requirements":{
   "build":{
    "__set__":true,
    "elements":[
-    "c_compiler_stub",
-    "cxx_compiler_stub"
+    "cmake",
+    "cxx_compiler_stub",
+    "make",
+    "pcre2"
    ]
   },
   "host":{
@@ -209,7 +218,8 @@
   "run":{
    "__set__":true,
    "elements":[
-    "ncurses"
+    "ncurses",
+    "pcre2"
    ]
   },
   "test":{
@@ -223,8 +233,10 @@
   "build":{
    "__set__":true,
    "elements":[
-    "c_compiler_stub",
-    "cxx_compiler_stub"
+    "cmake",
+    "cxx_compiler_stub",
+    "make",
+    "pcre2"
    ]
   },
   "host":{
@@ -236,7 +248,8 @@
   "run":{
    "__set__":true,
    "elements":[
-    "ncurses"
+    "ncurses",
+    "pcre2"
    ]
   },
   "test":{
@@ -245,5 +258,5 @@
   }
  },
  "url":"https://github.com/fish-shell/fish-shell/releases/download/3.0.2/fish-3.0.2.tar.gz",
- "version":"3.0.2"
+ "version":"3.1.0"
 }
