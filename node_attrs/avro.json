@@ -164,7 +164,7 @@
   }
  },
  "name":"avro",
- "new_version":"1.9.1",
+ "new_version":"1.9.2",
  "pinning_version":"2020.02.12",
  "raw_meta_yaml":"{% set version = \"1.8.2\" %}\n{% set hash = \"5d7cc534873d7fce31fb97b9abb7ccd15d6de728\" %}\n\npackage:\n    name: avro\n    version: {{ version }}\n\nsource:\n    fn: avro-c-{{ version }}.tar.gz\n    url: https://archive.apache.org/dist/avro/avro-{{ version }}/c/avro-c-{{ version }}.tar.gz\n    sha1: {{ hash }}\n\nbuild:\n    number: 1000\n    skip: True  # [win]\n\nrequirements:\n    build:\n        - cmake\n        - pkg-config  # [osx]\n        - {{ compiler('c') }}\n        - {{ compiler('cxx') }}\n    host:\n        - snappy\n        - jansson\n        - xz\n        - zlib\n    run:\n        - xz\n        - snappy\n        - jansson\n        - zlib\n\ntest:\n    commands:\n        - test -f ${PREFIX}/lib/libavro.a  # [unix]\n\nabout:\n  home: http://hadoop.apache.org/avro\n  license: Apache 2.0\n  summary: 'Avro is a serialization and RPC framework.'\n\n\nextra:\n  recipe-maintainers:\n    - mariusvniekerk\n",
  "req":{
