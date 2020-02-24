@@ -54,6 +54,23 @@
     "migrator_version",
     "name"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/379090161.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"Version",
+    "migrator_version":0,
+    "version":"1.7.2"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "version"
+   ]
   }
  ],
  "bad":false,
@@ -257,8 +274,8 @@
   }
  },
  "name":"gstlal-inspiral",
- "new_version":"1.7.1",
- "pinning_version":"2020.01.28",
+ "new_version":"1.7.2",
+ "pinning_version":"2020.02.20",
  "raw_meta_yaml":"{% set name = \"gstlal-inspiral\" %}\n{% set version = \"1.7.1\" %}\n\npackage:\n  name: \"{{ name|lower }}\"\n  version: \"{{ version }}\"\n\nsource:\n  url: \"http://software.ligo.org/lscsoft/source/{{ name }}-{{ version }}.tar.gz\"\n  sha256: d32c81c473692b57ebe75b37abe5c7e089b07b4f3bf219b2e3cc25750da5a684\n  patches:\n    - missing-links.patch\n\nbuild:\n  error_overdepending: true\n  error_overlinking: true\n  ignore_run_exports:\n    # not linked, but needed at runtime\n    - gst-plugins-base\n    # configure asks for it, but it is never actually used\n    - lalmetaio\n  number: 0\n  skip: true  # [win or py>=30]\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - make  # [unix]\n    - pkg-config >=0.18.0  # [unix]\n  host:\n    - glib\n    - gobject-introspection >=1.30.0\n    - gsl\n    - gstreamer\n    - gstlal >=1.6.0\n    - lal >=6.19.0\n    - lalinspiral >=1.8.0\n    - lalmetaio >=1.4.0\n    - numpy\n    - python\n  run:\n    - glib\n    - gobject-introspection >=1.30.0\n    - gsl\n    - gstreamer\n    - gst-plugins-base\n    - gstlal >=1.6.0\n    - gstlal-ugly >=1.7.0\n    - h5py\n    - lal >=6.19.2\n    - lalinspiral >=1.8.0\n    - lalapps\n    - ligo-gracedb >=1.11\n    - ligo-segments >=1.2.0\n    - ligo-scald >=0.7.2\n    - lscsoft-glue >=2.0.0\n    - {{ pin_compatible('numpy') }}\n    - python\n    - python-lal >=6.19.0\n    - python-lalinspiral >=1.8.0\n    - python-ligo-lw >=1.5.3\n    - scipy\n\ntest:\n  imports:\n    - gstlal.chirptime\n    - gstlal.far\n    - gstlal.snglinspiraltable\n  commands:\n    - export GSTLAL_FIR_WHITEN=0\n    - export TMPDIR=$(python -c \"import tempfile; print(tempfile.gettempdir())\")\n    # these imports need the GSTLAL_FIR_WHITEN variable\n    - python -c \"import gstlal.inspiral\"\n    - python -c \"import gstlal.inspiral_pipe\"\n    # check executables\n    - gstlal_inspiral --help\n    - gstlal_inspiral_pipe --help\n    - gstlal_ll_inspiral_pipe --help\n    - gstlal_svd_bank --help\n\nabout:\n  home: \"https://lscsoft.docs.ligo.org/gstlal/\"\n  dev_url: \"https://git.ligo.org/lscsoft/gstlal/\"\n  doc_url: \"https://lscsoft.docs.ligo.org/gstlal/\"\n  license: \"GPL-2.0-or-later\"\n  license_family: \"GPL\"\n  license_file: \"COPYING\"\n  summary: \"GStreamer for GW data analysis (inspiral parts)\"\n  description: |\n    This package provides a variety of gstreamer elements for\n    gravitational-wave data analysis and some libraries to help write such\n    elements.  The code here sits on top of several other libraries, notably\n    the LIGO Algorithm Library (LAL), FFTW, the GNU Scientific Library (GSL),\n    and, of course, GStreamer.\n    This package contains plugins, libraries, and programs for inspiral data\n    analysis.\n\nextra:\n  recipe-maintainers:\n    - duncanmmacleod\n    - myNameIsPatrick\n",
  "req":{
   "__set__":true,
