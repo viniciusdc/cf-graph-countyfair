@@ -43,11 +43,11 @@
     "igorpackedexperiment = bin.igorpackedexperiment:main"
    ],
    "noarch":"python",
-   "number":"2",
+   "number":"3",
    "script":[
-    " -m pip install . --no-deps --ignore-installed --no-cache-dir -vvv",
-    " -m pip install . --no-deps --ignore-installed --no-cache-dir -vvv",
-    " -m pip install . --no-deps --ignore-installed --no-cache-dir -vvv"
+    " -m pip install . -vv",
+    " -m pip install . -vv",
+    " -m pip install . -vv"
    ]
   },
   "extra":{
@@ -73,17 +73,16 @@
    "run":[
     "python",
     "numpy",
-    "matplotlib",
+    "matplotlib-base",
     "python",
     "numpy",
-    "matplotlib",
+    "matplotlib-base",
     "python",
     "numpy",
-    "matplotlib"
+    "matplotlib-base"
    ]
   },
   "source":{
-   "fn":"igor-0.3.tar.gz",
    "patches":[
     "git_patch.patch",
     "git_patch.patch",
@@ -117,11 +116,11 @@
  "name":"igor",
  "new_version":"0.3",
  "pinning_version":"2020.02.12",
- "raw_meta_yaml":"{% set name = \"igor\" %}\n{% set version = \"0.3\" %}\n{% set sha256 = \"b04ac38c68fb81cf3167a9981dc5a20379112d40268bb72c5a8514dc8051abba\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  fn: {{ name }}-{{ version }}.tar.gz\n  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz\n  sha256: {{ sha256 }}\n  patches:\n    - git_patch.patch\n\nbuild:\n  noarch: python\n  number: 2\n  script:\n    - \"{{ PYTHON }} -m pip install . --no-deps --ignore-installed --no-cache-dir -vvv\"\n  entry_points:\n    - igorbinarywave = bin.igorbinarywave:main\n    - igorpackedexperiment = bin.igorpackedexperiment:main\n\nrequirements:\n  host:\n    - python\n    - pip\n  run:\n    - python\n    - numpy\n    - matplotlib\n\ntest:\n  imports:\n    - igor.binarywave\n    - igor.packed\n    - igor.igorpy\n  commands:\n    - igorbinarywave --help\n    - igorpackedexperiment --help\n\nabout:\n  home: http://blog.tremily.us/posts/igor/\n  license: LGPL-3.0\n  license_family: LGPL\n  license_file: COPYING.LESSER\n  summary: 'Python parsers for WaveMetrics Igor Binary Waves and Packed Experiment files'\n  description: |\n    Python parsers for Igor Binary Waves (.ibw) and Packed Experiment\n    (.pxp) files written by WaveMetrics' IGOR Pro software.\n  doc_url: http://git.tremily.us/?p=igor.git;a=blob_plain;f=README;hb=HEAD\n  dev_url: http://blog.tremily.us/posts/igor/\n\nextra:\n  recipe-maintainers:\n    - carlodri\n",
+ "raw_meta_yaml":"{% set name = \"igor\" %}\n{% set version = \"0.3\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz\n  sha256: b04ac38c68fb81cf3167a9981dc5a20379112d40268bb72c5a8514dc8051abba\n  patches:\n    - git_patch.patch\n\nbuild:\n  noarch: python\n  number: 3\n  script:\n    - \"{{ PYTHON }} -m pip install . -vv\"\n  entry_points:\n    - igorbinarywave = bin.igorbinarywave:main\n    - igorpackedexperiment = bin.igorpackedexperiment:main\n\nrequirements:\n  host:\n    - python\n    - pip\n  run:\n    - python\n    - numpy\n    - matplotlib-base\n\ntest:\n  imports:\n    - igor.binarywave\n    - igor.packed\n    - igor.igorpy\n  commands:\n    - igorbinarywave --help\n    - igorpackedexperiment --help\n\nabout:\n  home: http://blog.tremily.us/posts/igor/\n  license: LGPL-3.0\n  license_family: LGPL\n  license_file: COPYING.LESSER\n  summary: 'Python parsers for WaveMetrics Igor Binary Waves and Packed Experiment files'\n  description: |\n    Python parsers for Igor Binary Waves (.ibw) and Packed Experiment\n    (.pxp) files written by WaveMetrics' IGOR Pro software.\n  doc_url: http://git.tremily.us/?p=igor.git;a=blob_plain;f=README;hb=HEAD\n  dev_url: http://blog.tremily.us/posts/igor/\n\nextra:\n  recipe-maintainers:\n    - carlodri\n",
  "req":{
   "__set__":true,
   "elements":[
-   "matplotlib",
+   "matplotlib-base",
    "numpy",
    "pip",
    "python"
@@ -142,7 +141,7 @@
   "run":{
    "__set__":true,
    "elements":[
-    "matplotlib",
+    "matplotlib-base",
     "numpy",
     "python"
    ]
@@ -169,7 +168,7 @@
   "run":{
    "__set__":true,
    "elements":[
-    "matplotlib",
+    "matplotlib-base",
     "numpy",
     "python"
    ]

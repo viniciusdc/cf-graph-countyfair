@@ -43,7 +43,7 @@
   "about":{
    "description":"Jaeger, inspired by Dapper and OpenZipkin, is a distributed tracing system released as open source by Uber Technologies.\nIt is used for monitoring and troubleshooting microservices-based distributed systems.\n",
    "dev_url":"https://github.com/jaegertracing/jaeger",
-   "doc_url":"https://www.jaegertracing.io/docs/1.16.0/",
+   "doc_url":"https://www.jaegertracing.io/docs/1.17.0/",
    "home":"https://www.jaegertracing.io/",
    "license":"Apache-2.0",
    "license_family":"Apache",
@@ -67,7 +67,7 @@
   },
   "package":{
    "name":"jaeger",
-   "version":"1.16.0"
+   "version":"1.17.0"
   },
   "requirements":{
    "build":[
@@ -96,8 +96,8 @@
     "patches":[
      "git.patch"
     ],
-    "sha256":"d908400a150a8ea29e56ed13a3ed6da7fdff66cafa18f3ec275b2b0af8c75f60",
-    "url":"https://github.com/jaegertracing/jaeger/archive/v1.16.0.tar.gz"
+    "sha256":"77ec433e44e0a45175bf23c9f594a863de7cf7697dff58d418c0aab2523b4731",
+    "url":"https://github.com/jaegertracing/jaeger/archive/v1.17.0.tar.gz"
    },
    {
     "folder":"src/github.com/jaegertracing/jaeger/jaeger-ui",
@@ -109,8 +109,8 @@
     "patches":[
      "git.patch"
     ],
-    "sha256":"d908400a150a8ea29e56ed13a3ed6da7fdff66cafa18f3ec275b2b0af8c75f60",
-    "url":"https://github.com/jaegertracing/jaeger/archive/v1.16.0.tar.gz"
+    "sha256":"77ec433e44e0a45175bf23c9f594a863de7cf7697dff58d418c0aab2523b4731",
+    "url":"https://github.com/jaegertracing/jaeger/archive/v1.17.0.tar.gz"
    },
    {
     "folder":"src/github.com/jaegertracing/jaeger/jaeger-ui",
@@ -122,8 +122,8 @@
     "patches":[
      "git.patch"
     ],
-    "sha256":"d908400a150a8ea29e56ed13a3ed6da7fdff66cafa18f3ec275b2b0af8c75f60",
-    "url":"https://github.com/jaegertracing/jaeger/archive/v1.16.0.tar.gz"
+    "sha256":"77ec433e44e0a45175bf23c9f594a863de7cf7697dff58d418c0aab2523b4731",
+    "url":"https://github.com/jaegertracing/jaeger/archive/v1.17.0.tar.gz"
    },
    {
     "folder":"src/github.com/jaegertracing/jaeger/jaeger-ui",
@@ -142,7 +142,7 @@
  "name":"jaeger",
  "new_version":"1.17.0",
  "pinning_version":"2020.02.20",
- "raw_meta_yaml":"{% set goname = \"github.com/jaegertracing/jaeger\" %}\n{% set version = \"1.16.0\" %}\n{% set name = goname.split('/')[-1] %}\n{% set pkg_src = ('src/' + goname).replace(\"/\", os.sep) %}\n\n{% set goname_ui = \"github.com/jaegertracing/jaeger-ui\" %}\n{% set version_ui = \"1.6.0\" %}\n{% set pkg_src_ui = ('src/' + goname + '/jaeger-ui').replace(\"/\", os.sep) %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  - folder: {{ pkg_src }}\n    url: https://{{ goname }}/archive/v{{ version }}.tar.gz\n    sha256: d908400a150a8ea29e56ed13a3ed6da7fdff66cafa18f3ec275b2b0af8c75f60\n    patches:\n      - git.patch\n  - folder: {{ pkg_src_ui }}\n    url: https://{{ goname_ui }}/archive/v{{ version_ui }}.tar.gz\n    sha256: 149530dd8fd2b2d03bcc9c9a594d1161f4641f0de12618ebda94d039407d8282\n\nbuild:\n  number: 0\n  binary_relocation: False\n  skip: True  # [win]\n\nrequirements:\n  build:\n    - {{ compiler('go') }}\n    - make\n  host:\n    - go-dep\n    - nodejs\n    - yarn\n\ntest:\n  commands:\n    - jaeger-all-in-one --help  # [not win]\n    - jaeger-all-in-one.exe --help  # [win]\n\nabout:\n  home: https://www.jaegertracing.io/\n  license: Apache-2.0\n  license_family: Apache\n  license_file: LICENSE\n  summary: 'CNCF Jaeger, a Distributed Tracing Platform'\n\n  description: |\n    Jaeger, inspired by Dapper and OpenZipkin, is a distributed tracing system released as open source by Uber Technologies.\n    It is used for monitoring and troubleshooting microservices-based distributed systems.\n  doc_url: https://www.jaegertracing.io/docs/{{ version}}/\n  dev_url: https://github.com/jaegertracing/{{ name }}\n\nextra:\n  recipe-maintainers:\n    - saulshanabrook\n    - goanpeca\n",
+ "raw_meta_yaml":"{% set goname = \"github.com/jaegertracing/jaeger\" %}\n{% set version = \"1.17.0\" %}\n{% set name = goname.split('/')[-1] %}\n{% set pkg_src = ('src/' + goname).replace(\"/\", os.sep) %}\n\n{% set goname_ui = \"github.com/jaegertracing/jaeger-ui\" %}\n{% set version_ui = \"1.6.0\" %}\n{% set pkg_src_ui = ('src/' + goname + '/jaeger-ui').replace(\"/\", os.sep) %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  - folder: {{ pkg_src }}\n    url: https://{{ goname }}/archive/v{{ version }}.tar.gz\n    sha256: 77ec433e44e0a45175bf23c9f594a863de7cf7697dff58d418c0aab2523b4731\n    patches:\n      - git.patch\n  - folder: {{ pkg_src_ui }}\n    url: https://{{ goname_ui }}/archive/v{{ version_ui }}.tar.gz\n    sha256: 149530dd8fd2b2d03bcc9c9a594d1161f4641f0de12618ebda94d039407d8282\n\nbuild:\n  number: 0\n  binary_relocation: false\n  skip: true  # [win]\n\nrequirements:\n  build:\n    - {{ compiler('go') }}\n    - make\n  host:\n    - go-dep\n    - nodejs\n    - yarn\n\ntest:\n  commands:\n    - jaeger-all-in-one --help  # [not win]\n    - jaeger-all-in-one.exe --help  # [win]\n\nabout:\n  home: https://www.jaegertracing.io/\n  license: Apache-2.0\n  license_family: Apache\n  license_file: LICENSE\n  summary: CNCF Jaeger, a Distributed Tracing Platform\n\n  description: |\n    Jaeger, inspired by Dapper and OpenZipkin, is a distributed tracing system released as open source by Uber Technologies.\n    It is used for monitoring and troubleshooting microservices-based distributed systems.\n  doc_url: https://www.jaegertracing.io/docs/{{ version}}/\n  dev_url: https://github.com/jaegertracing/{{ name }}\n\nextra:\n  recipe-maintainers:\n    - saulshanabrook\n    - goanpeca\n",
  "req":{
   "__set__":true,
   "elements":[
@@ -206,5 +206,5 @@
   }
  },
  "url":"https://github.com/jaegertracing/jaeger/archive/v1.15.1.tar.gz",
- "version":"1.16.0"
+ "version":"1.17.0"
 }

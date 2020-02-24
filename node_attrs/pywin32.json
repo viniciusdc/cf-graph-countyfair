@@ -118,6 +118,8 @@
  "hash_type":"sha256",
  "meta_yaml":{
   "about":{
+   "description":"A set of extension modules that provides access to many of the Windows API functions.\n",
+   "dev_url":"https://github.com/mhammond/pywin32",
    "home":"https://github.com/mhammond/pywin32",
    "license":"PSF",
    "license_file":"Pythonwin/License.txt",
@@ -127,27 +129,33 @@
    "number":"0",
    "script":[
     " setup.py -q install --record=record.txt",
-    "copy %PREFIX%\\Lib\\site-packages\\pywin32_system32\\*.dll %LIBRARY_BIN%",
+    "copy %PREFIX%\\Lib\\site-packages\\pywin32_system32\\*.dll %PREFIX%\\Lib\\site-packages\\win32\\",
+    "copy %PREFIX%\\Lib\\site-packages\\pywin32_system32\\*.dll %LIBRARY_BIN%\\",
     " setup.py -q install --record=record.txt",
-    "copy %PREFIX%\\Lib\\site-packages\\pywin32_system32\\*.dll %LIBRARY_BIN%",
+    "copy %PREFIX%\\Lib\\site-packages\\pywin32_system32\\*.dll %PREFIX%\\Lib\\site-packages\\win32\\",
+    "copy %PREFIX%\\Lib\\site-packages\\pywin32_system32\\*.dll %LIBRARY_BIN%\\",
     " setup.py -q install --record=record.txt",
-    "copy %PREFIX%\\Lib\\site-packages\\pywin32_system32\\*.dll %LIBRARY_BIN%"
+    "copy %PREFIX%\\Lib\\site-packages\\pywin32_system32\\*.dll %PREFIX%\\Lib\\site-packages\\win32\\",
+    "copy %PREFIX%\\Lib\\site-packages\\pywin32_system32\\*.dll %LIBRARY_BIN%\\"
    ],
    "skip":true
   },
   "extra":{
    "recipe-maintainers":[
+    "mingwandroid",
     "nicoddemus",
     "carlodri",
+    "mingwandroid",
     "nicoddemus",
     "carlodri",
+    "mingwandroid",
     "nicoddemus",
     "carlodri"
    ]
   },
   "package":{
    "name":"pywin32",
-   "version":"225"
+   "version":"227"
   },
   "requirements":{
    "build":[
@@ -172,17 +180,20 @@
   "source":{
    "patches":[
     "disable_exchange_modules.patch",
+    "0003-remove-PATH-pth-hack.patch",
     "disable_exchange_modules.patch",
-    "disable_exchange_modules.patch"
+    "0003-remove-PATH-pth-hack.patch",
+    "disable_exchange_modules.patch",
+    "0003-remove-PATH-pth-hack.patch"
    ],
-   "sha256":"b8bd621f91dfec2e836695aa333231dcf97d826ffd06e9bc0bf3a0c6265a7f6f",
-   "url":"https://github.com/mhammond/pywin32/archive/b225.tar.gz"
+   "sha256":"02b0de1abe9c52762ba3024a0e801df5b41f53eeea48b6561d4a9038ee36c010",
+   "url":"https://github.com/mhammond/pywin32/archive/b227.tar.gz"
   }
  },
  "name":"pywin32",
- "new_version":"227",
+ "new_version":"218.5",
  "pinning_version":"2019.11.13",
- "raw_meta_yaml":"{% set version = \"225\" %}\n\npackage:\n  name: pywin32\n  version: {{ version }}\n\nsource:\n  url: https://github.com/mhammond/pywin32/archive/b{{ version }}.tar.gz\n  sha256: b8bd621f91dfec2e836695aa333231dcf97d826ffd06e9bc0bf3a0c6265a7f6f\n  patches:\n    - disable_exchange_modules.patch\n\nbuild:\n  number: 0\n  script:\n    - \"{{ PYTHON }} setup.py -q install --record=record.txt\"\n    - copy %PREFIX%\\Lib\\site-packages\\pywin32_system32\\*.dll %LIBRARY_BIN%\n  skip: True  # [not win or py27]\n\nrequirements:\n  build:\n    - {{ compiler(\"c\") }}\n  host:\n    - python\n    - pip\n  run:\n    - python\n\nabout:\n  home: https://github.com/mhammond/pywin32\n  license: PSF\n  license_file: Pythonwin/License.txt\n  summary: Python extensions for Windows\n\nextra:\n  recipe-maintainers:\n    - nicoddemus\n    - carlodri\n",
+ "raw_meta_yaml":"{% set version = \"227\" %}\n\npackage:\n  name: pywin32\n  version: {{ version }}\n\nsource:\n  url: https://github.com/mhammond/pywin32/archive/b{{ version }}.tar.gz\n  sha256: 02b0de1abe9c52762ba3024a0e801df5b41f53eeea48b6561d4a9038ee36c010\n  patches:\n    - disable_exchange_modules.patch\n    - 0003-remove-PATH-pth-hack.patch\n\nbuild:\n  number: 0\n  script:\n    - \"{{ PYTHON }} setup.py -q install --record=record.txt\"\n    - copy %PREFIX%\\Lib\\site-packages\\pywin32_system32\\*.dll %PREFIX%\\Lib\\site-packages\\win32\\\n    - copy %PREFIX%\\Lib\\site-packages\\pywin32_system32\\*.dll %LIBRARY_BIN%\\\n  skip: True  # [not win or py27]\n\nrequirements:\n  build:\n    - {{ compiler(\"c\") }}\n  host:\n    - python\n    - pip\n  run:\n    - python\n\nabout:\n  home: https://github.com/mhammond/pywin32\n  license: PSF\n  license_file: Pythonwin/License.txt\n  summary: Python extensions for Windows\n  description: |\n    A set of extension modules that provides access to many of the Windows API functions.\n  dev_url: https://github.com/mhammond/pywin32\n\nextra:\n  recipe-maintainers:\n    - mingwandroid\n    - nicoddemus\n    - carlodri\n",
  "req":{
   "__set__":true,
   "elements":[
@@ -244,5 +255,5 @@
   }
  },
  "url":"https://github.com/mhammond/pywin32/archive/b224.tar.gz",
- "version":"225"
+ "version":"227"
 }
