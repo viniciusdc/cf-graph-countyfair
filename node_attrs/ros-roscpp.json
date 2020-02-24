@@ -18,29 +18,28 @@
     "migrator_version",
     "name"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/4ad8a466-8201-436d-957f-b6b204efa728.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"MigrationYaml",
+    "migrator_object_version":2,
+    "migrator_version":0,
+    "name":"boost172"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_object_version",
+    "migrator_version",
+    "name"
+   ]
   }
  ],
- "bad":{
-  "exception":"Failed to put item: An error occurred (ValidationException) on request (Q37RH0R4S4319HL65SVHRO5843VV4KQNSO5AEMVJF66Q9ASUAAJG) on table (pr_json) when calling the PutItem operation: Attempting to store more than 38 significant digits in a Number",
-  "traceback":[
-   "Traceback (most recent call last):",
-   "  File \"/root/repo/cf-scripts/conda_forge_tick/auto_tick.py\", line 688, in main",
-   "    hash_type=attrs.get(\"hash_type\", \"sha256\"),",
-   "  File \"/root/repo/cf-scripts/conda_forge_tick/auto_tick.py\", line 218, in run",
-   "    PRJson.dump(pr_json)",
-   "  File \"/root/repo/cf-scripts/conda_forge_tick/dynamo_models.py\", line 33, in dump",
-   "    item.save()",
-   "  File \"/opt/conda/envs/run_env/lib/python3.7/site-packages/pynamodb/models.py\", line 405, in save",
-   "    data = self._get_connection().put_item(*args, **kwargs)",
-   "  File \"/opt/conda/envs/run_env/lib/python3.7/site-packages/pynamodb/connection/table.py\", line 139, in put_item",
-   "    return_item_collection_metrics=return_item_collection_metrics)",
-   "  File \"/opt/conda/envs/run_env/lib/python3.7/site-packages/pynamodb/connection/base.py\", line 972, in put_item",
-   "    six.raise_from(PutError(\"Failed to put item: {}\".format(e), e), None)",
-   "  File \"<string>\", line 3, in raise_from",
-   "pynamodb.exceptions.PutError: Failed to put item: An error occurred (ValidationException) on request (Q37RH0R4S4319HL65SVHRO5843VV4KQNSO5AEMVJF66Q9ASUAAJG) on table (pr_json) when calling the PutItem operation: Attempting to store more than 38 significant digits in a Number",
-   ""
-  ]
- },
+ "bad":false,
  "conda-forge.yml":{},
  "feedstock_name":"ros-roscpp",
  "hash_type":"sha256",
@@ -215,7 +214,7 @@
  },
  "name":"ros-roscpp",
  "new_version":"1.14.3",
- "pinning_version":"2019.11.01",
+ "pinning_version":"2020.02.20",
  "raw_meta_yaml":"package:\n  name: ros-roscpp\n  version: 1.14.3\n\nsource:\n  url: https://github.com/ros-gbp/ros_comm-release/archive/release/melodic/roscpp/1.14.3-0.tar.gz\n  fn: ros-roscpp-1.14.3.tar.gz\n  sha256: aafa1e50ff61f428b3cdf7158129b8b09b4bd7aae6aee553f6a5c8251eae1806\n  patches:\n    - remove_signals.patch\n\nbuild:\n  number: 3\n  skip: true  # [win]\n  run_exports:\n    - {{ pin_subpackage('ros-roscpp', 'x.x') }}\n\nrequirements:\n  build:\n    - {{ compiler('cxx') }}\n    - {{ compiler('c') }}\n    - cmake\n    - make  # [unix]\n  host:\n    - ros-conda-mutex * melodic\n    - ros-conda-base\n    - python\n    - catkin_pkg\n    - boost-cpp\n    - ros-rostime\n    - pkg-config\n    - ros-std-msgs\n    - ros-roslang\n    - ros-roscpp-serialization\n    - ros-roscpp-traits\n    - ros-message-generation\n    - ros-rosgraph-msgs\n    - ros-cpp-common\n    - ros-rosconsole\n    - ros-xmlrpcpp\n    - ros-catkin\n  run:\n    - ros-conda-mutex * melodic\n    - ros-conda-base\n    - python\n    - ros-rostime\n    - ros-std-msgs\n    - ros-roscpp-serialization\n    - ros-message-runtime\n    - ros-roscpp-traits\n    - ros-rosgraph-msgs\n    - ros-cpp-common\n    - ros-rosconsole\n    - ros-xmlrpcpp\n    - boost-cpp\n    - log4cxx\n\ntest:\n  requires:\n    - rospkg\n  commands:\n    - export ROS_ROOT=$PREFIX && python -c \"import rospkg;s = rospkg.RosPack();ret = s.get_path('roscpp');print(ret)\"\n\nabout:\n  home: http://ros.org/wiki/roscpp\n  summary: |\n    roscpp is a C++ implementation of ROS.\n  description: |\n    roscpp is a C++ implementation of ROS. It provides a client library that\n    enables C++ programmers to quickly interface with ROS Topics, Services, and\n    Parameters. roscpp is the most widely used ROS client library and is\n    designed to be the high-performance library for ROS.\n  license: BSD-3-Clause\n  license_file: include/ros/advertise_options.h\n\nextra:\n  recipe-maintainers:\n    - wolfv\n    - lesteve\n    - seanyen\n",
  "req":{
   "__set__":true,
@@ -303,7 +302,7 @@
    ]
   }
  },
- "smithy_version":"3.6.1",
+ "smithy_version":"3.6.8",
  "strong_exports":false,
  "total_requirements":{
   "build":{
