@@ -57,6 +57,9 @@
  "archived":false,
  "bad":false,
  "conda-forge.yml":{
+  "bot":{
+   "automerge":true
+  },
   "provider":{
    "linux_aarch64":"default",
    "linux_ppc64le":"default",
@@ -113,12 +116,15 @@
    ],
    "run":[
     "python",
+    "pip",
     "cffi >=1.1",
     "six >=1.4.1",
     "python",
+    "pip",
     "cffi >=1.1",
     "six >=1.4.1",
     "python",
+    "pip",
     "cffi >=1.1",
     "six >=1.4.1"
    ]
@@ -130,8 +136,11 @@
   "test":{
    "commands":[
     "pytest tests",
+    "pip check",
     "pytest tests",
-    "pytest tests"
+    "pip check",
+    "pytest tests",
+    "pip check"
    ],
    "imports":[
     "bcrypt",
@@ -156,7 +165,7 @@
  "name":"bcrypt",
  "new_version":"3.1.7",
  "pinning_version":"2019.11.01",
- "raw_meta_yaml":"{% set name = \"bcrypt\" %}\n{% set version = \"3.1.7\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz\n  sha256: 0b0069c752ec14172c5f78208f1863d7ad6755a6fae6fe76ec2c80d13be41e42\n\nbuild:\n  number: 0\n  script: \"{{ PYTHON }} -m pip install . --no-deps -vv\"\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n  host:\n    - python\n    - pip\n    - cffi >=1.1\n  run:\n    - python\n    - cffi >=1.1\n    - six >=1.4.1\n\ntest:\n  source_files:\n    - tests\n  imports:\n    - bcrypt\n    - bcrypt._bcrypt\n  requires:\n    - pytest >=3.2.1,!=3.3.0\n  commands:\n    - pytest tests\n\nabout:\n  home: https://github.com/pyca/bcrypt/\n  license: Apache-2.0\n  license_family: Apache\n  license_file: LICENSE\n  summary: 'Modern password hashing for your software and your servers'\n  description: |\n    Modern password hashing for your software and your servers\n  doc_url: https://github.com/pyca/bcrypt/\n  dev_url: https://github.com/pyca/bcrypt/\n\nextra:\n  recipe-maintainers:\n    - dougalsutherland\n    - jan-janssen\n",
+ "raw_meta_yaml":"{% set name = \"bcrypt\" %}\n{% set version = \"3.1.7\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz\n  sha256: 0b0069c752ec14172c5f78208f1863d7ad6755a6fae6fe76ec2c80d13be41e42\n\nbuild:\n  number: 0\n  script: \"{{ PYTHON }} -m pip install . --no-deps -vv\"\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n  host:\n    - python\n    - pip\n    - cffi >=1.1\n  run:\n    - python\n    - pip\n    - cffi >=1.1\n    - six >=1.4.1\n\ntest:\n  source_files:\n    - tests\n  imports:\n    - bcrypt\n    - bcrypt._bcrypt\n  requires:\n    - pytest >=3.2.1,!=3.3.0\n  commands:\n    - pytest tests\n    - pip check\n\nabout:\n  home: https://github.com/pyca/bcrypt/\n  license: Apache-2.0\n  license_family: Apache\n  license_file: LICENSE\n  summary: 'Modern password hashing for your software and your servers'\n  description: |\n    Modern password hashing for your software and your servers\n  doc_url: https://github.com/pyca/bcrypt/\n  dev_url: https://github.com/pyca/bcrypt/\n\nextra:\n  recipe-maintainers:\n    - dougalsutherland\n    - jan-janssen\n",
  "req":{
   "__set__":true,
   "elements":[
@@ -186,6 +195,7 @@
    "__set__":true,
    "elements":[
     "cffi",
+    "pip",
     "python",
     "six"
    ]
@@ -218,6 +228,7 @@
    "__set__":true,
    "elements":[
     "cffi >=1.1",
+    "pip",
     "python",
     "six >=1.4.1"
    ]
