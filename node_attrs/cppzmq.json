@@ -144,6 +144,23 @@
     "migrator_version",
     "version"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/379716840.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"ArchRebuild",
+    "migrator_version":1,
+    "name":"aarch64 and ppc64le addition"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "name"
+   ]
   }
  ],
  "bad":false,
@@ -220,7 +237,7 @@
  },
  "name":"cppzmq",
  "new_version":"4.6.0",
- "pinning_version":"2020.01.10",
+ "pinning_version":"2020.02.20",
  "raw_meta_yaml":"{% set name = \"cppzmq\" %}\n{% set version = \"4.4.1\" %}\n{% set sha256 = \"117fc1ca24d98dbe1a60c072cde13be863d429134907797f8e03f654ce679385\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  fn: {{ name }}-{{ version }}.tar.gz\n  url: https://github.com/zeromq/cppzmq/archive/v{{ version }}.tar.gz\n  sha256: {{ sha256 }}\n\nbuild:\n  number: 0\n  skip: true  # [win and vc<14]\n\nrequirements:\n  build:\n    - cmake\n    - {{ compiler('cxx') }}\n  host:\n    - zeromq >=4.2.3,<4.4.0\n\n  run:\n    - {{ pin_compatible('zeromq', max_pin='x.x') }}\n\ntest:\n  commands:\n    - test -f ${PREFIX}/share/cmake/cppzmq/cppzmqConfig.cmake         # [unix]\n    - test -f ${PREFIX}/share/cmake/cppzmq/cppzmqConfigVersion.cmake  # [unix]\n    - if exist %LIBRARY_PREFIX%\\share\\cmake\\cppzmq\\cppzmqConfig.cmake (exit 0) else (exit 1)         # [win]\n    - if exist %LIBRARY_PREFIX%\\share\\cmake\\cppzmq\\cppzmqConfigVersion.cmake (exit 0) else (exit 1)  # [win]\n\nabout:\n  home: http://zeromq.org\n  license: MIT\n  license_file: LICENSE\n  summary: C++ bindings for 0MQ\n\nextra:\n  recipe-maintainers:\n    - SylvainCorlay\n    - JohanMabille\n",
  "req":{
   "__set__":true,
@@ -256,7 +273,7 @@
    "elements":[]
   }
  },
- "smithy_version":"3.6.5",
+ "smithy_version":"3.6.8",
  "strong_exports":false,
  "total_requirements":{
   "build":{
