@@ -50,7 +50,7 @@
    "summary":"A physics engine for constrained multi-flexible-body dynamics"
   },
   "build":{
-   "number":"2",
+   "number":"0",
    "skip":true
   },
   "extra":{
@@ -65,37 +65,45 @@
   },
   "package":{
    "name":"pychrono",
-   "version":"4.0.0"
+   "version":"5.0.0"
   },
   "requirements":{
    "build":[
     "c_compiler_stub",
     "cxx_compiler_stub",
     "cmake",
-    "swig 3.0.12",
+    "swig 4.0.1",
     "c_compiler_stub",
     "cxx_compiler_stub",
     "cmake",
-    "swig 3.0.12",
+    "swig 4.0.1",
+    "llvm-openmp",
     "c_compiler_stub",
     "cxx_compiler_stub",
     "cmake",
-    "swig 3.0.12"
+    "swig 4.0.1",
+    "libgomp"
    ],
    "host":[
     "python",
+    "eigen",
     "python",
-    "python"
+    "eigen",
+    "llvm-openmp",
+    "python",
+    "eigen"
    ],
    "run":[
     "python",
     "python",
+    "llvm-openmp",
     "python"
    ]
   },
   "source":{
-   "sha256":"803b5089e48334771f652f5bec79f95f2a42cfb02d2ffbaf8ad9e5dca2ba1886",
-   "url":"https://github.com/projectchrono/chrono/archive/4.0.0.tar.gz"
+   "fn":"develop.tar.gz",
+   "sha256":"edea04cb4bcf62ebd35e617f266379a223a0fb593fc65c39a460b3e20a38e65a",
+   "url":"https://github.com/projectchrono/chrono/archive/5.0.0.tar.gz"
   },
   "test":{
    "imports":[
@@ -108,13 +116,16 @@
  "name":"pychrono",
  "new_version":"5.0.0",
  "pinning_version":"2020.02.20",
- "raw_meta_yaml":"{% set name = \"pychrono\" %}\n{% set version = \"4.0.0\" %}\n{% set build = 2 %}\n{% set sha256 = \"803b5089e48334771f652f5bec79f95f2a42cfb02d2ffbaf8ad9e5dca2ba1886\" %}\n\npackage:\n  name: {{ name }}\n  version: {{ version }}\n\nsource:\n  url: https://github.com/projectchrono/chrono/archive/{{ version }}.tar.gz\n  sha256: {{ sha256 }}\n\nbuild:\n  number: {{ build }}\n  skip: true  # [not linux]\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n    - cmake\n    - swig 3.0.12\n  host:\n    - python\n  run:\n    - python\n\ntest:\n  imports:\n    - pychrono\n\nabout:\n  home: https://github.com/projectchrono/chrono\n  license: BSD 3-Clause\n  license_family: BSD\n  license_file: LICENSE\n  summary: A physics engine for constrained multi-flexible-body dynamics\n\nextra:\n  recipe-maintainers:\n    - davidbrochart\n    - SylvainCorlay\n",
+ "raw_meta_yaml":"{% set name = \"pychrono\" %}\n{% set version = \"5.0.0\" %}\n{% set build = 0 %}\n{% set sha256 = \"edea04cb4bcf62ebd35e617f266379a223a0fb593fc65c39a460b3e20a38e65a\" %}\n\npackage:\n  name: {{ name }}\n  version: {{ version }}\n\nsource:\n  url: https://github.com/projectchrono/chrono/archive/{{ version }}.tar.gz\n  fn: develop.tar.gz\n  sha256: {{ sha256 }}\n\nbuild:\n  number: {{ build }}\n  skip: true  # [win or py2k]\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n    - cmake\n    - swig 4.0.1\n    - llvm-openmp  # [osx]\n    - libgomp      # [linux and not aarch64]\n  host:\n    - python\n    - eigen\n    - llvm-openmp  # [osx]\n  run:\n    - python\n    - llvm-openmp  # [osx]\n\ntest:\n  imports:\n     - pychrono\n\nabout:\n  home: https://github.com/projectchrono/chrono\n  license: BSD 3-Clause\n  license_family: BSD\n  license_file: LICENSE\n  summary: A physics engine for constrained multi-flexible-body dynamics\n\nextra:\n  recipe-maintainers:\n    - davidbrochart\n    - SylvainCorlay\n",
  "req":{
   "__set__":true,
   "elements":[
    "c_compiler_stub",
    "cmake",
    "cxx_compiler_stub",
+   "eigen",
+   "libgomp",
+   "llvm-openmp",
    "python",
    "swig"
   ]
@@ -126,18 +137,27 @@
     "c_compiler_stub",
     "cmake",
     "cxx_compiler_stub",
+    "libgomp",
+    "llvm-openmp",
     "swig"
    ]
   },
   "host":{
    "__set__":true,
    "elements":[
+    "ctng-compilers",
+    "eigen",
+    "llvm-openmp",
+    "openmp",
     "python"
    ]
   },
   "run":{
    "__set__":true,
    "elements":[
+    "ctng-compilers",
+    "llvm-openmp",
+    "openmp",
     "python"
    ]
   },
@@ -155,18 +175,23 @@
     "c_compiler_stub",
     "cmake",
     "cxx_compiler_stub",
-    "swig 3.0.12"
+    "libgomp",
+    "llvm-openmp",
+    "swig 4.0.1"
    ]
   },
   "host":{
    "__set__":true,
    "elements":[
+    "eigen",
+    "llvm-openmp",
     "python"
    ]
   },
   "run":{
    "__set__":true,
    "elements":[
+    "llvm-openmp",
     "python"
    ]
   },
@@ -176,5 +201,5 @@
   }
  },
  "url":"https://github.com/projectchrono/chrono/archive/4.0.0.tar.gz",
- "version":"4.0.0"
+ "version":"5.0.0"
 }

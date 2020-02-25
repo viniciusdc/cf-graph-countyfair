@@ -48,7 +48,7 @@
   "build":{
    "noarch":"python",
    "number":"0",
-   "script":"python -m pip install --no-deps --ignore-installed ."
+   "script":"-m pip install . --no-deps -vv"
   },
   "extra":{
    "recipe-maintainers":[
@@ -62,57 +62,61 @@
   },
   "package":{
    "name":"fletcher",
-   "version":"0.2.0"
+   "version":"0.3.0"
   },
   "requirements":{
    "host":[
     "python",
     "pip",
     "setuptools_scm",
-    "six",
     "python",
     "pip",
     "setuptools_scm",
-    "six",
     "python",
     "pip",
-    "setuptools_scm",
-    "six"
+    "setuptools_scm"
    ],
    "run":[
     "numba",
     "python",
-    "pandas >=0.24",
-    "pyarrow >=0.11",
-    "six",
+    "pandas >=0.25",
+    "pyarrow >=0.15",
     "numba",
     "python",
-    "pandas >=0.24",
-    "pyarrow >=0.11",
-    "six",
+    "pandas >=0.25",
+    "pyarrow >=0.15",
     "numba",
     "python",
-    "pandas >=0.24",
-    "pyarrow >=0.11",
-    "six"
+    "pandas >=0.25",
+    "pyarrow >=0.15"
    ]
   },
   "source":{
-   "sha256":"7549508cff74fdfd0b2af952a72c19eccdadb27d38dab0d3d060d350ae583314",
-   "url":"https://pypi.io/packages/source/f/fletcher/fletcher-0.2.0.tar.gz"
+   "sha256":"3f1b5c8b9d218eb6a051c8f3a820cf71a7c6fff5950829899474435fe2843c5f",
+   "url":"https://pypi.io/packages/source/f/fletcher/fletcher-0.3.0.tar.gz"
   },
   "test":{
+   "commands":[
+    "pip check",
+    "pip check",
+    "pip check"
+   ],
    "imports":[
     "fletcher",
     "fletcher",
     "fletcher"
+   ],
+   "requires":[
+    "pip",
+    "pip",
+    "pip"
    ]
   }
  },
  "name":"fletcher",
  "new_version":"0.3.0",
  "pinning_version":"2020.02.20",
- "raw_meta_yaml":"{% set name = \"fletcher\" %}\n{% set version = \"0.2.0\" %}\n{% set sha256 = \"7549508cff74fdfd0b2af952a72c19eccdadb27d38dab0d3d060d350ae583314\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz\n  sha256: {{ sha256 }}\n\nbuild:\n  number: 0\n  script: python -m pip install --no-deps --ignore-installed .\n  noarch: python\n\nrequirements:\n  host:\n    - python\n    - pip\n    - setuptools_scm\n    - six\n  run:\n    - numba\n    - python\n    - pandas >=0.24\n    - pyarrow >=0.11\n    - six\n\ntest:\n  imports:\n    - fletcher\n\nabout:\n  home: https://github.com/xhochy/fletcher\n  license: MIT\n  license_family: MIT\n  license_file: LICENSE\n  summary: 'Pandas ExtensionDType/Array backed by Apache Arrow'\n  doc_url: https://fletcher.readthedocs.io/\n\nextra:\n  recipe-maintainers:\n    - xhochy\n    - fjetter\n",
+ "raw_meta_yaml":"{% set name = \"fletcher\" %}\n{% set version = \"0.3.0\" %}\n{% set sha256 = \"3f1b5c8b9d218eb6a051c8f3a820cf71a7c6fff5950829899474435fe2843c5f\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz\n  sha256: {{ sha256 }}\n\nbuild:\n  number: 0\n  script: {{ PYTHON }} -m pip install . --no-deps -vv\n  noarch: python\n\nrequirements:\n  host:\n    - python\n    - pip\n    - setuptools_scm\n  run:\n    - numba\n    - python\n    - pandas >=0.25\n    - pyarrow >=0.15\n\ntest:\n  imports:\n    - fletcher\n  requires:\n    - pip\n  commands:\n    - pip check\n\nabout:\n  home: https://github.com/xhochy/fletcher\n  license: MIT\n  license_family: MIT\n  license_file: LICENSE\n  summary: Pandas ExtensionDType/Array backed by Apache Arrow\n  doc_url: https://fletcher.readthedocs.io/\n\nextra:\n  recipe-maintainers:\n    - xhochy\n    - fjetter\n",
  "req":{
   "__set__":true,
   "elements":[
@@ -121,8 +125,7 @@
    "pip",
    "pyarrow",
    "python",
-   "setuptools_scm",
-   "six"
+   "setuptools_scm"
   ]
  },
  "requirements":{
@@ -135,8 +138,7 @@
    "elements":[
     "pip",
     "python",
-    "setuptools_scm",
-    "six"
+    "setuptools_scm"
    ]
   },
   "run":{
@@ -145,13 +147,14 @@
     "numba",
     "pandas",
     "pyarrow",
-    "python",
-    "six"
+    "python"
    ]
   },
   "test":{
    "__set__":true,
-   "elements":[]
+   "elements":[
+    "pip"
+   ]
   }
  },
  "smithy_version":"3.6.8",
@@ -166,25 +169,25 @@
    "elements":[
     "pip",
     "python",
-    "setuptools_scm",
-    "six"
+    "setuptools_scm"
    ]
   },
   "run":{
    "__set__":true,
    "elements":[
     "numba",
-    "pandas >=0.24",
-    "pyarrow >=0.11",
-    "python",
-    "six"
+    "pandas >=0.25",
+    "pyarrow >=0.15",
+    "python"
    ]
   },
   "test":{
    "__set__":true,
-   "elements":[]
+   "elements":[
+    "pip"
+   ]
   }
  },
  "url":"https://pypi.io/packages/source/f/fletcher/fletcher-0.2.0.tar.gz",
- "version":"0.2.0"
+ "version":"0.3.0"
 }
