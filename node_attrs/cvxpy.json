@@ -342,9 +342,6 @@
  ],
  "bad":false,
  "conda-forge.yml":{
-  "compiler_stack":"comp7",
-  "max_py_ver":"37",
-  "max_r_ver":"35",
   "provider":{
    "linux_aarch64":"default",
    "linux_ppc64le":"default",
@@ -411,7 +408,7 @@
    },
    {
     "build":{
-     "script":" -m pip install . --no-deps -vvv"
+     "script":"-m pip install . --no-deps -vvv"
     },
     "name":"cvxpy-base",
     "requirements":{
@@ -471,7 +468,7 @@
    },
    {
     "build":{
-     "script":" -m pip install . --no-deps -vvv"
+     "script":"-m pip install . --no-deps -vvv"
     },
     "name":"cvxpy-base",
     "requirements":{
@@ -531,7 +528,7 @@
    },
    {
     "build":{
-     "script":" -m pip install . --no-deps -vvv"
+     "script":"-m pip install . --no-deps -vvv"
     },
     "name":"cvxpy-base",
     "requirements":{
@@ -564,7 +561,7 @@
   ],
   "package":{
    "name":"cvxpy",
-   "version":"1.0.21"
+   "version":"1.0.27"
   },
   "requirements":{
    "build":[
@@ -587,8 +584,8 @@
    ]
   },
   "source":{
-   "sha256":"bb9b31e9bc97f739f1e3a49311aad4c89d087bae1980bc32b32d9ec5dacb0d86",
-   "url":"https://pypi.io/packages/source/c/cvxpy/cvxpy-1.0.21.tar.gz"
+   "sha256":"e7c61b6f312cc1e5e25783378b4f6c0ff70f682b5226c5b3054a6d6f72a0e757",
+   "url":"https://pypi.io/packages/source/c/cvxpy/cvxpy-1.0.27.tar.gz"
   }
  },
  "name":"cvxpy",
@@ -598,7 +595,7 @@
   "cvxpy-base"
  ],
  "pinning_version":"2020.02.20",
- "raw_meta_yaml":"{% set name = \"cvxpy\" %}\n{% set version = \"1.0.21\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz\n  sha256: bb9b31e9bc97f739f1e3a49311aad4c89d087bae1980bc32b32d9ec5dacb0d86\n\nbuild:\n  number: 0\n  skip: true  # [py==27 and win]\n  skip: true  # [py==27 and not x86_64]\n\n# Need these up here for conda-smithy to handle them properly.\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n  host:\n    - python\n  run:\n    - python\n\noutputs:\n  - name: cvxpy\n    requirements:\n      host:\n        - python\n      run:\n        - python\n        - {{ pin_subpackage('cvxpy-base', exact=True) }}\n        - osqp\n        - ecos >=2\n        - scs >=1.1.3\n    test:\n      imports:\n        - cvxpy\n        - cvxpy.cvxcore\n        - cvxpy.cvxcore.python\n      requires:\n        - nose\n      commands:\n        - nosetests cvxpy\n  - name: cvxpy-base\n    build:\n      script: \"{{ PYTHON }} -m pip install . --no-deps -vvv\"\n    requirements:\n      build:\n        - {{ compiler('c') }}\n        - {{ compiler('cxx') }}\n      host:\n        - python\n        # awkward matrix of \"oldest on conda-forge >=1.15\"\n        - numpy 1.15  # [py<38 and x86_64]\n        - numpy 1.16  # [py<38 and not x86_64]\n        - numpy 1.17  # [py>=38]\n        - pip\n      run:\n        - python\n        - {{ pin_compatible('numpy') }}\n        - scipy >=1.1.0\n        - multiprocess\n        - fastcache\n        - six\n    test:\n      imports:\n        - cvxpy\n        - cvxpy.cvxcore\n        - cvxpy.cvxcore.python\n\nabout:\n  home: http://www.cvxpy.org/\n  license: Apache-2.0\n  license_family: Apache\n  license_file: LICENSE\n  summary: 'A Python-embedded modeling language for convex optimization problems'\n  description: |\n    CVXPY is a Python-embedded modeling language for convex optimization\n    problems. It allows you to express your problem in a natural way that\n    follows the math, rather than in the restrictive standard form required\n    by solvers.\n  doc_url: http://www.cvxpy.org/\n  dev_url: https://github.com/cvxgrp/cvxpy\n\nextra:\n  recipe-maintainers:\n    - dougalsutherland\n    - mcg1969\n    - scopatz\n",
+ "raw_meta_yaml":"{% set name = \"cvxpy\" %}\n{% set version = \"1.0.27\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz\n  sha256: e7c61b6f312cc1e5e25783378b4f6c0ff70f682b5226c5b3054a6d6f72a0e757\n\nbuild:\n  number: 0\n  skip: true  # [py==27 and win]\n  skip: true  # [py==27 and not x86_64]\n\n# Need these up here for conda-smithy to handle them properly.\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n  host:\n    - python\n  run:\n    - python\n\noutputs:\n  - name: cvxpy\n    requirements:\n      host:\n        - python\n      run:\n        - python\n        - {{ pin_subpackage('cvxpy-base', exact=True) }}\n        - osqp\n        - ecos >=2\n        - scs >=1.1.3\n    test:\n      imports:\n        - cvxpy\n        - cvxpy.cvxcore\n        - cvxpy.cvxcore.python\n      requires:\n        - nose\n      commands:\n        - nosetests cvxpy\n  - name: cvxpy-base\n    build:\n      script: {{ PYTHON }} -m pip install . --no-deps -vvv\n    requirements:\n      build:\n        - {{ compiler('c') }}\n        - {{ compiler('cxx') }}\n      host:\n        - python\n        # awkward matrix of \"oldest on conda-forge >=1.15\"\n        - numpy 1.15  # [py<38 and x86_64]\n        - numpy 1.16  # [py<38 and not x86_64]\n        - numpy 1.17  # [py>=38]\n        - pip\n      run:\n        - python\n        - {{ pin_compatible('numpy') }}\n        - scipy >=1.1.0\n        - multiprocess\n        - fastcache\n        - six\n    test:\n      imports:\n        - cvxpy\n        - cvxpy.cvxcore\n        - cvxpy.cvxcore.python\n\nabout:\n  home: http://www.cvxpy.org/\n  license: Apache-2.0\n  license_family: Apache\n  license_file: LICENSE\n  summary: A Python-embedded modeling language for convex optimization problems\n  description: |\n    CVXPY is a Python-embedded modeling language for convex optimization\n    problems. It allows you to express your problem in a natural way that\n    follows the math, rather than in the restrictive standard form required\n    by solvers.\n  doc_url: http://www.cvxpy.org/\n  dev_url: https://github.com/cvxgrp/cvxpy\n\nextra:\n  recipe-maintainers:\n    - dougalsutherland\n    - mcg1969\n    - scopatz\n",
  "req":{
   "__set__":true,
   "elements":[
@@ -697,5 +694,5 @@
   }
  },
  "url":"https://pypi.io/packages/source/c/cvxpy/cvxpy-1.0.25.tar.gz",
- "version":"1.0.21"
+ "version":"1.0.27"
 }
