@@ -48,6 +48,23 @@
     "migrator_version",
     "name"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/379813156.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"Version",
+    "migrator_version":0,
+    "version":"7.3_13"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "version"
+   ]
   }
  ],
  "bad":false,
@@ -157,7 +174,7 @@
  },
  "name":"r-nnet",
  "new_version":"7.3_13",
- "pinning_version":"2019.07.15",
+ "pinning_version":"2020.02.20",
  "raw_meta_yaml":"{% set version = '7.3-12' %}\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-nnet\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  fn: nnet_{{ version }}.tar.gz\n  url:\n    - {{ cran_mirror }}/src/contrib/nnet_{{ version }}.tar.gz\n    - {{ cran_mirror }}/src/contrib/Archive/nnet/nnet_{{ version }}.tar.gz\n  sha256: 2723523e8581cc0e2215435ac773033577a16087a3f41d111757dd96b8c5559d\n\nbuild:\n  merge_build_host: True  # [win]\n  number: 1003\n  skip: true  # [win32]\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - {{ compiler('c') }}        # [not win]\n    - {{ compiler('m2w64_c') }}        # [win]\n    - {{posix}}filesystem        # [win]\n    - {{posix}}make\n    - {{posix}}sed               # [win]\n    - {{posix}}coreutils         # [win]\n    - {{posix}}zip               # [win]\n  host:\n    - r-base\n  run:\n    - r-base\n    - {{native}}gcc-libs         # [win]\n\ntest:\n  commands:\n    - $R -e \"library('nnet')\"           # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('nnet')\\\"\"  # [win]\n\nabout:\n  home: http://www.stats.ox.ac.uk/pub/MASS4/\n  license: GPL-2 | GPL-3\n  summary: Software for feed-forward neural networks with a single hidden layer, and for multinomial\n    log-linear models.\n  license_family: GPL3\n  license_file: '{{ environ[\"PREFIX\"] }}/lib/R/share/licenses/GPL-3'\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n    - johanneskoester\n    - bgruening\n    - daler\n    - jdblischak\n    - cbrueffer\n    - dbast\n",
  "req":{
   "__set__":true,
@@ -204,7 +221,7 @@
    "elements":[]
   }
  },
- "smithy_version":"3.4.1",
+ "smithy_version":"3.6.8",
  "strong_exports":false,
  "total_requirements":{
   "build":{
