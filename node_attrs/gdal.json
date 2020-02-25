@@ -523,6 +523,25 @@
     "migrator_version",
     "version"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/379498666.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"MigrationYaml",
+    "migrator_object_version":1,
+    "migrator_version":0,
+    "name":"proj631"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_object_version",
+    "migrator_version",
+    "name"
+   ]
   }
  ],
  "bad":false,
@@ -1092,7 +1111,7 @@
   "gdal",
   "libgdal"
  ],
- "pinning_version":"2020.01.27",
+ "pinning_version":"2020.02.20",
  "raw_meta_yaml":"{% set version = \"3.0.4\" %}\n\npackage:\n  name: gdal-split\n  version: {{ version }}\n\nsource:\n  url: http://download.osgeo.org/gdal/{{ version }}/gdal-{{ version }}.tar.xz\n  sha256: 5569a4daa1abcbba47a9d535172fc335194d9214fdb96cd0f139bb57329ae277\n  patches:\n    # Use multiple cores on Windows.\n    - patches/multiprocessor.patch  # [win]\n    # disable 12 bit jpeg on Windows as we aren't using internal jpeg\n    - patches/disable_jpeg12.patch  # [win]\n\nbuild:\n  number: 0\n  skip: True  # [win and vc<14]\n\nrequirements:\n  build:\n    - cmake  # [win]\n    - pkg-config >=0.21  # [not win]\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n  host:\n    - cfitsio\n    - curl\n    - expat\n    - freexl\n    - geos\n    - geotiff\n    - giflib  # [not win]\n    - hdf4\n    - hdf5\n    - icu\n    - jpeg\n    - json-c  # [not win]\n    - kealib\n    - libdap4  # [not win]\n    - libkml\n    - libnetcdf\n    - libpng\n    - libpq\n    - libspatialite\n    - libtiff\n    - libuuid  # [linux]\n    - libwebp\n    - libxml2\n    - m2w64-xz  # [win]\n    - openjpeg\n    - openssl\n    - pcre\n    - poppler\n    - postgresql\n    - proj\n    - sqlite\n    - tiledb\n    - xerces-c\n    - xz  # [not win or vc>=14]\n    - zlib\n    - zstd\n\noutputs:\n  - name: libgdal\n    script: install_lib.sh   # [unix]\n    script: install_lib.bat   # [win]\n    build:\n      run_exports:\n        # no idea, going with minor pin\n        - {{ pin_subpackage('libgdal', max_pin='x.x') }}\n    requirements:\n      build:\n        # ranlib used at install time\n        - {{ compiler('c') }}\n        # libstdc++ is needed in requirements/run\n        - {{ compiler('cxx') }}\n        - pkg-config  # [not win]\n      host:\n        - cfitsio\n        - curl\n        - expat\n        - freexl\n        - geos\n        - geotiff\n        - giflib  # [not win]\n        - hdf4\n        - hdf5\n        - icu\n        - jpeg\n        - json-c  # [not win]\n        - kealib\n        - libdap4  # [not win]\n        - libkml\n        - libnetcdf\n        - libpng\n        - libpq\n        - libspatialite\n        - libtiff\n        - libuuid  # [linux]\n        - libwebp\n        - libxml2\n        - m2w64-xz  # [win]\n        - openjpeg\n        - openssl\n        - pcre\n        - poppler\n        - postgresql\n        - proj\n        - sqlite\n        - tiledb\n        - xerces-c\n        - xz  # [not win or vc>=14]\n        - zlib\n        - zstd\n      run:\n        - cfitsio\n        - geotiff\n        - giflib  # [not win]\n        - json-c  # [not win]\n        - libdap4  # [not win]\n        - libpq\n        - libspatialite\n        - libuuid  # [linux]\n        - libwebp\n        - m2w64-xz  # [win]\n        - poppler\n        - postgresql\n        - proj\n        - tiledb\n        - xz  # [not win or vc>=14]\n        - zstd\n    test:\n      files:\n        - test_data\n      commands:\n        - gdal_grid --version\n        - gdal_rasterize --version\n        - gdal_translate --version\n        - gdaladdo --version\n        - gdalenhance --version\n        - gdalwarp --version\n        - gdalinfo --formats\n        - gdalinfo http://thredds.nersc.no/thredds/dodsC/greenpath/Model/topaz  # [not win]\n        - {{ RECIPE_DIR }}/run_test.bat  # [win]\n        - bash {{ RECIPE_DIR }}/run_test.sh  # [not win]\n    about:\n      summary: 'The Geospatial Data Abstraction Library (GDAL)'\n\n  - name: gdal\n    script: install_python.sh\n    requirements:\n      build:\n        - {{ compiler('c') }}\n        - {{ compiler('cxx') }}\n        - cmake  # [win]\n      host:\n        - python\n        - pip\n        - numpy\n        - {{ pin_subpackage('libgdal', exact=True) }}\n      run:\n        - python\n        - {{ pin_compatible('numpy') }}\n        - {{ pin_subpackage('libgdal', exact=True) }}\n    test:\n      files:\n        - test_data\n        - extra_tests.py\n      imports:\n        - osr\n        - gdal\n        - gdalconst\n        - osgeo\n        - osgeo.ogr\n        - osgeo.gdal\n        - osgeo._gdal\n        - osgeo._gdalconst\n        - osgeo._ogr\n        - osgeo._osr\n      commands:\n        - python {{ RECIPE_DIR }}/run_test.py\n      about:\n        summary: 'Python wrapper for the Geospatial Data Abstraction Library (GDAL)'\n\nabout:\n  home: http://www.gdal.org\n  license: MIT\n  license_file: LICENSE.TXT\n  summary: |\n    GDAL is a translator library for raster and vector geospatial data formats that is released under an\n    X/MIT style Open Source license by the Open Source Geospatial Foundation.\n\nextra:\n  recipe-maintainers:\n    - gillins\n    - kmuehlbauer\n    - mingwandroid\n    - msarahan\n    - ocefpaf\n",
  "req":{
   "__set__":true,
@@ -1228,7 +1247,7 @@
    "elements":[]
   }
  },
- "smithy_version":"3.6.6",
+ "smithy_version":"3.6.8",
  "strong_exports":false,
  "total_requirements":{
   "build":{
