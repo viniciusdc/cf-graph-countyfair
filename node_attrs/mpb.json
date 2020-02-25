@@ -152,14 +152,14 @@
    "summary":"MIT Photonic-Bands - computation of photonic band structures in periodic media"
   },
   "build":{
-   "number":"105",
+   "number":"106",
    "run_exports":[
     "mpb * nompi_*",
     "mpb * nompi_*",
     "mpb * nompi_*"
    ],
    "skip":true,
-   "string":"nompi_h_105"
+   "string":"nompi_h_106"
   },
   "extra":{
    "recipe-maintainers":[
@@ -191,6 +191,7 @@
     "liblapack",
     "fftw",
     "hdf5 * nompi_*",
+    "hdf5",
     "libctl >=4.2.0",
     "nompi",
     "libblas",
@@ -198,6 +199,7 @@
     "liblapack",
     "fftw",
     "hdf5 * nompi_*",
+    "hdf5",
     "libctl >=4.2.0",
     "nompi",
     "libblas",
@@ -205,6 +207,7 @@
     "liblapack",
     "fftw",
     "hdf5 * nompi_*",
+    "hdf5",
     "libctl >=4.2.0"
    ],
    "run":[
@@ -235,7 +238,7 @@
  "name":"mpb",
  "new_version":"1.10.0",
  "pinning_version":"2020.02.19",
- "raw_meta_yaml":"{% set name = \"mpb\" %}\n{% set version = \"1.9.0\" %}\n{% set sha256 = \"c7b91d82bd8e63ea029d58cbf6d73904a99bc20436badf6aac30fc4a90850883\" %}\n{% set buildnumber = 5 %}\n# recipe-lint fails if mpi is undefined\n{% set mpi = mpi or 'nompi' %}\n{% if mpi == \"nompi\" %}\n# prioritize nompi via build number\n{% set buildnumber = buildnumber + 100 %}\n{% endif %}\n\npackage:\n  name: {{ name }}\n  version: {{version}}\n\nsource:\n  fn: {{ name }}-{{version}}.tar.gz\n  url: https://github.com/NanoComp/{{ name }}/releases/download/v{{ version }}/{{ name }}-{{ version }}.tar.gz\n  sha256: {{ sha256 }}\n\nbuild:\n  number: {{ buildnumber }}\n  skip: true  # [win]\n  {% if mpi != \"nompi\" %}\n  {% set mpi_prefix = \"mpi_\" + mpi %}\n  {% else %}\n  {% set mpi_prefix = \"nompi\" %}\n  {% endif %}\n  # add build string so packages can depend on\n  # mpi or nompi variants\n  # dependencies:\n  # `mpb * mpi_mpich_*` for mpich\n  # `mpb * mpi_*` for any mpi\n  # `mpb * nompi_*` for no mpi\n  string: \"{{ mpi_prefix }}_h{{ PKG_HASH }}_{{ buildnumber }}\"\n  run_exports:\n    - {{ name }} * {{ mpi_prefix }}_*\n\nrequirements:\n  build:\n    - {{ compiler('fortran') }}\n    - {{ compiler('c') }}\n  host:\n    - {{ mpi }}  # [mpi != 'nompi']\n    - libblas\n    - libcblas\n    - liblapack\n    - fftw\n    - hdf5 * {{ mpi_prefix }}_*\n    - libctl >=4.2.0\n  run:\n    - {{ mpi }}  # [mpi != 'nompi']\n    - fftw\n    - libctl >=4.2.0\n\ntest:\n  commands:\n    - test -f ${PREFIX}/lib/libmpb${SHLIB_EXT}\n\nabout:\n  home: http:/github.com/NanoComp/mpb\n  license: GPL-2.0\n  license_file: COPYING\n  summary: MIT Photonic-Bands - computation of photonic band structures in periodic media\n  doc_url: http://mpb.readthedocs.io\n  dev_url: https://github.com/NanoComp/mpb\n\nextra:\n  recipe-maintainers:\n    - ChristopherHogan\n    - oskooi\n",
+ "raw_meta_yaml":"{% set name = \"mpb\" %}\n{% set version = \"1.9.0\" %}\n{% set sha256 = \"c7b91d82bd8e63ea029d58cbf6d73904a99bc20436badf6aac30fc4a90850883\" %}\n{% set buildnumber = 6 %}\n# recipe-lint fails if mpi is undefined\n{% set mpi = mpi or 'nompi' %}\n{% if mpi == \"nompi\" %}\n# prioritize nompi via build number\n{% set buildnumber = buildnumber + 100 %}\n{% endif %}\n\npackage:\n  name: {{ name }}\n  version: {{version}}\n\nsource:\n  fn: {{ name }}-{{version}}.tar.gz\n  url: https://github.com/NanoComp/{{ name }}/releases/download/v{{ version }}/{{ name }}-{{ version }}.tar.gz\n  sha256: {{ sha256 }}\n\nbuild:\n  number: {{ buildnumber }}\n  skip: true  # [win]\n  {% if mpi != \"nompi\" %}\n  {% set mpi_prefix = \"mpi_\" + mpi %}\n  {% else %}\n  {% set mpi_prefix = \"nompi\" %}\n  {% endif %}\n  # add build string so packages can depend on\n  # mpi or nompi variants\n  # dependencies:\n  # `mpb * mpi_mpich_*` for mpich\n  # `mpb * mpi_*` for any mpi\n  # `mpb * nompi_*` for no mpi\n  string: \"{{ mpi_prefix }}_h{{ PKG_HASH }}_{{ buildnumber }}\"\n  run_exports:\n    - {{ name }} * {{ mpi_prefix }}_*\n\nrequirements:\n  build:\n    - {{ compiler('fortran') }}\n    - {{ compiler('c') }}\n  host:\n    - {{ mpi }}  # [mpi != 'nompi']\n    - libblas\n    - libcblas\n    - liblapack\n    - fftw\n    - hdf5 * {{ mpi_prefix }}_*\n    - hdf5\n    - libctl >=4.2.0\n  run:\n    - {{ mpi }}  # [mpi != 'nompi']\n    - fftw\n    - libctl >=4.2.0\n\ntest:\n  commands:\n    - test -f ${PREFIX}/lib/libmpb${SHLIB_EXT}\n\nabout:\n  home: http:/github.com/NanoComp/mpb\n  license: GPL-2.0\n  license_file: COPYING\n  summary: MIT Photonic-Bands - computation of photonic band structures in periodic media\n  doc_url: http://mpb.readthedocs.io\n  dev_url: https://github.com/NanoComp/mpb\n\nextra:\n  recipe-maintainers:\n    - ChristopherHogan\n    - oskooi\n",
  "req":{
   "__set__":true,
   "elements":[
@@ -297,6 +300,7 @@
    "__set__":true,
    "elements":[
     "fftw",
+    "hdf5",
     "hdf5 * nompi_*",
     "libblas",
     "libcblas",
