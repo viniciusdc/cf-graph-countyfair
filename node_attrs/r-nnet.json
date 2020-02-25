@@ -69,9 +69,6 @@
  ],
  "bad":false,
  "conda-forge.yml":{
-  "compiler_stack":"comp7",
-  "max_py_ver":"37",
-  "max_r_ver":"35",
   "provider":{
    "win":"azure"
   }
@@ -88,7 +85,7 @@
   },
   "build":{
    "merge_build_host":true,
-   "number":"1003",
+   "number":"0",
    "rpaths":[
     "lib/R/lib/",
     "lib/",
@@ -125,7 +122,7 @@
   },
   "package":{
    "name":"r-nnet",
-   "version":"7.3_12"
+   "version":"7.3_13"
   },
   "requirements":{
    "build":[
@@ -142,26 +139,32 @@
    ],
    "host":[
     "r-base",
+    "r-mass",
     "r-base",
-    "r-base"
+    "r-mass",
+    "r-base",
+    "r-mass"
    ],
    "run":[
     "r-base",
     "gcc-libs",
+    "r-mass",
     "r-base",
-    "r-base"
+    "r-mass",
+    "r-base",
+    "r-mass"
    ]
   },
   "source":{
-   "fn":"nnet_7.3-12.tar.gz",
-   "sha256":"2723523e8581cc0e2215435ac773033577a16087a3f41d111757dd96b8c5559d",
+   "fn":"nnet_7.3-13.tar.gz",
+   "sha256":"ae8820e292c7a413206ef82d1f41da2809c1d0e39c97f6800f9c7952599119fc",
    "url":[
-    "https://cran.r-project.org/src/contrib/nnet_7.3-12.tar.gz",
-    "https://cran.r-project.org/src/contrib/Archive/nnet/nnet_7.3-12.tar.gz",
-    "https://cran.r-project.org/src/contrib/nnet_7.3-12.tar.gz",
-    "https://cran.r-project.org/src/contrib/Archive/nnet/nnet_7.3-12.tar.gz",
-    "https://cran.r-project.org/src/contrib/nnet_7.3-12.tar.gz",
-    "https://cran.r-project.org/src/contrib/Archive/nnet/nnet_7.3-12.tar.gz"
+    "https://cran.r-project.org/src/contrib/nnet_7.3-13.tar.gz",
+    "https://cran.r-project.org/src/contrib/Archive/nnet/nnet_7.3-13.tar.gz",
+    "https://cran.r-project.org/src/contrib/nnet_7.3-13.tar.gz",
+    "https://cran.r-project.org/src/contrib/Archive/nnet/nnet_7.3-13.tar.gz",
+    "https://cran.r-project.org/src/contrib/nnet_7.3-13.tar.gz",
+    "https://cran.r-project.org/src/contrib/Archive/nnet/nnet_7.3-13.tar.gz"
    ]
   },
   "test":{
@@ -175,7 +178,7 @@
  "name":"r-nnet",
  "new_version":"7.3_13",
  "pinning_version":"2020.02.20",
- "raw_meta_yaml":"{% set version = '7.3-12' %}\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-nnet\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  fn: nnet_{{ version }}.tar.gz\n  url:\n    - {{ cran_mirror }}/src/contrib/nnet_{{ version }}.tar.gz\n    - {{ cran_mirror }}/src/contrib/Archive/nnet/nnet_{{ version }}.tar.gz\n  sha256: 2723523e8581cc0e2215435ac773033577a16087a3f41d111757dd96b8c5559d\n\nbuild:\n  merge_build_host: True  # [win]\n  number: 1003\n  skip: true  # [win32]\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - {{ compiler('c') }}        # [not win]\n    - {{ compiler('m2w64_c') }}        # [win]\n    - {{posix}}filesystem        # [win]\n    - {{posix}}make\n    - {{posix}}sed               # [win]\n    - {{posix}}coreutils         # [win]\n    - {{posix}}zip               # [win]\n  host:\n    - r-base\n  run:\n    - r-base\n    - {{native}}gcc-libs         # [win]\n\ntest:\n  commands:\n    - $R -e \"library('nnet')\"           # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('nnet')\\\"\"  # [win]\n\nabout:\n  home: http://www.stats.ox.ac.uk/pub/MASS4/\n  license: GPL-2 | GPL-3\n  summary: Software for feed-forward neural networks with a single hidden layer, and for multinomial\n    log-linear models.\n  license_family: GPL3\n  license_file: '{{ environ[\"PREFIX\"] }}/lib/R/share/licenses/GPL-3'\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n    - johanneskoester\n    - bgruening\n    - daler\n    - jdblischak\n    - cbrueffer\n    - dbast\n",
+ "raw_meta_yaml":"{% set version = \"7.3-13\" %}\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-nnet\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  fn: nnet_{{ version }}.tar.gz\n  url:\n    - {{ cran_mirror }}/src/contrib/nnet_{{ version }}.tar.gz\n    - {{ cran_mirror }}/src/contrib/Archive/nnet/nnet_{{ version }}.tar.gz\n  sha256: ae8820e292c7a413206ef82d1f41da2809c1d0e39c97f6800f9c7952599119fc\n\nbuild:\n  merge_build_host: true  # [win]\n  number: 0\n  skip: true  # [win32]\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - {{ compiler('c') }}        # [not win]\n    - {{ compiler('m2w64_c') }}        # [win]\n    - {{posix}}filesystem        # [win]\n    - {{posix}}make\n    - {{posix}}sed               # [win]\n    - {{posix}}coreutils         # [win]\n    - {{posix}}zip               # [win]\n  host:\n    - r-base\n    - r-mass\n  run:\n    - r-base\n    - {{native}}gcc-libs         # [win]\n    - r-mass\n\ntest:\n  commands:\n    - $R -e \"library('nnet')\"           # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('nnet')\\\"\"  # [win]\n\nabout:\n  home: http://www.stats.ox.ac.uk/pub/MASS4/\n  license: GPL-2 | GPL-3\n  summary: Software for feed-forward neural networks with a single hidden layer, and for multinomial log-linear models.\n  license_family: GPL3\n  license_file: {{ environ[\"PREFIX\"] }}/lib/R/share/licenses/GPL-3\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n    - johanneskoester\n    - bgruening\n    - daler\n    - jdblischak\n    - cbrueffer\n    - dbast\n",
  "req":{
   "__set__":true,
   "elements":[
@@ -186,6 +189,7 @@
    "m2w64_c_compiler_stub",
    "make",
    "r-base",
+   "r-mass",
    "sed",
    "zip"
   ]
@@ -206,14 +210,16 @@
   "host":{
    "__set__":true,
    "elements":[
-    "r-base"
+    "r-base",
+    "r-mass"
    ]
   },
   "run":{
    "__set__":true,
    "elements":[
     "gcc-libs",
-    "r-base"
+    "r-base",
+    "r-mass"
    ]
   },
   "test":{
@@ -239,14 +245,16 @@
   "host":{
    "__set__":true,
    "elements":[
-    "r-base"
+    "r-base",
+    "r-mass"
    ]
   },
   "run":{
    "__set__":true,
    "elements":[
     "gcc-libs",
-    "r-base"
+    "r-base",
+    "r-mass"
    ]
   },
   "test":{
@@ -262,5 +270,5 @@
   "https://cran.r-project.org/src/contrib/nnet_7.3-12.tar.gz",
   "https://cran.r-project.org/src/contrib/Archive/nnet/nnet_7.3-12.tar.gz"
  ],
- "version":"7.3_12"
+ "version":"7.3_13"
 }
