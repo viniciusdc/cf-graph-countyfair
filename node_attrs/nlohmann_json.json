@@ -186,6 +186,23 @@
     "migrator_version",
     "version"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/379734537.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"ArchRebuild",
+    "migrator_version":1,
+    "name":"aarch64 and ppc64le addition"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "name"
+   ]
   }
  ],
  "bad":false,
@@ -291,7 +308,7 @@
  },
  "name":"nlohmann_json",
  "new_version":"3.7.3",
- "pinning_version":"2019.11.14",
+ "pinning_version":"2020.02.20",
  "raw_meta_yaml":"{% set name = \"nlohmann_json\" %}\n{% set version = \"3.7.3\" %}\n{% set sha256 = \"249548f4867417d66ae46b338dfe0a2805f3323e81c9e9b83c89f3adbfde6f31\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  fn: {{ name }}-{{ version }}.tar.gz\n  url: https://github.com/nlohmann/json/archive/v{{ version }}.tar.gz\n  sha256: {{ sha256 }}\n\nbuild:\n  number: 0\n  skip: True  # [win and vc<14]\n  # The json library is header only, so we do not need\n  # to export the compiler run-time libraries.\n  # They are just needed during the build to perform some checks.\n  ignore_run_exports:\n    - libcxx\n    - libgcc-ng\n    - libstdcxx-ng\n    - vc\n    - vs2015_runtime\n\nrequirements:\n  build:\n    - cmake\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n  host: []  # Empty host dependency section\n\ntest:\n  commands:\n    - test -d ${PREFIX}/include/nlohmann  # [unix]\n    - test -f ${PREFIX}/include/nlohmann/json.hpp  # [unix]\n    - test -f ${PREFIX}/lib/cmake/nlohmann_json/nlohmann_jsonConfig.cmake  # [unix]\n    - test -f ${PREFIX}/lib/cmake/nlohmann_json/nlohmann_jsonConfigVersion.cmake  # [unix]\n    - test -f ${PREFIX}/lib/cmake/nlohmann_json/nlohmann_jsonTargets.cmake  # [unix]\n    - if exist %LIBRARY_PREFIX%\\include\\nlohmann\\json.hpp (exit 0) else (exit 1)  # [win]\n    - if exist %LIBRARY_PREFIX%\\lib\\cmake\\nlohmann_jsonConfig.cmake (exit 0) else (exit 1)  # [win]\n    - if exist %LIBRARY_PREFIX%\\lib\\cmake\\nlohmann_jsonConfigVersion.cmake (exit 0) else (exit 1)  # [win]\n    - if exist %LIBRARY_PREFIX%\\lib\\cmake\\nlohmann_jsonTargets.cmake (exit 0) else (exit 1)  # [win]\n\nabout:\n  home: http://github.com/nlohmann/json\n  license: MIT\n  license_family: MIT\n  license_file: LICENSE.MIT\n  summary: 'JSON for Modern C++'\n  description: 'JSON for Modern C++ is a C++11 JSON parser.'\n  doc_url: http://nlohmann.github.io/json/\n  dev_url: http://github.com/nlohmann/json\n\nextra:\n  recipe-maintainers:\n    - constantinpape\n    - SylvainCorlay\n    - JohanMabille\n    - wolfv\n",
  "req":{
   "__set__":true,
@@ -323,7 +340,7 @@
    "elements":[]
   }
  },
- "smithy_version":"3.6.2",
+ "smithy_version":"3.6.8",
  "strong_exports":false,
  "total_requirements":{
   "build":{
