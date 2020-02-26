@@ -122,7 +122,7 @@
    "summary":"compiler-rt runtime libraries"
   },
   "build":{
-   "number":"0"
+   "number":"1"
   },
   "extra":{
    "recipe-maintainers":[
@@ -143,6 +143,12 @@
   "outputs":[
    {
     "build":{
+     "ignore_run_exports":[
+      "vc",
+      "libcxx",
+      "libgcc-ng",
+      "libstdcxx-ng"
+     ],
      "noarch":"generic"
     },
     "files":[
@@ -169,14 +175,25 @@
      "Library/lib/clang/9.0.1/lib"
     ],
     "name":"compiler-rt",
-    "requirements":[
-     "clang 9.0.1",
-     "clangxx 9.0.1",
-     "compiler-rt_ 9.0.1"
-    ]
+    "requirements":{
+     "build":[
+      "cxx_compiler_stub"
+     ],
+     "run":[
+      "clang 9.0.1",
+      "clangxx 9.0.1",
+      "compiler-rt_ 9.0.1"
+     ]
+    }
    },
    {
     "build":{
+     "ignore_run_exports":[
+      "vc",
+      "libcxx",
+      "libgcc-ng",
+      "libstdcxx-ng"
+     ],
      "noarch":"generic"
     },
     "files":[
@@ -203,15 +220,25 @@
      "lib/clang/9.0.1/include"
     ],
     "name":"compiler-rt",
-    "requirements":[
-     "libcxx >=",
-     "clang 9.0.1",
-     "clangxx 9.0.1",
-     "compiler-rt_ 9.0.1"
-    ]
+    "requirements":{
+     "build":[
+      "cxx_compiler_stub"
+     ],
+     "run":[
+      "clang 9.0.1",
+      "clangxx 9.0.1",
+      "compiler-rt_ 9.0.1"
+     ]
+    }
    },
    {
     "build":{
+     "ignore_run_exports":[
+      "vc",
+      "libcxx",
+      "libgcc-ng",
+      "libstdcxx-ng"
+     ],
      "noarch":"generic"
     },
     "files":[
@@ -237,11 +264,16 @@
      "lib/clang/9.0.1/include"
     ],
     "name":"compiler-rt",
-    "requirements":[
-     "clang 9.0.1",
-     "clangxx 9.0.1",
-     "compiler-rt_ 9.0.1"
-    ]
+    "requirements":{
+     "build":[
+      "cxx_compiler_stub"
+     ],
+     "run":[
+      "clang 9.0.1",
+      "clangxx 9.0.1",
+      "compiler-rt_ 9.0.1"
+     ]
+    }
    }
   ],
   "package":{
@@ -307,7 +339,7 @@
   "compiler-rt_"
  ],
  "pinning_version":"2020.02.12",
- "raw_meta_yaml":"{% set name = \"compiler-rt-packages\" %}\n{% set version = \"9.0.1\" %}\n{% set build_number = 0 %}\n{% set sha256 = \"c2bfab95c9986318318363d7f371a85a95e333bc0b34fbfa52edbd3f5e3a9077\" %}\n\npackage:\n  name: {{ name }}\n  version: {{ version }}\n\nsource:\n  url: https://github.com/llvm/llvm-project/releases/download/llvmorg-{{ version }}/compiler-rt-{{ version }}.src.tar.xz\n  sha256: {{ sha256 }}\n  patches:\n    - no_codesign.diff\n    - macosx_10_9.patch\n\nbuild:\n  number: {{ build_number }}\n\nrequirements:\n  build:\n    - cmake >=3.4.3\n    - {{ compiler('cxx') }}\n    - python\n    - make  # [unix]\n  host:\n    - clangdev {{ version }}\n    - llvmdev {{ version }}\n    - libcxx {{ cxx_compiler_version }}  # [osx]\n\ntest:\n  files:\n    - test.c.in\n  commands:\n  {% set NEW_TARGET=\"10.\" ~ (((MACOSX_DEPLOYMENT_TARGET|default(\"10.13\")).split(\".\")[1])|int + 1) %}\n    - sed \"s/@MACOSX_DEPLOYMENT_TARGET@/{{ NEW_TARGET }}/g\" test.c.in > test.c\n    - clang -mmacosx-version-min={{ MACOSX_DEPLOYMENT_TARGET }} test.c  # [osx]\n    - test -f $PREFIX/lib/clang/{{ version }}/include/sanitizer/asan_interface.h  # [unix]\n\noutputs:\n  - name: compiler-rt_{{ target_platform }}\n    build:\n      noarch: generic\n    requirements:\n      build:\n        - {{ compiler('cxx') }}\n      run:\n        - libcxx >={{ cxx_compiler_version }}  # [osx]\n        - clang {{ version }}\n        - clangxx {{ version }}\n      run_constrained:\n        - compiler-rt {{ version }}\n    files:\n      - lib/clang/{{ version }}/lib\n\n  - name: compiler-rt\n    requirements:\n      - libcxx >={{ cxx_compiler_version }}  # [osx]\n      - clang {{ version }}\n      - clangxx {{ version }}\n      - compiler-rt_{{ target_platform }} {{ version }}\n    files:\n      - lib/clang/{{ version }}/share             # [unix]\n      - lib/clang/{{ version }}/include           # [unix]\n      - Library/lib/clang/{{ version }}/share     # [win]\n      - Library/lib/clang/{{ version }}/include   # [win]\n      - Library/lib/clang/{{ version }}/lib       # [win]\n\nabout:\n  home: http://llvm.org/\n  license: NCSA\n  license_file: LICENSE.TXT\n  summary: compiler-rt runtime libraries\n  description: |\n    builtins - low-level target-specific hooks required by code generation and other\n      runtime components\n    sanitizer runtimes - AddressSanitizer, ThreadSanitizer, UndefinedBehaviorSanitizer,\n      MemorySanitizer, LeakSanitizer, DataFlowSanitizer\n    profile - library which is used to collect coverage information\n    BlocksRuntime - target-independent implementation of Apple \"Blocks\" runtime\n      interfaces\n\nextra:\n  recipe-maintainers:\n    - SylvainCorlay\n    - inducer\n    - jakirkham\n    - isuruf\n",
+ "raw_meta_yaml":"{% set name = \"compiler-rt-packages\" %}\n{% set version = \"9.0.1\" %}\n{% set build_number = 1 %}\n{% set sha256 = \"c2bfab95c9986318318363d7f371a85a95e333bc0b34fbfa52edbd3f5e3a9077\" %}\n\npackage:\n  name: {{ name }}\n  version: {{ version }}\n\nsource:\n  url: https://github.com/llvm/llvm-project/releases/download/llvmorg-{{ version }}/compiler-rt-{{ version }}.src.tar.xz\n  sha256: {{ sha256 }}\n  patches:\n    - no_codesign.diff\n    - macosx_10_9.patch\n\nbuild:\n  number: {{ build_number }}\n\nrequirements:\n  build:\n    - cmake >=3.4.3\n    - {{ compiler('cxx') }}\n    - python\n    - make  # [unix]\n  host:\n    - clangdev {{ version }}\n    - llvmdev {{ version }}\n    - libcxx {{ cxx_compiler_version }}  # [osx]\n\ntest:\n  files:\n    - test.c.in\n  commands:\n  {% set NEW_TARGET=\"10.\" ~ (((MACOSX_DEPLOYMENT_TARGET|default(\"10.13\")).split(\".\")[1])|int + 1) %}\n    - sed \"s/@MACOSX_DEPLOYMENT_TARGET@/{{ NEW_TARGET }}/g\" test.c.in > test.c\n    - clang -mmacosx-version-min={{ MACOSX_DEPLOYMENT_TARGET }} test.c  # [osx]\n    - test -f $PREFIX/lib/clang/{{ version }}/include/sanitizer/asan_interface.h  # [unix]\n\noutputs:\n  - name: compiler-rt_{{ target_platform }}\n    build:\n      noarch: generic\n      ignore_run_exports:\n        - vc\n        - libcxx\n        - libgcc-ng\n        - libstdcxx-ng\n    requirements:\n      build:\n        - {{ compiler('cxx') }}\n      run:\n        - libcxx >={{ cxx_compiler_version }}  # [osx]\n        - clang {{ version }}\n        - clangxx {{ version }}\n      run_constrained:\n        - compiler-rt {{ version }}\n    files:\n      - lib/clang/{{ version }}/lib\n\n  - name: compiler-rt\n    requirements:\n      build:\n        - {{ compiler('cxx') }}\n      run:\n        - clang {{ version }}\n        - clangxx {{ version }}\n        - compiler-rt_{{ target_platform }} {{ version }}\n    files:\n      - lib/clang/{{ version }}/share             # [unix]\n      - lib/clang/{{ version }}/include           # [unix]\n      - Library/lib/clang/{{ version }}/share     # [win]\n      - Library/lib/clang/{{ version }}/include   # [win]\n      - Library/lib/clang/{{ version }}/lib       # [win]\n\nabout:\n  home: http://llvm.org/\n  license: NCSA\n  license_file: LICENSE.TXT\n  summary: compiler-rt runtime libraries\n  description: |\n    builtins - low-level target-specific hooks required by code generation and other\n      runtime components\n    sanitizer runtimes - AddressSanitizer, ThreadSanitizer, UndefinedBehaviorSanitizer,\n      MemorySanitizer, LeakSanitizer, DataFlowSanitizer\n    profile - library which is used to collect coverage information\n    BlocksRuntime - target-independent implementation of Apple \"Blocks\" runtime\n      interfaces\n\nextra:\n  recipe-maintainers:\n    - SylvainCorlay\n    - inducer\n    - jakirkham\n    - isuruf\n",
  "req":{
   "__set__":true,
   "elements":[
