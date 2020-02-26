@@ -283,7 +283,35 @@
    ]
   }
  ],
- "bad":false,
+ "bad":{
+  "exception":"expected a single document in the stream\n  in \"<unicode string>\", line 11, column 9:\n            - root -l -b -q -x\n            ^ (line: 11)\nbut found another document\n  in \"<unicode string>\", line 31, column 1:\n    package:\n    ^ (line: 31)",
+  "traceback":[
+   "Traceback (most recent call last):",
+   "  File \"/root/repo/cf-scripts/conda_forge_tick/auto_tick.py\", line 684, in main",
+   "    hash_type=attrs.get(\"hash_type\", \"sha256\"),",
+   "  File \"/root/repo/cf-scripts/conda_forge_tick/auto_tick.py\", line 147, in run",
+   "    migrate_return = migrator.migrate(recipe_dir, feedstock_ctx.attrs, **kwargs)",
+   "  File \"/root/repo/cf-scripts/conda_forge_tick/migrators/version.py\", line 386, in migrate",
+   "    cmeta = CondaMetaYAML(fp.read())",
+   "  File \"/root/repo/cf-scripts/conda_forge_tick/recipe_parser/_parser.py\", line 359, in __init__",
+   "    self.meta = YAML_JINJA2.load(''.join(lines))",
+   "  File \"/opt/conda/envs/run_env/lib/python3.7/site-packages/ruamel/yaml/main.py\", line 341, in load",
+   "    return constructor.get_single_data()",
+   "  File \"/opt/conda/envs/run_env/lib/python3.7/site-packages/ruamel/yaml/constructor.py\", line 111, in get_single_data",
+   "    node = self.composer.get_single_node()",
+   "  File \"/opt/conda/envs/run_env/lib/python3.7/site-packages/ruamel/yaml/composer.py\", line 87, in get_single_node",
+   "    event.start_mark,",
+   "ruamel.yaml.composer.ComposerError: expected a single document in the stream",
+   "  in \"<unicode string>\", line 11, column 9:",
+   "            - root -l -b -q -x",
+   "            ^ (line: 11)",
+   "but found another document",
+   "  in \"<unicode string>\", line 31, column 1:",
+   "    package:",
+   "    ^ (line: 31)",
+   ""
+  ]
+ },
  "conda-forge.yml":{
   "compiler_stack":"comp7",
   "max_py_ver":"37",
@@ -1506,7 +1534,7 @@
   }
  },
  "name":"root",
- "new_version":"6-19-02",
+ "new_version":"6-20-00",
  "outputs_names":[
   "root",
   "root-binaries",
