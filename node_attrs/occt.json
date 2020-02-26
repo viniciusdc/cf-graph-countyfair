@@ -41,7 +41,7 @@
    "summary":"this is the occ (opencascade) CAD-Kernel"
   },
   "build":{
-   "number":"1"
+   "number":"2"
   },
   "extra":{
    "recipe-maintainers":[
@@ -65,6 +65,7 @@
     "cxx_compiler_stub",
     "cdt_stub",
     "cdt_stub",
+    "cdt_stub",
     "cmake",
     "ninja"
    ],
@@ -78,8 +79,7 @@
     "freetype",
     "fontconfig",
     "tbb-devel",
-    "xorg-libxt",
-    "xorg-libxmu"
+    "xorg-libxt"
    ],
    "run":[
     "freetype",
@@ -88,14 +88,21 @@
     "fontconfig",
     "freetype",
     "fontconfig",
-    "xorg-libxt",
-    "xorg-libxmu"
+    "xorg-libxt"
    ]
   },
   "source":{
    "fn":"occt-7.4.0.tar.gz",
-   "sha256":"af73c89ade0467ca7351dc445e4bd20832387da1e205f6955bc9356ab7d9f22b",
-   "url":"http://git.dev.opencascade.org/gitweb/?p=occt.git;a=snapshot;h=fd47711d682be943f0e0a13d1fb54911b0499c31;sf=tgz"
+   "patches":[
+    "no-xmu.patch",
+    "fix-private-linking.patch",
+    "no-xmu.patch",
+    "fix-private-linking.patch",
+    "no-xmu.patch",
+    "fix-private-linking.patch"
+   ],
+   "sha256":"9614c2075cef53e30b25317fc8fcfb71d60a69181d562e1c56469ed8e54ad758",
+   "url":"http://git.dev.opencascade.org/gitweb/?p=occt.git;a=snapshot;h=V7_4_0;sf=tgz"
   },
   "test":{
    "commands":[
@@ -121,7 +128,7 @@
  "name":"occt",
  "new_version":false,
  "pinning_version":"2018.10.03",
- "raw_meta_yaml":"{% set name = \"occt\" %}\n{% set version = \"7.4.0\" %}\n{% set commit = \"fd47711d682be943f0e0a13d1fb54911b0499c31\" %}\npackage:\n  name: {{ name }}\n  version: {{ version }}\n\nsource:\n  fn: {{ name }}-{{ version }}.tar.gz\n  url: http://git.dev.opencascade.org/gitweb/?p=occt.git;a=snapshot;h={{ commit }};sf=tgz\n  sha256: af73c89ade0467ca7351dc445e4bd20832387da1e205f6955bc9356ab7d9f22b\n\nbuild:\n  number: 1\n\nrequirements:\n  build:\n    - {{ compiler('cxx') }}\n    - {{ cdt('mesa-libgl-devel') }}  # [linux]\n    - {{ cdt('libxi-devel') }}       # [linux]\n    - cmake\n    - ninja\n  host:\n    - freetype\n    - fontconfig\n    - tbb-devel\n    - xorg-libxt  # [linux]\n    - xorg-libxmu  # [linux]\n  run:\n    - freetype\n    - fontconfig\n    - xorg-libxt  # [linux]\n    - xorg-libxmu  # [linux]\n\ntest:\n  requires:\n    - ninja\n    - cmake\n  files:\n    - CMakeLists.txt\n  commands:\n    - cmake -G \"Ninja\" .\n\nabout:\n  home: https://www.opencascade.com/\n  license_family: LGPL\n  license: LGPL-2.1\n  license_file: LICENSE_LGPL_21.txt\n  summary: this is the occ (opencascade) CAD-Kernel\n  description: |\n    Open Cascade Technology (OCCT), formerly called CAS.CADE\n    is an open source software development platform for 3D CAD,\n    CAM, CAE, etc. that is developed and supported by Open Cascade SAS.\n  doc_url: https://www.opencascade.com/content/documentation\n  dev_url: http://git.dev.opencascade.org/gitweb/?p=occt.git\n\nextra:\n  recipe-maintainers:\n    - looooo\n",
+ "raw_meta_yaml":"{% set name = \"occt\" %}\n{% set version = \"7.4.0\" %}\n\npackage:\n  name: {{ name }}\n  version: {{ version }}\n\nsource:\n  fn: {{ name }}-{{ version }}.tar.gz\n  url: http://git.dev.opencascade.org/gitweb/?p=occt.git;a=snapshot;h=V{{ version.replace(\".\", \"_\") }};sf=tgz\n  sha256: 9614c2075cef53e30b25317fc8fcfb71d60a69181d562e1c56469ed8e54ad758\n  patches:\n    - no-xmu.patch\n    - fix-private-linking.patch\n\nbuild:\n  number: 2\n\nrequirements:\n  build:\n    - {{ compiler('cxx') }}\n    - {{ cdt('mesa-libgl-devel') }}  # [linux]\n    - {{ cdt('libxi-devel') }}       # [linux]\n    - {{ cdt('libxext-devel') }}     # [linux]\n    - cmake\n    - ninja\n  host:\n    - freetype\n    - fontconfig\n    - tbb-devel\n    - xorg-libxt  # [linux]\n  run:\n    - freetype\n    - fontconfig\n    - xorg-libxt  # [linux]\n\ntest:\n  requires:\n    - ninja\n    - cmake\n  files:\n    - CMakeLists.txt\n  commands:\n    - cmake -G \"Ninja\" .\n\nabout:\n  home: https://www.opencascade.com/\n  license_family: LGPL\n  license: LGPL-2.1\n  license_file: LICENSE_LGPL_21.txt\n  summary: this is the occ (opencascade) CAD-Kernel\n  description: |\n    Open Cascade Technology (OCCT), formerly called CAS.CADE\n    is an open source software development platform for 3D CAD,\n    CAM, CAE, etc. that is developed and supported by Open Cascade SAS.\n  doc_url: https://www.opencascade.com/content/documentation\n  dev_url: http://git.dev.opencascade.org/gitweb/?p=occt.git\n\nextra:\n  recipe-maintainers:\n    - looooo\n",
  "req":{
   "__set__":true,
   "elements":[
@@ -132,7 +139,6 @@
    "freetype",
    "ninja",
    "tbb-devel",
-   "xorg-libxmu",
    "xorg-libxt"
   ]
  },
@@ -152,7 +158,6 @@
     "fontconfig",
     "freetype",
     "tbb-devel",
-    "xorg-libxmu",
     "xorg-libxt"
    ]
   },
@@ -161,7 +166,6 @@
    "elements":[
     "fontconfig",
     "freetype",
-    "xorg-libxmu",
     "xorg-libxt"
    ]
   },
@@ -191,7 +195,6 @@
     "fontconfig",
     "freetype",
     "tbb-devel",
-    "xorg-libxmu",
     "xorg-libxt"
    ]
   },
@@ -200,7 +203,6 @@
    "elements":[
     "fontconfig",
     "freetype",
-    "xorg-libxmu",
     "xorg-libxt"
    ]
   },
