@@ -96,13 +96,20 @@
  "hash_type":"sha256",
  "meta_yaml":{
   "about":{
-   "home":"http",
-   "license":"GPL (>= 2)",
+   "home":"http://www.spatstat.org",
+   "license":"GPL-2",
+   "license_family":"GPL2",
+   "license_file":[
+    "/lib/R/share/licenses/GPL-2",
+    "/lib/R/share/licenses/GPL-2",
+    "/lib/R/share/licenses/GPL-2"
+   ],
    "summary":"Contains all the datasets for the 'spatstat' package."
   },
   "build":{
+   "merge_build_host":true,
    "noarch":"generic",
-   "number":"2001",
+   "number":"0",
    "rpaths":[
     "lib/R/lib/",
     "lib/",
@@ -110,48 +117,56 @@
     "lib/",
     "lib/R/lib/",
     "lib/"
-   ],
-   "script":"R CMD INSTALL --build ."
+   ]
   },
   "extra":{
    "recipe-maintainers":[
+    "conda-forge/r",
     "ocefpaf",
+    "conda-forge/r",
     "ocefpaf",
+    "conda-forge/r",
     "ocefpaf"
    ]
   },
   "package":{
    "name":"r-spatstat.data",
-   "version":"1.4_0"
+   "version":"1.4_3"
   },
   "requirements":{
-   "build":[
+   "build":null,
+   "host":[
     "r-base",
+    "r-matrix",
     "r-spatstat.utils",
     "r-base",
+    "r-matrix",
     "r-spatstat.utils",
     "r-base",
+    "r-matrix",
     "r-spatstat.utils"
    ],
    "run":[
     "r-base",
+    "r-matrix",
     "r-spatstat.utils",
     "r-base",
+    "r-matrix",
     "r-spatstat.utils",
     "r-base",
+    "r-matrix",
     "r-spatstat.utils"
    ]
   },
   "source":{
-   "fn":"spatstat.data_1.4-0.tar.gz",
-   "sha256":"121e5bb92beb7ccac920f921e760f429fd71bcfe11cb9b07a7e7326c7a72ec8c",
+   "sha256":"8955b6ac40cc7d0d89e02334bb46f4c223ff0755e5818f132fee753e77918ea2",
    "url":[
-    "https://cran.r-project.org/src/contrib/spatstat.data_1.4-0.tar.gz",
-    "https://cran.r-project.org/src/contrib/Archive/spatstat.data/spatstat.data_1.4-0.tar.gz",
-    "https://cran.r-project.org/src/contrib/spatstat.data_1.4-0.tar.gz",
-    "https://cran.r-project.org/src/contrib/Archive/spatstat.data/spatstat.data_1.4-0.tar.gz",
-    "https://cran.r-project.org/src/contrib/spatstat.data_1.4-0.tar.gz",
-    "https://cran.r-project.org/src/contrib/Archive/spatstat.data/spatstat.data_1.4-0.tar.gz"
+    "https://cran.r-project.org/src/contrib/spatstat.data_1.4-3.tar.gz",
+    "https://cran.r-project.org/src/contrib/Archive/spatstat.data/spatstat.data_1.4-3.tar.gz",
+    "https://cran.r-project.org/src/contrib/spatstat.data_1.4-3.tar.gz",
+    "https://cran.r-project.org/src/contrib/Archive/spatstat.data/spatstat.data_1.4-3.tar.gz",
+    "https://cran.r-project.org/src/contrib/spatstat.data_1.4-3.tar.gz",
+    "https://cran.r-project.org/src/contrib/Archive/spatstat.data/spatstat.data_1.4-3.tar.gz"
    ]
   },
   "test":{
@@ -165,30 +180,33 @@
  "name":"r-spatstat.data",
  "new_version":"1.4_3",
  "pinning_version":"2020.01.24",
- "raw_meta_yaml":"{% set version = \"1.4-0\" %}\n\npackage:\n  name: r-spatstat.data\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  fn: spatstat.data_{{ version }}.tar.gz\n  url:\n    - https://cran.r-project.org/src/contrib/spatstat.data_{{ version }}.tar.gz\n    - https://cran.r-project.org/src/contrib/Archive/spatstat.data/spatstat.data_{{ version }}.tar.gz\n  sha256: 121e5bb92beb7ccac920f921e760f429fd71bcfe11cb9b07a7e7326c7a72ec8c\n\nbuild:\n  noarch: generic\n  number: 2001\n  script: R CMD INSTALL --build .\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - r-base\n    - r-spatstat.utils\n  run:\n    - r-base\n    - r-spatstat.utils\n\ntest:\n  commands:\n    - $R -e \"library('spatstat.data')\"  # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('spatstat.data')\\\"\"  # [win]\n\nabout:\n  home: http\n  license: GPL (>= 2)\n  summary: Contains all the datasets for the 'spatstat' package.\n\nextra:\n  recipe-maintainers:\n    - ocefpaf\n",
+ "raw_meta_yaml":"{% set version = '1.4-3' %}\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-spatstat.data\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  url:\n    - {{ cran_mirror }}/src/contrib/spatstat.data_{{ version }}.tar.gz\n    - {{ cran_mirror }}/src/contrib/Archive/spatstat.data/spatstat.data_{{ version }}.tar.gz\n  sha256: 8955b6ac40cc7d0d89e02334bb46f4c223ff0755e5818f132fee753e77918ea2\n\nbuild:\n  merge_build_host: True  # [win]\n  number: 0\n  noarch: generic\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - {{posix}}zip               # [win]\n  host:\n    - r-base\n    - r-matrix\n    - r-spatstat.utils\n  run:\n    - r-base\n    - r-matrix\n    - r-spatstat.utils\n\ntest:\n  commands:\n    - $R -e \"library('spatstat.data')\"           # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('spatstat.data')\\\"\"  # [win]\n\nabout:\n  home: http://www.spatstat.org\n  license: GPL-2\n  summary: Contains all the datasets for the 'spatstat' package.\n  license_family: GPL2\n  license_file:\n    - '{{ environ[\"PREFIX\"] }}/lib/R/share/licenses/GPL-2'\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n    - ocefpaf\n\n# Package: spatstat.data\n# Version: 1.4-3\n# Date: 2020-01-26\n# Title: Datasets for 'spatstat'\n# Authors@R: c(person(\"Adrian\", \"Baddeley\", role = c(\"aut\", \"cre\"), email = \"Adrian.Baddeley@curtin.edu.au\", comment = c(ORCID=\"0000-0001-9499-8382\")), person(\"Rolf\", \"Turner\", role = \"aut\", email=\"r.turner@auckland.ac.nz\", comment=c(ORCID=\"0000-0001-5521-5218\")), person(\"Ege\",   \"Rubak\", role = \"aut\", email = \"rubak@math.aau.dk\", comment=c(ORCID=\"0000-0002-6675-533X\")))\n# Maintainer: Adrian Baddeley <Adrian.Baddeley@curtin.edu.au>\n# Depends: R (>= 3.3.0)\n# Suggests: spatstat (>= 1.55-0)\n# Imports: spatstat.utils, Matrix\n# Description: Contains all the datasets for the 'spatstat' package.\n# License: GPL (>= 2)\n# URL: http://www.spatstat.org\n# LazyData: true\n# NeedsCompilation: no\n# ByteCompile: true\n# BugReports: https://github.com/spatstat/spatstat.data/issues\n# Packaged: 2020-01-26 03:52:00 UTC; adrian\n# Author: Adrian Baddeley [aut, cre] (<https://orcid.org/0000-0001-9499-8382>), Rolf Turner [aut] (<https://orcid.org/0000-0001-5521-5218>), Ege Rubak [aut] (<https://orcid.org/0000-0002-6675-533X>)\n# Repository: CRAN\n# Date/Publication: 2020-01-26 06:40:15 UTC\n",
  "req":{
   "__set__":true,
   "elements":[
    "r-base",
+   "r-matrix",
    "r-spatstat.utils"
   ]
  },
  "requirements":{
   "build":{
    "__set__":true,
-   "elements":[
-    "r-base",
-    "r-spatstat.utils"
-   ]
+   "elements":[]
   },
   "host":{
    "__set__":true,
-   "elements":[]
+   "elements":[
+    "r-base",
+    "r-matrix",
+    "r-spatstat.utils"
+   ]
   },
   "run":{
    "__set__":true,
    "elements":[
     "r-base",
+    "r-matrix",
     "r-spatstat.utils"
    ]
   },
@@ -202,19 +220,21 @@
  "total_requirements":{
   "build":{
    "__set__":true,
-   "elements":[
-    "r-base",
-    "r-spatstat.utils"
-   ]
+   "elements":[]
   },
   "host":{
    "__set__":true,
-   "elements":[]
+   "elements":[
+    "r-base",
+    "r-matrix",
+    "r-spatstat.utils"
+   ]
   },
   "run":{
    "__set__":true,
    "elements":[
     "r-base",
+    "r-matrix",
     "r-spatstat.utils"
    ]
   },
@@ -231,5 +251,5 @@
   "https://cran.r-project.org/src/contrib/spatstat.data_1.4-0.tar.gz",
   "https://cran.r-project.org/src/contrib/Archive/spatstat.data/spatstat.data_1.4-0.tar.gz"
  ],
- "version":"1.4_0"
+ "version":"1.4_3"
 }
