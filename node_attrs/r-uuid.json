@@ -33,6 +33,23 @@
     "migrator_version",
     "name"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/380486986.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"Version",
+    "migrator_version":0,
+    "version":"0.1_4"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "version"
+   ]
   }
  ],
  "bad":false,
@@ -154,8 +171,8 @@
   }
  },
  "name":"r-uuid",
- "new_version":"0.1_2",
- "pinning_version":"2019.07.15",
+ "new_version":"0.1_4",
+ "pinning_version":"2020.02.20",
  "raw_meta_yaml":"{% set version = '0.1-2' %}\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-uuid\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  fn: uuid_{{ version }}.tar.gz\n  url:\n    - {{ cran_mirror }}/src/contrib/uuid_{{ version }}.tar.gz\n    - {{ cran_mirror }}/src/contrib/Archive/uuid/uuid_{{ version }}.tar.gz\n  sha256: dd71704dc336b0857981b92a75ed9877d4ca47780b1682def28839304cd3b1be\n\nbuild:\n  merge_build_host: True  # [win]\n  number: 1002\n  skip: true  # [win32]\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - {{ compiler('c') }}        # [not win]\n    - {{ compiler('m2w64_c') }}        # [win]\n    - {{posix}}filesystem        # [win]\n    - {{posix}}sed               # [win]\n    - {{posix}}grep              # [win]\n    - {{posix}}autoconf\n    - {{posix}}automake          # [not win]\n    - {{posix}}automake-wrapper  # [win]\n    - {{posix}}pkg-config\n    - {{posix}}make\n    - {{posix}}coreutils         # [win]\n    - {{posix}}zip               # [win]\n  host:\n    - r-base\n  run:\n    - r-base\n    - {{native}}gcc-libs         # [win]\n\ntest:\n  commands:\n    - $R -e \"library('uuid')\"           # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('uuid')\\\"\"  # [win]\n\nabout:\n  home: http://www.rforge.net/uuid\n  license: MIT\n  license_file: LICENSE\n  summary: Tools for generating and handling of UUIDs (Universally Unique Identifiers).\n  license_family: MIT\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n    - ocefpaf\n    - johanneskoester\n    - bgruening\n    - daler\n    - jdblischak\n    - cbrueffer\n    - dbast\n",
  "req":{
   "__set__":true,
@@ -212,7 +229,7 @@
    "elements":[]
   }
  },
- "smithy_version":"3.4.1",
+ "smithy_version":"3.6.8",
  "strong_exports":false,
  "total_requirements":{
   "build":{
