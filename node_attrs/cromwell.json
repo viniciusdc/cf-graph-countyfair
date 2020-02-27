@@ -263,7 +263,7 @@
   }
  },
  "name":"cromwell",
- "new_version":"48",
+ "new_version":"49",
  "pinning_version":"2020.01.10",
  "raw_meta_yaml":"{% set version = \"48\" %}\n\npackage:\n  name: cromwell\n  version: {{ version }}\n\nsource:\n  - url: https://github.com/broadinstitute/cromwell/releases/download/{{ version }}/cromwell-{{ version }}.jar\n    sha256: c14b4f34f208245bd1a62032d20ad7c6f79cf5a9209f4590645d05f28172155c\n    folder: cromwell\n  - url: https://github.com/broadinstitute/cromwell/releases/download/{{ version }}/womtool-{{ version }}.jar\n    sha256: d0c5447fb25e7fcd9a5fbdb7fb543941b46ab37cc1741c98ece56084868be936\n    folder: womtool\n\nbuild:\n  # Cannot build on Windows because findutils is not available\n  skip: true  # [win]\n  number: 0\n\nrequirements:\n  run:\n    - openjdk >=8,<9\n    - python\n    - findutils\n\ntest:\n  commands:\n    - cromwell --version 2>&1 | grep \"cromwell\"\n    - womtool --help 2>&1 | grep \"Usage\"\n\nabout:\n  home: https://github.com/broadinstitute/cromwell\n  license: \"BSD-3-Clause\"\n  license_file: \"LICENSE.txt\"\n  summary: \"A Workflow Management System geared towards scientific workflows described in WDL\"\n\nextra:\n  recipe-maintainers:\n    - notestaff\n    - chapmanb\n    - micknudsen \n    - rhpvorderman\n",
  "req":{
