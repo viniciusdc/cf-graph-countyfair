@@ -149,7 +149,7 @@
   }
  },
  "name":"rocr-runtime",
- "new_version":"3.0.0",
+ "new_version":"3.1.0",
  "pinning_version":"2019.12.17",
  "raw_meta_yaml":"{% set name = \"rocr-runtime\" %}\n{% set version = \"2.7.0\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  url: https://github.com/RadeonOpenCompute/ROCR-Runtime/archive/roc-{{ version }}.tar.gz\n  sha256: 726b6556d4072caa35e751e067f4e5dd283583ed0aff49d72af14e0449bfe318\n  patches:\n    - no_override_shared_linker_flags.diff\n\nbuild:\n  number: 0\n  skip: True  # [not linux]\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n    - cmake\n    - make\n  host:\n    - elfutils\n    - roct-thunk-interface {{ version }}\n  run:\n    - {{ pin_compatible(\"elfutils\") }}\n    - roct-thunk-interface {{ version }}\n\ntest:\n  commands:\n    - test -f $PREFIX/include/hsa/hsa.h\n    - test -f $PREFIX/lib/libhsa-runtime64.so\n\nabout:\n  home: https://github.com/RadeonOpenCompute/ROCR-Runtime\n  license: NCSA\n  license_family: MIT\n  license_file: LICENSE.txt\n  summary: 'ROCm Platform Runtime: ROCr a HPC market enhanced HSA based runtime'\n\nextra:\n  recipe-maintainers:\n    - isuruf\n",
  "req":{
