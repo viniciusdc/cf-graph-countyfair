@@ -283,35 +283,7 @@
    ]
   }
  ],
- "bad":{
-  "exception":"expected a single document in the stream\n  in \"<unicode string>\", line 11, column 9:\n            - root -l -b -q -x\n            ^ (line: 11)\nbut found another document\n  in \"<unicode string>\", line 31, column 1:\n    package:\n    ^ (line: 31)",
-  "traceback":[
-   "Traceback (most recent call last):",
-   "  File \"/root/repo/cf-scripts/conda_forge_tick/auto_tick.py\", line 684, in main",
-   "    hash_type=attrs.get(\"hash_type\", \"sha256\"),",
-   "  File \"/root/repo/cf-scripts/conda_forge_tick/auto_tick.py\", line 147, in run",
-   "    migrate_return = migrator.migrate(recipe_dir, feedstock_ctx.attrs, **kwargs)",
-   "  File \"/root/repo/cf-scripts/conda_forge_tick/migrators/version.py\", line 386, in migrate",
-   "    cmeta = CondaMetaYAML(fp.read())",
-   "  File \"/root/repo/cf-scripts/conda_forge_tick/recipe_parser/_parser.py\", line 359, in __init__",
-   "    self.meta = YAML_JINJA2.load(''.join(lines))",
-   "  File \"/opt/conda/envs/run_env/lib/python3.7/site-packages/ruamel/yaml/main.py\", line 341, in load",
-   "    return constructor.get_single_data()",
-   "  File \"/opt/conda/envs/run_env/lib/python3.7/site-packages/ruamel/yaml/constructor.py\", line 111, in get_single_data",
-   "    node = self.composer.get_single_node()",
-   "  File \"/opt/conda/envs/run_env/lib/python3.7/site-packages/ruamel/yaml/composer.py\", line 87, in get_single_node",
-   "    event.start_mark,",
-   "ruamel.yaml.composer.ComposerError: expected a single document in the stream",
-   "  in \"<unicode string>\", line 11, column 9:",
-   "            - root -l -b -q -x",
-   "            ^ (line: 11)",
-   "but found another document",
-   "  in \"<unicode string>\", line 31, column 1:",
-   "    package:",
-   "    ^ (line: 31)",
-   ""
-  ]
- },
+ "bad":false,
  "conda-forge.yml":{
   "compiler_stack":"comp7",
   "max_py_ver":"37",
@@ -331,9 +303,9 @@
    "summary":"ROOT is a modular scientific software toolkit. It provides all the functionalities needed to deal with big data\nprocessing, statistical analysis, visualisation and storage. It is mainly written in C++ but integrated with other\nlanguages such as Python and R.\n"
   },
   "build":{
-   "number":"28",
+   "number":"0",
    "skip":true,
-   "string":"pyh_28"
+   "string":"pyh_0"
   },
   "extra":{
    "recipe-maintainers":[
@@ -354,13 +326,13 @@
   "outputs":[
    {
     "build":{
-     "number":"28",
+     "number":"0",
      "run_exports":[
       "subpackage_stub"
      ],
      "script":"echo \"Minimal build script is required for conda to set RECIPE_DIR\"",
      "skip":true,
-     "string":"pyh_28"
+     "string":"pyh_0"
     },
     "name":"root-dependencies",
     "requirements":{
@@ -381,13 +353,15 @@
       "afterimage",
       "cfitsio",
       "clangdev =5.0.0",
-      "clang_variant * cling_6.18.00",
+      "clang_variant * root_20191220",
       "davix",
       "fftw",
       "freetype",
+      "ftgl",
       "gdk-pixbuf",
       "giflib",
       "glew",
+      "gl2ps",
       "graphviz",
       "gsl",
       "libpng",
@@ -407,7 +381,9 @@
       "vdt",
       "xrootd",
       "xz",
-      "compatible_pin_stub"
+      "compatible_pin_stub",
+      "xxhash",
+      "zlib"
      ],
      "run":[
       "compatible_pin_stub",
@@ -415,11 +391,13 @@
       "fftw",
       "gdk-pixbuf",
       "glew",
+      "gl2ps",
       "graphviz",
       "librsvg",
       "pythia8",
       "python",
       "tbb-devel",
+      "compatible_pin_stub",
       "compatible_pin_stub"
      ]
     },
@@ -431,17 +409,17 @@
    },
    {
     "build":{
-     "ignore_prefix_files":[
-      "etc/allDict.cxx.pch"
-     ],
+     "ignore_prefix_files":null,
      "ignore_run_exports":[
+      "ftgl",
+      "gl2ps",
       "giflib",
       "gsl",
       "krb5",
       "qt",
       "sqlite"
      ],
-     "number":"28",
+     "number":"0",
      "run_exports":[
       "subpackage_stub"
      ],
@@ -454,7 +432,7 @@
       "find ${PREFIX}/bin -type f -maxdepth 1 -exec \\\n  bash -c 'fn={}; if grep --quiet \"^$fn\\$\" \"${SRC_DIR}/initial-filelist.txt\"; then echo \"Skipping $fn\"; else echo \"Found new file $fn\"; mv \"$fn\" \"${SRC_DIR}/root-binaries/\"; fi' \\;\n"
      ],
      "skip":true,
-     "string":"pyh_28"
+     "string":"pyh_0"
     },
     "name":"root_base",
     "requirements":{
@@ -475,13 +453,15 @@
       "afterimage",
       "cfitsio",
       "clangdev =5.0.0",
-      "clang_variant * cling_6.18.00",
+      "clang_variant * root_20191220",
       "davix",
       "fftw",
       "freetype",
+      "ftgl",
       "gdk-pixbuf",
       "giflib",
       "glew",
+      "gl2ps",
       "graphviz",
       "gsl",
       "libpng",
@@ -501,14 +481,17 @@
       "vdt",
       "xrootd",
       "xz",
-      "compatible_pin_stub"
+      "compatible_pin_stub",
+      "xxhash",
+      "zlib"
      ],
      "run":[
       "compatible_pin_stub",
       "python",
       "c_compiler_stub",
       "cxx_compiler_stub",
-      "fortran_compiler_stub"
+      "fortran_compiler_stub",
+      "compatible_pin_stub"
      ],
      "run_constrained":[
       "cling 9999",
@@ -523,7 +506,7 @@
    },
    {
     "build":{
-     "number":"28",
+     "number":"0",
      "script":[
       "set -euxo pipefail",
       "mkdir -p ${PREFIX}/bin",
@@ -532,7 +515,7 @@
       "ls ${PREFIX}/bin/"
      ],
      "skip":true,
-     "string":"pyh_28"
+     "string":"pyh_0"
     },
     "name":"root-binaries",
     "requirements":{
@@ -555,9 +538,11 @@
       "davix",
       "fftw",
       "freetype",
+      "ftgl",
       "gdk-pixbuf",
       "giflib",
       "glew",
+      "gl2ps",
       "graphviz",
       "gsl",
       "libpng",
@@ -577,11 +562,14 @@
       "xrootd",
       "xz",
       "compatible_pin_stub",
-      "subpackage_stub"
+      "subpackage_stub",
+      "xxhash",
+      "zlib"
      ],
      "run":[
       "subpackage_stub",
-      "python"
+      "python",
+      "compatible_pin_stub"
      ]
     },
     "test":{
@@ -601,13 +589,13 @@
       "test.cpp"
      ],
      "requires":[
-      "root-dependencies 6.18.04 *_28"
+      "root-dependencies 6.20.0 *_0"
      ]
     }
    },
    {
     "build":{
-     "number":"28",
+     "number":"0",
      "script":[
       "set -euxo pipefail",
       "pwd",
@@ -615,7 +603,7 @@
       "echo \"Minimal build script is required for conda to set RECIPE_DIR\""
      ],
      "skip":true,
-     "string":"pyh_28"
+     "string":"pyh_0"
     },
     "name":"root",
     "requirements":{
@@ -671,12 +659,12 @@
    },
    {
     "build":{
-     "number":"28",
+     "number":"0",
      "run_exports":[
       "subpackage_stub"
      ],
      "script":"echo \"Minimal build script is required for conda to set RECIPE_DIR\"",
-     "string":"pyh_28"
+     "string":"pyh_0"
     },
     "name":"root-dependencies",
     "requirements":{
@@ -697,13 +685,15 @@
       "afterimage",
       "cfitsio",
       "clangdev =5.0.0",
-      "clang_variant * cling_6.18.00",
+      "clang_variant * root_20191220",
       "davix",
       "fftw",
       "freetype",
+      "ftgl",
       "gdk-pixbuf",
       "giflib",
       "glew",
+      "gl2ps",
       "graphviz",
       "gsl",
       "krb5",
@@ -724,7 +714,9 @@
       "vdt",
       "xrootd",
       "xz",
-      "compatible_pin_stub"
+      "compatible_pin_stub",
+      "xxhash",
+      "zlib"
      ],
      "run":[
       "compatible_pin_stub",
@@ -732,11 +724,13 @@
       "fftw",
       "gdk-pixbuf",
       "glew",
+      "gl2ps",
       "graphviz",
       "librsvg",
       "pythia8",
       "python",
       "tbb-devel",
+      "compatible_pin_stub",
       "compatible_pin_stub"
      ]
     },
@@ -752,13 +746,15 @@
       "etc/allDict.cxx.pch"
      ],
      "ignore_run_exports":[
+      "ftgl",
+      "gl2ps",
       "giflib",
       "gsl",
       "krb5",
       "qt",
       "sqlite"
      ],
-     "number":"28",
+     "number":"0",
      "run_exports":[
       "subpackage_stub"
      ],
@@ -770,7 +766,7 @@
       "mkdir ${SRC_DIR}/root-binaries/",
       "find ${PREFIX}/bin -type f -maxdepth 1 -exec \\\n  bash -c 'fn={}; if grep --quiet \"^$fn\\$\" \"${SRC_DIR}/initial-filelist.txt\"; then echo \"Skipping $fn\"; else echo \"Found new file $fn\"; mv \"$fn\" \"${SRC_DIR}/root-binaries/\"; fi' \\;\n"
      ],
-     "string":"pyh_28"
+     "string":"pyh_0"
     },
     "name":"root_base",
     "requirements":{
@@ -791,13 +787,15 @@
       "afterimage",
       "cfitsio",
       "clangdev =5.0.0",
-      "clang_variant * cling_6.18.00",
+      "clang_variant * root_20191220",
       "davix",
       "fftw",
       "freetype",
+      "ftgl",
       "gdk-pixbuf",
       "giflib",
       "glew",
+      "gl2ps",
       "graphviz",
       "gsl",
       "krb5",
@@ -818,14 +816,17 @@
       "vdt",
       "xrootd",
       "xz",
-      "compatible_pin_stub"
+      "compatible_pin_stub",
+      "xxhash",
+      "zlib"
      ],
      "run":[
       "compatible_pin_stub",
       "python",
       "c_compiler_stub",
       "cxx_compiler_stub",
-      "fortran_compiler_stub"
+      "fortran_compiler_stub",
+      "compatible_pin_stub"
      ],
      "run_constrained":[
       "cling 9999",
@@ -840,7 +841,7 @@
    },
    {
     "build":{
-     "number":"28",
+     "number":"0",
      "script":[
       "set -euxo pipefail",
       "mkdir -p ${PREFIX}/bin",
@@ -848,7 +849,7 @@
       "cp -rp ${SRC_DIR}/root-binaries/* ${PREFIX}/bin/",
       "ls ${PREFIX}/bin/"
      ],
-     "string":"pyh_28"
+     "string":"pyh_0"
     },
     "name":"root-binaries",
     "requirements":{
@@ -871,9 +872,11 @@
       "davix",
       "fftw",
       "freetype",
+      "ftgl",
       "gdk-pixbuf",
       "giflib",
       "glew",
+      "gl2ps",
       "graphviz",
       "gsl",
       "krb5",
@@ -894,11 +897,14 @@
       "xrootd",
       "xz",
       "compatible_pin_stub",
-      "subpackage_stub"
+      "subpackage_stub",
+      "xxhash",
+      "zlib"
      ],
      "run":[
       "subpackage_stub",
-      "python"
+      "python",
+      "compatible_pin_stub"
      ]
     },
     "test":{
@@ -919,20 +925,20 @@
       "test.cpp"
      ],
      "requires":[
-      "root-dependencies 6.18.04 *_28"
+      "root-dependencies 6.20.0 *_0"
      ]
     }
    },
    {
     "build":{
-     "number":"28",
+     "number":"0",
      "script":[
       "set -euxo pipefail",
       "pwd",
       "ls",
       "echo \"Minimal build script is required for conda to set RECIPE_DIR\""
      ],
-     "string":"pyh_28"
+     "string":"pyh_0"
     },
     "name":"root",
     "requirements":{
@@ -989,12 +995,12 @@
    },
    {
     "build":{
-     "number":"28",
+     "number":"0",
      "run_exports":[
       "subpackage_stub"
      ],
      "script":"echo \"Minimal build script is required for conda to set RECIPE_DIR\"",
-     "string":"pyh_28"
+     "string":"pyh_0"
     },
     "name":"root-dependencies",
     "requirements":{
@@ -1023,13 +1029,15 @@
       "afterimage",
       "cfitsio",
       "clangdev =5.0.0",
-      "clang_variant * cling_6.18.00",
+      "clang_variant * root_20191220",
       "davix",
       "fftw",
       "freetype",
+      "ftgl",
       "gdk-pixbuf",
       "giflib",
       "glew",
+      "gl2ps",
       "graphviz",
       "gsl",
       "libglu",
@@ -1057,7 +1065,9 @@
       "xorg-libxpm",
       "xrootd",
       "xz",
-      "compatible_pin_stub"
+      "compatible_pin_stub",
+      "xxhash",
+      "zlib"
      ],
      "run":[
       "compatible_pin_stub",
@@ -1065,6 +1075,7 @@
       "fftw",
       "gdk-pixbuf",
       "glew",
+      "gl2ps",
       "graphviz",
       "libglu",
       "librsvg",
@@ -1077,6 +1088,7 @@
       "xorg-libxext",
       "xorg-libxft",
       "xorg-libxpm",
+      "compatible_pin_stub",
       "compatible_pin_stub"
      ]
     },
@@ -1089,16 +1101,18 @@
    {
     "build":{
      "ignore_prefix_files":[
-      "etc/allDict.cxx.pch"
+      "lib/*.pcm"
      ],
      "ignore_run_exports":[
+      "ftgl",
+      "gl2ps",
       "giflib",
       "gsl",
       "krb5",
       "qt",
       "sqlite"
      ],
-     "number":"28",
+     "number":"0",
      "run_exports":[
       "subpackage_stub"
      ],
@@ -1110,7 +1124,7 @@
       "mkdir ${SRC_DIR}/root-binaries/",
       "find ${PREFIX}/bin -type f -maxdepth 1 -exec \\\n  bash -c 'fn={}; if grep --quiet \"^$fn\\$\" \"${SRC_DIR}/initial-filelist.txt\"; then echo \"Skipping $fn\"; else echo \"Found new file $fn\"; mv \"$fn\" \"${SRC_DIR}/root-binaries/\"; fi' \\;\n"
      ],
-     "string":"pyh_28"
+     "string":"pyh_0"
     },
     "name":"root_base",
     "requirements":{
@@ -1139,13 +1153,15 @@
       "afterimage",
       "cfitsio",
       "clangdev =5.0.0",
-      "clang_variant * cling_6.18.00",
+      "clang_variant * root_20191220",
       "davix",
       "fftw",
       "freetype",
+      "ftgl",
       "gdk-pixbuf",
       "giflib",
       "glew",
+      "gl2ps",
       "graphviz",
       "gsl",
       "libglu",
@@ -1173,14 +1189,17 @@
       "xorg-libxpm",
       "xrootd",
       "xz",
-      "compatible_pin_stub"
+      "compatible_pin_stub",
+      "xxhash",
+      "zlib"
      ],
      "run":[
       "compatible_pin_stub",
       "python",
       "c_compiler_stub",
       "cxx_compiler_stub",
-      "fortran_compiler_stub"
+      "fortran_compiler_stub",
+      "compatible_pin_stub"
      ],
      "run_constrained":[
       "cling 9999",
@@ -1195,7 +1214,7 @@
    },
    {
     "build":{
-     "number":"28",
+     "number":"0",
      "script":[
       "set -euxo pipefail",
       "mkdir -p ${PREFIX}/bin",
@@ -1203,7 +1222,7 @@
       "cp -rp ${SRC_DIR}/root-binaries/* ${PREFIX}/bin/",
       "ls ${PREFIX}/bin/"
      ],
-     "string":"pyh_28"
+     "string":"pyh_0"
     },
     "name":"root-binaries",
     "requirements":{
@@ -1234,9 +1253,11 @@
       "davix",
       "fftw",
       "freetype",
+      "ftgl",
       "gdk-pixbuf",
       "giflib",
       "glew",
+      "gl2ps",
       "graphviz",
       "gsl",
       "libglu",
@@ -1264,11 +1285,14 @@
       "xrootd",
       "xz",
       "compatible_pin_stub",
-      "subpackage_stub"
+      "subpackage_stub",
+      "xxhash",
+      "zlib"
      ],
      "run":[
       "subpackage_stub",
-      "python"
+      "python",
+      "compatible_pin_stub"
      ]
     },
     "test":{
@@ -1288,20 +1312,20 @@
       "test.cpp"
      ],
      "requires":[
-      "root-dependencies 6.18.04 *_28"
+      "root-dependencies 6.20.0 *_0"
      ]
     }
    },
    {
     "build":{
-     "number":"28",
+     "number":"0",
      "script":[
       "set -euxo pipefail",
       "pwd",
       "ls",
       "echo \"Minimal build script is required for conda to set RECIPE_DIR\""
      ],
-     "string":"pyh_28"
+     "string":"pyh_0"
     },
     "name":"root",
     "requirements":{
@@ -1363,7 +1387,7 @@
   ],
   "package":{
    "name":"root",
-   "version":"6.18.04"
+   "version":"6.20.0"
   },
   "requirements":{
    "build":[
@@ -1404,13 +1428,15 @@
     "afterimage",
     "cfitsio",
     "clangdev =5.0.0",
-    "clang_variant * cling_6.18.00",
+    "clang_variant * root_20191220",
     "davix",
     "fftw",
     "freetype",
+    "ftgl",
     "gdk-pixbuf",
     "giflib",
     "glew",
+    "gl2ps",
     "graphviz",
     "gsl",
     "libpng",
@@ -1431,19 +1457,23 @@
     "xrootd",
     "xz",
     "compatible_pin_stub",
+    "xxhash",
+    "zlib",
     "libblas",
     "libcblas",
     "numpy",
     "afterimage",
     "cfitsio",
     "clangdev =5.0.0",
-    "clang_variant * cling_6.18.00",
+    "clang_variant * root_20191220",
     "davix",
     "fftw",
     "freetype",
+    "ftgl",
     "gdk-pixbuf",
     "giflib",
     "glew",
+    "gl2ps",
     "graphviz",
     "gsl",
     "krb5",
@@ -1465,6 +1495,8 @@
     "xrootd",
     "xz",
     "compatible_pin_stub",
+    "xxhash",
+    "zlib",
     "libblas",
     "libcblas",
     "c_compiler_stub",
@@ -1474,13 +1506,15 @@
     "afterimage",
     "cfitsio",
     "clangdev =5.0.0",
-    "clang_variant * cling_6.18.00",
+    "clang_variant * root_20191220",
     "davix",
     "fftw",
     "freetype",
+    "ftgl",
     "gdk-pixbuf",
     "giflib",
     "glew",
+    "gl2ps",
     "graphviz",
     "gsl",
     "libglu",
@@ -1508,7 +1542,9 @@
     "xorg-libxpm",
     "xrootd",
     "xz",
-    "compatible_pin_stub"
+    "compatible_pin_stub",
+    "xxhash",
+    "zlib"
    ],
    "run":[
     "python",
@@ -1519,18 +1555,15 @@
   "source":{
    "folder":"root-source",
    "patches":[
-    "patches/root-6.20.00-force-search-of-build-related-files.patch",
     "patches/root-x.xx.xx_cling-runtime-sysroot.patch",
-    "patches/root-6.20.00-force-search-of-build-related-files.patch",
     "patches/root-x.xx.xx_cling-runtime-sysroot.patch",
     "patches/root-x.xx.xx_python_mac_os.patch",
     "patches/root-x.xx.xx-copy-abspath-headers.patch",
     "patches/root-x.xx.xx-osx-remove-hardcoded-sysroot.patch",
-    "patches/root-6.20.00-force-search-of-build-related-files.patch",
     "patches/root-x.xx.xx_cling-runtime-sysroot.patch"
    ],
-   "sha256":"82421a5f0486a2c66170300285dce49a961e3459cb5290f6fa579ef617dc8b0a",
-   "url":"https://github.com/root-project/root/archive/v6-18-04.tar.gz"
+   "sha256":"632a63f427555087f091c2f1a6a249a7b9932deba89f0193c316b179ddc454c6",
+   "url":"https://github.com/root-project/root/archive/v6-20-00.tar.gz"
   }
  },
  "name":"root",
@@ -1542,7 +1575,7 @@
   "root_base"
  ],
  "pinning_version":"2020.01.28",
- "raw_meta_yaml":"{% set name = \"root\" %}\n{% set version = \"6.18.04\" %}\n{% set build_number = 28 %}\n{% set hash = \"82421a5f0486a2c66170300285dce49a961e3459cb5290f6fa579ef617dc8b0a\" %}\n{% set clang_version = \"5.0.0\" %}\n{% set clang_patches_version = \"6.18.00\" %}\n\n# WARNING: This is not a good example of a how a conda forge recipe should look\n\n{% macro test_commands() %}\n        - root -l -b -q -x\n        - root -l -b -q -x test.cpp\n        # When testing with -e, explicitly set the return code to zero\n        - root -b -l -q -x -e '2+3; 0'\n        - root -b -l -q -x -e 'gSystem->LoadAllLibraries(); 0'\n        - echo ${CONDA_BUILD_SYSROOT}  # [osx]\n        # # There should be no hard coded references to the SDK\n        # Check the thisroot scripts work\n        - thisroot.sh\n        - thisroot.csh\n        - thisroot.fish\n        # Test if OpenGL is working\n        - root -b -l -q -x -e 'gStyle->SetCanvasPreferGL(kTRUE); c = new TCanvas(); if (!c->UseGL()) { throw std::runtime_error(\"OpenGL does not appear to be working\"); }'\n        # This test will fail due to lack of graphics support but try it anyway\n        # It should exit with \"TEveException: TEveManager::Create ROOT is running in batch mode.\"\n        - root -b -l -q -x \"${ROOTSYS}/tutorials/eve/geom_lhcb.C\" || true\n        # This tutorial uses davix to access a ROOT file over HTTP\n        - root -b -l -q -x \"${ROOTSYS}/tutorials/tree/run_h1analysis.C\"\n{% endmacro -%}\n\npackage:\n  name: root\n  version: {{ version }}\n\nsource:\n{%- if \"ROOT_JENKINS_GIT_REV\" in os.environ %}\n  git_url: {{ os.environ.get(\"ROOT_JENKINS_GIT_URL\", \"https://github.com/root-project/root.git\") }}\n  git_rev: {{ os.environ[\"ROOT_JENKINS_GIT_REV\"] }}\n{%- else %}\n  url: https://github.com/root-project/root/archive/v{{ version | replace(\".\",\"-\") }}.tar.gz\n  sha256: {{ hash }}\n{%- endif %}\n  folder: root-source\n  patches:\n    - patches/root-6.20.00-force-search-of-build-related-files.patch\n    - patches/root-x.xx.xx_cling-runtime-sysroot.patch\n    - patches/root-x.xx.xx_python_mac_os.patch  # [osx]\n    - patches/root-x.xx.xx-copy-abspath-headers.patch  # [osx]\n    - patches/root-x.xx.xx-osx-remove-hardcoded-sysroot.patch  # [osx]\n\nbuild:\n  number: {{ build_number }}\n  skip: True  # [win]\n  string: py{{ CONDA_PY }}h{{ PKG_HASH }}_{{ build_number }}\n\n# Required for conda to generate the correct build matrix\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n    - {{ compiler('fortran') }}\n    - cmake\n    - git\n    - pkg-config\n    - sed\n    - make\n    # Required for OpenGL support\n    # See https://conda-forge.org/docs/maintainer/knowledge_base.html?highlight=cdt#libgl\n    - {{ cdt('mesa-libgl-devel') }}  # [linux]\n    - {{ cdt('mesa-dri-drivers') }}  # [linux]\n    - {{ cdt('libselinux') }}  # [linux]\n    - {{ cdt('libxdamage') }}  # [linux]\n    - {{ cdt('libxxf86vm') }}  # [linux]\n  host:\n    - libblas\n    - libcblas\n    - {{ compiler('c') }}  # [linux]\n    - {{ compiler('cxx') }}  # [linux]\n    - {{ compiler('fortran') }}  # [linux]\n    - numpy\n    - afterimage\n    - cfitsio\n    - clangdev ={{ clang_version }}\n    - clang_variant * cling_{{ clang_patches_version }}\n    - davix\n    - fftw\n    - freetype\n    - gdk-pixbuf\n    - giflib\n    - glew\n    - graphviz\n    - gsl\n    - krb5  # [osx]\n    - libglu  # [linux]\n    - libpng\n    - librsvg\n    - libtiff\n    - libxml2\n    - llvmdev ==5\n    - lz4-c\n    # - mysql\n    - openssl\n    - pcre\n    # - postgresql\n    - pythia8\n    - python\n    - qt\n    - sqlite\n    - tbb\n    - tbb-devel\n    - vdt\n    - xorg-libx11  # [linux]\n    - xorg-libxau  # [linux]\n    - xorg-libxcursor  # [linux]\n    - xorg-libxext  # [linux]\n    - xorg-libxfixes  # [linux]\n    - xorg-libxft  # [linux]\n    - xorg-libxpm  # [linux]\n    - xrootd\n    - xz\n    # FIXME: The generated allDict.cxx.pch is dependent on version of the C++ headers used\n    - {{ pin_compatible('libcxx', min_pin='x', max_pin='x') }}\n  run:\n    - python\n\noutputs:\n  - name: root-dependencies\n    build:\n      number: {{ build_number }}\n      string: py{{ CONDA_PY }}h{{ PKG_HASH }}_{{ build_number }}\n      skip: True  # [win]\n      script: echo \"Minimal build script is required for conda to set RECIPE_DIR\"\n      run_exports:\n        # https://abi-laboratory.pro/?view=timeline&l=root\n        - {{ pin_subpackage('root-dependencies', max_pin='x.x.x') }}\n    requirements:\n      # Include the build dependencies to ensure the build string is correct\n      build:\n        - {{ compiler('c') }}\n        - {{ compiler('cxx') }}\n        - {{ compiler('fortran') }}\n        - cmake\n        - git\n        - pkg-config\n        - sed\n        - make\n        # Required for OpenGL support\n        # See https://conda-forge.org/docs/maintainer/knowledge_base.html?highlight=cdt#libgl\n        - {{ cdt('mesa-libgl-devel') }}  # [linux]\n        - {{ cdt('mesa-dri-drivers') }}  # [linux]\n        - {{ cdt('libselinux') }}  # [linux]\n        - {{ cdt('libxdamage') }}  # [linux]\n        - {{ cdt('libxxf86vm') }}  # [linux]\n      # Include the host dependencies so we pick up any pinning and run_exports\n      host:\n        - libblas\n        - libcblas\n        - {{ compiler('c') }}  # [linux]\n        - {{ compiler('cxx') }}  # [linux]\n        - {{ compiler('fortran') }}  # [linux]\n        - numpy\n        - afterimage\n        - cfitsio\n        - clangdev ={{ clang_version }}\n        - clang_variant * cling_{{ clang_patches_version }}\n        - davix\n        - fftw\n        - freetype\n        - gdk-pixbuf\n        - giflib\n        - glew\n        - graphviz\n        - gsl\n        - krb5  # [osx]\n        - libglu  # [linux]\n        - libpng\n        - librsvg\n        - libtiff\n        - libxml2\n        - llvmdev ==5\n        - lz4-c\n        # - mysql\n        - openssl\n        - pcre\n        # - postgresql\n        - pythia8\n        - python\n        - qt\n        - sqlite\n        - tbb\n        - tbb-devel\n        - vdt\n        - xorg-libx11  # [linux]\n        - xorg-libxau  # [linux]\n        - xorg-libxcursor  # [linux]\n        - xorg-libxext  # [linux]\n        - xorg-libxfixes  # [linux]\n        - xorg-libxft  # [linux]\n        - xorg-libxpm  # [linux]\n        - xrootd\n        - xz\n        # FIXME: The generated allDict.cxx.pch is dependent on version of the C++ headers used\n        - {{ pin_compatible('libcxx', min_pin='x', max_pin='x') }}\n      run:\n        - {{ pin_compatible('numpy') }}\n        - cfitsio\n        - fftw\n        - gdk-pixbuf\n        - glew\n        - graphviz\n        - libglu  # [linux]\n        - librsvg\n        - pythia8\n        - python\n        - tbb-devel\n        - xorg-libx11  # [linux]\n        - xorg-libxau  # [linux]\n        - xorg-libxcursor  # [linux]\n        - xorg-libxext  # [linux]\n        - xorg-libxft  # [linux]\n        - xorg-libxpm  # [linux]\n        # FIXME: Required to ensure a consistent etc/allDict.cxx.pch\n        - {{ pin_compatible('libcxx', min_pin='x', max_pin='x') }}\n    test:\n      commands:\n        - echo \"Testing is performed in the root_base and root outputs\"\n\n  # An underscore is required here to ensure it is built after root-dependencies (required for testing)\n  - name: root_base\n    build:\n      number: {{ build_number }}\n      string: py{{ CONDA_PY }}h{{ PKG_HASH }}_{{ build_number }}\n      skip: True  # [win]\n      script:\n        - set -euxo pipefail\n        - find ${PREFIX}/bin -type f -maxdepth 1 > ${SRC_DIR}/initial-filelist.txt\n        - cp -rp ${PREFIX}/bin ${SRC_DIR}/initial-bin-dir\n        # Copy the new files in ${PREFIX}/bin to a dedicated directory\n        - ${RECIPE_DIR}/build_root-base.sh\n        - mkdir ${SRC_DIR}/root-binaries/\n        - |\n          find ${PREFIX}/bin -type f -maxdepth 1 -exec \\\n            bash -c 'fn={}; if grep --quiet \"^$fn\\$\" \"${SRC_DIR}/initial-filelist.txt\"; then echo \"Skipping $fn\"; else echo \"Found new file $fn\"; mv \"$fn\" \"${SRC_DIR}/root-binaries/\"; fi' \\;\n      run_exports:\n        # https://abi-laboratory.pro/?view=timeline&l=root\n        - {{ pin_subpackage('root_base', max_pin='x.x.x') }}\n      ignore_prefix_files:\n        # FIXME: Figure out how to correct the paths in the PCH\n        - etc/allDict.cxx.pch\n      # Taken from \"conda render ./recipe/ -m .ci_support/osx_python3.7.yaml\"\n      # Sorted and commented run_exports that we want to keep\n      # TODO: This will need updating occasionally\n      ignore_run_exports:\n        # - afterimage\n        # - davix\n        # - freetype\n        - giflib\n        - gsl\n        - krb5\n        # - libblas\n        # - libcblas\n        # - libcxx\n        # - libgfortran\n        # - libpng\n        # - libtiff\n        # - libxml2\n        # - lz4-c\n        # - openssl\n        # - pcre\n        - qt\n        - sqlite\n        # - tbb\n        # - vdt\n        # - xrootd\n        # - xz\n    requirements:\n      build:\n        - {{ compiler('c') }}\n        - {{ compiler('cxx') }}\n        - {{ compiler('fortran') }}\n        - cmake\n        - git\n        - pkg-config\n        - sed\n        - make\n        # Required for OpenGL support\n        # See https://conda-forge.org/docs/maintainer/knowledge_base.html?highlight=cdt#libgl\n        - {{ cdt('mesa-libgl-devel') }}  # [linux]\n        - {{ cdt('mesa-dri-drivers') }}  # [linux]\n        - {{ cdt('libselinux') }}  # [linux]\n        - {{ cdt('libxdamage') }}  # [linux]\n        - {{ cdt('libxxf86vm') }}  # [linux]\n      host:\n        - libblas\n        - libcblas\n        - {{ compiler('c') }}  # [linux]\n        - {{ compiler('cxx') }}  # [linux]\n        - {{ compiler('fortran') }}  # [linux]\n        - numpy\n        - afterimage\n        - cfitsio\n        - clangdev ={{ clang_version }}\n        - clang_variant * cling_{{ clang_patches_version }}\n        - davix\n        - fftw\n        - freetype\n        - gdk-pixbuf\n        - giflib\n        - glew\n        - graphviz\n        - gsl\n        - krb5  # [osx]\n        - libglu  # [linux]\n        - libpng\n        - librsvg\n        - libtiff\n        - libxml2\n        - llvmdev ==5\n        - lz4-c\n        # - mysql\n        - openssl\n        - pcre\n        # - postgresql\n        - pythia8\n        - python\n        - qt\n        - sqlite\n        - tbb\n        - tbb-devel\n        - vdt\n        - xorg-libx11  # [linux]\n        - xorg-libxau  # [linux]\n        - xorg-libxcursor  # [linux]\n        - xorg-libxext  # [linux]\n        - xorg-libxfixes  # [linux]\n        - xorg-libxft  # [linux]\n        - xorg-libxpm  # [linux]\n        - xrootd\n        - xz\n        # FIXME: The generated allDict.cxx.pch is dependent on version of the C++ headers used\n        - {{ pin_compatible('libcxx', min_pin='x', max_pin='x') }}\n      run:\n        # FIXME: Required to ensure a consistent etc/allDict.cxx.pch\n        - {{ pin_compatible('libcxx', min_pin='x', max_pin='x') }}\n        - python\n        - {{ compiler('c') }}\n        - {{ compiler('cxx') }}\n        - {{ compiler('fortran') }}\n      run_constrained:\n        # Items listed here conflict with ROOT\n        # FIXME Add support in ROOT for building with an external cling\n        - cling 9999\n        - root5 9999\n    test:\n      commands:\n        - echo \"Tested in other outputs\"\n\n  - name: root-binaries\n    build:\n      number: {{ build_number }}\n      string: py{{ CONDA_PY }}h{{ PKG_HASH }}_{{ build_number }}\n      skip: True  # [win]\n      script:\n        - set -euxo pipefail\n        # Copy the executables back into ${PREFIX}/bin\n        # This is done to avoid users getting broken binaries from root_base\n        - mkdir -p ${PREFIX}/bin\n        - ls ${PREFIX}/bin/\n        - cp -rp ${SRC_DIR}/root-binaries/* ${PREFIX}/bin/\n        - ls ${PREFIX}/bin/\n    requirements:\n      build:\n        - {{ compiler('c') }}\n        - {{ compiler('cxx') }}\n        - {{ compiler('fortran') }}\n        - cmake\n        - git\n        - pkg-config\n        - sed\n        - make\n        # Required for OpenGL support\n        # See https://conda-forge.org/docs/maintainer/knowledge_base.html?highlight=cdt#libgl\n        - {{ cdt('mesa-libgl-devel') }}  # [linux]\n        - {{ cdt('mesa-dri-drivers') }}  # [linux]\n        - {{ cdt('libselinux') }}  # [linux]\n        - {{ cdt('libxdamage') }}  # [linux]\n        - {{ cdt('libxxf86vm') }}  # [linux]\n      # Have to copy the host dependencies in order to be able to also install root_base\n      host:\n        - libblas\n        - libcblas\n        - {{ compiler('c') }}  # [linux]\n        - {{ compiler('cxx') }}  # [linux]\n        - {{ compiler('fortran') }}  # [linux]\n        - numpy\n        - afterimage\n        - cfitsio\n        # These not required as they're are statically linked in libCling. They also cannot\n        # be installed in the same environment as root_base due to the compiler constraint\n        # - clangdev ={{ clang_version }}\n        # - clang_variant * cling_{{ clang_patches_version }}\n        # - llvmdev ==5\n        - davix\n        - fftw\n        - freetype\n        - gdk-pixbuf\n        - giflib\n        - glew\n        - graphviz\n        - gsl\n        - krb5  # [osx]\n        - libglu  # [linux]\n        - libpng\n        - librsvg\n        - libtiff\n        - libxml2\n        - lz4-c\n        # - mysql\n        - openssl\n        - pcre\n        # - postgresql\n        - pythia8\n        - python\n        - qt\n        - sqlite\n        - tbb\n        - tbb-devel\n        - vdt\n        - xorg-libx11  # [linux]\n        - xorg-libxau  # [linux]\n        - xorg-libxcursor  # [linux]\n        - xorg-libxext  # [linux]\n        - xorg-libxfixes  # [linux]\n        - xorg-libxft  # [linux]\n        - xorg-libxpm  # [linux]\n        - xrootd\n        - xz\n        # FIXME: The generated allDict.cxx.pch is dependent on version of the C++ headers used\n        - {{ pin_compatible('libcxx', min_pin='x', max_pin='x') }}\n        - {{ pin_subpackage('root_base', exact=True) }}\n      run:\n        - {{ pin_subpackage('root_base', exact=True) }}\n        - python\n    test:\n      files:\n        - test.cpp\n      requires:\n        - root-dependencies {{ version }} *_{{ build_number }}\n      commands: {{- test_commands() }}\n\n  - name: root\n    build:\n      number: {{ build_number }}\n      string: py{{ CONDA_PY }}h{{ PKG_HASH }}_{{ build_number }}\n      skip: True  # [win]\n      script:\n        - set -euxo pipefail\n        - pwd\n        - ls\n        - echo \"Minimal build script is required for conda to set RECIPE_DIR\"\n    requirements:\n      # Include the build dependencies and python to ensure the build string is correct\n      build:\n        - {{ compiler('c') }}\n        - {{ compiler('cxx') }}\n        - {{ compiler('fortran') }}\n        - cmake\n        - git\n        - pkg-config\n        - sed\n        - make\n        # Required for OpenGL support\n        # See https://conda-forge.org/docs/maintainer/knowledge_base.html?highlight=cdt#libgl\n        - {{ cdt('mesa-libgl-devel') }}  # [linux]\n        - {{ cdt('mesa-dri-drivers') }}  # [linux]\n        - {{ cdt('libselinux') }}  # [linux]\n        - {{ cdt('libxdamage') }}  # [linux]\n        - {{ cdt('libxxf86vm') }}  # [linux]\n      host:\n        - python\n      run:\n        - python\n        - compilers  # This package is hostile to how conda-build manages compilers\n        - metakernel\n        - notebook\n        - {{ pin_subpackage('root_base', exact=True) }}\n        - {{ pin_subpackage('root-binaries', exact=True) }}\n        - {{ pin_subpackage('root-dependencies', exact=True) }}\n    test:\n      files:\n        - test.cpp\n      requires:\n        - ipython\n      imports:\n        - ROOT\n        - JupyROOT\n      commands: {{- test_commands()  }}\n        - ipython -c 'import JsMVA'\n        # This command only works if the compilers are available\n        - root -l -b -q -x test.cpp++\n\nabout:\n  home: https://root.cern/\n  license: LGPL-2.1\n  license_family: LGPL\n  license_file: root-source/LICENSE\n  doc_url: https://root.cern/documentation\n  dev_url: https://github.com/root-project/root/\n  summary: |\n      ROOT is a modular scientific software toolkit. It provides all the functionalities needed to deal with big data\n      processing, statistical analysis, visualisation and storage. It is mainly written in C++ but integrated with other\n      languages such as Python and R.\n  description: |\n      Almost everything in ROOT should be supported in this Conda package; ROOT was built with lots of options turned\n      on. Here are a few things to try:\n\n      * `root`: you can start up a session and see the splash screen; Control-D to exit.\n      * `python` followed by `import ROOT` will load PyROOT.\n      * `root --notebook` will start a notebook server with a ROOT kernel choice.\n      * `rootbrowse` will open a TBrowser session so you can look through files.\n      * `root -l -q $ROOTSYS/tutorials/dataframe/df013_InspectAnalysis.C` will run a DataFrame example with an animated plot.\n      * `root -b -q -l -n -e \"std::cout << TROOT::GetTutorialDir() << std::endl;\"` will print the tutorial dir.\n      * `root -b -l -q -e 'std::cout << (float) TPython::Eval(\"1+1\") << endl;'` will run Python from C++ ROOT.\n\n      See the post [here](https://iscinumpy.gitlab.io/post/root-conda/) for more information about using this Conda package.\n\n      The ROOT package will prepare the required compilers. Everything in Conda is symlinked into\n      `$CONDA_PREFIX` if you build things by hand; tools like CMake should find it automatically. The `thisroot.*`\n      scripts should not be used and are not provided. Graphics, `rootbrowse`, etc. all should work. OpenGL is enabled.\n\n      There is also a `root_base` package, with minimal dependecies, that libraries should depend on this to avoid\n      having a runtime dependency on the `compilers` package. `root-dependencies` and `root-binaries` are also available. In most cases users should use the `root` package directly, since it adds both of these, along with compilers, Jupyter, and a few other things to facilitate using ROOT or PyROOT.\n\n      ROOT was built with and will report `-std=c++17` from `root-config`.\n\nextra:\n  recipe-maintainers:\n    - chrisburr\n    - henryiii\n    - bluehood\n    - egpbos\n",
+ "raw_meta_yaml":"{% set name = \"root\" %}\n{% set version = \"6.20.0\" %}\n{% set build_number = 0 %}\n{% set clang_version = \"5.0.0\" %}\n{% set clang_patches_version = \"root_20191220\" %}\n\n# WARNING: This is not a good example of a how a conda forge recipe should look\n\n{% macro test_commands() %}\n        - root -l -b -q -x\n        - root -l -b -q -x test.cpp\n        # When testing with -e, explicitly set the return code to zero\n        - root -b -l -q -x -e '2+3; 0'\n        - root -b -l -q -x -e 'gSystem->LoadAllLibraries(); 0'\n        - echo ${CONDA_BUILD_SYSROOT}  # [osx]\n        # # There should be no hard coded references to the SDK\n        # Check the thisroot scripts work\n        - thisroot.sh\n        - thisroot.csh\n        - thisroot.fish\n        # Test if OpenGL is working\n        - root -b -l -q -x -e 'gStyle->SetCanvasPreferGL(kTRUE); c = new TCanvas(); if (!c->UseGL()) { throw std::runtime_error(\"OpenGL does not appear to be working\"); }'\n        # This test will fail due to lack of graphics support but try it anyway\n        # It should exit with \"TEveException: TEveManager::Create ROOT is running in batch mode.\"\n        - root -b -l -q -x \"${ROOTSYS}/tutorials/eve/geom_lhcb.C\" || true\n        # This tutorial uses davix to access a ROOT file over HTTP\n        - root -b -l -q -x \"${ROOTSYS}/tutorials/tree/run_h1analysis.C\"\n{% endmacro -%}\n\npackage:\n  name: root\n  version: {{ version }}\n\nsource:\n  # git_url: {{ os.environ.get(\"ROOT_JENKINS_GIT_URL\", \"https://github.com/root-project/root.git\") }}\n  # git_rev: v6-20-00-patches\n  url: https://github.com/root-project/root/archive/v{{ version.replace('.', '-').ljust(7, '0') }}.tar.gz\n  sha256: 632a63f427555087f091c2f1a6a249a7b9932deba89f0193c316b179ddc454c6\n  folder: root-source\n  patches:\n    - patches/root-x.xx.xx_cling-runtime-sysroot.patch\n    - patches/root-x.xx.xx_python_mac_os.patch  # [osx]\n    - patches/root-x.xx.xx-copy-abspath-headers.patch  # [osx]\n    - patches/root-x.xx.xx-osx-remove-hardcoded-sysroot.patch  # [osx]\n\nbuild:\n  number: {{ build_number }}\n  skip: True  # [win]\n  string: py{{ CONDA_PY }}h{{ PKG_HASH }}_{{ build_number }}\n\n# Required for conda to generate the correct build matrix\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n    - {{ compiler('fortran') }}\n    - cmake\n    - git\n    - pkg-config\n    - sed\n    - make\n    # Required for OpenGL support\n    # See https://conda-forge.org/docs/maintainer/knowledge_base.html?highlight=cdt#libgl\n    - {{ cdt('mesa-libgl-devel') }}  # [linux]\n    - {{ cdt('mesa-dri-drivers') }}  # [linux]\n    - {{ cdt('libselinux') }}  # [linux]\n    - {{ cdt('libxdamage') }}  # [linux]\n    - {{ cdt('libxxf86vm') }}  # [linux]\n  host:\n    - libblas\n    - libcblas\n    - {{ compiler('c') }}  # [linux]\n    - {{ compiler('cxx') }}  # [linux]\n    - {{ compiler('fortran') }}  # [linux]\n    - numpy\n    - afterimage\n    - cfitsio\n    - clangdev ={{ clang_version }}\n    - clang_variant * {{ clang_patches_version }}\n    - davix\n    - fftw\n    - freetype\n    - ftgl\n    - gdk-pixbuf\n    - giflib\n    - glew\n    - gl2ps\n    - graphviz\n    - gsl\n    - krb5  # [osx]\n    - libglu  # [linux]\n    - libpng\n    - librsvg\n    - libtiff\n    - libxml2\n    - llvmdev ==5\n    - lz4-c\n    # - mysql\n    - openssl\n    - pcre\n    # - postgresql\n    - pythia8\n    - python\n    - qt\n    - sqlite\n    - tbb\n    - tbb-devel\n    - vdt\n    - xorg-libx11  # [linux]\n    - xorg-libxau  # [linux]\n    - xorg-libxcursor  # [linux]\n    - xorg-libxext  # [linux]\n    - xorg-libxfixes  # [linux]\n    - xorg-libxft  # [linux]\n    - xorg-libxpm  # [linux]\n    - xrootd\n    - xz\n    # FIXME: The generated allDict.cxx.pch is dependent on version of the C++ headers used\n    - {{ pin_compatible('libcxx', min_pin='x', max_pin='x') }}\n    - xxhash\n    - zlib\n  run:\n    - python\n\noutputs:\n  - name: root-dependencies\n    build:\n      number: {{ build_number }}\n      string: py{{ CONDA_PY }}h{{ PKG_HASH }}_{{ build_number }}\n      skip: True  # [win]\n      script: echo \"Minimal build script is required for conda to set RECIPE_DIR\"\n      run_exports:\n        # https://abi-laboratory.pro/?view=timeline&l=root\n        - {{ pin_subpackage('root-dependencies', max_pin='x.x.x') }}\n    requirements:\n      # Include the build dependencies to ensure the build string is correct\n      build:\n        - {{ compiler('c') }}\n        - {{ compiler('cxx') }}\n        - {{ compiler('fortran') }}\n        - cmake\n        - git\n        - pkg-config\n        - sed\n        - make\n        # Required for OpenGL support\n        # See https://conda-forge.org/docs/maintainer/knowledge_base.html?highlight=cdt#libgl\n        - {{ cdt('mesa-libgl-devel') }}  # [linux]\n        - {{ cdt('mesa-dri-drivers') }}  # [linux]\n        - {{ cdt('libselinux') }}  # [linux]\n        - {{ cdt('libxdamage') }}  # [linux]\n        - {{ cdt('libxxf86vm') }}  # [linux]\n      # Include the host dependencies so we pick up any pinning and run_exports\n      host:\n        - libblas\n        - libcblas\n        - {{ compiler('c') }}  # [linux]\n        - {{ compiler('cxx') }}  # [linux]\n        - {{ compiler('fortran') }}  # [linux]\n        - numpy\n        - afterimage\n        - cfitsio\n        - clangdev ={{ clang_version }}\n        - clang_variant * {{ clang_patches_version }}\n        - davix\n        - fftw\n        - freetype\n        - ftgl\n        - gdk-pixbuf\n        - giflib\n        - glew\n        - gl2ps\n        - graphviz\n        - gsl\n        - krb5  # [osx]\n        - libglu  # [linux]\n        - libpng\n        - librsvg\n        - libtiff\n        - libxml2\n        - llvmdev ==5\n        - lz4-c\n        # - mysql\n        - openssl\n        - pcre\n        # - postgresql\n        - pythia8\n        - python\n        - qt\n        - sqlite\n        - tbb\n        - tbb-devel\n        - vdt\n        - xorg-libx11  # [linux]\n        - xorg-libxau  # [linux]\n        - xorg-libxcursor  # [linux]\n        - xorg-libxext  # [linux]\n        - xorg-libxfixes  # [linux]\n        - xorg-libxft  # [linux]\n        - xorg-libxpm  # [linux]\n        - xrootd\n        - xz\n        # FIXME: The generated allDict.cxx.pch is dependent on version of the C++ headers used\n        - {{ pin_compatible('libcxx', min_pin='x', max_pin='x') }}\n        - xxhash\n        - zlib\n      run:\n        - {{ pin_compatible('numpy') }}\n        - cfitsio\n        - fftw\n        - gdk-pixbuf\n        - glew\n        - gl2ps\n        - graphviz\n        - libglu  # [linux]\n        - librsvg\n        - pythia8\n        - python\n        - tbb-devel\n        - xorg-libx11  # [linux]\n        - xorg-libxau  # [linux]\n        - xorg-libxcursor  # [linux]\n        - xorg-libxext  # [linux]\n        - xorg-libxft  # [linux]\n        - xorg-libxpm  # [linux]\n        # FIXME: Required to ensure a consistent etc/allDict.cxx.pch\n        - {{ pin_compatible('libcxx', min_pin='x', max_pin='x') }}\n        - {{ pin_compatible('xxhash', max_pin='x.x.x') }}\n    test:\n      commands:\n        - echo \"Testing is performed in the root_base and root outputs\"\n\n  # An underscore is required here to ensure it is built after root-dependencies (required for testing)\n  - name: root_base\n    build:\n      number: {{ build_number }}\n      string: py{{ CONDA_PY }}h{{ PKG_HASH }}_{{ build_number }}\n      skip: True  # [win]\n      script:\n        - set -euxo pipefail\n        - find ${PREFIX}/bin -type f -maxdepth 1 > ${SRC_DIR}/initial-filelist.txt\n        - cp -rp ${PREFIX}/bin ${SRC_DIR}/initial-bin-dir\n        # Copy the new files in ${PREFIX}/bin to a dedicated directory\n        - ${RECIPE_DIR}/build_root-base.sh\n        - mkdir ${SRC_DIR}/root-binaries/\n        - |\n          find ${PREFIX}/bin -type f -maxdepth 1 -exec \\\n            bash -c 'fn={}; if grep --quiet \"^$fn\\$\" \"${SRC_DIR}/initial-filelist.txt\"; then echo \"Skipping $fn\"; else echo \"Found new file $fn\"; mv \"$fn\" \"${SRC_DIR}/root-binaries/\"; fi' \\;\n      run_exports:\n        # https://abi-laboratory.pro/?view=timeline&l=root\n        - {{ pin_subpackage('root_base', max_pin='x.x.x') }}\n      ignore_prefix_files:\n        # Needs to be different until macOS supports runtime_cxxmodules=ON\n        - etc/allDict.cxx.pch  # [osx]\n        - lib/*.pcm  # [linux]\n      # Taken from \"conda render ./recipe/ -m .ci_support/osx_python3.7.yaml\"\n      # Sorted and commented run_exports that we want to keep\n      # TODO: This will need updating occasionally\n      ignore_run_exports:\n        # - afterimage\n        # - davix\n        # - freetype\n        - ftgl\n        - gl2ps\n        - giflib\n        - gsl\n        - krb5\n        # - libblas\n        # - libcblas\n        # - libcxx\n        # - libgfortran\n        # - libpng\n        # - libtiff\n        # - libxml2\n        # - lz4-c\n        # - openssl\n        # - pcre\n        - qt\n        - sqlite\n        # - tbb\n        # - vdt\n        # - xrootd\n        # - xz\n    requirements:\n      build:\n        - {{ compiler('c') }}\n        - {{ compiler('cxx') }}\n        - {{ compiler('fortran') }}\n        - cmake\n        - git\n        - pkg-config\n        - sed\n        - make\n        # Required for OpenGL support\n        # See https://conda-forge.org/docs/maintainer/knowledge_base.html?highlight=cdt#libgl\n        - {{ cdt('mesa-libgl-devel') }}  # [linux]\n        - {{ cdt('mesa-dri-drivers') }}  # [linux]\n        - {{ cdt('libselinux') }}  # [linux]\n        - {{ cdt('libxdamage') }}  # [linux]\n        - {{ cdt('libxxf86vm') }}  # [linux]\n      host:\n        - libblas\n        - libcblas\n        - {{ compiler('c') }}  # [linux]\n        - {{ compiler('cxx') }}  # [linux]\n        - {{ compiler('fortran') }}  # [linux]\n        - numpy\n        - afterimage\n        - cfitsio\n        - clangdev ={{ clang_version }}\n        - clang_variant * {{ clang_patches_version }}\n        - davix\n        - fftw\n        - freetype\n        - ftgl\n        - gdk-pixbuf\n        - giflib\n        - glew\n        - gl2ps\n        - graphviz\n        - gsl\n        - krb5  # [osx]\n        - libglu  # [linux]\n        - libpng\n        - librsvg\n        - libtiff\n        - libxml2\n        - llvmdev ==5\n        - lz4-c\n        # - mysql\n        - openssl\n        - pcre\n        # - postgresql\n        - pythia8\n        - python\n        - qt\n        - sqlite\n        - tbb\n        - tbb-devel\n        - vdt\n        - xorg-libx11  # [linux]\n        - xorg-libxau  # [linux]\n        - xorg-libxcursor  # [linux]\n        - xorg-libxext  # [linux]\n        - xorg-libxfixes  # [linux]\n        - xorg-libxft  # [linux]\n        - xorg-libxpm  # [linux]\n        - xrootd\n        - xz\n        # FIXME: The generated allDict.cxx.pch is dependent on version of the C++ headers used\n        - {{ pin_compatible('libcxx', min_pin='x', max_pin='x') }}\n        - xxhash\n        - zlib\n      run:\n        # FIXME: Required to ensure a consistent etc/allDict.cxx.pch\n        - {{ pin_compatible('libcxx', min_pin='x', max_pin='x') }}\n        - python\n        - {{ compiler('c') }}\n        - {{ compiler('cxx') }}\n        - {{ compiler('fortran') }}\n        - {{ pin_compatible('xxhash', max_pin='x.x.x') }}\n      run_constrained:\n        # Items listed here conflict with ROOT\n        # FIXME Add support in ROOT for building with an external cling\n        - cling 9999\n        - root5 9999\n    test:\n      commands:\n        - echo \"Tested in other outputs\"\n\n  - name: root-binaries\n    build:\n      number: {{ build_number }}\n      string: py{{ CONDA_PY }}h{{ PKG_HASH }}_{{ build_number }}\n      skip: True  # [win]\n      script:\n        - set -euxo pipefail\n        # Copy the executables back into ${PREFIX}/bin\n        # This is done to avoid users getting broken binaries from root_base\n        - mkdir -p ${PREFIX}/bin\n        - ls ${PREFIX}/bin/\n        - cp -rp ${SRC_DIR}/root-binaries/* ${PREFIX}/bin/\n        - ls ${PREFIX}/bin/\n    requirements:\n      build:\n        - {{ compiler('c') }}\n        - {{ compiler('cxx') }}\n        - {{ compiler('fortran') }}\n        - cmake\n        - git\n        - pkg-config\n        - sed\n        - make\n        # Required for OpenGL support\n        # See https://conda-forge.org/docs/maintainer/knowledge_base.html?highlight=cdt#libgl\n        - {{ cdt('mesa-libgl-devel') }}  # [linux]\n        - {{ cdt('mesa-dri-drivers') }}  # [linux]\n        - {{ cdt('libselinux') }}  # [linux]\n        - {{ cdt('libxdamage') }}  # [linux]\n        - {{ cdt('libxxf86vm') }}  # [linux]\n      # Have to copy the host dependencies in order to be able to also install root_base\n      host:\n        - libblas\n        - libcblas\n        - {{ compiler('c') }}  # [linux]\n        - {{ compiler('cxx') }}  # [linux]\n        - {{ compiler('fortran') }}  # [linux]\n        - numpy\n        - afterimage\n        - cfitsio\n        # These not required as they're are statically linked in libCling. They also cannot\n        # be installed in the same environment as root_base due to the compiler constraint\n        # - clangdev ={{ clang_version }}\n        # - clang_variant * {{ clang_patches_version }}\n        # - llvmdev ==5\n        - davix\n        - fftw\n        - freetype\n        - ftgl\n        - gdk-pixbuf\n        - giflib\n        - glew\n        - gl2ps\n        - graphviz\n        - gsl\n        - krb5  # [osx]\n        - libglu  # [linux]\n        - libpng\n        - librsvg\n        - libtiff\n        - libxml2\n        - lz4-c\n        # - mysql\n        - openssl\n        - pcre\n        # - postgresql\n        - pythia8\n        - python\n        - qt\n        - sqlite\n        - tbb\n        - tbb-devel\n        - vdt\n        - xorg-libx11  # [linux]\n        - xorg-libxau  # [linux]\n        - xorg-libxcursor  # [linux]\n        - xorg-libxext  # [linux]\n        - xorg-libxfixes  # [linux]\n        - xorg-libxft  # [linux]\n        - xorg-libxpm  # [linux]\n        - xrootd\n        - xz\n        # FIXME: The generated allDict.cxx.pch is dependent on version of the C++ headers used\n        - {{ pin_compatible('libcxx', min_pin='x', max_pin='x') }}\n        - {{ pin_subpackage('root_base', exact=True) }}\n        - xxhash\n        - zlib\n      run:\n        - {{ pin_subpackage('root_base', exact=True) }}\n        - python\n        - {{ pin_compatible('xxhash', max_pin='x.x.x') }}\n    test:\n      files:\n        - test.cpp\n      requires:\n        - root-dependencies {{ version }} *_{{ build_number }}\n      commands: {{- test_commands() }}\n\n  - name: root\n    build:\n      number: {{ build_number }}\n      string: py{{ CONDA_PY }}h{{ PKG_HASH }}_{{ build_number }}\n      skip: True  # [win]\n      script:\n        - set -euxo pipefail\n        - pwd\n        - ls\n        - echo \"Minimal build script is required for conda to set RECIPE_DIR\"\n    requirements:\n      # Include the build dependencies and python to ensure the build string is correct\n      build:\n        - {{ compiler('c') }}\n        - {{ compiler('cxx') }}\n        - {{ compiler('fortran') }}\n        - cmake\n        - git\n        - pkg-config\n        - sed\n        - make\n        # Required for OpenGL support\n        # See https://conda-forge.org/docs/maintainer/knowledge_base.html?highlight=cdt#libgl\n        - {{ cdt('mesa-libgl-devel') }}  # [linux]\n        - {{ cdt('mesa-dri-drivers') }}  # [linux]\n        - {{ cdt('libselinux') }}  # [linux]\n        - {{ cdt('libxdamage') }}  # [linux]\n        - {{ cdt('libxxf86vm') }}  # [linux]\n      host:\n        - python\n      run:\n        - python\n        - compilers  # This package is hostile to how conda-build manages compilers\n        - metakernel\n        - notebook\n        - {{ pin_subpackage('root_base', exact=True) }}\n        - {{ pin_subpackage('root-binaries', exact=True) }}\n        - {{ pin_subpackage('root-dependencies', exact=True) }}\n    test:\n      files:\n        - test.cpp\n      requires:\n        - ipython\n      imports:\n        - ROOT\n        - JupyROOT\n      commands: {{- test_commands()  }}\n        - ipython -c 'import JsMVA'\n        # This command only works if the compilers are available\n        - root -l -b -q -x test.cpp++\n\nabout:\n  home: https://root.cern/\n  license: LGPL-2.1\n  license_family: LGPL\n  license_file: root-source/LICENSE\n  doc_url: https://root.cern/documentation\n  dev_url: https://github.com/root-project/root/\n  summary: |\n      ROOT is a modular scientific software toolkit. It provides all the functionalities needed to deal with big data\n      processing, statistical analysis, visualisation and storage. It is mainly written in C++ but integrated with other\n      languages such as Python and R.\n  description: |\n      Almost everything in ROOT should be supported in this Conda package; ROOT was built with lots of options turned\n      on. Here are a few things to try:\n\n      * `root`: you can start up a session and see the splash screen; Control-D to exit.\n      * `python` followed by `import ROOT` will load PyROOT.\n      * `root --notebook` will start a notebook server with a ROOT kernel choice.\n      * `rootbrowse` will open a TBrowser session so you can look through files.\n      * `root -l -q $ROOTSYS/tutorials/dataframe/df013_InspectAnalysis.C` will run a DataFrame example with an animated plot.\n      * `root -b -q -l -n -e \"std::cout << TROOT::GetTutorialDir() << std::endl;\"` will print the tutorial dir.\n      * `root -b -l -q -e 'std::cout << (float) TPython::Eval(\"1+1\") << endl;'` will run Python from C++ ROOT.\n\n      See the post [here](https://iscinumpy.gitlab.io/post/root-conda/) for more information about using this Conda package.\n\n      The ROOT package will prepare the required compilers. Everything in Conda is symlinked into\n      `$CONDA_PREFIX` if you build things by hand; tools like CMake should find it automatically. The `thisroot.*`\n      scripts should not be used and are not provided. Graphics, `rootbrowse`, etc. all should work. OpenGL is enabled.\n\n      There is also a `root_base` package, with minimal dependecies, that libraries should depend on this to avoid\n      having a runtime dependency on the `compilers` package. `root-dependencies` and `root-binaries` are also available. In most cases users should use the `root` package directly, since it adds both of these, along with compilers, Jupyter, and a few other things to facilitate using ROOT or PyROOT.\n\n      ROOT was built with and will report `-std=c++17` from `root-config`.\n\nextra:\n  recipe-maintainers:\n    - chrisburr\n    - henryiii\n    - bluehood\n    - egpbos\n",
  "req":{
   "__set__":true,
   "elements":[
@@ -1560,9 +1593,11 @@
    "fftw",
    "fortran_compiler_stub",
    "freetype",
+   "ftgl",
    "gdk-pixbuf",
    "giflib",
    "git",
+   "gl2ps",
    "glew",
    "graphviz",
    "gsl",
@@ -1600,7 +1635,9 @@
    "xorg-libxft",
    "xorg-libxpm",
    "xrootd",
-   "xz"
+   "xxhash",
+   "xz",
+   "zlib"
   ]
  },
  "requirements":{
@@ -1632,8 +1669,10 @@
     "fftw",
     "fortran_compiler_stub",
     "freetype",
+    "ftgl",
     "gdk-pixbuf",
     "giflib",
+    "gl2ps",
     "glew",
     "graphviz",
     "gsl",
@@ -1666,7 +1705,9 @@
     "xorg-libxft",
     "xorg-libxpm",
     "xrootd",
-    "xz"
+    "xxhash",
+    "xz",
+    "zlib"
    ]
   },
   "run":{
@@ -1680,6 +1721,7 @@
     "fftw",
     "fortran_compiler_stub",
     "gdk-pixbuf",
+    "gl2ps",
     "glew",
     "graphviz",
     "libglu",
@@ -1729,7 +1771,7 @@
     "afterimage",
     "c_compiler_stub",
     "cfitsio",
-    "clang_variant * cling_6.18.00",
+    "clang_variant * root_20191220",
     "clangdev =5.0.0",
     "compatible_pin_stub",
     "cxx_compiler_stub",
@@ -1737,8 +1779,10 @@
     "fftw",
     "fortran_compiler_stub",
     "freetype",
+    "ftgl",
     "gdk-pixbuf",
     "giflib",
+    "gl2ps",
     "glew",
     "graphviz",
     "gsl",
@@ -1771,7 +1815,9 @@
     "xorg-libxft",
     "xorg-libxpm",
     "xrootd",
-    "xz"
+    "xxhash",
+    "xz",
+    "zlib"
    ]
   },
   "run":{
@@ -1785,6 +1831,7 @@
     "fftw",
     "fortran_compiler_stub",
     "gdk-pixbuf",
+    "gl2ps",
     "glew",
     "graphviz",
     "libglu",
@@ -1807,10 +1854,10 @@
    "__set__":true,
    "elements":[
     "ipython",
-    "root-dependencies 6.18.04 *_28"
+    "root-dependencies 6.20.0 *_0"
    ]
   }
  },
  "url":"https://github.com/root-project/root/archive/v6-18-00.tar.gz",
- "version":"6.18.04"
+ "version":"6.20.0"
 }
