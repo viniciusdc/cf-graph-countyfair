@@ -333,7 +333,7 @@
   "build":{
    "noarch":"python",
    "number":"0",
-   "script":" -m pip install . --no-deps --ignore-installed --no-cache-dir -vvv"
+   "script":"-m pip install . --no-deps --ignore-installed --no-cache-dir -vvv"
   },
   "extra":{
    "recipe-maintainers":[
@@ -344,42 +344,45 @@
   },
   "package":{
    "name":"chaospy",
-   "version":"3.0.12"
+   "version":"3.2.4"
   },
   "requirements":{
-   "build":[
-    "python",
-    "setuptools",
+   "host":[
+    "python >=3.5",
+    "poetry",
     "pip",
-    "python",
-    "setuptools",
+    "python >=3.5",
+    "poetry",
     "pip",
-    "python",
-    "setuptools",
+    "python >=3.5",
+    "poetry",
     "pip"
    ],
    "run":[
-    "python",
+    "python >=3.5",
     "networkx",
     "numpy",
     "scipy",
     "scikit-learn",
-    "python",
+    "numpoly",
+    "python >=3.5",
     "networkx",
     "numpy",
     "scipy",
     "scikit-learn",
-    "python",
+    "numpoly",
+    "python >=3.5",
     "networkx",
     "numpy",
     "scipy",
-    "scikit-learn"
+    "scikit-learn",
+    "numpoly"
    ]
   },
   "source":{
-   "fn":"chaospy-3.0.12.tar.gz",
-   "sha256":"751955ffa77857e4409a8d233bf7b4f47b1dbf564f18ec27e3c8ed2457559462",
-   "url":"https://github.com/jonathf/chaospy/archive/v3.0.12.tar.gz"
+   "fn":"chaospy-3.2.4.tar.gz",
+   "sha256":"4a6bf09374002f853e56d3600efc198160a51c7c857c56334c163f6c40d3f8a1",
+   "url":"https://github.com/jonathf/chaospy/archive/v3.2.4.tar.gz"
   },
   "test":{
    "commands":[
@@ -407,36 +410,38 @@
  "name":"chaospy",
  "new_version":"3.2.4",
  "pinning_version":"2020.02.20",
- "raw_meta_yaml":"{% set version = \"3.0.12\" %}\n\npackage:\n  name: chaospy\n  version: {{ version }}\n\nsource:\n  fn: chaospy-{{ version }}.tar.gz\n  url: https://github.com/jonathf/chaospy/archive/v{{ version }}.tar.gz\n  sha256: 751955ffa77857e4409a8d233bf7b4f47b1dbf564f18ec27e3c8ed2457559462\n\nbuild:\n  number: 0\n  noarch: python\n  script: \"{{ PYTHON }} -m pip install . --no-deps --ignore-installed --no-cache-dir -vvv\"\n\nrequirements:\n  build:\n    - python\n    - setuptools\n    - pip\n  run:\n    - python\n    - networkx\n    - numpy\n    - scipy\n    - scikit-learn\n\ntest:\n  imports:\n    - chaospy\n  source_files:\n    - tests\n  requires:\n    - pytest-runner\n  commands:\n    - py.test\n\nabout:\n  home: https://github.com/jonathf/chaospy\n  license: BSD-3-Clause\n  license_family: BSD\n  license_file: LICENSE.txt\n  summary: Toolbox for performing uncertainty quantification\n\nextra:\n  recipe-maintainers:\n    - jschueller\n",
+ "raw_meta_yaml":"{% set version = \"3.2.4\" %}\n\npackage:\n  name: chaospy\n  version: {{ version }}\n\nsource:\n  fn: chaospy-{{ version }}.tar.gz\n  url: https://github.com/jonathf/chaospy/archive/v{{ version }}.tar.gz\n  sha256: 4a6bf09374002f853e56d3600efc198160a51c7c857c56334c163f6c40d3f8a1\n\nbuild:\n  number: 0\n  noarch: python\n  script: {{ PYTHON }} -m pip install . --no-deps --ignore-installed --no-cache-dir -vvv\n\nrequirements:\n  host:\n    - python >=3.5\n    - poetry\n    - pip\n  run:\n    - python >=3.5\n    - networkx\n    - numpy\n    - scipy\n    - scikit-learn\n    - numpoly\n\ntest:\n  imports:\n    - chaospy\n  source_files:\n    - tests\n  requires:\n    - pytest-runner\n  commands:\n    - py.test\n\nabout:\n  home: https://github.com/jonathf/chaospy\n  license: BSD-3-Clause\n  license_family: BSD\n  license_file: LICENSE.txt\n  summary: Toolbox for performing uncertainty quantification\n\nextra:\n  recipe-maintainers:\n    - jschueller\n",
  "req":{
   "__set__":true,
   "elements":[
    "networkx",
+   "numpoly",
    "numpy",
    "pip",
+   "poetry",
    "python",
    "scikit-learn",
-   "scipy",
-   "setuptools"
+   "scipy"
   ]
  },
  "requirements":{
   "build":{
    "__set__":true,
-   "elements":[
-    "pip",
-    "python",
-    "setuptools"
-   ]
+   "elements":[]
   },
   "host":{
    "__set__":true,
-   "elements":[]
+   "elements":[
+    "pip",
+    "poetry",
+    "python"
+   ]
   },
   "run":{
    "__set__":true,
    "elements":[
     "networkx",
+    "numpoly",
     "numpy",
     "python",
     "scikit-learn",
@@ -455,22 +460,23 @@
  "total_requirements":{
   "build":{
    "__set__":true,
-   "elements":[
-    "pip",
-    "python",
-    "setuptools"
-   ]
+   "elements":[]
   },
   "host":{
    "__set__":true,
-   "elements":[]
+   "elements":[
+    "pip",
+    "poetry",
+    "python >=3.5"
+   ]
   },
   "run":{
    "__set__":true,
    "elements":[
     "networkx",
+    "numpoly",
     "numpy",
-    "python",
+    "python >=3.5",
     "scikit-learn",
     "scipy"
    ]
@@ -483,5 +489,5 @@
   }
  },
  "url":"https://github.com/jonathf/chaospy/archive/v3.0.11.tar.gz",
- "version":"3.0.12"
+ "version":"3.2.4"
 }

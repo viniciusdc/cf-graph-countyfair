@@ -54,9 +54,6 @@
  ],
  "bad":false,
  "conda-forge.yml":{
-  "compiler_stack":"comp7",
-  "max_py_ver":"37",
-  "max_r_ver":"35",
   "provider":{
    "win":"azure"
   }
@@ -73,7 +70,7 @@
   },
   "build":{
    "merge_build_host":true,
-   "number":"1002",
+   "number":"0",
    "rpaths":[
     "lib/R/lib/",
     "lib/",
@@ -113,7 +110,7 @@
   },
   "package":{
    "name":"r-uuid",
-   "version":"0.1_2"
+   "version":"0.1_4"
   },
   "requirements":{
    "build":[
@@ -151,15 +148,15 @@
    ]
   },
   "source":{
-   "fn":"uuid_0.1-2.tar.gz",
-   "sha256":"dd71704dc336b0857981b92a75ed9877d4ca47780b1682def28839304cd3b1be",
+   "fn":"uuid_0.1-4.tar.gz",
+   "sha256":"98e0249dda17434bfa209c2058e9911e576963d4599be9f7ea946e664f8ca93e",
    "url":[
-    "https://cran.r-project.org/src/contrib/uuid_0.1-2.tar.gz",
-    "https://cran.r-project.org/src/contrib/Archive/uuid/uuid_0.1-2.tar.gz",
-    "https://cran.r-project.org/src/contrib/uuid_0.1-2.tar.gz",
-    "https://cran.r-project.org/src/contrib/Archive/uuid/uuid_0.1-2.tar.gz",
-    "https://cran.r-project.org/src/contrib/uuid_0.1-2.tar.gz",
-    "https://cran.r-project.org/src/contrib/Archive/uuid/uuid_0.1-2.tar.gz"
+    "https://cran.r-project.org/src/contrib/uuid_0.1-4.tar.gz",
+    "https://cran.r-project.org/src/contrib/Archive/uuid/uuid_0.1-4.tar.gz",
+    "https://cran.r-project.org/src/contrib/uuid_0.1-4.tar.gz",
+    "https://cran.r-project.org/src/contrib/Archive/uuid/uuid_0.1-4.tar.gz",
+    "https://cran.r-project.org/src/contrib/uuid_0.1-4.tar.gz",
+    "https://cran.r-project.org/src/contrib/Archive/uuid/uuid_0.1-4.tar.gz"
    ]
   },
   "test":{
@@ -173,7 +170,7 @@
  "name":"r-uuid",
  "new_version":"0.1_4",
  "pinning_version":"2020.02.20",
- "raw_meta_yaml":"{% set version = '0.1-2' %}\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-uuid\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  fn: uuid_{{ version }}.tar.gz\n  url:\n    - {{ cran_mirror }}/src/contrib/uuid_{{ version }}.tar.gz\n    - {{ cran_mirror }}/src/contrib/Archive/uuid/uuid_{{ version }}.tar.gz\n  sha256: dd71704dc336b0857981b92a75ed9877d4ca47780b1682def28839304cd3b1be\n\nbuild:\n  merge_build_host: True  # [win]\n  number: 1002\n  skip: true  # [win32]\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - {{ compiler('c') }}        # [not win]\n    - {{ compiler('m2w64_c') }}        # [win]\n    - {{posix}}filesystem        # [win]\n    - {{posix}}sed               # [win]\n    - {{posix}}grep              # [win]\n    - {{posix}}autoconf\n    - {{posix}}automake          # [not win]\n    - {{posix}}automake-wrapper  # [win]\n    - {{posix}}pkg-config\n    - {{posix}}make\n    - {{posix}}coreutils         # [win]\n    - {{posix}}zip               # [win]\n  host:\n    - r-base\n  run:\n    - r-base\n    - {{native}}gcc-libs         # [win]\n\ntest:\n  commands:\n    - $R -e \"library('uuid')\"           # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('uuid')\\\"\"  # [win]\n\nabout:\n  home: http://www.rforge.net/uuid\n  license: MIT\n  license_file: LICENSE\n  summary: Tools for generating and handling of UUIDs (Universally Unique Identifiers).\n  license_family: MIT\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n    - ocefpaf\n    - johanneskoester\n    - bgruening\n    - daler\n    - jdblischak\n    - cbrueffer\n    - dbast\n",
+ "raw_meta_yaml":"{% set version = \"0.1-4\" %}\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-uuid\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  fn: uuid_{{ version }}.tar.gz\n  url:\n    - {{ cran_mirror }}/src/contrib/uuid_{{ version }}.tar.gz\n    - {{ cran_mirror }}/src/contrib/Archive/uuid/uuid_{{ version }}.tar.gz\n  sha256: 98e0249dda17434bfa209c2058e9911e576963d4599be9f7ea946e664f8ca93e\n\nbuild:\n  merge_build_host: true  # [win]\n  number: 0\n  skip: true  # [win32]\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - {{ compiler('c') }}        # [not win]\n    - {{ compiler('m2w64_c') }}        # [win]\n    - {{posix}}filesystem        # [win]\n    - {{posix}}sed               # [win]\n    - {{posix}}grep              # [win]\n    - {{posix}}autoconf\n    - {{posix}}automake          # [not win]\n    - {{posix}}automake-wrapper  # [win]\n    - {{posix}}pkg-config\n    - {{posix}}make\n    - {{posix}}coreutils         # [win]\n    - {{posix}}zip               # [win]\n  host:\n    - r-base\n  run:\n    - r-base\n    - {{native}}gcc-libs         # [win]\n\ntest:\n  commands:\n    - $R -e \"library('uuid')\"           # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('uuid')\\\"\"  # [win]\n\nabout:\n  home: http://www.rforge.net/uuid\n  license: MIT\n  license_file: LICENSE\n  summary: Tools for generating and handling of UUIDs (Universally Unique Identifiers).\n  license_family: MIT\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n    - ocefpaf\n    - johanneskoester\n    - bgruening\n    - daler\n    - jdblischak\n    - cbrueffer\n    - dbast\n",
  "req":{
   "__set__":true,
   "elements":[
@@ -275,5 +272,5 @@
   "https://cran.r-project.org/src/contrib/uuid_0.1-2.tar.gz",
   "https://cran.r-project.org/src/contrib/Archive/uuid/uuid_0.1-2.tar.gz"
  ],
- "version":"0.1_2"
+ "version":"0.1_4"
 }
