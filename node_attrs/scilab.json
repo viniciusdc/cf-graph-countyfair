@@ -124,6 +124,23 @@
     "migrator_version",
     "name"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/380590104.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"Version",
+    "migrator_version":0,
+    "version":"6.1.0"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "version"
+   ]
   }
  ],
  "bad":false,
@@ -262,8 +279,8 @@
   }
  },
  "name":"scilab",
- "new_version":"6.0.2",
- "pinning_version":"2019.12.02",
+ "new_version":"6.1.0",
+ "pinning_version":"2020.02.20",
  "raw_meta_yaml":"{% set name = \"scilab\" %}\n{% set version = \"6.0.2\" %}\n{% set sha256 = \"064b2a4cc5b414500bbc23c91197610e2b1f18b481f094c2b85f759924d7ffe6\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  fn: {{ name }}-{{ version }}.tar.gz\n  url: https://github.com/opencollab/scilab/archive/{{ version }}.tar.gz\n  sha256: {{ sha256 }}\n  patches:\n    - 0001-Disable-tcl-tk-version-check.patch\n\nbuild:\n  number: 2\n  skip: True  # [not linux]\n\nrequirements:\n  build:\n    - {{ compiler('cxx') }}\n    - {{ compiler('fortran') }}\n    - python\n  host:\n    - libblas\n    - libcblas\n    - suitesparse\n    - arpack\n    - ocaml\n    - hdf5\n    - eigen\n    - fftw\n    - tk\n    - xorg-libx11\n    - ncurses\n    - pcre\n    - zlib\n    - xz\n    - libiconv\n    - icu\n    - libxml2\n    - libcurl\n  run:\n    # Missing run_exports\n    - {{ pin_compatible('arpack', max_pin='x.x') }}\n    - {{ pin_compatible('fftw', max_pin='x.x') }}\n    - {{ pin_compatible('openblas', max_pin='x.x') }}\n    - {{ pin_compatible('suitesparse', max_pin='x.x') }}\n    - {{ pin_compatible('icu', max_pin='x.x') }}\n    - {{ pin_compatible('ncurses', max_pin='x.x.x') }}\n\ntest:\n  commands:\n    - scilab-cli -version  # [unix]\n\nabout:\n  home: https://www.scilab.org/\n  license: GPL-2\n  license_family: GPL\n  license_file: scilab/COPYING\n  summary: 'The Scilab programming language.'\n  description: 'Scilab is a  free and open-source, cross-platform numerical computational package and a high-level, numerically oriented programming language.'\n  doc_url: https://wiki.scilab.org/Documentation\n  dev_url: https://wiki.scilab.org/GetInvolved\n\nextra:\n  recipe-maintainers:\n    - SylvainCorlay\n",
  "req":{
   "__set__":true,
@@ -335,7 +352,7 @@
    "elements":[]
   }
  },
- "smithy_version":"3.6.3",
+ "smithy_version":"3.6.8",
  "strong_exports":false,
  "total_requirements":{
   "build":{
