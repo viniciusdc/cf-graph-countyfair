@@ -426,7 +426,7 @@
   },
   "build":{
    "noarch":"python",
-   "number":"0",
+   "number":"1",
    "script":"-m pip install . --no-deps -vv"
   },
   "extra":{
@@ -451,24 +451,24 @@
   },
   "requirements":{
    "host":[
-    "python",
+    "python >=3.6",
     "pip",
     "setuptools",
     "setuptools_scm",
     "setuptools_scm_git_archive",
-    "python",
+    "python >=3.6",
     "pip",
     "setuptools",
     "setuptools_scm",
     "setuptools_scm_git_archive",
-    "python",
+    "python >=3.6",
     "pip",
     "setuptools",
     "setuptools_scm",
     "setuptools_scm_git_archive"
    ],
    "run":[
-    "python",
+    "python >=3.6",
     "numpy >=1.4.1",
     "pillow",
     "pyresample >=1.10.3",
@@ -484,7 +484,7 @@
     "pyspectral",
     "pyorbital",
     "zarr",
-    "python",
+    "python >=3.6",
     "numpy >=1.4.1",
     "pillow",
     "pyresample >=1.10.3",
@@ -500,7 +500,7 @@
     "pyspectral",
     "pyorbital",
     "zarr",
-    "python",
+    "python >=3.6",
     "numpy >=1.4.1",
     "pillow",
     "pyresample >=1.10.3",
@@ -528,50 +528,24 @@
     "satpy.composites",
     "satpy.enhancements",
     "satpy.readers",
-    "satpy.tests",
-    "satpy.tests.compositor_tests",
-    "satpy.tests.reader_tests",
-    "satpy.tests.writer_tests",
     "satpy.writers",
     "satpy",
     "satpy.composites",
     "satpy.enhancements",
     "satpy.readers",
-    "satpy.tests",
-    "satpy.tests.compositor_tests",
-    "satpy.tests.reader_tests",
-    "satpy.tests.writer_tests",
     "satpy.writers",
     "satpy",
     "satpy.composites",
     "satpy.enhancements",
     "satpy.readers",
-    "satpy.tests",
-    "satpy.tests.compositor_tests",
-    "satpy.tests.reader_tests",
-    "satpy.tests.writer_tests",
     "satpy.writers"
-   ],
-   "requires":[
-    "behave",
-    "imageio",
-    "libtiff",
-    "pyhdf",
-    "behave",
-    "imageio",
-    "libtiff",
-    "pyhdf",
-    "behave",
-    "imageio",
-    "libtiff",
-    "pyhdf"
    ]
   }
  },
  "name":"satpy",
  "new_version":"0.20.0",
  "pinning_version":"2020.02.20",
- "raw_meta_yaml":"{% set name = \"satpy\" %}\n{% set version = \"0.20.0\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz\n  sha256: 13a30747589ed9ea5e4c60a51b6819b72ed1015696b5106b48390bfd4bd5b6a3\n\nbuild:\n  number: 0\n  noarch: python\n  skip: true  # [py<36]\n  script: {{ PYTHON }} -m pip install . --no-deps -vv\n\nrequirements:\n  host:\n    - python\n    - pip\n    - setuptools\n    - setuptools_scm\n    - setuptools_scm_git_archive\n  run:\n    - python\n    - numpy >=1.4.1\n    - pillow\n    - pyresample >=1.10.3\n    - trollsift\n    - trollimage >=1.5.1\n    - pykdtree\n    - six\n    - pyyaml\n    - xarray >=0.10.1\n    - dask >=0.17.1\n    - h5py\n    - netcdf4\n    - pyspectral\n    - pyorbital\n    - zarr\n\ntest:\n  imports:\n    - satpy\n    - satpy.composites\n    - satpy.enhancements\n    - satpy.readers\n    - satpy.tests\n    - satpy.tests.compositor_tests\n    - satpy.tests.reader_tests\n    - satpy.tests.writer_tests\n    - satpy.writers\n  requires:\n    - behave\n    - imageio\n    - libtiff\n    - pyhdf\n    - mock  # [py==27]\n\nabout:\n  home: https://github.com/pytroll/satpy\n  license: GPL-3.0\n  license_family: GPL3\n  license_file: LICENSE.txt\n  summary: Meteorological processing package\n  description: |\n    Python package for reading and manipulating meteorological remote\n    sensing data and writing it to various image and data file formats.\n  doc_url: http://satpy.readthedocs.io/en/latest/\n  dev_url: https://github.com/pytroll/satpy\n\nextra:\n  recipe-maintainers:\n    - djhoese\n    - mraspaud\n    - adybbroe\n    - pnuu\n",
+ "raw_meta_yaml":"{% set name = \"satpy\" %}\n{% set version = \"0.20.0\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz\n  sha256: 13a30747589ed9ea5e4c60a51b6819b72ed1015696b5106b48390bfd4bd5b6a3\n\nbuild:\n  number: 1\n  noarch: python\n  script: {{ PYTHON }} -m pip install . --no-deps -vv\n\nrequirements:\n  host:\n    - python >=3.6\n    - pip\n    - setuptools\n    - setuptools_scm\n    - setuptools_scm_git_archive\n  run:\n    - python >=3.6\n    - numpy >=1.4.1\n    - pillow\n    - pyresample >=1.10.3\n    - trollsift\n    - trollimage >=1.5.1\n    - pykdtree\n    - six\n    - pyyaml\n    - xarray >=0.10.1\n    - dask >=0.17.1\n    - h5py\n    - netcdf4\n    - pyspectral\n    - pyorbital\n    - zarr\n\ntest:\n  imports:\n    - satpy\n    - satpy.composites\n    - satpy.enhancements\n    - satpy.readers\n    - satpy.writers\n\nabout:\n  home: https://github.com/pytroll/satpy\n  license: GPL-3.0\n  license_family: GPL3\n  license_file: LICENSE.txt\n  summary: Meteorological processing package\n  description: |\n    Python package for reading and manipulating meteorological remote\n    sensing data and writing it to various image and data file formats.\n  doc_url: http://satpy.readthedocs.io/en/latest/\n  dev_url: https://github.com/pytroll/satpy\n\nextra:\n  recipe-maintainers:\n    - djhoese\n    - mraspaud\n    - adybbroe\n    - pnuu\n",
  "req":{
   "__set__":true,
   "elements":[
@@ -635,12 +609,7 @@
   },
   "test":{
    "__set__":true,
-   "elements":[
-    "behave",
-    "imageio",
-    "libtiff",
-    "pyhdf"
-   ]
+   "elements":[]
   }
  },
  "smithy_version":"3.6.8",
@@ -654,7 +623,7 @@
    "__set__":true,
    "elements":[
     "pip",
-    "python",
+    "python >=3.6",
     "setuptools",
     "setuptools_scm",
     "setuptools_scm_git_archive"
@@ -672,7 +641,7 @@
     "pyorbital",
     "pyresample >=1.10.3",
     "pyspectral",
-    "python",
+    "python >=3.6",
     "pyyaml",
     "six",
     "trollimage >=1.5.1",
@@ -683,12 +652,7 @@
   },
   "test":{
    "__set__":true,
-   "elements":[
-    "behave",
-    "imageio",
-    "libtiff",
-    "pyhdf"
-   ]
+   "elements":[]
   }
  },
  "url":"https://pypi.io/packages/source/s/satpy/satpy-0.16.1.tar.gz",
