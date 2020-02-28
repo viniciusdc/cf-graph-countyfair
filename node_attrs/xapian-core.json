@@ -167,7 +167,12 @@
    "summary":"Xapian is an Open Source Search Engine Library, written in C++."
   },
   "build":{
-   "number":"1",
+   "number":"2",
+   "run_exports":[
+    "subpackage_stub",
+    "subpackage_stub",
+    "subpackage_stub"
+   ],
    "script":"LDFLAGS=$LDFLAGS \\\n./configure \\\n--enable-static \\\n--enable-shared \\\n--disable-documentation \\\n--prefix=$PREFIX \\\nCXXFLAGS=-I$PREFIX/include\n\nmake -j ${CPU_COUNT}\nmake install prefix=$PREFIX\nrm -rf $PREFIX/share/doc/xapian-core\n",
    "skip":true
   },
@@ -214,7 +219,7 @@
  "name":"xapian-core",
  "new_version":"1.4.15",
  "pinning_version":"2020.02.20",
- "raw_meta_yaml":"{% set name = \"xapian-core\" %}\n{% set version = \"1.4.15\" %}\n\npackage:\n  name: {{ name }}\n  version: {{ version }}\n\nsource:\n  url: https://oligarchy.co.uk/xapian/{{ version }}/xapian-core-{{ version }}.tar.xz\n  sha256: b168e95918a01e014fb6a6cbce26e535f80da4d4791bfa5a0e0051fcb6f950ea\n\nbuild:\n  number: 1\n  skip: true  # [win]\n  script: |\n    LDFLAGS=$LDFLAGS \\\n    ./configure \\\n    --enable-static \\\n    --enable-shared \\\n    --disable-documentation \\\n    --prefix=$PREFIX \\\n    CXXFLAGS=-I$PREFIX/include\n\n    make -j ${CPU_COUNT}\n    make install prefix=$PREFIX\n    rm -rf $PREFIX/share/doc/xapian-core\n\nrequirements:\n  build:\n    - {{ compiler('cxx') }}\n  host:\n    - zlib\n\ntest:\n  commands:\n    - test -f ${PREFIX}/lib/libxapian.a\n    - test -f ${PREFIX}/lib/libxapian.so  # [linux]\n    - test -f ${PREFIX}/lib/libxapian.dylib  # [osx]\n    - xapian-config --cxxflags --libs  # command used by language bindings\n\nabout:\n  home: http://xapian.org\n  license: GPL-2.0+\n  license_family: GPL\n  license_file: COPYING\n  summary: Xapian is an Open Source Search Engine Library, written in C++.\n  description: |\n    Xapian is an Open Source search engine library which allows developers\n    to add advanced indexing and search facilities to their own applications.\n    It has built-in support for several families of weighting models and also\n    supports a rich set of boolean query operators.\n  doc_url: https://xapian.org/docs/\n  dev_url: https://xapian.org/bleeding\n\nextra:\n  recipe-maintainers:\n    - kohr-h\n",
+ "raw_meta_yaml":"{% set name = \"xapian-core\" %}\n{% set version = \"1.4.15\" %}\n\npackage:\n  name: {{ name }}\n  version: {{ version }}\n\nsource:\n  url: https://oligarchy.co.uk/xapian/{{ version }}/xapian-core-{{ version }}.tar.xz\n  sha256: b168e95918a01e014fb6a6cbce26e535f80da4d4791bfa5a0e0051fcb6f950ea\n\nbuild:\n  number: 2\n  skip: true  # [win]\n  script: |\n    LDFLAGS=$LDFLAGS \\\n    ./configure \\\n    --enable-static \\\n    --enable-shared \\\n    --disable-documentation \\\n    --prefix=$PREFIX \\\n    CXXFLAGS=-I$PREFIX/include\n\n    make -j ${CPU_COUNT}\n    make install prefix=$PREFIX\n    rm -rf $PREFIX/share/doc/xapian-core\n  run_exports:\n    - {{ pin_subpackage('xapian-core', max_pin='x.x.x') }}\n\nrequirements:\n  build:\n    - {{ compiler('cxx') }}\n  host:\n    - zlib\n\ntest:\n  commands:\n    - test -f ${PREFIX}/lib/libxapian.a\n    - test -f ${PREFIX}/lib/libxapian.so  # [linux]\n    - test -f ${PREFIX}/lib/libxapian.dylib  # [osx]\n    - xapian-config --cxxflags --libs  # command used by language bindings\n\nabout:\n  home: http://xapian.org\n  license: GPL-2.0+\n  license_family: GPL\n  license_file: COPYING\n  summary: Xapian is an Open Source Search Engine Library, written in C++.\n  description: |\n    Xapian is an Open Source search engine library which allows developers\n    to add advanced indexing and search facilities to their own applications.\n    It has built-in support for several families of weighting models and also\n    supports a rich set of boolean query operators.\n  doc_url: https://xapian.org/docs/\n  dev_url: https://xapian.org/bleeding\n\nextra:\n  recipe-maintainers:\n    - kohr-h\n",
  "req":{
   "__set__":true,
   "elements":[
