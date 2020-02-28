@@ -50,7 +50,12 @@
    "summary":"A physics engine for constrained multi-flexible-body dynamics"
   },
   "build":{
-   "number":"3",
+   "number":"4",
+   "run_exports":[
+    "subpackage_stub",
+    "subpackage_stub",
+    "subpackage_stub"
+   ],
    "skip":true
   },
   "extra":{
@@ -63,8 +68,119 @@
     "SylvainCorlay"
    ]
   },
+  "outputs":[
+   {
+    "name":"chrono",
+    "script":"clean_python.sh",
+    "test":{
+     "commands":[
+      "test -f ${PREFIX}/lib/libChronoEngine.${SHLIB_EXT}"
+     ]
+    }
+   },
+   {
+    "name":"pychrono",
+    "requirements":{
+     "build":[
+      "c_compiler_stub",
+      "cxx_compiler_stub",
+      "cmake",
+      "swig 3.0.12"
+     ],
+     "host":[
+      "subpackage_stub",
+      "python",
+      "eigen"
+     ],
+     "run":[
+      "subpackage_stub",
+      "python"
+     ]
+    },
+    "script":"py_install.sh",
+    "test":{
+     "imports":[
+      "pychrono"
+     ]
+    }
+   },
+   {
+    "name":"chrono",
+    "script":"clean_python.sh",
+    "test":{
+     "commands":[
+      "test -f ${PREFIX}/lib/libChronoEngine.${SHLIB_EXT}"
+     ]
+    }
+   },
+   {
+    "name":"pychrono",
+    "requirements":{
+     "build":[
+      "c_compiler_stub",
+      "cxx_compiler_stub",
+      "cmake",
+      "swig 3.0.12",
+      "llvm-openmp"
+     ],
+     "host":[
+      "subpackage_stub",
+      "python",
+      "eigen",
+      "llvm-openmp"
+     ],
+     "run":[
+      "subpackage_stub",
+      "python",
+      "llvm-openmp"
+     ]
+    },
+    "script":"py_install.sh",
+    "test":{
+     "imports":[
+      "pychrono"
+     ]
+    }
+   },
+   {
+    "name":"chrono",
+    "script":"clean_python.sh",
+    "test":{
+     "commands":[
+      "test -f ${PREFIX}/lib/libChronoEngine.${SHLIB_EXT}"
+     ]
+    }
+   },
+   {
+    "name":"pychrono",
+    "requirements":{
+     "build":[
+      "c_compiler_stub",
+      "cxx_compiler_stub",
+      "cmake",
+      "swig 3.0.12",
+      "libgomp"
+     ],
+     "host":[
+      "subpackage_stub",
+      "python",
+      "eigen"
+     ],
+     "run":[
+      "subpackage_stub",
+      "python"
+     ]
+    },
+    "script":"py_install.sh",
+    "test":{
+     "imports":[
+      "pychrono"
+     ]
+    }
+   }
+  ],
   "package":{
-   "name":"pychrono",
+   "name":"chrono",
    "version":"4.0.0"
   },
   "requirements":{
@@ -85,37 +201,29 @@
     "libgomp"
    ],
    "host":[
-    "python",
     "eigen",
     "python",
     "eigen",
-    "llvm-openmp",
-    "python",
-    "eigen"
-   ],
-   "run":[
-    "python",
     "python",
     "llvm-openmp",
+    "eigen",
     "python"
-   ]
+   ],
+   "run":null
   },
   "source":{
    "sha256":"803b5089e48334771f652f5bec79f95f2a42cfb02d2ffbaf8ad9e5dca2ba1886",
    "url":"https://github.com/projectchrono/chrono/archive/4.0.0.tar.gz"
-  },
-  "test":{
-   "imports":[
-    "pychrono",
-    "pychrono",
-    "pychrono"
-   ]
   }
  },
- "name":"pychrono",
+ "name":"chrono",
  "new_version":"5.0.0",
+ "outputs_names":[
+  "chrono",
+  "pychrono"
+ ],
  "pinning_version":"2020.02.20",
- "raw_meta_yaml":"{% set name = \"pychrono\" %}\n{% set version = \"4.0.0\" %}\n{% set build = 3 %}\n{% set sha256 = \"803b5089e48334771f652f5bec79f95f2a42cfb02d2ffbaf8ad9e5dca2ba1886\" %}\n\npackage:\n  name: {{ name }}\n  version: {{ version }}\n\nsource:\n  url: https://github.com/projectchrono/chrono/archive/{{ version }}.tar.gz\n  sha256: {{ sha256 }}\n\nbuild:\n  number: {{ build }}\n  skip: true  # [win or py2k]\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n    - cmake\n    - swig 3.0.12\n    - llvm-openmp  # [osx]\n    - libgomp      # [linux and not aarch64]\n  host:\n    - python\n    - eigen\n    - llvm-openmp  # [osx]\n  run:\n    - python\n    - llvm-openmp  # [osx]\n\ntest:\n  imports:\n     - pychrono\n\nabout:\n  home: https://github.com/projectchrono/chrono\n  license: BSD 3-Clause\n  license_family: BSD\n  license_file: LICENSE\n  summary: A physics engine for constrained multi-flexible-body dynamics\n\nextra:\n  recipe-maintainers:\n    - davidbrochart\n    - SylvainCorlay\n",
+ "raw_meta_yaml":"{% set name = \"chrono\" %}\n{% set version = \"4.0.0\" %}\n{% set build = 4 %}\n{% set sha256 = \"803b5089e48334771f652f5bec79f95f2a42cfb02d2ffbaf8ad9e5dca2ba1886\" %}\n\npackage:\n  name: {{ name }}\n  version: {{ version }}\n\nsource:\n  url: https://github.com/projectchrono/chrono/archive/{{ version }}.tar.gz\n  sha256: {{ sha256 }}\n\nbuild:\n  number: {{ build }}\n  skip: true  # [win or py2k]\n  run_exports:\n    - {{ pin_subpackage('chrono', max_pin='x.x' )}}\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n    - cmake\n    - swig 3.0.12\n    - llvm-openmp  # [osx]\n    - libgomp      # [linux and not aarch64]\n  host:\n    - eigen\n    - python\n    - llvm-openmp  # [osx]\n  run:\n    - llvm-openmp  # [osx]\n\noutputs:\n  - name: chrono\n    script: clean_python.sh\n    test:\n      commands:\n        - test -f ${PREFIX}/lib/libChronoEngine.${SHLIB_EXT}\n  - name: pychrono\n    script: py_install.sh\n    requirements:\n      build:\n        - {{ compiler('c') }}\n        - {{ compiler('cxx') }}\n        - cmake\n        - swig 3.0.12\n        - llvm-openmp  # [osx]\n        - libgomp      # [linux and not aarch64]\n      host:\n        - {{ pin_subpackage('chrono', exact=True) }}\n        - python\n        - eigen\n        - llvm-openmp  # [osx]\n      run:\n        - {{ pin_subpackage('chrono', exact=True) }}\n        - python\n        - llvm-openmp  # [osx]\n\n    test:\n      imports:\n        - pychrono\n\nabout:\n  home: https://github.com/projectchrono/chrono\n  license: BSD 3-Clause\n  license_family: BSD\n  license_file: LICENSE\n  summary: A physics engine for constrained multi-flexible-body dynamics\n\nextra:\n  recipe-maintainers:\n    - davidbrochart\n    - SylvainCorlay\n",
  "req":{
   "__set__":true,
   "elements":[
@@ -126,6 +234,7 @@
    "libgomp",
    "llvm-openmp",
    "python",
+   "subpackage_stub",
    "swig"
   ]
  },
@@ -148,7 +257,8 @@
     "eigen",
     "llvm-openmp",
     "openmp",
-    "python"
+    "python",
+    "subpackage_stub"
    ]
   },
   "run":{
@@ -157,7 +267,8 @@
     "ctng-compilers",
     "llvm-openmp",
     "openmp",
-    "python"
+    "python",
+    "subpackage_stub"
    ]
   },
   "test":{
@@ -184,14 +295,16 @@
    "elements":[
     "eigen",
     "llvm-openmp",
-    "python"
+    "python",
+    "subpackage_stub"
    ]
   },
   "run":{
    "__set__":true,
    "elements":[
     "llvm-openmp",
-    "python"
+    "python",
+    "subpackage_stub"
    ]
   },
   "test":{

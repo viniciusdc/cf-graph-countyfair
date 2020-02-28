@@ -205,6 +205,23 @@
     "migrator_version",
     "name"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/381478383.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"Version",
+    "migrator_version":0,
+    "version":"0.5.9"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "version"
+   ]
   }
  ],
  "bad":false,
@@ -278,8 +295,8 @@
   }
  },
  "name":"tomlkit",
- "new_version":"0.5.8",
- "pinning_version":"2019.11.01",
+ "new_version":"0.5.9",
+ "pinning_version":"2020.02.20",
  "raw_meta_yaml":"{% set version = \"0.5.8\" %}\n\npackage:\n  name: tomlkit\n  version: {{ version }}\n\nsource:\n  url: https://pypi.io/packages/source/t/tomlkit/tomlkit-{{ version }}.tar.gz\n  sha256: 32c10cc16ded7e4101c79f269910658cc2a0be5913f1252121c3cd603051c269\n\nbuild:\n  number: 0\n  script:\n    # Somehow, when pyproject.toml is present, it requires poetry on Windows.\n    # However, even with that dependency satisfied, we get:\n    # \"tomlkit cannot depend on itself\"\n    - del pyproject.toml  # [win]\n    - rm pyproject.toml  # [not win]\n    - \"{{ PYTHON }} -m pip install . --no-deps --ignore-installed -vvv\"\n\nrequirements:\n  host:\n    - pip\n    - python\n  run:\n    - python\n    - typing >=3.6,<4.0  # [py<35]\n    - enum34 >=1.1,<2.0  # [py27]\n    - functools32 >=3.2.3,<4.0.0  # [py27]\n\ntest:\n  imports:\n    - tomlkit\n\nabout:\n  home: https://github.com/sdispater/tomlkit\n  license: MIT\n  license_family: MIT\n  license_file: LICENSE\n  summary: Style preserving TOML library\n\nextra:\n  recipe-maintainers:\n    - ocefpaf\n",
  "req":{
   "__set__":true,
@@ -311,7 +328,7 @@
    "elements":[]
   }
  },
- "smithy_version":"3.6.1",
+ "smithy_version":"3.6.8",
  "strong_exports":false,
  "total_requirements":{
   "build":{
