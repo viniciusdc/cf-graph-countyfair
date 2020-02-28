@@ -104,7 +104,7 @@
   },
   "package":{
    "name":"galario",
-   "version":"1.2.1"
+   "version":"1.2.2"
   },
   "requirements":{
    "build":[
@@ -122,22 +122,22 @@
     "fftw"
    ],
    "host":[
-    "fftw",
     "python",
+    "fftw",
     "cython",
-    "numpy 1.11.*",
+    "numpy",
     "pytest",
     "scipy",
-    "fftw",
     "python",
+    "fftw",
     "cython",
-    "numpy 1.11.*",
+    "numpy",
     "pytest",
     "scipy",
-    "fftw",
     "python",
+    "fftw",
     "cython",
-    "numpy 1.11.*",
+    "numpy",
     "pytest",
     "scipy"
    ],
@@ -157,9 +157,8 @@
    ]
   },
   "source":{
-   "fn":"galario-1.2.1.tar.gz",
-   "sha256":"585fd37d5c06523cc1d6dfb516ae404a292520950081140e15d0ac56be6134d4",
-   "url":"https://github.com/mtazzari/galario/archive/v1.2.1.tar.gz"
+   "sha256":"51ef9d64bfc4a7f5d62371fa8b9d094838485114d582ec7d038d7821454a00c2",
+   "url":"https://github.com/mtazzari/galario/archive/v1.2.2.tar.gz"
   },
   "test":{
    "commands":[
@@ -168,11 +167,11 @@
     "cd python && py.test test_galario.py",
     "test -d ${PREFIX}/",
     "test ${PREFIX}/include/galario.h",
-    "test ${PREFIX}/lib/libgalario.dylib",
+    "test ${PREFIX}/lib/libgalario",
     "cd python && py.test test_galario.py",
     "test -d ${PREFIX}/",
     "test ${PREFIX}/include/galario.h",
-    "test ${PREFIX}/lib/libgalario.so",
+    "test ${PREFIX}/lib/libgalario",
     "cd python && py.test test_galario.py"
    ],
    "imports":[
@@ -196,9 +195,9 @@
   }
  },
  "name":"galario",
- "new_version":"1.2.1",
+ "new_version":"1.2.2",
  "pinning_version":"2019.11.01",
- "raw_meta_yaml":"{% set name = \"galario\" %}\n{% set version = \"1.2.1\" %}\n{% set github = \"https://github.com/mtazzari/galario\" %}\n{% set sha256 = \"585fd37d5c06523cc1d6dfb516ae404a292520950081140e15d0ac56be6134d4\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  fn: {{ name }}-{{ version }}.tar.gz\n  url: {{ github }}/archive/v{{ version }}.tar.gz\n  sha256: {{ sha256 }}\n\nbuild:\n  number: 1001\n  skip: true  # [win]\n\nrequirements:\n  build:\n    - cmake\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n    - fftw\n  host:\n    - fftw\n    - python\n    - cython\n    - numpy 1.11.*\n    - pytest\n    - scipy\n  run:\n    - fftw\n    - python\n    - {{ pin_compatible('numpy') }}\n    - scipy\n\ntest:\n  requires:\n    - pytest\n  imports:\n    - galario\n  source_files:\n    - python/test_galario.py\n    - python/utils.py\n  commands:\n    - test -d ${PREFIX}/\n    - test ${PREFIX}/include/galario.h\n    - test ${PREFIX}/lib/libgalario.so  # [linux]\n    - test ${PREFIX}/lib/libgalario.dylib  # [osx]\n    - cd python && py.test test_galario.py\n\nabout:\n  home: {{ github }}\n  license: LGPL-3.0\n  license_family: GPL\n  license_file: LICENSE\n  summary: 'Gpu Accelerated Library for Analysing Radio Interferometer Observations'\n  description: |\n    galario is a library that exploits the computing power of modern graphic\n    cards (GPUs) to accelerate the comparison of model predictions to radio\n    interferometer observations. Namely, it speeds up the computation of the\n    synthetic visibilities given a model image (or an axisymmetric brightness\n    profile) and their comparison to the observations.\n  doc_url: https://mtazzari.github.io/galario/\n  dev_url: {{ github }}\n\nextra:\n  recipe-maintainers:\n    - fredRos\n    - mtazzari\n",
+ "raw_meta_yaml":"{% set version = \"1.2.2\" %}\n\npackage:\n  name: galario\n  version: {{ version }}\n\nsource:\n  url: https://github.com/mtazzari/galario/archive/v{{ version }}.tar.gz\n  sha256: 51ef9d64bfc4a7f5d62371fa8b9d094838485114d582ec7d038d7821454a00c2\n\nbuild:\n  number: 1001\n  skip: true  # [win]\n\nrequirements:\n  build:\n    - cmake\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n    - fftw\n  host:\n    - python\n    - fftw\n    - cython\n    - numpy\n    - pytest\n    - scipy\n  run:\n    - fftw\n    - python\n    - {{ pin_compatible('numpy') }}\n    - scipy\n\ntest:\n  requires:\n    - pytest\n  imports:\n    - galario\n  source_files:\n    - python/test_galario.py\n    - python/utils.py\n  commands:\n    - test -d ${PREFIX}/\n    - test ${PREFIX}/include/galario.h\n    - test ${PREFIX}/lib/libgalario{{ SHLIB_EXT }}  # [not win]\n    - cd python && py.test test_galario.py\n\nabout:\n  home: https://github.com/mtazzari/galario\n  license: LGPL-3.0\n  license_family: GPL\n  license_file: LICENSE\n  summary: 'Gpu Accelerated Library for Analysing Radio Interferometer Observations'\n  description: |\n    galario is a library that exploits the computing power of modern graphic\n    cards (GPUs) to accelerate the comparison of model predictions to radio\n    interferometer observations. Namely, it speeds up the computation of the\n    synthetic visibilities given a model image (or an axisymmetric brightness\n    profile) and their comparison to the observations.\n  doc_url: https://mtazzari.github.io/galario/\n  dev_url: https://github.com/mtazzari/galario\n\nextra:\n  recipe-maintainers:\n    - fredRos\n    - mtazzari\n",
  "req":{
   "__set__":true,
   "elements":[
@@ -268,7 +267,7 @@
    "elements":[
     "cython",
     "fftw",
-    "numpy 1.11.*",
+    "numpy",
     "pytest",
     "python",
     "scipy"
@@ -291,5 +290,5 @@
   }
  },
  "url":"https://github.com/mtazzari/galario/archive/v1.2.1.tar.gz",
- "version":"1.2.1"
+ "version":"1.2.2"
 }
