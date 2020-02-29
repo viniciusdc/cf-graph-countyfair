@@ -77,20 +77,20 @@
    "entry_points":[
     "wingproj  = openmdao.devtools.wingproj:run_wing",
     "webview   = openmdao.utils.webview:webview_argv",
-    "run_test  = openmdao.devtools.run_test:run_test",
+    "run_om_test  = openmdao.devtools.run_test:run_test",
     "openmdao  = openmdao.utils.om:openmdao_cmd",
     "wingproj  = openmdao.devtools.wingproj:run_wing",
     "webview   = openmdao.utils.webview:webview_argv",
-    "run_test  = openmdao.devtools.run_test:run_test",
+    "run_om_test  = openmdao.devtools.run_test:run_test",
     "openmdao  = openmdao.utils.om:openmdao_cmd",
     "wingproj  = openmdao.devtools.wingproj:run_wing",
     "webview   = openmdao.utils.webview:webview_argv",
-    "run_test  = openmdao.devtools.run_test:run_test",
+    "run_om_test  = openmdao.devtools.run_test:run_test",
     "openmdao  = openmdao.utils.om:openmdao_cmd"
    ],
    "noarch":"python",
    "number":"0",
-   "script":" -m pip install . -vv"
+   "script":"-m pip install . -vv"
   },
   "extra":{
    "recipe-maintainers":[
@@ -101,7 +101,7 @@
   },
   "package":{
    "name":"openmdao",
-   "version":"2.9.1"
+   "version":"2.10.0"
   },
   "requirements":{
    "host":[
@@ -117,43 +117,46 @@
     "numpy",
     "pydoe2",
     "pyparsing",
+    "requests",
     "scipy",
     "six",
+    "urllib3 <1.25.0a0",
     "networkx >=2.0",
     "numpy",
     "pydoe2",
     "pyparsing",
+    "requests",
     "scipy",
     "six",
+    "urllib3 <1.25.0a0",
     "networkx >=2.0",
     "numpy",
     "pydoe2",
     "pyparsing",
+    "requests",
     "scipy",
-    "six"
+    "six",
+    "urllib3 <1.25.0a0"
    ]
   },
   "source":{
-   "sha256":"c20de93c9c3841a6306f15dd43117fcd54ae0ee7ae545b657d6fd50dac70b605",
-   "url":"https://pypi.io/packages/source/o/openmdao/openmdao-2.9.1.tar.gz"
+   "sha256":"5d239ab55f909b33a4db5c952dfd3761da3ab40ecfa3936a32b071b03a984f9b",
+   "url":"https://pypi.io/packages/source/o/openmdao/openmdao-2.10.0.tar.gz"
   },
   "test":{
    "commands":[
+    "pip check",
     "openmdao --help",
     "webview --help",
     "wingproj --help",
-    "copy %RECIPE_DIR%\\.testflo .",
-    "testflo --config .testflo --numprocs 1 openmdao -v --pre_announce",
+    "pip check",
     "openmdao --help",
     "webview --help",
     "wingproj --help",
-    "cp $RECIPE_DIR/.testflo .",
-    "testflo --config .testflo --numprocs 1 openmdao -v --pre_announce",
+    "pip check",
     "openmdao --help",
     "webview --help",
-    "wingproj --help",
-    "cp $RECIPE_DIR/.testflo .",
-    "testflo --config .testflo --numprocs 1 openmdao -v --pre_announce"
+    "wingproj --help"
    ],
    "imports":[
     "openmdao",
@@ -161,31 +164,37 @@
     "openmdao"
    ],
    "requires":[
-    "coverage",
     "parameterized",
     "numpydoc >=0.9.1",
-    "pycodestyle ==2.3.1",
+    "pycodestyle >=2.4.0",
     "pydocstyle ==2.0.0",
-    "testflo >=1.3.4",
-    "coverage",
+    "testflo >=1.3.6",
+    "bokeh >=1.3.4",
+    "colorama",
+    "pip",
     "parameterized",
     "numpydoc >=0.9.1",
-    "pycodestyle ==2.3.1",
+    "pycodestyle >=2.4.0",
     "pydocstyle ==2.0.0",
-    "testflo >=1.3.4",
-    "coverage",
+    "testflo >=1.3.6",
+    "bokeh >=1.3.4",
+    "colorama",
+    "pip",
     "parameterized",
     "numpydoc >=0.9.1",
-    "pycodestyle ==2.3.1",
+    "pycodestyle >=2.4.0",
     "pydocstyle ==2.0.0",
-    "testflo >=1.3.4"
+    "testflo >=1.3.6",
+    "bokeh >=1.3.4",
+    "colorama",
+    "pip"
    ]
   }
  },
  "name":"openmdao",
  "new_version":"2.10.0",
  "pinning_version":"2020.02.20",
- "raw_meta_yaml":"{% set name = \"openmdao\" %}\n{% set version = \"2.9.1\" %}\n\npackage:\n  name: {{ name }}\n  version: {{ version }}\n\nsource:\n  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz\n  sha256: c20de93c9c3841a6306f15dd43117fcd54ae0ee7ae545b657d6fd50dac70b605\n\nbuild:\n  noarch: python\n  number: 0\n  script: \"{{ PYTHON }} -m pip install . -vv\"\n  entry_points:\n    - wingproj  = openmdao.devtools.wingproj:run_wing\n    - webview   = openmdao.utils.webview:webview_argv\n    - run_test  = openmdao.devtools.run_test:run_test\n    - openmdao  = openmdao.utils.om:openmdao_cmd\n\nrequirements:\n  host:\n    - python\n    - pip\n  run:\n    - networkx >=2.0\n    - numpy\n    - pydoe2\n    - pyparsing\n    - scipy\n    - six\n\ntest:\n  requires:\n    - coverage\n    - parameterized\n    - numpydoc >=0.9.1\n    - pycodestyle ==2.3.1\n    - pydocstyle ==2.0.0\n    - testflo >=1.3.4\n  imports:\n    - openmdao\n  commands:\n    - openmdao --help\n    - webview --help\n    - wingproj --help\n    - cp $RECIPE_DIR/.testflo .  # [unix]\n    - copy %RECIPE_DIR%\\.testflo .  # [win]\n    - testflo --config .testflo --numprocs 1 openmdao -v --pre_announce\n\nabout:\n  home: https://openmdao.org\n  license: Apache-2.0\n  license_family: Apache\n  license_file: LICENSE.txt\n  summary: |\n    OpenMDAO is an open-source high-performance computing platform\n    for systems analysis and multidisciplinary optimization, written in Python.\n  description: |\n    It enables you to decompose your models, making them easier to build and\n    maintain, while still solving them in a tightly coupled manner with\n    efficient parallel numerical methods.\n  doc_url: https://openmdao.org/twodocs\n  dev_url: https://github.com/OpenMDAO/OpenMDAOignore\n\nextra:\n  recipe-maintainers:\n    - bollwyvl\n",
+ "raw_meta_yaml":"{% set name = \"openmdao\" %}\n{% set version = \"2.10.0\" %}\n\npackage:\n  name: {{ name }}\n  version: {{ version }}\n\nsource:\n  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz\n  sha256: 5d239ab55f909b33a4db5c952dfd3761da3ab40ecfa3936a32b071b03a984f9b\n\nbuild:\n  noarch: python\n  number: 0\n  script: {{ PYTHON }} -m pip install . -vv\n  entry_points:\n    - wingproj  = openmdao.devtools.wingproj:run_wing\n    - webview   = openmdao.utils.webview:webview_argv\n    - run_om_test  = openmdao.devtools.run_test:run_test\n    - openmdao  = openmdao.utils.om:openmdao_cmd\n\nrequirements:\n  host:\n    - python\n    - pip\n  run:\n    - networkx >=2.0\n    - numpy\n    - pydoe2\n    - pyparsing\n    - requests\n    - scipy\n    - six\n    - urllib3 <1.25.0a0\n\ntest:\n  requires:\n    - parameterized\n    - numpydoc >=0.9.1\n    - pycodestyle >=2.4.0\n    - pydocstyle ==2.0.0\n    - testflo >=1.3.6\n    # not fully testing viz YET, but does fulfill undocumented tornado dep\n    - bokeh >=1.3.4\n    - colorama\n    # for pip check\n    - pip\n  imports:\n    - openmdao\n  commands:\n    - pip check\n    - openmdao --help\n    - webview --help\n    - wingproj --help\n\nabout:\n  home: https://openmdao.org\n  license: Apache-2.0\n  license_family: Apache\n  license_file: LICENSE.txt\n  summary: |\n    OpenMDAO is an open-source high-performance computing platform\n    for systems analysis and multidisciplinary optimization, written in Python.\n  description: |\n    It enables you to decompose your models, making them easier to build and\n    maintain, while still solving them in a tightly coupled manner with\n    efficient parallel numerical methods.\n  doc_url: https://openmdao.org/twodocs\n  dev_url: https://github.com/OpenMDAO/OpenMDAOignore\n\nextra:\n  recipe-maintainers:\n    - bollwyvl\n",
  "req":{
   "__set__":true,
   "elements":[
@@ -195,8 +204,10 @@
    "pydoe2",
    "pyparsing",
    "python",
+   "requests",
    "scipy",
-   "six"
+   "six",
+   "urllib3"
   ]
  },
  "requirements":{
@@ -218,16 +229,20 @@
     "numpy",
     "pydoe2",
     "pyparsing",
+    "requests",
     "scipy",
-    "six"
+    "six",
+    "urllib3"
    ]
   },
   "test":{
    "__set__":true,
    "elements":[
-    "coverage",
+    "bokeh",
+    "colorama",
     "numpydoc",
     "parameterized",
+    "pip",
     "pycodestyle",
     "pydocstyle",
     "testflo"
@@ -255,22 +270,26 @@
     "numpy",
     "pydoe2",
     "pyparsing",
+    "requests",
     "scipy",
-    "six"
+    "six",
+    "urllib3 <1.25.0a0"
    ]
   },
   "test":{
    "__set__":true,
    "elements":[
-    "coverage",
+    "bokeh >=1.3.4",
+    "colorama",
     "numpydoc >=0.9.1",
     "parameterized",
-    "pycodestyle ==2.3.1",
+    "pip",
+    "pycodestyle >=2.4.0",
     "pydocstyle ==2.0.0",
-    "testflo >=1.3.4"
+    "testflo >=1.3.6"
    ]
   }
  },
  "url":"https://pypi.io/packages/source/o/openmdao/openmdao-2.8.0.tar.gz",
- "version":"2.9.1"
+ "version":"2.10.0"
 }
