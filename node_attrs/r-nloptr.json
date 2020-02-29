@@ -65,6 +65,23 @@
     "migrator_version",
     "name"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/381955518.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"Version",
+    "migrator_version":0,
+    "version":"1.2.2"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "version"
+   ]
   }
  ],
  "bad":false,
@@ -188,8 +205,8 @@
   }
  },
  "name":"r-nloptr",
- "new_version":"1.2.1",
- "pinning_version":"2019.07.15",
+ "new_version":"1.2.2",
+ "pinning_version":"2020.02.20",
  "raw_meta_yaml":"{% set version = \"1.2.1\" %}\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-nloptr\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  fn: nloptr_{{ version }}.tar.gz\n  url:\n    - {{ cran_mirror }}/src/contrib/nloptr_{{ version }}.tar.gz\n    - {{ cran_mirror }}/src/contrib/Archive/nloptr/nloptr_{{ version }}.tar.gz\n  sha256: 1f86e33ecde6c3b0d2098c47591a9cd0fa41fb973ebf5145859677492730df97\n\nbuild:\n  merge_build_host: True  # [win]\n  number: 1\n  skip: true  # [win32]\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - {{ compiler('c') }}        # [not win]\n    - {{ compiler('cxx') }}      # [not win]\n    - {{ compiler('m2w64_c') }}        # [win]\n    - {{ compiler('m2w64_cxx') }}        # [win]\n    - {{posix}}filesystem        # [win]\n    - {{posix}}sed               # [win]\n    - {{posix}}grep              # [win]\n    - {{posix}}autoconf\n    - {{posix}}automake          # [not win]\n    - {{posix}}automake-wrapper  # [win]\n    - {{posix}}pkg-config\n    - {{posix}}make\n    - {{posix}}coreutils         # [win]\n    - {{posix}}zip               # [win]\n  host:\n    - r-base\n    - {{native}}nlopt            # [win]\n  run:\n    - r-base\n    - {{native}}nlopt            # [win]\n    - {{native}}gcc-libs         # [win]\n\ntest:\n  commands:\n    - $R -e \"library('nloptr')\"           # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('nloptr')\\\"\"  # [win]\n\nabout:\n  home: https://CRAN.R-project.org/package=nloptr\n  license: LGPL-3\n  summary: ' nloptr is an R interface to NLopt. NLopt is a free/open-source library for nonlinear\n    optimization, providing a common interface for a number of different free optimization\n    routines available online as well as original implementations of various other algorithms.\n    See http://ab-initio.mit.edu/wiki/index.php/NLopt_Introduction for more information\n    on the available algorithms. During installation on Unix the NLopt code is downloaded\n    and compiled from the NLopt website.'\n  license_family: LGPL\n  license_file: '{{ environ[\"PREFIX\"] }}/lib/R/share/licenses/LGPL-3'\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n    - rvalieris\n    - johanneskoester\n    - bgruening\n    - daler\n    - jdblischak\n    - cbrueffer\n",
  "req":{
   "__set__":true,
@@ -253,7 +270,7 @@
    "elements":[]
   }
  },
- "smithy_version":"3.4.1",
+ "smithy_version":"3.6.8",
  "strong_exports":false,
  "total_requirements":{
   "build":{
