@@ -33,6 +33,23 @@
     "migrator_version",
     "name"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/381946108.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"Version",
+    "migrator_version":0,
+    "version":"1.3"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "version"
+   ]
   }
  ],
  "bad":false,
@@ -145,8 +162,8 @@
   }
  },
  "name":"r-medicalrisk",
- "new_version":"1.2",
- "pinning_version":"2019.07.20",
+ "new_version":"1.3",
+ "pinning_version":"2020.02.20",
  "raw_meta_yaml":"{% set version = '1.2' %}\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-medicalrisk\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  fn: medicalrisk_{{ version }}.tar.gz\n  url:\n    - {{ cran_mirror }}/src/contrib/medicalrisk_{{ version }}.tar.gz\n    - {{ cran_mirror }}/src/contrib/Archive/medicalrisk/medicalrisk_{{ version }}.tar.gz\n  sha256: b71b6a8ab952c230cec65a9f3c9c06fe7c7221b0296fd7fd9ac89c23f3d8bdfd\n\nbuild:\n  noarch: generic\n  merge_build_host: True  # [win]\n  number: 1001\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - {{posix}}zip               # [win]\n  host:\n    - r-base\n    - r-hash\n    - r-plyr >=1.5\n    - r-reshape2\n  run:\n    - r-base\n    - r-hash\n    - r-plyr >=1.5\n    - r-reshape2\n\ntest:\n  commands:\n    - $R -e \"library('medicalrisk')\"           # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('medicalrisk')\\\"\"  # [win]\n\nabout:\n  home: https://github.com/patrickmdnet/medicalrisk\n  license: GPL-3\n  summary: Generates risk estimates and comorbidity flags from ICD-9-CM codes available in administrative\n    medical datasets. The package supports the Charlson Comorbidity Index, the Elixhauser\n    Comorbidity classification, the Revised Cardiac Risk Index, and the Risk Stratification\n    Index.  Methods are table-based, fast, and use the 'plyr' package, so parallelization\n    is possible for large jobs. Also includes a sample of real ICD-9 data for 100 patients\n    from a publicly available dataset.\n  license_family: GPL3\n  license_file: '{{ environ[\"PREFIX\"] }}/lib/R/share/licenses/GPL-3'\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n    - johanneskoester\n    - bgruening\n    - daler\n    - jdblischak\n    - cbrueffer\n",
  "req":{
   "__set__":true,
@@ -185,7 +202,7 @@
    "elements":[]
   }
  },
- "smithy_version":"3.4.1",
+ "smithy_version":"3.6.8",
  "strong_exports":false,
  "total_requirements":{
   "build":{
