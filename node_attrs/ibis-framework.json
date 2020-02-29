@@ -121,7 +121,7 @@
   },
   "build":{
    "noarch":"python",
-   "number":"0",
+   "number":"1",
    "script":"-m pip install . --no-deps --ignore-installed --no-cache-dir -vvv"
   },
   "extra":{
@@ -163,7 +163,11 @@
     "setuptools"
    ],
    "run":[
-    "clickhouse-driver >=0.0.13",
+    "clickhouse-driver >=0.1.3",
+    "clickhouse-cityhash",
+    "clickhouse-sqlalchemy",
+    "geoalchemy2",
+    "geopandas",
     "google-cloud-bigquery >=1.0.0",
     "graphviz",
     "impyla >=0.15.0",
@@ -176,6 +180,7 @@
     "pydata-google-auth",
     "pymapd >=0.12.0",
     "pymysql",
+    "pyspark >=2.4.3",
     "pytables >=3.0.0",
     "python >=3",
     "python-graphviz",
@@ -183,12 +188,17 @@
     "pytz",
     "regex",
     "requests",
+    "shapely",
     "setuptools",
     "sqlalchemy >=1.1",
     "thrift >=0.9.3",
     "thriftpy2",
     "toolz",
-    "clickhouse-driver >=0.0.13",
+    "clickhouse-driver >=0.1.3",
+    "clickhouse-cityhash",
+    "clickhouse-sqlalchemy",
+    "geoalchemy2",
+    "geopandas",
     "google-cloud-bigquery >=1.0.0",
     "graphviz",
     "impyla >=0.15.0",
@@ -201,6 +211,7 @@
     "pydata-google-auth",
     "pymapd >=0.12.0",
     "pymysql",
+    "pyspark >=2.4.3",
     "pytables >=3.0.0",
     "python >=3",
     "python-graphviz",
@@ -208,12 +219,17 @@
     "pytz",
     "regex",
     "requests",
+    "shapely",
     "setuptools",
     "sqlalchemy >=1.1",
     "thrift >=0.9.3",
     "thriftpy2",
     "toolz",
-    "clickhouse-driver >=0.0.13",
+    "clickhouse-driver >=0.1.3",
+    "clickhouse-cityhash",
+    "clickhouse-sqlalchemy",
+    "geoalchemy2",
+    "geopandas",
     "google-cloud-bigquery >=1.0.0",
     "graphviz",
     "impyla >=0.15.0",
@@ -226,6 +242,7 @@
     "pydata-google-auth",
     "pymapd >=0.12.0",
     "pymysql",
+    "pyspark >=2.4.3",
     "pytables >=3.0.0",
     "python >=3",
     "python-graphviz",
@@ -233,6 +250,7 @@
     "pytz",
     "regex",
     "requests",
+    "shapely",
     "setuptools",
     "sqlalchemy >=1.1",
     "thrift >=0.9.3",
@@ -245,37 +263,64 @@
    "url":"https://github.com/ibis-project/ibis/archive/1.3.0.tar.gz"
   },
   "test":{
-   "commands":[
-    "pytest --rootdir ibis -o xfail_strict=False -m \"not (backend or bigquery or clickhouse or hdfs or impala or kudu or omniscidb or mysql or postgresql or superuser or udf or postgis)\" --ignore ibis/tests/test_version.py --tb=line",
-    "pytest --rootdir ibis -o xfail_strict=False -m \"not (backend or bigquery or clickhouse or hdfs or impala or kudu or omniscidb or mysql or postgresql or superuser or udf or postgis)\" --ignore ibis/tests/test_version.py --tb=line",
-    "pytest --rootdir ibis -o xfail_strict=False -m \"not (backend or bigquery or clickhouse or hdfs or impala or kudu or omniscidb or mysql or postgresql or superuser or udf or postgis)\" --ignore ibis/tests/test_version.py --tb=line"
-   ],
-   "requires":[
-    "pytest >=4.5,<5.0.0",
-    "pytest >=4.5,<5.0.0",
-    "pytest >=4.5,<5.0.0"
-   ],
-   "source_files":[
+   "imports":[
     "ibis",
-    "conftest.py",
-    "setup.cfg",
+    "ibis.bigquery",
+    "ibis.clickhouse",
+    "ibis.file.csv",
+    "ibis.file.parquet",
+    "ibis.file.hdf5",
+    "ibis.impala",
+    "ibis.sql.mysql",
+    "ibis.omniscidb",
+    "ibis.pandas",
+    "ibis.sql.postgres",
+    "ibis.pyspark",
+    "ibis.spark",
+    "ibis.sql.sqlite",
     "ibis",
-    "conftest.py",
-    "setup.cfg",
+    "ibis.bigquery",
+    "ibis.clickhouse",
+    "ibis.file.csv",
+    "ibis.file.parquet",
+    "ibis.file.hdf5",
+    "ibis.impala",
+    "ibis.sql.mysql",
+    "ibis.omniscidb",
+    "ibis.pandas",
+    "ibis.sql.postgres",
+    "ibis.pyspark",
+    "ibis.spark",
+    "ibis.sql.sqlite",
     "ibis",
-    "conftest.py",
-    "setup.cfg"
+    "ibis.bigquery",
+    "ibis.clickhouse",
+    "ibis.file.csv",
+    "ibis.file.parquet",
+    "ibis.file.hdf5",
+    "ibis.impala",
+    "ibis.sql.mysql",
+    "ibis.omniscidb",
+    "ibis.pandas",
+    "ibis.sql.postgres",
+    "ibis.pyspark",
+    "ibis.spark",
+    "ibis.sql.sqlite"
    ]
   }
  },
  "name":"ibis-framework",
  "new_version":"1.3.0",
  "pinning_version":"2020.02.20",
- "raw_meta_yaml":"{% set version = \"1.3.0\" %}\n\npackage:\n  name: ibis-framework\n  version: {{ version }}\n\nsource:\n  url: https://github.com/ibis-project/ibis/archive/{{ version }}.tar.gz\n  sha256: 33ba671fa85accebbe7ab91a2f4eb575b485ae39396e3273dfbeaef35df948dc\n\nbuild:\n  number: 0\n  script: {{ PYTHON }} -m pip install . --no-deps --ignore-installed --no-cache-dir -vvv\n  noarch: python\n\nrequirements:\n  host:\n    - pip\n    - python >=3\n    - setuptools\n\n  run:\n    - clickhouse-driver >=0.0.13\n    - google-cloud-bigquery >=1.0.0\n    - graphviz\n    - impyla >=0.15.0\n    - lz4\n    - multipledispatch >=0.6\n    - numpy >=1.11\n    - pandas >=0.25\n    - psycopg2\n    - pyarrow >=0.13\n    - pydata-google-auth\n    - pymapd >=0.12.0\n    - pymysql\n    - pytables >=3.0.0\n    - python >=3\n    - python-graphviz\n    - python-hdfs >=2.0.16\n    - pytz\n    - regex\n    - requests\n    - setuptools\n    - sqlalchemy >=1.1\n    - thrift >=0.9.3\n    - thriftpy2\n    - toolz\n\ntest:\n  requires:\n    - pytest >=4.5,<5.0.0\n  source_files:\n    - ibis\n    - conftest.py\n    - setup.cfg\n  commands:\n    - pytest --rootdir ibis -o xfail_strict=False -m \"not (backend or bigquery or clickhouse or hdfs or impala or kudu or omniscidb or mysql or postgresql or superuser\n      or udf or postgis)\" --ignore ibis/tests/test_version.py --tb=line\n\nabout:\n  license: Apache-2.0\n  license_family: Apache\n  license_file: LICENSE.txt\n  home: http://www.ibis-project.org\n  summary: Productivity-centric Python Big Data Framework\n\nextra:\n  recipe-maintainers:\n    - cpcloud\n    - mariusvniekerk\n    - wesm\n    - kszucs\n    - xmnlab\n    - jreback\n",
+ "raw_meta_yaml":"{% set version = \"1.3.0\" %}\n\npackage:\n  name: ibis-framework\n  version: {{ version }}\n\nsource:\n  url: https://github.com/ibis-project/ibis/archive/{{ version }}.tar.gz\n  sha256: 33ba671fa85accebbe7ab91a2f4eb575b485ae39396e3273dfbeaef35df948dc\n\nbuild:\n  number: 1\n  script: {{ PYTHON }} -m pip install . --no-deps --ignore-installed --no-cache-dir -vvv\n  noarch: python\n\nrequirements:\n  host:\n    - pip\n    - python >=3\n    - setuptools\n\n  run:\n    - clickhouse-driver >=0.1.3\n    - clickhouse-cityhash\n    - clickhouse-sqlalchemy\n    - geoalchemy2\n    - geopandas\n    - google-cloud-bigquery >=1.0.0\n    - graphviz\n    - impyla >=0.15.0\n    - lz4\n    - multipledispatch >=0.6\n    - numpy >=1.11\n    - pandas >=0.25\n    - psycopg2\n    - pyarrow >=0.13\n    - pydata-google-auth\n    - pymapd >=0.12.0\n    - pymysql\n    - pyspark >=2.4.3\n    - pytables >=3.0.0\n    - python >=3\n    - python-graphviz\n    - python-hdfs >=2.0.16\n    - pytz\n    - regex\n    - requests\n    - shapely\n    - setuptools\n    - sqlalchemy >=1.1\n    - thrift >=0.9.3\n    - thriftpy2\n    - toolz\n\ntest:\n  imports:\n    - ibis\n    - ibis.bigquery\n    - ibis.clickhouse\n    - ibis.file.csv\n    - ibis.file.parquet\n    - ibis.file.hdf5\n    - ibis.impala\n    - ibis.sql.mysql\n    - ibis.omniscidb\n    - ibis.pandas\n    - ibis.sql.postgres\n    - ibis.pyspark\n    - ibis.spark\n    - ibis.sql.sqlite\n\nabout:\n  license: Apache-2.0\n  license_family: Apache\n  license_file: LICENSE.txt\n  home: http://www.ibis-project.org\n  summary: Productivity-centric Python Big Data Framework\n\nextra:\n  recipe-maintainers:\n    - cpcloud\n    - mariusvniekerk\n    - wesm\n    - kszucs\n    - xmnlab\n    - jreback\n",
  "req":{
   "__set__":true,
   "elements":[
+   "clickhouse-cityhash",
    "clickhouse-driver",
+   "clickhouse-sqlalchemy",
+   "geoalchemy2",
+   "geopandas",
    "google-cloud-bigquery",
    "graphviz",
    "impyla",
@@ -289,6 +334,7 @@
    "pydata-google-auth",
    "pymapd",
    "pymysql",
+   "pyspark",
    "pytables",
    "python",
    "python-graphviz",
@@ -297,6 +343,7 @@
    "regex",
    "requests",
    "setuptools",
+   "shapely",
    "sqlalchemy",
    "thrift",
    "thriftpy2",
@@ -319,7 +366,11 @@
   "run":{
    "__set__":true,
    "elements":[
+    "clickhouse-cityhash",
     "clickhouse-driver",
+    "clickhouse-sqlalchemy",
+    "geoalchemy2",
+    "geopandas",
     "google-cloud-bigquery",
     "graphviz",
     "impyla",
@@ -332,6 +383,7 @@
     "pydata-google-auth",
     "pymapd",
     "pymysql",
+    "pyspark",
     "pytables",
     "python",
     "python-graphviz",
@@ -340,6 +392,7 @@
     "regex",
     "requests",
     "setuptools",
+    "shapely",
     "sqlalchemy",
     "thrift",
     "thriftpy2",
@@ -348,9 +401,7 @@
   },
   "test":{
    "__set__":true,
-   "elements":[
-    "pytest"
-   ]
+   "elements":[]
   }
  },
  "smithy_version":"3.6.8",
@@ -371,7 +422,11 @@
   "run":{
    "__set__":true,
    "elements":[
-    "clickhouse-driver >=0.0.13",
+    "clickhouse-cityhash",
+    "clickhouse-driver >=0.1.3",
+    "clickhouse-sqlalchemy",
+    "geoalchemy2",
+    "geopandas",
     "google-cloud-bigquery >=1.0.0",
     "graphviz",
     "impyla >=0.15.0",
@@ -384,6 +439,7 @@
     "pydata-google-auth",
     "pymapd >=0.12.0",
     "pymysql",
+    "pyspark >=2.4.3",
     "pytables >=3.0.0",
     "python >=3",
     "python-graphviz",
@@ -392,6 +448,7 @@
     "regex",
     "requests",
     "setuptools",
+    "shapely",
     "sqlalchemy >=1.1",
     "thrift >=0.9.3",
     "thriftpy2",
@@ -400,9 +457,7 @@
   },
   "test":{
    "__set__":true,
-   "elements":[
-    "pytest >=4.5,<5.0.0"
-   ]
+   "elements":[]
   }
  },
  "url":"https://github.com/ibis-project/ibis/archive/1.2.0.tar.gz",
