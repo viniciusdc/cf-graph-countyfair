@@ -102,7 +102,7 @@
   },
   "package":{
    "name":"gazebo",
-   "version":"9.12.0"
+   "version":"11.0.0"
   },
   "requirements":{
    "build":[
@@ -122,8 +122,10 @@
     "pkg-config"
    ],
    "host":[
-    "libsdformat 6.*",
-    "libignition-transport4",
+    "libsdformat 9.*",
+    "libignition-transport8",
+    "libignition-fuel-tools4",
+    "libignition-common3",
     "qt",
     "ogre 1.10.*",
     "freeimage",
@@ -132,8 +134,10 @@
     "qwt",
     "dlfcn-win32",
     "boost-cpp >=1.71",
-    "libsdformat 6.*",
-    "libignition-transport4",
+    "libsdformat 9.*",
+    "libignition-transport8",
+    "libignition-fuel-tools4",
+    "libignition-common3",
     "qt",
     "ogre 1.10.*",
     "freeimage",
@@ -141,8 +145,10 @@
     "tbb-devel",
     "qwt",
     "boost-cpp >=1.71",
-    "libsdformat 6.*",
-    "libignition-transport4",
+    "libsdformat 9.*",
+    "libignition-transport8",
+    "libignition-fuel-tools4",
+    "libignition-common3",
     "qt",
     "ogre 1.10.*",
     "freeimage",
@@ -152,8 +158,10 @@
     "boost-cpp >=1.71"
    ],
    "run":[
-    "libsdformat 6.*",
-    "libignition-transport4",
+    "libsdformat 9.*",
+    "libignition-transport8",
+    "libignition-fuel-tools4",
+    "libignition-common3",
     "qt",
     "ogre",
     "freeimage",
@@ -162,8 +170,10 @@
     "qwt",
     "dlfcn-win32",
     "boost-cpp >=1.71",
-    "libsdformat 6.*",
-    "libignition-transport4",
+    "libsdformat 9.*",
+    "libignition-transport8",
+    "libignition-fuel-tools4",
+    "libignition-common3",
     "qt",
     "ogre",
     "freeimage",
@@ -171,8 +181,10 @@
     "tbb-devel",
     "qwt",
     "boost-cpp >=1.71",
-    "libsdformat 6.*",
-    "libignition-transport4",
+    "libsdformat 9.*",
+    "libignition-transport8",
+    "libignition-fuel-tools4",
+    "libignition-common3",
     "qt",
     "ogre",
     "freeimage",
@@ -189,8 +201,8 @@
      "qwt-fix.patch",
      "normalize-ogre-path.patch"
     ],
-    "sha256":"bd4787ead49360b5435a456ebcf37ba1cbf009f4a4e88821c3ee7b88306a5477",
-    "url":"https://bitbucket.org/osrf/gazebo/get/gazebo9_9.12.0.tar.gz"
+    "sha256":"f1c873dfa17c1653332321ef4f10430fb22825de0688017455a2983f176cd69e",
+    "url":"https://bitbucket.org/osrf/gazebo/get/gazebo11_11.0.0.tar.gz"
    },
    {
     "patches":[
@@ -198,8 +210,8 @@
      "qwt-fix.patch",
      "normalize-ogre-path.patch"
     ],
-    "sha256":"bd4787ead49360b5435a456ebcf37ba1cbf009f4a4e88821c3ee7b88306a5477",
-    "url":"https://bitbucket.org/osrf/gazebo/get/gazebo9_9.12.0.tar.gz"
+    "sha256":"f1c873dfa17c1653332321ef4f10430fb22825de0688017455a2983f176cd69e",
+    "url":"https://bitbucket.org/osrf/gazebo/get/gazebo11_11.0.0.tar.gz"
    },
    {
     "patches":[
@@ -207,8 +219,8 @@
      "qwt-fix.patch",
      "normalize-ogre-path.patch"
     ],
-    "sha256":"bd4787ead49360b5435a456ebcf37ba1cbf009f4a4e88821c3ee7b88306a5477",
-    "url":"https://bitbucket.org/osrf/gazebo/get/gazebo9_9.12.0.tar.gz"
+    "sha256":"f1c873dfa17c1653332321ef4f10430fb22825de0688017455a2983f176cd69e",
+    "url":"https://bitbucket.org/osrf/gazebo/get/gazebo11_11.0.0.tar.gz"
    }
   ],
   "test":{
@@ -218,7 +230,7 @@
  "name":"gazebo",
  "new_version":"9.12.0",
  "pinning_version":"2020.02.20",
- "raw_meta_yaml":"{% set name = \"gazebo\" %}\n{% set version = \"9.12.0\" %}\n\npackage:\n  name: {{ name }}\n  version: {{ version }}\n\nsource:\n  - url: https://bitbucket.org/osrf/{{ name }}/get/{{ name }}{{ version[0] }}_{{ version }}.tar.gz\n    sha256: bd4787ead49360b5435a456ebcf37ba1cbf009f4a4e88821c3ee7b88306a5477\n    patches:\n      - use-external-libs-config.patch\n      - qwt-fix.patch\n      - normalize-ogre-path.patch\n\nbuild:\n  number: 1\n  skip: true  # [not win]\n  run_exports:\n    - {{ pin_subpackage('gazebo', max_pin='x.x') }}\n\nrequirements:\n  build:\n    - {{ compiler('cxx') }}              # [not win]\n    - {{ compiler('c') }}                # [not win]\n    - vs2017_win-64                      # [win64]\n    - vs2017_win-32                      # [win32]\n    - ninja\n    - cmake\n    - pkg-config\n  host:\n    - libsdformat 6.*\n    - libignition-transport4\n    - qt\n    - ogre 1.10.*\n    - freeimage\n    - curl\n    - tbb-devel\n    - qwt\n    - dlfcn-win32  # [win]\n    - boost-cpp >=1.71\n  run:\n    - libsdformat 6.*\n    - libignition-transport4\n    - qt\n    - ogre\n    - freeimage\n    - curl\n    - tbb-devel\n    - qwt\n    - dlfcn-win32  # [win]\n    - boost-cpp >=1.71\n\ntest:\n  commands:\n    - if exist %PREFIX%\\\\Library\\\\bin\\\\gzserver.exe (exit 0) else (exit 1)  # [win]\n    - if exist %PREFIX%\\\\Library\\\\bin\\\\gzclient.exe (exit 0) else (exit 1)  # [win]\n    - if exist %PREFIX%\\\\Library\\\\bin\\\\gazebo.dll (exit 0) else (exit 1)  # [win]\n\nabout:\n  home: http://gazebosim.org/\n  license: Apache-2.0\n  license_file: LICENSE\n  summary: 'Advanced robot simulator for research, design, and development.'\n\nextra:\n  recipe-maintainers:\n    - seanyen\n",
+ "raw_meta_yaml":"{% set name = \"gazebo\" %}\n{% set version = \"11.0.0\" %}\n\npackage:\n  name: {{ name }}\n  version: {{ version }}\n\nsource:\n  - url: https://bitbucket.org/osrf/{{ name }}/get/{{ name }}{{ version.split('.')[0] }}_{{ version }}.tar.gz\n    sha256: f1c873dfa17c1653332321ef4f10430fb22825de0688017455a2983f176cd69e\n    patches:\n      - use-external-libs-config.patch\n      - qwt-fix.patch\n      - normalize-ogre-path.patch\n\nbuild:\n  number: 1\n  skip: true  # [not win]\n  run_exports:\n    - {{ pin_subpackage('gazebo', max_pin='x.x') }}\n\nrequirements:\n  build:\n    - {{ compiler('cxx') }}              # [not win]\n    - {{ compiler('c') }}                # [not win]\n    - vs2017_win-64                      # [win64]\n    - vs2017_win-32                      # [win32]\n    - ninja\n    - cmake\n    - pkg-config\n  host:\n    - libsdformat 9.*\n    - libignition-transport8\n    - libignition-fuel-tools4\n    - libignition-common3\n    - qt\n    - ogre 1.10.*\n    - freeimage\n    - curl\n    - tbb-devel\n    - qwt\n    - dlfcn-win32  # [win]\n    - boost-cpp >=1.71\n  run:\n    - libsdformat 9.*\n    - libignition-transport8\n    - libignition-fuel-tools4\n    - libignition-common3\n    - qt\n    - ogre\n    - freeimage\n    - curl\n    - tbb-devel\n    - qwt\n    - dlfcn-win32  # [win]\n    - boost-cpp >=1.71\n\ntest:\n  commands:\n    - if exist %PREFIX%\\\\Library\\\\bin\\\\gzserver.exe (exit 0) else (exit 1)  # [win]\n    - if exist %PREFIX%\\\\Library\\\\bin\\\\gzclient.exe (exit 0) else (exit 1)  # [win]\n    - if exist %PREFIX%\\\\Library\\\\bin\\\\gazebo.dll (exit 0) else (exit 1)  # [win]\n\nabout:\n  home: http://gazebosim.org/\n  license: Apache-2.0\n  license_file: LICENSE\n  summary: 'Advanced robot simulator for research, design, and development.'\n\nextra:\n  recipe-maintainers:\n    - seanyen\n",
  "req":{
   "__set__":true,
   "elements":[
@@ -229,7 +241,9 @@
    "cxx_compiler_stub",
    "dlfcn-win32",
    "freeimage",
-   "libignition-transport4",
+   "libignition-common3",
+   "libignition-fuel-tools4",
+   "libignition-transport8",
    "libsdformat",
    "ninja",
    "ogre",
@@ -259,7 +273,9 @@
     "curl",
     "dlfcn-win32",
     "freeimage",
-    "libignition-transport4",
+    "libignition-common3",
+    "libignition-fuel-tools4",
+    "libignition-transport8",
     "libsdformat",
     "ogre",
     "qt",
@@ -274,7 +290,9 @@
     "curl",
     "dlfcn-win32",
     "freeimage",
-    "libignition-transport4",
+    "libignition-common3",
+    "libignition-fuel-tools4",
+    "libignition-transport8",
     "libsdformat",
     "ogre",
     "qt",
@@ -308,8 +326,10 @@
     "curl",
     "dlfcn-win32",
     "freeimage",
-    "libignition-transport4",
-    "libsdformat 6.*",
+    "libignition-common3",
+    "libignition-fuel-tools4",
+    "libignition-transport8",
+    "libsdformat 9.*",
     "ogre 1.10.*",
     "qt",
     "qwt",
@@ -323,8 +343,10 @@
     "curl",
     "dlfcn-win32",
     "freeimage",
-    "libignition-transport4",
-    "libsdformat 6.*",
+    "libignition-common3",
+    "libignition-fuel-tools4",
+    "libignition-transport8",
+    "libsdformat 9.*",
     "ogre",
     "qt",
     "qwt",
@@ -337,5 +359,5 @@
   }
  },
  "url":"https://bitbucket.org/osrf/gazebo/get/gazebo9_9.11.0.tar.gz",
- "version":"9.12.0"
+ "version":"11.0.0"
 }
