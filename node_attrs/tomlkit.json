@@ -260,9 +260,9 @@
  ],
  "bad":false,
  "conda-forge.yml":{
-  "compiler_stack":"comp7",
-  "max_py_ver":"37",
-  "max_r_ver":"35",
+  "bot":{
+   "automerge":true
+  },
   "provider":{
    "linux_aarch64":"azure",
    "linux_ppc64le":"azure",
@@ -283,11 +283,11 @@
    "number":"0",
    "script":[
     "del pyproject.toml",
-    " -m pip install . --no-deps --ignore-installed -vvv",
+    "-m pip install . --no-deps --ignore-installed -vvv",
     "rm pyproject.toml",
-    " -m pip install . --no-deps --ignore-installed -vvv",
+    "-m pip install . --no-deps --ignore-installed -vvv",
     "rm pyproject.toml",
-    " -m pip install . --no-deps --ignore-installed -vvv"
+    "-m pip install . --no-deps --ignore-installed -vvv"
    ]
   },
   "extra":{
@@ -299,7 +299,7 @@
   },
   "package":{
    "name":"tomlkit",
-   "version":"0.5.8"
+   "version":"0.5.11"
   },
   "requirements":{
    "host":[
@@ -317,21 +317,31 @@
    ]
   },
   "source":{
-   "sha256":"32c10cc16ded7e4101c79f269910658cc2a0be5913f1252121c3cd603051c269",
-   "url":"https://pypi.io/packages/source/t/tomlkit/tomlkit-0.5.8.tar.gz"
+   "sha256":"f044eda25647882e5ef22b43a1688fb6ab12af2fc50e8456cdfc751c873101cf",
+   "url":"https://pypi.io/packages/source/t/tomlkit/tomlkit-0.5.11.tar.gz"
   },
   "test":{
+   "commands":[
+    "pip check",
+    "pip check",
+    "pip check"
+   ],
    "imports":[
     "tomlkit",
     "tomlkit",
     "tomlkit"
+   ],
+   "requires":[
+    "pip",
+    "pip",
+    "pip"
    ]
   }
  },
  "name":"tomlkit",
  "new_version":"0.5.11",
  "pinning_version":"2020.02.20",
- "raw_meta_yaml":"{% set version = \"0.5.8\" %}\n\npackage:\n  name: tomlkit\n  version: {{ version }}\n\nsource:\n  url: https://pypi.io/packages/source/t/tomlkit/tomlkit-{{ version }}.tar.gz\n  sha256: 32c10cc16ded7e4101c79f269910658cc2a0be5913f1252121c3cd603051c269\n\nbuild:\n  number: 0\n  script:\n    # Somehow, when pyproject.toml is present, it requires poetry on Windows.\n    # However, even with that dependency satisfied, we get:\n    # \"tomlkit cannot depend on itself\"\n    - del pyproject.toml  # [win]\n    - rm pyproject.toml  # [not win]\n    - \"{{ PYTHON }} -m pip install . --no-deps --ignore-installed -vvv\"\n\nrequirements:\n  host:\n    - pip\n    - python\n  run:\n    - python\n    - typing >=3.6,<4.0  # [py<35]\n    - enum34 >=1.1,<2.0  # [py27]\n    - functools32 >=3.2.3,<4.0.0  # [py27]\n\ntest:\n  imports:\n    - tomlkit\n\nabout:\n  home: https://github.com/sdispater/tomlkit\n  license: MIT\n  license_family: MIT\n  license_file: LICENSE\n  summary: Style preserving TOML library\n\nextra:\n  recipe-maintainers:\n    - ocefpaf\n",
+ "raw_meta_yaml":"{% set version = \"0.5.11\" %}\n\npackage:\n  name: tomlkit\n  version: {{ version }}\n\nsource:\n  url: https://pypi.io/packages/source/t/tomlkit/tomlkit-{{ version }}.tar.gz\n  sha256: f044eda25647882e5ef22b43a1688fb6ab12af2fc50e8456cdfc751c873101cf\n\nbuild:\n  number: 0\n  script:\n    # Somehow, when pyproject.toml is present, it requires poetry on Windows.\n    # However, even with that dependency satisfied, we get:\n    # \"tomlkit cannot depend on itself\"\n    - del pyproject.toml  # [win]\n    - rm pyproject.toml  # [not win]\n    - {{ PYTHON }} -m pip install . --no-deps --ignore-installed -vvv\n\nrequirements:\n  host:\n    - pip\n    - python\n  run:\n    - python\n    - typing >=3.6,<4.0  # [py<35]\n    - enum34 >=1.1,<2.0  # [py27]\n    - functools32 >=3.2.3,<4.0.0  # [py27]\n\ntest:\n  requires:\n    - pip\n  commands:\n    - pip check\n  imports:\n    - tomlkit\n\nabout:\n  home: https://github.com/sdispater/tomlkit\n  license: MIT\n  license_family: MIT\n  license_file: LICENSE\n  summary: Style preserving TOML library\n\nextra:\n  recipe-maintainers:\n    - ocefpaf\n",
  "req":{
   "__set__":true,
   "elements":[
@@ -359,7 +369,9 @@
   },
   "test":{
    "__set__":true,
-   "elements":[]
+   "elements":[
+    "pip"
+   ]
   }
  },
  "smithy_version":"3.6.8",
@@ -384,9 +396,11 @@
   },
   "test":{
    "__set__":true,
-   "elements":[]
+   "elements":[
+    "pip"
+   ]
   }
  },
  "url":"https://pypi.io/packages/source/t/tomlkit/tomlkit-0.5.5.tar.gz",
- "version":"0.5.8"
+ "version":"0.5.11"
 }
