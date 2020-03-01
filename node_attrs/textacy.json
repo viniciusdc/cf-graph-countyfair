@@ -195,6 +195,23 @@
     "migrator_version",
     "name"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/382114390.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"Version",
+    "migrator_version":0,
+    "version":"0.10.0"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "version"
+   ]
   }
  ],
  "bad":false,
@@ -383,8 +400,8 @@
   }
  },
  "name":"textacy",
- "new_version":"0.9.1",
- "pinning_version":"2020.02.12",
+ "new_version":"0.10.0",
+ "pinning_version":"2020.02.20",
  "raw_meta_yaml":"{% set name = \"textacy\" %}\n{% set version = \"0.8.0\" %}\n{% set sha256sum = \"959db2b6c05ed7b7ebdc0b8e87675d43a85d3514dc0495605ffa6ac413f77bbc\" %}\n\npackage:\n  name: {{ name }}\n  version: {{ version }}\n\nsource:\n  fn: {{ name }}-{{ version }}.tar.gz\n  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz\n  sha256: {{ sha256sum }}\n\nbuild:\n  number: 1\n  script: python setup.py install --single-version-externally-managed --record=record.txt\n  skip: True  # [win32 or linux32]\n\nrequirements:\n  build:\n    - python\n    - setuptools\n\n  run:\n    - python\n    - backports.csv >=1.0.1  # [py2k]\n    - cachetools >=2.0.0\n    - cytoolz >=0.8.0\n    - jellyfish >=0.6.0,<0.7.0\n    - joblib >=0.13.0\n    - matplotlib-base >=1.5\n    - networkx >=1.11\n    - {{ pin_compatible('numpy', min_pin='1.9.0', upper_bound='2.0.0') }}\n    - pyemd >=0.3.0\n    - pyphen >=0.9.4\n    - requests >=2.10.0\n    - scipy >=0.17.0\n    - scikit-learn >=0.18.0,<0.21.0\n    - spacy >=2.0.12\n    - srsly >=0.0.5\n    - tqdm >=4.11.1\n\ntest:\n  commands:\n    - python -m textacy -h\n    # - python -m pytest --pyargs {{ name }}\n  imports:\n    - textacy\n    - textacy.cache\n    - textacy.compat\n    - textacy.constants\n    - textacy.corpus\n    - textacy.datasets\n    - textacy.doc\n    - textacy.export\n    - textacy.extract\n    - textacy.io\n    - textacy.ke\n    - textacy.lang_utils\n    - textacy.lexicon_methods\n    - textacy.network\n    - textacy.preprocessing\n    - textacy.similarity\n    - textacy.spacier\n    - textacy.text_stats\n    - textacy.text_utils\n    - textacy.tm\n    - textacy.viz\n    - textacy.vsm\n  requires:\n    - pytest >=4.0.0\n\nabout:\n  home: https://github.com/chartbeat-labs/textacy\n  license: Apache 2.0\n  license_file: LICENSE.txt\n  summary: NLP, before and after spaCy\n  description: |\n    textacy is a Python library for performing higher-level natural language\n    processing (NLP) tasks, built on the high-performance spaCy library. With\n    the basics --- tokenization, part-of-speech tagging, dependency parsing,\n    etc. --- offloaded to another library, textacy focuses on tasks facilitated\n    by the ready availability of tokenized, POS-tagged, and parsed text.\n    spaCy is a library for advanced natural language processing in Python and\n    Cython.\n  doc_url: https://chartbeat-labs.github.io/textacy/\n  dev_url: https://github.com/chartbeat-labs/textacy\n\nextra:\n  recipe-maintainers:\n    - rmax\n    - mageky\n    - bdewilde\n",
  "req":{
   "__set__":true,
