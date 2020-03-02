@@ -226,7 +226,12 @@
    "summary":"Software package for large-scale nonlinear optimization"
   },
   "build":{
-   "number":"0",
+   "number":"1",
+   "run_exports":[
+    "subpackage_stub",
+    "subpackage_stub",
+    "subpackage_stub"
+   ],
    "skip":true
   },
   "extra":{
@@ -323,7 +328,7 @@
  "name":"ipopt",
  "new_version":"3.13.0",
  "pinning_version":"2019.12.18",
- "raw_meta_yaml":"{% set name = \"Ipopt\" %}\n{% set version = \"3.12.13\" %}\n{% set sha256 = \"aac9bb4d8a257fdfacc54ff3f1cbfdf6e2d61fb0cf395749e3b0c0664d3e7e96\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  fn: {{ name }}-{{ version }}.tar.gz\n  url: http://www.coin-or.org/download/source/{{ name }}/{{ name }}-{{ version }}.tgz\n  sha256: {{ sha256 }}\n  patches:\n    - linux-configure.patch  # [linux]\n\nbuild:\n  skip: True  # [win]\n  number: 0\n\nrequirements:\n  build:\n    - {{ compiler('fortran') }}\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n  host:\n    - libblas\n    - liblapack\n    - ampl-mp\n    - mumps-seq\n    - metis\n    - scotch\n  run:\n    - ampl-mp\n    - mumps-seq\n    - metis\n    - scotch\n\ntest:\n  files:\n    - test\n    - mytoy.nl\n\n  requires:\n    - {{ compiler('fortran') }}\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n\nabout:\n  home: https://projects.coin-or.org/Ipopt/\n  license: EPL 1.0\n  license_file: LICENSE\n  summary: Software package for large-scale nonlinear optimization\n\nextra:\n  recipe-maintainers:\n    - pstjohn\n    - bluescarni\n",
+ "raw_meta_yaml":"{% set name = \"Ipopt\" %}\n{% set version = \"3.12.13\" %}\n{% set sha256 = \"aac9bb4d8a257fdfacc54ff3f1cbfdf6e2d61fb0cf395749e3b0c0664d3e7e96\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  fn: {{ name }}-{{ version }}.tar.gz\n  url: http://www.coin-or.org/download/source/{{ name }}/{{ name }}-{{ version }}.tgz\n  sha256: {{ sha256 }}\n  patches:\n    - linux-configure.patch  # [linux]\n\nbuild:\n  skip: True  # [win]\n  number: 1\n  run_exports:\n    - {{ pin_subpackage('ipopt', max_pin='x.x') }}\n\nrequirements:\n  build:\n    - {{ compiler('fortran') }}\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n  host:\n    - libblas\n    - liblapack\n    - ampl-mp\n    - mumps-seq\n    - metis\n    - scotch\n  run:\n    - ampl-mp\n    - mumps-seq\n    - metis\n    - scotch\n\ntest:\n  files:\n    - test\n    - mytoy.nl\n\n  requires:\n    - {{ compiler('fortran') }}\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n\nabout:\n  home: https://projects.coin-or.org/Ipopt/\n  license: EPL 1.0\n  license_file: LICENSE\n  summary: Software package for large-scale nonlinear optimization\n\nextra:\n  recipe-maintainers:\n    - pstjohn\n    - bluescarni\n",
  "req":{
   "__set__":true,
   "elements":[
