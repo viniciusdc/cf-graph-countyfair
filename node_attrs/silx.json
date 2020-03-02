@@ -205,8 +205,7 @@
    "summary":"The silx project aims at providing a collection of Python packages to support the development of data assessment, reduction and analysis applications at synchrotron radiation facilities."
   },
   "build":{
-   "number":"0",
-   "script":" -m pip install . -vv --global-option build --global-option --force-cython "
+   "number":"1"
   },
   "extra":{
    "recipe-maintainers":[
@@ -224,92 +223,191 @@
     "t20100"
    ]
   },
+  "outputs":[
+   {
+    "build":{
+     "entry_points":[
+      "silx = silx.__main__:main"
+     ]
+    },
+    "name":"silx-base",
+    "requirements":{
+     "build":[
+      "c_compiler_stub",
+      "cxx_compiler_stub"
+     ],
+     "host":[
+      "cython",
+      "pip",
+      "python",
+      "setuptools",
+      "numpy >=1.12"
+     ],
+     "run":[
+      "python",
+      "setuptools",
+      "compatible_pin_stub",
+      "fabio >=0.9",
+      "h5py",
+      "six"
+     ]
+    },
+    "script":"build_base.bat",
+    "test":{
+     "imports":[
+      "silx",
+      "silx.test"
+     ]
+    }
+   },
+   {
+    "build":{
+     "noarch":"generic"
+    },
+    "name":"silx",
+    "requirements":{
+     "run":[
+      "subpackage_stub",
+      "mako",
+      "ipython",
+      "qtconsole",
+      "matplotlib",
+      "python-dateutil",
+      "pyqt",
+      "scipy",
+      "pillow"
+     ]
+    }
+   },
+   {
+    "build":{
+     "entry_points":[
+      "silx = silx.__main__:main"
+     ]
+    },
+    "name":"silx-base",
+    "requirements":{
+     "build":[
+      "c_compiler_stub",
+      "cxx_compiler_stub"
+     ],
+     "host":[
+      "cython",
+      "pip",
+      "python",
+      "setuptools",
+      "numpy >=1.12"
+     ],
+     "run":[
+      "python",
+      "setuptools",
+      "compatible_pin_stub",
+      "fabio >=0.9",
+      "h5py",
+      "six"
+     ]
+    },
+    "script":"build_base.sh",
+    "test":{
+     "imports":[
+      "silx",
+      "silx.test"
+     ]
+    }
+   },
+   {
+    "build":{
+     "noarch":"generic"
+    },
+    "name":"silx",
+    "requirements":{
+     "run":[
+      "subpackage_stub",
+      "mako",
+      "ipython",
+      "qtconsole",
+      "matplotlib",
+      "python-dateutil",
+      "pyqt",
+      "scipy",
+      "pillow"
+     ]
+    }
+   },
+   {
+    "build":{
+     "entry_points":[
+      "silx = silx.__main__:main"
+     ]
+    },
+    "name":"silx-base",
+    "requirements":{
+     "build":[
+      "c_compiler_stub",
+      "cxx_compiler_stub"
+     ],
+     "host":[
+      "cython",
+      "pip",
+      "python",
+      "setuptools",
+      "numpy >=1.12"
+     ],
+     "run":[
+      "python",
+      "setuptools",
+      "compatible_pin_stub",
+      "fabio >=0.9",
+      "h5py",
+      "six"
+     ]
+    },
+    "script":"build_base.sh",
+    "test":{
+     "imports":[
+      "silx",
+      "silx.test"
+     ]
+    }
+   },
+   {
+    "build":{
+     "noarch":"generic"
+    },
+    "name":"silx",
+    "requirements":{
+     "run":[
+      "subpackage_stub",
+      "mako",
+      "ipython",
+      "qtconsole",
+      "matplotlib",
+      "python-dateutil",
+      "pyqt",
+      "scipy",
+      "pillow"
+     ]
+    }
+   }
+  ],
   "package":{
-   "name":"silx",
+   "name":"silx-base",
    "version":"0.12.0"
-  },
-  "requirements":{
-   "build":[
-    "c_compiler_stub",
-    "cxx_compiler_stub",
-    "c_compiler_stub",
-    "cxx_compiler_stub",
-    "c_compiler_stub",
-    "cxx_compiler_stub"
-   ],
-   "host":[
-    "cython",
-    "pip",
-    "python",
-    "setuptools",
-    "numpy >=1.12",
-    "cython",
-    "pip",
-    "python",
-    "setuptools",
-    "numpy >=1.12",
-    "cython",
-    "pip",
-    "python",
-    "setuptools",
-    "numpy >=1.12"
-   ],
-   "run":[
-    "python",
-    "setuptools",
-    "compatible_pin_stub",
-    "fabio >=0.7",
-    "h5py",
-    "six",
-    "mako",
-    "ipython",
-    "qtconsole",
-    "matplotlib >=1.2.0",
-    "python-dateutil",
-    "python",
-    "setuptools",
-    "compatible_pin_stub",
-    "fabio >=0.7",
-    "h5py",
-    "six",
-    "mako",
-    "ipython",
-    "qtconsole",
-    "matplotlib >=1.2.0",
-    "python-dateutil",
-    "python",
-    "setuptools",
-    "compatible_pin_stub",
-    "fabio >=0.7",
-    "h5py",
-    "six",
-    "mako",
-    "ipython",
-    "qtconsole",
-    "matplotlib >=1.2.0",
-    "python-dateutil"
-   ]
   },
   "source":{
    "fn":"silx-0.12.0.tar.gz",
    "sha256":"2346ee44eb65ffa23c82d86f401282ea0fde0b813f897f178d901ec09889b9dc",
    "url":"https://pypi.io/packages/source/s/silx/silx-0.12.0.tar.gz"
-  },
-  "test":{
-   "imports":[
-    "silx",
-    "silx.test",
-    "silx",
-    "silx.test",
-    "silx",
-    "silx.test"
-   ]
   }
  },
- "name":"silx",
+ "name":"silx-base",
  "new_version":"0.12.0",
+ "outputs_names":[
+  "silx",
+  "silx-base"
+ ],
  "pinning_version":"2020.02.12",
- "raw_meta_yaml":"{% set name = \"silx\" %}\n{% set version = \"0.12.0\" %}\n{% set sha256 = \"2346ee44eb65ffa23c82d86f401282ea0fde0b813f897f178d901ec09889b9dc\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  fn: {{ name }}-{{ version }}.tar.gz\n  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz\n  sha256: {{ sha256 }}\n\nbuild:\n  number: 0\n  script: \"{{ PYTHON }} -m pip install . -vv --global-option build --global-option --force-cython \"\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n  host:\n    - cython\n    - pip\n    - python\n    - setuptools\n    - numpy >=1.12\n\n  run:\n    - python\n    - setuptools\n    - {{ pin_compatible('numpy') }}\n    - fabio >=0.7\n    - h5py\n    - six\n    - mako\n    - ipython\n    - qtconsole\n    - matplotlib >=1.2.0\n    - python-dateutil\n    # optional dep causing lots of problems\n    #- pyopengl\n\ntest:\n  imports:\n    - silx\n    - silx.test\n\nabout:\n  home: https://github.com/silx-kit/silx\n  license: MIT\n  license_family: MIT\n  license_file: copyright\n  summary: 'The silx project aims at providing a collection of Python packages\n  to support the development of data assessment, reduction and analysis\n  applications at synchrotron radiation facilities.'\n\n  description: |\n    The silx project aims at providing a collection of Python packages to\n    support the development of data assessment, reduction and analysis\n    applications at synchrotron radiation facilities. It aims at providing\n    reading/writing different file formats, data reduction routines and a set\n    of Qt widgets to browse and visualize data.\n  doc_url: http://www.silx.org/doc/silx/latest/\n  dev_url: https://github.com/silx-kit/silx\n\nextra:\n  recipe-maintainers:\n    - CJ-Wright\n    - tschoonj\n    - vallsv\n    - t20100\n",
+ "raw_meta_yaml":"{% set name = \"silx\" %}\n{% set version = \"0.12.0\" %}\n{% set sha256 = \"2346ee44eb65ffa23c82d86f401282ea0fde0b813f897f178d901ec09889b9dc\" %}\n\npackage:\n  name: silx-base\n  version: {{ version }}\n\nsource:\n  fn: {{ name }}-{{ version }}.tar.gz\n  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz\n  sha256: {{ sha256 }}\n\nbuild:\n  number: 1\n\noutputs:\n  - name: silx-base\n    script: build_base.bat  # [win]\n    script: build_base.sh  # [not win]\n    build:\n      entry_points:\n        - silx = silx.__main__:main\n\n    requirements:\n      build:\n        - {{ compiler('c') }}\n        - {{ compiler('cxx') }}\n      host:\n        - cython\n        - pip\n        - python\n        - setuptools\n        - numpy >=1.12\n      run:\n        - python\n        - setuptools\n        - {{ pin_compatible('numpy') }}\n        - fabio >=0.9\n        - h5py\n        - six\n        - enum34  # [py2k]\n        - futures  # [py2k]\n\n    test:\n      imports:\n        - silx\n        - silx.test\n\n  - name: silx\n    build:\n      noarch: generic\n    requirements:\n      run:\n        - {{ pin_subpackage('silx-base', exact=True) }}\n        - mako\n        - ipython\n        - qtconsole\n        - matplotlib\n        - python-dateutil\n        - pyqt\n        - scipy\n        - pillow\n        # optional dep causing lots of problems\n        #- pyopengl\n\nabout:\n  home: https://github.com/silx-kit/silx\n  license: MIT\n  license_family: MIT\n  license_file: copyright\n  summary: 'The silx project aims at providing a collection of Python packages\n  to support the development of data assessment, reduction and analysis\n  applications at synchrotron radiation facilities.'\n\n  description: |\n    The silx project aims at providing a collection of Python packages to\n    support the development of data assessment, reduction and analysis\n    applications at synchrotron radiation facilities. It aims at providing\n    reading/writing different file formats, data reduction routines and a set\n    of Qt widgets to browse and visualize data.\n  doc_url: http://www.silx.org/doc/silx/latest/\n  dev_url: https://github.com/silx-kit/silx\n\nextra:\n  recipe-maintainers:\n    - CJ-Wright\n    - tschoonj\n    - vallsv\n    - t20100\n",
  "req":{
   "__set__":true,
   "elements":[
@@ -323,12 +421,16 @@
    "mako",
    "matplotlib",
    "numpy",
+   "pillow",
    "pip",
+   "pyqt",
    "python",
    "python-dateutil",
    "qtconsole",
+   "scipy",
    "setuptools",
-   "six"
+   "six",
+   "subpackage_stub"
   ]
  },
  "requirements":{
@@ -358,11 +460,15 @@
     "ipython",
     "mako",
     "matplotlib",
+    "pillow",
+    "pyqt",
     "python",
     "python-dateutil",
     "qtconsole",
+    "scipy",
     "setuptools",
-    "six"
+    "six",
+    "subpackage_stub"
    ]
   },
   "test":{
@@ -394,16 +500,20 @@
    "__set__":true,
    "elements":[
     "compatible_pin_stub",
-    "fabio >=0.7",
+    "fabio >=0.9",
     "h5py",
     "ipython",
     "mako",
-    "matplotlib >=1.2.0",
+    "matplotlib",
+    "pillow",
+    "pyqt",
     "python",
     "python-dateutil",
     "qtconsole",
+    "scipy",
     "setuptools",
-    "six"
+    "six",
+    "subpackage_stub"
    ]
   },
   "test":{
