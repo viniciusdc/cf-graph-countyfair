@@ -160,36 +160,52 @@
   "about":{
    "home":"http://casadi.org",
    "license":"LGPL-3.0",
+   "license_file":"LICENSE.txt",
    "summary":"CasADi is a symbolic framework for numeric optimization"
   },
   "build":{
-   "features":null,
-   "number":"1002",
+   "number":"0",
+   "rpaths":[
+    "lib/",
+    "lib/casadi/",
+    "lib/",
+    "lib/casadi/",
+    "lib/",
+    "lib/casadi/"
+   ],
    "skip":true
   },
   "extra":{
    "recipe-maintainers":[
     "pstjohn",
+    "pariterre",
     "pstjohn",
-    "pstjohn"
+    "pariterre",
+    "pstjohn",
+    "pariterre"
    ]
   },
   "package":{
    "name":"casadi",
-   "version":"3.4.5"
+   "version":"3.5.1"
   },
   "requirements":{
    "build":[
+    "pkg-config",
     "cmake",
+    "ninja",
     "fortran_compiler_stub",
     "c_compiler_stub",
     "cxx_compiler_stub",
     "pkg-config",
     "cmake",
+    "ninja",
     "fortran_compiler_stub",
     "c_compiler_stub",
     "cxx_compiler_stub",
+    "pkg-config",
     "cmake",
+    "ninja",
     "fortran_compiler_stub",
     "c_compiler_stub",
     "cxx_compiler_stub"
@@ -227,9 +243,9 @@
    ]
   },
   "source":{
-   "fn":"3.4.5.tar.gz",
-   "sha256":"2732a90b49084c38c88e0fb59b49635456f6f19712436a64c998133e52fd396f",
-   "url":"https://github.com/casadi/casadi/archive/3.4.5.tar.gz"
+   "fn":"3.5.1.tar.gz",
+   "sha256":"73eb096837bee2d1bbdfb8565f07c4a9d62b30cf831ad1ce3196df1f1770ae4d",
+   "url":"https://github.com/casadi/casadi/archive/3.5.1.tar.gz"
   },
   "test":{
    "commands":"python ipopt_nl.py",
@@ -248,7 +264,7 @@
  "name":"casadi",
  "new_version":"3.5.1",
  "pinning_version":"2019.11.01",
- "raw_meta_yaml":"{% set name = \"casadi\" %}\n{% set version = \"3.4.5\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  fn: {{ version }}.tar.gz\n  url: https://github.com/casadi/casadi/archive/{{ version }}.tar.gz\n  sha256: 2732a90b49084c38c88e0fb59b49635456f6f19712436a64c998133e52fd396f\n\nbuild:\n  number: 1002\n  skip: true  # [win]\n  skip: true  # [np==111 and np==112]\n  features:\n\nrequirements:\n  build:\n    - pkg-config  # [osx]\n    - cmake\n    - {{ compiler('fortran') }}\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n  host:\n    - libblas\n    - libcblas\n    - python\n    - swig\n    - numpy\n    - ipopt\n\n  run:\n    - python\n    - {{ pin_compatible('numpy') }}\n    - ipopt\n\ntest:\n  imports:\n    - casadi\n  files:\n    - ipopt_nl.py\n  commands:\n    python ipopt_nl.py\n\nabout:\n  home: http://casadi.org\n  license: LGPL-3.0\n  summary: 'CasADi is a symbolic framework for numeric optimization'\n\nextra:\n  recipe-maintainers:\n    - pstjohn\n",
+ "raw_meta_yaml":"{% set name = \"casadi\" %}\n{% set version = \"3.5.1\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  fn: {{ version }}.tar.gz\n  url: https://github.com/casadi/casadi/archive/{{ version }}.tar.gz\n  sha256: 73eb096837bee2d1bbdfb8565f07c4a9d62b30cf831ad1ce3196df1f1770ae4d\n\nbuild:\n  number: 0\n  skip: True  # [win and vc<14]\n  skip: True  # [win]\n  skip: True  # [py<35 or py>37]\n  rpaths:\n    - lib/\n    - lib/{{ name }}/\n\nrequirements:\n  build:\n    - pkg-config\n    - cmake\n    - ninja\n    - {{ compiler('fortran') }}\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n  host:\n    - libblas\n    - libcblas\n    - python\n    - swig\n    - numpy\n    - ipopt\n\n  run:\n    - python\n    - {{ pin_compatible('numpy') }}\n    - ipopt\n\ntest:\n  imports:\n    - casadi\n  files:\n    - ipopt_nl.py\n  commands:\n    python ipopt_nl.py\n\nabout:\n  home: http://casadi.org\n  license: LGPL-3.0\n  license_file: LICENSE.txt\n  summary: 'CasADi is a symbolic framework for numeric optimization'\n\nextra:\n  recipe-maintainers:\n    - pstjohn\n    - pariterre\n",
  "req":{
   "__set__":true,
   "elements":[
@@ -260,6 +276,7 @@
    "ipopt",
    "libblas",
    "libcblas",
+   "ninja",
    "numpy",
    "pkg-config",
    "python",
@@ -274,6 +291,7 @@
     "cmake",
     "cxx_compiler_stub",
     "fortran_compiler_stub",
+    "ninja",
     "pkg-config"
    ]
   },
@@ -311,6 +329,7 @@
     "cmake",
     "cxx_compiler_stub",
     "fortran_compiler_stub",
+    "ninja",
     "pkg-config"
    ]
   },
@@ -339,5 +358,5 @@
   }
  },
  "url":"https://github.com/casadi/casadi/archive/3.4.5.tar.gz",
- "version":"3.4.5"
+ "version":"3.5.1"
 }
