@@ -75,7 +75,7 @@
    ]
   }
  ],
- "bad":"Upstream: Error getting upstream version",
+ "bad":false,
  "conda-forge.yml":{},
  "feedstock_name":"ros-roslib",
  "hash_type":"sha256",
@@ -194,7 +194,7 @@
   }
  },
  "name":"ros-roslib",
- "new_version":"1.14.7",
+ "new_version":"1.14.8",
  "pinning_version":"2020.02.20",
  "raw_meta_yaml":"package:\n  name: ros-roslib\n  version: 1.14.6\n\nsource:\n  url: https://github.com/ros-gbp/ros-release/archive/release/melodic/roslib/1.14.6-0.tar.gz\n  fn: ros-roslib-1.14.6.tar.gz\n  sha256: e6a681f31b005d86d3d87877a69d398e5736ac4fc8cd3e65d8900d05b96f9b9b\n  patches:\n\nbuild:\n  number: 2\n  skip: true  # [win]\n  run_exports:\n    - {{ pin_subpackage('ros-roslib', 'x.x') }}\n\nrequirements:\n  build:\n    - {{ compiler('cxx') }}\n    - {{ compiler('c') }}\n    - cmake\n    - make  # [unix]\n  host:\n    - ros-conda-mutex * melodic\n    - ros-conda-base\n    - python\n    - catkin_pkg\n    - ros-rospack\n    - boost-cpp\n    - ros-catkin\n  run:\n    - ros-conda-mutex * melodic\n    - ros-conda-base\n    - python\n    - ros-catkin\n    - ros-rospack\n    - rospkg\n    - ros-environment\n\ntest:\n  requires:\n    - rospkg\n  commands:\n    - export ROS_ROOT=$PREFIX && python -c \"import rospkg;s = rospkg.RosPack();ret = s.get_path('roslib');print(ret)\"\n\nabout:\n  home: http://ros.org/wiki/roslib\n  summary: |\n    Base dependencies and support libraries for ROS.\n  description: |\n    Base dependencies and support libraries for ROS. roslib contains many of the\n    common data structures and tools that are shared across ROS client library\n    implementations.\n  license: BSD-3-Clause\n  license_file: include/ros/package.h\n\nextra:\n  recipe-maintainers:\n    - wolfv\n    - lesteve\n    - seanyen\n",
  "req":{
