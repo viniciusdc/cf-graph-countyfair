@@ -184,6 +184,23 @@
     "migrator_version",
     "version"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/383231073.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"ArchRebuild",
+    "migrator_version":1,
+    "name":"aarch64 and ppc64le addition"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "name"
+   ]
   }
  ],
  "bad":false,
@@ -281,7 +298,7 @@
  },
  "name":"pymongo",
  "new_version":"3.10.1",
- "pinning_version":"2020.01.07",
+ "pinning_version":"2020.03.03",
  "raw_meta_yaml":"{% set version = \"3.10.1\" %}\n\npackage:\n  name: pymongo\n  version: {{ version }}\n\nsource:\n  url: https://github.com/mongodb/mongo-python-driver/archive/{{ version }}.tar.gz\n  fn: pymongo-{{ version }}.tar.gz\n  sha256: 24dc5aa6f379de44ce5299b610d72e92a401a2b4fdac3516dfed536cc5b080fe\n\nbuild:\n  number: 0\n  script: python setup.py install --single-version-externally-managed --record=record.txt\n  script_env:  # [osx]\n    - TRAVIS   # [osx]\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n  host:\n    - python\n    - setuptools\n  run:\n    - python\n\ntest:\n  source_files:\n    - .\n  imports:\n    - bson\n    - gridfs\n    - pymongo\n  requires:  # [not win]\n    - mongodb  # [not win]\n    - setuptools  # [not win]\n\nabout:\n  home: https://github.com/mongodb/mongo-python-driver\n  license: Apache 2.0\n  license_file: LICENSE\n  summary: Python driver for MongoDB http://www.mongodb.org\n\nextra:\n  recipe-maintainers:\n    - licode\n    - tacaswell\n    - CJ-Wright\n",
  "req":{
   "__set__":true,
@@ -321,7 +338,7 @@
    ]
   }
  },
- "smithy_version":"3.6.5",
+ "smithy_version":"3.6.9",
  "strong_exports":false,
  "total_requirements":{
   "build":{

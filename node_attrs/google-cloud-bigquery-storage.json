@@ -103,6 +103,23 @@
     "migrator_version",
     "name"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/383224652.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"Version",
+    "migrator_version":0,
+    "version":"0.8.0"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "version"
+   ]
   }
  ],
  "bad":false,
@@ -416,12 +433,12 @@
   }
  },
  "name":"google-cloud-bigquery-storage-split",
- "new_version":"0.7.0",
+ "new_version":"0.8.0",
  "outputs_names":[
   "google-cloud-bigquery-storage",
   "google-cloud-bigquery-storage-core"
  ],
- "pinning_version":"2019.11.01",
+ "pinning_version":"2020.03.03",
  "raw_meta_yaml":"{% set name = \"google-cloud-bigquery-storage\" %}\n{% set version = \"0.7.0\" %}\n{% set sha256 = \"c389d1ffaead18ec1fe02d260c6abb4d2968cce9e24d99be4d6b8e37b7971a03\" %}\n\npackage:\n  name: \"{{ name|lower }}-split\"\n  version: \"{{ version }}\"\n\nsource:\n  fn: {{ name }}-{{ version }}.tar.gz\n  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz\n  sha256: {{ sha256 }}\n\nbuild:\n  number: 1\n  # Conda package for protobuf does not support Python 2.7 on Windows due to\n  # requirement on C++ 11. VS 2008 is not supported.\n  skip: True  # [win and vc<14]\n\nrequirements:\n  host:\n    - python\n    - pip >=18.1\n    - setuptools >=34.0.0\n\noutputs:\n  - name: {{ name }}\n    build:\n      noarch: python\n\n    requirements:\n      host:\n        - python\n        - pip >=18.1\n        - setuptools >=34.0.0\n\n      run:\n        - {{ name }}-core {{ version }}\n        - pandas\n        - fastavro\n        - pyarrow\n\n    test:\n      imports:\n        - google\n        - google.cloud\n        - google.cloud.bigquery_storage_v1beta1\n        - google.cloud.bigquery_storage_v1beta1.gapic\n        - google.cloud.bigquery_storage_v1beta1.gapic.transports\n        - google.cloud.bigquery_storage_v1beta1.proto\n        - google.cloud.bigquery_storage_v1beta1.reader\n\n    about:\n      home: https://github.com/GoogleCloudPlatform/google-cloud-python\n      license: Apache-2.0\n      license_family: Apache\n      license_file: LICENSE\n      summary: \"Batteries-included library for BigQuery Storage API\"\n      description: |\n        {{ name }} installs {{ name }}-core and the extra requirements for\n        parsing table data. Avro and Arrow data formats are supported.\n\n        Supported Python Versions\n        -------------------------\n        Python >= 3.5\n\n        Deprecated Python Versions\n        --------------------------\n        Python == 2.7\n\n        - Python 2.7 support will be removed on January 1, 2020.\n        - protobuf does not support Visual C++ 2008, windows py27 package not available\n      doc_url: https://googleapis.github.io/google-cloud-python/latest/bigquery_storage/index.html\n      dev_url: https://github.com/googleapis/google-cloud-python/tree/master/bigquery_storage\n\n  - name: {{ name }}-core\n    build:\n      script: \"{{ PYTHON }} -m pip install . --no-deps --ignore-installed -vvv \"\n      skip: True  # [win and vc<14]\n\n    requirements:\n      host:\n        - python\n        - pip >=18.1\n        - setuptools >=34.0.0\n\n      run:\n        - python\n        # Backport of enum for Python < 3.4.\n        - enum34  # [py2k]\n        - google-api-core-grpc >=1.14.0,<2.0.0dev\n\n      run_constrained:\n        - pandas >=0.17.1\n        - fastavro >=0.21.2\n        - pyarrow >=0.13.0\n\n    test:\n      imports:\n        - google\n        - google.cloud\n        - google.cloud.bigquery_storage_v1beta1\n        - google.cloud.bigquery_storage_v1beta1.gapic\n        - google.cloud.bigquery_storage_v1beta1.gapic.transports\n        - google.cloud.bigquery_storage_v1beta1.proto\n        - google.cloud.bigquery_storage_v1beta1.reader\n\n    about:\n      home: https://github.com/GoogleCloudPlatform/google-cloud-python\n      license: Apache-2.0\n      license_family: Apache\n      license_file: LICENSE\n      summary: \"Core library for BigQuery Storage API\"\n      description: |\n        {{ name }}-core the core client library for connecting to the\n        BigQuery Storage API.\n\n        Supported Python Versions\n        -------------------------\n        Python >= 3.5\n\n        Deprecated Python Versions\n        --------------------------\n        Python == 2.7\n\n        - Python 2.7 support will be removed on January 1, 2020.\n        - protobuf does not support Visual C++ 2008, windows py27 package not available\n      doc_url: https://googleapis.github.io/google-cloud-python/latest/bigquery_storage/index.html\n      dev_url: https://github.com/googleapis/google-cloud-python/tree/master/bigquery_storage\n\nabout:\n  home: https://github.com/GoogleCloudPlatform/google-cloud-python\n  license: Apache-2.0\n  license_family: Apache\n  license_file: LICENSE\n  summary: \"BigQuery Storage API client library\"\n  doc_url: https://googleapis.github.io/google-cloud-python/latest/bigquery_storage/index.html\n  dev_url: https://github.com/googleapis/google-cloud-python/tree/master/bigquery_storage\n\nextra:\n  recipe-maintainers:\n    - leahecole\n    - pshiko\n    - tswast\n",
  "req":{
   "__set__":true,
@@ -465,7 +482,7 @@
    "elements":[]
   }
  },
- "smithy_version":"3.6.1",
+ "smithy_version":"3.6.9",
  "strong_exports":false,
  "total_requirements":{
   "build":{
