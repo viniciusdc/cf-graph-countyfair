@@ -359,7 +359,7 @@
   },
   "package":{
    "name":"mss",
-   "version":"1.9.1"
+   "version":"1.9.2"
   },
   "requirements":{
    "host":[
@@ -376,6 +376,7 @@
    ],
    "run":[
     "python",
+    "defusedxml",
     "menuinst",
     "basemap >=1.2.0",
     "chameleon",
@@ -411,6 +412,7 @@
     "multidict",
     "pint",
     "python",
+    "defusedxml",
     "basemap >=1.2.0",
     "chameleon",
     "execnet",
@@ -445,6 +447,7 @@
     "multidict",
     "pint",
     "python",
+    "defusedxml",
     "basemap >=1.2.0",
     "chameleon",
     "execnet",
@@ -486,8 +489,8 @@
     "mss_pyui_set_proj_lib_data_dir.patch",
     "mss_pyui_set_proj_lib_data_dir.patch"
    ],
-   "sha256":"a4ab1a17dfd80ab2b2de63fd28d7765915e69cbd0c57c00088c298f2288a1e5f",
-   "url":"https://bitbucket.org/wxmetvis/mss/get/1.9.1.tar.gz"
+   "sha256":"48ba67130e387b002934f4c16a3495a01baf4ecbef0b3995b7c815364816f66c",
+   "url":"https://bitbucket.org/wxmetvis/mss/get/1.9.2.tar.gz"
   },
   "test":{
    "commands":[
@@ -511,13 +514,14 @@
  "name":"mss",
  "new_version":"1.9.0",
  "pinning_version":"2020.02.12",
- "raw_meta_yaml":"{% set version = \"1.9.1\" %}\n\npackage:\n  name: mss\n  version: {{ version }}\n\nsource:\n  url: https://bitbucket.org/wxmetvis/mss/get/{{ version }}.tar.gz\n  sha256: a4ab1a17dfd80ab2b2de63fd28d7765915e69cbd0c57c00088c298f2288a1e5f\n  patches:\n    # start without environment by a application menu needs a PROJ_LIB env too\n    - mss_pyui_set_proj_lib_data_dir.patch\n\nbuild:\n  skip: true  # [py27]\n  number: 0\n  script: \"{{ PYTHON }} -m pip install . --no-deps -vv\"  # [not win]\n  entry_points:\n    - mss = mslib.msui.mss_pyui:main\n    - mswms = mslib.mswms.mswms:main\n    - mswms_demodata = mslib.mswms.demodata:main\n    - mscolab = mslib.mscolab.server:main\n    - mscolab_demodata = mslib.mscolab.demodata:main\n    - mscolab_add_permissions = mslib.mscolab.add_bulk_permissions:main\n\nrequirements:\n  host:\n    - python\n    - pip\n    - future\n    - menuinst  # [win]\n  run:\n    - python\n    - menuinst  # [win]\n    - basemap >=1.2.0\n    - chameleon\n    - execnet\n    - isodate\n    - lxml\n    - netcdf4\n    - hdf4\n    - pillow >=5,<6\n    - pytz\n    - pyqt >=5,<6\n    - qt >=5,<6\n    - requests\n    - scipy\n    - skyfield >=1.12\n    - tk\n    - owslib\n    - unicodecsv\n    - fs_filepicker\n    - cftime >=1.0.1\n    - matplotlib ==3.0.2\n    - proj4 <6\n    - flask\n    - flask-httpauth\n    - werkzeug\n    - flask-socketio\n    - flask-sqlalchemy\n    - passlib\n    - gitpython\n    - git\n    - psycopg2\n    - validate_email\n    - multidict\n    - pint\n\ntest:\n  imports:\n    - mslib\n  commands:\n    - mswms -h\n    - mss -h\n    - mscolab_demodata -h\n\nabout:\n  summary: 'A QT application and a OGC web server to plan atmospheric research flights.'\n  home: https://bitbucket.org/wxmetvis/mss\n  license: \"Apache 2.0\"\n  license_family: \"APACHE\"\n  license_file: LICENSE\n  description: |\n    MSS - Mission Support System\n\n    Documentation:\n    * https://mss.rtfd.io\n    * http://www.geosci-model-dev.net/5/55/2012/gmd-5-55-2012.pdf\n\n    Software for planning research Aircraft Missions.\n    For discussion of the possibilites of the research flights,\n    the Mission Support System (MSS) was developed.\n    This software helps to review a big amount of metereological and\n    model data by viewing the forecasted parameters of interest along possible regions\n    of a proposed flight path. Data and possible flight paths can\n    be displayed on a hoizontal view (map projection) or on a vertical\n    view (along the proposed flight path). Flight paths can be constructed\n    and modified on these views. Exchange through a waypoint table is also possible.\n\nextra:\n  recipe-maintainers:\n    - ReimarBauer\n",
+ "raw_meta_yaml":"{% set version = \"1.9.2\" %}\n\npackage:\n  name: mss\n  version: {{ version }}\n\nsource:\n  url: https://bitbucket.org/wxmetvis/mss/get/{{ version }}.tar.gz\n  sha256: 48ba67130e387b002934f4c16a3495a01baf4ecbef0b3995b7c815364816f66c\n  patches:\n    # start without environment by a application menu needs a PROJ_LIB env too\n    - mss_pyui_set_proj_lib_data_dir.patch\n\nbuild:\n  skip: true  # [py27]\n  number: 0\n  script: \"{{ PYTHON }} -m pip install . --no-deps -vv\"  # [not win]\n  entry_points:\n    - mss = mslib.msui.mss_pyui:main\n    - mswms = mslib.mswms.mswms:main\n    - mswms_demodata = mslib.mswms.demodata:main\n    - mscolab = mslib.mscolab.server:main\n    - mscolab_demodata = mslib.mscolab.demodata:main\n    - mscolab_add_permissions = mslib.mscolab.add_bulk_permissions:main\n\nrequirements:\n  host:\n    - python\n    - pip\n    - future\n    - menuinst  # [win]\n  run:\n    - python\n    - defusedxml\n    - menuinst  # [win]\n    - basemap >=1.2.0\n    - chameleon\n    - execnet\n    - isodate\n    - lxml\n    - netcdf4\n    - hdf4\n    - pillow >=5,<6\n    - pytz\n    - pyqt >=5,<6\n    - qt >=5,<6\n    - requests\n    - scipy\n    - skyfield >=1.12\n    - tk\n    - owslib\n    - unicodecsv\n    - fs_filepicker\n    - cftime >=1.0.1\n    - matplotlib ==3.0.2\n    - proj4 <6\n    - flask\n    - flask-httpauth\n    - werkzeug\n    - flask-socketio\n    - flask-sqlalchemy\n    - passlib\n    - gitpython\n    - git\n    - psycopg2\n    - validate_email\n    - multidict\n    - pint\n\ntest:\n  imports:\n    - mslib\n  commands:\n    - mswms -h\n    - mss -h\n    - mscolab_demodata -h\n\nabout:\n  summary: 'A QT application and a OGC web server to plan atmospheric research flights.'\n  home: https://bitbucket.org/wxmetvis/mss\n  license: \"Apache 2.0\"\n  license_family: \"APACHE\"\n  license_file: LICENSE\n  description: |\n    MSS - Mission Support System\n\n    Documentation:\n    * https://mss.rtfd.io\n    * http://www.geosci-model-dev.net/5/55/2012/gmd-5-55-2012.pdf\n\n    Software for planning research Aircraft Missions.\n    For discussion of the possibilites of the research flights,\n    the Mission Support System (MSS) was developed.\n    This software helps to review a big amount of metereological and\n    model data by viewing the forecasted parameters of interest along possible regions\n    of a proposed flight path. Data and possible flight paths can\n    be displayed on a hoizontal view (map projection) or on a vertical\n    view (along the proposed flight path). Flight paths can be constructed\n    and modified on these views. Exchange through a waypoint table is also possible.\n\nextra:\n  recipe-maintainers:\n    - ReimarBauer\n",
  "req":{
   "__set__":true,
   "elements":[
    "basemap",
    "cftime",
    "chameleon",
+   "defusedxml",
    "execnet",
    "flask",
    "flask-httpauth",
@@ -574,6 +578,7 @@
     "basemap",
     "cftime",
     "chameleon",
+    "defusedxml",
     "execnet",
     "flask",
     "flask-httpauth",
@@ -635,6 +640,7 @@
     "basemap >=1.2.0",
     "cftime >=1.0.1",
     "chameleon",
+    "defusedxml",
     "execnet",
     "flask",
     "flask-httpauth",
@@ -675,5 +681,5 @@
   }
  },
  "url":"https://bitbucket.org/wxmetvis/mss/get/1.8.2.tar.gz",
- "version":"1.9.1"
+ "version":"1.9.2"
 }
