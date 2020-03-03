@@ -1,4 +1,23 @@
 {
+ "PRed":[
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/383251665.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"Version",
+    "migrator_version":0,
+    "version":"3.0.2"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "version"
+   ]
+  }
+ ],
  "bad":false,
  "conda-forge.yml":{},
  "feedstock_name":"json-e",
@@ -98,7 +117,8 @@
   }
  },
  "name":"json-e",
- "new_version":"3.0.0",
+ "new_version":"3.0.2",
+ "pinning_version":"2020.03.03",
  "raw_meta_yaml":"{% set name = \"json-e\" %}\n{% set version = \"3.0.0\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  url: https://github.com/taskcluster/{{ name }}/archive/v{{ version }}.tar.gz\n  sha256: a107ae5428caa2117fbb0819f5336b042d48288a294a97f373a6368d8a5201b7\n\nbuild:\n  noarch: python\n  number: 0\n  script:\n    - \"{{ PYTHON }} setup.py sdist\"\n    - \"cd dist && {{ PYTHON }} -m pip install {{ name }}-{{ version }}.tar.gz -vv\"\n\nrequirements:\n  host:\n    - python\n    - pip\n  run:\n    - python\n\ntest:\n  source_files:\n    - test\n    - specification.yml\n  requires:\n    - freezegun\n    - hypothesis\n    - nose\n    - pyyaml\n    - python-dateutil\n    - pep8\n  imports:\n    - jsone\n  commands:\n    - cd test && nosetests\n\nabout:\n  home: https://taskcluster.github.io/json-e\n  license: MPL-2.0\n  license_family: OTHER\n  license_file: LICENSE\n  summary: 'A data-structure parameterization system written for embedding context in JSON objects'\n  doc_url: http://simplejson.readthedocs.io/\n  dev_url: https://github.com/taskcluster/json-e\n  description: >\n    The central idea is to treat a data structure as a \"template\" and transform\n    it, using another data structure as context, to produce an output data\n    structure.\n\n    There are countless libraries to do this with strings, such as mustache.\n    What makes JSON-e unique is that it operates on data structures, not on\n    their textual representation. This allows input to be written in a number\n    of formats (JSON, YAML, etc.) or even generated dynamically. It also means\n    that the output cannot be \"invalid\", even when including large chunks of\n    contextual data.\n\n    JSON-e is also designed to be safe for use on untrusted data. It never uses\n    eval or any other function that might result in arbitrary code execution.\n    It also disallows unbounded iteration, so any JSON-e rendering operation\n    will finish in finite time.\n\nextra:\n  recipe-maintainers:\n    - bollwyvl\n",
  "req":{
   "__set__":true,
@@ -137,6 +157,7 @@
    ]
   }
  },
+ "smithy_version":"3.6.9",
  "strong_exports":false,
  "total_requirements":{
   "build":{
