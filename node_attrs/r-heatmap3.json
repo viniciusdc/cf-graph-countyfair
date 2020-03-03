@@ -71,9 +71,6 @@
  ],
  "bad":false,
  "conda-forge.yml":{
-  "compiler_stack":"comp7",
-  "max_py_ver":"37",
-  "max_r_ver":"35",
   "provider":{
    "win":"azure"
   }
@@ -90,7 +87,7 @@
   },
   "build":{
    "noarch":"generic",
-   "number":"1",
+   "number":"0",
    "rpaths":[
     "lib/R/lib/",
     "lib/",
@@ -103,31 +100,16 @@
   "extra":{
    "recipe-maintainers":[
     "conda-forge/r",
-    "dpryan79",
-    "johanneskoester",
-    "bgruening",
-    "daler",
-    "jdblischak",
     "conda-forge/r",
-    "dpryan79",
-    "johanneskoester",
-    "bgruening",
-    "daler",
-    "jdblischak",
-    "conda-forge/r",
-    "dpryan79",
-    "johanneskoester",
-    "bgruening",
-    "daler",
-    "jdblischak"
+    "conda-forge/r"
    ]
   },
   "package":{
    "name":"r-heatmap3",
-   "version":"1.1.6"
+   "version":"1.1.7"
   },
   "requirements":{
-   "build":[
+   "host":[
     "r-base",
     "r-fastcluster",
     "r-base",
@@ -145,15 +127,14 @@
    ]
   },
   "source":{
-   "fn":"heatmap3_1.1.6.tar.gz",
-   "sha256":"5d5a3d574e9e3699490c93a523ce242006257e5be110935d58c74c135a4e4a8d",
+   "sha256":"bab39bdcc462ed9e15dda54d58385b7c8d2bca800cd0e6ee2fce12475661b2bd",
    "url":[
-    "https://cran.r-project.org/src/contrib/heatmap3_1.1.6.tar.gz",
-    "https://cran.r-project.org/src/contrib/Archive/heatmap3/heatmap3_1.1.6.tar.gz",
-    "https://cran.r-project.org/src/contrib/heatmap3_1.1.6.tar.gz",
-    "https://cran.r-project.org/src/contrib/Archive/heatmap3/heatmap3_1.1.6.tar.gz",
-    "https://cran.r-project.org/src/contrib/heatmap3_1.1.6.tar.gz",
-    "https://cran.r-project.org/src/contrib/Archive/heatmap3/heatmap3_1.1.6.tar.gz"
+    "https://cran.r-project.org/src/contrib/heatmap3_1.1.7.tar.gz",
+    "https://cran.r-project.org/src/contrib/Archive/heatmap3/heatmap3_1.1.7.tar.gz",
+    "https://cran.r-project.org/src/contrib/heatmap3_1.1.7.tar.gz",
+    "https://cran.r-project.org/src/contrib/Archive/heatmap3/heatmap3_1.1.7.tar.gz",
+    "https://cran.r-project.org/src/contrib/heatmap3_1.1.7.tar.gz",
+    "https://cran.r-project.org/src/contrib/Archive/heatmap3/heatmap3_1.1.7.tar.gz"
    ]
   },
   "test":{
@@ -167,7 +148,7 @@
  "name":"r-heatmap3",
  "new_version":"1.1.7",
  "pinning_version":"2020.02.20",
- "raw_meta_yaml":"{% set version = \"1.1.6\" %}\n\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-heatmap3\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  fn: heatmap3_{{ version }}.tar.gz\n  url:\n    - https://cran.r-project.org/src/contrib/heatmap3_{{ version }}.tar.gz\n    - https://cran.r-project.org/src/contrib/Archive/heatmap3/heatmap3_{{ version }}.tar.gz\n  sha256: 5d5a3d574e9e3699490c93a523ce242006257e5be110935d58c74c135a4e4a8d\n\nbuild:\n  noarch: generic\n  number: 1\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - r-base\n    - r-fastcluster\n\n  run:\n    - r-base\n    - r-fastcluster\n\ntest:\n  commands:\n    - $R -e \"library('heatmap3')\"  # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('heatmap3')\\\"\"  # [win]\n\nabout:\n  home: https://CRAN.R-project.org/package=heatmap3\n  license: GPL (>= 2)\n  summary: An improved heatmap package. Completely compatible with the original R function 'heatmap',\n    and provides more powerful and convenient features.\n  license_family: GPL3\n  license_file: '{{ environ[\"PREFIX\"] }}/lib/R/share/licenses/GPL-3'  # [unix]\n  license_file: '{{ environ[\"PREFIX\"] }}\\R\\share\\licenses\\GPL-3'  # [win]\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n    - dpryan79\n    - johanneskoester\n    - bgruening\n    - daler\n    - jdblischak\n",
+ "raw_meta_yaml":"{% set version = \"1.1.7\" %}\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-heatmap3\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  url:\n    - https://cran.r-project.org/src/contrib/heatmap3_{{ version }}.tar.gz\n    - https://cran.r-project.org/src/contrib/Archive/heatmap3/heatmap3_{{ version }}.tar.gz\n  sha256: bab39bdcc462ed9e15dda54d58385b7c8d2bca800cd0e6ee2fce12475661b2bd\n\nbuild:\n  noarch: generic\n  number: 0\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  host:\n    - r-base\n    - r-fastcluster\n  run:\n    - r-base\n    - r-fastcluster\n\ntest:\n  commands:\n    - $R -e \"library('heatmap3')\"  # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('heatmap3')\\\"\"  # [win]\n\nabout:\n  home: https://CRAN.R-project.org/package=heatmap3\n  license: GPL (>= 2)\n  summary: An improved heatmap package. Completely compatible with the original R function 'heatmap', and provides more powerful and convenient features.\n  license_family: GPL3\n  license_file: {{ environ[\"PREFIX\"] }}/lib/R/share/licenses/GPL-3  # [unix]\n  license_file: {{ environ[\"PREFIX\"] }}\\R\\share\\licenses\\GPL-3  # [win]\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n",
  "req":{
   "__set__":true,
   "elements":[
@@ -178,14 +159,14 @@
  "requirements":{
   "build":{
    "__set__":true,
+   "elements":[]
+  },
+  "host":{
+   "__set__":true,
    "elements":[
     "r-base",
     "r-fastcluster"
    ]
-  },
-  "host":{
-   "__set__":true,
-   "elements":[]
   },
   "run":{
    "__set__":true,
@@ -204,14 +185,14 @@
  "total_requirements":{
   "build":{
    "__set__":true,
+   "elements":[]
+  },
+  "host":{
+   "__set__":true,
    "elements":[
     "r-base",
     "r-fastcluster"
    ]
-  },
-  "host":{
-   "__set__":true,
-   "elements":[]
   },
   "run":{
    "__set__":true,
@@ -233,5 +214,5 @@
   "https://cran.r-project.org/src/contrib/heatmap3_1.1.6.tar.gz",
   "https://cran.r-project.org/src/contrib/Archive/heatmap3/heatmap3_1.1.6.tar.gz"
  ],
- "version":"1.1.6"
+ "version":"1.1.7"
 }
