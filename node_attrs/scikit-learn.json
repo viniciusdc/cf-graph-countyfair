@@ -311,9 +311,6 @@
  ],
  "bad":false,
  "conda-forge.yml":{
-  "compiler_stack":"comp7",
-  "max_py_ver":"37",
-  "max_r_ver":"35",
   "provider":{
    "linux_aarch64":"default",
    "linux_ppc64le":"default",
@@ -330,7 +327,7 @@
    "summary":"A set of python modules for machine learning and data mining"
   },
   "build":{
-   "number":"1",
+   "number":"0",
    "script":[
     "del /f %LIBRARY_INC%\\cblas.h",
     "setup.py build_ext -j",
@@ -355,6 +352,7 @@
     "rth",
     "adrinjalali",
     "glemaitre",
+    "jeremiedbb",
     "amueller",
     "astaric",
     "jakirkham",
@@ -365,6 +363,7 @@
     "rth",
     "adrinjalali",
     "glemaitre",
+    "jeremiedbb",
     "amueller",
     "astaric",
     "jakirkham",
@@ -374,12 +373,13 @@
     "jnothman",
     "rth",
     "adrinjalali",
-    "glemaitre"
+    "glemaitre",
+    "jeremiedbb"
    ]
   },
   "package":{
    "name":"scikit-learn",
-   "version":"0.22.1"
+   "version":"0.22.2.post1"
   },
   "requirements":{
    "build":[
@@ -432,8 +432,8 @@
    ]
   },
   "source":{
-   "sha256":"7132d376a5cb605847022724e9a5dd294bd7c8a988e686b954fdeb00e24fe302",
-   "url":"https://github.com/scikit-learn/scikit-learn/archive/0.22.1.tar.gz"
+   "sha256":"c6c57326941b1854112e6730961f31995ea60fa254e79daae1994e4cd5cb6f44",
+   "url":"https://github.com/scikit-learn/scikit-learn/archive/0.22.2.post1.tar.gz"
   },
   "test":{
    "commands":[
@@ -471,7 +471,7 @@
  "name":"scikit-learn",
  "new_version":"0.22.2.post1",
  "pinning_version":"2020.03.03",
- "raw_meta_yaml":"{% set version = \"0.22.1\" %}\n{% set variant = \"openblas\" %}\n\npackage:\n  name: scikit-learn\n  version: {{ version }}\n\nsource:\n  url: https://github.com/scikit-learn/scikit-learn/archive/{{ version }}.tar.gz\n  sha256: 7132d376a5cb605847022724e9a5dd294bd7c8a988e686b954fdeb00e24fe302\n\nbuild:\n  number: 1\n  skip: True  # [py2k]\n  script:\n    - rm $PREFIX/include/cblas.h  # [not win]\n    - del /f %LIBRARY_INC%\\cblas.h  # [win]\n    # build the C files in parallel. This helps beat the\n    # time limit consistently on drone.io\n    - {{ PYTHON }} setup.py build_ext -j{{ CPU_COUNT }}\n    - {{ PYTHON }} -m pip install . -vv\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n    - llvm-openmp  # [osx]\n  host:\n    - python\n    - pip\n    - llvm-openmp  # [osx]\n    - cython >=0.28.5\n    - libcblas\n    - numpy\n    - scipy >=0.17.0\n    - joblib >=0.11\n  run:\n    - python\n    - llvm-openmp  # [osx]\n    - {{ pin_compatible('numpy') }}\n    - scipy\n    - joblib >=0.11\n\n\n# Some tests take alot of memory, and seem to cause segfaults when memory runs out\n{% set test_cpus = CPU_COUNT %}  # [not (aarch64 or ppc64le)]\n{% set test_cpus = 4 %}          # [ppc64le]\n{% set test_cpus = 8 %}          # [aarch64]\n\n{% set tests_to_skip = \"_not_a_real_test\" %}\n# Fixed in 0.22.1 -- https://github.com/scikit-learn/scikit-learn/issues/15774\n{% set tests_to_skip = tests_to_skip + \" or test_pca_dtype_preservation\" %}               # [ppc64le]\n# Can fail on aarch64 -- https://github.com/scikit-learn/scikit-learn/issues/15821\n{% set tests_to_skip = tests_to_skip + \" or test_uniform_grid\" %}                         # [aarch64]\n# Can fail -- https://github.com/scikit-learn/scikit-learn/issues/15818\n{% set tests_to_skip = tests_to_skip + \" or test_sag_regressor_computed_correct\" %}       # [linux]\n# Occasionally fails on aarch64 -- https://github.com/scikit-learn/scikit-learn/issues/15825\n{% set tests_to_skip = tests_to_skip + \" or test_unreachable_accuracy\" %}                 # [aarch64]\n\ntest:\n  requires:\n    - pytest >=3.3.0\n    - cython >=0.28.5\n    - pytest-xdist\n    - pytest-timeout\n  imports:\n    - sklearn\n  commands:\n    - set OPENBLAS_NUM_THREADS=1          # [win]\n    - set OMP_NUM_THREADS=1               # [win]\n    - export OPENBLAS_NUM_THREADS=1       # [not win]\n    - export OMP_NUM_THREADS=1            # [not win]\n    - pytest --timeout 300 -n {{ test_cpus }} --verbose --pyargs sklearn -k \"not ({{ tests_to_skip }})\"\n\nabout:\n  home: http://scikit-learn.org/\n  license: BSD 3-Clause\n  license_file: COPYING\n  summary: A set of python modules for machine learning and data mining\n\nextra:\n  recipe-maintainers:\n    - amueller\n    - astaric\n    - jakirkham\n    - ogrisel\n    - ocefpaf\n    - lesteve\n    - jnothman\n    - rth\n    - adrinjalali\n    - glemaitre\n",
+ "raw_meta_yaml":"{% set version = \"0.22.2.post1\" %}\n{% set variant = \"openblas\" %}\n\npackage:\n  name: scikit-learn\n  version: {{ version }}\n\nsource:\n  url: https://github.com/scikit-learn/scikit-learn/archive/{{ version }}.tar.gz\n  sha256: c6c57326941b1854112e6730961f31995ea60fa254e79daae1994e4cd5cb6f44\n\nbuild:\n  number: 0\n  skip: true  # [py2k]\n  script:\n    - rm $PREFIX/include/cblas.h  # [not win]\n    - del /f %LIBRARY_INC%\\cblas.h  # [win]\n    # build the C files in parallel. This helps beat the\n    # time limit consistently on drone.io\n    - {{ PYTHON }} setup.py build_ext -j{{ CPU_COUNT }}\n    - {{ PYTHON }} -m pip install . -vv\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n    - llvm-openmp  # [osx]\n  host:\n    - python\n    - pip\n    - llvm-openmp  # [osx]\n    - cython >=0.28.5\n    - libcblas\n    - numpy\n    - scipy >=0.17.0\n    - joblib >=0.11\n  run:\n    - python\n    - llvm-openmp  # [osx]\n    - {{ pin_compatible('numpy') }}\n    - scipy\n    - joblib >=0.11\n\n\n# Some tests take alot of memory, and seem to cause segfaults when memory runs out\n{% set test_cpus = CPU_COUNT %}  # [not (aarch64 or ppc64le)]\n{% set test_cpus = 4 %}  # [ppc64le]\n{% set test_cpus = 8 %}  # [aarch64]\n\n{% set tests_to_skip = \"_not_a_real_test\" %}\n# Fixed in 0.22.1 -- https://github.com/scikit-learn/scikit-learn/issues/15774\n{% set tests_to_skip = tests_to_skip + \" or test_pca_dtype_preservation\" %}               # [ppc64le]\n# Can fail on aarch64 -- https://github.com/scikit-learn/scikit-learn/issues/15821\n{% set tests_to_skip = tests_to_skip + \" or test_uniform_grid\" %}                         # [aarch64]\n# Can fail -- https://github.com/scikit-learn/scikit-learn/issues/15818\n{% set tests_to_skip = tests_to_skip + \" or test_sag_regressor_computed_correct\" %}       # [linux]\n# Occasionally fails on aarch64 -- https://github.com/scikit-learn/scikit-learn/issues/15825\n{% set tests_to_skip = tests_to_skip + \" or test_unreachable_accuracy\" %}                 # [aarch64]\n\ntest:\n  requires:\n    - pytest >=3.3.0\n    - cython >=0.28.5\n    - pytest-xdist\n    - pytest-timeout\n  imports:\n    - sklearn\n  commands:\n    - set OPENBLAS_NUM_THREADS=1          # [win]\n    - set OMP_NUM_THREADS=1               # [win]\n    - export OPENBLAS_NUM_THREADS=1       # [not win]\n    - export OMP_NUM_THREADS=1            # [not win]\n    - pytest --timeout 300 -n {{ test_cpus }} --verbose --pyargs sklearn -k \"not ({{ tests_to_skip }})\"\n\nabout:\n  home: http://scikit-learn.org/\n  license: BSD 3-Clause\n  license_file: COPYING\n  summary: A set of python modules for machine learning and data mining\n\nextra:\n  recipe-maintainers:\n    - amueller\n    - astaric\n    - jakirkham\n    - ogrisel\n    - ocefpaf\n    - lesteve\n    - jnothman\n    - rth\n    - adrinjalali\n    - glemaitre\n    - jeremiedbb\n",
  "req":{
   "__set__":true,
   "elements":[
@@ -577,5 +577,5 @@
   }
  },
  "url":"https://github.com/scikit-learn/scikit-learn/archive/0.21.3.tar.gz",
- "version":"0.22.1"
+ "version":"0.22.2.post1"
 }
