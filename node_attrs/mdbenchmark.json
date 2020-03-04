@@ -118,11 +118,14 @@
  "hash_type":"sha256",
  "meta_yaml":{
   "about":{
+   "description":"MDBenchmark is a tool to squeeze the maximum out of your limited computing resources. It tries to make it as easy as possible to set up systems on varying numbers of nodes and compare their performances to each other.\nYou can also create a plot to get a quick overview of the possible performance (and show of to your friends)! The plot below shows the performance of an molecular dynamics system on up to five nodes with and without GPUs.\n",
+   "dev_url":"https://github.com/bio-phys/MDBenchmark",
+   "doc_url":"https://docs.mdbenchmark.org",
    "home":"https://github.com/bio-phys/MDBenchmark",
    "license":"GPL-3.0",
    "license_family":"GPL",
    "license_file":"LICENSE",
-   "summary":"Benchmark molecular dynamics simulations"
+   "summary":"Quickly generate, start and analyze benchmarks for your molecular dynamics simulations."
   },
   "build":{
    "entry_points":[
@@ -130,8 +133,8 @@
     "mdbenchmark = mdbenchmark.cli:cli",
     "mdbenchmark = mdbenchmark.cli:cli"
    ],
-   "number":"1000",
-   "script":"python -m pip install --no-deps --ignore-installed -vv .",
+   "number":"1",
+   "script":"-m pip install --no-deps --ignore-installed -vv .",
    "skip":true
   },
   "extra":{
@@ -146,18 +149,18 @@
   },
   "package":{
    "name":"mdbenchmark",
-   "version":"2.0.0"
+   "version":"2.0.1"
   },
   "requirements":{
-   "build":[
+   "host":[
     "python",
-    "setuptools",
+    "poetry",
     "pip",
     "python",
-    "setuptools",
+    "poetry",
     "pip",
     "python",
-    "setuptools",
+    "poetry",
     "pip"
    ],
    "run":[
@@ -194,9 +197,9 @@
    ]
   },
   "source":{
-   "fn":"mdbenchmark-2.0.0.tar.gz",
-   "sha256":"0749478d52d7651b7c9b05c4494431125e247531adfd38181b815e347e155558",
-   "url":"https://pypi.io/packages/source/m/mdbenchmark/mdbenchmark-2.0.0.tar.gz"
+   "fn":"mdbenchmark-2.0.1.tar.gz",
+   "sha256":"8f0e5670b044246167e919e6d0ebd6fb1c88f472a9ffae52b92b56b8c09a8bac",
+   "url":"https://pypi.io/packages/source/m/mdbenchmark/mdbenchmark-2.0.1.tar.gz"
   },
   "test":{
    "commands":[
@@ -217,7 +220,7 @@
  "name":"mdbenchmark",
  "new_version":"2.0.1",
  "pinning_version":"2020.02.12",
- "raw_meta_yaml":"{% set name = \"mdbenchmark\" %}\n{% set version = \"2.0.0\" %}\n{% set sha256 = \"0749478d52d7651b7c9b05c4494431125e247531adfd38181b815e347e155558\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  fn: {{ name }}-{{ version }}.tar.gz\n  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz\n  sha256: {{ sha256 }}\n\nbuild:\n  number: 1000\n  script: python -m pip install --no-deps --ignore-installed -vv .\n  skip: true  # [win]\n  entry_points:\n    - mdbenchmark = mdbenchmark.cli:cli\n\nrequirements:\n  build:\n    - python\n    - setuptools\n    - pip\n  run:\n    - python\n    - numpy >=1.8\n    - datreant >=1.0.0\n    - click >=6.7\n    - jinja2\n    - pandas\n    - matplotlib >=2\n    - xdg <2  # [py2k]\n    - xdg >=2  # [py>=35]\n    - python-levenshtein\n    - tabulate >=0.8.2\n\ntest:\n  requires:\n    - libglu  # [linux]\n  imports:\n    - mdbenchmark\n  commands:\n    - xvfb-run --server-args=\":99 -screen 0 1024x768x24 -ac +extension GLX -noreset\" mdbenchmark  # [linux]\n    - mdbenchmark  # [not linux]\n\nabout:\n  home: https://github.com/bio-phys/MDBenchmark\n  license: GPL-3.0\n  license_family: GPL\n  license_file: LICENSE\n  summary: 'Benchmark molecular dynamics simulations'\n\nextra:\n  recipe-maintainers:\n    - kain88-de\n    - mimischi\n",
+ "raw_meta_yaml":"{% set version = \"2.0.1\" %}\n{% set sha256 = \"8f0e5670b044246167e919e6d0ebd6fb1c88f472a9ffae52b92b56b8c09a8bac\" %}\n\npackage:\n  name: mdbenchmark\n  version: {{ version }}\n\nsource:\n  fn: mdbenchmark-{{ version }}.tar.gz\n  url: https://pypi.io/packages/source/m/mdbenchmark/mdbenchmark-{{ version }}.tar.gz\n  sha256: {{ sha256 }}\n\nbuild:\n  number: 1\n  script: {{ PYTHON }} -m pip install --no-deps --ignore-installed -vv .\n  skip: true  # [win]\n  entry_points:\n    - mdbenchmark = mdbenchmark.cli:cli\n\nrequirements:\n  host:\n    - python\n    - poetry\n    - pip\n  run:\n    - python\n    - numpy >=1.8\n    - datreant >=1.0.0\n    - click >=6.7\n    - jinja2\n    - pandas\n    - matplotlib >=2\n    - xdg <2  # [py2k]\n    - xdg >=2  # [py>=35]\n    - python-levenshtein\n    - tabulate >=0.8.2\n\ntest:\n  requires:\n    - libglu  # [linux]\n  imports:\n    - mdbenchmark\n  commands:\n    - xvfb-run --server-args=\":99 -screen 0 1024x768x24 -ac +extension GLX -noreset\" mdbenchmark  # [linux]\n    - mdbenchmark  # [not linux]\n\nabout:\n  home: https://github.com/bio-phys/MDBenchmark\n  license: GPL-3.0\n  license_family: GPL\n  license_file: LICENSE\n  summary: \"Quickly generate, start and analyze benchmarks for your molecular dynamics simulations.\"\n  doc_url: https://docs.mdbenchmark.org\n  dev_url: https://github.com/bio-phys/MDBenchmark\n  description: >\n    MDBenchmark is a tool to squeeze the maximum out of your limited computing resources. It tries to make it as easy as possible to set up systems on varying numbers of nodes and compare their performances to each other.\n\n    You can also create a plot to get a quick overview of the possible performance (and show of to your friends)! The plot below shows the performance of an molecular dynamics system on up to five nodes with and without GPUs.\n\nextra:\n  recipe-maintainers:\n    - kain88-de\n    - mimischi\n",
  "req":{
   "__set__":true,
   "elements":[
@@ -228,9 +231,9 @@
    "numpy",
    "pandas",
    "pip",
+   "poetry",
    "python",
    "python-levenshtein",
-   "setuptools",
    "tabulate",
    "xdg"
   ]
@@ -238,15 +241,15 @@
  "requirements":{
   "build":{
    "__set__":true,
-   "elements":[
-    "pip",
-    "python",
-    "setuptools"
-   ]
+   "elements":[]
   },
   "host":{
    "__set__":true,
-   "elements":[]
+   "elements":[
+    "pip",
+    "poetry",
+    "python"
+   ]
   },
   "run":{
    "__set__":true,
@@ -275,15 +278,15 @@
  "total_requirements":{
   "build":{
    "__set__":true,
-   "elements":[
-    "pip",
-    "python",
-    "setuptools"
-   ]
+   "elements":[]
   },
   "host":{
    "__set__":true,
-   "elements":[]
+   "elements":[
+    "pip",
+    "poetry",
+    "python"
+   ]
   },
   "run":{
    "__set__":true,
@@ -308,5 +311,5 @@
   }
  },
  "url":"https://pypi.io/packages/source/m/mdbenchmark/mdbenchmark-2.0.0.tar.gz",
- "version":"2.0.0"
+ "version":"2.0.1"
 }
