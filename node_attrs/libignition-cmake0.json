@@ -11,7 +11,7 @@
    "summary":"Ignition CMake : CMake Modules for Ignition Projects"
   },
   "build":{
-   "number":"1",
+   "number":"2",
    "run_exports":[
     "subpackage_stub",
     "subpackage_stub",
@@ -60,7 +60,8 @@
   "source":[
    {
     "patches":[
-     "FindGTS.cmake.patch"
+     "FindGTS.cmake.patch",
+     "FindIgnOGRE.cmake.patch"
     ],
     "sha256":"32e9c96930375bd3c2681269ae6a2d2364cd9013a14e510410780ea0cc92763d",
     "url":"https://bitbucket.org/ignitionrobotics/ign-cmake/get/ignition-cmake2_2.1.1.tar.gz"
@@ -88,7 +89,7 @@
  },
  "name":"libignition-cmake2",
  "new_version":false,
- "raw_meta_yaml":"{% set base_name = \"libignition-cmake\" %}\n{% set version = \"2.1.1\" %}\n{% set major_version = version.split('.')[0] %}\n{% set name = base_name + major_version %}\n\npackage:\n  name: {{ name }}\n  version: {{ version }}\n\nsource:\n  - url: https://bitbucket.org/ignitionrobotics/ign-cmake/get/ignition-cmake{{ major_version }}_{{ version }}.tar.gz\n    sha256: 32e9c96930375bd3c2681269ae6a2d2364cd9013a14e510410780ea0cc92763d\n    patches:\n      - examples.patch  # [linux]\n      - FindGTS.cmake.patch  # [win]\n\nbuild:\n  number: 1\n  skip: true  # [win and vc<14]\n  run_exports:\n    - {{ pin_subpackage(name, max_pin='x.x') }}\n\nrequirements:\n  build:\n    - {{ compiler('cxx') }}\n    - {{ compiler('c') }}\n    - cmake\n    - ninja\n    - pkgconfig  # [not win]\n\ntest:\n  commands:\n    - test -f ${PREFIX}/share/cmake/ignition-cmake{{ major_version }}/ignition-cmake{{ major_version }}-config.cmake  # [not win]\n    - if exist %PREFIX%\\\\Library\\\\share\\\\cmake\\\\ignition-cmake{{ major_version }}\\\\ignition-cmake{{ major_version }}-config.cmake (exit 0) else (exit 1)  # [win]\n\nabout:\n  home: https://bitbucket.org/ignitionrobotics/ign-cmake\n  license: Apache-2.0\n  license_file: LICENSE\n  summary: 'Ignition CMake : CMake Modules for Ignition Projects'\n\nextra:\n  recipe-maintainers:\n    - seanyen\n    - wolfv\n    - traversaro\n    - j-rivero\n",
+ "raw_meta_yaml":"{% set base_name = \"libignition-cmake\" %}\n{% set version = \"2.1.1\" %}\n{% set major_version = version.split('.')[0] %}\n{% set name = base_name + major_version %}\n\npackage:\n  name: {{ name }}\n  version: {{ version }}\n\nsource:\n  - url: https://bitbucket.org/ignitionrobotics/ign-cmake/get/ignition-cmake{{ major_version }}_{{ version }}.tar.gz\n    sha256: 32e9c96930375bd3c2681269ae6a2d2364cd9013a14e510410780ea0cc92763d\n    patches:\n      - examples.patch  # [linux]\n      - FindGTS.cmake.patch  # [win]\n      - FindIgnOGRE.cmake.patch  # [win]\n\nbuild:\n  number: 2\n  skip: true  # [win and vc<14]\n  run_exports:\n    - {{ pin_subpackage(name, max_pin='x.x') }}\n\nrequirements:\n  build:\n    - {{ compiler('cxx') }}\n    - {{ compiler('c') }}\n    - cmake\n    - ninja\n    - pkgconfig  # [not win]\n\ntest:\n  commands:\n    - test -f ${PREFIX}/share/cmake/ignition-cmake{{ major_version }}/ignition-cmake{{ major_version }}-config.cmake  # [not win]\n    - if exist %PREFIX%\\\\Library\\\\share\\\\cmake\\\\ignition-cmake{{ major_version }}\\\\ignition-cmake{{ major_version }}-config.cmake (exit 0) else (exit 1)  # [win]\n\nabout:\n  home: https://bitbucket.org/ignitionrobotics/ign-cmake\n  license: Apache-2.0\n  license_file: LICENSE\n  summary: 'Ignition CMake : CMake Modules for Ignition Projects'\n\nextra:\n  recipe-maintainers:\n    - seanyen\n    - wolfv\n    - traversaro\n    - j-rivero\n",
  "req":{
   "__set__":true,
   "elements":[
