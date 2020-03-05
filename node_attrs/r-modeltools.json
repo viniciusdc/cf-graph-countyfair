@@ -71,9 +71,6 @@
  ],
  "bad":false,
  "conda-forge.yml":{
-  "compiler_stack":"comp7",
-  "max_py_ver":"37",
-  "max_r_ver":"35",
   "provider":{
    "win":"azure"
   }
@@ -91,7 +88,7 @@
   "build":{
    "merge_build_host":true,
    "noarch":"generic",
-   "number":"1002",
+   "number":"0",
    "rpaths":[
     "lib/R/lib/",
     "lib/",
@@ -128,7 +125,7 @@
   },
   "package":{
    "name":"r-modeltools",
-   "version":"0.2_22"
+   "version":"0.2_23"
   },
   "requirements":{
    "build":null,
@@ -144,15 +141,15 @@
    ]
   },
   "source":{
-   "fn":"modeltools_0.2-22.tar.gz",
-   "sha256":"256a088fc80b0d9182f984f9bd3d6207fb7c1e743f72e2ecb480e6c1d4ac34e9",
+   "fn":"modeltools_0.2-23.tar.gz",
+   "sha256":"6b3e8d5af1a039db5c178498dbf354ed1c5627a8cea9229726644053443210ef",
    "url":[
-    "https://cran.r-project.org/src/contrib/modeltools_0.2-22.tar.gz",
-    "https://cran.r-project.org/src/contrib/Archive/modeltools/modeltools_0.2-22.tar.gz",
-    "https://cran.r-project.org/src/contrib/modeltools_0.2-22.tar.gz",
-    "https://cran.r-project.org/src/contrib/Archive/modeltools/modeltools_0.2-22.tar.gz",
-    "https://cran.r-project.org/src/contrib/modeltools_0.2-22.tar.gz",
-    "https://cran.r-project.org/src/contrib/Archive/modeltools/modeltools_0.2-22.tar.gz"
+    "https://cran.r-project.org/src/contrib/modeltools_0.2-23.tar.gz",
+    "https://cran.r-project.org/src/contrib/Archive/modeltools/modeltools_0.2-23.tar.gz",
+    "https://cran.r-project.org/src/contrib/modeltools_0.2-23.tar.gz",
+    "https://cran.r-project.org/src/contrib/Archive/modeltools/modeltools_0.2-23.tar.gz",
+    "https://cran.r-project.org/src/contrib/modeltools_0.2-23.tar.gz",
+    "https://cran.r-project.org/src/contrib/Archive/modeltools/modeltools_0.2-23.tar.gz"
    ]
   },
   "test":{
@@ -166,7 +163,7 @@
  "name":"r-modeltools",
  "new_version":"0.2_23",
  "pinning_version":"2020.03.06",
- "raw_meta_yaml":"{% set version = '0.2-22' %}\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-modeltools\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  fn: modeltools_{{ version }}.tar.gz\n  url:\n    - {{ cran_mirror }}/src/contrib/modeltools_{{ version }}.tar.gz\n    - {{ cran_mirror }}/src/contrib/Archive/modeltools/modeltools_{{ version }}.tar.gz\n  sha256: 256a088fc80b0d9182f984f9bd3d6207fb7c1e743f72e2ecb480e6c1d4ac34e9\n\nbuild:\n  noarch: generic\n  merge_build_host: True  # [win]\n  number: 1002\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - {{posix}}zip               # [win]\n  host:\n    - r-base\n  run:\n    - r-base\n\ntest:\n  commands:\n    - $R -e \"library('modeltools')\"           # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('modeltools')\\\"\"  # [win]\n\nabout:\n  home: https://CRAN.R-project.org/package=modeltools\n  license: GPL-2\n  summary: A collection of tools to deal with statistical models.  The functionality is experimental\n    and the user interface is likely to change in the future. The documentation is rather\n    terse, but packages `coin' and `party' have some working examples. However, if you\n    find the implemented ideas interesting we would be very interested in a discussion\n    of this proposal. Contributions are more than welcome!\n  license_family: GPL2\n  license_file: '{{ environ[\"PREFIX\"] }}/lib/R/share/licenses/GPL-2'\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n    - johanneskoester\n    - bgruening\n    - daler\n    - jdblischak\n    - cbrueffer\n    - dbast\n",
+ "raw_meta_yaml":"{% set version = \"0.2-23\" %}\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-modeltools\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  fn: modeltools_{{ version }}.tar.gz\n  url:\n    - {{ cran_mirror }}/src/contrib/modeltools_{{ version }}.tar.gz\n    - {{ cran_mirror }}/src/contrib/Archive/modeltools/modeltools_{{ version }}.tar.gz\n  sha256: 6b3e8d5af1a039db5c178498dbf354ed1c5627a8cea9229726644053443210ef\n\nbuild:\n  noarch: generic\n  merge_build_host: true  # [win]\n  number: 0\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - {{posix}}zip               # [win]\n  host:\n    - r-base\n  run:\n    - r-base\n\ntest:\n  commands:\n    - $R -e \"library('modeltools')\"           # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('modeltools')\\\"\"  # [win]\n\nabout:\n  home: https://CRAN.R-project.org/package=modeltools\n  license: GPL-2\n  summary: A collection of tools to deal with statistical models.  The functionality is experimental and the user interface is likely to change in the future. The\n    documentation is rather terse, but packages `coin' and `party' have some working examples. However, if you find the implemented ideas interesting we would be\n    very interested in a discussion of this proposal. Contributions are more than welcome!\n  license_family: GPL2\n  license_file: {{ environ[\"PREFIX\"] }}/lib/R/share/licenses/GPL-2\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n    - johanneskoester\n    - bgruening\n    - daler\n    - jdblischak\n    - cbrueffer\n    - dbast\n",
  "req":{
   "__set__":true,
   "elements":[
@@ -227,5 +224,5 @@
   "https://cran.r-project.org/src/contrib/modeltools_0.2-22.tar.gz",
   "https://cran.r-project.org/src/contrib/Archive/modeltools/modeltools_0.2-22.tar.gz"
  ],
- "version":"0.2_22"
+ "version":"0.2_23"
 }
