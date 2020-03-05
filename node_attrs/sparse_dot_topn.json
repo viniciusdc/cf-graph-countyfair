@@ -87,11 +87,11 @@
    "license":"Apache-2.0",
    "license_family":"Apache",
    "license_file":"LICENSE",
-   "summary":"Sparse_dot_topn provides a fast way to performing a sparse matrix multiplication\nfollowed by top-n multiplication result selections. Comparing very large feature\nvectors and picking the best matches, in practice often results in performing a\nsparse matrix multiplication followed by selecting the top-n multiplication results.\nIn this package, we implement a customized Cython function for this purpose.\nWhen comparing our Cythonic approach to doing the same use with SciPy and NumPy\nfunctions, our approach improves the speed by about 40% and reduces memory consumption.\n"
+   "summary":"Sparse_dot_topn provides a fast way to performing a sparse matrix multiplication\nfollowed by top-n multiplication result selections. Comparing very large feature vectors and\npicking the best matches, in practice often results in performing sparse matrix multiplication\nfollowed by selecting the top-n multiplication results. In this package, we implement a\ncustomized Cython function for this purpose. When comparing our Cythonic approach to doing the\nsame use with SciPy and NumPy functions, our approach improves the speed by about 40% and\nreduces memory consumption.\n"
   },
   "build":{
    "number":"0",
-   "script":" -m pip install . -vv"
+   "script":"-m pip install . -vv"
   },
   "extra":{
    "recipe-maintainers":[
@@ -108,7 +108,7 @@
   },
   "package":{
    "name":"sparse_dot_topn",
-   "version":"0.2.6"
+   "version":"0.2.8"
   },
   "requirements":{
    "build":[
@@ -119,16 +119,19 @@
    "host":[
     "pip",
     "python",
-    "numpy",
+    "numpy >=1.16.6",
     "cython",
+    "scipy",
     "pip",
     "python",
-    "numpy",
+    "numpy >=1.16.6",
     "cython",
+    "scipy",
     "pip",
     "python",
-    "numpy",
-    "cython"
+    "numpy >=1.16.6",
+    "cython",
+    "scipy"
    ],
    "run":[
     "python",
@@ -146,8 +149,8 @@
    ]
   },
   "source":{
-   "sha256":"8df3e1568c3a445e763f90d59361499228c2f6a195dea31cdbae32b27150a504",
-   "url":"https://pypi.io/packages/source/s/sparse_dot_topn/sparse_dot_topn-0.2.6.tar.gz"
+   "sha256":"05d1d3384cd7c0b2c45aa988b2cbe28f11697b6fbe6f36e79788671064d4bf19",
+   "url":"https://pypi.io/packages/source/s/sparse_dot_topn/sparse_dot_topn-0.2.8.tar.gz"
   },
   "test":{
    "imports":[
@@ -160,7 +163,7 @@
  "name":"sparse_dot_topn",
  "new_version":"0.2.8",
  "pinning_version":"2020.02.20",
- "raw_meta_yaml":"{% set name = \"sparse_dot_topn\" %}\n{% set version = \"0.2.6\" %}\n\npackage:\n  name: \"{{ name|lower }}\"\n  version: \"{{ version }}\"\n\nsource:\n  url: \"https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz\"\n  sha256: \"8df3e1568c3a445e763f90d59361499228c2f6a195dea31cdbae32b27150a504\"\n\nbuild:\n  number: 0\n  script: \"{{ PYTHON }} -m pip install . -vv\"\n  skip: True  # [win and py27]\n\nrequirements:\n  build:\n    - {{ compiler('cxx') }}\n  host:\n    - pip\n    - python\n    - numpy\n    - cython\n  run:\n    - python\n    - {{ pin_compatible('numpy') }}\n    - scipy\n    - setuptools\n\ntest:\n  imports:\n    - sparse_dot_topn\n\nabout:\n  home: \"https://github.com/ing-bank/sparse_dot_topn\"\n  license: \"Apache-2.0\"\n  license_family: \"Apache\"\n  license_file: \"LICENSE\"\n  summary: |\n    Sparse_dot_topn provides a fast way to performing a sparse matrix multiplication\n    followed by top-n multiplication result selections. Comparing very large feature\n    vectors and picking the best matches, in practice often results in performing a\n    sparse matrix multiplication followed by selecting the top-n multiplication results.\n    In this package, we implement a customized Cython function for this purpose.\n    When comparing our Cythonic approach to doing the same use with SciPy and NumPy\n    functions, our approach improves the speed by about 40% and reduces memory consumption.\n  doc_url: \"https://pypi.org/project/sparse-dot-topn/\"\n  dev_url: \"https://github.com/ing-bank/sparse_dot_topn\"\n\nextra:\n  recipe-maintainers:\n    - oblute\n    - benhuff\n    - rluria14\n",
+ "raw_meta_yaml":"{% set name = \"sparse_dot_topn\" %}\n{% set version = \"0.2.8\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz\n  sha256: 05d1d3384cd7c0b2c45aa988b2cbe28f11697b6fbe6f36e79788671064d4bf19\n\nbuild:\n  number: 0\n  script: {{ PYTHON }} -m pip install . -vv\n  skip: True  # [py27]\n\nrequirements:\n  build:\n    - {{ compiler('cxx') }}\n  host:\n    - pip\n    - python\n    - numpy >=1.16.6\n    - cython\n    - scipy\n  run:\n    - python\n    - {{ pin_compatible('numpy') }}\n    - scipy\n    - setuptools\n\ntest:\n  imports:\n    - sparse_dot_topn\n\nabout:\n  home: https://github.com/ing-bank/sparse_dot_topn\n  license: Apache-2.0\n  license_family: Apache\n  license_file: LICENSE\n  summary: |\n    Sparse_dot_topn provides a fast way to performing a sparse matrix multiplication\n    followed by top-n multiplication result selections. Comparing very large feature vectors and\n    picking the best matches, in practice often results in performing sparse matrix multiplication\n    followed by selecting the top-n multiplication results. In this package, we implement a\n    customized Cython function for this purpose. When comparing our Cythonic approach to doing the\n    same use with SciPy and NumPy functions, our approach improves the speed by about 40% and\n    reduces memory consumption.\n  doc_url: https://pypi.org/project/sparse-dot-topn/\n  dev_url: https://github.com/ing-bank/sparse_dot_topn\n\nextra:\n  recipe-maintainers:\n    - oblute\n    - benhuff\n    - rluria14\n",
  "req":{
   "__set__":true,
   "elements":[
@@ -187,7 +190,8 @@
     "cython",
     "numpy",
     "pip",
-    "python"
+    "python",
+    "scipy"
    ]
   },
   "run":{
@@ -217,9 +221,10 @@
    "__set__":true,
    "elements":[
     "cython",
-    "numpy",
+    "numpy >=1.16.6",
     "pip",
-    "python"
+    "python",
+    "scipy"
    ]
   },
   "run":{
@@ -237,5 +242,5 @@
   }
  },
  "url":"https://pypi.io/packages/source/s/sparse_dot_topn/sparse_dot_topn-0.2.5.tar.gz",
- "version":"0.2.6"
+ "version":"0.2.8"
 }
