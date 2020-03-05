@@ -90,7 +90,7 @@
    "summary":"Handy command line tools for ntuple manipulation and analysis"
   },
   "build":{
-   "number":"3",
+   "number":"4",
    "skip":true
   },
   "extra":{
@@ -183,7 +183,7 @@
  "name":"lhcb-simpletools",
  "new_version":"2.0",
  "pinning_version":"2020.03.06",
- "raw_meta_yaml":"{% set name = \"lhcb-simpletools\" %}\n{% set version = \"2.0\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  url: https://github.com/cofitzpa/simpletools/archive/v{{ version }}.tar.gz\n  sha256: c9b57458bf2078bdacb87dc2ef50c3cb9b85acc382a352c4c0a7d6ace22e116f\n  patches:\n    - 0001-Fix-linking-for-macOS.patch\n    - 0002-Fix-random_shuffle.patch\n\nbuild:\n  number: 3\n  skip: true  # [win]\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n    - cmake\n    - make\n  host:\n    - root_base\n    - root-binaries\n    - root-dependencies\n    - boost-cpp\n\ntest:\n  requires:\n    - scikit-hep-testdata\n  commands:\n    - FN=$(python -m skhep_testdata cms_hep_2012_tutorial/data.root)\n    - cutapplier \"${FN}\" events \"NJet>2\" test_cut.root\n    - cuttester \"${FN}\" events \"${RECIPE_DIR}/cuts.txt\"\n    - tuplesampler \"${FN}\" events 0.3 1234 test1.root test2.root\n    - columnmaker \"${FN}\" events \"Jet_E**2\" Jet_E2 test_col.root\n    - which stacker\n    - which stackergen\n    - which crop\n\nabout:\n  home: https://github.com/cofitzpa/simpletools\n  license: GPL-2.0\n  license_family: GPL\n  license_file: LICENSE\n  summary: 'Handy command line tools for ntuple manipulation and analysis'\n  doc_url: https://cds.cern.ch/record/1223091\n  dev_url: https://github.com/cofitzpa/simpletools\n\nextra:\n  recipe-maintainers:\n    - chrisburr\n",
+ "raw_meta_yaml":"{% set name = \"lhcb-simpletools\" %}\n{% set version = \"2.0\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  url: https://github.com/cofitzpa/simpletools/archive/v{{ version }}.tar.gz\n  sha256: c9b57458bf2078bdacb87dc2ef50c3cb9b85acc382a352c4c0a7d6ace22e116f\n  patches:\n    - 0001-Fix-linking-for-macOS.patch\n    - 0002-Fix-random_shuffle.patch\n\nbuild:\n  number: 4\n  skip: true  # [win]\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n    - cmake\n    - make\n  host:\n    - root_base\n    - root-binaries\n    - root-dependencies\n    - boost-cpp\n\ntest:\n  requires:\n    - scikit-hep-testdata\n  commands:\n    - FN=$(python -m skhep_testdata cms_hep_2012_tutorial/data.root)\n    - cutapplier \"${FN}\" events \"NJet>2\" test_cut.root\n    - cuttester \"${FN}\" events \"${RECIPE_DIR}/cuts.txt\"\n    - tuplesampler \"${FN}\" events 0.3 1234 test1.root test2.root\n    - columnmaker \"${FN}\" events \"Jet_E**2\" Jet_E2 test_col.root\n    - which stacker\n    - which stackergen\n    - which crop\n\nabout:\n  home: https://github.com/cofitzpa/simpletools\n  license: GPL-2.0\n  license_family: GPL\n  license_file: LICENSE\n  summary: 'Handy command line tools for ntuple manipulation and analysis'\n  doc_url: https://cds.cern.ch/record/1223091\n  dev_url: https://github.com/cofitzpa/simpletools\n\nextra:\n  recipe-maintainers:\n    - chrisburr\n",
  "req":{
   "__set__":true,
   "elements":[
