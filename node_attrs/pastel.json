@@ -62,13 +62,20 @@
    "home":"https://github.com/sdispater/pastel",
    "license":"MIT",
    "license_family":"MIT",
-   "license_file":"/LICENSE",
-   "summary":"Bring colors to your terminal."
+   "license_file":"LICENSE",
+   "summary":"Bring colors to your terminal"
   },
   "build":{
    "noarch":"python",
-   "number":"1",
-   "script":"python -m pip install --no-deps --ignore-installed ."
+   "number":"0",
+   "script":[
+    "rm -f pyproject.toml",
+    "-m pip install . -vv",
+    "rm -f pyproject.toml",
+    "-m pip install . -vv",
+    "rm -f pyproject.toml",
+    "-m pip install . -vv"
+   ]
   },
   "extra":{
    "recipe-maintainers":[
@@ -94,7 +101,7 @@
   },
   "package":{
    "name":"pastel",
-   "version":"0.1.0"
+   "version":"0.2.0"
   },
   "requirements":{
    "host":[
@@ -112,9 +119,8 @@
    ]
   },
   "source":{
-   "fn":"pastel-0.1.0.tar.gz",
-   "sha256":"3108af417ec0fa6d0a620e676ec4f02c839ca13e10611586e5d2174b46aa0bc3",
-   "url":"https://pypi.io/packages/source/p/pastel/pastel-0.1.0.tar.gz"
+   "sha256":"46155fc523bdd4efcd450bbcb3f2b94a6e3b25edc0eb493e081104ad09e1ca36",
+   "url":"https://pypi.io/packages/source/p/pastel/pastel-0.2.0.tar.gz"
   },
   "test":{
    "imports":[
@@ -127,7 +133,7 @@
  "name":"pastel",
  "new_version":"0.2.0",
  "pinning_version":"2019.12.02",
- "raw_meta_yaml":"{% set name = \"pastel\" %}\n{% set version = \"0.1.0\" %}\n{% set file_ext = \"tar.gz\" %}\n{% set hash_type = \"sha256\" %}\n{% set hash_value = \"3108af417ec0fa6d0a620e676ec4f02c839ca13e10611586e5d2174b46aa0bc3\" %}\n\npackage:\n  name: '{{ name|lower }}'\n  version: '{{ version }}'\n\nsource:\n  fn: '{{ name }}-{{ version }}.{{ file_ext }}'\n  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.{{ file_ext }}\n  '{{ hash_type }}': '{{ hash_value }}'\n\nbuild:\n  noarch: python\n  number: 1\n  script: python -m pip install --no-deps --ignore-installed .\n\nrequirements:\n  host:\n    - python\n    - pip\n  run:\n    - python\n\ntest:\n  imports:\n    - pastel\n\nabout:\n  home: https://github.com/sdispater/pastel\n  license: MIT\n  license_family: MIT\n  license_file: '{{ environ[\"RECIPE_DIR\"] }}/LICENSE'\n  summary: Bring colors to your terminal.\n  description: \"Pastel is a simple library to help you colorize strings in your terminal.\"\n  doc_url: https://pypi.org/project/pastel/\n  dev_url: https://github.com/sdispater/pastel\n\nextra:\n  recipe-maintainers:\n    - nick-youngblut\n    - johanneskoester\n    - bgruening\n    - daler\n    - jdblischak\n    - cbrueffer\n",
+ "raw_meta_yaml":"{% set version = \"0.2.0\" %}\n\npackage:\n  name: pastel\n  version: {{ version }}\n\nsource:\n  url: https://pypi.io/packages/source/p/pastel/pastel-{{ version }}.tar.gz\n  sha256: 46155fc523bdd4efcd450bbcb3f2b94a6e3b25edc0eb493e081104ad09e1ca36\n\nbuild:\n  number: 0\n  noarch: python\n  script:\n    # pastel cannot depend on itself via poetry\n    - rm -f pyproject.toml\n    - {{ PYTHON }} -m pip install . -vv\n\nrequirements:\n  host:\n    - python\n    - pip\n    # - poetry >=1.0.0\n  run:\n    - python\n\ntest:\n  imports:\n    - pastel\n\nabout:\n  home: https://github.com/sdispater/pastel\n  license: MIT\n  license_family: MIT\n  license_file: LICENSE\n  summary: Bring colors to your terminal\n  description: \"Pastel is a simple library to help you colorize strings in your terminal.\"\n  doc_url: https://pypi.org/project/pastel/\n  dev_url: https://github.com/sdispater/pastel\n\nextra:\n  recipe-maintainers:\n    - nick-youngblut\n    - johanneskoester\n    - bgruening\n    - daler\n    - jdblischak\n    - cbrueffer\n",
  "req":{
   "__set__":true,
   "elements":[
@@ -184,5 +190,5 @@
   }
  },
  "url":"https://pypi.io/packages/source/p/pastel/pastel-0.1.0.tar.gz",
- "version":"0.1.0"
+ "version":"0.2.0"
 }
