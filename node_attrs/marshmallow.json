@@ -275,7 +275,7 @@
   "build":{
    "noarch":"python",
    "number":"0",
-   "script":" -m pip install . -vv"
+   "script":"-m pip install . -vv"
   },
   "extra":{
    "recipe-maintainers":[
@@ -284,21 +284,24 @@
     "frol",
     "igortg",
     "carlodri",
+    "mariusvniekerk",
     "hajapy",
     "rth",
     "frol",
     "igortg",
     "carlodri",
+    "mariusvniekerk",
     "hajapy",
     "rth",
     "frol",
     "igortg",
-    "carlodri"
+    "carlodri",
+    "mariusvniekerk"
    ]
   },
   "package":{
    "name":"marshmallow",
-   "version":"3.5.0"
+   "version":"3.5.1"
   },
   "requirements":{
    "host":[
@@ -316,21 +319,41 @@
    ]
   },
   "source":{
-   "sha256":"3a94945a7461f2ab4df9576e51c97d66bee2c86155d3d3933fab752b31effab8",
-   "url":"https://pypi.io/packages/source/m/marshmallow/marshmallow-3.5.0.tar.gz"
+   "sha256":"90854221bbb1498d003a0c3cc9d8390259137551917961c8b5258c64026b2f85",
+   "url":"https://pypi.io/packages/source/m/marshmallow/marshmallow-3.5.1.tar.gz"
   },
   "test":{
+   "commands":[
+    "python -m pytest tests",
+    "python -m pytest tests",
+    "python -m pytest tests"
+   ],
    "imports":[
     "marshmallow",
     "marshmallow",
     "marshmallow"
-   ]
+   ],
+   "requires":[
+    "pytest",
+    "simplejson",
+    "pytz",
+    "python-dateutil",
+    "pytest",
+    "simplejson",
+    "pytz",
+    "python-dateutil",
+    "pytest",
+    "simplejson",
+    "pytz",
+    "python-dateutil"
+   ],
+   "source_files":"tests/*"
   }
  },
  "name":"marshmallow",
  "new_version":"3.5.1",
  "pinning_version":"2020.03.06",
- "raw_meta_yaml":"{% set name = \"marshmallow\" %}\n{% set version = \"3.5.0\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz\n  sha256: 3a94945a7461f2ab4df9576e51c97d66bee2c86155d3d3933fab752b31effab8\n\nbuild:\n  noarch: python\n  number: 0\n  script: \"{{ PYTHON }} -m pip install . -vv\"\n\nrequirements:\n  host:\n    - python >=3.5\n    - pip\n  run:\n    - python >=3.5\n\ntest:\n  imports:\n    - marshmallow\n\nabout:\n  home: http://github.com/marshmallow-code/marshmallow\n  license: MIT\n  license_file: LICENSE\n  summary: 'A lightweight library for converting complex datatypes to and from native Python datatypes.'\n\n  description: |\n    marshmallow is an ORM/ODM/framework-agnostic library for\n    converting complex datatypes, such as objects, to and from\n    native Python datatypes.\n  doc_url: http://marshmallow.readthedocs.io/en/latest/\n  dev_url: https://github.com/marshmallow-code/marshmallow/\n\nextra:\n  recipe-maintainers:\n    - hajapy\n    - rth\n    - frol\n    - igortg\n    - carlodri\n",
+ "raw_meta_yaml":"{% set name = \"marshmallow\" %}\n{% set version = \"3.5.1\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz\n  sha256: 90854221bbb1498d003a0c3cc9d8390259137551917961c8b5258c64026b2f85\n\nbuild:\n  noarch: python\n  number: 0\n  script: {{ PYTHON }} -m pip install . -vv\n\nrequirements:\n  host:\n    - python >=3.5\n    - pip\n  run:\n    - python >=3.5\n\ntest:\n  requires:\n    - pytest\n    - simplejson\n    - pytz\n    - python-dateutil\n  imports:\n    - marshmallow\n  source_files:\n      tests/*\n  commands:\n    - python -m pytest tests\n\nabout:\n  home: http://github.com/marshmallow-code/marshmallow\n  license: MIT\n  license_file: LICENSE\n  summary: A lightweight library for converting complex datatypes to and from native Python datatypes.\n\n  description: |\n    marshmallow is an ORM/ODM/framework-agnostic library for\n    converting complex datatypes, such as objects, to and from\n    native Python datatypes.\n  doc_url: http://marshmallow.readthedocs.io/en/latest/\n  dev_url: https://github.com/marshmallow-code/marshmallow/\n\nextra:\n  recipe-maintainers:\n    - hajapy\n    - rth\n    - frol\n    - igortg\n    - carlodri\n    - mariusvniekerk\n",
  "req":{
   "__set__":true,
   "elements":[
@@ -358,7 +381,12 @@
   },
   "test":{
    "__set__":true,
-   "elements":[]
+   "elements":[
+    "pytest",
+    "python-dateutil",
+    "pytz",
+    "simplejson"
+   ]
   }
  },
  "smithy_version":"3.6.9",
@@ -383,9 +411,14 @@
   },
   "test":{
    "__set__":true,
-   "elements":[]
+   "elements":[
+    "pytest",
+    "python-dateutil",
+    "pytz",
+    "simplejson"
+   ]
   }
  },
  "url":"https://pypi.io/packages/source/m/marshmallow/marshmallow-3.0.3.tar.gz",
- "version":"3.5.0"
+ "version":"3.5.1"
 }
