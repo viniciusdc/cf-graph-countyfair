@@ -49,6 +49,25 @@
     "migrator_version",
     "name"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/384095703.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"MigrationYaml",
+    "migrator_object_version":1,
+    "migrator_version":0,
+    "name":"root620000"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_object_version",
+    "migrator_version",
+    "name"
+   ]
   }
  ],
  "bad":false,
@@ -146,7 +165,7 @@
  },
  "name":"root_numpy",
  "new_version":"4.8.0",
- "pinning_version":"2019.11.01",
+ "pinning_version":"2020.03.06",
  "raw_meta_yaml":"{% set name = \"root_numpy\" %}\n{% set version = \"4.8.0\" %}\n\npackage:\n  name: \"{{ name|lower }}\"\n  version: \"{{ version }}\"\n\nsource:\n  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz\n  sha256: 5842bbcde92133f60a61f56e9f0a875a0dbc2a567cc65a9ac141ecd72e416878\n  patches:\n    - 396.patch\n\nbuild:\n  number: 3\n  skip: true  # [win]\n  # -Wno-register is required for Python 2.7 in C++17 mode\n  # See: https://bugs.freebsd.org/bugzilla/show_bug.cgi?id=231073\n  script: CFLAGS=\"${CFLAGS} -Wno-register\" {{ PYTHON }} -m pip install . --no-deps --ignore-installed --no-cache-dir -vvv\n\nrequirements:\n  build:\n    - {{ compiler('cxx') }}\n  host:\n    - pip\n    - python\n    - root_base\n    - root-binaries\n    - numpy\n  run:\n    - python\n    - {{ pin_compatible('numpy') }}\n\ntest:\n  imports:\n    - root_numpy\n  requires:\n    - nose\n  commands:\n    - nosetests -s -v {{ name }} --exclude='(test_evaluate_func|test_tmva_multiclass)'\n\nabout:\n  home: http://scikit-hep.org/root_numpy\n  license: BSD-3-Clause\n  license_family: BSD\n  license_file: LICENSE\n  doc_url: http://scikit-hep.org/root_numpy\n  dev_url: https://github.com/scikit-hep/root_numpy\n  summary: The interface between ROOT and NumPy\n  description: |\n    root_numpy is a Python extension module that provides an efficient\n    interface between ROOT and NumPy. root_numpy's internals are compiled\n    C++ and can therefore handle large amounts of data much faster than\n    equivalent pure Python implementations.\n\nextra:\n  recipe-maintainers:\n    - chrisburr\n    - duncanmmacleod\n",
  "req":{
   "__set__":true,
@@ -191,7 +210,7 @@
    ]
   }
  },
- "smithy_version":"3.6.2",
+ "smithy_version":"3.6.9",
  "strong_exports":false,
  "total_requirements":{
   "build":{
