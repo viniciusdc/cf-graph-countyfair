@@ -134,6 +134,25 @@
     "migrator_version",
     "version"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/384859093.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"MigrationYaml",
+    "migrator_object_version":1,
+    "migrator_version":0,
+    "name":"python38"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_object_version",
+    "migrator_version",
+    "name"
+   ]
   }
  ],
  "bad":false,
@@ -283,7 +302,7 @@
  },
  "name":"fbprophet",
  "new_version":"0.6",
- "pinning_version":"2020.02.12",
+ "pinning_version":"2020.03.06",
  "raw_meta_yaml":"{% set name = \"fbprophet\" %}\n{% set version = \"0.6\" %}\n{% set bundle = \"tar.gz\" %}\n{% set hash_type = \"sha256\" %}\n{% set hash = \"de7eaa16500e4dba69a0706906775cbe96668a6fe48354ee2fff820d9e6a899b\" %}\n{% set build = 0 %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  fn: {{ name }}-{{ version }}.{{ bundle }}\n  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.{{ bundle }}\n  {{ hash_type }}: {{ hash }}\n\nbuild:\n  number: {{ build }}\n  script: {{ PYTHON }} -m pip install . -vv\n  skip: True  # [py2k]\n  binary_has_prefix_files:\n    - Lib/site-packages/fbprophet/stan_model/prophet_model.pkl          # [win]\n    - lib/python*/site-packages/fbprophet/stan_model/prophet_model.pkl  # [unix]\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n  host:\n    - python\n    - pip\n    - setuptools\n    - cython >=0.22\n    - pandas >=0.20.1\n    - pystan >=2.14\n    - LunarCalendar >=0.0.9\n    - convertdate >=2.1.2\n    - holidays >=0.9.5\n    - python-dateutil >=2.8.0\n    # Pystan models depend on numpy and as they are compiled and pickled we\n    # need to pin numpy version. Note that 1.10 is not available for win+py36.\n    - numpy 1.11.*\n  run:\n    - m2w64-toolchain        # [win]\n    - {{ compiler('c') }}    # [not win]\n    - {{ compiler('cxx') }}  # [not win]\n    - python\n    - matplotlib-base >=2.0.0\n    - pandas >=0.20.1\n    - pystan >=2.14\n    - LunarCalendar >=0.0.9\n    - convertdate >=2.1.2\n    - holidays >=0.9.5\n    - python-dateutil >=2.8.0\n    - numpy >=1.11\n    # setuptools is required for pkg_resources\n    - setuptools\n\ntest:\n  requires:\n    - pytest\n\n  commands:\n    - py.test -v --pyargs fbprophet\n\nabout:\n  home: https://facebook.github.io/prophet/\n  license: MIT\n  license_family: MIT\n  license_file: LICENSE\n  summary: 'Automatic Forecasting Procedure'\n  description: |\n    Implements a procedure for forecasting time series data based on an\n    additive model where non-linear trends are fit with yearly, weekly, and\n    daily seasonality, plus holiday effects. It works best with time series\n    that have strong seasonal effects and several seasons of historical data.\n    Prophet is robust to missing data and shifts in the trend, and typically\n    handles outliers well.\n  doc_url: https://facebook.github.io/prophet/docs/quick_start.html\n  dev_url: https://github.com/facebook/prophet\n\nextra:\n  recipe-maintainers:\n    - pmlandwehr\n    - rmax\n    - bletham\n",
  "req":{
   "__set__":true,
@@ -354,7 +373,7 @@
    ]
   }
  },
- "smithy_version":"3.6.8",
+ "smithy_version":"3.6.9",
  "strong_exports":false,
  "total_requirements":{
   "build":{

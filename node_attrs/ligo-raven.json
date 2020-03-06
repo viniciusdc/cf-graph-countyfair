@@ -71,8 +71,8 @@
    "summary":"Low-latency coincidence search between external triggers and GW candidates"
   },
   "build":{
-   "number":"1",
-   "script":" -m pip install . --no-deps --ignore-installed -vvv ",
+   "number":"0",
+   "script":" -m pip install . -vv",
    "skip":true
   },
   "extra":{
@@ -84,25 +84,24 @@
   },
   "package":{
    "name":"ligo-raven",
-   "version":"1.17"
+   "version":"1.18"
   },
   "requirements":{
    "host":[
+    "pip",
     "pytest-runner",
     "python",
-    "pip",
     "setuptools",
+    "pip",
     "pytest-runner",
     "python",
-    "pip",
     "setuptools",
+    "pip",
     "pytest-runner",
     "python",
-    "pip",
     "setuptools"
    ],
    "run":[
-    "python",
     "h5py",
     "healpy !=1.12.0",
     "ligo-common",
@@ -112,10 +111,10 @@
     "lscsoft-glue",
     "lxml",
     "numpy >=1.14.5",
+    "python",
     "python-lal",
     "scipy >=0.7.2",
     "voeventlib >=1.2",
-    "python",
     "h5py",
     "healpy !=1.12.0",
     "ligo-common",
@@ -125,10 +124,10 @@
     "lscsoft-glue",
     "lxml",
     "numpy >=1.14.5",
+    "python",
     "python-lal",
     "scipy >=0.7.2",
     "voeventlib >=1.2",
-    "python",
     "h5py",
     "healpy !=1.12.0",
     "ligo-common",
@@ -138,14 +137,15 @@
     "lscsoft-glue",
     "lxml",
     "numpy >=1.14.5",
+    "python",
     "python-lal",
     "scipy >=0.7.2",
     "voeventlib >=1.2"
    ]
   },
   "source":{
-   "sha256":"a4249009c141bf521781ff6df3d2428ce316792a3783b8227c13d5edbda0aec0",
-   "url":"https://pypi.io/packages/source/l/ligo-raven/ligo-raven-1.17.tar.gz"
+   "sha256":"2336a0e95b132f63443712a0d1fbab2810bff21f2f36398d2b4168a5b2293900",
+   "url":"https://pypi.io/packages/source/l/ligo-raven/ligo-raven-1.18.tar.gz"
   },
   "test":{
    "commands":[
@@ -178,7 +178,7 @@
  "name":"ligo-raven",
  "new_version":"1.17",
  "pinning_version":"2019.12.02",
- "raw_meta_yaml":"{% set name = \"ligo-raven\" %}\n{% set version = \"1.17\" %}\n\npackage:\n  name: \"{{ name|lower }}\"\n  version: \"{{ version }}\"\n\nsource:\n  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz\n  sha256: a4249009c141bf521781ff6df3d2428ce316792a3783b8227c13d5edbda0aec0\n\nbuild:\n  number: 1\n  skip: true  # [win or py<35]\n  script: \"{{ PYTHON }} -m pip install . --no-deps --ignore-installed -vvv \"\n\nrequirements:\n  host:\n    - pytest-runner\n    - python\n    - pip\n    - setuptools\n  run:\n    - python\n    - h5py\n    - healpy !=1.12.0\n    - ligo-common\n    - ligo-gracedb >=2.2.0\n    - ligo-segments\n    - ligo.skymap >=0.1.1\n    - lscsoft-glue\n    - lxml\n    - numpy >=1.14.5\n    - python-lal\n    - scipy >=0.7.2\n    - voeventlib >=1.2\n\ntest:\n  imports:\n    - ligo.raven\n    - ligo.raven.gracedb_events\n    - ligo.raven.search\n  commands:\n    - raven_coinc_search_gracedb --help\n    - raven_fetch_external_triggers --help\n    - raven_file_cache_monitor --help\n    - raven_gcn_web_scraper --help\n\nabout:\n  home: https://git.ligo.org/lscsoft/raven/\n  dev_url: https://git.ligo.org/lscsoft/raven/\n  license: GPL-3.0-or-later\n  license_family: GPL\n  license_file: COPYING\n  summary: Low-latency coincidence search between external triggers and GW candidates\n  description: |\n    Low-latency coincidence search between external triggers and GW candidates\n\nextra:\n  recipe-maintainers:\n    - duncanmmacleod\n",
+ "raw_meta_yaml":"{% set name = \"ligo-raven\" %}\n{% set version = \"1.18\" %}\n\npackage:\n  name: \"{{ name|lower }}\"\n  version: \"{{ version }}\"\n\nsource:\n  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz\n  sha256: 2336a0e95b132f63443712a0d1fbab2810bff21f2f36398d2b4168a5b2293900\n\nbuild:\n  number: 0\n  skip: true  # [win or py<36]\n  script: \"{{ PYTHON }} -m pip install . -vv\"\n\nrequirements:\n  host:\n    - pip\n    - pytest-runner\n    - python\n    - setuptools\n  run:\n    - h5py\n    - healpy !=1.12.0\n    - ligo-common\n    - ligo-gracedb >=2.2.0\n    - ligo-segments\n    - ligo.skymap >=0.1.1\n    - lscsoft-glue\n    - lxml\n    - numpy >=1.14.5\n    - python\n    - python-lal\n    - scipy >=0.7.2\n    - voeventlib >=1.2\n\ntest:\n  imports:\n    - ligo.raven\n    - ligo.raven.gracedb_events\n    - ligo.raven.search\n  commands:\n    - raven_coinc_search_gracedb --help\n    - raven_fetch_external_triggers --help\n    - raven_file_cache_monitor --help\n    - raven_gcn_web_scraper --help\n\nabout:\n  home: https://git.ligo.org/lscsoft/raven/\n  dev_url: https://git.ligo.org/lscsoft/raven/\n  license: GPL-3.0-or-later\n  license_family: GPL\n  license_file: COPYING\n  summary: Low-latency coincidence search between external triggers and GW candidates\n  description: |\n    Low-latency coincidence search between external triggers and GW candidates\n\nextra:\n  recipe-maintainers:\n    - duncanmmacleod\n",
  "req":{
   "__set__":true,
   "elements":[
@@ -277,5 +277,5 @@
   }
  },
  "url":"https://git.ligo.org/lscsoft/raven/-/archive/v1.15/raven-v1.15.tar.gz",
- "version":"1.17"
+ "version":"1.18"
 }
