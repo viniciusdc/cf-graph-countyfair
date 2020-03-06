@@ -166,6 +166,23 @@
     "migrator_version",
     "version"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/385032080.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"Version",
+    "migrator_version":0,
+    "version":"0.8.10"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "version"
+   ]
   }
  ],
  "bad":false,
@@ -174,14 +191,14 @@
  "hash_type":"sha256",
  "meta_yaml":{
   "about":{
-   "description":"This Python package provides:\n\n    - Definition of finite difference meshes and fields\n    - Reading and writing of different file types, such as `.ovf` and `.vtk`\n    - Visualisation of finite difference meshes and fields using `matplotlib` and `k3d`\n\nIt is available on all major operating systems (Windows, MacOS, Linux) and requires Python 3.6 or higher.\n",
+   "description":"`discretisedfield` is a Python package that provides:\n  - definition of finite difference regions, meshes, and fields,\n  - analysis of finite difference fields,\n  - reading and writing of different file types (OVF, VTK, and HDF5), and\n  - visualisation using matplotlib and k3d.\n",
    "dev_url":"https://github.com/ubermag/discretisedfield",
    "doc_url":"http://discretisedfield.readthedocs.io",
    "home":"http://ubermag.github.io/",
    "license":"BSD-3-clause",
    "license_family":"BSD",
    "license_file":"LICENSE",
-   "summary":"Python package for definition, reading, and visualisation of finite difference fields."
+   "summary":"Python package for the analysis and visualisation of finite difference fields."
   },
   "build":{
    "noarch":"python",
@@ -190,26 +207,17 @@
   },
   "extra":{
    "recipe-maintainers":[
+    "marijanbeg",
     "fangohr",
     "marijanbeg",
-    "takluyver",
-    "davidcortesortuno",
-    "rpep",
     "fangohr",
     "marijanbeg",
-    "takluyver",
-    "davidcortesortuno",
-    "rpep",
-    "fangohr",
-    "marijanbeg",
-    "takluyver",
-    "davidcortesortuno",
-    "rpep"
+    "fangohr"
    ]
   },
   "package":{
    "name":"discretisedfield",
-   "version":"0.8.7"
+   "version":"0.8.9"
   },
   "requirements":{
    "build":[
@@ -222,37 +230,40 @@
    ],
    "run":[
     "python >=3.6",
-    "numpy",
-    "matplotlib-base",
-    "pyvtk",
     "ubermagutil",
+    "matplotlib-base",
+    "jupyterlab",
+    "seaborn",
+    "h5py",
+    "pyvtk",
     "k3d",
-    "pytest",
     "python >=3.6",
-    "numpy",
-    "matplotlib-base",
-    "pyvtk",
     "ubermagutil",
+    "matplotlib-base",
+    "jupyterlab",
+    "seaborn",
+    "h5py",
+    "pyvtk",
     "k3d",
-    "pytest",
     "python >=3.6",
-    "numpy",
-    "matplotlib-base",
-    "pyvtk",
     "ubermagutil",
-    "k3d",
-    "pytest"
+    "matplotlib-base",
+    "jupyterlab",
+    "seaborn",
+    "h5py",
+    "pyvtk",
+    "k3d"
    ]
   },
   "source":{
-   "sha256":"99d349a52f5589c4986d5b09912b712113bc6decec25f8283015f18c7733f363",
-   "url":"https://pypi.io/packages/source/d/discretisedfield/discretisedfield-0.8.7.tar.gz"
+   "sha256":"c13767a1093779d4550c0ba2ccabb52d027a9fef937c538435a729c3c13c9c6e",
+   "url":"https://pypi.io/packages/source/d/discretisedfield/discretisedfield-0.8.9.tar.gz"
   },
   "test":{
    "commands":[
-    "python -c \"import sys; import discretisedfield as m; sys.exit(m.test())\"",
-    "python -c \"import sys; import discretisedfield as m; sys.exit(m.test())\"",
-    "python -c \"import sys; import discretisedfield as m; sys.exit(m.test())\""
+    "python -c \"import sys; import discretisedfield as df; sys.exit(df.test())\"",
+    "python -c \"import sys; import discretisedfield as df; sys.exit(df.test())\"",
+    "python -c \"import sys; import discretisedfield as df; sys.exit(df.test())\""
    ],
    "imports":[
     "discretisedfield",
@@ -265,19 +276,20 @@
   }
  },
  "name":"discretisedfield",
- "new_version":"0.8.9",
+ "new_version":"0.8.10",
  "pinning_version":"2020.03.06",
- "raw_meta_yaml":"{% set version = \"0.8.7\" %}\n{% set name = \"discretisedfield\" %}\n{% set sha256 = \"99d349a52f5589c4986d5b09912b712113bc6decec25f8283015f18c7733f363\" %}\n\npackage:\n  name: {{ name | lower }}\n  version: {{ version }}\n\nsource:\n  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz\n  sha256: {{ sha256 }}\n\nbuild:\n  noarch: python\n  number: 0\n  script: pip install --no-deps . -vvv\n\nrequirements:\n  build:\n    - python >=3.6\n    - pip\n\n  run:\n    - python >=3.6\n    - numpy \n    - matplotlib-base\n    - pyvtk\n    - ubermagutil\n    - k3d\n    - pytest\n\ntest:\n  imports:\n    - discretisedfield\n    - discretisedfield.util\n  commands:\n    - python -c \"import sys; import discretisedfield as m; sys.exit(m.test())\"\n\nabout:\n  home: http://ubermag.github.io/\n  license: BSD-3-clause\n  license_family: BSD\n  license_file: LICENSE\n  summary: Python package for definition, reading, and visualisation of finite difference fields.\n  doc_url: http://discretisedfield.readthedocs.io\n  dev_url: https://github.com/ubermag/discretisedfield\n\n  description: |\n    This Python package provides:\n\n        - Definition of finite difference meshes and fields\n        - Reading and writing of different file types, such as `.ovf` and `.vtk`\n        - Visualisation of finite difference meshes and fields using `matplotlib` and `k3d`\n\n    It is available on all major operating systems (Windows, MacOS, Linux) and requires Python 3.6 or higher.\n\nextra:\n  recipe-maintainers:\n    - fangohr\n    - marijanbeg\n    - takluyver\n    - davidcortesortuno\n    - rpep\n",
+ "raw_meta_yaml":"{% set version = \"0.8.9\" %}\n{% set name = \"discretisedfield\" %}\n{% set sha256 = \"c13767a1093779d4550c0ba2ccabb52d027a9fef937c538435a729c3c13c9c6e\" %}\n\npackage:\n  name: {{ name | lower }}\n  version: {{ version }}\n\nsource:\n  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz\n  sha256: {{ sha256 }}\n\nbuild:\n  noarch: python\n  number: 0\n  script: pip install --no-deps . -vvv\n\nrequirements:\n  build:\n    - python >=3.6\n    - pip\n\n  run:\n    - python >=3.6\n    - ubermagutil\n    - matplotlib-base\n    - jupyterlab\n    - seaborn\n    - h5py\n    - pyvtk\n    - k3d\n\ntest:\n  imports:\n    - discretisedfield\n    - discretisedfield.util\n  commands:\n    - python -c \"import sys; import discretisedfield as df; sys.exit(df.test())\"\n\nabout:\n  home: http://ubermag.github.io/\n  license: BSD-3-clause\n  license_family: BSD\n  license_file: LICENSE\n  summary: Python package for the analysis and visualisation of finite difference fields.\n  doc_url: http://discretisedfield.readthedocs.io\n  dev_url: https://github.com/ubermag/discretisedfield\n\n  description: |\n    `discretisedfield` is a Python package that provides:\n      - definition of finite difference regions, meshes, and fields,\n      - analysis of finite difference fields,\n      - reading and writing of different file types (OVF, VTK, and HDF5), and\n      - visualisation using matplotlib and k3d.\n\nextra:\n  recipe-maintainers:\n    - marijanbeg\n    - fangohr\n",
  "req":{
   "__set__":true,
   "elements":[
+   "h5py",
+   "jupyterlab",
    "k3d",
    "matplotlib-base",
-   "numpy",
    "pip",
-   "pytest",
    "python",
    "pyvtk",
+   "seaborn",
    "ubermagutil"
   ]
  },
@@ -296,12 +308,13 @@
   "run":{
    "__set__":true,
    "elements":[
+    "h5py",
+    "jupyterlab",
     "k3d",
     "matplotlib-base",
-    "numpy",
-    "pytest",
     "python",
     "pyvtk",
+    "seaborn",
     "ubermagutil"
    ]
   },
@@ -327,12 +340,13 @@
   "run":{
    "__set__":true,
    "elements":[
+    "h5py",
+    "jupyterlab",
     "k3d",
     "matplotlib-base",
-    "numpy",
-    "pytest",
     "python >=3.6",
     "pyvtk",
+    "seaborn",
     "ubermagutil"
    ]
   },
@@ -342,5 +356,5 @@
   }
  },
  "url":"https://pypi.io/packages/source/d/discretisedfield/discretisedfield-0.8.6.tar.gz",
- "version":"0.8.7"
+ "version":"0.8.9"
 }
