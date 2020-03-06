@@ -520,8 +520,7 @@
    "summary":"A library to access the metadata for a Python package"
   },
   "build":{
-   "number":"0",
-   "script":" -m pip install . --no-deps --ignore-installed -vvv "
+   "number":"0"
   },
   "extra":{
    "recipe-maintainers":[
@@ -533,53 +532,158 @@
     "nicoddemus"
    ]
   },
+  "outputs":[
+   {
+    "name":"importlib-metadata",
+    "requirements":{
+     "host":[
+      "python",
+      "pip",
+      "setuptools_scm"
+     ],
+     "run":[
+      "python",
+      "zipp >=0.5"
+     ]
+    },
+    "script":"build_base.bat",
+    "test":{
+     "commands":[
+      "pip check"
+     ],
+     "imports":[
+      "importlib_metadata"
+     ],
+     "requires":[
+      "pip"
+     ]
+    }
+   },
+   {
+    "build":{
+     "noarch":"generic"
+    },
+    "name":"importlib_metadata",
+    "requirements":{
+     "run":[
+      "subpackage_stub"
+     ]
+    },
+    "test":{
+     "imports":[
+      "importlib_metadata"
+     ]
+    }
+   },
+   {
+    "name":"importlib-metadata",
+    "requirements":{
+     "host":[
+      "python",
+      "pip",
+      "setuptools_scm"
+     ],
+     "run":[
+      "python",
+      "zipp >=0.5"
+     ]
+    },
+    "script":"build_base.sh",
+    "test":{
+     "commands":[
+      "pip check"
+     ],
+     "imports":[
+      "importlib_metadata"
+     ],
+     "requires":[
+      "pip"
+     ]
+    }
+   },
+   {
+    "build":{
+     "noarch":"generic"
+    },
+    "name":"importlib_metadata",
+    "requirements":{
+     "run":[
+      "subpackage_stub"
+     ]
+    },
+    "test":{
+     "imports":[
+      "importlib_metadata"
+     ]
+    }
+   },
+   {
+    "name":"importlib-metadata",
+    "requirements":{
+     "host":[
+      "python",
+      "pip",
+      "setuptools_scm"
+     ],
+     "run":[
+      "python",
+      "zipp >=0.5"
+     ]
+    },
+    "script":"build_base.sh",
+    "test":{
+     "commands":[
+      "pip check"
+     ],
+     "imports":[
+      "importlib_metadata"
+     ],
+     "requires":[
+      "pip"
+     ]
+    }
+   },
+   {
+    "build":{
+     "noarch":"generic"
+    },
+    "name":"importlib_metadata",
+    "requirements":{
+     "run":[
+      "subpackage_stub"
+     ]
+    },
+    "test":{
+     "imports":[
+      "importlib_metadata"
+     ]
+    }
+   }
+  ],
   "package":{
-   "name":"importlib_metadata",
+   "name":"importlib-metadata",
    "version":"1.5.0"
-  },
-  "requirements":{
-   "host":[
-    "pip",
-    "setuptools_scm",
-    "python",
-    "pip",
-    "setuptools_scm",
-    "python",
-    "pip",
-    "setuptools_scm",
-    "python"
-   ],
-   "run":[
-    "python",
-    "zipp >=0.5",
-    "python",
-    "zipp >=0.5",
-    "python",
-    "zipp >=0.5"
-   ]
   },
   "source":{
    "sha256":"06f5b3a99029c7134207dd882428a66992a9de2bef7c2b699b5641f9886c3302",
    "url":"https://pypi.io/packages/source/i/importlib_metadata/importlib_metadata-1.5.0.tar.gz"
-  },
-  "test":{
-   "imports":[
-    "importlib_metadata",
-    "importlib_metadata",
-    "importlib_metadata"
-   ]
   }
  },
- "name":"importlib_metadata",
+ "name":"importlib-metadata",
  "new_version":"1.5.0",
+ "outputs_names":[
+  "importlib-metadata",
+  "importlib_metadata"
+ ],
  "pinning_version":"2020.01.27",
- "raw_meta_yaml":"{% set name = \"importlib_metadata\" %}\n{% set version = \"1.5.0\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz\n  sha256: 06f5b3a99029c7134207dd882428a66992a9de2bef7c2b699b5641f9886c3302\n\nbuild:\n  number: 0\n  script: \"{{ PYTHON }} -m pip install . --no-deps --ignore-installed -vvv \"\n\nrequirements:\n  host:\n    - pip\n    - setuptools_scm\n    - python\n  run:\n    - python\n    - zipp >=0.5\n    - pathlib2  # [py2k]\n    - contextlib2  # [py2k]\n    - configparser >=3.5  # [py2k]\n\ntest:\n  imports:\n    - importlib_metadata\n\nabout:\n  home: https://gitlab.com/python-devs/importlib_metadata\n  license: APACHE-2.0\n  license_family: APACHE\n  license_file: LICENSE\n  summary:  A library to access the metadata for a Python package\n\nextra:\n  recipe-maintainers:\n    - nehaljwani\n    - nicoddemus\n",
+ "raw_meta_yaml":"{% set version = \"1.5.0\" %}\n\npackage:\n  name: importlib-metadata\n  version: {{ version }}\n\nsource:\n  url: https://pypi.io/packages/source/i/importlib_metadata/importlib_metadata-{{ version }}.tar.gz\n  sha256: 06f5b3a99029c7134207dd882428a66992a9de2bef7c2b699b5641f9886c3302\n\nbuild:\n  number: 0\n\noutputs:\n  - name: importlib-metadata\n    script: build_base.bat  # [win]\n    script: build_base.sh  # [not win]\n    requirements:\n      host:\n        - python\n        - pip\n        - setuptools_scm\n      run:\n      - python\n      - zipp >=0.5\n      - pathlib2  # [py2k]\n      - contextlib2  # [py2k]\n      - configparser >=3.5  # [py2k]\n    test:\n      requires:\n        - pip\n      commands:\n        - pip check\n      imports:\n        - importlib_metadata\n\n  - name: importlib_metadata\n    build:\n      noarch: generic\n    requirements:\n      run:\n        - {{ pin_subpackage('importlib-metadata', max_pin=\"x.x.x\") }}\n    test:\n      imports:\n        - importlib_metadata\n\nabout:\n  home: https://gitlab.com/python-devs/importlib_metadata\n  license: APACHE-2.0\n  license_family: APACHE\n  license_file: LICENSE\n  summary:  A library to access the metadata for a Python package\n\nextra:\n  recipe-maintainers:\n    - nehaljwani\n    - nicoddemus\n",
  "req":{
   "__set__":true,
   "elements":[
    "pip",
    "python",
    "setuptools_scm",
+   "subpackage_stub",
    "zipp"
   ]
  },
@@ -600,12 +704,15 @@
    "__set__":true,
    "elements":[
     "python",
+    "subpackage_stub",
     "zipp"
    ]
   },
   "test":{
    "__set__":true,
-   "elements":[]
+   "elements":[
+    "pip"
+   ]
   }
  },
  "smithy_version":"3.6.6",
@@ -627,12 +734,15 @@
    "__set__":true,
    "elements":[
     "python",
+    "subpackage_stub",
     "zipp >=0.5"
    ]
   },
   "test":{
    "__set__":true,
-   "elements":[]
+   "elements":[
+    "pip"
+   ]
   }
  },
  "url":"https://pypi.io/packages/source/i/importlib_metadata/importlib_metadata-0.20.tar.gz",
