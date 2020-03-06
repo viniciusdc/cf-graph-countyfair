@@ -136,7 +136,7 @@
   },
   "build":{
    "detect_binary_files_with_prefix":true,
-   "number":"1"
+   "number":"0"
   },
   "extra":{
    "recipe-maintainers":[
@@ -150,10 +150,14 @@
   },
   "package":{
    "name":"gpi_core",
-   "version":"2.0.3"
+   "version":"2.1.0"
   },
   "requirements":{
    "build":[
+    "c_compiler_stub",
+    "cxx_compiler_stub",
+    "c_compiler_stub",
+    "cxx_compiler_stub",
     "c_compiler_stub",
     "cxx_compiler_stub"
    ],
@@ -161,6 +165,7 @@
     "cytoolz",
     "gpi >=1.2.0",
     "numpy =1.11",
+    "pthreads-win32",
     "python",
     "cytoolz",
     "gpi >=1.2.0",
@@ -174,6 +179,7 @@
    "run":[
     "compatible_pin_stub",
     "matplotlib-base >=2.1",
+    "compatible_pin_stub",
     "compatible_pin_stub",
     "python",
     "scipy",
@@ -191,17 +197,13 @@
   },
   "source":{
    "folder":"repo_contents",
-   "sha256":"6c54f90a7f72105514bf199feda6b6a9c517109f1246e18debd3d62e618c1226",
-   "url":"https://github.com/gpilab/core-nodes/archive/v2.0.3.tar.gz"
+   "sha256":"033e9c7ce75f5de1153b61abaff5caa05751e30334ed642d149c70d7beefdf50",
+   "url":"https://github.com/gpilab/core-nodes/archive/v2.1.0.tar.gz"
   },
   "test":{
-   "commands":null,
    "files":[
-    "TestNetwork_Windows.net",
     "TestNetwork.net",
-    "TestNetwork_Windows.net",
     "TestNetwork.net",
-    "TestNetwork_Windows.net",
     "TestNetwork.net"
    ],
    "imports":[
@@ -222,7 +224,7 @@
  "name":"gpi_core",
  "new_version":"2.1.0",
  "pinning_version":"2020.03.06",
- "raw_meta_yaml":"{% set version = \"2.0.3\" %}\n\npackage:\n  name: gpi_core\n  version: {{ version }}\n\nsource:\n  url: https://github.com/gpilab/core-nodes/archive/v{{ version }}.tar.gz\n  sha256: 6c54f90a7f72105514bf199feda6b6a9c517109f1246e18debd3d62e618c1226\n  folder: repo_contents\n\nbuild:\n  number: 1\n  detect_binary_files_with_prefix: True\n  skip: true  # [py2k]\n\nrequirements:\n  build:\n    - {{ compiler('c') }}  # [unix]\n    - {{ compiler('cxx') }}  # [unix]\n  host:\n    - cytoolz\n    - gpi >=1.2.0\n    - numpy =1.14  # [py==38]\n    - numpy =1.11  # [py<38]\n    - python\n  run:\n    - {{ pin_compatible('gpi') }}\n    - matplotlib-base >=2.1\n    - {{ pin_compatible('numpy') }}\n    - python\n    - scipy\n\ntest:\n  requires:\n    - xorg-libsm  # [linux]\n    - xorg-libxcb  # [linux]\n    - xorg-libxrender  # [linux]\n  imports:\n    - gpi\n    - gpi_core\n  files:\n    - TestNetwork_Windows.net\n    - TestNetwork.net\n  commands:\n    - gpi --nogui TestNetwork_Windows.net  # [win]\n\nabout:\n  home: http://gpilab.com\n  license: GPL-3.0\n  license_family: GPL\n  license_file: LICENSE\n  summary: \"Core nodes for the GPI development framework\"\n  description: |\n    These nodes provide basic functionality for GPI, such as mathematical\n    operations, data shape modifiers, and data generators. Some basic\n    tools for spiral MRI reconstruction are also included.\n  dev_url: https://github.com/gpilab/core-nodes\n\nextra:\n  recipe-maintainers:\n    - borupdaniel\n    - aganders3\n",
+ "raw_meta_yaml":"{% set version = \"2.1.0\" %}\n\npackage:\n  name: gpi_core\n  version: {{ version }}\n\nsource:\n  url: https://github.com/gpilab/core-nodes/archive/v{{ version }}.tar.gz\n  sha256: 033e9c7ce75f5de1153b61abaff5caa05751e30334ed642d149c70d7beefdf50\n  folder: repo_contents\n\nbuild:\n  number: 0\n  detect_binary_files_with_prefix: True\n  skip: true  # [py2k]\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n  host:\n    - cytoolz\n    - gpi >=1.2.0\n    - numpy =1.14  # [py==38]\n    - numpy =1.11  # [py<38]\n    - pthreads-win32  # [win]\n    - python\n  run:\n    - {{ pin_compatible('gpi') }}\n    - matplotlib-base >=2.1\n    - {{ pin_compatible('numpy') }}\n    - {{ pin_compatible('pthreads-win32') }}  # [win]\n    - python\n    - scipy\n\ntest:\n  requires:\n    - xorg-libsm  # [linux]\n    - xorg-libxcb  # [linux]\n    - xorg-libxrender  # [linux]\n  imports:\n    - gpi\n    - gpi_core\n  files:\n    - TestNetwork.net\n\nabout:\n  home: http://gpilab.com\n  license: GPL-3.0\n  license_family: GPL\n  license_file: LICENSE\n  summary: \"Core nodes for the GPI development framework\"\n  description: |\n    These nodes provide basic functionality for GPI, such as mathematical\n    operations, data shape modifiers, and data generators. Some basic\n    tools for spiral MRI reconstruction are also included.\n  dev_url: https://github.com/gpilab/core-nodes\n\nextra:\n  recipe-maintainers:\n    - borupdaniel\n    - aganders3\n",
  "req":{
   "__set__":true,
   "elements":[
@@ -233,6 +235,7 @@
    "gpi",
    "matplotlib-base",
    "numpy",
+   "pthreads-win32",
    "python",
    "scipy"
   ]
@@ -251,6 +254,7 @@
     "cytoolz",
     "gpi",
     "numpy",
+    "pthreads-win32",
     "python"
    ]
   },
@@ -288,6 +292,7 @@
     "cytoolz",
     "gpi >=1.2.0",
     "numpy =1.11",
+    "pthreads-win32",
     "python"
    ]
   },
@@ -310,5 +315,5 @@
   }
  },
  "url":"https://github.com/gpilab/core-nodes/archive/v2.0.2.tar.gz",
- "version":"2.0.3"
+ "version":"2.1.0"
 }
