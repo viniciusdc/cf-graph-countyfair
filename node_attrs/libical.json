@@ -50,6 +50,23 @@
     "migrator_version",
     "version"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/385155048.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"Version",
+    "migrator_version":0,
+    "version":"3.0.8"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "version"
+   ]
   }
  ],
  "bad":false,
@@ -144,8 +161,8 @@
   }
  },
  "name":"libical",
- "new_version":"3.0.7",
- "pinning_version":"2019.12.02",
+ "new_version":"3.0.8",
+ "pinning_version":"2020.03.06",
  "raw_meta_yaml":"{% set name = \"libical\" %}\n{% set version = \"3.0.7\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  url: https://github.com/{{ name }}/{{ name }}/releases/download/v{{ version }}/{{ name }}-{{ version }}.tar.gz\n  sha256: 0abe66df1ea826e57db7f281c704ede834c84139012e6c686ea7adafd4e763fc\n\nbuild:\n  number: 0\n  skip: true  # [win]\n  run_exports:\n    - {{ pin_subpackage('libical', max_pin='x') }}\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n    - make\n    - cmake >=3.11.0\n    - perl\n    - pkg-config  # [osx]\n  host:\n    - icu\n    - glib\n    - libxml2\n    - gobject-introspection  # [linux]\n  run:\n    - icu\n    - glib\n    - libxml2\n    - {{ pin_compatible(\"gobject-introspection\", max_pin=\"x.x\") }}  # [linux]\n\ntest:\n  commands:\n    - test -f \"${PREFIX}/lib/libical${SHLIB_EXT}\"\n\nabout:\n  home: http://libical.github.io/libical/\n  license: MPL v2\n  license_family: OTHER\n  license_file: LICENSE.MPL2.txt\n  summary: 'An Open Source implementation of the iCalendar protocols and protocol data units'\n  description: |\n    Libical is an Open Source implementation of the iCalendar protocols and protocol data units.\n    The iCalendar specification describes how calendar clients can communicate with calendar\n    servers so users can store their calendar data and arrange meetings with other users.\n    Libical implements RFC2445, RFC2446 and some of RFC2447.\n  doc_url: http://libical.github.io/libical/\n  dev_url: https://github.com/libical/libical\n\nextra:\n  recipe-maintainers:\n    - scopatz\n",
  "req":{
   "__set__":true,
@@ -198,7 +215,7 @@
    "elements":[]
   }
  },
- "smithy_version":"3.6.5",
+ "smithy_version":"3.6.10",
  "strong_exports":false,
  "total_requirements":{
   "build":{

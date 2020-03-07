@@ -121,9 +121,6 @@
  ],
  "bad":false,
  "conda-forge.yml":{
-  "compiler_stack":"comp7",
-  "max_py_ver":"37",
-  "max_r_ver":"35",
   "provider":{
    "win":"azure"
   }
@@ -145,11 +142,11 @@
    "number":"0",
    "script":[
     "del /f pyproject.toml",
-    " -m pip install . --no-deps -vv",
+    "-m pip install . --no-deps -vv",
     "rm -f pyproject.toml",
-    " -m pip install . --no-deps -vv",
+    "-m pip install . --no-deps -vv",
     "rm -f pyproject.toml",
-    " -m pip install . --no-deps -vv"
+    "-m pip install . --no-deps -vv"
    ]
   },
   "extra":{
@@ -167,7 +164,7 @@
   },
   "package":{
    "name":"pendulum",
-   "version":"2.0.5"
+   "version":"2.1.0"
   },
   "requirements":{
    "build":[
@@ -191,21 +188,31 @@
    ]
   },
   "source":{
-   "sha256":"d3078e007315a959989c41cee5cfd63cfeeca21dd3d8295f4bc24199489e9b6c",
-   "url":"https://pypi.io/packages/source/p/pendulum/pendulum-2.0.5.tar.gz"
+   "sha256":"093cab342e10516660e64b935a6da1a043e0286de36cc229fb48471415981ffe",
+   "url":"https://pypi.io/packages/source/p/pendulum/pendulum-2.1.0.tar.gz"
   },
   "test":{
+   "commands":[
+    "pip check",
+    "pip check",
+    "pip check"
+   ],
    "imports":[
     "pendulum",
     "pendulum",
     "pendulum"
+   ],
+   "requires":[
+    "pip",
+    "pip",
+    "pip"
    ]
   }
  },
  "name":"pendulum",
  "new_version":"2.1.0",
  "pinning_version":"2020.03.06",
- "raw_meta_yaml":"{% set version = \"2.0.5\" %}\n\npackage:\n  name: pendulum\n  version: {{ version }}\n\nsource:\n  url: https://pypi.io/packages/source/p/pendulum/pendulum-{{ version }}.tar.gz\n  sha256: d3078e007315a959989c41cee5cfd63cfeeca21dd3d8295f4bc24199489e9b6c\n\nbuild:\n  number: 0\n  script:\n    - rm -f pyproject.toml  # [not win]\n    - del /f pyproject.toml  # [win]\n    - \"{{ PYTHON }} -m pip install . --no-deps -vv\"\n\nrequirements:\n  build:\n    - python\n    - pip\n  run:\n    - python\n    - python-dateutil >=2.6,<3.0\n    - pytzdata >=2018.3\n    - typing >=3.6,<4.0  # [py<35]\n\ntest:\n  imports:\n    - pendulum\n\nabout:\n  home: https://pendulum.eustace.io\n  license: MIT\n  license_family: MIT\n  license_file: LICENSE\n  summary: 'Python datetimes made easy'\n  description: |\n    Drop-in replacement for the standard datetime class.\n    It behaves exactly like it but with many improvements.\n  doc_url: https://pendulum.eustace.io/docs/\n  dev_url: https://github.com/sdispater/pendulum\n\nextra:\n  recipe-maintainers:\n    - mcs07\n    - ocefpaf\n    - xylar\n",
+ "raw_meta_yaml":"{% set version = \"2.1.0\" %}\n\npackage:\n  name: pendulum\n  version: {{ version }}\n\nsource:\n  url: https://pypi.io/packages/source/p/pendulum/pendulum-{{ version }}.tar.gz\n  sha256: 093cab342e10516660e64b935a6da1a043e0286de36cc229fb48471415981ffe\n\nbuild:\n  number: 0\n  script:\n    - rm -f pyproject.toml  # [not win]\n    - del /f pyproject.toml  # [win]\n    - {{ PYTHON }} -m pip install . --no-deps -vv\n\nrequirements:\n  build:\n    - python\n    - pip\n  run:\n    - python\n    - python-dateutil >=2.6,<3.0\n    - pytzdata >=2018.3\n    - typing >=3.6,<4.0  # [py<35]\n\ntest:\n  requires:\n    - pip\n  commands:\n    - pip check\n  imports:\n    - pendulum\n\nabout:\n  home: https://pendulum.eustace.io\n  license: MIT\n  license_family: MIT\n  license_file: LICENSE\n  summary: Python datetimes made easy\n  description: |\n    Drop-in replacement for the standard datetime class.\n    It behaves exactly like it but with many improvements.\n  doc_url: https://pendulum.eustace.io/docs/\n  dev_url: https://github.com/sdispater/pendulum\n\nextra:\n  recipe-maintainers:\n    - mcs07\n    - ocefpaf\n    - xylar\n",
  "req":{
   "__set__":true,
   "elements":[
@@ -237,7 +244,9 @@
   },
   "test":{
    "__set__":true,
-   "elements":[]
+   "elements":[
+    "pip"
+   ]
   }
  },
  "smithy_version":"3.6.10",
@@ -264,9 +273,11 @@
   },
   "test":{
    "__set__":true,
-   "elements":[]
+   "elements":[
+    "pip"
+   ]
   }
  },
  "url":"https://pypi.io/packages/source/p/pendulum/pendulum-2.0.5.tar.gz",
- "version":"2.0.5"
+ "version":"2.1.0"
 }
