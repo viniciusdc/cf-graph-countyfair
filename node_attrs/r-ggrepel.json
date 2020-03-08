@@ -100,9 +100,6 @@
  ],
  "bad":false,
  "conda-forge.yml":{
-  "compiler_stack":"comp7",
-  "max_py_ver":"37",
-  "max_r_ver":"35",
   "provider":{
    "win":"azure"
   }
@@ -119,7 +116,7 @@
   },
   "build":{
    "merge_build_host":true,
-   "number":"1",
+   "number":"0",
    "rpaths":[
     "lib/R/lib/",
     "lib/",
@@ -156,7 +153,7 @@
   },
   "package":{
    "name":"r-ggrepel",
-   "version":"0.8.1"
+   "version":"0.8.2"
   },
   "requirements":{
    "build":[
@@ -205,15 +202,15 @@
    ]
   },
   "source":{
-   "fn":"ggrepel_0.8.1.tar.gz",
-   "sha256":"d5d03a77ab6d8c831934bc46e840cc4e3df487272ab591fa72767ad42bcb7283",
+   "fn":"ggrepel_0.8.2.tar.gz",
+   "sha256":"0d01bfc005e9af5e6b57e2a677781424387f38ec208818295eb87dd5867551e1",
    "url":[
-    "https://cran.r-project.org/src/contrib/ggrepel_0.8.1.tar.gz",
-    "https://cran.r-project.org/src/contrib/Archive/ggrepel/ggrepel_0.8.1.tar.gz",
-    "https://cran.r-project.org/src/contrib/ggrepel_0.8.1.tar.gz",
-    "https://cran.r-project.org/src/contrib/Archive/ggrepel/ggrepel_0.8.1.tar.gz",
-    "https://cran.r-project.org/src/contrib/ggrepel_0.8.1.tar.gz",
-    "https://cran.r-project.org/src/contrib/Archive/ggrepel/ggrepel_0.8.1.tar.gz"
+    "https://cran.r-project.org/src/contrib/ggrepel_0.8.2.tar.gz",
+    "https://cran.r-project.org/src/contrib/Archive/ggrepel/ggrepel_0.8.2.tar.gz",
+    "https://cran.r-project.org/src/contrib/ggrepel_0.8.2.tar.gz",
+    "https://cran.r-project.org/src/contrib/Archive/ggrepel/ggrepel_0.8.2.tar.gz",
+    "https://cran.r-project.org/src/contrib/ggrepel_0.8.2.tar.gz",
+    "https://cran.r-project.org/src/contrib/Archive/ggrepel/ggrepel_0.8.2.tar.gz"
    ]
   },
   "test":{
@@ -227,7 +224,7 @@
  "name":"r-ggrepel",
  "new_version":"0.8.2",
  "pinning_version":"2020.03.06",
- "raw_meta_yaml":"{% set version = \"0.8.1\" %}\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-ggrepel\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  fn: ggrepel_{{ version }}.tar.gz\n  url:\n    - {{ cran_mirror }}/src/contrib/ggrepel_{{ version }}.tar.gz\n    - {{ cran_mirror }}/src/contrib/Archive/ggrepel/ggrepel_{{ version }}.tar.gz\n  sha256: d5d03a77ab6d8c831934bc46e840cc4e3df487272ab591fa72767ad42bcb7283\n\nbuild:\n  merge_build_host: True  # [win]\n  number: 1\n  skip: true  # [win32]\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - {{ compiler('c') }}        # [not win]\n    - {{ compiler('cxx') }}      # [not win]\n    - {{ compiler('m2w64_c') }}        # [win]\n    - {{ compiler('m2w64_cxx') }}        # [win]\n    - {{posix}}filesystem        # [win]\n    - {{posix}}make\n    - {{posix}}sed               # [win]\n    - {{posix}}coreutils         # [win]\n    - {{posix}}zip               # [win]\n  host:\n    - r-base\n    - r-rcpp\n    - r-ggplot2 >=2.2.0\n    - r-scales >=0.3.0\n  run:\n    - r-base\n    - {{native}}gcc-libs         # [win]\n    - r-rcpp\n    - r-ggplot2 >=2.2.0\n    - r-scales >=0.3.0\n\ntest:\n  commands:\n    - $R -e \"library('ggrepel')\"           # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('ggrepel')\\\"\"  # [win]\n\nabout:\n  home: http://github.com/slowkow/ggrepel\n  license: GPL-3\n  summary: Provides text and label geoms for 'ggplot2' that help to avoid overlapping text labels.\n    Labels repel away from each other and away from the data points.\n  license_family: GPL3\n  license_file: '{{ environ[\"PREFIX\"] }}/lib/R/share/licenses/GPL-3'\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n    - johanneskoester\n    - bgruening\n    - daler\n    - jdblischak\n    - cbrueffer\n    - dbast\n",
+ "raw_meta_yaml":"{% set version = \"0.8.2\" %}\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-ggrepel\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  fn: ggrepel_{{ version }}.tar.gz\n  url:\n    - {{ cran_mirror }}/src/contrib/ggrepel_{{ version }}.tar.gz\n    - {{ cran_mirror }}/src/contrib/Archive/ggrepel/ggrepel_{{ version }}.tar.gz\n  sha256: 0d01bfc005e9af5e6b57e2a677781424387f38ec208818295eb87dd5867551e1\n\nbuild:\n  merge_build_host: true  # [win]\n  number: 0\n  skip: true  # [win32]\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - {{ compiler('c') }}        # [not win]\n    - {{ compiler('cxx') }}      # [not win]\n    - {{ compiler('m2w64_c') }}        # [win]\n    - {{ compiler('m2w64_cxx') }}        # [win]\n    - {{posix}}filesystem        # [win]\n    - {{posix}}make\n    - {{posix}}sed               # [win]\n    - {{posix}}coreutils         # [win]\n    - {{posix}}zip               # [win]\n  host:\n    - r-base\n    - r-rcpp\n    - r-ggplot2 >=2.2.0\n    - r-scales >=0.3.0\n  run:\n    - r-base\n    - {{native}}gcc-libs         # [win]\n    - r-rcpp\n    - r-ggplot2 >=2.2.0\n    - r-scales >=0.3.0\n\ntest:\n  commands:\n    - $R -e \"library('ggrepel')\"           # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('ggrepel')\\\"\"  # [win]\n\nabout:\n  home: http://github.com/slowkow/ggrepel\n  license: GPL-3\n  summary: Provides text and label geoms for 'ggplot2' that help to avoid overlapping text labels. Labels repel away from each other and away from the data points.\n  license_family: GPL3\n  license_file: {{ environ[\"PREFIX\"] }}/lib/R/share/licenses/GPL-3\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n    - johanneskoester\n    - bgruening\n    - daler\n    - jdblischak\n    - cbrueffer\n    - dbast\n",
  "req":{
   "__set__":true,
   "elements":[
@@ -335,5 +332,5 @@
   "https://cran.r-project.org/src/contrib/ggrepel_0.8.1.tar.gz",
   "https://cran.r-project.org/src/contrib/Archive/ggrepel/ggrepel_0.8.1.tar.gz"
  ],
- "version":"0.8.1"
+ "version":"0.8.2"
 }
