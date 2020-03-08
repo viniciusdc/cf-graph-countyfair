@@ -103,9 +103,6 @@
  ],
  "bad":false,
  "conda-forge.yml":{
-  "compiler_stack":"comp7",
-  "max_py_ver":"37",
-  "max_r_ver":"35",
   "provider":{
    "win":"azure"
   }
@@ -144,7 +141,7 @@
   },
   "package":{
    "name":"r-robust",
-   "version":"0.4_18.2"
+   "version":"0.5_0.0"
   },
   "requirements":{
    "build":[
@@ -163,18 +160,24 @@
     "make"
    ],
    "host":[
+    "libblas",
+    "liblapack",
     "r-base",
     "r-mass",
     "r-fit.models",
     "r-lattice",
     "r-robustbase",
     "r-rrcov",
+    "libblas",
+    "liblapack",
     "r-base",
     "r-mass",
     "r-fit.models",
     "r-lattice",
     "r-robustbase",
     "r-rrcov",
+    "libblas",
+    "liblapack",
     "r-base",
     "r-mass",
     "r-fit.models",
@@ -205,14 +208,14 @@
    ]
   },
   "source":{
-   "sha256":"7350b35af0a06c085b110cbacbfc191f2eb20861a396be9b8a538ffe9a69a70b",
+   "sha256":"82f0b50028938966f807a4c4da5c345a3a64ccafd9a31c64a22cda852ed345cf",
    "url":[
-    "https://cran.r-project.org/src/contrib/robust_0.4-18.2.tar.gz",
-    "https://cran.r-project.org/src/contrib/Archive/robust/robust_0.4-18.2.tar.gz",
-    "https://cran.r-project.org/src/contrib/robust_0.4-18.2.tar.gz",
-    "https://cran.r-project.org/src/contrib/Archive/robust/robust_0.4-18.2.tar.gz",
-    "https://cran.r-project.org/src/contrib/robust_0.4-18.2.tar.gz",
-    "https://cran.r-project.org/src/contrib/Archive/robust/robust_0.4-18.2.tar.gz"
+    "https://cran.r-project.org/src/contrib/robust_0.5-0.0.tar.gz",
+    "https://cran.r-project.org/src/contrib/Archive/robust/robust_0.5-0.0.tar.gz",
+    "https://cran.r-project.org/src/contrib/robust_0.5-0.0.tar.gz",
+    "https://cran.r-project.org/src/contrib/Archive/robust/robust_0.5-0.0.tar.gz",
+    "https://cran.r-project.org/src/contrib/robust_0.5-0.0.tar.gz",
+    "https://cran.r-project.org/src/contrib/Archive/robust/robust_0.5-0.0.tar.gz"
    ]
   },
   "test":{
@@ -226,7 +229,7 @@
  "name":"r-robust",
  "new_version":"0.5_0.0",
  "pinning_version":"2020.03.06",
- "raw_meta_yaml":"{% set version = \"0.4-18.2\" %}\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-robust\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  url:\n    - {{ cran_mirror }}/src/contrib/robust_{{ version }}.tar.gz\n    - {{ cran_mirror }}/src/contrib/Archive/robust/robust_{{ version }}.tar.gz\n  sha256: 7350b35af0a06c085b110cbacbfc191f2eb20861a396be9b8a538ffe9a69a70b\n\nbuild:\n  merge_build_host: True  # [win]\n  number: 0\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - {{ compiler('c') }}              # [not win]\n    - {{ compiler('m2w64_c') }}        # [win]\n    - {{ compiler('fortran') }}        # [not win]\n    - {{ compiler('m2w64_fortran') }}  # [win]\n    - {{posix}}filesystem        # [win]\n    - {{posix}}make\n    - {{posix}}sed               # [win]\n    - {{posix}}coreutils         # [win]\n    - {{posix}}zip               # [win]\n  host:\n    - r-base\n    - r-mass\n    - r-fit.models\n    - r-lattice\n    - r-robustbase\n    - r-rrcov\n  run:\n    - r-base\n    - {{native}}gcc-libs         # [win]\n    - r-mass\n    - r-fit.models\n    - r-lattice\n    - r-robustbase\n    - r-rrcov\n\ntest:\n  commands:\n    - $R -e \"library('robust')\"           # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('robust')\\\"\"  # [win]\n\nabout:\n  home: https://CRAN.R-project.org/package=robust\n  license: GPL-2\n  summary: Methods for robust statistics, a state of the art in the early 2000s, notably for\n    robust regression and robust multivariate analysis.\n  license_family: GPL2\n  license_file: '{{ environ[\"PREFIX\"] }}/lib/R/share/licenses/GPL-2'\n\nextra:\n  recipe-maintainers:\n    - rvalieris\n    - conda-forge/r\n\n# Package: robust\n# Version: 0.4-18.1\n# Date: 2017-04-26\n# Title: Port of the S+ \"Robust Library\"\n# Description: Methods for robust statistics, a state of the art in the early 2000s, notably for robust regression and robust multivariate analysis.\n# Author: Jiahui Wang, Ruben Zamar <ruben@stat.ubc.ca>, Alfio Marazzi <Alfio.Marazzi@inst.hospvd.ch>, Victor Yohai <vyohai@dm.uba.ar>, Matias Salibian-Barrera <matias@stat.ubc.ca>, Ricardo Maronna <maron@mate.unlp.edu.ar>, Eric Zivot <ezivot@u.washington.edu>, David Rocke <dmrocke@ucdavis.edu>, Doug Martin, Martin Maechler <maechler@stat.math.ethz.ch>, Kjell Konis <kjell.konis@me.com>.\n# Maintainer: Kjell Konis <kjell.konis@me.com>\n# Depends: fit.models\n# Imports: graphics, stats, utils, lattice, MASS, robustbase, rrcov\n# License: GPL-2\n# NeedsCompilation: yes\n# Packaged: 2019-07-02 14:46:25 UTC; ripley\n# Repository: CRAN\n# Date/Publication: 2019-07-02 14:52:19 UTC\n",
+ "raw_meta_yaml":"{% set version = \"0.5-0.0\" %}\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-robust\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  url:\n    - {{ cran_mirror }}/src/contrib/robust_{{ version }}.tar.gz\n    - {{ cran_mirror }}/src/contrib/Archive/robust/robust_{{ version }}.tar.gz\n  sha256: 82f0b50028938966f807a4c4da5c345a3a64ccafd9a31c64a22cda852ed345cf\n\nbuild:\n  merge_build_host: true  # [win]\n  number: 0\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - {{ compiler('c') }}              # [not win]\n    - {{ compiler('m2w64_c') }}        # [win]\n    - {{ compiler('fortran') }}        # [not win]\n    - {{ compiler('m2w64_fortran') }}  # [win]\n    - {{posix}}filesystem        # [win]\n    - {{posix}}make\n    - {{posix}}sed               # [win]\n    - {{posix}}coreutils         # [win]\n    - {{posix}}zip               # [win]\n  host:\n    - libblas\n    - liblapack\n    - r-base\n    - r-mass\n    - r-fit.models\n    - r-lattice\n    - r-robustbase\n    - r-rrcov\n  run:\n    - r-base\n    - {{native}}gcc-libs         # [win]\n    - r-mass\n    - r-fit.models\n    - r-lattice\n    - r-robustbase\n    - r-rrcov\n\ntest:\n  commands:\n    - $R -e \"library('robust')\"           # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('robust')\\\"\"  # [win]\n\nabout:\n  home: https://CRAN.R-project.org/package=robust\n  license: GPL-2\n  summary: Methods for robust statistics, a state of the art in the early 2000s, notably for robust regression and robust multivariate analysis.\n  license_family: GPL2\n  license_file: {{ environ[\"PREFIX\"] }}/lib/R/share/licenses/GPL-2\n\nextra:\n  recipe-maintainers:\n    - rvalieris\n    - conda-forge/r\n\n# Package: robust\n# Version: 0.4-18.1\n# Date: 2017-04-26\n# Title: Port of the S+ \"Robust Library\"\n# Description: Methods for robust statistics, a state of the art in the early 2000s, notably for robust regression and robust multivariate analysis.\n# Author: Jiahui Wang, Ruben Zamar <ruben@stat.ubc.ca>, Alfio Marazzi <Alfio.Marazzi@inst.hospvd.ch>, Victor Yohai <vyohai@dm.uba.ar>, Matias Salibian-Barrera <matias@stat.ubc.ca>, Ricardo Maronna <maron@mate.unlp.edu.ar>, Eric Zivot <ezivot@u.washington.edu>, David Rocke <dmrocke@ucdavis.edu>, Doug Martin, Martin Maechler <maechler@stat.math.ethz.ch>, Kjell Konis <kjell.konis@me.com>.\n# Maintainer: Kjell Konis <kjell.konis@me.com>\n# Depends: fit.models\n# Imports: graphics, stats, utils, lattice, MASS, robustbase, rrcov\n# License: GPL-2\n# NeedsCompilation: yes\n# Packaged: 2019-07-02 14:46:25 UTC; ripley\n# Repository: CRAN\n# Date/Publication: 2019-07-02 14:52:19 UTC\n",
  "req":{
   "__set__":true,
   "elements":[
@@ -235,6 +238,8 @@
    "filesystem",
    "fortran_compiler_stub",
    "gcc-libs",
+   "libblas",
+   "liblapack",
    "m2w64_c_compiler_stub",
    "m2w64_fortran_compiler_stub",
    "make",
@@ -266,6 +271,8 @@
   "host":{
    "__set__":true,
    "elements":[
+    "libblas",
+    "liblapack",
     "r-base",
     "r-fit.models",
     "r-lattice",
@@ -311,6 +318,8 @@
   "host":{
    "__set__":true,
    "elements":[
+    "libblas",
+    "liblapack",
     "r-base",
     "r-fit.models",
     "r-lattice",
@@ -344,5 +353,5 @@
   "https://cran.r-project.org/src/contrib/robust_0.4-18.1.tar.gz",
   "https://cran.r-project.org/src/contrib/Archive/robust/robust_0.4-18.1.tar.gz"
  ],
- "version":"0.4_18.2"
+ "version":"0.5_0.0"
 }
