@@ -52,8 +52,7 @@
    "summary":"Parallel implementation of gzip"
   },
   "build":{
-   "features":null,
-   "number":"0"
+   "number":"1"
   },
   "extra":{
    "recipe-maintainers":[
@@ -68,39 +67,34 @@
   },
   "requirements":{
    "build":[
-    "python",
-    "vc 14",
+    "m2w64_c_compiler_stub",
     "posix",
+    "c_compiler_stub",
+    "c_compiler_stub"
+   ],
+   "host":[
     "pthreads-win32",
-    "m2w64-toolchain",
-    "toolchain",
-    "zlib 1.2.*",
-    "toolchain",
-    "zlib 1.2.*",
-    "toolchain",
-    "zlib 1.2.*"
+    "zlib",
+    "zlib",
+    "zlib"
    ],
    "run":[
-    "vc 14",
-    "zlib 1.2.*",
-    "zlib 1.2.*",
-    "zlib 1.2.*"
+    "zlib",
+    "zlib",
+    "zlib"
    ]
   },
   "source":{
    "fn":"pigz-2.3.4.tar.gz",
-   "sha256":"6f031fa40bc15b1d80d502ff91f83ba14f4b079e886bfb83221374f7bf5c8f9a",
-   "url":"https://zlib.net/pigz/pigz-2.3.4.tar.gz"
+   "sha256":"763f2fdb203aa0b7b640e63385e38e5dd4e5aaa041bc8e42aa96f2ef156b06e8",
+   "url":"https://github.com/madler/pigz/archive/v2.3.4.tar.gz"
   },
   "test":{
    "commands":[
     "pigz -h",
     "unpigz -h",
-    "conda inspect linkages -p $PREFIX $PKG_NAME",
-    "conda inspect objects -p $PREFIX $PKG_NAME",
     "pigz -h",
     "unpigz -h",
-    "conda inspect linkages -p $PREFIX $PKG_NAME",
     "pigz -h",
     "unpigz -h"
    ]
@@ -109,16 +103,14 @@
  "name":"pigz",
  "new_version":false,
  "pinning_version":"2019.11.01",
- "raw_meta_yaml":"{% set name = \"pigz\" %}\n{% set version = \"2.3.4\" %}\n{% set sha256 = \"6f031fa40bc15b1d80d502ff91f83ba14f4b079e886bfb83221374f7bf5c8f9a\" %}\n\npackage:\n  name: {{ name }}\n  version: {{ version }}\n\nsource:\n  fn: {{ name }}-{{ version }}.tar.gz\n  url: https://zlib.net/{{ name }}/{{ name }}-{{ version }}.tar.gz\n  sha256: {{ sha256 }}\n\nbuild:\n  number: 0\n  features:\n    - vc9   # [win and py27]\n    - vc10  # [win and py34]\n    - vc14  # [win and py>=35]\n\nrequirements:\n  build:\n    - python           # [win]\n    - vc 9             # [win and py27]\n    - vc 10            # [win and py34]\n    - vc 14            # [win and py>=35]\n    - posix            # [win]\n    - pthreads-win32   # [win]\n    - m2w64-toolchain  # [win]\n    - toolchain\n    - zlib 1.2.*\n  run:\n    - vc 9             # [win and py27]\n    - vc 10            # [win and py34]\n    - vc 14            # [win and py>=35]\n    - zlib 1.2.*\n\ntest:\n  commands:\n    - conda inspect linkages -p $PREFIX $PKG_NAME  # [not win]\n    - conda inspect objects -p $PREFIX $PKG_NAME   # [osx]\n    - pigz -h\n    - unpigz -h\n\nabout:\n  home: https://zlib.net/pigz/\n  license: zlib\n  license_family: other\n  license_file: README\n  summary: Parallel implementation of gzip\n  description: |\n    pigz, which stands for parallel implementation of gzip, is a fully functional\n    replacement for gzip that exploits multiple processors and multiple cores\n    to the hilt when compressing data.\n  doc_url: https://zlib.net/pigz/pigz.pdf\n\nextra:\n  recipe-maintainers:\n    - epruesse\n",
+ "raw_meta_yaml":"{% set name = \"pigz\" %}\n{% set version = \"2.3.4\" %}\n{% set sha256 = \"763f2fdb203aa0b7b640e63385e38e5dd4e5aaa041bc8e42aa96f2ef156b06e8\" %}\n\npackage:\n  name: {{ name }}\n  version: {{ version }}\n\nsource:\n  fn: {{ name }}-{{ version }}.tar.gz\n  url: https://github.com/madler/{{ name }}/archive/v{{ version }}.tar.gz\n  sha256: {{ sha256 }}\n\nbuild:\n  number: 1\n\nrequirements:\n  build:\n    - {{ compiler(\"c\") }}        # [unix]\n    - {{ compiler(\"m2w64_c\") }}  # [win]\n    - posix                      # [win]\n  host:\n    - pthreads-win32             # [win]\n    - zlib\n  run:\n    - zlib\n\ntest:\n  commands:\n    - pigz -h\n    - unpigz -h\n\nabout:\n  home: https://zlib.net/pigz/\n  license: zlib\n  license_family: other\n  license_file: README\n  summary: Parallel implementation of gzip\n  description: |\n    pigz, which stands for parallel implementation of gzip, is a fully functional\n    replacement for gzip that exploits multiple processors and multiple cores\n    to the hilt when compressing data.\n  doc_url: https://zlib.net/pigz/pigz.pdf\n\nextra:\n  recipe-maintainers:\n    - epruesse\n",
  "req":{
   "__set__":true,
   "elements":[
-   "m2w64-toolchain",
+   "c_compiler_stub",
+   "m2w64_c_compiler_stub",
    "posix",
    "pthreads-win32",
-   "python",
-   "toolchain",
-   "vc",
    "zlib"
   ]
  },
@@ -126,23 +118,21 @@
   "build":{
    "__set__":true,
    "elements":[
-    "m2w64-toolchain",
-    "posix",
-    "pthreads-win32",
-    "python",
-    "toolchain",
-    "vc",
-    "zlib"
+    "c_compiler_stub",
+    "m2w64_c_compiler_stub",
+    "posix"
    ]
   },
   "host":{
    "__set__":true,
-   "elements":[]
+   "elements":[
+    "pthreads-win32",
+    "zlib"
+   ]
   },
   "run":{
    "__set__":true,
    "elements":[
-    "vc",
     "zlib"
    ]
   },
@@ -157,24 +147,22 @@
   "build":{
    "__set__":true,
    "elements":[
-    "m2w64-toolchain",
-    "posix",
-    "pthreads-win32",
-    "python",
-    "toolchain",
-    "vc 14",
-    "zlib 1.2.*"
+    "c_compiler_stub",
+    "m2w64_c_compiler_stub",
+    "posix"
    ]
   },
   "host":{
    "__set__":true,
-   "elements":[]
+   "elements":[
+    "pthreads-win32",
+    "zlib"
+   ]
   },
   "run":{
    "__set__":true,
    "elements":[
-    "vc 14",
-    "zlib 1.2.*"
+    "zlib"
    ]
   },
   "test":{
