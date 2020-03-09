@@ -113,7 +113,7 @@
   }
  },
  "name":"gperftools",
- "new_version":"2.7",
+ "new_version":"2.7.90",
  "pinning_version":"2018.09.11",
  "raw_meta_yaml":"{% set name = \"gperftools\" %}\n{% set version = \"2.7\" %}\n{% set sha256 = \"3a88b4544315d550c87db5c96775496243fb91aa2cea88d2b845f65823f3d38a\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  fn: {{ name }}-{{ version }}.tar.gz\n  url: https://github.com/{{name}}/{{name}}/archive/{{name}}-{{version}}.tar.gz\n  sha256: {{ sha256 }}\n\nbuild:\n  number: 2\n  skip: true  # [win]\n\nrequirements:\n  build:\n    - autoconf\n    - automake\n    - make\n    - libtool\n    - {{ pin_compatible('libunwind', max_pin='x.x') }}  # [linux]\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n  host:\n    - libunwind  # [linux]\n  run:\n    - perl\n\ntest:\n  requires:\n    - {{ compiler('c') }}\n  commands:\n    - pprof --help\n\nabout:\n  home: http://github.com/gperftools/gperftools\n  license: BSD-3-Clause\n  license_family: BSD\n  license_file: COPYING\n  summary: 'The fastest malloc we have seen; works particularly well with threads and STL'\n  description: |\n    gperftools is a collection of a high-performance multi-threaded\n    malloc() implementation, plus some pretty nifty performance analysis\n    tools.\n  doc_url: https://github.com/gperftools/gperftools/wiki\n  dev_url: https://github.com/gperftools/gperftools\n\nextra:\n  recipe-maintainers:\n    - xmnlab\n",
  "req":{
