@@ -69,9 +69,6 @@
  ],
  "bad":false,
  "conda-forge.yml":{
-  "compiler_stack":"comp7",
-  "max_py_ver":"37",
-  "max_r_ver":"35",
   "provider":{
    "win":"azure"
   }
@@ -81,14 +78,18 @@
  "meta_yaml":{
   "about":{
    "home":"https://CRAN.R-project.org/package=SKAT",
-   "license":"GPL (>= 2)",
-   "license_family":"GPL3",
-   "license_file":"/lib/R/share/licenses/GPL-3",
+   "license":"GPL-2",
+   "license_family":"GPL2",
+   "license_file":[
+    "/lib/R/share/licenses/GPL-2",
+    "/lib/R/share/licenses/GPL-2",
+    "/lib/R/share/licenses/GPL-2"
+   ],
    "summary":"Functions for kernel-regression-based association tests including Burden test, SKAT and SKAT-O. These methods aggregate individual SNP score statistics in a SNP set and efficiently compute SNP-set level p-values."
   },
   "build":{
    "merge_build_host":true,
-   "number":"1002",
+   "number":"0",
    "rpaths":[
     "lib/R/lib/",
     "lib/",
@@ -101,60 +102,66 @@
   "extra":{
    "recipe-maintainers":[
     "conda-forge/r",
-    "johanneskoester",
-    "bgruening",
-    "daler",
-    "jdblischak",
     "bsennblad",
     "conda-forge/r",
-    "johanneskoester",
-    "bgruening",
-    "daler",
-    "jdblischak",
     "bsennblad",
     "conda-forge/r",
-    "johanneskoester",
-    "bgruening",
-    "daler",
-    "jdblischak",
     "bsennblad"
    ]
   },
   "package":{
    "name":"r-skat",
-   "version":"1.3.2.1"
+   "version":"2.0.0"
   },
   "requirements":{
    "build":[
-    "posix",
     "m2w64_c_compiler_stub",
     "m2w64_cxx_compiler_stub",
+    "filesystem",
+    "make",
+    "sed",
+    "coreutils",
+    "zip",
     "c_compiler_stub",
     "cxx_compiler_stub",
+    "make",
     "c_compiler_stub",
-    "cxx_compiler_stub"
+    "cxx_compiler_stub",
+    "make"
    ],
    "host":[
     "r-base",
+    "r-matrix",
+    "r-spatest",
     "r-base",
-    "r-base"
+    "r-matrix",
+    "r-spatest",
+    "r-base",
+    "r-matrix",
+    "r-spatest"
    ],
    "run":[
     "r-base",
+    "gcc-libs",
+    "r-matrix",
+    "r-spatest",
     "r-base",
-    "r-base"
+    "r-matrix",
+    "r-spatest",
+    "r-base",
+    "r-matrix",
+    "r-spatest"
    ]
   },
   "source":{
-   "fn":"SKAT_1.3.2.1.tar.gz",
-   "sha256":"7442408ccd1b9d2abb3f3dbd27e1b46e50b87042195bc46ce25fe0d887f98e7a",
+   "sha256":"b90be9552f65f0055311ec7a4de5b33520a040f9202aa5872fbfae306c496ce2",
    "url":[
-    "https://cran.r-project.org/src/contrib/SKAT_1.3.2.1.tar.gz",
-    "https://cran.r-project.org/src/contrib/Archive/SKAT/SKAT_1.3.2.1.tar.gz",
-    "https://cran.r-project.org/src/contrib/SKAT_1.3.2.1.tar.gz",
-    "https://cran.r-project.org/src/contrib/Archive/SKAT/SKAT_1.3.2.1.tar.gz",
-    "https://cran.r-project.org/src/contrib/SKAT_1.3.2.1.tar.gz",
-    "https://cran.r-project.org/src/contrib/Archive/SKAT/SKAT_1.3.2.1.tar.gz"
+    "https://cran.r-project.org/src/contrib/SKAT_2.0.0.tar.gz",
+    "https://cran.r-project.org/src/contrib/Archive/SKAT/SKAT_2.0.0.tar.gz",
+    "https://cran.r-project.org/src/contrib/SKAT_2.0.0.tar.gz",
+    "https://cran.r-project.org/src/contrib/Archive/SKAT/SKAT_2.0.0.tar.gz",
+    "https://cran.r-project.org/src/contrib/SKAT_2.0.0.tar.gz",
+    "https://cran.r-project.org/src/contrib/Archive/SKAT/SKAT_2.0.0.tar.gz"
    ]
   },
   "test":{
@@ -168,16 +175,23 @@
  "name":"r-skat",
  "new_version":"2.0.0",
  "pinning_version":"2020.03.06",
- "raw_meta_yaml":"{% set version = '1.3.2.1' %}\n\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-skat\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  fn: SKAT_{{ version }}.tar.gz\n  url:\n    - https://cran.r-project.org/src/contrib/SKAT_{{ version }}.tar.gz\n    - https://cran.r-project.org/src/contrib/Archive/SKAT/SKAT_{{ version }}.tar.gz\n  sha256: 7442408ccd1b9d2abb3f3dbd27e1b46e50b87042195bc46ce25fe0d887f98e7a\n\nbuild:\n  merge_build_host: True  # [win]\n  number: 1002\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - posix                # [win]\n    - {{ compiler('c') }}        # [unix]\n    - {{ compiler('m2w64_c') }}  # [win]\n    - {{ compiler('cxx') }}        # [unix]\n    - {{ compiler('m2w64_cxx') }}  # [win]\n  host:\n    - r-base\n\n  run:\n    - r-base\n\ntest:\n  commands:\n    - $R -e \"library('SKAT')\"  # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('SKAT')\\\"\"  # [win]\n\nabout:\n  home: https://CRAN.R-project.org/package=SKAT\n  license: GPL (>= 2)\n  summary: Functions for kernel-regression-based association tests including Burden test, SKAT\n    and SKAT-O. These methods aggregate individual SNP score statistics in a SNP set\n    and efficiently compute SNP-set level p-values.\n  license_family: GPL3\n  license_file: '{{ environ[\"PREFIX\"] }}/lib/R/share/licenses/GPL-3'\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n    - johanneskoester\n    - bgruening\n    - daler\n    - jdblischak\n    - bsennblad\n",
+ "raw_meta_yaml":"{% set version = '2.0.0' %}\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-skat\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  url:\n    - {{ cran_mirror }}/src/contrib/SKAT_{{ version }}.tar.gz\n    - {{ cran_mirror }}/src/contrib/Archive/SKAT/SKAT_{{ version }}.tar.gz\n  sha256: b90be9552f65f0055311ec7a4de5b33520a040f9202aa5872fbfae306c496ce2\n\nbuild:\n  merge_build_host: True  # [win]\n  number: 0\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - {{ compiler('c') }}              # [not win]\n    - {{ compiler('m2w64_c') }}        # [win]\n    - {{ compiler('cxx') }}            # [not win]\n    - {{ compiler('m2w64_cxx') }}      # [win]\n    - {{posix}}filesystem        # [win]\n    - {{posix}}make\n    - {{posix}}sed               # [win]\n    - {{posix}}coreutils         # [win]\n    - {{posix}}zip               # [win]\n  host:\n    - r-base\n    - r-matrix\n    - r-spatest\n  run:\n    - r-base\n    - {{native}}gcc-libs         # [win]\n    - r-matrix\n    - r-spatest\n\ntest:\n  commands:\n    - $R -e \"library('SKAT')\"           # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('SKAT')\\\"\"  # [win]\n\nabout:\n  home: https://CRAN.R-project.org/package=SKAT\n  license: GPL-2\n  summary: Functions for kernel-regression-based association tests including Burden test, SKAT\n    and SKAT-O. These methods aggregate individual SNP score statistics in a SNP set\n    and efficiently compute SNP-set level p-values.\n  license_family: GPL2\n  license_file:\n    - '{{ environ[\"PREFIX\"] }}/lib/R/share/licenses/GPL-2'\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n    - bsennblad\n\n# Package: SKAT\n# Type: Package\n# Title: SNP-Set (Sequence) Kernel Association Test\n# Version: 2.0.0\n# Date: 2020-03-07\n# Author: Seunggeun (Shawn) Lee and Zhangchen Zhao, with contributions from Larisa Miropolsky and Michael Wu\n# Maintainer: Seunggeun (Shawn) Lee <lee7801@snu.ac.kr>\n# Description: Functions for kernel-regression-based association tests including Burden test, SKAT and SKAT-O. These methods aggregate individual SNP score statistics in a SNP set and efficiently compute SNP-set level p-values.\n# License: GPL (>= 2)\n# Depends: R (>= 2.13.0), Matrix, SPAtest\n# NeedsCompilation: yes\n# Packaged: 2020-03-09 00:07:35 UTC; leeshawn\n# Repository: CRAN\n# Date/Publication: 2020-03-09 12:10:02 UTC\n",
  "req":{
   "__set__":true,
   "elements":[
    "c_compiler_stub",
+   "coreutils",
    "cxx_compiler_stub",
+   "filesystem",
+   "gcc-libs",
    "m2w64_c_compiler_stub",
    "m2w64_cxx_compiler_stub",
-   "posix",
-   "r-base"
+   "make",
+   "r-base",
+   "r-matrix",
+   "r-spatest",
+   "sed",
+   "zip"
   ]
  },
  "requirements":{
@@ -185,22 +199,31 @@
    "__set__":true,
    "elements":[
     "c_compiler_stub",
+    "coreutils",
     "cxx_compiler_stub",
+    "filesystem",
     "m2w64_c_compiler_stub",
     "m2w64_cxx_compiler_stub",
-    "posix"
+    "make",
+    "sed",
+    "zip"
    ]
   },
   "host":{
    "__set__":true,
    "elements":[
-    "r-base"
+    "r-base",
+    "r-matrix",
+    "r-spatest"
    ]
   },
   "run":{
    "__set__":true,
    "elements":[
-    "r-base"
+    "gcc-libs",
+    "r-base",
+    "r-matrix",
+    "r-spatest"
    ]
   },
   "test":{
@@ -215,22 +238,31 @@
    "__set__":true,
    "elements":[
     "c_compiler_stub",
+    "coreutils",
     "cxx_compiler_stub",
+    "filesystem",
     "m2w64_c_compiler_stub",
     "m2w64_cxx_compiler_stub",
-    "posix"
+    "make",
+    "sed",
+    "zip"
    ]
   },
   "host":{
    "__set__":true,
    "elements":[
-    "r-base"
+    "r-base",
+    "r-matrix",
+    "r-spatest"
    ]
   },
   "run":{
    "__set__":true,
    "elements":[
-    "r-base"
+    "gcc-libs",
+    "r-base",
+    "r-matrix",
+    "r-spatest"
    ]
   },
   "test":{
@@ -246,5 +278,5 @@
   "https://cran.r-project.org/src/contrib/SKAT_1.3.2.1.tar.gz",
   "https://cran.r-project.org/src/contrib/Archive/SKAT/SKAT_1.3.2.1.tar.gz"
  ],
- "version":"1.3.2.1"
+ "version":"2.0.0"
 }
