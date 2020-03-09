@@ -69,9 +69,6 @@
  ],
  "bad":false,
  "conda-forge.yml":{
-  "compiler_stack":"comp7",
-  "max_py_ver":"37",
-  "max_r_ver":"35",
   "provider":{
    "win":"azure"
   }
@@ -88,7 +85,7 @@
   },
   "build":{
    "merge_build_host":true,
-   "number":"1",
+   "number":"0",
    "rpaths":[
     "lib/R/lib/",
     "lib/",
@@ -110,7 +107,7 @@
   },
   "package":{
    "name":"r-cairo",
-   "version":"1.5_10"
+   "version":"1.5_11"
   },
   "requirements":{
    "build":[
@@ -163,14 +160,14 @@
     "configure.win.patch",
     "configure.win.patch"
    ],
-   "sha256":"7837f0c384cd49bb3342cb39a916d7a80b02fffbf123913a58014e597f69b5d5",
+   "sha256":"af23b16b05deae20d7b28e04cee1c256034e1c216337ff44378fd8f258bf33cd",
    "url":[
-    "https://cran.r-project.org/src/contrib/Cairo_1.5-10.tar.gz",
-    "https://cran.r-project.org/src/contrib/Archive/Cairo/Cairo_1.5-10.tar.gz",
-    "https://cran.r-project.org/src/contrib/Cairo_1.5-10.tar.gz",
-    "https://cran.r-project.org/src/contrib/Archive/Cairo/Cairo_1.5-10.tar.gz",
-    "https://cran.r-project.org/src/contrib/Cairo_1.5-10.tar.gz",
-    "https://cran.r-project.org/src/contrib/Archive/Cairo/Cairo_1.5-10.tar.gz"
+    "https://cran.r-project.org/src/contrib/Cairo_1.5-11.tar.gz",
+    "https://cran.r-project.org/src/contrib/Archive/Cairo/Cairo_1.5-11.tar.gz",
+    "https://cran.r-project.org/src/contrib/Cairo_1.5-11.tar.gz",
+    "https://cran.r-project.org/src/contrib/Archive/Cairo/Cairo_1.5-11.tar.gz",
+    "https://cran.r-project.org/src/contrib/Cairo_1.5-11.tar.gz",
+    "https://cran.r-project.org/src/contrib/Archive/Cairo/Cairo_1.5-11.tar.gz"
    ]
   },
   "test":{
@@ -184,7 +181,7 @@
  "name":"r-cairo",
  "new_version":"1.5_11",
  "pinning_version":"2020.03.06",
- "raw_meta_yaml":"{% set version = '1.5-10' %}\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-cairo\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  url:\n    - {{ cran_mirror }}/src/contrib/Cairo_{{ version }}.tar.gz\n    - {{ cran_mirror }}/src/contrib/Archive/Cairo/Cairo_{{ version }}.tar.gz\n  sha256: 7837f0c384cd49bb3342cb39a916d7a80b02fffbf123913a58014e597f69b5d5\n  patches:\n    - configure.win.patch\n\nbuild:\n  merge_build_host: True  # [win]\n  number: 1\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - {{ compiler('c') }}              # [not win]\n    - {{ compiler('m2w64_c') }}        # [win]\n    - {{posix}}filesystem        # [win]\n    - {{posix}}sed               # [win]\n    - {{posix}}grep              # [win]\n    - {{posix}}autoconf\n    - {{posix}}automake          # [not win]\n    - {{posix}}automake-wrapper  # [win]\n    - {{posix}}pkg-config\n    - {{posix}}make\n    - {{posix}}coreutils         # [win]\n    - {{posix}}zip               # [win]\n  host:\n    - r-base\n    - cairo >=1.2\n    - xorg-libxt                 # [not win]\n\n  run:\n    - r-base\n    - {{native}}gcc-libs         # [win]\n    - cairo >=1.2\n    - xorg-libxt                 # [not win]\n\ntest:\n  commands:\n    - $R -e \"library('Cairo')\"           # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('Cairo')\\\"\"  # [win]\n\nabout:\n  home: http://www.rforge.net/Cairo/\n  license: GPL-2\n  summary: R graphics device using cairographics library that can be used to create high-quality\n    vector (PDF, PostScript and SVG) and bitmap output (PNG,JPEG,TIFF), and high-quality\n    rendering in displays (X11 and Win32). Since it uses the same back-end for all output,\n    copying across formats is WYSIWYG. Files are created without the dependence on X11\n    or other external programs. This device supports alpha channel (semi-transparent\n    drawing) and resulting images can contain transparent and semi-transparent regions.\n    It is ideal for use in server environments (file output) and as a replacement for\n    other devices that don't have Cairo's capabilities such as alpha support or anti-aliasing.\n    Backends are modular such that any subset of backends is supported.\n  license_family: GPL2\n  license_file: '{{ environ[\"PREFIX\"] }}/lib/R/share/licenses/GPL-2'\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n    - croth1\n\n# Package: Cairo\n# Version: 1.5-10\n# Title: R Graphics Device using Cairo Graphics Library for Creating High-Quality Bitmap (PNG, JPEG, TIFF), Vector (PDF, SVG, PostScript) and Display (X11 and Win32) Output\n# Author: Simon Urbanek <Simon.Urbanek@r-project.org>, Jeffrey Horner <jeff.horner@vanderbilt.edu>\n# Maintainer: Simon Urbanek <Simon.Urbanek@r-project.org>\n# Depends: R (>= 2.4.0)\n# Imports: grDevices, graphics\n# Suggests: png\n# Enhances: FastRWeb\n# Description: R graphics device using cairographics library that can be used to create high-quality vector (PDF, PostScript and SVG) and bitmap output (PNG,JPEG,TIFF), and high-quality rendering in displays (X11 and Win32). Since it uses the same back-end for all output, copying across formats is WYSIWYG. Files are created without the dependence on X11 or other external programs. This device supports alpha channel (semi-transparent drawing) and resulting images can contain transparent and semi-transparent regions. It is ideal for use in server environments (file output) and as a replacement for other devices that don't have Cairo's capabilities such as alpha support or anti-aliasing. Backends are modular such that any subset of backends is supported.\n# License: GPL-2\n# SystemRequirements: cairo (>= 1.2 http://www.cairographics.org/)\n# URL: http://www.rforge.net/Cairo/\n# NeedsCompilation: yes\n# Packaged: 2019-03-27 21:32:25 UTC; svnuser\n# Repository: CRAN\n# Date/Publication: 2019-03-28 20:00:37 UTC\n",
+ "raw_meta_yaml":"{% set version = \"1.5-11\" %}\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-cairo\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  url:\n    - {{ cran_mirror }}/src/contrib/Cairo_{{ version }}.tar.gz\n    - {{ cran_mirror }}/src/contrib/Archive/Cairo/Cairo_{{ version }}.tar.gz\n  sha256: af23b16b05deae20d7b28e04cee1c256034e1c216337ff44378fd8f258bf33cd\n  patches:\n    - configure.win.patch\n\nbuild:\n  merge_build_host: true  # [win]\n  number: 0\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - {{ compiler('c') }}              # [not win]\n    - {{ compiler('m2w64_c') }}        # [win]\n    - {{posix}}filesystem        # [win]\n    - {{posix}}sed               # [win]\n    - {{posix}}grep              # [win]\n    - {{posix}}autoconf\n    - {{posix}}automake          # [not win]\n    - {{posix}}automake-wrapper  # [win]\n    - {{posix}}pkg-config\n    - {{posix}}make\n    - {{posix}}coreutils         # [win]\n    - {{posix}}zip               # [win]\n  host:\n    - r-base\n    - cairo >=1.2\n    - xorg-libxt                 # [not win]\n\n  run:\n    - r-base\n    - {{native}}gcc-libs         # [win]\n    - cairo >=1.2\n    - xorg-libxt                 # [not win]\n\ntest:\n  commands:\n    - $R -e \"library('Cairo')\"           # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('Cairo')\\\"\"  # [win]\n\nabout:\n  home: http://www.rforge.net/Cairo/\n  license: GPL-2\n  summary: R graphics device using cairographics library that can be used to create high-quality vector (PDF, PostScript and SVG) and bitmap output (PNG,JPEG,TIFF),\n    and high-quality rendering in displays (X11 and Win32). Since it uses the same back-end for all output, copying across formats is WYSIWYG. Files are created without\n    the dependence on X11 or other external programs. This device supports alpha channel (semi-transparent drawing) and resulting images can contain transparent and\n    semi-transparent regions. It is ideal for use in server environments (file output) and as a replacement for other devices that don't have Cairo's capabilities\n    such as alpha support or anti-aliasing. Backends are modular such that any subset of backends is supported.\n  license_family: GPL2\n  license_file: {{ environ[\"PREFIX\"] }}/lib/R/share/licenses/GPL-2\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n    - croth1\n\n# Package: Cairo\n# Version: 1.5-10\n# Title: R Graphics Device using Cairo Graphics Library for Creating High-Quality Bitmap (PNG, JPEG, TIFF), Vector (PDF, SVG, PostScript) and Display (X11 and Win32) Output\n# Author: Simon Urbanek <Simon.Urbanek@r-project.org>, Jeffrey Horner <jeff.horner@vanderbilt.edu>\n# Maintainer: Simon Urbanek <Simon.Urbanek@r-project.org>\n# Depends: R (>= 2.4.0)\n# Imports: grDevices, graphics\n# Suggests: png\n# Enhances: FastRWeb\n# Description: R graphics device using cairographics library that can be used to create high-quality vector (PDF, PostScript and SVG) and bitmap output (PNG,JPEG,TIFF), and high-quality rendering in displays (X11 and Win32). Since it uses the same back-end for all output, copying across formats is WYSIWYG. Files are created without the dependence on X11 or other external programs. This device supports alpha channel (semi-transparent drawing) and resulting images can contain transparent and semi-transparent regions. It is ideal for use in server environments (file output) and as a replacement for other devices that don't have Cairo's capabilities such as alpha support or anti-aliasing. Backends are modular such that any subset of backends is supported.\n# License: GPL-2\n# SystemRequirements: cairo (>= 1.2 http://www.cairographics.org/)\n# URL: http://www.rforge.net/Cairo/\n# NeedsCompilation: yes\n# Packaged: 2019-03-27 21:32:25 UTC; svnuser\n# Repository: CRAN\n# Date/Publication: 2019-03-28 20:00:37 UTC\n",
  "req":{
   "__set__":true,
   "elements":[
@@ -296,5 +293,5 @@
   "https://cran.r-project.org/src/contrib/Cairo_1.5-10.tar.gz",
   "https://cran.r-project.org/src/contrib/Archive/Cairo/Cairo_1.5-10.tar.gz"
  ],
- "version":"1.5_10"
+ "version":"1.5_11"
 }
