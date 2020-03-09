@@ -181,6 +181,23 @@
     "migrator_version",
     "version"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/385620009.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"Version",
+    "migrator_version":0,
+    "version":"3.0.2"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "version"
+   ]
   }
  ],
  "bad":false,
@@ -307,8 +324,8 @@
   }
  },
  "name":"nibabel",
- "new_version":"3.0.1",
- "pinning_version":"2020.01.27",
+ "new_version":"3.0.2",
+ "pinning_version":"2020.03.06",
  "raw_meta_yaml":"# Jinja variables help maintain the recipe as you'll update the version only here.\n{% set name = \"nibabel\" %}\n{% set version = \"3.0.1\" %}\n{% set sha256 = \"6e75b1560a53d0d7ebf04946ac37934fabd5adc76d328f1dadd5429f9c622fc9\" %}\n\n# sha256 is the prefered checksum -- you can get it for a file with:\n#  `openssl sha256 <file name>`.\n# You may need the openssl package, available on conda-forge\n#  `conda install openssl -c conda-forge``\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  fn: {{ name }}-{{ version }}.tar.gz\n  url: https://github.com/nipy/{{ name }}/archive/{{ version }}.tar.gz\n  sha256: {{ sha256 }}\n\nbuild:\n    noarch: python\n    number: 0\n    script: \"{{ PYTHON }} -m pip install . -vv\"\n    entry_points:\n      - parrec2nii   = nibabel.cmdline.parrec2nii:main\n      - nib-ls       = nibabel.cmdline.ls:main\n      - nib-dicomfs  = nibabel.cmdline.dicomfs:main\n      - nib-nifti-dx = nibabel.cmdline.nifti_dx:main\n      - nib-tck2trk  = nibabel.cmdline.tck2trk:main\n      - nib-trk2tck  = nibabel.cmdline.trk2tck:main\n      - nib-diff     = nibabel.cmdline.diff:main\n\nrequirements:\n  host:\n    - python >=3.5.1\n    - pip\n  run:\n    - python >=3.5.1\n    - numpy >=1.12\n    - scipy\n    - h5py\n    - pydicom >=0.9.9\n\ntest:\n  imports:\n    - nibabel\n  commands:\n    - parrec2nii --help\n    - nib-ls --help\n    - nib-dicomfs --help\n    - nib-nifti-dx --help\n    - nib-tck2trk --help\n    - nib-trk2tck --help\n    - nib-diff --help\n\n\nabout:\n  home: https://nipy.org/nibabel\n  license: MIT\n  license_file: COPYING\n  summary: Python package to access a cacophony of neuro-imaging file formats\n\nextra:\n  recipe-maintainers:\n    - arokem\n    - grlee77\n    - effigies\n",
  "req":{
   "__set__":true,
@@ -348,7 +365,7 @@
    "elements":[]
   }
  },
- "smithy_version":"3.6.6",
+ "smithy_version":"3.6.10",
  "strong_exports":false,
  "total_requirements":{
   "build":{
