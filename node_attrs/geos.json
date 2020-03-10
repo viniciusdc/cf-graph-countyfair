@@ -198,7 +198,7 @@
   }
  },
  "name":"geos",
- "new_version":"3.8.0",
+ "new_version":"3.8.1",
  "pinning_version":"2019.10.08",
  "raw_meta_yaml":"{% set version = \"3.8.0\" %}\n\npackage:\n  name: geos\n  version: {{ version }}\n\nsource:\n  url: https://github.com/libgeos/libgeos/archive/{{ version }}.tar.gz\n  sha256: f8b260151fc8aa6bdf5c74550ea089eeb85d8623bb7ccaf9380e90c815c4d12b\n  patches:\n    - xmltester.cpp.patch  # [win]\n\nbuild:\n  number: 1\n  skip: True  # [win and vc<14]\n  run_exports:\n    # pretty poor backcompat.  SO name changes each release.\n    # https://abi-laboratory.pro/tracker/timeline/geos/\n    - {{ pin_subpackage('geos', max_pin='x.x.x') }}\n\nrequirements:\n  build:\n    - msinttypes  # [win]\n    - cmake  # [win]\n    - automake  # [not win]\n    - libtool  # [not win]\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n\ntest:\n  commands:\n    - geos-config --version  # [not win]\n\nabout:\n  home: http://trac.osgeo.org/geos/\n  license: LGPL-2.1\n  license_file: COPYING\n  summary: 'Geometry Engine - Open Source'\n  description: |\n    GEOS (Geometry Engine - Open Source) is a C++ port of the Java Topology\n    Suite (JTS). As such, it aims to contain the complete functionality of\n    JTS in C++.\n  doc_url: http://trac.osgeo.org/geos/\n  dev_url: https://github.com/libgeos/libgeos\n\nextra:\n  recipe-maintainers:\n    - ocefpaf\n    - pelson\n    - gillins\n    - msarahan\n",
  "req":{
