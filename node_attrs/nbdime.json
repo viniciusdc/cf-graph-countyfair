@@ -189,9 +189,6 @@
  ],
  "bad":false,
  "conda-forge.yml":{
-  "compiler_stack":"comp7",
-  "max_py_ver":"37",
-  "max_r_ver":"35",
   "provider":{
    "win":"azure"
   }
@@ -255,11 +252,11 @@
    ],
    "number":"0",
    "script":[
-    " -m pip install . --no-deps --ignore-installed --no-cache-dir -vvv",
+    "-m pip install . --no-deps --ignore-installed --no-cache-dir -vvv",
     "jupyter nbextension install --sys-prefix --py nbdime",
-    " -m pip install . --no-deps --ignore-installed --no-cache-dir -vvv",
+    "-m pip install . --no-deps --ignore-installed --no-cache-dir -vvv",
     "jupyter nbextension install --sys-prefix --py nbdime",
-    " -m pip install . --no-deps --ignore-installed --no-cache-dir -vvv",
+    "-m pip install . --no-deps --ignore-installed --no-cache-dir -vvv",
     "jupyter nbextension install --sys-prefix --py nbdime"
    ]
   },
@@ -278,7 +275,7 @@
   },
   "package":{
    "name":"nbdime",
-   "version":"1.1.0"
+   "version":"2.0.0"
   },
   "requirements":{
    "host":[
@@ -304,7 +301,7 @@
     "colorama",
     "tornado",
     "requests",
-    "gitpython",
+    "gitpython !=2.1.4,!=2.1.5,!=2.1.6",
     "pygments",
     "python",
     "jinja2 >=2.9",
@@ -314,7 +311,7 @@
     "colorama",
     "tornado",
     "requests",
-    "gitpython",
+    "gitpython !=2.1.4,!=2.1.5,!=2.1.6",
     "pygments",
     "python",
     "jinja2 >=2.9",
@@ -324,13 +321,13 @@
     "colorama",
     "tornado",
     "requests",
-    "gitpython",
+    "gitpython !=2.1.4,!=2.1.5,!=2.1.6",
     "pygments"
    ]
   },
   "source":{
-   "sha256":"80032f75d2a9a4b23bb1a0cd6411a68ced8c33b8a63d9ab7cfbb9c47ab3dde61",
-   "url":"https://pypi.io/packages/source/n/nbdime/nbdime-1.1.0.tar.gz"
+   "sha256":"896f79a23557f190b73a3981fdceb128a2d24454701daef74d82aac2aa10715d",
+   "url":"https://pypi.io/packages/source/n/nbdime/nbdime-2.0.0.tar.gz"
   },
   "test":{
    "commands":[
@@ -387,7 +384,7 @@
  "name":"nbdime",
  "new_version":"2.0.0",
  "pinning_version":"2020.03.09",
- "raw_meta_yaml":"{% set version = \"1.1.0\" %}\n\npackage:\n  name: nbdime\n  version: {{ version }}\n\nsource:\n  url: https://pypi.io/packages/source/n/nbdime/nbdime-{{ version }}.tar.gz\n  sha256: 80032f75d2a9a4b23bb1a0cd6411a68ced8c33b8a63d9ab7cfbb9c47ab3dde61\n\nbuild:\n  number: 0\n  script:\n    - \"{{ PYTHON }} -m pip install . --no-deps --ignore-installed --no-cache-dir -vvv\"\n    - jupyter nbextension install --sys-prefix --py nbdime\n  entry_points:\n    - nbdime=nbdime.__main__:main_dispatch\n    - nbshow=nbdime.nbshowapp:main\n    - nbdiff=nbdime.nbdiffapp:main\n    - nbdiff-web=nbdime.webapp.nbdiffweb:main\n    - nbmerge=nbdime.nbmergeapp:main\n    - nbmerge-web=nbdime.webapp.nbmergeweb:main\n    - git-nbdiffdriver=nbdime.vcs.git.diffdriver:main\n    - git-nbdifftool=nbdime.vcs.git.difftool:main\n    - git-nbmergedriver=nbdime.vcs.git.mergedriver:main\n    - git-nbmergetool=nbdime.vcs.git.mergetool:main\n    - hg-nbdiff=nbdime.vcs.hg.diff:main\n    - hg-nbdiffweb=nbdime.vcs.hg.diffweb:main\n    - hg-nbmerge=nbdime.vcs.hg.merge:main\n    - hg-nbmergeweb=nbdime.vcs.hg.mergeweb:main\nrequirements:\n  host:\n    - python\n    - pip\n    - colorama\n    - notebook\n    - backports.functools_lru_cache  # [py2k]\n    - backports.shutil_which  # [py2k]\n  run:\n    - python\n    - jinja2 >=2.9\n    - nbformat\n    - notebook\n    - six\n    - colorama\n    - tornado\n    - requests\n    - gitpython\n    - pygments\n    - backports.functools_lru_cache  # [py2k]\n    - backports.shutil_which  # [py2k]\n\ntest:\n  imports:\n    - nbdime\n  commands:\n    - nbdime show -h\n    - nbshow -h\n    - nbdiff -h\n    - nbdiff-web -h\n    - nbmerge -h\n    - nbmerge-web -h\n    - git-nbdifftool -h\n    - git-nbmergetool -h\n    - git-nbdiffdriver -h\n    - git-nbmergedriver -h\n    - hg-nbdiff -h\n    - hg-nbdiffweb -h\n    - hg-nbmerge -h\n    - hg-nbmergeweb -h\n\nabout:\n  home: https://nbdime.readthedocs.io/\n  license: BSD-3-Clause\n  license_family: BSD\n  license_file: LICENSE.md\n  summary: 'Diff and merge of Jupyter Notebooks'\n  doc_url: https://nbdime.readthedocs.io/\n  dev_url: https://github.com/jupyter/nbdime\n\nextra:\n  recipe-maintainers:\n    - kain88-de\n    - minrk\n    - ocefpaf\n",
+ "raw_meta_yaml":"{% set version = \"2.0.0\" %}\n\npackage:\n  name: nbdime\n  version: {{ version }}\n\nsource:\n  url: https://pypi.io/packages/source/n/nbdime/nbdime-{{ version }}.tar.gz\n  sha256: 896f79a23557f190b73a3981fdceb128a2d24454701daef74d82aac2aa10715d\n\nbuild:\n  number: 0\n  skip: True  # [py2k]\n  script:\n    - {{ PYTHON }} -m pip install . --no-deps --ignore-installed --no-cache-dir -vvv\n    - jupyter nbextension install --sys-prefix --py nbdime\n  entry_points:\n    - nbdime=nbdime.__main__:main_dispatch\n    - nbshow=nbdime.nbshowapp:main\n    - nbdiff=nbdime.nbdiffapp:main\n    - nbdiff-web=nbdime.webapp.nbdiffweb:main\n    - nbmerge=nbdime.nbmergeapp:main\n    - nbmerge-web=nbdime.webapp.nbmergeweb:main\n    - git-nbdiffdriver=nbdime.vcs.git.diffdriver:main\n    - git-nbdifftool=nbdime.vcs.git.difftool:main\n    - git-nbmergedriver=nbdime.vcs.git.mergedriver:main\n    - git-nbmergetool=nbdime.vcs.git.mergetool:main\n    - hg-nbdiff=nbdime.vcs.hg.diff:main\n    - hg-nbdiffweb=nbdime.vcs.hg.diffweb:main\n    - hg-nbmerge=nbdime.vcs.hg.merge:main\n    - hg-nbmergeweb=nbdime.vcs.hg.mergeweb:main\nrequirements:\n  host:\n    - python\n    - pip\n    - colorama\n    - notebook\n    - backports.functools_lru_cache  # [py2k]\n    - backports.shutil_which  # [py2k]\n  run:\n    - python\n    - jinja2 >=2.9\n    - nbformat\n    - notebook\n    - six\n    - colorama\n    - tornado\n    - requests\n    - gitpython !=2.1.4,!=2.1.5,!=2.1.6\n    - pygments\n\ntest:\n  imports:\n    - nbdime\n  commands:\n    - nbdime show -h\n    - nbshow -h\n    - nbdiff -h\n    - nbdiff-web -h\n    - nbmerge -h\n    - nbmerge-web -h\n    - git-nbdifftool -h\n    - git-nbmergetool -h\n    - git-nbdiffdriver -h\n    - git-nbmergedriver -h\n    - hg-nbdiff -h\n    - hg-nbdiffweb -h\n    - hg-nbmerge -h\n    - hg-nbmergeweb -h\n\nabout:\n  home: https://nbdime.readthedocs.io/\n  license: BSD-3-Clause\n  license_family: BSD\n  license_file: LICENSE.md\n  summary: Diff and merge of Jupyter Notebooks\n  doc_url: https://nbdime.readthedocs.io/\n  dev_url: https://github.com/jupyter/nbdime\n\nextra:\n  recipe-maintainers:\n    - kain88-de\n    - minrk\n    - ocefpaf\n",
  "req":{
   "__set__":true,
   "elements":[
@@ -458,7 +455,7 @@
    "__set__":true,
    "elements":[
     "colorama",
-    "gitpython",
+    "gitpython !=2.1.4,!=2.1.5,!=2.1.6",
     "jinja2 >=2.9",
     "nbformat",
     "notebook",
@@ -475,5 +472,5 @@
   }
  },
  "url":"https://pypi.io/packages/source/n/nbdime/nbdime-1.1.0.tar.gz",
- "version":"1.1.0"
+ "version":"2.0.0"
 }
