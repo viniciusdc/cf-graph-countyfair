@@ -308,9 +308,6 @@
  ],
  "bad":false,
  "conda-forge.yml":{
-  "compiler_stack":"comp7",
-  "max_py_ver":"37",
-  "max_r_ver":"35",
   "provider":{
    "linux_aarch64":"default",
    "linux_ppc64le":"default",
@@ -325,7 +322,7 @@
    "dev_url":"http://github.com/bokeh/bokeh",
    "doc_url":"http://bokeh.pydata.org/en/latest/docs/user_guide.html",
    "home":"http://bokeh.pydata.org/",
-   "license":"BSD 3-Clause",
+   "license":"BSD-3-Clause",
    "license_family":"BSD",
    "license_file":"LICENSE.txt",
    "summary":"Statistical and novel interactive HTML plots for Python"
@@ -338,10 +335,10 @@
    ],
    "number":"0",
    "script":[
-    "python -m pip install --no-deps --ignore-installed .",
-    "python -m pip install --no-deps --ignore-installed .",
+    "-m pip install . -vv",
+    "-m pip install . -vv",
     "find  -name '*.js.map' -delete",
-    "python -m pip install --no-deps --ignore-installed .",
+    "-m pip install . -vv",
     "find  -name '*.js.map' -delete"
    ]
   },
@@ -360,7 +357,7 @@
   },
   "package":{
    "name":"bokeh",
-   "version":"1.4.0"
+   "version":"2.0.0"
   },
   "requirements":{
    "host":[
@@ -373,42 +370,45 @@
    ],
    "run":[
     "python",
-    "six >=1.5.2",
     "pyyaml >=3.10",
     "python-dateutil >=2.1",
     "jinja2 >=2.7",
-    "numpy >=1.7.1",
+    "numpy >=1.11.3",
     "pillow >=4.0",
     "packaging >=16.8",
-    "tornado >=4.3",
+    "tornado >=5",
+    "typing_extensions >=3.7.4",
     "python",
-    "six >=1.5.2",
     "pyyaml >=3.10",
     "python-dateutil >=2.1",
     "jinja2 >=2.7",
-    "numpy >=1.7.1",
+    "numpy >=1.11.3",
     "pillow >=4.0",
     "packaging >=16.8",
-    "tornado >=4.3",
+    "tornado >=5",
+    "typing_extensions >=3.7.4",
     "python",
-    "six >=1.5.2",
     "pyyaml >=3.10",
     "python-dateutil >=2.1",
     "jinja2 >=2.7",
-    "numpy >=1.7.1",
+    "numpy >=1.11.3",
     "pillow >=4.0",
     "packaging >=16.8",
-    "tornado >=4.3"
+    "tornado >=5",
+    "typing_extensions >=3.7.4"
    ]
   },
   "source":{
-   "sha256":"c60d38a41a777b8147ee4134e6142cea8026b5eebf48149e370c44689869dce7",
-   "url":"https://pypi.io/packages/source/b/bokeh/bokeh-1.4.0.tar.gz"
+   "sha256":"552aae6844b2b82dc6da77b17f3f0c22f600c181b4e334f4883624665245ac59",
+   "url":"https://pypi.io/packages/source/b/bokeh/bokeh-2.0.0.tar.gz"
   },
   "test":{
    "commands":[
+    "pip check",
     "bokeh --help",
+    "pip check",
     "bokeh --help",
+    "pip check",
     "bokeh --help"
    ],
    "imports":[
@@ -472,13 +472,18 @@
     "bokeh.sphinxext",
     "bokeh.themes",
     "bokeh.util"
+   ],
+   "requires":[
+    "pip",
+    "pip",
+    "pip"
    ]
   }
  },
  "name":"bokeh",
  "new_version":"2.0.0",
  "pinning_version":"2020.03.06",
- "raw_meta_yaml":"{% set version = \"1.4.0\" %}\n\npackage:\n  name: bokeh\n  version: {{ version }}\n\nsource:\n  url: https://pypi.io/packages/source/b/bokeh/bokeh-{{ version }}.tar.gz\n  sha256: c60d38a41a777b8147ee4134e6142cea8026b5eebf48149e370c44689869dce7\n\nbuild:\n  number: 0\n  script:\n    - python -m pip install --no-deps --ignore-installed .\n    - find {{ PREFIX }} -name '*.js.map' -delete  # [not win]\n  entry_points:\n    - bokeh = bokeh.__main__:main\n\nrequirements:\n  host:\n    - python\n    - pip\n  run:\n    - python\n    - six >=1.5.2\n    - pyyaml >=3.10\n    - python-dateutil >=2.1\n    - jinja2 >=2.7\n    - numpy >=1.7.1\n    - pillow >=4.0\n    - packaging >=16.8\n    - tornado >=4.3\n    - futures >=3.0.3  # [py27]\n\ntest:\n  imports:\n    - bokeh\n    - bokeh.application\n    - bokeh.application.handlers\n    - bokeh.client\n    - bokeh.command\n    - bokeh.command.subcommands\n    - bokeh.core\n    - bokeh.core.property\n    - bokeh.core.validation\n    - bokeh.models\n    - bokeh.models.widgets\n    - bokeh.plotting\n    - bokeh.sampledata\n    - bokeh.server\n    - bokeh.protocol\n    - bokeh.protocol.messages\n    - bokeh.server.views\n    - bokeh.sphinxext\n    - bokeh.themes\n    - bokeh.util\n\n  commands:\n    - bokeh --help\n\nabout:\n  home: http://bokeh.pydata.org/\n  license: BSD 3-Clause\n  license_file: LICENSE.txt\n  license_family: BSD\n  summary: Statistical and novel interactive HTML plots for Python\n  description: |\n    Bokeh is a Python interactive visualization library that targets\n    modern web browsers for presentation. Its goal is to provide elegant,\n    concise  construction of novel graphics in the style of D3.js, and to\n    extend this capability with high-performance interactivity over very\n    large or streaming datasets. Bokeh can help anyone who would like to\n    quickly and easily create interactive plots, dashboards, and data\n    applications.\n  doc_url: http://bokeh.pydata.org/en/latest/docs/user_guide.html\n  dev_url: http://github.com/bokeh/bokeh\n\nextra:\n  recipe-maintainers:\n    - almarklein\n    - jakirkham\n    - ocefpaf\n",
+ "raw_meta_yaml":"{% set version = \"2.0.0\" %}\n\npackage:\n  name: bokeh\n  version: {{ version }}\n\nsource:\n  url: https://pypi.io/packages/source/b/bokeh/bokeh-{{ version }}.tar.gz\n  sha256: 552aae6844b2b82dc6da77b17f3f0c22f600c181b4e334f4883624665245ac59\n\nbuild:\n  number: 0\n  skip: True  # [py<36]\n  script:\n    - {{ PYTHON }} -m pip install . -vv\n    # this reduces the package size drastically without any real loss\n    - find {{ PREFIX }} -name '*.js.map' -delete  # [not win]\n  entry_points:\n    - bokeh = bokeh.__main__:main\n\nrequirements:\n  host:\n    - python\n    - pip\n  run:\n    - python\n    - pyyaml >=3.10\n    - python-dateutil >=2.1\n    - jinja2 >=2.7\n    - numpy >=1.11.3\n    - pillow >=4.0\n    - packaging >=16.8\n    - tornado >=5\n    - typing_extensions >=3.7.4\n\ntest:\n  imports:\n    - bokeh\n    - bokeh.application\n    - bokeh.application.handlers\n    - bokeh.client\n    - bokeh.command\n    - bokeh.command.subcommands\n    - bokeh.core\n    - bokeh.core.property\n    - bokeh.core.validation\n    - bokeh.models\n    - bokeh.models.widgets\n    - bokeh.plotting\n    - bokeh.sampledata\n    - bokeh.server\n    - bokeh.protocol\n    - bokeh.protocol.messages\n    - bokeh.server.views\n    - bokeh.sphinxext\n    - bokeh.themes\n    - bokeh.util\n  commands:\n    - pip check\n    - bokeh --help\n  requires:\n    - pip\n\nabout:\n  home: http://bokeh.pydata.org/\n  license: BSD-3-Clause\n  license_file: LICENSE.txt\n  license_family: BSD\n  summary: Statistical and novel interactive HTML plots for Python\n  description: |\n    Bokeh is a Python interactive visualization library that targets\n    modern web browsers for presentation. Its goal is to provide elegant,\n    concise  construction of novel graphics in the style of D3.js, and to\n    extend this capability with high-performance interactivity over very\n    large or streaming datasets. Bokeh can help anyone who would like to\n    quickly and easily create interactive plots, dashboards, and data\n    applications.\n  doc_url: http://bokeh.pydata.org/en/latest/docs/user_guide.html\n  dev_url: http://github.com/bokeh/bokeh\n\nextra:\n  recipe-maintainers:\n    - almarklein\n    - jakirkham\n    - ocefpaf\n",
  "req":{
   "__set__":true,
   "elements":[
@@ -490,8 +495,8 @@
    "python",
    "python-dateutil",
    "pyyaml",
-   "six",
-   "tornado"
+   "tornado",
+   "typing_extensions"
   ]
  },
  "requirements":{
@@ -516,13 +521,15 @@
     "python",
     "python-dateutil",
     "pyyaml",
-    "six",
-    "tornado"
+    "tornado",
+    "typing_extensions"
    ]
   },
   "test":{
    "__set__":true,
-   "elements":[]
+   "elements":[
+    "pip"
+   ]
   }
  },
  "smithy_version":"3.6.10",
@@ -543,21 +550,23 @@
    "__set__":true,
    "elements":[
     "jinja2 >=2.7",
-    "numpy >=1.7.1",
+    "numpy >=1.11.3",
     "packaging >=16.8",
     "pillow >=4.0",
     "python",
     "python-dateutil >=2.1",
     "pyyaml >=3.10",
-    "six >=1.5.2",
-    "tornado >=4.3"
+    "tornado >=5",
+    "typing_extensions >=3.7.4"
    ]
   },
   "test":{
    "__set__":true,
-   "elements":[]
+   "elements":[
+    "pip"
+   ]
   }
  },
  "url":"https://pypi.io/packages/source/b/bokeh/bokeh-1.3.4.tar.gz",
- "version":"1.4.0"
+ "version":"2.0.0"
 }
