@@ -246,11 +246,11 @@
    "number":"0",
    "script":[
     "cd api/python",
-    " -m pip install . --no-deps -vv",
+    "-m pip install . --no-deps -vv",
     "cd api/python",
-    " -m pip install . --no-deps -vv",
+    "-m pip install . --no-deps -vv",
     "cd api/python",
-    " -m pip install . --no-deps -vv"
+    "-m pip install . --no-deps -vv"
    ]
   },
   "extra":{
@@ -265,7 +265,7 @@
   },
   "package":{
    "name":"quilt3",
-   "version":"3.1.10"
+   "version":"3.1.11"
   },
   "requirements":{
    "host":[
@@ -280,7 +280,7 @@
     "python",
     "appdirs >=1.4.0",
     "aws-requests-auth >=0.4.2",
-    "boto3 >=1.8.0",
+    "boto3 >=1.10.0",
     "flask",
     "flask_cors",
     "flask_json",
@@ -292,13 +292,14 @@
     "requests >=2.12.4",
     "urllib3 1.24",
     "requests-futures ==1.0.0",
-    "ruamel.yaml >=0.15.78",
+    "pyyaml >=5.3",
     "tqdm >=4.26.0",
     "dnspython >=1.16.0",
+    "tenacity >=5.1.1",
     "python",
     "appdirs >=1.4.0",
     "aws-requests-auth >=0.4.2",
-    "boto3 >=1.8.0",
+    "boto3 >=1.10.0",
     "flask",
     "flask_cors",
     "flask_json",
@@ -310,13 +311,14 @@
     "requests >=2.12.4",
     "urllib3 1.24",
     "requests-futures ==1.0.0",
-    "ruamel.yaml >=0.15.78",
+    "pyyaml >=5.3",
     "tqdm >=4.26.0",
     "dnspython >=1.16.0",
+    "tenacity >=5.1.1",
     "python",
     "appdirs >=1.4.0",
     "aws-requests-auth >=0.4.2",
-    "boto3 >=1.8.0",
+    "boto3 >=1.10.0",
     "flask",
     "flask_cors",
     "flask_json",
@@ -328,14 +330,15 @@
     "requests >=2.12.4",
     "urllib3 1.24",
     "requests-futures ==1.0.0",
-    "ruamel.yaml >=0.15.78",
+    "pyyaml >=5.3",
     "tqdm >=4.26.0",
-    "dnspython >=1.16.0"
+    "dnspython >=1.16.0",
+    "tenacity >=5.1.1"
    ]
   },
   "source":{
-   "sha256":"350e735b5fd01309127d838eaf4a2245d2036b1bb8a204c458582458b958239b",
-   "url":"https://github.com/quiltdata/quilt/archive/3.1.10.tar.gz"
+   "sha256":"8833bde71d53f0b970a9941350ad3da79d281537f18bb1b289f5f0081d0eb7ce",
+   "url":"https://github.com/quiltdata/quilt/archive/3.1.11.tar.gz"
   },
   "test":{
    "imports":[
@@ -348,7 +351,7 @@
  "name":"quilt3",
  "new_version":"3.1.11",
  "pinning_version":"2020.03.09",
- "raw_meta_yaml":"{% set name = \"quilt\" %}\n{% set pname = \"quilt3\" %}\n{% set version = \"3.1.10\" %}\n\npackage:\n  name: {{ pname|lower }}\n  version: {{ version }}\n\nsource:\n  url: https://github.com/quiltdata/{{ name }}/archive/{{ version }}.tar.gz\n  sha256: 350e735b5fd01309127d838eaf4a2245d2036b1bb8a204c458582458b958239b\n\nbuild:\n  number: 0\n  skip: true  # [py2k]\n  script: \n      - cd api/python\n      - \"{{ PYTHON }} -m pip install . --no-deps -vv\"\n\nrequirements:\n  host:\n    - python\n    - pip\n  run:\n    - python\n    - appdirs >=1.4.0\n    - aws-requests-auth >=0.4.2\n    - boto3 >=1.8.0 \n    - flask\n    - flask_cors\n    - flask_json\n    - jsonlines 1.2.0\n    - packaging >=16.8\n    - pandas >=0.19.2\n    - pyarrow >=0.14.1               #  as of 7/5/19: linux/circleci bugs on 0.14\n    - python-dateutil <=2.8.0\n    - requests >=2.12.4\n    - urllib3 1.24                   #  required by requests\n    - requests-futures ==1.0.0\n    - ruamel.yaml >=0.15.78\n    - tqdm >=4.26.0\n    - dnspython >=1.16.0\n\n\ntest:\n  imports:\n    - quilt3\n\nabout:\n  home: https://quiltdata.com/\n  license: Apache 2.0\n  license_family: Apache\n  license_file: LICENSE\n  summary: 'Quilt: where data comes together'\n\n  description: |\n    Quilt is infrastructure for data-driven teams to store, version, deploy and iterate on models and data.\n    Data in Quilt are visual, discoverable, and reproducible.\n  dev_url: https://github.com/quiltdata/quilt\n\nextra:\n  recipe-maintainers:\n    - knaaptime\n    - akarve\n",
+ "raw_meta_yaml":"{% set name = \"quilt\" %}\n{% set pname = \"quilt3\" %}\n{% set version = \"3.1.11\" %}\n\npackage:\n  name: {{ pname|lower }}\n  version: {{ version }}\n\nsource:\n  url: https://github.com/quiltdata/{{ name }}/archive/{{ version }}.tar.gz\n  sha256: 8833bde71d53f0b970a9941350ad3da79d281537f18bb1b289f5f0081d0eb7ce\n\nbuild:\n  number: 0\n  skip: true  # [py2k]\n  script:\n    - cd api/python\n    - {{ PYTHON }} -m pip install . --no-deps -vv\n\nrequirements:\n  host:\n    - python\n    - pip\n  run:\n    - python\n    - appdirs >=1.4.0\n    - aws-requests-auth >=0.4.2\n    - boto3 >=1.10.0\n    - flask\n    - flask_cors\n    - flask_json\n    - jsonlines 1.2.0\n    - packaging >=16.8\n    - pandas >=0.19.2\n    - pyarrow >=0.14.1               #  as of 7/5/19: linux/circleci bugs on 0.14\n    - python-dateutil <=2.8.0\n    - requests >=2.12.4\n    - urllib3 1.24                   #  required by requests\n    - requests-futures ==1.0.0\n    - pyyaml >=5.3\n    - tqdm >=4.26.0\n    - dnspython >=1.16.0\n    - tenacity >=5.1.1\n\n\n\ntest:\n  imports:\n    - quilt3\n\nabout:\n  home: https://quiltdata.com/\n  license: Apache 2.0\n  license_family: Apache\n  license_file: LICENSE\n  summary: 'Quilt: where data comes together'\n\n  description: |\n    Quilt is infrastructure for data-driven teams to store, version, deploy and iterate on models and data.\n    Data in Quilt are visual, discoverable, and reproducible.\n  dev_url: https://github.com/quiltdata/quilt\n\nextra:\n  recipe-maintainers:\n    - knaaptime\n    - akarve\n",
  "req":{
   "__set__":true,
   "elements":[
@@ -366,9 +369,10 @@
    "pyarrow",
    "python",
    "python-dateutil",
+   "pyyaml",
    "requests",
    "requests-futures",
-   "ruamel.yaml",
+   "tenacity",
    "tqdm",
    "urllib3"
   ]
@@ -401,9 +405,10 @@
     "pyarrow",
     "python",
     "python-dateutil",
+    "pyyaml",
     "requests",
     "requests-futures",
-    "ruamel.yaml",
+    "tenacity",
     "tqdm",
     "urllib3"
    ]
@@ -432,7 +437,7 @@
    "elements":[
     "appdirs >=1.4.0",
     "aws-requests-auth >=0.4.2",
-    "boto3 >=1.8.0",
+    "boto3 >=1.10.0",
     "dnspython >=1.16.0",
     "flask",
     "flask_cors",
@@ -443,9 +448,10 @@
     "pyarrow >=0.14.1",
     "python",
     "python-dateutil <=2.8.0",
+    "pyyaml >=5.3",
     "requests >=2.12.4",
     "requests-futures ==1.0.0",
-    "ruamel.yaml >=0.15.78",
+    "tenacity >=5.1.1",
     "tqdm >=4.26.0",
     "urllib3 1.24"
    ]
@@ -456,5 +462,5 @@
   }
  },
  "url":"https://github.com/quiltdata/quilt/archive/3.0.7.tar.gz",
- "version":"3.1.10"
+ "version":"3.1.11"
 }
