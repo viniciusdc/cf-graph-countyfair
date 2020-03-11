@@ -83,7 +83,49 @@
    ]
   }
  ],
- "bad":false,
+ "bad":{
+  "exception":"while parsing a flow mapping\n  in \"<unicode string>\", line 7, column 1:\n    {# this value will never be used ... \n    ^ (line: 7)\nexpected ',' or '}', but got ':'\n  in \"<unicode string>\", line 12, column 7:\n      name: <{ name }}\n          ^ (line: 12)",
+  "traceback":[
+   "Traceback (most recent call last):",
+   "  File \"/root/repo/cf-scripts/conda_forge_tick/auto_tick.py\", line 734, in main",
+   "    hash_type=attrs.get(\"hash_type\", \"sha256\"),",
+   "  File \"/root/repo/cf-scripts/conda_forge_tick/auto_tick.py\", line 155, in run",
+   "    migrate_return = migrator.migrate(recipe_dir, feedstock_ctx.attrs, **kwargs)",
+   "  File \"/root/repo/cf-scripts/conda_forge_tick/migrators/version.py\", line 372, in migrate",
+   "    cmeta = CondaMetaYAML(fp.read())",
+   "  File \"/root/repo/cf-scripts/conda_forge_tick/recipe_parser/_parser.py\", line 358, in __init__",
+   "    self.meta = YAML_JINJA2.load(\"\".join(lines))",
+   "  File \"/opt/conda/envs/run_env/lib/python3.7/site-packages/ruamel/yaml/main.py\", line 341, in load",
+   "    return constructor.get_single_data()",
+   "  File \"/opt/conda/envs/run_env/lib/python3.7/site-packages/ruamel/yaml/constructor.py\", line 111, in get_single_data",
+   "    node = self.composer.get_single_node()",
+   "  File \"/opt/conda/envs/run_env/lib/python3.7/site-packages/ruamel/yaml/composer.py\", line 78, in get_single_node",
+   "    document = self.compose_document()",
+   "  File \"/opt/conda/envs/run_env/lib/python3.7/site-packages/ruamel/yaml/composer.py\", line 101, in compose_document",
+   "    node = self.compose_node(None, None)",
+   "  File \"/opt/conda/envs/run_env/lib/python3.7/site-packages/ruamel/yaml/composer.py\", line 138, in compose_node",
+   "    node = self.compose_mapping_node(anchor)",
+   "  File \"/opt/conda/envs/run_env/lib/python3.7/site-packages/ruamel/yaml/composer.py\", line 213, in compose_mapping_node",
+   "    item_key = self.compose_node(node, None)",
+   "  File \"/opt/conda/envs/run_env/lib/python3.7/site-packages/ruamel/yaml/composer.py\", line 138, in compose_node",
+   "    node = self.compose_mapping_node(anchor)",
+   "  File \"/opt/conda/envs/run_env/lib/python3.7/site-packages/ruamel/yaml/composer.py\", line 211, in compose_mapping_node",
+   "    while not self.parser.check_event(MappingEndEvent):",
+   "  File \"/opt/conda/envs/run_env/lib/python3.7/site-packages/ruamel/yaml/parser.py\", line 140, in check_event",
+   "    self.current_event = self.state()",
+   "  File \"/opt/conda/envs/run_env/lib/python3.7/site-packages/ruamel/yaml/parser.py\", line 730, in parse_flow_mapping_key",
+   "    token.start_mark,",
+   "ruamel.yaml.parser.ParserError: while parsing a flow mapping",
+   "  in \"<unicode string>\", line 7, column 1:",
+   "    {# this value will never be used ... ",
+   "    ^ (line: 7)",
+   "expected ',' or '}', but got ':'",
+   "  in \"<unicode string>\", line 12, column 7:",
+   "      name: <{ name }}",
+   "          ^ (line: 12)",
+   ""
+  ]
+ },
  "conda-forge.yml":{
   "provider":{
    "linux_aarch64":"default",
@@ -150,7 +192,7 @@
   }
  },
  "name":"configurable-http-proxy",
- "new_version":"4.2.0",
+ "new_version":"4.2.1",
  "pinning_version":"2020.01.27",
  "raw_meta_yaml":"{% set name = \"configurable-http-proxy\" %}\n{% set version = \"4.2.0\" %}\n{% set build = 2 %}\n\n{% if not node %}\n{# rerender doesn't always pull node value from conda_build_config on first pass #}\n{# this value will never be used in a real build #}\n{% set node = 1 %}\n{% endif %}\n\npackage:\n  name: {{ name }}\n  version: {{ version }}\n\nsource:\n  fn: {{ name }}-{{ version }}.tar.gz\n  url: https://registry.npmjs.org/{{ name }}/-/{{ name }}-{{ version }}.tgz\n  sha256: cafaf0b070b1513f1da95fbec5d2950ba2ceba9d4fe6dce9affd4156b3b07e50\n\nbuild:\n  number: {{ build }}\n  string: \"node{{ node }}_h{{ PKG_HASH }}_{{ build }}\"\n  script:\n    - npm pack  # [not win]\n    - NPM_CONFIG_USERCONFIG=/tmp/nonexistentrc npm install -g {{name}}-{{version}}.tgz  # [not win]\n\nrequirements:\n  host:\n    - nodejs {{ node }}.*\n  run:\n    - nodejs {{ node }}.*\n\ntest:\n  commands:\n    - configurable-http-proxy -h\n    - test -f $PREFIX/bin/configurable-http-proxy  # [not win]\n    - if not exist %PREFIX%\\\\configurable-http-proxy exit 1    # [win]\n\nabout:\n  home: https://github.com/jupyterhub/configurable-http-proxy\n  license: BSD 3-Clause\n  license_file: LICENSE\n  summary: node-http-proxy plus a REST API\n\nextra:\n  recipe-maintainers:\n    - minrk\n    - willingc\n",
  "req":{

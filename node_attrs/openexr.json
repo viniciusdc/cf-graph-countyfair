@@ -56,7 +56,11 @@
  "conda-forge.yml":{
   "compiler_stack":"comp7",
   "max_py_ver":"37",
-  "max_r_ver":"35"
+  "max_r_ver":"35",
+  "provider":{
+   "linux_aarch64":"default",
+   "linux_ppc64le":"default"
+  }
  },
  "feedstock_name":"openexr",
  "hash_type":"sha256",
@@ -109,8 +113,10 @@
     "cmake",
     "cxx_compiler_stub",
     "cmake",
+    "make",
     "cxx_compiler_stub",
-    "cmake"
+    "cmake",
+    "make"
    ],
    "host":[
     "zlib",
@@ -150,13 +156,14 @@
  "name":"openexr",
  "new_version":"2.4.1",
  "pinning_version":"2020.03.10",
- "raw_meta_yaml":"{% set name = \"openexr\" %}\n{% set version = \"2.4.1\" %}\n{% set sha256 = \"3ebbe9a8e67edb4a25890b98c598e9fe23b10f96d1416d6a3ff0732e99d001c1\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  url: https://github.com/AcademySoftwareFoundation/openexr/archive/v{{ version }}.tar.gz\n  sha256: {{ sha256 }}\n\nbuild:\n  number: 0\n  skip: True  # [win and vc<14]\n  run_exports:\n    # https://abi-laboratory.pro/?view=timeline&l=openexr\n    - {{ pin_subpackage(name, max_pin=\"x.x\") }}\n\nrequirements:\n  build:\n    - {{ compiler('cxx') }}\n    - cmake\n  host:\n    - zlib\n    - ilmbase\n  run:\n    - zlib\n    - ilmbase\n\ntest:\n  commands:\n    - test -e $PREFIX/include/OpenEXR/OpenEXRConfig.h  # [unix]\n    - test -e $PREFIX/include/OpenEXR/IlmBaseConfig.h  # [unix]\n    - test -e $PREFIX/lib/libHalf$SHLIB_EXT            # [unix]\n    - test -e $PREFIX/lib/libIexMath$SHLIB_EXT         # [unix]\n    - test -e $PREFIX/lib/libIex$SHLIB_EXT             # [unix]\n    - test -e $PREFIX/lib/libIlmImf$SHLIB_EXT          # [unix]\n    - test -e $PREFIX/lib/libIlmImfUtil$SHLIB_EXT      # [unix]\n    - test -e $PREFIX/lib/libIlmThread$SHLIB_EXT       # [unix]\n    - test -e $PREFIX/lib/libImath$SHLIB_EXT           # [unix]\n\nabout:\n  home: https://github.com/openexr/openexr\n  license: BSD-3-Clause\n  license_family: BSD\n  license_file: LICENSE.md\n  summary: |\n    OpenEXR is a high dynamic-range (HDR) image file format developed by\n    Industrial Light & Magic for use in computer imaging applications.\n  description: |\n    OpenEXR is a high dynamic-range (HDR) image file format developed by\n    Industrial Light & Magic (ILM) for use in computer imaging applications. It\n    supports stereoscopic and deep images. Weta Digital, Walt Disney Animation\n    Studios, Sony Pictures Imageworks, Pixar Animation Studios, DreamWorks, and\n    other studios, companies, and individuals have made contributions to the\n    code base. The file format has seen wide adoption in a number of industries.\n  doc_url: http://www.openexr.com/documentation.html\n  dev_url: https://github.com/openexr/openexr\n\nextra:\n  recipe-maintainers:\n    - aaronang\n    - SylvainCorlay\n    - wolfv\n    - npavlovikj\n    - JohanMabille\n",
+ "raw_meta_yaml":"{% set name = \"openexr\" %}\n{% set version = \"2.4.1\" %}\n{% set sha256 = \"3ebbe9a8e67edb4a25890b98c598e9fe23b10f96d1416d6a3ff0732e99d001c1\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  url: https://github.com/AcademySoftwareFoundation/openexr/archive/v{{ version }}.tar.gz\n  sha256: {{ sha256 }}\n\nbuild:\n  number: 0\n  skip: True  # [win and vc<14]\n  run_exports:\n    # https://abi-laboratory.pro/?view=timeline&l=openexr\n    - {{ pin_subpackage(name, max_pin=\"x.x\") }}\n\nrequirements:\n  build:\n    - {{ compiler('cxx') }}\n    - cmake\n    - make  # [unix]\n  host:\n    - zlib\n    - ilmbase\n  run:\n    - zlib\n    - ilmbase\n\ntest:\n  commands:\n    - test -e $PREFIX/include/OpenEXR/OpenEXRConfig.h  # [unix]\n    - test -e $PREFIX/include/OpenEXR/IlmBaseConfig.h  # [unix]\n    - test -e $PREFIX/lib/libHalf$SHLIB_EXT            # [unix]\n    - test -e $PREFIX/lib/libIexMath$SHLIB_EXT         # [unix]\n    - test -e $PREFIX/lib/libIex$SHLIB_EXT             # [unix]\n    - test -e $PREFIX/lib/libIlmImf$SHLIB_EXT          # [unix]\n    - test -e $PREFIX/lib/libIlmImfUtil$SHLIB_EXT      # [unix]\n    - test -e $PREFIX/lib/libIlmThread$SHLIB_EXT       # [unix]\n    - test -e $PREFIX/lib/libImath$SHLIB_EXT           # [unix]\n\nabout:\n  home: https://github.com/openexr/openexr\n  license: BSD-3-Clause\n  license_family: BSD\n  license_file: LICENSE.md\n  summary: |\n    OpenEXR is a high dynamic-range (HDR) image file format developed by\n    Industrial Light & Magic for use in computer imaging applications.\n  description: |\n    OpenEXR is a high dynamic-range (HDR) image file format developed by\n    Industrial Light & Magic (ILM) for use in computer imaging applications. It\n    supports stereoscopic and deep images. Weta Digital, Walt Disney Animation\n    Studios, Sony Pictures Imageworks, Pixar Animation Studios, DreamWorks, and\n    other studios, companies, and individuals have made contributions to the\n    code base. The file format has seen wide adoption in a number of industries.\n  doc_url: http://www.openexr.com/documentation.html\n  dev_url: https://github.com/openexr/openexr\n\nextra:\n  recipe-maintainers:\n    - aaronang\n    - SylvainCorlay\n    - wolfv\n    - npavlovikj\n    - JohanMabille\n",
  "req":{
   "__set__":true,
   "elements":[
    "cmake",
    "cxx_compiler_stub",
    "ilmbase",
+   "make",
    "zlib"
   ]
  },
@@ -165,7 +172,8 @@
    "__set__":true,
    "elements":[
     "cmake",
-    "cxx_compiler_stub"
+    "cxx_compiler_stub",
+    "make"
    ]
   },
   "host":{
@@ -194,7 +202,8 @@
    "__set__":true,
    "elements":[
     "cmake",
-    "cxx_compiler_stub"
+    "cxx_compiler_stub",
+    "make"
    ]
   },
   "host":{
