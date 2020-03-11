@@ -40,8 +40,7 @@
    "summary":"Helps provide support for many common image formats (PNG, JPEG, TIFF, BMP and others)."
   },
   "build":{
-   "binary_relocation":false,
-   "number":"0",
+   "number":"2",
    "run_exports":[
     "subpackage_stub",
     "subpackage_stub",
@@ -54,14 +53,17 @@
     "almarklein",
     "jakirkham",
     "msarahan",
+    "wolfv",
     "seanyen",
     "almarklein",
     "jakirkham",
     "msarahan",
+    "wolfv",
     "seanyen",
     "almarklein",
     "jakirkham",
     "msarahan",
+    "wolfv",
     "seanyen"
    ]
   },
@@ -73,43 +75,127 @@
    "build":[
     "c_compiler_stub",
     "cxx_compiler_stub",
+    "cmake",
+    "pkg-config",
     "c_compiler_stub",
     "cxx_compiler_stub",
+    "cmake",
+    "pkg-config",
     "make",
+    "dos2unix",
     "c_compiler_stub",
     "cxx_compiler_stub",
-    "make"
+    "cmake",
+    "pkg-config",
+    "make",
+    "dos2unix"
+   ],
+   "host":[
+    "jpeg",
+    "openjpeg",
+    "jxrlib",
+    "libtiff",
+    "openexr",
+    "libpng",
+    "zlib",
+    "libraw",
+    "libwebp",
+    "ilmbase",
+    "jpeg",
+    "openjpeg",
+    "jxrlib",
+    "libtiff",
+    "openexr",
+    "libpng",
+    "zlib",
+    "libraw",
+    "libwebp",
+    "ilmbase",
+    "jpeg",
+    "openjpeg",
+    "jxrlib",
+    "libtiff",
+    "openexr",
+    "libpng",
+    "zlib",
+    "libraw",
+    "libwebp",
+    "ilmbase"
    ]
   },
-  "source":{
-   "fn":"FreeImage3180.zip",
-   "patches":null,
-   "sha256":"f41379682f9ada94ea7b34fe86bf9ee00935a3147be41b6569c9605a53e438fd",
-   "url":"http://downloads.sourceforge.net/freeimage/FreeImage3180.zip"
-  },
+  "source":[
+   {
+    "sha256":"f41379682f9ada94ea7b34fe86bf9ee00935a3147be41b6569c9605a53e438fd",
+    "url":"http://downloads.sourceforge.net/freeimage/FreeImage3180.zip"
+   },
+   {
+    "path":"CMakeLists.txt"
+   },
+   {
+    "path":"FreeImageConfig-dynamic.h"
+   },
+   {
+    "path":"FreeImageConfig-static.h"
+   },
+   {
+    "sha256":"f41379682f9ada94ea7b34fe86bf9ee00935a3147be41b6569c9605a53e438fd",
+    "url":"http://downloads.sourceforge.net/freeimage/FreeImage3180.zip"
+   },
+   {
+    "path":"CMakeLists.txt"
+   },
+   {
+    "path":"FreeImageConfig-dynamic.h"
+   },
+   {
+    "path":"FreeImageConfig-static.h"
+   },
+   {
+    "sha256":"f41379682f9ada94ea7b34fe86bf9ee00935a3147be41b6569c9605a53e438fd",
+    "url":"http://downloads.sourceforge.net/freeimage/FreeImage3180.zip"
+   },
+   {
+    "path":"CMakeLists.txt"
+   },
+   {
+    "path":"FreeImageConfig-dynamic.h"
+   },
+   {
+    "path":"FreeImageConfig-static.h"
+   }
+  ],
   "test":{
    "commands":[
-    "python run_test.py",
-    "python run_test.py",
-    "python run_test.py"
-   ],
-   "requires":[
-    "python",
-    "python",
-    "python"
+    "test -f $PREFIX/lib/libfreeimage${SHLIB_EXT}",
+    "test -f $PREFIX/lib/libfreeimage${SHLIB_EXT}.3",
+    "test -f $PREFIX/lib/libfreeimage-3.18.0${SHLIB_EXT}",
+    "test -f $PREFIX/include/FreeImage.h"
    ]
   }
  },
  "name":"freeimage",
  "new_version":false,
  "pinning_version":"2020.01.05",
- "raw_meta_yaml":"{% set version = \"3.18.0\" %}\n\n\npackage:\n    name: freeimage\n    version: {{ version }}\n    # note: also update version in run_test.py\n\nsource:\n    fn: FreeImage{{ version.replace(\".\", \"\") }}.zip\n    url: http://downloads.sourceforge.net/freeimage/FreeImage{{ version.replace(\".\", \"\") }}.zip\n    sha256: f41379682f9ada94ea7b34fe86bf9ee00935a3147be41b6569c9605a53e438fd\n    patches:\n        - Makefile.osx.patch  # [osx]\n\nbuild:\n    number: 0\n    skip: true  # [win and vc<14]\n    binary_relocation: False  # [osx]\n    run_exports:\n        - {{ pin_subpackage('freeimage', max_pin='x.x') }}\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n    - make  # [unix]\n\ntest:\n    requires:\n        - python\n    commands:\n        - python run_test.py\n\nabout:\n    home: http://freeimage.sourceforge.net/\n    license: GPLv2 GPLv3 FreeImage\n    license_file:\n        - license-fi.txt\n        - license-gplv2.txt\n        - license-gplv3.txt\n    summary: Helps provide support for many common image formats (PNG, JPEG, TIFF, BMP and others).\n\nextra:\n    recipe-maintainers:\n        - almarklein\n        - jakirkham\n        - msarahan\n        - seanyen\n",
+ "raw_meta_yaml":"{% set version = \"3.18.0\" %}\n{% set name = 'freeimage' %}\n\npackage:\n    name: {{ name }}\n    version: {{ version }}\n    # note: also update version in CMakeLists and in tests.\n\nsource:\n  - url: http://downloads.sourceforge.net/freeimage/FreeImage{{ version.replace('.', '') }}.zip\n    sha256: f41379682f9ada94ea7b34fe86bf9ee00935a3147be41b6569c9605a53e438fd\n\n  # The below files are taken (and adapted) from VCPKG: https://github.com/microsoft/vcpkg/tree/master/ports/freeimage\n  # The patches have been taken (and modified) from Debian / Fedora / VCPKG\n  - path: CMakeLists.txt\n  - path: FreeImageConfig-dynamic.h\n  - path: FreeImageConfig-static.h\n\nbuild:\n  number: 2\n  skip: true  # [win]\n  run_exports:\n    - {{ pin_subpackage(name, max_pin='x.x') }}\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n    - cmake\n    - pkg-config\n    - make  # [unix]\n    # need to convert line endings for the patches to work\n    - dos2unix  # [unix]\n  host:\n    # or use jpeg-turbo?\n    - jpeg\n    - openjpeg\n    - jxrlib\n    - libtiff\n    - openexr\n    - libpng\n    - zlib\n    - libraw\n    - libwebp\n    - ilmbase\n\ntest:\n  commands:\n    - test -f $PREFIX/lib/libfreeimage${SHLIB_EXT}  # [linux]\n    - test -f $PREFIX/lib/libfreeimage${SHLIB_EXT}.{{ version.split('.')[0] }}  # [linux]\n    - test -f $PREFIX/lib/libfreeimage.{{ version.split('.')[0] }}${SHLIB_EXT}  # [osx]\n    - test -f $PREFIX/lib/libfreeimage-{{ version }}${SHLIB_EXT}  # [unix]\n    - test -f $PREFIX/include/FreeImage.h  # [unix]\n\nabout:\n  home: http://freeimage.sourceforge.net/\n  license: GPLv2 GPLv3 FreeImage\n  license_file:\n      - license-fi.txt\n      - license-gplv2.txt\n      - license-gplv3.txt\n  summary: Helps provide support for many common image formats (PNG, JPEG, TIFF, BMP and others).\n\nextra:\n  recipe-maintainers:\n    - almarklein\n    - jakirkham\n    - msarahan\n    - wolfv\n    - seanyen\n",
  "req":{
   "__set__":true,
   "elements":[
    "c_compiler_stub",
+   "cmake",
    "cxx_compiler_stub",
-   "make"
+   "dos2unix",
+   "ilmbase",
+   "jpeg",
+   "jxrlib",
+   "libpng",
+   "libraw",
+   "libtiff",
+   "libwebp",
+   "make",
+   "openexr",
+   "openjpeg",
+   "pkg-config",
+   "zlib"
   ]
  },
  "requirements":{
@@ -117,13 +203,27 @@
    "__set__":true,
    "elements":[
     "c_compiler_stub",
+    "cmake",
     "cxx_compiler_stub",
-    "make"
+    "dos2unix",
+    "make",
+    "pkg-config"
    ]
   },
   "host":{
    "__set__":true,
-   "elements":[]
+   "elements":[
+    "ilmbase",
+    "jpeg",
+    "jxrlib",
+    "libpng",
+    "libraw",
+    "libtiff",
+    "libwebp",
+    "openexr",
+    "openjpeg",
+    "zlib"
+   ]
   },
   "run":{
    "__set__":true,
@@ -131,9 +231,7 @@
   },
   "test":{
    "__set__":true,
-   "elements":[
-    "python"
-   ]
+   "elements":[]
   }
  },
  "smithy_version":"3.6.5",
@@ -143,13 +241,27 @@
    "__set__":true,
    "elements":[
     "c_compiler_stub",
+    "cmake",
     "cxx_compiler_stub",
-    "make"
+    "dos2unix",
+    "make",
+    "pkg-config"
    ]
   },
   "host":{
    "__set__":true,
-   "elements":[]
+   "elements":[
+    "ilmbase",
+    "jpeg",
+    "jxrlib",
+    "libpng",
+    "libraw",
+    "libtiff",
+    "libwebp",
+    "openexr",
+    "openjpeg",
+    "zlib"
+   ]
   },
   "run":{
    "__set__":true,
@@ -157,9 +269,7 @@
   },
   "test":{
    "__set__":true,
-   "elements":[
-    "python"
-   ]
+   "elements":[]
   }
  },
  "url":"http://optimate.dl.sourceforge.net/project/freeimage/Source%20Distribution/3.17.0/FreeImage3170.zip",

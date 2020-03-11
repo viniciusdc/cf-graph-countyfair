@@ -425,6 +425,25 @@
     "migrator_version",
     "version"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/386889927.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"MigrationYaml",
+    "migrator_object_version":1,
+    "migrator_version":0,
+    "name":"pypy"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_object_version",
+    "migrator_version",
+    "name"
+   ]
   }
  ],
  "bad":false,
@@ -663,7 +682,7 @@
  },
  "name":"ipython",
  "new_version":"7.13.0",
- "pinning_version":"2020.02.20",
+ "pinning_version":"2020.03.10",
  "raw_meta_yaml":"{% set version = \"7.13.0\" %}\n\npackage:\n  name: ipython\n  version: {{ version }}\n\nsource:\n  url: https://pypi.io/packages/source/i/ipython/ipython-{{ version }}.tar.gz\n  sha256: ca478e52ae1f88da0102360e57e528b92f3ae4316aabac80a2cd7f7ab2efb48a\n\nbuild:\n  number: 0\n  script: {{ PYTHON }} -m pip install . --no-deps --ignore-installed --no-cache-dir -vvv\n  skip: true  # [py<36]\n  entry_points:\n    - ipython = IPython:start_ipython\n    - ipython3 = IPython:start_ipython\n    - iptest = IPython.testing.iptestcontroller:main\n    - iptest3 = IPython.testing.iptestcontroller:main\n\nrequirements:\n  host:\n    - pip\n    - python\n  run:\n    - appnope  # [osx]\n    - backcall\n    - colorama  # [win]\n    - decorator\n    - jedi >=0.10\n    - pexpect  # [unix]\n    - pickleshare\n    - prompt_toolkit >=2.0.0,<4,!=3.0.0,!=3.0.1\n    - pygments\n    - python\n    - traitlets >=4.2\n    - setuptools >=18.5\n\n# generally failing\n{% set nose_exclude = \"recursion\" %}\n{% set nose_exclude = nose_exclude ~ \"|test_history\" %}  # [not win]\n# https://github.com/ipython/ipython/issues/12164\n{% set nose_exclude = nose_exclude ~ \"|system_interrupt\" %}  # [linux]\n{% set nose_exclude = nose_exclude ~ \"|home_dir_3|home_dir_5|store_restore|storemagic\" %}  # [win]\n\ntest:\n  requires:\n    - curio  # [unix]\n    - nbformat\n    - nose >=0.10.1\n    - numpy\n    - pygments\n    - requests\n    - testpath\n    - ipykernel\n    - trio\n    - matplotlib\n    - pip\n  imports:\n    - IPython\n    - IPython.core\n    - IPython.core.magics\n    - IPython.core.tests\n    - IPython.extensions\n    - IPython.extensions.tests\n    - IPython.external\n    - IPython.external.decorators\n    - IPython.lib\n    - IPython.lib.tests\n    - IPython.sphinxext\n    - IPython.terminal\n    - IPython.terminal.pt_inputhooks\n    - IPython.terminal.tests\n    - IPython.testing\n    - IPython.testing.plugin\n    - IPython.testing.tests\n    - IPython.utils\n    - IPython.utils.tests\n  commands:\n    - ipython -h\n    - ipython3 -h\n    - NOSE_EXCLUDE=\"{{ nose_exclude }}\" iptest  # [unix]\n    - set NOSE_EXCLUDE=\"{{ nose_exclude }}\" && iptest  # [win]\n    - python -m pip check\n\nabout:\n  home: https://ipython.org\n  license: BSD-3-Clause\n  license_family: BSD\n  license_file: LICENSE\n  summary: 'IPython: Productive Interactive Computing'\n  description: |\n    IPython provides a rich architecture for interactive computing with\n    a powerful interactive shell, a kernel for Jupyter, high performance\n    tools for parallel computing, and more.\n  doc_url: https://ipython.readthedocs.io\n  dev_url: https://github.com/ipython/ipython\n\nextra:\n  recipe-maintainers:\n    - Carreau\n    - jakirkham\n    - fperez\n    - ellisonbg\n    - minrk\n    - ocefpaf\n    - pelson\n    - takluyver\n    - bollwyvl\n    - blink1073\n",
  "req":{
   "__set__":true,
@@ -729,7 +748,7 @@
    ]
   }
  },
- "smithy_version":"3.6.8",
+ "smithy_version":"3.6.12",
  "strong_exports":false,
  "total_requirements":{
   "build":{
