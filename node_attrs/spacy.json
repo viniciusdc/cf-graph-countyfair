@@ -404,6 +404,23 @@
     "migrator_version",
     "version"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/387274844.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"Version",
+    "migrator_version":0,
+    "version":"2.2.4"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "version"
+   ]
   }
  ],
  "bad":false,
@@ -577,8 +594,8 @@
   }
  },
  "name":"spacy",
- "new_version":"2.2.3",
- "pinning_version":"2019.11.20",
+ "new_version":"2.2.4",
+ "pinning_version":"2020.03.10",
  "raw_meta_yaml":"{% set name = \"spacy\" %}\n{% set version = \"2.2.3\" %}\n{% set sha256sum = \"1d14c9e7d65b2cecd56c566d9ffac8adbcb9ce2cff2274cbfdcf5468cd940e6a\" %}\n\npackage:\n  name: {{ name }}\n  version: {{ version }}\n\nsource:\n  fn: {{ name }}-{{ version }}.tar.gz\n  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz\n  sha256: {{ sha256sum }}\n  patches:\n      patches/0002-skip-multiproc-test.patch\n\n\nbuild:\n  number: 0\n  script: \"{{ PYTHON }} -m pip install . --no-deps --ignore-installed --no-cache-dir -vvv\"\n  skip: true  # [(win and py27) or (osx and py27)]\n\nrequirements:\n  build:\n    - pip\n    - {{ compiler('cxx') }}\n    - wheel\n    - cython >=0.25\n    - cymem >=2.0.2,<2.1.0\n    - preshed >=3.0.2,<3.1.0\n    - murmurhash >=0.28.0,<1.1.0\n    - thinc >=7.3.0,<7.4.0\n  host:\n    - pip\n    - python\n    - numpy 1.16.*\n    - wheel  \n    - cython >=0.25\n    - cymem >=2.0.2,<2.1.0\n    - preshed >=3.0.2,<3.1.0\n    - murmurhash >=0.28.0,<1.1.0\n    - thinc >=7.3.0,<7.4.0\n  run:\n    - python\n    - {{ pin_compatible('numpy') }}\n    - murmurhash >=0.28.0,<1.1.0\n    - cymem >=2.0.2,<2.1.0\n    - preshed >=3.0.2,<3.1.0\n    - thinc >=7.3.0,<7.4.0\n    - cython-blis >=0.4.0,<0.5.0\n    - catalogue >=0.0.7,<1.1.0\n    - plac <1.0.0,>=0.9.6\n    - requests >=2.13.0,<3.0.0\n    - wasabi >=0.2.0,<1.1.0\n    - srsly >=0.1.0,<1.1.0\n    - jsonschema\n    - pathlib >=1.0.0,<2.0.0  # [py27]\n    - importlib_metadata >=0.20\n \ntest:\n  requires:\n    - pytest\n    - mock\n  imports:\n    - spacy\n  commands:\n    - python -m pytest --tb=native --pyargs {{ name }}\n\nabout:\n  home: https://spacy.io/\n  license: MIT\n  license_file: LICENSE\n  summary: Industrial-strength Natural Language Processing\n  description: |\n    spaCy is a library for advanced natural language processing in Python and\n    Cython.\n  doc_url: https://spacy.io\n  dev_url: https://github.com/explosion/spaCy\n\nextra:\n  recipe-maintainers:\n    - rmax\n    - honnibal\n    - ines\n",
  "req":{
   "__set__":true,
@@ -659,7 +676,7 @@
    ]
   }
  },
- "smithy_version":"3.6.2",
+ "smithy_version":"3.6.12",
  "strong_exports":false,
  "total_requirements":{
   "build":{
