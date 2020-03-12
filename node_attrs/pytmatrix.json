@@ -67,6 +67,23 @@
     "migrator_version",
     "name"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/387158274.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"Version",
+    "migrator_version":0,
+    "version":"0.3.2"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "version"
+   ]
   }
  ],
  "bad":false,
@@ -156,8 +173,8 @@
   }
  },
  "name":"pytmatrix",
- "new_version":"0.3.1",
- "pinning_version":"2019.11.01",
+ "new_version":"0.3.2",
+ "pinning_version":"2020.03.10",
  "raw_meta_yaml":"{% set version = \"0.3.1\" %}\n\npackage:\n  name: pytmatrix\n  version: {{ version }}\n\nsource:\n  url: https://pypi.io/packages/source/p/pytmatrix/pytmatrix-{{ version }}.zip\n  sha256: 6ed1f2e1b0a32abd4a7649373ad3c0ba3862c385a9f8da360387177e6db0c6ae\n\nbuild:\n  number: 1002\n  skip: True  # [win and py35]\n  script:\n    - python setup.py build --compiler=mingw32  # [win]\n    - python setup.py install\n\nrequirements:\n  build:\n    - {{ compiler('fortran') }}        # [unix]\n    - {{ compiler('m2w64_fortran') }}  # [win]\n    - {{ compiler('c') }}        # [unix]\n    - {{ compiler('m2w64_c') }}  # [win]\n  host:\n    - python\n    - numpy         # [py27]\n    - scipy\n  run:\n    - python\n    - scipy\n    - {{ pin_compatible('numpy') }}   # [py27]\n\ntest:\n  imports:\n    - pytmatrix\n  commands:\n    - python -c \"from pytmatrix.test import test_tmatrix; test_tmatrix.run_tests()\"\n    - conda inspect linkages -p $PREFIX pytmatrix  # [not win]\n    - conda inspect objects -p $PREFIX pytmatrix  # [osx]\n\nabout:\n  home: https://github.com/jleinonen/pytmatrix\n  license: MIT\n  # license_file: LICENSE\n  summary: A Python code for computing the scattering properties of homogeneous nonspherical scatterers with the T-Matrix method.\n\nextra:\n  recipe-maintainers:\n    - kmuehlbauer\n    - ocefpaf\n",
  "req":{
   "__set__":true,
@@ -199,7 +216,7 @@
    "elements":[]
   }
  },
- "smithy_version":"3.6.2",
+ "smithy_version":"3.6.12",
  "strong_exports":false,
  "total_requirements":{
   "build":{
