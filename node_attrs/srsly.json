@@ -190,7 +190,7 @@
   },
   "package":{
    "name":"srsly",
-   "version":"1.0.0"
+   "version":"2.0.0"
   },
   "requirements":{
    "build":[
@@ -206,14 +206,17 @@
     "pip",
     "setuptools",
     "wheel",
+    "cython",
     "python",
     "pip",
     "setuptools",
     "wheel",
+    "cython",
     "python",
     "pip",
     "setuptools",
-    "wheel"
+    "wheel",
+    "cython"
    ],
    "run":[
     "python",
@@ -222,8 +225,8 @@
    ]
   },
   "source":{
-   "sha256":"e91d11e71e7bbd90a120e069628957882ebb57aed2574acaf021e6f7a3fea9b6",
-   "url":"https://pypi.io/packages/source/s/srsly/srsly-1.0.0.tar.gz"
+   "sha256":"785b00e00406120dbef4ca82925051e6b60fe870c5f84f0d22b3632d574eb870",
+   "url":"https://pypi.io/packages/source/s/srsly/srsly-2.0.0.tar.gz"
   },
   "test":{
    "commands":[
@@ -258,12 +261,13 @@
  "name":"srsly",
  "new_version":"2.0.1",
  "pinning_version":"2020.03.04",
- "raw_meta_yaml":"{% set name = \"srsly\" %}\n{% set version = \"1.0.0\" %}\n{% set sha256sum = \"e91d11e71e7bbd90a120e069628957882ebb57aed2574acaf021e6f7a3fea9b6\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz\n  sha256: {{ sha256sum }}\n\nbuild:\n  number: 0\n  script: \"{{ PYTHON }} -m pip install . --no-deps -vv\"\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n  host:\n    - python\n    - pip\n    - setuptools\n    - wheel\n    - msinttypes  # [win and py27]\n  run:\n    - python\n    - pathlib  # [py27]\n\ntest:\n  imports:\n    - srsly\n    - srsly.tests\n  requires:\n    - pytest >=4.0.0,<5.0.0\n    - unittest2 ==1.1.0  # [py27]\n    - pytz\n    - mock\n    - numpy >=1.15.0\n  commands:\n    - python -m pytest --tb=native --pyargs {{ name }}\n\nabout:\n  home: http://github.com/explosion/srsly\n  license: MIT\n  license_family: MIT\n  license_file: LICENSE\n  summary: 'Modern high-performance serialization utilities for Python'\n\n  doc_url: https://github.com/explosion/srsly\n  dev_url: https://github.com/explosion/srsly\n\nextra:\n  recipe-maintainers:\n    - ines\n    - honnibal\n",
+ "raw_meta_yaml":"{% set name = \"srsly\" %}\n{% set version = \"2.0.0\" %}\n{% set sha256sum = \"785b00e00406120dbef4ca82925051e6b60fe870c5f84f0d22b3632d574eb870\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz\n  sha256: {{ sha256sum }}\n\nbuild:\n  number: 0\n  script: \"{{ PYTHON }} -m pip install . --no-deps -vv\"\n  skip: True  # [py2k or py35]\n  \n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n  host:\n    - python\n    - pip\n    - setuptools\n    - wheel\n    - cython\n  run:\n    - python\n\ntest:\n  imports:\n    - srsly\n    - srsly.tests\n  requires:\n    - pytest >=4.0.0,<5.0.0\n    - pytz\n    - mock\n    - numpy >=1.15.0\n  commands:\n    - python -m pytest --tb=native --pyargs {{ name }}\n\nabout:\n  home: http://github.com/explosion/srsly\n  license: MIT\n  license_family: MIT\n  license_file: LICENSE\n  summary: 'Modern high-performance serialization utilities for Python'\n\n  doc_url: https://github.com/explosion/srsly\n  dev_url: https://github.com/explosion/srsly\n\nextra:\n  recipe-maintainers:\n    - ines\n    - honnibal\n",
  "req":{
   "__set__":true,
   "elements":[
    "c_compiler_stub",
    "cxx_compiler_stub",
+   "cython",
    "pip",
    "python",
    "setuptools",
@@ -281,6 +285,7 @@
   "host":{
    "__set__":true,
    "elements":[
+    "cython",
     "pip",
     "python",
     "setuptools",
@@ -316,6 +321,7 @@
   "host":{
    "__set__":true,
    "elements":[
+    "cython",
     "pip",
     "python",
     "setuptools",
@@ -339,5 +345,5 @@
   }
  },
  "url":"https://pypi.io/packages/source/s/srsly/srsly-0.1.0.tar.gz",
- "version":"1.0.0"
+ "version":"2.0.0"
 }
