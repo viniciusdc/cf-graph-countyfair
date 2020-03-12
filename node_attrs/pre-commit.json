@@ -171,6 +171,23 @@
     "migrator_version",
     "version"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/387464593.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"Version",
+    "migrator_version":0,
+    "version":"2.2.0"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "version"
+   ]
   }
  ],
  "bad":false,
@@ -388,12 +405,12 @@
   }
  },
  "name":"pre-commit",
- "new_version":"2.1.1",
+ "new_version":"2.2.0",
  "outputs_names":[
   "pre-commit",
   "pre_commit"
  ],
- "pinning_version":"2020.03.03",
+ "pinning_version":"2020.03.10",
  "raw_meta_yaml":"{% set version = \"2.1.1\" %}\n\npackage:\n  name: pre-commit\n  version: {{ version }}\n\nsource:\n  url: https://github.com/pre-commit/pre-commit/archive/v{{ version }}.tar.gz\n  sha256: 0b80e45b4e001f45bade0f1cc2d891eb810de154f1eb703a1f77ac060a9a07ae\n\nbuild:\n  number: 0\n  skip: True  # [py<36]\n  entry_points:\n    - pre-commit = pre_commit.main:main\n    - pre-commit-validate-config = pre_commit.clientlib:validate_config_main\n    - pre-commit-validate-manifest = pre_commit.clientlib:validate_manifest_main\n\noutputs:\n  - name: pre-commit\n    script: build_base.bat  # [win]\n    script: build_base.sh  # [not win]\n    requirements:\n      host:\n        - pip\n        - python\n      run:\n        - cfgv >=2.0.0\n        - identify >=1.0.0\n        - importlib_metadata  # [py<38]\n        - importlib_resources  # [py<37]\n        - nodeenv >=0.11.1\n        - python\n        - pyyaml >=5.1\n        - toml\n        - virtualenv >=15.2\n    test:\n      requires:\n        - pip\n      imports:\n        - pre_commit\n        - pre_commit.commands\n        - pre_commit.languages\n      commands:\n        - pip check\n        - pre-commit --help\n        - pre-commit-validate-config --help\n        - pre-commit-validate-manifest --help\n\n  - name: pre_commit\n    build:\n      noarch: generic\n    requirements:\n      run:\n        - {{ pin_subpackage('pre-commit', max_pin=\"x.x.x\") }}\n    test:\n      imports:\n        - pre_commit\n\nabout:\n  home: http://pre-commit.com/\n  license: MIT\n  license_file: LICENSE\n  summary: 'A framework for managing and maintaining multi-language pre-commit hooks.'\n  license_family: MIT\n  dev_url: https://github.com/pre-commit/pre-commit\n  doc_url: https://github.com/pre-commit/pre-commit\n\nextra:\n  recipe-maintainers:\n    - deadsnakes-issues-bot\n    - nicoddemus\n    - xmnlab\n",
  "req":{
   "__set__":true,
@@ -443,7 +460,7 @@
    ]
   }
  },
- "smithy_version":"3.6.9",
+ "smithy_version":"3.6.12",
  "strong_exports":false,
  "total_requirements":{
   "build":{
