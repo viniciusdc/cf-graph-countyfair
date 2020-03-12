@@ -90,7 +90,7 @@
    "summary":"The Go dependency management tool"
   },
   "build":{
-   "number":"0",
+   "number":"1",
    "script":[
     "pushd src/github.com/golang/dep",
     "go install -v -ldflags=\"-X main.version=v0.5.4\" ./cmd/dep",
@@ -104,10 +104,16 @@
    "recipe-maintainers":[
     "sodre",
     "adbeda",
+    "rluria14",
+    "oblute",
     "sodre",
     "adbeda",
+    "rluria14",
+    "oblute",
     "sodre",
-    "adbeda"
+    "adbeda",
+    "rluria14",
+    "oblute"
    ]
   },
   "package":{
@@ -155,7 +161,7 @@
  "name":"go-dep",
  "new_version":"0.5.4",
  "pinning_version":"2019.06.09",
- "raw_meta_yaml":"{% set goname = \"github.com/golang/dep\" %}\n{% set version = \"0.5.4\" %}\n\n{% set name = goname.split('/')[-1] %}\n{% set pkg_src = ('src/'+goname).replace(\"/\", \"\\\\\" if win else \"/\") %}\n\npackage:\n  name: go-{{ name|lower }}\n  version: {{ version }}\n\nsource:\n  - folder: {{ pkg_src }}\n    url: https://{{ goname }}/archive/v{{ version }}.tar.gz  # [unix]\n    sha256: 929c8f759838f98323211ba408a831ea80d93b75beda8584b6d950f393a3298a  # [unix]\n    git_url: https://{{ goname }}  # [win]\n    git_tag: v{{ version }}  # [win]\n\nbuild:\n  number: 0\n  script:\n    - pushd {{ pkg_src }}\n    - 'go install -v -ldflags=\"-X main.version=v{{ version }}\" ./cmd/dep'\n\nrequirements:\n  build:\n    - {{ compiler(\"go\") }} >=1.11.3\n\ntest:\n  requires:         # [win]\n    - m2-coreutils  # [win]\n  commands:\n    - test -x {{target_gobin}}dep{{target_goexe}}\n    - dep version\n\nabout:\n  home: https://golang.github.io/dep/\n  license: BSD-3-Clause\n  license_file: {{ pkg_src }}/LICENSE\n  summary: The Go dependency management tool\n  doc_url: https://golang.github.io/dep/docs/introduction.html\n  dev_url: https://{{ goname }}\n\nextra:\n  recipe-maintainers:\n    - sodre\n    - adbeda\n",
+ "raw_meta_yaml":"{% set goname = \"github.com/golang/dep\" %}\n{% set version = \"0.5.4\" %}\n\n{% set name = goname.split('/')[-1] %}\n{% set pkg_src = ('src/'+goname).replace(\"/\", \"\\\\\" if win else \"/\") %}\n\npackage:\n  name: go-{{ name|lower }}\n  version: {{ version }}\n\nsource:\n  - folder: {{ pkg_src }}\n    url: https://{{ goname }}/archive/v{{ version }}.tar.gz  # [unix]\n    sha256: 929c8f759838f98323211ba408a831ea80d93b75beda8584b6d950f393a3298a  # [unix]\n    git_url: https://{{ goname }}  # [win]\n    git_tag: v{{ version }}  # [win]\n\nbuild:\n  number: 1\n  script:\n    - pushd {{ pkg_src }}\n    - 'go install -v -ldflags=\"-X main.version=v{{ version }}\" ./cmd/dep'\n\nrequirements:\n  build:\n    - {{ compiler(\"go\") }} >=1.11.3\n\ntest:\n  requires:         # [win]\n    - m2-coreutils  # [win]\n  commands:\n    - test -x {{target_gobin}}dep{{target_goexe}}\n    - dep version\n\nabout:\n  home: https://golang.github.io/dep/\n  license: BSD-3-Clause\n  license_file: {{ pkg_src }}/LICENSE\n  summary: The Go dependency management tool\n  doc_url: https://golang.github.io/dep/docs/introduction.html\n  dev_url: https://{{ goname }}\n\nextra:\n  recipe-maintainers:\n    - sodre\n    - adbeda\n    - rluria14\n    - oblute\n",
  "req":{
   "__set__":true,
   "elements":[
