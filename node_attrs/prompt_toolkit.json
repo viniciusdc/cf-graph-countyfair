@@ -251,29 +251,28 @@
     "migrator_version",
     "name"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/00dd51da-df1c-481c-8f6d-9d66d3dd230c.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"MigrationYaml",
+    "migrator_object_version":1,
+    "migrator_version":0,
+    "name":"pypy"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_object_version",
+    "migrator_version",
+    "name"
+   ]
   }
  ],
- "bad":{
-  "exception":"Failed to put item: An error occurred (ValidationException) on request (9CQ1A0BJ73DA1IFOJ9BIQFKA47VV4KQNSO5AEMVJF66Q9ASUAAJG) on table (pr_json) when calling the PutItem operation: Attempting to store more than 38 significant digits in a Number",
-  "traceback":[
-   "Traceback (most recent call last):",
-   "  File \"/root/repo/cf-scripts/conda_forge_tick/auto_tick.py\", line 734, in main",
-   "    hash_type=attrs.get(\"hash_type\", \"sha256\"),",
-   "  File \"/root/repo/cf-scripts/conda_forge_tick/auto_tick.py\", line 237, in run",
-   "    PRJson.dump(pr_json)",
-   "  File \"/root/repo/cf-scripts/conda_forge_tick/dynamo_models.py\", line 33, in dump",
-   "    item.save()",
-   "  File \"/opt/conda/envs/run_env/lib/python3.7/site-packages/pynamodb/models.py\", line 405, in save",
-   "    data = self._get_connection().put_item(*args, **kwargs)",
-   "  File \"/opt/conda/envs/run_env/lib/python3.7/site-packages/pynamodb/connection/table.py\", line 139, in put_item",
-   "    return_item_collection_metrics=return_item_collection_metrics)",
-   "  File \"/opt/conda/envs/run_env/lib/python3.7/site-packages/pynamodb/connection/base.py\", line 972, in put_item",
-   "    six.raise_from(PutError(\"Failed to put item: {}\".format(e), e), None)",
-   "  File \"<string>\", line 3, in raise_from",
-   "pynamodb.exceptions.PutError: Failed to put item: An error occurred (ValidationException) on request (9CQ1A0BJ73DA1IFOJ9BIQFKA47VV4KQNSO5AEMVJF66Q9ASUAAJG) on table (pr_json) when calling the PutItem operation: Attempting to store more than 38 significant digits in a Number",
-   ""
-  ]
- },
+ "bad":false,
  "conda-forge.yml":{},
  "feedstock_name":"prompt_toolkit",
  "hash_type":"sha256",
@@ -488,7 +487,7 @@
   "prompt-toolkit",
   "prompt_toolkit"
  ],
- "pinning_version":"2020.03.06",
+ "pinning_version":"2020.03.10",
  "raw_meta_yaml":"{% set version = \"3.0.4\" %}\n\npackage:\n  name: prompt-toolkit\n  version: {{ version }}\n\nsource:\n  url: https://pypi.io/packages/source/p/prompt_toolkit/prompt_toolkit-{{ version }}.tar.gz\n  sha256: ebe6b1b08c888b84c50d7f93dee21a09af39860144ff6130aadbd61ae8d29783\n\nbuild:\n  number: 0\n\noutputs:\n  - name: prompt-toolkit\n    build:\n      noarch: python\n    script: build_base.bat  # [win]\n    script: build_base.sh  # [not win]\n    requirements:\n      host:\n        - python >=3.6\n        - pip\n      run:\n        - python >=3.6\n        - pygments\n        - six >=1.9.0\n        - wcwidth\n    test:\n      requires:\n        - pip\n      commands:\n        - pip check\n      imports:\n        - prompt_toolkit\n        - prompt_toolkit.clipboard\n        - prompt_toolkit.contrib\n        - prompt_toolkit.contrib.completers\n        - prompt_toolkit.contrib.regular_languages\n        - prompt_toolkit.eventloop\n        - prompt_toolkit.filters\n        - prompt_toolkit.key_binding\n        - prompt_toolkit.key_binding.bindings\n        - prompt_toolkit.layout\n\n  - name: prompt_toolkit\n    build:\n      noarch: generic\n    requirements:\n      run:\n        - {{ pin_subpackage('prompt-toolkit', max_pin=\"x.x.x\") }}\n    test:\n      imports:\n        - prompt_toolkit\n\nabout:\n  home: https://github.com/jonathanslenders/python-prompt-toolkit\n  license: BSD-3-Clause\n  license_file: LICENSE\n  summary: Library for building powerful interactive command lines in Python\n  description: |\n    prompt_toolkit is a library for building powerful interactive command\n    lines and terminal applications in Python. It can be a pure Python\n    replacement for GNU readline, but it can be much more than that.\n  doc_url: http://python-prompt-toolkit.readthedocs.io\n  dev_url: https://github.com/jonathanslenders/python-prompt-toolkit\n\nextra:\n  recipe-maintainers:\n    - jakirkham\n    - ocefpaf\n    - scopatz\n    - asmeurer\n",
  "req":{
   "__set__":true,
@@ -530,7 +529,7 @@
    ]
   }
  },
- "smithy_version":"3.6.10",
+ "smithy_version":"3.6.12",
  "strong_exports":false,
  "total_requirements":{
   "build":{
