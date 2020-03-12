@@ -145,10 +145,7 @@
  "conda-forge.yml":{
   "bot":{
    "automerge":true
-  },
-  "compiler_stack":"comp7",
-  "max_py_ver":"37",
-  "max_r_ver":"35"
+  }
  },
  "feedstock_name":"namaster",
  "hash_type":"sha256",
@@ -178,41 +175,51 @@
   },
   "package":{
    "name":"namaster",
-   "version":"1.0.1"
+   "version":"1.0.2"
   },
   "requirements":{
    "build":[
     "c_compiler_stub",
     "make",
+    "autoconf",
+    "automake",
+    "wget",
     "c_compiler_stub",
     "make",
+    "autoconf",
+    "automake",
+    "wget",
+    "llvm-openmp",
     "c_compiler_stub",
-    "make"
+    "make",
+    "autoconf",
+    "automake",
+    "wget",
+    "libgomp"
    ],
    "host":[
     "python",
     "pip",
     "gsl",
     "fftw",
-    "libsharp",
     "cfitsio",
+    "libsharp",
     "chealpix",
     "numpy",
     "python",
     "pip",
     "gsl",
     "fftw",
-    "libsharp",
     "cfitsio",
+    "libsharp",
     "chealpix",
     "numpy",
-    "llvm-openmp",
     "python",
     "pip",
     "gsl",
     "fftw",
-    "libsharp",
     "cfitsio",
+    "libsharp",
     "chealpix",
     "numpy"
    ],
@@ -229,7 +236,6 @@
     "libsharp",
     "chealpix",
     "numpy",
-    "llvm-openmp",
     "python",
     "gsl",
     "fftw",
@@ -239,9 +245,9 @@
    ]
   },
   "source":{
-   "fn":"NaMaster-1.0.1.tar.gz",
-   "sha256":"52a5d1335cd668fe7d343966067a162066e5e8feb1b7c8f2a7a4ea4a827219eb",
-   "url":"https://github.com/LSSTDESC/NaMaster/archive/v1.0.1.tar.gz"
+   "fn":"NaMaster-1.0.2.tar.gz",
+   "sha256":"954c6c8d7c3277b4001faf2eb92991f0627bc33218ae7624a3a96ed32176871f",
+   "url":"https://github.com/LSSTDESC/NaMaster/archive/v1.0.2.tar.gz"
   },
   "test":{
    "commands":[
@@ -269,29 +275,38 @@
  "name":"namaster",
  "new_version":"1.0.2",
  "pinning_version":"2020.03.10",
- "raw_meta_yaml":"{% set name = \"NaMaster\" %}\n{% set version = \"1.0.1\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  fn: {{ name }}-{{ version }}.tar.gz\n  url: https://github.com/LSSTDESC/NaMaster/archive/v{{ version }}.tar.gz\n  sha256: 52a5d1335cd668fe7d343966067a162066e5e8feb1b7c8f2a7a4ea4a827219eb\n\nbuild:\n  number: 1\n  skip: True  # [win]\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - make\n  host:\n    - python\n    - pip\n    - gsl\n    - fftw\n    - libsharp\n    - cfitsio\n    - chealpix\n    - numpy\n    - llvm-openmp  # [osx]\n  run:\n    - python\n    - gsl\n    - fftw\n    - libsharp\n    - chealpix\n    - numpy\n    - llvm-openmp  # [osx]\n\ntest:\n  source_files:\n    - test/*\n  requires:\n    - healpy\n  imports:\n    - pymaster\n  commands:\n    - namaster -h\n\nabout:\n  home: https://github.com/LSSTDESC/NaMaster\n  license: BSD-3-Clause\n  license_family: BSD\n  license_file: LICENSE\n  summary: pseudo-Cl power spectra w/ masking for spin-0 and spin-2 fields\n  description: |\n    NaMaster is a C library, Python module and standalone program to compute\n    full-sky angular cross-power spectra of masked, spin-0 and spin-2 fields\n    with an arbitrary number of known contaminants using a pseudo-Cl\n    (aka MASTER) approach. The code also implements E/B-mode purification\n    and is available in both full-sky and flat-sky modes.\n  doc_url: https://namaster.readthedocs.io\n\nextra:\n  recipe-maintainers:\n    - beckermr\n    - damonge\n",
+ "raw_meta_yaml":"{% set name = \"NaMaster\" %}\n{% set version = \"1.0.2\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  fn: {{ name }}-{{ version }}.tar.gz\n  url: https://github.com/LSSTDESC/NaMaster/archive/v{{ version }}.tar.gz\n  sha256: 954c6c8d7c3277b4001faf2eb92991f0627bc33218ae7624a3a96ed32176871f\n\nbuild:\n  number: 1\n  skip: true  # [win]\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - make\n    - autoconf\n    - automake\n    - wget\n    - llvm-openmp  # [osx]\n    - libgomp      # [linux]\n  host:\n    - python\n    - pip\n    - gsl\n    - fftw\n    - cfitsio\n    - libsharp\n    - chealpix\n    - numpy\n  run:\n    - python\n    - gsl\n    - fftw\n    - libsharp\n    - chealpix\n    - numpy\n\ntest:\n  source_files:\n    - test/*\n  requires:\n    - healpy\n  imports:\n    - pymaster\n  commands:\n    - namaster -h\n\nabout:\n  home: https://github.com/LSSTDESC/NaMaster\n  license: BSD-3-Clause\n  license_family: BSD\n  license_file: LICENSE\n  summary: pseudo-Cl power spectra w/ masking for spin-0 and spin-2 fields\n  description: |\n    NaMaster is a C library, Python module and standalone program to compute\n    full-sky angular cross-power spectra of masked, spin-0 and spin-2 fields\n    with an arbitrary number of known contaminants using a pseudo-Cl\n    (aka MASTER) approach. The code also implements E/B-mode purification\n    and is available in both full-sky and flat-sky modes.\n  doc_url: https://namaster.readthedocs.io\n\nextra:\n  recipe-maintainers:\n    - beckermr\n    - damonge\n",
  "req":{
   "__set__":true,
   "elements":[
+   "autoconf",
+   "automake",
    "c_compiler_stub",
    "cfitsio",
    "chealpix",
    "fftw",
    "gsl",
+   "libgomp",
    "libsharp",
    "llvm-openmp",
    "make",
    "numpy",
    "pip",
-   "python"
+   "python",
+   "wget"
   ]
  },
  "requirements":{
   "build":{
    "__set__":true,
    "elements":[
+    "autoconf",
+    "automake",
     "c_compiler_stub",
-    "make"
+    "libgomp",
+    "llvm-openmp",
+    "make",
+    "wget"
    ]
   },
   "host":{
@@ -302,7 +317,6 @@
     "fftw",
     "gsl",
     "libsharp",
-    "llvm-openmp",
     "numpy",
     "pip",
     "python"
@@ -315,7 +329,6 @@
     "fftw",
     "gsl",
     "libsharp",
-    "llvm-openmp",
     "numpy",
     "python"
    ]
@@ -333,8 +346,13 @@
   "build":{
    "__set__":true,
    "elements":[
+    "autoconf",
+    "automake",
     "c_compiler_stub",
-    "make"
+    "libgomp",
+    "llvm-openmp",
+    "make",
+    "wget"
    ]
   },
   "host":{
@@ -345,7 +363,6 @@
     "fftw",
     "gsl",
     "libsharp",
-    "llvm-openmp",
     "numpy",
     "pip",
     "python"
@@ -358,7 +375,6 @@
     "fftw",
     "gsl",
     "libsharp",
-    "llvm-openmp",
     "numpy",
     "python"
    ]
@@ -371,5 +387,5 @@
   }
  },
  "url":"https://github.com/LSSTDESC/NaMaster/archive/v1.0.tar.gz",
- "version":"1.0.1"
+ "version":"1.0.2"
 }
