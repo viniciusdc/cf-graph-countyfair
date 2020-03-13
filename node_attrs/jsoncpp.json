@@ -119,6 +119,25 @@
     "migrator_version",
     "version"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/2a12e2e7-656b-4fd8-9262-ed95c6f79227.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"MigrationYaml",
+    "migrator_object_version":1,
+    "migrator_version":0,
+    "name":"pypy"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_object_version",
+    "migrator_version",
+    "name"
+   ]
   }
  ],
  "bad":false,
@@ -208,7 +227,7 @@
  },
  "name":"jsoncpp",
  "new_version":"1.9.2",
- "pinning_version":"2019.11.13",
+ "pinning_version":"2020.03.12",
  "raw_meta_yaml":"{% set version = \"1.8.4\" %}\n\npackage:\n  name: jsoncpp\n  version: {{ version }}\n\nsource:\n  fn: jsoncpp-{{ version }}.tar.gz\n  url: https://github.com/open-source-parsers/jsoncpp/archive/{{ version }}.tar.gz\n  sha256: c49deac9e0933bcb7044f08516861a2d560988540b23de2ac1ad443b219afdb6\n  patches:\n    ###################################################################\n    #  Include upstreamed patch for VS 2008 support.                  #\n    #                                                                 #\n    #  xref: https://github.com/open-source-parsers/jsoncpp/pull/733  #\n    ###################################################################\n    - PR_733.patch\n\nbuild:\n  number: 1002\n  run_exports:\n    - {{ pin_subpackage('jsoncpp', max_pin='x.x') }}\n\nrequirements:\n  build:\n    - {{ compiler(\"cxx\") }}\n    - cmake\n    - make        # [unix]\n    - pkg-config  # [unix]\n    - python\n  host:\n    - msinttypes  # [win and vc==9]\n\ntest:\n  commands:\n    # Verify headers are present.\n    - test -f \"${PREFIX}/include/json/json.h\"                       # [unix]\n    - if not exist %PREFIX%\\\\Library\\\\include\\\\json\\\\json.h exit 1  # [win]\n\n    # Verify pkg-config file is present.\n    - test -f \"${PREFIX}/lib/pkgconfig/jsoncpp.pc\"  # [unix]\n\n    # Verify libraries are present.\n    - test -f \"${PREFIX}/lib/libjsoncpp_static.a\"                                      # [unix]\n    - python -c \"import ctypes; ctypes.cdll[r'${PREFIX}/lib/libjsoncpp${SHLIB_EXT}']\"  # [unix]\n    - if not exist %PREFIX%\\\\Library\\\\lib\\\\jsoncpp.lib exit 1                          # [win]\n\nabout:\n  home: https://github.com/open-source-parsers/jsoncpp\n  license: Public Domain/MIT\n  license_file: LICENSE\n  summary: A C++ library for interacting with JSON.\n\nextra:\n  recipe-maintainers:\n    - jakirkham\n    - stuarteberg\n",
  "req":{
   "__set__":true,
@@ -244,7 +263,7 @@
    "elements":[]
   }
  },
- "smithy_version":"3.6.2",
+ "smithy_version":"3.6.12",
  "strong_exports":false,
  "total_requirements":{
   "build":{
