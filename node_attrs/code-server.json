@@ -139,7 +139,7 @@
   }
  },
  "name":"code-server",
- "new_version":"3.0.1",
+ "new_version":"3.0.0",
  "pinning_version":"2020.02.12",
  "raw_meta_yaml":"{% set name = \"code-server\" %}\n{% set version = \"2.1698-vsc1.41.1\" %}\n{% set base_version = version.split(\"-\")[0] %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  url: https://github.com/cdr/{{ name }}/archive/{{ base_version }}.tar.gz\n  sha256: 653d15d88f6cc97f9580361d17d5eb6d5123d5f20674a62e60e6033f7cc146cd\n  patches:\n    - node-binary.patch\n\nbuild:\n  number: 0\n  binary_relocation: False  # [osx]\n  skip: true  # [win]\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n    - python 2.7.*\n    - nodejs 12.*\n    - yarn\n    - pkg-config  # [linux]\n    - ripgrep\n  host:\n    - nbin 1.2.7.*\n    - libxkbfile  # [linux]\n    - libsecret  # [linux]\n    - xorg-libx11  # [linux]\n  run:\n    - vs2015_runtime  # [win]\n    - icu  # [not win]\n    - libsecret  # [linux]\n    - libuv  # [not win]\n    - libxkbfile  # [linux]\n    - openssl >=1.1.1d  # [not win]\n    - xorg-libx11  # [linux]\n    - zlib  # [not win]\n  run_constrained:  # [osx]\n    - __osx >={{ MACOSX_DEPLOYMENT_TARGET|default(\"10.9\") }}  # [osx]\n\ntest:\n  commands:\n    - code-server --help\n\nabout:\n  home: https://github.com/cdr/code-server\n  license: MIT\n  license_family: MIT\n  license_file:\n   - LICENSE\n   - LICENSE.vscode.txt\n   - ThirdPartyNotices.vscode.txt\n  summary: 'Run VS Code on a remote server.'\n\nextra:\n  recipe-maintainers:\n    - xhochy\n",
  "req":{
