@@ -18,6 +18,23 @@
     "migrator_version",
     "name"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/387809399.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"Version",
+    "migrator_version":0,
+    "version":"3.1.0"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "version"
+   ]
   }
  ],
  "bad":false,
@@ -148,8 +165,8 @@
   }
  },
  "name":"bonsu",
- "new_version":"3.0.0",
- "pinning_version":"2019.11.01",
+ "new_version":"3.1.0",
+ "pinning_version":"2020.03.12",
  "raw_meta_yaml":"{% set name = \"Bonsu\" %}\n{% set version = \"3.0.0\" %}\n\npackage:\n  name: \"{{ name|lower }}\"\n  version: \"{{ version }}\"\n\nsource:\n  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz\n  sha256: d10e491325e5ff63e6a9d2aa8574cd25961e5796aa9ee666c50f24d27a80a5b6\n  patches:\n    # submitted upstream as https://github.com/bonsudev/bonsu/pull/1\n    - setup.py.patch\n\nbuild:\n  number: 1\n  script: \"{{ PYTHON }} -m pip install . --no-deps --ignore-installed -vv --global-option=build_ext --global-option=-I$PREFIX/include\"\n  skip: True  # [win]\n\nrequirements:\n  build:\n    - {{ compiler('cxx') }}\n    - {{ cdt('libXxf86vm') }}  # [linux]\n    - {{ cdt('mesa-libgl') }}  # [linux]\n  host:\n    - pip\n    - setuptools\n    - python\n    - pillow\n    - wxpython\n    - vtk\n    - hdf5\n    - numpy\n    - fftw\n  run:\n    - python\n    - pillow\n    - wxpython\n    - vtk\n    - hdf5\n    - numpy\n    - fftw\n\ntest:\n  imports:\n    - bonsu\n    - bonsu.docs\n    - bonsu.image\n    - bonsu.interface\n    - bonsu.lib\n    - bonsu.operations\n    - bonsu.phasing\n    - bonsu.sequences\n\nabout:\n  home: https://github.com/bonsudev/bonsu\n  license: GPL3\n  license_family: GPL3\n  license_file: bonsu/licence/gpl.txt\n  summary: Bonsu - The Interactive Phase Retrieval Suite\n\nextra:\n  recipe-maintainers:\n    - tschoonj\n",
  "req":{
   "__set__":true,
@@ -206,7 +223,7 @@
    "elements":[]
   }
  },
- "smithy_version":"3.6.2",
+ "smithy_version":"3.6.12",
  "strong_exports":false,
  "total_requirements":{
   "build":{

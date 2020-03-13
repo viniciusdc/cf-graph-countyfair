@@ -111,7 +111,7 @@
   },
   "package":{
    "name":"fzf",
-   "version":"0.21.0"
+   "version":"0.21.0_1"
   },
   "requirements":{
    "build":[
@@ -123,18 +123,18 @@
   "source":[
    {
     "folder":"src/github.com/junegunn/fzf",
-    "sha256":"89870f9f9396f41adc3609d466caab7556d831a1ad726cc6132a880febfd0eec",
-    "url":"https://github.com/junegunn/fzf/archive/0.21.0.tar.gz"
+    "sha256":"f647ff8c8828a38f5fa10c9f831a5e5e58321bba1e26abdb249f1af48ffd97db",
+    "url":"https://github.com/junegunn/fzf/archive/0.21.0-1.tar.gz"
    },
    {
     "folder":"src/github.com/junegunn/fzf",
-    "sha256":"89870f9f9396f41adc3609d466caab7556d831a1ad726cc6132a880febfd0eec",
-    "url":"https://github.com/junegunn/fzf/archive/0.21.0.tar.gz"
+    "sha256":"f647ff8c8828a38f5fa10c9f831a5e5e58321bba1e26abdb249f1af48ffd97db",
+    "url":"https://github.com/junegunn/fzf/archive/0.21.0-1.tar.gz"
    },
    {
     "folder":"src/github.com/junegunn/fzf",
-    "sha256":"89870f9f9396f41adc3609d466caab7556d831a1ad726cc6132a880febfd0eec",
-    "url":"https://github.com/junegunn/fzf/archive/0.21.0.tar.gz"
+    "sha256":"f647ff8c8828a38f5fa10c9f831a5e5e58321bba1e26abdb249f1af48ffd97db",
+    "url":"https://github.com/junegunn/fzf/archive/0.21.0-1.tar.gz"
    }
   ],
   "test":{
@@ -148,7 +148,7 @@
  "name":"fzf",
  "new_version":"0.21.0-1",
  "pinning_version":"2020.03.12",
- "raw_meta_yaml":"{% set goname = \"github.com/junegunn/fzf\" %}\n{% set version = \"0.21.0\" %}\n\n{% set name = goname.split('/')[-1] %}\n{% set pkg_src = ('src/'+goname).replace(\"/\",os.sep) %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  - folder: {{ pkg_src }}\n    url: https://{{ goname }}/archive/{{ version }}.tar.gz\n    sha256: 89870f9f9396f41adc3609d466caab7556d831a1ad726cc6132a880febfd0eec\n\nbuild:\n  number: 0\n  script:\n    - pushd {{ pkg_src }}\n    - go get -d -v ./...\n    - go build -v -o $GOBIN/{{ name }}      -ldflags \"-X main.revision=conda-forge\" .  # [unix]\n    - go build -v -o %GOBIN%\\{{ name }}.exe -ldflags \"-X main.revision=conda-forge\" .  # [win]\n    - bash -c \"mkdir -p ${PREFIX}/share/fzf/shell; cp -v shell/* ${PREFIX}/share/fzf/shell/\"\n\nrequirements:\n  build:\n    - {{ compiler('go') }}\n\ntest:\n  commands:\n    - fzf --version\n\nabout:\n  home: https://{{ goname }}\n  license: MIT\n  license_family: MIT\n  license_file: {{ pkg_src }}/LICENSE\n  summary: A command-line fuzzy finder\n\nextra:\n  recipe-maintainers:\n    - dbast\n",
+ "raw_meta_yaml":"{% set goname = \"github.com/junegunn/fzf\" %}\n{% set version = \"0.21.0-1\" %}\n\n{% set name = goname.split('/')[-1] %}\n{% set pkg_src = ('src/'+goname).replace(\"/\",os.sep) %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  - folder: {{ pkg_src }}\n    url: https://{{ goname }}/archive/{{ version }}.tar.gz\n    sha256: f647ff8c8828a38f5fa10c9f831a5e5e58321bba1e26abdb249f1af48ffd97db\n\nbuild:\n  number: 0\n  script:\n    - pushd {{ pkg_src }}\n    - go get -d -v ./...\n    - go build -v -o $GOBIN/{{ name }}      -ldflags \"-X main.revision=conda-forge\" .  # [unix]\n    - go build -v -o %GOBIN%\\{{ name }}.exe -ldflags \"-X main.revision=conda-forge\" .  # [win]\n    - bash -c \"mkdir -p ${PREFIX}/share/fzf/shell; cp -v shell/* ${PREFIX}/share/fzf/shell/\"\n\nrequirements:\n  build:\n    - {{ compiler('go') }}\n\ntest:\n  commands:\n    - fzf --version\n\nabout:\n  home: https://{{ goname }}\n  license: MIT\n  license_family: MIT\n  license_file: {{ pkg_src }}/LICENSE\n  summary: A command-line fuzzy finder\n\nextra:\n  recipe-maintainers:\n    - dbast\n",
  "req":{
   "__set__":true,
   "elements":[
@@ -198,5 +198,5 @@
   }
  },
  "url":"https://github.com/junegunn/fzf/archive/0.18.0.tar.gz",
- "version":"0.21.0"
+ "version":"0.21.0_1"
 }
