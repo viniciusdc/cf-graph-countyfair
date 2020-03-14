@@ -276,7 +276,7 @@
    "summary":"Python bindings for zeromq"
   },
   "build":{
-   "number":"0"
+   "number":"1"
   },
   "extra":{
    "recipe-maintainers":[
@@ -349,21 +349,13 @@
    "url":"https://pypi.io/packages/source/p/pyzmq/pyzmq-19.0.0.tar.gz"
   },
   "test":{
-   "commands":[
-    "py.test --pyargs zmq.tests.test_socket"
-   ],
+   "commands":null,
    "imports":[
     "zmq",
-    "zmq.backend.cython.socket",
-    "zmq.backend.cython.utils",
     "zmq.devices.monitoredqueue",
     "zmq",
-    "zmq.backend.cython.socket",
-    "zmq.backend.cython.utils",
     "zmq.devices.monitoredqueue",
     "zmq",
-    "zmq.backend.cython.socket",
-    "zmq.backend.cython.utils",
     "zmq.devices.monitoredqueue"
    ],
    "requires":[
@@ -376,7 +368,7 @@
  "name":"pyzmq",
  "new_version":"19.0.0",
  "pinning_version":"2020.03.12",
- "raw_meta_yaml":"{% set version = \"19.0.0\" %}\n\npackage:\n  name: pyzmq\n  version: {{ version }}\n\nsource:\n  # We use the pypi URL as it includes the prepared Cython files.\n  url: https://pypi.io/packages/source/p/pyzmq/pyzmq-{{ version }}.tar.gz\n  sha256: 5e1f65e576ab07aed83f444e201d86deb01cd27dcf3f37c727bc8729246a60a8\n\nbuild:\n  number: 0\n\n# On Windows ZeroMQ is bundled with pyzmq.\n# On Windows pyzmq includes tweetnacl so libsodium is not used.\n# We should revisit these in the future. However, packaging libsodium\n# on Windows is complicated by the fact that they ship project files,\n# but don't include one for VS 2008, which we would need for Python 2.7.\nrequirements:\n  build:\n    - pkg-config  # [not win]\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n  host:\n    - python\n    - pip\n    - zeromq\n    - libsodium\n  run:\n    - python\n    - zeromq\n    - libsodium\n\ntest:\n  imports:\n    - zmq\n    - zmq.backend.cython.socket\n    - zmq.backend.cython.utils\n    - zmq.devices.monitoredqueue\n\n  requires:\n    - pytest\n\n  # We run the zmq tests on all platforms except Windows.\n  # The only reason not to run the tests on Windows is that\n  # they terminate with an interactive prompt. See also\n  # https://github.com/conda-forge/staged-recipes/pull/292#issuecomment-208080893.\n  commands:   # [not win]\n    - py.test --pyargs zmq.tests.test_socket  # [not win]\n\nabout:\n  home: https://github.com/zeromq/pyzmq\n  summary: Python bindings for zeromq\n  license: BSD 3-clause\n  license_file: COPYING.BSD\n\nextra:\n  recipe-maintainers:\n    - jakirkham\n    - minrk\n    - msarahan\n    - pelson\n    - SylvainCorlay\n    - JohanMabille\n    - ocefpaf\n",
+ "raw_meta_yaml":"{% set version = \"19.0.0\" %}\n\npackage:\n  name: pyzmq\n  version: {{ version }}\n\nsource:\n  # We use the pypi URL as it includes the prepared Cython files.\n  url: https://pypi.io/packages/source/p/pyzmq/pyzmq-{{ version }}.tar.gz\n  sha256: 5e1f65e576ab07aed83f444e201d86deb01cd27dcf3f37c727bc8729246a60a8\n\nbuild:\n  number: 1\n\n# On Windows ZeroMQ is bundled with pyzmq.\n# On Windows pyzmq includes tweetnacl so libsodium is not used.\n# We should revisit these in the future. However, packaging libsodium\n# on Windows is complicated by the fact that they ship project files,\n# but don't include one for VS 2008, which we would need for Python 2.7.\nrequirements:\n  build:\n    - pkg-config  # [not win]\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n  host:\n    - python\n    - pip\n    - zeromq\n    - libsodium\n    - py  # [python_impl == 'pypy']\n  run:\n    - python\n    - zeromq\n    - libsodium\n    - py  # [python_impl == 'pypy']\n\ntest:\n  imports:\n    - zmq\n    - zmq.backend.cython.socket  # [python_impl == 'cpython']\n    - zmq.backend.cython.utils   # [python_impl == 'cpython']\n    - zmq.backend.cffi           # [python_impl == 'pypy']\n    - zmq.devices.monitoredqueue\n\n  requires:\n    - pytest\n\n  # We run the zmq tests on all platforms except Windows.\n  # The only reason not to run the tests on Windows is that\n  # they terminate with an interactive prompt. See also\n  # https://github.com/conda-forge/staged-recipes/pull/292#issuecomment-208080893.\n  # TestSocket.test_large_send is skipped on upstream CI for pypy\n  commands:   # [not win]\n    - py.test --pyargs zmq.tests.test_socket  # [not win and python_impl == 'cpython']\n    - py.test  -k 'not test_large_send' --pyargs zmq.tests.test_socket  # [not win and python_impl == 'pypy']\n\nabout:\n  home: https://github.com/zeromq/pyzmq\n  summary: Python bindings for zeromq\n  license: BSD 3-clause\n  license_file: COPYING.BSD\n\nextra:\n  recipe-maintainers:\n    - jakirkham\n    - minrk\n    - msarahan\n    - pelson\n    - SylvainCorlay\n    - JohanMabille\n    - ocefpaf\n",
  "req":{
   "__set__":true,
   "elements":[
