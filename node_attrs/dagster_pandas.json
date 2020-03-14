@@ -141,11 +141,11 @@
   "exception":"while parsing a block mapping\n  in \"<unicode string>\", line 9, column 3:\n      url: \"https://pypi.io/packages/s ... \n      ^ (line: 9)\nexpected <block end>, but found '<scalar>'\n  in \"<unicode string>\", line 9, column 83:\n     ...  }}/<{ name }}/<{ name|replace(\"_\",\"-\") }}-<{ version }}.tar.gz\"\n                                         ^ (line: 9)",
   "traceback":[
    "Traceback (most recent call last):",
-   "  File \"/root/repo/cf-scripts/conda_forge_tick/auto_tick.py\", line 736, in main",
+   "  File \"/root/repo/cf-scripts/conda_forge_tick/auto_tick.py\", line 845, in main",
    "    hash_type=attrs.get(\"hash_type\", \"sha256\"),",
-   "  File \"/root/repo/cf-scripts/conda_forge_tick/auto_tick.py\", line 157, in run",
+   "  File \"/root/repo/cf-scripts/conda_forge_tick/auto_tick.py\", line 166, in run",
    "    migrate_return = migrator.migrate(recipe_dir, feedstock_ctx.attrs, **kwargs)",
-   "  File \"/root/repo/cf-scripts/conda_forge_tick/migrators/version.py\", line 372, in migrate",
+   "  File \"/root/repo/cf-scripts/conda_forge_tick/migrators/version.py\", line 373, in migrate",
    "    cmeta = CondaMetaYAML(fp.read())",
    "  File \"/root/repo/cf-scripts/conda_forge_tick/recipe_parser/_parser.py\", line 358, in __init__",
    "    self.meta = YAML_JINJA2.load(\"\".join(lines))",
@@ -257,7 +257,7 @@
   }
  },
  "name":"dagster_pandas",
- "new_version":"0.7.3",
+ "new_version":"0.7.4",
  "pinning_version":"2020.02.20",
  "raw_meta_yaml":"{% set name = \"dagster_pandas\" %}\n{% set version = \"0.6.7.post0\" %}\n\npackage:\n  name: \"{{ name|lower }}\"\n  version: \"{{ version }}\"\n\nsource:\n  url: \"https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name|replace(\"_\",\"-\") }}-{{ version }}.tar.gz\"\n  sha256: 6c00cb4ef3b56050474800168e934afaa152e42b35561377ca0927063d85f82f\n\nbuild:\n  number: 0\n  noarch: python\n  script: \"{{ PYTHON }} -m pip install . -vv\"\n\nrequirements:\n  host:\n    - pip\n    - python\n    - setuptools\n  run:\n    - python\n    - dagster {{ version }}.*\n    - matplotlib-base\n    - pandas\n\ntest:\n  imports:\n    - dagster_pandas\n  requires:\n   - pip\n  commands:\n   - pip check\n\nabout:\n  home: \"https://github.com/dagster-io/dagster\"\n  license: Apache-2.0\n  license_family: APACHE\n  license_file: LICENSE\n  summary: \"Utilities and examples for working with pandas and dagster, an opinionated framework for expressing data pipelines\"\n\nextra:\n  recipe-maintainers:\n    - conda-forge/dagster\n",
  "req":{
