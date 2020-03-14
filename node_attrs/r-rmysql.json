@@ -117,9 +117,6 @@
  ],
  "bad":false,
  "conda-forge.yml":{
-  "compiler_stack":"comp7",
-  "max_py_ver":"37",
-  "max_r_ver":"35",
   "provider":{
    "win":"azure"
   }
@@ -158,7 +155,7 @@
   },
   "package":{
    "name":"r-rmysql",
-   "version":"0.10.19"
+   "version":"0.10.20"
   },
   "requirements":{
    "build":[
@@ -208,14 +205,14 @@
    ]
   },
   "source":{
-   "sha256":"1b6e31fb2d7cffcea7d2e9363d3c1bf57b4adfdf9b679a4c571b8774b0bbc908",
+   "sha256":"f11c18d946b2dd9b65cdf31d7b5a2178ed740687dde41efdd9afa17abfa96953",
    "url":[
-    "https://cran.r-project.org/src/contrib/RMySQL_0.10.19.tar.gz",
-    "https://cran.r-project.org/src/contrib/Archive/RMySQL/RMySQL_0.10.19.tar.gz",
-    "https://cran.r-project.org/src/contrib/RMySQL_0.10.19.tar.gz",
-    "https://cran.r-project.org/src/contrib/Archive/RMySQL/RMySQL_0.10.19.tar.gz",
-    "https://cran.r-project.org/src/contrib/RMySQL_0.10.19.tar.gz",
-    "https://cran.r-project.org/src/contrib/Archive/RMySQL/RMySQL_0.10.19.tar.gz"
+    "https://cran.r-project.org/src/contrib/RMySQL_0.10.20.tar.gz",
+    "https://cran.r-project.org/src/contrib/Archive/RMySQL/RMySQL_0.10.20.tar.gz",
+    "https://cran.r-project.org/src/contrib/RMySQL_0.10.20.tar.gz",
+    "https://cran.r-project.org/src/contrib/Archive/RMySQL/RMySQL_0.10.20.tar.gz",
+    "https://cran.r-project.org/src/contrib/RMySQL_0.10.20.tar.gz",
+    "https://cran.r-project.org/src/contrib/Archive/RMySQL/RMySQL_0.10.20.tar.gz"
    ]
   },
   "test":{
@@ -229,7 +226,7 @@
  "name":"r-rmysql",
  "new_version":"0.10.20",
  "pinning_version":"2020.03.13",
- "raw_meta_yaml":"{% set version = \"0.10.19\" %}\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-rmysql\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  url:\n    - {{ cran_mirror }}/src/contrib/RMySQL_{{ version }}.tar.gz\n    - {{ cran_mirror }}/src/contrib/Archive/RMySQL/RMySQL_{{ version }}.tar.gz\n  sha256: 1b6e31fb2d7cffcea7d2e9363d3c1bf57b4adfdf9b679a4c571b8774b0bbc908\n\nbuild:\n  merge_build_host: True  # [win]\n  number: 0\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - {{ compiler('c') }}        # [unix]\n    - {{ compiler('m2w64_c') }}  # [win]\n    - {{posix}}filesystem        # [win]\n    - {{posix}}sed               # [win]\n    - {{posix}}grep              # [win]\n    - {{posix}}autoconf\n    - {{posix}}automake          # [not win]\n    - {{posix}}automake-wrapper  # [win]\n    - {{posix}}pkg-config\n    - {{posix}}make\n    - {{posix}}coreutils         # [win]\n    - {{posix}}zip               # [win]\n  host:\n    - r-base\n    - mysql-connector-c\n    - r-dbi >=0.4\n  run:\n    - r-base\n    - mysql-connector-c\n    - {{native}}gcc-libs         # [win]\n    - r-dbi >=0.4\n\ntest:\n  commands:\n    - $R -e \"library('RMySQL')\"           # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('RMySQL')\\\"\"  # [win]\n\nabout:\n  home: https://downloads.mariadb.org/connector-c/ (upstream)\n  license: GPL-2\n  summary: Legacy 'DBI' interface to 'MySQL' / 'MariaDB' based on old code ported from S-PLUS.\n    A modern 'MySQL' client based on 'Rcpp' is available  from the 'RMariaDB' package.\n  license_family: GPL2\n  license_file: '{{ environ[\"PREFIX\"] }}/lib/R/share/licenses/GPL-2'\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n    - chambm\n\n# Package: RMySQL\n# Version: 0.10.17\n# Title: Database Interface and 'MySQL' Driver for R\n# Description: Legacy 'DBI' interface to 'MySQL' / 'MariaDB' based on old code ported from S-PLUS. A modern 'MySQL' client based on 'Rcpp' is available  from the 'RMariaDB' package.\n# Authors@R: c(person(\"Jeroen\", \"Ooms\", email = \"jeroen@berkeley.edu\",  role = c(\"aut\", \"cre\"), comment = c(ORCID = \"0000-0002-4035-0289\")), person(\"David\", \"James\", role = \"aut\"), person(\"Saikat\", \"DebRoy\", role = \"aut\"), person(\"Hadley\", \"Wickham\", email = \"hadley@rstudio.com\", role = \"aut\"), person(\"Jeffrey\", \"Horner\", role = \"aut\"), person(\"RStudio\", role = \"cph\"))\n# Depends: R (>= 2.8.0), DBI (>= 0.4)\n# Imports: methods\n# License: GPL-2\n# URL: https://downloads.mariadb.org/connector-c/ (upstream)\n# BugReports: https://github.com/r-dbi/rmysql/issues\n# SystemRequirements: libmariadb-client-dev | libmariadb-client-lgpl-dev | libmysqlclient-dev (deb), mariadb-devel (rpm), mariadb | mysql-connector-c (brew), mysql56_dev (csw)\n# NeedsCompilation: yes\n# Collate: 'mysql.R' 'driver.R' 'connection.R' 'data-type.R' 'default.R' 'escaping.R' 'result.R' 'extension.R' 'is-valid.R' 'table.R' 'transaction.R'\n# Suggests: RMariaDB, testthat, curl\n# Packaged: 2019-03-04 13:25:49 UTC; jeroen\n# Author: Jeroen Ooms [aut, cre] (<https://orcid.org/0000-0002-4035-0289>), David James [aut], Saikat DebRoy [aut], Hadley Wickham [aut], Jeffrey Horner [aut], RStudio [cph]\n# Maintainer: Jeroen Ooms <jeroen@berkeley.edu>\n# Repository: CRAN\n# Date/Publication: 2019-03-04 15:10:03 UTC\n",
+ "raw_meta_yaml":"{% set version = \"0.10.20\" %}\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-rmysql\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  url:\n    - {{ cran_mirror }}/src/contrib/RMySQL_{{ version }}.tar.gz\n    - {{ cran_mirror }}/src/contrib/Archive/RMySQL/RMySQL_{{ version }}.tar.gz\n  sha256: f11c18d946b2dd9b65cdf31d7b5a2178ed740687dde41efdd9afa17abfa96953\n\nbuild:\n  merge_build_host: true  # [win]\n  number: 0\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - {{ compiler('c') }}        # [unix]\n    - {{ compiler('m2w64_c') }}  # [win]\n    - {{posix}}filesystem        # [win]\n    - {{posix}}sed               # [win]\n    - {{posix}}grep              # [win]\n    - {{posix}}autoconf\n    - {{posix}}automake          # [not win]\n    - {{posix}}automake-wrapper  # [win]\n    - {{posix}}pkg-config\n    - {{posix}}make\n    - {{posix}}coreutils         # [win]\n    - {{posix}}zip               # [win]\n  host:\n    - r-base\n    - mysql-connector-c\n    - r-dbi >=0.4\n  run:\n    - r-base\n    - mysql-connector-c\n    - {{native}}gcc-libs         # [win]\n    - r-dbi >=0.4\n\ntest:\n  commands:\n    - $R -e \"library('RMySQL')\"           # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('RMySQL')\\\"\"  # [win]\n\nabout:\n  home: https://downloads.mariadb.org/connector-c/ (upstream)\n  license: GPL-2\n  summary: Legacy 'DBI' interface to 'MySQL' / 'MariaDB' based on old code ported from S-PLUS. A modern 'MySQL' client based on 'Rcpp' is available  from the 'RMariaDB'\n    package.\n  license_family: GPL2\n  license_file: {{ environ[\"PREFIX\"] }}/lib/R/share/licenses/GPL-2\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n    - chambm\n\n# Package: RMySQL\n# Version: 0.10.17\n# Title: Database Interface and 'MySQL' Driver for R\n# Description: Legacy 'DBI' interface to 'MySQL' / 'MariaDB' based on old code ported from S-PLUS. A modern 'MySQL' client based on 'Rcpp' is available  from the 'RMariaDB' package.\n# Authors@R: c(person(\"Jeroen\", \"Ooms\", email = \"jeroen@berkeley.edu\",  role = c(\"aut\", \"cre\"), comment = c(ORCID = \"0000-0002-4035-0289\")), person(\"David\", \"James\", role = \"aut\"), person(\"Saikat\", \"DebRoy\", role = \"aut\"), person(\"Hadley\", \"Wickham\", email = \"hadley@rstudio.com\", role = \"aut\"), person(\"Jeffrey\", \"Horner\", role = \"aut\"), person(\"RStudio\", role = \"cph\"))\n# Depends: R (>= 2.8.0), DBI (>= 0.4)\n# Imports: methods\n# License: GPL-2\n# URL: https://downloads.mariadb.org/connector-c/ (upstream)\n# BugReports: https://github.com/r-dbi/rmysql/issues\n# SystemRequirements: libmariadb-client-dev | libmariadb-client-lgpl-dev | libmysqlclient-dev (deb), mariadb-devel (rpm), mariadb | mysql-connector-c (brew), mysql56_dev (csw)\n# NeedsCompilation: yes\n# Collate: 'mysql.R' 'driver.R' 'connection.R' 'data-type.R' 'default.R' 'escaping.R' 'result.R' 'extension.R' 'is-valid.R' 'table.R' 'transaction.R'\n# Suggests: RMariaDB, testthat, curl\n# Packaged: 2019-03-04 13:25:49 UTC; jeroen\n# Author: Jeroen Ooms [aut, cre] (<https://orcid.org/0000-0002-4035-0289>), David James [aut], Saikat DebRoy [aut], Hadley Wickham [aut], Jeffrey Horner [aut], RStudio [cph]\n# Maintainer: Jeroen Ooms <jeroen@berkeley.edu>\n# Repository: CRAN\n# Date/Publication: 2019-03-04 15:10:03 UTC\n",
  "req":{
   "__set__":true,
   "elements":[
@@ -341,5 +338,5 @@
   "https://cran.r-project.org/src/contrib/RMySQL_0.10.17.tar.gz",
   "https://cran.r-project.org/src/contrib/Archive/RMySQL/RMySQL_0.10.17.tar.gz"
  ],
- "version":"0.10.19"
+ "version":"0.10.20"
 }
