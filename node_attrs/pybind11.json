@@ -158,9 +158,6 @@
  ],
  "bad":false,
  "conda-forge.yml":{
-  "compiler_stack":"comp7",
-  "max_py_ver":"37",
-  "max_r_ver":"35",
   "provider":{
    "linux_aarch64":"default",
    "linux_ppc64le":"default",
@@ -177,7 +174,7 @@
    "summary":"Seamless operability between C++11 and Python"
   },
   "build":{
-   "number":"1"
+   "number":"2"
   },
   "extra":{
    "recipe-maintainers":[
@@ -248,7 +245,7 @@
  "name":"pybind11",
  "new_version":"2.4.3",
  "pinning_version":"2020.03.10",
- "raw_meta_yaml":"{% set version = \"2.4.3\" %}\n{% set sha256 = \"1eed57bc6863190e35637290f97a20c81cfe4d9090ac0a24f3bbf08f265eb71d\" %}\n\npackage:\n    name: pybind11\n    version: {{ version }}\n\nsource:\n    fn: pybind11-{{ version }}.tar.gz\n    url: https://github.com/pybind/pybind11/archive/v{{ version }}.tar.gz\n    sha256: {{ sha256 }}\n\nbuild:\n    number: 1\n\nrequirements:\n    build:\n        - cmake\n        - make  # [unix]\n        - {{ compiler('cxx') }}\n    host:\n        - python\n        - setuptools\n    run:\n        - python\n\ntest:\n    imports:\n        - pybind11\n    commands:\n        - test -f ${PREFIX}/share/cmake/pybind11/pybind11Config.cmake                                 # [unix]\n        - if exist %LIBRARY_PREFIX%\\share\\cmake\\pybind11\\pybind11Config.cmake (exit 0) else (exit 1)  # [win]\n        - test $(python -c \"import pybind11 as py; print(py.get_include())\") == \"${PREFIX}/include\"         # [unix]\n        - test $(python -c \"import pybind11 as py; print(py.get_include())\") == \"%LIBRARY_PREFIX%\\include\"  # [win]\n        - test -f $(python -c \"import pybind11 as py; print(py.get_include())\")/pybind11/pybind11.h  # [unix]\n        - if exist $(python -c \"import pybind11 as py; print(py.get_include())\")\\pybind11\\pybind11.h (exit 0) else (exit 1)  # [win]\n\nabout:\n    home: https://github.com/pybind/pybind11/\n    license: BSD 3-Clause\n    summary: Seamless operability between C++11 and Python\n    license_file: LICENSE\n\nextra:\n  recipe-maintainers:\n    - ax3l\n    - SylvainCorlay\n    - wjakob\n",
+ "raw_meta_yaml":"{% set version = \"2.4.3\" %}\n{% set sha256 = \"1eed57bc6863190e35637290f97a20c81cfe4d9090ac0a24f3bbf08f265eb71d\" %}\n\npackage:\n    name: pybind11\n    version: {{ version }}\n\nsource:\n    fn: pybind11-{{ version }}.tar.gz\n    url: https://github.com/pybind/pybind11/archive/v{{ version }}.tar.gz\n    sha256: {{ sha256 }}\n\nbuild:\n    number: 2\n\nrequirements:\n    build:\n        - cmake\n        - make  # [unix]\n        - {{ compiler('cxx') }}\n    host:\n        - python\n        - setuptools\n    run:\n        - python\n\ntest:\n    imports:\n        - pybind11\n    commands:\n        - test -f ${PREFIX}/share/cmake/pybind11/pybind11Config.cmake                                 # [unix]\n        - if exist %LIBRARY_PREFIX%\\share\\cmake\\pybind11\\pybind11Config.cmake (exit 0) else (exit 1)  # [win]\n        - test $(python -c \"import pybind11 as py; print(py.get_include())\") == \"${PREFIX}/include\"         # [unix]\n        - test $(python -c \"import pybind11 as py; print(py.get_include())\") == \"%LIBRARY_PREFIX%\\include\"  # [win]\n        - test -f $(python -c \"import pybind11 as py; print(py.get_include())\")/pybind11/pybind11.h  # [unix]\n        - if exist $(python -c \"import pybind11 as py; print(py.get_include())\")\\pybind11\\pybind11.h (exit 0) else (exit 1)  # [win]\n\nabout:\n    home: https://github.com/pybind/pybind11/\n    license: BSD 3-Clause\n    summary: Seamless operability between C++11 and Python\n    license_file: LICENSE\n\nextra:\n  recipe-maintainers:\n    - ax3l\n    - SylvainCorlay\n    - wjakob\n",
  "req":{
   "__set__":true,
   "elements":[
