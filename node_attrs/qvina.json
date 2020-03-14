@@ -1,5 +1,6 @@
 {
- "bad":"make_graph: 404",
+ "bad":"Upstream: Error getting upstream version",
  "feedstock_name":"qvina",
- "new_version":false
+ "new_version":false,
+ "raw_meta_yaml":"{% set name = \"qvina\" %}\n{% set version = \"2.1.0\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  url: https://github.com/hadim/qvina/archive/cmake.zip\n  sha256: b11a6e089dd00a528bc5ff6b83f79045311ec806c199963287bc0939166659f9\n\nbuild:\n  skip: True  # [win or osx]\n  number: 0\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n    - cmake >=3.12\n    - make\n  host:\n    - boost-cpp >=1.69.0\n  run:\n    - boost-cpp >=1.69.0\n\ntest:\n  commands:\n    - test -f ${PREFIX}/bin/vina  # [not win]\n    - test -f ${PREFIX}/bin/qvina2  # [not win]\n    - test -f ${PREFIX}/bin/qvinaw  # [not win]\n    - vina --help  # [not win]\n    - qvina2 --help  # [not win]\n    - qvinaw --help  # [not win]\n\nabout:\n  home: https://qvina.github.io/\n  license: Apache-2.0\n  license_family: Apache\n  license_file: LICENSE\n  summary: 'Accurately speed up AutoDock Vina'\n  doc_url: https://qvina.github.io/\n  dev_url: https://github.com/QVina/qvina\n\nextra:\n  recipe-maintainers:\n    - hadim\n"
 }
