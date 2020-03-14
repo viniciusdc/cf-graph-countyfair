@@ -71,9 +71,6 @@
  ],
  "bad":false,
  "conda-forge.yml":{
-  "compiler_stack":"comp7",
-  "max_py_ver":"37",
-  "max_r_ver":"35",
   "provider":{
    "win":"azure"
   }
@@ -90,7 +87,7 @@
   },
   "build":{
    "merge_build_host":true,
-   "number":"1003",
+   "number":"0",
    "rpaths":[
     "lib/R/lib/",
     "lib/",
@@ -109,7 +106,7 @@
   },
   "package":{
    "name":"r-subselect",
-   "version":"0.14"
+   "version":"0.15.2"
   },
   "requirements":{
    "build":[
@@ -161,15 +158,15 @@
    ]
   },
   "source":{
-   "fn":"subselect_0.14.tar.gz",
-   "sha256":"3461795eedb5c267a1168e12c4043fda7801d728e90b2692aa40a520e4b54e0f",
+   "fn":"subselect_0.15.2.tar.gz",
+   "sha256":"d8019ee3ddf9b07e96792ca0587f944e01694347ba1424c0209d598257a9f73d",
    "url":[
-    "https://cran.r-project.org/src/contrib/subselect_0.14.tar.gz",
-    "https://cran.r-project.org/src/contrib/Archive/subselect/subselect_0.14.tar.gz",
-    "https://cran.r-project.org/src/contrib/subselect_0.14.tar.gz",
-    "https://cran.r-project.org/src/contrib/Archive/subselect/subselect_0.14.tar.gz",
-    "https://cran.r-project.org/src/contrib/subselect_0.14.tar.gz",
-    "https://cran.r-project.org/src/contrib/Archive/subselect/subselect_0.14.tar.gz"
+    "https://cran.r-project.org/src/contrib/subselect_0.15.2.tar.gz",
+    "https://cran.r-project.org/src/contrib/Archive/subselect/subselect_0.15.2.tar.gz",
+    "https://cran.r-project.org/src/contrib/subselect_0.15.2.tar.gz",
+    "https://cran.r-project.org/src/contrib/Archive/subselect/subselect_0.15.2.tar.gz",
+    "https://cran.r-project.org/src/contrib/subselect_0.15.2.tar.gz",
+    "https://cran.r-project.org/src/contrib/Archive/subselect/subselect_0.15.2.tar.gz"
    ]
   },
   "test":{
@@ -183,7 +180,7 @@
  "name":"r-subselect",
  "new_version":"0.15.2",
  "pinning_version":"2020.03.13",
- "raw_meta_yaml":"{% set version = '0.14' %}\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-subselect\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  fn: subselect_{{ version }}.tar.gz\n  url:\n    - {{ cran_mirror }}/src/contrib/subselect_{{ version }}.tar.gz\n    - {{ cran_mirror }}/src/contrib/Archive/subselect/subselect_{{ version }}.tar.gz\n  sha256: 3461795eedb5c267a1168e12c4043fda7801d728e90b2692aa40a520e4b54e0f\n\nbuild:\n  merge_build_host: True  # [win]\n  number: 1003\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - {{ compiler('c') }}        # [not win]\n    - {{ compiler('cxx') }}      # [not win]\n    - {{ compiler('fortran') }}  # [not win]\n    - {{ compiler('m2w64_c') }}        # [win]\n    - {{ compiler('m2w64_cxx') }}        # [win]\n    - {{ compiler('m2w64_fortran') }}        # [win]\n    - {{posix}}filesystem        # [win]\n    - {{posix}}make\n    - {{posix}}sed               # [win]\n    - {{posix}}coreutils         # [win]\n    - {{posix}}zip               # [win]\n  host:\n    - r-base\n    - r-iswr\n    - r-mass\n    - r-corpcor\n  run:\n    - r-base\n    - {{native}}gcc-libs         # [win]\n    - r-iswr\n    - r-mass\n    - r-corpcor\n\ntest:\n  commands:\n    - $R -e \"library('subselect')\"           # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('subselect')\\\"\"  # [win]\n\nabout:\n  home: https://CRAN.R-project.org/package=subselect\n  license: GPL (>= 2)\n  summary: A collection of functions which (i) assess the quality of variable subsets as surrogates\n    for a full data set, in either an exploratory data analysis or in the context of\n    a multivariate linear model, and (ii) search for subsets which are optimal under\n    various criteria.\n  license_family: GPL3\n  license_file: '{{ environ[\"PREFIX\"] }}/lib/R/share/licenses/GPL-3'\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n",
+ "raw_meta_yaml":"{% set version = \"0.15.2\" %}\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-subselect\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  fn: subselect_{{ version }}.tar.gz\n  url:\n    - {{ cran_mirror }}/src/contrib/subselect_{{ version }}.tar.gz\n    - {{ cran_mirror }}/src/contrib/Archive/subselect/subselect_{{ version }}.tar.gz\n  sha256: d8019ee3ddf9b07e96792ca0587f944e01694347ba1424c0209d598257a9f73d\n\nbuild:\n  merge_build_host: true  # [win]\n  number: 0\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - {{ compiler('c') }}        # [not win]\n    - {{ compiler('cxx') }}      # [not win]\n    - {{ compiler('fortran') }}  # [not win]\n    - {{ compiler('m2w64_c') }}        # [win]\n    - {{ compiler('m2w64_cxx') }}        # [win]\n    - {{ compiler('m2w64_fortran') }}        # [win]\n    - {{posix}}filesystem        # [win]\n    - {{posix}}make\n    - {{posix}}sed               # [win]\n    - {{posix}}coreutils         # [win]\n    - {{posix}}zip               # [win]\n  host:\n    - r-base\n    - r-iswr\n    - r-mass\n    - r-corpcor\n  run:\n    - r-base\n    - {{native}}gcc-libs         # [win]\n    - r-iswr\n    - r-mass\n    - r-corpcor\n\ntest:\n  commands:\n    - $R -e \"library('subselect')\"           # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('subselect')\\\"\"  # [win]\n\nabout:\n  home: https://CRAN.R-project.org/package=subselect\n  license: GPL (>= 2)\n  summary: A collection of functions which (i) assess the quality of variable subsets as surrogates for a full data set, in either an exploratory data analysis or\n    in the context of a multivariate linear model, and (ii) search for subsets which are optimal under various criteria.\n  license_family: GPL3\n  license_file: {{ environ[\"PREFIX\"] }}/lib/R/share/licenses/GPL-3\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n",
  "req":{
   "__set__":true,
   "elements":[
@@ -297,5 +294,5 @@
   "https://cran.r-project.org/src/contrib/subselect_0.14.tar.gz",
   "https://cran.r-project.org/src/contrib/Archive/subselect/subselect_0.14.tar.gz"
  ],
- "version":"0.14"
+ "version":"0.15.2"
 }
