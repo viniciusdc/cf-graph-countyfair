@@ -50,6 +50,23 @@
     "migrator_version",
     "name"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/388358122.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"Version",
+    "migrator_version":0,
+    "version":"0.15.2"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "version"
+   ]
   }
  ],
  "bad":false,
@@ -164,8 +181,8 @@
   }
  },
  "name":"r-subselect",
- "new_version":"0.14",
- "pinning_version":"2019.08.19",
+ "new_version":"0.15.2",
+ "pinning_version":"2020.03.13",
  "raw_meta_yaml":"{% set version = '0.14' %}\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-subselect\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  fn: subselect_{{ version }}.tar.gz\n  url:\n    - {{ cran_mirror }}/src/contrib/subselect_{{ version }}.tar.gz\n    - {{ cran_mirror }}/src/contrib/Archive/subselect/subselect_{{ version }}.tar.gz\n  sha256: 3461795eedb5c267a1168e12c4043fda7801d728e90b2692aa40a520e4b54e0f\n\nbuild:\n  merge_build_host: True  # [win]\n  number: 1003\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - {{ compiler('c') }}        # [not win]\n    - {{ compiler('cxx') }}      # [not win]\n    - {{ compiler('fortran') }}  # [not win]\n    - {{ compiler('m2w64_c') }}        # [win]\n    - {{ compiler('m2w64_cxx') }}        # [win]\n    - {{ compiler('m2w64_fortran') }}        # [win]\n    - {{posix}}filesystem        # [win]\n    - {{posix}}make\n    - {{posix}}sed               # [win]\n    - {{posix}}coreutils         # [win]\n    - {{posix}}zip               # [win]\n  host:\n    - r-base\n    - r-iswr\n    - r-mass\n    - r-corpcor\n  run:\n    - r-base\n    - {{native}}gcc-libs         # [win]\n    - r-iswr\n    - r-mass\n    - r-corpcor\n\ntest:\n  commands:\n    - $R -e \"library('subselect')\"           # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('subselect')\\\"\"  # [win]\n\nabout:\n  home: https://CRAN.R-project.org/package=subselect\n  license: GPL (>= 2)\n  summary: A collection of functions which (i) assess the quality of variable subsets as surrogates\n    for a full data set, in either an exploratory data analysis or in the context of\n    a multivariate linear model, and (ii) search for subsets which are optimal under\n    various criteria.\n  license_family: GPL3\n  license_file: '{{ environ[\"PREFIX\"] }}/lib/R/share/licenses/GPL-3'\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n",
  "req":{
   "__set__":true,
@@ -229,7 +246,7 @@
    "elements":[]
   }
  },
- "smithy_version":"3.4.1",
+ "smithy_version":"3.6.12",
  "strong_exports":false,
  "total_requirements":{
   "build":{

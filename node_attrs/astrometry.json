@@ -52,7 +52,7 @@
    "summary":"Automatic recognition of astronomical images; or standards-compliant astrometric metadata from data."
   },
   "build":{
-   "number":"1",
+   "number":"2",
    "skip":true
   },
   "extra":{
@@ -72,14 +72,17 @@
     "swig",
     "make",
     "pkg-config",
+    "python",
     "c_compiler_stub",
     "swig",
     "make",
     "pkg-config",
+    "python",
     "c_compiler_stub",
     "swig",
     "make",
-    "pkg-config"
+    "pkg-config",
+    "python"
    ],
    "host":[
     "xorg-libx11",
@@ -98,6 +101,11 @@
     "cairo",
     "gsl",
     "wcslib",
+    "python",
+    "libblas",
+    "libcblas",
+    "liblapack",
+    "liblapacke",
     "xorg-libx11",
     "xorg-libxau",
     "xorg-libxext",
@@ -114,6 +122,11 @@
     "cairo",
     "gsl",
     "wcslib",
+    "python",
+    "libblas",
+    "libcblas",
+    "liblapack",
+    "liblapacke",
     "xorg-libx11",
     "xorg-libxau",
     "xorg-libxext",
@@ -129,7 +142,12 @@
     "bzip2",
     "cairo",
     "gsl",
-    "wcslib"
+    "wcslib",
+    "python",
+    "libblas",
+    "libcblas",
+    "liblapack",
+    "liblapacke"
    ],
    "run":[
     "zlib",
@@ -143,6 +161,7 @@
     "cairo",
     "gsl",
     "wcslib",
+    "python",
     "zlib",
     "jpeg",
     "netpbm",
@@ -154,6 +173,7 @@
     "cairo",
     "gsl",
     "wcslib",
+    "python",
     "zlib",
     "jpeg",
     "netpbm",
@@ -164,7 +184,8 @@
     "bzip2",
     "cairo",
     "gsl",
-    "wcslib"
+    "wcslib",
+    "python"
    ]
   },
   "source":{
@@ -182,7 +203,7 @@
  "name":"astrometry",
  "new_version":"0.79",
  "pinning_version":"2020.01.28",
- "raw_meta_yaml":"{% set name = \"astrometry\" %}\n{% set version = \"0.79\" %}\n\npackage:\n  name: {{ name|lower}}\n  version: {{ version }}\n\nsource:\n  url: https://github.com/dstndstn/astrometry.net/archive/{{ version }}.zip\n  sha256: d85673f4ac8a51740aa8d79d65b29b6db725a14995f8f59a912f1288e90198bb\n\nbuild:\n  number: 1\n  skip: True  # [win]\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - swig\n    - make\n    - pkg-config\n  host:\n    - xorg-libx11\n    - xorg-libxau\n    - xorg-libxext\n    - xorg-libxrender\n    - xorg-xproto\n    - numpy\n    - zlib\n    - jpeg\n    - netpbm\n    - libpng\n    - cfitsio\n    - astropy\n    - bzip2\n    - cairo\n    - gsl\n    - wcslib\n  run:\n    - zlib\n    - jpeg\n    - netpbm\n    - libpng\n    - cfitsio\n    - astropy\n    - {{ pin_compatible('numpy') }}\n    - bzip2\n    - cairo\n    - gsl\n    - wcslib\n\ntest:\n  commands:\n    - solve-field -h\n\nabout:\n  home: http://astrometry.net/\n  license: BSD-3-Clause\n  license_file: LICENSE\n  summary: Automatic recognition of astronomical images; or standards-compliant astrometric metadata from data.\n  description: |\n     If you have astronomical imaging of the sky with celestial coordinates you do not know\u2014or do not\n     trust\u2014then Astrometry.net is for you. Input an image and we'll give you back astrometric\n     calibration meta-data, plus lists of known objects falling inside the field of view\n  doc_url: http://astrometry.net/doc/readme.html\n  dev_url: https://github.com/dstndstn/astrometry.net/\n\nextra:\n  recipe-maintainers:\n    - juliotux\n",
+ "raw_meta_yaml":"{% set name = \"astrometry\" %}\n{% set version = \"0.79\" %}\n\npackage:\n  name: {{ name|lower}}\n  version: {{ version }}\n\nsource:\n  url: https://github.com/dstndstn/astrometry.net/archive/{{ version }}.zip\n  sha256: d85673f4ac8a51740aa8d79d65b29b6db725a14995f8f59a912f1288e90198bb\n\nbuild:\n  number: 2\n  skip: True  # [win]\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - swig\n    - make\n    - pkg-config\n    - python\n  host:\n    - xorg-libx11\n    - xorg-libxau\n    - xorg-libxext\n    - xorg-libxrender\n    - xorg-xproto\n    - numpy\n    - zlib\n    - jpeg\n    - netpbm\n    - libpng\n    - cfitsio\n    - astropy\n    - bzip2\n    - cairo\n    - gsl\n    - wcslib\n    - python\n    - libblas\n    - libcblas\n    - liblapack\n    - liblapacke\n  run:\n    - zlib\n    - jpeg\n    - netpbm\n    - libpng\n    - cfitsio\n    - astropy\n    - {{ pin_compatible('numpy') }}\n    - bzip2\n    - cairo\n    - gsl\n    - wcslib\n    - python\n\ntest:\n  commands:\n    - solve-field -h\n\nabout:\n  home: http://astrometry.net/\n  license: BSD-3-Clause\n  license_file: LICENSE\n  summary: Automatic recognition of astronomical images; or standards-compliant astrometric metadata from data.\n  description: |\n     If you have astronomical imaging of the sky with celestial coordinates you do not know\u2014or do not\n     trust\u2014then Astrometry.net is for you. Input an image and we'll give you back astrometric\n     calibration meta-data, plus lists of known objects falling inside the field of view\n  doc_url: http://astrometry.net/doc/readme.html\n  dev_url: https://github.com/dstndstn/astrometry.net/\n\nextra:\n  recipe-maintainers:\n    - juliotux\n",
  "req":{
   "__set__":true,
   "elements":[
@@ -193,11 +214,16 @@
    "cfitsio",
    "gsl",
    "jpeg",
+   "libblas",
+   "libcblas",
+   "liblapack",
+   "liblapacke",
    "libpng",
    "make",
    "netpbm",
    "numpy",
    "pkg-config",
+   "python",
    "swig",
    "wcslib",
    "xorg-libx11",
@@ -215,6 +241,7 @@
     "c_compiler_stub",
     "make",
     "pkg-config",
+    "python",
     "swig"
    ]
   },
@@ -227,9 +254,14 @@
     "cfitsio",
     "gsl",
     "jpeg",
+    "libblas",
+    "libcblas",
+    "liblapack",
+    "liblapacke",
     "libpng",
     "netpbm",
     "numpy",
+    "python",
     "wcslib",
     "xorg-libx11",
     "xorg-libxau",
@@ -251,6 +283,7 @@
     "libpng",
     "netpbm",
     "numpy",
+    "python",
     "wcslib",
     "zlib"
    ]
@@ -269,6 +302,7 @@
     "c_compiler_stub",
     "make",
     "pkg-config",
+    "python",
     "swig"
    ]
   },
@@ -281,9 +315,14 @@
     "cfitsio",
     "gsl",
     "jpeg",
+    "libblas",
+    "libcblas",
+    "liblapack",
+    "liblapacke",
     "libpng",
     "netpbm",
     "numpy",
+    "python",
     "wcslib",
     "xorg-libx11",
     "xorg-libxau",
@@ -305,6 +344,7 @@
     "libpng",
     "netpbm",
     "numpy",
+    "python",
     "wcslib",
     "zlib"
    ]
