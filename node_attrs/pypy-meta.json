@@ -1,5 +1,24 @@
 {
- "bad":"Upstream: Error getting upstream version",
+ "PRed":[
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/388827476.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"ArchRebuild",
+    "migrator_version":1,
+    "name":"aarch64 and ppc64le addition"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "name"
+   ]
+  }
+ ],
+ "bad":false,
  "conda-forge.yml":{
   "provider":{
    "linux_aarch64":"default",
@@ -210,6 +229,7 @@
   "pypy",
   "python"
  ],
+ "pinning_version":"2020.03.14",
  "raw_meta_yaml":"{% set version = \"7.3.0\" %}\n{% set python_version = \"3.6.9\" %}\n{% set python_maj_min = \".\".join(python_version.split(\".\")[:2]) %}\n{% set build_num = \"0\" %}\n{% set pypy_abi = \"\".join(version.split(\".\")[:2]) %}\n\npackage:\n  name: pypy-meta\n  version: {{ version }}\n\nbuild:\n  number: {{ build_num }}\n  skip: True  # [win64]\n\noutputs:\n  - name: python\n    version: {{ python_version }}\n    build:\n      number: {{ build_num }}\n      string: {{ build_num }}_{{ pypy_abi }}_pypy\n      skip: True  # [win64]\n      track_features:\n        - pypy\n      run_exports:\n        weak:\n          - python_abi {{ python_maj_min }} *_pypy{{ python_maj_min.replace(\".\", \"\") }}_pp{{ pypy_abi }}\n        noarch:\n          - {{ pin_subpackage(\"python\", max_pin=\"x.x\", min_pin=\"x.x\") }}\n      script:\n        - ln -sf ${PREFIX}/bin/pypy3 ${PREFIX}/bin/python\n        - ln -sf ${PREFIX}/bin/pypy3 ${PREFIX}/bin/python3\n        - ln -sf ${PREFIX}/bin/pypy3 ${PREFIX}/bin/python{{ python_maj_min }}\n        - ln -sf ${PREFIX}/bin/pypy3 ${PREFIX}/bin/pypy\n    requirements:\n      host:\n        - pypy{{ python_maj_min }} {{ version }}\n      run:\n        - pypy{{ python_maj_min }} {{ version }}\n        - python_abi {{ python_maj_min }} *_pypy{{ python_maj_min.replace(\".\", \"\") }}_pp{{ pypy_abi }}\n    test:\n      commands:\n        - python --version\n\n  - name: pypy\n    version: {{ version }}\n    build:\n      number: {{ build_num }}\n      noarch: generic\n    requirements:\n      run:\n        - python {{ python_version }} {{ build_num }}_{{ pypy_abi }}_pypy\n    test:\n      commands:\n        - pypy --version\n\nabout:\n  home: https://github.com/conda-forge/pypy-feedstock\n  summary: Metapackage to select pypy as python implementation\n  license: BSD-3-Clause\n  license_family: BSD\n  license_file: LICENSE\n\nextra:\n  recipe-maintainers:\n    - isuruf\n",
  "req":{
   "__set__":true,
@@ -243,6 +263,7 @@
    "elements":[]
   }
  },
+ "smithy_version":"3.6.12",
  "strong_exports":false,
  "total_requirements":{
   "build":{
