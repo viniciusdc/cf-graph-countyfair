@@ -158,9 +158,6 @@
  ],
  "bad":false,
  "conda-forge.yml":{
-  "compiler_stack":"comp7",
-  "max_py_ver":"37",
-  "max_r_ver":"35",
   "provider":{
    "win":"azure"
   }
@@ -181,7 +178,7 @@
    "detect_binary_files_with_prefix":true,
    "number":"0",
    "preserve_egg_dir":true,
-   "script":" -m pip install . --no-deps --ignore-installed --no-cache-dir -vvv"
+   "script":"-m pip install . --no-deps --ignore-installed --no-cache-dir -vvv"
   },
   "extra":{
    "recipe-maintainers":[
@@ -204,7 +201,7 @@
   },
   "package":{
    "name":"obspy",
-   "version":"1.2.0"
+   "version":"1.2.1"
   },
   "requirements":{
    "build":[
@@ -251,7 +248,7 @@
     "python",
     "setuptools",
     "future",
-    "numpy <1.16",
+    "numpy",
     "scipy",
     "matplotlib-base",
     "lxml",
@@ -264,7 +261,7 @@
     "python",
     "setuptools",
     "future",
-    "numpy <1.16",
+    "numpy",
     "scipy",
     "matplotlib-base",
     "lxml",
@@ -277,7 +274,7 @@
     "python",
     "setuptools",
     "future",
-    "numpy <1.16",
+    "numpy",
     "scipy",
     "matplotlib-base",
     "lxml",
@@ -290,9 +287,9 @@
    ]
   },
   "source":{
-   "fn":"obspy-1.2.0.zip",
-   "sha256":"b5956d21ecaffd954cbdff93129b8f571361b0f326203b99c5b57e0cd82b7f86",
-   "url":"https://pypi.io/packages/source/o/obspy/obspy-1.2.0.zip"
+   "fn":"obspy-1.2.1.zip",
+   "sha256":"b04152950827534e91a625afa09f9390caabce4f96adbe4571b39a832ca3e423",
+   "url":"https://pypi.io/packages/source/o/obspy/obspy-1.2.1.zip"
   },
   "test":{
    "commands":[
@@ -335,7 +332,7 @@
  "name":"obspy",
  "new_version":"1.2.1",
  "pinning_version":"2020.03.10",
- "raw_meta_yaml":"{% set version = \"1.2.0\" %}\n{% set sha256 = \"b5956d21ecaffd954cbdff93129b8f571361b0f326203b99c5b57e0cd82b7f86\" %}\n\npackage:\n  name: obspy\n  version: {{ version }}\n\nsource:\n  fn: obspy-{{ version }}.zip\n  url: https://pypi.io/packages/source/o/obspy/obspy-{{ version }}.zip\n  # url: https://github.com/obspy/obspy/files/4297596/obspy-1.2.0rc9.zip\n  sha256: {{ sha256 }}\n\nbuild:\n  number: 0\n  preserve_egg_dir: yes\n  detect_binary_files_with_prefix: true\n  script: \"{{ PYTHON }} -m pip install . --no-deps --ignore-installed --no-cache-dir -vvv\"\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n  host:\n    - python\n    - pip\n    - setuptools\n    - future\n    - numpy\n    - scipy\n    - matplotlib-base\n    - lxml\n    - sqlalchemy\n    - requests\n    - decorator\n  run:\n    - python\n    - setuptools\n    - future\n    - numpy <1.16\n    - scipy\n    - matplotlib-base\n    - lxml\n    - sqlalchemy\n    - requests\n    - decorator\n    - mock  # [py2k]\n    - basemap\n    # pyproj is a dep of basemap so it does not hurt to include it as dep right\n    # now\n    # dodge proj4 v5 for now, see obspy/obspy#2283\n    - pyproj\n    - proj4 !=5\n\ntest:\n  requires:\n    - flake8\n    - matplotlib-base\n    - pyshp\n    - basemap\n  imports:\n    - obspy\n    - obspy.io.mseed\n  commands:\n    - python -c \"from obspy import read;\"\n    # test at least a few executables that should've bben installed\n    - obspy-print -h  # [not win]\n    - obspy-plot -h  # [not win]\n    - obspy-runtests -h  # [not win]\n    - obspy-scan -h  # [not win]\n\nabout:\n  home: https://obspy.org\n  license: LGPLv3\n  license_file: LICENSE.txt\n  summary: \"ObsPy: A Python Toolbox for seismology/seismological observatories.\"\n  description: |\n    ObsPy is an open-source project dedicated to provide a Python framework for\n    processing seismological data. It provides parsers for common file formats,\n    clients to access data centers and seismological signal processing routines\n    which allow the manipulation of seismological time series (see Beyreuther\n    et al. 2010, Megies et al. 2011, Krischer et al. 2015).\n  doc_url: http://docs.obspy.org/\n  dev_url: https://github.com/obspy/obspy\n\nextra:\n  recipe-maintainers:\n    - megies\n    - krischer\n    - barsch\n    - QuLogic\n    - ThomasLecocq\n",
+ "raw_meta_yaml":"{% set version = \"1.2.1\" %}\n{% set sha256 = \"b04152950827534e91a625afa09f9390caabce4f96adbe4571b39a832ca3e423\" %}\n\npackage:\n  name: obspy\n  version: {{ version }}\n\nsource:\n  fn: obspy-{{ version }}.zip\n  url: https://pypi.io/packages/source/o/obspy/obspy-{{ version }}.zip\n  # url: https://github.com/obspy/obspy/files/4297596/obspy-1.2.0rc9.zip\n  sha256: {{ sha256 }}\n\nbuild:\n  number: 0\n  preserve_egg_dir: yes\n  detect_binary_files_with_prefix: true\n  script: {{ PYTHON }} -m pip install . --no-deps --ignore-installed --no-cache-dir -vvv\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n  host:\n    - python\n    - pip\n    - setuptools\n    - future\n    - numpy\n    - scipy\n    - matplotlib-base\n    - lxml\n    - sqlalchemy\n    - requests\n    - decorator\n  run:\n    - python\n    - setuptools\n    - future\n    - numpy\n    - scipy\n    - matplotlib-base\n    - lxml\n    - sqlalchemy\n    - requests\n    - decorator\n    - mock  # [py2k]\n    - basemap\n    # pyproj is a dep of basemap so it does not hurt to include it as dep right\n    # now\n    # dodge proj4 v5 for now, see obspy/obspy#2283\n    - pyproj\n    - proj4 !=5\n\ntest:\n  requires:\n    - flake8\n    - matplotlib-base\n    - pyshp\n    - basemap\n  imports:\n    - obspy\n    - obspy.io.mseed\n  commands:\n    - python -c \"from obspy import read;\"\n    # test at least a few executables that should've bben installed\n    - obspy-print -h  # [not win]\n    - obspy-plot -h  # [not win]\n    - obspy-runtests -h  # [not win]\n    - obspy-scan -h  # [not win]\n\nabout:\n  home: https://obspy.org\n  license: LGPLv3\n  license_file: LICENSE.txt\n  summary: 'ObsPy: A Python Toolbox for seismology/seismological observatories.'\n  description: |\n    ObsPy is an open-source project dedicated to provide a Python framework for\n    processing seismological data. It provides parsers for common file formats,\n    clients to access data centers and seismological signal processing routines\n    which allow the manipulation of seismological time series (see Beyreuther\n    et al. 2010, Megies et al. 2011, Krischer et al. 2015).\n  doc_url: http://docs.obspy.org/\n  dev_url: https://github.com/obspy/obspy\n\nextra:\n  recipe-maintainers:\n    - megies\n    - krischer\n    - barsch\n    - QuLogic\n    - ThomasLecocq\n",
  "req":{
   "__set__":true,
   "elements":[
@@ -440,7 +437,7 @@
     "future",
     "lxml",
     "matplotlib-base",
-    "numpy <1.16",
+    "numpy",
     "proj4 !=5",
     "pyproj",
     "python",
@@ -461,5 +458,5 @@
   }
  },
  "url":"https://pypi.io/packages/source/o/obspy/obspy-1.1.1.zip",
- "version":"1.2.0"
+ "version":"1.2.1"
 }
