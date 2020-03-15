@@ -92,9 +92,6 @@
  ],
  "bad":false,
  "conda-forge.yml":{
-  "compiler_stack":"comp7",
-  "max_py_ver":"37",
-  "max_r_ver":"35",
   "provider":{
    "win":"azure"
   }
@@ -106,11 +103,12 @@
    "dev_url":"https://github.com/pytest-dev/pytest-asyncio",
    "home":"http://github.com/pytest-dev/pytest-asyncio",
    "license":"Apache 2.0",
+   "license_file":"LICENSE",
    "summary":"Pytest support for asyncio"
   },
   "build":{
-   "number":"1000",
-   "script":"python -m pip install --no-deps --ignore-installed ."
+   "number":"1001",
+   "script":"-m pip install . --no-deps -vv"
   },
   "extra":{
    "recipe-maintainers":[
@@ -157,7 +155,7 @@
  "name":"pytest-asyncio",
  "new_version":"0.10.0",
  "pinning_version":"2020.03.12",
- "raw_meta_yaml":"{% set name = \"pytest-asyncio\" %}\n{% set version = \"0.10.0\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  fn: {{ name }}-{{ version }}.tar.gz\n  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz\n  sha256: 9fac5100fd716cbecf6ef89233e8590a4ad61d729d1732e0a96b84182df1daaf\n\nbuild:\n  number: 1000\n  skip: True  # [py2k]\n  script: python -m pip install --no-deps --ignore-installed .\n  \nrequirements:\n  build:\n    - python\n    - pip\n  run:\n    - python\n    - pytest >=3.0.6\n\ntest:\n    imports:\n      - pytest_asyncio\n\nabout:\n  home: http://github.com/pytest-dev/pytest-asyncio\n  license: Apache 2.0\n  #license_file: LICENSE # License file is missing in package\n  summary: 'Pytest support for asyncio'\n\n  dev_url: https://github.com/pytest-dev/pytest-asyncio\n\nextra:\n  recipe-maintainers:\n    - sodre\n",
+ "raw_meta_yaml":"{% set name = \"pytest-asyncio\" %}\n{% set version = \"0.10.0\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  fn: {{ name }}-{{ version }}.tar.gz\n  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz\n  sha256: 9fac5100fd716cbecf6ef89233e8590a4ad61d729d1732e0a96b84182df1daaf\n\nbuild:\n  number: 1001\n  skip: True  # [py2k]\n  script: {{ PYTHON }} -m pip install . --no-deps -vv\n  \nrequirements:\n  build:\n    - python\n    - pip\n  run:\n    - python\n    - pytest >=3.0.6\n\ntest:\n    imports:\n      - pytest_asyncio\n\nabout:\n  home: http://github.com/pytest-dev/pytest-asyncio\n  license: Apache 2.0\n  license_file: LICENSE\n  #license_file: LICENSE # License file is missing in package\n  summary: 'Pytest support for asyncio'\n\n  dev_url: https://github.com/pytest-dev/pytest-asyncio\n\nextra:\n  recipe-maintainers:\n    - sodre\n",
  "req":{
   "__set__":true,
   "elements":[
