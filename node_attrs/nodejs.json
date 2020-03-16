@@ -936,7 +936,7 @@
   },
   "build":{
    "detect_binary_files_with_prefix":false,
-   "number":"1"
+   "number":"0"
   },
   "extra":{
    "recipe-maintainers":[
@@ -944,19 +944,22 @@
     "msarahan",
     "pelson",
     "blink1073",
+    "xhochy",
     "minrk",
     "msarahan",
     "pelson",
     "blink1073",
+    "xhochy",
     "minrk",
     "msarahan",
     "pelson",
-    "blink1073"
+    "blink1073",
+    "xhochy"
    ]
   },
   "package":{
    "name":"nodejs",
-   "version":"13.9.0"
+   "version":"13.10.1"
   },
   "requirements":{
    "build":[
@@ -994,14 +997,14 @@
    ]
   },
   "source":{
-   "fn":"node-v13.9.0.tar.gz",
+   "fn":"node-v13.10.1.tar.gz",
    "patches":[
     "linux-librt.patch",
     "cinttypes.patch",
     "linux-install.patch"
    ],
-   "sha256":"1953121fcf5a8933e0bd282f78e6b8b25fb6d55bb50d47416ae7a7dbbdc288bb",
-   "url":"https://nodejs.org/dist/v13.9.0/node-v13.9.0.tar.gz"
+   "sha256":"d5b829176ae2d712dba07aa53e0a96eed59ce8cb7e98a175e18fe9737c92aee1",
+   "url":"https://nodejs.org/dist/v13.10.1/node-v13.10.1.tar.gz"
   },
   "test":{
    "commands":[
@@ -1030,7 +1033,7 @@
  "name":"nodejs",
  "new_version":"13.9.0",
  "pinning_version":"2020.02.12",
- "raw_meta_yaml":"{% set version = \"13.9.0\" %}\n\npackage:\n  name: nodejs\n  version: {{ version }}\n\nsource:\n  fn: node-v{{ version }}.tar.gz\n  url: https://nodejs.org/dist/v{{ version }}/node-v{{ version }}.tar.gz  # [not win]\n  sha256: 1953121fcf5a8933e0bd282f78e6b8b25fb6d55bb50d47416ae7a7dbbdc288bb  # [not win]\n  url: https://nodejs.org/dist/v{{ version }}/node-v{{ version }}-win-x64.zip  # [win]\n  sha256: ec0a55bb703906494e738cd3d09e3274b34f0a3fbe207b9e67502092ed017500  # [win]\n  patches:\n    - linux-librt.patch  # [not win]\n    - cinttypes.patch  # [linux]\n    - linux-install.patch  # [linux]\n\nbuild:\n  number: 1\n  # Prefix replacement breaks in the binary embedded configurations.\n  detect_binary_files_with_prefix: False\n\nrequirements:\n  build:\n    - {{ compiler('c') }}  # [not win]\n    - {{ compiler('cxx') }}  # [not win]\n    - python 3.7  # [not win]\n    - git  # [linux]\n    - ninja  # [not win]\n    - pkg-config  # [not win]\n  host:\n    - vs2015_runtime  # [win]\n    - icu  # [not win]\n    - libuv >=1.33  # [not win]\n    - openssl  >=1.1.1d  # [not win]\n    - zlib  # [not win]\n  run:\n    - vs2015_runtime  # [win]\n    - icu  # [not win]\n    - libuv  # [not win]\n    - openssl  # [not win]\n    - zlib  # [not win]\n  run_constrained:  # [osx]\n    - __osx >={{ MACOSX_DEPLOYMENT_TARGET|default(\"10.9\") }}  # [osx]\n\ntest:\n  commands:\n    - node -h\n    - node -v\n    - npm version\n    - npm install -h\n    - npm config get prefix -g\n    - test $(echo \"console.log(1 + 3)\" | node) == 4  # [not win]\n    - test -f $PREFIX/lib/libnode.79.dylib  # [osx]\n    - test -f $PREFIX/lib/libnode.so.79  # [linux]\n\nabout:\n  home: https://nodejs.org/\n  license: MIT\n  license_file: LICENSE\n  summary: a platform for easily building fast, scalable network applications\n\nextra:\n  recipe-maintainers:\n    - minrk\n    - msarahan\n    - pelson\n    - blink1073\n",
+ "raw_meta_yaml":"{% set version = \"13.10.1\" %}\n\npackage:\n  name: nodejs\n  version: {{ version }}\n\nsource:\n  fn: node-v{{ version }}.tar.gz\n  url: https://nodejs.org/dist/v{{ version }}/node-v{{ version }}.tar.gz  # [not win]\n  sha256: d5b829176ae2d712dba07aa53e0a96eed59ce8cb7e98a175e18fe9737c92aee1  # [not win]\n  url: https://nodejs.org/dist/v{{ version }}/node-v{{ version }}-win-x64.zip  # [win]\n  sha256: f9d0aac273a44dbd52dd8cdb3d6c684b68b860d128af58d77a0c08f39f51f229  # [win]\n  patches:\n    - linux-librt.patch  # [not win]\n    - cinttypes.patch  # [linux]\n    - linux-install.patch  # [linux]\n\nbuild:\n  number: 0\n  # Prefix replacement breaks in the binary embedded configurations.\n  detect_binary_files_with_prefix: False\n\nrequirements:\n  build:\n    - {{ compiler('c') }}  # [not win]\n    - {{ compiler('cxx') }}  # [not win]\n    - python 3.7  # [not win]\n    - git  # [linux]\n    - ninja  # [not win]\n    - pkg-config  # [not win]\n  host:\n    - vs2015_runtime  # [win]\n    - icu  # [not win]\n    - libuv >=1.33  # [not win]\n    - openssl  >=1.1.1d  # [not win]\n    - zlib  # [not win]\n  run:\n    - vs2015_runtime  # [win]\n    - icu  # [not win]\n    - libuv  # [not win]\n    - openssl  # [not win]\n    - zlib  # [not win]\n  run_constrained:  # [osx]\n    - __osx >={{ MACOSX_DEPLOYMENT_TARGET|default(\"10.9\") }}  # [osx]\n\ntest:\n  commands:\n    - node -h\n    - node -v\n    - npm version\n    - npm install -h\n    - npm config get prefix -g\n    - test $(echo \"console.log(1 + 3)\" | node) == 4  # [not win]\n    - test -f $PREFIX/lib/libnode.79.dylib  # [osx]\n    - test -f $PREFIX/lib/libnode.so.79  # [linux]\n\nabout:\n  home: https://nodejs.org/\n  license: MIT\n  license_file: LICENSE\n  summary: a platform for easily building fast, scalable network applications\n\nextra:\n  recipe-maintainers:\n    - minrk\n    - msarahan\n    - pelson\n    - blink1073\n    - xhochy\n",
  "req":{
   "__set__":true,
   "elements":[
@@ -1124,5 +1127,5 @@
   }
  },
  "url":"https://nodejs.org/dist/v12.8.1/node-v12.8.1.tar.gz",
- "version":"13.9.0"
+ "version":"13.10.1"
 }
