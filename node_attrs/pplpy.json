@@ -35,29 +35,28 @@
     "migrator_version",
     "name"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/389491392.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"MigrationYaml",
+    "migrator_object_version":1,
+    "migrator_version":0,
+    "name":"pypy"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_object_version",
+    "migrator_version",
+    "name"
+   ]
   }
  ],
- "bad":{
-  "exception":"Failed to put item: An error occurred (ValidationException) on request (ETK53C5R8H4PD6OV12371JAQDVVV4KQNSO5AEMVJF66Q9ASUAAJG) on table (pr_json) when calling the PutItem operation: Attempting to store more than 38 significant digits in a Number",
-  "traceback":[
-   "Traceback (most recent call last):",
-   "  File \"/root/repo/cf-scripts/conda_forge_tick/auto_tick.py\", line 849, in main",
-   "    hash_type=attrs.get(\"hash_type\", \"sha256\"),",
-   "  File \"/root/repo/cf-scripts/conda_forge_tick/auto_tick.py\", line 248, in run",
-   "    PRJson.dump(pr_json)",
-   "  File \"/root/repo/cf-scripts/conda_forge_tick/dynamo_models.py\", line 33, in dump",
-   "    item.save()",
-   "  File \"/opt/conda/envs/run_env/lib/python3.7/site-packages/pynamodb/models.py\", line 405, in save",
-   "    data = self._get_connection().put_item(*args, **kwargs)",
-   "  File \"/opt/conda/envs/run_env/lib/python3.7/site-packages/pynamodb/connection/table.py\", line 139, in put_item",
-   "    return_item_collection_metrics=return_item_collection_metrics)",
-   "  File \"/opt/conda/envs/run_env/lib/python3.7/site-packages/pynamodb/connection/base.py\", line 972, in put_item",
-   "    six.raise_from(PutError(\"Failed to put item: {}\".format(e), e), None)",
-   "  File \"<string>\", line 3, in raise_from",
-   "pynamodb.exceptions.PutError: Failed to put item: An error occurred (ValidationException) on request (ETK53C5R8H4PD6OV12371JAQDVVV4KQNSO5AEMVJF66Q9ASUAAJG) on table (pr_json) when calling the PutItem operation: Attempting to store more than 38 significant digits in a Number",
-   ""
-  ]
- },
+ "bad":false,
  "conda-forge.yml":{
   "provider":{
    "linux_aarch64":"default",
@@ -167,7 +166,7 @@
  },
  "name":"pplpy",
  "new_version":"0.8.4",
- "pinning_version":"2019.12.18",
+ "pinning_version":"2020.03.16",
  "raw_meta_yaml":"{% set name = \"pplpy\" %}\n{% set version = \"0.8.4\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz\n  sha256: b962914d5814edab320d00c11ca396b70c4ce1e67db7a6d59c4b0a3772a16836\n\nbuild:\n  number: 0\n  skip: True  # [win]\n  script: \"{{ PYTHON }} -m pip install . -vv\"\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n  host:\n    - ppl\n    - python\n    - cysignals\n    - cython\n    - pip\n    - gmp\n    - mpfr\n    - mpc\n    - gmpy2\n  run:\n    - python\n    - cysignals\n    - gmp\n    - mpfr\n    - mpc\n    - gmpy2\n    - {{ pin_compatible(\"ppl\", max_pin=\"x.x\") }}\n\ntest:\n  imports:\n    - ppl\n\nabout:\n  home: https://www.normaliz.uni-osnabrueck.de\n  license: GPL-3.0\n  license_family: GPL\n  license_file: LICENSE.txt\n  summary: 'This Python package provides a wrapper to the C++ Parma Polyhedra Library (PPL).'\n  dev_url: https://gitlab.com/videlec/pplpy\n\nextra:\n  recipe-maintainers:\n    - isuruf\n",
  "req":{
   "__set__":true,
@@ -224,7 +223,7 @@
    "elements":[]
   }
  },
- "smithy_version":"3.6.5",
+ "smithy_version":"3.6.12",
  "strong_exports":false,
  "total_requirements":{
   "build":{

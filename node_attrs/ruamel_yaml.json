@@ -713,9 +713,6 @@
  ],
  "bad":false,
  "conda-forge.yml":{
-  "compiler_stack":"comp7",
-  "max_py_ver":"37",
-  "max_r_ver":"35",
   "provider":{
    "linux_aarch64":"azure",
    "linux_ppc64le":"azure",
@@ -734,16 +731,19 @@
   },
   "build":{
    "no_link":".*\\.(pyd|dll)",
-   "number":"1000"
+   "number":"1001"
   },
   "extra":{
    "recipe-maintainers":[
     "jakirkham",
     "mbargull",
+    "isuruf",
     "jakirkham",
     "mbargull",
+    "isuruf",
     "jakirkham",
-    "mbargull"
+    "mbargull",
+    "isuruf"
    ]
   },
   "package":{
@@ -781,13 +781,8 @@
    ]
   },
   "source":{
-   "patches":[
-    "ordereddict_test.patch",
-    "ordereddict_test.patch",
-    "ordereddict_test.patch"
-   ],
-   "sha256":"8529f909d8983a2b80bb3af60e425c418edf54f2fa132d863c43b3353f901203",
-   "url":"https://bitbucket.org/ruamel/yaml/get/0.15.80.tar.gz"
+   "sha256":"4f203351575dba0829c7b1e5d376d08cf5f58e4a2b844e8ce552b3e41cd414e6",
+   "url":"https://pypi.io/packages/source/r/ruamel.yaml/ruamel.yaml-0.15.80.tar.gz"
   },
   "test":{
    "imports":[
@@ -808,7 +803,7 @@
  "name":"ruamel_yaml",
  "new_version":"0.16.5",
  "pinning_version":"2020.03.14",
- "raw_meta_yaml":"{% set version = \"0.15.80\" %}\n\npackage:\n  name: ruamel_yaml\n  version: {{ version }}\n\nsource:\n  url: https://bitbucket.org/ruamel/yaml/get/{{ version }}.tar.gz\n  sha256: 8529f909d8983a2b80bb3af60e425c418edf54f2fa132d863c43b3353f901203\n  patches:\n    - ordereddict_test.patch\n\nbuild:\n  number: 1000\n  no_link: .*\\.(pyd|dll)   # [win]\n\nrequirements:\n  build:\n    - {{ compiler(\"c\") }}\n    - posix                # [win]\n\n  host:\n    - python\n    - pip\n    - cython\n    - yaml\n\n  run:\n    - python\n    - yaml\n\ntest:\n  requires:\n    - pytest\n\n  imports:\n    - ruamel_yaml\n    - ruamel_yaml.ext._ruamel_yaml\n\nabout:\n  home: https://bitbucket.org/ruamel/yaml\n  license: MIT\n  license_family: MIT\n  license_file: LICENSE\n  summary: A patched copy of ruamel.yaml.\n\nextra:\n  recipe-maintainers:\n    - jakirkham\n    - mbargull\n",
+ "raw_meta_yaml":"{% set version = \"0.15.80\" %}\n\npackage:\n  name: ruamel_yaml\n  version: {{ version }}\n\nsource:\n  url: https://pypi.io/packages/source/r/ruamel.yaml/ruamel.yaml-{{ version }}.tar.gz\n  sha256: 4f203351575dba0829c7b1e5d376d08cf5f58e4a2b844e8ce552b3e41cd414e6\n\nbuild:\n  number: 1001\n  no_link: .*\\.(pyd|dll)   # [win]\n\nrequirements:\n  build:\n    - {{ compiler(\"c\") }}\n    - posix                # [win]\n\n  host:\n    - python\n    - pip\n    - cython\n    - yaml\n\n  run:\n    - python\n    - yaml\n\ntest:\n  requires:\n    - pytest\n\n  imports:\n    - ruamel_yaml\n    - ruamel_yaml.ext._ruamel_yaml\n\nabout:\n  home: https://bitbucket.org/ruamel/yaml\n  license: MIT\n  license_family: MIT\n  license_file: LICENSE\n  summary: A patched copy of ruamel.yaml.\n\nextra:\n  recipe-maintainers:\n    - jakirkham\n    - mbargull\n    - isuruf\n",
  "req":{
   "__set__":true,
   "elements":[
