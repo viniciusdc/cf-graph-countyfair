@@ -72,7 +72,7 @@
    "summary":"Adaptive Entropy Coding library"
   },
   "build":{
-   "number":"0",
+   "number":"1",
    "run_exports":[
     "libaec",
     "libaec",
@@ -83,8 +83,11 @@
   "extra":{
    "recipe-maintainers":[
     "kmuehlbauer",
+    "hmaarrfk",
     "kmuehlbauer",
-    "kmuehlbauer"
+    "hmaarrfk",
+    "kmuehlbauer",
+    "hmaarrfk"
    ]
   },
   "package":{
@@ -94,7 +97,7 @@
   "requirements":{
    "build":[
     "cmake",
-    "make",
+    "ninja",
     "c_compiler_stub",
     "cxx_compiler_stub",
     "cmake",
@@ -113,6 +116,13 @@
   },
   "test":{
    "commands":[
+    "if not exist %LIBRARY_LIB%\\\\aec.lib exit 1",
+    "if not exist %LIBRARY_BIN%\\\\aec.dll exit 1",
+    "if not exist %LIBRARY_LIB%\\\\szip.lib exit 1",
+    "if not exist %LIBRARY_BIN%\\\\szip.dll exit 1",
+    "if not exist %LIBRARY_INC%\\\\libaec.h exit 1",
+    "test -f ${PREFIX}/lib/libaec${SHLIB_EXT}",
+    "test -f ${PREFIX}/lib/libsz${SHLIB_EXT}",
     "test -f ${PREFIX}/lib/libaec${SHLIB_EXT}",
     "test -f ${PREFIX}/lib/libsz${SHLIB_EXT}"
    ]
@@ -121,14 +131,15 @@
  "name":"libaec",
  "new_version":false,
  "pinning_version":"2020.02.20",
- "raw_meta_yaml":"{% set name = \"libaec\" %}\n{% set version = \"1.0.4\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  url: https://gitlab.dkrz.de/k202009/{{ name }}/-/archive/v{{ version }}/{{ name }}-v{{ version }}.tar.gz\n  sha256: 7d85784afc0c4d82adae2d3a1ad2c0a9db700a49ad8f32674618b0089206cb5e\n\nbuild:\n  number: 0\n  skip: true  # [win]\n  run_exports:\n  - {{ pin_subpackage('libaec') }}\n\nrequirements:\n  build:\n    - cmake\n    - make\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n\ntest:\n  commands:\n    - test -f ${PREFIX}/lib/libaec${SHLIB_EXT}  # [not win]\n    - test -f ${PREFIX}/lib/libsz${SHLIB_EXT}  # [not win]\n\nabout:\n  home: https://gitlab.dkrz.de/k202009/libaec\n  license: BSD-2-Clause\n  license_family: BSD\n  license_file: Copyright.txt\n  summary: 'Adaptive Entropy Coding library'\n  description: |\n    Libaec provides fast lossless compression of 1 up to 32 bit wide signed or unsigned integers (samples).\n    The library achieves best results for low entropy data as often encountered in space imaging instrument\n    data or numerical model output from weather or climate simulations. While floating point representations\n    are not directly supported, they can also be efficiently coded by grouping exponents and mantissa.\n    Libaec implements Golomb-Rice coding as defined in the Space Data System Standard documents 121.0-B-2\n    and 120.0-G-2.\n  dev_url: https://gitlab.dkrz.de/k202009/libaec\n\nextra:\n  recipe-maintainers:\n    - kmuehlbauer\n",
+ "raw_meta_yaml":"{% set name = \"libaec\" %}\n{% set version = \"1.0.4\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  url: https://gitlab.dkrz.de/k202009/{{ name }}/-/archive/v{{ version }}/{{ name }}-v{{ version }}.tar.gz\n  sha256: 7d85784afc0c4d82adae2d3a1ad2c0a9db700a49ad8f32674618b0089206cb5e\n\nbuild:\n  number: 1\n  skip: true  # [win and vc<14]\n  run_exports:\n  - {{ pin_subpackage('libaec') }}\n\nrequirements:\n  build:\n    - cmake\n    - make     # [not win]\n    - ninja    # [win]\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n\ntest:\n  commands:\n    - test -f ${PREFIX}/lib/libaec${SHLIB_EXT}        # [not win]\n    - test -f ${PREFIX}/lib/libsz${SHLIB_EXT}         # [not win]\n    - if not exist %LIBRARY_LIB%\\\\aec.lib exit 1      # [win]\n    - if not exist %LIBRARY_BIN%\\\\aec.dll exit 1      # [win]\n    - if not exist %LIBRARY_LIB%\\\\szip.lib exit 1     # [win]\n    - if not exist %LIBRARY_BIN%\\\\szip.dll exit 1     # [win]\n    - if not exist %LIBRARY_INC%\\\\libaec.h exit 1     # [win]\n\nabout:\n  home: https://gitlab.dkrz.de/k202009/libaec\n  license: BSD-2-Clause\n  license_family: BSD\n  license_file: Copyright.txt\n  summary: 'Adaptive Entropy Coding library'\n  description: |\n    Libaec provides fast lossless compression of 1 up to 32 bit wide signed or unsigned integers (samples).\n    The library achieves best results for low entropy data as often encountered in space imaging instrument\n    data or numerical model output from weather or climate simulations. While floating point representations\n    are not directly supported, they can also be efficiently coded by grouping exponents and mantissa.\n    Libaec implements Golomb-Rice coding as defined in the Space Data System Standard documents 121.0-B-2\n    and 120.0-G-2.\n  dev_url: https://gitlab.dkrz.de/k202009/libaec\n\nextra:\n  recipe-maintainers:\n    - kmuehlbauer\n    - hmaarrfk\n",
  "req":{
   "__set__":true,
   "elements":[
    "c_compiler_stub",
    "cmake",
    "cxx_compiler_stub",
-   "make"
+   "make",
+   "ninja"
   ]
  },
  "requirements":{
@@ -138,7 +149,8 @@
     "c_compiler_stub",
     "cmake",
     "cxx_compiler_stub",
-    "make"
+    "make",
+    "ninja"
    ]
   },
   "host":{
@@ -163,7 +175,8 @@
     "c_compiler_stub",
     "cmake",
     "cxx_compiler_stub",
-    "make"
+    "make",
+    "ninja"
    ]
   },
   "host":{
