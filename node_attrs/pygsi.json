@@ -54,29 +54,28 @@
     "migrator_version",
     "name"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/1b1b8358-13c7-42b5-bff2-80f73bb19b7c.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"MigrationYaml",
+    "migrator_object_version":1,
+    "migrator_version":0,
+    "name":"pypy"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_object_version",
+    "migrator_version",
+    "name"
+   ]
   }
  ],
- "bad":{
-  "exception":"Failed to put item: An error occurred (ValidationException) on request (AKH7MU99JT5S23MRKDT8L8MS17VV4KQNSO5AEMVJF66Q9ASUAAJG) on table (pr_json) when calling the PutItem operation: Attempting to store more than 38 significant digits in a Number",
-  "traceback":[
-   "Traceback (most recent call last):",
-   "  File \"/root/repo/cf-scripts/conda_forge_tick/auto_tick.py\", line 866, in main",
-   "    hash_type=attrs.get(\"hash_type\", \"sha256\"),",
-   "  File \"/root/repo/cf-scripts/conda_forge_tick/auto_tick.py\", line 248, in run",
-   "    PRJson.dump(pr_json)",
-   "  File \"/root/repo/cf-scripts/conda_forge_tick/dynamo_models.py\", line 33, in dump",
-   "    item.save()",
-   "  File \"/opt/conda/envs/run_env/lib/python3.7/site-packages/pynamodb/models.py\", line 405, in save",
-   "    data = self._get_connection().put_item(*args, **kwargs)",
-   "  File \"/opt/conda/envs/run_env/lib/python3.7/site-packages/pynamodb/connection/table.py\", line 139, in put_item",
-   "    return_item_collection_metrics=return_item_collection_metrics)",
-   "  File \"/opt/conda/envs/run_env/lib/python3.7/site-packages/pynamodb/connection/base.py\", line 972, in put_item",
-   "    six.raise_from(PutError(\"Failed to put item: {}\".format(e), e), None)",
-   "  File \"<string>\", line 3, in raise_from",
-   "pynamodb.exceptions.PutError: Failed to put item: An error occurred (ValidationException) on request (AKH7MU99JT5S23MRKDT8L8MS17VV4KQNSO5AEMVJF66Q9ASUAAJG) on table (pr_json) when calling the PutItem operation: Attempting to store more than 38 significant digits in a Number",
-   ""
-  ]
- },
+ "bad":false,
  "conda-forge.yml":{
   "provider":{
    "linux_aarch64":"default",
@@ -158,7 +157,7 @@
  },
  "name":"pygsi",
  "new_version":"0.6.5",
- "pinning_version":"2020.01.27",
+ "pinning_version":"2020.03.16",
  "raw_meta_yaml":"{% set name = \"pygsi\" %}\n{% set version = \"0.6.5\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  url: https://github.com/DIRACGrid/pyGSI/archive/{{ version }}.tar.gz\n  sha256: e04f00cd14a7320fd654e4886be6dfdeae91e8b76935e530edbe42898be92bac\n\nbuild:\n  number: 0\n  script: \"{{ PYTHON }} -m pip install . --no-deps -vv\"\n  skip: true  # [not (unix and py2k)]\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n  host:\n    - python\n    - pip\n    - openssl =1.0\n  run:\n    - python\n    - openssl =1.0\n\ntest:\n  imports:\n    - GSI\n    - GSI.crypto\n    - GSI.rand\n    - GSI.SSL\n\nabout:\n  home: https://github.com/DIRACGrid/pyGSI\n  license: GPL-3.0\n  license_family: GPL\n  license_file: LICENSE\n  summary: 'Python interface for GSI authentication'\n\nextra:\n  recipe-maintainers:\n    - chrisburr\n",
  "req":{
   "__set__":true,
@@ -196,7 +195,7 @@
    "elements":[]
   }
  },
- "smithy_version":"3.6.6",
+ "smithy_version":"3.6.12",
  "strong_exports":false,
  "total_requirements":{
   "build":{
