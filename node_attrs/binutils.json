@@ -111,17 +111,20 @@
   },
   "build":{
    "detect_binary_files_with_prefix":false,
-   "number":"8",
+   "number":"0",
    "skip":true
   },
   "extra":{
    "recipe-maintainers":[
     "frol",
     "isuruf",
+    "jjhelmus",
     "frol",
     "isuruf",
+    "jjhelmus",
     "frol",
-    "isuruf"
+    "isuruf",
+    "jjhelmus"
    ]
   },
   "outputs":[
@@ -180,7 +183,7 @@
       "--linux-gnu-strip --help"
      ],
      "downstreams":[
-      "gfortran_",
+      "gfortran_impl_",
       "gcc_impl_"
      ]
     }
@@ -279,7 +282,7 @@
       "--linux-gnu-strip --help"
      ],
      "downstreams":[
-      "gfortran_",
+      "gfortran_impl_",
       "gcc_impl_"
      ]
     }
@@ -378,7 +381,7 @@
       "--linux-gnu-strip --help"
      ],
      "downstreams":[
-      "gfortran_",
+      "gfortran_impl_",
       "gcc_impl_"
      ]
     }
@@ -425,7 +428,7 @@
   ],
   "package":{
    "name":"binutils_split",
-   "version":"2.33.1"
+   "version":"2.34"
   },
   "requirements":{
    "build":null,
@@ -435,33 +438,33 @@
   "source":[
    {
     "folder":".",
-    "sha256":"0cb4843da15a65a953907c96bad658283f3c4419d6bcc56bf2789db16306adb2",
-    "url":"https://ftp.gnu.org/gnu/binutils/binutils-2.33.1.tar.bz2"
+    "sha256":"89f010078b6cf69c23c27897d686055ab89b198dddf819efb0a4f2c38a0b36e6",
+    "url":"https://ftp.gnu.org/gnu/binutils/binutils-2.34.tar.bz2"
    },
    {
     "folder":"crosstool_ng",
-    "sha256":"b855a87957077c590f5d34754bee04b3a1154202f7823504c88db9eea61f4817",
-    "url":"https://github.com/isuruf/crosstool-ng/archive/931b37a4056fff186052c0e893a6682ab37e7035.tar.gz"
+    "sha256":"4a0be5a8d3a2076391ef096ceeaa5d6b207ac424f6a18913894bce1dc434c463",
+    "url":"https://github.com/crosstool-ng/crosstool-ng/archive/db980376cdf74ada7b085e422c52c36a2ce85cd3.tar.gz"
    },
    {
     "folder":".",
-    "sha256":"0cb4843da15a65a953907c96bad658283f3c4419d6bcc56bf2789db16306adb2",
-    "url":"https://ftp.gnu.org/gnu/binutils/binutils-2.33.1.tar.bz2"
+    "sha256":"89f010078b6cf69c23c27897d686055ab89b198dddf819efb0a4f2c38a0b36e6",
+    "url":"https://ftp.gnu.org/gnu/binutils/binutils-2.34.tar.bz2"
    },
    {
     "folder":"crosstool_ng",
-    "sha256":"b855a87957077c590f5d34754bee04b3a1154202f7823504c88db9eea61f4817",
-    "url":"https://github.com/isuruf/crosstool-ng/archive/931b37a4056fff186052c0e893a6682ab37e7035.tar.gz"
+    "sha256":"4a0be5a8d3a2076391ef096ceeaa5d6b207ac424f6a18913894bce1dc434c463",
+    "url":"https://github.com/crosstool-ng/crosstool-ng/archive/db980376cdf74ada7b085e422c52c36a2ce85cd3.tar.gz"
    },
    {
     "folder":".",
-    "sha256":"0cb4843da15a65a953907c96bad658283f3c4419d6bcc56bf2789db16306adb2",
-    "url":"https://ftp.gnu.org/gnu/binutils/binutils-2.33.1.tar.bz2"
+    "sha256":"89f010078b6cf69c23c27897d686055ab89b198dddf819efb0a4f2c38a0b36e6",
+    "url":"https://ftp.gnu.org/gnu/binutils/binutils-2.34.tar.bz2"
    },
    {
     "folder":"crosstool_ng",
-    "sha256":"b855a87957077c590f5d34754bee04b3a1154202f7823504c88db9eea61f4817",
-    "url":"https://github.com/isuruf/crosstool-ng/archive/931b37a4056fff186052c0e893a6682ab37e7035.tar.gz"
+    "sha256":"4a0be5a8d3a2076391ef096ceeaa5d6b207ac424f6a18913894bce1dc434c463",
+    "url":"https://github.com/crosstool-ng/crosstool-ng/archive/db980376cdf74ada7b085e422c52c36a2ce85cd3.tar.gz"
    }
   ]
  },
@@ -473,7 +476,7 @@
   "ld_impl_"
  ],
  "pinning_version":"2019.02.15",
- "raw_meta_yaml":"{% set name = \"binutils\" %}\n{% set version = \"2.33.1\" %}\n{% set chost = ctng_cpu_arch ~ \"-\" ~ ctng_vendor ~ \"-linux-gnu-\" %}\n\npackage:\n  name: binutils_split\n  version: {{ version }}\n\nsource:\n  - url: https://ftp.gnu.org/gnu/{{ name }}/{{ name }}-{{ version }}.tar.bz2\n    sha256: 0cb4843da15a65a953907c96bad658283f3c4419d6bcc56bf2789db16306adb2\n    folder: .\n\n  # Get the patches from crosstool-ng\n  # Using https://github.com/crosstool-ng/crosstool-ng/pull/1268\n  - url: https://github.com/isuruf/crosstool-ng/archive/931b37a4056fff186052c0e893a6682ab37e7035.tar.gz\n    sha256: b855a87957077c590f5d34754bee04b3a1154202f7823504c88db9eea61f4817\n    folder: crosstool_ng\n\nbuild:\n  number: 8\n  skip: True  # [not linux]\n  detect_binary_files_with_prefix: False\n\nrequirements:\n  build:\n  host:\n  run:\n\noutputs:\n  - name: ld_impl_{{ target_platform }}\n    script: install_ld.sh\n    build:\n      merge_build_host: False\n      detect_binary_files_with_prefix: False\n    requirements:\n      build:\n      host:\n      run:\n    test:\n      commands:\n        - {{ chost }}ld --help\n\n  - name: binutils_impl_{{ target_platform }}\n    script: install_binutils.sh\n    build:\n      merge_build_host: False\n      detect_binary_files_with_prefix: False\n    requirements:\n      build:\n      host:\n        - ld_impl_{{ target_platform }}\n      run:\n        - {{ pin_subpackage(\"ld_impl_\" ~ target_platform, exact=True) }}\n    test:\n      downstreams:\n        - gfortran_{{ target_platform }}\n        - gcc_impl_{{ target_platform }}\n      commands:\n        - {{ chost }}addr2line --help\n        - {{ chost }}ar --help\n        - {{ chost }}as --help\n        - {{ chost }}c++filt --help\n        - {{ chost }}elfedit --help\n        - {{ chost }}gprof --help\n        - {{ chost }}ld --help\n        - {{ chost }}ld.bfd --help\n        - {{ chost }}ld.gold --help\n        - {{ chost }}nm --help\n        - {{ chost }}objcopy --help\n        - {{ chost }}objdump --help\n        - {{ chost }}ranlib --help\n        - {{ chost }}readelf --help\n        - {{ chost }}size --help\n        - {{ chost }}strings --help\n        - {{ chost }}strip --help\n\n  - name: binutils\n    script: install_binutils_symlinks.sh\n    build:\n      merge_build_host: False\n      detect_binary_files_with_prefix: False\n    requirements:\n      build:\n      host:\n        - binutils_impl_{{ target_platform }}\n      run:\n        - {{ pin_subpackage(\"binutils_impl_\" ~ target_platform, max_pin=\"x.x.x\") }}\n    test:\n      commands:\n        - $PREFIX/bin/addr2line --help\n        - $PREFIX/bin/ar --help\n        - $PREFIX/bin/as --help\n        - $PREFIX/bin/c++filt --help\n        - $PREFIX/bin/elfedit --help\n        - $PREFIX/bin/gold --help\n        - $PREFIX/bin/gprof --help\n        - $PREFIX/bin/ld --help\n        - $PREFIX/bin/ld.bfd --help\n        - $PREFIX/bin/ld.gold --help\n        - $PREFIX/bin/nm --help\n        - $PREFIX/bin/objcopy --help\n        - $PREFIX/bin/objdump --help\n        - $PREFIX/bin/ranlib --help\n        - $PREFIX/bin/readelf --help\n        - $PREFIX/bin/size --help\n        - $PREFIX/bin/strings --help\n        - $PREFIX/bin/strip --help\n\nabout:\n  home: https://www.gnu.org/software/binutils/\n  license: GPL 3\n  license_file:\n    - COPYING\n    - COPYING.LIB\n    - COPYING3\n    - COPYING3.LIB\n  summary: A set of programming tools for creating and managing binary programs, object files, libraries, profile data, and assembly source code.\n\nextra:\n  recipe-maintainers:\n    - frol\n    - isuruf\n",
+ "raw_meta_yaml":"{% set name = \"binutils\" %}\n{% set version = \"2.34\" %}\n{% set chost = ctng_cpu_arch ~ \"-\" ~ ctng_vendor ~ \"-linux-gnu-\" %}\n\npackage:\n  name: binutils_split\n  version: {{ version }}\n\nsource:\n  - url: https://ftp.gnu.org/gnu/{{ name }}/{{ name }}-{{ version }}.tar.bz2\n    sha256: 89f010078b6cf69c23c27897d686055ab89b198dddf819efb0a4f2c38a0b36e6\n    folder: .\n\n  # Get the patches from crosstool-ng\n  # Using https://github.com/crosstool-ng/crosstool-ng/pull/1309\n  - url: https://github.com/crosstool-ng/crosstool-ng/archive/db980376cdf74ada7b085e422c52c36a2ce85cd3.tar.gz\n    sha256: 4a0be5a8d3a2076391ef096ceeaa5d6b207ac424f6a18913894bce1dc434c463\n    folder: crosstool_ng\n\nbuild:\n  number: 0\n  skip: True  # [not linux]\n  detect_binary_files_with_prefix: False\n\nrequirements:\n  build:\n  host:\n  run:\n\noutputs:\n  - name: ld_impl_{{ target_platform }}\n    script: install_ld.sh\n    build:\n      merge_build_host: False\n      detect_binary_files_with_prefix: False\n    requirements:\n      build:\n      host:\n      run:\n    test:\n      commands:\n        - {{ chost }}ld --help\n\n  - name: binutils_impl_{{ target_platform }}\n    script: install_binutils.sh\n    build:\n      merge_build_host: False\n      detect_binary_files_with_prefix: False\n    requirements:\n      build:\n      host:\n        - ld_impl_{{ target_platform }}\n      run:\n        - {{ pin_subpackage(\"ld_impl_\" ~ target_platform, exact=True) }}\n    test:\n      downstreams:\n        - gfortran_impl_{{ target_platform }}\n        - gcc_impl_{{ target_platform }}\n      commands:\n        - {{ chost }}addr2line --help\n        - {{ chost }}ar --help\n        - {{ chost }}as --help\n        - {{ chost }}c++filt --help\n        - {{ chost }}elfedit --help\n        - {{ chost }}gprof --help\n        - {{ chost }}ld --help\n        - {{ chost }}ld.bfd --help\n        - {{ chost }}ld.gold --help\n        - {{ chost }}nm --help\n        - {{ chost }}objcopy --help\n        - {{ chost }}objdump --help\n        - {{ chost }}ranlib --help\n        - {{ chost }}readelf --help\n        - {{ chost }}size --help\n        - {{ chost }}strings --help\n        - {{ chost }}strip --help\n\n  - name: binutils\n    script: install_binutils_symlinks.sh\n    build:\n      merge_build_host: False\n      detect_binary_files_with_prefix: False\n    requirements:\n      build:\n      host:\n        - binutils_impl_{{ target_platform }}\n      run:\n        - {{ pin_subpackage(\"binutils_impl_\" ~ target_platform, max_pin=\"x.x.x\") }}\n    test:\n      commands:\n        - $PREFIX/bin/addr2line --help\n        - $PREFIX/bin/ar --help\n        - $PREFIX/bin/as --help\n        - $PREFIX/bin/c++filt --help\n        - $PREFIX/bin/elfedit --help\n        - $PREFIX/bin/gold --help\n        - $PREFIX/bin/gprof --help\n        - $PREFIX/bin/ld --help\n        - $PREFIX/bin/ld.bfd --help\n        - $PREFIX/bin/ld.gold --help\n        - $PREFIX/bin/nm --help\n        - $PREFIX/bin/objcopy --help\n        - $PREFIX/bin/objdump --help\n        - $PREFIX/bin/ranlib --help\n        - $PREFIX/bin/readelf --help\n        - $PREFIX/bin/size --help\n        - $PREFIX/bin/strings --help\n        - $PREFIX/bin/strip --help\n\nabout:\n  home: https://www.gnu.org/software/binutils/\n  license: GPL 3\n  license_file:\n    - COPYING\n    - COPYING.LIB\n    - COPYING3\n    - COPYING3.LIB\n  summary: A set of programming tools for creating and managing binary programs, object files, libraries, profile data, and assembly source code.\n\nextra:\n  recipe-maintainers:\n    - frol\n    - isuruf\n    - jjhelmus\n",
  "req":{
   "__set__":true,
   "elements":[
@@ -534,5 +537,5 @@
   }
  },
  "url":"https://ftp.gnu.org/gnu/binutils/binutils-2.32.tar.bz2",
- "version":"2.33.1"
+ "version":"2.34"
 }
