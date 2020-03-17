@@ -50,29 +50,28 @@
     "migrator_version",
     "name"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/3553807b-59ef-4ddb-8fc2-84c44180866c.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"MigrationYaml",
+    "migrator_object_version":1,
+    "migrator_version":0,
+    "name":"pypy"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_object_version",
+    "migrator_version",
+    "name"
+   ]
   }
  ],
- "bad":{
-  "exception":"Failed to put item: An error occurred (ValidationException) on request (EE9PD2IR0PUT9NVM7RL0CE6HORVV4KQNSO5AEMVJF66Q9ASUAAJG) on table (pr_json) when calling the PutItem operation: Attempting to store more than 38 significant digits in a Number",
-  "traceback":[
-   "Traceback (most recent call last):",
-   "  File \"/root/repo/cf-scripts/conda_forge_tick/auto_tick.py\", line 849, in main",
-   "    hash_type=attrs.get(\"hash_type\", \"sha256\"),",
-   "  File \"/root/repo/cf-scripts/conda_forge_tick/auto_tick.py\", line 248, in run",
-   "    PRJson.dump(pr_json)",
-   "  File \"/root/repo/cf-scripts/conda_forge_tick/dynamo_models.py\", line 33, in dump",
-   "    item.save()",
-   "  File \"/opt/conda/envs/run_env/lib/python3.7/site-packages/pynamodb/models.py\", line 405, in save",
-   "    data = self._get_connection().put_item(*args, **kwargs)",
-   "  File \"/opt/conda/envs/run_env/lib/python3.7/site-packages/pynamodb/connection/table.py\", line 139, in put_item",
-   "    return_item_collection_metrics=return_item_collection_metrics)",
-   "  File \"/opt/conda/envs/run_env/lib/python3.7/site-packages/pynamodb/connection/base.py\", line 972, in put_item",
-   "    six.raise_from(PutError(\"Failed to put item: {}\".format(e), e), None)",
-   "  File \"<string>\", line 3, in raise_from",
-   "pynamodb.exceptions.PutError: Failed to put item: An error occurred (ValidationException) on request (EE9PD2IR0PUT9NVM7RL0CE6HORVV4KQNSO5AEMVJF66Q9ASUAAJG) on table (pr_json) when calling the PutItem operation: Attempting to store more than 38 significant digits in a Number",
-   ""
-  ]
- },
+ "bad":false,
  "conda-forge.yml":{},
  "feedstock_name":"yajl",
  "hash_type":"sha256",
@@ -146,7 +145,7 @@
  },
  "name":"yajl",
  "new_version":"2.1.0",
- "pinning_version":"2019.11.01",
+ "pinning_version":"2020.03.16",
  "raw_meta_yaml":"{% set author = \"lloyd\" %}\n{% set name = \"yajl\" %}\n{% set version = \"2.1.0\" %}\n{% set sha256sum = \"3fb73364a5a30efe615046d07e6db9d09fd2b41c763c5f7d3bfb121cd5c5ac5a\" %}\n\npackage:\n  name: {{ name }}\n  version: {{ version }}\n\nsource:\n  fn: {{ name }}-{{ version }}.tar.gz\n  url: https://github.com/{{ author }}/{{ name }}/archive/{{ version }}.tar.gz\n  sha256: {{ sha256sum }}\n\nbuild:\n  number: 0\n  features:\n    - vc9   # [win and py27]\n    - vc10  # [win and py34]\n    - vc14  # [win and py>=35]\n\nrequirements:\n  build:\n    - toolchain\n    - cmake 3.*\n    - python     # [win]\n    - vc 9       # [win and py27]\n    - vc 10      # [win and py34]\n    - vc 14      # [win and py>=35]\n\n  run:\n    - vc 9       # [win and py27]\n    - vc 10      # [win and py34]\n    - vc 14      # [win and py>=35]\n\ntest:\n  requires:\n    - pkg-config  # [unix]\n\n  commands:\n    - echo \"{}\" | json_reformat  # [unix]\n    - echo \"{}\" | json_verify  # [unix]\n\n    - test -f ${PREFIX}/include/{{ name }}/{{ name }}_common.h  # [unix]\n    - test -f ${PREFIX}/lib/lib{{ name }}_s.a  # [unix]\n    - test -f ${PREFIX}/lib/lib{{ name }}.dylib  # [osx]\n    - test -f ${PREFIX}/lib/lib{{ name }}.so  # [linux]\n    - pkg-config --cflags --libs {{ name }}  # [unix]\n\n    - if not exist %PREFIX%\\\\Library\\\\include\\\\{{name }}\\\\{{ name }}_common.h exit 1  # [win]\n    - if not exist %PREFIX%\\\\Library\\\\lib\\\\{{ name }}_s.lib exit 1  # [win]\n    - if not exist %PREFIX%\\\\Library\\\\lib\\\\{{ name }}.dll exit 1  # [win]\n\n    - conda inspect linkages -p $PREFIX {{ name }}  # [unix]\n    - conda inspect objects -p $PREFIX {{ name }}  # [osx]\n\nabout:\n  home: https://lloyd.github.io/yajl/\n  license: ISC\n  license_file: COPYING\n  summary: Yet Another JSON Library\n  description: |\n    YAJL is a small event-driven (SAX-style) JSON parser written in ANSI C, and\n    a small validating JSON generator. YAJL is released under the ISC license.\n  dev_url: https://github.com/lloyd/yajl\n\nextra:\n  recipe-maintainers:\n    - rmax\n",
  "req":{
   "__set__":true,
@@ -182,7 +181,7 @@
    ]
   }
  },
- "smithy_version":"3.6.1",
+ "smithy_version":"3.6.12",
  "strong_exports":false,
  "total_requirements":{
   "build":{
