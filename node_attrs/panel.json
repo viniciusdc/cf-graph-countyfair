@@ -235,9 +235,14 @@
    "summary":"A high-level Python toolkit for composing widgets and plots"
   },
   "build":{
+   "entry_points":[
+    "panel = panel.cli:main",
+    "panel = panel.cli:main",
+    "panel = panel.cli:main"
+   ],
    "noarch":"python",
    "number":"0",
-   "script":"-m pip install . --no-deps -vv"
+   "script":"-m pip install . -vv"
   },
   "extra":{
    "recipe-maintainers":[
@@ -251,63 +256,82 @@
   },
   "package":{
    "name":"panel",
-   "version":"0.8.1"
+   "version":"0.9.1"
   },
   "requirements":{
    "host":[
-    "python",
+    "python >=3",
     "pip",
-    "pyct >=0.4.4",
-    "nodejs >=9.11.1",
-    "bokeh >=1.4.0",
-    "python",
+    "pyct",
+    "bokeh >=2.0",
+    "nodejs >=10.13.0",
+    "python >=3",
     "pip",
-    "pyct >=0.4.4",
-    "nodejs >=9.11.1",
-    "bokeh >=1.4.0",
-    "python",
+    "pyct",
+    "bokeh >=2.0",
+    "nodejs >=10.13.0",
+    "python >=3",
     "pip",
-    "pyct >=0.4.4",
-    "nodejs >=9.11.1",
-    "bokeh >=1.4.0"
+    "pyct",
+    "bokeh >=2.0",
+    "nodejs >=10.13.0"
    ],
    "run":[
-    "bokeh >=1.4.0,<2.0",
-    "param >=1.9.2",
-    "pyviz_comms >=0.7.3",
+    "python >=3",
+    "bokeh >=2.0",
     "markdown",
+    "param >=1.9.2",
     "pyct >=0.4.4",
+    "pyviz_comms >=0.7.4",
     "tqdm",
-    "bokeh >=1.4.0,<2.0",
-    "param >=1.9.2",
-    "pyviz_comms >=0.7.3",
+    "python >=3",
+    "bokeh >=2.0",
     "markdown",
+    "param >=1.9.2",
     "pyct >=0.4.4",
+    "pyviz_comms >=0.7.4",
     "tqdm",
-    "bokeh >=1.4.0,<2.0",
-    "param >=1.9.2",
-    "pyviz_comms >=0.7.3",
+    "python >=3",
+    "bokeh >=2.0",
     "markdown",
+    "param >=1.9.2",
     "pyct >=0.4.4",
+    "pyviz_comms >=0.7.4",
     "tqdm"
    ]
   },
   "source":{
-   "sha256":"57128ff329a6646651a234a3567bf1a40411005d94e466f2c3b21e2216ab8579",
-   "url":"https://pypi.io/packages/source/p/panel/panel-0.8.1.tar.gz"
+   "sha256":"bdced1cbe5b7b2b9d15797ae03ee0ce011dd361dffd494405e5e521690eff73c",
+   "url":"https://pypi.io/packages/source/p/panel/panel-0.9.1.tar.gz"
   },
   "test":{
+   "commands":[
+    "pip check",
+    "panel --help",
+    "pip check",
+    "panel --help",
+    "pip check",
+    "panel --help"
+   ],
    "imports":[
     "panel",
+    "panel.io",
     "panel",
-    "panel"
+    "panel.io",
+    "panel",
+    "panel.io"
+   ],
+   "requires":[
+    "pip",
+    "pip",
+    "pip"
    ]
   }
  },
  "name":"panel",
  "new_version":"0.9.1",
  "pinning_version":"2020.03.12",
- "raw_meta_yaml":"{% set version = \"0.8.1\" %}\n\npackage:\n  name: panel\n  version: {{ version }}\n\nsource:\n  url: https://pypi.io/packages/source/p/panel/panel-{{ version }}.tar.gz\n  sha256: 57128ff329a6646651a234a3567bf1a40411005d94e466f2c3b21e2216ab8579\n\nbuild:\n  number: 0\n  noarch: python\n  script: {{ PYTHON }} -m pip install . --no-deps -vv\n\nrequirements:\n  host:\n    - python\n    - pip\n    - pyct >=0.4.4\n    - nodejs >=9.11.1\n    - bokeh >=1.4.0\n  run:\n    - bokeh >=1.4.0,<2.0\n    - param >=1.9.2\n    - pyviz_comms >=0.7.3\n    - markdown\n    - pyct >=0.4.4\n    - tqdm\ntest:\n  imports:\n    - panel\n\nabout:\n  home: https://panel.holoviz.org\n  summary: A high-level Python toolkit for composing widgets and plots\n  description: |\n    Panel provides tools for easily composing widgets, plots, tables, and other\n    viewable objects and controls into control panels, apps, and dashboards.\n  license: BSD-3-Clause\n  license_file: LICENSE.txt\n\nextra:\n  recipe-maintainers:\n    - philippjfr\n    - ocefpaf\n",
+ "raw_meta_yaml":"{% set version = \"0.9.1\" %}\n\npackage:\n  name: panel\n  version: {{ version }}\n\nsource:\n  url: https://pypi.io/packages/source/p/panel/panel-{{ version }}.tar.gz\n  sha256: bdced1cbe5b7b2b9d15797ae03ee0ce011dd361dffd494405e5e521690eff73c\n\nbuild:\n  number: 0\n  noarch: python\n  entry_points:\n    - panel = panel.cli:main\n  script: {{ PYTHON }} -m pip install . -vv\n\nrequirements:\n  host:\n    - python >=3\n    - pip\n    # These are also needed at build time.\n    - pyct\n    - bokeh >=2.0\n    - nodejs >=10.13.0\n  run:\n    - python >=3\n    - bokeh >=2.0\n    - markdown\n    - param >=1.9.2\n    - pyct >=0.4.4\n    - pyviz_comms >=0.7.4\n    - tqdm\n\ntest:\n  imports:\n    - panel\n    - panel.io\n  commands:\n    - pip check\n    - panel --help\n  requires:\n    - pip\n\nabout:\n  home: https://panel.holoviz.org\n  summary: A high-level Python toolkit for composing widgets and plots\n  description: |\n    Panel provides tools for easily composing widgets, plots, tables, and other\n    viewable objects and controls into control panels, apps, and dashboards.\n  license: BSD-3-Clause\n  license_file: LICENSE.txt\n\nextra:\n  recipe-maintainers:\n    - philippjfr\n    - ocefpaf\n",
  "req":{
   "__set__":true,
   "elements":[
@@ -344,13 +368,16 @@
     "markdown",
     "param",
     "pyct",
+    "python",
     "pyviz_comms",
     "tqdm"
    ]
   },
   "test":{
    "__set__":true,
-   "elements":[]
+   "elements":[
+    "pip"
+   ]
   }
  },
  "smithy_version":"3.6.12",
@@ -363,29 +390,32 @@
   "host":{
    "__set__":true,
    "elements":[
-    "bokeh >=1.4.0",
-    "nodejs >=9.11.1",
+    "bokeh >=2.0",
+    "nodejs >=10.13.0",
     "pip",
-    "pyct >=0.4.4",
-    "python"
+    "pyct",
+    "python >=3"
    ]
   },
   "run":{
    "__set__":true,
    "elements":[
-    "bokeh >=1.4.0,<2.0",
+    "bokeh >=2.0",
     "markdown",
     "param >=1.9.2",
     "pyct >=0.4.4",
-    "pyviz_comms >=0.7.3",
+    "python >=3",
+    "pyviz_comms >=0.7.4",
     "tqdm"
    ]
   },
   "test":{
    "__set__":true,
-   "elements":[]
+   "elements":[
+    "pip"
+   ]
   }
  },
  "url":"https://pypi.io/packages/source/p/panel/panel-0.6.2.tar.gz",
- "version":"0.8.1"
+ "version":"0.9.1"
 }

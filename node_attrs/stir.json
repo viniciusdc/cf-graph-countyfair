@@ -136,12 +136,15 @@
     "c_compiler_stub",
     "cxx_compiler_stub",
     "cmake",
+    "ninja",
     "c_compiler_stub",
     "cxx_compiler_stub",
     "cmake",
+    "ninja",
     "c_compiler_stub",
     "cxx_compiler_stub",
-    "cmake"
+    "cmake",
+    "ninja"
    ],
    "host":[
     "python",
@@ -173,16 +176,19 @@
   },
   "test":{
    "commands":[
-    "pytest src/swig/test/python",
     "cd recon_test_pack",
     "run_tests",
+    "cd ..",
+    "pytest src/swig/test/python",
     "conda inspect linkages -p $PREFIX stir",
     "conda inspect objects -p $PREFIX stir",
-    "pytest src/swig/test/python",
     "cd recon_test_pack && ./run_tests.sh --nointbp",
-    "conda inspect linkages -p $PREFIX stir",
+    "cd ..",
     "pytest src/swig/test/python",
-    "cd recon_test_pack && ./run_tests.sh --nointbp"
+    "conda inspect linkages -p $PREFIX stir",
+    "cd recon_test_pack && ./run_tests.sh --nointbp",
+    "cd ..",
+    "pytest src/swig/test/python"
    ],
    "imports":[
     "stir",
@@ -207,7 +213,7 @@
  "name":"stir",
  "new_version":"2018",
  "pinning_version":"2020.02.20",
- "raw_meta_yaml":"\n{% set name = \"STIR\" %}\n{% set version = \"4.0.0a0\" %}\n{% set sha256 = \"0dd7d44b401ecca12298dbf180fb94fc59dcb93315bdb2a8a1141708f7188c1a\" %}\n{% set treehash = \"stir_rel_4_00_alpha\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  fn: {{ name }}-{{ treehash }}.tar.gz\n  url: https://github.com/UCL/{{ name }}/archive/{{ treehash }}.tar.gz\n  sha256: {{ sha256 }}\n\nbuild:\n  skip: true  # [py2k]\n  skip: true  # [win and py<36]\n  skip: true  # [win]\n  skip: true  # [osx]\n  number: 1\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n    - cmake\n  host:\n    - python\n    - boost-cpp\n    - numpy\n    - swig\n  run:\n    - python\n    - {{ pin_compatible('numpy') }}\n\ntest:\n  requires:\n    - pytest\n  imports:\n    - stir\n  source_files:\n    - recon_test_pack\n    - src/swig/test/python\n  commands:\n    - conda inspect linkages -p $PREFIX {{ name|lower }}  # [not win]\n    - conda inspect objects -p $PREFIX {{ name|lower }}   # [osx]\n    - pytest src/swig/test/python\n    - cd recon_test_pack && ./run_tests.sh --nointbp  # [not win]\n    - cd recon_test_pack  # [win]\n    - run_tests  # [win]\n\n\nabout:\n  home: http://stir.sourceforge.net/\n  license: GPL and LGPL\n  license_family: GPL\n  license_file: LICENSE.txt\n  summary: 'Software for Tomographic Image Reconstruction'\n  description: |\n    STIR is Open Source software for use in tomographic imaging.\n    Its aim is to provide a Multi-Platform Object-Oriented framework for all data manipulations in tomographic imaging.\n  doc_url: http://stir.sourceforge.net/documentation\n  dev_url: https://github.com/UCL/STIR\n\nextra:\n  recipe-maintainers:\n    - olivierverdier\n    - KrisThielemans\n    - paskino\n    - casperdcl\n",
+ "raw_meta_yaml":"\n{% set name = \"STIR\" %}\n{% set version = \"4.0.0a0\" %}\n{% set sha256 = \"0dd7d44b401ecca12298dbf180fb94fc59dcb93315bdb2a8a1141708f7188c1a\" %}\n{% set treehash = \"stir_rel_4_00_alpha\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  fn: {{ name }}-{{ treehash }}.tar.gz\n  url: https://github.com/UCL/{{ name }}/archive/{{ treehash }}.tar.gz\n  sha256: {{ sha256 }}\n\nbuild:\n  skip: true  # [py2k]\n  skip: true  # [win and py<36]\n  skip: true  # [win and vc<14]\n  skip: true  # [osx]\n  number: 1\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n    - cmake\n    - ninja\n  host:\n    - python\n    - boost-cpp\n    - numpy\n    - swig\n  run:\n    - python\n    - {{ pin_compatible('numpy') }}\n\ntest:\n  requires:\n    - pytest\n  imports:\n    - stir\n  source_files:\n    - recon_test_pack\n    - src/swig/test/python\n  commands:\n    - conda inspect linkages -p $PREFIX {{ name|lower }}  # [not win]\n    - conda inspect objects -p $PREFIX {{ name|lower }}   # [osx]\n    - cd recon_test_pack && ./run_tests.sh --nointbp  # [not win]\n    - cd recon_test_pack  # [win]\n    - run_tests  # [win]\n    - cd ..\n    - pytest src/swig/test/python\n\n\nabout:\n  home: http://stir.sourceforge.net/\n  license: GPL and LGPL\n  license_family: GPL\n  license_file: LICENSE.txt\n  summary: 'Software for Tomographic Image Reconstruction'\n  description: |\n    STIR is Open Source software for use in tomographic imaging.\n    Its aim is to provide a Multi-Platform Object-Oriented framework for all data manipulations in tomographic imaging.\n  doc_url: http://stir.sourceforge.net/documentation\n  dev_url: https://github.com/UCL/STIR\n\nextra:\n  recipe-maintainers:\n    - olivierverdier\n    - KrisThielemans\n    - paskino\n    - casperdcl\n",
  "req":{
   "__set__":true,
   "elements":[
@@ -215,6 +221,7 @@
    "c_compiler_stub",
    "cmake",
    "cxx_compiler_stub",
+   "ninja",
    "numpy",
    "python",
    "swig"
@@ -226,7 +233,8 @@
    "elements":[
     "c_compiler_stub",
     "cmake",
-    "cxx_compiler_stub"
+    "cxx_compiler_stub",
+    "ninja"
    ]
   },
   "host":{
@@ -260,7 +268,8 @@
    "elements":[
     "c_compiler_stub",
     "cmake",
-    "cxx_compiler_stub"
+    "cxx_compiler_stub",
+    "ninja"
    ]
   },
   "host":{
