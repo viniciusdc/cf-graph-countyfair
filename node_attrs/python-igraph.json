@@ -123,11 +123,7 @@
   }
  ],
  "bad":false,
- "conda-forge.yml":{
-  "compiler_stack":"comp7",
-  "max_py_ver":"37",
-  "max_r_ver":"35"
- },
+ "conda-forge.yml":{},
  "feedstock_name":"python-igraph",
  "hash_type":"sha256",
  "meta_yaml":{
@@ -138,8 +134,8 @@
    "summary":"High performance graph data structures and algorithms"
   },
   "build":{
-   "number":"0",
-   "script":"python -m pip install --no-deps --ignore-installed .",
+   "number":"1",
+   "script":"-m pip install . --no-deps -vv",
    "skip":true
   },
   "extra":{
@@ -284,7 +280,7 @@
  "name":"python-igraph",
  "new_version":"0.8.0",
  "pinning_version":"2020.03.14",
- "raw_meta_yaml":"{% set name = \"python-igraph\" %}\n{% set version = \"0.8.0\" %}\n{% set posix = 'm2-' if win else '' %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  fn: {{ name }}-{{ version }}.tar.gz\n  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz\n  sha256: 47e6bb48ec7dbfddbd89cf064a24b271783a1490fc688ebce17fbd652bcdab8e\n\nbuild:\n  number: 0\n  script: python -m pip install --no-deps --ignore-installed .  # [not win]\n  skip : true  # [win and vc<14]\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n    - {{ compiler('fortran') }}\n    - pkg-config  # [not win]\n    - make  # [not win]\n    - {{posix}}autoconf\n    - automake  # [not win]\n    - {{posix}}bison\n    - {{posix}}flex\n    - {{posix}}libtool\n    - vs2017_{{ target_platform  }}  # [win]\n    - posix  # [win]\n    - m2w64-toolchain  # [win]\n    - m2-automake-wrapper  # [win]\n  host:\n    - gmp  # [not win]\n    - icu  # [not win]\n    - libiconv  # [not win]\n    - libxml2  # [not win]\n    - xz  # [not win]\n    - zlib  # [not win]\n    - texttable >=1.6.2\n    - python\n    - pip\n  run:\n    - gmp  # [not win]\n    - icu  # [not win]\n    - libiconv  # [not win]\n    - libxml2  # [not win]\n    - xz  # [not win]\n    - zlib  # [not win]\n    - texttable >=1.6.2\n    - pycairo >=1.10,<2\n    - python\n\ntest:\n  source_files:\n    - tests\n  files:\n    - test_cairo.py\n    - test_graphml.py  # [not win]\n  imports:\n    - igraph\n    - igraph.app\n    - igraph.drawing\n    - igraph.remote\n  commands:\n    - python -m unittest\n    - python test_cairo.py\n    - python test_graphml.py  # [not win]\n\nabout:\n  home: http://pypi.python.org/pypi/python-igraph\n  license: GPL\n  license_file: COPYING\n  summary: 'High performance graph data structures and algorithms'\n\nextra:\n  recipe-maintainers:\n    - sodre\n    - vtraag\n",
+ "raw_meta_yaml":"{% set name = \"python-igraph\" %}\n{% set version = \"0.8.0\" %}\n{% set posix = 'm2-' if win else '' %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  fn: {{ name }}-{{ version }}.tar.gz\n  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz\n  sha256: 47e6bb48ec7dbfddbd89cf064a24b271783a1490fc688ebce17fbd652bcdab8e\n\nbuild:\n  number: 1\n  script: {{ PYTHON }} -m pip install . --no-deps -vv  # [not win]\n  skip : true  # [win and vc<14]\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n    - {{ compiler('fortran') }}\n    - pkg-config  # [not win]\n    - make  # [not win]\n    - {{posix}}autoconf\n    - automake  # [not win]\n    - {{posix}}bison\n    - {{posix}}flex\n    - {{posix}}libtool\n    - vs2017_{{ target_platform  }}  # [win]\n    - posix  # [win]\n    - m2w64-toolchain  # [win]\n    - m2-automake-wrapper  # [win]\n  host:\n    - gmp  # [not win]\n    - icu  # [not win]\n    - libiconv  # [not win]\n    - libxml2  # [not win]\n    - xz  # [not win]\n    - zlib  # [not win]\n    - texttable >=1.6.2\n    - python\n    - pip\n  run:\n    - gmp  # [not win]\n    - icu  # [not win]\n    - libiconv  # [not win]\n    - libxml2  # [not win]\n    - xz  # [not win]\n    - zlib  # [not win]\n    - texttable >=1.6.2\n    - pycairo >=1.10,<2\n    - python\n\ntest:\n  source_files:\n    - tests\n  files:\n    - test_cairo.py\n    - test_graphml.py  # [not win]\n  imports:\n    - igraph\n    - igraph.app\n    - igraph.drawing\n    - igraph.remote\n  commands:\n    - python -m unittest\n    - python test_cairo.py\n    - python test_graphml.py  # [not win]\n\nabout:\n  home: http://pypi.python.org/pypi/python-igraph\n  license: GPL\n  license_file: COPYING\n  summary: 'High performance graph data structures and algorithms'\n\nextra:\n  recipe-maintainers:\n    - sodre\n    - vtraag\n",
  "req":{
   "__set__":true,
   "elements":[
