@@ -173,6 +173,23 @@
     "migrator_version",
     "name"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/390694579.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"Version",
+    "migrator_version":0,
+    "version":"5.3.1"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "version"
+   ]
   }
  ],
  "bad":false,
@@ -276,8 +293,8 @@
   }
  },
  "name":"pyyaml",
- "new_version":"5.3",
- "pinning_version":"2020.03.14",
+ "new_version":"5.3.1",
+ "pinning_version":"2020.03.16",
  "raw_meta_yaml":"{% set version = \"5.3\" %}\n\npackage:\n  name: pyyaml\n  version: {{ version }}\n\nsource:\n  url: https://pypi.io/packages/source/P/PyYAML/PyYAML-{{ version }}.tar.gz\n  sha256: e9f45bd5b92c7974e59bcd2dcc8631a6b6cc380a904725fce7bc08872e691615\n  patches:\n    - 0001-Ensure-we-do-not-end-up-wih-CRLF-line-endings-on-tes.patch\n\nbuild:\n  number: 1\n  script:\n    - python setup.py --with-libyaml build_ext --include-dirs=\"${PREFIX}/include\" --library-dirs=\"${PREFIX}/lib\"  # [unix]\n    - python setup.py --with-libyaml build_ext --include-dirs=\"%LIBRARY_INC%\" --library-dirs=\"%LIBRARY_LIB%\"      # [win]\n    - python setup.py install\n    - python setup.py test\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n  host:\n    - python\n    - cython\n    - yaml\n  run:\n    - python\n    - yaml\n\ntest:\n  imports:\n    - yaml\n    - _yaml   # [python_impl == \"cpython\"]\n\nabout:\n  home: http://pyyaml.org/wiki/PyYAML\n  license_file: LICENSE\n  license: MIT\n  license_family: MIT\n  summary: YAML parser and emitter for Python\n  dev_url: https://github.com/yaml/pyyaml\n  doc_url: http://pyyaml.org/wiki/PyYAML\n\nextra:\n  recipe-maintainers:\n    - jakirkham\n    - jjhelmus\n    - msarahan\n    - pelson\n    - ocefpaf\n",
  "req":{
   "__set__":true,
