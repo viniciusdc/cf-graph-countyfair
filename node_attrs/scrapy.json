@@ -273,7 +273,7 @@
   },
   "package":{
    "name":"scrapy",
-   "version":"2.0.0"
+   "version":"2.0.1"
   },
   "requirements":{
    "commands":[
@@ -354,9 +354,9 @@
    ]
   },
   "source":{
-   "fn":"Scrapy-2.0.0.tar.gz",
-   "sha256":"bf1bad45e2b664b50c6b04a414ca96c739279ba5a14d685ba90904af8427d9f1",
-   "url":"https://pypi.io/packages/source/S/Scrapy/Scrapy-2.0.0.tar.gz"
+   "fn":"Scrapy-2.0.1.tar.gz",
+   "sha256":"85581a01f4160a103ca9906ffa4e44474f4ecd1685f0934728892c58ebf111f6",
+   "url":"https://pypi.io/packages/source/S/Scrapy/Scrapy-2.0.1.tar.gz"
   },
   "test":{
    "commands":[
@@ -389,7 +389,7 @@
  "name":"scrapy",
  "new_version":"2.0.1",
  "pinning_version":"2020.03.16",
- "raw_meta_yaml":"#\n# See the guidelines for updating this recipe for new releases:\n# https://github.com/scrapy/scrapy/wiki/Scrapy-release-procedure#conda-packages\n#\n{% set name = \"Scrapy\" %}\n{% set version = \"2.0.0\" %}\n{% set hash_type = \"sha256\" %}\n{% set hash_val = \"bf1bad45e2b664b50c6b04a414ca96c739279ba5a14d685ba90904af8427d9f1\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  fn: {{ name }}-{{ version }}.tar.gz\n  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz\n  {{ hash_type }}: {{ hash_val }}\n\nbuild:\n  script: \"{{ PYTHON }} -m pip install . --no-deps -vv\"\n  number: 0\n  skip: True  # [py2k]\n\n# The requirements below shall match the requirements from the target package\n# version (check setup.py for changes).\nrequirements:\n  host:\n    - python\n    - pip\n    - setuptools\n\n  run:\n    - python\n    - setuptools\n    - twisted >=17.9.0\n    - w3lib >=1.17.0\n    - queuelib\n    - lxml\n    - cryptography >=2\n    - cssselect >=0.9\n    - parsel >=1.5.0\n    - pydispatcher >=2.0.5\n    - service_identity\n    - pywin32  # [win]\n    - protego\n\ntest:  # [not win]\n  requires:\n    - botocore\n    - brotlipy\n    - bpython  # [not win]\n    - ipython\n    - google-cloud-storage\n    - pip\n    - jmespath\n    - pillow\n    - pytest < 5.4\n    - testfixtures\n    # indirect dependencies, to avoid compilation\n    - zstandard <0.13.0, >=0.11.0\n  source_files:\n    - conftest.py\n    - scrapy\n    - tests\n  commands:\n    - scrapy version  # [not win]\n    - pip install setuptools-scm  # required by indirect dependency pytest-forked\n    # required from tests/requirements-py3.txt unavailable on conda:\n    - pip install mitmproxy pytest-twisted sybil  # [not win or not py==38]\n    - pip install pytest-twisted sybil  # [win and py==38]\n    - mv scrapy _scrapy\n    - rm tests/test_proxy_connect.py  # [win or py==38]\n    # https://github.com/scrapy/scrapy/issues/2653#issuecomment-598610517\n    - rm tests/test_utils_asyncio.py  # [win or py==38]\n    - rm tests/test_command_parse.py tests/test_command_shell.py tests/test_commands.py tests/test_crawl.py tests/test_crawler.py tests/test_downloader_handlers.py tests/test_exporters.py tests/test_feedexport.py tests/test_utils_trackref.py  # [win]\n    - rm tests/test_command_parse.py tests/test_commands.py tests/test_crawler.py tests/test_downloader_handlers.py  # [osx]\n    - pytest _scrapy tests\n\nabout:\n  home: https://scrapy.org/\n  license: BSD 3-Clauses\n  license_file: LICENSE\n  summary: A high-level Python Screen Scraping framework\n  description: |\n    Scrapy is an open source and collaborative framework for extracting the\n    data you need from websites in a fast, simple, yet extensible way.\n  doc_url: https://docs.scrapy.org\n  dev_url: https://github.com/scrapy/scrapy\n\nextra:\n  recipe-maintainers:\n    - rmax\n    - redapple\n    - kmike\n    - Gallaecio\n    - wRAR\n    - dangra\n",
+ "raw_meta_yaml":"#\n# See the guidelines for updating this recipe for new releases:\n# https://github.com/scrapy/scrapy/wiki/Scrapy-release-procedure#conda-packages\n#\n{% set name = \"Scrapy\" %}\n{% set version = \"2.0.1\" %}\n{% set hash_type = \"sha256\" %}\n{% set hash_val = \"85581a01f4160a103ca9906ffa4e44474f4ecd1685f0934728892c58ebf111f6\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  fn: {{ name }}-{{ version }}.tar.gz\n  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz\n  {{ hash_type }}: {{ hash_val }}\n\nbuild:\n  script: \"{{ PYTHON }} -m pip install . --no-deps -vv\"\n  number: 0\n  skip: True  # [py2k]\n\n# The requirements below shall match the requirements from the target package\n# version (check setup.py for changes).\nrequirements:\n  host:\n    - python\n    - pip\n    - setuptools\n\n  run:\n    - python\n    - setuptools\n    - twisted >=17.9.0\n    - w3lib >=1.17.0\n    - queuelib\n    - lxml\n    - cryptography >=2\n    - cssselect >=0.9\n    - parsel >=1.5.0\n    - pydispatcher >=2.0.5\n    - service_identity\n    - pywin32  # [win]\n    - protego\n\ntest:  # [not win]\n  requires:\n    - botocore\n    - brotlipy\n    - bpython  # [not win]\n    - ipython\n    - google-cloud-storage\n    - pip\n    - jmespath\n    - pillow\n    - pytest < 5.4\n    - testfixtures\n    # indirect dependencies, to avoid compilation\n    - zstandard <0.13.0, >=0.11.0\n  source_files:\n    - conftest.py\n    - scrapy\n    - tests\n  commands:\n    - scrapy version  # [not win]\n    - pip install setuptools-scm  # required by indirect dependency pytest-forked\n    # required from tests/requirements-py3.txt unavailable on conda:\n    - pip install mitmproxy pytest-twisted sybil  # [not win or not py==38]\n    - pip install pytest-twisted sybil  # [win and py==38]\n    - mv scrapy _scrapy\n    - rm tests/test_proxy_connect.py  # [win or py==38]\n    # https://github.com/scrapy/scrapy/issues/2653#issuecomment-598610517\n    - rm tests/test_utils_asyncio.py  # [win or py==38]\n    - rm tests/test_command_parse.py tests/test_command_shell.py tests/test_commands.py tests/test_crawl.py tests/test_crawler.py tests/test_downloader_handlers.py tests/test_exporters.py tests/test_feedexport.py tests/test_utils_trackref.py  # [win]\n    - rm tests/test_command_parse.py tests/test_commands.py tests/test_crawler.py tests/test_downloader_handlers.py  # [osx]\n    - pytest _scrapy tests\n\nabout:\n  home: https://scrapy.org/\n  license: BSD 3-Clauses\n  license_file: LICENSE\n  summary: A high-level Python Screen Scraping framework\n  description: |\n    Scrapy is an open source and collaborative framework for extracting the\n    data you need from websites in a fast, simple, yet extensible way.\n  doc_url: https://docs.scrapy.org\n  dev_url: https://github.com/scrapy/scrapy\n\nextra:\n  recipe-maintainers:\n    - rmax\n    - redapple\n    - kmike\n    - Gallaecio\n    - wRAR\n    - dangra\n",
  "req":{
   "__set__":true,
   "elements":[
@@ -508,5 +508,5 @@
   }
  },
  "url":"https://pypi.io/packages/source/S/Scrapy/Scrapy-1.7.3.tar.gz",
- "version":"2.0.0"
+ "version":"2.0.1"
 }
