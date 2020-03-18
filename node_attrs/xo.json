@@ -88,23 +88,25 @@
   }
  ],
  "bad":false,
- "conda-forge.yml":{
-  "compiler_stack":"comp7",
-  "max_py_ver":"37",
-  "max_r_ver":"35"
- },
+ "conda-forge.yml":{},
  "feedstock_name":"xo",
  "hash_type":"sha256",
  "meta_yaml":{
   "about":{
    "home":"http://exofrills.org/",
    "license":"WTFPL v2",
+   "license_family":"OTHER",
    "summary":"exofrills text editor"
   },
   "build":{
-   "number":"0",
-   "script":"python setup.py install",
-   "skip":true
+   "entry_points":[
+    "xo = xo:main",
+    "xo = xo:main",
+    "xo = xo:main"
+   ],
+   "noarch":"python",
+   "number":"1",
+   "script":"-m pip install . --no-deps -vv"
   },
   "extra":{
    "recipe-maintainers":[
@@ -118,28 +120,30 @@
    "version":"0.3.3"
   },
   "requirements":{
-   "build":[
-    "python",
-    "python",
-    "python"
+   "host":[
+    "python >=3.4",
+    "pip",
+    "python >=3.4",
+    "pip",
+    "python >=3.4",
+    "pip"
    ],
    "run":[
-    "python",
+    "python >=3.4",
     "urwid",
     "pygments",
     "pygments-cache",
-    "python",
+    "python >=3.4",
     "urwid",
     "pygments",
     "pygments-cache",
-    "python",
+    "python >=3.4",
     "urwid",
     "pygments",
     "pygments-cache"
    ]
   },
   "source":{
-   "fn":"xo-1033a326b55295e183f6a1283c9fbed47263903e8a14ec7048755db0d65c92ed.tar.gz",
    "sha256":"1033a326b55295e183f6a1283c9fbed47263903e8a14ec7048755db0d65c92ed",
    "url":"https://github.com/scopatz/xo/releases/download/0.3.3/xo-0.3.3.tar.gz"
   },
@@ -154,10 +158,11 @@
  "name":"xo",
  "new_version":"0.3.3",
  "pinning_version":"2020.03.16",
- "raw_meta_yaml":"{% set version = \"0.3.3\" %}\n{% set sha256 = \"1033a326b55295e183f6a1283c9fbed47263903e8a14ec7048755db0d65c92ed\" %}\n\npackage:\n  name: xo\n  version: {{ version }}\n\nsource:\n  fn: xo-{{ sha256 }}.tar.gz\n  url: https://github.com/scopatz/xo/releases/download/{{ version }}/xo-{{ version }}.tar.gz\n  sha256: {{ sha256 }}\n\nbuild:\n  number: 0\n  skip: true  # [win or py2k]\n  script: python setup.py install\n\nrequirements:\n  build:\n    - python\n  run:\n    - python\n    - urwid\n    - pygments\n    - pygments-cache\n\ntest:\n  commands:\n    - xo --help\n\nabout:\n  home: http://exofrills.org/\n  license: WTFPL v2\n  summary: \"exofrills text editor\"\n\nextra:\n  recipe-maintainers:\n    - scopatz\n",
+ "raw_meta_yaml":"{% set version = \"0.3.3\" %}\n{% set sha256 = \"1033a326b55295e183f6a1283c9fbed47263903e8a14ec7048755db0d65c92ed\" %}\n\npackage:\n  name: xo\n  version: {{ version }}\n\nsource:\n  url: https://github.com/scopatz/xo/releases/download/{{ version }}/xo-{{ version }}.tar.gz\n  sha256: {{ sha256 }}\n\nbuild:\n  number: 1\n  script: {{ PYTHON }} -m pip install . --no-deps -vv\n  noarch: python\n  entry_points:\n    - xo = xo:main\n\nrequirements:\n  host:\n    - python >=3.4\n    - pip\n  run:\n    - python >=3.4\n    - urwid\n    - pygments\n    - pygments-cache\n\ntest:\n  commands:\n    - xo --help\n\nabout:\n  home: http://exofrills.org/\n  license: WTFPL v2\n  license_family: OTHER\n  summary: \"exofrills text editor\"\n\nextra:\n  recipe-maintainers:\n    - scopatz\n",
  "req":{
   "__set__":true,
   "elements":[
+   "pip",
    "pygments",
    "pygments-cache",
    "python",
@@ -167,13 +172,14 @@
  "requirements":{
   "build":{
    "__set__":true,
-   "elements":[
-    "python"
-   ]
+   "elements":[]
   },
   "host":{
    "__set__":true,
-   "elements":[]
+   "elements":[
+    "pip",
+    "python"
+   ]
   },
   "run":{
    "__set__":true,
@@ -194,20 +200,21 @@
  "total_requirements":{
   "build":{
    "__set__":true,
-   "elements":[
-    "python"
-   ]
+   "elements":[]
   },
   "host":{
    "__set__":true,
-   "elements":[]
+   "elements":[
+    "pip",
+    "python >=3.4"
+   ]
   },
   "run":{
    "__set__":true,
    "elements":[
     "pygments",
     "pygments-cache",
-    "python",
+    "python >=3.4",
     "urwid"
    ]
   },

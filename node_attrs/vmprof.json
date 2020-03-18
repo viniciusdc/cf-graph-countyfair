@@ -98,29 +98,28 @@
     "migrator_version",
     "name"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/0dc37d18-643c-4015-a483-f2a84c57ef48.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"MigrationYaml",
+    "migrator_object_version":1,
+    "migrator_version":0,
+    "name":"pypy"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_object_version",
+    "migrator_version",
+    "name"
+   ]
   }
  ],
- "bad":{
-  "exception":"Failed to put item: An error occurred (ValidationException) on request (JHPD4JGBP5U1HND388KBI02L4FVV4KQNSO5AEMVJF66Q9ASUAAJG) on table (pr_json) when calling the PutItem operation: Attempting to store more than 38 significant digits in a Number",
-  "traceback":[
-   "Traceback (most recent call last):",
-   "  File \"/root/repo/cf-scripts/conda_forge_tick/auto_tick.py\", line 873, in main",
-   "    hash_type=attrs.get(\"hash_type\", \"sha256\"),",
-   "  File \"/root/repo/cf-scripts/conda_forge_tick/auto_tick.py\", line 248, in run",
-   "    PRJson.dump(pr_json)",
-   "  File \"/root/repo/cf-scripts/conda_forge_tick/dynamo_models.py\", line 33, in dump",
-   "    item.save()",
-   "  File \"/opt/conda/envs/run_env/lib/python3.7/site-packages/pynamodb/models.py\", line 405, in save",
-   "    data = self._get_connection().put_item(*args, **kwargs)",
-   "  File \"/opt/conda/envs/run_env/lib/python3.7/site-packages/pynamodb/connection/table.py\", line 139, in put_item",
-   "    return_item_collection_metrics=return_item_collection_metrics)",
-   "  File \"/opt/conda/envs/run_env/lib/python3.7/site-packages/pynamodb/connection/base.py\", line 972, in put_item",
-   "    six.raise_from(PutError(\"Failed to put item: {}\".format(e), e), None)",
-   "  File \"<string>\", line 3, in raise_from",
-   "pynamodb.exceptions.PutError: Failed to put item: An error occurred (ValidationException) on request (JHPD4JGBP5U1HND388KBI02L4FVV4KQNSO5AEMVJF66Q9ASUAAJG) on table (pr_json) when calling the PutItem operation: Attempting to store more than 38 significant digits in a Number",
-   ""
-  ]
- },
+ "bad":false,
  "conda-forge.yml":{},
  "feedstock_name":"vmprof",
  "hash_type":"sha256",
@@ -242,7 +241,7 @@
  },
  "name":"vmprof",
  "new_version":false,
- "pinning_version":"2019.11.01",
+ "pinning_version":"2020.03.16",
  "raw_meta_yaml":"{% set name = \"vmprof\" %}\n{% set version = \"0.4.12\" %}\n{% set sha256 = \"64c62cd737c88573447d1f90f29978fc3178a1663ddbdb60cdcb3f2c15e427da\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  url: https://github.com/vmprof/vmprof-python/archive/{{ version }}.tar.gz\n  sha256: {{ sha256 }}\n\nbuild:\n  number: 0\n  script: python -m pip install --no-deps --ignore-installed .\n  entry_points:\n    - vmprofshow = vmprof.show:main\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n  host:\n    - python\n    - pip\n    - setuptools\n    - libunwind  # [linux]\n  run:\n    - python\n    - requests\n    - six\n    - pytz\n    - colorama\n    - backports.shutil_which  # [py2k]\n    - libunwind  # [linux]\n\ntest:\n  imports:\n    - vmprof\n    - jitlog\n    - vmshare\n  commands:\n    - vmprofshow --help\n    - py.test vmprof/ -vrs\n  requires:\n    - pytest\n    - cffi\n    - hypothesis\n    - toolchain\n  source_files:\n    - vmprof\n    - src\n\n\nabout:\n  home: https://github.com/vmprof/vmprof-python\n  license: MIT\n  license_family: MIT\n  license_file: LICENSE\n  summary: 'vmprof - a statistical program profiler'\n\n  description: |\n    vmprof is a platform to understand and resolve performance bottlenecks in your code. \n    It includes a lightweight profiler for CPython 2.7, CPython 3 and PyPy and \n    an assembler log visualizer for PyPy. \n  doc_url: https://vmprof.readthedocs.io\n  dev_url: https://github.com/vmprof/vmprof-python\n\nextra:\n  recipe-maintainers:\n    - synapticarbors\n",
  "req":{
   "__set__":true,
@@ -295,7 +294,7 @@
    ]
   }
  },
- "smithy_version":"3.6.1",
+ "smithy_version":"3.6.12",
  "strong_exports":false,
  "total_requirements":{
   "build":{
