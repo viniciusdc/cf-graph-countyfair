@@ -50,6 +50,25 @@
     "migrator_version",
     "name"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/390355082.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"MigrationYaml",
+    "migrator_object_version":1,
+    "migrator_version":0,
+    "name":"pypy"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_object_version",
+    "migrator_version",
+    "name"
+   ]
   }
  ],
  "bad":false,
@@ -200,7 +219,7 @@
  },
  "name":"jcc",
  "new_version":false,
- "pinning_version":"2019.11.01",
+ "pinning_version":"2020.03.16",
  "raw_meta_yaml":"{% set name = \"JCC\" %}\n{% set version = \"3.6\" %}\n{% set sha256 = \"375f25b7186a67327ba9c031ee357b85c17d1569f4c2dd1d2fccea39eb670048\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  fn: {{ name }}-{{ version }}.tar.gz\n  url: https://files.pythonhosted.org/packages/3f/6f/123875ea113fefd766a01136fecfcb0da8b841e0cac6882ee592a14f6f2c/{{ name }}-{{ version }}.tar.gz\n  sha256: {{ sha256 }}\n\n  patches:\n    - _-_fixed_bug_with_wrongly_assuming_1BYTE_KIND_python_unicode_strings_to_be_utf-8_.patch\n    - made_the_1BYTE_KIND_-__jchar_case_a_bit_faster.patch\n    - added_setting_of_type___module___for_all_generated_wrapper_types_(python_3)_.patch\n    - Added___module___to_JArray()_types__.patch\n    - added_support_for_Python_3_8_.patch\n\nbuild:\n  number: 4\n\n  rpaths: # only valid for linux\n    - lib\n    - jre/lib/amd64/\n    - jre/lib/amd64/server/\n\n  has_prefix_files:\n    - jcc/config.py\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n  host:\n    - python\n    - setuptools\n    - openjdk 8.0.152  # Force anaconda openjdk \n\n  run:\n    - python\n    - openjdk 8.0.152  # Force anaconda openjdk\n\ntest:\n  imports:\n    - jcc\n\n  requires:\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n\n  files:\n    - test/*.py\n    - test/java-example/*.bat\n    - test/java-example/*.sh\n    - test/java-example/*.java\n    - test/java-example/*.py\n    - test/java-example-test-parameters/*.bat\n    - test/java-example-test-parameters/*.sh\n    - test/java-example-test-parameters/org/jcc/test/*.java\n    - test/java-example-test-parameters/*.py\n\nabout:\n  home: http://lucene.apache.org/pylucene/jcc/index.html\n\n  license: Apache-2.0\n  license_file: LICENSE\n\n  summary: 'a C++ code generator for calling Java from C++/Python'\n  description: |\n    JCC is a C++ code generator for producing the code necessary to call into Java classes from CPython via Java\u2019s Native Invocation Interface (JNI).\n\n  doc_url: http://lucene.apache.org/pylucene/jcc/index.html\n\nextra:\n  recipe-maintainers:\n    - petrushy\n",
  "req":{
   "__set__":true,
@@ -243,7 +262,7 @@
    ]
   }
  },
- "smithy_version":"3.6.1",
+ "smithy_version":"3.6.12",
  "strong_exports":false,
  "total_requirements":{
   "build":{
