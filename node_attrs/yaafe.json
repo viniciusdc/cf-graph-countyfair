@@ -81,6 +81,25 @@
     "migrator_version",
     "name"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/1b8081d2-692b-4ff9-8fab-560226d3858f.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"MigrationYaml",
+    "migrator_object_version":1,
+    "migrator_version":0,
+    "name":"pypy"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_object_version",
+    "migrator_version",
+    "name"
+   ]
   }
  ],
  "bad":false,
@@ -211,7 +230,7 @@
  },
  "name":"yaafe",
  "new_version":"0.70",
- "pinning_version":"2019.11.01",
+ "pinning_version":"2020.03.16",
  "raw_meta_yaml":"{% set name = \"Yaafe\" %}\n{% set version = \"0.70\" %}\n{% set sha256 = \"fa3ffd4f0917d611cc193f4fdf9bf8f25e05e9513e6074a323db2825b514cc4f\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  fn: {{ name }}-{{ version }}.tar.gz\n  url: https://github.com/{{ name }}/{{ name }}/archive/{{ version }}.tar.gz\n  sha256: {{ sha256 }}\n\nbuild:\n  rpaths:\n    - lib/\n  number: 1\n  skip: true  # [win]\n\nrequirements:\n  build:\n    - cmake\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n  host:\n    - python\n    - hdf5\n    - eigen\n    - fftw\n    - libsndfile\n    - mpg123\n    - argtable2\n    - lapack\n\n  run:\n    - python\n    - hdf5\n    - eigen\n    - fftw\n    - libsndfile\n    - mpg123\n    - argtable2\n    - lapack\n\ntest:\n  files:\n      # can uncomment in the feedstock and after the yaafe_check.wav file is re-added\n      #- yaafe_check.wav\n    - featureplan\n\n  imports:\n    - yaafelib\n\n  commands:\n    - yaafe -h\n    - yaafe -l\n      # can uncomment in the feedstock and after the yaafe_check.wav file is re-added\n      #- yaafe -c featureplan  -r 32000 -o h5 yaafe_check.wav\n      #- yaafe -c featureplan  -r 32000 -o csv yaafe_check.wav\n\nabout:\n  home: https://github.com/Yaafe/Yaafe\n  license: LGPL-3\n  license_family: LGPL\n  license_file: COPYING.LESSER\n  summary: \"Yaafe - audio features extraction\"\n\nextra:\n    recipe-maintainers:\n        - thomasfillon\n        - hbredin\n",
  "req":{
   "__set__":true,
@@ -269,7 +288,7 @@
    "elements":[]
   }
  },
- "smithy_version":"3.6.0",
+ "smithy_version":"3.6.12",
  "strong_exports":false,
  "total_requirements":{
   "build":{
