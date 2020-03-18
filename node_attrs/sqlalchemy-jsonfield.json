@@ -55,8 +55,9 @@
    "summary":"SQLALchemy JSONField implementation for storing dicts at SQL independently\nfrom JSON type support.\n"
   },
   "build":{
-   "number":"1",
-   "script":" -m pip install . -vv"
+   "noarch":"python",
+   "number":"2",
+   "script":"-m pip install . -vv"
   },
   "extra":{
    "recipe-maintainers":[
@@ -71,27 +72,27 @@
   },
   "requirements":{
    "host":[
-    "python",
+    "python >=3.6",
     "pip",
     "setuptools",
     "setuptools_scm",
-    "python",
+    "python >=3.6",
     "pip",
     "setuptools",
     "setuptools_scm",
-    "python",
+    "python >=3.6",
     "pip",
     "setuptools",
     "setuptools_scm"
    ],
    "run":[
-    "python",
+    "python >=3.6",
     "setuptools",
     "sqlalchemy",
-    "python",
+    "python >=3.6",
     "setuptools",
     "sqlalchemy",
-    "python",
+    "python >=3.6",
     "setuptools",
     "sqlalchemy"
    ]
@@ -111,7 +112,7 @@
  "name":"sqlalchemy-jsonfield",
  "new_version":"0.9.0",
  "pinning_version":"2020.03.16",
- "raw_meta_yaml":"{% set name = \"SQLAlchemy-JSONField\" %}\n{% set version = \"0.9.0\" %}\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz\n  sha256: 1cb760abf186a97beb5acdfd47dc2f98829070f679a838869162cd7c0b447e0d\n\nbuild:\n  number: 1\n  script: \"{{ PYTHON }} -m pip install . -vv\"\n  skip: True  # [py<35]\n\nrequirements:\n  host:\n    - python\n    - pip\n    - setuptools\n    - setuptools_scm\n  run:\n    - python\n    - setuptools\n    - sqlalchemy\n    - typing >=3.6  # [py<37]\n\ntest:\n  imports:\n    - sqlalchemy_jsonfield\n\nabout:\n  home: https://github.com/penguinolog/sqlalchemy_jsonfield\n  license: Apache-2.0\n  license_family: Apache\n  license_file: LICENSE\n  summary: |\n    SQLALchemy JSONField implementation for storing dicts at SQL independently\n    from JSON type support.\n\n  description: |\n    SqlAlchemy provides JSON field support for several database types\n    (PostgreSQL and MySQL for now) and semi-working dict <-> JSON <-> VARCHAR\n    example, but... In real scenarios we have tests on sqlite, production on\n    MySQL/MariaDB/Percona/PostgreSQL and some of them (modern Oracle MySQL &\n    PostgreSQL) support JSON, some of them (SQLite, Percona & MariaDB) requires\n    data conversion to Text (not VARCHAR).\n\n    As addition, we have different levels of Unicode support on database and\n    connector side, so we may be interested to switch JSON encoding between d\n    eployments.\n  doc_url: https://github.com/penguinolog/sqlalchemy_jsonfield\n  dev_url: https://github.com/penguinolog/sqlalchemy_jsonfield\n\nextra:\n  recipe-maintainers:\n    - xylar\n",
+ "raw_meta_yaml":"{% set name = \"SQLAlchemy-JSONField\" %}\n{% set version = \"0.9.0\" %}\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz\n  sha256: 1cb760abf186a97beb5acdfd47dc2f98829070f679a838869162cd7c0b447e0d\n\nbuild:\n  number: 2\n  script: {{ PYTHON }} -m pip install . -vv\n  noarch: python\n\nrequirements:\n  host:\n    - python >=3.6\n    - pip\n    - setuptools\n    - setuptools_scm\n  run:\n    - python >=3.6\n    - setuptools\n    - sqlalchemy\n\ntest:\n  imports:\n    - sqlalchemy_jsonfield\n\nabout:\n  home: https://github.com/penguinolog/sqlalchemy_jsonfield\n  license: Apache-2.0\n  license_family: Apache\n  license_file: LICENSE\n  summary: |\n    SQLALchemy JSONField implementation for storing dicts at SQL independently\n    from JSON type support.\n\n  description: |\n    SqlAlchemy provides JSON field support for several database types\n    (PostgreSQL and MySQL for now) and semi-working dict <-> JSON <-> VARCHAR\n    example, but... In real scenarios we have tests on sqlite, production on\n    MySQL/MariaDB/Percona/PostgreSQL and some of them (modern Oracle MySQL &\n    PostgreSQL) support JSON, some of them (SQLite, Percona & MariaDB) requires\n    data conversion to Text (not VARCHAR).\n\n    As addition, we have different levels of Unicode support on database and\n    connector side, so we may be interested to switch JSON encoding between d\n    eployments.\n  doc_url: https://github.com/penguinolog/sqlalchemy_jsonfield\n  dev_url: https://github.com/penguinolog/sqlalchemy_jsonfield\n\nextra:\n  recipe-maintainers:\n    - xylar\n",
  "req":{
   "__set__":true,
   "elements":[
@@ -160,7 +161,7 @@
    "__set__":true,
    "elements":[
     "pip",
-    "python",
+    "python >=3.6",
     "setuptools",
     "setuptools_scm"
    ]
@@ -168,7 +169,7 @@
   "run":{
    "__set__":true,
    "elements":[
-    "python",
+    "python >=3.6",
     "setuptools",
     "sqlalchemy"
    ]
