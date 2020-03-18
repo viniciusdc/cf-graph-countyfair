@@ -156,7 +156,8 @@
    "summary":"MUMPS: a parallel sparse direct solver"
   },
   "build":{
-   "number":"5"
+   "number":"6",
+   "skip":true
   },
   "extra":{
    "recipe-maintainers":[
@@ -208,8 +209,8 @@
      "build":[
       "cmake",
       "m2-patch",
-      "m2w64_fortran_compiler_stub",
-      "m2w64_c_compiler_stub"
+      "fortran_compiler_stub",
+      "c_compiler_stub"
      ],
      "host":[
       "libblas",
@@ -256,7 +257,10 @@
     },
     "name":"mumps-mpi",
     "requirements":{
-     "build":null,
+     "build":[
+      "fortran_compiler_stub",
+      "c_compiler_stub"
+     ],
      "host":[
       "libblas",
       "liblapack",
@@ -569,8 +573,9 @@
   },
   "requirements":{
    "build":[
-    "m2w64_fortran_compiler_stub",
-    "m2w64_c_compiler_stub",
+    "fortran_compiler_stub",
+    "c_compiler_stub",
+    "m2-patch",
     "mpi *",
     "fortran_compiler_stub",
     "c_compiler_stub",
@@ -587,14 +592,17 @@
     "shared-mumps.patch",
     "shared-libseq.patch",
     "examples-mpilibs.patch",
+    "flang-support.patch",
     "shared-pord.patch",
     "shared-mumps.patch",
     "shared-libseq.patch",
     "examples-mpilibs.patch",
+    "flang-support.patch",
     "shared-pord.patch",
     "shared-mumps.patch",
     "shared-libseq.patch",
-    "examples-mpilibs.patch"
+    "examples-mpilibs.patch",
+    "flang-support.patch"
    ],
    "sha256":"d988fc34dfc8f5eee0533e361052a972aa69cc39ab193e7f987178d24981744a",
    "url":"http://mumps.enseeiht.fr/MUMPS_5.2.1.tar.gz"
@@ -608,7 +616,7 @@
   "mumps-seq"
  ],
  "pinning_version":"2019.09.24",
- "raw_meta_yaml":"{% set name = \"mumps\" %}\n{% set version = \"5.2.1\" %}\n{% set sha256 = \"d988fc34dfc8f5eee0533e361052a972aa69cc39ab193e7f987178d24981744a\" %}\n\npackage:\n  name: mumps\n  version: {{ version }}\n\nsource:\n  fn: MUMPS_{{ version }}.tar.gz\n  url: http://mumps.enseeiht.fr/MUMPS_{{ version }}.tar.gz\n  sha256: {{ sha256 }}\n  patches:\n    - shared-pord.patch\n    - shared-mumps.patch\n    - shared-libseq.patch\n    - examples-mpilibs.patch\n\nbuild:\n  number: 5\n\nrequirements:\n  build:\n    # dummy unused top-level requirements\n    # needed to construct the right conda-smithy matrix\n    - {{ compiler('fortran') }}        # [unix]\n    - {{ compiler('m2w64_fortran') }}  # [win]\n    - {{ compiler('c') }}        # [unix]\n    - {{ compiler('m2w64_c') }}  # [win]\n    - mpi * {{ mpi }}  # [mpi != 'nompi']\n\noutputs:\n  - name: mumps-include\n    build:\n      script: ${RECIPE_DIR}/build-headers.sh\n      skip: true  # [win]\n    requirements:\n      build: []\n      host: []\n    test:\n      commands:\n        - test -f \"${PREFIX}/include/mumps_compat.h\"\n\n  - name: mumps-seq\n    build:\n      script: ${RECIPE_DIR}/build-seq.sh  # [not win]\n      script: \"%RECIPE_DIR%\\\\bld-seq.bat\"  # [win]\n      run_exports:\n        - {{ pin_subpackage('mumps-seq', max_pin='x.x.x') }}  # [not win]\n      skip: true  # [mpi != 'nompi']\n    requirements:\n      build:\n        - cmake  # [win]\n        - m2-patch  # [win]\n        - {{ compiler('fortran') }}        # [unix]\n        - {{ compiler('m2w64_fortran') }}  # [win]\n        - {{ compiler('c') }}        # [unix]\n        - {{ compiler('m2w64_c') }}  # [win]\n      host:\n        - libblas\n        - liblapack\n        - metis  # [not win]\n        - scotch  # [not win]\n      run:\n        - {{ pin_subpackage('mumps-include', max_pin='x.x.x') }}  # [not win]\n        - metis  # [not win]\n        - scotch  # [not win]\n\n    test:\n      commands:\n        {% if not win %}\n\n        {% for lib in [\n          'smumps',\n          'dmumps',\n          'cmumps',\n          'zmumps',\n          'mumps_common',\n          'pord',\n        ] %}\n        - test -f \"${PREFIX}/lib/lib{{ lib }}_seq-{{ version }}${SHLIB_EXT}\"\n        - test -f \"${PREFIX}/lib/lib{{ lib }}_seq${SHLIB_EXT}\"\n        - test -h \"${PREFIX}/lib/lib{{ lib }}_seq${SHLIB_EXT}\"\n        {% endfor %}\n        - test -f \"${PREFIX}/lib/libmpiseq_seq-{{ version }}${SHLIB_EXT}\"\n        - test -f \"${PREFIX}/lib/libmpiseq_seq${SHLIB_EXT}\"\n        - test -h \"${PREFIX}/lib/libmpiseq_seq${SHLIB_EXT}\"\n        - test -f \"${PREFIX}/lib/libmpiseq${SHLIB_EXT}\"\n        - test -h \"${PREFIX}/lib/libmpiseq${SHLIB_EXT}\"\n        - test -f \"${PREFIX}/include/mumps_seq/mpi.h\"\n        - test -f \"${PREFIX}/include/mumps_seq/mpif.h\"\n        {% else %}\n        - if not exist \"%LIBRARY_PREFIX%\\mingw-w64\\bin\\libsmumps.dll\" exit 1\n        - if not exist \"%LIBRARY_PREFIX%\\mingw-w64\\bin\\libdmumps.dll\" exit 1\n        - if not exist \"%LIBRARY_PREFIX%\\mingw-w64\\bin\\libcmumps.dll\" exit 1\n        - if not exist \"%LIBRARY_PREFIX%\\mingw-w64\\bin\\libzmumps.dll\" exit 1\n        - if not exist \"%LIBRARY_PREFIX%\\mingw-w64\\lib\\libmumps_common.a\" exit 1\n        - if not exist \"%LIBRARY_PREFIX%\\mingw-w64\\lib\\libpord.a\" exit 1\n        - if not exist \"%LIBRARY_PREFIX%\\mingw-w64\\include\\dmumps_struc.h\" exit 1\n        {% endif %}\n\n  - name: mumps-mpi\n    build:\n      skip: true  # [win or mpi == 'nompi']\n      script: ${RECIPE_DIR}/build-mpi.sh\n      run_exports:\n        - {{ pin_subpackage('mumps-mpi', max_pin='x.x.x') }}  # [not win]\n      features:\n    requirements:\n      build:\n        - {{ compiler('fortran') }}  # [not win]\n        - {{ compiler('c') }}  # [not win]\n      host:\n        - libblas\n        - liblapack\n        - {{ mpi }}\n        - metis\n        - parmetis\n        - ptscotch\n        - scalapack\n        - scotch\n      run:\n        - {{ pin_subpackage('mumps-include', exact=True) }}\n        - {{ mpi }}\n        - metis\n        - parmetis\n        - ptscotch\n        - scalapack\n        - scotch\n\n    test:\n      commands:\n        {% for lib in [\n          'smumps',\n          'dmumps',\n          'cmumps',\n          'zmumps',\n          'mumps_common',\n          'pord',\n        ] %}\n        - test -f \"${PREFIX}/lib/lib{{ lib }}-{{ version }}${SHLIB_EXT}\"\n        - test -h \"${PREFIX}/lib/lib{{ lib }}${SHLIB_EXT}\"\n        - test -f \"${PREFIX}/lib/lib{{ lib }}${SHLIB_EXT}\"\n        {% endfor %}\n        - test ! -f \"${PREFIX}/lib/libmpiseq*\"\n        - test ! -d \"${PREFIX}/include/mumps_seq\"\n\nabout:\n  home: http://mumps.enseeiht.fr/\n  license: CeCILL-C\n  license_file: LICENSE\n  summary: 'MUMPS: a parallel sparse direct solver'\n  description: |\n    MUMPS (MUltifrontal Massively Parallel Solver) is a package for solving\n    systems of linear equations of the form Ax = b, where A is a square sparse\n    matrix that can be either unsymmetric, symmetric positive definite, or\n    general symmetric, on distributed memory computers. MUMPS implements a\n    direct method based on a multifrontal approach which performs a Gaussian\n    factorization.\n  doc_url: http://mumps.enseeiht.fr/index.php?page=doc\n\nextra:\n  recipe-maintainers:\n    - basnijholt\n    - dalcinl\n    - minrk\n    - jbweston\n    - davidbrochart\n    - SylvainCorlay\n",
+ "raw_meta_yaml":"{% set name = \"mumps\" %}\n{% set version = \"5.2.1\" %}\n{% set sha256 = \"d988fc34dfc8f5eee0533e361052a972aa69cc39ab193e7f987178d24981744a\" %}\n\npackage:\n  name: mumps\n  version: {{ version }}\n\nsource:\n  fn: MUMPS_{{ version }}.tar.gz\n  url: http://mumps.enseeiht.fr/MUMPS_{{ version }}.tar.gz\n  sha256: {{ sha256 }}\n  patches:\n    - shared-pord.patch\n    - shared-mumps.patch\n    - shared-libseq.patch\n    - examples-mpilibs.patch\n    - flang-support.patch\n\nbuild:\n  number: 6\n  skip: true  # [win and vc<14]\n\nrequirements:\n  build:\n    # dummy unused top-level requirements\n    # needed to construct the right conda-smithy matrix\n    - {{ compiler('fortran') }}\n    - {{ compiler('c') }}\n    - m2-patch  # [win]\n    - mpi * {{ mpi }}  # [mpi != 'nompi']\n\noutputs:\n  - name: mumps-include\n    build:\n      script: ${RECIPE_DIR}/build-headers.sh\n      skip: true  # [win]\n    requirements:\n      build: []\n      host: []\n    test:\n      commands:\n        - test -f \"${PREFIX}/include/mumps_compat.h\"\n\n  - name: mumps-seq\n    build:\n      script: ${RECIPE_DIR}/build-seq.sh  # [not win]\n      script: \"%RECIPE_DIR%\\\\bld-seq.bat\"  # [win]\n      run_exports:\n        - {{ pin_subpackage('mumps-seq', max_pin='x.x.x') }}  # [not win]\n      skip: true  # [(win and vc<14) or mpi != 'nompi']\n    requirements:\n      build:\n        - cmake  # [win]\n        - m2-patch  # [win]\n        - {{ compiler('fortran') }}\n        - {{ compiler('c') }}\n      host:\n        - libblas\n        - liblapack\n        - metis  # [not win]\n        - scotch  # [not win]\n      run:\n        - {{ pin_subpackage('mumps-include', max_pin='x.x.x') }}  # [not win]\n        - metis  # [not win]\n        - scotch  # [not win]\n\n    test:\n      commands:\n        {% if not win %}\n\n        {% for lib in [\n          'smumps',\n          'dmumps',\n          'cmumps',\n          'zmumps',\n          'mumps_common',\n          'pord',\n        ] %}\n        - test -f \"${PREFIX}/lib/lib{{ lib }}_seq-{{ version }}${SHLIB_EXT}\"\n        - test -f \"${PREFIX}/lib/lib{{ lib }}_seq${SHLIB_EXT}\"\n        - test -h \"${PREFIX}/lib/lib{{ lib }}_seq${SHLIB_EXT}\"\n        {% endfor %}\n        - test -f \"${PREFIX}/lib/libmpiseq_seq-{{ version }}${SHLIB_EXT}\"\n        - test -f \"${PREFIX}/lib/libmpiseq_seq${SHLIB_EXT}\"\n        - test -h \"${PREFIX}/lib/libmpiseq_seq${SHLIB_EXT}\"\n        - test -f \"${PREFIX}/lib/libmpiseq${SHLIB_EXT}\"\n        - test -h \"${PREFIX}/lib/libmpiseq${SHLIB_EXT}\"\n        - test -f \"${PREFIX}/include/mumps_seq/mpi.h\"\n        - test -f \"${PREFIX}/include/mumps_seq/mpif.h\"\n        {% else %}\n        - if not exist \"%LIBRARY_PREFIX%\\bin\\smumps.dll\" exit 1\n        - if not exist \"%LIBRARY_PREFIX%\\bin\\smumps.lib\" exit 1\n        - if not exist \"%LIBRARY_PREFIX%\\bin\\dmumps.dll\" exit 1\n        - if not exist \"%LIBRARY_PREFIX%\\bin\\dmumps.lib\" exit 1\n        - if not exist \"%LIBRARY_PREFIX%\\bin\\cmumps.dll\" exit 1\n        - if not exist \"%LIBRARY_PREFIX%\\bin\\cmumps.lib\" exit 1\n        - if not exist \"%LIBRARY_PREFIX%\\bin\\zmumps.dll\" exit 1\n        - if not exist \"%LIBRARY_PREFIX%\\bin\\zmumps.lib\" exit 1\n        - if not exist \"%LIBRARY_PREFIX%\\lib\\mumps_common.lib\" exit 1\n        - if not exist \"%LIBRARY_PREFIX%\\lib\\pord.lib\" exit 1\n        - if not exist \"%LIBRARY_PREFIX%\\include\\dmumps_struc.h\" exit 1\n        - if not exist \"%LIBRARY_PREFIX%\\include\\mumps_compat.h\" exit 1\n        - if not exist \"%LIBRARY_PREFIX%\\include\\mumps_seq\\mpi.h\" exit 1\n        - if not exist \"%LIBRARY_PREFIX%\\include\\mumps_seq\\mpif.h\" exit 1\n        {% endif %}\n\n  - name: mumps-mpi\n    build:\n      skip: true  # [win or mpi == 'nompi']\n      script: ${RECIPE_DIR}/build-mpi.sh\n      run_exports:\n        - {{ pin_subpackage('mumps-mpi', max_pin='x.x.x') }}  # [not win]\n      features:\n    requirements:\n      build:\n        - {{ compiler('fortran') }}\n        - {{ compiler('c') }}\n      host:\n        - libblas\n        - liblapack\n        - {{ mpi }}\n        - metis\n        - parmetis\n        - ptscotch\n        - scalapack\n        - scotch\n      run:\n        - {{ pin_subpackage('mumps-include', exact=True) }}\n        - {{ mpi }}\n        - metis\n        - parmetis\n        - ptscotch\n        - scalapack\n        - scotch\n\n    test:\n      commands:\n        {% for lib in [\n          'smumps',\n          'dmumps',\n          'cmumps',\n          'zmumps',\n          'mumps_common',\n          'pord',\n        ] %}\n        - test -f \"${PREFIX}/lib/lib{{ lib }}-{{ version }}${SHLIB_EXT}\"\n        - test -h \"${PREFIX}/lib/lib{{ lib }}${SHLIB_EXT}\"\n        - test -f \"${PREFIX}/lib/lib{{ lib }}${SHLIB_EXT}\"\n        {% endfor %}\n        - test ! -f \"${PREFIX}/lib/libmpiseq*\"\n        - test ! -d \"${PREFIX}/include/mumps_seq\"\n\nabout:\n  home: http://mumps.enseeiht.fr/\n  license: CeCILL-C\n  license_file: LICENSE\n  summary: 'MUMPS: a parallel sparse direct solver'\n  description: |\n    MUMPS (MUltifrontal Massively Parallel Solver) is a package for solving\n    systems of linear equations of the form Ax = b, where A is a square sparse\n    matrix that can be either unsymmetric, symmetric positive definite, or\n    general symmetric, on distributed memory computers. MUMPS implements a\n    direct method based on a multifrontal approach which performs a Gaussian\n    factorization.\n  doc_url: http://mumps.enseeiht.fr/index.php?page=doc\n\nextra:\n  recipe-maintainers:\n    - basnijholt\n    - dalcinl\n    - minrk\n    - jbweston\n    - davidbrochart\n    - SylvainCorlay\n",
  "req":{
   "__set__":true,
   "elements":[
@@ -618,8 +626,6 @@
    "libblas",
    "liblapack",
    "m2-patch",
-   "m2w64_c_compiler_stub",
-   "m2w64_fortran_compiler_stub",
    "metis",
    "mpi",
    "mumps-include",
@@ -637,8 +643,6 @@
     "cmake",
     "fortran_compiler_stub",
     "m2-patch",
-    "m2w64_c_compiler_stub",
-    "m2w64_fortran_compiler_stub",
     "mpi"
    ]
   },
@@ -680,8 +684,6 @@
     "cmake",
     "fortran_compiler_stub",
     "m2-patch",
-    "m2w64_c_compiler_stub",
-    "m2w64_fortran_compiler_stub",
     "mpi *"
    ]
   },
