@@ -52,13 +52,13 @@
   },
   "build":{
    "entry_points":[
-    "rafem = rafem.main:main",
-    "rafem = rafem.main:main",
-    "rafem = rafem.main:main"
+    "rafem = rafem.main:rafem",
+    "rafem = rafem.main:rafem",
+    "rafem = rafem.main:rafem"
    ],
    "noarch":"python",
    "number":"0",
-   "script":" -m pip install . --no-deps -vv"
+   "script":"-m pip install . --no-deps -vv"
   },
   "extra":{
    "recipe-maintainers":[
@@ -69,56 +69,68 @@
   },
   "package":{
    "name":"rafem",
-   "version":"0.4.2"
+   "version":"0.4.3"
   },
   "requirements":{
    "host":[
-    "python",
+    "python >=3",
     "pip",
-    "python",
+    "python >=3",
     "pip",
-    "python",
+    "python >=3",
     "pip"
    ],
    "run":[
-    "python",
+    "python >=3",
     "bmipy",
     "click",
     "numpy",
-    "matplotlib",
+    "matplotlib-base",
     "pyyaml",
     "scipy",
-    "six",
-    "python",
+    "python >=3",
     "bmipy",
     "click",
     "numpy",
-    "matplotlib",
+    "matplotlib-base",
     "pyyaml",
     "scipy",
-    "six",
-    "python",
+    "python >=3",
     "bmipy",
     "click",
     "numpy",
-    "matplotlib",
+    "matplotlib-base",
     "pyyaml",
-    "scipy",
-    "six"
+    "scipy"
    ]
   },
   "source":{
-   "sha256":"5cca579ee1919c31677eee49f0d6dc0cfe5b430bdb78212c1cc2fbcdccd1732c",
-   "url":"https://pypi.io/packages/source/r/rafem/rafem-0.4.2.tar.gz"
+   "sha256":"0fed7a0a52411d3d72de8607b3517e188ceedea76b5a42eb932ef883e9930fa6",
+   "url":"https://pypi.io/packages/source/r/rafem/rafem-0.4.3.tar.gz"
   },
   "test":{
    "commands":[
     "rafem --version",
     "rafem --help",
+    "rafem show --help",
+    "rafem setup --help",
+    "rafem run --help",
+    "rafem plot --help",
+    "rafem show rafem",
     "rafem --version",
     "rafem --help",
+    "rafem show --help",
+    "rafem setup --help",
+    "rafem run --help",
+    "rafem plot --help",
+    "rafem show rafem",
     "rafem --version",
-    "rafem --help"
+    "rafem --help",
+    "rafem show --help",
+    "rafem setup --help",
+    "rafem run --help",
+    "rafem plot --help",
+    "rafem show rafem"
    ],
    "imports":[
     "rafem",
@@ -130,19 +142,18 @@
  "name":"rafem",
  "new_version":"0.4.3",
  "pinning_version":"2020.03.16",
- "raw_meta_yaml":"{% set version = \"0.4.2\" %}\n\npackage:\n  name: rafem\n  version: {{ version }}\n\nsource:\n  url: https://pypi.io/packages/source/r/rafem/rafem-{{ version }}.tar.gz\n  sha256: 5cca579ee1919c31677eee49f0d6dc0cfe5b430bdb78212c1cc2fbcdccd1732c\n\nbuild:\n  noarch: python\n  number: 0\n  script: \"{{ PYTHON }} -m pip install . --no-deps -vv\"\n  entry_points:\n    - rafem = rafem.main:main\n\nrequirements:\n  host:\n    - python\n    - pip\n  run:\n    - python\n    - bmipy\n    - click\n    - numpy\n    - matplotlib\n    - pyyaml\n    - scipy\n    - six\n\ntest:\n  imports:\n    - rafem\n  commands:\n    - rafem --version\n    - rafem --help\n\nabout:\n  home: https://github.com/katmratliff/rafem\n  license: MIT\n  license_family: MIT\n  license_file: LICENSE\n  summary: 'The River Avulsion and Floodplain Evolution Model'\n  description: |\n    The River Avulsion and Floodplain Evolution Model (RAFEM) is\n    a cellular model that simulates river and floodplain morphodynamics\n    over large space and timescales. Cell size is larger than the channel\n    belt width, and natural levees, which maintain a bankfull elevation\n    above the channel bed, exist within a river cell. The river course is\n    determined using a steepest-descent methodology, and erosion and deposition\n    along the river profile are modeled as a linear diffusive process. An\n    avulsion occurs when the riverbed becomes super-elevated relative to\n    the surrounding floodplain, but only if the new steepest-descent path\n    to sea level is shorter than the prior river course. If the new path to\n    sea level is not shorter, then a crevasse splay is deposited in the\n    adjacent river cells. The model has been designed to couple with the\n    Coastline Evolution Model through the CSDMS Basic Model Interface.\n  doc_url: https://github.com/katmratliff/rafem\n  dev_url: https://github.com/katmratliff/rafem\n\nextra:\n  recipe-maintainers:\n    - mcflugen\n",
+ "raw_meta_yaml":"{% set version = \"0.4.3\" %}\n\npackage:\n  name: rafem\n  version: {{ version }}\n\nsource:\n  url: https://pypi.io/packages/source/r/rafem/rafem-{{ version }}.tar.gz\n  sha256: 0fed7a0a52411d3d72de8607b3517e188ceedea76b5a42eb932ef883e9930fa6\n\nbuild:\n  noarch: python\n  number: 0\n  script: {{ PYTHON }} -m pip install . --no-deps -vv\n  entry_points:\n    - rafem = rafem.main:rafem\n\nrequirements:\n  host:\n    - python >=3\n    - pip\n  run:\n    - python >=3\n    - bmipy\n    - click\n    - numpy\n    - matplotlib-base\n    - pyyaml\n    - scipy\n\ntest:\n  imports:\n    - rafem\n  commands:\n    - rafem --version\n    - rafem --help\n    - rafem show --help\n    - rafem setup --help\n    - rafem run --help\n    - rafem plot --help\n    - rafem show rafem\n\nabout:\n  home: https://github.com/katmratliff/rafem\n  license: MIT\n  license_family: MIT\n  license_file: LICENSE\n  summary: The River Avulsion and Floodplain Evolution Model\n  description: |\n    The River Avulsion and Floodplain Evolution Model (RAFEM) is\n    a cellular model that simulates river and floodplain morphodynamics\n    over large space and timescales. Cell size is larger than the channel\n    belt width, and natural levees, which maintain a bankfull elevation\n    above the channel bed, exist within a river cell. The river course is\n    determined using a steepest-descent methodology, and erosion and deposition\n    along the river profile are modeled as a linear diffusive process. An\n    avulsion occurs when the riverbed becomes super-elevated relative to\n    the surrounding floodplain, but only if the new steepest-descent path\n    to sea level is shorter than the prior river course. If the new path to\n    sea level is not shorter, then a crevasse splay is deposited in the\n    adjacent river cells. The model has been designed to couple with the\n    Coastline Evolution Model through the CSDMS Basic Model Interface.\n  doc_url: https://github.com/katmratliff/rafem\n  dev_url: https://github.com/katmratliff/rafem\n\nextra:\n  recipe-maintainers:\n    - mcflugen\n",
  "req":{
   "__set__":true,
   "elements":[
    "bmipy",
    "click",
-   "matplotlib",
+   "matplotlib-base",
    "numpy",
    "pip",
    "python",
    "pyyaml",
-   "scipy",
-   "six"
+   "scipy"
   ]
  },
  "requirements":{
@@ -162,12 +173,11 @@
    "elements":[
     "bmipy",
     "click",
-    "matplotlib",
+    "matplotlib-base",
     "numpy",
     "python",
     "pyyaml",
-    "scipy",
-    "six"
+    "scipy"
    ]
   },
   "test":{
@@ -186,7 +196,7 @@
    "__set__":true,
    "elements":[
     "pip",
-    "python"
+    "python >=3"
    ]
   },
   "run":{
@@ -194,12 +204,11 @@
    "elements":[
     "bmipy",
     "click",
-    "matplotlib",
+    "matplotlib-base",
     "numpy",
-    "python",
+    "python >=3",
     "pyyaml",
-    "scipy",
-    "six"
+    "scipy"
    ]
   },
   "test":{
@@ -208,5 +217,5 @@
   }
  },
  "url":"https://pypi.io/packages/source/r/rafem/rafem-0.4.2.tar.gz",
- "version":"0.4.2"
+ "version":"0.4.3"
 }

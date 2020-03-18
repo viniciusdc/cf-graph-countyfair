@@ -47,29 +47,28 @@
     "migrator_version",
     "name"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/0fcd952d-1b38-4632-931f-076425e2ecc0.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"MigrationYaml",
+    "migrator_object_version":1,
+    "migrator_version":0,
+    "name":"pypy"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_object_version",
+    "migrator_version",
+    "name"
+   ]
   }
  ],
- "bad":{
-  "exception":"Failed to put item: An error occurred (ValidationException) on request (QANHU9TJHT7LS4T0952DU4CL7FVV4KQNSO5AEMVJF66Q9ASUAAJG) on table (pr_json) when calling the PutItem operation: Attempting to store more than 38 significant digits in a Number",
-  "traceback":[
-   "Traceback (most recent call last):",
-   "  File \"/root/repo/cf-scripts/conda_forge_tick/auto_tick.py\", line 873, in main",
-   "    hash_type=attrs.get(\"hash_type\", \"sha256\"),",
-   "  File \"/root/repo/cf-scripts/conda_forge_tick/auto_tick.py\", line 248, in run",
-   "    PRJson.dump(pr_json)",
-   "  File \"/root/repo/cf-scripts/conda_forge_tick/dynamo_models.py\", line 33, in dump",
-   "    item.save()",
-   "  File \"/opt/conda/envs/run_env/lib/python3.7/site-packages/pynamodb/models.py\", line 405, in save",
-   "    data = self._get_connection().put_item(*args, **kwargs)",
-   "  File \"/opt/conda/envs/run_env/lib/python3.7/site-packages/pynamodb/connection/table.py\", line 139, in put_item",
-   "    return_item_collection_metrics=return_item_collection_metrics)",
-   "  File \"/opt/conda/envs/run_env/lib/python3.7/site-packages/pynamodb/connection/base.py\", line 972, in put_item",
-   "    six.raise_from(PutError(\"Failed to put item: {}\".format(e), e), None)",
-   "  File \"<string>\", line 3, in raise_from",
-   "pynamodb.exceptions.PutError: Failed to put item: An error occurred (ValidationException) on request (QANHU9TJHT7LS4T0952DU4CL7FVV4KQNSO5AEMVJF66Q9ASUAAJG) on table (pr_json) when calling the PutItem operation: Attempting to store more than 38 significant digits in a Number",
-   ""
-  ]
- },
+ "bad":false,
  "conda-forge.yml":{
   "compiler_stack":"comp7",
   "max_py_ver":"37",
@@ -166,7 +165,7 @@
  },
  "name":"cgal",
  "new_version":false,
- "pinning_version":"2019.11.01",
+ "pinning_version":"2020.03.16",
  "raw_meta_yaml":"{% set version = \"4.14\" %}\n\npackage:\n  name: cgal\n  version: {{ version }}\n\nsource:\n  url: https://github.com/CGAL/cgal-swig-bindings/archive/55635605ed9287f963800d2e0dc5dac6bd3fa899.zip\n  sha256: efa305ae2f9c58fd8009f438900925cbf000d8f6789dd08551423640e06ab50a\n\nbuild:\n  number: 0\n  skip: true  # [(win and py<35)]\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n    - cmake\n    - eigen\n    - ninja  # [win]\n    - swig\n  host:\n    - cgal-cpp {{ version }}\n    - python\n  run:\n    - cgal-cpp {{ version }}\n    - python\n\ntest:\n  imports:\n    - CGAL\n    - CGAL.CGAL_Kernel\n    - CGAL.CGAL_Triangulation_2\n  commands:\n    - test -f ${PREFIX}/include/CGAL/AABB_tree.h  # [unix]\n    - test -f ${PREFIX}/lib/libCGAL${SHLIB_EXT}  # [unix]\n    - if not exist %LIBRARY_INC%\\CGAL\\AABB_tree.h exit 1  # [win]\n    - conda inspect linkages $PKG_NAME  # [not win]\n    - conda inspect objects $PKG_NAME  # [osx]\n\nabout:\n  home: http://www.cgal.org/\n  license: GPL3/LGPL3\n  summary: Computational Geometry Algorithms Library\n\nextra:\n  recipe-maintainers:\n    - tadeu\n",
  "req":{
   "__set__":true,
@@ -212,7 +211,7 @@
    "elements":[]
   }
  },
- "smithy_version":"3.6.0",
+ "smithy_version":"3.6.12",
  "strong_exports":false,
  "total_requirements":{
   "build":{
