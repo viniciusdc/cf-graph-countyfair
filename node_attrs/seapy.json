@@ -152,10 +152,7 @@
  "conda-forge.yml":{
   "compiler_stack":"comp7",
   "max_py_ver":"37",
-  "max_r_ver":"35",
-  "provider":{
-   "win":"appveyor"
-  }
+  "max_r_ver":"35"
  },
  "feedstock_name":"seapy",
  "hash_type":"sha256",
@@ -168,7 +165,12 @@
   },
   "build":{
    "number":"1",
-   "script":" -m pip install . --no-deps -vv"
+   "script":[
+    "rm \"C:\\ProgramData\\Chocolatey\\bin\\gfortran.exe\"",
+    " -m pip install . --no-deps -vv",
+    " -m pip install . --no-deps -vv",
+    " -m pip install . --no-deps -vv"
+   ]
   },
   "extra":{
    "recipe-maintainers":[
@@ -194,6 +196,7 @@
     "python",
     "pip",
     "numpy",
+    "flang",
     "python",
     "pip",
     "numpy",
@@ -204,6 +207,7 @@
    "run":[
     "python",
     "numpy",
+    "libflang",
     "basemap",
     "h5py",
     "joblib",
@@ -258,15 +262,17 @@
  "name":"seapy",
  "new_version":"0.5.0",
  "pinning_version":"2019.11.13",
- "raw_meta_yaml":"{% set version = \"0.4.1\" %}\n\npackage:\n  name: seapy\n  version: {{ version }}\n\nsource:\n  url: https://github.com/powellb/seapy/archive/{{ version }}.tar.gz\n  sha256: b4af0c36174a14ed6943261321620cf4cea7aca7f2db925895027c7210e9a903\n\nbuild:\n  number: 1\n  skip: True  # [py2k]\n  script: \"{{ PYTHON }} -m pip install . --no-deps -vv\"\n\nrequirements:\n  build:\n    - {{ compiler('fortran') }}\n    - {{ compiler('c') }}\n  host:\n    - python\n    - pip\n    - numpy\n  run:\n    - python\n    - {{ pin_compatible('numpy') }}\n    - basemap\n    - h5py\n    - joblib\n    - netcdf4\n    - numpy_groupies\n    - scipy\n\ntest:\n  imports:\n    - seapy\n    - seapy.seawater\n    - seapy.roms\n    - seapy.model\n    - seapy.external.oalib\n    - seapy.external.hindices\n\nabout:\n  home: https://github.com/powellb/seapy/\n  license: MIT\n  license_file: LICENSE.txt\n  summary: 'State Estimation and Analysis in PYthon'\n\nextra:\n  recipe-maintainers:\n    - ocefpaf\n",
+ "raw_meta_yaml":"{% set version = \"0.4.1\" %}\n\npackage:\n  name: seapy\n  version: {{ version }}\n\nsource:\n  url: https://github.com/powellb/seapy/archive/{{ version }}.tar.gz\n  sha256: b4af0c36174a14ed6943261321620cf4cea7aca7f2db925895027c7210e9a903\n\nbuild:\n  number: 1\n  skip: True  # [py2k]\n  script:\n    - rm \"C:\\ProgramData\\Chocolatey\\bin\\gfortran.exe\"  # [win]\n    - \"{{ PYTHON }} -m pip install . --no-deps -vv\"\n\nrequirements:\n  build:\n    - {{ compiler('fortran') }}\n    - {{ compiler('c') }}\n  host:\n    - python\n    - pip\n    - numpy\n    - flang  # [win and py3k]\n  run:\n    - python\n    - {{ pin_compatible('numpy') }}\n    - libflang  # [win and py3k]\n    - basemap\n    - h5py\n    - joblib\n    - netcdf4\n    - numpy_groupies\n    - scipy\n\ntest:\n  imports:\n    - seapy\n    - seapy.seawater\n    - seapy.roms\n    - seapy.model\n    - seapy.external.oalib\n    - seapy.external.hindices\n\nabout:\n  home: https://github.com/powellb/seapy/\n  license: MIT\n  license_file: LICENSE.txt\n  summary: 'State Estimation and Analysis in PYthon'\n\nextra:\n  recipe-maintainers:\n    - ocefpaf\n",
  "req":{
   "__set__":true,
   "elements":[
    "basemap",
    "c_compiler_stub",
+   "flang",
    "fortran_compiler_stub",
    "h5py",
    "joblib",
+   "libflang",
    "netcdf4",
    "numpy",
    "numpy_groupies",
@@ -286,6 +292,7 @@
   "host":{
    "__set__":true,
    "elements":[
+    "flang",
     "numpy",
     "pip",
     "python"
@@ -297,6 +304,7 @@
     "basemap",
     "h5py",
     "joblib",
+    "libflang",
     "netcdf4",
     "numpy",
     "numpy_groupies",
@@ -322,6 +330,7 @@
   "host":{
    "__set__":true,
    "elements":[
+    "flang",
     "numpy",
     "pip",
     "python"
@@ -333,6 +342,7 @@
     "basemap",
     "h5py",
     "joblib",
+    "libflang",
     "netcdf4",
     "numpy",
     "numpy_groupies",
