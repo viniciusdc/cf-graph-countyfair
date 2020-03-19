@@ -276,9 +276,6 @@
  ],
  "bad":false,
  "conda-forge.yml":{
-  "compiler_stack":"comp7",
-  "max_py_ver":"37",
-  "max_r_ver":"35",
   "provider":{
    "win":"azure"
   }
@@ -311,7 +308,7 @@
   },
   "package":{
    "name":"pygit2",
-   "version":"1.0.3"
+   "version":"1.1.0"
   },
   "requirements":{
    "build":[
@@ -323,35 +320,38 @@
     "python",
     "pip",
     "cffi",
-    "libgit2 0.28.*",
+    "libgit2 0.99.*",
     "python",
     "pip",
     "cffi",
-    "libgit2 0.28.*",
+    "libgit2 0.99.*",
     "python",
     "pip",
     "cffi",
-    "libgit2 0.28.*"
+    "libgit2 0.99.*"
    ],
    "run":[
     "python",
+    "cached-property",
     "cffi",
     "six",
-    "libgit2 0.28.*",
+    "libgit2 0.99.*",
     "python",
+    "cached-property",
     "cffi",
     "six",
-    "libgit2 0.28.*",
+    "libgit2 0.99.*",
     "python",
+    "cached-property",
     "cffi",
     "six",
-    "libgit2 0.28.*"
+    "libgit2 0.99.*"
    ]
   },
   "source":{
-   "fn":"pygit2-1.0.3.tar.gz",
-   "sha256":"de6c170dc09878e98424430ed6ba2934c01d811fedbc4cdfd71ec1dcd98487e2",
-   "url":"https://pypi.io/packages/source/p/pygit2/pygit2-1.0.3.tar.gz"
+   "fn":"pygit2-1.1.0.tar.gz",
+   "sha256":"6f495d5b0a3adbd24efe9ef7123db59c4ebd29b8075b8326eed207fb31be40c3",
+   "url":"https://pypi.io/packages/source/p/pygit2/pygit2-1.1.0.tar.gz"
   },
   "test":{
    "imports":[
@@ -364,11 +364,12 @@
  "name":"pygit2",
  "new_version":"1.1.1",
  "pinning_version":"2020.03.16",
- "raw_meta_yaml":"{% set name = \"pygit2\" %}\n{% set version = \"1.0.3\" %}\n{% set sha256 = \"de6c170dc09878e98424430ed6ba2934c01d811fedbc4cdfd71ec1dcd98487e2\" %}\n\n# must pin the appropiate libgit2 version documented here:\n# https://www.pygit2.org/install.html#version-numbers\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  fn: {{ name }}-{{ version }}.tar.gz\n  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz\n  sha256: {{ sha256 }}\n\nbuild:\n  number: 0\n  features:\n    - vc10   # [win and py34]\n    - vc14   # [win and py35]\n  skip: True  # [py2k]\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n\n  host:\n    - python\n    - pip\n    - cffi\n    - libgit2 0.28.*\n\n  run:\n    - python\n    - cffi\n    - six\n    - libgit2 0.28.*\n\ntest:\n  imports:\n    - pygit2\n\nabout:\n  home: http://github.com/libgit2/pygit2\n  summary: 'Python bindings for libgit2.'\n  license: GPLv2 with linking exception\n  license_family: GPL2\n  license_file: COPYING\n  doc_url: http://www.pygit2.org/\n  dev_url: https://github.com/libgit2/pygit2\n\nextra:\n  recipe-maintainers:\n    - kszucs\n    - xhochy\n",
+ "raw_meta_yaml":"{% set name = \"pygit2\" %}\n{% set version = \"1.1.0\" %}\n{% set sha256 = \"6f495d5b0a3adbd24efe9ef7123db59c4ebd29b8075b8326eed207fb31be40c3\" %}\n\n# must pin the appropiate libgit2 version documented here:\n# https://www.pygit2.org/install.html#version-numbers\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  fn: {{ name }}-{{ version }}.tar.gz\n  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz\n  sha256: {{ sha256 }}\n\nbuild:\n  number: 0\n  features:\n    - vc10   # [win and py34]\n    - vc14   # [win and py35]\n  skip: true  # [py2k]\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n\n  host:\n    - python\n    - pip\n    - cffi\n    - libgit2 0.99.*\n\n  run:\n    - python\n    - cached-property\n    - cffi\n    - six\n    - libgit2 0.99.*\n\ntest:\n  imports:\n    - pygit2\n\nabout:\n  home: http://github.com/libgit2/pygit2\n  summary: Python bindings for libgit2.\n  license: GPLv2 with linking exception\n  license_family: GPL2\n  license_file: COPYING\n  doc_url: http://www.pygit2.org/\n  dev_url: https://github.com/libgit2/pygit2\n\nextra:\n  recipe-maintainers:\n    - kszucs\n    - xhochy\n",
  "req":{
   "__set__":true,
   "elements":[
    "c_compiler_stub",
+   "cached-property",
    "cffi",
    "libgit2",
    "pip",
@@ -395,6 +396,7 @@
   "run":{
    "__set__":true,
    "elements":[
+    "cached-property",
     "cffi",
     "libgit2",
     "python",
@@ -419,7 +421,7 @@
    "__set__":true,
    "elements":[
     "cffi",
-    "libgit2 0.28.*",
+    "libgit2 0.99.*",
     "pip",
     "python"
    ]
@@ -427,8 +429,9 @@
   "run":{
    "__set__":true,
    "elements":[
+    "cached-property",
     "cffi",
-    "libgit2 0.28.*",
+    "libgit2 0.99.*",
     "python",
     "six"
    ]
@@ -439,5 +442,5 @@
   }
  },
  "url":"https://pypi.io/packages/source/p/pygit2/pygit2-0.28.2.tar.gz",
- "version":"1.0.3"
+ "version":"1.1.0"
 }
