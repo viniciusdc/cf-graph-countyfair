@@ -67,6 +67,23 @@
     "migrator_version",
     "version"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/390762473.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"Version",
+    "migrator_version":0,
+    "version":"2.10.1"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "version"
+   ]
   }
  ],
  "bad":false,
@@ -174,7 +191,7 @@
  },
  "name":"freetype",
  "new_version":"2.10.1",
- "pinning_version":"2020.02.20",
+ "pinning_version":"2020.03.16",
  "raw_meta_yaml":"{% set version = \"2.10.0\" %}\n\npackage:\n  name: freetype\n  version: {{ version }}\n\nsource:\n  url: http://download.savannah.gnu.org/releases/freetype/freetype-{{ version }}.tar.bz2\n  sha256: fccc62928c65192fff6c98847233b28eb7ce05f12d2fea3f6cc90e8b4e5fbe06\n  patches:\n    - 0003-Install-the-pkg-config-file-on-Windows-too.patch\n    - 0004-Fix-the-CMake-versioning-information.patch\n\nbuild:\n  number: 2\n  run_exports:\n    # has removed symbols at minor versions, but only very rarely.  Go with major.\n    #    https://abi-laboratory.pro/tracker/timeline/freetype/\n    - {{ pin_subpackage('freetype') }}\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - cmake     # [win]\n    - make      # [not win]\n    - ninja  # [win]\n  host:\n    - libpng\n    - zlib\n  run:\n    - libpng\n    - zlib\n\ntest:\n  commands:\n    - ${PREFIX}/bin/freetype-config --version  # [not win]\n    - if exist %LIBRARY_BIN%\\freetype.dll (exit 0) else (exit 1)  # [win]\n\nabout:\n  home: https://www.freetype.org/\n  license: GPL-2.0 and FreeType\n  license_file:\n    - docs/GPLv2.TXT\n    - docs/FTL.TXT\n  summary: A Free, High-Quality, and Portable Font Engine\n  description: |\n    FreeType is designed to be small, efficient, highly customizable\n    and portable while capable of producing high-quality output (glyph images)\n    of most vector and bitmap font formats.\n  doc_url: http://freetype.sourceforge.net/freetype2/documentation.html\n  doc_source_url: https://sourceforge.net/projects/freetype/?source=navbar\n  dev_url: http://git.savannah.gnu.org/cgit/freetype/\n\nextra:\n  recipe-maintainers:\n    - ccordoba12\n    - msarahan\n    - ocefpaf\n",
  "req":{
   "__set__":true,
@@ -216,7 +233,7 @@
    "elements":[]
   }
  },
- "smithy_version":"3.6.8",
+ "smithy_version":"3.6.12",
  "strong_exports":false,
  "total_requirements":{
   "build":{
