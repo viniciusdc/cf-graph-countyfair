@@ -60,7 +60,7 @@
   "provider":{
    "linux_aarch64":"azure",
    "linux_ppc64le":"azure",
-   "win":"appveyor"
+   "win":"azure"
   }
  },
  "feedstock_name":"libiconv",
@@ -73,7 +73,7 @@
    "summary":"Provides iconv for systems which don't have one (or that cannot convert from/to Unicode.)"
   },
   "build":{
-   "number":"1005",
+   "number":"1006",
    "run_exports":[
     "libiconv",
     "libiconv",
@@ -104,6 +104,7 @@
    "build":[
     "c_compiler_stub",
     "cmake",
+    "ninja",
     "m2-patch",
     "c_compiler_stub",
     "make",
@@ -128,14 +129,15 @@
  "name":"libiconv",
  "new_version":"1.16",
  "pinning_version":"2019.04.25",
- "raw_meta_yaml":"{% set version = \"1.15\" %}\n\npackage:\n  name: libiconv\n  version: {{ version }}\n\nsource:\n  url: http://ftp.gnu.org/pub/gnu/libiconv/libiconv-{{ version }}.tar.gz\n  sha256: ccf536620a45458d26ba83887a983b96827001e92a13847b45e4925cc8913178\n  patches:\n    - glibc.patch  # [linux]\n    - CMakeLists.txt.patch  # [win]\n    - config.h.patch  # [win]\n    - configure.cmake.patch  # [win]\n\nbuild:\n  number: 1005\n  run_exports:\n    # Pretty good recently, let's trust them.\n    #   https://abi-laboratory.pro/tracker/timeline/libiconv/\n    - {{ pin_subpackage('libiconv') }}\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - cmake     # [win]\n    - m2-patch  # [win]\n    - make      # [unix]\n\ntest:\n  commands:\n    - iconv --help  # [not win]\n    - conda inspect linkages -p $PREFIX $PKG_NAME  # [not win]\n    - conda inspect objects -p $PREFIX $PKG_NAME  # [osx]\n\nabout:\n  home: https://www.gnu.org/software/libiconv/\n  license: GPL and LGPL\n  license_file: COPYING\n  summary: \"Provides iconv for systems which don't have one (or that cannot convert from/to Unicode.)\"\n\nextra:\n  recipe-maintainers:\n    - ocefpaf\n    - jakirkham\n    - jhamman\n    - scopatz\n",
+ "raw_meta_yaml":"{% set version = \"1.15\" %}\n\npackage:\n  name: libiconv\n  version: {{ version }}\n\nsource:\n  url: http://ftp.gnu.org/pub/gnu/libiconv/libiconv-{{ version }}.tar.gz\n  sha256: ccf536620a45458d26ba83887a983b96827001e92a13847b45e4925cc8913178\n  patches:\n    - glibc.patch  # [linux]\n    - CMakeLists.txt.patch  # [win]\n    - config.h.patch  # [win]\n    - configure.cmake.patch  # [win]\n\nbuild:\n  number: 1006\n  run_exports:\n    # Pretty good recently, let's trust them.\n    #   https://abi-laboratory.pro/tracker/timeline/libiconv/\n    - {{ pin_subpackage('libiconv') }}\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - cmake     # [win]\n    - ninja     # [win]\n    - m2-patch  # [win]\n    - make      # [unix]\n\ntest:\n  commands:\n    - iconv --help  # [not win]\n    - conda inspect linkages -p $PREFIX $PKG_NAME  # [not win]\n    - conda inspect objects -p $PREFIX $PKG_NAME  # [osx]\n\nabout:\n  home: https://www.gnu.org/software/libiconv/\n  license: GPL and LGPL\n  license_file: COPYING\n  summary: \"Provides iconv for systems which don't have one (or that cannot convert from/to Unicode.)\"\n\nextra:\n  recipe-maintainers:\n    - ocefpaf\n    - jakirkham\n    - jhamman\n    - scopatz\n",
  "req":{
   "__set__":true,
   "elements":[
    "c_compiler_stub",
    "cmake",
    "m2-patch",
-   "make"
+   "make",
+   "ninja"
   ]
  },
  "requirements":{
@@ -145,7 +147,8 @@
     "c_compiler_stub",
     "cmake",
     "m2-patch",
-    "make"
+    "make",
+    "ninja"
    ]
   },
   "host":{
@@ -170,7 +173,8 @@
     "c_compiler_stub",
     "cmake",
     "m2-patch",
-    "make"
+    "make",
+    "ninja"
    ]
   },
   "host":{
