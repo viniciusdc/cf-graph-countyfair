@@ -101,6 +101,23 @@
     "migrator_name",
     "migrator_version"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/391245398.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"Version",
+    "migrator_version":0,
+    "version":"1.1.0"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "version"
+   ]
   }
  ],
  "bad":false,
@@ -179,7 +196,7 @@
     "yggvalidate = yggdrasil.command_line:validate_yaml",
     "ygginstall = yggdrasil.command_line:ygginstall"
    ],
-   "number":"0",
+   "number":"1",
    "script":" -m pip install . --no-deps --ignore-installed --no-cache-dir -vvv ",
    "skip":true
   },
@@ -217,7 +234,7 @@
     "flaky",
     "GitPython",
     "jsonschema",
-    "matplotlib",
+    "matplotlib-base",
     "numpy",
     "pandas",
     "pyperf",
@@ -244,7 +261,7 @@
     "flaky",
     "GitPython",
     "jsonschema",
-    "matplotlib",
+    "matplotlib-base",
     "numpy",
     "pandas",
     "pyperf",
@@ -270,7 +287,7 @@
     "flaky",
     "GitPython",
     "jsonschema",
-    "matplotlib",
+    "matplotlib-base",
     "numpy",
     "pandas",
     "pyperf",
@@ -312,8 +329,8 @@
  },
  "name":"yggdrasil",
  "new_version":"1.1.0",
- "pinning_version":"2020.02.12",
- "raw_meta_yaml":"{% set name = \"yggdrasil\" %}\n{% set version = \"1.0.0\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}-framework/{{ name }}-framework-{{ version }}.tar.gz\n  sha256: 89cfc40cfa1f8636fe334ea4706594b09b380770d898e8943d00d777f61d23b2\n\nbuild:\n  number: 0\n  script: \"{{ PYTHON }} -m pip install . --no-deps --ignore-installed --no-cache-dir -vvv \"\n  skip: true  # [win and vc<14]\n  entry_points:\n    - ygginfo = yggdrasil.command_line:ygginfo\n    - yggrun = yggdrasil.command_line:yggrun\n    - cisrun = yggdrasil.command_line:yggrun\n    - yggcc = yggdrasil.command_line:yggcc\n    - yggccflags = yggdrasil.command_line:cc_flags\n    - yggldflags = yggdrasil.command_line:ld_flags\n    - yggtest = yggdrasil:run_tsts\n    - yggmetaschema = yggdrasil.command_line:regen_metaschema\n    - yggschema = yggdrasil.command_line:regen_schema\n    - yggbuildapi_c = yggdrasil.command_line:rebuild_c_api\n    - yggconfig = yggdrasil.command_line:update_config\n    - yggtime_comm = yggdrasil.command_line:yggtime_comm\n    - yggtime_lang = yggdrasil.command_line:yggtime_lang\n    - yggtime_os = yggdrasil.command_line:yggtime_os\n    - yggtime_py = yggdrasil.command_line:yggtime_py\n    - yggtime_paper = yggdrasil.command_line:yggtime_paper\n    - yggvalidate = yggdrasil.command_line:validate_yaml\n    - ygginstall = yggdrasil.command_line:ygginstall\n\nrequirements:\n  host:\n    - czmq\n    - pip\n    - python\n    - sysv_ipc  # [unix]\n    - zeromq\n  run:\n    - cmake\n    - czmq\n    - flaky\n    - GitPython\n    - jsonschema\n    - matplotlib\n    - numpy\n    - pandas\n    - pyperf\n    - pint  # [py2k]\n    - psutil\n    - pystache\n    - python\n    - python-rapidjson  # [not py2k]\n    - pyyaml\n    - pyzmq\n    - r-base\n    - r-bit64\n    - r-r6\n    - r-reticulate\n    - r-units\n    - r-zeallot\n    - scipy\n    - six\n    - sysv_ipc  # [unix]\n    - unyt  # [not py2k]\n    - zeromq\n    - {{ compiler('c') }}  # [win]\n    - {{ compiler('cxx') }}  # [win]\n\ntest:\n  imports:\n    - yggdrasil\n  commands:\n    - yggrun -h\n\nabout:\n  home: https://github.com/cropsinsilico/yggdrasil\n  license: BSD-3-Clause\n  license_family: BSD\n  license_file: LICENSE.txt\n  summary: 'A framework for connecting computational models from multiple languages.'\n\n  description: |\n    The Crops in Silico (CiS) framework, yggdrasil, provides support for\n    connecting scientific models written in different programming languages.\n    To connect two models, modelers add communications interfaces to the model code\n    and provide declarative specification files that identfy the\n    models that should be run and the inputs and outputs those models\n    expect. yggdrasil uses this information to launch the models\n    on parallel processes and orchestrate asynchronous communication between them.\n    Although designed for connecting crop models, yggdrasil can be used to\n    connect scientific models from any domain.\n  doc_url: https://cropsinsilico.github.io/yggdrasil\n  dev_url: https://github.com/cropsinsilico/yggdrasil\n\nextra:\n  recipe-maintainers:\n    - langmm\n",
+ "pinning_version":"2020.03.19",
+ "raw_meta_yaml":"{% set name = \"yggdrasil\" %}\n{% set version = \"1.0.0\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}-framework/{{ name }}-framework-{{ version }}.tar.gz\n  sha256: 89cfc40cfa1f8636fe334ea4706594b09b380770d898e8943d00d777f61d23b2\n\nbuild:\n  number: 1\n  script: \"{{ PYTHON }} -m pip install . --no-deps --ignore-installed --no-cache-dir -vvv \"\n  skip: true  # [win and vc<14]\n  entry_points:\n    - ygginfo = yggdrasil.command_line:ygginfo\n    - yggrun = yggdrasil.command_line:yggrun\n    - cisrun = yggdrasil.command_line:yggrun\n    - yggcc = yggdrasil.command_line:yggcc\n    - yggccflags = yggdrasil.command_line:cc_flags\n    - yggldflags = yggdrasil.command_line:ld_flags\n    - yggtest = yggdrasil:run_tsts\n    - yggmetaschema = yggdrasil.command_line:regen_metaschema\n    - yggschema = yggdrasil.command_line:regen_schema\n    - yggbuildapi_c = yggdrasil.command_line:rebuild_c_api\n    - yggconfig = yggdrasil.command_line:update_config\n    - yggtime_comm = yggdrasil.command_line:yggtime_comm\n    - yggtime_lang = yggdrasil.command_line:yggtime_lang\n    - yggtime_os = yggdrasil.command_line:yggtime_os\n    - yggtime_py = yggdrasil.command_line:yggtime_py\n    - yggtime_paper = yggdrasil.command_line:yggtime_paper\n    - yggvalidate = yggdrasil.command_line:validate_yaml\n    - ygginstall = yggdrasil.command_line:ygginstall\n\nrequirements:\n  host:\n    - czmq\n    - pip\n    - python\n    - sysv_ipc  # [unix]\n    - zeromq\n  run:\n    - cmake\n    - czmq\n    - flaky\n    - GitPython\n    - jsonschema\n    - matplotlib-base\n    - numpy\n    - pandas\n    - pyperf\n    - pint  # [py2k]\n    - psutil\n    - pystache\n    - python\n    - python-rapidjson  # [not py2k]\n    - pyyaml\n    - pyzmq\n    - r-base\n    - r-bit64\n    - r-r6\n    - r-reticulate\n    - r-units\n    - r-zeallot\n    - scipy\n    - six\n    - sysv_ipc  # [unix]\n    - unyt  # [not py2k]\n    - zeromq\n    - {{ compiler('c') }}  # [win]\n    - {{ compiler('cxx') }}  # [win]\n\ntest:\n  imports:\n    - yggdrasil\n  commands:\n    - yggrun -h\n\nabout:\n  home: https://github.com/cropsinsilico/yggdrasil\n  license: BSD-3-Clause\n  license_family: BSD\n  license_file: LICENSE.txt\n  summary: 'A framework for connecting computational models from multiple languages.'\n\n  description: |\n    The Crops in Silico (CiS) framework, yggdrasil, provides support for\n    connecting scientific models written in different programming languages.\n    To connect two models, modelers add communications interfaces to the model code\n    and provide declarative specification files that identfy the\n    models that should be run and the inputs and outputs those models\n    expect. yggdrasil uses this information to launch the models\n    on parallel processes and orchestrate asynchronous communication between them.\n    Although designed for connecting crop models, yggdrasil can be used to\n    connect scientific models from any domain.\n  doc_url: https://cropsinsilico.github.io/yggdrasil\n  dev_url: https://github.com/cropsinsilico/yggdrasil\n\nextra:\n  recipe-maintainers:\n    - langmm\n",
  "req":{
   "__set__":true,
   "elements":[
@@ -324,7 +341,7 @@
    "flaky",
    "gitpython",
    "jsonschema",
-   "matplotlib",
+   "matplotlib-base",
    "numpy",
    "pandas",
    "pip",
@@ -373,7 +390,7 @@
     "flaky",
     "gitpython",
     "jsonschema",
-    "matplotlib",
+    "matplotlib-base",
     "numpy",
     "pandas",
     "psutil",
@@ -401,7 +418,7 @@
    "elements":[]
   }
  },
- "smithy_version":"3.6.8",
+ "smithy_version":"No azure token. Create a token and\nput it in ~/.conda-smithy/azure.token\n3.6.14",
  "strong_exports":false,
  "total_requirements":{
   "build":{
@@ -428,7 +445,7 @@
     "czmq",
     "flaky",
     "jsonschema",
-    "matplotlib",
+    "matplotlib-base",
     "numpy",
     "pandas",
     "psutil",
