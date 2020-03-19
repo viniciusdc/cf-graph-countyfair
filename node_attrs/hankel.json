@@ -36,52 +36,58 @@
   "build":{
    "noarch":"python",
    "number":"0",
-   "script":" -m pip install . -vv"
+   "script":"SETUPTOOLS_SCM_PRETEND_VERSION=1.0.0  -m pip install . -vv"
   },
   "extra":{
    "recipe-maintainers":[
     "MuellerSeb",
+    "steven-murray",
     "MuellerSeb",
-    "MuellerSeb"
+    "steven-murray",
+    "MuellerSeb",
+    "steven-murray"
    ]
   },
   "package":{
    "name":"hankel",
-   "version":"0.3.9"
+   "version":"1.0.0"
   },
   "requirements":{
    "host":[
-    "python",
     "pip",
-    "setuptools",
-    "python",
+    "python >=3.5",
+    "setuptools >=45",
+    "setuptools_scm >=3.4",
     "pip",
-    "setuptools",
-    "python",
+    "python >=3.5",
+    "setuptools >=45",
+    "setuptools_scm >=3.4",
     "pip",
-    "setuptools"
+    "python >=3.5",
+    "setuptools >=45",
+    "setuptools_scm >=3.4"
    ],
    "run":[
-    "python",
-    "scipy >=0.12.0",
-    "mpmath >=0.18",
-    "numpy >=1.6.1",
-    "future",
-    "python",
-    "scipy >=0.12.0",
-    "mpmath >=0.18",
-    "numpy >=1.6.1",
-    "future",
-    "python",
-    "scipy >=0.12.0",
-    "mpmath >=0.18",
-    "numpy >=1.6.1",
-    "future"
+    "python >=3.5",
+    "scipy >=0.16.1",
+    "mpmath >=1.0.0",
+    "numpy >=1.9.3",
+    "setuptools",
+    "python >=3.5",
+    "scipy >=0.16.1",
+    "mpmath >=1.0.0",
+    "numpy >=1.9.3",
+    "setuptools",
+    "python >=3.5",
+    "scipy >=0.16.1",
+    "mpmath >=1.0.0",
+    "numpy >=1.9.3",
+    "setuptools"
    ]
   },
   "source":{
-   "sha256":"6c2c0ba5143efd6556e657349ca7927e0db3821a23e3458a3748f71c792de2a5",
-   "url":"https://pypi.io/packages/source/h/hankel/hankel-0.3.9.tar.gz"
+   "sha256":"a17e0db603e3bab4f7e2b4954c11a21a3fde50f8140dc878a28a5a1ef6cbb383",
+   "url":"https://pypi.io/packages/source/h/hankel/hankel-1.0.0.tar.gz"
   },
   "test":{
    "imports":[
@@ -94,17 +100,17 @@
  "name":"hankel",
  "new_version":"1.0.0",
  "pinning_version":"2020.03.16",
- "raw_meta_yaml":"{% set name = \"hankel\" %}\n{% set version = \"0.3.9\" %}\n\npackage:\n  name: \"{{ name|lower }}\"\n  version: \"{{ version }}\"\n\nsource:\n  url: \"https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz\"\n  sha256: 6c2c0ba5143efd6556e657349ca7927e0db3821a23e3458a3748f71c792de2a5\n\nbuild:\n  noarch: python\n  number: 0\n  script: \"{{ PYTHON }} -m pip install . -vv\"\n\nrequirements:\n  host:\n    - python\n    - pip\n    - setuptools\n  run:\n    - python\n    - scipy >=0.12.0\n    - mpmath >=0.18\n    - numpy >=1.6.1\n    - future\n\ntest:\n  imports:\n    - hankel\n\nabout:\n  home: \"https://github.com/steven-murray/hankel\"\n  license: MIT\n  license_family: MIT\n  license_file: LICENSE.rst\n  summary: \"Hankel Transformations using method of Ogata 2005\"\n  description: |\n    Hankel transforms and integrals are commonplace in any area in which Fourier Transforms are required over fields that are radially symmetric.\n    They involve integrating an arbitrary function multiplied by a Bessel function of arbitrary order (of the first kind).\n    Typical integration schemes often fail because of the highly oscillatory nature of the transform.\n    Ogata's quadrature method used in this package provides a fast and accurate way of performing the integration based on locating the zeros of the Bessel function.\n  doc_url: https://hankel.readthedocs.io/\n  dev_url: https://github.com/steven-murray/hankel\n\nextra:\n  recipe-maintainers:\n    - MuellerSeb\n",
+ "raw_meta_yaml":"{% set name = \"hankel\" %}\n{% set version = \"1.0.0\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz\n  sha256: a17e0db603e3bab4f7e2b4954c11a21a3fde50f8140dc878a28a5a1ef6cbb383\n\nbuild:\n  noarch: python\n  number: 0\n  script: SETUPTOOLS_SCM_PRETEND_VERSION={{ version }} {{ PYTHON }} -m pip install . -vv\n\nrequirements:\n  host:\n    - pip\n    - python >=3.5\n    - setuptools >=45\n    - setuptools_scm >=3.4\n  run:\n    - python >=3.5\n    - scipy >=0.16.1\n    - mpmath >=1.0.0\n    - numpy >=1.9.3\n    - setuptools\n\ntest:\n  imports:\n    - hankel\n\nabout:\n  home: https://github.com/steven-murray/hankel\n  license: MIT\n  license_family: MIT\n  license_file: LICENSE.rst\n  summary: Hankel Transformations using method of Ogata 2005\n  description: |\n    Hankel transforms and integrals are commonplace in any area in which Fourier Transforms are required over fields that are radially symmetric.\n    They involve integrating an arbitrary function multiplied by a Bessel function of arbitrary order (of the first kind).\n    Typical integration schemes often fail because of the highly oscillatory nature of the transform.\n    Ogata's quadrature method used in this package provides a fast and accurate way of performing the integration based on locating the zeros of the Bessel function.\n  doc_url: https://hankel.readthedocs.io/\n  dev_url: https://github.com/steven-murray/hankel\n\nextra:\n  recipe-maintainers:\n    - MuellerSeb\n    - steven-murray\n",
  "req":{
   "__set__":true,
   "elements":[
-   "future",
    "mpmath",
    "numpy",
    "pip",
    "python",
    "scipy",
-   "setuptools"
+   "setuptools",
+   "setuptools_scm"
   ]
  },
  "requirements":{
@@ -117,17 +123,18 @@
    "elements":[
     "pip",
     "python",
-    "setuptools"
+    "setuptools",
+    "setuptools_scm"
    ]
   },
   "run":{
    "__set__":true,
    "elements":[
-    "future",
     "mpmath",
     "numpy",
     "python",
-    "scipy"
+    "scipy",
+    "setuptools"
    ]
   },
   "test":{
@@ -146,18 +153,19 @@
    "__set__":true,
    "elements":[
     "pip",
-    "python",
-    "setuptools"
+    "python >=3.5",
+    "setuptools >=45",
+    "setuptools_scm >=3.4"
    ]
   },
   "run":{
    "__set__":true,
    "elements":[
-    "future",
-    "mpmath >=0.18",
-    "numpy >=1.6.1",
-    "python",
-    "scipy >=0.12.0"
+    "mpmath >=1.0.0",
+    "numpy >=1.9.3",
+    "python >=3.5",
+    "scipy >=0.16.1",
+    "setuptools"
    ]
   },
   "test":{
@@ -166,5 +174,5 @@
   }
  },
  "url":"https://pypi.io/packages/source/h/hankel/hankel-0.3.9.tar.gz",
- "version":"0.3.9"
+ "version":"1.0.0"
 }

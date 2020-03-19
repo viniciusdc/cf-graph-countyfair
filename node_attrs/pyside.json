@@ -84,29 +84,28 @@
     "migrator_version",
     "name"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/5b9042f8-97d5-4d4e-932c-56c958676d0e.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"MigrationYaml",
+    "migrator_object_version":1,
+    "migrator_version":0,
+    "name":"pypy"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_object_version",
+    "migrator_version",
+    "name"
+   ]
   }
  ],
- "bad":{
-  "exception":"Failed to put item: An error occurred (ValidationException) on request (61SDMD8J7JT15CP50RL3FD1F3JVV4KQNSO5AEMVJF66Q9ASUAAJG) on table (pr_json) when calling the PutItem operation: Attempting to store more than 38 significant digits in a Number",
-  "traceback":[
-   "Traceback (most recent call last):",
-   "  File \"/root/repo/cf-scripts/conda_forge_tick/auto_tick.py\", line 890, in main",
-   "    hash_type=attrs.get(\"hash_type\", \"sha256\"),",
-   "  File \"/root/repo/cf-scripts/conda_forge_tick/auto_tick.py\", line 248, in run",
-   "    PRJson.dump(pr_json)",
-   "  File \"/root/repo/cf-scripts/conda_forge_tick/dynamo_models.py\", line 33, in dump",
-   "    item.save()",
-   "  File \"/opt/conda/envs/run_env/lib/python3.7/site-packages/pynamodb/models.py\", line 405, in save",
-   "    data = self._get_connection().put_item(*args, **kwargs)",
-   "  File \"/opt/conda/envs/run_env/lib/python3.7/site-packages/pynamodb/connection/table.py\", line 139, in put_item",
-   "    return_item_collection_metrics=return_item_collection_metrics)",
-   "  File \"/opt/conda/envs/run_env/lib/python3.7/site-packages/pynamodb/connection/base.py\", line 972, in put_item",
-   "    six.raise_from(PutError(\"Failed to put item: {}\".format(e), e), None)",
-   "  File \"<string>\", line 3, in raise_from",
-   "pynamodb.exceptions.PutError: Failed to put item: An error occurred (ValidationException) on request (61SDMD8J7JT15CP50RL3FD1F3JVV4KQNSO5AEMVJF66Q9ASUAAJG) on table (pr_json) when calling the PutItem operation: Attempting to store more than 38 significant digits in a Number",
-   ""
-  ]
- },
+ "bad":false,
  "conda-forge.yml":{},
  "feedstock_name":"pyside",
  "hash_type":"sha256",
@@ -259,7 +258,7 @@
  },
  "name":"pyside",
  "new_version":"1.2.4",
- "pinning_version":"2019.11.01",
+ "pinning_version":"2020.03.16",
  "raw_meta_yaml":"{% set version = \"1.2.4\" %}\n\npackage:\n  name: pyside\n  version: {{ version }}\n\nsource:\n  fn: PySide-{{ version }}.tar.gz\n  url: https://pypi.python.org/packages/source/P/PySide/PySide-{{ version }}.tar.gz\n  sha256: 1421bc1bf612c396070de9e1ffe227c07c1f3129278bc7d30c754b5146be2433\n  patches:\n    # eliminate spurious shiboken stderr output to avoid the 4MB log limit on Travis\n    # https://codereview.qt-project.org/#/c/172582/\n    - shiboken-osx-fix-stderr-output.patch\n    # https://github.com/sparsehash/sparsehash/commit/7b8afad35bd601ea780b0f72e215de96613d3c95\n    # https://codereview.qt-project.org/#/c/172583/\n    - fix-vc2013-hash_map.patch\n    # https://bugreports.qt.io/browse/PYSIDE-321\n    # Backported https://code.qt.io/cgit/pyside/pyside.git/commit/?id=23d77136da1f249f0a78c8c7e8124adc8c604230\n    - fix-vs2015-4.8.patch\n    # make the testsuite pass\n    - disable-failing-tests.patch\n    # https://bugreports.qt.io/browse/PYSIDE-103\n    - wrapinstance-overflow.patch\n    # https://github.com/looooo/pivy/issues/18\n    - win_pointer_conversion_fix.patch  # [win]\n\nbuild:\n  number: 8\n  features:\n    - vc9  # [win and py27]\n    - vc14  # [win and py>=35]\n  detect_binary_files_with_prefix: True\n\nrequirements:\n  build:\n    - toolchain\n    - python\n    - cmake\n    - qt 4.8.*\n    - libxslt\n    - vc 9  # [win and py27]\n    - vc 14  # [win and py>=35]\n  run:\n    - python\n    - qt 4.8.*\n    - libxslt\n    - vc 9  # [win and py27]\n    - vc 14  # [win and py>=35]\n\ntest:\n  imports:\n    - PySide.QtCore\n    - PySide.QtDeclarative\n    - PySide.QtGui\n    - PySide.QtHelp\n    - PySide.QtMultimedia\n    - PySide.QtNetwork\n    - PySide.QtScript\n    - PySide.QtScriptTools\n    - PySide.QtSql\n    - PySide.QtSvg\n    - PySide.QtTest\n    - PySide.QtUiTools\n    - PySide.QtWebKit\n    - PySide.QtXml\n    - PySide.QtXmlPatterns\n    - PySide.QtOpenGL\n    - PySide.phonon  # [not linux]\n    - pysideuic\n  commands:\n    - pyside-lupdate -help\n    - pyside-uic -help\n\nabout:\n  home: https://wiki.qt.io/PySide\n  license: LGPL3\n  license_file: sources/pyside/COPYING\n  summary: Python bindings for Qt\n\nextra:\n  recipe-maintainers:\n    - jschueller\n    - ccordoba12\n",
  "req":{
   "__set__":true,
@@ -302,7 +301,7 @@
    "elements":[]
   }
  },
- "smithy_version":"3.6.1",
+ "smithy_version":"No azure token. Create a token and\nput it in ~/.conda-smithy/azure.token\n3.6.13",
  "strong_exports":false,
  "total_requirements":{
   "build":{
