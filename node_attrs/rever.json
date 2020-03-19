@@ -174,9 +174,6 @@
  ],
  "bad":false,
  "conda-forge.yml":{
-  "compiler_stack":"comp7",
-  "max_py_ver":"37",
-  "max_r_ver":"35",
   "provider":{
    "win":"azure"
   }
@@ -189,14 +186,20 @@
    "dev_url":"https://github.com/ergs/rever",
    "doc_url":"https://regro.github.io/rever-docs/",
    "home":"https://regro.github.io/rever-docs/",
-   "license":"BSD 3-Clause",
+   "license":"BSD-3-Clause",
    "license_family":"BSD",
    "license_file":"LICENSE",
    "summary":"Releaser of Versions"
   },
   "build":{
-   "number":"0",
-   "script":"python setup.py install"
+   "entry_points":[
+    "rever = rever.main:main",
+    "rever = rever.main:main",
+    "rever = rever.main:main"
+   ],
+   "noarch":"python",
+   "number":"1",
+   "script":"-m pip install . --no-deps -vv"
   },
   "extra":{
    "recipe-maintainers":[
@@ -216,23 +219,26 @@
    "version":"0.4.3"
   },
   "requirements":{
-   "build":[
-    "python",
-    "python",
-    "python"
+   "host":[
+    "python >=3.0",
+    "pip",
+    "python >=3.0",
+    "pip",
+    "python >=3.0",
+    "pip"
    ],
    "run":[
-    "python",
+    "python >=3.0",
     "xonsh",
     "lazyasd",
     "github3.py",
     "ruamel.yaml",
-    "python",
+    "python >=3.0",
     "xonsh",
     "lazyasd",
     "github3.py",
     "ruamel.yaml",
-    "python",
+    "python >=3.0",
     "xonsh",
     "lazyasd",
     "github3.py",
@@ -240,7 +246,6 @@
    ]
   },
   "source":{
-   "fn":"rever-0.4.3.tar.gz",
    "sha256":"a722b98172ce26282efbb72bf15567e1b7c7b5f131ddf352e855e3d1fdf95290",
    "url":"https://github.com/ergs/rever/archive/0.4.3.tar.gz"
   },
@@ -263,12 +268,13 @@
  "name":"rever",
  "new_version":"0.4.3",
  "pinning_version":"2020.03.16",
- "raw_meta_yaml":"{% set name = \"rever\" %}\n{% set version = \"0.4.3\" %}\n{% set sha256 = \"a722b98172ce26282efbb72bf15567e1b7c7b5f131ddf352e855e3d1fdf95290\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  fn: {{ name }}-{{ version }}.tar.gz\n  url: https://github.com/ergs/rever/archive/{{ version }}.tar.gz\n  sha256: {{ sha256 }}\n\nbuild:\n  number: 0\n  script: python setup.py install\n  skip: True  # [py < 30]\n\nrequirements:\n  build:\n    - python\n  run:\n    - python\n    - xonsh\n    - lazyasd\n    - github3.py\n    - ruamel.yaml\n\ntest:\n  imports:\n    - rever\n    - rever.activities\n  commands:\n    - rever -h\n\nabout:\n  home: https://regro.github.io/rever-docs/\n  license: BSD 3-Clause\n  license_family: BSD\n  license_file: LICENSE\n  summary: 'Releaser of Versions'\n  description: |\n    Rever is a xonsh-powered, cross-platform software release tool. The goal of rever is\n    to provide sofware projects a standard mechanism for dealing with code released.\n    Rever aims to make the process of releasing a new version of a code base as easy as\n    running a single command.\n  doc_url: https://regro.github.io/rever-docs/\n  dev_url: https://github.com/ergs/rever\n\nextra:\n  recipe-maintainers:\n    - scopatz\n    - asmeurer\n    - CJ-Wright\n",
+ "raw_meta_yaml":"{% set name = \"rever\" %}\n{% set version = \"0.4.3\" %}\n{% set sha256 = \"a722b98172ce26282efbb72bf15567e1b7c7b5f131ddf352e855e3d1fdf95290\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  url: https://github.com/ergs/rever/archive/{{ version }}.tar.gz\n  sha256: {{ sha256 }}\n\nbuild:\n  number: 1\n  script: {{ PYTHON }} -m pip install . --no-deps -vv\n  noarch: python\n  entry_points:\n    - rever = rever.main:main\n  \nrequirements:\n  host:\n    - python >=3.0\n    - pip\n  run:\n    - python >=3.0\n    - xonsh\n    - lazyasd\n    - github3.py\n    - ruamel.yaml\n\ntest:\n  imports:\n    - rever\n    - rever.activities\n  commands:\n    - rever -h\n\nabout:\n  home: https://regro.github.io/rever-docs/\n  license: BSD-3-Clause\n  license_family: BSD\n  license_file: LICENSE\n  summary: 'Releaser of Versions'\n  description: |\n    Rever is a xonsh-powered, cross-platform software release tool. The goal of rever is\n    to provide sofware projects a standard mechanism for dealing with code released.\n    Rever aims to make the process of releasing a new version of a code base as easy as\n    running a single command.\n  doc_url: https://regro.github.io/rever-docs/\n  dev_url: https://github.com/ergs/rever\n\nextra:\n  recipe-maintainers:\n    - scopatz\n    - asmeurer\n    - CJ-Wright\n",
  "req":{
   "__set__":true,
   "elements":[
    "github3.py",
    "lazyasd",
+   "pip",
    "python",
    "ruamel.yaml",
    "xonsh"
@@ -277,13 +283,14 @@
  "requirements":{
   "build":{
    "__set__":true,
-   "elements":[
-    "python"
-   ]
+   "elements":[]
   },
   "host":{
    "__set__":true,
-   "elements":[]
+   "elements":[
+    "pip",
+    "python"
+   ]
   },
   "run":{
    "__set__":true,
@@ -306,20 +313,21 @@
  "total_requirements":{
   "build":{
    "__set__":true,
-   "elements":[
-    "python"
-   ]
+   "elements":[]
   },
   "host":{
    "__set__":true,
-   "elements":[]
+   "elements":[
+    "pip",
+    "python >=3.0"
+   ]
   },
   "run":{
    "__set__":true,
    "elements":[
     "github3.py",
     "lazyasd",
-    "python",
+    "python >=3.0",
     "ruamel.yaml",
     "xonsh"
    ]
