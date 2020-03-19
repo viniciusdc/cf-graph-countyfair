@@ -35,29 +35,28 @@
     "migrator_version",
     "name"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/3a18e85f-aace-441e-9f39-8999334b5b26.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"MigrationYaml",
+    "migrator_object_version":1,
+    "migrator_version":0,
+    "name":"pypy"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_object_version",
+    "migrator_version",
+    "name"
+   ]
   }
  ],
- "bad":{
-  "exception":"Failed to put item: An error occurred (ValidationException) on request (DL12R8MLQSIVSBFS0TGNC0HETRVV4KQNSO5AEMVJF66Q9ASUAAJG) on table (pr_json) when calling the PutItem operation: Attempting to store more than 38 significant digits in a Number",
-  "traceback":[
-   "Traceback (most recent call last):",
-   "  File \"/root/repo/cf-scripts/conda_forge_tick/auto_tick.py\", line 873, in main",
-   "    hash_type=attrs.get(\"hash_type\", \"sha256\"),",
-   "  File \"/root/repo/cf-scripts/conda_forge_tick/auto_tick.py\", line 248, in run",
-   "    PRJson.dump(pr_json)",
-   "  File \"/root/repo/cf-scripts/conda_forge_tick/dynamo_models.py\", line 33, in dump",
-   "    item.save()",
-   "  File \"/opt/conda/envs/run_env/lib/python3.7/site-packages/pynamodb/models.py\", line 405, in save",
-   "    data = self._get_connection().put_item(*args, **kwargs)",
-   "  File \"/opt/conda/envs/run_env/lib/python3.7/site-packages/pynamodb/connection/table.py\", line 139, in put_item",
-   "    return_item_collection_metrics=return_item_collection_metrics)",
-   "  File \"/opt/conda/envs/run_env/lib/python3.7/site-packages/pynamodb/connection/base.py\", line 972, in put_item",
-   "    six.raise_from(PutError(\"Failed to put item: {}\".format(e), e), None)",
-   "  File \"<string>\", line 3, in raise_from",
-   "pynamodb.exceptions.PutError: Failed to put item: An error occurred (ValidationException) on request (DL12R8MLQSIVSBFS0TGNC0HETRVV4KQNSO5AEMVJF66Q9ASUAAJG) on table (pr_json) when calling the PutItem operation: Attempting to store more than 38 significant digits in a Number",
-   ""
-  ]
- },
+ "bad":false,
  "conda-forge.yml":{
   "compiler_stack":"comp7",
   "max_py_ver":"37",
@@ -169,7 +168,7 @@
  },
  "name":"soappy",
  "new_version":"0.12.22",
- "pinning_version":"2019.11.01",
+ "pinning_version":"2020.03.16",
  "raw_meta_yaml":"{% set name = \"SOAPpy\" %}\n{% set version = \"0.12.22\" %}\n{% set sha256 = \"e70845906bb625144ae6a8df4534d66d84431ff8e21835d7b401ec6d8eb447a5\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  fn: {{ name }}-{{ version }}.zip\n  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.zip\n  sha256: {{ sha256 }}\n\nbuild:\n  number: 1000\n  skip: True  # [ not py2k or win ]\n  script: python setup.py install --single-version-externally-managed --record record.txt\n\nrequirements:\n  build:\n    - python\n    - setuptools\n  run:\n    - python\n    - wstools\n    - defusedxml\n\ntest:\n  imports:\n    - SOAPpy\n    - SOAPpy.Client\n    - SOAPpy.Config\n    - SOAPpy.Errors\n    - SOAPpy.NS\n    - SOAPpy.Parser\n    - SOAPpy.Server\n    - SOAPpy.SOAPBuilder\n    - SOAPpy.SOAP\n    - SOAPpy.Types\n    - SOAPpy.URLopener\n    - SOAPpy.Utilities\n    - SOAPpy.version\n    - SOAPpy.WSDL\n\nabout:\n  home: https://github.com/kiorky/SOAPpy\n  license: BSD-3-Clause\n  license_family: BSD\n  license_file: '{{ RECIPE_DIR }}/LICENSE'\n  summary: 'Simple to use SOAP library for Python'\n\n  description: |\n    Disclaimer (from upstream package)\n    ==================================\n    Please use `suds <https://pypi.python.org/pypi/suds>`_ rather than SOAPpy.\n    SOAPpy is old and clamsy.\n  dev_url: https://github.com/kiorky/SOAPpy\n\nextra:\n  recipe-maintainers:\n    - pvanheus\n    - AjitPS\n",
  "req":{
   "__set__":true,
@@ -205,7 +204,7 @@
    "elements":[]
   }
  },
- "smithy_version":"3.6.1",
+ "smithy_version":"3.6.12",
  "strong_exports":false,
  "total_requirements":{
   "build":{
