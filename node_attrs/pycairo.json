@@ -199,13 +199,13 @@
   "about":{
    "dev_url":"https://github.com/pygobject/pycairo/",
    "home":"http://cairographics.org/pycairo/",
-   "license":"LGPL 2.1, MPL 1.1",
+   "license":"LGPL-2.1-only OR MPL-1.1",
    "license_file":"COPYING",
    "summary":"Python bindings for the Cairo graphics library."
   },
   "build":{
    "detect_binary_files_with_prefix":true,
-   "number":"2"
+   "number":"3"
   },
   "extra":{
    "recipe-maintainers":[
@@ -224,30 +224,35 @@
     "pkg-config",
     "posix",
     "c_compiler_stub",
+    "meson",
     "pkg-config",
     "c_compiler_stub",
+    "meson",
     "pkg-config",
     "c_compiler_stub"
    ],
    "host":[
     "cairo",
     "cython",
-    "pip",
+    "flake8",
     "pthread-stubs",
+    "pytest",
     "python",
     "xorg-libx11 1.6.*",
     "xorg-xproto",
     "cairo",
     "cython",
-    "pip",
+    "flake8",
     "pthread-stubs",
+    "pytest",
     "python",
     "xorg-libx11 1.6.*",
     "xorg-xproto",
     "cairo",
     "cython",
-    "pip",
+    "flake8",
     "pthread-stubs",
+    "pytest",
     "python",
     "xorg-libx11 1.6.*",
     "xorg-xproto"
@@ -268,8 +273,10 @@
   "test":{
    "commands":[
     "if not exist %LIBRARY_LIB%\\\\pkgconfig\\\\py3cairo.pc exit 1",
+    "test -f $PREFIX/lib/pkgconfig/py3cairo.pc",
     "conda inspect linkages -p $PREFIX $PKG_NAME",
     "conda inspect objects -p $PREFIX $PKG_NAME",
+    "test -f $PREFIX/lib/pkgconfig/py3cairo.pc",
     "conda inspect linkages -p $PREFIX $PKG_NAME"
    ],
    "imports":[
@@ -282,18 +289,19 @@
  "name":"pycairo",
  "new_version":"1.19.1",
  "pinning_version":"2020.03.14",
- "raw_meta_yaml":"{% set name = \"pycairo\" %}\n{% set version = \"1.19.1\" %}\n{% set sha256 = \"2c143183280feb67f5beb4e543fd49990c28e7df427301ede04fc550d3562e84\" %}\n\npackage:\n  name: {{ name }}\n  version: {{ version }}\n\nsource:\n  url: https://github.com/pygobject/pycairo/releases/download/v{{ version }}/{{ name }}-{{ version }}.tar.gz\n  sha256: {{ sha256 }}\n\nbuild:\n  number: 2\n  detect_binary_files_with_prefix: true\n  skip: true  # [py < 35]\n\nrequirements:\n  build:\n    - meson  # [win]\n    - pkg-config\n    - posix  # [win]\n    - {{ compiler('c') }}\n  host:\n    - cairo\n    - cython\n    - pip\n    - pthread-stubs\n    - python\n    - xorg-libx11 1.6.*\n    - xorg-xproto\n  run:\n    - cairo\n    - python\n\ntest:\n  imports:\n    - cairo\n  commands:\n    # verify the pkgconfig files get installed\n    - if not exist %LIBRARY_LIB%\\\\pkgconfig\\\\py3cairo.pc exit 1  # [win]\n\n    - conda inspect linkages -p $PREFIX $PKG_NAME  # [not win]\n    - conda inspect objects -p $PREFIX $PKG_NAME  # [osx]\n\nabout:\n  home: http://cairographics.org/pycairo/\n  license: LGPL 2.1, MPL 1.1\n  license_file: COPYING\n  summary: 'Python bindings for the Cairo graphics library.'\n  dev_url: https://github.com/pygobject/pycairo/\n\nextra:\n  recipe-maintainers:\n    - pkgw\n",
+ "raw_meta_yaml":"{% set name = \"pycairo\" %}\n{% set version = \"1.19.1\" %}\n{% set sha256 = \"2c143183280feb67f5beb4e543fd49990c28e7df427301ede04fc550d3562e84\" %}\n\npackage:\n  name: {{ name }}\n  version: {{ version }}\n\nsource:\n  url: https://github.com/pygobject/pycairo/releases/download/v{{ version }}/{{ name }}-{{ version }}.tar.gz\n  sha256: {{ sha256 }}\n\nbuild:\n  number: 3\n  detect_binary_files_with_prefix: true\n  skip: true  # [py < 35]\n\nrequirements:\n  build:\n    - meson\n    - pkg-config\n    - posix  # [win]\n    - {{ compiler('c') }}\n  host:\n    - cairo\n    - cython\n    - flake8  # for testing during the build\n    - pthread-stubs\n    - pytest  # for testing during the build\n    - python\n    - xorg-libx11 1.6.*\n    - xorg-xproto\n  run:\n    - cairo\n    - python\n\ntest:\n  imports:\n    - cairo\n  commands:\n    # verify the pkgconfig files get installed\n    - test -f $PREFIX/lib/pkgconfig/py3cairo.pc  # [unix]\n    - if not exist %LIBRARY_LIB%\\\\pkgconfig\\\\py3cairo.pc exit 1  # [win]\n\n    - conda inspect linkages -p $PREFIX $PKG_NAME  # [not win]\n    - conda inspect objects -p $PREFIX $PKG_NAME  # [osx]\n\nabout:\n  home: http://cairographics.org/pycairo/\n  license: LGPL-2.1-only OR MPL-1.1\n  license_file: COPYING\n  summary: 'Python bindings for the Cairo graphics library.'\n  dev_url: https://github.com/pygobject/pycairo/\n\nextra:\n  recipe-maintainers:\n    - pkgw\n",
  "req":{
   "__set__":true,
   "elements":[
    "c_compiler_stub",
    "cairo",
    "cython",
+   "flake8",
    "meson",
-   "pip",
    "pkg-config",
    "posix",
    "pthread-stubs",
+   "pytest",
    "python",
    "xorg-libx11",
    "xorg-xproto"
@@ -314,8 +322,9 @@
    "elements":[
     "cairo",
     "cython",
-    "pip",
+    "flake8",
     "pthread-stubs",
+    "pytest",
     "python",
     "xorg-libx11",
     "xorg-xproto"
@@ -350,8 +359,9 @@
    "elements":[
     "cairo",
     "cython",
-    "pip",
+    "flake8",
     "pthread-stubs",
+    "pytest",
     "python",
     "xorg-libx11 1.6.*",
     "xorg-xproto"
