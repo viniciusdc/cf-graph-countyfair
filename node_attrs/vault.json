@@ -327,7 +327,7 @@
   }
  },
  "name":"vault",
- "new_version":"1.3.3",
+ "new_version":"1.3.4",
  "pinning_version":"2020.03.06",
  "raw_meta_yaml":"{% set goname = \"github.com/hashicorp/vault\" %}\n{% set version = \"1.3.2\" %}\n\n{% set name = goname.split('/')[-1] %}\n{% set pkg_src = 'src' + os.sep + goname.replace(\"/\",os.sep) %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  - folder: {{ pkg_src }}\n    url: https://{{ goname }}/archive/v{{ version }}.tar.gz\n    sha256: 675961d3c0c933ec260995c1aad024b20ac4ab0816c76b4cb07385a8c25b1d83\n\nbuild:\n  number: 1\n  # windows builds disabled since we don't have a go compiler for 1.12\n  skip: true  # [win]\n  script:\n    - pushd {{ pkg_src }}\n    - go install -v .\n\nrequirements:\n  build:\n    - {{ compiler('go') }}\n\ntest:\n  commands:\n    - {{ name|lower }} -v\n\nabout:\n  home: https://www.vaultproject.io\n  license: MPL 2.0\n  summary: A tool for managing secrets.\n  description: |\n    Vault is a tool for securely accessing secrets. A secret is anything that you\n    want to tightly control access to, such as API keys, passwords, certificates,\n    and more. Vault provides a unified interface to any secret, while providing\n    tight access control and recording a detailed audit log.\n  doc_url: https://www.vaultproject.io/docs/index.html\n  dev_url: https://github.com/hashicorp/vault.git\n\nextra:\n  recipe-maintainers:\n    - johanneskoester\n    - sodre\n    - adbeda\n    - mariusvniekerk\n    - oblute\n    - rluria14\n",
  "req":{
