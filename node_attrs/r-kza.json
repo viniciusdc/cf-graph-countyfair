@@ -33,6 +33,23 @@
     "migrator_version",
     "name"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/391347683.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"Version",
+    "migrator_version":0,
+    "version":"4.1.0.1"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "version"
+   ]
   }
  ],
  "bad":false,
@@ -129,8 +146,8 @@
   }
  },
  "name":"r-kza",
- "new_version":"4.1.0",
- "pinning_version":"2019.07.20",
+ "new_version":"4.1.0.1",
+ "pinning_version":"2020.03.20",
  "raw_meta_yaml":"{% set version = '4.1.0' %}\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-kza\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  url:\n    - {{ cran_mirror }}/src/contrib/kza_{{ version }}.tar.gz\n    - {{ cran_mirror }}/src/contrib/Archive/kza/kza_{{ version }}.tar.gz\n  sha256: aa8700a629eba13eca658934d49ec73ee68ab14107edcab60e31f88e6b271989\n\nbuild:\n  skip: True  # [win]\n  merge_build_host: True  # [win]\n  number: 1001\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - {{ compiler('c') }}        # [not win]\n    - {{ compiler('m2w64_c') }}        # [win]\n    - {{posix}}filesystem        # [win]\n    - {{posix}}make\n    - {{posix}}sed               # [win]\n    - {{posix}}coreutils         # [win]\n    - {{posix}}zip               # [win]\n  host:\n    - r-base\n    - fftw\n  run:\n    - r-base\n    - {{native}}gcc-libs         # [win]\n    - fftw\n\ntest:\n  commands:\n    - $R -e \"library('kza')\"           # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('kza')\\\"\"  # [win]\n\nabout:\n  home: https://CRAN.R-project.org/package=kza\n  license: GPL-3\n  summary: Time Series Analysis including break detection, spectral analysis, KZ Fourier Transforms.\n  license_family: GPL3\n  license_file: '{{ environ[\"PREFIX\"] }}/lib/R/share/licenses/GPL-3'\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n\n# Package: kza\n# Version: 4.1.0\n# Date: 2018-10-28\n# Title: Kolmogorov-Zurbenko Adaptive Filters\n# Author: Brian Close <brian.close@gmail.com>, Igor Zurbenko <IZurbenko@albany.edu> and Mingzeng Sun <msun@albany.edu>\n# Maintainer: Brian Close <brian.close@gmail.com>\n# Description: Time Series Analysis including break detection, spectral analysis, KZ Fourier Transforms.\n# Suggests: polynom\n# SystemRequirements: fftw (>= 3.2.2)\n# License: GPL-3\n# NeedsCompilation: yes\n# Repository: CRAN\n# Packaged: 2018-10-28 17:29:23 UTC; brian\n# Date/Publication: 2018-10-28 17:40:03 UTC\n",
  "req":{
   "__set__":true,
@@ -180,7 +197,7 @@
    "elements":[]
   }
  },
- "smithy_version":"3.4.1",
+ "smithy_version":"No azure token. Create a token and\nput it in ~/.conda-smithy/azure.token\n3.6.14",
  "strong_exports":false,
  "total_requirements":{
   "build":{
