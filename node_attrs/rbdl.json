@@ -1,22 +1,18 @@
 {
  "bad":false,
- "conda-forge.yml":{
-  "provider":{
-   "win":"appveyor"
-  }
- },
+ "conda-forge.yml":{},
  "feedstock_name":"rbdl",
  "hash_type":"sha256",
  "meta_yaml":{
   "about":{
    "home":"https://bitbucket.org/rbdl/rbdl",
-   "license":"zlib",
+   "license":"Zlib",
    "license_family":"OTHER",
    "license_file":"LICENSE",
    "summary":"RBDL is a highly efficient C++ library that contains some essential rigid body dynamics algorithms."
   },
   "build":{
-   "number":"1",
+   "number":"2",
    "rpaths":[
     "lib/",
     "lib/rbdl/",
@@ -42,6 +38,7 @@
    "build":[
     "cxx_compiler_stub",
     "cmake",
+    "ninja",
     "cxx_compiler_stub",
     "cmake",
     "make",
@@ -74,14 +71,15 @@
  },
  "name":"rbdl",
  "new_version":false,
- "raw_meta_yaml":"{% set name = \"rbdl\" %}\n{% set version = \"2.6.0.2\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  url: https://github.com/pyomeca/rbdl-casadi/archive/{{ version }}.tar.gz\n  sha256: 7cff1e05318a5bcbdd920d634af0b4f8e50220aae713fa8323af01c1f6ef65fb\n\nbuild:\n  number: 1\n  skip: True  # [win and vc<14]\n  rpaths:\n    - lib/\n    - lib/{{ name }}/\n\nrequirements:\n  build:\n    - {{ compiler('cxx') }}\n    - cmake\n    - make  # [unix]\n  host:\n    - eigen\n  run:\n    - eigen\n\ntest:\n  commands:\n    - test $PREFIX/lib/librbdl$SHLIB_EXT  # [unix]\n    - if not exist %PREFIX%\\\\Lib\\\\rbdl*.lib exit 1  # [win]\n\nabout:\n  home: https://bitbucket.org/rbdl/rbdl\n  license: zlib\n  license_file: LICENSE\n  license_family: OTHER\n  summary: RBDL is a highly efficient C++ library that contains some essential rigid body dynamics algorithms.\n\nextra:\n  recipe-maintainers:\n    - pariterre\n",
+ "raw_meta_yaml":"{% set name = \"rbdl\" %}\n{% set version = \"2.6.0.2\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  url: https://github.com/pyomeca/rbdl-casadi/archive/{{ version }}.tar.gz\n  sha256: 7cff1e05318a5bcbdd920d634af0b4f8e50220aae713fa8323af01c1f6ef65fb\n\nbuild:\n  number: 2\n  skip: True  # [win and vc<14]\n  rpaths:\n    - lib/\n    - lib/{{ name }}/\n\nrequirements:\n  build:\n    - {{ compiler('cxx') }}\n    - cmake\n    - ninja  # [win]\n    - make  # [unix]\n  host:\n    - eigen\n  run:\n    - eigen\n\ntest:\n  commands:\n    - test $PREFIX/lib/librbdl$SHLIB_EXT  # [unix]\n    - if not exist %PREFIX%\\\\Lib\\\\rbdl*.lib exit 1  # [win]\n\nabout:\n  home: https://bitbucket.org/rbdl/rbdl\n  license: Zlib\n  license_file: LICENSE\n  license_family: OTHER\n  summary: RBDL is a highly efficient C++ library that contains some essential rigid body dynamics algorithms.\n\nextra:\n  recipe-maintainers:\n    - pariterre\n",
  "req":{
   "__set__":true,
   "elements":[
    "cmake",
    "cxx_compiler_stub",
    "eigen",
-   "make"
+   "make",
+   "ninja"
   ]
  },
  "requirements":{
@@ -90,7 +88,8 @@
    "elements":[
     "cmake",
     "cxx_compiler_stub",
-    "make"
+    "make",
+    "ninja"
    ]
   },
   "host":{
@@ -117,7 +116,8 @@
    "elements":[
     "cmake",
     "cxx_compiler_stub",
-    "make"
+    "make",
+    "ninja"
    ]
   },
   "host":{
