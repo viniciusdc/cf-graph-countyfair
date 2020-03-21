@@ -76,15 +76,14 @@
  "meta_yaml":{
   "about":{
    "home":"https://github.com/dask/dask-labextension",
-   "license":"BSD-3-clause",
+   "license":"BSD-3-Clause",
    "license_family":"BSD",
    "license_file":"LICENSE",
    "summary":"A Jupyter Notebook server extension manages Dask clusters"
   },
   "build":{
    "noarch":"python",
-   "number":"0",
-   "script":"-m pip install . --no-deps -vv"
+   "number":"0"
   },
   "extra":{
    "recipe-maintainers":[
@@ -96,73 +95,162 @@
     "ocefpaf"
    ]
   },
+  "outputs":[
+   {
+    "name":"dask-labextension",
+    "requirements":{
+     "host":[
+      "python >=3.5",
+      "pip"
+     ],
+     "run":[
+      "python >=3.5",
+      "bokeh <2",
+      "distributed >=1.24.1",
+      "jupyter-server-proxy >=1.1.0",
+      "notebook >=4.3.1"
+     ]
+    },
+    "script":"build_base.bat",
+    "test":{
+     "commands":[
+      "pip check"
+     ],
+     "imports":[
+      "dask_labextension"
+     ],
+     "requires":[
+      "pip"
+     ]
+    }
+   },
+   {
+    "build":{
+     "noarch":"generic"
+    },
+    "name":"dask_labextension",
+    "requirements":{
+     "run":[
+      "dask-labextension"
+     ]
+    },
+    "test":{
+     "imports":[
+      "dask_labextension"
+     ]
+    }
+   },
+   {
+    "name":"dask-labextension",
+    "requirements":{
+     "host":[
+      "python >=3.5",
+      "pip"
+     ],
+     "run":[
+      "python >=3.5",
+      "bokeh <2",
+      "distributed >=1.24.1",
+      "jupyter-server-proxy >=1.1.0",
+      "notebook >=4.3.1"
+     ]
+    },
+    "script":"build_base.sh",
+    "test":{
+     "commands":[
+      "pip check"
+     ],
+     "imports":[
+      "dask_labextension"
+     ],
+     "requires":[
+      "pip"
+     ]
+    }
+   },
+   {
+    "build":{
+     "noarch":"generic"
+    },
+    "name":"dask_labextension",
+    "requirements":{
+     "run":[
+      "dask-labextension"
+     ]
+    },
+    "test":{
+     "imports":[
+      "dask_labextension"
+     ]
+    }
+   },
+   {
+    "name":"dask-labextension",
+    "requirements":{
+     "host":[
+      "python >=3.5",
+      "pip"
+     ],
+     "run":[
+      "python >=3.5",
+      "bokeh <2",
+      "distributed >=1.24.1",
+      "jupyter-server-proxy >=1.1.0",
+      "notebook >=4.3.1"
+     ]
+    },
+    "script":"build_base.sh",
+    "test":{
+     "commands":[
+      "pip check"
+     ],
+     "imports":[
+      "dask_labextension"
+     ],
+     "requires":[
+      "pip"
+     ]
+    }
+   },
+   {
+    "build":{
+     "noarch":"generic"
+    },
+    "name":"dask_labextension",
+    "requirements":{
+     "run":[
+      "dask-labextension"
+     ]
+    },
+    "test":{
+     "imports":[
+      "dask_labextension"
+     ]
+    }
+   }
+  ],
   "package":{
    "name":"dask-labextension",
-   "version":"2.0.0"
-  },
-  "requirements":{
-   "host":[
-    "python >=3.6",
-    "pip",
-    "distributed >=1.24.1",
-    "notebook >=4.3.1",
-    "python >=3.6",
-    "pip",
-    "distributed >=1.24.1",
-    "notebook >=4.3.1",
-    "python >=3.6",
-    "pip",
-    "distributed >=1.24.1",
-    "notebook >=4.3.1"
-   ],
-   "run":[
-    "python >=3.6",
-    "bokeh",
-    "distributed >=1.24.1",
-    "notebook >=4.3.1",
-    "jupyter-server-proxy >=1.1.0",
-    "python >=3.6",
-    "bokeh",
-    "distributed >=1.24.1",
-    "notebook >=4.3.1",
-    "jupyter-server-proxy >=1.1.0",
-    "python >=3.6",
-    "bokeh",
-    "distributed >=1.24.1",
-    "notebook >=4.3.1",
-    "jupyter-server-proxy >=1.1.0"
-   ]
+   "version":"2.0.1"
   },
   "source":{
-   "sha256":"710bac8373b15a98d96b2083941e67f07773e3f27818d122e591b24f35044b63",
-   "url":"https://pypi.io/packages/source/d/dask_labextension/dask_labextension-2.0.0.tar.gz"
-  },
-  "test":{
-   "commands":[
-    "pip check",
-    "pip check",
-    "pip check"
-   ],
-   "imports":[
-    "dask_labextension",
-    "dask_labextension",
-    "dask_labextension"
-   ],
-   "requires":[
-    "pip",
-    "pip",
-    "pip"
-   ]
+   "sha256":"50f232b1030a32b0e1c63f48f5d74e2fc1feca1a951b81de77b7d02dc84bfda7",
+   "url":"https://pypi.io/packages/source/d/dask_labextension/dask_labextension-2.0.1.tar.gz"
   }
  },
  "name":"dask-labextension",
  "new_version":"2.0.1",
+ "outputs_names":[
+  "dask-labextension",
+  "dask_labextension"
+ ],
  "pinning_version":"2020.03.03",
- "raw_meta_yaml":"{% set version = \"2.0.0\" %}\n\npackage:\n  name: dask-labextension\n  version: {{ version }}\n\nsource:\n  url: https://pypi.io/packages/source/d/dask_labextension/dask_labextension-{{ version }}.tar.gz\n  sha256: 710bac8373b15a98d96b2083941e67f07773e3f27818d122e591b24f35044b63\n\nbuild:\n  number: 0\n  noarch: python\n  script: {{ PYTHON }} -m pip install . --no-deps -vv\n\nrequirements:\n  host:\n    - python >=3.6\n    - pip\n    # distributed and notebook are directly imported by setup.py\n    - distributed >=1.24.1\n    - notebook >=4.3.1\n  run:\n    - python >=3.6\n    - bokeh\n    - distributed >=1.24.1\n    - notebook >=4.3.1\n    - jupyter-server-proxy >=1.1.0\n\ntest:\n  imports:\n    - dask_labextension\n  requires:\n    - pip\n  commands:\n    - pip check\n\nabout:\n  home: https://github.com/dask/dask-labextension\n  license: BSD-3-clause\n  license_family: BSD\n  license_file: LICENSE\n  summary: A Jupyter Notebook server extension manages Dask clusters\n\nextra:\n  recipe-maintainers:\n    - xhochy\n    - ocefpaf\n",
+ "raw_meta_yaml":"{% set version = \"2.0.1\" %}\n\npackage:\n  name: dask-labextension\n  version: {{ version }}\n\nsource:\n  url: https://pypi.io/packages/source/d/dask_labextension/dask_labextension-{{ version }}.tar.gz\n  sha256: 50f232b1030a32b0e1c63f48f5d74e2fc1feca1a951b81de77b7d02dc84bfda7\n\nbuild:\n  number: 0\n  noarch: python\n\noutputs:\n  - name: dask-labextension\n    script: build_base.bat  # [win]\n    script: build_base.sh  # [not win]\n    requirements:\n      host:\n        - python >=3.5\n        - pip\n      run:\n        - python >=3.5\n        - bokeh <2\n        - distributed >=1.24.1\n        - jupyter-server-proxy >=1.1.0\n        - notebook >=4.3.1\n    test:\n      imports:\n        - dask_labextension\n      requires:\n        - pip\n      commands:\n        - pip check\n\n  - name: dask_labextension\n    build:\n      noarch: generic\n    requirements:\n      run:\n        - {{ pin_subpackage('dask-labextension', max_pin=\"x.x.x\") }}\n    test:\n      imports:\n        - dask_labextension\n\nabout:\n  home: https://github.com/dask/dask-labextension\n  license: BSD-3-Clause\n  license_family: BSD\n  license_file: LICENSE\n  summary: A Jupyter Notebook server extension manages Dask clusters\n\nextra:\n  recipe-maintainers:\n    - xhochy\n    - ocefpaf\n",
  "req":{
   "__set__":true,
   "elements":[
    "bokeh",
+   "dask-labextension",
    "distributed",
    "jupyter-server-proxy",
    "notebook",
@@ -178,8 +266,6 @@
   "host":{
    "__set__":true,
    "elements":[
-    "distributed",
-    "notebook",
     "pip",
     "python"
    ]
@@ -188,6 +274,7 @@
    "__set__":true,
    "elements":[
     "bokeh",
+    "dask-labextension",
     "distributed",
     "jupyter-server-proxy",
     "notebook",
@@ -211,20 +298,19 @@
   "host":{
    "__set__":true,
    "elements":[
-    "distributed >=1.24.1",
-    "notebook >=4.3.1",
     "pip",
-    "python >=3.6"
+    "python >=3.5"
    ]
   },
   "run":{
    "__set__":true,
    "elements":[
-    "bokeh",
+    "bokeh <2",
+    "dask-labextension",
     "distributed >=1.24.1",
     "jupyter-server-proxy >=1.1.0",
     "notebook >=4.3.1",
-    "python >=3.6"
+    "python >=3.5"
    ]
   },
   "test":{
@@ -235,5 +321,5 @@
   }
  },
  "url":"https://pypi.io/packages/source/d/dask_labextension/dask_labextension-1.0.3.tar.gz",
- "version":"2.0.0"
+ "version":"2.0.1"
 }

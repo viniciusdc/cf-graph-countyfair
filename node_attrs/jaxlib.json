@@ -277,7 +277,7 @@
    ]
   }
  ],
- "bad":false,
+ "bad":"make_graph: 503",
  "conda-forge.yml":{},
  "feedstock_name":"jaxlib",
  "hash_type":"sha256",
@@ -349,7 +349,7 @@
   }
  },
  "name":"jaxlib",
- "new_version":"0.1.42",
+ "new_version":false,
  "pinning_version":"2020.02.12",
  "raw_meta_yaml":"{% set version = \"0.1.39\" %}\n{% set name = \"jaxlib\" %}\n\n{% set pyver = \"cp{}{}\".format(PY_VER[0], PY_VER[2]) %}\n{% set platform = \"manylinux2010_x86_64\" %}  # [linux]\n{% set platform = \"macosx_10_9_x86_64\" %}  # [osx]\n\n# {distribution}-{version}(-{build tag})?-{python tag}-{abi tag}-{platform tag}.whl.\n{% set fn = \"{}-{}-{}-none-{}.whl\".format(name, version, pyver, platform) %}\n\npackage:\n  name: jaxlib\n  version: {{ version }}\n\nsource:\n  fn: {{ fn }}\n  url: https://pypi.io/packages/{{ pyver }}/{{ name[0] }}/{{ name }}/{{ fn }}\n  sha256: 317cda76c434f67cc8c6fb98e856642a5afe7b84f6d744d80de79d7d3913fd58  # [linux and py==36]\n  sha256: 3d94959de4a4cdcbb876204db77bf4d6ee8df09d128056f9a1fe2bc2bab7adf5  # [osx and py==36]\n\n  sha256: 0c2760ce6ba1dbe768d60b1ece910b3e592edad11a16e8a4cb89435b08a516d5  # [linux and py==37]\n  sha256: 3aa144b39f8c4292b72687d5b18eb14c66938cc8e5bb5ce5a9270f95958a209b  # [osx and py==37]\n\n  sha256: cd3aa141c7548060070787defceca332fdc31f16a4d6f3bb803cbeb3922a2bd8  # [linux and py==38]\n  sha256: 9725e17494ee90d0d56d6c09c1b83224ddb0ae27a28f5d1fd69dae99e88dca72  # [osx and py==38]\n\nbuild:\n  number: 0\n  skip: True  # [win or py2k]\n  script: \"{{ PYTHON }} -m pip install --no-deps -vv {{ fn }}\"\n\nrequirements:\n  host:\n    - python\n    - pip\n  run:\n    - python\n    - absl-py\n    - numpy >=1.12\n    - protobuf >=3.6.0\n    - scipy\n    - six\n\ntest:\n  requires:\n    - pip\n  commands:\n    - pip check\n  # imports:\n    # cannot run the test b/c this is not really manylinux1 GLIBC_2.14\n    # Google :-/\n    # - jaxlib\n\nabout:\n  home: http://github.com/google/jax\n  license: Apache-2.0\n  license_file: LICENSE\n  summary: \"Composable transformations of Python+NumPy programs: differentiate, vectorize, JIT to GPU/TPU, and more\"\n\n  dev_url: http://github.com/google/jax\n\nextra:\n  recipe-maintainers:\n    - ericmjl\n",
  "req":{
