@@ -54,7 +54,14 @@
   },
   "build":{
    "number":"0",
-   "script":" -m pip install . --no-deps --global-option=\"--openmp\" -vv"
+   "script":[
+    "set SETUPTOOLS_SCM_PRETEND_VERSION=1.2.0",
+    "-m pip install . --no-deps --global-option=\"--openmp\" -vv",
+    "export SETUPTOOLS_SCM_PRETEND_VERSION=1.2.0",
+    "-m pip install . --no-deps -vv",
+    "export SETUPTOOLS_SCM_PRETEND_VERSION=1.2.0",
+    "-m pip install . --no-deps --global-option=\"--openmp\" -vv"
+   ]
   },
   "extra":{
    "recipe-maintainers":[
@@ -68,34 +75,38 @@
   },
   "package":{
    "name":"gstools",
-   "version":"1.1.1"
+   "version":"1.2.0"
   },
   "requirements":{
    "build":[
     "llvm-openmp",
     "c_compiler_stub",
+    "cxx_compiler_stub",
+    "c_compiler_stub",
+    "cxx_compiler_stub",
     "llvm-openmp",
     "c_compiler_stub",
-    "llvm-openmp",
-    "c_compiler_stub"
+    "cxx_compiler_stub"
    ],
    "host":[
     "llvm-openmp",
-    "python",
     "pip",
-    "setuptools",
+    "python",
+    "setuptools >=45",
+    "setuptools_scm >=3.4",
+    "cython >=0.28.3",
+    "numpy >=1.14.5",
+    "pip",
+    "python",
+    "setuptools >=45",
+    "setuptools_scm >=3.4",
     "cython >=0.28.3",
     "numpy >=1.14.5",
     "llvm-openmp",
-    "python",
     "pip",
-    "setuptools",
-    "cython >=0.28.3",
-    "numpy >=1.14.5",
-    "llvm-openmp",
     "python",
-    "pip",
-    "setuptools",
+    "setuptools >=45",
+    "setuptools_scm >=3.4",
     "cython >=0.28.3",
     "numpy >=1.14.5"
    ],
@@ -105,30 +116,26 @@
     "numpy",
     "scipy >=1.1.0",
     "emcee >=3.0.0",
-    "hankel >=0.3.6",
-    "pyevtk",
-    "six",
+    "hankel >=1.0.2",
+    "pyevtk >=1.1.1",
+    "python",
+    "numpy",
+    "scipy >=1.1.0",
+    "emcee >=3.0.0",
+    "hankel >=1.0.2",
+    "pyevtk >=1.1.1",
     "llvm-openmp",
     "python",
     "numpy",
     "scipy >=1.1.0",
     "emcee >=3.0.0",
-    "hankel >=0.3.6",
-    "pyevtk",
-    "six",
-    "llvm-openmp",
-    "python",
-    "numpy",
-    "scipy >=1.1.0",
-    "emcee >=3.0.0",
-    "hankel >=0.3.6",
-    "pyevtk",
-    "six"
+    "hankel >=1.0.2",
+    "pyevtk >=1.1.1"
    ]
   },
   "source":{
-   "sha256":"4fcc6d664d2a47d201c7f0e01988c759cd1741d51c87753cbb1ee00e4ce75335",
-   "url":"https://pypi.io/packages/source/g/gstools/gstools-1.1.1.tar.gz"
+   "sha256":"3be5f1a6f33805cc2c4de8fb6feaede5e957c41da19c020b774c08ea9168578c",
+   "url":"https://pypi.io/packages/source/g/gstools/gstools-1.2.0.tar.gz"
   },
   "test":{
    "commands":[
@@ -156,11 +163,12 @@
  "name":"gstools",
  "new_version":"1.2.0",
  "pinning_version":"2020.03.20",
- "raw_meta_yaml":"{% set name = \"gstools\" %}\n{% set version = \"1.1.1\" %}\n\npackage:\n  name: \"{{ name|lower }}\"\n  version: \"{{ version }}\"\n\nsource:\n  url: \"https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz\"\n  sha256: 4fcc6d664d2a47d201c7f0e01988c759cd1741d51c87753cbb1ee00e4ce75335\n\nbuild:\n  number: 0\n  script: \"{{ PYTHON }} -m pip install . --no-deps --global-option=\\\"--openmp\\\" -vv\"\n\nrequirements:\n  build:\n    - llvm-openmp  # [not (win and py2k)]\n    - {{ compiler('c') }}\n  host:\n    - llvm-openmp  # [not (win and py2k)]\n    - python\n    - pip\n    - setuptools\n    - cython >=0.28.3\n    - numpy >=1.14.5\n  run:\n    - llvm-openmp  # [not (win and py2k)]\n    - python\n    - {{ pin_compatible('numpy') }}\n    - scipy >=1.1.0\n    - emcee >=3.0.0\n    - hankel >=0.3.6\n    - pyevtk\n    - six\n\ntest:\n  imports:\n    - gstools\n  requires:\n    - pytest\n  source_files:\n    - tests\n  commands:\n    - pytest -vv tests\n\nabout:\n  home: \"https://github.com/GeoStat-Framework/GSTools\"\n  license: \"GNU Lesser General Public v3 (LGPLv3)\"\n  license_family: LGPL\n  license_file: LICENSE\n  summary: \"GSTools: A geostatistical toolbox.\"\n  description: |\n    GeoStatTools provides geostatistical tools for various purposes:\n    - random field generation\n    - conditioned field generation\n    - incompressible random vector field generation\n    - simple and ordinary kriging\n    - variogram estimation and fitting\n    - many readily provided and even user-defined covariance models\n    - plotting and exporting routines\n  doc_url: https://geostat-framework.readthedocs.io/projects/gstools\n  dev_url: https://github.com/GeoStat-Framework/GSTools\n\nextra:\n  recipe-maintainers:\n    - MuellerSeb\n    - LSchueler\n",
+ "raw_meta_yaml":"{% set name = \"gstools\" %}\n{% set version = \"1.2.0\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz\n  sha256: 3be5f1a6f33805cc2c4de8fb6feaede5e957c41da19c020b774c08ea9168578c\n\nbuild:\n  number: 0\n  script:\n    - export SETUPTOOLS_SCM_PRETEND_VERSION={{ version }}    # [unix]\n    - set SETUPTOOLS_SCM_PRETEND_VERSION={{ version }}    # [win]\n    - {{ PYTHON }} -m pip install . --no-deps --global-option=\"--openmp\" -vv   # [not (osx and py==37)]\n    - {{ PYTHON }} -m pip install . --no-deps -vv                              # [osx and py==37]\n\nrequirements:\n  build:\n    - llvm-openmp  # [not (osx and py==37)]\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n  host:\n    - llvm-openmp  # [not (osx and py==37)]\n    - pip\n    - python\n    - setuptools >=45\n    - setuptools_scm >=3.4\n    - cython >=0.28.3\n    - numpy >=1.14.5\n  run:\n    - llvm-openmp  # [not (osx and py==37)]\n    - python\n    - {{ pin_compatible('numpy') }}\n    - scipy >=1.1.0\n    - emcee >=3.0.0\n    - hankel >=1.0.2\n    - pyevtk >=1.1.1\n\ntest:\n  imports:\n    - gstools\n  requires:\n    - pytest\n  source_files:\n    - tests\n  commands:\n    - pytest -vv tests\n\nabout:\n  home: https://github.com/GeoStat-Framework/GSTools\n  license: GNU Lesser General Public v3 (LGPLv3)\n  license_family: LGPL\n  license_file: LICENSE\n  summary: 'GSTools: A geostatistical toolbox.'\n  description: |\n    GeoStatTools provides geostatistical tools for various purposes:\n    - random field generation\n    - conditioned field generation\n    - incompressible random vector field generation\n    - simple and ordinary kriging\n    - variogram estimation and fitting\n    - many readily provided and even user-defined covariance models\n    - plotting and exporting routines\n  doc_url: https://geostat-framework.readthedocs.io/projects/gstools\n  dev_url: https://github.com/GeoStat-Framework/GSTools\n\nextra:\n  recipe-maintainers:\n    - MuellerSeb\n    - LSchueler\n",
  "req":{
   "__set__":true,
   "elements":[
    "c_compiler_stub",
+   "cxx_compiler_stub",
    "cython",
    "emcee",
    "hankel",
@@ -171,7 +179,7 @@
    "python",
    "scipy",
    "setuptools",
-   "six"
+   "setuptools_scm"
   ]
  },
  "requirements":{
@@ -179,6 +187,7 @@
    "__set__":true,
    "elements":[
     "c_compiler_stub",
+    "cxx_compiler_stub",
     "llvm-openmp"
    ]
   },
@@ -188,9 +197,11 @@
     "cython",
     "llvm-openmp",
     "numpy",
+    "openmp",
     "pip",
     "python",
-    "setuptools"
+    "setuptools",
+    "setuptools_scm"
    ]
   },
   "run":{
@@ -200,10 +211,10 @@
     "hankel",
     "llvm-openmp",
     "numpy",
+    "openmp",
     "pyevtk",
     "python",
-    "scipy",
-    "six"
+    "scipy"
    ]
   },
   "test":{
@@ -220,6 +231,7 @@
    "__set__":true,
    "elements":[
     "c_compiler_stub",
+    "cxx_compiler_stub",
     "llvm-openmp"
    ]
   },
@@ -231,20 +243,20 @@
     "numpy >=1.14.5",
     "pip",
     "python",
-    "setuptools"
+    "setuptools >=45",
+    "setuptools_scm >=3.4"
    ]
   },
   "run":{
    "__set__":true,
    "elements":[
     "emcee >=3.0.0",
-    "hankel >=0.3.6",
+    "hankel >=1.0.2",
     "llvm-openmp",
     "numpy",
-    "pyevtk",
+    "pyevtk >=1.1.1",
     "python",
-    "scipy >=1.1.0",
-    "six"
+    "scipy >=1.1.0"
    ]
   },
   "test":{
@@ -255,5 +267,5 @@
   }
  },
  "url":"https://pypi.io/packages/source/g/gstools/gstools-1.1.1.tar.gz",
- "version":"1.1.1"
+ "version":"1.2.0"
 }

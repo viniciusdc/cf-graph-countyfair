@@ -117,29 +117,28 @@
     "migrator_version",
     "version"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/3dd3a757-2d1c-44e7-806d-66f95a9a14e5.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"MigrationYaml",
+    "migrator_object_version":1,
+    "migrator_version":0,
+    "name":"pypy"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_object_version",
+    "migrator_version",
+    "name"
+   ]
   }
  ],
- "bad":{
-  "exception":"Failed to put item: An error occurred (ValidationException) on request (80UMOEFK0ICI5FRUSNMOPB8J9BVV4KQNSO5AEMVJF66Q9ASUAAJG) on table (pr_json) when calling the PutItem operation: Attempting to store more than 38 significant digits in a Number",
-  "traceback":[
-   "Traceback (most recent call last):",
-   "  File \"/root/repo/cf-scripts/conda_forge_tick/auto_tick.py\", line 901, in main",
-   "    hash_type=attrs.get(\"hash_type\", \"sha256\"),",
-   "  File \"/root/repo/cf-scripts/conda_forge_tick/auto_tick.py\", line 248, in run",
-   "    PRJson.dump(pr_json)",
-   "  File \"/root/repo/cf-scripts/conda_forge_tick/dynamo_models.py\", line 33, in dump",
-   "    item.save()",
-   "  File \"/opt/conda/envs/run_env/lib/python3.7/site-packages/pynamodb/models.py\", line 405, in save",
-   "    data = self._get_connection().put_item(*args, **kwargs)",
-   "  File \"/opt/conda/envs/run_env/lib/python3.7/site-packages/pynamodb/connection/table.py\", line 139, in put_item",
-   "    return_item_collection_metrics=return_item_collection_metrics)",
-   "  File \"/opt/conda/envs/run_env/lib/python3.7/site-packages/pynamodb/connection/base.py\", line 972, in put_item",
-   "    six.raise_from(PutError(\"Failed to put item: {}\".format(e), e), None)",
-   "  File \"<string>\", line 3, in raise_from",
-   "pynamodb.exceptions.PutError: Failed to put item: An error occurred (ValidationException) on request (80UMOEFK0ICI5FRUSNMOPB8J9BVV4KQNSO5AEMVJF66Q9ASUAAJG) on table (pr_json) when calling the PutItem operation: Attempting to store more than 38 significant digits in a Number",
-   ""
-  ]
- },
+ "bad":false,
  "conda-forge.yml":{},
  "feedstock_name":"clblast",
  "hash_type":"sha256",
@@ -207,7 +206,7 @@
  },
  "name":"clblast",
  "new_version":"1.5.1",
- "pinning_version":"2020.02.12",
+ "pinning_version":"2020.03.20",
  "raw_meta_yaml":"{% set name = \"CLBlast\" %}\n{% set version = \"1.4.1\" %}\n{% set sha256 = \"2c03483d4470066c37d31288e07746c8f1ca5bfb52eecdedb2c7252bb1fb2d8d\" %}\n\n{% set OSX_VARIANT = os.environ.get(\"OSX_VARIANT\", \"\") %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  fn: {{ name }}-{{ version }}.tar.gz\n  url: https://github.com/CNugteren/CLBlast/archive/{{ version }}.tar.gz\n  sha256: {{ sha256 }}\n\nbuild:\n  number: 0\n  script_env:\n    - OSX_VARIANT\n\n{% if OSX_VARIANT != \"\" %}\n  skip: True  # [not osx]\n{% else %}\n  skip: True  # [osx or (win and py<36)]\n{% endif %}\n\n  features:\n{% if OSX_VARIANT == \"pocl\" %}\n    - osx_pocl_opencl            # [osx]\n{% endif %}\n    - vc9                        # [win and py27]\n    - vc10                       # [win and py34]\n    - vc14                       # [win and py35]\n    - vc14                       # [win and py36]\n\nrequirements:\n  build:\n    - toolchain\n    - python                     # [win]\n    - cmake\n    - ocl-icd                    # [linux]\n    - khronos-opencl-icd-loader  # [win]\n{% if OSX_VARIANT == \"pocl\" %}\n    - osx-pocl-opencl            # [osx]\n    - pocl >=0.14                # [osx]\n{% endif %}\n\n  run:\n    - khronos-opencl-icd-loader  # [win]\n    - ocl-icd                    # [linux]\n{% if OSX_VARIANT == \"pocl\" %}\n    - osx-pocl-opencl            # [osx]\n    - pocl >=0.14                # [osx]\n{% endif %}\n\ntest:\n  requires:\n    - python {{ environ['PY_VER'] + '*' }}            # [win]\n\n  commands:\n    # Check files\n    - test -f \"${PREFIX}/include/clblast.h\"           # [unix]\n    - test -f \"${PREFIX}/lib/libclblast.so\"           # [linux]\n    - test -f \"${PREFIX}/lib/libclblast.dylib\"        # [osx]\n    - if not exist %LIBRARY_INC%\\\\clblast.h exit 1    # [win]\n    - if not exist %LIBRARY_BIN%\\\\clblast.dll exit 1  # [win]\n    - if not exist %LIBRARY_LIB%\\\\clblast.lib exit 1  # [win]\n\nabout:\n  home: https://github.com/CNugteren/CLBlast\n  license: Apache 2.0\n  license_file: LICENSE\n  summary: CLBlast is a modern, lightweight, performant and tunable OpenCL BLAS library written in C++11\n\nextra:\n  recipe-maintainers:\n    - jakirkham\n",
  "req":{
   "__set__":true,
@@ -245,7 +244,7 @@
    "elements":[]
   }
  },
- "smithy_version":"3.6.8",
+ "smithy_version":"No azure token. Create a token and\nput it in ~/.conda-smithy/azure.token\n3.6.14",
  "strong_exports":false,
  "total_requirements":{
   "build":{
