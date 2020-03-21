@@ -71,7 +71,7 @@
  "meta_yaml":{
   "about":{
    "home":"https://github.com/ioos/cc-plugin-glider",
-   "license":"Apache 2.0",
+   "license":"Apache-2.0",
    "license_file":"LICENSE.txt",
    "summary":"Compliance Checker Glider DAC plugin"
   },
@@ -83,7 +83,7 @@
    ],
    "noarch":"python",
    "number":"0",
-   "script":" -m pip install . --no-deps --ignore-installed --no-cache-dir -vvv"
+   "script":"-m pip install . -vv"
   },
   "extra":{
    "recipe-maintainers":[
@@ -106,7 +106,7 @@
   },
   "package":{
    "name":"cc-plugin-glider",
-   "version":"2.0.0"
+   "version":"2.0.1"
   },
   "requirements":{
    "host":[
@@ -119,32 +119,39 @@
    ],
    "run":[
     "python",
-    "compliance-checker >=1.0.0",
+    "compliance-checker >=4.0.0",
     "python",
-    "compliance-checker >=1.0.0",
+    "compliance-checker >=4.0.0",
     "python",
-    "compliance-checker >=1.0.0"
+    "compliance-checker >=4.0.0"
    ]
   },
   "source":{
-   "sha256":"b8777a6e9e0b614deb0b32d9eab7680795f9df7a86f4ff091580db6f37987465",
-   "url":"https://github.com/ioos/cc-plugin-glider/archive/2.0.0.tar.gz"
+   "sha256":"f3df72bd605cc776253bab6b586f66d8fd161cdbdd17616232e5c15c7d683b19",
+   "url":"https://github.com/ioos/cc-plugin-glider/archive/2.0.1.tar.gz"
   },
   "test":{
    "commands":[
-    "compliance-checker --list-tests | grep -q gliderdac"
+    "pip check",
+    "pip check",
+    "pip check"
    ],
    "imports":[
     "cc_plugin_glider",
     "cc_plugin_glider",
     "cc_plugin_glider"
+   ],
+   "requires":[
+    "pip",
+    "pip",
+    "pip"
    ]
   }
  },
  "name":"cc-plugin-glider",
  "new_version":"2.0.0",
  "pinning_version":"2019.02.15",
- "raw_meta_yaml":"{% set version = \"2.0.0\" %}\n\npackage:\n  name: cc-plugin-glider\n  version: {{ version }}\n\nsource:\n  url: https://github.com/ioos/cc-plugin-glider/archive/{{ version }}.tar.gz\n  sha256: b8777a6e9e0b614deb0b32d9eab7680795f9df7a86f4ff091580db6f37987465\n\nbuild:\n  number: 0\n  noarch: python\n  script: \"{{ PYTHON }} -m pip install . --no-deps --ignore-installed --no-cache-dir -vvv\"\n  entry_points:\n    - gliderdac = cc_plugin_glider.glider_dac:GliderCheck\n\nrequirements:\n  host:\n    - python\n    - pip\n  run:\n    - python\n    - compliance-checker >=1.0.0\n\ntest:\n  imports:\n    - cc_plugin_glider\n  commands:\n    - compliance-checker --list-tests | grep -q gliderdac  # [not win]\n\nabout:\n  home: https://github.com/ioos/cc-plugin-glider\n  license: Apache 2.0\n  license_file: LICENSE.txt\n  summary: 'Compliance Checker Glider DAC plugin'\n\nextra:\n  recipe-maintainers:\n    - benjwadams\n    - daf\n    - kwilcox\n    - lukecampbell\n    - ocefpaf\n",
+ "raw_meta_yaml":"{% set version = \"2.0.1\" %}\n\npackage:\n  name: cc-plugin-glider\n  version: {{ version }}\n\nsource:\n  url: https://github.com/ioos/cc-plugin-glider/archive/{{ version }}.tar.gz\n  sha256: f3df72bd605cc776253bab6b586f66d8fd161cdbdd17616232e5c15c7d683b19\n\nbuild:\n  number: 0\n  noarch: python\n  script: {{ PYTHON }} -m pip install . -vv\n  entry_points:\n    - gliderdac = cc_plugin_glider.glider_dac:GliderCheck\n\nrequirements:\n  host:\n    - python\n    - pip\n  run:\n    - python\n    - compliance-checker >=4.0.0\n\ntest:\n  imports:\n    - cc_plugin_glider\n  commands:\n    - compliance-checker --list-tests | grep -q gliderdac  # [not win]\n  commands:\n    - pip check\n  requires:\n    - pip\n\nabout:\n  home: https://github.com/ioos/cc-plugin-glider\n  license: Apache-2.0\n  license_file: LICENSE.txt\n  summary: Compliance Checker Glider DAC plugin\n\nextra:\n  recipe-maintainers:\n    - benjwadams\n    - daf\n    - kwilcox\n    - lukecampbell\n    - ocefpaf\n",
  "req":{
   "__set__":true,
   "elements":[
@@ -174,7 +181,9 @@
   },
   "test":{
    "__set__":true,
-   "elements":[]
+   "elements":[
+    "pip"
+   ]
   }
  },
  "smithy_version":"3.2.13",
@@ -194,15 +203,17 @@
   "run":{
    "__set__":true,
    "elements":[
-    "compliance-checker >=1.0.0",
+    "compliance-checker >=4.0.0",
     "python"
    ]
   },
   "test":{
    "__set__":true,
-   "elements":[]
+   "elements":[
+    "pip"
+   ]
   }
  },
  "url":"https://github.com/ioos/cc-plugin-glider/archive/2.0.0.tar.gz",
- "version":"2.0.0"
+ "version":"2.0.1"
 }
