@@ -84,7 +84,7 @@
   "build":{
    "noarch":"python",
    "number":"0",
-   "script":" -m pip install . -vv"
+   "script":"-m pip install . -vv"
   },
   "extra":{
    "recipe-maintainers":[
@@ -95,16 +95,19 @@
   },
   "package":{
    "name":"transitions",
-   "version":"0.7.2"
+   "version":"0.8.0"
   },
   "requirements":{
    "host":[
     "pip",
     "python",
+    "six",
     "pip",
     "python",
+    "six",
     "pip",
-    "python"
+    "python",
+    "six"
    ],
    "run":[
     "python",
@@ -116,14 +119,17 @@
    ]
   },
   "source":{
-   "sha256":"5566c9d32e438ee9eb1f046e3ac1a0b2689f32807b47859210162084d4c84ab7",
-   "url":"https://pypi.io/packages/source/t/transitions/transitions-0.7.2.tar.gz"
+   "sha256":"1e7d213ce04114e4b1f861986282294b494c5a7d0448faa28849ec84298862bf",
+   "url":"https://pypi.io/packages/source/t/transitions/transitions-0.8.0.tar.gz"
   },
   "test":{
    "commands":[
-    "pytest",
-    "pytest",
-    "pytest"
+    "python -m pip check",
+    "pytest --pyargs -k \"not conformance\" --cov transitions",
+    "python -m pip check",
+    "pytest --pyargs -k \"not conformance\" --cov transitions",
+    "python -m pip check",
+    "pytest --pyargs -k \"not conformance\" --cov transitions"
    ],
    "imports":[
     "transitions",
@@ -136,18 +142,24 @@
     "pytest",
     "pytest-cov",
     "pycodestyle",
+    "python-graphviz",
+    "pip",
     "dill",
     "mock",
     "pytest",
     "pytest-cov",
     "pycodestyle",
     "pygraphviz",
+    "python-graphviz",
+    "pip",
     "dill",
     "mock",
     "pytest",
     "pytest-cov",
     "pycodestyle",
-    "pygraphviz"
+    "pygraphviz",
+    "python-graphviz",
+    "pip"
    ],
    "source_files":[
     "examples",
@@ -162,7 +174,7 @@
  "name":"transitions",
  "new_version":"0.8.0",
  "pinning_version":"2020.03.20",
- "raw_meta_yaml":"{% set name = \"transitions\" %}\n{% set version = \"0.7.2\" %}\n\npackage:\n  name: {{ name }}\n  version: {{ version }}\n\nsource:\n  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz\n  sha256: 5566c9d32e438ee9eb1f046e3ac1a0b2689f32807b47859210162084d4c84ab7\n\nbuild:\n  noarch: python\n  number: 0\n  script: \"{{ PYTHON }} -m pip install . -vv\"\n\nrequirements:\n  host:\n    - pip\n    - python\n  run:\n    - python\n    - six\n\ntest:\n  source_files:\n    - examples\n    - tests\n  requires:\n    - dill\n    - mock\n    - pytest\n    - pytest-cov\n    - pycodestyle\n    - pygraphviz  # [not win]\n  imports:\n    - transitions\n  commands:\n    - pytest\n\nabout:\n  home: https://github.com/pytransitions/transitions\n  license: MIT\n  license_family: MIT\n  license_file: LICENSE\n  summary: 'A lightweight, object-oriented finite state machine implementation in Python'\n\nextra:\n  recipe-maintainers:\n    - bollwyvl\n",
+ "raw_meta_yaml":"{% set name = \"transitions\" %}\n{% set version = \"0.8.0\" %}\n\npackage:\n  name: {{ name }}\n  version: {{ version }}\n\nsource:\n  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz\n  sha256: 1e7d213ce04114e4b1f861986282294b494c5a7d0448faa28849ec84298862bf\n\nbuild:\n  noarch: python\n  number: 0\n  script: {{ PYTHON }} -m pip install . -vv\n\nrequirements:\n  host:\n    - pip\n    - python\n    - six\n  run:\n    - python\n    - six\n\ntest:\n  source_files:\n    - examples\n    - tests\n  requires:\n    - dill\n    - mock\n    - pytest\n    - pytest-cov\n    - pycodestyle\n    - pygraphviz  # [not win]\n    - python-graphviz\n    - pip\n  imports:\n    - transitions\n  commands:\n    - python -m pip check\n    - pytest --pyargs -k \"not conformance\" --cov transitions\n\nabout:\n  home: https://github.com/pytransitions/transitions\n  license: MIT\n  license_family: MIT\n  license_file: LICENSE\n  summary: A lightweight, object-oriented finite state machine implementation in Python\n\nextra:\n  recipe-maintainers:\n    - bollwyvl\n",
  "req":{
   "__set__":true,
   "elements":[
@@ -180,7 +192,8 @@
    "__set__":true,
    "elements":[
     "pip",
-    "python"
+    "python",
+    "six"
    ]
   },
   "run":{
@@ -195,10 +208,12 @@
    "elements":[
     "dill",
     "mock",
+    "pip",
     "pycodestyle",
     "pygraphviz",
     "pytest",
-    "pytest-cov"
+    "pytest-cov",
+    "python-graphviz"
    ]
   }
  },
@@ -213,7 +228,8 @@
    "__set__":true,
    "elements":[
     "pip",
-    "python"
+    "python",
+    "six"
    ]
   },
   "run":{
@@ -228,13 +244,15 @@
    "elements":[
     "dill",
     "mock",
+    "pip",
     "pycodestyle",
     "pygraphviz",
     "pytest",
-    "pytest-cov"
+    "pytest-cov",
+    "python-graphviz"
    ]
   }
  },
  "url":"https://pypi.io/packages/source/t/transitions/transitions-0.7.0.tar.gz",
- "version":"0.7.2"
+ "version":"0.8.0"
 }
