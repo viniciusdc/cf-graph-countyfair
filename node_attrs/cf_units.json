@@ -112,6 +112,23 @@
     "migrator_version",
     "name"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/391861069.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"Version",
+    "migrator_version":0,
+    "version":"2.1.4"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "version"
+   ]
   }
  ],
  "bad":false,
@@ -221,8 +238,8 @@
   }
  },
  "name":"cf-units",
- "new_version":"2.1.3",
- "pinning_version":"2019.11.01",
+ "new_version":"2.1.4",
+ "pinning_version":"2020.03.20",
  "raw_meta_yaml":"{% set version = \"2.1.3\" %}\n\npackage:\n  name: cf-units\n  version: {{ version }}\n\nsource:\n  url: https://pypi.io/packages/source/c/cf-units/cf-units-{{ version }}.tar.gz\n  sha256: dbe11072fd4aedef4c84ebd94514837985872ec9e5c5fc7517ffb35b310778d7\n\nbuild:\n  number: 0\n  skip: True  # [win and py2k]\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n  host:\n    - python\n    - pip\n    - numpy\n    - udunits2\n    # It isn't clear that this really is needed, but it is listed in setup.py.\n    - pytest-runner\n  run:\n    - {{ pin_compatible('udunits2', max_pin='x.x') }}\n    - python\n    - cftime\n    - {{ pin_compatible('numpy') }}\n    - antlr-python-runtime 4.7.2.*  # [py3k]\n    - six\n\ntest:\n  requires:\n    - pytest\n  imports:\n    - cf_units\n  commands:\n    - pytest --pyargs cf_units                                   # [not (win and py2k)]\n      # On win py2 we are getting an unexpected test failure. See also\n      # https://github.com/SciTools/cf-units/issues/148.\n    - pytest --pyargs cf_units -k=\"-test_read_xml_invalid_path\"  # [win and py2k]\n\nabout:\n  home: https://scitools.org.uk/cf-units/docs/latest/\n  license: LGPL-3.0\n  license_file: COPYING.LESSER\n  summary: 'Units of measure as required by the Climate and Forecast (CF) metadata conventions.'\n\nextra:\n  recipe-maintainers:\n    - bjlittle\n    - ocefpaf\n    - pelson\n",
  "req":{
   "__set__":true,
@@ -273,7 +290,7 @@
    ]
   }
  },
- "smithy_version":"3.6.1",
+ "smithy_version":"No azure token. Create a token and\nput it in ~/.conda-smithy/azure.token\n3.6.14",
  "strong_exports":false,
  "total_requirements":{
   "build":{
