@@ -16,6 +16,25 @@
     "migrator_version",
     "name"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/392054133.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"MigrationYaml",
+    "migrator_object_version":1,
+    "migrator_version":0,
+    "name":"krb51171"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_object_version",
+    "migrator_version",
+    "name"
+   ]
   }
  ],
  "bad":false,
@@ -115,7 +134,7 @@
  },
  "name":"libgsasl",
  "new_version":false,
- "pinning_version":"2018.09.11",
+ "pinning_version":"2020.03.22",
  "raw_meta_yaml":"{% set version = \"1.8.0\" %}\n\npackage:\n  name: libgsasl\n  version: \"{{ version }}\"\n\nsource:\n  fn: libgsasl-{{ version }}.tar.gz\n  url: ftp://ftp.gnu.org/gnu/gsasl/libgsasl-{{ version }}.tar.gz\n  sha256: 3adfb49f9c92a719dea855fd1840d698cde55d4648d332a69032ba8bea207720\n  # See https://lists.gnu.org/archive/html/bug-gnulib/2017-07/msg00057.html\n  patches:\n    - vasnprintf-osx.patch  # [osx]\n\nbuild:\n  number: 1004\n  # This package is a dependency of libhdfs3, which is primarily used with HDFS on Linux.\n  skip: True  # [win]\n\nrequirements:\n  build:\n    - {{ compiler(\"c\") }}\n    - {{ compiler(\"cxx\") }}\n\n  host:\n    - libgcrypt\n    - libntlm\n    - krb5\n\n  run:\n    - libntlm\n    - libgcrypt\n    - krb5\n\ntest:\n  commands:\n    - test -f $PREFIX/include/gsasl-compat.h\n    - test -f $PREFIX/include/gsasl-mech.h\n    - test -f $PREFIX/include/gsasl.h\n    - test -f $PREFIX/lib/libgsasl.a\n    - test -f $PREFIX/lib/libgsasl$SHLIB_EXT  # [unix]\n    - test -f $PREFIX/lib/libgsasl.so.7       # [linux]\n    - test -f $PREFIX/lib/libgsasl.7.dylib    # [osx]\n    - test -f $PREFIX/lib/libgsasl.so.7.9.6   # [linux]\n\nabout:\n  home: http://www.gnu.org/software/gsasl/\n  license: LGPL-2.1\n  summary: Implementation of the Simple Authentication and Security Layer framework\n\nextra:\n  recipe-maintainers:\n    - koverholt\n    - martindurant\n    - mariusvniekerk\n",
  "req":{
   "__set__":true,
@@ -156,7 +175,7 @@
    "elements":[]
   }
  },
- "smithy_version":"3.1.12",
+ "smithy_version":"No azure token. Create a token and\nput it in ~/.conda-smithy/azure.token\n3.6.15",
  "strong_exports":false,
  "total_requirements":{
   "build":{
