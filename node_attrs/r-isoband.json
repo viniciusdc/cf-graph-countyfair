@@ -1,5 +1,18 @@
 {
- "bad":"Upstream: Error getting upstream version",
+ "bad":{
+  "exception":"list indices must be integers or slices, not str",
+  "traceback":[
+   "Traceback (most recent call last):",
+   "  File \"/root/repo/cf-scripts/conda_forge_tick/auto_tick.py\", line 901, in main",
+   "    hash_type=attrs.get(\"hash_type\", \"sha256\"),",
+   "  File \"/root/repo/cf-scripts/conda_forge_tick/auto_tick.py\", line 166, in run",
+   "    migrate_return = migrator.migrate(recipe_dir, feedstock_ctx.attrs, **kwargs)",
+   "  File \"/root/repo/cf-scripts/conda_forge_tick/migrators/arch.py\", line 97, in migrate",
+   "    y[\"provider\"] = {}",
+   "TypeError: list indices must be integers or slices, not str",
+   ""
+  ]
+ },
  "feedstock_name":"r-isoband",
  "new_version":false,
  "raw_meta_yaml":"{% set version = '0.2.0' %}\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-isoband\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  url:\n    - {{ cran_mirror }}/src/contrib/isoband_{{ version }}.tar.gz\n    - {{ cran_mirror }}/src/contrib/Archive/isoband/isoband_{{ version }}.tar.gz\n  sha256: 783197e50c0a58ada4f8b5980d52150264eaab4fd97e14faddf67a3c8e1e02e4\n\nbuild:\n  merge_build_host: True  # [win]\n  number: 0\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - {{ compiler('c') }}              # [not win]\n    - {{ compiler('m2w64_c') }}        # [win]\n    - {{ compiler('cxx') }}            # [not win]\n    - {{ compiler('m2w64_cxx') }}      # [win]\n    - {{posix}}filesystem        # [win]\n    - {{posix}}make\n    - {{posix}}sed               # [win]\n    - {{posix}}coreutils         # [win]\n    - {{posix}}zip               # [win]\n  host:\n    - r-base\n    - r-rcpp\n    - r-testthat\n  run:\n    - r-base\n    - {{native}}gcc-libs         # [win]\n    - r-rcpp\n    - r-testthat\n\ntest:\n  commands:\n    - $R -e \"library('isoband')\"           # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('isoband')\\\"\"  # [win]\n\nabout:\n  home: https://github.com/wilkelab/isoband\n  license: MIT\n  summary: A fast C++ implementation to generate contour lines (isolines) and contour polygons\n    (isobands) from regularly spaced grids containing elevation data.\n  license_family: MIT\n  license_file:\n    - '{{ environ[\"PREFIX\"] }}/lib/R/share/licenses/MIT'\n    - LICENSE\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n\n# Package: isoband\n# Title: Generate Isolines and Isobands from Regularly Spaced Elevation Grids\n# Version: 0.2.0\n# Authors@R: person(given = \"Claus\", family = \"Wilke\", role = c(\"aut\", \"cre\"), email = \"wilke@austin.utexas.edu\")\n# Description: A fast C++ implementation to generate contour lines (isolines) and contour polygons (isobands) from regularly spaced grids containing elevation data.\n# URL: https://github.com/wilkelab/isoband\n# BugReports: https://github.com/wilkelab/isoband/issues\n# License: MIT + file LICENSE\n# Encoding: UTF-8\n# LazyData: true\n# LinkingTo: Rcpp, testthat\n# Imports: Rcpp, grid, utils\n# RoxygenNote: 6.1.1\n# Suggests: covr, ggplot2, knitr, lwgeom, magick, microbenchmark, rmarkdown, sf, testthat\n# SystemRequirements: C++11\n# VignetteBuilder: knitr\n# NeedsCompilation: yes\n# Packaged: 2019-04-06 20:02:38 UTC; wilke\n# Author: Claus Wilke [aut, cre]\n# Maintainer: Claus Wilke <wilke@austin.utexas.edu>\n# Repository: CRAN\n# Date/Publication: 2019-04-06 22:20:03 UTC\n"
