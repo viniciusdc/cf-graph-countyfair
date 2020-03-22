@@ -149,7 +149,7 @@
   }
  },
  "name":"cc-plugin-glider",
- "new_version":"2.0.0",
+ "new_version":"2.0.1",
  "pinning_version":"2019.02.15",
  "raw_meta_yaml":"{% set version = \"2.0.1\" %}\n\npackage:\n  name: cc-plugin-glider\n  version: {{ version }}\n\nsource:\n  url: https://github.com/ioos/cc-plugin-glider/archive/{{ version }}.tar.gz\n  sha256: f3df72bd605cc776253bab6b586f66d8fd161cdbdd17616232e5c15c7d683b19\n\nbuild:\n  number: 0\n  noarch: python\n  script: {{ PYTHON }} -m pip install . -vv\n  entry_points:\n    - gliderdac = cc_plugin_glider.glider_dac:GliderCheck\n\nrequirements:\n  host:\n    - python\n    - pip\n  run:\n    - python\n    - compliance-checker >=4.0.0\n\ntest:\n  imports:\n    - cc_plugin_glider\n  commands:\n    - compliance-checker --list-tests | grep -q gliderdac  # [not win]\n  commands:\n    - pip check\n  requires:\n    - pip\n\nabout:\n  home: https://github.com/ioos/cc-plugin-glider\n  license: Apache-2.0\n  license_file: LICENSE.txt\n  summary: Compliance Checker Glider DAC plugin\n\nextra:\n  recipe-maintainers:\n    - benjwadams\n    - daf\n    - kwilcox\n    - lukecampbell\n    - ocefpaf\n",
  "req":{
