@@ -83,9 +83,6 @@
  ],
  "bad":false,
  "conda-forge.yml":{
-  "compiler_stack":"comp7",
-  "max_py_ver":"37",
-  "max_r_ver":"35",
   "provider":{
    "win":"azure"
   }
@@ -95,13 +92,18 @@
  "meta_yaml":{
   "about":{
    "home":"https://CRAN.R-project.org/package=locfit",
-   "license":"GPL (>= 2)",
-   "license_family":"GPL3",
+   "license":"GPL-2",
+   "license_family":"GPL2",
+   "license_file":[
+    "/lib/R/share/licenses/GPL-2",
+    "/lib/R/share/licenses/GPL-2",
+    "/lib/R/share/licenses/GPL-2"
+   ],
    "summary":"Local regression, likelihood and density estimation."
   },
   "build":{
    "merge_build_host":true,
-   "number":"1004",
+   "number":"0",
    "rpaths":[
     "lib/R/lib/",
     "lib/",
@@ -114,26 +116,26 @@
   "extra":{
    "recipe-maintainers":[
     "conda-forge/r",
-    "johanneskoester",
-    "bgruening",
     "conda-forge/r",
-    "johanneskoester",
-    "bgruening",
-    "conda-forge/r",
-    "johanneskoester",
-    "bgruening"
+    "conda-forge/r"
    ]
   },
   "package":{
    "name":"r-locfit",
-   "version":"1.5_9.1"
+   "version":"1.5_9.2"
   },
   "requirements":{
    "build":[
-    "posix",
     "m2w64_c_compiler_stub",
+    "filesystem",
+    "make",
+    "sed",
+    "coreutils",
+    "zip",
     "c_compiler_stub",
-    "c_compiler_stub"
+    "make",
+    "c_compiler_stub",
+    "make"
    ],
    "host":[
     "r-base",
@@ -145,6 +147,7 @@
    ],
    "run":[
     "r-base",
+    "gcc-libs",
     "r-lattice",
     "r-base",
     "r-lattice",
@@ -153,15 +156,14 @@
    ]
   },
   "source":{
-   "fn":"locfit_1.5-9.1.tar.gz",
-   "sha256":"f524148fdb29aac3a178618f88718d3d4ac91283014091aa11a01f1c70cd4e51",
+   "sha256":"eb886e87a574c26b4a47a89eba66c853c0e8001a20ce3797ff256ddb99d18002",
    "url":[
-    "https://cran.r-project.org/src/contrib/locfit_1.5-9.1.tar.gz",
-    "https://cran.r-project.org/src/contrib/Archive/locfit/locfit_1.5-9.1.tar.gz",
-    "https://cran.r-project.org/src/contrib/locfit_1.5-9.1.tar.gz",
-    "https://cran.r-project.org/src/contrib/Archive/locfit/locfit_1.5-9.1.tar.gz",
-    "https://cran.r-project.org/src/contrib/locfit_1.5-9.1.tar.gz",
-    "https://cran.r-project.org/src/contrib/Archive/locfit/locfit_1.5-9.1.tar.gz"
+    "https://cran.r-project.org/src/contrib/locfit_1.5-9.2.tar.gz",
+    "https://cran.r-project.org/src/contrib/Archive/locfit/locfit_1.5-9.2.tar.gz",
+    "https://cran.r-project.org/src/contrib/locfit_1.5-9.2.tar.gz",
+    "https://cran.r-project.org/src/contrib/Archive/locfit/locfit_1.5-9.2.tar.gz",
+    "https://cran.r-project.org/src/contrib/locfit_1.5-9.2.tar.gz",
+    "https://cran.r-project.org/src/contrib/Archive/locfit/locfit_1.5-9.2.tar.gz"
    ]
   },
   "test":{
@@ -175,15 +177,20 @@
  "name":"r-locfit",
  "new_version":"1.5_9.2",
  "pinning_version":"2020.03.23",
- "raw_meta_yaml":"{% set version = '1.5-9.1' %}\n\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-locfit\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  fn: locfit_{{ version }}.tar.gz\n  url:\n    - https://cran.r-project.org/src/contrib/locfit_{{ version }}.tar.gz\n    - https://cran.r-project.org/src/contrib/Archive/locfit/locfit_{{ version }}.tar.gz\n  sha256: f524148fdb29aac3a178618f88718d3d4ac91283014091aa11a01f1c70cd4e51\n\nbuild:\n  merge_build_host: True  # [win]\n  number: 1004\n  skip: true  # [win32]\n\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - posix                # [win]\n    - {{ compiler('c') }}        # [unix]\n    - {{ compiler('m2w64_c') }}  # [win]\n  host:\n    - r-base\n    - r-lattice\n\n  run:\n    - r-base\n    - r-lattice\n\ntest:\n  commands:\n    - $R -e \"library('locfit')\"  # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('locfit')\\\"\"  # [win]\n\nabout:\n  home: https://CRAN.R-project.org/package=locfit\n  license: GPL (>= 2)\n  summary: Local regression, likelihood and density estimation.\n  license_family: GPL3\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n    - johanneskoester\n    - bgruening\n",
+ "raw_meta_yaml":"{% set version = \"1.5-9.2\" %}\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-locfit\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  url:\n    - {{ cran_mirror }}/src/contrib/locfit_{{ version }}.tar.gz\n    - {{ cran_mirror }}/src/contrib/Archive/locfit/locfit_{{ version }}.tar.gz\n  sha256: eb886e87a574c26b4a47a89eba66c853c0e8001a20ce3797ff256ddb99d18002\n\nbuild:\n  merge_build_host: true  # [win]\n  number: 0\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - {{ compiler('c') }}              # [not win]\n    - {{ compiler('m2w64_c') }}        # [win]\n    - {{posix}}filesystem        # [win]\n    - {{posix}}make\n    - {{posix}}sed               # [win]\n    - {{posix}}coreutils         # [win]\n    - {{posix}}zip               # [win]\n  host:\n    - r-base\n    - r-lattice\n  run:\n    - r-base\n    - {{native}}gcc-libs         # [win]\n    - r-lattice\n\ntest:\n  commands:\n    - $R -e \"library('locfit')\"  # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('locfit')\\\"\"  # [win]\n\nabout:\n  home: https://CRAN.R-project.org/package=locfit\n  license: GPL-2\n  summary: Local regression, likelihood and density estimation.\n  license_family: GPL2\n  license_file:\n    - '{{ environ[\"PREFIX\"] }}/lib/R/share/licenses/GPL-2'\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n",
  "req":{
   "__set__":true,
   "elements":[
    "c_compiler_stub",
+   "coreutils",
+   "filesystem",
+   "gcc-libs",
    "m2w64_c_compiler_stub",
-   "posix",
+   "make",
    "r-base",
-   "r-lattice"
+   "r-lattice",
+   "sed",
+   "zip"
   ]
  },
  "requirements":{
@@ -191,8 +198,12 @@
    "__set__":true,
    "elements":[
     "c_compiler_stub",
+    "coreutils",
+    "filesystem",
     "m2w64_c_compiler_stub",
-    "posix"
+    "make",
+    "sed",
+    "zip"
    ]
   },
   "host":{
@@ -205,6 +216,7 @@
   "run":{
    "__set__":true,
    "elements":[
+    "gcc-libs",
     "r-base",
     "r-lattice"
    ]
@@ -221,8 +233,12 @@
    "__set__":true,
    "elements":[
     "c_compiler_stub",
+    "coreutils",
+    "filesystem",
     "m2w64_c_compiler_stub",
-    "posix"
+    "make",
+    "sed",
+    "zip"
    ]
   },
   "host":{
@@ -235,6 +251,7 @@
   "run":{
    "__set__":true,
    "elements":[
+    "gcc-libs",
     "r-base",
     "r-lattice"
    ]
@@ -252,5 +269,5 @@
   "https://cran.r-project.org/src/contrib/locfit_1.5-9.1.tar.gz",
   "https://cran.r-project.org/src/contrib/Archive/locfit/locfit_1.5-9.1.tar.gz"
  ],
- "version":"1.5_9.1"
+ "version":"1.5_9.2"
 }

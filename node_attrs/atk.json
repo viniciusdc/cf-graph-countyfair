@@ -80,12 +80,12 @@
  "meta_yaml":{
   "about":{
    "home":"http://www.gtk.org/",
-   "license":"LGPL-2.0",
+   "license":"LGPL-2.0-or-later",
    "license_file":"COPYING",
    "summary":"Accessibility Toolkit."
   },
   "build":{
-   "number":"0",
+   "number":"1",
    "run_exports":[
     "atk",
     "atk",
@@ -109,11 +109,9 @@
   },
   "requirements":{
    "build":[
-    "make",
     "meson",
     "ninja",
     "python >=3.6",
-    "perl",
     "pkg-config",
     "c_compiler_stub",
     "make",
@@ -161,7 +159,7 @@
  "name":"atk",
  "new_version":false,
  "pinning_version":"2019.03.17",
- "raw_meta_yaml":"{% set name = \"atk\" %}\n{% set major_minor = \"2.32\" %}\n{% set version = major_minor + \".0\" %}\n\npackage:\n  name: {{ name }}\n  version: {{ version }}\n\nsource:\n  url: http://ftp.gnome.org/pub/gnome/sources/{{ name }}/{{ major_minor }}/{{ name }}-{{ version }}.tar.xz\n  sha256: cb41feda7fe4ef0daa024471438ea0219592baf7c291347e5a858bb64e4091cc\n\nbuild:\n  number: 0\n  skip: True  # [win]\n  run_exports:\n    # Good stability in the 2.x series:\n    # https://abi-laboratory.pro/index.php?view=timeline&l=atk\n    - {{ pin_subpackage(\"atk\", max_pin=\"x\") }}\n\nrequirements:\n  build:\n    - make\n    - meson\n    - ninja\n    - python >=3.6\n    - perl\n    - pkg-config\n    - {{ compiler('c') }}\n  host:\n    - glib\n    - gobject-introspection 1.*\n  run:\n    - glib\n    - gobject-introspection 1.*\n\ntest:\n  commands:\n    - conda inspect linkages -p $PREFIX $PKG_NAME  # [not win]\n    - conda inspect objects -p $PREFIX $PKG_NAME  # [osx]\n\nabout:\n  home: http://www.gtk.org/\n  license: LGPL-2.0\n  license_file: COPYING\n  summary: 'Accessibility Toolkit.'\n\nextra:\n  recipe-maintainers:\n    - pkgw\n    - ocefpaf\n",
+ "raw_meta_yaml":"{% set name = \"atk\" %}\n{% set major_minor = \"2.32\" %}\n{% set version = major_minor + \".0\" %}\n\npackage:\n  name: {{ name }}\n  version: {{ version }}\n\nsource:\n  url: http://ftp.gnome.org/pub/gnome/sources/{{ name }}/{{ major_minor }}/{{ name }}-{{ version }}.tar.xz\n  sha256: cb41feda7fe4ef0daa024471438ea0219592baf7c291347e5a858bb64e4091cc\n\nbuild:\n  number: 1\n  skip: true  # [win and vc<14]\n  run_exports:\n    # Good stability in the 2.x series:\n    # https://abi-laboratory.pro/index.php?view=timeline&l=atk\n    - {{ pin_subpackage(\"atk\", max_pin=\"x\") }}\n\nrequirements:\n  build:\n    - make  # [not win]\n    - meson\n    - ninja\n    - python >=3.6\n    - perl  # [not win]\n    - pkg-config\n    - {{ compiler('c') }}\n  host:\n    - glib\n    - gobject-introspection 1.*\n  run:\n    - glib\n    - gobject-introspection 1.*\n\ntest:\n  commands:\n    - conda inspect linkages -p $PREFIX $PKG_NAME  # [not win]\n    - conda inspect objects -p $PREFIX $PKG_NAME  # [osx]\n\nabout:\n  home: http://www.gtk.org/\n  license: LGPL-2.0-or-later\n  license_file: COPYING\n  summary: 'Accessibility Toolkit.'\n\nextra:\n  recipe-maintainers:\n    - pkgw\n    - ocefpaf\n",
  "req":{
   "__set__":true,
   "elements":[
