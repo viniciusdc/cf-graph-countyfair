@@ -74,22 +74,18 @@
   }
  ],
  "bad":false,
- "conda-forge.yml":{
-  "provider":{
-   "win":"appveyor"
-  }
- },
+ "conda-forge.yml":{},
  "feedstock_name":"simpleitk",
  "hash_type":"sha256",
  "meta_yaml":{
   "about":{
    "home":"http::/www.simpleitk.org",
-   "license":"Apache 2.0",
+   "license":"Apache-2.0",
    "license_file":"LICENSE",
    "summary":"Simplified interface to the Insight Toolkit for image registration and segmentation"
   },
   "build":{
-   "number":"0"
+   "number":"1"
   },
   "extra":{
    "recipe-maintainers":[
@@ -127,12 +123,15 @@
     "python",
     "libitk",
     "libsimpleitk =1.2.4",
+    "fftw",
     "python",
     "libitk",
     "libsimpleitk =1.2.4",
+    "fftw",
     "python",
     "libitk",
-    "libsimpleitk =1.2.4"
+    "libsimpleitk =1.2.4",
+    "fftw"
    ],
    "run":[
     "vs2015_runtime",
@@ -159,13 +158,14 @@
  "name":"simpleitk",
  "new_version":"1.2.4",
  "pinning_version":"2020.03.16",
- "raw_meta_yaml":"{% set name = \"simpleitk\" %}\n{% set version = \"1.2.4\" %}\n{% set sha256 = \"1d67ed4324fee0d7341a027de865bf915a34dfa82e2863d89037e2f2865f7559\" %}\n{% set build_number = 0 %}\n\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  url: https://github.com/SimpleITK/SimpleITK/releases/download/v{{version}}/SimpleITK-{{version}}.tar.gz\n  sha256: {{ sha256 }}\n\nbuild:\n    number: \"{{build_number}}\"\n    skip: true  # [ win and py27 ]\n\nrequirements:\n  build:\n    - cmake   >=3.11\n    - ninja\n    - swig    >=3,<4\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n\n  host:\n    - python\n    - libitk\n    - libsimpleitk ={{ version }}\n    \n  run:\n    - vs2015_runtime  # [win]\n    - {{ pin_compatible('libitk', exact=True) }}\n    - python\n\ntest:\n  imports:\n    - SimpleITK\n\nabout:\n  home: http::/www.simpleitk.org\n  license: Apache 2.0\n  license_file: LICENSE\n  summary: Simplified interface to the Insight Toolkit for image registration and segmentation\n\nextra:\n    recipe-maintainers:\n      - blowekamp\n      - zivy\n",
+ "raw_meta_yaml":"{% set name = \"simpleitk\" %}\n{% set version = \"1.2.4\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  url: https://github.com/SimpleITK/SimpleITK/releases/download/v{{version}}/SimpleITK-{{version}}.tar.gz\n  sha256: 1d67ed4324fee0d7341a027de865bf915a34dfa82e2863d89037e2f2865f7559\n\nbuild:\n    number: 1\n    skip: true  # [ win and py27 ]\n\nrequirements:\n  build:\n    - cmake   >=3.11\n    - ninja\n    - swig    >=3,<4\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n\n  host:\n    - python\n    - libitk\n    - libsimpleitk ={{ version }}\n    - fftw\n    \n  run:\n    - vs2015_runtime  # [win]\n    - {{ pin_compatible('libitk', exact=True) }}\n    - python\n\ntest:\n  imports:\n    - SimpleITK\n\nabout:\n  home: http::/www.simpleitk.org\n  license: Apache-2.0\n  license_file: LICENSE\n  summary: Simplified interface to the Insight Toolkit for image registration and segmentation\n\nextra:\n    recipe-maintainers:\n      - blowekamp\n      - zivy\n",
  "req":{
   "__set__":true,
   "elements":[
    "c_compiler_stub",
    "cmake",
    "cxx_compiler_stub",
+   "fftw",
    "libitk",
    "libsimpleitk",
    "ninja",
@@ -188,6 +188,7 @@
   "host":{
    "__set__":true,
    "elements":[
+    "fftw",
     "libitk",
     "libsimpleitk",
     "python"
@@ -222,6 +223,7 @@
   "host":{
    "__set__":true,
    "elements":[
+    "fftw",
     "libitk",
     "libsimpleitk =1.2.4",
     "python"
