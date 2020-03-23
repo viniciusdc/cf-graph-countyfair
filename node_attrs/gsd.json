@@ -299,6 +299,25 @@
     "migrator_version",
     "version"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/392335213.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"MigrationYaml",
+    "migrator_object_version":1,
+    "migrator_version":0,
+    "name":"pypy"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_object_version",
+    "migrator_version",
+    "name"
+   ]
   }
  ],
  "bad":false,
@@ -412,7 +431,7 @@
  },
  "name":"gsd",
  "new_version":"2.0.0",
- "pinning_version":"2020.01.27",
+ "pinning_version":"2020.03.23",
  "raw_meta_yaml":"{% set name = \"gsd\" %}\n{% set version = \"2.1.0\" %}\n{% set sha256 = \"c8715da0524d5ceeb70f1e4c1a370012804081000edd45f37257ab73d9bd3f0b\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  fn: {{ name }}-{{ version }}.tar.gz\n  url: https://github.com/glotzerlab/{{ name }}/releases/download/v{{ version }}/{{ name }}-v{{ version }}.tar.gz\n  sha256: {{ sha256 }}\n\nbuild:\n  number: 0\n  # the upstream package does not support python2.7\n  skip: true  # [py27]\n  script: \"{{ PYTHON }} -m pip install . -vv --no-deps\"\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n\n  host:\n    - setuptools\n    - cython\n    - python\n    - numpy\n    - pip\n\n  run:\n    - python\n    - {{ pin_compatible('numpy') }}\n\ntest:\n  requires:\n    - pytest\n  imports:\n    - gsd\n    - gsd.fl\n    - gsd.pygsd\n    - gsd.hoomd\n  source_files:\n    - tests/\n    - setup.cfg\n  commands:\n    - pytest\n\nabout:\n  home: https://github.com/glotzerlab/{{ name }}\n  license: BSD-2-Clause\n  license_family: BSD\n  license_file: LICENSE\n  summary: 'General simulation data'\n\n  description: |\n   GSD (General Simulation Data) is a file format specification\n   and a library to read and write it. The package also contains a python module\n   that reads and writes hoomd schema gsd files with an easy to use syntax.\n\n  doc_url: https://gsd.readthedocs.io\n  dev_url: https://github.com/glotzerlab/{{ name }}\n\nextra:\n  recipe-maintainers:\n    - bdice\n    - joaander\n",
  "req":{
   "__set__":true,
@@ -456,7 +475,7 @@
    ]
   }
  },
- "smithy_version":"3.6.7",
+ "smithy_version":"No azure token. Create a token and\nput it in ~/.conda-smithy/azure.token\n3.6.15",
  "strong_exports":false,
  "total_requirements":{
   "build":{

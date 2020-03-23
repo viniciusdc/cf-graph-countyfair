@@ -618,18 +618,18 @@
    "dev_url":"https://github.com/terraform-providers/terraform-provider-azurerm",
    "doc_url":"https://www.terraform.io/docs/providers/azurerm/index.html",
    "home":"https://www.terraform.io",
-   "license":"MPL 2.0",
+   "license":"MPL-2.0",
    "summary":"The Terraform Azure provider"
   },
   "build":{
    "number":"0",
    "script":[
     "pushd src/github.com/terraform-providers/terraform-provider-azurerm",
-    "go build -v -o %GOBIN%\\terraform-provider-azurerm_v2.1.0_x4 .",
+    "go build -v -o %GOBIN%\\terraform-provider-azurerm_v2.2.0_x4 .",
     "pushd src/github.com/terraform-providers/terraform-provider-azurerm",
-    "go build -v -o $GOBIN/terraform-provider-azurerm_v2.1.0_x4 .",
+    "go build -v -o $GOBIN/terraform-provider-azurerm_v2.2.0_x4 .",
     "pushd src/github.com/terraform-providers/terraform-provider-azurerm",
-    "go build -v -o $GOBIN/terraform-provider-azurerm_v2.1.0_x4 ."
+    "go build -v -o $GOBIN/terraform-provider-azurerm_v2.2.0_x4 ."
    ]
   },
   "extra":{
@@ -644,7 +644,7 @@
   },
   "package":{
    "name":"terraform-provider-azurerm",
-   "version":"2.1.0"
+   "version":"2.2.0"
   },
   "requirements":{
    "build":[
@@ -661,34 +661,34 @@
   "source":[
    {
     "folder":"src/github.com/terraform-providers/terraform-provider-azurerm",
-    "sha256":"edb73f0b37d8a37aa8b25ad4ee3fa7c7963ec86fa0e0b678f0f4a1124008d01d",
-    "url":"https://github.com/terraform-providers/terraform-provider-azurerm/archive/v2.1.0.tar.gz"
+    "sha256":"edbe9bbec18e0e85009988bb2048ae0a77068987ae3a05e6377de5296753fa9b",
+    "url":"https://github.com/terraform-providers/terraform-provider-azurerm/archive/v2.2.0.tar.gz"
    },
    {
     "folder":"src/github.com/terraform-providers/terraform-provider-azurerm",
-    "sha256":"edb73f0b37d8a37aa8b25ad4ee3fa7c7963ec86fa0e0b678f0f4a1124008d01d",
-    "url":"https://github.com/terraform-providers/terraform-provider-azurerm/archive/v2.1.0.tar.gz"
+    "sha256":"edbe9bbec18e0e85009988bb2048ae0a77068987ae3a05e6377de5296753fa9b",
+    "url":"https://github.com/terraform-providers/terraform-provider-azurerm/archive/v2.2.0.tar.gz"
    },
    {
     "folder":"src/github.com/terraform-providers/terraform-provider-azurerm",
-    "sha256":"edb73f0b37d8a37aa8b25ad4ee3fa7c7963ec86fa0e0b678f0f4a1124008d01d",
-    "url":"https://github.com/terraform-providers/terraform-provider-azurerm/archive/v2.1.0.tar.gz"
+    "sha256":"edbe9bbec18e0e85009988bb2048ae0a77068987ae3a05e6377de5296753fa9b",
+    "url":"https://github.com/terraform-providers/terraform-provider-azurerm/archive/v2.2.0.tar.gz"
    }
   ],
   "test":{
    "commands":[
-    "bash -euf -c \"echo 'provider \\\"azurerm\\\" { version=\\\"2.1.0\\\" }' > init.tf\"",
+    "bash -euf -c \"echo 'provider \\\"azurerm\\\" { version=\\\"2.2.0\\\" }' > init.tf\"",
     "terraform init",
     "test -f .terraform/plugins/_/lock.json",
-    "test ! -f .terraform/plugins/_/terraform-provider-azurerm_v2.1.0_x4",
-    "bash -euf -c \"echo 'provider \\\"azurerm\\\" { version=\\\"2.1.0\\\" }' > init.tf\"",
+    "test ! -f .terraform/plugins/_/terraform-provider-azurerm_v2.2.0_x4",
+    "bash -euf -c \"echo 'provider \\\"azurerm\\\" { version=\\\"2.2.0\\\" }' > init.tf\"",
     "terraform init",
     "test -f .terraform/plugins/_/lock.json",
-    "test ! -f .terraform/plugins/_/terraform-provider-azurerm_v2.1.0_x4",
-    "bash -euf -c \"echo 'provider \\\"azurerm\\\" { version=\\\"2.1.0\\\" }' > init.tf\"",
+    "test ! -f .terraform/plugins/_/terraform-provider-azurerm_v2.2.0_x4",
+    "bash -euf -c \"echo 'provider \\\"azurerm\\\" { version=\\\"2.2.0\\\" }' > init.tf\"",
     "terraform init",
     "test -f .terraform/plugins/_/lock.json",
-    "test ! -f .terraform/plugins/_/terraform-provider-azurerm_v2.1.0_x4"
+    "test ! -f .terraform/plugins/_/terraform-provider-azurerm_v2.2.0_x4"
    ],
    "requires":[
     "m2-bash",
@@ -699,7 +699,7 @@
  "name":"terraform-provider-azurerm",
  "new_version":"2.2.0",
  "pinning_version":"2019.12.02",
- "raw_meta_yaml":"{% set provider = \"azurerm\" %}\n{% set goname = \"github.com/terraform-providers/terraform-provider-\"+provider.lower() %}\n{% set version = \"2.1.0\" %}\n\n{% set name = goname.split('/')[-1] %}\n{% set pkg_src = ('src/'+goname).replace(\"/\",os.sep) %}\n\n{% set x4_plugin = name + '_v' + version + \"_x4\" + (\".exe\" if win else \"\")%}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  - folder:  {{ pkg_src }}\n    url: https://{{ goname }}/archive/v{{ version }}.tar.gz\n    sha256: edb73f0b37d8a37aa8b25ad4ee3fa7c7963ec86fa0e0b678f0f4a1124008d01d\n\nbuild:\n  number: 0\n  script:\n    - pushd {{ pkg_src }}\n    - go build -v -o $GOBIN/{{ x4_plugin }} .  # [unix]\n    - go build -v -o %GOBIN%\\{{ x4_plugin }} .  # [win]\n\nrequirements:\n  build:\n    - {{ compiler('go') }} >=1.13\n  run:\n    - terraform >=0.12\n\ntest:\n  requires:         # [win]\n    - m2-bash       # [win]\n    - m2-coreutils  # [win]\n\n  commands:\n    - bash -euf -c \"echo 'provider \\\"{{ provider|lower }}\\\" { version=\\\"{{ version }}\\\" }' > init.tf\"\n    - terraform init\n    # Tests that no plugins were downloaded\n    - test -f .terraform/plugins/{{ goos }}_{{ goarch }}/lock.json\n    - test ! -f .terraform/plugins/{{ goos }}_{{ goarch }}/{{ x4_plugin }}\n\nabout:\n  home: https://www.terraform.io\n  license: MPL 2.0\n  summary: The Terraform Azure provider\n  doc_url: https://www.terraform.io/docs/providers/{{ provider }}/index.html\n  dev_url: https://github.com/terraform-providers/{{ name }}\n\nextra:\n  recipe-maintainers:\n    - sodre\n    - dhirschfeld\n",
+ "raw_meta_yaml":"{% set provider = \"azurerm\" %}\n{% set goname = \"github.com/terraform-providers/terraform-provider-\"+provider.lower() %}\n{% set version = \"2.2.0\" %}\n\n{% set name = goname.split('/')[-1] %}\n{% set pkg_src = ('src/'+goname).replace(\"/\",os.sep) %}\n\n{% set x4_plugin = name + '_v' + version + \"_x4\" + (\".exe\" if win else \"\")%}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  - folder:  {{ pkg_src }}\n    url: https://{{ goname }}/archive/v{{ version }}.tar.gz\n    sha256: edbe9bbec18e0e85009988bb2048ae0a77068987ae3a05e6377de5296753fa9b\n\nbuild:\n  number: 0\n  script:\n    - pushd {{ pkg_src }}\n    - go build -v -o $GOBIN/{{ x4_plugin }} .  # [unix]\n    - go build -v -o %GOBIN%\\{{ x4_plugin }} .  # [win]\n\nrequirements:\n  build:\n    - {{ compiler('go') }} >=1.13\n  run:\n    - terraform >=0.12\n\ntest:\n  requires:         # [win]\n    - m2-bash       # [win]\n    - m2-coreutils  # [win]\n\n  commands:\n    - bash -euf -c \"echo 'provider \\\"{{ provider|lower }}\\\" { version=\\\"{{ version }}\\\" }' > init.tf\"\n    - terraform init\n    # Tests that no plugins were downloaded\n    - test -f .terraform/plugins/{{ goos }}_{{ goarch }}/lock.json\n    - test ! -f .terraform/plugins/{{ goos }}_{{ goarch }}/{{ x4_plugin }}\n\nabout:\n  home: https://www.terraform.io\n  license: MPL-2.0\n  summary: The Terraform Azure provider\n  doc_url: https://www.terraform.io/docs/providers/{{ provider }}/index.html\n  dev_url: https://github.com/terraform-providers/{{ name }}\n\nextra:\n  recipe-maintainers:\n    - sodre\n    - dhirschfeld\n",
  "req":{
   "__set__":true,
   "elements":[
@@ -760,5 +760,5 @@
   }
  },
  "url":"https://github.com/terraform-providers/terraform-provider-azurerm/archive/v1.33.1.tar.gz",
- "version":"2.1.0"
+ "version":"2.2.0"
 }
