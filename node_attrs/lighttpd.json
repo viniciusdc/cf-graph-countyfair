@@ -78,29 +78,28 @@
     "migrator_version",
     "name"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/2e567ad7-ccab-4db1-bf01-13a76c8557ce.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"MigrationYaml",
+    "migrator_object_version":1,
+    "migrator_version":0,
+    "name":"krb51171"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_object_version",
+    "migrator_version",
+    "name"
+   ]
   }
  ],
- "bad":{
-  "exception":"Failed to put item: An error occurred (ValidationException) on request (RKGK89T6D17F9TGHA8G7SJS5L3VV4KQNSO5AEMVJF66Q9ASUAAJG) on table (pr_json) when calling the PutItem operation: Attempting to store more than 38 significant digits in a Number",
-  "traceback":[
-   "Traceback (most recent call last):",
-   "  File \"/root/repo/cf-scripts/conda_forge_tick/auto_tick.py\", line 901, in main",
-   "    hash_type=attrs.get(\"hash_type\", \"sha256\"),",
-   "  File \"/root/repo/cf-scripts/conda_forge_tick/auto_tick.py\", line 248, in run",
-   "    PRJson.dump(pr_json)",
-   "  File \"/root/repo/cf-scripts/conda_forge_tick/dynamo_models.py\", line 33, in dump",
-   "    item.save()",
-   "  File \"/opt/conda/envs/run_env/lib/python3.7/site-packages/pynamodb/models.py\", line 405, in save",
-   "    data = self._get_connection().put_item(*args, **kwargs)",
-   "  File \"/opt/conda/envs/run_env/lib/python3.7/site-packages/pynamodb/connection/table.py\", line 139, in put_item",
-   "    return_item_collection_metrics=return_item_collection_metrics)",
-   "  File \"/opt/conda/envs/run_env/lib/python3.7/site-packages/pynamodb/connection/base.py\", line 972, in put_item",
-   "    six.raise_from(PutError(\"Failed to put item: {}\".format(e), e), None)",
-   "  File \"<string>\", line 3, in raise_from",
-   "pynamodb.exceptions.PutError: Failed to put item: An error occurred (ValidationException) on request (RKGK89T6D17F9TGHA8G7SJS5L3VV4KQNSO5AEMVJF66Q9ASUAAJG) on table (pr_json) when calling the PutItem operation: Attempting to store more than 38 significant digits in a Number",
-   ""
-  ]
- },
+ "bad":false,
  "conda-forge.yml":{
   "compiler_stack":"comp7",
   "max_py_ver":"37",
@@ -236,7 +235,7 @@
  },
  "name":"lighttpd",
  "new_version":false,
- "pinning_version":"2019.02.24",
+ "pinning_version":"2020.03.23",
  "raw_meta_yaml":"{% set major_minor = \"1.4\" %}\n{% set version = major_minor + \".53\" %}\n\npackage:\n  name: lighttpd\n  version: {{ version }}\n\nsource:\n  url: http://download.lighttpd.net/lighttpd/releases-{{ major_minor }}.x/lighttpd-{{ version }}.tar.gz\n  sha256: 423b3951f212e3a30511eb86f4662a1848c6e857074289ff23fc310eef520266\n\nbuild:\n  number: 0\n  skip: True  # [not linux]\n\nrequirements:\n  build:\n    - pkg-config\n    - libtool\n    - perl  # Needed to run the tests\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n    - make\n  host:\n    - zlib\n    - bzip2\n    - pcre\n    - krb5\n    - openssl\n    - libxml2\n    - sqlite\n    - libuuid\n    - mysql\n  run:\n    - zlib\n    - bzip2\n    - pcre\n    - krb5\n    - openssl\n    - libxml2\n    - sqlite\n    - libuuid\n\ntest:\n  files:\n    - lighttpd.conf\n  commands:\n    - lighttpd -h\n    - lighttpd -v\n    - lighttpd -t -f lighttpd.conf\n\nabout:\n  home: http://www.lighttpd.net/\n  license: BSD 3-Clause\n  license_file: COPYING\n  summary: Light, fast web server\n  description: |\n    Lighttpd is rapidly redefining the efficiency of a webserver. It is\n    designed and optimized for high performance environments. With a small\n    memory footprint compared to other web-servers, effective management of\n    the cpu-load, and an advanced feature set, lighttpd is the perfect\n    solution for every server that is suffering load problems.\n  doc_url: http://redmine.lighttpd.net/projects/lighttpd/wiki\n  doc_source_url: http://redmine.lighttpd.net/projects/lighttpd/repository/revisions/master/show/doc\n  dev_url: https://github.com/lighttpd\n\nextra:\n  recipe-maintainers:\n    - sdvillal\n",
  "req":{
   "__set__":true,
@@ -302,7 +301,7 @@
    "elements":[]
   }
  },
- "smithy_version":"3.2.14",
+ "smithy_version":"No azure token. Create a token and\nput it in ~/.conda-smithy/azure.token\n3.6.15",
  "strong_exports":false,
  "total_requirements":{
   "build":{
