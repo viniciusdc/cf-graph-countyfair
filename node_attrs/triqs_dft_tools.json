@@ -18,6 +18,25 @@
     "migrator_version",
     "name"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/392677699.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"MigrationYaml",
+    "migrator_object_version":2,
+    "migrator_version":0,
+    "name":"boost172"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_object_version",
+    "migrator_version",
+    "name"
+   ]
   }
  ],
  "bad":false,
@@ -48,7 +67,7 @@
   },
   "package":{
    "name":"triqs_dft_tools",
-   "version":"2.2.0"
+   "version":"2.2.1"
   },
   "requirements":{
    "build":[
@@ -56,54 +75,97 @@
     "make",
     "c_compiler_stub",
     "cxx_compiler_stub",
+    "fortran_compiler_stub",
     "cmake",
     "make",
     "c_compiler_stub",
     "cxx_compiler_stub",
+    "fortran_compiler_stub",
     "cmake",
     "make",
     "c_compiler_stub",
-    "cxx_compiler_stub"
+    "cxx_compiler_stub",
+    "fortran_compiler_stub"
    ],
    "host":[
+    "triqs 2.2",
+    "boost-cpp",
+    null,
+    "libblas",
+    "liblapack",
     "python",
     "triqs 2.2",
+    "boost-cpp",
+    null,
+    "libblas",
+    "liblapack",
     "python",
     "triqs 2.2",
-    "python",
-    "triqs 2.2"
+    "boost-cpp",
+    null,
+    "libblas",
+    "liblapack",
+    "python"
    ],
    "run":[
+    "triqs",
+    null,
+    "libblas",
+    "liblapack",
     "python",
     "triqs",
+    null,
+    "libblas",
+    "liblapack",
     "python",
     "triqs",
-    "python",
-    "triqs"
+    null,
+    "libblas",
+    "liblapack",
+    "python"
    ]
   },
   "source":{
-   "sha256":"9836b2e4ef1ba6fef2d9276e0a43cf13a68b1626f0e4fae312fba5f7c888a49a",
-   "url":"https://github.com/TRIQS/dft_tools/releases/download/2.2.0/dft_tools-2.2.0.tar.gz"
+   "sha256":"0e3cf9d881becec93783999bc28468a3a5a862451b60c9c9c7b9dbb07f76ac22",
+   "url":"https://github.com/TRIQS/dft_tools/releases/download/2.2.1/dft_tools-2.2.1.tar.gz"
   },
   "test":{
-   "imports":[
-    "triqs_dft_tools",
-    "triqs_dft_tools",
-    "triqs_dft_tools"
+   "commands":[
+    "export OMPI_MCA_btl=self,tcp",
+    "export OMPI_MCA_plm=isolated",
+    "export OMPI_MCA_rmaps_base_oversubscribe=yes",
+    "export OMPI_MCA_btl_vader_single_copy_mechanism=none",
+    "export mpiexec=\"mpiexec --allow-run-as-root\"",
+    "python -c \"import triqs_dft_tools\"",
+    "export OMPI_MCA_btl=self,tcp",
+    "export OMPI_MCA_plm=isolated",
+    "export OMPI_MCA_rmaps_base_oversubscribe=yes",
+    "export OMPI_MCA_btl_vader_single_copy_mechanism=none",
+    "export mpiexec=\"mpiexec --allow-run-as-root\"",
+    "python -c \"import triqs_dft_tools\"",
+    "export OMPI_MCA_btl=self,tcp",
+    "export OMPI_MCA_plm=isolated",
+    "export OMPI_MCA_rmaps_base_oversubscribe=yes",
+    "export OMPI_MCA_btl_vader_single_copy_mechanism=none",
+    "export mpiexec=\"mpiexec --allow-run-as-root\"",
+    "python -c \"import triqs_dft_tools\""
    ]
   }
  },
  "name":"triqs_dft_tools",
  "new_version":"2.2.0",
- "pinning_version":"2020.03.20",
- "raw_meta_yaml":"{% set version = \"2.2.0\" %}\n\npackage:\n  name: triqs_dft_tools\n  version: {{ version }}\n\nsource:\n  url: https://github.com/TRIQS/dft_tools/releases/download/{{ version }}/dft_tools-{{ version }}.tar.gz\n  sha256: 9836b2e4ef1ba6fef2d9276e0a43cf13a68b1626f0e4fae312fba5f7c888a49a\n\nbuild:\n  number: 1\n  skip: True  # [win or py>30]\n\nrequirements:\n  build:\n    - cmake\n    - make\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n  host:\n    - python\n    - triqs {{ '.'.join(version.split('.')[:2]) }}\n  run:\n    - python\n    - {{ pin_compatible(\"triqs\", max_pin=\"x.x\") }}\n\ntest:\n  imports:\n    - triqs_dft_tools\n\nabout:\n  home: https://triqs.github.io/dft_tools\n  license: GPL-3.0-or-later\n  license_family: GPL\n  license_file: LICENSE.txt\n  summary: 'Toolbox for ab initio calculations of correlated materials'\n\nextra:\n  recipe-maintainers:\n    - wentzell\n    - pgunn\n",
+ "pinning_version":"2020.03.23",
+ "raw_meta_yaml":"{% set version = \"2.2.1\" %}\n\npackage:\n  name: triqs_dft_tools\n  version: {{ version }}\n\nsource:\n  url: https://github.com/TRIQS/dft_tools/releases/download/{{ version }}/dft_tools-{{ version }}.tar.gz\n  sha256: 0e3cf9d881becec93783999bc28468a3a5a862451b60c9c9c7b9dbb07f76ac22\n\nbuild:\n  number: 1\n  skip: True  # [win or py>30]\n\nrequirements:\n  build:\n    - cmake\n    - make\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n    - {{ compiler('fortran') }}\n  host:\n    - triqs {{ '.'.join(version.split('.')[:2]) }}\n    - boost-cpp\n    - {{ mpi }}\n    - libblas\n    - liblapack\n    - python\n  run:\n    - {{ pin_compatible(\"triqs\", max_pin=\"x.x\") }}\n    - {{ mpi }}\n    - libblas\n    - liblapack\n    - python\n\ntest:\n  commands:\n    - export OMPI_MCA_btl=self,tcp\n    - export OMPI_MCA_plm=isolated\n    - export OMPI_MCA_rmaps_base_oversubscribe=yes\n    - export OMPI_MCA_btl_vader_single_copy_mechanism=none\n    - export mpiexec=\"mpiexec --allow-run-as-root\"\n    - python -c \"import triqs_dft_tools\"\n\nabout:\n  home: https://triqs.github.io/dft_tools\n  license: GPL-3.0-or-later\n  license_family: GPL\n  license_file: LICENSE.txt\n  summary: 'Toolbox for ab initio calculations of correlated materials'\n\nextra:\n  recipe-maintainers:\n    - wentzell\n    - pgunn\n",
  "req":{
   "__set__":true,
   "elements":[
+   "boost-cpp",
    "c_compiler_stub",
    "cmake",
    "cxx_compiler_stub",
+   "fortran_compiler_stub",
+   "libblas",
+   "liblapack",
    "make",
    "python",
    "triqs"
@@ -116,12 +178,16 @@
     "c_compiler_stub",
     "cmake",
     "cxx_compiler_stub",
+    "fortran_compiler_stub",
     "make"
    ]
   },
   "host":{
    "__set__":true,
    "elements":[
+    "boost-cpp",
+    "libblas",
+    "liblapack",
     "python",
     "triqs"
    ]
@@ -129,6 +195,8 @@
   "run":{
    "__set__":true,
    "elements":[
+    "libblas",
+    "liblapack",
     "python",
     "triqs"
    ]
@@ -147,12 +215,16 @@
     "c_compiler_stub",
     "cmake",
     "cxx_compiler_stub",
+    "fortran_compiler_stub",
     "make"
    ]
   },
   "host":{
    "__set__":true,
    "elements":[
+    "boost-cpp",
+    "libblas",
+    "liblapack",
     "python",
     "triqs 2.2"
    ]
@@ -160,6 +232,8 @@
   "run":{
    "__set__":true,
    "elements":[
+    "libblas",
+    "liblapack",
     "python",
     "triqs"
    ]
@@ -170,5 +244,5 @@
   }
  },
  "url":"https://github.com/TRIQS/dft_tools/releases/download/2.2.0/dft_tools-2.2.0.tar.gz",
- "version":"2.2.0"
+ "version":"2.2.1"
 }
