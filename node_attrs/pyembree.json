@@ -124,9 +124,6 @@
  ],
  "bad":false,
  "conda-forge.yml":{
-  "compiler_stack":"comp7",
-  "max_py_ver":"37",
-  "max_r_ver":"35",
   "provider":{
    "linux_aarch64":"default",
    "linux_ppc64le":"default"
@@ -143,7 +140,7 @@
    "summary":"Python Wrapper for Embree"
   },
   "build":{
-   "number":"0",
+   "number":"1",
    "skip":true
   },
   "extra":{
@@ -220,7 +217,7 @@
  "name":"pyembree",
  "new_version":"0.1.6",
  "pinning_version":"2020.03.23",
- "raw_meta_yaml":"{% set name = \"pyembree\" %}\n{% set org = \"scopatz\" %}\n{% set version = \"0.1.6\" %}\n{% set sha256 = \"d16823a8886c9e8e8c451243460ccde7e659dac78e1ddfae7110895dae324777\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  fn: {{ name }}-{{ version }}-{{ sha256 }}.tar.gz\n  url: https://github.com/{{ org }}/{{ name }}/archive/{{ version }}.tar.gz\n  sha256: {{ sha256 }}\n\nbuild:\n  number: 0\n  skip: True  # [win or armv6l or armv7l or ppc64le]\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n  host:\n    - python\n    - setuptools\n    - cython >=0.25.2\n    - numpy\n    - embree\n  run:\n    - python\n    - {{ pin_compatible('numpy') }}\n    - embree\n\ntest:\n  imports:\n    - pyembree\n  commands:\n    - conda inspect linkages -p $PREFIX $PKG_NAME  # [not win]\n    - conda inspect objects -p $PREFIX $PKG_NAME  # [osx]\n\nabout:\n  home: https://github.com/scopatz/pyembree\n  license: BSD 2-clause\n  license_file: LICENSE\n  summary: 'Python Wrapper for Embree'\n  dev_url: https://github.com/scopatz/pyembree\n\nextra:\n  recipe-maintainers:\n    - scopatz\n    - Xarthisius\n    - ocefpaf\n",
+ "raw_meta_yaml":"{% set name = \"pyembree\" %}\n{% set org = \"scopatz\" %}\n{% set version = \"0.1.6\" %}\n{% set sha256 = \"d16823a8886c9e8e8c451243460ccde7e659dac78e1ddfae7110895dae324777\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  fn: {{ name }}-{{ version }}-{{ sha256 }}.tar.gz\n  url: https://github.com/{{ org }}/{{ name }}/archive/{{ version }}.tar.gz\n  sha256: {{ sha256 }}\n\nbuild:\n  number: 1\n  skip: True  # [win or armv6l or armv7l or ppc64le]\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n  host:\n    - python\n    - setuptools\n    - cython >=0.25.2\n    - numpy\n    - embree\n  run:\n    - python\n    - {{ pin_compatible('numpy') }}\n    - embree\n\ntest:\n  imports:\n    - pyembree\n  commands:\n    - conda inspect linkages -p $PREFIX $PKG_NAME  # [not win]\n    - conda inspect objects -p $PREFIX $PKG_NAME  # [osx]\n\nabout:\n  home: https://github.com/scopatz/pyembree\n  license: BSD 2-clause\n  license_file: LICENSE\n  summary: 'Python Wrapper for Embree'\n  dev_url: https://github.com/scopatz/pyembree\n\nextra:\n  recipe-maintainers:\n    - scopatz\n    - Xarthisius\n    - ocefpaf\n",
  "req":{
   "__set__":true,
   "elements":[
