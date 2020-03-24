@@ -159,7 +159,7 @@
     "*/libcuda.*",
     "*/libcuda.*"
    ],
-   "number":"2",
+   "number":"3",
    "script":[
     "export CFLAGS=\"${CFLAGS} -I/usr/include\"",
     "export CPPFLAGS=\"${CPPFLAGS} -I/usr/include\"",
@@ -266,14 +266,23 @@
   },
   "source":[
    {
+    "patches":[
+     "fixes_3218.diff"
+    ],
     "sha256":"57e5063bbaaa387e40f5935c02bbc75bb53d6589d736c540535a4f0b533bc374",
     "url":"https://github.com/cupy/cupy/archive/v7.2.0.tar.gz"
    },
    {
+    "patches":[
+     "fixes_3218.diff"
+    ],
     "sha256":"57e5063bbaaa387e40f5935c02bbc75bb53d6589d736c540535a4f0b533bc374",
     "url":"https://github.com/cupy/cupy/archive/v7.2.0.tar.gz"
    },
    {
+    "patches":[
+     "fixes_3218.diff"
+    ],
     "sha256":"57e5063bbaaa387e40f5935c02bbc75bb53d6589d736c540535a4f0b533bc374",
     "url":"https://github.com/cupy/cupy/archive/v7.2.0.tar.gz"
    }
@@ -297,7 +306,7 @@
  "name":"cupy",
  "new_version":"7.3.0",
  "pinning_version":"2020.03.23",
- "raw_meta_yaml":"{% set name = \"cupy\" %}\n{% set version = \"7.2.0\" %}\n{% set sha256 = \"57e5063bbaaa387e40f5935c02bbc75bb53d6589d736c540535a4f0b533bc374\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  - url: https://github.com/cupy/cupy/archive/v{{ version }}.tar.gz\n    sha256: {{ sha256 }}\n\n  # CUB support has too many bugs, let us wait for a bit longer   \n  ## 1. The CUB support has been extensively tested with v1.8.0, so we should pin it here\n  ## 2. This dependency should be removed once CuPy bundles CUB (cupy/cupy#2584)\n  #- url: https://github.com/NVlabs/cub/archive/v1.8.0.tar.gz\n  #  sha256: 025658f4c933cd2aa8cc88a559d013338d68de3fa639cc1f2b12cf61dc759667\n  #  folder: cub_v1.8.0  # so the source code is in cupy/cub_v1.8.0\n\nbuild:\n  number: 2\n  skip: True  # [py27 or (not linux64) or cuda_compiler_version == \"None\"]\n  script:\n    # CUDA 10.1 moves some headers to `/usr/include`\n    # So add that location last in the header search paths\n    - export CFLAGS=\"${CFLAGS} -I/usr/include\"\n    - export CPPFLAGS=\"${CPPFLAGS} -I/usr/include\"\n    - export CXXFLAGS=\"${CXXFLAGS} -I/usr/include\"\n    #- export CUB_PATH=${PWD}/cub_v1.8.0  # TODO(leofang): remove this\n    - \"{{ PYTHON }} -m pip install . -vv\"\n  missing_dso_whitelist:\n    - \"*/libcuda.*\"\n\nrequirements:\n  build:\n    - {{ compiler(\"c\") }}\n    - {{ compiler(\"cxx\") }}\n    - {{ compiler(\"cuda\") }}\n\n  host:\n    - python\n    - pip\n    - setuptools\n    - cython >=0.24.0\n    - fastrlock >=0.3\n    - cudnn\n    - nccl\n\n  run:\n    - python\n    - setuptools\n    - fastrlock >=0.3\n    - numpy >=1.9.0\n    - six >=1.9.0\n    # - cudnn  <-- added via run_export\n    # - nccl   <-- added via run_export\n\ntest:\n  requires:\n    - pytest\n    - mock\n  source_files:\n    - tests\n\nabout:\n  home: https://cupy.chainer.org/\n  license: MIT\n  license_family: MIT\n  license_file: LICENSE\n  summary: CuPy is an implementation of a NumPy-compatible multi-dimensional array on CUDA.\n\nextra:\n  recipe-maintainers:\n    - jakirkham\n    - leofang\n    - kmaehashi\n    - beam2d\n    - asi1024\n    - emcastillo\n    - hvy\n    - niboshi\n    - toslunar\n",
+ "raw_meta_yaml":"{% set name = \"cupy\" %}\n{% set version = \"7.2.0\" %}\n{% set sha256 = \"57e5063bbaaa387e40f5935c02bbc75bb53d6589d736c540535a4f0b533bc374\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  - url: https://github.com/cupy/cupy/archive/v{{ version }}.tar.gz\n    sha256: {{ sha256 }}\n    patches:\n      # Include full CUDA 10.2 support: https://github.com/cupy/cupy/pull/3218\n      - fixes_3218.diff\n\n  # CUB support has too many bugs, let us wait for a bit longer\n  ## 1. The CUB support has been extensively tested with v1.8.0, so we should pin it here\n  ## 2. This dependency should be removed once CuPy bundles CUB (cupy/cupy#2584)\n  #- url: https://github.com/NVlabs/cub/archive/v1.8.0.tar.gz\n  #  sha256: 025658f4c933cd2aa8cc88a559d013338d68de3fa639cc1f2b12cf61dc759667\n  #  folder: cub_v1.8.0  # so the source code is in cupy/cub_v1.8.0\n\nbuild:\n  number: 3\n  skip: True  # [py27 or (not linux64) or cuda_compiler_version == \"None\"]\n  script:\n    # CUDA 10.1 moves some headers to `/usr/include`\n    # So add that location last in the header search paths\n    - export CFLAGS=\"${CFLAGS} -I/usr/include\"\n    - export CPPFLAGS=\"${CPPFLAGS} -I/usr/include\"\n    - export CXXFLAGS=\"${CXXFLAGS} -I/usr/include\"\n    #- export CUB_PATH=${PWD}/cub_v1.8.0  # TODO(leofang): remove this\n    - \"{{ PYTHON }} -m pip install . -vv\"\n  missing_dso_whitelist:\n    - \"*/libcuda.*\"\n\nrequirements:\n  build:\n    - {{ compiler(\"c\") }}\n    - {{ compiler(\"cxx\") }}\n    - {{ compiler(\"cuda\") }}\n\n  host:\n    - python\n    - pip\n    - setuptools\n    - cython >=0.24.0\n    - fastrlock >=0.3\n    - cudnn\n    - nccl\n\n  run:\n    - python\n    - setuptools\n    - fastrlock >=0.3\n    - numpy >=1.9.0\n    - six >=1.9.0\n    # - cudnn  <-- added via run_export\n    # - nccl   <-- added via run_export\n\ntest:\n  requires:\n    - pytest\n    - mock\n  source_files:\n    - tests\n\nabout:\n  home: https://cupy.chainer.org/\n  license: MIT\n  license_family: MIT\n  license_file: LICENSE\n  summary: CuPy is an implementation of a NumPy-compatible multi-dimensional array on CUDA.\n\nextra:\n  recipe-maintainers:\n    - jakirkham\n    - leofang\n    - kmaehashi\n    - beam2d\n    - asi1024\n    - emcastillo\n    - hvy\n    - niboshi\n    - toslunar\n",
  "req":{
   "__set__":true,
   "elements":[
