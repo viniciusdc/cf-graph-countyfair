@@ -71,11 +71,7 @@
   }
  ],
  "bad":false,
- "conda-forge.yml":{
-  "compiler_stack":"comp7",
-  "max_py_ver":"37",
-  "max_r_ver":"35"
- },
+ "conda-forge.yml":{},
  "feedstock_name":"python-magic",
  "hash_type":"sha256",
  "meta_yaml":{
@@ -87,8 +83,8 @@
    "summary":"File type identification using libmagic"
   },
   "build":{
-   "number":"1001",
-   "script":"python -m pip install --no-deps --ignore-installed .",
+   "number":"1002",
+   "script":"-m pip install . --no-deps -vv",
    "skip":true
   },
   "extra":{
@@ -137,7 +133,7 @@
  "name":"python-magic",
  "new_version":"0.4.15",
  "pinning_version":"2020.03.16",
- "raw_meta_yaml":"{% set name = \"python-magic\" %}\n{% set version = \"0.4.15\" %}\n{% set hash_type = \"sha256\" %}\n{% set hash_val = \"f3765c0f582d2dfc72c15f3b5a82aecfae9498bd29ca840d72f37d7bd38bfcd5\" %}\n\npackage:\n  name: {{ name }}\n  version: {{ version }}\n\nsource:\n  fn: {{ name }}-{{ version }}.tar.gz\n  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz\n  {{ hash_type }}: {{ hash_val }}\n  patches:\n    - discover-libmagic-dylib.patch  # [osx]\n\nbuild:\n  number: 1001\n  script: python -m pip install --no-deps --ignore-installed .\n  skip: True  # [win]\n\nrequirements:\n  host:\n    - pip\n    - python\n  run:\n    - libmagic\n    - python\n\ntest:\n  imports:\n    - magic\n\nabout:\n  home: http://github.com/ahupp/python-magic\n  license: MIT\n  license_file: LICENSE\n  license_family: MIT\n  summary: 'File type identification using libmagic'\n\nextra:\n  recipe-maintainers:\n    - mariusvniekerk\n",
+ "raw_meta_yaml":"{% set name = \"python-magic\" %}\n{% set version = \"0.4.15\" %}\n{% set hash_val = \"f3765c0f582d2dfc72c15f3b5a82aecfae9498bd29ca840d72f37d7bd38bfcd5\" %}\n\npackage:\n  name: {{ name }}\n  version: {{ version }}\n\nsource:\n  fn: {{ name }}-{{ version }}.tar.gz\n  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz\n  sha256: {{ hash_val }}\n  patches:\n    - discover-libmagic-dylib.patch  # [osx]\n\nbuild:\n  number: 1002\n  script: {{ PYTHON }} -m pip install . --no-deps -vv\n  skip: True  # [win]\n\nrequirements:\n  host:\n    - pip\n    - python\n  run:\n    - libmagic\n    - python\n\ntest:\n  imports:\n    - magic\n\nabout:\n  home: http://github.com/ahupp/python-magic\n  license: MIT\n  license_file: LICENSE\n  license_family: MIT\n  summary: 'File type identification using libmagic'\n\nextra:\n  recipe-maintainers:\n    - mariusvniekerk\n",
  "req":{
   "__set__":true,
   "elements":[
