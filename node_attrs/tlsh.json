@@ -52,6 +52,25 @@
     "migrator_version",
     "name"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/393699299.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"MigrationYaml",
+    "migrator_object_version":1,
+    "migrator_version":0,
+    "name":"pypy"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_object_version",
+    "migrator_version",
+    "name"
+   ]
   }
  ],
  "bad":false,
@@ -383,7 +402,7 @@
   "python-tlsh",
   "tlsh-tools"
  ],
- "pinning_version":"2019.11.01",
+ "pinning_version":"2020.03.24",
  "raw_meta_yaml":"{% set name = \"tlsh\" %}\n{% set version = \"3.17.0\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  url: https://github.com/trendmicro/{{ name }}/archive/{{ version }}.tar.gz\n  sha256: 810cecdda1632ecb836278e5a58560d5b2b7911d02ed7419dc02b6a38e635985\n  patches:\n    - make.patch\n\nbuild:\n  number: 0\n  skip: true  # [win]\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n    - cmake\n    - make\n  host:\n    - python\n    - pip\n  run:\n    - python\n\ntest:\n  commands:\n    - test -f ${CONDA_PREFIX}/lib/libtlsh.${SHLIB_EXT}\n\noutputs:\n  - name: libtlsh\n    script: install-libtlsh.sh\n    build:\n      run_exports:\n        - {{ pin_subpackage('libtlsh', max_pin='x.x') }}\n    requirements:\n      build:\n        - {{ compiler('c') }}\n        - {{ compiler('cxx') }}\n        - cmake\n        - make\n    test:\n      commands:\n        - echo libtlsh tested are during build\n  - name: python-tlsh\n    script: install-python-tlsh.sh\n    build:\n      run_exports:\n        - {{ pin_subpackage('python-tlsh', max_pin='x.x') }}\n    requirements:\n      build:\n        - {{ compiler('c') }}\n        - {{ compiler('cxx') }}\n        - cmake\n        - make\n      host:\n        - {{ pin_subpackage('libtlsh', exact=True) }}\n        - python\n        - pip\n      run:\n        - {{ pin_subpackage('libtlsh', exact=True) }}\n        - python\n    test:\n      imports:\n        - tlsh\n        # commands:\n        # - echo \"TODO: restore the tests when python_test.sh works\"\n        # cd Testing && sh python_test.sh\n  - name: tlsh-tools\n    script: install-tlsh-tools.sh\n    build:\n      run_exports:\n        - {{ pin_subpackage('libtlsh', max_pin='x.x') }}\n    test:\n      commands:\n        - tlsh --help\n        - tlsh_unittest --help\n    requirements:\n      build:\n        - {{ compiler('c') }}\n        - {{ compiler('cxx') }}\n        - cmake\n        - make\n      host:\n        - {{ pin_subpackage('libtlsh', exact=True) }}\n      run:\n        - {{ pin_subpackage('libtlsh', exact=True) }}\n\nabout:\n  home: https://github.com/trendmicro/tlsh\n  license: Apache-2.0\n  license_family: Apache\n  license_file: LICENSE\n  summary: 'TLSH is a fuzzy matching library.'\n  description: |\n     Given a byte stream with a minimum length of 50 bytes TLSH generates a\n     hash value which can be used for similarity comparisons. Similar objects\n     will have similar hash values which allows for the detection of similar\n     objects by comparing their hash values. Note that the byte stream should\n     have a sufficient amount of complexity. For example, a byte stream of\n     identical bytes will not generate a hash value.\n\nextra:\n  recipe-maintainers:\n    - bollwyvl\n",
  "req":{
   "__set__":true,
@@ -427,7 +446,7 @@
    "elements":[]
   }
  },
- "smithy_version":"3.6.1",
+ "smithy_version":"No azure token. Create a token and\nput it in ~/.conda-smithy/azure.token\n3.6.15",
  "strong_exports":false,
  "total_requirements":{
   "build":{
