@@ -18,6 +18,25 @@
     "migrator_version",
     "name"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/393667335.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"MigrationYaml",
+    "migrator_object_version":1,
+    "migrator_version":0,
+    "name":"pypy"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_object_version",
+    "migrator_version",
+    "name"
+   ]
   }
  ],
  "bad":false,
@@ -246,7 +265,7 @@
   "libode",
   "pyode"
  ],
- "pinning_version":"2020.01.16",
+ "pinning_version":"2020.03.24",
  "raw_meta_yaml":"# defining package and version\n{% set name = \"libode\" %}\n{% set version = \"0.16\" %}\n{% set soversion = \"0.16.0\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  url: https://bitbucket.org/odedevs/ode/downloads/ode-{{ version }}.tar.gz\n  sha256: 4ba3b76f9c1314160de483b3db92b0569242a07452cbb25b368e75deb3cabf27\n  patches:\n    - add-rt-to-dotpc                # [linux]\n    - modify-dotpc-win               # [win]\n    - window-pointer-size            # [win]\n    \nbuild:\n  number: 0\n  skip: true                         # [win and py==27]\n  # add libode to the whitelist; it can apparently not be found yet when\n  # pyode is built\n  missing_dso_whitelist:\n    - lib/libode*\n    - $RPATH/librt.*                      # [linux]\n    - $RPATH/libpthread.*                 # [linux]\n    - $RPATH/libc.*                       # [linux]\n    - $RPATH/libpython.*                  # [linux]\n    - /lib*/librt.*                       # [linux]\n    - /lib*/libpthread.*                  # [linux]\n    - /lib*/libc.*                        # [linux]\n  \nrequirements:\n  build:\n    - {{ compiler('cxx') }}          # stage 1, library\n    - cmake\n    - {{ compiler('c') }}            # stage 2, generate bindings\n    - pkg-config\n    - m2-patch                       # [win]\n    - make                           # [unix]\n  host:\n    - python {{ PY_VER }}*\n    - cython\n\noutputs:\n  - name: {{ name }}\n    requirements:\n      run:\n        - pthread-stubs                                              # [unix]\n        - libstdcxx-ng                                               # [linux]\n        - libgcc-ng                                                  # [linux]\n        - libcxx                                                     # [osx]\n        - vs2015_runtime                                             # [win]\n    run_exports:\n      - libode\n    files:\n      - lib/libode*                                                  # [unix]\n      - lib/pkgconfig/ode.pc                                         # [unix]\n      - lib/cmake/ode-{{ soversion }}                                # [unix]\n      - bin/ode-config                                               # [unix]\n      - Library/lib/ode_double.lib                                   # [win]\n      - Library/bin/ode_double.dll                                   # [win]\n      - Library/lib/pkgconfig/ode.pc                                 # [win]\n      - Library/lib/cmake/ode*                                       # [win]\n      - include/ode\n    test:\n      commands:\n        - test -f $PREFIX/lib/libode${SHLIB_EXT}                     # [unix]\n        - test -f $PREFIX/lib/libode${SHLIB_EXT}.{{ soversion }}     # [linux]\n        - test -f $PREFIX/lib/libode.{{ soversion }}${SHLIB_EXT}     # [osx]\n        - test -d $PREFIX/include/ode                                # [unix]\n        - test -f $PREFIX/lib/pkgconfig/ode.pc                       # [unix]\n        - if not exist %PREFIX%\\Library\\lib\\ode_double.lib exit 1    # [win]\n        - if not exist %PREFIX%\\Library\\bin\\ode_double.dll exit 1    # [win]\n        - if not exist %PREFIX%\\Library\\lib\\pkgconfig\\ode.pc exit 1  # [win]\n  - name: pyode\n    requirements:\n      run:\n        - libode\n        - pthread-stubs                                              # [unix]\n        - libstdcxx-ng                                               # [linux]\n        - libgcc-ng                                                  # [linux]\n        - libcxx                                                     # [osx]\n        - python {{ PY_VER }}*\n    files:\n      - lib/python{{ PY_VER }}/site-packages/ode.*                   # [unix]\n      - lib/python{{ PY_VER }}/site-packages/Open_Dynamics_Engine*egg-info  # [unix]\n      - Lib/site-packages/ode.*.pyd                                  # [win]\n      - Lib/site-packages/Open_Dynamics_Engine*egg-info              # [win]\n    test:\n      imports:\n        - ode\n\nabout:\n  home: https://www.ode.org/\n  license: LGPL-2.0 or BSD-4-Clause\n  summary: Open Dynamics Engine, dynamics simulation\n  license_file:\n    - LICENSE.TXT\n    - LICENSE-BSD.TXT\n\nextra:\n  recipe-maintainers:\n    - repagh\n",
  "req":{
   "__set__":true,
@@ -305,7 +324,7 @@
    "elements":[]
   }
  },
- "smithy_version":"3.6.5",
+ "smithy_version":"No azure token. Create a token and\nput it in ~/.conda-smithy/azure.token\n3.6.15",
  "strong_exports":false,
  "total_requirements":{
   "build":{
