@@ -126,8 +126,9 @@
    "summary":"AWS CloudFormation creation library"
   },
   "build":{
-   "number":"1",
-   "script":" -m pip install . --no-deps --ignore-installed -vv "
+   "noarch":"python",
+   "number":"2",
+   "script":"-m pip install . --no-deps --ignore-installed -vv"
   },
   "extra":{
    "recipe-maintainers":[
@@ -196,7 +197,7 @@
  "name":"troposphere",
  "new_version":"2.6.0",
  "pinning_version":"2020.03.16",
- "raw_meta_yaml":"{% set name = \"troposphere\" %}\n{% set version = \"2.6.0\" %}\n\npackage:\n  name: \"{{ name|lower }}\"\n  version: \"{{ version }}\"\n\nsource:\n  url: \"https://github.com/cloudtools/{{ name }}/archive/{{ version }}.tar.gz\"\n  sha256: \"8c7fc8886dd8d5d31b0cbc7646f8d1783a5d72973359ee21e037f6ce22fd60a5\"\n\nbuild:\n  #TODO: Make noarch when python2 is dropped\n  number: 1\n  script: \"{{ PYTHON }} -m pip install . --no-deps --ignore-installed -vv \"\n\nrequirements:\n  host:\n    - pip\n    - python\n  run:\n    - cfn-flip >=1.0.2\n    - awacs >=0.8\n    - python\n\ntest:\n  imports:\n    - troposphere\n    - troposphere.helpers\n    - troposphere.openstack\n  requires:\n    - awacs >=0.8\n\nabout:\n  home: \"https://github.com/cloudtools/troposphere\"\n  license: \"BSD-2-Clause\"\n  license_family: \"BSD\"\n  license_file: \"LICENSE\"\n  summary: \"AWS CloudFormation creation library\"\n  doc_url: \"https://troposphere.readthedocs.io\"\n  dev_url: \"https://github.com/cloudtools/troposphere\"\n\nextra:\n  recipe-maintainers:\n    - agcopenhaver\n    - adbeda\n    - rluria14\n    - oblute\n",
+ "raw_meta_yaml":"{% set name = \"troposphere\" %}\n{% set version = \"2.6.0\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  url: https://github.com/cloudtools/{{ name }}/archive/{{ version }}.tar.gz\n  sha256: 8c7fc8886dd8d5d31b0cbc7646f8d1783a5d72973359ee21e037f6ce22fd60a5\n\nbuild:\n  noarch: python\n  number: 2\n  script: {{ PYTHON }} -m pip install . --no-deps --ignore-installed -vv\n\nrequirements:\n  host:\n    - pip\n    - python\n  run:\n    - cfn-flip >=1.0.2\n    - awacs >=0.8\n    - python\n\ntest:\n  imports:\n    - troposphere\n    - troposphere.helpers\n    - troposphere.openstack\n  requires:\n    - awacs >=0.8\n\nabout:\n  home: https://github.com/cloudtools/troposphere\n  license: BSD-2-Clause\n  license_family: BSD\n  license_file: LICENSE\n  summary: \"AWS CloudFormation creation library\"\n  doc_url: https://troposphere.readthedocs.io\n  dev_url: https://github.com/cloudtools/troposphere\n\nextra:\n  recipe-maintainers:\n    - agcopenhaver\n    - adbeda\n    - rluria14\n    - oblute\n",
  "req":{
   "__set__":true,
   "elements":[
