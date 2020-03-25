@@ -137,29 +137,28 @@
     "migrator_version",
     "name"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/76f27b48-9040-4d25-bb50-97fdc4e11e92.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"MigrationYaml",
+    "migrator_object_version":1,
+    "migrator_version":0,
+    "name":"pypy"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_object_version",
+    "migrator_version",
+    "name"
+   ]
   }
  ],
- "bad":{
-  "exception":"Failed to put item: An error occurred (ValidationException) on request (MACQJBHTHE1FR7E1BL5HFETSNJVV4KQNSO5AEMVJF66Q9ASUAAJG) on table (pr_json) when calling the PutItem operation: Attempting to store more than 38 significant digits in a Number",
-  "traceback":[
-   "Traceback (most recent call last):",
-   "  File \"/root/repo/cf-scripts/conda_forge_tick/auto_tick.py\", line 922, in main",
-   "    hash_type=attrs.get(\"hash_type\", \"sha256\"),",
-   "  File \"/root/repo/cf-scripts/conda_forge_tick/auto_tick.py\", line 248, in run",
-   "    PRJson.dump(pr_json)",
-   "  File \"/root/repo/cf-scripts/conda_forge_tick/dynamo_models.py\", line 33, in dump",
-   "    item.save()",
-   "  File \"/opt/conda/envs/run_env/lib/python3.7/site-packages/pynamodb/models.py\", line 405, in save",
-   "    data = self._get_connection().put_item(*args, **kwargs)",
-   "  File \"/opt/conda/envs/run_env/lib/python3.7/site-packages/pynamodb/connection/table.py\", line 139, in put_item",
-   "    return_item_collection_metrics=return_item_collection_metrics)",
-   "  File \"/opt/conda/envs/run_env/lib/python3.7/site-packages/pynamodb/connection/base.py\", line 972, in put_item",
-   "    six.raise_from(PutError(\"Failed to put item: {}\".format(e), e), None)",
-   "  File \"<string>\", line 3, in raise_from",
-   "pynamodb.exceptions.PutError: Failed to put item: An error occurred (ValidationException) on request (MACQJBHTHE1FR7E1BL5HFETSNJVV4KQNSO5AEMVJF66Q9ASUAAJG) on table (pr_json) when calling the PutItem operation: Attempting to store more than 38 significant digits in a Number",
-   ""
-  ]
- },
+ "bad":false,
  "conda-forge.yml":{
   "compiler_stack":"comp7",
   "max_py_ver":"37",
@@ -359,7 +358,7 @@
   "nds2-client-swig",
   "python-nds2-client"
  ],
- "pinning_version":"2019.11.01",
+ "pinning_version":"2020.03.24",
  "raw_meta_yaml":"{% set name = \"nds2-client-swig\" %}\n{% set version = \"0.16.6\" %}\n{% set sha256 = \"0184eae7cf7eeb1d0a4bb0cf32d57b0a9c60e59912546bd3116e740b2af176b7\" %}\n{% set nds2_client_version = \"0.16.4\" %}\n\npackage:\n  name: \"{{ name }}\"\n  version: \"{{ version }}\"\n\nsource:\n  url: \"http://software.ligo.org/lscsoft/source/{{ name }}-{{ version }}.tar.gz\"\n  sha256: \"{{ sha256 }}\"\n  patches:\n    - macos-static-python.patch  # [osx]\n\nbuild:\n  error_overdepending: true\n  error_overlinking: true\n  number: 0\n  skip: true  # [win]\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n    - cmake >=3.6\n    - make  # [not win]\n    - pkg-config  # [not win]\n  host:\n    - swig >=3.0.7,<4\n    - nds2-client {{ nds2_client_version }}\ntest:\n  commands:\n    - test -f ${PREFIX}/include/nds2-client/nds.i  # [unix]\n    - test -f ${PREFIX}/include/nds2-client/nds_swig.hh  # [unix]\n\noutputs:\n  - name: nds2-client-swig\n\n  - name: python-nds2-client\n    script: install-python.sh\n    requirements:\n      build:\n        - {{ compiler('c') }}\n        - {{ compiler('cxx') }}\n        - cmake >=3.6\n        - pkg-config  # [not win]\n        - make  # [not win]\n      host:\n        - nds2-client {{ nds2_client_version }}\n        - {{ pin_subpackage('nds2-client-swig', exact=True) }}\n        - numpy\n        - python\n        - swig >=3.0.7,<4\n      run:\n        - nds2-client >={{ nds2_client_version }}\n        - python\n        - {{ pin_compatible('numpy') }}\n    test:\n      imports:\n        - nds2\n    about:\n      home: \"https://wiki.ligo.org/Computing/NDSClient\"\n      license: \"GPL-3.0-or-later\"\n      license_family: \"GPL\"\n      license_file: \"COPYING\"\n      summary: \"Python extensions for NDS2\"\n      description: \"This provides python wrappers for the nds2 client.\"\n\nabout:\n  home: \"https://wiki.ligo.org/Computing/NDSClient\"\n  license: \"GPL-3.0-or-later\"\n  license_family: \"GPL\"\n  license_file: \"COPYING\"\n  summary: \"NDS2 Client interface SWIG wrappings\"\n  description: \"This provides SWIG interface files for the NDS2 client.\"\n\nextra:\n  recipe-maintainers:\n    - duncanmmacleod\n",
  "req":{
   "__set__":true,
@@ -410,7 +409,7 @@
    "elements":[]
   }
  },
- "smithy_version":"3.6.1",
+ "smithy_version":"No azure token. Create a token and\nput it in ~/.conda-smithy/azure.token\n3.6.15",
  "strong_exports":false,
  "total_requirements":{
   "build":{
