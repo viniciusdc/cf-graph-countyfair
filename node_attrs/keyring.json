@@ -456,58 +456,26 @@
     "migrator_version",
     "name"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/394277571.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"Version",
+    "migrator_version":0,
+    "version":"21.2.0"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "version"
+   ]
   }
  ],
- "bad":{
-  "exception":"while constructing a mapping\n  in \"<unicode string>\", line 33, column 3:\n      requires:\n      ^ (line: 33)\nfound duplicate key \"commands\" with value \"['keyring --help']\" (original value: \"['pip check']\")\n  in \"<unicode string>\", line 41, column 3:\n      commands:\n      ^ (line: 41)\n\nTo suppress this check see:\n    http://yaml.readthedocs.io/en/latest/api.html#duplicate-keys\n\nDuplicate keys will become an error in future releases, and are errors\nby default when using the new API.\n",
-  "traceback":[
-   "Traceback (most recent call last):",
-   "  File \"/root/repo/cf-scripts/conda_forge_tick/auto_tick.py\", line 922, in main",
-   "    hash_type=attrs.get(\"hash_type\", \"sha256\"),",
-   "  File \"/root/repo/cf-scripts/conda_forge_tick/auto_tick.py\", line 166, in run",
-   "    migrate_return = migrator.migrate(recipe_dir, feedstock_ctx.attrs, **kwargs)",
-   "  File \"/root/repo/cf-scripts/conda_forge_tick/migrators/version.py\", line 373, in migrate",
-   "    cmeta = CondaMetaYAML(fp.read())",
-   "  File \"/root/repo/cf-scripts/conda_forge_tick/recipe_parser/_parser.py\", line 358, in __init__",
-   "    self.meta = YAML_JINJA2.load(\"\".join(lines))",
-   "  File \"/opt/conda/envs/run_env/lib/python3.7/site-packages/ruamel/yaml/main.py\", line 341, in load",
-   "    return constructor.get_single_data()",
-   "  File \"/opt/conda/envs/run_env/lib/python3.7/site-packages/ruamel/yaml/constructor.py\", line 113, in get_single_data",
-   "    return self.construct_document(node)",
-   "  File \"/opt/conda/envs/run_env/lib/python3.7/site-packages/ruamel/yaml/constructor.py\", line 123, in construct_document",
-   "    for _dummy in generator:",
-   "  File \"/opt/conda/envs/run_env/lib/python3.7/site-packages/ruamel/yaml/constructor.py\", line 1563, in construct_yaml_map",
-   "    self.construct_mapping(node, data, deep=True)",
-   "  File \"/opt/conda/envs/run_env/lib/python3.7/site-packages/ruamel/yaml/constructor.py\", line 1468, in construct_mapping",
-   "    value = self.construct_object(value_node, deep=deep)",
-   "  File \"/opt/conda/envs/run_env/lib/python3.7/site-packages/ruamel/yaml/constructor.py\", line 146, in construct_object",
-   "    data = self.construct_non_recursive_object(node)",
-   "  File \"/opt/conda/envs/run_env/lib/python3.7/site-packages/ruamel/yaml/constructor.py\", line 188, in construct_non_recursive_object",
-   "    for _dummy in generator:",
-   "  File \"/opt/conda/envs/run_env/lib/python3.7/site-packages/ruamel/yaml/constructor.py\", line 1563, in construct_yaml_map",
-   "    self.construct_mapping(node, data, deep=True)",
-   "  File \"/opt/conda/envs/run_env/lib/python3.7/site-packages/ruamel/yaml/constructor.py\", line 1469, in construct_mapping",
-   "    if self.check_mapping_key(node, key_node, maptyp, key, value):",
-   "  File \"/opt/conda/envs/run_env/lib/python3.7/site-packages/ruamel/yaml/constructor.py\", line 295, in check_mapping_key",
-   "    raise DuplicateKeyError(*args)",
-   "ruamel.yaml.constructor.DuplicateKeyError: while constructing a mapping",
-   "  in \"<unicode string>\", line 33, column 3:",
-   "      requires:",
-   "      ^ (line: 33)",
-   "found duplicate key \"commands\" with value \"['keyring --help']\" (original value: \"['pip check']\")",
-   "  in \"<unicode string>\", line 41, column 3:",
-   "      commands:",
-   "      ^ (line: 41)",
-   "",
-   "To suppress this check see:",
-   "    http://yaml.readthedocs.io/en/latest/api.html#duplicate-keys",
-   "",
-   "Duplicate keys will become an error in future releases, and are errors",
-   "by default when using the new API.",
-   "",
-   ""
-  ]
- },
+ "bad":false,
  "conda-forge.yml":{
   "provider":{
    "linux_aarch64":"default",
@@ -615,7 +583,7 @@
  },
  "name":"keyring",
  "new_version":"21.2.0",
- "pinning_version":"2020.03.16",
+ "pinning_version":"2020.03.24",
  "raw_meta_yaml":"{% set version = \"21.1.1\" %}\n\npackage:\n  name: keyring\n  version: {{ version }}\n\nsource:\n  url: https://pypi.io/packages/source/k/keyring/keyring-{{ version }}.tar.gz\n  sha256: b7bdfb1978cfdbabec63a3d389ad60242e7ffe9d739cae00760408c4f07d2c13\n\nbuild:\n  number: 1\n  skip: True  # [py<36]\n  script: \"{{ PYTHON }} -m pip install . --no-deps -vv\"\n  entry_points:\n    - keyring = keyring.cli:main\n\nrequirements:\n  host:\n    - python\n    - pip\n    - setuptools_scm >=3.4.1\n    - setuptools >=42\n    - toml\n  run:\n    - python\n    - pywin32-ctypes  # [win]\n    - entrypoints\n    - secretstorage  # [linux]\n    - importlib_metadata  # [py<38]\n\ntest:\n  requires:\n    - pip\n  commands:\n    - pip check\n  imports:\n    - keyring\n    - keyring.backends\n    - keyring.util\n  commands:\n    - keyring --help\n\nabout:\n  home: https://github.com/jaraco/keyring\n  license: Python Software Foundation or MIT\n  license_file: LICENSE\n  summary: Store and access your passwords safely\n\nextra:\n  recipe-maintainers:\n    - ericdill\n    - licode\n    - tacaswell\n    - ccordoba12\n",
  "req":{
   "__set__":true,
@@ -663,7 +631,7 @@
    ]
   }
  },
- "smithy_version":"3.6.12",
+ "smithy_version":"No azure token. Create a token and\nput it in ~/.conda-smithy/azure.token\n3.6.15",
  "strong_exports":false,
  "total_requirements":{
   "build":{
