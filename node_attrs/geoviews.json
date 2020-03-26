@@ -115,6 +115,23 @@
     "migrator_version",
     "version"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/393892271.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"Version",
+    "migrator_version":0,
+    "version":"1.7.0"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "version"
+   ]
   }
  ],
  "bad":false,
@@ -478,12 +495,12 @@
   }
  },
  "name":"geoviews-split",
- "new_version":"1.6.6",
+ "new_version":"1.7.0",
  "outputs_names":[
   "geoviews",
   "geoviews-core"
  ],
- "pinning_version":"2019.11.20",
+ "pinning_version":"2020.03.24",
  "raw_meta_yaml":"{% set version = \"1.6.6\" %}\n\npackage:\n  name: geoviews-split\n  version: {{ version }}\n\nsource:\n  url: https://pypi.io/packages/source/g/geoviews/geoviews-{{ version }}.tar.gz\n  sha256: 5b820b9610f9217327608c5022c9f4223abae335d12c8d9967994ccd17243c6d\n\nbuild:\n  number: 1\n  noarch: python\n\nrequirements:\n  host:\n    - python >=2.7\n    - pip\n    - param >=1.6.1,<2.0\n  run:\n    - python >=2.7\n    - bokeh >=1.0.0\n    - cartopy >=0.16.0\n    - holoviews >=1.11.1\n    - numpy >=1.0\n    - param >=1.6.1,<2.0\n    - datashader\n    - geopandas\n    - gdal\n    - netcdf4\n    - jupyter\n    - matplotlib-base >2.2\n    - pandas\n    - pyct\n    - scipy\n    - shapely\n    - xarray\n\noutputs:\n  - name: geoviews-core\n    build:\n      noarch: python\n      script: \"{{ PYTHON }} -m pip install . --no-deps -vv\"\n      entry_points:\n        - geoviews = geoviews.__main__:main       \n    requirements:\n      run_constrained:\n        - geoviews {{ version }}\n      host:\n        - python >=2.7\n        - pip\n        - param >=1.6.1,<2.0\n      run:\n        - python >=2.7\n        - bokeh >=1.0.0\n        - cartopy >=0.16.0\n        - holoviews >=1.11.1\n        - numpy >=1.0\n        - param >=1.6.1,<2.0\n    test:\n      imports:\n        - geoviews\n\n  - name: geoviews\n    build:\n      noarch: python\n    requirements:\n      host:\n        - python >=2.7\n        - pip\n        - param >=1.6.1,<2.0\n        - geoviews-core {{ version }}\n      run:\n        - python >=2.7\n        - bokeh >=1.0.0\n        - cartopy >=0.16.0\n        - holoviews >=1.11.1\n        - numpy >=1.0\n        - param >=1.6.1,<2.0\n        - geoviews-core {{ version }}\n        - datashader\n        - geopandas\n        - gdal\n        - netcdf4\n        - jupyter\n        - matplotlib-base >2.2\n        - pandas\n        - pyct\n        - scipy\n        - shapely\n        - xarray\n    test:\n      imports:\n        - geoviews\n      requires:\n        - nbsmoke\n        - pytest\n      commands:\n        - geoviews examples --path=. --force\n        # just run one notebook for now; increase in the future if notebooks can be run quickly with test/tiny data\n        - pytest --nbsmoke-run -k \".ipynb\" user_guide/Geometries.ipynb\n    about:\n      home: http://geoviews.org\n      license: BSD-3-Clause\n      license_file: LICENSE\n      summary: GeoViews is a Python library that makes it easy to explore and visualize\n            geographical, meteorological, and oceanographic datasets, such as those used\n            in weather, climate, and remote sensing research.\n\nabout:\n  home: http://geoviews.org\n  license: BSD-3-Clause\n  license_file: LICENSE\n  summary: GeoViews is a Python library that makes it easy to explore and visualize\n        geographical, meteorological, and oceanographic datasets, such as those used\n        in weather, climate, and remote sensing research.\nextra:\n  recipe-maintainers:\n    - ocefpaf\n    - philippjfr\n",
  "req":{
   "__set__":true,
@@ -554,7 +571,7 @@
    ]
   }
  },
- "smithy_version":"3.6.2",
+ "smithy_version":"No azure token. Create a token and\nput it in ~/.conda-smithy/azure.token\n3.6.15",
  "strong_exports":false,
  "total_requirements":{
   "build":{
