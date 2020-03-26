@@ -1267,58 +1267,26 @@
     "migrator_version",
     "name"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/394167692.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"Version",
+    "migrator_version":0,
+    "version":"2020.3.24"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "version"
+   ]
   }
  ],
- "bad":{
-  "exception":"while constructing a mapping\n  in \"<unicode string>\", line 26, column 3:\n      requires:\n      ^ (line: 26)\nfound duplicate key \"commands\" with value \"['youtube-dl --help']\" (original value: \"['pip check']\")\n  in \"<unicode string>\", line 35, column 3:\n      commands:\n      ^ (line: 35)\n\nTo suppress this check see:\n    http://yaml.readthedocs.io/en/latest/api.html#duplicate-keys\n\nDuplicate keys will become an error in future releases, and are errors\nby default when using the new API.\n",
-  "traceback":[
-   "Traceback (most recent call last):",
-   "  File \"/root/repo/cf-scripts/conda_forge_tick/auto_tick.py\", line 922, in main",
-   "    hash_type=attrs.get(\"hash_type\", \"sha256\"),",
-   "  File \"/root/repo/cf-scripts/conda_forge_tick/auto_tick.py\", line 166, in run",
-   "    migrate_return = migrator.migrate(recipe_dir, feedstock_ctx.attrs, **kwargs)",
-   "  File \"/root/repo/cf-scripts/conda_forge_tick/migrators/version.py\", line 373, in migrate",
-   "    cmeta = CondaMetaYAML(fp.read())",
-   "  File \"/root/repo/cf-scripts/conda_forge_tick/recipe_parser/_parser.py\", line 358, in __init__",
-   "    self.meta = YAML_JINJA2.load(\"\".join(lines))",
-   "  File \"/opt/conda/envs/run_env/lib/python3.7/site-packages/ruamel/yaml/main.py\", line 341, in load",
-   "    return constructor.get_single_data()",
-   "  File \"/opt/conda/envs/run_env/lib/python3.7/site-packages/ruamel/yaml/constructor.py\", line 113, in get_single_data",
-   "    return self.construct_document(node)",
-   "  File \"/opt/conda/envs/run_env/lib/python3.7/site-packages/ruamel/yaml/constructor.py\", line 123, in construct_document",
-   "    for _dummy in generator:",
-   "  File \"/opt/conda/envs/run_env/lib/python3.7/site-packages/ruamel/yaml/constructor.py\", line 1563, in construct_yaml_map",
-   "    self.construct_mapping(node, data, deep=True)",
-   "  File \"/opt/conda/envs/run_env/lib/python3.7/site-packages/ruamel/yaml/constructor.py\", line 1468, in construct_mapping",
-   "    value = self.construct_object(value_node, deep=deep)",
-   "  File \"/opt/conda/envs/run_env/lib/python3.7/site-packages/ruamel/yaml/constructor.py\", line 146, in construct_object",
-   "    data = self.construct_non_recursive_object(node)",
-   "  File \"/opt/conda/envs/run_env/lib/python3.7/site-packages/ruamel/yaml/constructor.py\", line 188, in construct_non_recursive_object",
-   "    for _dummy in generator:",
-   "  File \"/opt/conda/envs/run_env/lib/python3.7/site-packages/ruamel/yaml/constructor.py\", line 1563, in construct_yaml_map",
-   "    self.construct_mapping(node, data, deep=True)",
-   "  File \"/opt/conda/envs/run_env/lib/python3.7/site-packages/ruamel/yaml/constructor.py\", line 1469, in construct_mapping",
-   "    if self.check_mapping_key(node, key_node, maptyp, key, value):",
-   "  File \"/opt/conda/envs/run_env/lib/python3.7/site-packages/ruamel/yaml/constructor.py\", line 295, in check_mapping_key",
-   "    raise DuplicateKeyError(*args)",
-   "ruamel.yaml.constructor.DuplicateKeyError: while constructing a mapping",
-   "  in \"<unicode string>\", line 26, column 3:",
-   "      requires:",
-   "      ^ (line: 26)",
-   "found duplicate key \"commands\" with value \"['youtube-dl --help']\" (original value: \"['pip check']\")",
-   "  in \"<unicode string>\", line 35, column 3:",
-   "      commands:",
-   "      ^ (line: 35)",
-   "",
-   "To suppress this check see:",
-   "    http://yaml.readthedocs.io/en/latest/api.html#duplicate-keys",
-   "",
-   "Duplicate keys will become an error in future releases, and are errors",
-   "by default when using the new API.",
-   "",
-   ""
-  ]
- },
+ "bad":false,
  "conda-forge.yml":{
   "bot":{
    "automerge":true
@@ -1347,7 +1315,7 @@
     "youtube-dl = youtube_dl:main",
     "youtube-dl = youtube_dl:main"
    ],
-   "number":"1",
+   "number":"2",
    "script":"-m pip install . --no-deps -vv"
   },
   "extra":{
@@ -1386,8 +1354,11 @@
   "test":{
    "commands":[
     "youtube-dl --help",
+    "pip check",
     "youtube-dl --help",
-    "youtube-dl --help"
+    "pip check",
+    "youtube-dl --help",
+    "pip check"
    ],
    "imports":[
     "youtube_dl",
@@ -1412,8 +1383,8 @@
  },
  "name":"youtube-dl",
  "new_version":"2020.3.24",
- "pinning_version":"2020.03.16",
- "raw_meta_yaml":"{% set name = \"youtube_dl\" %}\n{% set version = \"2020.3.1\" %}\n\npackage:\n  name: youtube-dl\n  version: {{ version }}\n\nsource:\n  url: https://pypi.io/packages/source/y/youtube_dl/youtube_dl-{{ version }}.tar.gz\n  sha256: fe617fa21730da7b5200b7655737c54ba4e4cf0978a2a7adcfb2ea6c679b7f8a\n\nbuild:\n  number: 1\n  entry_points:\n    - youtube-dl = youtube_dl:main\n  script: {{ PYTHON }} -m pip install . --no-deps -vv\n\nrequirements:\n  build:\n    - python\n    - pip\n  run:\n    - python\n\ntest:\n  requires:\n    - pip\n  commands:\n    - pip check\n  imports:\n    - youtube_dl\n    - youtube_dl.downloader\n    - youtube_dl.extractor\n    - youtube_dl.postprocessor\n  commands:\n    - youtube-dl --help\n\nabout:\n  home: http://rg3.github.io/youtube-dl/\n  license: Public Domain\n  license_family: OTHER\n  license_url: http://unlicense.org\n  license_file: LICENSE\n  summary: YouTube video downloader\n  description: |\n    Command-line program to download videos from YouTube.com and other video sites\n  doc_url: https://github.com/rg3/youtube-dl/blob/master/README.md#readme\n  dev_url: https://github.com/rg3/youtube-dl\n\nextra:\n  recipe-maintainers:\n    - nehaljwani\n    - ocefpaf\n",
+ "pinning_version":"2020.03.24",
+ "raw_meta_yaml":"{% set name = \"youtube_dl\" %}\n{% set version = \"2020.3.1\" %}\n\npackage:\n  name: youtube-dl\n  version: {{ version }}\n\nsource:\n  url: https://pypi.io/packages/source/y/youtube_dl/youtube_dl-{{ version }}.tar.gz\n  sha256: fe617fa21730da7b5200b7655737c54ba4e4cf0978a2a7adcfb2ea6c679b7f8a\n\nbuild:\n  number: 2\n  entry_points:\n    - youtube-dl = youtube_dl:main\n  script: {{ PYTHON }} -m pip install . --no-deps -vv\n\nrequirements:\n  build:\n    - python\n    - pip\n  run:\n    - python\n\ntest:\n  requires:\n    - pip\n  commands:\n    - youtube-dl --help\n    - pip check\n  imports:\n    - youtube_dl\n    - youtube_dl.downloader\n    - youtube_dl.extractor\n    - youtube_dl.postprocessor\n\nabout:\n  home: http://rg3.github.io/youtube-dl/\n  license: Public Domain\n  license_family: OTHER\n  license_url: http://unlicense.org\n  license_file: LICENSE\n  summary: YouTube video downloader\n  description: |\n    Command-line program to download videos from YouTube.com and other video sites\n  doc_url: https://github.com/rg3/youtube-dl/blob/master/README.md#readme\n  dev_url: https://github.com/rg3/youtube-dl\n\nextra:\n  recipe-maintainers:\n    - nehaljwani\n    - ocefpaf\n",
  "req":{
   "__set__":true,
   "elements":[
@@ -1446,7 +1417,7 @@
    ]
   }
  },
- "smithy_version":"3.6.12",
+ "smithy_version":"No azure token. Create a token and\nput it in ~/.conda-smithy/azure.token\n3.6.15",
  "strong_exports":false,
  "total_requirements":{
   "build":{
