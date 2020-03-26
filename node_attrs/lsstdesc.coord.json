@@ -206,7 +206,7 @@
   }
  },
  "name":"lsstdesc.coord",
- "new_version":"1.2.0",
+ "new_version":"1.2.1",
  "pinning_version":"2020.03.23",
  "raw_meta_yaml":"{% set name = \"LSSTDESC.Coord\" %}\n{% set version = \"1.2.0\" %}\n{% set sha256 = \"8bba211e1f58ef92829b39e053b7660b975645a6047a9e7e1d0932c5326a391b\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  fn: {{ name }}-{{ version }}.tar.gz\n  url: https://pypi.io/packages/source/{{ name[0]|lower }}/{{ name|lower }}/{{ name }}-{{ version }}.tar.gz\n  sha256: {{ sha256 }}\n\nbuild:\n  number: 1\n  skip: True  # [win]\n  script: \"{{ PYTHON }} -m pip install . --no-deps --ignore-installed --no-cache-dir -vvv\"\n\nrequirements:\n  build:\n    - {{ compiler('cxx') }}\n  host:\n    - python\n    - setuptools\n    - pip\n    - cffi\n\n  run:\n    - python\n    - numpy\n    - future\n    - cffi\n\ntest:\n  imports:\n    - coord\n\nabout:\n  home: https://github.com/LSSTDESC/Coord\n  license: MIT\n  license_file: '{{ environ[\"RECIPE_DIR\"] }}/LICENSE'\n  summary: A Python module for handling angles and celestial coordinates.\n  description: |\n    Coord is a Python module that provides basic functionality related to angles\n    and celestial coordinates. It is similar in functionality to the\n    astropy.coordinates module, but with more of an emphasis on efficiency. Some\n    functions are more than 100 times faster than the corresponding\n    functionality in astropy. On the other hand, the API is somewhat more\n    restrictive than the API used by astropy, so the appropriate module to use\n    will depend on your needs.\n  doc_url: https://lsstdesc.github.io/Coord/\n  dev_url: https://github.com/LSSTDESC/Coord\n\nextra:\n  recipe-maintainers:\n    - beckermr\n    - rmjarvis\n",
  "req":{
