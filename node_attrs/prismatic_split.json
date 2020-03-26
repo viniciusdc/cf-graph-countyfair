@@ -55,7 +55,7 @@
    "summary":"CPU / GPU software for fast simulation of Scanning Transmission Electron Microscopy (STEM) experiments"
   },
   "build":{
-   "number":"2"
+   "number":"3"
   },
   "extra":{
    "recipe-maintainers":[
@@ -73,9 +73,8 @@
   "outputs":[
    {
     "build":{
-     "number":"2",
-     "skip":true,
-     "string":"py_cpu_h_2"
+     "number":"3",
+     "string":"py_cpu_h_3"
     },
     "name":"prismatic",
     "requirements":{
@@ -90,41 +89,40 @@
     },
     "test":{
      "commands":[
-      "prismatic -i SI100.XYZ",
+      "where prismatic-gui",
+      "where prismatic",
       "python -c \"import pyprismatic; pyprismatic.demo()\""
-     ],
-     "source_files":[
-      "SI100.XYZ"
      ]
     }
    },
    {
     "build":{
-     "skip":true,
-     "string":"cpu_h_2"
+     "script":"\\build.bat cli",
+     "string":"cpu_h_3"
     },
     "name":"prismatic_cli",
     "requirements":{
      "build":[
       "c_compiler_stub",
       "cxx_compiler_stub",
-      "cmake"
+      "cmake",
+      "pkg-config"
      ],
      "host":[
-      "boost",
+      "boost-cpp",
       "hdf5",
-      "fftw",
-      "zlib"
+      "fftw"
      ],
      "run":[
-      "zlib",
+      "boost-cpp",
       "hdf5",
       "fftw"
      ]
     },
     "test":{
      "commands":[
-      "prismatic -i SI100.XYZ"
+      "prismatic -i SI100.XYZ",
+      "prismatic-double -i SI100.XYZ"
      ],
      "source_files":[
       "SI100.XYZ"
@@ -133,59 +131,65 @@
    },
    {
     "build":{
-     "skip":true,
-     "string":"cpu_h_2"
+     "script":"\\build.bat gui",
+     "string":"cpu_h_3"
     },
     "name":"prismatic_gui",
     "requirements":{
      "build":[
       "c_compiler_stub",
       "cxx_compiler_stub",
-      "cmake"
+      "cmake",
+      "pkg-config"
      ],
      "host":[
-      "boost",
+      "boost-cpp",
       "hdf5",
       "fftw",
-      "qt",
-      "h5py",
-      "zlib"
+      "qt"
      ],
      "run":[
-      "zlib"
+      "boost-cpp",
+      "hdf5",
+      "fftw",
+      "qt"
      ]
     },
     "test":{
-     "commands":null
+     "commands":[
+      "where prismatic-gui",
+      "if not exist %PREFIX%\\\\Menu\\\\prismatic_gui.json exit 1",
+      "if not exist %PREFIX%\\\\Menu\\\\prismatic.ico exit 1"
+     ]
     }
    },
    {
     "build":{
-     "skip":true,
-     "string":"py_cpu_h_2"
+     "script":"\\build_pyprismatic.bat",
+     "string":"py_cpu_h_3"
     },
     "name":"pyprismatic",
     "requirements":{
      "build":[
       "c_compiler_stub",
       "cxx_compiler_stub",
-      "cmake"
+      "cmake",
+      "pkg-config"
      ],
      "host":[
+      "setuptools",
       "python",
-      "pip",
       "boost",
       "hdf5",
       "fftw",
-      "qt",
-      "h5py",
-      "zlib"
+      "h5py"
      ],
      "run":[
+      "boost",
       "python",
       "numpy",
-      "h5py",
-      "zlib"
+      "fftw",
+      "h5py"
      ]
     },
     "test":{
@@ -196,8 +200,8 @@
    },
    {
     "build":{
-     "number":"2",
-     "string":"cpu_h_2"
+     "number":"3",
+     "string":"cpu_h_3"
     },
     "name":"prismatic",
     "requirements":{
@@ -209,18 +213,14 @@
     },
     "test":{
      "commands":[
-      "prismatic -i SI100.XYZ",
       "test -f $PREFIX/Applications/prismatic-gui.app/Contents/MacOS/prismatic-gui"
-     ],
-     "source_files":[
-      "SI100.XYZ"
      ]
     }
    },
    {
     "build":{
      "script":"bash ${RECIPE_DIR}/combined_build_install.sh cli",
-     "string":"cpu_h_2"
+     "string":"cpu_h_3"
     },
     "name":"prismatic_cli",
     "requirements":{
@@ -228,23 +228,24 @@
       "c_compiler_stub",
       "cxx_compiler_stub",
       "make",
-      "cmake"
+      "cmake",
+      "pkg-config"
      ],
      "host":[
-      "boost",
+      "boost-cpp",
       "hdf5",
-      "fftw",
-      "zlib"
+      "fftw"
      ],
      "run":[
-      "zlib",
+      "boost-cpp",
       "hdf5",
       "fftw"
      ]
     },
     "test":{
      "commands":[
-      "prismatic -i SI100.XYZ"
+      "prismatic -i SI100.XYZ",
+      "prismatic-double -i SI100.XYZ"
      ],
      "source_files":[
       "SI100.XYZ"
@@ -254,7 +255,7 @@
    {
     "build":{
      "script":"bash ${RECIPE_DIR}/combined_build_install.sh gui",
-     "string":"cpu_h_2"
+     "string":"cpu_h_3"
     },
     "name":"prismatic_gui",
     "requirements":{
@@ -262,18 +263,20 @@
       "c_compiler_stub",
       "cxx_compiler_stub",
       "make",
-      "cmake"
+      "cmake",
+      "pkg-config"
      ],
      "host":[
-      "boost",
+      "boost-cpp",
       "hdf5",
       "fftw",
-      "qt",
-      "h5py",
-      "zlib"
+      "qt"
      ],
      "run":[
-      "zlib"
+      "boost-cpp",
+      "hdf5",
+      "fftw",
+      "qt"
      ]
     },
     "test":{
@@ -284,9 +287,9 @@
    },
    {
     "build":{
-     "script":"bash ${RECIPE_DIR}/combined_build_install.sh py",
+     "script":"bash ${RECIPE_DIR}/build_pyprismatic.sh",
      "skip":true,
-     "string":"py_cpu_h_2"
+     "string":"py_cpu_h_3"
     },
     "name":"pyprismatic",
     "requirements":{
@@ -294,23 +297,23 @@
       "c_compiler_stub",
       "cxx_compiler_stub",
       "make",
-      "cmake"
+      "cmake",
+      "pkg-config"
      ],
      "host":[
+      "setuptools",
       "python",
-      "pip",
       "boost",
       "hdf5",
       "fftw",
-      "qt",
-      "h5py",
-      "zlib"
+      "h5py"
      ],
      "run":[
+      "boost",
       "python",
       "numpy",
-      "h5py",
-      "zlib"
+      "fftw",
+      "h5py"
      ]
     },
     "test":{
@@ -321,8 +324,8 @@
    },
    {
     "build":{
-     "number":"2",
-     "string":"py_cpu_h_2"
+     "number":"3",
+     "string":"py_cpu_h_3"
     },
     "name":"prismatic",
     "requirements":{
@@ -337,19 +340,15 @@
     },
     "test":{
      "commands":[
-      "prismatic -i SI100.XYZ",
       "command -v prismatic-gui",
       "python -c \"import pyprismatic; pyprismatic.demo()\""
-     ],
-     "source_files":[
-      "SI100.XYZ"
      ]
     }
    },
    {
     "build":{
      "script":"bash ${RECIPE_DIR}/combined_build_install.sh cli",
-     "string":"cpu_h_2"
+     "string":"cpu_h_3"
     },
     "name":"prismatic_cli",
     "requirements":{
@@ -365,23 +364,24 @@
       "cdt_stub",
       "cdt_stub",
       "make",
-      "cmake"
+      "cmake",
+      "pkg-config"
      ],
      "host":[
-      "boost",
+      "boost-cpp",
       "hdf5",
-      "fftw",
-      "zlib"
+      "fftw"
      ],
      "run":[
-      "zlib",
+      "boost-cpp",
       "hdf5",
       "fftw"
      ]
     },
     "test":{
      "commands":[
-      "prismatic -i SI100.XYZ"
+      "prismatic -i SI100.XYZ",
+      "prismatic-double -i SI100.XYZ"
      ],
      "source_files":[
       "SI100.XYZ"
@@ -391,7 +391,7 @@
    {
     "build":{
      "script":"bash ${RECIPE_DIR}/combined_build_install.sh gui",
-     "string":"cpu_h_2"
+     "string":"cpu_h_3"
     },
     "name":"prismatic_gui",
     "requirements":{
@@ -407,18 +407,20 @@
       "cdt_stub",
       "cdt_stub",
       "make",
-      "cmake"
+      "cmake",
+      "pkg-config"
      ],
      "host":[
-      "boost",
+      "boost-cpp",
       "hdf5",
       "fftw",
-      "qt",
-      "h5py",
-      "zlib"
+      "qt"
      ],
      "run":[
-      "zlib"
+      "boost-cpp",
+      "hdf5",
+      "fftw",
+      "qt"
      ]
     },
     "test":{
@@ -429,8 +431,8 @@
    },
    {
     "build":{
-     "script":"bash ${RECIPE_DIR}/combined_build_install.sh py",
-     "string":"py_cpu_h_2"
+     "script":"bash ${RECIPE_DIR}/build_pyprismatic.sh",
+     "string":"py_cpu_h_3"
     },
     "name":"pyprismatic",
     "requirements":{
@@ -446,23 +448,23 @@
       "cdt_stub",
       "cdt_stub",
       "make",
-      "cmake"
+      "cmake",
+      "pkg-config"
      ],
      "host":[
+      "setuptools",
       "python",
-      "pip",
       "boost",
       "hdf5",
       "fftw",
-      "qt",
-      "h5py",
-      "zlib"
+      "h5py"
      ],
      "run":[
+      "boost",
       "python",
       "numpy",
-      "h5py",
-      "zlib"
+      "fftw",
+      "h5py"
      ]
     },
     "test":{
@@ -476,11 +478,45 @@
    "name":"prismatic_split",
    "version":"1.2.1"
   },
+  "requirements":{
+   "build":[
+    "c_compiler_stub",
+    "cxx_compiler_stub",
+    "cmake",
+    "pkg-config",
+    "c_compiler_stub",
+    "cxx_compiler_stub",
+    "make",
+    "cmake",
+    "pkg-config",
+    "c_compiler_stub",
+    "cxx_compiler_stub",
+    "cdt_stub",
+    "cdt_stub",
+    "cdt_stub",
+    "cdt_stub",
+    "cdt_stub",
+    "cdt_stub",
+    "cdt_stub",
+    "cdt_stub",
+    "make",
+    "cmake",
+    "pkg-config"
+   ]
+  },
   "source":{
    "patches":[
+    "0001-fftw_cmake.patch",
+    "0002-Set-output-name-for-cmake.patch",
+    "0001-Fix-GUI_SOURCE_FILE-in-CMakeLists.txt.patch",
+    "0001-Fix-python-blinding-on-windows.patch",
     "patch_apple_target_lib.txt",
-    "patch_apple_target_lib.txt",
-    "patch_apple_target_lib.txt"
+    "0001-fftw_cmake.patch",
+    "0002-Set-output-name-for-cmake.patch",
+    "0001-Fix-GUI_SOURCE_FILE-in-CMakeLists.txt.patch",
+    "0001-fftw_cmake.patch",
+    "0002-Set-output-name-for-cmake.patch",
+    "0001-Fix-GUI_SOURCE_FILE-in-CMakeLists.txt.patch"
    ],
    "sha256":"844f659575dd98999b7c4864e850a7ec735f297ab1fb6c2d2be91d7f9720fe70",
    "url":"https://github.com/prism-em/prismatic/archive/1.2.1.tar.gz"
@@ -495,11 +531,12 @@
   "pyprismatic"
  ],
  "pinning_version":"2020.02.20",
- "raw_meta_yaml":"{% set version = \"1.2.1\" %}\n{% set build = 2 %}\n\n{% set processor = processor or 'cpu' %}\n\npackage:\n  name: prismatic_split\n  version: {{ version }}\n\nsource:\n  url: https://github.com/prism-em/prismatic/archive/{{ version }}.tar.gz\n  sha256: 844f659575dd98999b7c4864e850a7ec735f297ab1fb6c2d2be91d7f9720fe70\n  patches:\n    - patch_apple_target_lib.txt\n\nbuild:\n  number: {{ build }}\n\noutputs:\n  - name: prismatic\n    build:\n      number: {{ build }}\n      skip: True  # [win or py2k]\n      string: \"py{{ py }}_{{processor}}_h{{ PKG_HASH }}_{{ build }}\"  # [not osx]\n      string: \"{{processor}}_h{{ PKG_HASH }}_{{ build }}\"  # [osx]\n    requirements:\n      host:\n        - python  # [not osx]\n      run:\n        - {{ pin_subpackage('prismatic_cli', exact=True) }}\n        - {{ pin_subpackage('prismatic_gui', exact=True) }}\n        - {{ pin_subpackage('pyprismatic', exact=True) }}  # [not osx]\n    test:\n      source_files:\n        - SI100.XYZ\n      commands:\n        - prismatic -i SI100.XYZ\n        - command -v prismatic-gui  # [linux]\n        - test -f $PREFIX/Applications/prismatic-gui.app/Contents/MacOS/prismatic-gui  # [osx]\n        - python -c \"import pyprismatic; pyprismatic.demo()\"  # [not osx]\n\n\n\n  - name: prismatic_cli\n    build:\n      skip: True  # [win]\n      string: \"{{processor}}_h{{ PKG_HASH }}_{{ build }}\"\n      script: bash ${RECIPE_DIR}/combined_build_install.sh cli  # [not win]\n\n    requirements:\n      build:\n        - {{ compiler('c') }}                \n        - {{ compiler('cxx') }}              \n        - {{ cdt('libxext-devel') }}         # [linux]\n        - {{ cdt('mesa-libgl-devel') }}      # [linux]\n        - {{ cdt('mesa-dri-drivers') }}      # [linux]\n        - {{ cdt('libxau-devel') }}          # [linux]\n        - {{ cdt('libselinux-devel') }}      # [linux]\n        - {{ cdt('libxdamage') }}            # [linux]\n        - {{ cdt('libxfixes') }}             # [linux]\n        - {{ cdt('libxxf86vm') }}            # [linux]\n        - make                               # [unix]\n        - cmake\n      host:\n        - boost\n        - hdf5\n        - fftw\n        - zlib\n      run:\n        - zlib\n        - hdf5\n        - fftw\n\n\n    test:\n      source_files:\n        - SI100.XYZ\n      commands:\n        - prismatic -i SI100.XYZ\n\n\n  - name: prismatic_gui\n    build:\n      skip: True  # [win]\n      string: \"{{processor}}_h{{ PKG_HASH }}_{{ build }}\"\n      script: bash ${RECIPE_DIR}/combined_build_install.sh gui  # [not win]\n\n    requirements:\n      build:\n        - {{ compiler('c') }}                \n        - {{ compiler('cxx') }}              \n        - {{ cdt('libxext-devel') }}         # [linux]\n        - {{ cdt('mesa-libgl-devel') }}      # [linux]\n        - {{ cdt('mesa-dri-drivers') }}      # [linux]\n        - {{ cdt('libxau-devel') }}          # [linux]\n        - {{ cdt('libselinux-devel') }}      # [linux]\n        - {{ cdt('libxdamage') }}            # [linux]\n        - {{ cdt('libxfixes') }}             # [linux]\n        - {{ cdt('libxxf86vm') }}            # [linux]\n        - make                               # [unix]\n        - cmake\n      host:\n        - boost\n        - hdf5\n        - fftw\n        - qt\n        - h5py\n        - zlib\n      run:\n        - zlib\n      \n    test:\n      commands:\n        - command -v prismatic-gui  # [linux]\n        - test -f $PREFIX/Applications/prismatic-gui.app/Contents/MacOS/prismatic-gui  # [osx]\n\n  - name: pyprismatic\n    build:\n      skip: True  # [win or py2k or osx]\n      string: \"py{{ py }}_{{processor}}_h{{ PKG_HASH }}_{{ build }}\"\n      script: bash ${RECIPE_DIR}/combined_build_install.sh py  # [not win]\n\n    requirements:\n      build:\n        - {{ compiler('c') }}                \n        - {{ compiler('cxx') }}              \n        - {{ cdt('libxext-devel') }}         # [linux]\n        - {{ cdt('mesa-libgl-devel') }}      # [linux]\n        - {{ cdt('mesa-dri-drivers') }}      # [linux]\n        - {{ cdt('libxau-devel') }}          # [linux]\n        - {{ cdt('libselinux-devel') }}      # [linux]\n        - {{ cdt('libxdamage') }}            # [linux]\n        - {{ cdt('libxfixes') }}             # [linux]\n        - {{ cdt('libxxf86vm') }}            # [linux]\n        - make                               # [unix]\n        - cmake\n      host:\n        - python\n        - pip\n        - boost\n        - hdf5\n        - fftw\n        - qt\n        - h5py\n        - zlib\n      run:\n        - python\n        - numpy\n        - h5py\n        - zlib\n\n    test:\n      commands:\n        - python -c \"import pyprismatic; pyprismatic.demo()\"\n\nabout:\n  home: http://prism-em.com/\n  license: GPL-3.0-only\n  license_file: LICENSE\n  summary: 'CPU / GPU software for fast simulation of Scanning Transmission Electron Microscopy (STEM) experiments'\n  description: |\n    CPU / GPU software for fast simulation of Scanning Transmission Electron Microscopy (STEM) experiments\n  dev_url: https://github.com/prism-em/prismatic\n\nextra:\n  recipe-maintainers:\n    - ericpre\n    - douglowe\n    - tschoonj\n",
+ "raw_meta_yaml":"{% set version = \"1.2.1\" %}\n{% set build = 3 %}\n\n{% set processor = processor or 'cpu' %}\n\npackage:\n  name: prismatic_split\n  version: {{ version }}\n\nsource:\n  url: https://github.com/prism-em/prismatic/archive/{{ version }}.tar.gz\n  sha256: 844f659575dd98999b7c4864e850a7ec735f297ab1fb6c2d2be91d7f9720fe70\n  patches:\n    - patch_apple_target_lib.txt  # [osx]\n    - 0001-fftw_cmake.patch\n    - 0002-Set-output-name-for-cmake.patch\n    - 0001-Fix-GUI_SOURCE_FILE-in-CMakeLists.txt.patch\n    - 0001-Fix-python-blinding-on-windows.patch  # [win]\n\nbuild:\n  number: {{ build }}\n\nrequirements:\n  build:\n    - {{ compiler('c') }}                \n    - {{ compiler('cxx') }}              \n    - {{ cdt('libxext-devel') }}         # [linux]\n    - {{ cdt('mesa-libgl-devel') }}      # [linux]\n    - {{ cdt('mesa-dri-drivers') }}      # [linux]\n    - {{ cdt('libxau-devel') }}          # [linux]\n    - {{ cdt('libselinux-devel') }}      # [linux]\n    - {{ cdt('libxdamage') }}            # [linux]\n    - {{ cdt('libxfixes') }}             # [linux]\n    - {{ cdt('libxxf86vm') }}            # [linux]\n    - make                               # [unix]\n    - cmake\n    - pkg-config\n\n\noutputs:\n  - name: prismatic\n    build:\n      number: {{ build }}\n      skip: True  # [py2k]\n      string: \"py{{ py }}_{{processor}}_h{{ PKG_HASH }}_{{ build }}\"  # [not osx]\n      string: \"{{processor}}_h{{ PKG_HASH }}_{{ build }}\"  # [osx]\n    requirements:\n      host:\n        - python  # [not osx]\n      run:\n        - {{ pin_subpackage('prismatic_cli', exact=True) }}\n        - {{ pin_subpackage('prismatic_gui', exact=True) }}\n        - {{ pin_subpackage('pyprismatic', exact=True) }}  # [not osx]\n\n    test:\n      commands:\n        - command -v prismatic-gui  # [linux]\n        - test -f $PREFIX/Applications/prismatic-gui.app/Contents/MacOS/prismatic-gui  # [osx]\n        - where prismatic-gui  # [win]\n        - where prismatic  # [win]\n        - python -c \"import pyprismatic; pyprismatic.demo()\"  # [not osx]\n\n  - name: prismatic_cli\n    build:\n      string: \"{{processor}}_h{{ PKG_HASH }}_{{ build }}\"\n      script: bash ${RECIPE_DIR}/combined_build_install.sh cli  # [not win]\n      script: {{ RECIPE_DIR }}\\build.bat cli  # [win]\n\n    requirements:\n      build:\n        - {{ compiler('c') }}                \n        - {{ compiler('cxx') }}              \n        - {{ cdt('libxext-devel') }}         # [linux]\n        - {{ cdt('mesa-libgl-devel') }}      # [linux]\n        - {{ cdt('mesa-dri-drivers') }}      # [linux]\n        - {{ cdt('libxau-devel') }}          # [linux]\n        - {{ cdt('libselinux-devel') }}      # [linux]\n        - {{ cdt('libxdamage') }}            # [linux]\n        - {{ cdt('libxfixes') }}             # [linux]\n        - {{ cdt('libxxf86vm') }}            # [linux]\n        - make                               # [unix]\n        - cmake\n        - pkg-config\n      host:\n        - boost-cpp\n        - hdf5\n        - fftw\n      run:\n        - boost-cpp\n        - hdf5\n        - fftw\n\n    test:\n      source_files:\n        - SI100.XYZ\n      commands:\n        - prismatic -i SI100.XYZ\n        - prismatic-double -i SI100.XYZ\n\n  - name: prismatic_gui\n    build:\n      string: \"{{processor}}_h{{ PKG_HASH }}_{{ build }}\"\n      script: bash ${RECIPE_DIR}/combined_build_install.sh gui  # [not win]\n      script: {{ RECIPE_DIR }}\\build.bat gui  # [win]\n\n    requirements:\n      build:\n        - {{ compiler('c') }}                \n        - {{ compiler('cxx') }}              \n        - {{ cdt('libxext-devel') }}         # [linux]\n        - {{ cdt('mesa-libgl-devel') }}      # [linux]\n        - {{ cdt('mesa-dri-drivers') }}      # [linux]\n        - {{ cdt('libxau-devel') }}          # [linux]\n        - {{ cdt('libselinux-devel') }}      # [linux]\n        - {{ cdt('libxdamage') }}            # [linux]\n        - {{ cdt('libxfixes') }}             # [linux]\n        - {{ cdt('libxxf86vm') }}            # [linux]\n        - make                               # [unix]\n        - cmake\n        - pkg-config\n      host:\n        - boost-cpp\n        - hdf5\n        - fftw\n        - qt\n      run:\n        - boost-cpp\n        - hdf5\n        - fftw\n        - qt\n\n    test:\n      commands:\n        - command -v prismatic-gui  # [linux]\n        - test -f $PREFIX/Applications/prismatic-gui.app/Contents/MacOS/prismatic-gui  # [osx]\n        - where prismatic-gui  # [win]\n        - if not exist %PREFIX%\\\\Menu\\\\prismatic_gui.json exit 1  # [win]\n        - if not exist %PREFIX%\\\\Menu\\\\prismatic.ico exit 1  # [win]\n\n  - name: pyprismatic\n    build:\n      skip: True  # [py2k or osx]\n      string: \"py{{ py }}_{{processor}}_h{{ PKG_HASH }}_{{ build }}\"\n      script: bash ${RECIPE_DIR}/build_pyprismatic.sh  # [not win]\n      script: {{ RECIPE_DIR }}\\build_pyprismatic.bat  # [win]\n\n    requirements:\n      build:\n        - {{ compiler('c') }}                \n        - {{ compiler('cxx') }}              \n        - {{ cdt('libxext-devel') }}         # [linux]\n        - {{ cdt('mesa-libgl-devel') }}      # [linux]\n        - {{ cdt('mesa-dri-drivers') }}      # [linux]\n        - {{ cdt('libxau-devel') }}          # [linux]\n        - {{ cdt('libselinux-devel') }}      # [linux]\n        - {{ cdt('libxdamage') }}            # [linux]\n        - {{ cdt('libxfixes') }}             # [linux]\n        - {{ cdt('libxxf86vm') }}            # [linux]\n        - make                               # [unix]\n        - cmake\n        - pkg-config\n      host:\n        - setuptools\n        - python\n        - boost\n        - hdf5\n        - fftw\n        - h5py\n      run:\n        - boost\n        - python\n        - numpy\n        - fftw\n        - h5py\n\n    test:\n      commands:\n        - python -c \"import pyprismatic; pyprismatic.demo()\"\n\nabout:\n  home: http://prism-em.com/\n  license: GPL-3.0-only\n  license_file: LICENSE\n  summary: 'CPU / GPU software for fast simulation of Scanning Transmission Electron Microscopy (STEM) experiments'\n  description: |\n    CPU / GPU software for fast simulation of Scanning Transmission Electron Microscopy (STEM) experiments\n  dev_url: https://github.com/prism-em/prismatic\n\nextra:\n  recipe-maintainers:\n    - ericpre\n    - douglowe\n    - tschoonj\n",
  "req":{
   "__set__":true,
   "elements":[
    "boost",
+   "boost-cpp",
    "c_compiler_stub",
    "cdt_stub",
    "cmake",
@@ -509,13 +546,13 @@
    "hdf5",
    "make",
    "numpy",
-   "pip",
+   "pkg-config",
    "prismatic_cli",
    "prismatic_gui",
    "pyprismatic",
    "python",
    "qt",
-   "zlib"
+   "setuptools"
   ]
  },
  "requirements":{
@@ -526,25 +563,28 @@
     "cdt_stub",
     "cmake",
     "cxx_compiler_stub",
-    "make"
+    "make",
+    "pkg-config"
    ]
   },
   "host":{
    "__set__":true,
    "elements":[
     "boost",
+    "boost-cpp",
     "fftw",
     "h5py",
     "hdf5",
-    "pip",
     "python",
     "qt",
-    "zlib"
+    "setuptools"
    ]
   },
   "run":{
    "__set__":true,
    "elements":[
+    "boost",
+    "boost-cpp",
     "fftw",
     "h5py",
     "hdf5",
@@ -553,7 +593,7 @@
     "prismatic_gui",
     "pyprismatic",
     "python",
-    "zlib"
+    "qt"
    ]
   },
   "test":{
@@ -571,25 +611,28 @@
     "cdt_stub",
     "cmake",
     "cxx_compiler_stub",
-    "make"
+    "make",
+    "pkg-config"
    ]
   },
   "host":{
    "__set__":true,
    "elements":[
     "boost",
+    "boost-cpp",
     "fftw",
     "h5py",
     "hdf5",
-    "pip",
     "python",
     "qt",
-    "zlib"
+    "setuptools"
    ]
   },
   "run":{
    "__set__":true,
    "elements":[
+    "boost",
+    "boost-cpp",
     "fftw",
     "h5py",
     "hdf5",
@@ -598,7 +641,7 @@
     "prismatic_gui",
     "pyprismatic",
     "python",
-    "zlib"
+    "qt"
    ]
   },
   "test":{

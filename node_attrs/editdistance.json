@@ -84,50 +84,28 @@
     "migrator_version",
     "name"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/394120895.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"MigrationYaml",
+    "migrator_object_version":1,
+    "migrator_version":0,
+    "name":"pypy"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_object_version",
+    "migrator_version",
+    "name"
+   ]
   }
  ],
- "bad":{
-  "exception":"while constructing a mapping\n  in \"<unicode string>\", line 1, column 1:\n    appveyor:\n    ^ (line: 1)\nfound duplicate key \"provider\" with value \"ordereddict([('linux_aarch64', 'default'), ('linux_ppc64le', 'default')])\" (original value: \"ordereddict([('win', 'azure')])\")\n  in \"<unicode string>\", line 10, column 1:\n    provider: {linux_aarch64: defaul ... \n    ^ (line: 10)\n\nTo suppress this check see:\n    http://yaml.readthedocs.io/en/latest/api.html#duplicate-keys\n\nDuplicate keys will become an error in future releases, and are errors\nby default when using the new API.\n",
-  "traceback":[
-   "Traceback (most recent call last):",
-   "  File \"/root/repo/cf-scripts/conda_forge_tick/auto_tick.py\", line 922, in main",
-   "    hash_type=attrs.get(\"hash_type\", \"sha256\"),",
-   "  File \"/root/repo/cf-scripts/conda_forge_tick/auto_tick.py\", line 162, in run",
-   "    migrator.run_pre_piggyback_migrations(recipe_dir, feedstock_ctx.attrs, **kwargs)",
-   "  File \"/root/repo/cf-scripts/conda_forge_tick/migrators/core.py\", line 311, in run_pre_piggyback_migrations",
-   "    mini_migrator.migrate(recipe_dir, attrs, **kwargs)",
-   "  File \"/root/repo/cf-scripts/conda_forge_tick/migrators/conda_forge_yaml_cleanup.py\", line 39, in migrate",
-   "    cfg = yaml.load(fp.read())",
-   "  File \"/opt/conda/envs/run_env/lib/python3.7/site-packages/ruamel/yaml/main.py\", line 341, in load",
-   "    return constructor.get_single_data()",
-   "  File \"/opt/conda/envs/run_env/lib/python3.7/site-packages/ruamel/yaml/constructor.py\", line 113, in get_single_data",
-   "    return self.construct_document(node)",
-   "  File \"/opt/conda/envs/run_env/lib/python3.7/site-packages/ruamel/yaml/constructor.py\", line 123, in construct_document",
-   "    for _dummy in generator:",
-   "  File \"/opt/conda/envs/run_env/lib/python3.7/site-packages/ruamel/yaml/constructor.py\", line 1563, in construct_yaml_map",
-   "    self.construct_mapping(node, data, deep=True)",
-   "  File \"/opt/conda/envs/run_env/lib/python3.7/site-packages/ruamel/yaml/constructor.py\", line 1469, in construct_mapping",
-   "    if self.check_mapping_key(node, key_node, maptyp, key, value):",
-   "  File \"/opt/conda/envs/run_env/lib/python3.7/site-packages/ruamel/yaml/constructor.py\", line 295, in check_mapping_key",
-   "    raise DuplicateKeyError(*args)",
-   "ruamel.yaml.constructor.DuplicateKeyError: while constructing a mapping",
-   "  in \"<unicode string>\", line 1, column 1:",
-   "    appveyor:",
-   "    ^ (line: 1)",
-   "found duplicate key \"provider\" with value \"ordereddict([('linux_aarch64', 'default'), ('linux_ppc64le', 'default')])\" (original value: \"ordereddict([('win', 'azure')])\")",
-   "  in \"<unicode string>\", line 10, column 1:",
-   "    provider: {linux_aarch64: defaul ... ",
-   "    ^ (line: 10)",
-   "",
-   "To suppress this check see:",
-   "    http://yaml.readthedocs.io/en/latest/api.html#duplicate-keys",
-   "",
-   "Duplicate keys will become an error in future releases, and are errors",
-   "by default when using the new API.",
-   "",
-   ""
-  ]
- },
+ "bad":false,
  "conda-forge.yml":{
   "compiler_stack":"comp7",
   "max_py_ver":"37",
@@ -213,7 +191,7 @@
  },
  "name":"editdistance",
  "new_version":"0.5.3",
- "pinning_version":"2019.11.01",
+ "pinning_version":"2020.03.24",
  "raw_meta_yaml":"{% set name = \"editdistance\" %}\n{% set version = \"0.5.3\" %}\n{% set file_ext = \"tar.gz\" %}\n{% set hash_type = \"sha256\" %}\n{% set hash_value = \"89d016dda04649b2c49e12b34337755a7b612bfd690420edd50ab31787120c1f\" %}\n\npackage:\n  name: '{{ name|lower }}'\n  version: '{{ version }}'\n\nsource:\n  fn: '{{ name }}-{{ version }}.{{ file_ext }}'\n  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.{{ file_ext }}\n  '{{ hash_type }}': '{{ hash_value }}'\n\nbuild:\n  number: 0\n  script: python -m pip install --no-deps --ignore-installed .\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n  host:\n    - python\n    - pip\n  run:\n    - python\n\ntest:\n  source_files:\n    - test\n  imports:\n    - editdistance\n  commands:\n    - python test/test_editdistance.py\n\nabout:\n  home: https://www.github.com/aflc/editdistance\n  license: MIT\n  license_family: MIT\n  license_file: '{{ environ[\"RECIPE_DIR\"] }}/LICENSE'\n  summary: 'Fast implementation of the edit distance(Levenshtein distance)'\n  description: \"Fast implementation of the edit distance(Levenshtein distance)\"\n  doc_url: https://github.com/aflc/editdistance\n  dev_url: https://github.com/aflc/editdistance\n\nextra:\n  recipe-maintainers:\n    - nelson-liu\n",
  "req":{
   "__set__":true,
@@ -250,7 +228,7 @@
    "elements":[]
   }
  },
- "smithy_version":"3.6.1",
+ "smithy_version":"No azure token. Create a token and\nput it in ~/.conda-smithy/azure.token\n3.6.15",
  "strong_exports":false,
  "total_requirements":{
   "build":{

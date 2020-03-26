@@ -119,7 +119,7 @@
    "summary":"Header-only C++ HDF5 interface"
   },
   "build":{
-   "number":"3",
+   "number":"0",
    "skip":true
   },
   "extra":{
@@ -143,7 +143,7 @@
   },
   "package":{
    "name":"highfive",
-   "version":"2.1.1"
+   "version":"2.2"
   },
   "requirements":{
    "build":[
@@ -166,40 +166,8 @@
    ]
   },
   "source":{
-   "patches":[
-    "patches/0001-Make-ElementSet-work-in-N-dim-247.patch",
-    "patches/0002-Since-v2.0-CXX11-is-mandatory-by-CMake-246.patch",
-    "patches/0003-Missing-semicolon-254.patch",
-    "patches/0004-Add-support-for-array-of-type-Eigen-Matrix-258.patch",
-    "patches/0005-Do-not-free-const-char-266.patch",
-    "patches/0006-Remove-old-using-namespace-267.patch",
-    "patches/0007-Add-support-for-boost-multi_array-of-EigenMatrix-261.patch",
-    "patches/0008-Annotate_trait-add-deleteAttribute-function-239.patch",
-    "patches/0009-Clean-documentation-248.patch",
-    "patches/0010-Rework-dependencies-to-be-dynamic-i.e.-can-be-overri.patch",
-    "patches/0001-Make-ElementSet-work-in-N-dim-247.patch",
-    "patches/0002-Since-v2.0-CXX11-is-mandatory-by-CMake-246.patch",
-    "patches/0003-Missing-semicolon-254.patch",
-    "patches/0004-Add-support-for-array-of-type-Eigen-Matrix-258.patch",
-    "patches/0005-Do-not-free-const-char-266.patch",
-    "patches/0006-Remove-old-using-namespace-267.patch",
-    "patches/0007-Add-support-for-boost-multi_array-of-EigenMatrix-261.patch",
-    "patches/0008-Annotate_trait-add-deleteAttribute-function-239.patch",
-    "patches/0009-Clean-documentation-248.patch",
-    "patches/0010-Rework-dependencies-to-be-dynamic-i.e.-can-be-overri.patch",
-    "patches/0001-Make-ElementSet-work-in-N-dim-247.patch",
-    "patches/0002-Since-v2.0-CXX11-is-mandatory-by-CMake-246.patch",
-    "patches/0003-Missing-semicolon-254.patch",
-    "patches/0004-Add-support-for-array-of-type-Eigen-Matrix-258.patch",
-    "patches/0005-Do-not-free-const-char-266.patch",
-    "patches/0006-Remove-old-using-namespace-267.patch",
-    "patches/0007-Add-support-for-boost-multi_array-of-EigenMatrix-261.patch",
-    "patches/0008-Annotate_trait-add-deleteAttribute-function-239.patch",
-    "patches/0009-Clean-documentation-248.patch",
-    "patches/0010-Rework-dependencies-to-be-dynamic-i.e.-can-be-overri.patch"
-   ],
-   "sha256":"52cffeda0d018f020f48e5460c051d5c2031c3a3c82133a21527f186a0c1650e",
-   "url":"https://github.com/BlueBrain/HighFive/archive/v2.1.1.tar.gz"
+   "sha256":"fe065f2443e38444100b43999a96916e81a0aa7e500cf768d3bf6f8392b8efee",
+   "url":"https://github.com/BlueBrain/HighFive/archive/v2.2.tar.gz"
   },
   "test":{
    "commands":[
@@ -228,7 +196,7 @@
  "name":"highfive",
  "new_version":"2.2",
  "pinning_version":"2020.03.24",
- "raw_meta_yaml":"{% set name = \"HighFive\" %}\n{% set version = \"2.1.1\" %}\n{% set sha256 = \"52cffeda0d018f020f48e5460c051d5c2031c3a3c82133a21527f186a0c1650e\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  url: https://github.com/BlueBrain/HighFive/archive/v{{ version }}.tar.gz\n  sha256: {{ sha256 }}\n  patches:\n    - patches/0001-Make-ElementSet-work-in-N-dim-247.patch\n    - patches/0002-Since-v2.0-CXX11-is-mandatory-by-CMake-246.patch\n    - patches/0003-Missing-semicolon-254.patch\n    - patches/0004-Add-support-for-array-of-type-Eigen-Matrix-258.patch\n    - patches/0005-Do-not-free-const-char-266.patch\n    - patches/0006-Remove-old-using-namespace-267.patch\n    - patches/0007-Add-support-for-boost-multi_array-of-EigenMatrix-261.patch\n    - patches/0008-Annotate_trait-add-deleteAttribute-function-239.patch\n    - patches/0009-Clean-documentation-248.patch\n    - patches/0010-Rework-dependencies-to-be-dynamic-i.e.-can-be-overri.patch\n\nbuild:\n  number: 3\n  skip: True  # [win and vc<14]\n\nrequirements:\n  build:\n    - {{ compiler('cxx') }}\n    - cmake\n    - make  # [unix]\n  host:\n    - hdf5\n    - boost\n\ntest:\n  commands:\n    # Testing for installation of headers - non-exhaustive list.\n    - test -d $PREFIX/include/highfive  # [unix]\n    - test -f $PREFIX/include/highfive/H5Attribute.hpp  # [unix]\n    - test -d $PREFIX/include/highfive/bits  # [unix]\n    - test -f $PREFIX/include/highfive/bits/H5File_misc.hpp  # [unix]\n    - test -f $PREFIX/include/highfive/H5Exception.hpp  # [unix]\n    - test -f $PREFIX/share/HighFive/CMake/HighFiveConfig.cmake  # [unix]\n    - test -f $PREFIX/share/HighFive/CMake/HighFiveTargets.cmake  # [unix]\n    - if exist %LIBRARY_PREFIX%\\include\\highfive\\H5Attribute.hpp (exit 0) else (exit 1)  # [win]\n    - if exist %LIBRARY_PREFIX%\\include\\highfive\\bits\\H5File_misc.hpp (exit 0) else (exit 1)  # [win]\n    - if exist %LIBRARY_PREFIX%\\include\\highfive\\H5Exception.hpp (exit 0) else (exit 1)  # [win]\n    - if exist %LIBRARY_PREFIX%\\share\\HighFive\\CMake\\HighFiveConfig.cmake (exit 0) else (exit 1)  # [win]\n    - if exist %LIBRARY_PREFIX%\\share\\HighFive\\CMake\\HighFiveTargets.cmake (exit 0) else (exit 1)  # [win]\n\nabout:\n  home: https://github.com/BlueBrain/HighFive\n  license: BSL-1.0\n  license_file: LICENSE\n  summary: 'Header-only C++ HDF5 interface'\n  description: 'HighFive is a modern C++/C++11 friendly interface for libhdf5.'\n  dev_url: https://github.com/BlueBrain/HighFive\n\nextra:\n  recipe-maintainers:\n    - wolfv\n    - SylvainCorlay\n    - JohanMabille\n    - ferdonline\n    - tdegeus\n",
+ "raw_meta_yaml":"{% set name = \"HighFive\" %}\n{% set version = \"2.2\" %}\n{% set sha256 = \"fe065f2443e38444100b43999a96916e81a0aa7e500cf768d3bf6f8392b8efee\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  url: https://github.com/BlueBrain/HighFive/archive/v{{ version }}.tar.gz\n  sha256: {{ sha256 }}\n\nbuild:\n  number: 0\n  skip: true  # [win and vc<14]\n\nrequirements:\n  build:\n    - {{ compiler('cxx') }}\n    - cmake\n    - make  # [unix]\n  host:\n    - hdf5\n    - boost\n\ntest:\n  commands:\n    # Testing for installation of headers - non-exhaustive list.\n    - test -d $PREFIX/include/highfive  # [unix]\n    - test -f $PREFIX/include/highfive/H5Attribute.hpp  # [unix]\n    - test -d $PREFIX/include/highfive/bits  # [unix]\n    - test -f $PREFIX/include/highfive/bits/H5File_misc.hpp  # [unix]\n    - test -f $PREFIX/include/highfive/H5Exception.hpp  # [unix]\n    - test -f $PREFIX/share/HighFive/CMake/HighFiveConfig.cmake  # [unix]\n    - test -f $PREFIX/share/HighFive/CMake/HighFiveTargets.cmake  # [unix]\n    - if exist %LIBRARY_PREFIX%\\include\\highfive\\H5Attribute.hpp (exit 0) else (exit 1)  # [win]\n    - if exist %LIBRARY_PREFIX%\\include\\highfive\\bits\\H5File_misc.hpp (exit 0) else (exit 1)  # [win]\n    - if exist %LIBRARY_PREFIX%\\include\\highfive\\H5Exception.hpp (exit 0) else (exit 1)  # [win]\n    - if exist %LIBRARY_PREFIX%\\share\\HighFive\\CMake\\HighFiveConfig.cmake (exit 0) else (exit 1)  # [win]\n    - if exist %LIBRARY_PREFIX%\\share\\HighFive\\CMake\\HighFiveTargets.cmake (exit 0) else (exit 1)  # [win]\n\nabout:\n  home: https://github.com/BlueBrain/HighFive\n  license: BSL-1.0\n  license_file: LICENSE\n  summary: Header-only C++ HDF5 interface\n  description: HighFive is a modern C++/C++11 friendly interface for libhdf5.\n  dev_url: https://github.com/BlueBrain/HighFive\n\nextra:\n  recipe-maintainers:\n    - wolfv\n    - SylvainCorlay\n    - JohanMabille\n    - ferdonline\n    - tdegeus\n",
  "req":{
   "__set__":true,
   "elements":[
@@ -292,5 +260,5 @@
   }
  },
  "url":"https://github.com/BlueBrain/HighFive/archive/v2.0.tar.gz",
- "version":"2.1.1"
+ "version":"2.2"
 }
