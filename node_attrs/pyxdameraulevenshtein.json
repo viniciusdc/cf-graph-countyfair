@@ -100,38 +100,28 @@
     "migrator_version",
     "name"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/394323035.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"MigrationYaml",
+    "migrator_object_version":1,
+    "migrator_version":0,
+    "name":"pypy"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_object_version",
+    "migrator_version",
+    "name"
+   ]
   }
  ],
- "bad":{
-  "exception":"Command '['pushd', 'None']' returned non-zero exit status 1.",
-  "traceback":[
-   "Traceback (most recent call last):",
-   "  File \"/root/repo/cf-scripts/conda_forge_tick/auto_tick.py\", line 922, in main",
-   "    hash_type=attrs.get(\"hash_type\", \"sha256\"),",
-   "  File \"/root/repo/cf-scripts/conda_forge_tick/auto_tick.py\", line 179, in run",
-   "    migrator.run_post_piggyback_migrations(recipe_dir, feedstock_ctx.attrs, **kwargs)",
-   "  File \"/root/repo/cf-scripts/conda_forge_tick/migrators/core.py\", line 330, in run_post_piggyback_migrations",
-   "    mini_migrator.migrate(recipe_dir, attrs, **kwargs)",
-   "  File \"/root/repo/cf-scripts/conda_forge_tick/migrators/core.py\", line 133, in migrate",
-   "    with indir(cb_work_dir):",
-   "  File \"/opt/conda/envs/run_env/lib/python3.7/contextlib.py\", line 112, in __enter__",
-   "    return next(self.gen)",
-   "  File \"/opt/conda/envs/run_env/lib/python3.7/site-packages/xonsh/lib/os.xsh\", line 10, in indir",
-   "    ![pushd @(d)]",
-   "  File \"/opt/conda/envs/run_env/lib/python3.7/site-packages/xonsh/__amalgam__.py\", line 22637, in subproc_captured_hiddenobject",
-   "    return run_subproc(cmds, captured=\"hiddenobject\")",
-   "  File \"/opt/conda/envs/run_env/lib/python3.7/site-packages/xonsh/__amalgam__.py\", line 22600, in run_subproc",
-   "    command.end()",
-   "  File \"/opt/conda/envs/run_env/lib/python3.7/site-packages/xonsh/__amalgam__.py\", line 15728, in end",
-   "    self._end(tee_output=tee_output)",
-   "  File \"/opt/conda/envs/run_env/lib/python3.7/site-packages/xonsh/__amalgam__.py\", line 15747, in _end",
-   "    self._raise_subproc_error()",
-   "  File \"/opt/conda/envs/run_env/lib/python3.7/site-packages/xonsh/__amalgam__.py\", line 15873, in _raise_subproc_error",
-   "    raise subprocess.CalledProcessError(rtn, spec.args, output=self.output)",
-   "subprocess.CalledProcessError: Command '['pushd', 'None']' returned non-zero exit status 1.",
-   ""
-  ]
- },
+ "bad":false,
  "conda-forge.yml":{
   "compiler_stack":"comp7",
   "max_py_ver":"37",
@@ -214,7 +204,7 @@
  },
  "name":"pyxdameraulevenshtein",
  "new_version":"1.5.3",
- "pinning_version":"2019.11.01",
+ "pinning_version":"2020.03.24",
  "raw_meta_yaml":"{% set name = \"pyxDamerauLevenshtein\" %}\n{% set version = \"1.5.3\" %}\n{% set sha256 = \"f88afcc8cb66a05290fb3b159c474a245b05f5061706fd1863ae097ebe55c907\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  fn: {{ name }}-{{ version }}.tar.gz\n  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz\n  sha256: {{ sha256 }}\n\nbuild:\n  number: 0\n  script: \"{{ PYTHON }} -m pip install --no-deps --ignore-installed . -vv\"\n  # Skip Python 3.7+ as the C sources need to be rebuilt from cython for 3.7\n  # compatability but are not part of the package.\n  skip: true  # [py>36]\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n  host:\n    - python\n    - pip\n    - setuptools\n    - cython\n    - numpy\n  run:\n    - python\n    - {{ pin_compatible('numpy') }}\n\ntest:\n  imports:\n    - pyxdameraulevenshtein\nabout:\n  home: https://github.com/gfairchild/pyxDamerauLevenshtein\n  license: BSD 3-Clause\n  summary: 'High performance Damerau-Levenshtein (DL) edit distance\n    algorithm for Python.'\n\n  # The remaining entries in this section are optional, but recommended\n  description: |\n    pyxDamerauLevenshtein implements the Damerau-Levenshtein (DL) edit distance\n    algorithm for Python in Cython for high performance.\n  doc_url: https://github.com/gfairchild/pyxDamerauLevenshtein\n  dev_url: https://github.com/gfairchild/pyxDamerauLevenshtein\n\nextra:\n  recipe-maintainers:\n    - CJ-Wright\n",
  "req":{
   "__set__":true,
@@ -256,7 +246,7 @@
    "elements":[]
   }
  },
- "smithy_version":"3.6.1",
+ "smithy_version":"No azure token. Create a token and\nput it in ~/.conda-smithy/azure.token\n3.6.15",
  "strong_exports":false,
  "total_requirements":{
   "build":{
