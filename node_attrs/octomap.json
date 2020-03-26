@@ -125,7 +125,7 @@
   },
   "package":{
    "name":"octomap",
-   "version":"1.9.4"
+   "version":"1.9.5"
   },
   "requirements":{
    "build":[
@@ -150,8 +150,8 @@
     "byte.patch",
     "byte.patch"
    ],
-   "sha256":"b4eb0f9a0fbcde17bb80ba855e485cfe8349f63dbd7f4700f458971932536aaa",
-   "url":"https://github.com/OctoMap/octomap/archive/v1.9.4.tar.gz"
+   "sha256":"adf87320c4c830c0fd85fe8d913d8aa174e2f72d0ea64c917599a50a561092b6",
+   "url":"https://github.com/OctoMap/octomap/archive/v1.9.5.tar.gz"
   },
   "test":{
    "commands":[
@@ -175,7 +175,7 @@
  "name":"octomap",
  "new_version":"1.9.5",
  "pinning_version":"2020.03.24",
- "raw_meta_yaml":"{% set name = \"octomap\" %}\n{% set version = \"1.9.4\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  url: https://github.com/OctoMap/{{ name }}/archive/v{{ version }}.tar.gz\n  sha256: b4eb0f9a0fbcde17bb80ba855e485cfe8349f63dbd7f4700f458971932536aaa\n  patches:\n    # Compatibility with C++17\n    - byte.patch\n    - fix-exported-targets.patch  # [win]\n\nbuild:\n  number: 0\n  # skip: true  # [win and vc<14]\n  skip: true  # [win]\n  run_exports:\n    # Only static libraries are built on Windows\n    - {{ pin_subpackage(name, max_pin='x.x') }}  # [not win]\n\n\nrequirements:\n  build:\n    - {{ compiler('cxx') }}\n    - cmake\n    - make\n    - pkg-config\n\ntest:\n  requires:\n    - pkg-config\n  commands:\n    - pkg-config --modversion {{ name }}\n    - pkg-config --libs {{ name }}\n    - test -f $PREFIX/lib/lib{{ name }}${SHLIB_EXT}  # [unix]\n    - if exist %LIBRARY_PREFIX%\\lib\\octomap.lib (exit 0) else (exit 1)  # [win]\n\nabout:\n  home: https://github.com/OctoMap/octomap\n  license: BSD-3-Clause\n  license_family: BSD\n  license_file: octomap/LICENSE.txt\n  summary: An Efficient Probabilistic 3D Mapping Framework Based on Octrees\n  dev_url: https://github.com/OctoMap/octomap\n\nextra:\n  recipe-maintainers:\n    - jcarpent\n    - wolfv\n    - lesteve\n",
+ "raw_meta_yaml":"{% set name = \"octomap\" %}\n{% set version = \"1.9.5\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  url: https://github.com/OctoMap/{{ name }}/archive/v{{ version }}.tar.gz\n  sha256: adf87320c4c830c0fd85fe8d913d8aa174e2f72d0ea64c917599a50a561092b6\n  patches:\n    # Compatibility with C++17\n    - byte.patch\n    - fix-exported-targets.patch  # [win]\n\nbuild:\n  number: 0\n  # skip: true  # [win and vc<14]\n  skip: true  # [win]\n  run_exports:\n    # Only static libraries are built on Windows\n    - {{ pin_subpackage(name, max_pin='x.x') }}  # [not win]\n\n\nrequirements:\n  build:\n    - {{ compiler('cxx') }}\n    - cmake\n    - make\n    - pkg-config\n\ntest:\n  requires:\n    - pkg-config\n  commands:\n    - pkg-config --modversion {{ name }}\n    - pkg-config --libs {{ name }}\n    - test -f $PREFIX/lib/lib{{ name }}${SHLIB_EXT}  # [unix]\n    - if exist %LIBRARY_PREFIX%\\lib\\octomap.lib (exit 0) else (exit 1)  # [win]\n\nabout:\n  home: https://github.com/OctoMap/octomap\n  license: BSD-3-Clause\n  license_family: BSD\n  license_file: octomap/LICENSE.txt\n  summary: An Efficient Probabilistic 3D Mapping Framework Based on Octrees\n  dev_url: https://github.com/OctoMap/octomap\n\nextra:\n  recipe-maintainers:\n    - jcarpent\n    - wolfv\n    - lesteve\n",
  "req":{
   "__set__":true,
   "elements":[
@@ -238,5 +238,5 @@
   }
  },
  "url":"https://github.com/OctoMap/octomap/archive/v1.9.0.tar.gz",
- "version":"1.9.4"
+ "version":"1.9.5"
 }
