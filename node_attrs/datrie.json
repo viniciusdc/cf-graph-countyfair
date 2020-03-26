@@ -162,7 +162,7 @@
   }
  },
  "name":"datrie",
- "new_version":"0.8",
+ "new_version":"0.8.2",
  "pinning_version":"2020.03.24",
  "raw_meta_yaml":"{% set name = \"datrie\" %}\n{% set version = \"0.8\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz\n  sha256: bdd5da6ba6a97e7cd96eef2e7441c8d2ef890d04ba42694a41c7dffa3aca680c\n  patches:\n    - py38-cython.patch\nbuild:\n  number: 0\n  skip: True  # [py2k]\n  script:\n    - rm src/datrie.c src/cdatrie.c src/stdio_ext.c\n    - \"{{ PYTHON }} -m pip install . --no-deps --ignore-installed  -vvv\"\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n  host:\n    - python\n    - pip\n    - cython\n    - pytest-runner\n    - setuptools\n  run:\n    - python\n\ntest:\n  imports:\n    - datrie\n\nabout:\n  home: https://github.com/kmike/datrie/\n  license: LGPLv2\n  license_family: LGPL\n  license_file: COPYING\n  summary: Super-fast, efficiently stored Trie for Python, uses libdatrie\n  doc_url: https://pypi.python.org/pypi/datrie\n  dev_url: https://github.com/kmike/datrie/\n\nextra:\n  recipe-maintainers:\n    - melund\n",
  "req":{
