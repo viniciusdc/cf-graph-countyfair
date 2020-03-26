@@ -85,13 +85,13 @@
    "dev_url":"https://git.gnome.org/browse/pygobject",
    "doc_url":"https://pygobject.readthedocs.io",
    "home":"https://pygobject.readthedocs.io",
-   "license":"LGPL-2.1",
+   "license":"LGPL-2.1-or-later",
    "license_family":"LGPL",
    "license_file":"COPYING",
    "summary":"Python bindings for GObject Introspection"
   },
   "build":{
-   "number":"0"
+   "number":"1"
   },
   "extra":{
    "recipe-maintainers":[
@@ -124,50 +124,50 @@
     "pkg-config"
    ],
    "host":[
-    "meson",
     "flake8",
     "glib",
-    "python",
-    "pycairo",
     "gobject-introspection 1.*",
     "libffi",
+    "meson",
+    "pycairo",
+    "python",
     "pytest",
-    "meson",
     "flake8",
     "glib",
-    "python",
-    "pycairo",
     "gobject-introspection 1.*",
     "libffi",
+    "meson",
+    "pycairo",
+    "python",
     "pytest",
-    "meson",
     "flake8",
     "glib",
-    "python",
-    "pycairo",
     "gobject-introspection 1.*",
     "libffi",
+    "meson",
+    "pycairo",
+    "python",
     "pytest"
    ],
    "run":[
     "glib",
-    "python",
-    "pycairo",
     "gobject-introspection 1.*",
     "libiconv",
     "libffi",
-    "glib",
-    "python",
     "pycairo",
+    "python",
+    "glib",
     "gobject-introspection 1.*",
     "libiconv",
     "libffi",
-    "glib",
-    "python",
     "pycairo",
+    "python",
+    "glib",
     "gobject-introspection 1.*",
     "libiconv",
-    "libffi"
+    "libffi",
+    "pycairo",
+    "python"
    ]
   },
   "source":{
@@ -183,6 +183,14 @@
   },
   "test":{
    "commands":[
+    "if not exist %LIBRARY_INC%\\\\pygobject-3.0\\\\pygobject.h exit 1",
+    "for /f \"usebackq tokens=*\" %%a in (`pkg-config --variable=pygobjectincludedir --dont-define-prefix pygobject-3.0`) do if not exist \"%%a/pygobject.h\" exit 1",
+    "test -f $PREFIX/include/pygobject-3.0/pygobject.h",
+    "test -f `pkg-config --variable=pygobjectincludedir --dont-define-prefix pygobject-3.0`/pygobject.h",
+    "conda inspect linkages -p $PREFIX $PKG_NAME",
+    "conda inspect objects -p $PREFIX $PKG_NAME",
+    "test -f $PREFIX/include/pygobject-3.0/pygobject.h",
+    "test -f `pkg-config --variable=pygobjectincludedir --dont-define-prefix pygobject-3.0`/pygobject.h",
     "conda inspect linkages -p $PREFIX $PKG_NAME"
    ],
    "imports":[
@@ -192,13 +200,18 @@
     "gi.repository.GLib",
     "gi",
     "gi.repository.GLib"
+   ],
+   "requires":[
+    "pkg-config",
+    "pkg-config",
+    "pkg-config"
    ]
   }
  },
  "name":"pygobject",
  "new_version":false,
  "pinning_version":"2019.11.01",
- "raw_meta_yaml":"{% set name = \"pygobject\" %}\n{% set version = \"3.30.5\" %}\n{% set majmin = '.'.join(version.split('.', 2)[:2]) %}\n{% set sha256 = \"9deeac63e0d834646221cf37404d2fdfb3eac6d49aa50133ef9ac38f09ff2bfd\" %}\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  fn: {{ name }}-{{ version }}.tar.xz\n  url: http://ftp.gnome.org/pub/GNOME/sources/pygobject/{{ majmin }}/{{ name }}-{{ version }}.tar.xz\n  sha256: {{ sha256 }}\n  patches:\n    - macos-tests.patch\n    - meson-rpaths.patch  # [linux]\n\nbuild:\n  number: 0\n  skip: true  # [py<35]\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - m2-msys2-runtime  # [win]\n    - ninja\n    - {{posix}}patch\n    - {{native}}pkg-config\n  host:\n    - meson\n    - flake8  # for testing during the build\n    - glib\n    - python\n    - pycairo\n    - gobject-introspection 1.*\n    - libffi\n    - pytest\n  run:\n    - glib\n    - python\n    - pycairo\n    - gobject-introspection 1.*\n    - libiconv  # on Windows we seem to need the conda-forge version here (see #15)\n    - libffi\n\ntest:\n  imports:\n    - gi\n    - gi.repository.GLib\n  commands:\n    - conda inspect linkages -p $PREFIX $PKG_NAME  # [not win]\n    - conda inspect objects -p $PREFIX $PKG_NAME  # [osx]\n\nabout:\n  home: https://pygobject.readthedocs.io\n  license: LGPL-2.1\n  license_family: LGPL\n  license_file: COPYING\n  summary: 'Python bindings for GObject Introspection'\n\n  description: |\n    PyGObject is a Python package which provides bindings for GObject based libraries\n    such as GTK+, GStreamer, WebKitGTK+, GLib, GIO and many more.\n\n  doc_url: https://pygobject.readthedocs.io\n  dev_url: https://git.gnome.org/browse/pygobject\n\nextra:\n  recipe-maintainers:\n    - pkgw\n    - sebastian-luna-valero\n",
+ "raw_meta_yaml":"{% set name = \"pygobject\" %}\n{% set version = \"3.30.5\" %}\n{% set majmin = '.'.join(version.split('.', 2)[:2]) %}\n{% set sha256 = \"9deeac63e0d834646221cf37404d2fdfb3eac6d49aa50133ef9ac38f09ff2bfd\" %}\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  fn: {{ name }}-{{ version }}.tar.xz\n  url: http://ftp.gnome.org/pub/GNOME/sources/pygobject/{{ majmin }}/{{ name }}-{{ version }}.tar.xz\n  sha256: {{ sha256 }}\n  patches:\n    - macos-tests.patch\n    - meson-rpaths.patch  # [linux]\n\nbuild:\n  number: 1\n  skip: true  # [py<35]\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - m2-msys2-runtime  # [win]\n    - ninja\n    - {{posix}}patch\n    - {{native}}pkg-config\n  host:\n    - flake8  # for testing during the build\n    - glib\n    - gobject-introspection 1.*\n    - libffi\n    - meson  # undiagnosed issues with meson in build prefix that go away when in host\n    - pycairo\n    - python\n    - pytest  # for testing during the build\n  run:\n    - glib\n    - gobject-introspection 1.*\n    - libiconv  # on Windows we seem to need the conda-forge version here (see #15)\n    - libffi\n    - pycairo\n    - python\n\ntest:\n  requires:\n    - pkg-config\n  imports:\n    - gi\n    - gi.repository.GLib\n  commands:\n    # verify that header gets installed and can be located through pkg-config\n    {% set pc = \"pygobject-3.0\" %}\n    {% set header = \"pygobject.h\" %}\n    - test -f $PREFIX/include/{{ pc }}/{{ header }}  # [unix]\n    - test -f `pkg-config --variable=pygobjectincludedir --dont-define-prefix {{ pc }}`/{{ header }}  # [unix]\n    - if not exist %LIBRARY_INC%\\\\{{ pc }}\\\\{{ header }} exit 1  # [win]\n    - for /f \"usebackq tokens=*\" %%a in (`pkg-config --variable=pygobjectincludedir --dont-define-prefix {{ pc }}`) do if not exist \"%%a/{{ header }}\" exit 1  # [win]\n\n    - conda inspect linkages -p $PREFIX $PKG_NAME  # [not win]\n    - conda inspect objects -p $PREFIX $PKG_NAME  # [osx]\n\nabout:\n  home: https://pygobject.readthedocs.io\n  license: LGPL-2.1-or-later\n  license_family: LGPL\n  license_file: COPYING\n  summary: 'Python bindings for GObject Introspection'\n\n  description: |\n    PyGObject is a Python package which provides bindings for GObject based libraries\n    such as GTK+, GStreamer, WebKitGTK+, GLib, GIO and many more.\n\n  doc_url: https://pygobject.readthedocs.io\n  dev_url: https://git.gnome.org/browse/pygobject\n\nextra:\n  recipe-maintainers:\n    - pkgw\n    - sebastian-luna-valero\n",
  "req":{
   "__set__":true,
   "elements":[
@@ -255,7 +268,9 @@
   },
   "test":{
    "__set__":true,
-   "elements":[]
+   "elements":[
+    "pkg-config"
+   ]
   }
  },
  "smithy_version":"3.6.1",
@@ -297,7 +312,9 @@
   },
   "test":{
    "__set__":true,
-   "elements":[]
+   "elements":[
+    "pkg-config"
+   ]
   }
  },
  "url":"http://ftp.gnome.org/pub/GNOME/sources/pygobject/3.30/pygobject-3.30.5.tar.xz",
