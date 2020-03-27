@@ -232,7 +232,7 @@
    "summary":"IPython Kernel for Jupyter"
   },
   "build":{
-   "number":"0",
+   "number":"1",
    "script":[
     "setup.py bdist_wheel",
     "cd dist",
@@ -350,7 +350,7 @@
  "name":"ipykernel",
  "new_version":"5.2.0",
  "pinning_version":"2020.03.20",
- "raw_meta_yaml":"{% set version = \"5.2.0\" %}\n\npackage:\n  name: ipykernel\n  version: {{ version }}\n\nsource:\n  url: https://pypi.io/packages/source/i/ipykernel/ipykernel-{{ version }}.tar.gz\n  sha256: 37c65d2e2da3326e5cf114405df6d47d997b8a3eba99e2cc4b75833bf71a5e18\n\nbuild:\n  number: 0\n  skip: true  # [py<34]\n  script:\n    - {{ PYTHON }} setup.py bdist_wheel\n    - cd dist\n    - {{ PYTHON }} -m pip install ipykernel-{{ version }}-py3-none-any.whl --no-deps -vv\n    - {{ PYTHON }} -m ipykernel install --sys-prefix\n\nrequirements:\n  host:\n    - ipython >=5.0\n    - jupyter_client\n    - pip\n    - python\n  run:\n    - ipython >=5.0\n    - jupyter_client\n    - python\n    - tornado >=4.2\n    - traitlets >=4.1\n\ntest:\n  requires:\n    - curio\n    - flaky\n    - ipython\n    - nose\n    - numpy\n    - pytest !=5.3.4\n  imports:\n    - ipykernel\n  commands:\n    - jupyter kernelspec list\n\nabout:\n  home: https://ipython.org\n  license: BSD-3-Clause\n  license_family: BSD\n  license_file: COPYING.md\n  summary: IPython Kernel for Jupyter\n  description: |\n    A powerful interactive Python shell and a Jupyter kernel to work with\n    Python code in Jupyter notebooks and other interactive frontends.\n  dev_url: https://github.com/ipython/ipykernel\n  doc_url: https://ipython.readthedocs.io\n  doc_source_url: https://github.com/ipython/ipykernel/blob/master/docs/index.rst\n\nextra:\n  recipe-maintainers:\n    - blink1073\n    - bollwyvl\n    - Carreau\n    - jakirkham\n    - minrk\n    - ocefpaf\n    - pelson\n",
+ "raw_meta_yaml":"{% set version = \"5.2.0\" %}\n\npackage:\n  name: ipykernel\n  version: {{ version }}\n\nsource:\n  url: https://pypi.io/packages/source/i/ipykernel/ipykernel-{{ version }}.tar.gz\n  sha256: 37c65d2e2da3326e5cf114405df6d47d997b8a3eba99e2cc4b75833bf71a5e18\n\nbuild:\n  number: 1\n  skip: True  # [py<34]\n  script:\n    - {{ PYTHON }} setup.py bdist_wheel\n    - cd dist\n    - {{ PYTHON }} -m pip install ipykernel-{{ version }}-py3-none-any.whl --no-deps -vv\n    - {{ PYTHON }} -m ipykernel install --sys-prefix\n    # TODO: this may be needed/desirable at some point\n    # - cd {{ RECIPE_DIR }} && {{ PYTHON }} fix_kernelspec.py\n\nrequirements:\n  host:\n    - ipython >=5.0\n    - jupyter_client\n    - pip\n    - python\n  run:\n    - ipython >=5.0\n    - jupyter_client\n    - python\n    - tornado >=4.2\n    - traitlets >=4.1\n\ntest:\n  requires:\n    - curio\n    - flaky\n    - ipython\n    - nose\n    - numpy\n    - pytest !=5.3.4\n  imports:\n    - ipykernel\n  commands:\n    - jupyter kernelspec list\n\nabout:\n  home: https://ipython.org\n  license: BSD-3-Clause\n  license_family: BSD\n  license_file: COPYING.md\n  summary: IPython Kernel for Jupyter\n  description: |\n    A powerful interactive Python shell and a Jupyter kernel to work with\n    Python code in Jupyter notebooks and other interactive frontends.\n  dev_url: https://github.com/ipython/ipykernel\n  doc_url: https://ipython.readthedocs.io\n  doc_source_url: https://github.com/ipython/ipykernel/blob/master/docs/index.rst\n\nextra:\n  recipe-maintainers:\n    - blink1073\n    - bollwyvl\n    - Carreau\n    - jakirkham\n    - minrk\n    - ocefpaf\n    - pelson\n",
  "req":{
   "__set__":true,
   "elements":[
