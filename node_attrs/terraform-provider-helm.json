@@ -123,11 +123,11 @@
    "number":"0",
    "script":[
     "pushd src/github.com/terraform-providers/terraform-provider-helm",
-    "go build -v -o %GOBIN%\\terraform-provider-helm_v0.10.4_x4 .",
+    "go build -v -o %GOBIN%\\terraform-provider-helm_v1.1.1_x4 .",
     "pushd src/github.com/terraform-providers/terraform-provider-helm",
-    "go build -v -o $GOBIN/terraform-provider-helm_v0.10.4_x4 .",
+    "go build -v -o $GOBIN/terraform-provider-helm_v1.1.1_x4 .",
     "pushd src/github.com/terraform-providers/terraform-provider-helm",
-    "go build -v -o $GOBIN/terraform-provider-helm_v0.10.4_x4 ."
+    "go build -v -o $GOBIN/terraform-provider-helm_v1.1.1_x4 ."
    ]
   },
   "extra":{
@@ -145,7 +145,7 @@
   },
   "package":{
    "name":"terraform-provider-helm",
-   "version":"0.10.4"
+   "version":"1.1.1"
   },
   "requirements":{
    "build":[
@@ -162,34 +162,34 @@
   "source":[
    {
     "folder":"src/github.com/terraform-providers/terraform-provider-helm",
-    "sha256":"7b0d0aa9f1cfac7ce271f0484e3258e28f740bca819c0bd54d208bd528ef419a",
-    "url":"https://github.com/terraform-providers/terraform-provider-helm/archive/v0.10.4.tar.gz"
+    "sha256":"bd296ae1a763c3971a2064e95eca4e8f391e7600e844c4ea143e80a54648f677",
+    "url":"https://github.com/terraform-providers/terraform-provider-helm/archive/v1.1.1.tar.gz"
    },
    {
     "folder":"src/github.com/terraform-providers/terraform-provider-helm",
-    "sha256":"7b0d0aa9f1cfac7ce271f0484e3258e28f740bca819c0bd54d208bd528ef419a",
-    "url":"https://github.com/terraform-providers/terraform-provider-helm/archive/v0.10.4.tar.gz"
+    "sha256":"bd296ae1a763c3971a2064e95eca4e8f391e7600e844c4ea143e80a54648f677",
+    "url":"https://github.com/terraform-providers/terraform-provider-helm/archive/v1.1.1.tar.gz"
    },
    {
     "folder":"src/github.com/terraform-providers/terraform-provider-helm",
-    "sha256":"7b0d0aa9f1cfac7ce271f0484e3258e28f740bca819c0bd54d208bd528ef419a",
-    "url":"https://github.com/terraform-providers/terraform-provider-helm/archive/v0.10.4.tar.gz"
+    "sha256":"bd296ae1a763c3971a2064e95eca4e8f391e7600e844c4ea143e80a54648f677",
+    "url":"https://github.com/terraform-providers/terraform-provider-helm/archive/v1.1.1.tar.gz"
    }
   ],
   "test":{
    "commands":[
-    "bash -euf -c \"echo 'provider \\\"helm\\\" { version=\\\"0.10.4\\\" }' > init.tf\"",
+    "bash -euf -c \"echo 'provider \\\"helm\\\" { version=\\\"1.1.1\\\" }' > init.tf\"",
     "terraform init",
     "test -f .terraform/plugins/_/lock.json",
-    "test ! -f .terraform/plugins/_/terraform-provider-helm_v0.10.4_x4",
-    "bash -euf -c \"echo 'provider \\\"helm\\\" { version=\\\"0.10.4\\\" }' > init.tf\"",
+    "test ! -f .terraform/plugins/_/terraform-provider-helm_v1.1.1_x4",
+    "bash -euf -c \"echo 'provider \\\"helm\\\" { version=\\\"1.1.1\\\" }' > init.tf\"",
     "terraform init",
     "test -f .terraform/plugins/_/lock.json",
-    "test ! -f .terraform/plugins/_/terraform-provider-helm_v0.10.4_x4",
-    "bash -euf -c \"echo 'provider \\\"helm\\\" { version=\\\"0.10.4\\\" }' > init.tf\"",
+    "test ! -f .terraform/plugins/_/terraform-provider-helm_v1.1.1_x4",
+    "bash -euf -c \"echo 'provider \\\"helm\\\" { version=\\\"1.1.1\\\" }' > init.tf\"",
     "terraform init",
     "test -f .terraform/plugins/_/lock.json",
-    "test ! -f .terraform/plugins/_/terraform-provider-helm_v0.10.4_x4"
+    "test ! -f .terraform/plugins/_/terraform-provider-helm_v1.1.1_x4"
    ],
    "requires":[
     "m2-bash",
@@ -200,7 +200,7 @@
  "name":"terraform-provider-helm",
  "new_version":"1.1.1",
  "pinning_version":"2020.03.24",
- "raw_meta_yaml":"{% set provider = \"Helm\" %}\n{% set goname = \"github.com/terraform-providers/terraform-provider-\"+provider.lower() %}\n{% set version = \"0.10.4\" %}\n\n{% set name = goname.split('/')[-1] %}\n{% set pkg_src = ('src/'+goname).replace(\"/\",os.sep) %}\n\n{% set x4_plugin = name + '_v' + version + \"_x4\" + (\".exe\" if win else \"\")%}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  - folder:  {{ pkg_src }}\n    url: https://{{ goname }}/archive/v{{ version }}.tar.gz\n    sha256: 7b0d0aa9f1cfac7ce271f0484e3258e28f740bca819c0bd54d208bd528ef419a\n\nbuild:\n  number: 0\n  script:\n    - pushd {{ pkg_src }}\n    - go build -v -o $GOBIN/{{ x4_plugin }} .  # [unix]\n    - go build -v -o %GOBIN%\\{{ x4_plugin }} .  # [win]\n\nrequirements:\n  build:\n    - {{ compiler('go') }} >=1.11.3\n  run:\n    - terraform >=0.10  # [unix]\n    - terraform >=0.11.11  # [win]\n\ntest:\n  requires:         # [win]\n    - m2-bash       # [win]\n    - m2-coreutils  # [win]\n\n  commands:\n    - bash -euf -c \"echo 'provider \\\"{{ provider|lower }}\\\" { version=\\\"{{ version }}\\\" }' > init.tf\"\n    - terraform init\n    # Tests that no plugins were downloaded\n    - test -f .terraform/plugins/{{ goos }}_{{ goarch }}/lock.json\n    - test ! -f .terraform/plugins/{{ goos }}_{{ goarch }}/{{ x4_plugin }}\n\nabout:\n  home: https://www.terraform.io\n  license: MPL 2.0\n  summary: The Terraform {{ provider }} provider\n  doc_url: https://www.terraform.io/docs/providers/{{ provider|lower }}/index.html\n  dev_url: https://github.com/terraform-providers/{{ name }}\n\nextra:\n  recipe-maintainers:\n    - agcopenhaver\n    - rluria14\n    - oblute\n",
+ "raw_meta_yaml":"{% set provider = \"Helm\" %}\n{% set goname = \"github.com/terraform-providers/terraform-provider-\"+provider.lower() %}\n{% set version = \"1.1.1\" %}\n\n{% set name = goname.split('/')[-1] %}\n{% set pkg_src = ('src/'+goname).replace(\"/\",os.sep) %}\n\n{% set x4_plugin = name + '_v' + version + \"_x4\" + (\".exe\" if win else \"\")%}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  - folder: {{ pkg_src }}\n    url: https://{{ goname }}/archive/v{{ version }}.tar.gz\n    sha256: bd296ae1a763c3971a2064e95eca4e8f391e7600e844c4ea143e80a54648f677\n\nbuild:\n  number: 0\n  script:\n    - pushd {{ pkg_src }}\n    - go build -v -o $GOBIN/{{ x4_plugin }} .  # [unix]\n    - go build -v -o %GOBIN%\\{{ x4_plugin }} .  # [win]\n\nrequirements:\n  build:\n    - {{ compiler('go') }} >=1.11.3\n  run:\n    - terraform >=0.10  # [unix]\n    - terraform >=0.11.11  # [win]\n\ntest:\n  requires:   # [win]\n    - m2-bash       # [win]\n    - m2-coreutils  # [win]\n\n  commands:\n    - bash -euf -c \"echo 'provider \\\"{{ provider|lower }}\\\" { version=\\\"{{ version }}\\\" }' > init.tf\"\n    - terraform init\n    # Tests that no plugins were downloaded\n    - test -f .terraform/plugins/{{ goos }}_{{ goarch }}/lock.json\n    - test ! -f .terraform/plugins/{{ goos }}_{{ goarch }}/{{ x4_plugin }}\n\nabout:\n  home: https://www.terraform.io\n  license: MPL 2.0\n  summary: The Terraform {{ provider }} provider\n  doc_url: https://www.terraform.io/docs/providers/{{ provider|lower }}/index.html\n  dev_url: https://github.com/terraform-providers/{{ name }}\n\nextra:\n  recipe-maintainers:\n    - agcopenhaver\n    - rluria14\n    - oblute\n",
  "req":{
   "__set__":true,
   "elements":[
@@ -262,5 +262,5 @@
   }
  },
  "url":"https://github.com/terraform-providers/terraform-provider-helm/archive/v0.10.2.tar.gz",
- "version":"0.10.4"
+ "version":"1.1.1"
 }
