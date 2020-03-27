@@ -122,7 +122,14 @@
   "build":{
    "noarch":"python",
    "number":"0",
-   "script":"-m pip install . -vv"
+   "script":[
+    "rm -f pyproject.toml",
+    "-m pip install . -vv",
+    "rm -f pyproject.toml",
+    "-m pip install . -vv",
+    "rm -f pyproject.toml",
+    "-m pip install . -vv"
+   ]
   },
   "extra":{
    "recipe-maintainers":[
@@ -136,7 +143,7 @@
   },
   "package":{
    "name":"clikit",
-   "version":"0.5.0"
+   "version":"0.5.1"
   },
   "requirements":{
    "host":[
@@ -166,8 +173,8 @@
    ]
   },
   "source":{
-   "sha256":"57fc734d902a5d373d48fa0b2328dfdbde10b03381dc40306e93279cbd130a82",
-   "url":"https://pypi.io/packages/source/c/clikit/clikit-0.5.0.tar.gz"
+   "sha256":"2e9cd4c87539d9a0f0275b26e3e50d2d531d7bfbcf4f91909aaa013cfac9d0e1",
+   "url":"https://pypi.io/packages/source/c/clikit/clikit-0.5.1.tar.gz"
   },
   "test":{
    "commands":[
@@ -193,7 +200,7 @@
  "name":"clikit",
  "new_version":"0.5.1",
  "pinning_version":"2020.03.24",
- "raw_meta_yaml":"{% set version = \"0.5.0\" %}\n\npackage:\n  name: clikit\n  version: {{ version }}\n\nsource:\n  url: https://pypi.io/packages/source/c/clikit/clikit-{{ version }}.tar.gz\n  sha256: 57fc734d902a5d373d48fa0b2328dfdbde10b03381dc40306e93279cbd130a82\n\nbuild:\n  number: 0\n  # This needs selectors to build on py27 and py35\n  # b/c conda-forge dropped py35 already and py27 reached EOL we'll make this noarch instead.\n  noarch: python\n  script: {{ PYTHON }} -m pip install . -vv\n\nrequirements:\n  host:\n    - python\n    - pip\n    - poetry-core\n  run:\n    - python\n    - pastel >=0.2.0,<0.3.0\n    - pylev >=1.3,<2.0\n    - woops >=0.2.1,<0.3.0 \n\ntest:\n  imports:\n    - clikit\n    - clikit.adapter\n  commands:\n    - pip check\n  requires:\n    - pip\n\nabout:\n  home: https://github.com/sdispater/clikit\n  license: MIT\n  license_family: MIT\n  license_file: LICENSE\n  summary: CliKit is a group of utilities to build beautiful and testable command line interfaces.\n\nextra:\n  recipe-maintainers:\n    - roccqqck\n    - ocefpaf\n",
+ "raw_meta_yaml":"{% set version = \"0.5.1\" %}\n\npackage:\n  name: clikit\n  version: {{ version }}\n\nsource:\n  url: https://pypi.io/packages/source/c/clikit/clikit-{{ version }}.tar.gz\n  sha256: 2e9cd4c87539d9a0f0275b26e3e50d2d531d7bfbcf4f91909aaa013cfac9d0e1\n\nbuild:\n  number: 0\n  # This needs selectors to build on py27 and py35\n  # b/c conda-forge dropped py35 already and py27 reached EOL we'll make this noarch instead.\n  noarch: python\n  script:\n    - rm -f pyproject.toml\n    - {{ PYTHON }} -m pip install . -vv\n\nrequirements:\n  host:\n    - python\n    - pip\n    - poetry-core\n  run:\n    - python\n    - pastel >=0.2.0,<0.3.0\n    - pylev >=1.3,<2.0\n    - woops >=0.2.1,<0.3.0\n\ntest:\n  imports:\n    - clikit\n    - clikit.adapter\n  commands:\n    - pip check\n  requires:\n    - pip\n\nabout:\n  home: https://github.com/sdispater/clikit\n  license: MIT\n  license_family: MIT\n  license_file: LICENSE\n  summary: CliKit is a group of utilities to build beautiful and testable command line interfaces.\n\nextra:\n  recipe-maintainers:\n    - roccqqck\n    - ocefpaf\n",
  "req":{
   "__set__":true,
   "elements":[
@@ -266,5 +273,5 @@
   }
  },
  "url":"https://pypi.io/packages/source/c/clikit/clikit-0.1.0.tar.gz",
- "version":"0.5.0"
+ "version":"0.5.1"
 }

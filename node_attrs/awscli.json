@@ -6504,7 +6504,24 @@
    ]
   }
  ],
- "bad":false,
+ "bad":{
+  "exception":"'Tuple' object has no attribute 'name'",
+  "traceback":[
+   "Traceback (most recent call last):",
+   "  File \"/root/repo/cf-scripts/conda_forge_tick/auto_tick.py\", line 922, in main",
+   "    hash_type=attrs.get(\"hash_type\", \"sha256\"),",
+   "  File \"/root/repo/cf-scripts/conda_forge_tick/auto_tick.py\", line 166, in run",
+   "    migrate_return = migrator.migrate(recipe_dir, feedstock_ctx.attrs, **kwargs)",
+   "  File \"/root/repo/cf-scripts/conda_forge_tick/migrators/version.py\", line 397, in migrate",
+   "    cmeta = CondaMetaYAML(fp.read())",
+   "  File \"/root/repo/cf-scripts/conda_forge_tick/recipe_parser/_parser.py\", line 366, in __init__",
+   "    v, e = _parse_jinja2_variables(meta_yaml)",
+   "  File \"/root/repo/cf-scripts/conda_forge_tick/recipe_parser/_parser.py\", line 117, in _parse_jinja2_variables",
+   "    jinja2_exprs[n.target.name] = meta_yaml_lines[n.lineno-1]",
+   "AttributeError: 'Tuple' object has no attribute 'name'",
+   ""
+  ]
+ },
  "conda-forge.yml":{
   "provider":{
    "linux":"azure",
@@ -6627,7 +6644,7 @@
   }
  },
  "name":"awscli",
- "new_version":"1.18.30",
+ "new_version":"1.18.31",
  "pinning_version":"2020.03.24",
  "raw_meta_yaml":"{% set name = \"awscli\" %}\n{% set version = \"1.18.30\" %}\n{% set hash = \"14623fce97ca16b76484709827e547b210987368c91d8f722d163fb3e09cc139\" %}\n\n{% set vmajor,vminor,vpatch = version.split('.') %}\n# ALWAYS DOUBLE-CHECK THESE OFFSETS AGAINST UPSTREAM setup.py\n{% set botocore_major = vmajor | int + 0 %}\n{% set botocore_minor = vminor | int - 3 %}\n{% set botocore_patch = vpatch | int + 0 %}\n{% set botocore_pin = botocore_major ~ '.' ~ botocore_minor ~ '.' ~ botocore_patch %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  fn: {{ name }}-{{ version }}.tar.gz\n  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz\n  sha256: {{ hash }}\n\nbuild:\n  number: 0\n  script: {{ PYTHON }} -m pip install . --no-deps -vv\n\nrequirements:\n  build:\n    - python\n    - pip\n\n  run:\n    - python\n    - botocore =={{ botocore_pin }}\n    - colorama >=0.2.5,<0.4.4\n    - docutils >=0.10,<0.16\n    - rsa >=3.1.2,<=3.5.0\n    - s3transfer >=0.3.0,<0.4.0\n    - pyyaml >=3.10,<5.4\n\ntest:\n  imports:\n    - awscli\n    - awscli.customizations\n    - awscli.customizations.cloudtrail\n    - awscli.customizations.codedeploy\n    - awscli.customizations.configservice\n    - awscli.customizations.configure\n    - awscli.customizations.datapipeline\n    - awscli.customizations.ec2\n    - awscli.customizations.emr\n    - awscli.customizations.gamelift\n    - awscli.customizations.s3\n    - awscli.customizations.s3.syncstrategy\n\nabout:\n  home: https://aws.amazon.com/cli/\n  license_file: LICENSE.txt\n  license: Apache-2.0\n  license_family: Apache\n  summary: Universal Command Line Environment for AWS.\n  dev_url: https://github.com/aws/aws-cli\n  doc_url: https://aws.amazon.com/cli/\n\nextra:\n  recipe-maintainers:\n    - pmlandwehr\n    - hajapy\n    - tkelman\n",
  "req":{
