@@ -145,7 +145,10 @@
     },
     "build":{
      "error_overdepending":true,
-     "error_overlinking":true
+     "error_overlinking":true,
+     "ignore_run_exports":[
+      "python"
+     ]
     },
     "name":"python-lalmetaio",
     "requirements":{
@@ -205,7 +208,10 @@
     },
     "build":{
      "error_overdepending":true,
-     "error_overlinking":true
+     "error_overlinking":true,
+     "ignore_run_exports":[
+      "python"
+     ]
     },
     "name":"python-lalmetaio",
     "requirements":{
@@ -265,7 +271,10 @@
     },
     "build":{
      "error_overdepending":true,
-     "error_overlinking":true
+     "error_overlinking":true,
+     "ignore_run_exports":[
+      "python"
+     ]
     },
     "name":"python-lalmetaio",
     "requirements":{
@@ -366,7 +375,7 @@
   "python-lalmetaio"
  ],
  "pinning_version":"2019.12.02",
- "raw_meta_yaml":"{% set name = \"lalmetaio\" %}\n{% set version = \"1.6.0\" %}\n{% set sha256 = \"7618e787acd61a175c5dd457601235d82af6a4be3effbc135113e777ecc0153b\" %}\n\n# dependencies\n{% set lal_version = \"6.21.0\" %}\n{% set swig_version = \"3.0.7\" %}\n\npackage:\n  name: \"{{ name|lower }}\"\n  version: \"{{ version }}\"\n\nsource:\n  url: \"http://software.ligo.org/lscsoft/source/lalsuite/{{ name }}-{{ version }}.tar.xz\"\n  sha256: \"{{ sha256 }}\"\n\nbuild:\n  error_overlinking: true\n  error_overdepending: true\n  number: 1\n  skip: true  # [win]\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - make\n    - pkg-config >=0.18.0\n    - swig >={{ swig_version }}\n  host:\n    - lal >={{ lal_version }}\n    - metaio\n  run:\n    - lal >={{ lal_version }}\n    - metaio\ntest:\n  requires:\n    - pkg-config  # [unix]\n  commands:\n    - lalmetaio_version --verbose\n    - test \"$(pkg-config --modversion ${PKG_NAME})\" == \"${PKG_VERSION}\"  # [unix]\n\noutputs:\n  - name: lalmetaio\n    build:\n      run_exports:\n        - {{ pin_subpackage(\"lalmetaio\", max_pin=\"x.x\") }}\n\n  - name: python-lalmetaio\n    script: install-python.sh\n    build:\n      error_overlinking: true\n      error_overdepending: true\n    requirements:\n      build:\n        - {{ compiler('c') }}\n        - make\n        - pkg-config >=0.18.0\n        - swig >={{ swig_version }}\n      host:\n        - {{ pin_subpackage('lalmetaio', exact=True) }}\n        - numpy\n        - python\n      run:\n        - lal\n        - {{ pin_subpackage('lalmetaio', exact=True) }}\n        - metaio  # [linux]\n        - {{ pin_compatible('numpy') }}\n        - python\n        - python-lal >={{ lal_version }}\n    test:\n      imports:\n        - lalmetaio\n      requires:\n        - mock  # [py<33]\n        - pathlib  # [py<34]\n        - pytest >=4.0.0a0\n      source_files:\n        - test/python\n      commands:\n        - pushd test/python; python -m pytest -v; popd\n    about:\n      home: \"https://wiki.ligo.org/Computing/LALSuite\"\n      doc_url: \"https://lscsoft.docs.ligo.org/lalsuite/lalmetaio/\"\n      dev_url: \"https://git.ligo.org/lscsoft/lalsuite/\"\n      license: \"GPL-2.0-or-later\"\n      license_family: \"GPL\"\n      license_file: \"COPYING\"\n      summary: \"LSC Algorithm MetaIO Library\"\n      description: |\n        The LSC Algorithm MetaIO Library for gravitational wave data analysis.\n        This package contains the python bindings.\n\nabout:\n  home: \"https://wiki.ligo.org/Computing/LALSuite\"\n  doc_url: \"https://lscsoft.docs.ligo.org/lalsuite/lalmetaio/\"\n  dev_url: \"https://git.ligo.org/lscsoft/lalsuite/\"\n  license: \"GPL-2.0-or-later\"\n  license_family: \"GPL\"\n  license_file: \"COPYING\"\n  summary: \"LSC Algorithm MetaIO Library\"\n  description: |\n    The LSC Algorithm MetaIO Library for gravitational wave data analysis.\n    This package contains the shared-object libraries needed to run\n    applications that use the LAL MetaIO library.  If you want to install\n    the Python bindings, please install the associated python-lalmetaio\n    package.\n\nextra:\n  recipe-maintainers:\n    - duncanmmacleod\n    - skymoo\n",
+ "raw_meta_yaml":"{% set name = \"lalmetaio\" %}\n{% set version = \"1.6.0\" %}\n{% set sha256 = \"7618e787acd61a175c5dd457601235d82af6a4be3effbc135113e777ecc0153b\" %}\n\n# dependencies\n{% set lal_version = \"6.21.0\" %}\n{% set swig_version = \"3.0.7\" %}\n\npackage:\n  name: \"{{ name|lower }}\"\n  version: \"{{ version }}\"\n\nsource:\n  url: \"http://software.ligo.org/lscsoft/source/lalsuite/{{ name }}-{{ version }}.tar.xz\"\n  sha256: \"{{ sha256 }}\"\n\nbuild:\n  error_overlinking: true\n  error_overdepending: true\n  number: 1\n  skip: true  # [win]\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - make\n    - pkg-config >=0.18.0\n    - swig >={{ swig_version }}\n  host:\n    - lal >={{ lal_version }}\n    - metaio\n  run:\n    - lal >={{ lal_version }}\n    - metaio\ntest:\n  requires:\n    - pkg-config  # [unix]\n  commands:\n    - lalmetaio_version --verbose\n    - test \"$(pkg-config --modversion ${PKG_NAME})\" == \"${PKG_VERSION}\"  # [unix]\n\noutputs:\n  - name: lalmetaio\n    build:\n      run_exports:\n        - {{ pin_subpackage(\"lalmetaio\", max_pin=\"x.x\") }}\n\n  - name: python-lalmetaio\n    script: install-python.sh\n    build:\n      error_overlinking: true\n      error_overdepending: true\n      ignore_run_exports:\n        - python\n    requirements:\n      build:\n        - {{ compiler('c') }}\n        - make\n        - pkg-config >=0.18.0\n        - swig >={{ swig_version }}\n      host:\n        - {{ pin_subpackage('lalmetaio', exact=True) }}\n        - numpy\n        - python\n      run:\n        - lal\n        - {{ pin_subpackage('lalmetaio', exact=True) }}\n        - metaio  # [linux]\n        - {{ pin_compatible('numpy') }}\n        - python\n        - python-lal >={{ lal_version }}\n    test:\n      imports:\n        - lalmetaio\n      requires:\n        - mock  # [py<33]\n        - pathlib  # [py<34]\n        - pytest >=4.0.0a0\n      source_files:\n        - test/python\n      commands:\n        - pushd test/python; python -m pytest -v; popd\n    about:\n      home: \"https://wiki.ligo.org/Computing/LALSuite\"\n      doc_url: \"https://lscsoft.docs.ligo.org/lalsuite/lalmetaio/\"\n      dev_url: \"https://git.ligo.org/lscsoft/lalsuite/\"\n      license: \"GPL-2.0-or-later\"\n      license_family: \"GPL\"\n      license_file: \"COPYING\"\n      summary: \"LSC Algorithm MetaIO Library\"\n      description: |\n        The LSC Algorithm MetaIO Library for gravitational wave data analysis.\n        This package contains the python bindings.\n\nabout:\n  home: \"https://wiki.ligo.org/Computing/LALSuite\"\n  doc_url: \"https://lscsoft.docs.ligo.org/lalsuite/lalmetaio/\"\n  dev_url: \"https://git.ligo.org/lscsoft/lalsuite/\"\n  license: \"GPL-2.0-or-later\"\n  license_family: \"GPL\"\n  license_file: \"COPYING\"\n  summary: \"LSC Algorithm MetaIO Library\"\n  description: |\n    The LSC Algorithm MetaIO Library for gravitational wave data analysis.\n    This package contains the shared-object libraries needed to run\n    applications that use the LAL MetaIO library.  If you want to install\n    the Python bindings, please install the associated python-lalmetaio\n    package.\n\nextra:\n  recipe-maintainers:\n    - duncanmmacleod\n    - skymoo\n",
  "req":{
   "__set__":true,
   "elements":[
