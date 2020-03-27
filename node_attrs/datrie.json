@@ -113,24 +113,24 @@
   "build":{
    "number":"0",
    "script":[
-    "rm src/datrie.c src/cdatrie.c src/stdio_ext.c",
-    " -m pip install . --no-deps --ignore-installed  -vvv",
-    "rm src/datrie.c src/cdatrie.c src/stdio_ext.c",
-    " -m pip install . --no-deps --ignore-installed  -vvv",
-    "rm src/datrie.c src/cdatrie.c src/stdio_ext.c",
-    " -m pip install . --no-deps --ignore-installed  -vvv"
+    "-m pip install . --no-deps --ignore-installed  -vvv",
+    "-m pip install . --no-deps --ignore-installed  -vvv",
+    "-m pip install . --no-deps --ignore-installed  -vvv"
    ]
   },
   "extra":{
    "recipe-maintainers":[
     "melund",
+    "tacaswell",
     "melund",
-    "melund"
+    "tacaswell",
+    "melund",
+    "tacaswell"
    ]
   },
   "package":{
    "name":"datrie",
-   "version":"0.8"
+   "version":"0.8.2"
   },
   "requirements":{
    "build":[
@@ -162,13 +162,8 @@
    ]
   },
   "source":{
-   "patches":[
-    "py38-cython.patch",
-    "py38-cython.patch",
-    "py38-cython.patch"
-   ],
-   "sha256":"bdd5da6ba6a97e7cd96eef2e7441c8d2ef890d04ba42694a41c7dffa3aca680c",
-   "url":"https://pypi.io/packages/source/d/datrie/datrie-0.8.tar.gz"
+   "sha256":"525b08f638d5cf6115df6ccd818e5a01298cd230b2dac91c8ff2e6499d18765d",
+   "url":"https://pypi.io/packages/source/d/datrie/datrie-0.8.2.tar.gz"
   },
   "test":{
    "imports":[
@@ -181,7 +176,7 @@
  "name":"datrie",
  "new_version":"0.8.2",
  "pinning_version":"2020.03.24",
- "raw_meta_yaml":"{% set name = \"datrie\" %}\n{% set version = \"0.8\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz\n  sha256: bdd5da6ba6a97e7cd96eef2e7441c8d2ef890d04ba42694a41c7dffa3aca680c\n  patches:\n    - py38-cython.patch\nbuild:\n  number: 0\n  skip: True  # [py2k]\n  script:\n    - rm src/datrie.c src/cdatrie.c src/stdio_ext.c\n    - \"{{ PYTHON }} -m pip install . --no-deps --ignore-installed  -vvv\"\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n  host:\n    - python\n    - pip\n    - cython\n    - pytest-runner\n    - setuptools\n  run:\n    - python\n\ntest:\n  imports:\n    - datrie\n\nabout:\n  home: https://github.com/kmike/datrie/\n  license: LGPLv2\n  license_family: LGPL\n  license_file: COPYING\n  summary: Super-fast, efficiently stored Trie for Python, uses libdatrie\n  doc_url: https://pypi.python.org/pypi/datrie\n  dev_url: https://github.com/kmike/datrie/\n\nextra:\n  recipe-maintainers:\n    - melund\n",
+ "raw_meta_yaml":"{% set name = \"datrie\" %}\n{% set version = \"0.8.2\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz\n  sha256: 525b08f638d5cf6115df6ccd818e5a01298cd230b2dac91c8ff2e6499d18765d\n\nbuild:\n  number: 0\n  skip: true  # [py2k]\n  script:\n    - {{ PYTHON }} -m pip install . --no-deps --ignore-installed  -vvv\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n  host:\n    - python\n    - pip\n    - cython\n    - pytest-runner\n    - setuptools\n  run:\n    - python\n\ntest:\n  imports:\n    - datrie\n\nabout:\n  home: https://github.com/kmike/datrie/\n  license: LGPLv2\n  license_family: LGPL\n  license_file: COPYING\n  summary: Super-fast, efficiently stored Trie for Python, uses libdatrie\n  doc_url: https://pypi.python.org/pypi/datrie\n  dev_url: https://github.com/kmike/datrie/\n\nextra:\n  recipe-maintainers:\n    - melund\n    - tacaswell\n",
  "req":{
   "__set__":true,
   "elements":[
@@ -252,5 +247,5 @@
   }
  },
  "url":"https://pypi.io/packages/source/d/datrie/datrie-0.8.tar.gz",
- "version":"0.8"
+ "version":"0.8.2"
 }
