@@ -443,7 +443,20 @@
    ]
   }
  ],
- "bad":false,
+ "bad":{
+  "exception":"'NoneType' object has no attribute 'get'",
+  "traceback":[
+   "Traceback (most recent call last):",
+   "  File \"/root/repo/cf-scripts/conda_forge_tick/auto_tick.py\", line 922, in main",
+   "    hash_type=attrs.get(\"hash_type\", \"sha256\"),",
+   "  File \"/root/repo/cf-scripts/conda_forge_tick/auto_tick.py\", line 224, in run",
+   "    body=migrator.pr_body(feedstock_ctx),",
+   "  File \"/root/repo/cf-scripts/conda_forge_tick/migrators/version.py\", line 495, in pr_body",
+   "    upstream_url = about.get(\"dev_url\", \"\") or about.get(\"home\", \"\")",
+   "AttributeError: 'NoneType' object has no attribute 'get'",
+   ""
+  ]
+ },
  "conda-forge.yml":{
   "provider":{
    "linux_aarch64":"default",
@@ -499,7 +512,7 @@
   }
  },
  "name":"broot",
- "new_version":"0.13.4",
+ "new_version":"0.13.5",
  "pinning_version":"2020.03.12",
  "raw_meta_yaml":"{% set version = \"0.13.4\" %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: broot\n  version: {{ version }}\n\nsource:\n  url: https://github.com/Canop/broot/archive/v{{ version }}.tar.gz\n  sha256: fd9af3df87f61dbce01c262c71d07cd11221602da7662c321501772eb9a68fff\n\nbuild:\n  number: 0\n\nrequirements:\n  build:\n    - rust\n    - {{ compiler('c') }}     # [unix]\n    - {{native}}binutils      # [win]\n\ntest:\n  commands:\n    - broot --help\n\nabout:\n  home: https://github.com/Canop/broot\n  license: MIT\n  license_family: MIT\n  license_file: LICENSE\n  summary: Balanced tree view + fuzzy search + BFS + customizable launcher\n  doc_url: https://dystroy.org/broot/\n\nextra:\n  recipe-maintainers:\n    - dbast\n",
  "req":{
