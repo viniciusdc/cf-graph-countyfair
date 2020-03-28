@@ -494,7 +494,7 @@
   }
  },
  "name":"virtualenv",
- "new_version":"20.0.14",
+ "new_version":"20.0.15",
  "pinning_version":"2020.02.12",
  "raw_meta_yaml":"{% set version = \"16.7.5\" %}\n\npackage:\n  name: virtualenv\n  version: {{ version }}\n\nsource:\n  url: https://github.com/pypa/virtualenv/archive/{{ version }}.tar.gz\n  sha256: b14f2548f9d9b3db3309756069d2df9cbb8eb1cbd5f968437fc4580a6dbf19b6\n  patches:\n    - 0001-Mach-O-Copy-any-dynamic-libraries-and-symlinks-to-th.patch\n    - 0002-ELF-Copy-any-dynamic-libraries-and-symlinks-to-the-c.patch\n\nbuild:\n  noarch: python\n  number: 0\n  script: \"{{ PYTHON }} -m pip install . --no-deps --ignore-installed --no-cache-dir -vvv\"\n  entry_points:\n    - virtualenv = virtualenv:main\n\nrequirements:\n  host:\n    - python\n    - pip\n  run:\n    - python\n\ntest:\n  commands:\n    - virtualenv --help\n    # Skipping py2k tests b/c it fails on our docker image\n    # but I'm 99% sure it should work locally.\n    - |\n      virtualenv -p \"$(which python)\" /tmp/venv-$$  # [not win]\n      source /tmp/venv-$$/bin/activate  # [not win]\n      python -c 'import sys ; sys.exit(not hasattr(sys, \"real_prefix\"))'  # [not win]\n  imports:\n    - virtualenv\n\nabout:\n  home: https://virtualenv.pypa.io/\n  license: MIT\n  license_file: LICENSE.txt\n  summary: Virtual Python Environment builder\n  description: |\n    virtualenv is a tool to create isolated Python environments.\n  doc_url: https://virtualenv.pypa.io/en/latest/\n  dev_url: https://github.com/pypa/virtualenv\n\nextra:\n  recipe-maintainers:\n    - mingwandroid\n    - kalefranz\n",
  "req":{
