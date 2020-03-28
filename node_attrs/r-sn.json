@@ -102,9 +102,6 @@
  ],
  "bad":false,
  "conda-forge.yml":{
-  "compiler_stack":"comp7",
-  "max_py_ver":"37",
-  "max_r_ver":"35",
   "provider":{
    "win":"azure"
   }
@@ -124,7 +121,7 @@
     "/lib/R/share/licenses/GPL-2",
     "/lib/R/share/licenses/GPL-3"
    ],
-   "summary":"Build and manipulate probability distributions of the skew-normal  family and some related ones, notably the skew-t family, and provide related statistical methods for data fitting and model diagnostics, in the univariate  and the multivariate case."
+   "summary":"Build and manipulate probability distributions of the skew-normal family and some related ones, notably the skew-t family, and provide related statistical methods for data fitting and model diagnostics, in the univariate and the multivariate case."
   },
   "build":{
    "merge_build_host":true,
@@ -141,17 +138,17 @@
   },
   "extra":{
    "recipe-maintainers":[
-    "rvalieris",
     "conda-forge/r",
     "rvalieris",
     "conda-forge/r",
     "rvalieris",
-    "conda-forge/r"
+    "conda-forge/r",
+    "rvalieris"
    ]
   },
   "package":{
    "name":"r-sn",
-   "version":"1.5_5"
+   "version":"1.6_0"
   },
   "requirements":{
    "build":null,
@@ -159,34 +156,40 @@
     "r-base",
     "r-mnormt >=1.5_4",
     "r-numderiv",
+    "r-quantreg",
     "r-base",
     "r-mnormt >=1.5_4",
     "r-numderiv",
+    "r-quantreg",
     "r-base",
     "r-mnormt >=1.5_4",
-    "r-numderiv"
+    "r-numderiv",
+    "r-quantreg"
    ],
    "run":[
     "r-base",
     "r-mnormt >=1.5_4",
     "r-numderiv",
+    "r-quantreg",
     "r-base",
     "r-mnormt >=1.5_4",
     "r-numderiv",
+    "r-quantreg",
     "r-base",
     "r-mnormt >=1.5_4",
-    "r-numderiv"
+    "r-numderiv",
+    "r-quantreg"
    ]
   },
   "source":{
-   "sha256":"2e913f4ef22bbaf19e5fe4588ec8643d8f5f008c51d2cf4358e285d800f3be7a",
+   "sha256":"9515d67c8f78f7309d2341acbfd31ddb59ce9d2c1a4bdd379e9fcb831ec8e442",
    "url":[
-    "https://cran.r-project.org/src/contrib/sn_1.5-5.tar.gz",
-    "https://cran.r-project.org/src/contrib/Archive/sn/sn_1.5-5.tar.gz",
-    "https://cran.r-project.org/src/contrib/sn_1.5-5.tar.gz",
-    "https://cran.r-project.org/src/contrib/Archive/sn/sn_1.5-5.tar.gz",
-    "https://cran.r-project.org/src/contrib/sn_1.5-5.tar.gz",
-    "https://cran.r-project.org/src/contrib/Archive/sn/sn_1.5-5.tar.gz"
+    "https://cran.r-project.org/src/contrib/sn_1.6-0.tar.gz",
+    "https://cran.r-project.org/src/contrib/Archive/sn/sn_1.6-0.tar.gz",
+    "https://cran.r-project.org/src/contrib/sn_1.6-0.tar.gz",
+    "https://cran.r-project.org/src/contrib/Archive/sn/sn_1.6-0.tar.gz",
+    "https://cran.r-project.org/src/contrib/sn_1.6-0.tar.gz",
+    "https://cran.r-project.org/src/contrib/Archive/sn/sn_1.6-0.tar.gz"
    ]
   },
   "test":{
@@ -200,13 +203,14 @@
  "name":"r-sn",
  "new_version":"1.6_0",
  "pinning_version":"2020.03.24",
- "raw_meta_yaml":"{% set version = \"1.5-5\" %}\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-sn\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  url:\n    - {{ cran_mirror }}/src/contrib/sn_{{ version }}.tar.gz\n    - {{ cran_mirror }}/src/contrib/Archive/sn/sn_{{ version }}.tar.gz\n  sha256: 2e913f4ef22bbaf19e5fe4588ec8643d8f5f008c51d2cf4358e285d800f3be7a\n\nbuild:\n  merge_build_host: True  # [win]\n  number: 0\n  noarch: generic\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - {{posix}}zip               # [win]\n  host:\n    - r-base\n    - r-mnormt >=1.5_4\n    - r-numderiv\n  run:\n    - r-base\n    - r-mnormt >=1.5_4\n    - r-numderiv\n\ntest:\n  commands:\n    - $R -e \"library('sn')\"           # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('sn')\\\"\"  # [win]\n\nabout:\n  home: http://azzalini.stat.unipd.it/SN\n  license: GPL-2 | GPL-3\n  summary: Build and manipulate probability distributions of the skew-normal  family and some\n    related ones, notably the skew-t family, and provide related statistical methods\n    for data fitting and model diagnostics, in the univariate  and the multivariate\n    case.\n  license_family: GPL3\n  license_file:\n    - '{{ environ[\"PREFIX\"] }}/lib/R/share/licenses/GPL-2'\n    - '{{ environ[\"PREFIX\"] }}/lib/R/share/licenses/GPL-3'\n\nextra:\n  recipe-maintainers:\n    - rvalieris\n    - conda-forge/r\n\n# Package: sn\n# Version: 1.5-4\n# Date: 2019-05-09\n# Title: The Skew-Normal and Related Distributions Such as the Skew-t\n# Author: Adelchi Azzalini <adelchi.azzalini@unipd.it>\n# Maintainer: Adelchi Azzalini <adelchi.azzalini@unipd.it>\n# Depends: R (>= 2.15.3), methods, stats4\n# Imports: mnormt (>= 1.5-4), numDeriv, stats, grDevices, graphics, utils\n# Description: Build and manipulate probability distributions of the skew-normal  family and some related ones, notably the skew-t family, and provide related statistical methods for data fitting and model diagnostics, in the univariate  and the multivariate case.\n# License: GPL-2 | GPL-3\n# URL: http://azzalini.stat.unipd.it/SN\n# Encoding: UTF-8\n# NeedsCompilation: no\n# Packaged: 2019-05-14 10:28:23 UTC; aa\n# Repository: CRAN\n# Date/Publication: 2019-05-14 14:00:03 UTC\n",
+ "raw_meta_yaml":"{% set version = '1.6-0' %}\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-sn\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  url:\n    - {{ cran_mirror }}/src/contrib/sn_{{ version }}.tar.gz\n    - {{ cran_mirror }}/src/contrib/Archive/sn/sn_{{ version }}.tar.gz\n  sha256: 9515d67c8f78f7309d2341acbfd31ddb59ce9d2c1a4bdd379e9fcb831ec8e442\n\nbuild:\n  merge_build_host: True  # [win]\n  number: 0\n  noarch: generic\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - {{posix}}zip               # [win]\n  host:\n    - r-base\n    - r-mnormt >=1.5_4\n    - r-numderiv\n    - r-quantreg\n  run:\n    - r-base\n    - r-mnormt >=1.5_4\n    - r-numderiv\n    - r-quantreg\n\ntest:\n  commands:\n    - $R -e \"library('sn')\"           # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('sn')\\\"\"  # [win]\n\nabout:\n  home: http://azzalini.stat.unipd.it/SN\n  license: GPL-2 | GPL-3\n  summary: Build and manipulate probability distributions of the skew-normal family and some\n    related ones, notably the skew-t family, and provide related statistical methods\n    for data fitting and model diagnostics, in the univariate and the multivariate case.\n  license_family: GPL3\n  license_file:\n    - '{{ environ[\"PREFIX\"] }}/lib/R/share/licenses/GPL-2'\n    - '{{ environ[\"PREFIX\"] }}/lib/R/share/licenses/GPL-3'\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n    - rvalieris\n\n# Package: sn\n# Version: 1.6-0\n# Date: 2020-03-28\n# Title: The Skew-Normal and Related Distributions Such as the Skew-t\n# Authors@R: person(given = \"Adelchi\", family = \"Azzalini\", email = \"adelchi.azzalini@unipd.it\", role = c(\"aut\", \"cre\"), comment = c(ORCID = \"0000-0002-7583-1269\"))\n# Maintainer: Adelchi Azzalini <adelchi.azzalini@unipd.it>\n# Depends: R (>= 2.15.3), methods, stats4\n# Imports: mnormt (>= 1.5-4), numDeriv, utils, quantreg\n# Description: Build and manipulate probability distributions of the skew-normal family and some related ones, notably the skew-t family, and provide related statistical methods for data fitting and model diagnostics, in the univariate and the multivariate case.\n# License: GPL-2 | GPL-3\n# URL: http://azzalini.stat.unipd.it/SN\n# Encoding: UTF-8\n# NeedsCompilation: no\n# Packaged: 2020-03-28 07:33:15 UTC; aa\n# Author: Adelchi Azzalini [aut, cre] (<https://orcid.org/0000-0002-7583-1269>)\n# Repository: CRAN\n# Date/Publication: 2020-03-28 09:50:02 UTC\n",
  "req":{
   "__set__":true,
   "elements":[
    "r-base",
    "r-mnormt",
-   "r-numderiv"
+   "r-numderiv",
+   "r-quantreg"
   ]
  },
  "requirements":{
@@ -219,7 +223,8 @@
    "elements":[
     "r-base",
     "r-mnormt",
-    "r-numderiv"
+    "r-numderiv",
+    "r-quantreg"
    ]
   },
   "run":{
@@ -227,7 +232,8 @@
    "elements":[
     "r-base",
     "r-mnormt",
-    "r-numderiv"
+    "r-numderiv",
+    "r-quantreg"
    ]
   },
   "test":{
@@ -247,7 +253,8 @@
    "elements":[
     "r-base",
     "r-mnormt >=1.5_4",
-    "r-numderiv"
+    "r-numderiv",
+    "r-quantreg"
    ]
   },
   "run":{
@@ -255,7 +262,8 @@
    "elements":[
     "r-base",
     "r-mnormt >=1.5_4",
-    "r-numderiv"
+    "r-numderiv",
+    "r-quantreg"
    ]
   },
   "test":{
@@ -271,5 +279,5 @@
   "https://cran.r-project.org/src/contrib/sn_1.5-4.tar.gz",
   "https://cran.r-project.org/src/contrib/Archive/sn/sn_1.5-4.tar.gz"
  ],
- "version":"1.5_5"
+ "version":"1.6_0"
 }
