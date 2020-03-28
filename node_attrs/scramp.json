@@ -1,5 +1,18 @@
 {
- "bad":false,
+ "bad":{
+  "exception":"'NoneType' object has no attribute 'get'",
+  "traceback":[
+   "Traceback (most recent call last):",
+   "  File \"/root/repo/cf-scripts/conda_forge_tick/auto_tick.py\", line 922, in main",
+   "    hash_type=attrs.get(\"hash_type\", \"sha256\"),",
+   "  File \"/root/repo/cf-scripts/conda_forge_tick/auto_tick.py\", line 224, in run",
+   "    body=migrator.pr_body(feedstock_ctx),",
+   "  File \"/root/repo/cf-scripts/conda_forge_tick/migrators/version.py\", line 495, in pr_body",
+   "    upstream_url = about.get(\"dev_url\", \"\") or about.get(\"home\", \"\")",
+   "AttributeError: 'NoneType' object has no attribute 'get'",
+   ""
+  ]
+ },
  "conda-forge.yml":{},
  "feedstock_name":"scramp",
  "hash_type":"sha256",
@@ -62,7 +75,7 @@
   }
  },
  "name":"scramp",
- "new_version":"1.1.0",
+ "new_version":"1.1.1",
  "raw_meta_yaml":"{% set name = \"scramp\" %}\n{% set version = \"1.1.0\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz\n  sha256: 475aa6296deb2737b86e9df9098e8eca0f30c8ad1cc0a8adadb99ef012a5ceba\n\nbuild:\n  number: 0\n  script: \"{{ PYTHON }} -m pip install . -vv\"\n  noarch: python\n\nrequirements:\n  host:\n    - python >3.5\n    - pip\n  run:\n    - python >3.5\n\ntest:\n  imports:\n    - scramp\n\nabout:\n  home: https://github.com/tlocke/scramp\n  license: MIT\n  license_family: MIT\n  license_file: LICENSE\n  summary: 'A pure-Python implementation of the SCRAM authentication protocol'\n  description: |\n    A Python implementation of the SCRAM authentication protocol defined by\n    RFC 5802 and RFC 7677.\n\nextra:\n  recipe-maintainers:\n    - nicolas-geniteau\n    - maximerihouey\n    - ncolomer\n",
  "req":{
   "__set__":true,

@@ -1,5 +1,18 @@
 {
- "bad":false,
+ "bad":{
+  "exception":"'NoneType' object has no attribute 'get'",
+  "traceback":[
+   "Traceback (most recent call last):",
+   "  File \"/root/repo/cf-scripts/conda_forge_tick/auto_tick.py\", line 922, in main",
+   "    hash_type=attrs.get(\"hash_type\", \"sha256\"),",
+   "  File \"/root/repo/cf-scripts/conda_forge_tick/auto_tick.py\", line 224, in run",
+   "    body=migrator.pr_body(feedstock_ctx),",
+   "  File \"/root/repo/cf-scripts/conda_forge_tick/migrators/version.py\", line 495, in pr_body",
+   "    upstream_url = about.get(\"dev_url\", \"\") or about.get(\"home\", \"\")",
+   "AttributeError: 'NoneType' object has no attribute 'get'",
+   ""
+  ]
+ },
  "conda-forge.yml":{},
  "feedstock_name":"sage-flatsurf",
  "hash_type":"sha256",
@@ -74,7 +87,7 @@
   }
  },
  "name":"sage-flatsurf",
- "new_version":"0.1",
+ "new_version":"0.2",
  "raw_meta_yaml":"{% set name = \"sage-flatsurf\" %}\n{% set version = \"0.1\" %}\n\npackage:\n  name: {{ name }}\n  version: {{ version }}\n\nsource:\n  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name | replace('-', '_') }}/{{ name | replace('-', '_') }}-{{ version }}.tar.gz\n  sha256: 67e516cf6cd99f29eb05010af44c7717cf39d347f8d0c31e2026dd728989c672\n  patches:\n    - 0001-Fix-import-order.patch\n\nbuild:\n  noarch: python\n  number: 0\n  script: \"{{ PYTHON }} -m pip install . -vv\"\n\nrequirements:\n  host:\n    - python =2.7|>=3.6\n    - pip\n  run:\n    - python =2.7|>=3.6\n    - sagelib\n    - surface-dynamics\n\ntest:\n  imports:\n    - flatsurf\n\nabout:\n  home: http://github.com/videlec/sage-flatsurf\n  license: GPL-2.0-or-later\n  license_file: COPYING\n  summary: 'Flat Surfaces in SageMath'\n  description: |\n    This module supports the investigation of geometric, algebraic and\n    dynamical questions related to flat surfaces. By flat surface we mean a\n    surface modeled on the plane with monodromy given by similarities of the\n    plane, though current efforts are focused on translation surfaces and\n    half-translation surfaces.\n  doc_url: http://www.labri.fr/perso/vdelecro/flatsurf/latest/\n  dev_url: https://github.com/videlec/sage-flatsurf\n\nextra:\n  recipe-maintainers:\n    - saraedum\n    - videlec\n    - slel\n",
  "req":{
   "__set__":true,
