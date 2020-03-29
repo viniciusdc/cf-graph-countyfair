@@ -56,6 +56,23 @@
     "migrator_version",
     "name"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/395216669.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"Version",
+    "migrator_version":0,
+    "version":"0.4.2"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "version"
+   ]
   }
  ],
  "bad":false,
@@ -173,8 +190,8 @@
   }
  },
  "name":"nionui-tool",
- "new_version":"0.4.1",
- "pinning_version":"2020.03.24",
+ "new_version":"0.4.2",
+ "pinning_version":"2020.03.28",
  "raw_meta_yaml":"{% set name = \"nionui-tool\" %}\n{% set version = \"0.4.1\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  url: https://github.com/nion-software/{{ name }}/archive/{{ version }}.tar.gz\n  sha256: cbb89a12b94c48cb28c83e0da8503eaf0c7d4fdcb6720a1d97f1b172f53e51f9\n  patches:\n    - fix_pydealloc.patch\n\nbuild:\n  number: 7\n  skip: True  # [py2k or python_impl == 'pypy']\n  entry_points:\n    - nionui-tool = nion.nionui_tool.command:main\n  binary_relocation: False\n  ignore_prefix_files: True\n  detect_binary_files_with_prefix: False\n  missing_dso_whitelist: \"**/*\"\n  ignore_run_exports:\n    - qt\n\nrequirements:\n  host:\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n    - {{ cdt('mesa-libgl-devel') }}  # [linux]\n    - {{ cdt('mesa-dri-drivers') }}  # [linux]\n    - {{ cdt('libselinux') }}  # [linux]\n    - {{ cdt('libxdamage') }}  # [linux]\n    - {{ cdt('libxxf86vm') }}  # [linux]\n    - {{ cdt('libxext') }}     # [linux]\n    - chrpath  # [linux]\n    - cmake\n    - make  # [not win]\n    - python\n    - numpy 1.14.*\n    - qt\n    - pip\n    - setuptools\n    - xorg-libxfixes  # [linux]\n  run:\n    - python\n\ntest:\n  commands:\n    - test -f \"$PREFIX/bin/nionui-tool\"  # [osx]\n    - test -f \"$PREFIX/bin/Nion UI Launcher.app/Contents/MacOS/Nion UI Launcher\"  # [osx]\n    - test -f \"$PREFIX/bin/Nion UI Launcher.app/Contents/Resources/bootstrap.py\"  # [osx]\n    - test -f \"$PREFIX/bin/nionui-tool\"  # [linux]\n    - test -f \"$PREFIX/bin/NionUILauncher/NionUILauncher\"  # [linux]\n    - test -f \"$PREFIX/bin/NionUILauncher/bootstrap.py\"  # [linux]\n    - if not exist \"%PREFIX%\\\\Scripts\\\\nionui-tool.exe\" exit 1  # [win]\n    - if not exist \"%PREFIX%\\\\Scripts\\\\NionUILauncher\\\\NionUILauncher.exe\" exit 1  # [win]\n    - if not exist \"%PREFIX%\\\\Scripts\\\\NionUILauncher\\\\bootstrap.py\" exit 1  # [win]\n\nabout:\n  home: http://github.com/nion-software/{{ name }}\n  license: Apache-2.0\n  license_family: Apache\n  license_file:\n    - LICENSE\n    - NOTICES\n  summary: \"A native launcher for Nion UI apps.\"\n  dev_url: https://github.com/nion-software/{{ name }}\n\nextra:\n  recipe-maintainers:\n    - cmeyer\n",
  "req":{
   "__set__":true,
