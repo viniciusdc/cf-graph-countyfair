@@ -57,11 +57,7 @@
   }
  ],
  "bad":false,
- "conda-forge.yml":{
-  "compiler_stack":"comp7",
-  "max_py_ver":"37",
-  "max_r_ver":"35"
- },
+ "conda-forge.yml":{},
  "feedstock_name":"openldap",
  "hash_type":"sha256",
  "meta_yaml":{
@@ -75,7 +71,7 @@
    "summary":"OpenLDAP Software is an open source implementation of the Lightweight Directory Access Protocol.\n"
   },
   "build":{
-   "number":"1001",
+   "number":"1002",
    "run_exports":[
     "openldap",
     "openldap",
@@ -156,7 +152,7 @@
  "name":"openldap",
  "new_version":false,
  "pinning_version":"2020.03.28",
- "raw_meta_yaml":"{% set name = \"openldap\" %}\n{% set version = \"2.4.46\" %}\n\npackage:\n  name: \"{{ name|lower }}\"\n  version: \"{{ version }}\"\n\nsource:\n  url: ftp://ftp.openldap.org/pub/OpenLDAP/openldap-release/openldap-{{ version }}.tgz\n  sha256: 9a90dcb86b99ae790ccab93b7585a31fbcbeec8c94bf0f7ab0ca0a87ea0c4b2d\n\nbuild:\n  number: 1001\n  skip: True  # [not unix]\n  run_exports:\n    - {{ pin_subpackage('openldap', max_pin='x.x') }}\n  script:\n    # disable server components\n    - export CPPFLAGS=\"${CPP_FLAGS} -I$PREFIX/include \"\n    - ./configure --prefix=$PREFIX  --disable-slapd --disable-slurpd || { cat config.log; exit 1; }\n    - make\n    - make install \n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n    - make\n  host:\n    - openssl\n    - cyrus-sasl\n    - krb5\n  run:\n    - openssl\n    - cyrus-sasl  \n\ntest:\n  commands:\n    - test $PREFIX/include/ldap.h   # [unix]\n\nabout:\n  home: https://www.openldap.org\n  license: OLDAP-2.8\n  license_family: BSD\n  license_file: LICENSE\n  summary: >\n    OpenLDAP Software is an open source implementation of the Lightweight Directory Access Protocol.\n  doc_url: https://www.openldap.org/doc/\n  dev_url: https://www.openldap.org/software/repo.html\n\nextra:\n  recipe-maintainers:\n    - mariusvniekerk\n    - bollwyvl\n",
+ "raw_meta_yaml":"{% set name = \"openldap\" %}\n{% set version = \"2.4.46\" %}\n\npackage:\n  name: \"{{ name|lower }}\"\n  version: \"{{ version }}\"\n\nsource:\n  url: ftp://ftp.openldap.org/pub/OpenLDAP/openldap-release/openldap-{{ version }}.tgz\n  sha256: 9a90dcb86b99ae790ccab93b7585a31fbcbeec8c94bf0f7ab0ca0a87ea0c4b2d\n\nbuild:\n  number: 1002\n  skip: True  # [not unix]\n  run_exports:\n    - {{ pin_subpackage('openldap', max_pin='x.x') }}\n  script:\n    # disable server components\n    - export CPPFLAGS=\"${CPP_FLAGS} -I$PREFIX/include \"\n    - ./configure --prefix=$PREFIX  --disable-slapd --disable-slurpd || { cat config.log; exit 1; }\n    - make\n    - make install \n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n    - make\n  host:\n    - openssl\n    - cyrus-sasl\n    - krb5\n  run:\n    - openssl\n    - cyrus-sasl  \n\ntest:\n  commands:\n    - test $PREFIX/include/ldap.h   # [unix]\n\nabout:\n  home: https://www.openldap.org\n  license: OLDAP-2.8\n  license_family: BSD\n  license_file: LICENSE\n  summary: >\n    OpenLDAP Software is an open source implementation of the Lightweight Directory Access Protocol.\n  doc_url: https://www.openldap.org/doc/\n  dev_url: https://www.openldap.org/software/repo.html\n\nextra:\n  recipe-maintainers:\n    - mariusvniekerk\n    - bollwyvl\n",
  "req":{
   "__set__":true,
   "elements":[
