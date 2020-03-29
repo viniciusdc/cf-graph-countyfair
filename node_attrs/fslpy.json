@@ -496,34 +496,34 @@
   },
   "package":{
    "name":"fslpy",
-   "version":"2.8.4"
+   "version":"3.0.0"
   },
   "requirements":{
    "host":[
-    "python >=3.5",
+    "python >=3.7",
     "pip",
     "numpy",
-    "python >=3.5",
+    "python >=3.7",
     "pip",
     "numpy",
-    "python >=3.5",
+    "python >=3.7",
     "pip",
     "numpy"
    ],
    "run":[
-    "python >=3.5",
+    "python >=3.7",
     "numpy",
     "scipy >=0.18",
     "nibabel >=2.3.1",
     "six 1.*",
     "h5py >=2.9",
-    "python >=3.5",
+    "python >=3.7",
     "numpy",
     "scipy >=0.18",
     "nibabel >=2.3.1",
     "six 1.*",
     "h5py >=2.9",
-    "python >=3.5",
+    "python >=3.7",
     "numpy",
     "scipy >=0.18",
     "nibabel >=2.3.1",
@@ -557,14 +557,14 @@
     "test_dicom.py.patch",
     "test_dicom.py.patch"
    ],
-   "sha256":"2db554d9f54440c4b07aace0c440e8448d61c7b888c304f107b462d27b1f369e",
-   "url":"https://pypi.io/packages/source/f/fslpy/fslpy-2.8.4.tar.gz"
+   "sha256":"7a9615f1ccc310ea38b8fb8c5448efa3cf089c897e8c265c3d7128095534608d",
+   "url":"https://pypi.io/packages/source/f/fslpy/fslpy-3.0.0.tar.gz"
   },
   "test":{
    "commands":[
-    "pytest -x -v --cov=fsl -m \"not (wxtest or unixtest or longtest or fsltest or noroottest)\" tests",
-    "pytest -x -v --cov=fsl -m \"not (wxtest or unixtest or longtest or fsltest or noroottest)\" tests",
-    "pytest -x -v --cov=fsl -m \"not (wxtest or unixtest or longtest or fsltest or noroottest)\" tests"
+    "pytest -x -v --cov=fsl -m \"not (wxtest or unixtest or longtest or fsltest or noroottest)\" -k \"not (fslsub or fslstats)\" tests",
+    "pytest -x -v --cov=fsl -m \"not (wxtest or unixtest or longtest or fsltest or noroottest)\" -k \"not (fslsub or fslstats)\" tests",
+    "pytest -x -v --cov=fsl -m \"not (wxtest or unixtest or longtest or fsltest or noroottest)\" -k \"not (fslsub or fslstats)\" tests"
    ],
    "requires":[
     "mock",
@@ -605,7 +605,7 @@
  "name":"fslpy",
  "new_version":"3.0.0",
  "pinning_version":"2020.03.28",
- "raw_meta_yaml":"{% set name = \"fslpy\" %}\n{% set version = \"2.8.4\" %}\n{% set sha256 = \"2db554d9f54440c4b07aace0c440e8448d61c7b888c304f107b462d27b1f369e\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz\n  sha256: {{ sha256 }}\n  patches:\n    - test_dicom.py.patch\n\nbuild:\n  noarch: python\n  number: 0\n  script: {{ PYTHON }} -m pip install . --no-deps --ignore-installed --no-cache-dir -vvv\n  entry_points:\n    - immv           = fsl.scripts.immv:main\n    - imcp           = fsl.scripts.imcp:main\n    - imglob         = fsl.scripts.imglob:main\n    - atlasq         = fsl.scripts.atlasq:main\n    - atlasquery     = fsl.scripts.atlasq:atlasquery_emulation\n    - fsl_ents       = fsl.scripts.fsl_ents:main\n    - resample_image = fsl.scripts.resample_image:main\n    - fsl_apply_x5   = fsl.scripts.fsl_apply_x5:main\n    - fsl_convert_x5 = fsl.scripts.fsl_convert_x5:main\n\nrequirements:\n  host:\n    - python >=3.5\n    - pip\n    - numpy\n  run:\n    - python >=3.5\n    - {{ pin_compatible('numpy') }}\n    - scipy >=0.18\n    - nibabel >=2.3.1\n    - six 1.*\n    - h5py >=2.9\n  run_constrained:\n    - indexed_gzip >=0.7\n    - wxpython >=4\n    - trimesh >=2.37.29\n    - rtree >=0.8.3.*\n    - dcm2niix >=1.0.20171215\n    - pillow >=3.2.0\n\ntest:\n  source_files:\n    - tests\n  requires:\n    - mock\n    - coverage\n    - pytest\n    - pytest-cov\n    - trimesh >=2.37.29\n    - rtree >=0.8.3\n    - indexed_gzip >=0.7\n    - dcm2niix >=1.0.20171215\n    - pillow >=3.2.0\n  commands:\n    - pytest -x -v --cov=fsl -m \"not (wxtest or unixtest or longtest or fsltest or noroottest)\" tests\n\n\nabout:\n  home: https://git.fmrib.ox.ac.uk/fsl/fslpy/\n  license: Apache-2.0\n  license_family: Apache\n  license_file: LICENSE\n  summary: The FSL Python library\n  dev_url: https://git.fmrib.ox.ac.uk/fsl/fslpy/\n\nextra:\n  recipe-maintainers:\n    - pauldmccarthy\n",
+ "raw_meta_yaml":"{% set name = \"fslpy\" %}\n{% set version = \"3.0.0\" %}\n{% set sha256 = \"7a9615f1ccc310ea38b8fb8c5448efa3cf089c897e8c265c3d7128095534608d\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz\n  sha256: {{ sha256 }}\n  patches:\n    - test_dicom.py.patch\n\nbuild:\n  noarch: python\n  number: 0\n  script: {{ PYTHON }} -m pip install . --no-deps --ignore-installed --no-cache-dir -vvv\n  entry_points:\n    - immv           = fsl.scripts.immv:main\n    - imcp           = fsl.scripts.imcp:main\n    - imglob         = fsl.scripts.imglob:main\n    - atlasq         = fsl.scripts.atlasq:main\n    - atlasquery     = fsl.scripts.atlasq:atlasquery_emulation\n    - fsl_ents       = fsl.scripts.fsl_ents:main\n    - resample_image = fsl.scripts.resample_image:main\n    - fsl_apply_x5   = fsl.scripts.fsl_apply_x5:main\n    - fsl_convert_x5 = fsl.scripts.fsl_convert_x5:main\n\nrequirements:\n  host:\n    - python >=3.7\n    - pip\n    - numpy\n  run:\n    - python >=3.7\n    - {{ pin_compatible('numpy') }}\n    - scipy >=0.18\n    - nibabel >=2.3.1\n    - six 1.*\n    - h5py >=2.9\n  run_constrained:\n    - indexed_gzip >=0.7\n    - wxpython >=4\n    - trimesh >=2.37.29\n    - rtree >=0.8.3.*\n    - dcm2niix >=1.0.20171215\n    - pillow >=3.2.0\n\ntest:\n  source_files:\n    - tests\n  requires:\n    - mock\n    - coverage\n    - pytest\n    - pytest-cov\n    - trimesh >=2.37.29\n    - rtree >=0.8.3\n    - indexed_gzip >=0.7\n    - dcm2niix >=1.0.20171215\n    - pillow >=3.2.0\n  commands:\n    - pytest -x -v --cov=fsl -m \"not (wxtest or unixtest or longtest or fsltest or noroottest)\" -k \"not (fslsub or fslstats)\" tests\n\n\nabout:\n  home: https://git.fmrib.ox.ac.uk/fsl/fslpy/\n  license: Apache-2.0\n  license_family: Apache\n  license_file: LICENSE\n  summary: The FSL Python library\n  dev_url: https://git.fmrib.ox.ac.uk/fsl/fslpy/\n\nextra:\n  recipe-maintainers:\n    - pauldmccarthy\n",
  "req":{
   "__set__":true,
   "elements":[
@@ -669,7 +669,7 @@
    "elements":[
     "numpy",
     "pip",
-    "python >=3.5"
+    "python >=3.7"
    ]
   },
   "run":{
@@ -678,7 +678,7 @@
     "h5py >=2.9",
     "nibabel >=2.3.1",
     "numpy",
-    "python >=3.5",
+    "python >=3.7",
     "scipy >=0.18",
     "six 1.*"
    ]
@@ -699,5 +699,5 @@
   }
  },
  "url":"https://pypi.io/packages/source/f/fslpy/fslpy-2.5.0.tar.gz",
- "version":"2.8.4"
+ "version":"3.0.0"
 }
