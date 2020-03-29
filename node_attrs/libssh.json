@@ -47,13 +47,13 @@
    "dev_url":"https://www.libssh.org/communication/",
    "doc_url":"https://www.libssh.org/documentation/",
    "home":"https://libssh.org",
-   "license":"LGPL 2.1",
+   "license":"LGPL-2.1",
    "license_family":"GPL",
    "license_file":"COPYING",
    "summary":"libssh - The SSH library"
   },
   "build":{
-   "number":"0",
+   "number":"1",
    "run_exports":[
     "libssh",
     "libssh",
@@ -106,7 +106,7 @@
  "name":"libssh",
  "new_version":"0.8.8",
  "pinning_version":"2019.12.02",
- "raw_meta_yaml":"{% set name = \"libssh\" %}\n{% set version = \"0.8.8\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  url: https://www.libssh.org/files/0.8/{{ name }}-{{ version }}.tar.xz\n  sha256: 4b127fd736ac4df109ae7368f44201a2d0b989e0c89132dd92290593535d65e2\n\nbuild:\n  number: 0\n  skip: True  # [not linux]\n  run_exports:\n    - {{ pin_subpackage('libssh') }}\n\nrequirements:\n  build:\n    - {{ compiler('cxx') }}\n    - {{ compiler('c') }}\n    - cmake\n  host:\n    - openssl\n    - zlib\n\ntest:\n  commands:\n    - conda inspect linkages {{ name }}  # [linux]\n\nabout:\n  home: https://libssh.org\n  license: LGPL 2.1\n  license_family: GPL\n  license_file: COPYING\n  summary: 'libssh - The SSH library'\n\n  description: |\n    libssh is a multiplatform C library implementing the SSHv2 protocol \n    on client and server side. With libssh, you can remotely execute \n    programs, transfer files, use a secure and transparent tunnel, \n    manage public keys and much more ...  \n  doc_url: https://www.libssh.org/documentation/\n  dev_url: https://www.libssh.org/communication/\n\nextra:\n  recipe-maintainers:\n    - jan-janssen\n",
+ "raw_meta_yaml":"{% set name = \"libssh\" %}\n{% set version = \"0.8.8\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  url: https://www.libssh.org/files/0.8/{{ name }}-{{ version }}.tar.xz\n  sha256: 4b127fd736ac4df109ae7368f44201a2d0b989e0c89132dd92290593535d65e2\n\nbuild:\n  number: 1\n  skip: True  # [not unix]\n  run_exports:\n    - {{ pin_subpackage('libssh') }}\n\nrequirements:\n  build:\n    - {{ compiler('cxx') }}\n    - {{ compiler('c') }}\n    - cmake\n  host:\n    - openssl\n    - zlib\n\ntest:\n  commands:\n    - conda inspect linkages {{ name }}  # [linux]\n\nabout:\n  home: https://libssh.org\n  license: LGPL-2.1\n  license_family: GPL\n  license_file: COPYING\n  summary: 'libssh - The SSH library'\n\n  description: |\n    libssh is a multiplatform C library implementing the SSHv2 protocol \n    on client and server side. With libssh, you can remotely execute \n    programs, transfer files, use a secure and transparent tunnel, \n    manage public keys and much more ...  \n  doc_url: https://www.libssh.org/documentation/\n  dev_url: https://www.libssh.org/communication/\n\nextra:\n  recipe-maintainers:\n    - jan-janssen\n",
  "req":{
   "__set__":true,
   "elements":[
