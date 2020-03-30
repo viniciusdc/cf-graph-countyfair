@@ -139,6 +139,23 @@
     "migrator_version",
     "version"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/395461896.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"Version",
+    "migrator_version":0,
+    "version":"2.0.1"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "version"
+   ]
   }
  ],
  "bad":false,
@@ -246,7 +263,7 @@
   }
  },
  "name":"lbenv",
- "new_version":"2.0.0",
+ "new_version":"2.0.1",
  "pinning_version":"2020.03.28",
  "raw_meta_yaml":"{% set name = \"LbEnv\" %}\n{% set version = \"2.0.0\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz\n  sha256: cd92a3731e212df0a547bb6a33ce5a24188805c9c97b662974195e88c5ef31b2\n\nbuild:\n  number: 0\n  # Can't be noarch due to use of 2to3 in setup.py\n  # noarch: python\n  entry_points:\n    - lb-run=LbEnv.ProjectEnv.script:main\n    - lb-completion-helper=LbEnv.Utils.Completion:main\n  script: {{ PYTHON }} -m pip install . -vv\n\nrequirements:\n  host:\n    - pip\n    - python\n    - setuptools_scm\n    - nose\n  run:\n    - lbplatformutils >=4.2.3\n    - python\n    - setuptools\n    - six\n    - xenv <1.0.0\n\ntest:\n  imports:\n    - LbEnv\n    - LbEnv.ProjectEnv\n    - LbEnv.Utils\n  commands:\n    - lb-run --help\n    - lb-completion-helper --help\n\nabout:\n  home: https://gitlab.cern.ch/lhcb-core/LbEnv\n  license: GPL-3.0-or-later\n  license_family: GPL\n  license_file: LICENSE\n  summary: LHCb Environment tools\n  doc_url: https://gitlab.cern.ch/lhcb-core/LbEnv\n  dev_url: https://gitlab.cern.ch/lhcb-core/LbEnv\n\nextra:\n  recipe-maintainers:\n    - chrisburr\n",
  "req":{
