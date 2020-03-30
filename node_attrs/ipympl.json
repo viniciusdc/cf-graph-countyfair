@@ -261,7 +261,7 @@
  "hash_type":"sha256",
  "meta_yaml":{
   "about":{
-   "home":"https://github.com/matplotlib/jupyter-matplotlib",
+   "home":"https://github.com/matplotlib/ipympl",
    "license":"BSD 3-Clause",
    "license_family":"BSD",
    "license_file":"LICENSE",
@@ -269,7 +269,7 @@
   },
   "build":{
    "noarch":"python",
-   "number":"0",
+   "number":"1",
    "script":"-m pip install . --no-deps -vv"
   },
   "extra":{
@@ -334,6 +334,17 @@
    "url":"https://pypi.io/packages/source/i/ipympl/ipympl-0.5.6.tar.gz"
   },
   "test":{
+   "commands":[
+    "if exist %PREFIX%\\\\share\\\\jupyter\\\\nbextensions\\\\jupyter-matplotlib\\\\extension.js (exit 0) else (exit 1)",
+    "if exist %PREFIX%\\\\share\\\\jupyter\\\\nbextensions\\\\jupyter-matplotlib\\\\index.js (exit 0) else (exit 1)",
+    "if exist %PREFIX%\\\\share\\\\jupyter\\\\lab\\\\extensions\\\\jupyter-matplotlib-0.7.2.tgz (exit 0) else (exit 1)",
+    "test -f ${PREFIX}/share/jupyter/nbextensions/jupyter-matplotlib/extension.js",
+    "test -f ${PREFIX}/share/jupyter/nbextensions/jupyter-matplotlib/index.js",
+    "test -f ${PREFIX}/share/jupyter/lab/extensions/jupyter-matplotlib-0.7.2.tgz",
+    "test -f ${PREFIX}/share/jupyter/nbextensions/jupyter-matplotlib/extension.js",
+    "test -f ${PREFIX}/share/jupyter/nbextensions/jupyter-matplotlib/index.js",
+    "test -f ${PREFIX}/share/jupyter/lab/extensions/jupyter-matplotlib-0.7.2.tgz"
+   ],
    "imports":[
     "ipympl",
     "ipympl",
@@ -344,7 +355,7 @@
  "name":"ipympl",
  "new_version":"0.5.6",
  "pinning_version":"2020.03.16",
- "raw_meta_yaml":"{% set version = \"0.5.6\" %}\n{% set sha256 = \"076240e606f4dc1f23b7ecc3303c759f5718dc16f9a119382776c6cb382a53e9\" %}\n\npackage:\n  name: ipympl\n  version: {{ version }}\n\nsource:\n  fn: ipympl-{{ version }}.tar.gz\n  url: https://pypi.io/packages/source/i/ipympl/ipympl-{{ version }}.tar.gz\n  sha256: {{ sha256 }}\n\nbuild:\n  number: 0\n  noarch: python\n  script: {{ PYTHON }} -m pip install . --no-deps -vv\n\nrequirements:\n  build:\n    - python\n    - setuptools\n    - jupyter\n    - pip\n  run:\n    - python\n    - ipywidgets >=7.5.0,<8.0\n    - ipykernel >=4.7\n    - matplotlib-base >=2.2.0\n    - six\n\ntest:\n  imports:\n    - ipympl\n\nabout:\n  home: https://github.com/matplotlib/jupyter-matplotlib\n  license: BSD 3-Clause\n  license_family: BSD\n  license_file: LICENSE\n  summary: Matplotlib Jupyter Extension\n\nextra:\n  recipe-maintainers:\n    - JasonGrout\n    - SylvainCorlay\n    - tacaswell\n    - blink1073\n    - martinRenou\n",
+ "raw_meta_yaml":"{% set version = \"0.5.6\" %}\n{% set js_version = \"0.7.2\" %}\n{% set sha256 = \"076240e606f4dc1f23b7ecc3303c759f5718dc16f9a119382776c6cb382a53e9\" %}\n\npackage:\n  name: ipympl\n  version: {{ version }}\n\nsource:\n  fn: ipympl-{{ version }}.tar.gz\n  url: https://pypi.io/packages/source/i/ipympl/ipympl-{{ version }}.tar.gz\n  sha256: {{ sha256 }}\n\nbuild:\n  number: 1\n  noarch: python\n  script: {{ PYTHON }} -m pip install . --no-deps -vv\n\nrequirements:\n  build:\n    - python\n    - setuptools\n    - jupyter\n    - pip\n  run:\n    - python\n    - ipywidgets >=7.5.0,<8.0\n    - ipykernel >=4.7\n    - matplotlib-base >=2.2.0\n    - six\n\ntest:\n  imports:\n    - ipympl\n  commands:\n    - test -f ${PREFIX}/share/jupyter/nbextensions/jupyter-matplotlib/extension.js                                     # [unix]\n    - test -f ${PREFIX}/share/jupyter/nbextensions/jupyter-matplotlib/index.js                                         # [unix]\n    - test -f ${PREFIX}/share/jupyter/lab/extensions/jupyter-matplotlib-{{ js_version }}.tgz                              # [unix]\n    - if exist %PREFIX%\\\\share\\\\jupyter\\\\nbextensions\\\\jupyter-matplotlib\\\\extension.js (exit 0) else (exit 1)         # [win]\n    - if exist %PREFIX%\\\\share\\\\jupyter\\\\nbextensions\\\\jupyter-matplotlib\\\\index.js (exit 0) else (exit 1)             # [win]\n    - if exist %PREFIX%\\\\share\\\\jupyter\\\\lab\\\\extensions\\\\jupyter-matplotlib-{{ js_version }}.tgz (exit 0) else (exit 1)  # [win]\n\nabout:\n  home: https://github.com/matplotlib/ipympl\n  license: BSD 3-Clause\n  license_family: BSD\n  license_file: LICENSE\n  summary: Matplotlib Jupyter Extension\n\nextra:\n  recipe-maintainers:\n    - JasonGrout\n    - SylvainCorlay\n    - tacaswell\n    - blink1073\n    - martinRenou\n",
  "req":{
   "__set__":true,
   "elements":[
