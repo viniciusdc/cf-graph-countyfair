@@ -84,6 +84,44 @@
     "migrator_version",
     "version"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/395737603.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"MigrationYaml",
+    "migrator_object_version":1,
+    "migrator_version":0,
+    "name":"pypy"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_object_version",
+    "migrator_version",
+    "name"
+   ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/395739358.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"MigrationYaml",
+    "migrator_object_version":1,
+    "migrator_version":0,
+    "name":"python38"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_object_version",
+    "migrator_version",
+    "name"
+   ]
   }
  ],
  "bad":false,
@@ -102,8 +140,7 @@
    "summary":"A Python library to create SVG drawings."
   },
   "build":{
-   "noarch":"python",
-   "number":"0",
+   "number":"1",
    "script":"python setup.py install --single-version-externally-managed --record=record.txt"
   },
   "extra":{
@@ -118,13 +155,16 @@
    "version":"1.4"
   },
   "requirements":{
-   "build":[
+   "host":[
+    "pip",
     "python",
     "setuptools",
     "pyparsing >=2.0.1",
+    "pip",
     "python",
     "setuptools",
     "pyparsing >=2.0.1",
+    "pip",
     "python",
     "setuptools",
     "pyparsing >=2.0.1"
@@ -154,10 +194,11 @@
  "name":"svgwrite",
  "new_version":"1.4",
  "pinning_version":"2020.03.28",
- "raw_meta_yaml":"{% set name = \"svgwrite\" %}\n{% set version = \"1.4\" %}\n{% set sha256 = \"b38ac03b67f81c728d81a33e4711aaf3ab136a57156d721bb17f88525d9909bb\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  fn: {{ name }}-{{ version }}.zip\n  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.zip\n  sha256: {{ sha256 }}\n\nbuild:\n  noarch: python\n  number: 0\n  script: python setup.py install --single-version-externally-managed --record=record.txt\n\nrequirements:\n  build:\n    - python\n    - setuptools\n    - pyparsing >=2.0.1\n  run:\n    - python\n    - pyparsing >=2.0.1\n\ntest:\n  imports:\n    - svgwrite\n\nabout:\n  home: https://github.com/mozman/svgwrite\n  license: MIT\n  license_family: MIT\n  license_file: LICENSE.TXT\n  summary: A Python library to create SVG drawings.\n  description: A Python library to create SVG drawings.\n  doc_url: http://svgwrite.readthedocs.io\n  dev_url: https://github.com/mozman/svgwrite\n\nextra:\n  recipe-maintainers:\n    - jeromekelleher\n",
+ "raw_meta_yaml":"{% set name = \"svgwrite\" %}\n{% set version = \"1.4\" %}\n{% set sha256 = \"b38ac03b67f81c728d81a33e4711aaf3ab136a57156d721bb17f88525d9909bb\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  fn: {{ name }}-{{ version }}.zip\n  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.zip\n  sha256: {{ sha256 }}\n\nbuild:\n  script: \"{{ PYTHON }} -m pip install . --no-deps -vv\"\n  number: 1\n  script: python setup.py install --single-version-externally-managed --record=record.txt\n  skip: True  # [py<36]\n\nrequirements:\n  host:\n    - pip\n    - python\n    - setuptools\n    - pyparsing >=2.0.1\n  run:\n    - python\n    - pyparsing >=2.0.1\n\ntest:\n  imports:\n    - svgwrite\n\nabout:\n  home: https://github.com/mozman/svgwrite\n  license: MIT\n  license_family: MIT\n  license_file: LICENSE.TXT\n  summary: A Python library to create SVG drawings.\n  description: A Python library to create SVG drawings.\n  doc_url: http://svgwrite.readthedocs.io\n  dev_url: https://github.com/mozman/svgwrite\n\nextra:\n  recipe-maintainers:\n    - jeromekelleher\n",
  "req":{
   "__set__":true,
   "elements":[
+   "pip",
    "pyparsing",
    "python",
    "setuptools"
@@ -166,15 +207,16 @@
  "requirements":{
   "build":{
    "__set__":true,
+   "elements":[]
+  },
+  "host":{
+   "__set__":true,
    "elements":[
+    "pip",
     "pyparsing",
     "python",
     "setuptools"
    ]
-  },
-  "host":{
-   "__set__":true,
-   "elements":[]
   },
   "run":{
    "__set__":true,
@@ -193,15 +235,16 @@
  "total_requirements":{
   "build":{
    "__set__":true,
+   "elements":[]
+  },
+  "host":{
+   "__set__":true,
    "elements":[
+    "pip",
     "pyparsing >=2.0.1",
     "python",
     "setuptools"
    ]
-  },
-  "host":{
-   "__set__":true,
-   "elements":[]
   },
   "run":{
    "__set__":true,
