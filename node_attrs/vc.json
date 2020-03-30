@@ -19,15 +19,16 @@
   }
  ],
  "bad":"Upstream: Error getting upstream version",
- "conda-forge.yml":{
-  "provider":{
-   "win":"appveyor"
-  }
- },
+ "conda-forge.yml":{},
  "feedstock_name":"vc",
  "meta_yaml":{
+  "about":{
+   "home":"https://docs.microsoft.com/en-us/visualstudio/windows/?view=vs-2017",
+   "license":"BSD-3-Clause",
+   "summary":"Activation and version verification of MSVC 14.1 (VS 2017\ncompiler, update )\n"
+  },
   "build":{
-   "number":"11",
+   "number":"0",
    "skip":true
   },
   "extra":{
@@ -55,40 +56,75 @@
   "outputs":[
    {
     "about":{
-     "license":"BSD 3-clause",
-     "summary":"Activation and version verification of MSVC 14 (VS 2015) compiler"
+     "license":"BSD-3-Clause",
+     "summary":"Activation and version verification of MSVC 14.1 (VS 2017 compiler, update )"
     },
-    "name":"vs2015_",
-    "run_exports":{
-     "strong":[
-      "vc",
-      "vs2015_runtime"
+    "build":{
+     "run_exports":{
+      "strong":[
+       "vc",
+       "vs2015_runtime"
+      ]
+     },
+     "track_features":[
+      "vc14"
+     ]
+    },
+    "name":"vs2017_",
+    "requirements":{
+     "build":[
+      "m2-sed"
+     ],
+     "run":[
+      "vswhere"
      ]
     },
     "script":"install_activate.bat",
-    "track_features":[
-     "vc14"
-    ]
+    "test":{
+     "commands":[
+      "cl.exe"
+     ]
+    },
+    "version":null
    },
    {
+    "about":{
+     "summary":"MSVC runtimes associated with cl.exe version  (VS 2017 update )"
+    },
     "build":{
+     "missing_dso_whitelist":[
+      "*.dll",
+      "*.DLL"
+     ],
      "no_link":[
       "*.dll\n",
       "Library/bin/*.dll"
      ]
     },
     "name":"vs2015_runtime",
-    "script":"install_runtime.bat"
+    "requirements":{
+     "build":[
+      "vswhere"
+     ]
+    },
+    "script":"install_runtime.bat",
+    "version":null
    },
    {
     "about":{
-     "description":"This metapackage is used to activate vc features without\ndepending on Python.\n",
+     "description":"This metapackage is used to enforce consistency of runtime\ndependencies within an environment\n",
      "dev_url":"https://github.com/conda/conda/wiki/VC-features",
      "doc_url":"https://github.com/conda/conda/wiki/VC-features",
      "home":"https://github.com/conda/conda/wiki/VC-features",
-     "license":"Modified BSD License (3-clause)",
+     "license":"BSD-3-Clause",
      "license_family":"BSD",
-     "summary":"A meta-package to track VC features."
+     "summary":"A meta-package to impose mutual exclusivity among software built with different VS versions"
+    },
+    "build":{
+     "number":"1",
+     "track_features":[
+      "vc14"
+     ]
     },
     "name":"vc",
     "requirements":{
@@ -96,47 +132,79 @@
       "vs2015_runtime"
      ]
     },
-    "track_features":[
-     "vc14"
-    ],
-    "version":"14"
+    "version":"14.1"
    },
    {
     "about":{
-     "license":"BSD 3-clause",
-     "summary":"Activation and version verification of MSVC 14 (VS 2015) compiler"
+     "license":"BSD-3-Clause",
+     "summary":"Activation and version verification of MSVC 14.1 (VS 2017 compiler, update )"
     },
-    "name":"vs2015_",
-    "run_exports":{
-     "strong":[
-      "vc",
-      "vs2015_runtime"
+    "build":{
+     "run_exports":{
+      "strong":[
+       "vc",
+       "vs2015_runtime"
+      ]
+     },
+     "track_features":[
+      "vc14"
+     ]
+    },
+    "name":"vs2017_",
+    "requirements":{
+     "build":[
+      "m2-sed"
+     ],
+     "run":[
+      "vswhere"
      ]
     },
     "script":"install_activate.bat",
-    "track_features":[
-     "vc14"
-    ]
+    "test":{
+     "commands":[
+      "cl.exe"
+     ]
+    },
+    "version":null
    },
    {
+    "about":{
+     "summary":"MSVC runtimes associated with cl.exe version  (VS 2017 update )"
+    },
     "build":{
+     "missing_dso_whitelist":[
+      "*.dll",
+      "*.DLL"
+     ],
      "no_link":[
       "*.dll\n",
       "Library/bin/*.dll"
      ]
     },
     "name":"vs2015_runtime",
-    "script":"install_runtime.bat"
+    "requirements":{
+     "build":[
+      "vswhere"
+     ]
+    },
+    "script":"install_runtime.bat",
+    "version":null
    },
    {
     "about":{
-     "description":"This metapackage is used to activate vc features without\ndepending on Python.\n",
+     "description":"This metapackage is used to enforce consistency of runtime\ndependencies within an environment\n",
      "dev_url":"https://github.com/conda/conda/wiki/VC-features",
      "doc_url":"https://github.com/conda/conda/wiki/VC-features",
      "home":"https://github.com/conda/conda/wiki/VC-features",
-     "license":"Modified BSD License (3-clause)",
+     "license":"BSD-3-Clause",
      "license_family":"BSD",
-     "summary":"A meta-package to track VC features."
+     "summary":"A meta-package to impose mutual exclusivity among software built with different VS versions"
+    },
+    "build":{
+     "number":"1",
+     "track_features":[
+      "vc14"
+     ]
     },
     "name":"vc",
     "requirements":{
@@ -144,47 +212,79 @@
       "vs2015_runtime"
      ]
     },
-    "track_features":[
-     "vc14"
-    ],
-    "version":"14"
+    "version":"14.1"
    },
    {
     "about":{
-     "license":"BSD 3-clause",
-     "summary":"Activation and version verification of MSVC 14 (VS 2015) compiler"
+     "license":"BSD-3-Clause",
+     "summary":"Activation and version verification of MSVC 14.1 (VS 2017 compiler, update )"
     },
-    "name":"vs2015_",
-    "run_exports":{
-     "strong":[
-      "vc",
-      "vs2015_runtime"
+    "build":{
+     "run_exports":{
+      "strong":[
+       "vc",
+       "vs2015_runtime"
+      ]
+     },
+     "track_features":[
+      "vc14"
+     ]
+    },
+    "name":"vs2017_",
+    "requirements":{
+     "build":[
+      "m2-sed"
+     ],
+     "run":[
+      "vswhere"
      ]
     },
     "script":"install_activate.bat",
-    "track_features":[
-     "vc14"
-    ]
+    "test":{
+     "commands":[
+      "cl.exe"
+     ]
+    },
+    "version":null
    },
    {
+    "about":{
+     "summary":"MSVC runtimes associated with cl.exe version  (VS 2017 update )"
+    },
     "build":{
+     "missing_dso_whitelist":[
+      "*.dll",
+      "*.DLL"
+     ],
      "no_link":[
       "*.dll\n",
       "Library/bin/*.dll"
      ]
     },
     "name":"vs2015_runtime",
-    "script":"install_runtime.bat"
+    "requirements":{
+     "build":[
+      "vswhere"
+     ]
+    },
+    "script":"install_runtime.bat",
+    "version":null
    },
    {
     "about":{
-     "description":"This metapackage is used to activate vc features without\ndepending on Python.\n",
+     "description":"This metapackage is used to enforce consistency of runtime\ndependencies within an environment\n",
      "dev_url":"https://github.com/conda/conda/wiki/VC-features",
      "doc_url":"https://github.com/conda/conda/wiki/VC-features",
      "home":"https://github.com/conda/conda/wiki/VC-features",
-     "license":"Modified BSD License (3-clause)",
+     "license":"BSD-3-Clause",
      "license_family":"BSD",
-     "summary":"A meta-package to track VC features."
+     "summary":"A meta-package to impose mutual exclusivity among software built with different VS versions"
+    },
+    "build":{
+     "number":"1",
+     "track_features":[
+      "vc14"
+     ]
     },
     "name":"vc",
     "requirements":{
@@ -192,45 +292,51 @@
       "vs2015_runtime"
      ]
     },
-    "track_features":[
-     "vc14"
-    ],
-    "version":"14"
+    "version":"14.1"
    }
   ],
   "package":{
-   "name":"vs2015",
-   "version":"14.0.25420"
+   "name":"vs2017",
+   "version":"None"
   }
  },
- "name":"vs2015",
+ "name":"vs2017",
  "new_version":false,
  "outputs_names":[
   "vc",
-  "vs2015_",
-  "vs2015_runtime"
+  "vs2015_runtime",
+  "vs2017_"
  ],
  "pinning_version":"2019.01.21",
- "raw_meta_yaml":"# version numbering is explained at https://stackoverflow.com/questions/42730478/version-numbers-for-visual-studio-2017-boost-and-cmake\n#     This version number follows the \"platform toolset\"\n{% set vcver=\"14\" %}\n{% set vsyear=\"2015\" %}\n{% set fullver=\"14.0.25420\" %}\n\npackage:\n  name: vs{{ vsyear }}\n  version: {{ fullver }}\n\nbuild:\n  number: 11\n  skip: True  [not win]\n\noutputs:\n  - name: vs{{ vsyear }}_{{ cross_compiler_target_platform }}\n    script: install_activate.bat\n    track_features:\n      - vc{{vcver}}\n    run_exports:\n      strong:\n        # compatible within major version.  This is MSFT's incrementing of the UCRT version.  It was\n        #    14.0 with VS2015, and 14.1 with VS2017 - if the major version changes, we're assuming\n        #    that binary compatibility breaks.\n        - {{ pin_subpackage('vc') }}\n        - {{ pin_subpackage('vs' ~ vsyear ~ '_runtime', max_pin=None) }}\n    about:\n      summary: Activation and version verification of MSVC {{ vcver }} (VS {{ vsyear }}) compiler\n      license: BSD 3-clause\n\n  - name: vs{{ vsyear }}_runtime\n    script: install_runtime.bat\n    build:\n      no_link:\n        - |\n          *.dll\n        - Library/bin/*.dll\n\n  - name: vc\n    version: {{ vcver }}\n    track_features:\n      - vc{{vcver}}\n    requirements:\n      run:\n        # Set lower bound for runtime (no upper bound).  Upper bound is still present, but\n        #    it's part of the run_exports for the compiler: assume that when vcver's major version changes,\n        #    MSFT has broken our binary compatibility.\n        - {{ pin_subpackage('vs' ~ vsyear ~ '_runtime', max_pin=None) }}\n    about:\n      home: https://github.com/conda/conda/wiki/VC-features\n      license: Modified BSD License (3-clause)\n      license_family: BSD\n      summary: A meta-package to track VC features.\n      description: |\n          This metapackage is used to activate vc features without\n          depending on Python.\n      doc_url: https://github.com/conda/conda/wiki/VC-features\n      dev_url: https://github.com/conda/conda/wiki/VC-features\n\nextra:\n  recipe-maintainers:\n    - jakirkham\n    - 183amir\n    - pelson\n    - patricksnape\n    - msarahan\n    - isuruf\n",
+ "raw_meta_yaml":"# version numbering is explained at https://stackoverflow.com/questions/42730478/version-numbers-for-visual-studio-2017-boost-and-cmake\n#     This version number follows the \"platform toolset\"\n{% set vcver = \"14.1\" %}\n{% set vsyear = \"2017\" %}\n{% set fullver = runtime_version %}\n# VS2017 is fundamentally compatible with VS2015.  We name our package vs2015_runtime so that it can't be\n#    mixed up with the runtime from VS2015 - you do actually need VS2017 runtime for things compiled with\n#    VS2017, and the runtime we have here is backwards-compatible with things compiled with VS2015.\n{% set runtime_year = \"2015\" %}\n\npackage:\n  name: vs{{ vsyear }}\n  version: {{ fullver }}\n\nbuild:\n  number: 0\n  skip: True  # [not win]\n\noutputs:\n  - name: vs{{ vsyear }}_{{ cross_compiler_target_platform }}\n    version: {{ cl_version }}\n    script: install_activate.bat\n    build:\n      track_features:\n        - vc{{ vcver.split(\".\")[0] }}\n      run_exports:\n        strong:\n          # compatible within major version.  This is MSFT's incrementing of the UCRT version.  It was\n          #    14.0 with VS2015, and 14.1 with VS2017 - if the major version changes, we're assuming\n          #    that binary compatibility breaks.  This has a minimum bound equal to vcver, so building with\n          #    vs2017 here will require the vs2017-era runtime (the package is named vs2015_runtime, but the\n          #    version differs)\n          - {{ pin_subpackage('vc') }}\n          - {{ pin_subpackage('vs' + runtime_year + '_runtime', max_pin=None) }}\n    requirements:\n      build:\n        - m2-sed\n      run:\n        - vswhere\n    test:\n      commands:\n        - cl.exe\n    about:\n      summary: Activation and version verification of MSVC {{ vcver }} (VS {{ vsyear }} compiler, update {{ update_version }})\n      license: BSD-3-Clause\n  - name: vs{{ runtime_year }}_runtime\n    version: {{ runtime_version }}\n    script: install_runtime.bat\n    build:\n      no_link:\n        - |\n          *.dll\n        - Library/bin/*.dll\n      missing_dso_whitelist:\n        - \"*.dll\"\n        - \"*.DLL\"\n    requirements:\n      build:\n        - vswhere\n    about:\n      summary: MSVC runtimes associated with cl.exe version {{ cl_version  }} (VS {{ vsyear }} update {{ update_version }})\n  - name: vc\n    version: {{ vcver }}\n    build:\n      number: 1\n      track_features:\n        - vc{{ vcver.split(\".\")[0] }}\n    requirements:\n      run:\n        # Set lower bound for runtime (no upper bound).  Upper bound is still present, but\n        #    it's part of the run_exports for the compiler: assume that when vcver's major version changes,\n        #    MSFT has broken our binary compatibility.\n        - {{ pin_subpackage('vs' ~ runtime_year ~ '_runtime', max_pin=None) }}\n    about:\n      home: https://github.com/conda/conda/wiki/VC-features\n      license: BSD-3-Clause\n      license_family: BSD\n      summary: A meta-package to impose mutual exclusivity among software built with different VS versions\n      description: |\n          This metapackage is used to enforce consistency of runtime\n          dependencies within an environment\n      doc_url: https://github.com/conda/conda/wiki/VC-features\n      dev_url: https://github.com/conda/conda/wiki/VC-features\n\n\nabout:\n  home: https://docs.microsoft.com/en-us/visualstudio/windows/?view=vs-2017\n  summary: |\n    Activation and version verification of MSVC {{ vcver }} (VS {{ vsyear }}\n    compiler, update {{ update_version }})\n  license: BSD-3-Clause\n\nextra:\n  recipe-maintainers:\n    - jakirkham\n    - 183amir\n    - pelson\n    - patricksnape\n    - msarahan\n    - isuruf\n",
  "req":{
   "__set__":true,
   "elements":[
-   "vs2015_runtime"
+   "m2-sed",
+   "vs2015_runtime",
+   "vswhere"
   ]
  },
  "requirements":{
   "build":{
    "__set__":true,
-   "elements":[]
+   "elements":[
+    "m2-sed",
+    "vswhere"
+   ]
   },
   "host":{
    "__set__":true,
-   "elements":[]
+   "elements":[
+    "vc"
+   ]
   },
   "run":{
    "__set__":true,
    "elements":[
-    "vs2015_runtime"
+    "vc",
+    "vs2015_runtime",
+    "vswhere"
    ]
   },
   "test":{
@@ -239,12 +345,15 @@
   }
  },
  "smithy_version":"3.2.10",
- "strong_exports":false,
+ "strong_exports":true,
  "time":1568135269.6369736,
  "total_requirements":{
   "build":{
    "__set__":true,
-   "elements":[]
+   "elements":[
+    "m2-sed",
+    "vswhere"
+   ]
   },
   "host":{
    "__set__":true,
@@ -253,7 +362,8 @@
   "run":{
    "__set__":true,
    "elements":[
-    "vs2015_runtime"
+    "vs2015_runtime",
+    "vswhere"
    ]
   },
   "test":{
@@ -261,5 +371,5 @@
    "elements":[]
   }
  },
- "version":"14.0.25420"
+ "version":"None"
 }
