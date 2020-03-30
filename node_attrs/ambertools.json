@@ -90,6 +90,25 @@
     "migrator_version",
     "name"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/395923144.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"MigrationYaml",
+    "migrator_object_version":1,
+    "migrator_version":0,
+    "name":"libnetcdf474"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_object_version",
+    "migrator_version",
+    "name"
+   ]
   }
  ],
  "bad":false,
@@ -373,7 +392,7 @@
  },
  "name":"ambertools",
  "new_version":false,
- "pinning_version":"2020.02.20",
+ "pinning_version":"2020.03.30",
  "raw_meta_yaml":"{% set name = \"AmberTools\" %}\n# Versioning scheme uses AmberTools major release as MAJOR version number, patch level as MINOR version number\n# Update the MINOR version number as new patch releases come out\n{% set version = \"19.11\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  url: https://ambermd.org/downloads/AmberTools19.tar.bz2\n  sha256: 0c86937904854b64e4831e047851f504ec45b42e593db4ded92c1bee5973e699\n  patches:\n    - patches/do_not_use_global_conda_prefix.patch\n    - patches/do_not_symlink_missing_ff12pol.patch\n    - patches/use_external_netcdf.patch\n    - patches/fix_mm_pbsa_pl.patch\n    - patches/fix_cpinutil_pKa_comparison_bug.patch\n    - patches/do_not_override_osx_deployment_target.patch  # [osx]\n    # See #22 for more details on this patch:\n    - patches/do_not_bundle_osx_libs.patch  # [osx]\n    # Fix weird bug described here:\n    #   https://github.com/conda-forge/ambertools-feedstock/pull/11#issuecomment-570618741\n    - patches/delete_xdrfile_version.patch  # [osx]\n    ## Tests\n    - patches/do_not_use_AS_envvar_in_tests.patch\n    - patches/fix_run_nef_tests.patch\n    - patches/fix_sander_1ahoa_pme_test.patch\n    ## /Tests\n    ## IMPORTANT:\n    # The following patch needs to be applied manually in build.sh\n    # It was downloaded from this GH issue - it might be included by default in future updates\n    #   https://github.com/Amber-MD/cmake-buildscripts/issues/131#issuecomment-561280272\n    # - patches/amber19-fix-cmake.patch\n\nbuild:\n  number: 4\n  skip: True  # [win or py2k]\n\nrequirements:\n  build:\n    - {{ compiler('fortran') }}\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n    - ld64 409.12 h3c32e8a_4   # [osx]\n    - bc\n    - flex\n    - patch\n    - tcsh\n    - bison\n    - make\n    - cmake\n    - perl\n    - llvm-openmp  # [osx]\n    - libgomp      # [linux and not aarch64]\n  host:\n    - python\n    - setuptools\n    - cython\n    - numpy\n    - scipy\n    - matplotlib-base\n    - bzip2\n    - zlib\n    - boost-cpp\n    - libnetcdf\n    - netcdf-fortran\n    - pthread-stubs\n    - fftw\n    - libblas\n    - liblapack\n    - xorg-libxt  # [linux]\n    - xorg-libxext   # [linux]\n    - xorg-libx11   # [linux]\n    - readline\n    - llvm-openmp  # [osx]\n    - libgomp      # [linux and not aarch64]\n  run:\n    - python\n    - perl\n    - cython\n    - numpy\n    - scipy\n    - matplotlib-base\n    - boost-cpp\n    - libnetcdf\n    - netcdf-fortran\n    - fftw\n    - libblas\n    - liblapack\n    - xorg-libxt  # [linux]\n    - xorg-libxext  # [linux]\n    - xorg-libx11   # [linux]\n    - readline\n    - llvm-openmp  # [osx]\n    - libgomp      # [linux and not aarch64]\n\ntest:\n  requires:\n    - {{ compiler('fortran') }}\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n    - util-linux  # [linux64]\n  # Try to force a library incompatibility error in osx (see #22)\n    - lxml  # [osx]\n    - rdkit  # [osx]\n  commands:\n    - antechamber -h\n    - cpptraj -h\n    - ffgbsa -h\n    - MCPB.py -h\n    - mdnab -h\n    - minab -h\n    - mmpbsa_py_energy -h\n    - parmchk2 -h\n    - parmed -h\n    - pdb4amber -h\n    - respgen -h\n    - sqm -h\n    - teLeap -h\n    - tleap -h\n  imports:\n    - pytraj\n    - parmed\n    - rdkit  # [osx]\n    - rdkit.Chem.AllChem  # [osx]\n\nabout:\n  home: http://ambermd.org/AmberTools.php\n  license: Multiple\n  license_file: AmberTools/LICENSE\n  summary: 'AmberTools is a set of programs for biomolecular simulation and analysis'\n  description: |\n    AmberTools is a set of programs for biomolecular simulation and analysis.\n    They are designed to work well with each other, and with the \u201cregular\u201d Amber\n    suite of programs. You can perform many simulation tasks with AmberTools,\n    and you can do more extensive simulations with the combination of AmberTools\n    and Amber itself.\n\nextra:\n  recipe-maintainers:\n    - simonbray\n    - jaimergp\n",
  "req":{
   "__set__":true,
@@ -498,7 +517,7 @@
    ]
   }
  },
- "smithy_version":"3.6.8",
+ "smithy_version":"No azure token. Create a token and\nput it in ~/.conda-smithy/azure.token\n3.6.15",
  "strong_exports":false,
  "total_requirements":{
   "build":{
