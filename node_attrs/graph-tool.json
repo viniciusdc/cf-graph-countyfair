@@ -136,7 +136,7 @@
   },
   "package":{
    "name":"graph-tool",
-   "version":"2.30"
+   "version":"2.31"
   },
   "requirements":{
    "build":[
@@ -241,7 +241,7 @@
    ]
   },
   "source":{
-   "fn":"graph-tool-2.30.tar.bz2",
+   "fn":"graph-tool-2.31.tar.bz2",
    "patches":[
     "patches/no-check-python-link.patch",
     "patches/skip-boost-python-config.patch",
@@ -250,8 +250,8 @@
     "patches/no-check-python-link.patch",
     "patches/skip-boost-python-config.patch"
    ],
-   "sha1":"60ba3a854c11584ddd58fb79d44e3f2a3b7f6260",
-   "url":"https://downloads.skewed.de/graph-tool/graph-tool-2.30.tar.bz2"
+   "sha1":"7039a997f53058f140b759fba226b7c19238d895",
+   "url":"https://downloads.skewed.de/graph-tool/graph-tool-2.31.tar.bz2"
   },
   "test":{
    "imports":[
@@ -273,7 +273,7 @@
  "name":"graph-tool",
  "new_version":false,
  "pinning_version":"2020.03.16",
- "raw_meta_yaml":"{% set version = \"2.30\" %}\n{% set sha1 = \"60ba3a854c11584ddd58fb79d44e3f2a3b7f6260\" %}\n\npackage:\n  name: graph-tool\n  version: {{ version }}\n\nsource:\n  fn: graph-tool-{{ version }}.tar.bz2\n  url: https://downloads.skewed.de/graph-tool/graph-tool-{{ version }}.tar.bz2\n  sha1: {{ sha1 }}\n\n  patches:\n    # Don't let configure test the python configuration via a test module;\n    # it fails to link because we don't include -lpython in LDFLAGS.\n    - patches/no-check-python-link.patch\n\n    # Don't use autotools to detect and test boost-python.\n    - patches/skip-boost-python-config.patch\n\nbuild:\n  skip: true  # [win]\n  number: 0\n  detect_binary_files_with_prefix: true\n\n  # conda-build 3.18.12 uses LIEF instead of patchelf,\n  # which may be causing problems for this recipe.\n  # We can force it to use patchelf with this setting.\n  # There might be other bugs related to LIEF, too:\n  # - https://github.com/conda-forge/staged-recipes/pull/10979#issuecomment-595388237\n  # - https://github.com/lief-project/LIEF/issues/239\n  # \n  # (Maybe this setting won't be needed in a later version of conda-build.)\n  rpaths_patcher: patchelf  # [linux]\n\nrequirements:\n  build:\n    - libtool\n    - autoconf\n    - automake\n    - pkg-config\n\n    - {{ compiler(\"cxx\") }}  # [linux]\n\n    # On mac, requires clang 8\n    # (clang 4 does not have sufficient c++17 support)\n    - clangxx_osx-64 >=8*    # [osx]\n    - llvm-openmp            # [osx]\n\n  host:\n    - python\n    - numpy\n    - boost-cpp\n    - boost\n    - expat\n    - scipy >=1.0\n    - gmp\n    - cgal-cpp 5.0*\n    - sparsehash 2.0*\n    - cairomm\n    - pycairo\n\n  run:\n    - python\n    - llvm-openmp  # [osx]\n    - boost-cpp\n    - boost\n    - expat\n    - scipy >=1.0\n    - {{ pin_compatible('numpy') }}\n    - gmp\n    - sparsehash >=2.0\n    - cairomm\n    - pycairo\n    - gdk-pixbuf\n    - librsvg\n    - gtk3\n    - pygobject\n    - matplotlib-base\n\ntest:\n  imports:\n    - graph_tool\n    - graph_tool.all\n    - graph_tool.draw\n    - graph_tool.draw.cairo_draw\n\nabout:\n  home: https://graph-tool.skewed.de/\n  summary: Efficient network analysis\n  license: GPL-3.0-or-later\n  license_file:\n    - licenses/LICENSE\n    - licenses/pcg-cpp/LICENSE-APACHE.txt\n    - licenses/pcg-cpp/LICENSE-MIT.txt\n\nextra:\n  recipe-maintainers:\n    - stuarteberg\n    - ostrokach\n    - count0\n",
+ "raw_meta_yaml":"{% set version = \"2.31\" %}\n{% set sha1 = \"7039a997f53058f140b759fba226b7c19238d895\" %}\n\npackage:\n  name: graph-tool\n  version: {{ version }}\n\nsource:\n  fn: graph-tool-{{ version }}.tar.bz2\n  url: https://downloads.skewed.de/graph-tool/graph-tool-{{ version }}.tar.bz2\n  sha1: {{ sha1 }}\n\n  patches:\n    # Don't let configure test the python configuration via a test module;\n    # it fails to link because we don't include -lpython in LDFLAGS.\n    - patches/no-check-python-link.patch\n\n    # Don't use autotools to detect and test boost-python.\n    - patches/skip-boost-python-config.patch\n\nbuild:\n  skip: true  # [win]\n  number: 0\n  detect_binary_files_with_prefix: true\n\n  # conda-build 3.18.12 uses LIEF instead of patchelf,\n  # which may be causing problems for this recipe.\n  # We can force it to use patchelf with this setting.\n  # There might be other bugs related to LIEF, too:\n  # - https://github.com/conda-forge/staged-recipes/pull/10979#issuecomment-595388237\n  # - https://github.com/lief-project/LIEF/issues/239\n  # \n  # (Maybe this setting won't be needed in a later version of conda-build.)\n  rpaths_patcher: patchelf  # [linux]\n\nrequirements:\n  build:\n    - libtool\n    - autoconf\n    - automake\n    - pkg-config\n\n    - {{ compiler(\"cxx\") }}  # [linux]\n\n    # On mac, requires clang 8\n    # (clang 4 does not have sufficient c++17 support)\n    - clangxx_osx-64 >=8*    # [osx]\n    - llvm-openmp            # [osx]\n\n  host:\n    - python\n    - numpy\n    - boost-cpp\n    - boost\n    - expat\n    - scipy >=1.0\n    - gmp\n    - cgal-cpp 5.0*\n    - sparsehash 2.0*\n    - cairomm\n    - pycairo\n\n  run:\n    - python\n    - llvm-openmp  # [osx]\n    - boost-cpp\n    - boost\n    - expat\n    - scipy >=1.0\n    - {{ pin_compatible('numpy') }}\n    - gmp\n    - sparsehash >=2.0\n    - cairomm\n    - pycairo\n    - gdk-pixbuf\n    - librsvg\n    - gtk3\n    - pygobject\n    - matplotlib-base\n\ntest:\n  imports:\n    - graph_tool\n    - graph_tool.all\n    - graph_tool.draw\n    - graph_tool.draw.cairo_draw\n\nabout:\n  home: https://graph-tool.skewed.de/\n  summary: Efficient network analysis\n  license: GPL-3.0-or-later\n  license_file:\n    - licenses/LICENSE\n    - licenses/pcg-cpp/LICENSE-APACHE.txt\n    - licenses/pcg-cpp/LICENSE-MIT.txt\n\nextra:\n  recipe-maintainers:\n    - stuarteberg\n    - ostrokach\n    - count0\n",
  "req":{
   "__set__":true,
   "elements":[
@@ -417,5 +417,5 @@
   }
  },
  "url":"https://downloads.skewed.de/graph-tool/graph-tool-2.29.tar.bz2",
- "version":"2.30"
+ "version":"2.31"
 }
