@@ -173,29 +173,28 @@
     "migrator_version",
     "version"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/395866316.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"MigrationYaml",
+    "migrator_object_version":1,
+    "migrator_version":0,
+    "name":"pypy"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_object_version",
+    "migrator_version",
+    "name"
+   ]
   }
  ],
- "bad":{
-  "exception":"Failed to put item: An error occurred (ValidationException) on request (8HFP3K1GQVGA6ECMEBS0N3D6IJVV4KQNSO5AEMVJF66Q9ASUAAJG) on table (pr_json) when calling the PutItem operation: Attempting to store more than 38 significant digits in a Number",
-  "traceback":[
-   "Traceback (most recent call last):",
-   "  File \"/root/repo/cf-scripts/conda_forge_tick/auto_tick.py\", line 922, in main",
-   "    hash_type=attrs.get(\"hash_type\", \"sha256\"),",
-   "  File \"/root/repo/cf-scripts/conda_forge_tick/auto_tick.py\", line 248, in run",
-   "    PRJson.dump(pr_json)",
-   "  File \"/root/repo/cf-scripts/conda_forge_tick/dynamo_models.py\", line 33, in dump",
-   "    item.save()",
-   "  File \"/opt/conda/envs/run_env/lib/python3.7/site-packages/pynamodb/models.py\", line 405, in save",
-   "    data = self._get_connection().put_item(*args, **kwargs)",
-   "  File \"/opt/conda/envs/run_env/lib/python3.7/site-packages/pynamodb/connection/table.py\", line 139, in put_item",
-   "    return_item_collection_metrics=return_item_collection_metrics)",
-   "  File \"/opt/conda/envs/run_env/lib/python3.7/site-packages/pynamodb/connection/base.py\", line 972, in put_item",
-   "    six.raise_from(PutError(\"Failed to put item: {}\".format(e), e), None)",
-   "  File \"<string>\", line 3, in raise_from",
-   "pynamodb.exceptions.PutError: Failed to put item: An error occurred (ValidationException) on request (8HFP3K1GQVGA6ECMEBS0N3D6IJVV4KQNSO5AEMVJF66Q9ASUAAJG) on table (pr_json) when calling the PutItem operation: Attempting to store more than 38 significant digits in a Number",
-   ""
-  ]
- },
+ "bad":false,
  "conda-forge.yml":{
   "bot":{
    "automerge":true
@@ -303,7 +302,7 @@
  },
  "name":"zope.interface",
  "new_version":"5.0.2",
- "pinning_version":"2020.03.28",
+ "pinning_version":"2020.03.30",
  "raw_meta_yaml":"{% set version = \"5.0.2\" %}\n\npackage:\n  name: zope.interface\n  version: {{ version }}\n\nsource:\n  url: https://pypi.io/packages/source/z/zope.interface/zope.interface-{{ version }}.tar.gz\n  sha256: 67267aa6764f488833f92d9d6889239af92bd80b4c99cc76e7f847f660e660fa\n\nbuild:\n  number: 0\n  script: {{ PYTHON }} -m pip install . -vv\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n  host:\n    - python\n    - pip\n  run:\n    - python\n    - setuptools\n\ntest:\n  imports:\n    - zope\n    - zope.interface\n    - zope.interface.common\n    - zope.interface.common.tests\n    - zope.interface.common.mapping\n    - zope.interface._zope_interface_coptimizations\n    - zope.interface.tests\n  commands:\n    - pip check\n  requires:\n    - pip\n\nabout:\n  home: http://docs.zope.org/zope.interface/\n  license: ZPL-2.1\n  license_family: Other\n  license_file: LICENSE.txt\n  summary: Interfaces for Python\n  description: |\n    Provides an implementation of object interfaces for Python.Interfaces are objects\n    that specify the external behavior of objects that provide them.\n  doc_url: http://docs.zope.org/zope.interface/\n  doc_source_url: https://github.com/zopefoundation/zope.interface//blob/master/docs/index.rst\n  dev_url: https://github.com/zopefoundation/zope.interface\n\nextra:\n  recipe-maintainers:\n    - isuruf\n    - ocefpaf\n",
  "req":{
   "__set__":true,
