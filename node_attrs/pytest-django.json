@@ -285,7 +285,11 @@
   }
  ],
  "bad":false,
- "conda-forge.yml":{},
+ "conda-forge.yml":{
+  "bot":{
+   "automerge":true
+  }
+ },
  "feedstock_name":"pytest-django",
  "hash_type":"sha256",
  "meta_yaml":{
@@ -293,7 +297,7 @@
    "dev_url":"https://github.com/pytest-dev/pytest-django",
    "doc_url":"https://pytest-django.readthedocs.io/en/latest/",
    "home":"http://pytest-django.readthedocs.org/",
-   "license":"BSD 3-Clause",
+   "license":"BSD-3-Clause",
    "license_family":"BSD",
    "license_file":"LICENSE",
    "summary":"A Django plugin for py.test"
@@ -301,7 +305,7 @@
   "build":{
    "noarch":"python",
    "number":"0",
-   "script":" -m pip install . --no-deps -vv"
+   "script":"-m pip install . -vv"
   },
   "extra":{
    "recipe-maintainers":[
@@ -315,25 +319,22 @@
   },
   "package":{
    "name":"pytest-django",
-   "version":"3.8.0"
+   "version":"3.9.0"
   },
   "requirements":{
-   "build":[
+   "host":[
     "python",
     "pip",
     "setuptools_scm >=1.11.1",
     "pathlib",
-    "pytest >=3.6",
     "python",
     "pip",
     "setuptools_scm >=1.11.1",
     "pathlib",
-    "pytest >=3.6",
     "python",
     "pip",
     "setuptools_scm >=1.11.1",
-    "pathlib",
-    "pytest >=3.6"
+    "pathlib"
    ],
    "run":[
     "python",
@@ -345,21 +346,31 @@
    ]
   },
   "source":{
-   "sha256":"489b904f695f9fb880ce591cf5a4979880afb467763b1f180c07574554bdfd26",
-   "url":"https://pypi.io/packages/source/p/pytest-django/pytest-django-3.8.0.tar.gz"
+   "sha256":"664e5f42242e5e182519388f01b9f25d824a9feb7cd17d8f863c8d776f38baf9",
+   "url":"https://pypi.io/packages/source/p/pytest-django/pytest-django-3.9.0.tar.gz"
   },
   "test":{
+   "commands":[
+    "pip check",
+    "pip check",
+    "pip check"
+   ],
    "imports":[
     "pytest_django",
     "pytest_django",
     "pytest_django"
+   ],
+   "requires":[
+    "pip",
+    "pip",
+    "pip"
    ]
   }
  },
  "name":"pytest-django",
  "new_version":"3.9.0",
  "pinning_version":"2020.03.30",
- "raw_meta_yaml":"{% set version = \"3.8.0\" %}\n\npackage:\n  name: pytest-django\n  version: {{ version }}\n\nsource:\n  url:  https://pypi.io/packages/source/p/pytest-django/pytest-django-{{ version }}.tar.gz\n  sha256: 489b904f695f9fb880ce591cf5a4979880afb467763b1f180c07574554bdfd26\n\nbuild:\n  number: 0\n  noarch: python\n  script: \"{{ PYTHON }} -m pip install . --no-deps -vv\"\n\nrequirements:\n  build:\n    - python\n    - pip\n    - setuptools_scm >=1.11.1\n    - pathlib\n    - pytest >=3.6\n  run:\n    - python\n    - pytest >=3.6\n\ntest:\n  imports:\n    - pytest_django\n\nabout:\n  home: http://pytest-django.readthedocs.org/\n  license: BSD 3-Clause\n  license_file: LICENSE\n  license_family: BSD\n  summary: A Django plugin for py.test\n  doc_url: https://pytest-django.readthedocs.io/en/latest/\n  dev_url: https://github.com/pytest-dev/pytest-django\n\nextra:\n  recipe-maintainers:\n    - kwilcox\n    - ocefpaf\n",
+ "raw_meta_yaml":"{% set version = \"3.9.0\" %}\n\npackage:\n  name: pytest-django\n  version: {{ version }}\n\nsource:\n  url: https://pypi.io/packages/source/p/pytest-django/pytest-django-{{ version }}.tar.gz\n  sha256: 664e5f42242e5e182519388f01b9f25d824a9feb7cd17d8f863c8d776f38baf9\n\nbuild:\n  number: 0\n  noarch: python\n  script: {{ PYTHON }} -m pip install . -vv\n\nrequirements:\n  host:\n    - python\n    - pip\n    - setuptools_scm >=1.11.1\n    - pathlib\n  run:\n    - python\n    - pytest >=3.6\n\ntest:\n  requires:\n    - pip\n  commands:\n    - pip check\n  imports:\n    - pytest_django\n\nabout:\n  home: http://pytest-django.readthedocs.org/\n  license: BSD-3-Clause\n  license_file: LICENSE\n  license_family: BSD\n  summary: A Django plugin for py.test\n  doc_url: https://pytest-django.readthedocs.io/en/latest/\n  dev_url: https://github.com/pytest-dev/pytest-django\n\nextra:\n  recipe-maintainers:\n    - kwilcox\n    - ocefpaf\n",
  "req":{
   "__set__":true,
   "elements":[
@@ -373,17 +384,16 @@
  "requirements":{
   "build":{
    "__set__":true,
-   "elements":[
-    "pathlib",
-    "pip",
-    "pytest",
-    "python",
-    "setuptools_scm"
-   ]
+   "elements":[]
   },
   "host":{
    "__set__":true,
-   "elements":[]
+   "elements":[
+    "pathlib",
+    "pip",
+    "python",
+    "setuptools_scm"
+   ]
   },
   "run":{
    "__set__":true,
@@ -394,7 +404,9 @@
   },
   "test":{
    "__set__":true,
-   "elements":[]
+   "elements":[
+    "pip"
+   ]
   }
  },
  "smithy_version":"No azure token. Create a token and\nput it in ~/.conda-smithy/azure.token\n3.6.15",
@@ -402,17 +414,16 @@
  "total_requirements":{
   "build":{
    "__set__":true,
-   "elements":[
-    "pathlib",
-    "pip",
-    "pytest >=3.6",
-    "python",
-    "setuptools_scm >=1.11.1"
-   ]
+   "elements":[]
   },
   "host":{
    "__set__":true,
-   "elements":[]
+   "elements":[
+    "pathlib",
+    "pip",
+    "python",
+    "setuptools_scm >=1.11.1"
+   ]
   },
   "run":{
    "__set__":true,
@@ -423,9 +434,11 @@
   },
   "test":{
    "__set__":true,
-   "elements":[]
+   "elements":[
+    "pip"
+   ]
   }
  },
  "url":"https://pypi.io/packages/source/p/pytest-django/pytest-django-3.5.1.tar.gz",
- "version":"3.8.0"
+ "version":"3.9.0"
 }
