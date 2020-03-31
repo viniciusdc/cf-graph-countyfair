@@ -65,6 +65,23 @@
     "migrator_version",
     "name"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/396376285.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"Version",
+    "migrator_version":0,
+    "version":"3.8.2"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "version"
+   ]
   }
  ],
  "bad":false,
@@ -173,8 +190,8 @@
   }
  },
  "name":"r-gtools",
- "new_version":"3.8.1",
- "pinning_version":"2019.07.15",
+ "new_version":"3.8.2",
+ "pinning_version":"2020.03.30",
  "raw_meta_yaml":"{% set version = '3.8.1' %}\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-gtools\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  fn: gtools_{{ version }}.tar.gz\n  url:\n    - {{ cran_mirror }}/src/contrib/gtools_{{ version }}.tar.gz\n    - {{ cran_mirror }}/src/contrib/Archive/gtools/gtools_{{ version }}.tar.gz\n  sha256: 051484459bd8ad1b03425b8843d24f6828fea18f7357cfa1c192198cc3f4ba38\n\nbuild:\n  merge_build_host: True  # [win]\n  number: 1003\n  skip: true  # [win32]\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - {{ compiler('c') }}        # [not win]\n    - {{ compiler('m2w64_c') }}        # [win]\n    - {{posix}}filesystem        # [win]\n    - {{posix}}make\n    - {{posix}}sed               # [win]\n    - {{posix}}coreutils         # [win]\n    - {{posix}}zip               # [win]\n  host:\n    - r-base\n  run:\n    - r-base\n    - {{native}}gcc-libs         # [win]\n\ntest:\n  commands:\n    - $R -e \"library('gtools')\"           # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('gtools')\\\"\"  # [win]\n\nabout:\n  home: https://CRAN.R-project.org/package=gtools\n  license: GPL-2\n  summary: 'Functions to assist in R programming, including: - assist in developing, updating,\n    and maintaining R and R packages (''ask'', ''checkRVersion'', ''getDependencies'',\n    ''keywords'', ''scat''), - calculate the logit and inverse logit transformations\n    (''logit'', ''inv.logit''), - test if a value is missing, empty or contains only\n    NA and NULL values (''invalid''), - manipulate R''s .Last function (''addLast''),\n    - define macros (''defmacro''), - detect odd and even integers (''odd'', ''even''),\n    - convert strings containing non-ASCII characters (like single quotes) to plain\n    ASCII (''ASCIIfy''), - perform a binary search (''binsearch''), - sort strings containing\n    both numeric and character components (''mixedsort''), - create a factor variable\n    from the quantiles of a continuous variable (''quantcut''), - enumerate permutations\n    and combinations (''combinations'', ''permutation''), - calculate and convert between\n    fold-change and log-ratio (''foldchange'', ''logratio2foldchange'', ''foldchange2logratio''),\n    - calculate probabilities and generate random numbers from Dirichlet distributions\n    (''rdirichlet'', ''ddirichlet''), - apply a function over adjacent subsets of a\n    vector (''running''), - modify the TCP\\_NODELAY (''de-Nagle'') flag for socket objects,\n    - efficient ''rbind'' of data frames, even if the column names don''t match (''smartbind''),\n    - generate significance stars from p-values (''stars.pval''), - convert characters\n    to/from ASCII codes (''asc'', ''chr''), - convert character vector to ASCII representation\n    (''ASCIIfy'').'\n  license_family: GPL2\n  license_file: '{{ environ[\"PREFIX\"] }}/lib/R/share/licenses/GPL-2'\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n    - johanneskoester\n    - bgruening\n    - daler\n    - jdblischak\n    - cbrueffer\n    - dbast\n",
  "req":{
   "__set__":true,
@@ -221,7 +238,7 @@
    "elements":[]
   }
  },
- "smithy_version":"3.4.1",
+ "smithy_version":"No azure token. Create a token and\nput it in ~/.conda-smithy/azure.token\n3.6.15",
  "strong_exports":false,
  "total_requirements":{
   "build":{
