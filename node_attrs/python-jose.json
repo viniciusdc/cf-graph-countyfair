@@ -80,7 +80,7 @@
   },
   "package":{
    "name":"python-jose",
-   "version":"3.0.1"
+   "version":"3.1.0"
   },
   "requirements":{
    "host":[
@@ -95,17 +95,14 @@
     "pytest-runner"
    ],
    "run":[
-    "ecdsa <1.0",
     "cryptography",
     "future <1.0",
     "python",
     "six <2.0",
-    "ecdsa <1.0",
     "cryptography",
     "future <1.0",
     "python",
     "six <2.0",
-    "ecdsa <1.0",
     "cryptography",
     "future <1.0",
     "python",
@@ -113,14 +110,17 @@
    ]
   },
   "source":{
-   "sha256":"ed7387f0f9af2ea0ddc441d83a6eb47a5909bd0c8a72ac3250e75afec2cc1371",
-   "url":"https://pypi.io/packages/source/p/python-jose/python-jose-3.0.1.tar.gz"
+   "sha256":"8484b7fdb6962e9d242cce7680469ecf92bda95d10bbcbbeb560cacdff3abfce",
+   "url":"https://pypi.io/packages/source/p/python-jose/python-jose-3.1.0.tar.gz"
   },
   "test":{
    "commands":[
     "python usage.py",
+    "pytest -m \"not (pycryptodome or pycrypto or backend_compatibility)\" tests",
     "python usage.py",
-    "python usage.py"
+    "pytest -m \"not (pycryptodome or pycrypto or backend_compatibility)\" tests",
+    "python usage.py",
+    "pytest -m \"not (pycryptodome or pycrypto or backend_compatibility)\" tests"
    ],
    "files":[
     "usage.py",
@@ -134,18 +134,27 @@
     "jose.backends",
     "jose",
     "jose.backends"
+   ],
+   "requires":[
+    "pytest",
+    "pytest",
+    "pytest"
+   ],
+   "source_files":[
+    "tests",
+    "tests",
+    "tests"
    ]
   }
  },
  "name":"python-jose",
  "new_version":"3.1.0",
  "pinning_version":"2019.12.02",
- "raw_meta_yaml":"{% set name = \"python-jose\" %}\n{% set version = \"3.0.1\" %}\n\npackage:\n  name: \"{{ name|lower }}\"\n  version: \"{{ version }}\"\n\nsource:\n  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz\n  sha256: ed7387f0f9af2ea0ddc441d83a6eb47a5909bd0c8a72ac3250e75afec2cc1371\n\nbuild:\n  number: 0\n  noarch: python\n  script: \"{{ PYTHON }} -m pip install . --no-deps --ignore-installed --no-cache-dir -vvv \"\n\nrequirements:\n  host:\n    - python\n    - pip\n    - pytest-runner\n  run:\n    - ecdsa <1.0\n    - cryptography\n    - future <1.0\n    - python\n    - six <2.0\n\ntest:\n  files:\n    - usage.py\n  commands:\n    - python usage.py\n  imports:\n    - jose\n    - jose.backends\n\nabout:\n  home: http://github.com/mpdavis/python-jose\n  license: MIT\n  license_family: MIT\n  license_file: LICENSE\n  summary: JOSE implementation in Python\n  doc_url: https://python-jose.readthedocs.io\n  dev_url: https://github.com/mpdavis/python-jose\n\nextra:\n  recipe-maintainers:\n    - mariusvniekerk\n",
+ "raw_meta_yaml":"{% set name = \"python-jose\" %}\n{% set version = \"3.1.0\" %}\n\npackage:\n  name: \"{{ name|lower }}\"\n  version: \"{{ version }}\"\n\nsource:\n  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz\n  sha256: 8484b7fdb6962e9d242cce7680469ecf92bda95d10bbcbbeb560cacdff3abfce\n\nbuild:\n  number: 0\n  noarch: python\n  script: \"{{ PYTHON }} -m pip install . --no-deps --ignore-installed --no-cache-dir -vvv \"\n\nrequirements:\n  host:\n    - python\n    - pip\n    - pytest-runner\n  run:\n    - cryptography\n    - future <1.0\n    - python\n    - six <2.0\n\ntest:\n  files:\n    - usage.py\n  source_files:\n    - tests\n  commands:\n    - python usage.py\n    - pytest -m \"not (pycryptodome or pycrypto or backend_compatibility)\" tests\n  requires:\n    - pytest\n  imports:\n    - jose\n    - jose.backends\n\nabout:\n  home: http://github.com/mpdavis/python-jose\n  license: MIT\n  license_family: MIT\n  license_file: LICENSE\n  summary: JOSE implementation in Python\n  doc_url: https://python-jose.readthedocs.io\n  dev_url: https://github.com/mpdavis/python-jose\n\nextra:\n  recipe-maintainers:\n    - mariusvniekerk\n",
  "req":{
   "__set__":true,
   "elements":[
    "cryptography",
-   "ecdsa",
    "future",
    "pip",
    "pytest-runner",
@@ -170,7 +179,6 @@
    "__set__":true,
    "elements":[
     "cryptography",
-    "ecdsa",
     "future",
     "python",
     "six"
@@ -178,7 +186,9 @@
   },
   "test":{
    "__set__":true,
-   "elements":[]
+   "elements":[
+    "pytest"
+   ]
   }
  },
  "smithy_version":"3.6.3",
@@ -200,7 +210,6 @@
    "__set__":true,
    "elements":[
     "cryptography",
-    "ecdsa <1.0",
     "future <1.0",
     "python",
     "six <2.0"
@@ -208,9 +217,11 @@
   },
   "test":{
    "__set__":true,
-   "elements":[]
+   "elements":[
+    "pytest"
+   ]
   }
  },
  "url":"https://pypi.io/packages/source/p/python-jose/python-jose-2.0.2.tar.gz",
- "version":"3.0.1"
+ "version":"3.1.0"
 }
