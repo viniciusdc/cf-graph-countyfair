@@ -201,6 +201,14 @@
      "license_file":"COPYING",
      "summary":"Python extensions for NDS2"
     },
+    "build":{
+     "error_overdepending":true,
+     "error_overlinking":true,
+     "ignore_run_exports":[
+      "python"
+     ],
+     "skip":true
+    },
     "name":"python-nds2-client",
     "requirements":{
      "build":[
@@ -209,16 +217,16 @@
       "cmake >=3.6"
      ],
      "host":[
-      "nds2-client 0.16.4",
+      "nds2-client 0.16.5",
       "nds2-client-swig",
       "numpy",
       "python",
       "swig >=3.0.7,<4"
      ],
      "run":[
-      "nds2-client >=0.16.4",
-      "python",
-      "numpy"
+      "nds2-client >=0.16.5",
+      "numpy",
+      "python"
      ]
     },
     "script":"install-python.sh",
@@ -240,6 +248,14 @@
      "license_file":"COPYING",
      "summary":"Python extensions for NDS2"
     },
+    "build":{
+     "error_overdepending":true,
+     "error_overlinking":true,
+     "ignore_run_exports":[
+      "python"
+     ],
+     "skip":true
+    },
     "name":"python-nds2-client",
     "requirements":{
      "build":[
@@ -250,16 +266,16 @@
       "make"
      ],
      "host":[
-      "nds2-client 0.16.4",
+      "nds2-client 0.16.5",
       "nds2-client-swig",
       "numpy",
       "python",
       "swig >=3.0.7,<4"
      ],
      "run":[
-      "nds2-client >=0.16.4",
-      "python",
-      "numpy"
+      "nds2-client >=0.16.5",
+      "numpy",
+      "python"
      ]
     },
     "script":"install-python.sh",
@@ -281,6 +297,14 @@
      "license_file":"COPYING",
      "summary":"Python extensions for NDS2"
     },
+    "build":{
+     "error_overdepending":true,
+     "error_overlinking":true,
+     "ignore_run_exports":[
+      "python"
+     ],
+     "skip":true
+    },
     "name":"python-nds2-client",
     "requirements":{
      "build":[
@@ -291,16 +315,16 @@
       "make"
      ],
      "host":[
-      "nds2-client 0.16.4",
+      "nds2-client 0.16.5",
       "nds2-client-swig",
       "numpy",
       "python",
       "swig >=3.0.7,<4"
      ],
      "run":[
-      "nds2-client >=0.16.4",
-      "python",
-      "numpy"
+      "nds2-client >=0.16.5",
+      "numpy",
+      "python"
      ]
     },
     "script":"install-python.sh",
@@ -313,7 +337,7 @@
   ],
   "package":{
    "name":"nds2-client-swig",
-   "version":"0.16.6"
+   "version":"0.16.7"
   },
   "requirements":{
    "build":[
@@ -333,17 +357,17 @@
    ],
    "host":[
     "swig >=3.0.7,<4",
-    "nds2-client 0.16.4",
+    "nds2-client 0.16.5",
     "swig >=3.0.7,<4",
-    "nds2-client 0.16.4",
+    "nds2-client 0.16.5",
     "swig >=3.0.7,<4",
-    "nds2-client 0.16.4"
+    "nds2-client 0.16.5"
    ]
   },
   "source":{
    "patches":null,
-   "sha256":"0184eae7cf7eeb1d0a4bb0cf32d57b0a9c60e59912546bd3116e740b2af176b7",
-   "url":"http://software.ligo.org/lscsoft/source/nds2-client-swig-0.16.6.tar.gz"
+   "sha256":"ddb2ceac6baadc58cddc5a980216b4684bd8669e9587b46477831e55b77f0a39",
+   "url":"http://software.ligo.org/lscsoft/source/nds2-client-swig-0.16.7.tar.bz2"
   },
   "test":{
    "commands":[
@@ -359,7 +383,7 @@
   "python-nds2-client"
  ],
  "pinning_version":"2020.03.24",
- "raw_meta_yaml":"{% set name = \"nds2-client-swig\" %}\n{% set version = \"0.16.6\" %}\n{% set sha256 = \"0184eae7cf7eeb1d0a4bb0cf32d57b0a9c60e59912546bd3116e740b2af176b7\" %}\n{% set nds2_client_version = \"0.16.4\" %}\n\npackage:\n  name: \"{{ name }}\"\n  version: \"{{ version }}\"\n\nsource:\n  url: \"http://software.ligo.org/lscsoft/source/{{ name }}-{{ version }}.tar.gz\"\n  sha256: \"{{ sha256 }}\"\n  patches:\n    - macos-static-python.patch  # [osx]\n\nbuild:\n  error_overdepending: true\n  error_overlinking: true\n  number: 0\n  skip: true  # [win]\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n    - cmake >=3.6\n    - make  # [not win]\n    - pkg-config  # [not win]\n  host:\n    - swig >=3.0.7,<4\n    - nds2-client {{ nds2_client_version }}\ntest:\n  commands:\n    - test -f ${PREFIX}/include/nds2-client/nds.i  # [unix]\n    - test -f ${PREFIX}/include/nds2-client/nds_swig.hh  # [unix]\n\noutputs:\n  - name: nds2-client-swig\n\n  - name: python-nds2-client\n    script: install-python.sh\n    requirements:\n      build:\n        - {{ compiler('c') }}\n        - {{ compiler('cxx') }}\n        - cmake >=3.6\n        - pkg-config  # [not win]\n        - make  # [not win]\n      host:\n        - nds2-client {{ nds2_client_version }}\n        - {{ pin_subpackage('nds2-client-swig', exact=True) }}\n        - numpy\n        - python\n        - swig >=3.0.7,<4\n      run:\n        - nds2-client >={{ nds2_client_version }}\n        - python\n        - {{ pin_compatible('numpy') }}\n    test:\n      imports:\n        - nds2\n    about:\n      home: \"https://wiki.ligo.org/Computing/NDSClient\"\n      license: \"GPL-3.0-or-later\"\n      license_family: \"GPL\"\n      license_file: \"COPYING\"\n      summary: \"Python extensions for NDS2\"\n      description: \"This provides python wrappers for the nds2 client.\"\n\nabout:\n  home: \"https://wiki.ligo.org/Computing/NDSClient\"\n  license: \"GPL-3.0-or-later\"\n  license_family: \"GPL\"\n  license_file: \"COPYING\"\n  summary: \"NDS2 Client interface SWIG wrappings\"\n  description: \"This provides SWIG interface files for the NDS2 client.\"\n\nextra:\n  recipe-maintainers:\n    - duncanmmacleod\n",
+ "raw_meta_yaml":"{% set name = \"nds2-client-swig\" %}\n{% set version = \"0.16.7\" %}\n{% set sha256 = \"ddb2ceac6baadc58cddc5a980216b4684bd8669e9587b46477831e55b77f0a39\" %}\n{% set nds2_client_version = \"0.16.5\" %}\n\npackage:\n  name: \"{{ name }}\"\n  version: \"{{ version }}\"\n\nsource:\n  url: \"http://software.ligo.org/lscsoft/source/{{ name }}-{{ version }}.tar.bz2\"\n  sha256: \"{{ sha256 }}\"\n  patches:\n    - macos-static-python.patch  # [osx]\n\nbuild:\n  error_overdepending: true\n  error_overlinking: true\n  number: 0\n  skip: true  # [win]\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n    - cmake >=3.6\n    - make  # [not win]\n    - pkg-config  # [not win]\n  host:\n    - swig >=3.0.7,<4\n    - nds2-client {{ nds2_client_version }}\ntest:\n  commands:\n    - test -f ${PREFIX}/include/nds2-client/nds.i  # [unix]\n    - test -f ${PREFIX}/include/nds2-client/nds_swig.hh  # [unix]\n\noutputs:\n  - name: nds2-client-swig\n\n  - name: python-nds2-client\n    script: install-python.sh\n    build:\n      error_overdepending: true\n      error_overlinking: true\n      ignore_run_exports:\n        # we don't actually link against libpython\n        - python\n      skip: true  # [python_impl != 'cpython']\n    requirements:\n      build:\n        - {{ compiler('c') }}\n        - {{ compiler('cxx') }}\n        - cmake >=3.6\n        - pkg-config  # [not win]\n        - make  # [not win]\n      host:\n        - nds2-client {{ nds2_client_version }}\n        - {{ pin_subpackage('nds2-client-swig', exact=True) }}\n        - numpy\n        - python\n        - swig >=3.0.7,<4\n      run:\n        - nds2-client >={{ nds2_client_version }}\n        - {{ pin_compatible('numpy') }}\n        - python\n    test:\n      imports:\n        - nds2\n    about:\n      home: \"https://wiki.ligo.org/Computing/NDSClient\"\n      license: \"GPL-3.0-or-later\"\n      license_family: \"GPL\"\n      license_file: \"COPYING\"\n      summary: \"Python extensions for NDS2\"\n      description: \"This provides python wrappers for the nds2 client.\"\n\nabout:\n  home: \"https://wiki.ligo.org/Computing/NDSClient\"\n  license: \"GPL-3.0-or-later\"\n  license_family: \"GPL\"\n  license_file: \"COPYING\"\n  summary: \"NDS2 Client interface SWIG wrappings\"\n  description: \"This provides SWIG interface files for the NDS2 client.\"\n\nextra:\n  recipe-maintainers:\n    - duncanmmacleod\n",
  "req":{
   "__set__":true,
   "elements":[
@@ -425,7 +449,7 @@
   "host":{
    "__set__":true,
    "elements":[
-    "nds2-client 0.16.4",
+    "nds2-client 0.16.5",
     "nds2-client-swig",
     "numpy",
     "python",
@@ -435,7 +459,7 @@
   "run":{
    "__set__":true,
    "elements":[
-    "nds2-client >=0.16.4",
+    "nds2-client >=0.16.5",
     "numpy",
     "python"
    ]
@@ -446,5 +470,5 @@
   }
  },
  "url":"http://software.ligo.org/lscsoft/source/nds2-client-swig-0.16.4.tar.gz",
- "version":"0.16.6"
+ "version":"0.16.7"
 }
