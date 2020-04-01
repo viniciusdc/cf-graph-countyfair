@@ -102,9 +102,6 @@
  ],
  "bad":false,
  "conda-forge.yml":{
-  "compiler_stack":"comp7",
-  "max_py_ver":"37",
-  "max_r_ver":"35",
   "provider":{
    "win":"azure"
   }
@@ -122,7 +119,7 @@
   "build":{
    "merge_build_host":true,
    "noarch":"generic",
-   "number":"1",
+   "number":"0",
    "rpaths":[
     "lib/R/lib/",
     "lib/",
@@ -159,7 +156,7 @@
   },
   "package":{
    "name":"r-seacarb",
-   "version":"3.2.12"
+   "version":"3.2.13"
   },
   "requirements":{
    "build":null,
@@ -187,15 +184,15 @@
    ]
   },
   "source":{
-   "fn":"seacarb_3.2.12.tar.gz",
-   "sha256":"7a258fd246624e510c5fc1284a9ac39285ac9ea20a72ba1cb71bf18b85aa67bd",
+   "fn":"seacarb_3.2.13.tar.gz",
+   "sha256":"364c617d7d166f9e10a3597fcbece9ad487e8276f8abf1bbc081f42bc097162a",
    "url":[
-    "https://cran.r-project.org/src/contrib/seacarb_3.2.12.tar.gz",
-    "https://cran.r-project.org/src/contrib/Archive/seacarb/seacarb_3.2.12.tar.gz",
-    "https://cran.r-project.org/src/contrib/seacarb_3.2.12.tar.gz",
-    "https://cran.r-project.org/src/contrib/Archive/seacarb/seacarb_3.2.12.tar.gz",
-    "https://cran.r-project.org/src/contrib/seacarb_3.2.12.tar.gz",
-    "https://cran.r-project.org/src/contrib/Archive/seacarb/seacarb_3.2.12.tar.gz"
+    "https://cran.r-project.org/src/contrib/seacarb_3.2.13.tar.gz",
+    "https://cran.r-project.org/src/contrib/Archive/seacarb/seacarb_3.2.13.tar.gz",
+    "https://cran.r-project.org/src/contrib/seacarb_3.2.13.tar.gz",
+    "https://cran.r-project.org/src/contrib/Archive/seacarb/seacarb_3.2.13.tar.gz",
+    "https://cran.r-project.org/src/contrib/seacarb_3.2.13.tar.gz",
+    "https://cran.r-project.org/src/contrib/Archive/seacarb/seacarb_3.2.13.tar.gz"
    ]
   },
   "test":{
@@ -209,7 +206,7 @@
  "name":"r-seacarb",
  "new_version":"3.2.13",
  "pinning_version":"2020.03.30",
- "raw_meta_yaml":"{% set version = \"3.2.12\" %}\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-seacarb\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  fn: seacarb_{{ version }}.tar.gz\n  url:\n    - {{ cran_mirror }}/src/contrib/seacarb_{{ version }}.tar.gz\n    - {{ cran_mirror }}/src/contrib/Archive/seacarb/seacarb_{{ version }}.tar.gz\n  sha256: 7a258fd246624e510c5fc1284a9ac39285ac9ea20a72ba1cb71bf18b85aa67bd\n\nbuild:\n  noarch: generic\n  merge_build_host: True  # [win]\n  number: 1\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - {{posix}}zip               # [win]\n  host:\n    - r-base\n    - r-gsw\n    - r-oce\n  run:\n    - r-base\n    - r-gsw\n    - r-oce\n\ntest:\n  commands:\n    - $R -e \"library('seacarb')\"           # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('seacarb')\\\"\"  # [win]\n\nabout:\n  home: https://CRAN.R-project.org/package=seacarb\n  license: GPL (>= 2)\n  summary: Calculates parameters of the seawater carbonate system and assists the design of ocean\n    acidification perturbation experiments.\n  license_family: GPL3\n  license_file: '{{ environ[\"PREFIX\"] }}/lib/R/share/licenses/GPL-3'\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n    - johanneskoester\n    - bgruening\n    - daler\n    - jdblischak\n    - cbrueffer\n    - dbast\n",
+ "raw_meta_yaml":"{% set version = \"3.2.13\" %}\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-seacarb\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  fn: seacarb_{{ version }}.tar.gz\n  url:\n    - {{ cran_mirror }}/src/contrib/seacarb_{{ version }}.tar.gz\n    - {{ cran_mirror }}/src/contrib/Archive/seacarb/seacarb_{{ version }}.tar.gz\n  sha256: 364c617d7d166f9e10a3597fcbece9ad487e8276f8abf1bbc081f42bc097162a\n\nbuild:\n  noarch: generic\n  merge_build_host: true  # [win]\n  number: 0\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - {{posix}}zip               # [win]\n  host:\n    - r-base\n    - r-gsw\n    - r-oce\n  run:\n    - r-base\n    - r-gsw\n    - r-oce\n\ntest:\n  commands:\n    - $R -e \"library('seacarb')\"           # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('seacarb')\\\"\"  # [win]\n\nabout:\n  home: https://CRAN.R-project.org/package=seacarb\n  license: GPL (>= 2)\n  summary: Calculates parameters of the seawater carbonate system and assists the design of ocean acidification perturbation experiments.\n  license_family: GPL3\n  license_file: {{ environ[\"PREFIX\"] }}/lib/R/share/licenses/GPL-3\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n    - johanneskoester\n    - bgruening\n    - daler\n    - jdblischak\n    - cbrueffer\n    - dbast\n",
  "req":{
   "__set__":true,
   "elements":[
@@ -280,5 +277,5 @@
   "https://cran.r-project.org/src/contrib/seacarb_3.2.12.tar.gz",
   "https://cran.r-project.org/src/contrib/Archive/seacarb/seacarb_3.2.12.tar.gz"
  ],
- "version":"3.2.12"
+ "version":"3.2.13"
 }
