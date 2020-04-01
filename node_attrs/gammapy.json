@@ -255,9 +255,6 @@
  ],
  "bad":false,
  "conda-forge.yml":{
-  "compiler_stack":"comp7",
-  "max_py_ver":"37",
-  "max_r_ver":"35",
   "provider":{
    "win":"azure"
   }
@@ -282,7 +279,7 @@
     "gammapy = gammapy.scripts.main:cli"
    ],
    "number":"0",
-   "script":" -m pip install . --no-deps -vv"
+   "script":"-m pip install . --no-deps -vv"
   },
   "extra":{
    "recipe-maintainers":[
@@ -305,7 +302,7 @@
   },
   "package":{
    "name":"gammapy",
-   "version":"0.16"
+   "version":"0.17"
   },
   "requirements":{
    "build":[
@@ -364,8 +361,8 @@
    ]
   },
   "source":{
-   "sha256":"b3c722401c70f69821d82f000be957b28fb266ff2ec3eda2f8021972efdb52df",
-   "url":"https://pypi.io/packages/source/g/gammapy/gammapy-0.16.tar.gz"
+   "sha256":"72241e3351b73457ca0633690e62e42af1f048536ebc6ce3ce296bbf57de6c54",
+   "url":"https://pypi.io/packages/source/g/gammapy/gammapy-0.17.tar.gz"
   },
   "test":{
    "commands":[
@@ -434,7 +431,7 @@
  "name":"gammapy",
  "new_version":"0.17",
  "pinning_version":"2020.03.30",
- "raw_meta_yaml":"{% set name = \"gammapy\" %}\n{% set version = \"0.16\" %}\n{% set hash_type = \"sha256\" %}\n{% set hash_value = \"b3c722401c70f69821d82f000be957b28fb266ff2ec3eda2f8021972efdb52df\" %}\n\npackage:\n  name: '{{ name|lower }}'\n  version: '{{ version }}'\n\nsource:\n  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz\n  '{{ hash_type }}': '{{ hash_value }}'\n\nbuild:\n  number: 0\n  entry_points:\n    - gammapy = gammapy.scripts.main:cli\n  script: \"{{ PYTHON }} -m pip install . --no-deps -vv\"\n  skip: True  # [py2k]\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n  host:\n    - python\n    - setuptools_scm\n    - pip\n    - cython\n    - numpy >=1.16\n    - astropy >=3.2\n  run:\n    - python\n    - setuptools\n    - {{ pin_compatible('numpy') }}\n    - scipy >=1.2\n    - astropy >=3.2\n    - regions >=0.4\n    - click >=7.0\n    - pyyaml >=5.1\n    - pydantic >=1.2\n\ntest:\n  imports:\n    - gammapy\n    - gammapy.analysis\n    - gammapy.astro\n    - gammapy.astro.darkmatter\n    - gammapy.astro.population\n    - gammapy.astro.source\n    - gammapy.catalog\n    - gammapy.data\n    - gammapy.irf\n    - gammapy.maps\n    - gammapy.modeling\n    - gammapy.modeling.models\n    - gammapy.scripts\n    - gammapy.stats\n    - gammapy.time\n    - gammapy.utils\n    - gammapy.utils.coordinates\n    - gammapy.utils.random\n  commands:\n    - gammapy --help\n\nabout:\n  home: https://gammapy.org/\n  license: BSD 3-Clause\n  license_family: BSD\n  license_file: licenses/LICENSE.rst\n  summary: A Python package for gamma-ray astronomy\n  description: |\n    Gammapy is an open-source Python package for gamma-ray astronomy built on Numpy and Astropy. \n    It is a prototype for the Cherenkov Telescope Array (CTA) science tools,\n    and can also be used to analyse data from existing gamma-ray telescopes.\n  doc_url: https://docs.gammapy.org/\n  dev_url: https://github.com/gammapy/gammapy\n\nextra:\n  recipe-maintainers:\n    - mwcraig\n    - bsipocz\n    - cdeil\n    - adonath\n    - registerrier\n",
+ "raw_meta_yaml":"{% set name = \"gammapy\" %}\n{% set version = \"0.17\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz\n  sha256: 72241e3351b73457ca0633690e62e42af1f048536ebc6ce3ce296bbf57de6c54\n\nbuild:\n  number: 0\n  entry_points:\n    - gammapy = gammapy.scripts.main:cli\n  script: {{ PYTHON }} -m pip install . --no-deps -vv\n  skip: true  # [py2k]\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n  host:\n    - python\n    - setuptools_scm\n    - pip\n    - cython\n    - numpy >=1.16\n    - astropy >=3.2\n  run:\n    - python\n    - setuptools\n    - {{ pin_compatible('numpy') }}\n    - scipy >=1.2\n    - astropy >=3.2\n    - regions >=0.4\n    - click >=7.0\n    - pyyaml >=5.1\n    - pydantic >=1.2\n\ntest:\n  imports:\n    - gammapy\n    - gammapy.analysis\n    - gammapy.astro\n    - gammapy.astro.darkmatter\n    - gammapy.astro.population\n    - gammapy.astro.source\n    - gammapy.catalog\n    - gammapy.data\n    - gammapy.irf\n    - gammapy.maps\n    - gammapy.modeling\n    - gammapy.modeling.models\n    - gammapy.scripts\n    - gammapy.stats\n    - gammapy.time\n    - gammapy.utils\n    - gammapy.utils.coordinates\n    - gammapy.utils.random\n  commands:\n    - gammapy --help\n\nabout:\n  home: https://gammapy.org/\n  license: BSD 3-Clause\n  license_family: BSD\n  license_file: licenses/LICENSE.rst\n  summary: A Python package for gamma-ray astronomy\n  description: |\n    Gammapy is an open-source Python package for gamma-ray astronomy built on Numpy and Astropy. \n    It is a prototype for the Cherenkov Telescope Array (CTA) science tools,\n    and can also be used to analyse data from existing gamma-ray telescopes.\n  doc_url: https://docs.gammapy.org/\n  dev_url: https://github.com/gammapy/gammapy\n\nextra:\n  recipe-maintainers:\n    - mwcraig\n    - bsipocz\n    - cdeil\n    - adonath\n    - registerrier\n",
  "req":{
   "__set__":true,
   "elements":[
@@ -530,5 +527,5 @@
   }
  },
  "url":"https://pypi.io/packages/source/g/gammapy/gammapy-0.13.tar.gz",
- "version":"0.16"
+ "version":"0.17"
 }
