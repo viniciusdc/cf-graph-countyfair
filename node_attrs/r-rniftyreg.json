@@ -96,6 +96,23 @@
     "migrator_version",
     "version"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/396788600.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"Version",
+    "migrator_version":0,
+    "version":"2.6.8"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "version"
+   ]
   }
  ],
  "bad":false,
@@ -222,8 +239,8 @@
   }
  },
  "name":"r-rniftyreg",
- "new_version":"2.6.7",
- "pinning_version":"2019.09.08",
+ "new_version":"2.6.8",
+ "pinning_version":"2020.03.30",
  "raw_meta_yaml":"{% set version = \"2.6.7\" %}\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-rniftyreg\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  url:\n    - {{ cran_mirror }}/src/contrib/RNiftyReg_{{ version }}.tar.gz\n    - {{ cran_mirror }}/src/contrib/Archive/RNiftyReg/RNiftyReg_{{ version }}.tar.gz\n  sha256: 9f8f32c78f0328b99be79af6ce5c3c924bc799207abd3402134ab609f68ba6e3\n\nbuild:\n  merge_build_host: True  # [win]\n  number: 0\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - {{ compiler('c') }}              # [not win]\n    - {{ compiler('m2w64_c') }}        # [win]\n    - {{ compiler('cxx') }}            # [not win]\n    - {{ compiler('m2w64_cxx') }}      # [win]\n    - {{posix}}filesystem        # [win]\n    - {{posix}}sed               # [win]\n    - {{posix}}grep              # [win]\n    - {{posix}}autoconf\n    - {{posix}}automake          # [not win]\n    - {{posix}}automake-wrapper  # [win]\n    - {{posix}}pkg-config\n    - {{posix}}make\n    - {{posix}}coreutils         # [win]\n    - {{posix}}zip               # [win]\n  host:\n    - r-base\n    - r-rnifti >=0.4.0\n    - r-rcpp >=0.11.0\n    - r-rcppeigen\n    - r-ore\n  run:\n    - r-base\n    - {{native}}gcc-libs         # [win]\n    - r-rnifti >=0.4.0\n    - r-rcpp >=0.11.0\n    - r-rcppeigen\n    - r-ore\n\ntest:\n  commands:\n    - $R -e \"library('RNiftyReg')\"           # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('RNiftyReg')\\\"\"  # [win]\n\nabout:\n  home: https://github.com/jonclayden/RNiftyReg\n  license: GPL-2\n  summary: Provides an 'R' interface to the 'NiftyReg' image registration tools <http://sourceforge.net/projects/niftyreg/>.\n    Linear and nonlinear registration are supported, in two and three dimensions.\n  license_family: GPL2\n  license_file: '{{ environ[\"PREFIX\"] }}/lib/R/share/licenses/GPL-2'\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n\n# Package: RNiftyReg\n# Version: 2.6.6\n# Date: 2019-03-17\n# Title: Image Registration Using the 'NiftyReg' Library\n# Authors@R: c(person(\"Jon\",\"Clayden\",role=c(\"cre\",\"aut\"),email=\"code@clayden.org\"), person(\"Marc\",\"Modat\",role=\"aut\"), person(\"Benoit\",\"Presles\",role=\"aut\"), person(\"Thanasis\",\"Anthopoulos\",role=\"aut\"), person(\"Pankaj\",\"Daga\",role=\"aut\"))\n# Maintainer: Jon Clayden <code@clayden.org>\n# Imports: Rcpp (>= 0.11.0), RNifti (>= 0.4.0), ore\n# Suggests: jpeg, loder, mmand, testthat (>= 0.11.0)\n# LinkingTo: Rcpp, RcppEigen, RNifti\n# Description: Provides an 'R' interface to the 'NiftyReg' image registration tools <http://sourceforge.net/projects/niftyreg/>. Linear and nonlinear registration are supported, in two and three dimensions.\n# License: GPL-2\n# URL: https://github.com/jonclayden/RNiftyReg\n# BugReports: https://github.com/jonclayden/RNiftyReg/issues\n# Encoding: UTF-8\n# RoxygenNote: 6.1.0\n# NeedsCompilation: yes\n# Packaged: 2019-03-18 11:23:34 UTC; jon\n# Author: Jon Clayden [cre, aut], Marc Modat [aut], Benoit Presles [aut], Thanasis Anthopoulos [aut], Pankaj Daga [aut]\n# Repository: CRAN\n# Date/Publication: 2019-03-20 13:23:24 UTC\n",
  "req":{
   "__set__":true,
@@ -296,7 +313,7 @@
    "elements":[]
   }
  },
- "smithy_version":"3.4.5",
+ "smithy_version":"No azure token. Create a token and\nput it in ~/.conda-smithy/azure.token\n3.6.15",
  "strong_exports":false,
  "total_requirements":{
   "build":{

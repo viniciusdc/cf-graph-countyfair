@@ -169,6 +169,23 @@
     "migrator_version",
     "name"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/396792721.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"Version",
+    "migrator_version":0,
+    "version":"2.3.0"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "version"
+   ]
   }
  ],
  "bad":false,
@@ -286,8 +303,8 @@
   }
  },
  "name":"python-pdal",
- "new_version":"2.2.2",
- "pinning_version":"2019.11.18",
+ "new_version":"2.3.0",
+ "pinning_version":"2020.03.30",
  "raw_meta_yaml":"{% set name = \"python-pdal\" %}\n{% set version = \"2.2.2\" %}\n{% set sha256 = \"d379e1ef4c8334b460f89576c373d00d842a1811f41e92380ef125b813ad8bb0\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  fn: {{ name }}-{{ version }}.tar.gz\n  url: https://github.com/PDAL/python/archive/{{ version }}.tar.gz\n  sha256: {{ sha256 }}\n\nbuild:\n  number: 1\n  skip: True  # [(win and vc<14) or py<35]\n  script: {{ PYTHON }} -m pip install . --no-deps -vv\n\nrequirements:\n  build:\n    - {{ compiler('cxx') }}\n  host:\n    - python\n    - numpy\n    - cython\n    - packaging\n    - pdal\n    - libgdal\n    - gdal\n    - pip\n  run:\n    - python 3.7\n    - {{ pin_compatible('numpy') }}\n    - {{ pin_compatible('pdal', max_pin='x.x') }}\n    - {{ pin_compatible('libgdal', max_pin='x.x') }}\n    - {{ pin_compatible('gdal', max_pin='x.x') }}\n    - packaging\n\ntest:\n  source_files:\n    - test\n  imports:\n    - pdal\n  commands:\n    - cd test && python -m unittest test_pipeline\n\nabout:\n  home: https://pdal.io\n  license: BSD 3-Clause\n  license_family: BSD\n  license_file: LICENSE.txt\n  summary: 'Point Data Abstraction Library (PDAL) Python Package'\n  description: |\n    Python package for the PDAL library.\n  doc_url: https://pdal.io\n  dev_url: https://github.com/PDAL/python\n\nextra:\n  recipe-maintainers:\n    - chambbj\n    - hobu\n",
  "req":{
   "__set__":true,
@@ -339,7 +356,7 @@
    "elements":[]
   }
  },
- "smithy_version":"3.6.2",
+ "smithy_version":"No azure token. Create a token and\nput it in ~/.conda-smithy/azure.token\n3.6.15",
  "strong_exports":false,
  "total_requirements":{
   "build":{
