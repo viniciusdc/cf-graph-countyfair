@@ -185,7 +185,7 @@
   },
   "package":{
    "name":"pyam",
-   "version":"0.4.1"
+   "version":"0.5.0"
   },
   "requirements":{
    "build":[
@@ -206,6 +206,7 @@
     "seaborn",
     "six",
     "requests",
+    "pint",
     "numpy",
     "pandas",
     "pyyaml",
@@ -215,6 +216,7 @@
     "seaborn",
     "six",
     "requests",
+    "pint",
     "numpy",
     "pandas",
     "pyyaml",
@@ -223,15 +225,38 @@
     "matplotlib",
     "seaborn",
     "six",
-    "requests"
+    "requests",
+    "pint"
    ]
   },
-  "source":{
-   "sha256":"117b5ac8f2cf2274001f2cbc1d69e998e7ddfbc45f0b3b911c24886ed2fc1504",
-   "url":"https://github.com/IAMconsortium/pyam/archive/v0.4.1.tar.gz"
-  },
+  "source":[
+   {
+    "sha256":"6a19f8d80865c919d20c7fe674c36a4dd54eac9aad51777d3c2c5a4c6dc63997",
+    "url":"https://github.com/IAMconsortium/pyam/archive/v0.5.0.tar.gz"
+   },
+   {
+    "folder":"units",
+    "git_url":"https://github.com/IAMconsortium/units"
+   },
+   {
+    "sha256":"6a19f8d80865c919d20c7fe674c36a4dd54eac9aad51777d3c2c5a4c6dc63997",
+    "url":"https://github.com/IAMconsortium/pyam/archive/v0.5.0.tar.gz"
+   },
+   {
+    "folder":"units",
+    "git_url":"https://github.com/IAMconsortium/units"
+   },
+   {
+    "sha256":"6a19f8d80865c919d20c7fe674c36a4dd54eac9aad51777d3c2c5a4c6dc63997",
+    "url":"https://github.com/IAMconsortium/pyam/archive/v0.5.0.tar.gz"
+   },
+   {
+    "folder":"units",
+    "git_url":"https://github.com/IAMconsortium/units"
+   }
+  ],
   "test":{
-   "commands":"python -c \"import pyam; assert pyam.__version__ == '0.4.1'\"",
+   "commands":"python -c \"import pyam; assert pyam.__version__ == '0.5.0'\"",
    "imports":[
     "pyam",
     "pyam",
@@ -242,13 +267,14 @@
  "name":"pyam",
  "new_version":"0.5.0",
  "pinning_version":"2020.03.30",
- "raw_meta_yaml":"{% set version = \"0.4.1\" %}\n{% set sha256 = \"117b5ac8f2cf2274001f2cbc1d69e998e7ddfbc45f0b3b911c24886ed2fc1504\" %}\n\npackage:\n  name: pyam\n  version: {{ version }}\n\nsource:\n  url: https://github.com/IAMconsortium/pyam/archive/v{{ version }}.tar.gz\n  sha256: {{ sha256 }}\n\nbuild:\n  number: 0\n  noarch: python\n  script: {{ PYTHON }} -m pip install . --no-deps -vv\n\nrequirements:\n  build:\n    - python\n    - pip\n  run:\n    - numpy\n    - pandas\n    - pyyaml\n    - xlrd\n    - xlsxwriter\n    - matplotlib\n    - seaborn\n    - six\n    - requests\n\ntest:\n  imports:\n    - pyam\n  commands:\n     python -c \"import pyam; assert pyam.__version__ == '{{ version }}'\"\n\nabout:\n  home: https://pyam-iamc.readthedocs.io/\n  license: Apache-2.0\n  license_file: LICENSE\n  summary: 'a Python package for integrated-assessment scenario analysis and visualization'\n  description: |\n    The open-source Python package `pyam` provides a suite of tools and\n    functions for analyzing and visualizing input data\n    (i.e., assumptions/parametrization) and results (model output) of\n    integrated-assessment scenarios.\n    \n    # Key features:\n    - Simple analysis of timeseries data in the IAMC format with an interface\n      similar in feel and style to the widely used pandas.DataFrame\n    - Advanced visualization and plotting function\n    - Diagnostic checks for scripted validation of scenario data and results\n  doc_url: https://pyam-iamc.readthedocs.io/\n  dev_url: https://github.com/IAMconsortium/pyam\n\nextra:\n  recipe-maintainers:\n    - gidden\n    - danielhuppmann\n",
+ "raw_meta_yaml":"{% set version = \"0.5.0\" %}\n{% set sha256 = \"6a19f8d80865c919d20c7fe674c36a4dd54eac9aad51777d3c2c5a4c6dc63997\" %}\n\npackage:\n  name: pyam\n  version: {{ version }}\n\nsource:\n  - url: https://github.com/IAMconsortium/pyam/archive/v{{ version }}.tar.gz\n    sha256: {{ sha256 }}\n  # GitHub does not include submodules in the release archives,\n  # so get the latest version of the units repository directly\n  - git_url: https://github.com/IAMconsortium/units\n    folder: units\n  \n\nbuild:\n  number: 0\n  noarch: python\n  script: {{ PYTHON }} -m pip install . --no-deps -vv\n\nrequirements:\n  build:\n    - python\n    - pip\n  run:\n    - numpy\n    - pandas\n    - pyyaml\n    - xlrd\n    - xlsxwriter\n    - matplotlib\n    - seaborn\n    - six\n    - requests\n    - pint\n\ntest:\n  imports:\n    - pyam\n  commands: python -c \"import pyam; assert pyam.__version__ == '{{ version }}'\"\n\nabout:\n  home: https://pyam-iamc.readthedocs.io/\n  license: Apache-2.0\n  license_file: LICENSE\n  summary: a Python package for integrated-assessment scenario analysis and visualization\n  description: |\n    The open-source Python package `pyam` provides a suite of tools and\n    functions for analyzing and visualizing input data\n    (i.e., assumptions/parametrization) and results (model output) of\n    integrated-assessment scenarios.\n\n    # Key features:\n    - Simple analysis of timeseries data in the IAMC format with an interface\n      similar in feel and style to the widely used pandas.DataFrame\n    - Advanced visualization and plotting function\n    - Diagnostic checks for scripted validation of scenario data and results\n  doc_url: https://pyam-iamc.readthedocs.io/\n  dev_url: https://github.com/IAMconsortium/pyam\n\nextra:\n  recipe-maintainers:\n    - gidden\n    - danielhuppmann\n",
  "req":{
   "__set__":true,
   "elements":[
    "matplotlib",
    "numpy",
    "pandas",
+   "pint",
    "pip",
    "python",
    "pyyaml",
@@ -277,6 +303,7 @@
     "matplotlib",
     "numpy",
     "pandas",
+    "pint",
     "pyyaml",
     "requests",
     "seaborn",
@@ -310,6 +337,7 @@
     "matplotlib",
     "numpy",
     "pandas",
+    "pint",
     "pyyaml",
     "requests",
     "seaborn",
@@ -324,5 +352,5 @@
   }
  },
  "url":"https://github.com/IAMconsortium/pyam/archive/v0.2.0.tar.gz",
- "version":"0.4.1"
+ "version":"0.5.0"
 }
