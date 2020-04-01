@@ -158,6 +158,23 @@
     "migrator_version",
     "name"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/396877775.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"Version",
+    "migrator_version":0,
+    "version":"1.1.2"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "version"
+   ]
   }
  ],
  "bad":false,
@@ -281,12 +298,12 @@
   }
  },
  "name":"camb",
- "new_version":"1.1.1",
+ "new_version":"1.1.2",
  "outputs_names":[
   "camb",
   "pycamb"
  ],
- "pinning_version":"2020.03.28",
+ "pinning_version":"2020.03.30",
  "raw_meta_yaml":"{% set name = \"camb\" %}\n{% set version = \"1.1.1\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  url: https://github.com/cmbant/CAMB/archive/{{ version }}.tar.gz\n  sha256: 1e0dad292b70f2c02a3923e589bc48a0c7107a9dce982ab5a487116903ffcbee\n\nbuild:\n  number: 0\n  skip: True  # [py2k]\n\nrequirements:\n  build:\n    - {{ compiler('c') }}  # [not win]\n    - {{ compiler('fortran') }}  # [not win]\n    - m2w64-toolchain  # [win]\n    - git  # [not win]\n    - m2-git  # [win]\n    - make  # [not win]\n    - m2-make  # [win]\n    - python\n    - setuptools\n    - pip\n  host:\n    - python\n    - pip\n    - setuptools\n  run:\n    - python\n    - numpy\n    - six  # TODO: remove for next update\n    - mock\n    - setuptools  # for an import of pkg_resources\n    - sympy >=1.0\n    - scipy >=1.0\n    - {{ compiler('fortran') }}  # [not win]\n\ntest:\n  imports:\n    - camb\n  files:\n    - params.ini\n    - test_pycamb.py\n    - run_test.sh  # [win]\n\nabout:\n  home: https://camb.info/\n  license: modified LGPL\n  license_family: LGPL\n  license_file: {{ RECIPE_DIR }}/LICENSE\n  summary: Code for Anisotropies in the Microwave Background\n  description: |\n    Code for Anisotropies in the Microwave Background\n    by Antony Lewis and Anthony Challinor\n\n    Features:\n      - Support for closed, open and flat models\n      - Scalar, vector and tensor modes including polarization\n      - Output Cl, matter transfer functions, matter power spectrum and \u03c38\n      - Fast computation to ~0.3-0.1% accuracy, with controllable accuracy level\n      - Relatively structured and easily extendable Fortran 90 code\n      - Efficient support for massive neutrinos\n      - Absolute computations from correctly normalized initial power spectra\n      - Computation of lensed CMB power spectra and lensing potential power spectrum\n      - Internally parallelized for fast execution on multi-processor machines\n      - Use CAMB with CosmoMC for Monte-Carlo parameter estimation\n      - Constant equation of state quintessence (or variable PPF)\n      - Support for general correlated adiabatic/isocurvature initial conditions\n      - Accurate full-sky calculation of lensed power spectra (astro-ph/0502425)\n      - Integrated interface to HALOFIT for non-linear fitting\n      - support for arbitrary neutrino mass splittings\n      - For 21cm, lensing and number count power spectra see this extension\n      - For perturbed recombination and effect on small-scale baryons see this extension\n      - Calculation of local primordial and CMB lensing bispectra\n      - Easy-to-use Python wrapper\n  doc_url: https://camb.info/readme.html\n  dev_url: https://github.com/cmbant/CAMB\n\nextra:\n  recipe-maintainers:\n    - beckermr\n    - cmbant\n",
  "req":{
   "__set__":true,
