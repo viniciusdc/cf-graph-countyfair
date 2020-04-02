@@ -67,6 +67,23 @@
     "migrator_version",
     "version"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/397862536.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"ArchRebuild",
+    "migrator_version":1,
+    "name":"aarch64 and ppc64le addition"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "name"
+   ]
   }
  ],
  "bad":false,
@@ -171,7 +188,7 @@
  },
  "name":"r-ps",
  "new_version":"1.3.2",
- "pinning_version":"2020.02.12",
+ "pinning_version":"2020.04.02",
  "raw_meta_yaml":"{% set version = \"1.3.2\" %}\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-ps\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  url:\n    - {{ cran_mirror }}/src/contrib/ps_{{ version }}.tar.gz\n    - {{ cran_mirror }}/src/contrib/Archive/ps/ps_{{ version }}.tar.gz\n  sha256: 89f2456af6c7ffbc151aeccb620584ca26015b7d6188eb188488c7c4afc14704\n\nbuild:\n  merge_build_host: True  # [win]\n  number: 0\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - {{ compiler('c') }}              # [not win]\n    - {{ compiler('m2w64_c') }}        # [win]\n    - {{posix}}filesystem        # [win]\n    - {{posix}}sed               # [win]\n    - {{posix}}grep              # [win]\n    - {{posix}}autoconf\n    - {{posix}}automake          # [not win]\n    - {{posix}}automake-wrapper  # [win]\n    - {{posix}}pkg-config\n    - {{posix}}make\n    - {{posix}}coreutils         # [win]\n    - {{posix}}zip               # [win]\n  host:\n    - r-base\n  run:\n    - r-base\n    - {{native}}gcc-libs         # [win]\n\ntest:\n  commands:\n    - $R -e \"library('ps')\"           # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('ps')\\\"\"  # [win]\n\nabout:\n  home: https://github.com/r-lib/ps#readme\n  license: BSD_3_clause\n  summary: List, query and manipulate all system processes, on 'Windows', 'Linux' and 'macOS'.\n  license_family: BSD\n  license_file:\n    - '{{ environ[\"PREFIX\"] }}/lib/R/share/licenses/BSD_3_clause'\n    - LICENSE\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n\n# Package: ps\n# Version: 1.3.1\n# Title: List, Query, Manipulate System Processes\n# Description: List, query and manipulate all system processes, on 'Windows', 'Linux' and 'macOS'.\n# Authors@R: c( person(\"Jay\", \"Loden\", role = \"aut\"), person(\"Dave\", \"Daeschler\", role = \"aut\"), person(\"Giampaolo\", \"Rodola'\", role = \"aut\"), person(\"Gabor\", \"Csardi\", , \"csardi.gabor@gmail.com\", c(\"aut\", \"cre\")), person(\"RStudio\", role = \"cph\"))\n# License: BSD_3_clause + file LICENSE\n# URL: https://github.com/r-lib/ps#readme\n# BugReports: https://github.com/r-lib/ps/issues\n# Encoding: UTF-8\n# Depends: R (>= 3.1)\n# Imports: utils\n# Suggests: callr, covr, curl, pingr, processx (>= 3.1.0), R6, rlang, testthat, tibble\n# RoxygenNote: 7.0.2.9000\n# Biarch: true\n# NeedsCompilation: yes\n# Packaged: 2020-02-12 09:40:34 UTC; gaborcsardi\n# Author: Jay Loden [aut], Dave Daeschler [aut], Giampaolo Rodola' [aut], Gabor Csardi [aut, cre], RStudio [cph]\n# Maintainer: Gabor Csardi <csardi.gabor@gmail.com>\n# Repository: CRAN\n# Date/Publication: 2020-02-12 12:10:03 UTC\n",
  "req":{
   "__set__":true,
@@ -228,7 +245,7 @@
    "elements":[]
   }
  },
- "smithy_version":"3.6.8",
+ "smithy_version":"No azure token. Create a token and\nput it in ~/.conda-smithy/azure.token\n3.6.15",
  "strong_exports":false,
  "total_requirements":{
   "build":{

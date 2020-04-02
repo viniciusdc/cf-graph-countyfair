@@ -68,7 +68,7 @@
   }
  },
  "name":"libccd",
- "new_version":false,
+ "new_version":"2.1",
  "raw_meta_yaml":"{% set name = \"libccd\" %}\n{% set version = \"2.1\" %}\n\npackage:\n  name: libccd\n  version: {{ version }}\n\nsource:\n  url: https://github.com/danfis/libccd/archive/v{{ version }}.tar.gz\n  sha256: 542b6c47f522d581fbf39e51df32c7d1256ac0c626e7c2b41f1040d4b9d50d1e\n  patches:\n    - find_libm.patch\n\nbuild:\n  number: 0\n  skip: True  # [win]\n  run_exports:\n    - {{ pin_subpackage(name, max_pin='x.x') }}\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n    - cmake\n    - make  # [unix]\n\ntest:\n  commands:\n    - test -f $PREFIX/lib/pkgconfig/ccd.pc  # [unix]\n    - test -f $PREFIX/share/doc/ccd/BSD-LICENSE  # [unix]\n    - test -f $PREFIX/lib/libccd${SHLIB_EXT}  # [unix]\n    - test -f $PREFIX/include/ccd/ccd.h  # [unix]\n    - test -f $PREFIX/include/ccd/ccd_export.h  # [unix]\n    - test -f $PREFIX/include/ccd/quat.h  # [unix]\n\nabout:\n  home: https://github.com/danfis/libccd\n  license: BSD-3-Clause\n  license_family: BSD\n  license_file: BSD-LICENSE\n  summary: libccd is library for a collision detection between two convex shapes.\n  description: |\n    libccd implements variation on Gilbert\u2013Johnson\u2013Keerthi algorithm plus Expand Polytope Algorithm (EPA) \n    and also implements algorithm Minkowski Portal Refinement (MPR, a.k.a. XenoCollide) as described in \n    Game Programming Gems 7.\n\nextra:\n  recipe-maintainers:\n    - wolfv\n",
  "req":{
   "__set__":true,

@@ -60,7 +60,7 @@
   }
  },
  "name":"bmi-c",
- "new_version":false,
+ "new_version":"2.0",
  "raw_meta_yaml":"{% set name = \"bmi-c\" %}\n{% set version = \"2.0\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  url: https://github.com/csdms/{{ name }}/archive/v{{ version }}.tar.gz\n  sha256: c4e1c6716767c87da0826337702324a253c1b359cd37c00081add117141e015d\n\nbuild:\n  number: 1\n  skip: true  # [win and vc<14]\n\nrequirements:\n  build:\n    - cmake\n    - {{ compiler('c') }}    # [unix]\n    - {{ compiler('cxx') }}  # [win]\n    - make  # [unix]\n\ntest:\n  commands:\n    - test -f $PREFIX/include/bmi.h          # [unix]\n    - test -f $PREFIX/lib/pkgconfig/bmic.pc  # [unix]\n    - if not exist %LIBRARY_INC%\\\\bmi.h exit 1               # [win]\n    - if not exist %LIBRARY_LIB%\\\\pkgconfig\\\\bmic.pc exit 1  # [win]\n\nabout:\n  home: https://bmi.readthedocs.io\n  license: MIT\n  license_family: MIT\n  license_file: LICENSE\n  summary: 'C specification for the Basic Model Interface'\n  description: |\n    C bindings for the CSDMS Basic Model Interface (BMI). This package\n    includes a header file with an interface to be implemented by a\n    model developer when they add a BMI to their model.\n  doc_url: https://bmi.readthedocs.io\n  dev_url: https://github.com/csdms/bmi-c\n\nextra:\n  recipe-maintainers:\n    - mdpiper\n    - mcflugen\n",
  "req":{
   "__set__":true,
