@@ -170,29 +170,28 @@
     "migrator_version",
     "name"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/397754509.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"MigrationYaml",
+    "migrator_object_version":1,
+    "migrator_version":0,
+    "name":"pypy"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_object_version",
+    "migrator_version",
+    "name"
+   ]
   }
  ],
- "bad":{
-  "exception":"Failed to put item: An error occurred (ValidationException) on request (JR35DKRAPLEQUULR6B4M588EF3VV4KQNSO5AEMVJF66Q9ASUAAJG) on table (pr_json) when calling the PutItem operation: Attempting to store more than 38 significant digits in a Number",
-  "traceback":[
-   "Traceback (most recent call last):",
-   "  File \"/root/repo/cf-scripts/conda_forge_tick/auto_tick.py\", line 937, in main",
-   "    hash_type=attrs.get(\"hash_type\", \"sha256\"),",
-   "  File \"/root/repo/cf-scripts/conda_forge_tick/auto_tick.py\", line 254, in run",
-   "    PRJson.dump(pr_json)",
-   "  File \"/root/repo/cf-scripts/conda_forge_tick/dynamo_models.py\", line 33, in dump",
-   "    item.save()",
-   "  File \"/opt/conda/envs/run_env/lib/python3.7/site-packages/pynamodb/models.py\", line 405, in save",
-   "    data = self._get_connection().put_item(*args, **kwargs)",
-   "  File \"/opt/conda/envs/run_env/lib/python3.7/site-packages/pynamodb/connection/table.py\", line 139, in put_item",
-   "    return_item_collection_metrics=return_item_collection_metrics)",
-   "  File \"/opt/conda/envs/run_env/lib/python3.7/site-packages/pynamodb/connection/base.py\", line 972, in put_item",
-   "    six.raise_from(PutError(\"Failed to put item: {}\".format(e), e), None)",
-   "  File \"<string>\", line 3, in raise_from",
-   "pynamodb.exceptions.PutError: Failed to put item: An error occurred (ValidationException) on request (JR35DKRAPLEQUULR6B4M588EF3VV4KQNSO5AEMVJF66Q9ASUAAJG) on table (pr_json) when calling the PutItem operation: Attempting to store more than 38 significant digits in a Number",
-   ""
-  ]
- },
+ "bad":false,
  "conda-forge.yml":{
   "compiler_stack":"comp7",
   "max_py_ver":"37",
@@ -330,7 +329,7 @@
  },
  "name":"onnx",
  "new_version":"1.6.0",
- "pinning_version":"2019.11.01",
+ "pinning_version":"2020.04.02",
  "raw_meta_yaml":"{% set name = \"onnx\" %}\n{% set version = \"1.6.0\" %}\n{% set sha256 = \"a725df7c1bbed3456794c9fb8c4a5443ba0d3496f96ef3685a4625dc947de855\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  fn: {{ name }}-{{ version }}.tar.gz\n  url: https://github.com/onnx/onnx/archive/v{{ version }}.tar.gz\n  sha256: {{ sha256 }}\n\nbuild:\n  number: 0\n  script:\n    - export ONNX_ML=1  # [unix]\n    - set \"ONNX_ML=1\"  # [win]\n    # build script looks at this, but not set on\n    - export CONDA_PREFIX=\"$PREFIX\"  # [unix]\n    - python -m pip install --no-deps --ignore-installed --verbose .\n  entry_points:\n    - check-model = onnx.bin.checker:check_model\n    - check-node = onnx.bin.checker:check_node\n    - backend-test-tools = onnx.backend.test.cmd_tools:main\n  skip: true  # [win]\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n    - cmake\n  host:\n    - python\n    - pip\n    - protobuf\n    - pytest-runner\n    - ninja\n    - pybind11\n  run:\n    - python\n    - protobuf\n    - numpy\n    - six\n    - typing  # [py2k]\n\ntest:\n  imports:\n    - onnx\n  commands:\n    - check-model --help\n    - check-node --help\n    - backend-test-tools --help\n    - conda inspect linkages -p $PREFIX {{ name }}  # [unix]\n    - conda inspect objects -p $PREFIX {{ name }}   # [osx]\n\nabout:\n  home: https://github.com/onnx/onnx/\n  license: MIT\n  license_family: MIT\n  license_file: LICENSE\n  summary: Open Neural Network Exchange library\n  description: |\n    Open Neural Network Exchange (ONNX) is the first step toward an open\n    ecosystem that empowers AI developers to choose the right tools as their\n    project evolves. ONNX provides an open source format for AI models. It\n    defines an extensible computation graph model, as well as definitions of\n    built-in operators and standard data types. Initially we focus on the\n    capabilities needed for inferencing (evaluation).\n\nextra:\n  recipe-maintainers:\n    - ezyang\n    - dougalsutherland\n    - marcelotrevisani\n",
  "req":{
   "__set__":true,
@@ -382,7 +381,7 @@
    "elements":[]
   }
  },
- "smithy_version":"3.6.1",
+ "smithy_version":"No azure token. Create a token and\nput it in ~/.conda-smithy/azure.token\n3.6.15",
  "strong_exports":false,
  "total_requirements":{
   "build":{

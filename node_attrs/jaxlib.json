@@ -275,29 +275,28 @@
     "migrator_version",
     "version"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/397755522.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"MigrationYaml",
+    "migrator_object_version":1,
+    "migrator_version":0,
+    "name":"pypy"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_object_version",
+    "migrator_version",
+    "name"
+   ]
   }
  ],
- "bad":{
-  "exception":"Failed to put item: An error occurred (ValidationException) on request (9TFU0NDFL2TAE55F4S3KJL4M6VVV4KQNSO5AEMVJF66Q9ASUAAJG) on table (pr_json) when calling the PutItem operation: Attempting to store more than 38 significant digits in a Number",
-  "traceback":[
-   "Traceback (most recent call last):",
-   "  File \"/root/repo/cf-scripts/conda_forge_tick/auto_tick.py\", line 937, in main",
-   "    hash_type=attrs.get(\"hash_type\", \"sha256\"),",
-   "  File \"/root/repo/cf-scripts/conda_forge_tick/auto_tick.py\", line 254, in run",
-   "    PRJson.dump(pr_json)",
-   "  File \"/root/repo/cf-scripts/conda_forge_tick/dynamo_models.py\", line 33, in dump",
-   "    item.save()",
-   "  File \"/opt/conda/envs/run_env/lib/python3.7/site-packages/pynamodb/models.py\", line 405, in save",
-   "    data = self._get_connection().put_item(*args, **kwargs)",
-   "  File \"/opt/conda/envs/run_env/lib/python3.7/site-packages/pynamodb/connection/table.py\", line 139, in put_item",
-   "    return_item_collection_metrics=return_item_collection_metrics)",
-   "  File \"/opt/conda/envs/run_env/lib/python3.7/site-packages/pynamodb/connection/base.py\", line 972, in put_item",
-   "    six.raise_from(PutError(\"Failed to put item: {}\".format(e), e), None)",
-   "  File \"<string>\", line 3, in raise_from",
-   "pynamodb.exceptions.PutError: Failed to put item: An error occurred (ValidationException) on request (9TFU0NDFL2TAE55F4S3KJL4M6VVV4KQNSO5AEMVJF66Q9ASUAAJG) on table (pr_json) when calling the PutItem operation: Attempting to store more than 38 significant digits in a Number",
-   ""
-  ]
- },
+ "bad":false,
  "conda-forge.yml":{},
  "feedstock_name":"jaxlib",
  "hash_type":"sha256",
@@ -370,7 +369,7 @@
  },
  "name":"jaxlib",
  "new_version":"0.1.43",
- "pinning_version":"2020.02.12",
+ "pinning_version":"2020.04.02",
  "raw_meta_yaml":"{% set version = \"0.1.42\" %}\n{% set name = \"jaxlib\" %}\n\n{% set pyver = \"cp{}{}\".format(PY_VER[0], PY_VER[2]) %}\n{% set platform = \"manylinux2010_x86_64\" %}  # [linux]\n{% set platform = \"macosx_10_9_x86_64\" %}  # [osx]\n\n# {distribution}-{version}(-{build tag})?-{python tag}-{abi tag}-{platform tag}.whl.\n{% set fn = \"{}-{}-{}-none-{}.whl\".format(name, version, pyver, platform) %}\n\npackage:\n  name: jaxlib\n  version: {{ version }}\n\nsource:\n  fn: {{ fn }}\n  url: https://pypi.io/packages/{{ pyver }}/{{ name[0] }}/{{ name }}/{{ fn }}\n  sha256: 0ca99b7ecee52e7f0d5287e7917a8faebe55205c68694ff0076ac781478dede8  # [linux and py==36]  \n  sha256: 2bdc0651c272f69c4e54c36352ceda23bf6cb2e7c11d77f71e61e152ab95cee0  # [osx and py==36]\n\n  sha256: 8027e741872eebd587d621d0a6ceaf07c6dea77a92b75602b904c0f01c9d5db4  # [linux and py==37]\n  sha256: 476da8512706f46b1ec118579530d81d743e9752f846555e5d649365e76607f5  # [osx and py==37]\n\n  sha256: 31908dfc68e48d4fa38a80a455bc87afa74c54b44cff547568d73438ddfa21fc  # [linux and py==38]\n  sha256: 24a061a24b638e953a4e466f15313f4b7f74b22e304fd28679c94dc5ad9c1ade  # [osx and py==38]\nbuild:\n  number: 0\n  skip: True  # [win or py2k]\n  script: \"{{ PYTHON }} -m pip install --no-deps -vv {{ fn }}\"\n\nrequirements:\n  host:\n    - python\n    - pip\n  run:\n    - python\n    - absl-py\n    - numpy >=1.12\n    - protobuf >=3.6.0\n    - scipy\n    - six\n\ntest:\n  requires:\n    - pip\n  commands:\n    - pip check\n  # imports:\n    # cannot run the test b/c this is not really manylinux1 GLIBC_2.14\n    # Google :-/\n    # - jaxlib\n\nabout:\n  home: http://github.com/google/jax\n  license: Apache-2.0\n  license_file: LICENSE\n  summary: \"Composable transformations of Python+NumPy programs: differentiate, vectorize, JIT to GPU/TPU, and more\"\n\n  dev_url: http://github.com/google/jax\n\nextra:\n  recipe-maintainers:\n    - ericmjl\n",
  "req":{
   "__set__":true,
@@ -412,7 +411,7 @@
    "elements":[]
   }
  },
- "smithy_version":"3.6.8",
+ "smithy_version":"No azure token. Create a token and\nput it in ~/.conda-smithy/azure.token\n3.6.15",
  "strong_exports":false,
  "total_requirements":{
   "build":{

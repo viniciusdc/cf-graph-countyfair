@@ -142,6 +142,23 @@
     "migrator_version",
     "name"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/397743864.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"Version",
+    "migrator_version":0,
+    "version":"3.7.4.2"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "version"
+   ]
   }
  ],
  "bad":false,
@@ -289,12 +306,12 @@
   }
  },
  "name":"typing_extensions",
- "new_version":"3.7.4.1",
+ "new_version":"3.7.4.2",
  "outputs_names":[
   "typing-extensions",
   "typing_extensions"
  ],
- "pinning_version":"2020.03.24",
+ "pinning_version":"2020.04.02",
  "raw_meta_yaml":"{% set name = \"typing_extensions\" %}\n{% set version = \"3.7.4.1\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz\n  sha256: 091ecc894d5e908ac75209f10d5b4f118fbdb2eb1ede6a63544054bb1edb41f2\n\nbuild:\n  number: 3\n\noutputs:\n  - name: {{ name }}\n    build:\n      script: python -m pip install --no-deps --ignore-installed .\n    requirements:\n      host:\n        - python\n        - pip\n      run:\n        - python\n        - typing >=3.7.4  # [py<35]\n    test:\n      imports:\n        - typing_extensions\n\n  - name: typing-extensions\n    requirements:\n      run:\n        - {{ pin_subpackage(name, exact=True) }}\n        - python\n    test:\n      imports:\n        - typing_extensions\n\nabout:\n  home: https://github.com/python/typing/tree/master/typing_extensions\n  license: PSF\n  license_family: PSF\n  license_file: LICENSE\n  summary: 'Backported and Experimental Type Hints for Python'\n  description: |\n    The typing module was added to the standard library in Python 3.5 on a\n    provisional basis and will no longer be provisional in Python 3.7. However,\n    this means users of Python 3.5 - 3.6 who are unable to upgrade will not be\n    able to take advantage of new types added to the typing module, such as\n    typing.Text or typing.Coroutine.\n\n    The typing_extensions module contains both backports of these changes\n    as well as experimental types that will eventually be added to the typing\n    module, such as Protocol.\n\n    Users of other Python versions should continue to install and use the\n    typing module from PyPi instead of using this one unless specifically\n    writing code that must be compatible with multiple Python versions or\n    requires experimental types.\n  doc_url: https://github.com/python/typing\n  dev_url: https://github.com/python/typing\n\nextra:\n  recipe-maintainers:\n    - dougalsutherland\n",
  "req":{
   "__set__":true,

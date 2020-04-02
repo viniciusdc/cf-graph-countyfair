@@ -44,61 +44,172 @@
  "meta_yaml":{
   "about":{
    "home":"http://libsigc.sourceforge.net/",
-   "license":"LGPL v3",
+   "license":"LGPL-3.0-or-later",
    "license_file":"COPYING",
    "summary":"libsigc++ implements a typesafe callback system for standard C++."
   },
   "build":{
-   "number":"1001",
+   "number":"0",
+   "run_exports":[
+    "sigcpp-2.0 >=2.10.3",
+    "sigcpp-2.0 >=2.10.3",
+    "sigcpp-2.0 >=2.10.3"
+   ],
    "skip":true
   },
   "extra":{
    "recipe-maintainers":[
     "scopatz",
+    "isuruf",
     "scopatz",
-    "scopatz"
+    "isuruf",
+    "scopatz",
+    "isuruf"
    ]
   },
+  "outputs":[
+   {
+    "build":{
+     "run_exports":[
+      "sigcpp-2.0 >=2.10.3"
+     ]
+    },
+    "name":"sigcpp-2.0",
+    "requirements":{
+     "build":[
+      "autoconf",
+      "automake",
+      "c_compiler_stub",
+      "cxx_compiler_stub"
+     ],
+     "host":[
+      "m4"
+     ],
+     "run_constrained":[
+      "libsigcpp 2.10.3"
+     ]
+    },
+    "script":"build_libsigcpp.sh",
+    "test":{
+     "commands":[
+      "test -f ${PREFIX}/lib/libsigc-2.0${SHLIB_EXT}"
+     ]
+    }
+   },
+   {
+    "name":"libsigcpp",
+    "requirements":{
+     "run":[
+      "sigcpp-2.0  2.10.3"
+     ]
+    },
+    "test":{
+     "commands":[
+      "test -f ${PREFIX}/lib/pkg-config/sigc++-2.0.pc"
+     ]
+    }
+   },
+   {
+    "build":{
+     "run_exports":[
+      "sigcpp-2.0 >=2.10.3"
+     ]
+    },
+    "name":"sigcpp-2.0",
+    "requirements":{
+     "build":[
+      "autoconf",
+      "automake",
+      "c_compiler_stub",
+      "cxx_compiler_stub"
+     ],
+     "host":[
+      "m4"
+     ],
+     "run_constrained":[
+      "libsigcpp 2.10.3"
+     ]
+    },
+    "script":"build_libsigcpp.sh",
+    "test":{
+     "commands":[
+      "test -f ${PREFIX}/lib/libsigc-2.0${SHLIB_EXT}"
+     ]
+    }
+   },
+   {
+    "name":"libsigcpp",
+    "requirements":{
+     "run":[
+      "sigcpp-2.0  2.10.3"
+     ]
+    },
+    "test":{
+     "commands":[
+      "test -f ${PREFIX}/lib/pkg-config/sigc++-2.0.pc"
+     ]
+    }
+   },
+   {
+    "build":{
+     "run_exports":[
+      "sigcpp-2.0 >=2.10.3"
+     ]
+    },
+    "name":"sigcpp-2.0",
+    "requirements":{
+     "build":[
+      "autoconf",
+      "automake",
+      "c_compiler_stub",
+      "cxx_compiler_stub"
+     ],
+     "host":[
+      "m4"
+     ],
+     "run_constrained":[
+      "libsigcpp 2.10.3"
+     ]
+    },
+    "script":"build_libsigcpp.sh",
+    "test":{
+     "commands":[
+      "test -f ${PREFIX}/lib/libsigc-2.0${SHLIB_EXT}"
+     ]
+    }
+   },
+   {
+    "name":"libsigcpp",
+    "requirements":{
+     "run":[
+      "sigcpp-2.0  2.10.3"
+     ]
+    },
+    "test":{
+     "commands":[
+      "test -f ${PREFIX}/lib/pkg-config/sigc++-2.0.pc"
+     ]
+    }
+   }
+  ],
   "package":{
    "name":"libsigcpp",
-   "version":"2.10.0"
-  },
-  "requirements":{
-   "build":[
-    "autoconf",
-    "automake",
-    "c_compiler_stub",
-    "cxx_compiler_stub",
-    "autoconf",
-    "automake",
-    "c_compiler_stub",
-    "cxx_compiler_stub",
-    "autoconf",
-    "automake",
-    "c_compiler_stub",
-    "cxx_compiler_stub"
-   ],
-   "host":[
-    "m4",
-    "m4",
-    "m4"
-   ]
+   "version":"2.10.3"
   },
   "source":{
-   "fn":"libsigc++-2.10.0.tar.xz",
-   "sha256":"f843d6346260bfcb4426259e314512b99e296e8ca241d771d21ac64f28298d81",
-   "url":"http://ftp.acc.umu.se/pub/GNOME/sources/libsigc++/2.10/libsigc++-2.10.0.tar.xz"
-  },
-  "test":{
-   "commands":[
-    "test -f ${PREFIX}/lib/libsigc-2.0.so"
-   ]
+   "fn":"libsigc++-2.10.3.tar.xz",
+   "sha256":"0b68dfc6313c6cc90ac989c6d722a1bf0585ad13846e79746aa87cb265904786",
+   "url":"http://ftp.acc.umu.se/pub/GNOME/sources/libsigc++/2.10/libsigc++-2.10.3.tar.xz"
   }
  },
  "name":"libsigcpp",
  "new_version":false,
+ "outputs_names":[
+  "libsigcpp",
+  "sigcpp-2.0"
+ ],
  "pinning_version":"2018.09.11",
- "raw_meta_yaml":"{% set major_minor = \"2.10\" %}\n{% set version = major_minor + \".0\" %}\n\npackage:\n  name: libsigcpp\n  version: {{ version }}\n\nsource:\n  fn: libsigc++-{{ version }}.tar.xz\n  url: http://ftp.acc.umu.se/pub/GNOME/sources/libsigc++/{{ major_minor }}/libsigc++-{{ version }}.tar.xz\n  sha256: f843d6346260bfcb4426259e314512b99e296e8ca241d771d21ac64f28298d81\n\nbuild:\n  number: 1001\n  skip: true  # [win]\n\nrequirements:\n  build:\n    - autoconf\n    - automake\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n  host:\n    - m4\n\ntest:\n  commands:\n    - test -f ${PREFIX}/lib/libsigc-2.0.so  # [linux]\n    - test -f ${PREFIX}/lib/libsigc-2.0.dylib  # [osx]\n\nabout:\n  home: http://libsigc.sourceforge.net/\n  license: LGPL v3\n  license_file: COPYING\n  summary: \"libsigc++ implements a typesafe callback system for standard C++.\"\n\nextra:\n  recipe-maintainers:\n    - scopatz\n",
+ "raw_meta_yaml":"{% set version = \"2.10.3\" %}\n{% set major_minor = \".\".join(version.split(\".\")[:2]) %}\n{% set abi_version = \"2.0\" %}\n\npackage:\n  name: libsigcpp\n  version: {{ version }}\n\nsource:\n  fn: libsigc++-{{ version }}.tar.xz\n  url: http://ftp.acc.umu.se/pub/GNOME/sources/libsigc++/{{ major_minor }}/libsigc++-{{ version }}.tar.xz\n  sha256: 0b68dfc6313c6cc90ac989c6d722a1bf0585ad13846e79746aa87cb265904786\n\nbuild:\n  number: 0\n  skip: true  # [win]\n  run_exports:\n    - sigcpp-{{ abi_version }} >={{ version }}\n\noutputs:\n  - name: sigcpp-{{ abi_version }}\n    script: build_libsigcpp.sh\n    build:\n      run_exports:\n        - sigcpp-{{ abi_version }} >={{ version }}\n    requirements:\n      build:\n        - autoconf\n        - automake\n        - {{ compiler('c') }}\n        - {{ compiler('cxx') }}\n      host:\n        - m4\n      run_constrained:\n        - libsigcpp {{ version }}\n    test:\n      commands:\n        - test -f ${PREFIX}/lib/libsigc-{{ abi_version }}${SHLIB_EXT}\n\n  - name: libsigcpp\n    requirements:\n      run:\n        - sigcpp-{{ abi_version }}  {{ version }}\n    test:\n      commands:\n        - test -f ${PREFIX}/lib/pkg-config/sigc++-{{ abi_version }}.pc\n\nabout:\n  home: http://libsigc.sourceforge.net/\n  license: LGPL-3.0-or-later\n  license_file: COPYING\n  summary: \"libsigc++ implements a typesafe callback system for standard C++.\"\n\nextra:\n  recipe-maintainers:\n    - scopatz\n    - isuruf\n",
  "req":{
   "__set__":true,
   "elements":[
@@ -106,7 +217,8 @@
    "automake",
    "c_compiler_stub",
    "cxx_compiler_stub",
-   "m4"
+   "m4",
+   "sigcpp-2.0"
   ]
  },
  "requirements":{
@@ -127,7 +239,9 @@
   },
   "run":{
    "__set__":true,
-   "elements":[]
+   "elements":[
+    "sigcpp-2.0"
+   ]
   },
   "test":{
    "__set__":true,
@@ -154,7 +268,9 @@
   },
   "run":{
    "__set__":true,
-   "elements":[]
+   "elements":[
+    "sigcpp-2.0  2.10.3"
+   ]
   },
   "test":{
    "__set__":true,
@@ -162,5 +278,5 @@
   }
  },
  "url":"http://ftp.acc.umu.se/pub/GNOME/sources/libsigc++/2.10/libsigc++-2.10.0.tar.xz",
- "version":"2.10.0"
+ "version":"2.10.3"
 }
