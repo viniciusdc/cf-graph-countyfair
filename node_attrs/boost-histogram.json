@@ -124,7 +124,7 @@
    ]
   }
  ],
- "bad":"make_graph: 500",
+ "bad":false,
  "conda-forge.yml":{
   "provider":{
    "linux_aarch64":"default",
@@ -222,7 +222,7 @@
   }
  },
  "name":"boost-histogram",
- "new_version":false,
+ "new_version":"0.7.0",
  "pinning_version":"2020.03.24",
  "raw_meta_yaml":"{% set name = \"boost-histogram\" %}\n{% set version = \"0.7.0\" %}\n\npackage:\n  name: \"{{ name|lower }}\"\n  version: \"{{ version }}\"\n\nsource:\n  url: https://pypi.io/packages/source/b/boost_histogram/boost-histogram-{{ version }}.tar.gz\n  sha256: bfd21d90e4fe308dbb31b024997a8cc8df10674f81ebfa8d880d266c4b3253d3\n\nbuild:\n  number: 0\n  script: \"NPY_NUM_BUILD_JOBS=1 {{ PYTHON }} -m pip install . -vvv\"  # [linux and ppc64le]\n  script: \"{{ PYTHON }} -m pip install . -vvv\"  # [not (linux and ppc64le)]\n  skip: true  # [win and vc<14]\n\nrequirements:\n  build:\n    - {{ compiler('cxx') }}            # [not win]\n    - vs2017_{{ target_platform  }}    # [win]\n  host:\n    - python\n    - pip >=18\n    - numpy\n  run:\n    - python\n    - {{ pin_compatible('numpy') }}\n\ntest:\n  source_files:\n    - tests\n  imports:\n    - boost_histogram\n  requires:\n    - pytest\n    - pytest-benchmark\n  commands:\n    - pytest .\n\nabout:\n  home: https://github.com/scikit-hep/boost-histogram\n  license: BSD-3-Clause\n  license_family: BSD\n  license_file: LICENSE\n  summary: The Boost::Histogram Python wrapper.\n  dev_url: https://github.com/scikit-hep/boost-histogram\n  doc_url: https://boost-histogram.readthedocs.io\n\nextra:\n  recipe-maintainers:\n    - chrisburr\n    - henryiii\n    - HDembinski\n",
  "req":{

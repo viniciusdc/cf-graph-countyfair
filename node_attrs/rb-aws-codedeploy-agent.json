@@ -18,7 +18,7 @@
    ]
   }
  ],
- "bad":"make_graph: 500",
+ "bad":false,
  "conda-forge.yml":{},
  "feedstock_name":"rb-aws-codedeploy-agent",
  "hash_type":"sha256",
@@ -117,7 +117,7 @@
   }
  },
  "name":"rb-aws-codedeploy-agent",
- "new_version":false,
+ "new_version":"1.0-1518",
  "pinning_version":"2019.09.08",
  "raw_meta_yaml":"{% set name = \"aws-codedeploy-agent\" %}\n{% set version = \"1597\" %}\n\npackage:\n  name: rb-{{ name|lower }}\n  version: 1.0.1.{{ version }}\n\nsource:\n  {% if version | int <= 1518 %}\n  url: https://github.com/aws/aws-codedeploy-agent/archive/v1.0-{{ version }}.tar.gz\n  {% else %}\n  url: https://github.com/aws/aws-codedeploy-agent/archive/v1.0-1.{{ version }}.tar.gz\n  {% endif %}\n\n  sha256: 550cdf8eca9053efcb35065b066e17c5d801c54271e2d643b0a697c6f72b8f07\n\nbuild:\n  noarch: generic\n  number: 1\n  skip: {{ win }}\n  no_link:\n    - etc/*\n    - log/codedeploy-agent/*\n\nrequirements:\n  build:\n    - sed\n  host:\n    - ruby\n  run:\n    - ruby\n    - rb-gli >=2.5,<3\n    - rb-json >=1.6,<2\n    - rb-archive-tar-minitar >=0.5.2,<0.6\n    - rb-rubyzip >=1.1.0,<1.2\n    - rb-logging >=1.8,<2\n    - rb-aws-sdk-core >=2.9,<3\n    - rb-simple_pid >=0.2.1,<0.3\n    - rb-docopt >=0.5.0,<0.6\n    - rb-concurrent-ruby >=1.0.5,<1.1\n\ntest:\n  commands:\n    - codedeploy-local --help || true\n    - codedeploy-agent --help\n\nabout:\n  home: https://github.com/aws/aws-codedeploy-agent\n  license: Apache-2.0\n  license_family: Apache\n  license_file: LICENSE\n  summary: Host Agent for AWS CodeDeploy\n\nextra:\n  recipe-maintainers:\n    - conda-forge/ruby\n    - pierrsc\n",
  "req":{

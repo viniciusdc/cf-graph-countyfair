@@ -18,7 +18,7 @@
    ]
   }
  ],
- "bad":"make_graph: 500",
+ "bad":false,
  "conda-forge.yml":{
   "provider":{
    "win":"azure"
@@ -119,7 +119,7 @@
   }
  },
  "name":"r-partitions",
- "new_version":false,
+ "new_version":"1.9_22",
  "pinning_version":"2019.12.18",
  "raw_meta_yaml":"{% set name = \"r-partitions\" %}\n{% set version = \"1.9-19\" %}\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n{% set sha256 = \"dd47a511313ca26392bbe42d896cb96323d83ede8de1f92d622401d6a47574de\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  url:\n    - {{ cran_mirror }}/src/contrib/partitions_{{ version }}.tar.gz\n    - {{ cran_mirror }}/src/contrib/Archive/partitions/partitions_{{ version }}.tar.gz\n  sha256: {{ sha256 }}\n\nbuild:\n  merge_build_host: True  # [win]\n  number: 0\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - {{ compiler('c') }}        # [not win]\n    - {{ compiler('cxx') }}      # [not win]\n    - {{native}}toolchain        # [win]\n    - {{posix}}filesystem        # [win]\n    - {{posix}}make\n    - {{posix}}sed               # [win]\n    - {{posix}}coreutils         # [win]\n    - {{posix}}zip               # [win]\n  host:\n    - r-base\n    - r-gmp\n    - r-polynom\n  run:\n    - r-base\n    - {{native}}gcc-libs         # [win]\n    - r-gmp\n    - r-polynom\n\ntest:\n  commands:\n    - $R -e \"library('partitions')\"           # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('partitions')\\\"\"  # [win]\n\nabout:\n  home: https://CRAN.R-project.org/package=partitions\n  license: GPL\n  summary: Additive partitions of integers.\n  license_family: GPL\n  license_file: '{{ environ[\"PREFIX\"] }}/lib/R/share/licenses/GPL-3'\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n    - npavlovikj\n",
  "req":{

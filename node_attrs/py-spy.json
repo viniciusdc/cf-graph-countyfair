@@ -69,7 +69,7 @@
    ]
   }
  ],
- "bad":"make_graph: 500",
+ "bad":false,
  "conda-forge.yml":{},
  "feedstock_name":"py-spy",
  "hash_type":"sha256",
@@ -128,7 +128,7 @@
   }
  },
  "name":"py-spy",
- "new_version":false,
+ "new_version":"0.3.3",
  "pinning_version":"2020.02.20",
  "raw_meta_yaml":"{% set version = \"0.3.3\" %}\n\npackage:\n  name: py-spy\n  version: {{ version }}\n\nsource:\n  url: https://github.com/benfred/py-spy/archive/v{{ version }}.tar.gz\n  sha256: 41454d3d9132da45c72f7574faaff65f40c757720293a277ffa5ec5a4b44f902\n\nbuild:\n  number: 0\n  # Builds on Windows timeout\n  # Builds on Linux need a newer glibc: https://github.com/conda-forge/conda-forge.github.io/issues/900\n  skip: true  # [not osx]\n  missing_dso_whitelist:   # [osx]\n    - /usr/lib/libresolv.9.dylib  # [osx]\n\nrequirements:\n  build:\n    - rust\n    - {{ compiler('c') }}              # [not win]\n    - {{ compiler('m2w64_c') }}        # [win]\n  host:\n    - libunwind  # [linux]\n  run:\n    - libunwind  # [linux]\n\ntest:\n  commands:\n    - py-spy --help\n\nabout:\n  home: https://github.com/benfred/py-spy\n  license: MIT\n  summary: Sampling profiler for Python programs\n  license_family: MIT\n  license_file: LICENSE\n\nextra:\n  recipe-maintainers:\n    - xhochy\n",
  "req":{

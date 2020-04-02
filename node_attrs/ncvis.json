@@ -39,7 +39,7 @@
    ]
   }
  ],
- "bad":"make_graph: 500",
+ "bad":false,
  "conda-forge.yml":{},
  "feedstock_name":"ncvis",
  "hash_type":"sha256",
@@ -148,7 +148,7 @@
   }
  },
  "name":"ncvis",
- "new_version":false,
+ "new_version":"1.5.7",
  "pinning_version":"2020.03.28",
  "raw_meta_yaml":"{% set name = \"ncvis\" %}\n{% set version = \"1.5.7\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz\n  sha256: c015d84b954d60d5a0985c8709b8dad7ef6274ae9b3cd1f41786ca2ba6f05224\n\nbuild:\n  number: 1\n  skip: true  # [py27]\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n    - llvm-openmp  # [osx]\n    - libgomp      # [linux and not aarch64]\n  host:\n    - llvm-openmp  # [osx]\n    - libgomp      # [linux and not aarch64]\n    - python\n    - pip\n    - numpy\n    - cython\n  run:\n    - llvm-openmp  # [osx]\n    - libgomp      # [linux and not aarch64]\n    - python\n    - {{ pin_compatible('numpy') }}\n    - scipy\n\ntest:\n  files:\n    - test.py\n    - test_init.py\n  requires:\n    - pytest\n  commands:\n    - python test_init.py\n    - pytest test.py\n\nabout:\n  home: https://github.com/stat-ml/ncvis\n  license_file: \n    - LICENSE\n    - lib/hnswlib/LICENSE\n    - lib/pcg-cpp/LICENSE-APACHE.txt\n  license: MIT\n  license_family: MIT\n  summary: 'Efficient solution for data visualization'\n\n  description: |\n    NCVis is an efficient solution for data visualization and dimensionality\n    reduction. It uses  HNSW <https://github.com/nmslib/hnswlib> to quickly\n    construct the nearest neighbors graph and a parallel (batched) approach\n    to build its embedding. Efficient random sampling is achieved via \n    PCGRandom <https://github.com/imneme/pcg-cpp>.\n  doc_url: https://github.com/stat-ml/ncvis-examples\n  dev_url: https://github.com/stat-ml/ncvis\n\nextra:\n  recipe-maintainers:\n   - alartum\n",
  "req":{

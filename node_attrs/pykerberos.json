@@ -97,7 +97,7 @@
   }
  ],
  "archived":false,
- "bad":"make_graph: 500",
+ "bad":false,
  "conda-forge.yml":{},
  "feedstock_name":"pykerberos",
  "hash_type":"sha256",
@@ -171,7 +171,7 @@
   }
  },
  "name":"pykerberos",
- "new_version":false,
+ "new_version":"1.2.1",
  "pinning_version":"2020.03.30",
  "raw_meta_yaml":"{% set name = \"pykerberos\" %}\n{% set version = \"1.2.1\" %}\n\npackage:\n  name: \"{{ name|lower }}\"\n  version: \"{{ version }}\"\n\nsource:\n  url: \"https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz\"\n  sha256: 4f2dca8df5f84a3be039c026893850d731a8bb38395292e1610ffb0a08ba876c\n  patches:\n    # fix issue with memcpy on macOS\n    # LICENSE: this patch is reproduced from the AnacondaRecipes/aggregate\n    #          recipe for this package, with permission from the author, see\n    #          https://github.com/conda-forge/staged-recipes/pull/10646#issuecomment-576312814\n    - 0001-Implement-mempcpy-via-memcpy.patch  # [osx]\n\nbuild:\n  number: 2\n  script: \"{{ PYTHON }} -m pip install . --no-deps --ignore-installed -vv \"\n  skip: true  # [win]\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n  host:\n    - krb5\n    - pip\n    - python\n    - setuptools\n  run:\n    - krb5\n    - python\n\ntest:\n  imports:\n    - kerberos\n\nabout:\n  home: \"https://github.com/02strich/pykerberos\"\n  dev_url: \"https://github.com/02strich/pykerberos\"\n  doc_url: \"https://pypi.python.org/pypi/kerberos\"\n  license: \"Apache-2.0\"\n  license_family: \"APACHE\"\n  license_file: \"LICENSE\"\n  summary: \"High-level interface to Kerberos\"\n  description: |\n    pykerberos is a high-level wrapper for Kerberos (GSSAPI) operations. The\n    goal is to avoid having to build a module that wraps the entire\n    Kerberos.framework and instead offer a limited set of functions that do\n    what is needed for client/server Kerberos authentication.\n\nextra:\n  recipe-maintainers:\n    - duncanmmacleod\n",
  "req":{

@@ -1,5 +1,5 @@
 {
- "bad":"make_graph: 500",
+ "bad":false,
  "conda-forge.yml":{},
  "feedstock_name":"sos-julia",
  "hash_type":"sha256",
@@ -93,7 +93,7 @@
   }
  },
  "name":"sos-julia",
- "new_version":false,
+ "new_version":"0.18.2",
  "raw_meta_yaml":"{% set name = \"sos-julia\" %}\n{% set version = \"0.18.2\" %}\n\npackage:\n  name: \"{{ name|lower }}\"\n  version: \"{{ version }}\"\n\nsource:\n  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz\n  sha256: 53551d793ef9ac37dc2df39a4978321d3231e119c3a740edd0c924b38f6c9dbc\n\nbuild:\n  noarch: python\n  number: 0\n  script:\n    - {{ PYTHON }} -m pip install . --no-deps --ignore-installed -vv\n    - export JUPYTER_DATA_DIR=${PREFIX}/share/jupyter\n    - export JUPYTER=$(which jupyter)\n    - julia -e \"using Pkg;Pkg.add([\\\"IJulia\\\", \\\"Feather\\\", \\\"DataFrames\\\", \\\"NamedArrays\\\"])\"\n\nrequirements:\n  host:\n    - pip\n    - python >=3.6\n    - julia\n  run:\n    - sos-notebook >=0.19.4\n    - feather-format\n    - julia\n    - python >=3.6\n\ntest:\n  requires:\n    - nose\n    - pytest\n    - selenium\n  imports:\n    - sos_julia\n\nabout:\n  home: https://github.com/vatlab/sos-julia\n  license: BSD\n  license_family: BSD\n  license_file: LICENSE\n  summary: \"SoS language module for Julia\"\n  doc_url: https://vatlab.github.io/sos-docs/\n  dev_url: https://github.com/vatlab/sos-julia\n\nextra:\n  recipe-maintainers:\n    - BoPeng\n",
  "req":{
   "__set__":true,

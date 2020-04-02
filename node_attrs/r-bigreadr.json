@@ -1,5 +1,5 @@
 {
- "bad":"make_graph: 500",
+ "bad":false,
  "conda-forge.yml":{},
  "feedstock_name":"r-bigreadr",
  "hash_type":"sha256",
@@ -110,7 +110,7 @@
   }
  },
  "name":"r-bigreadr",
- "new_version":false,
+ "new_version":"0.2.0",
  "raw_meta_yaml":"{% set version = '0.2.0' %}\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-bigreadr\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  url:\n    - {{ cran_mirror }}/src/contrib/bigreadr_{{ version }}.tar.gz\n    - {{ cran_mirror }}/src/contrib/Archive/bigreadr/bigreadr_{{ version }}.tar.gz\n  sha256: f9296aa2246887202d5217d523f73a10f23b8c8de7bf8ce51054b769827eae34\n\nbuild:\n  merge_build_host: True  # [win]\n  number: 0\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - {{ compiler('c') }}              # [not win]\n    - {{ compiler('m2w64_c') }}        # [win]\n    - {{ compiler('cxx') }}            # [not win]\n    - {{ compiler('m2w64_cxx') }}      # [win]\n    - {{posix}}filesystem        # [win]\n    - {{posix}}make\n    - {{posix}}sed               # [win]\n    - {{posix}}coreutils         # [win]\n    - {{posix}}zip               # [win]\n  host:\n    - r-base\n    - r-rcpp\n    - r-bigassertr >=0.1.1\n    - r-data.table\n  run:\n    - r-base\n    - {{native}}gcc-libs         # [win]\n    - r-rcpp\n    - r-bigassertr >=0.1.1\n    - r-data.table\n\ntest:\n  commands:\n    - $R -e \"library('bigreadr')\"           # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('bigreadr')\\\"\"  # [win]\n\nabout:\n  home: https://github.com/privefl/bigreadr\n  license: GPL-3\n  summary: Read large text files by splitting them in smaller files. Package 'bigreadr' also\n    provides some convenient wrappers around fread() and fwrite() from package 'data.table'.\n  license_family: GPL3\n  license_file:\n    - '{{ environ[\"PREFIX\"] }}/lib/R/share/licenses/GPL-3'\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n    - brendanf\n    - privefl\n\n# Package: bigreadr\n# Version: 0.2.0\n# Date: 2019-10-17\n# Title: Read Large Text Files\n# Description: Read large text files by splitting them in smaller files. Package 'bigreadr' also provides some convenient wrappers around fread() and fwrite() from package 'data.table'.\n# Authors@R: person(given = \"Florian\", family = \"Prive\", role = c(\"aut\", \"cre\"), email = \"florian.prive.21@gmail.com\")\n# License: GPL-3\n# Encoding: UTF-8\n# LazyData: true\n# ByteCompile: true\n# RoxygenNote: 6.1.0\n# Imports: bigassertr (>= 0.1.1), data.table, Rcpp, parallel, utils\n# Suggests: spelling, testthat, covr, RSQLite\n# LinkingTo: Rcpp\n# Language: en-US\n# URL: https://github.com/privefl/bigreadr\n# BugReports: https://github.com/privefl/bigreadr/issues\n# NeedsCompilation: yes\n# Packaged: 2019-10-17 10:37:52 UTC; privef\n# Author: Florian Prive [aut, cre]\n# Maintainer: Florian Prive <florian.prive.21@gmail.com>\n# Repository: CRAN\n# Date/Publication: 2019-10-18 04:50:08 UTC\n",
  "req":{
   "__set__":true,

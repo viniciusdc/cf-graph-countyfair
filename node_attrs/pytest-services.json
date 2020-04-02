@@ -20,7 +20,7 @@
    ]
   }
  ],
- "bad":"make_graph: 500",
+ "bad":false,
  "conda-forge.yml":{},
  "feedstock_name":"pytest-services",
  "hash_type":"sha256",
@@ -151,7 +151,7 @@
   }
  },
  "name":"pytest-services",
- "new_version":false,
+ "new_version":"2.0.1",
  "pinning_version":"2020.01.10",
  "raw_meta_yaml":"{% set name = \"pytest-services\" %}\n{% set version = \"2.0.1\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  - folder: dist\n    url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz\n    sha256: 0848cead86d3816b9c4e37cecfda31d21a4366f0dca2313ea29f3ca375c6295d\n  - folder: src\n    url: https://github.com/pytest-dev/pytest-services/archive/{{ version }}.tar.gz\n    sha256: 5c33dcdeba0294bb209f299d58390f5c0697ada12d253fdc376aa437ce290edb\n\nbuild:\n  number: 1\n  script: \"cd dist && {{ PYTHON }} -m pip install . -vv\"\n\nrequirements:\n  host:\n    - python\n    - pip\n  run:\n    - psutil\n    - pytest\n    - python\n    - requests\n    - setuptools\n    - subprocess32  # [py2k]\n    - zc.lockfile >=2.0\n\ntest:\n  source_files:\n    - src/tests\n  requires:\n    - astroid\n    - coverage\n    - mock\n    - mysqlclient  # [unix]\n    - pip\n    - pylibmc  # [unix]\n    - pytest-pep8\n  imports:\n    - pytest_services\n  commands:\n    - python -m pip check\n    - cd src && pytest -vv -k \"not xvfb and not mysql and not memcached\"  # [unix]\n\nabout:\n  home: https://github.com/pytest-dev/pytest-services\n  license: MIT\n  license_family: MIT\n  license_file: src/LICENSE.txt\n  summary: 'Collection of fixtures and utility functions to run service processes for your tests'\n\nextra:\n  recipe-maintainers:\n    - bollwyvl\n",
  "req":{

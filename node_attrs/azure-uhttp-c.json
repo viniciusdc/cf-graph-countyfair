@@ -1,5 +1,5 @@
 {
- "bad":"make_graph: 500",
+ "bad":false,
  "conda-forge.yml":{},
  "feedstock_name":"azure-uhttp-c",
  "hash_type":"sha256",
@@ -82,7 +82,7 @@
   }
  },
  "name":"azure-uhttp-c",
- "new_version":false,
+ "new_version":"2020-01-22",
  "raw_meta_yaml":"{% set name = \"azure-uhttp-c\" %}\n{% set version = \"2020.01.22\" %}\n\npackage:\n  name: {{ name }}\n  version: {{ version }}\n\nsource:\n  - url: https://github.com/Azure/azure-uhttp-c/archive/{{ version.replace('.', '-') }}.tar.gz\n    fn: {{ name }}-{{ version }}.tar.gz\n    sha256: 51a1849c78bd9a0d20ed838f93dc07407ab3be61ed2bacdbcc95535aa5ae7bbd\n    patches:\n      - install.patch\n\nbuild:\n  number: 0\n  skip: true  # [not win64]\n  run_exports:\n    - {{ pin_subpackage(name, exact=True) }}\n\nrequirements:\n  build:\n    - vs2017_win-64          # [win64]\n    - cmake\n    - ninja\n  host:\n    - azure-c-shared-utility\n  run:\n    - azure-c-shared-utility\n\ntest:\n  commands:\n    - if not exist %PREFIX%\\\\Library\\\\bin\\\\uhttp.dll exit 1  # [win]\n\nabout:\n  home: https://github.com/Azure/azure-uhttp-c\n  license: MIT\n  license_file: LICENSE\n  summary: |\n    The uhttp provides a platform independent http implementation via the Azure C SDKs.\n\nextra:\n  recipe-maintainers:\n    - seanyen\n",
  "req":{
   "__set__":true,
