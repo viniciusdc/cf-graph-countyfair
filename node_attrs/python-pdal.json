@@ -202,14 +202,12 @@
    "dev_url":"https://github.com/PDAL/python",
    "doc_url":"https://pdal.io",
    "home":"https://pdal.io",
-   "license":"BSD 3-Clause",
-   "license_family":"BSD",
+   "license":"BSD-3-Clause",
    "license_file":"LICENSE.txt",
    "summary":"Point Data Abstraction Library (PDAL) Python Package"
   },
   "build":{
-   "number":"1",
-   "script":"-m pip install . --no-deps -vv",
+   "number":"0",
    "skip":true
   },
   "extra":{
@@ -224,7 +222,7 @@
   },
   "package":{
    "name":"python-pdal",
-   "version":"2.2.2"
+   "version":"2.3.0"
   },
   "requirements":{
    "build":[
@@ -234,90 +232,63 @@
    ],
    "host":[
     "python",
-    "numpy",
-    "cython",
-    "packaging",
     "pdal",
-    "libgdal",
-    "gdal",
+    "numpy",
+    "scikit-build",
     "pip",
-    "python",
-    "numpy",
     "cython",
-    "packaging",
+    "python",
     "pdal",
-    "libgdal",
-    "gdal",
+    "numpy",
+    "scikit-build",
     "pip",
-    "python",
-    "numpy",
     "cython",
-    "packaging",
+    "python",
     "pdal",
-    "libgdal",
-    "gdal",
-    "pip"
+    "numpy",
+    "scikit-build",
+    "pip",
+    "cython"
    ],
    "run":[
-    "python 3.7",
+    "python",
     "numpy",
     "pdal",
-    "libgdal",
-    "gdal",
-    "packaging",
-    "python 3.7",
+    "python",
     "numpy",
     "pdal",
-    "libgdal",
-    "gdal",
-    "packaging",
-    "python 3.7",
+    "python",
     "numpy",
-    "pdal",
-    "libgdal",
-    "gdal",
-    "packaging"
+    "pdal"
    ]
   },
   "source":{
-   "fn":"python-pdal-2.2.2.tar.gz",
-   "sha256":"d379e1ef4c8334b460f89576c373d00d842a1811f41e92380ef125b813ad8bb0",
-   "url":"https://github.com/PDAL/python/archive/2.2.2.tar.gz"
+   "fn":"python-pdal-2.3.0.tar.gz",
+   "sha256":"332b548956d427830eb1873833c10e3d101001b9d49c2aacf308bb209fb4bd66",
+   "url":"https://github.com/PDAL/python/archive/2.3.0.tar.gz"
   },
   "test":{
    "commands":[
-    "cd test && python -m unittest test_pipeline",
-    "cd test && python -m unittest test_pipeline",
-    "cd test && python -m unittest test_pipeline"
-   ],
-   "imports":[
-    "pdal",
-    "pdal",
-    "pdal"
-   ],
-   "source_files":[
-    "test",
-    "test",
-    "test"
+    "python -c \"import this\"",
+    "python -c \"import this\"",
+    "python -c \"import this\""
    ]
   }
  },
  "name":"python-pdal",
  "new_version":"2.3.0",
  "pinning_version":"2020.03.30",
- "raw_meta_yaml":"{% set name = \"python-pdal\" %}\n{% set version = \"2.2.2\" %}\n{% set sha256 = \"d379e1ef4c8334b460f89576c373d00d842a1811f41e92380ef125b813ad8bb0\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  fn: {{ name }}-{{ version }}.tar.gz\n  url: https://github.com/PDAL/python/archive/{{ version }}.tar.gz\n  sha256: {{ sha256 }}\n\nbuild:\n  number: 1\n  skip: True  # [(win and vc<14) or py<35]\n  script: {{ PYTHON }} -m pip install . --no-deps -vv\n\nrequirements:\n  build:\n    - {{ compiler('cxx') }}\n  host:\n    - python\n    - numpy\n    - cython\n    - packaging\n    - pdal\n    - libgdal\n    - gdal\n    - pip\n  run:\n    - python 3.7\n    - {{ pin_compatible('numpy') }}\n    - {{ pin_compatible('pdal', max_pin='x.x') }}\n    - {{ pin_compatible('libgdal', max_pin='x.x') }}\n    - {{ pin_compatible('gdal', max_pin='x.x') }}\n    - packaging\n\ntest:\n  source_files:\n    - test\n  imports:\n    - pdal\n  commands:\n    - cd test && python -m unittest test_pipeline\n\nabout:\n  home: https://pdal.io\n  license: BSD 3-Clause\n  license_family: BSD\n  license_file: LICENSE.txt\n  summary: 'Point Data Abstraction Library (PDAL) Python Package'\n  description: |\n    Python package for the PDAL library.\n  doc_url: https://pdal.io\n  dev_url: https://github.com/PDAL/python\n\nextra:\n  recipe-maintainers:\n    - chambbj\n    - hobu\n",
+ "raw_meta_yaml":"{% set name = \"python-pdal\" %}\n{% set version = \"2.3.0\" %}\n{% set sha256 = \"332b548956d427830eb1873833c10e3d101001b9d49c2aacf308bb209fb4bd66\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  fn: {{ name }}-{{ version }}.tar.gz\n  url: https://github.com/PDAL/python/archive/{{ version }}.tar.gz\n  sha256: {{ sha256 }}\n\nbuild:\n  number: 0\n  skip: True  # [(win and vc<14) or py<36]\n\n\nrequirements:\n  build:\n    - {{ compiler('cxx') }}\n  host:\n    - python\n    - pdal\n    - {{ pin_compatible('numpy') }}\n    - scikit-build\n    - pip\n    - cython\n  run:\n    - python\n    - {{ pin_compatible('numpy') }}\n    - pdal\n\ntest:\n  commands:\n    - python -c \"import this\"\n\nabout:\n  home: https://pdal.io\n  license: BSD-3-Clause\n  license_file: LICENSE.txt\n  summary: 'Point Data Abstraction Library (PDAL) Python Package'\n  description: |\n    Python package for the PDAL library.\n  doc_url: https://pdal.io\n  dev_url: https://github.com/PDAL/python\n\nextra:\n  recipe-maintainers:\n    - chambbj\n    - hobu\n",
  "req":{
   "__set__":true,
   "elements":[
    "cxx_compiler_stub",
    "cython",
-   "gdal",
-   "libgdal",
    "numpy",
-   "packaging",
    "pdal",
    "pip",
-   "python"
+   "python",
+   "scikit-build"
   ]
  },
  "requirements":{
@@ -331,22 +302,17 @@
    "__set__":true,
    "elements":[
     "cython",
-    "gdal",
-    "libgdal",
     "numpy",
-    "packaging",
     "pdal",
     "pip",
-    "python"
+    "python",
+    "scikit-build"
    ]
   },
   "run":{
    "__set__":true,
    "elements":[
-    "gdal",
-    "libgdal",
     "numpy",
-    "packaging",
     "pdal",
     "python"
    ]
@@ -369,24 +335,19 @@
    "__set__":true,
    "elements":[
     "cython",
-    "gdal",
-    "libgdal",
     "numpy",
-    "packaging",
     "pdal",
     "pip",
-    "python"
+    "python",
+    "scikit-build"
    ]
   },
   "run":{
    "__set__":true,
    "elements":[
-    "gdal",
-    "libgdal",
     "numpy",
-    "packaging",
     "pdal",
-    "python 3.7"
+    "python"
    ]
   },
   "test":{
@@ -395,5 +356,5 @@
   }
  },
  "url":"https://github.com/PDAL/python/archive/2.2.0.tar.gz",
- "version":"2.2.2"
+ "version":"2.3.0"
 }
