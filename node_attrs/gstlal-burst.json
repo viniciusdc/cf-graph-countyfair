@@ -56,7 +56,7 @@
    ]
   }
  ],
- "bad":false,
+ "bad":"make_graph: 500",
  "conda-forge.yml":{},
  "feedstock_name":"gstlal-burst",
  "hash_type":"sha256",
@@ -291,7 +291,7 @@
   }
  },
  "name":"gstlal-burst",
- "new_version":"0.2.1",
+ "new_version":false,
  "pinning_version":"2020.01.28",
  "raw_meta_yaml":"{% set name = \"gstlal-burst\" %}\n{% set version = \"0.2.1\" %}\n\npackage:\n  name: \"{{ name|lower }}\"\n  version: \"{{ version }}\"\n\nsource:\n  url: \"http://software.ligo.org/lscsoft/source/{{ name }}-{{ version }}.tar.gz\"\n  sha256: e0a623ab0ced29b5f1f2d18678f67f0f0eec937b86172675cc2bca773c746917\n  patches:\n    # https://git.ligo.org/lscsoft/gstlal/issues/46\n    - missing-links.patch\n    # https://git.ligo.org/lscsoft/gstlal/issues/47\n    - gstaudio.patch\n    # https://git.ligo.org/lscsoft/gstlal/issues/48\n    - unused-import-triggergen.patch\n\nbuild:\n  error_overdepending: true\n  error_overlinking: true\n  ignore_run_exports:\n    # header is included, but never used, reported upstream\n    - lalburst\n    - lalinspiral\n  number: 0\n  skip: true  # [win or py>=30]\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - make  # [unix]\n    - pkg-config >=0.18.0  # [unix]\n  host:\n    - glib\n    - gobject-introspection >=1.30.0\n    - gsl\n    - gst-plugins-base\n    - gstlal >=1.6.0\n    - gstreamer\n    - lal >=6.20.1\n    - lalburst >=1.5.2\n    - lalinspiral\n    - numpy\n    - python\n  run:\n    - glib\n    - gobject-introspection >=1.30.0\n    - gsl\n    - gst-plugins-base\n    - gst-python\n    - gstlal >=1.6.0\n    - gstlal-ugly >=1.7.0\n    - gstreamer\n    - h5py\n    - lal >=6.20.1\n    - ligo-scald\n    - ligo-segments >=1.2.0\n    - lscsoft-glue >=2.0.0\n    - {{ pin_compatible('numpy') }}\n    - python\n    - python-confluent-kafka >=0.11.4\n    - scipy\n\ntest:\n  imports:\n    - gstlal.snax\n    - gstlal.snax.auxcache\n    - gstlal.snax.feature_extractor\n    - gstlal.snax.multichannel_datasource\n    - gstlal.snax.multirate_datasource\n    - gstlal.snax.sngltriggertable\n    - gstlal.snax.utils\n    - gstlal.snax.waveforms\n    - gstlal.snglbursttable\n    - gstlal.streamburca\n  requires:\n    - pkg-config  # [unix]\n  commands:\n    - export TMPDIR=$(python -c \"import tempfile; print(tempfile.gettempdir())\")  # [not win]\n    # check executables\n    - gstlal_cs_triggergen --help\n    - gstlal_snax_aggregate --help\n    - gstlal_snax_bank_overlap --help\n    - gstlal_snax_combine --help\n    - gstlal_snax_dag_offline --help\n    - gstlal_snax_dag_online --help\n    - gstlal_snax_extract --help\n    - gstlal_snax_monitor --help\n    - gstlal_snax_sink --help\n    - gstlal_snax_synchronize --help\n    - gstlal_snax_whiten --help\n    # check pkg-config\n    - pkg-config --print-errors --libs gstlal-burst  # [unix]\n\nabout:\n  home: \"https://lscsoft.docs.ligo.org/gstlal/\"\n  dev_url: \"https://git.ligo.org/lscsoft/gstlal/\"\n  doc_url: \"https://lscsoft.docs.ligo.org/gstlal/\"\n  license: \"GPL-2.0-or-later\"\n  license_family: \"GPL\"\n  license_file: \"COPYING\"\n  summary: \"GStreamer for generic transient data analysis\"\n  description: |\n    This package contains the plugins and shared libraries required\n    to run the gstlal burst (generic transient) pipeline.\n\nextra:\n  recipe-maintainers:\n    - duncanmmacleod\n    - myNameIsPatrick\n",
  "req":{

@@ -1,5 +1,5 @@
 {
- "bad":"Upstream: Error getting upstream version",
+ "bad":"make_graph: 500",
  "conda-forge.yml":{},
  "feedstock_name":"libharu",
  "hash_type":"sha256",
@@ -80,6 +80,7 @@
   }
  },
  "name":"libharu",
+ "new_version":false,
  "raw_meta_yaml":"{% set name = \"libharu\" %}\n{% set version = \"2.3.0\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  url: https://github.com/libharu/libharu/archive/RELEASE_{{ version.replace('.', '_') }}.tar.gz\n  sha256: 8f9e68cc5d5f7d53d1bc61a1ed876add1faf4f91070dbc360d8b259f46d9a4d2\n  patches:\n    - 0001-skip-installing-if-directory.patch\n\nbuild:\n  number: 0\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - cmake\n    - ninja\n  host:\n    - zlib\n    - libpng\n  run:\n    - zlib\n    - libpng\n\ntest:\n  commands:\n    - test -f $PREFIX/include/hpdf.h  # [unix]\n    - test -f $PREFIX/lib/libhpdf${SHLIB_EXT}  # [unix]\n    - if not exist %LIBRARY_INC%\\hpdf.h exit 1  # [win]\n    - if not exist %LIBRARY_BIN%\\libhpdf.dll exit 1  # [win]\n\nabout:\n  home: http://libharu.org/\n  license: Zlib\n  license_family: OTHER\n  license_file: LICENSE.txt\n  summary: |\n      libharu is a free, cross platform, open source library for generating PDF\n      files.\n  doc_url: https://github.com/libharu/libharu/wiki\n  dev_url: https://github.com/libharu/libharu\n\n\nextra:\n  recipe-maintainers:\n    - hobu\n    - xylar\n",
  "req":{
   "__set__":true,

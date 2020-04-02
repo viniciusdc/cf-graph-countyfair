@@ -18,7 +18,7 @@
    ]
   }
  ],
- "bad":false,
+ "bad":"make_graph: 500",
  "conda-forge.yml":{},
  "feedstock_name":"r-xptr",
  "hash_type":"sha256",
@@ -105,7 +105,7 @@
   }
  },
  "name":"r-xptr",
- "new_version":"1.1.2",
+ "new_version":false,
  "pinning_version":"2019.12.02",
  "raw_meta_yaml":"{% set version = \"1.1.2\" %}\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-xptr\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  url:\n    - {{ cran_mirror }}/src/contrib/xptr_{{ version }}.tar.gz\n    - {{ cran_mirror }}/src/contrib/Archive/xptr/xptr_{{ version }}.tar.gz\n  sha256: 636ef0f1eff9b8f29f21a21a6467b66f23676be55c2a81d9e2f95672b9faf5a7\n\nbuild:\n  merge_build_host: True  # [win]\n  number: 0\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - {{ compiler('c') }}              # [not win]\n    - {{ compiler('m2w64_c') }}        # [win]\n    - {{posix}}filesystem        # [win]\n    - {{posix}}make\n    - {{posix}}sed               # [win]\n    - {{posix}}coreutils         # [win]\n    - {{posix}}zip               # [win]\n  host:\n    - r-base\n  run:\n    - r-base\n    - {{native}}gcc-libs         # [win]\n\ntest:\n  commands:\n    - $R -e \"library('xptr')\"           # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('xptr')\\\"\"  # [win]\n\nabout:\n  home: https://randy3k.github.io/xptr/\n  license: MIT\n  summary: There is limited native support for external pointers in the R interface. This package\n    provides some basic tools to verify, create and modify 'externalptr' objects.\n  license_family: MIT\n  license_file:\n    - '{{ environ[\"PREFIX\"] }}/lib/R/share/licenses/MIT'\n    - LICENSE\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n\n# Package: xptr\n# Type: Package\n# Title: Manipulating External Pointer\n# Version: 1.1.1\n# Date: 2019-01-13\n# Authors@R: c( person(\"Randy\", \"Lai\", , \"randy.cs.lai@gmail.com\", role = c(\"aut\", \"cre\")) )\n# Maintainer: Randy Lai <randy.cs.lai@gmail.com>\n# URL: https://randy3k.github.io/xptr/\n# Description: There is limited native support for external pointers in the R interface. This package provides some basic tools to verify, create and modify 'externalptr' objects.\n# Depends: R (>= 3.4.0)\n# License: MIT + file LICENSE\n# NeedsCompilation: yes\n# RoxygenNote: 6.0.1\n# Packaged: 2019-01-13 14:10:14 UTC; Randy\n# Author: Randy Lai [aut, cre]\n# Repository: CRAN\n# Date/Publication: 2019-01-13 14:20:02 UTC\n",
  "req":{

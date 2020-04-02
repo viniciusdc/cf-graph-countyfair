@@ -1,5 +1,5 @@
 {
- "bad":"Upstream: Error getting upstream version",
+ "bad":"make_graph: 500",
  "conda-forge.yml":{},
  "feedstock_name":"gts",
  "hash_type":"sha256",
@@ -97,6 +97,7 @@
   }
  },
  "name":"gts",
+ "new_version":false,
  "raw_meta_yaml":"{% set name = \"gts\" %}\n{% set version = \"0.7.6\" %}\n\npackage:\n  name: {{ name }}\n  version: {{ version }}\n\nsource:\n  - url: http://downloads.sourceforge.net/gts/gts-{{ version }}.tar.gz\n    sha256: 059c3e13e3e3b796d775ec9f96abdce8f2b3b5144df8514eda0cc12e13e8b81e\n    patches:\n      - config.in.win32.patch\n  - path: CMakeLists.txt\n\nbuild:\n  number: 0\n  skip: true  # [win and vc<14]\n  run_exports:\n    - {{ pin_subpackage(name, max_pin='x.x') }}\n\nrequirements:\n  build:\n    - {{ compiler('cxx') }}  # [not win]\n    - {{ compiler('c') }}    # [not win]\n    - vs2017_win-64          # [win]\n    - cmake       # [win]\n    - ninja       # [win]\n    - make        # [not win]\n    - pkg-config  # [not win]\n  host:\n    - glib\n  run:\n    - glib\n\ntest:\n  commands:\n    - test -f ${PREFIX}/lib/libgts.so  # [linux]\n    - test -f ${PREFIX}/lib/libgts.dylib  # [osx]\n    - if not exist %LIBRARY_PREFIX%\\\\bin\\\\gts.dll exit 1  # [win]\n\nabout:\n  home: http://gts.sourceforge.net/\n  license: LGPLv2\n  license_family: LGPL\n  license_file: COPYING\n  summary: |\n    GNU Triangulated Surface Library\n\nextra:\n  recipe-maintainers:\n    - seanyen\n",
  "req":{
   "__set__":true,

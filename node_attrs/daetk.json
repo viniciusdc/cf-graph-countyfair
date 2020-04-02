@@ -41,7 +41,7 @@
    ]
   }
  ],
- "bad":false,
+ "bad":"make_graph: 500",
  "conda-forge.yml":{},
  "feedstock_name":"daetk",
  "hash_type":"sha256",
@@ -156,7 +156,7 @@
   }
  },
  "name":"daetk",
- "new_version":"1.0.1",
+ "new_version":false,
  "pinning_version":"2019.11.13",
  "raw_meta_yaml":"{% set name = \"daetk\" %}\n{% set version = \"1.0.1\" %}\n{% set build = 1 %}\n{% set sha256 = \"5080ab702ea21987b1e6574e8506ff7d48071a5007d8a1bce1a4bd480e659c15\" %}\n\n{% set mpi = mpi or 'mpich' %}\n\npackage:\n  name: {{ name }}\n  version: {{ version }}\n\nsource:\n  fn: daetk-{{ version }}.tar.gz\n  url: https://github.com/erdc-cm/daetk/archive/{{ version }}.tar.gz\n  sha256: {{ sha256 }}\n  patches:\n    - edit_content.patch\n\nbuild:\n  number: {{ build }}\n  skip: True  # [win]\n  {% set mpi_prefix = \"mpi_\" + mpi %}\n  string: \"{{ mpi_prefix }}_h{{ PKG_HASH }}_{{ build }}\"\n  run_exports:\n    - {{ name }} * {{ mpi_prefix }}_*\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n    - {{ compiler('fortran') }}\n    - make\n    - sed\n  host:\n    - petsc\n    - parmetis\n    - {{ mpi }}\n  run:\n    # missing a run_exports section\n    - {{ pin_compatible('parmetis', max_pin='x.x') }}\n    # these are second-order dependencies that lack a run_exports section\n    - hypre\n    - scotch\n    - scalapack\n    - ptscotch\n    - metis\n    - suitesparse\n    - mumps-mpi\n    - libopenblas\n    - conda-build\n\ntest:\n  commands:\n    - conda inspect linkages daetk  # [not win]\n\nabout:\n  home: https://github.com/erdc-cm/daetk\n  license: MIT\n  license_family: MIT\n  license_file: LICENSE.md\n  summary: The Differential Algebraic Equation Toolkit\n\nextra:\n  recipe-maintainers:\n    - davidbrochart\n    - SylvainCorlay\n",
  "req":{

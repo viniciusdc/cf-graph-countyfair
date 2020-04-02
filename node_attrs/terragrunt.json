@@ -545,7 +545,7 @@
    ]
   }
  ],
- "bad":false,
+ "bad":"make_graph: 500",
  "conda-forge.yml":{
   "bot":{
    "automerge":true
@@ -623,7 +623,7 @@
   }
  },
  "name":"terragrunt",
- "new_version":"0.23.4",
+ "new_version":false,
  "pinning_version":"2020.03.28",
  "raw_meta_yaml":"{% set goname = \"github.com/gruntwork-io/terragrunt\" %}\n{% set version = \"0.23.3\" %}\n\n{% set name = goname.split('/')[-1] %}\n{% set pkg_src = ('src/' + goname).replace(\"/\", os.sep) %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  folder: {{ pkg_src }}\n  url: https://{{ goname }}/archive/v{{ version }}.tar.gz\n  sha256: 5225e81b9e95263598fc1e2ca8308cd01b77530c902c4f5ebc719528fc48e5bf\n\nbuild:\n  number: 0\n  script:\n    - set -x\n    - pushd {{ pkg_src }}\n    - dep ensure -vendor-only\n    - go install -v -ldflags \"-X main.version={{ version }}\" .\n\nrequirements:\n  build:\n    - {{ compiler('go') }}\n    - go-dep\n\ntest:\n  requires:\n    - m2-bash  # [win]\n  commands:\n    - bash -c \"{{ name|lower }} -v\"\n    - bash -c \"{{ name|lower }} --help\"\n\nabout:\n  home: https://www.gruntwork.io/\n  license: MIT\n  license_file: {{ pkg_src }}/LICENSE.txt\n  summary: Terragrunt is a thin wrapper for Terraform that provides extra tools for working with multiple Terraform modules.\n  dev_url: https://github.com/gruntwork-io/terragrunt.git\n\nextra:\n  recipe-maintainers:\n    - sodre\n    - mariusvniekerk\n",
  "req":{

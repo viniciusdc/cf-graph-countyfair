@@ -52,7 +52,7 @@
    ]
   }
  ],
- "bad":false,
+ "bad":"make_graph: 500",
  "conda-forge.yml":{},
  "feedstock_name":"kfilemetadata",
  "hash_type":"sha256",
@@ -161,7 +161,7 @@
   }
  },
  "name":"kfilemetadata",
- "new_version":"5.67.0",
+ "new_version":false,
  "pinning_version":"2020.01.28",
  "raw_meta_yaml":"{% set name = \"kfilemetadata\" %}\n{% set version = \"5.67.0\" %}\n{% set major_minor = \".\".join(version.split(\".\")[:2]) %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  url: https://download.kde.org/stable/frameworks/{{ major_minor }}/kfilemetadata-{{ version }}.tar.xz\n  sha256: a121c73c0fd733a1e258914346c30a9a2365fd4909a474fa7818de35b7e1b763\n\nbuild:\n  number: 0\n  skip: true  # [not linux]\n  run_exports:\n    - {{ pin_subpackage('kfilemetadata', max_pin='x.x') }}\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n    - cmake\n    - make\n    - extra-cmake-modules\n    - {{ cdt('mesa-libgl-devel') }}  # [linux]\n    - {{ cdt('mesa-dri-drivers') }}  # [linux]\n    - {{ cdt('libselinux') }}  # [linux]\n    - {{ cdt('libxdamage') }}  # [linux]\n    - {{ cdt('libxxf86vm') }}  # [linux]\n  host:\n    - xorg-libxfixes  # [linux]\n    - xorg-libxext\n    - qt\n    - attr\n    - exiv2\n    - ffmpeg\n    - poppler\n    - ki18n\n    - kconfig\n    - karchive\n    - kcoreaddons\n  run:\n    - exiv2\n\ntest:\n  commands:\n    - test -f ${PREFIX}/lib/libKF5FileMetaData.so\n\nabout:\n  home: https://api.kde.org/frameworks/kfilemetadata/html/index.html\n  license: GPL-v2\n  license_family: GPL\n  license_file: COPYING.LGPL-2\n  summary: 'Simple library for extracting metadat'\n  description: |\n    KFileMetaData provides a simple library for extracting the\n    text and metadata from a number of different files. This library\n    is typically used by file indexers to retreive the metadata.\n    This library can also be used by applications to write metadata.\n  dev_url: https://cgit.kde.org/kfilemetadata.git/tree\n\nextra:\n  recipe-maintainers:\n    - scopatz\n",
  "req":{

@@ -1,5 +1,5 @@
 {
- "bad":"Upstream: Error getting upstream version",
+ "bad":"make_graph: 500",
  "conda-forge.yml":{},
  "feedstock_name":"openal-soft",
  "hash_type":"sha256",
@@ -63,6 +63,7 @@
   }
  },
  "name":"openal-soft",
+ "new_version":false,
  "raw_meta_yaml":"{% set name = \"openal-soft\" %}\n{% set version = \"1.20.1\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  url: https://github.com/kcat/{{ name }}/archive/{{ name }}-{{ version }}.tar.gz\n  sha256: c32d10473457a8b545aab50070fe84be2b5b041e1f2099012777ee6be0057c13\n\nbuild:\n  number: 0\n  skip: True  # [win and vc<14]\n\nrequirements:\n  build:\n    - {{ compiler('cxx') }}\n    - cmake\n    - make  # [unix]\n\ntest:\n  commands:\n    - test -f ${PREFIX}/lib/cmake/OpenAL/OpenALConfig.cmake                             # [unix]\n    - test -f ${PREFIX}/bin/altonegen                                                   # [unix]\n    - test -f ${PREFIX}/bin/alrecord                                                    # [unix]\n    - test -f ${PREFIX}/bin/openal-info                                                 # [unix]\n    - if exist %LIBRARY_LIB%\\\\cmake\\\\OpenAL\\\\OpenALConfig.cmake (exit 0) else (exit 1)  # [win]\n    - if exist %LIBRARY_BIN%\\\\altonegen.exe (exit 0) else (exit 1)                      # [win]\n    - if exist %LIBRARY_BIN%\\\\alrecord.exe (exit 0) else (exit 1)                       # [win]\n    - if exist %LIBRARY_BIN%\\\\openal-info.exe (exit 0) else (exit 1)                    # [win]\n\nabout:\n  home: https://github.com/kcat/openal-soft\n  license: LGPL-2.0-or-later\n  license_family: LGPL\n  license_file: COPYING\n  summary: 'OpenAL Soft is a software implementation of the OpenAL 3D audio API.'\n\n  description: |\n    OpenAL Soft is an LGPL-licensed, cross-platform, software implementation of\n    the OpenAL 3D audio API. It's forked from the open-sourced Windows version\n    available originally from openal.org's SVN repository (now defunct). OpenAL\n    provides capabilities for playing audio in a virtual 3D environment. Distance\n    attenuation, doppler shift, and directional sound emitters are among the\n    features handled by the API. More advanced effects, including air absorption,\n    occlusion, and environmental reverb, are available through the EFX extension.\n    It also facilitates streaming audio, multi-channel buffers, and audio capture.\n  doc_url: https://openal-soft.org\n  dev_url: https://github.com/kcat/openal-soft\n\nextra:\n  recipe-maintainers:\n    - martinRenou\n",
  "req":{
   "__set__":true,

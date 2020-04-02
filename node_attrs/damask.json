@@ -20,7 +20,7 @@
    ]
   }
  ],
- "bad":"Upstream: Error getting upstream version",
+ "bad":"make_graph: 500",
  "conda-forge.yml":{},
  "feedstock_name":"damask",
  "hash_type":"sha256",
@@ -178,6 +178,7 @@
   }
  },
  "name":"damask",
+ "new_version":false,
  "pinning_version":"2020.01.27",
  "raw_meta_yaml":"{% set name = \"damask\" %}\n{% set version = \"2.0.3\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  url: https://damask.mpie.de/pub/Download/Current/{{ name }}-{{ version }}.tar.xz\n  sha256: c3f487ad1487586fbde696b1402d4dda8c3463ad0710b001ee8e4203eee413c8\n\nbuild:\n  number: 3\n  skip: true  # [not linux]\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n    - {{ compiler('fortran') }}\n    - {{ cdt('mesa-libgl-devel') }}  # [linux]\n    - {{ cdt('mesa-dri-drivers') }}  # [linux]\n    - {{ cdt('libselinux') }}  # [linux]\n    - {{ cdt('libxdamage') }}  # [linux]\n    - {{ cdt('libxxf86vm') }}  # [linux] \n    - make\n    - cmake\n    - numpy\n    - perl\n  host:\n    - python\n    - pip\n    - xorg-libxfixes  # [linux]\n    - petsc =3.10\n    - vtk\n    - hdf5 =*=mpi_mpich_*\n    - fftw =*=mpi_mpich_*\n    - scipy\n  run:\n    - python\n    - petsc =3.10\n    - numpy\n    - vtk\n    - hdf5 =*=mpi_mpich_*\n    - fftw =*=mpi_mpich_*\n    - scipy\n    - mumps-mpi\n    - scotch\n    - metis\n    - scalapack\n    - suitesparse\n    - parmetis\n    - mpich\n    - libopenblas\n    - hypre\n    - ptscotch\n    - _openmp_mutex\n\ntest:\n  commands:\n    - DAMASK_spectral --help\n  imports:\n    - damask\n\nabout:\n  home: https://damask.mpie.de/\n  license: GPL-3.0\n  license_family: GPL\n  license_file: LICENSE\n  summary: 'Duesseldorf Advanced Material Simulation Kit'\n\n  description: |\n    At the core of DAMASK is a flexible and hierarchically structured\n    model of material point behavior for the solution of elastoplastic\n    boundary value problems along with damage and thermal physics. Its \n    main purpose is the simulation of crystal plasticity within a \n    finite-strain continuum mechanical framework.\n  doc_url: https://damask.mpie.de/Documentation/WebHome\n  dev_url: https://damask.mpie.de/Development/WebHome\n\nextra:\n  recipe-maintainers:\n    - jan-janssen\n",
  "req":{

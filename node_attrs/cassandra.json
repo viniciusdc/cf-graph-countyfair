@@ -39,7 +39,7 @@
    ]
   }
  ],
- "bad":"Upstream: Error getting upstream version",
+ "bad":"make_graph: 500",
  "conda-forge.yml":{
   "provider":{
    "linux":"azure",
@@ -124,6 +124,7 @@
   }
  },
  "name":"cassandra",
+ "new_version":false,
  "pinning_version":"2020.03.20",
  "raw_meta_yaml":"{% set name = \"cassandra\" %}\n{% set version = \"1.2.2\" %}\n{% set sha256 = \"e99d35da3ec6ecbc026781aebb734f4a269a08bdce81ca9f61bc4d62275ce873\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  url: https://github.com/MaginnGroup/{{ name }}/archive/v{{ version }}.tar.gz\n  sha256: {{ sha256 }}\n\nbuild:\n  number: 1\n  skip: true  # [win]\n\nrequirements:\n  build:\n    - make\n  host:\n    - {{ compiler('fortran') }}\n    - python\n    - pip\n    - llvm-openmp  # [osx]\n    - libgomp      # [linux and not aarch64]\n  run:\n    - python\n    - future\n    - numpy\n\ntest:\n  commands:\n    - cassandra.exe -h\n    - mcfgen.py -h\n    - library_setup.py -h\n\nabout:\n  home: https://github.com/MaginnGroup/Cassandra\n  license: GPL-3.0\n  license_family: GPL3\n  license_file: LICENSE\n  summary: 'Open source atomistic Monte Carlo software package'\n  description: |\n    Cassandra is an atomistic Monte Carlo software package developed by\n    the Maginn Group at the University of Notre Dame.\n    The core code is written in Fortran, but the package also includes a few\n    Python scripts to help with simulation setup. Complete documentation,\n    workshop materials, and a user forum can be found at cassandra.nd.edu.\n  doc_url: https://cassandra.nd.edu/\n  dev_url: https://github.com/MaginnGroup/Cassandra\n\nextra:\n  recipe-maintainers:\n    - rsdefever\n",
  "req":{

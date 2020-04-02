@@ -1,5 +1,5 @@
 {
- "bad":false,
+ "bad":"make_graph: 500",
  "conda-forge.yml":{},
  "feedstock_name":"modflow6",
  "hash_type":"sha256",
@@ -61,7 +61,7 @@
   }
  },
  "name":"modflow6",
- "new_version":"6.1.0",
+ "new_version":false,
  "raw_meta_yaml":"{% set name = \"modflow6\" %}\n{% set version = \"6.1.0\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  url: https://github.com/MODFLOW-USGS/modflow6/releases/download/{{ version }}/mf{{ version }}.zip\n  sha256: 6023d52dbbdfc22ffb3c85d30322cc56cfde0aa2b59822ab9b03a4d5a381b59c\n  patches:\n    # use inherited environment variables\n    - makefile.patch\n\nbuild:\n  number: 0\n  skip: true  # [win]\n\nrequirements:\n  build:\n    - {{ compiler('fortran') }}\n    - {{ compiler('c') }}\n    - make\n    - llvm-openmp  # [osx]\n    - libgomp      # [linux]\n\ntest:\n  commands:\n    - mf6 --help\n\nabout:\n  home: https://www.usgs.gov/software/modflow-6-usgs-modular-hydrologic-model\n  license: CC0-1.0\n  license_family: CC\n  license_file: LICENSE.md\n  summary: 'Open-source groundwater flow model'\n  doc_url: https://water.usgs.gov/water-resources/software/MODFLOW-6/mf6io_{{ version}}.pdf\n  dev_url: https://github.com/MODFLOW-USGS/modflow6\n\nextra:\n  recipe-maintainers:\n    - scopatz\n",
  "req":{
   "__set__":true,

@@ -20,7 +20,7 @@
    ]
   }
  ],
- "bad":false,
+ "bad":"make_graph: 500",
  "conda-forge.yml":{
   "provider":{
    "win":"azure"
@@ -125,7 +125,7 @@
   }
  },
  "name":"calysto_bash",
- "new_version":"0.2.2",
+ "new_version":false,
  "pinning_version":"2019.11.01",
  "raw_meta_yaml":"{% set name = \"calysto_bash\" %}\n{% set version = \"0.2.2\" %}\n\npackage:\n  name: \"{{ name|lower }}\"\n  version: \"{{ version }}\"\n\nsource:\n  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz\n  sha256: 4e3869f7c86a534085deb88bc6af6f41d1b5e105638f8958398a62029996510f\n\nbuild:\n  number: 0\n  script:\n    - {{ PYTHON }} -m pip install . --no-deps --ignore-installed -vv\n    - {{ PYTHON }} -m calysto_bash install --sys-prefix\n\nrequirements:\n  host:\n    - pip\n    - python\n    - ipykernel\n    - metakernel\n  run:\n    - python\n    - ipykernel\n    - ipyparallel\n    - jupyter_client\n    - metakernel\n    - bash  # [unix]\n    - m2-bash  # [win]\n\ntest:\n  imports:\n    - calysto_bash\n  commands:\n    - jupyter kernelspec list | grep calysto_bash\n    - jupyter run --kernel=calysto_bash command.sh\n  files:\n    - command.sh\n\nabout:\n  home: https://github.com/Calysto/calysto_bash\n  license: BSD\n  license_family: BSD\n  license_file: LICENSE\n  summary: \"A Jupyter kernel for bash\"\n  doc_url: https://github.com/Calysto/calysto_bash\n  dev_url: https://github.com/Calysto/calysto_bash\n\nextra:\n  recipe-maintainers:\n    - blink1073\n    - BoPeng\n",
  "req":{
