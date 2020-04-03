@@ -54,6 +54,9 @@
  ],
  "bad":false,
  "conda-forge.yml":{
+  "bot":{
+   "automerge":true
+  },
   "compiler_stack":"comp7",
   "max_py_ver":"37",
   "max_r_ver":"35",
@@ -68,7 +71,7 @@
    "dev_url":"https://github.com/terraform-providers/terraform-provider-statuscake",
    "doc_url":"https://www.terraform.io/docs/providers/statuscake/index.html",
    "home":"https://www.terraform.io",
-   "license":"MPL 2.0",
+   "license":"MPL-2.0",
    "summary":"The Terraform StatusCake provider"
   },
   "build":{
@@ -84,9 +87,9 @@
   },
   "extra":{
    "recipe-maintainers":[
-    "sodre",
-    "sodre",
-    "sodre"
+    "conda-forge/terraform",
+    "conda-forge/terraform",
+    "conda-forge/terraform"
    ]
   },
   "package":{
@@ -146,7 +149,7 @@
  "name":"terraform-provider-statuscake",
  "new_version":"1.0.0",
  "pinning_version":"2019.07.01",
- "raw_meta_yaml":"{% set provider = \"StatusCake\" %}\n{% set goname = \"github.com/terraform-providers/terraform-provider-\"+provider.lower() %}\n{% set version = \"1.0.0\" %}\n\n{% set name = goname.split('/')[-1] %}\n{% set pkg_src = ('src/'+goname).replace(\"/\",os.sep) %}\n\n{% set x4_plugin = name + '_v' + version + \"_x4\" + (\".exe\" if win else \"\")%}\n\n{% set sha256 = \"718c76a1d113c7d57d30b4d3c37bd414046de802613bd7a0cd79a3a5ddcce222\" %}\n{% set sha256_win64 = \"19d81cfb59f7a49de1d4a197a2c4cacddadc970bdec907dcaeb9c117b168c11d\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  - folder:  {{ pkg_src }}\n    url: https://{{ goname }}/archive/v{{ version }}.tar.gz\n    sha256: {{ sha256 }}\n\n\nbuild:\n  number: 0\n  script:\n    - pushd {{ pkg_src }}\n    - go build -v -o $GOBIN/{{ x4_plugin }} .  # [unix]\n    - go build -v -o %GOBIN%\\{{ x4_plugin }} .  # [win]\n\nrequirements:\n  build:\n    - {{ compiler('go') }} >=1.11.3\n  run:\n    - terraform >=0.10  # [unix]\n    - terraform >=0.11.11  # [win]\n\ntest:\n  requires:         # [win]\n    - m2-bash       # [win]\n    - m2-coreutils  # [win]\n\n  commands:\n    - bash -euf -c \"echo 'provider \\\"{{ provider|lower }}\\\" { version=\\\"{{ version }}\\\" }' > init.tf\"\n    - terraform init\n    # Tests that no plugins were downloaded\n    - test -f .terraform/plugins/{{ goos }}_{{ goarch }}/lock.json\n    - test ! -f .terraform/plugins/{{ goos }}_{{ goarch }}/{{ x4_plugin }}\n\nabout:\n  home: https://www.terraform.io\n  license: MPL 2.0\n  summary: The Terraform {{ provider }} provider\n  doc_url: https://www.terraform.io/docs/providers/{{ provider|lower }}/index.html\n  dev_url: https://github.com/terraform-providers/{{ name }}\n\nextra:\n  recipe-maintainers:\n    - sodre\n",
+ "raw_meta_yaml":"{% set provider = \"StatusCake\" %}\n{% set goname = \"github.com/terraform-providers/terraform-provider-\"+provider.lower() %}\n{% set version = \"1.0.0\" %}\n\n{% set name = goname.split('/')[-1] %}\n{% set pkg_src = ('src/'+goname).replace(\"/\",os.sep) %}\n\n{% set x4_plugin = name + '_v' + version + \"_x4\" + (\".exe\" if win else \"\")%}\n\n{% set sha256 = \"718c76a1d113c7d57d30b4d3c37bd414046de802613bd7a0cd79a3a5ddcce222\" %}\n{% set sha256_win64 = \"19d81cfb59f7a49de1d4a197a2c4cacddadc970bdec907dcaeb9c117b168c11d\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  - folder:  {{ pkg_src }}\n    url: https://{{ goname }}/archive/v{{ version }}.tar.gz\n    sha256: {{ sha256 }}\n\n\nbuild:\n  number: 0\n  script:\n    - pushd {{ pkg_src }}\n    - go build -v -o $GOBIN/{{ x4_plugin }} .  # [unix]\n    - go build -v -o %GOBIN%\\{{ x4_plugin }} .  # [win]\n\nrequirements:\n  build:\n    - {{ compiler('go') }} >=1.11.3\n  run:\n    - terraform >=0.10  # [unix]\n    - terraform >=0.11.11  # [win]\n\ntest:\n  requires:         # [win]\n    - m2-bash       # [win]\n    - m2-coreutils  # [win]\n\n  commands:\n    - bash -euf -c \"echo 'provider \\\"{{ provider|lower }}\\\" { version=\\\"{{ version }}\\\" }' > init.tf\"\n    - terraform init\n    # Tests that no plugins were downloaded\n    - test -f .terraform/plugins/{{ goos }}_{{ goarch }}/lock.json\n    - test ! -f .terraform/plugins/{{ goos }}_{{ goarch }}/{{ x4_plugin }}\n\nabout:\n  home: https://www.terraform.io\n  license: MPL-2.0\n  summary: The Terraform {{ provider }} provider\n  doc_url: https://www.terraform.io/docs/providers/{{ provider|lower }}/index.html\n  dev_url: https://github.com/terraform-providers/{{ name }}\n\nextra:\n  recipe-maintainers:\n    - conda-forge/terraform\n",
  "req":{
   "__set__":true,
   "elements":[

@@ -172,7 +172,11 @@
   }
  ],
  "bad":false,
- "conda-forge.yml":{},
+ "conda-forge.yml":{
+  "bot":{
+   "automerge":true
+  }
+ },
  "feedstock_name":"intake",
  "hash_type":"sha256",
  "meta_yaml":{
@@ -180,7 +184,7 @@
    "home":"https://github.com/ContinuumIO/intake",
    "license":"BSD-2-Clause",
    "license_family":"BSD",
-   "license_file":"/LICENSE",
+   "license_file":"LICENSE",
    "summary":"Data load and catalog system"
   },
   "build":{
@@ -194,7 +198,7 @@
    ],
    "noarch":"python",
    "number":"0",
-   "script":" -m pip install . --no-deps --ignore-installed -vv"
+   "script":"-m pip install . -vv"
   },
   "extra":{
    "recipe-maintainers":[
@@ -208,115 +212,108 @@
   },
   "package":{
    "name":"intake",
-   "version":"0.5.4"
+   "version":"0.5.5"
   },
   "requirements":{
    "host":[
-    "python >=3.5",
+    "python >=3.6",
     "pip",
-    "python >=3.5",
+    "python >=3.6",
     "pip",
-    "python >=3.5",
+    "python >=3.6",
     "pip"
    ],
    "run":[
-    "python >=3.5",
-    "numpy",
-    "msgpack-python",
-    "msgpack-numpy",
-    "requests",
-    "tornado >=4.5.1",
-    "jinja2",
-    "ruamel.yaml >=0.15.0",
-    "dask >=2.2",
-    "python-snappy",
+    "python >=3.6",
     "appdirs",
     "entrypoints",
-    "python >=3.5",
-    "numpy",
-    "msgpack-python",
-    "msgpack-numpy",
-    "requests",
-    "tornado >=4.5.1",
     "jinja2",
-    "ruamel.yaml >=0.15.0",
-    "dask >=2.2",
-    "python-snappy",
+    "msgpack-python",
+    "numpy",
+    "pyyaml",
+    "requests",
+    "dask >=1.0",
+    "cloudpickle >=0.2.2",
+    "fsspec >=0.6.0",
+    "toolz >=0.8.2",
+    "partd >=0.3.10",
+    "python >=3.6",
     "appdirs",
     "entrypoints",
-    "python >=3.5",
-    "numpy",
-    "msgpack-python",
-    "msgpack-numpy",
-    "requests",
-    "tornado >=4.5.1",
     "jinja2",
-    "ruamel.yaml >=0.15.0",
-    "dask >=2.2",
-    "python-snappy",
+    "msgpack-python",
+    "numpy",
+    "pyyaml",
+    "requests",
+    "dask >=1.0",
+    "cloudpickle >=0.2.2",
+    "fsspec >=0.6.0",
+    "toolz >=0.8.2",
+    "partd >=0.3.10",
+    "python >=3.6",
     "appdirs",
-    "entrypoints"
+    "entrypoints",
+    "jinja2",
+    "msgpack-python",
+    "numpy",
+    "pyyaml",
+    "requests",
+    "dask >=1.0",
+    "cloudpickle >=0.2.2",
+    "fsspec >=0.6.0",
+    "toolz >=0.8.2",
+    "partd >=0.3.10"
    ]
   },
   "source":{
-   "sha256":"81c3bdadbb81ec10c923b89e118c229d977a584ccbe27466f8fde41c0c274c3f",
-   "url":"https://pypi.io/packages/source/i/intake/intake-0.5.4.tar.gz"
+   "sha256":"bcb6558a9a7ccb1a3c5b7d1e3777ac8faed80894ef7826df119642430070ef7a",
+   "url":"https://pypi.io/packages/source/i/intake/intake-0.5.5.tar.gz"
   },
   "test":{
    "commands":[
+    "pip check",
     "intake list --help",
     "intake-server --help",
+    "pip check",
     "intake list --help",
     "intake-server --help",
+    "pip check",
     "intake list --help",
     "intake-server --help"
    ],
    "imports":[
     "intake",
     "intake.auth",
-    "intake.auth.tests",
     "intake.catalog",
-    "intake.catalog.tests",
     "intake.cli",
     "intake.cli.client",
-    "intake.cli.client.tests",
     "intake.cli.server",
-    "intake.cli.server.tests",
     "intake.container",
     "intake.gui",
     "intake.source",
-    "intake.source.tests",
-    "intake.tests",
     "intake",
     "intake.auth",
-    "intake.auth.tests",
     "intake.catalog",
-    "intake.catalog.tests",
     "intake.cli",
     "intake.cli.client",
-    "intake.cli.client.tests",
     "intake.cli.server",
-    "intake.cli.server.tests",
     "intake.container",
     "intake.gui",
     "intake.source",
-    "intake.source.tests",
-    "intake.tests",
     "intake",
     "intake.auth",
-    "intake.auth.tests",
     "intake.catalog",
-    "intake.catalog.tests",
     "intake.cli",
     "intake.cli.client",
-    "intake.cli.client.tests",
     "intake.cli.server",
-    "intake.cli.server.tests",
     "intake.container",
     "intake.gui",
-    "intake.source",
-    "intake.source.tests",
-    "intake.tests"
+    "intake.source"
+   ],
+   "requires":[
+    "pip",
+    "pip",
+    "pip"
    ],
    "source_files":[
     "intake",
@@ -328,23 +325,24 @@
  "name":"intake",
  "new_version":"0.5.5",
  "pinning_version":"2020.04.03",
- "raw_meta_yaml":"{% set version = \"0.5.4\" %}\n\npackage:\n  name: intake\n  version: {{ version }}\n\nsource:\n  url: https://pypi.io/packages/source/i/intake/intake-{{ version }}.tar.gz\n  sha256: 81c3bdadbb81ec10c923b89e118c229d977a584ccbe27466f8fde41c0c274c3f\n\nbuild:\n  number: 0\n  noarch: python\n  entry_points:\n    - intake-server = intake.cli.server.__main__:main\n    - intake = intake.cli.client.__main__:main\n  script: \"{{ PYTHON }} -m pip install . --no-deps --ignore-installed -vv\"\n\nrequirements:\n  host:\n    - python >=3.5\n    - pip\n  run:\n    - python >=3.5\n    - numpy\n    - msgpack-python\n    - msgpack-numpy\n    - requests\n    - tornado >=4.5.1\n    - jinja2\n    - ruamel.yaml >=0.15.0\n    - dask >=2.2\n    - python-snappy\n    - appdirs\n    - entrypoints\n    # - holoviews\n    # - ipywidgets >=7.2\n    # - pandas\n\ntest:\n  source_files:\n    - intake\n  imports:\n    - intake\n    - intake.auth\n    - intake.auth.tests\n    - intake.catalog\n    - intake.catalog.tests\n    - intake.cli\n    - intake.cli.client\n    - intake.cli.client.tests\n    - intake.cli.server\n    - intake.cli.server.tests\n    - intake.container\n    - intake.gui\n    - intake.source\n    - intake.source.tests\n    - intake.tests\n  commands:\n    - intake list --help\n    - intake-server --help\n\nabout:\n  home: https://github.com/ContinuumIO/intake\n  license: BSD-2-Clause\n  license_family: BSD\n  license_file: '{{ environ[\"RECIPE_DIR\"] }}/LICENSE'\n  summary: Data load and catalog system\n\nextra:\n  recipe-maintainers:\n    - ocefpaf\n    - martindurant\n",
+ "raw_meta_yaml":"{% set version = \"0.5.5\" %}\n\npackage:\n  name: intake\n  version: {{ version }}\n\nsource:\n  url: https://pypi.io/packages/source/i/intake/intake-{{ version }}.tar.gz\n  sha256: bcb6558a9a7ccb1a3c5b7d1e3777ac8faed80894ef7826df119642430070ef7a\n\nbuild:\n  number: 0\n  noarch: python\n  entry_points:\n    - intake-server = intake.cli.server.__main__:main\n    - intake = intake.cli.client.__main__:main\n  script: {{ PYTHON }} -m pip install . -vv\n\nrequirements:\n  host:\n    - python >=3.6\n    - pip\n  run:\n    - python >=3.6\n    - appdirs\n    - entrypoints\n    - jinja2\n    - msgpack-python\n    - numpy\n    - pyyaml\n    - requests\n    - dask >=1.0\n    # dask[bag]\n    - cloudpickle >=0.2.2\n    - fsspec >=0.6.0\n    - toolz >=0.8.2\n    - partd >=0.3.10\n\ntest:\n  source_files:\n    - intake\n  imports:\n    - intake\n    - intake.auth\n    - intake.catalog\n    - intake.cli\n    - intake.cli.client\n    - intake.cli.server\n    - intake.container\n    - intake.gui\n    - intake.source\n  commands:\n    - pip check\n    - intake list --help\n    - intake-server --help\n  requires:\n    - pip\n\nabout:\n  home: https://github.com/ContinuumIO/intake\n  license: BSD-2-Clause\n  license_family: BSD\n  license_file: LICENSE\n  summary: Data load and catalog system\n\nextra:\n  recipe-maintainers:\n    - ocefpaf\n    - martindurant\n",
  "req":{
   "__set__":true,
   "elements":[
    "appdirs",
+   "cloudpickle",
    "dask",
    "entrypoints",
+   "fsspec",
    "jinja2",
-   "msgpack-numpy",
    "msgpack-python",
    "numpy",
+   "partd",
    "pip",
    "python",
-   "python-snappy",
+   "pyyaml",
    "requests",
-   "ruamel.yaml",
-   "tornado"
+   "toolz"
   ]
  },
  "requirements":{
@@ -363,22 +361,25 @@
    "__set__":true,
    "elements":[
     "appdirs",
+    "cloudpickle",
     "dask",
     "entrypoints",
+    "fsspec",
     "jinja2",
-    "msgpack-numpy",
     "msgpack-python",
     "numpy",
+    "partd",
     "python",
-    "python-snappy",
+    "pyyaml",
     "requests",
-    "ruamel.yaml",
-    "tornado"
+    "toolz"
    ]
   },
   "test":{
    "__set__":true,
-   "elements":[]
+   "elements":[
+    "pip"
+   ]
   }
  },
  "smithy_version":"No azure token. Create a token and\nput it in ~/.conda-smithy/azure.token\n3.6.15",
@@ -392,31 +393,34 @@
    "__set__":true,
    "elements":[
     "pip",
-    "python >=3.5"
+    "python >=3.6"
    ]
   },
   "run":{
    "__set__":true,
    "elements":[
     "appdirs",
-    "dask >=2.2",
+    "cloudpickle >=0.2.2",
+    "dask >=1.0",
     "entrypoints",
+    "fsspec >=0.6.0",
     "jinja2",
-    "msgpack-numpy",
     "msgpack-python",
     "numpy",
-    "python >=3.5",
-    "python-snappy",
+    "partd >=0.3.10",
+    "python >=3.6",
+    "pyyaml",
     "requests",
-    "ruamel.yaml >=0.15.0",
-    "tornado >=4.5.1"
+    "toolz >=0.8.2"
    ]
   },
   "test":{
    "__set__":true,
-   "elements":[]
+   "elements":[
+    "pip"
+   ]
   }
  },
  "url":"https://pypi.io/packages/source/i/intake/intake-0.5.3.tar.gz",
- "version":"0.5.4"
+ "version":"0.5.5"
 }
