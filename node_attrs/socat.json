@@ -142,7 +142,7 @@
    "summary":"A relay for bidirectional transfer between data channels (netcat++)"
   },
   "build":{
-   "number":"1",
+   "number":"0",
    "skip":true
   },
   "extra":{
@@ -154,7 +154,7 @@
   },
   "package":{
    "name":"socat",
-   "version":"1.7.3.3"
+   "version":"1.7.3.4"
   },
   "requirements":{
    "build":[
@@ -180,10 +180,9 @@
    ]
   },
   "source":{
-   "fn":"socat-1.7.3.3.tar.bz2",
-   "patches":null,
-   "sha256":"0dd63ffe498168a4aac41d307594c5076ff307aa0ac04b141f8f1cec6594d04a",
-   "url":"http://www.dest-unreach.org/socat/download/socat-1.7.3.3.tar.bz2"
+   "fn":"socat-1.7.3.4.tar.bz2",
+   "sha256":"972374ca86f65498e23e3259c2ee1b8f9dbeb04d12c2a78c0c9b5d1cb97dfdfc",
+   "url":"http://www.dest-unreach.org/socat/download/socat-1.7.3.4.tar.bz2"
   },
   "test":{
    "commands":[
@@ -204,7 +203,7 @@
  "name":"socat",
  "new_version":"1.7.3.4",
  "pinning_version":"2020.01.05",
- "raw_meta_yaml":"{% set name = \"socat\" %}\n{% set version = \"1.7.3.3\" %}\n{% set sha256 = \"0dd63ffe498168a4aac41d307594c5076ff307aa0ac04b141f8f1cec6594d04a\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  fn: {{ name }}-{{ version }}.tar.bz2\n  url: http://www.dest-unreach.org/{{ name }}/download/{{ name }}-{{ version }}.tar.bz2\n  sha256: {{ sha256 }}\n  patches:\n    - 0001-use-speed_t.patch  # [osx]\n\nbuild:\n  number: 1\n  skip: True  # [win]\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n  host:\n    - openssl\n    - readline\n  run:\n    - openssl\n    - readline\n\ntest:\n  commands:\n    - filan -h\n    - procan -h\n    - socat -h\n    - conda inspect linkages -p $PREFIX $PKG_NAME  # [linux]\n    - conda inspect objects -p $PREFIX $PKG_NAME  # [osx]\n\nabout:\n  home: http://www.dest-unreach.org/socat/\n  license: GPL-2.0\n  license_family: GPL\n  license_file: COPYING\n  summary: A relay for bidirectional transfer between data channels (netcat++)\n\n  # The remaining entries in this section are optional, but recommended\n  description: |\n      socat is a relay for bidirectional data transfer between two independent data\n      channels. Each of these data channels may be a file, pipe, device (serial line\n      etc. or a pseudo terminal), a socket (UNIX, IP4, IP6 - raw, UDP, TCP), an\n      SSL socket, proxy CONNECT connection, a file descriptor (stdin etc.), the GNU\n      line editor (readline), a program, or a combination of two of these.\n      These modes include generation of \"listening\" sockets, named pipes, and pseudo\n      terminals.\n\n      socat can be used, e.g., as TCP port forwarder (one-shot or daemon), as an\n      external socksifier, for attacking weak firewalls, as a shell interface to UNIX\n      sockets, IP6 relay, for redirecting TCP oriented programs to a serial line, to\n      logically connect serial lines on different computers, or to establish a\n      relatively secure environment (su and  chroot) for running client or server\n      shell scripts with network connections.\n  doc_url: http://www.dest-unreach.org/socat/doc/README\n  dev_url: http://repo.or.cz/r/socat.git\n\nextra:\n  recipe-maintainers:\n    - sodre\n",
+ "raw_meta_yaml":"{% set name = \"socat\" %}\n{% set version = \"1.7.3.4\" %}\n{% set sha256 = \"972374ca86f65498e23e3259c2ee1b8f9dbeb04d12c2a78c0c9b5d1cb97dfdfc\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  fn: {{ name }}-{{ version }}.tar.bz2\n  url: http://www.dest-unreach.org/{{ name }}/download/{{ name }}-{{ version }}.tar.bz2\n  sha256: {{ sha256 }}\n  #patches:\n  #  - 0001-use-speed_t.patch  # [osx]\n\nbuild:\n  number: 0\n  skip: True  # [win]\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n  host:\n    - openssl\n    - readline\n  run:\n    - openssl\n    - readline\n\ntest:\n  commands:\n    - filan -h\n    - procan -h\n    - socat -h\n    - conda inspect linkages -p $PREFIX $PKG_NAME  # [linux]\n    - conda inspect objects -p $PREFIX $PKG_NAME  # [osx]\n\nabout:\n  home: http://www.dest-unreach.org/socat/\n  license: GPL-2.0\n  license_family: GPL\n  license_file: COPYING\n  summary: A relay for bidirectional transfer between data channels (netcat++)\n\n  # The remaining entries in this section are optional, but recommended\n  description: |\n      socat is a relay for bidirectional data transfer between two independent data\n      channels. Each of these data channels may be a file, pipe, device (serial line\n      etc. or a pseudo terminal), a socket (UNIX, IP4, IP6 - raw, UDP, TCP), an\n      SSL socket, proxy CONNECT connection, a file descriptor (stdin etc.), the GNU\n      line editor (readline), a program, or a combination of two of these.\n      These modes include generation of \"listening\" sockets, named pipes, and pseudo\n      terminals.\n\n      socat can be used, e.g., as TCP port forwarder (one-shot or daemon), as an\n      external socksifier, for attacking weak firewalls, as a shell interface to UNIX\n      sockets, IP6 relay, for redirecting TCP oriented programs to a serial line, to\n      logically connect serial lines on different computers, or to establish a\n      relatively secure environment (su and  chroot) for running client or server\n      shell scripts with network connections.\n  doc_url: http://www.dest-unreach.org/socat/doc/README\n  dev_url: http://repo.or.cz/r/socat.git\n\nextra:\n  recipe-maintainers:\n    - sodre\n",
  "req":{
   "__set__":true,
   "elements":[
@@ -268,5 +267,5 @@
   }
  },
  "url":"http://www.dest-unreach.org/socat/download/socat-1.7.3.3.tar.bz2",
- "version":"1.7.3.3"
+ "version":"1.7.3.4"
 }
