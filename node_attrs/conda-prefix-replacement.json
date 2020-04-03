@@ -72,7 +72,7 @@
   }
  },
  "name":"conda-prefix-replacement",
- "new_version":false,
+ "new_version":"0.1.1",
  "raw_meta_yaml":"{% set name = \"conda-prefix-replacement\" %}\n{% set version = \"0.1.1\" %}\n{% set sha256 = \"c4387bd35e286b3fe30b16e325a371f1cad8814cb06a356b5967ac6a3b12c9ad\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  fn: {{ name }}-{{ version }}.tar.gz\n  url: https://github.com/conda/{{ name }}/releases/download/{{ version }}/{{ name }}-{{ version }}.tar.gz\n  sha256: {{ sha256 }}\n\nbuild:\n  number: 0\n  noarch: python\n  script: pip install --no-deps --ignore-installed -vv .\n  entry_points:\n    - cpr = cpr.cli:cli\n\nrequirements:\n  host:\n    - python\n    - pip\n  run:\n    - python\n    - six\n    - tqdm\n\ntest:\n  imports:\n    - cpr\n  commands:\n    - cpr -V\n\nabout:\n  home: http://github.com/conda/conda-prefix-replacement\n  license: BSD-3\n  license_family: BSD\n  license_file: LICENSE\n  summary: Detect and replace prefix paths embedded in files\n\nextra:\n  recipe-maintainers:\n    - msarahan\n",
  "req":{
   "__set__":true,
