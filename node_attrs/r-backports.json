@@ -96,6 +96,23 @@
     "migrator_version",
     "version"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/397878189.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"ArchRebuild",
+    "migrator_version":1,
+    "name":"aarch64 and ppc64le addition"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "name"
+   ]
   }
  ],
  "bad":false,
@@ -186,7 +203,7 @@
  },
  "name":"r-backports",
  "new_version":"1.1.5",
- "pinning_version":"2019.10.01",
+ "pinning_version":"2020.04.02",
  "raw_meta_yaml":"{% set version = \"1.1.5\" %}\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-backports\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  url:\n    - {{ cran_mirror }}/src/contrib/backports_{{ version }}.tar.gz\n    - {{ cran_mirror }}/src/contrib/Archive/backports/backports_{{ version }}.tar.gz\n  sha256: 63ec38adf383b70b4cd2b661ad353afacff9c4388353578bf4302ab190e1294c\n\nbuild:\n  merge_build_host: True  # [win]\n  number: 0\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - {{ compiler('c') }}        # [not win]\n    - {{ compiler('m2w64_c') }}        # [win]\n    - {{posix}}filesystem        # [win]\n    - {{posix}}make\n    - {{posix}}sed               # [win]\n    - {{posix}}coreutils         # [win]\n    - {{posix}}zip               # [win]\n  host:\n    - r-base\n  run:\n    - r-base\n    - {{native}}gcc-libs         # [win]\n\ntest:\n  commands:\n    - $R -e \"library('backports')\"           # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('backports')\\\"\"  # [win]\n\nabout:\n  home: https://github.com/r-lib/backports\n  license: GPL-2\n  summary: ' Functions introduced or changed since R v3.0.0 are re-implemented in this package.\n    The backports are conditionally exported in order to let R resolve the function\n    name to either the implemented backport, or the respective base version, if available.\n    Package developers can make use of new functions or arguments by selectively importing\n    specific backports to support older installations.'\n  license_family: GPL2\n  license_file: '{{ environ[\"PREFIX\"] }}/lib/R/share/licenses/GPL-2'\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n\n# Package: backports\n# Type: Package\n# Title: Reimplementations of Functions Introduced Since R-3.0.0\n# Version: 1.1.3\n# Authors@R: c( person(\"Michel\", \"Lang\", NULL, \"michellang@gmail.com\", role = c(\"cre\", \"aut\"), comment = c(ORCID = \"0000-0001-9754-0393\")), person(\"R Core Team\", role = \"aut\"))\n# Maintainer: Michel Lang <michellang@gmail.com>\n# Description:  Functions introduced or changed since R v3.0.0 are re-implemented in this package. The backports are conditionally exported in order to let R resolve the function name to either the implemented backport, or the respective base version, if available. Package developers can make use of new functions or arguments by selectively importing specific backports to support older installations.\n# URL: https://github.com/r-lib/backports\n# BugReports: https://github.com/r-lib/backports/issues\n# License: GPL-2\n# NeedsCompilation: yes\n# ByteCompile: yes\n# Depends: R (>= 3.0.0)\n# Imports: utils\n# Encoding: UTF-8\n# RoxygenNote: 6.1.1\n# Packaged: 2018-12-14 09:54:10 UTC; lang\n# Author: Michel Lang [cre, aut] (<https://orcid.org/0000-0001-9754-0393>), R Core Team [aut]\n# Repository: CRAN\n# Date/Publication: 2018-12-14 10:30:03 UTC\n",
  "req":{
   "__set__":true,
@@ -233,7 +250,7 @@
    "elements":[]
   }
  },
- "smithy_version":"3.4.8",
+ "smithy_version":"No azure token. Create a token and\nput it in ~/.conda-smithy/azure.token\n3.6.15",
  "strong_exports":false,
  "total_requirements":{
   "build":{
