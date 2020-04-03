@@ -120,7 +120,7 @@
   }
  },
  "name":"standardese",
- "new_version":false,
+ "new_version":"0.4.0",
  "pinning_version":"2020.02.20",
  "raw_meta_yaml":"{% set name = \"standardese\" %}\n{% set version = \"0.4.0\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  url: https://github.com/{{ name }}/{{ name }}/releases/download/v{{ version }}/{{ name }}-{{ version }}.tgz\n  sha256: 4f27dbba6d577636a622dd0dc13257e8f11ed7bab5c41808bc0943720c2cc842\n  patches:\n    - 0001-Actually-install-standardese-in-make-install.patch\n    - 0002-boost-link-dynamic.patch\n\nbuild:\n  number: 1\n  skip: true  # [win and vc<14]\n  run_exports:\n    # standardese uses semantic versioning\n    - {{ pin_subpackage(\"standardese\") }}\n\nrequirements:\n  build:\n    - {{ compiler('cxx') }}\n    - cmake\n  host:\n    - boost-cpp\n    - clangdev\n  run:\n    - {{ pin_compatible('libclang') }}\n    - boost-cpp\n\ntest:\n  commands:\n    - standardese --help\n\nabout:\n  home: https://standardese.github.io/\n  license: MIT\n  license_family: MIT\n  license_file: LICENSE\n  summary: 'The nextgen Doxygen for C++'\n  doc_url: https://standardese.github.io/\n  dev_url: https://github.com/standardese/standardese\n\nextra:\n  recipe-maintainers:\n    - saraedum\n",
  "req":{
