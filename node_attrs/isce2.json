@@ -103,6 +103,23 @@
     "migrator_version",
     "name"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/397899557.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"Version",
+    "migrator_version":0,
+    "version":"2.3.3"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "version"
+   ]
   }
  ],
  "bad":false,
@@ -256,8 +273,8 @@
   }
  },
  "name":"isce2",
- "new_version":"2.3.2",
- "pinning_version":"2019.11.01",
+ "new_version":"2.3.3",
+ "pinning_version":"2020.04.02",
  "raw_meta_yaml":"{% set name = \"isce2\" %}\n{% set version = \"2.3.2\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  url: https://github.com/isce-framework/isce2/archive/v{{ version }}.tar.gz\n  sha256: bcb34aae61a67b5fd0a6ce726eae0a1bf9e5a0d6a126bd0563b64d14c8a00823\n  folder: isce2\n\nbuild:\n  number: 2\n  skip: True  # [win or py2k]\n\nrequirements:\n  build:\n      - {{ compiler('c') }}\n      - {{ compiler('cxx') }}\n      - {{ compiler('fortran') }}\n  host:\n    - python\n    - numpy\n    - cython\n    - scons\n    - hdf5\n    - libgdal\n    - fftw\n    - openmotif-dev  # [linux]\n    - xorg-libxt     # [linux]\n    - xorg-libxft    # [linux]\n    - xorg-libxmu    # [linux]\n  run:\n    - python\n    - {{ pin_compatible('numpy') }}\n    - scipy\n    - hdf5\n    - h5py\n    - opencv 3.4\n    - gdal\n    - libgdal\n    - fftw\n    - xorg-libxt  # [linux]\n    - xorg-libxft  # [linux]\n    - xorg-libxmu  # [linux]\n    - xorg-libxdmcp  # [linux]\n    - openmotif  # [linux]\n    - requests\n\ntest:\n  imports:\n      - isce\n  commands:\n      - ISCEHOME=`$PYTHON -c \"import isce, os; print(os.path.dirname(isce.__file__))\" | tail -n 1`\n      - ${ISCEHOME}/applications/topsApp.py --help --steps\n      - ${ISCEHOME}/applications/stripmapApp.py --help --steps\n      - ${ISCEHOME}/applications/dem.py --help\n      - ${ISCEHOME}/applications/isce2gis.py -h\n      - ${ISCEHOME}/applications/imageMath.py -h\n      - python {{ RECIPE_DIR }}/run_test.py\n      - ${ISCEHOME}/bin/mdx  # [linux]\n\nabout:\n  home: http://github.com/isce-framework/isce2\n  license: Apache-2.0\n  license_family: Apache\n  license_file: isce2/LICENSE-2.0.txt\n  summary: 'InSAR Scientific Computing Environment'\n\n  description: |\n    InSAR Scientific Computing Environment (ISCE) is a framework designed\n    for processing Synthetic Aperture Radar (SAR) And Interferometric SAR\n    (InSAR) data. Currently, ISCE supports processing of data acquired by\n    following platforms - ALOS, ALOS2, COSMO-SkyMed, EnviSAT, ERS,\n    KOMPSAT5,  RadarSAT2, RISAT1, Sentinel1, TerraSAR-X, Tandem-X, \n    and UAVSAR. ISCE can also read some SICD format data.\n\n  doc_url: https://github.com/isce-framework/isce2-docs\n  dev_url: https://github.com/isce-framework/isce2\n\nextra:\n  recipe-maintainers:\n    - BryanRiel\n    - piyushrpt\n    - rtburns-jpl\n",
  "req":{
   "__set__":true,
@@ -335,7 +352,7 @@
    "elements":[]
   }
  },
- "smithy_version":"3.6.2",
+ "smithy_version":"No azure token. Create a token and\nput it in ~/.conda-smithy/azure.token\n3.6.15",
  "strong_exports":false,
  "total_requirements":{
   "build":{

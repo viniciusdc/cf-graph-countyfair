@@ -83,7 +83,7 @@
   }
  },
  "name":"bash-completion",
- "new_version":false,
+ "new_version":"2.10",
  "pinning_version":"2019.12.02",
  "raw_meta_yaml":"{% set name = \"bash-completion\" %}\n{% set version = \"2.10\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  url: https://github.com/scop/{{ name }}/archive/{{ version }}.tar.gz\n  sha256: 185f5c912440cc99c066315047dcced7e314ded24cf08732125bd24ad928d29f\n  patches:\n    # add a conda specific library loaded flag\n    - track-conda-loaded.patch\n\n    # search for completions in the conda environment\n    - completions-path.patch\n\n    # adjust double load trap to use conda specific\n    - double-load-trap.patch\n\nbuild:\n  number: 1\n  skip: True  # [win]\n\nrequirements:\n  build:\n    - autoconf\n    - automake\n\ntest:\n  source_files:\n    - bash_completion\n\n  requires:\n    - bash >=4.1\n\nabout:\n  home: https://github.com/scop/bash-completion\n  license: GPL2\n  license_file: COPYING\n  summary: \"Programmable completion functions for bash.\"\n\nextra:\n  recipe-maintainers:\n    - tartansandal\n",
  "req":{
