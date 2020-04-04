@@ -132,6 +132,23 @@
     "migrator_version",
     "version"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/398473466.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"Version",
+    "migrator_version":0,
+    "version":"20.4.2"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "version"
+   ]
   }
  ],
  "bad":false,
@@ -269,7 +286,7 @@
   }
  },
  "name":"monkeytype",
- "new_version":"20.4.1",
+ "new_version":"20.4.2",
  "pinning_version":"2020.04.03",
  "raw_meta_yaml":"{% set name = \"MonkeyType\" %}\n{% set version = \"19.11.2\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  - folder: dist\n    url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz\n    sha256: 9f052b42851bc24603836ce3105166c8cc5edabeb25e8fcf256fa25777122618\n  - folder: src\n    url: https://github.com/Instagram/{{ name }}/archive/v{{ version }}.tar.gz\n    sha256: 690bcf0331549cfff8ef10af8dad2cf07387c159b865a25e21deaa3c2db0be9e\n\nbuild:\n  number: 0\n  noarch: python\n  entry_points:\n    - monkeytype=monkeytype.cli:entry_point_main\n  script: cd dist && python -m pip install --no-deps --ignore-installed .\n\nrequirements:\n  build:\n    - pip\n    - python >=3.6\n    - setuptools\n  run:\n    - mypy_extensions\n    - python >=3.6\n    - retype\n    - stringcase\n\ntest:\n  source_files:\n    - src/tests\n  requires:\n    - cython\n    - django\n    - pytest\n    - {{ compiler('c') }}\n  imports:\n    - monkeytype\n  commands:\n    - monkeytype --help\n    - cd src && cd tests\n    - python -m pytest -k \"not test_includes_otherwise\"\n\n\nabout:\n  home: https://github.com/Instagram/MonkeyType\n  license: BSD-3-Clause\n  license_family: BSD\n  license_file: src/LICENSE\n  summary: Generating type annotations from sampled production types\n\n  description: |\n    MonkeyType collects runtime types of function arguments and return values,\n    and can automatically generate stub files or even add draft type\n    annotations directly to your Python code based on the types collected at\n    runtime.\n\nextra:\n  recipe-maintainers:\n    - bollwyvl\n    - nehaljwani\n",
  "req":{
