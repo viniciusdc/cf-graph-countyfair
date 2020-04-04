@@ -48,6 +48,23 @@
     "migrator_version",
     "name"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/398504268.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"Version",
+    "migrator_version":0,
+    "version":"0.15.2"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "version"
+   ]
   }
  ],
  "bad":false,
@@ -161,8 +178,8 @@
   }
  },
  "name":"r-intervals",
- "new_version":"0.15.1",
- "pinning_version":"2019.07.15",
+ "new_version":"0.15.2",
+ "pinning_version":"2020.04.03",
  "raw_meta_yaml":"{% set version = '0.15.1' %}\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-intervals\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  fn: intervals_{{ version }}.tar.gz\n  url:\n    - {{ cran_mirror }}/src/contrib/intervals_{{ version }}.tar.gz\n    - {{ cran_mirror }}/src/contrib/Archive/intervals/intervals_{{ version }}.tar.gz\n  sha256: 9a8b3854300f2055e1492c71932cc808b02feac8c4d3dbf6cba1c7dbd09f4ae4\n\nbuild:\n  merge_build_host: True  # [win]\n  number: 1003\n  skip: true  # [win32]\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - {{ compiler('c') }}        # [not win]\n    - {{ compiler('cxx') }}      # [not win]\n    - {{ compiler('m2w64_c') }}        # [win]\n    - {{ compiler('m2w64_cxx') }}        # [win]\n    - {{posix}}filesystem        # [win]\n    - {{posix}}make\n    - {{posix}}sed               # [win]\n    - {{posix}}coreutils         # [win]\n    - {{posix}}zip               # [win]\n  host:\n    - r-base\n  run:\n    - r-base\n    - {{native}}gcc-libs         # [win]\n\ntest:\n  commands:\n    - $R -e \"library('intervals')\"           # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('intervals')\\\"\"  # [win]\n\nabout:\n  home: http://github.com/edzer/intervals\n  license: Artistic-2.0\n  summary: Tools for working with and comparing sets of points and intervals.\n  license_family: OTHER\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n    - jsignell\n    - johanneskoester\n    - bgruening\n    - daler\n    - jdblischak\n    - cbrueffer\n    - dbast\n",
  "req":{
   "__set__":true,
@@ -213,7 +230,7 @@
    "elements":[]
   }
  },
- "smithy_version":"3.4.1",
+ "smithy_version":"No azure token. Create a token and\nput it in ~/.conda-smithy/azure.token\n3.6.15",
  "strong_exports":false,
  "total_requirements":{
   "build":{
