@@ -32,9 +32,14 @@
    "summary":"An MNE project for organizing and formatting MEG and EEG data according to the BIDS specification"
   },
   "build":{
+   "entry_points":[
+    "mne_bids = mne_bids.commands.run:main",
+    "mne_bids = mne_bids.commands.run:main",
+    "mne_bids = mne_bids.commands.run:main"
+   ],
    "noarch":"python",
    "number":"0",
-   "script":" -m pip install . --no-deps -vv"
+   "script":"-m pip install . --no-deps -vv"
   },
   "extra":{
    "recipe-maintainers":[
@@ -48,40 +53,48 @@
   },
   "package":{
    "name":"mne-bids",
-   "version":"0.3"
+   "version":"0.4"
   },
   "requirements":{
    "host":[
-    "python >=3",
+    "python >=3.5",
     "pip",
-    "python >=3",
+    "python >=3.5",
     "pip",
-    "python >=3",
+    "python >=3.5",
     "pip"
    ],
    "run":[
-    "python >=3",
+    "python >=3.5",
     "numpy",
     "scipy",
     "nibabel",
     "mne",
-    "python >=3",
+    "pybv >=0.2.0",
+    "python >=3.5",
     "numpy",
     "scipy",
     "nibabel",
     "mne",
-    "python >=3",
+    "pybv >=0.2.0",
+    "python >=3.5",
     "numpy",
     "scipy",
     "nibabel",
-    "mne"
+    "mne",
+    "pybv >=0.2.0"
    ]
   },
   "source":{
-   "sha256":"187add419562e3607c161eaf04971863c134febad2e70313260a58238e519ba5",
-   "url":"https://pypi.io/packages/source/m/mne-bids/mne-bids-0.3.tar.gz"
+   "sha256":"a8af1d74172a639519f7f48fc5663f007201b1d8762c44afa09be9c090859cc2",
+   "url":"https://pypi.io/packages/source/m/mne-bids/mne-bids-0.4.tar.gz"
   },
   "test":{
+   "commands":[
+    "mne_bids --version",
+    "mne_bids --version",
+    "mne_bids --version"
+   ],
    "imports":[
     "mne_bids",
     "mne_bids",
@@ -92,7 +105,7 @@
  "name":"mne-bids",
  "new_version":"0.4",
  "pinning_version":"2020.04.03",
- "raw_meta_yaml":"{% set name = \"mne-bids\" %}\n{% set version = \"0.3\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz\n  sha256: 187add419562e3607c161eaf04971863c134febad2e70313260a58238e519ba5\n\nbuild:\n  noarch: python\n  number: 0\n  script: \"{{ PYTHON }} -m pip install . --no-deps -vv\"\n\nrequirements:\n  host:\n    - python >=3\n    - pip\n  run:\n    - python >=3\n    - numpy\n    - scipy\n    - nibabel\n    - mne\n\ntest:\n  imports:\n    - mne_bids\n\nabout:\n  home: https://mne.tools/mne-bids/\n  license: BSD-3-Clause\n  license_family: BSD\n  license_file: LICENSE\n  summary: 'An MNE project for organizing and formatting MEG and EEG data according to the BIDS specification'\n  dev_url: https://github.com/mne-tools/mne-bids\n\nextra:\n  recipe-maintainers:\n    - hoechenberger\n    - jasmainak\n",
+ "raw_meta_yaml":"{% set name = \"mne-bids\" %}\n{% set version = \"0.4\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz\n  sha256: a8af1d74172a639519f7f48fc5663f007201b1d8762c44afa09be9c090859cc2\n\nbuild:\n  noarch: python\n  number: 0\n  script: {{ PYTHON }} -m pip install . --no-deps -vv\n  entry_points:\n     - mne_bids = mne_bids.commands.run:main\n\nrequirements:\n  host:\n    - python >=3.5\n    - pip\n  run:\n    - python >=3.5\n    - numpy\n    - scipy\n    - nibabel\n    - mne\n    - pybv >=0.2.0\n\ntest:\n  imports:\n    - mne_bids\n  commands:\n     # Test the entry point.\n     - mne_bids --version\n\nabout:\n  home: https://mne.tools/mne-bids/\n  license: BSD-3-Clause\n  license_family: BSD\n  license_file: LICENSE\n  summary: An MNE project for organizing and formatting MEG and EEG data according to the BIDS specification\n  dev_url: https://github.com/mne-tools/mne-bids\n\nextra:\n  recipe-maintainers:\n    - hoechenberger\n    - jasmainak\n",
  "req":{
   "__set__":true,
   "elements":[
@@ -100,6 +113,7 @@
    "nibabel",
    "numpy",
    "pip",
+   "pybv",
    "python",
    "scipy"
   ]
@@ -122,6 +136,7 @@
     "mne",
     "nibabel",
     "numpy",
+    "pybv",
     "python",
     "scipy"
    ]
@@ -142,7 +157,7 @@
    "__set__":true,
    "elements":[
     "pip",
-    "python >=3"
+    "python >=3.5"
    ]
   },
   "run":{
@@ -151,7 +166,8 @@
     "mne",
     "nibabel",
     "numpy",
-    "python >=3",
+    "pybv >=0.2.0",
+    "python >=3.5",
     "scipy"
    ]
   },
@@ -161,5 +177,5 @@
   }
  },
  "url":"https://pypi.io/packages/source/m/mne-bids/mne-bids-0.3.tar.gz",
- "version":"0.3"
+ "version":"0.4"
 }
