@@ -224,6 +224,23 @@
     "migrator_version",
     "version"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/399276475.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"Version",
+    "migrator_version":0,
+    "version":"0.9.3"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "version"
+   ]
   }
  ],
  "bad":false,
@@ -321,9 +338,10 @@
   }
  },
  "name":"pyrobuf",
- "new_version":"0.9.2",
+ "new_version":"0.9.3",
  "new_version_attempts":{
-  "0.9.2":1
+  "0.9.2":1,
+  "0.9.3":1
  },
  "pinning_version":"2020.04.03",
  "raw_meta_yaml":"{% set name = \"pyrobuf\" %}\n{% set version = \"0.9.1\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz\n  sha256: dbd14aa5459741f5f188254f2b34ad991ab740f88713dbf812f719a43b0a42c0\n\nbuild:\n  number: 0\n  script: {{ PYTHON }} -m pip install . --no-deps --ignore-installed --no-cache-dir -vvv\n  entry_points:\n    - pyrobuf = pyrobuf.__main__:main\n\nrequirements:\n  build:\n    - {{ compiler(\"c\") }}\n    - {{ compiler(\"cxx\") }}\n  host:\n    - python\n    - pip\n    - msinttypes  # [win]\n    - jinja2 >=2.8\n    - cython >=0.23\n    - pytest-runner\n  run:\n    - jinja2 >=2.8\n    - cython >=0.23\n    - python\n\ntest:\n  imports:\n    - pyrobuf\n  commands:\n    - pyrobuf --help\n\nabout:\n  home: https://github.com/appnexus/pyrobuf\n  license: Apache-2.0\n  license_family: APACHE\n  license_file: LICENSE\n  summary: Pyrobuf is an alternative to Google's Python Protobuf library.\n  description: |\n    Pyrobuf is an alternative to Google's Python Protobuf library.\n\n    It generates lightning-fast Cython code that's 2-4x faster than Google's\n    Python Protobuf library using their C++ backend and 20-40x faster than\n    Google's pure-python implementation.\n\n    What's more, Pyrobuf is self-contained and easy to install.\n\n  dev_url: https://github.com/appnexus/pyrobuf\n\nextra:\n  recipe-maintainers:\n    - hmaarrfk\n",
