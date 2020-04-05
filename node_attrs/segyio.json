@@ -220,6 +220,9 @@
  },
  "name":"segyio",
  "new_version":"1.9.1",
+ "new_version_attempts":{
+  "1.9.1":1
+ },
  "pinning_version":"2020.01.10",
  "raw_meta_yaml":"{% set name = \"segyio\" %}\n{% set version = \"1.9.0\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  url: https://github.com/equinor/{{ name }}/releases/download/{{ version }}/{{ name }}-{{ version }}.tar.gz\n  sha256: 80601d9ea32a2055a02493deaea77a5830a3cc5018e1d2e5add786e7eb9d7b75\n\nbuild:\n  number: 0\n  skip: True  # [win and vc<14]\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n    - cmake\n    - make  # [unix]\n    - ninja  # [win]\n  host:\n    - python\n    - pip\n    - setuptools\n    - setuptools_scm\n    - pytest\n    - pytest-runner\n    - numpy\n    - scikit-build\n  run:\n    - python\n    - numpy\n\ntest:\n  imports:\n    - segyio\n\nabout:\n  home: https://github.com/equinor/segyio\n  license: LGPL-3.0\n  license_family: GPL\n  license_file: License.md\n  summary: 'Simple and fast SEG-Y I/O'\n\n  description: |\n    segyio is a fast and practical library for reading and writing seismic data\n    in SEG-Y format. segyio is random access oriented for modern computers with\n    simple read/write primitives on lines.\n  doc_url: http://segyio.readthedocs.io/\n  dev_url: https://github.com/equinor/segyio\n\nextra:\n  recipe-maintainers:\n    - jokva\n",
  "req":{

@@ -119,6 +119,9 @@
  },
  "name":"baseband",
  "new_version":"3.1.0",
+ "new_version_attempts":{
+  "3.1.0":1
+ },
  "pinning_version":"2019.08.27",
  "raw_meta_yaml":"{% set name = \"baseband\" %}\n{% set version = \"2.0.0\" %}\n\npackage:\n  name: \"{{ name|lower }}\"\n  version: \"{{ version }}\"\n\nsource:\n  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz\n  sha256: 5a5e386f1fbdd34c00802aeed10541d9facb31228df182f04f32244d240063b3\n  patches:\n    - baseband.patch\n\nbuild:\n  number: 0\n  script: \"{{ PYTHON }} -m pip install . --no-deps --ignore-installed -vv\"\n  noarch: python\n\nrequirements:\n  host:\n    - astropy >=2.0\n    - pip\n    - python\n  run:\n    - astropy >=2.0\n    - python\n\ntest:\n  imports:\n    - baseband\n    - baseband.dada\n    - baseband.data\n    - baseband.data.gsb\n    - baseband.gsb\n    - baseband.guppi\n    - baseband.helpers\n    - baseband.mark4\n    - baseband.mark5b\n    - baseband.vdif\n    - baseband.vlbi_base\n\nabout:\n  home: https://baseband.readthedocs.io\n  license: GPL-3.0\n  license_family: GPL\n  license_file: LICENSE\n  summary: A package for radio baseband I/O\n  description: |\n    Baseband is a package for reading and writing VLBI and other radio\n    baseband files, with the aim of simplifying and streamlining data\n    conversion and standardization.\n  doc_url: https://baseband.readthedocs.io/\n  dev_url: https://github.com/mhvk/baseband\n\nextra:\n  recipe-maintainers:\n    - mwcraig\n",
  "req":{
