@@ -16,6 +16,23 @@
     "migrator_version",
     "version"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/398837110.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"Version",
+    "migrator_version":0,
+    "version":"0.15.4"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "version"
+   ]
   }
  ],
  "bad":false,
@@ -93,8 +110,8 @@
   }
  },
  "name":"tflint",
- "new_version":"0.15.3",
- "pinning_version":"2020.03.28",
+ "new_version":"0.15.4",
+ "pinning_version":"2020.04.03",
  "raw_meta_yaml":"{% set goname = \"github.com/terraform-linters/tflint\" %}\n{% set version = \"0.15.3\" %}\n\n{% set name = goname.split('/')[-1] %}\n{% set pkg_src = ('src/'+goname).replace(\"/\",os.sep) %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  - folder: {{ pkg_src }}\n    url: https://{{ goname }}/archive/v{{ version }}.tar.gz\n    sha256: 878498373f45e6a34a3e1016339309ba973d7f13887430ec9674d745a751e170\n\nbuild:\n  number: 0\n  script:\n    - pushd {{ pkg_src }}\n    - go install -v .\n\nrequirements:\n  build:\n    - {{ compiler('go') }}\n\ntest:\n  requires:\n    - m2-bash  # [win]\n  commands:\n    - bash -c \"{{ name|lower }} -v\"\n\nabout:\n  home: https://github.com/terraform-linters/tflint\n  license: MPL 2.0\n  license_file: {{ pkg_src }}/LICENSE\n  summary: TFLint is a Terraform linter focused on possible errors, best practices, etc.\n  dev_url: https://github.com/terraform-linters/tflint.git\n\nextra:\n  recipe-maintainers:\n    - sodre\n    - mariusvniekerk\n",
  "req":{
   "__set__":true,
