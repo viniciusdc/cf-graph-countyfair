@@ -211,7 +211,7 @@
  "name":"python-node-semver",
  "new_version":"0.8.0",
  "new_version_attempts":{
-  "0.8.0":2
+  "0.8.0":3
  },
  "pinning_version":"2020.02.12",
  "raw_meta_yaml":"{% set name = \"node-semver\" %}\n{% set version = \"0.7.0\" %}\n{% set sha256 = \"21b9a02069a71c4936b211eea4c600e78cf9ceb03ecc0272186c4ac5c3b4f1dc\" %}\n\npackage:\n  name: python-{{ name|lower }}\n  version: {{ version }}\n\nsource:\n  fn: {{ name }}-{{ version }}.tar.gz\n  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz\n  sha256: {{ sha256 }}\n\nbuild:\n  number: 0\n  noarch: python\n  script: \"{{ PYTHON }} -m pip install . --no-deps --ignore-installed --no-cache-dir -vvv\"\n\nrequirements:\n  host:\n    - python\n    - pip\n  run:\n    - python\n\ntest:\n  imports:\n    - semver\n\nabout:\n  home: https://github.com/podhmo/python-semver\n  license: MIT\n  license_family: MIT\n  license_file: '{{ environ[\"RECIPE_DIR\"] }}/LICENSE'\n  summary: port of node-semver\n  dev_url: https://github.com/podhmo/python-semver\n\nextra:\n  recipe-maintainers:\n    - windelbouwman\n    - abloemert\n",
