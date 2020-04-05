@@ -68,9 +68,6 @@
  ],
  "bad":false,
  "conda-forge.yml":{
-  "compiler_stack":"comp7",
-  "max_py_ver":"37",
-  "max_r_ver":"35",
   "provider":{
    "win":"azure"
   }
@@ -88,7 +85,7 @@
   "build":{
    "merge_build_host":true,
    "noarch":"generic",
-   "number":"1002",
+   "number":"0",
    "rpaths":[
     "lib/R/lib/",
     "lib/",
@@ -125,7 +122,7 @@
   },
   "package":{
    "name":"r-breakdown",
-   "version":"0.1.6"
+   "version":"0.2.0"
   },
   "requirements":{
    "build":null,
@@ -147,15 +144,15 @@
    ]
   },
   "source":{
-   "fn":"breakDown_0.1.6.tar.gz",
-   "sha256":"e7e08e281d4f2eafc48639a6f166bf4bf46501069f88964de68b405433c36c8f",
+   "fn":"breakDown_0.2.0.tar.gz",
+   "sha256":"84345c3bc09b0eaf6d3c0a5ce41ca85070d1da572b87b198b391b42844388afb",
    "url":[
-    "https://cran.r-project.org/src/contrib/breakDown_0.1.6.tar.gz",
-    "https://cran.r-project.org/src/contrib/Archive/breakDown/breakDown_0.1.6.tar.gz",
-    "https://cran.r-project.org/src/contrib/breakDown_0.1.6.tar.gz",
-    "https://cran.r-project.org/src/contrib/Archive/breakDown/breakDown_0.1.6.tar.gz",
-    "https://cran.r-project.org/src/contrib/breakDown_0.1.6.tar.gz",
-    "https://cran.r-project.org/src/contrib/Archive/breakDown/breakDown_0.1.6.tar.gz"
+    "https://cran.r-project.org/src/contrib/breakDown_0.2.0.tar.gz",
+    "https://cran.r-project.org/src/contrib/Archive/breakDown/breakDown_0.2.0.tar.gz",
+    "https://cran.r-project.org/src/contrib/breakDown_0.2.0.tar.gz",
+    "https://cran.r-project.org/src/contrib/Archive/breakDown/breakDown_0.2.0.tar.gz",
+    "https://cran.r-project.org/src/contrib/breakDown_0.2.0.tar.gz",
+    "https://cran.r-project.org/src/contrib/Archive/breakDown/breakDown_0.2.0.tar.gz"
    ]
   },
   "test":{
@@ -169,7 +166,7 @@
  "name":"r-breakdown",
  "new_version":"0.2.0",
  "pinning_version":"2020.04.03",
- "raw_meta_yaml":"{% set version = '0.1.6' %}\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-breakdown\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  fn: breakDown_{{ version }}.tar.gz\n  url:\n    - {{ cran_mirror }}/src/contrib/breakDown_{{ version }}.tar.gz\n    - {{ cran_mirror }}/src/contrib/Archive/breakDown/breakDown_{{ version }}.tar.gz\n  sha256: e7e08e281d4f2eafc48639a6f166bf4bf46501069f88964de68b405433c36c8f\n\nbuild:\n  noarch: generic\n  merge_build_host: True  # [win]\n  number: 1002\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - {{posix}}zip               # [win]\n  host:\n    - r-base\n    - r-ggplot2\n  run:\n    - r-base\n    - r-ggplot2\n\ntest:\n  commands:\n    - $R -e \"library('breakDown')\"           # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('breakDown')\\\"\"  # [win]\n\nabout:\n  home: https://pbiecek.github.io/breakDown/\n  license: GPL-2\n  summary: 'Model agnostic tool for decomposition of predictions from black boxes. Break Down\n    Table shows contributions of every variable to a final prediction.  Break Down Plot\n    presents variable contributions in a concise graphical way.  This package work for\n    binary classifiers and general regression models. '\n  license_family: GPL2\n  license_file: '{{ environ[\"PREFIX\"] }}/lib/R/share/licenses/GPL-2'\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n    - johanneskoester\n    - bgruening\n    - daler\n    - jdblischak\n    - cbrueffer\n    - dbast\n",
+ "raw_meta_yaml":"{% set version = \"0.2.0\" %}\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-breakdown\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  fn: breakDown_{{ version }}.tar.gz\n  url:\n    - {{ cran_mirror }}/src/contrib/breakDown_{{ version }}.tar.gz\n    - {{ cran_mirror }}/src/contrib/Archive/breakDown/breakDown_{{ version }}.tar.gz\n  sha256: 84345c3bc09b0eaf6d3c0a5ce41ca85070d1da572b87b198b391b42844388afb\n\nbuild:\n  noarch: generic\n  merge_build_host: true  # [win]\n  number: 0\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - {{posix}}zip               # [win]\n  host:\n    - r-base\n    - r-ggplot2\n  run:\n    - r-base\n    - r-ggplot2\n\ntest:\n  commands:\n    - $R -e \"library('breakDown')\"           # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('breakDown')\\\"\"  # [win]\n\nabout:\n  home: https://pbiecek.github.io/breakDown/\n  license: GPL-2\n  summary: 'Model agnostic tool for decomposition of predictions from black boxes. Break Down Table shows contributions of every variable to a final prediction.  Break\n    Down Plot presents variable contributions in a concise graphical way.  This package work for binary classifiers and general regression models. '\n  license_family: GPL2\n  license_file: {{ environ[\"PREFIX\"] }}/lib/R/share/licenses/GPL-2\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n    - johanneskoester\n    - bgruening\n    - daler\n    - jdblischak\n    - cbrueffer\n    - dbast\n",
  "req":{
   "__set__":true,
   "elements":[
@@ -235,5 +232,5 @@
   "https://cran.r-project.org/src/contrib/breakDown_0.1.6.tar.gz",
   "https://cran.r-project.org/src/contrib/Archive/breakDown/breakDown_0.1.6.tar.gz"
  ],
- "version":"0.1.6"
+ "version":"0.2.0"
 }
