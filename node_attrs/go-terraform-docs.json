@@ -90,11 +90,11 @@
   "exception":"while scanning for the next token\nfound character '\\t' that cannot start any token\n  in \"<unicode string>\", line 3, column 1:\n    \t\n    ^ (line: 3)",
   "traceback":[
    "Traceback (most recent call last):",
-   "  File \"/root/repo/cf-scripts/conda_forge_tick/auto_tick.py\", line 956, in main",
+   "  File \"/root/repo/cf-scripts/conda_forge_tick/auto_tick.py\", line 957, in main",
    "    hash_type=attrs.get(\"hash_type\", \"sha256\"),",
    "  File \"/root/repo/cf-scripts/conda_forge_tick/auto_tick.py\", line 168, in run",
    "    migrate_return = migrator.migrate(recipe_dir, feedstock_ctx.attrs, **kwargs)",
-   "  File \"/root/repo/cf-scripts/conda_forge_tick/migrators/version.py\", line 397, in migrate",
+   "  File \"/root/repo/cf-scripts/conda_forge_tick/migrators/version.py\", line 407, in migrate",
    "    cmeta = CondaMetaYAML(fp.read())",
    "  File \"/root/repo/cf-scripts/conda_forge_tick/recipe_parser/_parser.py\", line 391, in __init__",
    "    self.meta = self._parser.load(\"\".join(lines))",
@@ -199,6 +199,9 @@
  },
  "name":"go-terraform-docs",
  "new_version":"0.9.1",
+ "new_version_attempts":{
+  "0.9.1":1
+ },
  "pinning_version":"2020.01.27",
  "raw_meta_yaml":"{% set import_path = \"github.com/segmentio/terraform-docs\" %}\n{% set version = \"0.8.2\" %}\n\t\n{% set name = import_path.split('/')[-1] %}\n{% set pkg_src = ('src/'+import_path).replace(\"/\", os.sep) %}\n\npackage:\n  name: go-{{ name|lower }}\n  version: {{version}}\n\nsource:\n  - folder: {{ pkg_src }}\n    url: https://{{ import_path }}/archive/v{{version}}.tar.gz\n    sha256: 005957c5c5d56a27e60ca735128231f68c3f099b433a7041a0f1591bee59fbd0\n\nbuild:\n  number: 0\n  script:\n    - pushd {{ pkg_src }}\n    - go install -v\n        -ldflags \"-X main.version={{ version }}\"\n        .\n\nrequirements:\n  build:\n    - {{ compiler(\"go\") }}\n\ntest:\n  commands:\n    - which terraform-docs  # [not win]\n    - where terraform-docs  # [win]\n    - terraform-docs --help\n\nabout:\n  home: https://{{ import_path }}\n\n  license: MIT\n  license_family: MIT\n  license_file: {{ pkg_src }}/LICENSE\n  summary: 'Generate docs from Terraform modules'\n\nextra:\n  recipe-maintainers:\n    - andrew-mcgrath\n    - pierrsc\n",
  "req":{
