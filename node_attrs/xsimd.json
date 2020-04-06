@@ -475,6 +475,23 @@
     "migrator_version",
     "version"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/399645622.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"Version",
+    "migrator_version":0,
+    "version":"7.4.7"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "version"
+   ]
   }
  ],
  "bad":false,
@@ -547,8 +564,11 @@
   }
  },
  "name":"xsimd",
- "new_version":"7.4.6",
- "pinning_version":"2020.01.16",
+ "new_version":"7.4.7",
+ "new_version_attempts":{
+  "7.4.7":1
+ },
+ "pinning_version":"2020.04.06",
  "raw_meta_yaml":"{% set name = \"xsimd\" %}\n{% set version = \"7.4.6\" %}\n{% set sha256 = \"0e70411a9fff76ac17c6ef642465d4f0d1f29d3f3a70e5ece4cfc522bd4fcd0b\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  fn: {{ name }}-{{ version }}.tar.gz\n  url: https://github.com/QuantStack/xsimd/archive/{{ version }}.tar.gz\n  sha256: {{ sha256 }}\n\nbuild:\n  number: 0\n  skip: True  # [win and vc<14]\n\nrequirements:\n  host:\n    - {{ compiler('cxx') }}\n    - cmake\n\ntest:\n  commands:\n    - test -f ${PREFIX}/include/xsimd/xsimd.hpp  # [unix]\n    - test -f ${PREFIX}/lib/cmake/xsimd/xsimdConfig.cmake  # [unix]\n    - test -f ${PREFIX}/lib/cmake/xsimd/xsimdConfigVersion.cmake  # [unix]\n    - if exist %LIBRARY_PREFIX%\\include\\xsimd\\xsimd.hpp (exit 0) else (exit 1)  # [win]\n    - if exist %LIBRARY_PREFIX%\\lib\\cmake\\xsimdConfig.cmake (exit 0) else (exit 1)  # [win]\n    - if exist %LIBRARY_PREFIX%\\lib\\cmake\\xsimdConfigVersion.cmake (exit 0) else (exit 1)  # [win]\n\nabout:\n  home: http://quantstack.net/xsimd\n  license: BSD 3-Clause\n  license_family: BSD\n  license_file: LICENSE\n  summary: 'C++ Wrappers for SIMD Intrinsices'\n  description: 'High-level APIs for SIMD operations'\n  doc_url: http://xsimd.readthedocs.io\n  dev_url: https://github.com/QuantStack/xsimd\n\nextra:\n  recipe-maintainers:\n    - SylvainCorlay\n    - JohanMabille\n",
  "req":{
   "__set__":true,
@@ -578,7 +598,7 @@
    "elements":[]
   }
  },
- "smithy_version":"3.6.5",
+ "smithy_version":"No azure token. Create a token and\nput it in ~/.conda-smithy/azure.token\n3.6.15",
  "strong_exports":false,
  "total_requirements":{
   "build":{
