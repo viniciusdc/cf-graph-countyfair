@@ -150,7 +150,7 @@
  "name":"oclgrind",
  "new_version":"32",
  "new_version_attempts":{
-  "32":14
+  "32":15
  },
  "pinning_version":"2019.10.28",
  "raw_meta_yaml":"{% set name = \"oclgrind\" %}\n{% set version = \"19.10\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  url: https://github.com/jrprice/Oclgrind/archive/v{{ version }}.tar.gz\n  sha256: f9a8f22cb9f6d88670f2578c46ba0d728ba8eaee5c481c2811129dc157c43dc0\n\nbuild:\n  number: 0\n  skip: True  # [win and vc<14]\n\nrequirements:\n  build:\n    - {{ compiler('c') }}    # [not win]\n    - {{ compiler('cxx') }}  # [not win]\n    - vs2017_{{ target_platform }}  # [win]\n    - cmake\n    - make    # [unix]\n    - ninja   # [win]\n  host:\n    - llvmdev   >=6.0.0,<10.0.0.a0\n    - clangdev\n    - readline  # [unix]\n    - khronos-opencl-icd-loader  # [win]\n\ntest:\n  commands:\n    - test -f \"$PREFIX/lib/liboclgrind-rt-icd${SHLIB_EXT}\"         # [unix]\n    - if not exist %LIBRARY_BIN%\\\\oclgrind-rt-icd.dll exit 1       # [win]\n    - oclgrind --help\n\nabout:\n  home: https://github.com/jrprice/Oclgrind\n  license: BSD-3-Clause\n  license_family: BSD\n  license_file: LICENSE\n  summary: 'An OpenCL device simulator and debugger'\n  dev_url: https://github.com/jrprice/Oclgrind\n\nextra:\n  recipe-maintainers:\n    - isuruf\n",
