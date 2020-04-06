@@ -87,7 +87,7 @@
   },
   "build":{
    "noarch":"python",
-   "number":"1",
+   "number":"0",
    "script":"-m pip install . -vv"
   },
   "extra":{
@@ -102,7 +102,7 @@
   },
   "package":{
    "name":"chunky3d",
-   "version":"0.1.1"
+   "version":"0.1.2"
   },
   "requirements":{
    "host":[
@@ -138,28 +138,31 @@
    ]
   },
   "source":{
-   "sha256":"912ac315bfabdcdfd451b8e050fefe36705e5aa5fd6a6519ba14919f01ccbbca",
-   "url":"https://pypi.io/packages/source/c/chunky3d/chunky3d-0.1.1.tar.gz"
+   "sha256":"c0099d131784e0b910b5769a2f77cd77419ba5e47f52ecbc8758331b4b7f98a0",
+   "url":"https://pypi.io/packages/source/c/chunky3d/chunky3d-0.1.2.tar.gz"
   },
   "test":{
    "commands":[
-    "nosetests -e label",
-    "nosetests",
-    "nosetests"
+    "nosetests -e label -e thinning",
+    "nosetests -e thinning",
+    "nosetests -e thinning"
    ],
    "requires":[
     "itk",
-    "nose",
     "networkx",
+    "nose",
+    "pip",
     "vtk",
     "itk",
-    "nose",
     "networkx",
+    "nose",
+    "pip",
     "simpleitk",
     "vtk",
     "itk",
-    "nose",
     "networkx",
+    "nose",
+    "pip",
     "simpleitk",
     "vtk"
    ],
@@ -173,7 +176,7 @@
  "name":"chunky3d",
  "new_version":"0.1.2",
  "pinning_version":"2020.03.30",
- "raw_meta_yaml":"{% set name = \"chunky3d\" %}\n{% set version = \"0.1.1\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz\n  sha256: 912ac315bfabdcdfd451b8e050fefe36705e5aa5fd6a6519ba14919f01ccbbca\n\n\nbuild:\n  noarch: python\n  number: 1\n  script: {{ PYTHON }} -m pip install . -vv\n\nrequirements:\n  host:\n    - python\n    - pip\n  run:\n    - python\n    - dill\n    - msgpack-numpy\n    - msgpack-python\n    - numba\n    - psutil\n    - scipy\n\ntest:\n  requires:\n    - itk\n    - nose\n    - networkx\n    - simpleitk  # [unix]\n    - vtk\n  source_files:\n    - test/*.py\n  commands:\n    - nosetests -e label  # [win]\n    - nosetests  # [unix]\n\nabout:\n  home: https://github.com/K3D-tools/chunky3d\n  license: MIT\n  license_family: MIT\n  license_file: LICENSE\n  summary: A 3D array-like NumPy-based data structure for large sparsely-populated volumes\n\n  description: |\n    chunky3d provides a 3D array-like NumPy-based data structure for large \n    sparsely-populated volumes, chunky3d.Sparse, along with some algorithms for\n    processing integer masks (morhpology) or volumetric data (spacial interpolation).\n  # TODO: create an publish documentation.\n  # doc_url: https://chunky3d.readthedocs.io/\n  dev_url: https://github.com/K3D-tools/chunky3d\n\nextra:\n  recipe-maintainers:\n    - artur-trzesiok\n    - tgandor\n",
+ "raw_meta_yaml":"{% set name = \"chunky3d\" %}\n{% set version = \"0.1.2\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz\n  sha256: c0099d131784e0b910b5769a2f77cd77419ba5e47f52ecbc8758331b4b7f98a0\n\n\nbuild:\n  noarch: python\n  number: 0\n  script: {{ PYTHON }} -m pip install . -vv\n\nrequirements:\n  host:\n    - python\n    - pip\n  run:\n    - python\n    - dill\n    - msgpack-numpy\n    - msgpack-python\n    - numba\n    - psutil\n    - scipy\n\ntest:\n  requires:\n    - itk\n    - networkx\n    - nose\n    - pip\n    - simpleitk  # [unix]\n    - vtk\n  source_files:\n    - test/*.py\n  commands:\n    - nosetests -e label -e thinning  # [win]\n    - nosetests -e thinning  # [unix]\n\nabout:\n  home: https://github.com/K3D-tools/chunky3d\n  license: MIT\n  license_family: MIT\n  license_file: LICENSE\n  summary: A 3D array-like NumPy-based data structure for large sparsely-populated volumes\n\n  description: |\n    chunky3d provides a 3D array-like NumPy-based data structure for large \n    sparsely-populated volumes, chunky3d.Sparse, along with some algorithms for\n    processing integer masks (morhpology) or volumetric data (spacial interpolation).\n  # TODO: create an publish documentation.\n  # doc_url: https://chunky3d.readthedocs.io/\n  dev_url: https://github.com/K3D-tools/chunky3d\n\nextra:\n  recipe-maintainers:\n    - artur-trzesiok\n    - tgandor\n",
  "req":{
   "__set__":true,
   "elements":[
@@ -217,6 +220,7 @@
     "itk",
     "networkx",
     "nose",
+    "pip",
     "simpleitk",
     "vtk"
    ]
@@ -254,11 +258,12 @@
     "itk",
     "networkx",
     "nose",
+    "pip",
     "simpleitk",
     "vtk"
    ]
   }
  },
  "url":"https://pypi.io/packages/source/c/chunky3d/chunky3d-0.0.3.tar.gz",
- "version":"0.1.1"
+ "version":"0.1.2"
 }
