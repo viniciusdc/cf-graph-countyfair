@@ -113,7 +113,7 @@
  "name":"ghostscript",
  "new_version":"952",
  "new_version_attempts":{
-  "952":20
+  "952":21
  },
  "pinning_version":"2020.02.12",
  "raw_meta_yaml":"{% set version = \"9.22\" %}\n\npackage:\n  name: ghostscript\n  version: {{ version }}\n\nsource:\n  url: https://github.com/ArtifexSoftware/ghostpdl-downloads/releases/download/gs922/ghostscript-{{ version }}.tar.gz\n  sha256: 7f5f4487c0df9dce37481e4c8f192c0322e4c69f5a2ba900a7833c992331bcf4\n  patches:\n    - dynlink_runtime.patch  # [win]\n\nbuild:\n  number: 1\n  skip: True  # [win and vc<14]\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n  host:\n\ntest:\n  commands:\n    - gs --version\n\nabout:\n  home: http://ghostscript.com/\n  license: Affero GPL\n  license_file: LICENSE\n  summary: 'An interpreter for the PostScript language and for PDF.'\n\nextra:\n  recipe-maintainers:\n    - ocefpaf\n    - leouieda\n",
