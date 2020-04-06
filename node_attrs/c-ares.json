@@ -127,7 +127,7 @@
   }
  },
  "name":"c-ares",
- "new_version":false,
+ "new_version":"1.16.0",
  "pinning_version":"2019.07.01",
  "raw_meta_yaml":"{% set version = \"1.15.0\" %}\n\npackage:\n  name: c-ares\n  version: {{ version }}\n\nsource:\n  url: https://c-ares.haxx.se/download/c-ares-{{ version }}.tar.gz\n  sha256: 6cdb97871f2930530c97deb7cf5c8fa4be5a0b02c7cea6e7c7667672a39d6852\n\nbuild:\n  number: 1001\n  skip: True  # [win and vc<14]\n\nrequirements:\n  build:\n    - {{ compiler(\"c\") }}\n    - cmake\n    - make  # [unix]\n  host:\n    - msinttypes  # [win and vc<14]\n\ntest:\n  commands:\n    - test -f ${PREFIX}/lib/libcares_static.a     # [not win]\n    - test -f ${PREFIX}/include/ares.h            # [not win]\n    - test -f ${PREFIX}/lib/libcares${SHLIB_EXT}  # [not win]\n    - if not exist %PREFIX%\\\\Library\\\\include\\\\ares.h exit 1  # [win]\n    - if not exist %PREFIX%\\\\Library\\\\bin\\\\cares.dll exit 1  # [win]\n    - if not exist %PREFIX%\\\\Library\\\\lib\\\\cares.lib exit 1  # [win]\n    - if not exist %PREFIX%\\\\Library\\\\lib\\\\cares_static.lib exit 1  # [win]\n\nabout:\n  home: https://c-ares.haxx.se/\n  license: MIT\n  license_family: MIT\n  license_file: LICENSE.md\n  summary: 'This is c-ares, an asynchronous resolver library'\n\nextra:\n  recipe-maintainers:\n    - ocefpaf\n    - wesm\n    - xhochy\n",
  "req":{

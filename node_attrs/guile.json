@@ -176,7 +176,7 @@
   }
  },
  "name":"guile",
- "new_version":"3.0.0",
+ "new_version":"3.0.2",
  "pinning_version":"2020.01.10",
  "raw_meta_yaml":"{% set name = \"guile\" %}\n{% set version = \"2.2.4\" %}\n\npackage:\n  name: {{ name }}\n  version: {{ version }}\n\nsource:\n  url: https://ftp.gnu.org/gnu/{{ name }}/{{ name }}-{{ version }}.tar.gz\n  sha256: 33b904c0bf4e48e156f3fb1d0e6b0392033bd610c6c9d9a0410c6e0ea96a3e5c\n  patches:\n    - skip_posix_crypt_test.patch  # [linux]\n\nbuild:\n  number: 1\n  skip: True  # [win]\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n  host:\n    - sed  # [osx]\n    - libunistring\n    - libffi\n    - bdw-gc\n    - gmp\n    - libiconv\n    - readline\n    - libtool\n    - pkg-config\n    - gettext\n  run:\n    - libunistring\n    - libtool\n    - libffi\n    - bdw-gc\n    - gmp\n    - libiconv\n    - readline\n    - gettext\n\ntest:\n  commands:\n    - guile -v\n\nabout:\n  home: https://www.gnu.org/software/guile\n  license: LGPL-3.0\n  license_file: LICENSE\n  license_family: LGPL\n  summary: 'The GNU C implementation of the Scheme programming language'\n  doc_url: https://www.gnu.org/software/guile/manual/ \n\nextra:\n  recipe-maintainers:\n    - ChristopherHogan\n",
  "req":{

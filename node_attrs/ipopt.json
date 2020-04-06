@@ -307,7 +307,7 @@
   }
  },
  "name":"ipopt",
- "new_version":"3.13.0",
+ "new_version":"3.13.1",
  "pinning_version":"2019.12.18",
  "raw_meta_yaml":"{% set name = \"Ipopt\" %}\n{% set version = \"3.13.0\" %}\n{% set sha256 = \"dc392396be28c4a0d49bfab399320cb3f70db5b8f090028a883d826a47744ecf\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  fn: {{ name }}-{{ version }}.tar.gz\n  url: http://www.coin-or.org/download/source/{{ name }}/{{ name }}-{{ version }}.tgz\n  sha256: {{ sha256 }}\n  patches:\n    - linux-configure.patch  # [linux]\n\nbuild:\n  skip: True  # [win]\n  number: 0\n  run_exports:\n    - {{ pin_subpackage('ipopt', max_pin='x.x') }}\n\nrequirements:\n  build:\n    - {{ compiler('fortran') }}\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n    - wget\n    - pkgconfig\n  host:\n    - libblas\n    - liblapack\n  run:\n\ntest:\n  files:\n    - test\n    - mytoy.nl\n\n  requires:\n    - {{ compiler('fortran') }}\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n\nabout:\n  home: https://projects.coin-or.org/Ipopt/\n  license: EPL-1.0\n  license_file: LICENSE\n  summary: Software package for large-scale nonlinear optimization\n\nextra:\n  recipe-maintainers:\n    - pstjohn\n    - bluescarni\n",
  "req":{

@@ -126,7 +126,7 @@
   }
  },
  "name":"kcodecs",
- "new_version":false,
+ "new_version":"5.68.0",
  "pinning_version":"2020.01.28",
  "raw_meta_yaml":"{% set name = \"kcodecs\" %}\n{% set version = \"5.67.0\" %}\n{% set major_minor = \".\".join(version.split(\".\")[:2]) %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  url: https://download.kde.org/stable/frameworks/{{ major_minor }}/kcodecs-{{ version }}.tar.xz\n  sha256: 4fb9d2d2142306ff60b0855923be20a2a4d959075379c86c9af7023e20bdbab2\n\nbuild:\n  number: 0\n  skip: true  # [not linux]\n  run_exports:\n    - {{ pin_subpackage('kcodecs', max_pin='x.x') }}\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n    - cmake\n    - make\n    - extra-cmake-modules\n  host:\n    - qt\n    - gperf\n\ntest:\n  commands:\n    - test -f ${PREFIX}/lib/libKF5Codecs.so\n\nabout:\n  home: https://api.kde.org/frameworks/kcodecs/html/index.html\n  license: GPL-v2\n  license_family: GPL\n  license_file: COPYING\n  summary: 'String encoding library'\n  description: |\n    KCodecs provide a collection of methods to manipulate strings using various encodings.\n    It can automatically determine the charset of a string, translate XML entities,\n    validate email addresses, and find encodings by name in a more tolerant way than\n    QTextCodec (useful e.g. for data coming from the Internet).\n  dev_url: https://cgit.kde.org/kcodecs.git/tree\n\nextra:\n  recipe-maintainers:\n    - scopatz\n",
  "req":{
