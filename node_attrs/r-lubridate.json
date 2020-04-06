@@ -62,6 +62,23 @@
     "migrator_version",
     "name"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/399541636.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"Version",
+    "migrator_version":0,
+    "version":"1.7.8"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "version"
+   ]
   }
  ],
  "bad":false,
@@ -185,8 +202,11 @@
   }
  },
  "name":"r-lubridate",
- "new_version":"1.7.4",
- "pinning_version":"2019.07.15",
+ "new_version":"1.7.8",
+ "new_version_attempts":{
+  "1.7.8":1
+ },
+ "pinning_version":"2020.04.06",
  "raw_meta_yaml":"{% set version = '1.7.4' %}\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-lubridate\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  fn: lubridate_{{ version }}.tar.gz\n  url:\n    - {{ cran_mirror }}/src/contrib/lubridate_{{ version }}.tar.gz\n    - {{ cran_mirror }}/src/contrib/Archive/lubridate/lubridate_{{ version }}.tar.gz\n  sha256: 510ca87bd91631c395655ee5029b291e948b33df09e56f6be5839f43e3104891\n\nbuild:\n  merge_build_host: True  # [win]\n  number: 1002\n  skip: true  # [win32]\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - {{ compiler('c') }}        # [not win]\n    - {{ compiler('cxx') }}      # [not win]\n    - {{ compiler('m2w64_c') }}        # [win]\n    - {{ compiler('m2w64_cxx') }}        # [win]\n    - {{posix}}filesystem        # [win]\n    - {{posix}}make\n    - {{posix}}sed               # [win]\n    - {{posix}}coreutils         # [win]\n    - {{posix}}zip               # [win]\n  host:\n    - r-base\n    - r-rcpp >=0.12.13\n    - r-stringr\n  run:\n    - r-base\n    - {{native}}gcc-libs         # [win]\n    - r-rcpp >=0.12.13\n    - r-stringr\n\ntest:\n  commands:\n    - $R -e \"library('lubridate')\"           # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('lubridate')\\\"\"  # [win]\n\nabout:\n  home: http://lubridate.tidyverse.org, https://github.com/tidyverse/lubridate\n  license: GPL (>= 2)\n  summary: 'Functions to work with date-times and time-spans: fast and user friendly parsing\n    of date-time data, extraction and updating of components of a date-time (years,\n    months, days, hours, minutes, and seconds), algebraic manipulation on date-time\n    and time-span objects. The ''lubridate'' package has a consistent and memorable\n    syntax that makes working with dates easy and fun. Parts of the ''CCTZ'' source\n    code, released under the Apache 2.0 License, are included in this package. See <https://github.com/google/cctz>\n    for more details.'\n  license_family: GPL3\n  license_file: '{{ environ[\"PREFIX\"] }}/lib/R/share/licenses/GPL-3'\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n    - johanneskoester\n    - bgruening\n    - daler\n    - jdblischak\n    - cbrueffer\n    - dbast\n",
  "req":{
   "__set__":true,
@@ -243,7 +263,7 @@
    "elements":[]
   }
  },
- "smithy_version":"3.4.1",
+ "smithy_version":"No azure token. Create a token and\nput it in ~/.conda-smithy/azure.token\n3.6.15",
  "strong_exports":false,
  "total_requirements":{
   "build":{
