@@ -213,6 +213,23 @@
     "migrator_version",
     "version"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/400047457.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"Version",
+    "migrator_version":0,
+    "version":"4.0.3"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "version"
+   ]
   }
  ],
  "bad":false,
@@ -588,13 +605,16 @@
  },
  "name":"openmpi-mpi",
  "new_version":"4.0.3",
+ "new_version_attempts":{
+  "4.0.3":1
+ },
  "outputs_names":[
   "openmpi",
   "openmpi-mpicc",
   "openmpi-mpicxx",
   "openmpi-mpifort"
  ],
- "pinning_version":"2019.10.01",
+ "pinning_version":"2020.04.07",
  "raw_meta_yaml":"{% set version = \"4.0.2\" %}\n{% set major = version.rpartition('.')[0] %}\n\npackage:\n  # must not match any outputs for requirements to be handled correctly\n  name: openmpi-mpi\n  version: {{ version }}\n\nsource:\n  fn: openmpi-{{ version }}.tar.bz2\n  url: https://www.open-mpi.org/software/ompi/v{{ major }}/downloads/openmpi-{{ version }}.tar.bz2\n  sha256: 900bf751be72eccf06de9d186f7b1c4b5c2fa9fa66458e53b77778dffdfe4057\n  patches:\n    - 0001-common-ompio-fix-calculation-in-simple-grouping-opti.patch\n\nbuild:\n  number: 4\n  skip: True  # [win or (linux64 and cuda_compiler_version != '9.2')]\n\noutputs:\n  - name: openmpi\n    script: build-mpi.sh\n    build:\n      run_exports:\n        - {{ pin_subpackage('openmpi', min_pin='x.x.x', max_pin='x.x') }}\n      ignore_run_exports:\n        - cudatoolkit\n    requirements:\n      build:\n        - {{ compiler('c') }}\n        - {{ compiler('cxx') }}\n        - {{ compiler('fortran') }}\n        - {{ compiler('cuda') }}  # [linux64]\n        - make  # [unix]\n        - perl 5.26.2\n      host:\n        - zlib\n      run:\n        - zlib\n        - mpi 1.0 openmpi\n      run_constrained:\n        - cudatoolkit >={{ cuda_compiler_version }}  # [linux64]\n    test:\n      script: run_test.sh\n      files:\n        - mpiexec.sh\n        - tests/helloworld.sh\n\n  - name: openmpi-mpicc\n    build:\n      script:\n        - echo 'ok'  # [not osx]\n        # make CONDA_BUILD_SYSROOT a 'used variable'\n        # so that conda-build knows to pass it to the test env\n        - echo \"{{CONDA_BUILD_SYSROOT}}\"  # [osx]\n    requirements:\n      run:\n        - {{ pin_subpackage('openmpi', exact=True) }}\n        # host C compilers work fine (better) on mac\n        - {{ compiler('c') }}\n    test:\n      script: run_test.sh\n      files:\n        - mpiexec.sh\n        - tests/helloworld.c\n\n  - name: openmpi-mpicxx\n    build:\n      script:\n        - echo 'ok'  # [not osx]\n        # make CONDA_BUILD_SYSROOT a 'used variable'\n        # so that conda-build knows to pass it to the test env\n        - echo \"{{CONDA_BUILD_SYSROOT}}\"  # [osx]\n    requirements:\n      run:\n        - {{ pin_subpackage('openmpi', exact=True) }}\n        # host C compilers work fine (better) on mac\n        - {{ compiler('cxx') }}\n    test:\n      script: run_test.sh\n      files:\n        - mpiexec.sh\n        - tests/helloworld.cxx\n\n  - name: openmpi-mpifort\n    build:\n      script:\n        - echo 'ok'  # [not osx]\n        # make CONDA_BUILD_SYSROOT a 'used variable'\n        # so that conda-build knows to pass it to the test env\n        - echo \"{{CONDA_BUILD_SYSROOT}}\"  # [osx]\n    requirements:\n      run:\n        - {{ pin_subpackage('openmpi', exact=True) }}\n        - {{ compiler('fortran') }}\n    test:\n      script: run_test.sh\n      files:\n        - mpiexec.sh\n        - tests/helloworld.f\n        - tests/helloworld.f90\n\nabout:\n    home: https://www.open-mpi.org/\n    license: BSD 3-Clause\n    license_family: BSD\n    license_file: LICENSE\n    summary: 'An open source Message Passing Interface implementation.'\n    description: |\n        The Open MPI Project is an open source Message Passing Interface\n        implementation that is developed and maintained by a consortium of academic,\n        research, and industry partners.\n    doc_url: https://www.open-mpi.org/doc/\n    dev_url: https://github.com/open-mpi/ompi\n\nextra:\n    recipe-maintainers:\n        - astrofrog-conda-forge\n        - bekozi\n        - dalcinl\n        - leofang\n        - minrk\n        - msarahan\n        - ocefpaf\n",
  "req":{
   "__set__":true,
@@ -644,7 +664,7 @@
    "elements":[]
   }
  },
- "smithy_version":"3.5.0",
+ "smithy_version":"No azure token. Create a token and\nput it in ~/.conda-smithy/azure.token\n3.6.15",
  "strong_exports":false,
  "total_requirements":{
   "build":{
