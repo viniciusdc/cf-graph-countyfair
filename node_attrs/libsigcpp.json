@@ -31,6 +31,23 @@
     "migrator_version",
     "name"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/400030195.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"Version",
+    "migrator_version":0,
+    "version":"3.0.3"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "version"
+   ]
   }
  ],
  "bad":false,
@@ -204,11 +221,14 @@
  },
  "name":"libsigcpp",
  "new_version":"3.0.3",
+ "new_version_attempts":{
+  "3.0.3":1
+ },
  "outputs_names":[
   "libsigcpp",
   "sigcpp-2.0"
  ],
- "pinning_version":"2018.09.11",
+ "pinning_version":"2020.04.07",
  "raw_meta_yaml":"{% set version = \"2.10.3\" %}\n{% set major_minor = \".\".join(version.split(\".\")[:2]) %}\n{% set abi_version = \"2.0\" %}\n\npackage:\n  name: libsigcpp\n  version: {{ version }}\n\nsource:\n  fn: libsigc++-{{ version }}.tar.xz\n  url: http://ftp.acc.umu.se/pub/GNOME/sources/libsigc++/{{ major_minor }}/libsigc++-{{ version }}.tar.xz\n  sha256: 0b68dfc6313c6cc90ac989c6d722a1bf0585ad13846e79746aa87cb265904786\n\nbuild:\n  number: 0\n  skip: true  # [win]\n  run_exports:\n    - sigcpp-{{ abi_version }} >={{ version }}\n\noutputs:\n  - name: sigcpp-{{ abi_version }}\n    script: build_libsigcpp.sh\n    build:\n      run_exports:\n        - sigcpp-{{ abi_version }} >={{ version }}\n    requirements:\n      build:\n        - autoconf\n        - automake\n        - {{ compiler('c') }}\n        - {{ compiler('cxx') }}\n      host:\n        - m4\n      run_constrained:\n        - libsigcpp {{ version }}\n    test:\n      commands:\n        - test -f ${PREFIX}/lib/libsigc-{{ abi_version }}${SHLIB_EXT}\n\n  - name: libsigcpp\n    requirements:\n      run:\n        - sigcpp-{{ abi_version }}  {{ version }}\n    test:\n      commands:\n        - test -f ${PREFIX}/lib/pkg-config/sigc++-{{ abi_version }}.pc\n\nabout:\n  home: http://libsigc.sourceforge.net/\n  license: LGPL-3.0-or-later\n  license_file: COPYING\n  summary: \"libsigc++ implements a typesafe callback system for standard C++.\"\n\nextra:\n  recipe-maintainers:\n    - scopatz\n    - isuruf\n",
  "req":{
   "__set__":true,
@@ -248,7 +268,7 @@
    "elements":[]
   }
  },
- "smithy_version":"3.1.12",
+ "smithy_version":"No azure token. Create a token and\nput it in ~/.conda-smithy/azure.token\n3.6.15",
  "strong_exports":false,
  "total_requirements":{
   "build":{
