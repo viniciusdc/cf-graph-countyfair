@@ -228,7 +228,7 @@
    "summary":"TIFF based interchange format for georeferenced raster imagery"
   },
   "build":{
-   "number":"9",
+   "number":"10",
    "run_exports":[
     "geotiff",
     "geotiff",
@@ -315,7 +315,7 @@
  "name":"geotiff",
  "new_version":false,
  "pinning_version":"2020.04.08",
- "raw_meta_yaml":"{% set version = \"1.5.1\" %}\n\npackage:\n  name: geotiff\n  version: {{ version }}\n\nsource:\n  url: http://download.osgeo.org/geotiff/libgeotiff/libgeotiff-{{ version }}.tar.gz\n  sha256: f9e99733c170d11052f562bcd2c7cb4de53ed405f7acdde4f16195cd3ead612c\n  patches:\n    - cmake.patch\n\nbuild:\n  number: 9\n  skip: True  # [win and vc<14]\n  run_exports:\n    # https://abi-laboratory.pro/?view=timeline&l=libgeotiff\n    - {{ pin_subpackage('geotiff', max_pin='x.x') }}\n\nrequirements:\n  build:\n    - cmake\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n  host:\n    - proj\n    - zlib\n    - jpeg\n    - libtiff\n  run:\n    - proj\n    - zlib\n    - jpeg\n    - libtiff\n\ntest:\n  commands:\n    - test -f $PREFIX/lib/libgeotiff${SHLIB_EXT}  # [not win]\n    - if not exist %LIBRARY_LIB%\\\\geotiff_i.lib exit 1  # [win]\n    - if not exist %LIBRARY_BIN%\\\\geotiff.dll exit 1  # [win]\n\nabout:\n  home: https://trac.osgeo.org/geotiff\n  license: MIT\n  license_file: LICENSE\n  summary: 'TIFF based interchange format for georeferenced raster imagery'\n  description: |\n    GeoTIFF represents an effort by over 160 different remote sensing,\n    GIS, cartographic, and surveying related companies and organizations\n    to establish a TIFF based interchange format for georeferenced raster imagery.\n\nextra:\n  recipe-maintainers:\n    - gillins\n    - ocefpaf\n    - xylar\n",
+ "raw_meta_yaml":"{% set version = \"1.5.1\" %}\n\npackage:\n  name: geotiff\n  version: {{ version }}\n\nsource:\n  url: http://download.osgeo.org/geotiff/libgeotiff/libgeotiff-{{ version }}.tar.gz\n  sha256: f9e99733c170d11052f562bcd2c7cb4de53ed405f7acdde4f16195cd3ead612c\n  patches:\n    - cmake.patch\n\nbuild:\n  number: 10\n  skip: True  # [win and vc<14]\n  run_exports:\n    # https://abi-laboratory.pro/?view=timeline&l=libgeotiff\n    - {{ pin_subpackage('geotiff', max_pin='x.x') }}\n\nrequirements:\n  build:\n    - cmake\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n  host:\n    - proj\n    - zlib\n    - jpeg\n    - libtiff\n  run:\n    - proj\n    - zlib\n    - jpeg\n    - libtiff\n\ntest:\n  commands:\n    - test -f $PREFIX/lib/libgeotiff${SHLIB_EXT}  # [not win]\n    - if not exist %LIBRARY_LIB%\\\\geotiff_i.lib exit 1  # [win]\n    - if not exist %LIBRARY_BIN%\\\\geotiff.dll exit 1  # [win]\n\nabout:\n  home: https://trac.osgeo.org/geotiff\n  license: MIT\n  license_file: LICENSE\n  summary: 'TIFF based interchange format for georeferenced raster imagery'\n  description: |\n    GeoTIFF represents an effort by over 160 different remote sensing,\n    GIS, cartographic, and surveying related companies and organizations\n    to establish a TIFF based interchange format for georeferenced raster imagery.\n\nextra:\n  recipe-maintainers:\n    - gillins\n    - ocefpaf\n    - xylar\n",
  "req":{
   "__set__":true,
   "elements":[
