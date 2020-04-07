@@ -261,6 +261,23 @@
     "migrator_version",
     "name"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/400341244.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"Version",
+    "migrator_version":0,
+    "version":"1.2.4"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "version"
+   ]
   }
  ],
  "bad":false,
@@ -364,8 +381,12 @@
   }
  },
  "name":"liknorm-py",
- "new_version":"1.2.3",
- "pinning_version":"2020.03.23",
+ "new_version":"1.2.4",
+ "new_version_attempts":{
+  "1.2.4":1
+ },
+ "new_version_errors":{},
+ "pinning_version":"2020.04.07",
  "raw_meta_yaml":"{% set name = \"liknorm-py\" %}\n{% set version = \"1.2.2\" %}\n{% set sha256 = \"6099eb01d394cbdc09af1b5a6b9817074c58341ce7c0cda1074ae5813f574bfc\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  fn: liknorm-{{ version }}.tar.gz\n  url: https://pypi.io/packages/source/{{ name[0] }}/liknorm/liknorm-{{ version }}.tar.gz\n  sha256: {{ sha256 }}\n\nbuild:\n  number: 1000\n  skip: True  # [py27]\n  script: \"{{ PYTHON }} -m pip install --no-deps --ignore-installed .\"\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n  host:\n    - cffi\n    - libgfortran =3  # [not win]\n    - liknorm >=1.5.1\n    - numpy\n    - pip\n    - pytest-runner\n    - python\n    - setuptools\n  run:\n    - cffi\n    - libgfortran =3  # [not win]\n    - liknorm >=1.5.1\n    - numpy\n    - pytest\n    - python\n\ntest:\n  imports:\n    - liknorm\n\nabout:\n  home: https://github.com/limix/liknorm-py\n  license: MIT\n  license_family: MIT\n  license_file: LICENSE.md\n  summary: 'Liknorm Python wrapper'\n  doc_url: https://github.com/limix/liknorm-py\n  dev_url: https://github.com/limix/liknorm-py\n\nextra:\n  recipe-maintainers:\n    - Horta\n",
  "req":{
   "__set__":true,

@@ -214,6 +214,23 @@
     "__lazy_json__":"pr_json/399958066.json"
    },
    "data":{
+    "bot_rerun":1586272520.4822702,
+    "migrator_name":"Version",
+    "migrator_version":0,
+    "version":"3.13.1"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "version"
+   ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/400343463.json"
+   },
+   "data":{
     "bot_rerun":false,
     "migrator_name":"Version",
     "migrator_version":0,
@@ -393,8 +410,9 @@
  "name":"ipopt",
  "new_version":"3.13.1",
  "new_version_attempts":{
-  "3.13.1":1
+  "3.13.1":2
  },
+ "new_version_errors":{},
  "pinning_version":"2020.04.07",
  "raw_meta_yaml":"{% set name = \"Ipopt\" %}\n{% set version = \"3.13.0\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  - folder: Ipopt\n    url: http://www.coin-or.org/download/source/{{ name }}/{{ name }}-{{ version }}.tgz\n    sha256: dc392396be28c4a0d49bfab399320cb3f70db5b8f090028a883d826a47744ecf\n    patches:\n      - linux-configure.patch  # [linux]\n\n  - folder: ASL\n    url: https://github.com/coin-or-tools/ThirdParty-ASL/archive/releases/1.4.3.tar.gz\n    sha256: 0a4cfa7c6c5df72d8e1c4c3ce74633421f807115a679e85cb5569c41df9a9aaf\n\n  - folder: Metis\n    url: https://github.com/coin-or-tools/ThirdParty-Metis/archive/releases/1.3.9.tar.gz\n    sha256: c75e66ec76b423e4c8c1ead3579fb2aa5fb7844f4efffdeae5b185df80420e3a\n\n  - folder: Mumps\n    url: https://github.com/coin-or-tools/ThirdParty-Mumps/archive/releases/1.6.2.tar.gz\n    sha256: 0cfdd30b9cb42d9539ad9c495629f56dd1fc0b59cea691bbe71a129fabd8895d\n    patches:\n      - thirdparty-mumps-linux-configure.patch  # [linux]\n\nbuild:\n  skip: True  # [win]\n  number: 1\n  run_exports:\n    - {{ pin_subpackage('ipopt', max_pin='x.x') }}\n\nrequirements:\n  build:\n    - {{ compiler('fortran') }}\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n    - wget\n    - pkgconfig\n  host:\n    - libblas\n    - liblapack\n  run:\n\ntest:\n  files:\n    - test\n    - mytoy.nl\n\n  requires:\n    - {{ compiler('fortran') }}\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n\nabout:\n  home: https://projects.coin-or.org/Ipopt/\n  license: EPL-1.0\n  license_file: Ipopt/LICENSE\n  summary: Software package for large-scale nonlinear optimization\n\nextra:\n  recipe-maintainers:\n    - pstjohn\n    - bluescarni\n    - jschueller\n",
  "req":{

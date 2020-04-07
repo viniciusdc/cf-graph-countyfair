@@ -52,56 +52,7 @@
    ]
   }
  ],
- "bad":{
-  "exception":"while constructing a mapping\n  in \"<unicode string>\", line 16, column 3:\n      noarch: generic\n      ^ (line: 16)\nfound duplicate key \"noarch\" with value \"generic\" (original value: \"generic\")\n  in \"<unicode string>\", line 19, column 3:\n      noarch: generic\n      ^ (line: 19)\n\nTo suppress this check see:\n    http://yaml.readthedocs.io/en/latest/api.html#duplicate-keys\n\nDuplicate keys will become an error in future releases, and are errors\nby default when using the new API.\n",
-  "traceback":[
-   "Traceback (most recent call last):",
-   "  File \"/root/repo/cf-scripts/conda_forge_tick/auto_tick.py\", line 957, in main",
-   "    hash_type=attrs.get(\"hash_type\", \"sha256\"),",
-   "  File \"/root/repo/cf-scripts/conda_forge_tick/auto_tick.py\", line 168, in run",
-   "    migrate_return = migrator.migrate(recipe_dir, feedstock_ctx.attrs, **kwargs)",
-   "  File \"/root/repo/cf-scripts/conda_forge_tick/migrators/version.py\", line 407, in migrate",
-   "    cmeta = CondaMetaYAML(fp.read())",
-   "  File \"/root/repo/cf-scripts/conda_forge_tick/recipe_parser/_parser.py\", line 391, in __init__",
-   "    self.meta = self._parser.load(\"\".join(lines))",
-   "  File \"/opt/conda/envs/run_env/lib/python3.7/site-packages/ruamel/yaml/main.py\", line 341, in load",
-   "    return constructor.get_single_data()",
-   "  File \"/opt/conda/envs/run_env/lib/python3.7/site-packages/ruamel/yaml/constructor.py\", line 113, in get_single_data",
-   "    return self.construct_document(node)",
-   "  File \"/opt/conda/envs/run_env/lib/python3.7/site-packages/ruamel/yaml/constructor.py\", line 123, in construct_document",
-   "    for _dummy in generator:",
-   "  File \"/opt/conda/envs/run_env/lib/python3.7/site-packages/ruamel/yaml/constructor.py\", line 1563, in construct_yaml_map",
-   "    self.construct_mapping(node, data, deep=True)",
-   "  File \"/opt/conda/envs/run_env/lib/python3.7/site-packages/ruamel/yaml/constructor.py\", line 1468, in construct_mapping",
-   "    value = self.construct_object(value_node, deep=deep)",
-   "  File \"/opt/conda/envs/run_env/lib/python3.7/site-packages/ruamel/yaml/constructor.py\", line 146, in construct_object",
-   "    data = self.construct_non_recursive_object(node)",
-   "  File \"/opt/conda/envs/run_env/lib/python3.7/site-packages/ruamel/yaml/constructor.py\", line 188, in construct_non_recursive_object",
-   "    for _dummy in generator:",
-   "  File \"/opt/conda/envs/run_env/lib/python3.7/site-packages/ruamel/yaml/constructor.py\", line 1563, in construct_yaml_map",
-   "    self.construct_mapping(node, data, deep=True)",
-   "  File \"/opt/conda/envs/run_env/lib/python3.7/site-packages/ruamel/yaml/constructor.py\", line 1469, in construct_mapping",
-   "    if self.check_mapping_key(node, key_node, maptyp, key, value):",
-   "  File \"/opt/conda/envs/run_env/lib/python3.7/site-packages/ruamel/yaml/constructor.py\", line 295, in check_mapping_key",
-   "    raise DuplicateKeyError(*args)",
-   "ruamel.yaml.constructor.DuplicateKeyError: while constructing a mapping",
-   "  in \"<unicode string>\", line 16, column 3:",
-   "      noarch: generic",
-   "      ^ (line: 16)",
-   "found duplicate key \"noarch\" with value \"generic\" (original value: \"generic\")",
-   "  in \"<unicode string>\", line 19, column 3:",
-   "      noarch: generic",
-   "      ^ (line: 19)",
-   "",
-   "To suppress this check see:",
-   "    http://yaml.readthedocs.io/en/latest/api.html#duplicate-keys",
-   "",
-   "Duplicate keys will become an error in future releases, and are errors",
-   "by default when using the new API.",
-   "",
-   ""
-  ]
- },
+ "bad":false,
  "conda-forge.yml":{
   "compiler_stack":"comp7",
   "max_py_ver":"37",
@@ -215,7 +166,10 @@
  "name":"r-plsvarsel",
  "new_version":"0.9.6",
  "new_version_attempts":{
-  "0.9.6":28
+  "0.9.6":29
+ },
+ "new_version_errors":{
+  "0.9.6":"Problem parsing the recipe: \nwhile constructing a mapping\n  in \"<unicode string>\", line 16, column 3:\n      noarch: generic\n      ^ (line: 16)\nfound duplicate key \"noarch\" with value \"generic\" (original value: \"generic\")\n  in \"<unicode string>\", line 19, column 3:\n      noarch: generic\n      ^ (line: 19)\n\nTo suppress this check see:\n    http://yaml.readthedocs.io/en/latest/api.html#duplicate-keys\n\nDuplicate keys will become an error in future releases, and are errors\nby default when using the new API.\n"
  },
  "pinning_version":"2020.01.27",
  "raw_meta_yaml":"{% set version = '0.9.4' %}\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-plsvarsel\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  url:\n    - {{ cran_mirror }}/src/contrib/plsVarSel_{{ version }}.tar.gz\n    - {{ cran_mirror }}/src/contrib/Archive/plsVarSel/plsVarSel_{{ version }}.tar.gz\n  sha256: e105ba41bc2f79c71054d4124f82839ae68192fec9f29a52a2b87449743bbfa7\n\nbuild:\n  noarch: generic\n  merge_build_host: True  # [win]\n  number: 1001\n  noarch: generic\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n\n  host:\n    - r-base\n    - r-mass\n    - r-bdsmatrix\n    - r-genalg\n    - r-mvtnorm\n    - r-pls\n    - r-progress\n  run:\n    - r-base\n    - r-mass\n    - r-bdsmatrix\n    - r-genalg\n    - r-mvtnorm\n    - r-pls\n    - r-progress\n\ntest:\n  commands:\n    - $R -e \"library('plsVarSel')\"           # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('plsVarSel')\\\"\"  # [win]\n\nabout:\n  home: https://CRAN.R-project.org/package=plsVarSel\n  license: GPL (>= 2)\n  summary: Interfaces and methods for variable selection in Partial Least Squares. The methods\n    include filter methods, wrapper methods and embedded methods. Both regression and\n    classification is supported.\n  license_family: GPL3\n  license_file: '{{ environ[\"PREFIX\"] }}/lib/R/share/licenses/GPL-2'\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n\n# Encoding: UTF-8\n# Package: plsVarSel\n# Type: Package\n# Title: Variable Selection in Partial Least Squares\n# Version: 0.9.4\n# Date: 2017-12-15\n# Author: Kristian Hovde Liland, Tahir Mehmood, Solve Sb\n# Maintainer: Kristian Hovde Liland <kristian.liland@nmbu.no>\n# Description: Interfaces and methods for variable selection in Partial Least Squares. The methods include filter methods, wrapper methods and embedded methods. Both regression and classification is supported.\n# License: GPL (>= 2)\n# Depends: pls\n# Imports: grDevices, graphics, genalg, mvtnorm, bdsmatrix, MASS, progress, parallel, stats\n# Suggests: Rmpi\n# RoxygenNote: 6.0.1\n# NeedsCompilation: no\n# Packaged: 2017-12-15 15:38:54 UTC; kristl\n# Repository: CRAN\n# Date/Publication: 2017-12-15 17:48:26 UTC\n",
