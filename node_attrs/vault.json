@@ -251,6 +251,23 @@
     "migrator_version",
     "version"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/400429952.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"Version",
+    "migrator_version":0,
+    "version":"1.4.0"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "version"
+   ]
   }
  ],
  "bad":false,
@@ -341,8 +358,12 @@
   }
  },
  "name":"vault",
- "new_version":"1.3.4",
- "pinning_version":"2020.03.20",
+ "new_version":"1.4.0",
+ "new_version_attempts":{
+  "1.4.0":1
+ },
+ "new_version_errors":{},
+ "pinning_version":"2020.04.07",
  "raw_meta_yaml":"{% set goname = \"github.com/hashicorp/vault\" %}\n{% set version = \"1.3.4\" %}\n\n{% set name = goname.split('/')[-1] %}\n{% set pkg_src = 'src' + os.sep + goname.replace(\"/\",os.sep) %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  - folder: {{ pkg_src }}\n    url: https://{{ goname }}/archive/v{{ version }}.tar.gz\n    sha256: 4032a8f1f51acab8f5ef72c2dabe2995c45fe2328f0c1200dae895ac3bdf1999\n\nbuild:\n  number: 0\n  # windows builds disabled since we don't have a go compiler for 1.12\n  skip: true  # [win]\n  script:\n    - pushd {{ pkg_src }}\n    - go install -v .\n\nrequirements:\n  build:\n    - {{ compiler('go') }}\n\ntest:\n  commands:\n    - {{ name|lower }} -v\n\nabout:\n  home: https://www.vaultproject.io\n  license: MPL 2.0\n  summary: A tool for managing secrets.\n  description: |\n    Vault is a tool for securely accessing secrets. A secret is anything that you\n    want to tightly control access to, such as API keys, passwords, certificates,\n    and more. Vault provides a unified interface to any secret, while providing\n    tight access control and recording a detailed audit log.\n  doc_url: https://www.vaultproject.io/docs/index.html\n  dev_url: https://github.com/hashicorp/vault.git\n\nextra:\n  recipe-maintainers:\n    - johanneskoester\n    - sodre\n    - adbeda\n    - mariusvniekerk\n    - oblute\n    - rluria14\n",
  "req":{
   "__set__":true,
@@ -370,7 +391,7 @@
    "elements":[]
   }
  },
- "smithy_version":"No azure token. Create a token and\nput it in ~/.conda-smithy/azure.token\n3.6.14",
+ "smithy_version":"No azure token. Create a token and\nput it in ~/.conda-smithy/azure.token\n3.6.15",
  "strong_exports":false,
  "time":1568135281.084743,
  "total_requirements":{
