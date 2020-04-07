@@ -163,7 +163,7 @@
   }
  },
  "name":"dtool_http",
- "new_version":"0.5.0",
+ "new_version":"0.4.0",
  "pinning_version":"2020.03.20",
  "raw_meta_yaml":"{% set name = \"dtool_http\" %}\n{% set reponame = \"dtool-http\" %}\n{% set author = \"jic-dtool\" %}\n{% set version = \"0.2.1\" %}\n{% set sha256 = \"ddbb6b3c01e37cd9588685edd31dbac978f2199e4c0e25cbeb90734b9b1a620c\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  url: https://github.com/{{ author }}/{{ reponame }}/archive/{{ version }}.tar.gz\n  sha256: {{ sha256 }}\n\nbuild:\n  number: 0\n  noarch: python\n  entry_points:\n    - dtool_serve_directory = dtool_http.server:cli\n    - dtool_publish_dataset = dtool_http.publish:cli\n  preserve_egg_dir: True\n  script: \"{{ PYTHON }} -m pip install . --no-deps -vv\"\n\nrequirements:\n  host:\n    - python\n    - pip\n  run:\n    - python\n    - click\n    - setuptools\n    - dtoolcore\n    - requests\n\ntest:\n  imports:\n    - dtool_http\n    - dtool_http.server\n    - dtool_http.publish\n    - dtool_http.storagebroker\n  commands:\n    - dtool_serve_directory --help\n    - dtool_publish_dataset --help\n\nabout:\n  home: http://github.com/{{ author }}/{{ reponame }}\n  license: MIT\n  license_file: LICENSE.rst\n  summary: 'HTTP support to dtool for read only access to datasets'\n\n  dev_url: https://github.com/{{ author }}/{{ reponame }}\n\nextra:\n  recipe-maintainers:\n    - pvanheus\n",
  "req":{
