@@ -31,6 +31,23 @@
     "migrator_version",
     "name"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/399974175.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"ArchRebuild",
+    "migrator_version":1,
+    "name":"aarch64 and ppc64le addition"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "name"
+   ]
   }
  ],
  "bad":false,
@@ -119,7 +136,7 @@
  },
  "name":"freeglut",
  "new_version":false,
- "pinning_version":"2018.10.16",
+ "pinning_version":"2020.04.07",
  "raw_meta_yaml":"{% set version = \"3.0.0\" %}\n\npackage:\n  name: freeglut\n  version: {{ version }}\n\nsource:\n  fn: freeglut-{{ version }}.tar.bz2\n  url: http://sourceforge.net/projects/freeglut/files/freeglut/{{ version }}/freeglut-{{ version }}.tar.gz\n  md5: 90c3ca4dd9d51cf32276bc5344ec9754\n\nbuild:\n  number: 1005\n  skip: true                      # [osx]\n\nrequirements:\n  build:\n    - cmake\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n    - {{ cdt('mesa-libgl-devel') }}      # [linux]\n    - {{ cdt('xorg-x11-proto-devel') }}  # [linux]\n    - {{ cdt('libxxf86vm-devel') }}      # [linux]\n  host:\n    - libglu                             # [linux]\n    - libxcb                             # [linux]\n    - xorg-libx11                        # [linux]\n    - xorg-libxau                        # [linux]\n    - xorg-libxext                       # [linux]\n    - xorg-libxfixes                     # [linux]\n    - xorg-libxi                         # [linux]\n  run:\n    - libxcb                             # [linux]\n    - xorg-libx11                        # [linux]\n    - xorg-libxau                        # [linux]\n    - xorg-libxext                       # [linux]\n    - xorg-libxfixes                     # [linux]\n    - xorg-libxi                         # [linux]\n\ntest:\n  commands:\n    # Test includes.\n    - test -d \"${PREFIX}/include/GL\"  # [linux]\n\n      # Test libraries.\n    - test -f \"${PREFIX}/lib/libglut.a\"   # [linux]\n    - test -f \"${PREFIX}/lib/libglut.so\"  # [linux]\n    - ldd \"${PREFIX}/lib/libglut.so\"      # [linux]\n\n    # Test Windows includes and libraries.\n    - if not exist %LIBRARY_INC%\\\\GL\\\\freeglut.h     exit 1   # [win]\n    - if not exist %LIBRARY_INC%\\\\GL\\\\freeglut_ext.h exit 1   # [win]\n    - if not exist %LIBRARY_INC%\\\\GL\\\\freeglut_std.h exit 1   # [win]\n    - if not exist %LIBRARY_INC%\\\\GL\\\\glut.h         exit 1   # [win]\n    - if not exist %LIBRARY_LIB%\\\\freeglut.lib       exit 1   # [win]\n    - if not exist %LIBRARY_BIN%\\\\freeglut.dll       exit 1   # [win]\n\nabout:\n  home: http://freeglut.sourceforge.net/\n  license: MIT\n  license_family: MIT\n  license_file: COPYING\n  summary: A GUI based on OpenGL.\n\nextra:\n  recipe-maintainers:\n    - jakirkham\n    - shadowwalkersb\n",
  "req":{
   "__set__":true,
@@ -175,7 +192,7 @@
    "elements":[]
   }
  },
- "smithy_version":"3.1.12",
+ "smithy_version":"No azure token. Create a token and\nput it in ~/.conda-smithy/azure.token\n3.6.15",
  "strong_exports":false,
  "total_requirements":{
   "build":{

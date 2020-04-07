@@ -1,4 +1,23 @@
 {
+ "PRed":[
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/399974009.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"ArchRebuild",
+    "migrator_version":1,
+    "name":"aarch64 and ppc64le addition"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "name"
+   ]
+  }
+ ],
  "bad":false,
  "conda-forge.yml":{},
  "feedstock_name":"ftgl",
@@ -88,6 +107,7 @@
  },
  "name":"ftgl",
  "new_version":"2.4.0",
+ "pinning_version":"2020.04.07",
  "raw_meta_yaml":"{% set name = \"ftgl\" %}\n{% set version = \"2.4.0\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  url: \"https://github.com/frankheckenbach/ftgl/archive/v{{ version }}.tar.gz\"\n  sha256: \"aa97da1c3442a8fd3941037655df18016d70b5266381c81d81e8b5335f196ea8\"\n  patches:\n    - cmake_fix_2.4.1.patch\n\nbuild:\n  number: 0\n  run_exports:\n    # Hasn't been updated in years so pin tightly\n    - {{ pin_subpackage('ftgl', max_pin='x.x.x') }}\n  skip: true  # [win and vc<14]\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n    - make  # [unix]\n    - ninja  # [win]\n    - cmake\n    # Required for OpenGL support\n    # See https://conda-forge.org/docs/maintainer/knowledge_base.html?highlight=cdt#libgl\n    - {{ cdt('mesa-libgl-devel') }}  # [linux]\n    - {{ cdt('mesa-dri-drivers') }}  # [linux]\n    - {{ cdt('libselinux') }}  # [linux]\n    - {{ cdt('libxdamage') }}  # [linux]\n    - {{ cdt('libxxf86vm') }}  # [linux]\n  host:\n    - xorg-libxfixes  # [linux]\n    - libglu  # [linux]\n    - freetype\n\n  run:\n    - libglu  # [linux]\n    - freetype\n            \n\ntest:\n   commands:\n     - test -f $PREFIX/lib/libftgl$SHLIB_EXT  # [unix]\n     - if not exist %LIBRARY_LIB%\\ftgl.lib exit 1  # [win]\n\nabout:\n  home: https://github.com/frankheckenbach/ftgl\n  license: MIT\n  license_family: MIT\n  license_file: COPYING\n  summary: 'Use Freetype2 to simplify rendering fonts in OpenGL applications'\n  description: |\n      FTGL is a free cross-platform Open Source C++ library that uses Freetype2 to simplify rendering fonts in OpenGL applications. FTGL supports bitmaps, pixmaps, texture maps, outlines, polygon mesh, and extruded polygon rendering modes.\n\nextra:\n  recipe-maintainers:\n    - henryiii\n    - chrisburr\n",
  "req":{
   "__set__":true,
@@ -135,6 +155,7 @@
    "elements":[]
   }
  },
+ "smithy_version":"No azure token. Create a token and\nput it in ~/.conda-smithy/azure.token\n3.6.15",
  "strong_exports":false,
  "total_requirements":{
   "build":{
