@@ -314,6 +314,23 @@
     "migrator_version",
     "version"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/400092352.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"Version",
+    "migrator_version":0,
+    "version":"1.7.2"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "version"
+   ]
   }
  ],
  "bad":false,
@@ -392,9 +409,10 @@
  "name":"consul",
  "new_version":"1.7.2",
  "new_version_attempts":{
+  "1.7.2":1,
   "2Fv0.4.0":30
  },
- "pinning_version":"2020.02.20",
+ "pinning_version":"2020.04.07",
  "raw_meta_yaml":"{% set import_path = \"github.com/hashicorp/consul\" %}\n{% set version = \"1.6.3\" %}\n\n{% set name = import_path.split('/')[-1] %}\n{% set pkg_src = 'src' + os.sep+ import_path.replace(\"/\",os.sep) %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  - folder: {{ pkg_src }}\n    url: https://github.com/hashicorp/{{ name }}/archive/v{{ version }}.tar.gz\n    sha256: 69537c7ada98aa619297c03d73896901694e37a14da3c46a2c4a2f6a8f3b5795\n\nbuild:\n  number: 0\n  script:\n    - pushd {{ pkg_src }}\n    - go install -v\n        -ldflags \"-X {{import_path}}/version.GitRelease='v{{version}}'\n                  -X {{import_path}}/version.VersionPrerelease=''\"\n        .\n\nrequirements:\n  build:\n    - {{ compiler('go') }}\n\ntest:\n  commands:\n    - {{ name|lower }} -v\n\nabout:\n  home: https://www.consul.io\n  license: MPL 2.0\n  summary: Service discovery and configuration made easy.\n  description: |\n    Consul is a tool for discovering and configuring services in your\n    infrastructure. It provides several key features, including:\n    Service Discovery, Health Checking, KV Store, Multi Datacenter.\n    Consul is designed to be friendly to both the DevOps community and\n    application developers, making it perfect for modern, elastic infrastructures.\n\n  doc_url: https://www.consul.io/docs/index.html\n\nextra:\n  recipe-maintainers:\n    - sodre\n",
  "req":{
   "__set__":true,
@@ -422,7 +440,7 @@
    "elements":[]
   }
  },
- "smithy_version":"3.6.8",
+ "smithy_version":"No azure token. Create a token and\nput it in ~/.conda-smithy/azure.token\n3.6.15",
  "strong_exports":false,
  "time":1568135280.318401,
  "total_requirements":{
