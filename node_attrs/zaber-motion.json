@@ -37,6 +37,23 @@
     "migrator_version",
     "name"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/400066744.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"Version",
+    "migrator_version":0,
+    "version":"1.1.0"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "version"
+   ]
   }
  ],
  "bad":false,
@@ -138,7 +155,10 @@
  },
  "name":"zaber-motion",
  "new_version":"1.1.0",
- "pinning_version":"2020.04.02",
+ "new_version_attempts":{
+  "1.1.0":1
+ },
+ "pinning_version":"2020.04.07",
  "raw_meta_yaml":"{% set name = \"zaber-motion\" %}\n{% set version = \"1.0.8\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  url: https://gitlab.com/zaber-core-libs/zaber-motion-lib/-/archive/v{{ version }}/zaber-motion-lib-v{{ version }}.tar.gz\n  sha256: ee76829d2fb98f2c071b9f92375958b4fa1cc23c6cef1781d97c0cc089dede5e\n  folder: src/zaber-motion\n  patches:\n    - no_bindings_install.patch\n    - dont_specify_python_3_in_executable_name.patch\n\nbuild:\n  # For some reason, python 2.7 doesn't work, too lazy for now\n  skip: true  # [py==27]\n  number: 0\n\nrequirements:\n  build:\n    - {{ compiler('cgo') }}\n    - {{ compiler('m2w64_c') }}    # [win]\n    - {{ compiler('m2w64_cxx') }}  # [win]\n    - {{ compiler('c') }}          # [not win]\n    - {{ compiler('cxx') }}        # [not win]\n  host:\n    - python\n    - pip\n    - libprotobuf\n    - protobuf\n    - protoc-gen-go\n  run:\n    - python\n    - protobuf\n    - rx\n\ntest:\n  imports:\n    - zaber_motion\n\nabout:\n  home: https://gitlab.com/zaber-core-libs/zaber-motion-lib\n  license: MIT\n  license_family: MIT\n  license_file:\n    - src/zaber-motion/LICENSE\n    - LICENSE_GO_MODULES\n  summary: 'A Python library used to operate Zaber devices.'\n  doc_url: https://www.zaber.com/software/docs/motion-library/\n  dev_url: https://gitlab.com/zaber-core-libs/zaber-motion-lib\n\nextra:\n  recipe-maintainers:\n    - hmaarrfk\n",
  "req":{
   "__set__":true,
