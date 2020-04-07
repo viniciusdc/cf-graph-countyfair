@@ -88,6 +88,23 @@
     "migrator_version",
     "name"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/400376397.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"Version",
+    "migrator_version":0,
+    "version":"1.4.3"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "version"
+   ]
   }
  ],
  "bad":false,
@@ -208,8 +225,12 @@
   }
  },
  "name":"dcgp-python",
- "new_version":"1.4.2",
- "pinning_version":"2020.03.10",
+ "new_version":"1.4.3",
+ "new_version_attempts":{
+  "1.4.3":1
+ },
+ "new_version_errors":{},
+ "pinning_version":"2020.04.07",
  "raw_meta_yaml":"{% set version = \"1.4.2\" %}\n\npackage:\n  name: dcgp-python\n  version: {{ version }}\n\nsource:\n  url: https://github.com/darioizzo/dcgp/archive/v{{ version }}.tar.gz\n  sha256: c496f1215abc0379d01021312d239ce07b9e51b5c769abef873fa70f74748373\n  patches:\n    - tokens_patch.diff  # [win]\n\nbuild:\n  number: 0\n  skip: true  # [(win and py<35) or win32]\n\nrequirements:\n  build:\n    - cmake\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n    - clang      # [win]\n    - ninja      # [win]\n  host:\n    - boost\n    - boost-cpp\n    - eigen\n    - audi\n    - pagmo\n    - pygmo\n    - tbb-devel\n    - obake-devel\n    - symengine\n    - python\n    - numpy\n    - ipopt  # [unix]\n    - gmp    # [unix]\n    - mpir   # [win]\n  run:\n    - boost\n    - pyaudi\n    - pagmo\n    - pygmo\n    - {{ pin_compatible(\"symengine\", max_pin=\"x.x\") }}\n    - python\n    - {{ pin_compatible('numpy') }}\n    - ipopt  # [unix]\n    - gmp    # [unix]\n    - mpir   # [win]\n\nabout:\n  home: http://darioizzo.github.io/dcgp/\n  license: GPL v3 and LGPL v3\n  license_file: LICENSE\n  summary: 'Implementation of the differential CGP (Cartesian Genetic Programming)'\n\nextra:\n  recipe-maintainers:\n    - bluescarni\n    - darioizzo\n",
  "req":{
   "__set__":true,
@@ -286,7 +307,7 @@
    "elements":[]
   }
  },
- "smithy_version":"3.6.12",
+ "smithy_version":"No azure token. Create a token and\nput it in ~/.conda-smithy/azure.token\n3.6.15",
  "strong_exports":false,
  "total_requirements":{
   "build":{
