@@ -54,9 +54,6 @@
  ],
  "bad":false,
  "conda-forge.yml":{
-  "compiler_stack":"comp7",
-  "max_py_ver":"37",
-  "max_r_ver":"35",
   "provider":{
    "linux_aarch64":"azure",
    "linux_ppc64le":"azure"
@@ -76,7 +73,7 @@
    "summary":"Data compression software with high compression ratio"
   },
   "build":{
-   "number":"1002",
+   "number":"0",
    "run_exports":[
     "xz",
     "xz",
@@ -104,7 +101,7 @@
   },
   "package":{
    "name":"xz",
-   "version":"5.2.4"
+   "version":"5.2.5"
   },
   "requirements":{
    "build":[
@@ -130,8 +127,8 @@
     "0001-Add-vs2008-support-via-cmake.patch",
     "0002-Add-gettimeofday-for-VS2008.patch"
    ],
-   "sha256":"3313fd2a95f43d88e44264e6b015e7d03053e681860b0d5d3f9baca79c57b7bf",
-   "url":"http://downloads.sourceforge.net/project/lzmautils/xz-5.2.4.tar.bz2"
+   "sha256":"5117f930900b341493827d63aa910ff5e011e0b994197c3b71c08a20228a42df",
+   "url":"http://downloads.sourceforge.net/project/lzmautils/xz-5.2.5.tar.bz2"
   },
   "test":{
    "commands":[
@@ -159,7 +156,7 @@
   "5.2.5":1
  },
  "pinning_version":"2020.04.07",
- "raw_meta_yaml":"{% set version = \"5.2.4\" %}\n\npackage:\n  name: xz\n  version: {{ version }}\n\nsource:\n  url: http://downloads.sourceforge.net/project/lzmautils/xz-{{ version }}.tar.bz2\n  sha256: 3313fd2a95f43d88e44264e6b015e7d03053e681860b0d5d3f9baca79c57b7bf\n  patches:\n    - 0001-Add-vs2008-support-via-cmake.patch\n    - 0002-Add-gettimeofday-for-VS2008.patch\n\nbuild:\n  number: 1002\n  run_exports:\n    # XZ's track record of backcompat is very good.  Keep default pins (next major version)\n    #    https://abi-laboratory.pro/tracker/timeline/xz/\n    - {{ pin_subpackage('xz') }}\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - c99-to-c89  # [win and vc<14]\n    - cmake  # [win]\n    - ninja  # [win]\n    - make  # [not win]\n    - automake  # [not win]\n  host:\n    - msinttypes  # [win and vc<14]\n\ntest:\n  commands:\n    - xz --help  # [not win]\n    - unxz --help  # [not win]\n    - lzma --help  # [not win]\n    - xz.exe --help  # [win]\n    - unxz.exe --help  # [win]\n    - if not exist %PREFIX%\\\\Library\\\\bin\\\\liblzma.dll exit 1  # [win]\n    - if not exist %PREFIX%\\\\Library\\\\lib\\\\liblzma.lib exit 1  # [win]\n    - if not exist %PREFIX%\\\\Library\\\\lib\\\\liblzma_static.lib exit 1  # [win]\n    - if not exist %PREFIX%\\\\Library\\\\include\\\\lzma.h exit 1  # [win]\n    - conda inspect linkages -p $PREFIX $PKG_NAME  # [not win]\n    - conda inspect objects -p $PREFIX $PKG_NAME  # [osx]\n\nabout:\n  home: http://tukaani.org/xz/\n  license: LGPL-2.1 and GPL-2.0\n  license_file: COPYING\n  summary: Data compression software with high compression ratio\n  description: |\n    XZ Utils is free general-purpose data compression software with a high\n    compression ratio. XZ Utils were written for POSIX-like systems, but also\n    work on some not-so-POSIX systems.\n  doc_url: http://tukaani.org/xz/\n  doc_source_url: https://github.com/xz-mirror/xz/blob/master/README\n  dev_url: http://git.tukaani.org/\n\nextra:\n  recipe-maintainers:\n    - msarahan\n    - ocefpaf\n    - mingwandroid\n    - nehaljwani\n    - scopatz\n",
+ "raw_meta_yaml":"{% set version = \"5.2.5\" %}\n\npackage:\n  name: xz\n  version: {{ version }}\n\nsource:\n  url: http://downloads.sourceforge.net/project/lzmautils/xz-{{ version }}.tar.bz2\n  sha256: 5117f930900b341493827d63aa910ff5e011e0b994197c3b71c08a20228a42df\n  patches:\n    - 0001-Add-vs2008-support-via-cmake.patch\n    - 0002-Add-gettimeofday-for-VS2008.patch\n\nbuild:\n  number: 0\n  run_exports:\n    # XZ's track record of backcompat is very good.  Keep default pins (next major version)\n    #    https://abi-laboratory.pro/tracker/timeline/xz/\n    - {{ pin_subpackage('xz') }}\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - c99-to-c89  # [win and vc<14]\n    - cmake  # [win]\n    - ninja  # [win]\n    - make  # [not win]\n    - automake  # [not win]\n  host:\n    - msinttypes  # [win and vc<14]\n\ntest:\n  commands:\n    - xz --help  # [not win]\n    - unxz --help  # [not win]\n    - lzma --help  # [not win]\n    - xz.exe --help  # [win]\n    - unxz.exe --help  # [win]\n    - if not exist %PREFIX%\\\\Library\\\\bin\\\\liblzma.dll exit 1  # [win]\n    - if not exist %PREFIX%\\\\Library\\\\lib\\\\liblzma.lib exit 1  # [win]\n    - if not exist %PREFIX%\\\\Library\\\\lib\\\\liblzma_static.lib exit 1  # [win]\n    - if not exist %PREFIX%\\\\Library\\\\include\\\\lzma.h exit 1  # [win]\n    - conda inspect linkages -p $PREFIX $PKG_NAME  # [not win]\n    - conda inspect objects -p $PREFIX $PKG_NAME  # [osx]\n\nabout:\n  home: http://tukaani.org/xz/\n  license: LGPL-2.1 and GPL-2.0\n  license_file: COPYING\n  summary: Data compression software with high compression ratio\n  description: |\n    XZ Utils is free general-purpose data compression software with a high\n    compression ratio. XZ Utils were written for POSIX-like systems, but also\n    work on some not-so-POSIX systems.\n  doc_url: http://tukaani.org/xz/\n  doc_source_url: https://github.com/xz-mirror/xz/blob/master/README\n  dev_url: http://git.tukaani.org/\n\nextra:\n  recipe-maintainers:\n    - msarahan\n    - ocefpaf\n    - mingwandroid\n    - nehaljwani\n    - scopatz\n",
  "req":{
   "__set__":true,
   "elements":[
@@ -224,5 +221,5 @@
   }
  },
  "url":"http://downloads.sourceforge.net/project/lzmautils/xz-5.2.4.tar.bz2",
- "version":"5.2.4"
+ "version":"5.2.5"
 }
