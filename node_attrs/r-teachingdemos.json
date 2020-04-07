@@ -113,10 +113,10 @@
  "name":"r-teachingdemos",
  "new_version":"2.12",
  "new_version_attempts":{
-  "2.12":5
+  "2.12":6
  },
  "new_version_errors":{
-  "2.12":"Problem parsing the recipe: \nwhile constructing a mapping\n  in \"<unicode string>\", line 16, column 3:\n      noarch: generic\n      ^ (line: 16)\nfound duplicate key \"noarch\" with value \"generic\" (original value: \"generic\")\n  in \"<unicode string>\", line 19, column 3:\n      noarch: generic\n      ^ (line: 19)\n\nTo suppress this check see:\n    http://yaml.readthedocs.io/en/latest/api.html#duplicate-keys\n\nDuplicate keys will become an error in future releases, and are errors\nby default when using the new API.\n"
+  "2.12":"We found a problem parsing the recipe: \n\nwhile constructing a mapping\n  in \"<unicode string>\", line 16, column 3:\n      noarch: generic\n      ^ (line: 16)\nfound duplicate key \"noarch\" with value \"generic\" (original value: \"generic\")\n  in \"<unicode string>\", line 19, column 3:\n      noarch: generic\n      ^ (line: 19)\n\nTo suppress this check see:\n    http://yaml.readthedocs.io/en/latest/api.html#duplicate-keys\n\nDuplicate keys will become an error in future releases, and are errors\nby default when using the new API.\n"
  },
  "pinning_version":"2019.07.15",
  "raw_meta_yaml":"{% set version = '2.10' %}\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-teachingdemos\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  url:\n    - {{ cran_mirror }}/src/contrib/TeachingDemos_{{ version }}.tar.gz\n    - {{ cran_mirror }}/src/contrib/Archive/TeachingDemos/TeachingDemos_{{ version }}.tar.gz\n  sha256: 2ef4c2e36ba13e32f66000e84281a3616584c86b255bca8643ff3fe4f78ed704\n\nbuild:\n  noarch: generic\n  merge_build_host: True  # [win]\n  number: 1001\n  noarch: generic\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n\n  host:\n    - r-base\n  run:\n    - r-base\n\ntest:\n  commands:\n    - $R -e \"library('TeachingDemos')\"           # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('TeachingDemos')\\\"\"  # [win]\n\nabout:\n  home: https://CRAN.R-project.org/package=TeachingDemos\n  license: Artistic-2.0\n  summary: Demonstration functions that can be used in a classroom to demonstrate statistical\n    concepts, or on your own to better understand the concepts or the programming.\n  license_family: OTHER\n  license_file: '{{ environ[\"PREFIX\"] }}/lib/R/share/licenses/Artistic-2.0'\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n",

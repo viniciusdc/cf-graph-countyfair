@@ -93,10 +93,10 @@
  "name":"python-gilt",
  "new_version":"1.2.3",
  "new_version_attempts":{
-  "1.2.3":39
+  "1.2.3":40
  },
  "new_version_errors":{
-  "1.2.3":"Recipe did not change in version migration, a URL did not hash, or there is jinja2 syntax the bot cannot handle! Please check the urls in your recipe with version '1.2.3' to make sure  they exist!"
+  "1.2.3":"The recipe did not change in the version migration, a URL did not hash, or there is jinja2 syntax the bot cannot handle!\n\nPlease check the URLs in your recipe with version '1.2.3' to make sure they exist!\n\nWe also found the following errors:\n\n - could not hash URL template 'https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz'\n"
  },
  "pinning_version":"2020.03.14",
  "raw_meta_yaml":"{% set name = \"python-gilt\" %}\n{% set version = \"1.2.1\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz\n  sha256: e23a45a6905e6bb7aec3ff7652b48309933a6991fad4546d9e793ac7e0513f8a\n\nbuild:\n  noarch: python\n  number: 0\n  script: \"{{ PYTHON }} -m pip install . --no-deps -vv\"\n  entry_points:\n    - gilt = gilt.shell:main\nrequirements:\n  host:\n    - python\n    - pip\n    - setuptools\n    - pbr\n  run:\n    - pbr\n    - python\n\ntest:\n  imports:\n    - gilt\n\nabout:\n  home: https://github.com/metacloud/gilt\n  license: MIT\n  license_family: MIT\n  license_file: LICENSE\n  summary: 'gilt - A GIT layering tool.'\n  description: |\n    Overlay remote repositories and/or files into the destinations\n    provided.\n  doc_url: https://gilt.readthedocs.io/en/latest/\n  dev_url: https://github.com/metacloud/gilt\n\nextra:\n  recipe-maintainers:\n    - knightdave\n",

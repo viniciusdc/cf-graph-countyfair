@@ -177,10 +177,10 @@
  "new_version":"40",
  "new_version_attempts":{
   "4.1.1":1,
-  "40":34
+  "40":35
  },
  "new_version_errors":{
-  "40":"Recipe did not change in version migration, a URL did not hash, or there is jinja2 syntax the bot cannot handle! Please check the urls in your recipe with version '40' to make sure  they exist!"
+  "40":"The recipe did not change in the version migration, a URL did not hash, or there is jinja2 syntax the bot cannot handle!\n\nPlease check the URLs in your recipe with version '40' to make sure they exist!\n\nWe also found the following errors:\n\n - could not hash URL template 'https://github.com/{{ name|upper }}/{{ name|upper }}/archive/v{{ version }}.tar.gz'\n"
  },
  "pinning_version":"2020.04.07",
  "raw_meta_yaml":"{% set name = \"cgns\" %}\n{% set version = \"4.1.1\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  url: https://github.com/{{ name|upper }}/{{ name|upper }}/archive/v{{ version }}.tar.gz\n  sha256: 055d345c3569df3ae832fb2611cd7e0bc61d56da41b2be1533407e949581e226\n\nbuild:\n  number: 0\n  skip: true  # [win and vc<14]\n  run_exports:\n    - {{ pin_subpackage('cgns', max_pin='x.x') }}\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - cmake\n    - make  # [unix]\n  host:\n    - zlib\n    - hdf5\n\ntest:\n  commands:\n    - cgnscheck\n\nabout:\n  home: http://cgns.org\n  license: Zlib\n  license_file: LICENSE\n  summary: CFD General Notation System (CGNS)\n  description: |\n    The CFD General Notation System (CGNS) provides a standard for\n    recording and recovering computer data associated with the\n    numerical solution of fluid dynamics equations.\n  doc_url: http://cgns.github.io/CGNS_docs_current/index.html\n  dev_url: https://github.com/CGNS/CGNS\n\nextra:\n  recipe-maintainers:\n    - mdpiper\n",

@@ -165,10 +165,10 @@
  "name":"go-terraform-docs",
  "new_version":"0.9.1",
  "new_version_attempts":{
-  "0.9.1":34
+  "0.9.1":35
  },
  "new_version_errors":{
-  "0.9.1":"Problem parsing the recipe: \nwhile scanning for the next token\nfound character '\\t' that cannot start any token\n  in \"<unicode string>\", line 3, column 1:\n    \t\n    ^ (line: 3)"
+  "0.9.1":"We found a problem parsing the recipe: \n\nwhile scanning for the next token\nfound character '\\t' that cannot start any token\n  in \"<unicode string>\", line 3, column 1:\n    \t\n    ^ (line: 3)"
  },
  "pinning_version":"2020.01.27",
  "raw_meta_yaml":"{% set import_path = \"github.com/segmentio/terraform-docs\" %}\n{% set version = \"0.8.2\" %}\n\t\n{% set name = import_path.split('/')[-1] %}\n{% set pkg_src = ('src/'+import_path).replace(\"/\", os.sep) %}\n\npackage:\n  name: go-{{ name|lower }}\n  version: {{version}}\n\nsource:\n  - folder: {{ pkg_src }}\n    url: https://{{ import_path }}/archive/v{{version}}.tar.gz\n    sha256: 005957c5c5d56a27e60ca735128231f68c3f099b433a7041a0f1591bee59fbd0\n\nbuild:\n  number: 0\n  script:\n    - pushd {{ pkg_src }}\n    - go install -v\n        -ldflags \"-X main.version={{ version }}\"\n        .\n\nrequirements:\n  build:\n    - {{ compiler(\"go\") }}\n\ntest:\n  commands:\n    - which terraform-docs  # [not win]\n    - where terraform-docs  # [win]\n    - terraform-docs --help\n\nabout:\n  home: https://{{ import_path }}\n\n  license: MIT\n  license_family: MIT\n  license_file: {{ pkg_src }}/LICENSE\n  summary: 'Generate docs from Terraform modules'\n\nextra:\n  recipe-maintainers:\n    - andrew-mcgrath\n    - pierrsc\n",

@@ -178,10 +178,10 @@
  "name":"wntr",
  "new_version":"0.2.2",
  "new_version_attempts":{
-  "0.2.2":39
+  "0.2.2":40
  },
  "new_version_errors":{
-  "0.2.2":"Recipe did not change in version migration, a URL did not hash, or there is jinja2 syntax the bot cannot handle! Please check the urls in your recipe with version '0.2.2' to make sure  they exist!"
+  "0.2.2":"The recipe did not change in the version migration, a URL did not hash, or there is jinja2 syntax the bot cannot handle!\n\nPlease check the URLs in your recipe with version '0.2.2' to make sure they exist!\n\nWe also found the following errors:\n\n - recipe did not appear to change even though the bot said it should have\n"
  },
  "pinning_version":"2020.03.06",
  "raw_meta_yaml":"{% set name = \"wntr\" %}\n{% set version = \"0.2.1\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  url: https://github.com/USEPA/WNTR/archive/0.2.1.zip\n  sha256: 8e4fc7d6555f655de2fec68a71373888617483ae7e6585e3cbe9769ce0589969\n\nbuild:\n  number: 4\n  skip: True  # [py34]\n  skip: True  # [py27]\n  script: \"{{ PYTHON }} -m pip install . --no-deps -vv\"\n\nrequirements:\n  build:\n    - {{ compiler('cxx') }}\n    - python\n    - pip\n  host:\n    - python\n    - pip\n    - numpy\n  run:\n    - python\n    - {{ pin_compatible('numpy') }}\n    - networkx\n    - pandas\n    - scipy\n    - matplotlib-base\n    - plotly\n    - nose\n    - openpyxl\n\ntest:\n  imports:\n    - wntr\n\nabout:\n  home: https://github.com/USEPA/WNTR\n  license: Revised BSD\n  license_family: BSD\n  license_file: LICENSE.md\n  summary: 'Water Network Tool for Resilience'\n\nextra:\n  recipe-maintainers:\n    - michaelbynum\n    - kaklise\n",
