@@ -79,6 +79,23 @@
     "migrator_version",
     "name"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/400236669.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"Version",
+    "migrator_version":0,
+    "version":"1.4.0"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "version"
+   ]
   }
  ],
  "bad":false,
@@ -152,9 +169,9 @@
  "name":"libunwind",
  "new_version":"1.4.0",
  "new_version_attempts":{
-  "1.4.0":1
+  "1.4.0":2
  },
- "pinning_version":"2020.01.27",
+ "pinning_version":"2020.04.07",
  "raw_meta_yaml":"{% set name = \"libunwind\" %}\n{% set version = \"1.3.1\" %}\n{% set sha256 = \"43997a3939b6ccdf2f669b50fdb8a4d3205374728c2923ddc2354c65260214f8\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  url: http://download.savannah.nongnu.org/releases/libunwind/libunwind-{{ version }}.tar.gz\n  sha256: {{ sha256 }}\n  patches:\n    # no-op failing test. No clear explanation for failure. Only discussion went unresolved on upstream mailing\n    # list: https://lists.nongnu.org/archive/html/libunwind-devel/2015-01/msg00010.html\n    - run-coredump-unwind.patch\n\nbuild:\n  number: 1000\n  skip: True  # [win or osx]\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n  host:\n\ntest:\n  commands:\n    - test -f \"${PREFIX}/lib/libunwind.so\"\n    - test -f \"${PREFIX}/include/libunwind.h\"\n    - test -f \"${PREFIX}/include/unwind.h\"\n    - conda inspect linkages -p \"${PREFIX}\" \"{{ name }}\"\n\nabout:\n  home: http://www.nongnu.org/libunwind\n  license: MIT\n  license_family: MIT\n  license_file: COPYING\n  summary: 'Defines a portable and efficient C programming interface (API) to determine the call-chain of a program'\n\nextra:\n  recipe-maintainers:\n    - synapticarbors\n",
  "req":{
   "__set__":true,
@@ -184,7 +201,7 @@
    "elements":[]
   }
  },
- "smithy_version":"3.6.7",
+ "smithy_version":"No azure token. Create a token and\nput it in ~/.conda-smithy/azure.token\n3.6.15",
  "strong_exports":false,
  "total_requirements":{
   "build":{

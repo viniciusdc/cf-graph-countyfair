@@ -96,7 +96,7 @@
  "name":"libgsf",
  "new_version":"1.14.47",
  "new_version_attempts":{
-  "1.14.47":1
+  "1.14.47":2
  },
  "raw_meta_yaml":"{% set name = \"libgsf\" %}\n{% set version = \"1.14.46\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  url: https://ftp.gnome.org/pub/GNOME/sources/{{name}}/1.14/{{name}}-{{version}}.tar.xz\n  sha256: ea36959b1421fc8e72caa222f30ec3234d0ed95990e2bf28943a85f33eadad2d\n\nbuild:\n  number: 1\n  skip: True  # [win]\n  run_exports:\n    - {{ pin_subpackage(\"libgsf\", max_pin=\"x.x\") }}\n\nrequirements:\n  build:\n    - perl\n    - perl-xml-parser\n    - pkg-config\n    - {{ compiler('c') }}\n  host:\n    - glib\n    - libxml2\n    - zlib\n    - bzip2\n    - pcre 8.42\n  run:\n    - glib\n    - libxml2\n    - zlib\n    - bzip2\n\ntest:\n  commands:\n    - gsf --help\n    - gsf --version\n \nabout:\n  home: https://github.com/GNOME/libgsf\n  license: GPL-2.0\n  license_family: GPL\n  license_file: COPYING\n  summary: 'An extensible I/O abstraction library for dealing with structured file formats'\n\nextra:\n  recipe-maintainers:\n    - sebastian-luna-valero\n",
  "req":{

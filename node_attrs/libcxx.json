@@ -169,6 +169,23 @@
     "migrator_version",
     "version"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/400243969.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"Version",
+    "migrator_version":0,
+    "version":"10.0.0"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "version"
+   ]
   }
  ],
  "bad":false,
@@ -400,13 +417,13 @@
  "name":"libcxx_and_libcxxabi",
  "new_version":"10.0.0",
  "new_version_attempts":{
-  "10.0.0":30
+  "10.0.0":31
  },
  "outputs_names":[
   "libcxx",
   "libcxxabi"
  ],
- "pinning_version":"2020.02.12",
+ "pinning_version":"2020.04.07",
  "raw_meta_yaml":"{% set version = \"9.0.1\" %}\n\npackage:\n  name: libcxx_and_libcxxabi\n  version: {{ version }}\n\nsource:\n  - url: https://github.com/llvm/llvm-project/releases/download/llvmorg-{{ version }}/libcxx-{{ version }}.src.tar.xz\n    sha256: 0981ff11b862f4f179a13576ab0a2f5530f46bd3b6b4a90f568ccc6a62914b34\n    patches:\n      # See https://bugs.llvm.org/show_bug.cgi?id=39696\n      - ppc64le-constexpr.patch  # [ppc64le]\n\n  - url: https://github.com/llvm/llvm-project/releases/download/llvmorg-{{ version }}/libcxxabi-{{ version }}.src.tar.xz\n    sha256: e8f978aa4cfae2d7a0b4d89275637078557cca74b35c31b7283d4786948a8aac\n    folder: libcxxabi\n\nbuild:\n  number: 2\n  skip: true  # [win and vc<14]\n  skip: true  # [win]\n  skip: true  # [ppc64le or aarch64]\n  ignore_run_exports:\n    - libstdcxx-ng\n  missing_dso_whitelist:\n    - /usr/lib/libc++abi.dylib\n\nrequirements:\n  build:\n    - cmake\n    - make                    # [unix]\n    - {{ compiler('cxx') }}\n    - python >3               # [not osx]\n  host:\n    - clangdev {{ version }}  # [not osx]\n    - llvmdev {{ version }}   # [not osx]\n\ntest:\n  requires:\n    - clang\n    - {{ compiler('cxx') }}  # [not osx]\n  files:\n    - test_sources\n    - compile_test.sh   # [unix]\n    - compile_test.bat  # [win]\n  commands:\n    - if not exist %LIBRARY_INC%\\\\c++\\\\v1\\\\iterator exit 1     # [win]\n    - test -f $PREFIX/include/c++/v1/iterator      # [unix]\n    - bash compile_test.sh   # [unix]\n    - compile_test.bat       # [win]\n    # !!!!!!!!!!!! README !!!!!!!!!!!!!!!!!!\n    # we do not ship libcxxabi on OSX - this breaks exception passing\n    - if [ -f $PREFIX/lib/libc++abi.dylib ]; then exit 1; fi  # [osx]\n    - test -f $PREFIX/lib/libc++abi.so  # [linux]\n\n  # Following 2 projects had issues with libc++, so check them\n  # before releasing just to be sure.\n  downstreams:          # [osx]\n    - python-symengine  # [osx]\n    #- openturns         # [osx]\n\noutputs:\n  - name: libcxx\n    files:\n      - include/c++\n      - Library/include/c++\n      - lib/libc++.*\n      - lib/libc++fs.*\n      - lib/libc++experimental.*\n      - Library/bin/c++*.dll\n      - Library/lib/c++*.lib\n      - Library/lib/libc++*.lib\n    requirements:                                          # [linux]\n      run:                                                 # [linux]\n        - {{ pin_subpackage(\"libcxxabi\", exact=True) }}    # [linux]\n\n  - name: libcxxabi\n    build:\n      skip: True       # [not linux]\n    files:\n      - lib/libc++abi.*\n    requirements:\n      run_constrained:\n        - {{ pin_subpackage(\"libcxx\", exact=True) }}\n\nabout:\n  home: http://llvm.org/\n  license: Apache-2.0 WITH LLVM-exception\n  license_file: LICENSE.TXT\n  license_family: Apache\n  summary: LLVM C++ standard library\n\nextra:\n  recipe-maintainers:\n    - SylvainCorlay\n    - inducer\n    - jakirkham\n    - isuruf\n    - beckermr\n    - timsnyder\n",
  "req":{
   "__set__":true,
@@ -451,7 +468,7 @@
    ]
   }
  },
- "smithy_version":"3.6.8",
+ "smithy_version":"No azure token. Create a token and\nput it in ~/.conda-smithy/azure.token\n3.6.15",
  "strong_exports":false,
  "total_requirements":{
   "build":{
