@@ -68,7 +68,7 @@
    "summary":"M.A.L. Marques's exchange-correlation functionals for density-functional theory"
   },
   "build":{
-   "number":"1",
+   "number":"0",
    "run_exports":[
     "libxc",
     "libxc",
@@ -85,7 +85,7 @@
   },
   "package":{
    "name":"libxc",
-   "version":"4.3.4"
+   "version":"5.0.0"
   },
   "requirements":{
    "build":[
@@ -103,8 +103,8 @@
    ]
   },
   "source":{
-   "sha256":"0efe8b33d151de8787e33c4ba8e2161ffb9da978753f3bd12c5c0a018e7d3ef5",
-   "url":"https://gitlab.com/libxc/libxc/-/archive/4.3.4/libxc-4.3.4.tar.bz2"
+   "sha256":"b4206940db57ba4ddb9cb635fd852914c8dd045cb07bab32427013e3ab294f4f",
+   "url":"https://gitlab.com/libxc/libxc/-/archive/5.0.0/libxc-5.0.0.tar.bz2"
   },
   "test":{
    "commands":[
@@ -128,7 +128,7 @@
   "5.0.0":1
  },
  "pinning_version":"2020.04.07",
- "raw_meta_yaml":"{% set name = \"libxc\" %}\n{% set version = \"4.3.4\" %}\n{% set sha256 = \"0efe8b33d151de8787e33c4ba8e2161ffb9da978753f3bd12c5c0a018e7d3ef5\" %}\n\npackage:\n  name: {{ name }}\n  version: {{ version }}\n\nsource:\n  url: https://gitlab.com/libxc/libxc/-/archive/{{ version }}/libxc-{{ version }}.tar.bz2\n  sha256: {{ sha256 }}\n\nbuild:\n  number: 1\n  skip: true  # [not linux]\n  run_exports:\n    - {{ pin_subpackage('libxc', max_pin='x.x') }}\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - {{ compiler('fortran') }}  # [not win]\n    - libtool                    # [not win]\n    - automake                   # [not win]\n    - cmake                      # [win]\n    - ninja                      # [win]\n\ntest:\n  commands:\n    - test -L $PREFIX/lib/libxc$SHLIB_EXT                   # [unix]\n    - ldd -v $PREFIX/lib/libxc$SHLIB_EXT                    # [linux]\n    - otool -L $PREFIX/lib/libxc$SHLIB_EXT                  # [osx]\n    - dir \"%PREFIX%\\Library\"                                # [win]\n    - dir \"%PREFIX%\"\\Library\\include                        # [win]\n    - if not exist \"%PREFIX%\"\\Library\\include\\xc.h  exit 1  # [win]\n    - conda inspect objects -p $PREFIX $PKG_NAME  # [osx]\n    - conda inspect linkages --show-files --groupby=dependency libxc\n\nabout:\n    home: http://www.tddft.org/programs/Libxc\n    dev_url: https://gitlab.com/libxc/libxc\n    doc_url: https://gitlab.com/libxc/libxc/wikis/Manual-4.0\n    license: MPL-2.0\n    license_url: https://opensource.org/licenses/MPL-2.0\n    license_file: COPYING\n    license_family: Other\n    summary: \"M.A.L. Marques's exchange-correlation functionals for density-functional theory\"\n\nextra:\n  recipe-maintainers:\n    - bjodah\n",
+ "raw_meta_yaml":"{% set name = \"libxc\" %}\n{% set version = \"5.0.0\" %}\n{% set sha256 = \"b4206940db57ba4ddb9cb635fd852914c8dd045cb07bab32427013e3ab294f4f\" %}\n\npackage:\n  name: {{ name }}\n  version: {{ version }}\n\nsource:\n  url: https://gitlab.com/libxc/libxc/-/archive/{{ version }}/libxc-{{ version }}.tar.bz2\n  sha256: {{ sha256 }}\n\nbuild:\n  number: 0\n  skip: true  # [not linux]\n  run_exports:\n    - {{ pin_subpackage('libxc', max_pin='x.x') }}\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - {{ compiler('fortran') }}  # [not win]\n    - libtool                    # [not win]\n    - automake                   # [not win]\n    - cmake                      # [win]\n    - ninja                      # [win]\n\ntest:\n  commands:\n    - test -L $PREFIX/lib/libxc$SHLIB_EXT                   # [unix]\n    - ldd -v $PREFIX/lib/libxc$SHLIB_EXT                    # [linux]\n    - otool -L $PREFIX/lib/libxc$SHLIB_EXT                  # [osx]\n    - dir \"%PREFIX%\\Library\"                                # [win]\n    - dir \"%PREFIX%\"\\Library\\include                        # [win]\n    - if not exist \"%PREFIX%\"\\Library\\include\\xc.h  exit 1  # [win]\n    - conda inspect objects -p $PREFIX $PKG_NAME  # [osx]\n    - conda inspect linkages --show-files --groupby=dependency libxc\n\nabout:\n  home: http://www.tddft.org/programs/Libxc\n  dev_url: https://gitlab.com/libxc/libxc\n  doc_url: https://gitlab.com/libxc/libxc/wikis/Manual-4.0\n  license: MPL-2.0\n  license_url: https://opensource.org/licenses/MPL-2.0\n  license_file: COPYING\n  license_family: Other\n  summary: M.A.L. Marques's exchange-correlation functionals for density-functional theory\n\nextra:\n  recipe-maintainers:\n    - bjodah\n",
  "req":{
   "__set__":true,
   "elements":[
@@ -193,5 +193,5 @@
   }
  },
  "url":"https://gitlab.com/libxc/libxc/-/archive/4.3.4/libxc-4.3.4.tar.bz2",
- "version":"4.3.4"
+ "version":"5.0.0"
 }
