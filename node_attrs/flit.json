@@ -216,29 +216,28 @@
     "migrator_version",
     "version"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/f26af419-9725-4477-857a-0aa8ba6ce1e2.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"MigrationYaml",
+    "migrator_object_version":1,
+    "migrator_version":0,
+    "name":"pypy"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_object_version",
+    "migrator_version",
+    "name"
+   ]
   }
  ],
- "bad":{
-  "exception":"Failed to put item: An error occurred (ValidationException) on request (55M3E6DIUCLQB7N3T9T4S887LNVV4KQNSO5AEMVJF66Q9ASUAAJG) on table (pr_json) when calling the PutItem operation: Attempting to store more than 38 significant digits in a Number",
-  "traceback":[
-   "Traceback (most recent call last):",
-   "  File \"/root/repo/cf-scripts/conda_forge_tick/auto_tick.py\", line 823, in main",
-   "    hash_type=attrs.get(\"hash_type\", \"sha256\"),",
-   "  File \"/root/repo/cf-scripts/conda_forge_tick/auto_tick.py\", line 252, in run",
-   "    PRJson.dump(pr_json)",
-   "  File \"/root/repo/cf-scripts/conda_forge_tick/dynamo_models.py\", line 33, in dump",
-   "    item.save()",
-   "  File \"/opt/conda/envs/run_env/lib/python3.7/site-packages/pynamodb/models.py\", line 405, in save",
-   "    data = self._get_connection().put_item(*args, **kwargs)",
-   "  File \"/opt/conda/envs/run_env/lib/python3.7/site-packages/pynamodb/connection/table.py\", line 139, in put_item",
-   "    return_item_collection_metrics=return_item_collection_metrics)",
-   "  File \"/opt/conda/envs/run_env/lib/python3.7/site-packages/pynamodb/connection/base.py\", line 972, in put_item",
-   "    six.raise_from(PutError(\"Failed to put item: {}\".format(e), e), None)",
-   "  File \"<string>\", line 3, in raise_from",
-   "pynamodb.exceptions.PutError: Failed to put item: An error occurred (ValidationException) on request (55M3E6DIUCLQB7N3T9T4S887LNVV4KQNSO5AEMVJF66Q9ASUAAJG) on table (pr_json) when calling the PutItem operation: Attempting to store more than 38 significant digits in a Number",
-   ""
-  ]
- },
+ "bad":false,
  "conda-forge.yml":{
   "provider":{
    "linux_aarch64":"azure",
@@ -499,7 +498,7 @@
   "flit",
   "flit-core"
  ],
- "pinning_version":"2020.04.08",
+ "pinning_version":"2020.04.09",
  "raw_meta_yaml":"{% set version = \"2.3.0\" %}\n\npackage:\n  name: flit-core\n  version: {{ version }}\n\nsource:\n  url: https://pypi.io/packages/source/f/flit/flit-{{ version }}.tar.gz\n  sha256: 017012b809ec489918afd68af7a70bd7c8c770c87b60159d875c126866e97a4b\n  folder: source\n\nbuild:\n  number: 0\n\n# Specifying `python` as a top-level build requirements to force conda to\n# render the recipe correctly\nrequirements:\n  host:\n    - python >=3.6\n\noutputs:\n  - name: flit-core\n    version: {{ version }}\n    build:\n      script: python -m pip install --no-deps -vv source/flit_core/\n      noarch: python\n    requirements:\n      host:\n        - python >=3.6\n        - pip\n      run:\n        - python >=3.6\n        - pytoml\n    test:\n      imports:\n        - flit_core\n        - flit_core.common\n\n  - name: flit\n    version: {{ version }}\n    build:\n      script: cd source/ && FLIT_ROOT_INSTALL=1 python -m flit install --deps=none\n      noarch: python\n      entry_points:\n        - flit = flit:main\n    requirements:\n      host:\n        - python >=3.6\n        - pip\n        - docutils\n        - requests\n        - requests_download\n        - pygments\n        - pytoml\n        - {{ pin_subpackage('flit-core', exact=True) }}\n      run:\n        - python >=3.6\n        - pip\n        - docutils\n        - requests\n        - requests_download\n        - pygments\n        - pytoml\n        - {{ pin_subpackage('flit-core', exact=True) }}\n    test:\n      imports:\n        - flit\n      commands:\n        - flit --version\n\nabout:\n  home: https://flit.readthedocs.io/\n  license: BSD-3-Clause\n  license_family: BSD\n  license_file: source/LICENSE\n  summary: Simplified packaging of Python modules\n\nextra:\n  recipe-maintainers:\n    - Carreau\n    - minrk\n    - takluyver\n    - ocefpaf\n",
  "req":{
   "__set__":true,
@@ -550,7 +549,7 @@
    "elements":[]
   }
  },
- "smithy_version":"No azure token. Create a token and\nput it in ~/.conda-smithy/azure.token\n3.6.15",
+ "smithy_version":"No azure token. Create a token and\nput it in ~/.conda-smithy/azure.token\n3.6.16",
  "strong_exports":false,
  "total_requirements":{
   "build":{
