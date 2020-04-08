@@ -57,8 +57,7 @@
   "max_r_ver":"35",
   "provider":{
    "linux_aarch64":"default",
-   "linux_ppc64le":"default",
-   "win":"appveyor"
+   "linux_ppc64le":"default"
   }
  },
  "feedstock_name":"m4ri",
@@ -68,13 +67,13 @@
    "dev_url":"https://bitbucket.org/malb/m4ri",
    "doc_url":"https://malb.bitbucket.io/m4ri",
    "home":"https://bitbucket.org/malb/m4ri",
-   "license":"GPLv2+",
+   "license":"GPL-2.0-or-later",
    "license_family":"GPL",
    "license_file":"COPYING",
    "summary":"M4RI is a library for fast arithmetic with dense matrices over F2"
   },
   "build":{
-   "number":"1004",
+   "number":"1005",
    "run_exports":[
     "m4ri",
     "m4ri",
@@ -169,7 +168,7 @@
  "name":"m4ri",
  "new_version":false,
  "pinning_version":"2019.10.28",
- "raw_meta_yaml":"{% set version = \"20140914\" %}\n{% set name = \"m4ri\" %}\n\npackage:\n  name: {{ name }}\n  version: {{ version }}\n\nsource:\n  fn: {{ name }}-{{ version }}.tar.gz\n  url: https://bitbucket.org/malb/m4ri/downloads/{{ name }}-{{ version }}.tar.gz\n  sha256: 4bc3f53a5116e1ff0720c08f34ce415c88e2fb503437abfd15e196792ec6d5aa\n  patches:\n    - dll.patch\n    - unistd.diff\n\nbuild:\n  number: 1004\n  skip: true  # [win and vc<14]\n  run_exports:\n    - {{ pin_subpackage(\"m4ri\") }}\n\nrequirements:\n  build:\n    - libtool                   # [unix]\n    - automake                  # [unix]\n    - autoconf                  # [unix]\n    - make                      # [unix]\n    - m4                        # [unix]\n    - {{ compiler('c') }}\n    - posix                     # [win]\n    - clangdev                  # [win]\n    - lld                       # [win]\n    - llvmdev                   # [win]\n    - m2-automake-wrapper       # [win]\n    - m2-libtool                # [win]\n    - m2-autoconf               # [win]\n    - m2-make                   # [win]\n    - m2-m4                     # [win]\n\n  host:\n    - libpng\n    - zlib\n\n  run:\n    - libpng\n    - zlib\n\ntest:\n  commands:\n    - test -f ${PREFIX}/include/m4ri/m4ri.h                                   # [unix]\n    - test -f ${PREFIX}/lib/lib{{ name }}.a                                   # [unix]\n    - test -f ${PREFIX}/lib/lib{{ name }}${SHLIB_EXT}                         # [unix]\n    - if not exist %LIBRARY_BIN%\\\\{{ name }}-0-0-{{ version }}.dll exit 1     # [win]\n    - if not exist %LIBRARY_LIB%\\\\{{ name }}.lib exit 1                       # [win]\n    - if not exist %LIBRARY_LIB%\\\\{{ name }}_static.lib exit 1                # [win]\n    - if not exist %LIBRARY_INC%\\\\{{ name }}\\\\m4ri.h exit 1                   # [win]\n\nabout:\n  home: https://bitbucket.org/malb/m4ri\n  license: GPLv2+\n  license_family: GPL\n  license_file: COPYING\n  summary: M4RI is a library for fast arithmetic with dense matrices over F2\n  dev_url: https://bitbucket.org/malb/m4ri\n  doc_url: https://malb.bitbucket.io/m4ri\n\nextra:\n  recipe-maintainers:\n    - isuruf\n    - marcelotrevisani\n",
+ "raw_meta_yaml":"{% set version = \"20140914\" %}\n{% set name = \"m4ri\" %}\n\npackage:\n  name: {{ name }}\n  version: {{ version }}\n\nsource:\n  fn: {{ name }}-{{ version }}.tar.gz\n  url: https://bitbucket.org/malb/m4ri/downloads/{{ name }}-{{ version }}.tar.gz\n  sha256: 4bc3f53a5116e1ff0720c08f34ce415c88e2fb503437abfd15e196792ec6d5aa\n  patches:\n    - dll.patch\n    - unistd.diff\n\nbuild:\n  skip: true  # [win and vc<14]\n  number: 1005\n  run_exports:\n    - {{ pin_subpackage(\"m4ri\") }}\n\nrequirements:\n  build:\n    - libtool                   # [unix]\n    - automake                  # [unix]\n    - autoconf                  # [unix]\n    - make                      # [unix]\n    - m4                        # [unix]\n    - {{ compiler('c') }}\n    - posix                     # [win]\n    - clangdev                  # [win]\n    - lld                       # [win]\n    - llvmdev                   # [win]\n    - m2-automake-wrapper       # [win]\n    - m2-libtool                # [win]\n    - m2-autoconf               # [win]\n    - m2-make                   # [win]\n    - m2-m4                     # [win]\n\n  host:\n    - libpng\n    - zlib\n\n  run:\n    - libpng\n    - zlib\n\ntest:\n  commands:\n    - test -f ${PREFIX}/include/m4ri/m4ri.h                                   # [unix]\n    - test -f ${PREFIX}/lib/lib{{ name }}.a                                   # [unix]\n    - test -f ${PREFIX}/lib/lib{{ name }}${SHLIB_EXT}                         # [unix]\n    - if not exist %LIBRARY_BIN%\\\\{{ name }}-0-0-{{ version }}.dll exit 1     # [win]\n    - if not exist %LIBRARY_LIB%\\\\{{ name }}.lib exit 1                       # [win]\n    - if not exist %LIBRARY_LIB%\\\\{{ name }}_static.lib exit 1                # [win]\n    - if not exist %LIBRARY_INC%\\\\{{ name }}\\\\m4ri.h exit 1                   # [win]\n\nabout:\n  home: https://bitbucket.org/malb/m4ri\n  license: GPL-2.0-or-later\n  license_family: GPL\n  license_file: COPYING\n  summary: M4RI is a library for fast arithmetic with dense matrices over F2\n  dev_url: https://bitbucket.org/malb/m4ri\n  doc_url: https://malb.bitbucket.io/m4ri\n\nextra:\n  recipe-maintainers:\n    - isuruf\n    - marcelotrevisani\n",
  "req":{
   "__set__":true,
   "elements":[
