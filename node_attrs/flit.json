@@ -220,9 +220,6 @@
  ],
  "bad":false,
  "conda-forge.yml":{
-  "compiler_stack":"comp7",
-  "max_py_ver":"37",
-  "max_r_ver":"35",
   "provider":{
    "linux_aarch64":"azure",
    "linux_ppc64le":"azure",
@@ -281,7 +278,7 @@
       "flit_core.common"
      ]
     },
-    "version":"2.2.0"
+    "version":"2.3.0"
    },
    {
     "build":{
@@ -322,7 +319,7 @@
       "flit"
      ]
     },
-    "version":"2.2.0"
+    "version":"2.3.0"
    },
    {
     "build":{
@@ -346,7 +343,7 @@
       "flit_core.common"
      ]
     },
-    "version":"2.2.0"
+    "version":"2.3.0"
    },
    {
     "build":{
@@ -387,7 +384,7 @@
       "flit"
      ]
     },
-    "version":"2.2.0"
+    "version":"2.3.0"
    },
    {
     "build":{
@@ -411,7 +408,7 @@
       "flit_core.common"
      ]
     },
-    "version":"2.2.0"
+    "version":"2.3.0"
    },
    {
     "build":{
@@ -452,12 +449,12 @@
       "flit"
      ]
     },
-    "version":"2.2.0"
+    "version":"2.3.0"
    }
   ],
   "package":{
    "name":"flit-core",
-   "version":"2.2.0"
+   "version":"2.3.0"
   },
   "requirements":{
    "host":[
@@ -468,8 +465,8 @@
   },
   "source":{
    "folder":"source",
-   "sha256":"a273dc2a5ab1f42f0e02878347d94f5462c42cbe232a5014b6778c9e5975327f",
-   "url":"https://pypi.io/packages/source/f/flit/flit-2.2.0.tar.gz"
+   "sha256":"017012b809ec489918afd68af7a70bd7c8c770c87b60159d875c126866e97a4b",
+   "url":"https://pypi.io/packages/source/f/flit/flit-2.3.0.tar.gz"
   }
  },
  "name":"flit-core",
@@ -483,7 +480,7 @@
   "flit-core"
  ],
  "pinning_version":"2020.04.08",
- "raw_meta_yaml":"{% set version = \"2.2.0\" %}\n\npackage:\n  name: flit-core\n  version: {{ version }}\n\nsource:\n  url: https://pypi.io/packages/source/f/flit/flit-{{ version }}.tar.gz\n  sha256: a273dc2a5ab1f42f0e02878347d94f5462c42cbe232a5014b6778c9e5975327f\n  folder: source\n\nbuild:\n  number: 0\n\n# Specifying `python` as a top-level build requirements to force conda to\n# render the recipe correctly\nrequirements:\n  host:\n    - python >=3.6\n\noutputs:\n  - name: flit-core\n    version: {{ version }}\n    build:\n      script: python -m pip install --no-deps -vv source/flit_core/\n      noarch: python\n    requirements:\n      host:\n        - python >=3.6\n        - pip\n      run:\n        - python >=3.6\n        - pytoml\n    test:\n      imports:\n        - flit_core\n        - flit_core.common\n\n  - name: flit\n    version: {{ version }}\n    build:\n      script: cd source/ && FLIT_ROOT_INSTALL=1 python -m flit install --deps=none\n      noarch: python\n      entry_points:\n        - flit = flit:main\n    requirements:\n      host:\n        - python >=3.6\n        - pip\n        - docutils\n        - requests\n        - requests_download\n        - pygments\n        - pytoml\n        - {{ pin_subpackage('flit-core', exact=True) }}\n      run:\n        - python >=3.6\n        - pip\n        - docutils\n        - requests\n        - requests_download\n        - pygments\n        - pytoml\n        - {{ pin_subpackage('flit-core', exact=True) }}\n    test:\n      imports:\n        - flit\n      commands:\n        - flit --version\n\nabout:\n  home: https://flit.readthedocs.io/\n  license: BSD-3-Clause\n  license_family: BSD\n  license_file: source/LICENSE\n  summary: Simplified packaging of Python modules\n\nextra:\n  recipe-maintainers:\n    - Carreau\n    - minrk\n    - takluyver\n    - ocefpaf\n",
+ "raw_meta_yaml":"{% set version = \"2.3.0\" %}\n\npackage:\n  name: flit-core\n  version: {{ version }}\n\nsource:\n  url: https://pypi.io/packages/source/f/flit/flit-{{ version }}.tar.gz\n  sha256: 017012b809ec489918afd68af7a70bd7c8c770c87b60159d875c126866e97a4b\n  folder: source\n\nbuild:\n  number: 0\n\n# Specifying `python` as a top-level build requirements to force conda to\n# render the recipe correctly\nrequirements:\n  host:\n    - python >=3.6\n\noutputs:\n  - name: flit-core\n    version: {{ version }}\n    build:\n      script: python -m pip install --no-deps -vv source/flit_core/\n      noarch: python\n    requirements:\n      host:\n        - python >=3.6\n        - pip\n      run:\n        - python >=3.6\n        - pytoml\n    test:\n      imports:\n        - flit_core\n        - flit_core.common\n\n  - name: flit\n    version: {{ version }}\n    build:\n      script: cd source/ && FLIT_ROOT_INSTALL=1 python -m flit install --deps=none\n      noarch: python\n      entry_points:\n        - flit = flit:main\n    requirements:\n      host:\n        - python >=3.6\n        - pip\n        - docutils\n        - requests\n        - requests_download\n        - pygments\n        - pytoml\n        - {{ pin_subpackage('flit-core', exact=True) }}\n      run:\n        - python >=3.6\n        - pip\n        - docutils\n        - requests\n        - requests_download\n        - pygments\n        - pytoml\n        - {{ pin_subpackage('flit-core', exact=True) }}\n    test:\n      imports:\n        - flit\n      commands:\n        - flit --version\n\nabout:\n  home: https://flit.readthedocs.io/\n  license: BSD-3-Clause\n  license_family: BSD\n  license_file: source/LICENSE\n  summary: Simplified packaging of Python modules\n\nextra:\n  recipe-maintainers:\n    - Carreau\n    - minrk\n    - takluyver\n    - ocefpaf\n",
  "req":{
   "__set__":true,
   "elements":[
@@ -572,5 +569,5 @@
   }
  },
  "url":"https://pypi.io/packages/source/f/flit/flit-1.3.tar.gz",
- "version":"2.2.0"
+ "version":"2.3.0"
 }
