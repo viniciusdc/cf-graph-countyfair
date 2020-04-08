@@ -137,12 +137,12 @@
  "meta_yaml":{
   "about":{
    "home":"https://bitbucket.org/petsc/petsc4py",
-   "license":"BSD 2-Clause",
+   "license":"BSD-2-Clause",
    "license_file":"LICENSE.rst",
    "summary":"Python bindings for PETSc"
   },
   "build":{
-   "number":"4",
+   "number":"0",
    "script":"PETSC_DIR=$PREFIX pip -v install --no-deps .",
    "skip":true
   },
@@ -164,7 +164,7 @@
   },
   "package":{
    "name":"petsc4py",
-   "version":"3.12.0"
+   "version":"3.13.0"
   },
   "requirements":{
    "build":[
@@ -179,50 +179,54 @@
     "python",
     "pip",
     "numpy",
-    "mpich",
-    "petsc 3.12.*",
+    null,
+    "petsc 3.13.*",
     "python",
     "pip",
     "numpy",
-    "mpich",
-    "petsc 3.12.*",
+    null,
+    "petsc 3.13.*",
     "python",
     "pip",
     "numpy",
-    "mpich",
-    "petsc 3.12.*"
+    null,
+    "petsc 3.13.*"
    ],
    "run":[
     "python",
     "numpy",
-    "mpich",
+    null,
     "petsc",
     "python",
     "numpy",
-    "mpich",
+    null,
     "petsc",
     "python",
     "numpy",
-    "mpich",
+    null,
     "petsc"
+   ],
+   "run_constrained":[
+    "mpi4py >=3.0.1",
+    "mpi4py >=3.0.1",
+    "mpi4py >=3.0.1"
    ]
   },
   "source":{
-   "fn":"petsc4py-3.12.0.tar",
-   "sha256":"fe3b189e77736bc0206ce28c5caa573dc97a829975f31fd6e8fa6f3e2512d719",
-   "url":"https://bitbucket.org/petsc/petsc4py/downloads/petsc4py-3.12.0.tar.gz"
+   "fn":"petsc4py-3.13.0.tar",
+   "sha256":"ace21f71102e752fefac6c81b65207edba89a6974b3c58c71599c6c358640f39",
+   "url":"https://pypi.io/packages/source/p/petsc4py/petsc4py-3.13.0.tar.gz"
   }
  },
  "name":"petsc4py",
  "new_version":false,
  "pinning_version":"2020.03.23",
- "raw_meta_yaml":"{% set version = '3.12.0' %}\n{% set sha256 = '1a02fa0336c27583aabf399124ac0610ef20452cf6b837a1082f7788f17fadad' %}\n# FIXME: bitbucket sets the wrong content-encoding headers, resulting in downloading the unzipped .tar file\n# rather than the tar.gz file\n{% set sha256 = 'fe3b189e77736bc0206ce28c5caa573dc97a829975f31fd6e8fa6f3e2512d719' %}\n\n{% set mpi = mpi or 'mpich' %}\n\npackage:\n  name: petsc4py\n  version: {{version}}\n\nsource:\n  fn: petsc4py-{{version}}.tar\n  url: https://bitbucket.org/petsc/petsc4py/downloads/petsc4py-{{version}}.tar.gz\n  sha256: {{sha256}}\n\nbuild:\n  number: 4\n  script: PETSC_DIR=$PREFIX pip -v install --no-deps .\n  skip: true  # [win]\n\nrequirements:\n  build:\n    - {{ compiler('fortran') }}\n    - {{ compiler('c') }}\n  host:\n    - python\n    - pip\n    - numpy\n    - {{ mpi }}\n    - petsc {{version.rsplit('.', 1)[0]}}.*\n  run:\n    - python\n    - {{ pin_compatible('numpy') }}\n    - {{ mpi }}\n    - petsc # pinned by petsc run_exports\n\nabout:\n  home: https://bitbucket.org/petsc/petsc4py\n  summary: Python bindings for PETSc\n  license: BSD 2-Clause\n  license_file: LICENSE.rst\n\nextra:\n  recipe-maintainers:\n    - dalcinl\n    - minrk\n    - davidbrochart\n    - SylvainCorlay\n",
+ "raw_meta_yaml":"{% set name = 'petsc4py' %}\n{% set version = '3.13.0' %}\n{% set sha256 = 'ace21f71102e752fefac6c81b65207edba89a6974b3c58c71599c6c358640f39' %}\n\n{% set version_xy = version.rsplit('.', 1)[0] + \".*\" %}\n\npackage:\n  name: petsc4py\n  version: {{ version }}\n\nsource:\n  fn: petsc4py-{{version}}.tar\n  url: https://pypi.io/packages/source/{{name[0]}}/{{name}}/{{name}}-{{version}}.tar.gz\n  sha256: {{sha256}}\n\nbuild:\n  number: 0\n  script: PETSC_DIR=$PREFIX pip -v install --no-deps .\n  skip: true  # [win]\n\nrequirements:\n  build:\n    - {{ compiler('fortran') }}\n    - {{ compiler('c') }}\n  host:\n    - python\n    - pip\n    - numpy\n    - {{ mpi }}\n    - petsc {{ version_xy }}\n  run:\n    - python\n    - {{ pin_compatible('numpy') }}\n    - {{ mpi }}\n    - petsc # pinned by petsc run_exports\n  run_constrained:\n    - mpi4py >=3.0.1\n\nabout:\n  home: https://bitbucket.org/petsc/petsc4py\n  summary: Python bindings for PETSc\n  license: BSD-2-Clause\n  license_file: LICENSE.rst\n\nextra:\n  recipe-maintainers:\n    - dalcinl\n    - minrk\n    - davidbrochart\n    - SylvainCorlay\n",
  "req":{
   "__set__":true,
   "elements":[
    "c_compiler_stub",
    "fortran_compiler_stub",
-   "mpich",
    "numpy",
    "petsc",
    "pip",
@@ -240,7 +244,6 @@
   "host":{
    "__set__":true,
    "elements":[
-    "mpich",
     "numpy",
     "petsc",
     "pip",
@@ -250,7 +253,6 @@
   "run":{
    "__set__":true,
    "elements":[
-    "mpich",
     "numpy",
     "petsc",
     "python"
@@ -274,9 +276,8 @@
   "host":{
    "__set__":true,
    "elements":[
-    "mpich",
     "numpy",
-    "petsc 3.12.*",
+    "petsc 3.13.*",
     "pip",
     "python"
    ]
@@ -284,7 +285,6 @@
   "run":{
    "__set__":true,
    "elements":[
-    "mpich",
     "numpy",
     "petsc",
     "python"
@@ -296,5 +296,5 @@
   }
  },
  "url":"https://bitbucket.org/petsc/petsc4py/downloads/petsc4py-3.11.0.tar.gz",
- "version":"3.12.0"
+ "version":"3.13.0"
 }
