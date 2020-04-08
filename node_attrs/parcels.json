@@ -182,6 +182,23 @@
     "migrator_version",
     "name"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/400886041.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"Version",
+    "migrator_version":0,
+    "version":"2.1.5"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "version"
+   ]
   }
  ],
  "bad":false,
@@ -339,8 +356,12 @@
   }
  },
  "name":"parcels",
- "new_version":"2.1.4",
- "pinning_version":"2020.02.12",
+ "new_version":"2.1.5",
+ "new_version_attempts":{
+  "2.1.5":1
+ },
+ "new_version_errors":{},
+ "pinning_version":"2020.04.08",
  "raw_meta_yaml":"{% set name = \"parcels\" %}\n{% set version = \"2.1.4\" %}\n{% set sha256 = \"512bc09a3ebe12a151097dac2d65aa9475845cb0b85a15355e3950cd6116b55d\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  fn: {{ name }}-{{ version }}.tar.gz\n  url: https://github.com/oceanparcels/{{ name }}/archive/v{{ version }}.tar.gz\n  sha256: {{ sha256 }}\n\nbuild:\n  number: 0\n  script:\n    - \"{{ PYTHON }} setup.py bdist_wheel --dist-dir=dist\"\n    - \"{{ PYTHON }} -m pip install --find-links=dist --no-deps --ignore-installed --no-cache-dir -vvv {{ name }}\"\n  entry_points:\n    - parcels_get_examples = parcels.scripts.get_examples:main\n\nrequirements:\n  build:\n    - python\n    - pip\n    - setuptools\n    - setuptools_scm\n    - setuptools_scm_git_archive\n    - wheel\n  run:\n    - python\n    - cachetools >=1.0.0\n    - cftime\n    - cgen\n    - dask\n    - enum34  # [py2k]\n    - gcc_linux-64  # [linux]\n    - clang_osx-64  # [osx]\n    - m2w64-toolchain  # [win]\n    - matplotlib >=2.0.2\n    - netcdf4 >=1.1.9\n    - numpy >=1.9  # [linux64 or osx]\n    - numpy >=1.11  # [win]\n    - progressbar2\n    - pymbolic\n    - python-dateutil\n    - scipy >=0.16.0\n    - six >=1.10.0\n    - xarray >=0.10.8\n\ntest:\n  imports:\n    - parcels\n    - parcels.scripts\n    - parcels.kernels\n    - parcels.tools\n  commands:\n    - parcels_get_examples parcels_examples\n\nabout:\n  home: http://github.com/OceanParcels/parcels\n  license: MIT\n  license_family: MIT\n  license_file: LICENSE.md\n  summary: 'Probably A Really Computationally Efficient Lagrangian Simulator'\n\n  description: |\n    Parcels (Probably A Really Computationally Efficient Lagrangian Simulator)\n    is a set of Python classes and methods to create customisable particle \n    tracking simulations using output from Ocean Circulation models. \n    Parcels can be used to track passive and active particulates such as \n    water, nutrients, plankton, plastic and fish.\n  doc_url: http://oceanparcels.org/\n  dev_url: https://github.com/OceanParcels/parcels\n\nextra:\n  recipe-maintainers:\n    - erikvansebille\n    - delandmeterp\n    - ckehl\n    - willirath\n",
  "req":{
   "__set__":true,
@@ -412,7 +433,7 @@
    "elements":[]
   }
  },
- "smithy_version":"3.6.8",
+ "smithy_version":"No azure token. Create a token and\nput it in ~/.conda-smithy/azure.token\n3.6.15",
  "strong_exports":false,
  "total_requirements":{
   "build":{
