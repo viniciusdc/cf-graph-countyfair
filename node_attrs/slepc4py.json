@@ -110,22 +110,18 @@
   }
  ],
  "bad":false,
- "conda-forge.yml":{
-  "compiler_stack":"comp7",
-  "max_py_ver":"37",
-  "max_r_ver":"35"
- },
+ "conda-forge.yml":{},
  "feedstock_name":"slepc4py",
  "hash_type":"sha256",
  "meta_yaml":{
   "about":{
-   "home":"https://bitbucket.org/slepc/slepc4py",
-   "license":"BSD 2-Clause",
+   "home":"https://gitlab.com/slepc/slepc4py",
+   "license":"BSD-2-Clause",
    "license_file":"LICENSE.rst",
    "summary":"Python bindings for SLEPc"
   },
   "build":{
-   "number":"1",
+   "number":"0",
    "script":"PETSC_DIR=$PREFIX SLEPC_DIR=$PREFIX pip -v install --no-deps .",
    "skip":true
   },
@@ -144,7 +140,7 @@
   },
   "package":{
    "name":"slepc4py",
-   "version":"3.12.0"
+   "version":"3.13.0"
   },
   "requirements":{
    "build":[
@@ -157,43 +153,43 @@
     "pip",
     "numpy",
     null,
-    "petsc 3.12.*",
-    "slepc 3.12.*",
-    "petsc4py 3.12.*",
+    "petsc 3.*",
+    "slepc 3.*",
+    "petsc4py 3.*",
     "python",
     "pip",
     "numpy",
     null,
-    "petsc 3.12.*",
-    "slepc 3.12.*",
-    "petsc4py 3.12.*",
+    "petsc 3.*",
+    "slepc 3.*",
+    "petsc4py 3.*",
     "python",
     "pip",
     "numpy",
     null,
-    "petsc 3.12.*",
-    "slepc 3.12.*",
-    "petsc4py 3.12.*"
+    "petsc 3.*",
+    "slepc 3.*",
+    "petsc4py 3.*"
    ],
    "run":[
     "python",
     "numpy",
     null,
-    "petsc 3.12.*",
-    "slepc 3.12.*",
-    "petsc4py 3.12.*",
+    "petsc",
+    "slepc",
+    "petsc4py 3.*",
     "python",
     "numpy",
     null,
-    "petsc 3.12.*",
-    "slepc 3.12.*",
-    "petsc4py 3.12.*",
+    "petsc",
+    "slepc",
+    "petsc4py 3.*",
     "python",
     "numpy",
     null,
-    "petsc 3.12.*",
-    "slepc 3.12.*",
-    "petsc4py 3.12.*"
+    "petsc",
+    "slepc",
+    "petsc4py 3.*"
    ],
    "run_constrained":[
     "mpi4py >=3.0.1",
@@ -202,9 +198,9 @@
    ]
   },
   "source":{
-   "fn":"slepc4py-3.12.0.tar.gz",
-   "sha256":"6310a641ebe4b02a547a9f8a9a3c72d44c9fb05b7a5c0c3a9bf6e6a3f1ff07ce",
-   "url":"https://pypi.io/packages/source/s/slepc4py/slepc4py-3.12.0.tar.gz"
+   "fn":"slepc4py-3.13.0.tar.gz",
+   "sha256":"ce05d8a1990771141689517a42682a27b1ac3f145fd3f1d12d820a15445e3549",
+   "url":"https://pypi.io/packages/source/s/slepc4py/slepc4py-3.13.0.tar.gz"
   }
  },
  "name":"slepc4py",
@@ -213,7 +209,7 @@
   "3.13.0":1
  },
  "pinning_version":"2020.04.07",
- "raw_meta_yaml":"\n{% set name = 'slepc4py' %}\n{% set version = '3.12.0' %}\n{% set sha256 = '6310a641ebe4b02a547a9f8a9a3c72d44c9fb05b7a5c0c3a9bf6e6a3f1ff07ce' %}\n\n{% set version_xy = \".\".join(version.split(\".\")[:2]) + \".*\" %}\n\npackage:\n  name: {{ name }}\n  version: {{version}}\n\nsource:\n  fn: slepc4py-{{version}}.tar.gz\n  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz\n  sha256: {{sha256}}\n\nbuild:\n  number: 1\n  script: PETSC_DIR=$PREFIX SLEPC_DIR=$PREFIX pip -v install --no-deps .\n  skip: true  # [win]\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n  host:\n    - python\n    - pip\n    - numpy\n    - {{ mpi }}\n    - petsc {{ version_xy }}\n    - slepc {{ version_xy }}\n    - petsc4py {{ version_xy }}\n  run:\n    - python\n    - {{ pin_compatible('numpy') }}\n    - {{ mpi }}\n    - petsc {{ version_xy }}\n    - slepc {{ version_xy }}\n    - petsc4py {{ version_xy }}\n  run_constrained:\n    - mpi4py >=3.0.1\n\nabout:\n  home: https://bitbucket.org/slepc/slepc4py\n  summary: Python bindings for SLEPc\n  license: BSD 2-Clause\n  license_file: LICENSE.rst\n\nextra:\n  recipe-maintainers:\n    - dalcinl\n    - joseeroman\n    - minrk\n",
+ "raw_meta_yaml":"{% set name = \"slepc4py\" %}\n{% set version = \"3.13.0\" %}\n{% set sha256 = \"6310a641ebe4b02a547a9f8a9a3c72d44c9fb05b7a5c0c3a9bf6e6a3f1ff07ce\" %}\n\n{% set version_xy = version.rsplit(\".\")[0] + \".*\" %}\n\npackage:\n  name: slepc4py\n  version: {{ version }}\n\nsource:\n  fn: slepc4py-{{version}}.tar.gz\n  url: https://pypi.io/packages/source/{{name[0]}}/{{name}}/{{name}}-{{version}}.tar.gz\n  sha256: ce05d8a1990771141689517a42682a27b1ac3f145fd3f1d12d820a15445e3549\n\nbuild:\n  number: 0\n  script: PETSC_DIR=$PREFIX SLEPC_DIR=$PREFIX pip -v install --no-deps .\n  skip: true  # [win]\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n  host:\n    - python\n    - pip\n    - numpy\n    - {{ mpi }}\n    - petsc {{ version_xy }}\n    - slepc {{ version_xy }}\n    - petsc4py {{ version_xy }}\n  run:\n    - python\n    - {{ pin_compatible('numpy') }}\n    - {{ mpi }}\n    - petsc  # pinned by petsc run_exports\n    - slepc  # pinned by slepc run_exports\n    - petsc4py {{ version_xy }}\n  run_constrained:\n    - mpi4py >=3.0.1\n\nabout:\n  home: https://gitlab.com/slepc/slepc4py\n  summary: Python bindings for SLEPc\n  license: BSD-2-Clause\n  license_file: LICENSE.rst\n\nextra:\n  recipe-maintainers:\n    - dalcinl\n    - joseeroman\n    - minrk\n",
  "req":{
   "__set__":true,
   "elements":[
@@ -272,21 +268,21 @@
    "__set__":true,
    "elements":[
     "numpy",
-    "petsc 3.12.*",
-    "petsc4py 3.12.*",
+    "petsc 3.*",
+    "petsc4py 3.*",
     "pip",
     "python",
-    "slepc 3.12.*"
+    "slepc 3.*"
    ]
   },
   "run":{
    "__set__":true,
    "elements":[
     "numpy",
-    "petsc 3.12.*",
-    "petsc4py 3.12.*",
+    "petsc",
+    "petsc4py 3.*",
     "python",
-    "slepc 3.12.*"
+    "slepc"
    ]
   },
   "test":{
@@ -295,5 +291,5 @@
   }
  },
  "url":"https://bitbucket.org/slepc/slepc4py/downloads/slepc4py-3.11.0.tar.gz",
- "version":"3.12.0"
+ "version":"3.13.0"
 }
