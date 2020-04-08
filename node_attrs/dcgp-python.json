@@ -152,13 +152,11 @@
   },
   "package":{
    "name":"dcgp-python",
-   "version":"1.4.2"
+   "version":"1.4.3"
   },
   "requirements":{
    "build":[
     "cmake",
-    "c_compiler_stub",
-    "cxx_compiler_stub",
     "clang",
     "ninja",
     "cmake",
@@ -173,7 +171,7 @@
     "boost-cpp",
     "eigen",
     "audi",
-    "pagmo",
+    "pagmo-devel",
     "pygmo",
     "tbb-devel",
     "obake-devel",
@@ -185,7 +183,7 @@
     "boost-cpp",
     "eigen",
     "audi",
-    "pagmo",
+    "pagmo-devel",
     "pygmo",
     "tbb-devel",
     "obake-devel",
@@ -198,7 +196,7 @@
     "boost-cpp",
     "eigen",
     "audi",
-    "pagmo",
+    "pagmo-devel",
     "pygmo",
     "tbb-devel",
     "obake-devel",
@@ -211,36 +209,28 @@
    "run":[
     "boost",
     "pyaudi",
-    "pagmo",
     "pygmo",
     "symengine",
     "python",
     "numpy",
-    "mpir",
     "boost",
     "pyaudi",
-    "pagmo",
     "pygmo",
     "symengine",
     "python",
     "numpy",
-    "ipopt",
-    "gmp",
     "boost",
     "pyaudi",
-    "pagmo",
     "pygmo",
     "symengine",
     "python",
-    "numpy",
-    "ipopt",
-    "gmp"
+    "numpy"
    ]
   },
   "source":{
    "patches":null,
-   "sha256":"c496f1215abc0379d01021312d239ce07b9e51b5c769abef873fa70f74748373",
-   "url":"https://github.com/darioizzo/dcgp/archive/v1.4.2.tar.gz"
+   "sha256":"061380fd9e9731a3a743cf708f3b2547f34f0017f9d3d6372f0c85d2b58d82e8",
+   "url":"https://github.com/darioizzo/dcgp/archive/v1.4.3.tar.gz"
   }
  },
  "name":"dcgp-python",
@@ -250,7 +240,7 @@
  },
  "new_version_errors":{},
  "pinning_version":"2020.04.08",
- "raw_meta_yaml":"{% set version = \"1.4.2\" %}\n\npackage:\n  name: dcgp-python\n  version: {{ version }}\n\nsource:\n  url: https://github.com/darioizzo/dcgp/archive/v{{ version }}.tar.gz\n  sha256: c496f1215abc0379d01021312d239ce07b9e51b5c769abef873fa70f74748373\n  patches:\n    - tokens_patch.diff  # [win]\n\nbuild:\n  number: 0\n  skip: true  # [(win and py<35) or win32]\n\nrequirements:\n  build:\n    - cmake\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n    - clang      # [win]\n    - ninja      # [win]\n  host:\n    - boost\n    - boost-cpp\n    - eigen\n    - audi\n    - pagmo\n    - pygmo\n    - tbb-devel\n    - obake-devel\n    - symengine\n    - python\n    - numpy\n    - ipopt  # [unix]\n    - gmp    # [unix]\n    - mpir   # [win]\n  run:\n    - boost\n    - pyaudi\n    - pagmo\n    - pygmo\n    - {{ pin_compatible(\"symengine\", max_pin=\"x.x\") }}\n    - python\n    - {{ pin_compatible('numpy') }}\n    - ipopt  # [unix]\n    - gmp    # [unix]\n    - mpir   # [win]\n\nabout:\n  home: http://darioizzo.github.io/dcgp/\n  license: GPL v3 and LGPL v3\n  license_file: LICENSE\n  summary: 'Implementation of the differential CGP (Cartesian Genetic Programming)'\n\nextra:\n  recipe-maintainers:\n    - bluescarni\n    - darioizzo\n",
+ "raw_meta_yaml":"{% set version = \"1.4.3\" %}\n\npackage:\n  name: dcgp-python\n  version: {{ version }}\n\nsource:\n  url: https://github.com/darioizzo/dcgp/archive/v{{ version }}.tar.gz\n  sha256: 061380fd9e9731a3a743cf708f3b2547f34f0017f9d3d6372f0c85d2b58d82e8\n  patches:\n    - tokens_patch.diff  # [win]\n\nbuild:\n  number: 0\n  skip: true  # [(win and py<35) or win32]\n\nrequirements:\n  build:\n    - cmake\n    - {{ compiler('c') }}  # [not win]\n    - {{ compiler('cxx') }}  # [not win]\n    - clang  # [win]\n    - ninja  # [win]\n  host:\n    - boost\n    - boost-cpp\n    - eigen\n    - audi\n    - pagmo-devel\n    - pygmo\n    - tbb-devel\n    - obake-devel\n    - symengine\n    - python\n    - numpy\n    - ipopt  # [not win]\n    - gmp    # [not win]\n    - mpir   # [win]\n  run:\n    - {{ pin_compatible(\"boost\", max_pin=\"x.x\") }}\n    - pyaudi\n    - {{ pin_compatible(\"pygmo\", max_pin=\"x.x\") }}\n    - {{ pin_compatible(\"symengine\", max_pin=\"x.x\") }}\n    - python\n    - {{ pin_compatible('numpy') }}\n\nabout:\n  home: http://darioizzo.github.io/dcgp/\n  license: GPL v3 and LGPL v3\n  license_file: LICENSE\n  summary: Implementation of the differential CGP (Cartesian Genetic Programming)\n\nextra:\n  recipe-maintainers:\n    - bluescarni\n    - darioizzo\n",
  "req":{
   "__set__":true,
   "elements":[
@@ -268,7 +258,7 @@
    "ninja",
    "numpy",
    "obake-devel",
-   "pagmo",
+   "pagmo-devel",
    "pyaudi",
    "pygmo",
    "python",
@@ -299,7 +289,7 @@
     "mpir",
     "numpy",
     "obake-devel",
-    "pagmo",
+    "pagmo-devel",
     "pygmo",
     "python",
     "symengine",
@@ -310,11 +300,7 @@
    "__set__":true,
    "elements":[
     "boost",
-    "gmp",
-    "ipopt",
-    "mpir",
     "numpy",
-    "pagmo",
     "pyaudi",
     "pygmo",
     "python",
@@ -351,7 +337,7 @@
     "mpir",
     "numpy",
     "obake-devel",
-    "pagmo",
+    "pagmo-devel",
     "pygmo",
     "python",
     "symengine",
@@ -362,11 +348,7 @@
    "__set__":true,
    "elements":[
     "boost",
-    "gmp",
-    "ipopt",
-    "mpir",
     "numpy",
-    "pagmo",
     "pyaudi",
     "pygmo",
     "python",
@@ -379,5 +361,5 @@
   }
  },
  "url":"https://github.com/darioizzo/dcgp/archive/v1.3.tar.gz",
- "version":"1.4.2"
+ "version":"1.4.3"
 }
