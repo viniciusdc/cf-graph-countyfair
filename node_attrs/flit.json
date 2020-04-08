@@ -199,6 +199,23 @@
     "migrator_version",
     "version"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/400704845.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"Version",
+    "migrator_version":0,
+    "version":"2.3.0"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "version"
+   ]
   }
  ],
  "bad":false,
@@ -456,12 +473,16 @@
   }
  },
  "name":"flit-core",
- "new_version":"2.2.0",
+ "new_version":"2.3.0",
+ "new_version_attempts":{
+  "2.3.0":1
+ },
+ "new_version_errors":{},
  "outputs_names":[
   "flit",
   "flit-core"
  ],
- "pinning_version":"2020.01.10",
+ "pinning_version":"2020.04.08",
  "raw_meta_yaml":"{% set version = \"2.2.0\" %}\n\npackage:\n  name: flit-core\n  version: {{ version }}\n\nsource:\n  url: https://pypi.io/packages/source/f/flit/flit-{{ version }}.tar.gz\n  sha256: a273dc2a5ab1f42f0e02878347d94f5462c42cbe232a5014b6778c9e5975327f\n  folder: source\n\nbuild:\n  number: 0\n\n# Specifying `python` as a top-level build requirements to force conda to\n# render the recipe correctly\nrequirements:\n  host:\n    - python >=3.6\n\noutputs:\n  - name: flit-core\n    version: {{ version }}\n    build:\n      script: python -m pip install --no-deps -vv source/flit_core/\n      noarch: python\n    requirements:\n      host:\n        - python >=3.6\n        - pip\n      run:\n        - python >=3.6\n        - pytoml\n    test:\n      imports:\n        - flit_core\n        - flit_core.common\n\n  - name: flit\n    version: {{ version }}\n    build:\n      script: cd source/ && FLIT_ROOT_INSTALL=1 python -m flit install --deps=none\n      noarch: python\n      entry_points:\n        - flit = flit:main\n    requirements:\n      host:\n        - python >=3.6\n        - pip\n        - docutils\n        - requests\n        - requests_download\n        - pygments\n        - pytoml\n        - {{ pin_subpackage('flit-core', exact=True) }}\n      run:\n        - python >=3.6\n        - pip\n        - docutils\n        - requests\n        - requests_download\n        - pygments\n        - pytoml\n        - {{ pin_subpackage('flit-core', exact=True) }}\n    test:\n      imports:\n        - flit\n      commands:\n        - flit --version\n\nabout:\n  home: https://flit.readthedocs.io/\n  license: BSD-3-Clause\n  license_family: BSD\n  license_file: source/LICENSE\n  summary: Simplified packaging of Python modules\n\nextra:\n  recipe-maintainers:\n    - Carreau\n    - minrk\n    - takluyver\n    - ocefpaf\n",
  "req":{
   "__set__":true,
@@ -512,7 +533,7 @@
    "elements":[]
   }
  },
- "smithy_version":"3.6.5",
+ "smithy_version":"No azure token. Create a token and\nput it in ~/.conda-smithy/azure.token\n3.6.15",
  "strong_exports":false,
  "total_requirements":{
   "build":{
