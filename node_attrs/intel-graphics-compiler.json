@@ -186,6 +186,23 @@
     "migrator_version",
     "version"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/401009060.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"Version",
+    "migrator_version":0,
+    "version":"1.0.3698"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "version"
+   ]
   }
  ],
  "bad":false,
@@ -276,8 +293,12 @@
   }
  },
  "name":"intel-graphics-compiler",
- "new_version":"1.0.3627",
- "pinning_version":"2020.03.30",
+ "new_version":"1.0.3698",
+ "new_version_attempts":{
+  "1.0.3698":1
+ },
+ "new_version_errors":{},
+ "pinning_version":"2020.04.09",
  "raw_meta_yaml":"{% set name = \"intel-graphics-compiler\" %}\n{% set version = \"1.0.3627\" %}\n{% set llvm_version = \"9.0.0\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  url: https://github.com/intel/{{ name }}/archive/igc-{{ version }}.tar.gz\n  sha256: edf7153b5718a683ee718bd40498d29523fba9a916bbf9d998b36302780864c5\n\nbuild:\n  number: 0\n  skip: true  # [not linux]\n\nrequirements:\n  build:\n    - {{ compiler('cxx') }}\n    - cmake\n    - make\n    - flex\n    - bison\n  host:\n    - llvmdev   {{ llvm_version }}\n    - llvm      {{ llvm_version }}\n    - clangdev  {{ llvm_version }}\n    - intel-opencl-clang {{ llvm_version }}\n  run:\n    - intel-opencl-clang {{ llvm_version }}\n  run_constrained:\n    - llvmdev   {{ llvm_version }}\n    - clangdev  {{ llvm_version }}\n\ntest:\n  commands:\n    - test -f ${PREFIX}/lib/libiga64${SHLIB_EXT}  # [unix]\n\nabout:\n  home: https://github.com/intel/intel-graphics-compiler\n  license: MIT\n  license_file: LICENSE.md\n  license_family: MIT\n  summary: The Intel(R) Graphics Compiler for OpenCL(TM) is an llvm based compiler for OpenCL(TM) targeting Intel Gen graphics hardware architecture.\n\nextra:\n  recipe-maintainers:\n    - isuruf\n",
  "req":{
   "__set__":true,
@@ -324,7 +345,7 @@
    "elements":[]
   }
  },
- "smithy_version":"No azure token. Create a token and\nput it in ~/.conda-smithy/azure.token\n3.6.15",
+ "smithy_version":"No azure token. Create a token and\nput it in ~/.conda-smithy/azure.token\n3.6.16",
  "strong_exports":false,
  "total_requirements":{
   "build":{
