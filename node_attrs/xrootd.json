@@ -226,6 +226,25 @@
     "migrator_version",
     "version"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/400935578.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"MigrationYaml",
+    "migrator_object_version":1,
+    "migrator_version":0,
+    "name":"krb51171"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_object_version",
+    "migrator_version",
+    "name"
+   ]
   }
  ],
  "bad":false,
@@ -357,7 +376,7 @@
  },
  "name":"xrootd",
  "new_version":"4.11.3",
- "pinning_version":"2020.03.23",
+ "pinning_version":"2020.04.08",
  "raw_meta_yaml":"{% set name = \"xrootd\" %}\n{% set version = \"4.11.3\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  url: https://github.com/xrootd/xrootd/archive/v{{ version }}.tar.gz\n  sha256: 534baafc9e0112a0c2c3010532d19892e1daee5916d54f9a81f881c0bb873b09\n  patches:\n    - patches/fix_clock_gettime-2.patch  # [osx]\n    - patches/0001-Support-PyPy.patch\n\nbuild:\n  number: 1\n  skip: true  # [win]\n  run_exports:\n    # https://abi-laboratory.pro/tracker/timeline/xrootd/\n    - {{ pin_subpackage('xrootd', max_pin='x.x') }}\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n    - cmake\n    - make\n  host:\n    - openssl\n    - python\n    - readline\n    - libxml2\n    - libuuid  # [not osx]\n    - libcurl\n    - krb5\n    - zlib\n    - ncurses\n  run:\n    - openssl\n    - python\n    - readline\n    - libxml2\n    - krb5\n    - zlib\n    - ncurses\n\ntest:\n  imports:\n    - XRootD.client\n    - pyxrootd\n\nabout:\n  home: http://xrootd.org/\n  license: LGPL-3.0\n  license_family: LGPL\n  license_file: LICENSE\n  summary: High performance, scalable fault tolerant access to data\n\n  description: |\n    The XROOTD project aims at giving high performance, scalable fault tolerant\n    access to data repositories of many kinds. The typical usage is to give\n    access to file-based ones. It is based on a scalable architecture, a\n    communication protocol, and a set of plugins and tools based on those. The\n    freedom to configure it and to make it scale (for size and performance)\n    allows the deployment of data access clusters of virtually any size, which\n    can include sophisticated features, like authentication/authorization,\n    integrations with other systems, WAN data distribution, etc.\n  dev_url: https://github.com/xrootd/xrootd\n\nextra:\n  recipe-maintainers:\n    - chrisburr\n",
  "req":{
   "__set__":true,

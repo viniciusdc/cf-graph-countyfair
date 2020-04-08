@@ -119,7 +119,7 @@
    "dev_url":"http://github.com/dask/dask-gateway",
    "doc_url":"https://gateway.dask.org",
    "home":"http://github.com/dask/dask-gateway",
-   "license":"New BSD",
+   "license":"BSD-3-Clause",
    "license_family":"BSD",
    "license_file":"LICENSE",
    "summary":"A multi-tenant server for securely deploying and managing Dask clusters."
@@ -181,13 +181,13 @@
      ],
      "run":[
       "python",
+      "aiohttp",
+      "colorlog",
       "cryptography",
-      "tornado",
-      "traitlets",
-      "sqlalchemy"
+      "traitlets"
      ]
     },
-    "script":"dask-gateway-server.sh",
+    "script":"build-dask-gateway-server.sh",
     "test":{
      "commands":[
       "dask-gateway-server --help",
@@ -218,15 +218,34 @@
     "build":{
      "skip":true
     },
-    "name":"dask-gateway-server-kubernetes",
+    "name":"dask-gateway-server-local",
     "requirements":[
      "python",
      "dask-gateway-server",
-     "python-kubernetes >=9"
+     "sqlalchemy"
     ],
     "test":{
      "imports":[
-      "dask_gateway_server.managers.kubernetes"
+      "dask_gateway_server",
+      "dask_gateway_server.backends.local"
+     ]
+    }
+   },
+   {
+    "build":{
+     "skip":true
+    },
+    "name":"dask-gateway-server-jobqueue",
+    "requirements":[
+     "python",
+     "dask-gateway-server",
+     "sqlalchemy"
+    ],
+    "test":{
+     "imports":[
+      "dask_gateway_server",
+      "dask_gateway_server.backends.jobqueue.slurm",
+      "dask_gateway_server.backends.jobqueue.pbs"
      ]
     }
    },
@@ -238,11 +257,28 @@
     "requirements":[
      "python",
      "dask-gateway-server",
+     "sqlalchemy",
      "skein >=0.7.3"
     ],
     "test":{
      "imports":[
-      "dask_gateway_server.managers.yarn"
+      "dask_gateway_server.backends.yarn"
+     ]
+    }
+   },
+   {
+    "build":{
+     "skip":true
+    },
+    "name":"dask-gateway-server-kubernetes",
+    "requirements":[
+     "python",
+     "dask-gateway-server",
+     "kubernetes_asyncio"
+    ],
+    "test":{
+     "imports":[
+      "dask_gateway_server.backends.kubernetes"
      ]
     }
    },
@@ -279,13 +315,13 @@
      ],
      "run":[
       "python",
+      "aiohttp",
+      "colorlog",
       "cryptography",
-      "tornado",
-      "traitlets",
-      "sqlalchemy"
+      "traitlets"
      ]
     },
-    "script":"dask-gateway-server.sh",
+    "script":"build-dask-gateway-server.sh",
     "test":{
      "commands":[
       "dask-gateway-server --help",
@@ -312,15 +348,32 @@
    },
    {
     "build":null,
-    "name":"dask-gateway-server-kubernetes",
+    "name":"dask-gateway-server-local",
     "requirements":[
      "python",
      "dask-gateway-server",
-     "python-kubernetes >=9"
+     "sqlalchemy"
     ],
     "test":{
      "imports":[
-      "dask_gateway_server.managers.kubernetes"
+      "dask_gateway_server",
+      "dask_gateway_server.backends.local"
+     ]
+    }
+   },
+   {
+    "build":null,
+    "name":"dask-gateway-server-jobqueue",
+    "requirements":[
+     "python",
+     "dask-gateway-server",
+     "sqlalchemy"
+    ],
+    "test":{
+     "imports":[
+      "dask_gateway_server",
+      "dask_gateway_server.backends.jobqueue.slurm",
+      "dask_gateway_server.backends.jobqueue.pbs"
      ]
     }
    },
@@ -330,11 +383,26 @@
     "requirements":[
      "python",
      "dask-gateway-server",
+     "sqlalchemy",
      "skein >=0.7.3"
     ],
     "test":{
      "imports":[
-      "dask_gateway_server.managers.yarn"
+      "dask_gateway_server.backends.yarn"
+     ]
+    }
+   },
+   {
+    "build":null,
+    "name":"dask-gateway-server-kubernetes",
+    "requirements":[
+     "python",
+     "dask-gateway-server",
+     "kubernetes_asyncio"
+    ],
+    "test":{
+     "imports":[
+      "dask_gateway_server.backends.kubernetes"
      ]
     }
    },
@@ -371,13 +439,13 @@
      ],
      "run":[
       "python",
+      "aiohttp",
+      "colorlog",
       "cryptography",
-      "tornado",
-      "traitlets",
-      "sqlalchemy"
+      "traitlets"
      ]
     },
-    "script":"dask-gateway-server.sh",
+    "script":"build-dask-gateway-server.sh",
     "test":{
      "commands":[
       "dask-gateway-server --help",
@@ -404,15 +472,32 @@
    },
    {
     "build":null,
-    "name":"dask-gateway-server-kubernetes",
+    "name":"dask-gateway-server-local",
     "requirements":[
      "python",
      "dask-gateway-server",
-     "python-kubernetes >=9"
+     "sqlalchemy"
     ],
     "test":{
      "imports":[
-      "dask_gateway_server.managers.kubernetes"
+      "dask_gateway_server",
+      "dask_gateway_server.backends.local"
+     ]
+    }
+   },
+   {
+    "build":null,
+    "name":"dask-gateway-server-jobqueue",
+    "requirements":[
+     "python",
+     "dask-gateway-server",
+     "sqlalchemy"
+    ],
+    "test":{
+     "imports":[
+      "dask_gateway_server",
+      "dask_gateway_server.backends.jobqueue.slurm",
+      "dask_gateway_server.backends.jobqueue.pbs"
      ]
     }
    },
@@ -422,18 +507,33 @@
     "requirements":[
      "python",
      "dask-gateway-server",
+     "sqlalchemy",
      "skein >=0.7.3"
     ],
     "test":{
      "imports":[
-      "dask_gateway_server.managers.yarn"
+      "dask_gateway_server.backends.yarn"
+     ]
+    }
+   },
+   {
+    "build":null,
+    "name":"dask-gateway-server-kubernetes",
+    "requirements":[
+     "python",
+     "dask-gateway-server",
+     "kubernetes_asyncio"
+    ],
+    "test":{
+     "imports":[
+      "dask_gateway_server.backends.kubernetes"
      ]
     }
    }
   ],
   "package":{
    "name":"dask-gateway",
-   "version":"0.6.1"
+   "version":"0.7.0"
   },
   "requirements":{
    "host":[
@@ -446,22 +546,22 @@
    ],
    "run":[
     "python",
-    "tornado",
+    "aiohttp",
     "dask >=2.2.0",
     "distributed >=2.2.0",
     "python",
-    "tornado",
+    "aiohttp",
     "dask >=2.2.0",
     "distributed >=2.2.0",
     "python",
-    "tornado",
+    "aiohttp",
     "dask >=2.2.0",
     "distributed >=2.2.0"
    ]
   },
   "source":{
-   "sha256":"6a925b5c23358cfd4aeb47b31e6874cfa949d3cd8744774b52031415974279ec",
-   "url":"https://github.com/dask/dask-gateway/archive/0.6.1.tar.gz"
+   "sha256":"93d51c2a2ceb2c30753e5b32ad31cdc539c0e6b83cb55f293e79cd635aabde6b",
+   "url":"https://github.com/dask/dask-gateway/archive/0.7.0.tar.gz"
   },
   "test":{
    "commands":[
@@ -489,28 +589,31 @@
   "dask-gateway",
   "dask-gateway-kerberos",
   "dask-gateway-server",
+  "dask-gateway-server-jobqueue",
   "dask-gateway-server-kerberos",
   "dask-gateway-server-kubernetes",
+  "dask-gateway-server-local",
   "dask-gateway-server-yarn"
  ],
  "pinning_version":"2020.04.08",
- "raw_meta_yaml":"{% set name = \"dask-gateway\" %}\n{% set version = \"0.6.1\" %}\n\npackage:\n  version: {{ version }}\n  name: {{ name|lower }}\n\nsource:\n  url: https://github.com/dask/{{ name }}/archive/{{ version }}.tar.gz\n  sha256: 6a925b5c23358cfd4aeb47b31e6874cfa949d3cd8744774b52031415974279ec\n\nbuild:\n  number: 0\n  skip: True  # [py<36]\n  script: cd dask-gateway && python -m pip install . -vv --no-deps\n  entry_points:\n    - dask-gateway-scheduler = dask_gateway.dask_cli:scheduler\n    - dask-gateway-worker = dask_gateway.dask_cli:worker\n\nrequirements:\n  host:\n    - python\n    - pip\n  run:\n    - python\n    - tornado\n    - dask >=2.2.0\n    - distributed >=2.2.0\n\ntest:\n  imports:\n    - dask_gateway\n  commands:\n    - dask-gateway-scheduler --help\n    - dask-gateway-worker --help\n\noutputs:\n  # dask-gateway is the output described by the rest of the meta.yaml (i.e.,\n  # the stuff that's not included in this outputs section)\n  - name: dask-gateway\n\n  - name: dask-gateway-kerberos\n    build:\n      skip: True  # [py<36]\n    requirements:\n      - python\n      - {{ pin_subpackage('dask-gateway', exact=True) }}\n      - pykerberos  # [osx or linux]\n      - winkerberos  # [win]\n    test:\n      imports:\n        # This import is to silence the conda-forge linter. Successfully\n        # testing that the addition of the kerberos library enables the\n        # kerberos functionality is pretty challenging and ultimately not\n        # really worth it\n        - dask_gateway\n\n  - name: dask-gateway-server\n    script: dask-gateway-server.sh\n    build:\n      skip: True  # [py<36 or win]\n      entry_points:\n        - dask-gateway-server = dask_gateway_server.app:main\n        - dask-gateway-jobqueue-launcher = dask_gateway_server.managers.jobqueue.launcher:main\n    requirements:\n      host:\n        - python\n        - go\n        - pip\n      run:\n        - python\n        - cryptography\n        - tornado\n        - traitlets\n        - sqlalchemy\n    test:\n      imports:\n        - dask_gateway_server\n      commands:\n        - dask-gateway-server --help\n        - which dask-gateway-jobqueue-launcher\n\n  - name: dask-gateway-server-kerberos\n    build:\n      skip: True  # [py<36 or win]\n    requirements:\n      - python\n      - {{ pin_subpackage('dask-gateway-server', exact=True) }}\n      - pykerberos\n    test:\n      imports:\n        - dask_gateway_server\n\n  - name: dask-gateway-server-kubernetes\n    build:\n      skip: True  # [py<36 or win]\n    requirements:\n      - python\n      - {{ pin_subpackage('dask-gateway-server', exact=True) }}\n      - python-kubernetes >=9\n    test:\n      imports:\n        - dask_gateway_server.managers.kubernetes\n\n  - name: dask-gateway-server-yarn\n    build:\n      skip: True  # [py<36 or win]\n    requirements:\n      - python\n      - {{ pin_subpackage('dask-gateway-server', exact=True) }}\n      - skein >=0.7.3\n    test:\n      imports:\n        - dask_gateway_server.managers.yarn\n\nabout:\n  home: http://github.com/dask/dask-gateway\n  license: New BSD\n  license_family: BSD\n  license_file: LICENSE\n  summary: A multi-tenant server for securely deploying and managing Dask clusters.\n  description: A multi-tenant server for securely deploying and managing Dask clusters.\n  doc_url: https://gateway.dask.org\n  dev_url: http://github.com/dask/dask-gateway\n\nextra:\n  recipe-maintainers:\n    - ericdill\n    - jcrist\n",
+ "raw_meta_yaml":"{% set name = \"dask-gateway\" %}\n{% set version = \"0.7.0\" %}\n\npackage:\n  version: {{ version }}\n  name: {{ name|lower }}\n\nsource:\n  url: https://github.com/dask/{{ name }}/archive/{{ version }}.tar.gz\n  sha256: 93d51c2a2ceb2c30753e5b32ad31cdc539c0e6b83cb55f293e79cd635aabde6b\n\nbuild:\n  number: 0\n  skip: True  # [py<36]\n  script: cd dask-gateway && python -m pip install . -vv --no-deps\n  entry_points:\n    - dask-gateway-scheduler = dask_gateway.dask_cli:scheduler\n    - dask-gateway-worker = dask_gateway.dask_cli:worker\n\nrequirements:\n  host:\n    - python\n    - pip\n  run:\n    - python\n    - aiohttp\n    - dask >=2.2.0\n    - distributed >=2.2.0\n\ntest:\n  imports:\n    - dask_gateway\n  commands:\n    - dask-gateway-scheduler --help\n    - dask-gateway-worker --help\n\noutputs:\n    # Core client package (full recipe is above)\n  - name: dask-gateway\n\n    # Client-side kerberos auth\n  - name: dask-gateway-kerberos\n    build:\n      skip: True  # [py<36]\n    requirements:\n      - python\n      - {{ pin_subpackage('dask-gateway', exact=True) }}\n      - pykerberos  # [osx or linux]\n      - winkerberos  # [win]\n    test:\n      imports:\n        - dask_gateway\n\n    # Core package, required dependencies only\n  - name: dask-gateway-server\n    # XXX: conda-build requires a file here for some reason, can't inline script\n    script: build-dask-gateway-server.sh\n    build:\n      skip: True  # [py<36 or win]\n      entry_points:\n        - dask-gateway-server = dask_gateway_server.app:main\n        - dask-gateway-jobqueue-launcher = dask_gateway_server.managers.jobqueue.launcher:main\n    requirements:\n      host:\n        - python\n        - go\n        - pip\n      run:\n        - python\n        - aiohttp\n        - colorlog\n        - cryptography\n        - traitlets\n\n    test:\n      imports:\n        - dask_gateway_server\n      commands:\n        - dask-gateway-server --help\n        - which dask-gateway-jobqueue-launcher\n\n    # Kerberos authentication\n  - name: dask-gateway-server-kerberos\n    build:\n      skip: True  # [py<36 or win]\n    requirements:\n      - python\n      - {{ pin_subpackage('dask-gateway-server', exact=True) }}\n      - pykerberos\n    test:\n      imports:\n        - dask_gateway_server\n\n    # Local backend\n  - name: dask-gateway-server-local\n    build:\n      skip: True  # [py<36 or win]\n    requirements:\n      - python\n      - {{ pin_subpackage('dask-gateway-server', exact=True) }}\n      - sqlalchemy\n    test:\n      imports:\n        - dask_gateway_server\n        - dask_gateway_server.backends.local\n\n    # Jobqueue backends\n  - name: dask-gateway-server-jobqueue\n    build:\n      skip: True  # [py<36 or win]\n    requirements:\n      - python\n      - {{ pin_subpackage('dask-gateway-server', exact=True) }}\n      - sqlalchemy\n    test:\n      imports:\n        - dask_gateway_server\n        - dask_gateway_server.backends.jobqueue.slurm\n        - dask_gateway_server.backends.jobqueue.pbs\n\n    # Hadoop/YARN backend\n  - name: dask-gateway-server-yarn\n    build:\n      skip: True  # [py<36 or win]\n    requirements:\n      - python\n      - {{ pin_subpackage('dask-gateway-server', exact=True) }}\n      - sqlalchemy\n      - skein >=0.7.3\n    test:\n      imports:\n        - dask_gateway_server.backends.yarn\n\n    # Kubernetes backend\n  - name: dask-gateway-server-kubernetes\n    build:\n      skip: True  # [py<36 or win]\n    requirements:\n      - python\n      - {{ pin_subpackage('dask-gateway-server', exact=True) }}\n      - kubernetes_asyncio\n    test:\n      imports:\n        - dask_gateway_server.backends.kubernetes\n\nabout:\n  home: http://github.com/dask/dask-gateway\n  license: BSD-3-Clause\n  license_family: BSD\n  license_file: LICENSE\n  summary: A multi-tenant server for securely deploying and managing Dask clusters.\n  description: A multi-tenant server for securely deploying and managing Dask clusters.\n  doc_url: https://gateway.dask.org\n  dev_url: http://github.com/dask/dask-gateway\n\nextra:\n  recipe-maintainers:\n    - ericdill\n    - jcrist\n",
  "req":{
   "__set__":true,
   "elements":[
+   "aiohttp",
+   "colorlog",
    "cryptography",
    "dask",
    "dask-gateway",
    "dask-gateway-server",
    "distributed",
    "go",
+   "kubernetes_asyncio",
    "pip",
    "pykerberos",
    "python",
-   "python-kubernetes",
    "skein",
    "sqlalchemy",
-   "tornado",
    "traitlets",
    "winkerberos"
   ]
@@ -531,17 +634,18 @@
   "run":{
    "__set__":true,
    "elements":[
+    "aiohttp",
+    "colorlog",
     "cryptography",
     "dask",
     "dask-gateway",
     "dask-gateway-server",
     "distributed",
+    "kubernetes_asyncio",
     "pykerberos",
     "python",
-    "python-kubernetes",
     "skein",
     "sqlalchemy",
-    "tornado",
     "traitlets",
     "winkerberos"
    ]
@@ -569,17 +673,18 @@
   "run":{
    "__set__":true,
    "elements":[
+    "aiohttp",
+    "colorlog",
     "cryptography",
     "dask >=2.2.0",
     "dask-gateway",
     "dask-gateway-server",
     "distributed >=2.2.0",
+    "kubernetes_asyncio",
     "pykerberos",
     "python",
-    "python-kubernetes >=9",
     "skein >=0.7.3",
     "sqlalchemy",
-    "tornado",
     "traitlets",
     "winkerberos"
    ]
@@ -590,5 +695,5 @@
   }
  },
  "url":"https://github.com/jcrist/dask-gateway/archive/0.2.0.tar.gz",
- "version":"0.6.1"
+ "version":"0.7.0"
 }
