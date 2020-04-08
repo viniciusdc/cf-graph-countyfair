@@ -71,20 +71,24 @@
  "conda-forge.yml":{
   "compiler_stack":"comp7",
   "max_py_ver":"37",
-  "max_r_ver":"35"
+  "max_r_ver":"35",
+  "provider":{
+   "linux_aarch64":"default",
+   "linux_ppc64le":"default"
+  }
  },
  "feedstock_name":"superlu",
  "hash_type":"sha256",
  "meta_yaml":{
   "about":{
    "home":"http://crd-legacy.lbl.gov/~xiaoye/SuperLU/",
-   "license":"BSD 3-clause",
+   "license":"BSD-3-Clause",
    "license_file":"License.txt",
    "summary":"Supernodal LU: solvers for large, sparse, nonsymmetric systems of linear\nequations.\n"
   },
   "build":{
    "features":null,
-   "number":"1206",
+   "number":"1207",
    "skip":true
   },
   "extra":{
@@ -103,12 +107,15 @@
     "cmake",
     "fortran_compiler_stub",
     "c_compiler_stub",
+    "make",
     "cmake",
     "fortran_compiler_stub",
     "c_compiler_stub",
+    "make",
     "cmake",
     "fortran_compiler_stub",
-    "c_compiler_stub"
+    "c_compiler_stub",
+    "make"
    ],
    "host":[
     "libblas",
@@ -136,7 +143,7 @@
  "name":"superlu",
  "new_version":false,
  "pinning_version":"2019.08.12",
- "raw_meta_yaml":"{% set version = \"5.2.1\" %}\n\n\npackage:\n    name: superlu\n    version: {{ version }}\n\nsource:\n    fn: superlu-{{ version }}.tar.gz\n    url: http://crd-legacy.lbl.gov/~xiaoye/SuperLU/superlu_{{ version }}.tar.gz\n    sha256: 28fb66d6107ee66248d5cf508c79de03d0621852a0ddeba7301801d3d859f463\n\nbuild:\n  number: 1206\n  skip: True  # [win]\n  features:\n\nrequirements:\n  build:\n    - cmake\n    - {{ compiler('fortran') }}\n    - {{ compiler('c') }}\n  host:\n    - libblas\n    - libcblas\n  run:\n\ntest:\n  commands:\n    - test -f ${PREFIX}/lib/libsuperlu.a\n\nabout:\n    home: http://crd-legacy.lbl.gov/~xiaoye/SuperLU/\n    license: BSD 3-clause\n    license_file: License.txt\n    summary: |\n      Supernodal LU: solvers for large, sparse, nonsymmetric systems of linear\n      equations.\n\nextra:\n    recipe-maintainers:\n      - grlee77\n",
+ "raw_meta_yaml":"{% set version = \"5.2.1\" %}\n\n\npackage:\n    name: superlu\n    version: {{ version }}\n\nsource:\n    fn: superlu-{{ version }}.tar.gz\n    url: http://crd-legacy.lbl.gov/~xiaoye/SuperLU/superlu_{{ version }}.tar.gz\n    sha256: 28fb66d6107ee66248d5cf508c79de03d0621852a0ddeba7301801d3d859f463\n\nbuild:\n  number: 1207\n  skip: True  # [win]\n  features:\n\nrequirements:\n  build:\n    - cmake\n    - {{ compiler('fortran') }}\n    - {{ compiler('c') }}\n    - make\n  host:\n    - libblas\n    - libcblas\n  run:\n\ntest:\n  commands:\n    - test -f ${PREFIX}/lib/libsuperlu.a\n\nabout:\n    home: http://crd-legacy.lbl.gov/~xiaoye/SuperLU/\n    license: BSD-3-Clause\n    license_file: License.txt\n    summary: |\n      Supernodal LU: solvers for large, sparse, nonsymmetric systems of linear\n      equations.\n\nextra:\n    recipe-maintainers:\n      - grlee77\n",
  "req":{
   "__set__":true,
   "elements":[
@@ -144,7 +151,8 @@
    "cmake",
    "fortran_compiler_stub",
    "libblas",
-   "libcblas"
+   "libcblas",
+   "make"
   ]
  },
  "requirements":{
@@ -153,7 +161,8 @@
    "elements":[
     "c_compiler_stub",
     "cmake",
-    "fortran_compiler_stub"
+    "fortran_compiler_stub",
+    "make"
    ]
   },
   "host":{
@@ -180,7 +189,8 @@
    "elements":[
     "c_compiler_stub",
     "cmake",
-    "fortran_compiler_stub"
+    "fortran_compiler_stub",
+    "make"
    ]
   },
   "host":{

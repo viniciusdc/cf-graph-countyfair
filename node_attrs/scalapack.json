@@ -109,7 +109,11 @@
  "conda-forge.yml":{
   "compiler_stack":"comp7",
   "max_py_ver":"37",
-  "max_r_ver":"35"
+  "max_r_ver":"35",
+  "provider":{
+   "linux_aarch64":"default",
+   "linux_ppc64le":"default"
+  }
  },
  "feedstock_name":"scalapack",
  "hash_type":"sha256",
@@ -123,7 +127,7 @@
    "summary":"ScaLAPACK is a library of high-performance linear algebra routines for parallel distributed memory machines"
   },
   "build":{
-   "number":"1007",
+   "number":"1008",
    "skip":true
   },
   "extra":{
@@ -151,12 +155,15 @@
     "cmake",
     "fortran_compiler_stub",
     "c_compiler_stub",
+    "make",
     "cmake",
     "fortran_compiler_stub",
     "c_compiler_stub",
+    "make",
     "cmake",
     "fortran_compiler_stub",
-    "c_compiler_stub"
+    "c_compiler_stub",
+    "make"
    ],
    "host":[
     "libblas",
@@ -197,7 +204,7 @@
  "name":"scalapack",
  "new_version":"2.1.0",
  "pinning_version":"2019.11.26",
- "raw_meta_yaml":"{% set name = \"scalapack\" %}\n{% set version = \"2.0.2\" %}\n{% set sha256 = \"0c74aeae690fe5ee4db7926f49c5d0bb69ce09eea75beb915e00bba07530395c\" %}\n\n{% set mpi = mpi or 'mpich' %}\n\npackage:\n  name: {{ name }}\n  version: {{ version }}\n\nsource:\n  fn: {{ name }}-{{ version }}.tar.gz\n  url: http://www.netlib.org/{{ name }}/{{ name }}-{{ version }}.tgz\n  sha256: {{ sha256 }}\n  patches:\n    - 0001-mpi3.patch\n    - 0002-cmake.patch\n\nbuild:\n  number: 1007\n  skip: true  # [win]\n\nrequirements:\n  build:\n    - cmake\n    - {{ compiler('fortran') }}\n    - {{ compiler('c') }}\n  host:\n    - libblas\n    - liblapack\n    - {{ mpi }}\n  run:\n    - {{ mpi }}\n\ntest:\n  commands:\n    - test -f $PREFIX/lib/libscalapack.dylib  # [osx]\n    - test -f $PREFIX/lib/libscalapack.so  # [linux]\n\nabout:\n  home: http://www.netlib.org/scalapack/\n  license: BSD-2-Clause\n  license_family: BSD\n  license_file: LICENSE\n  summary: ScaLAPACK is a library of high-performance linear algebra routines for parallel distributed memory machines\n  description: |\n    ScaLAPACK is a library of high-performance linear algebra routines for parallel distributed\n    memory machines. ScaLAPACK solves dense and banded linear systems, least squares problems,\n    eigenvalue problems, and singular value problems.\n\nextra:\n  recipe-maintainers:\n    - dalcinl\n    - minrk\n    - davidbrochart\n    - SylvainCorlay\n",
+ "raw_meta_yaml":"{% set name = \"scalapack\" %}\n{% set version = \"2.0.2\" %}\n{% set sha256 = \"0c74aeae690fe5ee4db7926f49c5d0bb69ce09eea75beb915e00bba07530395c\" %}\n\n{% set mpi = mpi or 'mpich' %}\n\npackage:\n  name: {{ name }}\n  version: {{ version }}\n\nsource:\n  fn: {{ name }}-{{ version }}.tar.gz\n  url: http://www.netlib.org/{{ name }}/{{ name }}-{{ version }}.tgz\n  sha256: {{ sha256 }}\n  patches:\n    - 0001-mpi3.patch\n    - 0002-cmake.patch\n\nbuild:\n  number: 1008\n  skip: true  # [win]\n\nrequirements:\n  build:\n    - cmake\n    - {{ compiler('fortran') }}\n    - {{ compiler('c') }}\n    - make\n  host:\n    - libblas\n    - liblapack\n    - {{ mpi }}\n  run:\n    - {{ mpi }}\n\ntest:\n  commands:\n    - test -f $PREFIX/lib/libscalapack.dylib  # [osx]\n    - test -f $PREFIX/lib/libscalapack.so  # [linux]\n\nabout:\n  home: http://www.netlib.org/scalapack/\n  license: BSD-2-Clause\n  license_family: BSD\n  license_file: LICENSE\n  summary: ScaLAPACK is a library of high-performance linear algebra routines for parallel distributed memory machines\n  description: |\n    ScaLAPACK is a library of high-performance linear algebra routines for parallel distributed\n    memory machines. ScaLAPACK solves dense and banded linear systems, least squares problems,\n    eigenvalue problems, and singular value problems.\n\nextra:\n  recipe-maintainers:\n    - dalcinl\n    - minrk\n    - davidbrochart\n    - SylvainCorlay\n",
  "req":{
   "__set__":true,
   "elements":[
@@ -206,6 +213,7 @@
    "fortran_compiler_stub",
    "libblas",
    "liblapack",
+   "make",
    "mpich"
   ]
  },
@@ -215,7 +223,8 @@
    "elements":[
     "c_compiler_stub",
     "cmake",
-    "fortran_compiler_stub"
+    "fortran_compiler_stub",
+    "make"
    ]
   },
   "host":{
@@ -245,7 +254,8 @@
    "elements":[
     "c_compiler_stub",
     "cmake",
-    "fortran_compiler_stub"
+    "fortran_compiler_stub",
+    "make"
    ]
   },
   "host":{
