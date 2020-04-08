@@ -149,29 +149,28 @@
     "migrator_version",
     "version"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/04da13bf-69c4-47ce-8548-43a6a455e949.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"MigrationYaml",
+    "migrator_object_version":1,
+    "migrator_version":0,
+    "name":"python38"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_object_version",
+    "migrator_version",
+    "name"
+   ]
   }
  ],
- "bad":{
-  "exception":"Failed to put item: An error occurred (ValidationException) on request (ARA4T8SCLNEQ7TBDET7VFO4FQRVV4KQNSO5AEMVJF66Q9ASUAAJG) on table (pr_json) when calling the PutItem operation: Attempting to store more than 38 significant digits in a Number",
-  "traceback":[
-   "Traceback (most recent call last):",
-   "  File \"/root/repo/cf-scripts/conda_forge_tick/auto_tick.py\", line 823, in main",
-   "    hash_type=attrs.get(\"hash_type\", \"sha256\"),",
-   "  File \"/root/repo/cf-scripts/conda_forge_tick/auto_tick.py\", line 252, in run",
-   "    PRJson.dump(pr_json)",
-   "  File \"/root/repo/cf-scripts/conda_forge_tick/dynamo_models.py\", line 33, in dump",
-   "    item.save()",
-   "  File \"/opt/conda/envs/run_env/lib/python3.7/site-packages/pynamodb/models.py\", line 405, in save",
-   "    data = self._get_connection().put_item(*args, **kwargs)",
-   "  File \"/opt/conda/envs/run_env/lib/python3.7/site-packages/pynamodb/connection/table.py\", line 139, in put_item",
-   "    return_item_collection_metrics=return_item_collection_metrics)",
-   "  File \"/opt/conda/envs/run_env/lib/python3.7/site-packages/pynamodb/connection/base.py\", line 972, in put_item",
-   "    six.raise_from(PutError(\"Failed to put item: {}\".format(e), e), None)",
-   "  File \"<string>\", line 3, in raise_from",
-   "pynamodb.exceptions.PutError: Failed to put item: An error occurred (ValidationException) on request (ARA4T8SCLNEQ7TBDET7VFO4FQRVV4KQNSO5AEMVJF66Q9ASUAAJG) on table (pr_json) when calling the PutItem operation: Attempting to store more than 38 significant digits in a Number",
-   ""
-  ]
- },
+ "bad":false,
  "conda-forge.yml":{},
  "feedstock_name":"geoviews",
  "hash_type":"sha256",
@@ -467,7 +466,7 @@
   "geoviews",
   "geoviews-core"
  ],
- "pinning_version":"2020.03.30",
+ "pinning_version":"2020.04.08",
  "raw_meta_yaml":"{% set version = \"1.8.1\" %}\n\npackage:\n  name: geoviews-core\n  version: {{ version }}\n\nsource:\n  url: https://pypi.io/packages/source/g/geoviews/geoviews-{{ version }}.tar.gz\n  sha256: 7cf0c43b01b4aa623520a233d5f82e58b69febd58e22af328128f699f1c745fe\n\nbuild:\n  number: 0\n\noutputs:\n  - name: geoviews-core\n    script: build_base.sh\n    build:\n      noarch: python\n      entry_points:\n        - geoviews = geoviews.__main__:main\n    requirements:\n      run_constrained:\n        - geoviews {{ version }}\n      host:\n        - python >=3.6\n        - pip\n        - param >=1.9.0\n        # These are also needed at build time and declared in the pyproject.toml\n        - pyct >=0.4.4\n        - bokeh >=2.0.0\n        - nodejs >=10.13.0\n        - wheel\n        - cartopy >=0.17.0\n        - setuptools >=30.3.0\n      run:\n        - python >=3.6\n        - bokeh >=2.0.0\n        - cartopy >=0.17.0\n        - holoviews >=1.13.0\n        - numpy  >=1.0\n        - param >=1.9.3\n    test:\n      requires:\n        - pip\n      commands:\n        - pip check\n      imports:\n        - geoviews\n\n  - name: geoviews\n    build:\n      noarch: python\n    requirements:\n      - python >=3.6\n      - bokeh >=2.0.0\n      - cartopy >=0.17.0\n      - holoviews >=1.13.0\n      - numpy >=1.0\n      - param >=1.9.3,<2.0\n      - {{ pin_subpackage('geoviews-core', max_pin=\"x.x.x.x\") }}\n      - datashader\n      - geopandas\n      - netcdf4\n      - pandas\n      - pyct\n      - xarray\n    test:\n      imports:\n        - geoviews\n      requires:\n        - nbsmoke\n        - pytest\n      commands:\n        - geoviews examples --path=. --force\n        # just run one notebook for now; increase in the future if notebooks can be run quickly with test/tiny data\n        - pytest --nbsmoke-run -k \".ipynb\" user_guide/Geometries.ipynb\n    about:\n      home: http://geoviews.org\n      license: BSD-3-Clause\n      license_file: LICENSE\n      summary: GeoViews is a Python library that makes it easy to explore and visualize geographical, meteorological, and oceanographic datasets, such as those used\n        in weather, climate, and remote sensing research.\n\nabout:\n  home: http://geoviews.org\n  license: BSD-3-Clause\n  license_file: LICENSE\n  summary: GeoViews is a Python library that makes it easy to explore and visualize geographical, meteorological, and oceanographic datasets, such as those used in\n    weather, climate, and remote sensing research.\nextra:\n  recipe-maintainers:\n    - ocefpaf\n    - philippjfr\n",
  "req":{
   "__set__":true,
