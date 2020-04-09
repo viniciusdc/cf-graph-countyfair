@@ -110,13 +110,13 @@
    "dev_url":"https://github.com/westpa",
    "doc_url":"https://westpa.github.io/westpa/sphinx_index.html#tutorials",
    "home":"https://westpa.github.io/westpa",
-   "license":"GPL-3.0",
-   "license_family":"GPL",
-   "license_file":"COPYING",
+   "license":"MIT",
+   "license_family":"MIT",
+   "license_file":"LICENSE",
    "summary":"Interoperable, highly-scalable software for weighted ensemble simulation."
   },
   "build":{
-   "number":"1",
+   "number":"0",
    "skip":true
   },
   "extra":{
@@ -140,7 +140,7 @@
   },
   "package":{
    "name":"westpa",
-   "version":"2017.10"
+   "version":"2020.01"
   },
   "requirements":{
    "build":[
@@ -152,44 +152,47 @@
     "setuptools",
     "python",
     "cython",
-    "numpy 1.11.*",
+    "numpy 1.16.*",
     "setuptools",
     "python",
     "cython",
-    "numpy 1.11.*",
+    "numpy 1.16.*",
     "setuptools",
     "python",
     "cython",
-    "numpy 1.11.*"
+    "numpy 1.16.*"
    ],
    "run":[
     "python",
     "numpy",
     "scipy",
-    "h5py 2.7.*",
-    "pyyaml 3.12.*",
-    "pyzmq 16.0.*",
-    "matplotlib",
+    "h5py 2.10.*",
+    "pyyaml 5.3.*",
+    "pyzmq 19.0.*",
+    "matplotlib-base",
+    "blessings 1.7.*",
     "python",
     "numpy",
     "scipy",
-    "h5py 2.7.*",
-    "pyyaml 3.12.*",
-    "pyzmq 16.0.*",
-    "matplotlib",
+    "h5py 2.10.*",
+    "pyyaml 5.3.*",
+    "pyzmq 19.0.*",
+    "matplotlib-base",
+    "blessings 1.7.*",
     "python",
     "numpy",
     "scipy",
-    "h5py 2.7.*",
-    "pyyaml 3.12.*",
-    "pyzmq 16.0.*",
-    "matplotlib"
+    "h5py 2.10.*",
+    "pyyaml 5.3.*",
+    "pyzmq 19.0.*",
+    "matplotlib-base",
+    "blessings 1.7.*"
    ]
   },
   "source":{
-   "fn":"westpa-2017.10.tar.gz",
-   "sha256":"3129dd1d651c4fe542599f2d5ecdbff09e5d704ea8c97c8ae7dca7b0bd4598a6",
-   "url":"https://github.com/westpa/westpa/archive/v2017.10.tar.gz"
+   "fn":"westpa-2020.01.tar.gz",
+   "sha256":"11e39a76af081dfd6b3472a9bb68579d55aac66d08ea6eff6a6cbaee9386e72d",
+   "url":"https://github.com/westpa/westpa/archive/v2020.01.tar.gz"
   },
   "test":{
    "commands":[
@@ -235,14 +238,15 @@
  "name":"westpa",
  "new_version":"2020.01",
  "pinning_version":"2020.03.23",
- "raw_meta_yaml":"{% set name = \"westpa\" %}\n{% set version = \"2017.10\" %}\n{% set sha256 = \"3129dd1d651c4fe542599f2d5ecdbff09e5d704ea8c97c8ae7dca7b0bd4598a6\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  fn: {{ name }}-{{ version }}.tar.gz\n  url: https://github.com/westpa/westpa/archive/v{{ version }}.tar.gz\n  sha256: {{ sha256 }}\n\nbuild:\n  number: 1\n  skip: True  # [win or py3k]\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n  host:\n    - setuptools\n    - python\n    - cython\n    - numpy 1.11.*\n  run:\n    - python\n    - {{ pin_compatible('numpy') }}\n    - scipy\n    - h5py 2.7.*\n    - pyyaml 3.12.*\n    - pyzmq 16.0.*\n    - matplotlib\n\ntest:\n  commands:\n    - \"source ${PREFIX}/${PKG_NAME}-${PKG_VERSION}/westpa.sh\"\n    - \"source ${WEST_ROOT}/bin/w_env\"\n    - \"$WEST_PYTHON -c 'import west'\"\n    - \"$WEST_PYTHON -c 'import west.propagators'\"\n    - \"$WEST_PYTHON -c 'import westpa'\"\n    - \"$WEST_PYTHON -c 'import westpa.binning'\"\n    - \"$WEST_PYTHON -c 'import westpa.kinetics'\"\n    - \"$WEST_PYTHON -c 'import westpa.reweight'\"\n    - \"$WEST_PYTHON -c 'import work_managers'\"\n    - \"$WEST_PYTHON -c 'import westtools'\"\n    - \"$WEST_PYTHON -c 'import fasthist'\"\n    - \"$WEST_PYTHON -c 'import mclib'\"\n    # Currently blocked by https://github.com/westpa/westpa/issues/70\n    #- \"$WEST_PYTHON -c 'import trajtree'\"\n\nabout:\n  home: https://westpa.github.io/westpa\n  license: GPL-3.0\n  license_family: GPL\n  license_file: COPYING\n  summary: 'Interoperable, highly-scalable software for weighted ensemble simulation.'\n\n  description: |\n    WESTPA is a package for constructing and running stochastic simulations\n    using the \"weighted ensemble\" approach of Huber and Kim (1996).\n  doc_url: https://westpa.github.io/westpa/sphinx_index.html#tutorials\n  dev_url: https://github.com/westpa\n\nextra:\n  recipe-maintainers:\n    - mczwier\n    - ajoshpratt\n    - synapticarbors\n    - burntyellow\n    - ltchong\n",
+ "raw_meta_yaml":"{% set name = \"westpa\" %}\n{% set version = \"2020.01\" %}\n{% set sha256 = \"11e39a76af081dfd6b3472a9bb68579d55aac66d08ea6eff6a6cbaee9386e72d\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  fn: {{ name }}-{{ version }}.tar.gz\n  url: https://github.com/westpa/westpa/archive/v{{ version }}.tar.gz\n  sha256: {{ sha256 }}\n\nbuild:\n  number: 0\n  skip: True  # [win or py2k]\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n  host:\n    - setuptools\n    - python\n    - cython\n    - numpy 1.16.*\n  run:\n    - python\n    - {{ pin_compatible('numpy') }}\n    - scipy\n    - h5py 2.10.*\n    - pyyaml 5.3.*\n    - pyzmq 19.0.*\n    - matplotlib-base\n    - blessings 1.7.*\n\ntest:\n  commands:\n    - \"source ${PREFIX}/${PKG_NAME}-${PKG_VERSION}/westpa.sh\"\n    - \"source ${WEST_ROOT}/bin/w_env\"\n    - \"$WEST_PYTHON -c 'import west'\"\n    - \"$WEST_PYTHON -c 'import west.propagators'\"\n    - \"$WEST_PYTHON -c 'import westpa'\"\n    - \"$WEST_PYTHON -c 'import westpa.binning'\"\n    - \"$WEST_PYTHON -c 'import westpa.kinetics'\"\n    - \"$WEST_PYTHON -c 'import westpa.reweight'\"\n    - \"$WEST_PYTHON -c 'import work_managers'\"\n    - \"$WEST_PYTHON -c 'import westtools'\"\n    - \"$WEST_PYTHON -c 'import fasthist'\"\n    - \"$WEST_PYTHON -c 'import mclib'\"\n    # Currently blocked by https://github.com/westpa/westpa/issues/70\n    #- \"$WEST_PYTHON -c 'import trajtree'\"\n\nabout:\n  home: https://westpa.github.io/westpa\n  license: MIT\n  license_family: MIT\n  license_file: LICENSE\n  summary: 'Interoperable, highly-scalable software for weighted ensemble simulation.'\n\n  description: |\n    WESTPA is a package for constructing and running stochastic simulations\n    using the \"weighted ensemble\" approach of Huber and Kim (1996).\n  doc_url: https://westpa.github.io/westpa/sphinx_index.html#tutorials\n  dev_url: https://github.com/westpa\n\nextra:\n  recipe-maintainers:\n    - mczwier\n    - ajoshpratt\n    - synapticarbors\n    - burntyellow\n    - ltchong\n",
  "req":{
   "__set__":true,
   "elements":[
+   "blessings",
    "c_compiler_stub",
    "cython",
    "h5py",
-   "matplotlib",
+   "matplotlib-base",
    "numpy",
    "python",
    "pyyaml",
@@ -270,8 +274,9 @@
   "run":{
    "__set__":true,
    "elements":[
+    "blessings",
     "h5py",
-    "matplotlib",
+    "matplotlib-base",
     "numpy",
     "python",
     "pyyaml",
@@ -297,7 +302,7 @@
    "__set__":true,
    "elements":[
     "cython",
-    "numpy 1.11.*",
+    "numpy 1.16.*",
     "python",
     "setuptools"
    ]
@@ -305,12 +310,13 @@
   "run":{
    "__set__":true,
    "elements":[
-    "h5py 2.7.*",
-    "matplotlib",
+    "blessings 1.7.*",
+    "h5py 2.10.*",
+    "matplotlib-base",
     "numpy",
     "python",
-    "pyyaml 3.12.*",
-    "pyzmq 16.0.*",
+    "pyyaml 5.3.*",
+    "pyzmq 19.0.*",
     "scipy"
    ]
   },
@@ -320,5 +326,5 @@
   }
  },
  "url":"https://github.com/westpa/westpa/archive/v2017.10.tar.gz",
- "version":"2017.10"
+ "version":"2020.01"
 }
