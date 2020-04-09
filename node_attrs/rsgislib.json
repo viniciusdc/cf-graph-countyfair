@@ -268,7 +268,7 @@
   },
   "package":{
    "name":"rsgislib",
-   "version":"4.0.6"
+   "version":"4.1.95"
   },
   "requirements":{
    "build":[
@@ -285,71 +285,89 @@
    "host":[
     "python",
     "hdf5",
+    "h5py",
     "xerces-c",
     "muparser",
     "gsl",
-    "geos",
+    "geos 3.7.2",
     "gdal >=3.0.1",
     "boost-cpp",
     "kealib",
-    "cgal-cpp",
+    "cgal-cpp 4.14",
+    "tqdm",
+    "rios",
     "python",
     "hdf5",
+    "h5py",
     "xerces-c",
     "muparser",
     "gsl",
-    "geos",
+    "geos 3.7.2",
     "gdal >=3.0.1",
     "boost-cpp",
     "kealib",
-    "cgal-cpp",
+    "cgal-cpp 4.14",
+    "tqdm",
+    "rios",
     "python",
     "hdf5",
+    "h5py",
     "xerces-c",
     "muparser",
     "gsl",
-    "geos",
+    "geos 3.7.2",
     "gdal >=3.0.1",
     "boost-cpp",
     "kealib",
-    "cgal-cpp"
+    "cgal-cpp 4.14",
+    "tqdm",
+    "rios"
    ],
    "run":[
     "python",
     "hdf5",
+    "h5py",
     "xerces-c",
     "muparser",
     "gsl",
-    "geos",
+    "geos 3.7.2",
     "gdal >=3.0.1",
     "boost-cpp",
     "kealib",
-    "cgal-cpp",
+    "cgal-cpp 4.14",
+    "tqdm",
+    "rios",
     "python",
     "hdf5",
+    "h5py",
     "xerces-c",
     "muparser",
     "gsl",
-    "geos",
+    "geos 3.7.2",
     "gdal >=3.0.1",
     "boost-cpp",
     "kealib",
-    "cgal-cpp",
+    "cgal-cpp 4.14",
+    "tqdm",
+    "rios",
     "python",
     "hdf5",
+    "h5py",
     "xerces-c",
     "muparser",
     "gsl",
-    "geos",
+    "geos 3.7.2",
     "gdal >=3.0.1",
     "boost-cpp",
     "kealib",
-    "cgal-cpp"
+    "cgal-cpp 4.14",
+    "tqdm",
+    "rios"
    ]
   },
   "source":{
-   "sha256":"692a69cb9498c8a30a566efe34edd579fd53dff01a891e299a93188205d0a0ab",
-   "url":"https://bitbucket.org/petebunting/rsgislib/downloads/rsgislib-4.0.6.tar.gz"
+   "sha256":"e11a59205fc6209512a0a2a571eb409f2c8ae7899de95fd16f46f7e6482c1bd0",
+   "url":"https://github.com/remotesensinginfo/rsgislib/archive/4.1.95.tar.gz"
   },
   "test":{
    "commands":[
@@ -406,7 +424,7 @@
  "name":"rsgislib",
  "new_version":false,
  "pinning_version":"2020.03.14",
- "raw_meta_yaml":"{% set version = \"4.0.6\" %}\n\npackage:\n  name: rsgislib\n  version: {{ version }}\n\nsource:\n  url: https://bitbucket.org/petebunting/rsgislib/downloads/rsgislib-{{ version }}.tar.gz\n  sha256: 692a69cb9498c8a30a566efe34edd579fd53dff01a891e299a93188205d0a0ab\n\nbuild:\n  number: 1\n  # CGAL etc do not support earlier than vc14\n  skip: True  # [win and vc<14]\n\nrequirements:\n  build:\n    - cmake\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n  host:\n    - python\n    - hdf5\n    - xerces-c\n    - muparser\n    - gsl\n    - geos\n    - gdal >=3.0.1\n    - boost-cpp\n    - kealib\n    # cgal pulls in appropriate mpir/mpfr/gmp etc for platform\n    - cgal-cpp\n  run:\n    - python\n    - hdf5\n    - xerces-c\n    - muparser\n    - gsl\n    - geos\n    - gdal >=3.0.1\n    - boost-cpp\n    - kealib\n    # cgal pulls in appropriate mpir/mpfr/gmp etc for platform\n    - cgal-cpp\n\ntest:\n  source_files:\n    - python_tests\n  commands:\n    # Random crashing under Windows. Skip for now\n    - cd python_tests/RSGISLibTests && python RSGIStests.py --all  # [not win]\n  imports:\n    - rsgislib\n    - rsgislib.imagecalibration\n    - rsgislib.classification\n    - rsgislib.elevation\n    - rsgislib.imagecalc\n    - rsgislib.imagefilter\n    - rsgislib.imageregistration\n    - rsgislib.imageutils\n    - rsgislib.rastergis\n    - rsgislib.segmentation\n    - rsgislib.vectorutils\n    - rsgislib.zonalstats\n    # get a memory error here - must investigate\n    #- rsgislib.histocube\n    - rsgislib.imagemorphology\n\nabout:\n  home: http://www.rsgislib.org\n  license: GPL-3.0\n  license_file: LICENSE.txt\n  summary: The Remote Sensing and GIS software library (RSGISLib) is a collection of Python modules for processing remote sensing and GIS datasets.\n\nextra:\n  recipe-maintainers:\n    - danclewley\n    - petebunting\n    - gillins\n",
+ "raw_meta_yaml":"{% set version = \"4.1.95\" %}\n\npackage:\n  name: rsgislib\n  version: {{ version }}\n\nsource:\n  url: https://github.com/remotesensinginfo/rsgislib/archive/{{ version }}.tar.gz\n  sha256: e11a59205fc6209512a0a2a571eb409f2c8ae7899de95fd16f46f7e6482c1bd0\n\nbuild:\n  number: 1\n  # CGAL etc do not support earlier than vc14\n  skip: True  # [win and vc<14]\n\nrequirements:\n  build:\n    - cmake\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n  host:\n    - python\n    - hdf5\n    - h5py\n    - xerces-c\n    - muparser\n    - gsl\n    - geos 3.7.2\n    - gdal >=3.0.1\n    - boost-cpp\n    - kealib\n    # cgal pulls in appropriate mpir/mpfr/gmp etc for platform\n    - cgal-cpp 4.14\n    - tqdm\n    - rios\n  run:\n    - python\n    - hdf5\n    - h5py\n    - xerces-c\n    - muparser\n    - gsl\n    - geos 3.7.2\n    - gdal >=3.0.1\n    - boost-cpp\n    - kealib\n    # cgal pulls in appropriate mpir/mpfr/gmp etc for platform\n    - cgal-cpp 4.14\n    - tqdm\n    - rios\n\ntest:\n  source_files:\n    - python_tests\n  commands:\n    # Random crashing under Windows. Skip for now\n    - cd python_tests/RSGISLibTests && python RSGIStests.py --all  # [not win]\n  imports:\n    - rsgislib\n    - rsgislib.imagecalibration\n    - rsgislib.classification\n    - rsgislib.elevation\n    - rsgislib.imagecalc\n    - rsgislib.imagefilter\n    - rsgislib.imageregistration\n    - rsgislib.imageutils\n    - rsgislib.rastergis\n    - rsgislib.segmentation\n    - rsgislib.vectorutils\n    - rsgislib.zonalstats\n    # get a memory error here - must investigate\n    #- rsgislib.histocube\n    - rsgislib.imagemorphology\n\nabout:\n  home: http://www.rsgislib.org\n  license: GPL-3.0\n  license_file: LICENSE.txt\n  summary: The Remote Sensing and GIS software library (RSGISLib) is a collection of Python modules for processing remote sensing and GIS datasets.\n\nextra:\n  recipe-maintainers:\n    - danclewley\n    - petebunting\n    - gillins\n",
  "req":{
   "__set__":true,
   "elements":[
@@ -418,10 +436,13 @@
    "gdal",
    "geos",
    "gsl",
+   "h5py",
    "hdf5",
    "kealib",
    "muparser",
    "python",
+   "rios",
+   "tqdm",
    "xerces-c"
   ]
  },
@@ -442,10 +463,13 @@
     "gdal",
     "geos",
     "gsl",
+    "h5py",
     "hdf5",
     "kealib",
     "muparser",
     "python",
+    "rios",
+    "tqdm",
     "xerces-c"
    ]
   },
@@ -457,10 +481,13 @@
     "gdal",
     "geos",
     "gsl",
+    "h5py",
     "hdf5",
     "kealib",
     "muparser",
     "python",
+    "rios",
+    "tqdm",
     "xerces-c"
    ]
   },
@@ -484,14 +511,17 @@
    "__set__":true,
    "elements":[
     "boost-cpp",
-    "cgal-cpp",
+    "cgal-cpp 4.14",
     "gdal >=3.0.1",
-    "geos",
+    "geos 3.7.2",
     "gsl",
+    "h5py",
     "hdf5",
     "kealib",
     "muparser",
     "python",
+    "rios",
+    "tqdm",
     "xerces-c"
    ]
   },
@@ -499,14 +529,17 @@
    "__set__":true,
    "elements":[
     "boost-cpp",
-    "cgal-cpp",
+    "cgal-cpp 4.14",
     "gdal >=3.0.1",
-    "geos",
+    "geos 3.7.2",
     "gsl",
+    "h5py",
     "hdf5",
     "kealib",
     "muparser",
     "python",
+    "rios",
+    "tqdm",
     "xerces-c"
    ]
   },
@@ -516,5 +549,5 @@
   }
  },
  "url":"https://bitbucket.org/petebunting/rsgislib/downloads/rsgislib-3.6.14.tar.gz",
- "version":"4.0.6"
+ "version":"4.1.95"
 }
