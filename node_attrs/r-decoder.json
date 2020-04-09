@@ -71,9 +71,6 @@
  ],
  "bad":false,
  "conda-forge.yml":{
-  "compiler_stack":"comp7",
-  "max_py_ver":"37",
-  "max_r_ver":"35",
   "provider":{
    "win":"azure"
   }
@@ -91,7 +88,7 @@
   "build":{
    "merge_build_host":true,
    "noarch":"generic",
-   "number":"1",
+   "number":"0",
    "rpaths":[
     "lib/R/lib/",
     "lib/",
@@ -128,7 +125,7 @@
   },
   "package":{
    "name":"r-decoder",
-   "version":"1.1.13"
+   "version":"1.2.1"
   },
   "requirements":{
    "build":null,
@@ -150,15 +147,15 @@
    ]
   },
   "source":{
-   "fn":"decoder_1.1.13.tar.gz",
-   "sha256":"e6d5bddbd64ba539b0599be621785f1c68917286415dea8047d9c946cae9ecce",
+   "fn":"decoder_1.2.1.tar.gz",
+   "sha256":"945c559657d5707b52cdc25d4889e7446d0914bf0e9697855dd2432c405d0065",
    "url":[
-    "https://cran.r-project.org/src/contrib/decoder_1.1.13.tar.gz",
-    "https://cran.r-project.org/src/contrib/Archive/decoder/decoder_1.1.13.tar.gz",
-    "https://cran.r-project.org/src/contrib/decoder_1.1.13.tar.gz",
-    "https://cran.r-project.org/src/contrib/Archive/decoder/decoder_1.1.13.tar.gz",
-    "https://cran.r-project.org/src/contrib/decoder_1.1.13.tar.gz",
-    "https://cran.r-project.org/src/contrib/Archive/decoder/decoder_1.1.13.tar.gz"
+    "https://cran.r-project.org/src/contrib/decoder_1.2.1.tar.gz",
+    "https://cran.r-project.org/src/contrib/Archive/decoder/decoder_1.2.1.tar.gz",
+    "https://cran.r-project.org/src/contrib/decoder_1.2.1.tar.gz",
+    "https://cran.r-project.org/src/contrib/Archive/decoder/decoder_1.2.1.tar.gz",
+    "https://cran.r-project.org/src/contrib/decoder_1.2.1.tar.gz",
+    "https://cran.r-project.org/src/contrib/Archive/decoder/decoder_1.2.1.tar.gz"
    ]
   },
   "test":{
@@ -176,7 +173,7 @@
  },
  "new_version_errors":{},
  "pinning_version":"2020.04.09",
- "raw_meta_yaml":"{% set version = \"1.1.13\" %}\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-decoder\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  fn: decoder_{{ version }}.tar.gz\n  url:\n    - {{ cran_mirror }}/src/contrib/decoder_{{ version }}.tar.gz\n    - {{ cran_mirror }}/src/contrib/Archive/decoder/decoder_{{ version }}.tar.gz\n  sha256: e6d5bddbd64ba539b0599be621785f1c68917286415dea8047d9c946cae9ecce\n\nbuild:\n  noarch: generic\n  merge_build_host: True  # [win]\n  number: 1\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - {{posix}}zip               # [win]\n  host:\n    - r-base\n    - r-backports\n  run:\n    - r-base\n    - r-backports\n\ntest:\n  commands:\n    - $R -e \"library('decoder')\"           # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('decoder')\\\"\"  # [win]\n\nabout:\n  home: https://www.bitbucket.com/cancercentrum/decoder\n  license: GPL-2\n  summary: Main function \"decode\" is used to decode coded key values to plain text. Function\n    \"code\" can be used to code plain text to code if there is a 1:1 relation between\n    the two. The concept relies on 'keyvalue' objects used for translation. There are\n    several 'keyvalue' objects included in the areas of geographical regional codes,\n    administrative health care unit codes, diagnosis codes and more. It is also easy\n    to extend the use by arbitrary  code sets.\n  license_family: GPL2\n  license_file: '{{ environ[\"PREFIX\"] }}/lib/R/share/licenses/GPL-2'\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n    - johanneskoester\n    - bgruening\n    - daler\n    - jdblischak\n    - cbrueffer\n    - dbast\n",
+ "raw_meta_yaml":"{% set version = \"1.2.1\" %}\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-decoder\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  fn: decoder_{{ version }}.tar.gz\n  url:\n    - {{ cran_mirror }}/src/contrib/decoder_{{ version }}.tar.gz\n    - {{ cran_mirror }}/src/contrib/Archive/decoder/decoder_{{ version }}.tar.gz\n  sha256: 945c559657d5707b52cdc25d4889e7446d0914bf0e9697855dd2432c405d0065\n\nbuild:\n  noarch: generic\n  merge_build_host: true  # [win]\n  number: 0\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - {{posix}}zip               # [win]\n  host:\n    - r-base\n    - r-backports\n  run:\n    - r-base\n    - r-backports\n\ntest:\n  commands:\n    - $R -e \"library('decoder')\"           # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('decoder')\\\"\"  # [win]\n\nabout:\n  home: https://www.bitbucket.com/cancercentrum/decoder\n  license: GPL-2\n  summary: Main function \"decode\" is used to decode coded key values to plain text. Function \"code\" can be used to code plain text to code if there is a 1:1 relation\n    between the two. The concept relies on 'keyvalue' objects used for translation. There are several 'keyvalue' objects included in the areas of geographical regional\n    codes, administrative health care unit codes, diagnosis codes and more. It is also easy to extend the use by arbitrary  code sets.\n  license_family: GPL2\n  license_file: {{ environ[\"PREFIX\"] }}/lib/R/share/licenses/GPL-2\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n    - johanneskoester\n    - bgruening\n    - daler\n    - jdblischak\n    - cbrueffer\n    - dbast\n",
  "req":{
   "__set__":true,
   "elements":[
@@ -242,5 +239,5 @@
   "https://cran.r-project.org/src/contrib/decoder_1.1.13.tar.gz",
   "https://cran.r-project.org/src/contrib/Archive/decoder/decoder_1.1.13.tar.gz"
  ],
- "version":"1.1.13"
+ "version":"1.2.1"
 }
