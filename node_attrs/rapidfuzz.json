@@ -199,14 +199,17 @@
   }
  },
  "name":"rapidfuzz",
- "new_version":"0.7.1",
+ "new_version":"0.7.2",
  "new_version_attempts":{
   "0.6.7":1,
   "0.6.8":1,
   "0.7.0":1,
-  "0.7.1":1
+  "0.7.1":1,
+  "0.7.2":1
  },
- "new_version_errors":{},
+ "new_version_errors":{
+  "0.7.2":"The recipe did not change in the version migration, a URL did not hash, or there is jinja2 syntax the bot cannot handle!\n\nPlease check the URLs in your recipe with version '0.7.2' to make sure they exist!\n\nWe also found the following errors:\n\n - could not hash URL template 'https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz'\n"
+ },
  "pinning_version":"2020.04.09",
  "raw_meta_yaml":"{% set name = \"rapidfuzz\" %}\n{% set version = \"0.7.1\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz\n  sha256: ce8f145be5d1e8460bbb21308214c6d7535e00dd223ecb788e65cae2fe9e4306\n\nbuild:\n  number: 0\n  skip: true  # [py2k]\n  script:\n    - {{ PYTHON }} -m pip install . -vv\n\nrequirements:\n  build:\n    - {{ compiler('cxx') }}\n  host:\n    - pip\n    - python\n  run:\n    - python\n\ntest:\n  imports:\n    - rapidfuzz\n  commands:\n    - pip check\n  requires:\n    - pip\n\nabout:\n  home: https://github.com/rhasspy/rapidfuzz\n  license: MIT\n  license_family: MIT\n  license_file: LICENSE\n  summary: rapid fuzzy string matching\n  dev_url: https://github.com/rhasspy/rapidfuzz\n\n\nextra:\n  recipe-maintainers:\n    - maxbachmann\n",
  "req":{
