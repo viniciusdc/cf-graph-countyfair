@@ -50,6 +50,23 @@
     "migrator_version",
     "name"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/401313806.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"Version",
+    "migrator_version":0,
+    "version":"1.2.1"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "version"
+   ]
   }
  ],
  "bad":false,
@@ -153,8 +170,12 @@
   }
  },
  "name":"r-decoder",
- "new_version":"1.1.13",
- "pinning_version":"2019.07.19",
+ "new_version":"1.2.1",
+ "new_version_attempts":{
+  "1.2.1":1
+ },
+ "new_version_errors":{},
+ "pinning_version":"2020.04.09",
  "raw_meta_yaml":"{% set version = \"1.1.13\" %}\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-decoder\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  fn: decoder_{{ version }}.tar.gz\n  url:\n    - {{ cran_mirror }}/src/contrib/decoder_{{ version }}.tar.gz\n    - {{ cran_mirror }}/src/contrib/Archive/decoder/decoder_{{ version }}.tar.gz\n  sha256: e6d5bddbd64ba539b0599be621785f1c68917286415dea8047d9c946cae9ecce\n\nbuild:\n  noarch: generic\n  merge_build_host: True  # [win]\n  number: 1\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - {{posix}}zip               # [win]\n  host:\n    - r-base\n    - r-backports\n  run:\n    - r-base\n    - r-backports\n\ntest:\n  commands:\n    - $R -e \"library('decoder')\"           # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('decoder')\\\"\"  # [win]\n\nabout:\n  home: https://www.bitbucket.com/cancercentrum/decoder\n  license: GPL-2\n  summary: Main function \"decode\" is used to decode coded key values to plain text. Function\n    \"code\" can be used to code plain text to code if there is a 1:1 relation between\n    the two. The concept relies on 'keyvalue' objects used for translation. There are\n    several 'keyvalue' objects included in the areas of geographical regional codes,\n    administrative health care unit codes, diagnosis codes and more. It is also easy\n    to extend the use by arbitrary  code sets.\n  license_family: GPL2\n  license_file: '{{ environ[\"PREFIX\"] }}/lib/R/share/licenses/GPL-2'\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n    - johanneskoester\n    - bgruening\n    - daler\n    - jdblischak\n    - cbrueffer\n    - dbast\n",
  "req":{
   "__set__":true,
@@ -187,7 +208,7 @@
    "elements":[]
   }
  },
- "smithy_version":"3.4.1",
+ "smithy_version":"No azure token. Create a token and\nput it in ~/.conda-smithy/azure.token\n3.6.16",
  "strong_exports":false,
  "total_requirements":{
   "build":{
