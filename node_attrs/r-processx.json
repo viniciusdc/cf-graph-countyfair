@@ -113,6 +113,23 @@
     "migrator_version",
     "version"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/401266547.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"ArchRebuild",
+    "migrator_version":1,
+    "name":"aarch64 and ppc64le addition"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "name"
+   ]
   }
  ],
  "bad":false,
@@ -222,7 +239,7 @@
  },
  "name":"r-processx",
  "new_version":"3.4.2",
- "pinning_version":"2020.01.28",
+ "pinning_version":"2020.04.09",
  "raw_meta_yaml":"{% set version = \"3.4.2\" %}\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-processx\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  url:\n    - {{ cran_mirror }}/src/contrib/processx_{{ version }}.tar.gz\n    - {{ cran_mirror }}/src/contrib/Archive/processx/processx_{{ version }}.tar.gz\n  sha256: 94a0ffc632759be85d13b7b11ed006adf6c08c2d9cd99612cd0372833bd75c09\n\nbuild:\n  merge_build_host: True  # [win]\n  number: 0\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - {{ compiler('c') }}              # [not win]\n    - {{ compiler('m2w64_c') }}        # [win]\n    - {{posix}}filesystem        # [win]\n    - {{posix}}make\n    - {{posix}}sed               # [win]\n    - {{posix}}coreutils         # [win]\n    - {{posix}}zip               # [win]\n  host:\n    - r-base\n    - r-r6\n    - r-ps >=1.2.0\n  run:\n    - r-base\n    - {{native}}gcc-libs         # [win]\n    - r-r6\n    - r-ps >=1.2.0\n\ntest:\n  commands:\n    - $R -e \"library('processx')\"           # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('processx')\\\"\"  # [win]\n\nabout:\n  home: https://processx.r-lib.org, https://github.com/r-lib/processx#readme\n  license: MIT\n  summary: Tools to run system processes in the background. It can check if a background process\n    is running; wait on a background process to finish; get the exit status of finished\n    processes; kill background processes. It can read the standard output and error\n    of the processes, using non-blocking connections. 'processx' can poll a process\n    for standard output or error, with a timeout. It can also poll several processes\n    at once.\n  license_family: MIT\n  license_file:\n    - '{{ environ[\"PREFIX\"] }}/lib/R/share/licenses/MIT'\n    - LICENSE\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n\n# Package: processx\n# Title: Execute and Control System Processes\n# Version: 3.4.1\n# Authors@R: c( person(\"Gabor\", \"Csardi\", role = c(\"aut\", \"cre\", \"cph\"), email = \"csardi.gabor@gmail.com\", comment = c(ORCID = \"0000-0001-7098-9676\")), person(\"Winston\", \"Chang\", role = \"aut\"), person(\"RStudio\", role = c(\"cph\", \"fnd\")), person(\"Mango Solutions\", role  = c(\"cph\", \"fnd\")))\n# Description: Tools to run system processes in the background. It can check if a background process is running; wait on a background process to finish; get the exit status of finished processes; kill background processes. It can read the standard output and error of the processes, using non-blocking connections. 'processx' can poll a process for standard output or error, with a timeout. It can also poll several processes at once.\n# License: MIT + file LICENSE\n# LazyData: true\n# URL: https://processx.r-lib.org, https://github.com/r-lib/processx#readme\n# BugReports: https://github.com/r-lib/processx/issues\n# RoxygenNote: 6.1.1\n# Imports: ps (>= 1.2.0), R6, utils\n# Suggests: callr (>= 3.2.0), codetools, covr, crayon, curl, debugme, parallel, testthat, withr\n# Encoding: UTF-8\n# NeedsCompilation: yes\n# Packaged: 2019-07-16 14:54:16 UTC; gaborcsardi\n# Author: Gabor Csardi [aut, cre, cph] (<https://orcid.org/0000-0001-7098-9676>), Winston Chang [aut], RStudio [cph, fnd], Mango Solutions [cph, fnd]\n# Maintainer: Gabor Csardi <csardi.gabor@gmail.com>\n# Repository: CRAN\n# Date/Publication: 2019-07-18 06:35:54 UTC\n",
  "req":{
   "__set__":true,
@@ -275,7 +292,7 @@
    "elements":[]
   }
  },
- "smithy_version":"3.6.8",
+ "smithy_version":"No azure token. Create a token and\nput it in ~/.conda-smithy/azure.token\n3.6.16",
  "strong_exports":false,
  "total_requirements":{
   "build":{
