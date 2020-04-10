@@ -653,13 +653,13 @@
  "hash_type":"sha256",
  "meta_yaml":{
   "about":{
-   "description":"DataFrames on AWS",
+   "description":"An open-source Python package that extends the power of Pandas library to AWS connecting DataFrames\nand AWS data related services (Amazon Redshift, AWS Glue, Amazon Athena, Amazon EMR, etc).\nBuilt on top of other open-source projects like Pandas, Apache Arrow, Boto3, s3fs, SQLAlchemy,\nPsycopg2 and PyMySQL, it offers abstracted functions to execute usual ETL tasks like load/unload\ndata from Data Lakes, Data Warehouses and Databases.\n",
    "doc_url":"https://aws-data-wrangler.readthedocs.io",
    "home":"https://github.com/awslabs/aws-data-wrangler",
    "license":"Apache-2.0",
    "license_family":"Apache",
    "license_file":"LICENSE",
-   "summary":"DataFrames on AWS"
+   "summary":"Pandas on AWS"
   },
   "build":{
    "noarch":"python",
@@ -697,35 +697,38 @@
    ],
    "run":[
     "python >=3.6",
-    "numpy ~=1.18.1",
-    "pandas ~=1.0.1",
-    "pyarrow ~=0.16.0",
-    "botocore >=1.13.34",
-    "boto3 >=1.10.34",
-    "s3fs ~=0.4.0",
-    "tenacity ~=6.0.0",
-    "pg8000 ~=1.13.2",
-    "pymysql ~=0.9.3",
+    "numpy~=1.18.2",
+    "pandas~=1.0.3",
+    "pyarrow~=0.16.0",
+    "boto3>=1.12.22",
+    "botocore>=1.15.22",
+    "s3fs~=0.4.2",
+    "psycopg2-binary~=2.8.5",
+    "pymysql~=0.9.3",
+    "SQLAlchemy==1.3.13",
+    "sqlalchemy-redshift~=0.7.7",
     "python >=3.6",
-    "numpy ~=1.18.1",
-    "pandas ~=1.0.1",
-    "pyarrow ~=0.16.0",
-    "botocore >=1.13.34",
-    "boto3 >=1.10.34",
-    "s3fs ~=0.4.0",
-    "tenacity ~=6.0.0",
-    "pg8000 ~=1.13.2",
-    "pymysql ~=0.9.3",
+    "numpy~=1.18.2",
+    "pandas~=1.0.3",
+    "pyarrow~=0.16.0",
+    "boto3>=1.12.22",
+    "botocore>=1.15.22",
+    "s3fs~=0.4.2",
+    "psycopg2-binary~=2.8.5",
+    "pymysql~=0.9.3",
+    "SQLAlchemy==1.3.13",
+    "sqlalchemy-redshift~=0.7.7",
     "python >=3.6",
-    "numpy ~=1.18.1",
-    "pandas ~=1.0.1",
-    "pyarrow ~=0.16.0",
-    "botocore >=1.13.34",
-    "boto3 >=1.10.34",
-    "s3fs ~=0.4.0",
-    "tenacity ~=6.0.0",
-    "pg8000 ~=1.13.2",
-    "pymysql ~=0.9.3"
+    "numpy~=1.18.2",
+    "pandas~=1.0.3",
+    "pyarrow~=0.16.0",
+    "boto3>=1.12.22",
+    "botocore>=1.15.22",
+    "s3fs~=0.4.2",
+    "psycopg2-binary~=2.8.5",
+    "pymysql~=0.9.3",
+    "SQLAlchemy==1.3.13",
+    "sqlalchemy-redshift~=0.7.7"
    ]
   },
   "source":{
@@ -743,21 +746,22 @@
  "name":"awswrangler",
  "new_version":"0.3.2",
  "pinning_version":"2020.02.12",
- "raw_meta_yaml":"{% set name = \"awswrangler\" %}\n{% set version = \"0.3.2\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz\n  sha256: 8a35506dd39225343ad610f3d665297f1e1778124a3e469c9422ca006ea31663\n\nbuild:\n  noarch: python\n  number: 0\n  script: \"{{ PYTHON }} -m pip install . -vv\"\n\nrequirements:\n  host:\n    - python >=3.6\n    - pip\n  run:\n    - python >=3.6\n    - numpy ~=1.18.1\n    - pandas ~=1.0.1\n    - pyarrow ~=0.16.0\n    - botocore >=1.13.34\n    - boto3 >=1.10.34\n    - s3fs ~=0.4.0\n    - tenacity ~=6.0.0\n    - pg8000 ~=1.13.2\n    - pymysql ~=0.9.3\n\ntest:\n  imports:\n    - awswrangler\n\nabout:\n  home: https://github.com/awslabs/aws-data-wrangler\n  license: Apache-2.0\n  license_family: Apache\n  license_file: LICENSE\n  summary: 'DataFrames on AWS'\n  description: 'DataFrames on AWS'\n  doc_url: https://aws-data-wrangler.readthedocs.io\n\nextra:\n  recipe-maintainers:\n    - nicolas-geniteau\n    - maximerihouey\n    - ncolomer\n    - igorborgest\n",
+ "raw_meta_yaml":"{% set name = \"awswrangler\" %}\n{% set version = \"0.3.2\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz\n  sha256: 8a35506dd39225343ad610f3d665297f1e1778124a3e469c9422ca006ea31663\n\nbuild:\n  noarch: python\n  number: 0\n  script: \"{{ PYTHON }} -m pip install . -vv\"\n\nrequirements:\n  host:\n    - python >=3.6\n    - pip\n  run:\n    - python >=3.6\n    - numpy~=1.18.2\n    - pandas~=1.0.3\n    - pyarrow~=0.16.0\n    - boto3>=1.12.22\n    - botocore>=1.15.22\n    - s3fs~=0.4.2\n    - psycopg2-binary~=2.8.5\n    - pymysql~=0.9.3\n    - SQLAlchemy==1.3.13\n    - sqlalchemy-redshift~=0.7.7\n\ntest:\n  imports:\n    - awswrangler\n\nabout:\n  home: https://github.com/awslabs/aws-data-wrangler\n  license: Apache-2.0\n  license_family: Apache\n  license_file: LICENSE\n  summary: 'Pandas on AWS'\n  description: |\n    An open-source Python package that extends the power of Pandas library to AWS connecting DataFrames\n    and AWS data related services (Amazon Redshift, AWS Glue, Amazon Athena, Amazon EMR, etc).\n    Built on top of other open-source projects like Pandas, Apache Arrow, Boto3, s3fs, SQLAlchemy,\n    Psycopg2 and PyMySQL, it offers abstracted functions to execute usual ETL tasks like load/unload\n    data from Data Lakes, Data Warehouses and Databases.\n  doc_url: https://aws-data-wrangler.readthedocs.io\n\nextra:\n  recipe-maintainers:\n    - nicolas-geniteau\n    - maximerihouey\n    - ncolomer\n    - igorborgest\n",
  "req":{
   "__set__":true,
   "elements":[
    "boto3",
    "botocore",
-   "numpy",
-   "pandas",
-   "pg8000",
+   "numpy~",
+   "pandas~",
    "pip",
-   "pyarrow",
-   "pymysql",
+   "psycopg2-binary~",
+   "pyarrow~",
+   "pymysql~",
    "python",
-   "s3fs",
-   "tenacity"
+   "s3fs~",
+   "sqlalchemy",
+   "sqlalchemy-redshift~"
   ]
  },
  "requirements":{
@@ -777,14 +781,15 @@
    "elements":[
     "boto3",
     "botocore",
-    "numpy",
-    "pandas",
-    "pg8000",
-    "pyarrow",
-    "pymysql",
+    "numpy~",
+    "pandas~",
+    "psycopg2-binary~",
+    "pyarrow~",
+    "pymysql~",
     "python",
-    "s3fs",
-    "tenacity"
+    "s3fs~",
+    "sqlalchemy",
+    "sqlalchemy-redshift~"
    ]
   },
   "test":{
@@ -809,16 +814,17 @@
   "run":{
    "__set__":true,
    "elements":[
-    "boto3 >=1.10.34",
-    "botocore >=1.13.34",
-    "numpy ~=1.18.1",
-    "pandas ~=1.0.1",
-    "pg8000 ~=1.13.2",
-    "pyarrow ~=0.16.0",
-    "pymysql ~=0.9.3",
+    "SQLAlchemy==1.3.13",
+    "boto3>=1.12.22",
+    "botocore>=1.15.22",
+    "numpy~=1.18.2",
+    "pandas~=1.0.3",
+    "psycopg2-binary~=2.8.5",
+    "pyarrow~=0.16.0",
+    "pymysql~=0.9.3",
     "python >=3.6",
-    "s3fs ~=0.4.0",
-    "tenacity ~=6.0.0"
+    "s3fs~=0.4.2",
+    "sqlalchemy-redshift~=0.7.7"
    ]
   },
   "test":{
