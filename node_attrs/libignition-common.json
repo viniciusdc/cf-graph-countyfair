@@ -16,6 +16,23 @@
     "migrator_version",
     "version"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/401704913.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"Version",
+    "migrator_version":0,
+    "version":"3.5.0"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "version"
+   ]
   }
  ],
  "bad":false,
@@ -136,8 +153,12 @@
   }
  },
  "name":"libignition-common3",
- "new_version":false,
- "pinning_version":"2020.02.20",
+ "new_version":"3.5.0",
+ "new_version_attempts":{
+  "3.5.0":1
+ },
+ "new_version_errors":{},
+ "pinning_version":"2020.04.10",
  "raw_meta_yaml":"{% set base_name = \"libignition-common\" %}\n{% set version = \"3.4.0\" %}\n{% set major_version = version.split('.')[0] %}\n{% set name = base_name + major_version %}\n\npackage:\n  name: {{ name }}\n  version: {{ version }}\n\nsource:\n  - url: https://bitbucket.org/ignitionrobotics/ign-common/get/ignition-common{{ major_version }}_{{ version }}.tar.gz\n    sha256: 0b4b504f808b02f5dad9e053b4bbfa3ffce5c590b2c360537e9747fabb15853f\n    patches:\n      - fix_test_break.patch\n      - librt_linkage.patch\n\nbuild:\n  number: 3\n  skip: true  # [win and vc<14 or osx]\n  run_exports:\n    - {{ pin_subpackage(name, max_pin='x.x') }}\n\nrequirements:\n  build:\n    - {{ compiler('cxx') }}  # [not win]\n    - {{ compiler('c') }}    # [not win]\n    - vs2017_win-64          # [win64]\n    - vs2017_win-32          # [win32]\n    - cmake\n    - ninja\n    - pkgconfig\n  host:\n    - libignition-math6\n    - dlfcn-win32  # [win]\n    - libuuid      # [not win]\n    - freeimage\n    - gts\n    - tinyxml2\n  run:\n    - libignition-math6\n    - dlfcn-win32  # [win]\n    - libuuid      # [not win]\n    - freeimage\n    - gts\n    - tinyxml2\n\ntest:\n  commands:\n    - test -f ${PREFIX}/include/ignition/common{{ major_version }}/ignition/common.hh  # [not win]\n    - if exist %PREFIX%\\\\Library\\\\include\\\\ignition\\common{{ major_version }}\\ignition\\common.hh (exit 0) else (exit 1)  # [win]\n\nabout:\n  home: https://bitbucket.org/ignitionrobotics/ign-common\n  license: Apache-2.0\n  license_file: LICENSE\n  summary: 'Ignition Common is a component in the ignition framework, a set of libraries designed to rapidly develop robot applications.'\n\nextra:\n  recipe-maintainers:\n    - seanyen\n",
  "req":{
   "__set__":true,
@@ -195,7 +216,7 @@
    "elements":[]
   }
  },
- "smithy_version":"3.6.8",
+ "smithy_version":"No azure token. Create a token and\nput it in ~/.conda-smithy/azure.token\n3.6.16",
  "strong_exports":false,
  "total_requirements":{
   "build":{
