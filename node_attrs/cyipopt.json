@@ -138,7 +138,7 @@
    "summary":"A Cython wrapper to the IPOPT optimization package"
   },
   "build":{
-   "number":"1002",
+   "number":"1003",
    "script":" -m pip install . --no-deps --ignore-installed --no-cache-dir -vvv",
    "skip":true
   },
@@ -156,14 +156,18 @@
   "requirements":{
    "build":[
     "c_compiler_stub",
+    "lapack",
     "pkg-config",
     "c_compiler_stub",
-    "c_compiler_stub"
+    "lapack",
+    "c_compiler_stub",
+    "lapack"
    ],
    "host":[
     "pip",
     "python",
-    "ipopt <3.13",
+    "ipopt",
+    "lapack",
     "setuptools",
     "cython",
     "numpy",
@@ -171,7 +175,8 @@
     "six",
     "pip",
     "python",
-    "ipopt <3.13",
+    "ipopt",
+    "lapack",
     "setuptools",
     "cython",
     "numpy",
@@ -179,7 +184,8 @@
     "six",
     "pip",
     "python",
-    "ipopt <3.13",
+    "ipopt",
+    "lapack",
     "setuptools",
     "cython",
     "numpy",
@@ -188,19 +194,19 @@
    ],
    "run":[
     "python",
-    "ipopt <3.13",
+    "ipopt",
     "numpy",
     "scipy",
     "six",
     "future",
     "python",
-    "ipopt <3.13",
+    "ipopt",
     "numpy",
     "scipy",
     "six",
     "future",
     "python",
-    "ipopt <3.13",
+    "ipopt",
     "numpy",
     "scipy",
     "six",
@@ -238,7 +244,7 @@
  "name":"cyipopt",
  "new_version":"0.1.9",
  "pinning_version":"2020.04.08",
- "raw_meta_yaml":"{% set name = \"cyipopt\" %}\n{% set version = \"0.1.9\" %}\n{% set sha256 = \"b6cea96d5ffb9d3f55d993dd51575fa6137c1f94bdfd53b7b25f574989fffa38\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  fn: v{{ version }}.tar.gz\n  url: https://github.com/matthias-k/cyipopt/archive/v{{ version }}.tar.gz\n  sha256: {{ sha256 }}\n  patches:\n    - no_link_gfortran.patch\n\nbuild:\n  # TODO : Set the build number to 0 on the next cyipopt release.\n  number: 1002\n  # TODO: Once ipopt is available for Windows in conda forge, remove the\n  # following line.\n  skip: True  # [win]\n  script: \"{{ PYTHON }} -m pip install . --no-deps --ignore-installed --no-cache-dir -vvv\"\n\nrequirements:\n  build:\n    - pkg-config  # [osx]\n    - {{ compiler('c') }}\n  host:\n    - pip\n    - python\n    - ipopt <3.13\n    - setuptools\n    - cython\n    - numpy\n    - scipy\n    - six\n  run:\n    - python\n    - ipopt <3.13\n    - {{ pin_compatible('numpy') }}\n    - scipy\n    - six\n    - future\n\ntest:\n  imports:\n    - ipopt\n  files:\n    - examplehs071.py\n  commands:\n    - python examplehs071.py\n\nabout:\n  home: https://github.com/matthias-k/cyipopt\n  license: EPL-1.0\n  summary: 'A Cython wrapper to the IPOPT optimization package'\n\n  description: |\n    Ipopt (Interior Point OPTimizer, pronounced eye-pea-Opt) is a software\n    package for large-scale nonlinear optimization. cyipopt is a python wrapper\n    around Ipopt. It enables using Ipopt from the comfort of the great Python\n    scripting language. Ipopt is available from the COIN-OR initiative, under\n    the Eclipse Public License (EPL).\n  doc_url: http://pythonhosted.org/ipopt/\n  dev_url: https://github.com/matthias-k/cyipopt\n\nextra:\n  recipe-maintainers:\n    - moorepants\n",
+ "raw_meta_yaml":"{% set name = \"cyipopt\" %}\n{% set version = \"0.1.9\" %}\n{% set sha256 = \"b6cea96d5ffb9d3f55d993dd51575fa6137c1f94bdfd53b7b25f574989fffa38\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  fn: v{{ version }}.tar.gz\n  url: https://github.com/matthias-k/cyipopt/archive/v{{ version }}.tar.gz\n  sha256: {{ sha256 }}\n  patches:\n    - no_link_gfortran.patch\n\nbuild:\n  # TODO : Set the build number to 0 on the next cyipopt release.\n  number: 1003\n  # TODO: Once ipopt is available for Windows in conda forge, remove the\n  # following line.\n  skip: True  # [win]\n  script: \"{{ PYTHON }} -m pip install . --no-deps --ignore-installed --no-cache-dir -vvv\"\n\nrequirements:\n  build:\n    - pkg-config  # [osx]\n    - {{ compiler('c') }}\n    # NOTE : The conda-forge ipopt vendors lapack, thus it is needed explicitly.\n    - lapack\n  host:\n    - pip\n    - python\n    - ipopt\n    - lapack\n    - setuptools\n    - cython\n    - numpy\n    - scipy\n    - six\n  run:\n    - python\n    - ipopt\n    - {{ pin_compatible('numpy') }}\n    - scipy\n    - six\n    - future\n\ntest:\n  imports:\n    - ipopt\n  files:\n    - examplehs071.py\n  commands:\n    - python examplehs071.py\n\nabout:\n  home: https://github.com/matthias-k/cyipopt\n  license: EPL-1.0\n  summary: 'A Cython wrapper to the IPOPT optimization package'\n\n  description: |\n    Ipopt (Interior Point OPTimizer, pronounced eye-pea-Opt) is a software\n    package for large-scale nonlinear optimization. cyipopt is a python wrapper\n    around Ipopt. It enables using Ipopt from the comfort of the great Python\n    scripting language. Ipopt is available from the COIN-OR initiative, under\n    the Eclipse Public License (EPL).\n  doc_url: http://pythonhosted.org/ipopt/\n  dev_url: https://github.com/matthias-k/cyipopt\n\nextra:\n  recipe-maintainers:\n    - moorepants\n",
  "req":{
   "__set__":true,
   "elements":[
@@ -246,6 +252,7 @@
    "cython",
    "future",
    "ipopt",
+   "lapack",
    "numpy",
    "pip",
    "pkg-config",
@@ -260,6 +267,7 @@
    "__set__":true,
    "elements":[
     "c_compiler_stub",
+    "lapack",
     "pkg-config"
    ]
   },
@@ -268,6 +276,7 @@
    "elements":[
     "cython",
     "ipopt",
+    "lapack",
     "numpy",
     "pip",
     "python",
@@ -299,6 +308,7 @@
    "__set__":true,
    "elements":[
     "c_compiler_stub",
+    "lapack",
     "pkg-config"
    ]
   },
@@ -306,7 +316,8 @@
    "__set__":true,
    "elements":[
     "cython",
-    "ipopt <3.13",
+    "ipopt",
+    "lapack",
     "numpy",
     "pip",
     "python",
@@ -319,7 +330,7 @@
    "__set__":true,
    "elements":[
     "future",
-    "ipopt <3.13",
+    "ipopt",
     "numpy",
     "python",
     "scipy",
