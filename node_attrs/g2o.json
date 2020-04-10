@@ -78,12 +78,14 @@
   }
  },
  "name":"g2o",
- "new_version":"20170730_git",
+ "new_version":"20200410_git",
  "new_version_attempts":{
-  "20170730_git":41
+  "20170730_git":41,
+  "20200410_git":1
  },
  "new_version_errors":{
-  "20170730_git":"The recipe did not change in the version migration, a URL did not hash, or there is jinja2 syntax the bot cannot handle!\n\nPlease check the URLs in your recipe with version '20170730_git' to make sure they exist!\n\nWe also found the following errors:\n\n - recipe did not appear to change even though the bot said it should have\n"
+  "20170730_git":"The recipe did not change in the version migration, a URL did not hash, or there is jinja2 syntax the bot cannot handle!\n\nPlease check the URLs in your recipe with version '20170730_git' to make sure they exist!\n\nWe also found the following errors:\n\n - recipe did not appear to change even though the bot said it should have\n",
+  "20200410_git":"The recipe did not change in the version migration, a URL did not hash, or there is jinja2 syntax the bot cannot handle!\n\nPlease check the URLs in your recipe with version '20200410_git' to make sure they exist!\n\nWe also found the following errors:\n\n - recipe did not appear to change even though the bot said it should have\n"
  },
  "raw_meta_yaml":"{% set name = \"g2o\" %}\n{% set version = \"2019.11.23\" %}\n\npackage:\n  name: {{ name }}\n  version: {{ version }}\n\nsource:\n  - url: https://github.com/RainerKuemmerle/g2o/archive/fcba4eaca6f20d9a5792404cc8ef303aeb8ba5d2.tar.gz\n    sha256: 8424d593e12c3032ead50c782fd2a55c62be5110143bf55378b763d374ac0ebd\n\nbuild:\n  number: 0\n  skip: true  # [osx or win and vc<14]\n  run_exports:\n    - {{ pin_subpackage(name, max_pin='x.x.x') }}\n\nrequirements:\n  build:\n    - {{ compiler('cxx') }}  # [not win64]\n    - {{ compiler('c') }}    # [not win64]\n    - vs2017_win-64          # [win64]\n    - ninja\n    - cmake\n    - pkg-config\n  host:\n    - eigen\n\ntest:\n  commands:\n    - g2o --help\n\nabout:\n  home: https://github.com/RainerKuemmerle/g2o\n  license: LGPL-3.0-or-later\n  license_file: doc/license-lgpl.txt\n  summary: |\n    g2o - General Graph Optimization\n  dev_url: https://github.com/RainerKuemmerle/g2o\n  doc_url: https://openslam-org.github.io/g2o.html\n\nextra:\n  recipe-maintainers:\n    - seanyen\n",
  "req":{
