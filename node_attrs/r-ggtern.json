@@ -50,6 +50,23 @@
     "migrator_version",
     "name"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/402205996.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"Version",
+    "migrator_version":0,
+    "version":"3.3.0"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "version"
+   ]
   }
  ],
  "bad":false,
@@ -210,8 +227,12 @@
   }
  },
  "name":"r-ggtern",
- "new_version":"3.1.0",
- "pinning_version":"2019.07.20",
+ "new_version":"3.3.0",
+ "new_version_attempts":{
+  "3.3.0":1
+ },
+ "new_version_errors":{},
+ "pinning_version":"2020.04.10.23.07.47",
  "raw_meta_yaml":"{% set version = \"3.1.0\" %}\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-ggtern\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  fn: ggtern_{{ version }}.tar.gz\n  url:\n    - {{ cran_mirror }}/src/contrib/ggtern_{{ version }}.tar.gz\n    - {{ cran_mirror }}/src/contrib/Archive/ggtern/ggtern_{{ version }}.tar.gz\n  sha256: 128558b43930ce1b88a55639e4dcf969dae9abf7ec44fb973264c1ae872e1aba\n\nbuild:\n  noarch: generic\n  merge_build_host: True  # [win]\n  number: 1\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n  host:\n    - r-base\n    - r-mass\n    - r-compositions >=1.40_2\n    - r-ggplot2 >=3.0.0\n    - r-gridextra\n    - r-gtable >=0.1.2\n    - r-latex2exp >=0.4\n    - r-lattice\n    - r-plyr >=1.8.3\n    - r-proto\n    - r-scales >=0.3.0\n  run:\n    - r-base\n    - r-mass\n    - r-compositions >=1.40_2\n    - r-ggplot2 >=3.0.0\n    - r-gridextra\n    - r-gtable >=0.1.2\n    - r-latex2exp >=0.4\n    - r-lattice\n    - r-plyr >=1.8.3\n    - r-proto\n    - r-scales >=0.3.0\n\ntest:\n  commands:\n    - $R -e \"library('ggtern')\"           # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('ggtern')\\\"\"  # [win]\n\nabout:\n  home: http://www.ggtern.com\n  license: GPL-2\n  summary: Extends the functionality of 'ggplot2', providing the capability to plot ternary diagrams\n    for (subset of) the 'ggplot2' geometries. Additionally, 'ggtern' has implemented\n    several NEW geometries which are unavailable to the standard 'ggplot2' release.\n    For further examples and documentation, please proceed to the 'ggtern' website.\n  license_family: GPL2\n  license_file: '{{ environ[\"PREFIX\"] }}/lib/R/share/licenses/GPL-2'\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n    - johanneskoester\n    - bgruening\n    - daler\n    - jdblischak\n    - cbrueffer\n    - dbast\n    - apcamargo\n",
  "req":{
   "__set__":true,
@@ -271,7 +292,7 @@
    "elements":[]
   }
  },
- "smithy_version":"3.4.1",
+ "smithy_version":"No azure token. Create a token and\nput it in ~/.conda-smithy/azure.token\n3.6.16",
  "strong_exports":false,
  "total_requirements":{
   "build":{
