@@ -67,6 +67,23 @@
     "migrator_version",
     "version"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/402189646.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"Version",
+    "migrator_version":0,
+    "version":"5.69.0"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "version"
+   ]
   }
  ],
  "bad":false,
@@ -151,9 +168,11 @@
  "name":"kcoreaddons",
  "new_version":"5.69.0",
  "new_version_attempts":{
-  "5.68.0":1
+  "5.68.0":1,
+  "5.69.0":1
  },
- "pinning_version":"2020.04.07",
+ "new_version_errors":{},
+ "pinning_version":"2020.04.10.23.07.47",
  "raw_meta_yaml":"{% set name = \"kcoreaddons\" %}\n{% set version = \"5.68.0\" %}\n{% set major_minor = \".\".join(version.split(\".\")[:2]) %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  url: https://download.kde.org/stable/frameworks/{{ major_minor }}/kcoreaddons-{{ version }}.tar.xz\n  sha256: c578ae30b4161e45e672d613d2d9c5575a849d21909d9817f90a441044df65d7\n\nbuild:\n  number: 0\n  skip: true  # [not linux]\n  run_exports:\n    - {{ pin_subpackage('kcoreaddons', max_pin='x.x') }}\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n    - cmake\n    - make\n    - extra-cmake-modules\n    - {{ cdt('mesa-libgl-devel') }}  # [linux]\n    - {{ cdt('mesa-dri-drivers') }}  # [linux]\n    - {{ cdt('libselinux') }}  # [linux]\n    - {{ cdt('libxdamage') }}  # [linux]\n    - {{ cdt('libxxf86vm') }}  # [linux]\n  host:\n    - xorg-libxfixes  # [linux]\n    - qt\n    - xorg-libxext\n\ntest:\n  commands:\n    - test -f ${PREFIX}/lib/libKF5CoreAddons.so\n\nabout:\n  home: https://api.kde.org/frameworks/kcoreaddons/html/index.html\n  license: LGPL-v2.-or-later\n  license_family: GPL\n  license_file: COPYING.LIB\n  summary: Qt addon library with a collection of non-GUI utilities\n  description: |\n    KCoreAddons provides classes built on top of QtCore to perform various\n    tasks such as manipulating mime types, autosaving files, creating backup\n    files, generating random sequences, performing text manipulations such as\n    macro replacement, accessing user information and many more.\n  dev_url: https://cgit.kde.org/kcoreaddons.git/tree\n\nextra:\n  recipe-maintainers:\n    - scopatz\n",
  "req":{
   "__set__":true,
@@ -198,7 +217,7 @@
    "elements":[]
   }
  },
- "smithy_version":"No azure token. Create a token and\nput it in ~/.conda-smithy/azure.token\n3.6.15",
+ "smithy_version":"No azure token. Create a token and\nput it in ~/.conda-smithy/azure.token\n3.6.16",
  "strong_exports":false,
  "total_requirements":{
   "build":{
