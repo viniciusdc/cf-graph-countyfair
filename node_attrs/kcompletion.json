@@ -67,6 +67,23 @@
     "migrator_version",
     "version"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/402183625.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"Version",
+    "migrator_version":0,
+    "version":"5.69.0"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "version"
+   ]
   }
  ],
  "bad":false,
@@ -157,9 +174,11 @@
  "name":"kcompletion",
  "new_version":"5.69.0",
  "new_version_attempts":{
-  "5.68.0":1
+  "5.68.0":1,
+  "5.69.0":1
  },
- "pinning_version":"2020.04.07",
+ "new_version_errors":{},
+ "pinning_version":"2020.04.10.23.07.47",
  "raw_meta_yaml":"{% set name = \"kcompletion\" %}\n{% set version = \"5.68.0\" %}\n{% set major_minor = \".\".join(version.split(\".\")[:2]) %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  url: https://download.kde.org/stable/frameworks/{{ major_minor }}/kcompletion-{{ version }}.tar.xz\n  sha256: 642d68b4c472e11a8861a61238297633be288bfd72c13547707754f1ae2be33a\n\nbuild:\n  number: 0\n  skip: true  # [not linux]\n  run_exports:\n    - {{ pin_subpackage('kcompletion', max_pin='x.x') }}\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n    - cmake\n    - make\n    - extra-cmake-modules\n    - {{ cdt('mesa-libgl-devel') }}  # [linux]\n    - {{ cdt('mesa-dri-drivers') }}  # [linux]\n    - {{ cdt('libselinux') }}  # [linux]\n    - {{ cdt('libxdamage') }}  # [linux]\n    - {{ cdt('libxxf86vm') }}  # [linux]\n  host:\n    - xorg-libxfixes  # [linux]\n    - xorg-libxext\n    - qt\n    - kconfig\n    - kwidgetsaddons\n\ntest:\n  commands:\n    - test -f ${PREFIX}/lib/libKF5Completion.so\n\nabout:\n  home: https://api.kde.org/frameworks/kcompletion/html/index.html\n  license: LGPL-v2.1-or-later\n  license_family: GPL\n  license_file: COPYING.LIB\n  summary: Powerful completion framework, including completion-enabled lineedit and combobox.\n  description: |\n    When typing filenames, email addresses and other text where the user often wants to\n    select from existing data (including what they previously typed) rather than enter\n    anything wholly original, users often find it helpful if they only need to type the\n    first few characters, and then have the application offer them a set of choices or\n    attempt to finish off what they were typing. Email clients, shells and \"open file\"\n    dialogs often provide this functionality.\n\n    This framework helps implement this in Qt-based applications. You can use one of\n    the completion-ready widgets provided by this framework, or integrate it into your\n    application's other widgets directly.\n  dev_url: https://cgit.kde.org/kcompletion.git/tree\n\nextra:\n  recipe-maintainers:\n    - scopatz\n",
  "req":{
   "__set__":true,
@@ -208,7 +227,7 @@
    "elements":[]
   }
  },
- "smithy_version":"No azure token. Create a token and\nput it in ~/.conda-smithy/azure.token\n3.6.15",
+ "smithy_version":"No azure token. Create a token and\nput it in ~/.conda-smithy/azure.token\n3.6.16",
  "strong_exports":false,
  "total_requirements":{
   "build":{
