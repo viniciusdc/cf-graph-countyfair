@@ -73,6 +73,8 @@
   "max_py_ver":"37",
   "max_r_ver":"35",
   "provider":{
+   "linux_aarch64":"default",
+   "linux_ppc64le":"default",
    "win":"azure"
   }
  },
@@ -81,13 +83,14 @@
  "meta_yaml":{
   "about":{
    "home":"https://github.com/patperry/r-utf8",
-   "license":"Apache-2-0",
+   "license":"Apache-2.0",
    "license_family":"APACHE",
+   "license_file":"LICENSE",
    "summary":"Process and print 'UTF-8' encoded international text (Unicode). Input, validate, normalize, encode, format, and display."
   },
   "build":{
    "merge_build_host":true,
-   "number":"1001",
+   "number":"1002",
    "rpaths":[
     "lib/R/lib/",
     "lib/",
@@ -174,7 +177,7 @@
  "name":"r-utf8",
  "new_version":"1.1.4",
  "pinning_version":"2020.04.02",
- "raw_meta_yaml":"{% set version = '1.1.4' %}\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-utf8\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  fn: utf8_{{ version }}.tar.gz\n  url:\n    - {{ cran_mirror }}/src/contrib/utf8_{{ version }}.tar.gz\n    - {{ cran_mirror }}/src/contrib/Archive/utf8/utf8_{{ version }}.tar.gz\n  sha256: f6da9cadfc683057d45f54b43312a359cf96ec2731c0dda18a8eae31d1e31e54\n\nbuild:\n  merge_build_host: True  # [win]\n  number: 1001\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - {{ compiler('c') }}        # [not win]\n    - {{ compiler('m2w64_c') }}        # [win]\n    - {{posix}}filesystem        # [win]\n    - {{posix}}make\n    - {{posix}}sed               # [win]\n    - {{posix}}coreutils         # [win]\n    - {{posix}}zip               # [win]\n  host:\n    - r-base\n  run:\n    - r-base\n    - {{native}}gcc-libs         # [win]\n\ntest:\n  commands:\n    - $R -e \"library('utf8')\"           # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('utf8')\\\"\"  # [win]\n\nabout:\n  home: https://github.com/patperry/r-utf8\n  license: Apache-2-0\n  summary: Process and print 'UTF-8' encoded international text (Unicode). Input, validate, normalize,\n    encode, format, and display.\n  license_family: APACHE\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n    - ocefpaf\n    - johanneskoester\n    - bgruening\n    - daler\n    - jdblischak\n    - cbrueffer\n",
+ "raw_meta_yaml":"{% set version = '1.1.4' %}\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-utf8\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  fn: utf8_{{ version }}.tar.gz\n  url:\n    - {{ cran_mirror }}/src/contrib/utf8_{{ version }}.tar.gz\n    - {{ cran_mirror }}/src/contrib/Archive/utf8/utf8_{{ version }}.tar.gz\n  sha256: f6da9cadfc683057d45f54b43312a359cf96ec2731c0dda18a8eae31d1e31e54\n\nbuild:\n  merge_build_host: True  # [win]\n  number: 1002\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - {{ compiler('c') }}        # [not win]\n    - {{ compiler('m2w64_c') }}        # [win]\n    - {{posix}}filesystem        # [win]\n    - {{posix}}make\n    - {{posix}}sed               # [win]\n    - {{posix}}coreutils         # [win]\n    - {{posix}}zip               # [win]\n  host:\n    - r-base\n  run:\n    - r-base\n    - {{native}}gcc-libs         # [win]\n\ntest:\n  commands:\n    - $R -e \"library('utf8')\"           # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('utf8')\\\"\"  # [win]\n\nabout:\n  home: https://github.com/patperry/r-utf8\n  license: Apache-2.0\n  summary: Process and print 'UTF-8' encoded international text (Unicode). Input, validate, normalize,\n    encode, format, and display.\n  license_family: APACHE\n  license_file: LICENSE\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n    - ocefpaf\n    - johanneskoester\n    - bgruening\n    - daler\n    - jdblischak\n    - cbrueffer\n",
  "req":{
   "__set__":true,
   "elements":[
