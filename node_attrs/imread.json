@@ -156,6 +156,23 @@
     "migrator_version",
     "version"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/402642979.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"Version",
+    "migrator_version":0,
+    "version":"0.7.4"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "version"
+   ]
   }
  ],
  "bad":false,
@@ -270,12 +287,13 @@
   }
  },
  "name":"imread",
- "new_version":"0.7.3",
+ "new_version":"0.7.4",
  "new_version_attempts":{
-  "0.7.3":1
+  "0.7.3":1,
+  "0.7.4":1
  },
  "new_version_errors":{},
- "pinning_version":"2020.04.09",
+ "pinning_version":"2020.04.12.13.56.44",
  "raw_meta_yaml":"{% set version = \"0.7.2\" %}\n\npackage:\n  name: imread\n  version: {{ version }}\n\nsource:\n  url: https://pypi.io/packages/source/i/imread/imread-{{ version }}.tar.gz\n  sha256: c9f1b379b3d5f144fc71982640db0b876929851c3542a11a429e440023a4f15b\n\nbuild:\n  number: 0\n  skip: true  # [win and vc<14]\n  script:\n    - cp %LIBRARY_LIB%\\libpng.lib %LIBRARY_LIB%\\png.lib  # [win]\n    - python setup.py build_ext --include-dirs=${PREFIX}/include  # [unix]\n    - python setup.py install --single-version-externally-managed --record record.txt\n    - del %LIBRARY_LIB%\\png.lib  # [win]\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n  host:\n    - python\n    - pip\n    - numpy\n    - msinttypes  # [win]\n    - jpeg\n    - libpng\n    - libwebp\n    - libtiff\n    - zlib         # [win]\n  run:\n    - python\n    - {{ pin_compatible('numpy') }}\n    - jpeg\n    - libpng\n    - libwebp\n    - libtiff\n    - zlib         # [win]\n\ntest:\n  imports:\n    - imread\n\nabout:\n  home: https://imread.rtfd.io/\n  license: MIT\n  license_family: MIT\n  license_file: COPYING.MIT\n  summary: 'imread: Image reading library'\n\n  description: Mahotas-imread is a simple module to read images into numpy arrays\n  doc_url: https://imread.rtfd.io/\n  dev_url: https://github.com/luispedro/imread\n\nextra:\n  recipe-maintainers:\n    - luispedro\n",
  "req":{
   "__set__":true,
