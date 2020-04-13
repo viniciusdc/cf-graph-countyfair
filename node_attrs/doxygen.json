@@ -126,7 +126,7 @@
    "summary":"Generate documentation from source code"
   },
   "build":{
-   "number":"1",
+   "number":"0",
    "script":[
     "mkdir %SCRIPTS%",
     "copy doxygen.exe %SCRIPTS%\\ || goto :eof",
@@ -152,7 +152,7 @@
   },
   "package":{
    "name":"doxygen",
-   "version":"1.8.16"
+   "version":"1.8.18"
   },
   "requirements":{
    "build":[
@@ -174,12 +174,12 @@
    ]
   },
   "source":{
-   "fn":"doxygen-1.8.16.src.tar.gz",
+   "fn":"doxygen-1.8.18.src.tar.gz",
    "patches":[
     "find_iconv.patch"
    ],
-   "sha256":"cc8f6cf3320bff0aada8268ccefe25de3118c47ff1212d83a457254bad8daa5d",
-   "url":"http://doxygen.nl/files/doxygen-1.8.16.src.tar.gz"
+   "sha256":"673bd87fa5595480a7abe6828c8cd5f17e3d330023f647dde07b92ee7f437960",
+   "url":"http://doxygen.nl/files/doxygen-1.8.18.src.tar.gz"
   },
   "test":{
    "commands":[
@@ -196,7 +196,7 @@
  },
  "new_version_errors":{},
  "pinning_version":"2020.04.12.13.56.44",
- "raw_meta_yaml":"{% set name = \"doxygen\" %}\n{% set version = \"1.8.16\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  fn: {{ name }}-{{ version }}.src.tar.gz                                    # [not win]\n  url: http://doxygen.nl/files/{{ name }}-{{ version }}.src.tar.gz           # [not win]\n  sha256: cc8f6cf3320bff0aada8268ccefe25de3118c47ff1212d83a457254bad8daa5d   # [not win]\n\n  fn: {{ name }}-{{ version }}.windows.x64.bin.zip                           # [win]\n  url: http://doxygen.nl/files/{{ name }}-{{ version }}.windows.x64.bin.zip  # [win]\n  sha256: c84890ec003841c1ee6ff35dd3b17fdfd5ae4c2914d1c8df11dcc3719d294ac5   # [win]\n\n  patches:                                                                       # [not win]\n    # CMake finds iconv_open in glibc, but finds iconv.h from libiconv.\n    # Make sure both are found from one place.\n    - find_iconv.patch                                                           # [not win]\n\nbuild:\n  number: 1\n  script:                                                  # [win]\n      - mkdir %SCRIPTS%                                    # [win]\n      - copy doxygen.exe %SCRIPTS%\\ || goto :eof           # [win]\n      - copy doxyindexer.exe %SCRIPTS%\\ || goto :eof       # [win]\n      - copy doxysearch.cgi.exe %SCRIPTS%\\ || goto :eof    # [win]\n      - copy libclang.dll %LIBRARY_BIN%\\ || goto :eof      # [win]\n      - copy libclang.dll %LIBRARY_BIN%\\ || goto :eof      # [win]\n      - copy %RECIPE_DIR%\\LICENSE %SRC_DIR%\\ || goto :eof  # [win]\n\nrequirements:       # [not win]\n  build:            # [not win]\n    - {{ compiler('c') }}  # [not win]\n    - {{ compiler('cxx') }}  # [not win]\n    - bison         # [not win]\n    - cmake         # [not win]\n    - make          # [not win]\n    - flex          # [not win]\n    - m4            # [not win]\n    - python        # [not win]\n    - texlive-core  # [not win]\n  host:             # [not win]\n    - libiconv      # [not win]\n  run:              # [not win]\n    - libiconv      # [not win]\n\ntest:\n  commands:\n    - doxygen --help\n\nabout:\n  home: http://www.stack.nl/~dimitri/doxygen/index.html\n  license: GPL2\n  license_file: LICENSE\n  summary: 'Generate documentation from source code'\n\n  description: |\n    Doxygen is the de facto standard tool for\n    generating documentation from annotated C++ sources,\n    but it also supports other popular programming\n    languages such as C, Objective-C, C#, PHP, Java,\n    Python, IDL (Corba, Microsoft, and UNO/OpenOffice flavors),\n    Fortran, VHDL, Tcl, and to some extent D.\n  doc_url: http://www.stack.nl/~dimitri/doxygen/manual/index.html\n  dev_url: https://github.com/doxygen/doxygen\n\nextra:\n  recipe-maintainers:\n    - bluescarni\n    - isuruf\n    - tadeu\n",
+ "raw_meta_yaml":"{% set name = \"doxygen\" %}\n{% set version = \"1.8.18\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  fn: {{ name }}-{{ version }}.src.tar.gz  # [not win]\n  url: http://doxygen.nl/files/{{ name }}-{{ version }}.src.tar.gz  # [not win]\n  sha256: 673bd87fa5595480a7abe6828c8cd5f17e3d330023f647dde07b92ee7f437960  # [not win]\n\n  fn: {{ name }}-{{ version }}.windows.x64.bin.zip  # [win]\n  url: http://doxygen.nl/files/{{ name }}-{{ version }}.windows.x64.bin.zip  # [win]\n  sha256: d83bf91ce448e4f935ce0a834360da7d767ef1805afef16d624ce9a86aa6f211  # [win]\n\n  patches:   # [not win]\n    # CMake finds iconv_open in glibc, but finds iconv.h from libiconv.\n    # Make sure both are found from one place.\n    - find_iconv.patch                                                           # [not win]\n\nbuild:\n  number: 0\n  script:   # [win]\n    - mkdir %SCRIPTS%                                      # [win]\n    - copy doxygen.exe %SCRIPTS%\\ || goto :eof             # [win]\n    - copy doxyindexer.exe %SCRIPTS%\\ || goto :eof         # [win]\n    - copy doxysearch.cgi.exe %SCRIPTS%\\ || goto :eof      # [win]\n    - copy libclang.dll %LIBRARY_BIN%\\ || goto :eof        # [win]\n    - copy libclang.dll %LIBRARY_BIN%\\ || goto :eof        # [win]\n    - copy %RECIPE_DIR%\\LICENSE %SRC_DIR%\\ || goto :eof    # [win]\n\nrequirements:   # [not win]\n  build:   # [not win]\n    - {{ compiler('c') }}  # [not win]\n    - {{ compiler('cxx') }}  # [not win]\n    - bison         # [not win]\n    - cmake         # [not win]\n    - make          # [not win]\n    - flex          # [not win]\n    - m4            # [not win]\n    - python        # [not win]\n    - texlive-core  # [not win]\n  host:   # [not win]\n    - libiconv      # [not win]\n  run:   # [not win]\n    - libiconv      # [not win]\n\ntest:\n  commands:\n    - doxygen --help\n\nabout:\n  home: http://www.stack.nl/~dimitri/doxygen/index.html\n  license: GPL2\n  license_file: LICENSE\n  summary: Generate documentation from source code\n\n  description: |\n    Doxygen is the de facto standard tool for\n    generating documentation from annotated C++ sources,\n    but it also supports other popular programming\n    languages such as C, Objective-C, C#, PHP, Java,\n    Python, IDL (Corba, Microsoft, and UNO/OpenOffice flavors),\n    Fortran, VHDL, Tcl, and to some extent D.\n  doc_url: http://www.stack.nl/~dimitri/doxygen/manual/index.html\n  dev_url: https://github.com/doxygen/doxygen\n\nextra:\n  recipe-maintainers:\n    - bluescarni\n    - isuruf\n    - tadeu\n",
  "req":{
   "__set__":true,
   "elements":[
@@ -279,5 +279,5 @@
   }
  },
  "url":"http://doxygen.nl/files/doxygen-1.8.16.src.tar.gz",
- "version":"1.8.16"
+ "version":"1.8.18"
 }
