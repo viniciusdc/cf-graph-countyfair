@@ -94,6 +94,23 @@
     "migrator_version",
     "name"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/403072939.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"Version",
+    "migrator_version":0,
+    "version":"4.3.2"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "version"
+   ]
   }
  ],
  "bad":false,
@@ -250,8 +267,12 @@
   }
  },
  "name":"magics-metview-batch",
- "new_version":false,
- "pinning_version":"2020.04.08",
+ "new_version":"4.3.2",
+ "new_version_attempts":{
+  "4.3.2":1
+ },
+ "new_version_errors":{},
+ "pinning_version":"2020.04.14.00.23.16",
  "raw_meta_yaml":"{% set name = \"Magics\" %}\n{% set version = \"4.3.1\" %}\n\npackage:\n  name: magics-metview-batch\n  version: {{ version }}\n\nsource:\n  url: https://confluence.ecmwf.int/download/attachments/3473464/{{ name }}-{{ version }}-Source.tar.gz\n  sha256: b1995e2f5bf24943715446d1302cc5d7de4cacfe4cee7c3cfd1037ac183cd181\n\nbuild:\n  number: 1\n  skip: True  # [win]\n  detect_binary_files_with_prefix: true\n\nrequirements:\n  build:\n    - cmake\n    - make\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n    - pkg-config\n  host:\n    - boost-cpp\n    - expat\n    - glib\n    - pango\n    - cairo\n    - proj\n    - eccodes\n    - libnetcdf\n    - jinja2\n    - zlib\n  run:\n    - expat\n    - pango\n    - cairo\n    - proj\n    - eccodes\n    - simplejson\n    - libnetcdf\n    - zlib\n  run_constrained:\n    # magics-metview-batch is incompatible with magics-metview and magics\n    - magics-metview ==9999999999\n    - magics ==9999999999\n\ntest:\n  commands:\n    - printf \"%s\\n\" \"${MAGPLUS_HOME:?MAGPLUS_HOME is not set}\"\n    - test -f $PREFIX/lib/libMagPlus${SHLIB_EXT}\n    - test -f $PREFIX/lib/libMagPlusSingle${SHLIB_EXT}\n    - test -f $PREFIX/lib/libMagPlusDouble${SHLIB_EXT}\n    - test -f $PREFIX/lib/libMagWrapper.a\n\nabout:\n  home: https://software.ecmwf.int/wiki/display/MAGP/\n  license: Apache-2.0\n  license_file:\n    - LICENSE_for_source_files\n    - COPYING\n    - LICENSE\n\n  license_family: Apache\n  summary: \"ECMWF's Meteorological plotting software with support for metview-batch.\"\n\nextra:\n  recipe-maintainers:\n    - iainrussell\n    - StephanSiemen\n    - sylvielamythepaut\n",
  "req":{
   "__set__":true,
@@ -318,7 +339,7 @@
    "elements":[]
   }
  },
- "smithy_version":"No azure token. Create a token and\nput it in ~/.conda-smithy/azure.token\n3.6.15",
+ "smithy_version":"No azure token. Create a token and\nput it in ~/.conda-smithy/azure.token\n3.6.16",
  "strong_exports":false,
  "total_requirements":{
   "build":{
