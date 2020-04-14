@@ -306,6 +306,23 @@
     "migrator_version",
     "version"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/403373549.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"Version",
+    "migrator_version":0,
+    "version":"2.26.1"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "version"
+   ]
   }
  ],
  "bad":false,
@@ -464,12 +481,12 @@
  "name":"git",
  "new_version":"2.26.1",
  "new_version_attempts":{
-  "2.26.1":1
+  "2.26.1":2
  },
  "new_version_errors":{
   "2.26.1":"The recipe did not change in the version migration, a URL did not hash, or there is jinja2 syntax the bot cannot handle!\n\nPlease check the URLs in your recipe with version '2.26.1' to make sure they exist!\n\nWe also found the following errors:\n\n - could not hash URL template 'https://github.com/git-for-windows/git/releases/download/v{{ version }}.windows.1/PortableGit-{{ version }}-64-bit.7z.exe'\n"
  },
- "pinning_version":"2020.03.23",
+ "pinning_version":"2020.04.14.12.02.49",
  "raw_meta_yaml":"{% set version = \"2.26.0\" %}\n\npackage:\n  name: git\n  version: {{ version }}\n\nsource:\n  - url: https://mirrors.edge.kernel.org/pub/software/scm/git/git-{{ version }}.tar.gz  # [not win]\n    folder: code  # [not win]\n    sha256: aa168c2318e7187cd295a645f7370cc6d71a324aafc932f80f00c780b6a26bed  # [not win]\n    patches:   # [not win]\n      - 0001-macOS-Do-not-use-the-system-Wish-urgh.patch  # [not win]\n  - url: https://mirrors.edge.kernel.org/pub/software/scm/git/git-manpages-{{ version }}.tar.gz  # [not win]\n    folder: manpages  # [not win]\n    sha256: c1ffaf0b4cd1e80a0eb0d4039e208c9d411ef94d5da44e38363804e1a7961218  # [not win]\n  - url: https://mirrors.edge.kernel.org/pub/software/scm/git/git-htmldocs-{{ version }}.tar.gz  # [not win]\n    folder: htmldocs  # [not win]\n    sha256: 3dac35701ba3604497bfbf380c50730fa2236e08d9cea2e280b60926affea95e  # [not win]\n\n  - url: https://github.com/git-for-windows/git/releases/download/v{{ version }}.windows.1/PortableGit-{{ version }}-64-bit.7z.exe  # [win64]\n    folder: .  # [win64]\n    sha256: f14aeccf0b63700c13a9c3829c4b9a6d3933d6cc5adfbc52b5aa62921725fb73  # [win64]\n\nbuild:\n  number: 0\n  # git hardcodes paths to external utilities (e.g. curl)\n  detect_binary_files_with_prefix: true\n\nrequirements:\n  build:\n    - {{ compiler('c') }}  # [unix]\n    - autoconf  # [unix]\n    - make      # [unix]\n    - 7za       # [win]\n  host:\n    - curl      # [unix]\n    - expat     # [unix]\n    - gettext   # [unix]\n    - libiconv  # [unix]\n    - openssl   # [unix]\n    - pcre      # [unix]\n    - perl      # [unix]\n    - tk        # [unix]\n    - zlib      # [unix]\n  run:\n    - curl      # [unix]\n    - expat     # [unix]\n    - gettext   # [unix]\n    - libiconv  # [unix]\n    - openssl   # [unix]\n    - pcre      # [unix]\n    - perl      # [unix]\n    - tk        # [unix]\n    - zlib      # [unix]\n\ntest:\n  commands:\n    # Verify git location.\n    - test -f $PREFIX/bin/git                               # [unix]\n    - test -f $PREFIX/bin/gitk                              # [unix]\n    - test -f $PREFIX/bin/git-credential-osxkeychain        # [osx]\n    - if not exist %LIBRARY_PREFIX%\\\\bin\\\\git.exe exit 1    # [win]\n\n    # Verify interactive support.\n    - test -f $PREFIX/libexec/git-core/git-add--interactive  # [unix]\n\n    # Run git commands.\n    - git --version\n    - git clone https://github.com/conda-forge/git-feedstock\n\n    # Git credential commands\n    - git-credential-osxkeychain 2>&1 | grep -q usage  # [osx]\n\n    # test completions\n    - bash $PREFIX/share/bash-completion/completions/git  # [unix]\n    - conda inspect linkages -p $PREFIX $PKG_NAME  # [not win]\n    - conda inspect objects -p $PREFIX $PKG_NAME  # [osx]\n\n    # confirm toplevel manpage\n    - test -f $PREFIX/man/man1/git.1  # [not win]\n    - test -f $PREFIX/share/man/man1/git.1  # [osx]\n\n    # confirm toplevel html doc page\n    - test -f $PREFIX/share/doc/git/index.html  # [not win]\n\nabout:\n  home: https://git-scm.com/\n  license: GPL v2 and LGPL 2.1\n  license_file: code/COPYING  # [not win]\n  summary: distributed version control system\n\nextra:\n  recipe-maintainers:\n    - jakirkham\n    - msarahan\n    - pelson\n    - scopatz\n    - ocefpaf\n    - dougalsutherland\n",
  "req":{
   "__set__":true,
@@ -532,7 +549,7 @@
    "elements":[]
   }
  },
- "smithy_version":"No azure token. Create a token and\nput it in ~/.conda-smithy/azure.token\n3.6.15",
+ "smithy_version":"No azure token. Create a token and\nput it in ~/.conda-smithy/azure.token\n3.6.16",
  "strong_exports":false,
  "total_requirements":{
   "build":{
