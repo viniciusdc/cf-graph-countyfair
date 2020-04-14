@@ -40,14 +40,14 @@
    "summary":"A library to coordinate the concurrent evaluation of dynamic ensembles of calculations"
   },
   "build":{
-   "number":"103",
+   "number":"104",
    "run_exports":[
     "libensemble * nompi_*",
     "libensemble * nompi_*",
     "libensemble * nompi_*"
    ],
    "script":" -m pip install . --no-deps -vv",
-   "string":"nompi_pyh_103"
+   "string":"nompi_pyh_104"
   },
   "extra":{
    "recipe-maintainers":[
@@ -79,17 +79,20 @@
     "setuptools"
    ],
    "run":[
+    "nompi",
     "nlopt",
     "numpy",
     "python",
     "scipy",
     "mpi4py",
+    "nompi",
     "nlopt",
     "numpy",
     "petsc4py",
     "python",
     "scipy",
     "mpi4py",
+    "nompi",
     "nlopt",
     "numpy",
     "petsc4py",
@@ -114,12 +117,13 @@
  "name":"libensemble",
  "new_version":"0.6.0",
  "pinning_version":"2020.04.08",
- "raw_meta_yaml":"{% set name = \"libensemble\" %}\n{% set version = \"0.6.0\" %}\n{% set build = 3 %}\n{% set sha256 = \"bf0483a05bfac383f82fd2a79ca5151af7a2337e07b2392eee2e6396c250357e\" %}\n\n# ensure mpi is defined (needed for conda-smithy recipe-lint)\n{% set mpi = mpi or 'nompi' %}\n\n# prioritize nompi variant via build number\n{% if mpi == 'nompi' %}\n{% set build = build + 100 %}\n{% endif %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  fn: v{{ version }}.tar.gz\n  url: https://github.com/Libensemble/libensemble/archive/v{{ version }}.tar.gz\n  sha256: {{ sha256 }}\n\nbuild:\n  number: {{ build }}\n  # noarch: python\n  script: \"{{ PYTHON }} -m pip install . --no-deps -vv\"\n\n  # add build string so packages can depend on\n  # mpi or nompi variants\n  # dependencies:\n  # `pkg * mpi_mpich_*` for mpich\n  # `pkg * mpi_*` for any mpi\n  # `pkg * nompi_*` for no mpi\n  {% if mpi == 'nompi' %}\n  {% set mpi_prefix = \"nompi\" %}\n  {% else %}\n  {% set mpi_prefix = \"mpi_\" + mpi %}\n  {% endif %}\n  string: \"{{ mpi_prefix }}_py{{ py }}h{{ PKG_HASH }}_{{ build }}\"\n\n  run_exports:\n    # strict runtime dependency on build-time MPI flavor\n    - {{ name }} * {{ mpi_prefix }}_*\n\nrequirements:\n  host:\n    - pip\n    - python\n    - setuptools\n  run:\n    - nlopt\n    - numpy\n    - petsc4py   # [mpi != 'nompi' and not win]\n    - python\n    - scipy\n    - mpi4py     # [mpi != 'nompi']\n\ntest:\n  imports:\n    - libensemble.libE\n\nabout:\n  home: https://libensemble.readthedocs.io\n  license: BSD-3-Clause\n  license_family: BSD\n  license_file: LICENSE\n  summary: \"A library to coordinate the concurrent evaluation of dynamic ensembles of calculations\"\n\n  description: |\n    libEnsemble is a Python library to coordinate the concurrent evaluation\n    of dynamic ensembles of calculations. The library is developed to use\n    massively parallel resources to accelerate the solution of design,\n    decision, and inference problems and to expand the class of problems that\n    can benefit from increased concurrency levels.\n    libEnsemble aims for: Extreme scaling, Resilience/fault tolerance,\n    Monitoring/killing jobs (and recovering resources), Portability and\n    flexibility, Exploitation of persistent data/control flow.\n  dev_url: https://github.com/Libensemble/libensemble\n\nextra:\n  recipe-maintainers:\n    - jlnav\n    - jmlarson1\n    - shuds13\n",
+ "raw_meta_yaml":"{% set name = \"libensemble\" %}\n{% set version = \"0.6.0\" %}\n{% set build = 4 %}\n{% set sha256 = \"bf0483a05bfac383f82fd2a79ca5151af7a2337e07b2392eee2e6396c250357e\" %}\n\n# ensure mpi is defined (needed for conda-smithy recipe-lint)\n{% set mpi = mpi or 'nompi' %}\n\n# prioritize nompi variant via build number\n{% if mpi == 'nompi' %}\n{% set build = build + 100 %}\n{% endif %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  fn: v{{ version }}.tar.gz\n  url: https://github.com/Libensemble/libensemble/archive/v{{ version }}.tar.gz\n  sha256: {{ sha256 }}\n\nbuild:\n  number: {{ build }}\n  # noarch: python\n  script: \"{{ PYTHON }} -m pip install . --no-deps -vv\"\n\n  # add build string so packages can depend on\n  # mpi or nompi variants\n  # dependencies:\n  # `pkg * mpi_mpich_*` for mpich\n  # `pkg * mpi_*` for any mpi\n  # `pkg * nompi_*` for no mpi\n  {% if mpi == 'nompi' %}\n  {% set mpi_prefix = \"nompi\" %}\n  {% else %}\n  {% set mpi_prefix = \"mpi_\" + mpi %}\n  {% endif %}\n  string: \"{{ mpi_prefix }}_py{{ py }}h{{ PKG_HASH }}_{{ build }}\"\n\n  run_exports:\n    # strict runtime dependency on build-time MPI flavor\n    - {{ name }} * {{ mpi_prefix }}_*\n\nrequirements:\n  host:\n    - pip\n    - python\n    - setuptools\n  run:\n    - {{ mpi }}  # [mpi != 'nompi']\n    - nlopt\n    - numpy\n    - petsc4py   # [mpi != 'nompi' and not win]\n    - python\n    - scipy\n    - mpi4py     # [mpi != 'nompi']\n\ntest:\n  imports:\n    - libensemble.libE\n\nabout:\n  home: https://libensemble.readthedocs.io\n  license: BSD-3-Clause\n  license_family: BSD\n  license_file: LICENSE\n  summary: \"A library to coordinate the concurrent evaluation of dynamic ensembles of calculations\"\n\n  description: |\n    libEnsemble is a Python library to coordinate the concurrent evaluation\n    of dynamic ensembles of calculations. The library is developed to use\n    massively parallel resources to accelerate the solution of design,\n    decision, and inference problems and to expand the class of problems that\n    can benefit from increased concurrency levels.\n    libEnsemble aims for: Extreme scaling, Resilience/fault tolerance,\n    Monitoring/killing jobs (and recovering resources), Portability and\n    flexibility, Exploitation of persistent data/control flow.\n  dev_url: https://github.com/Libensemble/libensemble\n\nextra:\n  recipe-maintainers:\n    - jlnav\n    - jmlarson1\n    - shuds13\n",
  "req":{
   "__set__":true,
   "elements":[
    "mpi4py",
    "nlopt",
+   "nompi",
    "numpy",
    "petsc4py",
    "pip",
@@ -146,6 +150,7 @@
    "elements":[
     "mpi4py",
     "nlopt",
+    "nompi",
     "numpy",
     "petsc4py",
     "python",
@@ -177,6 +182,7 @@
    "elements":[
     "mpi4py",
     "nlopt",
+    "nompi",
     "numpy",
     "petsc4py",
     "python",
