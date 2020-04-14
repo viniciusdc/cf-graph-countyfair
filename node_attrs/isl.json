@@ -87,10 +87,7 @@
  "conda-forge.yml":{
   "compiler_stack":"comp7",
   "max_py_ver":"37",
-  "max_r_ver":"35",
-  "provider":{
-   "win":"appveyor"
-  }
+  "max_r_ver":"35"
  },
  "feedstock_name":"isl",
  "hash_type":"md5",
@@ -103,7 +100,7 @@
    "summary":"a thread-safe C library for manipulating sets and relations of integer points bounded by affine constraints."
   },
   "build":{
-   "number":"0",
+   "number":"1",
    "run_exports":[
     "isl",
     "isl",
@@ -128,11 +125,11 @@
   "requirements":{
    "build":[
     "c_compiler_stub",
-    "clangdev",
-    "lld",
-    "posix",
+    "autotools_clang_conda",
     "c_compiler_stub",
-    "c_compiler_stub"
+    "make",
+    "c_compiler_stub",
+    "make"
    ],
    "host":[
     "gmp"
@@ -144,6 +141,7 @@
   "source":{
    "fn":"isl-0.21.tar.bz2",
    "md5":"e2be862b79d74234e468981bcae2a964",
+   "patches":null,
    "url":"http://isl.gforge.inria.fr/isl-0.21.tar.bz2"
   },
   "test":{
@@ -162,25 +160,23 @@
  "name":"isl",
  "new_version":"0.22",
  "pinning_version":"2019.11.01",
- "raw_meta_yaml":"{% set version = \"0.21\" %}\n\npackage:\n  name: isl\n  version: {{ version }}\n\nsource:\n  fn: isl-{{ version }}.tar.bz2\n  url: http://isl.gforge.inria.fr/isl-{{ version }}.tar.bz2\n  md5: e2be862b79d74234e468981bcae2a964\n\nbuild:\n  number: 0\n  skip: True   # [win and vc<14]\n  run_exports:\n    - {{ pin_subpackage(\"isl\", max_pin=\"x.x\") }}\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - clangdev        # [win]\n    - lld             # [win]\n    - posix           # [win]\n  host:\n    - gmp             # [unix]\n  run:\n    - gmp             # [unix]\n\ntest:\n  commands:\n    - if not exist %LIBRARY_LIB%\\\\isl.lib exit 1            # [win]\n    - if not exist %LIBRARY_INC%\\\\isl\\\\options.h exit 1     # [win]\n    - test -f \"$PREFIX/lib/libisl.a\"            # [unix]\n    - test -f \"$PREFIX/lib/libisl${SHLIB_EXT}\"  # [unix]\n    - test -d \"$PREFIX/include/isl\"             # [unix]\n\nabout:\n  home: http://isl.gforge.inria.fr/\n  license: MIT\n  license_family: MIT\n  license_file: LICENSE\n  summary: a thread-safe C library for manipulating sets and relations of integer points bounded by affine constraints.\n\nextra:\n  recipe-maintainers:\n    - frol\n    - isuruf\n",
+ "raw_meta_yaml":"{% set version = \"0.21\" %}\n\npackage:\n  name: isl\n  version: {{ version }}\n\nsource:\n  fn: isl-{{ version }}.tar.bz2\n  url: http://isl.gforge.inria.fr/isl-{{ version }}.tar.bz2\n  md5: e2be862b79d74234e468981bcae2a964\n  patches:\n    # From https://github.com/msys2/MINGW-packages/blob/master/mingw-w64-isl/isl-0.14.1-no-undefined.patch\n    - no_undefined.patch  # [win]\n\nbuild:\n  number: 1\n  skip: True  # [win and vc<14]\n  run_exports:\n    - {{ pin_subpackage(\"isl\", max_pin=\"x.x\") }}\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - autotools_clang_conda  # [win]\n    - make                   # [unix]\n  host:\n    - gmp             # [unix]\n  run:\n    - gmp             # [unix]\n\ntest:\n  commands:\n    - if not exist %LIBRARY_LIB%\\\\isl.lib exit 1            # [win]\n    - if not exist %LIBRARY_INC%\\\\isl\\\\options.h exit 1     # [win]\n    - test -f \"$PREFIX/lib/libisl.a\"            # [unix]\n    - test -f \"$PREFIX/lib/libisl${SHLIB_EXT}\"  # [unix]\n    - test -d \"$PREFIX/include/isl\"             # [unix]\n\nabout:\n  home: http://isl.gforge.inria.fr/\n  license: MIT\n  license_family: MIT\n  license_file: LICENSE\n  summary: a thread-safe C library for manipulating sets and relations of integer points bounded by affine constraints.\n\nextra:\n  recipe-maintainers:\n    - frol\n    - isuruf\n",
  "req":{
   "__set__":true,
   "elements":[
+   "autotools_clang_conda",
    "c_compiler_stub",
-   "clangdev",
    "gmp",
-   "lld",
-   "posix"
+   "make"
   ]
  },
  "requirements":{
   "build":{
    "__set__":true,
    "elements":[
+    "autotools_clang_conda",
     "c_compiler_stub",
-    "clangdev",
-    "lld",
-    "posix"
+    "make"
    ]
   },
   "host":{
@@ -206,10 +202,9 @@
   "build":{
    "__set__":true,
    "elements":[
+    "autotools_clang_conda",
     "c_compiler_stub",
-    "clangdev",
-    "lld",
-    "posix"
+    "make"
    ]
   },
   "host":{

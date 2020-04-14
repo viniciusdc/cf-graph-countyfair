@@ -106,7 +106,7 @@
   }
  },
  "name":"grblas",
- "new_version":false,
+ "new_version":"1.2.5",
  "pinning_version":"2020.04.14.00.23.16",
  "raw_meta_yaml":"{% set name = \"grblas\" %}\n{% set version = \"1.2.5\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  url: https://github.com/jim22k/{{ name }}/archive/v{{ version }}.tar.gz\n  sha256: 91b05d38d8b245359ab2d8b89c066f40600ce82b5d7d2c680bf52e24e45d07d0\n\nbuild:\n  skip: true  # [win or py<37]\n  number: 0\n  script: \"{{ PYTHON }} -m pip install . -vv\"\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n  host:\n    - python\n    - pip\n    - setuptools\n    - cffi\n    - graphblas\n    - pytest-runner\n  run:\n    - python\n    - cffi\n    - numba\n\ntest:\n  imports:\n    - grblas\n  commands:\n    - python -c \"from grblas import Matrix\"\n\nabout:\n  home: https://github.com/jim22k/grblas\n  license: Apache-2.0\n  license_family: Apache\n  license_file: LICENSE\n  summary: 'Python wrapper around GraphBLAS'\n  description: |\n    Python wrapper around GraphBLAS. Currently only supports SuiteSparse::GraphBLAS.\n    Goal is to be Pythonic, while also maintaining a 1:1 mapping to GraphBLAS API calls.\n  dev_url: https://github.com/jim22k/grblas\n\nextra:\n  recipe-maintainers:\n    - jim22k\n",
  "req":{
