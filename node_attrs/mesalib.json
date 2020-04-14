@@ -56,7 +56,11 @@
  "conda-forge.yml":{
   "compiler_stack":"comp7",
   "max_py_ver":"37",
-  "max_r_ver":"35"
+  "max_r_ver":"35",
+  "provider":{
+   "linux_aarch64":"azure",
+   "linux_ppc64le":"azure"
+  }
  },
  "feedstock_name":"mesalib",
  "hash_type":"sha256",
@@ -68,7 +72,7 @@
    "summary":"Mesa is an open-source implementation of the OpenGL specification - a system for rendering interactive 3D graphics."
   },
   "build":{
-   "number":"1001",
+   "number":"0",
    "skip":true,
    "track_features":[
     "mesalib",
@@ -82,40 +86,52 @@
     "doutriaux1",
     "sankhesh",
     "danlipsa",
+    "hmaarrfk",
+    "muryanto1",
+    "downiec",
     "dnadeau4",
     "doutriaux1",
     "sankhesh",
     "danlipsa",
+    "hmaarrfk",
+    "muryanto1",
+    "downiec",
     "dnadeau4",
     "doutriaux1",
     "sankhesh",
-    "danlipsa"
+    "danlipsa",
+    "hmaarrfk",
+    "muryanto1",
+    "downiec"
    ]
   },
   "package":{
    "name":"mesalib",
-   "version":"17.0.7"
+   "version":"18.0.0"
   },
   "requirements":{
    "build":[
     "c_compiler_stub",
     "cxx_compiler_stub",
     "pkg-config",
-    "python 2.*",
+    "python 2",
     "mako",
     "zlib",
+    "make",
     "c_compiler_stub",
     "cxx_compiler_stub",
     "pkg-config",
-    "python 2.*",
+    "python 2",
     "mako",
     "zlib",
+    "make",
     "c_compiler_stub",
     "cxx_compiler_stub",
     "pkg-config",
-    "python 2.*",
+    "python 2",
     "mako",
-    "zlib"
+    "zlib",
+    "make"
    ],
    "host":[
     "pthread-stubs",
@@ -133,14 +149,14 @@
    ]
   },
   "source":{
-   "fn":"mesaLib-17.0.7.tar.gz",
+   "fn":"mesaLib-18.0.0.tar.gz",
    "patches":[
     "1-1-gallivm-Fix-build-after-llvm-r328839.patch",
     "1-1-gallivm-Fix-build-after-llvm-r328839.patch",
     "1-1-gallivm-Fix-build-after-llvm-r328839.patch"
    ],
-   "sha256":"4d625f65a1ff4cd8cfeb39e38f047507c6dea047502a0d53113c96f54588f340",
-   "url":"ftp://ftp.freedesktop.org/pub/mesa/mesa-17.0.7.tar.gz"
+   "sha256":"93c2d3504b2871ac2146603fb1270f341d36a39695e2950a469c5eac74f98457",
+   "url":"ftp://ftp.freedesktop.org/pub/mesa/mesa-18.0.0.tar.gz"
   },
   "test":{
    "commands":[
@@ -151,7 +167,7 @@
  "name":"mesalib",
  "new_version":false,
  "pinning_version":"2020.01.27",
- "raw_meta_yaml":"{% set name = \"mesaLib\" %}\n{% set version = \"17.3.9\" %}  # [linux]\n# 17.1 uses fstatat which isn't defined on OSX 10.9 (which conda-forge uses)\n# It was added in OSX 10.12\n# https://github.com/conda-forge/mesalib-feedstock/pull/18#issuecomment-450589848\n# https://github.com/conda-forge/mesalib-feedstock/pull/20#discussion_r244547648\n{% set version = \"17.0.7\" %}  # [osx]\n\npackage:\n  name: {{ name|lower }}\n  version: \"{{ version }}\"\n\nsource:\n  fn: {{ name }}-{{ version }}.tar.gz\n  url: ftp://ftp.freedesktop.org/pub/mesa/mesa-{{ version }}.tar.gz\n  sha256: 4d625f65a1ff4cd8cfeb39e38f047507c6dea047502a0d53113c96f54588f340  # [linux]\n  sha256: bc68d13c6b1a053b855ac453ebf7e62bd89511adf44bad6c613e09f7fa13390a  # [osx]\n  patches:\n    # https://patchwork.freedesktop.org/patch/214086/\n    - 1-1-gallivm-Fix-build-after-llvm-r328839.patch\n\nbuild:\n  skip: True  # [win]\n  # OSX toolchain compiler seems to fail\n  # See build logs here\n  # https://travis-ci.org/conda-forge/mesalib-feedstock/builds/473694795\n  skip: True  # [osx and c_compiler == \"toolchain_c\"]\n  number: 1001\n  track_features:\n      - mesalib\n\nrequirements:\n  build:\n      - {{ compiler('c') }}\n      - {{ compiler('cxx') }}\n      - pkg-config\n      - python 2.*\n      - mako\n      - zlib\n  host:\n      - pthread-stubs\n      - llvmdev\n      - expat\n      - zlib\n\ntest:\n  commands:\n      - test -f $PREFIX/lib/libOSMesa32${SHLIB_EXT}  # [unix]\n\nabout:\n  home: http://www.mesa3d.org\n  license: MIT\n  license_file: docs/license.html\n  summary: Mesa is an open-source implementation of the OpenGL specification - a system for rendering interactive 3D graphics.\n\nextra:\n    recipe-maintainers:\n      - dnadeau4\n      - doutriaux1\n      - sankhesh\n      - danlipsa\n",
+ "raw_meta_yaml":"{% set name = \"mesaLib\" %}\n{% set version = \"18.0.0\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: \"{{ version }}\"\n\nsource:\n  fn: {{ name }}-{{ version }}.tar.gz\n  url: ftp://ftp.freedesktop.org/pub/mesa/mesa-{{ version }}.tar.gz\n  sha256: 93c2d3504b2871ac2146603fb1270f341d36a39695e2950a469c5eac74f98457\n  patches:\n    # https://patchwork.freedesktop.org/patch/214086/\n    - 1-1-gallivm-Fix-build-after-llvm-r328839.patch\n\nbuild:\n  skip: True  # [win]\n  number: 0\n  # Do we still need this???? - hmaarrfk - 18.0.0 -- April 2020\n  track_features:\n      - mesalib\n\nrequirements:\n  build:\n      - {{ compiler('c') }}\n      - {{ compiler('cxx') }}\n      - pkg-config\n      # still too hard to get rid of python2\n      - python 2\n      - mako\n      - zlib\n      - make\n  host:\n      - pthread-stubs\n      - llvmdev\n      - expat\n      - zlib\n\ntest:\n  commands:\n      - test -f $PREFIX/lib/libOSMesa32${SHLIB_EXT}  # [unix]\n\nabout:\n  home: http://www.mesa3d.org\n  license: MIT\n  license_file: docs/license.html\n  summary: Mesa is an open-source implementation of the OpenGL specification - a system for rendering interactive 3D graphics.\n\nextra:\n    recipe-maintainers:\n      - dnadeau4\n      - doutriaux1\n      - sankhesh\n      - danlipsa\n      - hmaarrfk\n      - muryanto1\n      - downiec\n",
  "req":{
   "__set__":true,
   "elements":[
@@ -159,6 +175,7 @@
    "cxx_compiler_stub",
    "expat",
    "llvmdev",
+   "make",
    "mako",
    "pkg-config",
    "pthread-stubs",
@@ -172,6 +189,7 @@
    "elements":[
     "c_compiler_stub",
     "cxx_compiler_stub",
+    "make",
     "mako",
     "pkg-config",
     "python",
@@ -204,9 +222,10 @@
    "elements":[
     "c_compiler_stub",
     "cxx_compiler_stub",
+    "make",
     "mako",
     "pkg-config",
-    "python 2.*",
+    "python 2",
     "zlib"
    ]
   },
@@ -229,5 +248,5 @@
   }
  },
  "url":"ftp://ftp.freedesktop.org/pub/mesa/mesa-17.0.7.tar.gz",
- "version":"17.0.7"
+ "version":"18.0.0"
 }
