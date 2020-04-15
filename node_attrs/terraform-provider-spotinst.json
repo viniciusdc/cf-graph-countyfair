@@ -435,11 +435,11 @@
    "number":"0",
    "script":[
     "pushd src/github.com/terraform-providers/terraform-provider-spotinst",
-    "go build -v -o %GOBIN%\\terraform-provider-spotinst_v1.13.4_x4 .",
+    "go build -v -o %GOBIN%\\terraform-provider-spotinst_v1.14.2_x4 .",
     "pushd src/github.com/terraform-providers/terraform-provider-spotinst",
-    "go build -v -o $GOBIN/terraform-provider-spotinst_v1.13.4_x4 .",
+    "go build -v -o $GOBIN/terraform-provider-spotinst_v1.14.2_x4 .",
     "pushd src/github.com/terraform-providers/terraform-provider-spotinst",
-    "go build -v -o $GOBIN/terraform-provider-spotinst_v1.13.4_x4 ."
+    "go build -v -o $GOBIN/terraform-provider-spotinst_v1.14.2_x4 ."
    ]
   },
   "extra":{
@@ -451,7 +451,7 @@
   },
   "package":{
    "name":"terraform-provider-spotinst",
-   "version":"1.13.4"
+   "version":"1.14.2"
   },
   "requirements":{
    "build":[
@@ -468,34 +468,34 @@
   "source":[
    {
     "folder":"src/github.com/terraform-providers/terraform-provider-spotinst",
-    "sha256":"ead74c6e6ca74f1f2fee2f38a520e58772a3dc7ffa90f282e829f1395a071667",
-    "url":"https://github.com/terraform-providers/terraform-provider-spotinst/archive/v1.13.4.tar.gz"
+    "sha256":"72ff25a022658afde9cb20ccac4a1e1d2876114f8a8ddcd47823f7808cdd04f9",
+    "url":"https://github.com/terraform-providers/terraform-provider-spotinst/archive/v1.14.2.tar.gz"
    },
    {
     "folder":"src/github.com/terraform-providers/terraform-provider-spotinst",
-    "sha256":"ead74c6e6ca74f1f2fee2f38a520e58772a3dc7ffa90f282e829f1395a071667",
-    "url":"https://github.com/terraform-providers/terraform-provider-spotinst/archive/v1.13.4.tar.gz"
+    "sha256":"72ff25a022658afde9cb20ccac4a1e1d2876114f8a8ddcd47823f7808cdd04f9",
+    "url":"https://github.com/terraform-providers/terraform-provider-spotinst/archive/v1.14.2.tar.gz"
    },
    {
     "folder":"src/github.com/terraform-providers/terraform-provider-spotinst",
-    "sha256":"ead74c6e6ca74f1f2fee2f38a520e58772a3dc7ffa90f282e829f1395a071667",
-    "url":"https://github.com/terraform-providers/terraform-provider-spotinst/archive/v1.13.4.tar.gz"
+    "sha256":"72ff25a022658afde9cb20ccac4a1e1d2876114f8a8ddcd47823f7808cdd04f9",
+    "url":"https://github.com/terraform-providers/terraform-provider-spotinst/archive/v1.14.2.tar.gz"
    }
   ],
   "test":{
    "commands":[
-    "bash -euf -c \"echo 'provider \\\"spotinst\\\" { version=\\\"1.13.4\\\" }' > init.tf\"",
+    "bash -euf -c \"echo 'provider \\\"spotinst\\\" { version=\\\"1.14.2\\\" }' > init.tf\"",
     "terraform init",
     "test -f .terraform/plugins/_/lock.json",
-    "test ! -f .terraform/plugins/_/terraform-provider-spotinst_v1.13.4_x4",
-    "bash -euf -c \"echo 'provider \\\"spotinst\\\" { version=\\\"1.13.4\\\" }' > init.tf\"",
+    "test ! -f .terraform/plugins/_/terraform-provider-spotinst_v1.14.2_x4",
+    "bash -euf -c \"echo 'provider \\\"spotinst\\\" { version=\\\"1.14.2\\\" }' > init.tf\"",
     "terraform init",
     "test -f .terraform/plugins/_/lock.json",
-    "test ! -f .terraform/plugins/_/terraform-provider-spotinst_v1.13.4_x4",
-    "bash -euf -c \"echo 'provider \\\"spotinst\\\" { version=\\\"1.13.4\\\" }' > init.tf\"",
+    "test ! -f .terraform/plugins/_/terraform-provider-spotinst_v1.14.2_x4",
+    "bash -euf -c \"echo 'provider \\\"spotinst\\\" { version=\\\"1.14.2\\\" }' > init.tf\"",
     "terraform init",
     "test -f .terraform/plugins/_/lock.json",
-    "test ! -f .terraform/plugins/_/terraform-provider-spotinst_v1.13.4_x4"
+    "test ! -f .terraform/plugins/_/terraform-provider-spotinst_v1.14.2_x4"
    ],
    "requires":[
     "m2-bash",
@@ -506,7 +506,7 @@
  "name":"terraform-provider-spotinst",
  "new_version":"1.14.3",
  "pinning_version":"2020.03.30",
- "raw_meta_yaml":"{% set provider = \"Spotinst\" %}\n{% set goname = \"github.com/terraform-providers/terraform-provider-\"+provider.lower() %}\n{% set version = \"1.13.4\" %}\n\n{% set name = goname.split('/')[-1] %}\n{% set pkg_src = ('src/'+goname).replace(\"/\",os.sep) %}\n\n{% set x4_plugin = name + '_v' + version + \"_x4\" + (\".exe\" if win else \"\")%}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  - folder:  {{ pkg_src }}\n    url: https://{{ goname }}/archive/v{{ version }}.tar.gz\n    sha256: ead74c6e6ca74f1f2fee2f38a520e58772a3dc7ffa90f282e829f1395a071667\n\n\nbuild:\n  number: 0\n  script:\n    - pushd {{ pkg_src }}\n    - go build -v -o $GOBIN/{{ x4_plugin }} .  # [unix]\n    - go build -v -o %GOBIN%\\{{ x4_plugin }} .  # [win]\n\nrequirements:\n  build:\n    - {{ compiler('go') }} >=1.11.3\n  run:\n    - terraform >=0.10  # [unix]\n    - terraform >=0.11.11  # [win]\n\ntest:\n  requires:         # [win]\n    - m2-bash       # [win]\n    - m2-coreutils  # [win]\n\n  commands:\n    - bash -euf -c \"echo 'provider \\\"{{ provider|lower }}\\\" { version=\\\"{{ version }}\\\" }' > init.tf\"\n    - terraform init\n    # Tests that no plugins were downloaded\n    - test -f .terraform/plugins/{{ goos }}_{{ goarch }}/lock.json\n    - test ! -f .terraform/plugins/{{ goos }}_{{ goarch }}/{{ x4_plugin }}\n\nabout:\n  home: https://www.terraform.io\n  license: MPL-2.0\n  summary: The Terraform {{ provider }} provider\n  doc_url: https://www.terraform.io/docs/providers/{{ provider|lower }}/index.html\n  dev_url: https://github.com/terraform-providers/{{ name }}\n\nextra:\n  recipe-maintainers:\n    - conda-forge/terraform\n",
+ "raw_meta_yaml":"{% set provider = \"Spotinst\" %}\n{% set goname = \"github.com/terraform-providers/terraform-provider-\"+provider.lower() %}\n{% set version = \"1.14.2\" %}\n\n{% set name = goname.split('/')[-1] %}\n{% set pkg_src = ('src/'+goname).replace(\"/\",os.sep) %}\n\n{% set x4_plugin = name + '_v' + version + \"_x4\" + (\".exe\" if win else \"\")%}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  - folder:  {{ pkg_src }}\n    url: https://{{ goname }}/archive/v{{ version }}.tar.gz\n    sha256: 72ff25a022658afde9cb20ccac4a1e1d2876114f8a8ddcd47823f7808cdd04f9\n\n\nbuild:\n  number: 0\n  script:\n    - pushd {{ pkg_src }}\n    - go build -v -o $GOBIN/{{ x4_plugin }} .  # [unix]\n    - go build -v -o %GOBIN%\\{{ x4_plugin }} .  # [win]\n\nrequirements:\n  build:\n    - {{ compiler('go') }} >=1.11.3\n  run:\n    - terraform >=0.10  # [unix]\n    - terraform >=0.11.11  # [win]\n\ntest:\n  requires:         # [win]\n    - m2-bash       # [win]\n    - m2-coreutils  # [win]\n\n  commands:\n    - bash -euf -c \"echo 'provider \\\"{{ provider|lower }}\\\" { version=\\\"{{ version }}\\\" }' > init.tf\"\n    - terraform init\n    # Tests that no plugins were downloaded\n    - test -f .terraform/plugins/{{ goos }}_{{ goarch }}/lock.json\n    - test ! -f .terraform/plugins/{{ goos }}_{{ goarch }}/{{ x4_plugin }}\n\nabout:\n  home: https://www.terraform.io\n  license: MPL-2.0\n  summary: The Terraform {{ provider }} provider\n  doc_url: https://www.terraform.io/docs/providers/{{ provider|lower }}/index.html\n  dev_url: https://github.com/terraform-providers/{{ name }}\n\nextra:\n  recipe-maintainers:\n    - conda-forge/terraform\n",
  "req":{
   "__set__":true,
   "elements":[
@@ -568,5 +568,5 @@
   }
  },
  "url":"https://github.com/terraform-providers/terraform-provider-spotinst/archive/v1.13.3.tar.gz",
- "version":"1.13.4"
+ "version":"1.14.2"
 }
