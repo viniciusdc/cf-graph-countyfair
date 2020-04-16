@@ -146,7 +146,7 @@
   },
   "build":{
    "number":"0",
-   "script":" setup.py install --single-version-externally-managed --record record.txt --offline"
+   "script":"setup.py install --single-version-externally-managed --record record.txt --offline"
   },
   "extra":{
    "recipe-maintainers":[
@@ -157,7 +157,7 @@
   },
   "package":{
    "name":"pycraf",
-   "version":"1.0.1"
+   "version":"1.0.2"
   },
   "requirements":{
    "build":[
@@ -197,6 +197,12 @@
     "h5py",
     "matplotlib >=2.0",
     "pyproj",
+    "pyqt",
+    "pytest",
+    "pytest-astropy",
+    "pytest-doctestplus",
+    "pytest-qt",
+    "sgp4 <2.0",
     "python",
     "openmp 4.0.*",
     "astropy",
@@ -205,19 +211,31 @@
     "h5py",
     "matplotlib >=2.0",
     "pyproj",
+    "pyqt",
+    "pytest",
+    "pytest-astropy",
+    "pytest-doctestplus",
+    "pytest-qt",
+    "sgp4 <2.0",
     "python",
     "astropy",
     "numpy",
     "scipy",
     "h5py",
     "matplotlib >=2.0",
-    "pyproj"
+    "pyproj",
+    "pyqt",
+    "pytest",
+    "pytest-astropy",
+    "pytest-doctestplus",
+    "pytest-qt",
+    "sgp4 <2.0"
    ]
   },
   "source":{
-   "fn":"pycraf-1.0.1.tar.gz",
-   "sha256":"2699ae115976562afc85f87938e8e2f164a849641832e26b8c3b55f867686216",
-   "url":"https://pypi.io/packages/source/p/pycraf/pycraf-1.0.1.tar.gz"
+   "fn":"pycraf-1.0.2.tar.gz",
+   "sha256":"87722a8e2876e08b0244f79537c0a2f3ae2c8583e94fe2bc5a2d9330ee80bd67",
+   "url":"https://pypi.io/packages/source/p/pycraf/pycraf-1.0.2.tar.gz"
   },
   "test":{
    "commands":"python -c \"import pycraf; pycraf.test()\"",
@@ -265,7 +283,7 @@
  },
  "new_version_errors":{},
  "pinning_version":"2020.04.16.07.55.54",
- "raw_meta_yaml":"{% set name = \"pycraf\" %}\n{% set version = \"1.0.1\" %}\n{% set sha256 = \"2699ae115976562afc85f87938e8e2f164a849641832e26b8c3b55f867686216\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  fn: {{ name }}-{{ version }}.tar.gz\n  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz\n  sha256: {{ sha256 }}\n\nbuild:\n  number: 0\n  skip: True  # [py27]\n  script: \"{{ PYTHON }} setup.py install --single-version-externally-managed --record record.txt --offline\"\n\nrequirements:\n  build:\n    - {{ compiler('cxx') }}\n  \n  host:\n    - openmp 4.0.*  # [osx]\n    - python\n    - pip\n    - setuptools\n    - astropy\n    - cython\n    - numpy 1.11.*\n    - scipy\n\n  run:\n    - python\n    - openmp 4.0.*  # [osx]\n    - astropy\n    - {{ pin_compatible('numpy') }}\n    - scipy\n    - h5py\n    - matplotlib >=2.0\n    - pyproj\n\ntest:\n  imports:\n    - pycraf\n    - pycraf.conversions\n    - pycraf.atm\n    - pycraf.pathprof\n    - pycraf.antenna\n    - pycraf.protection\n    - pycraf.geospatial\n    - pycraf.satellite\n    - pycraf.geometry\n    - pycraf.mc\n    - pycraf.utils\n\n  commands:\n     python -c \"import pycraf; pycraf.test()\"\n\nabout:\n  home: https://github.com/bwinkel/pycraf\n  license: GPL-3.0\n  license_family: GPL\n  license_file: licenses/README.rst\n  summary: 'A Python package for spectrum-management compatibility studies'\n  description: |\n      The pycraf package provides functions and procedures for various tasks in spectrum-management compatibility studies.\n  dev_url: https://github.com/bwinkel/pycraf\n\nextra:\n  recipe-maintainers:\n    - bwinkel\n",
+ "raw_meta_yaml":"{% set name = \"pycraf\" %}\n{% set version = \"1.0.2\" %}\n{% set sha256 = \"87722a8e2876e08b0244f79537c0a2f3ae2c8583e94fe2bc5a2d9330ee80bd67\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  fn: {{ name }}-{{ version }}.tar.gz\n  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz\n  sha256: {{ sha256 }}\n\nbuild:\n  number: 0\n  skip: true  # [py27]\n  script: {{ PYTHON }} setup.py install --single-version-externally-managed --record record.txt --offline\n\nrequirements:\n  build:\n    - {{ compiler('cxx') }}\n\n  host:\n    - openmp 4.0.*  # [osx]\n    - python\n    - pip\n    - setuptools\n    - astropy\n    - cython\n    - numpy 1.11.*\n    - scipy\n\n  run:\n    - python\n    - openmp 4.0.*  # [osx]\n    - astropy\n    - {{ pin_compatible('numpy') }}\n    - scipy\n    - h5py\n    - matplotlib >=2.0\n    - pyproj\n    - pyqt\n    - pytest\n    - pytest-astropy\n    - pytest-doctestplus\n    - pytest-qt\n    - sgp4 <2.0\n\ntest:\n  imports:\n    - pycraf\n    - pycraf.conversions\n    - pycraf.atm\n    - pycraf.pathprof\n    - pycraf.antenna\n    - pycraf.protection\n    - pycraf.geospatial\n    - pycraf.satellite\n    - pycraf.geometry\n    - pycraf.mc\n    - pycraf.utils\n\n  commands: python -c \"import pycraf; pycraf.test()\"\n\nabout:\n  home: https://github.com/bwinkel/pycraf\n  license: GPL-3.0\n  license_family: GPL\n  license_file: licenses/README.rst\n  summary: A Python package for spectrum-management compatibility studies\n  description: |\n    The pycraf package provides functions and procedures for various tasks in spectrum-management compatibility studies.\n  dev_url: https://github.com/bwinkel/pycraf\n\nextra:\n  recipe-maintainers:\n    - bwinkel\n",
  "req":{
   "__set__":true,
   "elements":[
@@ -278,9 +296,15 @@
    "openmp",
    "pip",
    "pyproj",
+   "pyqt",
+   "pytest",
+   "pytest-astropy",
+   "pytest-doctestplus",
+   "pytest-qt",
    "python",
    "scipy",
-   "setuptools"
+   "setuptools",
+   "sgp4"
   ]
  },
  "requirements":{
@@ -312,8 +336,14 @@
     "numpy",
     "openmp",
     "pyproj",
+    "pyqt",
+    "pytest",
+    "pytest-astropy",
+    "pytest-doctestplus",
+    "pytest-qt",
     "python",
-    "scipy"
+    "scipy",
+    "sgp4"
    ]
   },
   "test":{
@@ -352,8 +382,14 @@
     "numpy",
     "openmp 4.0.*",
     "pyproj",
+    "pyqt",
+    "pytest",
+    "pytest-astropy",
+    "pytest-doctestplus",
+    "pytest-qt",
     "python",
-    "scipy"
+    "scipy",
+    "sgp4 <2.0"
    ]
   },
   "test":{
@@ -362,5 +398,5 @@
   }
  },
  "url":"https://pypi.io/packages/source/p/pycraf/pycraf-0.25.8.tar.gz",
- "version":"1.0.1"
+ "version":"1.0.2"
 }

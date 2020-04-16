@@ -48,6 +48,25 @@
     "migrator_version",
     "name"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/404389769.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"MigrationYaml",
+    "migrator_object_version":1,
+    "migrator_version":0,
+    "name":"hdf51106"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_object_version",
+    "migrator_version",
+    "name"
+   ]
   }
  ],
  "bad":false,
@@ -128,7 +147,7 @@
  },
  "name":"graph",
  "new_version":"1.11",
- "pinning_version":"2019.06.05",
+ "pinning_version":"2020.04.16.07.55.54",
  "raw_meta_yaml":"{% set name = \"graph\" %}\n{% set version = \"1.11\" %}\n{% set sha256 = \"00432f3007b4cb2a8d6f2e021fd5625a79e307d6532971719ca6ab81dd0ae752\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  fn: {{ name }}-{{ version }}.tar.gz\n  url: https://github.com/bjoern-andres/graph/archive/v{{ version }}.tar.gz\n  sha256: {{ sha256 }}\n\n  patches:\n    - hdf5_fixes.diff\n    - install_fixes.diff\n    - msvc_fixes.diff\n\nbuild:\n  number: 1\n  skip: true        # [win32 or (win and vc<14) and py36]\n\nrequirements:\n  build:\n    - cmake\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n  host:\n    - hdf5\n  run:\n    - hdf5\n\ntest:\n  commands:\n    - test -f $PREFIX/include/andres/graph/graph.hxx                  # [unix]\n    - if not exist %LIBRARY_INC%\\\\andres\\\\graph\\\\graph.hxx exit 1     # [win]\n\nabout:\n  home: http://www.andres.sc/graph.html\n  license: BSD 3-clause\n  license_family: BSD\n  summary: 'Graphs and Graph Algorithms in C++, including Minimum Cost (Lifted) Multicuts'\n\nextra:\n  recipe-maintainers:\n    - bluescarni\n",
  "req":{
   "__set__":true,
@@ -165,7 +184,7 @@
    "elements":[]
   }
  },
- "smithy_version":"3.3.6",
+ "smithy_version":"No azure token. Create a token and\nput it in ~/.conda-smithy/azure.token\n3.6.16",
  "strong_exports":false,
  "total_requirements":{
   "build":{
