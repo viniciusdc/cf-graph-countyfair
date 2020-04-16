@@ -175,7 +175,7 @@
    "summary":"Provides core application building blocks for libraries and applications written in C."
   },
   "build":{
-   "number":"1004",
+   "number":"0",
    "run_exports":[
     "glib",
     "glib",
@@ -206,7 +206,7 @@
   },
   "package":{
    "name":"glib",
-   "version":"2.64.1"
+   "version":"2.64.2"
   },
   "requirements":{
    "build":[
@@ -279,8 +279,8 @@
     "hardcoded-paths.patch",
     "skip-some-tests.patch"
    ],
-   "sha256":"17967603bcb44b6dbaac47988d80c29a3d28519210b28157c2bd10997595bbc7",
-   "url":"http://ftp.gnome.org/pub/GNOME/sources/glib/2.64/glib-2.64.1.tar.xz"
+   "sha256":"9a2f21ed8f13b9303399de13a0252b7cbcede593d26971378ec6cb90e87f2277",
+   "url":"http://ftp.gnome.org/pub/GNOME/sources/glib/2.64/glib-2.64.2.tar.xz"
   },
   "test":{
    "commands":[
@@ -326,7 +326,7 @@
  },
  "new_version_errors":{},
  "pinning_version":"2020.04.16.07.55.54",
- "raw_meta_yaml":"{% set version = \"2.64.1\" %}\n{% set major_minor = \".\".join(version.split(\".\")[:2]) %}\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: glib\n  version: {{ version }}\n\nsource:\n  url: http://ftp.gnome.org/pub/GNOME/sources/glib/{{ major_minor }}/glib-{{ version }}.tar.xz\n  sha256: 17967603bcb44b6dbaac47988d80c29a3d28519210b28157c2bd10997595bbc7\n  patches:\n    # Related to this patch https://bugzilla.gnome.org/show_bug.cgi?id=673135\n    # However, it was rejected by upstream. Homebrew decided to keep their own\n    # copy ( https://raw.githubusercontent.com/Homebrew/patches/59e4d32/glib/hardcoded-paths.diff ).\n    # We are essentially using that copy, but with some tweaks. Info at the link below.\n    #\n    # https://github.com/Homebrew/legacy-homebrew/blob/21ce7a56cb3fc40fe93d731cc654c69268796772/Library/Formula/glib.rb#L33-L39\n    #\n    - hardcoded-paths.patch\n    - skip-some-tests.patch\n\n    #- 0001-Attempt-to-mask-out-qemu-failing-tests.patch               # [ppc64le or aarch64]\n    # Windows:\n    - 0001-Manually-link-with-libiconv-whenever-we-use-libintl.patch  # [win]\n    - 0002-Increase-some-test-timeouts.patch                          # [win]\n\nbuild:\n  number: 1004\n  skip: true  # [win and py < 30] - Py27 on Windows requires VS2008 which gettext doesn't support anymore\n  run_exports:\n    - {{ pin_subpackage('glib') }}\n\n# Note that Python is in fact a runtime dependency because this package\n# provides a couple of developer support tools that are Python scripts.\n\nrequirements:\n  build:\n    - {{posix}}patch  # [win]\n    - meson\n    - ninja\n    - {{native}}pkg-config\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n    - python *\n  host:\n    - libffi\n    - gettext\n    - zlib\n    - pcre\n    - libiconv\n  run:\n    - python *\n    - libffi\n    - gettext\n    - zlib\n    - pcre\n    - libiconv\n\ntest:\n  commands:\n    - test -f ${PREFIX}/lib/libglib-2.0{{ SHLIB_EXT }}  # [not win]\n    - test ! -f ${PREFIX}/lib/libgobject-2.0.la  # [not win]\n    # Check that binaries can run -- instigated by Meson Linux rpath issue\n    - gapplication help  # [linux]\n    - gdbus help\n    - gio version\n    - gio-querymodules .\n    - glib-compile-resources --help\n    - glib-compile-schemas --help\n    - gobject-query --help\n    - gresource help\n    - gtester --help  # [not win]\n\nabout:\n  home: https://developer.gnome.org/glib/\n  license: LGPL-2.1-or-later\n  license_file: COPYING\n  summary: 'Provides core application building blocks for libraries and applications written in C.'\n\nextra:\n  recipe-maintainers:\n    - ccordoba12\n    - jakirkham\n    - scopatz\n    - ocefpaf\n    - pkgw\n    - isuruf\n",
+ "raw_meta_yaml":"{% set version = \"2.64.2\" %}\n{% set major_minor = \".\".join(version.split(\".\")[:2]) %}\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: glib\n  version: {{ version }}\n\nsource:\n  url: http://ftp.gnome.org/pub/GNOME/sources/glib/{{ major_minor }}/glib-{{ version }}.tar.xz\n  sha256: 9a2f21ed8f13b9303399de13a0252b7cbcede593d26971378ec6cb90e87f2277\n  patches:\n    # Related to this patch https://bugzilla.gnome.org/show_bug.cgi?id=673135\n    # However, it was rejected by upstream. Homebrew decided to keep their own\n    # copy ( https://raw.githubusercontent.com/Homebrew/patches/59e4d32/glib/hardcoded-paths.diff ).\n    # We are essentially using that copy, but with some tweaks. Info at the link below.\n    #\n    # https://github.com/Homebrew/legacy-homebrew/blob/21ce7a56cb3fc40fe93d731cc654c69268796772/Library/Formula/glib.rb#L33-L39\n    #\n    - hardcoded-paths.patch\n    - skip-some-tests.patch\n\n    #- 0001-Attempt-to-mask-out-qemu-failing-tests.patch               # [ppc64le or aarch64]\n    # Windows:\n    - 0001-Manually-link-with-libiconv-whenever-we-use-libintl.patch  # [win]\n    - 0002-Increase-some-test-timeouts.patch                          # [win]\n\nbuild:\n  number: 0\n  skip: true  # [win and py < 30]\n  run_exports:\n    - {{ pin_subpackage('glib') }}\n\n# Note that Python is in fact a runtime dependency because this package\n# provides a couple of developer support tools that are Python scripts.\n\nrequirements:\n  build:\n    - {{posix}}patch  # [win]\n    - meson\n    - ninja\n    - {{native}}pkg-config\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n    - python *\n  host:\n    - libffi\n    - gettext\n    - zlib\n    - pcre\n    - libiconv\n  run:\n    - python *\n    - libffi\n    - gettext\n    - zlib\n    - pcre\n    - libiconv\n\ntest:\n  commands:\n    - test -f ${PREFIX}/lib/libglib-2.0{{ SHLIB_EXT }}  # [not win]\n    - test ! -f ${PREFIX}/lib/libgobject-2.0.la  # [not win]\n    # Check that binaries can run -- instigated by Meson Linux rpath issue\n    - gapplication help  # [linux]\n    - gdbus help\n    - gio version\n    - gio-querymodules .\n    - glib-compile-resources --help\n    - glib-compile-schemas --help\n    - gobject-query --help\n    - gresource help\n    - gtester --help  # [not win]\n\nabout:\n  home: https://developer.gnome.org/glib/\n  license: LGPL-2.1-or-later\n  license_file: COPYING\n  summary: Provides core application building blocks for libraries and applications written in C.\n\nextra:\n  recipe-maintainers:\n    - ccordoba12\n    - jakirkham\n    - scopatz\n    - ocefpaf\n    - pkgw\n    - isuruf\n",
  "req":{
   "__set__":true,
   "elements":[
@@ -425,5 +425,5 @@
   }
  },
  "url":"http://ftp.gnome.org/pub/GNOME/sources/glib/2.58/glib-2.58.3.tar.xz",
- "version":"2.64.1"
+ "version":"2.64.2"
 }
