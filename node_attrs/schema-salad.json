@@ -426,6 +426,23 @@
     "migrator_version",
     "version"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/404333295.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"Version",
+    "migrator_version":0,
+    "version":"5.0.20200416112825"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "version"
+   ]
   }
  ],
  "bad":false,
@@ -553,8 +570,12 @@
   }
  },
  "name":"schema-salad",
- "new_version":"5.0.20200302192450",
- "pinning_version":"2020.02.20",
+ "new_version":"5.0.20200416112825",
+ "new_version_attempts":{
+  "5.0.20200416112825":1
+ },
+ "new_version_errors":{},
+ "pinning_version":"2020.04.16.07.55.54",
  "raw_meta_yaml":"{% set version = \"5.0.20200302192450\" %}\n\npackage:\n  name: schema-salad\n  version: {{ version }}\n\nsource:\n  url: https://pypi.io/packages/source/s/schema-salad/schema-salad-{{ version }}.tar.gz\n  sha256: 6347d694b5127f31f91cbdf811dfaac293dea57f297e2ed5c5aadd6dadab7893\n  patches:\n    # Workaround for https://github.com/pytest-dev/pytest/issues/6489\n    - 0001-Workaround-for-pytest-realpath-issue-on-Python-3.8-and-Windows.patch\n\nbuild:\n  skip: true  # [py<30]\n  number: 0\n  entry_points:\n    - schema-salad-tool=schema_salad.main:main\n    - schema-salad-doc=schema_salad.makedoc:main\n  script: {{ PYTHON }} -m pip install . --no-deps -vv\n\nrequirements:\n  host:\n    - python\n    - pip\n  run:\n    - python\n    - setuptools\n    - requests >=1.0\n    # Avoid ruamel.yaml >=0.16,<0.16.5 due to builds with broken dependency.\n    # ref: https://github.com/conda-forge/ruamel.yaml-feedstock/pull/117\n    - ruamel.yaml >=0.12.4,<0.16|0.16.5.*\n    - rdflib >=4.2.2,<4.3.0\n    - rdflib-jsonld >=0.3.0,<0.5.0\n    - mistune >=0.8.1,<0.9\n    - cachecontrol >=0.11.7,<0.12\n    - lockfile >=0.9\n    - typing_extensions\n    - typing >=3.7.4  # [py<35]\n\ntest:\n  requires:\n    - pytest <5\n  imports:\n    - schema_salad\n    - schema_salad.tests\n  commands:\n    - schema-salad-tool --help\n    - schema-salad-doc --help\n    - python -m pytest --pyargs schema_salad\n\nabout:\n  home: https://github.com/common-workflow-language/schema_salad\n  license: Apache-2.0\n  license_family: APACHE\n  license_file: LICENSE.txt\n  summary: Schema Annotations for Linked Avro Data (SALAD)\n  dev_url: https://github.com/common-workflow-language/schema_salad\n\nextra:\n  recipe-maintainers:\n    - croth1\n    - chapmanb\n    - pvanheus\n",
  "req":{
   "__set__":true,
@@ -606,7 +627,7 @@
    ]
   }
  },
- "smithy_version":"3.6.8",
+ "smithy_version":"No azure token. Create a token and\nput it in ~/.conda-smithy/azure.token\n3.6.16",
  "strong_exports":false,
  "total_requirements":{
   "build":{
