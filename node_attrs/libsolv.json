@@ -173,7 +173,7 @@
    "summary":"Library for solving packages and reading repositories"
   },
   "build":{
-   "number":"2",
+   "number":"3",
    "run_exports":[
     "libsolv",
     "libsolv",
@@ -243,7 +243,7 @@
  "name":"libsolv",
  "new_version":"0.7.11",
  "pinning_version":"2020.01.16",
- "raw_meta_yaml":"{% set name = \"libsolv\" %}\n{% set version = \"0.7.11\" %}\n{% set sha256 = \"dad9da25314dce7616d77c85e303684b9fa2970283e250f89e642e47836cd306\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  fn: {{ name }}-{{ version }}.tar.gz\n  url: https://github.com/openSUSE/libsolv/archive/{{ version }}.tar.gz\n  sha256: {{ sha256 }}\n  patches:\n    - 0001-de-prioritize-track_features-conda.patch\n\nbuild:\n  number: 2\n  skip: True  # [win and vc<14]\n  run_exports:\n    - {{ pin_subpackage(name, max_pin='x.x') }}\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n    - cmake\n  host:\n    - zlib\n\ntest:\n  commands:\n    - test -f $PREFIX/lib/libsolv.so  # [linux]\n    - test -f $PREFIX/lib/libsolv.so.1  # [linux]\n    - test -f $PREFIX/lib/libsolv.dylib  # [osx]\n    - test -f $PREFIX/include/solv/repo.h  # [unix]\n    - if exist %LIBRARY_INC%\\\\solv\\\\repo.h (exit 0) else (exit 1)  # [win]\n\nabout:\n  home: https://github.com/openSUSE/libsolv\n  license: BSD-3-Clause\n  license_family: BSD\n  license_file: LICENSE.BSD\n  summary: 'Library for solving packages and reading repositories'\n  description: 'libsolv, a free package dependency solver using a satisfiability algorithm.'\n  dev_url: https://github.com/openSUSE/libsolv\n\nextra:\n  recipe-maintainers:\n    - SylvainCorlay\n    - JohanMabille\n    - wolfv\n    - davidbrochart\n",
+ "raw_meta_yaml":"{% set name = \"libsolv\" %}\n{% set version = \"0.7.11\" %}\n{% set sha256 = \"dad9da25314dce7616d77c85e303684b9fa2970283e250f89e642e47836cd306\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  fn: {{ name }}-{{ version }}.tar.gz\n  url: https://github.com/openSUSE/libsolv/archive/{{ version }}.tar.gz\n  sha256: {{ sha256 }}\n  patches:\n    - 0001-de-prioritize-track_features-conda.patch\n\nbuild:\n  number: 3\n  skip: True  # [win and vc<14]\n  run_exports:\n    - {{ pin_subpackage(name, max_pin='x.x') }}\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n    - cmake\n  host:\n    - zlib\n\ntest:\n  commands:\n    - test -f $PREFIX/lib/libsolv.so  # [linux]\n    - test -f $PREFIX/lib/libsolv.so.1  # [linux]\n    - test -f $PREFIX/lib/libsolv.dylib  # [osx]\n    - test -f $PREFIX/include/solv/repo.h  # [unix]\n    - if exist %LIBRARY_INC%\\\\solv\\\\repo.h (exit 0) else (exit 1)  # [win]\n\nabout:\n  home: https://github.com/openSUSE/libsolv\n  license: BSD-3-Clause\n  license_family: BSD\n  license_file: LICENSE.BSD\n  summary: 'Library for solving packages and reading repositories'\n  description: 'libsolv, a free package dependency solver using a satisfiability algorithm.'\n  dev_url: https://github.com/openSUSE/libsolv\n\nextra:\n  recipe-maintainers:\n    - SylvainCorlay\n    - JohanMabille\n    - wolfv\n    - davidbrochart\n",
  "req":{
   "__set__":true,
   "elements":[
