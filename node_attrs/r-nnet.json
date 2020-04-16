@@ -65,6 +65,23 @@
     "migrator_version",
     "version"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/404113764.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"ArchRebuild",
+    "migrator_version":1,
+    "name":"aarch64 and ppc64le addition"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "name"
+   ]
   }
  ],
  "bad":false,
@@ -177,7 +194,7 @@
  },
  "name":"r-nnet",
  "new_version":"7.3_13",
- "pinning_version":"2020.02.20",
+ "pinning_version":"2020.04.16.03.28.28",
  "raw_meta_yaml":"{% set version = \"7.3-13\" %}\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-nnet\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  fn: nnet_{{ version }}.tar.gz\n  url:\n    - {{ cran_mirror }}/src/contrib/nnet_{{ version }}.tar.gz\n    - {{ cran_mirror }}/src/contrib/Archive/nnet/nnet_{{ version }}.tar.gz\n  sha256: ae8820e292c7a413206ef82d1f41da2809c1d0e39c97f6800f9c7952599119fc\n\nbuild:\n  merge_build_host: true  # [win]\n  number: 0\n  skip: true  # [win32]\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - {{ compiler('c') }}        # [not win]\n    - {{ compiler('m2w64_c') }}        # [win]\n    - {{posix}}filesystem        # [win]\n    - {{posix}}make\n    - {{posix}}sed               # [win]\n    - {{posix}}coreutils         # [win]\n    - {{posix}}zip               # [win]\n  host:\n    - r-base\n    - r-mass\n  run:\n    - r-base\n    - {{native}}gcc-libs         # [win]\n    - r-mass\n\ntest:\n  commands:\n    - $R -e \"library('nnet')\"           # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('nnet')\\\"\"  # [win]\n\nabout:\n  home: http://www.stats.ox.ac.uk/pub/MASS4/\n  license: GPL-2 | GPL-3\n  summary: Software for feed-forward neural networks with a single hidden layer, and for multinomial log-linear models.\n  license_family: GPL3\n  license_file: {{ environ[\"PREFIX\"] }}/lib/R/share/licenses/GPL-3\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n    - johanneskoester\n    - bgruening\n    - daler\n    - jdblischak\n    - cbrueffer\n    - dbast\n",
  "req":{
   "__set__":true,
@@ -227,7 +244,7 @@
    "elements":[]
   }
  },
- "smithy_version":"3.6.8",
+ "smithy_version":"No azure token. Create a token and\nput it in ~/.conda-smithy/azure.token\n3.6.16",
  "strong_exports":false,
  "total_requirements":{
   "build":{
