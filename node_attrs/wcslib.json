@@ -63,12 +63,12 @@
  "meta_yaml":{
   "about":{
    "home":"http://www.atnf.csiro.au/people/mcalabre/WCS/wcslib/",
-   "license":"LGPL",
+   "license":"LGPL-3.0-or-later",
    "license_file":"COPYING.LESSER",
    "summary":"Library for World Coordinate System computations"
   },
   "build":{
-   "number":"1002",
+   "number":"0",
    "skip":true
   },
   "extra":{
@@ -80,7 +80,7 @@
   },
   "package":{
    "name":"wcslib",
-   "version":"5.20"
+   "version":"7.2"
   },
   "requirements":{
    "build":[
@@ -112,14 +112,11 @@
   "source":{
    "patches":[
     "no-x-tests.patch",
-    "no-Otarget.patch",
     "no-x-tests.patch",
-    "no-Otarget.patch",
-    "no-x-tests.patch",
-    "no-Otarget.patch"
+    "no-x-tests.patch"
    ],
-   "sha256":"0bc037db498cbd8e17ecaedd72fad15d6810ae885793882d5736f746f64c0fb1",
-   "url":"https://newton.cx/~peter/files/wcslib-5.20.tar.bz2"
+   "sha256":"63959eb4859517a1ecca48c91542318bebeed62e4a1663656de9a983af376e39",
+   "url":"ftp://ftp.atnf.csiro.au/pub/software/wcslib/wcslib-7.2.tar.bz2"
   },
   "test":{
    "commands":[
@@ -132,7 +129,7 @@
  "name":"wcslib",
  "new_version":false,
  "pinning_version":"2019.08.12",
- "raw_meta_yaml":"{% set name = \"wcslib\" %}\n{% set version = \"5.20\" %}\n{% set sha256 = \"0bc037db498cbd8e17ecaedd72fad15d6810ae885793882d5736f746f64c0fb1\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  url: https://newton.cx/~peter/files/{{ name }}-{{ version }}.tar.bz2\n  sha256: {{ sha256 }}\n  patches:\n    - no-x-tests.patch # avoid deluges of pgplot warnings\n    - no-Otarget.patch\n\nbuild:\n  number: 1002\n  skip: true  # [win]\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - {{ compiler('fortran') }}\n    - flex\n  host:\n    - cfitsio\n    - pgplot 5.2.*  # [not win]\n  run:\n    - cfitsio\n    - pgplot 5.2.*  # [not win]\n\ntest:\n  commands:\n    # Main validation performed in 'make check' stage\n    - test -f $PREFIX/lib/libwcs$SHLIB_EXT\n\nabout:\n  home: http://www.atnf.csiro.au/people/mcalabre/WCS/wcslib/\n  license: LGPL\n  license_file: COPYING.LESSER\n  summary: 'Library for World Coordinate System computations'\n\nextra:\n  recipe-maintainers:\n    - pkgw\n",
+ "raw_meta_yaml":"{% set name = \"wcslib\" %}\n{% set version = \"7.2\" %}\n{% set sha256 = \"63959eb4859517a1ecca48c91542318bebeed62e4a1663656de9a983af376e39\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  url: ftp://ftp.atnf.csiro.au/pub/software/{{ name }}/{{ name }}-{{ version }}.tar.bz2\n  sha256: {{ sha256 }}\n  patches:\n    - no-x-tests.patch  # avoid deluges of pgplot warnings\n\nbuild:\n  number: 0\n  skip: true  # [win]\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - {{ compiler('fortran') }}\n    - flex\n  host:\n    - cfitsio\n    - pgplot 5.2.*  # [not win]\n  run:\n    - cfitsio\n    - pgplot 5.2.*  # [not win]\n\ntest:\n  commands:\n    # Main validation performed in 'make check' stage\n    - test -f $PREFIX/lib/libwcs$SHLIB_EXT\n\nabout:\n  home: http://www.atnf.csiro.au/people/mcalabre/WCS/wcslib/\n  license: LGPL-3.0-or-later\n  license_file: COPYING.LESSER\n  summary: 'Library for World Coordinate System computations'\n\nextra:\n  recipe-maintainers:\n    - pkgw\n",
  "req":{
   "__set__":true,
   "elements":[
@@ -202,5 +199,5 @@
   }
  },
  "url":"https://newton.cx/~peter/files/wcslib-5.20.tar.bz2",
- "version":"5.20"
+ "version":"7.2"
 }

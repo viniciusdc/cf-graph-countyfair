@@ -65,7 +65,7 @@
     "*/libcuda.*",
     "*/libcuda.*"
    ],
-   "number":"0",
+   "number":"1",
    "script":[
     " -m pip install . --no-deps -vv",
     " -m pip install . --no-deps -vv",
@@ -94,7 +94,8 @@
     "cmake",
     "c_compiler_stub",
     "cxx_compiler_stub",
-    "cuda_compiler_stub"
+    "cuda_compiler_stub",
+    "cmake"
    ],
    "host":[
     "python",
@@ -174,7 +175,7 @@
  },
  "name":"pp-sketchlib",
  "pinning_version":"2020.04.16.07.55.54",
- "raw_meta_yaml":"{% set name = \"pp-sketchlib\" %}\n{% set version = \"1.2.0\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  url: https://github.com/johnlees/{{ name|lower }}/archive/v{{ version }}.tar.gz\n  sha256: cc78e11f7afef7128fed4b048ccdf44e968825fde257d5b25925f9fb68a7c32a\n  patches:\n    - 0001-Replace-cmake-with-make.patch  # [linux64 and cuda_compiler_version != \"None\"]\n    - 0002-Pass-libloc-to-make-command.patch  # [linux64 and cuda_compiler_version != \"None\"]\n    - 0003-Fix-target-dependencies-in-Makefile.patch  # [linux64 and cuda_compiler_version != \"None\"]\n\nbuild:\n  number: 0\n  skip: True  # [py2k or win]\n  script:\n    - \"{{ PYTHON }} -m pip install . --no-deps -vv\"\n  missing_dso_whitelist:\n    - \"*/libcuda.*\"\n  ignore_run_exports:\n    - cudatoolkit\n    - armadillo\n  entry_points:\n    - poppunk_sketch = pp_sketch.__main__:main\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n    - {{ compiler('cuda') }}  # [linux64 and cuda_compiler_version != \"None\"]\n    - cmake  # [not linux64 or cuda_compiler_version == \"None\"]\n  host:\n    - python\n    - pip\n    - pybind11\n    - highfive\n    - zlib\n    - eigen\n    - armadillo\n    - hdf5\n    - openblas\n  run:\n    - python\n    - numpy\n    - libblas * *openblas\n    - openblas\n    - zlib\n    - h5py\n    - libgfortran-ng\n    - libgfortran  # [osx]\n\ntest:\n  imports:\n    - pp_sketch\n  commands:\n    - poppunk_sketch --version\n\nabout:\n   home: https://github.com/johnlees/pp-sketchlib\n   license: Apache-2.0 AND MIT\n   license_file:\n    - NOTICE\n    - LICENSE\n    - LICENSE_bindash\n    - LICENSE_nthash\n   summary: Library of sketching functions used by PopPUNK\n   doc_url: https://www.poppunk.net\n   dev_url: https://github.com/johnlees/pp-sketchlib\n\nextra:\n  recipe-maintainers:\n    - johnlees\n",
+ "raw_meta_yaml":"{% set name = \"pp-sketchlib\" %}\n{% set version = \"1.2.0\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  url: https://github.com/johnlees/{{ name|lower }}/archive/v{{ version }}.tar.gz\n  sha256: cc78e11f7afef7128fed4b048ccdf44e968825fde257d5b25925f9fb68a7c32a\n  patches:\n    - 0001-Replace-cmake-with-make.patch  # [linux64 and cuda_compiler_version != \"None\"]\n    - 0002-Pass-libloc-to-make-command.patch  # [linux64 and cuda_compiler_version != \"None\"]\n    - 0003-Fix-target-dependencies-in-Makefile.patch  # [linux64 and cuda_compiler_version != \"None\"]\n\nbuild:\n  number: 1\n  skip: True  # [py2k or win or cuda_compiler_version == '9.2']\n  script:\n    - \"{{ PYTHON }} -m pip install . --no-deps -vv\"\n  missing_dso_whitelist:\n    - \"*/libcuda.*\"\n  ignore_run_exports:\n    - cudatoolkit\n    - armadillo\n  entry_points:\n    - poppunk_sketch = pp_sketch.__main__:main\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n    - {{ compiler('cuda') }}  # [linux64 and cuda_compiler_version != \"None\"]\n    - cmake\n  host:\n    - python\n    - pip\n    - pybind11\n    - highfive\n    - zlib\n    - eigen\n    - armadillo\n    - hdf5\n    - openblas\n  run:\n    - python\n    - numpy\n    - libblas * *openblas\n    - openblas\n    - zlib\n    - h5py\n    - libgfortran-ng\n    - libgfortran  # [osx]\n\ntest:\n  imports:\n    - pp_sketch\n  commands:\n    - poppunk_sketch --version\n\nabout:\n   home: https://github.com/johnlees/pp-sketchlib\n   license: Apache-2.0 AND MIT\n   license_file:\n    - NOTICE\n    - LICENSE\n    - LICENSE_bindash\n    - LICENSE_nthash\n   summary: Library of sketching functions used by PopPUNK\n   doc_url: https://www.poppunk.net\n   dev_url: https://github.com/johnlees/pp-sketchlib\n\nextra:\n  recipe-maintainers:\n    - johnlees\n",
  "req":{
   "__set__":true,
   "elements":[
