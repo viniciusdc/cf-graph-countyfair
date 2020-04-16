@@ -79,6 +79,23 @@
     "migrator_version",
     "version"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/404131883.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"ArchRebuild",
+    "migrator_version":1,
+    "name":"aarch64 and ppc64le addition"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "name"
+   ]
   }
  ],
  "bad":false,
@@ -198,7 +215,7 @@
  },
  "name":"r-yaml",
  "new_version":"2.2.1",
- "pinning_version":"2020.01.27",
+ "pinning_version":"2020.04.16.03.28.28",
  "raw_meta_yaml":"{% set version = \"2.2.1\" %}\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-yaml\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  fn: yaml_{{ version }}.tar.gz\n  url:\n    - {{ cran_mirror }}/src/contrib/yaml_{{ version }}.tar.gz\n    - {{ cran_mirror }}/src/contrib/Archive/yaml/yaml_{{ version }}.tar.gz\n  sha256: 1115b7bc2a397fa724956eec916df5160c600c99a3be186d21558dd38d782783\n\nbuild:\n  merge_build_host: True  # [win]\n  number: 0\n  skip: true  # [win32]\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - {{ compiler('c') }}        # [not win]\n    - {{ compiler('m2w64_c') }}        # [win]\n    - {{posix}}filesystem        # [win]\n    - {{posix}}make\n    - {{posix}}sed               # [win]\n    - {{posix}}coreutils         # [win]\n    - {{posix}}zip               # [win]\n  host:\n    - r-base\n  run:\n    - r-base\n    - {{native}}gcc-libs         # [win]\n\ntest:\n  commands:\n    - $R -e \"library('yaml')\"           # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('yaml')\\\"\"  # [win]\n\nabout:\n  home: https://github.com/viking/r-yaml/\n  license: BSD_3_clause\n  license_file: \n    - LICENSE \n    - COPYING \n\n  summary: Implements the 'libyaml' 'YAML' 1.1 parser and emitter (<http://pyyaml.org/wiki/LibYAML>)\n    for R.\n  license_family: BSD\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n    - croth1\n    - bsennblad\n    - johanneskoester\n    - bgruening\n    - daler\n    - jdblischak\n    - cbrueffer\n",
  "req":{
   "__set__":true,
@@ -245,7 +262,7 @@
    "elements":[]
   }
  },
- "smithy_version":"3.6.6",
+ "smithy_version":"No azure token. Create a token and\nput it in ~/.conda-smithy/azure.token\n3.6.16",
  "strong_exports":false,
  "total_requirements":{
   "build":{
