@@ -432,6 +432,25 @@
     "migrator_version",
     "version"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/404769501.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"MigrationYaml",
+    "migrator_object_version":1,
+    "migrator_version":0,
+    "name":"pypy"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_object_version",
+    "migrator_version",
+    "name"
+   ]
   }
  ],
  "bad":false,
@@ -598,7 +617,7 @@
   "3.3.1":1
  },
  "new_version_errors":{},
- "pinning_version":"2020.04.14.00.23.16",
+ "pinning_version":"2020.04.16.16.23.46",
  "raw_meta_yaml":"{% set version = \"3.2.5\" %}\n{% set pfx = 'm2w64-' if win else '' %}\n\npackage:\n  name: rpy2\n  version: {{version}}\n\nsource:\n  url: https://pypi.io/packages/source/r/rpy2/rpy2-{{ version }}.tar.gz\n  sha256: 33fbb7c244fe4151a47899ab8f2f138ca0042d25755a3956d584453a8719d35e\n  patches:\n    - 0001-Fix-multiprocessing-test.patch\n\nbuild:\n  number: 0\n  merge_build_host: True  # [win]\n  skip: True  # [py2k]\n\nrequirements:\n  build:\n    - posix  # [win]\n    - {{ compiler('c') }}  # [not win]\n    - {{ compiler('m2w64_c') }}  # [win]\n  host:\n    - python\n    - pip\n    - r-base\n    - jinja2\n    - pytz\n    - simplegeneric\n    - tzlocal\n    - cffi >=1.0.0,!=1.13.0\n  run:\n    - python\n    - r-base\n    - jinja2\n    - pytz\n    - simplegeneric\n    - tzlocal\n    - cffi >=1.0.0,!=1.13.0\n\ntest:\n  source_files:\n    - rpy2/tests\n  requires:\n    - r-survival\n    - r-ggplot2 >=2.2.1\n    - ipython\n    - numpy\n    - pandas\n    - pytest\n  imports:\n    - rpy2\n    - rpy2.rlike\n    # calls `get_rlib_path` an that only works for *nix\n    - rpy2.ipython  # [not win]\n    - rpy2.rinterface  # [not win]\n    - rpy2.robjects  # [not win]\n    - rpy2.robjects.lib  # [not win]\n  commands:\n    - pytest -s -rxs -v rpy2/tests  # [not win]\n\nabout:\n  home: https://rpy2.bitbucket.io/\n  license: GPL-2.0\n  license_family: GPL\n  license_file: gpl-2.0.txt\n  summary: \"Python interface to the R language (embedded R)\"\n\nextra:\n  recipe-maintainers:\n    - bgruening\n    - ceholden\n    - johanneskoester\n    - mingwandroid\n    - ocefpaf\n",
  "req":{
   "__set__":true,
