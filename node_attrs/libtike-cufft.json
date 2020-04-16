@@ -35,6 +35,23 @@
     "migrator_version",
     "name"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/404080513.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"Version",
+    "migrator_version":0,
+    "version":"0.8.0"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "version"
+   ]
   }
  ],
  "bad":false,
@@ -125,8 +142,12 @@
   }
  },
  "name":"libtike-cufft",
- "new_version":"0.5.2",
- "pinning_version":"2020.01.10",
+ "new_version":"0.8.0",
+ "new_version_attempts":{
+  "0.8.0":1
+ },
+ "new_version_errors":{},
+ "pinning_version":"2020.04.15.23.38.20",
  "raw_meta_yaml":"{% set name = \"libtike-cufft\" %}\n{% set version = \"0.5.2\" %}\n{% set build = 0 %}\n\n\n# Set CUDA related variables\n{% if linux64 and cuda_compiler_version != \"None\" %}\n{% set cuda_build_prefix = \"cuda\" + cuda_compiler_version|string %}\n{% else %}\n{% set cuda_build_prefix = \"\" %}\n{% endif %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  url: https://github.com/carterbox/ptychocg/archive/{{ version }}.tar.gz\n  sha256: 139b071edf92f2bc60da5f32ac69bcd9b672c314d7ab5158850bffa6d455c8a1\n\nbuild:\n  number: {{ build }}\n  string: \"{{ cuda_build_prefix }}py{{ py }}h{{ PKG_HASH }}_{{ build }}\"\n  skip: True  # [py<35 or not (linux64 and cuda_compiler_version != 'None')]\n  script:\n    - {{ PYTHON }} -m pip install . -vv\n      --no-deps --ignore-installed --no-index --no-cache-dir\n      --install-option=\"-GNinja\"\n  missing_dso_whitelist:\n    - \"*/libcuda.*\"\n\nrequirements:\n  build:\n    - {{ compiler('cxx') }}\n    - {{ compiler('cuda') }}\n    - swig\n  host:\n    - pip\n    - python\n    - scikit-build\n    - setuptools_scm_git_archive\n  run:\n    - cupy\n    - python\n\ntest:\n  imports:\n    - libtike\n\nabout:\n  home: https://github.com/math-vrn/libtike-cufft\n  license: BSD-3-Clause\n  license_family: BSD\n  license_file: LICENSE\n  summary: |\n    libtike-cufft provides a cuFFT implementation of core operators for Tike.\n  doc_url: https://tike.readthedocs.io/\n  dev_url: https://github.com/math-vrn/libtike-cufft\n\nextra:\n  recipe-maintainers:\n    - carterbox\n",
  "req":{
   "__set__":true,
@@ -171,7 +192,7 @@
    "elements":[]
   }
  },
- "smithy_version":"3.6.5",
+ "smithy_version":"No azure token. Create a token and\nput it in ~/.conda-smithy/azure.token\n3.6.16",
  "strong_exports":false,
  "total_requirements":{
   "build":{
