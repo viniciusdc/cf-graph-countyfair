@@ -73,29 +73,28 @@
     "migrator_version",
     "version"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/4302d452-852f-4d84-afce-c40f3ecf43eb.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"MigrationYaml",
+    "migrator_object_version":1,
+    "migrator_version":0,
+    "name":"hdf51106"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_object_version",
+    "migrator_version",
+    "name"
+   ]
   }
  ],
- "bad":{
-  "exception":"Failed to put item: An error occurred (ValidationException) on request (EDOG612TU133CL16G7ANVMDBTJVV4KQNSO5AEMVJF66Q9ASUAAJG) on table (pr_json) when calling the PutItem operation: Attempting to store more than 38 significant digits in a Number",
-  "traceback":[
-   "Traceback (most recent call last):",
-   "  File \"/root/repo/cf-scripts/conda_forge_tick/auto_tick.py\", line 785, in main",
-   "    hash_type=attrs.get(\"hash_type\", \"sha256\"),",
-   "  File \"/root/repo/cf-scripts/conda_forge_tick/auto_tick.py\", line 251, in run",
-   "    PRJson.dump(pr_json)",
-   "  File \"/root/repo/cf-scripts/conda_forge_tick/dynamo_models.py\", line 33, in dump",
-   "    item.save()",
-   "  File \"/opt/conda/envs/run_env/lib/python3.7/site-packages/pynamodb/models.py\", line 405, in save",
-   "    data = self._get_connection().put_item(*args, **kwargs)",
-   "  File \"/opt/conda/envs/run_env/lib/python3.7/site-packages/pynamodb/connection/table.py\", line 139, in put_item",
-   "    return_item_collection_metrics=return_item_collection_metrics)",
-   "  File \"/opt/conda/envs/run_env/lib/python3.7/site-packages/pynamodb/connection/base.py\", line 972, in put_item",
-   "    six.raise_from(PutError(\"Failed to put item: {}\".format(e), e), None)",
-   "  File \"<string>\", line 3, in raise_from",
-   "pynamodb.exceptions.PutError: Failed to put item: An error occurred (ValidationException) on request (EDOG612TU133CL16G7ANVMDBTJVV4KQNSO5AEMVJF66Q9ASUAAJG) on table (pr_json) when calling the PutItem operation: Attempting to store more than 38 significant digits in a Number",
-   ""
-  ]
- },
+ "bad":false,
  "conda-forge.yml":{},
  "feedstock_name":"ecell4_base",
  "hash_type":"sha256",
@@ -234,7 +233,7 @@
  "new_version_errors":{
   "2.0.5":"The recipe did not change in the version migration, a URL did not hash, or there is jinja2 syntax the bot cannot handle!\n\nPlease check the URLs in your recipe with version '2.0.5' to make sure they exist!\n\nWe also found the following errors:\n\n - could not hash URL template 'https://github.com/ecell/{{ name }}/releases/download/v{{ version }}/ecell4_base.tar.gz'\n"
  },
- "pinning_version":"2020.04.14.00.23.16",
+ "pinning_version":"2020.04.16.07.55.54",
  "raw_meta_yaml":"{% set name = \"ecell4_base\" %}\n{% set version = \"2.0.5\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  - url: https://github.com/ecell/{{ name }}/releases/download/v{{ version }}/ecell4_base.tar.gz\n    sha256: e86029d807f6b2f79070ee7d4f3659e9daaeef6558212e78dbf01459a0330905\n    patches:\n      - 3713c26ca11e60b1d429a624df26e8277be6f634.patch\n\nbuild:\n  number: 0\n  skip: true  # [py<35]\n\nrequirements:\n  build:\n    - {{ compiler('cxx') }}  # [not win]\n    - vs2017_{{ target_platform }}  # [win]\n    - cmake\n  host:\n    - python\n    - setuptools\n    - pip\n    - pybind11\n    - hdf5 =1.10.5\n    - gsl\n    - boost\n  run:\n    - gsl\n    - hdf5 =1.10.5\n    - zlib\n    - python\n\ntest:\n  imports:\n    - ecell4_base.core\n    - ecell4_base.bd\n    - ecell4_base.egfrd\n    - ecell4_base.gillespie\n    - ecell4_base.meso\n    - ecell4_base.ode\n    - ecell4_base.sgfrd\n    - ecell4_base.spatiocyte\n\nabout:\n  home: https://github.com/ecell/ecell4_base\n  license: GPL-3.0-or-later\n  license_family: GPL\n  license_file: LICENSE\n  summary: An integrated software environment for multi-algorithm, multi-timescale, multi-spatial-representation simulation\n\nextra:\n  recipe-maintainers:\n    - kozo2\n    - ToruNiina\n    - 0ncorhynchus\n",
  "req":{
   "__set__":true,
