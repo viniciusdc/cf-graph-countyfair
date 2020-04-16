@@ -253,9 +253,6 @@
  ],
  "bad":false,
  "conda-forge.yml":{
-  "compiler_stack":"comp7",
-  "max_py_ver":"37",
-  "max_r_ver":"35",
   "provider":{
    "win":"azure"
   }
@@ -268,13 +265,13 @@
    "dev_url":"https://gitlab.kwant-project.org/kwant/kwant/",
    "doc_url":"https://kwant-project.org/doc/1/",
    "home":"http://kwant-project.org/",
-   "license":"BSD 2-Clause",
+   "license":"BSD-2-Clause",
    "license_family":"BSD",
    "license_file":"LICENSE.rst",
    "summary":"Package for numerical quantum transport calculations."
   },
   "build":{
-   "number":"2"
+   "number":"0"
   },
   "extra":{
    "recipe-maintainers":[
@@ -291,7 +288,7 @@
   },
   "package":{
    "name":"kwant",
-   "version":"1.4.1"
+   "version":"1.4.2"
   },
   "requirements":{
    "build":[
@@ -364,18 +361,16 @@
    ]
   },
   "source":{
-   "fn":"kwant-1.4.1.tar.gz",
+   "fn":"kwant-1.4.2.tar.gz",
    "patches":[
     "skip_tests.patch",
     "skip_test_basis_ordering.patch",
-    "qsymm.patch",
+    "skip_test_kpm_kwant_op.patch",
     "skip_test_basis_ordering.patch",
-    "qsymm.patch",
-    "skip_test_basis_ordering.patch",
-    "qsymm.patch"
+    "skip_test_basis_ordering.patch"
    ],
-   "sha256":"8c0ccf341dfa74e1d69f1508968c4d4e9fb36f74685f101897df6a84ed7043df",
-   "url":"https://downloads.kwant-project.org/kwant/kwant-1.4.1.tar.gz"
+   "sha256":"994b0a3848f78002ef8e3d60f36b9dfab719ee58c5189fc902a7acd0dec2cfbb",
+   "url":"https://pypi.io/packages/source/k/kwant/kwant-1.4.2.tar.gz"
   },
   "test":{
    "commands":[
@@ -422,7 +417,7 @@
  },
  "new_version_errors":{},
  "pinning_version":"2020.04.16.03.28.28",
- "raw_meta_yaml":"{% set name = \"kwant\" %}\n{% set version = \"1.4.1\" %}\n\npackage:\n  name: {{ name }}\n  version: {{ version }}\n\nsource:\n  fn: {{ name }}-{{ version }}.tar.gz\n  url: https://downloads.kwant-project.org/kwant/kwant-{{ version }}.tar.gz\n  sha256: 8c0ccf341dfa74e1d69f1508968c4d4e9fb36f74685f101897df6a84ed7043df\n  patches:\n    - skip_tests.patch  # [win]\n    - skip_test_basis_ordering.patch\n    - qsymm.patch  # backport https://gitlab.kwant-project.org/kwant/kwant/merge_requests/318\n\nbuild:\n  skip: true  # [py2k]\n  number: 2\n\nrequirements:\n  build:\n    - {{ compiler('fortran') }}\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n  host:\n    - libblas\n    - libcblas\n    - python\n    - cython\n    - mumps-seq  # [not win]\n    - numpy\n    - scipy\n    - pytest =4.6.4\n    - tinyarray\n  run:\n    - python\n    - mumps-seq  # [not win]\n    - {{ pin_compatible('numpy') }}\n    - matplotlib\n    - scipy\n    - pytest =4.6.4\n    - tinyarray\n    - sympy\n    - qsymm    \n    - vc 14  # [win and py>=35]\n\ntest:\n  imports:\n    - kwant\n    - kwant.graph\n    - kwant.graph.tests\n    - kwant.linalg\n    - kwant.linalg.tests\n    - kwant.physics\n    - kwant.physics.tests\n    - kwant.solvers\n    - kwant.solvers.tests\n    - kwant.tests\n  commands:\n    - conda inspect linkages -p $PREFIX kwant  # [not win]\n    - conda inspect objects -p $PREFIX kwant  # [osx]\n\nabout:\n  home: http://kwant-project.org/\n  license: BSD 2-Clause\n  license_file: LICENSE.rst\n  license_family: BSD\n  summary: 'Package for numerical quantum transport calculations.'\n  description: |\n    Kwant is a free (open source) Python package for numerical calculations on\n    tight-binding models with a strong focus on quantum transport. It is designed to\n    be flexible and easy to use. Thanks to the use of innovative algorithms, Kwant\n    is often faster than other available codes, even those entirely written in the\n    low level FORTRAN and C/C++ languages.\n  doc_url: https://kwant-project.org/doc/1/\n  dev_url: https://gitlab.kwant-project.org/kwant/kwant/\n\nextra:\n  recipe-maintainers:\n    - basnijholt\n    - jbweston\n    - akhmerov\n",
+ "raw_meta_yaml":"{% set name = \"kwant\" %}\n{% set version = \"1.4.2\" %}\n\npackage:\n  name: {{ name }}\n  version: {{ version }}\n\nsource:\n  fn: {{ name }}-{{ version }}.tar.gz\n  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/kwant-{{ version }}.tar.gz\n  sha256: 994b0a3848f78002ef8e3d60f36b9dfab719ee58c5189fc902a7acd0dec2cfbb\n  patches:\n    - skip_tests.patch  # [win]\n    - skip_test_basis_ordering.patch\n    - skip_test_kpm_kwant_op.patch  # [win]\n\nbuild:\n  skip: true  # [py2k]\n  number: 0\n\nrequirements:\n  build:\n    - {{ compiler('fortran') }}\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n  host:\n    - libblas\n    - libcblas\n    - python\n    - cython\n    - mumps-seq  # [not win]\n    - numpy\n    - scipy\n    - pytest =4.6.4\n    - tinyarray\n  run:\n    - python\n    - mumps-seq  # [not win]\n    - {{ pin_compatible('numpy') }}\n    - matplotlib\n    - scipy\n    - pytest =4.6.4\n    - tinyarray\n    - sympy\n    - qsymm\n    - vc 14  # [win and py>=35]\n\ntest:\n  imports:\n    - kwant\n    - kwant.graph\n    - kwant.graph.tests\n    - kwant.linalg\n    - kwant.linalg.tests\n    - kwant.physics\n    - kwant.physics.tests\n    - kwant.solvers\n    - kwant.solvers.tests\n    - kwant.tests\n  commands:\n    - conda inspect linkages -p $PREFIX kwant  # [not win]\n    - conda inspect objects -p $PREFIX kwant  # [osx]\n\nabout:\n  home: http://kwant-project.org/\n  license: BSD-2-Clause\n  license_file: LICENSE.rst\n  license_family: BSD\n  summary: Package for numerical quantum transport calculations.\n  description: |\n    Kwant is a free (open source) Python package for numerical calculations on\n    tight-binding models with a strong focus on quantum transport. It is designed to\n    be flexible and easy to use. Thanks to the use of innovative algorithms, Kwant\n    is often faster than other available codes, even those entirely written in the\n    low level FORTRAN and C/C++ languages.\n  doc_url: https://kwant-project.org/doc/1/\n  dev_url: https://gitlab.kwant-project.org/kwant/kwant/\n\nextra:\n  recipe-maintainers:\n    - basnijholt\n    - jbweston\n    - akhmerov\n",
  "req":{
   "__set__":true,
   "elements":[
@@ -464,7 +459,8 @@
     "pytest",
     "python",
     "scipy",
-    "tinyarray"
+    "tinyarray",
+    "vc"
    ]
   },
   "run":{
@@ -533,5 +529,5 @@
   }
  },
  "url":"https://downloads.kwant-project.org/kwant/kwant-1.4.1.tar.gz",
- "version":"1.4.1"
+ "version":"1.4.2"
 }
