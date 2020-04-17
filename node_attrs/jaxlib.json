@@ -344,7 +344,14 @@
   },
   "build":{
    "number":"0",
-   "script":" -m pip install --no-deps -vv jaxlib-0.1.39-cp37-none-macosx_10_9_x86_64.whl",
+   "script":[
+    "mv wheel.whl jaxlib-0.1.44-cp[\"0\"][\"2\"]-none-macosx_10_9_x86_64.whl",
+    "-m pip install --no-deps -vv jaxlib-0.1.44-cp[\"0\"][\"2\"]-none-macosx_10_9_x86_64.whl",
+    "mv wheel.whl jaxlib-0.1.44-cp[\"0\"][\"2\"]-none-macosx_10_9_x86_64.whl",
+    "-m pip install --no-deps -vv jaxlib-0.1.44-cp[\"0\"][\"2\"]-none-macosx_10_9_x86_64.whl",
+    "mv wheel.whl jaxlib-0.1.44-cp[\"0\"][\"2\"]-none-macosx_10_9_x86_64.whl",
+    "-m pip install --no-deps -vv jaxlib-0.1.44-cp[\"0\"][\"2\"]-none-macosx_10_9_x86_64.whl"
+   ],
    "skip":true
   },
   "extra":{
@@ -356,7 +363,7 @@
   },
   "package":{
    "name":"jaxlib",
-   "version":"0.1.39"
+   "version":"0.1.44"
   },
   "requirements":{
    "host":[
@@ -389,15 +396,20 @@
    ]
   },
   "source":{
-   "fn":"jaxlib-0.1.39-cp37-none-macosx_10_9_x86_64.whl",
-   "sha256":"0c2760ce6ba1dbe768d60b1ece910b3e592edad11a16e8a4cb89435b08a516d5",
-   "url":"https://pypi.io/packages/cp37/j/jaxlib/jaxlib-0.1.39-cp37-none-macosx_10_9_x86_64.whl"
+   "fn":"wheel.whl",
+   "sha256":"2f431ab6adecfddd8b9afc76c4d8eb116d2a1690a171b15380215165e2f2053f",
+   "url":"https://pypi.io/packages/cp37/j/jaxlib/jaxlib-0.1.44-cp37-none-manylinux2010_x86_64.whl"
   },
   "test":{
-   "imports":[
-    "numpy",
-    "numpy",
-    "numpy"
+   "commands":[
+    "pip check",
+    "pip check",
+    "pip check"
+   ],
+   "requires":[
+    "pip",
+    "pip",
+    "pip"
    ]
   }
  },
@@ -411,7 +423,7 @@
   "0.1.43":"The recipe did not change in the version migration, a URL did not hash, or there is jinja2 syntax the bot cannot handle!\n\nPlease check the URLs in your recipe with version '0.1.43' to make sure they exist!\n\nWe also found the following errors:\n\n - missing jinja2 variable 'pyver' for selector 'linux'\n - missing jinja2 variable 'pyver' for selector 'linux and py==36'\n - could not hash URL template 'https://pypi.io/packages/{{ pyver }}/{{ name[0] }}/{{ name }}/{{ fn }}'\n - missing jinja2 variable 'pyver' for selector 'osx and py==38'\n - missing jinja2 variable 'pyver' for selector 'osx'\n - missing jinja2 variable 'pyver' for selector 'linux and py==38'\n - missing jinja2 variable 'pyver' for selector 'osx and py==37'\n - missing jinja2 variable 'pyver' for selector 'linux and py==37'\n - missing jinja2 variable 'pyver' for selector 'osx and py==36'\n"
  },
  "pinning_version":"2020.04.16.07.55.54",
- "raw_meta_yaml":"{% set version = \"0.1.43\" %}\n{% set name = \"jaxlib\" %}\n\n# compute right wheel filename for later\n{% set pyver = \"cp{}{}\".format(PY_VER[0], PY_VER[2]) %}\n{% set platform = \"manylinux2010_x86_64\" %}  # [linux]\n{% set platform = \"macosx_10_9_x86_64\" %}  # [osx]\n# {distribution}-{version}(-{build tag})?-{python tag}-{abi tag}-{platform tag}.whl.\n{% set fn = \"{}-{}-{}-none-{}.whl\".format(name, version, pyver, platform) %}\n\n# only use these for the URLS to help the bot\n# the urls below have to be explicit for the bot to work\n{% set linux_whl = \"manylinux2010_x86_64\" %}\n{% set osx_whl = \"macosx_10_9_x86_64\" %}\n\npackage:\n  name: jaxlib\n  version: {{ version }}\n\nsource:\n  fn: wheel.whl\n\n  url: https://pypi.io/packages/cp36/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}-cp36-none-{{ linux_whl }}.whl  # [linux and py==36]  \n  sha256: 74490dd3c2e37492dbefc040a059bdedf0ba62d5d68c51d43181ac6c1aa14518  # [linux and py==36]  \n  url: https://pypi.io/packages/cp36/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}-cp36-none-{{ osx_whl }}.whl  # [osx and py==36]  \n  sha256: 1b9fd8a29755c213e950a8eae128a1fed15e1055bea872e3b00e07ab9b00c05e  # [osx and py==36]\n\n  url: https://pypi.io/packages/cp37/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}-cp37-none-{{ linux_whl }}.whl  # [linux and py==37]\n  sha256: 2dd207d8644186d7dcb8a35a85b1af0a822f1240425554ddaa8f93f9568f3962  # [linux and py==37]\n  url: https://pypi.io/packages/cp37/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}-cp37-none-{{ osx_whl }}.whl  # [osx and py==37]\n  sha256: a82b68665c0f3ef94afb790cec9f300c08ceca8248d73474e940033a133e8d52  # [osx and py==37]\n\n  url: https://pypi.io/packages/cp38/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}-cp38-none-{{ linux_whl }}.whl  # [linux and py==38]\n  sha256: 2beb7c0aed39ebdea4f07c04fdad491be544b627bb5194698466fa385684c070  # [linux and py==38]\n  url: https://pypi.io/packages/cp38/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}-cp38-none-{{ osx_whl }}.whl  # [osx and py==38]\n  sha256: 31a3c55e28eaa9182e084e6233400d6e7d24f8eb9102f27e46bf52e8c8db2e02  # [osx and py==38]\n\nbuild:\n  number: 1\n  skip: True  # [win or py2k]\n  script: \n    - \"mv wheel.whl {{ fn }}\"\n    - \"{{ PYTHON }} -m pip install --no-deps -vv {{ fn }}\"\n\nrequirements:\n  host:\n    - python\n    - pip\n  run:\n    - python\n    - absl-py\n    - numpy >=1.12\n    - protobuf >=3.6.0\n    - scipy\n    - six\n\ntest:\n  requires:\n    - pip\n  commands:\n    - pip check\n  # imports:\n    # cannot run the test b/c this is not really manylinux1 GLIBC_2.14\n    # Google :-/\n    # - jaxlib\n\nabout:\n  home: http://github.com/google/jax\n  license: Apache-2.0\n  license_file: LICENSE\n  summary: \"Composable transformations of Python+NumPy programs: differentiate, vectorize, JIT to GPU/TPU, and more\"\n\n  dev_url: http://github.com/google/jax\n\nextra:\n  recipe-maintainers:\n    - ericmjl\n",
+ "raw_meta_yaml":"{% set version = \"0.1.44\" %}\n{% set name = \"jaxlib\" %}\n\n# compute right wheel filename for later\n{% set pyver = \"cp{}{}\".format(PY_VER[0], PY_VER[2]) %}\n{% set platform = \"manylinux2010_x86_64\" %}  # [linux]\n{% set platform = \"macosx_10_9_x86_64\" %}  # [osx]\n# {distribution}-{version}(-{build tag})?-{python tag}-{abi tag}-{platform tag}.whl.\n{% set fn = \"{}-{}-{}-none-{}.whl\".format(name, version, pyver, platform) %}\n\n# only use these for the URLS to help the bot\n# the urls below have to be explicit for the bot to work\n{% set linux_whl = \"manylinux2010_x86_64\" %}\n{% set osx_whl = \"macosx_10_9_x86_64\" %}\n\npackage:\n  name: jaxlib\n  version: {{ version }}\n\nsource:\n  fn: wheel.whl\n\n  url: https://pypi.io/packages/cp36/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}-cp36-none-{{ linux_whl }}.whl  # [linux and py==36]\n  sha256: 07adaf8d985b045e6f956e9e12bfed01fe1b9f199562058078e44e77718286ee  # [linux and py==36]\n  url: https://pypi.io/packages/cp36/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}-cp36-none-{{ osx_whl }}.whl  # [osx and py==36]\n  sha256: 5ca0690e16e634c88e5d691451a000f0c9dd6949df7cec2df84ba66103b5ebd4  # [osx and py==36]\n\n  url: https://pypi.io/packages/cp37/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}-cp37-none-{{ linux_whl }}.whl  # [linux and py==37]\n  sha256: 2f431ab6adecfddd8b9afc76c4d8eb116d2a1690a171b15380215165e2f2053f  # [linux and py==37]\n  url: https://pypi.io/packages/cp37/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}-cp37-none-{{ osx_whl }}.whl  # [osx and py==37]\n  sha256: fa4df3335d2c58316808eda50221bad0ee1a1ed41e1785a99fa654c26bd74436  # [osx and py==37]\n\n  url: https://pypi.io/packages/cp38/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}-cp38-none-{{ linux_whl }}.whl  # [linux and py==38]\n  sha256: b2e3003ab4da6d635312eabbbc3033882c80fa87b826e6e8c7dd8659567e8639  # [linux and py==38]\n  url: https://pypi.io/packages/cp38/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}-cp38-none-{{ osx_whl }}.whl  # [osx and py==38]\n  sha256: ed81f5050ff9486e59811781cec5455d2fb5218b5efe49faa02b153f9b7f2c91  # [osx and py==38]\n\nbuild:\n  number: 0\n  skip: true  # [win or py2k]\n  script:\n    - mv wheel.whl {{ fn }}\n    - {{ PYTHON }} -m pip install --no-deps -vv {{ fn }}\n\nrequirements:\n  host:\n    - python\n    - pip\n  run:\n    - python\n    - absl-py\n    - numpy >=1.12\n    - protobuf >=3.6.0\n    - scipy\n    - six\n\ntest:\n  requires:\n    - pip\n  commands:\n    - pip check\n  # imports:\n    # cannot run the test b/c this is not really manylinux1 GLIBC_2.14\n    # Google :-/\n    # - jaxlib\n\nabout:\n  home: http://github.com/google/jax\n  license: Apache-2.0\n  license_file: LICENSE\n  summary: 'Composable transformations of Python+NumPy programs: differentiate, vectorize, JIT to GPU/TPU, and more'\n\n  dev_url: http://github.com/google/jax\n\nextra:\n  recipe-maintainers:\n    - ericmjl\n",
  "req":{
   "__set__":true,
   "elements":[
@@ -449,7 +461,9 @@
   },
   "test":{
    "__set__":true,
-   "elements":[]
+   "elements":[
+    "pip"
+   ]
   }
  },
  "smithy_version":"No azure token. Create a token and\nput it in ~/.conda-smithy/azure.token\n3.6.16",
@@ -479,9 +493,11 @@
   },
   "test":{
    "__set__":true,
-   "elements":[]
+   "elements":[
+    "pip"
+   ]
   }
  },
  "url":"https://pypi.io/packages/cp37/j/jaxlib/jaxlib-0.1.28-cp37-none-macosx_10_9_x86_64.whl",
- "version":"0.1.39"
+ "version":"0.1.44"
 }
