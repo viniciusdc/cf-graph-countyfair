@@ -297,7 +297,7 @@
   }
  },
  "name":"numcosmo",
- "new_version":"0.14.2",
+ "new_version":"0.15.0",
  "pinning_version":"2020.04.16.07.55.54",
  "raw_meta_yaml":"{% set version = \"0.15.0\" %}\n{% set sha256 = \"8c2e3ddfb57d2f13d46fac181dc5db4bed852ac31e9f359018bdedf1caff991b\" %}\n\npackage:\n  name: numcosmo\n  version: {{ version }}\n\nsource:\n  url: https://github.com/NumCosmo/NumCosmo/releases/download/v{{ version }}/numcosmo-{{ version }}.tar.gz \n  sha256: {{ sha256 }}\n\nbuild:\n  number: 12\n  skip: True  # [win]\n  detect_binary_files_with_prefix: True\n  run_exports:\n    - {{ pin_subpackage('numcosmo', max_pin='x.x') }}\n\nrequirements:\n  build:\n    - pkg-config\n    - {{ compiler('c') }}\n    - {{ compiler('fortran') }}\n  host:\n    - gobject-introspection\n    - libblas\n    - libcblas\n    - liblapack\n    - glib\n    - gsl\n    - gmp\n    - mpfr\n    - fftw\n    - nlopt\n    - cfitsio\n    - arb\n    - hdf5\n  run:\n    - libcurl\n    - fftw\n    - nlopt\n    - cfitsio\n    - pygobject\n    - numpy\n    - matplotlib-base\n    - zlib\n\ntest:\n  commands:\n    - test -f ${PREFIX}/lib/libnumcosmo{{ SHLIB_EXT }}   # [not win]\n    - $PYTHON ${PREFIX}/share/numcosmo-{{ version }}/examples/example_simple.py\n\nabout:\n  home: https://numcosmo.github.io/\n  license: GPL-3.0\n  license_file: COPYING\n  summary: 'NumCosmo is a free software C library whose main purposes are to test cosmological models using observational data and to provide a set of tools to perform cosmological calculations.'\n\nextra:\n  recipe-maintainers:\n    - vitenti\n",
  "req":{
