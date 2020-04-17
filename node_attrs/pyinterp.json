@@ -247,6 +247,23 @@
     "migrator_version",
     "version"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/405166666.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"Version",
+    "migrator_version":0,
+    "version":"0.3.1"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "version"
+   ]
   }
  ],
  "bad":false,
@@ -355,12 +372,13 @@
   }
  },
  "name":"pyinterp",
- "new_version":"0.3.0",
+ "new_version":"0.3.1",
  "new_version_attempts":{
-  "0.3.0":1
+  "0.3.0":1,
+  "0.3.1":1
  },
  "new_version_errors":{},
- "pinning_version":"2020.04.15.00.37.28",
+ "pinning_version":"2020.04.17.11.45.02",
  "raw_meta_yaml":"{% set name = \"pyinterp\" %}\n{% set version = \"0.3.0\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  url: https://github.com/CNES/pangeo-{{ name }}/releases/download/{{ version }}/{{ name }}-{{ version }}.tar.gz\n  sha256: db5cfa3c6fb5cb579307fef37c2882f1ee4614399971a47a7d859c8270ac6e62\n\nbuild:\n  number: 1\n  script: {{ PYTHON }} -m pip install . -vv\n  skip: true  # [linux32 or win32 or py<36]\n\nrequirements:\n  build:\n    - {{ compiler('cxx') }}  # [linux or osx]\n    - vs2017_win-64          # [win]\n    - cmake\n  host:\n    - eigen\n    - gsl\n    - boost-cpp\n    - mkl\n    - mkl-devel\n    - numpy\n    - pip\n    - pytest\n    - python\n    - setuptools\n    - xarray\n  run:\n    - {{ pin_compatible('numpy') }}\n    - python\n    - libblas * *mkl  # [linux or osx]\n    - mkl  # [win]\n    - xarray\n\ntest:\n  imports:\n    - pyinterp.core\n\nabout:\n  home: https://github.com/CNES/pangeo-pyinterp\n  license: BSD\n  license_family: BSD\n  license_file: LICENSE\n  summary: 'Python library for optimized geo-referenced interpolation'\n\n  description: |\n    Tools for interpolating geo-referenced data used in the field of\n    geosciences. There are other libraries that cover this problem, but written\n    entirely in Python, the performance of these projects was not quite\n    sufficient for our needs. That is why this project was created.\n  doc_url: https://pangeo-pyinterp.readthedocs.io/\n  dev_url: https://github.com/CNES/pangeo-pyinterp\n\nextra:\n  recipe-maintainers:\n    - fbriol\n",
  "req":{
   "__set__":true,

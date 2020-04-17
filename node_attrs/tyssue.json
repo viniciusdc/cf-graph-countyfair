@@ -376,8 +376,6 @@
  "bad":false,
  "conda-forge.yml":{
   "compiler_stack":"comp7",
-  "max_py_ver":"37",
-  "max_r_ver":"35",
   "provider":{
    "win":"azure"
   }
@@ -390,12 +388,12 @@
    "dev_url":"https://github.com/DamCB/tyssue",
    "doc_url":"http://tyssue.readthedocs.io",
    "home":"https://github.com/DamCB/tyssue",
-   "license":"GPLv3.0",
+   "license":"GPL-3.0-or-later",
    "license_file":"LICENSE",
    "summary":"A tissue simulation library"
   },
   "build":{
-   "number":"0",
+   "number":"4",
    "skip":true
   },
   "extra":{
@@ -407,7 +405,7 @@
   },
   "package":{
    "name":"tyssue",
-   "version":"0.7.0.pre"
+   "version":"0.7.0"
   },
   "requirements":{
    "build":[
@@ -417,6 +415,7 @@
     "cxx_compiler_stub",
     "boost-cpp",
     "mpfr",
+    "jom",
     "cmake",
     "eigen",
     "c_compiler_stub",
@@ -482,9 +481,9 @@
   },
   "source":[
    {
-    "fn":"tyssue-0.7.0.pre.tar.gz",
-    "sha256":"363de3620abb61db7c4999ee8908a62fff8c42319a4dadb02415c7cc499c0805",
-    "url":"https://github.com/DamCB/tyssue/archive/0.7.0.pre.tar.gz"
+    "fn":"tyssue-0.7.0.tar.gz",
+    "sha256":"78afecb875abdde9f8fb4b499d6eb0433c852509bb5559c17bdc32abd4207ce9",
+    "url":"https://github.com/DamCB/tyssue/archive/0.7.0.tar.gz"
    },
    {
     "fn":"pybind11-2.4.3.tar.gz",
@@ -498,9 +497,9 @@
     "url":"https://github.com/CGAL/cgal/releases/download/releases%2FCGAL-5.0/CGAL-5.0.zip"
    },
    {
-    "fn":"tyssue-0.7.0.pre.tar.gz",
-    "sha256":"363de3620abb61db7c4999ee8908a62fff8c42319a4dadb02415c7cc499c0805",
-    "url":"https://github.com/DamCB/tyssue/archive/0.7.0.pre.tar.gz"
+    "fn":"tyssue-0.7.0.tar.gz",
+    "sha256":"78afecb875abdde9f8fb4b499d6eb0433c852509bb5559c17bdc32abd4207ce9",
+    "url":"https://github.com/DamCB/tyssue/archive/0.7.0.tar.gz"
    },
    {
     "fn":"pybind11-2.4.3.tar.gz",
@@ -514,9 +513,9 @@
     "url":"https://github.com/CGAL/cgal/releases/download/releases%2FCGAL-5.0/CGAL-5.0.zip"
    },
    {
-    "fn":"tyssue-0.7.0.pre.tar.gz",
-    "sha256":"363de3620abb61db7c4999ee8908a62fff8c42319a4dadb02415c7cc499c0805",
-    "url":"https://github.com/DamCB/tyssue/archive/0.7.0.pre.tar.gz"
+    "fn":"tyssue-0.7.0.tar.gz",
+    "sha256":"78afecb875abdde9f8fb4b499d6eb0433c852509bb5559c17bdc32abd4207ce9",
+    "url":"https://github.com/DamCB/tyssue/archive/0.7.0.tar.gz"
    },
    {
     "fn":"pybind11-2.4.3.tar.gz",
@@ -587,7 +586,7 @@
  },
  "new_version_errors":{},
  "pinning_version":"2020.04.17.11.22.12",
- "raw_meta_yaml":"{% set name = \"tyssue\" %}\n{% set version = \"0.7.0.pre\" %}\n{% set sha256 = \"363de3620abb61db7c4999ee8908a62fff8c42319a4dadb02415c7cc499c0805\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  - fn: {{ name }}-{{ version }}.tar.gz\n    url: https://github.com/DamCB/tyssue/archive/{{ version }}.tar.gz\n    sha256: {{ sha256 }}\n  - fn: pybind11-2.4.3.tar.gz\n    url: https://github.com/pybind/pybind11/archive/v2.4.3.tar.gz\n    folder: pybind11\n    sha256: 1eed57bc6863190e35637290f97a20c81cfe4d9090ac0a24f3bbf08f265eb71d\n  - url: https://github.com/CGAL/cgal/releases/download/releases%2FCGAL-5.0/CGAL-5.0.zip\n    folder: CGAL\n    sha256: bd9327be903ab7ee379a8a7a0609eba0962f5078d2497cf8e13e8e1598584154\nbuild:\n  number: 0\n  skip: true  # [py2k or py35]\n  skip: true  # [win and vc<14]\n\nrequirements:\n  build:\n    - cmake\n    - eigen\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n    - boost-cpp\n    - mpfr\n  host:\n    - python\n    - setuptools\n    - pip\n  run:\n    - boost-cpp\n    - mpfr\n    - python\n    - numpy\n    - scipy\n    - matplotlib\n    - pandas\n    - pytables\n    - jupyter\n    - notebook\n    - quantities\n    - ipyvolume\ntest:\n  imports:\n    - tyssue\n    - tyssue.behaviors\n    - tyssue.config\n    - tyssue.core\n    - tyssue.collisions\n    - tyssue.draw\n    - tyssue.dynamics\n    - tyssue.geometry\n    - tyssue.generation\n    - tyssue.io\n    - tyssue.particles\n    - tyssue.solvers\n    - tyssue.stores\n    - tyssue.topology\n    - tyssue.utils\n\nabout:\n  home: https://github.com/DamCB/tyssue\n  license: GPLv3.0\n  license_file: LICENSE\n  summary: 'A tissue simulation library'\n  description: |\n    tyssue provides data structures and algorithms to model epithelium\n    in 2D and 3D for python 3.6+\n  doc_url: http://tyssue.readthedocs.io\n  dev_url: https://github.com/DamCB/tyssue\nextra:\n  recipe-maintainers:\n    - glyg\n",
+ "raw_meta_yaml":"{% set name = \"tyssue\" %}\n{% set version = \"0.7.0\" %}\n{% set sha256 = \"78afecb875abdde9f8fb4b499d6eb0433c852509bb5559c17bdc32abd4207ce9\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  - fn: {{ name }}-{{ version }}.tar.gz\n    url: https://github.com/DamCB/tyssue/archive/{{ version }}.tar.gz\n    sha256: {{ sha256 }}\n  - fn: pybind11-2.4.3.tar.gz\n    url: https://github.com/pybind/pybind11/archive/v2.4.3.tar.gz\n    folder: pybind11\n    sha256: 1eed57bc6863190e35637290f97a20c81cfe4d9090ac0a24f3bbf08f265eb71d\n  - url: https://github.com/CGAL/cgal/releases/download/releases%2FCGAL-5.0/CGAL-5.0.zip\n    folder: CGAL\n    sha256: bd9327be903ab7ee379a8a7a0609eba0962f5078d2497cf8e13e8e1598584154\n\nbuild:\n  number: 4\n  skip: true  # [py2k or py35]\n  skip: true  # [win and vc<14]\n\nrequirements:\n  build:\n    - cmake\n    - eigen\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n    - boost-cpp\n    - mpfr\n    - jom  # [win]\n  host:\n    - python\n    - setuptools\n    - pip\n  run:\n    - boost-cpp\n    - mpfr\n    - python\n    - numpy\n    - scipy\n    - matplotlib\n    - pandas\n    - pytables\n    - jupyter\n    - notebook\n    - quantities\n    - ipyvolume\ntest:\n  imports:\n    - tyssue\n    - tyssue.behaviors\n    - tyssue.config\n    - tyssue.core\n    - tyssue.collisions\n    - tyssue.draw\n    - tyssue.dynamics\n    - tyssue.geometry\n    - tyssue.generation\n    - tyssue.io\n    - tyssue.particles\n    - tyssue.solvers\n    - tyssue.stores\n    - tyssue.topology\n    - tyssue.utils\n\nabout:\n  home: https://github.com/DamCB/tyssue\n  license:  GPL-3.0-or-later\n  license_file: LICENSE\n  summary: 'A tissue simulation library'\n  description: |\n    tyssue provides data structures and algorithms to model epithelium\n    in 2D and 3D for python 3.6+\n  doc_url: http://tyssue.readthedocs.io\n  dev_url: https://github.com/DamCB/tyssue\nextra:\n  recipe-maintainers:\n    - glyg\n",
  "req":{
   "__set__":true,
   "elements":[
@@ -597,6 +596,7 @@
    "cxx_compiler_stub",
    "eigen",
    "ipyvolume",
+   "jom",
    "jupyter",
    "matplotlib",
    "mpfr",
@@ -620,6 +620,7 @@
     "cmake",
     "cxx_compiler_stub",
     "eigen",
+    "jom",
     "mpfr"
    ]
   },
@@ -664,6 +665,7 @@
     "cmake",
     "cxx_compiler_stub",
     "eigen",
+    "jom",
     "mpfr"
    ]
   },
@@ -698,5 +700,5 @@
   }
  },
  "url":"https://github.com/DamCB/tyssue/archive/0.5.0.tar.gz",
- "version":"0.7.0.pre"
+ "version":"0.7.0"
 }
