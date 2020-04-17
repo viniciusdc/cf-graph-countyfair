@@ -166,9 +166,6 @@
  ],
  "bad":false,
  "conda-forge.yml":{
-  "compiler_stack":"comp7",
-  "max_py_ver":"37",
-  "max_r_ver":"35",
   "provider":{
    "linux_aarch64":"default",
    "linux_ppc64le":"default"
@@ -184,7 +181,7 @@
    "summary":"Python bindings for PETSc"
   },
   "build":{
-   "number":"1",
+   "number":"2",
    "script":"PETSC_DIR=$PREFIX pip -v install --no-deps .",
    "skip":true
   },
@@ -263,7 +260,7 @@
  "name":"petsc4py",
  "new_version":false,
  "pinning_version":"2020.04.12.13.56.44",
- "raw_meta_yaml":"{% set name = 'petsc4py' %}\n{% set version = '3.13.0' %}\n{% set sha256 = 'ace21f71102e752fefac6c81b65207edba89a6974b3c58c71599c6c358640f39' %}\n\n{% set version_xy = version.rsplit('.', 1)[0] + \".*\" %}\n\npackage:\n  name: petsc4py\n  version: {{ version }}\n\nsource:\n  fn: petsc4py-{{version}}.tar\n  url: https://pypi.io/packages/source/{{name[0]}}/{{name}}/{{name}}-{{version}}.tar.gz\n  sha256: {{sha256}}\n\nbuild:\n  number: 1\n  script: PETSC_DIR=$PREFIX pip -v install --no-deps .\n  skip: true  # [win]\n\nrequirements:\n  build:\n    - {{ compiler('fortran') }}\n    - {{ compiler('c') }}\n  host:\n    - python\n    - pip\n    - numpy\n    - {{ mpi }}\n    - petsc {{ version_xy }}\n  run:\n    - python\n    - {{ pin_compatible('numpy') }}\n    - {{ mpi }}\n    - petsc # pinned by petsc run_exports\n  run_constrained:\n    - mpi4py >=3.0.1\n\nabout:\n  home: https://bitbucket.org/petsc/petsc4py\n  summary: Python bindings for PETSc\n  license: BSD-2-Clause\n  license_file: LICENSE.rst\n\nextra:\n  recipe-maintainers:\n    - dalcinl\n    - minrk\n    - davidbrochart\n    - SylvainCorlay\n",
+ "raw_meta_yaml":"{% set name = 'petsc4py' %}\n{% set version = '3.13.0' %}\n{% set sha256 = 'ace21f71102e752fefac6c81b65207edba89a6974b3c58c71599c6c358640f39' %}\n\n{% set version_xy = version.rsplit('.', 1)[0] %}\n\npackage:\n  name: petsc4py\n  version: {{ version }}\n\nsource:\n  fn: petsc4py-{{version}}.tar\n  url: https://pypi.io/packages/source/{{name[0]}}/{{name}}/{{name}}-{{version}}.tar.gz\n  sha256: {{sha256}}\n\nbuild:\n  number: 2\n  script: PETSC_DIR=$PREFIX pip -v install --no-deps .\n  skip: true  # [win]\n\nrequirements:\n  build:\n    - {{ compiler('fortran') }}\n    - {{ compiler('c') }}\n  host:\n    - python\n    - pip\n    - numpy\n    - {{ mpi }}\n    - petsc {{ version_xy }}.*\n  run:\n    - python\n    - {{ pin_compatible('numpy') }}\n    - {{ mpi }}\n    - petsc # pinned by petsc run_exports\n  run_constrained:\n    - mpi4py >=3.0.1\n\nabout:\n  home: https://bitbucket.org/petsc/petsc4py\n  summary: Python bindings for PETSc\n  license: BSD-2-Clause\n  license_file: LICENSE.rst\n\nextra:\n  recipe-maintainers:\n    - dalcinl\n    - minrk\n    - davidbrochart\n    - SylvainCorlay\n",
  "req":{
   "__set__":true,
   "elements":[
