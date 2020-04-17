@@ -241,6 +241,23 @@
     "migrator_version",
     "name"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/405024669.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"Version",
+    "migrator_version":0,
+    "version":"1.2.5"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "version"
+   ]
   }
  ],
  "bad":false,
@@ -407,8 +424,12 @@
   }
  },
  "name":"cvxopt",
- "new_version":"1.2.4",
- "pinning_version":"2020.03.14",
+ "new_version":"1.2.5",
+ "new_version_attempts":{
+  "1.2.5":1
+ },
+ "new_version_errors":{},
+ "pinning_version":"2020.04.17.01.00.32",
  "raw_meta_yaml":"{% set version = \"1.2.4\" %}\n{% set suitesparse_for_win_version = \"5.7.1\" %}\n\npackage:\n  name: cvxopt\n  version: {{ version }}\n\nsource:\n  - url: https://pypi.io/packages/source/c/cvxopt/cvxopt-{{ version }}.tar.gz\n    sha256: fa5ced96d71e4c3e6d50735e2ac4b8cf125c388cd77b1c5937febedb5f3a2fc1\n\n  # on windows, building suitesparse in directly works much better than trying to build it separately and link it in\n  - url: https://github.com/DrTimothyAldenDavis/SuiteSparse/archive/v{{ suitesparse_for_win_version }}.tar.gz  # [win]\n    sha256: 5ba5add1663d51a1b6fb128b50fe869b497f3096765ff7f8212f0ede044b9557                                   # [win]\n    folder: suitesparse                                                                                        # [win]\n    patches:                                                                                                   # [win]\n      - 0001-remove-BLAS_NO_UNDERSCORE-on-windows.patch                                                        # [win]\n\nbuild:\n  skip: true  # [py<35]\n  number: 204\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n  host:\n    - libblas\n    - liblapack\n    - python\n    - setuptools\n    - gsl\n    - fftw\n    - dsdp\n    - glpk\n    # suitesparse is linked against on windows, and compiled-in on windows, because yeah, windows.\n    - suitesparse          # [not win]\n  run:\n    - python\n    - gsl\n    - fftw\n    - dsdp\n    - glpk\n    - suitesparse          # [not win]\n\ntest:\n  imports:\n    - cvxopt\n    - cvxopt.base\n    - cvxopt.blas\n    - cvxopt.cholmod\n    - cvxopt.lapack\n    - cvxopt.misc_solvers\n    - cvxopt.umfpack\n    - cvxopt.glpk\n    - cvxopt.fftw\n  source_files:\n    - tests/*\n    - examples/*\n  requires:\n    - pytest\n\nabout:\n  home: https://cvxopt.org\n  license: GPL-3.0-or-later\n  license_file: LICENSE\n  summary: Convex optimization package\n  doc_url: https://cvxopt.org/userguide\n  dev_url: https://github.com/cvxopt/cvxopt\n\nextra:\n  recipe-maintainers:\n    - jakirkham\n    - jjhelmus\n    - martinandersen\n",
  "req":{
   "__set__":true,
@@ -464,7 +485,7 @@
    ]
   }
  },
- "smithy_version":"3.6.12",
+ "smithy_version":"No azure token. Create a token and\nput it in ~/.conda-smithy/azure.token\n3.6.16",
  "strong_exports":false,
  "total_requirements":{
   "build":{
