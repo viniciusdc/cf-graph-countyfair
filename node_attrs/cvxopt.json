@@ -262,9 +262,6 @@
  ],
  "bad":false,
  "conda-forge.yml":{
-  "compiler_stack":"comp7",
-  "max_py_ver":"37",
-  "max_r_ver":"35",
   "provider":{
    "linux_aarch64":"default",
    "linux_ppc64le":"default",
@@ -283,7 +280,7 @@
    "summary":"Convex optimization package"
   },
   "build":{
-   "number":"204"
+   "number":"0"
   },
   "extra":{
    "recipe-maintainers":[
@@ -300,7 +297,7 @@
   },
   "package":{
    "name":"cvxopt",
-   "version":"1.2.4"
+   "version":"1.2.5"
   },
   "requirements":{
    "build":[
@@ -358,24 +355,24 @@
   },
   "source":[
    {
-    "sha256":"fa5ced96d71e4c3e6d50735e2ac4b8cf125c388cd77b1c5937febedb5f3a2fc1",
-    "url":"https://pypi.io/packages/source/c/cvxopt/cvxopt-1.2.4.tar.gz"
+    "sha256":"94ec8c36bd6628a11de9014346692daeeef99b3b7bae28cef30c7490bbcb2d72",
+    "url":"https://pypi.io/packages/source/c/cvxopt/cvxopt-1.2.5.tar.gz"
    },
    {
     "folder":"suitesparse",
     "patches":[
      "0001-remove-BLAS_NO_UNDERSCORE-on-windows.patch"
     ],
-    "sha256":"5ba5add1663d51a1b6fb128b50fe869b497f3096765ff7f8212f0ede044b9557",
-    "url":"https://github.com/DrTimothyAldenDavis/SuiteSparse/archive/v5.7.1.tar.gz"
+    "sha256":"fe3bc7c3bd1efdfa5cffffb5cebf021ff024c83b5daf0ab445429d3d741bd3ad",
+    "url":"https://github.com/DrTimothyAldenDavis/SuiteSparse/archive/v5.7.2.tar.gz"
    },
    {
-    "sha256":"fa5ced96d71e4c3e6d50735e2ac4b8cf125c388cd77b1c5937febedb5f3a2fc1",
-    "url":"https://pypi.io/packages/source/c/cvxopt/cvxopt-1.2.4.tar.gz"
+    "sha256":"94ec8c36bd6628a11de9014346692daeeef99b3b7bae28cef30c7490bbcb2d72",
+    "url":"https://pypi.io/packages/source/c/cvxopt/cvxopt-1.2.5.tar.gz"
    },
    {
-    "sha256":"fa5ced96d71e4c3e6d50735e2ac4b8cf125c388cd77b1c5937febedb5f3a2fc1",
-    "url":"https://pypi.io/packages/source/c/cvxopt/cvxopt-1.2.4.tar.gz"
+    "sha256":"94ec8c36bd6628a11de9014346692daeeef99b3b7bae28cef30c7490bbcb2d72",
+    "url":"https://pypi.io/packages/source/c/cvxopt/cvxopt-1.2.5.tar.gz"
    }
   ],
   "test":{
@@ -430,7 +427,7 @@
  },
  "new_version_errors":{},
  "pinning_version":"2020.04.17.01.00.32",
- "raw_meta_yaml":"{% set version = \"1.2.4\" %}\n{% set suitesparse_for_win_version = \"5.7.1\" %}\n\npackage:\n  name: cvxopt\n  version: {{ version }}\n\nsource:\n  - url: https://pypi.io/packages/source/c/cvxopt/cvxopt-{{ version }}.tar.gz\n    sha256: fa5ced96d71e4c3e6d50735e2ac4b8cf125c388cd77b1c5937febedb5f3a2fc1\n\n  # on windows, building suitesparse in directly works much better than trying to build it separately and link it in\n  - url: https://github.com/DrTimothyAldenDavis/SuiteSparse/archive/v{{ suitesparse_for_win_version }}.tar.gz  # [win]\n    sha256: 5ba5add1663d51a1b6fb128b50fe869b497f3096765ff7f8212f0ede044b9557                                   # [win]\n    folder: suitesparse                                                                                        # [win]\n    patches:                                                                                                   # [win]\n      - 0001-remove-BLAS_NO_UNDERSCORE-on-windows.patch                                                        # [win]\n\nbuild:\n  skip: true  # [py<35]\n  number: 204\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n  host:\n    - libblas\n    - liblapack\n    - python\n    - setuptools\n    - gsl\n    - fftw\n    - dsdp\n    - glpk\n    # suitesparse is linked against on windows, and compiled-in on windows, because yeah, windows.\n    - suitesparse          # [not win]\n  run:\n    - python\n    - gsl\n    - fftw\n    - dsdp\n    - glpk\n    - suitesparse          # [not win]\n\ntest:\n  imports:\n    - cvxopt\n    - cvxopt.base\n    - cvxopt.blas\n    - cvxopt.cholmod\n    - cvxopt.lapack\n    - cvxopt.misc_solvers\n    - cvxopt.umfpack\n    - cvxopt.glpk\n    - cvxopt.fftw\n  source_files:\n    - tests/*\n    - examples/*\n  requires:\n    - pytest\n\nabout:\n  home: https://cvxopt.org\n  license: GPL-3.0-or-later\n  license_file: LICENSE\n  summary: Convex optimization package\n  doc_url: https://cvxopt.org/userguide\n  dev_url: https://github.com/cvxopt/cvxopt\n\nextra:\n  recipe-maintainers:\n    - jakirkham\n    - jjhelmus\n    - martinandersen\n",
+ "raw_meta_yaml":"{% set version = \"1.2.5\" %}\n{% set suitesparse_for_win_version = \"5.7.2\" %}\n\npackage:\n  name: cvxopt\n  version: {{ version }}\n\nsource:\n  - url: https://pypi.io/packages/source/c/cvxopt/cvxopt-{{ version }}.tar.gz\n    sha256: 94ec8c36bd6628a11de9014346692daeeef99b3b7bae28cef30c7490bbcb2d72\n\n  # on windows, building suitesparse in directly works much better than trying to build it separately and link it in\n  - url: https://github.com/DrTimothyAldenDavis/SuiteSparse/archive/v{{ suitesparse_for_win_version }}.tar.gz  # [win]\n    sha256: fe3bc7c3bd1efdfa5cffffb5cebf021ff024c83b5daf0ab445429d3d741bd3ad  # [win]\n    folder: suitesparse  # [win]\n    patches:   # [win]\n      - 0001-remove-BLAS_NO_UNDERSCORE-on-windows.patch                                                        # [win]\n\nbuild:\n  skip: true  # [py<35]\n  number: 0\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n  host:\n    - libblas\n    - liblapack\n    - python\n    - setuptools\n    - gsl\n    - fftw\n    - dsdp\n    - glpk\n    # suitesparse is linked against on windows, and compiled-in on windows, because yeah, windows.\n    - suitesparse          # [not win]\n  run:\n    - python\n    - gsl\n    - fftw\n    - dsdp\n    - glpk\n    - suitesparse          # [not win]\n\ntest:\n  imports:\n    - cvxopt\n    - cvxopt.base\n    - cvxopt.blas\n    - cvxopt.cholmod\n    - cvxopt.lapack\n    - cvxopt.misc_solvers\n    - cvxopt.umfpack\n    - cvxopt.glpk\n    - cvxopt.fftw\n  source_files:\n    - tests/*\n    - examples/*\n  requires:\n    - pytest\n\nabout:\n  home: https://cvxopt.org\n  license: GPL-3.0-or-later\n  license_file: LICENSE\n  summary: Convex optimization package\n  doc_url: https://cvxopt.org/userguide\n  dev_url: https://github.com/cvxopt/cvxopt\n\nextra:\n  recipe-maintainers:\n    - jakirkham\n    - jjhelmus\n    - martinandersen\n",
  "req":{
   "__set__":true,
   "elements":[
@@ -527,5 +524,5 @@
   }
  },
  "url":"https://pypi.io/packages/source/c/cvxopt/cvxopt-1.2.3.tar.gz",
- "version":"1.2.4"
+ "version":"1.2.5"
 }
