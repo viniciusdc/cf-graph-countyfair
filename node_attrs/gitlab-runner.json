@@ -50,6 +50,23 @@
     "migrator_version",
     "version"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/405254966.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"Version",
+    "migrator_version":0,
+    "version":"12.4.1"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "version"
+   ]
   }
  ],
  "bad":false,
@@ -74,11 +91,11 @@
    "number":"0",
    "script":[
     "pushd src/gitlab.com/gitlab-org/gitlab-runner",
-    "go install -v -ldflags \"-X gitlab.com/gitlab-org/gitlab-runner/common.VERSION='12.1.0' -X gitlab.com/gitlab-org/gitlab-runner/common.REVISION='$PKG_BUILDNUM' -X gitlab.com/gitlab-org/gitlab-runner/common.BRANCH='12-1-stable' -X gitlab.com/gitlab-org/gitlab-runner/common.BUILT='2020-04-17T16:12:43.128788' \" .",
+    "go install -v -ldflags \"-X gitlab.com/gitlab-org/gitlab-runner/common.VERSION='12.1.0' -X gitlab.com/gitlab-org/gitlab-runner/common.REVISION='$PKG_BUILDNUM' -X gitlab.com/gitlab-org/gitlab-runner/common.BRANCH='12-1-stable' -X gitlab.com/gitlab-org/gitlab-runner/common.BUILT='2020-04-17T17:11:00.716096' \" .",
     "pushd src/gitlab.com/gitlab-org/gitlab-runner",
-    "go install -v -ldflags \"-X gitlab.com/gitlab-org/gitlab-runner/common.VERSION='12.1.0' -X gitlab.com/gitlab-org/gitlab-runner/common.REVISION='$PKG_BUILDNUM' -X gitlab.com/gitlab-org/gitlab-runner/common.BRANCH='12-1-stable' -X gitlab.com/gitlab-org/gitlab-runner/common.BUILT='2020-04-17T16:12:43.147620' \" .",
+    "go install -v -ldflags \"-X gitlab.com/gitlab-org/gitlab-runner/common.VERSION='12.1.0' -X gitlab.com/gitlab-org/gitlab-runner/common.REVISION='$PKG_BUILDNUM' -X gitlab.com/gitlab-org/gitlab-runner/common.BRANCH='12-1-stable' -X gitlab.com/gitlab-org/gitlab-runner/common.BUILT='2020-04-17T17:11:00.723754' \" .",
     "pushd src/gitlab.com/gitlab-org/gitlab-runner",
-    "go install -v -ldflags \"-X gitlab.com/gitlab-org/gitlab-runner/common.VERSION='12.1.0' -X gitlab.com/gitlab-org/gitlab-runner/common.REVISION='$PKG_BUILDNUM' -X gitlab.com/gitlab-org/gitlab-runner/common.BRANCH='12-1-stable' -X gitlab.com/gitlab-org/gitlab-runner/common.BUILT='2020-04-17T16:12:43.156468' \" ."
+    "go install -v -ldflags \"-X gitlab.com/gitlab-org/gitlab-runner/common.VERSION='12.1.0' -X gitlab.com/gitlab-org/gitlab-runner/common.REVISION='$PKG_BUILDNUM' -X gitlab.com/gitlab-org/gitlab-runner/common.BRANCH='12-1-stable' -X gitlab.com/gitlab-org/gitlab-runner/common.BUILT='2020-04-17T17:11:00.732230' \" ."
    ]
   },
   "extra":{
@@ -128,14 +145,15 @@
   }
  },
  "name":"gitlab-runner",
- "new_version":"12.5.0",
+ "new_version":"12.4.1",
  "new_version_attempts":{
   "12.2.0":1,
   "12.3.0":1,
+  "12.4.1":1,
   "12.5.0":1
  },
  "new_version_errors":{},
- "pinning_version":"2020.04.16.07.55.54",
+ "pinning_version":"2020.04.17.11.45.02",
  "raw_meta_yaml":"{% set import_path = \"gitlab.com/gitlab-org/gitlab-runner\" %}\n{% set version = \"12.1.0\" %}\n{% set branch = '-'.join(version.split('.')[:2] +['stable']) %}\n{% set built = datetime.datetime.now().isoformat() %}\n\n{% set name = import_path.split('/')[-1] %}\n{% set pkg_src = ('src/'+import_path).replace(\"/\", os.sep) %}\n\npackage:\n  name: \"{{ name|lower }}\"\n  version: \"{{ version }}\"\n\nsource:\n  - folder: {{ pkg_src }}\n    url: https://{{ import_path }}/-/archive/v{{ version }}/{{ name }}-v{{ version }}.tar.bz2\n    sha256: 49e7993e1eabc362ec99562e84931e699b77948efb6669f3e98a5dc40f2b2b66\n\nbuild:\n  number: 0\n  script:\n    - pushd {{ pkg_src }}\n    {% set flags = dict(VERSION=version, REVISION=\"%PKG_BUILDNUM%\" if win else \"$PKG_BUILDNUM\", BRANCH=branch, BUILT=built) %}\n    - go install -v -ldflags \"{% for key,value in flags.items() %}-X {{ import_path }}/common.{{ key }}='{{ value }}' {% endfor %}\" .\n\nrequirements:\n  build:\n    - {{ compiler(\"go\") }}\n\ntest:\n  commands:\n    - gitlab-runner --version\n\nabout:\n  summary: \"The official GitLab CI runner written in Go\"\n  license: \"MIT\"\n  license_family: MIT\n  license_file: {{ pkg_src }}/LICENSE\n  home: \"https://gitlab.com/gitlab-org/gitlab-runner\"\n  dev_url: \"https://gitlab.com/gitlab-org/gitlab-runner\"\n  doc_url: \"https://docs.gitlab.com/runner/\"\n\nextra:\n  recipe-maintainers:\n    - duncanmmacleod\n    - sodre\n",
  "req":{
   "__set__":true,
