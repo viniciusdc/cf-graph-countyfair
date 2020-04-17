@@ -126,6 +126,25 @@
     "migrator_version",
     "name"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/405288141.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"MigrationYaml",
+    "migrator_object_version":1,
+    "migrator_version":0,
+    "name":"petsc313"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_object_version",
+    "migrator_version",
+    "name"
+   ]
   }
  ],
  "bad":false,
@@ -227,7 +246,7 @@
  "new_version_attempts":{
   "3.13.0":1
  },
- "pinning_version":"2020.04.09",
+ "pinning_version":"2020.04.17.11.45.02",
  "raw_meta_yaml":"{% set name = \"slepc4py\" %}\n{% set version = \"3.13.0\" %}\n{% set sha256 = \"6310a641ebe4b02a547a9f8a9a3c72d44c9fb05b7a5c0c3a9bf6e6a3f1ff07ce\" %}\n\n{% set version_xy = version.rsplit(\".\")[0] + \".*\" %}\n\npackage:\n  name: slepc4py\n  version: {{ version }}\n\nsource:\n  fn: slepc4py-{{version}}.tar.gz\n  url: https://pypi.io/packages/source/{{name[0]}}/{{name}}/{{name}}-{{version}}.tar.gz\n  sha256: ce05d8a1990771141689517a42682a27b1ac3f145fd3f1d12d820a15445e3549\n\nbuild:\n  number: 0\n  script: PETSC_DIR=$PREFIX SLEPC_DIR=$PREFIX pip -v install --no-deps .\n  skip: true  # [win]\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n  host:\n    - python\n    - pip\n    - numpy\n    - {{ mpi }}\n    - petsc {{ version_xy }}\n    - slepc {{ version_xy }}\n    - petsc4py {{ version_xy }}\n  run:\n    - python\n    - {{ pin_compatible('numpy') }}\n    - {{ mpi }}\n    - petsc  # pinned by petsc run_exports\n    - slepc  # pinned by slepc run_exports\n    - petsc4py {{ version_xy }}\n  run_constrained:\n    - mpi4py >=3.0.1\n\nabout:\n  home: https://gitlab.com/slepc/slepc4py\n  summary: Python bindings for SLEPc\n  license: BSD-2-Clause\n  license_file: LICENSE.rst\n\nextra:\n  recipe-maintainers:\n    - dalcinl\n    - joseeroman\n    - minrk\n",
  "req":{
   "__set__":true,
