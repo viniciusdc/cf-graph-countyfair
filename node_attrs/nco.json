@@ -331,29 +331,28 @@
     "migrator_version",
     "name"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/405062409.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"MigrationYaml",
+    "migrator_object_version":1,
+    "migrator_version":0,
+    "name":"hdf51106"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_object_version",
+    "migrator_version",
+    "name"
+   ]
   }
  ],
- "bad":{
-  "exception":"Failed to put item: An error occurred (ValidationException) on request (NVEPUC3CJ534NECIS1DP0TSU6BVV4KQNSO5AEMVJF66Q9ASUAAJG) on table (pr_json) when calling the PutItem operation: Attempting to store more than 38 significant digits in a Number",
-  "traceback":[
-   "Traceback (most recent call last):",
-   "  File \"/root/repo/cf-scripts/conda_forge_tick/auto_tick.py\", line 785, in main",
-   "    hash_type=attrs.get(\"hash_type\", \"sha256\"),",
-   "  File \"/root/repo/cf-scripts/conda_forge_tick/auto_tick.py\", line 251, in run",
-   "    PRJson.dump(pr_json)",
-   "  File \"/root/repo/cf-scripts/conda_forge_tick/dynamo_models.py\", line 33, in dump",
-   "    item.save()",
-   "  File \"/opt/conda/envs/run_env/lib/python3.7/site-packages/pynamodb/models.py\", line 405, in save",
-   "    data = self._get_connection().put_item(*args, **kwargs)",
-   "  File \"/opt/conda/envs/run_env/lib/python3.7/site-packages/pynamodb/connection/table.py\", line 139, in put_item",
-   "    return_item_collection_metrics=return_item_collection_metrics)",
-   "  File \"/opt/conda/envs/run_env/lib/python3.7/site-packages/pynamodb/connection/base.py\", line 972, in put_item",
-   "    six.raise_from(PutError(\"Failed to put item: {}\".format(e), e), None)",
-   "  File \"<string>\", line 3, in raise_from",
-   "pynamodb.exceptions.PutError: Failed to put item: An error occurred (ValidationException) on request (NVEPUC3CJ534NECIS1DP0TSU6BVV4KQNSO5AEMVJF66Q9ASUAAJG) on table (pr_json) when calling the PutItem operation: Attempting to store more than 38 significant digits in a Number",
-   ""
-  ]
- },
+ "bad":false,
  "conda-forge.yml":{
   "provider":{
    "win":"azure"
@@ -507,7 +506,7 @@
  },
  "name":"nco",
  "new_version":"4.9.2",
- "pinning_version":"2020.04.09",
+ "pinning_version":"2020.04.17.09.06.29",
  "raw_meta_yaml":"{% set version = \"4.9.2\" %}\n{% set build = 1 %}\n\n# ensure mpi is defined (needed for conda-smithy recipe-lint)\n{% set mpi = mpi or 'nompi' %}\n\n{% if mpi == 'mpich' %}\n# prioritize mpich variant, which was previously the only option, via build number\n{% set build = build + 100 %}\n{% endif %}\n\npackage:\n  name: nco\n  version: {{ version }}\n\nsource:\n  url: https://github.com/nco/nco/archive/{{ version }}.tar.gz\n  sha256: 1a98c37c946c00232fa7319d00d1d80f77603adda7c9239d10d68a8a3545a4d5\n\nbuild:\n  number: {{ build }}\n  skip: True  # [(win and vc<14) or (win and (mpi != 'nompi')) ]\n\n  # add build string so packages can depend on\n  # mpi or nompi variants explicitly:\n  # `nco * mpi_mpich_*` for mpich\n  # `nco * mpi_*` for any mpi\n  # `nco * nompi_*` for no mpi\n\n  {% if mpi != 'nompi' %}\n  {% set mpi_prefix = \"mpi_\" + mpi %}\n  {% else %}\n  {% set mpi_prefix = \"nompi\" %}\n  {% endif %}\n  string: \"{{ mpi_prefix }}_h{{ PKG_HASH }}_{{ build }}\"\n\nrequirements:\n  build:\n    - cmake  # [win]\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n  host:\n    - libblas\n    - libcblas\n    - antlr >=2.7.7,<3\n    - bison  # [not win]\n    - texinfo  # [not win]\n    - flex  # [not win]\n    - m4  # [not win]\n    - curl\n    - expat\n    - gsl\n    - krb5  # [not win]\n    - udunits2\n    - zlib\n    - {{ mpi }}  # [mpi != 'nompi']\n    # need to list these twice to get version pinning from conda_build_config\n    # and build pinning from {{ mpi_prefix }}\n    - hdf5\n    - hdf5  * {{ mpi_prefix }}_*\n    - libnetcdf\n    - libnetcdf  * {{ mpi_prefix }}_*\n  run:\n    - curl\n    - esmf * {{ mpi_prefix }}_*  # [not win]\n    - expat\n    - gsl\n    - hdf5\n    - krb5  # [not win]\n    - libnetcdf\n    - udunits2\n    - tempest-remap * {{ mpi_prefix }}_*  # [not win]\n    - {{ mpi }}  # [mpi != 'nompi']\n\ntest:\n  source_files:\n    - data/in.cdl\n  commands:\n    - ncks --help\n    - ncap2 --help\n    - ncks -M \"http://tds.marine.rutgers.edu/thredds/dodsC/roms/espresso/2013_da/his/ESPRESSO_Real-Time_v2_History_Best\"\n\nabout:\n  home: http://nco.sourceforge.net/\n  license: BSD-3-Clause\n  license_family: BSD\n  license_file: COPYING\n  summary: Suite of programs for manipulating NetCDF/HDF4 files\n\nextra:\n  recipe-maintainers:\n    - ocefpaf\n    - kwilcox\n    - xylar\n",
  "req":{
   "__set__":true,
