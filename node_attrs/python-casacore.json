@@ -86,6 +86,23 @@
     "migrator_version",
     "name"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/405327379.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"Version",
+    "migrator_version":0,
+    "version":"3.3.0"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "version"
+   ]
   }
  ],
  "bad":false,
@@ -169,8 +186,12 @@
   }
  },
  "name":"python-casacore",
- "new_version":"3.2.0",
- "pinning_version":"2020.02.20",
+ "new_version":"3.3.0",
+ "new_version_attempts":{
+  "3.3.0":1
+ },
+ "new_version_errors":{},
+ "pinning_version":"2020.04.17.11.45.02",
  "raw_meta_yaml":"{% set name = \"python-casacore\" %}\n{% set version = \"3.2.0\" %}\n{% set sha256 = \"d48e6202831ef22983961aa14c82294325f71b2fd3e108efaa3c1ca99b7505b5\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz\n  sha256: {{ sha256 }}\n\nbuild:\n  number: 0\n  skip: true  # [win]\n  script: {{ PYTHON }} -m pip install . -vv\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n  host:\n    - boost\n    - casacore >=3.2.*\n    - numpy\n    - pip\n    - python\n    - setuptools\n  run:\n    - {{ pin_compatible('numpy') }}\n    - python\n\ntest:\n  imports:\n    - casacore\n  commands:\n    - conda inspect linkages -p $PREFIX $PKG_NAME  # [not win]\n    - conda inspect objects -p $PREFIX $PKG_NAME  # [osx]\n\nabout:\n  home: http://casacore.github.io/python-casacore/\n  license: GPL-2.0-or-later\n  license_file: {{ environ[\"RECIPE_DIR\"] }}/LICENSE\n  summary: 'Python bindings for casacore, a library used in radio astronomy'\n\nextra:\n  recipe-maintainers:\n    - pkgw\n",
  "req":{
   "__set__":true,
@@ -216,7 +237,7 @@
    "elements":[]
   }
  },
- "smithy_version":"3.6.8",
+ "smithy_version":"No azure token. Create a token and\nput it in ~/.conda-smithy/azure.token\n3.6.16",
  "strong_exports":false,
  "time":1568135284.5515842,
  "total_requirements":{
