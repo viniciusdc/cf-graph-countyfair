@@ -107,20 +107,25 @@
  "conda-forge.yml":{
   "compiler_stack":"comp7",
   "max_py_ver":"37",
-  "max_r_ver":"35"
+  "max_r_ver":"35",
+  "provider":{
+   "linux_aarch64":"default",
+   "linux_ppc64le":"default",
+   "win":"azure"
+  }
  },
  "feedstock_name":"libmagic",
  "hash_type":"sha256",
  "meta_yaml":{
   "about":{
    "home":"http://www.darwinsys.com/file/",
-   "license":"BSD-2",
+   "license":"BSD-2-Clause",
    "license_family":"BSD",
    "license_file":"COPYING",
    "summary":"Implementation of the file(1) command"
   },
   "build":{
-   "number":"1",
+   "number":"2",
    "run_exports":[
     "libmagic",
     "libmagic",
@@ -131,8 +136,11 @@
   "extra":{
    "recipe-maintainers":[
     "mariusvniekerk",
+    "nwani",
     "mariusvniekerk",
-    "mariusvniekerk"
+    "nwani",
+    "mariusvniekerk",
+    "nwani"
    ]
   },
   "package":{
@@ -145,16 +153,19 @@
     "autoconf",
     "m4",
     "libtool",
+    "make",
     "c_compiler_stub",
     "automake",
     "autoconf",
     "m4",
     "libtool",
+    "make",
     "c_compiler_stub",
     "automake",
     "autoconf",
     "m4",
     "libtool",
+    "make",
     "c_compiler_stub"
    ]
   },
@@ -178,7 +189,7 @@
  "name":"libmagic",
  "new_version":false,
  "pinning_version":"2019.05.11",
- "raw_meta_yaml":"{% set name = \"libmagic\" %}\n{% set version = \"5.36\" %}\n{% set hash_val = \"fb608290c0fd2405a8f63e5717abf6d03e22e183fb21884413d1edd918184379\" %}\n\npackage:\n  name: libmagic\n  version: {{ version }}\n\nsource:\n  fn: file-{{ version }}.tar.gz\n  url: ftp://ftp.astron.com/pub/file/file-{{ version }}.tar.gz\n  sha256: {{ hash_val }}\n\nbuild:\n  number: 1\n  skip: True  # [win]\n  run_exports:\n    - {{ pin_subpackage('libmagic', max_pin='x') }}\n\nrequirements:\n  build:\n    - automake\n    - autoconf\n    - m4\n    - libtool\n    - {{ compiler('c') }}\n\ntest:\n  commands:\n    - \"file --help &> /dev/null\"\n    - \"test -r $CONDA_PREFIX/lib/libmagic.so\"  # [linux]\n    - \"test -r $CONDA_PREFIX/lib/libmagic.dylib\"  # [osx]\n    - \"conda inspect linkages -p $PREFIX $PKG_NAME\"  # [linux]\n    - \"conda inspect objects -p $PREFIX $PKG_NAME\"  # [osx]\n\nabout:\n  home: http://www.darwinsys.com/file/\n  summary: \"Implementation of the file(1) command\"\n  license: BSD-2\n  license_family: BSD\n  license_file: COPYING\n\nextra:\n  recipe-maintainers:\n    - mariusvniekerk\n",
+ "raw_meta_yaml":"{% set name = \"libmagic\" %}\n{% set version = \"5.36\" %}\n{% set hash_val = \"fb608290c0fd2405a8f63e5717abf6d03e22e183fb21884413d1edd918184379\" %}\n\npackage:\n  name: libmagic\n  version: {{ version }}\n\nsource:\n  fn: file-{{ version }}.tar.gz\n  url: ftp://ftp.astron.com/pub/file/file-{{ version }}.tar.gz\n  sha256: {{ hash_val }}\n\nbuild:\n  number: 2\n  skip: True  # [win]\n  run_exports:\n    - {{ pin_subpackage('libmagic', max_pin='x') }}\n\nrequirements:\n  build:\n    - automake\n    - autoconf\n    - m4\n    - libtool\n    - make\n    - {{ compiler('c') }}\n\ntest:\n  commands:\n    - \"file --help &> /dev/null\"\n    - \"test -r $CONDA_PREFIX/lib/libmagic.so\"  # [linux]\n    - \"test -r $CONDA_PREFIX/lib/libmagic.dylib\"  # [osx]\n    - \"conda inspect linkages -p $PREFIX $PKG_NAME\"  # [linux]\n    - \"conda inspect objects -p $PREFIX $PKG_NAME\"  # [osx]\n\nabout:\n  home: http://www.darwinsys.com/file/\n  summary: \"Implementation of the file(1) command\"\n  license: BSD-2-Clause\n  license_family: BSD\n  license_file: COPYING\n\nextra:\n  recipe-maintainers:\n    - mariusvniekerk\n    - nwani\n",
  "req":{
   "__set__":true,
   "elements":[
@@ -186,7 +197,8 @@
    "automake",
    "c_compiler_stub",
    "libtool",
-   "m4"
+   "m4",
+   "make"
   ]
  },
  "requirements":{
@@ -197,7 +209,8 @@
     "automake",
     "c_compiler_stub",
     "libtool",
-    "m4"
+    "m4",
+    "make"
    ]
   },
   "host":{
@@ -223,7 +236,8 @@
     "automake",
     "c_compiler_stub",
     "libtool",
-    "m4"
+    "m4",
+    "make"
    ]
   },
   "host":{

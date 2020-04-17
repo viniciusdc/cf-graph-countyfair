@@ -228,6 +228,25 @@
     "migrator_version",
     "version"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/404865122.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"MigrationYaml",
+    "migrator_object_version":1,
+    "migrator_version":0,
+    "name":"hdf51106"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_object_version",
+    "migrator_version",
+    "name"
+   ]
   }
  ],
  "bad":false,
@@ -452,7 +471,7 @@
   "0.0.10":1
  },
  "new_version_errors":{},
- "pinning_version":"2020.04.10",
+ "pinning_version":"2020.04.16.16.23.46",
  "raw_meta_yaml":"{% set name = \"mpas_tools\" %}\n{% set version = \"0.0.10\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  url: https://github.com/MPAS-Dev/MPAS-Tools/archive/{{ version }}.tar.gz\n  sha256: c27021856e1f1c9cca9da7779b91c46867b3759d946c368faabb8ed9878aa1da\n\nbuild:\n  number: 0\n  skip: true  # [win]\n  entry_points:\n    - planar_hex = mpas_tools.planar_hex:main\n    - translate_planar_grid = mpas_tools.translate:main\n    - merge_grids = mpas_tools.merge_grids:main\n    - split_grids = mpas_tools.split_grids:main\n\nrequirements:\n  build:\n    - {{ compiler('cxx') }}\n    - cmake\n  host:\n    - python\n    - hdf5\n    - libnetcdf\n    - setuptools\n    - pip\n    - netcdf4\n    - openmp  # [osx]\n  run:\n    - python\n    - netcdf4\n    - hdf5\n    - libnetcdf\n    - numpy\n    - scipy\n    - xarray\n    - dask\n    - geometric_features\n    - pyevtk\n    - future\n    - backports.tempfile\n\ntest:\n  requires:\n    - pytest\n  source_files:\n    - mesh_tools/mesh_conversion_tools/test/Arctic_Ocean.geojson\n    - mesh_tools/mesh_conversion_tools/test/mesh.QU.1920km.151026.nc\n    - mesh_tools/mesh_conversion_tools/test/land_mask_final.nc\n    - conda_package/mpas_tools/tests/*\n  commands:\n    - planar_hex --nx=10 --ny=20 --dc=1000. --outFileName='periodic_mesh_10x20_1km.nc'\n    - translate_planar_grid -f 'periodic_mesh_10x20_1km.nc' -x 1000. -y 2000.\n    - translate_planar_grid -f 'periodic_mesh_10x20_1km.nc' -c\n    - planar_hex --nx=20 --ny=40 --dc=1000. --outFileName='periodic_mesh_20x40_1km.nc'\n    - translate_planar_grid -f 'periodic_mesh_10x20_1km.nc' -d 'periodic_mesh_20x40_1km.nc'\n    - MpasMeshConverter.x mesh_tools/mesh_conversion_tools/test/mesh.QU.1920km.151026.nc mesh.nc\n    - MpasCellCuller.x mesh.nc culled_mesh.nc -m mesh_tools/mesh_conversion_tools/test/land_mask_final.nc\n    - MpasMaskCreator.x mesh.nc arctic_mask.nc -f mesh_tools/mesh_conversion_tools/test/Arctic_Ocean.geojson\n    - planar_hex --nx=30 --ny=20 --dc=1000. --npx --npy --outFileName='nonperiodic_mesh_30x20_1km.nc'\n    - MpasCellCuller.x nonperiodic_mesh_30x20_1km.nc culled_nonperiodic_mesh_30x20_1km.nc\n    - python -m pytest conda_package/mpas_tools/tests\n    - mark_horns_for_culling.py --help\n    - set_lat_lon_fields_in_planar_grid.py --help\n    - create_SCRIP_file_from_MPAS_mesh.py --help\n    - create_landice_grid_from_generic_MPAS_grid.py --help\n    - define_cullMask.py --help\n    - interpolate_to_mpasli_grid.py --help\n    - mark_domain_boundaries_dirichlet.py --help\n    - add_land_locked_cells_to_mask.py --help\n    - widen_transect_edge_masks.py --help\n    - add_critical_land_blockages_to_mask.py --help\n    - paraview_vtk_field_extractor.py -f mesh_tools/mesh_conversion_tools/test/mesh.QU.1920km.151026.nc -v latCell,lonCell --ignore_time -o vtk_test\n    - split_grids --help\n    - merge_grids --help\n\nabout:\n  home: https://github.com/MPAS-Dev/MPAS-Tools/\n  license: BSD-3-Clause\n  license_family: BSD\n  license_file: LICENSE\n  summary: Mesh tools for Model for Prediction Across Scales (MPAS)\n  description: |\n    A set of tools for creating and manipulating meshes for the climate\n    components based on the Model for Prediction Across Scales (MPAS) framework\n  doc_url: https://github.com/MPAS-Dev/MPAS-Tools/README.md\n  dev_url: https://github.com/MPAS-Dev/MPAS-Tools/\n\nextra:\n  recipe-maintainers:\n    - xylar\n    - jhkennedy\n",
  "req":{
   "__set__":true,
