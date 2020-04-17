@@ -54,29 +54,28 @@
     "migrator_version",
     "name"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/405143860.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"MigrationYaml",
+    "migrator_object_version":1,
+    "migrator_version":0,
+    "name":"gflags22"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_object_version",
+    "migrator_version",
+    "name"
+   ]
   }
  ],
- "bad":{
-  "exception":"Failed to put item: An error occurred (ValidationException) on request (0BJJ5CT81UA3DKFEITTS2Q8A6RVV4KQNSO5AEMVJF66Q9ASUAAJG) on table (pr_json) when calling the PutItem operation: Attempting to store more than 38 significant digits in a Number",
-  "traceback":[
-   "Traceback (most recent call last):",
-   "  File \"/root/repo/cf-scripts/conda_forge_tick/auto_tick.py\", line 785, in main",
-   "    hash_type=attrs.get(\"hash_type\", \"sha256\"),",
-   "  File \"/root/repo/cf-scripts/conda_forge_tick/auto_tick.py\", line 251, in run",
-   "    PRJson.dump(pr_json)",
-   "  File \"/root/repo/cf-scripts/conda_forge_tick/dynamo_models.py\", line 33, in dump",
-   "    item.save()",
-   "  File \"/opt/conda/envs/run_env/lib/python3.7/site-packages/pynamodb/models.py\", line 405, in save",
-   "    data = self._get_connection().put_item(*args, **kwargs)",
-   "  File \"/opt/conda/envs/run_env/lib/python3.7/site-packages/pynamodb/connection/table.py\", line 139, in put_item",
-   "    return_item_collection_metrics=return_item_collection_metrics)",
-   "  File \"/opt/conda/envs/run_env/lib/python3.7/site-packages/pynamodb/connection/base.py\", line 972, in put_item",
-   "    six.raise_from(PutError(\"Failed to put item: {}\".format(e), e), None)",
-   "  File \"<string>\", line 3, in raise_from",
-   "pynamodb.exceptions.PutError: Failed to put item: An error occurred (ValidationException) on request (0BJJ5CT81UA3DKFEITTS2Q8A6RVV4KQNSO5AEMVJF66Q9ASUAAJG) on table (pr_json) when calling the PutItem operation: Attempting to store more than 38 significant digits in a Number",
-   ""
-  ]
- },
+ "bad":false,
  "conda-forge.yml":{
   "provider":{
    "win":"azure"
@@ -183,7 +182,7 @@
  },
  "name":"ceres-solver",
  "new_version":false,
- "pinning_version":"2019.12.02",
+ "pinning_version":"2020.04.17.11.45.02",
  "raw_meta_yaml":"{% set version = \"1.14.0\" %}\n\npackage:\n  name: ceres-solver\n  version: {{ version }}\n\nsource:\n  url: http://ceres-solver.org/ceres-solver-{{ version }}.tar.gz\n  sha256: 4744005fc3b902fed886ea418df70690caa8e2ff6b5a90f3dd88a3d291ef8e8e\n\nbuild:\n  number: 7\n  skip: true  # [win and vc<14]\n  run_exports: \n    - {{ pin_subpackage('ceres-solver', max_pin='x.x') }}\n\nrequirements:\n  build:\n    - cmake\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n\n  host:\n    - glog\n    - gflags\n    - libblas\n    - libcblas\n    - liblapack\n    - suitesparse  # [unix]\n    - tbb\n    - eigen\n\n  run:\n    - glog\n    - gflags\n    - suitesparse  # [unix]\n    - tbb\n    - eigen\n\ntest:\n  commands:\n    - test -f ${PREFIX}/include/ceres/ceres.h  # [unix]\n    - test -f ${PREFIX}/lib/libceres${SHLIB_EXT}  # [unix]\n    - if not exist %PREFIX%\\\\Library\\\\include\\\\ceres\\\\ceres.h exit 1  # [win]\n    - if not exist %PREFIX%\\\\Library\\\\lib\\\\ceres.lib exit 1  # [win]\n    - if not exist %PREFIX%\\\\Library\\\\bin\\\\ceres.dll exit 1  # [win]\n\nabout:\n  home: http://ceres-solver.org\n  license: BSD-3-Clause\n  license_file: LICENSE\n  summary: A large scale non-linear optimization library\n\nextra:\n  recipe-maintainers:\n    - jschueller\n",
  "req":{
   "__set__":true,
@@ -238,7 +237,7 @@
    "elements":[]
   }
  },
- "smithy_version":"3.6.3",
+ "smithy_version":"No azure token. Create a token and\nput it in ~/.conda-smithy/azure.token\n3.6.16",
  "strong_exports":false,
  "total_requirements":{
   "build":{

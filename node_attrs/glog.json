@@ -88,9 +88,6 @@
  ],
  "bad":false,
  "conda-forge.yml":{
-  "compiler_stack":"comp7",
-  "max_py_ver":"37",
-  "max_r_ver":"35",
   "provider":{
    "linux_aarch64":"default",
    "linux_ppc64le":"default",
@@ -102,18 +99,17 @@
  "meta_yaml":{
   "about":{
    "home":"https://github.com/google/glog",
-   "license":"BSD 3-Clause",
+   "license":"BSD-3-Clause",
    "license_file":"COPYING",
    "summary":"C++ implementation of the Google logging module."
   },
   "build":{
-   "number":"1",
+   "number":"3",
    "run_exports":[
     "glog",
     "glog",
     "glog"
-   ],
-   "skip":true
+   ]
   },
   "extra":{
    "recipe-maintainers":[
@@ -132,15 +128,15 @@
   "requirements":{
    "build":[
     "cmake",
-    "make",
+    "ninja",
     "c_compiler_stub",
     "cxx_compiler_stub",
     "cmake",
-    "make",
+    "ninja",
     "c_compiler_stub",
     "cxx_compiler_stub",
     "cmake",
-    "make",
+    "ninja",
     "c_compiler_stub",
     "cxx_compiler_stub"
    ],
@@ -178,7 +174,7 @@
  "name":"glog",
  "new_version":"0.4.0",
  "pinning_version":"2020.04.17.09.06.29",
- "raw_meta_yaml":"{% set version = \"0.4.0\" %}\n\npackage:\n  name: glog\n  version: {{ version }}\n\nsource:\n  fn: glog-{{ version }}.tar.gz\n  url: https://github.com/google/glog/archive/v{{ version }}.tar.gz\n  sha256: f28359aeba12f30d73d9e4711ef356dc842886968112162bc73002645139c39c\n  patches:\n    # Work around clang bug that does not raise SIGFPE\n    - 0001-Always-raise-SIGFPE.patch  # [osx]\n    - 0003-Remove-non-existent-USAGE-level-from-tests.patch\n    - 0004-Ignore-unmangled-cxx11-symbols.patch\n    # https://github.com/google/glog/pull/447\n    - 447.patch\n\nbuild:\n  number: 1\n  skip: true  # [win and vc<14]\n  run_exports:\n    - {{ pin_subpackage('glog') }}\n\nrequirements:\n  build:\n    - cmake\n    - make\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n  host:\n    - gflags\n\ntest:\n  commands:\n    - test -f ${PREFIX}/lib/libglog${SHLIB_EXT}  # [unix]\n    - if not exist %PREFIX%\\\\Library\\\\bin\\\\glog.dll exit 1  # [win]\n\nabout:\n  home: https://github.com/google/glog\n  license: BSD 3-Clause\n  license_file: COPYING\n  summary: C++ implementation of the Google logging module.\n\nextra:\n  recipe-maintainers:\n    - jakirkham\n    - xhochy\n",
+ "raw_meta_yaml":"{% set version = \"0.4.0\" %}\n\npackage:\n  name: glog\n  version: {{ version }}\n\nsource:\n  fn: glog-{{ version }}.tar.gz\n  url: https://github.com/google/glog/archive/v{{ version }}.tar.gz\n  sha256: f28359aeba12f30d73d9e4711ef356dc842886968112162bc73002645139c39c\n  patches:\n    # Work around clang bug that does not raise SIGFPE\n    - 0001-Always-raise-SIGFPE.patch  # [osx]\n    - 0003-Remove-non-existent-USAGE-level-from-tests.patch\n    - 0004-Ignore-unmangled-cxx11-symbols.patch\n    # https://github.com/google/glog/pull/447\n    - 447.patch\n\nbuild:\n  number: 3\n  run_exports:\n    # Recent releases have been stable\n    # https://abi-laboratory.pro/index.php?view=timeline&l=glog\n    - {{ pin_subpackage('glog', max_pin=\"x.x\") }}\n\nrequirements:\n  build:\n    - cmake\n    - ninja\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n  host:\n    - gflags\n\ntest:\n  commands:\n    - test -f ${PREFIX}/lib/libglog${SHLIB_EXT}  # [unix]\n    - if not exist %PREFIX%\\\\Library\\\\bin\\\\glog.dll exit 1  # [win]\n\nabout:\n  home: https://github.com/google/glog\n  license: BSD-3-Clause\n  license_file: COPYING\n  summary: C++ implementation of the Google logging module.\n\nextra:\n  recipe-maintainers:\n    - jakirkham\n    - xhochy\n",
  "req":{
   "__set__":true,
   "elements":[
@@ -186,7 +182,7 @@
    "cmake",
    "cxx_compiler_stub",
    "gflags",
-   "make"
+   "ninja"
   ]
  },
  "requirements":{
@@ -196,7 +192,7 @@
     "c_compiler_stub",
     "cmake",
     "cxx_compiler_stub",
-    "make"
+    "ninja"
    ]
   },
   "host":{
@@ -223,7 +219,7 @@
     "c_compiler_stub",
     "cmake",
     "cxx_compiler_stub",
-    "make"
+    "ninja"
    ]
   },
   "host":{
