@@ -37,6 +37,23 @@
     "migrator_version",
     "name"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/405575712.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"Version",
+    "migrator_version":0,
+    "version":"1.8.7.0"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "version"
+   ]
   }
  ],
  "bad":false,
@@ -128,8 +145,12 @@
   }
  },
  "name":"nccmp",
- "new_version":false,
- "pinning_version":"2020.04.16.16.23.46",
+ "new_version":"1.8.7.0",
+ "new_version_attempts":{
+  "1.8.7.0":1
+ },
+ "new_version_errors":{},
+ "pinning_version":"2020.04.18.00.00.57",
  "raw_meta_yaml":"{% set name = \"nccmp\" %}\n{% set version = \"1.8.6.5\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  url: https://gitlab.com/remikz/{{ name }}/-/archive/{{ version }}/{{ name }}-{{ version }}.tar.gz\n  sha256: 4e86d2ea788191a36b29ce09a50dcc3711abd100ff36a1d4e2d0d19f4de75fbd\n\nbuild:\n  number: 1\n  # Need to skip win because curl needs vc=9 and hdf5 needs vc>=14\n  skip: true  # [win]\n\nrequirements:\n  build:\n    - make\n    - cmake\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n  host:\n    - curl\n    - libcurl\n    - hdf5\n    - libnetcdf\n  run:\n    - curl\n    - libcurl\n    - hdf5\n    - libnetcdf\n\ntest:\n  commands:\n    - test -f $PREFIX/bin/nccmp  # [unix]\n    - nccmp --usage\n\nabout:\n  home: https://gitlab.com/remikz/nccmp\n  license: GPL-2.0\n  license_family: GPL\n  license_file: COPYING\n  summary: 'Comparison of NetCDF files'\n\n  description: |\n    nccmp compares two NetCDF files bitwise, semantically or with a\n    user defined tolerance (absolute or relative percentage). Parallel\n    comparisons are done in local memory without requiring temporary\n    files. Highly recommended for regression testing scientific models\n    or datasets in a test-driven development environment.\n  doc_url: https://gitlab.com/remikz/nccmp/-/blob/master/README.md\n  dev_url: https://gitlab.com/remikz/nccmp\n\nextra:\n  recipe-maintainers:\n    - zklaus\n",
  "req":{
   "__set__":true,
