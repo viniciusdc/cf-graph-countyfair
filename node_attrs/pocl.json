@@ -153,9 +153,7 @@
   }
  ],
  "bad":false,
- "conda-forge.yml":{
-  "compiler_stack":"comp7"
- },
+ "conda-forge.yml":{},
  "feedstock_name":"pocl",
  "hash_type":"sha256",
  "meta_yaml":{
@@ -167,7 +165,7 @@
    "summary":"Portable Computing Language -- a CPU OpenCL implementation"
   },
   "build":{
-   "number":"1",
+   "number":"0",
    "skip":true
   },
   "extra":{
@@ -185,7 +183,7 @@
   },
   "package":{
    "name":"pocl",
-   "version":"1.4"
+   "version":"1.5"
   },
   "requirements":{
    "build":[
@@ -232,16 +230,25 @@
   },
   "source":[
    {
-    "sha256":"ec237faa83bb1c803fbdf7c6e83d8a2ad68b6f0ed1879c3aa16c0e1dcc478742",
-    "url":"https://github.com/pocl/pocl/archive/v1.4.tar.gz"
+    "patches":[
+     "gh814.patch"
+    ],
+    "sha256":"4fcf4618171727d165fc044d465a66e3119217bb4577a97374f94fcd8aed330e",
+    "url":"https://github.com/pocl/pocl/archive/v1.5.tar.gz"
    },
    {
-    "sha256":"ec237faa83bb1c803fbdf7c6e83d8a2ad68b6f0ed1879c3aa16c0e1dcc478742",
-    "url":"https://github.com/pocl/pocl/archive/v1.4.tar.gz"
+    "patches":[
+     "gh814.patch"
+    ],
+    "sha256":"4fcf4618171727d165fc044d465a66e3119217bb4577a97374f94fcd8aed330e",
+    "url":"https://github.com/pocl/pocl/archive/v1.5.tar.gz"
    },
    {
-    "sha256":"ec237faa83bb1c803fbdf7c6e83d8a2ad68b6f0ed1879c3aa16c0e1dcc478742",
-    "url":"https://github.com/pocl/pocl/archive/v1.4.tar.gz"
+    "patches":[
+     "gh814.patch"
+    ],
+    "sha256":"4fcf4618171727d165fc044d465a66e3119217bb4577a97374f94fcd8aed330e",
+    "url":"https://github.com/pocl/pocl/archive/v1.5.tar.gz"
    }
   ],
   "test":{
@@ -253,6 +260,7 @@
     "curl -O https://raw.githubusercontent.com/inducer/pyopencl/master/examples/demo.py",
     "python demo.py",
     "test -f $PREFIX/lib/libpocl${SHLIB_EXT}",
+    "export OCL_ICD_DEBUG=15",
     "curl -O https://raw.githubusercontent.com/inducer/pyopencl/master/examples/demo.py",
     "python demo.py"
    ],
@@ -269,7 +277,7 @@
  "name":"pocl",
  "new_version":"1.5",
  "pinning_version":"2020.04.03",
- "raw_meta_yaml":"{% set name = \"pocl\" %}\n{% set version = \"1.4\" %}\n{% set build_number = 1 %}\n{% set sha256 = \"ec237faa83bb1c803fbdf7c6e83d8a2ad68b6f0ed1879c3aa16c0e1dcc478742\" %}\n{% set llvm_version = \"6.0.1\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  - url: https://github.com/{{ name }}/{{ name }}/archive/v{{ version }}.tar.gz\n    sha256: {{ sha256 }}\n  #- git_url: https://github.com/pocl/pocl.git\n  #  git_rev: v1.3-RC3\n\nbuild:\n  number: {{ build_number }}\n  skip: True  # [win]\n  merge_build_host: True   # [cxx_compiler=='gxx']\n\nrequirements:\n  build:\n    - cmake\n    - pkg-config\n    - {{ compiler('cxx') }}\n  host:\n    - ocl-icd                            # [linux]\n    - khronos-opencl-icd-loader          # [osx]\n    - libhwloc\n    - libtool\n    - llvmdev =={{ llvm_version }}\n    - clangdev =={{ llvm_version }}\n    - lld =={{ llvm_version }}\n    - zlib                               # [osx]\n  run:\n    - ocl-icd                            # [linux]\n    - khronos-opencl-icd-loader          # [osx]\n    - {{ pin_compatible('libhwloc') }}\n    - libtool\n\ntest:\n  requires:\n    - pyopencl\n    - curl\n  commands:\n    - test -f $PREFIX/lib/libpocl${SHLIB_EXT}     # [unix]\n    # Remove apple icd so that only pocl is found\n    - rm $PREFIX/etc/OpenCL/vendors/apple.icd     # [osx]\n    - curl -O https://raw.githubusercontent.com/inducer/pyopencl/master/examples/demo.py\n    - python demo.py\n\nabout:\n  home: http://portablecl.org/\n  license: MIT\n  license_file: LICENSE\n  summary: 'Portable Computing Language -- a CPU OpenCL implementation'\n  dev_url: https://github.com/pocl/pocl\n\nextra:\n  recipe-maintainers:\n    - inducer\n    - mattwala\n    - isuruf\n",
+ "raw_meta_yaml":"{% set name = \"pocl\" %}\n{% set version = \"1.5\" %}\n{% set build_number = 0 %}\n{% set sha256 = \"4fcf4618171727d165fc044d465a66e3119217bb4577a97374f94fcd8aed330e\" %}\n{% set llvm_version = \"6.0.1\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  - url: https://github.com/{{ name }}/{{ name }}/archive/v{{ version }}.tar.gz\n    sha256: {{ sha256 }}\n    patches:\n      - gh814.patch\n  #- git_url: https://github.com/pocl/pocl.git\n  #  git_rev: v1.3-RC3\n\nbuild:\n  number: {{ build_number }}\n  skip: true  # [win]\n  merge_build_host: true  # [cxx_compiler=='gxx']\n\nrequirements:\n  build:\n    - cmake\n    - pkg-config\n    - {{ compiler('cxx') }}\n  host:\n    - ocl-icd                            # [linux]\n    - khronos-opencl-icd-loader          # [osx]\n    - libhwloc\n    - libtool\n    - llvmdev =={{ llvm_version }}\n    - clangdev =={{ llvm_version }}\n    - lld =={{ llvm_version }}\n    - zlib                               # [osx]\n  run:\n    - ocl-icd                            # [linux]\n    - khronos-opencl-icd-loader          # [osx]\n    - {{ pin_compatible('libhwloc') }}\n    - libtool\n\ntest:\n  requires:\n    - pyopencl\n    - curl\n  commands:\n    - test -f $PREFIX/lib/libpocl${SHLIB_EXT}     # [unix]\n    # Remove apple icd so that only pocl is found\n    - rm $PREFIX/etc/OpenCL/vendors/apple.icd     # [osx]\n    - export OCL_ICD_DEBUG=15                     # [linux]\n    - curl -O https://raw.githubusercontent.com/inducer/pyopencl/master/examples/demo.py\n    - python demo.py\n\nabout:\n  home: http://portablecl.org/\n  license: MIT\n  license_file: LICENSE\n  summary: Portable Computing Language -- a CPU OpenCL implementation\n  dev_url: https://github.com/pocl/pocl\n\nextra:\n  recipe-maintainers:\n    - inducer\n    - mattwala\n    - isuruf\n",
  "req":{
   "__set__":true,
   "elements":[
@@ -367,5 +375,5 @@
   }
  },
  "url":"https://github.com/pocl/pocl/archive/v1.3.tar.gz",
- "version":"1.4"
+ "version":"1.5"
 }

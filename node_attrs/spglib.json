@@ -349,6 +349,23 @@
     "migrator_version",
     "name"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/405442723.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"Version",
+    "migrator_version":0,
+    "version":"1.15.0"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "version"
+   ]
   }
  ],
  "bad":false,
@@ -449,8 +466,12 @@
   }
  },
  "name":"spglib",
- "new_version":"1.14.1",
- "pinning_version":"2020.03.23",
+ "new_version":"1.15.0",
+ "new_version_attempts":{
+  "1.15.0":1
+ },
+ "new_version_errors":{},
+ "pinning_version":"2020.04.18.00.00.57",
  "raw_meta_yaml":"{% set name = \"spglib\" %}\n{% set version = \"1.14.1\" %}\n{% set sha256 = \"9803b0648d9c2d99377f3e1c4cecf712320488403cd674192ec5cbe956bb3c78\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  fn: {{ name }}-{{ version }}.tar.gz\n  url: https://github.com/atztogo/spglib/archive/v{{ version }}.tar.gz\n  sha256: {{ sha256 }}\n\nbuild:\n  number: 1\n  run_exports: spglib  # [not win]\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - cmake\n  host:\n    - python\n    - numpy\n    - pip\n    - setuptools\n  run:\n    - python\n    - {{ pin_compatible('numpy') }}\n\ntest:\n  requires:\n    - pyyaml\n  imports:\n    - spglib\n  source_files:\n    - python/test\n  commands:\n    - python -m unittest discover -b -s python/test\n\n\nabout:\n  home: https://atztogo.github.io/spglib/\n  license: BSD-3-clause\n  license_family: BSD\n  license_file: {{ RECIPE_DIR }}/COPYING\n  summary: 'Space symmetry groups spglib module/library.'\n\n\n  description: |\n    Spglib is a library for finding and handling crystal symmetries.\n  doc_url: https://atztogo.github.io/spglib/\n  dev_url: https://github.com/atztogo/spglib\n\nextra:\n  recipe-maintainers:\n    - jochym\n    - atztogo\n",
  "req":{
   "__set__":true,
@@ -494,7 +515,7 @@
    ]
   }
  },
- "smithy_version":"No azure token. Create a token and\nput it in ~/.conda-smithy/azure.token\n3.6.15",
+ "smithy_version":"No azure token. Create a token and\nput it in ~/.conda-smithy/azure.token\n3.6.16",
  "strong_exports":false,
  "total_requirements":{
   "build":{
