@@ -50,6 +50,23 @@
     "migrator_version",
     "name"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/405683177.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"Version",
+    "migrator_version":0,
+    "version":"0.2.0"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "version"
+   ]
   }
  ],
  "bad":false,
@@ -168,8 +185,12 @@
   }
  },
  "name":"r-polylabelr",
- "new_version":"0.1.0",
- "pinning_version":"2019.08.19",
+ "new_version":"0.2.0",
+ "new_version_attempts":{
+  "0.2.0":1
+ },
+ "new_version_errors":{},
+ "pinning_version":"2020.04.18.00.00.57",
  "raw_meta_yaml":"{% set version = '0.1.0' %}\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-polylabelr\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  url:\n    - {{ cran_mirror }}/src/contrib/polylabelr_{{ version }}.tar.gz\n    - {{ cran_mirror }}/src/contrib/Archive/polylabelr/polylabelr_{{ version }}.tar.gz\n  sha256: d557b66b44e5cfa5622f7ded5228eb75cfc662fb4c274a79ab6f21656e1971ae\n\nbuild:\n  merge_build_host: True  # [win]\n  number: 1002\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - {{ compiler('c') }}        # [not win]\n    - {{ compiler('cxx') }}      # [not win]\n    - {{ compiler('fortran') }}        # [not win]\n    - {{ compiler('m2w64_c') }}        # [win]\n    - {{ compiler('m2w64_cxx') }}        # [win]\n    - {{ compiler('m2w64_fortran') }}        # [win]\n    - {{posix}}filesystem        # [win]\n    - {{posix}}make\n    - {{posix}}sed               # [win]\n    - {{posix}}coreutils         # [win]\n    - {{posix}}zip               # [win]\n  host:\n    - r-base\n    - r-rcpp\n  run:\n    - r-base\n    - {{native}}gcc-libs         # [win]\n    - r-rcpp\n\ntest:\n  commands:\n    - $R -e \"library('polylabelr')\"           # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('polylabelr')\\\"\"  # [win]\n\nabout:\n  home: https://github.com/jolars/polylabelr\n  license: MIT\n  summary: A wrapper around the C++ library  'polylabel' from 'Mapbox', providing an efficient\n    routine for finding the approximate pole of inaccessibility of a polygon, which\n    usually serves as an excellent candidate for labeling of a polygon.\n  license_family: MIT\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n    - johanneskoester\n    - bgruening\n    - daler\n    - jdblischak\n    - cbrueffer\n    - dbast\n\n# Package: polylabelr\n# Title: Find the Pole of Inaccessibility (Visual Center) of a Polygon\n# Version: 0.1.0\n# Authors@R:  c(person(given = \"Johan\", family = \"Larsson\", role = c(\"aut\", \"cre\"), email = \"mail@larssonjohan.com\"), person(\"Mapbox\", role = \"cph\", comment = \"polylabel, variant, and geometry libraries\"))\n# Description: A wrapper around the C++ library  'polylabel' from 'Mapbox', providing an efficient routine for finding the approximate pole of inaccessibility of a polygon, which usually serves as an excellent candidate for labeling of a polygon.\n# License: MIT + file LICENSE\n# Copyright: see file COPYRIGHTS\n# Encoding: UTF-8\n# LazyData: true\n# URL: https://github.com/jolars/polylabelr\n# BugReports: https://github.com/jolars/polylabelr/issues\n# Depends: R (>= 3.3.0)\n# LinkingTo: Rcpp\n# Imports: Rcpp\n# RoxygenNote: 6.1.0\n# Suggests: covr, testthat, spelling\n# Language: en-US\n# NeedsCompilation: yes\n# Packaged: 2018-10-29 06:34:51 UTC; jolars\n# Author: Johan Larsson [aut, cre], Mapbox [cph] (polylabel, variant, and geometry libraries)\n# Maintainer: Johan Larsson <mail@larssonjohan.com>\n# Repository: CRAN\n# Date/Publication: 2018-11-02 18:30:07 UTC\n",
  "req":{
   "__set__":true,
@@ -227,7 +248,7 @@
    "elements":[]
   }
  },
- "smithy_version":"3.4.1",
+ "smithy_version":"No azure token. Create a token and\nput it in ~/.conda-smithy/azure.token\n3.6.16",
  "strong_exports":false,
  "total_requirements":{
   "build":{
