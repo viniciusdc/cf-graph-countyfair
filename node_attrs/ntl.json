@@ -269,6 +269,12 @@
  },
  "name":"ntl",
  "new_version":"11.4.3",
+ "new_version_attempts":{
+  "11.4.3":1
+ },
+ "new_version_errors":{
+  "11.4.3":"The recipe did not change in the version migration, a URL did not hash, or there is jinja2 syntax the bot cannot handle!\n\nPlease check the URLs in your recipe with version '11.4.3' to make sure they exist!\n\nWe also found the following errors:\n\n - could not hash URL template 'http://www.shoup.net/ntl/ntl-{{ version }}.tar.gz'\n"
+ },
  "pinning_version":"2019.10.28",
  "raw_meta_yaml":"{% set version = \"11.3.2\" %}\n{% set name = \"ntl\" %}\n\npackage:\n  name: {{ name }}\n  version: {{ version }}\n\nsource:\n  fn: {{ name }}-{{ version }}.tar.gz\n  url: http://www.shoup.net/ntl/ntl-{{ version }}.tar.gz\n  sha256: 84ba3145abf8d5f3be6832a14c60b3368eb920719ee96e5774587e71ecd66e9d\n\nbuild:\n  number: 1000\n  skip: true        # [win]\n  track_features:\n    - ntl\n  run_exports:\n    - ntl {{ version }}\n\nrequirements:\n  build:\n    - libtool\n    - automake\n    - make\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n  host:\n    - gf2x\n    - gmp\n  run:\n    - gf2x\n    - gmp\n\ntest:\n  commands:\n    - test -f $PREFIX/include/NTL/ZZ.h\n    - test -f $PREFIX/lib/lib{{ name }}.a\n    - test -f $PREFIX/lib/lib{{ name }}.so         # [linux]\n    - test -f $PREFIX/lib/lib{{ name }}.dylib      # [osx]\n\nabout:\n  home: http://www.shoup.net/ntl/\n  doc_url: http://www.shoup.net/ntl/doc/tour.html\n  license: LGPL v2+\n  license_file: doc/copying.txt\n  summary: A Library for doing Number Theory\n  description: |\n    NTL is a high-performance, portable C++ library providing data structures and algorithms for manipulating signed, arbitrary length integers, and for vectors, matrices, and polynomials over the integers and over finite fields.\n\nextra:\n  recipe-maintainers:\n    - isuruf\n",
  "req":{
