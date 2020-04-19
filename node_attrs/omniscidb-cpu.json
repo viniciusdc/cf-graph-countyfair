@@ -319,6 +319,25 @@
     "migrator_version",
     "name"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/405732072.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"MigrationYaml",
+    "migrator_object_version":1,
+    "migrator_version":0,
+    "name":"gflags22"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_object_version",
+    "migrator_version",
+    "name"
+   ]
   }
  ],
  "bad":false,
@@ -499,7 +518,7 @@
  },
  "name":"omniscidb-cpu",
  "new_version":"5.2.0",
- "pinning_version":"2020.04.15.00.37.28",
+ "pinning_version":"2020.04.18.00.00.57",
  "raw_meta_yaml":"{% set name = \"omniscidb-cpu\" %}\n{% set version = \"5.0.0\" %}\n{% set sha256 = \"3115261258059f8ad61efc802cd6c13e8c0d62a07621ebcfad55bb6f8ceaa0ed\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  url: https://github.com/omnisci/omniscidb/archive/v{{ version }}.tar.gz\n  sha256: {{ sha256 }}\n\nbuild:\n  number: 1\n  skip: True  # [win]\n\nrequirements:\n  build:\n    # In OSX, we use clang++ from clangdev as a compiler\n    - {{ compiler('cxx') }}   # [not osx]\n    - {{ compiler('c') }}     # [not osx]\n    - boost-cpp 1.68.*        # to avoid cmake picking up boost-cpp 1.70+\n    - cmake 3.14.*\n    - make\n    - go\n    - maven\n  host:\n    - {{ compiler('cxx') }}    # [not osx]\n    - {{ compiler('c') }}      # [not osx]\n    - boost-cpp 1.68.*\n    - llvmdev\n    - clangdev\n    - double-conversion\n    - snappy\n    - gflags\n    - glog\n    - libarchive\n    - libkml\n    - libpng\n    - blosc\n    - libgdal >=2.3.*,<3\n    - arrow-cpp >=0.13.0\n    - thrift-cpp >=0.11.0\n    - ncurses\n    - flex\n    - bisonpp\n    - openssl\n    - librdkafka\n  run:\n    - boost-cpp 1.68.*\n    - arrow-cpp >=0.13.0\n    - snappy\n    - double-conversion\n    - libgdal >=2.3.*,<3\n    - glog\n    - gflags\n    - openjdk 8.*\n    - ncurses\n    - xz\n    - bzip2\n    - zlib\n    - librdkafka\n    # omnscidb UDF support calls clang++ in loadtime\n    - {{ compiler('cxx') }}   # [not osx]\n    - llvmdev\n    - clangdev\n\n\nabout:\n  home: https://www.omnisci.com/\n  license: Apache-2.0\n  license_family: Apache\n  license_file: LICENSE.md\n  summary: 'The OmniSci database'\n\n  description: |\n    OmniSciDB is an in-memory, column store, SQL relational database \n    that was designed from the ground up to run on GPUs.\n  doc_url: https://www.omnisci.com/docs/latest/\n  dev_url: https://github.com/omnisci/omniscidb\n\nextra:\n  recipe-maintainers:\n    - xmnlab\n    - pearu\n    - andrewseidl\n",
  "req":{
   "__set__":true,
