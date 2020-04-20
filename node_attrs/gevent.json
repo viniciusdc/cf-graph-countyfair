@@ -206,9 +206,6 @@
  ],
  "bad":false,
  "conda-forge.yml":{
-  "compiler_stack":"comp7",
-  "max_py_ver":"37",
-  "max_r_ver":"35",
   "provider":{
    "linux_aarch64":"default",
    "linux_ppc64le":"default",
@@ -232,9 +229,9 @@
    "number":"0",
    "script":[
     "copy %SRC_DIR%\\deps\\c-ares\\ares_build.h.dist %SRC_DIR%\\deps\\c-ares\\ares_build.h",
-    " -m pip install . --no-deps --ignore-installed -vvv",
-    " -m pip install . --no-deps --ignore-installed -vvv",
-    " -m pip install . --no-deps --ignore-installed -vvv"
+    "-m pip install . --no-deps --ignore-installed -vvv",
+    "-m pip install . --no-deps --ignore-installed -vvv",
+    "-m pip install . --no-deps --ignore-installed -vvv"
    ]
   },
   "extra":{
@@ -246,13 +243,17 @@
   },
   "package":{
    "name":"gevent",
-   "version":"1.4.0"
+   "version":"1.5.0"
   },
   "requirements":{
    "build":[
     "c_compiler_stub",
     "c_compiler_stub",
-    "c_compiler_stub"
+    "libmagic",
+    "make",
+    "c_compiler_stub",
+    "libmagic",
+    "make"
    ],
    "host":[
     "cffi >=1.11.5",
@@ -278,17 +279,20 @@
    ]
   },
   "source":{
-   "fn":"gevent-1.4.0.tar.gz",
+   "fn":"gevent-1.5.0.tar.gz",
    "patches":[
     "0001-Allow-include-flags-to-be-present-in-CFLAGS.patch",
     "0002-Allow-library-flags-to-be-present-in-LDFLAGS.patch",
+    "0003-Do-not-use-hard-coded-path-for-file-command.patch",
     "0001-Allow-include-flags-to-be-present-in-CFLAGS.patch",
     "0002-Allow-library-flags-to-be-present-in-LDFLAGS.patch",
+    "0003-Do-not-use-hard-coded-path-for-file-command.patch",
     "0001-Allow-include-flags-to-be-present-in-CFLAGS.patch",
-    "0002-Allow-library-flags-to-be-present-in-LDFLAGS.patch"
+    "0002-Allow-library-flags-to-be-present-in-LDFLAGS.patch",
+    "0003-Do-not-use-hard-coded-path-for-file-command.patch"
    ],
-   "sha256":"1eb7fa3b9bd9174dfe9c3b59b7a09b768ecd496debfc4976a9530a3e15c990d1",
-   "url":"https://pypi.io/packages/source/g/gevent/gevent-1.4.0.tar.gz"
+   "sha256":"b2814258e3b3fb32786bb73af271ad31f51e1ac01f33b37426b66cb8491b4c29",
+   "url":"https://pypi.io/packages/source/g/gevent/gevent-1.5.0.tar.gz"
   },
   "test":{
    "imports":[
@@ -308,13 +312,15 @@
  },
  "new_version_errors":{},
  "pinning_version":"2020.04.10.14.33.34",
- "raw_meta_yaml":"{% set name = \"gevent\" %}\n{% set version = \"1.4.0\" %}\n{% set sha256 = \"1eb7fa3b9bd9174dfe9c3b59b7a09b768ecd496debfc4976a9530a3e15c990d1\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  fn: {{ name }}-{{ version }}.tar.gz\n  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz\n  sha256: {{ sha256 }}\n  patches:\n    - 0001-Allow-include-flags-to-be-present-in-CFLAGS.patch\n    - 0002-Allow-library-flags-to-be-present-in-LDFLAGS.patch\n\nbuild:\n  number: 0\n  script:\n    - copy %SRC_DIR%\\deps\\c-ares\\ares_build.h.dist %SRC_DIR%\\deps\\c-ares\\ares_build.h  # [win]\n    - \"{{ PYTHON }} -m pip install . --no-deps --ignore-installed -vvv\"\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n\n  host:\n    # cffi 1.4.0 is the general minimum version\n    # With Python 3 version 1.11.3 is minimum\n    # On windows 1.11.5 is the minimum\n    # Rather than special casing each of these use a single minimum version\n    - cffi >=1.11.5\n    - python\n    - pip\n\n  run:\n    - cffi >=1.11.5\n    - python\n    - greenlet >=0.4.14\n\ntest:\n  imports:\n    - gevent\n    - gevent.libev\n\nabout:\n  home: http://www.gevent.org/\n  license: MIT\n  license_family: MIT\n  license_file: LICENSE\n  summary: 'Coroutine-based network library'\n  description: |\n    Gevent uses greenlet to provide a high-level synchronous API on top of the libev event loop.\n  doc_url: http://www.gevent.org/contents.html\n  dev_url: https://github.com/gevent/gevent\n\nextra:\n  recipe-maintainers:\n    - nehaljwani\n",
+ "raw_meta_yaml":"{% set name = \"gevent\" %}\n{% set version = \"1.5.0\" %}\n{% set sha256 = \"b2814258e3b3fb32786bb73af271ad31f51e1ac01f33b37426b66cb8491b4c29\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  fn: {{ name }}-{{ version }}.tar.gz\n  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz\n  sha256: {{ sha256 }}\n  patches:\n    - 0001-Allow-include-flags-to-be-present-in-CFLAGS.patch\n    - 0002-Allow-library-flags-to-be-present-in-LDFLAGS.patch\n    - 0003-Do-not-use-hard-coded-path-for-file-command.patch\n\nbuild:\n  number: 0\n  script:\n    - copy %SRC_DIR%\\deps\\c-ares\\ares_build.h.dist %SRC_DIR%\\deps\\c-ares\\ares_build.h  # [win]\n    - {{ PYTHON }} -m pip install . --no-deps --ignore-installed -vvv\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - libmagic  # [unix]\n    - make      # [unix]\n\n  host:\n    # cffi 1.4.0 is the general minimum version\n    # With Python 3 version 1.11.3 is minimum\n    # On windows 1.11.5 is the minimum\n    # Rather than special casing each of these use a single minimum version\n    - cffi >=1.11.5\n    - python\n    - pip\n\n  run:\n    - cffi >=1.11.5\n    - python\n    - greenlet >=0.4.14\n\ntest:\n  imports:\n    - gevent\n    - gevent.libev\n\nabout:\n  home: http://www.gevent.org/\n  license: MIT\n  license_family: MIT\n  license_file: LICENSE\n  summary: Coroutine-based network library\n  description: |\n    Gevent uses greenlet to provide a high-level synchronous API on top of the libev event loop.\n  doc_url: http://www.gevent.org/contents.html\n  dev_url: https://github.com/gevent/gevent\n\nextra:\n  recipe-maintainers:\n    - nehaljwani\n",
  "req":{
   "__set__":true,
   "elements":[
    "c_compiler_stub",
    "cffi",
    "greenlet",
+   "libmagic",
+   "make",
    "pip",
    "python"
   ]
@@ -323,7 +329,9 @@
   "build":{
    "__set__":true,
    "elements":[
-    "c_compiler_stub"
+    "c_compiler_stub",
+    "libmagic",
+    "make"
    ]
   },
   "host":{
@@ -353,7 +361,9 @@
   "build":{
    "__set__":true,
    "elements":[
-    "c_compiler_stub"
+    "c_compiler_stub",
+    "libmagic",
+    "make"
    ]
   },
   "host":{
@@ -378,5 +388,5 @@
   }
  },
  "url":"https://pypi.io/packages/source/g/gevent/gevent-1.4.0.tar.gz",
- "version":"1.4.0"
+ "version":"1.5.0"
 }
