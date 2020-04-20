@@ -814,11 +814,11 @@
    "number":"0",
    "script":[
     "pushd src/github.com/terraform-providers/terraform-provider-aws",
-    "go build -v -o terraform-provider-aws_v2.35.0_x4",
+    "go build -v -o terraform-provider-aws_v2.58.0_x4",
     "pushd src/github.com/terraform-providers/terraform-provider-aws",
-    "go build -v -o terraform-provider-aws_v2.35.0_x4",
+    "go build -v -o terraform-provider-aws_v2.58.0_x4",
     "pushd src/github.com/terraform-providers/terraform-provider-aws",
-    "go build -v -o terraform-provider-aws_v2.35.0_x4"
+    "go build -v -o terraform-provider-aws_v2.58.0_x4"
    ]
   },
   "extra":{
@@ -830,7 +830,7 @@
   },
   "package":{
    "name":"terraform-provider-aws",
-   "version":"2.35.0"
+   "version":"2.58.0"
   },
   "requirements":{
    "build":[
@@ -847,34 +847,34 @@
   "source":[
    {
     "folder":"src/github.com/terraform-providers/terraform-provider-aws",
-    "sha256":"bfb7caefb1139b09a3b3575973613dbf858d131c907244bfe58072cf4f194bbc",
-    "url":"https://github.com/terraform-providers/terraform-provider-aws/archive/v2.35.0.tar.gz"
+    "sha256":"9eea09b7d74e8944d87d45d385a935b01c180fca65d52c6d2db6253711db998e",
+    "url":"https://github.com/terraform-providers/terraform-provider-aws/archive/v2.58.0.tar.gz"
    },
    {
     "folder":"src/github.com/terraform-providers/terraform-provider-aws",
-    "sha256":"bfb7caefb1139b09a3b3575973613dbf858d131c907244bfe58072cf4f194bbc",
-    "url":"https://github.com/terraform-providers/terraform-provider-aws/archive/v2.35.0.tar.gz"
+    "sha256":"9eea09b7d74e8944d87d45d385a935b01c180fca65d52c6d2db6253711db998e",
+    "url":"https://github.com/terraform-providers/terraform-provider-aws/archive/v2.58.0.tar.gz"
    },
    {
     "folder":"src/github.com/terraform-providers/terraform-provider-aws",
-    "sha256":"bfb7caefb1139b09a3b3575973613dbf858d131c907244bfe58072cf4f194bbc",
-    "url":"https://github.com/terraform-providers/terraform-provider-aws/archive/v2.35.0.tar.gz"
+    "sha256":"9eea09b7d74e8944d87d45d385a935b01c180fca65d52c6d2db6253711db998e",
+    "url":"https://github.com/terraform-providers/terraform-provider-aws/archive/v2.58.0.tar.gz"
    }
   ],
   "test":{
    "commands":[
-    "bash -euf -c \"echo 'provider \\\"aws\\\" { version=\\\"2.35.0\\\" }' > init.tf\"",
+    "bash -euf -c \"echo 'provider \\\"aws\\\" { version=\\\"2.58.0\\\" }' > init.tf\"",
     "terraform init",
     "test -f .terraform/plugins/_/lock.json",
-    "test ! -f .terraform/plugins/_/terraform-provider-aws_v2.35.0_x4",
-    "bash -euf -c \"echo 'provider \\\"aws\\\" { version=\\\"2.35.0\\\" }' > init.tf\"",
+    "test ! -f .terraform/plugins/_/terraform-provider-aws_v2.58.0_x4",
+    "bash -euf -c \"echo 'provider \\\"aws\\\" { version=\\\"2.58.0\\\" }' > init.tf\"",
     "terraform init",
     "test -f .terraform/plugins/_/lock.json",
-    "test ! -f .terraform/plugins/_/terraform-provider-aws_v2.35.0_x4",
-    "bash -euf -c \"echo 'provider \\\"aws\\\" { version=\\\"2.35.0\\\" }' > init.tf\"",
+    "test ! -f .terraform/plugins/_/terraform-provider-aws_v2.58.0_x4",
+    "bash -euf -c \"echo 'provider \\\"aws\\\" { version=\\\"2.58.0\\\" }' > init.tf\"",
     "terraform init",
     "test -f .terraform/plugins/_/lock.json",
-    "test ! -f .terraform/plugins/_/terraform-provider-aws_v2.35.0_x4"
+    "test ! -f .terraform/plugins/_/terraform-provider-aws_v2.58.0_x4"
    ],
    "requires":null
   }
@@ -888,7 +888,7 @@
  },
  "new_version_errors":{},
  "pinning_version":"2020.04.17.11.45.02",
- "raw_meta_yaml":"{% set provider = \"aws\" %}\n{% set goname = \"github.com/terraform-providers/terraform-provider-\"+provider.lower() %}\n{% set version = \"2.35.0\" %}\n\n{% set name = goname.split('/')[-1] %}\n{% set pkg_src = ('src/'+goname).replace(\"/\",os.sep) %}\n\n{% set x4_plugin = name + '_v' + version + \"_x4\"%}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  - folder: {{ pkg_src }}\n    url: https://{{ goname }}/archive/v{{ version }}.tar.gz\n    sha256: bfb7caefb1139b09a3b3575973613dbf858d131c907244bfe58072cf4f194bbc\n\nbuild:\n  number: 0\n  script:\n    - pushd {{ pkg_src }}\n    - go build -v -o {{ target_gobin }}{{ x4_plugin }}{{ target_goexe }}\n\nrequirements:\n  build:\n    - {{ compiler('go') }}\n  run:\n    - terraform >=0.12\n\ntest:\n  requires:\n    - m2-bash       # [win]\n    - m2-coreutils  # [win]\n  commands:\n    - bash -euf -c \"echo 'provider \\\"{{ provider|lower }}\\\" { version=\\\"{{ version }}\\\" }' > init.tf\"\n    - terraform init\n    # Tests that no plugins were downloaded\n    - test -f .terraform/plugins/{{ target_goos }}_{{ target_goarch }}/lock.json\n    - test ! -f .terraform/plugins/{{ target_goos }}_{{ target_goarch }}/{{ x4_plugin }}{{ target_goexe }}\n\nabout:\n  home: https://www.terraform.io\n  license: MPL-2.0\n  summary: The Terraform AWS provider\n  doc_url: https://www.terraform.io/docs/providers/{{ provider }}/index.html\n  dev_url: https://github.com/terraform-providers/{{ name }}\n\nextra:\n  recipe-maintainers:\n    - conda-forge/terraform\n",
+ "raw_meta_yaml":"{% set provider = \"aws\" %}\n{% set goname = \"github.com/terraform-providers/terraform-provider-\"+provider.lower() %}\n{% set version = \"2.58.0\" %}\n\n{% set name = goname.split('/')[-1] %}\n{% set pkg_src = ('src/'+goname).replace(\"/\",os.sep) %}\n\n{% set x4_plugin = name + '_v' + version + \"_x4\"%}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  - folder: {{ pkg_src }}\n    url: https://{{ goname }}/archive/v{{ version }}.tar.gz\n    sha256: 9eea09b7d74e8944d87d45d385a935b01c180fca65d52c6d2db6253711db998e\n\nbuild:\n  number: 0\n  script:\n    - pushd {{ pkg_src }}\n    - go build -v -o {{ target_gobin }}{{ x4_plugin }}{{ target_goexe }}\n\nrequirements:\n  build:\n    - {{ compiler('go') }}\n  run:\n    - terraform >=0.12\n\ntest:\n  requires:\n    - m2-bash       # [win]\n    - m2-coreutils  # [win]\n  commands:\n    - bash -euf -c \"echo 'provider \\\"{{ provider|lower }}\\\" { version=\\\"{{ version }}\\\" }' > init.tf\"\n    - terraform init\n    # Tests that no plugins were downloaded\n    - test -f .terraform/plugins/{{ target_goos }}_{{ target_goarch }}/lock.json\n    - test ! -f .terraform/plugins/{{ target_goos }}_{{ target_goarch }}/{{ x4_plugin }}{{ target_goexe }}\n\nabout:\n  home: https://www.terraform.io\n  license: MPL-2.0\n  summary: The Terraform AWS provider\n  doc_url: https://www.terraform.io/docs/providers/{{ provider }}/index.html\n  dev_url: https://github.com/terraform-providers/{{ name }}\n\nextra:\n  recipe-maintainers:\n    - conda-forge/terraform\n",
  "req":{
   "__set__":true,
   "elements":[
@@ -943,5 +943,5 @@
   }
  },
  "url":"https://github.com/terraform-providers/terraform-provider-aws/archive/v2.11.0.tar.gz",
- "version":"2.35.0"
+ "version":"2.58.0"
 }
