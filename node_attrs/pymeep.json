@@ -287,14 +287,14 @@
    "summary":"Free finite-difference time-domain (FDTD) software for electromagnetic simulations"
   },
   "build":{
-   "number":"109",
+   "number":"100",
    "run_exports":[
     "pymeep * nompi_*",
     "pymeep * nompi_*",
     "pymeep * nompi_*"
    ],
    "skip":true,
-   "string":"nompi_pyh_109"
+   "string":"nompi_pyh_100"
   },
   "extra":{
    "recipe-maintainers":[
@@ -308,7 +308,7 @@
   },
   "package":{
    "name":"pymeep",
-   "version":"1.13.1"
+   "version":"1.14"
   },
   "requirements":{
    "build":[
@@ -418,9 +418,9 @@
    ]
   },
   "source":{
-   "fn":"meep-1.13.1.tar.gz",
-   "sha256":"f389750e2a5c4c87b170163f920488cc90675db804cbed1eda6d43b0b1e1632a",
-   "url":"https://github.com/NanoComp/meep/releases/download/v1.13.1/meep-1.13.1.tar.gz"
+   "fn":"meep-1.14.tar.gz",
+   "sha256":"badfd67caa1d5cbc9ff038fee46d1b8ab0f5dece61f5bc70205eaebcae198717",
+   "url":"https://github.com/NanoComp/meep/releases/download/v1.14.0/meep-1.14.tar.gz"
   },
   "test":{
    "imports":[
@@ -458,7 +458,7 @@
   "1.14.0":"The recipe did not change in the version migration, a URL did not hash, or there is jinja2 syntax the bot cannot handle!\n\nPlease check the URLs in your recipe with version '1.14.0' to make sure they exist!\n\nWe also found the following errors:\n\n - could not hash URL template 'https://github.com/NanoComp/meep/releases/download/v<{version}}/meep-{{ version }}.tar.gz'\n"
  },
  "pinning_version":"2020.02.20",
- "raw_meta_yaml":"{% set name = \"pymeep\" %}\n{% set version = \"1.13.1\" %}\n{% set sha256 = \"f389750e2a5c4c87b170163f920488cc90675db804cbed1eda6d43b0b1e1632a\" %}\n{% set buildnumber = 9 %}\n# recipe-lint fails if mpi is undefined\n{% set mpi = mpi or 'nompi' %}\n{% if mpi == \"nompi\" %}\n# prioritize nompi via build number\n{% set buildnumber = buildnumber + 100 %}\n{% endif %}\n\npackage:\n  name: {{ name }}\n  version: {{ version }}\n\nsource:\n  fn: meep-{{ version }}.tar.gz\n  url: https://github.com/NanoComp/meep/releases/download/v{{version}}/meep-{{ version }}.tar.gz\n  sha256: {{ sha256 }}\n\nbuild:\n  number: {{ buildnumber }}\n  {% if mpi != \"nompi\" %}\n  {% set mpi_prefix = \"mpi_\" + mpi %}\n  {% else %}\n  {% set mpi_prefix = \"nompi\" %}\n  {% endif %}\n  # add build string so packages can depend on\n  # mpi or nompi variants\n  # dependencies:\n  # `pymeep * mpi_mpich_*` for mpich\n  # `pymeep * mpi_*` for any mpi\n  # `pymeep * nompi_*` for no mpi\n  string: {{ mpi_prefix }}_py{{ py }}h{{ PKG_HASH }}_{{ buildnumber }}\n  run_exports:\n    - {{ name }} * {{ mpi_prefix }}_*\n  skip: true  # [win or osx]\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n    - {{ compiler('fortran') }}\n  host:\n    - libblas\n    - libcblas\n    - liblapack\n    - {{ mpi }}  # [mpi != 'nompi']\n    - python\n    - libctl >=4.2.0\n    - harminv\n    - mpb >=1.8.0 {{ mpi_prefix }}_*\n    - gsl\n    - hdf5 1.10.4 {{ mpi_prefix }}_*\n    - numpy 1.11.*\n    - mpi4py 3.0.*  # [mpi != 'nompi']\n    - libgdsii >=0.21\n  run:\n    - {{ mpi }}  # [mpi != 'nompi']\n    - python\n    - libctl >=4.2.0\n    - harminv\n    - mpb\n    - {{ pin_compatible('numpy') }}\n    - hdf5\n    - gsl\n    - h5utils * {{ mpi_prefix }}_*\n    - h5py * {{ mpi_prefix }}_*\n    - scipy\n    - mpi4py 3.0.*  # [mpi != 'nompi']\n    - matplotlib >=2.2\n    - libgdsii >=0.21\n    - ffmpeg >=4.0\n    - mayavi\n    - autograd\n\ntest:\n  requires:\n    - parallel\n  imports:\n    - meep\n    - meep.mpb\n  source_files:\n    - tests/cyl-ellipsoid-eps-ref.h5\n    - python/tests/*.py\n    - python/tests/data/*\n\nabout:\n  home: http:/github.com/NanoComp/meep\n  license: GPL-2.0\n  license_file: LICENSE\n  summary: Free finite-difference time-domain (FDTD) software for electromagnetic simulations\n  doc_url: http://meep.readthedocs.io\n  dev_url: https://github.com/NanoComp/meep\n\nextra:\n  recipe-maintainers:\n    - ChristopherHogan\n    - oskooi\n",
+ "raw_meta_yaml":"{% set name = \"pymeep\" %}\n{% set version = \"1.14\" %}\n{% set sha256 = \"badfd67caa1d5cbc9ff038fee46d1b8ab0f5dece61f5bc70205eaebcae198717\" %}\n{% set buildnumber = 0 %}\n# recipe-lint fails if mpi is undefined\n{% set mpi = mpi or 'nompi' %}\n{% if mpi == \"nompi\" %}\n# prioritize nompi via build number\n{% set buildnumber = buildnumber + 100 %}\n{% endif %}\n\npackage:\n  name: {{ name }}\n  version: {{ version }}\n\nsource:\n  fn: meep-{{ version }}.tar.gz\n  url: https://github.com/NanoComp/meep/releases/download/v{{version}}.0/meep-{{ version }}.tar.gz\n  sha256: {{ sha256 }}\n\nbuild:\n  number: {{ buildnumber }}\n  {% if mpi != \"nompi\" %}\n  {% set mpi_prefix = \"mpi_\" + mpi %}\n  {% else %}\n  {% set mpi_prefix = \"nompi\" %}\n  {% endif %}\n  # add build string so packages can depend on\n  # mpi or nompi variants\n  # dependencies:\n  # `pymeep * mpi_mpich_*` for mpich\n  # `pymeep * mpi_*` for any mpi\n  # `pymeep * nompi_*` for no mpi\n  string: {{ mpi_prefix }}_py{{ py }}h{{ PKG_HASH }}_{{ buildnumber }}\n  run_exports:\n    - {{ name }} * {{ mpi_prefix }}_*\n  skip: true  # [win or osx]\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n    - {{ compiler('fortran') }}\n  host:\n    - libblas\n    - libcblas\n    - liblapack\n    - {{ mpi }}  # [mpi != 'nompi']\n    - python\n    - libctl >=4.2.0\n    - harminv\n    - mpb >=1.8.0 {{ mpi_prefix }}_*\n    - gsl\n    - hdf5 1.10.4 {{ mpi_prefix }}_*\n    - numpy 1.11.*\n    - mpi4py 3.0.*  # [mpi != 'nompi']\n    - libgdsii >=0.21\n  run:\n    - {{ mpi }}  # [mpi != 'nompi']\n    - python\n    - libctl >=4.2.0\n    - harminv\n    - mpb\n    - {{ pin_compatible('numpy') }}\n    - hdf5\n    - gsl\n    - h5utils * {{ mpi_prefix }}_*\n    - h5py * {{ mpi_prefix }}_*\n    - scipy\n    - mpi4py 3.0.*  # [mpi != 'nompi']\n    - matplotlib >=2.2\n    - libgdsii >=0.21\n    - ffmpeg >=4.0\n    - mayavi\n    - autograd\n\ntest:\n  requires:\n    - parallel\n  imports:\n    - meep\n    - meep.mpb\n  source_files:\n    - tests/cyl-ellipsoid-eps-ref.h5\n    - python/tests/*.py\n    - python/tests/data/*\n\nabout:\n  home: http:/github.com/NanoComp/meep\n  license: GPL-2.0\n  license_file: LICENSE\n  summary: Free finite-difference time-domain (FDTD) software for electromagnetic simulations\n  doc_url: http://meep.readthedocs.io\n  dev_url: https://github.com/NanoComp/meep\n\nextra:\n  recipe-maintainers:\n    - ChristopherHogan\n    - oskooi\n",
  "req":{
   "__set__":true,
   "elements":[
@@ -602,5 +602,5 @@
   }
  },
  "url":"https://github.com/NanoComp/meep/releases/download/v1.11.0/meep-1.11.0.tar.gz",
- "version":"1.13.1"
+ "version":"1.14"
 }
