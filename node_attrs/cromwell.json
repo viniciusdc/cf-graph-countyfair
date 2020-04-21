@@ -186,6 +186,23 @@
     "migrator_version",
     "version"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/406896341.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"Version",
+    "migrator_version":0,
+    "version":"50"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "version"
+   ]
   }
  ],
  "bad":false,
@@ -280,8 +297,12 @@
   }
  },
  "name":"cromwell",
- "new_version":"49",
- "pinning_version":"2020.02.20",
+ "new_version":"50",
+ "new_version_attempts":{
+  "50":1
+ },
+ "new_version_errors":{},
+ "pinning_version":"2020.04.21.12.59.15",
  "raw_meta_yaml":"{% set version = \"49\" %}\n\npackage:\n  name: cromwell\n  version: {{ version }}\n\nsource:\n  - url: https://github.com/broadinstitute/cromwell/releases/download/{{ version }}/cromwell-{{ version }}.jar\n    sha256: 4ff4dbd4ebe128ea51d81ffeeb59fa547f436af775f984770c1dd98569e759c2\n    folder: cromwell\n  - url: https://github.com/broadinstitute/cromwell/releases/download/{{ version }}/womtool-{{ version }}.jar\n    sha256: 7ccc29b6b089f9f4b0fbc252f732fd6e051cd530ca54a1fe0c641991bb92c98f\n    folder: womtool\n\nbuild:\n  # Cannot build on Windows because findutils is not available\n  skip: true  # [win]\n  number: 0\n\nrequirements:\n  run:\n    - openjdk >=8,<9\n    - python\n    - findutils\n\ntest:\n  commands:\n    - cromwell --version 2>&1 | grep \"cromwell\"\n    - womtool --help 2>&1 | grep \"Usage\"\n\nabout:\n  home: https://github.com/broadinstitute/cromwell\n  license: BSD-3-Clause\n  license_file: LICENSE.txt\n  summary: A Workflow Management System geared towards scientific workflows described in WDL\n\nextra:\n  recipe-maintainers:\n    - notestaff\n    - chapmanb\n    - micknudsen\n    - rhpvorderman\n",
  "req":{
   "__set__":true,
@@ -313,7 +334,7 @@
    "elements":[]
   }
  },
- "smithy_version":"3.6.8",
+ "smithy_version":"No azure token. Create a token and\nput it in ~/.conda-smithy/azure.token\n3.6.16",
  "strong_exports":false,
  "total_requirements":{
   "build":{
