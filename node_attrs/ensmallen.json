@@ -271,6 +271,23 @@
     "migrator_version",
     "version"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/406863717.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"Version",
+    "migrator_version":0,
+    "version":"2.12.1"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "version"
+   ]
   }
  ],
  "bad":false,
@@ -352,7 +369,11 @@
  },
  "name":"ensmallen",
  "new_version":"2.12.1",
- "pinning_version":"2020.03.28",
+ "new_version_attempts":{
+  "2.12.1":1
+ },
+ "new_version_errors":{},
+ "pinning_version":"2020.04.21.12.59.15",
  "raw_meta_yaml":"{% set name = \"ensmallen\" %}\n{% set version = \"2.12.0\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  url: https://github.com/mlpack/ensmallen/archive/{{ version }}.tar.gz\n  sha256: 0564700104e3adce0912ce0cf0a33a1e75e3b167399f42aa762290b8a74a56da\n\nbuild:\n  number: 0\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n    - cmake\n    - ninja  # [win]\n  host:\n    - armadillo >=8.400.0\n    - libblas\n    - openmp\n  run:\n    - armadillo\n    - openmp\n\ntest:\n  commands:\n    - test -f $PREFIX/include/ensmallen.hpp                    # [unix]\n    - test -d $PREFIX/include/ensmallen_bits                   # [unix]\n    - if not exist %LIBRARY_INC%\\\\ensmallen.hpp exit 1         # [win]\n    - if not exist %LIBRARY_INC%\\\\ensmallen_bits exit 1        # [win]\nabout:\n  home: http://ensmallen.org/\n  license: BSD-3-Clause\n  license_family: BSD\n  license_file: COPYRIGHT.txt\n  summary: ensmallen is a C++ header-only library for mathematical optimization.\n  description: |\n    ensmallen provides a simple set of abstractions for writing an objective \n    function to optimize. It     also provides a large set of standard and \n    cutting-edge optimizers that can be used for virtually any mathematical \n    optimization task. These include full-batch gradient descent techniques, \n    small-batch techniques, gradient-free optimizers, and constrained optimization.\n  doc_url: http://ensmallen.org/docs.html\n  dev_url: https://github.com/mlpack/ensmallen\n\nextra:\n  recipe-maintainers:\n    - marcelotrevisani\n",
  "req":{
   "__set__":true,
@@ -396,7 +417,7 @@
    "elements":[]
   }
  },
- "smithy_version":"No azure token. Create a token and\nput it in ~/.conda-smithy/azure.token\n3.6.15",
+ "smithy_version":"No azure token. Create a token and\nput it in ~/.conda-smithy/azure.token\n3.6.16",
  "strong_exports":false,
  "time":1568135303.448813,
  "total_requirements":{

@@ -452,6 +452,23 @@
     "migrator_version",
     "version"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/406864909.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"Version",
+    "migrator_version":0,
+    "version":"2.5.1"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "version"
+   ]
   }
  ],
  "bad":false,
@@ -527,7 +544,11 @@
  },
  "name":"terraform-provider-cloudflare",
  "new_version":"2.5.1",
- "pinning_version":"2020.03.24",
+ "new_version_attempts":{
+  "2.5.1":1
+ },
+ "new_version_errors":{},
+ "pinning_version":"2020.04.21.12.59.15",
  "raw_meta_yaml":"{% set provider = \"CloudFlare\" %}\n{% set goname = \"github.com/terraform-providers/terraform-provider-\"+provider.lower() %}\n{% set version = \"2.4.1\" %}\n\n{% set name = goname.split('/')[-1] %}\n\n{% set x4_plugin = name + '_v' + version + \"_x4\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  url: https://{{ goname }}/archive/v{{ version }}.tar.gz\n  sha256: 1be23dd248c40ab4f276fbdd0919a74ff7ba49ead063e6723def352a5c90b424\n\nbuild:\n  number: 0\n  script:\n    - go build -v -o {{ target_gobin }}{{ x4_plugin }}{{ target_goexe }}\n\nrequirements:\n  build:\n    - {{ compiler('go') }} 1.13\n  run:\n    - terraform 0.12\n\ntest:\n  commands:\n    # Create a sample init.tf loading the provider\n    - echo 'provider \"{{ provider|lower }}\" { version=\"{{ version }}\" }' > init.tf  # [unix]\n    - echo provider \"{{ provider|lower }}\" { version=\"{{ version }}\" } > init.tf    # [win]\n\n    # Initialize\n    - terraform init\n\n    # Tests that init was successful\n    - test -f .terraform/plugins/{{ target_goos }}_{{ target_goarch }}/lock.json              # [unix]\n    - if not exist .terraform\\plugins\\{{ target_goos }}_{{ target_goarch }}\\lock.json exit 1  # [win]\n\n    # Test that the provider was not downloaded\n    - test ! -f .terraform/plugins/{{ target_goos }}_{{ target_goarch }}/{{ x4_plugin }}{{ target_goexe }}        # [unix]\n    - if exist .terraform\\plugins\\{{ target_goos }}_{{ target_goarch }}\\{{ x4_plugin }}{{ target_goexe }} exit 1  # [win]\n\nabout:\n  home: https://www.terraform.io\n  license: MPL-2.0\n  summary: The Terraform {{ provider }} provider\n  doc_url: https://www.terraform.io/docs/providers/{{ provider|lower }}/index.html\n  dev_url: https://github.com/terraform-providers/{{ name }}\n\nextra:\n  recipe-maintainers:\n    - conda-forge/terraform\n",
  "req":{
   "__set__":true,
@@ -558,7 +579,7 @@
    "elements":[]
   }
  },
- "smithy_version":"No azure token. Create a token and\nput it in ~/.conda-smithy/azure.token\n3.6.15",
+ "smithy_version":"No azure token. Create a token and\nput it in ~/.conda-smithy/azure.token\n3.6.16",
  "strong_exports":false,
  "total_requirements":{
   "build":{
