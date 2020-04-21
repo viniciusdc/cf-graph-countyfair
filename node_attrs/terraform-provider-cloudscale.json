@@ -125,12 +125,9 @@
   "build":{
    "number":"0",
    "script":[
-    "pushd src/github.com/terraform-providers/terraform-provider-cloudscale",
-    "go build -v -o %GOBIN%\\terraform-provider-cloudscale_v2.0.0_x4 .",
-    "pushd src/github.com/terraform-providers/terraform-provider-cloudscale",
-    "go build -v -o $GOBIN/terraform-provider-cloudscale_v2.0.0_x4 .",
-    "pushd src/github.com/terraform-providers/terraform-provider-cloudscale",
-    "go build -v -o $GOBIN/terraform-provider-cloudscale_v2.0.0_x4 ."
+    "go build -v -o terraform-provider-cloudscale_v2.1.1_x4",
+    "go build -v -o terraform-provider-cloudscale_v2.1.1_x4",
+    "go build -v -o terraform-provider-cloudscale_v2.1.1_x4"
    ]
   },
   "extra":{
@@ -142,62 +139,45 @@
   },
   "package":{
    "name":"terraform-provider-cloudscale",
-   "version":"2.0.0"
+   "version":"2.1.1"
   },
   "requirements":{
    "build":[
-    "go_compiler_stub >=1.11.3",
-    "go_compiler_stub >=1.11.3",
-    "go_compiler_stub >=1.11.3"
+    "go_compiler_stub 1.13",
+    "go_compiler_stub 1.13",
+    "go_compiler_stub 1.13"
    ],
    "run":[
-    "terraform >=0.11.11",
-    "terraform >=0.10",
-    "terraform >=0.10"
+    "terraform 0.12",
+    "terraform 0.12",
+    "terraform 0.12"
    ]
   },
-  "source":[
-   {
-    "folder":"src/github.com/terraform-providers/terraform-provider-cloudscale",
-    "sha256":"25ade18861b0232a4b02d3369ee6a1065fcca33059c68bf418ac165822e2452e",
-    "url":"https://github.com/terraform-providers/terraform-provider-cloudscale/archive/v2.0.0.tar.gz"
-   },
-   {
-    "folder":"src/github.com/terraform-providers/terraform-provider-cloudscale",
-    "sha256":"25ade18861b0232a4b02d3369ee6a1065fcca33059c68bf418ac165822e2452e",
-    "url":"https://github.com/terraform-providers/terraform-provider-cloudscale/archive/v2.0.0.tar.gz"
-   },
-   {
-    "folder":"src/github.com/terraform-providers/terraform-provider-cloudscale",
-    "sha256":"25ade18861b0232a4b02d3369ee6a1065fcca33059c68bf418ac165822e2452e",
-    "url":"https://github.com/terraform-providers/terraform-provider-cloudscale/archive/v2.0.0.tar.gz"
-   }
-  ],
+  "source":{
+   "sha256":"f7f617049e5162b87a42df9564b54c0caebec6a41b5b25d637c0aa9c0a759a51",
+   "url":"https://github.com/terraform-providers/terraform-provider-cloudscale/archive/v2.1.1.tar.gz"
+  },
   "test":{
    "commands":[
-    "bash -euf -c \"echo 'provider \\\"cloudscale\\\" { version=\\\"2.0.0\\\" }' > init.tf\"",
+    "echo provider \"cloudscale\" { version=\"2.1.1\" } > init.tf",
+    "terraform init",
+    "if not exist .terraform\\plugins\\_\\lock.json exit 1",
+    "if exist .terraform\\plugins\\_\\terraform-provider-cloudscale_v2.1.1_x4 exit 1",
+    "echo 'provider \"cloudscale\" { version=\"2.1.1\" }' > init.tf",
     "terraform init",
     "test -f .terraform/plugins/_/lock.json",
-    "test ! -f .terraform/plugins/_/terraform-provider-cloudscale_v2.0.0_x4",
-    "bash -euf -c \"echo 'provider \\\"cloudscale\\\" { version=\\\"2.0.0\\\" }' > init.tf\"",
+    "test ! -f .terraform/plugins/_/terraform-provider-cloudscale_v2.1.1_x4",
+    "echo 'provider \"cloudscale\" { version=\"2.1.1\" }' > init.tf",
     "terraform init",
     "test -f .terraform/plugins/_/lock.json",
-    "test ! -f .terraform/plugins/_/terraform-provider-cloudscale_v2.0.0_x4",
-    "bash -euf -c \"echo 'provider \\\"cloudscale\\\" { version=\\\"2.0.0\\\" }' > init.tf\"",
-    "terraform init",
-    "test -f .terraform/plugins/_/lock.json",
-    "test ! -f .terraform/plugins/_/terraform-provider-cloudscale_v2.0.0_x4"
-   ],
-   "requires":[
-    "m2-bash",
-    "m2-coreutils"
+    "test ! -f .terraform/plugins/_/terraform-provider-cloudscale_v2.1.1_x4"
    ]
   }
  },
  "name":"terraform-provider-cloudscale",
  "new_version":"2.1.1",
  "pinning_version":"2019.12.02",
- "raw_meta_yaml":"{% set provider = \"CloudScale\" %}\n{% set goname = \"github.com/terraform-providers/terraform-provider-\"+provider.lower() %}\n{% set version = \"2.0.0\" %}\n\n{% set name = goname.split('/')[-1] %}\n{% set pkg_src = ('src/'+goname).replace(\"/\",os.sep) %}\n\n{% set x4_plugin = name + '_v' + version + \"_x4\" + (\".exe\" if win else \"\")%}\n\n{% set sha256 = \"25ade18861b0232a4b02d3369ee6a1065fcca33059c68bf418ac165822e2452e\" %}\n{% set sha256_win64 = \"b4824d5759fb0705c1fc12536a86ce616310a1c67d249b91ed2867f933e189f1\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  - folder:  {{ pkg_src }}\n    url: https://{{ goname }}/archive/v{{ version }}.tar.gz\n    sha256: {{ sha256 }}\n\n\nbuild:\n  number: 0\n  script:\n    - pushd {{ pkg_src }}\n    - go build -v -o $GOBIN/{{ x4_plugin }} .  # [unix]\n    - go build -v -o %GOBIN%\\{{ x4_plugin }} .  # [win]\n\nrequirements:\n  build:\n    - {{ compiler('go') }} >=1.11.3\n  run:\n    - terraform >=0.10  # [unix]\n    - terraform >=0.11.11  # [win]\n\ntest:\n  requires:         # [win]\n    - m2-bash       # [win]\n    - m2-coreutils  # [win]\n\n  commands:\n    - bash -euf -c \"echo 'provider \\\"{{ provider|lower }}\\\" { version=\\\"{{ version }}\\\" }' > init.tf\"\n \n    - terraform init\n    # Tests that no plugins were downloaded\n    - test -f .terraform/plugins/{{ goos }}_{{ goarch }}/lock.json\n    - test ! -f .terraform/plugins/{{ goos }}_{{ goarch }}/{{ x4_plugin }}\n\nabout:\n  home: https://www.terraform.io\n  license: MPL-2.0\n  summary: The Terraform {{ provider }} provider\n  doc_url: https://www.terraform.io/docs/providers/{{ provider|lower }}/index.html\n  dev_url: https://github.com/terraform-providers/{{ name }}\n\nextra:\n  recipe-maintainers:\n    - conda-forge/terraform\n",
+ "raw_meta_yaml":"{% set provider = \"CloudScale\" %}\n{% set goname = \"github.com/terraform-providers/terraform-provider-\"+provider.lower() %}\n{% set version = \"2.1.1\" %}\n\n{% set name = goname.split('/')[-1] %}\n\n{% set x4_plugin = name + '_v' + version + \"_x4\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  url: https://{{ goname }}/archive/v{{ version }}.tar.gz\n  sha256: f7f617049e5162b87a42df9564b54c0caebec6a41b5b25d637c0aa9c0a759a51\n\n\nbuild:\n  number: 0\n  script:\n    - go build -v -o {{ target_gobin }}{{ x4_plugin }}{{ target_goexe }}\n\nrequirements:\n  build:\n    - {{ compiler('go') }} 1.13\n  run:\n    - terraform 0.12\n\ntest:\n  commands:\n    # Create a sample init.tf loading the provider\n    - echo 'provider \"{{ provider|lower }}\" { version=\"{{ version }}\" }' > init.tf  # [unix]\n    - echo provider \"{{ provider|lower }}\" { version=\"{{ version }}\" } > init.tf    # [win]\n\n    # Initialize\n    - terraform init\n\n    # Tests that init was successful\n    - test -f .terraform/plugins/{{ target_goos }}_{{ target_goarch }}/lock.json              # [unix]\n    - if not exist .terraform\\plugins\\{{ target_goos }}_{{ target_goarch }}\\lock.json exit 1  # [win]\n\n    # Test that the provider was not downloaded\n    - test ! -f .terraform/plugins/{{ target_goos }}_{{ target_goarch }}/{{ x4_plugin }}{{ target_goexe }}        # [unix]\n    - if exist .terraform\\plugins\\{{ target_goos }}_{{ target_goarch }}\\{{ x4_plugin }}{{ target_goexe }} exit 1  # [win]\n\nabout:\n  home: https://www.terraform.io\n  license: MPL-2.0\n  summary: The Terraform {{ provider }} provider\n  doc_url: https://www.terraform.io/docs/providers/{{ provider|lower }}/index.html\n  dev_url: https://github.com/terraform-providers/{{ name }}\n\nextra:\n  recipe-maintainers:\n    - conda-forge/terraform\n",
  "req":{
   "__set__":true,
   "elements":[
@@ -224,10 +204,7 @@
   },
   "test":{
    "__set__":true,
-   "elements":[
-    "m2-bash",
-    "m2-coreutils"
-   ]
+   "elements":[]
   }
  },
  "smithy_version":"3.6.3",
@@ -236,7 +213,7 @@
   "build":{
    "__set__":true,
    "elements":[
-    "go_compiler_stub >=1.11.3"
+    "go_compiler_stub 1.13"
    ]
   },
   "host":{
@@ -246,18 +223,14 @@
   "run":{
    "__set__":true,
    "elements":[
-    "terraform >=0.10",
-    "terraform >=0.11.11"
+    "terraform 0.12"
    ]
   },
   "test":{
    "__set__":true,
-   "elements":[
-    "m2-bash",
-    "m2-coreutils"
-   ]
+   "elements":[]
   }
  },
  "url":"https://github.com/terraform-providers/terraform-provider-cloudscale/archive/v2.0.0.tar.gz",
- "version":"2.0.0"
+ "version":"2.1.1"
 }

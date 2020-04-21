@@ -123,17 +123,15 @@
    "doc_url":"https://www.terraform.io/docs/providers/local/index.html",
    "home":"https://www.terraform.io",
    "license":"MPL-2.0",
+   "license_file":"LICENSE",
    "summary":"The Terraform Local provider"
   },
   "build":{
    "number":"0",
    "script":[
-    "pushd src/github.com/terraform-providers/terraform-provider-local",
-    "go build -v -o %GOBIN%\\terraform-provider-local_v1.4.0_x4 .",
-    "pushd src/github.com/terraform-providers/terraform-provider-local",
-    "go build -v -o $GOBIN/terraform-provider-local_v1.4.0_x4 .",
-    "pushd src/github.com/terraform-providers/terraform-provider-local",
-    "go build -v -o $GOBIN/terraform-provider-local_v1.4.0_x4 ."
+    "go build -v -o terraform-provider-local_v1.4.0_x4",
+    "go build -v -o terraform-provider-local_v1.4.0_x4",
+    "go build -v -o terraform-provider-local_v1.4.0_x4"
    ]
   },
   "extra":{
@@ -149,58 +147,41 @@
   },
   "requirements":{
    "build":[
-    "go_compiler_stub >=1.11.3",
-    "go_compiler_stub >=1.11.3",
-    "go_compiler_stub >=1.11.3"
+    "go_compiler_stub 1.13",
+    "go_compiler_stub 1.13",
+    "go_compiler_stub 1.13"
    ],
    "run":[
-    "terraform >=0.11.11",
-    "terraform >=0.10",
-    "terraform >=0.10"
+    "terraform 0.12",
+    "terraform 0.12",
+    "terraform 0.12"
    ]
   },
-  "source":[
-   {
-    "folder":"src/github.com/terraform-providers/terraform-provider-local",
-    "sha256":"6db4332efffcf022a0900cff19b8d8efde61e7284e63f9d7dfd9f1320bc61c0e",
-    "url":"https://github.com/terraform-providers/terraform-provider-local/archive/v1.4.0.tar.gz"
-   },
-   {
-    "folder":"src/github.com/terraform-providers/terraform-provider-local",
-    "sha256":"6db4332efffcf022a0900cff19b8d8efde61e7284e63f9d7dfd9f1320bc61c0e",
-    "url":"https://github.com/terraform-providers/terraform-provider-local/archive/v1.4.0.tar.gz"
-   },
-   {
-    "folder":"src/github.com/terraform-providers/terraform-provider-local",
-    "sha256":"6db4332efffcf022a0900cff19b8d8efde61e7284e63f9d7dfd9f1320bc61c0e",
-    "url":"https://github.com/terraform-providers/terraform-provider-local/archive/v1.4.0.tar.gz"
-   }
-  ],
+  "source":{
+   "sha256":"6db4332efffcf022a0900cff19b8d8efde61e7284e63f9d7dfd9f1320bc61c0e",
+   "url":"https://github.com/terraform-providers/terraform-provider-local/archive/v1.4.0.tar.gz"
+  },
   "test":{
    "commands":[
-    "bash -euf -c \"echo 'provider \\\"local\\\" { version=\\\"1.4.0\\\" }' > init.tf\"",
+    "echo provider \"local\" { version=\"1.4.0\" } > init.tf",
+    "terraform init",
+    "if not exist .terraform\\plugins\\_\\lock.json exit 1",
+    "if exist .terraform\\plugins\\_\\terraform-provider-local_v1.4.0_x4 exit 1",
+    "echo 'provider \"local\" { version=\"1.4.0\" }' > init.tf",
     "terraform init",
     "test -f .terraform/plugins/_/lock.json",
     "test ! -f .terraform/plugins/_/terraform-provider-local_v1.4.0_x4",
-    "bash -euf -c \"echo 'provider \\\"local\\\" { version=\\\"1.4.0\\\" }' > init.tf\"",
-    "terraform init",
-    "test -f .terraform/plugins/_/lock.json",
-    "test ! -f .terraform/plugins/_/terraform-provider-local_v1.4.0_x4",
-    "bash -euf -c \"echo 'provider \\\"local\\\" { version=\\\"1.4.0\\\" }' > init.tf\"",
+    "echo 'provider \"local\" { version=\"1.4.0\" }' > init.tf",
     "terraform init",
     "test -f .terraform/plugins/_/lock.json",
     "test ! -f .terraform/plugins/_/terraform-provider-local_v1.4.0_x4"
-   ],
-   "requires":[
-    "m2-bash",
-    "m2-coreutils"
    ]
   }
  },
  "name":"terraform-provider-local",
  "new_version":"1.4.0",
  "pinning_version":"2019.09.27",
- "raw_meta_yaml":"{% set provider = \"Local\" %}\n{% set goname = \"github.com/terraform-providers/terraform-provider-\"+provider.lower() %}\n{% set version = \"1.4.0\" %}\n\n{% set name = goname.split('/')[-1] %}\n{% set pkg_src = ('src/'+goname).replace(\"/\",os.sep) %}\n\n{% set x4_plugin = name + '_v' + version + \"_x4\" + (\".exe\" if win else \"\")%}\n\n{% set sha256 = \"6db4332efffcf022a0900cff19b8d8efde61e7284e63f9d7dfd9f1320bc61c0e\" %}\n{% set sha256_win64 = \"8379fe33db3ef9746238a29ceae2c4e62198be0f51ab646c56296993eb019645\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  - folder:  {{ pkg_src }}\n    url: https://{{ goname }}/archive/v{{ version }}.tar.gz\n    sha256: {{ sha256 }}\n\n\nbuild:\n  number: 0\n  script:\n    - pushd {{ pkg_src }}\n    - go build -v -o $GOBIN/{{ x4_plugin }} .  # [unix]\n    - go build -v -o %GOBIN%\\{{ x4_plugin }} .  # [win]\n\nrequirements:\n  build:\n    - {{ compiler('go') }} >=1.11.3\n  run:\n    - terraform >=0.10  # [unix]\n    - terraform >=0.11.11  # [win]\n\ntest:\n  requires:         # [win]\n    - m2-bash       # [win]\n    - m2-coreutils  # [win]\n\n  commands:\n    - bash -euf -c \"echo 'provider \\\"{{ provider|lower }}\\\" { version=\\\"{{ version }}\\\" }' > init.tf\"\n \n    - terraform init\n    # Tests that no plugins were downloaded\n    - test -f .terraform/plugins/{{ goos }}_{{ goarch }}/lock.json\n    - test ! -f .terraform/plugins/{{ goos }}_{{ goarch }}/{{ x4_plugin }}\n\nabout:\n  home: https://www.terraform.io\n  license: MPL-2.0\n  summary: The Terraform {{ provider }} provider\n  doc_url: https://www.terraform.io/docs/providers/{{ provider|lower }}/index.html\n  dev_url: https://github.com/terraform-providers/{{ name }}\n\nextra:\n  recipe-maintainers:\n    - conda-forge/terraform\n",
+ "raw_meta_yaml":"{% set provider = \"Local\" %}\n{% set goname = \"github.com/terraform-providers/terraform-provider-\"+provider.lower() %}\n{% set version = \"1.4.0\" %}\n\n{% set name = goname.split('/')[-1] %}\n\n{% set x4_plugin = name + '_v' + version + \"_x4\" %}\n\n{% set sha256 = \"6db4332efffcf022a0900cff19b8d8efde61e7284e63f9d7dfd9f1320bc61c0e\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  url: https://{{ goname }}/archive/v{{ version }}.tar.gz\n  sha256: {{ sha256 }}\n\n\nbuild:\n  number: 0\n  script:\n    - go build -v -o {{ target_gobin }}{{ x4_plugin }}{{ target_goexe }}\n\nrequirements:\n  build:\n    - {{ compiler('go') }} 1.13\n  run:\n    - terraform 0.12\n\ntest:\n  commands:\n    # Create a sample init.tf loading the provider\n    - echo 'provider \"{{ provider|lower }}\" { version=\"{{ version }}\" }' > init.tf  # [unix]\n    - echo provider \"{{ provider|lower }}\" { version=\"{{ version }}\" } > init.tf    # [win]\n\n    # Initialize\n    - terraform init\n\n    # Tests that init was successful\n    - test -f .terraform/plugins/{{ target_goos }}_{{ target_goarch }}/lock.json              # [unix]\n    - if not exist .terraform\\plugins\\{{ target_goos }}_{{ target_goarch }}\\lock.json exit 1  # [win]\n\n    # Test that the provider was not downloaded\n    - test ! -f .terraform/plugins/{{ target_goos }}_{{ target_goarch }}/{{ x4_plugin }}{{ target_goexe }}        # [unix]\n    - if exist .terraform\\plugins\\{{ target_goos }}_{{ target_goarch }}\\{{ x4_plugin }}{{ target_goexe }} exit 1  # [win]\n\nabout:\n  home: https://www.terraform.io\n  license: MPL-2.0\n  license_file: LICENSE\n  summary: The Terraform {{ provider }} provider\n  doc_url: https://www.terraform.io/docs/providers/{{ provider|lower }}/index.html\n  dev_url: https://github.com/terraform-providers/{{ name }}\n\nextra:\n  recipe-maintainers:\n    - conda-forge/terraform\n",
  "req":{
   "__set__":true,
   "elements":[
@@ -227,10 +208,7 @@
   },
   "test":{
    "__set__":true,
-   "elements":[
-    "m2-bash",
-    "m2-coreutils"
-   ]
+   "elements":[]
   }
  },
  "smithy_version":"3.4.8",
@@ -239,7 +217,7 @@
   "build":{
    "__set__":true,
    "elements":[
-    "go_compiler_stub >=1.11.3"
+    "go_compiler_stub 1.13"
    ]
   },
   "host":{
@@ -249,16 +227,12 @@
   "run":{
    "__set__":true,
    "elements":[
-    "terraform >=0.10",
-    "terraform >=0.11.11"
+    "terraform 0.12"
    ]
   },
   "test":{
    "__set__":true,
-   "elements":[
-    "m2-bash",
-    "m2-coreutils"
-   ]
+   "elements":[]
   }
  },
  "url":"https://github.com/terraform-providers/terraform-provider-local/archive/v1.3.0.tar.gz",
