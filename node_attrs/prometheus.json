@@ -118,6 +118,23 @@
     "migrator_version",
     "version"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/406711734.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"Version",
+    "migrator_version":0,
+    "version":"2.17.2"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "version"
+   ]
   }
  ],
  "bad":false,
@@ -200,7 +217,11 @@
  },
  "name":"prometheus",
  "new_version":"2.17.2",
- "pinning_version":"2020.03.24",
+ "new_version_attempts":{
+  "2.17.2":1
+ },
+ "new_version_errors":{},
+ "pinning_version":"2020.04.21.12.59.15",
  "raw_meta_yaml":"{% set provider = \"prometheus\" %}\n{% set goname = \"github.com/prometheus/\"+provider.lower() %}\n{% set version = \"2.17.1\" %}\n\n{% set name = goname.split('/')[-1] %}\n{% set pkg_src = ('src/'+goname).replace(\"/\",os.sep) %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  - folder: {{ pkg_src }}\n    url: https://{{ goname }}/archive/v{{ version }}.tar.gz\n    sha256: d0b53411ea0295c608634ca7ef1d43fa0f5559e7ad50705bf4d64d052e33ddaf\n\nbuild:\n  skip: true  # [win]\n  number: 0\n  script:\n    - pushd {{ pkg_src }}/cmd/{{ name }}\n    - go build -v -o $GOBIN/{{ name }} .       # [unix]\n    - go build -v -o %GOBIN%\\{{ name }}.exe .  # [win]\n\nrequirements:\n  build:\n    - {{ compiler('go') }}\n\ntest:\n  requires:\n    - m2-bash       # [win]\n    - m2-coreutils  # [win]\n\n  commands:\n    - prometheus --version\n\nabout:\n  home: https://prometheus.io/\n  license: Apache-2.0\n  license_file: {{ pkg_src }}/LICENSE\n  summary: Prometheus, a Cloud Native Computing Foundation project, is a systems and service monitoring system.\n  doc_url: https://prometheus.io/docs/introduction/overview/\n  dev_url: https://github.com/prometheus/{{ name }}\n\nextra:\n  recipe-maintainers:\n    - rluria14\n    - adbeda\n    - mwilson8\n    - oblute\n",
  "req":{
   "__set__":true,
@@ -228,7 +249,7 @@
    "elements":[]
   }
  },
- "smithy_version":"No azure token. Create a token and\nput it in ~/.conda-smithy/azure.token\n3.6.15",
+ "smithy_version":"No azure token. Create a token and\nput it in ~/.conda-smithy/azure.token\n3.6.16",
  "strong_exports":false,
  "total_requirements":{
   "build":{
