@@ -279,80 +279,28 @@
     "migrator_version",
     "name"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/406808572.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"MigrationYaml",
+    "migrator_object_version":1,
+    "migrator_version":0,
+    "name":"root_base6204"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_object_version",
+    "migrator_version",
+    "name"
+   ]
   }
  ],
- "bad":{
-  "exception":"<class 'requests.exceptions.ReadTimeout'>: A connection-level exception occurred: HTTPSConnectionPool(host='api.github.com', port=443): Read timed out. (read timeout=10)",
-  "traceback":[
-   "Traceback (most recent call last):",
-   "  File \"/opt/conda/envs/run_env/lib/python3.7/site-packages/urllib3/connectionpool.py\", line 426, in _make_request",
-   "    six.raise_from(e, None)",
-   "  File \"<string>\", line 3, in raise_from",
-   "  File \"/opt/conda/envs/run_env/lib/python3.7/site-packages/urllib3/connectionpool.py\", line 421, in _make_request",
-   "    httplib_response = conn.getresponse()",
-   "  File \"/opt/conda/envs/run_env/lib/python3.7/http/client.py\", line 1344, in getresponse",
-   "    response.begin()",
-   "  File \"/opt/conda/envs/run_env/lib/python3.7/http/client.py\", line 306, in begin",
-   "    version, status, reason = self._read_status()",
-   "  File \"/opt/conda/envs/run_env/lib/python3.7/http/client.py\", line 267, in _read_status",
-   "    line = str(self.fp.readline(_MAXLINE + 1), \"iso-8859-1\")",
-   "  File \"/opt/conda/envs/run_env/lib/python3.7/socket.py\", line 589, in readinto",
-   "    return self._sock.recv_into(b)",
-   "  File \"/opt/conda/envs/run_env/lib/python3.7/site-packages/urllib3/contrib/pyopenssl.py\", line 326, in recv_into",
-   "    raise timeout(\"The read operation timed out\")",
-   "socket.timeout: The read operation timed out",
-   "",
-   "During handling of the above exception, another exception occurred:",
-   "",
-   "Traceback (most recent call last):",
-   "  File \"/opt/conda/envs/run_env/lib/python3.7/site-packages/requests/adapters.py\", line 449, in send",
-   "    timeout=timeout",
-   "  File \"/opt/conda/envs/run_env/lib/python3.7/site-packages/urllib3/connectionpool.py\", line 725, in urlopen",
-   "    method, url, error=e, _pool=self, _stacktrace=sys.exc_info()[2]",
-   "  File \"/opt/conda/envs/run_env/lib/python3.7/site-packages/urllib3/util/retry.py\", line 403, in increment",
-   "    raise six.reraise(type(error), error, _stacktrace)",
-   "  File \"/opt/conda/envs/run_env/lib/python3.7/site-packages/urllib3/packages/six.py\", line 735, in reraise",
-   "    raise value",
-   "  File \"/opt/conda/envs/run_env/lib/python3.7/site-packages/urllib3/connectionpool.py\", line 677, in urlopen",
-   "    chunked=chunked,",
-   "  File \"/opt/conda/envs/run_env/lib/python3.7/site-packages/urllib3/connectionpool.py\", line 428, in _make_request",
-   "    self._raise_timeout(err=e, url=url, timeout_value=read_timeout)",
-   "  File \"/opt/conda/envs/run_env/lib/python3.7/site-packages/urllib3/connectionpool.py\", line 336, in _raise_timeout",
-   "    self, url, \"Read timed out. (read timeout=%s)\" % timeout_value",
-   "urllib3.exceptions.ReadTimeoutError: HTTPSConnectionPool(host='api.github.com', port=443): Read timed out. (read timeout=10)",
-   "",
-   "During handling of the above exception, another exception occurred:",
-   "",
-   "Traceback (most recent call last):",
-   "  File \"/opt/conda/envs/run_env/lib/python3.7/site-packages/github3/models.py\", line 196, in _request",
-   "    return request_method(*args, **kwargs)",
-   "  File \"/opt/conda/envs/run_env/lib/python3.7/site-packages/requests/sessions.py\", line 543, in get",
-   "    return self.request('GET', url, **kwargs)",
-   "  File \"/opt/conda/envs/run_env/lib/python3.7/site-packages/github3/session.py\", line 169, in request",
-   "    response = super(GitHubSession, self).request(*args, **kwargs)",
-   "  File \"/opt/conda/envs/run_env/lib/python3.7/site-packages/requests/sessions.py\", line 530, in request",
-   "    resp = self.send(prep, **send_kwargs)",
-   "  File \"/opt/conda/envs/run_env/lib/python3.7/site-packages/requests/sessions.py\", line 643, in send",
-   "    r = adapter.send(request, **kwargs)",
-   "  File \"/opt/conda/envs/run_env/lib/python3.7/site-packages/requests/adapters.py\", line 529, in send",
-   "    raise ReadTimeout(e, request=request)",
-   "requests.exceptions.ReadTimeout: HTTPSConnectionPool(host='api.github.com', port=443): Read timed out. (read timeout=10)",
-   "",
-   "During handling of the above exception, another exception occurred:",
-   "",
-   "Traceback (most recent call last):",
-   "  File \"/root/repo/cf-scripts/conda_forge_tick/auto_tick.py\", line 777, in main",
-   "    or mctx.gh.rate_limit()[\"resources\"][\"core\"][\"remaining\"] == 0",
-   "  File \"/opt/conda/envs/run_env/lib/python3.7/site-packages/github3/github.py\", line 1867, in rate_limit",
-   "    return self._json(self._get(url), 200)",
-   "  File \"/opt/conda/envs/run_env/lib/python3.7/site-packages/github3/models.py\", line 211, in _get",
-   "    return self._request(\"get\", url, **kwargs)",
-   "  File \"/opt/conda/envs/run_env/lib/python3.7/site-packages/github3/models.py\", line 201, in _request",
-   "    raise exceptions.ConnectionError(exc)",
-   "github3.exceptions.ConnectionError: <class 'requests.exceptions.ReadTimeout'>: A connection-level exception occurred: HTTPSConnectionPool(host='api.github.com', port=443): Read timed out. (read timeout=10)",
-   ""
-  ]
- },
+ "bad":false,
  "conda-forge.yml":{},
  "feedstock_name":"ostaphep",
  "hash_type":"sha256",
@@ -467,7 +415,7 @@
  },
  "name":"ostaphep",
  "new_version":"1.4.8.1",
- "pinning_version":"2020.03.24",
+ "pinning_version":"2020.04.21.12.59.15",
  "raw_meta_yaml":"{% set name = \"OstapHEP\" %}\n{% set version = \"1.4.8.1\" %}\n{% set hash = \"b0241c9efe2a1c03356fe5226b85691734200d59d9ee35423b3b430207a1a50d\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  url: https://github.com/OstapHEP/ostap/archive/v{{ version }}.tar.gz\n  sha256: {{ hash }}\n  folder: ostap\n\nbuild:\n  number: 1\n  skip: true  # [not linux]\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n    - cmake\n    - make\n  host:\n    - root_base\n    - root-binaries\n    - root-dependencies\n    - python\n    - gsl\n  run:\n    - python\n    - future\n    - ipython\n    - configparser  # [py2k]\n    - scipy\n    - numpy\n    - pathos\n    - dill\n    - multiprocess\n    - ppft\n    - terminaltables\ntest:\n  imports:\n    - ostap\n    - ostap.core.core\n\nabout:\n  home: https://github.com/OstapHEP/ostap\n  license: BSD-3-Clause\n  license_family: BSD\n  license_file: ostap/LICENSE\n  dev_url: https://github.com/OstapHEP/ostap\n  summary: |\n    The Ostap project is a community-driven\n    initiative aiming to provide more user friendly and more intuitive interface\n    to ROOT and PyROOT and extending the existing functionality.\n  description: |\n    Nowadays ROOT and PyROOT are de-facto standard tools for performing physics analysis.\n    The Ostap project is a community-driven initiative aiming to provide more user friendly\n    and more intuitive interface to ROOT and PyROOT and extending the existing functionality.\n    Project started in 2009 from the private collections of python functions\n    used in Kali - framework for calibration of LHCb electromagnetic calorimeter.\n    A lot of functionality is picked from Bender project - python based physics analysis environment used in LHCb experiemnt.\n    Till Autumn 2016 the project was a part of LHCb software suit and with great success has been used\n    for preparation of approximately 30 physics papers. A standalone, LHCb independent version, has appeared at start of 2017\n    Key features include:\n     * Very easy manipulations with ROOT and RooFit objects: histograms, trees, datasets, etc\n     * Very easy interface to RooFit machinery\n     * Extended set of models.PDFs for RooFit\n     * Powerful, pickle-based persistency for object\n     * Interactive ostap analysis environment\n\nextra:\n  recipe-maintainers:\n    - TatianaOvsiannikova\n    - VanyaBelyaev\n",
  "req":{
   "__set__":true,
@@ -532,7 +480,7 @@
    "elements":[]
   }
  },
- "smithy_version":"No azure token. Create a token and\nput it in ~/.conda-smithy/azure.token\n3.6.15",
+ "smithy_version":"No azure token. Create a token and\nput it in ~/.conda-smithy/azure.token\n3.6.16",
  "strong_exports":false,
  "total_requirements":{
   "build":{
