@@ -190,7 +190,7 @@
    "summary":"Library for solving packages and reading repositories"
   },
   "build":{
-   "number":"4",
+   "number":"0",
    "run_exports":[
     "libsolv",
     "libsolv",
@@ -216,7 +216,7 @@
   },
   "package":{
    "name":"libsolv",
-   "version":"0.7.11"
+   "version":"0.7.12"
   },
   "requirements":{
    "build":[
@@ -237,15 +237,9 @@
    ]
   },
   "source":{
-   "fn":"libsolv-0.7.11.tar.gz",
-   "patches":[
-    "0001-de-prioritize-track_features-conda.patch",
-    "0002-win32-shared.patch",
-    "0001-de-prioritize-track_features-conda.patch",
-    "0001-de-prioritize-track_features-conda.patch"
-   ],
-   "sha256":"dad9da25314dce7616d77c85e303684b9fa2970283e250f89e642e47836cd306",
-   "url":"https://github.com/openSUSE/libsolv/archive/0.7.11.tar.gz"
+   "fn":"libsolv-0.7.12.tar.gz",
+   "sha256":"db7a8c8c62931a6d358a48f8e47bf6382d3a48a0f225565a6c6846e167210366",
+   "url":"https://github.com/openSUSE/libsolv/archive/0.7.12.tar.gz"
   },
   "test":{
    "commands":[
@@ -273,7 +267,7 @@
  },
  "new_version_errors":{},
  "pinning_version":"2020.04.21.12.59.15",
- "raw_meta_yaml":"{% set name = \"libsolv\" %}\n{% set version = \"0.7.11\" %}\n{% set sha256 = \"dad9da25314dce7616d77c85e303684b9fa2970283e250f89e642e47836cd306\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  fn: {{ name }}-{{ version }}.tar.gz\n  url: https://github.com/openSUSE/libsolv/archive/{{ version }}.tar.gz\n  sha256: {{ sha256 }}\n  patches:\n    - 0001-de-prioritize-track_features-conda.patch\n    - 0002-win32-shared.patch  # [win]\n\nbuild:\n  number: 4\n  skip: True  # [win and vc<14]\n  run_exports:\n    - {{ pin_subpackage(name, max_pin='x.x') }}\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n    - cmake\n  host:\n    - zlib\n\ntest:\n  commands:\n    - test -f $PREFIX/lib/libsolv${SHLIB_EXT}  # [unix]\n    - test -f $PREFIX/lib/libsolvext${SHLIB_EXT}  # [unix]\n    - test -f $PREFIX/lib/libsolv.so.1  # [linux]\n    - test -f $PREFIX/include/solv/repo.h  # [unix]\n    - if exist %LIBRARY_INC%\\\\solv\\\\repo.h (exit 0) else (exit 1)  # [win]\n    - if exist %LIBRARY_INC%\\\\lib\\\\solv.lib (exit 0) else (exit 1)  # [win]\n    - if exist %LIBRARY_INC%\\\\lib\\\\solvext.lib (exit 0) else (exit 1)  # [win]\n    - if exist %LIBRARY_INC%\\\\bin\\\\solv.dll (exit 0) else (exit 1)  # [win]\n    - dumpsolv.exe -h  # [win]\n    - dumpsolv -h  # [unix]\n\nabout:\n  home: https://github.com/openSUSE/libsolv\n  license: BSD-3-Clause\n  license_family: BSD\n  license_file: LICENSE.BSD\n  summary: 'Library for solving packages and reading repositories'\n  description: 'libsolv, a free package dependency solver using a satisfiability algorithm.'\n  dev_url: https://github.com/openSUSE/libsolv\n\nextra:\n  recipe-maintainers:\n    - SylvainCorlay\n    - JohanMabille\n    - wolfv\n    - davidbrochart\n",
+ "raw_meta_yaml":"{% set name = \"libsolv\" %}\n{% set version = \"0.7.12\" %}\n{% set sha256 = \"db7a8c8c62931a6d358a48f8e47bf6382d3a48a0f225565a6c6846e167210366\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  fn: {{ name }}-{{ version }}.tar.gz\n  url: https://github.com/openSUSE/libsolv/archive/{{ version }}.tar.gz\n  sha256: {{ sha256 }}\n\nbuild:\n  number: 0\n  skip: true  # [win and vc<14]\n  run_exports:\n    - {{ pin_subpackage(name, max_pin='x.x') }}\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n    - cmake\n  host:\n    - zlib\n\ntest:\n  commands:\n    - test -f $PREFIX/lib/libsolv${SHLIB_EXT}  # [unix]\n    - test -f $PREFIX/lib/libsolvext${SHLIB_EXT}  # [unix]\n    - test -f $PREFIX/lib/libsolv.so.1  # [linux]\n    - test -f $PREFIX/include/solv/repo.h  # [unix]\n    - if exist %LIBRARY_INC%\\\\solv\\\\repo.h (exit 0) else (exit 1)  # [win]\n    - if exist %LIBRARY_INC%\\\\lib\\\\solv.lib (exit 0) else (exit 1)  # [win]\n    - if exist %LIBRARY_INC%\\\\lib\\\\solvext.lib (exit 0) else (exit 1)  # [win]\n    - if exist %LIBRARY_INC%\\\\bin\\\\solv.dll (exit 0) else (exit 1)  # [win]\n    - dumpsolv.exe -h  # [win]\n    - dumpsolv -h  # [unix]\n\nabout:\n  home: https://github.com/openSUSE/libsolv\n  license: BSD-3-Clause\n  license_family: BSD\n  license_file: LICENSE.BSD\n  summary: Library for solving packages and reading repositories\n  description: libsolv, a free package dependency solver using a satisfiability algorithm.\n  dev_url: https://github.com/openSUSE/libsolv\n\nextra:\n  recipe-maintainers:\n    - SylvainCorlay\n    - JohanMabille\n    - wolfv\n    - davidbrochart\n",
  "req":{
   "__set__":true,
   "elements":[
@@ -334,5 +328,5 @@
   }
  },
  "url":"https://github.com/openSUSE/libsolv/archive/0.7.5.tar.gz",
- "version":"0.7.11"
+ "version":"0.7.12"
 }
