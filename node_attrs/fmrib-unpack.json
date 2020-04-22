@@ -339,6 +339,23 @@
     "migrator_version",
     "version"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/407344296.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"Version",
+    "migrator_version":0,
+    "version":"2.1.0"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "version"
+   ]
   }
  ],
  "bad":false,
@@ -459,12 +476,13 @@
   }
  },
  "name":"fmrib-unpack",
- "new_version":"2.0.0",
+ "new_version":"2.1.0",
  "new_version_attempts":{
-  "2.0.0":1
+  "2.0.0":1,
+  "2.1.0":1
  },
  "new_version_errors":{},
- "pinning_version":"2020.04.07",
+ "pinning_version":"2020.04.22.03.51.02",
  "raw_meta_yaml":"{% set name = \"fmrib-unpack\" %}\n{% set version = \"2.0.0\" %}\n{% set sha256 = \"27d3f6f80546b0a12bb09db4f15c5e924f2397c0393913a7548ea9e96d6f2dac\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz\n  sha256: {{ sha256 }}\n\nbuild:\n  noarch: python\n  number: 0\n  script: {{ PYTHON }} -m pip install . --no-deps -vv\n  entry_points:\n    - funpack      = funpack.main:main\n    - funpack_demo = funpack.scripts.demo:main\n\nrequirements:\n  host:\n    - python >=3.5\n    - pip\n  run:\n    - python >=3.5\n    - h5py\n    - numpy\n    - pandas >=0.24\n    - pyparsing\n    - six\n    - pytables\n    - jupyter\n    - notebook\n    - pygments\n    - bash_kernel\n\ntest:\n  requires:\n    - pip\n    - coverage\n    - pytest\n    - pytest-cov\n    - jinja2\n\n  commands:\n    - funpack -V\n    - funpack_demo -h\n\n# check test markers\n    - pytest -v --cov=funpack --pyargs funpack.tests -k \"not (lowMemory or HDF or test_demo)\"\n\n\nabout:\n  home: https://git.fmrib.ox.ac.uk/fsl/funpack/\n  license: Apache-2.0\n  license_family: Apache\n  license_file: LICENSE\n  summary: The FMRIB UKBioBank Normalisation, Parsing And Cleaning Kit\n  dev_url: https://git.fmrib.ox.ac.uk/fsl/funpack/\n\nextra:\n  recipe-maintainers:\n    - pauldmccarthy\n",
  "req":{
   "__set__":true,
@@ -522,7 +540,7 @@
    ]
   }
  },
- "smithy_version":"No azure token. Create a token and\nput it in ~/.conda-smithy/azure.token\n3.6.15",
+ "smithy_version":"No azure token. Create a token and\nput it in ~/.conda-smithy/azure.token\n3.6.17",
  "strong_exports":false,
  "total_requirements":{
   "build":{
