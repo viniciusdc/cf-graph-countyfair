@@ -202,6 +202,23 @@
     "migrator_version",
     "version"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/407274879.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"Version",
+    "migrator_version":0,
+    "version":"20.4.0"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "version"
+   ]
   }
  ],
  "bad":false,
@@ -306,12 +323,13 @@
   }
  },
  "name":"gevent",
- "new_version":"1.5.0",
+ "new_version":"20.4.0",
  "new_version_attempts":{
-  "1.5.0":1
+  "1.5.0":1,
+  "20.4.0":1
  },
  "new_version_errors":{},
- "pinning_version":"2020.04.10.14.33.34",
+ "pinning_version":"2020.04.22.03.51.02",
  "raw_meta_yaml":"{% set name = \"gevent\" %}\n{% set version = \"1.5.0\" %}\n{% set sha256 = \"b2814258e3b3fb32786bb73af271ad31f51e1ac01f33b37426b66cb8491b4c29\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  fn: {{ name }}-{{ version }}.tar.gz\n  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz\n  sha256: {{ sha256 }}\n  patches:\n    - 0001-Allow-include-flags-to-be-present-in-CFLAGS.patch\n    - 0002-Allow-library-flags-to-be-present-in-LDFLAGS.patch\n    - 0003-Do-not-use-hard-coded-path-for-file-command.patch\n\nbuild:\n  number: 0\n  script:\n    - copy %SRC_DIR%\\deps\\c-ares\\ares_build.h.dist %SRC_DIR%\\deps\\c-ares\\ares_build.h  # [win]\n    - {{ PYTHON }} -m pip install . --no-deps --ignore-installed -vvv\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - libmagic  # [unix]\n    - make      # [unix]\n\n  host:\n    # cffi 1.4.0 is the general minimum version\n    # With Python 3 version 1.11.3 is minimum\n    # On windows 1.11.5 is the minimum\n    # Rather than special casing each of these use a single minimum version\n    - cffi >=1.11.5\n    - python\n    - pip\n\n  run:\n    - cffi >=1.11.5\n    - python\n    - greenlet >=0.4.14\n\ntest:\n  imports:\n    - gevent\n    - gevent.libev\n\nabout:\n  home: http://www.gevent.org/\n  license: MIT\n  license_family: MIT\n  license_file: LICENSE\n  summary: Coroutine-based network library\n  description: |\n    Gevent uses greenlet to provide a high-level synchronous API on top of the libev event loop.\n  doc_url: http://www.gevent.org/contents.html\n  dev_url: https://github.com/gevent/gevent\n\nextra:\n  recipe-maintainers:\n    - nehaljwani\n",
  "req":{
   "__set__":true,
@@ -355,7 +373,7 @@
    "elements":[]
   }
  },
- "smithy_version":"No azure token. Create a token and\nput it in ~/.conda-smithy/azure.token\n3.6.16",
+ "smithy_version":"No azure token. Create a token and\nput it in ~/.conda-smithy/azure.token\n3.6.17",
  "strong_exports":false,
  "total_requirements":{
   "build":{

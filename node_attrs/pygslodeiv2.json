@@ -175,6 +175,23 @@
     "migrator_version",
     "name"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/407275275.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"Version",
+    "migrator_version":0,
+    "version":"0.9.4"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "version"
+   ]
   }
  ],
  "bad":false,
@@ -268,8 +285,12 @@
   }
  },
  "name":"pygslodeiv2",
- "new_version":"0.9.3",
- "pinning_version":"2020.03.23",
+ "new_version":"0.9.4",
+ "new_version_attempts":{
+  "0.9.4":1
+ },
+ "new_version_errors":{},
+ "pinning_version":"2020.04.22.03.51.02",
  "raw_meta_yaml":"{% set name = \"pygslodeiv2\" %}\n{% set version = \"0.9.3\" %}\n{% set sha256 = \"eef5bb93dbd5c0b6cb08fb90a65ebd09f475ab6e8874f164f4be1adcab820cb1\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  fn: {{ name }}-{{ version }}.tar.gz\n  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz\n  sha256: {{ sha256 }}\n\nbuild:\n  number: 1\n  skip: true  # [win]\n  skip: true  # [osx and py27]\n  features:\n  script: {{ PYTHON }} -m pip install . --no-deps -vv\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n  host:\n    - python\n    - setuptools\n    - pip\n    - numpy\n    - gsl\n  run:\n    - python\n    - {{ pin_compatible('numpy') }}\n    - gsl\n\ntest:\n  imports:\n    - {{ name }}\n  requires:\n    - pytest\n  commands:\n    - python -m pytest --pyargs {{ name }}\n\nabout:\n  home: https://github.com/bjodah/{{ name }}\n  license: GPL-3.0\n  license_file: LICENSE\n  summary: Python binding for odeiv2 interface from GNU Scientific Library (GSL)\n  doc_url: https://bjodah.github.io/{{ name }}/latest\n\nextra:\n  recipe-maintainers:\n    - bjodah\n",
  "req":{
   "__set__":true,
@@ -316,7 +337,7 @@
    ]
   }
  },
- "smithy_version":"No azure token. Create a token and\nput it in ~/.conda-smithy/azure.token\n3.6.15",
+ "smithy_version":"No azure token. Create a token and\nput it in ~/.conda-smithy/azure.token\n3.6.17",
  "strong_exports":false,
  "total_requirements":{
   "build":{
