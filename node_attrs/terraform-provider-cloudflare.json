@@ -510,9 +510,9 @@
   "build":{
    "number":"0",
    "script":[
-    "go build -v -o terraform-provider-cloudflare_v2.5.1_x4",
-    "go build -v -o terraform-provider-cloudflare_v2.5.1_x4",
-    "go build -v -o terraform-provider-cloudflare_v2.5.1_x4"
+    "go build -v -o terraform-provider-cloudflare_v2.6.0_x4",
+    "go build -v -o terraform-provider-cloudflare_v2.6.0_x4",
+    "go build -v -o terraform-provider-cloudflare_v2.6.0_x4"
    ]
   },
   "extra":{
@@ -524,7 +524,7 @@
   },
   "package":{
    "name":"terraform-provider-cloudflare",
-   "version":"2.5.1"
+   "version":"2.6.0"
   },
   "requirements":{
    "build":[
@@ -539,23 +539,23 @@
    ]
   },
   "source":{
-   "sha256":"8787563dd3fb091985a831f6060430513d330514c9af95b1c9974a5ac0ea3ecc",
-   "url":"https://github.com/terraform-providers/terraform-provider-cloudflare/archive/v2.5.1.tar.gz"
+   "sha256":"5cd0b46b758a4b8c4946345180df9486f0af27bcdad8331a956a88fac745215b",
+   "url":"https://github.com/terraform-providers/terraform-provider-cloudflare/archive/v2.6.0.tar.gz"
   },
   "test":{
    "commands":[
-    "echo provider \"cloudflare\" { version=\"2.5.1\" } > init.tf",
+    "echo provider \"cloudflare\" { version=\"2.6.0\" } > init.tf",
     "terraform init",
     "if not exist .terraform\\plugins\\_\\lock.json exit 1",
-    "if exist .terraform\\plugins\\_\\terraform-provider-cloudflare_v2.5.1_x4 exit 1",
-    "echo 'provider \"cloudflare\" { version=\"2.5.1\" }' > init.tf",
+    "if exist .terraform\\plugins\\_\\terraform-provider-cloudflare_v2.6.0_x4 exit 1",
+    "echo 'provider \"cloudflare\" { version=\"2.6.0\" }' > init.tf",
     "terraform init",
     "test -f .terraform/plugins/_/lock.json",
-    "test ! -f .terraform/plugins/_/terraform-provider-cloudflare_v2.5.1_x4",
-    "echo 'provider \"cloudflare\" { version=\"2.5.1\" }' > init.tf",
+    "test ! -f .terraform/plugins/_/terraform-provider-cloudflare_v2.6.0_x4",
+    "echo 'provider \"cloudflare\" { version=\"2.6.0\" }' > init.tf",
     "terraform init",
     "test -f .terraform/plugins/_/lock.json",
-    "test ! -f .terraform/plugins/_/terraform-provider-cloudflare_v2.5.1_x4"
+    "test ! -f .terraform/plugins/_/terraform-provider-cloudflare_v2.6.0_x4"
    ]
   }
  },
@@ -567,7 +567,7 @@
  },
  "new_version_errors":{},
  "pinning_version":"2020.04.22.03.51.02",
- "raw_meta_yaml":"{% set provider = \"CloudFlare\" %}\n{% set goname = \"github.com/terraform-providers/terraform-provider-\"+provider.lower() %}\n{% set version = \"2.5.1\" %}\n\n{% set name = goname.split('/')[-1] %}\n\n{% set x4_plugin = name + '_v' + version + \"_x4\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  url: https://{{ goname }}/archive/v{{ version }}.tar.gz\n  sha256: 8787563dd3fb091985a831f6060430513d330514c9af95b1c9974a5ac0ea3ecc\n\nbuild:\n  number: 0\n  script:\n    - go build -v -o {{ target_gobin }}{{ x4_plugin }}{{ target_goexe }}\n\nrequirements:\n  build:\n    - {{ compiler('go') }} 1.13\n  run:\n    - terraform 0.12\n\ntest:\n  commands:\n    # Create a sample init.tf loading the provider\n    - echo 'provider \"{{ provider|lower }}\" { version=\"{{ version }}\" }' > init.tf  # [unix]\n    - echo provider \"{{ provider|lower }}\" { version=\"{{ version }}\" } > init.tf    # [win]\n\n    # Initialize\n    - terraform init\n\n    # Tests that init was successful\n    - test -f .terraform/plugins/{{ target_goos }}_{{ target_goarch }}/lock.json              # [unix]\n    - if not exist .terraform\\plugins\\{{ target_goos }}_{{ target_goarch }}\\lock.json exit 1  # [win]\n\n    # Test that the provider was not downloaded\n    - test ! -f .terraform/plugins/{{ target_goos }}_{{ target_goarch }}/{{ x4_plugin }}{{ target_goexe }}        # [unix]\n    - if exist .terraform\\plugins\\{{ target_goos }}_{{ target_goarch }}\\{{ x4_plugin }}{{ target_goexe }} exit 1  # [win]\n\nabout:\n  home: https://www.terraform.io\n  license: MPL-2.0\n  summary: The Terraform {{ provider }} provider\n  doc_url: https://www.terraform.io/docs/providers/{{ provider|lower }}/index.html\n  dev_url: https://github.com/terraform-providers/{{ name }}\n\nextra:\n  recipe-maintainers:\n    - conda-forge/terraform\n",
+ "raw_meta_yaml":"{% set provider = \"CloudFlare\" %}\n{% set goname = \"github.com/terraform-providers/terraform-provider-\"+provider.lower() %}\n{% set version = \"2.6.0\" %}\n\n{% set name = goname.split('/')[-1] %}\n\n{% set x4_plugin = name + '_v' + version + \"_x4\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  url: https://{{ goname }}/archive/v{{ version }}.tar.gz\n  sha256: 5cd0b46b758a4b8c4946345180df9486f0af27bcdad8331a956a88fac745215b\n\nbuild:\n  number: 0\n  script:\n    - go build -v -o {{ target_gobin }}{{ x4_plugin }}{{ target_goexe }}\n\nrequirements:\n  build:\n    - {{ compiler('go') }} 1.13\n  run:\n    - terraform 0.12\n\ntest:\n  commands:\n    # Create a sample init.tf loading the provider\n    - echo 'provider \"{{ provider|lower }}\" { version=\"{{ version }}\" }' > init.tf  # [unix]\n    - echo provider \"{{ provider|lower }}\" { version=\"{{ version }}\" } > init.tf    # [win]\n\n    # Initialize\n    - terraform init\n\n    # Tests that init was successful\n    - test -f .terraform/plugins/{{ target_goos }}_{{ target_goarch }}/lock.json              # [unix]\n    - if not exist .terraform\\plugins\\{{ target_goos }}_{{ target_goarch }}\\lock.json exit 1  # [win]\n\n    # Test that the provider was not downloaded\n    - test ! -f .terraform/plugins/{{ target_goos }}_{{ target_goarch }}/{{ x4_plugin }}{{ target_goexe }}        # [unix]\n    - if exist .terraform\\plugins\\{{ target_goos }}_{{ target_goarch }}\\{{ x4_plugin }}{{ target_goexe }} exit 1  # [win]\n\nabout:\n  home: https://www.terraform.io\n  license: MPL-2.0\n  summary: The Terraform {{ provider }} provider\n  doc_url: https://www.terraform.io/docs/providers/{{ provider|lower }}/index.html\n  dev_url: https://github.com/terraform-providers/{{ name }}\n\nextra:\n  recipe-maintainers:\n    - conda-forge/terraform\n",
  "req":{
   "__set__":true,
   "elements":[
@@ -622,5 +622,5 @@
   }
  },
  "url":"https://github.com/terraform-providers/terraform-provider-cloudflare/archive/v1.18.1.tar.gz",
- "version":"2.5.1"
+ "version":"2.6.0"
 }

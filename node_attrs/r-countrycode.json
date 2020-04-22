@@ -50,6 +50,23 @@
     "migrator_version",
     "version"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/407309051.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"Version",
+    "migrator_version":0,
+    "version":"1.1.2"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "version"
+   ]
   }
  ],
  "bad":false,
@@ -132,8 +149,12 @@
   }
  },
  "name":"r-countrycode",
- "new_version":"1.1.1",
- "pinning_version":"2020.01.28",
+ "new_version":"1.1.2",
+ "new_version_attempts":{
+  "1.1.2":1
+ },
+ "new_version_errors":{},
+ "pinning_version":"2020.04.22.03.51.02",
  "raw_meta_yaml":"{% set version = \"1.1.1\" %}\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-countrycode\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  fn: countrycode_{{ version }}.tar.gz\n  url:\n    - {{ cran_mirror }}/src/contrib/countrycode_{{ version }}.tar.gz\n    - {{ cran_mirror }}/src/contrib/Archive/countrycode/countrycode_{{ version }}.tar.gz\n  sha256: 444d4f552f431631b275a3bb3278b299b6013567dae7597205b21ba5833647fb\n\nbuild:\n  noarch: generic\n  merge_build_host: True  # [win]\n  number: 0\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n  host:\n    - r-base\n  run:\n    - r-base\n\ntest:\n  commands:\n    - $R -e \"library('countrycode')\"           # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('countrycode')\\\"\"  # [win]\n\nabout:\n  home: https://github.com/vincentarelbundock/countrycode\n  license: GPL-3\n  summary: Standardize country names, convert them into one of eleven coding schemes, convert\n    between coding schemes, and assign region descriptors.\n  license_family: GPL3\n  license_file: '{{ environ[\"PREFIX\"] }}/lib/R/share/licenses/GPL-3'\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n    - halldc\n",
  "req":{
   "__set__":true,
@@ -163,7 +184,7 @@
    "elements":[]
   }
  },
- "smithy_version":"3.6.8",
+ "smithy_version":"No azure token. Create a token and\nput it in ~/.conda-smithy/azure.token\n3.6.17",
  "strong_exports":false,
  "total_requirements":{
   "build":{
