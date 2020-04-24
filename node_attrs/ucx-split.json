@@ -146,7 +146,7 @@
       "test -f \"${PREFIX}/bin/ucx_info\""
      ]
     },
-    "version":"1.7.0"
+    "version":"1.8.0"
    },
    {
     "about":{
@@ -206,7 +206,7 @@
       "test -f \"${PREFIX}/bin/ucx_info\""
      ]
     },
-    "version":"1.7.0"
+    "version":"1.8.0"
    },
    {
     "about":{
@@ -266,15 +266,15 @@
       "test -f \"${PREFIX}/bin/ucx_info\""
      ]
     },
-    "version":"1.7.0"
+    "version":"1.8.0"
    }
   ],
   "package":{
    "name":"ucx-split"
   },
   "source":{
-   "sha256":"d7d8b2436990e106642fc90116bbf951cb2bf73479ebbe384c34410483b51187",
-   "url":"https://github.com/openucx/ucx/archive/v1.7.0.tar.gz"
+   "sha256":"dfd21f7a8dc53c82f09cf3938735f33dad566a2e204a4d56065e62a5239b4d7a",
+   "url":"https://github.com/openucx/ucx/archive/v1.8.0.tar.gz"
   }
  },
  "name":"ucx-split",
@@ -284,7 +284,7 @@
   "ucx-proc"
  ],
  "pinning_version":"2019.12.02",
- "raw_meta_yaml":"{% set ucx_version = \"1.7.0\" %}\n{% set ucx_proc_version = \"1.0.0\" %}\n{% set number = \"0\" %}\n\n{% set ucx_proc_type = \"cpu\" if cuda_compiler_version == \"None\" else \"gpu\" %}\n\n\npackage:\n  name: ucx-split\n\nsource:\n  url: https://github.com/openucx/ucx/archive/v{{ ucx_version }}.tar.gz\n  sha256: d7d8b2436990e106642fc90116bbf951cb2bf73479ebbe384c34410483b51187\n\nbuild:\n  skip: true  # [not linux]\n  number: 0\n\noutputs:\n  - name: ucx-proc\n    version: {{ ucx_proc_version }}\n    build:\n      number: 0\n      string: \"{{ ucx_proc_type }}\"\n    test:\n      commands:\n        - exit 0\n    about:\n      home: https://github.com/conda-forge/ucx-feedstock\n      license: BSD-3-Clause\n      license_family: BSD\n      summary: A meta-package to select CPU or GPU UCX build.\n\n  - name: ucx\n    version: {{ ucx_version }}\n    build:\n      number: {{ number }}\n    requirements:\n      build:\n        - {{ compiler(\"c\") }}\n        - {{ compiler(\"cxx\") }}\n        - {{ compiler(\"cuda\") }}         # [cuda_compiler_version != \"None\"]\n        - {{ cdt(\"libnl\") }}\n        - {{ cdt(\"libibcm-devel\") }}\n        - {{ cdt(\"libibverbs-devel\") }}\n        - {{ cdt(\"librdmacm-devel\") }}\n        - {{ cdt(\"numactl-devel\") }}\n        - automake\n        - autoconf\n        - libtool\n        - make\n        - pkg-config\n      host:\n      run_constrained:\n        - ucx-proc * {{ ucx_proc_type }}\n    script: install_ucx.sh\n    test:\n      commands:\n        - test -f \"${PREFIX}/bin/ucx_info\"\n        # Requires driver for GPU test.\n        - ${PREFIX}/bin/ucx_info -v         # [cuda_compiler_version == \"None\"]\n    about:\n      home: https://github.com/openucx/ucx\n      license: BSD-3-Clause\n      license_family: BSD\n      license_file: LICENSE\n      summary: Unified Communication X.\n\nabout:\n  home: https://github.com/openucx/ucx\n  license: BSD-3-Clause\n  license_family: BSD\n  license_file: LICENSE\n  summary: Unified Communication X.\n\nextra:\n  recipe-maintainers:\n    - Akshay-Venkatesh\n    - jakirkham\n    - quasiben\n    - TomAugspurger\n",
+ "raw_meta_yaml":"{% set ucx_version = \"1.8.0\" %}\n{% set ucx_proc_version = \"1.0.0\" %}\n{% set number = \"0\" %}\n\n{% set ucx_proc_type = \"cpu\" if cuda_compiler_version == \"None\" else \"gpu\" %}\n\n\npackage:\n  name: ucx-split\n\nsource:\n  url: https://github.com/openucx/ucx/archive/v{{ ucx_version }}.tar.gz\n  sha256: dfd21f7a8dc53c82f09cf3938735f33dad566a2e204a4d56065e62a5239b4d7a\n\nbuild:\n  skip: true  # [not linux]\n  number: 0\n\noutputs:\n  - name: ucx-proc\n    version: {{ ucx_proc_version }}\n    build:\n      number: 0\n      string: \"{{ ucx_proc_type }}\"\n    test:\n      commands:\n        - exit 0\n    about:\n      home: https://github.com/conda-forge/ucx-feedstock\n      license: BSD-3-Clause\n      license_family: BSD\n      summary: A meta-package to select CPU or GPU UCX build.\n\n  - name: ucx\n    version: {{ ucx_version }}\n    build:\n      number: {{ number }}\n    requirements:\n      build:\n        - {{ compiler(\"c\") }}\n        - {{ compiler(\"cxx\") }}\n        - {{ compiler(\"cuda\") }}         # [cuda_compiler_version != \"None\"]\n        - {{ cdt(\"libnl\") }}\n        - {{ cdt(\"libibcm-devel\") }}\n        - {{ cdt(\"libibverbs-devel\") }}\n        - {{ cdt(\"librdmacm-devel\") }}\n        - {{ cdt(\"numactl-devel\") }}\n        - automake\n        - autoconf\n        - libtool\n        - make\n        - pkg-config\n      host:\n      run_constrained:\n        - ucx-proc * {{ ucx_proc_type }}\n    script: install_ucx.sh\n    test:\n      commands:\n        - test -f \"${PREFIX}/bin/ucx_info\"\n        # Requires driver for GPU test.\n        - ${PREFIX}/bin/ucx_info -v         # [cuda_compiler_version == \"None\"]\n    about:\n      home: https://github.com/openucx/ucx\n      license: BSD-3-Clause\n      license_family: BSD\n      license_file: LICENSE\n      summary: Unified Communication X.\n\nabout:\n  home: https://github.com/openucx/ucx\n  license: BSD-3-Clause\n  license_family: BSD\n  license_file: LICENSE\n  summary: Unified Communication X.\n\nextra:\n  recipe-maintainers:\n    - Akshay-Venkatesh\n    - jakirkham\n    - quasiben\n    - TomAugspurger\n",
  "req":{
   "__set__":true,
   "elements":[
