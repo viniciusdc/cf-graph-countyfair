@@ -103,6 +103,25 @@
     "migrator_version",
     "version"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/408622070.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"MigrationYaml",
+    "migrator_object_version":1,
+    "migrator_version":0,
+    "name":"pypy"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_object_version",
+    "migrator_version",
+    "name"
+   ]
   }
  ],
  "bad":false,
@@ -116,7 +135,7 @@
  "meta_yaml":{
   "about":{
    "home":"https://github.com/mancellin/capytaine",
-   "license":"GPL-3.0",
+   "license":"GPL-3.0-or-later",
    "license_family":"GPL",
    "license_file":"LICENSE",
    "summary":"A Python-based linear potential flow solver based on Nemoh"
@@ -139,7 +158,7 @@
   },
   "package":{
    "name":"capytaine",
-   "version":"1.1"
+   "version":"1.2"
   },
   "requirements":{
    "build":[
@@ -172,42 +191,36 @@
    ],
    "run":[
     "python",
-    "attrs",
     "numpy",
-    "pandas",
-    "matplotlib",
     "scipy",
-    "vtk",
+    "pandas",
     "xarray",
     "python",
-    "attrs",
     "numpy",
-    "pandas",
-    "matplotlib",
     "scipy",
-    "vtk",
+    "pandas",
     "xarray",
     "llvm-openmp",
     "python",
-    "attrs",
     "numpy",
-    "pandas",
-    "matplotlib",
     "scipy",
-    "vtk",
+    "pandas",
     "xarray"
    ]
   },
   "source":{
-   "sha256":"0ca0c010bbfe4887b2b4678a2d9e6a069f7726a5e61f831f266283fc557578f4",
-   "url":"https://github.com/mancellin/capytaine/archive/v1.1.tar.gz"
+   "sha256":"b3dc967ffde8a0b9d815ab955b92a768711666236474776771b48f22e9e80f89",
+   "url":"https://github.com/mancellin/capytaine/archive/v1.2.tar.gz"
   },
   "test":{
    "commands":[
+    "pip install quadpy",
     "pytest",
     "capytaine --help",
+    "pip install quadpy",
     "pytest",
     "capytaine --help",
+    "pip install quadpy",
     "pytest",
     "capytaine --help"
    ],
@@ -219,10 +232,13 @@
    "requires":[
     "pytest",
     "hypothesis",
+    "pip",
     "pytest",
     "hypothesis",
+    "pip",
     "pytest",
-    "hypothesis"
+    "hypothesis",
+    "pip"
    ],
    "source_files":[
     "pytest/*.py",
@@ -241,11 +257,10 @@
  },
  "new_version_errors":{},
  "pinning_version":"2020.04.24.08.48.19",
- "raw_meta_yaml":"{% set version = \"1.1\" %}\n{% set hash = \"0ca0c010bbfe4887b2b4678a2d9e6a069f7726a5e61f831f266283fc557578f4\" %}\n\npackage:\n  name: capytaine\n  version: {{ version }}\n\nsource:\n  url: https://github.com/mancellin/capytaine/archive/v{{version}}.tar.gz\n  sha256: {{ hash }}\n\nbuild:\n  skip: True  # [py<36]\n  number: 0\n  script: \"{{ PYTHON }} -m pip install . --no-deps -vv\"\n  entry_points:\n    - capytaine = capytaine.ui.cli:main\n\nrequirements:\n  build:\n    - {{ compiler('fortran') }}\n    - {{ compiler('c') }}\n    - {{ compiler('m2w64_c') }}  # [win]\n    - {{ compiler('m2w64_fortran') }}  # [win]\n    - llvm-openmp  # [osx]\n  host:\n    - python\n    - pip\n    - setuptools\n    - numpy\n    - llvm-openmp  # [osx]\n    - m2w64-toolchain  # [win]\n    - libpython  # [win]\n  run:\n    - python\n    - attrs\n    - {{ pin_compatible('numpy') }}\n    - pandas\n    - matplotlib\n    - scipy\n    - vtk\n    - xarray\n    - llvm-openmp  # [osx]\n\ntest:\n  imports:\n    - capytaine\n  requires:\n    - pytest\n    - hypothesis\n  source_files:\n    - pytest/*.py\n    - pytest/**/*\n  commands:\n    - pytest\n    - capytaine --help\n\nabout:\n  home: https://github.com/mancellin/capytaine\n  license: GPL-3.0\n  license_family: GPL\n  license_file: LICENSE\n  summary: A Python-based linear potential flow solver based on Nemoh\n\nextra:\n  recipe-maintainers:\n    - mancellin\n",
+ "raw_meta_yaml":"{% set version = \"1.2\" %}\n{% set hash = \"b3dc967ffde8a0b9d815ab955b92a768711666236474776771b48f22e9e80f89\" %}\n\npackage:\n  name: capytaine\n  version: {{ version }}\n\nsource:\n  url: https://github.com/mancellin/capytaine/archive/v{{ version }}.tar.gz\n  sha256: {{ hash }}\n\nbuild:\n  skip: True  # [py<36]\n  number: 0\n  script: \"{{ PYTHON }} -m pip install . --no-deps -vv\"\n  entry_points:\n    - capytaine = capytaine.ui.cli:main\n\nrequirements:\n  build:\n    - {{ compiler('fortran') }}\n    - {{ compiler('c') }}\n    - {{ compiler('m2w64_c') }}  # [win]\n    - {{ compiler('m2w64_fortran') }}  # [win]\n    - llvm-openmp  # [osx]\n  host:\n    - python\n    - pip\n    - setuptools\n    - numpy\n    - llvm-openmp  # [osx]\n    - m2w64-toolchain  # [win]\n    - libpython  # [win]\n  run:\n    - python\n    - {{ pin_compatible('numpy') }}\n    - scipy\n    - pandas\n    - xarray\n    - llvm-openmp  # [osx]\n\ntest:\n  imports:\n    - capytaine\n  requires:\n    - pytest\n    - hypothesis\n    - pip\n  source_files:\n    - pytest/*.py\n    - pytest/**/*\n  commands:\n    - pip install quadpy  # Optional dependency, needed for some of the tests\n    - pytest\n    - capytaine --help\n\nabout:\n  home: https://github.com/mancellin/capytaine\n  license: GPL-3.0-or-later\n  license_family: GPL\n  license_file: LICENSE\n  summary: A Python-based linear potential flow solver based on Nemoh\n\nextra:\n  recipe-maintainers:\n    - mancellin\n",
  "req":{
   "__set__":true,
   "elements":[
-   "attrs",
    "c_compiler_stub",
    "fortran_compiler_stub",
    "libpython",
@@ -253,14 +268,12 @@
    "m2w64-toolchain",
    "m2w64_c_compiler_stub",
    "m2w64_fortran_compiler_stub",
-   "matplotlib",
    "numpy",
    "pandas",
    "pip",
    "python",
    "scipy",
    "setuptools",
-   "vtk",
    "xarray"
   ]
  },
@@ -282,6 +295,7 @@
     "llvm-openmp",
     "m2w64-toolchain",
     "numpy",
+    "openmp",
     "pip",
     "python",
     "setuptools"
@@ -290,14 +304,12 @@
   "run":{
    "__set__":true,
    "elements":[
-    "attrs",
     "llvm-openmp",
-    "matplotlib",
     "numpy",
+    "openmp",
     "pandas",
     "python",
     "scipy",
-    "vtk",
     "xarray"
    ]
   },
@@ -305,6 +317,7 @@
    "__set__":true,
    "elements":[
     "hypothesis",
+    "pip",
     "pytest"
    ]
   }
@@ -337,14 +350,11 @@
   "run":{
    "__set__":true,
    "elements":[
-    "attrs",
     "llvm-openmp",
-    "matplotlib",
     "numpy",
     "pandas",
     "python",
     "scipy",
-    "vtk",
     "xarray"
    ]
   },
@@ -352,10 +362,11 @@
    "__set__":true,
    "elements":[
     "hypothesis",
+    "pip",
     "pytest"
    ]
   }
  },
  "url":"https://github.com/mancellin/capytaine/archive/v1.0.1.tar.gz",
- "version":"1.1"
+ "version":"1.2"
 }
