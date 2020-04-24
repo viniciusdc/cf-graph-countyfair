@@ -39,7 +39,7 @@
    ]
   }
  ],
- "bad":"Upstream: Error getting upstream version",
+ "bad":false,
  "conda-forge.yml":{},
  "feedstock_name":"cartographer",
  "hash_type":"sha256",
@@ -171,6 +171,7 @@
   }
  },
  "name":"cartographer",
+ "new_version":"1.0.0",
  "pinning_version":"2020.04.24.08.48.19",
  "raw_meta_yaml":"{% set name = \"cartographer\" %}\n{% set version = \"1.0.0\" %}\n\npackage:\n  name: {{ name }}\n  version: {{ version }}\n\nsource:\n  - url: https://github.com/cartographer-project/cartographer/archive/{{ version }}.tar.gz\n    sha256: 474a410bf6457eb8a0fd92ea412d7889fb013051e625d3ee25e8d65e4113fd6c\n    patches:\n      - fix-windows.patch  # [win]\n\nbuild:\n  number: 0\n  skip: true  # [unix]\n  run_exports:\n    - {{ pin_subpackage(name, max_pin='x.x') }}\n\nrequirements:\n  build:\n    - {{ compiler('cxx') }}\n    - {{ compiler('c') }}\n    - ninja\n    - cmake\n    - pkg-config\n  host:\n    - ceres-solver\n    - eigen\n    - gflags\n    - glog\n    - lua\n    - cairo\n    - boost-cpp\n    - gtest\n    - gmock\n    - libprotobuf\n  run:\n    - ceres-solver\n    - eigen\n    - gflags\n    - glog\n    - lua\n    - cairo\n    - boost-cpp\n    - libprotobuf\n\ntest:\n  commands:\n    - if not exist %LIBRARY_LIB%\\\\cartographer.lib exit 1  # [win]\n    - if not exist %LIBRARY_BIN%\\\\cartographer.dll exit 1  # [win]\n\nabout:\n  home: https://github.com/cartographer-project/cartographer\n  license: Apache-2.0\n  license_file: LICENSE\n  summary: |\n    Cartographer is a system that provides real-time simultaneous localization and mapping (SLAM) in 2D and 3D across multiple platforms and sensor configurations.\n\nextra:\n  recipe-maintainers:\n    - seanyen\n",
  "req":{
