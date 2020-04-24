@@ -130,7 +130,7 @@
   }
  },
  "name":"rocm-opencl-driver",
- "new_version":"2.9.0",
+ "new_version":"2.10.0",
  "pinning_version":"2020.02.20",
  "raw_meta_yaml":"{% set name = \"rocm-opencl-driver\" %}\n{% set version = \"2.7.0\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  url: https://github.com/RadeonOpenCompute/ROCm-OpenCL-Driver/archive/roc-{{ version }}.tar.gz\n  sha256: bf59dac034e4a24567b933e1d94a65335823f547ef5b60da64c40ad2ba9d3042\n  patches:\n    - compile_flags.diff \n    - link_libraries.diff\n\nbuild:\n  number: 0\n  skip: True  # [not linux]\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n    - cmake\n    - make\n  host:\n    - clangdev 9.*\n    - llvmdev 9.*\n    - lld 9.*\n    - llvm\n\ntest:\n  commands:\n    - roc-cl -h\n\nabout:\n  home: https://github.com/RadeonOpenCompute/ROCm-OpenCL-Driver\n  license: MIT\n  license_family: MIT\n  license_file: License\n  summary: 'ROCm OpenCL Compiler Tool Driver'\n\nextra:\n  recipe-maintainers:\n    - isuruf\n",
  "req":{
