@@ -1,25 +1,45 @@
 {
- "bad":{
-  "exception":"Failed to put item: An error occurred (ValidationException) on request (V4LK5KU4FEH4TO0HBNCMI7VHA7VV4KQNSO5AEMVJF66Q9ASUAAJG) on table (pr_json) when calling the PutItem operation: Attempting to store more than 38 significant digits in a Number",
-  "traceback":[
-   "Traceback (most recent call last):",
-   "  File \"/root/repo/cf-scripts/conda_forge_tick/auto_tick.py\", line 798, in main",
-   "    hash_type=attrs.get(\"hash_type\", \"sha256\"),",
-   "  File \"/root/repo/cf-scripts/conda_forge_tick/auto_tick.py\", line 263, in run",
-   "    PRJson.dump(pr_json)",
-   "  File \"/root/repo/cf-scripts/conda_forge_tick/dynamo_models.py\", line 33, in dump",
-   "    item.save()",
-   "  File \"/opt/conda/envs/run_env/lib/python3.7/site-packages/pynamodb/models.py\", line 405, in save",
-   "    data = self._get_connection().put_item(*args, **kwargs)",
-   "  File \"/opt/conda/envs/run_env/lib/python3.7/site-packages/pynamodb/connection/table.py\", line 139, in put_item",
-   "    return_item_collection_metrics=return_item_collection_metrics)",
-   "  File \"/opt/conda/envs/run_env/lib/python3.7/site-packages/pynamodb/connection/base.py\", line 972, in put_item",
-   "    six.raise_from(PutError(\"Failed to put item: {}\".format(e), e), None)",
-   "  File \"<string>\", line 3, in raise_from",
-   "pynamodb.exceptions.PutError: Failed to put item: An error occurred (ValidationException) on request (V4LK5KU4FEH4TO0HBNCMI7VHA7VV4KQNSO5AEMVJF66Q9ASUAAJG) on table (pr_json) when calling the PutItem operation: Attempting to store more than 38 significant digits in a Number",
-   ""
-  ]
- },
+ "PRed":[
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/408481807.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"MigrationYaml",
+    "migrator_object_version":2,
+    "migrator_version":0,
+    "name":"boost172"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_object_version",
+    "migrator_version",
+    "name"
+   ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/0ddda544-393a-459b-a906-86d906b2f005.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"MigrationYaml",
+    "migrator_object_version":1,
+    "migrator_version":0,
+    "name":"gflags22"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_object_version",
+    "migrator_version",
+    "name"
+   ]
+  }
+ ],
+ "bad":false,
  "conda-forge.yml":{},
  "feedstock_name":"cartographer",
  "hash_type":"sha256",
@@ -151,6 +171,7 @@
   }
  },
  "name":"cartographer",
+ "pinning_version":"2020.04.24.08.48.19",
  "raw_meta_yaml":"{% set name = \"cartographer\" %}\n{% set version = \"1.0.0\" %}\n\npackage:\n  name: {{ name }}\n  version: {{ version }}\n\nsource:\n  - url: https://github.com/cartographer-project/cartographer/archive/{{ version }}.tar.gz\n    sha256: 474a410bf6457eb8a0fd92ea412d7889fb013051e625d3ee25e8d65e4113fd6c\n    patches:\n      - fix-windows.patch  # [win]\n\nbuild:\n  number: 0\n  skip: true  # [unix]\n  run_exports:\n    - {{ pin_subpackage(name, max_pin='x.x') }}\n\nrequirements:\n  build:\n    - {{ compiler('cxx') }}\n    - {{ compiler('c') }}\n    - ninja\n    - cmake\n    - pkg-config\n  host:\n    - ceres-solver\n    - eigen\n    - gflags\n    - glog\n    - lua\n    - cairo\n    - boost-cpp\n    - gtest\n    - gmock\n    - libprotobuf\n  run:\n    - ceres-solver\n    - eigen\n    - gflags\n    - glog\n    - lua\n    - cairo\n    - boost-cpp\n    - libprotobuf\n\ntest:\n  commands:\n    - if not exist %LIBRARY_LIB%\\\\cartographer.lib exit 1  # [win]\n    - if not exist %LIBRARY_BIN%\\\\cartographer.dll exit 1  # [win]\n\nabout:\n  home: https://github.com/cartographer-project/cartographer\n  license: Apache-2.0\n  license_file: LICENSE\n  summary: |\n    Cartographer is a system that provides real-time simultaneous localization and mapping (SLAM) in 2D and 3D across multiple platforms and sensor configurations.\n\nextra:\n  recipe-maintainers:\n    - seanyen\n",
  "req":{
   "__set__":true,
@@ -216,6 +237,7 @@
    "elements":[]
   }
  },
+ "smithy_version":"No azure token. Create a token and\nput it in ~/.conda-smithy/azure.token\n3.6.17",
  "strong_exports":false,
  "total_requirements":{
   "build":{
