@@ -5,7 +5,7 @@
     "__lazy_json__":"pr_json/380760361.json"
    },
    "data":{
-    "bot_rerun":false,
+    "bot_rerun":1587726977.5746272,
     "migrator_name":"ArchRebuild",
     "migrator_version":1,
     "name":"aarch64 and ppc64le addition"
@@ -49,6 +49,23 @@
     "migrator_name",
     "migrator_version",
     "version"
+   ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/408504659.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"ArchRebuild",
+    "migrator_version":1,
+    "name":"aarch64 and ppc64le addition"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "name"
    ]
   }
  ],
@@ -142,7 +159,7 @@
   "1.4.2":1
  },
  "new_version_errors":{},
- "pinning_version":"2020.04.07",
+ "pinning_version":"2020.04.24.08.48.19",
  "raw_meta_yaml":"{% set name = \"gl2ps\" %}\n{% set version = \"1.4.2\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  url: http://geuz.org/{{ name }}/src/{{ name }}-{{ version }}.tgz\n  sha256: 8d1c00c1018f96b4b97655482e57dcb0ce42ae2f1d349cd6d4191e7848d9ffe9\n  folder: source\n  patches:\n    # https://gitlab.onelab.info/gl2ps/gl2ps/-/issues/30\n    - 0001-Disable-static-library-on-Windows.patch\n\nbuild:\n  number: 0\n  skip: true  # [win and vc<14]\n  run_exports:\n    # Hasn't been updated in years so pin tightly\n    - {{ pin_subpackage('gl2ps', max_pin='x.x.x') }}\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - cmake\n    - make  # [unix]\n    - ninja  # [win]\n    # Required for OpenGL support\n    # See https://conda-forge.org/docs/maintainer/knowledge_base.html?highlight=cdt#libgl\n    - {{ cdt('mesa-libgl-devel') }}  # [linux]\n    - {{ cdt('mesa-dri-drivers') }}  # [linux]\n    - {{ cdt('libselinux') }}  # [linux]\n    - {{ cdt('libxdamage') }}  # [linux]\n    - {{ cdt('libxxf86vm') }}  # [linux]\n  host:\n    - xorg-libxfixes  # [linux]\n    - zlib\n    - libpng\n\ntest:\n  commands:\n    - test -f $PREFIX/lib/libgl2ps$SHLIB_EXT  # [unix]\n    - if not exist %LIBRARY_BIN%\\\\gl2ps.dll exit 1  # [win]\n\nabout:\n  home: http://geuz.org/gl2ps\n  license: LGPL-2.0-or-later\n  license_family: LGPL\n  license_file: source/COPYING.LGPL\n  summary: OpenGL to PostScript Printing Library\n  description: |\n    This is GL2PS, an OpenGL to PostScript (and PDF, and SVG...) printing library.\n  doc_url: http://geuz.org/gl2ps/#tth_sEc1\n  dev_url: http://gitlab.onelab.info/gl2ps/gl2ps\n\nextra:\n  recipe-maintainers:\n    - henryiii\n    - chrisburr\n",
  "req":{
   "__set__":true,
@@ -185,7 +202,7 @@
    "elements":[]
   }
  },
- "smithy_version":"No azure token. Create a token and\nput it in ~/.conda-smithy/azure.token\n3.6.15",
+ "smithy_version":"No azure token. Create a token and\nput it in ~/.conda-smithy/azure.token\n3.6.17",
  "strong_exports":false,
  "total_requirements":{
   "build":{
