@@ -442,13 +442,10 @@
    "summary":"Terraform is a tool for building, changing, and combining infrastructure safely and efficiently."
   },
   "build":{
-   "number":"1",
+   "number":"2",
    "script":[
-    "pushd src/github.com/hashicorp/terraform",
     "go install -v .",
-    "pushd src/github.com/hashicorp/terraform",
     "go install -v .",
-    "pushd src/github.com/hashicorp/terraform",
     "go install -v ."
    ]
   },
@@ -480,41 +477,27 @@
   },
   "requirements":{
    "build":[
-    "go_compiler_stub",
-    "go_compiler_stub",
-    "go_compiler_stub"
+    "go_compiler_stub 1.13",
+    "go_compiler_stub 1.13",
+    "go_compiler_stub 1.13"
    ]
   },
-  "source":[
-   {
-    "folder":"src/github.com/hashicorp/terraform",
-    "sha256":"11f547db8893abd10861b153311eb9690013249282ea015a023f1ea1f9146b6d",
-    "url":"https://github.com/hashicorp/terraform/archive/v0.12.24.tar.gz"
-   },
-   {
-    "folder":"src/github.com/hashicorp/terraform",
-    "sha256":"11f547db8893abd10861b153311eb9690013249282ea015a023f1ea1f9146b6d",
-    "url":"https://github.com/hashicorp/terraform/archive/v0.12.24.tar.gz"
-   },
-   {
-    "folder":"src/github.com/hashicorp/terraform",
-    "sha256":"11f547db8893abd10861b153311eb9690013249282ea015a023f1ea1f9146b6d",
-    "url":"https://github.com/hashicorp/terraform/archive/v0.12.24.tar.gz"
-   }
-  ],
+  "source":{
+   "sha256":"11f547db8893abd10861b153311eb9690013249282ea015a023f1ea1f9146b6d",
+   "url":"https://github.com/hashicorp/terraform/archive/v0.12.24.tar.gz"
+  },
   "test":{
    "commands":[
-    "bash -c \"terraform -v\"",
-    "bash -c \"terraform -v\"",
-    "bash -c \"terraform -v\""
-   ],
-   "requires":null
+    "terraform -v",
+    "terraform -v",
+    "terraform -v"
+   ]
   }
  },
  "name":"terraform",
  "new_version":"0.12.24",
  "pinning_version":"2020.03.20",
- "raw_meta_yaml":"{% set goname = \"github.com/hashicorp/terraform\" %}\n{% set version = \"0.12.24\" %}\n\n{% set name = goname.split('/')[-1] %}\n{% set pkg_src = ('src/'+goname).replace(\"/\",os.sep) %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  # We must use git here beause the program looks\n  # for the git sha&tag to determine its version\n  - folder: {{ pkg_src }}\n    url: https://{{ goname }}/archive/v{{ version }}.tar.gz\n    sha256: 11f547db8893abd10861b153311eb9690013249282ea015a023f1ea1f9146b6d\n\nbuild:\n  number: 1\n  script:\n    - pushd {{ pkg_src }}\n    - go install -v .\n\nrequirements:\n  build:\n    - {{ compiler('go') }}\n\ntest:\n  requires:\n    - m2-bash  # [win]\n  commands:\n    - bash -c \"{{ name|lower }} -v\"\n\nabout:\n  home: https://www.terraform.io\n  license: MPL-2.0\n  summary: Terraform is a tool for building, changing, and combining infrastructure safely and efficiently.\n  description: |\n    Terraform is a tool for building, changing, and versioning infrastructure safely and \n    efficiently. Terraform can manage existing and popular service providers as well as custom in-house \n    solutions.\n  doc_url: https://www.terraform.io/docs/index.html\n  dev_url: https://github.com/hashicorp/terraform.git\n\nextra:\n  recipe-maintainers:\n    - sodre\n    - mariusvniekerk\n    - dhirschfeld\n    - oblute\n    - rluria14\n    - ndmaxar\n",
+ "raw_meta_yaml":"{% set name = \"terraform\" %}\n{% set version = \"0.12.24\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  url: https://github.com/hashicorp/{{ name }}/archive/v{{ version }}.tar.gz\n  sha256: 11f547db8893abd10861b153311eb9690013249282ea015a023f1ea1f9146b6d\n\nbuild:\n  number: 2\n  script:\n    - go install -v .\n\nrequirements:\n  build:\n    - {{ compiler('go') }} 1.13\n\ntest:\n  commands:\n    - terraform -v\n\nabout:\n  home: https://www.terraform.io\n  license: MPL-2.0\n  summary: Terraform is a tool for building, changing, and combining infrastructure safely and efficiently.\n  description: |\n    Terraform is a tool for building, changing, and versioning infrastructure safely and \n    efficiently. Terraform can manage existing and popular service providers as well as custom in-house \n    solutions.\n  doc_url: https://www.terraform.io/docs/index.html\n  dev_url: https://github.com/hashicorp/terraform.git\n\nextra:\n  recipe-maintainers:\n    - sodre\n    - mariusvniekerk\n    - dhirschfeld\n    - oblute\n    - rluria14\n    - ndmaxar\n",
  "req":{
   "__set__":true,
   "elements":[
@@ -547,7 +530,7 @@
   "build":{
    "__set__":true,
    "elements":[
-    "go_compiler_stub"
+    "go_compiler_stub 1.13"
    ]
   },
   "host":{

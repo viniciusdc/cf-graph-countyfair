@@ -192,9 +192,6 @@
  ],
  "bad":false,
  "conda-forge.yml":{
-  "compiler_stack":"comp7",
-  "max_py_ver":"37",
-  "max_r_ver":"35",
   "provider":{
    "win":"azure"
   }
@@ -213,7 +210,7 @@
    "summary":"Galactic Dynamics in python"
   },
   "build":{
-   "number":"2",
+   "number":"0",
    "script":"CPATH=\"$PREFIX/include:$CPATH\" python setup.py install --single-version-externally-managed --record=record.txt",
    "skip":true
   },
@@ -232,7 +229,7 @@
   },
   "package":{
    "name":"galpy",
-   "version":"1.5"
+   "version":"1.6.0.post0"
   },
   "requirements":{
    "build":[
@@ -294,9 +291,9 @@
    ]
   },
   "source":{
-   "fn":"galpy-1.5.tar.gz",
-   "sha256":"80137c3d1918706c7e93a7a7f8872909295b8d2e93f00a2ab419ab6d6ef58be2",
-   "url":"https://pypi.io/packages/source/g/galpy/galpy-1.5.tar.gz"
+   "fn":"galpy-1.6.0.post0.tar.gz",
+   "sha256":"721d3fa5b156a02a4d9e9ae58a29f946c716ff40a2bd6e4a6f8c06bdfe8f7c57",
+   "url":"https://pypi.io/packages/source/g/galpy/galpy-1.6.0.post0.tar.gz"
   },
   "test":{
    "imports":[
@@ -314,7 +311,7 @@
  },
  "new_version_errors":{},
  "pinning_version":"2020.04.24.08.48.19",
- "raw_meta_yaml":"{% set name = \"galpy\" %}\n{% set version = \"1.5\" %}\n{% set hash_type = \"sha256\" %}\n{% set hash_value = \"80137c3d1918706c7e93a7a7f8872909295b8d2e93f00a2ab419ab6d6ef58be2\" %}\n\npackage:\n  name: '{{ name|lower }}'\n  version: '{{ version }}'\n\nsource:\n  fn: '{{ name }}-{{ version }}.tar.gz'\n  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz\n  '{{ hash_type }}': '{{ hash_value }}'\n\nbuild:\n  number: 2\n  skip: True  # [win and vc<14]\n  script: \n    - rm gsl-config.bat  # [win and py2k]\n    - python setup.py install --single-version-externally-managed --record=record.txt  # [win and py2k]\n  script: python setup.py install --single-version-externally-managed --record=record.txt --no-openmp  # [win and py3k]\n  script: CPATH=\"$PREFIX/include:$CPATH\" python setup.py install --single-version-externally-managed --record=record.txt --no-openmp  # [osx]\n  script: CPATH=\"$PREFIX/include:$CPATH\" python setup.py install --single-version-externally-managed --record=record.txt  # [not win and not osx]\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n  host:\n    - python\n    - setuptools\n    - numpy\n    - scipy\n    - matplotlib-base\n    - six\n    - future\n    - gsl\n  run:\n    - python\n    - numpy\n    - scipy\n    - matplotlib-base\n    - six\n    - future\n    - gsl\n\ntest:\n  imports:\n    - galpy\n\nabout:\n  home: http://github.com/jobovy/galpy\n  license: BSD 3-clause\n  license_family: BSD\n  license_file: LICENSE\n  summary: Galactic Dynamics in python\n  description: |\n    galpy is a Python 2 and 3 package for galactic dynamics. It supports orbit\n    integration in a variety of potentials, evaluating and sampling various\n    distribution functions, and the calculation of action-angle coordinates\n    for all static potentials. galpy is an astropy affiliated package and\n    provides full support for astropy\u2019s Quantity framework for variables with\n    units.\n  doc_url: http://galpy.readthedocs.io/en/latest/\n  dev_url: http://github.com/jobovy/galpy\n\nextra:\n  recipe-maintainers:\n    - mwcraig\n    - bsipocz\n    - jobovy\n",
+ "raw_meta_yaml":"{% set name = \"galpy\" %}\n{% set version = \"1.6.0.post0\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  fn: {{ name }}-{{ version }}.tar.gz\n  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz\n  sha256: 721d3fa5b156a02a4d9e9ae58a29f946c716ff40a2bd6e4a6f8c06bdfe8f7c57\n\nbuild:\n  number: 0\n  skip: true  # [win and vc<14]\n  script:\n    - rm gsl-config.bat  # [win and py2k]\n    - python setup.py install --single-version-externally-managed --record=record.txt  # [win and py2k]\n  script: python setup.py install --single-version-externally-managed --record=record.txt --no-openmp  # [win and py3k]\n  script: CPATH=\"$PREFIX/include:$CPATH\" python setup.py install --single-version-externally-managed --record=record.txt --no-openmp  # [osx]\n  script: CPATH=\"$PREFIX/include:$CPATH\" python setup.py install --single-version-externally-managed --record=record.txt  # [not win and not osx]\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n  host:\n    - python\n    - setuptools\n    - numpy\n    - scipy\n    - matplotlib-base\n    - six\n    - future\n    - gsl\n  run:\n    - python\n    - numpy\n    - scipy\n    - matplotlib-base\n    - six\n    - future\n    - gsl\n\ntest:\n  imports:\n    - galpy\n\nabout:\n  home: http://github.com/jobovy/galpy\n  license: BSD 3-clause\n  license_family: BSD\n  license_file: LICENSE\n  summary: Galactic Dynamics in python\n  description: |\n    galpy is a Python 2 and 3 package for galactic dynamics. It supports orbit\n    integration in a variety of potentials, evaluating and sampling various\n    distribution functions, and the calculation of action-angle coordinates\n    for all static potentials. galpy is an astropy affiliated package and\n    provides full support for astropy\u2019s Quantity framework for variables with\n    units.\n  doc_url: http://galpy.readthedocs.io/en/latest/\n  dev_url: http://github.com/jobovy/galpy\n\nextra:\n  recipe-maintainers:\n    - mwcraig\n    - bsipocz\n    - jobovy\n",
  "req":{
   "__set__":true,
   "elements":[
@@ -409,5 +406,5 @@
   }
  },
  "url":"https://pypi.io/packages/source/g/galpy/galpy-1.4.1.tar.gz",
- "version":"1.5"
+ "version":"1.6.0.post0"
 }
