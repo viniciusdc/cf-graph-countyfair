@@ -16,6 +16,23 @@
     "migrator_version",
     "version"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/408979263.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"Version",
+    "migrator_version":0,
+    "version":"0.7.0"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "version"
+   ]
   }
  ],
  "bad":false,
@@ -133,8 +150,12 @@
   }
  },
  "name":"r-graphlayouts",
- "new_version":"0.6.0",
- "pinning_version":"2020.03.06",
+ "new_version":"0.7.0",
+ "new_version_attempts":{
+  "0.7.0":1
+ },
+ "new_version_errors":{},
+ "pinning_version":"2020.04.24.22.56.04",
  "raw_meta_yaml":"{% set version = \"0.6.0\" %}\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-graphlayouts\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  url:\n    - {{ cran_mirror }}/src/contrib/graphlayouts_{{ version }}.tar.gz\n    - {{ cran_mirror }}/src/contrib/Archive/graphlayouts/graphlayouts_{{ version }}.tar.gz\n  sha256: 8097d34cd4ae86fd2b806970513869c62305d54cdd878be64fe7ce33aa0940d1\n\nbuild:\n  merge_build_host: true  # [win]\n  number: 0\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - {{ compiler('c') }}              # [not win]\n    - {{ compiler('m2w64_c') }}        # [win]\n    - {{ compiler('cxx') }}            # [not win]\n    - {{ compiler('m2w64_cxx') }}      # [win]\n    - {{posix}}filesystem        # [win]\n    - {{posix}}make\n    - {{posix}}sed               # [win]\n    - {{posix}}coreutils         # [win]\n    - {{posix}}zip               # [win]\n  host:\n    - r-base\n    - r-rcpp\n    - r-rcpparmadillo\n    - r-igraph\n  run:\n    - r-base\n    - {{native}}gcc-libs         # [win]\n    - r-rcpp\n    - r-rcpparmadillo\n    - r-igraph\n\ntest:\n  commands:\n    - $R -e \"library('graphlayouts')\"           # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('graphlayouts')\\\"\"  # [win]\n\nabout:\n  home: https://github.com/schochastics/graphlayouts\n  license: MIT\n  summary: Several new layout algorithms to visualize networks are provided which are not part of 'igraph'.  Most are based on the concept of stress majorization\n    by Gansner et al. (2004) <doi:10.1007/978-3-540-31843-9_25>.  Some more specific algorithms allow to emphasize hidden group structures in networks or focus on\n    specific nodes.\n  license_family: MIT\n  license_file:\n    - {{ environ[\"PREFIX\"] }}/lib/R/share/licenses/MIT\n    - LICENSE\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n\n# Package: graphlayouts\n# Title: Additional Layout Algorithms for Network Visualizations\n# Version: 0.5.0\n# Authors@R: person(\"David\", \"Schoch\", email = \"david.schoch@manchester.ac.uk\", role = c(\"aut\", \"cre\"))\n# Maintainer: David Schoch <david.schoch@manchester.ac.uk>\n# Description: Several new layout algorithms to visualize networks are provided which are not part of 'igraph'.  Most are based on the concept of stress majorization by Gansner et al. (2004) <doi:10.1007/978-3-540-31843-9_25>.  Some more specific algorithms allow to emphasize hidden group structures in networks or focus on specific nodes.\n# URL: https://github.com/schochastics/graphlayouts\n# BugReports: https://github.com/schochastics/graphlayouts/issues\n# Depends: R (>= 3.2.0)\n# License: MIT + file LICENSE\n# Encoding: UTF-8\n# LazyData: true\n# Imports: igraph, Rcpp\n# Suggests: oaqc, testthat, ggraph, ggplot2, knitr, rmarkdown\n# LinkingTo: Rcpp, RcppArmadillo\n# RoxygenNote: 6.1.1\n# NeedsCompilation: yes\n# Packaged: 2019-08-20 09:47:06 UTC; david\n# Author: David Schoch [aut, cre]\n# Repository: CRAN\n# Date/Publication: 2019-08-20 11:30:09 UTC\n",
  "req":{
   "__set__":true,
@@ -194,7 +215,7 @@
    "elements":[]
   }
  },
- "smithy_version":"3.6.10",
+ "smithy_version":"No azure token. Create a token and\nput it in ~/.conda-smithy/azure.token\n3.6.17",
  "strong_exports":false,
  "total_requirements":{
   "build":{
