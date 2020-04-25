@@ -33,6 +33,23 @@
     "migrator_version",
     "version"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/408918306.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"Version",
+    "migrator_version":0,
+    "version":"0.15.5"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "version"
+   ]
   }
  ],
  "bad":false,
@@ -110,8 +127,12 @@
   }
  },
  "name":"tflint",
- "new_version":"0.15.4",
- "pinning_version":"2020.04.03",
+ "new_version":"0.15.5",
+ "new_version_attempts":{
+  "0.15.5":1
+ },
+ "new_version_errors":{},
+ "pinning_version":"2020.04.24.22.56.04",
  "raw_meta_yaml":"{% set goname = \"github.com/terraform-linters/tflint\" %}\n{% set version = \"0.15.4\" %}\n\n{% set name = goname.split('/')[-1] %}\n{% set pkg_src = ('src/'+goname).replace(\"/\",os.sep) %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  - folder: {{ pkg_src }}\n    url: https://{{ goname }}/archive/v{{ version }}.tar.gz\n    sha256: 3378055e8f1591c46d313765b4579d7484612ce88bea5222e5d0d14f4f8e5cef\n\nbuild:\n  number: 0\n  script:\n    - pushd {{ pkg_src }}\n    - go install -v .\n\nrequirements:\n  build:\n    - {{ compiler('go') }}\n\ntest:\n  requires:\n    - m2-bash  # [win]\n  commands:\n    - bash -c \"{{ name|lower }} -v\"\n\nabout:\n  home: https://github.com/terraform-linters/tflint\n  license: MPL 2.0\n  license_file: {{ pkg_src }}/LICENSE\n  summary: TFLint is a Terraform linter focused on possible errors, best practices, etc.\n  dev_url: https://github.com/terraform-linters/tflint.git\n\nextra:\n  recipe-maintainers:\n    - sodre\n    - mariusvniekerk\n",
  "req":{
   "__set__":true,
@@ -139,7 +160,7 @@
    "elements":[]
   }
  },
- "smithy_version":"No azure token. Create a token and\nput it in ~/.conda-smithy/azure.token\n3.6.15",
+ "smithy_version":"No azure token. Create a token and\nput it in ~/.conda-smithy/azure.token\n3.6.17",
  "strong_exports":false,
  "total_requirements":{
   "build":{
