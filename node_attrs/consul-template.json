@@ -59,10 +59,30 @@
     "migrator_version",
     "version"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/408834975.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"Version",
+    "migrator_version":0,
+    "version":"0.24.1"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "version"
+   ]
   }
  ],
- "bad":"Upstream: Error getting upstream version",
+ "bad":false,
  "conda-forge.yml":{
+  "bot":{
+   "automerge":true
+  },
   "compiler_stack":"comp7",
   "max_py_ver":"37",
   "max_r_ver":"35",
@@ -75,20 +95,18 @@
  "meta_yaml":{
   "about":{
    "description":"Consul-template is a daemon that provides a convenient way to populate values from\nConsul into the file system.\n\nThe daemon consul-template queries a Consul or Vault cluster and updates any number\nof specified templates on the file system. As an added bonus, it can optionally run\narbitrary commands when the update process completes.\n",
-   "doc_url":"https://github.com/hashicorp/consul-template/blob/v0.20.0/README.md",
-   "home":"https://github.com/hashicorp/consul-tempate",
-   "license":"MPL 2.0",
+   "doc_url":"https://github.com/hashicorp/consul-template/blob/v0.21.0/README.md",
+   "home":"https://github.com/hashicorp/consul-template",
+   "license":"MPL-2.0",
+   "license_file":"LICENSE",
    "summary":"Consul-template is a daemon that provides a convenient way to populate values from Consul into the file system."
   },
   "build":{
    "number":"0",
    "script":[
-    "pushd src/github.com/hashicorp/consul-template",
-    "go install -v .",
-    "pushd src/github.com/hashicorp/consul-template",
-    "go install -v .",
-    "pushd src/github.com/hashicorp/consul-template",
-    "go install -v ."
+    "go install -v -ldflags \"-X github.com/hashicorp/consul-template/version.Name=consul-template -X github.com/hashicorp/consul-template/version.GitCommit=''\" .",
+    "go install -v -ldflags \"-X github.com/hashicorp/consul-template/version.Name=consul-template -X github.com/hashicorp/consul-template/version.GitCommit=''\" .",
+    "go install -v -ldflags \"-X github.com/hashicorp/consul-template/version.Name=consul-template -X github.com/hashicorp/consul-template/version.GitCommit=''\" ."
    ]
   },
   "extra":{
@@ -100,44 +118,35 @@
   },
   "package":{
    "name":"consul-template",
-   "version":"0.20.0"
+   "version":"0.21.0"
   },
   "requirements":{
    "build":[
-    "go_compiler_stub",
-    "go_compiler_stub",
-    "go_compiler_stub"
+    "go_compiler_stub 1.13",
+    "go_compiler_stub 1.13",
+    "go_compiler_stub 1.13"
    ]
   },
-  "source":[
-   {
-    "folder":"src/github.com/hashicorp/consul-template",
-    "git_rev":"v0.20.0",
-    "git_url":"https://github.com/hashicorp/consul-template"
-   },
-   {
-    "folder":"src/github.com/hashicorp/consul-template",
-    "git_rev":"v0.20.0",
-    "git_url":"https://github.com/hashicorp/consul-template"
-   },
-   {
-    "folder":"src/github.com/hashicorp/consul-template",
-    "git_rev":"v0.20.0",
-    "git_url":"https://github.com/hashicorp/consul-template"
-   }
-  ],
+  "source":{
+   "sha256":"e74060390f5b9aeb2e0776678708827304e4908b9c145428b1971969c1c5ce1a",
+   "url":"https://github.com/hashicorp/consul-template/archive/v0.21.0.tar.gz"
+  },
   "test":{
    "commands":[
-    "consul-template -v",
-    "consul-template -v",
-    "consul-template -v"
+    "consul-template --version",
+    "consul-template --version",
+    "consul-template --version"
    ]
   }
  },
  "name":"consul-template",
- "new_version":false,
- "pinning_version":"2019.02.15",
- "raw_meta_yaml":"{% set import_path = \"github.com/hashicorp/consul-template\" %}\n{% set version = \"0.20.0\" %}\n\n{% set name = import_path.split('/')[-1] %}\n{% set pkg_src = 'src' + os.sep+ import_path.replace(\"/\",os.sep) %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  - folder: {{ pkg_src }}\n    git_url: https://{{ import_path }}\n    git_tag: v{{ version }}\n    url: https://github.com/hashicorp/{{ name }}/archive/v{{ version }}.tar.gz  # [false]\n    sha256: d10dbd1f332f1882c433f410a0704a84de405ba3068f285f9c23704701ee3d73  # [false]\n\n\nbuild:\n  number: 0\n  script:\n    - pushd {{ pkg_src }}\n    - go install -v .\n\nrequirements:\n  build:\n    - {{ compiler('go') }}\n\ntest:\n  commands:\n    - {{ name|lower }} -v\n\nabout:\n  home: https://github.com/hashicorp/consul-tempate\n  license: MPL 2.0\n  summary: Consul-template is a daemon that provides a convenient way to populate values from Consul into the file system.\n  description: |\n     Consul-template is a daemon that provides a convenient way to populate values from \n     Consul into the file system.\n\n     The daemon consul-template queries a Consul or Vault cluster and updates any number \n     of specified templates on the file system. As an added bonus, it can optionally run \n     arbitrary commands when the update process completes. \n\n  doc_url: https://github.com/hashicorp/consul-template/blob/v{{ version }}/README.md\n\nextra:\n  recipe-maintainers:\n    - sodre\n",
+ "new_version":"0.24.1",
+ "new_version_attempts":{
+  "0.24.1":1
+ },
+ "new_version_errors":{},
+ "pinning_version":"2020.04.24.22.56.04",
+ "raw_meta_yaml":"{% set name = \"consul-template\" %}\n{% set version = \"0.21.0\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  url: https://github.com/hashicorp/{{ name }}/archive/v{{ version }}.tar.gz\n  sha256: e74060390f5b9aeb2e0776678708827304e4908b9c145428b1971969c1c5ce1a\n\nbuild:\n  number: 0\n  script:\n    {% set git_import = \"github.com/hashicorp/consul-template/version\" %}\n    - go install -v -ldflags \"-X {{ git_import }}.Name={{ name }} -X {{ git_import }}.GitCommit=''\" .\n\nrequirements:\n  build:\n    - {{ compiler('go') }} 1.13\n\ntest:\n  commands:\n    - consul-template --version\n\nabout:\n  home: https://github.com/hashicorp/consul-template\n  license: MPL-2.0\n  license_file: LICENSE\n  summary: Consul-template is a daemon that provides a convenient way to populate values from Consul into the file system.\n  description: |\n     Consul-template is a daemon that provides a convenient way to populate values from \n     Consul into the file system.\n\n     The daemon consul-template queries a Consul or Vault cluster and updates any number \n     of specified templates on the file system. As an added bonus, it can optionally run \n     arbitrary commands when the update process completes. \n\n  doc_url: https://github.com/hashicorp/consul-template/blob/v{{ version }}/README.md\n\nextra:\n  recipe-maintainers:\n    - sodre\n",
  "req":{
   "__set__":true,
   "elements":[
@@ -164,14 +173,14 @@
    "elements":[]
   }
  },
- "smithy_version":"3.2.13",
+ "smithy_version":"No azure token. Create a token and\nput it in ~/.conda-smithy/azure.token\n3.6.17",
  "strong_exports":false,
  "time":1568135280.7418003,
  "total_requirements":{
   "build":{
    "__set__":true,
    "elements":[
-    "go_compiler_stub"
+    "go_compiler_stub 1.13"
    ]
   },
   "host":{
@@ -187,6 +196,6 @@
    "elements":[]
   }
  },
- "url":null,
- "version":"0.20.0"
+ "url":"https://github.com/hashicorp/consul-template/archive/v0.21.0.tar.gz",
+ "version":"0.21.0"
 }
