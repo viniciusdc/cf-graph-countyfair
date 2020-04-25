@@ -229,10 +229,30 @@
     "migrator_version",
     "version"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/408862392.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"Version",
+    "migrator_version":0,
+    "version":"3.4.7"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "version"
+   ]
   }
  ],
  "bad":false,
  "conda-forge.yml":{
+  "bot":{
+   "automerge":true
+  },
   "compiler_stack":"comp7",
   "max_py_ver":"37",
   "max_r_ver":"35",
@@ -249,19 +269,16 @@
    "home":"https://etcd.io",
    "license":"Apache-2.0",
    "license_family":"Apache",
-   "license_file":"src/github.com/coreos/etcd/LICENSE",
+   "license_file":"LICENSE",
    "summary":"A distributed, reliable key-value store for the most critical data of a distributed system."
   },
   "build":{
    "number":"0",
    "script":[
-    "pushd src/github.com/coreos/etcd",
     "go install -v .",
     "go install -v ./etcdctl",
-    "pushd src/github.com/coreos/etcd",
     "go install -v .",
     "go install -v ./etcdctl",
-    "pushd src/github.com/coreos/etcd",
     "go install -v .",
     "go install -v ./etcdctl"
    ]
@@ -275,47 +292,38 @@
   },
   "package":{
    "name":"etcd",
-   "version":"3.3.15"
+   "version":"3.4.0"
   },
   "requirements":{
    "build":[
-    "go_compiler_stub",
-    "go_compiler_stub",
-    "go_compiler_stub"
+    "go_compiler_stub 1.13",
+    "go_compiler_stub 1.13",
+    "go_compiler_stub 1.13"
    ]
   },
-  "source":[
-   {
-    "folder":"src/github.com/coreos/etcd",
-    "sha256":"3da9bba24d1d4c434d39b8f603c0f481d5888c2a9b7600d3d2cd0cc5d58804e2",
-    "url":"https://github.com/etcd-io/etcd/archive/v3.3.15.tar.gz"
-   },
-   {
-    "folder":"src/github.com/coreos/etcd",
-    "sha256":"3da9bba24d1d4c434d39b8f603c0f481d5888c2a9b7600d3d2cd0cc5d58804e2",
-    "url":"https://github.com/etcd-io/etcd/archive/v3.3.15.tar.gz"
-   },
-   {
-    "folder":"src/github.com/coreos/etcd",
-    "sha256":"3da9bba24d1d4c434d39b8f603c0f481d5888c2a9b7600d3d2cd0cc5d58804e2",
-    "url":"https://github.com/etcd-io/etcd/archive/v3.3.15.tar.gz"
-   }
-  ],
+  "source":{
+   "sha256":"2c38749d6451bbcc3e027c0e47287e9a4c02d0f1f46e8b882139ff1032fc7831",
+   "url":"https://github.com/etcd-io/etcd/archive/v3.4.0.tar.gz"
+  },
   "test":{
    "commands":[
     "etcd --version",
-    "etcdctl --version",
+    "etcdctl version",
     "etcd --version",
-    "etcdctl --version",
+    "etcdctl version",
     "etcd --version",
-    "etcdctl --version"
+    "etcdctl version"
    ]
   }
  },
  "name":"etcd",
  "new_version":"3.4.7",
- "pinning_version":"2019.10.11",
- "raw_meta_yaml":"{% set import_path = \"github.com/coreos/etcd\" %}\n{% set version = \"3.3.15\" %}\n\n{% set name = import_path.split('/')[-1] %}\n{% set pkg_src = 'src' + os.sep+ import_path.replace(\"/\",os.sep) %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  - folder: {{ pkg_src }}\n    url: https://{{ import_path | replace(\"coreos\", \"etcd-io\") }}/archive/v{{ version }}.tar.gz\n    sha256: 3da9bba24d1d4c434d39b8f603c0f481d5888c2a9b7600d3d2cd0cc5d58804e2\n\nbuild:\n  number: 0\n  skip: True  # [win32]\n  script:\n    - pushd {{ pkg_src }}\n    {% for path in [ \".\", \"./etcdctl\" ] %}\n    - go install -v {{ path }}\n    {% endfor %}\n\nrequirements:\n  build:\n    - {{ compiler('go') }}\n\ntest:\n  commands:\n    - etcd --version\n    - etcdctl --version\n\nabout:\n  home: https://etcd.io\n  license: Apache-2.0\n  license_family: Apache\n  license_file: {{ pkg_src }}/LICENSE\n  summary: A distributed, reliable key-value store for the most critical data of a distributed system.\n  doc_url: https://etcd.io/docs\n  dev_url: https://github.com/etcd-io/etcd\n\nextra:\n  recipe-maintainers:\n    - sodre\n",
+ "new_version_attempts":{
+  "3.4.7":1
+ },
+ "new_version_errors":{},
+ "pinning_version":"2020.04.24.22.56.04",
+ "raw_meta_yaml":"{% set name = \"etcd\" %}\n{% set version = \"3.4.0\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  url: https://github.com/etcd-io/{{ name }}/archive/v{{ version }}.tar.gz\n  sha256: 2c38749d6451bbcc3e027c0e47287e9a4c02d0f1f46e8b882139ff1032fc7831\n\nbuild:\n  number: 0\n  script:\n    {% for path in [ \".\", \"./etcdctl\" ] %}\n    - go install -v {{ path }}\n    {% endfor %}\n\nrequirements:\n  build:\n    - {{ compiler('go') }} 1.13\n\ntest:\n  commands:\n    - etcd --version\n    - etcdctl version\n\nabout:\n  home: https://etcd.io\n  license: Apache-2.0\n  license_family: Apache\n  license_file: LICENSE\n  summary: A distributed, reliable key-value store for the most critical data of a distributed system.\n  doc_url: https://etcd.io/docs\n  dev_url: https://github.com/etcd-io/etcd\n\nextra:\n  recipe-maintainers:\n    - sodre\n",
  "req":{
   "__set__":true,
   "elements":[
@@ -342,13 +350,13 @@
    "elements":[]
   }
  },
- "smithy_version":"3.6.0",
+ "smithy_version":"No azure token. Create a token and\nput it in ~/.conda-smithy/azure.token\n3.6.17",
  "strong_exports":false,
  "total_requirements":{
   "build":{
    "__set__":true,
    "elements":[
-    "go_compiler_stub"
+    "go_compiler_stub 1.13"
    ]
   },
   "host":{
@@ -365,5 +373,5 @@
   }
  },
  "url":"https://github.com/etcd-io/etcd/archive/v3.3.15.tar.gz",
- "version":"3.3.15"
+ "version":"3.4.0"
 }
