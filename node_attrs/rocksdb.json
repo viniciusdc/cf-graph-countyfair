@@ -94,7 +94,7 @@
   },
   "package":{
    "name":"rocksdb",
-   "version":"6.2.2"
+   "version":"6.2.4"
   },
   "requirements":{
    "build":[
@@ -124,17 +124,12 @@
     "lz4-c",
     "snappy",
     "zstd"
-   ],
-   "run":[
-    "jemalloc",
-    "jemalloc",
-    "jemalloc"
    ]
   },
   "source":{
    "folder":"src",
-   "sha256":"3e7365cb2a35982e95e5e5dd0b3352dc78573193dafca02788572318c38483fb",
-   "url":"https://github.com/facebook/rocksdb/archive/v6.2.2.tar.gz"
+   "sha256":"7f34d1b55501f5273d11cd064bd34aef87c51ff114452968b86457f06cdb8ced",
+   "url":"https://github.com/facebook/rocksdb/archive/v6.2.4.tar.gz"
   },
   "test":{
    "commands":[
@@ -157,7 +152,7 @@
  },
  "new_version_errors":{},
  "pinning_version":"2020.04.24.22.56.04",
- "raw_meta_yaml":"{% set name = \"rocksdb\" %}\n{% set version = \"6.2.2\" %}\n\npackage:\n  name: rocksdb\n  version: {{ version }}\n\nsource:\n  folder: src\n  url: https://github.com/facebook/rocksdb/archive/v{{ version }}.tar.gz\n  sha256: 3e7365cb2a35982e95e5e5dd0b3352dc78573193dafca02788572318c38483fb\n\nbuild:\n  number: 0\n  skip: true  # [not linux]\n  run_exports:\n    # Symbols are removed from a minor release to the next.\n    # https://abi-laboratory.pro/index.php?view=timeline&l=rocksdb\n    - {{ pin_subpackage(name, max_pin='x.x') }}\n\nrequirements:\n  build:\n    - {{ compiler(\"cxx\") }}\n    - cmake >=3.5.1,<4\n    - ninja >=1.10,<2\n  host:\n    - gflags\n    - jemalloc\n    - lz4-c\n    - snappy\n    - zstd\n  run:\n    - {{ pin_compatible(\"jemalloc\", max_pin=\"x\") }}\n\ntest:\n  commands:\n    - test -f ${PREFIX}/lib/librocksdb.a\n    - test -f ${PREFIX}/lib/librocksdb.dylib  # [osx]\n    - test -f ${PREFIX}/lib/librocksdb.so     # [linux]\n    - test -f ${PREFIX}/include/rocksdb/db.h\n\nabout:\n  home: https://rocksdb.org\n  license: Apache-2.0\n  license_file: src/LICENSE.Apache\n  summary: A library that provides an embeddable, persistent key-value store for fast storage.\n\n  dev_url: https://github.com/facebook/rocksdb\n  doc_url: https://rocksdb.org/docs\n\nextra:\n  recipe-maintainers:\n    - benhuff\n    - oblute\n    - rluria14\n    - sodre\n",
+ "raw_meta_yaml":"{% set name = \"rocksdb\" %}\n{% set version = \"6.2.4\" %}\n\npackage:\n  name: rocksdb\n  version: {{ version }}\n\nsource:\n  folder: src\n  url: https://github.com/facebook/rocksdb/archive/v{{ version }}.tar.gz\n  sha256: 7f34d1b55501f5273d11cd064bd34aef87c51ff114452968b86457f06cdb8ced\n\nbuild:\n  number: 0\n  skip: true  # [not linux]\n  run_exports:\n    # Symbols are removed from a minor release to the next.\n    # https://abi-laboratory.pro/index.php?view=timeline&l=rocksdb\n    - {{ pin_subpackage(name, max_pin='x.x') }}\n\nrequirements:\n  build:\n    - {{ compiler(\"cxx\") }}\n    - cmake >=3.5.1,<4\n    - ninja >=1.10,<2\n  host:\n    - gflags\n    - jemalloc\n    - lz4-c\n    - snappy\n    - zstd\n\ntest:\n  commands:\n    - test -f ${PREFIX}/lib/librocksdb.a\n    - test -f ${PREFIX}/lib/librocksdb.dylib  # [osx]\n    - test -f ${PREFIX}/lib/librocksdb.so     # [linux]\n    - test -f ${PREFIX}/include/rocksdb/db.h\n\nabout:\n  home: https://rocksdb.org\n  license: Apache-2.0\n  license_file: src/LICENSE.Apache\n  summary: A library that provides an embeddable, persistent key-value store for fast storage.\n\n  dev_url: https://github.com/facebook/rocksdb\n  doc_url: https://rocksdb.org/docs\n\nextra:\n  recipe-maintainers:\n    - benhuff\n    - oblute\n    - rluria14\n    - sodre\n",
  "req":{
   "__set__":true,
   "elements":[
@@ -192,9 +187,7 @@
   },
   "run":{
    "__set__":true,
-   "elements":[
-    "jemalloc"
-   ]
+   "elements":[]
   },
   "test":{
    "__set__":true,
@@ -224,9 +217,7 @@
   },
   "run":{
    "__set__":true,
-   "elements":[
-    "jemalloc"
-   ]
+   "elements":[]
   },
   "test":{
    "__set__":true,
@@ -234,5 +225,5 @@
   }
  },
  "url":"https://github.com/facebook/rocksdb/archive/v6.2.2.tar.gz",
- "version":"6.2.2"
+ "version":"6.2.4"
 }
