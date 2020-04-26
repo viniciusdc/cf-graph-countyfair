@@ -710,6 +710,23 @@
     "migrator_version",
     "version"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/409017967.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"Version",
+    "migrator_version":0,
+    "version":"0.23"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "version"
+   ]
   }
  ],
  "bad":false,
@@ -781,8 +798,12 @@
   }
  },
  "name":"r-catboost",
- "new_version":"0.20.2",
- "pinning_version":"2019.12.18",
+ "new_version":"0.23",
+ "new_version_attempts":{
+  "0.23":1
+ },
+ "new_version_errors":{},
+ "pinning_version":"2020.04.24.22.56.04",
  "raw_meta_yaml":"{% set name = \"r-catboost\" %}\n{% set version = \"0.20.2\" %}\n{% set posix = 'm2-' if win else '' %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  url: https://github.com/catboost/catboost/releases/download/v{{ version }}/catboost-R-Linux-{{ version }}.tgz  # [linux]\n  sha256: 4b7ae2c855cf4ea47b0cdb7c020543d5af312bd63b9a8ef486203806a8b4db54  # [linux]\n\n  url: https://github.com/catboost/catboost/releases/download/v{{ version }}/catboost-R-Windows-{{ version }}.tgz  # [win]\n  sha256: bbe816f6603890bdd75d96d7554159f2f546b7e950680f2a3acd369195974c93  # [win]\n\n  url: https://github.com/catboost/catboost/releases/download/v{{ version }}/catboost-R-Darwin-{{ version }}.tgz  # [osx]\n  sha256: 13f1a205adf3e311b8595ad534796e5a3bc82a9c6c7eeb104b969ae7e609589f  # [osx]\n\nbuild:\n  number: 0\n\nrequirements:\n  build:\n    - {{posix}}zip               # [win]\n  host:\n    - r-base\n    - r-jsonlite\n  run:\n    - r-base\n    - r-jsonlite\n\ntest:\n commands:\n    - $R -e \"library('catboost')\"  # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('catboost')\\\"\"  # [win].\n\nabout:\n  home: https://github.com/catboost/catboost\n  license: Apache 2.0\n  license_family: Apache\n  license_file: LICENSE.txt\n  summary: 'CatBoost is a machine learning algorithm that uses gradient boosting on decision trees. It is available as an open source library.'\n  doc_url: https://tech.yandex.com/catboost/doc/dg/concepts/about-docpage/\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n    - curious-odd-man\n",
  "req":{
   "__set__":true,
@@ -815,7 +836,7 @@
    "elements":[]
   }
  },
- "smithy_version":"3.6.5",
+ "smithy_version":"No azure token. Create a token and\nput it in ~/.conda-smithy/azure.token\n3.6.17",
  "strong_exports":false,
  "total_requirements":{
   "build":{
