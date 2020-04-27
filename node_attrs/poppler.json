@@ -503,6 +503,23 @@
     "migrator_version",
     "version"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/409784753.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"Version",
+    "migrator_version":0,
+    "version":"0.88.0"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "version"
+   ]
   }
  ],
  "bad":false,
@@ -648,11 +665,13 @@
   }
  },
  "name":"poppler",
- "new_version":"0.87.0",
+ "new_version":"0.88.0",
  "new_version_attempts":{
-  "0.87.0":1
+  "0.87.0":1,
+  "0.88.0":1
  },
- "pinning_version":"2020.04.07",
+ "new_version_errors":{},
+ "pinning_version":"2020.04.27.17.45.41",
  "raw_meta_yaml":"{% set version = \"0.87.0\" %}\n\npackage:\n  name: poppler\n  version: {{ version }}\n\nsource:\n  url: https://poppler.freedesktop.org/poppler-{{ version }}.tar.xz\n  sha256: 6f602b9c24c2d05780be93e7306201012e41459f289b8279a27a79431ad4150e\n  patches:\n    - g-ir-scanner-libpath.patch\n    - cmakelists.win.patch  # [win]\n    - exportsymbols.patch  # [win]\n    # system headers must be included before jpeg on Windows\n    - includesystembeforejpeg.patch  # [win]\n    - vs2015-no-for-loop-constexpr.win.patch  # [win]\n\nbuild:\n  number: 1\n  detect_binary_files_with_prefix: true\n  skip: true  # [(unix and (cxx_compiler == 'toolchain_cxx')) or (win and py27)]\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n    - pkg-config  # [not win]\n    - cmake\n    - make\n    - ninja  # [win]\n    - perl\n  host:\n    - cairo  # [not win]\n    - curl\n    - freetype\n    - glib\n    - gobject-introspection 1.*  # [not win]\n    - jpeg\n    - libpng\n    - libtiff\n    - openjpeg\n    - zlib\n  run:\n    - poppler-data\n    - cairo  # [not win]\n    - curl\n    - freetype\n    - glib\n    - jpeg\n    - libpng\n    - libtiff\n    - openjpeg\n    - zlib\n\ntest:\n  commands:\n    - pdfunite --help\n    - pdftocairo --help  # [not win]\n\nabout:\n  home: https://poppler.freedesktop.org/\n  license: GPL-2.0-only\n  license_family: GPL\n  license_file: COPYING\n  summary: The Poppler PDF manipulation library.\n\nextra:\n  recipe-maintainers:\n    - pkgw\n    - ocefpaf\n",
  "req":{
   "__set__":true,
@@ -725,7 +744,7 @@
    "elements":[]
   }
  },
- "smithy_version":"No azure token. Create a token and\nput it in ~/.conda-smithy/azure.token\n3.6.15",
+ "smithy_version":"No azure token. Create a token and\nput it in ~/.conda-smithy/azure.token\n3.7.0",
  "strong_exports":false,
  "total_requirements":{
   "build":{

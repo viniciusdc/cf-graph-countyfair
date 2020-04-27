@@ -187,6 +187,23 @@
     "migrator_version",
     "version"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/409784279.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"Version",
+    "migrator_version":0,
+    "version":"6.2.2004"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "version"
+   ]
   }
  ],
  "bad":false,
@@ -285,12 +302,13 @@
   }
  },
  "name":"netgen",
- "new_version":"6.2.1810",
+ "new_version":"6.2.2004",
  "new_version_attempts":{
-  "6.2.1809":1
+  "6.2.1809":1,
+  "6.2.2004":1
  },
  "new_version_errors":{},
- "pinning_version":"2020.04.10.23.07.47",
+ "pinning_version":"2020.04.27.17.45.41",
  "raw_meta_yaml":"{% set name = \"netgen\" %}\n{% set version = \"6.2.1808\" %}\n{% set sha256 = \"20501a2f51beeb73a27f8b9ad57af7e452d38b36334b244c3de66b171b2f29a2\" %}\n\n\npackage:\n    name: {{ name }}\n    version: {{ version }}\n\nsource:\n    fn: netgen_v{{ version }}.tar.gz\n    url: https://github.com/NGSolve/netgen/archive/v{{ version }}.tar.gz\n    sha256: {{ sha256 }}\n    patches:\n        - 001_no_gui_and_no_dynamic_python_linking.patch\n        - 002_do_not_set_c++_standart_explicitly.patch\n        - 003_occt74.patch\n\nbuild:\n    number: 1007\n    skip: True  # [py27]\n\nrequirements:\n    build:\n        - {{ compiler('cxx') }}\n        - ninja\n        - cmake\n    host:\n        - occt\n        - python\n        - pybind11\n        - zlib\n    run:\n        - occt\n        - python\n        - zlib\n\ntest:\n    commands:\n        - python -c \"import sys; print(sys.version); import netgen;\"\n\nabout:\n    home: https://sourceforge.net/projects/netgen-mesher/\n    license: LGPL2.1\n    license_family: LGPL\n    license_file: LICENSE\n    summary: this is netgen\n    description: NETGEN is an automatic 3d tetrahedral mesh generator.\n                 It accepts input from constructive solid geometry (CSG) or boundary representation (BRep) from\n                 STL file format. The connection to a geometry kernel allows the handling of IGES and STEP files.\n                 NETGEN contains modules for mesh optimization and hierarchical mesh refinement.\n                 Netgen is open source based on the LGPL license. It is available for Unix/Linux and Windows.\n    doc_url: http://www.hpfem.jku.at/netgen/\n    dev_url: https://sourceforge.net/projects/netgen-mesher/\n\nextra:\n    recipe-maintainers:\n        - looooo\n",
  "req":{
   "__set__":true,
@@ -335,7 +353,7 @@
    "elements":[]
   }
  },
- "smithy_version":"No azure token. Create a token and\nput it in ~/.conda-smithy/azure.token\n3.6.16",
+ "smithy_version":"No azure token. Create a token and\nput it in ~/.conda-smithy/azure.token\n3.7.0",
  "strong_exports":false,
  "total_requirements":{
   "build":{
