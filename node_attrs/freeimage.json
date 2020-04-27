@@ -16,6 +16,23 @@
     "migrator_version",
     "name"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/409718223.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"ArchRebuild",
+    "migrator_version":1,
+    "name":"aarch64 and ppc64le addition"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "name"
+   ]
   }
  ],
  "bad":false,
@@ -175,7 +192,7 @@
  },
  "name":"freeimage",
  "new_version":false,
- "pinning_version":"2020.01.05",
+ "pinning_version":"2020.04.27.17.45.41",
  "raw_meta_yaml":"{% set version = \"3.18.0\" %}\n{% set name = 'freeimage' %}\n\npackage:\n    name: {{ name }}\n    version: {{ version }}\n    # note: also update version in CMakeLists and in tests.\n\nsource:\n  - url: http://downloads.sourceforge.net/freeimage/FreeImage{{ version.replace('.', '') }}.zip\n    sha256: f41379682f9ada94ea7b34fe86bf9ee00935a3147be41b6569c9605a53e438fd\n\n  # The below files are taken (and adapted) from VCPKG: https://github.com/microsoft/vcpkg/tree/master/ports/freeimage\n  # The patches have been taken (and modified) from Debian / Fedora / VCPKG\n  - path: CMakeLists.txt\n  - path: FreeImageConfig-dynamic.h\n  - path: FreeImageConfig-static.h\n\nbuild:\n  number: 2\n  skip: true  # [win]\n  run_exports:\n    - {{ pin_subpackage(name, max_pin='x.x') }}\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n    - cmake\n    - pkg-config\n    - make  # [unix]\n    # need to convert line endings for the patches to work\n    - dos2unix  # [unix]\n  host:\n    # or use jpeg-turbo?\n    - jpeg\n    - openjpeg\n    - jxrlib\n    - libtiff\n    - openexr\n    - libpng\n    - zlib\n    - libraw\n    - libwebp\n    - ilmbase\n\ntest:\n  commands:\n    - test -f $PREFIX/lib/libfreeimage${SHLIB_EXT}  # [linux]\n    - test -f $PREFIX/lib/libfreeimage${SHLIB_EXT}.{{ version.split('.')[0] }}  # [linux]\n    - test -f $PREFIX/lib/libfreeimage.{{ version.split('.')[0] }}${SHLIB_EXT}  # [osx]\n    - test -f $PREFIX/lib/libfreeimage-{{ version }}${SHLIB_EXT}  # [unix]\n    - test -f $PREFIX/include/FreeImage.h  # [unix]\n\nabout:\n  home: http://freeimage.sourceforge.net/\n  license: GPLv2 GPLv3 FreeImage\n  license_file:\n      - license-fi.txt\n      - license-gplv2.txt\n      - license-gplv3.txt\n  summary: Helps provide support for many common image formats (PNG, JPEG, TIFF, BMP and others).\n\nextra:\n  recipe-maintainers:\n    - almarklein\n    - jakirkham\n    - msarahan\n    - wolfv\n    - seanyen\n",
  "req":{
   "__set__":true,
@@ -234,7 +251,7 @@
    "elements":[]
   }
  },
- "smithy_version":"3.6.5",
+ "smithy_version":"No azure token. Create a token and\nput it in ~/.conda-smithy/azure.token\n3.7.0",
  "strong_exports":false,
  "total_requirements":{
   "build":{
