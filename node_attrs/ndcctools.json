@@ -134,7 +134,7 @@
    "dev_url":"https://github.com/cooperative-computing-lab/cctools",
    "doc_url":"https://cctools.readthedocs.io",
    "home":"http://ccl.cse.nd.edu/",
-   "license":"GPL-2.0",
+   "license":"GPL-2.0-only",
    "license_file":"COPYING",
    "summary":"The Cooperative Computing Tools contains Chirp, Makeflow, JX, and Work Queue."
   },
@@ -159,7 +159,7 @@
   },
   "package":{
    "name":"ndcctools",
-   "version":"7.1.2"
+   "version":"7.1.3"
   },
   "requirements":{
    "build":[
@@ -199,8 +199,8 @@
    ]
   },
   "source":{
-   "sha256":"ca871e9fe245d047d4c701271cf2b868e6e3a170e8834c1887157ed855985131",
-   "url":"http://ccl.cse.nd.edu/software/files/cctools-7.1.2-source.tar.gz"
+   "sha256":"b937878ab429dda31bc692e5d9ffb402b9eb44bb674c07a934bb769cee4165ba",
+   "url":"http://ccl.cse.nd.edu/software/files/cctools-7.1.3-source.tar.gz"
   },
   "test":{
    "commands":[
@@ -230,7 +230,7 @@
  },
  "new_version_errors":{},
  "pinning_version":"2020.04.26.19.17.14",
- "raw_meta_yaml":"# Note to cctools maintainers:\n# When updating cctools versions, only the version and src_checksum variables\n# should be modified.\n# Get the checksum of the cctools-VERSION-source.tar.gz tarball as:\n# openssl sha256  cctools-VERSION-source.tar.gz\n# Note we use the name \"ndcctools\" as there is already another project in\n# anaconda called cctools.\n\n{% set name = \"ndcctools\" %}\n{% set version = \"7.1.2\" %}\n{% set src_checksum = \"ca871e9fe245d047d4c701271cf2b868e6e3a170e8834c1887157ed855985131\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  url: http://ccl.cse.nd.edu/software/files/cctools-{{ version }}-source.tar.gz\n  sha256: {{ src_checksum }}\n\nbuild:\n  number: 0\n  skip: true  # [win]\n  skip: true  # [osx and py==27]\n  skip: true  # [osx]\n  skip: true  # [python_impl=='pypy']\n  rpaths:\n    - lib/\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n    - m4\n    - swig\n    - make\n  host:\n    - python\n    - perl  # [linux]\n    - zlib\n  run:\n    - python\n    - perl  # [linux]\n    - zlib\n\ntest:\n  imports:\n    - work_queue\n  commands:\n    - makeflow -h\n    - work_queue_worker -h\n    - work_queue_factory -h\n\nabout:\n  home: http://ccl.cse.nd.edu/\n  license: GPL-2.0\n  license_file: COPYING\n  summary: The Cooperative Computing Tools contains Chirp, Makeflow, JX, and Work Queue.\n  description: |\n    The Cooperative Computing Tools (cctools) are a collection of programs that\n    enable large scale distributed computing on systems such as clusters,\n    clouds, and grids. These tools are commonly used in fields of science and\n    engineering that rely on large amounts of computing.\n  doc_url: https://cctools.readthedocs.io\n  dev_url: https://github.com/cooperative-computing-lab/cctools\n\nextra:\n  recipe-maintainers:\n    - btovar\n    - dthain\n",
+ "raw_meta_yaml":"# Note to cctools maintainers:\n# When updating cctools versions, only the version and src_checksum variables\n# should be modified.\n# Get the checksum of the cctools-VERSION-source.tar.gz tarball as:\n# openssl sha256  cctools-VERSION-source.tar.gz\n# Note we use the name \"ndcctools\" as there is already another project in\n# anaconda called cctools.\n\n{% set name = \"ndcctools\" %}\n{% set version = \"7.1.3\" %}\n{% set src_checksum = \"b937878ab429dda31bc692e5d9ffb402b9eb44bb674c07a934bb769cee4165ba\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  url: http://ccl.cse.nd.edu/software/files/cctools-{{ version }}-source.tar.gz\n  sha256: {{ src_checksum }}\n\nbuild:\n  number: 0\n  skip: true  # [win]\n  skip: true  # [osx and py==27]\n  skip: true  # [python_impl=='pypy']\n  rpaths:\n    - lib/\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n    - m4\n    - swig\n    - make\n  host:\n    - python\n    - perl  # [linux]\n    - zlib\n  run:\n    - python\n    - perl  # [linux]\n    - zlib\n\ntest:\n  imports:\n    - work_queue\n  commands:\n    - makeflow -h\n    - work_queue_worker -h\n    - work_queue_factory -h\n\nabout:\n  home: http://ccl.cse.nd.edu/\n  license: GPL-2.0-only\n  license_file: COPYING\n  summary: The Cooperative Computing Tools contains Chirp, Makeflow, JX, and Work Queue.\n  description: |\n    The Cooperative Computing Tools (cctools) are a collection of programs that\n    enable large scale distributed computing on systems such as clusters,\n    clouds, and grids. These tools are commonly used in fields of science and\n    engineering that rely on large amounts of computing.\n  doc_url: https://cctools.readthedocs.io\n  dev_url: https://github.com/cooperative-computing-lab/cctools\n\nextra:\n  recipe-maintainers:\n    - btovar\n    - dthain\n",
  "req":{
   "__set__":true,
   "elements":[
@@ -311,5 +311,5 @@
   }
  },
  "url":"http://ccl.cse.nd.edu/software/files/cctools-7.0.19-source.tar.gz",
- "version":"7.1.2"
+ "version":"7.1.3"
 }
