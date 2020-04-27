@@ -304,6 +304,23 @@
     "migrator_version",
     "name"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/409399730.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"Version",
+    "migrator_version":0,
+    "version":"2.5.0"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "version"
+   ]
   }
  ],
  "bad":false,
@@ -435,8 +452,12 @@
   }
  },
  "name":"pylint",
- "new_version":"2.4.4",
- "pinning_version":"2020.01.27",
+ "new_version":"2.5.0",
+ "new_version_attempts":{
+  "2.5.0":1
+ },
+ "new_version_errors":{},
+ "pinning_version":"2020.04.26.19.17.14",
  "raw_meta_yaml":"{% set version = \"2.4.4\" %}\n\npackage:\n  name: pylint\n  version: {{ version }}\n\nsource:\n  url: https://pypi.io/packages/source/p/pylint/pylint-{{ version }}.tar.gz\n  sha256: 3db5468ad013380e987410a8d6956226963aed94ecb5f9d3a28acca6d9ac36cd\n\nbuild:\n  number: 0\n  skip: True  # [py<34]\n  script: \"{{ PYTHON }} -m pip install . --no-deps --ignore-installed --no-cache-dir -vvv\"\n  entry_points:\n    - pylint = pylint:run_pylint\n    - epylint = pylint:run_epylint\n    - pyreverse = pylint:run_pyreverse\n    - symilar = pylint:run_symilar\n\nrequirements:\n  host:\n    - python\n    - pip\n    - pytest-runner\n\n  run:\n    - python\n    - astroid >=2.3.0,<2.4\n    - isort >=4.2.5,<5\n    - mccabe >=0.6,<0.7\n    - colorama  # [win]\n\ntest:\n  imports:\n    - pylint\n    - pylint.checkers\n    - pylint.extensions\n    - pylint.pyreverse\n    - pylint.reporters\n    - pylint.reporters.ureports\n\n  commands:\n    - pylint --help\n    # Has no help option.\n    # Running without arguments is an error.\n    # So just check that it exists.\n    - type epylint  # [unix]\n    - where epylint  # [win]\n    - pyreverse --help\n    - symilar --help\n\nabout:\n  home: http://www.pylint.org/\n  license: GPL 2\n  license_file: COPYING\n  summary: 'python code static checker'\n  description: |\n    Pylint is a tool that checks for errors in Python code, tries to enforce a\n    coding standard and looks for code smells.\n  doc_url: https://pylint.readthedocs.io/en/latest/\n  doc_source_url: https://github.com/PyCQA/pylint/blob/master/doc/index.rst\n  dev_url: https://github.com/PyCQA/pylint/\n\nextra:\n  recipe-maintainers:\n    - jakirkham\n    - jjhelmus\n    - timleslie\n",
  "req":{
   "__set__":true,
@@ -478,7 +499,7 @@
    "elements":[]
   }
  },
- "smithy_version":"3.6.7",
+ "smithy_version":"No azure token. Create a token and\nput it in ~/.conda-smithy/azure.token\n3.6.17",
  "strong_exports":false,
  "total_requirements":{
   "build":{

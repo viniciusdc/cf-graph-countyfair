@@ -91,9 +91,6 @@
   "bot":{
    "automerge":true
   },
-  "compiler_stack":"comp7",
-  "max_py_ver":"37",
-  "max_r_ver":"35",
   "provider":{
    "win":"azure"
   }
@@ -105,12 +102,16 @@
    "home":"http://r-forge.r-project.org/projects/mpmi/",
    "license":"GPL-3",
    "license_family":"GPL3",
-   "license_file":"/lib/R/share/licenses/GPL-3",
+   "license_file":[
+    "/lib/R/share/licenses/GPL-3",
+    "/lib/R/share/licenses/GPL-3",
+    "/lib/R/share/licenses/GPL-3"
+   ],
    "summary":"Uses a kernel smoothing approach to calculate Mutual Information for comparisons between all types of variables including continuous vs continuous, continuous vs discrete and discrete vs discrete. Uses a nonparametric bias correction giving Bias Corrected Mutual Information (BCMI). Implemented efficiently in Fortran 95 with OpenMP and suited to large genomic datasets.  "
   },
   "build":{
    "merge_build_host":true,
-   "number":"2",
+   "number":"0",
    "rpaths":[
     "lib/R/lib/",
     "lib/",
@@ -132,7 +133,7 @@
   },
   "package":{
    "name":"r-mpmi",
-   "version":"0.43"
+   "version":"0.43.1"
   },
   "requirements":{
    "build":[
@@ -170,14 +171,14 @@
    ]
   },
   "source":{
-   "sha256":"403c46410101a249ff6a15e7d262c2e1d72476dd7ac56734af06f41fe981d096",
+   "sha256":"1313c6b742546f9c276f3eba4aa4071eed69211932a7a61ad25094bf9148e7d3",
    "url":[
-    "https://cran.r-project.org/src/contrib/mpmi_0.43.tar.gz",
-    "https://cran.r-project.org/src/contrib/Archive/mpmi/mpmi_0.43.tar.gz",
-    "https://cran.r-project.org/src/contrib/mpmi_0.43.tar.gz",
-    "https://cran.r-project.org/src/contrib/Archive/mpmi/mpmi_0.43.tar.gz",
-    "https://cran.r-project.org/src/contrib/mpmi_0.43.tar.gz",
-    "https://cran.r-project.org/src/contrib/Archive/mpmi/mpmi_0.43.tar.gz"
+    "https://cran.r-project.org/src/contrib/mpmi_0.43.1.tar.gz",
+    "https://cran.r-project.org/src/contrib/Archive/mpmi/mpmi_0.43.1.tar.gz",
+    "https://cran.r-project.org/src/contrib/mpmi_0.43.1.tar.gz",
+    "https://cran.r-project.org/src/contrib/Archive/mpmi/mpmi_0.43.1.tar.gz",
+    "https://cran.r-project.org/src/contrib/mpmi_0.43.1.tar.gz",
+    "https://cran.r-project.org/src/contrib/Archive/mpmi/mpmi_0.43.1.tar.gz"
    ]
   },
   "test":{
@@ -195,7 +196,7 @@
  },
  "new_version_errors":{},
  "pinning_version":"2020.04.26.19.17.14",
- "raw_meta_yaml":"{% set version = '0.43' %}\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-mpmi\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  url:\n    - {{ cran_mirror }}/src/contrib/mpmi_{{ version }}.tar.gz\n    - {{ cran_mirror }}/src/contrib/Archive/mpmi/mpmi_{{ version }}.tar.gz\n  sha256: 403c46410101a249ff6a15e7d262c2e1d72476dd7ac56734af06f41fe981d096\n\nbuild:\n  merge_build_host: True  # [win]\n  number: 2\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - {{ compiler('c') }}        # [not win]\n    - {{ compiler('fortran') }}\n    - {{ compiler('m2w64_c') }}        # [win]\n    - {{ compiler('m2w64_fortran') }}        # [win]\n    - {{posix}}filesystem        # [win]\n    - {{posix}}make\n    - {{posix}}sed               # [win]\n    - {{posix}}coreutils         # [win]\n    - {{posix}}zip               # [win]\n  host:\n    - r-base\n    - r-kernsmooth\n  run:\n    - r-base\n    - {{native}}gcc-libs         # [win]\n    - r-kernsmooth\n\ntest:\n  commands:\n    - $R -e \"library('mpmi')\"           # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('mpmi')\\\"\"  # [win]\n\nabout:\n  home: http://r-forge.r-project.org/projects/mpmi/\n  license: GPL-3\n  summary: 'Uses a kernel smoothing approach to calculate Mutual Information for comparisons\n    between all types of variables including continuous vs continuous, continuous vs\n    discrete and discrete vs discrete. Uses a nonparametric bias correction giving Bias\n    Corrected Mutual Information (BCMI). Implemented efficiently in Fortran 95 with\n    OpenMP and suited to large genomic datasets.  '\n  license_family: GPL3\n  license_file: '{{ environ[\"PREFIX\"] }}/lib/R/share/licenses/GPL-3'\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n    - Chris-Lowe-Integrity\n\n# Package: mpmi\n# Type: Package\n# Title: Mixed-Pair Mutual Information Estimators\n# Version: 0.43\n# Date: 2019-04-22\n# Author: Chris Pardy\n# Maintainer: Chris Pardy <cooliomcdude@gmail.com>\n# Description: Uses a kernel smoothing approach to calculate Mutual Information for comparisons between all types of variables including continuous vs continuous, continuous vs discrete and discrete vs discrete. Uses a nonparametric bias correction giving Bias Corrected Mutual Information (BCMI). Implemented efficiently in Fortran 95 with OpenMP and suited to large genomic datasets.\n# License: GPL-3\n# URL: http://r-forge.r-project.org/projects/mpmi/\n# Depends: KernSmooth\n# NeedsCompilation: yes\n# Packaged: 2019-04-22 06:12:27 UTC; cp\n# Repository: CRAN\n# Date/Publication: 2019-04-22 06:40:03 UTC\n",
+ "raw_meta_yaml":"{% set version = \"0.43.1\" %}\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-mpmi\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  url:\n    - {{ cran_mirror }}/src/contrib/mpmi_{{ version }}.tar.gz\n    - {{ cran_mirror }}/src/contrib/Archive/mpmi/mpmi_{{ version }}.tar.gz\n  sha256: 1313c6b742546f9c276f3eba4aa4071eed69211932a7a61ad25094bf9148e7d3\n\nbuild:\n  merge_build_host: true  # [win]\n  number: 0\n  skip: true  # [r_base == \"3.5.1\"]\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - {{ compiler('c') }}        # [not win]\n    - {{ compiler('fortran') }}\n    - {{ compiler('m2w64_c') }}        # [win]\n    - {{ compiler('m2w64_fortran') }}        # [win]\n    - {{ posix }}filesystem        # [win]\n    - {{ posix }}make\n    - {{ posix }}sed               # [win]\n    - {{ posix }}coreutils         # [win]\n    - {{ posix }}zip               # [win]\n  host:\n    - r-base\n    - r-kernsmooth\n  run:\n    - r-base\n    - {{ native }}gcc-libs         # [win]\n    - r-kernsmooth\n\ntest:\n  commands:\n    - $R -e \"library('mpmi')\"           # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('mpmi')\\\"\"  # [win]\n\nabout:\n  home: http://r-forge.r-project.org/projects/mpmi/\n  license: GPL-3\n  summary: 'Uses a kernel smoothing approach to calculate Mutual Information for comparisons between all types of variables including continuous vs continuous, continuous vs discrete and discrete vs discrete. Uses a nonparametric bias correction giving Bias Corrected Mutual Information (BCMI). Implemented efficiently in\n    Fortran 95 with OpenMP and suited to large genomic datasets.  '\n  license_family: GPL3\n  license_file:\n    - {{ environ[\"PREFIX\"] }}/lib/R/share/licenses/GPL-3\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n    - Chris-Lowe-Integrity\n\n# Package: mpmi\n# Type: Package\n# Title: Mixed-Pair Mutual Information Estimators\n# Version: 0.43\n# Date: 2019-04-22\n# Author: Chris Pardy\n# Maintainer: Chris Pardy <cooliomcdude@gmail.com>\n# Description: Uses a kernel smoothing approach to calculate Mutual Information for comparisons between all types of variables including continuous vs continuous, continuous vs discrete and discrete vs discrete. Uses a nonparametric bias correction giving Bias Corrected Mutual Information (BCMI). Implemented efficiently in Fortran 95 with OpenMP and suited to large genomic datasets.\n# License: GPL-3\n# URL: http://r-forge.r-project.org/projects/mpmi/\n# Depends: KernSmooth\n# NeedsCompilation: yes\n# Packaged: 2019-04-22 06:12:27 UTC; cp\n# Repository: CRAN\n# Date/Publication: 2019-04-22 06:40:03 UTC\n",
  "req":{
   "__set__":true,
   "elements":[
@@ -293,5 +294,5 @@
   "https://cran.r-project.org/src/contrib/mpmi_0.43.tar.gz",
   "https://cran.r-project.org/src/contrib/Archive/mpmi/mpmi_0.43.tar.gz"
  ],
- "version":"0.43"
+ "version":"0.43.1"
 }
