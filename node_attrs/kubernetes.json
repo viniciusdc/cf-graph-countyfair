@@ -589,6 +589,23 @@
     "migrator_version",
     "version"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/409246483.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"Version",
+    "migrator_version":0,
+    "version":"1.18.2"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "version"
+   ]
   }
  ],
  "bad":false,
@@ -609,7 +626,7 @@
    "home":"https://www.kubernetes.io",
    "license":"Apache-2.0",
    "license_family":"Apache",
-   "license_file":"k8s.io/kubernetes/LICENSE",
+   "license_file":"LICENSE",
    "summary":"Production-Grade Container Orchestration"
   },
   "build":{
@@ -624,23 +641,23 @@
   },
   "package":{
    "name":"kubernetes",
-   "version":"1.16.3"
+   "version":"1.16.4"
   },
   "requirements":{
    "build":[
-    "go_compiler_stub 1.12",
+    "cgo_compiler_stub 1.12.17",
     "c_compiler_stub",
     "make",
     "rsync"
    ]
   },
-  "source":[
-   {
-    "folder":"k8s.io/kubernetes",
-    "sha256":"e6b5c109848e1ff4cf75f3bac6cb199d7d854268e5fde160d7382fb8d716ceb9",
-    "url":"https://github.com/kubernetes/kubernetes/archive/v1.16.3.tar.gz"
-   }
-  ],
+  "source":{
+   "patches":[
+    "0001-unset-conda-go-compiler.diff"
+   ],
+   "sha256":"278e31f0a51a63f0453d3e7af6279b392bfa9b8c8c3d606b3b6d4e0b207fa68b",
+   "url":"https://github.com/kubernetes/kubernetes/archive/v1.16.4.tar.gz"
+  },
   "test":{
    "commands":[
     "kube-proxy --help",
@@ -659,13 +676,17 @@
  },
  "name":"kubernetes",
  "new_version":"1.18.2",
- "pinning_version":"2020.01.10",
- "raw_meta_yaml":"{% set name = \"kubernetes\" %}\n{% set version = \"1.16.3\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  - folder: k8s.io/kubernetes  # [not win]\n    url: https://github.com/kubernetes/{{ name }}/archive/v{{ version }}.tar.gz  # [not win]\n    sha256: e6b5c109848e1ff4cf75f3bac6cb199d7d854268e5fde160d7382fb8d716ceb9  # [not win]\n\n    url: https://dl.k8s.io/v{{ version }}/{{ name }}-node-windows-amd64.tar.gz  # [win]\n    sha256: 5ac5327877013f65c53756f290f465887776dc10458c012379e938868838e40c  # [win]\n\nbuild:\n  number: 0\n\nrequirements:\n  build:\n    - {{ compiler('go') }} 1.12  # [not win]\n    - {{ compiler('c') }}  # [not win]\n    - make  # [not win]\n    - rsync  # [not win]\n\ntest:\n  commands:\n    - hyperkube help  # [linux]\n    - kube-apiserver --help  # [linux]\n    - kube-controller-manager --help  # [linux]\n    - kube-proxy --help  # [not osx]\n    - kube-scheduler --help  # [linux]\n    - kubectl --help\n    - kubelet --help  # [not osx]\n\nabout:\n  home: https://www.kubernetes.io\n  license: Apache-2.0\n  license_family: Apache\n  license_file: k8s.io/kubernetes/LICENSE  # [not win]\n  license_file: LICENSES  # [win]\n  summary: Production-Grade Container Orchestration\n  doc_url: https://docs.kubernetes.io\n  dev_url: https://github.com/kubernetes/kubernetes\n\nextra:\n  recipe-maintainers:\n    - sodre\n",
+ "new_version_attempts":{
+  "1.18.2":1
+ },
+ "new_version_errors":{},
+ "pinning_version":"2020.04.26.19.17.14",
+ "raw_meta_yaml":"{% set name = \"kubernetes\" %}\n{% set version = \"1.16.4\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  url: https://github.com/kubernetes/{{ name }}/archive/v{{ version }}.tar.gz  # [not win]\n  sha256: 278e31f0a51a63f0453d3e7af6279b392bfa9b8c8c3d606b3b6d4e0b207fa68b  # [not win]\n  patches:  # [not win]\n    - 0001-unset-conda-go-compiler.diff  # [not win]\n\n  url: https://dl.k8s.io/v{{ version }}/{{ name }}-node-windows-amd64.tar.gz  # [win]\n  sha256: c265cf6946e9dd9f1a7b2c7ba0a2f39d9451998cf45b17489b78d29a1d910ebe  # [win]\n\nbuild:\n  number: 0\n\nrequirements:\n  build:\n    - {{ compiler('cgo') }} 1.12.17  # [not win]\n    - {{ compiler('c') }}  # [not win]\n    - make  # [not win]\n    - rsync  # [not win]\n\ntest:\n  commands:\n    - hyperkube help  # [linux]\n    - kube-apiserver --help  # [linux]\n    - kube-controller-manager --help  # [linux]\n    - kube-proxy --help  # [not osx]\n    - kube-scheduler --help  # [linux]\n    - kubectl --help\n    - kubelet --help  # [not osx]\n\nabout:\n  home: https://www.kubernetes.io\n  license: Apache-2.0\n  license_family: Apache\n  license_file: LICENSE  # [not win]\n  license_file: LICENSES  # [win]\n  summary: Production-Grade Container Orchestration\n  doc_url: https://docs.kubernetes.io\n  dev_url: https://github.com/kubernetes/kubernetes\n\nextra:\n  recipe-maintainers:\n    - sodre\n",
  "req":{
   "__set__":true,
   "elements":[
    "c_compiler_stub",
-   "go_compiler_stub",
+   "cgo_compiler_stub",
    "make",
    "rsync"
   ]
@@ -675,7 +696,7 @@
    "__set__":true,
    "elements":[
     "c_compiler_stub",
-    "go_compiler_stub",
+    "cgo_compiler_stub",
     "make",
     "rsync"
    ]
@@ -693,14 +714,14 @@
    "elements":[]
   }
  },
- "smithy_version":"3.6.5",
+ "smithy_version":"No azure token. Create a token and\nput it in ~/.conda-smithy/azure.token\n3.6.17",
  "strong_exports":false,
  "total_requirements":{
   "build":{
    "__set__":true,
    "elements":[
     "c_compiler_stub",
-    "go_compiler_stub 1.12",
+    "cgo_compiler_stub 1.12.17",
     "make",
     "rsync"
    ]
@@ -719,5 +740,5 @@
   }
  },
  "url":"https://github.com/kubernetes/kubernetes/archive/v1.15.3.tar.gz",
- "version":"1.16.3"
+ "version":"1.16.4"
 }
