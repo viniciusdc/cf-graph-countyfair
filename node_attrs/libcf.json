@@ -178,9 +178,8 @@
    "summary":"LibCF library access data files in accordance with the CF Conventions."
   },
   "build":{
-   "number":"107",
-   "skip":true,
-   "string":"nompi_h_107"
+   "number":"108",
+   "skip":true
   },
   "extra":{
    "recipe-maintainers":[
@@ -239,19 +238,19 @@
    ],
    "run":[
     "python",
-    "libnetcdf * nompi_*",
+    "libnetcdf",
     "curl >=7.44.0,<8",
     "libuuid",
     "libblas 3.8.0 *openblas",
     "libcblas 3.8.0 *openblas",
     "python",
-    "libnetcdf * nompi_*",
+    "libnetcdf",
     "curl >=7.44.0,<8",
     "libuuid",
     "libblas 3.8.0 *openblas",
     "libcblas 3.8.0 *openblas",
     "python",
-    "libnetcdf * nompi_*",
+    "libnetcdf",
     "curl >=7.44.0,<8",
     "libuuid",
     "libblas 3.8.0 *openblas",
@@ -276,7 +275,7 @@
  "name":"libcf",
  "new_version":"1.0.3",
  "pinning_version":"2020.03.30",
- "raw_meta_yaml":"{% set name = \"libcf\" %}\n{% set version = \"1.0.3\" %}\n{% set build = 7 %}\n\n# ensure mpi is defined (needed for conda-smithy recipe-lint)\n{% set mpi = mpi or 'nompi' %}\n\n{% if mpi == 'nompi' %}\n# prioritize nompi variant\n{% set build = build + 100 %}\n{% endif %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  url: https://github.com/CDAT/libcf/archive/1.0.3.tar.gz\n  sha256: bf8102f55489fe96cd98e365e0e013837396c84a8c47c8a4eb15ef627817c1c9\n\nbuild:\n  number: {{ build }}\n  skip: True  # [win]\n\n  # add build string so packages can depend on\n  # mpi or nompi variants explicitly:\n  # `libcf * mpi_mpich_*` for mpich\n  # `libcf * mpi_*` for any mpi\n  # `libcf * nompi_*` for no mpi\n\n  {% if mpi != 'nompi' %}\n  {% set mpi_prefix = \"mpi_\" + mpi %}\n  {% else %}\n  {% set mpi_prefix = \"nompi\" %}\n  {% endif %}\n  string: \"{{ mpi_prefix }}_h{{ PKG_HASH }}_{{ build }}\"\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n  host:\n    - python\n    - libnetcdf\n    - libnetcdf * {{ mpi_prefix }}_*\n    - libblas 3.8.0 *openblas\n    - libcblas 3.8.0 *openblas\n    - curl >=7.44.0,<8\n    - libuuid\n  run:\n    - python\n    - libnetcdf * {{ mpi_prefix }}_*\n    - curl >=7.44.0,<8\n    - libuuid\n    - libblas 3.8.0 *openblas\n    - libcblas 3.8.0 *openblas\ntest:\n  imports:\n    - pycf\n    - pycf.libCFConfig\n\nabout:\n  home: http://www.unidata.ucar.edu/software/libcf/\n  license: 'UCAR/UNIDATA'\n  license_file: 'COPYRIGHT'\n  summary: 'LibCF library access data files in accordance with the CF Conventions.'\n  description: |\n    By using libcf, a data producer can produce files that conform to the CF\n    standards, without having to write netCDF code to create and decode all\n    the attributes that the CF convention uses to store meta-data. A data consumer\n    can use libcf to read any file which conforms to the CF conventions; the\n    file does not need to be created with libcf to be read by libcf\n  dev_url: https://sourceforge.net/projects/libcf/\n\nextra:\n  recipe-maintainers:\n    - dnadeau4\n    - doutriaux1\n    - xylar\n    - downiec\n    - muryanto1\n    - jasonb5\n",
+ "raw_meta_yaml":"{% set name = \"libcf\" %}\n{% set version = \"1.0.3\" %}\n{% set build = 108 %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  url: https://github.com/CDAT/libcf/archive/1.0.3.tar.gz\n  sha256: bf8102f55489fe96cd98e365e0e013837396c84a8c47c8a4eb15ef627817c1c9\n\nbuild:\n  number: {{ build }}\n  skip: True  # [win]\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n  host:\n    - python\n    - libnetcdf\n    # building with the nompi variant should allow any MPI variant at runtime\n    - libnetcdf * nompi_*\n    - libblas 3.8.0 *openblas\n    - libcblas 3.8.0 *openblas\n    - curl >=7.44.0,<8\n    - libuuid\n  run:\n    - python\n    - libnetcdf\n    - curl >=7.44.0,<8\n    - libuuid\n    - libblas 3.8.0 *openblas\n    - libcblas 3.8.0 *openblas\ntest:\n  imports:\n    - pycf\n    - pycf.libCFConfig\n\nabout:\n  home: http://www.unidata.ucar.edu/software/libcf/\n  license: 'UCAR/UNIDATA'\n  license_file: 'COPYRIGHT'\n  summary: 'LibCF library access data files in accordance with the CF Conventions.'\n  description: |\n    By using libcf, a data producer can produce files that conform to the CF\n    standards, without having to write netCDF code to create and decode all\n    the attributes that the CF convention uses to store meta-data. A data consumer\n    can use libcf to read any file which conforms to the CF conventions; the\n    file does not need to be created with libcf to be read by libcf\n  dev_url: https://sourceforge.net/projects/libcf/\n\nextra:\n  recipe-maintainers:\n    - dnadeau4\n    - doutriaux1\n    - xylar\n    - downiec\n    - muryanto1\n    - jasonb5\n",
  "req":{
   "__set__":true,
   "elements":[
@@ -350,7 +349,7 @@
     "curl >=7.44.0,<8",
     "libblas 3.8.0 *openblas",
     "libcblas 3.8.0 *openblas",
-    "libnetcdf * nompi_*",
+    "libnetcdf",
     "libuuid",
     "python"
    ]

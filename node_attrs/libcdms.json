@@ -204,9 +204,8 @@
    "summary":"Climate Data Management System library"
   },
   "build":{
-   "number":"110",
-   "skip":true,
-   "string":"nompi_h_110"
+   "number":"112",
+   "skip":true
   },
   "extra":{
    "recipe-maintainers":[
@@ -251,7 +250,6 @@
     "libtiff",
     "jpeg",
     "libdrs",
-    "libdrs * nompi_*",
     "hdf5",
     "hdf5 * nompi_*",
     "libnetcdf",
@@ -262,7 +260,6 @@
     "libtiff",
     "jpeg",
     "libdrs",
-    "libdrs * nompi_*",
     "hdf5",
     "hdf5 * nompi_*",
     "libnetcdf",
@@ -272,38 +269,36 @@
     "libpng",
     "libtiff",
     "jpeg",
-    "libdrs",
-    "libdrs * nompi_*"
+    "libdrs"
    ],
    "run":[
-    "hdf5 * nompi_*",
-    "libnetcdf * nompi_*",
+    "hdf5",
+    "libnetcdf",
     "jasper",
     "g2clib",
     "libpng",
     "libtiff",
     "jpeg",
-    "libdrs * nompi_*",
-    "hdf5 * nompi_*",
-    "libnetcdf * nompi_*",
+    "libdrs",
+    "hdf5",
+    "libnetcdf",
     "jasper",
     "g2clib",
     "libpng",
     "libtiff",
     "jpeg",
-    "libdrs * nompi_*",
-    "hdf5 * nompi_*",
-    "libnetcdf * nompi_*",
+    "libdrs",
+    "hdf5",
+    "libnetcdf",
     "jasper",
     "g2clib",
     "libpng",
     "libtiff",
     "jpeg",
-    "libdrs * nompi_*"
+    "libdrs"
    ]
   },
   "source":{
-   "fn":"libcdms-3.1.2.tar.gz",
    "sha256":"2010ef24f8f8c14a6f997206ec342e6fed9703b81f8641d70bebc992a3855e8c",
    "url":"https://github.com/CDAT/libcdms/archive/v3.1.2.tar.gz"
   },
@@ -318,7 +313,7 @@
  "name":"libcdms",
  "new_version":"3.1.2",
  "pinning_version":"2020.04.16.16.23.46",
- "raw_meta_yaml":"{% set name = \"libcdms\" %}\n{% set version = \"3.1.2\" %}\n{% set build = 10 %}\n\n# ensure mpi is defined (needed for conda-smithy recipe-lint)\n{% set mpi = mpi or 'nompi' %}\n\n{% if mpi == 'nompi' %}\n# prioritize nompi variant\n{% set build = build + 100 %}\n{% endif %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  fn: {{ name }}-{{ version }}.tar.gz\n  url: https://github.com/CDAT/libcdms/archive/v{{ version }}.tar.gz\n  sha256: 2010ef24f8f8c14a6f997206ec342e6fed9703b81f8641d70bebc992a3855e8c\n\nbuild:\n  number: {{ build }}\n  skip: True  # [win]\n\n  # add build string so packages can depend on\n  # mpi or nompi variants explicitly:\n  # `libcdms * mpi_mpich_*` for mpich\n  # `libcdms * mpi_*` for any mpi\n  # `libcdms * nompi_*` for no mpi\n\n  {% if mpi != 'nompi' %}\n  {% set mpi_prefix = \"mpi_\" + mpi %}\n  {% else %}\n  {% set mpi_prefix = \"nompi\" %}\n  {% endif %}\n  string: \"{{ mpi_prefix }}_h{{ PKG_HASH }}_{{ build }}\"\n\nrequirements:\n  build:\n    - {{ compiler('fortran') }}\n    - {{ compiler('c') }}\n  host:\n    - hdf5\n    - hdf5 * {{ mpi_prefix }}_*\n    - libnetcdf\n    - libnetcdf * {{ mpi_prefix }}_*\n    - jasper\n    - g2clib\n    - libpng\n    - libtiff\n    - jpeg\n    - libdrs\n    - libdrs * {{ mpi_prefix }}_*\n  run:\n    - hdf5 * {{ mpi_prefix }}_*\n    - libnetcdf * {{ mpi_prefix }}_*\n    - jasper\n    - g2clib\n    - libpng\n    - libtiff\n    - jpeg\n    - libdrs * {{ mpi_prefix }}_*\n\ntest:\n  commands:\n    - test -f $PREFIX/lib/libcdms.a\n\nabout:\n  home: https://github.com/CDAT/libcdms\n  license: BSD-3-Clause\n  license_file: 'bsd-3-clause.txt'\n  summary: 'Climate Data Management System library'\n  description: |\n      The Climate Data Management System is an object-oriented data\n      management system, specialized for organizing multidimensional,\n      gridded data used in climate analysis and simulation.\n  dev_url: https://github.com/CDAT/libcdms\n\nextra:\n  recipe-maintainers:\n    - dnadeau4\n    - doutriaux1\n    - muryanto1\n    - downiec\n    - xylar\n",
+ "raw_meta_yaml":"{% set name = \"libcdms\" %}\n{% set version = \"3.1.2\" %}\n{% set build = 112 %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  url: https://github.com/CDAT/libcdms/archive/v{{ version }}.tar.gz\n  sha256: 2010ef24f8f8c14a6f997206ec342e6fed9703b81f8641d70bebc992a3855e8c\n\nbuild:\n  number: {{ build }}\n  skip: True  # [win]\n\nrequirements:\n  build:\n    - {{ compiler('fortran') }}\n    - {{ compiler('c') }}\n  host:\n    - hdf5\n    - hdf5 * nompi_*\n    - libnetcdf\n    - libnetcdf * nompi_*\n    - jasper\n    - g2clib\n    - libpng\n    - libtiff\n    - jpeg\n    - libdrs\n  run:\n    - hdf5\n    - libnetcdf\n    - jasper\n    - g2clib\n    - libpng\n    - libtiff\n    - jpeg\n    - libdrs\n\ntest:\n  commands:\n    - test -f $PREFIX/lib/libcdms.a\n\nabout:\n  home: https://github.com/CDAT/libcdms\n  license: BSD-3-Clause\n  license_file: 'bsd-3-clause.txt'\n  summary: 'Climate Data Management System library'\n  description: |\n      The Climate Data Management System is an object-oriented data\n      management system, specialized for organizing multidimensional,\n      gridded data used in climate analysis and simulation.\n  dev_url: https://github.com/CDAT/libcdms\n\nextra:\n  recipe-maintainers:\n    - dnadeau4\n    - doutriaux1\n    - muryanto1\n    - downiec\n    - xylar\n",
  "req":{
   "__set__":true,
   "elements":[
@@ -392,7 +387,6 @@
     "jasper",
     "jpeg",
     "libdrs",
-    "libdrs * nompi_*",
     "libnetcdf",
     "libnetcdf * nompi_*",
     "libpng",
@@ -403,11 +397,11 @@
    "__set__":true,
    "elements":[
     "g2clib",
-    "hdf5 * nompi_*",
+    "hdf5",
     "jasper",
     "jpeg",
-    "libdrs * nompi_*",
-    "libnetcdf * nompi_*",
+    "libdrs",
+    "libnetcdf",
     "libpng",
     "libtiff"
    ]
