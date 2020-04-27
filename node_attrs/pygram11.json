@@ -309,6 +309,23 @@
     "migrator_version",
     "name"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/409180032.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"Version",
+    "migrator_version":0,
+    "version":"0.8.1"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "version"
+   ]
   }
  ],
  "bad":false,
@@ -409,8 +426,12 @@
   }
  },
  "name":"pygram11",
- "new_version":"0.8.0",
- "pinning_version":"2020.03.23",
+ "new_version":"0.8.1",
+ "new_version_attempts":{
+  "0.8.1":1
+ },
+ "new_version_errors":{},
+ "pinning_version":"2020.04.26.19.17.14",
  "raw_meta_yaml":"{% set name = \"pygram11\" %}\n{% set version = \"0.8.0\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz\n  sha256: d14a5b792ff17b6f6dea66d045d3033c670d77f81754a17f22f5b0899da77464\n\nbuild:\n  number: 1\n  skip: true  # [win or py2k]\n  script: {{ PYTHON }} -m pip install . --no-deps --ignore-installed --no-cache-dir -vvv\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n    - llvm-openmp  # [osx]\n  host:\n    - python\n    - pip\n    - setuptools\n    - numpy >=1.14\n    - llvm-openmp  # [osx]\n    - libgomp  # [linux]\n  run:\n    - python\n    - llvm-openmp  # [osx]\n    - {{ pin_compatible('numpy') }}\n\ntest:\n  requires:\n    - pytest\n    - numpy >=1.14\n  source_files:\n    - tests\n  imports:\n    - {{ name }}\n  commands:\n    - pytest --ignore=extern\n\nabout:\n  home: http://github.com/douglasdavis/{{ name }}\n  license: MIT\n  license_family: MIT\n  license_file: LICENSE\n  summary: Simple and fast histogramming in Python via pybind11 and OpenMP\n  description: |\n    Simple and fast histogramming with a NumPy like API, built on pybind11 and\n    accelerated with OpenMP.\n  doc_url: https://{{ name }}.readthedocs.io/\n  dev_url: https://github.com/douglasdavis/{{ name }}\n\nextra:\n  recipe-maintainers:\n    - douglasdavis\n",
  "req":{
   "__set__":true,
@@ -465,7 +486,7 @@
    ]
   }
  },
- "smithy_version":"No azure token. Create a token and\nput it in ~/.conda-smithy/azure.token\n3.6.15",
+ "smithy_version":"No azure token. Create a token and\nput it in ~/.conda-smithy/azure.token\n3.6.17",
  "strong_exports":false,
  "total_requirements":{
   "build":{
