@@ -346,7 +346,13 @@
   }
  },
  "name":"boost",
- "new_version":"1.72.0",
+ "new_version":"1.73.0",
+ "new_version_attempts":{
+  "1.73.0":1
+ },
+ "new_version_errors":{
+  "1.73.0":"We found a problem parsing the recipe: \n\nwhile scanning for the next token\nfound character '%' that cannot start any token\n  in \"<unicode string>\", line 43, column 24:\n                \"python%s\" % py,\n                           ^ (line: 43)"
+ },
  "pinning_version":"2020.03.23",
  "raw_meta_yaml":"{% set version = \"1.72.0\" %}\n{% set filename = \"boost_%s.tar.bz2\" % version.replace(\".\", \"_\") %}\n\npackage:\n  name: boost\n  version: {{ version }}\n\nsource:\n  fn:  {{ filename }}\n  url: https://dl.bintray.com/boostorg/release/{{ version }}/source/{{ filename }}\n  sha256: 59c9b274bc451cf91a9ba1dd2c7fdcaf5d60b1b3aa83f2c9fa143417cc660722\n  patches:\n    - fix-include-dir.patch  # [py3k and py<38]\n\nbuild:\n  number: 0\n  skip: true  # [win and vc<14]\n\nrequirements:\n  build:\n    - {{ compiler('cxx') }}\n\n  host:\n    - python\n    - numpy\n    - boost-cpp  {{ version }}\n\n  run:\n    - python\n    - {{ pin_compatible('numpy') }}\n    - boost-cpp  {{ version }}\n\ntest:\n  commands:\n    # Verify Python headers are installed.\n    - test -f $PREFIX/include/boost/python.hpp                 # [unix]\n    - test -d $PREFIX/include/boost/python                     # [unix]\n    - if not exist %LIBRARY_INC%\\\\boost\\\\python.hpp exit 1     # [win]\n    - if not exist %LIBRARY_INC%\\\\boost\\\\python exit 1         # [win]\n\n    # Verify libraries.\n    {% set boost_libs = [\n            \"python%s\" % py,\n            \"numpy%s\" % py\n    ] %}\n    {% for each_boost_lib in boost_libs %}\n    - test -f $PREFIX/lib/libboost_{{ each_boost_lib }}.a                                                 # [unix]\n    - test -f $PREFIX/lib/libboost_{{ each_boost_lib }}${SHLIB_EXT}                                       # [unix]\n    - if not exist %PREFIX%\\\\Library\\\\bin\\\\boost_{{ each_boost_lib }}.dll exit 1                          # [win]\n    - if not exist %PREFIX%\\\\Library\\\\lib\\\\boost_{{ each_boost_lib }}.lib exit 1                          # [win]\n    - if not exist %PREFIX%\\\\Library\\\\lib\\\\libboost_{{ each_boost_lib }}.lib exit 1                       # [win]\n    {% endfor %}\n    - conda inspect linkages -p $PREFIX boost  # [not win]\n    - conda inspect objects -p $PREFIX boost  # [osx]\n\nabout:\n  home: http://www.boost.org/\n  license: Boost-1.0\n  license_file: LICENSE_1_0.txt\n  summary: Free peer-reviewed portable C++ source libraries.\n\nextra:\n  recipe-maintainers:\n    - ccordoba12\n    - jakirkham\n    - msarahan\n    - ocefpaf\n    - jschueller\n    - scopatz\n    - isuruf\n",
  "req":{
