@@ -358,33 +358,7 @@
    ]
   }
  ],
- "bad":{
-  "exception":"Unable to describe table: Unable to locate credentials",
-  "traceback":[
-   "Traceback (most recent call last):",
-   "  File \"/root/repo/cf-scripts/conda_forge_tick/auto_tick.py\", line 798, in main",
-   "    hash_type=attrs.get(\"hash_type\", \"sha256\"),",
-   "  File \"/root/repo/cf-scripts/conda_forge_tick/auto_tick.py\", line 263, in run",
-   "    PRJson.dump(pr_json)",
-   "  File \"/root/repo/cf-scripts/conda_forge_tick/dynamo_models.py\", line 33, in dump",
-   "    item.save()",
-   "  File \"/opt/conda/envs/run_env/lib/python3.7/site-packages/pynamodb/models.py\", line 409, in save",
-   "    data = self._get_connection().put_item(*args, **kwargs)",
-   "  File \"/opt/conda/envs/run_env/lib/python3.7/site-packages/pynamodb/connection/table.py\", line 139, in put_item",
-   "    return_item_collection_metrics=return_item_collection_metrics)",
-   "  File \"/opt/conda/envs/run_env/lib/python3.7/site-packages/pynamodb/connection/base.py\", line 967, in put_item",
-   "    return_item_collection_metrics=return_item_collection_metrics",
-   "  File \"/opt/conda/envs/run_env/lib/python3.7/site-packages/pynamodb/connection/base.py\", line 859, in get_operation_kwargs",
-   "    operation_kwargs.update(self.get_identifier_map(table_name, hash_key, range_key, key=key))",
-   "  File \"/opt/conda/envs/run_env/lib/python3.7/site-packages/pynamodb/connection/base.py\", line 781, in get_identifier_map",
-   "    tbl = self.get_meta_table(table_name)",
-   "  File \"/opt/conda/envs/run_env/lib/python3.7/site-packages/pynamodb/connection/base.py\", line 550, in get_meta_table",
-   "    six.raise_from(TableError(\"Unable to describe table: {}\".format(e), e), None)",
-   "  File \"<string>\", line 3, in raise_from",
-   "pynamodb.exceptions.TableError: Unable to describe table: Unable to locate credentials",
-   ""
-  ]
- },
+ "bad":false,
  "conda-forge.yml":{
   "bot":{
    "automerge":true
@@ -407,9 +381,9 @@
   "build":{
    "number":"0",
    "script":[
-    "go build -v -o terraform-provider-digitalocean_v1.16.0_x4",
-    "go build -v -o terraform-provider-digitalocean_v1.16.0_x4",
-    "go build -v -o terraform-provider-digitalocean_v1.16.0_x4"
+    "go build -v -o terraform-provider-digitalocean_v1.17.0_x4",
+    "go build -v -o terraform-provider-digitalocean_v1.17.0_x4",
+    "go build -v -o terraform-provider-digitalocean_v1.17.0_x4"
    ]
   },
   "extra":{
@@ -421,7 +395,7 @@
   },
   "package":{
    "name":"terraform-provider-digitalocean",
-   "version":"1.16.0"
+   "version":"1.17.0"
   },
   "requirements":{
    "build":[
@@ -436,23 +410,23 @@
    ]
   },
   "source":{
-   "sha256":"29cb58af9b4c59f6b9f69364827e6932b4781911e26ff435cda63382e3a0561f",
-   "url":"https://github.com/terraform-providers/terraform-provider-digitalocean/archive/v1.16.0.tar.gz"
+   "sha256":"1453be23b7c71bd926dae564d4c184eb2d4aaf62e0e5d219cf4c74446c0a5eaf",
+   "url":"https://github.com/terraform-providers/terraform-provider-digitalocean/archive/v1.17.0.tar.gz"
   },
   "test":{
    "commands":[
-    "echo provider \"digitalocean\" { version=\"1.16.0\" } > init.tf",
+    "echo provider \"digitalocean\" { version=\"1.17.0\" } > init.tf",
     "terraform init",
     "if not exist .terraform\\plugins\\_\\lock.json exit 1",
-    "if exist .terraform\\plugins\\_\\terraform-provider-digitalocean_v1.16.0_x4 exit 1",
-    "echo 'provider \"digitalocean\" { version=\"1.16.0\" }' > init.tf",
+    "if exist .terraform\\plugins\\_\\terraform-provider-digitalocean_v1.17.0_x4 exit 1",
+    "echo 'provider \"digitalocean\" { version=\"1.17.0\" }' > init.tf",
     "terraform init",
     "test -f .terraform/plugins/_/lock.json",
-    "test ! -f .terraform/plugins/_/terraform-provider-digitalocean_v1.16.0_x4",
-    "echo 'provider \"digitalocean\" { version=\"1.16.0\" }' > init.tf",
+    "test ! -f .terraform/plugins/_/terraform-provider-digitalocean_v1.17.0_x4",
+    "echo 'provider \"digitalocean\" { version=\"1.17.0\" }' > init.tf",
     "terraform init",
     "test -f .terraform/plugins/_/lock.json",
-    "test ! -f .terraform/plugins/_/terraform-provider-digitalocean_v1.16.0_x4"
+    "test ! -f .terraform/plugins/_/terraform-provider-digitalocean_v1.17.0_x4"
    ]
   }
  },
@@ -464,7 +438,7 @@
  },
  "new_version_errors":{},
  "pinning_version":"2020.04.21.12.59.15",
- "raw_meta_yaml":"{% set provider = \"DigitalOcean\" %}\n{% set goname = \"github.com/terraform-providers/terraform-provider-\"+provider.lower() %}\n{% set version = \"1.16.0\" %}\n\n{% set name = goname.split('/')[-1] %}\n\n{% set x4_plugin = name + '_v' + version + \"_x4\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  url: https://{{ goname }}/archive/v{{ version }}.tar.gz\n  sha256: 29cb58af9b4c59f6b9f69364827e6932b4781911e26ff435cda63382e3a0561f\n\nbuild:\n  number: 0\n  script:\n    - go build -v -o {{ target_gobin }}{{ x4_plugin }}{{ target_goexe }}\n\nrequirements:\n  build:\n    - {{ compiler('go') }} 1.13\n  run:\n    - terraform 0.12\n\ntest:\n  commands:\n    # Create a sample init.tf loading the provider\n    - echo 'provider \"{{ provider|lower }}\" { version=\"{{ version }}\" }' > init.tf  # [unix]\n    - echo provider \"{{ provider|lower }}\" { version=\"{{ version }}\" } > init.tf    # [win]\n\n    # Initialize\n    - terraform init\n\n    # Tests that init was successful\n    - test -f .terraform/plugins/{{ target_goos }}_{{ target_goarch }}/lock.json              # [unix]\n    - if not exist .terraform\\plugins\\{{ target_goos }}_{{ target_goarch }}\\lock.json exit 1  # [win]\n\n    # Test that the provider was not downloaded\n    - test ! -f .terraform/plugins/{{ target_goos }}_{{ target_goarch }}/{{ x4_plugin }}{{ target_goexe }}        # [unix]\n    - if exist .terraform\\plugins\\{{ target_goos }}_{{ target_goarch }}\\{{ x4_plugin }}{{ target_goexe }} exit 1  # [win]\n\nabout:\n  home: https://www.terraform.io\n  license: MPL-2.0\n  license_file: LICENSE\n  summary: The Terraform {{ provider }} provider\n  doc_url: https://www.terraform.io/docs/providers/{{ provider|lower }}/index.html\n  dev_url: https://github.com/terraform-providers/{{ name }}\n\nextra:\n  recipe-maintainers:\n    - conda-forge/terraform\n",
+ "raw_meta_yaml":"{% set provider = \"DigitalOcean\" %}\n{% set goname = \"github.com/terraform-providers/terraform-provider-\"+provider.lower() %}\n{% set version = \"1.17.0\" %}\n\n{% set name = goname.split('/')[-1] %}\n\n{% set x4_plugin = name + '_v' + version + \"_x4\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  url: https://{{ goname }}/archive/v{{ version }}.tar.gz\n  sha256: 1453be23b7c71bd926dae564d4c184eb2d4aaf62e0e5d219cf4c74446c0a5eaf\n\nbuild:\n  number: 0\n  script:\n    - go build -v -o {{ target_gobin }}{{ x4_plugin }}{{ target_goexe }}\n\nrequirements:\n  build:\n    - {{ compiler('go') }} 1.13\n  run:\n    - terraform 0.12\n\ntest:\n  commands:\n    # Create a sample init.tf loading the provider\n    - echo 'provider \"{{ provider|lower }}\" { version=\"{{ version }}\" }' > init.tf  # [unix]\n    - echo provider \"{{ provider|lower }}\" { version=\"{{ version }}\" } > init.tf    # [win]\n\n    # Initialize\n    - terraform init\n\n    # Tests that init was successful\n    - test -f .terraform/plugins/{{ target_goos }}_{{ target_goarch }}/lock.json              # [unix]\n    - if not exist .terraform\\plugins\\{{ target_goos }}_{{ target_goarch }}\\lock.json exit 1  # [win]\n\n    # Test that the provider was not downloaded\n    - test ! -f .terraform/plugins/{{ target_goos }}_{{ target_goarch }}/{{ x4_plugin }}{{ target_goexe }}        # [unix]\n    - if exist .terraform\\plugins\\{{ target_goos }}_{{ target_goarch }}\\{{ x4_plugin }}{{ target_goexe }} exit 1  # [win]\n\nabout:\n  home: https://www.terraform.io\n  license: MPL-2.0\n  license_file: LICENSE\n  summary: The Terraform {{ provider }} provider\n  doc_url: https://www.terraform.io/docs/providers/{{ provider|lower }}/index.html\n  dev_url: https://github.com/terraform-providers/{{ name }}\n\nextra:\n  recipe-maintainers:\n    - conda-forge/terraform\n",
  "req":{
   "__set__":true,
   "elements":[
@@ -519,5 +493,5 @@
   }
  },
  "url":"https://github.com/terraform-providers/terraform-provider-digitalocean/archive/v1.7.0.tar.gz",
- "version":"1.16.0"
+ "version":"1.17.0"
 }
