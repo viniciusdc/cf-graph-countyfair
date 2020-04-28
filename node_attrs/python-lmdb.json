@@ -246,7 +246,7 @@
   }
  },
  "name":"python-lmdb",
- "new_version":"0.98",
+ "new_version":"0.97",
  "pinning_version":"2020.03.16",
  "raw_meta_yaml":"{% set name = \"python-lmdb\" %}\n{% set pypi_name = \"lmdb\" %}\n{% set github_name = \"py-lmdb\" %}\n{% set version = \"0.96\" %}\n{% set sha256 = \"b21e2babc3fb024a0d8e5a8e515f18e280e6ab9d6e00c54b991508a0dd34db28\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  fn: {{ github_name }}_{{ version }}.zip\n  url: https://github.com/dw/{{ github_name }}/archive/{{ github_name }}_{{ version }}.zip\n  sha256: {{ sha256 }}\n  patches:\n    - windows-skip-tests.patch\n\nbuild:\n  number: 0\n  script: python -m pip install --no-deps --ignore-installed .\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n  host:\n    - python\n    - pip\n  run:\n    - python\n\ntest:\n  source_files:\n    - tests\n  requires:\n    - pytest\n  imports:\n    - lmdb\n  commands:\n    - py.test tests\n\nabout:\n  home: https://lmdb.readthedocs.io/\n  license: OpenLDAP\n  license_file: LICENSE\n  summary: \"Universal Python binding for the LMDB 'Lightning' Database\"\n\n  description: |\n    LMDB is a fast, memory-efficient, embedded key-value store (it does\n    not require running an external daemon).\n    With memory-mapped files, it has the read performance of a pure\n    in-memory database while retaining the persistence of standard\n    disk-based databases.\n    python-lmdb is a Python binding for LMDB including a bundled\n    version of LMDB.\n  doc_url: https://lmdb.readthedocs.io/\n  dev_url: https://github.com/dw/py-lmdb/\n\nextra:\n  recipe-maintainers:\n    - pitrou\n",
  "req":{
