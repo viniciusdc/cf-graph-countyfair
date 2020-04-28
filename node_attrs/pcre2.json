@@ -16,6 +16,23 @@
     "migrator_version",
     "name"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/410029840.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"ArchRebuild",
+    "migrator_version":1,
+    "name":"aarch64 and ppc64le addition"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "name"
+   ]
   }
  ],
  "bad":false,
@@ -134,7 +151,7 @@
  },
  "name":"pcre2",
  "new_version":false,
- "pinning_version":"2018.08.14",
+ "pinning_version":"2020.04.27.17.45.41",
  "raw_meta_yaml":"{% set name = \"pcre2\" %}\n{% set version = \"10.34\" %}\n\npackage:\n  name: {{ name }}\n  version: {{ version }}\n\nsource:\n  url: https://ftp.pcre.org/pub/pcre/{{ name }}-{{ version }}.tar.bz2\n  sha256: 74c473ffaba9e13db6951fd146e0143fe9887852ce73406a03277af1d9b798ca\n  patches:\n    # https://bugs.exim.org/show_bug.cgi?id=2558\n    - cmake-soversion.patch\n    # https://bugs.exim.org/show_bug.cgi?id=2557\n    - pkgconfig-cmake.patch\n\nbuild:\n  number: 0\n  run_exports:\n    # https://abi-laboratory.pro/index.php?view=timeline&l=pcre2\n    - {{ pin_subpackage(\"pcre2\", max_pin=\"x.x\") }}\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - cmake\n    - ninja\n  host:\n    - bzip2\n    - zlib\n\ntest:\n  commands:\n    - pcre2test --version\n    - pcre2grep --version\n\n    - pcre2-config --version                                  # [not win]\n    - test -f ${PREFIX}/include/pcre2.h                       # [not win]\n    - test -f ${PREFIX}/include/pcre2posix.h                  # [not win]\n    - test -f ${PREFIX}/lib/libpcre2-posix${SHLIB_EXT}        # [not win]\n    - test -f ${PREFIX}/lib/libpcre2-posix.2${SHLIB_EXT}      # [osx]\n    - test -f ${PREFIX}/lib/libpcre2-posix${SHLIB_EXT}.2      # [linux]\n    - test -f ${PREFIX}/lib/libpcre2-posix${SHLIB_EXT}.2.0.3  # [linux]\n    - test -f ${PREFIX}/lib/libpcre2-8${SHLIB_EXT}            # [not win]\n    - test -f ${PREFIX}/lib/libpcre2-8.0${SHLIB_EXT}          # [osx]\n    - test -f ${PREFIX}/lib/libpcre2-8${SHLIB_EXT}.0          # [linux]\n    - test -f ${PREFIX}/lib/libpcre2-8${SHLIB_EXT}.0.9.0      # [linux]\n    - test -f ${PREFIX}/lib/pkgconfig/libpcre2-8.pc           # [not win]\n    - test -f ${PREFIX}/lib/pkgconfig/libpcre2-posix.pc       # [not win]\n\n    - if not exist %LIBRARY_INC%\\\\pcre2.h exit 1                              # [win]\n    - if not exist %LIBRARY_INC%\\\\pcre2posix.h exit 1                         # [win]\n    - if not exist %LIBRARY_BIN%\\\\pcre2-8.dll exit 1                          # [win]\n    - if not exist %LIBRARY_BIN%\\\\pcre2-posix.dll exit 1                      # [win]\n    - if not exist %LIBRARY_PREFIX%\\\\lib\\\\pkgconfig\\\\libpcre2-posix.pc exit 1  # [win]\n    - if not exist %LIBRARY_PREFIX%\\\\lib\\\\pkgconfig\\\\libpcre2-8.pc exit 1      # [win]\n\nabout:\n  home: http://www.pcre.org/\n  license: BSD-3-Clause\n  license_family: BSD\n  license_file: LICENCE\n  summary: 'Regular expression pattern matching using Perl 5 syntax and semantics.'\n  description: |\n    The PCRE library is a set of functions that implement regular expression pattern matching\n    using the same syntax and semantics as Perl 5. PCRE has its own native API, as well as a set of\n    wrapper functions that correspond to the POSIX regular expression API. The PCRE library is\n    free, even for building proprietary software.\n  doc_url: http://www.pcre.org/current/doc/html/\n\nextra:\n  recipe-maintainers:\n    - dfornika\n    - mariusvniekerk\n    - xhochy\n",
  "req":{
   "__set__":true,
@@ -171,7 +188,7 @@
    "elements":[]
   }
  },
- "smithy_version":"3.1.12",
+ "smithy_version":"No azure token. Create a token and\nput it in ~/.conda-smithy/azure.token\n3.7.0",
  "strong_exports":false,
  "total_requirements":{
   "build":{
