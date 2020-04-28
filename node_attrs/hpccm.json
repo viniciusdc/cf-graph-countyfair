@@ -277,7 +277,33 @@
    ]
   }
  ],
- "bad":false,
+ "bad":{
+  "exception":"Unable to describe table: Unable to locate credentials",
+  "traceback":[
+   "Traceback (most recent call last):",
+   "  File \"/root/repo/cf-scripts/conda_forge_tick/auto_tick.py\", line 798, in main",
+   "    hash_type=attrs.get(\"hash_type\", \"sha256\"),",
+   "  File \"/root/repo/cf-scripts/conda_forge_tick/auto_tick.py\", line 263, in run",
+   "    PRJson.dump(pr_json)",
+   "  File \"/root/repo/cf-scripts/conda_forge_tick/dynamo_models.py\", line 33, in dump",
+   "    item.save()",
+   "  File \"/opt/conda/envs/run_env/lib/python3.7/site-packages/pynamodb/models.py\", line 409, in save",
+   "    data = self._get_connection().put_item(*args, **kwargs)",
+   "  File \"/opt/conda/envs/run_env/lib/python3.7/site-packages/pynamodb/connection/table.py\", line 139, in put_item",
+   "    return_item_collection_metrics=return_item_collection_metrics)",
+   "  File \"/opt/conda/envs/run_env/lib/python3.7/site-packages/pynamodb/connection/base.py\", line 967, in put_item",
+   "    return_item_collection_metrics=return_item_collection_metrics",
+   "  File \"/opt/conda/envs/run_env/lib/python3.7/site-packages/pynamodb/connection/base.py\", line 859, in get_operation_kwargs",
+   "    operation_kwargs.update(self.get_identifier_map(table_name, hash_key, range_key, key=key))",
+   "  File \"/opt/conda/envs/run_env/lib/python3.7/site-packages/pynamodb/connection/base.py\", line 781, in get_identifier_map",
+   "    tbl = self.get_meta_table(table_name)",
+   "  File \"/opt/conda/envs/run_env/lib/python3.7/site-packages/pynamodb/connection/base.py\", line 550, in get_meta_table",
+   "    six.raise_from(TableError(\"Unable to describe table: {}\".format(e), e), None)",
+   "  File \"<string>\", line 3, in raise_from",
+   "pynamodb.exceptions.TableError: Unable to describe table: Unable to locate credentials",
+   ""
+  ]
+ },
  "conda-forge.yml":{
   "provider":{
    "win":"azure"
@@ -363,7 +389,11 @@
   }
  },
  "name":"hpccm",
- "new_version":"20.3.0",
+ "new_version":"20.4.0",
+ "new_version_attempts":{
+  "20.4.0":1
+ },
+ "new_version_errors":{},
  "pinning_version":"2020.03.24",
  "raw_meta_yaml":"{% set name = \"hpccm\" %}\n{% set version = \"20.3.0\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz\n  sha256: 91ea6e8048f257bb8797eb3387665fa94e2778c8e2ae752716e5926bb8d65f57\n\nbuild:\n  number: 0\n  entry_points:\n    - hpccm=hpccm.cli:main\n  script: '{{ PYTHON }} -m pip install . --no-deps --ignore-installed -vv '\n\nrequirements:\n  host:\n    - enum34  # [py<34]\n    - pip\n    - python\n    - six\n  run:\n    - enum34  # [py<34]\n    - python\n    - six\n\ntest:\n  imports:\n    - hpccm\n    - hpccm.building_blocks\n    - hpccm.primitives\n    - hpccm.templates\n  commands:\n    - hpccm --help\n\nabout:\n  home: https://github.com/NVIDIA/hpc-container-maker\n  license: Apache Software\n  license_family: APACHE\n  license_file: LICENSE\n  summary: HPC Container Maker\n  doc_url: https://github.com/NVIDIA/hpc-container-maker/tree/master/docs\n  dev_url: https://github.com/NVIDIA/hpc-container-maker\n\nextra:\n  recipe-maintainers:\n    - tschoonj\n",
  "req":{
