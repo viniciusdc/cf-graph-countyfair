@@ -18,33 +18,7 @@
    ]
   }
  ],
- "bad":{
-  "exception":"Unable to describe table: Unable to locate credentials",
-  "traceback":[
-   "Traceback (most recent call last):",
-   "  File \"/root/repo/cf-scripts/conda_forge_tick/auto_tick.py\", line 798, in main",
-   "    hash_type=attrs.get(\"hash_type\", \"sha256\"),",
-   "  File \"/root/repo/cf-scripts/conda_forge_tick/auto_tick.py\", line 263, in run",
-   "    PRJson.dump(pr_json)",
-   "  File \"/root/repo/cf-scripts/conda_forge_tick/dynamo_models.py\", line 33, in dump",
-   "    item.save()",
-   "  File \"/opt/conda/envs/run_env/lib/python3.7/site-packages/pynamodb/models.py\", line 409, in save",
-   "    data = self._get_connection().put_item(*args, **kwargs)",
-   "  File \"/opt/conda/envs/run_env/lib/python3.7/site-packages/pynamodb/connection/table.py\", line 139, in put_item",
-   "    return_item_collection_metrics=return_item_collection_metrics)",
-   "  File \"/opt/conda/envs/run_env/lib/python3.7/site-packages/pynamodb/connection/base.py\", line 967, in put_item",
-   "    return_item_collection_metrics=return_item_collection_metrics",
-   "  File \"/opt/conda/envs/run_env/lib/python3.7/site-packages/pynamodb/connection/base.py\", line 859, in get_operation_kwargs",
-   "    operation_kwargs.update(self.get_identifier_map(table_name, hash_key, range_key, key=key))",
-   "  File \"/opt/conda/envs/run_env/lib/python3.7/site-packages/pynamodb/connection/base.py\", line 781, in get_identifier_map",
-   "    tbl = self.get_meta_table(table_name)",
-   "  File \"/opt/conda/envs/run_env/lib/python3.7/site-packages/pynamodb/connection/base.py\", line 550, in get_meta_table",
-   "    six.raise_from(TableError(\"Unable to describe table: {}\".format(e), e), None)",
-   "  File \"<string>\", line 3, in raise_from",
-   "pynamodb.exceptions.TableError: Unable to describe table: Unable to locate credentials",
-   ""
-  ]
- },
+ "bad":false,
  "conda-forge.yml":{},
  "feedstock_name":"pyboat",
  "hash_type":"sha256",
@@ -71,7 +45,7 @@
    ],
    "noarch":"python",
    "number":"0",
-   "script":" -m pip install . -vv"
+   "script":"-m pip install . -vv"
   },
   "extra":{
    "recipe-maintainers":[
@@ -82,7 +56,7 @@
   },
   "package":{
    "name":"pyboat",
-   "version":"0.7.3"
+   "version":"0.7.4.1"
   },
   "requirements":{
    "host":[
@@ -121,8 +95,8 @@
    ]
   },
   "source":{
-   "sha256":"546c81d1cb952e25cd7660642741530e12c3b5053bacd54c7e745c4eae8becee",
-   "url":"https://pypi.io/packages/source/p/pyboat/pyboat-0.7.3.tar.gz"
+   "sha256":"bc0aa1df6cd0b3a0bd3fe3dadf6f6cd3ccd9806bcd6f754cfef82a4dd92302c3",
+   "url":"https://pypi.io/packages/source/p/pyboat/pyboat-0.7.4.1.tar.gz"
   },
   "test":{
    "imports":[
@@ -139,7 +113,7 @@
  },
  "new_version_errors":{},
  "pinning_version":"2020.04.26.19.17.14",
- "raw_meta_yaml":"{% set name = \"pyboat\" %}\n{% set version = \"0.7.3\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz\n  sha256: 546c81d1cb952e25cd7660642741530e12c3b5053bacd54c7e745c4eae8becee\n\nbuild:\n  number: 0\n  noarch: python\n  entry_points:\n    - pyboat = pyboat:main  \n  script: \"{{ PYTHON }} -m pip install . -vv\"\n\nrequirements:\n  host:\n    - pip\n    - python\n    - flit-core >=2.3\n  run:\n    - matplotlib >=3.1\n    - numpy >=1.18\n    - pandas >=0.25\n    - pyqt >=5.9\n    - python\n    - scipy >=1.4\n    - flit-core >=2.3\n\ntest:\n  imports:\n    - pyboat\n    \napp:\n    entry: pyBOAT\n    summary: pyBOAT GUI - Interactive wavelet analysis for biological data. Provides phase, period and amplitude extraction of non-stationary oscillatory signals.'\n    type: desk\n    icon: logo_96x96.png\n\nabout:\n  home: https://github.com/tensionhead/pyboat\n  license: GPL-3.0-or-later\n  license_file: LICENSE\n  summary: 'pyBOAT - A Biological Oscillations Analysis Toolkit'\n  description: 'Interactive time-frequency analysis for biological data\n\n\t\t using wavelets. Features optimal sinc filter for\n\n\t\t detrending and provides phase, period and amplitude\n\n\t\t extraction of non-stationary oscillatory signals.'\n  dev_url: https://github.com/tensionhead/pyboat\n\nextra:\n  recipe-maintainers:\n    - tensionhead\n",
+ "raw_meta_yaml":"{% set name = \"pyboat\" %}\n{% set version = \"0.7.4.1\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz\n  sha256: bc0aa1df6cd0b3a0bd3fe3dadf6f6cd3ccd9806bcd6f754cfef82a4dd92302c3\n\nbuild:\n  number: 0\n  noarch: python\n  entry_points:\n    - pyboat = pyboat:main\n  script: {{ PYTHON }} -m pip install . -vv\n\nrequirements:\n  host:\n    - pip\n    - python\n    - flit-core >=2.3\n  run:\n    - matplotlib >=3.1\n    - numpy >=1.18\n    - pandas >=0.25\n    - pyqt >=5.9\n    - python\n    - scipy >=1.4\n    - flit-core >=2.3\n\ntest:\n  imports:\n    - pyboat\n\napp:\n  entry: pyBOAT\n  summary: pyBOAT GUI - Interactive wavelet analysis for biological data. Provides phase, period and amplitude extraction of non-stationary oscillatory signals.'\n  type: desk\n  icon: logo_96x96.png\n\nabout:\n  home: https://github.com/tensionhead/pyboat\n  license: GPL-3.0-or-later\n  license_file: LICENSE\n  summary: pyBOAT - A Biological Oscillations Analysis Toolkit\n  description: \"Interactive time-frequency analysis for biological data\\nusing wavelets. Features optimal sinc filter for\\ndetrending and provides phase, period and amplitude\\nextraction of non-stationary oscillatory signals.\"\n  dev_url: https://github.com/tensionhead/pyboat\n\nextra:\n  recipe-maintainers:\n    - tensionhead\n",
  "req":{
   "__set__":true,
   "elements":[
@@ -216,5 +190,5 @@
   }
  },
  "url":"https://pypi.io/packages/source/p/pyboat/pyboat-0.7.3.tar.gz",
- "version":"0.7.3"
+ "version":"0.7.4.1"
 }
