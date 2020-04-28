@@ -950,7 +950,13 @@
   }
  },
  "name":"uvicorn",
- "new_version":"0.11.3",
+ "new_version":"0.11.4",
+ "new_version_attempts":{
+  "0.11.4":1
+ },
+ "new_version_errors":{
+  "0.11.4":"We found a problem parsing the recipe: \n\nwhile constructing a mapping\n  in \"<unicode string>\", line 33, column 3:\n      requires:\n      ^ (line: 33)\nfound duplicate key \"commands\" with value \"['uvicorn --help']\" (original value: \"['pip check']\")\n  in \"<unicode string>\", line 39, column 3:\n      commands:\n      ^ (line: 39)\n\nTo suppress this check see:\n    http://yaml.readthedocs.io/en/latest/api.html#duplicate-keys\n\nDuplicate keys will become an error in future releases, and are errors\nby default when using the new API.\n"
+ },
  "pinning_version":"2020.03.16",
  "raw_meta_yaml":"{% set version = \"0.11.3\" %}\n\npackage:\n  name: uvicorn\n  version: {{ version }}\n\nsource:\n  url: https://pypi.io/packages/source/u/uvicorn/uvicorn-{{ version }}.tar.gz\n  sha256: 6fdaf8e53bf1b2ddf0fe9ed06079b5348d7d1d87b3365fe2549e6de0d49e631c\n\nbuild:\n  number: 1\n  script: \"{{ PYTHON }} -m pip install . -vv\"\n  skip: True  # [py2k]\n  entry_points:\n    - uvicorn = uvicorn.main:main\n\nrequirements:\n  host:\n    - python\n    - pip\n  run:\n    - python\n    - click =7\n    - h11 >=0.8,<0.10\n    - websockets =8\n    - httptools =0.1  # [not win]\n    - uvloop >=0.14.0  # [not win]\n    - wsproto =0.13\n    - gunicorn  # [not win]\n\ntest:\n  requires:\n    - pip\n  commands:\n    - pip check\n  imports:\n    - uvicorn\n  commands:\n    - uvicorn --help\n\nabout:\n  home: https://github.com/encode/uvicorn\n  license: BSD-3-Clause\n  license_family: BSD\n  license_file: LICENSE.md\n  summary: 'The lightning-fast ASGI server. \ud83e\udd84'\n  description: |\n    Uvicorn is a lightning-fast ASGI server implementation,\n    using [uvloop](https://github.com/MagicStack/uvloop) and\n    [httptools](https://github.com/MagicStack/httptools).\n  doc_url: https://www.uvicorn.org/\n  dev_url: https://github.com/encode/uvicorn\n\nextra:\n  recipe-maintainers:\n    - carlodri\n    - ocefpaf\n",
  "req":{
