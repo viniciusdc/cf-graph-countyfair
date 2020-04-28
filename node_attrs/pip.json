@@ -335,7 +335,33 @@
    ]
   }
  ],
- "bad":false,
+ "bad":{
+  "exception":"Unable to describe table: Unable to locate credentials",
+  "traceback":[
+   "Traceback (most recent call last):",
+   "  File \"/root/repo/cf-scripts/conda_forge_tick/auto_tick.py\", line 798, in main",
+   "    hash_type=attrs.get(\"hash_type\", \"sha256\"),",
+   "  File \"/root/repo/cf-scripts/conda_forge_tick/auto_tick.py\", line 263, in run",
+   "    PRJson.dump(pr_json)",
+   "  File \"/root/repo/cf-scripts/conda_forge_tick/dynamo_models.py\", line 33, in dump",
+   "    item.save()",
+   "  File \"/opt/conda/envs/run_env/lib/python3.7/site-packages/pynamodb/models.py\", line 409, in save",
+   "    data = self._get_connection().put_item(*args, **kwargs)",
+   "  File \"/opt/conda/envs/run_env/lib/python3.7/site-packages/pynamodb/connection/table.py\", line 139, in put_item",
+   "    return_item_collection_metrics=return_item_collection_metrics)",
+   "  File \"/opt/conda/envs/run_env/lib/python3.7/site-packages/pynamodb/connection/base.py\", line 967, in put_item",
+   "    return_item_collection_metrics=return_item_collection_metrics",
+   "  File \"/opt/conda/envs/run_env/lib/python3.7/site-packages/pynamodb/connection/base.py\", line 859, in get_operation_kwargs",
+   "    operation_kwargs.update(self.get_identifier_map(table_name, hash_key, range_key, key=key))",
+   "  File \"/opt/conda/envs/run_env/lib/python3.7/site-packages/pynamodb/connection/base.py\", line 781, in get_identifier_map",
+   "    tbl = self.get_meta_table(table_name)",
+   "  File \"/opt/conda/envs/run_env/lib/python3.7/site-packages/pynamodb/connection/base.py\", line 550, in get_meta_table",
+   "    six.raise_from(TableError(\"Unable to describe table: {}\".format(e), e), None)",
+   "  File \"<string>\", line 3, in raise_from",
+   "pynamodb.exceptions.TableError: Unable to describe table: Unable to locate credentials",
+   ""
+  ]
+ },
  "conda-forge.yml":{
   "compiler_stack":"comp7",
   "max_py_ver":"37",
@@ -436,7 +462,11 @@
   }
  },
  "name":"pip",
- "new_version":"20.0.2",
+ "new_version":"20.1",
+ "new_version_attempts":{
+  "20.1":1
+ },
+ "new_version_errors":{},
  "pinning_version":"2020.01.24",
  "raw_meta_yaml":"{% set version = \"20.0.2\" %}\n\npackage:\n  name: pip\n  version: {{ version }}\n\nsource:\n  url: https://pypi.io/packages/source/p/pip/pip-{{ version }}.tar.gz\n  sha256: 7db0c8ea4c7ea51c8049640e8e6e7fde949de672bfa4949920675563a5a6967f\n\nbuild:\n  noarch: python\n  number: 2\n  disable_pip: True\n  entry_points:\n    - pip = pip._internal.cli.main:main\n\nrequirements:\n  host:\n    - python\n    - setuptools\n  run:\n    - python\n    - setuptools\n    - wheel\n\ntest:\n  commands:\n    - pip -h\n    - pip list\n  imports:\n    - pip\n\nabout:\n  home: https://pip.pypa.io/en/stable/\n  license: MIT\n  license_family: MIT\n  license_file: LICENSE.txt\n  summary: PyPA recommended tool for installing Python packages\n  doc_url: https://pip.pypa.io/en/stable/\n  dev_url: https://github.com/pypa/pip\n\nextra:\n  recipe-maintainers:\n    - jakirkham\n    - jjhelmus\n    - msarahan\n    - pelson\n    - ocefpaf\n    - mingwandroid\n",
  "req":{

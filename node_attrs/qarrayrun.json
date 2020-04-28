@@ -1,5 +1,31 @@
 {
- "bad":false,
+ "bad":{
+  "exception":"Unable to describe table: Unable to locate credentials",
+  "traceback":[
+   "Traceback (most recent call last):",
+   "  File \"/root/repo/cf-scripts/conda_forge_tick/auto_tick.py\", line 798, in main",
+   "    hash_type=attrs.get(\"hash_type\", \"sha256\"),",
+   "  File \"/root/repo/cf-scripts/conda_forge_tick/auto_tick.py\", line 263, in run",
+   "    PRJson.dump(pr_json)",
+   "  File \"/root/repo/cf-scripts/conda_forge_tick/dynamo_models.py\", line 33, in dump",
+   "    item.save()",
+   "  File \"/opt/conda/envs/run_env/lib/python3.7/site-packages/pynamodb/models.py\", line 409, in save",
+   "    data = self._get_connection().put_item(*args, **kwargs)",
+   "  File \"/opt/conda/envs/run_env/lib/python3.7/site-packages/pynamodb/connection/table.py\", line 139, in put_item",
+   "    return_item_collection_metrics=return_item_collection_metrics)",
+   "  File \"/opt/conda/envs/run_env/lib/python3.7/site-packages/pynamodb/connection/base.py\", line 967, in put_item",
+   "    return_item_collection_metrics=return_item_collection_metrics",
+   "  File \"/opt/conda/envs/run_env/lib/python3.7/site-packages/pynamodb/connection/base.py\", line 859, in get_operation_kwargs",
+   "    operation_kwargs.update(self.get_identifier_map(table_name, hash_key, range_key, key=key))",
+   "  File \"/opt/conda/envs/run_env/lib/python3.7/site-packages/pynamodb/connection/base.py\", line 781, in get_identifier_map",
+   "    tbl = self.get_meta_table(table_name)",
+   "  File \"/opt/conda/envs/run_env/lib/python3.7/site-packages/pynamodb/connection/base.py\", line 550, in get_meta_table",
+   "    six.raise_from(TableError(\"Unable to describe table: {}\".format(e), e), None)",
+   "  File \"<string>\", line 3, in raise_from",
+   "pynamodb.exceptions.TableError: Unable to describe table: Unable to locate credentials",
+   ""
+  ]
+ },
  "conda-forge.yml":{},
  "feedstock_name":"qarrayrun",
  "hash_type":"sha256",
@@ -73,7 +99,11 @@
   }
  },
  "name":"qarrayrun",
- "new_version":"1.0.1",
+ "new_version":"1.1.0",
+ "new_version_attempts":{
+  "1.1.0":1
+ },
+ "new_version_errors":{},
  "raw_meta_yaml":"{% set name = \"qarrayrun\" %}\n{% set version = \"1.0.1\" %}\n\npackage:\n  name: \"{{ name|lower }}\"\n  version: \"{{ version }}\"\n\nsource:\n  url: \"https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz\"\n  sha256: 80441f5a0cf27e3ba8805ced549f27c176f43d356e6d783c33ef643585a106c5\n\nbuild:\n  number: 0\n  entry_points:\n    - qarrayrun = qarrayrun.cli:main\n  noarch: python\n  script: \"{{ PYTHON }} -m pip install . -vv\"\n\nrequirements:\n  host:\n    - pip\n    - python\n    - pytest-runner\n  run:\n    - python\n\ntest:\n  imports:\n    - qarrayrun\n  commands:\n    - qarrayrun --help\n  requires:\n    - pytest\n\nabout:\n  home: \"https://github.com/CFSAN-Biostatistics/qarrayrun\"\n  license: \"BSD\"\n  license_family: \"BSD\"\n  license_file: \"LICENSE\"\n  summary: \"A helper tool for running array jobs on an HPC computational node.\"\n\nextra:\n  recipe-maintainers:\n    - dpryan79\n",
  "req":{
   "__set__":true,
