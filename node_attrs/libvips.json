@@ -111,7 +111,27 @@
    ]
   }
  ],
- "bad":false,
+ "bad":{
+  "exception":"Failed to put item: An error occurred (ValidationException) on request (R5TPEDT2DMG5Q3C4IDU7RV13BVVV4KQNSO5AEMVJF66Q9ASUAAJG) on table (pr_json) when calling the PutItem operation: Attempting to store more than 38 significant digits in a Number",
+  "traceback":[
+   "Traceback (most recent call last):",
+   "  File \"/root/repo/cf-scripts/conda_forge_tick/auto_tick.py\", line 798, in main",
+   "    hash_type=attrs.get(\"hash_type\", \"sha256\"),",
+   "  File \"/root/repo/cf-scripts/conda_forge_tick/auto_tick.py\", line 263, in run",
+   "    PRJson.dump(pr_json)",
+   "  File \"/root/repo/cf-scripts/conda_forge_tick/dynamo_models.py\", line 33, in dump",
+   "    item.save()",
+   "  File \"/opt/conda/envs/run_env/lib/python3.7/site-packages/pynamodb/models.py\", line 405, in save",
+   "    data = self._get_connection().put_item(*args, **kwargs)",
+   "  File \"/opt/conda/envs/run_env/lib/python3.7/site-packages/pynamodb/connection/table.py\", line 139, in put_item",
+   "    return_item_collection_metrics=return_item_collection_metrics)",
+   "  File \"/opt/conda/envs/run_env/lib/python3.7/site-packages/pynamodb/connection/base.py\", line 972, in put_item",
+   "    six.raise_from(PutError(\"Failed to put item: {}\".format(e), e), None)",
+   "  File \"<string>\", line 3, in raise_from",
+   "pynamodb.exceptions.PutError: Failed to put item: An error occurred (ValidationException) on request (R5TPEDT2DMG5Q3C4IDU7RV13BVVV4KQNSO5AEMVJF66Q9ASUAAJG) on table (pr_json) when calling the PutItem operation: Attempting to store more than 38 significant digits in a Number",
+   ""
+  ]
+ },
  "conda-forge.yml":{},
  "feedstock_name":"libvips",
  "hash_type":"sha256",
@@ -301,7 +321,7 @@
  "new_version":"8.9.2",
  "new_version_attempts":{
   "8.9.1":317,
-  "8.9.2":166
+  "8.9.2":167
  },
  "new_version_errors":{
   "8.9.1":"The recipe did not change in the version migration, a URL did not hash, or there is jinja2 syntax the bot cannot handle!\n\nPlease check the URLs in your recipe with version '8.9.1' to make sure they exist!\n\nWe also found the following errors:\n\n - could not hash URL template 'https://github.com/libvips/libvips/releases/download/v{{ version }}/vips-{{ version }}a.tar.gz'\n",
