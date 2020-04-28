@@ -95,7 +95,13 @@
   }
  },
  "name":"click-config-file",
- "new_version":"0.5.0",
+ "new_version":"0.6.0",
+ "new_version_attempts":{
+  "0.6.0":1
+ },
+ "new_version_errors":{
+  "0.6.0":"The recipe did not change in the version migration, a URL did not hash, or there is jinja2 syntax the bot cannot handle!\n\nPlease check the URLs in your recipe with version '0.6.0' to make sure they exist!\n\nWe also found the following errors:\n\n - could not hash URL template 'https://pypi.io/packages/source/{{ name[0] }}/{{ name | replace(\"-\", \"_\") }}/{{ name | replace(\"-\", \"_\") }}-{{ version }}.tar.gz'\n"
+ },
  "pinning_version":"2019.04.18",
  "raw_meta_yaml":"{% set name = \"click-config-file\" %}\n{% set version = \"0.5.0\" %}\n\npackage:\n  name: \"{{ name|lower }}\"\n  version: \"{{ version }}\"\n\nsource:\n  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name | replace(\"-\", \"_\") }}/{{ name | replace(\"-\", \"_\") }}-{{ version }}.tar.gz\n  sha256: 1d61213ee216168e8433b9c76029f1d51694d7d9ab0f301c1ef1e4f4a65137a9\n\nbuild:\n  number: 0\n  noarch: python\n  script: \"{{ PYTHON }} -m pip install . --no-deps --ignore-installed -vv \"\n\nrequirements:\n  host:\n    - pip\n    - python\n    - pytest-runner\n  run:\n    - click >=6.7\n    - configobj >=5.0.6\n    - python\n\ntest:\n  imports:\n    - click_config_file\n  requires:\n    - pytest\n    - twine\n\nabout:\n  home: http://github.com/phha/click_config_file\n  license: MIT\n  license_family: MIT\n  license_file: LICENSE\n  summary: Configuration file support for click applications.\n  dev_url: http://github.com/phha/click_config_file\n\nextra:\n  recipe-maintainers:\n    - ltalirz\n    - phha\n",
  "req":{
