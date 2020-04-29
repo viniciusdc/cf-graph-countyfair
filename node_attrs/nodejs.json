@@ -966,6 +966,23 @@
     "migrator_version",
     "version"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/410899020.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"Version",
+    "migrator_version":0,
+    "version":"14.1.0"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "version"
+   ]
   }
  ],
  "bad":false,
@@ -1082,14 +1099,15 @@
   }
  },
  "name":"nodejs",
- "new_version":"14.0.0",
+ "new_version":"14.1.0",
  "new_version_attempts":{
   "13.12.0":1,
   "13.13.0":1,
-  "14.0.0":1
+  "14.0.0":1,
+  "14.1.0":1
  },
  "new_version_errors":{},
- "pinning_version":"2020.04.21.12.59.15",
+ "pinning_version":"2020.04.28.13.02.26",
  "raw_meta_yaml":"{% set version = \"13.13.0\" %}\n\npackage:\n  name: nodejs\n  version: {{ version }}\n\nsource:\n  fn: node-v{{ version }}.tar.gz\n  url: https://nodejs.org/dist/v{{ version }}/node-v{{ version }}.tar.gz  # [not win]\n  sha256: bbcb1bbcf78777e402ca220edd8f5c23475ed0164025d8a6bc3367e3e3ac9577  # [not win]\n  url: https://nodejs.org/dist/v{{ version }}/node-v{{ version }}-win-x64.zip  # [win]\n  sha256: 79f2a39c1047666f2bbf2efe53c069a38b8f6ef18d569bf338463aea1914b89d  # [win]\n  patches:\n    - linux-librt.patch  # [not win]\n    - cinttypes.patch  # [linux]\n    - linux-install.patch  # [linux]\n\nbuild:\n  number: 0\n  # Prefix replacement breaks in the binary embedded configurations.\n  detect_binary_files_with_prefix: false\n\nrequirements:\n  build:\n    - {{ compiler('c') }}  # [not win]\n    - {{ compiler('cxx') }}  # [not win]\n    - python 3.7  # [not win]\n    - git  # [linux]\n    - ninja  # [not win]\n    - pkg-config  # [not win]\n  host:\n    - vs2015_runtime  # [win]\n    - icu  # [not win]\n    - libuv >=1.33  # [not win]\n    - openssl  >=1.1.1d  # [not win]\n    - zlib  # [not win]\n  run:\n    - vs2015_runtime  # [win]\n    - icu  # [not win]\n    - libuv  # [not win]\n    - openssl  # [not win]\n    - zlib  # [not win]\n  run_constrained:   # [osx]\n    - __osx >={{ MACOSX_DEPLOYMENT_TARGET|default(\"10.9\") }}  # [osx]\n\ntest:\n  commands:\n    - node -h\n    - node -v\n    - npm version\n    - npm install -h\n    - npm config get prefix -g\n    - test $(echo \"console.log(1 + 3)\" | node) == 4  # [not win]\n    - test -f $PREFIX/lib/libnode.79.dylib  # [osx]\n    - test -f $PREFIX/lib/libnode.so.79  # [linux]\n\nabout:\n  home: https://nodejs.org/\n  license: MIT\n  license_file: LICENSE\n  summary: a platform for easily building fast, scalable network applications\n\nextra:\n  recipe-maintainers:\n    - minrk\n    - msarahan\n    - pelson\n    - blink1073\n    - xhochy\n",
  "req":{
   "__set__":true,
@@ -1125,6 +1143,7 @@
     "icu",
     "libuv",
     "openssl",
+    "vc",
     "vs2015_runtime",
     "zlib"
    ]
@@ -1135,6 +1154,7 @@
     "icu",
     "libuv",
     "openssl",
+    "vc",
     "vs2015_runtime",
     "zlib"
    ]
@@ -1144,7 +1164,7 @@
    "elements":[]
   }
  },
- "smithy_version":"No azure token. Create a token and\nput it in ~/.conda-smithy/azure.token\n3.6.16",
+ "smithy_version":"No azure token. Create a token and\nput it in ~/.conda-smithy/azure.token\n3.7.0",
  "strong_exports":false,
  "total_requirements":{
   "build":{
