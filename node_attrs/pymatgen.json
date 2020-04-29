@@ -375,6 +375,23 @@
     "migrator_version",
     "version"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/410851748.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"Version",
+    "migrator_version":0,
+    "version":"2020.4.29"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "version"
+   ]
   }
  ],
  "bad":false,
@@ -658,8 +675,12 @@
   }
  },
  "name":"pymatgen",
- "new_version":"2020.4.2",
- "pinning_version":"2020.04.02",
+ "new_version":"2020.4.29",
+ "new_version_attempts":{
+  "2020.4.29":1
+ },
+ "new_version_errors":{},
+ "pinning_version":"2020.04.28.13.02.26",
  "raw_meta_yaml":"{% set name = \"pymatgen\" %}\n{% set version = \"2020.4.2\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz\n  sha256: f8833c8cfb29f3d93f92e61068a5ad57a6a553b0bc588c9243e3e315660669bd\n\nbuild:\n  skip: true  # [py<35]\n  number: 1\n  script: {{ PYTHON }} -m pip install . -vv\n  entry_points:\n    - pmg = pymatgen.cli.pmg:main\n    - feff_input_generation = pymatgen.cli.feff_input_generation:main\n    - feff_plot_cross_section = pymatgen.cli.feff_plot_cross_section:main\n    - feff_plot_dos = pymatgen.cli.feff_plot_dos:main\n    - gaussian_analyzer = pymatgen.cli.gaussian_analyzer:main\n    - get_environment = pymatgen.cli.get_environment:main\n\nrequirements:\n  build:\n    - {{ compiler('cxx') }}\n  host:\n    - python\n    - pip\n    - setuptools >=18.0\n    - cython\n    - numpy =1.14\n  run:\n    - python\n    - pip\n    - requests\n    - ruamel.yaml >=0.15.6\n    - scipy >=1.0.1\n    - monty >=1.0.6\n    - pydispatcher >=2.0.5\n    - tabulate\n    - spglib >=1.9.9.44\n    - networkx >=2.2\n    - matplotlib-base >=1.5\n    - palettable >=3.1.1\n    - sympy\n    - pandas\n    - pybtex\n    - apscheduler >=2.1.0\n    - netcdf4\n    - tqdm\n    - ase >=3.3\n    - vtk >=6.0.0\n    - dataclasses >=0.6  # [py<37]\n    - plotly >=4.5\n    - {{ pin_compatible(\"numpy\") }}\n\ntest:\n  commands:\n    - pip check\n    - pmg --help\n    - gaussian_analyzer --help\n  imports:\n    - pymatgen\n    - pymatgen.alchemy\n    - pymatgen.analysis\n    - pymatgen.analysis.chemenv\n    - pymatgen.analysis.chemenv.coordination_environments\n    - pymatgen.analysis.chemenv.coordination_environments.coordination_geometries_files\n    - pymatgen.analysis.chemenv.coordination_environments.strategy_files\n    - pymatgen.analysis.chemenv.utils\n    - pymatgen.analysis.cost\n    - pymatgen.analysis.defects\n    - pymatgen.analysis.diffraction\n    - pymatgen.analysis.elasticity\n    - pymatgen.analysis.hhi\n    - pymatgen.analysis.pourbaix_diagram\n    - pymatgen.apps\n    - pymatgen.apps.battery\n    - pymatgen.apps.borg\n    - pymatgen.cli\n    - pymatgen.command_line\n    - pymatgen.core\n    - pymatgen.electronic_structure\n    - pymatgen.entries\n    - pymatgen.io\n    - pymatgen.io.abinit\n    - pymatgen.io.feff\n    - pymatgen.io.lammps\n    - pymatgen.io.vasp\n    - pymatgen.ext.matproj\n    - pymatgen.optimization\n    - pymatgen.analysis.phase_diagram\n    - pymatgen.analysis.structure_prediction\n    - pymatgen.symmetry\n    - pymatgen.transformations\n    - pymatgen.util\n    - pymatgen.vis\n\nabout:\n  home: http://www.pymatgen.org\n  license: MIT\n  license_family: MIT\n  license_file: LICENSE.rst\n  summary: Python Materials Genomics is an analysis code for materials science.\n  description: |\n    Python Materials Genomics is a robust materials analysis code that defines\n    core object representations for structures and molecules with support for many\n    electronic structure codes. It is currently the core analysis code powering the\n    Materials Project (https://www.materialsproject.org).\n  doc_url: http://www.pymatgen.org\n  dev_url: https://github.com/materialsproject/pymatgen\n\nextra:\n  recipe-maintainers:\n    - jan-janssen\n    - shyuep\n    - mkhorton\n",
  "req":{
   "__set__":true,
@@ -740,7 +761,7 @@
    "elements":[]
   }
  },
- "smithy_version":"No azure token. Create a token and\nput it in ~/.conda-smithy/azure.token\n3.6.15",
+ "smithy_version":"No azure token. Create a token and\nput it in ~/.conda-smithy/azure.token\n3.7.0",
  "strong_exports":false,
  "total_requirements":{
   "build":{

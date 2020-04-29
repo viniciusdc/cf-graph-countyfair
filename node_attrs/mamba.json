@@ -247,6 +247,23 @@
     "migrator_version",
     "name"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/410852423.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"Version",
+    "migrator_version":0,
+    "version":"0.2.6"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "version"
+   ]
   }
  ],
  "bad":false,
@@ -363,15 +380,16 @@
   }
  },
  "name":"mamba",
- "new_version":"0.2.5",
+ "new_version":"0.2.6",
  "new_version_attempts":{
   "0.2.0":1,
   "0.2.2":1,
   "0.2.4":1,
-  "0.2.5":1
+  "0.2.5":1,
+  "0.2.6":1
  },
  "new_version_errors":{},
- "pinning_version":"2020.04.27.17.45.41",
+ "pinning_version":"2020.04.28.13.02.26",
  "raw_meta_yaml":"{% set name = \"mamba\" %}\n{% set version = \"0.2.5\" %}\n{% set sha256 = \"8f7b9d0e72551bf6722d6112d0078584f834b3bd6389a6b497f790596a0adddb\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  url: https://github.com/QuantStack/mamba/archive/{{ version }}.tar.gz\n  sha256: {{ sha256 }}\n\nbuild:\n  number: 1\n  skip: true  # [win and vc<14]\n  entry_points:\n    - mamba = mamba.mamba:main\n\nrequirements:\n  build:\n    - {{ compiler('cxx') }}\n  host:\n    - setuptools\n    - python\n    - pip\n    - pybind11\n    - conda >=4.8\n    - libsolv >=0.7.12\n    - libcurl\n    - openssl\n    - libarchive\n    - nlohmann_json\n  run:\n    - python\n    - conda >=4.8\n\ntest:\n  imports:\n    - mamba\n    - mamba.mamba_api\n  commands:\n    - mamba --help\n    # these tests work when run on win, but for some reason not during conda build\n    - mamba create -n test_py2 python=2.7 --dry-run  # [linux]\n    - mamba install xtensor xsimd -c conda-forge --dry-run  # [linux]\n\nabout:\n  home: https://github.com/QuantStack/mamba\n  license: BSD-3-Clause\n  license_file: LICENSE\n  license_family: BSD\n  summary: A fast drop-in alternative to conda, using libsolv for dependency resolution\n  description: A fast drop-in alternative to conda, using libsolv for dependency resolution\n  dev_url: https://github.com/QuantStack/mamba\n\nextra:\n  recipe-maintainers:\n    - SylvainCorlay\n    - JohanMabille\n    - wolfv\n",
  "req":{
   "__set__":true,
