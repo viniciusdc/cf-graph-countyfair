@@ -84,10 +84,10 @@
  "meta_yaml":{
   "about":{
    "description":"igraph is a collection of network analysis tools with the emphasis on efficiency,\nportabiliy and ease of use. igraph is open source and free. igraph can be\nprogrammed in R, Python and C/C++.\"\n",
-   "home":"http://igraph.org",
-   "license":"GPL-2.0",
+   "home":"http://igraph.org/c/",
+   "license":"GPL-2.0-or-later",
    "license_family":"GPL",
-   "license_file":"COPYING",
+   "license_file":null,
    "summary":"An open source and free collection of network analysis tool."
   },
   "build":{
@@ -111,7 +111,7 @@
   },
   "package":{
    "name":"igraph",
-   "version":"0.8.0"
+   "version":"0.8.1"
   },
   "requirements":{
    "build":[
@@ -150,9 +150,9 @@
    ]
   },
   "source":{
-   "fn":"igraph-0.8.0.tar.gz",
-   "sha256":"72637335600cf4758fd718009b16d92489b58a2f5dd96d884740d20cd5769649",
-   "url":"https://github.com/igraph/igraph/releases/download/0.8.0/igraph-0.8.0.tar.gz"
+   "fn":"igraph-0.8.1.tar.gz",
+   "sha256":"266e1bf9e81305b368fbaa2218a8416c51ae85ea164e3657c574dc3898ca7b71",
+   "url":"https://github.com/igraph/igraph/releases/download/0.8.1/igraph-0.8.1.tar.gz"
   },
   "test":{
    "commands":[
@@ -182,7 +182,7 @@
  "name":"igraph",
  "new_version":false,
  "pinning_version":"2019.10.28",
- "raw_meta_yaml":"{% set name = \"igraph\" %}\n{% set version = \"0.8.0\" %}\n\npackage:\n  name: {{ name }}\n  version: {{ version }}\n\nsource:\n  fn: {{ name }}-{{ version }}.tar.gz  # [not win]\n  url: https://github.com/igraph/igraph/releases/download/{{ version }}/{{ name }}-{{ version }}.tar.gz  # [not win]\n  sha256: 72637335600cf4758fd718009b16d92489b58a2f5dd96d884740d20cd5769649  # [not win]\n\n  fn: {{ name }}-{{ version }}.zip  # [win]\n  url: https://github.com/igraph/igraph/releases/download/{{ version }}/{{ name }}-{{ version }}-msvc.zip  # [win]\n  sha256: ff1cdcdf4a258b03eeec2075fd879f6d21b0e05efa66d4cc4374f39e70648d9a  # [win]\n\nbuild:\n  skip: True  # [win and vc<14]\n  number: 0\n  run_exports:\n    - {{ pin_subpackage(\"igraph\", max_pin=\"x.x\") }}\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n    - {{ compiler('fortran') }}\n    - vs2017_{{ target_platform  }}  # [win]\n    - pkg-config  # [not win]\n    - make  # [not win]\n    - python  # [win]\n    - msinttypes  # [win]\n  host:\n    - gmp  # [not win]\n    - icu  # [not win]\n    - libiconv  # [not win]\n    - libxml2  # [not win]\n    - xz  # [not win]\n    - zlib  # [not win]\n  run:\n    - gmp  # [not win]\n    - icu  # [not win]\n    - libiconv  # [not win]\n    - libxml2  # [not win]\n    - xz  # [not win]\n    - zlib  # [not win]\n\ntest:\n  files:\n    - igraph_test.c\n  requires:\n    - pkg-config  # [not win]\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n    - {{ compiler('fortran') }}\n  commands:\n    - pkg-config --exists igraph  # [not win]\n    - conda inspect linkages -p $PREFIX {{ name|lower }}  # [not win]\n    - conda inspect objects -p $PREFIX {{ name|lower }}  # [osx]\n\nabout:\n  home: http://igraph.org\n  license: GPL-2.0\n  license_family: GPL\n  license_file: COPYING  # [not win]\n  license_file: '{{ environ[\"RECIPE_DIR\"] }}/COPYING'  # [win]\n  summary: 'An open source and free collection of network analysis tool.'\n  description: |\n    igraph is a collection of network analysis tools with the emphasis on efficiency,\n    portabiliy and ease of use. igraph is open source and free. igraph can be\n    programmed in R, Python and C/C++.\"\n\nextra:\n  recipe-maintainers:\n    - sodre\n    - vtraag\n",
+ "raw_meta_yaml":"{% set name = \"igraph\" %}\n{% set version = \"0.8.1\" %}\n\npackage:\n  name: {{ name }}\n  version: {{ version }}\n\nsource:\n  fn: {{ name }}-{{ version }}.tar.gz  # [not win]\n  url: https://github.com/igraph/igraph/releases/download/{{ version }}/{{ name }}-{{ version }}.tar.gz  # [not win]\n  sha256: 266e1bf9e81305b368fbaa2218a8416c51ae85ea164e3657c574dc3898ca7b71  # [not win]\n\n  fn: {{ name }}-{{ version }}.zip  # [win]\n  url: https://github.com/igraph/igraph/releases/download/{{ version }}/{{ name }}-{{ version }}-msvc.zip  # [win]\n  sha256: 5fb33be032374dd9becea2145ec2187a7a371086df07fb3fc115f7480104642a  # [win]\n\nbuild:\n  skip: True  # [win and vc<14]\n  number: 0\n  run_exports:\n    - {{ pin_subpackage(\"igraph\", max_pin=\"x.x\") }}\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n    - {{ compiler('fortran') }}\n    - vs2017_{{ target_platform }}  # [win]\n    - pkg-config  # [not win]\n    - make  # [not win]\n    - python  # [win]\n    - msinttypes  # [win]\n  host:\n    - gmp  # [not win]\n    - icu  # [not win]\n    - libiconv  # [not win]\n    - libxml2  # [not win]\n    - xz  # [not win]\n    - zlib  # [not win]\n  run:\n    - gmp  # [not win]\n    - icu  # [not win]\n    - libiconv  # [not win]\n    - libxml2  # [not win]\n    - xz  # [not win]\n    - zlib  # [not win]\n\ntest:\n  files:\n    - igraph_test.c\n  requires:\n    - pkg-config  # [not win]\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n    - {{ compiler('fortran') }}\n  commands:\n    - pkg-config --exists igraph  # [not win]\n    - conda inspect linkages -p $PREFIX {{ name|lower }}  # [not win]\n    - conda inspect objects -p $PREFIX {{ name|lower }}  # [osx]\n\nabout:\n  home: http://igraph.org/c/\n  license: GPL-2.0-or-later\n  license_family: GPL\n  license_file:\n    - COPYING  # [not win]\n    - ACKNOWLEDGEMENTS.md  # [not win]\n  license_file:\n    - '{{ environ[\"RECIPE_DIR\"] }}/COPYING'  # [win]\n    - '{{ environ[\"RECIPE_DIR\"] }}/ACKNOWLEDGEMENTS.md'  # [win]\n  summary: 'An open source and free collection of network analysis tool.'\n  description: |\n    igraph is a collection of network analysis tools with the emphasis on efficiency,\n    portabiliy and ease of use. igraph is open source and free. igraph can be\n    programmed in R, Python and C/C++.\"\n\nextra:\n  recipe-maintainers:\n    - sodre\n    - vtraag\n",
  "req":{
   "__set__":true,
   "elements":[
@@ -299,5 +299,5 @@
   }
  },
  "url":"http://igraph.org/nightly/get/c/igraph-0.7.1.tar.gz",
- "version":"0.8.0"
+ "version":"0.8.1"
 }
