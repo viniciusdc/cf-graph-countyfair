@@ -64,6 +64,23 @@
     "migrator_version",
     "version"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/410458844.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"Version",
+    "migrator_version":0,
+    "version":"2.2.2"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "version"
+   ]
   }
  ],
  "bad":false,
@@ -174,8 +191,12 @@
   }
  },
  "name":"category_encoders",
- "new_version":"2.1.0",
- "pinning_version":"2019.09.27",
+ "new_version":"2.2.2",
+ "new_version_attempts":{
+  "2.2.2":1
+ },
+ "new_version_errors":{},
+ "pinning_version":"2020.04.28.13.02.26",
  "raw_meta_yaml":"{% set name = \"category_encoders\" %}\n{% set version = \"2.1.0\" %}\n\npackage:\n  name: {{ name }}\n  version: {{ version }}\n\nsource:\n  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz\n  sha256: 9d76a2d810e02ad9527bed9c70b01fcb0f2238778b5422128275b5ba7561ca64\n\nbuild:\n  noarch: python\n  number: 0\n  script:\n    - rm -rf examples  # [unix]\n    - rd /s /q examples  # [win]\n    - \"{{ PYTHON }} -m pip install --no-deps --ignore-installed -vvv .\"\n\nrequirements:\n  host:\n    - python\n    - pip\n  run:\n    - numpy >=1.11.3\n    - pandas >=0.21.1\n    - patsy >=0.4.1\n    - python\n    - scikit-learn >=0.20.0\n    - scipy >=0.19.0\n    - statsmodels >=0.6.1\n\ntest:\n  requires:\n    - nose\n    - python\n    - unittest2\n    - cython\n  imports:\n    - category_encoders\n  commands:\n    - nosetests category_encoders\n\nabout:\n  home: https://github.com/scikit-learn-contrib/categorical_encoding\n  license: BSD-3-Clause\n  license_family: BSD\n  license_file: LICENSE.md\n  summary: A collection sklearn transformers to encode categorical variables as numeric\n  doc_url: https://contrib.scikit-learn.org/categorical-encoding\n  description: |-\n    A set of scikit-learn-style transformers for encoding categorical variables\n    into numeric with different techniques. While ordinal, one-hot, and hashing\n    encoders have similar equivalents in the existing scikit-learn version, the\n    transformers in this library all share a few useful properties:\n\n    - First-class support for pandas dataframes as an input (and optionally as\n      output)\n\n    - Can explicitly configure which columns in the data are encoded by name or\n      index, or infer non-numeric columns regardless of input type\n\n    - Can drop any columns with very low variance based on training set\n      optionally\n\n    - Portability: train a transformer on data, pickle it, reuse it later and\n      get the same thing out.\n\n    - Full compatibility with sklearn pipelines, input an array-like dataset\n      like any other transformer\n\nextra:\n  recipe-maintainers:\n    - bollwyvl\n    - nirajd\n    - wdm0006\n",
  "req":{
   "__set__":true,
@@ -224,7 +245,7 @@
    ]
   }
  },
- "smithy_version":"3.4.8",
+ "smithy_version":"No azure token. Create a token and\nput it in ~/.conda-smithy/azure.token\n3.7.0",
  "strong_exports":false,
  "total_requirements":{
   "build":{
