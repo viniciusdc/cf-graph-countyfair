@@ -84,6 +84,23 @@
     "migrator_version",
     "version"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/410803064.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"Version",
+    "migrator_version":0,
+    "version":"2.17.3"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "version"
+   ]
   }
  ],
  "bad":false,
@@ -209,8 +226,12 @@
   }
  },
  "name":"gfal2",
- "new_version":"2.17.2",
- "pinning_version":"2020.01.27",
+ "new_version":"2.17.3",
+ "new_version_attempts":{
+  "2.17.3":1
+ },
+ "new_version_errors":{},
+ "pinning_version":"2020.04.28.13.02.26",
  "raw_meta_yaml":"{% set name = \"gfal2\" %}\n{% set version = \"2.17.2\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  url: https://gitlab.cern.ch/dmc/{{ name }}/-/archive/v{{ version }}/{{ name }}-v{{ version }}.tar.gz\n  sha256: 7d8b4654c58aa607e9d20642a29f9f0227a6cd151b795f4c9bda08d60243ef02\n\nbuild:\n  number: 0\n  skip: true  # [win]\n  run_exports:\n    - {{ pin_subpackage(name, max_pin='x.x') }}\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n    - cmake\n    - make\n    - doxygen\n    - pkg-config\n    - sed\n  host:\n    - davix\n    - glib\n    - libssh2\n    - libuuid\n    - openldap\n    - xrootd\n    - zlib\n    - json-c\n    - pugixml\n    - dcap\n    - srm-ifce\n    - gct\n    - gtest\n  run:\n    - {{ pin_compatible('json-c', max_pin='x.x') }}\n\n# Plugins requiring these dependencies are not currently built:\n#   * lfc-devel\n#   * dpm-devel\n#   * libattr-devel\n\ntest:\n  commands:\n    - gfal2_version\n\nabout:\n  home: http://dmc.web.cern.ch/projects/gfal-2/home\n  license: Apache-2.0\n  license_family: Apache\n  license_file: LICENSE\n  summary: 'GFAL (Grid File Access Library) is a C library providing an abstraction layer of the grid storage system complexity.'\n  description: |\n    GFAL (Grid File Access Library) is a C library providing an abstraction\n    layer of the grid storage system complexity. The version 2 of GFAL tries to\n    simplify at the maximum the file operations in a distributed environment.\n    The complexity of the grid is hidden from the client side behind a simple\n    common POSIX API. GFAL2 is able to manage all the common used file access\n    protocols in a grid & cloud environment.\n  doc_url: http://dmc.web.cern.ch/projects/gfal-2/documentation\n  dev_url: https://gitlab.cern.ch/dmc/gfal2\n\nextra:\n  recipe-maintainers:\n    - chrisburr\n",
  "req":{
   "__set__":true,
@@ -279,7 +300,7 @@
    "elements":[]
   }
  },
- "smithy_version":"3.6.6",
+ "smithy_version":"No azure token. Create a token and\nput it in ~/.conda-smithy/azure.token\n3.7.0",
  "strong_exports":false,
  "total_requirements":{
   "build":{
