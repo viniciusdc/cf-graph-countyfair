@@ -196,7 +196,7 @@
    "summary":"Runtime libraries and header files for the Insight Toolkit for segmentation and registration."
   },
   "build":{
-   "number":"3",
+   "number":"0",
    "skip":true
   },
   "extra":{
@@ -217,7 +217,8 @@
       "fftw",
       "jpeg",
       "libtiff",
-      "libpng"
+      "libpng",
+      "eigen"
      ]
     },
     "script":"libitk_install.bat",
@@ -271,6 +272,7 @@
       "jpeg",
       "libtiff",
       "libpng",
+      "eigen",
       "zlib"
      ]
     },
@@ -325,6 +327,7 @@
       "jpeg",
       "libtiff",
       "libpng",
+      "eigen",
       "zlib"
      ]
     },
@@ -372,7 +375,7 @@
   ],
   "package":{
    "name":"libitk",
-   "version":"5.0.1"
+   "version":"5.1.0"
   },
   "requirements":{
    "build":[
@@ -394,12 +397,14 @@
     "jpeg",
     "libtiff",
     "libpng",
+    "eigen",
     "expat",
     "fftw",
     "hdf5",
     "jpeg",
     "libtiff",
     "libpng",
+    "eigen",
     "zlib",
     "expat",
     "fftw",
@@ -407,12 +412,13 @@
     "jpeg",
     "libtiff",
     "libpng",
+    "eigen",
     "zlib"
    ]
   },
   "source":{
-   "sha256":"c6b3c33ecc73104c906e0e1a1bfaa41a09af24bf53a4ec5e5c265d7e82bdf69f",
-   "url":"https://github.com/InsightSoftwareConsortium/ITK/archive/v5.0.1.tar.gz"
+   "sha256":"7cd0849f8f6769de8c5e90dd4de019a2c4b447d907b5d2193a95a3ec6267e76d",
+   "url":"https://github.com/InsightSoftwareConsortium/ITK/archive/v5.1.0.tar.gz"
   }
  },
  "name":"libitk",
@@ -426,13 +432,14 @@
   "libitk-devel"
  ],
  "pinning_version":"2020.04.24.22.56.04",
- "raw_meta_yaml":"{% set version = \"5.0.1\" %}\n\npackage:\n  name: libitk\n  version: \"{{version}}\"\n\nsource:\n  url: https://github.com/InsightSoftwareConsortium/ITK/archive/v{{version}}.tar.gz\n  sha256: c6b3c33ecc73104c906e0e1a1bfaa41a09af24bf53a4ec5e5c265d7e82bdf69f\n\nbuild:\n    number: 3\n    skip: true  # [win and vc<14]\n\nrequirements:\n  build:\n    - cmake    >=3.3\n    - ninja\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n  host:\n    - expat                     # [not win]\n    - fftw\n    - hdf5                      # [not win]\n    - jpeg\n    - libtiff\n    - libpng\n    - zlib                      # [not win]\n\noutputs:\n  - name: libitk\n    script: libitk_install.sh   # [not win]\n    script: libitk_install.bat  # [win]\n    requirements:\n      run:\n        - expat                     # [not win]\n        - fftw\n        - hdf5                      # [not win]\n        - jpeg\n        - libtiff\n        - libpng\n        - zlib                      # [not win]\n\n    test:\n      files:\n        - ITK-JPEG.jpg\n      commands:\n        - test -d $PREFIX/include/ITK*                        # [not win]\n        - if not exist %LIBRARY_INC%\\\\ITK* exit 1             # [win]\n        - itkTestDriver -- echo \"Runtime ITK OK\"\n        - itkTestDriver --no-process --compare-MD5 ITK-JPEG.jpg 959e1682d19026fc62cfbdc140df31da\n  - name: libitk-devel\n    script: libitk-devel_install.sh   # [not win]\n    script: libitk-devel_install.bat  # [win]\n    requirements:\n      build:\n        - cmake\n      host:\n        - {{ pin_subpackage(\"libitk\", exact=True) }}\n      run:\n        - {{ pin_subpackage(\"libitk\", exact=True) }}\n\n    test:\n      requires:\n        - cmake\n        - {{ compiler(\"c\") }}\n        - {{ compiler(\"cxx\") }}\n        - ninja  # [win]\n      files:\n        - example\n      commands:\n        - cmake -D \"CMAKE_SYSTEM_PREFIX_PATH:FILEPATH=${PREFIX}\" ./example  # [not win]\n        - cmake -G Ninja -D \"CMAKE_SYSTEM_PREFIX_PATH:FILEPATH=%PREFIX%\" example     # [win]\n        - cmake --build . --config Release                                  # [not win]\n\nabout:\n  home: http://www.itk.org\n  license: Apache-2.0\n  license_file:\n    - LICENSE\n    - NOTICE\n  summary: Runtime libraries and header files for the Insight Toolkit for segmentation and registration.\n\nextra:\n    recipe-maintainers:\n      - blowekamp\n      - bluescarni\n",
+ "raw_meta_yaml":"{% set version = \"5.1.0\" %}\n\npackage:\n  name: libitk\n  version: {{ version }}\n\nsource:\n  url: https://github.com/InsightSoftwareConsortium/ITK/archive/v{{ version }}.tar.gz\n  sha256: 7cd0849f8f6769de8c5e90dd4de019a2c4b447d907b5d2193a95a3ec6267e76d\n\nbuild:\n  number: 0\n  skip: true  # [win and vc<14]\n\nrequirements:\n  build:\n    - cmake    >=3.3\n    - ninja\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n  host:\n    - expat                     # [not win]\n    - fftw\n    - hdf5                      # [not win]\n    - jpeg\n    - libtiff\n    - libpng\n    - eigen\n    - zlib                      # [not win]\n\noutputs:\n  - name: libitk\n    script: libitk_install.sh  # [not win]\n    script: libitk_install.bat  # [win]\n    requirements:\n      run:\n        - expat                     # [not win]\n        - fftw\n        - hdf5                      # [not win]\n        - jpeg\n        - libtiff\n        - libpng\n        - eigen\n        - zlib                      # [not win]\n\n    test:\n      files:\n        - ITK-JPEG.jpg\n      commands:\n        - test -d $PREFIX/include/ITK*                        # [not win]\n        - if not exist %LIBRARY_INC%\\\\ITK* exit 1             # [win]\n        - itkTestDriver -- echo \"Runtime ITK OK\"\n        - itkTestDriver --no-process --compare-MD5 ITK-JPEG.jpg 959e1682d19026fc62cfbdc140df31da\n  - name: libitk-devel\n    script: libitk-devel_install.sh  # [not win]\n    script: libitk-devel_install.bat  # [win]\n    requirements:\n      build:\n        - cmake\n      host:\n        - {{ pin_subpackage(\"libitk\", exact=True) }}\n      run:\n        - {{ pin_subpackage(\"libitk\", exact=True) }}\n\n    test:\n      requires:\n        - cmake\n        - {{ compiler(\"c\") }}\n        - {{ compiler(\"cxx\") }}\n        - ninja  # [win]\n      files:\n        - example\n      commands:\n        - cmake -D \"CMAKE_SYSTEM_PREFIX_PATH:FILEPATH=${PREFIX}\" ./example  # [not win]\n        - cmake -G Ninja -D \"CMAKE_SYSTEM_PREFIX_PATH:FILEPATH=%PREFIX%\" example     # [win]\n        - cmake --build . --config Release                                  # [not win]\n\nabout:\n  home: http://www.itk.org\n  license: Apache-2.0\n  license_file:\n    - LICENSE\n    - NOTICE\n  summary: Runtime libraries and header files for the Insight Toolkit for segmentation and registration.\n\nextra:\n  recipe-maintainers:\n    - blowekamp\n    - bluescarni\n",
  "req":{
   "__set__":true,
   "elements":[
    "c_compiler_stub",
    "cmake",
    "cxx_compiler_stub",
+   "eigen",
    "expat",
    "fftw",
    "hdf5",
@@ -457,6 +464,7 @@
   "host":{
    "__set__":true,
    "elements":[
+    "eigen",
     "expat",
     "fftw",
     "hdf5",
@@ -470,6 +478,7 @@
   "run":{
    "__set__":true,
    "elements":[
+    "eigen",
     "expat",
     "fftw",
     "hdf5",
@@ -506,6 +515,7 @@
   "host":{
    "__set__":true,
    "elements":[
+    "eigen",
     "expat",
     "fftw",
     "hdf5",
@@ -519,6 +529,7 @@
   "run":{
    "__set__":true,
    "elements":[
+    "eigen",
     "expat",
     "fftw",
     "hdf5",
@@ -540,5 +551,5 @@
   }
  },
  "url":"https://github.com/InsightSoftwareConsortium/ITK/archive/v4.13.2.tar.gz",
- "version":"5.0.1"
+ "version":"5.1.0"
 }
