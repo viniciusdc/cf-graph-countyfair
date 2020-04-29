@@ -50,6 +50,23 @@
     "migrator_version",
     "name"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/410687352.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"Version",
+    "migrator_version":0,
+    "version":"1.4.6"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "version"
+   ]
   }
  ],
  "bad":false,
@@ -169,8 +186,12 @@
   }
  },
  "name":"r-divemove",
- "new_version":"1.4.5",
- "pinning_version":"2019.07.20",
+ "new_version":"1.4.6",
+ "new_version_attempts":{
+  "1.4.6":1
+ },
+ "new_version_errors":{},
+ "pinning_version":"2020.04.28.13.02.26",
  "raw_meta_yaml":"{% set version = '1.4.5' %}\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-divemove\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  url:\n    - {{ cran_mirror }}/src/contrib/diveMove_{{ version }}.tar.gz\n    - {{ cran_mirror }}/src/contrib/Archive/diveMove/diveMove_{{ version }}.tar.gz\n  sha256: caefc11f3f66fe0b8104e5a6db46b02bee8daac8c9a796e03bb9e0e34b2e3352\n\nbuild:\n  merge_build_host: True  # [win]\n  number: 2\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - {{ compiler('c') }}        # [not win]\n    - {{ compiler('m2w64_c') }}        # [win]\n    - {{posix}}filesystem        # [win]\n    - {{posix}}make\n    - {{posix}}sed               # [win]\n    - {{posix}}coreutils         # [win]\n    - {{posix}}zip               # [win]\n  host:\n    - r-base\n    - r-kernsmooth\n    - r-geosphere\n    - r-quantreg\n    - r-unireg\n  run:\n    - r-base\n    - {{native}}gcc-libs         # [win]\n    - r-kernsmooth\n    - r-geosphere\n    - r-quantreg\n    - r-unireg\n\ntest:\n  commands:\n    - $R -e \"library('diveMove')\"           # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('diveMove')\\\"\"  # [win]\n\nabout:\n  home: https://github.com/spluque/diveMove\n  license: GPL-3\n  summary: Utilities to represent, visualize, filter, analyse, and summarize time-depth recorder\n    (TDR) data.  Miscellaneous functions for handling location data are also provided.\n  license_family: GPL3\n  license_file: '{{ environ[\"PREFIX\"] }}/lib/R/share/licenses/GPL-3'\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n    - alexetnunes\n\n# Package: diveMove\n# Type: Package\n# Title: Dive Analysis and Calibration\n# Version: 1.4.5\n# Depends: R (>= 2.13.0), methods, stats4\n# Suggests: knitr, lattice, tcltk\n# Imports: KernSmooth, quantreg, uniReg, geosphere\n# Author: Sebastian P. Luque <spluque@gmail.com>\n# Maintainer: Sebastian P. Luque <spluque@gmail.com>\n# Description: Utilities to represent, visualize, filter, analyse, and summarize time-depth recorder (TDR) data.  Miscellaneous functions for handling location data are also provided.\n# LazyLoad: yes\n# LazyData: no\n# ZipData: no\n# BuildResaveData: no\n# VignetteBuilder: knitr\n# Collate: AllClass.R AllGenerics.R AllMethod.R austFilter.R bouts.R calibrate.R detDive.R detPhase.R distSpeed.R diveStats.R oneDiveStats.R plotTDR.R plotZOC.R readLocs.R readTDR.R runquantile.R speedStats.R stampDive.R zoc.R zzz.R\n# NeedsCompilation: yes\n# License: GPL-3\n# URL: https://github.com/spluque/diveMove\n# Packaged: 2019-01-03 04:40:49 UTC; sluque\n# Repository: CRAN\n# Date/Publication: 2019-01-03 15:10:03 UTC\n",
  "req":{
   "__set__":true,
@@ -229,7 +250,7 @@
    "elements":[]
   }
  },
- "smithy_version":"3.4.1",
+ "smithy_version":"No azure token. Create a token and\nput it in ~/.conda-smithy/azure.token\n3.7.0",
  "strong_exports":false,
  "total_requirements":{
   "build":{
