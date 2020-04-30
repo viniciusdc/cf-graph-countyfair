@@ -111,7 +111,7 @@
   },
   "package":{
    "name":"igraph",
-   "version":"0.8.1"
+   "version":"0.8.2"
   },
   "requirements":{
    "build":[
@@ -150,9 +150,9 @@
    ]
   },
   "source":{
-   "fn":"igraph-0.8.1.tar.gz",
-   "sha256":"266e1bf9e81305b368fbaa2218a8416c51ae85ea164e3657c574dc3898ca7b71",
-   "url":"https://github.com/igraph/igraph/releases/download/0.8.1/igraph-0.8.1.tar.gz"
+   "fn":"igraph-0.8.2.tar.gz",
+   "sha256":"718a471e7b8cbf02e3e8006153b7be6a22f85bb804283763a0016280e8a60e95",
+   "url":"https://github.com/igraph/igraph/releases/download/0.8.2/igraph-0.8.2.tar.gz"
   },
   "test":{
    "commands":[
@@ -182,7 +182,7 @@
  "name":"igraph",
  "new_version":false,
  "pinning_version":"2019.10.28",
- "raw_meta_yaml":"{% set name = \"igraph\" %}\n{% set version = \"0.8.1\" %}\n\npackage:\n  name: {{ name }}\n  version: {{ version }}\n\nsource:\n  fn: {{ name }}-{{ version }}.tar.gz  # [not win]\n  url: https://github.com/igraph/igraph/releases/download/{{ version }}/{{ name }}-{{ version }}.tar.gz  # [not win]\n  sha256: 266e1bf9e81305b368fbaa2218a8416c51ae85ea164e3657c574dc3898ca7b71  # [not win]\n\n  fn: {{ name }}-{{ version }}.zip  # [win]\n  url: https://github.com/igraph/igraph/releases/download/{{ version }}/{{ name }}-{{ version }}-msvc.zip  # [win]\n  sha256: 5fb33be032374dd9becea2145ec2187a7a371086df07fb3fc115f7480104642a  # [win]\n\nbuild:\n  skip: True  # [win and vc<14]\n  number: 0\n  run_exports:\n    - {{ pin_subpackage(\"igraph\", max_pin=\"x.x\") }}\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n    - {{ compiler('fortran') }}\n    - vs2017_{{ target_platform }}  # [win]\n    - pkg-config  # [not win]\n    - make  # [not win]\n    - python  # [win]\n    - msinttypes  # [win]\n  host:\n    - gmp  # [not win]\n    - icu  # [not win]\n    - libiconv  # [not win]\n    - libxml2  # [not win]\n    - xz  # [not win]\n    - zlib  # [not win]\n  run:\n    - gmp  # [not win]\n    - icu  # [not win]\n    - libiconv  # [not win]\n    - libxml2  # [not win]\n    - xz  # [not win]\n    - zlib  # [not win]\n\ntest:\n  files:\n    - igraph_test.c\n  requires:\n    - pkg-config  # [not win]\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n    - {{ compiler('fortran') }}\n  commands:\n    - pkg-config --exists igraph  # [not win]\n    - conda inspect linkages -p $PREFIX {{ name|lower }}  # [not win]\n    - conda inspect objects -p $PREFIX {{ name|lower }}  # [osx]\n\nabout:\n  home: http://igraph.org/c/\n  license: GPL-2.0-or-later\n  license_family: GPL\n  license_file:\n    - COPYING  # [not win]\n    - ACKNOWLEDGEMENTS.md  # [not win]\n  license_file:\n    - '{{ environ[\"RECIPE_DIR\"] }}/COPYING'  # [win]\n    - '{{ environ[\"RECIPE_DIR\"] }}/ACKNOWLEDGEMENTS.md'  # [win]\n  summary: 'An open source and free collection of network analysis tool.'\n  description: |\n    igraph is a collection of network analysis tools with the emphasis on efficiency,\n    portabiliy and ease of use. igraph is open source and free. igraph can be\n    programmed in R, Python and C/C++.\"\n\nextra:\n  recipe-maintainers:\n    - sodre\n    - vtraag\n",
+ "raw_meta_yaml":"{% set name = \"igraph\" %}\n{% set version = \"0.8.2\" %}\n\npackage:\n  name: {{ name }}\n  version: {{ version }}\n\nsource:\n  fn: {{ name }}-{{ version }}.tar.gz  # [not win]\n  url: https://github.com/igraph/igraph/releases/download/{{ version }}/{{ name }}-{{ version }}.tar.gz  # [not win]\n  sha256: 718a471e7b8cbf02e3e8006153b7be6a22f85bb804283763a0016280e8a60e95  # [not win]\n\n  fn: {{ name }}-{{ version }}.zip  # [win]\n  url: https://github.com/igraph/igraph/releases/download/{{ version }}/{{ name }}-{{ version }}-msvc.zip  # [win]\n  sha256: 0a8adc7740e857a31ce1a5d245cf4f5557779190b3f941d171d141505b3ea464  # [win]\n\nbuild:\n  skip: True  # [win and vc<14]\n  number: 0\n  run_exports:\n    - {{ pin_subpackage(\"igraph\", max_pin=\"x.x\") }}\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n    - {{ compiler('fortran') }}\n    - vs2017_{{ target_platform }}  # [win]\n    - pkg-config  # [not win]\n    - make  # [not win]\n    - python  # [win]\n    - msinttypes  # [win]\n  host:\n    - gmp  # [not win]\n    - icu  # [not win]\n    - libiconv  # [not win]\n    - libxml2  # [not win]\n    - xz  # [not win]\n    - zlib  # [not win]\n  run:\n    - gmp  # [not win]\n    - icu  # [not win]\n    - libiconv  # [not win]\n    - libxml2  # [not win]\n    - xz  # [not win]\n    - zlib  # [not win]\n\ntest:\n  files:\n    - igraph_test.c\n  requires:\n    - pkg-config  # [not win]\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n    - {{ compiler('fortran') }}\n  commands:\n    - pkg-config --exists igraph  # [not win]\n    - conda inspect linkages -p $PREFIX {{ name|lower }}  # [not win]\n    - conda inspect objects -p $PREFIX {{ name|lower }}  # [osx]\n\nabout:\n  home: http://igraph.org/c/\n  license: GPL-2.0-or-later\n  license_family: GPL\n  license_file:\n    - COPYING  # [not win]\n    - ACKNOWLEDGEMENTS.md  # [not win]\n  license_file:\n    - '{{ environ[\"RECIPE_DIR\"] }}/COPYING'  # [win]\n    - '{{ environ[\"RECIPE_DIR\"] }}/ACKNOWLEDGEMENTS.md'  # [win]\n  summary: 'An open source and free collection of network analysis tool.'\n  description: |\n    igraph is a collection of network analysis tools with the emphasis on efficiency,\n    portabiliy and ease of use. igraph is open source and free. igraph can be\n    programmed in R, Python and C/C++.\"\n\nextra:\n  recipe-maintainers:\n    - sodre\n    - vtraag\n",
  "req":{
   "__set__":true,
   "elements":[
@@ -299,5 +299,5 @@
   }
  },
  "url":"http://igraph.org/nightly/get/c/igraph-0.7.1.tar.gz",
- "version":"0.8.1"
+ "version":"0.8.2"
 }
