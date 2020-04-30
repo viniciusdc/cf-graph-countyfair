@@ -14,7 +14,7 @@
    "summary":"Biomechanical add-ons to the RigidBody Dynamics Library "
   },
   "build":{
-   "number":"0",
+   "number":"1",
    "rpaths":[
     "lib/",
     "lib/biorbd/",
@@ -60,23 +60,29 @@
     "casadi",
     "rbdl-casadi",
     "numpy =1.14",
+    "tinyxml",
     "casadi",
     "rbdl-casadi",
     "numpy =1.14",
+    "tinyxml",
     "casadi",
     "rbdl-casadi",
-    "numpy =1.14"
+    "numpy =1.14",
+    "tinyxml"
    ],
    "run":[
     "casadi",
     "rbdl-casadi",
     "numpy",
+    "tinyxml",
     "casadi",
     "rbdl-casadi",
     "numpy",
+    "tinyxml",
     "casadi",
     "rbdl-casadi",
-    "numpy"
+    "numpy",
+    "tinyxml"
    ]
   },
   "source":{
@@ -98,7 +104,7 @@
  },
  "name":"biorbd-casadi",
  "new_version":false,
- "raw_meta_yaml":"{% set libname = \"biorbd\" %}\n{% set name = \"biorbd-casadi\" %}\n{% set version = \"1.2.4\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  url: https://github.com/pyomeca/{{ libname }}/archive/Release_{{ version }}.tar.gz\n  sha256: 7682fa0c34d6c9a4415c8293d12089845390516845334dbb5c4fcaedb60872ef\n\nbuild:\n  number: 0\n  skip: true  # [win]\n  skip: true  # [py<36 or py>37]\n  rpaths:\n    - lib/\n    - lib/{{ libname }}/\n  run_exports:\n    - {{ pin_subpackage('biorbd-casadi', max_pin='x.x') }}\n\nrequirements:\n  build:\n    - {{ compiler('cxx') }}\n    - cmake\n    - ninja\n    - swig\n  host:\n    - casadi\n    - rbdl-casadi\n    - numpy =1.14\n  run:\n    - {{ pin_compatible('casadi') }}\n    - {{ pin_compatible('rbdl-casadi') }}\n    - {{ pin_compatible('numpy') }}\n\ntest:\n  commands:\n    - test -f $PREFIX/lib/biorbd/libbiorbd$SHLIB_EXT  # [unix]\n    - if not exist %PREFIX%\\\\Lib\\\\biorbd*.lib exit 1  # [win]\n  imports:\n    - biorbd\n\nabout:\n  home: http://github.com/pyomeca/biorbd\n  license: MIT\n  license_file: LICENSE\n  summary: 'Biomechanical add-ons to the RigidBody Dynamics Library '\n\n  description: |\n    Biomechanical add-ons to the RigidBody Dynamics Library .\n  doc_url: https://github.com/pyomeca/biorbd/\n  dev_url: https://github.com/pyomeca/biorbd/\n\nextra:\n  recipe-maintainers:\n    - pariterre\n",
+ "raw_meta_yaml":"{% set libname = \"biorbd\" %}\n{% set name = \"biorbd-casadi\" %}\n{% set version = \"1.2.4\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  url: https://github.com/pyomeca/{{ libname }}/archive/Release_{{ version }}.tar.gz\n  sha256: 7682fa0c34d6c9a4415c8293d12089845390516845334dbb5c4fcaedb60872ef\n\nbuild:\n  number: 1\n  skip: true  # [win]\n  skip: true  # [py<36 or py>37]\n  rpaths:\n    - lib/\n    - lib/{{ libname }}/\n  run_exports:\n    - {{ pin_subpackage('biorbd-casadi', max_pin='x.x') }}\n\nrequirements:\n  build:\n    - {{ compiler('cxx') }}\n    - cmake\n    - ninja\n    - swig\n  host:\n    - casadi\n    - rbdl-casadi\n    - numpy =1.14\n    - tinyxml\n  run:\n    - {{ pin_compatible('casadi') }}\n    - {{ pin_compatible('rbdl-casadi') }}\n    - {{ pin_compatible('numpy') }}\n    - tinyxml\n\ntest:\n  commands:\n    - test -f $PREFIX/lib/biorbd/libbiorbd$SHLIB_EXT  # [unix]\n    - if not exist %PREFIX%\\\\Lib\\\\biorbd*.lib exit 1  # [win]\n  imports:\n    - biorbd\n\nabout:\n  home: http://github.com/pyomeca/biorbd\n  license: MIT\n  license_file: LICENSE\n  summary: 'Biomechanical add-ons to the RigidBody Dynamics Library '\n\n  description: |\n    Biomechanical add-ons to the RigidBody Dynamics Library .\n  doc_url: https://github.com/pyomeca/biorbd/\n  dev_url: https://github.com/pyomeca/biorbd/\n\nextra:\n  recipe-maintainers:\n    - pariterre\n",
  "req":{
   "__set__":true,
   "elements":[
@@ -108,7 +114,8 @@
    "ninja",
    "numpy",
    "rbdl-casadi",
-   "swig"
+   "swig",
+   "tinyxml"
   ]
  },
  "requirements":{
@@ -126,7 +133,8 @@
    "elements":[
     "casadi",
     "numpy",
-    "rbdl-casadi"
+    "rbdl-casadi",
+    "tinyxml"
    ]
   },
   "run":{
@@ -134,7 +142,8 @@
    "elements":[
     "casadi",
     "numpy",
-    "rbdl-casadi"
+    "rbdl-casadi",
+    "tinyxml"
    ]
   },
   "test":{
@@ -158,7 +167,8 @@
    "elements":[
     "casadi",
     "numpy =1.14",
-    "rbdl-casadi"
+    "rbdl-casadi",
+    "tinyxml"
    ]
   },
   "run":{
@@ -166,7 +176,8 @@
    "elements":[
     "casadi",
     "numpy",
-    "rbdl-casadi"
+    "rbdl-casadi",
+    "tinyxml"
    ]
   },
   "test":{
