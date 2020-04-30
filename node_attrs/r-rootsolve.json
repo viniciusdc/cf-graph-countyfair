@@ -99,6 +99,23 @@
     "migrator_version",
     "version"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/411093631.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"Version",
+    "migrator_version":0,
+    "version":"1.8.2.1"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "version"
+   ]
   }
  ],
  "bad":false,
@@ -204,8 +221,12 @@
   }
  },
  "name":"r-rootsolve",
- "new_version":"1.8.2",
- "pinning_version":"2019.12.18",
+ "new_version":"1.8.2.1",
+ "new_version_attempts":{
+  "1.8.2.1":1
+ },
+ "new_version_errors":{},
+ "pinning_version":"2020.04.28.13.02.26",
  "raw_meta_yaml":"{% set version = \"1.8.2\" %}\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-rootsolve\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  fn: rootSolve_{{ version }}.tar.gz\n  url:\n    - {{ cran_mirror }}/src/contrib/rootSolve_{{ version }}.tar.gz\n    - {{ cran_mirror }}/src/contrib/Archive/rootSolve/rootSolve_{{ version }}.tar.gz\n  sha256: 94140ba375480fadae3fb7334000e1d62977b93e70bf0d963efffdcc3e614766\n\nbuild:\n  merge_build_host: True  # [win]\n  number: 0\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - {{ compiler('c') }}        # [not win]\n    - {{ compiler('fortran') }}  # [not win]\n    - {{ compiler('m2w64_c') }}        # [win]\n    - {{ compiler('m2w64_fortran') }}        # [win]\n    - {{posix}}filesystem        # [win]\n    - {{posix}}make\n    - {{posix}}sed               # [win]\n    - {{posix}}coreutils         # [win]\n    - {{posix}}zip               # [win]\n  host:\n    - r-base\n  run:\n    - r-base\n    - {{native}}gcc-libs         # [win]\n\ntest:\n  commands:\n    - $R -e \"library('rootSolve')\"           # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('rootSolve')\\\"\"  # [win]\n\nabout:\n  home: https://CRAN.R-project.org/package=rootSolve\n  license: GPL (>= 2)\n  summary: 'Routines to find the root of nonlinear functions, and to perform steady-state and\n    equilibrium analysis of ordinary differential equations (ODE).  Includes routines\n    that: (1) generate gradient and jacobian matrices (full and banded), (2) find roots\n    of non-linear equations by the ''Newton-Raphson'' method,  (3) estimate steady-state\n    conditions of a system of (differential) equations in full, banded or sparse form,\n    using the ''Newton-Raphson'' method, or by dynamically running, (4) solve the steady-state\n    conditions for uni-and multicomponent 1-D, 2-D, and 3-D partial differential equations,\n    that have been converted to ordinary differential equations by numerical differencing\n    (using the method-of-lines approach). Includes fortran code.'\n  license_family: GPL3\n  license_file: '{{ environ[\"PREFIX\"] }}/lib/R/share/licenses/GPL-3'\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n    - MathiasHaudgaard\n    - FrodePedersen\n    - ArneKr\n",
  "req":{
   "__set__":true,
@@ -256,7 +277,7 @@
    "elements":[]
   }
  },
- "smithy_version":"3.6.5",
+ "smithy_version":"No azure token. Create a token and\nput it in ~/.conda-smithy/azure.token\n3.7.0",
  "strong_exports":false,
  "total_requirements":{
   "build":{
