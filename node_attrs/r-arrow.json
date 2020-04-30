@@ -194,6 +194,25 @@
     "migrator_version",
     "version"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/a88d8c60-7add-41c1-a71e-ebbc369fb015.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"MigrationYaml",
+    "migrator_object_version":1,
+    "migrator_version":0,
+    "name":"arrow_cpp0170"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_object_version",
+    "migrator_version",
+    "name"
+   ]
   }
  ],
  "bad":false,
@@ -327,7 +346,7 @@
   "0.17.0":1
  },
  "new_version_errors":{},
- "pinning_version":"2020.04.21.12.59.15",
+ "pinning_version":"2020.04.30.12.38.06",
  "raw_meta_yaml":"{% set version = \"0.17.0\" %}\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-arrow\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  url: https://dist.apache.org/repos/dist/release/arrow/arrow-{{ version }}/apache-arrow-{{ version }}.tar.gz\n  sha256: 2c46b4c3e1f88aad510214e633a6f4ce459708f3db78cd0daf549a135cbe8e6d\n\nbuild:\n  merge_build_host: true  # [win]\n  number: 0\n  skip: true  # [win]\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - {{ compiler('c') }}        # [not win]\n    - {{ compiler('cxx') }}      # [not win]\n    - pkg-config\n    - {{ posix }}make\n  host:\n    - r-base\n    - arrow-cpp {{ version }}\n    - r-r6\n    - r-rcpp >=1.0.1\n    - r-assertthat\n    - r-bit64\n    - r-purrr\n    - r-rlang\n    - r-tidyselect\n  run:\n    - r-base\n    - {{ native }}gcc-libs         # [win]\n    - r-r6\n    - r-rcpp >=1.0.1\n    - r-assertthat\n    - r-bit64\n    - r-purrr\n    - r-rlang\n    - r-tidyselect\n\ntest:\n  commands:\n    - $R -e \"library('arrow')\"           # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('arrow')\\\"\"  # [win]\n\nabout:\n  home: https://github.com/apache/arrow\n  license: Apache 2.0\n  license_file: LICENSE.txt\n  summary: R Integration to 'Apache' 'Arrow'.\n  license_family: APACHE\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n    - conda-forge/arrow-cpp\n\n# Package: arrow\n# Title: R Integration to 'Apache' 'Arrow'\n# Version: 0.12.1\n# Authors@R: c( person(\"Romain\", \"Francois\", email = \"romain@rstudio.com\", role = c(\"aut\", \"cre\")), person(\"Javier\", \"Luraschi\", email = \"javier@rstudio.com\", role = c(\"ctb\")), person(\"Jeffrey\", \"Wong\", email = \"jeffreyw@netflix.com\", role = c(\"ctb\")), person(\"Apache Arrow\", email = \"dev@arrow.apache.org\", role = c(\"aut\", \"cph\")) )\n# Description: R Integration to 'Apache' 'Arrow'.\n# Depends: R (>= 3.5)\n# License: Apache License (>= 2.0)\n# Encoding: UTF-8\n# LazyData: true\n# SystemRequirements: C++11\n# LinkingTo: Rcpp (>= 0.12.18.2)\n# Imports: Rcpp (>= 0.12.18.2), rlang, purrr, assertthat, glue, R6, vctrs (>= 0.0.0.9000), fs, tibble, crayon, withr, bit64\n# Remotes: romainfrancois/vctrs@bit64, RcppCore/Rcpp, r-lib/withr\n# Roxygen: list(markdown = TRUE)\n# RoxygenNote: 6.1.1\n# Suggests: testthat, lubridate, hms\n# Collate: 'enums.R' 'R6.R' 'ArrayData.R' 'ChunkedArray.R' 'Column.R' 'Field.R' 'List.R' 'RcppExports.R' 'RecordBatch.R' 'RecordBatchReader.R' 'RecordBatchWriter.R' 'Schema.R' 'Struct.R' 'Table.R' 'array.R' 'buffer.R' 'compute.R' 'csv.R' 'dictionary.R' 'feather.R' 'io.R' 'memory_pool.R' 'message.R' 'on_exit.R' 'parquet.R' 'read_record_batch.R' 'read_table.R' 'reexports-bit64.R' 'reexports-tibble.R' 'write_arrow.R' 'zzz.R'\n",
  "req":{
   "__set__":true,
@@ -391,7 +410,7 @@
    "elements":[]
   }
  },
- "smithy_version":"No azure token. Create a token and\nput it in ~/.conda-smithy/azure.token\n3.6.16",
+ "smithy_version":"No azure token. Create a token and\nput it in ~/.conda-smithy/azure.token\n3.7.0",
  "strong_exports":false,
  "total_requirements":{
   "build":{
