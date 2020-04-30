@@ -102,7 +102,11 @@
   }
  ],
  "bad":false,
- "conda-forge.yml":{},
+ "conda-forge.yml":{
+  "bot":{
+   "automerge":true
+  }
+ },
  "feedstock_name":"django-redis-cache",
  "hash_type":"sha256",
  "meta_yaml":{
@@ -115,7 +119,7 @@
   "build":{
    "noarch":"python",
    "number":"0",
-   "script":" -m pip install . --no-deps -vv"
+   "script":"-m pip install . -vv"
   },
   "extra":{
    "recipe-maintainers":[
@@ -126,44 +130,54 @@
   },
   "package":{
    "name":"django-redis-cache",
-   "version":"2.0.0"
+   "version":"2.1.1"
   },
   "requirements":{
    "build":[
     "python",
     "pip",
-    "django",
-    "redis-py >=2.10.3",
     "python",
     "pip",
-    "django",
-    "redis-py >=2.10.3",
     "python",
-    "pip",
-    "django",
-    "redis-py >=2.10.3"
+    "pip"
    ],
    "run":[
     "python",
     "django",
-    "redis-py >=2.10.3",
+    "redis-py <4.0",
+    "six",
     "python",
     "django",
-    "redis-py >=2.10.3",
+    "redis-py <4.0",
+    "six",
     "python",
     "django",
-    "redis-py >=2.10.3"
+    "redis-py <4.0",
+    "six"
    ]
   },
   "source":{
-   "sha256":"77dcb9d11beef5ce77dadfb95328b7712c3d9bde8419a0ba92968712b9bff48b",
-   "url":"https://pypi.io/packages/source/d/django-redis-cache/django-redis-cache-2.0.0.tar.gz"
+   "sha256":"06d4e48545243883f88dc9263dda6c8a0012cb7d0cee2d8758d8917eca92cece",
+   "url":"https://pypi.io/packages/source/d/django-redis-cache/django-redis-cache-2.1.1.tar.gz"
   },
   "test":{
+   "commands":[
+    "pip check",
+    "pip check",
+    "pip check"
+   ],
    "imports":[
     "redis_cache",
+    "redis_cache.backends",
     "redis_cache",
-    "redis_cache"
+    "redis_cache.backends",
+    "redis_cache",
+    "redis_cache.backends"
+   ],
+   "requires":[
+    "pip",
+    "pip",
+    "pip"
    ]
   }
  },
@@ -174,24 +188,23 @@
  },
  "new_version_errors":{},
  "pinning_version":"2020.04.16.16.23.46",
- "raw_meta_yaml":"{% set version = \"2.0.0\" %}\n\npackage:\n  name: django-redis-cache\n  version: {{ version }}\n\nsource:\n  url: https://pypi.io/packages/source/d/django-redis-cache/django-redis-cache-{{ version }}.tar.gz\n  sha256: 77dcb9d11beef5ce77dadfb95328b7712c3d9bde8419a0ba92968712b9bff48b\n\nbuild:\n  number: 0\n  noarch: python\n  script: \"{{ PYTHON }} -m pip install . --no-deps -vv\"\n\nrequirements:\n  build:\n    - python\n    - pip\n    - django\n    - redis-py >=2.10.3\n  run:\n    - python\n    - django\n    - redis-py >=2.10.3\n\ntest:\n  imports:\n    - redis_cache\n\nabout:\n  home: http://github.com/sebleier/django-redis-cache/\n  license: BSD-3-Clause\n  license_file: LICENSE\n  summary: 'Redis Cache Backend for Django'\n\nextra:\n  recipe-maintainers:\n    - kwilcox\n",
+ "raw_meta_yaml":"{% set version = \"2.1.1\" %}\n\npackage:\n  name: django-redis-cache\n  version: {{ version }}\n\nsource:\n  url: https://pypi.io/packages/source/d/django-redis-cache/django-redis-cache-{{ version }}.tar.gz\n  sha256: 06d4e48545243883f88dc9263dda6c8a0012cb7d0cee2d8758d8917eca92cece\n\nbuild:\n  number: 0\n  noarch: python\n  script: {{ PYTHON }} -m pip install . -vv\n\nrequirements:\n  build:\n    - python\n    - pip\n  run:\n    - python\n    - django\n    - redis-py <4.0\n    - six\n\ntest:\n  imports:\n    - redis_cache\n    - redis_cache.backends\n  commands:\n    - pip check\n  requires:\n    - pip\n\n\nabout:\n  home: http://github.com/sebleier/django-redis-cache/\n  license: BSD-3-Clause\n  license_file: LICENSE\n  summary: Redis Cache Backend for Django\n\nextra:\n  recipe-maintainers:\n    - kwilcox\n",
  "req":{
   "__set__":true,
   "elements":[
    "django",
    "pip",
    "python",
-   "redis-py"
+   "redis-py",
+   "six"
   ]
  },
  "requirements":{
   "build":{
    "__set__":true,
    "elements":[
-    "django",
     "pip",
-    "python",
-    "redis-py"
+    "python"
    ]
   },
   "host":{
@@ -203,12 +216,15 @@
    "elements":[
     "django",
     "python",
-    "redis-py"
+    "redis-py",
+    "six"
    ]
   },
   "test":{
    "__set__":true,
-   "elements":[]
+   "elements":[
+    "pip"
+   ]
   }
  },
  "smithy_version":"No azure token. Create a token and\nput it in ~/.conda-smithy/azure.token\n3.6.16",
@@ -217,10 +233,8 @@
   "build":{
    "__set__":true,
    "elements":[
-    "django",
     "pip",
-    "python",
-    "redis-py >=2.10.3"
+    "python"
    ]
   },
   "host":{
@@ -232,14 +246,17 @@
    "elements":[
     "django",
     "python",
-    "redis-py >=2.10.3"
+    "redis-py <4.0",
+    "six"
    ]
   },
   "test":{
    "__set__":true,
-   "elements":[]
+   "elements":[
+    "pip"
+   ]
   }
  },
  "url":"https://pypi.io/packages/source/d/django-redis-cache/django-redis-cache-2.0.0.tar.gz",
- "version":"2.0.0"
+ "version":"2.1.1"
 }
