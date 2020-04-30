@@ -123,9 +123,6 @@
   "bot":{
    "automerge":true
   },
-  "compiler_stack":"comp7",
-  "max_py_ver":"37",
-  "max_r_ver":"35",
   "provider":{
    "win":"azure"
   }
@@ -170,7 +167,7 @@
   },
   "package":{
    "name":"r-rootsolve",
-   "version":"1.8.2"
+   "version":"1.8.2.1"
   },
   "requirements":{
    "build":[
@@ -201,15 +198,15 @@
    ]
   },
   "source":{
-   "fn":"rootSolve_1.8.2.tar.gz",
-   "sha256":"94140ba375480fadae3fb7334000e1d62977b93e70bf0d963efffdcc3e614766",
+   "fn":"rootSolve_1.8.2.1.tar.gz",
+   "sha256":"488451182663197ae4513e46e24f72cadb2297d35a58a3007a0dbf1bf0833031",
    "url":[
-    "https://cran.r-project.org/src/contrib/rootSolve_1.8.2.tar.gz",
-    "https://cran.r-project.org/src/contrib/Archive/rootSolve/rootSolve_1.8.2.tar.gz",
-    "https://cran.r-project.org/src/contrib/rootSolve_1.8.2.tar.gz",
-    "https://cran.r-project.org/src/contrib/Archive/rootSolve/rootSolve_1.8.2.tar.gz",
-    "https://cran.r-project.org/src/contrib/rootSolve_1.8.2.tar.gz",
-    "https://cran.r-project.org/src/contrib/Archive/rootSolve/rootSolve_1.8.2.tar.gz"
+    "https://cran.r-project.org/src/contrib/rootSolve_1.8.2.1.tar.gz",
+    "https://cran.r-project.org/src/contrib/Archive/rootSolve/rootSolve_1.8.2.1.tar.gz",
+    "https://cran.r-project.org/src/contrib/rootSolve_1.8.2.1.tar.gz",
+    "https://cran.r-project.org/src/contrib/Archive/rootSolve/rootSolve_1.8.2.1.tar.gz",
+    "https://cran.r-project.org/src/contrib/rootSolve_1.8.2.1.tar.gz",
+    "https://cran.r-project.org/src/contrib/Archive/rootSolve/rootSolve_1.8.2.1.tar.gz"
    ]
   },
   "test":{
@@ -227,7 +224,7 @@
  },
  "new_version_errors":{},
  "pinning_version":"2020.04.28.13.02.26",
- "raw_meta_yaml":"{% set version = \"1.8.2\" %}\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-rootsolve\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  fn: rootSolve_{{ version }}.tar.gz\n  url:\n    - {{ cran_mirror }}/src/contrib/rootSolve_{{ version }}.tar.gz\n    - {{ cran_mirror }}/src/contrib/Archive/rootSolve/rootSolve_{{ version }}.tar.gz\n  sha256: 94140ba375480fadae3fb7334000e1d62977b93e70bf0d963efffdcc3e614766\n\nbuild:\n  merge_build_host: True  # [win]\n  number: 0\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - {{ compiler('c') }}        # [not win]\n    - {{ compiler('fortran') }}  # [not win]\n    - {{ compiler('m2w64_c') }}        # [win]\n    - {{ compiler('m2w64_fortran') }}        # [win]\n    - {{posix}}filesystem        # [win]\n    - {{posix}}make\n    - {{posix}}sed               # [win]\n    - {{posix}}coreutils         # [win]\n    - {{posix}}zip               # [win]\n  host:\n    - r-base\n  run:\n    - r-base\n    - {{native}}gcc-libs         # [win]\n\ntest:\n  commands:\n    - $R -e \"library('rootSolve')\"           # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('rootSolve')\\\"\"  # [win]\n\nabout:\n  home: https://CRAN.R-project.org/package=rootSolve\n  license: GPL (>= 2)\n  summary: 'Routines to find the root of nonlinear functions, and to perform steady-state and\n    equilibrium analysis of ordinary differential equations (ODE).  Includes routines\n    that: (1) generate gradient and jacobian matrices (full and banded), (2) find roots\n    of non-linear equations by the ''Newton-Raphson'' method,  (3) estimate steady-state\n    conditions of a system of (differential) equations in full, banded or sparse form,\n    using the ''Newton-Raphson'' method, or by dynamically running, (4) solve the steady-state\n    conditions for uni-and multicomponent 1-D, 2-D, and 3-D partial differential equations,\n    that have been converted to ordinary differential equations by numerical differencing\n    (using the method-of-lines approach). Includes fortran code.'\n  license_family: GPL3\n  license_file: '{{ environ[\"PREFIX\"] }}/lib/R/share/licenses/GPL-3'\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n    - MathiasHaudgaard\n    - FrodePedersen\n    - ArneKr\n",
+ "raw_meta_yaml":"{% set version = \"1.8.2.1\" %}\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-rootsolve\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  fn: rootSolve_{{ version }}.tar.gz\n  url:\n    - {{ cran_mirror }}/src/contrib/rootSolve_{{ version }}.tar.gz\n    - {{ cran_mirror }}/src/contrib/Archive/rootSolve/rootSolve_{{ version }}.tar.gz\n  sha256: 488451182663197ae4513e46e24f72cadb2297d35a58a3007a0dbf1bf0833031\n\nbuild:\n  merge_build_host: true  # [win]\n  number: 0\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - {{ compiler('c') }}        # [not win]\n    - {{ compiler('fortran') }}  # [not win]\n    - {{ compiler('m2w64_c') }}        # [win]\n    - {{ compiler('m2w64_fortran') }}        # [win]\n    - {{ posix }}filesystem        # [win]\n    - {{ posix }}make\n    - {{ posix }}sed               # [win]\n    - {{ posix }}coreutils         # [win]\n    - {{ posix }}zip               # [win]\n  host:\n    - r-base\n  run:\n    - r-base\n    - {{ native }}gcc-libs         # [win]\n\ntest:\n  commands:\n    - $R -e \"library('rootSolve')\"           # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('rootSolve')\\\"\"  # [win]\n\nabout:\n  home: https://CRAN.R-project.org/package=rootSolve\n  license: GPL (>= 2)\n  summary: \"Routines to find the root of nonlinear functions, and to perform steady-state and equilibrium analysis of ordinary differential equations (ODE).  Includes routines that: (1) generate gradient and jacobian matrices (full and banded), (2) find roots of non-linear equations by the 'Newton-Raphson' method,  (3) estimate\\\n    \\ steady-state conditions of a system of (differential) equations in full, banded or sparse form, using the 'Newton-Raphson' method, or by dynamically running, (4) solve the steady-state conditions for uni-and multicomponent 1-D, 2-D, and 3-D partial differential equations, that have been converted to ordinary differential\\\n    \\ equations by numerical differencing (using the method-of-lines approach). Includes fortran code.\"\n  license_family: GPL3\n  license_file: {{ environ[\"PREFIX\"] }}/lib/R/share/licenses/GPL-3\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n    - MathiasHaudgaard\n    - FrodePedersen\n    - ArneKr\n",
  "req":{
   "__set__":true,
   "elements":[
@@ -320,5 +317,5 @@
   "https://cran.r-project.org/src/contrib/rootSolve_1.7.tar.gz",
   "https://cran.r-project.org/src/contrib/Archive/rootSolve/rootSolve_1.7.tar.gz"
  ],
- "version":"1.8.2"
+ "version":"1.8.2.1"
 }
