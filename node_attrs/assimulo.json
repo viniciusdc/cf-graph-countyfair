@@ -125,7 +125,7 @@
    "summary":"A package for solving ordinary differential equations and differential algebraic equations."
   },
   "build":{
-   "number":"1"
+   "number":"2"
   },
   "extra":{
    "recipe-maintainers":[
@@ -151,6 +151,8 @@
     "fortran_compiler_stub"
    ],
    "host":[
+    "libblas",
+    "liblapack",
     "python",
     "pip",
     "numpy",
@@ -213,7 +215,7 @@
  "name":"assimulo",
  "new_version":"3.1",
  "pinning_version":"2020.03.28",
- "raw_meta_yaml":"{% set version = \"3.2\" %}\n\npackage:\n  name: assimulo\n  version: {{ version }}\n\nsource:\n  git_url: https://github.com/modelon-community/Assimulo.git\n  git_rev: 98af29e5d4e310524e4c0eafcb5b69276b29dfaf\n  patches:\n    # find blas with dynamic extension\n    - blas_shared.patch  # [unix]\n    # sundials 5.x\n    - sundials5.patch  # [unix]\n\nbuild:\n  number: 1\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - {{ compiler('fortran') }}  # [unix]\n    - {{ compiler('m2w64_fortran') }}  # [win]\n  host:\n    - libblas  # [unix]\n    - liblapack  # [unix]\n    - python\n    - pip\n    - numpy\n    - cython\n    - sundials\n  run:\n    - python\n    - {{ pin_compatible('numpy') }}\n    - scipy\n    - sundials\n\ntest:\n  imports:\n    - assimulo\n    - assimulo.solvers\n  requires:\n    - nose\n\nabout:\n  home: http://www.jmodelica.org/assimulo\n  license: LGPL-3.0-only\n  license_family: LGPL\n  license_file: LICENSE\n  summary: A package for solving ordinary differential equations and differential algebraic equations.\n\nextra:\n  recipe-maintainers:\n    - chria\n    - jschueller\n",
+ "raw_meta_yaml":"{% set version = \"3.2\" %}\n\npackage:\n  name: assimulo\n  version: {{ version }}\n\nsource:\n  git_url: https://github.com/modelon-community/Assimulo.git\n  git_rev: 98af29e5d4e310524e4c0eafcb5b69276b29dfaf\n  patches:\n    # find blas with dynamic extension\n    - blas_shared.patch  # [unix]\n    # sundials 5.x\n    - sundials5.patch  # [unix]\n\nbuild:\n  number: 2\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - {{ compiler('fortran') }}  # [unix]\n    - {{ compiler('m2w64_fortran') }}  # [win]\n  host:\n    - libblas\n    - liblapack\n    - python\n    - pip\n    - numpy\n    - cython\n    - sundials\n  run:\n    - python\n    - {{ pin_compatible('numpy') }}\n    - scipy\n    - sundials\n\ntest:\n  imports:\n    - assimulo\n    - assimulo.solvers\n  requires:\n    - nose\n\nabout:\n  home: http://www.jmodelica.org/assimulo\n  license: LGPL-3.0-only\n  license_family: LGPL\n  license_file: LICENSE\n  summary: A package for solving ordinary differential equations and differential algebraic equations.\n\nextra:\n  recipe-maintainers:\n    - chria\n    - jschueller\n",
  "req":{
   "__set__":true,
   "elements":[
