@@ -513,7 +513,7 @@
    "summary":"TileDB sparse and dense multi-dimensional array data management"
   },
   "build":{
-   "number":"1",
+   "number":"0",
    "run_exports":[
     "tiledb",
     "tiledb",
@@ -536,7 +536,7 @@
   },
   "package":{
    "name":"tiledb",
-   "version":"1.7.7"
+   "version":"2.0.0"
   },
   "requirements":{
    "build":[
@@ -554,48 +554,48 @@
     "bzip2",
     "zstd",
     "lz4-c",
-    "tbb-devel 2018.0.5",
+    "tbb-devel 2019.9",
     "zlib",
     "bzip2",
     "zstd",
     "lz4-c",
-    "tbb-devel 2018.0.5",
+    "tbb-devel 2019.9",
     "zlib",
     "bzip2",
     "zstd",
     "lz4-c",
-    "tbb-devel 2018.0.5"
+    "tbb-devel 2019.9"
    ],
    "run":[
     "zlib",
     "bzip2",
     "zstd",
     "lz4-c",
-    "tbb 2018.0.5",
+    "tbb 2019.9",
     "curl",
     "zlib",
     "bzip2",
     "zstd",
     "lz4-c",
-    "tbb 2018.0.5",
+    "tbb 2019.9",
     "curl",
     "zlib",
     "bzip2",
     "zstd",
     "lz4-c",
-    "tbb 2018.0.5",
+    "tbb 2019.9",
     "curl"
    ]
   },
   "source":{
-   "fn":"TileDB-1.7.7.tar.gz",
+   "fn":"TileDB-2.0.0.tar.gz",
    "patches":[
     "0001-Conda-only-patch-capnproto-build-to-work-with-anacon.patch",
     "0001-Conda-only-patch-capnproto-build-to-work-with-anacon.patch",
     "0001-Conda-only-patch-capnproto-build-to-work-with-anacon.patch"
    ],
-   "sha256":"3530bcd9093aaa64d174aaa29346bf62d2c1a44bf20a38d053c1c12e234208ec",
-   "url":"https://github.com/TileDB-Inc/TileDB/archive/1.7.7.tar.gz"
+   "sha256":"dd49a334b2ba3554d41ec0bb85617bf86246c8d702887e9a41c57a10c1418755",
+   "url":"https://github.com/TileDB-Inc/TileDB/archive/2.0.0.tar.gz"
   },
   "test":{
    "commands":[
@@ -620,7 +620,7 @@
  },
  "new_version_errors":{},
  "pinning_version":"2020.04.30.15.41.11",
- "raw_meta_yaml":"{% set name = \"TileDB\" %}\n{% set version = \"1.7.7\" %}\n{% set sha256 = \"3530bcd9093aaa64d174aaa29346bf62d2c1a44bf20a38d053c1c12e234208ec\" %}\n\npackage:\n  name: tiledb\n  version: {{ version }}\n\nsource:\n  fn: {{ name }}-{{ version }}.tar.gz\n  url: https://github.com/TileDB-Inc/{{ name }}/archive/{{ version }}.tar.gz\n  sha256: {{ sha256 }}\n  patches:\n    - 0001-Conda-only-patch-capnproto-build-to-work-with-anacon.patch\n\nbuild:\n  number: 1\n  run_exports:\n    # https://abi-laboratory.pro/?view=timeline&l=tiledb\n    - {{ pin_subpackage('tiledb', 'x.x') }}\n  skip: true  # [win and vc<14]\n\nrequirements:\n  build:\n    - cmake\n    - pkg-config  # [not win]\n    - {{ compiler('cxx') }}\n  host:\n    - zlib\n    - bzip2\n    - zstd\n    - lz4-c\n    - tbb-devel 2018.0.5\n  run:\n    - zlib\n    - bzip2\n    - zstd\n    - lz4-c\n    - tbb 2018.0.5\n    - curl\n\ntest:\n  #  downstreams:\n  #  - tiledb-py\n  commands:\n    - test -e $PREFIX/include/tiledb/tiledb.h  # [not win]\n    - test -e $PREFIX/include/tiledb/tiledb  # [not win]\n    - test -e $PREFIX/lib/libtiledb$SHLIB_EXT  # [linux]\n    - test -e $PREFIX/lib/libtiledb$SHLIB_EXT  # [osx]\n\n    - if exist %LIBRARY_INC%\\\\tiledb\\\\tiledb (exit 0) else (exit 1)  # [win]\n    - if exist %LIBRARY_INC%\\\\tiledb\\\\tiledb.h (exit 0) else (exit 1)  # [win]\n    - if exist %LIBRARY_LIB%\\\\tiledb.lib (exit 0) else (exit 1)  # [win]\n    - if exist %LIBRARY_LIB%\\\\cmake\\\\TileDB\\\\TileDBConfig.cmake (exit 0) else (exit 1)  # [win]\n    - if exist %PREFIX%\\\\Library\\\\bin\\\\tiledb.dll (exit 0) else (exit 1)  # [win]\n\nabout:\n  home: http://tiledb.io\n  license: MIT\n  license_family: MIT\n  license_file: LICENSE\n  summary: TileDB sparse and dense multi-dimensional array data management\n  description: |\n    TileDB is an efficient multi-dimensional array management system which introduces\n    a novel on-disk format that can effectively store dense and sparse array data with\n    support for fast updates and reads. It features excellent compression, and an efficient\n    parallel I/O system with high scalability.\n  doc_url: http://docs.tiledb.io\n  dev_url: https://github.com/TileDB-Inc/TileDB\n\nextra:\n  recipe-maintainers:\n    - stavrospapadopoulos\n    - shelnutt2\n    - ihnorton\n",
+ "raw_meta_yaml":"{% set name = \"TileDB\" %}\n{% set version = \"2.0.0\" %}\n{% set sha256 = \"dd49a334b2ba3554d41ec0bb85617bf86246c8d702887e9a41c57a10c1418755\" %}\n\npackage:\n  name: tiledb\n  version: {{ version }}\n\nsource:\n  fn: {{ name }}-{{ version }}.tar.gz\n  url: https://github.com/TileDB-Inc/{{ name }}/archive/{{ version }}.tar.gz\n  sha256: {{ sha256 }}\n  patches:\n    - 0001-Conda-only-patch-capnproto-build-to-work-with-anacon.patch\n\nbuild:\n  number: 0\n  run_exports:\n    # https://abi-laboratory.pro/?view=timeline&l=tiledb\n    - {{ pin_subpackage('tiledb', 'x.x') }}\n  skip: true  # [win and vc<14]\n\nrequirements:\n  build:\n    - cmake\n    - pkg-config  # [not win]\n    - {{ compiler('cxx') }}\n  host:\n    - zlib\n    - bzip2\n    - zstd\n    - lz4-c\n    - tbb-devel 2019.9\n  run:\n    - zlib\n    - bzip2\n    - zstd\n    - lz4-c\n    - tbb 2019.9\n    - curl\n\ntest:\n  #  downstreams:\n  #  - tiledb-py\n  commands:\n    - test -e $PREFIX/include/tiledb/tiledb.h  # [not win]\n    - test -e $PREFIX/include/tiledb/tiledb  # [not win]\n    - test -e $PREFIX/lib/libtiledb$SHLIB_EXT  # [linux]\n    - test -e $PREFIX/lib/libtiledb$SHLIB_EXT  # [osx]\n\n    - if exist %LIBRARY_INC%\\\\tiledb\\\\tiledb (exit 0) else (exit 1)  # [win]\n    - if exist %LIBRARY_INC%\\\\tiledb\\\\tiledb.h (exit 0) else (exit 1)  # [win]\n    - if exist %LIBRARY_LIB%\\\\tiledb.lib (exit 0) else (exit 1)  # [win]\n    - if exist %LIBRARY_LIB%\\\\cmake\\\\TileDB\\\\TileDBConfig.cmake (exit 0) else (exit 1)  # [win]\n    - if exist %PREFIX%\\\\Library\\\\bin\\\\tiledb.dll (exit 0) else (exit 1)  # [win]\n\nabout:\n  home: http://tiledb.io\n  license: MIT\n  license_family: MIT\n  license_file: LICENSE\n  summary: TileDB sparse and dense multi-dimensional array data management\n  description: |\n    TileDB is an efficient multi-dimensional array management system which introduces\n    a novel on-disk format that can effectively store dense and sparse array data with\n    support for fast updates and reads. It features excellent compression, and an efficient\n    parallel I/O system with high scalability.\n  doc_url: http://docs.tiledb.io\n  dev_url: https://github.com/TileDB-Inc/TileDB\n\nextra:\n  recipe-maintainers:\n    - stavrospapadopoulos\n    - shelnutt2\n    - ihnorton\n",
  "req":{
   "__set__":true,
   "elements":[
@@ -687,7 +687,7 @@
    "elements":[
     "bzip2",
     "lz4-c",
-    "tbb-devel 2018.0.5",
+    "tbb-devel 2019.9",
     "zlib",
     "zstd"
    ]
@@ -698,7 +698,7 @@
     "bzip2",
     "curl",
     "lz4-c",
-    "tbb 2018.0.5",
+    "tbb 2019.9",
     "zlib",
     "zstd"
    ]
@@ -709,5 +709,5 @@
   }
  },
  "url":"https://github.com/TileDB-Inc/TileDB/archive/1.6.2.tar.gz",
- "version":"1.7.7"
+ "version":"2.0.0"
 }
