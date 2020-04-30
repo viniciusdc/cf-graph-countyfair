@@ -86,19 +86,24 @@
   }
  ],
  "bad":false,
- "conda-forge.yml":{},
+ "conda-forge.yml":{
+  "bot":{
+   "automerge":true
+  }
+ },
  "feedstock_name":"pygeogrids",
  "hash_type":"sha256",
  "meta_yaml":{
   "about":{
    "home":"https://github.com/TUW-GEO/pygeogrids",
-   "license":"BSD 3-Clause",
+   "license":"BSD-3-Clause",
    "license_file":"LICENSE.txt",
    "summary":"Creation and handling of Discrete Global Grids or Point collections."
   },
   "build":{
+   "noarch":"python",
    "number":"0",
-   "script":"python setup.py install --single-version-externally-managed --record record.txt"
+   "script":"-m pip install . -vv"
   },
   "extra":{
    "recipe-maintainers":[
@@ -112,53 +117,57 @@
   },
   "package":{
    "name":"pygeogrids",
-   "version":"0.2.3"
+   "version":"0.3.0"
   },
   "requirements":{
    "build":[
-    "python",
-    "setuptools",
-    "pyscaffold",
-    "python",
-    "setuptools",
-    "pyscaffold",
-    "python",
-    "setuptools",
-    "pyscaffold"
+    "python >=3.6",
+    "pip",
+    "pyscaffold >=3.2a0,<3.3a0",
+    "python >=3.6",
+    "pip",
+    "pyscaffold >=3.2a0,<3.3a0",
+    "python >=3.6",
+    "pip",
+    "pyscaffold >=3.2a0,<3.3a0"
    ],
    "run":[
-    "python",
-    "numpy",
+    "python >=3.6",
     "netcdf4",
-    "pyproj",
-    "scipy",
+    "numpy",
     "pykdtree",
-    "python",
-    "numpy",
-    "netcdf4",
     "pyproj",
-    "scipy",
+    "python >=3.6",
+    "netcdf4",
+    "numpy",
     "pykdtree",
-    "python",
-    "numpy",
-    "netcdf4",
     "pyproj",
-    "scipy"
+    "python >=3.6",
+    "netcdf4",
+    "numpy",
+    "pykdtree",
+    "pyproj"
    ]
   },
   "source":{
-   "fn":"pygeogrids-0.2.3.tar.gz",
-   "sha256":"ad014bae48fc1666b8e56b8714fd0e00775effcd57b6159791d642f1522c7d6c",
-   "url":"https://pypi.io/packages/source/p/pygeogrids/pygeogrids-0.2.3.tar.gz"
+   "sha256":"bb5bbefeff858d7abefd0a925e42c7fede44e5674fcf6e3be114162262a7ba94",
+   "url":"https://pypi.io/packages/source/p/pygeogrids/pygeogrids-0.3.0.tar.gz"
   },
   "test":{
+   "commands":[
+    "pip check",
+    "pip check",
+    "pip check"
+   ],
    "imports":[
     "pygeogrids",
-    "pygeogrids.grids",
     "pygeogrids",
-    "pygeogrids.grids",
-    "pygeogrids",
-    "pygeogrids.grids"
+    "pygeogrids"
+   ],
+   "requires":[
+    "pip",
+    "pip",
+    "pip"
    ]
   }
  },
@@ -169,27 +178,26 @@
  },
  "new_version_errors":{},
  "pinning_version":"2020.04.28.13.02.26",
- "raw_meta_yaml":"{% set version = \"0.2.3\" %}\n\npackage:\n  name: pygeogrids\n  version: {{ version }}\n\nsource:\n  fn: pygeogrids-{{ version }}.tar.gz\n  url: https://pypi.io/packages/source/p/pygeogrids/pygeogrids-{{ version }}.tar.gz\n  sha256: ad014bae48fc1666b8e56b8714fd0e00775effcd57b6159791d642f1522c7d6c\n\nbuild:\n  number: 0\n  script: python setup.py install --single-version-externally-managed --record record.txt\n\nrequirements:\n  build:\n    - python\n    - setuptools\n    - pyscaffold\n  run:\n    - python\n    - numpy\n    - netcdf4\n    - pyproj\n    - scipy\n    - pykdtree  # [not linux]\n\ntest:\n  imports:\n    - pygeogrids\n    - pygeogrids.grids\n\nabout:\n  home: https://github.com/TUW-GEO/pygeogrids\n  license: BSD 3-Clause\n  license_file: LICENSE.txt\n  summary: 'Creation and handling of Discrete Global Grids or Point collections.'\n\nextra:\n  recipe-maintainers:\n    - cpaulik\n    - ocefpaf\n",
+ "raw_meta_yaml":"{% set version = \"0.3.0\" %}\n\npackage:\n  name: pygeogrids\n  version: {{ version }}\n\nsource:\n  url: https://pypi.io/packages/source/p/pygeogrids/pygeogrids-{{ version }}.tar.gz\n  sha256: bb5bbefeff858d7abefd0a925e42c7fede44e5674fcf6e3be114162262a7ba94\n\nbuild:\n  number: 0\n  noarch: python\n  script: {{ PYTHON }} -m pip install . -vv\n\nrequirements:\n  build:\n    - python >=3.6\n    - pip\n    - pyscaffold >=3.2a0,<3.3a0\n  run:\n    - python >=3.6\n    - netcdf4\n    - numpy\n    - pykdtree\n    - pyproj\n\ntest:\n  imports:\n    - pygeogrids\n  commands:\n    - pip check\n  requires:\n    - pip\n\n\nabout:\n  home: https://github.com/TUW-GEO/pygeogrids\n  license: BSD-3-Clause\n  license_file: LICENSE.txt\n  summary: Creation and handling of Discrete Global Grids or Point collections.\n\nextra:\n  recipe-maintainers:\n    - cpaulik\n    - ocefpaf\n",
  "req":{
   "__set__":true,
   "elements":[
    "netcdf4",
    "numpy",
+   "pip",
    "pykdtree",
    "pyproj",
    "pyscaffold",
-   "python",
-   "scipy",
-   "setuptools"
+   "python"
   ]
  },
  "requirements":{
   "build":{
    "__set__":true,
    "elements":[
+    "pip",
     "pyscaffold",
-    "python",
-    "setuptools"
+    "python"
    ]
   },
   "host":{
@@ -203,13 +211,14 @@
     "numpy",
     "pykdtree",
     "pyproj",
-    "python",
-    "scipy"
+    "python"
    ]
   },
   "test":{
    "__set__":true,
-   "elements":[]
+   "elements":[
+    "pip"
+   ]
   }
  },
  "smithy_version":"No azure token. Create a token and\nput it in ~/.conda-smithy/azure.token\n3.7.0",
@@ -218,9 +227,9 @@
   "build":{
    "__set__":true,
    "elements":[
-    "pyscaffold",
-    "python",
-    "setuptools"
+    "pip",
+    "pyscaffold >=3.2a0,<3.3a0",
+    "python >=3.6"
    ]
   },
   "host":{
@@ -234,15 +243,16 @@
     "numpy",
     "pykdtree",
     "pyproj",
-    "python",
-    "scipy"
+    "python >=3.6"
    ]
   },
   "test":{
    "__set__":true,
-   "elements":[]
+   "elements":[
+    "pip"
+   ]
   }
  },
  "url":"https://pypi.io/packages/source/p/pygeogrids/pygeogrids-0.2.3.tar.gz",
- "version":"0.2.3"
+ "version":"0.3.0"
 }

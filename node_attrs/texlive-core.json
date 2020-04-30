@@ -101,6 +101,25 @@
     "migrator_version",
     "name"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/411766779.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"MigrationYaml",
+    "migrator_object_version":1,
+    "migrator_version":0,
+    "name":"poppler088"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_object_version",
+    "migrator_version",
+    "name"
+   ]
   }
  ],
  "bad":false,
@@ -275,7 +294,7 @@
  },
  "name":"texlive-core",
  "new_version":false,
- "pinning_version":"2020.04.17.01.00.32",
+ "pinning_version":"2020.04.30.15.41.11",
  "raw_meta_yaml":"{% set version = \"20180414\" %}\n\npackage:\n  name: texlive-core\n  version: {{ version }}\n\nsource:\n  url: ftp://tug.org/texlive/historic/2018/texlive-{{ version }}-source.tar.xz\n  sha256: fe0036d5f66708ad973cdc4e413c0bb9ee2385224481f7b0fb229700a0891e4e\n  patches:\n    - 0001-support-poppler-0.64.0.patch\n\nbuild:\n  number: 1\n  skip: True  # [win]\n  detect_binary_files_with_prefix: true\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n    - {{ cdt('libxrender-devel') }}  # [linux]\n    - {{ cdt('libxext-devel') }}     # [linux]\n    - {{ cdt('libxau-devel') }}      # [linux]\n    - pkg-config\n    - texinfo\n    - make\n    - patch\n  host:\n    - cairo\n    - freetype\n    - fontconfig\n    - gmp\n    - harfbuzz >=1.8.*\n    - graphite2\n    - icu\n    - libpng\n    - mpfr\n    - pixman\n    - perl\n    - poppler >=0.64.0,<0.66.0\n    - zlib\n  run:\n    - cairo\n    - freetype\n    - fontconfig\n    - gmp\n    - harfbuzz >=1.8.*\n    - graphite2\n    - icu\n    - libpng\n    - mpfr\n    - pixman\n    - perl \n    - poppler >=0.64.0,<0.66.0\n    - zlib\n\ntest:\n  commands:\n    - pdftex --version\n    - bibtex --version\n    # Test the symlinks.\n    - pdflatex --version\n    - latex --version\n    - conda inspect linkages -p $PREFIX $PKG_NAME  # [not win]\n    - conda inspect objects -p $PREFIX $PKG_NAME  # [osx]\n\nabout:\n  home: https://www.tug.org/texlive/\n  license: GPL-2.0+ and GPL-2.0 and GPL-3.0 and LPPL-1.3c and LPPL-1.0 and Artistic-1.0 and Apache-2.0 and MIT and BSD-3-Clause\n  summary: 'An easy way to get up and running with the TeX document production system.'\n\nextra:\n  recipe-maintainers:\n    - jakirkham\n    - ocefpaf\n",
  "req":{
   "__set__":true,
@@ -356,7 +375,7 @@
    "elements":[]
   }
  },
- "smithy_version":"No azure token. Create a token and\nput it in ~/.conda-smithy/azure.token\n3.6.16",
+ "smithy_version":"No azure token. Create a token and\nput it in ~/.conda-smithy/azure.token\n3.7.0",
  "strong_exports":false,
  "total_requirements":{
   "build":{
