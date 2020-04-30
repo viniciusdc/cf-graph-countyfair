@@ -204,7 +204,13 @@
   }
  },
  "name":"pyxdameraulevenshtein",
- "new_version":"1.5.3",
+ "new_version":"1.6",
+ "new_version_attempts":{
+  "1.6":1
+ },
+ "new_version_errors":{
+  "1.6":"The recipe did not change in the version migration, a URL did not hash, or there is jinja2 syntax the bot cannot handle!\n\nPlease check the URLs in your recipe with version '1.6' to make sure they exist!\n\nWe also found the following errors:\n\n - could not hash URL template 'https://github.com/gfairchild/pyxDamerauLevenshtein/archive/v{{ version }}.tar.gz'\n"
+ },
  "pinning_version":"2020.03.24",
  "raw_meta_yaml":"{% set name = \"pyxDamerauLevenshtein\" %}\n{% set version = \"1.5.3\" %}\n{% set sha256 = \"89b1399e248faf62fc930cb4c8562bf53ed99fc85c08395f57cd4e0bdbac6297\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  fn: {{ name }}-{{ version }}.tar.gz\n  url: https://github.com/gfairchild/pyxDamerauLevenshtein/archive/v{{ version }}.tar.gz\n  sha256: {{ sha256 }}\n\nbuild:\n  number: 1\n  script: \"{{ PYTHON }} -m pip install --no-deps --ignore-installed . -vv\"\n  # Skip Python 3.7+ as the C sources need to be rebuilt from cython for 3.7\n  # compatability but are not part of the package.\n  skip: true  # [py>36]\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n  host:\n    - python\n    - pip\n    - setuptools\n    - cython\n    - numpy\n  run:\n    - python\n    - {{ pin_compatible('numpy') }}\n\ntest:\n  imports:\n    - pyxdameraulevenshtein\nabout:\n  home: https://github.com/gfairchild/pyxDamerauLevenshtein\n  license: BSD-3-Clause\n  license_file: LICENSE.txt\n  summary: 'High performance Damerau-Levenshtein (DL) edit distance\n    algorithm for Python.'\n\n  # The remaining entries in this section are optional, but recommended\n  description: |\n    pyxDamerauLevenshtein implements the Damerau-Levenshtein (DL) edit distance\n    algorithm for Python in Cython for high performance.\n  doc_url: https://github.com/gfairchild/pyxDamerauLevenshtein\n  dev_url: https://github.com/gfairchild/pyxDamerauLevenshtein\n\nextra:\n  recipe-maintainers:\n    - CJ-Wright\n",
  "req":{
