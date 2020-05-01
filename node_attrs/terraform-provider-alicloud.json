@@ -929,9 +929,9 @@
   "build":{
    "number":"0",
    "script":[
-    "go build -v -o terraform-provider-alicloud_v1.80.1_x4",
-    "go build -v -o terraform-provider-alicloud_v1.80.1_x4",
-    "go build -v -o terraform-provider-alicloud_v1.80.1_x4"
+    "go build -v -o terraform-provider-alicloud_v1.81.0_x4",
+    "go build -v -o terraform-provider-alicloud_v1.81.0_x4",
+    "go build -v -o terraform-provider-alicloud_v1.81.0_x4"
    ]
   },
   "extra":{
@@ -943,7 +943,7 @@
   },
   "package":{
    "name":"terraform-provider-alicloud",
-   "version":"1.80.1"
+   "version":"1.81.0"
   },
   "requirements":{
    "build":[
@@ -958,23 +958,23 @@
    ]
   },
   "source":{
-   "sha256":"2bb779432cf79fb37d676c1528a2eb0d85f6b3df6e336a63e938f564ce110a72",
-   "url":"https://github.com/terraform-providers/terraform-provider-alicloud/archive/v1.80.1.tar.gz"
+   "sha256":"a57695544b716322b012e25eea01d5e0319e6a262feef96e9c228e759fe09609",
+   "url":"https://github.com/terraform-providers/terraform-provider-alicloud/archive/v1.81.0.tar.gz"
   },
   "test":{
    "commands":[
-    "echo provider \"alicloud\" { version=\"1.80.1\" } > init.tf",
+    "echo provider \"alicloud\" { version=\"1.81.0\" } > init.tf",
     "terraform init",
     "if not exist .terraform\\plugins\\_\\lock.json exit 1",
-    "if exist .terraform\\plugins\\_\\terraform-provider-alicloud_v1.80.1_x4 exit 1",
-    "echo 'provider \"alicloud\" { version=\"1.80.1\" }' > init.tf",
+    "if exist .terraform\\plugins\\_\\terraform-provider-alicloud_v1.81.0_x4 exit 1",
+    "echo 'provider \"alicloud\" { version=\"1.81.0\" }' > init.tf",
     "terraform init",
     "test -f .terraform/plugins/_/lock.json",
-    "test ! -f .terraform/plugins/_/terraform-provider-alicloud_v1.80.1_x4",
-    "echo 'provider \"alicloud\" { version=\"1.80.1\" }' > init.tf",
+    "test ! -f .terraform/plugins/_/terraform-provider-alicloud_v1.81.0_x4",
+    "echo 'provider \"alicloud\" { version=\"1.81.0\" }' > init.tf",
     "terraform init",
     "test -f .terraform/plugins/_/lock.json",
-    "test ! -f .terraform/plugins/_/terraform-provider-alicloud_v1.80.1_x4"
+    "test ! -f .terraform/plugins/_/terraform-provider-alicloud_v1.81.0_x4"
    ]
   }
  },
@@ -987,7 +987,7 @@
  },
  "new_version_errors":{},
  "pinning_version":"2020.05.01.13.16.44",
- "raw_meta_yaml":"{% set provider = \"alicloud\" %}\n{% set goname = \"github.com/terraform-providers/terraform-provider-\"+provider.lower() %}\n{% set version = \"1.80.1\" %}\n\n{% set name = goname.split('/')[-1] %}\n\n{% set x4_plugin = name + '_v' + version + \"_x4\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  url: https://{{ goname }}/archive/v{{ version }}.tar.gz\n  sha256: 2bb779432cf79fb37d676c1528a2eb0d85f6b3df6e336a63e938f564ce110a72\n\nbuild:\n  number: 0\n  script:\n    - go build -v -o {{ target_gobin }}{{ x4_plugin }}{{ target_goexe }}\n\nrequirements:\n  build:\n    - {{ compiler('go') }} 1.13\n  run:\n    - terraform 0.12\n\ntest:\n  commands:\n    # Create a sample init.tf loading the provider\n    - echo 'provider \"{{ provider|lower }}\" { version=\"{{ version }}\" }' > init.tf  # [unix]\n    - echo provider \"{{ provider|lower }}\" { version=\"{{ version }}\" } > init.tf    # [win]\n\n    # Initialize\n    - terraform init\n\n    # Tests that init was successful\n    - test -f .terraform/plugins/{{ target_goos }}_{{ target_goarch }}/lock.json              # [unix]\n    - if not exist .terraform\\plugins\\{{ target_goos }}_{{ target_goarch }}\\lock.json exit 1  # [win]\n\n    # Test that the provider was not downloaded\n    - test ! -f .terraform/plugins/{{ target_goos }}_{{ target_goarch }}/{{ x4_plugin }}{{ target_goexe }}        # [unix]\n    - if exist .terraform\\plugins\\{{ target_goos }}_{{ target_goarch }}\\{{ x4_plugin }}{{ target_goexe }} exit 1  # [win]\n\nabout:\n  home: https://www.terraform.io\n  license: MPL-2.0\n  summary: The Terraform AliCloud provider\n  doc_url: https://www.terraform.io/docs/providers/{{ provider }}/index.html\n  dev_url: https://github.com/terraform-providers/{{ name }}\n\nextra:\n  recipe-maintainers:\n    - conda-forge/terraform\n",
+ "raw_meta_yaml":"{% set provider = \"alicloud\" %}\n{% set goname = \"github.com/terraform-providers/terraform-provider-\"+provider.lower() %}\n{% set version = \"1.81.0\" %}\n\n{% set name = goname.split('/')[-1] %}\n\n{% set x4_plugin = name + '_v' + version + \"_x4\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  url: https://{{ goname }}/archive/v{{ version }}.tar.gz\n  sha256: a57695544b716322b012e25eea01d5e0319e6a262feef96e9c228e759fe09609\n\nbuild:\n  number: 0\n  script:\n    - go build -v -o {{ target_gobin }}{{ x4_plugin }}{{ target_goexe }}\n\nrequirements:\n  build:\n    - {{ compiler('go') }} 1.13\n  run:\n    - terraform 0.12\n\ntest:\n  commands:\n    # Create a sample init.tf loading the provider\n    - echo 'provider \"{{ provider|lower }}\" { version=\"{{ version }}\" }' > init.tf  # [unix]\n    - echo provider \"{{ provider|lower }}\" { version=\"{{ version }}\" } > init.tf    # [win]\n\n    # Initialize\n    - terraform init\n\n    # Tests that init was successful\n    - test -f .terraform/plugins/{{ target_goos }}_{{ target_goarch }}/lock.json              # [unix]\n    - if not exist .terraform\\plugins\\{{ target_goos }}_{{ target_goarch }}\\lock.json exit 1  # [win]\n\n    # Test that the provider was not downloaded\n    - test ! -f .terraform/plugins/{{ target_goos }}_{{ target_goarch }}/{{ x4_plugin }}{{ target_goexe }}        # [unix]\n    - if exist .terraform\\plugins\\{{ target_goos }}_{{ target_goarch }}\\{{ x4_plugin }}{{ target_goexe }} exit 1  # [win]\n\nabout:\n  home: https://www.terraform.io\n  license: MPL-2.0\n  summary: The Terraform AliCloud provider\n  doc_url: https://www.terraform.io/docs/providers/{{ provider }}/index.html\n  dev_url: https://github.com/terraform-providers/{{ name }}\n\nextra:\n  recipe-maintainers:\n    - conda-forge/terraform\n",
  "req":{
   "__set__":true,
   "elements":[
@@ -1042,5 +1042,5 @@
   }
  },
  "url":"https://github.com/terraform-providers/terraform-provider-alicloud/archive/v1.55.2.tar.gz",
- "version":"1.80.1"
+ "version":"1.81.0"
 }

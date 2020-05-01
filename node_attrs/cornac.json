@@ -326,6 +326,23 @@
     "migrator_version",
     "name"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/412167843.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"Version",
+    "migrator_version":0,
+    "version":"1.5.0"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "version"
+   ]
   }
  ],
  "bad":false,
@@ -415,7 +432,11 @@
  },
  "name":"cornac",
  "new_version":"1.5.0",
- "pinning_version":"2020.03.28",
+ "new_version_attempts":{
+  "1.5.0":1
+ },
+ "new_version_errors":{},
+ "pinning_version":"2020.05.01.13.16.44",
  "raw_meta_yaml":"{% set name = \"cornac\" %}\n{% set version = \"1.4.1\" %}\n{% set sha256 = \"13761f0b2651d23361de29e907a2151c16556da849397fe7ccc83d17f256be8f\" %}\n{% set build = 0 %}\n\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz\n  sha256: {{ sha256 }}\n\nbuild:\n  skip: True  # [py<35]\n  number: {{ build }}\n  script: \"{{ PYTHON }} -m pip install . -vv\"\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n    - llvm-openmp  # [osx]\n  host:\n    - llvm-openmp  # [osx]\n    - python\n    - pip\n    - cython\n    - numpy\n  run:\n    - llvm-openmp  # [osx]\n    - python\n    - {{ pin_compatible('numpy') }}\n    - scipy\n    - tqdm\n\ntest:\n  imports:\n    - cornac\n\nabout:\n  home: https://cornac.preferred.ai/\n  license: Apache-2.0 \n  license_file: \"LICENSE\" \n  summary: A collection of recommendation algorithms and comparisons\n  doc_url: https://cornac.readthedocs.io/en/latest/\n  dev_url: https://github.com/PreferredAI/cornac\n\nextra:\n  recipe-maintainers:\n    - tqtg \n",
  "req":{
   "__set__":true,
@@ -465,7 +486,7 @@
    "elements":[]
   }
  },
- "smithy_version":"No azure token. Create a token and\nput it in ~/.conda-smithy/azure.token\n3.6.15",
+ "smithy_version":"No azure token. Create a token and\nput it in ~/.conda-smithy/azure.token\n3.7.0",
  "strong_exports":false,
  "total_requirements":{
   "build":{
