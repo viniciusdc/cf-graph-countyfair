@@ -105,12 +105,9 @@
   "bot":{
    "automerge":true
   },
-  "compiler_stack":"comp7",
-  "max_py_ver":"37",
-  "max_r_ver":"35",
   "provider":{
    "linux_aarch64":"default",
-   "linux_ppc64le":"default",
+   "linux_ppc64le":"azure",
    "win":"azure"
   }
  },
@@ -126,7 +123,7 @@
   },
   "build":{
    "merge_build_host":true,
-   "number":"1",
+   "number":"2",
    "rpaths":[
     "lib/R/lib/",
     "lib/",
@@ -194,7 +191,7 @@
  "name":"r-rpart",
  "new_version":"4.1_15",
  "pinning_version":"2020.05.01.13.16.44",
- "raw_meta_yaml":"{% set version = '4.1-15' %}\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-rpart\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  url:\n    - {{ cran_mirror }}/src/contrib/rpart_{{ version }}.tar.gz\n    - {{ cran_mirror }}/src/contrib/Archive/rpart/rpart_{{ version }}.tar.gz\n  sha256: 2b8ebe0e9e11592debff893f93f5a44a6765abd0bd956b0eb1f70e9394cfae5c\n\nbuild:\n  merge_build_host: True  # [win]\n  number: 1\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - {{ compiler('c') }}        # [not win]\n    - {{ compiler('m2w64_c') }}        # [win]\n    - {{posix}}filesystem        # [win]\n    - {{posix}}make\n    - {{posix}}sed               # [win]\n    - {{posix}}coreutils         # [win]\n    - {{posix}}zip               # [win]\n  host:\n    - r-base\n  run:\n    - r-base\n    - {{native}}gcc-libs         # [win]\n\ntest:\n  commands:\n    - $R -e \"library('rpart')\"           # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('rpart')\\\"\"  # [win]\n\nabout:\n  home: https://github.com/bethatkinson/rpart, https://cran.r-project.org/package=rpart\n  license: GPL-2 | GPL-3\n  summary: Recursive partitioning for classification,  regression and survival trees.  An implementation\n    of most of the  functionality of the 1984 book by Breiman, Friedman, Olshen and\n    Stone.\n  license_family: GPL3\n  license_file: '{{ environ[\"PREFIX\"] }}/lib/R/share/licenses/GPL-3'\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n\n# Package: rpart\n# Priority: recommended\n# Version: 4.1-15\n# Date: 2019-04-10\n# Authors@R: c(person(\"Terry\", \"Therneau\", role = \"aut\", email = \"therneau@mayo.edu\"), person(\"Beth\", \"Atkinson\", role = c(\"aut\", \"cre\"), email = \"atkinson@mayo.edu\"), person(\"Brian\", \"Ripley\", role = \"trl\", email = \"ripley@stats.ox.ac.uk\", comment = \"producer of the initial R port, maintainer 1999-2017\"))\n# Description: Recursive partitioning for classification,  regression and survival trees.  An implementation of most of the  functionality of the 1984 book by Breiman, Friedman, Olshen and Stone.\n# Title: Recursive Partitioning and Regression Trees\n# Depends: R (>= 2.15.0), graphics, stats, grDevices\n# Suggests: survival\n# License: GPL-2 | GPL-3\n# LazyData: yes\n# ByteCompile: yes\n# NeedsCompilation: yes\n# Author: Terry Therneau [aut], Beth Atkinson [aut, cre], Brian Ripley [trl] (producer of the initial R port, maintainer 1999-2017)\n# Maintainer: Beth Atkinson <atkinson@mayo.edu>\n# Repository: CRAN\n# URL: https://github.com/bethatkinson/rpart, https://cran.r-project.org/package=rpart\n# BugReports: https://github.com/bethatkinson/rpart/issues\n# Packaged: 2019-04-11 15:59:38 UTC; atkinson\n# Date/Publication: 2019-04-12 14:32:39 UTC\n",
+ "raw_meta_yaml":"{% set version = '4.1-15' %}\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-rpart\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  url:\n    - {{ cran_mirror }}/src/contrib/rpart_{{ version }}.tar.gz\n    - {{ cran_mirror }}/src/contrib/Archive/rpart/rpart_{{ version }}.tar.gz\n  sha256: 2b8ebe0e9e11592debff893f93f5a44a6765abd0bd956b0eb1f70e9394cfae5c\n\nbuild:\n  merge_build_host: True  # [win]\n  number: 2\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - {{ compiler('c') }}        # [not win]\n    - {{ compiler('m2w64_c') }}        # [win]\n    - {{ posix }}filesystem        # [win]\n    - {{ posix }}make\n    - {{ posix }}sed               # [win]\n    - {{ posix }}coreutils         # [win]\n    - {{ posix }}zip               # [win]\n  host:\n    - r-base\n  run:\n    - r-base\n    - {{ native }}gcc-libs         # [win]\n\ntest:\n  commands:\n    - $R -e \"library('rpart')\"           # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('rpart')\\\"\"  # [win]\n\nabout:\n  home: https://github.com/bethatkinson/rpart, https://cran.r-project.org/package=rpart\n  license: GPL-2 | GPL-3\n  summary: Recursive partitioning for classification,  regression and survival trees.  An implementation\n    of most of the  functionality of the 1984 book by Breiman, Friedman, Olshen and\n    Stone.\n  license_family: GPL3\n  license_file: '{{ environ[\"PREFIX\"] }}/lib/R/share/licenses/GPL-3'\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n\n# Package: rpart\n# Priority: recommended\n# Version: 4.1-15\n# Date: 2019-04-10\n# Authors@R: c(person(\"Terry\", \"Therneau\", role = \"aut\", email = \"therneau@mayo.edu\"), person(\"Beth\", \"Atkinson\", role = c(\"aut\", \"cre\"), email = \"atkinson@mayo.edu\"), person(\"Brian\", \"Ripley\", role = \"trl\", email = \"ripley@stats.ox.ac.uk\", comment = \"producer of the initial R port, maintainer 1999-2017\"))\n# Description: Recursive partitioning for classification,  regression and survival trees.  An implementation of most of the  functionality of the 1984 book by Breiman, Friedman, Olshen and Stone.\n# Title: Recursive Partitioning and Regression Trees\n# Depends: R (>= 2.15.0), graphics, stats, grDevices\n# Suggests: survival\n# License: GPL-2 | GPL-3\n# LazyData: yes\n# ByteCompile: yes\n# NeedsCompilation: yes\n# Author: Terry Therneau [aut], Beth Atkinson [aut, cre], Brian Ripley [trl] (producer of the initial R port, maintainer 1999-2017)\n# Maintainer: Beth Atkinson <atkinson@mayo.edu>\n# Repository: CRAN\n# URL: https://github.com/bethatkinson/rpart, https://cran.r-project.org/package=rpart\n# BugReports: https://github.com/bethatkinson/rpart/issues\n# Packaged: 2019-04-11 15:59:38 UTC; atkinson\n# Date/Publication: 2019-04-12 14:32:39 UTC\n",
  "req":{
   "__set__":true,
   "elements":[
