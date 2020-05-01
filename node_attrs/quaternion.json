@@ -439,6 +439,23 @@
     "migrator_version",
     "version"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/412186309.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"Version",
+    "migrator_version":0,
+    "version":"2020.5.1.9.54.41"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "version"
+   ]
   }
  ],
  "bad":false,
@@ -519,10 +536,11 @@
  "new_version_attempts":{
   "2020.4.21.14.53.58":1,
   "2020.4.24.9.29.7":1,
-  "2020.4.29.8.34.20":1
+  "2020.4.29.8.34.20":1,
+  "2020.5.1.9.54.41":1
  },
  "new_version_errors":{},
- "pinning_version":"2020.04.28.13.02.26",
+ "pinning_version":"2020.05.01.13.16.44",
  "raw_meta_yaml":"{% set name = \"quaternion\" %}\n{% set pypiname = \"numpy-quaternion\" %}\n{% set version = \"2020.4.24.9.29.7\" %}\n{% set sha256 = \"a50687ea7d68b1acc923eb9d4fc60a831e578f8e91f132941b184a4b9b14777a\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  fn: {{ pypiname }}-{{ version }}.tar.gz\n  url: https://pypi.io/packages/source/{{ pypiname[0] }}/{{ pypiname }}/{{ pypiname }}-{{ version }}.tar.gz\n  sha256: {{ sha256 }}\n\nbuild:\n  number: 0\n  script: package_version={{ version }} python -m pip install --no-deps --ignore-installed .  # [not win]\n  script: set \"package_version={{ version }}\" && python -m pip install --no-deps --ignore-installed .  # [win]\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n  host:\n    - python\n    - pip\n    - numpy\n  run:\n    - python\n    - {{ pin_compatible('numpy') }}\n\ntest:\n  imports:\n    - quaternion\n\nabout:\n  home: https://github.com/moble/quaternion\n  license: MIT\n  license_family: MIT\n  license_file: LICENSE\n  summary: Add built-in support for quaternions to numpy\n  description: |\n    This package creates a quaternion type in python, and further enables\n    numpy to create and manipulate arrays of quaternions.  The usual\n    algebraic operations (addition and multiplication) are available,\n    along with numerous properties like norm and various types of distance\n    measures between two quaternions.  There are also additional functions\n    like \"squad\" and \"slerp\" interpolation, and conversions to and from\n    axis-angle, matrix, and Euler-angle representations of rotations.  The\n    core of the code is written in C for speed.\n  doc_url: https://github.com/moble/quaternion#usage\n  dev_url: https://github.com/moble/quaternion\n\nextra:\n  recipe-maintainers:\n    - moble\n",
  "req":{
   "__set__":true,
