@@ -81,6 +81,25 @@
     "migrator_version",
     "name"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/412223848.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"MigrationYaml",
+    "migrator_object_version":2,
+    "migrator_version":0,
+    "name":"r400"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_object_version",
+    "migrator_version",
+    "name"
+   ]
   }
  ],
  "bad":false,
@@ -182,7 +201,7 @@
  },
  "name":"r-xts",
  "new_version":"0.12_0",
- "pinning_version":"2020.04.16.03.28.28",
+ "pinning_version":"2020.05.01.13.16.44",
  "raw_meta_yaml":"{% set version = \"0.12-0\" %}\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-xts\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  url:\n    - {{ cran_mirror }}/src/contrib/xts_{{ version }}.tar.gz\n    - {{ cran_mirror }}/src/contrib/Archive/xts/xts_{{ version }}.tar.gz\n  sha256: df11e6dad7cf0a266702988fa6127aaf72437da743ca40e9abcd9e6b3d628c60\n\nbuild:\n  merge_build_host: True  # [win]\n  number: 0\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - {{ compiler('c') }}              # [not win]\n    - {{ compiler('m2w64_c') }}        # [win]\n    - {{posix}}filesystem        # [win]\n    - {{posix}}make\n    - {{posix}}sed               # [win]\n    - {{posix}}coreutils         # [win]\n    - {{posix}}zip               # [win]\n  host:\n    - r-base\n    - r-zoo >=1.7_12\n  run:\n    - r-base\n    - {{native}}gcc-libs         # [win]\n    - r-zoo >=1.7_12\n\ntest:\n  commands:\n    - $R -e \"library('xts')\"           # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('xts')\\\"\"  # [win]\n\nabout:\n  home: https://github.com/joshuaulrich/xts\n  license: GPL (>= 2)\n  summary: Provide for uniform handling of R's different time-based data classes by extending\n    zoo, maximizing native format information preservation and allowing for user level\n    customization and extension, while simplifying cross-class interoperability.\n  license_family: GPL3\n  license_file: '{{ environ[\"PREFIX\"] }}/lib/R/share/licenses/GPL-2'\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n\n# Package: xts\n# Type: Package\n# Title: eXtensible Time Series\n# Version: 0.11-2\n# Authors@R: c( person(given=c(\"Jeffrey\",\"A.\"), family=\"Ryan\", role=c(\"aut\",\"cph\")), person(given=c(\"Joshua\",\"M.\"), family=\"Ulrich\", role=c(\"cre\",\"aut\"), email=\"josh.m.ulrich@gmail.com\"), person(given=\"Ross\", family=\"Bennett\", role=\"ctb\"), person(given=\"Corwin\", family=\"Joy\", role=\"ctb\") )\n# Depends: zoo (>= 1.7-12)\n# Imports: methods\n# LinkingTo: zoo\n# Suggests: timeSeries, timeDate, tseries, chron, fts, tis, RUnit\n# LazyLoad: yes\n# Description: Provide for uniform handling of R's different time-based data classes by extending zoo, maximizing native format information preservation and allowing for user level customization and extension, while simplifying cross-class interoperability.\n# License: GPL (>= 2)\n# URL: https://github.com/joshuaulrich/xts\n# BugReports: https://github.com/joshuaulrich/xts/issues\n# NeedsCompilation: yes\n# Packaged: 2018-11-05 13:26:13 UTC; josh\n# Author: Jeffrey A. Ryan [aut, cph], Joshua M. Ulrich [cre, aut], Ross Bennett [ctb], Corwin Joy [ctb]\n# Maintainer: Joshua M. Ulrich <josh.m.ulrich@gmail.com>\n# Repository: CRAN\n# Date/Publication: 2018-11-05 14:10:03 UTC\n",
  "req":{
   "__set__":true,
@@ -232,7 +251,7 @@
    "elements":[]
   }
  },
- "smithy_version":"No azure token. Create a token and\nput it in ~/.conda-smithy/azure.token\n3.6.16",
+ "smithy_version":"No azure token. Create a token and\nput it in ~/.conda-smithy/azure.token\n3.7.0",
  "strong_exports":false,
  "total_requirements":{
   "build":{
