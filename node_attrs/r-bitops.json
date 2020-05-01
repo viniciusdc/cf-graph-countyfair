@@ -91,12 +91,9 @@
   "bot":{
    "automerge":true
   },
-  "compiler_stack":"comp7",
-  "max_py_ver":"37",
-  "max_r_ver":"35",
   "provider":{
    "linux_aarch64":"default",
-   "linux_ppc64le":"default",
+   "linux_ppc64le":"azure",
    "win":"azure"
   }
  },
@@ -116,7 +113,7 @@
   },
   "build":{
    "merge_build_host":true,
-   "number":"1003",
+   "number":"1004",
    "rpaths":[
     "lib/R/lib/",
     "lib/",
@@ -185,7 +182,7 @@
  "name":"r-bitops",
  "new_version":"1.0_6",
  "pinning_version":"2020.05.01.13.16.44",
- "raw_meta_yaml":"{% set version = '1.0-6' %}\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-bitops\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  fn: bitops_{{ version }}.tar.gz\n  url:\n    - {{ cran_mirror }}/src/contrib/bitops_{{ version }}.tar.gz\n    - {{ cran_mirror }}/src/contrib/Archive/bitops/bitops_{{ version }}.tar.gz\n  sha256: 9b731397b7166dd54941fb0d2eac6df60c7a483b2e790f7eb15b4d7b79c9d69c\n\nbuild:\n  merge_build_host: True  # [win]\n  number: 1003\n  skip: true  # [win32]\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - {{ compiler('c') }}        # [not win]\n    - {{ compiler('m2w64_c') }}        # [win]\n    - {{ posix }}filesystem        # [win]\n    - {{ posix }}make\n    - {{ posix }}sed               # [win]\n    - {{ posix }}coreutils         # [win]\n    - {{ posix }}zip               # [win]\n  host:\n    - r-base\n  run:\n    - r-base\n    - {{ native }}gcc-libs         # [win]\n\ntest:\n  commands:\n    - $R -e \"library('bitops')\"           # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('bitops')\\\"\"  # [win]\n\nabout:\n  home: https://CRAN.R-project.org/package=bitops\n  license: GPL-2.0-or-later\n  summary: Functions for bitwise operations on integer vectors.\n  license_family: GPL3\n  license_file:\n    - '{{ environ[\"PREFIX\"] }}/lib/R/share/licenses/GPL-3'\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n",
+ "raw_meta_yaml":"{% set version = '1.0-6' %}\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-bitops\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  fn: bitops_{{ version }}.tar.gz\n  url:\n    - {{ cran_mirror }}/src/contrib/bitops_{{ version }}.tar.gz\n    - {{ cran_mirror }}/src/contrib/Archive/bitops/bitops_{{ version }}.tar.gz\n  sha256: 9b731397b7166dd54941fb0d2eac6df60c7a483b2e790f7eb15b4d7b79c9d69c\n\nbuild:\n  merge_build_host: True  # [win]\n  number: 1004\n  skip: true  # [win32]\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - {{ compiler('c') }}        # [not win]\n    - {{ compiler('m2w64_c') }}        # [win]\n    - {{ posix }}filesystem        # [win]\n    - {{ posix }}make\n    - {{ posix }}sed               # [win]\n    - {{ posix }}coreutils         # [win]\n    - {{ posix }}zip               # [win]\n  host:\n    - r-base\n  run:\n    - r-base\n    - {{ native }}gcc-libs         # [win]\n\ntest:\n  commands:\n    - $R -e \"library('bitops')\"           # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('bitops')\\\"\"  # [win]\n\nabout:\n  home: https://CRAN.R-project.org/package=bitops\n  license: GPL-2.0-or-later\n  summary: Functions for bitwise operations on integer vectors.\n  license_family: GPL3\n  license_file:\n    - '{{ environ[\"PREFIX\"] }}/lib/R/share/licenses/GPL-3'\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n",
  "req":{
   "__set__":true,
   "elements":[
