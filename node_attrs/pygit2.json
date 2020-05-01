@@ -325,6 +325,23 @@
     "migrator_version",
     "version"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/412149860.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"Version",
+    "migrator_version":0,
+    "version":"1.2.1"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "version"
+   ]
   }
  ],
  "bad":false,
@@ -415,8 +432,12 @@
   }
  },
  "name":"pygit2",
- "new_version":"1.2.0",
- "pinning_version":"2020.04.03",
+ "new_version":"1.2.1",
+ "new_version_attempts":{
+  "1.2.1":1
+ },
+ "new_version_errors":{},
+ "pinning_version":"2020.05.01.13.16.44",
  "raw_meta_yaml":"{% set name = \"pygit2\" %}\n{% set version = \"1.2.0\" %}\n{% set sha256 = \"f991347f5b11589ac8dc5a3c8257a514cf802545b75c11133a43ae9f76388278\" %}\n\n# must pin the appropiate libgit2 version documented here:\n# https://www.pygit2.org/install.html#version-numbers\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  fn: {{ name }}-{{ version }}.tar.gz\n  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz\n  sha256: {{ sha256 }}\n\nbuild:\n  number: 0\n  features:\n    - vc10   # [win and py34]\n    - vc14   # [win and py35]\n  skip: true  # [py2k]\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n\n  host:\n    - python\n    - pip\n    - cffi\n    - libgit2 1.0.*\n\n  run:\n    - python\n    - cached-property\n    - cffi\n    - six\n    - libgit2 1.0.*\n\ntest:\n  imports:\n    - pygit2\n\nabout:\n  home: http://github.com/libgit2/pygit2\n  summary: Python bindings for libgit2.\n  license: GPL-2.0 WITH GCC-exception-2.0\n  license_family: GPL\n  license_file: COPYING\n  doc_url: http://www.pygit2.org/\n  dev_url: https://github.com/libgit2/pygit2\n\nextra:\n  recipe-maintainers:\n    - kszucs\n    - xhochy\n",
  "req":{
   "__set__":true,
@@ -461,7 +482,7 @@
    "elements":[]
   }
  },
- "smithy_version":"No azure token. Create a token and\nput it in ~/.conda-smithy/azure.token\n3.6.15",
+ "smithy_version":"No azure token. Create a token and\nput it in ~/.conda-smithy/azure.token\n3.7.0",
  "strong_exports":false,
  "total_requirements":{
   "build":{
