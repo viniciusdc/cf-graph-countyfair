@@ -108,12 +108,9 @@
   "bot":{
    "automerge":true
   },
-  "compiler_stack":"comp7",
-  "max_py_ver":"37",
-  "max_r_ver":"35",
   "provider":{
    "linux_aarch64":"default",
-   "linux_ppc64le":"default",
+   "linux_ppc64le":"azure",
    "win":"azure"
   }
  },
@@ -136,7 +133,7 @@
   },
   "build":{
    "merge_build_host":true,
-   "number":"0",
+   "number":"1",
    "rpaths":[
     "lib/R/lib/",
     "lib/",
@@ -164,7 +161,8 @@
     "make",
     "sed",
     "coreutils",
-    "zip",
+    "gzip",
+    "tar",
     "c_compiler_stub",
     "make",
     "c_compiler_stub",
@@ -204,7 +202,7 @@
  "name":"r-jpeg",
  "new_version":"0.1_8.1",
  "pinning_version":"2020.05.01.13.16.44",
- "raw_meta_yaml":"{% set version = '0.1-8.1' %}\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-jpeg\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  url:\n    - {{ cran_mirror }}/src/contrib/jpeg_{{ version }}.tar.gz\n    - {{ cran_mirror }}/src/contrib/Archive/jpeg/jpeg_{{ version }}.tar.gz\n  sha256: 1db0a4976fd9b2ae27a37d3e856cca35bc2909323c7a40724846a5d3c18915a9\n\nbuild:\n  merge_build_host: True  # [win]\n  number: 0\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - {{ compiler('c') }}              # [not win]\n    - {{ compiler('m2w64_c') }}        # [win]\n    - {{posix}}filesystem        # [win]\n    - {{posix}}make\n    - {{posix}}sed               # [win]\n    - {{posix}}coreutils         # [win]\n    - {{posix}}zip               # [win]\n  host:\n    - r-base\n  run:\n    - r-base\n    - {{native}}gcc-libs         # [win]\n\ntest:\n  commands:\n    - $R -e \"library('jpeg')\"           # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('jpeg')\\\"\"  # [win]\n\nabout:\n  home: http://www.rforge.net/jpeg/\n  license: GPL-2 | GPL-3\n  summary: This package provides an easy and simple way to read, write and display bitmap images\n    stored in the JPEG format. It can read and write both files and in-memory raw vectors.\n  license_family: GPL3\n  license_file:\n    - '{{ environ[\"PREFIX\"] }}/lib/R/share/licenses/GPL-2'\n    - '{{ environ[\"PREFIX\"] }}/lib/R/share/licenses/GPL-3'\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n\n# Package: jpeg\n# Version: 0.1-8.1\n# Title: Read and write JPEG images\n# Author: Simon Urbanek <Simon.Urbanek@r-project.org>\n# Maintainer: Simon Urbanek <Simon.Urbanek@r-project.org>\n# Depends: R (>= 2.9.0)\n# Description: This package provides an easy and simple way to read, write and display bitmap images stored in the JPEG format. It can read and write both files and in-memory raw vectors.\n# License: GPL-2 | GPL-3\n# SystemRequirements: libjpeg\n# URL: http://www.rforge.net/jpeg/\n# Packaged: 2019-10-24 14:50:27 UTC; hornik\n# NeedsCompilation: yes\n# Repository: CRAN\n# Date/Publication: 2019-10-24 14:51:52 UTC\n",
+ "raw_meta_yaml":"{% set version = '0.1-8.1' %}\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-jpeg\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  url:\n    - {{ cran_mirror }}/src/contrib/jpeg_{{ version }}.tar.gz\n    - {{ cran_mirror }}/src/contrib/Archive/jpeg/jpeg_{{ version }}.tar.gz\n  sha256: 1db0a4976fd9b2ae27a37d3e856cca35bc2909323c7a40724846a5d3c18915a9\n\nbuild:\n  merge_build_host: True  # [win]\n  number: 1\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - {{ compiler('c') }}              # [not win]\n    - {{ compiler('m2w64_c') }}        # [win]\n    - {{ posix }}filesystem        # [win]\n    - {{ posix }}make\n    - {{ posix }}sed               # [win]\n    - {{ posix }}coreutils         # [win]\n    - {{ posix }}gzip              # [win]\n    - {{ posix }}tar               # [win]\n  host:\n    - r-base\n  run:\n    - r-base\n    - {{ native }}gcc-libs         # [win]\n\ntest:\n  commands:\n    - $R -e \"library('jpeg')\"           # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('jpeg')\\\"\"  # [win]\n\nabout:\n  home: http://www.rforge.net/jpeg/\n  license: GPL-2 | GPL-3\n  summary: This package provides an easy and simple way to read, write and display bitmap images\n    stored in the JPEG format. It can read and write both files and in-memory raw vectors.\n  license_family: GPL3\n  license_file:\n    - '{{ environ[\"PREFIX\"] }}/lib/R/share/licenses/GPL-2'\n    - '{{ environ[\"PREFIX\"] }}/lib/R/share/licenses/GPL-3'\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n\n# Package: jpeg\n# Version: 0.1-8.1\n# Title: Read and write JPEG images\n# Author: Simon Urbanek <Simon.Urbanek@r-project.org>\n# Maintainer: Simon Urbanek <Simon.Urbanek@r-project.org>\n# Depends: R (>= 2.9.0)\n# Description: This package provides an easy and simple way to read, write and display bitmap images stored in the JPEG format. It can read and write both files and in-memory raw vectors.\n# License: GPL-2 | GPL-3\n# SystemRequirements: libjpeg\n# URL: http://www.rforge.net/jpeg/\n# Packaged: 2019-10-24 14:50:27 UTC; hornik\n# NeedsCompilation: yes\n# Repository: CRAN\n# Date/Publication: 2019-10-24 14:51:52 UTC\n",
  "req":{
   "__set__":true,
   "elements":[
@@ -212,11 +210,12 @@
    "coreutils",
    "filesystem",
    "gcc-libs",
+   "gzip",
    "m2w64_c_compiler_stub",
    "make",
    "r-base",
    "sed",
-   "zip"
+   "tar"
   ]
  },
  "requirements":{
@@ -226,10 +225,11 @@
     "c_compiler_stub",
     "coreutils",
     "filesystem",
+    "gzip",
     "m2w64_c_compiler_stub",
     "make",
     "sed",
-    "zip"
+    "tar"
    ]
   },
   "host":{
@@ -259,10 +259,11 @@
     "c_compiler_stub",
     "coreutils",
     "filesystem",
+    "gzip",
     "m2w64_c_compiler_stub",
     "make",
     "sed",
-    "zip"
+    "tar"
    ]
   },
   "host":{

@@ -99,6 +99,25 @@
     "migrator_version",
     "name"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/412272404.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"MigrationYaml",
+    "migrator_object_version":2,
+    "migrator_version":0,
+    "name":"r400"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_object_version",
+    "migrator_version",
+    "name"
+   ]
   }
  ],
  "bad":false,
@@ -201,7 +220,7 @@
  },
  "name":"r-plyr",
  "new_version":"1.8.6",
- "pinning_version":"2020.04.16.03.28.28",
+ "pinning_version":"2020.05.01.18.41.01",
  "raw_meta_yaml":"{% set version = \"1.8.6\" %}\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-plyr\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  fn: plyr_{{ version }}.tar.gz\n  url:\n    - {{ cran_mirror }}/src/contrib/plyr_{{ version }}.tar.gz\n    - {{ cran_mirror }}/src/contrib/Archive/plyr/plyr_{{ version }}.tar.gz\n  sha256: ea55d26f155443e9774769531daa5d4c20a0697bb53abd832e891b126c935287\n\nbuild:\n  merge_build_host: true  # [win]\n  number: 0\n  skip: true  # [win32]\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - {{ compiler('c') }}        # [not win]\n    - {{ compiler('cxx') }}      # [not win]\n    - {{ compiler('m2w64_c') }}        # [win]\n    - {{ compiler('m2w64_cxx') }}        # [win]\n    - {{posix}}filesystem        # [win]\n    - {{posix}}make\n    - {{posix}}sed               # [win]\n    - {{posix}}coreutils         # [win]\n    - {{posix}}zip               # [win]\n  host:\n    - r-base\n    - r-rcpp >=0.11.0\n  run:\n    - r-base\n    - {{native}}gcc-libs         # [win]\n    - r-rcpp >=0.11.0\n\ntest:\n  commands:\n    - $R -e \"library('plyr')\"           # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('plyr')\\\"\"  # [win]\n\nabout:\n  home: http://had.co.nz/plyr, https://github.com/hadley/plyr\n  license: MIT\n  license_file: LICENSE\n  summary: \"A set of tools that solves a common set of problems: you need to break a big problem down into manageable pieces, operate on each piece and then put all\\\n    \\ the pieces back together.  For example, you might want to fit a model to each spatial location or time point in your study, summarise data by panels or collapse\\\n    \\ high-dimensional arrays to simpler summary statistics. The development of 'plyr' has been generously supported by 'Becton Dickinson'.\"\n  license_family: MIT\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n",
  "req":{
   "__set__":true,
@@ -255,7 +274,7 @@
    "elements":[]
   }
  },
- "smithy_version":"No azure token. Create a token and\nput it in ~/.conda-smithy/azure.token\n3.6.16",
+ "smithy_version":"No azure token. Create a token and\nput it in ~/.conda-smithy/azure.token\n3.7.0",
  "strong_exports":false,
  "total_requirements":{
   "build":{
