@@ -137,7 +137,22 @@
    ]
   }
  ],
- "bad":false,
+ "bad":{
+  "exception":"Command '['git', 'commit', '-am', 'updated', 'v2020.5.1']' returned non-zero exit status 128.",
+  "traceback":[
+   "Traceback (most recent call last):",
+   "  File \"/root/repo/cf-scripts/conda_forge_tick/auto_tick.py\", line 811, in main",
+   "    hash_type=attrs.get(\"hash_type\", \"sha256\"),",
+   "  File \"/root/repo/cf-scripts/conda_forge_tick/auto_tick.py\", line 198, in run",
+   "    eval_cmd(f\"git commit -am {msg}\")",
+   "  File \"/root/repo/cf-scripts/conda_forge_tick/utils.py\", line 78, in eval_cmd",
+   "    c = subprocess.run(shlex.split(cmd), check=True, stdout=subprocess.PIPE)",
+   "  File \"/opt/conda/envs/run_env/lib/python3.7/subprocess.py\", line 512, in run",
+   "    output=stdout, stderr=stderr)",
+   "subprocess.CalledProcessError: Command '['git', 'commit', '-am', 'updated', 'v2020.5.1']' returned non-zero exit status 128.",
+   ""
+  ]
+ },
  "conda-forge.yml":{},
  "feedstock_name":"intake-esm",
  "hash_type":"sha256",
@@ -223,7 +238,11 @@
   }
  },
  "name":"intake-esm",
- "new_version":"2020.3.16.2",
+ "new_version":"2020.5.1",
+ "new_version_attempts":{
+  "2020.5.1":1
+ },
+ "new_version_errors":{},
  "pinning_version":"2020.03.24",
  "raw_meta_yaml":"{% set name = \"intake-esm\" %}\n{% set version = \"2020.3.16.2\" %}\n\npackage:\n  name: {{ name }}\n  version: {{ version }}\n\nsource:\n  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz\n  sha256: f92de5a265e5f62d48ad958d129f46b17e3865bf6f53f4cfa11032c0b80d968f\n\nbuild:\n  script: {{ PYTHON }} -m pip install . --no-deps -vv\n  number: 0\n  noarch: python\n\nrequirements:\n\n  host:\n    - python >=3.6\n    - pip\n    - setuptools_scm\n\n  run:\n    - python >=3.6\n    - dask\n    - fsspec\n    - intake >=0.5.2\n    - requests\n    - xarray >=0.13\n\n\ntest:\n  imports:\n    - intake_esm\n\nabout:\n  home: https://github.com/NCAR/intake-esm\n  license: Apache-2.0\n  license_family: Apache\n  license_file: LICENSE\n  summary: An intake plugin for earth system model data sets holdings\n  description: |\n    An intake plugin for parsing an ESM (Earth System Model) Collection/catalog and \n    loading assets (netCDF files and/or Zarr stores) into xarray data sets.\n  dev_url: https://github.com/NCAR/intake-esm\n  doc_url: https://intake-esm.readthedocs.io/en/latest/\n\nextra:\n  recipe-maintainers:\n    - andersy005\n    - matt-long\n    - jukent\n    - kmpaul\n",
  "req":{

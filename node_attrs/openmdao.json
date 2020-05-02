@@ -86,7 +86,22 @@
    ]
   }
  ],
- "bad":false,
+ "bad":{
+  "exception":"Command '['git', 'commit', '-am', 'updated', 'v3.1.0']' returned non-zero exit status 128.",
+  "traceback":[
+   "Traceback (most recent call last):",
+   "  File \"/root/repo/cf-scripts/conda_forge_tick/auto_tick.py\", line 811, in main",
+   "    hash_type=attrs.get(\"hash_type\", \"sha256\"),",
+   "  File \"/root/repo/cf-scripts/conda_forge_tick/auto_tick.py\", line 198, in run",
+   "    eval_cmd(f\"git commit -am {msg}\")",
+   "  File \"/root/repo/cf-scripts/conda_forge_tick/utils.py\", line 78, in eval_cmd",
+   "    c = subprocess.run(shlex.split(cmd), check=True, stdout=subprocess.PIPE)",
+   "  File \"/opt/conda/envs/run_env/lib/python3.7/subprocess.py\", line 512, in run",
+   "    output=stdout, stderr=stderr)",
+   "subprocess.CalledProcessError: Command '['git', 'commit', '-am', 'updated', 'v3.1.0']' returned non-zero exit status 128.",
+   ""
+  ]
+ },
  "conda-forge.yml":{
   "provider":{
    "linux":"azure",
@@ -227,7 +242,11 @@
   }
  },
  "name":"openmdao",
- "new_version":"3.0.0",
+ "new_version":"3.1.0",
+ "new_version_attempts":{
+  "3.1.0":1
+ },
+ "new_version_errors":{},
  "pinning_version":"2020.03.06",
  "raw_meta_yaml":"{% set name = \"openmdao\" %}\n{% set version = \"3.0.0\" %}\n\npackage:\n  name: {{ name }}\n  version: {{ version }}\n\nsource:\n  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz\n  sha256: ba266da1bf8aded88bd59624ad6b411cded692457cb0b52bad2994fbb7156c03\n\nbuild:\n  noarch: python\n  number: 0\n  script: {{ PYTHON }} -m pip install . -vv\n  entry_points:\n    - wingproj = openmdao.devtools.wingproj:run_wing\n    - webview = openmdao.utils.webview:webview_argv\n    - run_om_test = openmdao.devtools.run_test:run_test\n    - openmdao = openmdao.utils.om:openmdao_cmd\n\nrequirements:\n  host:\n    - python >=3.6\n    - pip\n  run:\n    - networkx >=2.0\n    - numpy\n    - pydoe2\n    - pyparsing\n    - python >=3.6\n    - requests\n    - scipy\n    - urllib3 <1.25.0a0\n\ntest:\n  requires:\n    - parameterized\n    - numpydoc >=0.9.1\n    - pycodestyle >=2.4.0\n    - pydocstyle ==2.0.0\n    - testflo >=1.3.6\n    # not fully testing viz YET, but does fulfill undocumented tornado dep\n    - bokeh >=1.3.4\n    - colorama\n    # for pip check\n    - pip\n  imports:\n    - openmdao\n  commands:\n    - python -m pip check\n    - openmdao --help\n    - webview --help\n    - wingproj --help\n\nabout:\n  home: https://openmdao.org\n  license: Apache-2.0\n  license_family: Apache\n  license_file: LICENSE.txt\n  summary: OpenMDAO framework infrastructure\n  description: |\n    OpenMDAO is an open-source high-performance computing platform\n    for systems analysis and multidisciplinary optimization, written in Python. It\n    enables you to decompose your models, making them easier to build and maintain,\n    while still solving them in a tightly coupled manner with efficient parallel\n    numerical methods.\n  doc_url: https://openmdao.org/twodocs\n  dev_url: https://github.com/OpenMDAO/OpenMDAO\n  doc_source_url: https://github.com/OpenMDAO/OpenMDAO/tree/master/openmdao/docs\n\nextra:\n  recipe-maintainers:\n    - bollwyvl\n",
  "req":{

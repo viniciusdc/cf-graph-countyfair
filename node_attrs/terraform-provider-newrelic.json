@@ -233,7 +233,22 @@
    ]
   }
  ],
- "bad":false,
+ "bad":{
+  "exception":"Command '['git', 'commit', '-am', 'updated', 'v1.17.0']' returned non-zero exit status 128.",
+  "traceback":[
+   "Traceback (most recent call last):",
+   "  File \"/root/repo/cf-scripts/conda_forge_tick/auto_tick.py\", line 811, in main",
+   "    hash_type=attrs.get(\"hash_type\", \"sha256\"),",
+   "  File \"/root/repo/cf-scripts/conda_forge_tick/auto_tick.py\", line 198, in run",
+   "    eval_cmd(f\"git commit -am {msg}\")",
+   "  File \"/root/repo/cf-scripts/conda_forge_tick/utils.py\", line 78, in eval_cmd",
+   "    c = subprocess.run(shlex.split(cmd), check=True, stdout=subprocess.PIPE)",
+   "  File \"/opt/conda/envs/run_env/lib/python3.7/subprocess.py\", line 512, in run",
+   "    output=stdout, stderr=stderr)",
+   "subprocess.CalledProcessError: Command '['git', 'commit', '-am', 'updated', 'v1.17.0']' returned non-zero exit status 128.",
+   ""
+  ]
+ },
  "conda-forge.yml":{
   "bot":{
    "automerge":true
@@ -306,7 +321,11 @@
   }
  },
  "name":"terraform-provider-newrelic",
- "new_version":"1.16.0",
+ "new_version":"1.17.0",
+ "new_version_attempts":{
+  "1.17.0":1
+ },
+ "new_version_errors":{},
  "pinning_version":"2020.04.03",
  "raw_meta_yaml":"{% set provider = \"NewRelic\" %}\n{% set version = \"1.16.0\" %}\n{% set goname = \"github.com/terraform-providers/terraform-provider-\"+provider.lower() %}\n\n{% set name = goname.split('/')[-1] %}\n\n{% set x4_plugin = name + '_v' + version + \"_x4\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  url: https://{{ goname }}/archive/v{{ version }}.tar.gz\n  sha256: a43de98d8685bdb8851961ac264cd8bd2be3d613036fc705ebb9965420d497cb\n\nbuild:\n  number: 0\n  script:\n    - go build -v -o {{ target_gobin }}{{ x4_plugin }}{{ target_goexe }}\n\nrequirements:\n  build:\n    - {{ compiler('go') }} 1.13\n  run:\n    - terraform 0.12\n\ntest:\n  commands:\n    # Create a sample init.tf loading the provider\n    - echo 'provider \"{{ provider|lower }}\" { version=\"{{ version }}\" }' > init.tf  # [unix]\n    - echo provider \"{{ provider|lower }}\" { version=\"{{ version }}\" } > init.tf    # [win]\n\n    # Initialize\n    - terraform init\n\n    # Tests that init was successful\n    - test -f .terraform/plugins/{{ target_goos }}_{{ target_goarch }}/lock.json              # [unix]\n    - if not exist .terraform\\plugins\\{{ target_goos }}_{{ target_goarch }}\\lock.json exit 1  # [win]\n\n    # Test that the provider was not downloaded\n    - test ! -f .terraform/plugins/{{ target_goos }}_{{ target_goarch }}/{{ x4_plugin }}{{ target_goexe }}        # [unix]\n    - if exist .terraform\\plugins\\{{ target_goos }}_{{ target_goarch }}\\{{ x4_plugin }}{{ target_goexe }} exit 1  # [win]\n\nabout:\n  home: https://www.terraform.io\n  license: MPL-2.0\n  license_file: LICENSE\n  summary: The Terraform {{ provider }} provider\n  doc_url: https://www.terraform.io/docs/providers/{{ provider|lower }}/index.html\n  dev_url: https://github.com/terraform-providers/{{ name }}\n\nextra:\n  recipe-maintainers:\n    - conda-forge/terraform\n",
  "req":{
