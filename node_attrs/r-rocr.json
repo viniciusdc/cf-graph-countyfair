@@ -33,6 +33,23 @@
     "migrator_version",
     "name"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/412501826.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"Version",
+    "migrator_version":0,
+    "version":"1.0_11"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "version"
+   ]
   }
  ],
  "bad":false,
@@ -140,7 +157,11 @@
  },
  "name":"r-rocr",
  "new_version":"1.0_11",
- "pinning_version":"2019.07.15",
+ "new_version_attempts":{
+  "1.0_11":1
+ },
+ "new_version_errors":{},
+ "pinning_version":"2020.05.02.14.58.15",
  "raw_meta_yaml":"{% set version = '1.0-7' %}\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-rocr\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  fn: ROCR_{{ version }}.tar.gz\n  url:\n    - {{ cran_mirror }}/src/contrib/ROCR_{{ version }}.tar.gz\n    - {{ cran_mirror }}/src/contrib/Archive/ROCR/ROCR_{{ version }}.tar.gz\n  sha256: e7ef710f847e441a48b20fdc781dbc1377f5a060a5ee635234053f7a2a435ec9\n\nbuild:\n  noarch: generic\n  merge_build_host: True  # [win]\n  number: 1002\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - {{posix}}zip               # [win]\n  host:\n    - r-base\n    - r-gplots\n  run:\n    - r-base\n    - r-gplots\n\ntest:\n  commands:\n    - $R -e \"library('ROCR')\"           # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('ROCR')\\\"\"  # [win]\n\nabout:\n  home: http://rocr.bioinf.mpi-sb.mpg.de/\n  license: GPL (>= 2)\n  summary: ROC graphs, sensitivity/specificity curves, lift charts, and precision/recall plots\n    are popular examples of trade-off visualizations for specific pairs of performance\n    measures. ROCR is a flexible tool for creating cutoff-parameterized 2D performance\n    curves by freely combining two from over 25 performance measures (new performance\n    measures can be added using a standard interface). Curves from different cross-validation\n    or bootstrapping runs can be averaged by different methods, and standard deviations,\n    standard errors or box plots can be used to visualize the variability across the\n    runs. The parameterization can be visualized by printing cutoff values at the corresponding\n    curve positions, or by coloring the curve according to cutoff. All components of\n    a performance plot can be quickly adjusted using a flexible parameter dispatching\n    mechanism. Despite its flexibility, ROCR is easy to use, with only three commands\n    and reasonable default values for all optional parameters.\n  license_family: GPL3\n  license_file: '{{ environ[\"PREFIX\"] }}/lib/R/share/licenses/GPL-3'\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n    - johanneskoester\n    - bgruening\n    - daler\n    - jdblischak\n    - cbrueffer\n    - dbast\n",
  "req":{
   "__set__":true,
@@ -173,7 +194,7 @@
    "elements":[]
   }
  },
- "smithy_version":"3.4.1",
+ "smithy_version":"No azure token. Create a token and\nput it in ~/.conda-smithy/azure.token\n3.7.0\n",
  "strong_exports":false,
  "total_requirements":{
   "build":{
