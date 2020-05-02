@@ -90,9 +90,6 @@
   "bot":{
    "automerge":true
   },
-  "compiler_stack":"comp7",
-  "max_py_ver":"37",
-  "max_r_ver":"35",
   "provider":{
    "win":"azure"
   }
@@ -104,12 +101,17 @@
    "home":"https://github.com/yihui/highr",
    "license":"GPL",
    "license_family":"GPL",
+   "license_file":[
+    "/lib/R/share/licenses/GPL-3",
+    "/lib/R/share/licenses/GPL-3",
+    "/lib/R/share/licenses/GPL-3"
+   ],
    "summary":"Provides syntax highlighting for R source code. Currently it supports LaTeX and HTML output. Source code of other languages is supported via Andre Simon's highlight package (<http://www.andre-simon.de>)."
   },
   "build":{
    "merge_build_host":true,
    "noarch":"generic",
-   "number":"1",
+   "number":"2",
    "rpaths":[
     "lib/R/lib/",
     "lib/",
@@ -181,7 +183,7 @@
  "name":"r-highr",
  "new_version":"0.8",
  "pinning_version":"2020.05.02.02.22.03",
- "raw_meta_yaml":"{% set version = \"0.8\" %}\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-highr\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  fn: highr_{{ version }}.tar.gz\n  url:\n    - {{ cran_mirror }}/src/contrib/highr_{{ version }}.tar.gz\n    - {{ cran_mirror }}/src/contrib/Archive/highr/highr_{{ version }}.tar.gz\n  sha256: 4bd01fba995f68c947a99bdf9aca15327a5320151e10bd0326fad50a6d8bc657\n\nbuild:\n  noarch: generic\n  merge_build_host: True  # [win]\n  number: 1\n\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - {{posix}}zip               # [win]\n\n  host:\n    - r-base\n\n  run:\n    - r-base\n\ntest:\n  commands:\n    - $R -e \"library('highr')\"           # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('highr')\\\"\"  # [win]\n\nabout:\n  home: https://github.com/yihui/highr\n  license: GPL\n  summary: Provides syntax highlighting for R source code. Currently it supports LaTeX and HTML\n    output. Source code of other languages is supported via Andre Simon's highlight\n    package (<http://www.andre-simon.de>).\n  license_family: GPL\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n    - johanneskoester\n    - bgruening\n    - daler\n    - jdblischak\n    - cbrueffer\n",
+ "raw_meta_yaml":"{% set version = \"0.8\" %}\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-highr\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  fn: highr_{{ version }}.tar.gz\n  url:\n    - {{ cran_mirror }}/src/contrib/highr_{{ version }}.tar.gz\n    - {{ cran_mirror }}/src/contrib/Archive/highr/highr_{{ version }}.tar.gz\n  sha256: 4bd01fba995f68c947a99bdf9aca15327a5320151e10bd0326fad50a6d8bc657\n\nbuild:\n  noarch: generic\n  merge_build_host: true  # [win]\n  number: 2\n\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - {{ posix }}zip               # [win]\n\n  host:\n    - r-base\n\n  run:\n    - r-base\n\ntest:\n  commands:\n    - $R -e \"library('highr')\"           # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('highr')\\\"\"  # [win]\n\nabout:\n  home: https://github.com/yihui/highr\n  license: GPL\n  summary: Provides syntax highlighting for R source code. Currently it supports LaTeX and HTML output. Source code of other languages is supported via Andre Simon's highlight package (<http://www.andre-simon.de>).\n  license_family: GPL\n\n  license_file:\n    - {{ environ[\"PREFIX\"] }}/lib/R/share/licenses/GPL-3\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n    - johanneskoester\n    - bgruening\n    - daler\n    - jdblischak\n    - cbrueffer\n",
  "req":{
   "__set__":true,
   "elements":[

@@ -73,9 +73,6 @@
   "bot":{
    "automerge":true
   },
-  "compiler_stack":"comp7",
-  "max_py_ver":"37",
-  "max_r_ver":"35",
   "provider":{
    "win":"azure"
   }
@@ -87,12 +84,20 @@
    "home":"https://github.com/krlmlr/plogr#readme",
    "license":"MIT",
    "license_family":"MIT",
+   "license_file":[
+    "/lib/R/share/licenses/MIT",
+    "LICENSE",
+    "/lib/R/share/licenses/MIT",
+    "LICENSE",
+    "/lib/R/share/licenses/MIT",
+    "LICENSE"
+   ],
    "summary":" A simple header-only logging library for C++. Add 'LinkingTo: plogr' to 'DESCRIPTION', and '#include <plogr.h>' in your C++ modules to use it."
   },
   "build":{
    "merge_build_host":true,
    "noarch":"generic",
-   "number":"1002",
+   "number":"1003",
    "rpaths":[
     "lib/R/lib/",
     "lib/",
@@ -167,7 +172,7 @@
  "name":"r-plogr",
  "new_version":"0.2.0",
  "pinning_version":"2020.05.02.02.22.03",
- "raw_meta_yaml":"{% set version = '0.2.0' %}\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-plogr\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  fn: plogr_{{ version }}.tar.gz\n  url:\n    - {{ cran_mirror }}/src/contrib/plogr_{{ version }}.tar.gz\n    - {{ cran_mirror }}/src/contrib/Archive/plogr/plogr_{{ version }}.tar.gz\n  sha256: 0e63ba2e1f624005fe25c67cdd403636a912e063d682eca07f2f1d65e9870d29\n\nbuild:\n  noarch: generic\n  merge_build_host: True  # [win]\n  number: 1002\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - {{posix}}zip               # [win]\n  host:\n    - r-base\n  run:\n    - r-base\n\ntest:\n  commands:\n    - $R -e \"library('plogr')\"           # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('plogr')\\\"\"  # [win]\n\nabout:\n  home: https://github.com/krlmlr/plogr#readme\n  license: MIT\n  summary: ' A simple header-only logging library for C++. Add ''LinkingTo: plogr'' to ''DESCRIPTION'',\n    and ''#include <plogr.h>'' in your C++ modules to use it.'\n  license_family: MIT\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n    - johanneskoester\n    - bgruening\n    - daler\n    - jdblischak\n    - cbrueffer\n    - dbast\n",
+ "raw_meta_yaml":"{% set version = \"0.2.0\" %}\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-plogr\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  fn: plogr_{{ version }}.tar.gz\n  url:\n    - {{ cran_mirror }}/src/contrib/plogr_{{ version }}.tar.gz\n    - {{ cran_mirror }}/src/contrib/Archive/plogr/plogr_{{ version }}.tar.gz\n  sha256: 0e63ba2e1f624005fe25c67cdd403636a912e063d682eca07f2f1d65e9870d29\n\nbuild:\n  noarch: generic\n  merge_build_host: true  # [win]\n  number: 1003\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - {{ posix }}zip               # [win]\n  host:\n    - r-base\n  run:\n    - r-base\n\ntest:\n  commands:\n    - $R -e \"library('plogr')\"           # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('plogr')\\\"\"  # [win]\n\nabout:\n  home: https://github.com/krlmlr/plogr#readme\n  license: MIT\n  summary: \" A simple header-only logging library for C++. Add 'LinkingTo: plogr' to 'DESCRIPTION', and '#include <plogr.h>' in your C++ modules to use it.\"\n  license_family: MIT\n\n  license_file:\n    - {{ environ[\"PREFIX\"] }}/lib/R/share/licenses/MIT\n    - LICENSE\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n    - johanneskoester\n    - bgruening\n    - daler\n    - jdblischak\n    - cbrueffer\n    - dbast\n",
  "req":{
   "__set__":true,
   "elements":[
