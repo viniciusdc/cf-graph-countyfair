@@ -93,9 +93,6 @@
   "bot":{
    "automerge":true
   },
-  "compiler_stack":"comp7",
-  "max_py_ver":"37",
-  "max_r_ver":"35",
   "provider":{
    "win":"azure"
   }
@@ -120,7 +117,7 @@
   "build":{
    "merge_build_host":true,
    "noarch":"generic",
-   "number":"0",
+   "number":"1",
    "rpaths":[
     "lib/R/lib/",
     "lib/",
@@ -181,7 +178,7 @@
  "name":"r-pkgconfig",
  "new_version":"2.0.3",
  "pinning_version":"2020.05.01.23.05.28",
- "raw_meta_yaml":"{% set version = \"2.0.3\" %}\n\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-pkgconfig\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  fn: pkgconfig_{{ version }}.tar.gz\n  url:\n    - {{ cran_mirror }}/src/contrib/pkgconfig_{{ version }}.tar.gz\n    - {{ cran_mirror }}/src/contrib/Archive/pkgconfig/pkgconfig_{{ version }}.tar.gz\n  sha256: 330fef440ffeb842a7dcfffc8303743f1feae83e8d6131078b5a44ff11bc3850\n\nbuild:\n  noarch: generic\n  merge_build_host: True  # [win]\n  number: 0\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - {{posix}}zip\n  host:\n    - r-base\n  run:\n    - r-base\n\ntest:\n  commands:\n    - $R -e \"library('pkgconfig')\"           # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('pkgconfig')\\\"\"  # [win]\n\nabout:\n  home: https://github.com/r-lib/pkgconfig\n  license: MIT\n  summary: Set configuration options on a per-package basis. Options set by a given package only\n    apply to that package, other packages are unaffected.\n  license_family: MIT\n  license_file: \n    - '{{ environ[\"PREFIX\"] }}/lib/R/share/licenses/MIT'\n    - LICENSE \n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n",
+ "raw_meta_yaml":"{% set version = \"2.0.3\" %}\n\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-pkgconfig\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  fn: pkgconfig_{{ version }}.tar.gz\n  url:\n    - {{ cran_mirror }}/src/contrib/pkgconfig_{{ version }}.tar.gz\n    - {{ cran_mirror }}/src/contrib/Archive/pkgconfig/pkgconfig_{{ version }}.tar.gz\n  sha256: 330fef440ffeb842a7dcfffc8303743f1feae83e8d6131078b5a44ff11bc3850\n\nbuild:\n  noarch: generic\n  merge_build_host: True  # [win]\n  number: 1\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - {{ posix }}zip\n  host:\n    - r-base\n  run:\n    - r-base\n\ntest:\n  commands:\n    - $R -e \"library('pkgconfig')\"           # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('pkgconfig')\\\"\"  # [win]\n\nabout:\n  home: https://github.com/r-lib/pkgconfig\n  license: MIT\n  summary: Set configuration options on a per-package basis. Options set by a given package only\n    apply to that package, other packages are unaffected.\n  license_family: MIT\n  license_file: \n    - '{{ environ[\"PREFIX\"] }}/lib/R/share/licenses/MIT'\n    - LICENSE \n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n",
  "req":{
   "__set__":true,
   "elements":[
