@@ -203,56 +203,66 @@
   "build":{
    "noarch":"python",
    "number":"0",
-   "script":"python -m pip install --no-deps --ignore-installed ."
+   "script":"-m pip install . --no-deps -vv"
   },
   "extra":{
    "recipe-maintainers":[
-    "dougalsutherland",
-    "dougalsutherland",
-    "dougalsutherland"
+    "djsutherland",
+    "djsutherland",
+    "djsutherland"
    ]
   },
   "package":{
    "name":"praw",
-   "version":"6.3.1"
+   "version":"7.0.0"
   },
   "requirements":{
    "build":[
-    "python",
+    "python >=3.5",
     "pip",
     "pytest-runner",
-    "python",
+    "python >=3.5",
     "pip",
     "pytest-runner",
-    "python",
+    "python >=3.5",
     "pip",
     "pytest-runner"
    ],
    "run":[
-    "python",
-    "prawcore >=1.0.1,<2.0",
+    "python >=3.5",
+    "prawcore >=1.3.0,<2.0",
     "update_checker >=0.16",
     "websocket-client >=0.54.0",
-    "python",
-    "prawcore >=1.0.1,<2.0",
+    "python >=3.5",
+    "prawcore >=1.3.0,<2.0",
     "update_checker >=0.16",
     "websocket-client >=0.54.0",
-    "python",
-    "prawcore >=1.0.1,<2.0",
+    "python >=3.5",
+    "prawcore >=1.3.0,<2.0",
     "update_checker >=0.16",
     "websocket-client >=0.54.0"
    ]
   },
   "source":{
-   "fn":"praw-6.3.1.tar.gz",
-   "sha256":"bf004df19989756e9c5aac5cefdb7d8779760f1ec2f1e9b1d6a2195cc1099d96",
-   "url":"https://pypi.io/packages/source/p/praw/praw-6.3.1.tar.gz"
+   "fn":"praw-7.0.0.tar.gz",
+   "sha256":"65129169d560800261908415ed955f3cbc63648549820b3ccce0a823ffa2fd78",
+   "url":"https://pypi.io/packages/source/p/praw/praw-7.0.0.tar.gz"
   },
   "test":{
+   "commands":[
+    "pip check",
+    "pip check",
+    "pip check"
+   ],
    "imports":[
     "praw",
     "praw",
     "praw"
+   ],
+   "requires":[
+    "pip",
+    "pip",
+    "pip"
    ]
   }
  },
@@ -263,7 +273,7 @@
  },
  "new_version_errors":{},
  "pinning_version":"2020.04.24.22.56.04",
- "raw_meta_yaml":"{% set name = \"praw\" %}\n{% set version = \"6.3.1\" %}\n{% set sha256 = \"bf004df19989756e9c5aac5cefdb7d8779760f1ec2f1e9b1d6a2195cc1099d96\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  fn: {{ name }}-{{ version }}.tar.gz\n  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz\n  sha256: {{ sha256 }}\n\nbuild:\n  noarch: python\n  number: 0\n  script: python -m pip install --no-deps --ignore-installed .\n\nrequirements:\n  build:\n    - python\n    - pip\n    - pytest-runner\n  run:\n    - python\n    - prawcore >=1.0.1,<2.0\n    - update_checker >=0.16\n    - websocket-client >=0.54.0\n\ntest:\n  imports:\n    - praw\n\nabout:\n  home: http://praw.readthedocs.io/\n  license: BSD-2-Clause\n  license_family: BSD\n  license_file: LICENSE.txt\n  summary: \"Python Reddit API Wrapper allows for simple access to Reddit's API\"\n  description: |\n    PRAW, an acronym for \"Python Reddit API Wrapper\", is a python package that\n    allows for simple access to Reddit's API. PRAW aims to be easy to use and\n    internally follows all of Reddit's API rules. With PRAW there's no need to\n    introduce sleep calls in your code. Give your client an appropriate user\n    agent and you're set.\n  doc_url: http://praw.readthedocs.io/\n  dev_url: https://github.com/praw-dev/praw\n\nextra:\n  recipe-maintainers:\n    - dougalsutherland\n",
+ "raw_meta_yaml":"{% set name = \"praw\" %}\n{% set version = \"7.0.0\" %}\n{% set sha256 = \"65129169d560800261908415ed955f3cbc63648549820b3ccce0a823ffa2fd78\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  fn: {{ name }}-{{ version }}.tar.gz\n  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz\n  sha256: {{ sha256 }}\n\nbuild:\n  noarch: python\n  number: 0\n  script: {{ PYTHON }} -m pip install . --no-deps -vv\n\nrequirements:\n  build:\n    - python >=3.5\n    - pip\n    - pytest-runner\n  run:\n    - python >=3.5\n    - prawcore >=1.3.0,<2.0\n    - update_checker >=0.16\n    - websocket-client >=0.54.0\n\ntest:\n  requires:\n    - pip\n  commands:\n    - pip check\n  imports:\n    - praw\n\nabout:\n  home: http://praw.readthedocs.io/\n  license: BSD-2-Clause\n  license_family: BSD\n  license_file: LICENSE.txt\n  summary: Python Reddit API Wrapper allows for simple access to Reddit's API\n  description: |\n    PRAW, an acronym for \"Python Reddit API Wrapper\", is a python package that\n    allows for simple access to Reddit's API. PRAW aims to be easy to use and\n    internally follows all of Reddit's API rules. With PRAW there's no need to\n    introduce sleep calls in your code. Give your client an appropriate user\n    agent and you're set.\n  doc_url: http://praw.readthedocs.io/\n  dev_url: https://github.com/praw-dev/praw\n\nextra:\n  recipe-maintainers:\n    - djsutherland\n",
  "req":{
   "__set__":true,
   "elements":[
@@ -299,7 +309,9 @@
   },
   "test":{
    "__set__":true,
-   "elements":[]
+   "elements":[
+    "pip"
+   ]
   }
  },
  "smithy_version":"No azure token. Create a token and\nput it in ~/.conda-smithy/azure.token\n3.6.17",
@@ -310,7 +322,7 @@
    "elements":[
     "pip",
     "pytest-runner",
-    "python"
+    "python >=3.5"
    ]
   },
   "host":{
@@ -320,17 +332,19 @@
   "run":{
    "__set__":true,
    "elements":[
-    "prawcore >=1.0.1,<2.0",
-    "python",
+    "prawcore >=1.3.0,<2.0",
+    "python >=3.5",
     "update_checker >=0.16",
     "websocket-client >=0.54.0"
    ]
   },
   "test":{
    "__set__":true,
-   "elements":[]
+   "elements":[
+    "pip"
+   ]
   }
  },
  "url":"https://pypi.io/packages/source/p/praw/praw-6.3.1.tar.gz",
- "version":"6.3.1"
+ "version":"7.0.0"
 }
