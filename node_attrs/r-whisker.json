@@ -76,9 +76,6 @@
   "bot":{
    "automerge":true
   },
-  "compiler_stack":"comp7",
-  "max_py_ver":"37",
-  "max_r_ver":"35",
   "provider":{
    "win":"azure"
   }
@@ -96,7 +93,7 @@
   "build":{
    "merge_build_host":true,
    "noarch":"generic",
-   "number":"0",
+   "number":"1",
    "rpaths":[
     "lib/R/lib/",
     "lib/",
@@ -156,7 +153,7 @@
  "name":"r-whisker",
  "new_version":"0.4",
  "pinning_version":"2020.05.03.17.40.55",
- "raw_meta_yaml":"{% set version = \"0.4\" %}\n\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-whisker\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  fn: whisker_{{ version }}.tar.gz\n  url:\n    - {{ cran_mirror }}/src/contrib/whisker_{{ version }}.tar.gz\n    - {{ cran_mirror }}/src/contrib/Archive/whisker/whisker_{{ version }}.tar.gz\n  sha256: 7a86595be4f1029ec5d7152472d11b16175737e2777134e296ae97341bf8fba8\n\nbuild:\n  noarch: generic\n  merge_build_host: True  # [win]\n  number: 0\n\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - {{posix}}zip               # [win]\n\n  host:\n    - r-base\n\n  run:\n    - r-base\n\ntest:\n  commands:\n    - $R -e \"library('whisker')\"           # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('whisker')\\\"\"  # [win]\n\nabout:\n  home: http://github.com/edwindj/whisker\n  license: GPL-3\n  summary: logicless templating, reuse templates in many programming languages including R\n  license_family: GPL3\n  license_file: '{{ environ[\"PREFIX\"] }}/lib/R/share/licenses/GPL-3'  # [unix]\n  license_file: '{{ environ[\"PREFIX\"] }}\\R\\share\\licenses\\GPL-3'  # [win]\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n    - croth1\n",
+ "raw_meta_yaml":"{% set version = \"0.4\" %}\n\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-whisker\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  fn: whisker_{{ version }}.tar.gz\n  url:\n    - {{ cran_mirror }}/src/contrib/whisker_{{ version }}.tar.gz\n    - {{ cran_mirror }}/src/contrib/Archive/whisker/whisker_{{ version }}.tar.gz\n  sha256: 7a86595be4f1029ec5d7152472d11b16175737e2777134e296ae97341bf8fba8\n\nbuild:\n  noarch: generic\n  merge_build_host: True  # [win]\n  number: 1\n\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - {{ posix }}zip               # [win]\n\n  host:\n    - r-base\n\n  run:\n    - r-base\n\ntest:\n  commands:\n    - $R -e \"library('whisker')\"           # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('whisker')\\\"\"  # [win]\n\nabout:\n  home: http://github.com/edwindj/whisker\n  license: GPL-3\n  summary: logicless templating, reuse templates in many programming languages including R\n  license_family: GPL3\n  license_file: '{{ environ[\"PREFIX\"] }}/lib/R/share/licenses/GPL-3'  # [unix]\n  license_file: '{{ environ[\"PREFIX\"] }}\\R\\share\\licenses\\GPL-3'  # [win]\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n    - croth1\n",
  "req":{
   "__set__":true,
   "elements":[
