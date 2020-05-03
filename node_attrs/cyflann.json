@@ -109,8 +109,8 @@
  "meta_yaml":{
   "about":{
    "description":"cyflann is a Cython interface to the FLANN library. Compared to\nthe default pyflann interface, it allows you to run lots of independent\nsearches without the GIL.\n",
-   "dev_url":"https://github.com/dougalsutherland/cyflann",
-   "home":"http://github.com/dougalsutherland/cyflann",
+   "dev_url":"https://github.com/djsutherland/cyflann",
+   "home":"http://github.com/djsutherland/cyflann",
    "license":"BSD-3-Clause",
    "license_family":"BSD",
    "license_file":"LICENSE.txt",
@@ -132,9 +132,9 @@
   },
   "extra":{
    "recipe-maintainers":[
-    "dougalsutherland",
-    "dougalsutherland",
-    "dougalsutherland"
+    "djsutherland",
+    "djsutherland",
+    "djsutherland"
    ]
   },
   "package":{
@@ -220,7 +220,7 @@
  "name":"cyflann",
  "new_version":"0.2.5",
  "pinning_version":"2020.03.24",
- "raw_meta_yaml":"{% set name = \"cyflann\" %}\n{% set version = \"0.2.5\" %}\n{% set sha256 = \"a78c304f5d7bc78971bcfe8ce2e661027f5f2810b5b0d313bb9a60ded1b518b6\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  fn: {{ name }}-{{ version }}.tar.gz\n  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz\n  sha256: {{ sha256 }}\n\nbuild:\n  number: 0\n  script:\n    - export FLANN_DIR=\"$PREFIX\"        # [unix]\n    - set \"FLANN_DIR=%LIBRARY_PREFIX%\"  # [win]\n    - \"{{ PYTHON }} -m pip install . -vv\"\n    - '{{ PYTHON }} {{ environ[\"RECIPE_DIR\"] }}/dump_dir.py'\n  # Windows VC9 doesn't work yet:\n  # https://github.com/dougalsutherland/cyflann/issues/27\n  skip: true  # [win and vc==9]\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n  host:\n    - python\n    - pip\n    - numpy\n    - flann\n    - cython\n  run:\n    - python\n    - {{ pin_compatible('numpy') }}\n    - flann\n\ntest:\n  imports:\n    - cyflann\n  commands:\n    - pytest --pyargs cyflann\n    - conda inspect linkages -p $PREFIX cyflann  # [not win]\n    - conda inspect objects -p $PREFIX cyflann  # [osx]\n  requires:\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n    - pyflann\n    - cython\n    - pytest\n\nabout:\n  home: http://github.com/dougalsutherland/cyflann\n  license: BSD-3-Clause\n  license_family: BSD\n  license_file: LICENSE.txt\n  summary: 'A Cython interface to FLANN'\n  description: |\n    cyflann is a Cython interface to the FLANN library. Compared to\n    the default pyflann interface, it allows you to run lots of independent\n    searches without the GIL.\n  dev_url: https://github.com/dougalsutherland/cyflann\n\nextra:\n  recipe-maintainers:\n    - dougalsutherland\n",
+ "raw_meta_yaml":"{% set name = \"cyflann\" %}\n{% set version = \"0.2.5\" %}\n{% set sha256 = \"a78c304f5d7bc78971bcfe8ce2e661027f5f2810b5b0d313bb9a60ded1b518b6\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  fn: {{ name }}-{{ version }}.tar.gz\n  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz\n  sha256: {{ sha256 }}\n\nbuild:\n  number: 0\n  script:\n    - export FLANN_DIR=\"$PREFIX\"        # [unix]\n    - set \"FLANN_DIR=%LIBRARY_PREFIX%\"  # [win]\n    - \"{{ PYTHON }} -m pip install . -vv\"\n    - '{{ PYTHON }} {{ environ[\"RECIPE_DIR\"] }}/dump_dir.py'\n  # Windows VC9 doesn't work yet:\n  # https://github.com/djsutherland/cyflann/issues/27\n  skip: true  # [win and vc==9]\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n  host:\n    - python\n    - pip\n    - numpy\n    - flann\n    - cython\n  run:\n    - python\n    - {{ pin_compatible('numpy') }}\n    - flann\n\ntest:\n  imports:\n    - cyflann\n  commands:\n    - pytest --pyargs cyflann\n    - conda inspect linkages -p $PREFIX cyflann  # [not win]\n    - conda inspect objects -p $PREFIX cyflann  # [osx]\n  requires:\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n    - pyflann\n    - cython\n    - pytest\n\nabout:\n  home: http://github.com/djsutherland/cyflann\n  license: BSD-3-Clause\n  license_family: BSD\n  license_file: LICENSE.txt\n  summary: 'A Cython interface to FLANN'\n  description: |\n    cyflann is a Cython interface to the FLANN library. Compared to\n    the default pyflann interface, it allows you to run lots of independent\n    searches without the GIL.\n  dev_url: https://github.com/djsutherland/cyflann\n\nextra:\n  recipe-maintainers:\n    - djsutherland\n",
  "req":{
   "__set__":true,
   "elements":[
