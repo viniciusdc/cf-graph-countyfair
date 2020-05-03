@@ -45,7 +45,7 @@
   },
   "package":{
    "name":"mimalloc",
-   "version":"1.6.1"
+   "version":"1.6.2"
   },
   "requirements":{
    "build":[
@@ -62,15 +62,12 @@
   },
   "source":{
    "patches":[
-    "0001-patch-aligned_malloc.patch",
-    "0002-fix-install-path.patch",
-    "0001-patch-aligned_malloc.patch",
-    "0002-fix-install-path.patch",
-    "0001-patch-aligned_malloc.patch",
-    "0002-fix-install-path.patch"
+    "0001-update-install-path-patch.patch",
+    "0001-update-install-path-patch.patch",
+    "0001-update-install-path-patch.patch"
    ],
-   "sha256":"7fe9b8f30cd25f8ea35dbb6539652bbf9ea44cb01865bac70a1c368f6b96c770",
-   "url":"https://github.com/microsoft/mimalloc/archive/v1.6.1.tar.gz"
+   "sha256":"a4bf4e1e0764230e8abbcec88e2ffaf170804fdfcda15e6a17f63f7088d8e692",
+   "url":"https://github.com/microsoft/mimalloc/archive/v1.6.2.tar.gz"
   },
   "test":{
    "commands":[
@@ -96,7 +93,7 @@
  },
  "new_version_errors":{},
  "pinning_version":"2020.04.22.03.51.02",
- "raw_meta_yaml":"{% set name = \"mimalloc\" %}\n{% set version = \"1.6.1\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  url: https://github.com/microsoft/mimalloc/archive/v{{ version }}.tar.gz\n  sha256: 7fe9b8f30cd25f8ea35dbb6539652bbf9ea44cb01865bac70a1c368f6b96c770\n  patches:\n    - 0001-patch-aligned_malloc.patch\n    - 0002-fix-install-path.patch\n\nbuild:\n  number: 0\n  skip: True  # [not linux]\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n    - cmake\n\n# .\n# \u251c\u2500\u2500 include\n# \u2502  \u251c\u2500\u2500 mimalloc-new-delete.h\n# \u2502  \u251c\u2500\u2500 mimalloc-override.h\n# \u2502  \u2514\u2500\u2500 mimalloc.h\n# \u2514\u2500\u2500 lib\n#    \u251c\u2500\u2500 libmimalloc.a\n#    \u251c\u2500\u2500 libmimalloc.so -> libmimalloc.so.1.6\n#    \u251c\u2500\u2500 libmimalloc.so.1.6\n#    \u2514\u2500\u2500 mimalloc.o\n\ntest:\n  commands:\n    - test -f $PREFIX/lib/libmimalloc.so\n    - test -f $PREFIX/lib/libmimalloc.a\n    - test -f $PREFIX/lib/mimalloc.o\n    - test -f $PREFIX/include/mimalloc.h\n\nabout:\n  home: https://github.com/microsoft/mimalloc\n  license: MIT\n  license_family: MIT\n  license_file: LICENSE\n  summary: 'mimalloc is a compact general purpose allocator with excellent performance.'\n\n  description: |\n    mimalloc (pronounced \"me-malloc\") is a general purpose allocator with\n    excellent performance characteristics. Initially developed by Daan Leijen\n    for the run-time systems of the Koka and Lean languages. \n  dev_url: https://github.com/microsoft/mimalloc\n\nextra:\n  recipe-maintainers:\n    - elbaro\n",
+ "raw_meta_yaml":"{% set name = \"mimalloc\" %}\n{% set version = \"1.6.2\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  url: https://github.com/microsoft/mimalloc/archive/v{{ version }}.tar.gz\n  sha256: a4bf4e1e0764230e8abbcec88e2ffaf170804fdfcda15e6a17f63f7088d8e692\n  patches:\n    - 0001-update-install-path-patch.patch\n\nbuild:\n  number: 0\n  skip: true  # [not linux]\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n    - cmake\n\n# .\n# \u251c\u2500\u2500 include\n# \u2502  \u251c\u2500\u2500 mimalloc-new-delete.h\n# \u2502  \u251c\u2500\u2500 mimalloc-override.h\n# \u2502  \u2514\u2500\u2500 mimalloc.h\n# \u2514\u2500\u2500 lib\n#    \u251c\u2500\u2500 libmimalloc.a\n#    \u251c\u2500\u2500 libmimalloc.so -> libmimalloc.so.1.6\n#    \u251c\u2500\u2500 libmimalloc.so.1.6\n#    \u2514\u2500\u2500 mimalloc.o\n\ntest:\n  commands:\n    - test -f $PREFIX/lib/libmimalloc.so\n    - test -f $PREFIX/lib/libmimalloc.a\n    - test -f $PREFIX/lib/mimalloc.o\n    - test -f $PREFIX/include/mimalloc.h\n\nabout:\n  home: https://github.com/microsoft/mimalloc\n  license: MIT\n  license_family: MIT\n  license_file: LICENSE\n  summary: mimalloc is a compact general purpose allocator with excellent performance.\n\n  description: |\n    mimalloc (pronounced \"me-malloc\") is a general purpose allocator with\n    excellent performance characteristics. Initially developed by Daan Leijen\n    for the run-time systems of the Koka and Lean languages. \n  dev_url: https://github.com/microsoft/mimalloc\n\nextra:\n  recipe-maintainers:\n    - elbaro\n",
  "req":{
   "__set__":true,
   "elements":[
@@ -152,5 +149,5 @@
   }
  },
  "url":"https://github.com/microsoft/mimalloc/archive/v1.6.1.tar.gz",
- "version":"1.6.1"
+ "version":"1.6.2"
 }
