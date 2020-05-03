@@ -52,6 +52,23 @@
     "migrator_version",
     "name"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/412660232.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"Version",
+    "migrator_version":0,
+    "version":"0.6.0"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "version"
+   ]
   }
  ],
  "bad":false,
@@ -155,8 +172,12 @@
   }
  },
  "name":"r-tiledb",
- "new_version":"0.5.0",
- "pinning_version":"2020.04.16.16.23.46",
+ "new_version":"0.6.0",
+ "new_version_attempts":{
+  "0.6.0":1
+ },
+ "new_version_errors":{},
+ "pinning_version":"2020.05.03.19.37.20",
  "raw_meta_yaml":"{% set name = \"r-tiledb\" %}\n{% set version = \"0.5.0\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  url: https://github.com/TileDB-Inc/TileDB-R/archive/{{ version }}.tar.gz\n  sha256: f4ea423eb19172eb7a0e4a220d507dd91c10b179ff506a9facdbcc5e23f9ad08\n\nbuild:\n  number: 1\n  skip: true  # [win]\n  rpaths:\n    - lib/R/lib/\n    - lib/\n  ignore_run_exports: # ignore here to avoid overlink warning b/c test require doesn't work\n    - r-testthat\n\nrequirements:\n  build:\n    - {{ compiler('cxx') }}\n    - pkg-config\n    - make\n  host:\n    - r-base\n    - tiledb >=1.7.4\n    - r-rcpp >=0.12.15\n    - r-testthat\n  run:\n    - r-base\n    - r-rcpp >=0.12.15\n\ntest:\n  requires:\n    - r-testthat\n  commands:\n    - Rscript -e 'testthat::test_package(\"tiledb\")'\n\nabout:\n  home: https://www.tiledb.com\n  license: MIT\n  license_file: LICENSE\n  summary: R interface to the TileDB array storage manager\n\n  description: |\n    TileDB is a highly-parallelized, cloud native array storage engine.\n  doc_url: https://docs.tiledb.com/developer/\n  dev_url: https://github.com/TileDB-Inc/TileDB-R\n\nextra:\n  recipe-maintainers:\n    - ihnorton\n    - Shelnutt2\n    - eddelbuettel\n",
  "req":{
   "__set__":true,
@@ -202,7 +223,7 @@
    ]
   }
  },
- "smithy_version":"No azure token. Create a token and\nput it in ~/.conda-smithy/azure.token\n3.6.16",
+ "smithy_version":"No azure token. Create a token and\nput it in ~/.conda-smithy/azure.token\n3.7.0\n",
  "strong_exports":false,
  "total_requirements":{
   "build":{

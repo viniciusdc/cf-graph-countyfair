@@ -251,7 +251,7 @@
    "summary":"FreeCAD is a parametric 3D modeler made primarily to design real-life objects of any size. "
   },
   "build":{
-   "number":"1"
+   "number":"0"
   },
   "extra":{
    "recipe-maintainers":[
@@ -262,7 +262,7 @@
   },
   "package":{
    "name":"freecad",
-   "version":"0.18.4"
+   "version":"0.19.alpha2"
   },
   "requirements":{
    "build":[
@@ -309,8 +309,11 @@
     "netgen",
     "doxygen",
     "hdf5",
-    "tbb-devel",
     "freetype",
+    "pcl",
+    "six",
+    "ply",
+    "tbb-devel",
     "boost-cpp",
     "python",
     "qt",
@@ -328,8 +331,11 @@
     "netgen",
     "doxygen",
     "hdf5",
-    "tbb-devel",
     "freetype",
+    "pcl",
+    "six",
+    "ply",
+    "tbb-devel",
     "boost-cpp",
     "python",
     "qt",
@@ -347,11 +353,13 @@
     "netgen",
     "doxygen",
     "hdf5",
-    "xorg-libxmu",
     "xorg-libxt",
-    "tbb-devel",
     "freetype",
-    "libspnav"
+    "libspnav",
+    "pcl",
+    "six",
+    "ply",
+    "tbb-devel"
    ],
    "run":[
     "pyside2",
@@ -371,6 +379,8 @@
     "numpy",
     "six",
     "pyyaml",
+    "pcl",
+    "ply",
     "pyside2",
     "vtk",
     "occt",
@@ -388,6 +398,8 @@
     "numpy",
     "six",
     "pyyaml",
+    "pcl",
+    "ply",
     "pyside2",
     "vtk",
     "occt",
@@ -401,33 +413,33 @@
     "pivy",
     "smesh",
     "netgen",
-    "xorg-libxmu",
     "xorg-libxt",
     "freetype",
     "numpy",
     "six",
     "pyyaml",
-    "libspnav"
+    "libspnav",
+    "pcl",
+    "ply"
    ],
    "run_constrained":null
   },
   "source":{
-   "git_rev":"0.18.4",
-   "git_url":"https://github.com/FreeCAD/FreeCAD",
-   "patches":null
+   "git_rev":"0.19.alpha2",
+   "git_url":"https://github.com/looooo/FreeCAD"
   },
   "test":{
    "commands":[
-    "FreeCADCmd -t 0",
-    "FreeCADCmd -t 0",
-    "FreeCADCmd -t 0"
+    "freecadcmd -t 0",
+    "freecadcmd -t 0",
+    "freecadcmd -t 0"
    ]
   }
  },
  "name":"freecad",
  "new_version":false,
  "pinning_version":"2020.04.17.01.00.32",
- "raw_meta_yaml":"{% set name = \"freecad\" %}\n{% set version = \"0.18.4\" %}\n{% set sha256 = \"7f86b9b31f3b5bdf64e0c3978f71916f7a427c09776a6f3143adb268df57471e\" %}\n\n\npackage:\n    name: {{ name }}\n    version: {{ version }}\n\nsource:\n    git_url: https://github.com/FreeCAD/FreeCAD\n    git_tag: {{ version }}\n    patches:\n        - win_snprintf.patch  # [win]\n\nbuild:\n    number: 1\n    skip: true  # [py<37]\n\nrequirements:\n    build:\n        - {{ compiler(\"cxx\") }}\n        - {{ cdt('mesa-libgl-devel') }}      # [linux]\n        - {{ cdt('mesa-dri-drivers') }}      # [linux]\n        - {{ cdt('mesa-libegl-devel') }}     # [linux]\n        - {{ cdt('libselinux') }}            # [linux]\n        - {{ cdt('libxdamage') }}            # [linux]\n        - {{ cdt('libxfixes') }}             # [linux]\n        - {{ cdt('libxxf86vm') }}            # [linux]\n        - {{ cdt('libxcb') }}                # [linux]\n        - {{ cdt('libxext') }}               # [linux]\n        - {{ cdt('xorg-x11-server-xvfb') }}  # [linux]\n        - {{ cdt('libxau') }}                # [linux]\n        - {{ cdt('libxi-devel') }}           # [linux]\n        - cmake\n        - ninja\n        - git\n    host:\n        - boost-cpp\n        - python\n        - qt\n        - occt\n        - xerces-c\n        - zlib\n        - vtk\n        - swig\n        - eigen\n        - pybind11\n        - coin3d\n        - pivy\n        - pyside2\n        - smesh\n        - netgen\n        - doxygen\n        - hdf5\n        - xorg-libxmu  # [linux]\n        - xorg-libxt  # [linux]\n        - tbb-devel\n        - freetype\n        - libspnav  # [linux]\n    run:\n        - {{ pin_compatible(\"pyside2\") }}\n        - vtk\n        - occt\n        - qt\n        - xerces-c\n        - zlib\n        - boost-cpp\n        - hdf5\n        - python\n        - coin3d\n        - pivy\n        - smesh\n        - netgen\n        - xorg-libxmu  # [linux]\n        - xorg-libxt  # [linux]\n        - freetype\n        - numpy\n        - six\n        - pyyaml\n        - libspnav  # [linux]\n    run_constrained:\n        - __osx >={{ MACOSX_DEPLOYMENT_TARGET|default(\"10.9\") }}  # [osx]\n\ntest:\n    commands:\n        - FreeCADCmd -t 0\n\nabout:\n    home: https://www.freecadweb.org/\n    license: LGPL2.1\n    license_family: LGPL\n    license_file: LICENSE\n    summary: 'FreeCAD is a parametric 3D modeler made primarily to design real-life objects of any size. '\n    description: |\n        FreeCAD is a general purpose feature-based, parametric 3D modeler for\n        CAD, MCAD, CAx, CAE and PLM, aimed directly at mechanical engineering\n        and product design but also fits a wider range of uses in engineering,\n        such as architecture or other engineering specialties. It is 100% Open\n        Source (LGPL2+ license) and extremely modular, allowing for very\n        advanced extension and customization.\n        FreeCAD is based on OpenCASCADE, a powerful geometry kernel, features an\n        Open Inventor-compliant 3D scene representation model provided by the\n        Coin 3D library, and a broad Python API. The interface is built with Qt.\n        FreeCAD runs exactly the same way on Windows, Mac OSX, BSD and Linux\n        platforms.\n    doc_url: https://www.freecadweb.org/wiki/Main_Page\n    dev_url: https://github.com/FreeCAD/FreeCAD\n\nextra:\n    recipe-maintainers:\n        - looooo\n",
+ "raw_meta_yaml":"{% set name = \"freecad\" %}\n{% set version = \"0.19.alpha2\" %}\n{% set sha256 = \"7f86b9b31f3b5bdf64e0c3978f71916f7a427c09776a6f3143adb268df57471e\" %}\n\n\npackage:\n    name: {{ name }}\n    version: {{ version }}\n\nsource:\n    # temporary workaround as there is no alpha release available\n    git_url: https://github.com/looooo/FreeCAD  \n    git_tag: {{ version }}\n\nbuild:\n    number: 0\n    skip: true  # [py<37]\n\nrequirements:\n    build:\n        - {{ compiler(\"cxx\") }}\n        - {{ cdt('mesa-libgl-devel') }}      # [linux]\n        - {{ cdt('mesa-dri-drivers') }}      # [linux]\n        - {{ cdt('mesa-libegl-devel') }}     # [linux]\n        - {{ cdt('libselinux') }}            # [linux]\n        - {{ cdt('libxdamage') }}            # [linux]\n        - {{ cdt('libxfixes') }}             # [linux]\n        - {{ cdt('libxxf86vm') }}            # [linux]\n        - {{ cdt('libxcb') }}                # [linux]\n        - {{ cdt('libxext') }}               # [linux]\n        - {{ cdt('xorg-x11-server-xvfb') }}  # [linux]\n        - {{ cdt('libxau') }}                # [linux]\n        - {{ cdt('libxi-devel') }}           # [linux]\n        - cmake\n        - ninja\n        - git\n    host:\n        - boost-cpp\n        - python\n        - qt\n        - occt\n        - xerces-c\n        - zlib\n        - vtk\n        - swig\n        - eigen\n        - pybind11\n        - coin3d\n        - pivy\n        - pyside2\n        - smesh\n        - netgen\n        - doxygen\n        - hdf5\n        - xorg-libxt  # [linux]\n        - freetype\n        - libspnav  # [linux]\n        - pcl\n        - six\n        - ply\n        - tbb-devel\n    run:\n        - {{ pin_compatible(\"pyside2\") }}\n        - vtk\n        - occt\n        - qt\n        - xerces-c\n        - zlib\n        - boost-cpp\n        - hdf5\n        - python\n        - coin3d\n        - pivy\n        - smesh\n        - netgen\n        - xorg-libxt  # [linux]\n        - freetype\n        - numpy\n        - six\n        - pyyaml\n        - libspnav  # [linux]\n        - pcl\n        - ply\n    run_constrained:\n        - __osx >={{ MACOSX_DEPLOYMENT_TARGET|default(\"10.9\") }}  # [osx]\n\ntest:\n    commands:\n        - freecadcmd -t 0\n\nabout:\n    home: https://www.freecadweb.org/\n    license: LGPL2.1\n    license_family: LGPL\n    license_file: LICENSE\n    summary: 'FreeCAD is a parametric 3D modeler made primarily to design real-life objects of any size. '\n    description: |\n        FreeCAD is a general purpose feature-based, parametric 3D modeler for\n        CAD, MCAD, CAx, CAE and PLM, aimed directly at mechanical engineering\n        and product design but also fits a wider range of uses in engineering,\n        such as architecture or other engineering specialties. It is 100% Open\n        Source (LGPL2+ license) and extremely modular, allowing for very\n        advanced extension and customization.\n        FreeCAD is based on OpenCASCADE, a powerful geometry kernel, features an\n        Open Inventor-compliant 3D scene representation model provided by the\n        Coin 3D library, and a broad Python API. The interface is built with Qt.\n        FreeCAD runs exactly the same way on Windows, Mac OSX, BSD and Linux\n        platforms.\n    doc_url: https://www.freecadweb.org/wiki/Main_Page\n    dev_url: https://github.com/FreeCAD/FreeCAD\n\nextra:\n    recipe-maintainers:\n        - looooo\n",
  "req":{
   "__set__":true,
   "elements":[
@@ -446,7 +458,9 @@
    "ninja",
    "numpy",
    "occt",
+   "pcl",
    "pivy",
+   "ply",
    "pybind11",
    "pyside2",
    "python",
@@ -458,7 +472,6 @@
    "tbb-devel",
    "vtk",
    "xerces-c",
-   "xorg-libxmu",
    "xorg-libxt",
    "zlib"
   ]
@@ -486,17 +499,19 @@
     "libspnav",
     "netgen",
     "occt",
+    "pcl",
     "pivy",
+    "ply",
     "pybind11",
     "pyside2",
     "python",
     "qt",
+    "six",
     "smesh",
     "swig",
     "tbb-devel",
     "vtk",
     "xerces-c",
-    "xorg-libxmu",
     "xorg-libxt",
     "zlib"
    ]
@@ -512,7 +527,9 @@
     "netgen",
     "numpy",
     "occt",
+    "pcl",
     "pivy",
+    "ply",
     "pyside2",
     "python",
     "pyyaml",
@@ -521,7 +538,6 @@
     "smesh",
     "vtk",
     "xerces-c",
-    "xorg-libxmu",
     "xorg-libxt",
     "zlib"
    ]
@@ -557,17 +573,19 @@
     "libspnav",
     "netgen",
     "occt",
+    "pcl",
     "pivy",
+    "ply",
     "pybind11",
     "pyside2",
     "python",
     "qt",
+    "six",
     "smesh",
     "swig",
     "tbb-devel",
     "vtk",
     "xerces-c",
-    "xorg-libxmu",
     "xorg-libxt",
     "zlib"
    ]
@@ -583,7 +601,9 @@
     "netgen",
     "numpy",
     "occt",
+    "pcl",
     "pivy",
+    "ply",
     "pyside2",
     "python",
     "pyyaml",
@@ -592,7 +612,6 @@
     "smesh",
     "vtk",
     "xerces-c",
-    "xorg-libxmu",
     "xorg-libxt",
     "zlib"
    ]
@@ -603,5 +622,5 @@
   }
  },
  "url":null,
- "version":"0.18.4"
+ "version":"0.19.alpha2"
 }
