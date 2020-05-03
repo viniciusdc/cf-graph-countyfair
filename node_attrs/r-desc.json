@@ -73,9 +73,6 @@
   "bot":{
    "automerge":true
   },
-  "compiler_stack":"comp7",
-  "max_py_ver":"37",
-  "max_r_ver":"35",
   "provider":{
    "win":"azure"
   }
@@ -87,12 +84,20 @@
    "home":"https://github.com/r-lib/desc#readme",
    "license":"MIT",
    "license_family":"MIT",
+   "license_file":[
+    "/lib/R/share/licenses/MIT",
+    "LICENSE",
+    "/lib/R/share/licenses/MIT",
+    "LICENSE",
+    "/lib/R/share/licenses/MIT",
+    "LICENSE"
+   ],
    "summary":"Tools to read, write, create, and manipulate DESCRIPTION files. It is intended for packages that create or manipulate other packages."
   },
   "build":{
    "merge_build_host":true,
    "noarch":"generic",
-   "number":"1002",
+   "number":"1003",
    "rpaths":[
     "lib/R/lib/",
     "lib/",
@@ -191,7 +196,7 @@
  "name":"r-desc",
  "new_version":"1.2.0",
  "pinning_version":"2020.05.03.17.40.55",
- "raw_meta_yaml":"{% set version = '1.2.0' %}\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-desc\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  fn: desc_{{ version }}.tar.gz\n  url:\n    - {{ cran_mirror }}/src/contrib/desc_{{ version }}.tar.gz\n    - {{ cran_mirror }}/src/contrib/Archive/desc/desc_{{ version }}.tar.gz\n  sha256: e66fb5d4fc7974bc558abcdc107a1f258c9177a29dcfcf9164bc6b33dd08dae8\n\nbuild:\n  noarch: generic\n  merge_build_host: True  # [win]\n  number: 1002\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - {{posix}}zip               # [win]\n  host:\n    - r-base\n    - r-r6\n    - r-assertthat\n    - r-crayon\n    - r-rprojroot\n  run:\n    - r-base\n    - r-r6\n    - r-assertthat\n    - r-crayon\n    - r-rprojroot\n\ntest:\n  commands:\n    - $R -e \"library('desc')\"           # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('desc')\\\"\"  # [win]\n\nabout:\n  home: https://github.com/r-lib/desc#readme\n  license: MIT\n  summary: Tools to read, write, create, and manipulate DESCRIPTION files. It is intended for\n    packages that create or manipulate other packages.\n  license_family: MIT\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n    - johanneskoester\n    - bgruening\n    - daler\n    - jdblischak\n    - cbrueffer\n    - dbast\n",
+ "raw_meta_yaml":"{% set version = \"1.2.0\" %}\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-desc\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  fn: desc_{{ version }}.tar.gz\n  url:\n    - {{ cran_mirror }}/src/contrib/desc_{{ version }}.tar.gz\n    - {{ cran_mirror }}/src/contrib/Archive/desc/desc_{{ version }}.tar.gz\n  sha256: e66fb5d4fc7974bc558abcdc107a1f258c9177a29dcfcf9164bc6b33dd08dae8\n\nbuild:\n  noarch: generic\n  merge_build_host: true  # [win]\n  number: 1003\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - {{ posix }}zip               # [win]\n  host:\n    - r-base\n    - r-r6\n    - r-assertthat\n    - r-crayon\n    - r-rprojroot\n  run:\n    - r-base\n    - r-r6\n    - r-assertthat\n    - r-crayon\n    - r-rprojroot\n\ntest:\n  commands:\n    - $R -e \"library('desc')\"           # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('desc')\\\"\"  # [win]\n\nabout:\n  home: https://github.com/r-lib/desc#readme\n  license: MIT\n  summary: Tools to read, write, create, and manipulate DESCRIPTION files. It is intended for packages that create or manipulate other packages.\n  license_family: MIT\n\n  license_file:\n    - {{ environ[\"PREFIX\"] }}/lib/R/share/licenses/MIT\n    - LICENSE\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n    - johanneskoester\n    - bgruening\n    - daler\n    - jdblischak\n    - cbrueffer\n    - dbast\n",
  "req":{
   "__set__":true,
   "elements":[
