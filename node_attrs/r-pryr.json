@@ -105,12 +105,9 @@
   "bot":{
    "automerge":true
   },
-  "compiler_stack":"comp7",
-  "max_py_ver":"37",
-  "max_r_ver":"35",
   "provider":{
    "linux_aarch64":"default",
-   "linux_ppc64le":"default",
+   "linux_ppc64le":"azure",
    "win":"azure"
   }
  },
@@ -126,7 +123,7 @@
   },
   "build":{
    "merge_build_host":true,
-   "number":"1003",
+   "number":"1004",
    "rpaths":[
     "lib/R/lib/",
     "lib/",
@@ -234,7 +231,7 @@
  "name":"r-pryr",
  "new_version":"0.1.4",
  "pinning_version":"2020.05.03.19.37.20",
- "raw_meta_yaml":"{% set version = '0.1.4' %}\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-pryr\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  fn: pryr_{{ version }}.tar.gz\n  url:\n    - {{ cran_mirror }}/src/contrib/pryr_{{ version }}.tar.gz\n    - {{ cran_mirror }}/src/contrib/Archive/pryr/pryr_{{ version }}.tar.gz\n  sha256: d39834316504c49ecd4936cbbcaf3ee3dae6ded287af42475bf38c9e682f721b\n\nbuild:\n  merge_build_host: True  # [win]\n  number: 1003\n  skip: true  # [win32]\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - {{ compiler('c') }}        # [not win]\n    - {{ compiler('cxx') }}      # [not win]\n    - {{ compiler('m2w64_c') }}        # [win]\n    - {{ compiler('m2w64_cxx') }}        # [win]\n    - {{posix}}filesystem        # [win]\n    - {{posix}}make\n    - {{posix}}sed               # [win]\n    - {{posix}}coreutils         # [win]\n    - {{posix}}zip               # [win]\n  host:\n    - r-base\n    - r-rcpp >=0.11.0\n    - r-codetools\n    - r-stringr\n  run:\n    - r-base\n    - {{native}}gcc-libs         # [win]\n    - r-rcpp >=0.11.0\n    - r-codetools\n    - r-stringr\n\ntest:\n  commands:\n    - $R -e \"library('pryr')\"           # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('pryr')\\\"\"  # [win]\n\nabout:\n  home: https://github.com/hadley/pryr\n  license: GPL-2\n  summary: Useful tools to pry back the covers of R and understand the language at a deeper level.\n  license_family: GPL2\n  license_file: '{{ environ[\"PREFIX\"] }}/lib/R/share/licenses/GPL-2'\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n    - johanneskoester\n    - bgruening\n    - daler\n    - jdblischak\n    - cbrueffer\n    - dbast\n",
+ "raw_meta_yaml":"{% set version = '0.1.4' %}\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-pryr\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  fn: pryr_{{ version }}.tar.gz\n  url:\n    - {{ cran_mirror }}/src/contrib/pryr_{{ version }}.tar.gz\n    - {{ cran_mirror }}/src/contrib/Archive/pryr/pryr_{{ version }}.tar.gz\n  sha256: d39834316504c49ecd4936cbbcaf3ee3dae6ded287af42475bf38c9e682f721b\n\nbuild:\n  merge_build_host: True  # [win]\n  number: 1004\n  skip: true  # [win32]\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - {{ compiler('c') }}        # [not win]\n    - {{ compiler('cxx') }}      # [not win]\n    - {{ compiler('m2w64_c') }}        # [win]\n    - {{ compiler('m2w64_cxx') }}        # [win]\n    - {{ posix }}filesystem        # [win]\n    - {{ posix }}make\n    - {{ posix }}sed               # [win]\n    - {{ posix }}coreutils         # [win]\n    - {{ posix }}zip               # [win]\n  host:\n    - r-base\n    - r-rcpp >=0.11.0\n    - r-codetools\n    - r-stringr\n  run:\n    - r-base\n    - {{ native }}gcc-libs         # [win]\n    - r-rcpp >=0.11.0\n    - r-codetools\n    - r-stringr\n\ntest:\n  commands:\n    - $R -e \"library('pryr')\"           # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('pryr')\\\"\"  # [win]\n\nabout:\n  home: https://github.com/hadley/pryr\n  license: GPL-2\n  summary: Useful tools to pry back the covers of R and understand the language at a deeper level.\n  license_family: GPL2\n  license_file: '{{ environ[\"PREFIX\"] }}/lib/R/share/licenses/GPL-2'\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n    - johanneskoester\n    - bgruening\n    - daler\n    - jdblischak\n    - cbrueffer\n    - dbast\n",
  "req":{
   "__set__":true,
   "elements":[

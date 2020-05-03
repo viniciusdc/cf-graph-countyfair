@@ -59,9 +59,6 @@
   "bot":{
    "automerge":true
   },
-  "compiler_stack":"comp7",
-  "max_py_ver":"37",
-  "max_r_ver":"35",
   "provider":{
    "win":"azure"
   }
@@ -71,14 +68,19 @@
  "meta_yaml":{
   "about":{
    "home":"https://CRAN.R-project.org/package=futile.options",
-   "license":"LGPL-3",
+   "license":"LGPL-3.0-only",
    "license_family":"LGPL",
+   "license_file":[
+    "/lib/R/share/licenses/LGPL-3",
+    "/lib/R/share/licenses/LGPL-3",
+    "/lib/R/share/licenses/LGPL-3"
+   ],
    "summary":"A scoped options management framework. Used in other packages."
   },
   "build":{
    "merge_build_host":true,
    "noarch":"generic",
-   "number":"1001",
+   "number":"1002",
    "rpaths":[
     "lib/R/lib/",
     "lib/",
@@ -153,7 +155,7 @@
  "name":"r-futile.options",
  "new_version":"1.0.1",
  "pinning_version":"2020.05.03.19.37.20",
- "raw_meta_yaml":"{% set version = '1.0.1' %}\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-futile.options\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  fn: futile.options_{{ version }}.tar.gz\n  url:\n    - {{ cran_mirror }}/src/contrib/futile.options_{{ version }}.tar.gz\n    - {{ cran_mirror }}/src/contrib/Archive/futile.options/futile.options_{{ version }}.tar.gz\n  sha256: 7a9cc974e09598077b242a1069f7fbf4fa7f85ffe25067f6c4c32314ef532570\n\nbuild:\n  noarch: generic\n  merge_build_host: True  # [win]\n  number: 1001\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - {{posix}}zip               # [win]\n  host:\n    - r-base\n  run:\n    - r-base\n\ntest:\n  commands:\n    - $R -e \"library('futile.options')\"           # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('futile.options')\\\"\"  # [win]\n\nabout:\n  home: https://CRAN.R-project.org/package=futile.options\n  license: LGPL-3\n  summary: A scoped options management framework. Used in other packages.\n  license_family: LGPL\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n    - johanneskoester\n    - bgruening\n    - daler\n    - jdblischak\n    - cbrueffer\n    - dbast\n",
+ "raw_meta_yaml":"{% set version = \"1.0.1\" %}\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-futile.options\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  fn: futile.options_{{ version }}.tar.gz\n  url:\n    - {{ cran_mirror }}/src/contrib/futile.options_{{ version }}.tar.gz\n    - {{ cran_mirror }}/src/contrib/Archive/futile.options/futile.options_{{ version }}.tar.gz\n  sha256: 7a9cc974e09598077b242a1069f7fbf4fa7f85ffe25067f6c4c32314ef532570\n\nbuild:\n  noarch: generic\n  merge_build_host: true  # [win]\n  number: 1002\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - {{ posix }}zip               # [win]\n  host:\n    - r-base\n  run:\n    - r-base\n\ntest:\n  commands:\n    - $R -e \"library('futile.options')\"           # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('futile.options')\\\"\"  # [win]\n\nabout:\n  home: https://CRAN.R-project.org/package=futile.options\n  license: LGPL-3.0-only\n  summary: A scoped options management framework. Used in other packages.\n  license_family: LGPL\n\n  license_file:\n    - {{ environ[\"PREFIX\"] }}/lib/R/share/licenses/LGPL-3\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n    - johanneskoester\n    - bgruening\n    - daler\n    - jdblischak\n    - cbrueffer\n    - dbast\n",
  "req":{
   "__set__":true,
   "elements":[

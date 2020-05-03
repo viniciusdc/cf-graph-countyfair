@@ -96,6 +96,25 @@
     "migrator_version",
     "version"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/412681348.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"MigrationYaml",
+    "migrator_object_version":2,
+    "migrator_version":0,
+    "name":"r400"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_object_version",
+    "migrator_version",
+    "name"
+   ]
   }
  ],
  "bad":false,
@@ -215,7 +234,7 @@
  },
  "name":"r-network",
  "new_version":"1.16.0",
- "pinning_version":"2019.11.26",
+ "pinning_version":"2020.05.03.19.37.20",
  "raw_meta_yaml":"{% set version = \"1.16.0\" %}\n\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-network\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  fn: network_{{ version }}.tar.gz\n  url:\n    - {{ cran_mirror }}/src/contrib/network_{{ version }}.tar.gz\n    - {{ cran_mirror }}/src/contrib/Archive/network/network_{{ version }}.tar.gz\n  sha256: a24f51457439c7186ffa1fe53719742c501929ac1a354e458754a83f280fce36\n\nbuild:\n  merge_build_host: True  # [win]\n  number: 0\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\n# Suggests: sna, statnet.common, testthat\nrequirements:\n  build:\n    - {{ compiler('c') }}        # [not win]\n    - {{ compiler('m2w64_c') }}        # [win]\n    - {{posix}}filesystem        # [win]\n    - {{posix}}make\n    - {{posix}}sed               # [win]\n    - {{posix}}coreutils         # [win]\n    - {{posix}}zip               # [win]\n\n  host:\n    - r-base\n    - r-tibble\n    - r-magrittr\n  run:\n    - r-base\n    - r-tibble\n    - r-magrittr\n    - {{native}}gcc-libs         # [win]\n\ntest:\n  commands:\n    - $R -e \"library('network')\"           # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('network')\\\"\"  # [win]\n\nabout:\n  home: http://statnet.org/\n  license: GPL (>= 2)\n  summary: Tools to create and modify network objects.  The network class can represent a range\n    of relational data types, and supports arbitrary vertex/edge/graph attributes.\n  license_family: GPL3\n  license_file:\n    - '{{ environ[\"PREFIX\"] }}/lib/R/share/licenses/GPL-3'\n\nextra:\n   recipe-maintainers:\n    - conda-forge/r\n    - MathiasHaudgaard\n    - FrodePedersen\n    - ArneKr\n",
  "req":{
   "__set__":true,
@@ -268,7 +287,7 @@
    "elements":[]
   }
  },
- "smithy_version":"3.6.3",
+ "smithy_version":"No azure token. Create a token and\nput it in ~/.conda-smithy/azure.token\n3.7.0\n",
  "strong_exports":false,
  "total_requirements":{
   "build":{

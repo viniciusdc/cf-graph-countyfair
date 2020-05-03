@@ -33,6 +33,25 @@
     "migrator_version",
     "name"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/412681877.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"MigrationYaml",
+    "migrator_object_version":2,
+    "migrator_version":0,
+    "name":"r400"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_object_version",
+    "migrator_version",
+    "name"
+   ]
   }
  ],
  "bad":false,
@@ -140,7 +159,7 @@
  },
  "name":"r-downloader",
  "new_version":"0.4",
- "pinning_version":"2019.07.15",
+ "pinning_version":"2020.05.03.19.37.20",
  "raw_meta_yaml":"{% set version = '0.4' %}\n\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-downloader\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  fn: downloader_{{ version }}.tar.gz\n  url:\n    - {{ cran_mirror }}/src/contrib/downloader_{{ version }}.tar.gz\n    - {{ cran_mirror }}/src/contrib/Archive/downloader/downloader_{{ version }}.tar.gz\n  sha256: 1890e75b028775154023f2135cafb3e3eed0fe908138ab4f7eff1fc1b47dafab\n\nbuild:\n  noarch: generic\n  merge_build_host: True  # [win]\n  number: 1002\n\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - {{posix}}zip               # [win]\n\n  host:\n    - r-base\n    - r-digest\n\n  run:\n    - r-base\n    - r-digest\n\ntest:\n  commands:\n    - $R -e \"library('downloader')\"           # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('downloader')\\\"\"  # [win]\n\nabout:\n  home: https://github.com/wch/downloader\n  license: GPL-2\n  summary: Provides a wrapper for the download.file function, making it possible to download\n    files over HTTPS on Windows, Mac OS X, and other Unix-like platforms. The 'RCurl'\n    package provides this functionality (and much more) but can be difficult to install\n    because it must be compiled with external dependencies. This package has no external\n    dependencies, so it is much easier to install.\n  license_family: GPL2\n  license_file: '{{ environ[\"PREFIX\"] }}/lib/R/share/licenses/GPL-2'\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n    - johanneskoester\n    - bgruening\n    - daler\n    - jdblischak\n    - cbrueffer\n    - dbast\n",
  "req":{
   "__set__":true,
@@ -173,7 +192,7 @@
    "elements":[]
   }
  },
- "smithy_version":"3.4.1",
+ "smithy_version":"No azure token. Create a token and\nput it in ~/.conda-smithy/azure.token\n3.7.0\n",
  "strong_exports":false,
  "total_requirements":{
   "build":{
