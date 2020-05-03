@@ -57,9 +57,6 @@
   "bot":{
    "automerge":true
   },
-  "compiler_stack":"comp7",
-  "max_py_ver":"37",
-  "max_r_ver":"35",
   "provider":{
    "win":"azure"
   }
@@ -69,7 +66,7 @@
  "meta_yaml":{
   "about":{
    "home":"http://rocr.bioinf.mpi-sb.mpg.de/",
-   "license":"GPL (>= 2)",
+   "license":"GPL-2.0-or-later",
    "license_family":"GPL3",
    "license_file":"/lib/R/share/licenses/GPL-3",
    "summary":"ROC graphs, sensitivity/specificity curves, lift charts, and precision/recall plots are popular examples of trade-off visualizations for specific pairs of performance measures. ROCR is a flexible tool for creating cutoff-parameterized 2D performance curves by freely combining two from over 25 performance measures (new performance measures can be added using a standard interface). Curves from different cross-validation or bootstrapping runs can be averaged by different methods, and standard deviations, standard errors or box plots can be used to visualize the variability across the runs. The parameterization can be visualized by printing cutoff values at the corresponding curve positions, or by coloring the curve according to cutoff. All components of a performance plot can be quickly adjusted using a flexible parameter dispatching mechanism. Despite its flexibility, ROCR is easy to use, with only three commands and reasonable default values for all optional parameters."
@@ -77,7 +74,7 @@
   "build":{
    "merge_build_host":true,
    "noarch":"generic",
-   "number":"1002",
+   "number":"0",
    "rpaths":[
     "lib/R/lib/",
     "lib/",
@@ -90,31 +87,13 @@
   "extra":{
    "recipe-maintainers":[
     "conda-forge/r",
-    "johanneskoester",
-    "bgruening",
-    "daler",
-    "jdblischak",
-    "cbrueffer",
-    "dbast",
     "conda-forge/r",
-    "johanneskoester",
-    "bgruening",
-    "daler",
-    "jdblischak",
-    "cbrueffer",
-    "dbast",
-    "conda-forge/r",
-    "johanneskoester",
-    "bgruening",
-    "daler",
-    "jdblischak",
-    "cbrueffer",
-    "dbast"
+    "conda-forge/r"
    ]
   },
   "package":{
    "name":"r-rocr",
-   "version":"1.0_7"
+   "version":"1.0_11"
   },
   "requirements":{
    "build":null,
@@ -136,15 +115,14 @@
    ]
   },
   "source":{
-   "fn":"ROCR_1.0-7.tar.gz",
-   "sha256":"e7ef710f847e441a48b20fdc781dbc1377f5a060a5ee635234053f7a2a435ec9",
+   "sha256":"57385a773220a3aaef5b221a68b2d9c2a94794d4f9e9fc3c1eb9521767debb2a",
    "url":[
-    "https://cran.r-project.org/src/contrib/ROCR_1.0-7.tar.gz",
-    "https://cran.r-project.org/src/contrib/Archive/ROCR/ROCR_1.0-7.tar.gz",
-    "https://cran.r-project.org/src/contrib/ROCR_1.0-7.tar.gz",
-    "https://cran.r-project.org/src/contrib/Archive/ROCR/ROCR_1.0-7.tar.gz",
-    "https://cran.r-project.org/src/contrib/ROCR_1.0-7.tar.gz",
-    "https://cran.r-project.org/src/contrib/Archive/ROCR/ROCR_1.0-7.tar.gz"
+    "https://cran.r-project.org/src/contrib/ROCR_1.0-11.tar.gz",
+    "https://cran.r-project.org/src/contrib/Archive/ROCR/ROCR_1.0-11.tar.gz",
+    "https://cran.r-project.org/src/contrib/ROCR_1.0-11.tar.gz",
+    "https://cran.r-project.org/src/contrib/Archive/ROCR/ROCR_1.0-11.tar.gz",
+    "https://cran.r-project.org/src/contrib/ROCR_1.0-11.tar.gz",
+    "https://cran.r-project.org/src/contrib/Archive/ROCR/ROCR_1.0-11.tar.gz"
    ]
   },
   "test":{
@@ -162,7 +140,7 @@
  },
  "new_version_errors":{},
  "pinning_version":"2020.05.02.14.58.15",
- "raw_meta_yaml":"{% set version = '1.0-7' %}\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-rocr\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  fn: ROCR_{{ version }}.tar.gz\n  url:\n    - {{ cran_mirror }}/src/contrib/ROCR_{{ version }}.tar.gz\n    - {{ cran_mirror }}/src/contrib/Archive/ROCR/ROCR_{{ version }}.tar.gz\n  sha256: e7ef710f847e441a48b20fdc781dbc1377f5a060a5ee635234053f7a2a435ec9\n\nbuild:\n  noarch: generic\n  merge_build_host: True  # [win]\n  number: 1002\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - {{posix}}zip               # [win]\n  host:\n    - r-base\n    - r-gplots\n  run:\n    - r-base\n    - r-gplots\n\ntest:\n  commands:\n    - $R -e \"library('ROCR')\"           # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('ROCR')\\\"\"  # [win]\n\nabout:\n  home: http://rocr.bioinf.mpi-sb.mpg.de/\n  license: GPL (>= 2)\n  summary: ROC graphs, sensitivity/specificity curves, lift charts, and precision/recall plots\n    are popular examples of trade-off visualizations for specific pairs of performance\n    measures. ROCR is a flexible tool for creating cutoff-parameterized 2D performance\n    curves by freely combining two from over 25 performance measures (new performance\n    measures can be added using a standard interface). Curves from different cross-validation\n    or bootstrapping runs can be averaged by different methods, and standard deviations,\n    standard errors or box plots can be used to visualize the variability across the\n    runs. The parameterization can be visualized by printing cutoff values at the corresponding\n    curve positions, or by coloring the curve according to cutoff. All components of\n    a performance plot can be quickly adjusted using a flexible parameter dispatching\n    mechanism. Despite its flexibility, ROCR is easy to use, with only three commands\n    and reasonable default values for all optional parameters.\n  license_family: GPL3\n  license_file: '{{ environ[\"PREFIX\"] }}/lib/R/share/licenses/GPL-3'\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n    - johanneskoester\n    - bgruening\n    - daler\n    - jdblischak\n    - cbrueffer\n    - dbast\n",
+ "raw_meta_yaml":"{% set version = \"1.0-11\" %}\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-rocr\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  url:\n    - {{ cran_mirror }}/src/contrib/ROCR_{{ version }}.tar.gz\n    - {{ cran_mirror }}/src/contrib/Archive/ROCR/ROCR_{{ version }}.tar.gz\n  sha256: 57385a773220a3aaef5b221a68b2d9c2a94794d4f9e9fc3c1eb9521767debb2a\n\nbuild:\n  noarch: generic\n  skip: True  # [r_base == '3.5.1']\n  merge_build_host: true  # [win]\n  number: 0\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - {{ posix }}zip               # [win]\n  host:\n    - r-base\n    - r-gplots\n  run:\n    - r-base\n    - r-gplots\n\ntest:\n  commands:\n    - $R -e \"library('ROCR')\"           # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('ROCR')\\\"\"  # [win]\n\nabout:\n  home: http://rocr.bioinf.mpi-sb.mpg.de/\n  license: GPL-2.0-or-later\n  summary: ROC graphs, sensitivity/specificity curves, lift charts, and precision/recall plots are popular examples of trade-off visualizations for specific pairs of performance measures. ROCR is a flexible tool for creating cutoff-parameterized 2D performance curves by freely combining two from over 25 performance measures\n    (new performance measures can be added using a standard interface). Curves from different cross-validation or bootstrapping runs can be averaged by different methods, and standard deviations, standard errors or box plots can be used to visualize the variability across the runs. The parameterization can be visualized\n    by printing cutoff values at the corresponding curve positions, or by coloring the curve according to cutoff. All components of a performance plot can be quickly adjusted using a flexible parameter dispatching mechanism. Despite its flexibility, ROCR is easy to use, with only three commands and reasonable default values\n    for all optional parameters.\n  license_family: GPL3\n  license_file: {{ environ[\"PREFIX\"] }}/lib/R/share/licenses/GPL-3\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n",
  "req":{
   "__set__":true,
   "elements":[
@@ -228,5 +206,5 @@
   "https://cran.r-project.org/src/contrib/ROCR_1.0-7.tar.gz",
   "https://cran.r-project.org/src/contrib/Archive/ROCR/ROCR_1.0-7.tar.gz"
  ],
- "version":"1.0_7"
+ "version":"1.0_11"
 }
