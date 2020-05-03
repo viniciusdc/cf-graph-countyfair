@@ -122,12 +122,9 @@
   "bot":{
    "automerge":true
   },
-  "compiler_stack":"comp7",
-  "max_py_ver":"37",
-  "max_r_ver":"35",
   "provider":{
    "linux_aarch64":"default",
-   "linux_ppc64le":"default",
+   "linux_ppc64le":"azure",
    "win":"azure"
   }
  },
@@ -143,7 +140,7 @@
   },
   "build":{
    "merge_build_host":true,
-   "number":"1",
+   "number":"2",
    "rpaths":[
     "lib/R/lib/",
     "lib/",
@@ -217,7 +214,7 @@
  "name":"r-slam",
  "new_version":"0.1_47",
  "pinning_version":"2020.05.03.19.37.20",
- "raw_meta_yaml":"{% set version = \"0.1-47\" %}\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-slam\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  url:\n    - {{ cran_mirror }}/src/contrib/slam_{{ version }}.tar.gz\n    - {{ cran_mirror }}/src/contrib/Archive/slam/slam_{{ version }}.tar.gz\n  sha256: 696356a68aa92059fa794444faa4c1775193c723a262a5f75de3c3c3047fcf89\n\nbuild:\n  merge_build_host: True  # [win]\n  number: 1\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - {{ compiler('c') }}              # [not win]\n    - {{ compiler('m2w64_c') }}        # [win]\n    - {{posix}}filesystem        # [win]\n    - {{posix}}make\n    - {{posix}}sed               # [win]\n    - {{posix}}coreutils         # [win]\n    - {{posix}}zip               # [win]\n  host:\n    - libblas\n    - r-base\n  run:\n    - r-base\n    - {{native}}gcc-libs         # [win]\n\ntest:\n  commands:\n    - $R -e \"library('slam')\"           # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('slam')\\\"\"  # [win]\n\nabout:\n  home: https://CRAN.R-project.org/package=slam\n  license: GPL-2\n  summary: Data structures and algorithms for sparse arrays and matrices, based on index arrays\n    and simple triplet representations, respectively.\n  license_family: GPL2\n  license_file: '{{ environ[\"PREFIX\"] }}/lib/R/share/licenses/GPL-2'\n\nextra:\n  recipe-maintainers:\n    - croth1\n    - conda-forge/r\n\n# Package: slam\n# Version: 0.1-45\n# Title: Sparse Lightweight Arrays and Matrices\n# Authors@R: c(person(\"Kurt\", \"Hornik\", role = c(\"aut\", \"cre\"), email = \"Kurt.Hornik@R-project.org\", comment = c(ORCID = \"0000-0003-4198-9911\")), person(\"David\", \"Meyer\", role = \"aut\"), person(\"Christian\", \"Buchta\", role = \"aut\"))\n# Description: Data structures and algorithms for sparse arrays and matrices, based on index arrays and simple triplet representations, respectively.\n# Depends: R (>= 3.4.0)\n# Imports: stats\n# Enhances: Matrix, SparseM, spam\n# License: GPL-2\n# NeedsCompilation: yes\n# Packaged: 2019-02-26 10:47:45 UTC; hornik\n# Author: Kurt Hornik [aut, cre] (<https://orcid.org/0000-0003-4198-9911>), David Meyer [aut], Christian Buchta [aut]\n# Maintainer: Kurt Hornik <Kurt.Hornik@R-project.org>\n# Repository: CRAN\n# Date/Publication: 2019-02-26 11:23:12 UTC\n",
+ "raw_meta_yaml":"{% set version = \"0.1-47\" %}\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-slam\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  url:\n    - {{ cran_mirror }}/src/contrib/slam_{{ version }}.tar.gz\n    - {{ cran_mirror }}/src/contrib/Archive/slam/slam_{{ version }}.tar.gz\n  sha256: 696356a68aa92059fa794444faa4c1775193c723a262a5f75de3c3c3047fcf89\n\nbuild:\n  merge_build_host: True  # [win]\n  number: 2\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - {{ compiler('c') }}              # [not win]\n    - {{ compiler('m2w64_c') }}        # [win]\n    - {{ posix }}filesystem        # [win]\n    - {{ posix }}make\n    - {{ posix }}sed               # [win]\n    - {{ posix }}coreutils         # [win]\n    - {{ posix }}zip               # [win]\n  host:\n    - libblas\n    - r-base\n  run:\n    - r-base\n    - {{ native }}gcc-libs         # [win]\n\ntest:\n  commands:\n    - $R -e \"library('slam')\"           # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('slam')\\\"\"  # [win]\n\nabout:\n  home: https://CRAN.R-project.org/package=slam\n  license: GPL-2\n  summary: Data structures and algorithms for sparse arrays and matrices, based on index arrays\n    and simple triplet representations, respectively.\n  license_family: GPL2\n  license_file: '{{ environ[\"PREFIX\"] }}/lib/R/share/licenses/GPL-2'\n\nextra:\n  recipe-maintainers:\n    - croth1\n    - conda-forge/r\n\n# Package: slam\n# Version: 0.1-45\n# Title: Sparse Lightweight Arrays and Matrices\n# Authors@R: c(person(\"Kurt\", \"Hornik\", role = c(\"aut\", \"cre\"), email = \"Kurt.Hornik@R-project.org\", comment = c(ORCID = \"0000-0003-4198-9911\")), person(\"David\", \"Meyer\", role = \"aut\"), person(\"Christian\", \"Buchta\", role = \"aut\"))\n# Description: Data structures and algorithms for sparse arrays and matrices, based on index arrays and simple triplet representations, respectively.\n# Depends: R (>= 3.4.0)\n# Imports: stats\n# Enhances: Matrix, SparseM, spam\n# License: GPL-2\n# NeedsCompilation: yes\n# Packaged: 2019-02-26 10:47:45 UTC; hornik\n# Author: Kurt Hornik [aut, cre] (<https://orcid.org/0000-0003-4198-9911>), David Meyer [aut], Christian Buchta [aut]\n# Maintainer: Kurt Hornik <Kurt.Hornik@R-project.org>\n# Repository: CRAN\n# Date/Publication: 2019-02-26 11:23:12 UTC\n",
  "req":{
   "__set__":true,
   "elements":[

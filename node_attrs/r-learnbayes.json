@@ -73,9 +73,6 @@
   "bot":{
    "automerge":true
   },
-  "compiler_stack":"comp7",
-  "max_py_ver":"37",
-  "max_r_ver":"35",
   "provider":{
    "win":"azure"
   }
@@ -93,7 +90,7 @@
   "build":{
    "merge_build_host":true,
    "noarch":"generic",
-   "number":"1001",
+   "number":"1002",
    "rpaths":[
     "lib/R/lib/",
     "lib/",
@@ -150,7 +147,7 @@
  "name":"r-learnbayes",
  "new_version":"2.15.1",
  "pinning_version":"2020.05.03.19.37.20",
- "raw_meta_yaml":"{% set version = '2.15.1' %}\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-learnbayes\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  fn: LearnBayes_{{ version }}.tar.gz\n  url:\n    - {{ cran_mirror }}/src/contrib/LearnBayes_{{ version }}.tar.gz\n    - {{ cran_mirror }}/src/contrib/Archive/LearnBayes/LearnBayes_{{ version }}.tar.gz\n  sha256: 9b110858456523ca0b2a63f22013c4e1fbda6674b9d84dc1f4de8bffc5260532\n\nbuild:\n  noarch: generic\n  merge_build_host: True  # [win]\n  number: 1001\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - {{posix}}zip               # [win]\n  host:\n    - r-base\n  run:\n    - r-base\n\ntest:\n  commands:\n    - $R -e \"library('LearnBayes')\"           # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('LearnBayes')\\\"\"  # [win]\n\nabout:\n  home: https://CRAN.R-project.org/package=LearnBayes\n  license: GPL (>= 2)\n  summary: A collection of functions helpful in learning the basic tenets of Bayesian statistical\n    inference.  It contains functions for summarizing basic one and two parameter posterior\n    distributions and predictive distributions.  It contains MCMC algorithms for summarizing\n    posterior distributions defined by the user.  It also contains functions for regression\n    models, hierarchical models, Bayesian tests, and illustrations of Gibbs sampling.\n  license_family: GPL3\n  license_file: '{{ environ[\"PREFIX\"] }}/lib/R/share/licenses/GPL-3'\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n",
+ "raw_meta_yaml":"{% set version = '2.15.1' %}\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-learnbayes\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  fn: LearnBayes_{{ version }}.tar.gz\n  url:\n    - {{ cran_mirror }}/src/contrib/LearnBayes_{{ version }}.tar.gz\n    - {{ cran_mirror }}/src/contrib/Archive/LearnBayes/LearnBayes_{{ version }}.tar.gz\n  sha256: 9b110858456523ca0b2a63f22013c4e1fbda6674b9d84dc1f4de8bffc5260532\n\nbuild:\n  noarch: generic\n  merge_build_host: True  # [win]\n  number: 1002\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - {{ posix }}zip               # [win]\n  host:\n    - r-base\n  run:\n    - r-base\n\ntest:\n  commands:\n    - $R -e \"library('LearnBayes')\"           # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('LearnBayes')\\\"\"  # [win]\n\nabout:\n  home: https://CRAN.R-project.org/package=LearnBayes\n  license: GPL (>= 2)\n  summary: A collection of functions helpful in learning the basic tenets of Bayesian statistical\n    inference.  It contains functions for summarizing basic one and two parameter posterior\n    distributions and predictive distributions.  It contains MCMC algorithms for summarizing\n    posterior distributions defined by the user.  It also contains functions for regression\n    models, hierarchical models, Bayesian tests, and illustrations of Gibbs sampling.\n  license_family: GPL3\n  license_file: '{{ environ[\"PREFIX\"] }}/lib/R/share/licenses/GPL-3'\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n",
  "req":{
   "__set__":true,
   "elements":[

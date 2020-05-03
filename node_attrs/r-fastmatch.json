@@ -74,9 +74,6 @@
   "bot":{
    "automerge":true
   },
-  "compiler_stack":"comp7",
-  "max_py_ver":"37",
-  "max_r_ver":"35",
   "provider":{
    "win":"azure"
   }
@@ -93,7 +90,7 @@
   },
   "build":{
    "merge_build_host":true,
-   "number":"1004",
+   "number":"1005",
    "rpaths":[
     "lib/R/lib/",
     "lib/",
@@ -180,7 +177,7 @@
  "name":"r-fastmatch",
  "new_version":"1.1_0",
  "pinning_version":"2020.05.03.19.37.20",
- "raw_meta_yaml":"{% set version = '1.1-0' %}\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-fastmatch\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  fn: fastmatch_{{ version }}.tar.gz\n  url:\n    - {{ cran_mirror }}/src/contrib/fastmatch_{{ version }}.tar.gz\n    - {{ cran_mirror }}/src/contrib/Archive/fastmatch/fastmatch_{{ version }}.tar.gz\n  sha256: 20b51aa4838dbe829e11e951444a9c77257dcaf85130807508f6d7e76797007d\n\nbuild:\n  merge_build_host: True  # [win]\n  number: 1004\n  skip: true  # [win32]\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - {{ compiler('c') }}        # [not win]\n    - {{ compiler('m2w64_c') }}        # [win]\n    - {{posix}}filesystem        # [win]\n    - {{posix}}make\n    - {{posix}}sed               # [win]\n    - {{posix}}coreutils         # [win]\n    - {{posix}}zip               # [win]\n  host:\n    - r-base\n  run:\n    - r-base\n    - {{native}}gcc-libs         # [win]\n\ntest:\n  commands:\n    - $R -e \"library('fastmatch')\"           # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('fastmatch')\\\"\"  # [win]\n\nabout:\n  home: http://www.rforge.net/fastmatch\n  license: GPL-2\n  summary: Package providing a fast match() replacement for cases that require repeated look-ups.\n    It is slightly faster that R's built-in match() function on first match against\n    a table, but extremely fast on any subsequent lookup as it keeps the hash table\n    in memory.\n  license_family: GPL2\n  license_file: '{{ environ[\"PREFIX\"] }}/lib/R/share/licenses/GPL-2'\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n    - johanneskoester\n    - bgruening\n    - daler\n    - jdblischak\n    - cbrueffer\n    - dbast\n",
+ "raw_meta_yaml":"{% set version = '1.1-0' %}\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-fastmatch\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  fn: fastmatch_{{ version }}.tar.gz\n  url:\n    - {{ cran_mirror }}/src/contrib/fastmatch_{{ version }}.tar.gz\n    - {{ cran_mirror }}/src/contrib/Archive/fastmatch/fastmatch_{{ version }}.tar.gz\n  sha256: 20b51aa4838dbe829e11e951444a9c77257dcaf85130807508f6d7e76797007d\n\nbuild:\n  merge_build_host: True  # [win]\n  number: 1005\n  skip: true  # [win32]\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - {{ compiler('c') }}        # [not win]\n    - {{ compiler('m2w64_c') }}        # [win]\n    - {{ posix }}filesystem        # [win]\n    - {{ posix }}make\n    - {{ posix }}sed               # [win]\n    - {{ posix }}coreutils         # [win]\n    - {{ posix }}zip               # [win]\n  host:\n    - r-base\n  run:\n    - r-base\n    - {{ native }}gcc-libs         # [win]\n\ntest:\n  commands:\n    - $R -e \"library('fastmatch')\"           # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('fastmatch')\\\"\"  # [win]\n\nabout:\n  home: http://www.rforge.net/fastmatch\n  license: GPL-2\n  summary: Package providing a fast match() replacement for cases that require repeated look-ups.\n    It is slightly faster that R's built-in match() function on first match against\n    a table, but extremely fast on any subsequent lookup as it keeps the hash table\n    in memory.\n  license_family: GPL2\n  license_file: '{{ environ[\"PREFIX\"] }}/lib/R/share/licenses/GPL-2'\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n    - johanneskoester\n    - bgruening\n    - daler\n    - jdblischak\n    - cbrueffer\n    - dbast\n",
  "req":{
   "__set__":true,
   "elements":[

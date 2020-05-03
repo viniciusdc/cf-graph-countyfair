@@ -76,9 +76,6 @@
   "bot":{
    "automerge":true
   },
-  "compiler_stack":"comp7",
-  "max_py_ver":"37",
-  "max_r_ver":"35",
   "provider":{
    "win":"azure"
   }
@@ -96,7 +93,7 @@
   "build":{
    "merge_build_host":true,
    "noarch":"generic",
-   "number":"1002",
+   "number":"1003",
    "rpaths":[
     "lib/R/lib/",
     "lib/",
@@ -189,7 +186,7 @@
  "name":"r-pbkrtest",
  "new_version":"0.4_8.6",
  "pinning_version":"2020.05.03.19.37.20",
- "raw_meta_yaml":"{% set version = '0.4-7' %}\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-pbkrtest\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  fn: pbkrtest_{{ version }}.tar.gz\n  url:\n    - {{ cran_mirror }}/src/contrib/pbkrtest_{{ version }}.tar.gz\n    - {{ cran_mirror }}/src/contrib/Archive/pbkrtest/pbkrtest_{{ version }}.tar.gz\n  sha256: 5cbb03ad2b2468720a5a610a0ebda48ac08119a34fca77810a85f554225c23ea\n\nbuild:\n  noarch: generic\n  merge_build_host: True  # [win]\n  number: 1002\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - {{posix}}zip               # [win]\n  host:\n    - r-base\n    - r-mass\n    - r-matrix >=1.2.3\n    - r-lme4 >=1.1.10\n  run:\n    - r-base\n    - r-mass\n    - r-matrix >=1.2.3\n    - r-lme4 >=1.1.10\n\ntest:\n  commands:\n    - $R -e \"library('pbkrtest')\"           # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('pbkrtest')\\\"\"  # [win]\n\nabout:\n  home: http://people.math.aau.dk/~sorenh/software/pbkrtest/\n  license: GPL (>= 2)\n  summary: Test in mixed effects models. Attention is on mixed effects models as implemented\n    in the 'lme4' package. This package implements a parametric bootstrap test and a\n    Kenward Roger modification of F-tests for linear mixed effects models and a parametric\n    bootstrap test for generalized linear mixed models.\n  license_family: GPL3\n  license_file: '{{ environ[\"PREFIX\"] }}/lib/R/share/licenses/GPL-3'\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n    - johanneskoester\n    - bgruening\n    - daler\n    - jdblischak\n    - cbrueffer\n    - dbast\n",
+ "raw_meta_yaml":"{% set version = '0.4-7' %}\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-pbkrtest\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  fn: pbkrtest_{{ version }}.tar.gz\n  url:\n    - {{ cran_mirror }}/src/contrib/pbkrtest_{{ version }}.tar.gz\n    - {{ cran_mirror }}/src/contrib/Archive/pbkrtest/pbkrtest_{{ version }}.tar.gz\n  sha256: 5cbb03ad2b2468720a5a610a0ebda48ac08119a34fca77810a85f554225c23ea\n\nbuild:\n  noarch: generic\n  merge_build_host: True  # [win]\n  number: 1003\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - {{ posix }}zip               # [win]\n  host:\n    - r-base\n    - r-mass\n    - r-matrix >=1.2.3\n    - r-lme4 >=1.1.10\n  run:\n    - r-base\n    - r-mass\n    - r-matrix >=1.2.3\n    - r-lme4 >=1.1.10\n\ntest:\n  commands:\n    - $R -e \"library('pbkrtest')\"           # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('pbkrtest')\\\"\"  # [win]\n\nabout:\n  home: http://people.math.aau.dk/~sorenh/software/pbkrtest/\n  license: GPL (>= 2)\n  summary: Test in mixed effects models. Attention is on mixed effects models as implemented\n    in the 'lme4' package. This package implements a parametric bootstrap test and a\n    Kenward Roger modification of F-tests for linear mixed effects models and a parametric\n    bootstrap test for generalized linear mixed models.\n  license_family: GPL3\n  license_file: '{{ environ[\"PREFIX\"] }}/lib/R/share/licenses/GPL-3'\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n    - johanneskoester\n    - bgruening\n    - daler\n    - jdblischak\n    - cbrueffer\n    - dbast\n",
  "req":{
   "__set__":true,
   "elements":[

@@ -76,6 +76,25 @@
     "migrator_version",
     "name"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/412674593.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"MigrationYaml",
+    "migrator_object_version":2,
+    "migrator_version":0,
+    "name":"r400"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_object_version",
+    "migrator_version",
+    "name"
+   ]
   }
  ],
  "bad":false,
@@ -185,7 +204,7 @@
  },
  "name":"r-irlba",
  "new_version":"2.3.3",
- "pinning_version":"2019.07.15",
+ "pinning_version":"2020.05.03.19.37.20",
  "raw_meta_yaml":"{% set version = \"2.3.3\" %}\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-irlba\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  url:\n    - {{ cran_mirror }}/src/contrib/irlba_{{ version }}.tar.gz\n    - {{ cran_mirror }}/src/contrib/Archive/irlba/irlba_{{ version }}.tar.gz\n  sha256: 6ee233697bcd579813bd0af5e1f4e6dd1eea971e8919c748408130d970fef5c0\n\nbuild:\n  merge_build_host: True  # [win]\n  number: 2\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - {{ compiler('c') }}              # [not win]\n    - {{ compiler('m2w64_c') }}        # [win]\n    - {{posix}}filesystem        # [win]\n    - {{posix}}make\n    - {{posix}}sed               # [win]\n    - {{posix}}coreutils         # [win]\n    - {{posix}}zip               # [win]\n  host:\n    - r-base\n    - r-matrix\n    - libblas\n    - liblapack\n  run:\n    - r-base\n    - {{native}}gcc-libs         # [win]\n    - r-matrix\n\ntest:\n  commands:\n    - $R -e \"library('irlba')\"  # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('irlba')\\\"\"  # [win]\n\nabout:\n  home: https://CRAN.R-project.org/package=irlba\n  license: GPL-3\n  summary: Fast and memory efficient methods for truncated singular and eigenvalue decompositions\n    and principal component analysis of large sparse or dense matrices.\n  license_family: GPL3\n  license_file:\n    - '{{ environ[\"PREFIX\"] }}/lib/R/share/licenses/GPL-3'\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n",
  "req":{
   "__set__":true,
@@ -239,7 +258,7 @@
    "elements":[]
   }
  },
- "smithy_version":"3.4.1",
+ "smithy_version":"No azure token. Create a token and\nput it in ~/.conda-smithy/azure.token\n3.7.0\n",
  "strong_exports":false,
  "total_requirements":{
   "build":{

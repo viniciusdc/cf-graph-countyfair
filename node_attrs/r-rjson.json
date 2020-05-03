@@ -91,12 +91,9 @@
   "bot":{
    "automerge":true
   },
-  "compiler_stack":"comp7",
-  "max_py_ver":"37",
-  "max_r_ver":"35",
   "provider":{
    "linux_aarch64":"default",
-   "linux_ppc64le":"default",
+   "linux_ppc64le":"azure",
    "win":"azure"
   }
  },
@@ -112,7 +109,7 @@
   },
   "build":{
    "merge_build_host":true,
-   "number":"1001",
+   "number":"1002",
    "rpaths":[
     "lib/R/lib/",
     "lib/",
@@ -187,7 +184,7 @@
  "name":"r-rjson",
  "new_version":"0.2.20",
  "pinning_version":"2020.05.03.19.37.20",
- "raw_meta_yaml":"{% set version = '0.2.20' %}\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-rjson\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  fn: rjson_{{ version }}.tar.gz\n  url:\n    - {{ cran_mirror }}/src/contrib/rjson_{{ version }}.tar.gz\n    - {{ cran_mirror }}/src/contrib/Archive/rjson/rjson_{{ version }}.tar.gz\n  sha256: 3a287c1e5ee7c333ed8385913c0a307daf99335fbdf803e9dcca6e3d5adb3f6c\n\nbuild:\n  merge_build_host: True  # [win]\n  number: 1001\n  skip: true  # [win32]\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - {{ compiler('c') }}        # [not win]\n    - {{ compiler('cxx') }}      # [not win]\n    - {{ compiler('m2w64_c') }}        # [win]\n    - {{ compiler('m2w64_cxx') }}        # [win]\n    - {{posix}}filesystem        # [win]\n    - {{posix}}make\n    - {{posix}}sed               # [win]\n    - {{posix}}coreutils         # [win]\n    - {{posix}}zip               # [win]\n  host:\n    - r-base\n  run:\n    - r-base\n    - {{native}}gcc-libs         # [win]\n\ntest:\n  commands:\n    - $R -e \"library('rjson')\"           # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('rjson')\\\"\"  # [win]\n\nabout:\n  home: https://CRAN.R-project.org/package=rjson\n  license: GPL-2\n  summary: Converts R object into JSON objects and vice-versa.\n  license_family: GPL2\n  license_file: '{{ environ[\"PREFIX\"] }}/lib/R/share/licenses/GPL-2'\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n    - croth1\n",
+ "raw_meta_yaml":"{% set version = '0.2.20' %}\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-rjson\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  fn: rjson_{{ version }}.tar.gz\n  url:\n    - {{ cran_mirror }}/src/contrib/rjson_{{ version }}.tar.gz\n    - {{ cran_mirror }}/src/contrib/Archive/rjson/rjson_{{ version }}.tar.gz\n  sha256: 3a287c1e5ee7c333ed8385913c0a307daf99335fbdf803e9dcca6e3d5adb3f6c\n\nbuild:\n  merge_build_host: True  # [win]\n  number: 1002\n  skip: true  # [win32]\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - {{ compiler('c') }}        # [not win]\n    - {{ compiler('cxx') }}      # [not win]\n    - {{ compiler('m2w64_c') }}        # [win]\n    - {{ compiler('m2w64_cxx') }}        # [win]\n    - {{ posix }}filesystem        # [win]\n    - {{ posix }}make\n    - {{ posix }}sed               # [win]\n    - {{ posix }}coreutils         # [win]\n    - {{ posix }}zip               # [win]\n  host:\n    - r-base\n  run:\n    - r-base\n    - {{ native }}gcc-libs         # [win]\n\ntest:\n  commands:\n    - $R -e \"library('rjson')\"           # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('rjson')\\\"\"  # [win]\n\nabout:\n  home: https://CRAN.R-project.org/package=rjson\n  license: GPL-2\n  summary: Converts R object into JSON objects and vice-versa.\n  license_family: GPL2\n  license_file: '{{ environ[\"PREFIX\"] }}/lib/R/share/licenses/GPL-2'\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n    - croth1\n",
  "req":{
   "__set__":true,
   "elements":[
