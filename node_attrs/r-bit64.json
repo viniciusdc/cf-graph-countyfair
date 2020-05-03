@@ -88,9 +88,6 @@
   "bot":{
    "automerge":true
   },
-  "compiler_stack":"comp7",
-  "max_py_ver":"37",
-  "max_r_ver":"35",
   "provider":{
    "win":"azure"
   }
@@ -100,13 +97,18 @@
  "meta_yaml":{
   "about":{
    "home":"http://ff.r-forge.r-project.org/",
-   "license":"GPL-2",
+   "license":"GPL-2.0-only",
    "license_family":"GPL2",
+   "license_file":[
+    "/lib/R/share/licenses/GPL-2",
+    "/lib/R/share/licenses/GPL-2",
+    "/lib/R/share/licenses/GPL-2"
+   ],
    "summary":" Package 'bit64' provides serializable S3 atomic 64bit (signed) integers.  These are useful for handling database keys and exact counting in +-2^63. WARNING: do not use them as replacement for 32bit integers, integer64 are not supported for subscripting by R-core and they have different semantics when  combined with double, e.g. integer64 + double => integer64.  Class integer64 can be used in vectors, matrices, arrays and data.frames.  Methods are available for coercion from and to logicals, integers, doubles,  characters and factors as well as many elementwise and summary functions.  Many fast algorithmic operations such as 'match' and 'order' support inter- active data exploration and manipulation and optionally leverage caching."
   },
   "build":{
    "merge_build_host":true,
-   "number":"1001",
+   "number":"1002",
    "rpaths":[
     "lib/R/lib/",
     "lib/",
@@ -190,7 +192,7 @@
  "name":"r-bit64",
  "new_version":"0.9_7",
  "pinning_version":"2020.05.03.19.37.20",
- "raw_meta_yaml":"{% set version = '0.9-7' %}\n\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-bit64\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  fn: bit64_{{ version }}.tar.gz\n  url:\n    - {{ cran_mirror }}/src/contrib/bit64_{{ version }}.tar.gz\n    - {{ cran_mirror }}/src/contrib/Archive/bit64/bit64_{{ version }}.tar.gz\n  sha256: 7b9aaa7f971198728c3629f9ba1a1b24d53db5c7e459498b0fdf86bbd3dff61f\n\nbuild:\n  merge_build_host: True  # [win]\n  number: 1001\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - {{ compiler('c') }}        # [not win]\n    - {{ compiler('m2w64_c') }}        # [win]\n    - {{posix}}filesystem        # [win]\n    - {{posix}}make\n    - {{posix}}sed               # [win]\n    - {{posix}}coreutils         # [win]\n    - {{posix}}zip               # [win]\n\n  host:\n    - r-base\n    - r-bit >=1.1_12\n\n  run:\n    - r-base\n    - {{native}}gcc-libs         # [win]\n    - r-bit >=1.1_12\n\ntest:\n  commands:\n    - $R -e \"library('bit64')\"           # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('bit64')\\\"\"  # [win]\n\nabout:\n  home: http://ff.r-forge.r-project.org/\n  license: GPL-2\n  summary: ' Package ''bit64'' provides serializable S3 atomic 64bit (signed) integers.  These\n    are useful for handling database keys and exact counting in +-2^63. WARNING: do\n    not use them as replacement for 32bit integers, integer64 are not supported for\n    subscripting by R-core and they have different semantics when  combined with double,\n    e.g. integer64 + double => integer64.  Class integer64 can be used in vectors, matrices,\n    arrays and data.frames.  Methods are available for coercion from and to logicals,\n    integers, doubles,  characters and factors as well as many elementwise and summary\n    functions.  Many fast algorithmic operations such as ''match'' and ''order'' support\n    inter- active data exploration and manipulation and optionally leverage caching.'\n\n  license_family: GPL2\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n    - dpryan79\n    - johanneskoester\n    - bgruening\n",
+ "raw_meta_yaml":"{% set version = \"0.9-7\" %}\n\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-bit64\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  fn: bit64_{{ version }}.tar.gz\n  url:\n    - {{ cran_mirror }}/src/contrib/bit64_{{ version }}.tar.gz\n    - {{ cran_mirror }}/src/contrib/Archive/bit64/bit64_{{ version }}.tar.gz\n  sha256: 7b9aaa7f971198728c3629f9ba1a1b24d53db5c7e459498b0fdf86bbd3dff61f\n\nbuild:\n  merge_build_host: true  # [win]\n  number: 1002\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - {{ compiler('c') }}        # [not win]\n    - {{ compiler('m2w64_c') }}        # [win]\n    - {{ posix }}filesystem        # [win]\n    - {{ posix }}make\n    - {{ posix }}sed               # [win]\n    - {{ posix }}coreutils         # [win]\n    - {{ posix }}zip               # [win]\n\n  host:\n    - r-base\n    - r-bit >=1.1_12\n\n  run:\n    - r-base\n    - {{ native }}gcc-libs         # [win]\n    - r-bit >=1.1_12\n\ntest:\n  commands:\n    - $R -e \"library('bit64')\"           # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('bit64')\\\"\"  # [win]\n\nabout:\n  home: http://ff.r-forge.r-project.org/\n  license: GPL-2.0-only\n  summary: \" Package 'bit64' provides serializable S3 atomic 64bit (signed) integers.  These are useful for handling database keys and exact counting in +-2^63. WARNING: do not use them as replacement for 32bit integers, integer64 are not supported for subscripting by R-core and they have different semantics when  combined\\\n    \\ with double, e.g. integer64 + double => integer64.  Class integer64 can be used in vectors, matrices, arrays and data.frames.  Methods are available for coercion from and to logicals, integers, doubles,  characters and factors as well as many elementwise and summary functions.  Many fast algorithmic operations such\\\n    \\ as 'match' and 'order' support inter- active data exploration and manipulation and optionally leverage caching.\"\n\n  license_family: GPL2\n\n  license_file:\n    - {{ environ[\"PREFIX\"] }}/lib/R/share/licenses/GPL-2\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n    - dpryan79\n    - johanneskoester\n    - bgruening\n",
  "req":{
   "__set__":true,
   "elements":[

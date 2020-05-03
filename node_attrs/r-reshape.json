@@ -122,12 +122,9 @@
   "bot":{
    "automerge":true
   },
-  "compiler_stack":"comp7",
-  "max_py_ver":"37",
-  "max_r_ver":"35",
   "provider":{
    "linux_aarch64":"default",
-   "linux_ppc64le":"default",
+   "linux_ppc64le":"azure",
    "win":"azure"
   }
  },
@@ -138,11 +135,19 @@
    "home":"http://had.co.nz/reshape",
    "license":"MIT",
    "license_family":"MIT",
+   "license_file":[
+    "/lib/R/share/licenses/MIT",
+    "LICENSE",
+    "/lib/R/share/licenses/MIT",
+    "LICENSE",
+    "/lib/R/share/licenses/MIT",
+    "LICENSE"
+   ],
    "summary":"Flexibly restructure and aggregate data using  just two functions: melt and cast."
   },
   "build":{
    "merge_build_host":true,
-   "number":"1",
+   "number":"2",
    "rpaths":[
     "lib/R/lib/",
     "lib/",
@@ -227,7 +232,7 @@
  "name":"r-reshape",
  "new_version":"0.8.8",
  "pinning_version":"2020.05.03.19.37.20",
- "raw_meta_yaml":"{% set version = \"0.8.8\" %}\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-reshape\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  fn: reshape_{{ version }}.tar.gz\n  url:\n    - {{ cran_mirror }}/src/contrib/reshape_{{ version }}.tar.gz\n    - {{ cran_mirror }}/src/contrib/Archive/reshape/reshape_{{ version }}.tar.gz\n  sha256: 4d5597fde8511e8fe4e4d1fd7adfc7ab37ff41ac68c76a746f7487d7b106d168\n\nbuild:\n  merge_build_host: True  # [win]\n  number: 1\n  skip: true  # [win32]\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - {{ compiler('c') }}        # [not win]\n    - {{ compiler('m2w64_c') }}        # [win]\n  host:\n    - r-base\n    - r-plyr\n  run:\n    - r-base\n    - r-plyr\n\ntest:\n  commands:\n    - $R -e \"library('reshape')\"           # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('reshape')\\\"\"  # [win]\n\nabout:\n  home: http://had.co.nz/reshape\n  license: MIT\n  summary: 'Flexibly restructure and aggregate data using  just two functions: melt and cast.'\n  license_family: MIT\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n    - johanneskoester\n    - bgruening\n    - daler\n    - jdblischak\n    - cbrueffer\n    - dbast\n",
+ "raw_meta_yaml":"{% set version = \"0.8.8\" %}\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-reshape\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  fn: reshape_{{ version }}.tar.gz\n  url:\n    - {{ cran_mirror }}/src/contrib/reshape_{{ version }}.tar.gz\n    - {{ cran_mirror }}/src/contrib/Archive/reshape/reshape_{{ version }}.tar.gz\n  sha256: 4d5597fde8511e8fe4e4d1fd7adfc7ab37ff41ac68c76a746f7487d7b106d168\n\nbuild:\n  merge_build_host: true  # [win]\n  number: 2\n  skip: true  # [win32]\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - {{ compiler('c') }}        # [not win]\n    - {{ compiler('m2w64_c') }}        # [win]\n  host:\n    - r-base\n    - r-plyr\n  run:\n    - r-base\n    - r-plyr\n\ntest:\n  commands:\n    - $R -e \"library('reshape')\"           # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('reshape')\\\"\"  # [win]\n\nabout:\n  home: http://had.co.nz/reshape\n  license: MIT\n  summary: 'Flexibly restructure and aggregate data using  just two functions: melt and cast.'\n  license_family: MIT\n\n  license_file:\n    - {{ environ[\"PREFIX\"] }}/lib/R/share/licenses/MIT\n    - LICENSE\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n    - johanneskoester\n    - bgruening\n    - daler\n    - jdblischak\n    - cbrueffer\n    - dbast\n",
  "req":{
   "__set__":true,
   "elements":[
