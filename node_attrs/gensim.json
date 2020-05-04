@@ -358,11 +358,14 @@
   }
  },
  "name":"gensim",
- "new_version":"3.8.2",
+ "new_version":"3.8.3",
  "new_version_attempts":{
-  "3.8.2":1
+  "3.8.2":1,
+  "3.8.3":1
  },
- "new_version_errors":{},
+ "new_version_errors":{
+  "3.8.3":"The recipe did not change in the version migration, a URL did not hash, or there is jinja2 syntax the bot cannot handle!\n\nPlease check the URLs in your recipe with version '3.8.3' to make sure they exist!\n\nWe also found the following errors:\n\n - could not hash URL template 'https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz'\n"
+ },
  "pinning_version":"2020.04.10.23.07.47",
  "raw_meta_yaml":"{% set name = \"gensim\" %}\n{% set version = \"3.8.1\" %}\n{% set sha256 = \"33277fc0a8d7b0c7ce70fcc74bb82ad39f944c009b334856c6e86bf552b1dfdc\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz\n  sha256: {{ sha256 }}\n\nbuild:\n  number: 1\n  skip: true  # [py==27]\n  script: \"{{ PYTHON }} -m pip install . -vv\"\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n  host:\n    - python\n    - pip\n    - numpy >=1.11.3\n    - scipy >=0.18.1\n    - six >=1.5.0\n    - smart_open >=1.2.1\n  run:\n    - python\n    - {{ pin_compatible('numpy') }}\n    - scipy >=0.18.1\n    - six >=1.5.0\n    - smart_open >=1.2.1\n\ntest:\n  requires:\n    - nose\n    - testfixtures\n    - morfessor\n    - scikit-learn\n    - pyemd\n    - mock\n    - boto3\n    - python-Levenshtein\n  imports:\n    - gensim\n    - gensim.corpora\n    - gensim.models\n    - gensim.models.wrappers\n    - gensim.parsing\n    - gensim.scripts\n    - gensim.similarities\n    - gensim.sklearn_api\n    - gensim.summarization\n    - gensim.test\n    - gensim.topic_coherence\n  files:\n    - forge_test.sh\n  commands:\n    - time bash ./forge_test.sh  # [not win]\n    - nosetests --exe -v gensim  # [win]\n\nabout:\n  home: http://github.com/RaRe-Technologies/gensim\n  license: LGPL-2.1\n  license_file: COPYING\n  license_family: LGPL\n  summary: 'Topic Modelling for Humans'\n  description: |\n    Gensim is a Python library for topic modelling, document indexing\n    and similarity retrieval with large corpora.\n    Target audience is the natural language processing (NLP)\n    and information retrieval (IR) community.\n  doc_url: http://radimrehurek.com/gensim/\n  dev_url: https://github.com/RaRe-Technologies/gensim\n\nextra:\n  recipe-maintainers:\n    - souravsingh\n    - mpenkov\n",
  "req":{

@@ -81,6 +81,25 @@
     "migrator_version",
     "version"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/412737593.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"MigrationYaml",
+    "migrator_object_version":2,
+    "migrator_version":0,
+    "name":"r400"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_object_version",
+    "migrator_version",
+    "name"
+   ]
   }
  ],
  "bad":false,
@@ -216,7 +235,7 @@
  },
  "name":"r-magick",
  "new_version":"2.3",
- "pinning_version":"2020.01.16",
+ "pinning_version":"2020.05.04.00.11.09",
  "raw_meta_yaml":"{% set version = \"2.3\" %}\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-magick\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  url:\n    - {{ cran_mirror }}/src/contrib/magick_{{ version }}.tar.gz\n    - {{ cran_mirror }}/src/contrib/Archive/magick/magick_{{ version }}.tar.gz\n  sha256: a8412512a132a74ed88fbe64a0a415e9ba5437a1b8a664990638e10915274ba0\n\nbuild:\n  merge_build_host: True  # [win]\n  # imagemagick package not available on win\n  skip: true  # [win]\n  number: 0\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - {{ compiler('c') }}              # [not win]\n    - {{ compiler('m2w64_c') }}        # [win]\n    - {{ compiler('cxx') }}            # [not win]\n    - {{ compiler('m2w64_cxx') }}      # [win]\n    - {{posix}}filesystem        # [win]\n    - {{posix}}sed               # [win]\n    - {{posix}}grep              # [win]\n    - {{posix}}autoconf\n    - {{posix}}automake          # [not win]\n    - {{posix}}automake-wrapper  # [win]\n    - {{posix}}pkg-config\n    - {{posix}}make\n    - {{posix}}coreutils         # [win]\n    - {{posix}}zip               # [win]\n  host:\n    - r-base\n    - r-rcpp >=0.12.12\n    - r-curl\n    - r-magrittr\n    - imagemagick\n  run:\n    - r-base\n    - {{native}}gcc-libs         # [win]\n    - r-rcpp >=0.12.12\n    - r-curl\n    - r-magrittr\n    - imagemagick\n\ntest:\n  commands:\n    - $R -e \"library('magick')\"           # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('magick')\\\"\"  # [win]\n\nabout:\n  home: https://docs.ropensci.org/magick (website) https://github.com/ropensci/magick (devel)\n  license: MIT\n  summary: 'Bindings to ''ImageMagick'': the most comprehensive open-source image processing\n    library available. Supports many common formats (png, jpeg, tiff, pdf, etc) and\n    manipulations (rotate, scale, crop, trim, flip, blur, etc). All operations are vectorized\n    via the Magick++ STL meaning they operate either on a single frame or a series of\n    frames for working with layers, collages, or animation. In RStudio images are automatically\n    previewed when printed to the console, resulting in an interactive editing environment.\n    The latest  version of the package includes a native graphics device for creating  in-memory\n    graphics or drawing onto images using pixel coordinates.'\n  license_family: MIT\n  license_file:\n    - '{{ environ[\"PREFIX\"] }}/lib/R/share/licenses/MIT'\n    - LICENSE\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n\n# Package: magick\n# Type: Package\n# Title: Advanced Graphics and Image-Processing in R\n# Version: 2.2\n# Authors@R: person(\"Jeroen\", \"Ooms\", role = c(\"aut\", \"cre\"), email = \"jeroen@berkeley.edu\", comment = c(ORCID = \"0000-0002-4035-0289\"))\n# Description: Bindings to 'ImageMagick': the most comprehensive open-source image processing library available. Supports many common formats (png, jpeg, tiff, pdf, etc) and manipulations (rotate, scale, crop, trim, flip, blur, etc). All operations are vectorized via the Magick++ STL meaning they operate either on a single frame or a series of frames for working with layers, collages, or animation. In RStudio images are automatically previewed when printed to the console, resulting in an interactive editing environment. The latest  version of the package includes a native graphics device for creating  in-memory graphics or drawing onto images using pixel coordinates.\n# License: MIT + file LICENSE\n# URL: https://docs.ropensci.org/magick (website) https://github.com/ropensci/magick (devel)\n# BugReports: https://github.com/ropensci/magick/issues\n# SystemRequirements: ImageMagick++: ImageMagick-c++-devel (rpm) or libmagick++-dev (deb)\n# VignetteBuilder: knitr\n# Imports: Rcpp (>= 0.12.12), magrittr, curl\n# LinkingTo: Rcpp\n# Suggests: av (>= 0.3), spelling, jsonlite, methods, knitr, rmarkdown, rsvg, webp, pdftools, ggplot2, raster, rgdal, gapminder, IRdisplay, tesseract (>= 2.0), gifski\n# Encoding: UTF-8\n# RoxygenNote: 6.1.1\n# Language: en-US\n# NeedsCompilation: yes\n# Packaged: 2019-08-25 20:53:45 UTC; jeroen\n# Author: Jeroen Ooms [aut, cre] (<https://orcid.org/0000-0002-4035-0289>)\n# Maintainer: Jeroen Ooms <jeroen@berkeley.edu>\n# Repository: CRAN\n# Date/Publication: 2019-08-26 07:10:03 UTC\n",
  "req":{
   "__set__":true,
@@ -289,7 +308,7 @@
    "elements":[]
   }
  },
- "smithy_version":"3.6.5",
+ "smithy_version":"No azure token. Create a token and\nput it in ~/.conda-smithy/azure.token\n3.7.0\n",
  "strong_exports":false,
  "total_requirements":{
   "build":{
