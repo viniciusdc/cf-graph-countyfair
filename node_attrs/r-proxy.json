@@ -98,6 +98,23 @@
     "migrator_version",
     "name"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/412756536.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"ArchRebuild",
+    "migrator_version":1,
+    "name":"aarch64 and ppc64le addition"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "name"
+   ]
   }
  ],
  "bad":false,
@@ -192,7 +209,7 @@
   "0.4_24":1
  },
  "new_version_errors":{},
- "pinning_version":"2020.05.03.19.37.20",
+ "pinning_version":"2020.05.04.00.11.09",
  "raw_meta_yaml":"{% set version = \"0.4-24\" %}\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-proxy\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  url:\n    - {{ cran_mirror }}/src/contrib/proxy_{{ version }}.tar.gz\n    - {{ cran_mirror }}/src/contrib/Archive/proxy/proxy_{{ version }}.tar.gz\n  sha256: 8cff9bf036475941a7c44ba9bb5e2f6d4777d49ab3daaeb52d23f4b2af6d9c7c\n\nbuild:\n  merge_build_host: true  # [win]\n  number: 1\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - {{ compiler('c') }}              # [not win]\n    - {{ compiler('m2w64_c') }}        # [win]\n    - {{ posix }}filesystem        # [win]\n    - {{ posix }}make\n    - {{ posix }}sed               # [win]\n    - {{ posix }}coreutils         # [win]\n    - {{ posix }}zip               # [win]\n  host:\n    - r-base\n  run:\n    - r-base\n    - {{ native }}gcc-libs         # [win]\n\ntest:\n  commands:\n    - $R -e \"library('proxy')\"           # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('proxy')\\\"\"  # [win]\n\nabout:\n  home: https://CRAN.R-project.org/package=proxy\n  license: GPL-2\n  summary: 'Provides an extensible framework for the efficient calculation of auto- and cross-proximities, along with implementations of the most popular ones. '\n  license_family: GPL2\n  license_file: {{ environ[\"PREFIX\"] }}/lib/R/share/licenses/GPL-2\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n\n# Package: proxy\n# Type: Package\n# Title: Distance and Similarity Measures\n# Version: 0.4-23\n# Authors@R: c(person(given = \"David\", family = \"Meyer\", role = c(\"aut\", \"cre\"), email = \"David.Meyer@R-project.org\"), person(given = \"Christian\", family = \"Buchta\", role = \"aut\"))\n# Description: Provides an extensible framework for the efficient calculation of auto- and cross-proximities, along with implementations of the most popular ones.\n# Depends: R (>= 3.4.0)\n# Imports: stats, utils\n# Suggests: cba\n# Collate: registry.R database.R dist.R similarities.R dissimilarities.R util.R seal.R\n# License: GPL-2\n# NeedsCompilation: yes\n# Packaged: 2019-03-05 12:32:19 UTC; meyer\n# Author: David Meyer [aut, cre], Christian Buchta [aut]\n# Maintainer: David Meyer <David.Meyer@R-project.org>\n# Repository: CRAN\n# Date/Publication: 2019-03-05 14:15:31 UTC\n",
  "req":{
   "__set__":true,

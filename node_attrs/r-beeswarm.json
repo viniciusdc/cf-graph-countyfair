@@ -59,9 +59,6 @@
   "bot":{
    "automerge":true
   },
-  "compiler_stack":"comp7",
-  "max_py_ver":"37",
-  "max_r_ver":"35",
   "provider":{
    "win":"azure"
   }
@@ -73,12 +70,17 @@
    "home":"http://www.cbs.dtu.dk/~eklund/beeswarm/",
    "license":"Artistic-2.0",
    "license_family":"OTHER",
+   "license_file":[
+    "/lib/R/share/licenses/Artistic-2.0",
+    "/lib/R/share/licenses/Artistic-2.0",
+    "/lib/R/share/licenses/Artistic-2.0"
+   ],
    "summary":"The bee swarm plot is a one-dimensional scatter plot like \"stripchart\", but with closely-packed, non-overlapping points. "
   },
   "build":{
    "merge_build_host":true,
    "noarch":"generic",
-   "number":"1002",
+   "number":"1003",
    "rpaths":[
     "lib/R/lib/",
     "lib/",
@@ -146,7 +148,7 @@
  "name":"r-beeswarm",
  "new_version":"0.2.3",
  "pinning_version":"2020.05.04.00.11.09",
- "raw_meta_yaml":"{% set version = '0.2.3' %}\n\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-beeswarm\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  fn: beeswarm_{{ version }}.tar.gz\n  url:\n    - {{ cran_mirror }}/src/contrib/beeswarm_{{ version }}.tar.gz\n    - {{ cran_mirror }}/src/contrib/Archive/beeswarm/beeswarm_{{ version }}.tar.gz\n  sha256: 0115425e210dced05da8e162c8455526a47314f72e441ad2a33dcab3f94ac843\n\nbuild:\n  noarch: generic\n  merge_build_host: True  # [win]\n  number: 1002\n\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  host:\n    - r-base\n\n  run:\n    - r-base\n\ntest:\n  commands:\n    - $R -e \"library('beeswarm')\"           # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('beeswarm')\\\"\"  # [win]\n\nabout:\n  home: http://www.cbs.dtu.dk/~eklund/beeswarm/\n  license: Artistic-2.0\n  summary: 'The bee swarm plot is a one-dimensional scatter plot like \"stripchart\", but with\n    closely-packed, non-overlapping points. '\n\n  license_family: OTHER\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n    - jdblischak\n    - johanneskoester\n    - bgruening\n    - nsoranzo\n",
+ "raw_meta_yaml":"{% set version = \"0.2.3\" %}\n\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-beeswarm\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  fn: beeswarm_{{ version }}.tar.gz\n  url:\n    - {{ cran_mirror }}/src/contrib/beeswarm_{{ version }}.tar.gz\n    - {{ cran_mirror }}/src/contrib/Archive/beeswarm/beeswarm_{{ version }}.tar.gz\n  sha256: 0115425e210dced05da8e162c8455526a47314f72e441ad2a33dcab3f94ac843\n\nbuild:\n  noarch: generic\n  merge_build_host: true  # [win]\n  number: 1003\n\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  host:\n    - r-base\n\n  run:\n    - r-base\n\ntest:\n  commands:\n    - $R -e \"library('beeswarm')\"           # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('beeswarm')\\\"\"  # [win]\n\nabout:\n  home: http://www.cbs.dtu.dk/~eklund/beeswarm/\n  license: Artistic-2.0\n  summary: 'The bee swarm plot is a one-dimensional scatter plot like \"stripchart\", but with closely-packed, non-overlapping points. '\n\n  license_family: OTHER\n\n  license_file:\n    - {{ environ[\"PREFIX\"] }}/lib/R/share/licenses/Artistic-2.0\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n    - jdblischak\n    - johanneskoester\n    - bgruening\n    - nsoranzo\n",
  "req":{
   "__set__":true,
   "elements":[
