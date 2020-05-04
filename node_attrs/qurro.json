@@ -120,7 +120,7 @@
   }
  },
  "name":"qurro",
- "new_version":"0.6.0",
+ "new_version":"0.7.0",
  "pinning_version":"2020.04.03",
  "raw_meta_yaml":"{% set name = \"qurro\" %}\n{% set version = \"0.6.0\" %}\n\npackage:\n  name: '{{ name|lower }}'\n  version: '{{ version }}'\n\nsource:\n  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz\n  sha256: 9c911927525ed823d65cc017beb1ba8ab9dc7226986141bcb998233915c1620d\n\nbuild:\n  number: 1\n  entry_points:\n    - qurro=qurro.scripts._plot:plot\n    - q2-qurro=qurro.q2.plugin_setup:plugin\n  skip: True  # [py<35 or py>37 or win]\n  script: \"{{ PYTHON }} -m pip install . --no-deps -vv\"\n\nrequirements:\n  host:\n    - python\n    - pip\n    - setuptools\n    - cython\n    - numpy >=1.12.0\n  run:\n    - python\n    - altair =3.1.0\n    - biom-format\n    - h5py\n    - click\n    - {{ pin_compatible('numpy') }}\n    - pandas >=0.20.1,<1\n    - scikit-bio >0.5.3\n\ntest:\n  imports:\n    - qurro\n  commands:\n    - qurro --help\n\nabout:\n  home: https://github.com/biocore/qurro\n  license: BSD-3-Clause\n  license_family: BSD\n  license_file: LICENSE.txt\n  summary: \"Visualizes 'omic feature rankings and log ratios\"\n  description: |\n    Qurro generates interactive visualizations of feature rankings (defined\n    as some sortable measure of feature-wise variation, for example estimated\n    log-fold changes or the feature loadings in a biplot) alongside a plot of\n    selected features' log-ratios across samples in a dataset. The\n    visualization contains various controls to support exploration of\n    log-ratios of features using the feature rankings as a starting point.\n\nextra:\n  recipe-maintainers:\n      - fedarko\n",
  "req":{
