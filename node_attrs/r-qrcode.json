@@ -59,9 +59,6 @@
   "bot":{
    "automerge":true
   },
-  "compiler_stack":"comp7",
-  "max_py_ver":"37",
-  "max_r_ver":"35",
   "provider":{
    "win":"azure"
   }
@@ -79,7 +76,7 @@
   "build":{
    "merge_build_host":true,
    "noarch":"generic",
-   "number":"1001",
+   "number":"1002",
    "rpaths":[
     "lib/R/lib/",
     "lib/",
@@ -166,7 +163,7 @@
  "name":"r-qrcode",
  "new_version":"0.1.1",
  "pinning_version":"2020.05.04.05.46.47",
- "raw_meta_yaml":"{% set version = '0.1.1' %}\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-qrcode\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  fn: qrcode_{{ version }}.tar.gz\n  url:\n    - {{ cran_mirror }}/src/contrib/qrcode_{{ version }}.tar.gz\n    - {{ cran_mirror }}/src/contrib/Archive/qrcode/qrcode_{{ version }}.tar.gz\n  sha256: f8455273f816832a9ce6c9de77f6a15f6d086be1d94bd6c09d8fb6b8d16a408a\n\nbuild:\n  noarch: generic\n  merge_build_host: True  # [win]\n  number: 1001\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - {{posix}}zip               # [win]\n  host:\n    - r-base\n    - r-r.utils\n    - r-stringr\n  run:\n    - r-base\n    - r-r.utils\n    - r-stringr\n\ntest:\n  commands:\n    - $R -e \"library('qrcode')\"           # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('qrcode')\\\"\"  # [win]\n\nabout:\n  home: https://CRAN.R-project.org/package=qrcode\n  license: GPL-3\n  summary: Create QRcode in R.\n  license_family: GPL3\n  license_file: '{{ environ[\"PREFIX\"] }}/lib/R/share/licenses/GPL-3'\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n    - johanneskoester\n    - bgruening\n    - daler\n    - jdblischak\n    - cbrueffer\n    - dbast\n",
+ "raw_meta_yaml":"{% set version = '0.1.1' %}\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-qrcode\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  fn: qrcode_{{ version }}.tar.gz\n  url:\n    - {{ cran_mirror }}/src/contrib/qrcode_{{ version }}.tar.gz\n    - {{ cran_mirror }}/src/contrib/Archive/qrcode/qrcode_{{ version }}.tar.gz\n  sha256: f8455273f816832a9ce6c9de77f6a15f6d086be1d94bd6c09d8fb6b8d16a408a\n\nbuild:\n  noarch: generic\n  merge_build_host: True  # [win]\n  number: 1002\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - {{ posix }}zip               # [win]\n  host:\n    - r-base\n    - r-r.utils\n    - r-stringr\n  run:\n    - r-base\n    - r-r.utils\n    - r-stringr\n\ntest:\n  commands:\n    - $R -e \"library('qrcode')\"           # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('qrcode')\\\"\"  # [win]\n\nabout:\n  home: https://CRAN.R-project.org/package=qrcode\n  license: GPL-3\n  summary: Create QRcode in R.\n  license_family: GPL3\n  license_file: '{{ environ[\"PREFIX\"] }}/lib/R/share/licenses/GPL-3'\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n    - johanneskoester\n    - bgruening\n    - daler\n    - jdblischak\n    - cbrueffer\n    - dbast\n",
  "req":{
   "__set__":true,
   "elements":[
