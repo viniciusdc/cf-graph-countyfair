@@ -93,9 +93,6 @@
   "bot":{
    "automerge":true
   },
-  "compiler_stack":"comp7",
-  "max_py_ver":"37",
-  "max_r_ver":"35",
   "provider":{
    "win":"azure"
   }
@@ -107,11 +104,19 @@
    "home":"https://github.com/docopt/docopt.R",
    "license":"MIT",
    "license_family":"MIT",
+   "license_file":[
+    "/lib/R/share/licenses/MIT",
+    "LICENSE",
+    "/lib/R/share/licenses/MIT",
+    "LICENSE",
+    "/lib/R/share/licenses/MIT",
+    "LICENSE"
+   ],
    "summary":"Define a command-line interface by just giving it a description in the specific format."
   },
   "build":{
    "noarch":"generic",
-   "number":"1",
+   "number":"2",
    "rpaths":[
     "lib/R/lib/",
     "lib/",
@@ -182,7 +187,7 @@
  "name":"r-docopt",
  "new_version":"0.6.1",
  "pinning_version":"2020.05.04.05.46.47",
- "raw_meta_yaml":"{% set version = \"0.6.1\" %}\n\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-docopt\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  fn: docopt_{{ version }}.tar.gz\n  url:\n    - {{ cran_mirror }}/src/contrib/docopt_{{ version }}.tar.gz\n    - {{ cran_mirror }}/src/contrib/Archive/docopt/docopt_{{ version }}.tar.gz\n  sha256: c88076cb524beaf3df3593dd1f073a2b0e5347a6edb7b620f04217069ab5f31b\n\nbuild:\n  noarch: generic\n  number: 1\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\n# Suggests: testthat\nrequirements:\n  host:\n    - r-base\n\n  run:\n    - r-base\n\ntest:\n  commands:\n    - $R -e \"library('docopt')\"           # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('docopt')\\\"\"  # [win]\n\nabout:\n  home: https://github.com/docopt/docopt.R\n  license: MIT\n  summary: Define a command-line interface by just giving it a description in the specific format.\n  license_family: MIT\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n    - dpryan79\n    - jdblischak\n    - johanneskoester\n    - bgruening\n    - daler\n",
+ "raw_meta_yaml":"{% set version = \"0.6.1\" %}\n\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-docopt\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  fn: docopt_{{ version }}.tar.gz\n  url:\n    - {{ cran_mirror }}/src/contrib/docopt_{{ version }}.tar.gz\n    - {{ cran_mirror }}/src/contrib/Archive/docopt/docopt_{{ version }}.tar.gz\n  sha256: c88076cb524beaf3df3593dd1f073a2b0e5347a6edb7b620f04217069ab5f31b\n\nbuild:\n  noarch: generic\n  number: 2\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\n# Suggests: testthat\nrequirements:\n  host:\n    - r-base\n\n  run:\n    - r-base\n\ntest:\n  commands:\n    - $R -e \"library('docopt')\"           # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('docopt')\\\"\"  # [win]\n\nabout:\n  home: https://github.com/docopt/docopt.R\n  license: MIT\n  summary: Define a command-line interface by just giving it a description in the specific format.\n  license_family: MIT\n\n  license_file:\n    - {{ environ[\"PREFIX\"] }}/lib/R/share/licenses/MIT\n    - LICENSE\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n    - dpryan79\n    - jdblischak\n    - johanneskoester\n    - bgruening\n    - daler\n",
  "req":{
   "__set__":true,
   "elements":[

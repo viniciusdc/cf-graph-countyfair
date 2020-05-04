@@ -76,9 +76,6 @@
   "bot":{
    "automerge":true
   },
-  "compiler_stack":"comp7",
-  "max_py_ver":"37",
-  "max_r_ver":"35",
   "provider":{
    "win":"azure"
   }
@@ -96,7 +93,7 @@
   "build":{
    "merge_build_host":true,
    "noarch":"generic",
-   "number":"1",
+   "number":"2",
    "rpaths":[
     "lib/R/lib/",
     "lib/",
@@ -213,7 +210,7 @@
  "name":"r-questionr",
  "new_version":"0.7.0",
  "pinning_version":"2020.05.04.05.46.47",
- "raw_meta_yaml":"{% set version = \"0.7.0\" %}\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-questionr\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  fn: questionr_{{ version }}.tar.gz\n  url:\n    - {{ cran_mirror }}/src/contrib/questionr_{{ version }}.tar.gz\n    - {{ cran_mirror }}/src/contrib/Archive/questionr/questionr_{{ version }}.tar.gz\n  sha256: c4566880a1ca8f01faad396e20d907d913f4a252acaf83a0cb508a3738874cb3\n\nbuild:\n  noarch: generic\n  merge_build_host: True  # [win]\n  number: 1\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - {{posix}}zip               # [win]\n  host:\n    - r-base\n    - r-classint\n    - r-highr\n    - r-htmltools\n    - r-labelled >=1.0.0\n    - r-miniui\n    - r-rstudioapi\n    - r-shiny >=1.0.5\n  run:\n    - r-base\n    - r-classint\n    - r-highr\n    - r-htmltools\n    - r-labelled >=1.0.0\n    - r-miniui\n    - r-rstudioapi\n    - r-shiny >=1.0.5\n\ntest:\n  commands:\n    - $R -e \"library('questionr')\"           # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('questionr')\\\"\"  # [win]\n\nabout:\n  home: https://juba.github.io/questionr/\n  license: GPL (>= 2)\n  summary: 'Set of functions to make the processing and analysis of surveys easier : interactive\n    shiny apps and addins for data recoding, contingency tables, dataset metadata handling,\n    and several convenience functions.'\n  license_family: GPL3\n  license_file: '{{ environ[\"PREFIX\"] }}/lib/R/share/licenses/GPL-3'\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n    - johanneskoester\n    - bgruening\n    - daler\n    - jdblischak\n    - cbrueffer\n    - dbast\n",
+ "raw_meta_yaml":"{% set version = \"0.7.0\" %}\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-questionr\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  fn: questionr_{{ version }}.tar.gz\n  url:\n    - {{ cran_mirror }}/src/contrib/questionr_{{ version }}.tar.gz\n    - {{ cran_mirror }}/src/contrib/Archive/questionr/questionr_{{ version }}.tar.gz\n  sha256: c4566880a1ca8f01faad396e20d907d913f4a252acaf83a0cb508a3738874cb3\n\nbuild:\n  noarch: generic\n  merge_build_host: True  # [win]\n  number: 2\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - {{ posix }}zip               # [win]\n  host:\n    - r-base\n    - r-classint\n    - r-highr\n    - r-htmltools\n    - r-labelled >=1.0.0\n    - r-miniui\n    - r-rstudioapi\n    - r-shiny >=1.0.5\n  run:\n    - r-base\n    - r-classint\n    - r-highr\n    - r-htmltools\n    - r-labelled >=1.0.0\n    - r-miniui\n    - r-rstudioapi\n    - r-shiny >=1.0.5\n\ntest:\n  commands:\n    - $R -e \"library('questionr')\"           # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('questionr')\\\"\"  # [win]\n\nabout:\n  home: https://juba.github.io/questionr/\n  license: GPL (>= 2)\n  summary: 'Set of functions to make the processing and analysis of surveys easier : interactive\n    shiny apps and addins for data recoding, contingency tables, dataset metadata handling,\n    and several convenience functions.'\n  license_family: GPL3\n  license_file: '{{ environ[\"PREFIX\"] }}/lib/R/share/licenses/GPL-3'\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n    - johanneskoester\n    - bgruening\n    - daler\n    - jdblischak\n    - cbrueffer\n    - dbast\n",
  "req":{
   "__set__":true,
   "elements":[
