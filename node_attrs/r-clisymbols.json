@@ -59,9 +59,6 @@
   "bot":{
    "automerge":true
   },
-  "compiler_stack":"comp7",
-  "max_py_ver":"37",
-  "max_r_ver":"35",
   "provider":{
    "win":"azure"
   }
@@ -73,12 +70,20 @@
    "home":"https://github.com/gaborcsardi/clisymbols",
    "license":"MIT",
    "license_family":"MIT",
+   "license_file":[
+    "/lib/R/share/licenses/MIT",
+    "LICENSE",
+    "/lib/R/share/licenses/MIT",
+    "LICENSE",
+    "/lib/R/share/licenses/MIT",
+    "LICENSE"
+   ],
    "summary":"A small subset of Unicode symbols, that are useful when building command line applications. They fall back to alternatives on terminals that do not support Unicode. Many symbols were taken from the 'figures' 'npm' package (see <https://github.com/sindresorhus/figures>)."
   },
   "build":{
    "merge_build_host":true,
    "noarch":"generic",
-   "number":"1002",
+   "number":"1003",
    "rpaths":[
     "lib/R/lib/",
     "lib/",
@@ -153,7 +158,7 @@
  "name":"r-clisymbols",
  "new_version":"1.2.0",
  "pinning_version":"2020.05.04.05.46.47",
- "raw_meta_yaml":"{% set version = '1.2.0' %}\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-clisymbols\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  fn: clisymbols_{{ version }}.tar.gz\n  url:\n    - {{ cran_mirror }}/src/contrib/clisymbols_{{ version }}.tar.gz\n    - {{ cran_mirror }}/src/contrib/Archive/clisymbols/clisymbols_{{ version }}.tar.gz\n  sha256: 0649f2ce39541820daee3ed408d765eddf83db5db639b493561f4e5fbf88efe0\n\nbuild:\n  noarch: generic\n  merge_build_host: True  # [win]\n  number: 1002\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - {{posix}}zip               # [win]\n  host:\n    - r-base\n  run:\n    - r-base\n\ntest:\n  commands:\n    - $R -e \"library('clisymbols')\"           # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('clisymbols')\\\"\"  # [win]\n\nabout:\n  home: https://github.com/gaborcsardi/clisymbols\n  license: MIT\n  summary: A small subset of Unicode symbols, that are useful when building command line applications.\n    They fall back to alternatives on terminals that do not support Unicode. Many symbols\n    were taken from the 'figures' 'npm' package (see <https://github.com/sindresorhus/figures>).\n  license_family: MIT\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n    - johanneskoester\n    - bgruening\n    - daler\n    - jdblischak\n    - cbrueffer\n    - roryk\n",
+ "raw_meta_yaml":"{% set version = \"1.2.0\" %}\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-clisymbols\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  fn: clisymbols_{{ version }}.tar.gz\n  url:\n    - {{ cran_mirror }}/src/contrib/clisymbols_{{ version }}.tar.gz\n    - {{ cran_mirror }}/src/contrib/Archive/clisymbols/clisymbols_{{ version }}.tar.gz\n  sha256: 0649f2ce39541820daee3ed408d765eddf83db5db639b493561f4e5fbf88efe0\n\nbuild:\n  noarch: generic\n  merge_build_host: true  # [win]\n  number: 1003\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - {{ posix }}zip               # [win]\n  host:\n    - r-base\n  run:\n    - r-base\n\ntest:\n  commands:\n    - $R -e \"library('clisymbols')\"           # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('clisymbols')\\\"\"  # [win]\n\nabout:\n  home: https://github.com/gaborcsardi/clisymbols\n  license: MIT\n  summary: A small subset of Unicode symbols, that are useful when building command line applications. They fall back to alternatives on terminals that do not support Unicode. Many symbols were taken from the 'figures' 'npm' package (see <https://github.com/sindresorhus/figures>).\n  license_family: MIT\n\n  license_file:\n    - {{ environ[\"PREFIX\"] }}/lib/R/share/licenses/MIT\n    - LICENSE\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n    - johanneskoester\n    - bgruening\n    - daler\n    - jdblischak\n    - cbrueffer\n    - roryk\n",
  "req":{
   "__set__":true,
   "elements":[
