@@ -147,6 +147,25 @@
     "migrator_version",
     "version"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/412838529.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"MigrationYaml",
+    "migrator_object_version":2,
+    "migrator_version":0,
+    "name":"r400"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_object_version",
+    "migrator_version",
+    "name"
+   ]
   }
  ],
  "bad":false,
@@ -238,7 +257,7 @@
   "2.2_0":1
  },
  "new_version_errors":{},
- "pinning_version":"2020.05.04.00.11.09",
+ "pinning_version":"2020.05.04.05.46.47",
  "raw_meta_yaml":"{% set version = \"2.2-0\" %}\n\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-gss\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  fn: gss_{{ version }}.tar.gz\n  url:\n    - https://cran.r-project.org/src/contrib/gss_{{ version }}.tar.gz\n    - https://cran.r-project.org/src/contrib/Archive/gss/gss_{{ version }}.tar.gz\n  sha256: 3436f3cedd877e232a5dda99fe7f22ea217a0553d6da5c06c002be57f0790e36\n\nbuild:\n  merge_build_host: true  # [win]\n  number: 0\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - posix                # [win]\n    - {{ compiler('fortran') }}        # [unix]\n    - {{ compiler('m2w64_fortran') }}  # [win]\n    - {{ compiler('c') }}        # [unix]\n    - {{ compiler('m2w64_c') }}  # [win]\n  host:\n    - r-base\n\n  run:\n    - r-base\n\ntest:\n  commands:\n    - $R -e \"library('gss')\"  # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('gss')\\\"\"  # [win]\n\nabout:\n  home: https://CRAN.R-project.org/package=gss\n  license: GPL (>= 2)\n  summary: A comprehensive package for structural multivariate function estimation using smoothing splines.\n  license_family: GPL3\n  license_file: {{ environ[\"PREFIX\"] }}/lib/R/share/licenses/GPL-3\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n",
  "req":{
   "__set__":true,

@@ -59,9 +59,6 @@
   "bot":{
    "automerge":true
   },
-  "compiler_stack":"comp7",
-  "max_py_ver":"37",
-  "max_r_ver":"35",
   "provider":{
    "win":"azure"
   }
@@ -79,7 +76,7 @@
   "build":{
    "merge_build_host":true,
    "noarch":"generic",
-   "number":"1001",
+   "number":"1002",
    "rpaths":[
     "lib/R/lib/",
     "lib/",
@@ -145,7 +142,7 @@
  "name":"r-ncbit",
  "new_version":"2013.03.29",
  "pinning_version":"2020.05.04.05.46.47",
- "raw_meta_yaml":"{% set version = '2013.03.29' %}\n\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-ncbit\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  fn: ncbit_{{ version }}.tar.gz\n  url:\n    - {{ cran_mirror }}/src/contrib/ncbit_{{ version }}.tar.gz\n    - {{ cran_mirror }}/src/contrib/Archive/ncbit/ncbit_{{ version }}.tar.gz\n  sha256: 4480271f14953615c8ddc2e0666866bb1d0964398ba0fab6cc29046436820738\n\nbuild:\n  noarch: generic\n  merge_build_host: True  # [win]\n  number: 1001\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - {{posix}}zip               # [win]\n\n  host:\n    - r-base\n\n  run:\n    - r-base\n\ntest:\n  commands:\n    - $R -e \"library('ncbit')\"           # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('ncbit')\\\"\"  # [win]\n\nabout:\n  home: https://CRAN.R-project.org/package=ncbit\n  license: GPL (>= 2)\n  summary: making NCBI taxonomic data locally available and searchable as an R object\n  license_family: GPL3\n  license_file: '{{ environ[\"PREFIX\"] }}/lib/R/share/licenses/GPL-3'\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n    - MathiasHaudgaard\n    - FrodePedersen\n    - ArneKr\n",
+ "raw_meta_yaml":"{% set version = '2013.03.29' %}\n\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-ncbit\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  fn: ncbit_{{ version }}.tar.gz\n  url:\n    - {{ cran_mirror }}/src/contrib/ncbit_{{ version }}.tar.gz\n    - {{ cran_mirror }}/src/contrib/Archive/ncbit/ncbit_{{ version }}.tar.gz\n  sha256: 4480271f14953615c8ddc2e0666866bb1d0964398ba0fab6cc29046436820738\n\nbuild:\n  noarch: generic\n  merge_build_host: True  # [win]\n  number: 1002\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - {{ posix }}zip               # [win]\n\n  host:\n    - r-base\n\n  run:\n    - r-base\n\ntest:\n  commands:\n    - $R -e \"library('ncbit')\"           # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('ncbit')\\\"\"  # [win]\n\nabout:\n  home: https://CRAN.R-project.org/package=ncbit\n  license: GPL (>= 2)\n  summary: making NCBI taxonomic data locally available and searchable as an R object\n  license_family: GPL3\n  license_file: '{{ environ[\"PREFIX\"] }}/lib/R/share/licenses/GPL-3'\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n    - MathiasHaudgaard\n    - FrodePedersen\n    - ArneKr\n",
  "req":{
   "__set__":true,
   "elements":[
