@@ -59,9 +59,6 @@
   "bot":{
    "automerge":true
   },
-  "compiler_stack":"comp7",
-  "max_py_ver":"37",
-  "max_r_ver":"35",
   "provider":{
    "win":"azure"
   }
@@ -73,12 +70,20 @@
    "home":"https://github.com/rsheets/cellranger",
    "license":"MIT",
    "license_family":"MIT",
+   "license_file":[
+    "/lib/R/share/licenses/MIT",
+    "LICENSE",
+    "/lib/R/share/licenses/MIT",
+    "LICENSE",
+    "/lib/R/share/licenses/MIT",
+    "LICENSE"
+   ],
    "summary":"Helper functions to work with spreadsheets and the \"A1:D10\" style of cell range specification."
   },
   "build":{
    "merge_build_host":true,
    "noarch":"generic",
-   "number":"1002",
+   "number":"1003",
    "rpaths":[
     "lib/R/lib/",
     "lib/",
@@ -165,7 +170,7 @@
  "name":"r-cellranger",
  "new_version":"1.1.0",
  "pinning_version":"2020.05.03.19.37.20",
- "raw_meta_yaml":"{% set version = '1.1.0' %}\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-cellranger\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  fn: cellranger_{{ version }}.tar.gz\n  url:\n    - {{ cran_mirror }}/src/contrib/cellranger_{{ version }}.tar.gz\n    - {{ cran_mirror }}/src/contrib/Archive/cellranger/cellranger_{{ version }}.tar.gz\n  sha256: 5d38f288c752bbb9cea6ff830b8388bdd65a8571fd82d8d96064586bd588cf99\n\nbuild:\n  noarch: generic\n  merge_build_host: True  # [win]\n  number: 1002\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - {{posix}}zip               # [win]\n  host:\n    - r-base\n    - r-rematch\n    - r-tibble\n  run:\n    - r-base\n    - r-rematch\n    - r-tibble\n\ntest:\n  commands:\n    - $R -e \"library('cellranger')\"           # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('cellranger')\\\"\"  # [win]\n\nabout:\n  home: https://github.com/rsheets/cellranger\n  license: MIT\n  summary: Helper functions to work with spreadsheets and the \"A1:D10\" style of cell range specification.\n  license_family: MIT\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n    - johanneskoester\n    - bgruening\n    - daler\n    - jdblischak\n    - cbrueffer\n    - dbast\n",
+ "raw_meta_yaml":"{% set version = \"1.1.0\" %}\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-cellranger\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  fn: cellranger_{{ version }}.tar.gz\n  url:\n    - {{ cran_mirror }}/src/contrib/cellranger_{{ version }}.tar.gz\n    - {{ cran_mirror }}/src/contrib/Archive/cellranger/cellranger_{{ version }}.tar.gz\n  sha256: 5d38f288c752bbb9cea6ff830b8388bdd65a8571fd82d8d96064586bd588cf99\n\nbuild:\n  noarch: generic\n  merge_build_host: true  # [win]\n  number: 1003\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - {{ posix }}zip               # [win]\n  host:\n    - r-base\n    - r-rematch\n    - r-tibble\n  run:\n    - r-base\n    - r-rematch\n    - r-tibble\n\ntest:\n  commands:\n    - $R -e \"library('cellranger')\"           # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('cellranger')\\\"\"  # [win]\n\nabout:\n  home: https://github.com/rsheets/cellranger\n  license: MIT\n  summary: Helper functions to work with spreadsheets and the \"A1:D10\" style of cell range specification.\n  license_family: MIT\n\n  license_file:\n    - {{ environ[\"PREFIX\"] }}/lib/R/share/licenses/MIT\n    - LICENSE\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n    - johanneskoester\n    - bgruening\n    - daler\n    - jdblischak\n    - cbrueffer\n    - dbast\n",
  "req":{
   "__set__":true,
   "elements":[

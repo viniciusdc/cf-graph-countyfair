@@ -79,6 +79,25 @@
     "migrator_version",
     "version"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/412692831.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"MigrationYaml",
+    "migrator_object_version":2,
+    "migrator_version":0,
+    "name":"r400"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_object_version",
+    "migrator_version",
+    "name"
+   ]
   }
  ],
  "bad":false,
@@ -178,7 +197,7 @@
  },
  "name":"r-mapproj",
  "new_version":"1.2.7",
- "pinning_version":"2020.01.27",
+ "pinning_version":"2020.05.03.19.37.20",
  "raw_meta_yaml":"{% set version = \"1.2.7\" %}\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-mapproj\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  fn: mapproj_{{ version }}.tar.gz\n  url:\n    - {{ cran_mirror }}/src/contrib/mapproj_{{ version }}.tar.gz\n    - {{ cran_mirror }}/src/contrib/Archive/mapproj/mapproj_{{ version }}.tar.gz\n  sha256: f0081281b08bf3cc7052c4f1360d6d3c20d9063be57754448ad9b48ab0d34c5b\n\nbuild:\n  merge_build_host: True  # [win]\n  number: 0\n  skip: true  # [win32]\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - {{ compiler('c') }}        # [not win]\n    - {{ compiler('m2w64_c') }}        # [win]\n    - {{posix}}filesystem        # [win]\n    - {{posix}}make\n    - {{posix}}sed               # [win]\n    - {{posix}}coreutils         # [win]\n    - {{posix}}zip               # [win]\n  host:\n    - r-base\n    - r-maps >=2.3_0\n  run:\n    - r-base\n    - {{native}}gcc-libs         # [win]\n    - r-maps >=2.3_0\n\ntest:\n  commands:\n    - $R -e \"library('mapproj')\"           # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('mapproj')\\\"\"  # [win]\n\nabout:\n  home: https://CRAN.R-project.org/package=mapproj\n  license: Lucent Public\n  summary: Converts latitude/longitude into projected coordinates.\n  license_family: OTHER\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n",
  "req":{
   "__set__":true,
@@ -228,7 +247,7 @@
    "elements":[]
   }
  },
- "smithy_version":"3.6.7",
+ "smithy_version":"No azure token. Create a token and\nput it in ~/.conda-smithy/azure.token\n3.7.0\n",
  "strong_exports":false,
  "total_requirements":{
   "build":{
