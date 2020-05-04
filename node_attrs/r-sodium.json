@@ -33,6 +33,25 @@
     "migrator_version",
     "name"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/412775025.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"MigrationYaml",
+    "migrator_object_version":2,
+    "migrator_version":0,
+    "name":"r400"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_object_version",
+    "migrator_version",
+    "name"
+   ]
   }
  ],
  "bad":false,
@@ -159,7 +178,7 @@
  },
  "name":"r-sodium",
  "new_version":"1.1",
- "pinning_version":"2019.07.15",
+ "pinning_version":"2020.05.04.05.46.47",
  "raw_meta_yaml":"{% set version = '1.1' %}\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-sodium\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  url:\n    - {{ cran_mirror }}/src/contrib/sodium_{{ version }}.tar.gz\n    - {{ cran_mirror }}/src/contrib/Archive/sodium/sodium_{{ version }}.tar.gz\n  sha256: dcb855af1fe66140885692eb4cb51ab8b1f02d028efa8c4b630fdabe3b8abfff\n\nbuild:\n  merge_build_host: True  # [win]\n  number: 1001\n  skip: true  # [win32]\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - {{ compiler('c') }}        # [not win]\n    - {{ compiler('m2w64_c') }}        # [win]\n    - {{posix}}filesystem        # [win]\n    - {{posix}}sed               # [win]\n    - {{posix}}grep              # [win]\n    - {{posix}}autoconf\n    - {{posix}}automake          # [not win]\n    - {{posix}}automake-wrapper  # [win]\n    - {{posix}}pkg-config\n    - {{posix}}make\n    - {{posix}}coreutils         # [win]\n    - {{posix}}zip               # [win]\n  host:\n    - r-base\n    - libsodium >=1.0.3\n  run:\n    - r-base\n    - {{native}}gcc-libs         # [win]\n\ntest:\n  commands:\n    - $R -e \"library('sodium')\"           # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('sodium')\\\"\"  # [win]\n\nabout:\n  home: https://github.com/jeroen/sodium#readme (devel) https://download.libsodium.org/doc/\n    (upstream)\n  license: MIT\n  summary: 'Bindings to ''libsodium'': a modern, easy-to-use software library for encryption,\n    decryption, signatures, password hashing and more. Sodium uses curve25519, a state-of-the-art\n    Diffie-Hellman function by Daniel Bernstein, which has become very popular after\n    it was discovered that the NSA had backdoored Dual EC DRBG.'\n  license_family: MIT\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n    - johanneskoester\n    - bgruening\n    - daler\n    - jdblischak\n    - cbrueffer\n    - dbast\n    - halldc\n",
  "req":{
   "__set__":true,
@@ -218,7 +237,7 @@
    "elements":[]
   }
  },
- "smithy_version":"3.4.1",
+ "smithy_version":"No azure token. Create a token and\nput it in ~/.conda-smithy/azure.token\n3.7.0\n",
  "strong_exports":false,
  "total_requirements":{
   "build":{

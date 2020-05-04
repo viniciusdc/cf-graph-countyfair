@@ -59,9 +59,6 @@
   "bot":{
    "automerge":true
   },
-  "compiler_stack":"comp7",
-  "max_py_ver":"37",
-  "max_r_ver":"35",
   "provider":{
    "win":"azure"
   }
@@ -79,7 +76,7 @@
   "build":{
    "merge_build_host":true,
    "noarch":"generic",
-   "number":"1002",
+   "number":"1003",
    "rpaths":[
     "lib/R/lib/",
     "lib/",
@@ -178,7 +175,7 @@
  "name":"r-vcdextra",
  "new_version":"0.7_1",
  "pinning_version":"2020.05.04.00.11.09",
- "raw_meta_yaml":"{% set version = '0.7-1' %}\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-vcdextra\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  fn: vcdExtra_{{ version }}.tar.gz\n  url:\n    - {{ cran_mirror }}/src/contrib/vcdExtra_{{ version }}.tar.gz\n    - {{ cran_mirror }}/src/contrib/Archive/vcdExtra/vcdExtra_{{ version }}.tar.gz\n  sha256: 0cac977f412e84c5f2625a14e381df7a98498108ebbcc816ceb53db8214c7d98\n\nbuild:\n  noarch: generic\n  merge_build_host: True  # [win]\n  number: 1002\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - {{posix}}zip               # [win]\n  host:\n    - r-base\n    - r-mass\n    - r-ca\n    - r-gnm >=1.0.3\n    - r-vcd\n  run:\n    - r-base\n    - r-mass\n    - r-ca\n    - r-gnm >=1.0.3\n    - r-vcd\n\ntest:\n  commands:\n    - $R -e \"library('vcdExtra')\"           # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('vcdExtra')\\\"\"  # [win]\n\nabout:\n  home: https://CRAN.R-project.org/package=vcdExtra\n  license: GPL (>= 2)\n  summary: Provides additional data sets, methods and documentation to complement the 'vcd' package\n    for Visualizing Categorical Data and the 'gnm' package for Generalized Nonlinear\n    Models. In particular, 'vcdExtra' extends mosaic, assoc and sieve plots from 'vcd'\n    to handle 'glm()' and 'gnm()' models and adds a 3D version in 'mosaic3d'.  Additionally,\n    methods are provided for comparing and visualizing lists of 'glm' and 'loglm' objects.\n    This package is now a support package for the book, \"Discrete Data Analysis with\n    R\" by Michael Friendly and David Meyer.\n  license_family: GPL3\n  license_file: '{{ environ[\"PREFIX\"] }}/lib/R/share/licenses/GPL-3'\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n    - johanneskoester\n    - bgruening\n    - daler\n    - jdblischak\n    - cbrueffer\n    - dbast\n",
+ "raw_meta_yaml":"{% set version = '0.7-1' %}\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-vcdextra\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  fn: vcdExtra_{{ version }}.tar.gz\n  url:\n    - {{ cran_mirror }}/src/contrib/vcdExtra_{{ version }}.tar.gz\n    - {{ cran_mirror }}/src/contrib/Archive/vcdExtra/vcdExtra_{{ version }}.tar.gz\n  sha256: 0cac977f412e84c5f2625a14e381df7a98498108ebbcc816ceb53db8214c7d98\n\nbuild:\n  noarch: generic\n  merge_build_host: True  # [win]\n  number: 1003\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - {{ posix }}zip               # [win]\n  host:\n    - r-base\n    - r-mass\n    - r-ca\n    - r-gnm >=1.0.3\n    - r-vcd\n  run:\n    - r-base\n    - r-mass\n    - r-ca\n    - r-gnm >=1.0.3\n    - r-vcd\n\ntest:\n  commands:\n    - $R -e \"library('vcdExtra')\"           # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('vcdExtra')\\\"\"  # [win]\n\nabout:\n  home: https://CRAN.R-project.org/package=vcdExtra\n  license: GPL (>= 2)\n  summary: Provides additional data sets, methods and documentation to complement the 'vcd' package\n    for Visualizing Categorical Data and the 'gnm' package for Generalized Nonlinear\n    Models. In particular, 'vcdExtra' extends mosaic, assoc and sieve plots from 'vcd'\n    to handle 'glm()' and 'gnm()' models and adds a 3D version in 'mosaic3d'.  Additionally,\n    methods are provided for comparing and visualizing lists of 'glm' and 'loglm' objects.\n    This package is now a support package for the book, \"Discrete Data Analysis with\n    R\" by Michael Friendly and David Meyer.\n  license_family: GPL3\n  license_file: '{{ environ[\"PREFIX\"] }}/lib/R/share/licenses/GPL-3'\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n    - johanneskoester\n    - bgruening\n    - daler\n    - jdblischak\n    - cbrueffer\n    - dbast\n",
  "req":{
   "__set__":true,
   "elements":[

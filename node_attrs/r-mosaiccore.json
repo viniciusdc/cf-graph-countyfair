@@ -59,9 +59,6 @@
   "bot":{
    "automerge":true
   },
-  "compiler_stack":"comp7",
-  "max_py_ver":"37",
-  "max_r_ver":"35",
   "provider":{
    "win":"azure"
   }
@@ -79,7 +76,7 @@
   "build":{
    "merge_build_host":true,
    "noarch":"generic",
-   "number":"1001",
+   "number":"1002",
    "rpaths":[
     "lib/R/lib/",
     "lib/",
@@ -184,7 +181,7 @@
  "name":"r-mosaiccore",
  "new_version":"0.6.0",
  "pinning_version":"2020.05.04.00.11.09",
- "raw_meta_yaml":"{% set version = '0.6.0' %}\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-mosaiccore\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  fn: mosaicCore_{{ version }}.tar.gz\n  url:\n    - {{ cran_mirror }}/src/contrib/mosaicCore_{{ version }}.tar.gz\n    - {{ cran_mirror }}/src/contrib/Archive/mosaicCore/mosaicCore_{{ version }}.tar.gz\n  sha256: 5f1c5e134e70c57ae26700cb3a1943825036e3194623ca2e0b1c326ae0499cce\n\nbuild:\n  noarch: generic\n  merge_build_host: True  # [win]\n  number: 1001\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - {{posix}}zip               # [win]\n  host:\n    - r-base\n    - r-mass\n    - r-dplyr\n    - r-lazyeval\n    - r-rlang\n    - r-tidyr\n  run:\n    - r-base\n    - r-mass\n    - r-dplyr\n    - r-lazyeval\n    - r-rlang\n    - r-tidyr\n\ntest:\n  commands:\n    - $R -e \"library('mosaicCore')\"           # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('mosaicCore')\\\"\"  # [win]\n\nabout:\n  home: https://github.com/ProjectMOSAIC/mosaicCore\n  license: GPL (>= 2)\n  summary: Common utilities used in other MOSAIC-family packages are  collected here.\n  license_family: GPL3\n  license_file: '{{ environ[\"PREFIX\"] }}/lib/R/share/licenses/GPL-3'\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n    - johanneskoester\n    - bgruening\n    - daler\n    - jdblischak\n    - cbrueffer\n    - dbast\n",
+ "raw_meta_yaml":"{% set version = '0.6.0' %}\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-mosaiccore\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  fn: mosaicCore_{{ version }}.tar.gz\n  url:\n    - {{ cran_mirror }}/src/contrib/mosaicCore_{{ version }}.tar.gz\n    - {{ cran_mirror }}/src/contrib/Archive/mosaicCore/mosaicCore_{{ version }}.tar.gz\n  sha256: 5f1c5e134e70c57ae26700cb3a1943825036e3194623ca2e0b1c326ae0499cce\n\nbuild:\n  noarch: generic\n  merge_build_host: True  # [win]\n  number: 1002\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - {{ posix }}zip               # [win]\n  host:\n    - r-base\n    - r-mass\n    - r-dplyr\n    - r-lazyeval\n    - r-rlang\n    - r-tidyr\n  run:\n    - r-base\n    - r-mass\n    - r-dplyr\n    - r-lazyeval\n    - r-rlang\n    - r-tidyr\n\ntest:\n  commands:\n    - $R -e \"library('mosaicCore')\"           # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('mosaicCore')\\\"\"  # [win]\n\nabout:\n  home: https://github.com/ProjectMOSAIC/mosaicCore\n  license: GPL (>= 2)\n  summary: Common utilities used in other MOSAIC-family packages are  collected here.\n  license_family: GPL3\n  license_file: '{{ environ[\"PREFIX\"] }}/lib/R/share/licenses/GPL-3'\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n    - johanneskoester\n    - bgruening\n    - daler\n    - jdblischak\n    - cbrueffer\n    - dbast\n",
  "req":{
   "__set__":true,
   "elements":[

@@ -67,6 +67,23 @@
     "migrator_version",
     "name"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/412771265.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"ArchRebuild",
+    "migrator_version":1,
+    "name":"aarch64 and ppc64le addition"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "name"
+   ]
   }
  ],
  "bad":false,
@@ -189,7 +206,7 @@
  },
  "name":"r-bbmisc",
  "new_version":"1.11",
- "pinning_version":"2020.05.03.19.37.20",
+ "pinning_version":"2020.05.04.05.46.47",
  "raw_meta_yaml":"{% set version = \"1.11\" %}\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-bbmisc\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  fn: BBmisc_{{ version }}.tar.gz\n  url:\n    - {{ cran_mirror }}/src/contrib/BBmisc_{{ version }}.tar.gz\n    - {{ cran_mirror }}/src/contrib/Archive/BBmisc/BBmisc_{{ version }}.tar.gz\n  sha256: 1ea48c281825349d8642a661bb447e23bfd651db3599bf72593bfebe17b101d2\n\nbuild:\n  merge_build_host: true  # [win]\n  number: 1003\n  skip: true  # [win32]\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - {{ compiler('c') }}        # [not win]\n    - {{ compiler('m2w64_c') }}        # [win]\n    - {{ posix }}filesystem        # [win]\n    - {{ posix }}make\n    - {{ posix }}sed               # [win]\n    - {{ posix }}coreutils         # [win]\n    - {{ posix }}zip               # [win]\n  host:\n    - r-base\n    - r-checkmate >=1.8.0\n  run:\n    - r-base\n    - {{ native }}gcc-libs         # [win]\n    - r-checkmate >=1.8.0\n\ntest:\n  commands:\n    - $R -e \"library('BBmisc')\"           # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('BBmisc')\\\"\"  # [win]\n\nabout:\n  home: https://github.com/berndbischl/BBmisc\n  license: BSD-2-Clause\n  summary: Miscellaneous helper functions for and from B. Bischl and some other guys, mainly for package development.\n  license_family: BSD\n\n  license_file:\n    - {{ environ[\"PREFIX\"] }}/lib/R/share/licenses/BSD_2_clause\n    - LICENSE\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n    - johanneskoester\n    - bgruening\n    - daler\n    - jdblischak\n    - cbrueffer\n    - dbast\n",
  "req":{
   "__set__":true,
