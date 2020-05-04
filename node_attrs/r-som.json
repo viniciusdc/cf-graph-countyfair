@@ -74,9 +74,6 @@
   "bot":{
    "automerge":true
   },
-  "compiler_stack":"comp7",
-  "max_py_ver":"37",
-  "max_r_ver":"35",
   "provider":{
    "win":"azure"
   }
@@ -93,7 +90,7 @@
   },
   "build":{
    "merge_build_host":true,
-   "number":"1003",
+   "number":"1004",
    "rpaths":[
     "lib/R/lib/",
     "lib/",
@@ -158,7 +155,7 @@
  "name":"r-som",
  "new_version":"0.3_5.1",
  "pinning_version":"2020.05.04.00.11.09",
- "raw_meta_yaml":"{% set version = '0.3-5.1' %}\n\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-som\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  fn: som_{{ version }}.tar.gz\n  url:\n    - https://cran.r-project.org/src/contrib/som_{{ version }}.tar.gz\n    - https://cran.r-project.org/src/contrib/Archive/som/som_{{ version }}.tar.gz\n  sha256: a6f4c0e5b36656b7a8ea144b057e3d7642a8b71972da387a7133f3dd65507fb9\n\nbuild:\n  merge_build_host: True  # [win]\n  number: 1003\n  skip: true  # [win32]\n\n  rpaths:\n    - lib/R/lib/\n    - lib/\nrequirements:\n  build:\n    - posix                # [win]\n    - {{ compiler('c') }}        # [unix]\n    - {{ compiler('m2w64_c') }}  # [win]\n    - {{ compiler('cxx') }}        # [unix]\n    - {{ compiler('m2w64_cxx') }}  # [win]\n  host:\n    - r-base\n\n  run:\n    - r-base\n\ntest:\n  commands:\n    - $R -e \"library('som')\"  # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('som')\\\"\"  # [win]\n\nabout:\n  home: https://CRAN.R-project.org/package=som\n  license: GPL (>= 3)\n  license_file: '{{ environ[\"PREFIX\"] }}/lib/R/share/licenses/GPL-3'\n  summary: Self-Organizing Map (with application in gene clustering).\n  license_family: GPL3\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n",
+ "raw_meta_yaml":"{% set version = '0.3-5.1' %}\n\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-som\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  fn: som_{{ version }}.tar.gz\n  url:\n    - https://cran.r-project.org/src/contrib/som_{{ version }}.tar.gz\n    - https://cran.r-project.org/src/contrib/Archive/som/som_{{ version }}.tar.gz\n  sha256: a6f4c0e5b36656b7a8ea144b057e3d7642a8b71972da387a7133f3dd65507fb9\n\nbuild:\n  merge_build_host: True  # [win]\n  number: 1004\n  skip: true  # [win32]\n\n  rpaths:\n    - lib/R/lib/\n    - lib/\nrequirements:\n  build:\n    - posix                # [win]\n    - {{ compiler('c') }}        # [unix]\n    - {{ compiler('m2w64_c') }}  # [win]\n    - {{ compiler('cxx') }}        # [unix]\n    - {{ compiler('m2w64_cxx') }}  # [win]\n  host:\n    - r-base\n\n  run:\n    - r-base\n\ntest:\n  commands:\n    - $R -e \"library('som')\"  # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('som')\\\"\"  # [win]\n\nabout:\n  home: https://CRAN.R-project.org/package=som\n  license: GPL (>= 3)\n  license_file: '{{ environ[\"PREFIX\"] }}/lib/R/share/licenses/GPL-3'\n  summary: Self-Organizing Map (with application in gene clustering).\n  license_family: GPL3\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n",
  "req":{
   "__set__":true,
   "elements":[

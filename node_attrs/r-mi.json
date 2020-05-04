@@ -59,9 +59,6 @@
   "bot":{
    "automerge":true
   },
-  "compiler_stack":"comp7",
-  "max_py_ver":"37",
-  "max_r_ver":"35",
   "provider":{
    "win":"azure"
   }
@@ -79,7 +76,7 @@
   "build":{
    "merge_build_host":true,
    "noarch":"generic",
-   "number":"1002",
+   "number":"1003",
    "rpaths":[
     "lib/R/lib/",
     "lib/",
@@ -148,7 +145,7 @@
  "name":"r-mi",
  "new_version":"1.0",
  "pinning_version":"2020.05.04.00.11.09",
- "raw_meta_yaml":"{% set version = '1.0' %}\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-mi\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  fn: mi_{{ version }}.tar.gz\n  url:\n    - {{ cran_mirror }}/src/contrib/mi_{{ version }}.tar.gz\n    - {{ cran_mirror }}/src/contrib/Archive/mi/mi_{{ version }}.tar.gz\n  sha256: 34f44353101e8c3cb6bf59c5f4ff5b2391d884dcbb9d23066a11ee756b9987c0\n\nbuild:\n  noarch: generic\n  merge_build_host: True  # [win]\n  number: 1002\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - {{posix}}zip               # [win]\n  host:\n    - r-base\n    - r-matrix\n    - r-arm >=1.4_11\n  run:\n    - r-base\n    - r-matrix\n    - r-arm >=1.4_11\n\ntest:\n  commands:\n    - $R -e \"library('mi')\"           # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('mi')\\\"\"  # [win]\n\nabout:\n  home: http://www.stat.columbia.edu/~gelman/\n  license: GPL (>= 2)\n  summary: The mi package provides functions for data manipulation, imputing missing values in\n    an approximate Bayesian framework, diagnostics of the models used to generate the\n    imputations, confidence-building mechanisms to validate some of the assumptions\n    of the imputation algorithm, and functions to analyze multiply imputed data sets\n    with the appropriate degree of sampling uncertainty.\n  license_family: GPL3\n  license_file: '{{ environ[\"PREFIX\"] }}/lib/R/share/licenses/GPL-3'\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n",
+ "raw_meta_yaml":"{% set version = '1.0' %}\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-mi\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  fn: mi_{{ version }}.tar.gz\n  url:\n    - {{ cran_mirror }}/src/contrib/mi_{{ version }}.tar.gz\n    - {{ cran_mirror }}/src/contrib/Archive/mi/mi_{{ version }}.tar.gz\n  sha256: 34f44353101e8c3cb6bf59c5f4ff5b2391d884dcbb9d23066a11ee756b9987c0\n\nbuild:\n  noarch: generic\n  merge_build_host: True  # [win]\n  number: 1003\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - {{ posix }}zip               # [win]\n  host:\n    - r-base\n    - r-matrix\n    - r-arm >=1.4_11\n  run:\n    - r-base\n    - r-matrix\n    - r-arm >=1.4_11\n\ntest:\n  commands:\n    - $R -e \"library('mi')\"           # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('mi')\\\"\"  # [win]\n\nabout:\n  home: http://www.stat.columbia.edu/~gelman/\n  license: GPL (>= 2)\n  summary: The mi package provides functions for data manipulation, imputing missing values in\n    an approximate Bayesian framework, diagnostics of the models used to generate the\n    imputations, confidence-building mechanisms to validate some of the assumptions\n    of the imputation algorithm, and functions to analyze multiply imputed data sets\n    with the appropriate degree of sampling uncertainty.\n  license_family: GPL3\n  license_file: '{{ environ[\"PREFIX\"] }}/lib/R/share/licenses/GPL-3'\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n",
  "req":{
   "__set__":true,
   "elements":[

@@ -59,9 +59,6 @@
   "bot":{
    "automerge":true
   },
-  "compiler_stack":"comp7",
-  "max_py_ver":"37",
-  "max_r_ver":"35",
   "provider":{
    "win":"azure"
   }
@@ -73,12 +70,20 @@
    "home":"https://CRAN.R-project.org/package=mlapi",
    "license":"MIT",
    "license_family":"MIT",
+   "license_file":[
+    "/lib/R/share/licenses/MIT",
+    "LICENSE",
+    "/lib/R/share/licenses/MIT",
+    "LICENSE",
+    "/lib/R/share/licenses/MIT",
+    "LICENSE"
+   ],
    "summary":"Provides 'R6' abstract classes for building machine learning models  with 'scikit-learn' like API. <http://scikit-learn.org/> is a popular module  for 'Python' programming language which design became de facto a standard  in industry for machine learning tasks."
   },
   "build":{
    "merge_build_host":true,
    "noarch":"generic",
-   "number":"1002",
+   "number":"1003",
    "rpaths":[
     "lib/R/lib/",
     "lib/",
@@ -168,7 +173,7 @@
  "name":"r-mlapi",
  "new_version":"0.1.0",
  "pinning_version":"2020.05.04.00.11.09",
- "raw_meta_yaml":"{% set version = '0.1.0' %}\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-mlapi\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  fn: mlapi_{{ version }}.tar.gz\n  url:\n    - {{ cran_mirror }}/src/contrib/mlapi_{{ version }}.tar.gz\n    - {{ cran_mirror }}/src/contrib/Archive/mlapi/mlapi_{{ version }}.tar.gz\n  sha256: 3314e96f4a467a9b6337b4fb16bc5a22e5dee641745ea511c24c327457997b08\n\nbuild:\n  noarch: generic\n  merge_build_host: True  # [win]\n  number: 1002\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - {{posix}}zip               # [win]\n  host:\n    - r-base\n    - r-matrix >=1.1\n    - r-r6 >=2.2.1\n  run:\n    - r-base\n    - r-matrix >=1.1\n    - r-r6 >=2.2.1\n\ntest:\n  commands:\n    - $R -e \"library('mlapi')\"           # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('mlapi')\\\"\"  # [win]\n\nabout:\n  home: https://CRAN.R-project.org/package=mlapi\n  license: MIT\n  summary: Provides 'R6' abstract classes for building machine learning models  with 'scikit-learn'\n    like API. <http://scikit-learn.org/> is a popular module  for 'Python' programming\n    language which design became de facto a standard  in industry for machine learning\n    tasks.\n  license_family: MIT\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n    - CurtLH\n    - johanneskoester\n    - bgruening\n    - daler\n    - jdblischak\n    - cbrueffer\n    - dbast\n",
+ "raw_meta_yaml":"{% set version = \"0.1.0\" %}\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-mlapi\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  fn: mlapi_{{ version }}.tar.gz\n  url:\n    - {{ cran_mirror }}/src/contrib/mlapi_{{ version }}.tar.gz\n    - {{ cran_mirror }}/src/contrib/Archive/mlapi/mlapi_{{ version }}.tar.gz\n  sha256: 3314e96f4a467a9b6337b4fb16bc5a22e5dee641745ea511c24c327457997b08\n\nbuild:\n  noarch: generic\n  merge_build_host: true  # [win]\n  number: 1003\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - {{ posix }}zip               # [win]\n  host:\n    - r-base\n    - r-matrix >=1.1\n    - r-r6 >=2.2.1\n  run:\n    - r-base\n    - r-matrix >=1.1\n    - r-r6 >=2.2.1\n\ntest:\n  commands:\n    - $R -e \"library('mlapi')\"           # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('mlapi')\\\"\"  # [win]\n\nabout:\n  home: https://CRAN.R-project.org/package=mlapi\n  license: MIT\n  summary: Provides 'R6' abstract classes for building machine learning models  with 'scikit-learn' like API. <http://scikit-learn.org/> is a popular module  for 'Python' programming language which design became de facto a standard  in industry for machine learning tasks.\n  license_family: MIT\n\n  license_file:\n    - {{ environ[\"PREFIX\"] }}/lib/R/share/licenses/MIT\n    - LICENSE\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n    - CurtLH\n    - johanneskoester\n    - bgruening\n    - daler\n    - jdblischak\n    - cbrueffer\n    - dbast\n",
  "req":{
   "__set__":true,
   "elements":[

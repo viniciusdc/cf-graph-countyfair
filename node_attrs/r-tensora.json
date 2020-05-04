@@ -59,9 +59,6 @@
   "bot":{
    "automerge":true
   },
-  "compiler_stack":"comp7",
-  "max_py_ver":"37",
-  "max_r_ver":"35",
   "provider":{
    "win":"azure"
   }
@@ -78,7 +75,7 @@
   },
   "build":{
    "merge_build_host":true,
-   "number":"1001",
+   "number":"1002",
    "rpaths":[
     "lib/R/lib/",
     "lib/",
@@ -151,7 +148,7 @@
  "name":"r-tensora",
  "new_version":"0.36.1",
  "pinning_version":"2020.05.04.00.11.09",
- "raw_meta_yaml":"{% set version = '0.36.1' %}\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-tensora\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  url:\n    - {{ cran_mirror }}/src/contrib/tensorA_{{ version }}.tar.gz\n    - {{ cran_mirror }}/src/contrib/Archive/tensorA/tensorA_{{ version }}.tar.gz\n  sha256: c7ffe12b99867675b5e9c9f31798f9521f14305c9d9f9485b171bcbd8697d09c\n\nbuild:\n  merge_build_host: True  # [win]\n  number: 1001\n  skip: true  # [win32]\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - {{ compiler('c') }}        # [not win]\n    - {{ compiler('m2w64_c') }}        # [win]\n    - {{posix}}filesystem        # [win]\n    - {{posix}}make\n    - {{posix}}sed  # [win]\n    - {{posix}}coreutils  # [win]\n    - {{posix}}sed               # [win]\n    - {{posix}}coreutils         # [win]\n    - {{posix}}zip               # [win]\n  host:\n    - r-base\n  run:\n    - r-base\n    - {{native}}gcc-libs         # [win]\n\ntest:\n  commands:\n    - $R -e \"library('tensorA')\"           # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('tensorA')\\\"\"  # [win]\n\nabout:\n  home: http://www.stat.boogaart.de/tensorA\n  license: GPL (>= 2)\n  summary: Provides convenience functions for advanced linear algebra with tensors and computation\n    with datasets of tensors on a higher level abstraction. It includes Einstein and\n    Riemann summing conventions, dragging, co- and contravariate indices, parallel computations\n    on sequences of tensors.\n  license_family: GPL3\n  license_file: '{{ environ[\"PREFIX\"] }}/lib/R/share/licenses/GPL-3'\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n    - nick-youngblut\n",
+ "raw_meta_yaml":"{% set version = '0.36.1' %}\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-tensora\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  url:\n    - {{ cran_mirror }}/src/contrib/tensorA_{{ version }}.tar.gz\n    - {{ cran_mirror }}/src/contrib/Archive/tensorA/tensorA_{{ version }}.tar.gz\n  sha256: c7ffe12b99867675b5e9c9f31798f9521f14305c9d9f9485b171bcbd8697d09c\n\nbuild:\n  merge_build_host: True  # [win]\n  number: 1002\n  skip: true  # [win32]\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - {{ compiler('c') }}        # [not win]\n    - {{ compiler('m2w64_c') }}        # [win]\n    - {{ posix }}filesystem        # [win]\n    - {{ posix }}make\n    - {{ posix }}sed  # [win]\n    - {{ posix }}coreutils  # [win]\n    - {{ posix }}sed               # [win]\n    - {{ posix }}coreutils         # [win]\n    - {{ posix }}zip               # [win]\n  host:\n    - r-base\n  run:\n    - r-base\n    - {{ native }}gcc-libs         # [win]\n\ntest:\n  commands:\n    - $R -e \"library('tensorA')\"           # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('tensorA')\\\"\"  # [win]\n\nabout:\n  home: http://www.stat.boogaart.de/tensorA\n  license: GPL (>= 2)\n  summary: Provides convenience functions for advanced linear algebra with tensors and computation\n    with datasets of tensors on a higher level abstraction. It includes Einstein and\n    Riemann summing conventions, dragging, co- and contravariate indices, parallel computations\n    on sequences of tensors.\n  license_family: GPL3\n  license_file: '{{ environ[\"PREFIX\"] }}/lib/R/share/licenses/GPL-3'\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n    - nick-youngblut\n",
  "req":{
   "__set__":true,
   "elements":[

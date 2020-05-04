@@ -74,9 +74,6 @@
   "bot":{
    "automerge":true
   },
-  "compiler_stack":"comp7",
-  "max_py_ver":"37",
-  "max_r_ver":"35",
   "provider":{
    "win":"azure"
   }
@@ -93,7 +90,7 @@
   },
   "build":{
    "merge_build_host":true,
-   "number":"1003",
+   "number":"1004",
    "rpaths":[
     "lib/R/lib/",
     "lib/",
@@ -168,7 +165,7 @@
  "name":"r-wavethresh",
  "new_version":"4.6.8",
  "pinning_version":"2020.05.04.00.11.09",
- "raw_meta_yaml":"{% set version = '4.6.8' %}\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-wavethresh\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  fn: wavethresh_{{ version }}.tar.gz\n  url:\n    - {{ cran_mirror }}/src/contrib/wavethresh_{{ version }}.tar.gz\n    - {{ cran_mirror }}/src/contrib/Archive/wavethresh/wavethresh_{{ version }}.tar.gz\n  sha256: 93b369c6eabcc0187b860b31d84a9d7c72c4a2ed5b23c1520c93bd7bea22e7db\n\nbuild:\n  merge_build_host: True  # [win]\n  number: 1003\n  skip: true  # [win32]\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - {{ compiler('c') }}        # [not win]\n    - {{ compiler('m2w64_c') }}        # [win]\n    - {{posix}}filesystem        # [win]\n    - {{posix}}make\n    - {{posix}}sed               # [win]\n    - {{posix}}coreutils         # [win]\n    - {{posix}}zip               # [win]\n  host:\n    - r-base\n    - r-mass\n  run:\n    - r-base\n    - {{native}}gcc-libs         # [win]\n    - r-mass\n\ntest:\n  commands:\n    - $R -e \"library('wavethresh')\"           # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('wavethresh')\\\"\"  # [win]\n\nabout:\n  home: https://CRAN.R-project.org/package=wavethresh\n  license: GPL (>= 2)\n  summary: Performs 1, 2 and 3D real and complex-valued wavelet transforms, nondecimated transforms,\n    wavelet packet transforms, nondecimated wavelet packet transforms, multiple wavelet\n    transforms, complex-valued wavelet transforms, wavelet shrinkage for various kinds\n    of data, locally stationary wavelet time series, nonstationary multiscale transfer\n    function modeling, density estimation.\n  license_family: GPL3\n  license_file: '{{ environ[\"PREFIX\"] }}/lib/R/share/licenses/GPL-3'\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n",
+ "raw_meta_yaml":"{% set version = '4.6.8' %}\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-wavethresh\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  fn: wavethresh_{{ version }}.tar.gz\n  url:\n    - {{ cran_mirror }}/src/contrib/wavethresh_{{ version }}.tar.gz\n    - {{ cran_mirror }}/src/contrib/Archive/wavethresh/wavethresh_{{ version }}.tar.gz\n  sha256: 93b369c6eabcc0187b860b31d84a9d7c72c4a2ed5b23c1520c93bd7bea22e7db\n\nbuild:\n  merge_build_host: True  # [win]\n  number: 1004\n  skip: true  # [win32]\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - {{ compiler('c') }}        # [not win]\n    - {{ compiler('m2w64_c') }}        # [win]\n    - {{ posix }}filesystem        # [win]\n    - {{ posix }}make\n    - {{ posix }}sed               # [win]\n    - {{ posix }}coreutils         # [win]\n    - {{ posix }}zip               # [win]\n  host:\n    - r-base\n    - r-mass\n  run:\n    - r-base\n    - {{ native }}gcc-libs         # [win]\n    - r-mass\n\ntest:\n  commands:\n    - $R -e \"library('wavethresh')\"           # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('wavethresh')\\\"\"  # [win]\n\nabout:\n  home: https://CRAN.R-project.org/package=wavethresh\n  license: GPL (>= 2)\n  summary: Performs 1, 2 and 3D real and complex-valued wavelet transforms, nondecimated transforms,\n    wavelet packet transforms, nondecimated wavelet packet transforms, multiple wavelet\n    transforms, complex-valued wavelet transforms, wavelet shrinkage for various kinds\n    of data, locally stationary wavelet time series, nonstationary multiscale transfer\n    function modeling, density estimation.\n  license_family: GPL3\n  license_file: '{{ environ[\"PREFIX\"] }}/lib/R/share/licenses/GPL-3'\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n",
  "req":{
   "__set__":true,
   "elements":[
