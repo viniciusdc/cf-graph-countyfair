@@ -59,9 +59,6 @@
   "bot":{
    "automerge":true
   },
-  "compiler_stack":"comp7",
-  "max_py_ver":"37",
-  "max_r_ver":"35",
   "provider":{
    "win":"azure"
   }
@@ -71,14 +68,19 @@
  "meta_yaml":{
   "about":{
    "home":"https://CRAN.R-project.org/package=locfdr",
-   "license":"GPL-2",
+   "license":"GPL-2.0-only",
    "license_family":"GPL2",
+   "license_file":[
+    "/lib/R/share/licenses/GPL-2",
+    "/lib/R/share/licenses/GPL-2",
+    "/lib/R/share/licenses/GPL-2"
+   ],
    "summary":"Computation of local false discovery rates."
   },
   "build":{
    "merge_build_host":true,
    "noarch":"generic",
-   "number":"1001",
+   "number":"1002",
    "rpaths":[
     "lib/R/lib/",
     "lib/",
@@ -146,7 +148,7 @@
  "name":"r-locfdr",
  "new_version":"1.1_8",
  "pinning_version":"2020.05.04.05.46.47",
- "raw_meta_yaml":"{% set version = '1.1-8' %}\n\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-locfdr\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  fn: locfdr_{{ version }}.tar.gz\n  url:\n    - https://cran.r-project.org/src/contrib/locfdr_{{ version }}.tar.gz\n    - https://cran.r-project.org/src/contrib/Archive/locfdr/locfdr_{{ version }}.tar.gz\n  sha256: 42d6e12593ae6d541e6813a140b92591dabeb1df94432a515507fc2eee9a54b9\n\nbuild:\n  merge_build_host: True  # [win]\n  noarch: generic\n  number: 1001\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  host:\n    - r-base\n\n  run:\n    - r-base\n\ntest:\n  commands:\n    - $R -e \"library('locfdr')\"  # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('locfdr')\\\"\"  # [win]\n\nabout:\n  home: https://CRAN.R-project.org/package=locfdr\n  license: GPL-2\n  summary: Computation of local false discovery rates.\n  license_family: GPL2\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n    - johanneskoester\n    - bgruening\n    - daler\n    - jdblischak\n",
+ "raw_meta_yaml":"{% set version = \"1.1-8\" %}\n\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-locfdr\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  fn: locfdr_{{ version }}.tar.gz\n  url:\n    - https://cran.r-project.org/src/contrib/locfdr_{{ version }}.tar.gz\n    - https://cran.r-project.org/src/contrib/Archive/locfdr/locfdr_{{ version }}.tar.gz\n  sha256: 42d6e12593ae6d541e6813a140b92591dabeb1df94432a515507fc2eee9a54b9\n\nbuild:\n  merge_build_host: true  # [win]\n  noarch: generic\n  number: 1002\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  host:\n    - r-base\n\n  run:\n    - r-base\n\ntest:\n  commands:\n    - $R -e \"library('locfdr')\"  # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('locfdr')\\\"\"  # [win]\n\nabout:\n  home: https://CRAN.R-project.org/package=locfdr\n  license: GPL-2.0-only\n  summary: Computation of local false discovery rates.\n  license_family: GPL2\n\n  license_file:\n    - {{ environ[\"PREFIX\"] }}/lib/R/share/licenses/GPL-2\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n    - johanneskoester\n    - bgruening\n    - daler\n    - jdblischak\n",
  "req":{
   "__set__":true,
   "elements":[

@@ -59,9 +59,6 @@
   "bot":{
    "automerge":true
   },
-  "compiler_stack":"comp7",
-  "max_py_ver":"37",
-  "max_r_ver":"35",
   "provider":{
    "win":"azure"
   }
@@ -73,12 +70,17 @@
    "home":"http://cran.r-project.org/package=matlab",
    "license":"Artistic-2.0",
    "license_family":"OTHER",
+   "license_file":[
+    "/lib/R/share/licenses/Artistic-2.0",
+    "/lib/R/share/licenses/Artistic-2.0",
+    "/lib/R/share/licenses/Artistic-2.0"
+   ],
    "summary":"Emulate MATLAB code using R"
   },
   "build":{
    "merge_build_host":true,
    "noarch":"generic",
-   "number":"1002",
+   "number":"1003",
    "rpaths":[
     "lib/R/lib/",
     "lib/",
@@ -156,7 +158,7 @@
  "name":"r-matlab",
  "new_version":"1.0.2",
  "pinning_version":"2020.05.04.05.46.47",
- "raw_meta_yaml":"{% set version = '1.0.2' %}\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-matlab\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  fn: matlab_{{ version }}.tar.gz\n  url:\n    - {{ cran_mirror }}/src/contrib/matlab_{{ version }}.tar.gz\n    - {{ cran_mirror }}/src/contrib/Archive/matlab/matlab_{{ version }}.tar.gz\n  sha256: a23dec736c51ae1864c1a53caac556a2f98e8020138a3b121badb0f5b7984154\n\nbuild:\n  noarch: generic\n  merge_build_host: True  # [win]\n  number: 1002\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - {{posix}}zip               # [win]\n  host:\n    - r-base\n  run:\n    - r-base\n\ntest:\n  commands:\n    - $R -e \"library('matlab')\"           # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('matlab')\\\"\"  # [win]\n\nabout:\n  home: http://cran.r-project.org/package=matlab\n  license: Artistic-2.0\n  summary: Emulate MATLAB code using R\n  license_family: OTHER\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n    - fabio-cumbo\n    - johanneskoester\n    - bgruening\n    - daler\n    - jdblischak\n    - cbrueffer\n    - dbast\n",
+ "raw_meta_yaml":"{% set version = \"1.0.2\" %}\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-matlab\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  fn: matlab_{{ version }}.tar.gz\n  url:\n    - {{ cran_mirror }}/src/contrib/matlab_{{ version }}.tar.gz\n    - {{ cran_mirror }}/src/contrib/Archive/matlab/matlab_{{ version }}.tar.gz\n  sha256: a23dec736c51ae1864c1a53caac556a2f98e8020138a3b121badb0f5b7984154\n\nbuild:\n  noarch: generic\n  merge_build_host: true  # [win]\n  number: 1003\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - {{ posix }}zip               # [win]\n  host:\n    - r-base\n  run:\n    - r-base\n\ntest:\n  commands:\n    - $R -e \"library('matlab')\"           # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('matlab')\\\"\"  # [win]\n\nabout:\n  home: http://cran.r-project.org/package=matlab\n  license: Artistic-2.0\n  summary: Emulate MATLAB code using R\n  license_family: OTHER\n\n  license_file:\n    - {{ environ[\"PREFIX\"] }}/lib/R/share/licenses/Artistic-2.0\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n    - fabio-cumbo\n    - johanneskoester\n    - bgruening\n    - daler\n    - jdblischak\n    - cbrueffer\n    - dbast\n",
  "req":{
   "__set__":true,
   "elements":[
