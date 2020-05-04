@@ -249,6 +249,23 @@
     "migrator_version",
     "name"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/412723507.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"Version",
+    "migrator_version":0,
+    "version":"0.18.0"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "version"
+   ]
   }
  ],
  "bad":false,
@@ -390,8 +407,12 @@
   }
  },
  "name":"cartopy",
- "new_version":"0.17.0",
- "pinning_version":"2020.04.08",
+ "new_version":"0.18.0",
+ "new_version_attempts":{
+  "0.18.0":1
+ },
+ "new_version_errors":{},
+ "pinning_version":"2020.05.04.00.11.09",
  "raw_meta_yaml":"{% set version = \"0.17.0\" %}\n\npackage:\n  name: cartopy\n  version: {{ version }}\n\nsource:\n  url: https://pypi.io/packages/source/C/Cartopy/Cartopy-{{version}}.tar.gz\n  sha256: 424bd9e9ddef6e48cbdee694ce589ec431be8591f15b6cb93cb2b333a29b2c61\n  patches:\n    # Cartopy geos_c patch.\n    - proj6-fix.patch\n    - cartopy.win.patch  # [win]\n\nbuild:\n  skip: True  # [win and vc<14]\n  number: 1015\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n  host:\n    - python\n    - pip\n    - cython\n    - numpy\n    - msinttypes  # [win and vc<14]\n    - geos\n    - proj\n  run:\n    - python\n    - {{ pin_compatible('numpy') }}\n    - six\n    - pillow\n    - owslib\n    - proj\n    - geos\n    - shapely\n    - scipy\n    - pyshp\n    - matplotlib-base\n    - pyepsg\n    - pykdtree\n\ntest:\n  imports:\n    - cartopy\n    - cartopy.mpl.geoaxes\n    - cartopy.crs\n\nabout:\n  home: http://scitools.org.uk/cartopy\n  license: LGPL-3.0\n  license_file: COPYING\n  summary: 'A library providing cartographic tools for python'\n\nextra:\n  recipe-maintainers:\n    - marqh\n    - ocefpaf\n    - pelson\n    - dopplershift\n    - xylar\n",
  "req":{
   "__set__":true,
@@ -459,7 +480,7 @@
    "elements":[]
   }
  },
- "smithy_version":"No azure token. Create a token and\nput it in ~/.conda-smithy/azure.token\n3.6.15",
+ "smithy_version":"No azure token. Create a token and\nput it in ~/.conda-smithy/azure.token\n3.7.0\n",
  "strong_exports":false,
  "total_requirements":{
   "build":{
