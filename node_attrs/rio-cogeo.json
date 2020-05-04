@@ -155,7 +155,11 @@
   }
  ],
  "bad":false,
- "conda-forge.yml":{},
+ "conda-forge.yml":{
+  "bot":{
+   "automerge":true
+  }
+ },
  "feedstock_name":"rio-cogeo",
  "hash_type":"sha256",
  "meta_yaml":{
@@ -169,7 +173,7 @@
   "build":{
    "noarch":"python",
    "number":"0",
-   "script":" -m pip install . --no-deps -vv"
+   "script":"-m pip install . -vv"
   },
   "extra":{
    "recipe-maintainers":[
@@ -180,7 +184,7 @@
   },
   "package":{
    "name":"rio-cogeo",
-   "version":"1.1.6"
+   "version":"1.1.9"
   },
   "requirements":{
    "host":[
@@ -196,37 +200,37 @@
     "click",
     "mercantile",
     "numpy >=1.15,<2",
-    "rasterio >=1.0.9",
-    "boto3 >=1.2.4",
+    "rasterio >=1.0.28",
     "supermercado",
     "python >3.3",
     "click",
     "mercantile",
     "numpy >=1.15,<2",
-    "rasterio >=1.0.9",
-    "boto3 >=1.2.4",
+    "rasterio >=1.0.28",
     "supermercado",
     "python >3.3",
     "click",
     "mercantile",
     "numpy >=1.15,<2",
-    "rasterio >=1.0.9",
-    "boto3 >=1.2.4",
+    "rasterio >=1.0.28",
     "supermercado"
    ]
   },
   "source":{
-   "sha256":"1bd56c23af16e91b68df187ad22cf70f62f783fdd8a9d5f471fb405a4c6349de",
-   "url":"https://pypi.io/packages/source/r/rio-cogeo/rio-cogeo-1.1.6.tar.gz"
+   "sha256":"91aef989fa1a4386051ebf087a6f0f9995babb9cd5856b3c1734b45ea6b1ae7f",
+   "url":"https://pypi.io/packages/source/r/rio-cogeo/rio-cogeo-1.1.9.tar.gz"
   },
   "test":{
    "commands":[
+    "pip check",
     "rio cogeo --help",
     "rio cogeo create --help",
     "rio cogeo validate --help",
+    "pip check",
     "rio cogeo --help",
     "rio cogeo create --help",
     "rio cogeo validate --help",
+    "pip check",
     "rio cogeo --help",
     "rio cogeo create --help",
     "rio cogeo validate --help"
@@ -238,17 +242,24 @@
     "rio_cogeo.scripts",
     "rio_cogeo",
     "rio_cogeo.scripts"
+   ],
+   "requires":[
+    "pip",
+    "boto3 >=1.2.4",
+    "pip",
+    "boto3 >=1.2.4",
+    "pip",
+    "boto3 >=1.2.4"
    ]
   }
  },
  "name":"rio-cogeo",
  "new_version":"1.1.10",
  "pinning_version":"2020.01.28",
- "raw_meta_yaml":"{% set version = \"1.1.6\" %}\n\npackage:\n  name: rio-cogeo\n  version: {{ version }}\n\nsource:\n  url: https://pypi.io/packages/source/r/rio-cogeo/rio-cogeo-{{ version }}.tar.gz\n  sha256: 1bd56c23af16e91b68df187ad22cf70f62f783fdd8a9d5f471fb405a4c6349de\n\nbuild:\n  number: 0\n  noarch: python\n  script: \"{{ PYTHON }} -m pip install . --no-deps -vv\"\n\nrequirements:\n  host:\n    - python >3.3\n    - pip\n  run:\n    - python >3.3\n    - click\n    - mercantile\n    - numpy >=1.15,<2\n    - rasterio >=1.0.9\n    - boto3 >=1.2.4\n    - supermercado\n\ntest:\n  imports:\n    - rio_cogeo\n    - rio_cogeo.scripts\n  commands:\n    - rio cogeo --help\n    - rio cogeo create --help\n    - rio cogeo validate --help\n\nabout:\n  home: https://github.com/cogeotiff/rio-cogeo\n  license: BSD-3-Clause\n  license_family: BSD\n  license_file: LICENSE\n  summary: CloudOptimized GeoTIFF (COGEO) creation plugin for rasterio\n\nextra:\n  recipe-maintainers:\n    - ocefpaf\n",
+ "raw_meta_yaml":"{% set version = \"1.1.9\" %}\n\npackage:\n  name: rio-cogeo\n  version: {{ version }}\n\nsource:\n  url: https://pypi.io/packages/source/r/rio-cogeo/rio-cogeo-{{ version }}.tar.gz\n  sha256: 91aef989fa1a4386051ebf087a6f0f9995babb9cd5856b3c1734b45ea6b1ae7f\n\nbuild:\n  number: 0\n  noarch: python\n  script: {{ PYTHON }} -m pip install . -vv\n\nrequirements:\n  host:\n    - python >3.3\n    - pip\n  run:\n    - python >3.3\n    - click\n    - mercantile\n    - numpy >=1.15,<2\n    - rasterio >=1.0.28\n    - supermercado\n\ntest:\n  imports:\n    - rio_cogeo\n    - rio_cogeo.scripts\n  commands:\n    - pip check\n    - rio cogeo --help\n    - rio cogeo create --help\n    - rio cogeo validate --help\n  requires:\n    - pip\n    - boto3 >=1.2.4\n\nabout:\n  home: https://github.com/cogeotiff/rio-cogeo\n  license: BSD-3-Clause\n  license_family: BSD\n  license_file: LICENSE\n  summary: CloudOptimized GeoTIFF (COGEO) creation plugin for rasterio\n\nextra:\n  recipe-maintainers:\n    - ocefpaf\n",
  "req":{
   "__set__":true,
   "elements":[
-   "boto3",
    "click",
    "mercantile",
    "numpy",
@@ -273,7 +284,6 @@
   "run":{
    "__set__":true,
    "elements":[
-    "boto3",
     "click",
     "mercantile",
     "numpy",
@@ -284,7 +294,10 @@
   },
   "test":{
    "__set__":true,
-   "elements":[]
+   "elements":[
+    "boto3",
+    "pip"
+   ]
   }
  },
  "smithy_version":"3.6.8",
@@ -304,20 +317,22 @@
   "run":{
    "__set__":true,
    "elements":[
-    "boto3 >=1.2.4",
     "click",
     "mercantile",
     "numpy >=1.15,<2",
     "python >3.3",
-    "rasterio >=1.0.9",
+    "rasterio >=1.0.28",
     "supermercado"
    ]
   },
   "test":{
    "__set__":true,
-   "elements":[]
+   "elements":[
+    "boto3 >=1.2.4",
+    "pip"
+   ]
   }
  },
  "url":"https://pypi.io/packages/source/r/rio-cogeo/rio-cogeo-1.1.0.tar.gz",
- "version":"1.1.6"
+ "version":"1.1.9"
 }
