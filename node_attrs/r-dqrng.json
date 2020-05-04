@@ -16,6 +16,25 @@
     "migrator_version",
     "name"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/412860514.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"MigrationYaml",
+    "migrator_object_version":2,
+    "migrator_version":0,
+    "name":"r400"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_object_version",
+    "migrator_version",
+    "name"
+   ]
   }
  ],
  "bad":false,
@@ -126,7 +145,7 @@
  },
  "name":"r-dqrng",
  "new_version":"0.2.1",
- "pinning_version":"2019.07.19",
+ "pinning_version":"2020.05.04.05.46.47",
  "raw_meta_yaml":"{% set version = '0.2.1' %}\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-dqrng\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  url:\n    - {{ cran_mirror }}/src/contrib/dqrng_{{ version }}.tar.gz\n    - {{ cran_mirror }}/src/contrib/Archive/dqrng/dqrng_{{ version }}.tar.gz\n  sha256: e149c105b1db31e7f46b1aebf31d911a109e380923f3696fc56a53197fc1e866\n\nbuild:\n  merge_build_host: True  # [win]\n  number: 1\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - {{ compiler('c') }}        # [not win]\n    - {{ compiler('cxx') }}      # [not win]\n    - {{ compiler('m2w64_c') }}        # [win]\n    - {{ compiler('m2w64_cxx') }}        # [win]\n    - {{posix}}filesystem        # [win]\n    - {{posix}}make\n    - {{posix}}sed               # [win]\n    - {{posix}}coreutils         # [win]\n    - {{posix}}zip               # [win]\n  host:\n    - r-base\n    - r-bh >=1.64.0_1\n    - r-rcpp >=0.12.16\n    - r-sitmo >=2.0.0\n  run:\n    - r-base\n    - {{native}}gcc-libs         # [win]\n    - r-bh >=1.64.0_1\n    - r-rcpp >=0.12.16\n    - r-sitmo >=2.0.0\n\ntest:\n  commands:\n    - $R -e \"library('dqrng')\"           # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('dqrng')\\\"\"  # [win]\n\nabout:\n  home: https://www.daqana.org/dqrng, https://github.com/daqana/dqrng\n  license: AGPL-3\n  summary: 'Several fast random number generators are provided as C++ header only libraries:\n    The PCG family by O''Neill (2014 <https://www.cs.hmc.edu/tr/hmc-cs-2014-0905.pdf>)\n    as well as Xoroshiro128+ and Xoshiro256+ by Blackman and Vigna (2018 <arXiv:1805.01407>).\n    In addition fast functions for generating random numbers according to a uniform,\n    normal and exponential distribution are included. The latter two use the Ziggurat\n    algorithm originally proposed by Marsaglia and Tsang (2000, <doi:10.18637/jss.v005.i08>).\n    These functions are exported to R and as a C++ interface and are enabled for use\n    with the default 64 bit generator from the PCG family, Xoroshiro128+ and Xoshiro256+\n    as well as the 64 bit version of the 20 rounds Threefry engine (Salmon et al., 2011\n    <doi:10.1145/2063384.2063405>) as provided by the package ''sitmo''.'\n  license_family: AGPL\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n\n# Package: dqrng\n# Type: Package\n# Title: Fast Pseudo Random Number Generators\n# Version: 0.2.1\n# Authors@R: c( person(\"Ralf\", \"Stubner\", email = \"ralf.stubner@gmail.com\", role = c(\"aut\", \"cre\")), person(\"daqana GmbH\", role = \"cph\"), person(\"David Blackman\", role = \"ctb\"), person(\"Melissa O'Neill\", email = \"oneill@pcg-random.org\", role = \"ctb\"), person(\"Sebastiano Vigna\", email = \"vigna@acm.org\", role = \"ctb\"), person(\"Aaron\", \"Lun\", role=\"ctb\") )\n# Description: Several fast random number generators are provided as C++ header only libraries: The PCG family by O'Neill (2014 <https://www.cs.hmc.edu/tr/hmc-cs-2014-0905.pdf>) as well as Xoroshiro128+ and Xoshiro256+ by Blackman and Vigna (2018 <arXiv:1805.01407>). In addition fast functions for generating random numbers according to a uniform, normal and exponential distribution are included. The latter two use the Ziggurat algorithm originally proposed by Marsaglia and Tsang (2000, <doi:10.18637/jss.v005.i08>). These functions are exported to R and as a C++ interface and are enabled for use with the default 64 bit generator from the PCG family, Xoroshiro128+ and Xoshiro256+ as well as the 64 bit version of the 20 rounds Threefry engine (Salmon et al., 2011 <doi:10.1145/2063384.2063405>) as provided by the package 'sitmo'.\n# License: AGPL-3 | file LICENSE\n# Depends: R (>= 3.1.0)\n# Imports: Rcpp (>= 0.12.16)\n# LinkingTo: Rcpp, BH (>= 1.64.0-1), sitmo (>= 2.0.0)\n# RoxygenNote: 6.1.1\n# Suggests: testthat, knitr, rmarkdown\n# VignetteBuilder: knitr\n# URL: https://www.daqana.org/dqrng, https://github.com/daqana/dqrng\n# BugReports: https://github.com/daqana/dqrng/issues\n# Encoding: UTF-8\n# NeedsCompilation: yes\n# Packaged: 2019-05-17 14:56:00 UTC; ralf\n# Author: Ralf Stubner [aut, cre], daqana GmbH [cph], David Blackman [ctb], Melissa O'Neill [ctb], Sebastiano Vigna [ctb], Aaron Lun [ctb]\n# Maintainer: Ralf Stubner <ralf.stubner@gmail.com>\n# Repository: CRAN\n# Date/Publication: 2019-05-17 15:40:03 UTC\n",
  "req":{
   "__set__":true,
@@ -186,7 +205,7 @@
    "elements":[]
   }
  },
- "smithy_version":"3.4.1",
+ "smithy_version":"No azure token. Create a token and\nput it in ~/.conda-smithy/azure.token\n3.7.0\n",
  "strong_exports":false,
  "total_requirements":{
   "build":{

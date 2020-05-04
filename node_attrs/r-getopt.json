@@ -90,9 +90,6 @@
   "bot":{
    "automerge":true
   },
-  "compiler_stack":"comp7",
-  "max_py_ver":"37",
-  "max_r_ver":"35",
   "provider":{
    "win":"azure"
   }
@@ -102,13 +99,18 @@
  "meta_yaml":{
   "about":{
    "home":"https://github.com/trevorld/getopt",
-   "license":"GPL (>= 2)",
+   "license":"GPL-2.0-or-later",
    "license_family":"GPL3",
+   "license_file":[
+    "/lib/R/share/licenses/GPL-2",
+    "/lib/R/share/licenses/GPL-2",
+    "/lib/R/share/licenses/GPL-2"
+   ],
    "summary":"Package designed to be used with Rscript to write ``#!'' shebang scripts that accept short and long flags/options. Many users will prefer using instead the packages optparse or argparse which add extra features like automatically generated help option and usage, support for default values, positional argument support, etc."
   },
   "build":{
    "noarch":"generic",
-   "number":"1",
+   "number":"2",
    "rpaths":[
     "lib/R/lib/",
     "lib/",
@@ -170,7 +172,7 @@
  "name":"r-getopt",
  "new_version":"1.20.3",
  "pinning_version":"2020.05.04.05.46.47",
- "raw_meta_yaml":"{% set version = \"1.20.3\" %}\n\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-getopt\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  fn: getopt_{{ version }}.tar.gz\n  url:\n    - https://cran.r-project.org/src/contrib/getopt_{{ version }}.tar.gz\n    - https://cran.r-project.org/src/contrib/Archive/getopt/getopt_{{ version }}.tar.gz\n\n\n  sha256: 531f5fdfdcd6b96a73df2b39928418de342160ac1b0043861e9ea844f9fbf57f\n\nbuild:\n  noarch: generic\n  number: 1\n\n\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - r-base\n\n  run:\n    - r-base\n\ntest:\n  commands:\n    - $R -e \"library('getopt')\"  # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('getopt')\\\"\"  # [win]\n\n\n\nabout:\n  home: https://github.com/trevorld/getopt\n  license: GPL (>= 2)\n  summary: Package designed to be used with Rscript to write ``#!'' shebang scripts that accept\n    short and long flags/options. Many users will prefer using instead the packages\n    optparse or argparse which add extra features like automatically generated help\n    option and usage, support for default values, positional argument support, etc.\n  license_family: GPL3\n\n\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n    - dpryan79\n    - croth1\n",
+ "raw_meta_yaml":"{% set version = \"1.20.3\" %}\n\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-getopt\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  fn: getopt_{{ version }}.tar.gz\n  url:\n    - https://cran.r-project.org/src/contrib/getopt_{{ version }}.tar.gz\n    - https://cran.r-project.org/src/contrib/Archive/getopt/getopt_{{ version }}.tar.gz\n\n\n  sha256: 531f5fdfdcd6b96a73df2b39928418de342160ac1b0043861e9ea844f9fbf57f\n\nbuild:\n  noarch: generic\n  number: 2\n\n\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - r-base\n\n  run:\n    - r-base\n\ntest:\n  commands:\n    - $R -e \"library('getopt')\"  # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('getopt')\\\"\"  # [win]\n\n\n\nabout:\n  home: https://github.com/trevorld/getopt\n  license: GPL-2.0-or-later\n  summary: Package designed to be used with Rscript to write ``#!'' shebang scripts that accept short and long flags/options. Many users will prefer using instead the packages optparse or argparse which add extra features like automatically generated help option and usage, support for default values, positional argument\n    support, etc.\n  license_family: GPL3\n\n\n\n  license_file:\n    - {{ environ[\"PREFIX\"] }}/lib/R/share/licenses/GPL-2\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n    - dpryan79\n    - croth1\n",
  "req":{
   "__set__":true,
   "elements":[
