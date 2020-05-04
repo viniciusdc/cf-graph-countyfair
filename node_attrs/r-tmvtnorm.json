@@ -50,6 +50,25 @@
     "migrator_version",
     "name"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/412901444.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"MigrationYaml",
+    "migrator_object_version":2,
+    "migrator_version":0,
+    "name":"r400"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_object_version",
+    "migrator_version",
+    "name"
+   ]
   }
  ],
  "bad":false,
@@ -185,7 +204,7 @@
  },
  "name":"r-tmvtnorm",
  "new_version":"1.4_10",
- "pinning_version":"2019.08.19",
+ "pinning_version":"2020.05.04.05.46.47",
  "raw_meta_yaml":"{% set version = '1.4-10' %}\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-tmvtnorm\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  url:\n    - {{ cran_mirror }}/src/contrib/tmvtnorm_{{ version }}.tar.gz\n    - {{ cran_mirror }}/src/contrib/Archive/tmvtnorm/tmvtnorm_{{ version }}.tar.gz\n  sha256: 1a9f35e9b4899672e9c0b263affdc322ecb52ec198b2bb015af9d022faad73f0\n\nbuild:\n  merge_build_host: True  # [win]\n  number: 1002\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - {{ compiler('c') }}        # [not win]\n    - {{ compiler('fortran') }}  # [not win]\n    - {{ compiler('m2w64_c') }}        # [win]\n    - {{ compiler('m2w64_fortran') }}  # [win]\n    - {{posix}}filesystem        # [win]\n    - {{posix}}make\n    - {{posix}}sed               # [win]\n    - {{posix}}coreutils         # [win]\n    - {{posix}}zip               # [win]\n  host:\n    - r-base\n    - r-matrix\n    - r-gmm\n    - r-mvtnorm\n  run:\n    - r-base\n    - {{native}}gcc-libs         # [win]\n    - r-matrix\n    - r-gmm\n    - r-mvtnorm\n\ntest:\n  commands:\n    - $R -e \"library('tmvtnorm')\"           # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('tmvtnorm')\\\"\"  # [win]\n\nabout:\n  home: http://www.r-project.org\n  license: GPL (>= 2)\n  summary: Random number generation for the truncated multivariate normal and Student t distribution.  Computes\n    probabilities, quantiles and densities,  including one-dimensional and bivariate\n    marginal densities. Computes first and second moments (i.e. mean and covariance\n    matrix) for the double-truncated multinormal case.\n  license_family: GPL3\n  license_file: '{{ environ[\"PREFIX\"] }}/lib/R/share/licenses/GPL-2'\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n    - johanneskoester\n    - bgruening\n    - daler\n    - jdblischak\n    - cbrueffer\n    - dbast\n    - dpryan79\n",
  "req":{
   "__set__":true,
@@ -245,7 +264,7 @@
    "elements":[]
   }
  },
- "smithy_version":"3.4.1",
+ "smithy_version":"No azure token. Create a token and\nput it in ~/.conda-smithy/azure.token\n3.7.0\n",
  "strong_exports":false,
  "total_requirements":{
   "build":{

@@ -59,9 +59,6 @@
   "bot":{
    "automerge":true
   },
-  "compiler_stack":"comp7",
-  "max_py_ver":"37",
-  "max_r_ver":"35",
   "provider":{
    "win":"azure"
   }
@@ -79,7 +76,7 @@
   "build":{
    "merge_build_host":true,
    "noarch":"generic",
-   "number":"1001",
+   "number":"1002",
    "rpaths":[
     "lib/R/lib/",
     "lib/",
@@ -160,7 +157,7 @@
  "name":"r-venndiagram",
  "new_version":"1.6.20",
  "pinning_version":"2020.05.04.05.46.47",
- "raw_meta_yaml":"{% set version = '1.6.20' %}\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-venndiagram\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  fn: VennDiagram_{{ version }}.tar.gz\n  url:\n    - {{ cran_mirror }}/src/contrib/VennDiagram_{{ version }}.tar.gz\n    - {{ cran_mirror }}/src/contrib/Archive/VennDiagram/VennDiagram_{{ version }}.tar.gz\n  sha256: e51cb3fff23c6ec8191966490bf875a7415f8725d4054bae881a25febb9281c5\n\nbuild:\n  noarch: generic\n  merge_build_host: True  # [win]\n  number: 1001\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - {{posix}}zip               # [win]\n  host:\n    - r-base\n    - r-futile.logger\n  run:\n    - r-base\n    - r-futile.logger\n\ntest:\n  commands:\n    - $R -e \"library('VennDiagram')\"           # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('VennDiagram')\\\"\"  # [win]\n\nabout:\n  home: https://CRAN.R-project.org/package=VennDiagram\n  license: GPL-2\n  summary: A set of functions to generate high-resolution Venn and Euler plots. Includes handling\n    for several special cases, including two-case scaling, and extensive customization\n    of plot shape and structure.\n  license_family: GPL2\n  license_file: '{{ environ[\"PREFIX\"] }}/lib/R/share/licenses/GPL-2'\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n    - johanneskoester\n    - bgruening\n    - daler\n    - jdblischak\n    - cbrueffer\n    - dbast\n",
+ "raw_meta_yaml":"{% set version = '1.6.20' %}\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-venndiagram\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  fn: VennDiagram_{{ version }}.tar.gz\n  url:\n    - {{ cran_mirror }}/src/contrib/VennDiagram_{{ version }}.tar.gz\n    - {{ cran_mirror }}/src/contrib/Archive/VennDiagram/VennDiagram_{{ version }}.tar.gz\n  sha256: e51cb3fff23c6ec8191966490bf875a7415f8725d4054bae881a25febb9281c5\n\nbuild:\n  noarch: generic\n  merge_build_host: True  # [win]\n  number: 1002\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - {{ posix }}zip               # [win]\n  host:\n    - r-base\n    - r-futile.logger\n  run:\n    - r-base\n    - r-futile.logger\n\ntest:\n  commands:\n    - $R -e \"library('VennDiagram')\"           # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('VennDiagram')\\\"\"  # [win]\n\nabout:\n  home: https://CRAN.R-project.org/package=VennDiagram\n  license: GPL-2\n  summary: A set of functions to generate high-resolution Venn and Euler plots. Includes handling\n    for several special cases, including two-case scaling, and extensive customization\n    of plot shape and structure.\n  license_family: GPL2\n  license_file: '{{ environ[\"PREFIX\"] }}/lib/R/share/licenses/GPL-2'\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n    - johanneskoester\n    - bgruening\n    - daler\n    - jdblischak\n    - cbrueffer\n    - dbast\n",
  "req":{
   "__set__":true,
   "elements":[
