@@ -74,9 +74,6 @@
   "bot":{
    "automerge":true
   },
-  "compiler_stack":"comp7",
-  "max_py_ver":"37",
-  "max_r_ver":"35",
   "provider":{
    "win":"azure"
   }
@@ -93,7 +90,7 @@
   },
   "build":{
    "merge_build_host":true,
-   "number":"1003",
+   "number":"1004",
    "rpaths":[
     "lib/R/lib/",
     "lib/",
@@ -207,7 +204,7 @@
  "name":"r-sem",
  "new_version":"3.1_9",
  "pinning_version":"2020.05.04.05.46.47",
- "raw_meta_yaml":"{% set version = '3.1-9' %}\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-sem\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  fn: sem_{{ version }}.tar.gz\n  url:\n    - {{ cran_mirror }}/src/contrib/sem_{{ version }}.tar.gz\n    - {{ cran_mirror }}/src/contrib/Archive/sem/sem_{{ version }}.tar.gz\n  sha256: 4a33780202506543da85877cd2813250114420d6ec5e75457bc67477cd332cb9\n\nbuild:\n  merge_build_host: True  # [win]\n  number: 1003\n  skip: true  # [win32]\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - {{ compiler('c') }}        # [not win]\n    - {{ compiler('cxx') }}      # [not win]\n    - {{ compiler('m2w64_c') }}        # [win]\n    - {{ compiler('m2w64_cxx') }}        # [win]\n    - {{posix}}filesystem        # [win]\n    - {{posix}}make\n    - {{posix}}sed               # [win]\n    - {{posix}}coreutils         # [win]\n    - {{posix}}zip               # [win]\n  host:\n    - r-base\n    - r-mass\n    - r-boot\n    - r-matrixcalc\n    - r-mi >=0.9_99\n  run:\n    - r-base\n    - {{native}}gcc-libs         # [win]\n    - r-mass\n    - r-boot\n    - r-matrixcalc\n    - r-mi >=0.9_99\n\ntest:\n  commands:\n    - $R -e \"library('sem')\"           # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('sem')\\\"\"  # [win]\n\nabout:\n  home: http://socserv.socsci.mcmaster.ca/jfox/\n  license: GPL (>= 2)\n  summary: Functions for fitting general linear structural equation models (with observed and\n    latent variables) using the RAM approach, and for fitting structural equations\n    in observed-variable models by two-stage least squares.\n  license_family: GPL3\n  license_file: '{{ environ[\"PREFIX\"] }}/lib/R/share/licenses/GPL-3'\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n    - johanneskoester\n    - bgruening\n    - daler\n    - jdblischak\n    - cbrueffer\n    - dbast\n",
+ "raw_meta_yaml":"{% set version = '3.1-9' %}\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-sem\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  fn: sem_{{ version }}.tar.gz\n  url:\n    - {{ cran_mirror }}/src/contrib/sem_{{ version }}.tar.gz\n    - {{ cran_mirror }}/src/contrib/Archive/sem/sem_{{ version }}.tar.gz\n  sha256: 4a33780202506543da85877cd2813250114420d6ec5e75457bc67477cd332cb9\n\nbuild:\n  merge_build_host: True  # [win]\n  number: 1004\n  skip: true  # [win32]\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - {{ compiler('c') }}        # [not win]\n    - {{ compiler('cxx') }}      # [not win]\n    - {{ compiler('m2w64_c') }}        # [win]\n    - {{ compiler('m2w64_cxx') }}        # [win]\n    - {{ posix }}filesystem        # [win]\n    - {{ posix }}make\n    - {{ posix }}sed               # [win]\n    - {{ posix }}coreutils         # [win]\n    - {{ posix }}zip               # [win]\n  host:\n    - r-base\n    - r-mass\n    - r-boot\n    - r-matrixcalc\n    - r-mi >=0.9_99\n  run:\n    - r-base\n    - {{ native }}gcc-libs         # [win]\n    - r-mass\n    - r-boot\n    - r-matrixcalc\n    - r-mi >=0.9_99\n\ntest:\n  commands:\n    - $R -e \"library('sem')\"           # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('sem')\\\"\"  # [win]\n\nabout:\n  home: http://socserv.socsci.mcmaster.ca/jfox/\n  license: GPL (>= 2)\n  summary: Functions for fitting general linear structural equation models (with observed and\n    latent variables) using the RAM approach, and for fitting structural equations\n    in observed-variable models by two-stage least squares.\n  license_family: GPL3\n  license_file: '{{ environ[\"PREFIX\"] }}/lib/R/share/licenses/GPL-3'\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n    - johanneskoester\n    - bgruening\n    - daler\n    - jdblischak\n    - cbrueffer\n    - dbast\n",
  "req":{
   "__set__":true,
   "elements":[

@@ -74,9 +74,6 @@
   "bot":{
    "automerge":true
   },
-  "compiler_stack":"comp7",
-  "max_py_ver":"37",
-  "max_r_ver":"35",
   "provider":{
    "win":"azure"
   }
@@ -93,7 +90,7 @@
   },
   "build":{
    "merge_build_host":true,
-   "number":"1002",
+   "number":"0",
    "rpaths":[
     "lib/R/lib/",
     "lib/",
@@ -112,7 +109,7 @@
   },
   "package":{
    "name":"r-mda",
-   "version":"0.4_10"
+   "version":"0.5"
   },
   "requirements":{
    "build":[
@@ -149,14 +146,14 @@
    ]
   },
   "source":{
-   "sha256":"7036bc622a8fea5b2de94fc19e6b64f5f0c27e5d743ae7646e116af08c9de6a5",
+   "sha256":"bdee7286200d37e04205a02ccf37cb0b692e066ba903df2c3a3d87ddd3cff206",
    "url":[
-    "https://cran.r-project.org/src/contrib/mda_0.4-10.tar.gz",
-    "https://cran.r-project.org/src/contrib/Archive/mda/mda_0.4-10.tar.gz",
-    "https://cran.r-project.org/src/contrib/mda_0.4-10.tar.gz",
-    "https://cran.r-project.org/src/contrib/Archive/mda/mda_0.4-10.tar.gz",
-    "https://cran.r-project.org/src/contrib/mda_0.4-10.tar.gz",
-    "https://cran.r-project.org/src/contrib/Archive/mda/mda_0.4-10.tar.gz"
+    "https://cran.r-project.org/src/contrib/mda_0.5.tar.gz",
+    "https://cran.r-project.org/src/contrib/Archive/mda/mda_0.5.tar.gz",
+    "https://cran.r-project.org/src/contrib/mda_0.5.tar.gz",
+    "https://cran.r-project.org/src/contrib/Archive/mda/mda_0.5.tar.gz",
+    "https://cran.r-project.org/src/contrib/mda_0.5.tar.gz",
+    "https://cran.r-project.org/src/contrib/Archive/mda/mda_0.5.tar.gz"
    ]
   },
   "test":{
@@ -174,7 +171,7 @@
  },
  "new_version_errors":{},
  "pinning_version":"2020.05.04.05.46.47",
- "raw_meta_yaml":"{% set version = '0.4-10' %}\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-mda\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  url:\n    - {{ cran_mirror }}/src/contrib/mda_{{ version }}.tar.gz\n    - {{ cran_mirror }}/src/contrib/Archive/mda/mda_{{ version }}.tar.gz\n  sha256: 7036bc622a8fea5b2de94fc19e6b64f5f0c27e5d743ae7646e116af08c9de6a5\n\nbuild:\n  merge_build_host: True  # [win]\n  number: 1002\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - {{ compiler('c') }}        # [not win]\n    - {{ compiler('fortran') }}  # [not win]\n    - {{ compiler('m2w64_c') }}        # [win]\n    - {{ compiler('m2w64_fortran') }}        # [win]\n    - {{posix}}filesystem        # [win]\n    - {{posix}}make\n    - {{posix}}sed               # [win]\n    - {{posix}}coreutils         # [win]\n    - {{posix}}zip               # [win]\n  host:\n    - r-base\n    - r-class\n  run:\n    - r-base\n    - {{native}}gcc-libs         # [win]\n    - r-class\n\ntest:\n  commands:\n    - $R -e \"library('mda')\"           # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('mda')\\\"\"  # [win]\n\nabout:\n  home: https://CRAN.R-project.org/package=mda\n  license: GPL-2\n  summary: Mixture and flexible discriminant analysis, multivariate adaptive regression splines\n    (MARS), BRUTO, ...\n  license_family: GPL2\n  license_file: '{{ environ[\"PREFIX\"] }}/lib/R/share/licenses/GPL-2'\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n\n# Package: mda\n# Version: 0.4-10\n# Date: 2017-11-02\n# Author: S original by Trevor Hastie & Robert Tibshirani. Original R port by Friedrich Leisch, Kurt Hornik and Brian D. Ripley.\n# Maintainer: Trevor Hastie <hastie@stanford.edu>\n# Description: Mixture and flexible discriminant analysis, multivariate adaptive regression splines (MARS), BRUTO, ...\n# Title: Mixture and Flexible Discriminant Analysis\n# Depends: R (>= 1.9.0), stats, class\n# Suggests: earth\n# License: GPL-2\n# Packaged: 2017-11-02 15:46:34 UTC; hastie\n# Repository: CRAN\n# Date/Publication: 2017-11-02 16:15:22 UTC\n# NeedsCompilation: yes\n",
+ "raw_meta_yaml":"{% set version = \"0.5\" %}\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-mda\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  url:\n    - {{ cran_mirror }}/src/contrib/mda_{{ version }}.tar.gz\n    - {{ cran_mirror }}/src/contrib/Archive/mda/mda_{{ version }}.tar.gz\n  sha256: bdee7286200d37e04205a02ccf37cb0b692e066ba903df2c3a3d87ddd3cff206\n\nbuild:\n  merge_build_host: true  # [win]\n  number: 0\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - {{ compiler('c') }}        # [not win]\n    - {{ compiler('fortran') }}  # [not win]\n    - {{ compiler('m2w64_c') }}        # [win]\n    - {{ compiler('m2w64_fortran') }}        # [win]\n    - {{ posix }}filesystem        # [win]\n    - {{ posix }}make\n    - {{ posix }}sed               # [win]\n    - {{ posix }}coreutils         # [win]\n    - {{ posix }}zip               # [win]\n  host:\n    - r-base\n    - r-class\n  run:\n    - r-base\n    - {{ native }}gcc-libs         # [win]\n    - r-class\n\ntest:\n  commands:\n    - $R -e \"library('mda')\"           # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('mda')\\\"\"  # [win]\n\nabout:\n  home: https://CRAN.R-project.org/package=mda\n  license: GPL-2\n  summary: Mixture and flexible discriminant analysis, multivariate adaptive regression splines (MARS), BRUTO, ...\n  license_family: GPL2\n  license_file: {{ environ[\"PREFIX\"] }}/lib/R/share/licenses/GPL-2\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n\n# Package: mda\n# Version: 0.4-10\n# Date: 2017-11-02\n# Author: S original by Trevor Hastie & Robert Tibshirani. Original R port by Friedrich Leisch, Kurt Hornik and Brian D. Ripley.\n# Maintainer: Trevor Hastie <hastie@stanford.edu>\n# Description: Mixture and flexible discriminant analysis, multivariate adaptive regression splines (MARS), BRUTO, ...\n# Title: Mixture and Flexible Discriminant Analysis\n# Depends: R (>= 1.9.0), stats, class\n# Suggests: earth\n# License: GPL-2\n# Packaged: 2017-11-02 15:46:34 UTC; hastie\n# Repository: CRAN\n# Date/Publication: 2017-11-02 16:15:22 UTC\n# NeedsCompilation: yes\n",
  "req":{
   "__set__":true,
   "elements":[
@@ -272,5 +269,5 @@
   "https://cran.r-project.org/src/contrib/mda_0.4-10.tar.gz",
   "https://cran.r-project.org/src/contrib/Archive/mda/mda_0.4-10.tar.gz"
  ],
- "version":"0.4_10"
+ "version":"0.5"
 }

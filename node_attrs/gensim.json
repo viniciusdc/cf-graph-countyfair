@@ -211,9 +211,6 @@
  ],
  "bad":false,
  "conda-forge.yml":{
-  "compiler_stack":"comp7",
-  "max_py_ver":"37",
-  "max_r_ver":"35",
   "provider":{
    "win":"azure"
   }
@@ -226,14 +223,13 @@
    "dev_url":"https://github.com/RaRe-Technologies/gensim",
    "doc_url":"http://radimrehurek.com/gensim/",
    "home":"http://github.com/RaRe-Technologies/gensim",
-   "license":"LGPL-2.1",
-   "license_family":"LGPL",
+   "license":"LGPL-2.1-only",
    "license_file":"COPYING",
    "summary":"Topic Modelling for Humans"
   },
   "build":{
-   "number":"1",
-   "script":" -m pip install . -vv"
+   "number":"0",
+   "script":"-m pip install . -vv"
   },
   "extra":{
    "recipe-maintainers":[
@@ -247,7 +243,7 @@
   },
   "package":{
    "name":"gensim",
-   "version":"3.8.1"
+   "version":"3.8.3"
   },
   "requirements":{
    "build":[
@@ -297,8 +293,8 @@
    ]
   },
   "source":{
-   "sha256":"33277fc0a8d7b0c7ce70fcc74bb82ad39f944c009b334856c6e86bf552b1dfdc",
-   "url":"https://pypi.io/packages/source/g/gensim/gensim-3.8.1.tar.gz"
+   "sha256":"786adb0571f75114e9c5f7a31dd2e6eb39a9791f22c8757621545e2ded3ea367",
+   "url":"https://pypi.io/packages/source/g/gensim/gensim-3.8.3.tar.gz"
   },
   "test":{
    "commands":[
@@ -384,7 +380,7 @@
   "3.8.3":"The recipe did not change in the version migration, a URL did not hash, or there is jinja2 syntax the bot cannot handle!\n\nPlease check the URLs in your recipe with version '3.8.3' to make sure they exist!\n\nWe also found the following errors:\n\n - could not hash URL template 'https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz'\n"
  },
  "pinning_version":"2020.05.04.00.11.09",
- "raw_meta_yaml":"{% set name = \"gensim\" %}\n{% set version = \"3.8.1\" %}\n{% set sha256 = \"33277fc0a8d7b0c7ce70fcc74bb82ad39f944c009b334856c6e86bf552b1dfdc\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz\n  sha256: {{ sha256 }}\n\nbuild:\n  number: 1\n  skip: true  # [py==27]\n  script: \"{{ PYTHON }} -m pip install . -vv\"\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n  host:\n    - python\n    - pip\n    - numpy >=1.11.3\n    - scipy >=0.18.1\n    - six >=1.5.0\n    - smart_open >=1.2.1\n  run:\n    - python\n    - {{ pin_compatible('numpy') }}\n    - scipy >=0.18.1\n    - six >=1.5.0\n    - smart_open >=1.2.1\n\ntest:\n  requires:\n    - nose\n    - testfixtures\n    - morfessor\n    - scikit-learn\n    - pyemd\n    - mock\n    - boto3\n    - python-Levenshtein\n  imports:\n    - gensim\n    - gensim.corpora\n    - gensim.models\n    - gensim.models.wrappers\n    - gensim.parsing\n    - gensim.scripts\n    - gensim.similarities\n    - gensim.sklearn_api\n    - gensim.summarization\n    - gensim.test\n    - gensim.topic_coherence\n  files:\n    - forge_test.sh\n  commands:\n    - time bash ./forge_test.sh  # [not win]\n    - nosetests --exe -v gensim  # [win]\n\nabout:\n  home: http://github.com/RaRe-Technologies/gensim\n  license: LGPL-2.1\n  license_file: COPYING\n  license_family: LGPL\n  summary: 'Topic Modelling for Humans'\n  description: |\n    Gensim is a Python library for topic modelling, document indexing\n    and similarity retrieval with large corpora.\n    Target audience is the natural language processing (NLP)\n    and information retrieval (IR) community.\n  doc_url: http://radimrehurek.com/gensim/\n  dev_url: https://github.com/RaRe-Technologies/gensim\n\nextra:\n  recipe-maintainers:\n    - souravsingh\n    - mpenkov\n",
+ "raw_meta_yaml":"{% set name = \"gensim\" %}\n{% set version = \"3.8.3\" %}\n{% set sha256 = \"786adb0571f75114e9c5f7a31dd2e6eb39a9791f22c8757621545e2ded3ea367\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz\n  sha256: {{ sha256 }}\n\nbuild:\n  number: 0\n  skip: true  # [py==27]\n  script: {{ PYTHON }} -m pip install . -vv\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n  host:\n    - python\n    - pip\n    - numpy >=1.11.3\n    - scipy >=0.18.1\n    - six >=1.5.0\n    - smart_open >=1.2.1\n  run:\n    - python\n    - {{ pin_compatible('numpy') }}\n    - scipy >=0.18.1\n    - six >=1.5.0\n    - smart_open >=1.2.1\n\ntest:\n  requires:\n    - nose\n    - testfixtures\n    - morfessor\n    - scikit-learn\n    - pyemd\n    - mock\n    - boto3\n    - python-Levenshtein\n  imports:\n    - gensim\n    - gensim.corpora\n    - gensim.models\n    - gensim.models.wrappers\n    - gensim.parsing\n    - gensim.scripts\n    - gensim.similarities\n    - gensim.sklearn_api\n    - gensim.summarization\n    - gensim.test\n    - gensim.topic_coherence\n  files:\n    - forge_test.sh\n  commands:\n    - time bash ./forge_test.sh  # [not win]\n    - nosetests --exe -v gensim  # [win]\n\nabout:\n  home: http://github.com/RaRe-Technologies/gensim\n  license: LGPL-2.1-only\n  license_file: COPYING\n  summary: Topic Modelling for Humans\n  description: |\n    Gensim is a Python library for topic modelling, document indexing\n    and similarity retrieval with large corpora.\n    Target audience is the natural language processing (NLP)\n    and information retrieval (IR) community.\n  doc_url: http://radimrehurek.com/gensim/\n  dev_url: https://github.com/RaRe-Technologies/gensim\n\nextra:\n  recipe-maintainers:\n    - souravsingh\n    - mpenkov\n",
  "req":{
   "__set__":true,
   "elements":[
@@ -487,5 +483,5 @@
   }
  },
  "url":"https://pypi.io/packages/source/g/gensim/gensim-3.7.3.tar.gz",
- "version":"3.8.1"
+ "version":"3.8.3"
 }
