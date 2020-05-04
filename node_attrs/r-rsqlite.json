@@ -133,6 +133,25 @@
     "migrator_version",
     "version"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/412702993.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"MigrationYaml",
+    "migrator_object_version":2,
+    "migrator_version":0,
+    "name":"r400"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_object_version",
+    "migrator_version",
+    "name"
+   ]
   }
  ],
  "bad":false,
@@ -278,7 +297,7 @@
  },
  "name":"r-rsqlite",
  "new_version":"2.2.0",
- "pinning_version":"2020.01.06",
+ "pinning_version":"2020.05.04.00.11.09",
  "raw_meta_yaml":"{% set version = \"2.2.0\" %}\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-rsqlite\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  url:\n    - {{ cran_mirror }}/src/contrib/RSQLite_{{ version }}.tar.gz\n    - {{ cran_mirror }}/src/contrib/Archive/RSQLite/RSQLite_{{ version }}.tar.gz\n  sha256: 000d126fda069cd97d1a9f9df16cd267ca76d8b96c290ca9b8c32d9e91d468d4\n\nbuild:\n  merge_build_host: True  # [win]\n  number: 1\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - {{ compiler('c') }}              # [not win]\n    - {{ compiler('m2w64_c') }}        # [win]\n    - {{ compiler('cxx') }}            # [not win]\n    - {{ compiler('m2w64_cxx') }}      # [win]\n    - {{posix}}filesystem        # [win]\n    - {{posix}}make\n    - {{posix}}sed               # [win]\n    - {{posix}}coreutils         # [win]\n    - {{posix}}zip               # [win]\n  host:\n    - r-base\n    - r-bh\n    - r-dbi >=1.0.0\n    - r-rcpp >=0.12.7\n    - r-bit64\n    - r-blob >=1.2.0\n    - r-memoise\n    - r-pkgconfig\n    - r-plogr >=0.2.0\n  run:\n    - r-base\n    - {{native}}gcc-libs         # [win]\n    # BH is the header-only part of Boost and thus a compile-time requirement only\n    # - r-bh\n    - r-dbi >=1.0.0\n    - r-rcpp >=0.12.7\n    - r-bit64\n    - r-blob >=1.2.0\n    - r-memoise\n    - r-pkgconfig\n    - r-plogr >=0.2.0\n\ntest:\n  commands:\n    - $R -e \"library('RSQLite')\"           # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('RSQLite')\\\"\"  # [win]\n\nabout:\n  home: https://github.com/r-dbi/RSQLite\n  license: LGPL-2\n  summary: Embeds the 'SQLite' database engine in R and provides an interface compliant with\n    the 'DBI' package. The source for the 'SQLite' engine is included.\n  license_family: LGPL\n  license_file:\n    - '{{ environ[\"PREFIX\"] }}/lib/R/share/licenses/LGPL-2'\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n\n# Package: RSQLite\n# Title: 'SQLite' Interface for R\n# Version: 2.1.4\n# Date: 2019-12-04\n# Authors@R: c( person(\"Kirill\", \"M\\u00fcller\", role = c(\"aut\", \"cre\"), email = \"krlmlr+r@mailbox.org\", comment = c(ORCID = \"0000-0002-1416-3412\")), person(\"Hadley\", \"Wickham\", role = c(\"aut\")), person(c(\"David\", \"A.\"), \"James\", role = \"aut\"), person(\"Seth\", \"Falcon\", role = \"aut\"), person(family = \"SQLite Authors\", role = \"ctb\", comment = \"for the included SQLite sources\"), person(\"Liam\", \"Healy\", role = \"ctb\", comment = \"for the included SQLite sources\"), person(family = \"R Consortium\", role = \"fnd\"), person(family = \"RStudio\", role = \"cph\") )\n# Description: Embeds the 'SQLite' database engine in R and provides an interface compliant with the 'DBI' package. The source for the 'SQLite' engine is included.\n# License: LGPL (>= 2)\n# URL: https://github.com/r-dbi/RSQLite\n# BugReports: https://github.com/r-dbi/RSQLite/issues\n# Depends: R (>= 3.1.0)\n# Imports: bit64, blob (>= 1.2.0), DBI (>= 1.0.0), memoise, methods, pkgconfig, Rcpp (>= 0.12.7)\n# Suggests: DBItest, knitr, rmarkdown, testthat\n# LinkingTo: BH, plogr (>= 0.2.0), Rcpp\n# VignetteBuilder: knitr\n# Encoding: UTF-8\n# RoxygenNote: 6.1.1\n# Collate: 'RcppExports.R' 'SQLiteConnection.R' 'SQLiteDriver.R' 'SQLiteResult.R' 'coerce.R' 'connect.R' 'copy.R' 'datasetsDb.R' 'deprecated.R' 'export.R' 'extensions.R' 'names.R' 'query.R' 'regularExpressions.R' 'rownames.R' 'table.R' 'transactions.R' 'utils.R' 'zzz.R'\n# NeedsCompilation: yes\n# Packaged: 2019-12-04 20:55:04 UTC; kirill\n# Author: Kirill Muller [aut, cre] (<https://orcid.org/0000-0002-1416-3412>), Hadley Wickham [aut], David A. James [aut], Seth Falcon [aut], SQLite Authors [ctb] (for the included SQLite sources), Liam Healy [ctb] (for the included SQLite sources), R Consortium [fnd], RStudio [cph]\n# Maintainer: Kirill Muller <krlmlr+r@mailbox.org>\n# Repository: CRAN\n# Date/Publication: 2019-12-04 22:30:06 UTC\n",
  "req":{
   "__set__":true,
@@ -352,7 +371,7 @@
    "elements":[]
   }
  },
- "smithy_version":"3.6.5",
+ "smithy_version":"No azure token. Create a token and\nput it in ~/.conda-smithy/azure.token\n3.7.0\n",
  "strong_exports":false,
  "total_requirements":{
   "build":{

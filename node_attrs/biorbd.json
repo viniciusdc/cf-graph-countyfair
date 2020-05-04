@@ -298,22 +298,7 @@
    ]
   }
  ],
- "bad":{
-  "exception":"Command '['git', 'commit', '-am', 'updated v1.2.5']' returned non-zero exit status 1.",
-  "traceback":[
-   "Traceback (most recent call last):",
-   "  File \"/root/repo/cf-scripts/conda_forge_tick/auto_tick.py\", line 811, in main",
-   "    hash_type=attrs.get(\"hash_type\", \"sha256\"),",
-   "  File \"/root/repo/cf-scripts/conda_forge_tick/auto_tick.py\", line 198, in run",
-   "    eval_cmd(f\"git commit -am '{msg}'\")",
-   "  File \"/root/repo/cf-scripts/conda_forge_tick/utils.py\", line 78, in eval_cmd",
-   "    c = subprocess.run(shlex.split(cmd), check=True, stdout=subprocess.PIPE)",
-   "  File \"/opt/conda/envs/run_env/lib/python3.7/subprocess.py\", line 512, in run",
-   "    output=stdout, stderr=stderr)",
-   "subprocess.CalledProcessError: Command '['git', 'commit', '-am', 'updated v1.2.5']' returned non-zero exit status 1.",
-   ""
-  ]
- },
+ "bad":false,
  "conda-forge.yml":{
   "bot":{
    "automerge":true
@@ -332,7 +317,7 @@
    "summary":"Biomechanical add-ons to the RigidBody Dynamics Library "
   },
   "build":{
-   "number":"2",
+   "number":"0",
    "rpaths":[
     "lib/",
     "lib/biorbd/",
@@ -357,7 +342,7 @@
   },
   "package":{
    "name":"biorbd",
-   "version":"1.2.4"
+   "version":"1.2.5"
   },
   "requirements":{
    "build":[
@@ -408,8 +393,8 @@
    ]
   },
   "source":{
-   "sha256":"7682fa0c34d6c9a4415c8293d12089845390516845334dbb5c4fcaedb60872ef",
-   "url":"https://github.com/pyomeca/biorbd/archive/Release_1.2.4.tar.gz"
+   "sha256":"1fc876d480110bbc4b64f41bd23909006b0ca9abb6620cfc2fbf5252fe565597",
+   "url":"https://github.com/pyomeca/biorbd/archive/Release_1.2.5.tar.gz"
   },
   "test":{
    "commands":[
@@ -436,7 +421,7 @@
  },
  "new_version_errors":{},
  "pinning_version":"2020.04.26.19.17.14",
- "raw_meta_yaml":"{% set name = \"biorbd\" %}\n{% set version = \"1.2.4\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  url: https://github.com/pyomeca/{{ name }}/archive/Release_{{ version }}.tar.gz\n  sha256: 7682fa0c34d6c9a4415c8293d12089845390516845334dbb5c4fcaedb60872ef\n\nbuild:\n  number: 2\n  skip: true  # [win and vc<14]\n  skip: true  # [py<35]\n  rpaths:\n    - lib/\n    - lib/{{ name }}/\n  run_exports:\n    - {{ pin_subpackage('biorbd', max_pin='x.x') }}\n\nrequirements:\n  build:\n    - {{ compiler('cxx') }}\n    - cmake\n    - ninja\n  host:\n    - eigen\n    - rbdl\n    - tinyxml\n    - ipopt  # [not win]\n    - python\n    - numpy\n    - swig\n  run:\n    - {{ pin_compatible('rbdl') }}\n    - ipopt  # [not win]\n    - python\n    - {{ pin_compatible('numpy') }}\n\ntest:\n  commands:\n    - test -f $PREFIX/lib/biorbd/libbiorbd$SHLIB_EXT  # [unix]\n    - if not exist %PREFIX%\\\\Lib\\\\biorbd*.lib exit 1  # [win]\n  imports:\n    - biorbd\n\nabout:\n  home: http://github.com/pyomeca/biorbd\n  license: MIT\n  license_file: LICENSE\n  summary: 'Biomechanical add-ons to the RigidBody Dynamics Library '\n\n  description: |\n    Biomechanical add-ons to the RigidBody Dynamics Library .\n  doc_url: https://github.com/pyomeca/biorbd/\n  dev_url: https://github.com/pyomeca/biorbd/\n\nextra:\n  recipe-maintainers:\n    - pariterre\n",
+ "raw_meta_yaml":"{% set name = \"biorbd\" %}\n{% set version = \"1.2.5\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  url: https://github.com/pyomeca/{{ name }}/archive/Release_{{ version }}.tar.gz\n  sha256: 1fc876d480110bbc4b64f41bd23909006b0ca9abb6620cfc2fbf5252fe565597\n\nbuild:\n  number: 0\n  skip: true  # [win and vc<14]\n  skip: true  # [py<35]\n  rpaths:\n    - lib/\n    - lib/{{ name }}/\n  run_exports:\n    - {{ pin_subpackage('biorbd', max_pin='x.x') }}\n\nrequirements:\n  build:\n    - {{ compiler('cxx') }}\n    - cmake\n    - ninja\n  host:\n    - eigen\n    - rbdl\n    - tinyxml\n    - ipopt  # [not win]\n    - python\n    - numpy\n    - swig\n  run:\n    - {{ pin_compatible('rbdl') }}\n    - ipopt  # [not win]\n    - python\n    - {{ pin_compatible('numpy') }}\n\ntest:\n  commands:\n    - test -f $PREFIX/lib/biorbd/libbiorbd$SHLIB_EXT  # [unix]\n    - if not exist %PREFIX%\\\\Lib\\\\biorbd*.lib exit 1  # [win]\n  imports:\n    - biorbd\n\nabout:\n  home: http://github.com/pyomeca/biorbd\n  license: MIT\n  license_file: LICENSE\n  summary: 'Biomechanical add-ons to the RigidBody Dynamics Library '\n\n  description: |\n    Biomechanical add-ons to the RigidBody Dynamics Library .\n  doc_url: https://github.com/pyomeca/biorbd/\n  dev_url: https://github.com/pyomeca/biorbd/\n\nextra:\n  recipe-maintainers:\n    - pariterre\n",
  "req":{
   "__set__":true,
   "elements":[
@@ -525,5 +510,5 @@
   }
  },
  "url":"https://github.com/pyomeca/biorbd/archive/Release_0.1.3.tar.gz",
- "version":"1.2.4"
+ "version":"1.2.5"
 }

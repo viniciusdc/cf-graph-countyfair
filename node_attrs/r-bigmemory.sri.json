@@ -59,9 +59,6 @@
   "bot":{
    "automerge":true
   },
-  "compiler_stack":"comp7",
-  "max_py_ver":"37",
-  "max_r_ver":"35",
   "provider":{
    "win":"azure"
   }
@@ -71,14 +68,19 @@
  "meta_yaml":{
   "about":{
    "home":"https://CRAN.R-project.org/package=bigmemory.sri",
-   "license":"LGPL-3 | Apache 2.0",
+   "license":"LGPL-3.0-only OR Apache-2.0",
    "license_family":"LGPL",
+   "license_file":[
+    "/lib/R/share/licenses/LGPL-3",
+    "/lib/R/share/licenses/LGPL-3",
+    "/lib/R/share/licenses/LGPL-3"
+   ],
    "summary":"This package provides a shared resource interface for the bigmemory and synchronicity packages."
   },
   "build":{
    "merge_build_host":true,
    "noarch":"generic",
-   "number":"1003",
+   "number":"1004",
    "rpaths":[
     "lib/R/lib/",
     "lib/",
@@ -153,7 +155,7 @@
  "name":"r-bigmemory.sri",
  "new_version":"0.1.3",
  "pinning_version":"2020.05.03.19.37.20",
- "raw_meta_yaml":"{% set version = '0.1.3' %}\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-bigmemory.sri\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  fn: bigmemory.sri_{{ version }}.tar.gz\n  url:\n    - {{ cran_mirror }}/src/contrib/bigmemory.sri_{{ version }}.tar.gz\n    - {{ cran_mirror }}/src/contrib/Archive/bigmemory.sri/bigmemory.sri_{{ version }}.tar.gz\n  sha256: 55403252d8bae9627476d1f553236ea5dc7aa6e54da6980526a6cdc66924e155\n\nbuild:\n  noarch: generic\n  merge_build_host: True  # [win]\n  number: 1003\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - {{posix}}zip               # [win]\n  host:\n    - r-base\n  run:\n    - r-base\n\ntest:\n  commands:\n    - $R -e \"library('bigmemory.sri')\"           # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('bigmemory.sri')\\\"\"  # [win]\n\nabout:\n  home: https://CRAN.R-project.org/package=bigmemory.sri\n  license: LGPL-3 | Apache 2.0\n  summary: This package provides a shared resource interface for the bigmemory and synchronicity\n    packages.\n  license_family: LGPL\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n    - johanneskoester\n    - bgruening\n    - daler\n    - jdblischak\n    - cbrueffer\n    - dbast\n",
+ "raw_meta_yaml":"{% set version = \"0.1.3\" %}\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-bigmemory.sri\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  fn: bigmemory.sri_{{ version }}.tar.gz\n  url:\n    - {{ cran_mirror }}/src/contrib/bigmemory.sri_{{ version }}.tar.gz\n    - {{ cran_mirror }}/src/contrib/Archive/bigmemory.sri/bigmemory.sri_{{ version }}.tar.gz\n  sha256: 55403252d8bae9627476d1f553236ea5dc7aa6e54da6980526a6cdc66924e155\n\nbuild:\n  noarch: generic\n  merge_build_host: true  # [win]\n  number: 1004\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - {{ posix }}zip               # [win]\n  host:\n    - r-base\n  run:\n    - r-base\n\ntest:\n  commands:\n    - $R -e \"library('bigmemory.sri')\"           # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('bigmemory.sri')\\\"\"  # [win]\n\nabout:\n  home: https://CRAN.R-project.org/package=bigmemory.sri\n  license: LGPL-3.0-only OR Apache-2.0\n  summary: This package provides a shared resource interface for the bigmemory and synchronicity packages.\n  license_family: LGPL\n\n  license_file:\n    - {{ environ[\"PREFIX\"] }}/lib/R/share/licenses/LGPL-3\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n    - johanneskoester\n    - bgruening\n    - daler\n    - jdblischak\n    - cbrueffer\n    - dbast\n",
  "req":{
   "__set__":true,
   "elements":[
