@@ -91,9 +91,6 @@
   "bot":{
    "automerge":true
   },
-  "compiler_stack":"comp7",
-  "max_py_ver":"37",
-  "max_r_ver":"35",
   "provider":{
    "win":"azure"
   }
@@ -110,7 +107,7 @@
   },
   "build":{
    "merge_build_host":true,
-   "number":"1004",
+   "number":"1005",
    "rpaths":[
     "lib/R/lib/",
     "lib/",
@@ -200,7 +197,7 @@
  "name":"r-minpack.lm",
  "new_version":"1.2_1",
  "pinning_version":"2020.05.04.05.46.47",
- "raw_meta_yaml":"{% set version = '1.2-1' %}\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-minpack.lm\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  fn: minpack.lm_{{ version }}.tar.gz\n  url:\n    - {{ cran_mirror }}/src/contrib/minpack.lm_{{ version }}.tar.gz\n    - {{ cran_mirror }}/src/contrib/Archive/minpack.lm/minpack.lm_{{ version }}.tar.gz\n  sha256: 14cb7dba3ef2b46da0479b46d46c76198e129a31f6157cd8b37f178adb15d5a3\n\nbuild:\n  merge_build_host: True  # [win]\n  number: 1004\n  skip: true  # [win32]\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - {{ compiler('c') }}        # [not win]\n    - {{ compiler('fortran') }}  # [not win]\n    - {{ compiler('m2w64_c') }}        # [win]\n    - {{ compiler('m2w64_fortran') }}        # [win]\n    - {{posix}}filesystem        # [win]\n    - {{posix}}make\n    - {{posix}}sed               # [win]\n    - {{posix}}coreutils         # [win]\n    - {{posix}}zip               # [win]\n  host:\n    - r-base\n  run:\n    - r-base\n    - {{native}}gcc-libs         # [win]\n\ntest:\n  commands:\n    - $R -e \"library('minpack.lm')\"           # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('minpack.lm')\\\"\"  # [win]\n\nabout:\n  home: https://CRAN.R-project.org/package=minpack.lm\n  license: GPL-3\n  summary: 'The nls.lm function provides an R interface to lmder and lmdif from the MINPACK library,\n    for solving nonlinear least-squares problems by a modification of the Levenberg-Marquardt\n    algorithm, with support for lower and upper parameter bounds.  The implementation\n    can be used via nls-like calls using the nlsLM function.  '\n  license_family: GPL3\n  license_file: '{{ environ[\"PREFIX\"] }}/lib/R/share/licenses/GPL-3'\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n    - johanneskoester\n    - bgruening\n    - daler\n    - jdblischak\n    - cbrueffer\n    - dbast\n",
+ "raw_meta_yaml":"{% set version = '1.2-1' %}\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-minpack.lm\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  fn: minpack.lm_{{ version }}.tar.gz\n  url:\n    - {{ cran_mirror }}/src/contrib/minpack.lm_{{ version }}.tar.gz\n    - {{ cran_mirror }}/src/contrib/Archive/minpack.lm/minpack.lm_{{ version }}.tar.gz\n  sha256: 14cb7dba3ef2b46da0479b46d46c76198e129a31f6157cd8b37f178adb15d5a3\n\nbuild:\n  merge_build_host: True  # [win]\n  number: 1005\n  skip: true  # [win32]\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - {{ compiler('c') }}        # [not win]\n    - {{ compiler('fortran') }}  # [not win]\n    - {{ compiler('m2w64_c') }}        # [win]\n    - {{ compiler('m2w64_fortran') }}        # [win]\n    - {{ posix }}filesystem        # [win]\n    - {{ posix }}make\n    - {{ posix }}sed               # [win]\n    - {{ posix }}coreutils         # [win]\n    - {{ posix }}zip               # [win]\n  host:\n    - r-base\n  run:\n    - r-base\n    - {{ native }}gcc-libs         # [win]\n\ntest:\n  commands:\n    - $R -e \"library('minpack.lm')\"           # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('minpack.lm')\\\"\"  # [win]\n\nabout:\n  home: https://CRAN.R-project.org/package=minpack.lm\n  license: GPL-3\n  summary: 'The nls.lm function provides an R interface to lmder and lmdif from the MINPACK library,\n    for solving nonlinear least-squares problems by a modification of the Levenberg-Marquardt\n    algorithm, with support for lower and upper parameter bounds.  The implementation\n    can be used via nls-like calls using the nlsLM function.  '\n  license_family: GPL3\n  license_file: '{{ environ[\"PREFIX\"] }}/lib/R/share/licenses/GPL-3'\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n    - johanneskoester\n    - bgruening\n    - daler\n    - jdblischak\n    - cbrueffer\n    - dbast\n",
  "req":{
   "__set__":true,
   "elements":[

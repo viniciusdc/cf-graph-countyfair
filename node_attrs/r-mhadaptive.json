@@ -59,9 +59,6 @@
   "bot":{
    "automerge":true
   },
-  "compiler_stack":"comp7",
-  "max_py_ver":"37",
-  "max_r_ver":"35",
   "provider":{
    "win":"azure"
   }
@@ -79,7 +76,7 @@
   "build":{
    "merge_build_host":true,
    "noarch":"generic",
-   "number":"1001",
+   "number":"1002",
    "rpaths":[
     "lib/R/lib/",
     "lib/",
@@ -157,7 +154,7 @@
  "name":"r-mhadaptive",
  "new_version":"1.1_8",
  "pinning_version":"2020.05.04.05.46.47",
- "raw_meta_yaml":"{% set version = '1.1-8' %}\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-mhadaptive\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  fn: MHadaptive_{{ version }}.tar.gz\n  url:\n    - {{ cran_mirror }}/src/contrib/MHadaptive_{{ version }}.tar.gz\n    - {{ cran_mirror }}/src/contrib/Archive/MHadaptive/MHadaptive_{{ version }}.tar.gz\n  sha256: 9a273a04e9d4853c8b477fda989b08c2e276b6fd1758bc81cb1d2ab405aa6bf0\n\nbuild:\n  noarch: generic\n  merge_build_host: True  # [win]\n  number: 1001\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - {{posix}}zip               # [win]\n  host:\n    - r-base\n    - r-mass\n  run:\n    - r-base\n    - r-mass\n\ntest:\n  commands:\n    - $R -e \"library('MHadaptive')\"           # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('MHadaptive')\\\"\"  # [win]\n\nabout:\n  home: https://CRAN.R-project.org/package=MHadaptive\n  license: GPL (>= 3)\n  summary: Performs general Metropolis-Hastings Markov Chain Monte Carlo sampling of a user defined\n    function which returns the un-normalized value (likelihood times prior) of a Bayesian\n    model.  The proposal variance-covariance structure is updated adaptively for efficient\n    mixing when the structure of the target distribution is unknown.  The package also\n    provides some functions for Bayesian inference including Bayesian Credible Intervals\n    (BCI) and Deviance Information Criterion (DIC) calculation.\n  license_family: GPL3\n  license_file: '{{ environ[\"PREFIX\"] }}/lib/R/share/licenses/GPL-3'\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n    - johanneskoester\n    - bgruening\n    - daler\n    - jdblischak\n    - cbrueffer\n",
+ "raw_meta_yaml":"{% set version = '1.1-8' %}\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-mhadaptive\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  fn: MHadaptive_{{ version }}.tar.gz\n  url:\n    - {{ cran_mirror }}/src/contrib/MHadaptive_{{ version }}.tar.gz\n    - {{ cran_mirror }}/src/contrib/Archive/MHadaptive/MHadaptive_{{ version }}.tar.gz\n  sha256: 9a273a04e9d4853c8b477fda989b08c2e276b6fd1758bc81cb1d2ab405aa6bf0\n\nbuild:\n  noarch: generic\n  merge_build_host: True  # [win]\n  number: 1002\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - {{ posix }}zip               # [win]\n  host:\n    - r-base\n    - r-mass\n  run:\n    - r-base\n    - r-mass\n\ntest:\n  commands:\n    - $R -e \"library('MHadaptive')\"           # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('MHadaptive')\\\"\"  # [win]\n\nabout:\n  home: https://CRAN.R-project.org/package=MHadaptive\n  license: GPL (>= 3)\n  summary: Performs general Metropolis-Hastings Markov Chain Monte Carlo sampling of a user defined\n    function which returns the un-normalized value (likelihood times prior) of a Bayesian\n    model.  The proposal variance-covariance structure is updated adaptively for efficient\n    mixing when the structure of the target distribution is unknown.  The package also\n    provides some functions for Bayesian inference including Bayesian Credible Intervals\n    (BCI) and Deviance Information Criterion (DIC) calculation.\n  license_family: GPL3\n  license_file: '{{ environ[\"PREFIX\"] }}/lib/R/share/licenses/GPL-3'\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n    - johanneskoester\n    - bgruening\n    - daler\n    - jdblischak\n    - cbrueffer\n",
  "req":{
   "__set__":true,
   "elements":[
