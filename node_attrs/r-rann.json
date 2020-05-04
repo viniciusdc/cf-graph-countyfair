@@ -48,6 +48,25 @@
     "migrator_version",
     "name"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/412717564.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"MigrationYaml",
+    "migrator_object_version":2,
+    "migrator_version":0,
+    "name":"r400"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_object_version",
+    "migrator_version",
+    "name"
+   ]
   }
  ],
  "bad":false,
@@ -144,7 +163,7 @@
  },
  "name":"r-rann",
  "new_version":"2.6.1",
- "pinning_version":"2019.07.15",
+ "pinning_version":"2020.05.04.00.11.09",
  "raw_meta_yaml":"{% set version = '2.6.1' %}\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-rann\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  url:\n    - {{ cran_mirror }}/src/contrib/RANN_{{ version }}.tar.gz\n    - {{ cran_mirror }}/src/contrib/Archive/RANN/RANN_{{ version }}.tar.gz\n  sha256: b299c3dfb7be17aa41e66eff5674fddd2992fb6dd3b10bc59ffbf0c401697182\n\nbuild:\n  merge_build_host: True  # [win]\n  number: 1\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - {{ compiler('c') }}              # [not win]\n    - {{ compiler('m2w64_c') }}        # [win]\n    - {{ compiler('cxx') }}            # [not win]\n    - {{ compiler('m2w64_cxx') }}      # [win]\n    - {{posix}}filesystem        # [win]\n    - {{posix}}make\n    - {{posix}}sed               # [win]\n    - {{posix}}coreutils         # [win]\n    - {{posix}}zip               # [win]\n  host:\n    - r-base\n  run:\n    - r-base\n    - {{native}}gcc-libs         # [win]\n\ntest:\n  commands:\n    - $R -e \"library('RANN')\"           # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('RANN')\\\"\"  # [win]\n\nabout:\n  home: https://github.com/jefferis/RANN\n  license: GPL (>= 3)\n  summary: Finds the k nearest neighbours for every point in a given dataset in O(N log N) time\n    using Arya and Mount's ANN library (v1.1.3). There is support for approximate as\n    well as exact searches, fixed radius searches and 'bd' as well as 'kd' trees. The\n    distance is computed using the L2 (Euclidean) metric. Please see package 'RANN.L1'\n    for the same functionality using the L1 (Manhattan, taxicab) metric.\n  license_family: GPL3\n  license_file: '{{ environ[\"PREFIX\"] }}/lib/R/share/licenses/GPL-3'\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n\n# Package: RANN\n# Title: Fast Nearest Neighbour Search (Wraps ANN Library) Using L2 Metric\n# Author: Sunil Arya and David Mount (for ANN), Samuel E. Kemp, Gregory Jefferis\n# Maintainer: Gregory Jefferis <jefferis@gmail.com>\n# Copyright: ANN library is copyright University of Maryland and Sunil Arya and David Mount. See file COPYRIGHT for details.\n# Description: Finds the k nearest neighbours for every point in a given dataset in O(N log N) time using Arya and Mount's ANN library (v1.1.3). There is support for approximate as well as exact searches, fixed radius searches and 'bd' as well as 'kd' trees. The distance is computed using the L2 (Euclidean) metric. Please see package 'RANN.L1' for the same functionality using the L1 (Manhattan, taxicab) metric.\n# URL: https://github.com/jefferis/RANN\n# BugReports: https://github.com/jefferis/RANN/issues\n# Encoding: UTF-8\n# License: GPL (>= 3)\n# Suggests: testthat\n# Version: 2.6.1\n# RoxygenNote: 6.1.1\n# NeedsCompilation: yes\n# Packaged: 2019-01-08 19:24:15 UTC; jefferis\n# Repository: CRAN\n# Date/Publication: 2019-01-08 20:00:04 UTC\n",
  "req":{
   "__set__":true,
@@ -195,7 +214,7 @@
    "elements":[]
   }
  },
- "smithy_version":"3.4.1",
+ "smithy_version":"No azure token. Create a token and\nput it in ~/.conda-smithy/azure.token\n3.7.0\n",
  "strong_exports":false,
  "total_requirements":{
   "build":{
