@@ -59,9 +59,6 @@
   "bot":{
    "automerge":true
   },
-  "compiler_stack":"comp7",
-  "max_py_ver":"37",
-  "max_r_ver":"35",
   "provider":{
    "win":"azure"
   }
@@ -73,12 +70,19 @@
    "home":"https://github.com/smbache/import",
    "license":"MIT",
    "license_family":"MIT",
+   "license_file":[
+    "/lib/R/share/licenses/MIT",
+    "LICENSE",
+    "/lib/R/share/licenses/MIT",
+    "LICENSE",
+    "/lib/R/share/licenses/MIT",
+    "LICENSE"
+   ],
    "summary":"This is an alternative mechanism for importing objects from packages. The syntax allows for importing multiple objects from a package with a single command in an expressive way. The import package bridges some of the gap between using library (or require) and direct (single-object) imports. Furthermore the imported objects are not placed in the current environment. It is also possible to import objects from stand-alone .R files. For more information, refer to the package vignette."
   },
   "build":{
    "merge_build_host":true,
-   "noarch":"generic",
-   "number":"1001",
+   "number":"1002",
    "rpaths":[
     "lib/R/lib/",
     "lib/",
@@ -134,7 +138,7 @@
  "name":"r-import",
  "new_version":"1.1.0",
  "pinning_version":"2020.05.04.05.46.47",
- "raw_meta_yaml":"{% set version = '1.1.0' %}\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-import\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  url:\n    - {{ cran_mirror }}/src/contrib/import_{{ version }}.tar.gz\n    - {{ cran_mirror }}/src/contrib/Archive/import/import_{{ version }}.tar.gz\n  sha256: 513268bf13e570e9eb26639703986d972caa519964e98f7865dcad9c46498e2e\n\nbuild:\n  noarch: generic\n  merge_build_host: True  # [win]\n  number: 1001\n  noarch: generic\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n\n  host:\n    - r-base\n  run:\n    - r-base\n\ntest:\n  commands:\n    - $R -e \"library('import')\"           # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('import')\\\"\"  # [win]\n\nabout:\n  home: https://github.com/smbache/import\n  license: MIT\n  summary: This is an alternative mechanism for importing objects from packages. The syntax allows\n    for importing multiple objects from a package with a single command in an expressive\n    way. The import package bridges some of the gap between using library (or require)\n    and direct (single-object) imports. Furthermore the imported objects are not placed\n    in the current environment. It is also possible to import objects from stand-alone\n    .R files. For more information, refer to the package vignette.\n  license_family: MIT\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n",
+ "raw_meta_yaml":"{% set version = '1.1.0' %}\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-import\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  url:\n    - {{ cran_mirror }}/src/contrib/import_{{ version }}.tar.gz\n    - {{ cran_mirror }}/src/contrib/Archive/import/import_{{ version }}.tar.gz\n  sha256: 513268bf13e570e9eb26639703986d972caa519964e98f7865dcad9c46498e2e\n\nbuild:\n  merge_build_host: True  # [win]\n  number: 1002\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n\n  host:\n    - r-base\n  run:\n    - r-base\n\ntest:\n  commands:\n    - $R -e \"library('import')\"           # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('import')\\\"\"  # [win]\n\nabout:\n  home: https://github.com/smbache/import\n  license: MIT\n  summary: This is an alternative mechanism for importing objects from packages. The syntax allows\n    for importing multiple objects from a package with a single command in an expressive\n    way. The import package bridges some of the gap between using library (or require)\n    and direct (single-object) imports. Furthermore the imported objects are not placed\n    in the current environment. It is also possible to import objects from stand-alone\n    .R files. For more information, refer to the package vignette.\n  license_family: MIT\n  license_file:\n   - '{{ environ[\"PREFIX\"] }}/lib/R/share/licenses/MIT'\n   - LICENSE\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n",
  "req":{
   "__set__":true,
   "elements":[
