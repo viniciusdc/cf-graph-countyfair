@@ -101,6 +101,25 @@
     "migrator_version",
     "version"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/413191199.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"MigrationYaml",
+    "migrator_object_version":2,
+    "migrator_version":0,
+    "name":"r400"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_object_version",
+    "migrator_version",
+    "name"
+   ]
   }
  ],
  "bad":false,
@@ -211,7 +230,7 @@
  },
  "name":"r-cairodevice",
  "new_version":"2.28",
- "pinning_version":"2019.10.08",
+ "pinning_version":"2020.05.04.19.59.17",
  "raw_meta_yaml":"{% set version = \"2.27\" %}\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-cairodevice\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  url:\n    - {{ cran_mirror }}/src/contrib/cairoDevice_{{ version }}.tar.gz\n    - {{ cran_mirror }}/src/contrib/Archive/cairoDevice/cairoDevice_{{ version }}.tar.gz\n  sha256: 8f0f7aeeee1cfed37642066870ab735c20bad024e53a9df7726d5e8655b31f42\n\nbuild:\n  # GTK2 not available on Windows\n  skip: True  # [win]\n  merge_build_host: True  # [win]\n  number: 1\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - {{ compiler('c') }}  # [not win]\n    - {{ compiler('cxx') }}  # [not win]\n    - {{ compiler('fortran') }}  # [not win]\n    - {{posix}}filesystem        # [win]\n    - {{posix}}sed               # [win]\n    - {{posix}}grep              # [win]\n    - {{posix}}autoconf\n    - {{posix}}automake          # [not win]\n    - {{posix}}automake-wrapper  # [win]\n    - {{posix}}pkg-config\n    - {{posix}}make\n    - {{posix}}coreutils         # [win]\n    - {{posix}}zip               # [win]\n  host:\n    - r-base\n    - gtk2\n  run:\n    - r-base\n    - {{native}}gcc-libs         # [win]\n    - gtk2\n\ntest:\n  commands:\n    - xvfb-run -a bash -c \"$R -e \\\"library('cairoDevice')\\\"\"  # [linux]\n    - $R -e \"library('cairoDevice')\"  # [osx]\n    - \"\\\"%R%\\\" -e \\\"library('cairoDevice')\\\"\"  # [win]\n\nabout:\n  home: https://CRAN.R-project.org/package=cairoDevice\n  license: GPL\n  summary: This device uses Cairo and GTK to draw to the screen, file (png, svg, pdf, and ps)\n    or memory (arbitrary GdkDrawable or Cairo context). The screen device may be embedded\n    into RGtk2 interfaces and supports all interactive features of other graphics devices,\n    including getGraphicsEvent().\n  license_family: GPL\n  license_file: '{{ environ[\"PREFIX\"] }}/lib/R/share/licenses/GPL-3'\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n\n# Package: cairoDevice\n# Version: 2.25\n# Title: Embeddable Cairo Graphics Device Driver\n# Author: Michael Lawrence\n# Depends: R (>= 2.12.0)\n# Imports: grDevices\n# SystemRequirements: cairo (>= 1.0)\n# Maintainer: Michael Lawrence <michafla@gene.com>\n# Description: This device uses Cairo and GTK to draw to the screen, file (png, svg, pdf, and ps) or memory (arbitrary GdkDrawable or Cairo context). The screen device may be embedded into RGtk2 interfaces and supports all interactive features of other graphics devices, including getGraphicsEvent().\n# Acknowledgements: Lyndon Drake (based on gtkDevice), Brian Ripley (updates for R 2.7), Mikhail Kondrin (Adobe->UTF8 translation), Duncan Murdoch (updates for R 2.12)\n# License: GPL\n# NeedsCompilation: yes\n# Packaged: 2018-06-11 14:32:38 UTC; larman\n# Repository: CRAN\n# Date/Publication: 2018-06-12 13:33:44 UTC\n",
  "req":{
   "__set__":true,
@@ -273,7 +292,7 @@
    "elements":[]
   }
  },
- "smithy_version":"3.5.0",
+ "smithy_version":"No azure token. Create a token and\nput it in ~/.conda-smithy/azure.token\n3.7.0\n",
  "strong_exports":false,
  "total_requirements":{
   "build":{
