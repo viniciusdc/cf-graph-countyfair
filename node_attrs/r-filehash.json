@@ -91,9 +91,6 @@
   "bot":{
    "automerge":true
   },
-  "compiler_stack":"comp7",
-  "max_py_ver":"37",
-  "max_r_ver":"35",
   "provider":{
    "win":"azure"
   }
@@ -110,7 +107,7 @@
   },
   "build":{
    "merge_build_host":true,
-   "number":"1",
+   "number":"2",
    "rpaths":[
     "lib/R/lib/",
     "lib/",
@@ -196,7 +193,7 @@
  "name":"r-filehash",
  "new_version":"2.4_2",
  "pinning_version":"2020.05.04.05.46.47",
- "raw_meta_yaml":"{% set version = \"2.4-2\" %}\n\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-filehash\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  fn: filehash_{{ version }}.tar.gz\n  url:\n    - https://cran.r-project.org/src/contrib/filehash_{{ version }}.tar.gz\n    - https://cran.r-project.org/src/contrib/Archive/filehash/filehash_{{ version }}.tar.gz\n\n  sha256: b6d056f75d45e315943a4618f5f62802612cd8931ba3f9f474b595140a3cfb93\n\nbuild:\n  merge_build_host: True  # [win]\n  number: 1\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - posix                # [win]\n    - {{ compiler('c') }}        # [unix]\n    - {{ compiler('m2w64_c') }}  # [win]\n  host:\n    - r-base\n  run:\n    - r-base\n\ntest:\n  commands:\n    - $R -e \"library('filehash')\"  # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('filehash')\\\"\"  # [win]\n\nabout:\n  home: https://cran.r-project.org/web/packages/filehash/index.html\n  license: GPL (>= 2)\n  summary: Implements a simple key-value style database where character string keys are associated\n    with data values that are stored on the disk. A simple interface is provided for\n    inserting, retrieving, and deleting data from the database. Utilities are provided\n    that allow 'filehash' databases to be treated much like environments and lists are\n    already used in R. These utilities are provided to encourage interactive and exploratory\n    analysis on large datasets. Three different file formats for representing the database\n    are currently available and new formats can easily be incorporated by third parties\n    for use in the 'filehash' framework.\n  license_family: GPL3\n  license_file: '{{ environ[\"PREFIX\"] }}/lib/R/share/licenses/GPL-3'\n\nextra:\n   recipe-maintainers:\n    - conda-forge/r\n    - dpryan79\n    - MathiasHaudgaard\n    - FrodePedersen\n    - ArneKr\n    - johanneskoester\n    - bgruening\n    - daler\n    - jdblischak\n",
+ "raw_meta_yaml":"{% set version = \"2.4-2\" %}\n\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-filehash\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  fn: filehash_{{ version }}.tar.gz\n  url:\n    - https://cran.r-project.org/src/contrib/filehash_{{ version }}.tar.gz\n    - https://cran.r-project.org/src/contrib/Archive/filehash/filehash_{{ version }}.tar.gz\n\n  sha256: b6d056f75d45e315943a4618f5f62802612cd8931ba3f9f474b595140a3cfb93\n\nbuild:\n  merge_build_host: True  # [win]\n  number: 2\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - posix                # [win]\n    - {{ compiler('c') }}        # [unix]\n    - {{ compiler('m2w64_c') }}  # [win]\n  host:\n    - r-base\n  run:\n    - r-base\n\ntest:\n  commands:\n    - $R -e \"library('filehash')\"  # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('filehash')\\\"\"  # [win]\n\nabout:\n  home: https://cran.r-project.org/web/packages/filehash/index.html\n  license: GPL (>= 2)\n  summary: Implements a simple key-value style database where character string keys are associated\n    with data values that are stored on the disk. A simple interface is provided for\n    inserting, retrieving, and deleting data from the database. Utilities are provided\n    that allow 'filehash' databases to be treated much like environments and lists are\n    already used in R. These utilities are provided to encourage interactive and exploratory\n    analysis on large datasets. Three different file formats for representing the database\n    are currently available and new formats can easily be incorporated by third parties\n    for use in the 'filehash' framework.\n  license_family: GPL3\n  license_file: '{{ environ[\"PREFIX\"] }}/lib/R/share/licenses/GPL-3'\n\nextra:\n   recipe-maintainers:\n    - conda-forge/r\n    - dpryan79\n    - MathiasHaudgaard\n    - FrodePedersen\n    - ArneKr\n    - johanneskoester\n    - bgruening\n    - daler\n    - jdblischak\n",
  "req":{
   "__set__":true,
   "elements":[

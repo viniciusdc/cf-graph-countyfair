@@ -122,9 +122,6 @@
   "bot":{
    "automerge":true
   },
-  "compiler_stack":"comp7",
-  "max_py_ver":"37",
-  "max_r_ver":"35",
   "provider":{
    "win":"azure"
   }
@@ -145,7 +142,7 @@
   },
   "build":{
    "merge_build_host":true,
-   "number":"0",
+   "number":"1",
    "rpaths":[
     "lib/R/lib/",
     "lib/",
@@ -213,7 +210,7 @@
  "name":"r-chron",
  "new_version":"2.3_55",
  "pinning_version":"2020.05.04.05.46.47",
- "raw_meta_yaml":"{% set version = \"2.3-55\" %}\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-chron\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  url:\n    - {{ cran_mirror }}/src/contrib/chron_{{ version }}.tar.gz\n    - {{ cran_mirror }}/src/contrib/Archive/chron/chron_{{ version }}.tar.gz\n  sha256: 0f731fb9e79818cd95b5fa843cc233616a5f8e5dd39a1ae8048f5a1fd8d1eb25\n\nbuild:\n  merge_build_host: True  # [win]\n  number: 0\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - {{ compiler('c') }}              # [not win]\n    - {{ compiler('m2w64_c') }}        # [win]\n    - {{posix}}filesystem        # [win]\n    - {{posix}}make\n    - {{posix}}sed               # [win]\n    - {{posix}}coreutils         # [win]\n    - {{posix}}zip               # [win]\n  host:\n    - r-base\n  run:\n    - r-base\n    - {{native}}gcc-libs         # [win]\n\ntest:\n  commands:\n    - $R -e \"library('chron')\"           # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('chron')\\\"\"  # [win]\n\nabout:\n  home: https://CRAN.R-project.org/package=chron\n  license: GPL-2\n  summary: Provides chronological objects which can handle dates and times.\n  license_family: GPL2\n  license_file:\n    - '{{ environ[\"PREFIX\"] }}/lib/R/share/licenses/GPL-2'\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n\n# Package: chron\n# Version: 2.3-54\n# Title: Chronological Objects which can Handle Dates and Times\n# Description: Provides chronological objects which can handle dates and times.\n# Authors@R: c(person(\"David\", \"James\", role = \"aut\", comment = \"S original\"), person(\"Kurt\", \"Hornik\", role = c(\"aut\", \"trl\", \"cre\"), email = \"Kurt.Hornik@R-project.org\", comment = c(ORCID = \"0000-0003-4198-9911\")), person(\"Gabor\", \"Grothendieck\", role = \"ctb\", email = \"ggrothendieck@gmail.com\"), person(\"R Core Team\", role = \"ctb\"))\n# Depends: R (>= 2.12.0)\n# Imports: graphics, stats\n# Suggests: scales, ggplot2\n# Enhances: zoo\n# License: GPL-2\n# NeedsCompilation: yes\n# Packaged: 2019-08-26 06:36:15 UTC; hornik\n# Author: David James [aut] (S original), Kurt Hornik [aut, trl, cre] (<https://orcid.org/0000-0003-4198-9911>), Gabor Grothendieck [ctb], R Core Team [ctb]\n# Maintainer: Kurt Hornik <Kurt.Hornik@R-project.org>\n# Repository: CRAN\n# Date/Publication: 2019-08-26 06:58:12 UTC\n",
+ "raw_meta_yaml":"{% set version = \"2.3-55\" %}\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-chron\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  url:\n    - {{ cran_mirror }}/src/contrib/chron_{{ version }}.tar.gz\n    - {{ cran_mirror }}/src/contrib/Archive/chron/chron_{{ version }}.tar.gz\n  sha256: 0f731fb9e79818cd95b5fa843cc233616a5f8e5dd39a1ae8048f5a1fd8d1eb25\n\nbuild:\n  merge_build_host: True  # [win]\n  number: 1\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - {{ compiler('c') }}              # [not win]\n    - {{ compiler('m2w64_c') }}        # [win]\n    - {{ posix }}filesystem        # [win]\n    - {{ posix }}make\n    - {{ posix }}sed               # [win]\n    - {{ posix }}coreutils         # [win]\n    - {{ posix }}zip               # [win]\n  host:\n    - r-base\n  run:\n    - r-base\n    - {{ native }}gcc-libs         # [win]\n\ntest:\n  commands:\n    - $R -e \"library('chron')\"           # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('chron')\\\"\"  # [win]\n\nabout:\n  home: https://CRAN.R-project.org/package=chron\n  license: GPL-2\n  summary: Provides chronological objects which can handle dates and times.\n  license_family: GPL2\n  license_file:\n    - '{{ environ[\"PREFIX\"] }}/lib/R/share/licenses/GPL-2'\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n\n# Package: chron\n# Version: 2.3-54\n# Title: Chronological Objects which can Handle Dates and Times\n# Description: Provides chronological objects which can handle dates and times.\n# Authors@R: c(person(\"David\", \"James\", role = \"aut\", comment = \"S original\"), person(\"Kurt\", \"Hornik\", role = c(\"aut\", \"trl\", \"cre\"), email = \"Kurt.Hornik@R-project.org\", comment = c(ORCID = \"0000-0003-4198-9911\")), person(\"Gabor\", \"Grothendieck\", role = \"ctb\", email = \"ggrothendieck@gmail.com\"), person(\"R Core Team\", role = \"ctb\"))\n# Depends: R (>= 2.12.0)\n# Imports: graphics, stats\n# Suggests: scales, ggplot2\n# Enhances: zoo\n# License: GPL-2\n# NeedsCompilation: yes\n# Packaged: 2019-08-26 06:36:15 UTC; hornik\n# Author: David James [aut] (S original), Kurt Hornik [aut, trl, cre] (<https://orcid.org/0000-0003-4198-9911>), Gabor Grothendieck [ctb], R Core Team [ctb]\n# Maintainer: Kurt Hornik <Kurt.Hornik@R-project.org>\n# Repository: CRAN\n# Date/Publication: 2019-08-26 06:58:12 UTC\n",
  "req":{
   "__set__":true,
   "elements":[
