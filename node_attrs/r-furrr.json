@@ -59,9 +59,6 @@
   "bot":{
    "automerge":true
   },
-  "compiler_stack":"comp7",
-  "max_py_ver":"37",
-  "max_r_ver":"35",
   "provider":{
    "win":"azure"
   }
@@ -71,14 +68,19 @@
  "meta_yaml":{
   "about":{
    "home":"https://github.com/DavisVaughan/furrr",
-   "license":"LGPL (>= 2.1)",
+   "license":"LGPL-2.1-or-later",
    "license_family":"LGPL",
+   "license_file":[
+    "/lib/R/share/licenses/LGPL-2.1",
+    "/lib/R/share/licenses/LGPL-2.1",
+    "/lib/R/share/licenses/LGPL-2.1"
+   ],
    "summary":"Implementations of the family of map() functions from 'purrr' that can be resolved using any 'future'-supported backend, e.g. parallel on the local machine or distributed on a compute cluster."
   },
   "build":{
    "merge_build_host":true,
    "noarch":"generic",
-   "number":"1001",
+   "number":"1002",
    "rpaths":[
     "lib/R/lib/",
     "lib/",
@@ -177,7 +179,7 @@
  "name":"r-furrr",
  "new_version":"0.1.0",
  "pinning_version":"2020.05.04.00.11.09",
- "raw_meta_yaml":"{% set version = '0.1.0' %}\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-furrr\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  fn: furrr_{{ version }}.tar.gz\n  url:\n    - {{ cran_mirror }}/src/contrib/furrr_{{ version }}.tar.gz\n    - {{ cran_mirror }}/src/contrib/Archive/furrr/furrr_{{ version }}.tar.gz\n  sha256: dd2937f7cad1bc69e7a512b2a777f82d6cb7e40fe99afa2049ca360f9352a9d1\n\nbuild:\n  noarch: generic\n  merge_build_host: True  # [win]\n  number: 1001\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - {{posix}}zip               # [win]\n  host:\n    - r-base\n    - r-future >=1.6.2\n    - r-globals >=0.10.3\n    - r-purrr >=0.2.4\n    - r-rlang >=0.2.0\n  run:\n    - r-base\n    - r-future >=1.6.2\n    - r-globals >=0.10.3\n    - r-purrr >=0.2.4\n    - r-rlang >=0.2.0\n\ntest:\n  commands:\n    - $R -e \"library('furrr')\"           # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('furrr')\\\"\"  # [win]\n\nabout:\n  home: https://github.com/DavisVaughan/furrr\n  license: LGPL (>= 2.1)\n  summary: Implementations of the family of map() functions from 'purrr' that can be resolved\n    using any 'future'-supported backend, e.g. parallel on the local machine or distributed\n    on a compute cluster.\n  license_family: LGPL\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n    - johanneskoester\n    - bgruening\n    - daler\n    - jdblischak\n    - cbrueffer\n    - dbast\n",
+ "raw_meta_yaml":"{% set version = \"0.1.0\" %}\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-furrr\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  fn: furrr_{{ version }}.tar.gz\n  url:\n    - {{ cran_mirror }}/src/contrib/furrr_{{ version }}.tar.gz\n    - {{ cran_mirror }}/src/contrib/Archive/furrr/furrr_{{ version }}.tar.gz\n  sha256: dd2937f7cad1bc69e7a512b2a777f82d6cb7e40fe99afa2049ca360f9352a9d1\n\nbuild:\n  noarch: generic\n  merge_build_host: true  # [win]\n  number: 1002\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - {{ posix }}zip               # [win]\n  host:\n    - r-base\n    - r-future >=1.6.2\n    - r-globals >=0.10.3\n    - r-purrr >=0.2.4\n    - r-rlang >=0.2.0\n  run:\n    - r-base\n    - r-future >=1.6.2\n    - r-globals >=0.10.3\n    - r-purrr >=0.2.4\n    - r-rlang >=0.2.0\n\ntest:\n  commands:\n    - $R -e \"library('furrr')\"           # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('furrr')\\\"\"  # [win]\n\nabout:\n  home: https://github.com/DavisVaughan/furrr\n  license: LGPL-2.1-or-later\n  summary: Implementations of the family of map() functions from 'purrr' that can be resolved using any 'future'-supported backend, e.g. parallel on the local machine or distributed on a compute cluster.\n  license_family: LGPL\n\n  license_file:\n    - {{ environ[\"PREFIX\"] }}/lib/R/share/licenses/LGPL-2.1\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n    - johanneskoester\n    - bgruening\n    - daler\n    - jdblischak\n    - cbrueffer\n    - dbast\n",
  "req":{
   "__set__":true,
   "elements":[

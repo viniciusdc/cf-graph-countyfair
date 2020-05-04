@@ -33,6 +33,25 @@
     "migrator_version",
     "name"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/412708301.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"MigrationYaml",
+    "migrator_object_version":2,
+    "migrator_version":0,
+    "name":"r400"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_object_version",
+    "migrator_version",
+    "name"
+   ]
   }
  ],
  "bad":false,
@@ -145,7 +164,7 @@
  },
  "name":"r-fdrtool",
  "new_version":"1.2.15",
- "pinning_version":"2019.07.15",
+ "pinning_version":"2020.05.04.00.11.09",
  "raw_meta_yaml":"{% set version = '1.2.15' %}\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-fdrtool\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  fn: fdrtool_{{ version }}.tar.gz\n  url:\n    - {{ cran_mirror }}/src/contrib/fdrtool_{{ version }}.tar.gz\n    - {{ cran_mirror }}/src/contrib/Archive/fdrtool/fdrtool_{{ version }}.tar.gz\n  sha256: 65f964aa768d0703ceb7a199adc5e79ca79a6d29d7bc053a262eb533697686c0\n\nbuild:\n  merge_build_host: True  # [win]\n  number: 1002\n  skip: true  # [win32]\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - {{ compiler('c') }}        # [not win]\n    - {{ compiler('m2w64_c') }}        # [win]\n    - {{posix}}filesystem        # [win]\n    - {{posix}}make\n    - {{posix}}sed               # [win]\n    - {{posix}}coreutils         # [win]\n    - {{posix}}zip               # [win]\n  host:\n    - r-base\n  run:\n    - r-base\n    - {{native}}gcc-libs         # [win]\n\ntest:\n  commands:\n    - $R -e \"library('fdrtool')\"           # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('fdrtool')\\\"\"  # [win]\n\nabout:\n  home: http://strimmerlab.org/software/fdrtool/\n  license: GPL (>= 3)\n  summary: Estimates both tail area-based false  discovery rates (Fdr) as well as local false\n    discovery rates (fdr) for a  variety of null models (p-values, z-scores, correlation\n    coefficients, t-scores).  The proportion of null values and the parameters of the\n    null  distribution are adaptively estimated from the data.  In addition, the package  contains\n    functions for non-parametric density estimation (Grenander estimator),  for monotone\n    regression (isotonic regression and antitonic regression with weights), for computing\n    the greatest convex minorant (GCM) and the least concave majorant (LCM),  for the\n    half-normal and correlation distributions, and for computing empirical higher criticism\n    (HC) scores and the corresponding decision threshold.\n  license_family: GPL3\n  license_file: '{{ environ[\"PREFIX\"] }}/lib/R/share/licenses/GPL-3'\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n    - johanneskoester\n    - bgruening\n    - daler\n    - jdblischak\n    - cbrueffer\n    - dbast\n",
  "req":{
   "__set__":true,
@@ -192,7 +211,7 @@
    "elements":[]
   }
  },
- "smithy_version":"3.4.1",
+ "smithy_version":"No azure token. Create a token and\nput it in ~/.conda-smithy/azure.token\n3.7.0\n",
  "strong_exports":false,
  "total_requirements":{
   "build":{

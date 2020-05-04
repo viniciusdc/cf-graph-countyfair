@@ -93,9 +93,6 @@
   "bot":{
    "automerge":true
   },
-  "compiler_stack":"comp7",
-  "max_py_ver":"37",
-  "max_r_ver":"35",
   "provider":{
    "win":"azure"
   }
@@ -107,12 +104,20 @@
    "home":"https://github.com/rstudio/dygraphs",
    "license":"MIT",
    "license_family":"MIT",
+   "license_file":[
+    "/lib/R/share/licenses/MIT",
+    "LICENSE",
+    "/lib/R/share/licenses/MIT",
+    "LICENSE",
+    "/lib/R/share/licenses/MIT",
+    "LICENSE"
+   ],
    "summary":"An R interface to the 'dygraphs' JavaScript charting library (a copy of which is included in the package). Provides rich facilities for charting time-series data in R, including highly configurable series- and axis-display and interactive features like zoom/pan and series/point highlighting."
   },
   "build":{
    "merge_build_host":true,
    "noarch":"generic",
-   "number":"1002",
+   "number":"1003",
    "rpaths":[
     "lib/R/lib/",
     "lib/",
@@ -217,7 +222,7 @@
  "name":"r-dygraphs",
  "new_version":"1.1.1.6",
  "pinning_version":"2020.05.04.00.11.09",
- "raw_meta_yaml":"{% set version = '1.1.1.6' %}\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-dygraphs\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  fn: dygraphs_{{ version }}.tar.gz\n  url:\n    - {{ cran_mirror }}/src/contrib/dygraphs_{{ version }}.tar.gz\n    - {{ cran_mirror }}/src/contrib/Archive/dygraphs/dygraphs_{{ version }}.tar.gz\n  sha256: c3d331f30012e721a048e04639f60ea738cd7e54e4f930ac9849b95f0f005208\n\nbuild:\n  noarch: generic\n  merge_build_host: True  # [win]\n  number: 1002\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - {{posix}}zip               # [win]\n  host:\n    - r-base\n    - r-htmltools >=0.3.5\n    - r-htmlwidgets >=0.6\n    - r-magrittr\n    - r-xts >=0.9_7\n    - r-zoo >=1.7_10\n  run:\n    - r-base\n    - r-htmltools >=0.3.5\n    - r-htmlwidgets >=0.6\n    - r-magrittr\n    - r-xts >=0.9_7\n    - r-zoo >=1.7_10\n\ntest:\n  commands:\n    - $R -e \"library('dygraphs')\"           # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('dygraphs')\\\"\"  # [win]\n\nabout:\n  home: https://github.com/rstudio/dygraphs\n  license: MIT\n  summary: An R interface to the 'dygraphs' JavaScript charting library (a copy of which is included\n    in the package). Provides rich facilities for charting time-series data in R, including\n    highly configurable series- and axis-display and interactive features like zoom/pan\n    and series/point highlighting.\n  license_family: MIT\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n    - johanneskoester\n    - bgruening\n    - daler\n    - jdblischak\n    - cbrueffer\n    - dbast\n",
+ "raw_meta_yaml":"{% set version = \"1.1.1.6\" %}\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-dygraphs\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  fn: dygraphs_{{ version }}.tar.gz\n  url:\n    - {{ cran_mirror }}/src/contrib/dygraphs_{{ version }}.tar.gz\n    - {{ cran_mirror }}/src/contrib/Archive/dygraphs/dygraphs_{{ version }}.tar.gz\n  sha256: c3d331f30012e721a048e04639f60ea738cd7e54e4f930ac9849b95f0f005208\n\nbuild:\n  noarch: generic\n  merge_build_host: true  # [win]\n  number: 1003\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - {{ posix }}zip               # [win]\n  host:\n    - r-base\n    - r-htmltools >=0.3.5\n    - r-htmlwidgets >=0.6\n    - r-magrittr\n    - r-xts >=0.9_7\n    - r-zoo >=1.7_10\n  run:\n    - r-base\n    - r-htmltools >=0.3.5\n    - r-htmlwidgets >=0.6\n    - r-magrittr\n    - r-xts >=0.9_7\n    - r-zoo >=1.7_10\n\ntest:\n  commands:\n    - $R -e \"library('dygraphs')\"           # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('dygraphs')\\\"\"  # [win]\n\nabout:\n  home: https://github.com/rstudio/dygraphs\n  license: MIT\n  summary: An R interface to the 'dygraphs' JavaScript charting library (a copy of which is included in the package). Provides rich facilities for charting time-series data in R, including highly configurable series- and axis-display and interactive features like zoom/pan and series/point highlighting.\n  license_family: MIT\n\n  license_file:\n    - {{ environ[\"PREFIX\"] }}/lib/R/share/licenses/MIT\n    - LICENSE\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n    - johanneskoester\n    - bgruening\n    - daler\n    - jdblischak\n    - cbrueffer\n    - dbast\n",
  "req":{
   "__set__":true,
   "elements":[
