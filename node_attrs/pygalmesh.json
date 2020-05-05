@@ -55,6 +55,17 @@
    "summary":"A Python frontend to CGAL\u2019s 3D mesh generators."
   },
   "build":{
+   "entry_points":[
+    "pygalmesh-volume-from-surface = pygalmesh._cli:volume_from_surface",
+    "pygalmesh-remesh-surface = pygalmesh._cli:remesh_surface",
+    "pygalmesh-from-inr = pygalmesh._cli:inr",
+    "pygalmesh-volume-from-surface = pygalmesh._cli:volume_from_surface",
+    "pygalmesh-remesh-surface = pygalmesh._cli:remesh_surface",
+    "pygalmesh-from-inr = pygalmesh._cli:inr",
+    "pygalmesh-volume-from-surface = pygalmesh._cli:volume_from_surface",
+    "pygalmesh-remesh-surface = pygalmesh._cli:remesh_surface",
+    "pygalmesh-from-inr = pygalmesh._cli:inr"
+   ],
    "number":"0"
   },
   "extra":{
@@ -106,10 +117,13 @@
    "run":[
     "python",
     "meshio",
+    "importlib_metadata",
     "python",
     "meshio",
+    "importlib_metadata",
     "python",
-    "meshio"
+    "meshio",
+    "importlib_metadata"
    ]
   },
   "source":{
@@ -119,8 +133,17 @@
   "test":{
    "commands":[
     "pytest",
+    "pygalmesh-volume-from-surface -h",
+    "pygalmesh-remesh-surface -h",
+    "pygalmesh-from-inr -h",
     "pytest",
-    "pytest"
+    "pygalmesh-volume-from-surface -h",
+    "pygalmesh-remesh-surface -h",
+    "pygalmesh-from-inr -h",
+    "pytest",
+    "pygalmesh-volume-from-surface -h",
+    "pygalmesh-remesh-surface -h",
+    "pygalmesh-from-inr -h"
    ],
    "imports":[
     "pygalmesh",
@@ -145,7 +168,7 @@
  "name":"pygalmesh",
  "new_version":"0.6.6",
  "pinning_version":"2020.05.04.05.46.47",
- "raw_meta_yaml":"{% set name = \"pygalmesh\" %}\n{% set version = \"0.6.6\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz\n  sha256: 67de2cca8914acf73385fa1aea28906187fbb7065d6338c2ab9dced1dcdff444\n\nbuild:\n  number: 0\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n  host:\n    - python\n    - pip\n    - eigen\n    - cgal-cpp >=5.0.0,<6\n    - pybind11\n    - mpfr\n    - gmp  # [not win]\n    - mpir  # [win]\n  run:\n    - python\n    - meshio\n\ntest:\n  imports:\n    - pygalmesh\n  requires:\n    - pytest\n    - numpy\n  source_files:\n    - test\n  commands:\n    - pytest\n\nabout:\n  home: https://github.com/nschloe/pygalmesh/\n  license: GPL-3.0-or-later\n  license_family: GPL\n  license_file: LICENSE\n  summary: 'A Python frontend to CGAL\u2019s 3D mesh generators.'\n  description: |\n    pygalmesh is a Python frontend to CGAL\u2019s 3D mesh generation capabilities. pygalmesh makes it easy to create high-quality 3D volume meshes, periodic volume meshes, and surface meshes. \n  doc_url: https://github.com/nschloe/pygalmesh\n  dev_url: https://github.com/nschloe/pygalmesh\n\nextra:\n  recipe-maintainers:\n    - nschloe\n    - flothesof\n",
+ "raw_meta_yaml":"{% set name = \"pygalmesh\" %}\n{% set version = \"0.6.6\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz\n  sha256: 67de2cca8914acf73385fa1aea28906187fbb7065d6338c2ab9dced1dcdff444\n\nbuild:\n  number: 0\n  entry_points:\n    - pygalmesh-volume-from-surface = pygalmesh._cli:volume_from_surface\n    - pygalmesh-remesh-surface = pygalmesh._cli:remesh_surface\n    - pygalmesh-from-inr = pygalmesh._cli:inr \n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n  host:\n    - python\n    - pip\n    - eigen\n    - cgal-cpp >=5.0.0,<6\n    - pybind11\n    - mpfr\n    - gmp  # [not win]\n    - mpir  # [win]\n  run:\n    - python\n    - meshio\n    - importlib_metadata\n\ntest:\n  imports:\n    - pygalmesh\n  requires:\n    - pytest\n    - numpy\n  source_files:\n    - test\n  commands:\n    - pytest\n    - pygalmesh-volume-from-surface -h\n    - pygalmesh-remesh-surface -h\n    - pygalmesh-from-inr -h\n\nabout:\n  home: https://github.com/nschloe/pygalmesh/\n  license: GPL-3.0-or-later\n  license_family: GPL\n  license_file: LICENSE\n  summary: 'A Python frontend to CGAL\u2019s 3D mesh generators.'\n  description: |\n    pygalmesh is a Python frontend to CGAL\u2019s 3D mesh generation capabilities. pygalmesh makes it easy to create high-quality 3D volume meshes, periodic volume meshes, and surface meshes. \n  doc_url: https://github.com/nschloe/pygalmesh\n  dev_url: https://github.com/nschloe/pygalmesh\n\nextra:\n  recipe-maintainers:\n    - nschloe\n    - flothesof\n",
  "req":{
   "__set__":true,
   "elements":[
@@ -154,6 +177,7 @@
    "cxx_compiler_stub",
    "eigen",
    "gmp",
+   "importlib_metadata",
    "meshio",
    "mpfr",
    "mpir",
@@ -186,6 +210,7 @@
   "run":{
    "__set__":true,
    "elements":[
+    "importlib_metadata",
     "meshio",
     "python"
    ]
@@ -224,6 +249,7 @@
   "run":{
    "__set__":true,
    "elements":[
+    "importlib_metadata",
     "meshio",
     "python"
    ]

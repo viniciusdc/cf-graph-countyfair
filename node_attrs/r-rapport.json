@@ -59,9 +59,6 @@
   "bot":{
    "automerge":true
   },
-  "compiler_stack":"comp7",
-  "max_py_ver":"37",
-  "max_r_ver":"35",
   "provider":{
    "win":"azure"
   }
@@ -71,13 +68,18 @@
  "meta_yaml":{
   "about":{
    "home":"http://rapport-package.info/",
-   "license":"AGPL-3",
+   "license":"AGPL-3.0-only",
    "license_family":"AGPL",
+   "license_file":[
+    "/lib/R/share/licenses/AGPL-3",
+    "/lib/R/share/licenses/AGPL-3",
+    "/lib/R/share/licenses/AGPL-3"
+   ],
    "summary":"Facilitating the creation of reproducible statistical report templates. Once created, rapport templates can be exported to various external formats (HTML, LaTeX, PDF, ODT etc.) with pandoc as the converter backend."
   },
   "build":{
    "noarch":"generic",
-   "number":"1001",
+   "number":"1002",
    "rpaths":[
     "lib/R/lib/",
     "lib/",
@@ -178,7 +180,7 @@
  "name":"r-rapport",
  "new_version":"1.0",
  "pinning_version":"2020.05.04.19.59.17",
- "raw_meta_yaml":"{% set version = '1.0' %}\n\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-rapport\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  fn: rapport_{{ version }}.tar.gz\n  url:\n    - https://cran.r-project.org/src/contrib/rapport_{{ version }}.tar.gz\n    - https://cran.r-project.org/src/contrib/Archive/rapport/rapport_{{ version }}.tar.gz\n  sha256: 5042c0af899825c00c01756d89a701192666bbdab99253e710bcfb9215573fc4\n\nbuild:\n  noarch: generic\n  number: 1001\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - r-base\n    - r-pander\n    - r-rapportools\n    - r-stringr\n    - r-yaml\n    - pandoc\n\n  run:\n    - r-base\n    - r-pander\n    - r-rapportools\n    - r-stringr\n    - r-yaml\n    - pandoc\n\ntest:\n  commands:\n    - $R -e \"library('rapport')\"  # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('rapport')\\\"\"  # [win]\n\nabout:\n  home: http://rapport-package.info/\n  license: AGPL-3\n  summary: Facilitating the creation of reproducible statistical report templates. Once created,\n    rapport templates can be exported to various external formats (HTML, LaTeX, PDF,\n    ODT etc.) with pandoc as the converter backend.\n  license_family: AGPL\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n    - johanneskoester\n    - bgruening\n    - daler\n    - jdblischak\n    - cbrueffer\n",
+ "raw_meta_yaml":"{% set version = \"1.0\" %}\n\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-rapport\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  fn: rapport_{{ version }}.tar.gz\n  url:\n    - https://cran.r-project.org/src/contrib/rapport_{{ version }}.tar.gz\n    - https://cran.r-project.org/src/contrib/Archive/rapport/rapport_{{ version }}.tar.gz\n  sha256: 5042c0af899825c00c01756d89a701192666bbdab99253e710bcfb9215573fc4\n\nbuild:\n  noarch: generic\n  number: 1002\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - r-base\n    - r-pander\n    - r-rapportools\n    - r-stringr\n    - r-yaml\n    - pandoc\n\n  run:\n    - r-base\n    - r-pander\n    - r-rapportools\n    - r-stringr\n    - r-yaml\n    - pandoc\n\ntest:\n  commands:\n    - $R -e \"library('rapport')\"  # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('rapport')\\\"\"  # [win]\n\nabout:\n  home: http://rapport-package.info/\n  license: AGPL-3.0-only\n  summary: Facilitating the creation of reproducible statistical report templates. Once created, rapport templates can be exported to various external formats (HTML, LaTeX, PDF, ODT etc.) with pandoc as the converter backend.\n  license_family: AGPL\n\n  license_file:\n    - {{ environ[\"PREFIX\"] }}/lib/R/share/licenses/AGPL-3\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n    - johanneskoester\n    - bgruening\n    - daler\n    - jdblischak\n    - cbrueffer\n",
  "req":{
   "__set__":true,
   "elements":[

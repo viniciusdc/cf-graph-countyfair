@@ -47,6 +47,25 @@
     "migrator_version",
     "name"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/413643565.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"MigrationYaml",
+    "migrator_object_version":2,
+    "migrator_version":0,
+    "name":"r400"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_object_version",
+    "migrator_version",
+    "name"
+   ]
   }
  ],
  "bad":false,
@@ -144,7 +163,7 @@
  },
  "name":"r-gsw",
  "new_version":"1.0_5",
- "pinning_version":"2019.07.15",
+ "pinning_version":"2020.05.04.19.59.17",
  "raw_meta_yaml":"{% set version = \"1.0-5\" %}\n\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-gsw\n  version: {{ version.replace(\"-\", \"_\") }}\n\nsource:\n  fn: gsw_{{ version }}.tar.gz\n  url:\n    - http://cran.r-project.org/src/contrib/gsw_{{ version }}.tar.gz\n    - http://cran.r-project.org/src/contrib/Archive/gsw/gsw_{{ version }}.tar.gz\n  sha256: eb468918ee91e429b47fbcac43269eca627b7f64b61520de5bbe8fa223e96453\n\nbuild:\n  number: 1001\n  merge_build_host: True  # [win]\n  script: R CMD INSTALL --build .\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - {{ compiler('c') }}        # [not win]\n    - {{ compiler('m2w64_c') }}        # [win]\n    - {{posix}}filesystem        # [win]\n    - {{posix}}make\n    - {{posix}}sed               # [win]\n    - {{posix}}coreutils         # [win]\n    - {{posix}}zip               # [win]\n  host:\n    - r-base\n    - r-testthat\n  run:\n    - r-base\n    - {{native}}gcc-libs         # [win]\n    - r-testthat\n\ntest:\n  commands:\n    - R -e \"library('gsw')\"  # [not win]\n    - R -e \\\"library('gsw')\\\"  # [win]\n\nabout:\n  home: http://teos-10.github.io/GSW-R/index.html\n  license: GPL-3.0\n  license_file: LICENSE\n  summary: 'Provides an interface to the Gibbs SeaWater (TEOS-10) C library, which\n    derives from Matlab and other code written by WG127 (Working Group 127) of\n    SCOR/IAPSO (Scientific Committee on Oceanic Research / International Association\n    for the Physical Sciences of the Oceans).'\n\nextra:\n  recipe-maintainers:\n    - ocefpaf\n",
  "req":{
   "__set__":true,
@@ -194,7 +213,7 @@
    "elements":[]
   }
  },
- "smithy_version":"3.4.1",
+ "smithy_version":"No azure token. Create a token and\nput it in ~/.conda-smithy/azure.token\n3.7.0\n",
  "strong_exports":false,
  "total_requirements":{
   "build":{
