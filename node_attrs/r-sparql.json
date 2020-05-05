@@ -59,9 +59,6 @@
   "bot":{
    "automerge":true
   },
-  "compiler_stack":"comp7",
-  "max_py_ver":"37",
-  "max_r_ver":"35",
   "provider":{
    "win":"azure"
   }
@@ -71,14 +68,19 @@
  "meta_yaml":{
   "about":{
    "home":"https://CRAN.R-project.org/package=SPARQL",
-   "license":"GPL-3",
+   "license":"GPL-3.0-only",
    "license_family":"GPL3",
+   "license_file":[
+    "/lib/R/share/licenses/GPL-3",
+    "/lib/R/share/licenses/GPL-3",
+    "/lib/R/share/licenses/GPL-3"
+   ],
    "summary":"Use SPARQL to pose SELECT or UPDATE queries to an end-point. "
   },
   "build":{
    "merge_build_host":true,
    "noarch":"generic",
-   "number":"1002",
+   "number":"1003",
    "rpaths":[
     "lib/R/lib/",
     "lib/",
@@ -161,7 +163,7 @@
  "name":"r-sparql",
  "new_version":"1.16",
  "pinning_version":"2020.05.04.19.59.17",
- "raw_meta_yaml":"{% set version = '1.16' %}\n\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-sparql\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  fn: SPARQL_{{ version }}.tar.gz\n  url:\n    - {{ cran_mirror }}/src/contrib/SPARQL_{{ version }}.tar.gz\n    - {{ cran_mirror }}/src/contrib/Archive/SPARQL/SPARQL_{{ version }}.tar.gz\n  sha256: 2cb366b2b93804c12f17254a1c37687887fc12047b58b13aab0d7a6f000e533d\n\n# r-rcurl isn't available on Windows yet\nbuild:\n  noarch: generic\n  merge_build_host: True  # [win]\n  number: 1002\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  host:\n    - r-base\n    - r-rcurl\n    - r-xml\n\n  run:\n    - r-base\n    - r-rcurl\n    - r-xml\n\ntest:\n  commands:\n    - $R -e \"library('SPARQL')\"  # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('SPARQL')\\\"\"  # [win]\n\nabout:\n  home: https://CRAN.R-project.org/package=SPARQL\n  license: GPL-3\n  summary: 'Use SPARQL to pose SELECT or UPDATE queries to an end-point. '\n\n  license_family: GPL3\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n    - dpryan79\n    - johanneskoester\n    - bgruening\n    - daler\n    - jdblischak\n",
+ "raw_meta_yaml":"{% set version = \"1.16\" %}\n\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-sparql\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  fn: SPARQL_{{ version }}.tar.gz\n  url:\n    - {{ cran_mirror }}/src/contrib/SPARQL_{{ version }}.tar.gz\n    - {{ cran_mirror }}/src/contrib/Archive/SPARQL/SPARQL_{{ version }}.tar.gz\n  sha256: 2cb366b2b93804c12f17254a1c37687887fc12047b58b13aab0d7a6f000e533d\n\n# r-rcurl isn't available on Windows yet\nbuild:\n  noarch: generic\n  merge_build_host: true  # [win]\n  number: 1003\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  host:\n    - r-base\n    - r-rcurl\n    - r-xml\n\n  run:\n    - r-base\n    - r-rcurl\n    - r-xml\n\ntest:\n  commands:\n    - $R -e \"library('SPARQL')\"  # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('SPARQL')\\\"\"  # [win]\n\nabout:\n  home: https://CRAN.R-project.org/package=SPARQL\n  license: GPL-3.0-only\n  summary: 'Use SPARQL to pose SELECT or UPDATE queries to an end-point. '\n\n  license_family: GPL3\n\n  license_file:\n    - {{ environ[\"PREFIX\"] }}/lib/R/share/licenses/GPL-3\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n    - dpryan79\n    - johanneskoester\n    - bgruening\n    - daler\n    - jdblischak\n",
  "req":{
   "__set__":true,
   "elements":[
