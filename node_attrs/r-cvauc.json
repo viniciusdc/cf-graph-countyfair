@@ -59,9 +59,6 @@
   "bot":{
    "automerge":true
   },
-  "compiler_stack":"comp7",
-  "max_py_ver":"37",
-  "max_r_ver":"35",
   "provider":{
    "win":"azure"
   }
@@ -71,14 +68,15 @@
  "meta_yaml":{
   "about":{
    "home":"https://github.com/ledell/cvAUC",
-   "license":"Apache-2-0",
+   "license":"Apache-2.0",
    "license_family":"APACHE",
+   "license_file":"LICENSE-2.0.txt",
    "summary":"This package contains various tools for working with and evaluating cross-validated area under the ROC curve (AUC) estimators.  The primary functions of the package are ci.cvAUC and ci.pooled.cvAUC, which report cross-validated AUC and compute confidence intervals for cross-validated AUC estimates based on influence curves for i.i.d. and pooled repeated measures data, respectively.  One benefit to using influence curve based confidence intervals is that they require much less computation time than bootstrapping methods.  The utility functions, AUC and cvAUC, are simple wrappers for functions from the ROCR package. "
   },
   "build":{
    "merge_build_host":true,
    "noarch":"generic",
-   "number":"1002",
+   "number":"1003",
    "rpaths":[
     "lib/R/lib/",
     "lib/",
@@ -165,7 +163,7 @@
  "name":"r-cvauc",
  "new_version":"1.1.0",
  "pinning_version":"2020.05.04.05.46.47",
- "raw_meta_yaml":"{% set version = '1.1.0' %}\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-cvauc\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  fn: cvAUC_{{ version }}.tar.gz\n  url:\n    - {{ cran_mirror }}/src/contrib/cvAUC_{{ version }}.tar.gz\n    - {{ cran_mirror }}/src/contrib/Archive/cvAUC/cvAUC_{{ version }}.tar.gz\n  sha256: c4d8ed53b93869650aa2f666cf6d1076980cbfea7fa41f0b8227595be849738d\n\nbuild:\n  noarch: generic\n  merge_build_host: True  # [win]\n  number: 1002\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - {{posix}}zip               # [win]\n  host:\n    - r-base\n    - r-rocr\n    - r-data.table\n  run:\n    - r-base\n    - r-rocr\n    - r-data.table\n\ntest:\n  commands:\n    - $R -e \"library('cvAUC')\"           # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('cvAUC')\\\"\"  # [win]\n\nabout:\n  home: https://github.com/ledell/cvAUC\n  license: Apache-2-0\n  summary: 'This package contains various tools for working with and evaluating cross-validated\n    area under the ROC curve (AUC) estimators.  The primary functions of the package\n    are ci.cvAUC and ci.pooled.cvAUC, which report cross-validated AUC and compute confidence\n    intervals for cross-validated AUC estimates based on influence curves for i.i.d.\n    and pooled repeated measures data, respectively.  One benefit to using influence\n    curve based confidence intervals is that they require much less computation time\n    than bootstrapping methods.  The utility functions, AUC and cvAUC, are simple wrappers\n    for functions from the ROCR package. '\n  license_family: APACHE\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n    - johanneskoester\n    - bgruening\n    - daler\n    - jdblischak\n    - cbrueffer\n    - dbast\n",
+ "raw_meta_yaml":"{% set version = \"1.1.0\" %}\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-cvauc\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  fn: cvAUC_{{ version }}.tar.gz\n  url:\n    - {{ cran_mirror }}/src/contrib/cvAUC_{{ version }}.tar.gz\n    - {{ cran_mirror }}/src/contrib/Archive/cvAUC/cvAUC_{{ version }}.tar.gz\n  sha256: c4d8ed53b93869650aa2f666cf6d1076980cbfea7fa41f0b8227595be849738d\n\nbuild:\n  noarch: generic\n  merge_build_host: true  # [win]\n  number: 1003\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - {{ posix }}zip               # [win]\n  host:\n    - r-base\n    - r-rocr\n    - r-data.table\n  run:\n    - r-base\n    - r-rocr\n    - r-data.table\n\ntest:\n  commands:\n    - $R -e \"library('cvAUC')\"           # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('cvAUC')\\\"\"  # [win]\n\nabout:\n  home: https://github.com/ledell/cvAUC\n  license: Apache-2.0\n  summary: 'This package contains various tools for working with and evaluating cross-validated area under the ROC curve (AUC) estimators.  The primary functions of the package are ci.cvAUC and ci.pooled.cvAUC, which report cross-validated AUC and compute confidence intervals for cross-validated AUC estimates based on influence\n    curves for i.i.d. and pooled repeated measures data, respectively.  One benefit to using influence curve based confidence intervals is that they require much less computation time than bootstrapping methods.  The utility functions, AUC and cvAUC, are simple wrappers for functions from the ROCR package. '\n  license_family: APACHE\n  license_file: LICENSE-2.0.txt\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n    - johanneskoester\n    - bgruening\n    - daler\n    - jdblischak\n    - cbrueffer\n    - dbast\n",
  "req":{
   "__set__":true,
   "elements":[

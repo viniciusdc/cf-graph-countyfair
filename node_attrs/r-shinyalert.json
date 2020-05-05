@@ -59,9 +59,6 @@
   "bot":{
    "automerge":true
   },
-  "compiler_stack":"comp7",
-  "max_py_ver":"37",
-  "max_r_ver":"35",
   "provider":{
    "win":"azure"
   }
@@ -73,12 +70,13 @@
    "home":"https://github.com/daattali/shinyalert https://daattali.com/shiny/shinyalert-demo/",
    "license":"MIT",
    "license_family":"MIT",
+   "license_file":"LICENSE",
    "summary":"Easily create pretty popup messages (modals) in 'Shiny'. A modal can contain text, images, OK/Cancel buttons, an input to get a response from the user, and many more customizable options."
   },
   "build":{
    "merge_build_host":true,
    "noarch":"generic",
-   "number":"1001",
+   "number":"1002",
    "rpaths":[
     "lib/R/lib/",
     "lib/",
@@ -158,7 +156,7 @@
   "1.1":"We found a problem parsing the recipe: \n\nwhile constructing a mapping\n  in \"<unicode string>\", line 16, column 3:\n      noarch: generic\n      ^ (line: 16)\nfound duplicate key \"noarch\" with value \"generic\" (original value: \"generic\")\n  in \"<unicode string>\", line 19, column 3:\n      noarch: generic\n      ^ (line: 19)\n\nTo suppress this check see:\n    http://yaml.readthedocs.io/en/latest/api.html#duplicate-keys\n\nDuplicate keys will become an error in future releases, and are errors\nby default when using the new API.\n"
  },
  "pinning_version":"2020.05.04.19.59.17",
- "raw_meta_yaml":"{% set version = '1.0' %}\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-shinyalert\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  url:\n    - {{ cran_mirror }}/src/contrib/shinyalert_{{ version }}.tar.gz\n    - {{ cran_mirror }}/src/contrib/Archive/shinyalert/shinyalert_{{ version }}.tar.gz\n  sha256: b1034248e60c55886cdf961abdc0ebb9aec4c4eea3a6ad8d7e813bc3ffbaf559\n\nbuild:\n  noarch: generic\n  merge_build_host: True  # [win]\n  number: 1001\n  noarch: generic\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n\n  host:\n    - r-base\n    - r-digest\n    - r-shiny >=1.0.4\n    - pandoc\n  run:\n    - r-base\n    - r-digest\n    - r-shiny >=1.0.4\n    - pandoc\n\ntest:\n  commands:\n    - $R -e \"library('shinyalert')\"           # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('shinyalert')\\\"\"  # [win]\n\nabout:\n  home: https://github.com/daattali/shinyalert https://daattali.com/shiny/shinyalert-demo/\n  license: MIT\n  summary: Easily create pretty popup messages (modals) in 'Shiny'. A modal can contain text,\n    images, OK/Cancel buttons, an input to get a response from the user, and many more\n    customizable options.\n  license_family: MIT\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n\n# Package: shinyalert\n# Title: Easily Create Pretty Popup Messages (Modals) in 'Shiny'\n# Version: 1.0\n# Authors@R: c( person(\"Dean\", \"Attali\", email = \"daattali@gmail.com\", role = c(\"aut\", \"cre\"), comment = \"R interface\"), person(\"Tristan\", \"Edwards\", role = c(\"aut\"), comment = \"sweetalert library\") )\n# Description: Easily create pretty popup messages (modals) in 'Shiny'. A modal can contain text, images, OK/Cancel buttons, an input to get a response from the user, and many more customizable options.\n# URL: https://github.com/daattali/shinyalert https://daattali.com/shiny/shinyalert-demo/\n# BugReports: https://github.com/daattali/shinyalert/issues\n# Depends: R (>= 3.0.2)\n# Imports: digest, shiny (>= 1.0.4), stats\n# Suggests: colourpicker, knitr, rmarkdown\n# License: MIT + file LICENSE\n# SystemRequirements: pandoc with https support\n# LazyData: true\n# VignetteBuilder: knitr\n# RoxygenNote: 6.0.1\n# NeedsCompilation: no\n# Packaged: 2018-02-12 16:41:07 UTC; Dean\n# Author: Dean Attali [aut, cre] (R interface), Tristan Edwards [aut] (sweetalert library)\n# Maintainer: Dean Attali <daattali@gmail.com>\n# Repository: CRAN\n# Date/Publication: 2018-02-12 18:20:44 UTC\n",
+ "raw_meta_yaml":"{% set version = '1.0' %}\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-shinyalert\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  url:\n    - {{ cran_mirror }}/src/contrib/shinyalert_{{ version }}.tar.gz\n    - {{ cran_mirror }}/src/contrib/Archive/shinyalert/shinyalert_{{ version }}.tar.gz\n  sha256: b1034248e60c55886cdf961abdc0ebb9aec4c4eea3a6ad8d7e813bc3ffbaf559\n\nbuild:\n  noarch: generic\n  merge_build_host: True  # [win]\n  number: 1002\n  noarch: generic\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n\n  host:\n    - r-base\n    - r-digest\n    - r-shiny >=1.0.4\n    - pandoc\n  run:\n    - r-base\n    - r-digest\n    - r-shiny >=1.0.4\n    - pandoc\n\ntest:\n  commands:\n    - $R -e \"library('shinyalert')\"           # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('shinyalert')\\\"\"  # [win]\n\nabout:\n  home: https://github.com/daattali/shinyalert https://daattali.com/shiny/shinyalert-demo/\n  license: MIT\n  summary: Easily create pretty popup messages (modals) in 'Shiny'. A modal can contain text,\n    images, OK/Cancel buttons, an input to get a response from the user, and many more\n    customizable options.\n  license_family: MIT\n  license_file: LICENSE\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n\n# Package: shinyalert\n# Title: Easily Create Pretty Popup Messages (Modals) in 'Shiny'\n# Version: 1.0\n# Authors@R: c( person(\"Dean\", \"Attali\", email = \"daattali@gmail.com\", role = c(\"aut\", \"cre\"), comment = \"R interface\"), person(\"Tristan\", \"Edwards\", role = c(\"aut\"), comment = \"sweetalert library\") )\n# Description: Easily create pretty popup messages (modals) in 'Shiny'. A modal can contain text, images, OK/Cancel buttons, an input to get a response from the user, and many more customizable options.\n# URL: https://github.com/daattali/shinyalert https://daattali.com/shiny/shinyalert-demo/\n# BugReports: https://github.com/daattali/shinyalert/issues\n# Depends: R (>= 3.0.2)\n# Imports: digest, shiny (>= 1.0.4), stats\n# Suggests: colourpicker, knitr, rmarkdown\n# License: MIT + file LICENSE\n# SystemRequirements: pandoc with https support\n# LazyData: true\n# VignetteBuilder: knitr\n# RoxygenNote: 6.0.1\n# NeedsCompilation: no\n# Packaged: 2018-02-12 16:41:07 UTC; Dean\n# Author: Dean Attali [aut, cre] (R interface), Tristan Edwards [aut] (sweetalert library)\n# Maintainer: Dean Attali <daattali@gmail.com>\n# Repository: CRAN\n# Date/Publication: 2018-02-12 18:20:44 UTC\n",
  "req":{
   "__set__":true,
   "elements":[

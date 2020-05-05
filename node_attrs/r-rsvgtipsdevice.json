@@ -74,9 +74,6 @@
   "bot":{
    "automerge":true
   },
-  "compiler_stack":"comp7",
-  "max_py_ver":"37",
-  "max_r_ver":"35",
   "provider":{
    "win":"azure"
   }
@@ -86,13 +83,18 @@
  "meta_yaml":{
   "about":{
    "home":"https://CRAN.R-project.org/package=RSVGTipsDevice",
-   "license":"GPL (>= 2)",
+   "license":"GPL-2.0-or-later",
    "license_family":"GPL3",
+   "license_file":[
+    "/lib/R/share/licenses/GPL-2",
+    "/lib/R/share/licenses/GPL-2",
+    "/lib/R/share/licenses/GPL-2"
+   ],
    "summary":"A graphics device for R that uses the w3.org xml standard for Scalable Vector Graphics.  This version supports tooltips with 1 to 3 lines, hyperlinks, and line styles."
   },
   "build":{
    "merge_build_host":true,
-   "number":"1002",
+   "number":"1003",
    "rpaths":[
     "lib/R/lib/",
     "lib/",
@@ -185,7 +187,7 @@
  "name":"r-rsvgtipsdevice",
  "new_version":"1.0_7",
  "pinning_version":"2020.05.04.19.59.17",
- "raw_meta_yaml":"{% set version = '1.0-7' %}\n\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-rsvgtipsdevice\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  fn: RSVGTipsDevice_{{ version }}.tar.gz\n  url:\n    - {{ cran_mirror }}/src/contrib/RSVGTipsDevice_{{ version }}.tar.gz\n    - {{ cran_mirror }}/src/contrib/Archive/RSVGTipsDevice/RSVGTipsDevice_{{ version }}.tar.gz\n  sha256: 4bdd0bad01a4a22158b511c74ac5261fa5acc9a94122fde8d67f920b0145b949\n\nbuild:\n  merge_build_host: True  # [win]\n  number: 1002\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - {{ compiler('c') }}        # [not win]\n    - {{ compiler('m2w64_c') }}        # [win]\n    - {{posix}}filesystem        # [win]\n    - {{posix}}make\n    - {{posix}}sed               # [win]\n    - {{posix}}coreutils         # [win]\n    - {{posix}}zip               # [win]\n\n  host:\n    - r-base\n\n  run:\n    - r-base\n    - {{native}}gcc-libs         # [win]\n\ntest:\n  commands:\n    - $R -e \"library('RSVGTipsDevice')\"           # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('RSVGTipsDevice')\\\"\"  # [win]\n\nabout:\n  home: https://CRAN.R-project.org/package=RSVGTipsDevice\n  license: GPL (>= 2)\n  summary: A graphics device for R that uses the w3.org xml standard for Scalable Vector Graphics.  This\n    version supports tooltips with 1 to 3 lines, hyperlinks, and line styles.\n  license_family: GPL3\n\nextra:\n   recipe-maintainers:\n    - conda-forge/r\n    - dpryan79\n    - MathiasHaudgaard\n    - FrodePedersen\n    - ArneKr\n    - Johanneskoester\n    - Bgruening\n    - Daler\n    - Jdblischak\n",
+ "raw_meta_yaml":"{% set version = \"1.0-7\" %}\n\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-rsvgtipsdevice\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  fn: RSVGTipsDevice_{{ version }}.tar.gz\n  url:\n    - {{ cran_mirror }}/src/contrib/RSVGTipsDevice_{{ version }}.tar.gz\n    - {{ cran_mirror }}/src/contrib/Archive/RSVGTipsDevice/RSVGTipsDevice_{{ version }}.tar.gz\n  sha256: 4bdd0bad01a4a22158b511c74ac5261fa5acc9a94122fde8d67f920b0145b949\n\nbuild:\n  merge_build_host: true  # [win]\n  number: 1003\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - {{ compiler('c') }}        # [not win]\n    - {{ compiler('m2w64_c') }}        # [win]\n    - {{ posix }}filesystem        # [win]\n    - {{ posix }}make\n    - {{ posix }}sed               # [win]\n    - {{ posix }}coreutils         # [win]\n    - {{ posix }}zip               # [win]\n\n  host:\n    - r-base\n\n  run:\n    - r-base\n    - {{ native }}gcc-libs         # [win]\n\ntest:\n  commands:\n    - $R -e \"library('RSVGTipsDevice')\"           # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('RSVGTipsDevice')\\\"\"  # [win]\n\nabout:\n  home: https://CRAN.R-project.org/package=RSVGTipsDevice\n  license: GPL-2.0-or-later\n  summary: A graphics device for R that uses the w3.org xml standard for Scalable Vector Graphics.  This version supports tooltips with 1 to 3 lines, hyperlinks, and line styles.\n  license_family: GPL3\n\n  license_file:\n    - {{ environ[\"PREFIX\"] }}/lib/R/share/licenses/GPL-2\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n    - dpryan79\n    - MathiasHaudgaard\n    - FrodePedersen\n    - ArneKr\n    - Johanneskoester\n    - Bgruening\n    - Daler\n    - Jdblischak\n",
  "req":{
   "__set__":true,
   "elements":[
