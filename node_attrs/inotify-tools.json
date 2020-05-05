@@ -161,7 +161,7 @@
   }
  },
  "name":"inotify-tools",
- "new_version":false,
+ "new_version":"3.20.2.2",
  "pinning_version":"2020.01.27",
  "raw_meta_yaml":"{% set name = \"inotify-tools\" %}\n{% set version = \"3.20.2\" %}\n{% set sha256 = \"5ef0519934ac99f58c217fce259832a4ed51e25ded64c8aaf1149791b2c9b2c7\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  url: https://github.com/rvoicilas/{{ name }}/archive/{{ version }}.tar.gz\n  sha256: {{ sha256 }}\n\nbuild:\n  number: 0\n  skip: true  # [not linux]\n\nrequirements:\n  build:\n    - automake\n    - libtool\n    - {{ compiler('c') }}\n  host:\n\ntest:\n  commands:\n    - inotifywatch --help || [[ $? == 1 ]]  # --help returns 1\n    - inotifywait --help || [[ $? == 1 ]]  # --help returns 1\n\nabout:\n  home: https://github.com/rvoicilas/inotify-tools\n  license: GPL-2.0\n  license_family: GPL\n  license_file: COPYING\n  summary: 'This is a package of some commandline utilities relating to inotify.'\n  description: |\n    The general purpose of this package is to allow inotify's features to be\n    used from within shell scripts.\n  doc_url: https://github.com/rvoicilas/inotify-tools/wiki\n\nextra:\n  recipe-maintainers:\n    - keuv-grvl\n",
  "req":{

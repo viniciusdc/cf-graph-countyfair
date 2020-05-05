@@ -179,7 +179,7 @@
   }
  },
  "name":"multinest",
- "new_version":false,
+ "new_version":"3.10",
  "pinning_version":"2019.10.11",
  "raw_meta_yaml":"{% set version = \"3.10\" %}\n\npackage:\n  name: multinest\n  version: {{ version }}\n\nsource:\n  url: https://github.com/JohannesBuchner/MultiNest/archive/v{{ version }}.tar.gz\n  sha256: 8900588ddb4ece8ec09bb1cc4df80e3f02157b278176635d9ef9cdc1992559ce\n\nbuild:\n   number: 7\n   skip: true  # [win]\n\nrequirements:\n\n  build:\n    - cmake\n    - {{ compiler('fortran') }}\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n  host:\n    - libblas\n    - libcblas\n    - liblapack\n    - mpich\n  run:\n    - mpich\n\ntest:\n  commands:\n    - bash -c \"cd ${PREFIX}/bin ; mkdir chains ; gaussian\"\n    - test -f ${PREFIX}/lib/libmultinest.so  # [linux]\n\n    - test -f ${PREFIX}/lib/libmultinest.dylib  # [osx]\n\n    - test -f ${PREFIX}/include/multinest.h\n    - python -c \"import pymultinest\"\n\n    - conda inspect linkages --show-files -p $PREFIX multinest  # [not win]\n    - conda inspect objects -p $PREFIX multinest  # [osx]\n\n  requires:\n    - pymultinest\n\n\nabout:\n  home: https://github.com/JohannesBuchner/MultiNest\n  license: custom\n  license_file: license.pdf\n  summary: MultiNest is a Bayesian inference tool which calculates the evidence and explores the parameter space which may contain multiple posterior modes and pronounced (curving) degeneracies in moderately high dimensions.\n\nextra:\n  recipe-maintainers:\n    - giacomov\n    - farhanferoz\n",
  "req":{

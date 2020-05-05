@@ -133,7 +133,7 @@
   }
  },
  "name":"openspecfun",
- "new_version":false,
+ "new_version":"0.5.3",
  "pinning_version":"2019.08.12",
  "raw_meta_yaml":"{% set name = \"openspecfun\" %}\n{% set version = \"0.5.3\" %}\n{% set sha256 = \"1505c7a45f9f39ffe18be36f7a985cb427873948281dbcd376a11c2cd15e41e7\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  fn: {{ name }}-{{ version }}.tar.gz\n  url: https://github.com/JuliaLang/openspecfun/archive/v{{ version }}.tar.gz\n  sha256: {{ sha256 }}\n  patches:\n    - 0001-no-cc-override.patch\n    - 0002-no-fc-override.patch\n\nbuild:\n  number: 1001\n  skip: true  # [win]\n\nrequirements:\n  build:\n    - {{ compiler('fortran') }}\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n  host:\n    - openlibm 0.5.4\n\n  run:\n    - openlibm 0.5.4\n\ntest:\n  commands:\n    - test -f \"${PREFIX}/include/Faddeeva.h\"                             # [unix]\n    - test -f \"${PREFIX}/lib/libopenspecfun.a\"                           # [unix]\n    - test -f \"${PREFIX}/lib/libopenspecfun${SHLIB_EXT}\"                 # [unix]\n\n    - conda inspect linkages -p \"${PREFIX}\" \"{{ name }}\"                 # [unix]\n    - conda inspect objects -p \"${PREFIX}\" \"{{ name }}\"                  # [osx]\n\nabout:\n  home: https://github.com/JuliaLang/openspecfun\n  license: MIT, Public Domain\n  license_file: LICENSE.md\n  summary: A collection of special mathematical functions\n  dev_url: https://github.com/JuliaLang/openspecfun\n\nextra:\n  recipe-maintainers:\n    - dfornika\n    - jakirkham\n    - SylvainCorlay\n",
  "req":{
