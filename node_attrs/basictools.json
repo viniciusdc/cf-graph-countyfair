@@ -126,7 +126,7 @@
   }
  },
  "name":"basictools",
- "new_version":false,
+ "new_version":"1.2",
  "pinning_version":"2020.01.28",
  "raw_meta_yaml":"{% set version = \"1.1\" %}\n\npackage:\n  name: basictools\n  version: {{ version }}\n\nsource:\n  url: https://gitlab.com/DRTI/basic-tools/-/archive/v{{ version }}/basic-tools-v{{ version }}.tar.bz2\n  sha256: 7e4354044714c5a5d815e000109940fbb7dd4edce3140a8b51bcc04ee720c333\n  patches:\n    # disable mkl, openmp\n    - setup.patch\n\nbuild:\n  number: 0\n  script: \"CC=${CXX} EIGEN_INC=${PREFIX}/include/eigen3 ${PYTHON} -m pip install --no-deps . -vv\"  # [unix]\n  script: \"set EIGEN_INC=%LIBRARY_INC%\\\\eigen3 & %PYTHON% -m pip install --no-deps . -vv\"  # [win]\n  skip: true  # [py2k or win]\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n  host:\n    - python\n    - pip\n    - cython\n    - numpy\n    - eigen\n  run:\n    - python\n    - {{ pin_compatible('numpy') }}\n    - scipy\n    - scikit-sparse  # [not win]\n    - pyamg\n    - sympy\n    - h5py\n    - pyparsing\n    - mpi4py  # [not win]\n    - vtk\n    - matplotlib-base\n\ntest:\n  imports:\n    - BasicTools\n\nabout:\n  home: https://gitlab.com/DRTI/basic-tools\n  license: BSD 3 Clause\n  license_file: LICENSE.txt\n  license_family: BSD\n  summary: Safran FE helper tools\n\nextra:\n  recipe-maintainers:\n    - jschueller\n",
  "req":{
