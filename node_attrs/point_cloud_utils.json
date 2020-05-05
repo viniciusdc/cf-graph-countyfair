@@ -176,19 +176,22 @@
   },
   "package":{
    "name":"point_cloud_utils",
-   "version":"0.13.0"
+   "version":"0.15.0"
   },
   "requirements":{
    "build":[
     "cxx_compiler_stub",
     "git",
     "cmake",
+    "openmp",
     "cxx_compiler_stub",
     "git",
     "cmake",
+    "openmp",
     "cxx_compiler_stub",
     "git",
-    "cmake"
+    "cmake",
+    "openmp"
    ],
    "host":[
     "python",
@@ -211,17 +214,20 @@
     "python",
     "numpy",
     "scipy",
+    "openmp",
     "python",
     "numpy",
     "scipy",
+    "openmp",
     "python",
     "numpy",
-    "scipy"
+    "scipy",
+    "openmp"
    ]
   },
   "source":{
-   "sha256":"28e7a37cf51d2973ab99ace90732b2f5b1c9bb91668ab4fcb3405a427de59bc9",
-   "url":"https://github.com/fwilliams/point-cloud-utils/archive/0.13.0.tar.gz"
+   "sha256":"709a28d527f6d8394b8205d058dc44e82f0262b33a6d42100cb53c9f07f31811",
+   "url":"https://github.com/fwilliams/point-cloud-utils/archive/0.15.0.tar.gz"
   },
   "test":{
    "commands":[
@@ -245,9 +251,9 @@
   }
  },
  "name":"point_cloud_utils",
- "new_version":"0.13.0",
+ "new_version":"0.15.0",
  "pinning_version":"2020.03.28",
- "raw_meta_yaml":"{% set name = \"point_cloud_utils\" %}\n{% set version = \"0.13.0\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  url: https://github.com/fwilliams/point-cloud-utils/archive/{{ version }}.tar.gz\n  sha256: 28e7a37cf51d2973ab99ace90732b2f5b1c9bb91668ab4fcb3405a427de59bc9\n\nbuild:\n  number: 2\n  script:\n    - set \"CMAKE_GENERATOR=NMake Makefiles\"  # [win]\n    - \"{{ PYTHON }} -m pip install . --no-deps -vv --install-option=\\\"--exclude-arch\\\"\" \n  skip: true  # [win and vc<14]\n    \nrequirements:\n  build:\n    - {{ compiler('cxx') }}\n    - git\n    - cmake\n  host:\n    - python\n    - pip\n    - setuptools\n    - numpy\n    - scipy\n    \n  run:\n    - python\n    - {{ pin_compatible('numpy') }}\n    - scipy\n\ntest:\n  imports:\n    - point_cloud_utils\n  source_files:\n    - tests/test_examples.py\n    - data/cube_twist.obj\n  commands:\n    - python tests/test_examples.py\n    \nabout:\n  home: http://github.com/fwilliams/point-cloud-utils\n  license: GPL-2.0\n  license_family: GPL\n  license_file: LICENSE\n  summary: 'A Python library for common tasks on 3D point clouds'\n\n\nextra:\n  recipe-maintainers:\n    - fwilliams\n",
+ "raw_meta_yaml":"{% set name = \"point_cloud_utils\" %}\n{% set version = \"0.15.0\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  url: https://github.com/fwilliams/point-cloud-utils/archive/{{ version }}.tar.gz\n  sha256: 709a28d527f6d8394b8205d058dc44e82f0262b33a6d42100cb53c9f07f31811\n\nbuild:\n  number: 2\n  script:\n    - set \"CMAKE_GENERATOR=NMake Makefiles\"  # [win]\n    - \"{{ PYTHON }} -m pip install . --no-deps -vv --install-option=\\\"--exclude-arch\\\"\" \n  skip: true  # [win and vc<14]\n    \nrequirements:\n  build:\n    - {{ compiler('cxx') }}\n    - git\n    - cmake\n    - openmp\n  host:\n    - python\n    - pip\n    - setuptools\n    - numpy\n    - scipy\n    \n  run:\n    - python\n    - {{ pin_compatible('numpy') }}\n    - scipy\n    - openmp\n\ntest:\n  imports:\n    - point_cloud_utils\n  source_files:\n    - tests/test_examples.py\n    - data/cube_twist.obj\n  commands:\n    - python tests/test_examples.py\n    \nabout:\n  home: http://github.com/fwilliams/point-cloud-utils\n  license: GPL-2.0\n  license_family: GPL\n  license_file: LICENSE\n  summary: 'A Python library for common tasks on 3D point clouds'\n\n\nextra:\n  recipe-maintainers:\n    - fwilliams\n",
  "req":{
   "__set__":true,
   "elements":[
@@ -255,6 +261,7 @@
    "cxx_compiler_stub",
    "git",
    "numpy",
+   "openmp",
    "pip",
    "python",
    "scipy",
@@ -267,13 +274,15 @@
    "elements":[
     "cmake",
     "cxx_compiler_stub",
-    "git"
+    "git",
+    "openmp"
    ]
   },
   "host":{
    "__set__":true,
    "elements":[
     "numpy",
+    "openmp",
     "pip",
     "python",
     "scipy",
@@ -284,6 +293,7 @@
    "__set__":true,
    "elements":[
     "numpy",
+    "openmp",
     "python",
     "scipy"
    ]
@@ -301,7 +311,8 @@
    "elements":[
     "cmake",
     "cxx_compiler_stub",
-    "git"
+    "git",
+    "openmp"
    ]
   },
   "host":{
@@ -318,6 +329,7 @@
    "__set__":true,
    "elements":[
     "numpy",
+    "openmp",
     "python",
     "scipy"
    ]
@@ -328,5 +340,5 @@
   }
  },
  "url":"https://github.com/fwilliams/point-cloud-utils/archive/0.8.4.tar.gz",
- "version":"0.13.0"
+ "version":"0.15.0"
 }
