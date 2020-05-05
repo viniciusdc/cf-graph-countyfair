@@ -84,6 +84,25 @@
     "migrator_version",
     "version"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/413321249.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"MigrationYaml",
+    "migrator_object_version":2,
+    "migrator_version":0,
+    "name":"r400"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_object_version",
+    "migrator_version",
+    "name"
+   ]
   }
  ],
  "bad":false,
@@ -255,7 +274,7 @@
  },
  "name":"r-rpostgres",
  "new_version":"1.2.0",
- "pinning_version":"2019.12.17",
+ "pinning_version":"2020.05.04.19.59.17",
  "raw_meta_yaml":"{% set version = \"1.2.0\" %}\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-rpostgres\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  url:\n    - {{ cran_mirror }}/src/contrib/RPostgres_{{ version }}.tar.gz\n    - {{ cran_mirror }}/src/contrib/Archive/RPostgres/RPostgres_{{ version }}.tar.gz\n  sha256: fd2301fdaa35c849b18f9b7372ef885ae336be783205ac6c8a216f1ca4e2d299\n\nbuild:\n  merge_build_host: True  # [win]\n  number: 1\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - {{ compiler('c') }}              # [not win]\n    - {{ compiler('m2w64_c') }}        # [win]\n    - {{ compiler('cxx') }}            # [not win]\n    - {{ compiler('m2w64_cxx') }}      # [win]\n    - {{posix}}filesystem        # [win]\n    - {{posix}}sed               # [win]\n    - {{posix}}grep              # [win]\n    - {{posix}}autoconf\n    - {{posix}}automake          # [not win]\n    - {{posix}}automake-wrapper  # [win]\n    - {{posix}}pkg-config\n    - {{posix}}make\n    - {{posix}}coreutils         # [win]\n    - {{posix}}zip               # [win]\n  host:\n    - r-base\n    - r-bh\n    - r-dbi >=1.1.0\n    - r-rcpp >=0.11.4.2\n    - r-bit64\n    - r-blob >=1.2.0\n    - r-hms >=0.5.0\n    - r-plogr >=0.2.0\n    - r-withr\n    - postgresql\n  run:\n    - r-base\n    - {{native}}gcc-libs         # [win]\n    # BH is the header-only part of Boost and thus a compile-time requirement only\n    # - r-bh\n    - r-dbi >=1.1.0\n    - r-rcpp >=0.11.4.2\n    - r-bit64\n    - r-blob >=1.2.0\n    - r-hms >=0.5.0\n    - r-plogr >=0.2.0\n    - r-withr\n    - libpq\n\ntest:\n  commands:\n    - $R -e \"library('RPostgres')\"           # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('RPostgres')\\\"\"  # [win]\n    - conda inspect linkages -p $PREFIX r-rpostgres  # [not win]\n    - conda inspect objects -p $PREFIX r-rpostgres  # [osx]\n  requires:\n    - conda-build\nabout:\n  home: https://github.com/r-dbi/RPostgres\n  license: GPL-2\n  summary: |\n    Fully 'DBI'-compliant 'Rcpp'-backed interface to 'PostgreSQL' <https://www.postgresql.org/>,\n    an open-source relational database.\n  license_family: GPL2\n  license_file: '{{ environ[\"PREFIX\"] }}/lib/R/share/licenses/GPL-2'\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n    - halldc\n    - fhoehle\n",
  "req":{
   "__set__":true,
@@ -345,7 +364,7 @@
    ]
   }
  },
- "smithy_version":"3.6.5",
+ "smithy_version":"No azure token. Create a token and\nput it in ~/.conda-smithy/azure.token\n3.7.0\n",
  "strong_exports":false,
  "total_requirements":{
   "build":{
