@@ -68,7 +68,7 @@
    ]
   }
  ],
- "bad":false,
+ "bad":"make_graph: 500",
  "conda-forge.yml":{
   "bot":{
    "automerge":true
@@ -175,7 +175,7 @@
   }
  },
  "name":"r-cvst",
- "new_version":"0.2_2",
+ "new_version":false,
  "pinning_version":"2020.05.04.05.46.47",
  "raw_meta_yaml":"{% set version = '0.2-2' %}\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-cvst\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  fn: CVST_{{ version }}.tar.gz\n  url:\n    - {{ cran_mirror }}/src/contrib/CVST_{{ version }}.tar.gz\n    - {{ cran_mirror }}/src/contrib/Archive/CVST/CVST_{{ version }}.tar.gz\n  sha256: 854b8c983427ecf9f2f7798c4fd1c1d06762b5b0bcb1045502baadece6f78316\n\nbuild:\n  noarch: generic\n  merge_build_host: True  # [win]\n  number: 1002\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - {{ posix }}zip               # [win]\n  host:\n    - r-base\n    - r-matrix\n    - r-kernlab\n  run:\n    - r-base\n    - r-matrix\n    - r-kernlab\n\ntest:\n  commands:\n    - $R -e \"library('CVST')\"           # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('CVST')\\\"\"  # [win]\n\nabout:\n  home: https://CRAN.R-project.org/package=CVST\n  license: GPL (>= 2.0)\n  summary: The fast cross-validation via sequential testing (CVST) procedure is an improved cross-validation\n    procedure which uses non-parametric testing coupled with sequential analysis to\n    determine the best parameter set on linearly increasing subsets of the data. By\n    eliminating under-performing candidates quickly and keeping promising candidates\n    as long as possible, the method speeds up the computation while preserving the capability\n    of a full cross-validation. Additionally to the CVST the package contains an implementation\n    of the ordinary k-fold cross-validation with a flexible and powerful set of helper\n    objects and methods to handle the overall model selection process. The implementations\n    of the Cochran's Q test with permutations and the sequential testing framework of\n    Wald are generic and can therefore also be used in other contexts.\n  license_family: GPL3\n  license_file: '{{ environ[\"PREFIX\"] }}/lib/R/share/licenses/GPL-3'\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n    - johanneskoester\n    - bgruening\n    - daler\n    - jdblischak\n    - cbrueffer\n    - dbast\n",
  "req":{

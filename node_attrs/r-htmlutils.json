@@ -35,7 +35,7 @@
    ]
   }
  ],
- "bad":false,
+ "bad":"make_graph: 500",
  "conda-forge.yml":{
   "bot":{
    "automerge":true
@@ -134,7 +134,7 @@
   }
  },
  "name":"r-htmlutils",
- "new_version":"0.1.7",
+ "new_version":false,
  "pinning_version":"2019.07.20",
  "raw_meta_yaml":"{% set version = '0.1.7' %}\n\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-htmlutils\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  fn: metap_{{ version }}.tar.gz\n  url:\n    - https://cran.r-project.org/src/contrib/HTMLUtils_{{ version }}.tar.gz\n    - https://cran.r-project.org/src/contrib/Archive/HTMLUtils/HTMLUtils_{{ version }}.tar.gz\n  sha256: 812217968d7924806c63974108434ae534883ea6775c2d4db350fdaf6401c517\n\nbuild:\n  noarch: generic\n  number: 1002\n\n  rpaths:\n    - lib/R/lib/\n    - lib/\nrequirements:\n  build:\n    - r-base\n    - r-r2html\n\n  run:\n    - r-base\n    - r-r2html\n\ntest:\n  commands:\n    - $R -e \"library('HTMLUtils')\"  # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('HTMLUtils')\\\"\"  # [win]\n\nabout:\n  home: https://cran.r-project.org/web/packages/HTMLUtils/index.html\n  license: GPL-2\n  summary: Facilitates automated HTML report creation, in particular framed HTML pages and dynamically sortable tables.\n  license_family: GPL2\n  license_file: '{{ environ[\"PREFIX\"] }}/lib/R/share/licenses/GPL-2'  # [unix]\n  license_file: '{{ environ[\"PREFIX\"] }}\\R\\share\\licenses\\GPL-2'  # [win]\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n    - dpryan79\n    - johanneskoester\n    - bgruening\n    - daler\n    - jdblischak\n",
  "req":{

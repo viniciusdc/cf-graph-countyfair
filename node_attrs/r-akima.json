@@ -67,7 +67,7 @@
    ]
   }
  ],
- "bad":false,
+ "bad":"make_graph: 500",
  "conda-forge.yml":{
   "bot":{
    "automerge":true
@@ -159,7 +159,7 @@
   }
  },
  "name":"r-akima",
- "new_version":"0.6_2",
+ "new_version":false,
  "pinning_version":"2019.08.19",
  "raw_meta_yaml":"{% set version = '0.6-2' %}\n\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-akima\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  fn: akima_{{ version }}.tar.gz\n  url:\n    - https://cran.r-project.org/src/contrib/akima_{{ version }}.tar.gz\n    - https://cran.r-project.org/src/contrib/Archive/akima/akima_{{ version }}.tar.gz\n  sha256: 61da3e556553eea6d1f8db7c92218254441da31e365bdef82dfe5da188cc97ce\n\nbuild:\n  number: 1003\n  rpaths:\n    - lib/R/lib/\n    - lib/\nrequirements:\n  build:\n    - posix                # [win]\n    - {{ compiler('fortran') }}  # [not win]\n    - {{ compiler('m2w64_fortran') }}  # [win]\n    - {{ compiler('c') }}  # [not win]\n    - {{ compiler('m2w64_c') }}  # [win]\n  host:\n    - r-base\n    - r-sp\n  run:\n    - r-base\n    - r-sp\n\ntest:\n  commands:\n    - $R -e \"library('akima')\"  # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('akima')\\\"\"  # [win]\n\nabout:\n  home: https://CRAN.R-project.org/package=akima\n  license: ACM (Restricts use)\n  summary: 'Several cubic spline interpolation methods of H. Akima for irregular and regular\n    gridded data are available through this package, both for the bivariate case (irregular\n    data: ACM 761, regular data: ACM 760) and univariate case (ACM 433 and ACM 697).\n    Linear interpolation of irregular gridded data is also covered by reusing D. J.\n    Renkas triangulation code which is part of Akimas Fortran code. A bilinear interpolator\n    for regular grids was also added for comparison with the bicubic interpolator on\n    regular grids.'\n  license_family: OTHER\n  license_file: '{{ environ[\"RECIPE_DIR\"] }}/LICENSE'\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n",
  "req":{

@@ -189,7 +189,7 @@
    ]
   }
  ],
- "bad":false,
+ "bad":"make_graph: 500",
  "conda-forge.yml":{},
  "feedstock_name":"lldb",
  "hash_type":"sha256",
@@ -301,7 +301,7 @@
   }
  },
  "name":"lldb",
- "new_version":"9.0.0",
+ "new_version":false,
  "pinning_version":"2020.04.10",
  "raw_meta_yaml":"{% set version = \"10.0.0\" %}\n{% set sha256 = \"dd1ffcb42ed033f5167089ec4c6ebe84fbca1db4a9eaebf5c614af09d89eb135\" %}\n\npackage:\n  name: lldb\n  version: {{ version }}\n\nsource:\n  url: https://github.com/llvm/llvm-project/releases/download/llvmorg-{{ version }}/lldb-{{ version }}.src.tar.xz\n  sha256: {{ sha256 }}\n  patches:\n    # Fix Python and Mac support\n    - python-mac.patch\nbuild:\n  number: 0\n  skip: true  # [win and vc<14]\n\nrequirements:\n  build:\n    - {{ compiler('cxx') }}\n    - cmake >=3.4.3\n    - ninja\n  host:\n    - python\n    - llvmdev =={{ version }}\n    - clangdev =={{ version }}\n    - llvm =={{ version }}\n    - swig\n    - ncurses  # [not win]\n    - libedit  # [not win]\n    - libxml2\n    - xz\n    - six\n  run:\n    - ncurses  # [not win]\n    - libedit  # [not win]\n    - python\n    - six\n  run_constrained:\n    - llvmdev =={{ version }}\n    - clangdev =={{ version }}\n\ntest:\n  imports:\n    - lldb\n  commands:\n    - lldb --version\n\nabout:\n  home: http://llvm.org/\n  license: NCSA\n  license_file: LICENSE.TXT\n  summary: The LLVM Debugger\n\nextra:\n  recipe-maintainers:\n    - isuruf\n",
  "req":{

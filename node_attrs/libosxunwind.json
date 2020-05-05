@@ -67,7 +67,7 @@
    ]
   }
  ],
- "bad":false,
+ "bad":"make_graph: 500",
  "conda-forge.yml":{
   "compiler_stack":"comp7",
   "max_py_ver":"37",
@@ -142,7 +142,7 @@
   }
  },
  "name":"libosxunwind",
- "new_version":"0.0.5",
+ "new_version":false,
  "pinning_version":"2018.11.27",
  "raw_meta_yaml":"{% set name = \"libosxunwind\" %}\n{% set version = \"0.0.5\" %}\n{% set sha256 = \"6a848fec0f25307420ae3f25889d1bd36ee2621fb7aef881a85c3641063c829f\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  fn: {{ name }}-{{ version }}.tar.gz\n  url: https://github.com/JuliaLang/{{ name }}/archive/v{{ version }}.tar.gz\n  sha256: {{ sha256 }}\n\nbuild:\n  number: 1000\n  skip: true  # [not osx]\n\nrequirements:\n  build:\n    - {{ compiler(\"cxx\") }}\n  host:\n\ntest:\n  commands:\n    - test -f \"${PREFIX}/include/libunwind.h\"\n    - test -f \"${PREFIX}/include/unwind.h\"\n    - test -d \"${PREFIX}/include/mach-o\"\n    - test -f \"${PREFIX}/lib/libosxunwind.a\"\n    - test -f \"${PREFIX}/lib/libosxunwind.dylib\"\n\n    - conda inspect linkages -p \"${PREFIX}\" \"{{ name }}\"\n    - conda inspect objects -p \"${PREFIX}\" \"{{ name }}\"\n\nabout:\n  home: https://github.com/JuliaLang/libosxunwind\n  license: APSL-2.0\n  # No license file included. Raise an issue upstream.\n  #\n  # xref: https://github.com/JuliaLang/libosxunwind/issues/10\n  license_file: \"{{ RECIPE_DIR }}/LICENSE.txt\"\n  license_url: https://opensource.apple.com/apsl\n  summary: Clone of Apple's libunwind, enhanced for the Julia Profiler\n  dev_url: https://github.com/JuliaLang/libosxunwind\n\nextra:\n  recipe-maintainers:\n    - dfornika\n    - jakirkham\n",
  "req":{

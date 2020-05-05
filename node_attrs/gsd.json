@@ -320,7 +320,7 @@
    ]
   }
  ],
- "bad":false,
+ "bad":"make_graph: 500",
  "conda-forge.yml":{},
  "feedstock_name":"gsd",
  "hash_type":"sha256",
@@ -426,7 +426,7 @@
   }
  },
  "name":"gsd",
- "new_version":"2.0.0",
+ "new_version":false,
  "pinning_version":"2020.03.23",
  "raw_meta_yaml":"{% set name = \"gsd\" %}\n{% set version = \"2.1.1\" %}\n{% set sha256 = \"c189dfab9dd8a44ad4512a1ba7c1be8ba3506f227eb795cf2bb8afb3ddb2e4e7\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  fn: {{ name }}-{{ version }}.tar.gz\n  url: https://github.com/glotzerlab/{{ name }}/releases/download/v{{ version }}/{{ name }}-v{{ version }}.tar.gz\n  sha256: {{ sha256 }}\n\nbuild:\n  number: 0\n  # the upstream package does not support python2.7\n  skip: true  # [py27]\n  script: \"{{ PYTHON }} -m pip install . -vv --no-deps\"\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n\n  host:\n    - setuptools\n    - cython\n    - python\n    - numpy\n    - pip\n\n  run:\n    - python\n    - {{ pin_compatible('numpy') }}\n\ntest:\n  requires:\n    - pytest\n  imports:\n    - gsd\n    - gsd.fl\n    - gsd.pygsd\n    - gsd.hoomd\n  source_files:\n    - tests/\n    - setup.cfg\n  commands:\n    - pytest\n\nabout:\n  home: https://github.com/glotzerlab/{{ name }}\n  license: BSD-2-Clause\n  license_family: BSD\n  license_file: LICENSE\n  summary: 'General simulation data'\n\n  description: |\n   GSD (General Simulation Data) is a file format specification\n   and a library to read and write it. The package also contains a python module\n   that reads and writes hoomd schema gsd files with an easy to use syntax.\n\n  doc_url: https://gsd.readthedocs.io\n  dev_url: https://github.com/glotzerlab/{{ name }}\n\nextra:\n  recipe-maintainers:\n    - bdice\n    - joaander\n",
  "req":{

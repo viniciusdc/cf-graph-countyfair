@@ -35,7 +35,7 @@
    ]
   }
  ],
- "bad":false,
+ "bad":"make_graph: 500",
  "conda-forge.yml":{
   "bot":{
    "automerge":true
@@ -128,7 +128,7 @@
   }
  },
  "name":"r-dendsort",
- "new_version":"0.3.3",
+ "new_version":false,
  "pinning_version":"2019.07.20",
  "raw_meta_yaml":"{% set version = '0.3.3' %}\n\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-dendsort\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  fn: dendsort_{{ version }}.tar.gz\n  url:\n    - https://cran.r-project.org/src/contrib/dendsort_{{ version }}.tar.gz\n    - https://cran.r-project.org/src/contrib/Archive/dendsort/dendsort_{{ version }}.tar.gz\n  sha256: d54713cb230a7523cb87f1c7f2d68d9c570c01e61b551457bd71bb7bd38198d4\n\nbuild:\n  noarch: generic\n  number: 1001\n\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - r-base\n\n  run:\n    - r-base\n\ntest:\n  commands:\n    - $R -e \"library('dendsort')\"  # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('dendsort')\\\"\"  # [win]\n\nabout:\n  home: https://cran.r-project.org/web/packages/dendsort\n  license: GPL-2 | GPL-3\n  summary: An implementation of functions to optimize ordering of nodes in a dendrogram, without\n    affecting the meaning of the dendrogram. A dendrogram can be sorted based on the\n    average distance of subtrees, or based on the smallest distance value. These sorting\n    methods improve readability and interpretability of tree structure, especially for\n    tasks such as comparison of different distance measures or linkage types and identification\n    of tight clusters and outliers. As a result, it also introduces more meaningful\n    reordering for a coupled heatmap visualization.\n  license_family: GPL3\n  license_file: '{{ environ[\"PREFIX\"] }}/lib/R/share/licenses/GPL-3'\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n    - johanneskoester\n    - bgruening\n    - daler\n    - jdblischak\n    - roryk\n",
  "req":{

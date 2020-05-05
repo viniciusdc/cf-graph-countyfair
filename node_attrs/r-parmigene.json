@@ -50,7 +50,7 @@
    ]
   }
  ],
- "bad":false,
+ "bad":"make_graph: 500",
  "conda-forge.yml":{
   "bot":{
    "automerge":true
@@ -167,7 +167,7 @@
   }
  },
  "name":"r-parmigene",
- "new_version":"1.0.2",
+ "new_version":false,
  "pinning_version":"2019.07.19",
  "raw_meta_yaml":"{% set version = '1.0.2' %}\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-parmigene\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  fn: parmigene_{{ version }}.tar.gz\n  url:\n    - {{ cran_mirror }}/src/contrib/parmigene_{{ version }}.tar.gz\n    - {{ cran_mirror }}/src/contrib/Archive/parmigene/parmigene_{{ version }}.tar.gz\n  sha256: 8dac1fa07a4dc37891a606d33071dc0e24e4644876c120e75f4c9e90e73555bb\n\nbuild:\n  merge_build_host: True  # [win]\n  number: 1003\n  skip: true  # [win32]\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - {{ compiler('c') }}        # [not win]\n    - {{ compiler('m2w64_c') }}        # [win]\n    - {{posix}}filesystem        # [win]\n    - {{posix}}make\n    - {{posix}}sed               # [win]\n    - {{posix}}coreutils         # [win]\n    - {{posix}}zip               # [win]\n  host:\n    - r-base\n  run:\n    - r-base\n    - {{native}}gcc-libs         # [win]\n\ntest:\n  commands:\n    - $R -e \"library('parmigene')\"           # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('parmigene')\\\"\"  # [win]\n\nabout:\n  home: https://CRAN.R-project.org/package=parmigene\n  license: AGPL-3\n  summary: The package provides a parallel estimation of the mutual information based on entropy\n    estimates from k-nearest neighbors distances and algorithms for the reconstruction\n    of gene regulatory networks.\n  license_family: AGPL\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n    - MathiasHaudgaard\n    - FrodePedersen\n    - ArneKr\n    - johanneskoester\n    - bgruening\n    - daler\n    - jdblischak\n    - cbrueffer\n    - dbast\n",
  "req":{

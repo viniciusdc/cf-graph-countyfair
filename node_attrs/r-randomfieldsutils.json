@@ -103,7 +103,7 @@
    ]
   }
  ],
- "bad":false,
+ "bad":"make_graph: 500",
  "conda-forge.yml":{
   "bot":{
    "automerge":true
@@ -202,7 +202,7 @@
   }
  },
  "name":"r-randomfieldsutils",
- "new_version":"0.5.3",
+ "new_version":false,
  "pinning_version":"2020.05.04.05.46.47",
  "raw_meta_yaml":"{% set version = \"0.5.3\" %}\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-randomfieldsutils\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  fn: RandomFieldsUtils_{{ version }}.tar.gz\n  url:\n    - {{ cran_mirror }}/src/contrib/RandomFieldsUtils_{{ version }}.tar.gz\n    - {{ cran_mirror }}/src/contrib/Archive/RandomFieldsUtils/RandomFieldsUtils_{{ version }}.tar.gz\n  sha256: ea823cba2e254a9f534efb4b772c0aeef2039ee9ef99744e077b969a87f8031d\n\nbuild:\n  merge_build_host: True  # [win]\n  number: 3\n  skip: true  # [win32]\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - {{ compiler('c') }}        # [not win]\n    - {{ compiler('cxx') }}      # [not win]\n    - {{ compiler('fortran') }}  # [not win]\n    - {{ compiler('m2w64_c') }}        # [win]\n    - {{ compiler('m2w64_cxx') }}        # [win]\n    - {{ compiler('m2w64_fortran') }}        # [win]\n    - {{ posix }}filesystem        # [win]\n    - {{ posix }}make\n    - {{ posix }}sed               # [win]\n    - {{ posix }}coreutils         # [win]\n    - {{ posix }}zip               # [win]\n    - llvm-openmp                # [osx]\n  host:\n    - r-base\n  run:\n    - r-base\n    - {{ native }}gcc-libs         # [win]\n    - llvm-openmp                # [osx]\n\ntest:\n  commands:\n    - $R -e \"library('RandomFieldsUtils')\"           # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('RandomFieldsUtils')\\\"\"  # [win]\n\nabout:\n  home: http://ms.math.uni-mannheim.de/de/publications/software\n  license: GPL (>= 3)\n  summary: Various utilities are provided that might be used in spatial statistics and elsewhere.\n    It delivers a method for solving linear equations that checks the sparsity of the\n    matrix before any algorithm is used. Furthermore, it includes the Struve functions.\n  license_family: GPL3\n  license_file: '{{ environ[\"PREFIX\"] }}/lib/R/share/licenses/GPL-3'\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n    - ocefpaf\n",
  "req":{

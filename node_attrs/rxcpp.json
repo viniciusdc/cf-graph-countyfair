@@ -44,7 +44,7 @@
    ]
   }
  ],
- "bad":false,
+ "bad":"make_graph: 500",
  "conda-forge.yml":{
   "compiler_stack":"comp7",
   "max_py_ver":"37",
@@ -128,7 +128,7 @@
   }
  },
  "name":"rxcpp",
- "new_version":"4.1.0",
+ "new_version":false,
  "pinning_version":"2018.10.16",
  "raw_meta_yaml":"{% set name = \"rxcpp\" %}\n{% set version = \"4.1.0\" %}\n{% set sha256 = \"d3bb49c7ac6b5c43235df710510fce87d827bb88a1b78242017f190d2acbbdea\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  fn: {{ name }}-{{ version }}.tar.gz\n  url: https://github.com/Reactive-Extensions/RxCpp/archive/v{{ version }}.tar.gz\n  sha256: {{ sha256 }}\n\n# WARNING: this source doesn't include the Catch submodule, which is used for\n#          the test commands. It's not used for the examples, and we can just\n#          ignore it there.\n\nbuild:\n  number: 0\n  script:\n    - cd projects\n    - mkdir build\n    - cd build\n\n    - cmake -G\"Unix Makefiles\"  -DCMAKE_INSTALL_PREFIX=$PREFIX          ../CMake  # [unix]\n    - cmake -G\"NMake Makefiles\" -DCMAKE_INSTALL_PREFIX=%LIBRARY_PREFIX% ../CMake  # [win]\n    - if errorlevel 1 exit 1  # [win]\n\n    # Run a quick build test that things are sensible.\n    - make  println && examples/println/println    # [unix]\n    - nmake println && examples\\\\println\\\\println  # [win]\n    - if errorlevel 1 exit 1  # [win]\n\n    # Install header files (won't install tests/examples):\n    - make install   # [unix]\n    - nmake install  # [win]\n    - if errorlevel 1 exit 1  # [win]\n  skip: true  # [win and vc<14]\n\nrequirements:\n  build:\n    - cmake\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n  # NOTE: rxcpp is header-only, but we still need compilers, etc. to install\n\ntest:\n  commands:\n    - test -f $PREFIX/include/rxcpp/rx-util.hpp              # [unix]\n    - if not exist %LIBRARY_INC%\\\\rxcpp\\\\rx-util.hpp exit 1  # [win]\n\nabout:\n  home: https://github.com/Reactive-Extensions/RxCpp\n  license: Apache-2.0\n  license_family: Apache\n  license_file: license.md\n  summary: 'Reactive Extensions for C++'\n  description: |\n    The Reactive Extensions for C++ (RxCpp) is a library of algorithms for\n    values-distributed-in-time.\n  doc_url: http://reactive-extensions.github.io/RxCpp/\n  dev_url: https://github.com/Reactive-Extensions/RxCpp\n\nextra:\n  recipe-maintainers:\n    - djsutherland\n",
  "req":{

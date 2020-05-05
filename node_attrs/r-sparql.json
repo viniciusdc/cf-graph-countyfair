@@ -35,7 +35,7 @@
    ]
   }
  ],
- "bad":false,
+ "bad":"make_graph: 500",
  "conda-forge.yml":{
   "bot":{
    "automerge":true
@@ -140,7 +140,7 @@
   }
  },
  "name":"r-sparql",
- "new_version":"1.16",
+ "new_version":false,
  "pinning_version":"2019.07.19",
  "raw_meta_yaml":"{% set version = '1.16' %}\n\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-sparql\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  fn: SPARQL_{{ version }}.tar.gz\n  url:\n    - {{ cran_mirror }}/src/contrib/SPARQL_{{ version }}.tar.gz\n    - {{ cran_mirror }}/src/contrib/Archive/SPARQL/SPARQL_{{ version }}.tar.gz\n  sha256: 2cb366b2b93804c12f17254a1c37687887fc12047b58b13aab0d7a6f000e533d\n\n# r-rcurl isn't available on Windows yet\nbuild:\n  noarch: generic\n  merge_build_host: True  # [win]\n  number: 1002\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  host:\n    - r-base\n    - r-rcurl\n    - r-xml\n\n  run:\n    - r-base\n    - r-rcurl\n    - r-xml\n\ntest:\n  commands:\n    - $R -e \"library('SPARQL')\"  # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('SPARQL')\\\"\"  # [win]\n\nabout:\n  home: https://CRAN.R-project.org/package=SPARQL\n  license: GPL-3\n  summary: 'Use SPARQL to pose SELECT or UPDATE queries to an end-point. '\n\n  license_family: GPL3\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n    - dpryan79\n    - johanneskoester\n    - bgruening\n    - daler\n    - jdblischak\n",
  "req":{

@@ -134,7 +134,7 @@
    ]
   }
  ],
- "bad":false,
+ "bad":"make_graph: 500",
  "conda-forge.yml":{},
  "feedstock_name":"yq",
  "hash_type":"sha256",
@@ -248,7 +248,7 @@
   }
  },
  "name":"yq",
- "new_version":"2.10.0",
+ "new_version":false,
  "pinning_version":"2019.12.18",
  "raw_meta_yaml":"{% set name = \"yq\" %}\n{% set version = \"2.7.2\" %}\n{% set sha256 = \"f7dafd1e53d1f806ffe11de6da814e231d866595e2faae0dfc38135b8ee79bbb\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  fn: {{ name }}-{{ version }}.tar.gz\n  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz\n  sha256: {{ sha256 }}\n  patches:\n    # github.com/sodre/yq:entry_points: replace scripts with entry-points\n    #- github_com__sodre__yq__entry_points.patch\n    # This patch is needed when running on my MacBook Pro, but not on CircleCI\n    #- github_com__sodre__yq__fix-jq-errcode.patch\n\nbuild:\n  number: 0\n  noarch: python\n  entry_points:\n    - yq = yq:main\n    - xq = yq:xq_cli\n    - tq = yq:tq_cli\n  script: \n    - python -m pip install --no-deps --ignore-installed .\n\nrequirements:\n  build:\n    - python\n    - pip\n  run:\n    - python\n    - pyyaml >=3.11\n    - xmltodict >=0.11.0\n    - toml >=0.9.4\n    - jq\n\ntest:\n  requires:\n    - pytest\n  source_files:\n    - test\n  imports:\n    - yq\n  commands:\n    - pytest test/test.py\n    - yq --help\n    - xq --help\n    - tq --help\n    - test $(cat $RECIPE_DIR/meta.yaml | yq -r .package.name) = 'yq'\n\nabout:\n  home: https://github.com/kislyuk/yq\n  license: Apache-2.0\n  license_family: Apache\n  license_file: LICENSE\n  summary: 'jq wrapper for YAML and XML documents'\n\n  doc_url: https://yq.readthedocs.io/en/latest/\n  dev_url: https://github.com/kislyuk/yq\n\nextra:\n  recipe-maintainers:\n    - sodre\n",
  "req":{

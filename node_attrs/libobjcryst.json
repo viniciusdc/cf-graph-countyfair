@@ -103,7 +103,7 @@
    ]
   }
  ],
- "bad":false,
+ "bad":"make_graph: 500",
  "conda-forge.yml":{
   "compiler_stack":"comp7",
   "max_py_ver":"37",
@@ -174,7 +174,7 @@
   }
  },
  "name":"libobjcryst",
- "new_version":"2017.2.2",
+ "new_version":false,
  "pinning_version":"2019.11.18",
  "raw_meta_yaml":"{% set name = \"libobjcryst\" %}\n{% set version = \"2017.2.2\" %}\n{% set sha256 = \"ad57f4667f6d0b8f0de67a01ecda8e4e09fd0317bf2e0866a4a987b48201583c\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  fn: {{ name }}-{{ version }}.tar.gz\n  url: https://github.com/diffpy/{{ name }}/releases/download/v{{ version }}/{{ name }}-{{ version }}.tar.gz\n  sha256: {{ sha256 }}\n\nbuild:\n  number: 1\n  skip: True  # [win]\n  run_exports:\n    - {{ pin_subpackage('libobjcryst', max_pin='x.x') }}\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n    - scons\n  host:\n    - libboost\n\ntest:\n  commands:\n    - test -f $PREFIX/lib/libObjCryst${SHLIB_EXT}\n\nabout:\n  home: https://github.com/diffpy/libobjcryst/\n  license: GPL2\n  license_family: GPL\n  license_file: LICENSE.txt\n  summary: 'ObjCryst++ packaged for installation as a shared library.'\n\n  description: |\n    ObjCryst++ is Object-Oriented Crystallographic Library for C++ developed\n    by Vincent Favre-Nicolin. libobjcryst is a mirror of the ObjCryst++\n    sources from https://sourceforge.net/projects/objcryst, expanded with\n    SCons build scripts to make it easier to install as a system shared\n    library. libobjcryst does not include GUI related files from ObjCryst++.\n    This distribution contains required sources from cctbx and newmat that are\n    used in ObjCryst++.\n  doc_url: https://github.com/diffpy/libobjcryst\n  dev_url: https://github.com/diffpy/libobjcryst\n\nextra:\n  recipe-maintainers:\n    - pavoljuhas\n",
  "req":{

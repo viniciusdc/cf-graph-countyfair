@@ -54,7 +54,7 @@
    ]
   }
  ],
- "bad":false,
+ "bad":"make_graph: 500",
  "conda-forge.yml":{
   "bot":{
    "automerge":true
@@ -155,7 +155,7 @@
   }
  },
  "name":"r-assertive.properties",
- "new_version":"0.0_4",
+ "new_version":false,
  "pinning_version":"2020.05.03.19.37.20",
  "raw_meta_yaml":"{% set version = '0.0-4' %}\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-assertive.properties\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  fn: assertive.properties_{{ version }}.tar.gz\n  url:\n    - {{ cran_mirror }}/src/contrib/assertive.properties_{{ version }}.tar.gz\n    - {{ cran_mirror }}/src/contrib/Archive/assertive.properties/assertive.properties_{{ version }}.tar.gz\n  sha256: 5c0663fecb4b7c30f2e1d65da8644534fcfe97fb3d8b51f74c1327cd14291a6b\n\nbuild:\n  noarch: generic\n  merge_build_host: True  # [win]\n  number: 1003\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - {{ posix }}zip               # [win]\n  host:\n    - r-base\n    - r-assertive.base >=0.0_7\n  run:\n    - r-base\n    - r-assertive.base >=0.0_7\n\ntest:\n  commands:\n    - $R -e \"library('assertive.properties')\"           # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('assertive.properties')\\\"\"  # [win]\n\nabout:\n  home: https://bitbucket.org/richierocks/assertive.properties\n  license: GPL (>= 3)\n  summary: A set of predicates and assertions for checking the properties of variables, such\n    as length, names and attributes.  This is mainly for use by other package developers\n    who want to include run-time testing features in their own packages.  End-users\n    will usually want to use assertive directly.\n  license_family: GPL3\n  license_file: '{{ environ[\"PREFIX\"] }}/lib/R/share/licenses/GPL-3'\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n    - johanneskoester\n    - bgruening\n    - daler\n    - jdblischak\n    - cbrueffer\n    - dbast\n",
  "req":{

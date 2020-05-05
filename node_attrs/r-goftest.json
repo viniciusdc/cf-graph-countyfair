@@ -86,7 +86,7 @@
    ]
   }
  ],
- "bad":false,
+ "bad":"make_graph: 500",
  "conda-forge.yml":{
   "bot":{
    "automerge":true
@@ -183,7 +183,7 @@
   }
  },
  "name":"r-goftest",
- "new_version":"1.2_2",
+ "new_version":false,
  "pinning_version":"2020.05.03.19.37.20",
  "raw_meta_yaml":"{% set version = '1.2-2' %}\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-goftest\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  url:\n    - {{ cran_mirror }}/src/contrib/goftest_{{ version }}.tar.gz\n    - {{ cran_mirror }}/src/contrib/Archive/goftest/goftest_{{ version }}.tar.gz\n  sha256: e497992666b002b6c6bed73bf05047ad7aa69eb58898da0ad8f1f5b2219e7647\n\nbuild:\n  merge_build_host: True  # [win]\n  number: 1\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - {{ compiler('c') }}              # [not win]\n    - {{ compiler('m2w64_c') }}        # [win]\n    - {{ posix }}filesystem        # [win]\n    - {{ posix }}make\n    - {{ posix }}sed               # [win]\n    - {{ posix }}coreutils         # [win]\n    - {{ posix }}zip               # [win]\n  host:\n    - r-base\n  run:\n    - r-base\n    - {{ native }}gcc-libs         # [win]\n\ntest:\n  commands:\n    - $R -e \"library('goftest')\"           # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('goftest')\\\"\"  # [win]\n    - conda inspect linkages -p $PREFIX r-goftest  # [not win]\n    - conda inspect objects -p $PREFIX r-goftest  # [osx]\n\n\nabout:\n  home: https://github.com/baddstats/goftest\n  license: GPL-2\n  summary: Cramer-Von Mises and Anderson-Darling tests of goodness-of-fit for continuous univariate\n    distributions, using efficient algorithms.\n  license_family: GPL2\n  license_file:\n    - '{{ environ[\"PREFIX\"] }}/lib/R/share/licenses/GPL-2'\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n    - jsignell\n\n# Package: goftest\n# Type: Package\n# Title: Classical Goodness-of-Fit Tests for Univariate Distributions\n# Version: 1.2-2\n# Date: 2019-11-27\n# Authors@R: c(person(\"Julian\", \"Faraway\", role = \"aut\"), person(\"George\", \"Marsaglia\", role = \"aut\"), person(\"John\",   \"Marsaglia\", role = \"aut\"), person(\"Adrian\", \"Baddeley\", role = c(\"aut\", \"cre\"), email = \"Adrian.Baddeley@curtin.edu.au\"))\n# Depends: R (>= 3.3)\n# Imports: stats\n# Description: Cramer-Von Mises and Anderson-Darling tests of goodness-of-fit for continuous univariate distributions, using efficient algorithms.\n# URL: https://github.com/baddstats/goftest\n# BugReports: https://github.com/baddstats/goftest/issues\n# License: GPL (>= 2)\n# NeedsCompilation: yes\n# Packaged: 2019-11-27 01:56:07 UTC; adrian\n# Author: Julian Faraway [aut], George Marsaglia [aut], John Marsaglia [aut], Adrian Baddeley [aut, cre]\n# Maintainer: Adrian Baddeley <Adrian.Baddeley@curtin.edu.au>\n# Repository: CRAN\n# Date/Publication: 2019-12-02 11:20:02 UTC\n",
  "req":{

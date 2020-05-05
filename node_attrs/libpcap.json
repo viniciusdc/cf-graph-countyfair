@@ -67,7 +67,7 @@
    ]
   }
  ],
- "bad":false,
+ "bad":"make_graph: 500",
  "conda-forge.yml":{
   "compiler_stack":"comp7",
   "max_py_ver":"37",
@@ -150,7 +150,7 @@
   }
  },
  "name":"libpcap",
- "new_version":"1.9.1",
+ "new_version":false,
  "pinning_version":"2019.09.27",
  "raw_meta_yaml":"{% set name = \"libpcap\" %}\n{% set version = \"1.9.1\" %}\n{% set sha256 = \"635237637c5b619bcceba91900666b64d56ecb7be63f298f601ec786ce087094\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  fn: {{ name }}-{{ version }}.tar.gz\n  url: http://www.tcpdump.org/release/{{ name }}-{{ version }}.tar.gz\n  sha256: {{ sha256 }}\n  patches:\n    - fix-install.patch  # [win]\n\nbuild:\n  number: 2\n  run_exports:\n    # Symbols were last removed on update from 1.7 to 1.8\n    # https://abi-laboratory.pro/index.php?view=timeline&l=libpcap\n    - {{ pin_subpackage(name, max_pin='x.x') }}\n  skip: True  # [win and vc<14]\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - flex                  # [not win]\n    - bison                 # [not win]\n    - m4                    # [not win]\n    - make                  # [not win]\n    - cmake                 # [win]\n    - ninja                 # [win]\n    - winflexbison          # [win]\n\ntest:\n  commands:\n    - test -f $PREFIX/lib/libpcap${SHLIB_EXT}   # [not win]\n    - test -f $PREFIX/include/pcap.h            # [not win]\n    - if not exist \"%LIBRARY_LIB%\\\\pcap.lib\" exit 1   # [win]\n    - if not exist \"%LIBRARY_BIN%\\\\pcap.dll\" exit 1   # [win]\n    - if not exist \"%LIBRARY_INC%\\\\pcap.h\" exit 1     # [win]\n\nabout:\n  home: www.tcpdump.org\n  license: BSD-3-Clause\n  license_family: BSD\n  license_file: LICENSE\n  summary: 'the LIBpcap interface to various kernel packet capture mechanism'\n  doc_url: http://www.tcpdump.org/#documentation\n  dev_url: https://github.com/the-tcpdump-group/libpcap\n\nextra:\n  recipe-maintainers:\n    - nehaljwani\n    - seanyen\n",
  "req":{

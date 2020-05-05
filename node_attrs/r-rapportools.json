@@ -54,7 +54,7 @@
    ]
   }
  ],
- "bad":false,
+ "bad":"make_graph: 500",
  "conda-forge.yml":{
   "bot":{
    "automerge":true
@@ -151,7 +151,7 @@
   }
  },
  "name":"r-rapportools",
- "new_version":"1.0",
+ "new_version":false,
  "pinning_version":"2020.05.04.05.46.47",
  "raw_meta_yaml":"{% set version = \"1.0\" %}\n\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-rapportools\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  fn: rapportools_{{ version }}.tar.gz\n  url:\n    - https://cran.r-project.org/src/contrib/rapportools_{{ version }}.tar.gz\n    - https://cran.r-project.org/src/contrib/Archive/rapportools/rapportools_{{ version }}.tar.gz\n  sha256: 2b80267625a92b8f7375306203de6fe36b39871183b502b312219e719826fbe9\n\nbuild:\n  noarch: generic\n  number: 1002\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - r-base\n    - r-pander\n    - r-plyr\n    - r-reshape\n\n  run:\n    - r-base\n    - r-pander\n    - r-plyr\n    - r-reshape\n\ntest:\n  commands:\n    - $R -e \"library('rapportools')\"  # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('rapportools')\\\"\"  # [win]\n\nabout:\n  home: https://CRAN.R-project.org/package=rapportools\n  license: AGPL-3.0-only\n  summary: Helper functions that act as wrappers to more advanced statistical methods with the advantage of having sane defaults for quick reporting.\n  license_family: AGPL\n\n  license_file:\n    - {{ environ[\"PREFIX\"] }}/lib/R/share/licenses/AGPL-3\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n",
  "req":{

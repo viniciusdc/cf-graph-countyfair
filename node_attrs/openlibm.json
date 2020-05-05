@@ -81,7 +81,7 @@
    ]
   }
  ],
- "bad":false,
+ "bad":"make_graph: 500",
  "conda-forge.yml":{
   "compiler_stack":"comp7",
   "max_py_ver":"37",
@@ -172,7 +172,7 @@
   }
  },
  "name":"openlibm",
- "new_version":"0.7.0",
+ "new_version":false,
  "pinning_version":"2019.12.02",
  "raw_meta_yaml":"{% set name = \"openlibm\" %}\n{% set version = \"0.7.0\" %}\n{% set sha256 = \"1699f773198018b55b12631db9c1801fe3ed191e618a1ee1be743f4570ae06a3\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  fn: {{ name }}-{{ version }}.tar.gz\n  url: https://github.com/JuliaLang/openlibm/archive/v{{ version }}.tar.gz\n  sha256: {{ sha256 }}\n  patches:\n    - 0001-no-CC-override.patch\n\nbuild:\n  number: 0\n  skip: true  # [win and vc<14]\n\nrequirements:\n  build:\n    - {{ compiler(\"c\") }}  # [not win]\n    - {{ compiler(\"m2w64_c\") }}  # [win]\n  host:\n\ntest:\n  requires:\n    - {{ compiler(\"c\") }}\n  files:\n    - test_openlibm.c\n  commands:\n    - test -d \"${PREFIX}/include/openlibm\"                         # [unix]\n    - test -f \"${PREFIX}/lib/libopenlibm.a\"                        # [unix]\n    - test -f \"${PREFIX}/lib/libopenlibm${SHLIB_EXT}\"              # [unix]\n    - if not exist \"%LIBRARY_BIN%\\\\libopenlibm.dll\" exit 1         # [win]\n    - if not exist \"%LIBRARY_INC%\\\\openlibm\\\\openlibm.h\" exit 1    # [win]\n    - if not exist \"%LIBRARY_LIB%\\\\libopenlibm.lib\" exit 1         # [win]\n    - if not exist \"%LIBRARY_LIB%\\\\libopenlibm_static.lib\" exit 1  # [win]\n    - echo on  # [win]\n    - cl /Tc test_openlibm.c /I %CONDA_PREFIX%\\Library\\include\\openlibm /link /LIBPATH:\"%CONDA_PREFIX%\\Library\\lib\" libopenlibm_static.lib /out:test_openlibm.exe  # [win]\n    - test_openlibm.exe  # [win]\n    - ${CC} -o test_openlibm test_openlibm.c -I${CONDA_PREFIX}/include/openlibm -L${CONDA_PREFIX}/lib -lopenlibm ${CFLAGS} ${LDFLAGS}  # [unix]\n    - ./test_openlibm  # [unix]\n\nabout:\n  home: http://openlibm.org/\n  license: MIT, ISC, BSD 2-Clause\n  license_file: LICENSE.md\n  summary: \"High quality system independent, portable, open source libm implementation\"\n  dev_url: https://github.com/JuliaLang/openlibm\n\nextra:\n  recipe-maintainers:\n    - dfornika\n    - jakirkham\n    - SylvainCorlay\n",
  "req":{

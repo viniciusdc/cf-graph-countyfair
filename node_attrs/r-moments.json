@@ -35,7 +35,7 @@
    ]
   }
  ],
- "bad":false,
+ "bad":"make_graph: 500",
  "conda-forge.yml":{
   "bot":{
    "automerge":true
@@ -128,7 +128,7 @@
   }
  },
  "name":"r-moments",
- "new_version":"0.14",
+ "new_version":false,
  "pinning_version":"2019.07.20",
  "raw_meta_yaml":"{% set version = '0.14' %}\n\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-moments\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  fn: moments_{{ version }}.tar.gz\n  url:\n    - https://cran.r-project.org/src/contrib/moments_{{ version }}.tar.gz\n    - https://cran.r-project.org/src/contrib/Archive/moments/moments_{{ version }}.tar.gz\n  sha256: 2a3b81e60dafdd092d2bdd3513d7038855ca7d113dc71df1229f7518382a3e39\n\nbuild:\n  noarch: generic\n  number: 1002\n\n  rpaths:\n    - lib/R/lib/\n    - lib/\nrequirements:\n  build:\n    - r-base\n\n  run:\n    - r-base\n\ntest:\n  commands:\n    - $R -e \"library('moments')\"  # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('moments')\\\"\"  # [win]\n\nabout:\n  home: http://www.r-project.org, http://www.komsta.net/\n  license: GPL (>= 2)\n  summary: 'Functions to calculate: moments, Pearson''s kurtosis, Geary''s kurtosis and skewness;\n    tests related to them (Anscombe-Glynn, D''Agostino, Bonett-Seier).'\n\n  license_family: GPL3\n  license_file: '{{ environ[\"PREFIX\"] }}/lib/R/share/licenses/GPL-3'   # [unix]\n  license_file: '{{ environ[\"PREFIX\"] }}\\R\\share\\licenses\\GPL-3'   # [win]\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n    - dpryan79\n    - johanneskoester\n    - bgruening\n    - daler\n    - jdblischak\n",
  "req":{

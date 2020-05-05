@@ -101,7 +101,7 @@
    ]
   }
  ],
- "bad":false,
+ "bad":"make_graph: 500",
  "conda-forge.yml":{
   "compiler_stack":"comp7",
   "max_py_ver":"37",
@@ -184,7 +184,7 @@
   }
  },
  "name":"openh264",
- "new_version":"2.1.0",
+ "new_version":false,
  "pinning_version":"2020.03.23",
  "raw_meta_yaml":"{% set name = \"openh264\" %}\n{% set version = \"1.8.0\" %}\n{% set hash_type = \"sha256\" %}\n{% set hash_value = \"08670017fd0bb36594f14197f60bebea27b895511251c7c64df6cd33fc667d34\" %}\n\npackage:\n  name: {{ name }}\n  version: {{ version }}\n\nsource:\n  fn: {{ name }}-v{{ version }}.tar.gz\n  url: https://github.com/cisco/openh264/archive/v{{ version }}.tar.gz\n  '{{ hash_type }}': '{{ hash_value }}'\n\nbuild:\n  number: 1000\n  skip: true  # [win]\n  run_exports:\n    # new so names and compatibility changes on minor version\n    # https://abi-laboratory.pro/?view=timeline&l=openh264\n    - {{ pin_subpackage('openh264', max_pin='x.x') }}\n\nrequirements:\n  build:\n    - {{ compiler('cxx') }}\n    - {{ compiler('c') }}\n    - pkg-config\n    - nasm\n    - make  # [unix]\n  host:\n    - zlib\n\ntest:\n  commands:\n    - h264enc -h                                    # [not win]\n    - test -f $PREFIX/bin/h264dec                   # [not win]\n    - test -f $PREFIX/lib/libopenh264.dylib         # [osx]\n    - test -f $PREFIX/lib/libopenh264.so            # [linux]\n    - conda inspect linkages -p $PREFIX {{ name }}  # [not win]\n    - conda inspect objects -p $PREFIX {{ name }}   # [osx]\n\nabout:\n  home: http://www.openh264.org/\n  license: BSD-2-Clause\n  license_family: BSD\n  license_file: LICENSE\n  summary: OpenH264 is a codec library which supports H.264 encoding and decoding\n  dev_url: https://github.com/cisco/openh264\n  doc_url: https://github.com/cisco/openh264\n\nextra:\n  recipe-maintainers:\n    - 183amir\n    - sdvillal\n",
  "req":{

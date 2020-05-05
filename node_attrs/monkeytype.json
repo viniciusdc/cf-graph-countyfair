@@ -151,7 +151,7 @@
    ]
   }
  ],
- "bad":false,
+ "bad":"make_graph: 500",
  "conda-forge.yml":{},
  "feedstock_name":"monkeytype",
  "hash_type":"sha256",
@@ -288,7 +288,7 @@
   }
  },
  "name":"monkeytype",
- "new_version":"20.4.2",
+ "new_version":false,
  "pinning_version":"2020.04.03",
  "raw_meta_yaml":"{% set name = \"MonkeyType\" %}\n{% set version = \"20.4.2\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  - folder: dist\n    url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz\n    sha256: ff04b25f2b0c8003ef000490edba97c79cc2fdb4f51cfabf3053bf8f03f2cf0a\n  - folder: src\n    url: https://github.com/Instagram/{{ name }}/archive/v{{ version }}.tar.gz\n    sha256: e93ee78b1b2d2c361df5b010d7b895136bf3d64920eff1988be740a457753d4f\n\nbuild:\n  number: 0\n  noarch: python\n  entry_points:\n    - monkeytype=monkeytype.cli:entry_point_main\n  script: cd dist && python -m pip install --no-deps --ignore-installed .\n\nrequirements:\n  build:\n    - pip\n    - python >=3.6\n  run:\n    - libcst >=0.3.4\n    - mypy_extensions\n    - python >=3.6\n\ntest:\n  source_files:\n    - src/tests\n  requires:\n    - {{ compiler('c') }}\n    - cython\n    - django\n    - pip\n    - pytest\n  imports:\n    - monkeytype\n  commands:\n    - python -m pip check\n    - monkeytype --help\n    - cd src && cd tests\n    - python -m pytest -k \"not test_includes_otherwise\"\n\n\nabout:\n  home: https://github.com/Instagram/MonkeyType\n  license: BSD-3-Clause\n  license_family: BSD\n  license_file: src/LICENSE\n  summary: Generating type annotations from sampled production types\n  doc_url: https://monkeytype.readthedocs.io\n  doc_source_url: https://github.com/Instagram/MonkeyType/tree/master/doc\n  description: |\n    MonkeyType collects runtime types of function arguments and return values,\n    and can automatically generate stub files or even add draft type\n    annotations directly to your Python code based on the types collected at\n    runtime.\n\nextra:\n  recipe-maintainers:\n    - bollwyvl\n    - nehaljwani\n",
  "req":{
