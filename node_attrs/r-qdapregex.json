@@ -54,7 +54,7 @@
    ]
   }
  ],
- "bad":"make_graph: 500",
+ "bad":false,
  "conda-forge.yml":{
   "bot":{
    "automerge":true
@@ -158,7 +158,7 @@
   }
  },
  "name":"r-qdapregex",
- "new_version":false,
+ "new_version":"0.7.2",
  "pinning_version":"2020.05.04.00.11.09",
  "raw_meta_yaml":"{% set version = '0.7.2' %}\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-qdapregex\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  fn: qdapRegex_{{ version }}.tar.gz\n  url:\n    - {{ cran_mirror }}/src/contrib/qdapRegex_{{ version }}.tar.gz\n    - {{ cran_mirror }}/src/contrib/Archive/qdapRegex/qdapRegex_{{ version }}.tar.gz\n  sha256: 377d77e975b12593e8a38689664d80641946721fbb0e287353f20daf78c048f5\n\nbuild:\n  noarch: generic\n  merge_build_host: True  # [win]\n  number: 1003\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - {{ posix }}zip               # [win]\n  host:\n    - r-base\n    - r-stringi >=0.5_5\n  run:\n    - r-base\n    - r-stringi >=0.5_5\n\ntest:\n  commands:\n    - $R -e \"library('qdapRegex')\"           # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('qdapRegex')\\\"\"  # [win]\n\nabout:\n  home: http://trinker.github.com/qdapRegex/\n  license: GPL-2\n  summary: A collection of regular expression tools associated with the 'qdap' package that may\n    be useful outside of the context of discourse analysis. Tools include removal/extraction/replacement\n    of abbreviations, dates, dollar amounts, email addresses, hash tags, numbers, percentages,\n    citations, person tags, phone numbers, times, and zip codes.\n  license_family: GPL2\n  license_file: '{{ environ[\"PREFIX\"] }}/lib/R/share/licenses/GPL-2'\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n    - CurtLH\n    - johanneskoester\n    - bgruening\n    - daler\n    - jdblischak\n    - cbrueffer\n    - dbast\n",
  "req":{

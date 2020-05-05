@@ -67,7 +67,7 @@
    ]
   }
  ],
- "bad":"make_graph: 500",
+ "bad":false,
  "conda-forge.yml":{
   "compiler_stack":"comp7",
   "max_py_ver":"37",
@@ -196,7 +196,7 @@
   }
  },
  "name":"pymvpa2",
- "new_version":false,
+ "new_version":"2.6.5",
  "pinning_version":"2020.02.12",
  "raw_meta_yaml":"{% set name = \"pymvpa2\" %}\n{% set version = \"2.6.5\" %}\n{% set sha256 = \"f98b18e15d012aaa68c0ef6ccf420662df05657673843ab368e7f0adfdda0758\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  fn: {{ name }}-{{ version }}.tar.gz\n  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz\n  sha256: {{ sha256 }}\n  patches:\n   - 0001-BF-Directive-moved-from-sphinx-to-docutils.patch\n   - 0001-BF-explicit-import-of-h5py.highlevel.patch\n   - 0002-BF-TEMP-workaround-do-not-add-Notes-for-sklearn-data.patch\n   - 0003-BF-compatibility-with-matplotlib-2.2.0-axisbg-faceco.patch\n   - 0004-BF-make-more-resilient-on-older-numpys-to-empty-mask.patch\n\nbuild:\n  number: 1001\n  skip: True  # [not py2k]\n  script: python setup.py install\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n  host:\n    - python\n    - pip\n    - swig\n    - numpy\n  run:\n    - python\n    - h5py\n    - joblib\n    - matplotlib\n    - nibabel\n    - {{ pin_compatible('numpy') }}\n    - scikit-learn\n    - scipy\n    - statsmodels\n    # TODO: Later, yet to package\n    # - duecredit\n\ntest:\n  requires:\n    - mock\n    - nose\n  imports:\n    - mvpa2\n    - mvpa2.tests\n\nabout:\n  home: http://pymvpa.org\n  license: MIT\n  license_family: MIT\n  license_file: COPYING\n  summary: 'Python multivariate pattern analysis framework'\n\n  description: |\n    PyMVPA eases pattern classification analyses of large datasets, with an\n    accent on neuroimaging. It provides high-level abstraction of typical\n    processing steps (e.g., data preparation, classification, feature selection,\n    generalization testing), a number of implementations of some popular\n    algorithms (e.g., kNN, Ridge Regressions, Sparse Multinomial Logistic\n    Regression), and bindings to external machine learning libraries (libsvm,\n    mdp, etc).\n    While it is not limited to neuroimaging data (e.g. fMRI, or EEG) it\n    is eminently suited for such datasets.\n  dev_url: https://github.com/PyMVPA/PyMVPA\n\nextra:\n  recipe-maintainers:\n    - yarikoptic\n    # Later when it all works and SPAM is meaningful\n    # - mih\n",
  "req":{

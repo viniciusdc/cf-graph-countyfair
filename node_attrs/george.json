@@ -88,7 +88,7 @@
    ]
   }
  ],
- "bad":"make_graph: 500",
+ "bad":false,
  "conda-forge.yml":{
   "provider":{
    "win":"azure"
@@ -181,7 +181,7 @@
   }
  },
  "name":"george",
- "new_version":false,
+ "new_version":"0.3.1",
  "pinning_version":"2020.03.28",
  "raw_meta_yaml":"{% set version = \"0.3.1\" %}\n\npackage:\n  name: george\n  version: {{ version }}\n\nsource:\n  url: https://pypi.io/packages/source/g/george/george-{{ version }}.tar.gz\n  sha256: 175f1a8022430adab8bf8e5e0ffc3941e5f48ca831bd9460e69716cc2820e628\n\nbuild:\n  number: 1002\n  script: \"{{ PYTHON }} -m pip install . --no-deps -vv\"  # [not win]\n  skip: True  # [win and py2k]\n\nrequirements:\n  build:\n    - {{ compiler('fortran') }}\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n  host:\n    - python\n    - pip\n    - pybind11\n    - numpy\n    - scipy  # [win]\n\n  run:\n    - python\n    - {{ pin_compatible('numpy') }}\n    - scipy\n    - setuptools  # [win]\n    - vs2015_runtime  # [win]\n\ntest:\n  imports:\n    - george\n\nabout:\n  home: https://github.com/dfm/george\n  license: MIT\n  license_family: MIT\n  license_file: LICENSE\n  summary: 'Fast and flexible Gaussian Process regression in Python'\n  doc_url: http://george.readthedocs.io/\n  dev_url: https://github.com/dfm/george\n\nextra:\n  recipe-maintainers:\n    - hellovenkat\n    - scopatz\n    - dfm\n",
  "req":{

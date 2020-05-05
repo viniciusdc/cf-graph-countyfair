@@ -18,7 +18,7 @@
    ]
   }
  ],
- "bad":"make_graph: 500",
+ "bad":false,
  "conda-forge.yml":{
   "compiler_stack":"comp7",
   "max_py_ver":"37",
@@ -88,7 +88,7 @@
   }
  },
  "name":"bumpversion",
- "new_version":false,
+ "new_version":"0.5.3",
  "pinning_version":"2018.09.20",
  "raw_meta_yaml":"{% set name = \"bumpversion\" %}\n{% set version = \"0.5.3\" %}\n{% set hash_type = \"sha256\" %}\n{% set hash = \"6744c873dd7aafc24453d8b6a1a0d6d109faf63cd0cd19cb78fd46e74932c77e\" %}\npackage:\n  name: {{ name }}\n  version: {{ version }}\n\nsource:\n  fn: {{ name }}-{{ version }}.tar.gz\n  url: https://pypi.io/packages/source/b/{{ name }}/{{ name }}-{{ version }}.tar.gz\n  {{ hash_type }}: {{ hash }}\n\nbuild:\n  entry_points:\n    - bumpversion = bumpversion:main\n  number: 1001\n  noarch: python\n  script: \"{{ PYTHON }} -m pip install . -vvv\"\n\nrequirements:\n  host:\n    - python\n    - pip\n\n  run:\n    - python\n\ntest:\n  imports:\n    - bumpversion\n\n  commands:\n    - bumpversion --help  # [not win]\n\n    # 'bumpversion --help' is broken on Windows:\n    # https://github.com/peritus/bumpversion/issues/154\n    - where bumpversion  # [win]\n\nabout:\n  home: https://github.com/peritus/bumpversion\n  license: MIT\n  summary: 'Version-bump your software with a single command!'\n  license_family: MIT\n\nextra:\n  recipe-maintainers:\n    - nicoddemus\n",
  "req":{

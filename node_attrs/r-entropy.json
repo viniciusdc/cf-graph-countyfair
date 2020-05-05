@@ -54,7 +54,7 @@
    ]
   }
  ],
- "bad":"make_graph: 500",
+ "bad":false,
  "conda-forge.yml":{
   "bot":{
    "automerge":true
@@ -131,7 +131,7 @@
   }
  },
  "name":"r-entropy",
- "new_version":false,
+ "new_version":"1.2.1",
  "pinning_version":"2020.05.04.00.11.09",
  "raw_meta_yaml":"{% set version = '1.2.1' %}\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-entropy\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  fn: entropy_{{ version }}.tar.gz\n  url:\n    - {{ cran_mirror }}/src/contrib/entropy_{{ version }}.tar.gz\n    - {{ cran_mirror }}/src/contrib/Archive/entropy/entropy_{{ version }}.tar.gz\n  sha256: edb27144b8f855f1ef21de6b93b6b6c5cf7d4f2c3d592bf625e5158c02226f83\n\nbuild:\n  noarch: generic\n  merge_build_host: True  # [win]\n  number: 1003\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - {{ posix }}zip               # [win]\n  host:\n    - r-base\n  run:\n    - r-base\n\ntest:\n  commands:\n    - $R -e \"library('entropy')\"           # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('entropy')\\\"\"  # [win]\n\nabout:\n  home: http://strimmerlab.org/software/entropy/\n  license: GPL (>= 3)\n  summary: This package implements various estimators of entropy, such as the shrinkage estimator\n    by Hausser and Strimmer, the maximum likelihood  and the Millow-Madow estimator,\n    various Bayesian estimators, and the  Chao-Shen estimator.  It also offers an R\n    interface to the NSB estimator. Furthermore, it provides functions for estimating\n    Kullback-Leibler divergence, chi-squared, mutual information, and chi-squared statistic\n    of independence. In addition there are functions for discretizing continuous random\n    variables.\n  license_family: GPL3\n  license_file: '{{ environ[\"PREFIX\"] }}/lib/R/share/licenses/GPL-3'\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n",
  "req":{

@@ -69,7 +69,7 @@
    ]
   }
  ],
- "bad":"make_graph: 500",
+ "bad":false,
  "conda-forge.yml":{
   "bot":{
    "automerge":true
@@ -168,7 +168,7 @@
   }
  },
  "name":"r-ifultools",
- "new_version":false,
+ "new_version":"2.0_5",
  "pinning_version":"2020.05.04.00.11.09",
  "raw_meta_yaml":"{% set version = '2.0-5' %}\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-ifultools\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  url:\n    - {{ cran_mirror }}/src/contrib/ifultools_{{ version }}.tar.gz\n    - {{ cran_mirror }}/src/contrib/Archive/ifultools/ifultools_{{ version }}.tar.gz\n  sha256: 72a8b20c4ff06bc2870af0f368a4bc8114a7126e174cf05554ab56f6d9da1310\n\nbuild:\n  merge_build_host: True  # [win]\n  number: 2\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - {{ compiler('c') }}              # [not win]\n    - {{ compiler('m2w64_c') }}        # [win]\n    - {{ posix }}filesystem        # [win]\n    - {{ posix }}make\n    - {{ posix }}sed               # [win]\n    - {{ posix }}coreutils         # [win]\n    - {{ posix }}zip               # [win]\n  host:\n    - r-base\n    - r-mass\n    - r-splus2r >=1.2_0\n  run:\n    - r-base\n    - {{ native }}gcc-libs         # [win]\n    - r-mass\n    - r-splus2r >=1.2_0\n\ntest:\n  commands:\n    - $R -e \"library('ifultools')\"           # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('ifultools')\\\"\"  # [win]\n\nabout:\n  home: https://CRAN.R-project.org/package=ifultools\n  license: GPL-2\n  summary: Insightful Research Tools.\n  license_family: GPL2\n  license_file: '{{ environ[\"PREFIX\"] }}/lib/R/share/licenses/GPL-2'\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n\n# Package: ifultools\n# Title: Insightful Research Tools\n# Version: 2.0-5\n# Authors@R: person(\"William\", \"Constantine\", email = \"wlbconstan@gmail.com\", role = c(\"cre\", \"aut\"))\n# Depends: R (>= 3.0.2)\n# Imports: MASS, methods, splus2R (>= 1.2-0)\n# Description: Insightful Research Tools.\n# License: GPL-2\n# Collate: it_mutils.R it_plot.R it_util.R it_calls.R package.R\n# Repository: CRAN\n# NeedsCompilation: yes\n# Packaged: 2019-03-04 17:57:49 UTC; william\n# Author: William Constantine [cre, aut]\n# Maintainer: William Constantine <wlbconstan@gmail.com>\n# Date/Publication: 2019-03-04 22:00:03 UTC\n",
  "req":{

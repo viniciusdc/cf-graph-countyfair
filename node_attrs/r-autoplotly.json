@@ -49,7 +49,7 @@
    ]
   }
  ],
- "bad":"make_graph: 500",
+ "bad":false,
  "conda-forge.yml":{
   "bot":{
    "automerge":true
@@ -159,7 +159,7 @@
   }
  },
  "name":"r-autoplotly",
- "new_version":false,
+ "new_version":"0.1.2",
  "pinning_version":"2019.07.20",
  "raw_meta_yaml":"{% set version = \"0.1.2\" %}\n\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-autoplotly\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  fn: autoplotly_{{ version }}.tar.gz\n  url:\n    - https://cran.r-project.org/src/contrib/autoplotly_{{ version }}.tar.gz\n    - https://cran.r-project.org/src/contrib/Archive/autoplotly/autoplotly_{{ version }}.tar.gz\n  sha256: e835281e2536252814b805713a0ac693f782e130b4467a864d1bb8c493fc5f2a\n\nbuild:\n  noarch: generic\n  number: 1001\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - r-base\n    - r-ggfortify\n    - r-ggplot2\n    - r-plotly\n\n  run:\n    - r-base\n    - r-ggfortify\n    - r-ggplot2\n    - r-plotly\n\ntest:\n  commands:\n    - $R -e \"library('autoplotly')\"  # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('autoplotly')\\\"\"  # [win]\n\nabout:\n  home: https://github.com/terrytangyuan/autoplotly\n  license: Apache 2.0\n  summary: Functionalities to automatically generate interactive visualizations for popular statistical\n    results supported by 'ggfortify', such as time series, PCA, clustering and survival\n    analysis, with 'plotly.js' <https://plot.ly/> and 'ggplot2' style. The generated visualizations can\n    also be easily extended using 'ggplot2' and 'plotly' syntax while staying interactive.\n  license_family: APACHE\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n    - cbrueffer\n    - johanneskoester\n    - bgruening\n    - daler\n    - jdblischak\n",
  "req":{

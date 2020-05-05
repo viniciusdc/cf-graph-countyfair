@@ -69,7 +69,7 @@
    ]
   }
  ],
- "bad":"make_graph: 500",
+ "bad":false,
  "conda-forge.yml":{
   "bot":{
    "automerge":true
@@ -177,7 +177,7 @@
   }
  },
  "name":"r-infotheo",
- "new_version":false,
+ "new_version":"1.2.0",
  "pinning_version":"2020.05.04.05.46.47",
  "raw_meta_yaml":"{% set version = '1.2.0' %}\n\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-infotheo\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  fn: infotheo_{{ version }}.tar.gz\n  url:\n    - https://cran.r-project.org/src/contrib/infotheo_{{ version }}.tar.gz\n    - https://cran.r-project.org/src/contrib/Archive/infotheo/infotheo_{{ version }}.tar.gz\n\n  sha256: 9b47ebc3db5708c88dc014b4ffec6734053a9c255a9241fcede30fec3e63aaa3\n\nbuild:\n  merge_build_host: True  # [win]\n  number: 1004\n  skip: true  # [win32]\n\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - posix                # [win]\n    - {{ compiler('c') }}        # [unix]\n    - {{ compiler('m2w64_c') }}  # [win]\n    - {{ compiler('cxx') }}        # [unix]\n    - {{ compiler('m2w64_cxx') }}  # [win]\n  host:\n    - r-base\n\n  run:\n    - r-base\n\ntest:\n  commands:\n    - $R -e \"library('infotheo')\"  # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('infotheo')\\\"\"  # [win]\n\nabout:\n  home: http\n  license: GPL (>= 3)\n  summary: This package implements various measures of information theory based on several entropy\n    estimators.\n  license_family: GPL3\n  license_file: '{{ environ[\"PREFIX\"] }}/lib/R/share/licenses/GPL-3'\nextra:\n   recipe-maintainers:\n    - conda-forge/r\n    - dpryan79\n    - MathiasHaudgaard\n    - FrodePedersen\n    - ArneKr\n    - Johanneskoester\n    - Bgruening\n    - Daler\n    - Jdblischak\n",
  "req":{

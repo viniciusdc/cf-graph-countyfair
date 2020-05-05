@@ -100,7 +100,7 @@
    ]
   }
  ],
- "bad":"make_graph: 500",
+ "bad":false,
  "conda-forge.yml":{
   "bot":{
    "automerge":true
@@ -199,7 +199,7 @@
   }
  },
  "name":"r-wrs2",
- "new_version":false,
+ "new_version":"1.0_0",
  "pinning_version":"2020.05.04.00.11.09",
  "raw_meta_yaml":"{% set version = '1.0-0' %}\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-wrs2\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  url:\n    - {{ cran_mirror }}/src/contrib/WRS2_{{ version }}.tar.gz\n    - {{ cran_mirror }}/src/contrib/Archive/WRS2/WRS2_{{ version }}.tar.gz\n  sha256: 1ac4b8292f142a8e9dde7755ce3734835f33eb0f379d5370acc581b720a3a7ab\n\nbuild:\n  merge_build_host: True  # [win]\n  number: 2\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - {{ posix }}zip               # [win]\n  host:\n    - r-base\n    - r-mass\n    - r-mc2d\n    - r-plyr\n    - r-reshape\n  run:\n    - r-base\n    - r-mass\n    - r-mc2d\n    - r-plyr\n    - r-reshape\n\ntest:\n  commands:\n    - $R -e \"library('WRS2')\"           # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('WRS2')\\\"\"  # [win]\n\nabout:\n  home: https://r-forge.r-project.org/projects/psychor/\n  license: GPL-3\n  summary: A collection of robust statistical methods based on Wilcox' WRS functions. It implements\n    robust t-tests (independent and dependent samples), robust ANOVA (including between-within\n    subject designs), quantile ANOVA, robust correlation, robust mediation, and nonparametric\n    ANCOVA models based on robust location measures.\n  license_family: GPL3\n  license_file: '{{ environ[\"PREFIX\"] }}/lib/R/share/licenses/GPL-3'\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n\n# Package: WRS2\n# Type: Package\n# Title: A Collection of Robust Statistical Methods\n# Version: 1.0-0\n# Date: 2019-06-05\n# Authors@R: c(person(given=\"Patrick\", family=\"Mair\", email=\"mair@fas.harvard.edu\", role=c(\"cre\",\"aut\")), person(given=\"Rand\", family=\"Wilcox\", email=\"rwilcox@usc.edu\", role=c(\"aut\")))\n# Description: A collection of robust statistical methods based on Wilcox' WRS functions. It implements robust t-tests (independent and dependent samples), robust ANOVA (including between-within subject designs), quantile ANOVA, robust correlation, robust mediation, and nonparametric ANCOVA models based on robust location measures.\n# License: GPL-3\n# URL: https://r-forge.r-project.org/projects/psychor/\n# Imports: MASS, reshape, plyr, stats, graphics, grDevices, utils, mc2d\n# Depends: R (>= 3.2.0)\n# Suggests: knitr, car, ggplot2, colorspace, mediation, GGally\n# VignetteBuilder: knitr\n# LazyData: yes\n# LazyLoad: yes\n# ByteCompile: yes\n# NeedsCompilation: yes\n# Packaged: 2019-06-05 23:44:33 UTC; root\n# Author: Patrick Mair [cre, aut], Rand Wilcox [aut]\n# Maintainer: Patrick Mair <mair@fas.harvard.edu>\n# Repository: CRAN\n# Date/Publication: 2019-06-06 10:19:21 UTC\n",
  "req":{

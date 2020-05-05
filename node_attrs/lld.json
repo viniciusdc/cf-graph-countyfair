@@ -183,7 +183,7 @@
    ]
   }
  ],
- "bad":"make_graph: 500",
+ "bad":false,
  "conda-forge.yml":{
   "provider":{
    "linux_aarch64":"default",
@@ -262,7 +262,7 @@
   }
  },
  "name":"lld",
- "new_version":false,
+ "new_version":"10.0.0",
  "pinning_version":"2020.03.23",
  "raw_meta_yaml":"{% set version = \"10.0.0\" %}\n{% set sha256 = \"b9a0d7c576eeef05bc06d6e954938a01c5396cee1d1e985891e0b1cf16e3d708\" %}\n\npackage:\n  name: lld\n  version: {{ version }}\n\nsource:\n  url: https://github.com/llvm/llvm-project/releases/download/llvmorg-{{ version }}/lld-{{ version }}.src.tar.xz\n  sha256: {{ sha256 }}\n  patches:\n    - cmake.diff\n\nbuild:\n  number: 0\n  skip: true  # [win and vc<14]\n\nrequirements:\n  build:\n    - cmake >=3.4.3\n    - ninja    # [win]\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n    - make     # [not win]\n  host:\n    - llvmdev =={{ version }}\n    - swig\n    - llvm\n  run_constrained:\n    - llvm =={{ version }}\n\ntest:\n  commands:\n    - ld.lld --version  # [linux]\n    - lld-link /?  # [win]\n\nabout:\n  home: http://llvm.org/\n  license: NCSA\n  license_file: LICENSE.TXT\n  summary: The LLVM Linker\n\nextra:\n  recipe-maintainers:\n    - isuruf\n",
  "req":{

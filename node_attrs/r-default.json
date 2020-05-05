@@ -35,7 +35,7 @@
    ]
   }
  ],
- "bad":"make_graph: 500",
+ "bad":false,
  "conda-forge.yml":{
   "bot":{
    "automerge":true
@@ -127,7 +127,7 @@
   }
  },
  "name":"r-default",
- "new_version":false,
+ "new_version":"1.0.0",
  "pinning_version":"2019.07.20",
  "raw_meta_yaml":"{% set version = '1.0.0' %}\n\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-default\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  fn: default_{{ version }}.tar.gz\n  url:\n    - https://cran.r-project.org/src/contrib/default_{{ version }}.tar.gz\n    - https://cran.r-project.org/src/contrib/Archive/default/default_{{ version }}.tar.gz\n  sha256: aad5f25c36f3cc03c89fa3ec60750fa7c49805688fd4c159a1742645d37dfd43\n\nbuild:\n  noarch: generic\n  number: 1001\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - r-base\n\n  run:\n    - r-base\n\ntest:\n  commands:\n    - $R -e \"library('default')\"  # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('default')\\\"\"  # [win]\n\nabout:\n  home: https://CRAN.R-project.org/package=default\n  license: MIT\n  summary: A simple syntax to change the default values for function arguments, whether they\n    are in packages or defined locally.\n  license_family: MIT\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n    - johanneskoester\n    - bgruening\n    - daler\n    - jdblischak\n    - cbrueffer\n",
  "req":{

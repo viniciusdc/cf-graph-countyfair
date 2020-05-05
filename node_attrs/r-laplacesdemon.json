@@ -88,7 +88,7 @@
    ]
   }
  ],
- "bad":"make_graph: 500",
+ "bad":false,
  "conda-forge.yml":{
   "bot":{
    "automerge":true
@@ -174,7 +174,7 @@
   }
  },
  "name":"r-laplacesdemon",
- "new_version":false,
+ "new_version":"16.1.4",
  "pinning_version":"2020.05.04.00.11.09",
  "raw_meta_yaml":"{% set version = \"16.1.4\" %}\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-laplacesdemon\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  fn: LaplacesDemon_{{ version }}.tar.gz\n  url:\n    - {{ cran_mirror }}/src/contrib/LaplacesDemon_{{ version }}.tar.gz\n    - {{ cran_mirror }}/src/contrib/Archive/LaplacesDemon/LaplacesDemon_{{ version }}.tar.gz\n  sha256: 4152a1c3c652979e97870e5c50c45a243d0ad8d4ff968091160e3d66509f61db\n\nbuild:\n  noarch: generic\n  merge_build_host: True  # [win]\n  number: 1\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - {{ posix }}zip               # [win]\n  host:\n    - r-base\n  run:\n    - r-base\n\ntest:\n  commands:\n    - $R -e \"library('LaplacesDemon')\"           # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('LaplacesDemon')\\\"\"  # [win]\n\nabout:\n  home: https://github.com/LaplacesDemonR/LaplacesDemon\n  license: MIT\n  license_file: LICENSE\n  summary: Provides a complete environment for Bayesian inference using a variety of different\n    samplers (see ?LaplacesDemon for an overview). The README describes the history\n    of the package development process.\n  license_family: MIT\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n    - MathiasHaudgaard\n    - FrodePedersen\n    - ArneKr\n",
  "req":{

@@ -50,7 +50,7 @@
    ]
   }
  ],
- "bad":"make_graph: 500",
+ "bad":false,
  "conda-forge.yml":{
   "bot":{
    "automerge":true
@@ -164,7 +164,7 @@
   }
  },
  "name":"r-genkern",
- "new_version":false,
+ "new_version":"1.2_60",
  "pinning_version":"2019.07.20",
  "raw_meta_yaml":"{% set version = '1.2-60' %}\n\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-genkern\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  fn: GenKern_{{ version }}.tar.gz\n  url:\n    - https://cran.r-project.org/src/contrib/GenKern_{{ version }}.tar.gz\n    - https://cran.r-project.org/src/contrib/Archive/GenKern/GenKern_{{ version }}.tar.gz\n\n  sha256: cc74225fe6a092b4b98bebcc42b5ce5632dd492cc2368b4e8087fed87c6a158b\n\nbuild:\n  merge_build_host: True  # [win]\n  number: 1003\n  skip: true  # [win32]\n\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - posix                # [win]\n    - {{ compiler('c') }}        # [unix]\n    - {{ compiler('m2w64_c') }}  # [win]\n  host:\n    - r-base\n    - r-kernsmooth\n\n  run:\n    - r-base\n    - r-kernsmooth\n\ntest:\n  commands:\n    - $R -e \"library('GenKern')\"  # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('GenKern')\\\"\"  # [win]\n\nabout:\n  home: https://CRAN.R-project.org/package=GenKern\n  license: GPL-2\n  summary: Computes generalised KDEs\n  license_family: GPL2\n  license_file: '{{ environ[\"PREFIX\"] }}/lib/R/share/licenses/GPL-2'\nextra:\n   recipe-maintainers:\n    - conda-forge/r\n    - dpryan79\n    - MathiasHaudgaard\n    - FrodePedersen\n    - ArneKr\n    - Johanneskoester\n    - Bgruening\n    - Daler\n    - Jdblischak\n",
  "req":{

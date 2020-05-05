@@ -54,7 +54,7 @@
    ]
   }
  ],
- "bad":"make_graph: 500",
+ "bad":false,
  "conda-forge.yml":{
   "bot":{
    "automerge":true
@@ -158,7 +158,7 @@
   }
  },
  "name":"r-fit.models",
- "new_version":false,
+ "new_version":"0.5_14",
  "pinning_version":"2020.05.04.05.46.47",
  "raw_meta_yaml":"{% set version = '0.5-14' %}\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-fit.models\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  fn: fit.models_{{ version }}.tar.gz\n  url:\n    - {{ cran_mirror }}/src/contrib/fit.models_{{ version }}.tar.gz\n    - {{ cran_mirror }}/src/contrib/Archive/fit.models/fit.models_{{ version }}.tar.gz\n  sha256: 93b9d119e97b36c648a19c891fc5e69f5306eb5b9bac16bf377555057afd4b6e\n\nbuild:\n  noarch: generic\n  merge_build_host: True  # [win]\n  number: 1003\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - {{ posix }}zip               # [win]\n  host:\n    - r-base\n    - r-lattice\n  run:\n    - r-base\n    - r-lattice\n\ntest:\n  commands:\n    - $R -e \"library('fit.models')\"           # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('fit.models')\\\"\"  # [win]\n\nabout:\n  home: https://CRAN.R-project.org/package=fit.models\n  license: GPL-2 and GPL-3\n  summary: The fit.models function and its associated methods (coefficients, print, summary,\n    plot, etc.) were originally provided in the robust package to compare robustly and\n    classically fitted model objects. The aim of the fit.models package is to separate\n    this fitted model object comparison functionality from the robust package and to\n    extend it to support fitting methods (e.g., classical, robust, Bayesian, regularized,\n    etc.) more generally.\n  license_family: GPL\n  license_file: '{{ environ[\"PREFIX\"] }}/lib/R/share/licenses/GPL-2'\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n    - johanneskoester\n    - bgruening\n    - daler\n    - jdblischak\n    - cbrueffer\n    - dbast\n    - rvalieris\n",
  "req":{

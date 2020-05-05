@@ -49,7 +49,7 @@
    ]
   }
  ],
- "bad":"make_graph: 500",
+ "bad":false,
  "conda-forge.yml":{
   "bot":{
    "automerge":true
@@ -144,7 +144,7 @@
   }
  },
  "name":"r-rmeta",
- "new_version":false,
+ "new_version":"3.0",
  "pinning_version":"2019.07.19",
  "raw_meta_yaml":"{% set version = '3.0' %}\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-rmeta\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  fn: rmeta_{{ version }}.tar.gz\n  url:\n    - {{ cran_mirror }}/src/contrib/rmeta_{{ version }}.tar.gz\n    - {{ cran_mirror }}/src/contrib/Archive/rmeta/rmeta_{{ version }}.tar.gz\n  sha256: b9f9d405935cffcd7a5697ff13b033f9725de45f4dc7b059fd68a7536eb76b6e\n\nbuild:\n  noarch: generic\n  merge_build_host: True  # [win]\n  number: 1002\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - {{posix}}zip               # [win]\n  host:\n    - r-base\n  run:\n    - r-base\n\ntest:\n  commands:\n    - $R -e \"library('rmeta')\"           # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('rmeta')\\\"\"  # [win]\n\nabout:\n  home: https://CRAN.R-project.org/package=rmeta\n  license: GPL-2\n  summary: Functions for simple fixed and random effects meta-analysis for two-sample comparisons\n    and cumulative meta-analyses. Draws standard summary plots, funnel plots, and computes\n    summaries and tests for association and heterogeneity.\n  license_family: GPL2\n  license_file: '{{ environ[\"PREFIX\"] }}/lib/R/share/licenses/GPL-2'\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n    - johanneskoester\n    - bgruening\n    - daler\n    - jdblischak\n    - cbrueffer\n",
  "req":{

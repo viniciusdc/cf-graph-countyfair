@@ -171,7 +171,7 @@
    ]
   }
  ],
- "bad":"make_graph: 500",
+ "bad":false,
  "conda-forge.yml":{
   "bot":{
    "automerge":true
@@ -277,7 +277,7 @@
   }
  },
  "name":"r-rcppannoy",
- "new_version":false,
+ "new_version":"0.0.16",
  "pinning_version":"2020.05.04.05.46.47",
  "raw_meta_yaml":"{% set version = \"0.0.16\" %}\n\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-rcppannoy\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  fn: RcppAnnoy_{{ version }}.tar.gz\n  url:\n    - {{ cran_mirror }}/src/contrib/RcppAnnoy_{{ version }}.tar.gz\n    - {{ cran_mirror }}/src/contrib/Archive/RcppAnnoy/RcppAnnoy_{{ version }}.tar.gz\n  sha256: d98d5f239039a0f82c19b44abf37c26388bc40e96d573f2058846d736919ca2d\n\nbuild:\n  merge_build_host: true  # [win]\n  number: 1\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\n# Suggests: RUnit\nrequirements:\n  build:\n    - {{ compiler('c') }}        # [not win]\n    - {{ compiler('cxx') }}      # [not win]\n    - {{ compiler('m2w64_c') }}        # [win]\n    - {{ compiler('m2w64_cxx') }}        # [win]\n    - {{ posix }}filesystem        # [win]\n    - {{ posix }}make\n    - {{ posix }}sed               # [win]\n    - {{ posix }}coreutils         # [win]\n    - {{ posix }}zip               # [win]\n\n  host:\n    - r-base\n    - r-rcpp >=0.11.3\n\n  run:\n    - r-base\n    - {{ native }}gcc-libs         # [win]\n    - r-rcpp >=0.11.3\n\ntest:\n  commands:\n    - $R -e \"library('RcppAnnoy')\"           # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('RcppAnnoy')\\\"\"  # [win]\n\nabout:\n  home: https://CRAN.R-project.org/package=RcppAnnoy\n  license: GPL (>= 2)\n  summary: \"'Annoy' is a small C++ library for Approximate Nearest Neighbors  written for efficient memory usage as well an ability to load from / save to disk. This\\\n    \\ package provides an R interface by relying on the 'Rcpp' package, exposing the same interface as the original Python wrapper to 'Annoy'. See <https://github.com/spotify/annoy>\\\n    \\ for more on 'Annoy'. 'Annoy' is released under Version 2.0 of the Apache License. Also included is a small Windows port of 'mmap' which is released under the\\\n    \\ MIT license.\"\n  license_file: {{ environ[\"PREFIX\"] }}/lib/R/share/licenses/GPL-3\n  license_family: GPL3\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n    - MathiasHaudgaard\n    - FrodePedersen\n    - ArneKr\n",
  "req":{

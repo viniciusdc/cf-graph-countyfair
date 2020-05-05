@@ -120,7 +120,7 @@
    ]
   }
  ],
- "bad":"make_graph: 500",
+ "bad":false,
  "conda-forge.yml":{
   "compiler_stack":"comp7",
   "max_py_ver":"37",
@@ -234,7 +234,7 @@
   }
  },
  "name":"pystan",
- "new_version":false,
+ "new_version":"2.19.1.1",
  "pinning_version":"2019.11.01",
  "raw_meta_yaml":"{% set name = \"pystan\" %}\n{% set version = \"2.19.1.1\" %}\n{% set sha256sum = \"fa8bad8dbc0da22bbe6f36af56c9abbfcf10f92df8ce627d59a36bd8d25eb038\" %}\n\npackage:\n  name: {{ name }}\n  version: {{ version }}\n\nsource:\n  fn: {{ name }}-{{ version }}.tar.gz\n  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz\n  sha256: {{ sha256sum }}\n\nbuild:\n  number: 1\n  skip: True  # [win and py27]\n  detect_binary_files_with_prefix: False\n\nrequirements:\n  build:\n    - {{ compiler('c') }}  # [not win]\n    - {{ compiler('cxx') }}  # [not win]\n    # http://pystan.readthedocs.io/en/latest/windows.html\n    - {{ compiler('m2w64_c') }}  # [win]\n    - {{ compiler('m2w64_cxx') }}  # [win]\n  host:\n    - python\n    - pip\n    - numpy\n    - cython >=0.22,!=0.25.1\n    - scipy\n    - setuptools\n    - libpython  # [win]\n  run:\n    - python\n    - {{ compiler('c') }}  # [not win]\n    - {{ compiler('cxx') }}  # [not win]\n    # http://pystan.readthedocs.io/en/latest/windows.html\n    - {{ compiler('m2w64_c') }}  # [win]\n    - {{ compiler('m2w64_cxx') }}  # [win]  \n    - {{ pin_compatible('numpy') }}\n    - cython >=0.22,!=0.25.1\n    - setuptools\n    - scipy\n    - matplotlib-base\n    - arviz  # [py>=35]\n    - libpython  # [win]\n\ntest:\n  imports:\n    - pystan\n\nabout:\n  home: http://mc-stan.org/interfaces/pystan.html\n  license: GPLv3\n  license_file: LICENSE\n  summary: Python interface to Stan, a package for Bayesian inference\n  description: |\n    PyStan provides a Python interface to Stan, a package for Bayesian\n    inference using the No-U-Turn sampler, a variant of Hamiltonian Monte\n    Carlo.\n  doc_url: https://pystan.readthedocs.org/\n  dev_url: https://github.com/stan-dev/pystan\n\nextra:\n  recipe-maintainers:\n    - rmax\n    - beckermr\n",
  "req":{

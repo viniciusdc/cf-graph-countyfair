@@ -134,7 +134,7 @@
    ]
   }
  ],
- "bad":"make_graph: 500",
+ "bad":false,
  "conda-forge.yml":{
   "bot":{
    "automerge":true
@@ -254,7 +254,7 @@
   }
  },
  "name":"r-prodlim",
- "new_version":false,
+ "new_version":"2019.11.13",
  "pinning_version":"2020.05.04.00.11.09",
  "raw_meta_yaml":"{% set version = \"2019.11.13\" %}\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-prodlim\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  url:\n    - {{ cran_mirror }}/src/contrib/prodlim_{{ version }}.tar.gz\n    - {{ cran_mirror }}/src/contrib/Archive/prodlim/prodlim_{{ version }}.tar.gz\n  sha256: 6809924f503a14681de84730489cdaf9240d7951c64f5b98ca37dc1ce7809b0f\n\nbuild:\n  merge_build_host: True  # [win]\n  number: 1\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - {{ compiler('c') }}              # [not win]\n    - {{ compiler('m2w64_c') }}        # [win]\n    - {{ compiler('cxx') }}            # [not win]\n    - {{ compiler('m2w64_cxx') }}      # [win]\n    - {{ posix }}filesystem        # [win]\n    - {{ posix }}make\n    - {{ posix }}sed               # [win]\n    - {{ posix }}coreutils         # [win]\n    - {{ posix }}zip               # [win]\n  host:\n    - r-base\n    - r-kernsmooth\n    - r-rcpp >=0.11.5\n    - r-lava\n    - r-survival\n  run:\n    - r-base\n    - {{ native }}gcc-libs         # [win]\n    - r-kernsmooth\n    - r-rcpp >=0.11.5\n    - r-lava\n    - r-survival\n\ntest:\n  commands:\n    - $R -e \"library('prodlim')\"           # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('prodlim')\\\"\"  # [win]\n\nabout:\n  home: https://CRAN.R-project.org/package=prodlim\n  license: GPL-2\n  summary: Fast and user friendly implementation of nonparametric estimators for censored event\n    history (survival) analysis. Kaplan-Meier and Aalen-Johansen method.\n  license_family: GPL2\n  license_file:\n    - '{{ environ[\"PREFIX\"] }}/lib/R/share/licenses/GPL-2'\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n\n# Package: prodlim\n# Title: Product-Limit Estimation for Censored Event History Analysis\n# Version: 2019.10.13\n# Author: Thomas A. Gerds\n# Description: Fast and user friendly implementation of nonparametric estimators for censored event history (survival) analysis. Kaplan-Meier and Aalen-Johansen method.\n# Depends: R (>= 2.9.0)\n# Imports: Rcpp (>= 0.11.5), stats, grDevices, graphics, survival, KernSmooth, lava\n# LinkingTo: Rcpp\n# Maintainer: Thomas A. Gerds <tag@biostat.ku.dk>\n# License: GPL (>= 2)\n# Packaged: 2019-11-03 17:32:42 UTC; tag\n# RoxygenNote: 6.1.1\n# NeedsCompilation: yes\n# Repository: CRAN\n# Date/Publication: 2019-11-03 18:30:02 UTC\n",
  "req":{

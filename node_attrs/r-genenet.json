@@ -71,7 +71,7 @@
    ]
   }
  ],
- "bad":"make_graph: 500",
+ "bad":false,
  "conda-forge.yml":{
   "bot":{
    "automerge":true
@@ -175,7 +175,7 @@
   }
  },
  "name":"r-genenet",
- "new_version":false,
+ "new_version":"1.2.14",
  "pinning_version":"2020.05.04.05.46.47",
  "raw_meta_yaml":"{% set version = \"1.2.14\" %}\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-genenet\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  fn: GeneNet_{{ version }}.tar.gz\n  url:\n    - {{ cran_mirror }}/src/contrib/GeneNet_{{ version }}.tar.gz\n    - {{ cran_mirror }}/src/contrib/Archive/GeneNet/GeneNet_{{ version }}.tar.gz\n  sha256: 76f4d1a5954b3060d95017b0108b2f0936fdf38c15e5c1fd051cfc5c82ccb031\n\nbuild:\n  noarch: generic\n  merge_build_host: True  # [win]\n  number: 1\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - {{ posix }}zip               # [win]\n  host:\n    - r-base\n    - r-corpcor >=1.6.8\n    - r-fdrtool >=1.2.15\n    - r-longitudinal >=1.1.12\n  run:\n    - r-base\n    - r-corpcor >=1.6.8\n    - r-fdrtool >=1.2.15\n    - r-longitudinal >=1.1.12\n\ntest:\n  commands:\n    - $R -e \"library('GeneNet')\"           # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('GeneNet')\\\"\"  # [win]\n\nabout:\n  home: http://strimmerlab.org/software/genenet/\n  license: GPL (>= 3)\n  summary: 'Analyzes gene expression (time series) data with focus on the inference of gene networks.\n    In particular, GeneNet implements the methods of Schaefer and  Strimmer (2005a,b,c)\n    and Opgen-Rhein and Strimmer (2006, 2007) for learning large-scale gene association\n    networks (including assignment of putative directions).  '\n  license_family: GPL3\n  license_file: '{{ environ[\"PREFIX\"] }}/lib/R/share/licenses/GPL-3'\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n    - MathiasHaudgaard\n    - FrodePedersen\n    - ArneKr\n",
  "req":{

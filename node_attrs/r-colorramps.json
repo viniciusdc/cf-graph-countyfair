@@ -54,7 +54,7 @@
    ]
   }
  ],
- "bad":"make_graph: 500",
+ "bad":false,
  "conda-forge.yml":{
   "bot":{
    "automerge":true
@@ -129,7 +129,7 @@
   }
  },
  "name":"r-colorramps",
- "new_version":false,
+ "new_version":"2.3",
  "pinning_version":"2020.05.04.05.46.47",
  "raw_meta_yaml":"{% set version = '2.3' %}\n\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-colorramps\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  fn: colorRamps_{{ version }}.tar.gz\n  url:\n    - https://cran.r-project.org/src/contrib/colorRamps_{{ version }}.tar.gz\n    - https://cran.r-project.org/src/contrib/Archive/colorRamps/colorRamps_{{ version }}.tar.gz\n  sha256: 3f10eab0602a42a2e5a79c7c04638be06cbf1e6f23979a1bd95d853e10940b6a\n\nbuild:\n  noarch: generic\n  number: 1003\n\n  rpaths:\n    - lib/R/lib/\n    - lib/\nrequirements:\n  build:\n    - r-base\n\n  run:\n    - r-base\n\ntest:\n  commands:\n    - $R -e \"library('colorRamps')\"  # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('colorRamps')\\\"\"  # [win]\n\nabout:\n  home: https://CRAN.R-project.org/package=colorRamps\n  license: GPL\n  license_file: '{{ environ[\"PREFIX\"] }}/lib/R/share/licenses/GPL-3'\n  summary: Builds gradient color maps\n  license_family: GPL\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n",
  "req":{

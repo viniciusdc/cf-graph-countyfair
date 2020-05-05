@@ -86,7 +86,7 @@
    ]
   }
  ],
- "bad":"make_graph: 500",
+ "bad":false,
  "conda-forge.yml":{
   "provider":{
    "win":"azure"
@@ -164,7 +164,7 @@
   }
  },
  "name":"r-dicekriging",
- "new_version":false,
+ "new_version":"1.5.6",
  "pinning_version":"2020.05.04.05.46.47",
  "raw_meta_yaml":"{% set version = \"1.5.6\" %}\n\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-dicekriging\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  fn: DiceKriging_{{ version }}.tar.gz\n  url:\n    - https://cran.r-project.org/src/contrib/DiceKriging_{{ version }}.tar.gz\n    - https://cran.r-project.org/src/contrib/Archive/DiceKriging/DiceKriging_{{ version }}.tar.gz\n  sha256: 25466d2db9f17083d1c7b9545e5ec88f630be934f9373c2f7b36c38de4e64e92\n\nbuild:\n  merge_build_host: True  # [win]\n  number: 1002\n  skip: true  # [win32]\n\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - posix                # [win]\n    - {{ compiler('c') }}        # [unix]\n    - {{ compiler('m2w64_c') }}  # [win]\n  host:\n    - r-base\n\n  run:\n    - r-base\n\ntest:\n  commands:\n    - $R -e \"library('DiceKriging')\"  # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('DiceKriging')\\\"\"  # [win]\n\nabout:\n  home: https://CRAN.R-project.org/package=DiceKriging\n  license: GPL-2 | GPL-3\n  license_family: GPL\n  license_file: '{{ environ[\"PREFIX\"] }}/lib/R/share/licenses/GPL-2'\n  summary: Estimation, validation and prediction of kriging models.\n\nextra:\n  recipe-maintainers:\n    - jschueller\n",
  "req":{

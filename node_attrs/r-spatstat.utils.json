@@ -185,7 +185,7 @@
    ]
   }
  ],
- "bad":"make_graph: 500",
+ "bad":false,
  "conda-forge.yml":{
   "provider":{
    "win":"azure"
@@ -263,7 +263,7 @@
   }
  },
  "name":"r-spatstat.utils",
- "new_version":false,
+ "new_version":"1.17_0",
  "pinning_version":"2020.05.03.19.37.20",
  "raw_meta_yaml":"{% set version = \"1.17-0\" %}\n\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-spatstat.utils\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  fn: spatstat.utils_{{ version }}.tar.gz\n  url:\n    - https://cran.r-project.org/src/contrib/spatstat.utils_{{ version }}.tar.gz\n    - https://cran.r-project.org/src/contrib/Archive/spatstat.utils/spatstat.utils_{{ version }}.tar.gz\n  sha256: 39cd683ed7f41d8adc9e28af073d91b244aa1cf5ad966dfbb396ee3ee79f0922\n\nbuild:\n  merge_build_host: True  # [win]\n  number: 1\n  script: R CMD INSTALL --build .\n  skip: True  # [win32]\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - posix  # [win]\n    - {{ compiler('c') }}        # [unix]\n    - {{ compiler('m2w64_c') }}  # [win]\n  host:\n    - r-base\n  run:\n    - r-base\n\ntest:\n  commands:\n    - $R -e \"library('spatstat.utils')\"  # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('spatstat.utils')\\\"\"  # [win]\n\nabout:\n  home: https://cran.r-project.org/web/packages/spatstat.utils\n  license: GPL (>= 2)\n  license_file: '{{ environ[\"PREFIX\"] }}/lib/R/share/licenses/GPL-2'\n  summary: Contains utility functions for the 'spatstat' package which may also be useful for\n    other purposes.\n\nextra:\n  recipe-maintainers:\n    - ocefpaf\n",
  "req":{

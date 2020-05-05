@@ -54,7 +54,7 @@
    ]
   }
  ],
- "bad":"make_graph: 500",
+ "bad":false,
  "conda-forge.yml":{
   "bot":{
    "automerge":true
@@ -248,7 +248,7 @@
   }
  },
  "name":"r-assertive",
- "new_version":false,
+ "new_version":"0.3_5",
  "pinning_version":"2020.05.04.19.59.17",
  "raw_meta_yaml":"{% set version = '0.3-5' %}\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-assertive\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  fn: assertive_{{ version }}.tar.gz\n  url:\n    - {{ cran_mirror }}/src/contrib/assertive_{{ version }}.tar.gz\n    - {{ cran_mirror }}/src/contrib/Archive/assertive/assertive_{{ version }}.tar.gz\n  sha256: 23ff6c8893e9c0b5b6bf4009a10de42a4a3a86eec2c48e7b73ae2cd6295c8b2e\n\nbuild:\n  noarch: generic\n  merge_build_host: True  # [win]\n  number: 1004\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - {{ posix }}zip               # [win]\n  host:\n    - r-base\n    - r-assertive.base >=0.0_4\n    - r-assertive.code\n    - r-assertive.data\n    - r-assertive.data.uk\n    - r-assertive.data.us\n    - r-assertive.datetimes\n    - r-assertive.files\n    - r-assertive.matrices\n    - r-assertive.models\n    - r-assertive.numbers\n    - r-assertive.properties >=0.0_2\n    - r-assertive.reflection >=0.0_2\n    - r-assertive.sets >=0.0_2\n    - r-assertive.strings\n    - r-assertive.types >=0.0_2\n    - r-knitr\n  run:\n    - r-base\n    - r-assertive.base >=0.0_4\n    - r-assertive.code\n    - r-assertive.data\n    - r-assertive.data.uk\n    - r-assertive.data.us\n    - r-assertive.datetimes\n    - r-assertive.files\n    - r-assertive.matrices\n    - r-assertive.models\n    - r-assertive.numbers\n    - r-assertive.properties >=0.0_2\n    - r-assertive.reflection >=0.0_2\n    - r-assertive.sets >=0.0_2\n    - r-assertive.strings\n    - r-assertive.types >=0.0_2\n    - r-knitr\n\ntest:\n  commands:\n    - $R -e \"library('assertive')\"           # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('assertive')\\\"\"  # [win]\n\nabout:\n  home: https://bitbucket.org/richierocks/assertive\n  license: GPL (>= 3)\n  summary: Lots of predicates (is_* functions) to check the state of your variables, and assertions\n    (assert_* functions) to throw errors if they aren't in the right form.\n  license_family: GPL3\n  license_file: '{{ environ[\"PREFIX\"] }}/lib/R/share/licenses/GPL-3'\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n    - jenzopr\n    - johanneskoester\n    - bgruening\n    - daler\n    - jdblischak\n    - cbrueffer\n    - dbast\n",
  "req":{

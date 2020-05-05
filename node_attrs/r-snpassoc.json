@@ -35,7 +35,7 @@
    ]
   }
  ],
- "bad":"make_graph: 500",
+ "bad":false,
  "conda-forge.yml":{
   "bot":{
    "automerge":true
@@ -143,7 +143,7 @@
   }
  },
  "name":"r-snpassoc",
- "new_version":false,
+ "new_version":"1.9_2",
  "pinning_version":"2019.07.19",
  "raw_meta_yaml":"{% set version = '1.9-2' %}\n\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-snpassoc\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  fn: SNPassoc_{{ version }}.tar.gz\n  url:\n    - {{ cran_mirror }}/src/contrib/SNPassoc_{{ version }}.tar.gz\n    - {{ cran_mirror }}/src/contrib/Archive/SNPassoc/SNPassoc_{{ version }}.tar.gz\n  sha256: b08e65ddbaa287fa7f4806a4a6c1556e4cefb036a77e1c56f7ddbcf591f46b84\n\nbuild:\n  noarch: generic\n  merge_build_host: True  # [win]\n  number: 1002\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  host:\n    - r-base\n    - r-haplo.stats\n    - r-mvtnorm\n    - r-survival\n\n  run:\n    - r-base\n    - r-haplo.stats\n    - r-mvtnorm\n    - r-survival\n\ntest:\n  commands:\n    - $R -e \"library('SNPassoc')\"           # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('SNPassoc')\\\"\"  # [win]\n\nabout:\n  home: http://www.creal.cat/jrgonzalez/software.htm\n  license: GPL (>= 2)\n  summary: 'This package carries out most common analysis when performing whole genome association\n    studies. These analyses include descriptive statistics and exploratory analysis\n    of missing values, calculation of Hardy-Weinberg equilibrium, analysis of association\n    based on generalized linear models (either for quantitative or binary traits), and\n    analysis of multiple SNPs (haplotype and epistasis analysis). Permutation test and\n    related tests (sum statistic and truncated product) are also implemented. Max-statistic\n    and genetic risk-allele score exact distributions are also possible to be estimated. '\n\n  license_family: GPL3\n\nextra:\n   recipe-maintainers:\n    - conda-forge/r\n    - dpryan79\n    - MathiasHaudgaard\n    - FrodePedersen\n    - ArneKr\n",
  "req":{

@@ -66,7 +66,7 @@
    ]
   }
  ],
- "bad":"make_graph: 500",
+ "bad":false,
  "conda-forge.yml":{
   "bot":{
    "automerge":true
@@ -187,7 +187,7 @@
   }
  },
  "name":"r-fuzzyjoin",
- "new_version":false,
+ "new_version":"0.1.5",
  "pinning_version":"2019.08.27",
  "raw_meta_yaml":"{% set version = \"0.1.5\" %}\n\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-fuzzyjoin\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  fn: fuzzyjoin_{{ version }}.tar.gz\n  url:\n    - https://cran.r-project.org/src/contrib/fuzzyjoin_{{ version }}.tar.gz\n    - https://cran.r-project.org/src/contrib/Archive/fuzzyjoin/fuzzyjoin_{{ version }}.tar.gz\n  sha256: 9abd80ad7f8b0d93473b9179c6af312f0fe974fa849992e6cb06088b6fffe7d3\n\nbuild:\n  noarch: generic\n  number: 0\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - r-base\n    - r-dplyr\n    - r-geosphere\n    - r-purrr\n    - r-stringdist\n    - r-stringr\n    - r-tidyr >=0.4.0\n  run:\n    - r-base\n    - r-dplyr\n    - r-geosphere\n    - r-purrr\n    - r-stringdist\n    - r-stringr\n    - r-tidyr >=0.4.0\n\ntest:\n  commands:\n    - $R -e \"library('fuzzyjoin')\"  # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('fuzzyjoin')\\\"\"  # [win]\n\nabout:\n  home: https://CRAN.R-project.org/package=fuzzyjoin\n  license: MIT\n  license_file: \n    - '{{ environ[\"PREFIX\"] }}/lib/R/share/licenses/MIT'\n    - LICENSE\n  summary: Join tables together based not on whether columns match exactly, but whether they\n    are similar by some comparison. Implementations include string distance and regular\n    expression matching.\n  license_family: MIT\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n",
  "req":{

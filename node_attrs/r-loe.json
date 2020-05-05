@@ -50,7 +50,7 @@
    ]
   }
  ],
- "bad":"make_graph: 500",
+ "bad":false,
  "conda-forge.yml":{
   "bot":{
    "automerge":true
@@ -155,7 +155,7 @@
   }
  },
  "name":"r-loe",
- "new_version":false,
+ "new_version":"1.1",
  "pinning_version":"2019.07.20",
  "raw_meta_yaml":"{% set version = '1.1' %}\n\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-loe\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  fn: loe_{{ version }}.tar.gz\n  url:\n    - https://cran.r-project.org/src/contrib/loe_{{ version }}.tar.gz\n    - https://cran.r-project.org/src/contrib/Archive/loe/loe_{{ version }}.tar.gz\n  sha256: cc100c98bee78f6d11bc6227c8585bdc8bb7d55e4bf69ec4b16ca7d7ddbb26d8\n\nbuild:\n  merge_build_host: True  # [win]\n  number: 1002\n  rpaths:\n    - lib/R/lib/\n    - lib/\n  skip: true  # [win32]\n\nrequirements:\n  build:\n    - posix                # [win]\n    - {{ compiler('c') }}        # [unix]\n    - {{ compiler('m2w64_c') }}  # [win]\n  host:\n    - r-base\n    - r-mass\n\n  run:\n    - r-base\n    - r-mass\n\ntest:\n  commands:\n    - $R -e \"library('loe')\"  # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('loe')\\\"\"  # [win]\n\nabout:\n  home: https://CRAN.R-project.org/package=loe\n  license: GPL (>= 2)\n  summary: Local Ordinal embedding (LOE) is one of graph embedding methods for unweighted graphs.\n  license_family: GPL3\n  license_file: '{{ environ[\"PREFIX\"] }}/lib/R/share/licenses/GPL-3'\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n    - cbrueffer\n    - johanneskoester\n    - bgruening\n    - daler\n    - jdblischak\n",
  "req":{

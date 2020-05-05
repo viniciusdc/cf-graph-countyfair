@@ -71,7 +71,7 @@
    ]
   }
  ],
- "bad":"make_graph: 500",
+ "bad":false,
  "conda-forge.yml":{
   "compiler_stack":"comp7",
   "max_py_ver":"37",
@@ -163,7 +163,7 @@
   }
  },
  "name":"pyaudio",
- "new_version":false,
+ "new_version":"0.2.11",
  "pinning_version":"2020.03.19",
  "raw_meta_yaml":"{% set version = \"0.2.11\" %}\n\npackage:\n  name: pyaudio\n  version: {{ version }}\n\nsource:\n  url: https://pypi.io/packages/source/P/PyAudio/PyAudio-{{ version }}.tar.gz\n  sha256: 93bfde30e0b64e63a46f2fd77e85c41fd51182a4a3413d9edfaf9ffaa26efb74\n  patches:\n    # Find the libs in the right directory.\n    - lib.patch\n\nbuild:\n  number: 1000\n  # py2k needs alsa-lib-devel\n  skip: True  # [win or py2k or osx]\n  script:\n    - export PORTAUDIO_PATH=$PREFIX  # [not win]\n    - python setup.py install\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n  host:\n    - python\n    - setuptools\n    - portaudio  # [not win]\n    - jack  # [linux]\n  run:\n    - python\n    - setuptools\n    - portaudio  # [not win]\n    - jack  # [linux]\n\ntest:\n  imports:\n    - pyaudio\n  commands:\n    - conda inspect linkages -p $PREFIX $PKG_NAME  # [not win]\n    - conda inspect objects -p $PREFIX $PKG_NAME  # [osx]\n\nabout:\n  home: http://people.csail.mit.edu/hubert/pyaudio/\n  license: MIT\n  summary: 'PortAudio Python Bindings.'\n\nextra:\n  recipe-maintainers:\n    - chiranthsiddappa\n    - ocefpaf\n    - scopatz\n",
  "req":{

@@ -35,7 +35,7 @@
    ]
   }
  ],
- "bad":"make_graph: 500",
+ "bad":false,
  "conda-forge.yml":{
   "bot":{
    "automerge":true
@@ -172,7 +172,7 @@
   }
  },
  "name":"r-patpro",
- "new_version":false,
+ "new_version":"1.1.0",
  "pinning_version":"2019.07.19",
  "raw_meta_yaml":"{% set version = '1.1.0' %}\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-patpro\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  fn: patPRO_{{ version }}.tar.gz\n  url:\n    - {{ cran_mirror }}/src/contrib/patPRO_{{ version }}.tar.gz\n    - {{ cran_mirror }}/src/contrib/Archive/patPRO/patPRO_{{ version }}.tar.gz\n  sha256: d63bfb2a673000b285d5e7106597c8fc148509461bf047f48ecf553ae933d8d0\n\nbuild:\n  noarch: generic\n  merge_build_host: True  # [win]\n  number: 1002\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - {{posix}}zip               # [win]\n  host:\n    - r-base\n    - r-rcolorbrewer\n    - r-ggplot2\n    - r-gridextra\n    - r-plyr\n    - r-reshape2\n  run:\n    - r-base\n    - r-rcolorbrewer\n    - r-ggplot2\n    - r-gridextra\n    - r-plyr\n    - r-reshape2\n\ntest:\n  commands:\n    - $R -e \"library('patPRO')\"           # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('patPRO')\\\"\"  # [win]\n\nabout:\n  home: https://CRAN.R-project.org/package=patPRO\n  license: GPL-3\n  summary: Quickly and easily visualize longitudinal microbiome profiles using standard output\n    from the QIIME microbiome analysis toolkit (see <http://qiime.org> for more information).\n  license_family: GPL3\n  license_file: '{{ environ[\"PREFIX\"] }}/lib/R/share/licenses/GPL-3'\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n    - MathiasHaudgaard\n    - FrodePedersen\n    - ArneKr\n    - johanneskoester\n    - bgruening\n    - daler\n    - jdblischak\n    - cbrueffer\n    - dbast\n",
  "req":{

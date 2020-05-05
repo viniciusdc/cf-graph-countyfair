@@ -54,7 +54,7 @@
    ]
   }
  ],
- "bad":"make_graph: 500",
+ "bad":false,
  "conda-forge.yml":{
   "bot":{
    "automerge":true
@@ -157,7 +157,7 @@
   }
  },
  "name":"r-emt",
- "new_version":false,
+ "new_version":"1.1",
  "pinning_version":"2020.05.04.00.11.09",
  "raw_meta_yaml":"{% set version = \"1.1\" %}\n\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-emt\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  fn: EMT_{{ version }}.tar.gz\n  url:\n    - https://cran.r-project.org/src/contrib/EMT_{{ version }}.tar.gz\n    - https://cran.r-project.org/src/contrib/Archive/EMT/EMT_{{ version }}.tar.gz\n\n  sha256: f0d6669f5d6f22569849fe7293e917fe25c8261261b9fc6d87e332397ad86a54\n\nbuild:\n  noarch: generic\n  number: 1003\n\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - r-base\n\n  run:\n    - r-base\n\ntest:\n  commands:\n    - $R -e \"library('EMT')\"  # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('EMT')\\\"\"  # [win]\n\nabout:\n  home: https://CRAN.R-project.org/package=EMT\n  license: GPL\n  summary: The package provides functions to carry out a Goodness-of-fit test for discrete multivariate data. It is tested if a given observation is likely to have occurred under the assumption of an ab-initio model. A p-value can be calculated using different distance measures between observed and expected frequencies.\n    A Monte Carlo method is provided to make the package capable of solving high-dimensional problems.\n  license_family: GPL\n  license_file:\n    - {{ environ[\"PREFIX\"] }}/lib/R/share/licenses/GPL-3\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n    - MathiasHaudgaard\n    - FrodePedersen\n    - ArneKr\n    - johanneskoester\n    - bgruening\n    - daler\n    - jdblischak\n    - dpryan79\n",
  "req":{
