@@ -76,9 +76,6 @@
   "bot":{
    "automerge":true
   },
-  "compiler_stack":"comp7",
-  "max_py_ver":"37",
-  "max_r_ver":"35",
   "provider":{
    "win":"azure"
   }
@@ -88,13 +85,21 @@
  "meta_yaml":{
   "about":{
    "home":"https://github.com/ggobi/rggobi, http://www.ggobi.org/rggobi",
-   "license":"BSD_3_clause",
+   "license":"BSD-3-Clause",
    "license_family":"BSD",
+   "license_file":[
+    "/lib/R/share/licenses/BSD_3_clause",
+    "LICENSE",
+    "/lib/R/share/licenses/BSD_3_clause",
+    "LICENSE",
+    "/lib/R/share/licenses/BSD_3_clause",
+    "LICENSE"
+   ],
    "summary":"A command-line interface to 'GGobi', an interactive and dynamic graphics package. 'Rggobi' complements the graphical user interface of 'GGobi' providing a way to fluidly transition between analysis and exploration, as well as automating common tasks."
   },
   "build":{
    "merge_build_host":true,
-   "number":"1001",
+   "number":"1002",
    "rpaths":[
     "lib/R/lib/",
     "lib/",
@@ -185,7 +190,7 @@
  "name":"r-rggobi",
  "new_version":"2.1.22",
  "pinning_version":"2020.05.04.19.59.17",
- "raw_meta_yaml":"{% set version = '2.1.22' %}\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-rggobi\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  url:\n    - {{ cran_mirror }}/src/contrib/rggobi_{{ version }}.tar.gz\n    - {{ cran_mirror }}/src/contrib/Archive/rggobi/rggobi_{{ version }}.tar.gz\n  sha256: ce61e6127341dd702a94f40196ae243c17665ac94dcdbc1795b3271d5527f3bc\n\nbuild:\n  merge_build_host: True  # [win]\n  skip: True   # [win]\n  number: 1001\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - {{ compiler('c') }}        # [not win]\n    - {{ compiler('m2w64_c') }}        # [win]\n    - {{posix}}filesystem        # [win]\n    - {{posix}}sed               # [win]\n    - {{posix}}grep              # [win]\n    - {{posix}}autoconf\n    - {{posix}}automake          # [not win]\n    - {{posix}}automake-wrapper  # [win]\n    - {{posix}}pkg-config\n    - {{posix}}make\n    - {{posix}}coreutils         # [win]\n    - {{posix}}zip               # [win]\n  host:\n    - r-base\n    - r-rgtk2\n    - ggobi\n  run:\n    - r-base\n    - {{native}}gcc-libs         # [win]\n    - r-rgtk2\n    - ggobi\n\ntest:\n  commands:\n    - $R -e \"library('rggobi')\"           # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('rggobi')\\\"\"  # [win]\n\nabout:\n  home: https://github.com/ggobi/rggobi, http://www.ggobi.org/rggobi\n  license: BSD_3_clause\n  summary: A command-line interface to 'GGobi', an interactive and dynamic graphics package.\n    'Rggobi' complements the graphical user interface of 'GGobi' providing a way to\n    fluidly transition between analysis and exploration, as well as automating common\n    tasks.\n  license_family: BSD\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n",
+ "raw_meta_yaml":"{% set version = '2.1.22' %}\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-rggobi\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  url:\n    - {{ cran_mirror }}/src/contrib/rggobi_{{ version }}.tar.gz\n    - {{ cran_mirror }}/src/contrib/Archive/rggobi/rggobi_{{ version }}.tar.gz\n  sha256: ce61e6127341dd702a94f40196ae243c17665ac94dcdbc1795b3271d5527f3bc\n\nbuild:\n  merge_build_host: True  # [win]\n  skip: True   # [win]\n  number: 1002\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - {{ compiler('c') }}        # [not win]\n    - {{ compiler('m2w64_c') }}        # [win]\n    - {{ posix }}filesystem        # [win]\n    - {{ posix }}sed               # [win]\n    - {{ posix }}grep              # [win]\n    - {{ posix }}autoconf\n    - {{ posix }}automake          # [not win]\n    - {{ posix }}automake-wrapper  # [win]\n    - {{ posix }}pkg-config\n    - {{ posix }}make\n    - {{ posix }}coreutils         # [win]\n    - {{ posix }}zip               # [win]\n  host:\n    - r-base\n    - r-rgtk2\n    - ggobi\n  run:\n    - r-base\n    - {{ native }}gcc-libs         # [win]\n    - r-rgtk2\n    - ggobi\n\ntest:\n  commands:\n    - $R -e \"library('rggobi')\"           # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('rggobi')\\\"\"  # [win]\n\nabout:\n  home: https://github.com/ggobi/rggobi, http://www.ggobi.org/rggobi\n  license: BSD-3-Clause\n  summary: A command-line interface to 'GGobi', an interactive and dynamic graphics package.\n    'Rggobi' complements the graphical user interface of 'GGobi' providing a way to\n    fluidly transition between analysis and exploration, as well as automating common\n    tasks.\n  license_family: BSD\n  license_file:\n    - '{{ environ[\"PREFIX\"] }}/lib/R/share/licenses/BSD_3_clause'\n    - LICENSE\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n",
  "req":{
   "__set__":true,
   "elements":[
