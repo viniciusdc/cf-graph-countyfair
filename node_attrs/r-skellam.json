@@ -59,9 +59,6 @@
   "bot":{
    "automerge":true
   },
-  "compiler_stack":"comp7",
-  "max_py_ver":"37",
-  "max_r_ver":"35",
   "provider":{
    "win":"azure"
   }
@@ -79,7 +76,7 @@
   "build":{
    "merge_build_host":true,
    "noarch":"generic",
-   "number":"1002",
+   "number":"1003",
    "rpaths":[
     "lib/R/lib/",
     "lib/",
@@ -154,7 +151,7 @@
  "name":"r-skellam",
  "new_version":"0.2.0",
  "pinning_version":"2020.05.04.19.59.17",
- "raw_meta_yaml":"{% set version = '0.2.0' %}\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-skellam\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  fn: skellam_{{ version }}.tar.gz\n  url:\n    - {{ cran_mirror }}/src/contrib/skellam_{{ version }}.tar.gz\n    - {{ cran_mirror }}/src/contrib/Archive/skellam/skellam_{{ version }}.tar.gz\n  sha256: fd016494436ff6e877909e390440e595a5dc2def8ab42eb79883f5038b5ebc64\n\nbuild:\n  noarch: generic\n  merge_build_host: True  # [win]\n  number: 1002\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - {{posix}}zip               # [win]\n  host:\n    - r-base\n  run:\n    - r-base\n\ntest:\n  commands:\n    - $R -e \"library('skellam')\"           # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('skellam')\\\"\"  # [win]\n\nabout:\n  home: http://r-forge.r-project.org/projects/healthqueues/\n  license: GPL (>= 2)\n  summary: 'Functions for the Skellam distribution, including: density (pmf), cdf, quantiles\n    and regression.'\n  license_family: GPL3\n  license_file: '{{ environ[\"PREFIX\"] }}/lib/R/share/licenses/GPL-3'\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n    - johanneskoester\n    - bgruening\n    - daler\n    - jdblischak\n    - cbrueffer\n    - dbast\n",
+ "raw_meta_yaml":"{% set version = '0.2.0' %}\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-skellam\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  fn: skellam_{{ version }}.tar.gz\n  url:\n    - {{ cran_mirror }}/src/contrib/skellam_{{ version }}.tar.gz\n    - {{ cran_mirror }}/src/contrib/Archive/skellam/skellam_{{ version }}.tar.gz\n  sha256: fd016494436ff6e877909e390440e595a5dc2def8ab42eb79883f5038b5ebc64\n\nbuild:\n  noarch: generic\n  merge_build_host: True  # [win]\n  number: 1003\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - {{ posix }}zip               # [win]\n  host:\n    - r-base\n  run:\n    - r-base\n\ntest:\n  commands:\n    - $R -e \"library('skellam')\"           # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('skellam')\\\"\"  # [win]\n\nabout:\n  home: http://r-forge.r-project.org/projects/healthqueues/\n  license: GPL (>= 2)\n  summary: 'Functions for the Skellam distribution, including: density (pmf), cdf, quantiles\n    and regression.'\n  license_family: GPL3\n  license_file: '{{ environ[\"PREFIX\"] }}/lib/R/share/licenses/GPL-3'\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n    - johanneskoester\n    - bgruening\n    - daler\n    - jdblischak\n    - cbrueffer\n    - dbast\n",
  "req":{
   "__set__":true,
   "elements":[
