@@ -91,9 +91,6 @@
   "bot":{
    "automerge":true
   },
-  "compiler_stack":"comp7",
-  "max_py_ver":"37",
-  "max_r_ver":"35",
   "provider":{
    "win":"azure"
   }
@@ -110,7 +107,7 @@
   },
   "build":{
    "merge_build_host":true,
-   "number":"1003",
+   "number":"1004",
    "rpaths":[
     "lib/R/lib/",
     "lib/",
@@ -203,7 +200,7 @@
  "name":"r-adlift",
  "new_version":"1.4_1",
  "pinning_version":"2020.05.04.19.59.17",
- "raw_meta_yaml":"{% set version = '1.4-1' %}\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-adlift\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  fn: adlift_{{ version }}.tar.gz\n  url:\n    - {{ cran_mirror }}/src/contrib/adlift_{{ version }}.tar.gz\n    - {{ cran_mirror }}/src/contrib/Archive/adlift/adlift_{{ version }}.tar.gz\n  sha256: c35d78591014ebb5fc51c980bae8cd3a10f19baa0e36289d85ad6f4ca1750793\n\nbuild:\n  merge_build_host: True  # [win]\n  number: 1003\n  skip: true  # [win32]\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - {{ compiler('c') }}        # [not win]\n    - {{ compiler('m2w64_c') }}        # [win]\n    - {{posix}}filesystem        # [win]\n    - {{posix}}make\n    - {{posix}}sed               # [win]\n    - {{posix}}coreutils         # [win]\n    - {{posix}}zip               # [win]\n  host:\n    - r-base\n    - r-ebayesthresh\n  run:\n    - r-base\n    - {{native}}gcc-libs         # [win]\n    - r-ebayesthresh\n\ntest:\n  commands:\n    - $R -e \"library('adlift')\"           # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('adlift')\\\"\"  # [win]\n\nabout:\n  home: https://CRAN.R-project.org/package=adlift\n  license: GPL-2.0 and GPL-3.0\n  summary: Adaptive wavelet lifting transforms for signal denoising using optimal local neighbourhood\n    regression, from Nunes et al. (2006) <doi:10.1007/s11222-006-6560-y>.\n  license_family: GPL\n  license_file: '{{ environ[\"PREFIX\"] }}/lib/R/share/licenses/GPL-3'\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n    - johanneskoester\n    - bgruening\n    - daler\n    - jdblischak\n    - cbrueffer\n    - dbast\n",
+ "raw_meta_yaml":"{% set version = '1.4-1' %}\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-adlift\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  fn: adlift_{{ version }}.tar.gz\n  url:\n    - {{ cran_mirror }}/src/contrib/adlift_{{ version }}.tar.gz\n    - {{ cran_mirror }}/src/contrib/Archive/adlift/adlift_{{ version }}.tar.gz\n  sha256: c35d78591014ebb5fc51c980bae8cd3a10f19baa0e36289d85ad6f4ca1750793\n\nbuild:\n  merge_build_host: True  # [win]\n  number: 1004\n  skip: true  # [win32]\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - {{ compiler('c') }}        # [not win]\n    - {{ compiler('m2w64_c') }}        # [win]\n    - {{ posix }}filesystem        # [win]\n    - {{ posix }}make\n    - {{ posix }}sed               # [win]\n    - {{ posix }}coreutils         # [win]\n    - {{ posix }}zip               # [win]\n  host:\n    - r-base\n    - r-ebayesthresh\n  run:\n    - r-base\n    - {{ native }}gcc-libs         # [win]\n    - r-ebayesthresh\n\ntest:\n  commands:\n    - $R -e \"library('adlift')\"           # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('adlift')\\\"\"  # [win]\n\nabout:\n  home: https://CRAN.R-project.org/package=adlift\n  license: GPL-2.0 and GPL-3.0\n  summary: Adaptive wavelet lifting transforms for signal denoising using optimal local neighbourhood\n    regression, from Nunes et al. (2006) <doi:10.1007/s11222-006-6560-y>.\n  license_family: GPL\n  license_file: '{{ environ[\"PREFIX\"] }}/lib/R/share/licenses/GPL-3'\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n    - johanneskoester\n    - bgruening\n    - daler\n    - jdblischak\n    - cbrueffer\n    - dbast\n",
  "req":{
   "__set__":true,
   "elements":[

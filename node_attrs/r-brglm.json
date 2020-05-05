@@ -105,9 +105,6 @@
   "bot":{
    "automerge":true
   },
-  "compiler_stack":"comp7",
-  "max_py_ver":"37",
-  "max_r_ver":"35",
   "provider":{
    "win":"azure"
   }
@@ -124,7 +121,7 @@
   },
   "build":{
    "merge_build_host":true,
-   "number":"1",
+   "number":"2",
    "rpaths":[
     "lib/R/lib/",
     "lib/",
@@ -192,7 +189,7 @@
  "name":"r-brglm",
  "new_version":"0.6.2",
  "pinning_version":"2020.05.04.19.59.17",
- "raw_meta_yaml":"{% set version = \"0.6.2\" %}\n\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-brglm\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  fn: brglm_{{ version }}.tar.gz\n  url:\n    - https://cran.r-project.org/src/contrib/brglm_{{ version }}.tar.gz\n    - https://cran.r-project.org/src/contrib/Archive/brglm/brglm_{{ version }}.tar.gz\n  sha256: c2af432a43ccf37e9de50317f770b9703a4c80b4ef79ec40aa8e7ec3987e3631\n\nbuild:\n  merge_build_host: True  # [win]\n  number: 1\n  skip: true  # [win32]\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - posix                # [win]\n    - {{ compiler('c') }}        # [unix]\n    - {{ compiler('m2w64_c') }}  # [win]\n  host:\n    - r-base\n    - r-profilemodel\n\n  run:\n    - r-base\n    - r-profilemodel\n\ntest:\n  commands:\n    - $R -e \"library('brglm')\"  # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('brglm')\\\"\"  # [win]\n\nabout:\n  home: http://www.ucl.ac.uk/~ucakiko/index.html\n  license: GPL (>= 2)\n  summary: Fit generalized linear models with binomial responses using either an adjusted-score\n    approach to bias reduction or maximum penalized likelihood where penalization is\n    by Jeffreys invariant prior. These procedures return estimates with improved frequentist\n    properties (bias, mean squared error) that are always finite even in cases where\n    the maximum likelihood estimates are infinite (data separation). Fitting takes place\n    by fitting generalized linear models on iteratively updated pseudo-data. The interface\n    is essentially the same as 'glm'.  More flexibility is provided by the fact that\n    custom pseudo-data representations can be specified and used for model fitting.\n    Functions are provided for the construction of confidence intervals for the reduced-bias\n    estimates.\n  license_family: GPL3\n  license_file: '{{ environ[\"PREFIX\"] }}/lib/R/share/licenses/GPL-3'\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n",
+ "raw_meta_yaml":"{% set version = \"0.6.2\" %}\n\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-brglm\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  fn: brglm_{{ version }}.tar.gz\n  url:\n    - https://cran.r-project.org/src/contrib/brglm_{{ version }}.tar.gz\n    - https://cran.r-project.org/src/contrib/Archive/brglm/brglm_{{ version }}.tar.gz\n  sha256: c2af432a43ccf37e9de50317f770b9703a4c80b4ef79ec40aa8e7ec3987e3631\n\nbuild:\n  merge_build_host: True  # [win]\n  number: 2\n  skip: true  # [win32]\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - posix                # [win]\n    - {{ compiler('c') }}        # [unix]\n    - {{ compiler('m2w64_c') }}  # [win]\n  host:\n    - r-base\n    - r-profilemodel\n\n  run:\n    - r-base\n    - r-profilemodel\n\ntest:\n  commands:\n    - $R -e \"library('brglm')\"  # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('brglm')\\\"\"  # [win]\n\nabout:\n  home: http://www.ucl.ac.uk/~ucakiko/index.html\n  license: GPL (>= 2)\n  summary: Fit generalized linear models with binomial responses using either an adjusted-score\n    approach to bias reduction or maximum penalized likelihood where penalization is\n    by Jeffreys invariant prior. These procedures return estimates with improved frequentist\n    properties (bias, mean squared error) that are always finite even in cases where\n    the maximum likelihood estimates are infinite (data separation). Fitting takes place\n    by fitting generalized linear models on iteratively updated pseudo-data. The interface\n    is essentially the same as 'glm'.  More flexibility is provided by the fact that\n    custom pseudo-data representations can be specified and used for model fitting.\n    Functions are provided for the construction of confidence intervals for the reduced-bias\n    estimates.\n  license_family: GPL3\n  license_file: '{{ environ[\"PREFIX\"] }}/lib/R/share/licenses/GPL-3'\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n",
  "req":{
   "__set__":true,
   "elements":[

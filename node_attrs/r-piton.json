@@ -74,9 +74,6 @@
   "bot":{
    "automerge":true
   },
-  "compiler_stack":"comp7",
-  "max_py_ver":"37",
-  "max_r_ver":"35",
   "provider":{
    "win":"azure"
   }
@@ -88,11 +85,19 @@
    "home":"https://www.github.com/Ironholds/piton",
    "license":"MIT",
    "license_family":"MIT",
+   "license_file":[
+    "/lib/R/share/licenses/MIT",
+    "LICENSE",
+    "/lib/R/share/licenses/MIT",
+    "LICENSE",
+    "/lib/R/share/licenses/MIT",
+    "LICENSE"
+   ],
    "summary":"A wrapper around the 'Parsing Expression Grammar Template Library', a C++11 library for generating Parsing Expression Grammars, that makes it accessible within Rcpp. With this, developers can implement their own grammars and easily expose them in R packages."
   },
   "build":{
    "merge_build_host":true,
-   "number":"1003",
+   "number":"1004",
    "rpaths":[
     "lib/R/lib/",
     "lib/",
@@ -105,26 +110,8 @@
   "extra":{
    "recipe-maintainers":[
     "conda-forge/r",
-    "johanneskoester",
-    "bgruening",
-    "daler",
-    "jdblischak",
-    "cbrueffer",
-    "dbast",
     "conda-forge/r",
-    "johanneskoester",
-    "bgruening",
-    "daler",
-    "jdblischak",
-    "cbrueffer",
-    "dbast",
-    "conda-forge/r",
-    "johanneskoester",
-    "bgruening",
-    "daler",
-    "jdblischak",
-    "cbrueffer",
-    "dbast"
+    "conda-forge/r"
    ]
   },
   "package":{
@@ -166,7 +153,6 @@
    ]
   },
   "source":{
-   "fn":"piton_0.1.1.tar.gz",
    "sha256":"993266f43f565555698b2d439de0eb77c7cafb9450e92260e6b654b129f1c588",
    "url":[
     "https://cran.r-project.org/src/contrib/piton_0.1.1.tar.gz",
@@ -188,7 +174,7 @@
  "name":"r-piton",
  "new_version":"0.1.1",
  "pinning_version":"2020.05.04.05.46.47",
- "raw_meta_yaml":"{% set version = '0.1.1' %}\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-piton\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  fn: piton_{{ version }}.tar.gz\n  url:\n    - {{ cran_mirror }}/src/contrib/piton_{{ version }}.tar.gz\n    - {{ cran_mirror }}/src/contrib/Archive/piton/piton_{{ version }}.tar.gz\n  sha256: 993266f43f565555698b2d439de0eb77c7cafb9450e92260e6b654b129f1c588\n\nbuild:\n  merge_build_host: True  # [win]\n  number: 1003\n  skip: true  # [win32]\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - {{ compiler('c') }}        # [not win]\n    - {{ compiler('cxx') }}      # [not win]\n    - {{ compiler('m2w64_c') }}        # [win]\n    - {{ compiler('m2w64_cxx') }}        # [win]\n    - {{posix}}filesystem        # [win]\n    - {{posix}}make\n    - {{posix}}sed               # [win]\n    - {{posix}}coreutils         # [win]\n    - {{posix}}zip               # [win]\n  host:\n    - r-base\n    - r-rcpp\n  run:\n    - r-base\n    - {{native}}gcc-libs         # [win]\n    - r-rcpp\n\ntest:\n  commands:\n    - $R -e \"library('piton')\"           # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('piton')\\\"\"  # [win]\n\nabout:\n  home: https://www.github.com/Ironholds/piton\n  license: MIT\n  summary: A wrapper around the 'Parsing Expression Grammar Template Library', a C++11 library\n    for generating Parsing Expression Grammars, that makes it accessible within Rcpp.\n    With this, developers can implement their own grammars and easily expose them in\n    R packages.\n  license_family: MIT\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n    - johanneskoester\n    - bgruening\n    - daler\n    - jdblischak\n    - cbrueffer\n    - dbast\n",
+ "raw_meta_yaml":"{% set version = \"0.1.1\" %}\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-piton\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  url:\n    - {{ cran_mirror }}/src/contrib/piton_{{ version }}.tar.gz\n    - {{ cran_mirror }}/src/contrib/Archive/piton/piton_{{ version }}.tar.gz\n  sha256: 993266f43f565555698b2d439de0eb77c7cafb9450e92260e6b654b129f1c588\n\nbuild:\n  merge_build_host: true  # [win]\n  number: 1004\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - {{ compiler('c') }}        # [not win]\n    - {{ compiler('cxx') }}      # [not win]\n    - {{ compiler('m2w64_c') }}        # [win]\n    - {{ compiler('m2w64_cxx') }}        # [win]\n    - {{ posix }}filesystem        # [win]\n    - {{ posix }}make\n    - {{ posix }}sed               # [win]\n    - {{ posix }}coreutils         # [win]\n    - {{ posix }}zip               # [win]\n  host:\n    - r-base\n    - r-rcpp\n  run:\n    - r-base\n    - {{ native }}gcc-libs         # [win]\n    - r-rcpp\n\ntest:\n  commands:\n    - $R -e \"library('piton')\"           # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('piton')\\\"\"  # [win]\n\nabout:\n  home: https://www.github.com/Ironholds/piton\n  license: MIT\n  summary: A wrapper around the 'Parsing Expression Grammar Template Library', a C++11 library for generating Parsing Expression Grammars, that makes it accessible within Rcpp. With this, developers can implement their own grammars and easily expose them in R packages.\n  license_family: MIT\n  license_file:\n    - {{ environ[\"PREFIX\"] }}/lib/R/share/licenses/MIT\n    - LICENSE\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n",
  "req":{
   "__set__":true,
   "elements":[
