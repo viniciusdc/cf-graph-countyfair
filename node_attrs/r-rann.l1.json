@@ -1,4 +1,25 @@
 {
+ "PRed":[
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/413617186.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"MigrationYaml",
+    "migrator_object_version":2,
+    "migrator_version":0,
+    "name":"r400"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_object_version",
+    "migrator_version",
+    "name"
+   ]
+  }
+ ],
  "bad":false,
  "conda-forge.yml":{
   "bot":{
@@ -88,6 +109,7 @@
  },
  "name":"r-rann.l1",
  "new_version":false,
+ "pinning_version":"2020.05.04.19.59.17",
  "raw_meta_yaml":"{% set version = '2.5.2' %}\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-rann.l1\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  url:\n    - {{ cran_mirror }}/src/contrib/RANN.L1_{{ version }}.tar.gz\n    - {{ cran_mirror }}/src/contrib/Archive/RANN.L1/RANN.L1_{{ version }}.tar.gz\n  sha256: 84d8a03e4e8d164a3c2fc607e7364181b98fb972092de379c9ad12e4eb8056c1\n\nbuild:\n  merge_build_host: True  # [win]\n  skip: True  # [win]\n  number: 0\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - {{ compiler('c') }}              # [not win]\n    - {{ compiler('m2w64_c') }}        # [win]\n    - {{ compiler('cxx') }}            # [not win]\n    - {{ compiler('m2w64_cxx') }}      # [win]\n    - {{posix}}make\n  host:\n    - r-base\n  run:\n    - r-base\n    - {{native}}gcc-libs         # [win]\n\ntest:\n  commands:\n    - $R -e \"library('RANN.L1')\"           # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('RANN.L1')\\\"\"  # [win]\n\nabout:\n  home: https://github.com/jefferis/RANN/tree/master-L1\n  license: GPL-3\n  summary: Finds the k nearest neighbours for every point in a given dataset in O(N log N) time\n    using Arya and Mount's ANN library (v1.1.3). There is support for approximate as\n    well as exact searches, fixed radius searches and 'bd' as well as 'kd' trees. The\n    distance is computed using the L1 (Manhattan, taxicab) metric. Please see package\n    'RANN' for the same functionality using the L2 (Euclidean) metric.\n  license_family: GPL3\n  license_file:\n    - '{{ environ[\"PREFIX\"] }}/lib/R/share/licenses/GPL-3'\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n",
  "req":{
   "__set__":true,
@@ -130,6 +152,7 @@
    "elements":[]
   }
  },
+ "smithy_version":"No azure token. Create a token and\nput it in ~/.conda-smithy/azure.token\n3.7.0\n",
  "strong_exports":false,
  "total_requirements":{
   "build":{
