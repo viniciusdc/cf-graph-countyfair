@@ -59,9 +59,6 @@
   "bot":{
    "automerge":true
   },
-  "compiler_stack":"comp7",
-  "max_py_ver":"37",
-  "max_r_ver":"35",
   "provider":{
    "win":"azure"
   }
@@ -73,12 +70,20 @@
    "home":"http://cran.r-project.org/package=FWDselect",
    "license":"MIT",
    "license_family":"MIT",
+   "license_file":[
+    "/lib/R/share/licenses/MIT",
+    "LICENSE",
+    "/lib/R/share/licenses/MIT",
+    "LICENSE",
+    "/lib/R/share/licenses/MIT",
+    "LICENSE"
+   ],
    "summary":"A simple method to select the best model or best subset of variables using different types of data (binary, Gaussian or Poisson) and applying it in different contexts (parametric or non-parametric)."
   },
   "build":{
    "merge_build_host":true,
    "noarch":"generic",
-   "number":"1002",
+   "number":"1003",
    "rpaths":[
     "lib/R/lib/",
     "lib/",
@@ -165,7 +170,7 @@
  "name":"r-fwdselect",
  "new_version":"2.1.0",
  "pinning_version":"2020.05.04.19.59.17",
- "raw_meta_yaml":"{% set version = '2.1.0' %}\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-fwdselect\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  fn: FWDselect_{{ version }}.tar.gz\n  url:\n    - {{ cran_mirror }}/src/contrib/FWDselect_{{ version }}.tar.gz\n    - {{ cran_mirror }}/src/contrib/Archive/FWDselect/FWDselect_{{ version }}.tar.gz\n  sha256: e77313b3066806333edec3904d05e4fd51b596737edc337ba4019ecf609d1070\n\nbuild:\n  noarch: generic\n  merge_build_host: True  # [win]\n  number: 1002\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - {{posix}}zip               # [win]\n  host:\n    - r-base\n    - r-cvtools\n    - r-mgcv\n  run:\n    - r-base\n    - r-cvtools\n    - r-mgcv\n\ntest:\n  commands:\n    - $R -e \"library('FWDselect')\"           # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('FWDselect')\\\"\"  # [win]\n\nabout:\n  home: http://cran.r-project.org/package=FWDselect\n  license: MIT\n  summary: A simple method to select the best model or best subset of variables using different\n    types of data (binary, Gaussian or Poisson) and applying it in different contexts\n    (parametric or non-parametric).\n  license_family: MIT\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n    - johanneskoester\n    - bgruening\n    - daler\n    - jdblischak\n    - cbrueffer\n    - dbast\n",
+ "raw_meta_yaml":"{% set version = \"2.1.0\" %}\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-fwdselect\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  fn: FWDselect_{{ version }}.tar.gz\n  url:\n    - {{ cran_mirror }}/src/contrib/FWDselect_{{ version }}.tar.gz\n    - {{ cran_mirror }}/src/contrib/Archive/FWDselect/FWDselect_{{ version }}.tar.gz\n  sha256: e77313b3066806333edec3904d05e4fd51b596737edc337ba4019ecf609d1070\n\nbuild:\n  noarch: generic\n  merge_build_host: true  # [win]\n  number: 1003\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - {{ posix }}zip               # [win]\n  host:\n    - r-base\n    - r-cvtools\n    - r-mgcv\n  run:\n    - r-base\n    - r-cvtools\n    - r-mgcv\n\ntest:\n  commands:\n    - $R -e \"library('FWDselect')\"           # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('FWDselect')\\\"\"  # [win]\n\nabout:\n  home: http://cran.r-project.org/package=FWDselect\n  license: MIT\n  summary: A simple method to select the best model or best subset of variables using different types of data (binary, Gaussian or Poisson) and applying it in different contexts (parametric or non-parametric).\n  license_family: MIT\n\n  license_file:\n    - {{ environ[\"PREFIX\"] }}/lib/R/share/licenses/MIT\n    - LICENSE\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n    - johanneskoester\n    - bgruening\n    - daler\n    - jdblischak\n    - cbrueffer\n    - dbast\n",
  "req":{
   "__set__":true,
   "elements":[
