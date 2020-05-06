@@ -59,9 +59,6 @@
   "bot":{
    "automerge":true
   },
-  "compiler_stack":"comp7",
-  "max_py_ver":"37",
-  "max_r_ver":"35",
   "provider":{
    "win":"azure"
   }
@@ -79,7 +76,7 @@
   "build":{
    "merge_build_host":true,
    "noarch":"generic",
-   "number":"1001",
+   "number":"1002",
    "rpaths":[
     "lib/R/lib/",
     "lib/",
@@ -159,7 +156,7 @@
  "name":"r-lsr",
  "new_version":"0.5",
  "pinning_version":"2020.05.04.19.59.17",
- "raw_meta_yaml":"{% set version = '0.5' %}\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-lsr\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  url:\n    - {{ cran_mirror }}/src/contrib/lsr_{{ version }}.tar.gz\n    - {{ cran_mirror }}/src/contrib/Archive/lsr/lsr_{{ version }}.tar.gz\n  sha256: 6e000bf3a5f1a7c27f6ebea8fc15b2c4a673f812dda54a852128a680872a6860\n\nbuild:\n  noarch: generic\n  merge_build_host: True  # [win]\n  number: 1001\n  noarch: generic\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n  host:\n    - r-base\n  run:\n    - r-base\n\ntest:\n  commands:\n    # we are not sure, why this package is removing the $R env\n    - export R=$PREFIX/bin/R           # [not win]\n    - set R=%PREFIX%\\Scripts\\R.exe     # [win]\n    - $R -e \"library('lsr')\"           # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('lsr')\\\"\"  # [win]\n\nabout:\n  home: http://health.adelaide.edu.au/psychology/ccs/teaching/lsr/\n  license: GPL-3\n  summary: 'A collection of tools intended to make introductory statistics easier to teach, including\n    wrappers for common hypothesis tests and basic data manipulation. It accompanies\n    Navarro, D. J. (2015). Learning Statistics with R: A Tutorial for Psychology Students\n    and Other Beginners, Version 0.5. [Lecture notes] School of Psychology, University\n    of Adelaide, Adelaide, Australia. ISBN: 978-1-326-18972-3. URL: http://health.adelaide.edu.au/psychology/ccs/teaching/lsr/.'\n  license_family: GPL3\n  license_file: '{{ environ[\"PREFIX\"] }}/lib/R/share/licenses/GPL-3'\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n    - johanneskoester\n    - bgruening\n    - daler\n    - jdblischak\n    - cbrueffer\n    - dbast\n    - dpryan79\n",
+ "raw_meta_yaml":"{% set version = '0.5' %}\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-lsr\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  url:\n    - {{ cran_mirror }}/src/contrib/lsr_{{ version }}.tar.gz\n    - {{ cran_mirror }}/src/contrib/Archive/lsr/lsr_{{ version }}.tar.gz\n  sha256: 6e000bf3a5f1a7c27f6ebea8fc15b2c4a673f812dda54a852128a680872a6860\n\nbuild:\n  noarch: generic\n  merge_build_host: True  # [win]\n  number: 1002\n  noarch: generic\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n  host:\n    - r-base\n  run:\n    - r-base\n\ntest:\n  commands:\n    # we are not sure, why this package is removing the $R env\n    - export R=$PREFIX/bin/R           # [not win]\n    - set R=%PREFIX%\\Scripts\\R.exe     # [win]\n    - $R -e \"library('lsr')\"           # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('lsr')\\\"\"  # [win]\n\nabout:\n  home: http://health.adelaide.edu.au/psychology/ccs/teaching/lsr/\n  license: GPL-3\n  summary: 'A collection of tools intended to make introductory statistics easier to teach, including\n    wrappers for common hypothesis tests and basic data manipulation. It accompanies\n    Navarro, D. J. (2015). Learning Statistics with R: A Tutorial for Psychology Students\n    and Other Beginners, Version 0.5. [Lecture notes] School of Psychology, University\n    of Adelaide, Adelaide, Australia. ISBN: 978-1-326-18972-3. URL: http://health.adelaide.edu.au/psychology/ccs/teaching/lsr/.'\n  license_family: GPL3\n  license_file: '{{ environ[\"PREFIX\"] }}/lib/R/share/licenses/GPL-3'\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n    - johanneskoester\n    - bgruening\n    - daler\n    - jdblischak\n    - cbrueffer\n    - dbast\n    - dpryan79\n",
  "req":{
   "__set__":true,
   "elements":[
