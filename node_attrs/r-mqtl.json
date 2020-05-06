@@ -74,9 +74,6 @@
   "bot":{
    "automerge":true
   },
-  "compiler_stack":"comp7",
-  "max_py_ver":"37",
-  "max_r_ver":"35",
   "provider":{
    "win":"azure"
   }
@@ -88,11 +85,16 @@
    "home":"https://CRAN.R-project.org/package=mQTL",
    "license":"GPL",
    "license_family":"GPL",
+   "license_file":[
+    "/lib/R/share/licenses/GPL-3",
+    "/lib/R/share/licenses/GPL-3",
+    "/lib/R/share/licenses/GPL-3"
+   ],
    "summary":"mQTL provides a complete QTL analysis pipeline for metabolomic data.  Distinctive features include normalisation using PQN approach, peak alignment   using RSPA approach, dimensionality reduction using SRV approach and finally  QTL mapping using R/qtl package."
   },
   "build":{
    "merge_build_host":true,
-   "number":"1002",
+   "number":"1003",
    "rpaths":[
     "lib/R/lib/",
     "lib/",
@@ -196,7 +198,7 @@
  "name":"r-mqtl",
  "new_version":"1.0",
  "pinning_version":"2020.05.04.19.59.17",
- "raw_meta_yaml":"{% set version = '1.0' %}\n\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-mqtl\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  fn: mQTL_{{ version }}.tar.gz\n  url:\n    - https://cran.r-project.org/src/contrib/mQTL_{{ version }}.tar.gz\n    - https://cran.r-project.org/src/contrib/Archive/mQTL/mQTL_{{ version }}.tar.gz\n  sha256: 21193861fbf2d280f2b7284ba87d68adce515e35fbe4e71821439fa8b14d1b72\n\nbuild:\n  merge_build_host: True  # [win]\n  number: 1002\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - posix                # [win]\n    - {{compiler('c')}}    # [not win]\n    - {{ compiler('m2w64_c') }}  # [win]\n  host:\n    - r-base\n    - r-mass\n    - r-outliers\n    - r-qtl\n  run:\n    - r-base\n    - r-mass\n    - r-outliers\n    - r-qtl\n\ntest:\n  commands:\n    - $R -e \"library('mQTL')\"  # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('mQTL')\\\"\"  # [win]\n\nabout:\n  home: https://CRAN.R-project.org/package=mQTL\n  license: GPL\n  summary: mQTL provides a complete QTL analysis pipeline for metabolomic data.  Distinctive\n    features include normalisation using PQN approach, peak alignment   using RSPA approach,\n    dimensionality reduction using SRV approach and finally  QTL mapping using R/qtl\n    package.\n  license_family: GPL\nextra:\n   recipe-maintainers:\n    - conda-forge/r\n    - dpryan79\n    - MathiasHaudgaard\n    - FrodePedersen\n    - ArneKr\n    - johanneskoester\n    - bgruening\n    - daler\n    - jdblischak\n",
+ "raw_meta_yaml":"{% set version = \"1.0\" %}\n\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-mqtl\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  fn: mQTL_{{ version }}.tar.gz\n  url:\n    - https://cran.r-project.org/src/contrib/mQTL_{{ version }}.tar.gz\n    - https://cran.r-project.org/src/contrib/Archive/mQTL/mQTL_{{ version }}.tar.gz\n  sha256: 21193861fbf2d280f2b7284ba87d68adce515e35fbe4e71821439fa8b14d1b72\n\nbuild:\n  merge_build_host: true  # [win]\n  number: 1003\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - posix                # [win]\n    - {{ compiler('c') }}    # [not win]\n    - {{ compiler('m2w64_c') }}  # [win]\n  host:\n    - r-base\n    - r-mass\n    - r-outliers\n    - r-qtl\n  run:\n    - r-base\n    - r-mass\n    - r-outliers\n    - r-qtl\n\ntest:\n  commands:\n    - $R -e \"library('mQTL')\"  # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('mQTL')\\\"\"  # [win]\n\nabout:\n  home: https://CRAN.R-project.org/package=mQTL\n  license: GPL\n  summary: mQTL provides a complete QTL analysis pipeline for metabolomic data.  Distinctive features include normalisation using PQN approach, peak alignment   using RSPA approach, dimensionality reduction using SRV approach and finally  QTL mapping using R/qtl package.\n  license_family: GPL\n  license_file:\n    - {{ environ[\"PREFIX\"] }}/lib/R/share/licenses/GPL-3\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n    - dpryan79\n    - MathiasHaudgaard\n    - FrodePedersen\n    - ArneKr\n    - johanneskoester\n    - bgruening\n    - daler\n    - jdblischak\n",
  "req":{
   "__set__":true,
   "elements":[
