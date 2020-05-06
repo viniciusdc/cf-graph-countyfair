@@ -59,9 +59,6 @@
   "bot":{
    "automerge":true
   },
-  "compiler_stack":"comp7",
-  "max_py_ver":"37",
-  "max_r_ver":"35",
   "provider":{
    "win":"azure"
   }
@@ -73,12 +70,20 @@
    "home":"http://github.com/heike/ggparallel",
    "license":"MIT",
    "license_family":"MIT",
+   "license_file":[
+    "/lib/R/share/licenses/MIT",
+    "LICENSE",
+    "/lib/R/share/licenses/MIT",
+    "LICENSE",
+    "/lib/R/share/licenses/MIT",
+    "LICENSE"
+   ],
    "summary":"Create hammock plots, parallel sets, and common angle plots with 'ggplot2'."
   },
   "build":{
    "merge_build_host":true,
    "noarch":"generic",
-   "number":"1002",
+   "number":"1003",
    "rpaths":[
     "lib/R/lib/",
     "lib/",
@@ -174,7 +179,7 @@
  "name":"r-ggparallel",
  "new_version":"0.2.0",
  "pinning_version":"2020.05.04.19.59.17",
- "raw_meta_yaml":"{% set version = '0.2.0' %}\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-ggparallel\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  fn: ggparallel_{{ version }}.tar.gz\n  url:\n    - {{ cran_mirror }}/src/contrib/ggparallel_{{ version }}.tar.gz\n    - {{ cran_mirror }}/src/contrib/Archive/ggparallel/ggparallel_{{ version }}.tar.gz\n  sha256: 8e0b1d78d3f3a65d15455c426394a94af7dcf6b8de0758f5566be2258173aa7f\n\nbuild:\n  noarch: generic\n  merge_build_host: True  # [win]\n  number: 1002\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - {{posix}}zip               # [win]\n  host:\n    - r-base\n    - r-ggplot2 >=2.2.0\n    - r-plyr >=1.8.4\n    - r-reshape2 >=1.4.2\n  run:\n    - r-base\n    - r-ggplot2 >=2.2.0\n    - r-plyr >=1.8.4\n    - r-reshape2 >=1.4.2\n\ntest:\n  commands:\n    - $R -e \"library('ggparallel')\"           # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('ggparallel')\\\"\"  # [win]\n\nabout:\n  home: http://github.com/heike/ggparallel\n  license: MIT\n  summary: Create hammock plots, parallel sets, and common angle plots with 'ggplot2'.\n  license_family: MIT\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n    - djcomlab\n    - johanneskoester\n    - bgruening\n    - daler\n    - jdblischak\n    - cbrueffer\n    - dbast\n",
+ "raw_meta_yaml":"{% set version = \"0.2.0\" %}\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-ggparallel\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  fn: ggparallel_{{ version }}.tar.gz\n  url:\n    - {{ cran_mirror }}/src/contrib/ggparallel_{{ version }}.tar.gz\n    - {{ cran_mirror }}/src/contrib/Archive/ggparallel/ggparallel_{{ version }}.tar.gz\n  sha256: 8e0b1d78d3f3a65d15455c426394a94af7dcf6b8de0758f5566be2258173aa7f\n\nbuild:\n  noarch: generic\n  merge_build_host: true  # [win]\n  number: 1003\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - {{ posix }}zip               # [win]\n  host:\n    - r-base\n    - r-ggplot2 >=2.2.0\n    - r-plyr >=1.8.4\n    - r-reshape2 >=1.4.2\n  run:\n    - r-base\n    - r-ggplot2 >=2.2.0\n    - r-plyr >=1.8.4\n    - r-reshape2 >=1.4.2\n\ntest:\n  commands:\n    - $R -e \"library('ggparallel')\"           # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('ggparallel')\\\"\"  # [win]\n\nabout:\n  home: http://github.com/heike/ggparallel\n  license: MIT\n  summary: Create hammock plots, parallel sets, and common angle plots with 'ggplot2'.\n  license_family: MIT\n\n  license_file:\n    - {{ environ[\"PREFIX\"] }}/lib/R/share/licenses/MIT\n    - LICENSE\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n    - djcomlab\n    - johanneskoester\n    - bgruening\n    - daler\n    - jdblischak\n    - cbrueffer\n    - dbast\n",
  "req":{
   "__set__":true,
   "elements":[
