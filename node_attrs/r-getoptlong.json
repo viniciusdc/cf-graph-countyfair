@@ -90,9 +90,6 @@
   "bot":{
    "automerge":true
   },
-  "compiler_stack":"comp7",
-  "max_py_ver":"37",
-  "max_r_ver":"35",
   "provider":{
    "win":"azure"
   }
@@ -117,7 +114,7 @@
   "build":{
    "merge_build_host":true,
    "noarch":"generic",
-   "number":"0",
+   "number":"1",
    "rpaths":[
     "lib/R/lib/",
     "lib/",
@@ -185,7 +182,7 @@
  "name":"r-getoptlong",
  "new_version":"0.1.8",
  "pinning_version":"2020.05.04.19.59.17",
- "raw_meta_yaml":"{% set version = \"0.1.8\" %}\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-getoptlong\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  url:\n    - {{ cran_mirror }}/src/contrib/GetoptLong_{{ version }}.tar.gz\n    - {{ cran_mirror }}/src/contrib/Archive/GetoptLong/GetoptLong_{{ version }}.tar.gz\n  sha256: 6c0edb7233b79fb7f4789a825e8e7d7eee50b5e85b7fd5b7d74b9440fd9e1dd1\n\nbuild:\n  merge_build_host: True  # [win]\n  noarch: generic\n  number: 0\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - {{posix}}zip               # [win]\n  host:\n    - r-base\n    - r-globaloptions >=0.1.0\n    - r-rjson\n  run:\n    - r-base\n    - r-globaloptions >=0.1.0\n    - r-rjson\n\ntest:\n  commands:\n    - $R -e \"library('GetoptLong')\"  # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('GetoptLong')\\\"\"  # [win]\n\nabout:\n  home: https://github.com/jokergoo/GetoptLong\n  license: MIT\n  summary: This is yet another command-line argument parser which wraps the powerful Perl module\n    Getopt::Long and with some adaptation for easier use in R. It also provides a simple\n    way for variable interpolation in R.\n  license_family: MIT\n  license_file:\n    - '{{ environ[\"PREFIX\"] }}/lib/R/share/licenses/MIT'\n    - LICENSE\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n",
+ "raw_meta_yaml":"{% set version = \"0.1.8\" %}\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-getoptlong\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  url:\n    - {{ cran_mirror }}/src/contrib/GetoptLong_{{ version }}.tar.gz\n    - {{ cran_mirror }}/src/contrib/Archive/GetoptLong/GetoptLong_{{ version }}.tar.gz\n  sha256: 6c0edb7233b79fb7f4789a825e8e7d7eee50b5e85b7fd5b7d74b9440fd9e1dd1\n\nbuild:\n  merge_build_host: True  # [win]\n  noarch: generic\n  number: 1\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - {{ posix }}zip               # [win]\n  host:\n    - r-base\n    - r-globaloptions >=0.1.0\n    - r-rjson\n  run:\n    - r-base\n    - r-globaloptions >=0.1.0\n    - r-rjson\n\ntest:\n  commands:\n    - $R -e \"library('GetoptLong')\"  # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('GetoptLong')\\\"\"  # [win]\n\nabout:\n  home: https://github.com/jokergoo/GetoptLong\n  license: MIT\n  summary: This is yet another command-line argument parser which wraps the powerful Perl module\n    Getopt::Long and with some adaptation for easier use in R. It also provides a simple\n    way for variable interpolation in R.\n  license_family: MIT\n  license_file:\n    - '{{ environ[\"PREFIX\"] }}/lib/R/share/licenses/MIT'\n    - LICENSE\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n",
  "req":{
   "__set__":true,
   "elements":[
