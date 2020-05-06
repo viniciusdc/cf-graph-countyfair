@@ -74,9 +74,6 @@
   "bot":{
    "automerge":true
   },
-  "compiler_stack":"comp7",
-  "max_py_ver":"37",
-  "max_r_ver":"35",
   "provider":{
    "win":"azure"
   }
@@ -86,13 +83,18 @@
  "meta_yaml":{
   "about":{
    "home":"https://github.com/krahim/fftwtools",
-   "license":"GPL (>= 2)",
+   "license":"GPL-2.0-or-later",
    "license_family":"GPL3",
+   "license_file":[
+    "/lib/R/share/licenses/GPL-2",
+    "/lib/R/share/licenses/GPL-2",
+    "/lib/R/share/licenses/GPL-2"
+   ],
    "summary":"Provides a wrapper for several 'FFTW' functions. This package provides access to the two-dimensional 'FFT', the multivariate 'FFT', and the one-dimensional real to complex 'FFT' using the 'FFTW3' library. The package includes the functions fftw() and mvfftw() which are designed to mimic the functionality of the R functions fft() and mvfft(). The 'FFT' functions have a parameter that allows them to not return the redundant complex conjugate when the input is real data. "
   },
   "build":{
    "merge_build_host":true,
-   "number":"1003",
+   "number":"1004",
    "rpaths":[
     "lib/R/lib/",
     "lib/",
@@ -176,7 +178,7 @@
  "name":"r-fftwtools",
  "new_version":"0.9_8",
  "pinning_version":"2020.05.04.19.59.17",
- "raw_meta_yaml":"{% set version = '0.9-8' %}\n\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-fftwtools\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  fn: fftwtools_{{ version }}.tar.gz\n  url:\n    - https://cran.r-project.org/src/contrib/fftwtools_{{ version }}.tar.gz\n    - https://cran.r-project.org/src/contrib/Archive/fftwtools/fftwtools_{{ version }}.tar.gz\n  sha256: 4641c8cd70938c2a8bde0b6da6cf7f83e96175ef52f1ca42ec3920a1dabf1bdb\n\nbuild:\n  merge_build_host: True  # [win]\n  number: 1003\n  # unsatisfiable dependencies ?\n  skip: true  # [win]\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - posix                # [win]\n    - {{ compiler('c') }}        # [unix]\n    - {{ compiler('m2w64_c') }}  # [win]\n  host:\n    - r-base\n    - fftw 3.3.8\n\n  run:\n    - r-base\n    - fftw 3.3.8\n\ntest:\n  commands:\n    - $R -e \"library('fftwtools')\"  # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('fftwtools')\\\"\"  # [win]\n\nabout:\n  home: https://github.com/krahim/fftwtools\n  license: GPL (>= 2)\n  summary: 'Provides a wrapper for several ''FFTW'' functions. This package provides access to\n    the two-dimensional ''FFT'', the multivariate ''FFT'', and the one-dimensional real\n    to complex ''FFT'' using the ''FFTW3'' library. The package includes the functions\n    fftw() and mvfftw() which are designed to mimic the functionality of the R functions\n    fft() and mvfft(). The ''FFT'' functions have a parameter that allows them to not\n    return the redundant complex conjugate when the input is real data. '\n\n  license_family: GPL3\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n    - dpryan79\n    - johanneskoester\n    - bgruening\n    - daler\n    - jdblischak\n",
+ "raw_meta_yaml":"{% set version = \"0.9-8\" %}\n\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-fftwtools\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  fn: fftwtools_{{ version }}.tar.gz\n  url:\n    - https://cran.r-project.org/src/contrib/fftwtools_{{ version }}.tar.gz\n    - https://cran.r-project.org/src/contrib/Archive/fftwtools/fftwtools_{{ version }}.tar.gz\n  sha256: 4641c8cd70938c2a8bde0b6da6cf7f83e96175ef52f1ca42ec3920a1dabf1bdb\n\nbuild:\n  merge_build_host: true  # [win]\n  number: 1004\n  # unsatisfiable dependencies ?\n  skip: true  # [win]\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - posix                # [win]\n    - {{ compiler('c') }}        # [unix]\n    - {{ compiler('m2w64_c') }}  # [win]\n  host:\n    - r-base\n    - fftw 3.3.8\n\n  run:\n    - r-base\n    - fftw 3.3.8\n\ntest:\n  commands:\n    - $R -e \"library('fftwtools')\"  # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('fftwtools')\\\"\"  # [win]\n\nabout:\n  home: https://github.com/krahim/fftwtools\n  license: GPL-2.0-or-later\n  summary: \"Provides a wrapper for several 'FFTW' functions. This package provides access to the two-dimensional 'FFT', the multivariate 'FFT', and the one-dimensional real to complex 'FFT' using the 'FFTW3' library. The package includes the functions fftw() and mvfftw() which are designed to mimic the functionality of the\\\n    \\ R functions fft() and mvfft(). The 'FFT' functions have a parameter that allows them to not return the redundant complex conjugate when the input is real data. \"\n\n  license_family: GPL3\n\n  license_file:\n    - {{ environ[\"PREFIX\"] }}/lib/R/share/licenses/GPL-2\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n    - dpryan79\n    - johanneskoester\n    - bgruening\n    - daler\n    - jdblischak\n",
  "req":{
   "__set__":true,
   "elements":[
