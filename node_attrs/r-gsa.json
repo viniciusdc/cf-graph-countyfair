@@ -76,9 +76,6 @@
   "bot":{
    "automerge":true
   },
-  "compiler_stack":"comp7",
-  "max_py_ver":"37",
-  "max_r_ver":"35",
   "provider":{
    "win":"azure"
   }
@@ -90,11 +87,16 @@
    "home":"http://www-stat.stanford.edu/~tibs/GSA",
    "license":"LGPL",
    "license_family":"LGPL",
+   "license_file":[
+    "/lib/R/share/licenses/LGPL-3",
+    "/lib/R/share/licenses/LGPL-3",
+    "/lib/R/share/licenses/LGPL-3"
+   ],
    "summary":"Gene set analysis"
   },
   "build":{
    "noarch":"generic",
-   "number":"1",
+   "number":"2",
    "rpaths":[
     "lib/R/lib/",
     "lib/",
@@ -165,7 +167,7 @@
  "name":"r-gsa",
  "new_version":"1.03.1",
  "pinning_version":"2020.05.04.19.59.17",
- "raw_meta_yaml":"{% set version = \"1.03.1\" %}\n\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-gsa\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  fn: GSA_{{ version }}.tar.gz\n  url:\n    - https://cran.r-project.org/src/contrib/GSA_{{ version }}.tar.gz\n    - https://cran.r-project.org/src/contrib/Archive/GSA/GSA_{{ version }}.tar.gz\n  sha256: e192d4383f53680dbd556223ea5f8cad6bae62a80a337ba5fd8d05a8aee6a917\n\nbuild:\n  noarch: generic\n  number: 1\n\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - r-base\n\n  run:\n    - r-base\n\ntest:\n  commands:\n    - $R -e \"library('GSA')\"  # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('GSA')\\\"\"  # [win]\n\nabout:\n  home: http://www-stat.stanford.edu/~tibs/GSA\n  license: LGPL\n  summary: Gene set analysis\n  license_family: LGPL\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n    - dpryan79\n    - johanneskoester\n    - bgruening\n    - daler\n    - jdblischak\n",
+ "raw_meta_yaml":"{% set version = \"1.03.1\" %}\n\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-gsa\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  fn: GSA_{{ version }}.tar.gz\n  url:\n    - https://cran.r-project.org/src/contrib/GSA_{{ version }}.tar.gz\n    - https://cran.r-project.org/src/contrib/Archive/GSA/GSA_{{ version }}.tar.gz\n  sha256: e192d4383f53680dbd556223ea5f8cad6bae62a80a337ba5fd8d05a8aee6a917\n\nbuild:\n  noarch: generic\n  number: 2\n\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - r-base\n\n  run:\n    - r-base\n\ntest:\n  commands:\n    - $R -e \"library('GSA')\"  # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('GSA')\\\"\"  # [win]\n\nabout:\n  home: http://www-stat.stanford.edu/~tibs/GSA\n  license: LGPL\n  summary: Gene set analysis\n  license_family: LGPL\n\n  license_file:\n    - {{ environ[\"PREFIX\"] }}/lib/R/share/licenses/LGPL-3\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n    - dpryan79\n    - johanneskoester\n    - bgruening\n    - daler\n    - jdblischak\n",
  "req":{
   "__set__":true,
   "elements":[
