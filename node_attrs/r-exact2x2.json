@@ -76,9 +76,6 @@
   "bot":{
    "automerge":true
   },
-  "compiler_stack":"comp7",
-  "max_py_ver":"37",
-  "max_r_ver":"35",
   "provider":{
    "win":"azure"
   }
@@ -96,7 +93,7 @@
   "build":{
    "merge_build_host":true,
    "noarch":"generic",
-   "number":"0",
+   "number":"1",
    "rpaths":[
     "lib/R/lib/",
     "lib/",
@@ -183,7 +180,7 @@
  "name":"r-exact2x2",
  "new_version":"1.6.3.1",
  "pinning_version":"2020.05.06.22.15.02",
- "raw_meta_yaml":"{% set version = \"1.6.3.1\" %}\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-exact2x2\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  fn: exact2x2_{{ version }}.tar.gz\n  url:\n    - {{ cran_mirror }}/src/contrib/exact2x2_{{ version }}.tar.gz\n    - {{ cran_mirror }}/src/contrib/Archive/exact2x2/exact2x2_{{ version }}.tar.gz\n  sha256: 91c6308f473fa3404c1c9bad842e8390f3e57673fea8b6b639800f341ff5807a\n\nbuild:\n  noarch: generic\n  merge_build_host: True  # [win]\n  number: 0\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - {{posix}}zip               # [win]\n  host:\n    - r-base\n    - r-exactci\n    - r-ssanv\n  run:\n    - r-base\n    - r-exactci\n    - r-ssanv\n\ntest:\n  commands:\n    - $R -e \"library('exact2x2')\"           # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('exact2x2')\\\"\"  # [win]\n\nabout:\n  home: https://CRAN.R-project.org/package=exact2x2\n  license: GPL-3\n  summary: Calculates conditional exact tests (Fisher's exact test, Blaker's exact test, or  exact\n    McNemar's test) and unconditional exact tests (including score-based tests on differences\n    in proportions, ratios of proportions, and odds ratios, and Boshcloo's test) with\n    appropriate matching confidence intervals, and provides power and sample size calculations.\n    Gives melded confidence intervals for the binomial case. Gives boundary-optimized\n    rejection region test (Gabriel, et al, 2018, <DOI:10.1002/sim.7579>), an unconditional\n    exact test for the situation where the controls are all expected to fail.\n  license_family: GPL3\n  license_file: '{{ environ[\"PREFIX\"] }}/lib/R/share/licenses/GPL-3'\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n    - johanneskoester\n    - bgruening\n    - daler\n    - jdblischak\n    - cbrueffer\n    - dbast\n",
+ "raw_meta_yaml":"{% set version = \"1.6.3.1\" %}\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-exact2x2\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  fn: exact2x2_{{ version }}.tar.gz\n  url:\n    - {{ cran_mirror }}/src/contrib/exact2x2_{{ version }}.tar.gz\n    - {{ cran_mirror }}/src/contrib/Archive/exact2x2/exact2x2_{{ version }}.tar.gz\n  sha256: 91c6308f473fa3404c1c9bad842e8390f3e57673fea8b6b639800f341ff5807a\n\nbuild:\n  noarch: generic\n  merge_build_host: True  # [win]\n  number: 1\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - {{ posix }}zip               # [win]\n  host:\n    - r-base\n    - r-exactci\n    - r-ssanv\n  run:\n    - r-base\n    - r-exactci\n    - r-ssanv\n\ntest:\n  commands:\n    - $R -e \"library('exact2x2')\"           # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('exact2x2')\\\"\"  # [win]\n\nabout:\n  home: https://CRAN.R-project.org/package=exact2x2\n  license: GPL-3\n  summary: Calculates conditional exact tests (Fisher's exact test, Blaker's exact test, or  exact\n    McNemar's test) and unconditional exact tests (including score-based tests on differences\n    in proportions, ratios of proportions, and odds ratios, and Boshcloo's test) with\n    appropriate matching confidence intervals, and provides power and sample size calculations.\n    Gives melded confidence intervals for the binomial case. Gives boundary-optimized\n    rejection region test (Gabriel, et al, 2018, <DOI:10.1002/sim.7579>), an unconditional\n    exact test for the situation where the controls are all expected to fail.\n  license_family: GPL3\n  license_file: '{{ environ[\"PREFIX\"] }}/lib/R/share/licenses/GPL-3'\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n    - johanneskoester\n    - bgruening\n    - daler\n    - jdblischak\n    - cbrueffer\n    - dbast\n",
  "req":{
   "__set__":true,
   "elements":[

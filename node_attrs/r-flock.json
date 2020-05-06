@@ -74,9 +74,6 @@
   "bot":{
    "automerge":true
   },
-  "compiler_stack":"comp7",
-  "max_py_ver":"37",
-  "max_r_ver":"35",
   "provider":{
    "win":"azure"
   }
@@ -86,13 +83,14 @@
  "meta_yaml":{
   "about":{
    "home":"https://CRAN.R-project.org/package=flock",
-   "license":"Apache-2-0",
+   "license":"Apache-2.0",
    "license_family":"APACHE",
+   "license_file":"LICENSE-2.0.txt",
    "summary":"Implements synchronization between R processes (spawned by using the \"parallel\" package for instance) using file locks. Supports both exclusive and shared locking."
   },
   "build":{
    "merge_build_host":true,
-   "number":"1002",
+   "number":"1003",
    "rpaths":[
     "lib/R/lib/",
     "lib/",
@@ -178,7 +176,7 @@
  "name":"r-flock",
  "new_version":"0.7",
  "pinning_version":"2020.05.04.19.59.17",
- "raw_meta_yaml":"{% set version = '0.7' %}\n\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-flock\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  fn: flock_{{ version }}.tar.gz\n  url:\n    - https://cran.r-project.org/src/contrib/flock_{{ version }}.tar.gz\n    - https://cran.r-project.org/src/contrib/Archive/flock/flock_{{ version }}.tar.gz\n  sha256: 47ebdeaeeb63ec93c800782bafa7f2846f73bb905adb6a3b5c44b248ce1de9fd\n\nbuild:\n  merge_build_host: True  # [win]\n  number: 1002\n  skip: true  # [win32]\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - posix                # [win]\n    - {{ compiler('c') }}        # [unix]\n    - {{ compiler('m2w64_c') }}  # [win]\n    - {{ compiler('cxx') }}        # [unix]\n    - {{ compiler('m2w64_cxx') }}  # [win]\n  host:\n    - r-base\n    - r-rcpp\n\n  run:\n    - r-base\n    - r-rcpp\n\ntest:\n  commands:\n    - $R -e \"library('flock')\"  # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('flock')\\\"\"  # [win]\n\nabout:\n  home: https://CRAN.R-project.org/package=flock\n  license: Apache-2-0\n  summary: Implements synchronization between R processes (spawned by using the \"parallel\" package\n    for instance) using file locks. Supports both exclusive and shared locking.\n  license_family: APACHE\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n    - johanneskoester\n    - bgruening\n    - daler\n    - jdblischak\n    - cbrueffer\n",
+ "raw_meta_yaml":"{% set version = \"0.7\" %}\n\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-flock\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  fn: flock_{{ version }}.tar.gz\n  url:\n    - https://cran.r-project.org/src/contrib/flock_{{ version }}.tar.gz\n    - https://cran.r-project.org/src/contrib/Archive/flock/flock_{{ version }}.tar.gz\n  sha256: 47ebdeaeeb63ec93c800782bafa7f2846f73bb905adb6a3b5c44b248ce1de9fd\n\nbuild:\n  merge_build_host: true  # [win]\n  number: 1003\n  skip: true  # [win32]\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - posix                # [win]\n    - {{ compiler('c') }}        # [unix]\n    - {{ compiler('m2w64_c') }}  # [win]\n    - {{ compiler('cxx') }}        # [unix]\n    - {{ compiler('m2w64_cxx') }}  # [win]\n  host:\n    - r-base\n    - r-rcpp\n\n  run:\n    - r-base\n    - r-rcpp\n\ntest:\n  commands:\n    - $R -e \"library('flock')\"  # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('flock')\\\"\"  # [win]\n\nabout:\n  home: https://CRAN.R-project.org/package=flock\n  license: Apache-2.0\n  summary: Implements synchronization between R processes (spawned by using the \"parallel\" package for instance) using file locks. Supports both exclusive and shared locking.\n  license_family: APACHE\n  license_file: LICENSE-2.0.txt\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n    - johanneskoester\n    - bgruening\n    - daler\n    - jdblischak\n    - cbrueffer\n",
  "req":{
   "__set__":true,
   "elements":[
