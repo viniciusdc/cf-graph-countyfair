@@ -76,9 +76,6 @@
   "bot":{
    "automerge":true
   },
-  "compiler_stack":"comp7",
-  "max_py_ver":"37",
-  "max_r_ver":"35",
   "provider":{
    "win":"azure"
   }
@@ -96,7 +93,7 @@
   "build":{
    "merge_build_host":true,
    "noarch":"generic",
-   "number":"1",
+   "number":"2",
    "rpaths":[
     "lib/R/lib/",
     "lib/",
@@ -180,7 +177,7 @@
  "name":"r-treemapify",
  "new_version":"2.5.3",
  "pinning_version":"2020.05.04.19.59.17",
- "raw_meta_yaml":"{% set version = \"2.5.3\" %}\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-treemapify\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  fn: treemapify_{{ version }}.tar.gz\n  url:\n    - {{ cran_mirror }}/src/contrib/treemapify_{{ version }}.tar.gz\n    - {{ cran_mirror }}/src/contrib/Archive/treemapify/treemapify_{{ version }}.tar.gz\n  sha256: 63a88c595224edac12555a192df3a85eb2f3a57aae979320b94e9032fbf7cef8\n\nbuild:\n  noarch: generic\n  merge_build_host: True  # [win]\n  number: 1\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - {{posix}}zip               # [win]\n  host:\n    - r-base\n    - r-ggfittext >=0.5.0\n    - r-ggplot2 >=2.2.1\n  run:\n    - r-base\n    - r-ggfittext >=0.5.0\n    - r-ggplot2 >=2.2.1\n\ntest:\n  commands:\n    - $R -e \"library('treemapify')\"           # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('treemapify')\\\"\"  # [win]\n\nabout:\n  home: https://github.com/wilkox/treemapify\n  license: GPL (>= 3)\n  summary: Provides 'ggplot2' geoms for drawing treemaps.\n  license_family: GPL3\n  license_file: '{{ environ[\"PREFIX\"] }}/lib/R/share/licenses/GPL-3'\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n    - johanneskoester\n    - bgruening\n    - daler\n    - jdblischak\n    - cbrueffer\n",
+ "raw_meta_yaml":"{% set version = \"2.5.3\" %}\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-treemapify\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  fn: treemapify_{{ version }}.tar.gz\n  url:\n    - {{ cran_mirror }}/src/contrib/treemapify_{{ version }}.tar.gz\n    - {{ cran_mirror }}/src/contrib/Archive/treemapify/treemapify_{{ version }}.tar.gz\n  sha256: 63a88c595224edac12555a192df3a85eb2f3a57aae979320b94e9032fbf7cef8\n\nbuild:\n  noarch: generic\n  merge_build_host: True  # [win]\n  number: 2\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - {{ posix }}zip               # [win]\n  host:\n    - r-base\n    - r-ggfittext >=0.5.0\n    - r-ggplot2 >=2.2.1\n  run:\n    - r-base\n    - r-ggfittext >=0.5.0\n    - r-ggplot2 >=2.2.1\n\ntest:\n  commands:\n    - $R -e \"library('treemapify')\"           # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('treemapify')\\\"\"  # [win]\n\nabout:\n  home: https://github.com/wilkox/treemapify\n  license: GPL (>= 3)\n  summary: Provides 'ggplot2' geoms for drawing treemaps.\n  license_family: GPL3\n  license_file: '{{ environ[\"PREFIX\"] }}/lib/R/share/licenses/GPL-3'\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n    - johanneskoester\n    - bgruening\n    - daler\n    - jdblischak\n    - cbrueffer\n",
  "req":{
   "__set__":true,
   "elements":[
