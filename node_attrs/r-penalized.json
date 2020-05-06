@@ -108,9 +108,6 @@
   "bot":{
    "automerge":true
   },
-  "compiler_stack":"comp7",
-  "max_py_ver":"37",
-  "max_r_ver":"35",
   "provider":{
    "win":"azure"
   }
@@ -127,7 +124,7 @@
   },
   "build":{
    "merge_build_host":true,
-   "number":"1003",
+   "number":"1004",
    "rpaths":[
     "lib/R/lib/",
     "lib/",
@@ -235,7 +232,7 @@
  "name":"r-penalized",
  "new_version":"0.9_51",
  "pinning_version":"2020.05.04.19.59.17",
- "raw_meta_yaml":"{% set version = '0.9-51' %}\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-penalized\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  fn: penalized_{{ version }}.tar.gz\n  url:\n    - {{ cran_mirror }}/src/contrib/penalized_{{ version }}.tar.gz\n    - {{ cran_mirror }}/src/contrib/Archive/penalized/penalized_{{ version }}.tar.gz\n  sha256: eaa80dca99981fb9eb576261f30046cfe492d014cc2bf286c447b03a92e299fd\n\nbuild:\n  merge_build_host: True  # [win]\n  number: 1003\n  skip: true  # [win32]\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - {{ compiler('c') }}        # [not win]\n    - {{ compiler('cxx') }}      # [not win]\n    - {{ compiler('m2w64_c') }}        # [win]\n    - {{ compiler('m2w64_cxx') }}        # [win]\n    - {{posix}}filesystem        # [win]\n    - {{posix}}make\n    - {{posix}}sed               # [win]\n    - {{posix}}coreutils         # [win]\n    - {{posix}}zip               # [win]\n  host:\n    - r-base\n    - r-rcpp\n    - r-rcpparmadillo\n    - r-survival\n  run:\n    - r-base\n    - {{native}}gcc-libs         # [win]\n    - r-rcpp\n    - r-rcpparmadillo\n    - r-survival\n\ntest:\n  commands:\n    - $R -e \"library('penalized')\"           # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('penalized')\\\"\"  # [win]\n\nabout:\n  home: https://CRAN.R-project.org/package=penalized\n  license: GPL (>= 2)\n  summary: Fitting possibly high dimensional penalized regression models. The penalty structure\n    can be any combination of an L1 penalty (lasso and fused lasso), an L2 penalty (ridge)\n    and a positivity constraint on the regression coefficients. The supported regression\n    models are linear, logistic and Poisson regression and the Cox Proportional Hazards\n    model. Cross-validation routines allow optimization of the tuning parameters.\n  license_family: GPL3\n  license_file: '{{ environ[\"PREFIX\"] }}/lib/R/share/licenses/GPL-3'\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n    - johanneskoester\n    - bgruening\n    - daler\n    - jdblischak\n    - cbrueffer\n    - dbast\n",
+ "raw_meta_yaml":"{% set version = '0.9-51' %}\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-penalized\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  fn: penalized_{{ version }}.tar.gz\n  url:\n    - {{ cran_mirror }}/src/contrib/penalized_{{ version }}.tar.gz\n    - {{ cran_mirror }}/src/contrib/Archive/penalized/penalized_{{ version }}.tar.gz\n  sha256: eaa80dca99981fb9eb576261f30046cfe492d014cc2bf286c447b03a92e299fd\n\nbuild:\n  merge_build_host: True  # [win]\n  number: 1004\n  skip: true  # [win32]\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - {{ compiler('c') }}        # [not win]\n    - {{ compiler('cxx') }}      # [not win]\n    - {{ compiler('m2w64_c') }}        # [win]\n    - {{ compiler('m2w64_cxx') }}        # [win]\n    - {{ posix }}filesystem        # [win]\n    - {{ posix }}make\n    - {{ posix }}sed               # [win]\n    - {{ posix }}coreutils         # [win]\n    - {{ posix }}zip               # [win]\n  host:\n    - r-base\n    - r-rcpp\n    - r-rcpparmadillo\n    - r-survival\n  run:\n    - r-base\n    - {{ native }}gcc-libs         # [win]\n    - r-rcpp\n    - r-rcpparmadillo\n    - r-survival\n\ntest:\n  commands:\n    - $R -e \"library('penalized')\"           # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('penalized')\\\"\"  # [win]\n\nabout:\n  home: https://CRAN.R-project.org/package=penalized\n  license: GPL (>= 2)\n  summary: Fitting possibly high dimensional penalized regression models. The penalty structure\n    can be any combination of an L1 penalty (lasso and fused lasso), an L2 penalty (ridge)\n    and a positivity constraint on the regression coefficients. The supported regression\n    models are linear, logistic and Poisson regression and the Cox Proportional Hazards\n    model. Cross-validation routines allow optimization of the tuning parameters.\n  license_family: GPL3\n  license_file: '{{ environ[\"PREFIX\"] }}/lib/R/share/licenses/GPL-3'\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n    - johanneskoester\n    - bgruening\n    - daler\n    - jdblischak\n    - cbrueffer\n    - dbast\n",
  "req":{
   "__set__":true,
   "elements":[

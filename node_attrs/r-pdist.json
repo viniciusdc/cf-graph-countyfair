@@ -74,9 +74,6 @@
   "bot":{
    "automerge":true
   },
-  "compiler_stack":"comp7",
-  "max_py_ver":"37",
-  "max_r_ver":"35",
   "provider":{
    "win":"azure"
   }
@@ -88,11 +85,16 @@
    "home":"https://cran.r-project.org/web/packages/pdist/index.html",
    "license":"GPL",
    "license_family":"GPL",
+   "license_file":[
+    "/lib/R/share/licenses/GPL-3",
+    "/lib/R/share/licenses/GPL-3",
+    "/lib/R/share/licenses/GPL-3"
+   ],
    "summary":"Computes the euclidean distance between rows of a matrix X and rows of another matrix Y.  Previously, this could be done by binding the two matrices together and calling 'dist', but this creates unnecessary computation by computing the distances between a row of X and another row of X, and likewise for Y. pdist strictly computes distances across the two matrices, not within the same matrix, making computations significantly faster for certain use cases."
   },
   "build":{
    "merge_build_host":true,
-   "number":"1003",
+   "number":"1004",
    "rpaths":[
     "lib/R/lib/",
     "lib/",
@@ -178,7 +180,7 @@
  "name":"r-pdist",
  "new_version":"1.2",
  "pinning_version":"2020.05.04.19.59.17",
- "raw_meta_yaml":"{% set version = '1.2' %}\n\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-pdist\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  fn: pdist_{{ version }}.tar.gz\n  url:\n    - https://cran.r-project.org/src/contrib/pdist_{{ version }}.tar.gz\n    - https://cran.r-project.org/src/contrib/Archive/pdist/pdist_{{ version }}.tar.gz\n\n  sha256: ad01bcc822fe58b9bf6faea1cb8d4f8a4046bb1e1c5cc6eb172e84a65e1dcda2\n\nbuild:\n  merge_build_host: True  # [win]\n  number: 1003\n  skip: true  # [win32]\n\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - posix                # [win]\n    - {{ compiler('c') }}        # [unix]\n    - {{ compiler('m2w64_c') }}  # [win]\n  host:\n    - r-base\n\n  run:\n    - r-base\n\ntest:\n  commands:\n    - $R -e \"library('pdist')\"  # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('pdist')\\\"\"  # [win]\n\nabout:\n  home: https://cran.r-project.org/web/packages/pdist/index.html\n  license: GPL\n  summary: Computes the euclidean distance between rows of a matrix X and rows of another matrix\n    Y.  Previously, this could be done by binding the two matrices together and calling\n    'dist', but this creates unnecessary computation by computing the distances between\n    a row of X and another row of X, and likewise for Y. pdist strictly computes distances\n    across the two matrices, not within the same matrix, making computations significantly\n    faster for certain use cases.\n  license_family: GPL\nextra:\n   recipe-maintainers:\n    - conda-forge/r\n    - dpryan79\n    - MathiasHaudgaard\n    - FrodePedersen\n    - ArneKr\n    - johanneskoester\n    - bgruening\n    - daler\n    - jdblischak\n",
+ "raw_meta_yaml":"{% set version = \"1.2\" %}\n\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-pdist\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  fn: pdist_{{ version }}.tar.gz\n  url:\n    - https://cran.r-project.org/src/contrib/pdist_{{ version }}.tar.gz\n    - https://cran.r-project.org/src/contrib/Archive/pdist/pdist_{{ version }}.tar.gz\n\n  sha256: ad01bcc822fe58b9bf6faea1cb8d4f8a4046bb1e1c5cc6eb172e84a65e1dcda2\n\nbuild:\n  merge_build_host: true  # [win]\n  number: 1004\n  skip: true  # [win32]\n\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - posix                # [win]\n    - {{ compiler('c') }}        # [unix]\n    - {{ compiler('m2w64_c') }}  # [win]\n  host:\n    - r-base\n\n  run:\n    - r-base\n\ntest:\n  commands:\n    - $R -e \"library('pdist')\"  # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('pdist')\\\"\"  # [win]\n\nabout:\n  home: https://cran.r-project.org/web/packages/pdist/index.html\n  license: GPL\n  summary: Computes the euclidean distance between rows of a matrix X and rows of another matrix Y.  Previously, this could be done by binding the two matrices together and calling 'dist', but this creates unnecessary computation by computing the distances between a row of X and another row of X, and likewise for Y. pdist\n    strictly computes distances across the two matrices, not within the same matrix, making computations significantly faster for certain use cases.\n  license_family: GPL\n  license_file:\n    - {{ environ[\"PREFIX\"] }}/lib/R/share/licenses/GPL-3\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n    - dpryan79\n    - MathiasHaudgaard\n    - FrodePedersen\n    - ArneKr\n    - johanneskoester\n    - bgruening\n    - daler\n    - jdblischak\n",
  "req":{
   "__set__":true,
   "elements":[
