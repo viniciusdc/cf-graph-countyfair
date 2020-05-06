@@ -222,7 +222,7 @@
   }
  },
  "name":"pyepics",
- "new_version":false,
+ "new_version":"3.4.1",
  "pinning_version":"2020.01.08",
  "raw_meta_yaml":"{% set name = \"pyepics\" %}\n{% set version = \"3.4.1\" %}\n{% set sha256 = \"d3dfb10e7c05b290dd07de333d6d24fab9af3dd56ba4b2b4234b088ae94b8c47\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n   fn: {{ name }}-{{ version }}.tar.gz\n   url: https://github.com/pyepics/{{ name }}/archive/{{ version }}.tar.gz\n   sha256: {{ sha256 }}\n   patches:\n     - libca.patch\n     - epicscorelibs.patch\n\nbuild:\n  number: 0\n  script: \"{{ PYTHON }} -m pip install . --no-deps -vv\"\n\nrequirements:\n  host:\n      - python\n      - pip\n  run:\n      - python\n      - epicscorelibs\n      - numpy\n      - pip\n      - pyparsing\n\ntest:\n  imports:\n    - epics\n    - epics.autosave\n    - epics.compat\n    - epics.devices\n\nabout:\n  home: http://pyepics.github.io/pyepics/\n  license: Epics Open\n  summary: Python interface to Epics Channel Access\n  # https://github.com/pyepics/pyepics/pull/108\n  license_file: '{{ environ[\"RECIPE_DIR\"] }}/LICENSE'\n  dev_url: https://github.com/pyepics/pyepics\n  doc_url: http://pyepics.github.io/pyepics\n\nextra:\n  recipe-maintainers:\n    - jrmlhermitte\n    - stuartcampbell\n    - mrakitin\n    - hhslepicka\n",
  "req":{

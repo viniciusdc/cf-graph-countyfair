@@ -348,6 +348,23 @@
     "migrator_version",
     "version"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/413852556.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"Version",
+    "migrator_version":0,
+    "version":"1.7.3"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "version"
+   ]
   }
  ],
  "bad":false,
@@ -413,12 +430,13 @@
  "new_version_attempts":{
   "1.6.4":1,
   "1.7.2":1,
+  "1.7.3":1,
   "2Fv0.4.0":219
  },
  "new_version_errors":{
   "2Fv0.4.0":"The recipe did not change in the version migration, a URL did not hash, or there is jinja2 syntax the bot cannot handle!\n\nPlease check the URLs in your recipe with version '2Fv0.4.0' to make sure they exist!\n\nWe also found the following errors:\n\n - could not hash URL template 'https://github.com/hashicorp/{{ name }}/archive/v{{ version }}.tar.gz'\n"
  },
- "pinning_version":"2020.04.10.23.07.47",
+ "pinning_version":"2020.05.04.19.59.17",
  "raw_meta_yaml":"{% set name = \"consul\" %}\n{% set version = \"1.7.2\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  url: https://github.com/hashicorp/{{ name }}/archive/v{{ version }}.tar.gz\n  sha256: 5fbf25b8df906dfb4133eedf266a5c4a5af3022428b03a41928e1e48bd59a3b9\n\nbuild:\n  number: 0\n  script:\n    {% set git_import = \"github.com/hashicorp/consul/version\" %}\n    - go install -v -ldflags \"-X {{ git_import }}.GitDescribe='v{{ version }}'\" .\n\nrequirements:\n  build:\n    - {{ compiler('go') }} 1.13\n\ntest:\n  commands:\n    - consul --version\n\nabout:\n  home: https://www.consul.io\n  license: MPL-2.0\n  license_file: LICENSE\n  summary: Service discovery and configuration made easy.\n  description: |\n    Consul is a tool for discovering and configuring services in your\n    infrastructure. It provides several key features, including:\n    Service Discovery, Health Checking, KV Store, Multi Datacenter.\n    Consul is designed to be friendly to both the DevOps community and\n    application developers, making it perfect for modern, elastic infrastructures.\n\n  doc_url: https://www.consul.io/docs/index.html\n\nextra:\n  recipe-maintainers:\n    - sodre\n",
  "req":{
   "__set__":true,
@@ -446,7 +464,7 @@
    "elements":[]
   }
  },
- "smithy_version":"No azure token. Create a token and\nput it in ~/.conda-smithy/azure.token\n3.6.16",
+ "smithy_version":"No azure token. Create a token and\nput it in ~/.conda-smithy/azure.token\n3.7.0\n",
  "strong_exports":false,
  "time":1568135280.318401,
  "total_requirements":{
