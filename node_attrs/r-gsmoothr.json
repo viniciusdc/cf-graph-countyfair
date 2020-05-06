@@ -74,9 +74,6 @@
   "bot":{
    "automerge":true
   },
-  "compiler_stack":"comp7",
-  "max_py_ver":"37",
-  "max_r_ver":"35",
   "provider":{
    "win":"azure"
   }
@@ -86,13 +83,14 @@
  "meta_yaml":{
   "about":{
    "home":"https://CRAN.R-project.org/package=gsmoothr",
-   "license":"LGPL (>= 2.0)",
+   "license":"LGPL-2.0-or-later",
    "license_family":"LGPL",
+   "license_file":"/lib/R/share/licenses/LGPL-2",
    "summary":"Tools rewritten in C for various smoothing tasks"
   },
   "build":{
    "merge_build_host":true,
-   "number":"1003",
+   "number":"1004",
    "rpaths":[
     "lib/R/lib/",
     "lib/",
@@ -179,7 +177,7 @@
  "name":"r-gsmoothr",
  "new_version":"0.1.7",
  "pinning_version":"2020.05.04.19.59.17",
- "raw_meta_yaml":"{% set version = '0.1.7' %}\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-gsmoothr\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  fn: gsmoothr_{{ version }}.tar.gz\n  url:\n    - {{ cran_mirror }}/src/contrib/gsmoothr_{{ version }}.tar.gz\n    - {{ cran_mirror }}/src/contrib/Archive/gsmoothr/gsmoothr_{{ version }}.tar.gz\n  sha256: b75ffd2a4a0f357762e02e46e355b45cc90ea637830f0a1b01f216bb4541e903\n\nbuild:\n  merge_build_host: True  # [win]\n  number: 1003\n  skip: true  # [win32]\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - {{ compiler('c') }}        # [not win]\n    - {{ compiler('m2w64_c') }}        # [win]\n    - {{posix}}filesystem        # [win]\n    - {{posix}}make\n    - {{posix}}sed               # [win]\n    - {{posix}}coreutils         # [win]\n    - {{posix}}zip               # [win]\n  host:\n    - r-base\n  run:\n    - r-base\n    - {{native}}gcc-libs         # [win]\n\ntest:\n  commands:\n    - $R -e \"library('gsmoothr')\"           # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('gsmoothr')\\\"\"  # [win]\n\nabout:\n  home: https://CRAN.R-project.org/package=gsmoothr\n  license: LGPL (>= 2.0)\n  summary: Tools rewritten in C for various smoothing tasks\n  license_family: LGPL\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n    - johanneskoester\n    - bgruening\n    - daler\n    - jdblischak\n    - cbrueffer\n    - dbast\n",
+ "raw_meta_yaml":"{% set version = \"0.1.7\" %}\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-gsmoothr\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  fn: gsmoothr_{{ version }}.tar.gz\n  url:\n    - {{ cran_mirror }}/src/contrib/gsmoothr_{{ version }}.tar.gz\n    - {{ cran_mirror }}/src/contrib/Archive/gsmoothr/gsmoothr_{{ version }}.tar.gz\n  sha256: b75ffd2a4a0f357762e02e46e355b45cc90ea637830f0a1b01f216bb4541e903\n\nbuild:\n  merge_build_host: true  # [win]\n  number: 1004\n  skip: true  # [win32]\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - {{ compiler('c') }}        # [not win]\n    - {{ compiler('m2w64_c') }}        # [win]\n    - {{ posix }}filesystem        # [win]\n    - {{ posix }}make\n    - {{ posix }}sed               # [win]\n    - {{ posix }}coreutils         # [win]\n    - {{ posix }}zip               # [win]\n  host:\n    - r-base\n  run:\n    - r-base\n    - {{ native }}gcc-libs         # [win]\n\ntest:\n  commands:\n    - $R -e \"library('gsmoothr')\"           # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('gsmoothr')\\\"\"  # [win]\n\nabout:\n  home: https://CRAN.R-project.org/package=gsmoothr\n  license:  LGPL-2.0-or-later\n  summary: Tools rewritten in C for various smoothing tasks\n  license_family: LGPL\n  license_file: '{{ environ[\"PREFIX\"] }}/lib/R/share/licenses/LGPL-2'\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n    - johanneskoester\n    - bgruening\n    - daler\n    - jdblischak\n    - cbrueffer\n    - dbast\n",
  "req":{
   "__set__":true,
   "elements":[
