@@ -50,6 +50,23 @@
     "migrator_version",
     "name"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/414411141.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"Version",
+    "migrator_version":0,
+    "version":"2.5.0"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "version"
+   ]
   }
  ],
  "bad":false,
@@ -167,8 +184,12 @@
   }
  },
  "name":"ilmbase",
- "new_version":"2.4.1",
- "pinning_version":"2020.03.10",
+ "new_version":"2.5.0",
+ "new_version_attempts":{
+  "2.5.0":1
+ },
+ "new_version_errors":{},
+ "pinning_version":"2020.05.06.22.15.02",
  "raw_meta_yaml":"{% set name = \"IlmBase\" %}\n{% set version = \"2.4.1\" %}\n{% set sha256 = \"3ebbe9a8e67edb4a25890b98c598e9fe23b10f96d1416d6a3ff0732e99d001c1\" %}\n\npackage:\n  name: \"{{ name|lower }}\"\n  version: \"{{ version }}\"\n\nsource:\n  url: https://github.com/AcademySoftwareFoundation/openexr/archive/v{{ version }}.tar.gz\n  sha256: {{ sha256 }}\n\nbuild:\n  number: 0\n  skip: true  # [win and vc<14]\n  run_exports:\n    # https\\://abi-laboratory.pro/\\?view\\=timeline\\&l\\=ilmbase\n    - {{ pin_subpackage(name|lower, max_pin='x.x') }}\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n    - cmake\n    - make  # [unix]\n  host:\n    - zlib\n\ntest:\n  commands:\n    - test -f ${PREFIX}/include/OpenEXR/half.h                            # [unix]\n    - test -f ${PREFIX}/include/OpenEXR/IlmThread.h                       # [unix]\n    - test -f ${PREFIX}/include/OpenEXR/ImathMath.h                       # [unix]\n    - test -f ${PREFIX}/include/OpenEXR/Iex.h                             # [unix]\n    - test -f ${PREFIX}/include/OpenEXR/IexMathExc.h                      # [unix]\n    - test -f ${PREFIX}/lib/libHalf${SHLIB_EXT}                           # [unix]\n    - test -f ${PREFIX}/lib/libIlmThread${SHLIB_EXT}                      # [unix]\n    - test -f ${PREFIX}/lib/libImath${SHLIB_EXT}                          # [unix]\n    - test -f ${PREFIX}/lib/libIex${SHLIB_EXT}                            # [unix]\n    - test -f ${PREFIX}/lib/libIexMath${SHLIB_EXT}                        # [unix]\n    - if not exist %LIBRARY_PREFIX%\\include\\OpenEXR\\half.h  exit 1        # [win]\n    - if not exist %LIBRARY_PREFIX%\\include\\OpenEXR\\IlmThread.h  exit 1   # [win]\n    - if not exist %LIBRARY_PREFIX%\\include\\OpenEXR\\ImathMath.h  exit 1   # [win]\n    - if not exist %LIBRARY_PREFIX%\\include\\OpenEXR\\Iex.h  exit 1         # [win]\n    - if not exist %LIBRARY_PREFIX%\\include\\OpenEXR\\IexMathExc.h exit 1   # [win]\n    - if not exist %LIBRARY_PREFIX%\\lib\\Half.lib  exit 1                  # [win]\n    - if not exist %LIBRARY_PREFIX%\\lib\\IlmThread.lib  exit 1             # [win]\n    - if not exist %LIBRARY_PREFIX%\\lib\\Imath.lib  exit 1                 # [win]\n    - if not exist %LIBRARY_PREFIX%\\lib\\Iex.lib  exit 1                   # [win]\n    - if not exist %LIBRARY_PREFIX%\\lib\\IexMath.lib  exit 1               # [win]\n    - if not exist %LIBRARY_PREFIX%\\bin\\Half.dll  exit 1                  # [win]\n    - if not exist %LIBRARY_PREFIX%\\bin\\IlmThread.dll  exit 1             # [win]\n    - if not exist %LIBRARY_PREFIX%\\bin\\Imath.dll  exit 1                 # [win]\n    - if not exist %LIBRARY_PREFIX%\\bin\\Iex.dll  exit 1                   # [win]\n    - if not exist %LIBRARY_PREFIX%\\bin\\IexMath.dll  exit 1               # [win]\n\nabout:\n  home: http://www.openexr.com/\n  license: Modified BSD\n  license_family: BSD\n  license_file: LICENSE.md\n  summary: 'IlmBase libraries required for OpenEXR.'\n  doc_url: http://www.openexr.com/documentation.html\n\nextra:\n  recipe-maintainers:\n    - npavlovikj\n    - SylvainCorlay\n    - wolfv\n    - JohanMabille\n",
  "req":{
   "__set__":true,
@@ -205,7 +226,7 @@
    "elements":[]
   }
  },
- "smithy_version":"3.6.12",
+ "smithy_version":"No azure token. Create a token and\nput it in ~/.conda-smithy/azure.token\n3.7.0\n",
  "strong_exports":false,
  "total_requirements":{
   "build":{
