@@ -73,9 +73,6 @@
   "bot":{
    "automerge":true
   },
-  "compiler_stack":"comp7",
-  "max_py_ver":"37",
-  "max_r_ver":"35",
   "provider":{
    "win":"azure"
   }
@@ -93,7 +90,7 @@
   "build":{
    "merge_build_host":true,
    "noarch":"generic",
-   "number":"1001",
+   "number":"1002",
    "rpaths":[
     "lib/R/lib/",
     "lib/",
@@ -168,7 +165,7 @@
  "name":"r-dfoptim",
  "new_version":"2018.2_1",
  "pinning_version":"2020.05.06.22.15.02",
- "raw_meta_yaml":"{% set version = '2018.2-1' %}\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-dfoptim\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  fn: dfoptim_{{ version }}.tar.gz\n  url:\n    - {{ cran_mirror }}/src/contrib/dfoptim_{{ version }}.tar.gz\n    - {{ cran_mirror }}/src/contrib/Archive/dfoptim/dfoptim_{{ version }}.tar.gz\n  sha256: 63fd151797219baab932ccf9da42e6ade79baa6906e8c6f424c04b85ba06cabf\n\nbuild:\n  noarch: generic\n  merge_build_host: True  # [win]\n  number: 1001\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - {{posix}}zip               # [win]\n  host:\n    - r-base\n  run:\n    - r-base\n\ntest:\n  commands:\n    - $R -e \"library('dfoptim')\"           # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('dfoptim')\\\"\"  # [win]\n\nabout:\n  home: http://www.jhsph.edu/agingandhealth/People/Faculty_personal_pages/Varadhan.html\n  license: GPL (>= 2)\n  summary: Derivative-Free optimization algorithms. These algorithms do not require gradient\n    information. More importantly, they can be used to solve non-smooth optimization\n    problems.\n  license_family: GPL3\n  license_file: '{{ environ[\"PREFIX\"] }}/lib/R/share/licenses/GPL-3'\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n    - johanneskoester\n    - bgruening\n    - daler\n    - jdblischak\n    - cbrueffer\n    - dbast\n",
+ "raw_meta_yaml":"{% set version = '2018.2-1' %}\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-dfoptim\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  fn: dfoptim_{{ version }}.tar.gz\n  url:\n    - {{ cran_mirror }}/src/contrib/dfoptim_{{ version }}.tar.gz\n    - {{ cran_mirror }}/src/contrib/Archive/dfoptim/dfoptim_{{ version }}.tar.gz\n  sha256: 63fd151797219baab932ccf9da42e6ade79baa6906e8c6f424c04b85ba06cabf\n\nbuild:\n  noarch: generic\n  merge_build_host: True  # [win]\n  number: 1002\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - {{ posix }}zip               # [win]\n  host:\n    - r-base\n  run:\n    - r-base\n\ntest:\n  commands:\n    - $R -e \"library('dfoptim')\"           # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('dfoptim')\\\"\"  # [win]\n\nabout:\n  home: http://www.jhsph.edu/agingandhealth/People/Faculty_personal_pages/Varadhan.html\n  license: GPL (>= 2)\n  summary: Derivative-Free optimization algorithms. These algorithms do not require gradient\n    information. More importantly, they can be used to solve non-smooth optimization\n    problems.\n  license_family: GPL3\n  license_file: '{{ environ[\"PREFIX\"] }}/lib/R/share/licenses/GPL-3'\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n    - johanneskoester\n    - bgruening\n    - daler\n    - jdblischak\n    - cbrueffer\n    - dbast\n",
  "req":{
   "__set__":true,
   "elements":[

@@ -181,6 +181,25 @@
     "migrator_version",
     "name"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/414461110.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"MigrationYaml",
+    "migrator_object_version":2,
+    "migrator_version":0,
+    "name":"r400"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_object_version",
+    "migrator_version",
+    "name"
+   ]
   }
  ],
  "bad":false,
@@ -321,7 +340,7 @@
  },
  "name":"r-ddalpha",
  "new_version":"1.3.11",
- "pinning_version":"2020.04.23.22.05.54",
+ "pinning_version":"2020.05.06.22.15.02",
  "raw_meta_yaml":"{% set version = \"1.3.11\" %}\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-ddalpha\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  url:\n    - {{ cran_mirror }}/src/contrib/ddalpha_{{ version }}.tar.gz\n    - {{ cran_mirror }}/src/contrib/Archive/ddalpha/ddalpha_{{ version }}.tar.gz\n  sha256: c30b4a3a9549cb4dc0a8e51e06f5b6e4c457c5326acc8f4680968c920f59b6e9\n\nbuild:\n  merge_build_host: True  # [win]\n  number: 0\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - {{ compiler('c') }}        # [not win]\n    - {{ compiler('cxx') }}      # [not win]\n    - {{ compiler('fortran') }}  # [not win]\n    - {{ compiler('m2w64_c') }}        # [win]\n    - {{ compiler('m2w64_cxx') }}        # [win]\n    - {{ compiler('m2w64_fortran') }}        # [win]\n    - {{posix}}filesystem        # [win]\n    - {{posix}}make\n    - {{posix}}sed               # [win]\n    - {{posix}}coreutils         # [win]\n    - {{posix}}zip               # [win]\n  host:\n    - r-base\n    - r-bh\n    - r-mass\n    - r-rcpp >=0.11.0\n    - r-class\n    - r-geometry\n    - r-robustbase\n    - r-sfsmisc\n  run:\n    - r-base\n    - {{native}}gcc-libs         # [win]\n    # BH is the header-only part of Boost and thus a compile-time requirement only\n    # - r-bh\n    - r-mass\n    - r-rcpp >=0.11.0\n    - r-class\n    - r-geometry\n    - r-robustbase\n    - r-sfsmisc\n\ntest:\n  commands:\n    - $R -e \"library('ddalpha')\"           # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('ddalpha')\\\"\"  # [win]\n\nabout:\n  home: https://CRAN.R-project.org/package=ddalpha\n  license: GPL-2\n  summary: Contains procedures for depth-based supervised learning, which are entirely non-parametric,\n    in particular the DDalpha-procedure (Lange, Mosler and Mozharovskyi, 2014 <doi:10.1007/s00362-012-0488-4>).\n    The training data sample is transformed by a statistical depth function to a compact\n    low-dimensional space, where the final classification is done. It also offers an\n    extension to functional data and routines for calculating certain notions of statistical\n    depth functions. 50 multivariate and 5 functional classification problems are included.\n  license_family: GPL2\n  license_file: '{{ environ[\"PREFIX\"] }}/lib/R/share/licenses/GPL-2'\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n\n# Package: ddalpha\n# Type: Package\n# Title: Depth-Based Classification and Calculation of Data Depth\n# Version: 1.3.8\n# Date: 2019-01-06\n# Authors@R: c(person(\"Oleksii\", \"Pokotylo\", role=c(\"aut\", \"cre\"), email = \"alexey.pokotylo@gmail.com\"), person(\"Pavlo\", \"Mozharovskyi\", role=c(\"aut\"), email = \"pavlo.mozharovskyi@ensai.fr\"), person(\"Rainer\", \"Dyckerhoff\", role=c(\"aut\"), email = \"rainer.dyckerhoff@statistik.uni-koeln.de\"), person(\"Stanislav\", \"Nagy\", role=c(\"aut\"), email = \"nagy@karlin.mff.cuni.cz\"))\n# SystemRequirements: C++11\n# Depends: R (>= 2.10), stats, utils, graphics, grDevices, MASS, class, robustbase, sfsmisc, geometry\n# Imports: Rcpp (>= 0.11.0)\n# LinkingTo: BH, Rcpp\n# Description: Contains procedures for depth-based supervised learning, which are entirely non-parametric, in particular the DDalpha-procedure (Lange, Mosler and Mozharovskyi, 2014 <doi:10.1007/s00362-012-0488-4>). The training data sample is transformed by a statistical depth function to a compact low-dimensional space, where the final classification is done. It also offers an extension to functional data and routines for calculating certain notions of statistical depth functions. 50 multivariate and 5 functional classification problems are included.\n# License: GPL-2\n# NeedsCompilation: yes\n# Packaged: 2019-01-06 14:13:33 UTC; User\n# Author: Oleksii Pokotylo [aut, cre], Pavlo Mozharovskyi [aut], Rainer Dyckerhoff [aut], Stanislav Nagy [aut]\n# Maintainer: Oleksii Pokotylo <alexey.pokotylo@gmail.com>\n# Repository: CRAN\n# Date/Publication: 2019-01-06 15:40:03 UTC\n",
  "req":{
   "__set__":true,
@@ -396,7 +415,7 @@
    "elements":[]
   }
  },
- "smithy_version":"No azure token. Create a token and\nput it in ~/.conda-smithy/azure.token\n3.6.17",
+ "smithy_version":"No azure token. Create a token and\nput it in ~/.conda-smithy/azure.token\n3.7.0\n",
  "strong_exports":false,
  "total_requirements":{
   "build":{
