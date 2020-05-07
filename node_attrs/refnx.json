@@ -360,9 +360,6 @@
  ],
  "bad":false,
  "conda-forge.yml":{
-  "compiler_stack":"comp7",
-  "max_py_ver":"37",
-  "max_r_ver":"35",
   "provider":{
    "win":"azure"
   }
@@ -389,7 +386,7 @@
   },
   "package":{
    "name":"refnx",
-   "version":"0.1.11"
+   "version":"0.1.14"
   },
   "requirements":{
    "build":[
@@ -436,9 +433,9 @@
    ]
   },
   "source":{
-   "fn":"refnx-0.1.11.tar.gz",
-   "sha256":"eeb4a910a07037c25ee0dbbeb5f7b2e44294c4e61e04f12d68c295cd735f2fda",
-   "url":"https://github.com/refnx/refnx/archive/v0.1.11.tar.gz"
+   "fn":"refnx-0.1.14.tar.gz",
+   "sha256":"4052496a0939cbe88f4e96e89540f83d27eecd08dff4293ae237f7be5b020710",
+   "url":"https://github.com/refnx/refnx/archive/v0.1.14.tar.gz"
   },
   "test":{
    "commands":[
@@ -503,7 +500,7 @@
  },
  "new_version_errors":{},
  "pinning_version":"2020.05.06.22.15.02",
- "raw_meta_yaml":"{% set name = \"refnx\" %}\n{% set version = \"0.1.11\" %}\n{% set sha256 = \"eeb4a910a07037c25ee0dbbeb5f7b2e44294c4e61e04f12d68c295cd735f2fda\" %}\n\n\npackage:\n  name: {{ name }}\n  version: {{ version }}\n\nsource:\n  fn: {{ name }}-{{ version }}.tar.gz\n  url: https://github.com/refnx/refnx/archive/v{{ version }}.tar.gz\n  sha256: {{ sha256 }}\n\nbuild:\n  number: 0\n\n  skip: true  # [py27]\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n    - {{ cdt('mesa-libgl-devel') }}  # [linux]\n    - {{ cdt('mesa-dri-drivers') }}  # [linux]\n    - {{ cdt('libselinux') }}  # [linux]\n    - {{ cdt('libxdamage') }}  # [linux]\n    - {{ cdt('libxxf86vm') }}  # [linux]\n    - llvm-openmp  # [osx]\n\n  host:\n    - python\n    - numpy\n    - cython\n    - setuptools\n    - xorg-libxfixes  # [linux]\n    - llvm-openmp  # [osx]\n\n  run:\n    - python\n    - {{ pin_compatible('numpy') }}\n    - scipy\n    - llvm-openmp  # [osx]\n\ntest:\n  requires:\n    - pytest\n    - pytest-qt\n    - nose\n    - uncertainties\n    - scipy>=1.2.0\n    - xlrd\n    - pandas\n    - h5py\n    - matplotlib\n    - ipywidgets\n    - traitlets\n    - corner\n    - tqdm\n    # try using pyqt from defaults instead of conda-forge\n    - pyqt >=5  # [osx and win]\n    - periodictable\n\n  commands:\n    - export MPLBACKEND=agg  # [osx and linux]\n    - py.test --pyargs refnx -v --durations=0  # [osx and win]\n    # can't get the pyqt GUI test to run for some reason, not even with xvfb\n    # - xvfb-run -a bash -c 'py.test --pyargs refnx -v --duration=0'  # [linux]\n    - conda install -y -c defaults pyqt; xvfb-run -w 3 -d bash -c 'py.test --pyargs refnx -v --durations=0'  # [linux]\n\n  imports:\n    - refnx\n\nabout:\n  home: https://github.com/refnx/refnx\n  license: BSD 3-Clause\n  license_file: LICENSE\n  summary: 'Neutron and X-ray Reflectometry Analysis'\n  doc_url: https://refnx.github.io\n\nextra:\n  recipe-maintainers:\n    - andyfaff\n",
+ "raw_meta_yaml":"{% set name = \"refnx\" %}\n{% set version = \"0.1.14\" %}\n{% set sha256 = \"4052496a0939cbe88f4e96e89540f83d27eecd08dff4293ae237f7be5b020710\" %}\n\n\npackage:\n  name: {{ name }}\n  version: {{ version }}\n\nsource:\n  fn: {{ name }}-{{ version }}.tar.gz\n  url: https://github.com/refnx/refnx/archive/v{{ version }}.tar.gz\n  sha256: {{ sha256 }}\n\nbuild:\n  number: 0\n\n  skip: true  # [py27]\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n    - {{ cdt('mesa-libgl-devel') }}  # [linux]\n    - {{ cdt('mesa-dri-drivers') }}  # [linux]\n    - {{ cdt('libselinux') }}  # [linux]\n    - {{ cdt('libxdamage') }}  # [linux]\n    - {{ cdt('libxxf86vm') }}  # [linux]\n    - llvm-openmp  # [osx]\n\n  host:\n    - python\n    - numpy\n    - cython\n    - setuptools\n    - xorg-libxfixes  # [linux]\n    - llvm-openmp  # [osx]\n\n  run:\n    - python\n    - {{ pin_compatible('numpy') }}\n    - scipy\n    - llvm-openmp  # [osx]\n\ntest:\n  requires:\n    - pytest\n    - pytest-qt\n    - nose\n    - uncertainties\n    - scipy>=1.2.0\n    - xlrd\n    - pandas\n    - h5py\n    - matplotlib\n    - ipywidgets\n    - traitlets\n    - corner\n    - tqdm\n    # try using pyqt from defaults instead of conda-forge\n    - pyqt >=5  # [osx and win]\n    - periodictable\n\n  commands:\n    - export MPLBACKEND=agg  # [osx and linux]\n    - py.test --pyargs refnx -v --durations=0  # [osx and win]\n    # can't get the pyqt GUI test to run for some reason, not even with xvfb\n    # - xvfb-run -a bash -c 'py.test --pyargs refnx -v --duration=0'  # [linux]\n    - conda install -y -c defaults pyqt; xvfb-run -w 3 -d bash -c 'py.test --pyargs refnx -v --durations=0'  # [linux]\n\n  imports:\n    - refnx\n\nabout:\n  home: https://github.com/refnx/refnx\n  license: BSD 3-Clause\n  license_file: LICENSE\n  summary: Neutron and X-ray Reflectometry Analysis\n  doc_url: https://refnx.github.io\n\nextra:\n  recipe-maintainers:\n    - andyfaff\n",
  "req":{
   "__set__":true,
   "elements":[
@@ -624,5 +621,5 @@
   }
  },
  "url":"https://github.com/refnx/refnx/archive/v0.1.9.tar.gz",
- "version":"0.1.11"
+ "version":"0.1.14"
 }
