@@ -40,7 +40,7 @@
    "summary":"The fastest Verilog HDL simulator"
   },
   "build":{
-   "number":"0",
+   "number":"1",
    "skip":true
   },
   "extra":{
@@ -90,18 +90,20 @@
     "c_compiler_stub",
     "cxx_compiler_stub",
     "make",
-    "python",
     "perl",
     "c_compiler_stub",
     "cxx_compiler_stub",
     "make",
-    "python",
     "perl",
     "c_compiler_stub",
     "cxx_compiler_stub",
     "make",
-    "python",
     "perl"
+   ],
+   "run_constrained":[
+    "python  >=3.5",
+    "python  >=3.5",
+    "python  >=3.5"
    ]
   },
   "source":{
@@ -136,7 +138,7 @@
  },
  "new_version_errors":{},
  "pinning_version":"2020.05.06.22.15.02",
- "raw_meta_yaml":"{% set name = \"verilator\" %}\n{% set version = \"4.034\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  url: https://github.com/{{ name }}/{{ name }}/archive/v{{ version }}.tar.gz\n  sha256: 17a087fc74fd1ab035a43ba38d6f6198150ee11b20077855404ddb4c1620c6b7\n  patches:\n    - patches/0001-Use-usr-bin-env-perl-in-lieu-of-usr-bin-perl.patch\n\nbuild:\n  number: 0\n  skip: true  # [win]\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n    - autoconf\n    - make\n    - bison\n    - python\n    - perl\n  host:\n    - zlib\n    - flex  # need to link against it for target\n  run:\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n    - make\n    - python\n    - perl\n\ntest:\n  source_files:\n    - examples/make_hello_c\n  commands:\n    - verilator --version\n    - cd examples/make_hello_c && make clean default\n\nabout:\n  home: https://veripool.org/wiki/verilator\n  license: GPL-3.0-only OR Artistic-2.0\n  license_file:\n    - LICENSE\n    - Artistic\n  summary: The fastest Verilog HDL simulator\n\n  description: |\n    Welcome to Verilator, the fastest Verilog HDL simulator.\n      \u2022 Accepts synthesizable Verilog or SystemVerilog\n      \u2022 Performs lint code-quality checks\n      \u2022 Compiles into multithreaded C++, or SystemC\n      \u2022 Creates XML to front-end your own tools\n    Fast\n      \u2022 Outperforms many commercial simulators\n      \u2022 Single- and multi-threaded output models\n    Widely Used\n      \u2022 Wide industry and academic deployment\n      \u2022 Out-of-the-box support from Arm, and RISC-V vendor IP\n    Community Driven & Openly Licensed\n      \u2022 Guided by the CHIPS Alliance and Linux Foundation\n      \u2022 Open, and free as in both speech and beer\n      \u2022 More simulation for your verification budget\n    Commercial Support Available\n      \u2022 Commercial support contracts\n      \u2022 Design support contracts\n      \u2022 Enhancement contracts\n  doc_url: https://www.veripool.org/projects/verilator/wiki/Documentation\n  dev_url: https://github.com/verilator/verilator\n\nextra:\n  recipe-maintainers:\n    - timsnyder\n",
+ "raw_meta_yaml":"{% set name = \"verilator\" %}\n{% set version = \"4.034\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  url: https://github.com/{{ name }}/{{ name }}/archive/v{{ version }}.tar.gz\n  sha256: 17a087fc74fd1ab035a43ba38d6f6198150ee11b20077855404ddb4c1620c6b7\n  patches:\n    - patches/0001-Use-usr-bin-env-perl-in-lieu-of-usr-bin-perl.patch\n\nbuild:\n  number: 1\n  skip: true  # [win]\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n    - autoconf\n    - make\n    - bison\n    - python\n    - perl\n  host:\n    - zlib\n    - flex  # need to link against it for target\n  run:\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n    - make\n    - perl\n  run_constrained:\n    - python  >=3.5\n\ntest:\n  source_files:\n    - examples/make_hello_c\n  commands:\n    - verilator --version\n    - cd examples/make_hello_c && make clean default\n\nabout:\n  home: https://veripool.org/wiki/verilator\n  license: GPL-3.0-only OR Artistic-2.0\n  license_file:\n    - LICENSE\n    - Artistic\n  summary: The fastest Verilog HDL simulator\n\n  description: |\n    Welcome to Verilator, the fastest Verilog HDL simulator.\n      \u2022 Accepts synthesizable Verilog or SystemVerilog\n      \u2022 Performs lint code-quality checks\n      \u2022 Compiles into multithreaded C++, or SystemC\n      \u2022 Creates XML to front-end your own tools\n    Fast\n      \u2022 Outperforms many commercial simulators\n      \u2022 Single- and multi-threaded output models\n    Widely Used\n      \u2022 Wide industry and academic deployment\n      \u2022 Out-of-the-box support from Arm, and RISC-V vendor IP\n    Community Driven & Openly Licensed\n      \u2022 Guided by the CHIPS Alliance and Linux Foundation\n      \u2022 Open, and free as in both speech and beer\n      \u2022 More simulation for your verification budget\n    Commercial Support Available\n      \u2022 Commercial support contracts\n      \u2022 Design support contracts\n      \u2022 Enhancement contracts\n  doc_url: https://www.veripool.org/projects/verilator/wiki/Documentation\n  dev_url: https://github.com/verilator/verilator\n\nextra:\n  recipe-maintainers:\n    - timsnyder\n",
  "req":{
   "__set__":true,
   "elements":[
@@ -177,8 +179,7 @@
     "c_compiler_stub",
     "cxx_compiler_stub",
     "make",
-    "perl",
-    "python"
+    "perl"
    ]
   },
   "test":{
@@ -214,8 +215,7 @@
     "c_compiler_stub",
     "cxx_compiler_stub",
     "make",
-    "perl",
-    "python"
+    "perl"
    ]
   },
   "test":{
