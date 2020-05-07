@@ -108,9 +108,6 @@
   "bot":{
    "automerge":true
   },
-  "compiler_stack":"comp7",
-  "max_py_ver":"37",
-  "max_r_ver":"35",
   "provider":{
    "win":"azure"
   }
@@ -127,7 +124,7 @@
   },
   "build":{
    "merge_build_host":true,
-   "number":"0",
+   "number":"1",
    "rpaths":[
     "lib/R/lib/",
     "lib/",
@@ -210,7 +207,7 @@
  "name":"r-coranking",
  "new_version":"0.2.1",
  "pinning_version":"2020.05.06.22.15.02",
- "raw_meta_yaml":"{% set version = \"0.2.1\" %}\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-coranking\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  url:\n    - {{ cran_mirror }}/src/contrib/coRanking_{{ version }}.tar.gz\n    - {{ cran_mirror }}/src/contrib/Archive/coRanking/coRanking_{{ version }}.tar.gz\n  sha256: c940b615e88e123b7dd8afa356ae3e0a178cb089cf1f4ecbfff584d4d64e8880\n\nbuild:\n  merge_build_host: True  # [win]\n  number: 0\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - {{ compiler('c') }}              # [not win]\n    - {{ compiler('m2w64_c') }}        # [win]\n    - {{ compiler('cxx') }}            # [not win]\n    - {{ compiler('m2w64_cxx') }}      # [win]\n    - {{posix}}filesystem        # [win]\n    - {{posix}}make\n    - {{posix}}sed               # [win]\n    - {{posix}}coreutils         # [win]\n    - {{posix}}zip               # [win]\n  host:\n    - r-base\n    - r-rtsne\n    - r-scatterplot3d\n  run:\n    - r-base\n    - r-rtsne\n    - r-scatterplot3d\n    - {{native}}gcc-libs         # [win]\n\ntest:\n  commands:\n    - $R -e \"library('coRanking')\"           # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('coRanking')\\\"\"  # [win]\n\nabout:\n  home: https://github.com/gdkrmr/coRanking\n  license: GPL-3\n  summary: Calculates the co-ranking matrix to assess the quality of a dimensionality reduction.\n  license_family: GPL3\n  license_file: '{{ environ[\"PREFIX\"] }}/lib/R/share/licenses/GPL-3'\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n\n# Package: coRanking\n# Title: Co-Ranking Matrix\n# Version: 0.1.4\n# Author: Guido Kraemer\n# Maintainer: Guido Kraemer <gkraemer@bgc-jena.mpg.de>\n# Description: Calculates the co-ranking matrix to assess the quality of a dimensionality reduction.\n# URL: https://github.com/gdkrmr/coRanking\n# BugReports: https://github.com/gdkrmr/coRanking/issues\n# License: GPL-3 | file LICENSE\n# Imports: methods, graphics, stats\n# RoxygenNote: 6.1.0\n# Collate: 'coranking-package.R' 'coranking.R' 'coranking_internals.R' 'lcmc.R' 'criteria.R' 'image.R' 'rankmatrix.R' 'submatrix.R'\n# Suggests: testthat, knitr, rmarkdown, Rtsne, scatterplot3d\n# VignetteBuilder: knitr\n# NeedsCompilation: yes\n# Packaged: 2018-10-01 11:34:16 UTC; gkraemer\n# Repository: CRAN\n# Date/Publication: 2018-10-01 12:20:03 UTC\n",
+ "raw_meta_yaml":"{% set version = \"0.2.1\" %}\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-coranking\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  url:\n    - {{ cran_mirror }}/src/contrib/coRanking_{{ version }}.tar.gz\n    - {{ cran_mirror }}/src/contrib/Archive/coRanking/coRanking_{{ version }}.tar.gz\n  sha256: c940b615e88e123b7dd8afa356ae3e0a178cb089cf1f4ecbfff584d4d64e8880\n\nbuild:\n  merge_build_host: True  # [win]\n  number: 1\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - {{ compiler('c') }}              # [not win]\n    - {{ compiler('m2w64_c') }}        # [win]\n    - {{ compiler('cxx') }}            # [not win]\n    - {{ compiler('m2w64_cxx') }}      # [win]\n    - {{ posix }}filesystem        # [win]\n    - {{ posix }}make\n    - {{ posix }}sed               # [win]\n    - {{ posix }}coreutils         # [win]\n    - {{ posix }}zip               # [win]\n  host:\n    - r-base\n    - r-rtsne\n    - r-scatterplot3d\n  run:\n    - r-base\n    - r-rtsne\n    - r-scatterplot3d\n    - {{ native }}gcc-libs         # [win]\n\ntest:\n  commands:\n    - $R -e \"library('coRanking')\"           # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('coRanking')\\\"\"  # [win]\n\nabout:\n  home: https://github.com/gdkrmr/coRanking\n  license: GPL-3\n  summary: Calculates the co-ranking matrix to assess the quality of a dimensionality reduction.\n  license_family: GPL3\n  license_file: '{{ environ[\"PREFIX\"] }}/lib/R/share/licenses/GPL-3'\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n\n# Package: coRanking\n# Title: Co-Ranking Matrix\n# Version: 0.1.4\n# Author: Guido Kraemer\n# Maintainer: Guido Kraemer <gkraemer@bgc-jena.mpg.de>\n# Description: Calculates the co-ranking matrix to assess the quality of a dimensionality reduction.\n# URL: https://github.com/gdkrmr/coRanking\n# BugReports: https://github.com/gdkrmr/coRanking/issues\n# License: GPL-3 | file LICENSE\n# Imports: methods, graphics, stats\n# RoxygenNote: 6.1.0\n# Collate: 'coranking-package.R' 'coranking.R' 'coranking_internals.R' 'lcmc.R' 'criteria.R' 'image.R' 'rankmatrix.R' 'submatrix.R'\n# Suggests: testthat, knitr, rmarkdown, Rtsne, scatterplot3d\n# VignetteBuilder: knitr\n# NeedsCompilation: yes\n# Packaged: 2018-10-01 11:34:16 UTC; gkraemer\n# Repository: CRAN\n# Date/Publication: 2018-10-01 12:20:03 UTC\n",
  "req":{
   "__set__":true,
   "elements":[
