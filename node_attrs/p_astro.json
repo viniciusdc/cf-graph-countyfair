@@ -129,38 +129,38 @@
    "dev_url":"https://git.ligo.org/lscsoft/p-astro/",
    "doc_url":"https://lscsoft.docs.ligo.org/p-astro/",
    "home":"https://lscsoft.docs.ligo.org/p-astro/",
-   "license":"GPLv3",
+   "license":"GPL-3.0-or-later",
    "license_family":"GPL",
    "license_file":"LICENSE",
    "summary":"Low-latency estimation of category-wise astrophysical probability of GW candidates"
   },
   "build":{
    "entry_points":[
-    "em_bright_categorize = driver_scripts.categorize:main",
-    "em_bright_dag_writer = driver_scripts.dag_writer:main",
-    "em_bright_extract = driver_scripts.utils:extract",
-    "em_bright_join = driver_scripts.utils:join",
-    "em_bright_train = driver_scripts.utils:train",
-    "p_astro_histogram_by_bin = driver_scripts.p_astro_utils:histogram_by_bin",
-    "p_astro_compute_means = driver_scripts.p_astro_utils:compute_counts_mean",
-    "em_bright_categorize = driver_scripts.categorize:main",
-    "em_bright_dag_writer = driver_scripts.dag_writer:main",
-    "em_bright_extract = driver_scripts.utils:extract",
-    "em_bright_join = driver_scripts.utils:join",
-    "em_bright_train = driver_scripts.utils:train",
-    "p_astro_histogram_by_bin = driver_scripts.p_astro_utils:histogram_by_bin",
-    "p_astro_compute_means = driver_scripts.p_astro_utils:compute_counts_mean",
-    "em_bright_categorize = driver_scripts.categorize:main",
-    "em_bright_dag_writer = driver_scripts.dag_writer:main",
-    "em_bright_extract = driver_scripts.utils:extract",
-    "em_bright_join = driver_scripts.utils:join",
-    "em_bright_train = driver_scripts.utils:train",
-    "p_astro_histogram_by_bin = driver_scripts.p_astro_utils:histogram_by_bin",
-    "p_astro_compute_means = driver_scripts.p_astro_utils:compute_counts_mean"
+    "em_bright_categorize = ligo.categorize:main",
+    "em_bright_dag_writer = ligo.dag_writer:main",
+    "em_bright_extract = ligo.utils:extract",
+    "em_bright_join = ligo.utils:join",
+    "em_bright_train = ligo.utils:train",
+    "p_astro_compute_means = ligo.p_astro_utils:compute_counts_mean",
+    "p_astro_histogram_by_bin = ligo.p_astro_utils:histogram_by_bin",
+    "em_bright_categorize = ligo.categorize:main",
+    "em_bright_dag_writer = ligo.dag_writer:main",
+    "em_bright_extract = ligo.utils:extract",
+    "em_bright_join = ligo.utils:join",
+    "em_bright_train = ligo.utils:train",
+    "p_astro_compute_means = ligo.p_astro_utils:compute_counts_mean",
+    "p_astro_histogram_by_bin = ligo.p_astro_utils:histogram_by_bin",
+    "em_bright_categorize = ligo.categorize:main",
+    "em_bright_dag_writer = ligo.dag_writer:main",
+    "em_bright_extract = ligo.utils:extract",
+    "em_bright_join = ligo.utils:join",
+    "em_bright_train = ligo.utils:train",
+    "p_astro_compute_means = ligo.p_astro_utils:compute_counts_mean",
+    "p_astro_histogram_by_bin = ligo.p_astro_utils:histogram_by_bin"
    ],
    "noarch":"python",
    "number":"0",
-   "script":" -m pip install . -v"
+   "script":"-m pip install . -vv"
   },
   "extra":{
    "recipe-maintainers":[
@@ -171,7 +171,7 @@
   },
   "package":{
    "name":"p_astro",
-   "version":"0.8.1"
+   "version":"0.8.2"
   },
   "requirements":{
    "host":[
@@ -199,7 +199,7 @@
     "python-lalinspiral",
     "python-lalsimulation",
     "python-ligo-lw",
-    "scikit-learn 0.19.2",
+    "scikit-learn 0.22.2.post1",
     "scipy",
     "astropy",
     "h5py",
@@ -211,7 +211,7 @@
     "python-lalinspiral",
     "python-lalsimulation",
     "python-ligo-lw",
-    "scikit-learn 0.19.2",
+    "scikit-learn 0.22.2.post1",
     "scipy",
     "astropy",
     "h5py",
@@ -223,15 +223,43 @@
     "python-lalinspiral",
     "python-lalsimulation",
     "python-ligo-lw",
-    "scikit-learn 0.19.2",
+    "scikit-learn 0.22.2.post1",
     "scipy"
    ]
   },
   "source":{
-   "sha256":"5331f3a9f8cc77eb9c87b3769c859844f19e532081e553b3a32bae8e6f471aa6",
-   "url":"https://pypi.io/packages/source/p/p_astro/p_astro-0.8.1.tar.gz"
+   "patches":[
+    "no-namespace-package.patch",
+    "no-namespace-package.patch",
+    "no-namespace-package.patch"
+   ],
+   "sha256":"161a358bc0f807e6e1b396e37e551e3913a4afd24fe680e98865606d0b598c0f",
+   "url":"https://pypi.io/packages/source/p/p_astro/p_astro-0.8.2.tar.gz"
   },
   "test":{
+   "commands":[
+    "em_bright_categorize --help",
+    "em_bright_dag_writer --help",
+    "em_bright_extract --help",
+    "em_bright_join --help",
+    "em_bright_train --help",
+    "p_astro_compute_means --help",
+    "p_astro_histogram_by_bin --help",
+    "em_bright_categorize --help",
+    "em_bright_dag_writer --help",
+    "em_bright_extract --help",
+    "em_bright_join --help",
+    "em_bright_train --help",
+    "p_astro_compute_means --help",
+    "p_astro_histogram_by_bin --help",
+    "em_bright_categorize --help",
+    "em_bright_dag_writer --help",
+    "em_bright_extract --help",
+    "em_bright_join --help",
+    "em_bright_train --help",
+    "p_astro_compute_means --help",
+    "p_astro_histogram_by_bin --help"
+   ],
    "imports":[
     "ligo.computeDiskMass",
     "ligo.em_bright",
@@ -252,7 +280,7 @@
  },
  "new_version_errors":{},
  "pinning_version":"2020.04.28.13.02.26",
- "raw_meta_yaml":"{% set name = \"p_astro\" %}\n{% set version = \"0.8.1\" %}\n\npackage:\n  name: \"{{ name|lower }}\"\n  version: \"{{ version }}\"\n\nsource:\n  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz\n  sha256: 5331f3a9f8cc77eb9c87b3769c859844f19e532081e553b3a32bae8e6f471aa6\n\nbuild:\n  number: 0\n  noarch: python\n  script: \"{{ PYTHON }} -m pip install . -v\"\n  entry_points:\n    - em_bright_categorize = driver_scripts.categorize:main\n    - em_bright_dag_writer = driver_scripts.dag_writer:main\n    - em_bright_extract = driver_scripts.utils:extract\n    - em_bright_join = driver_scripts.utils:join\n    - em_bright_train = driver_scripts.utils:train\n    - p_astro_histogram_by_bin = driver_scripts.p_astro_utils:histogram_by_bin\n    - p_astro_compute_means = driver_scripts.p_astro_utils:compute_counts_mean\n\nrequirements:\n  host:\n    - pip\n    - pytest-runner\n    - python >=3.6\n    - setuptools\n  run:\n    - astropy\n    - h5py\n    - ligo-common\n    - numpy\n    - pandas\n    - python >=3.6\n    - python-lal\n    - python-lalinspiral\n    - python-lalsimulation\n    - python-ligo-lw\n    - scikit-learn 0.19.2\n    - scipy\n\ntest:\n  imports:\n    - ligo.computeDiskMass\n    - ligo.em_bright\n    - ligo.p_astro\n\nabout:\n  home: https://lscsoft.docs.ligo.org/p-astro/\n  dev_url: https://git.ligo.org/lscsoft/p-astro/\n  doc_url: https://lscsoft.docs.ligo.org/p-astro/\n  license: GPLv3\n  license_family: GPL\n  license_file: LICENSE\n  summary: Low-latency estimation of category-wise astrophysical probability of GW candidates\n\nextra:\n  recipe-maintainers:\n    - duncanmmacleod\n",
+ "raw_meta_yaml":"{% set name = \"p_astro\" %}\n{% set version = \"0.8.2\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz\n  sha256: 161a358bc0f807e6e1b396e37e551e3913a4afd24fe680e98865606d0b598c0f\n  patches:\n    - no-namespace-package.patch\n\nbuild:\n  number: 0\n  noarch: python\n  script: {{ PYTHON }} -m pip install . -vv\n  entry_points:\n    - em_bright_categorize = ligo.categorize:main\n    - em_bright_dag_writer = ligo.dag_writer:main\n    - em_bright_extract = ligo.utils:extract\n    - em_bright_join = ligo.utils:join\n    - em_bright_train = ligo.utils:train\n    - p_astro_compute_means = ligo.p_astro_utils:compute_counts_mean\n    - p_astro_histogram_by_bin = ligo.p_astro_utils:histogram_by_bin\n\nrequirements:\n  host:\n    - pip\n    - pytest-runner\n    - python >=3.6\n    - setuptools\n  run:\n    - astropy\n    - h5py\n    - ligo-common\n    - numpy\n    - pandas\n    - python >=3.6\n    - python-lal\n    - python-lalinspiral\n    - python-lalsimulation\n    - python-ligo-lw\n    - scikit-learn 0.22.2.post1\n    - scipy\n\ntest:\n  imports:\n    - ligo.computeDiskMass\n    - ligo.em_bright\n    - ligo.p_astro\n  commands:\n    - em_bright_categorize --help\n    - em_bright_dag_writer --help\n    - em_bright_extract --help\n    - em_bright_join --help\n    - em_bright_train --help\n    - p_astro_compute_means --help\n    - p_astro_histogram_by_bin --help\n\nabout:\n  home: https://lscsoft.docs.ligo.org/p-astro/\n  dev_url: https://git.ligo.org/lscsoft/p-astro/\n  doc_url: https://lscsoft.docs.ligo.org/p-astro/\n  license: GPL-3.0-or-later\n  license_family: GPL\n  license_file: LICENSE\n  summary: Low-latency estimation of category-wise astrophysical probability of GW candidates\n\nextra:\n  recipe-maintainers:\n    - duncanmmacleod\n",
  "req":{
   "__set__":true,
   "elements":[
@@ -338,7 +366,7 @@
     "python-lalinspiral",
     "python-lalsimulation",
     "python-ligo-lw",
-    "scikit-learn 0.19.2",
+    "scikit-learn 0.22.2.post1",
     "scipy"
    ]
   },
@@ -348,5 +376,5 @@
   }
  },
  "url":"https://pypi.io/packages/source/p/p_astro/p_astro-0.7.tar.gz",
- "version":"0.8.1"
+ "version":"0.8.2"
 }
