@@ -59,9 +59,6 @@
   "bot":{
    "automerge":true
   },
-  "compiler_stack":"comp7",
-  "max_py_ver":"37",
-  "max_r_ver":"35",
   "provider":{
    "win":"azure"
   }
@@ -71,13 +68,18 @@
  "meta_yaml":{
   "about":{
    "home":"https://CRAN.R-project.org/package=biwt",
-   "license":"GPL-2",
+   "license":"GPL-2.0-only",
    "license_family":"GPL2",
+   "license_file":[
+    "/lib/R/share/licenses/GPL-2",
+    "/lib/R/share/licenses/GPL-2",
+    "/lib/R/share/licenses/GPL-2"
+   ],
    "summary":"Compute multivariate location, scale, and correlation estimates based on Tukey's biweight M-estimator."
   },
   "build":{
    "noarch":"generic",
-   "number":"1002",
+   "number":"1003",
    "rpaths":[
     "lib/R/lib/",
     "lib/",
@@ -157,7 +159,7 @@
  "name":"r-biwt",
  "new_version":"1.0",
  "pinning_version":"2020.05.06.22.15.02",
- "raw_meta_yaml":"{% set version = '1.0' %}\n\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-biwt\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  fn: biwt_{{ version }}.tar.gz\n  url:\n    - https://cran.r-project.org/src/contrib/biwt_{{ version }}.tar.gz\n    - https://cran.r-project.org/src/contrib/Archive/biwt/biwt_{{ version }}.tar.gz\n\n  sha256: 2428758fad46b1569b58e4985806c0df79e9fd3a3115d4902512f5e127ea63d5\n\nbuild:\n  noarch: generic\n  number: 1002\n\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - r-base\n    - r-mass\n    - r-rrcov\n\n  run:\n    - r-base\n    - r-mass\n    - r-rrcov\n\ntest:\n  commands:\n    - $R -e \"library('biwt')\"  # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('biwt')\\\"\"  # [win]\n\nabout:\n  home: https://CRAN.R-project.org/package=biwt\n  license: GPL-2\n  summary: Compute multivariate location, scale, and correlation estimates based on Tukey's biweight\n    M-estimator.\n  license_family: GPL2\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n    - dpryan79\n    - MathiasHaudgaard\n    - FrodePedersen\n    - ArneKr\n",
+ "raw_meta_yaml":"{% set version = \"1.0\" %}\n\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-biwt\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  fn: biwt_{{ version }}.tar.gz\n  url:\n    - https://cran.r-project.org/src/contrib/biwt_{{ version }}.tar.gz\n    - https://cran.r-project.org/src/contrib/Archive/biwt/biwt_{{ version }}.tar.gz\n\n  sha256: 2428758fad46b1569b58e4985806c0df79e9fd3a3115d4902512f5e127ea63d5\n\nbuild:\n  noarch: generic\n  number: 1003\n\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - r-base\n    - r-mass\n    - r-rrcov\n\n  run:\n    - r-base\n    - r-mass\n    - r-rrcov\n\ntest:\n  commands:\n    - $R -e \"library('biwt')\"  # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('biwt')\\\"\"  # [win]\n\nabout:\n  home: https://CRAN.R-project.org/package=biwt\n  license: GPL-2.0-only\n  summary: Compute multivariate location, scale, and correlation estimates based on Tukey's biweight M-estimator.\n  license_family: GPL2\n\n  license_file:\n    - {{ environ[\"PREFIX\"] }}/lib/R/share/licenses/GPL-2\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n    - dpryan79\n    - MathiasHaudgaard\n    - FrodePedersen\n    - ArneKr\n",
  "req":{
   "__set__":true,
   "elements":[
