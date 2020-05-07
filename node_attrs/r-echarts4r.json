@@ -93,9 +93,6 @@
   "bot":{
    "automerge":true
   },
-  "compiler_stack":"comp7",
-  "max_py_ver":"37",
-  "max_r_ver":"35",
   "provider":{
    "win":"azure"
   }
@@ -105,14 +102,15 @@
  "meta_yaml":{
   "about":{
    "home":"http://echarts4r.john-coene.com/",
-   "license":"Apache (>= 2.0)",
+   "license":"Apache-2.0",
    "license_family":"APACHE",
+   "license_file":"LICENSE",
    "summary":"Easily create interactive charts by leveraging the 'Echarts Javascript' library which includes 34 chart types, themes, 'Shiny' proxies and animations."
   },
   "build":{
    "merge_build_host":true,
    "noarch":"generic",
-   "number":"0",
+   "number":"1",
    "rpaths":[
     "lib/R/lib/",
     "lib/",
@@ -255,7 +253,7 @@
  "name":"r-echarts4r",
  "new_version":"0.2.3",
  "pinning_version":"2020.05.06.22.15.02",
- "raw_meta_yaml":"{% set version = '0.2.3' %}\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-echarts4r\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  url:\n    - {{ cran_mirror }}/src/contrib/echarts4r_{{ version }}.tar.gz\n    - {{ cran_mirror }}/src/contrib/Archive/echarts4r/echarts4r_{{ version }}.tar.gz\n  sha256: d5189346619f9f02753fbc5da51f57e4341001ec243f46e9e07655e835efaf7b\n\nbuild:\n  merge_build_host: True  # [win]\n  number: 0\n  noarch: generic\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - {{posix}}zip               # [win]\n  host:\n    - r-base\n    - r-broom\n    - r-corrplot\n    - r-countrycode\n    - r-d3r\n    - r-data.tree\n    - r-dplyr\n    - r-htmltools\n    - r-htmlwidgets\n    - r-jsonlite\n    - r-magrittr\n    - r-purrr\n    - r-scales\n    - r-shiny\n    - r-stringi\n  run:\n    - r-base\n    - r-broom\n    - r-corrplot\n    - r-countrycode\n    - r-d3r\n    - r-data.tree\n    - r-dplyr\n    - r-htmltools\n    - r-htmlwidgets\n    - r-jsonlite\n    - r-magrittr\n    - r-purrr\n    - r-scales\n    - r-shiny\n    - r-stringi\n\ntest:\n  commands:\n    - $R -e \"library('echarts4r')\"           # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('echarts4r')\\\"\"  # [win]\n\nabout:\n  home: http://echarts4r.john-coene.com/\n  license: Apache (>= 2.0)\n  summary: Easily create interactive charts by leveraging the 'Echarts Javascript' library which\n    includes 34 chart types, themes, 'Shiny' proxies and animations.\n  license_family: APACHE\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n    - philip-khor\n\n# Package: echarts4r\n# Title: Create Interactive Graphs with 'Echarts JavaScript' Version 4\n# Date: 2019-07-15\n# Version: 0.2.3\n# Authors@R: person(\"John\", \"Coene\", email = \"jcoenep@gmail.com\", role = c(\"aut\", \"cre\"))\n# Description: Easily create interactive charts by leveraging the 'Echarts Javascript' library which includes 34 chart types, themes, 'Shiny' proxies and animations.\n# License: Apache License (>= 2.0)\n# Encoding: UTF-8\n# LazyData: true\n# Imports: htmlwidgets, magrittr, dplyr, purrr, countrycode, d3r, broom, shiny, scales, corrplot, data.tree, htmltools, jsonlite, stringi\n# Suggests: tidyr\n# RoxygenNote: 6.1.1\n# URL: http://echarts4r.john-coene.com/\n# BugReports: https://github.com/JohnCoene/echarts4r/issues\n# NeedsCompilation: no\n# Packaged: 2019-07-16 14:49:45 UTC; jcoe\n# Author: John Coene [aut, cre]\n# Maintainer: John Coene <jcoenep@gmail.com>\n# Repository: CRAN\n# Date/Publication: 2019-07-18 06:37:08 UTC\n",
+ "raw_meta_yaml":"{% set version = \"0.2.3\" %}\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-echarts4r\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  url:\n    - {{ cran_mirror }}/src/contrib/echarts4r_{{ version }}.tar.gz\n    - {{ cran_mirror }}/src/contrib/Archive/echarts4r/echarts4r_{{ version }}.tar.gz\n  sha256: d5189346619f9f02753fbc5da51f57e4341001ec243f46e9e07655e835efaf7b\n\nbuild:\n  merge_build_host: true  # [win]\n  number: 1\n  noarch: generic\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - {{ posix }}zip               # [win]\n  host:\n    - r-base\n    - r-broom\n    - r-corrplot\n    - r-countrycode\n    - r-d3r\n    - r-data.tree\n    - r-dplyr\n    - r-htmltools\n    - r-htmlwidgets\n    - r-jsonlite\n    - r-magrittr\n    - r-purrr\n    - r-scales\n    - r-shiny\n    - r-stringi\n  run:\n    - r-base\n    - r-broom\n    - r-corrplot\n    - r-countrycode\n    - r-d3r\n    - r-data.tree\n    - r-dplyr\n    - r-htmltools\n    - r-htmlwidgets\n    - r-jsonlite\n    - r-magrittr\n    - r-purrr\n    - r-scales\n    - r-shiny\n    - r-stringi\n\ntest:\n  commands:\n    - $R -e \"library('echarts4r')\"           # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('echarts4r')\\\"\"  # [win]\n\nabout:\n  home: http://echarts4r.john-coene.com/\n  license: Apache-2.0\n  summary: Easily create interactive charts by leveraging the 'Echarts Javascript' library which includes 34 chart types, themes, 'Shiny' proxies and animations.\n  license_family: APACHE\n  license_file: LICENSE\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n    - philip-khor\n\n# Package: echarts4r\n# Title: Create Interactive Graphs with 'Echarts JavaScript' Version 4\n# Date: 2019-07-15\n# Version: 0.2.3\n# Authors@R: person(\"John\", \"Coene\", email = \"jcoenep@gmail.com\", role = c(\"aut\", \"cre\"))\n# Description: Easily create interactive charts by leveraging the 'Echarts Javascript' library which includes 34 chart types, themes, 'Shiny' proxies and animations.\n# License: Apache License (>= 2.0)\n# Encoding: UTF-8\n# LazyData: true\n# Imports: htmlwidgets, magrittr, dplyr, purrr, countrycode, d3r, broom, shiny, scales, corrplot, data.tree, htmltools, jsonlite, stringi\n# Suggests: tidyr\n# RoxygenNote: 6.1.1\n# URL: http://echarts4r.john-coene.com/\n# BugReports: https://github.com/JohnCoene/echarts4r/issues\n# NeedsCompilation: no\n# Packaged: 2019-07-16 14:49:45 UTC; jcoe\n# Author: John Coene [aut, cre]\n# Maintainer: John Coene <jcoenep@gmail.com>\n# Repository: CRAN\n# Date/Publication: 2019-07-18 06:37:08 UTC\n",
  "req":{
   "__set__":true,
   "elements":[
