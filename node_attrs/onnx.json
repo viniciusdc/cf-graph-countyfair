@@ -189,6 +189,25 @@
     "migrator_version",
     "name"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/414945250.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"MigrationYaml",
+    "migrator_object_version":1,
+    "migrator_version":0,
+    "name":"pypy"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_object_version",
+    "migrator_version",
+    "name"
+   ]
   }
  ],
  "bad":false,
@@ -342,7 +361,7 @@
  },
  "name":"onnx",
  "new_version":"1.6.0",
- "pinning_version":"2020.04.02",
+ "pinning_version":"2020.05.06.22.15.02",
  "raw_meta_yaml":"{% set name = \"onnx\" %}\n{% set version = \"1.6.0\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  url: https://github.com/onnx/onnx/archive/v{{ version }}.tar.gz\n  sha256: a725df7c1bbed3456794c9fb8c4a5443ba0d3496f96ef3685a4625dc947de855\n  patches:\n    - patch-cmake.patch\n\nbuild:\n  number: 1\n  script:\n    - export ONNX_ML=1  # [unix]\n    - set \"ONNX_ML=1\"  # [win]\n    # build script looks at this, but not set on\n    - export CONDA_PREFIX=\"$PREFIX\"  # [unix]\n    - python -m pip install --no-deps --ignore-installed --verbose .\n  entry_points:\n    - check-model = onnx.bin.checker:check_model\n    - check-node = onnx.bin.checker:check_node\n    - backend-test-tools = onnx.backend.test.cmd_tools:main\n  skip: true  # [win]\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n    - cmake\n  host:\n    - python\n    - pip\n    - protobuf\n    - libprotobuf\n    - pytest-runner\n    - ninja\n    - pybind11\n    - numpy\n  run:\n    - python\n    - protobuf\n    - libprotobuf\n    - {{ pin_compatible('numpy') }}\n    - six\n    - typing  # [py<35]\n    - typing-extensions >=3.6.2.1\n\ntest:\n  imports:\n    - onnx\n  commands:\n    - check-model --help\n    - check-node --help\n    - backend-test-tools --help\n    - conda inspect linkages -p $PREFIX {{ name }}  # [unix]\n    - conda inspect objects -p $PREFIX {{ name }}   # [osx]\n\nabout:\n  home: https://github.com/onnx/onnx/\n  license: MIT\n  license_family: MIT\n  license_file: LICENSE\n  summary: Open Neural Network Exchange library\n  description: |\n    Open Neural Network Exchange (ONNX) is the first step toward an open\n    ecosystem that empowers AI developers to choose the right tools as their\n    project evolves. ONNX provides an open source format for AI models. It\n    defines an extensible computation graph model, as well as definitions of\n    built-in operators and standard data types. Initially we focus on the\n    capabilities needed for inferencing (evaluation).\n\nextra:\n  recipe-maintainers:\n    - ezyang\n    - marcelotrevisani\n",
  "req":{
   "__set__":true,
@@ -400,7 +419,7 @@
    "elements":[]
   }
  },
- "smithy_version":"No azure token. Create a token and\nput it in ~/.conda-smithy/azure.token\n3.6.15",
+ "smithy_version":"No azure token. Create a token and\nput it in ~/.conda-smithy/azure.token\n3.7.0\n",
  "strong_exports":false,
  "total_requirements":{
   "build":{
