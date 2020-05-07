@@ -78,9 +78,6 @@
   "bot":{
    "automerge":true
   },
-  "compiler_stack":"comp7",
-  "max_py_ver":"37",
-  "max_r_ver":"35",
   "provider":{
    "win":"azure"
   }
@@ -92,12 +89,20 @@
    "home":"https://github.com/bart6114/infuser/",
    "license":"MIT",
    "license_family":"MIT",
+   "license_file":[
+    "/lib/R/share/licenses/MIT",
+    "LICENSE",
+    "/lib/R/share/licenses/MIT",
+    "LICENSE",
+    "/lib/R/share/licenses/MIT",
+    "LICENSE"
+   ],
    "summary":"This light-weight templating package provides flexible and  user-friendly value substitution in string templates or template files (e.g. SQL files) at runtime."
   },
   "build":{
    "merge_build_host":true,
    "noarch":"generic",
-   "number":"1002",
+   "number":"1003",
    "rpaths":[
     "lib/R/lib/",
     "lib/",
@@ -175,7 +180,7 @@
  "name":"r-infuser",
  "new_version":"0.2.8",
  "pinning_version":"2020.05.06.22.15.02",
- "raw_meta_yaml":"{% set version = '0.2.8' %}\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-infuser\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  fn: infuser_{{ version }}.tar.gz\n  url:\n    - {{ cran_mirror }}/src/contrib/infuser_{{ version }}.tar.gz\n    - {{ cran_mirror }}/src/contrib/Archive/infuser/infuser_{{ version }}.tar.gz\n  sha256: f055f5855bf1b5cc1fc67e335b4c9546d8e97fb90fc743fcf6a3eb87e6d70f1f\n\nbuild:\n  noarch: generic\n  merge_build_host: True  # [win]\n  number: 1002\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - {{posix}}zip               # [win]\n  host:\n    - r-base\n  run:\n    - r-base\n\ntest:\n  commands:\n    - $R -e \"library('infuser')\"           # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('infuser')\\\"\"  # [win]\n\nabout:\n  home: https://github.com/bart6114/infuser/\n  license: MIT\n  summary: This light-weight templating package provides flexible and  user-friendly value substitution\n    in string templates or template files (e.g. SQL files) at runtime.\n  license_family: MIT\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n    - nick-youngblut\n    - johanneskoester\n    - bgruening\n    - daler\n    - jdblischak\n    - cbrueffer\n    - dbast\n",
+ "raw_meta_yaml":"{% set version = \"0.2.8\" %}\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-infuser\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  fn: infuser_{{ version }}.tar.gz\n  url:\n    - {{ cran_mirror }}/src/contrib/infuser_{{ version }}.tar.gz\n    - {{ cran_mirror }}/src/contrib/Archive/infuser/infuser_{{ version }}.tar.gz\n  sha256: f055f5855bf1b5cc1fc67e335b4c9546d8e97fb90fc743fcf6a3eb87e6d70f1f\n\nbuild:\n  noarch: generic\n  merge_build_host: true  # [win]\n  number: 1003\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - {{ posix }}zip               # [win]\n  host:\n    - r-base\n  run:\n    - r-base\n\ntest:\n  commands:\n    - $R -e \"library('infuser')\"           # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('infuser')\\\"\"  # [win]\n\nabout:\n  home: https://github.com/bart6114/infuser/\n  license: MIT\n  summary: This light-weight templating package provides flexible and  user-friendly value substitution in string templates or template files (e.g. SQL files) at runtime.\n  license_family: MIT\n\n  license_file:\n    - {{ environ[\"PREFIX\"] }}/lib/R/share/licenses/MIT\n    - LICENSE\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n    - nick-youngblut\n    - johanneskoester\n    - bgruening\n    - daler\n    - jdblischak\n    - cbrueffer\n    - dbast\n",
  "req":{
   "__set__":true,
   "elements":[
