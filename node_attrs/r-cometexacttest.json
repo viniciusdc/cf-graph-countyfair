@@ -74,9 +74,6 @@
   "bot":{
    "automerge":true
   },
-  "compiler_stack":"comp7",
-  "max_py_ver":"37",
-  "max_r_ver":"35",
   "provider":{
    "win":"azure"
   }
@@ -88,11 +85,19 @@
    "home":"http://compbio.cs.brown.edu/projects/comet",
    "license":"MIT",
    "license_family":"MIT",
+   "license_file":[
+    "/lib/R/share/licenses/MIT",
+    "LICENSE",
+    "/lib/R/share/licenses/MIT",
+    "LICENSE",
+    "/lib/R/share/licenses/MIT",
+    "LICENSE"
+   ],
    "summary":"An algorithm for identifying combinations of mutually exclusive alterations in cancer genomes. CoMEt represents the mutations in a set M of k genes with a 2^k dimensional contingency table, and then computes the tail probability of observing T(M) exclusive alterations using an exact statistical test."
   },
   "build":{
    "merge_build_host":true,
-   "number":"1003",
+   "number":"1004",
    "rpaths":[
     "lib/R/lib/",
     "lib/",
@@ -160,7 +165,7 @@
  "name":"r-cometexacttest",
  "new_version":"0.1.5",
  "pinning_version":"2020.05.06.22.15.02",
- "raw_meta_yaml":"{% set version = '0.1.5' %}\n\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-cometexacttest\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  fn: cometExactTest_{{ version }}.tar.gz\n  url:\n    - https://cran.r-project.org/src/contrib/cometExactTest_{{ version }}.tar.gz\n    - https://cran.r-project.org/src/contrib/Archive/cometExactTest/cometExactTest_{{ version }}.tar.gz\n  sha256: 377b6c10946eb08be3bc593fb494779646dc4fabbab27e466a3c34966a57292b\n\nbuild:\n  merge_build_host: True  # [win]\n  number: 1003\n  skip: true  # [win32]\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - posix                # [win]\n    - {{ compiler('c') }}        # [unix]\n    - {{ compiler('m2w64_c') }}  # [win]\n  host:\n    - r-base\n    - r-dplyr\n\n  run:\n    - r-base\n    - r-dplyr\n\ntest:\n  commands:\n    - $R -e \"library('cometExactTest')\"  # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('cometExactTest')\\\"\"  # [win]\n\nabout:\n  home: http://compbio.cs.brown.edu/projects/comet\n  license: MIT\n  summary: An algorithm for identifying combinations of mutually exclusive alterations in cancer\n    genomes. CoMEt represents the mutations in a set M of k genes with a 2^k dimensional\n    contingency table, and then computes the tail probability of observing T(M) exclusive\n    alterations using an exact statistical test.\n  license_family: MIT\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n",
+ "raw_meta_yaml":"{% set version = \"0.1.5\" %}\n\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-cometexacttest\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  fn: cometExactTest_{{ version }}.tar.gz\n  url:\n    - https://cran.r-project.org/src/contrib/cometExactTest_{{ version }}.tar.gz\n    - https://cran.r-project.org/src/contrib/Archive/cometExactTest/cometExactTest_{{ version }}.tar.gz\n  sha256: 377b6c10946eb08be3bc593fb494779646dc4fabbab27e466a3c34966a57292b\n\nbuild:\n  merge_build_host: true  # [win]\n  number: 1004\n  skip: true  # [win32]\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - posix                # [win]\n    - {{ compiler('c') }}        # [unix]\n    - {{ compiler('m2w64_c') }}  # [win]\n  host:\n    - r-base\n    - r-dplyr\n\n  run:\n    - r-base\n    - r-dplyr\n\ntest:\n  commands:\n    - $R -e \"library('cometExactTest')\"  # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('cometExactTest')\\\"\"  # [win]\n\nabout:\n  home: http://compbio.cs.brown.edu/projects/comet\n  license: MIT\n  summary: An algorithm for identifying combinations of mutually exclusive alterations in cancer genomes. CoMEt represents the mutations in a set M of k genes with a 2^k dimensional contingency table, and then computes the tail probability of observing T(M) exclusive alterations using an exact statistical test.\n  license_family: MIT\n\n  license_file:\n    - {{ environ[\"PREFIX\"] }}/lib/R/share/licenses/MIT\n    - LICENSE\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n",
  "req":{
   "__set__":true,
   "elements":[
