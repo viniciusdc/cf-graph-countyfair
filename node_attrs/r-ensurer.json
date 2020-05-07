@@ -59,9 +59,6 @@
   "bot":{
    "automerge":true
   },
-  "compiler_stack":"comp7",
-  "max_py_ver":"37",
-  "max_r_ver":"35",
   "provider":{
    "win":"azure"
   }
@@ -73,12 +70,20 @@
    "home":"https://github.com/smbache/ensurer",
    "license":"MIT",
    "license_family":"MIT",
+   "license_file":[
+    "/lib/R/share/licenses/MIT",
+    "LICENSE",
+    "/lib/R/share/licenses/MIT",
+    "LICENSE",
+    "/lib/R/share/licenses/MIT",
+    "LICENSE"
+   ],
    "summary":"Add simple runtime contracts to R values. These ensure that values fulfil certain conditions and will raise appropriate errors if they do not."
   },
   "build":{
    "merge_build_host":true,
    "noarch":"generic",
-   "number":"1001",
+   "number":"1002",
    "rpaths":[
     "lib/R/lib/",
     "lib/",
@@ -159,7 +164,7 @@
  "name":"r-ensurer",
  "new_version":"1.1",
  "pinning_version":"2020.05.06.22.15.02",
- "raw_meta_yaml":"{% set version = '1.1' %}\n\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-ensurer\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  fn: ensurer_{{ version }}.tar.gz\n  url:\n    - {{ cran_mirror }}/src/contrib/ensurer_{{ version }}.tar.gz\n    - {{ cran_mirror }}/src/contrib/Archive/ensurer/ensurer_{{ version }}.tar.gz\n  sha256: 2dce76bb869ef5bcde9b4d9f7197c41405d2bbf917a1d5e1afec7b354eb46bbd\n\nbuild:\n  noarch: generic\n  merge_build_host: True  # [win]\n  number: 1001\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\n# Suggests: magrittr, testthat, knitr\nrequirements:\n  build:\n    - {{posix}}zip               # [win]\n  host:\n    - r-base\n  run:\n    - r-base\n\ntest:\n  commands:\n    - $R -e \"library('ensurer')\"           # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('ensurer')\\\"\"  # [win]\n\nabout:\n  home: https://github.com/smbache/ensurer\n  license: MIT\n  summary: Add simple runtime contracts to R values. These ensure that values fulfil certain\n    conditions and will raise appropriate errors if they do not.\n  license_family: MIT\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n    - dpryan79\n    - MathiasHaudgaard\n    - FrodePedersen\n    - ArneKr\n    - johanneskoester\n    - bgruening\n    - daler\n    - jdblischak\n",
+ "raw_meta_yaml":"{% set version = \"1.1\" %}\n\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-ensurer\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  fn: ensurer_{{ version }}.tar.gz\n  url:\n    - {{ cran_mirror }}/src/contrib/ensurer_{{ version }}.tar.gz\n    - {{ cran_mirror }}/src/contrib/Archive/ensurer/ensurer_{{ version }}.tar.gz\n  sha256: 2dce76bb869ef5bcde9b4d9f7197c41405d2bbf917a1d5e1afec7b354eb46bbd\n\nbuild:\n  noarch: generic\n  merge_build_host: true  # [win]\n  number: 1002\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\n# Suggests: magrittr, testthat, knitr\nrequirements:\n  build:\n    - {{ posix }}zip               # [win]\n  host:\n    - r-base\n  run:\n    - r-base\n\ntest:\n  commands:\n    - $R -e \"library('ensurer')\"           # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('ensurer')\\\"\"  # [win]\n\nabout:\n  home: https://github.com/smbache/ensurer\n  license: MIT\n  summary: Add simple runtime contracts to R values. These ensure that values fulfil certain conditions and will raise appropriate errors if they do not.\n  license_family: MIT\n\n  license_file:\n    - {{ environ[\"PREFIX\"] }}/lib/R/share/licenses/MIT\n    - LICENSE\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n    - dpryan79\n    - MathiasHaudgaard\n    - FrodePedersen\n    - ArneKr\n    - johanneskoester\n    - bgruening\n    - daler\n    - jdblischak\n",
  "req":{
   "__set__":true,
   "elements":[
