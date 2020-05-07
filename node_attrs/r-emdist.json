@@ -59,9 +59,6 @@
   "bot":{
    "automerge":true
   },
-  "compiler_stack":"comp7",
-  "max_py_ver":"37",
-  "max_r_ver":"35",
   "provider":{
    "win":"azure"
   }
@@ -73,11 +70,16 @@
    "home":"http://www.rforge.net/emd",
    "license":"MIT",
    "license_family":"MIT",
+   "license_file":[
+    "/lib/R/share/licenses/MIT",
+    "/lib/R/share/licenses/MIT",
+    "/lib/R/share/licenses/MIT"
+   ],
    "summary":"Package providing calculation of Earth Mover's Distance (EMD)."
   },
   "build":{
    "merge_build_host":true,
-   "number":"1001",
+   "number":"1002",
    "rpaths":[
     "lib/R/lib/",
     "lib/",
@@ -163,7 +165,7 @@
  "name":"r-emdist",
  "new_version":"0.3_1",
  "pinning_version":"2020.05.06.22.15.02",
- "raw_meta_yaml":"{% set version = '0.3-1' %}\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-emdist\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  url:\n    - {{ cran_mirror }}/src/contrib/emdist_{{ version }}.tar.gz\n    - {{ cran_mirror }}/src/contrib/Archive/emdist/emdist_{{ version }}.tar.gz\n  sha256: 389f886db3604789d867e8ed61d36c4961373f24965ec484036ddaf4d3ba24fc\n\nbuild:\n  merge_build_host: True  # [win]\n  number: 1001\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - {{ compiler('c') }}        # [not win]\n    - {{ compiler('m2w64_c') }}        # [win]\n    - {{posix}}filesystem        # [win]\n    - {{posix}}make\n    - {{posix}}sed               # [win]\n    - {{posix}}coreutils         # [win]\n    - {{posix}}zip               # [win]\n  host:\n    - r-base\n  run:\n    - r-base\n    - {{native}}gcc-libs         # [win]\n\ntest:\n  commands:\n    - $R -e \"library('emdist')\"           # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('emdist')\\\"\"  # [win]\n\nabout:\n  home: http://www.rforge.net/emd\n  license: MIT\n  summary: Package providing calculation of Earth Mover's Distance (EMD).\n  license_family: MIT\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n    - johanneskoester\n    - bgruening\n    - daler\n    - jdblischak\n    - cbrueffer\n    - dbast\n\n# Package: emdist\n# Version: 0.3-1\n# Title: Earth Mover's Distance\n# Author: Simon Urbanek <urbanek@research.att.com>, Yossi Rubner\n# Maintainer: Simon Urbanek <simon.urbanek@r-project.org>\n# Description: Package providing calculation of Earth Mover's Distance (EMD).\n# License: MIT\n# URL: http://www.rforge.net/emd\n# Packaged: 2012-11-30 19:46:49 UTC; svnuser\n# Repository: CRAN\n# Date/Publication: 2012-12-02 07:14:50\n# NeedsCompilation: yes\n",
+ "raw_meta_yaml":"{% set version = \"0.3-1\" %}\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-emdist\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  url:\n    - {{ cran_mirror }}/src/contrib/emdist_{{ version }}.tar.gz\n    - {{ cran_mirror }}/src/contrib/Archive/emdist/emdist_{{ version }}.tar.gz\n  sha256: 389f886db3604789d867e8ed61d36c4961373f24965ec484036ddaf4d3ba24fc\n\nbuild:\n  merge_build_host: true  # [win]\n  number: 1002\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - {{ compiler('c') }}        # [not win]\n    - {{ compiler('m2w64_c') }}        # [win]\n    - {{ posix }}filesystem        # [win]\n    - {{ posix }}make\n    - {{ posix }}sed               # [win]\n    - {{ posix }}coreutils         # [win]\n    - {{ posix }}zip               # [win]\n  host:\n    - r-base\n  run:\n    - r-base\n    - {{ native }}gcc-libs         # [win]\n\ntest:\n  commands:\n    - $R -e \"library('emdist')\"           # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('emdist')\\\"\"  # [win]\n\nabout:\n  home: http://www.rforge.net/emd\n  license: MIT\n  summary: Package providing calculation of Earth Mover's Distance (EMD).\n  license_family: MIT\n\n  license_file:\n    - {{ environ[\"PREFIX\"] }}/lib/R/share/licenses/MIT\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n    - johanneskoester\n    - bgruening\n    - daler\n    - jdblischak\n    - cbrueffer\n    - dbast\n\n# Package: emdist\n# Version: 0.3-1\n# Title: Earth Mover's Distance\n# Author: Simon Urbanek <urbanek@research.att.com>, Yossi Rubner\n# Maintainer: Simon Urbanek <simon.urbanek@r-project.org>\n# Description: Package providing calculation of Earth Mover's Distance (EMD).\n# License: MIT\n# URL: http://www.rforge.net/emd\n# Packaged: 2012-11-30 19:46:49 UTC; svnuser\n# Repository: CRAN\n# Date/Publication: 2012-12-02 07:14:50\n# NeedsCompilation: yes\n",
  "req":{
   "__set__":true,
   "elements":[
