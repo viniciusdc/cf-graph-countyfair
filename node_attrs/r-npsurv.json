@@ -52,6 +52,23 @@
     "migrator_version",
     "name"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/415021038.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"Version",
+    "migrator_version":0,
+    "version":"0.4_0.1"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "version"
+   ]
   }
  ],
  "bad":false,
@@ -135,8 +152,12 @@
   }
  },
  "name":"r-npsurv",
- "new_version":"0.4_0",
- "pinning_version":"2020.05.04.05.46.47",
+ "new_version":"0.4_0.1",
+ "new_version_attempts":{
+  "0.4_0.1":1
+ },
+ "new_version_errors":{},
+ "pinning_version":"2020.05.06.22.15.02",
  "raw_meta_yaml":"{% set version = '0.4-0' %}\n\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-npsurv\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  fn: npsurv_{{ version }}.tar.gz\n  url:\n    - {{ cran_mirror }}/src/contrib/npsurv_{{ version }}.tar.gz\n    - {{ cran_mirror }}/src/contrib/Archive/npsurv/npsurv_{{ version }}.tar.gz\n  sha256: 404cf7135dc40a04e9b81224a543307057a8278e11109ba1fcaa28e87c6204f3\n\nbuild:\n  noarch: generic\n  number: 1002\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  host:\n    - r-base\n    - r-lsei\n  run:\n    - r-base\n    - r-lsei\n\ntest:\n  commands:\n    - $R -e \"library('npsurv')\"           # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('npsurv')\\\"\"  # [win]\n\nabout:\n  home: https://www.stat.auckland.ac.nz/~yongwang\n  license: GPL (>= 2)\n  license_file: '{{ environ[\"PREFIX\"] }}/lib/R/share/licenses/GPL-3'\n  summary: 'Contains functions for non-parametric survival analysis of exact and interval-censored\n    observations. '\n  license_family: GPL3\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n",
  "req":{
   "__set__":true,
