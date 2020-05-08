@@ -76,9 +76,6 @@
   "bot":{
    "automerge":true
   },
-  "compiler_stack":"comp7",
-  "max_py_ver":"37",
-  "max_r_ver":"35",
   "provider":{
    "win":"azure"
   }
@@ -88,13 +85,18 @@
  "meta_yaml":{
   "about":{
    "home":"https://CRAN.R-project.org/package=hier.part",
-   "license":"GPL-2,GPL-3",
-   "license_family":"GPL",
-   "license_file":"/LICENSE",
-   "summary":"Variance partition of a multivariate data set"
+   "license":"GPL-3.0-only",
+   "license_family":"GPL3",
+   "license_file":[
+    "/lib/R/share/licenses/GPL-3",
+    "/lib/R/share/licenses/GPL-3",
+    "/lib/R/share/licenses/GPL-3"
+   ],
+   "summary":"Partitioning of the independent and joint contributions of each variable in a multivariate data set, to a linear regression by hierarchical decomposition of goodness-of-fit measures of regressions using all subsets of predictors in the data set. (i.e., model (1), (2), ..., (N), (1,2), ..., (1,N), ..., (1,2,3,...,N)). A Z-score based estimate of the 'importance' of each predictor is provided by using a randomisation test."
   },
   "build":{
-   "number":"1002",
+   "merge_build_host":true,
+   "number":"0",
    "rpaths":[
     "lib/R/lib/",
     "lib/",
@@ -102,43 +104,31 @@
     "lib/",
     "lib/R/lib/",
     "lib/"
-   ],
-   "skip":true
+   ]
   },
   "extra":{
    "recipe-maintainers":[
     "conda-forge/r",
-    "johanneskoester",
-    "bgruening",
-    "daler",
-    "jdblischak",
-    "cbrueffer",
     "slacalle",
     "conda-forge/r",
-    "johanneskoester",
-    "bgruening",
-    "daler",
-    "jdblischak",
-    "cbrueffer",
     "slacalle",
     "conda-forge/r",
-    "johanneskoester",
-    "bgruening",
-    "daler",
-    "jdblischak",
-    "cbrueffer",
     "slacalle"
    ]
   },
   "package":{
    "name":"r-hier.part",
-   "version":"1.0_4"
+   "version":"1.0_6"
   },
   "requirements":{
    "build":[
-    "c_compiler_stub",
-    "fortran_compiler_stub",
+    "m2w64_c_compiler_stub",
+    "m2w64_fortran_compiler_stub",
+    "filesystem",
     "make",
+    "sed",
+    "coreutils",
+    "zip",
     "c_compiler_stub",
     "fortran_compiler_stub",
     "make",
@@ -148,33 +138,48 @@
    ],
    "host":[
     "r-base",
+    "r-mass",
+    "r-betareg",
     "r-gtools",
     "r-base",
+    "r-mass",
+    "r-betareg",
     "r-gtools",
     "r-base",
+    "r-mass",
+    "r-betareg",
     "r-gtools"
    ],
    "run":[
     "r-base",
+    "gcc-libs",
+    "r-mass",
+    "r-betareg",
     "r-gtools",
     "r-base",
+    "r-mass",
+    "r-betareg",
     "r-gtools",
     "r-base",
+    "r-mass",
+    "r-betareg",
     "r-gtools"
    ]
   },
   "source":{
-   "fn":"hier.part_1.0-4.tar.gz",
-   "sha256":"e9f901506b5cbbbf0539d2ed395bfd30e14ae787e109de39b8642e38ff6b4c0d",
+   "sha256":"40ea67380245f2852d1b1f8a1e36b5e85c7d898f7269aa1eaaca589dc5ba9497",
    "url":[
-    "https://cran.r-project.org/src/contrib/hier.part_1.0-4.tar.gz",
-    "https://cran.r-project.org/src/contrib/hier.part_1.0-4.tar.gz",
-    "https://cran.r-project.org/src/contrib/hier.part_1.0-4.tar.gz"
+    "https://cran.r-project.org/src/contrib/hier.part_1.0-6.tar.gz",
+    "https://cran.r-project.org/src/contrib/Archive/hier.part/hier.part_1.0-6.tar.gz",
+    "https://cran.r-project.org/src/contrib/hier.part_1.0-6.tar.gz",
+    "https://cran.r-project.org/src/contrib/Archive/hier.part/hier.part_1.0-6.tar.gz",
+    "https://cran.r-project.org/src/contrib/hier.part_1.0-6.tar.gz",
+    "https://cran.r-project.org/src/contrib/Archive/hier.part/hier.part_1.0-6.tar.gz"
    ]
   },
   "test":{
    "commands":[
-    "$R -e \"library('hier.part')\"",
+    "\"%R%\" -e \"library('hier.part')\"",
     "$R -e \"library('hier.part')\"",
     "$R -e \"library('hier.part')\""
    ]
@@ -183,15 +188,24 @@
  "name":"r-hier.part",
  "new_version":false,
  "pinning_version":"2020.05.04.19.59.17",
- "raw_meta_yaml":"{% set version = '1.0-4' %}\n{% set name = 'hier.part' %}\n\npackage:\n  name: 'r-{{ name }}'\n  version: '{{ version|replace(\"-\", \"_\") }}'\n\nsource:\n  fn: '{{ name}}_{{ version }}.tar.gz'\n  url:\n    - 'https://cran.r-project.org/src/contrib/{{ name }}_{{ version }}.tar.gz'\n  sha256: 'e9f901506b5cbbbf0539d2ed395bfd30e14ae787e109de39b8642e38ff6b4c0d'\n\nbuild:\n  skip: True  # [win]\n  number: 1002\n\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - {{ compiler('fortran') }}\n    - make\n\n  host:\n    - r-base\n    - r-gtools\n\n  run:\n    - r-base\n    - r-gtools\n\ntest:\n  commands:\n    - $R -e \"library('hier.part')\"\n\nabout:\n  home: 'https://CRAN.R-project.org/package=hier.part'\n  license: 'GPL-2,GPL-3'\n  license_file: '{{ environ[\"RECIPE_DIR\"] }}/LICENSE'\n  license_family: 'GPL'\n  summary: 'Variance partition of a multivariate data set'\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n    - johanneskoester\n    - bgruening\n    - daler\n    - jdblischak\n    - cbrueffer\n    - slacalle\n",
+ "raw_meta_yaml":"{% set version = '1.0-6' %}\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-hier.part\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  url:\n    - {{ cran_mirror }}/src/contrib/hier.part_{{ version }}.tar.gz\n    - {{ cran_mirror }}/src/contrib/Archive/hier.part/hier.part_{{ version }}.tar.gz\n  sha256: 40ea67380245f2852d1b1f8a1e36b5e85c7d898f7269aa1eaaca589dc5ba9497\n\nbuild:\n  merge_build_host: True  # [win]\n  number: 0\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - {{ compiler('c') }}              # [not win]\n    - {{ compiler('m2w64_c') }}        # [win]\n    - {{ compiler('fortran') }}        # [not win]\n    - {{ compiler('m2w64_fortran') }}  # [win]\n    - {{posix}}filesystem        # [win]\n    - {{posix}}make\n    - {{posix}}sed               # [win]\n    - {{posix}}coreutils         # [win]\n    - {{posix}}zip               # [win]\n  host:\n    - r-base\n    - r-mass\n    - r-betareg\n    - r-gtools\n  run:\n    - r-base\n    - {{native}}gcc-libs         # [win]\n    - r-mass\n    - r-betareg\n    - r-gtools\n\ntest:\n  commands:\n    - $R -e \"library('hier.part')\"           # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('hier.part')\\\"\"  # [win]\n\nabout:\n  home: https://CRAN.R-project.org/package=hier.part\n  license: GPL-3.0-only\n  summary: Partitioning of the independent and joint contributions of each variable in a multivariate\n    data set, to a linear regression by hierarchical decomposition of goodness-of-fit\n    measures of regressions using all subsets of predictors in the data set. (i.e.,\n    model (1), (2), ..., (N), (1,2), ..., (1,N), ..., (1,2,3,...,N)). A Z-score based\n    estimate of the 'importance' of each predictor is provided by using a randomisation\n    test.\n  license_family: GPL3\n  license_file:\n    - '{{ environ[\"PREFIX\"] }}/lib/R/share/licenses/GPL-3'\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n    - slacalle\n\n# Package: hier.part\n# Type: Package\n# Title: Hierarchical Partitioning\n# Description: Partitioning of the independent and joint contributions of each variable in a multivariate data set, to a linear regression by hierarchical decomposition of goodness-of-fit measures of regressions using all subsets of predictors in the data set. (i.e., model (1), (2), ..., (N), (1,2), ..., (1,N), ..., (1,2,3,...,N)). A Z-score based estimate of the 'importance' of each predictor is provided by using a randomisation test.\n# Version: 1.0-6\n# Authors@R: c(person(\"Chris\", \"Walsh\", role = c(\"aut\",\"cre\"), email = \"cwalsh@unimelb.edu.au\"), person(\"Ralph\", \"Mac Nally\", role = \"aut\", email = \"Ralph.MacNally@gmail.com\"))\n# Imports: gtools, betareg, MASS\n# BugReports: https://github.com/cjbwalsh/hier.part/issues\n# License: GPL\n# Encoding: UTF-8\n# LazyData: true\n# NeedsCompilation: yes\n# Packaged: 2020-03-03 06:18:58 UTC; cwalsh\n# Author: Chris Walsh [aut, cre], Ralph Mac Nally [aut]\n# Maintainer: Chris Walsh <cwalsh@unimelb.edu.au>\n# Repository: CRAN\n# Date/Publication: 2020-03-03 07:10:03 UTC\n",
  "req":{
   "__set__":true,
   "elements":[
    "c_compiler_stub",
+   "coreutils",
+   "filesystem",
    "fortran_compiler_stub",
+   "gcc-libs",
+   "m2w64_c_compiler_stub",
+   "m2w64_fortran_compiler_stub",
    "make",
    "r-base",
-   "r-gtools"
+   "r-betareg",
+   "r-gtools",
+   "r-mass",
+   "sed",
+   "zip"
   ]
  },
  "requirements":{
@@ -199,22 +213,33 @@
    "__set__":true,
    "elements":[
     "c_compiler_stub",
+    "coreutils",
+    "filesystem",
     "fortran_compiler_stub",
-    "make"
+    "m2w64_c_compiler_stub",
+    "m2w64_fortran_compiler_stub",
+    "make",
+    "sed",
+    "zip"
    ]
   },
   "host":{
    "__set__":true,
    "elements":[
     "r-base",
-    "r-gtools"
+    "r-betareg",
+    "r-gtools",
+    "r-mass"
    ]
   },
   "run":{
    "__set__":true,
    "elements":[
+    "gcc-libs",
     "r-base",
-    "r-gtools"
+    "r-betareg",
+    "r-gtools",
+    "r-mass"
    ]
   },
   "test":{
@@ -229,22 +254,33 @@
    "__set__":true,
    "elements":[
     "c_compiler_stub",
+    "coreutils",
+    "filesystem",
     "fortran_compiler_stub",
-    "make"
+    "m2w64_c_compiler_stub",
+    "m2w64_fortran_compiler_stub",
+    "make",
+    "sed",
+    "zip"
    ]
   },
   "host":{
    "__set__":true,
    "elements":[
     "r-base",
-    "r-gtools"
+    "r-betareg",
+    "r-gtools",
+    "r-mass"
    ]
   },
   "run":{
    "__set__":true,
    "elements":[
+    "gcc-libs",
     "r-base",
-    "r-gtools"
+    "r-betareg",
+    "r-gtools",
+    "r-mass"
    ]
   },
   "test":{
@@ -257,5 +293,5 @@
   "https://cran.r-project.org/src/contrib/hier.part_1.0-4.tar.gz",
   "https://cran.r-project.org/src/contrib/hier.part_1.0-4.tar.gz"
  ],
- "version":"1.0_4"
+ "version":"1.0_6"
 }

@@ -359,9 +359,6 @@
  ],
  "bad":false,
  "conda-forge.yml":{
-  "compiler_stack":"comp7",
-  "max_py_ver":"37",
-  "max_r_ver":"35",
   "provider":{
    "linux_aarch64":"default",
    "linux_ppc64le":"default",
@@ -397,7 +394,7 @@
     "symilar = pylint:run_symilar"
    ],
    "number":"0",
-   "script":" -m pip install . --no-deps --ignore-installed --no-cache-dir -vvv"
+   "script":"-m pip install . --no-deps --ignore-installed --no-cache-dir -vvv"
   },
   "extra":{
    "recipe-maintainers":[
@@ -417,7 +414,7 @@
   },
   "package":{
    "name":"pylint",
-   "version":"2.5.0"
+   "version":"2.5.2"
   },
   "requirements":{
    "host":[
@@ -451,8 +448,8 @@
    ]
   },
   "source":{
-   "sha256":"588e114e3f9a1630428c35b7dd1c82c1c93e1b0e78ee312ae4724c5e1a1e0245",
-   "url":"https://pypi.io/packages/source/p/pylint/pylint-2.5.0.tar.gz"
+   "sha256":"b95e31850f3af163c2283ed40432f053acbc8fc6eba6a069cb518d9dbf71848c",
+   "url":"https://pypi.io/packages/source/p/pylint/pylint-2.5.2.tar.gz"
   },
   "test":{
    "commands":[
@@ -499,7 +496,7 @@
  },
  "new_version_errors":{},
  "pinning_version":"2020.05.04.19.59.17",
- "raw_meta_yaml":"{% set version = \"2.5.0\" %}\n\npackage:\n  name: pylint\n  version: {{ version }}\n\nsource:\n  url: https://pypi.io/packages/source/p/pylint/pylint-{{ version }}.tar.gz\n  sha256: 588e114e3f9a1630428c35b7dd1c82c1c93e1b0e78ee312ae4724c5e1a1e0245\n\nbuild:\n  number: 0\n  skip: True  # [py<34]\n  script: \"{{ PYTHON }} -m pip install . --no-deps --ignore-installed --no-cache-dir -vvv\"\n  entry_points:\n    - pylint = pylint:run_pylint\n    - epylint = pylint:run_epylint\n    - pyreverse = pylint:run_pyreverse\n    - symilar = pylint:run_symilar\n\nrequirements:\n  host:\n    - python\n    - pip\n    - pytest-runner\n\n  run:\n    - astroid >=2.4.0,<2.5\n    - colorama  # [win]\n    - isort >=4.2.5,<5\n    - mccabe >=0.6,<0.7\n    - python\n    - toml >=0.7.1\n\ntest:\n  imports:\n    - pylint\n    - pylint.checkers\n    - pylint.extensions\n    - pylint.pyreverse\n    - pylint.reporters\n    - pylint.reporters.ureports\n\n  commands:\n    - pylint --help\n    # Has no help option.\n    # Running without arguments is an error.\n    # So just check that it exists.\n    - type epylint  # [unix]\n    - where epylint  # [win]\n    - pyreverse --help\n    - symilar --help\n\nabout:\n  home: http://www.pylint.org/\n  license: GPL-2.0-only\n  license_file: COPYING\n  summary: python code static checker\n  description: |\n    Pylint is a tool that checks for errors in Python code, tries to enforce a\n    coding standard and looks for code smells.\n  doc_url: https://pylint.readthedocs.io/en/latest/\n  doc_source_url: https://github.com/PyCQA/pylint/blob/master/doc/index.rst\n  dev_url: https://github.com/PyCQA/pylint/\n\nextra:\n  recipe-maintainers:\n    - jakirkham\n    - jjhelmus\n    - timleslie\n    - goanpeca\n",
+ "raw_meta_yaml":"{% set version = \"2.5.2\" %}\n\npackage:\n  name: pylint\n  version: {{ version }}\n\nsource:\n  url: https://pypi.io/packages/source/p/pylint/pylint-{{ version }}.tar.gz\n  sha256: b95e31850f3af163c2283ed40432f053acbc8fc6eba6a069cb518d9dbf71848c\n\nbuild:\n  number: 0\n  skip: true  # [py<34]\n  script: {{ PYTHON }} -m pip install . --no-deps --ignore-installed --no-cache-dir -vvv\n  entry_points:\n    - pylint = pylint:run_pylint\n    - epylint = pylint:run_epylint\n    - pyreverse = pylint:run_pyreverse\n    - symilar = pylint:run_symilar\n\nrequirements:\n  host:\n    - python\n    - pip\n    - pytest-runner\n\n  run:\n    - astroid >=2.4.0,<2.5\n    - colorama  # [win]\n    - isort >=4.2.5,<5\n    - mccabe >=0.6,<0.7\n    - python\n    - toml >=0.7.1\n\ntest:\n  imports:\n    - pylint\n    - pylint.checkers\n    - pylint.extensions\n    - pylint.pyreverse\n    - pylint.reporters\n    - pylint.reporters.ureports\n\n  commands:\n    - pylint --help\n    # Has no help option.\n    # Running without arguments is an error.\n    # So just check that it exists.\n    - type epylint  # [unix]\n    - where epylint  # [win]\n    - pyreverse --help\n    - symilar --help\n\nabout:\n  home: http://www.pylint.org/\n  license: GPL-2.0-only\n  license_file: COPYING\n  summary: python code static checker\n  description: |\n    Pylint is a tool that checks for errors in Python code, tries to enforce a\n    coding standard and looks for code smells.\n  doc_url: https://pylint.readthedocs.io/en/latest/\n  doc_source_url: https://github.com/PyCQA/pylint/blob/master/doc/index.rst\n  dev_url: https://github.com/PyCQA/pylint/\n\nextra:\n  recipe-maintainers:\n    - jakirkham\n    - jjhelmus\n    - timleslie\n    - goanpeca\n",
  "req":{
   "__set__":true,
   "elements":[
@@ -574,5 +571,5 @@
   }
  },
  "url":"https://pypi.io/packages/source/p/pylint/pylint-2.3.1.tar.gz",
- "version":"2.5.0"
+ "version":"2.5.2"
 }
