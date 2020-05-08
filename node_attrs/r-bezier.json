@@ -59,9 +59,6 @@
   "bot":{
    "automerge":true
   },
-  "compiler_stack":"comp7",
-  "max_py_ver":"37",
-  "max_r_ver":"35",
   "provider":{
    "win":"azure"
   }
@@ -71,14 +68,15 @@
  "meta_yaml":{
   "about":{
    "home":"https://cran.r-project.org/package=bezier",
-   "license":"GPL (>= 2)",
+   "license":"GPL-2.0-or-later",
    "license_family":"GPL3",
    "license_file":"/lib/R/share/licenses/GPL-3",
    "summary":"The bezier package is a toolkit for working with Bezier curves and splines. The package provides functions for point generation, arc length estimation, degree elevation and curve fitting."
   },
   "build":{
    "merge_build_host":true,
-   "number":"1001",
+   "noarch":"generic",
+   "number":"1002",
    "rpaths":[
     "lib/R/lib/",
     "lib/",
@@ -92,30 +90,12 @@
    "recipe-maintainers":[
     "conda-forge/r",
     "ocefpaf",
-    "johanneskoester",
-    "bgruening",
-    "daler",
-    "jdblischak",
-    "cbrueffer",
-    "dbast",
     "brainstorm",
     "conda-forge/r",
     "ocefpaf",
-    "johanneskoester",
-    "bgruening",
-    "daler",
-    "jdblischak",
-    "cbrueffer",
-    "dbast",
     "brainstorm",
     "conda-forge/r",
     "ocefpaf",
-    "johanneskoester",
-    "bgruening",
-    "daler",
-    "jdblischak",
-    "cbrueffer",
-    "dbast",
     "brainstorm"
    ]
   },
@@ -124,18 +104,7 @@
    "version":"1.1.2"
   },
   "requirements":{
-   "build":[
-    "m2w64_c_compiler_stub",
-    "filesystem",
-    "make",
-    "sed",
-    "coreutils",
-    "zip",
-    "c_compiler_stub",
-    "make",
-    "c_compiler_stub",
-    "make"
-   ],
+   "build":null,
    "host":[
     "r-base",
     "r-base",
@@ -143,13 +112,11 @@
    ],
    "run":[
     "r-base",
-    "gcc-libs",
     "r-base",
     "r-base"
    ]
   },
   "source":{
-   "fn":"bezier_1.1.2.tar.gz",
    "sha256":"262ff2d4f81a8f4b5ba3a5347b906c346f29384bb5b9a0781f2741b4910885ef",
    "url":[
     "https://cran.r-project.org/src/contrib/bezier_1.1.2.tar.gz",
@@ -171,33 +138,17 @@
  "name":"r-bezier",
  "new_version":"1.1.2",
  "pinning_version":"2020.05.06.22.15.02",
- "raw_meta_yaml":"{% set version = '1.1.2' %}\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-bezier\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  fn: bezier_{{ version }}.tar.gz\n  url:\n    - {{ cran_mirror }}/src/contrib/bezier_{{ version }}.tar.gz\n    - {{ cran_mirror }}/src/contrib/Archive/bezier/bezier_{{ version }}.tar.gz\n  sha256: 262ff2d4f81a8f4b5ba3a5347b906c346f29384bb5b9a0781f2741b4910885ef\n\nbuild:\n  merge_build_host: True\n  number: 1001\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - {{ compiler('c') }}        # [not win]\n    - {{ compiler('m2w64_c') }}        # [win]\n    - {{posix}}filesystem        # [win]\n    - {{posix}}make\n    - {{posix}}sed               # [win]\n    - {{posix}}coreutils         # [win]\n    - {{posix}}zip               # [win]\n  host:\n    - r-base\n  run:\n    - r-base\n    - {{native}}gcc-libs         # [win]\n\ntest:\n  commands:\n    - $R -e \"library('bezier')\"           # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('bezier')\\\"\"  # [win]\n\nabout:\n  home: https://cran.r-project.org/package=bezier\n  license: GPL (>= 2)\n  summary: The bezier package is a toolkit for working with Bezier curves and splines. The package provides functions for point generation, arc length estimation, degree elevation and curve fitting. \n  license_family: GPL3\n  license_file: '{{ environ[\"PREFIX\"] }}/lib/R/share/licenses/GPL-3'\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n    - ocefpaf\n    - johanneskoester\n    - bgruening\n    - daler\n    - jdblischak\n    - cbrueffer\n    - dbast\n    - brainstorm\n",
+ "raw_meta_yaml":"{% set version = '1.1.2' %}\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-bezier\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  url:\n    - {{ cran_mirror }}/src/contrib/bezier_{{ version }}.tar.gz\n    - {{ cran_mirror }}/src/contrib/Archive/bezier/bezier_{{ version }}.tar.gz\n  sha256: 262ff2d4f81a8f4b5ba3a5347b906c346f29384bb5b9a0781f2741b4910885ef\n\nbuild:\n  merge_build_host: True  # [win]\n  noarch: generic\n  number: 1002\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - {{ posix }}zip               # [win]\n  host:\n    - r-base\n  run:\n    - r-base\n\ntest:\n  commands:\n    - $R -e \"library('bezier')\"           # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('bezier')\\\"\"  # [win]\n\nabout:\n  home: https://cran.r-project.org/package=bezier\n  license: GPL-2.0-or-later\n  summary: The bezier package is a toolkit for working with Bezier curves and splines. The package provides functions for point generation, arc length estimation, degree elevation and curve fitting. \n  license_family: GPL3\n  license_file: '{{ environ[\"PREFIX\"] }}/lib/R/share/licenses/GPL-3'\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n    - ocefpaf\n    - brainstorm\n",
  "req":{
   "__set__":true,
   "elements":[
-   "c_compiler_stub",
-   "coreutils",
-   "filesystem",
-   "gcc-libs",
-   "m2w64_c_compiler_stub",
-   "make",
-   "r-base",
-   "sed",
-   "zip"
+   "r-base"
   ]
  },
  "requirements":{
   "build":{
    "__set__":true,
-   "elements":[
-    "c_compiler_stub",
-    "coreutils",
-    "filesystem",
-    "m2w64_c_compiler_stub",
-    "make",
-    "sed",
-    "zip"
-   ]
+   "elements":[]
   },
   "host":{
    "__set__":true,
@@ -208,7 +159,6 @@
   "run":{
    "__set__":true,
    "elements":[
-    "gcc-libs",
     "r-base"
    ]
   },
@@ -222,15 +172,7 @@
  "total_requirements":{
   "build":{
    "__set__":true,
-   "elements":[
-    "c_compiler_stub",
-    "coreutils",
-    "filesystem",
-    "m2w64_c_compiler_stub",
-    "make",
-    "sed",
-    "zip"
-   ]
+   "elements":[]
   },
   "host":{
    "__set__":true,
@@ -241,7 +183,6 @@
   "run":{
    "__set__":true,
    "elements":[
-    "gcc-libs",
     "r-base"
    ]
   },
