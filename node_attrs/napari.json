@@ -41,7 +41,7 @@
    ],
    "noarch":"python",
    "number":"0",
-   "script":" -m pip install . -vv"
+   "script":"-m pip install . -vv"
   },
   "extra":{
    "recipe-maintainers":[
@@ -64,7 +64,7 @@
   },
   "package":{
    "name":"napari",
-   "version":"0.2.12"
+   "version":"0.3.0"
   },
   "requirements":{
    "host":[
@@ -82,6 +82,7 @@
     "scikit-image",
     "vispy",
     "dask",
+    "cachey",
     "zarr",
     "fsspec",
     "imageio",
@@ -96,12 +97,15 @@
     "PySide2",
     "wrapt",
     "numpydoc",
+    "napari-plugin-engine",
+    "napari-svg",
     "python >=3.6",
     "numpy",
     "scipy",
     "scikit-image",
     "vispy",
     "dask",
+    "cachey",
     "zarr",
     "fsspec",
     "imageio",
@@ -116,12 +120,15 @@
     "PySide2",
     "wrapt",
     "numpydoc",
+    "napari-plugin-engine",
+    "napari-svg",
     "python >=3.6",
     "numpy",
     "scipy",
     "scikit-image",
     "vispy",
     "dask",
+    "cachey",
     "zarr",
     "fsspec",
     "imageio",
@@ -135,12 +142,14 @@
     "PyOpenGl",
     "PySide2",
     "wrapt",
-    "numpydoc"
+    "numpydoc",
+    "napari-plugin-engine",
+    "napari-svg"
    ]
   },
   "source":{
-   "sha256":"56d41f596587b0877d31936972b8c53eab5e070e39377e1b97270d71f211793c",
-   "url":"https://pypi.io/packages/source/n/napari/napari-0.2.12.tar.gz"
+   "sha256":"7b6ffefcf42c7748cb46bd1d7e2ab59fccb2f96b9ce2f33cdb14250ee3f1b8cf",
+   "url":"https://pypi.io/packages/source/n/napari/napari-0.3.0.tar.gz"
   },
   "test":{
    "commands":[
@@ -191,17 +200,20 @@
  },
  "new_version_errors":{},
  "pinning_version":"2020.05.04.19.59.17",
- "raw_meta_yaml":"{% set name = \"napari\" %}\n{% set version = \"0.2.12\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz\n  sha256: 56d41f596587b0877d31936972b8c53eab5e070e39377e1b97270d71f211793c\n\nbuild:\n  noarch: python\n  number: 0\n  script: \"{{ PYTHON }} -m pip install . -vv\"\n  entry_points:\n    - napari = napari.__main__:main\n\nrequirements:\n  host:\n    - python >=3.6\n    - pip\n  run:\n    - python >=3.6\n    - numpy\n    - scipy\n    - scikit-image\n    - vispy\n    - dask\n    - zarr\n    - fsspec\n    - imageio\n    - ipykernel\n    - jupyter_client <6.0.0\n    - qtpy\n    - qtconsole\n    - IPython\n    - backcall\n    - pluggy\n    - PyOpenGl\n    - PySide2\n    - wrapt\n    - numpydoc\n\ntest:\n  requires:\n    - pytest\n    - pytest-faulthandler\n    - pytest-qt\n    - xarray\n    - pandas\n    - pytest-ordering\n    - pytest-timeout\n    - zarr\n  imports:\n     - napari\n  commands:\n    - setx QT_API \"pyside2\"  # [win]\n    - export QT_API=pyside2  # [unix]\n    - which napari\n    #- DISPLAY=localhost:1.0 xvfb-run -a bash -c 'napari --info'\n    #- pytest --pyargs napari\n\nabout:\n  home: http://napari.org\n  license: BSD-3-Clause\n  license_family: BSD\n  license_file: LICENSE\n  summary: 'a fast n-dimensional image viewer in Python'\n\n  description: |\n    a fast n-dimensional image viewer in Python\n  doc_url: http://napari.org\n  dev_url: https://github.com/napari/napari\n\nextra:\n  recipe-maintainers:\n    - jni\n    - sofroniewn\n    - kne42\n    - royerloic\n    - AhmetCanSolak\n",
+ "raw_meta_yaml":"{% set name = \"napari\" %}\n{% set version = \"0.3.0\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz\n  sha256: 7b6ffefcf42c7748cb46bd1d7e2ab59fccb2f96b9ce2f33cdb14250ee3f1b8cf\n\nbuild:\n  noarch: python\n  number: 0\n  script: {{ PYTHON }} -m pip install . -vv\n  entry_points:\n    - napari = napari.__main__:main\n\nrequirements:\n  host:\n    - python >=3.6\n    - pip\n  run:\n    - python >=3.6\n    - numpy\n    - scipy\n    - scikit-image\n    - vispy\n    - dask\n    - cachey\n    - zarr\n    - fsspec\n    - imageio\n    - ipykernel\n    - jupyter_client <6.0.0\n    - qtpy\n    - qtconsole\n    - IPython\n    - backcall\n    - pluggy\n    - PyOpenGl\n    - PySide2\n    - wrapt\n    - numpydoc\n    - napari-plugin-engine\n    - napari-svg\n\ntest:\n  requires:\n    - pytest\n    - pytest-faulthandler\n    - pytest-qt\n    - xarray\n    - pandas\n    - pytest-ordering\n    - pytest-timeout\n    - zarr\n  imports:\n    - napari\n  commands:\n    - setx QT_API \"pyside2\"  # [win]\n    - export QT_API=pyside2  # [unix]\n    - which napari\n    #- DISPLAY=localhost:1.0 xvfb-run -a bash -c 'napari --info'\n    #- pytest --pyargs napari\n\nabout:\n  home: http://napari.org\n  license: BSD-3-Clause\n  license_family: BSD\n  license_file: LICENSE\n  summary: a fast n-dimensional image viewer in Python\n\n  description: |\n    a fast n-dimensional image viewer in Python\n  doc_url: http://napari.org\n  dev_url: https://github.com/napari/napari\n\nextra:\n  recipe-maintainers:\n    - jni\n    - sofroniewn\n    - kne42\n    - royerloic\n    - AhmetCanSolak\n",
  "req":{
   "__set__":true,
   "elements":[
    "backcall",
+   "cachey",
    "dask",
    "fsspec",
    "imageio",
    "ipykernel",
    "ipython",
    "jupyter_client",
+   "napari-plugin-engine",
+   "napari-svg",
    "numpy",
    "numpydoc",
    "pip",
@@ -234,12 +246,15 @@
    "__set__":true,
    "elements":[
     "backcall",
+    "cachey",
     "dask",
     "fsspec",
     "imageio",
     "ipykernel",
     "ipython",
     "jupyter_client",
+    "napari-plugin-engine",
+    "napari-svg",
     "numpy",
     "numpydoc",
     "pluggy",
@@ -290,11 +305,14 @@
     "PyOpenGl",
     "PySide2",
     "backcall",
+    "cachey",
     "dask",
     "fsspec",
     "imageio",
     "ipykernel",
     "jupyter_client <6.0.0",
+    "napari-plugin-engine",
+    "napari-svg",
     "numpy",
     "numpydoc",
     "pluggy",
@@ -323,5 +341,5 @@
   }
  },
  "url":"https://pypi.io/packages/source/n/napari/napari-0.2.12.tar.gz",
- "version":"0.2.12"
+ "version":"0.3.0"
 }
