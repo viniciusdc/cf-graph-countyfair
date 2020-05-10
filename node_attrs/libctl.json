@@ -184,20 +184,25 @@
   }
  ],
  "bad":false,
- "conda-forge.yml":{},
+ "conda-forge.yml":{
+  "provider":{
+   "linux_aarch64":"default",
+   "linux_ppc64le":"default"
+  }
+ },
  "feedstock_name":"libctl",
  "hash_type":"sha256",
  "meta_yaml":{
   "about":{
-   "dev_url":"https://github.com/stevengj/libctl",
-   "doc_url":"http://libctl.readthedocs.io",
-   "home":"http:/github.com/stevengj/libctl",
-   "license":"GPL-2.0",
+   "dev_url":"https://github.com/NanoComp/libctl",
+   "doc_url":"https://libctl.readthedocs.io",
+   "home":"https://github.com/NanoComp/libctl",
+   "license":"GPL-2.0-or-later",
    "license_file":"COPYING",
    "summary":"A Guile-based library for supporting flexible control files in scientific simulations"
   },
   "build":{
-   "number":"0",
+   "number":"1",
    "skip":true
   },
   "extra":{
@@ -217,8 +222,11 @@
   "requirements":{
    "build":[
     "c_compiler_stub",
+    "make",
     "c_compiler_stub",
-    "c_compiler_stub"
+    "make",
+    "c_compiler_stub",
+    "make"
    ],
    "host":null,
    "run":null
@@ -226,7 +234,7 @@
   "source":{
    "fn":"libctl-4.5.0.tar.gz",
    "sha256":"621e46a238c4d5e8ce0866183f8e04abac6e1a94d90932af0d56ee61370ea153",
-   "url":"https://github.com/stevengj/libctl/releases/download/v4.5.0/libctl-4.5.0.tar.gz"
+   "url":"https://github.com/NanoComp/libctl/releases/download/v4.5.0/libctl-4.5.0.tar.gz"
   },
   "test":{
    "commands":[
@@ -239,18 +247,20 @@
  "name":"libctl",
  "new_version":"4.5.0",
  "pinning_version":"2020.02.19",
- "raw_meta_yaml":"{% set name = \"libctl\" %}\n{% set version = \"4.5.0\" %}\n{% set sha256 = \"621e46a238c4d5e8ce0866183f8e04abac6e1a94d90932af0d56ee61370ea153\" %}\n\npackage:\n  name: {{ name }}\n  version: {{ version }}\n\nsource:\n  fn: {{ name }}-{{ version }}.tar.gz\n  url: https://github.com/stevengj/{{ name }}/releases/download/v{{version}}/{{ name }}-{{version}}.tar.gz\n  sha256: {{ sha256 }}\n\nbuild:\n  number: 0\n  skip: True  # [win]\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n  host:\n  run:\n\ntest:\n  commands:\n    - test -f ${PREFIX}/lib/libctlgeom${SHLIB_EXT}\n\nabout:\n  home: http:/github.com/stevengj/libctl\n  license: GPL-2.0\n  license_file: COPYING\n  summary:  A Guile-based library for supporting flexible control files in scientific simulations\n  doc_url: http://libctl.readthedocs.io\n  dev_url: https://github.com/stevengj/libctl\n\nextra:\n  recipe-maintainers:\n    - ChristopherHogan\n    - oskooi\n",
+ "raw_meta_yaml":"{% set name = \"libctl\" %}\n{% set version = \"4.5.0\" %}\n{% set sha256 = \"621e46a238c4d5e8ce0866183f8e04abac6e1a94d90932af0d56ee61370ea153\" %}\n\npackage:\n  name: {{ name }}\n  version: {{ version }}\n\nsource:\n  fn: {{ name }}-{{ version }}.tar.gz\n  url: https://github.com/NanoComp/{{ name }}/releases/download/v{{ version }}/{{ name }}-{{ version }}.tar.gz\n  sha256: {{ sha256 }}\n\nbuild:\n  number: 1\n  skip: True  # [win]\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - make\n  host:\n  run:\n\ntest:\n  commands:\n    - test -f ${PREFIX}/lib/libctlgeom${SHLIB_EXT}\n\nabout:\n  home: https://github.com/NanoComp/libctl\n  license: GPL-2.0-or-later\n  license_file: COPYING\n  summary:  A Guile-based library for supporting flexible control files in scientific simulations\n  doc_url: https://libctl.readthedocs.io\n  dev_url: https://github.com/NanoComp/libctl\n\nextra:\n  recipe-maintainers:\n    - ChristopherHogan\n    - oskooi\n",
  "req":{
   "__set__":true,
   "elements":[
-   "c_compiler_stub"
+   "c_compiler_stub",
+   "make"
   ]
  },
  "requirements":{
   "build":{
    "__set__":true,
    "elements":[
-    "c_compiler_stub"
+    "c_compiler_stub",
+    "make"
    ]
   },
   "host":{
@@ -272,7 +282,8 @@
   "build":{
    "__set__":true,
    "elements":[
-    "c_compiler_stub"
+    "c_compiler_stub",
+    "make"
    ]
   },
   "host":{
