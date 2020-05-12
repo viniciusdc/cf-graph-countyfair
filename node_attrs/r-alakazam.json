@@ -132,6 +132,23 @@
     "migrator_version",
     "version"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/417016076.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"Version",
+    "migrator_version":0,
+    "version":"1.0.1"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "version"
+   ]
   }
  ],
  "bad":false,
@@ -330,10 +347,11 @@
  "name":"r-alakazam",
  "new_version":"1.0.1",
  "new_version_attempts":{
-  "1.0.0":1
+  "1.0.0":1,
+  "1.0.1":1
  },
  "new_version_errors":{},
- "pinning_version":"2020.05.08.11.44.00",
+ "pinning_version":"2020.05.12.18.03.58",
  "raw_meta_yaml":"{% set version = \"1.0.0\" %}\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-alakazam\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  fn: alakazam_{{ version }}.tar.gz\n  url:\n    - {{ cran_mirror }}/src/contrib/alakazam_{{ version }}.tar.gz\n    - {{ cran_mirror }}/src/contrib/Archive/alakazam/alakazam_{{ version }}.tar.gz\n  sha256: b55edf9cacd7874a7fd5bc84877fb5b8252e50df2a3e11773c59f5331b204d24\n\nbuild:\n  merge_build_host: true  # [win]\n  number: 0\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\n# Suggests: knitr, rmarkdown, testthat\nrequirements:\n  build:\n    - {{ compiler('c') }}        # [not win]\n    - {{ compiler('cxx') }}      # [not win]\n    - {{ compiler('m2w64_c') }}        # [win]\n    - {{ compiler('m2w64_cxx') }}      # [win]\n    - {{ posix }}filesystem        # [win]\n    - {{ posix }}make\n    - {{ posix }}sed               # [win]\n    - {{ posix }}coreutils         # [win]\n    - {{ posix }}zip               # [win]\n  host:\n    - r-base\n    - r-matrix\n    - r-rcpp >=0.12.12\n    - r-ape\n    - r-dplyr >=0.8.1\n    - r-ggplot2 >=2.0.0\n    - r-igraph >=1.0.0\n    - r-lazyeval\n    - r-progress\n    - r-readr\n    - r-rlang\n    - r-scales\n    - r-seqinr\n    - r-stringi\n    - r-tibble\n    - r-tidyr\n  run:\n    - r-base\n    - {{ native }}gcc-libs         # [win]\n    - r-matrix\n    - r-rcpp >=0.12.12\n    - r-ape\n    - r-dplyr >=0.8.1\n    - r-ggplot2 >=2.0.0\n    - r-igraph >=1.0.0\n    - r-lazyeval\n    - r-progress\n    - r-readr\n    - r-rlang\n    - r-scales\n    - r-seqinr\n    - r-stringi\n    - r-tibble\n    - r-tidyr\n\ntest:\n  commands:\n    - $R -e \"library('alakazam')\"           # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('alakazam')\\\"\"  # [win]\n\nabout:\n  home: http://alakazam.readthedocs.org\n  license: AGPL-3.0-only\n  summary: 'Provides methods for high-throughput adaptive immune  receptor repertoire sequencing (AIRR-Seq; Rep-Seq) analysis. In  particular, immunoglobulin (Ig) sequence lineage reconstruction,  lineage topology analysis, diversity profiling, amino acid property  analysis and gene usage. Citations:  Gupta and Vander Heiden,\n    et al (2017) <doi:10.1093/bioinformatics/btv359>, Stern, Yaari and Vander Heiden, et al (2014) <doi:10.1126/scitranslmed.3008879>.'\n  license_family: CC\n\n  license_file:\n    - {{ environ[\"PREFIX\"] }}/lib/R/share/licenses/AGPL-3\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n    - MathiasHaudgaard\n    - FrodePedersen\n    - ArneKr\n",
  "req":{
   "__set__":true,
@@ -429,7 +447,7 @@
    "elements":[]
   }
  },
- "smithy_version":"No azure token. Create a token and\nput it in ~/.conda-smithy/azure.token\n3.7.0\n",
+ "smithy_version":"No azure token. Create a token and\nput it in ~/.conda-smithy/azure.token\n3.7.1\n",
  "strong_exports":false,
  "total_requirements":{
   "build":{
