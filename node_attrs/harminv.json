@@ -69,23 +69,23 @@
  ],
  "bad":false,
  "conda-forge.yml":{
-  "compiler_stack":"comp7",
-  "max_py_ver":"37",
-  "max_r_ver":"35"
+  "provider":{
+   "linux_aarch64":"default",
+   "linux_ppc64le":"default"
+  }
  },
  "feedstock_name":"harminv",
  "hash_type":"sha256",
  "meta_yaml":{
   "about":{
-   "dev_url":"https://github.com/stevengj/harminv",
-   "doc_url":"http://harminv.readthedocs.io",
-   "home":"http:/github.com/stevengj/harminv",
-   "license":"GPL-2.0",
+   "dev_url":"https://github.com/NanoComp/harminv",
+   "home":"https://github.com/NanoComp/harminv",
+   "license":"GPL-2.0-or-later",
    "license_file":"COPYING",
    "summary":"Harmonic inversion algorithm of Mandelshtam - decompose signal into sum of decaying sinusoids"
   },
   "build":{
-   "number":"1004",
+   "number":"1005",
    "skip":true
   },
   "extra":{
@@ -103,10 +103,13 @@
    "build":[
     "fortran_compiler_stub",
     "c_compiler_stub",
+    "make",
     "fortran_compiler_stub",
     "c_compiler_stub",
+    "make",
     "fortran_compiler_stub",
-    "c_compiler_stub"
+    "c_compiler_stub",
+    "make"
    ],
    "host":[
     "libblas",
@@ -124,7 +127,7 @@
   "source":{
    "fn":"harminv-1.4.1.tar.gz",
    "sha256":"e1b923c508a565f230aac04e3feea23b888b47d8e19b08816a97ee4444233670",
-   "url":"https://github.com/stevengj/harminv/releases/download/v1.4.1/harminv-1.4.1.tar.gz"
+   "url":"https://github.com/NanoComp/harminv/releases/download/v1.4.1/harminv-1.4.1.tar.gz"
   },
   "test":{
    "commands":[
@@ -135,7 +138,7 @@
  "name":"harminv",
  "new_version":"1.4.1",
  "pinning_version":"2019.08.12",
- "raw_meta_yaml":"{% set name = \"harminv\" %}\n{% set version = \"1.4.1\" %}\n{% set sha256 = \"e1b923c508a565f230aac04e3feea23b888b47d8e19b08816a97ee4444233670\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  fn: {{ name }}-{{ version }}.tar.gz\n  url: https://github.com/stevengj/{{ name }}/releases/download/v{{ version }}/{{ name }}-{{ version }}.tar.gz\n  sha256: {{ sha256 }}\n\nbuild:\n  number: 1004\n  skip: True  # [win]\n\nrequirements:\n  build:\n    - {{ compiler('fortran') }}\n    - {{ compiler('c') }}\n  host:\n    - libblas\n    - libcblas\n    - liblapack\n  run:\n\ntest:\n  commands:\n    - test -f ${PREFIX}/lib/libharminv${SHLIB_EXT}  # [unix]\n\nabout:\n  home: http:/github.com/stevengj/harminv\n  license: GPL-2.0\n  license_file: COPYING\n  summary: Harmonic inversion algorithm of Mandelshtam - decompose signal into sum of decaying sinusoids\n  doc_url: http://harminv.readthedocs.io\n  dev_url: https://github.com/stevengj/harminv\n\nextra:\n  recipe-maintainers:\n    - ChristopherHogan\n",
+ "raw_meta_yaml":"{% set name = \"harminv\" %}\n{% set version = \"1.4.1\" %}\n{% set sha256 = \"e1b923c508a565f230aac04e3feea23b888b47d8e19b08816a97ee4444233670\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  fn: {{ name }}-{{ version }}.tar.gz\n  url: https://github.com/NanoComp/{{ name }}/releases/download/v{{ version }}/{{ name }}-{{ version }}.tar.gz\n  sha256: {{ sha256 }}\n\nbuild:\n  number: 1005\n  skip: True  # [win]\n\nrequirements:\n  build:\n    - {{ compiler('fortran') }}\n    - {{ compiler('c') }}\n    - make\n  host:\n    - libblas\n    - libcblas\n    - liblapack\n  run:\n\ntest:\n  commands:\n    - test -f ${PREFIX}/lib/libharminv${SHLIB_EXT}  # [unix]\n\nabout:\n  home: https://github.com/NanoComp/harminv\n  license: GPL-2.0-or-later\n  license_file: COPYING\n  summary: Harmonic inversion algorithm of Mandelshtam - decompose signal into sum of decaying sinusoids\n  #doc_url: https://harminv.readthedocs.io\n  dev_url: https://github.com/NanoComp/harminv\n\nextra:\n  recipe-maintainers:\n    - ChristopherHogan\n",
  "req":{
   "__set__":true,
   "elements":[
@@ -143,7 +146,8 @@
    "fortran_compiler_stub",
    "libblas",
    "libcblas",
-   "liblapack"
+   "liblapack",
+   "make"
   ]
  },
  "requirements":{
@@ -151,7 +155,8 @@
    "__set__":true,
    "elements":[
     "c_compiler_stub",
-    "fortran_compiler_stub"
+    "fortran_compiler_stub",
+    "make"
    ]
   },
   "host":{
@@ -178,7 +183,8 @@
    "__set__":true,
    "elements":[
     "c_compiler_stub",
-    "fortran_compiler_stub"
+    "fortran_compiler_stub",
+    "make"
    ]
   },
   "host":{

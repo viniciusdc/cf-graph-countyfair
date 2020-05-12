@@ -113,7 +113,7 @@
     "__lazy_json__":"pr_json/404245052.json"
    },
    "data":{
-    "bot_rerun":false,
+    "bot_rerun":1589304268.1388843,
     "migrator_name":"MigrationYaml",
     "migrator_object_version":1,
     "migrator_version":0,
@@ -132,11 +132,30 @@
     "__lazy_json__":"pr_json/413000801.json"
    },
    "data":{
-    "bot_rerun":false,
+    "bot_rerun":1589304268.1392705,
     "migrator_name":"MigrationYaml",
     "migrator_object_version":1,
     "migrator_version":0,
     "name":"pypy"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_object_version",
+    "migrator_version",
+    "name"
+   ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/416876019.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"MigrationYaml",
+    "migrator_object_version":1,
+    "migrator_version":0,
+    "name":"hdf51106"
    },
    "keys":[
     "bot_rerun",
@@ -164,16 +183,19 @@
   },
   "build":{
    "detect_binary_files_with_prefix":true,
-   "number":"1012"
+   "number":"1015"
   },
   "extra":{
    "recipe-maintainers":[
     "jakirkham",
     "stuarteberg",
+    "hmaarrfk",
     "jakirkham",
     "stuarteberg",
+    "hmaarrfk",
     "jakirkham",
-    "stuarteberg"
+    "stuarteberg",
+    "hmaarrfk"
    ]
   },
   "package":{
@@ -196,6 +218,8 @@
     "jpeg",
     "libtiff",
     "libpng",
+    "openexr",
+    "lemon",
     "fftw",
     "hdf5",
     "boost",
@@ -206,6 +230,8 @@
     "jpeg",
     "libtiff",
     "libpng",
+    "openexr",
+    "lemon",
     "fftw",
     "hdf5",
     "boost",
@@ -216,6 +242,8 @@
     "jpeg",
     "libtiff",
     "libpng",
+    "openexr",
+    "lemon",
     "fftw",
     "hdf5",
     "boost",
@@ -224,31 +252,16 @@
    "run":[
     "python",
     "numpy",
-    "jpeg",
-    "libtiff",
-    "libpng",
-    "fftw",
     "hdf5",
     "boost",
-    "zlib",
     "python",
     "numpy",
-    "jpeg",
-    "libtiff",
-    "libpng",
-    "fftw",
     "hdf5",
     "boost",
-    "zlib",
     "python",
     "numpy",
-    "jpeg",
-    "libtiff",
-    "libpng",
-    "fftw",
     "hdf5",
-    "boost",
-    "zlib"
+    "boost"
    ]
   },
   "source":{
@@ -289,8 +302,8 @@
  },
  "name":"vigra",
  "new_version":"Version-1-11-1",
- "pinning_version":"2020.05.04.05.46.47",
- "raw_meta_yaml":"{% set version = \"1.11.1\" %}\n\npackage:\n  name: vigra\n  version: {{ version }}\n\nsource:\n  {% set version_tag = \"Version-%s\" % version.replace(\".\", \"-\") %}\n  fn: vigra-{{ version_tag }}-src.tar.gz\n  url: https://github.com/ukoethe/vigra/archive/{{ version_tag }}.tar.gz\n  sha1: 518c7a9ef0e26e39563aeebf22bcee55a7d257c8\n  patches:\n    ##########################################################\n    # Workaround for VS 2015                                 #\n    #                                                        #\n    # xref: https://github.com/ukoethe/vigra/pull/412        #\n    ##########################################################\n    - PR_412.diff\n\n    ##########################################################\n    # Fix incorrect template parameter in multi_convolution  #\n    #                                                        #\n    # xref: https://github.com/ukoethe/vigra/pull/415        #\n    ##########################################################\n    - PR_415.diff\n\n    ##########################################################\n    # Fix Windows NMake Python test run                      #\n    #                                                        #\n    # xref: https://github.com/ukoethe/vigra/pull/417        #\n    ##########################################################\n    - PR_417.diff\n\n    ##########################################################\n    # Fix CMake obsolete policy CMP0026 warning              #\n    #                                                        #\n    # xref: https://github.com/ukoethe/vigra/pull/449        #\n    ##########################################################\n    - PR_449.diff\n\n    ##########################################################\n    # Handle Python 3.7 PyUnicode_AsUTF8 breaking change     #\n    #                                                        #\n    # xref: https://github.com/ukoethe/vigra/pull/451        #\n    ##########################################################\n    - PR_451.diff\n\n    ###########################################################################################\n    # Backport patch to update exception declarations                                         #\n    #                                                                                         #\n    # xref: https://github.com/ukoethe/vigra/commit/dc730be49fc8def4304a651fa525e43b7754955e  #\n    ###########################################################################################\n    - fix_except_decl.diff\n\n    #########################################################################\n    # Interpreter is statically linked on macOS so do not use `libpython`.  #\n    #########################################################################\n    - ignore_libpython_macos.diff\n\nbuild:\n  skip: true  # [win and py<35]\n  number: 1012\n  detect_binary_files_with_prefix: true\n\nrequirements:\n  build:\n    - {{ compiler(\"cxx\") }}\n    - cmake\n\n  host:\n    - python\n    - nose\n    - numpy\n    - jpeg\n    - libtiff\n    - libpng\n    - fftw\n    - hdf5\n    - boost\n    - zlib\n    \n  run:\n    - python\n    - {{ pin_compatible('numpy') }}\n    - jpeg\n    - libtiff\n    - libpng\n    - fftw\n    - hdf5\n    - boost\n    - zlib\n\ntest:\n  imports:\n    - vigra\n\nabout:\n  home: http://ukoethe.github.io/vigra\n  license: MIT\n  license_file: LICENSE.txt\n  summary: Generic Programming for Computer Vision\n\nextra:\n  recipe-maintainers:\n    - jakirkham\n    - stuarteberg\n",
+ "pinning_version":"2020.05.11.16.49.47",
+ "raw_meta_yaml":"{% set version = \"1.11.1\" %}\n\npackage:\n  name: vigra\n  version: {{ version }}\n\nsource:\n  {% set version_tag = \"Version-%s\" % version.replace(\".\", \"-\") %}\n  fn: vigra-{{ version_tag }}-src.tar.gz\n  url: https://github.com/ukoethe/vigra/archive/{{ version_tag }}.tar.gz\n  sha1: 518c7a9ef0e26e39563aeebf22bcee55a7d257c8\n  patches:\n    ##########################################################\n    # Workaround for VS 2015                                 #\n    #                                                        #\n    # xref: https://github.com/ukoethe/vigra/pull/412        #\n    ##########################################################\n    - PR_412.diff\n\n    ##########################################################\n    # Fix incorrect template parameter in multi_convolution  #\n    #                                                        #\n    # xref: https://github.com/ukoethe/vigra/pull/415        #\n    ##########################################################\n    - PR_415.diff\n\n    ##########################################################\n    # Fix Windows NMake Python test run                      #\n    #                                                        #\n    # xref: https://github.com/ukoethe/vigra/pull/417        #\n    ##########################################################\n    - PR_417.diff\n\n    ##########################################################\n    # Fix CMake obsolete policy CMP0026 warning              #\n    #                                                        #\n    # xref: https://github.com/ukoethe/vigra/pull/449        #\n    ##########################################################\n    - PR_449.diff\n\n    ##########################################################\n    # Handle Python 3.7 PyUnicode_AsUTF8 breaking change     #\n    #                                                        #\n    # xref: https://github.com/ukoethe/vigra/pull/451        #\n    ##########################################################\n    - PR_451.diff\n\n    ###########################################################################################\n    # Backport patch to update exception declarations                                         #\n    #                                                                                         #\n    # xref: https://github.com/ukoethe/vigra/commit/dc730be49fc8def4304a651fa525e43b7754955e  #\n    ###########################################################################################\n    - fix_except_decl.diff\n\n    #########################################################################\n    # Interpreter is statically linked on macOS so do not use `libpython`.  #\n    #########################################################################\n    - ignore_libpython_macos.diff\n\nbuild:\n  skip: true  # [win and py<35]\n  number: 1015\n  detect_binary_files_with_prefix: true\n\nrequirements:\n  build:\n    - {{ compiler(\"cxx\") }}\n    - cmake\n\n  host:\n    - python\n    - nose\n    - numpy\n    - jpeg\n    - libtiff\n    - libpng\n    - openexr\n    - lemon\n    - fftw\n    - hdf5\n    - boost\n    - zlib\n\n  run:\n    - python\n    - {{ pin_compatible('numpy') }}\n    - hdf5\n    - boost\n\ntest:\n  imports:\n    - vigra\n\nabout:\n  home: http://ukoethe.github.io/vigra\n  license: MIT\n  license_file: LICENSE.txt\n  summary: Generic Programming for Computer Vision\n\nextra:\n  recipe-maintainers:\n    - jakirkham\n    - stuarteberg\n    - hmaarrfk\n",
  "req":{
   "__set__":true,
   "elements":[
@@ -300,10 +313,12 @@
    "fftw",
    "hdf5",
    "jpeg",
+   "lemon",
    "libpng",
    "libtiff",
    "nose",
    "numpy",
+   "openexr",
    "python",
    "zlib"
   ]
@@ -323,10 +338,12 @@
     "fftw",
     "hdf5",
     "jpeg",
+    "lemon",
     "libpng",
     "libtiff",
     "nose",
     "numpy",
+    "openexr",
     "python",
     "zlib"
    ]
@@ -335,14 +352,9 @@
    "__set__":true,
    "elements":[
     "boost",
-    "fftw",
     "hdf5",
-    "jpeg",
-    "libpng",
-    "libtiff",
     "numpy",
-    "python",
-    "zlib"
+    "python"
    ]
   },
   "test":{
@@ -367,10 +379,12 @@
     "fftw",
     "hdf5",
     "jpeg",
+    "lemon",
     "libpng",
     "libtiff",
     "nose",
     "numpy",
+    "openexr",
     "python",
     "zlib"
    ]
@@ -379,14 +393,9 @@
    "__set__":true,
    "elements":[
     "boost",
-    "fftw",
     "hdf5",
-    "jpeg",
-    "libpng",
-    "libtiff",
     "numpy",
-    "python",
-    "zlib"
+    "python"
    ]
   },
   "test":{

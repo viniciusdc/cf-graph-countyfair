@@ -120,7 +120,7 @@
   },
   "build":{
    "merge_build_host":true,
-   "number":"1003",
+   "number":"0",
    "rpaths":[
     "lib/R/lib/",
     "lib/",
@@ -140,7 +140,7 @@
   },
   "package":{
    "name":"r-satellite",
-   "version":"1.0.1"
+   "version":"1.0.2"
   },
   "requirements":{
    "build":[
@@ -182,15 +182,15 @@
    ]
   },
   "source":{
-   "fn":"satellite_1.0.1.tar.gz",
-   "sha256":"20fa9bda1fd063f0eaaf68dba1f86ca5fbbb9ee4251e78a5a0a6acdd34fd1fbd",
+   "fn":"satellite_1.0.2.tar.gz",
+   "sha256":"6447476bd31216e5abe504221e465677954d07419b4174ab4f4e4f7a197969c5",
    "url":[
-    "https://cran.r-project.org/src/contrib/satellite_1.0.1.tar.gz",
-    "https://cran.r-project.org/src/contrib/Archive/satellite/satellite_1.0.1.tar.gz",
-    "https://cran.r-project.org/src/contrib/satellite_1.0.1.tar.gz",
-    "https://cran.r-project.org/src/contrib/Archive/satellite/satellite_1.0.1.tar.gz",
-    "https://cran.r-project.org/src/contrib/satellite_1.0.1.tar.gz",
-    "https://cran.r-project.org/src/contrib/Archive/satellite/satellite_1.0.1.tar.gz"
+    "https://cran.r-project.org/src/contrib/satellite_1.0.2.tar.gz",
+    "https://cran.r-project.org/src/contrib/Archive/satellite/satellite_1.0.2.tar.gz",
+    "https://cran.r-project.org/src/contrib/satellite_1.0.2.tar.gz",
+    "https://cran.r-project.org/src/contrib/Archive/satellite/satellite_1.0.2.tar.gz",
+    "https://cran.r-project.org/src/contrib/satellite_1.0.2.tar.gz",
+    "https://cran.r-project.org/src/contrib/Archive/satellite/satellite_1.0.2.tar.gz"
    ]
   },
   "test":{
@@ -208,7 +208,7 @@
  },
  "new_version_errors":{},
  "pinning_version":"2020.05.06.22.15.02",
- "raw_meta_yaml":"{% set version = '1.0.1' %}\n\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-satellite\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  fn: satellite_{{ version }}.tar.gz\n  url:\n    - https://cran.r-project.org/src/contrib/satellite_{{ version }}.tar.gz\n    - https://cran.r-project.org/src/contrib/Archive/satellite/satellite_{{ version }}.tar.gz\n  sha256: 20fa9bda1fd063f0eaaf68dba1f86ca5fbbb9ee4251e78a5a0a6acdd34fd1fbd\n\nbuild:\n  merge_build_host: True  # [win]\n  number: 1003\n  script: R CMD INSTALL --build .\n  skip: True  # [win32]\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - posix  # [win]\n    - {{ compiler('c') }}        # [unix]\n    - {{ compiler('m2w64_c') }}  # [win]\n    - {{ compiler('cxx') }}        # [unix]\n    - {{ compiler('m2w64_cxx') }}  # [win]\n  host:\n    - r-base\n    - r-rcpp\n    - r-plyr\n    - r-raster\n  run:\n    - r-base\n    - r-rcpp\n    - r-plyr\n    - r-raster\n\ntest:\n  commands:\n    - $R -e \"library('satellite')\"  # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('satellite')\\\"\"  # [win]\n\nabout:\n  home: https://CRAN.R-project.org/package=satellite\n  license: GPL (>= 3)\n  license_file: LICENSE\n  summary: Herein, we provide a broad variety of functions which are useful for handling, manipulating,\n    and visualizing satellite-based remote sensing  data. These operations range from\n    mere data import and layer handling (eg  subsetting), over Raster* typical data\n    wrangling (eg crop, extend), to more  sophisticated (pre-)processing tasks typically\n    applied to satellite imagery  (eg atmospheric and topographic correction). This\n    functionality is  complemented by a full access to the satellite layers' metadata\n    at any  stage and the documentation of performed actions in a separate log file.  Currently\n    available sensors include Landsat 4-5 (TM), 7 (ETM+), and 8  (OLI/TIRS Combined),\n    and additional compatibility is ensured for the Landsat  Global Land Survey data\n    set. Moreover, support for Terra and Aqua-MODIS as  well as PROBA-V is expected\n    to arrive shortly.\n\nextra:\n  recipe-maintainers:\n    - ocefpaf\n",
+ "raw_meta_yaml":"{% set version = \"1.0.2\" %}\n\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-satellite\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  fn: satellite_{{ version }}.tar.gz\n  url:\n    - https://cran.r-project.org/src/contrib/satellite_{{ version }}.tar.gz\n    - https://cran.r-project.org/src/contrib/Archive/satellite/satellite_{{ version }}.tar.gz\n  sha256: 6447476bd31216e5abe504221e465677954d07419b4174ab4f4e4f7a197969c5\n\nbuild:\n  merge_build_host: true  # [win]\n  number: 0\n  script: R CMD INSTALL --build .\n  skip: true  # [win32]\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - posix  # [win]\n    - {{ compiler('c') }}        # [unix]\n    - {{ compiler('m2w64_c') }}  # [win]\n    - {{ compiler('cxx') }}        # [unix]\n    - {{ compiler('m2w64_cxx') }}  # [win]\n  host:\n    - r-base\n    - r-rcpp\n    - r-plyr\n    - r-raster\n  run:\n    - r-base\n    - r-rcpp\n    - r-plyr\n    - r-raster\n\ntest:\n  commands:\n    - $R -e \"library('satellite')\"  # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('satellite')\\\"\"  # [win]\n\nabout:\n  home: https://CRAN.R-project.org/package=satellite\n  license: GPL (>= 3)\n  license_file: LICENSE\n  summary: Herein, we provide a broad variety of functions which are useful for handling, manipulating, and visualizing satellite-based remote sensing  data. These operations range from mere data import and layer handling (eg  subsetting), over Raster* typical data wrangling (eg crop, extend), to more  sophisticated (pre-)processing\n    tasks typically applied to satellite imagery  (eg atmospheric and topographic correction). This functionality is  complemented by a full access to the satellite layers' metadata at any  stage and the documentation of performed actions in a separate log file.  Currently available sensors include Landsat 4-5 (TM), 7 (ETM+),\n    and 8  (OLI/TIRS Combined), and additional compatibility is ensured for the Landsat  Global Land Survey data set. Moreover, support for Terra and Aqua-MODIS as  well as PROBA-V is expected to arrive shortly.\n\nextra:\n  recipe-maintainers:\n    - ocefpaf\n",
  "req":{
   "__set__":true,
   "elements":[
@@ -301,5 +301,5 @@
   "https://cran.r-project.org/src/contrib/satellite_1.0.1.tar.gz",
   "https://cran.r-project.org/src/contrib/Archive/satellite/satellite_1.0.1.tar.gz"
  ],
- "version":"1.0.1"
+ "version":"1.0.2"
 }

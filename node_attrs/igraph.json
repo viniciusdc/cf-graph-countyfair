@@ -67,6 +67,25 @@
     "migrator_version",
     "name"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/416873524.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"MigrationYaml",
+    "migrator_object_version":1,
+    "migrator_version":0,
+    "name":"icu67"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_object_version",
+    "migrator_version",
+    "name"
+   ]
   }
  ],
  "bad":false,
@@ -181,7 +200,7 @@
  },
  "name":"igraph",
  "new_version":false,
- "pinning_version":"2019.10.28",
+ "pinning_version":"2020.05.11.16.49.47",
  "raw_meta_yaml":"{% set name = \"igraph\" %}\n{% set version = \"0.8.2\" %}\n\npackage:\n  name: {{ name }}\n  version: {{ version }}\n\nsource:\n  fn: {{ name }}-{{ version }}.tar.gz  # [not win]\n  url: https://github.com/igraph/igraph/releases/download/{{ version }}/{{ name }}-{{ version }}.tar.gz  # [not win]\n  sha256: 718a471e7b8cbf02e3e8006153b7be6a22f85bb804283763a0016280e8a60e95  # [not win]\n\n  fn: {{ name }}-{{ version }}.zip  # [win]\n  url: https://github.com/igraph/igraph/releases/download/{{ version }}/{{ name }}-{{ version }}-msvc.zip  # [win]\n  sha256: 0a8adc7740e857a31ce1a5d245cf4f5557779190b3f941d171d141505b3ea464  # [win]\n\nbuild:\n  skip: True  # [win and vc<14]\n  number: 0\n  run_exports:\n    - {{ pin_subpackage(\"igraph\", max_pin=\"x.x\") }}\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n    - {{ compiler('fortran') }}\n    - vs2017_{{ target_platform }}  # [win]\n    - pkg-config  # [not win]\n    - make  # [not win]\n    - python  # [win]\n    - msinttypes  # [win]\n  host:\n    - gmp  # [not win]\n    - icu  # [not win]\n    - libiconv  # [not win]\n    - libxml2  # [not win]\n    - xz  # [not win]\n    - zlib  # [not win]\n  run:\n    - gmp  # [not win]\n    - icu  # [not win]\n    - libiconv  # [not win]\n    - libxml2  # [not win]\n    - xz  # [not win]\n    - zlib  # [not win]\n\ntest:\n  files:\n    - igraph_test.c\n  requires:\n    - pkg-config  # [not win]\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n    - {{ compiler('fortran') }}\n  commands:\n    - pkg-config --exists igraph  # [not win]\n    - conda inspect linkages -p $PREFIX {{ name|lower }}  # [not win]\n    - conda inspect objects -p $PREFIX {{ name|lower }}  # [osx]\n\nabout:\n  home: http://igraph.org/c/\n  license: GPL-2.0-or-later\n  license_family: GPL\n  license_file:\n    - COPYING  # [not win]\n    - ACKNOWLEDGEMENTS.md  # [not win]\n  license_file:\n    - '{{ environ[\"RECIPE_DIR\"] }}/COPYING'  # [win]\n    - '{{ environ[\"RECIPE_DIR\"] }}/ACKNOWLEDGEMENTS.md'  # [win]\n  summary: 'An open source and free collection of network analysis tool.'\n  description: |\n    igraph is a collection of network analysis tools with the emphasis on efficiency,\n    portabiliy and ease of use. igraph is open source and free. igraph can be\n    programmed in R, Python and C/C++.\"\n\nextra:\n  recipe-maintainers:\n    - sodre\n    - vtraag\n",
  "req":{
   "__set__":true,
@@ -248,7 +267,7 @@
    ]
   }
  },
- "smithy_version":"3.6.0",
+ "smithy_version":"No azure token. Create a token and\nput it in ~/.conda-smithy/azure.token\n3.7.0\n",
  "strong_exports":false,
  "total_requirements":{
   "build":{
