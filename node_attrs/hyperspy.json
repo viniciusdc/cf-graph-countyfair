@@ -172,12 +172,12 @@
    "dev_url":"https://github.com/hyperspy/hyperspy/",
    "doc_url":"http://hyperspy.org/hyperspy-doc/current/user_guide/index.html",
    "home":"https://hyperspy.org",
-   "license":"GPL v3",
+   "license":"GPL-3.0-or-later",
    "license_file":"COPYING.txt",
    "summary":"Multi-dimensional data analysis"
   },
   "build":{
-   "number":"1"
+   "number":"2"
   },
   "extra":{
    "recipe-maintainers":[
@@ -207,10 +207,9 @@
       "dill",
       "h5py",
       "ipython",
-      "jupyter",
-      "matplotlib >2.2.2",
+      "matplotlib-base >2.2.2",
       "numpy >1.13",
-      "scikit-image >=0.13",
+      "scikit-image >=0.13,<0.17",
       "scikit-learn",
       "scipy >=0.15,<1.4",
       "statsmodels",
@@ -290,8 +289,8 @@
      ],
      "requires":[
       "pytest <4.1",
-      "matplotlib >=3.1",
-      "freetype <2.10",
+      "matplotlib-base >=3.1,<3.2",
+      "freetype >=2.9,<2.10",
       "pytest-mpl"
      ]
     }
@@ -308,8 +307,7 @@
       "hyperspy-base",
       "hyperspy-gui-ipywidgets >=1.2",
       "hyperspy-gui-traitsui >=1.2",
-      "jupyterlab >=0.35.4",
-      "nodejs"
+      "matplotlib"
      ]
     }
    },
@@ -322,10 +320,10 @@
      "run":[
       "python",
       "cython",
-      "hyperspy-base",
       "pytest",
       "pytest-mpl",
-      "matplotlib",
+      "freetype >=2.9,<2.10",
+      "matplotlib-base >=3.1,<3.2",
       "numpydoc",
       "sphinx",
       "sphinx_rtd_theme"
@@ -349,10 +347,9 @@
       "dill",
       "h5py",
       "ipython",
-      "jupyter",
-      "matplotlib >2.2.2",
+      "matplotlib-base >2.2.2",
       "numpy >1.13",
-      "scikit-image >=0.13",
+      "scikit-image >=0.13,<0.17",
       "scikit-learn",
       "scipy >=0.15,<1.4",
       "statsmodels",
@@ -431,8 +428,8 @@
      ],
      "requires":[
       "pytest <4.1",
-      "matplotlib >=3.1",
-      "freetype <2.10",
+      "matplotlib-base >=3.1,<3.2",
+      "freetype >=2.9,<2.10",
       "pytest-mpl"
      ]
     }
@@ -449,8 +446,7 @@
       "hyperspy-base",
       "hyperspy-gui-ipywidgets >=1.2",
       "hyperspy-gui-traitsui >=1.2",
-      "jupyterlab >=0.35.4",
-      "nodejs"
+      "matplotlib"
      ]
     }
    },
@@ -463,10 +459,10 @@
      "run":[
       "python",
       "cython",
-      "hyperspy-base",
       "pytest",
       "pytest-mpl",
-      "matplotlib",
+      "freetype >=2.9,<2.10",
+      "matplotlib-base >=3.1,<3.2",
       "numpydoc",
       "sphinx",
       "sphinx_rtd_theme"
@@ -490,10 +486,9 @@
       "dill",
       "h5py",
       "ipython",
-      "jupyter",
-      "matplotlib >2.2.2",
+      "matplotlib-base >2.2.2",
       "numpy >1.13",
-      "scikit-image >=0.13",
+      "scikit-image >=0.13,<0.17",
       "scikit-learn",
       "scipy >=0.15,<1.4",
       "statsmodels",
@@ -572,10 +567,9 @@
      ],
      "requires":[
       "pytest <4.1",
-      "matplotlib >=3.1",
-      "freetype <2.10",
-      "pytest-mpl",
-      "xorg-libx11"
+      "matplotlib-base >=3.1,<3.2",
+      "freetype >=2.9,<2.10",
+      "pytest-mpl"
      ]
     }
    },
@@ -591,8 +585,7 @@
       "hyperspy-base",
       "hyperspy-gui-ipywidgets >=1.2",
       "hyperspy-gui-traitsui >=1.2",
-      "jupyterlab >=0.35.4",
-      "nodejs"
+      "matplotlib"
      ]
     }
    },
@@ -605,10 +598,10 @@
      "run":[
       "python",
       "cython",
-      "hyperspy-base",
       "pytest",
       "pytest-mpl",
-      "matplotlib",
+      "freetype >=2.9,<2.10",
+      "matplotlib-base >=3.1,<3.2",
       "numpydoc",
       "sphinx",
       "sphinx_rtd_theme"
@@ -641,7 +634,7 @@
   "hyperspy-dev"
  ],
  "pinning_version":"2020.02.12",
- "raw_meta_yaml":"{% set version = \"1.5.2\" %}\n\npackage:\n  name: hyperspy-meta\n  version: {{ version }}\n\nsource:\n  fn: hyperspy-{{ version }}.tar.gz\n  url: https://pypi.io/packages/source/h/hyperspy/hyperspy-{{ version }}.tar.gz\n  sha256: 5271fd3fa3e437ea9aaa201cd1724f5cd60e53dcc0741a74e86d55ea1b101ff6\n\nbuild:\n  number: 1\n  skip: True  # [py2k]\n\nrequirements:\n  host:\n    - python\n\noutputs:\n  - name: hyperspy-base\n    script: install.sh  # [not win]\n    script: install.bat  # [win]\n    requirements:\n      build:\n        - {{ compiler('c') }}\n      host:\n        - python\n        - setuptools\n        - cython\n        - pip\n      run:\n        - python\n        - dill\n        - h5py\n        - ipython\n        - jupyter\n        - matplotlib >2.2.2\n        - numpy >1.13\n        - scikit-image >=0.13\n        - scikit-learn\n        - scipy >=0.15,<1.4\n        - statsmodels\n        - ipyparallel\n        - sympy <1.5\n        - natsort\n        - dask >=0.18\n        - traits >=4.5\n        - requests\n        - tqdm >=0.4.9\n        - python-dateutil >=2.5\n        - pint >0.8,<0.10\n        - numba\n        - numexpr\n        - sparse\n        - pillow >5.2  # [win]\n        - imageio\n        - mrcz\n        - ptable\n        - pyyaml\n    test:\n      requires:\n        - pytest <4.1\n        - matplotlib >=3.1  \n        - freetype <2.10  \n        - pytest-mpl\n        - xorg-libx11  # [linux]\n      imports:\n        - hyperspy\n        - hyperspy.Release\n        - hyperspy._lazy_signals\n        - hyperspy.api\n        - hyperspy.api_nogui\n        - hyperspy.axes\n        - hyperspy.component\n        - hyperspy.components1d\n        - hyperspy.components2d\n        - hyperspy.decorators\n        - hyperspy.defaults_parser\n        - hyperspy.events\n        - hyperspy.exceptions\n        - hyperspy.interactive\n        - hyperspy.io\n        - hyperspy.logger\n        - hyperspy.model\n        - hyperspy.roi\n        - hyperspy.samfire\n        - hyperspy.signal\n        - hyperspy.signal_tools\n        - hyperspy.signals\n        - hyperspy.ui_registry\n        - hyperspy._components\n        - hyperspy._signals\n        - hyperspy.datasets\n        - hyperspy.docstrings\n        - hyperspy.drawing\n        - hyperspy.drawing._markers\n        - hyperspy.drawing._widgets\n        - hyperspy.external\n        - hyperspy.external.astroML\n        - hyperspy.external.mpfit\n        - hyperspy.io_plugins\n        - hyperspy.learn\n        - hyperspy.misc\n        - hyperspy.misc.eds\n        - hyperspy.misc.eels\n        - hyperspy.misc.holography\n        - hyperspy.misc.io\n        - hyperspy.misc.machine_learning\n        - hyperspy.models\n        - hyperspy.samfire_utils\n        - hyperspy.samfire_utils.goodness_of_fit_tests\n        - hyperspy.samfire_utils.segmenters\n        - hyperspy.samfire_utils.weights\n        - hyperspy.utils\n      commands:\n        - export MPLBACKEND=agg  # [unix]\n        - set MPLBACKEND=agg  # [win]\n        - pytest --pyargs hyperspy --mpl\n\n  - name: hyperspy\n    requirements:\n      host:\n        - python\n      run:\n        - python\n        - pyqt\n        - {{ pin_subpackage('hyperspy-base', exact=True) }}\n        - hyperspy-gui-ipywidgets >=1.2\n        - hyperspy-gui-traitsui >=1.2\n        - jupyterlab >=0.35.4\n        - nodejs\n\n  - name: hyperspy-dev\n    requirements:\n      host:\n        - python\n      run:\n        - python\n        - cython\n        - {{ pin_subpackage('hyperspy-base', exact=True) }}\n        - pytest\n        - pytest-mpl\n        - matplotlib\n        - numpydoc\n        - sphinx\n        - sphinx_rtd_theme\n\nabout:\n  home: https://hyperspy.org\n  license: GPL v3\n  summary: Multi-dimensional data analysis\n  license_file: COPYING.txt\n  dev_url: https://github.com/hyperspy/hyperspy/\n  doc_url: http://hyperspy.org/hyperspy-doc/current/user_guide/index.html\n\nextra:\n  recipe-maintainers:\n    - ericpre\n    - francisco-dlp\n",
+ "raw_meta_yaml":"{% set version = \"1.5.2\" %}\n\npackage:\n  name: hyperspy-meta\n  version: {{ version }}\n\nsource:\n  fn: hyperspy-{{ version }}.tar.gz\n  url: https://pypi.io/packages/source/h/hyperspy/hyperspy-{{ version }}.tar.gz\n  sha256: 5271fd3fa3e437ea9aaa201cd1724f5cd60e53dcc0741a74e86d55ea1b101ff6\n\nbuild:\n  number: 2\n  skip: True  # [py2k]\n\nrequirements:\n  host:\n    - python\n\noutputs:\n  - name: hyperspy-base\n    script: install.sh  # [not win]\n    script: install.bat  # [win]\n    requirements:\n      build:\n        - {{ compiler('c') }}\n      host:\n        - python\n        - setuptools\n        - cython\n        - pip\n      run:\n        - python\n        - dill\n        - h5py\n        - ipython\n        - matplotlib-base >2.2.2\n        - numpy >1.13\n        - scikit-image >=0.13,<0.17\n        - scikit-learn\n        - scipy >=0.15,<1.4\n        - statsmodels\n        - ipyparallel\n        - sympy <1.5\n        - natsort\n        - dask >=0.18\n        - traits >=4.5\n        - requests\n        - tqdm >=0.4.9\n        - python-dateutil >=2.5\n        - pint >0.8,<0.10\n        - numba\n        - numexpr\n        - sparse\n        - pillow >5.2  # [win]\n        - imageio\n        - mrcz\n        - ptable\n        - pyyaml\n    test:\n      requires:\n        - pytest <4.1\n        - matplotlib-base >=3.1,<3.2\n        - freetype >=2.9,<2.10\n        - pytest-mpl\n      imports:\n        - hyperspy\n        - hyperspy.Release\n        - hyperspy._lazy_signals\n        - hyperspy.api\n        - hyperspy.api_nogui\n        - hyperspy.axes\n        - hyperspy.component\n        - hyperspy.components1d\n        - hyperspy.components2d\n        - hyperspy.decorators\n        - hyperspy.defaults_parser\n        - hyperspy.events\n        - hyperspy.exceptions\n        - hyperspy.interactive\n        - hyperspy.io\n        - hyperspy.logger\n        - hyperspy.model\n        - hyperspy.roi\n        - hyperspy.samfire\n        - hyperspy.signal\n        - hyperspy.signal_tools\n        - hyperspy.signals\n        - hyperspy.ui_registry\n        - hyperspy._components\n        - hyperspy._signals\n        - hyperspy.datasets\n        - hyperspy.docstrings\n        - hyperspy.drawing\n        - hyperspy.drawing._markers\n        - hyperspy.drawing._widgets\n        - hyperspy.external\n        - hyperspy.external.astroML\n        - hyperspy.external.mpfit\n        - hyperspy.io_plugins\n        - hyperspy.learn\n        - hyperspy.misc\n        - hyperspy.misc.eds\n        - hyperspy.misc.eels\n        - hyperspy.misc.holography\n        - hyperspy.misc.io\n        - hyperspy.misc.machine_learning\n        - hyperspy.models\n        - hyperspy.samfire_utils\n        - hyperspy.samfire_utils.goodness_of_fit_tests\n        - hyperspy.samfire_utils.segmenters\n        - hyperspy.samfire_utils.weights\n        - hyperspy.utils\n      commands:\n        - export MPLBACKEND=agg  # [unix]\n        - set MPLBACKEND=agg  # [win]\n        - pytest --pyargs hyperspy --mpl\n\n  - name: hyperspy\n    requirements:\n      host:\n        - python\n      run:\n        - python\n        - pyqt\n        - {{ pin_subpackage('hyperspy-base', exact=True) }}\n        - hyperspy-gui-ipywidgets >=1.2\n        - hyperspy-gui-traitsui >=1.2\n        - matplotlib\n\n  - name: hyperspy-dev\n    requirements:\n      host:\n        - python\n      run:\n        - python\n        - cython\n        - pytest\n        - pytest-mpl\n        - freetype >=2.9,<2.10\n        - matplotlib-base >=3.1,<3.2\n        - numpydoc\n        - sphinx\n        - sphinx_rtd_theme\n\nabout:\n  home: https://hyperspy.org\n  license: GPL-3.0-or-later\n  summary: Multi-dimensional data analysis\n  license_file: COPYING.txt\n  dev_url: https://github.com/hyperspy/hyperspy/\n  doc_url: http://hyperspy.org/hyperspy-doc/current/user_guide/index.html\n\nextra:\n  recipe-maintainers:\n    - ericpre\n    - francisco-dlp\n",
  "req":{
   "__set__":true,
   "elements":[
@@ -649,6 +642,7 @@
    "cython",
    "dask",
    "dill",
+   "freetype",
    "h5py",
    "hyperspy-base",
    "hyperspy-gui-ipywidgets",
@@ -656,12 +650,10 @@
    "imageio",
    "ipyparallel",
    "ipython",
-   "jupyter",
-   "jupyterlab",
    "matplotlib",
+   "matplotlib-base",
    "mrcz",
    "natsort",
-   "nodejs",
    "numba",
    "numexpr",
    "numpy",
@@ -712,6 +704,7 @@
     "cython",
     "dask",
     "dill",
+    "freetype",
     "h5py",
     "hyperspy-base",
     "hyperspy-gui-ipywidgets",
@@ -719,12 +712,10 @@
     "imageio",
     "ipyparallel",
     "ipython",
-    "jupyter",
-    "jupyterlab",
     "matplotlib",
+    "matplotlib-base",
     "mrcz",
     "natsort",
-    "nodejs",
     "numba",
     "numexpr",
     "numpy",
@@ -755,10 +746,9 @@
    "__set__":true,
    "elements":[
     "freetype",
-    "matplotlib",
+    "matplotlib-base",
     "pytest",
-    "pytest-mpl",
-    "xorg-libx11"
+    "pytest-mpl"
    ]
   }
  },
@@ -786,6 +776,7 @@
     "cython",
     "dask >=0.18",
     "dill",
+    "freetype >=2.9,<2.10",
     "h5py",
     "hyperspy-base",
     "hyperspy-gui-ipywidgets >=1.2",
@@ -793,13 +784,11 @@
     "imageio",
     "ipyparallel",
     "ipython",
-    "jupyter",
-    "jupyterlab >=0.35.4",
     "matplotlib",
-    "matplotlib >2.2.2",
+    "matplotlib-base >2.2.2",
+    "matplotlib-base >=3.1,<3.2",
     "mrcz",
     "natsort",
-    "nodejs",
     "numba",
     "numexpr",
     "numpy >1.13",
@@ -814,7 +803,7 @@
     "python-dateutil >=2.5",
     "pyyaml",
     "requests",
-    "scikit-image >=0.13",
+    "scikit-image >=0.13,<0.17",
     "scikit-learn",
     "scipy >=0.15,<1.4",
     "sparse",
@@ -829,11 +818,10 @@
   "test":{
    "__set__":true,
    "elements":[
-    "freetype <2.10",
-    "matplotlib >=3.1",
+    "freetype >=2.9,<2.10",
+    "matplotlib-base >=3.1,<3.2",
     "pytest <4.1",
-    "pytest-mpl",
-    "xorg-libx11"
+    "pytest-mpl"
    ]
   }
  },
