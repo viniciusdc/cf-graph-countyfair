@@ -148,14 +148,14 @@
  "meta_yaml":{
   "about":{
    "home":"http://www.assessment.ucar.edu/toolkit/",
-   "license":"GPL (>= 2)",
+   "license":"GPL-2.0-or-later",
    "license_family":"GPL3",
    "license_file":"/lib/R/share/licenses/GPL-3",
    "summary":"Functions for performing extreme value analysis."
   },
   "build":{
    "merge_build_host":true,
-   "number":"1",
+   "number":"2",
    "rpaths":[
     "lib/R/lib/",
     "lib/",
@@ -188,14 +188,17 @@
     "r-lmoments",
     "r-car",
     "r-distillery",
+    "libblas",
     "r-base",
     "r-lmoments",
     "r-car",
     "r-distillery",
+    "libblas",
     "r-base",
     "r-lmoments",
     "r-car",
-    "r-distillery"
+    "r-distillery",
+    "libblas"
    ],
    "run":[
     "r-base",
@@ -213,7 +216,6 @@
    ]
   },
   "source":{
-   "fn":"extRemes_2.0-12.tar.gz",
    "sha256":"0206ef85d5f6db33f17995e3945de538f390edfb89b730b09e722418e4fe8d72",
    "url":[
     "https://cran.r-project.org/src/contrib/extRemes_2.0-12.tar.gz",
@@ -239,11 +241,12 @@
  },
  "new_version_errors":{},
  "pinning_version":"2020.05.06.22.15.02",
- "raw_meta_yaml":"{% set version = \"2.0-12\" %}\n\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-extremes\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  fn: extRemes_{{ version }}.tar.gz\n  url:\n    - https://cran.r-project.org/src/contrib/extRemes_{{ version }}.tar.gz\n    - https://cran.r-project.org/src/contrib/Archive/extRemes/extRemes_{{ version }}.tar.gz\n  sha256: 0206ef85d5f6db33f17995e3945de538f390edfb89b730b09e722418e4fe8d72\n\nbuild:\n  merge_build_host: true  # [win]\n  number: 1\n  skip: true  # [win32]\n\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - posix                # [win]\n    - {{ compiler('c') }}        # [unix]\n    - {{ compiler('m2w64_c') }}  # [win]\n  host:\n    - r-base\n    - r-lmoments\n    - r-car\n    - r-distillery\n\n  run:\n    - r-base\n    - r-lmoments\n    - r-car\n    - r-distillery\n\ntest:\n  commands:\n    - $R -e \"library('extRemes')\"  # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('extRemes')\\\"\"  # [win]\n\nabout:\n  home: http://www.assessment.ucar.edu/toolkit/\n  license: GPL (>= 2)\n  summary: Functions for performing extreme value analysis.\n  license_family: GPL3\n  license_file: {{ environ[\"PREFIX\"] }}/lib/R/share/licenses/GPL-3\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n",
+ "raw_meta_yaml":"{% set version = \"2.0-12\" %}\n\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-extremes\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  url:\n    - {{ cran_mirror }}/src/contrib/extRemes_{{ version }}.tar.gz\n    - {{ cran_mirror }}/src/contrib/Archive/extRemes/extRemes_{{ version }}.tar.gz\n  sha256: 0206ef85d5f6db33f17995e3945de538f390edfb89b730b09e722418e4fe8d72\n\nbuild:\n  merge_build_host: true  # [win]\n  number: 2\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - posix                # [win]\n    - {{ compiler('c') }}        # [unix]\n    - {{ compiler('m2w64_c') }}  # [win]\n  host:\n    - r-base\n    - r-lmoments\n    - r-car\n    - r-distillery\n    - libblas\n  run:\n    - r-base\n    - r-lmoments\n    - r-car\n    - r-distillery\n\ntest:\n  commands:\n    - $R -e \"library('extRemes')\"  # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('extRemes')\\\"\"  # [win]\n\nabout:\n  home: http://www.assessment.ucar.edu/toolkit/\n  license: GPL-2.0-or-later\n  summary: Functions for performing extreme value analysis.\n  license_family: GPL3\n  license_file: {{ environ[\"PREFIX\"] }}/lib/R/share/licenses/GPL-3\n\nextra:\n  recipe-maintainers:\n    - conda-forge/r\n",
  "req":{
   "__set__":true,
   "elements":[
    "c_compiler_stub",
+   "libblas",
    "m2w64_c_compiler_stub",
    "posix",
    "r-base",
@@ -264,6 +267,7 @@
   "host":{
    "__set__":true,
    "elements":[
+    "libblas",
     "r-base",
     "r-car",
     "r-distillery",
@@ -298,6 +302,7 @@
   "host":{
    "__set__":true,
    "elements":[
+    "libblas",
     "r-base",
     "r-car",
     "r-distillery",
