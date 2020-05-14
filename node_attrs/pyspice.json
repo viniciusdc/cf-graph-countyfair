@@ -18,6 +18,23 @@
     "migrator_version",
     "name"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/418165349.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"Version",
+    "migrator_version":0,
+    "version":"1.4.1"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "version"
+   ]
   }
  ],
  "bad":false,
@@ -172,8 +189,12 @@
   }
  },
  "name":"pyspice",
- "new_version":"1.3.2",
- "pinning_version":"2020.05.09.00.08.03",
+ "new_version":"1.4.1",
+ "new_version_attempts":{
+  "1.4.1":1
+ },
+ "new_version_errors":{},
+ "pinning_version":"2020.05.14.17.14.20",
  "raw_meta_yaml":"{% set name = \"PySpice\" %}\n{% set version = \"1.3.2\" %}\n{% set sha256 = \"d64e437f55a879c98e34b2fe214270738a0c087427ac66f989db76d016cab402\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  url: https://github.com/FabriceSalvaire/PySpice/archive/v{{ version }}.tar.gz\n  sha256: {{ sha256 }}\n\n  patches:\n    # From the commit immediately after tag v1.3.2.\n    # Fixes a typo in setup_data.py\n    - patches/f7157ece.patch\n\nbuild:\n  number: 0\n  skip: true  # [win]\n  script:\n    # Create __init__.py this way instead of running tasks.release.update_git_sha(),\n    # which doesn't work because we're not using a git repo.\n    - sed -i.bak s/@VERSION@/{{ version }}/g PySpice/__init__.py.in\n    - sed -i.bak s/@GIT_TAG@/v{{ version }}/g PySpice/__init__.py.in\n    - sed -i.bak s/@GIT_SHA@/UNSPECIFIED/g PySpice/__init__.py.in\n    - rm PySpice/__init__.py.in.bak\n    - mv PySpice/__init__.py.in PySpice/__init__.py\n    - {{ PYTHON }} -m pip install . -vv\n\nrequirements:\n  host:\n    - python\n    - pip\n  run:\n    - python\n    - pyyaml\n    - cffi\n    - numpy\n    - scipy\n    - matplotlib-base\n    - ply\n    - ngspice\n\ntest:\n  imports:\n    - PySpice\n    - PySpice.Config\n    - PySpice.Doc\n    - PySpice.Logging\n    - PySpice.Math\n    - PySpice.Physics\n    - PySpice.Plot\n    - PySpice.Probe\n    - PySpice.Spice\n    - PySpice.Tools\n    - PySpice.Unit\n  requires:\n    - pytest\n  source_files:\n    - unit-test\n  commands:\n    - pytest unit-test\n\nabout:\n  home: https://pyspice.fabrice-salvaire.fr\n  doc_url: https://pyspice.fabrice-salvaire.fr\n  dev_url: https://github.com/FabriceSalvaire/PySpice\n\n  license: GPL-3.0-or-later\n  license_family: GPL\n  license_file: LICENSE.txt\n\n  summary: 'Simulate electronic circuit using Python and the Ngspice / Xyce simulators'\n  description: |\n    PySpice is a free and open source Python module which interfaces Python to\n    the Ngspice and Xyce circuit simulators. PySpice implements a Ngspice\n    binding and provides an oriented object API on top of SPICE, the simulation\n    output is converted to Numpy arrays for convenience.\n\nextra:\n  recipe-maintainers:\n    - FabriceSalvaire\n    - stuarteberg\n",
  "req":{
   "__set__":true,
@@ -221,7 +242,7 @@
    ]
   }
  },
- "smithy_version":"No azure token. Create a token and\nput it in ~/.conda-smithy/azure.token\n3.7.0\n",
+ "smithy_version":"No azure token. Create a token and\nput it in ~/.conda-smithy/azure.token\n3.7.1\n",
  "strong_exports":false,
  "total_requirements":{
   "build":{
