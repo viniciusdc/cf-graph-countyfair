@@ -39,7 +39,7 @@
     "__lazy_json__":"pr_json/375831118.json"
    },
    "data":{
-    "bot_rerun":false,
+    "bot_rerun":1589481349.8969083,
     "migrator_name":"Version",
     "migrator_version":0,
     "version":"2.5"
@@ -68,6 +68,23 @@
     "migrator_object_version",
     "migrator_version",
     "name"
+   ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/418180738.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"Version",
+    "migrator_version":0,
+    "version":"2.5"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "version"
    ]
   }
  ],
@@ -101,27 +118,9 @@
   },
   "extra":{
    "recipe-maintainers":[
-    "MathiasHaudgaard",
-    "FrodePedersen",
-    "ArneKr",
-    "Johanneskoester",
-    "Bgruening",
-    "Daler",
-    "Jdblischak",
-    "MathiasHaudgaard",
-    "FrodePedersen",
-    "ArneKr",
-    "Johanneskoester",
-    "Bgruening",
-    "Daler",
-    "Jdblischak",
-    "MathiasHaudgaard",
-    "FrodePedersen",
-    "ArneKr",
-    "Johanneskoester",
-    "Bgruening",
-    "Daler",
-    "Jdblischak"
+    "conda-forge/r",
+    "conda-forge/r",
+    "conda-forge/r"
    ]
   },
   "package":{
@@ -129,7 +128,7 @@
    "version":"2.3"
   },
   "requirements":{
-   "build":[
+   "host":[
     "r-base",
     "r-igraph",
     "r-base",
@@ -147,7 +146,6 @@
    ]
   },
   "source":{
-   "fn":"ggm_2.3.tar.gz",
    "sha256":"832ffe81ff87c6f1a6644e689ebbfb172924b4c4584ac8108d1244d153219ed8",
    "url":[
     "https://cran.r-project.org/src/contrib/ggm_2.3.tar.gz",
@@ -168,8 +166,12 @@
  },
  "name":"r-ggm",
  "new_version":"2.5",
- "pinning_version":"2020.05.04.19.59.17",
- "raw_meta_yaml":"{% set version = '2.3' %}\n\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-ggm\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  fn: ggm_{{ version }}.tar.gz\n  url:\n    - https://cran.r-project.org/src/contrib/ggm_{{ version }}.tar.gz\n    - https://cran.r-project.org/src/contrib/Archive/ggm/ggm_{{ version }}.tar.gz\n\n  sha256: 832ffe81ff87c6f1a6644e689ebbfb172924b4c4584ac8108d1244d153219ed8\n\nbuild:\n  noarch: generic\n  number: 1002\n\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  build:\n    - r-base\n    - r-igraph\n\n  run:\n    - r-base\n    - r-igraph\n\ntest:\n  commands:\n    - $R -e \"library('ggm')\"  # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('ggm')\\\"\"  # [win]\n\nabout:\n  home: https://CRAN.R-project.org/package=ggm\n  license: GPL-2.0-or-later\n  summary: Functions and datasets for maximum likelihood fitting of some classes of graphical\n    Markov models.\n  license_family: GPL3\n  license_file: '{{ environ[\"PREFIX\"] }}/lib/R/share/licenses/GPL-3'\nextra:\n   recipe-maintainers:\n    - MathiasHaudgaard\n    - FrodePedersen\n    - ArneKr\n    - Johanneskoester\n    - Bgruening\n    - Daler\n    - Jdblischak\n",
+ "new_version_attempts":{
+  "2.5":1
+ },
+ "new_version_errors":{},
+ "pinning_version":"2020.05.14.17.14.20",
+ "raw_meta_yaml":"{% set version = '2.3' %}\n{% set posix = 'm2-' if win else '' %}\n{% set native = 'm2w64-' if win else '' %}\n\npackage:\n  name: r-ggm\n  version: {{ version|replace(\"-\", \"_\") }}\n\nsource:\n  url:\n    - {{ cran_mirror }}/src/contrib/ggm_{{ version }}.tar.gz\n    - {{ cran_mirror }}/src/contrib/Archive/ggm/ggm_{{ version }}.tar.gz\n  sha256: 832ffe81ff87c6f1a6644e689ebbfb172924b4c4584ac8108d1244d153219ed8\n\nbuild:\n  noarch: generic\n  number: 1002\n  rpaths:\n    - lib/R/lib/\n    - lib/\n\nrequirements:\n  host:\n    - r-base\n    - r-igraph\n  run:\n    - r-base\n    - r-igraph\n\ntest:\n  commands:\n    - $R -e \"library('ggm')\"  # [not win]\n    - \"\\\"%R%\\\" -e \\\"library('ggm')\\\"\"  # [win]\n\nabout:\n  home: https://CRAN.R-project.org/package=ggm\n  license: GPL-2.0-or-later\n  summary: Functions and datasets for maximum likelihood fitting of some classes of graphical\n    Markov models.\n  license_family: GPL3\n  license_file: '{{ environ[\"PREFIX\"] }}/lib/R/share/licenses/GPL-3'\n\nextra:\n   recipe-maintainers:\n    - conda-forge/r\n",
  "req":{
   "__set__":true,
   "elements":[
@@ -180,14 +182,14 @@
  "requirements":{
   "build":{
    "__set__":true,
+   "elements":[]
+  },
+  "host":{
+   "__set__":true,
    "elements":[
     "r-base",
     "r-igraph"
    ]
-  },
-  "host":{
-   "__set__":true,
-   "elements":[]
   },
   "run":{
    "__set__":true,
@@ -201,19 +203,19 @@
    "elements":[]
   }
  },
- "smithy_version":"No azure token. Create a token and\nput it in ~/.conda-smithy/azure.token\n3.7.0\n",
+ "smithy_version":"No azure token. Create a token and\nput it in ~/.conda-smithy/azure.token\n3.7.1\n",
  "strong_exports":false,
  "total_requirements":{
   "build":{
+   "__set__":true,
+   "elements":[]
+  },
+  "host":{
    "__set__":true,
    "elements":[
     "r-base",
     "r-igraph"
    ]
-  },
-  "host":{
-   "__set__":true,
-   "elements":[]
   },
   "run":{
    "__set__":true,
