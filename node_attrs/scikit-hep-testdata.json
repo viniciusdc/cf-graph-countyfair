@@ -52,7 +52,7 @@
   "build":{
    "noarch":"python",
    "number":"0",
-   "script":" -m pip install . --no-deps --ignore-installed -vv "
+   "script":"SETUPTOOLS_SCM_PRETEND_VERSION=0.3.0  -m pip install . --no-deps --ignore-installed -vv "
   },
   "extra":{
    "recipe-maintainers":[
@@ -63,32 +63,41 @@
   },
   "package":{
    "name":"scikit-hep-testdata",
-   "version":"0.1.3"
+   "version":"0.3.0"
   },
   "requirements":{
    "host":[
     "pip",
     "python",
     "pytest-runner",
+    "setuptools_scm",
+    "toml",
     "pip",
     "python",
     "pytest-runner",
+    "setuptools_scm",
+    "toml",
     "pip",
     "python",
-    "pytest-runner"
+    "pytest-runner",
+    "setuptools_scm",
+    "toml"
    ],
    "run":[
     "python",
     "pyyaml",
+    "importlib_resources",
     "python",
     "pyyaml",
+    "importlib_resources",
     "python",
-    "pyyaml"
+    "pyyaml",
+    "importlib_resources"
    ]
   },
   "source":{
-   "sha256":"969087d9fb2fc4a426c73357af895b7e7df83def7143be286c16dec29d8c3dbc",
-   "url":"https://github.com/scikit-hep/scikit-hep-testdata/archive/v0.1.3.tar.gz"
+   "sha256":"4dda00d021fc18d78e89063604446f12fd773735224c2001b5b4fd9fca2b43fd",
+   "url":"https://github.com/scikit-hep/scikit-hep-testdata/archive/v0.3.0.tar.gz"
   },
   "test":{
    "commands":[
@@ -120,14 +129,17 @@
  },
  "new_version_errors":{},
  "pinning_version":"2020.05.13.13.23.43",
- "raw_meta_yaml":"{% set name = \"scikit-hep-testdata\" %}\n{% set version = \"0.1.3\" %}\n\npackage:\n  name: \"{{ name|lower }}\"\n  version: \"{{ version }}\"\n\nsource:\n  url: https://github.com/scikit-hep/{{ name }}/archive/v{{ version }}.tar.gz\n  sha256: 969087d9fb2fc4a426c73357af895b7e7df83def7143be286c16dec29d8c3dbc\n\nbuild:\n  number: 0\n  noarch: python\n  script: \"{{ PYTHON }} -m pip install . --no-deps --ignore-installed -vv \"\n\nrequirements:\n  host:\n    - pip\n    - python\n    - pytest-runner\n  run:\n    - python\n    - pyyaml\n\ntest:\n  source_files:\n    - tests\n  requires:\n    - pytest\n  imports:\n    - skhep_testdata\n  commands:\n    - pytest -vv tests/\n\nabout:\n  home: https://github.com/scikit-hep/scikit-hep-testdata\n  license: BSD-3-Clause\n  license_family: BSD\n  license_file: LICENSE\n  summary: Example HEP files for testing and demonstrating\n  doc_url: https://github.com/scikit-hep/scikit-hep-testdata#installing-and-usage\n  dev_url: https://github.com/scikit-hep/scikit-hep-testdata/\n\nextra:\n  recipe-maintainers:\n    - chrisburr\n",
+ "raw_meta_yaml":"{% set name = \"scikit-hep-testdata\" %}\n{% set version = \"0.3.0\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  url: https://github.com/scikit-hep/{{ name }}/archive/v{{ version }}.tar.gz\n  sha256: 4dda00d021fc18d78e89063604446f12fd773735224c2001b5b4fd9fca2b43fd\n\nbuild:\n  number: 0\n  noarch: python\n  script: 'SETUPTOOLS_SCM_PRETEND_VERSION={{version}} {{ PYTHON }} -m pip install . --no-deps --ignore-installed -vv '\n\nrequirements:\n  host:\n    - pip\n    - python\n    - pytest-runner\n    - setuptools_scm\n    - toml  # Workaround for https://github.com/conda-forge/setuptools_scm-feedstock/pull/39\n  run:\n    - python\n    - pyyaml\n    - importlib_resources\n\ntest:\n  source_files:\n    - tests\n  requires:\n    - pytest\n  imports:\n    - skhep_testdata\n  commands:\n    - pytest -vv tests/\n\nabout:\n  home: https://github.com/scikit-hep/scikit-hep-testdata\n  license: BSD-3-Clause\n  license_family: BSD\n  license_file: LICENSE\n  summary: Example HEP files for testing and demonstrating\n  doc_url: https://github.com/scikit-hep/scikit-hep-testdata#installing-and-usage\n  dev_url: https://github.com/scikit-hep/scikit-hep-testdata/\n\nextra:\n  recipe-maintainers:\n    - chrisburr\n",
  "req":{
   "__set__":true,
   "elements":[
+   "importlib_resources",
    "pip",
    "pytest-runner",
    "python",
-   "pyyaml"
+   "pyyaml",
+   "setuptools_scm",
+   "toml"
   ]
  },
  "requirements":{
@@ -140,12 +152,15 @@
    "elements":[
     "pip",
     "pytest-runner",
-    "python"
+    "python",
+    "setuptools_scm",
+    "toml"
    ]
   },
   "run":{
    "__set__":true,
    "elements":[
+    "importlib_resources",
     "python",
     "pyyaml"
    ]
@@ -169,12 +184,15 @@
    "elements":[
     "pip",
     "pytest-runner",
-    "python"
+    "python",
+    "setuptools_scm",
+    "toml"
    ]
   },
   "run":{
    "__set__":true,
    "elements":[
+    "importlib_resources",
     "python",
     "pyyaml"
    ]
@@ -187,5 +205,5 @@
   }
  },
  "url":"https://github.com/scikit-hep/scikit-hep-testdata/archive/v0.1.3.tar.gz",
- "version":"0.1.3"
+ "version":"0.3.0"
 }
