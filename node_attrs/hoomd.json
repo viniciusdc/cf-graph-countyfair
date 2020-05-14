@@ -292,13 +292,15 @@
    "summary":"HOOMD-blue is a general-purpose particle simulation toolkit."
   },
   "build":{
-   "number":"0",
+   "number":"1",
    "rpaths":[
     "lib/",
     "lib/",
     "lib/"
    ],
-   "skip":true
+   "script":"bash ${RECIPE_DIR}/build_hoomd.sh gpu",
+   "skip":true,
+   "string":"cpu_pyh_1"
   },
   "extra":{
    "recipe-maintainers":[
@@ -325,6 +327,7 @@
     "pkg-config",
     "ninja",
     "cxx_compiler_stub",
+    "cuda_compiler_stub",
     "cmake",
     "pkg-config",
     "ninja"
@@ -377,11 +380,12 @@
  "name":"hoomd",
  "new_version":"2.8.2",
  "pinning_version":"2020.01.10",
- "raw_meta_yaml":"{% set name = \"hoomd\" %}\n{% set version = \"2.9.0\" %}\n{% set sha256 = \"e004da89657894e51c91359d85156debad1725291b69278c4eeb89401b0933da\" %}\n\npackage:\n  name: {{ name }}\n  version: \"{{ version }}\"\n\nsource:\n  fn: {{ name }}-{{ version }}.tar.gz\n  url: https://github.com/glotzerlab/hoomd-blue/releases/download/v{{ version }}/{{ name }}-v{{ version }}.tar.gz\n  sha256: {{ sha256 }}\n\nbuild:\n  number: 0\n  # upstream package does not support windows or py27\n  skip: true  # [win]\n  skip: true  # [py27]\n\n  rpaths:\n    - lib/\n    - lib/python3.8/site-packages/{{ name }}  # [py38]\n    - lib/python3.7/site-packages/{{ name }}  # [py37]\n    - lib/python3.6/site-packages/{{ name }}  # [py36]\n\nrequirements:\n  build:\n    - {{ compiler('cxx') }}\n    - cmake\n    - pkg-config\n    - ninja\n\n  host:\n    - python\n    - numpy\n    - tbb-devel\n    - tbb\n\n  run:\n    - python\n    - numpy\n    - tbb\n\ntest:\n  imports:\n  - hoomd\n  - hoomd.md\n  - hoomd.hpmc\n\nabout:\n  home: http://glotzerlab.engin.umich.edu/hoomd-blue/\n  license: BSD-3-Clause\n  license_family: BSD\n  license_file: LICENSE\n  summary: 'HOOMD-blue is a general-purpose particle simulation toolkit.'\n\n  description: |\n    You define particle initial conditions and interactions in a high-level python script. Then tell HOOMD-blue how you want\n    to execute the job and it takes care of the rest. Python job scripts give you unlimited flexibility to create custom\n    initialization routines, control simulation parameters, and perform in situ analysis.\n  doc_url: https://hoomd-blue.readthedocs.io\n  dev_url: https://glotzerlab.com/glotzerlab/{{ name }}\n\nextra:\n  recipe-maintainers:\n    - joaander\n    - bdice\n",
+ "raw_meta_yaml":"{% set name = \"hoomd\" %}\n{% set version = \"2.9.0\" %}\n{% set build = 1 %}\n{% set sha256 = \"e004da89657894e51c91359d85156debad1725291b69278c4eeb89401b0933da\" %}\n{% set processor = \"cpu\" if cuda_compiler_version == \"None\" else \"gpu\" %}  # [linux64]\n{% set processor = \"cpu\" %}  # [not linux64]\n\n\npackage:\n  name: {{ name }}\n  version: \"{{ version }}\"\n\nsource:\n  fn: {{ name }}-{{ version }}.tar.gz\n  url: https://github.com/glotzerlab/hoomd-blue/releases/download/v{{ version }}/{{ name }}-v{{ version }}.tar.gz\n  sha256: {{ sha256 }}\n\nbuild:\n  number: {{ build }}\n  # upstream package does not support windows or py27\n  skip: true  # [win]\n  skip: true  # [py27]\n  string: \"{{ processor }}_py{{ py }}h{{ PKG_HASH }}_{{ build }}\"\n  script: \"bash ${RECIPE_DIR}/build_hoomd.sh gpu\"  # [linux64 and cuda_compiler_version != \"None\"]\n  script: \"bash ${RECIPE_DIR}/build_hoomd.sh\"  # [not linux64 or cuda_compiler_version == \"None\"]\n\n  rpaths:\n    - lib/\n    - lib/python3.8/site-packages/{{ name }}  # [py38]\n    - lib/python3.7/site-packages/{{ name }}  # [py37]\n    - lib/python3.6/site-packages/{{ name }}  # [py36]\n\nrequirements:\n  build:\n    - {{ compiler('cxx') }}\n    - {{ compiler('cuda') }}  # [linux64 and cuda_compiler_version != \"None\"]\n    - cmake\n    - pkg-config\n    - ninja\n\n  host:\n    - python\n    - numpy\n    - tbb-devel\n    - tbb\n\n  run:\n    - python\n    - numpy\n    - tbb\n\ntest:\n  imports:\n  - hoomd\n  - hoomd.md\n  - hoomd.hpmc\n\nabout:\n  home: http://glotzerlab.engin.umich.edu/hoomd-blue/\n  license: BSD-3-Clause\n  license_family: BSD\n  license_file: LICENSE\n  summary: 'HOOMD-blue is a general-purpose particle simulation toolkit.'\n\n  description: |\n    You define particle initial conditions and interactions in a high-level python script. Then tell HOOMD-blue how you want\n    to execute the job and it takes care of the rest. Python job scripts give you unlimited flexibility to create custom\n    initialization routines, control simulation parameters, and perform in situ analysis.\n  doc_url: https://hoomd-blue.readthedocs.io\n  dev_url: https://glotzerlab.com/glotzerlab/{{ name }}\n\nextra:\n  recipe-maintainers:\n    - joaander\n    - bdice\n",
  "req":{
   "__set__":true,
   "elements":[
    "cmake",
+   "cuda_compiler_stub",
    "cxx_compiler_stub",
    "ninja",
    "numpy",
@@ -396,6 +400,7 @@
    "__set__":true,
    "elements":[
     "cmake",
+    "cuda_compiler_stub",
     "cxx_compiler_stub",
     "ninja",
     "pkg-config"
@@ -430,6 +435,7 @@
    "__set__":true,
    "elements":[
     "cmake",
+    "cuda_compiler_stub",
     "cxx_compiler_stub",
     "ninja",
     "pkg-config"
