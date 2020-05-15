@@ -310,7 +310,7 @@
   },
   "package":{
    "name":"pyqtads",
-   "version":"3.3.0"
+   "version":"3.4.0"
   },
   "requirements":{
    "build":[
@@ -319,7 +319,13 @@
     "c_compiler_stub",
     "cxx_compiler_stub",
     "c_compiler_stub",
-    "cxx_compiler_stub"
+    "cxx_compiler_stub",
+    "cdt_stub",
+    "cdt_stub",
+    "cdt_stub",
+    "cdt_stub",
+    "cdt_stub",
+    "cdt_stub"
    ],
    "host":[
     "python",
@@ -327,53 +333,48 @@
     "pyqt 5.12.*",
     "qt 5.12.*",
     "setuptools",
-    "sip >=4.19",
     "python",
     "pip",
     "pyqt 5.12.*",
     "qt 5.12.*",
     "setuptools",
-    "sip >=4.19",
     "python",
     "pip",
     "pyqt 5.12.*",
     "qt 5.12.*",
     "setuptools",
-    "sip >=4.19"
+    "xorg-libxfixes"
    ],
    "run":[
     "python",
     "pyqt 5.12.*",
     "pywin32",
     "qt 5.12.*",
-    "sip >=4.19",
     "python",
     "pyqt 5.12.*",
     "qt 5.12.*",
-    "sip >=4.19",
     "python",
     "pyqt 5.12.*",
-    "qt 5.12.*",
-    "sip >=4.19"
+    "qt 5.12.*"
    ]
   },
   "source":{
    "patches":[
     "0001-setup.patch",
-    "0002-hotfix_for_3.3.0.patch",
+    "0002-hotfix_for_3.4.0.patch",
     "0001-setup.patch",
-    "0002-hotfix_for_3.3.0.patch",
+    "0002-hotfix_for_3.4.0.patch",
     "0001-setup.patch",
-    "0002-hotfix_for_3.3.0.patch"
+    "0002-hotfix_for_3.4.0.patch"
    ],
-   "sha256":"1c3f275efb90da41d076ca1118aaaaeb6649536f829fac0af4c7a8b574001e8b",
-   "url":"https://github.com/githubuser0xFFFF/Qt-Advanced-Docking-System/archive/3.3.0.tar.gz"
+   "sha256":"6e073efc8615f04579d1e1350cb157378f99c17aaed538ac5014ec026a45e1d6",
+   "url":"https://github.com/githubuser0xFFFF/Qt-Advanced-Docking-System/archive/3.4.0.tar.gz"
   },
   "test":{
    "imports":[
-    "PyQtAds",
-    "PyQtAds",
-    "PyQtAds"
+    "PyQtAds.QtAds",
+    "PyQtAds.QtAds",
+    "PyQtAds.QtAds"
    ]
   }
  },
@@ -388,11 +389,12 @@
  },
  "new_version_errors":{},
  "pinning_version":"2020.05.11.06.13.34",
- "raw_meta_yaml":"{% set name = \"pyqtads\" %}\n{% set version = \"3.3.0\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  url: https://github.com/githubuser0xFFFF/Qt-Advanced-Docking-System/archive/{{ version }}.tar.gz\n  sha256: 1c3f275efb90da41d076ca1118aaaaeb6649536f829fac0af4c7a8b574001e8b\n  patches:\n    - 0001-setup.patch\n    - 0002-hotfix_for_3.3.0.patch\n\nbuild:\n  number: 0\n  script: {{ PYTHON }} -m pip install . -vv\n  skip: true  # [py2k]\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n  host:\n    - python\n    - pip\n    - pyqt 5.12.*\n    - qt 5.12.*\n    - setuptools\n    - sip >=4.19\n  run:\n    - python\n    - pyqt 5.12.*\n    - pywin32   # [win]\n    - qt 5.12.*\n    - sip >=4.19\n\ntest:\n  imports:\n    - PyQtAds\n\nabout:\n  home: https://github.com/githubuser0xFFFF/Qt-Advanced-Docking-System\n  license: LGPLv2+\n  license_family: LGPL\n  license_file: LICENSE\n  summary: Advanced Docking System for Qt\n  description: Advanced Docking System for Qt\n  dev_url: https://github.com/githubuser0xFFFF/Qt-Advanced-Docking-System\n\nextra:\n  recipe-maintainers:\n    - hhslepicka\n    - klauer\n    - n-elie\n",
+ "raw_meta_yaml":"{% set name = \"pyqtads\" %}\n{% set version = \"3.4.0\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  url: https://github.com/githubuser0xFFFF/Qt-Advanced-Docking-System/archive/{{ version }}.tar.gz\n  sha256: 6e073efc8615f04579d1e1350cb157378f99c17aaed538ac5014ec026a45e1d6\n  patches:\n    - 0001-setup.patch\n    - 0002-hotfix_for_3.4.0.patch\n    \nbuild:\n  number: 0\n  script: {{ PYTHON }} -m pip install . -vv\n  skip: true  # [py2k]\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n    - {{ cdt('mesa-libgl-devel') }}  # [linux]\n    - {{ cdt('mesa-dri-drivers') }}  # [linux]\n    - {{ cdt('libselinux') }}  # [linux]\n    - {{ cdt('libxdamage') }}  # [linux]\n    - {{ cdt('libxxf86vm') }}  # [linux]\n    - {{ cdt('libxext') }}     # [linux]\n  host:\n    - python\n    - pip\n    - pyqt 5.12.*\n    - qt 5.12.*\n    - setuptools\n    - xorg-libxfixes  # [linux]\n  run:\n    - python\n    - pyqt 5.12.*\n    - pywin32   # [win]\n    - qt 5.12.*\n\ntest:\n  imports:\n    - PyQtAds.QtAds\n\nabout:\n  home: https://github.com/githubuser0xFFFF/Qt-Advanced-Docking-System\n  license: LGPLv2+\n  license_family: LGPL\n  license_file: LICENSE\n  summary: Advanced Docking System for Qt\n  description: Advanced Docking System for Qt\n  dev_url: https://github.com/githubuser0xFFFF/Qt-Advanced-Docking-System\n\nextra:\n  recipe-maintainers:\n    - hhslepicka\n    - klauer\n    - n-elie\n",
  "req":{
   "__set__":true,
   "elements":[
    "c_compiler_stub",
+   "cdt_stub",
    "cxx_compiler_stub",
    "pip",
    "pyqt",
@@ -400,7 +402,7 @@
    "pywin32",
    "qt",
    "setuptools",
-   "sip"
+   "xorg-libxfixes"
   ]
  },
  "requirements":{
@@ -408,6 +410,7 @@
    "__set__":true,
    "elements":[
     "c_compiler_stub",
+    "cdt_stub",
     "cxx_compiler_stub"
    ]
   },
@@ -419,7 +422,7 @@
     "python",
     "qt",
     "setuptools",
-    "sip"
+    "xorg-libxfixes"
    ]
   },
   "run":{
@@ -428,8 +431,7 @@
     "pyqt",
     "python",
     "pywin32",
-    "qt",
-    "sip"
+    "qt"
    ]
   },
   "test":{
@@ -444,6 +446,7 @@
    "__set__":true,
    "elements":[
     "c_compiler_stub",
+    "cdt_stub",
     "cxx_compiler_stub"
    ]
   },
@@ -455,7 +458,7 @@
     "python",
     "qt 5.12.*",
     "setuptools",
-    "sip >=4.19"
+    "xorg-libxfixes"
    ]
   },
   "run":{
@@ -464,8 +467,7 @@
     "pyqt 5.12.*",
     "python",
     "pywin32",
-    "qt 5.12.*",
-    "sip >=4.19"
+    "qt 5.12.*"
    ]
   },
   "test":{
@@ -474,5 +476,5 @@
   }
  },
  "url":"https://github.com/githubuser0xFFFF/Qt-Advanced-Docking-System/archive/2.5.2.tar.gz",
- "version":"3.3.0"
+ "version":"3.4.0"
 }
