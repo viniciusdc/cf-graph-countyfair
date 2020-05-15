@@ -71,9 +71,6 @@
   "bot":{
    "automerge":true
   },
-  "compiler_stack":"comp7",
-  "max_py_ver":"37",
-  "max_r_ver":"35",
   "provider":{
    "win":"azure"
   }
@@ -93,11 +90,11 @@
    "number":"0",
    "script":[
     "pushd gopath/src/github.com/terraform-providers/terraform-provider-triton",
-    "go build -v -o terraform-provider-triton_v0.6.0_x4",
+    "go build -v -o terraform-provider-triton_v0.7.0_x4",
     "pushd gopath/src/github.com/terraform-providers/terraform-provider-triton",
-    "go build -v -o terraform-provider-triton_v0.6.0_x4",
+    "go build -v -o terraform-provider-triton_v0.7.0_x4",
     "pushd gopath/src/github.com/terraform-providers/terraform-provider-triton",
-    "go build -v -o terraform-provider-triton_v0.6.0_x4"
+    "go build -v -o terraform-provider-triton_v0.7.0_x4"
    ]
   },
   "extra":{
@@ -109,7 +106,7 @@
   },
   "package":{
    "name":"terraform-provider-triton",
-   "version":"0.6.0"
+   "version":"0.7.0"
   },
   "requirements":{
    "build":[
@@ -126,34 +123,34 @@
   "source":[
    {
     "folder":"gopath/src/github.com/terraform-providers/terraform-provider-triton",
-    "sha256":"c37be709e46b0af861276a960e9f5c3b0d4022ba7cb1a3c1422eb6eb354a8052",
-    "url":"https://github.com/terraform-providers/terraform-provider-triton/archive/v0.6.0.tar.gz"
+    "sha256":"24aa9ccab1bb8dc2f634d9169942ddeaee2a62dc89e5f805242b0645e4a4476f",
+    "url":"https://github.com/terraform-providers/terraform-provider-triton/archive/v0.7.0.tar.gz"
    },
    {
     "folder":"gopath/src/github.com/terraform-providers/terraform-provider-triton",
-    "sha256":"c37be709e46b0af861276a960e9f5c3b0d4022ba7cb1a3c1422eb6eb354a8052",
-    "url":"https://github.com/terraform-providers/terraform-provider-triton/archive/v0.6.0.tar.gz"
+    "sha256":"24aa9ccab1bb8dc2f634d9169942ddeaee2a62dc89e5f805242b0645e4a4476f",
+    "url":"https://github.com/terraform-providers/terraform-provider-triton/archive/v0.7.0.tar.gz"
    },
    {
     "folder":"gopath/src/github.com/terraform-providers/terraform-provider-triton",
-    "sha256":"c37be709e46b0af861276a960e9f5c3b0d4022ba7cb1a3c1422eb6eb354a8052",
-    "url":"https://github.com/terraform-providers/terraform-provider-triton/archive/v0.6.0.tar.gz"
+    "sha256":"24aa9ccab1bb8dc2f634d9169942ddeaee2a62dc89e5f805242b0645e4a4476f",
+    "url":"https://github.com/terraform-providers/terraform-provider-triton/archive/v0.7.0.tar.gz"
    }
   ],
   "test":{
    "commands":[
-    "echo provider \"triton\" { version=\"0.6.0\" } > init.tf",
+    "echo provider \"triton\" { version=\"0.7.0\" } > init.tf",
     "terraform init",
     "if not exist .terraform\\plugins\\_\\lock.json exit 1",
-    "if exist .terraform\\plugins\\_\\terraform-provider-triton_v0.6.0_x4 exit 1",
-    "echo 'provider \"triton\" { version=\"0.6.0\" }' > init.tf",
+    "if exist .terraform\\plugins\\_\\terraform-provider-triton_v0.7.0_x4 exit 1",
+    "echo 'provider \"triton\" { version=\"0.7.0\" }' > init.tf",
     "terraform init",
     "test -f .terraform/plugins/_/lock.json",
-    "test ! -f .terraform/plugins/_/terraform-provider-triton_v0.6.0_x4",
-    "echo 'provider \"triton\" { version=\"0.6.0\" }' > init.tf",
+    "test ! -f .terraform/plugins/_/terraform-provider-triton_v0.7.0_x4",
+    "echo 'provider \"triton\" { version=\"0.7.0\" }' > init.tf",
     "terraform init",
     "test -f .terraform/plugins/_/lock.json",
-    "test ! -f .terraform/plugins/_/terraform-provider-triton_v0.6.0_x4"
+    "test ! -f .terraform/plugins/_/terraform-provider-triton_v0.7.0_x4"
    ]
   }
  },
@@ -164,7 +161,7 @@
  },
  "new_version_errors":{},
  "pinning_version":"2020.05.14.17.14.20",
- "raw_meta_yaml":"{% set provider = \"Triton\" %}\n{% set goname = \"github.com/terraform-providers/terraform-provider-\"+provider.lower() %}\n{% set version = \"0.6.0\" %}\n\n{% set name = goname.split('/')[-1] %}\n{% set pkg_src = ('gopath/src/'+goname).replace(\"/\",os.sep) %}\n\n{% set x4_plugin = name + '_v' + version + \"_x4\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  - folder:  {{ pkg_src }}\n    url: https://{{ goname }}/archive/v{{ version }}.tar.gz\n    sha256: c37be709e46b0af861276a960e9f5c3b0d4022ba7cb1a3c1422eb6eb354a8052\n\nbuild:\n  number: 0\n  script:\n    - pushd {{ pkg_src }}\n    - go build -v -o {{ target_gobin }}{{ x4_plugin }}{{ target_goexe }}\n\nrequirements:\n  build:\n    - {{ compiler('go') }} 1.13\n  run:\n    - terraform 0.12\n\ntest:\n  commands:\n    # Create a sample init.tf loading the provider\n    - echo 'provider \"{{ provider|lower }}\" { version=\"{{ version }}\" }' > init.tf  # [unix]\n    - echo provider \"{{ provider|lower }}\" { version=\"{{ version }}\" } > init.tf    # [win]\n\n    # Initialize\n    - terraform init\n\n    # Tests that init was successful\n    - test -f .terraform/plugins/{{ target_goos }}_{{ target_goarch }}/lock.json              # [unix]\n    - if not exist .terraform\\plugins\\{{ target_goos }}_{{ target_goarch }}\\lock.json exit 1  # [win]\n\n    # Test that the provider was not downloaded\n    - test ! -f .terraform/plugins/{{ target_goos }}_{{ target_goarch }}/{{ x4_plugin }}{{ target_goexe }}        # [unix]\n    - if exist .terraform\\plugins\\{{ target_goos }}_{{ target_goarch }}\\{{ x4_plugin }}{{ target_goexe }} exit 1  # [win]\n\nabout:\n  home: https://www.terraform.io\n  license: MPL-2.0\n  license_file: {{ pkg_src }}/LICENSE\n  summary: The Terraform {{ provider }} provider\n  doc_url: https://www.terraform.io/docs/providers/{{ provider|lower }}/index.html\n  dev_url: https://github.com/terraform-providers/{{ name }}\n\nextra:\n  recipe-maintainers:\n    - conda-forge/terraform\n",
+ "raw_meta_yaml":"{% set provider = \"Triton\" %}\n{% set goname = \"github.com/terraform-providers/terraform-provider-\"+provider.lower() %}\n{% set version = \"0.7.0\" %}\n\n{% set name = goname.split('/')[-1] %}\n{% set pkg_src = ('gopath/src/'+goname).replace(\"/\",os.sep) %}\n\n{% set x4_plugin = name + '_v' + version + \"_x4\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  - folder: {{ pkg_src }}\n    url: https://{{ goname }}/archive/v{{ version }}.tar.gz\n    sha256: 24aa9ccab1bb8dc2f634d9169942ddeaee2a62dc89e5f805242b0645e4a4476f\n\nbuild:\n  number: 0\n  script:\n    - pushd {{ pkg_src }}\n    - go build -v -o {{ target_gobin }}{{ x4_plugin }}{{ target_goexe }}\n\nrequirements:\n  build:\n    - {{ compiler('go') }} 1.13\n  run:\n    - terraform 0.12\n\ntest:\n  commands:\n    # Create a sample init.tf loading the provider\n    - echo 'provider \"{{ provider|lower }}\" { version=\"{{ version }}\" }' > init.tf  # [unix]\n    - echo provider \"{{ provider|lower }}\" { version=\"{{ version }}\" } > init.tf    # [win]\n\n    # Initialize\n    - terraform init\n\n    # Tests that init was successful\n    - test -f .terraform/plugins/{{ target_goos }}_{{ target_goarch }}/lock.json              # [unix]\n    - if not exist .terraform\\plugins\\{{ target_goos }}_{{ target_goarch }}\\lock.json exit 1  # [win]\n\n    # Test that the provider was not downloaded\n    - test ! -f .terraform/plugins/{{ target_goos }}_{{ target_goarch }}/{{ x4_plugin }}{{ target_goexe }}        # [unix]\n    - if exist .terraform\\plugins\\{{ target_goos }}_{{ target_goarch }}\\{{ x4_plugin }}{{ target_goexe }} exit 1  # [win]\n\nabout:\n  home: https://www.terraform.io\n  license: MPL-2.0\n  license_file: {{ pkg_src }}/LICENSE\n  summary: The Terraform {{ provider }} provider\n  doc_url: https://www.terraform.io/docs/providers/{{ provider|lower }}/index.html\n  dev_url: https://github.com/terraform-providers/{{ name }}\n\nextra:\n  recipe-maintainers:\n    - conda-forge/terraform\n",
  "req":{
   "__set__":true,
   "elements":[
@@ -219,5 +216,5 @@
   }
  },
  "url":"https://github.com/terraform-providers/terraform-provider-triton/archive/v0.5.1.tar.gz",
- "version":"0.6.0"
+ "version":"0.7.0"
 }
