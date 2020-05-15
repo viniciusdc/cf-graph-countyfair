@@ -135,6 +135,23 @@
     "migrator_version",
     "version"
    ]
+  },
+  {
+   "PR":{
+    "__lazy_json__":"pr_json/418865447.json"
+   },
+   "data":{
+    "bot_rerun":false,
+    "migrator_name":"Version",
+    "migrator_version":0,
+    "version":"0.11.1"
+   },
+   "keys":[
+    "bot_rerun",
+    "migrator_name",
+    "migrator_version",
+    "version"
+   ]
   }
  ],
  "bad":false,
@@ -238,8 +255,12 @@
   }
  },
  "name":"xleaflet",
- "new_version":"0.11.0",
- "pinning_version":"2020.01.10",
+ "new_version":"0.11.1",
+ "new_version_attempts":{
+  "0.11.1":1
+ },
+ "new_version_errors":{},
+ "pinning_version":"2020.05.14.17.14.20",
  "raw_meta_yaml":"{% set name = \"xleaflet\" %}\n{% set version = \"0.11.0\" %}\n{% set sha256 = \"7142e6c642aa0fb7d5fa967272677d83a70a97d369a01213d0a9a21045c69cd1\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  fn: {{ name }}-{{ version }}.tar.gz\n  url: https://github.com/jupyter-xeus/xleaflet/archive/{{ version }}.tar.gz\n  sha256: {{ sha256 }}\n\nbuild:\n  number: 0\n  skip: true  # [win and vc<14]\n  run_exports:\n    - {{ pin_subpackage(name, max_pin='x.x') }}\n\nrequirements:\n  build:\n    - {{ compiler('cxx') }}\n    - cmake\n  host:\n    - xeus >=0.23.3,<0.24\n    - xtl >=0.6.5,<0.7\n    - xproperty >=0.10.0,<0.11\n    - xwidgets >=0.20.0,<0.21\n    - xtensor >=0.20.8,<22\n  run:\n    - xtensor >=0.20.8,<22\n\ntest:\n  commands:\n    - test -d ${PREFIX}/include/xleaflet  # [unix]\n    - test -f ${PREFIX}/include/xleaflet/xmap.hpp  # [unix]\n    - test -f ${PREFIX}/lib/cmake/xleaflet/xleafletConfig.cmake  # [unix]\n    - test -f ${PREFIX}/lib/cmake/xleaflet/xleafletConfigVersion.cmake  # [unix]\n    - if exist %LIBRARY_PREFIX%\\include\\xleaflet\\xmap.hpp (exit 0) else (exit 1)  # [win]\n    - if exist %LIBRARY_PREFIX%\\lib\\xleafletConfig.cmake (exit 0) else (exit 1)  # [win]\n    - if exist %LIBRARY_PREFIX%\\lib\\xleafletConfigVersion.cmake (exit 0) else (exit 1)  # [win]\n\nabout:\n  home: http://quantstack.net/xleaflet\n  license: BSD-3-Clause\n  license_family: BSD\n  license_file: LICENSE\n  summary: 'C++ backend for the jupyter leaflet widget'\n  doc_url: http://xleaflet.readthedocs.io\n  dev_url: https://github.com/jupyter-xeus/xleaflet\n\nextra:\n  recipe-maintainers:\n    - SylvainCorlay\n    - JohanMabille\n    - martinRenou\n",
  "req":{
   "__set__":true,
@@ -282,7 +303,7 @@
    "elements":[]
   }
  },
- "smithy_version":"3.6.5",
+ "smithy_version":"No azure token. Create a token and\nput it in ~/.conda-smithy/azure.token\n3.7.1\n",
  "strong_exports":false,
  "total_requirements":{
   "build":{
