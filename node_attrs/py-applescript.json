@@ -87,7 +87,13 @@
   }
  },
  "name":"py-applescript",
- "new_version":"1.0.1",
+ "new_version":"1.0.2",
+ "new_version_attempts":{
+  "1.0.2":1
+ },
+ "new_version_errors":{
+  "1.0.2":"The recipe did not change in the version migration, a URL did not hash, or there is jinja2 syntax the bot cannot handle!\n\nPlease check the URLs in your recipe with version '1.0.2' to make sure they exist!\n\nWe also found the following errors:\n\n - could not hash URL template 'https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz'\n"
+ },
  "pinning_version":"2020.04.10",
  "raw_meta_yaml":"{% set name = \"py-applescript\" %}\n{% set version = \"1.0.1\" %}\n\npackage:\n  name: \"{{ name|lower }}\"\n  version: \"{{ version }}\"\n\nsource:\n  url: \"https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz\"\n  sha256: efb6ee624aee3b296f2d49b8739243a19641afb7da20ebd187e4f79b2866ae47\n\nbuild:\n  number: 0\n  script: \"{{ PYTHON }} -m pip install . -vv\"\n  skip: True  # [not osx]\n\nrequirements:\n  host:\n    - pip\n    - python\n  run:\n    - python\n    - pyobjc-framework-cocoa\n\ntest:\n  imports:\n    - applescript\n\nabout:\n  home: https://github.com/rdhyee/py-applescript\n  license: CC-PDDC\n  license_family: Public-Domain\n  license_file: # none, issue here: https://github.com/rdhyee/py-applescript/issues/5\n  summary: \"An easy-to-use Python wrapper for NSAppleScript, allowing Python scripts to communicate with AppleScripts and AppleScriptable applications.\"\n  doc_url: https://pypi.org/project/py-applescript\n  dev_url: https://github.com/rdhyee/py-applescript\n\nextra:\n  recipe-maintainers:\n    - ndmaxar\n    - rluria14\n    - oblute\n",
  "req":{
