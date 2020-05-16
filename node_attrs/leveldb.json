@@ -53,7 +53,10 @@
  "conda-forge.yml":{
   "compiler_stack":"comp7",
   "max_py_ver":"37",
-  "max_r_ver":"35"
+  "max_r_ver":"35",
+  "provider":{
+   "win":"azure"
+  }
  },
  "feedstock_name":"leveldb",
  "hash_type":"sha256",
@@ -65,8 +68,7 @@
    "summary":"A fast key-value storage library providing ordered mappings."
   },
   "build":{
-   "number":"0",
-   "skip":true
+   "number":"1"
   },
   "extra":{
    "recipe-maintainers":[
@@ -115,7 +117,8 @@
   },
   "test":{
    "commands":[
-    "test -f ${PREFIX}/lib/libleveldb${SHLIB_EXT}",
+    "if not exist %PREFIX%\\\\Library\\\\bin\\\\leveldb.dll exit 1",
+    "if not exist %PREFIX%\\\\Library\\\\lib\\\\leveldb.lib exit 1",
     "test -f ${PREFIX}/lib/libleveldb${SHLIB_EXT}",
     "test -f ${PREFIX}/lib/libleveldb${SHLIB_EXT}"
    ]
@@ -124,7 +127,7 @@
  "name":"leveldb",
  "new_version":"1.22",
  "pinning_version":"2019.12.18",
- "raw_meta_yaml":"{% set version = \"1.22\" %}\n{% set hash = \"55423cac9e3306f4a9502c738a001e4a339d1a38ffbee7572d4a07d5d63949b2\" %}\n\npackage:\n  name: leveldb\n  version: {{ version }}\n\nsource:\n  fn: {{ version }}.tar.gz\n  url: https://github.com/google/leveldb/archive/{{ version }}.tar.gz\n  sha256: {{ hash }}\n\nbuild:\n  number: 0\n  skip: true  # [win]\n\nrequirements:\n  build:\n    - cmake\n    - ninja\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n  host:\n    - snappy\n  run:\n    - snappy\n\ntest:\n  commands:\n    - test -f ${PREFIX}/lib/libleveldb${SHLIB_EXT}\n\nabout:\n  home: https://github.com/google/leveldb\n  license: BSD 3-Clause\n  license_file: LICENSE\n  summary: A fast key-value storage library providing ordered mappings.\n\nextra:\n  recipe-maintainers:\n    - jakirkham\n    - xhochy\n",
+ "raw_meta_yaml":"{% set version = \"1.22\" %}\n{% set hash = \"55423cac9e3306f4a9502c738a001e4a339d1a38ffbee7572d4a07d5d63949b2\" %}\n\npackage:\n  name: leveldb\n  version: {{ version }}\n\nsource:\n  fn: {{ version }}.tar.gz\n  url: https://github.com/google/leveldb/archive/{{ version }}.tar.gz\n  sha256: {{ hash }}\n\nbuild:\n  number: 1\n\nrequirements:\n  build:\n    - cmake\n    - ninja\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n  host:\n    - snappy\n  run:\n    - snappy\n\ntest:\n  commands:\n    - test -f ${PREFIX}/lib/libleveldb${SHLIB_EXT}  # [unix]\n    - if not exist %PREFIX%\\\\Library\\\\bin\\\\leveldb.dll exit 1          # [win]\n    - if not exist %PREFIX%\\\\Library\\\\lib\\\\leveldb.lib exit 1          # [win]\n\nabout:\n  home: https://github.com/google/leveldb\n  license: BSD 3-Clause\n  license_file: LICENSE\n  summary: A fast key-value storage library providing ordered mappings.\n\nextra:\n  recipe-maintainers:\n    - jakirkham\n    - xhochy\n",
  "req":{
   "__set__":true,
   "elements":[
