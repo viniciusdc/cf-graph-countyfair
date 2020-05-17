@@ -119,7 +119,6 @@
   "about":{
    "description":"Msys is a library for inspecting and manipulating chemical structures of\nthe sort used in molecular simulations. Its main features include:\nEfficient representation of chemical systems and forcefields;\n   A powerful atom selection language;\n   Command line tools for scripting common tasks;\n   C++ and Python interfaces.\nMsys currently supports Python 2.7 and Python 3.6+.\n",
    "dev_url":"https://github.com/DEShawResearch/msys",
-   "doc_url":"http://simplejson.readthedocs.io/",
    "home":"https://github.com/DEShawResearch/msys",
    "license":"BSD-3-Clause",
    "license_family":"BSD",
@@ -127,7 +126,7 @@
    "summary":"Tools for preparation and analysis of systems for molecular dynamics"
   },
   "build":{
-   "number":"1",
+   "number":"0",
    "skip":true
   },
   "extra":{
@@ -142,7 +141,7 @@
   },
   "package":{
    "name":"desres-msys",
-   "version":"1.7.266"
+   "version":"1.7.299"
   },
   "requirements":{
    "build":[
@@ -193,8 +192,8 @@
   },
   "source":[
    {
-    "sha1":"a37806e5dbb76b5e97c5d6fc3cc4b03542e5999a",
-    "url":"https://github.com/DEShawResearch/msys/archive/1.7.266.tar.gz"
+    "sha1":"610d7b5fabc6c75dfa355fae52fd95393e9409d6",
+    "url":"https://github.com/DEShawResearch/msys/archive/1.7.299.tar.gz"
    },
    {
     "folder":"external/inchi/INCHI-1-SRC",
@@ -202,8 +201,13 @@
     "url":"http://www.inchi-trust.org/download/105/INCHI-1-SRC.zip"
    },
    {
-    "sha1":"a37806e5dbb76b5e97c5d6fc3cc4b03542e5999a",
-    "url":"https://github.com/DEShawResearch/msys/archive/1.7.266.tar.gz"
+    "patches":[
+     "0001-Fix-to-compile-for-OSX.patch"
+    ]
+   },
+   {
+    "sha1":"610d7b5fabc6c75dfa355fae52fd95393e9409d6",
+    "url":"https://github.com/DEShawResearch/msys/archive/1.7.299.tar.gz"
    },
    {
     "folder":"external/inchi/INCHI-1-SRC",
@@ -211,18 +215,27 @@
     "url":"http://www.inchi-trust.org/download/105/INCHI-1-SRC.zip"
    },
    {
-    "sha1":"a37806e5dbb76b5e97c5d6fc3cc4b03542e5999a",
-    "url":"https://github.com/DEShawResearch/msys/archive/1.7.266.tar.gz"
+    "patches":[
+     "0001-Fix-to-compile-for-OSX.patch"
+    ]
+   },
+   {
+    "sha1":"610d7b5fabc6c75dfa355fae52fd95393e9409d6",
+    "url":"https://github.com/DEShawResearch/msys/archive/1.7.299.tar.gz"
    },
    {
     "folder":"external/inchi/INCHI-1-SRC",
     "sha1":"e3872a46d58cb321a98f4fd4b93a989fb6920b9c",
     "url":"http://www.inchi-trust.org/download/105/INCHI-1-SRC.zip"
+   },
+   {
+    "patches":[
+     "0001-Fix-to-compile-for-OSX.patch"
+    ]
    }
   ],
   "test":{
    "commands":[
-    "dms-check-groups -h",
     "dms-diff -h",
     "dms-dump -h",
     "dms-find-knot -h",
@@ -245,7 +258,6 @@
     "dms2mae -h",
     "python -c 'import msys; msys.InChI(msys.FromSmilesString(\"CC\")).string == \"InChI=1/C2H6/c1-2/h1-2H3\"'",
     "python -c 'import msys; s = msys.FromSmilesString(\"CC\"); msys.AssignBondOrderAndFormalCharge(s)'",
-    "dms-check-groups -h",
     "dms-diff -h",
     "dms-dump -h",
     "dms-find-knot -h",
@@ -268,7 +280,6 @@
     "dms2mae -h",
     "python -c 'import msys; msys.InChI(msys.FromSmilesString(\"CC\")).string == \"InChI=1/C2H6/c1-2/h1-2H3\"'",
     "python -c 'import msys; s = msys.FromSmilesString(\"CC\"); msys.AssignBondOrderAndFormalCharge(s)'",
-    "dms-check-groups -h",
     "dms-diff -h",
     "dms-dump -h",
     "dms-find-knot -h",
@@ -306,7 +317,7 @@
  },
  "new_version_errors":{},
  "pinning_version":"2020.05.12.18.03.58",
- "raw_meta_yaml":"{% set name = \"desres-msys\" %}\n{% set version = \"1.7.266\" %}\n{% set sha1 = \"a37806e5dbb76b5e97c5d6fc3cc4b03542e5999a\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  - url: https://github.com/DEShawResearch/msys/archive/{{ version }}.tar.gz\n    sha1: {{ sha1 }}\n  - url: http://www.inchi-trust.org/download/105/INCHI-1-SRC.zip\n    sha1: e3872a46d58cb321a98f4fd4b93a989fb6920b9c\n    folder: external/inchi/INCHI-1-SRC\n\nbuild:\n  number: 1\n  skip: True  # [win]\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n\n  host:\n    - scons\n    - python\n    - numpy\n    - boost >=1.67.0\n    - lpsolve55 ==5.5\n    - inchi ==1.05\n  run:\n    - python\n    - {{ pin_compatible('numpy') }}\n    - {{ pin_compatible('boost') }}\n    - lpsolve55 ==5.5\n    - inchi ==1.05\n\ntest:\n  imports:\n    - msys\n  commands:\n    - dms-check-groups -h\n    - dms-diff -h\n    - dms-dump -h\n    - dms-find-knot -h\n    - dms-fix-mass -h\n    - dms-fix-water-residues -h\n    - dms-frame -h\n    - dms-grease -h\n    - dms-info -h\n    - dms-posre -h\n    - dms-reorder-atoms -h\n    - dms-replicate -h\n    - dms-select -h\n    - dms-sequence -h\n    - dms-set -h\n    - dms-solvate -h\n    - dms-thermalize -h\n    - dms-tile -h\n    - dms-validate -h\n    - dms-version -h\n    - dms2mae -h\n    # Ensure that InChI is linked properly\n    - python -c 'import msys; msys.InChI(msys.FromSmilesString(\"CC\")).string == \"InChI=1/C2H6/c1-2/h1-2H3\"'\n    # Ensure that lpsolve is linked properly\n    - python -c 'import msys; s = msys.FromSmilesString(\"CC\"); msys.AssignBondOrderAndFormalCharge(s)'\n\nabout:\n  home: https://github.com/DEShawResearch/msys\n  license: BSD-3-Clause\n  license_family: BSD\n  license_file: LICENSE.txt\n  summary: Tools for preparation and analysis of systems for molecular dynamics\n  description: |\n    Msys is a library for inspecting and manipulating chemical structures of\n    the sort used in molecular simulations. Its main features include:\n    Efficient representation of chemical systems and forcefields;\n       A powerful atom selection language;\n       Command line tools for scripting common tasks;\n       C++ and Python interfaces.\n    Msys currently supports Python 2.7 and Python 3.6+.\n  doc_url: http://simplejson.readthedocs.io/\n  dev_url: https://github.com/DEShawResearch/msys\n\nextra:\n  recipe-maintainers:\n    - jgullingsrud\n    - rmcgibbo\n",
+ "raw_meta_yaml":"{% set name = \"desres-msys\" %}\n{% set version = \"1.7.299\" %}\n{% set sha1 = \"610d7b5fabc6c75dfa355fae52fd95393e9409d6\" %}\n\npackage:\n  name: {{ name|lower }}\n  version: {{ version }}\n\nsource:\n  - url: https://github.com/DEShawResearch/msys/archive/{{ version }}.tar.gz\n    sha1: {{ sha1 }}\n  - url: http://www.inchi-trust.org/download/105/INCHI-1-SRC.zip\n    sha1: e3872a46d58cb321a98f4fd4b93a989fb6920b9c\n    folder: external/inchi/INCHI-1-SRC\n  - patches:\n    - 0001-Fix-to-compile-for-OSX.patch\n\nbuild:\n  number: 0\n  skip: true  # [win]\n\nrequirements:\n  build:\n    - {{ compiler('c') }}\n    - {{ compiler('cxx') }}\n\n  host:\n    - scons\n    - python\n    - numpy\n    - boost >=1.67.0\n    - lpsolve55 ==5.5\n    - inchi ==1.05\n  run:\n    - python\n    - {{ pin_compatible('numpy') }}\n    - {{ pin_compatible('boost') }}\n    - lpsolve55 ==5.5\n    - inchi ==1.05\n\ntest:\n  imports:\n    - msys\n  commands:\n    - dms-diff -h\n    - dms-dump -h\n    - dms-find-knot -h\n    - dms-fix-mass -h\n    - dms-fix-water-residues -h\n    - dms-frame -h\n    - dms-grease -h\n    - dms-info -h\n    - dms-posre -h\n    - dms-reorder-atoms -h\n    - dms-replicate -h\n    - dms-select -h\n    - dms-sequence -h\n    - dms-set -h\n    - dms-solvate -h\n    - dms-thermalize -h\n    - dms-tile -h\n    - dms-validate -h\n    - dms-version -h\n    - dms2mae -h\n    # Ensure that InChI is linked properly\n    - python -c 'import msys; msys.InChI(msys.FromSmilesString(\"CC\")).string == \"InChI=1/C2H6/c1-2/h1-2H3\"'\n    # Ensure that lpsolve is linked properly\n    - python -c 'import msys; s = msys.FromSmilesString(\"CC\"); msys.AssignBondOrderAndFormalCharge(s)'\n\nabout:\n  home: https://github.com/DEShawResearch/msys\n  license: BSD-3-Clause\n  license_family: BSD\n  license_file: LICENSE.txt\n  summary: Tools for preparation and analysis of systems for molecular dynamics\n  description: |\n    Msys is a library for inspecting and manipulating chemical structures of\n    the sort used in molecular simulations. Its main features include:\n    Efficient representation of chemical systems and forcefields;\n       A powerful atom selection language;\n       Command line tools for scripting common tasks;\n       C++ and Python interfaces.\n    Msys currently supports Python 2.7 and Python 3.6+.\n  dev_url: https://github.com/DEShawResearch/msys\n\nextra:\n  recipe-maintainers:\n    - jgullingsrud\n    - rmcgibbo\n",
  "req":{
   "__set__":true,
   "elements":[
@@ -391,5 +402,5 @@
   }
  },
  "url":"https://github.com/DEShawResearch/msys/archive/1.7.266.tar.gz",
- "version":"1.7.266"
+ "version":"1.7.299"
 }
