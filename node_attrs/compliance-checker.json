@@ -184,6 +184,9 @@
  ],
  "bad":false,
  "conda-forge.yml":{
+  "bot":{
+   "automerge":true
+  },
   "provider":{
    "win":"azure"
   }
@@ -193,7 +196,7 @@
  "meta_yaml":{
   "about":{
    "home":"https://github.com/ioos/compliance-checker",
-   "license":"Apache 2.0",
+   "license":"Apache-2.0",
    "license_file":"LICENSE",
    "summary":"Checks Datasets and SOS endpoints for standards compliance"
   },
@@ -203,8 +206,9 @@
     "compliance-checker = cchecker:main",
     "compliance-checker = cchecker:main"
    ],
+   "noarch":"python",
    "number":"0",
-   "script":" -m pip install . --no-deps -vv"
+   "script":" -m pip install . -vv"
   },
   "extra":{
    "recipe-maintainers":[
@@ -227,20 +231,21 @@
   },
   "package":{
    "name":"compliance-checker",
-   "version":"4.3.2"
+   "version":"4.3.3"
   },
   "requirements":{
    "host":[
-    "python",
+    "python >=3.5",
     "pip",
-    "python",
+    "python >=3.5",
     "pip",
-    "python",
+    "python >=3.5",
     "pip"
    ],
    "run":[
-    "python",
+    "python >=3.5",
     "setuptools >=15.0",
+    "cftime >=1.1.0",
     "owslib >=0.8.3",
     "lxml >=3.2.1",
     "cf-units >=2",
@@ -248,11 +253,14 @@
     "isodate >=0.5.4",
     "jinja2 >=2.7.3",
     "pygeoif >=0.6",
-    "netcdf4 >=1.4",
+    "netcdf4 >=1.4.0",
     "regex >=2017.07.28",
     "pendulum >=1.2.4",
-    "python",
+    "pyproj >=2.2.1",
+    "validators >=0.14.2",
+    "python >=3.5",
     "setuptools >=15.0",
+    "cftime >=1.1.0",
     "owslib >=0.8.3",
     "lxml >=3.2.1",
     "cf-units >=2",
@@ -260,11 +268,14 @@
     "isodate >=0.5.4",
     "jinja2 >=2.7.3",
     "pygeoif >=0.6",
-    "netcdf4 >=1.4",
+    "netcdf4 >=1.4.0",
     "regex >=2017.07.28",
     "pendulum >=1.2.4",
-    "python",
+    "pyproj >=2.2.1",
+    "validators >=0.14.2",
+    "python >=3.5",
     "setuptools >=15.0",
+    "cftime >=1.1.0",
     "owslib >=0.8.3",
     "lxml >=3.2.1",
     "cf-units >=2",
@@ -272,14 +283,16 @@
     "isodate >=0.5.4",
     "jinja2 >=2.7.3",
     "pygeoif >=0.6",
-    "netcdf4 >=1.4",
+    "netcdf4 >=1.4.0",
     "regex >=2017.07.28",
-    "pendulum >=1.2.4"
+    "pendulum >=1.2.4",
+    "pyproj >=2.2.1",
+    "validators >=0.14.2"
    ]
   },
   "source":{
-   "sha256":"0c934985be4eed1f5c627b15595133f3f533fb45fff77eaee747a6a2ed6f7844",
-   "url":"https://pypi.io/packages/source/c/compliance-checker/compliance-checker-4.3.2.tar.gz"
+   "sha256":"d8376e47b6823f5347cca89c10ed6e5113e2c28ad4dc899d2492b89600d44654",
+   "url":"https://pypi.io/packages/source/c/compliance-checker/compliance-checker-4.3.3.tar.gz"
   },
   "test":{
    "commands":[
@@ -290,13 +303,10 @@
    "imports":[
     "compliance_checker",
     "compliance_checker.cf",
-    "compliance_checker.tests",
     "compliance_checker",
     "compliance_checker.cf",
-    "compliance_checker.tests",
     "compliance_checker",
-    "compliance_checker.cf",
-    "compliance_checker.tests"
+    "compliance_checker.cf"
    ],
    "requires":[
     "pytest",
@@ -317,11 +327,12 @@
  },
  "new_version_errors":{},
  "pinning_version":"2020.05.18.14.31.44",
- "raw_meta_yaml":"{% set version = \"4.3.2\" %}\n\npackage:\n  name: compliance-checker\n  version: {{ version }}\n\nsource:\n  url: https://pypi.io/packages/source/c/compliance-checker/compliance-checker-{{ version }}.tar.gz\n  sha256: 0c934985be4eed1f5c627b15595133f3f533fb45fff77eaee747a6a2ed6f7844\n\nbuild:\n  number: 0\n  script: \"{{ PYTHON }} -m pip install . --no-deps -vv\"\n  entry_points:\n    - compliance-checker = cchecker:main\n\nrequirements:\n  host:\n    - python\n    - pip\n  run:\n    - python\n    - setuptools >=15.0\n    - owslib >=0.8.3\n    - lxml >=3.2.1\n    - cf-units >=2\n    - requests >=2.2.1\n    - isodate >=0.5.4\n    - jinja2 >=2.7.3\n    - pygeoif >=0.6\n    - netcdf4 >=1.4\n    - regex >=2017.07.28\n    - pendulum >=1.2.4\n    - functools32  # [py2k]\n\ntest:\n  source_files:\n    - compliance_checker\n  requires:\n    - pytest\n    - httpretty  # [py2k]\n  imports:\n    - compliance_checker\n    - compliance_checker.cf\n    - compliance_checker.tests\n  commands:\n    - compliance-checker --help\n\nabout:\n  home: https://github.com/ioos/compliance-checker\n  license: Apache 2.0\n  license_file:  LICENSE\n  summary: 'Checks Datasets and SOS endpoints for standards compliance'\n\nextra:\n  recipe-maintainers:\n    - benjwadams\n    - daf\n    - kwilcox\n    - lukecampbell\n    - ocefpaf\n",
+ "raw_meta_yaml":"{% set version = \"4.3.3\" %}\n\npackage:\n  name: compliance-checker\n  version: {{ version }}\n\nsource:\n  url: https://pypi.io/packages/source/c/compliance-checker/compliance-checker-{{ version }}.tar.gz\n  sha256: d8376e47b6823f5347cca89c10ed6e5113e2c28ad4dc899d2492b89600d44654\n\nbuild:\n  number: 0\n  noarch: python\n  script: \"{{ PYTHON }} -m pip install . -vv\"\n  entry_points:\n    - compliance-checker = cchecker:main\n\nrequirements:\n  host:\n    - python >=3.5\n    - pip\n  run:\n    - python >=3.5\n    - setuptools >=15.0\n    - cftime >=1.1.0\n    - owslib >=0.8.3\n    - lxml >=3.2.1\n    - cf-units >=2\n    - requests >=2.2.1\n    - isodate >=0.5.4\n    - jinja2 >=2.7.3\n    - pygeoif >=0.6\n    - netcdf4 >=1.4.0\n    - regex >=2017.07.28\n    - pendulum >=1.2.4\n    - pyproj >=2.2.1\n    - validators >=0.14.2\n\ntest:\n  source_files:\n    - compliance_checker\n  requires:\n    - pytest\n  imports:\n    - compliance_checker\n    - compliance_checker.cf\n  commands:\n    - compliance-checker --help\n\nabout:\n  home: https://github.com/ioos/compliance-checker\n  license: Apache-2.0\n  license_file: LICENSE\n  summary: Checks Datasets and SOS endpoints for standards compliance\n\nextra:\n  recipe-maintainers:\n    - benjwadams\n    - daf\n    - kwilcox\n    - lukecampbell\n    - ocefpaf\n",
  "req":{
   "__set__":true,
   "elements":[
    "cf-units",
+   "cftime",
    "isodate",
    "jinja2",
    "lxml",
@@ -330,10 +341,12 @@
    "pendulum",
    "pip",
    "pygeoif",
+   "pyproj",
    "python",
    "regex",
    "requests",
-   "setuptools"
+   "setuptools",
+   "validators"
   ]
  },
  "requirements":{
@@ -352,6 +365,7 @@
    "__set__":true,
    "elements":[
     "cf-units",
+    "cftime",
     "isodate",
     "jinja2",
     "lxml",
@@ -359,10 +373,12 @@
     "owslib",
     "pendulum",
     "pygeoif",
+    "pyproj",
     "python",
     "regex",
     "requests",
-    "setuptools"
+    "setuptools",
+    "validators"
    ]
   },
   "test":{
@@ -383,24 +399,27 @@
    "__set__":true,
    "elements":[
     "pip",
-    "python"
+    "python >=3.5"
    ]
   },
   "run":{
    "__set__":true,
    "elements":[
     "cf-units >=2",
+    "cftime >=1.1.0",
     "isodate >=0.5.4",
     "jinja2 >=2.7.3",
     "lxml >=3.2.1",
-    "netcdf4 >=1.4",
+    "netcdf4 >=1.4.0",
     "owslib >=0.8.3",
     "pendulum >=1.2.4",
     "pygeoif >=0.6",
-    "python",
+    "pyproj >=2.2.1",
+    "python >=3.5",
     "regex >=2017.07.28",
     "requests >=2.2.1",
-    "setuptools >=15.0"
+    "setuptools >=15.0",
+    "validators >=0.14.2"
    ]
   },
   "test":{
@@ -411,5 +430,5 @@
   }
  },
  "url":"https://pypi.io/packages/source/c/compliance-checker/compliance-checker-4.2.2.tar.gz",
- "version":"4.3.2"
+ "version":"4.3.3"
 }
