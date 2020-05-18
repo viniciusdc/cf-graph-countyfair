@@ -163,13 +163,13 @@
    "home":"https://github.com/ResidentMario/geoplot",
    "license":"MIT",
    "license_family":"MIT",
-   "license_file":"/LICENSE.md",
+   "license_file":"LICENSE.md",
    "summary":"High-level geospatial plotting for Python"
   },
   "build":{
    "noarch":"python",
-   "number":"1",
-   "script":" -m pip install . --no-deps -vv"
+   "number":"0",
+   "script":"-m pip install . -vv"
   },
   "extra":{
    "recipe-maintainers":[
@@ -183,7 +183,7 @@
   },
   "package":{
    "name":"geoplot",
-   "version":"0.4.0"
+   "version":"0.4.1"
   },
   "requirements":{
    "host":[
@@ -196,39 +196,44 @@
    ],
    "run":[
     "python >=3.6",
-    "matplotlib-base",
-    "seaborn",
-    "pandas",
-    "geopandas",
     "cartopy",
+    "contextily >=1.0.0",
     "descartes",
-    "mapclassify",
-    "contextily >=1.0rc2",
+    "geopandas",
+    "mapclassify >=2.1",
+    "matplotlib-base",
+    "pandas",
+    "seaborn",
     "python >=3.6",
-    "matplotlib-base",
-    "seaborn",
-    "pandas",
-    "geopandas",
     "cartopy",
+    "contextily >=1.0.0",
     "descartes",
-    "mapclassify",
-    "contextily >=1.0rc2",
+    "geopandas",
+    "mapclassify >=2.1",
+    "matplotlib-base",
+    "pandas",
+    "seaborn",
     "python >=3.6",
-    "matplotlib-base",
-    "seaborn",
-    "pandas",
-    "geopandas",
     "cartopy",
+    "contextily >=1.0.0",
     "descartes",
-    "mapclassify",
-    "contextily >=1.0rc2"
+    "geopandas",
+    "mapclassify >=2.1",
+    "matplotlib-base",
+    "pandas",
+    "seaborn"
    ]
   },
   "source":{
-   "sha256":"37b2f9d012098dd63f790a57df0a06f7279bdd8226d7b73a2cb30e4f0286802b",
-   "url":"https://pypi.io/packages/source/g/geoplot/geoplot-0.4.0.tar.gz"
+   "sha256":"eb073436c5a1cb7f97caa217cdb109e6cad4f3774e657757005e3f0f5a3183ca",
+   "url":"https://pypi.io/packages/source/g/geoplot/geoplot-0.4.1.tar.gz"
   },
   "test":{
+   "commands":[
+    "pip check",
+    "pip check",
+    "pip check"
+   ],
    "imports":[
     "geoplot",
     "geoplot.crs",
@@ -242,6 +247,11 @@
     "geoplot.crs",
     "geoplot.ops",
     "geoplot.utils"
+   ],
+   "requires":[
+    "pip",
+    "pip",
+    "pip"
    ]
   }
  },
@@ -252,7 +262,7 @@
  },
  "new_version_errors":{},
  "pinning_version":"2020.05.14.17.14.20",
- "raw_meta_yaml":"{% set version = \"0.4.0\" %}\n\npackage:\n  name: geoplot\n  version: {{ version }}\n\nsource:\n  url: https://pypi.io/packages/source/g/geoplot/geoplot-{{ version }}.tar.gz\n  sha256: 37b2f9d012098dd63f790a57df0a06f7279bdd8226d7b73a2cb30e4f0286802b\n\nbuild:\n  number: 1\n  noarch: python\n  script: \"{{ PYTHON }} -m pip install . --no-deps -vv\"\n\nrequirements:\n  host:\n    - python >=3.6\n    - pip\n  run:\n    - python >=3.6\n    - matplotlib-base\n    - seaborn\n    - pandas\n    - geopandas\n    - cartopy\n    - descartes\n    - mapclassify\n    - contextily >=1.0rc2\n\ntest:\n  imports:\n    - geoplot\n    - geoplot.crs\n    - geoplot.ops\n    - geoplot.utils\n\nabout:\n  home: https://github.com/ResidentMario/geoplot\n  license: MIT\n  license_family: MIT\n  license_file: '{{ environ[\"RECIPE_DIR\"] }}/LICENSE.md'\n  summary: 'High-level geospatial plotting for Python'\n\nextra:\n  recipe-maintainers:\n    - residentmario\n    - ocefpaf\n",
+ "raw_meta_yaml":"{% set version = \"0.4.1\" %}\n\npackage:\n  name: geoplot\n  version: {{ version }}\n\nsource:\n  url: https://pypi.io/packages/source/g/geoplot/geoplot-{{ version }}.tar.gz\n  sha256: eb073436c5a1cb7f97caa217cdb109e6cad4f3774e657757005e3f0f5a3183ca\n\nbuild:\n  number: 0\n  noarch: python\n  script: {{ PYTHON }} -m pip install . -vv\n\nrequirements:\n  host:\n    - python >=3.6\n    - pip\n  run:\n    - python >=3.6\n    - cartopy\n    - contextily >=1.0.0\n    - descartes\n    - geopandas\n    - mapclassify >=2.1\n    - matplotlib-base\n    - pandas\n    - seaborn\n\ntest:\n  imports:\n    - geoplot\n    - geoplot.crs\n    - geoplot.ops\n    - geoplot.utils\n  commands:\n    - pip check\n  requires:\n    - pip\n\nabout:\n  home: https://github.com/ResidentMario/geoplot\n  license: MIT\n  license_family: MIT\n  license_file: LICENSE.md\n  summary: High-level geospatial plotting for Python\n\nextra:\n  recipe-maintainers:\n    - residentmario\n    - ocefpaf\n",
  "req":{
   "__set__":true,
   "elements":[
@@ -296,7 +306,9 @@
   },
   "test":{
    "__set__":true,
-   "elements":[]
+   "elements":[
+    "pip"
+   ]
   }
  },
  "smithy_version":"No azure token. Create a token and\nput it in ~/.conda-smithy/azure.token\n3.7.2\n",
@@ -317,10 +329,10 @@
    "__set__":true,
    "elements":[
     "cartopy",
-    "contextily >=1.0rc2",
+    "contextily >=1.0.0",
     "descartes",
     "geopandas",
-    "mapclassify",
+    "mapclassify >=2.1",
     "matplotlib-base",
     "pandas",
     "python >=3.6",
@@ -329,9 +341,11 @@
   },
   "test":{
    "__set__":true,
-   "elements":[]
+   "elements":[
+    "pip"
+   ]
   }
  },
  "url":"https://pypi.io/packages/source/g/geoplot/geoplot-0.3.1.tar.gz",
- "version":"0.4.0"
+ "version":"0.4.1"
 }
